@@ -8,16 +8,17 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int carCount = InputView.getCarCount();
+        String carNames = InputView.getCarNames();
         int round = InputView.getGameRound();
 
-        Cars cars = new Cars(Cars.createCars(carCount));
+        Cars cars = Cars.createCars(carNames);
         RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
         RacingCar racingCar = new RacingCar(cars, round, randomNumberGenerator);
 
         for (int currentRound = 0; currentRound < round; currentRound++) {
             racingCar.playRound();
-            ResultView.printCarsPosition(cars);
+            ResultView.printCarsPosition(racingCar);
         }
+        ResultView.printWinner(racingCar.findWinners());
     }
 }

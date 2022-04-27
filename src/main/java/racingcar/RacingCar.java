@@ -2,10 +2,13 @@ package racingcar;
 
 import racingcar.pattern.NumberGenerator;
 
+import java.util.Map;
+
 public class RacingCar  {
     private Cars cars;
     private int round;
     private final NumberGenerator numberGenerator;
+    private final int ZERO = 0;
 
     public RacingCar(Cars cars, int round, NumberGenerator numberGenerator) {
         this.cars = cars;
@@ -14,7 +17,7 @@ public class RacingCar  {
     }
 
     private void setRound(int round) {
-        if(round < 0) {
+        if(round < ZERO) {
             throw new IllegalArgumentException("round는 음수가 될 수 없습니다");
         }
         this.round = round;
@@ -32,4 +35,15 @@ public class RacingCar  {
         round = round - 1;
     }
 
+    private Position getMaxPosition() {
+        return cars.getMaxPosition();
+    }
+
+    public Winners findWinners() {
+        return new Winners(cars.getWinners(getMaxPosition()));
+    }
+
+    public Map<String, Integer> getDistance() {
+        return cars.getPositions();
+    }
 }

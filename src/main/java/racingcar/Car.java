@@ -1,17 +1,26 @@
 package racingcar;
 
-
 import java.util.Objects;
 
 public class Car {
     private static final int MIN_NUMBER_BE_MOVES = 4;
+    private CarName carName;
     private Position position;
 
-    public Car() {
-        this.position = new Position();
+    public Car(String carName) {
+        this(new CarName(carName), new Position());
     }
 
-    public Car(Position position) {
+    public Car(String carName, int position) {
+        this(new CarName(carName), new Position(position));
+    }
+
+    public Car(CarName carName) {
+        this(carName, new Position());
+    }
+
+    public Car(CarName carName, Position position) {
+        this.carName = carName;
         this.position = position;
     }
 
@@ -24,7 +33,7 @@ public class Car {
     }
 
     public void play(int number) {
-        if(canBeMove(number)) {
+        if (canBeMove(number)) {
             move();
         }
     }
@@ -44,5 +53,17 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(position);
+    }
+
+    public String getName() {
+        return carName.getName();
+    }
+
+    public Position maxPosition(Position maxPosition) {
+        return position.maxPosition(maxPosition);
+    }
+
+    public boolean isWinner(Position maxPosition) {
+        return position.isMaxPosition(maxPosition);
     }
 }

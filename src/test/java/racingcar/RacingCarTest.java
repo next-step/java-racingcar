@@ -4,16 +4,19 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.pattern.RandomNumberGenerator;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class RacingCarTest  {
+class RacingCarTest {
     @Test
     @DisplayName("round가 음수일땐 에러를 뱉는다.")
     void argumentExceptionErrorTest() {
-        int carCount = 4;
         int round = -1;
 
-        Cars cars = new Cars(Cars.createCars(carCount));
+        Cars cars = Cars.createCars("green,so");
         RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
         assertThatThrownBy(() -> new RacingCar(cars, round, randomNumberGenerator))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -23,10 +26,9 @@ class RacingCarTest  {
     @Test
     @DisplayName("입력받은 라운드 보다 더 많은 라운드를 진행할때 에러를 뱉는다.")
     void roundErrorTest() {
-        int carCount = 4;
         int round = 4;
 
-        Cars cars = new Cars(Cars.createCars(carCount));
+        Cars cars = Cars.createCars("green,so");
         RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
         RacingCar racingCar = new RacingCar(cars, round, randomNumberGenerator);
 
@@ -37,5 +39,17 @@ class RacingCarTest  {
         assertThatThrownBy(racingCar::playRound)
                 .isInstanceOf(IllegalStateException.class)
                 .hasMessage("모든 라운드가 종료 되었습니다.");
+    }
+
+    @Test
+    @DisplayName("우승자를 찾는 테스트")
+    void findWinner() {
+        List<Car> carList = new ArrayList<>();
+        Car winner = new Car("win",4);
+        carList.add(winner);
+        carList.add(new Car("lose",2));
+        RacingCar racingCar = new RacingCar(new Cars(carList), 3, new RandomNumberGenerator());
+
+        assertThat(racingCar.findWinners().getWinners().get(0)).isEqualTo(winner);
     }
 }

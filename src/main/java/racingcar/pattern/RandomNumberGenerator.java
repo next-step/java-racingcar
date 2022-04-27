@@ -5,10 +5,11 @@ import java.util.Random;
 
 public class RandomNumberGenerator implements NumberGenerator {
 
-    private static final Random random = new SecureRandom();
+    private final int MAX = 9;
+    private static final Random RANDOM = new SecureRandom();
 
     @Override
     public int generate() {
-        return random.nextInt(MAX +1);
+        return RANDOM.nextInt(MAX + 1);
     }
 }
