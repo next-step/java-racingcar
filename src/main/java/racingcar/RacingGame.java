@@ -7,25 +7,24 @@ public class RacingGame {
 
     private final Random random;
     private final Scanner scanner;
+    private int round;
+    private int carCount;
 
     public RacingGame(Random random, Scanner scanner) {
         this.random = random;
         this.scanner = scanner;
     }
 
-    public void play() {
-        int carCount = InputView.inputCars(scanner);
-        int round = InputView.inputRounds(scanner);
+    public Car[] initGame() {
+        inputCount();
+        return initCars();
+    }
 
-        Car[] cars = new Car[carCount];
-
-        for (int i = 0; i < cars.length; i++) {
-            cars[i] = new Car();
-        }
-
+    public void play(Car[] cars) {
         while (round-- > 0) {
             playRound(cars);
         }
+        System.out.println();
     }
 
     private void playRound(Car[] cars) {
@@ -35,12 +34,26 @@ public class RacingGame {
             car.move();
             OutputView.printRound(speed, car.getDistance());
         }
-        System.out.println();
+    }
+
+    private void inputCount() {
+        carCount = InputView.inputCars(scanner);
+        round = InputView.inputRounds(scanner);
+    }
+
+    private Car[] initCars() {
+        Car[] cars = new Car[carCount];
+
+        for (int i = 0; i < cars.length; i++) {
+            cars[i] = new Car();
+        }
+
+        return cars;
     }
 
     public static void main(String[] args) {
         RacingGame racingGame = new RacingGame(new Random(), new Scanner(System.in));
-        racingGame.play();
+        Car[] cars = racingGame.initGame();
+        racingGame.play(cars);
     }
-
 }
