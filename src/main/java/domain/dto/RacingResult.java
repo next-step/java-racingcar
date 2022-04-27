@@ -4,17 +4,17 @@ import domain.Car;
 
 import java.util.Objects;
 
-public class CarDto {
+public class RacingResult {
     private final String carName;
     private final int position;
 
-    private CarDto(String carName, int position) {
+    private RacingResult(String carName, int position) {
         this.carName = carName;
         this.position = position;
     }
 
-    public static CarDto from(Car car) {
-        return new CarDto(car.getName(), car.getPosition());
+    public static RacingResult from(Car car) {
+        return new RacingResult(car.getName(), car.getPosition());
     }
 
     public String getCarName() {
@@ -33,7 +33,7 @@ public class CarDto {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CarDto carDto = (CarDto) o;
+        RacingResult carDto = (RacingResult) o;
         return position == carDto.position && Objects.equals(carName, carDto.carName);
     }
 
