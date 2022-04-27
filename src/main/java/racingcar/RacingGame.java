@@ -14,9 +14,8 @@ public class RacingGame {
     }
 
     public void play() {
-        InputView inputView = new InputView(scanner);
-        int carCount = inputView.inputCars();
-        int round = inputView.inputRounds();
+        int carCount = InputView.inputCars(scanner);
+        int round = InputView.inputRounds(scanner);
 
         Car[] cars = new Car[carCount];
 
