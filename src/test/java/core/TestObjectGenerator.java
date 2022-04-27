@@ -1,8 +1,6 @@
 package core;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class TestObjectGenerator {
     public static Car generateCar(String inputCarName, int position) {
@@ -14,13 +12,20 @@ public class TestObjectGenerator {
         return car;
     }
 
-    public static Cars generateCars(Car car, int count) {
+    public static Cars generateCars(int count) {
         List<Car> carList = new ArrayList<>();
         for (int i = 0; i < count; i++) {
-            carList.add(car);
+            carList.add(generateCar("a", 0));
         }
-
         return Cars.fromCars(carList);
+    }
+
+    public static Cars generateCarsAtPosition(int count, int position) {
+        Cars cars = generateCars(count);
+        for (int i = 0; i < position; i++) {
+            cars = cars.moveBy(generateMovablePowerSupply());
+        }
+        return cars;
     }
 
     public static PowerSupply generateMovablePowerSupply() {
@@ -46,6 +51,16 @@ public class TestObjectGenerator {
         Car car3 = generateCar("c", 2);
         List<Car> carList = Arrays.asList(car1, car2, car3);
         Cars cars = Cars.fromCars(carList);
-        return Winners.decideWinners(cars);
+        PositionBoard positionBoard = PositionBoard.create(cars);
+        positionBoard.recordPosition(cars);
+        return Winners.decideWinners(positionBoard);
+    }
+
+    public static Map<PositionTableKey, List<Integer>> generateInitialPositionTable(Cars cars) {
+        Map<PositionTableKey, List<Integer>> positionTable = new HashMap<>();
+        for (Car car : cars.getCars()) {
+            positionTable.put(PositionTableKey.of(car), new ArrayList<>());
+        }
+        return positionTable;
     }
 }

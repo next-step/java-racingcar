@@ -2,6 +2,7 @@ package utils;
 
 import core.Car;
 import core.Cars;
+import core.PositionBoard;
 import core.Winners;
 
 import java.util.Arrays;
@@ -25,10 +26,10 @@ public class AnnouncementPrinter {
         System.out.println(MOVE_COUNT_INPUT_ANNOUNCEMENT);
     }
 
-    public static void printMoveResult(Cars cars, int moveCount) {
+    public static void printMoveResult(Cars cars, PositionBoard positionBoard, int moveCount) {
         System.out.println(MOVE_RESULT_ANNOUNCEMENT);
         for (int i = 0; i < moveCount; i++) {
-            printCarsPositionAtTurn(cars, i);
+            printCarsPositionAtTurn(cars, positionBoard, i);
         }
     }
 
@@ -36,12 +37,13 @@ public class AnnouncementPrinter {
         System.out.println(String.join(", ", winners.namesAsString()) + "가 최종 우승했습니다.");
     }
 
-    private static void printCarPositionAtTurn(Car car, int turn) {
-        System.out.println(car.getCarName() + " : " + convertCarPositionToString(car.getPositionHistory().get(turn)));
+    private static void printCarPositionAtTurn(Car car, PositionBoard positionBoard, int turn) {
+        System.out.println(car.getCarName() + " : "
+                + convertCarPositionToString(positionBoard.getPositionAtTurn(car, turn)));
     }
 
-    private static void printCarsPositionAtTurn(Cars cars, int turn) {
-        cars.getCars().forEach(car -> AnnouncementPrinter.printCarPositionAtTurn(car, turn));
+    private static void printCarsPositionAtTurn(Cars cars, PositionBoard positionBoard, int turn) {
+        cars.getCars().forEach(car -> AnnouncementPrinter.printCarPositionAtTurn(car, positionBoard, turn));
         System.out.println();
     }
 

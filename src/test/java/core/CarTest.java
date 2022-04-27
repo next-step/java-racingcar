@@ -25,7 +25,6 @@ class CarTest {
         //then
         assertThat(result.getCarName()).isEqualTo(carName);
         assertThat(result.getPosition()).isEqualTo(0);
-        assertThat(result.getPositionHistory()).isEmpty();
     }
 
     @Test
@@ -59,20 +58,5 @@ class CarTest {
 
         //then
         assertThat(afterPosition).isEqualTo(initialPosition + 1);
-    }
-
-    @Test
-    @DisplayName("positionHistory 의 tail 과 position 은 같다")
-    void positionHistoryIsSameWithPosition() {
-        //given
-        Car car = TestObjectGenerator.generateCar("a", 5);
-
-        //when
-        Car movedCar = car.move(Car.BASE_MOVE_VALUE);
-        int position = movedCar.getPosition();
-        int positionHistoryTail = movedCar.getPositionHistory().get(movedCar.getPositionHistory().size() - 1);
-
-        //then
-        assertThat(positionHistoryTail).isEqualTo(position);
     }
 }

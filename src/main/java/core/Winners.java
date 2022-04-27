@@ -1,89 +1,78 @@
 package core;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Winners {
-    private final CurrentWinners cars;
+    private final CurrentWinners currentWinners;
 
-    private Winners(CurrentWinners cars) {
-        this.cars = cars;
+    private Winners(CurrentWinners currentWinners) {
+        this.currentWinners = currentWinners;
     }
 
-    public static Winners decideWinners(Cars cars) {
+    public static Winners decideWinners(PositionBoard positionBoard) {
         CurrentWinners currentWinners = new CurrentWinners(new ArrayList<>());
-        for (Car car : cars.getCars()) {
-            currentWinners.compare(car);
+        for (PositionTableKey key : positionBoard.keys()) {
+            currentWinners.compare(key, positionBoard.getPositionHistory(key));
         }
         return new Winners(currentWinners);
     }
 
-    public List<Car> getCars() {
-        return cars.getCars();
-    }
-
     public List<CarName> names() {
-        return cars.names();
+        return currentWinners.names();
     }
 
     public List<String> namesAsString() {
-        return cars.namesAsString();
+        return currentWinners.namesAsString();
     }
 
     public int size() {
-        return cars.size();
+        return currentWinners.size();
     }
 
     private static class CurrentWinners {
-        private final List<Car> cars;
+        private final List<CarName> carNames;
         private int position;
 
-        private CurrentWinners(List<Car> cars) {
-            this.cars = cars;
+        private CurrentWinners(List<CarName> carNames) {
+            this.carNames = carNames;
             this.position = 0;
         }
 
-        public void compare(Car car) {
-            if (car.isAhead(position)) {
-                changeWinner(car);
+        public void compare(PositionTableKey key, List<Integer> positionHistory) {
+            Integer LastPosition = positionHistory.get(positionHistory.size() - 1);
+            if (LastPosition > position) {
+                changeWinner(key, LastPosition);
                 return;
             }
-            if (car.isAtSamePosition(position)) {
-                addWinner(car);
+            if (LastPosition == position) {
+                addWinner(key);
             }
         }
 
         public List<CarName> names() {
-            return cars.stream()
-                    .map(Car::getCarName)
-                    .collect(Collectors.toList());
+            return carNames;
         }
 
         public List<String> namesAsString() {
-            return cars.stream()
-                    .map(Car::getCarName)
+            return carNames.stream()
                     .map(CarName::toString)
                     .collect(Collectors.toList());
         }
 
         public int size() {
-            return cars.size();
+            return carNames.size();
         }
 
-        private void changeWinner(Car car) {
-            cars.clear();
-            cars.add(car);
-            position = car.getPosition();
+        private void changeWinner(PositionTableKey key, int position) {
+            carNames.clear();
+            carNames.add(key.getCarName());
+            this.position = position;
         }
 
-        private void addWinner(Car car) {
-            cars.add(car);
-        }
-
-        public List<Car> getCars() {
-            return Collections.unmodifiableList(cars);
+        private void addWinner(PositionTableKey key) {
+            carNames.add(key.getCarName());
         }
     }
 }

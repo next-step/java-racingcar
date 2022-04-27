@@ -39,11 +39,18 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public List<String> namesAsString() {
+    public List<String> ids() {
         return cars.stream()
-                .map(Car::getCarName)
-                .map(CarName::toString)
+                .map(Car::getId)
                 .collect(Collectors.toList());
+    }
+
+    public CarName findCarNameById(String id) {
+        return cars.stream()
+                .filter(car -> car.isSameId(id))
+                .map(Car::getCarName)
+                .findAny()
+                .orElseThrow(IllegalArgumentException::new);
     }
 
     public List<Car> getCars() {

@@ -7,10 +7,12 @@ public class RacingGame {
         this.powerSupply = powerSupply;
     }
 
-    public Cars play(Cars cars, int moveCount) {
+    public PositionBoard play(Cars cars, int moveCount) {
+        PositionBoard positionBoard = PositionBoard.create(cars);
         for (int i = 0; i < moveCount; i++) {
             cars = cars.moveBy(powerSupply);
+            positionBoard.recordPosition(cars);
         }
-        return cars;
+        return positionBoard;
     }
 }

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -20,13 +21,15 @@ class WinnersTest {
         Car car2 = TestObjectGenerator.generateCar("b", 3);
         Car car3 = TestObjectGenerator.generateCar("c", 2);
         Cars cars = Cars.fromCars(Arrays.asList(car1, car2, car3));
+        PositionBoard positionBoard = PositionBoard.create(cars);
+        positionBoard.recordPosition(cars);
 
         //when
-        Winners winners = Winners.decideWinners(cars);
+        Winners winners = Winners.decideWinners(positionBoard);
 
         //then
         assertThat(winners.size()).isEqualTo(1);
-        assertThat(winners.getCars()).contains(car1);
+        assertThat(winners.names()).contains(car1.getCarName());
     }
 
     @Test
@@ -37,17 +40,19 @@ class WinnersTest {
         Car car2 = TestObjectGenerator.generateCar("b", 2);
         Car car3 = TestObjectGenerator.generateCar("c", 4);
         Cars cars = Cars.fromCars(Arrays.asList(car1, car2, car3));
+        PositionBoard positionBoard = PositionBoard.create(cars);
+        positionBoard.recordPosition(cars);
 
-        List<Car> winnerCars = new ArrayList<>();
-        winnerCars.add(car1);
-        winnerCars.add(car3);
+        List<CarName> winnerCarNames = new ArrayList<>();
+        winnerCarNames.add(car1.getCarName());
+        winnerCarNames.add(car3.getCarName());
 
         //when
-        Winners result = Winners.decideWinners(cars);
+        Winners result = Winners.decideWinners(positionBoard);
 
         //then
         assertThat(result.size()).isEqualTo(2);
-        assertThat(result.getCars()).containsAll(winnerCars);
+        assertThat(result.names()).containsAll(winnerCarNames);
     }
 
     @Test
