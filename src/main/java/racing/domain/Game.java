@@ -1,7 +1,9 @@
 package racing.domain;
 
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import racing.exception.GameException;
 
@@ -18,8 +20,8 @@ public class Game {
 
     private void equipRacingCar(final List<String> names) {
         names.stream()
-                .map(Car::new)
-                .forEach(cars::add);
+             .map(Car::new)
+             .forEach(cars::add);
     }
 
     public boolean isLeftRound() {
@@ -32,6 +34,16 @@ public class Game {
         }
         cars.forEach(car -> car.run(gameRule));
         this.numberOfRound = this.numberOfRound.decrease();
+    }
+
+    public List<Car> findWinner() {
+        final Location maxLocation = cars.stream()
+                                       .map(Car::getLocation)
+                                       .max(Comparator.comparing(location -> location))
+                                       .orElse(Location.defaultLocation());
+        return cars.stream()
+                .filter(car -> car.getLocation().equals(maxLocation))
+                .collect(Collectors.toList());
     }
 
     public List<Car> getCars() {

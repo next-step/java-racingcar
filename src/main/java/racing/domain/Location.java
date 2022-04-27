@@ -2,7 +2,7 @@ package racing.domain;
 
 import java.util.Objects;
 
-public class Location {
+public class Location implements Comparable<Location> {
     private static final int DEFAULT_LOCATION = 0;
     private final int number;
 
@@ -39,5 +39,10 @@ public class Location {
         return "Location{" +
                "number=" + number +
                '}';
+    }
+
+    @Override
+    public int compareTo(final Location o) {
+        return Integer.compare(this.number, o.number);
     }
 }

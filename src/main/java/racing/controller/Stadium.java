@@ -23,5 +23,7 @@ public class Stadium {
             game.proceedRound();
             ResultView.print(cars);
         }
+
+        ResultView.printWinner(game.findWinner());
     }
 }

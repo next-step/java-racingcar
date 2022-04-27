@@ -1,6 +1,7 @@
 package racing.ui;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import racing.domain.Car;
 import racing.domain.Location;
@@ -15,7 +16,7 @@ public class ResultView {
         System.out.println();
     }
 
-    public static void print(Car car) {
+    public static void print(final Car car) {
         final Location carLocation = car.getLocation();
 
         StringBuilder sb = new StringBuilder();
@@ -29,5 +30,12 @@ public class ResultView {
         sb.append(System.lineSeparator());
 
         System.out.print(sb);
+    }
+
+    public static void printWinner(final List<Car> cars) {
+        final String winners = cars.stream()
+                                   .map(Car::getName)
+                                   .collect(Collectors.joining(","));
+        System.out.println(winners + "가 최종 우승했습니다.");
     }
 }
