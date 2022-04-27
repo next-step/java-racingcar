@@ -20,6 +20,6 @@ public class CarsPositionModel {
     }
 
     public static CarsPositionModel from(Car car) {
-        return new CarsPositionModel(car.getCarName().getCarName(), car.getCarPosition().getPosition());
+        return new CarsPositionModel(car.name(), car.position());
     }
 }

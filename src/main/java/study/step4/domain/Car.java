@@ -1,9 +1,10 @@
 package study.step4.domain;
 
 import study.step4.domain.strategy.MoveStrategy;
-import study.step4.util.Comparable;
 
-public class Car implements Comparable<Car> {
+import java.util.Comparator;
+
+public class Car {
     private final CarName carName;
     private CarPosition carPosition;
 
@@ -18,17 +19,15 @@ public class Car implements Comparable<Car> {
         }
     }
 
-    public CarName getCarName() {
-        return carName;
+    public String name() {
+        return carName.getCarName();
     }
 
-    public CarPosition getCarPosition() {
-        return carPosition;
+    public int position() {
+        return carPosition.getPosition();
     }
 
-
-    @Override
-    public int compareTo(Car obj) {
-        return carPosition.getPosition() - obj.carPosition.getPosition();
+    public boolean equalPosition(Car car) {
+        return this.position() == car.position();
     }
 }

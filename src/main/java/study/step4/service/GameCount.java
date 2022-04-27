@@ -4,19 +4,26 @@ import java.util.Objects;
 
 public class GameCount {
     private static final int GAME_TERMINATED_COUNT = 0;
+    private static final int GAME_MIN_COUNT = 0;
+    private static final String GAME_CONDITION_MESSAGE = "game 횟수는 1 이상이어야 합니다";
     private int gameCount;
 
     public GameCount(int gameCount) {
-        if (gameCount <= 0 ) {
-            throw new IllegalArgumentException("game 횟수는 1 이상이어야 합니다");
+        if (gameCount <= GAME_MIN_COUNT ) {
+            throw new IllegalArgumentException(GAME_CONDITION_MESSAGE);
         }
         this.gameCount = gameCount;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         GameCount gameCount1 = (GameCount) o;
         return gameCount == gameCount1.gameCount;
     }
@@ -27,7 +34,7 @@ public class GameCount {
     }
 
     public boolean isTerminated() {
-        return gameCount == GAME_TERMINATED_COUNT;
+        return gameCount != GAME_TERMINATED_COUNT;
     }
 
     public void consume() {

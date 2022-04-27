@@ -3,11 +3,13 @@ package study.step4.domain;
 import java.util.Objects;
 
 public class CarName {
+    private static final int LIMIT_LENGTH = 5;
+    private static final String LIMIT_CAR_NAME = "자동차 이름은 5자를 초과할 수 없다";
     private final String carName;
 
     public CarName(String carName) {
-        if (carName.length() > 5 ) {
-            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없다");
+        if (carName.length() > LIMIT_LENGTH ) {
+            throw new IllegalArgumentException(LIMIT_CAR_NAME);
         }
         this.carName = carName;
     }
@@ -18,8 +20,12 @@ public class CarName {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         CarName carName1 = (CarName) o;
         return Objects.equals(carName, carName1.carName);
     }
