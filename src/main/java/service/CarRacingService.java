@@ -13,8 +13,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class CarRacingService {
-    private static final String WRONG_INPUT_MESSAGE = "시도 회수는 1이상의 정수여야 합니다.";
-    private static final String CORRECT_INPUT_PATTERN = "[0-9]*";
     private final MoveStrategy moveStrategy;
 
     public CarRacingService(MoveStrategy moveStrategy) {
