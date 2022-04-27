@@ -1,7 +1,5 @@
 package racingCar.domains;
 
-import java.util.Objects;
-
 public class PositiveNumber {
     private int number;
 
@@ -14,6 +12,10 @@ public class PositiveNumber {
         if (number < 0) {
             throw new IllegalArgumentException("양수만 가능합니다.");
         }
+    }
+
+    public void increase() {
+        this.number++;
     }
 
     public int getNumber() {
