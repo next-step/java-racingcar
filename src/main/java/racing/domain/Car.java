@@ -1,5 +1,7 @@
 package racing.domain;
 
+import java.util.Objects;
+
 import racing.exception.GameException;
 
 public class Car {
@@ -35,6 +37,19 @@ public class Car {
         if (gameRule.isPassedCondition()) {
             this.location = location.forward();
         }
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) {return true;}
+        if (o == null || getClass() != o.getClass()) {return false;}
+        final Car car = (Car) o;
+        return Objects.equals(name, car.name) && Objects.equals(location, car.location);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, location);
     }
 
     @Override
