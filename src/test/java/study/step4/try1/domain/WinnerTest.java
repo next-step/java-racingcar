@@ -1,4 +1,4 @@
-package study.step4.domain;
+package study.step4.try1.domain;
 
 import org.junit.jupiter.api.Test;
 

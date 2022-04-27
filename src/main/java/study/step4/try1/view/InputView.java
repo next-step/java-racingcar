@@ -1,4 +1,4 @@
-package study.step4.view;
+package study.step4.try1.view;
 
 import java.util.Scanner;
 

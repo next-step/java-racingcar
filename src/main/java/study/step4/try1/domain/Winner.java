@@ -1,4 +1,4 @@
-package study.step4.domain;
+package study.step4.try1.domain;
 
 import java.util.HashMap;
 import java.util.List;

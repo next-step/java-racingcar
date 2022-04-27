@@ -1,7 +1,7 @@
-package study.step4.view;
+package study.step4.try1.view;
 
-import study.step4.domain.Car;
-import study.step4.domain.Winner;
+import study.step4.try1.domain.Car;
+import study.step4.try1.domain.Winner;
 
 import java.util.*;
 

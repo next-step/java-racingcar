@@ -1,6 +1,6 @@
-package study.step4.domain;
+package study.step4.try1.domain;
 
-import study.step4.utils.RandomNumber;
+import study.step4.try1.utils.RandomNumber;
 
 import java.util.ArrayList;
 import java.util.List;

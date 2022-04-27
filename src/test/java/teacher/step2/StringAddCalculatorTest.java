@@ -1,7 +1,6 @@
 package teacher.step2;
 
 import org.junit.jupiter.api.Test;
-import teacher.step2.StringAddCalculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
