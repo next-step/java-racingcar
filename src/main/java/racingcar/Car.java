@@ -2,6 +2,7 @@ package racingcar;
 
 public class Car {
 
+    private static final int MINIMUM_MOVABLE_SPEED = 4;
     private int speed;
     private int distance;
 
@@ -23,7 +24,7 @@ public class Car {
     }
 
     public void move() {
-        if (this.speed >= 4) {
+        if (this.speed >= MINIMUM_MOVABLE_SPEED) {
             this.distance++;
         }
     }
