@@ -1,10 +1,11 @@
 package RacingCar;
 
+import RacingCar.domains.PositiveNumber;
 import RacingCar.views.InputView;
 
 public class RacingCarMain {
     public static void main(String[] args) {
-        InputView.askNumberOfCars();
-        InputView.askNumberOfRounds();
+        new PositiveNumber(InputView.askNumberOfCars());
+        new PositiveNumber(InputView.askNumberOfRounds());
     }
 }
