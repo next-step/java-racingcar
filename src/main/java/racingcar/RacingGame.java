@@ -9,15 +9,13 @@ public class RacingGame {
     private final Scanner scanner;
     private int round;
     private int carCount;
+    private final Car[] cars;
 
     public RacingGame(Random random, Scanner scanner) {
         this.random = random;
         this.scanner = scanner;
-    }
-
-    public Car[] initGame() {
         inputCount();
-        return initCars();
+        this.cars = initCars();
     }
 
     public void play(Car[] cars) {
@@ -53,7 +51,6 @@ public class RacingGame {
 
     public static void main(String[] args) {
         RacingGame racingGame = new RacingGame(new Random(), new Scanner(System.in));
-        Car[] cars = racingGame.initGame();
-        racingGame.play(cars);
+        racingGame.play(racingGame.cars);
     }
 }
