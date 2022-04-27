@@ -5,6 +5,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 public class CarTest {
 
     private Car car1;
@@ -43,13 +45,24 @@ public class CarTest {
         int round = 3;
         setSpeeds(8, 9, 1);
 
-        while(round-- > 0) {
+        while (round-- > 0) {
             move();
         }
 
         Assertions.assertThat(car1.getDistance()).isEqualTo(3);
         Assertions.assertThat(car2.getDistance()).isEqualTo(3);
         Assertions.assertThat(car3.getDistance()).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("자동차의 속도가 음수이면 예외가 발생한다.")
+    void racing_minus() {
+        assertThatThrownBy(() -> {
+            setSpeeds(8, 9, -1);
+            move();
+        })
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("속도는 음수값을 입력할 수 없습니다.");
     }
 
     private void move() {

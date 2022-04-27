@@ -20,6 +20,9 @@ public class Car {
     }
 
     public void setSpeed(int speed) {
+        if (speed < 0) {
+            throw new IllegalArgumentException("속도는 음수값을 입력할 수 없습니다.");
+        }
         this.speed = speed;
     }
 
