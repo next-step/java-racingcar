@@ -19,7 +19,8 @@ public class ResultView {
         final Location carLocation = car.getLocation();
 
         StringBuilder sb = new StringBuilder();
-        sb.append('|');
+        sb.append(car.getName())
+          .append(" : ");
         Location locationIndex = Location.defaultLocation();
         while (!locationIndex.equals(carLocation)) {
             sb.append(LOCATION_EXPRESSION_CHARACTER);
