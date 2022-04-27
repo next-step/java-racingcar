@@ -6,7 +6,7 @@ import racingCar.views.ResultView;
 
 public class RacingCarMain {
     public static void main(String[] args) {
-        Racing racing = new Racing(InputView.askNumberOfCars(), InputView.askNumberOfRounds());
+        Racing racing = new Racing(InputView.askNameOfCars(), InputView.askNumberOfRounds());
 
         while (racing.isPlaying()) {
             racing.playRound();

@@ -8,14 +8,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RacingTest {
     @Test
     void isPlaying() {
-        Racing racing = new Racing(3, 5);
+        Racing racing = new Racing("pobi,crong,honux", 5);
 
         assertThat(racing.isPlaying()).isTrue();
     }
 
     @Test
     void racingIsEnd() {
-        Racing racing = new Racing(3, 5, 5);
+        Racing racing = new Racing("pobi,crong,honux", 5, 5);
 
         assertThat(racing.isPlaying()).isFalse();
     }
