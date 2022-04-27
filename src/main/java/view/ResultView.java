@@ -1,9 +1,9 @@
 package view;
 
-import domain.Car;
 import domain.CarRacingResultDto;
+import domain.dto.RacingResults;
+import domain.dto.WinnerResult;
 
-import java.util.Map;
 import java.util.stream.Collectors;
 
 public class ResultView {
@@ -27,12 +27,12 @@ public class ResultView {
         racingResult.getRacingResults().forEach(this::printEachAttempt);
         System.out.print(NEW_LINE);
 
-        String result = String.format(WINNERS_MESSAGE, racingResult.getWinners().stream().map(Car::getName).collect(Collectors.joining(DELIMITER)));
+        String result = String.format(WINNERS_MESSAGE, racingResult.getWinners().stream().map(WinnerResult::getCarName).collect(Collectors.joining(DELIMITER)));
         System.out.println(result);
     }
 
-    private void printEachAttempt(Map<String, Integer> positions) {
-        positions.keySet().forEach(carName -> printCarPosition(carName, positions.get(carName)));
+    private void printEachAttempt(RacingResults results) {
+        results.getRacingResults().forEach(racingResult -> printCarPosition(racingResult.getCarName(), racingResult.getPosition()));
         System.out.print(NEW_LINE);
     }
 
