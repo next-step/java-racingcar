@@ -2,9 +2,7 @@ package camp.nextstep.racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import camp.nextstep.racingcar.domain.Car;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -16,7 +14,7 @@ public class CarTest {
   void should_Not_Move(int input) {
     Car car = new Car("마이바흐");
     car.move(new DefaultMoveCondition(() -> input));
-    assertThat(car.getPosition()).isZero();
+    assertThat(car.getPosition()).isEqualTo(new Position());
   }
 
   @DisplayName("조건 값이 4 이상인 경우 차량 이동")
@@ -25,7 +23,7 @@ public class CarTest {
   void should_Move(int input) {
     Car car = new Car("마이바흐");
     car.move(new DefaultMoveCondition(() -> input));
-    assertThat(car.getPosition()).isEqualTo(1);
+    assertThat(car.getPosition()).isEqualTo(new Position(1));
   }
 
 }
