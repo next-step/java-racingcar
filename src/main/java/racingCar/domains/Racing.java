@@ -1,13 +1,11 @@
 package racingCar.domains;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Racing {
-    private PositiveNumber numberOfCars;
     private PositiveNumber rounds;
     private PositiveNumber playedRound;
-    List<Car> cars;
+    private Cars cars;
 
     public Racing(int cars, int rounds) {
         this(cars, rounds, 0);
@@ -18,13 +16,9 @@ public class Racing {
     }
 
     public Racing(int cars, int rounds, int played) {
-        this.numberOfCars = new PositiveNumber(cars);
         this.rounds = new PositiveNumber(rounds);
         this.playedRound = new PositiveNumber(played);
-        this.cars = new ArrayList<>();
-        for (int i = 0; i < cars; i++) {
-            this.cars.add(new Car());
-        }
+        this.cars = new Cars(new PositiveNumber(cars));
     }
 
     public boolean isPlaying() {
@@ -32,13 +26,11 @@ public class Racing {
     }
 
     public void playRound() {
-        for (Car car : this.cars) {
-            car.move();
-        }
+        this.cars.move();
         playedRound.increase();
     }
 
     public List<Car> getCars() {
-        return this.cars;
+        return this.cars.getCars();
     }
 }
