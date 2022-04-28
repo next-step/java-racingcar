@@ -1,5 +1,6 @@
 package racingCar;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingCar.domains.Car;
 import racingCar.domains.Winner;
@@ -10,8 +11,9 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class WinnerTest {
+    @DisplayName("한 명 이상의 우승자 찾기")
     @Test
-    void name() {
+    void findWinners() {
         List<Car> cars = new ArrayList<>();
         cars.add(new Car("a", 2));
         cars.add(new Car("b"));
