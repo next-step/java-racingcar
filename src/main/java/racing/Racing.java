@@ -18,8 +18,10 @@ public class Racing {
         LinkedHashMap<Integer, Integer> cars = new LinkedHashMap<>();
         initCarMap(carCount, cars);
 
+        System.out.println("실행 결과");
         for (int i = 0; i < moveCount; i++) {
             moveCars(cars);
+            System.out.println(" ");
         }
 
         return cars;
@@ -29,6 +31,7 @@ public class Racing {
         for (Integer carKey : cars.keySet()) {
             int move = cars.get(carKey) + moveRandom();
             cars.put(carKey, move);
+            InputView.render(move);
         }
     }
 

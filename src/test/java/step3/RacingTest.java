@@ -12,14 +12,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class RacingTest {
 
-//    @DisplayName("String으로 입력한 값이 숫자 타입인지")
-//    @ParameterizedTest
-//    @CsvSource(value = {"1,not string value"}, delimiter = ',')
-//    void carRacing_inputString(int carCount, int moveCount) {
-//        assertThatThrownBy(() -> Racing.racing(carCount, moveCount))
-//                .isInstanceOf(NumberFormatException.class);
-//    }
-
     @DisplayName("변환한 값이 0을 넣거나 음수가 들어가면 예외 발생")
     @ParameterizedTest
     @CsvSource(value = {"1,0"}, delimiter = ',')
@@ -35,14 +27,6 @@ public class RacingTest {
     void carRacing_mapSize(int carCount, int moveCount, int expected) {
         assertThat(Racing.racing(carCount, moveCount)).hasSize(expected);
     }
-
-//    @DisplayName("자동차 move 값으로 넣은 값으로 value 값이 나온다.")
-//    @ParameterizedTest
-//    @CsvSource(value = {"1,3,3", "3,5,5", "7,3,3"}, delimiter = ',')
-//    void carRacingTest2(String carCount, String moveCount, int expected) {
-//        Map<Integer, Integer> racingMap = Racing.racing(carCount, moveCount);
-//        assertThat(racingMap.get(0)).isEqualTo(expected);
-//    }
 
     @DisplayName("random 값으로 만들어져서 마지막의 결과가 0이상 moveCount 이하가 되도록 한다.")
     @ParameterizedTest
