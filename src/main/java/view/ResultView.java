@@ -1,13 +1,14 @@
 package view;
 
-import domain.Car;
 import domain.CarRacingResultDto;
+import domain.dto.RacingResults;
+import domain.dto.WinnerResult;
 
-import java.util.Map;
 import java.util.stream.Collectors;
 
 public class ResultView {
-    private static final String RESULT_MESSAGE = "실행 결과";
+    private static final StringBuilder stringBuilder = new StringBuilder();
+    private static final String RESULT_HEADER_MESSAGE = "실행 결과";
     private static final String WINNERS_MESSAGE = "%s가 최종 우승했습니다.";
     private static final String RESULT_FORM = "%s : %s";
     private static final String POSITION_BAR = "-";
@@ -23,21 +24,42 @@ public class ResultView {
     }
 
     public void printRacingResult(CarRacingResultDto racingResult) {
-        System.out.println(RESULT_MESSAGE);
-        racingResult.getRacingResults().forEach(this::printEachAttempt);
-        System.out.print(NEW_LINE);
+        addMessageToResult(RESULT_HEADER_MESSAGE);
+        racingResult.getRacingResults()
+                .forEach(this::addEachAttemptToResult);
 
-        String result = String.format(WINNERS_MESSAGE, racingResult.getWinners().stream().map(Car::getName).collect(Collectors.joining(DELIMITER)));
-        System.out.println(result);
+        String winnerMessage = String.format(WINNERS_MESSAGE, findWinners(racingResult));
+        addMessageToResult(winnerMessage);
+
+        printTotalResultMessage();
     }
 
-    private void printEachAttempt(Map<String, Integer> positions) {
-        positions.keySet().forEach(carName -> printCarPosition(carName, positions.get(carName)));
-        System.out.print(NEW_LINE);
+    private String findWinners(CarRacingResultDto racingResult) {
+        return racingResult.getWinners().stream()
+                .map(WinnerResult::getCarName)
+                .collect(Collectors.joining(DELIMITER));
     }
 
-    private void printCarPosition(String carName, int attemptCount) {
+    private void addMessageToResult(String message) {
+        stringBuilder.append(message).append(NEW_LINE);
+    }
+
+    private void addEachAttemptToResult(RacingResults results) {
+        results.getRacingResults().forEach(racingResult -> addCarPosition(racingResult.getCarName(), racingResult.getPosition()));
+        stringBuilder.append(NEW_LINE);
+    }
+
+    private void addCarPosition(String carName, int attemptCount) {
         String carPosition = String.format(RESULT_FORM, carName, POSITION_BAR.repeat(attemptCount));
-        System.out.println(carPosition);
+        addMessageToResult(carPosition);
+    }
+
+    private void printTotalResultMessage() {
+        System.out.println(stringBuilder);
+        initStringBuilder();
+    }
+
+    private void initStringBuilder() {
+        stringBuilder.setLength(0);
     }
 }

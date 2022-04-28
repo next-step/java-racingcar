@@ -2,22 +2,19 @@ package domain;
 
 import util.MoveStrategy;
 
-public class Car {
-    private final Position position = new Position();
-    private final String name;
+import java.util.Objects;
 
-    public Car(String name) {
-        this.name = name;
-        validateCarName();
+public class Car implements Comparable<Car> {
+    private final CarName carName;
+    private final Position position;
+
+    public Car(String carName) {
+        this(carName, 0);
     }
 
-    private void validateCarName() {
-        if (name.isBlank() || name.isEmpty()) {
-            throw new IllegalArgumentException("이름은 빈칸이거나 공백일 수 없습니다.");
-        }
-        if (name.length() > 5) {
-            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
-        }
+    public Car(String carName, int position) {
+        this.carName = new CarName(carName);
+        this.position = new Position(position);
     }
 
     public void move(MoveStrategy moveStrategy) {
@@ -26,15 +23,37 @@ public class Car {
         }
     }
 
-    public Position getPosition() {
-        return position;
+    public boolean isEqualPosition(Car otherCar) {
+        return position.equals(otherCar.position);
     }
 
     public String getName() {
-        return name;
+        return carName.getName();
     }
 
-    public boolean equalPosition(Position position) {
-        return this.position.equals(position);
+    public int getPosition() {
+        return position.getPosition();
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return position.compareTo(o.position);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Car car = (Car) o;
+        return Objects.equals(carName, car.carName) && Objects.equals(position, car.position);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(carName, position);
     }
 }

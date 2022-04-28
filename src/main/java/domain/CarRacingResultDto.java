@@ -1,22 +1,24 @@
 package domain;
 
+import domain.dto.RacingResults;
+import domain.dto.WinnerResult;
+
 import java.util.List;
-import java.util.Map;
 
 public class CarRacingResultDto {
-    private final List<Car> winners;
-    private final List<Map<String, Integer>> racingResults;
+    private final List<WinnerResult> winners;
+    private final List<RacingResults> racingResultTotal;
 
-    public CarRacingResultDto(List<Car> winners, List<Map<String, Integer>> racingResults) {
+    public CarRacingResultDto(List<WinnerResult> winners, List<RacingResults> racingResultTotal) {
         this.winners = winners;
-        this.racingResults = racingResults;
+        this.racingResultTotal = racingResultTotal;
     }
 
-    public List<Car> getWinners() {
+    public List<WinnerResult> getWinners() {
         return winners;
     }
 
-    public List<Map<String, Integer>> getRacingResults() {
-        return racingResults;
+    public List<RacingResults> getRacingResults() {
+        return racingResultTotal;
     }
 }

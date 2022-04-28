@@ -1,18 +1,18 @@
 package service;
 
-import domain.Car;
+import domain.AttemptCount;
 import domain.CarRacingResultDto;
 import domain.Cars;
+import domain.dto.RacingResult;
+import domain.dto.RacingResults;
+import domain.dto.WinnerResult;
 import util.MoveStrategy;
 
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class CarRacingService {
-    private static final String WRONG_INPUT_MESSAGE = "시도 회수는 1이상의 정수여야 합니다.";
-    private static final String CORRECT_INPUT_PATTERN = "[0-9]*";
     private final MoveStrategy moveStrategy;
 
     public CarRacingService(MoveStrategy moveStrategy) {
@@ -21,24 +21,26 @@ public class CarRacingService {
 
     public CarRacingResultDto registerCarsAndStartRacing(String carsName, String count) {
         Cars cars = new Cars(carsName);
-        int attemptCount = validateAttemptCount(count);
+        AttemptCount attemptCount = new AttemptCount(count);
 
-        List<Map<String, Integer>> racingResults = startRacing(cars, attemptCount);
-        List<Car> winners = cars.findWinners();
+        List<RacingResults> racingResultTotal = startRacing(cars, attemptCount);
+        List<WinnerResult> winners = findWinnersAndConvertDto(cars);
 
-        return new CarRacingResultDto(winners, racingResults);
+        return new CarRacingResultDto(winners, racingResultTotal);
     }
 
-    private List<Map<String, Integer>> startRacing(Cars cars, int attemptCount) {
-        return Stream.generate(() -> cars.moveCars(moveStrategy))
-                .limit(attemptCount)
+    private List<WinnerResult> findWinnersAndConvertDto(Cars cars) {
+        return cars.findWinners().stream()
+                .map(WinnerResult::from)
                 .collect(Collectors.toList());
     }
 
-    private int validateAttemptCount(String count) {
-        if (!count.matches(CORRECT_INPUT_PATTERN) || Integer.parseInt(count) < 1) {
-            throw new IllegalArgumentException(WRONG_INPUT_MESSAGE);
-        }
-        return Integer.parseInt(count);
+    private List<RacingResults> startRacing(Cars cars, AttemptCount attemptCount) {
+        return Stream.generate(() -> cars.moveCars(moveStrategy).stream()
+                .map(RacingResult::from)
+                .collect(Collectors.toList()))
+                .limit(attemptCount.getAttemptCount())
+                .map(RacingResults::from)
+                .collect(Collectors.toList());
     }
 }
