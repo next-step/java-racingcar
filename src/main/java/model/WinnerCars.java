@@ -13,13 +13,13 @@ public class WinnerCars {
     public static List<Car> getWinnerCars(List<Car> cars) {
         int winnerPosition = getWinnerPosition(cars);
         return cars.stream()
-                .filter(x -> x.getPosition().getPosition() == winnerPosition)
+                .filter(car -> car.equalPosition(winnerPosition))
                 .collect(Collectors.toList());
     }
 
     private static Integer getWinnerPosition(List<Car> cars) {
         List<Integer> positions = cars.stream()
-                .map(x -> x.getPosition().getPosition())
+                .map(car -> car.getPosition().getPosition())
                 .collect(Collectors.toList());
 
         return Collections.max(positions);

@@ -7,18 +7,18 @@ public class Position {
 
     private int position;
 
+    public Position(int position) {
+        if (position < MINIMUM_POSITION) {
+            throw new IllegalStateException(EXCEED_MINIMUM_POSITION_ERROR_MESSAGE);
+        }
+        this.position = position;
+    }
+
     public void plus() {
         this.position++;
     }
 
     public int getPosition() {
         return position;
-    }
-
-    public Position(int position) {
-        if (position < MINIMUM_POSITION) {
-            throw new IllegalStateException(EXCEED_MINIMUM_POSITION_ERROR_MESSAGE);
-        }
-        this.position = position;
     }
 }

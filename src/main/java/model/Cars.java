@@ -1,10 +1,11 @@
 package model;
 
-import dto.CarInfo;
 import dto.CarWinnerDto;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -31,17 +32,19 @@ public class Cars {
         }
     }
 
-    public List<CarInfo> getCarsInfo() {
-        return cars.stream()
-                .map(x -> new CarInfo(x.getCarName(), x.getPosition()))
-                .collect(Collectors.toList());
-    }
-
     public List<CarWinnerDto> getWinnerCars() {
         List<Car> winnerCars = WinnerCars.getWinnerCars(this.cars);
         return winnerCars.stream()
-                .map(x -> new CarWinnerDto(x.getCarName()))
+                .map(winnerCar -> new CarWinnerDto(winnerCar.getCarName()))
                 .collect(Collectors.toList());
+    }
+
+    public Map<CarName, Integer> getMoveHistories() {
+        Map<CarName, Integer> moveHistories = new HashMap<>();
+        for (Car car : this.cars) {
+            moveHistories.put(car.getCarName(), car.getPosition().getPosition());
+        }
+        return moveHistories;
     }
 
 }

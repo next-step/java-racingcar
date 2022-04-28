@@ -26,4 +26,8 @@ public class Car {
     public CarName getCarName() {
         return carName;
     }
+
+    public boolean equalPosition(int winnerPosition) {
+        return this.position.getPosition() == winnerPosition;
+    }
 }

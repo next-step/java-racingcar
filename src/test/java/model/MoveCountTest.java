@@ -1,5 +1,6 @@
 package model;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -9,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class MoveCountTest {
 
     @ParameterizedTest
-    @ValueSource(ints = {0, -1, -3, -5})
+    @ValueSource(ints = {0, -1})
     void 차량_움직이는_횟수가_0_이하일_경우_에러_발생(int moveCount) {
         assertThatThrownBy(() -> new MoveCount(moveCount)).isInstanceOf(IllegalStateException.class);
     }
@@ -34,6 +35,11 @@ class MoveCountTest {
         moveCount.decreaseMoveCount();
 
         assertThat(moveCount.isDone()).isFalse();
+    }
+
+    @Test
+    void MoveCount가_0_이하일때_에러_발생() {
+        assertThatThrownBy(() -> new MoveCount(0).decreaseMoveCount()).isInstanceOf(IllegalStateException.class);
     }
 
 }

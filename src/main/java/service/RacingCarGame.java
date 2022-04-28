@@ -1,10 +1,11 @@
 package service;
 
-import dto.CarInfo;
 import dto.CarWinnerDto;
 import model.Cars;
 import model.MoveCount;
+import model.RoundHistory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarGame {
@@ -22,13 +23,18 @@ public class RacingCarGame {
         cars.moveCars();
     }
 
-    public boolean isDone() {
-        return moveCount.isDone();
+    public List<RoundHistory> race(Cars cars, MoveCount moveCount) {
+        List<RoundHistory> roundHistories = new ArrayList<>();
+
+        while (!moveCount.isDone()) {
+            moveCount.decreaseMoveCount();
+            cars.moveCars();
+            roundHistories.add(new RoundHistory(cars.getMoveHistories()));
+        }
+
+        return roundHistories;
     }
 
-    public List<CarInfo> getCarsInfo() {
-        return cars.getCarsInfo();
-    }
 
     public List<CarWinnerDto> getCarWinner() {
         return cars.getWinnerCars();
