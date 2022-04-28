@@ -33,4 +33,8 @@ public class Racing {
     public List<Car> getCars() {
         return this.cars.getCars();
     }
+
+    public List<Car> findWinners() {
+        return Winner.findWinner(this.cars.getCars());
+    }
 }

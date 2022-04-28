@@ -12,5 +12,7 @@ public class RacingCarMain {
             racing.playRound();
             ResultView.showRoundResult(racing.getCars());
         }
+
+        ResultView.showWinners(racing.findWinners());
     }
 }
