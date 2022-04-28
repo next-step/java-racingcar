@@ -2,12 +2,16 @@ package racingcar.domain;
 
 public class Car {
 
-    private final CarName carName;
+    private final CarName name;
     private final Position position;
 
-    public Car(CarName carName) {
-        this.carName = carName;
-        this.position = new Position();
+    public Car(final String name) {
+        this(name, 0);
+    }
+
+    public Car(String name, int position) {
+        this.name = new CarName(name);
+        this.position = new Position(position);
     }
 
     public void moveOrStop(RacingStrategy racingStrategy) {
@@ -17,19 +21,19 @@ public class Car {
     }
 
     public boolean isWinner(int max) {
-        return position.getMovement() == max;
+        return position.equal(max);
     }
 
     public int getMaxPosition(int max) {
-        return Math.max(position.getMovement(), max);
+        return position.calMaxPosition(max);
     }
 
-    public int getPosition() {
+    public int getMovement() {
         return position.getMovement();
     }
 
-    public String getCarName() {
-        return carName.getName();
+    public String getName() {
+        return name.getName();
     }
 
 }

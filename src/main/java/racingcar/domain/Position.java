@@ -21,6 +21,14 @@ public class Position {
         movement = movement + 1;
     }
 
+    public boolean equal(int max) {
+        return movement == max;
+    }
+
+    public int calMaxPosition(int max) {
+        return Math.max(movement, max);
+    }
+
     public int getMovement() {
         return movement;
     }
