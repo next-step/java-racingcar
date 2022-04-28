@@ -20,6 +20,14 @@ class CarTest {
     }
 
     @Test
+    @DisplayName("최대 이동거리의 유무 테스트")
+    void maxMovementTest() {
+        int max = 3;
+        assertThat(new Car("mina", 3).isWinner(max)).isTrue();
+        assertThat(new Car("suji", 2).isWinner(max)).isFalse();
+    }
+
+    @Test
     @DisplayName("랜덤 전략을 사용한 자동차 전진 테스트")
     void moveTest() {
         car.moveOrStop(new RandomStrategy() {
