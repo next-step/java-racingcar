@@ -28,8 +28,7 @@ public class RacingGame {
     private void playRound(Car[] cars) {
         for (Car car : cars) {
             int speed = random.nextInt(10);
-            car.setSpeed(speed);
-            car.move();
+            car.move(speed);
             OutputView.printRound(speed, car.getDistance());
         }
     }

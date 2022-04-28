@@ -31,8 +31,7 @@ public class CarTest {
     @Test
     @DisplayName("자동차의 속도가 4이상이면 이동거리가 1씩 증가한다. (1회)")
     void racing_once() {
-        setSpeeds(4, 3, 5);
-        move();
+        move(4, 3, 5);
 
         Assertions.assertThat(car1.getDistance()).isEqualTo(1);
         Assertions.assertThat(car2.getDistance()).isEqualTo(0);
@@ -43,10 +42,9 @@ public class CarTest {
     @DisplayName("자동차의 속도가 4이상이면 이동거리가 1씩 증가한다. (3회)")
     void racing_multiple() {
         int round = 3;
-        setSpeeds(8, 9, 1);
 
         while (round-- > 0) {
-            move();
+            move(8, 9, 1);
         }
 
         Assertions.assertThat(car1.getDistance()).isEqualTo(3);
@@ -58,22 +56,15 @@ public class CarTest {
     @DisplayName("자동차의 속도가 음수이면 예외가 발생한다.")
     void racing_minus() {
         assertThatThrownBy(() -> {
-            setSpeeds(8, 9, -1);
-            move();
+            move(8, 9, -1);
         })
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("속도는 음수값을 입력할 수 없습니다.");
     }
 
-    private void move() {
-        car1.move();
-        car2.move();
-        car3.move();
-    }
-
-    private void setSpeeds(int speed1, int speed2, int speed3) {
-        car1.setSpeed(speed1);
-        car2.setSpeed(speed2);
-        car3.setSpeed(speed3);
+    private void move(int speed1, int speed2, int speed3) {
+        car1.move(speed1);
+        car2.move(speed2);
+        car3.move(speed3);
     }
 }
