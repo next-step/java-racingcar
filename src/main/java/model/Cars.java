@@ -1,7 +1,5 @@
 package model;
 
-import dto.CarWinnerDto;
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -26,16 +24,16 @@ public class Cars {
         return Arrays.stream(carNames.split(CAR_NAME_DELIMITER)).map(CarName::new).collect(Collectors.toList());
     }
 
-    public void moveCars() {
+    public void moveCars(MoveRule moveRule) {
         for (Car car : cars) {
-            car.move(new RandomMoveRule());
+            car.move(moveRule);
         }
     }
 
-    public List<CarWinnerDto> getWinnerCars() {
+    public List<CarName> getWinnerCarNames() {
         List<Car> winnerCars = WinnerCars.getWinnerCars(this.cars);
         return winnerCars.stream()
-                .map(winnerCar -> new CarWinnerDto(winnerCar.getCarName()))
+                .map(Car::getCarName)
                 .collect(Collectors.toList());
     }
 

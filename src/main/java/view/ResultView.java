@@ -1,6 +1,5 @@
 package view;
 
-import dto.CarWinnerDto;
 import model.CarName;
 import model.RoundHistory;
 
@@ -58,8 +57,7 @@ public class ResultView {
         return stringBuilder.toString();
     }
 
-    public static void printWinnerCars(List<CarWinnerDto> carWinnerDto) {
-        List<CarName> carNames = toCarNameList(carWinnerDto);
+    public static void printWinnerCars(List<CarName> carNames) {
         String winnerCarNames = carNames.stream().map(CarName::getName).collect(Collectors.joining(CAR_NAME_COLLECTORS_JOINING));
         stringBuilder.append(winnerCarNames);
         stringBuilder.append(WINNER_CAR_NAME_APPEND_TEXT);
@@ -67,7 +65,4 @@ public class ResultView {
         stringBuilder.setLength(0);
     }
 
-    private static List<CarName> toCarNameList(List<CarWinnerDto> carWinnerDtos) {
-        return carWinnerDtos.stream().map(CarWinnerDto::getCarName).collect(Collectors.toList());
-    }
 }
