@@ -13,16 +13,16 @@ public class CarName {
     }
 
     private void validateCarName(String name) {
-        if (name.isEmpty()) {
-            throw new IllegalStateException(EMPTY_CAR_NAME);
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException(EMPTY_CAR_NAME);
         }
 
-        if (validateCarMaximumLength(name)) {
+        if (isValidateCarMaximumLength(name)) {
             throw new IllegalStateException(CAR_NAME_MAXIMUM_LENGTH_ERROR_MESSAGE);
         }
     }
 
-    private boolean validateCarMaximumLength(String name) {
+    private boolean isValidateCarMaximumLength(String name) {
         return name.length() > MAXIMUM_LENGTH_OF_CAR_NAME;
     }
 

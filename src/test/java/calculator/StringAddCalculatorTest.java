@@ -35,7 +35,7 @@ public class StringAddCalculatorTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"-1,2,5", "1,-5,6", "1:3,-8", "-1:-2:-8"})
-    void 음수를_전달할_경우_IllegalStateException_발생(String input) {
+    void 음수를_전달할_경우_예외_발생(String input) {
         assertThrows(IllegalStateException.class, () -> StringAddCalculator.splitAndSum(input));
     }
 

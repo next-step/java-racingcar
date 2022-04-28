@@ -2,6 +2,7 @@ package model;
 
 public class MoveCount {
     private static final String LESS_THAN_ZERO_ERROR_MESSAGE = "1이상의 이동횟수를 입력해야됩니다.";
+    private static final String CAN_NOT_MOVE_LESS_THAN_ZERO = "움직일 수 없는 상태입니다.";
 
     private static final int DONE_MOVE_COUNT = 0;
 
@@ -18,6 +19,9 @@ public class MoveCount {
     }
 
     public void decreaseMoveCount() {
+        if (this.moveCount <= 0) {
+            throw new IllegalStateException(CAN_NOT_MOVE_LESS_THAN_ZERO);
+        }
         this.moveCount--;
     }
 
