@@ -7,38 +7,39 @@ import racingcar.domain.car.strategy.RandomMoveStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.domain.car.CarNameTest.validCarName;
-import static racingcar.domain.car.CarPositionTest.defaultPosition;
-import static racingcar.domain.car.CarPositionTest.winnerPosition;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static racingcar.domain.car.CarNameTest.VALID_CAR_NAME;
+import static racingcar.domain.car.CarNameTest.WINNER_CAR_NAME;
+import static racingcar.domain.car.CarPositionTest.WINNER_CAR_POSITION;
 
 @DisplayName("자동차 경주 - Car 테스트")
 public class CarTest {
     private static final int MOVED_POSITION = 1;
     private static final int DEFAULT_POSITION = 0;
-    private static final String WINNER_NAME = "win";
-    static final int MOVABLE_DISTANCE = 1;
 
-    static final Car winnerCar = new Car(new CarName(WINNER_NAME), winnerPosition, () -> true);
-    static final Car defaultCar = new Car(validCarName, defaultPosition, () -> true);
+    static final Car WINNER_CAR = new Car(WINNER_CAR_NAME, WINNER_CAR_POSITION, () -> true);
+    static final Car DEFAULT_CAR = new Car(VALID_CAR_NAME, CarPositionTest.DEFAULT_CAR_POSITION, () -> true);
 
     private Car movableCar;
     private Car nonMovableCar;
 
     @BeforeEach
     void setUp() {
-        movableCar = new Car(validCarName, () -> true);
-        nonMovableCar = new Car(validCarName, () -> false);
+        movableCar = new Car(VALID_CAR_NAME, () -> true);
+        nonMovableCar = new Car(VALID_CAR_NAME, () -> false);
     }
 
     @Test
     void Car는_이름과_이동전략으로_생성이_가능하다() {
-        assertThat(new Car(validCarName, new RandomMoveStrategy()))
+        assertThat(new Car(VALID_CAR_NAME, new RandomMoveStrategy()))
                 .isInstanceOf(Car.class);
     }
 
     @Test
     void Car는_이름_위치_이동전략으로_생성이_가능하다() {
-        assertThat(new Car(validCarName, defaultPosition, new RandomMoveStrategy()))
+        assertThat(new Car(VALID_CAR_NAME, CarPositionTest.DEFAULT_CAR_POSITION, new RandomMoveStrategy()))
                 .isInstanceOf(Car.class);
     }
 
@@ -65,7 +66,15 @@ public class CarTest {
     @Test
     void Car는_carActionStrategy없이_생성_할_경우_런타임_예외를_발생_시킨다() {
         assertThatThrownBy(() -> {
-            new Car(validCarName, null);
+            new Car(VALID_CAR_NAME, null);
         }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void isWinner는_승리_여부를_반환한다() {
+        assertAll(
+                () -> assertTrue(WINNER_CAR.isWinner(WINNER_CAR_POSITION.getPosition())),
+                () -> assertFalse(DEFAULT_CAR.isWinner(WINNER_CAR_POSITION.getPosition()))
+        );
     }
 }

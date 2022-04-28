@@ -12,8 +12,8 @@ import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.domain.car.CarNameTest.validCarName;
-import static racingcar.domain.car.CarPositionTest.defaultPosition;
+import static racingcar.domain.car.CarNameTest.VALID_CAR_NAME;
+import static racingcar.domain.car.CarPositionTest.DEFAULT_CAR_POSITION;
 
 @DisplayName("자동차 경주 - Rounds 테스트")
 class RoundsTest {
@@ -24,14 +24,14 @@ class RoundsTest {
 
     @BeforeEach
     public void init() {
-        carPositions = List.of(defaultPosition, defaultPosition, defaultPosition, defaultPosition, defaultPosition);
+        carPositions = List.of(DEFAULT_CAR_POSITION, DEFAULT_CAR_POSITION, DEFAULT_CAR_POSITION, DEFAULT_CAR_POSITION, DEFAULT_CAR_POSITION);
         movableCars = createMovableCars(carPositions);
     }
 
     private Cars createMovableCars(List<CarPosition> carPositions) {
         return new Cars(carPositions
                 .stream()
-                .map(position -> new Car(validCarName, position, () -> true))
+                .map(position -> new Car(VALID_CAR_NAME, position, () -> true))
                 .collect(Collectors.toList()));
     }
 

@@ -3,8 +3,8 @@ package racingcar.domain.car;
 import java.util.Objects;
 
 public class CarPosition {
-    private static final int DEFAULT_POSITION = 0;
-    private static final int MOVABLE_DISTANCE = 1;
+    public static final int DEFAULT_POSITION = 0;
+    public static final int MOVABLE_DISTANCE = 1;
 
     private final int position;
 

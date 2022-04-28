@@ -8,19 +8,19 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.domain.car.CarNameTest.validCarName;
+import static racingcar.domain.car.CarNameTest.VALID_CAR_NAME;
 
 @DisplayName("자동차 경주 - CarNames 테스트")
 class CarNamesTest {
     @Test
     void CarNames는_이름으로_생성이_가능하다() {
-        assertThat(new CarNames(List.of(validCarName, validCarName)))
+        assertThat(new CarNames(List.of(VALID_CAR_NAME, VALID_CAR_NAME)))
                 .isInstanceOf(CarNames.class);
     }
 
     @Test
     void CarNames는_이름_문자열로_생성이_가능하다() {
-        assertThat(CarNames.from(List.of(validCarName.getName(), validCarName.getName())))
+        assertThat(CarNames.from(List.of(VALID_CAR_NAME.getName(), VALID_CAR_NAME.getName())))
                 .isInstanceOf(CarNames.class);
     }
 

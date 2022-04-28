@@ -28,6 +28,10 @@ public class Car {
         return position.getPosition();
     }
 
+    public boolean isWinner(int winnerPosition) {
+        return this.position.getPosition() >= winnerPosition;
+    }
+
     public String getName() {
         return name.getName();
     }
