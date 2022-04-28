@@ -11,10 +11,11 @@ public class Cars {
         this.cars = cars;
     }
 
-    public void createCar(String[] names) {
+    public List<Car> createCar(String[] names) {
         for (int i = 0; i < names.length; i++) {
             cars.add(new Car(names[i]));
         }
+        return cars;
     }
 
     public List<Car> startGame(RacingStrategy strategy) {
