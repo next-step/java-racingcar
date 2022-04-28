@@ -1,19 +1,16 @@
 package racingcar;
 
 import java.util.Random;
-import java.util.Scanner;
 
 public class RacingGame {
 
     private final Random random;
-    private final Scanner scanner;
     private int round;
     private int carCount;
     private final Car[] cars;
 
-    public RacingGame(Random random, Scanner scanner) {
+    public RacingGame(Random random) {
         this.random = random;
-        this.scanner = scanner;
         inputCount();
         this.cars = initCars();
     }
@@ -34,8 +31,8 @@ public class RacingGame {
     }
 
     private void inputCount() {
-        carCount = InputView.inputCars(scanner);
-        round = InputView.inputRounds(scanner);
+        carCount = InputView.inputCars();
+        round = InputView.inputRounds();
     }
 
     private Car[] initCars() {
@@ -49,7 +46,7 @@ public class RacingGame {
     }
 
     public static void main(String[] args) {
-        RacingGame racingGame = new RacingGame(new Random(), new Scanner(System.in));
+        RacingGame racingGame = new RacingGame(new Random());
         racingGame.play(racingGame.cars);
     }
 }
