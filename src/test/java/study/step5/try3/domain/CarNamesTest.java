@@ -1,6 +1,7 @@
-package study.step4.try3.domain;
+package study.step5.try3.domain;
 
 import org.junit.jupiter.api.Test;
+import study.step5.try3.domain.CarName;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -9,7 +10,7 @@ public class CarNamesTest {
 
     @Test
     void 입력받은_자동차명이_유효한_값인지_확인하기() {
-        assertThatThrownBy(()->CarName.of("123456")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(()-> CarName.of("123456")).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test

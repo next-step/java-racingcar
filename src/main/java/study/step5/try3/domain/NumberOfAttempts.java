@@ -1,4 +1,4 @@
-package study.step4.try3.domain;
+package study.step5.try3.domain;
 
 public class NumberOfAttempts {
     private final int numberOfAttempts;

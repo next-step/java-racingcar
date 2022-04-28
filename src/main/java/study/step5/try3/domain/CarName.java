@@ -1,4 +1,4 @@
-package study.step4.try3.domain;
+package study.step5.try3.domain;
 
 public class CarName {
     private static final int LIMITED_STRING_LENGTH = 5;

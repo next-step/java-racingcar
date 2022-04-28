@@ -1,7 +1,7 @@
-package study.step4.try3.view;
+package study.step5.try3.view;
 
-import study.step4.try3.domain.Car;
-import study.step4.try3.domain.Cars;
+import study.step5.try3.domain.Car;
+import study.step5.try3.domain.Cars;
 
 public class ResultView {
     private final Cars cars;

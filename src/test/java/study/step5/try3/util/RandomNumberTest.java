@@ -1,4 +1,4 @@
-package study.step4.try3.util;
+package study.step5.try3.util;
 
 import org.junit.jupiter.api.Test;
 import study.step4.try2.util.RandomNumber;

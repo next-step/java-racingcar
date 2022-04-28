@@ -1,8 +1,8 @@
-package study.step4.try3;
+package study.step5.try3;
 
-import study.step4.try3.domain.CarRacingGame;
-import study.step4.try3.view.InputView;
-import study.step4.try3.view.ResultView;
+import study.step5.try3.domain.CarRacingGame;
+import study.step5.try3.view.InputView;
+import study.step5.try3.view.ResultView;
 
 public class Application {
     public static void main(String[] args) {

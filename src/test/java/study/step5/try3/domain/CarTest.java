@@ -1,6 +1,7 @@
-package study.step4.try3.domain;
+package study.step5.try3.domain;
 
 import org.junit.jupiter.api.Test;
+import study.step5.try3.domain.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
