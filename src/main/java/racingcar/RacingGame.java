@@ -22,6 +22,10 @@ public class RacingGame {
         System.out.println();
     }
 
+    public Car[] getCars() {
+        return cars;
+    }
+
     private void playRound(Car[] cars) {
         for (Car car : cars) {
             int speed = random.nextInt(10);
@@ -45,8 +49,5 @@ public class RacingGame {
         return cars;
     }
 
-    public static void main(String[] args) {
-        RacingGame racingGame = new RacingGame(new Random());
-        racingGame.play(racingGame.cars);
-    }
+
 }
