@@ -1,18 +1,17 @@
 package racingCar;
 
 import org.junit.jupiter.api.DisplayName;
-import racingCar.domains.PositiveNumber;
 import org.junit.jupiter.api.Test;
+import racingCar.domains.Name;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class PositiveNumberTest {
-
-    @DisplayName("생성자 매개변수에 음수를 받을 경우 IllegalArgumentException 발생")
+public class NameTest {
+    @DisplayName("이름의 길이가 5자를 초과한 경우 IllegalArgumentException 발생")
     @Test
-    void negativeParameterThrowException() {
+    void lengthIsLargerThanFive() {
         assertThatThrownBy(() -> {
-            new PositiveNumber(-1);
+            new Name("jinsol");
         }).isInstanceOf(IllegalArgumentException.class);
     }
 }
