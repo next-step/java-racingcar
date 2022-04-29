@@ -19,6 +19,6 @@ public class Race {
             resultView.printCarRace(carRace);
         }
         carRace.endRace();
-        resultView.printWinners(carRace);
+        resultView.printWinners(carRace.winners());
     }
 }

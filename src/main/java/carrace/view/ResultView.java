@@ -3,6 +3,8 @@ package carrace.view;
 import carrace.domain.Car;
 import carrace.domain.CarRace;
 
+import java.util.List;
+
 public class ResultView {
     public void printCarRace(CarRace carRace) {
         for (Car car : carRace.getCars()) {
@@ -19,9 +21,9 @@ public class ResultView {
         System.out.println();
     }
 
-    public void printWinners(CarRace carRace) {
+    public void printWinners(List<Car> winners) {
         int i = 0;
-        for (Car car : carRace.winners()) {
+        for (Car car : winners) {
             printComma(i++);
             System.out.print(car.getName());
         }
