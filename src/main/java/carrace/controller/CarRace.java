@@ -1,5 +1,8 @@
-package carrace.domain;
+package carrace.controller;
 
+import carrace.domain.Car;
+import carrace.domain.RaceWinner;
+import carrace.moving.RandomMoving;
 import carrace.util.Splitter;
 
 import java.util.Collections;
@@ -7,6 +10,8 @@ import java.util.List;
 
 public class CarRace {
     private final RaceWinner raceWinner = new RaceWinner();
+
+    private final RandomMoving randomMoving = new RandomMoving();
 
     private List<Car> cars;
 
@@ -19,7 +24,7 @@ public class CarRace {
 
     public void startEachRace() {
         for (Car car : this.cars) {
-            car.race();
+            car.move(randomMoving);
         }
     }
 

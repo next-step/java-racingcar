@@ -1,5 +1,6 @@
 package carrace.domain;
 
+import carrace.moving.Moving;
 import carrace.moving.RandomMoving;
 
 public class Car {
@@ -18,13 +19,8 @@ public class Car {
         this.name = name;
         this.position = position;
     }
-
-    public void race() {
-        this.position += move(randomMoving);
-    }
-
-    private int move(RandomMoving randomMoving) {
-        return randomMoving.move(randomMoving.isMove());
+    public void move(Moving moving) {
+        this.position += moving.move();
     }
 
     public String getName() {

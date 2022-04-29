@@ -1,7 +1,7 @@
 package carrace;
 
 
-import carrace.domain.CarRace;
+import carrace.controller.CarRace;
 import carrace.view.InputView;
 import carrace.view.ResultView;
 

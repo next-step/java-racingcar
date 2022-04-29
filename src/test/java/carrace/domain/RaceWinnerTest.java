@@ -1,4 +1,4 @@
-package carrace;
+package carrace.domain;
 
 import carrace.domain.Car;
 import carrace.domain.RaceWinner;
