@@ -3,6 +3,7 @@ package carrace;
 
 import carrace.util.Splitter;
 
+import java.util.Collections;
 import java.util.List;
 
 public class CarRace {
@@ -28,18 +29,14 @@ public class CarRace {
     }
 
     public List<Car> getCars() {
-        return cars;
+        return Collections.unmodifiableList(cars);
     }
 
     public int getNumberOfRaces() {
         return numberOfRaces;
     }
 
-    public int getNumberOfCars() {
-        return cars.size();
-    }
-
-    public RaceWinner getRaceWinner() {
-        return raceWinner;
+    public List<Car> winners() {
+        return Collections.unmodifiableList(raceWinner.getWinners());
     }
 }

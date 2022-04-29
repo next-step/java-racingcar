@@ -21,7 +21,7 @@ public class ResultView {
 
     public void printWinners(CarRace carRace) {
         int i = 0;
-        for (Car car : carRace.getRaceWinner().getWinners()) {
+        for (Car car : carRace.winners()) {
             printComma(i++);
             System.out.print(car.getName());
         }
