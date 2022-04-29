@@ -9,7 +9,7 @@ import java.util.List;
 public class WinnersTest {
 
     @Test
-    void findWinners(){
+    void 단일우승자(){
         ArrayList<Car> carList = new ArrayList<>();
         Car crong = new Car("crong",4);
         carList.add(crong);
@@ -17,10 +17,22 @@ public class WinnersTest {
         carList.add(new Car("honux",2));
 
         Cars cars = new Cars(carList);
-        List<Car> winners = Winners.findWinners(cars);
-
+        List<Car> winners = cars.winnerCars();
 
         Assertions.assertThat(winners).contains(crong);
+    }
+    @Test
+    void 복수우승자(){
+        ArrayList<Car> carList = new ArrayList<>();
+        Car crong = new Car("crong",4);
+        Car pobi = new Car("pobi",4);
+        carList.add(crong);
+        carList.add(pobi);
+        carList.add(new Car("honux",2));
 
+        Cars cars = new Cars(carList);
+        List<Car> winners = cars.winnerCars();
+
+        Assertions.assertThat(winners).contains(crong,pobi);
     }
 }

@@ -6,7 +6,7 @@ public class Car {
 
     public static final int MOVE_CRITERIA = 4;
 
-    private String name;
+    private Name name;
     private Position position;
 
     public Car(){
@@ -25,7 +25,7 @@ public class Car {
             throw new IllegalStateException("이름 글자 수는 반드시 5글자 이하여야 합니다. : " + name);
         }
 
-        this.name = name;
+        this.name =  new Name(name);
         this.position = new Position();
     }
 
@@ -37,13 +37,10 @@ public class Car {
             throw new IllegalStateException("이름 글자 수는 반드시 5글자 이하여야 합니다. : " + name);
         }
 
-        this.name = name;
+        this.name = new Name(name);
         this.position = new Position(position);
     }
 
-    public String getName() {
-        return name;
-    }
 
     public int currentPosition(){
         return this.position.getPosition();
@@ -97,5 +94,8 @@ public class Car {
         return super.equals(obj);
     }
 
-
+    @Override
+    public String toString() {
+        return name + ", ";
+    }
 }
