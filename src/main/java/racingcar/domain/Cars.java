@@ -3,16 +3,19 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RacingGame {
+public class Cars {
 
-    private static final List<Car> cars = new ArrayList<>();
-    private static final List<String> winners = new ArrayList<>();
-    private int max = 0;
+    private final List<Car> cars;
 
-    public void createCar(String[] names) {
+    public Cars(List<Car> cars) {
+        this.cars = cars;
+    }
+
+    public List<Car> createCar(String[] names) {
         for (int i = 0; i < names.length; i++) {
             cars.add(new Car(names[i]));
         }
+        return cars;
     }
 
     public List<Car> startGame(RacingStrategy strategy) {
@@ -20,17 +23,23 @@ public class RacingGame {
         return cars;
     }
 
-    public void calMaxPosition() {
-        cars.forEach(car ->
-           max = car.getMaxPosition(max));
+    public int calMaxPosition() {
+        int maxValue = 0;
+        for (Car car : cars) {
+            maxValue = car.getMaxPosition(maxValue);
+        }
+        return maxValue;
     }
 
     public List<String> findWinner() {
+        int max = calMaxPosition();
+        List<String> winners = new ArrayList<>();
         cars.forEach(car -> {
-            if(car.isWinner(max)) {
+            if (car.isWinner(max)) {
                 winners.add(car.getName());
             }
         });
         return winners;
     }
+
 }
