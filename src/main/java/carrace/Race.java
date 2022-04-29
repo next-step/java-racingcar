@@ -1,8 +1,9 @@
 package carrace;
 
 
-import carrace.ui.InputView;
-import carrace.ui.ResultView;
+import carrace.domain.CarRace;
+import carrace.view.InputView;
+import carrace.view.ResultView;
 
 public class Race {
 

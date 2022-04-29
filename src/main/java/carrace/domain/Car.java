@@ -1,4 +1,4 @@
-package carrace;
+package carrace.domain;
 
 import carrace.moving.RandomMoving;
 

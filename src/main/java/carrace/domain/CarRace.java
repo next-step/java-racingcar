@@ -1,6 +1,8 @@
-package carrace;
+package carrace.domain;
 
 
+import carrace.domain.Car;
+import carrace.domain.RaceWinner;
 import carrace.util.Splitter;
 
 import java.util.Collections;
