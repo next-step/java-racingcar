@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Car;
-import racingcar.domain.car.CarName;
 import racingcar.domain.car.CarPosition;
 import racingcar.domain.car.Cars;
 
@@ -14,15 +13,13 @@ import java.util.stream.Collectors;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static racingcar.domain.car.CarNameTest.VALID_CAR_NAME;
+import static racingcar.domain.car.CarPositionTest.DEFAULT_CAR_POSITION;
+import static racingcar.domain.car.CarPositionTest.WINNER_CAR_POSITION;
 
 @DisplayName("자동차 경주 - Round 테스트")
 class RoundTest {
-    private static final int WINNER_POSITION = 5;
-    private final CarPosition winnerPosition = new CarPosition(WINNER_POSITION);
-    private final CarPosition defaultPosition = CarPosition.createDefault();
-
     private Cars cars;
-    private final List<CarPosition> carPositions = List.of(winnerPosition, defaultPosition, defaultPosition, defaultPosition, winnerPosition);
+    private final List<CarPosition> carPositions = List.of(WINNER_CAR_POSITION, DEFAULT_CAR_POSITION, DEFAULT_CAR_POSITION, DEFAULT_CAR_POSITION, WINNER_CAR_POSITION);
 
     @BeforeEach
     public void init() {
@@ -31,7 +28,7 @@ class RoundTest {
 
     private Cars createMovableCars(List<CarPosition> carPositions) {
         return new Cars(carPositions.stream()
-                .map(position -> new Car(new CarName(VALID_CAR_NAME), position, () -> true))
+                .map(position -> new Car(VALID_CAR_NAME, position, () -> true))
                 .collect(Collectors.toList()));
     }
 
@@ -45,9 +42,13 @@ class RoundTest {
                 .stream()
                 .map(Car::getPosition)
                 .collect(Collectors.toList()))
-                .isEqualTo(carPositions.stream()
-                        .map(CarPosition::increase)
-                        .collect(Collectors.toList()));
+                .isEqualTo(getMovedPositions(carPositions));
+    }
+
+    private List<Integer> getMovedPositions(List<CarPosition> carPositions) {
+        return carPositions.stream()
+                .map(carPosition -> carPosition.increase().getPosition())
+                .collect(Collectors.toList());
     }
 
     @Test

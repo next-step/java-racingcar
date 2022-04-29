@@ -2,6 +2,8 @@ package racingcar.domain.car;
 
 import racingcar.domain.car.strategy.CarActionStrategy;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
@@ -18,7 +20,7 @@ public class Cars {
 
     public Cars(List<Car> cars) {
         validateCars(cars);
-        this.cars = cars;
+        this.cars = new ArrayList<>(cars);
     }
 
     private void validateCars(List<Car> cars) {
@@ -38,19 +40,19 @@ public class Cars {
     }
 
     public List<Car> getCars() {
-        return cars;
+        return Collections.unmodifiableList(cars);
     }
 
     public List<Car> getWinnerCars() {
         int winnerPosition = getWinnerPosition();
         return cars.stream()
-                .filter(car -> car.getPosition().getPosition() == winnerPosition)
+                .filter(car -> car.isWinner(winnerPosition))
                 .collect(Collectors.toList());
     }
 
     private int getWinnerPosition() {
         return cars.stream()
-                .mapToInt(car -> car.getPosition().getPosition())
+                .mapToInt(Car::getPosition)
                 .max()
                 .orElseThrow(() -> new NoSuchElementException("car없이 승자를 구할 수 없습니다."));
     }

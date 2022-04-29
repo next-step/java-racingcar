@@ -24,12 +24,16 @@ public class Car {
         }
     }
 
-    public CarPosition getPosition() {
-        return this.position;
+    public int getPosition() {
+        return position.getPosition();
     }
 
-    public CarName getName() {
-        return name;
+    public boolean isWinner(int winnerPosition) {
+        return this.position.getPosition() >= winnerPosition;
+    }
+
+    public String getName() {
+        return name.getName();
     }
 
     private Car goForward() {
