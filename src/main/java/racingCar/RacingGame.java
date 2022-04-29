@@ -1,13 +1,14 @@
 package racingCar;
 
-public class RacingGame {
+import java.util.List;
 
+public class RacingGame {
     public void startGame(){
         InputView inputView = new InputView();
-        int numberOfCar = inputView.numberOfCar();
+        List<String> nameList = inputView.nameList();
         int numberOfGame = inputView.numberOfGame();
 
-        Cars cars = new Cars(numberOfCar);
+        Cars cars = new Cars(nameList);
 
         ResultView resultView = new ResultView();
 
@@ -16,5 +17,6 @@ public class RacingGame {
             resultView.resultOfCars(cars);
             numberOfGame--;
         }
+        resultView.resultOfWinners(cars);
     }
 }

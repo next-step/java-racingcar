@@ -21,12 +21,23 @@ public class Position {
         return temporaryString;
     }
 
+    public int getPosition() {
+        return position;
+    }
+
     public void increase(){
         this.position++;
     }
 
     public boolean checkPosition(int position){
         return this.position == position;
-
     }
+
+    public boolean comparePosition(int comparePosition){
+        if(comparePosition>this.position){
+            return true;
+        }
+        return false;
+    }
+
 }
