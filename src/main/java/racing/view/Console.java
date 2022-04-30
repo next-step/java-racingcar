@@ -1,4 +1,4 @@
-package racing.domain.strategy;
+package racing.view;
 
 import java.lang.reflect.Field;
 import java.util.Objects;
@@ -19,20 +19,10 @@ public class Console {
     }
 
     public static Scanner getInstance() {
-        if (Objects.isNull(scanner) || isClosed()) {
+        if (Objects.isNull(scanner)) {
             scanner = new Scanner(System.in);
         }
         return scanner;
     }
 
-    private static boolean isClosed() {
-        try {
-            final Field sourceClosedField = Scanner.class.getDeclaredField("sourceClosed");
-            sourceClosedField.setAccessible(true);
-            return sourceClosedField.getBoolean(scanner);
-        } catch (final Exception e) {
-            System.out.println("scanner is closed.");
-        }
-        return true;
-    }
 }
