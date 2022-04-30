@@ -1,20 +1,15 @@
 package racingCar;
 
 public class RacingGame {
-
     public void startGame(){
-        InputView inputView = new InputView();
-        int numberOfCar = inputView.numberOfCar();
-        int numberOfGame = inputView.numberOfGame();
-
-        Cars cars = new Cars(numberOfCar);
-
-        ResultView resultView = new ResultView();
+        Cars cars = new Cars(InputView.nameList());
+        NumberOfGame numberOfGame = new NumberOfGame(InputView.numberOfGame());
 
         System.out.println("\n실행 결과");
-        while(numberOfGame>0){
-            resultView.resultOfCars(cars.getCarList());
-            numberOfGame--;
+        while(!numberOfGame.isEndGame()){
+            ResultView.resultOfCars(cars);
+            numberOfGame.decreaseNumberOfGame();
         }
+        ResultView.resultOfWinners(cars);
     }
 }
