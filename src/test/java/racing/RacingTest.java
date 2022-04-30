@@ -1,11 +1,10 @@
-package step3;
+package racing;
 
-import racing.Racing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.util.Map;
+import java.util.ArrayList;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -32,11 +31,11 @@ public class RacingTest {
     @ParameterizedTest
     @CsvSource(value = {"4,15,15", "3,17,17", "2,20,20"}, delimiter = ',')
     void carRacingTest_moveCountResult(int carCount, int moveCount, int expected) {
-        Map<Integer, Integer> racingMap = Racing.racing(carCount, moveCount);
-        for (Integer carKey : racingMap.keySet()) {
-            Integer moveValue = racingMap.get(carKey);
-            assertThat(moveValue).isGreaterThan(0);
-            assertThat(moveValue).isLessThan(expected);
+        ArrayList<Car> cars = Racing.racing(carCount, moveCount);
+        for (Car car : cars) {
+            Integer position = car.getPosition();
+            assertThat(position).isGreaterThan(0);
+            assertThat(position).isLessThan(expected);
         }
     }
 }
