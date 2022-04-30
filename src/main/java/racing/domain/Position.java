@@ -1,12 +1,13 @@
 package racing.domain;
 
+import racing.domain.exception.MaxNumberException;
+import racing.domain.exception.NegativeNumberException;
+
 import java.util.Objects;
 
 public class Position {
     private static final int MAX_NUMBER = 9;
     private static final int MIN_NUMBER = 0;
-    private static final String NEGATIVE_NUMBER_ERROR_MESSAGE = "값은 음수가 될 수 없습니다.";
-    private static final String NUMBER_OVER_ERROR_MESSAGE = "값은 10를 초과할 수 없습니다.";
 
     private int position;
 
@@ -25,10 +26,10 @@ public class Position {
 
     private void validate(int position) {
         if (position < MIN_NUMBER) {
-            throw new IllegalArgumentException(NEGATIVE_NUMBER_ERROR_MESSAGE);
+            throw new NegativeNumberException();
         }
         if (position > MAX_NUMBER) {
-            throw new IllegalArgumentException(NUMBER_OVER_ERROR_MESSAGE);
+            throw new MaxNumberException();
         }
     }
 

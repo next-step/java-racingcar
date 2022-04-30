@@ -1,4 +1,4 @@
-package racing;
+package racing.domain.strategy;
 
 import java.lang.reflect.Field;
 import java.util.Objects;

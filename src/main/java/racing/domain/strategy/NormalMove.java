@@ -3,6 +3,8 @@ package racing.domain.strategy;
 import java.util.Objects;
 
 public class NormalMove implements MovingStrategy {
+    private static final int BEGIN_MOVE_NUMBER = 4;
+    private static final int END_MOVE_NUMBER = 9;
     private final int number;
 
     public NormalMove(int number) {
@@ -11,7 +13,7 @@ public class NormalMove implements MovingStrategy {
 
     @Override
     public boolean movable() {
-        return this.number >= 4 && this.number <= 9;
+        return this.number >= BEGIN_MOVE_NUMBER && this.number <= END_MOVE_NUMBER;
     }
 
     @Override

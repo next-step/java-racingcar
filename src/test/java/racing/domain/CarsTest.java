@@ -2,6 +2,7 @@ package racing.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racing.domain.exception.DuplicateNameException;
 
 import java.util.Arrays;
 
@@ -22,7 +23,7 @@ public class CarsTest {
     @Test
     void 차이름_중복시_예외발생() {
         assertThatThrownBy(() -> new Cars(Arrays.asList(new Car("CarA"), new Car("CarA"))))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(DuplicateNameException.class);
     }
 
     @Test

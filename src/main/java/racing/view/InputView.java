@@ -1,6 +1,6 @@
 package racing.view;
 
-import racing.Console;
+import racing.domain.strategy.Console;
 
 public class InputView {
     private static final String TRY_COUNT_INPUT_MESSAGE = "시도할 횟수를 입력해 주세요.";
