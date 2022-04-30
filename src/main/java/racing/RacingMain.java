@@ -14,6 +14,12 @@ public class RacingMain {
         int carCount = InputView.scan("자동차 대수는 몇 대 인가요?");
         int moveCount = InputView.scan("시도할 회수는 몇 회 인가요?");
 
-        Racing.racing(carCount, moveCount);
+        Cars cars = Racing.startRacing(carCount, moveCount);
+        OutputView.printStartLine();
+
+        for (int i = 0; i < moveCount; i++) {
+            Racing.racing(cars);
+            OutputView.render(cars);
+        }
     }
 }
