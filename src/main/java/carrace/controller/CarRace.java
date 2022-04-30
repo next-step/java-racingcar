@@ -1,12 +1,17 @@
-package carrace;
+package carrace.controller;
 
-
+import carrace.domain.Car;
+import carrace.domain.RaceWinner;
+import carrace.moving.RandomMoving;
 import carrace.util.Splitter;
 
+import java.util.Collections;
 import java.util.List;
 
 public class CarRace {
     private final RaceWinner raceWinner = new RaceWinner();
+
+    private final RandomMoving randomMoving = new RandomMoving();
 
     private List<Car> cars;
 
@@ -19,7 +24,7 @@ public class CarRace {
 
     public void startEachRace() {
         for (Car car : this.cars) {
-            car.race();
+            car.move(randomMoving);
         }
     }
 
@@ -28,18 +33,14 @@ public class CarRace {
     }
 
     public List<Car> getCars() {
-        return cars;
+        return Collections.unmodifiableList(cars);
     }
 
     public int getNumberOfRaces() {
         return numberOfRaces;
     }
 
-    public int getNumberOfCars() {
-        return cars.size();
-    }
-
-    public RaceWinner getRaceWinner() {
-        return raceWinner;
+    public List<Car> winners() {
+        return Collections.unmodifiableList(raceWinner.getWinners());
     }
 }

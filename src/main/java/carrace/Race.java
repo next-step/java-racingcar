@@ -1,8 +1,9 @@
 package carrace;
 
 
-import carrace.ui.InputView;
-import carrace.ui.ResultView;
+import carrace.controller.CarRace;
+import carrace.view.InputView;
+import carrace.view.ResultView;
 
 public class Race {
 
@@ -18,6 +19,6 @@ public class Race {
             resultView.printCarRace(carRace);
         }
         carRace.endRace();
-        resultView.printWinners(carRace);
+        resultView.printWinners(carRace.winners());
     }
 }

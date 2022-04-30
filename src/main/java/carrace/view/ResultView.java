@@ -1,7 +1,9 @@
-package carrace.ui;
+package carrace.view;
 
-import carrace.Car;
-import carrace.CarRace;
+import carrace.domain.Car;
+import carrace.controller.CarRace;
+
+import java.util.List;
 
 public class ResultView {
     public void printCarRace(CarRace carRace) {
@@ -19,9 +21,9 @@ public class ResultView {
         System.out.println();
     }
 
-    public void printWinners(CarRace carRace) {
+    public void printWinners(List<Car> winners) {
         int i = 0;
-        for (Car car : carRace.getRaceWinner().getWinners()) {
+        for (Car car : winners) {
             printComma(i++);
             System.out.print(car.getName());
         }

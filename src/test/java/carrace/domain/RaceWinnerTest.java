@@ -1,11 +1,11 @@
-package carrace;
+package carrace.domain;
 
-import carrace.util.Splitter;
+import carrace.domain.Car;
+import carrace.domain.RaceWinner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
