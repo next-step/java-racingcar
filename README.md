@@ -42,8 +42,10 @@
         * [X] 차이름 5글자 초과
         * [X] 차이름 공백일 경우
         * [X] 차이름 중복
+        * [X] 테스트 코드에 hasMessage 적용
+        * [X] CustomException 처리
 
-* [ ] 도메인 객체 분리
+* [X] 도메인 객체 분리
     * [X] RacingGame
     * [X] Car
         * [X] Movable 전략패턴

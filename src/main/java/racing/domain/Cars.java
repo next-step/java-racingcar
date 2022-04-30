@@ -1,5 +1,6 @@
 package racing.domain;
 
+import racing.domain.exception.DuplicateNameException;
 import racing.domain.strategy.NormalMove;
 
 import java.util.ArrayList;
@@ -8,8 +9,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class Cars {
-    private static final String DUPLICATED_NAME_ERROR_MESSAGE = "중복된 차 이름이 있습니다.";
-
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
@@ -20,7 +19,7 @@ public class Cars {
     private void validate(List<Car> cars) {
         HashSet<Car> carSet = new HashSet<>(cars);
         if (carSet.size() < cars.size()) {
-            throw new IllegalArgumentException(DUPLICATED_NAME_ERROR_MESSAGE);
+            throw new DuplicateNameException();
         }
     }
 

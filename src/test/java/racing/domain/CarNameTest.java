@@ -1,6 +1,8 @@
 package racing.domain;
 
 import org.junit.jupiter.api.Test;
+import racing.domain.exception.BlankNameException;
+import racing.domain.exception.MaxNameLengthException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -10,14 +12,14 @@ public class CarNameTest {
     void 이름_5자_초과시_예외발생() {
         assertThatThrownBy(() -> {
             new CarName("CarAAA");
-        }).isInstanceOf(IllegalArgumentException.class);
+        }).isInstanceOf(MaxNameLengthException.class);
     }
 
     @Test
     void 이름_공백시_예외발생() {
         assertThatThrownBy(() -> {
             new CarName("");
-        }).isInstanceOf(IllegalArgumentException.class);
+        }).isInstanceOf(BlankNameException.class);
     }
 
     @Test

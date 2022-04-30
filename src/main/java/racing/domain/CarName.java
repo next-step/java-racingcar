@@ -1,11 +1,11 @@
 package racing.domain;
 
+import racing.domain.exception.BlankNameException;
+import racing.domain.exception.MaxNameLengthException;
+
 import java.util.Objects;
 
 public class CarName {
-    private static final String NAME_MAX_LENGTH_ERROR_MESSAGE = "이름은 5를 초과할 수 없습니다.";
-    private static final String NAME_BLANK_ERROR_MESSAGE = "이름을 공백일 수 없습니다.";
-
     private final String name;
 
     public CarName(String name) {
@@ -15,10 +15,10 @@ public class CarName {
 
     private void validate(String name) {
         if (name.isBlank()) {
-            throw new IllegalArgumentException(NAME_BLANK_ERROR_MESSAGE);
+            throw new BlankNameException();
         }
         if (name.length() > 5) {
-            throw new IllegalArgumentException(NAME_MAX_LENGTH_ERROR_MESSAGE);
+            throw new MaxNameLengthException();
         }
     }
 

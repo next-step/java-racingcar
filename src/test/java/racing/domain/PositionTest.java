@@ -1,6 +1,8 @@
 package racing.domain;
 
 import org.junit.jupiter.api.Test;
+import racing.domain.exception.MaxNumberException;
+import racing.domain.exception.NegativeNumberException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -40,11 +42,11 @@ public class PositionTest {
 
     @Test
     void 음수일_경우_예외발생() {
-        assertThatThrownBy(() -> new Position(-1)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new Position(-1)).isInstanceOf(NegativeNumberException.class);
     }
 
     @Test
     void 값_10_초과_예외발생() {
-        assertThatThrownBy(() -> new Position(10)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new Position(10)).isInstanceOf(MaxNumberException.class);
     }
 }
