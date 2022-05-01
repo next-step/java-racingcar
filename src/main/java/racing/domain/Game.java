@@ -1,5 +1,6 @@
 package racing.domain;
 
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
@@ -47,7 +48,7 @@ public class Game {
     }
 
     public List<Car> getCars() {
-        return cars;
+        return Collections.unmodifiableList(cars);
     }
 
     @Override
