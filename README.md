@@ -7,3 +7,12 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+# 자동차 경주 게임 구현 기능
+* input param) numberOfCars(자동차대수), numberOfGames(게임횟수)
+1) randomNumber 추출
+2) 이동여부 판단
+   - randomNumber >= 4 :전진(true)
+   - randomNumber <  4 :멈춤(false)
+3) 이동거리 계산(전진일 경우 기존 거리 +1)
+4) 이동거리 -로 출력
