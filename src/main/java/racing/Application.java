@@ -1,4 +1,4 @@
-package step3;
+package racing;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,12 +17,11 @@ public class Application {
 
     public void run() {
         String[] carNames = input.readCars();
-        int carCnt = carNames.length;
         int tryCnt = input.readTryCnt();
         Cars cars = generateCars(carNames);
 
         for(int i=0; i<tryCnt; i++){
-            cars.moveAll(RandomNumberGenerator.getRandomIntList(carCnt));
+            cars.moveAll();
             view.printRaceResult(cars);
         }
 

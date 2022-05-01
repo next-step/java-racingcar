@@ -1,4 +1,4 @@
-package step3;
+package racing;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,11 +11,11 @@ public class Cars {
         this.cars = cars;
     }
 
-    public List<Integer> moveAll(List<Integer> moveCntList){
+    public List<Integer> moveAll(){
         List<Integer> curLocList = new ArrayList<>();
         for (int i=0; i<cars.size(); i++) {
             Car car = cars.get(i);
-            curLocList.add(car.move(moveCntList.get(i)));
+            curLocList.add(car.move());
         }
         return curLocList;
     }

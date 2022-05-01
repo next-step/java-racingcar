@@ -1,7 +1,5 @@
-package step3;
+package racing;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Input {

@@ -1,4 +1,4 @@
-package step3;
+package racing;
 
 
 
@@ -19,12 +19,8 @@ public class Car {
     }
 
 
-    public int move(int num){
-        if(num < 0 || 9 < num) {
-            throw new IllegalArgumentException();
-        }
-
-        if(movableStrategy.canMove(num)){
+    public int move(){
+        if(movableStrategy.canMove()){
             curMove += 1;
         }
 
