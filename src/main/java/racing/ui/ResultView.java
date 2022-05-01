@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import racing.domain.Car;
+import racing.domain.CarName;
 import racing.domain.Location;
 
 public class ResultView {
@@ -20,7 +21,7 @@ public class ResultView {
         final Location carLocation = car.getLocation();
 
         StringBuilder sb = new StringBuilder();
-        sb.append(car.getName())
+        sb.append(car.getName().getName())
           .append(" : ");
         Location locationIndex = Location.defaultLocation();
         while (!locationIndex.equals(carLocation)) {
@@ -35,6 +36,7 @@ public class ResultView {
     public static void printWinner(final List<Car> cars) {
         final String winners = cars.stream()
                                    .map(Car::getName)
+                                   .map(CarName::getName)
                                    .collect(Collectors.joining(","));
         System.out.println(winners + "가 최종 우승했습니다.");
     }

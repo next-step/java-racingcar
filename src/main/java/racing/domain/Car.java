@@ -2,11 +2,8 @@ package racing.domain;
 
 import java.util.Objects;
 
-import racing.exception.GameException;
-
 public class Car {
-    private static final int CAR_NAME_LENGTH = 5;
-    private final String name;
+    private final CarName name;
     private Location location;
 
     public Car(final String name) {
@@ -14,18 +11,11 @@ public class Car {
     }
 
     public Car(final String name, final Location location) {
-        validate(name);
-        this.name = name;
+        this.name = new CarName(name);
         this.location = location;
     }
 
-    private void validate(final String name) {
-        if (name.length() > CAR_NAME_LENGTH) {
-            throw new GameException("car name length can't exceed " + CAR_NAME_LENGTH);
-        }
-    }
-
-    public String getName() {
+    public CarName getName() {
         return name;
     }
 
@@ -55,7 +45,7 @@ public class Car {
     @Override
     public String toString() {
         return "Car{" +
-               "name='" + name + '\'' +
+               "name=" + name +
                ", location=" + location +
                '}';
     }

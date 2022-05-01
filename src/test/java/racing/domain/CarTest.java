@@ -9,13 +9,6 @@ import org.junit.jupiter.api.Test;
 import racing.exception.GameException;
 
 public class CarTest {
-    @DisplayName("자동차이름은 5글자를 초과할 수 없다.")
-    @Test
-    void name_length() {
-        assertThatThrownBy(() -> new Car("solari", Location.defaultLocation()))
-                .isInstanceOf(GameException.class)
-                .hasMessageContaining("length");
-    }
 
     @DisplayName("전진 조건이 맞으면 전진한다.")
     @Test
