@@ -21,6 +21,6 @@ class LocationTest {
     void defaultLocation() {
         assertThatThrownBy(() -> new Location(-1))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("위치");
+                .hasMessageContaining("위치는 0이상이어야 합니다.");
     }
 }

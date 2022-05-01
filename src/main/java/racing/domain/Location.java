@@ -8,7 +8,7 @@ public class Location implements Comparable<Location> {
 
     public Location(final int number) {
         if (number < DEFAULT_LOCATION) {
-            throw new IllegalArgumentException("위치는 0이상이어야 합니다.");
+            throw new IllegalArgumentException("위치는 " + DEFAULT_LOCATION + "이상이어야 합니다.");
         }
         this.number = number;
     }
