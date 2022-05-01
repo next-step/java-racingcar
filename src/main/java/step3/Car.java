@@ -4,12 +4,18 @@ package step3;
 
 public class Car {
 
-    private final String CAR_STATE_BAR = "-";
     private Integer curMove = 0;
     private final MovableStrategy movableStrategy;
+    private String name;
 
-    public Car(MovableStrategy movableStrategy) {
+    private static final String CAR_STATE_BAR = "-";
+
+    public Car(MovableStrategy movableStrategy, String name) {
+        if(name.length() > 5){
+            throw new IllegalArgumentException("이름은 5글자를 초과할 수 없습니다.");
+        }
         this.movableStrategy = movableStrategy;
+        this.name = name;
     }
 
 
@@ -33,12 +39,12 @@ public class Car {
         return sb.toString();
     }
 
-    public Boolean checkPosition(Integer pos){
-        return pos.equals(curMove);
+    public String getName(){
+        return this.name;
     }
 
     @Override
     public String toString(){
-        return String.valueOf(curMove);
+        return name+" , "+curMove;
     }
 }

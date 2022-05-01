@@ -16,10 +16,10 @@ public class Application {
     }
 
     public void run() {
-        int carCnt = input.readCarCount();
+        String[] carNames = input.readCars();
+        int carCnt = carNames.length;
         int tryCnt = input.readTryCnt();
-
-        Cars cars = generateCars(carCnt);
+        Cars cars = generateCars(carNames);
 
         for(int i=0; i<tryCnt; i++){
             cars.moveAll(RandomNumberGenerator.getRandomIntList(carCnt));
@@ -27,10 +27,13 @@ public class Application {
         }
     }
 
-    private Cars generateCars(int cnt){
+    private Cars generateCars(String[] carNames){
         List<Car> carList = new ArrayList<>();
-        for(int i=0; i<cnt; i++){
-            carList.add(new Car(movableStrategy));
+        for(int i=0; i<carNames.length; i++){
+            if(carNames[i].length() > 5){
+                throw new IllegalArgumentException("자동차의 이름은 5글자를 초과할 수 없습니다.");
+            }
+            carList.add(new Car(movableStrategy, carNames[i]));
         }
         return new Cars(carList);
     }

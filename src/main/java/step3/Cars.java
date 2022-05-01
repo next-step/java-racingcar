@@ -28,5 +28,12 @@ public class Cars {
         return curMoveStateBars;
     }
 
+    public List<String> getNames(){
+        List<String> nameList = new ArrayList<>();
+        for(Car car: cars){
+            nameList.add(car.getName());
+        }
+        return nameList;
+    }
 
 }
