@@ -1,8 +1,10 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.List;
 import racingcar.domain.Race;
 import racingcar.domain.RacingCars;
+import racingcar.domain.RandomNumbers;
 import racingcar.module.IntScanner;
 import racingcar.module.StringScanner;
 
@@ -11,7 +13,12 @@ public class Main {
         List<String> carNames = StringScanner.insertCarNameList();
         int raceCount = IntScanner.insertRaceCount();
 
-//        Race race = new Race(raceCount, new RacingCars(carNames));
-//        race.startRace();
+        List<RandomNumbers> randoms = new ArrayList<>();
+        for (int i = 0; i < raceCount; ++i) {
+            randoms.add(new RandomNumbers(carNames.size()));
+        }
+
+        Race race = new Race(raceCount, RacingCars.of(carNames));
+        race.startRace(randoms);
     }
 }

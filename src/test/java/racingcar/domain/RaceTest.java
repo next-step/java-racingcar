@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 public class RaceTest {
     List<RacingCar> cars;
 
-    List<List<Integer>> randomNumbers;
+    List<RandomNumbers> randomNumbers;
 
     @BeforeEach
     void setUp() {
@@ -28,8 +28,8 @@ public class RaceTest {
         r2.add(5);
         r2.add(9);
         r2.add(1);
-        randomNumbers.add(r1);
-        randomNumbers.add(r2);
+        randomNumbers.add(new RandomNumbers(r1));
+        randomNumbers.add(new RandomNumbers(r2));
     }
 
     @Test
@@ -37,7 +37,6 @@ public class RaceTest {
         Race race = new Race(2, new RacingCars(cars));
 
         race.startRace(randomNumbers);
-
 
         List<RacingCar> rs = new ArrayList<>();
         rs.add(new RacingCar("차1", 1));

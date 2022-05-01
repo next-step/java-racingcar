@@ -27,7 +27,7 @@ public class RacingCarsTest {
         randomNumbers.add(0);
         randomNumbers.add(10);
 
-        racingCars.moveCars(randomNumbers);
+        racingCars.moveCars(new RandomNumbers(randomNumbers));
 
         List<RacingCar> r = new ArrayList<>();
         r.add(new RacingCar("차1"));
@@ -46,7 +46,7 @@ public class RacingCarsTest {
         randomNumbers.add(0);
         randomNumbers.add(10);
 
-        racingCars.moveCars(randomNumbers);
+        racingCars.moveCars(new RandomNumbers(randomNumbers));
 
         assertThat(racingCars.maxPosition()).isEqualTo(1);
     }
@@ -60,7 +60,7 @@ public class RacingCarsTest {
         randomNumbers.add(0);
         randomNumbers.add(10);
 
-        racingCars.moveCars(randomNumbers);
+        racingCars.moveCars(new RandomNumbers(randomNumbers));
 
         List<RacingCar> winners = new ArrayList<>();
         winners.add(new RacingCar("차3", 1));

@@ -17,13 +17,17 @@ public class Race {
         this.racingCars = racingCars;
     }
 
-    public void startRace(List<List<Integer>> randomNumbers) {
+    public void startRace(List<RandomNumbers> randoms) {
+        if (randoms.size() != raceCount) {
+            throw new IllegalArgumentException("경기 횟수와 동일한 크기의 숫자 리스트를 입력해주세요");
+        }
+
         for (int i = 0; i < raceCount; i++) {
-            oneRound(randomNumbers.get(i));
+            oneRound(randoms.get(i));
         }
     }
 
-    private void oneRound(List<Integer> randomNumbers) {
+    private void oneRound(RandomNumbers randomNumbers) {
         racingCars.moveCars(randomNumbers);
     }
 

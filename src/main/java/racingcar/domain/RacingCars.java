@@ -7,7 +7,7 @@ import java.util.Objects;
 public class RacingCars {
     private List<RacingCar> racingCars;
 
-    RacingCars(List<RacingCar> racingCars) {
+    public RacingCars(List<RacingCar> racingCars) {
         if (racingCars == null || racingCars.isEmpty()) {
             throw new IllegalArgumentException("자동차는 한 개 이상 입력해야 합니다");
         }
@@ -15,16 +15,20 @@ public class RacingCars {
         this.racingCars = racingCars;
     }
 
-    void moveCars(List<Integer> randomNumbers) {
-        if (randomNumbers.size() != racingCars.size()) {
-            throw new IllegalArgumentException("경기 횟수와 동일한 크기의 숫자 리스트를 입력해주세요");
+    public static RacingCars of(List<String> carNames) {
+        List<RacingCar> racingCars = new ArrayList<>();
+        for (String carName : carNames) {
+            racingCars.add(new RacingCar(carName));
         }
 
+        return new RacingCars(racingCars);
+    }
+
+    void moveCars(RandomNumbers randomNumbers) {
         for (int i = 0; i < racingCars.size(); ++i) {
-            if (randomNumbers.size() != racingCars.size()) {
+            if (!randomNumbers.hasSize(racingCars.size())) {
                 throw new IllegalArgumentException("자동차 개수와 동일한 크기의 숫자 리스트를 입력해주세요");
             }
-
 
             racingCars.get(i).move(randomNumbers.get(i));
         }
