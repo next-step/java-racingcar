@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Java6Assertions.assertThatThrownBy;
 
+
 public class StringAddCalculatorTest {
 
     @DisplayName("빈문자열이거나 null일 경우 0을 반환")
