@@ -6,9 +6,10 @@ public class View {
 
 
     public void printRaceResult(Cars cars){
+        List<String> names = cars.getNames();
         List<String> curMoveStateExps = cars.getCurMoveStateExps();
-        for(String bar: curMoveStateExps){
-            System.out.println(bar);
+        for(int i=0; i<names.size(); i++){
+            System.out.println(names.get(i)+" : "+curMoveStateExps.get(i));
         }
         System.out.println();
     }
