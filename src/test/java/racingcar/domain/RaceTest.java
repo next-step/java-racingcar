@@ -6,90 +6,53 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.exception.RaceBuilderException;
 
 public class RaceTest {
-    List<String> carNames;
+    List<RacingCar> cars;
+
+    List<List<Integer>> randomNumbers;
 
     @BeforeEach
     void setUp() {
-        carNames = new ArrayList<>();
-        carNames.add("차1");
-        carNames.add("차2");
-        carNames.add("차3");
-    }
+        cars = new ArrayList<>();
+        cars.add(new RacingCar("차1"));
+        cars.add(new RacingCar("차2"));
+        cars.add(new RacingCar("차3"));
 
-    class FalseCondition implements Condition {
-        @Override
-        public boolean getCondition() {
-            return false;
-        }
-    }
-
-    class TrueCondition implements Condition {
-        @Override
-        public boolean getCondition() {
-            return true;
-        }
+        randomNumbers = new ArrayList<>();
+        List<Integer> r1 = new ArrayList<>();
+        r1.add(1);
+        r1.add(9);
+        r1.add(1);
+        List<Integer> r2 = new ArrayList<>();
+        r2.add(5);
+        r2.add(9);
+        r2.add(1);
+        randomNumbers.add(r1);
+        randomNumbers.add(r2);
     }
 
     @Test
     void 경주_테스트() {
-        Race race = new Race.RaceBuilder()
-                .setCarNames(carNames)
-                .setRaceCount(5)
-                .setCondition(new TrueCondition())
-                .build();
+        Race race = new Race(2, new RacingCars(cars));
 
-        race.startRace();
-    }
+        race.startRace(randomNumbers);
 
-    @Test
-    void 랜덤_우승자_테스트() {
-        Race race = new Race.RaceBuilder()
-                .setCarNames(carNames)
-                .setRaceCount(5)
-                .setCondition(new RaceCondition(10, 4))
-                .build();
-        race.startRace();
 
-        assertThat(race.getWinners()).isNotEmpty();
-    }
+        List<RacingCar> rs = new ArrayList<>();
+        rs.add(new RacingCar("차1", 1));
+        rs.add(new RacingCar("차2", 2));
+        rs.add(new RacingCar("차3"));
+        Race expected = new Race(2, new RacingCars(rs));
 
-    @Test
-    void 다수_우승자_테스트() {
-        Race race = new Race.RaceBuilder()
-                .setCarNames(carNames)
-                .setRaceCount(5)
-                .setCondition(new TrueCondition())
-                .build();
-
-        race.startRace();
-
-        assertThat(race.getWinners().size()).isEqualTo(carNames.size());
-    }
-
-    @Test
-    void 자동차_이름_에러_테스트() {
-        assertThatThrownBy(() -> {
-            Race race = new Race.RaceBuilder()
-                    .setCarNames(new ArrayList<>())
-                    .setRaceCount(5)
-                    .setCondition(new TrueCondition())
-                    .build();
-        }).isInstanceOf(RaceBuilderException.class)
-                .hasMessageMatching("자동차 이름은 1개 이상 입력해야합니다.");
+        assertThat(race).isEqualTo(expected);
     }
 
     @Test
     void 경기회수_에러_테스트() {
         assertThatThrownBy(() -> {
-            Race race = new Race.RaceBuilder()
-                    .setCarNames(carNames)
-                    .setRaceCount(0)
-                    .setCondition(new TrueCondition())
-                    .build();
-        }).isInstanceOf(RaceBuilderException.class)
+            Race race = new Race(0, new RacingCars(cars));
+        }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageMatching("경기 회수는 1 이상의 수를 입력해주세요");
     }
 }
