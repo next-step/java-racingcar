@@ -10,13 +10,16 @@ import org.junit.jupiter.api.Test;
 
 class RacingCarsTest {
 
-    @DisplayName("경기용 차가 N대 준비된다.")
-    @Test
-    void numberOfCars() {
-        final List<String> namesOfCars = getDefaultNamesOfCars();
-        final Game game = new Game(NumberOfRound.of(5), getDefaultRule(), namesOfCars);
 
-        assertThat(game.getCars().numberOfCars()).isEqualTo(namesOfCars.size());
+    @DisplayName("우승자를 찾는다.")
+    @Test
+    void findWinners() {
+        final List<String> namesOfCars = getDefaultNamesOfCars();
+        final RacingCars racingCars = new RacingCars(namesOfCars);
+
+        racingCars.run(getDefaultRule());
+
+        assertThat(racingCars.findWinners()).hasSize(namesOfCars.size());
     }
 
     GameRule getDefaultRule() {
