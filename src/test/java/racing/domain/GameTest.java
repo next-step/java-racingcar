@@ -19,7 +19,7 @@ class GameTest {
         final List<String> namesOfCars = getDefaultNamesOfCars();
         final Game game = new Game(NumberOfRound.of(5), getDefaultRule(), namesOfCars);
 
-        assertThat(game.getCars()).hasSize(namesOfCars.size());
+        assertThat(game.getCars().numberOfCars()).isEqualTo(namesOfCars.size());
     }
 
     @DisplayName("경기를 N번 진행한다.")

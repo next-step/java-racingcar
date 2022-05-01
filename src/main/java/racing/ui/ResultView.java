@@ -6,12 +6,13 @@ import java.util.stream.Collectors;
 import racing.domain.Car;
 import racing.domain.CarName;
 import racing.domain.Location;
+import racing.domain.RacingCars;
 
 public class ResultView {
     private static final String LOCATION_EXPRESSION_CHARACTER = "-";
 
-    public static void print(final List<Car> cars) {
-        for (Car car : cars) {
+    public static void print(final RacingCars cars) {
+        for (Car car : cars.getCars()) {
             print(car);
         }
         System.out.println();

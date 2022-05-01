@@ -2,11 +2,11 @@ package racing.controller;
 
 import java.util.List;
 
-import racing.domain.Car;
 import racing.domain.Game;
-import racing.domain.NumberOfRound;
-import racing.domain.RandomGameRule;
 import racing.domain.GameRule;
+import racing.domain.NumberOfRound;
+import racing.domain.RacingCars;
+import racing.domain.RandomGameRule;
 import racing.ui.InputView;
 import racing.ui.ResultView;
 
@@ -18,12 +18,12 @@ public class Stadium {
         final GameRule gameRule = new RandomGameRule();
 
         Game game = new Game(numberOfRound, gameRule, nameOfCars);
-        final List<Car> cars = game.getCars();
+        final RacingCars cars = game.getCars();
         while (game.isLeftRound()) {
             game.proceedRound();
             ResultView.print(cars);
         }
 
-        ResultView.printWinner(game.findWinner());
+        ResultView.printWinner(game.findWinners());
     }
 }

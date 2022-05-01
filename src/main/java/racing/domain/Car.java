@@ -15,18 +15,26 @@ public class Car {
         this.location = location;
     }
 
+    public void run(GameRule gameRule) {
+        if (gameRule.isPassedCondition()) {
+            this.location = location.forward();
+        }
+    }
+
+    public int compareLocation(Car car) {
+        return this.location.compareTo(car.location);
+    }
+
+    public boolean isEqualLocation(Car car) {
+        return this.location.equals(car.location);
+    }
+
     public CarName getName() {
         return name;
     }
 
     public Location getLocation() {
         return location;
-    }
-
-    public void run(GameRule gameRule) {
-        if (gameRule.isPassedCondition()) {
-            this.location = location.forward();
-        }
     }
 
     @Override
