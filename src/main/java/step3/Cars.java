@@ -36,4 +36,24 @@ public class Cars {
         return nameList;
     }
 
+    public List<String> getWinners(){
+        List<String> res = new ArrayList<>();
+        int maxPos = 0;
+        for(Car car: cars){
+            int position = car.getCurPosition();
+            if(maxPos < position){
+                maxPos = position;
+            }
+        }
+
+        for(Car car: cars){
+            int position = car.getCurPosition();
+            if(maxPos == position){
+                res.add(car.getName());
+            }
+        }
+
+        return res;
+    }
+
 }

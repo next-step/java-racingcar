@@ -31,6 +31,11 @@ public class Car {
         return curMove;
     }
 
+
+    public int getCurPosition(){
+        return curMove;
+    }
+
     public String getCurMoveStateExp(){
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < curMove; i++) {

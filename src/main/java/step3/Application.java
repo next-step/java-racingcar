@@ -25,6 +25,8 @@ public class Application {
             cars.moveAll(RandomNumberGenerator.getRandomIntList(carCnt));
             view.printRaceResult(cars);
         }
+
+        view.printGameResult(cars);
     }
 
     private Cars generateCars(String[] carNames){
