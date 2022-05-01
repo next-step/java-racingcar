@@ -7,6 +7,7 @@ import java.util.Objects;
 public class Race {
     private int raceCount;
     private RacingCars racingCars;
+    private List<String> raceResults = new ArrayList<>();
 
     public Race(int raceCount, RacingCars racingCars) {
         if (raceCount <= 0) {
@@ -29,6 +30,15 @@ public class Race {
 
     private void oneRound(RandomNumbers randomNumbers) {
         racingCars.moveCars(randomNumbers);
+        raceResults.add(racingCars.toString());
+    }
+
+    public List<String> getRaceResults() {
+        return raceResults;
+    }
+
+    public RacingCars getRacingCars() {
+        return racingCars;
     }
 
     @Override

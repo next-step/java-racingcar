@@ -6,6 +6,7 @@ import racingcar.domain.Race;
 import racingcar.domain.RacingCars;
 import racingcar.domain.RandomNumbers;
 import racingcar.module.IntScanner;
+import racingcar.module.ResultView;
 import racingcar.module.StringScanner;
 
 public class Main {
@@ -20,5 +21,7 @@ public class Main {
 
         Race race = new Race(raceCount, RacingCars.of(carNames));
         race.startRace(randoms);
+
+        ResultView.printResult(race);
     }
 }

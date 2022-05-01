@@ -32,6 +32,10 @@ public class RacingCar {
         return position == maxPosition;
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -47,5 +51,10 @@ public class RacingCar {
     @Override
     public int hashCode() {
         return Objects.hash(name, position);
+    }
+
+    @Override
+    public String toString() {
+        return name + " : " + "-".repeat(position);
     }
 }

@@ -54,10 +54,6 @@ public class RacingCars {
         return winners;
     }
 
-    public int getSize() {
-        return racingCars.size();
-    }
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -74,5 +70,15 @@ public class RacingCars {
     @Override
     public int hashCode() {
         return Objects.hash(racingCars);
+    }
+
+    @Override
+    public String toString() {
+        String result = "";
+        for (RacingCar racingCar : racingCars) {
+            result = result + racingCar.toString() + "\n";
+        }
+
+        return result + "\n";
     }
 }
