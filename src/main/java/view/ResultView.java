@@ -1,17 +1,27 @@
 package view;
 
+import domain.Car;
+
+import java.util.List;
+
 public class ResultView {
 
-    public void printRaceStart() {
-        System.out.println("실행 결과");
+    public void printTurnResult(List<Car> cars) {
+        for (Car car : cars) {
+            printEachCarResult(car);
+        }
     }
 
-    public void printEndOfTurn() {
-        System.out.println();
+    public void printEachCarResult(Car car) {
+        System.out.println(car.getName() + " : " + car.getSteps());
     }
 
-    public void printResultOfTurn(StringBuilder result) {
-        System.out.println(result);
+    public void printFinalResult(List<Car> winners) {
+        System.out.println("최종 우승자 : ");
+
+        for (Car winner : winners) {
+            System.out.println(winner.getName());
+        }
     }
 
 }
