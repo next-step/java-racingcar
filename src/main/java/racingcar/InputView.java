@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static Input entry() {
+    public static GameStartInfo entry() {
         try {
             return scanInput();
         } catch (InputMismatchException e) {
@@ -15,11 +15,11 @@ public class InputView {
         }
     }
 
-    private static Input scanInput() {
+    private static GameStartInfo scanInput() {
         String[] carNames = scanCarNames();
         int numOfRound = scanNumOfRound();
         
-        return new Input(carNames, numOfRound);
+        return new GameStartInfo(carNames, numOfRound);
     }
 
     private static String[] scanCarNames() {
@@ -34,11 +34,11 @@ public class InputView {
         return scanner.nextInt();
     }
 
-    static class Input {
+    static class GameStartInfo {
         private String[] carNames;
         private int numOfRound;
 
-        public Input(String[] carNames, int numOfRound) {
+        public GameStartInfo(String[] carNames, int numOfRound) {
             this.carNames = carNames;
             this.numOfRound = numOfRound;
         }
