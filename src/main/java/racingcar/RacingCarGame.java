@@ -34,7 +34,7 @@ public class RacingCarGame {
     }
 
     public static List<String> findWinners(RacingCar[] racingCars) {
-        ArrayList<String> winners = new ArrayList<>();
+        List<String> winners = new ArrayList<>();
 
         double winnerLocation = findWinnerLocation(racingCars);
 
@@ -44,7 +44,7 @@ public class RacingCarGame {
         return winners;
     }
 
-    private static void addWinner(double winnerLocation, RacingCar racingCar, ArrayList<String> winners) {
+    private static void addWinner(double winnerLocation, RacingCar racingCar, List<String> winners) {
         if (winnerLocation == racingCar.getLocation().getX()) {
             winners.add(racingCar.getName());
         }
