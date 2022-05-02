@@ -2,27 +2,23 @@ package racing.domain;
 
 import java.util.Objects;
 
-public class Location {
+public class Location implements Comparable<Location> {
     private static final int DEFAULT_LOCATION = 0;
     private final int number;
 
-    private Location(final int number) {
-        if (number < 0) {
-            throw new IllegalArgumentException("음수가 될 수 없습니다.");
+    public Location(final int number) {
+        if (number < DEFAULT_LOCATION) {
+            throw new IllegalArgumentException("위치는 " + DEFAULT_LOCATION + "이상이어야 합니다.");
         }
         this.number = number;
     }
 
-    public static Location of() {
+    public static Location defaultLocation() {
         return new Location(DEFAULT_LOCATION);
     }
 
-    public static Location of(final int number) {
-        return new Location(number);
-    }
-
     public Location forward() {
-        return Location.of(this.number + 1);
+        return new Location(this.number + 1);
     }
 
     @Override
@@ -43,5 +39,10 @@ public class Location {
         return "Location{" +
                "number=" + number +
                '}';
+    }
+
+    @Override
+    public int compareTo(final Location o) {
+        return Integer.compare(this.number, o.number);
     }
 }

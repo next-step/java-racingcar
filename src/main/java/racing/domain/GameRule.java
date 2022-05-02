@@ -1,6 +1,6 @@
 package racing.domain;
 
-public interface Rule {
+public interface GameRule {
 
     boolean isPassedCondition();
 }

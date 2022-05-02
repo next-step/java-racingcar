@@ -1,34 +1,34 @@
 package racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import racing.exception.GameException;
+
 public class CarTest {
+
     @DisplayName("전진 조건이 맞으면 전진한다.")
     @Test
     void run_if_condition_true() {
-        Rule rule = () -> true;
-        Car car = new Car(rule);
-        final Location beforeLocation = car.getLocation();
+        Car car = new Car("solar", new Location(1));
 
-        car.run();
+        car.run(() -> true);
 
-        final Location afterLocation = car.getLocation();
-        assertThat(beforeLocation).isNotEqualTo(afterLocation);
+        Car expected = new Car("solar", new Location(2));
+        assertThat(car).isEqualTo(expected);
     }
 
     @DisplayName("전진 조건이 맞지않으면 전진하지 않는다.")
     @Test
     void no_run_if_condition_false() {
-        Rule rule = () -> false;
-        Car car = new Car(rule);
-        final Location beforeLocation = car.getLocation();
+        Car car = new Car("solar", new Location(1));
 
-        car.run();
+        car.run(() -> false);
 
-        final Location afterLocation = car.getLocation();
-        assertThat(beforeLocation).isEqualTo(afterLocation);
+        Car expected = new Car("solar", new Location(1));
+        assertThat(car).isEqualTo(expected);
     }
 }

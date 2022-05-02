@@ -2,7 +2,10 @@ package racing.domain;
 
 import java.util.Objects;
 
+import racing.exception.GameException;
+
 public class NumberOfRound {
+    private static final int FINAL_ROUND = 1;
     private final int number;
 
     private NumberOfRound(final int number) {
@@ -17,10 +20,10 @@ public class NumberOfRound {
     }
 
     public NumberOfRound decrease() {
-        if (this.number - 1 < 0) {
-            return new NumberOfRound(0);
+        if (isLeftRound()) {
+            return new NumberOfRound(this.number - 1);
         }
-        return new NumberOfRound(this.number - 1);
+        throw new GameException("모든 Round가 종료되었습니다.");
     }
 
     @Override
@@ -34,5 +37,9 @@ public class NumberOfRound {
     @Override
     public int hashCode() {
         return Objects.hash(number);
+    }
+
+    public boolean isLeftRound() {
+        return this.number >= FINAL_ROUND;
     }
 }

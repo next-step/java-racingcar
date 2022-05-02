@@ -1,39 +1,46 @@
 package racing.domain;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import racing.exception.GameException;
 
 public class Game {
     private NumberOfRound numberOfRound;
-    private final Rule rule;
-    private final List<Car> cars = new LinkedList<>();
+    private final GameRule gameRule;
+    private final RacingCars racingCars;
 
-    public Game(final NumberOfRound numberOfRound, final Rule rule) {
+    public Game(final NumberOfRound numberOfRound, final GameRule gameRule, final List<String> names) {
         this.numberOfRound = numberOfRound;
-        this.rule = rule;
-    }
-
-    public List<Car> equipRacingCar(final NumberOfCars numberOfCars) {
-        int index = 0;
-        NumberOfCars addCarsIndex = NumberOfCars.of(index);
-        while (!addCarsIndex.equals(numberOfCars)) {
-            cars.add(new Car(rule));
-            addCarsIndex = NumberOfCars.of(++index);
-        }
-        return cars;
+        this.gameRule = gameRule;
+        this.racingCars = new RacingCars(names);
     }
 
     public boolean isLeftRound() {
-        return !this.numberOfRound.equals(NumberOfRound.of(0));
+        return numberOfRound.isLeftRound();
     }
 
     public void proceedRound() {
         if (!isLeftRound()) {
             throw new GameException("모든 Round가 종료되었습니다.");
         }
-        cars.forEach(Car::run);
+        racingCars.run(gameRule);
         this.numberOfRound = this.numberOfRound.decrease();
+    }
+
+    public List<Car> findWinners() {
+        return racingCars.findWinners();
+    }
+
+    public RacingCars getCars() {
+        return racingCars;
+    }
+
+    @Override
+    public String toString() {
+        return "Game{" +
+               "numberOfRound=" + numberOfRound +
+               ", gameRule=" + gameRule +
+               ", racingCars=" + racingCars +
+               '}';
     }
 }
