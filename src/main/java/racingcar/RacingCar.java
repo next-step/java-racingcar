@@ -5,15 +5,15 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 public class RacingCar {
-    private Point coordinate;
+    private int location;
     private CarName carName;
 
     public RacingCar(CarName carName) {
-        this(carName, new Point(0, 0));
+        this(carName, 0);
     }
 
-    public RacingCar(CarName carName, Point coordinate) {
-        this.coordinate = coordinate;
+    public RacingCar(CarName carName, int location) {
+        this.location = location;
         this.carName = carName;
     }
 
@@ -26,11 +26,11 @@ public class RacingCar {
     }
 
     public void proceed() {
-        this.coordinate.setLocation(coordinate.getX() + 1, 0);
+        this.location += 1;
     }
 
-    public Point getLocation() {
-        return coordinate.getLocation();
+    public int getLocation() {
+        return location;
     }
 
     public String getName() {

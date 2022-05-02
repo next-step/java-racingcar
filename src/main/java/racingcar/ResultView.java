@@ -17,7 +17,7 @@ public class ResultView {
     }
 
     private static void showLocation(RacingCar racingCar) {
-        for (int i = 0; i < racingCar.getLocation().getX() + 1; i++) {
+        for (int i = 0; i < racingCar.getLocation() + 1; i++) {
             System.out.printf("-");
         }
         System.out.printf("\n");

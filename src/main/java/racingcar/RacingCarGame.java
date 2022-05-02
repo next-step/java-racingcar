@@ -21,7 +21,7 @@ public class RacingCarGame {
         double max = 0;
 
         for (RacingCar racingCar : racingCars) {
-            max = FindGreaterLocation(max, racingCar.getLocation().getX());
+            max = FindGreaterLocation(max, racingCar.getLocation());
         }
         return max;
     }
@@ -45,7 +45,7 @@ public class RacingCarGame {
     }
 
     private static void addWinner(double winnerLocation, RacingCar racingCar, List<String> winners) {
-        if (winnerLocation == racingCar.getLocation().getX()) {
+        if (winnerLocation == racingCar.getLocation()) {
             winners.add(racingCar.getName());
         }
     }

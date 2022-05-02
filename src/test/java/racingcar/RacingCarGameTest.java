@@ -18,9 +18,9 @@ public class RacingCarGameTest {
         RacingCarGame racingCarGame = new RacingCarGame(racingCars, numOfRound, new SatisfiedCondition());
         racingCarGame.start();
 
-        Assertions.assertThat(racingCars[0].getLocation().getX()).isEqualTo(3);
-        Assertions.assertThat(racingCars[1].getLocation().getX()).isEqualTo(3);
-        Assertions.assertThat(racingCars[2].getLocation().getX()).isEqualTo(3);
+        Assertions.assertThat(racingCars[0].getLocation()).isEqualTo(3);
+        Assertions.assertThat(racingCars[1].getLocation()).isEqualTo(3);
+        Assertions.assertThat(racingCars[2].getLocation()).isEqualTo(3);
     }
 
     @Test
@@ -32,18 +32,18 @@ public class RacingCarGameTest {
         RacingCarGame racingCarGame = new RacingCarGame(racingCars, numOfRound, new DisSatisfiedCondition());
         racingCarGame.start();
 
-        Assertions.assertThat(racingCars[0].getLocation().getX()).isEqualTo(0);
-        Assertions.assertThat(racingCars[1].getLocation().getX()).isEqualTo(0);
-        Assertions.assertThat(racingCars[2].getLocation().getX()).isEqualTo(0);
+        Assertions.assertThat(racingCars[0].getLocation()).isEqualTo(0);
+        Assertions.assertThat(racingCars[1].getLocation()).isEqualTo(0);
+        Assertions.assertThat(racingCars[2].getLocation()).isEqualTo(0);
     }
 
     @Test
     @DisplayName("가장 location값이 큰 우승자 구하기")
     void findWinner() {
         RacingCar[] racingCars = {
-                new RacingCar(new CarName("aaa"), new Point(3, 0)),
-                new RacingCar(new CarName("bbb"), new Point(3, 0)),
-                new RacingCar(new CarName("ccc"), new Point(1, 0))};
+                new RacingCar(new CarName("aaa"), 3),
+                new RacingCar(new CarName("bbb"), 3),
+                new RacingCar(new CarName("ccc"), 1)};
 
         List<String> winners = RacingCarGame.findWinners(racingCars);
         Assertions.assertThat(winners).containsExactly(racingCars[0].getName(), racingCars[1].getName());
