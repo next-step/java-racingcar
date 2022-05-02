@@ -24,8 +24,8 @@ public class ResultView {
 
     }
 
-    public static void showWinners(RacingCar[] racingCars) {
-        List<String> winners = RacingCarGame.findWinners(racingCars);
+    public static void showWinners(RacingCarGame game) {
+        List<String> winners = game.findWinners();
 
         System.out.println(String.join(", ", winners) + "가 최종 우승했습니다.");
     }

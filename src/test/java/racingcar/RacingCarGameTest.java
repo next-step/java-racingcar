@@ -4,7 +4,6 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.awt.*;
 import java.util.List;
 
 
@@ -38,14 +37,15 @@ public class RacingCarGameTest {
     }
 
     @Test
-    @DisplayName("가장 location값이 큰 우승자 구하기")
+    @DisplayName("가장 location 값이 큰 우승자 구하기")
     void findWinner() {
         RacingCar[] racingCars = {
                 new RacingCar(new CarName("aaa"), 3),
                 new RacingCar(new CarName("bbb"), 3),
                 new RacingCar(new CarName("ccc"), 1)};
+        RacingCarGame game = new RacingCarGame(racingCars, 3, new RandomNumCondition(new RandomGenerator(0, 9)));
 
-        List<String> winners = RacingCarGame.findWinners(racingCars);
+        List<String> winners = game.findWinners();
         Assertions.assertThat(winners).containsExactly(racingCars[0].getName(), racingCars[1].getName());
     }
 

@@ -17,26 +17,26 @@ public class RacingCarGame {
         this.condition = condition;
     }
 
-    private static double findWinnerLocation(RacingCar[] racingCars) {
-        double max = 0;
+    private int findWinnerLocation() {
+        int max = 0;
 
         for (RacingCar racingCar : racingCars) {
-            max = FindGreaterLocation(max, racingCar.getLocation());
+            max = findGreaterLocation(max, racingCar.getLocation());
         }
         return max;
     }
 
-    private static double FindGreaterLocation(double max, double x) {
+    private int findGreaterLocation(int max, int x) {
         if (max >= x) {
             return max;
         }
         return x;
     }
 
-    public static List<String> findWinners(RacingCar[] racingCars) {
+    public List<String> findWinners() {
         List<String> winners = new ArrayList<>();
 
-        double winnerLocation = findWinnerLocation(racingCars);
+        int winnerLocation = this.findWinnerLocation();
 
         for (RacingCar racingCar : racingCars) {
             addWinner(winnerLocation, racingCar, winners);
@@ -44,7 +44,7 @@ public class RacingCarGame {
         return winners;
     }
 
-    private static void addWinner(double winnerLocation, RacingCar racingCar, List<String> winners) {
+    private static void addWinner(int winnerLocation, RacingCar racingCar, List<String> winners) {
         if (winnerLocation == racingCar.getLocation()) {
             winners.add(racingCar.getName());
         }
@@ -56,7 +56,7 @@ public class RacingCarGame {
             proceedRacingCars(racingCars, condition);
             ResultView.showResult(racingCars);
         }
-        ResultView.showWinners(racingCars);
+        ResultView.showWinners(this);
         return racingCars;
     }
 
