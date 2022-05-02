@@ -19,7 +19,7 @@ public class InputView {
         String[] carNames = scanCarNames();
         int numOfRound = scanNumOfRound();
         
-        return new Input(carNames, carNames.length, numOfRound);
+        return new Input(carNames, numOfRound);
     }
 
     private static String[] scanCarNames() {
@@ -36,17 +36,11 @@ public class InputView {
 
     static class Input {
         private String[] carNames;
-        private int numOfCar;
         private int numOfRound;
 
-        public Input(String[] carNames, int numOfCar, int numOfRound) {
+        public Input(String[] carNames, int numOfRound) {
             this.carNames = carNames;
-            this.numOfCar = numOfCar;
             this.numOfRound = numOfRound;
-        }
-
-        public int getNumOfCar() {
-            return numOfCar;
         }
 
         public int getNumOfRound() {
