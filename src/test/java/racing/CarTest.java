@@ -50,13 +50,9 @@ public class CarTest {
 
 
         Car car = new Car(movableStrategy, "name");
-        assertThatThrownBy(() -> {
-            car.move();
-        }).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(car::move).isInstanceOf(IllegalArgumentException.class);
 
-        assertThatThrownBy(() -> {
-            car.move();
-        }).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(car::move).isInstanceOf(IllegalArgumentException.class);
     }
 }
 
