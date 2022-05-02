@@ -6,16 +6,13 @@ public class Car {
 
     private Integer curMove = 0;
     private final MovableStrategy movableStrategy;
-    private String name;
+    private CarName name;
 
     private static final String CAR_STATE_BAR = "-";
 
     public Car(MovableStrategy movableStrategy, String name) {
-        if(name.length() > 5){
-            throw new IllegalArgumentException("이름은 5글자를 초과할 수 없습니다.");
-        }
         this.movableStrategy = movableStrategy;
-        this.name = name;
+        this.name = new CarName(name);
     }
 
 
@@ -41,7 +38,7 @@ public class Car {
     }
 
     public String getName(){
-        return this.name;
+        return name.getName();
     }
 
     @Override
