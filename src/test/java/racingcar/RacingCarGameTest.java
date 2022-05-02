@@ -13,7 +13,7 @@ public class RacingCarGameTest {
     @DisplayName("전진_조건_만족시_한칸_전진")
     void proceedCarWhenConditionSatisfied() {
         int numOfRound = 3;
-        RacingCar[] racingCars = {new RacingCar("cool"), new RacingCar("good"), new RacingCar("amaz")};
+        RacingCar[] racingCars = {new RacingCar(new CarName("cool")), new RacingCar(new CarName("good")), new RacingCar(new CarName("amaze"))};
 
         RacingCarGame racingCarGame = new RacingCarGame(racingCars, numOfRound, new SatisfiedCondition());
         racingCarGame.start();
@@ -27,7 +27,7 @@ public class RacingCarGameTest {
     @DisplayName("전진_조건_만족시키지_못했을경우_전진하지_않음")
     void notProceedCarWhenConditionDisSatisfied() {
         int numOfRound = 3;
-        RacingCar[] racingCars = {new RacingCar("cool"), new RacingCar("good"), new RacingCar("amaz")};
+        RacingCar[] racingCars = {new RacingCar(new CarName("cool")), new RacingCar(new CarName("good")), new RacingCar(new CarName("amaze"))};
 
         RacingCarGame racingCarGame = new RacingCarGame(racingCars, numOfRound, new DisSatisfiedCondition());
         racingCarGame.start();
@@ -41,9 +41,10 @@ public class RacingCarGameTest {
     @DisplayName("가장 location값이 큰 우승자 구하기")
     void findWinner() {
         RacingCar[] racingCars = {
-                new RacingCar("aaa", new Point(3, 0)),
-                new RacingCar("bbb", new Point(3, 0)),
-                new RacingCar("ccc", new Point(1, 0))};
+                new RacingCar(new CarName("aaa"), new Point(3, 0)),
+                new RacingCar(new CarName("bbb"), new Point(3, 0)),
+                new RacingCar(new CarName("ccc"), new Point(1, 0))};
+
         List<String> winners = RacingCarGame.findWinners(racingCars);
         Assertions.assertThat(winners).containsExactly(racingCars[0].getName(), racingCars[1].getName());
     }

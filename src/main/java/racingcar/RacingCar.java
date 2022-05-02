@@ -6,38 +6,23 @@ import java.util.stream.Collectors;
 
 public class RacingCar {
     private Point coordinate;
-    private String name;
+    private CarName carName;
 
-    public RacingCar(String name) {
-        this(name, new Point(0, 0));
+    public RacingCar(CarName carName) {
+        this(carName, new Point(0, 0));
     }
 
-    public RacingCar(String name, Point coordinate) {
+    public RacingCar(CarName carName, Point coordinate) {
         this.coordinate = coordinate;
-        this.name = name;
+        this.carName = carName;
     }
 
     public static RacingCar[] createBatch(String[] carNames) {
-        validateCarNames(carNames);
         return Arrays.asList(carNames)
                 .stream()
-                .map(name -> new RacingCar(name))
+                .map(name -> new RacingCar(new CarName(name)))
                 .collect(Collectors.toList())
                 .toArray(new RacingCar[carNames.length]);
-    }
-
-    private static void validateCarNames(String[] carNames) {
-        for (String carName : carNames) {
-            validateLength(carName);
-        }
-
-    }
-
-    private static void validateLength(String carName) throws IllegalStateException {
-        if (carName.length() > 5) {
-            throw new IllegalStateException("자동차 이름은 5자를 초과할 수 없습니다.");
-        }
-
     }
 
     public void proceed() {
@@ -49,6 +34,6 @@ public class RacingCar {
     }
 
     public String getName() {
-        return name;
+        return carName.getName();
     }
 }
