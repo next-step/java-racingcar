@@ -38,13 +38,7 @@ public class Cars {
 
     public List<String> getWinners(){
         List<String> res = new ArrayList<>();
-        int maxPos = 0;
-        for(Car car: cars){
-            int position = car.getCurPosition();
-            if(maxPos < position){
-                maxPos = position;
-            }
-        }
+        int maxPos = getMaxPosition();
 
         for(Car car: cars){
             int position = car.getCurPosition();
@@ -56,6 +50,16 @@ public class Cars {
         return res;
     }
 
+    public int getMaxPosition(){
+        int maxPos = 0;
+        for(Car car: cars){
+            int position = car.getCurPosition();
+            if(maxPos < position){
+                maxPos = position;
+            }
+        }
+        return maxPos;
+    }
 
 
 }

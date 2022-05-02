@@ -2,7 +2,7 @@ package racing;
 
 public class Position {
 
-    private int position = 1;
+    private int position = 0;
 
     public int move(){
         position += 1;
