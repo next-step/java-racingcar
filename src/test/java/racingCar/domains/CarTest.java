@@ -1,11 +1,13 @@
 package racingCar.domains;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
+    @DisplayName("조건(랜덤값)이 4 미만인 경우 전진할 수 없다.")
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3})
     void numberIsLessThanFour(int input) {
@@ -15,6 +17,7 @@ public class CarTest {
         assertThat(car.getPosition()).isEqualTo(0);
     }
 
+    @DisplayName("조건(랜덤값)이 4 이상일 경우 전진한다.")
     @ParameterizedTest
     @ValueSource(ints = {4, 5, 6, 7, 8,9})
     void numberIsMoreThanFour(int input) {
