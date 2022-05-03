@@ -36,7 +36,3 @@ public class RacingCars {
 		return new Winners(cars);
 	}
 }
-
-
-// 달리는 차
-// 랭킹결과(우승 차)

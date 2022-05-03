@@ -62,7 +62,7 @@ public class Car implements Comparable<Car> {
 	}
 
 	public boolean isSamePosition(MoveCount moveCount) {
-		return moveCount.equals(moveCount);
+		return this.moveCount.equals(moveCount);
 	}
 
 	@Override
@@ -70,8 +70,11 @@ public class Car implements Comparable<Car> {
 		return this.moveCount.compareTo(target.moveCount);
 	}
 
-	public boolean isSamePositionCar(Car target) {
-		return this.moveCount.equals(target.moveCount);
+	MoveCount maxPosition(MoveCount maxPosition) {
+		if (maxPosition.isLessThen(this.moveCount)) {
+			return moveCount;
+		}
+		return maxPosition;
 	}
 
 	@Override

@@ -10,6 +10,15 @@ import org.junit.jupiter.params.provider.ValueSource;
 import exception.OutOfRangeException;
 
 class CarNameTest {
+
+	@DisplayName("자동차의 이름 5글자 미만 생성")
+	@ValueSource(strings = {"five5"})
+	@ParameterizedTest
+	public void When_CarNameLessThanFiveLength(String carName) {
+		CarName targetCarName = CarName.of(carName);
+
+		assertThat(targetCarName.equals(CarName.of(carName))).isTrue();
+	}
 	@DisplayName("자동차의 이름 5글자 초과X")
 	@ValueSource(strings = {"six666"})
 	@ParameterizedTest
