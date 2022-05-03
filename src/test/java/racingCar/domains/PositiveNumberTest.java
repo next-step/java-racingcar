@@ -1,7 +1,6 @@
-package racingCar;
+package racingCar.domains;
 
 import org.junit.jupiter.api.DisplayName;
-import racingCar.domains.PositiveNumber;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;

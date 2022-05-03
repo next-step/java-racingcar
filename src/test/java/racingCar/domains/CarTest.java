@@ -1,9 +1,7 @@
-package racingCar;
+package racingCar.domains;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingCar.domains.Car;
-import racingCar.domains.FixedNumberGenerator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
