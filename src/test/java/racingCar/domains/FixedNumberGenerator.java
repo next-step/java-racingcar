@@ -1,7 +1,5 @@
 package racingCar.domains;
 
-import racingCar.interfaces.NumberGeneratorStrategy;
-
 public class FixedNumberGenerator implements NumberGeneratorStrategy {
     private int number;
 
