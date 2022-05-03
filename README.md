@@ -9,18 +9,26 @@
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
 기능
--  **Car class**
+- **Car class**
     - [x] 위치 정보를 가진다.
     - [x] move 함수에 0~3 사이의 숫자를 전달하면 움직이지 않는다.
     - [x] move 함수에 4~9 사이의 숫자를 전달하면 한칸 전진한다.
+    - [x] 각 자동차에 이름을 부여할 수 있다. 자동차 이름은 5자를 초과할 수 없다.
 
--  **Cars class**
+- **Cars class**
    - [x] 난수 리스트를 받아 car들을 움직인다.
 
--  **RandomNumberGenerator**
+- **RandomNumberGenerator**
    - [x] 난수를 생성한다.
    
 
--  **UI로직은 클래스를 추가해 분리한다**
+- **UI로직은 클래스를 추가해 분리한다**
     - [x] 입력을 받는 Input 클래스
     - [x] 출력하는 View 클래스
+
+- **Input class**
+  - [x] 자동차 이름은 쉼표(,)를 기준으로 구분한다.
+
+- **View class**
+   - [x] 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
+   - [x] 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한명 이상일 수 있다.
