@@ -21,10 +21,13 @@ public class Car {
         this(name, strategy, 0);
     }
 
-    public Car(String name, NumberGeneratorStrategy strategy, int position) {
+    private Car(String name, NumberGeneratorStrategy strategy, int position) {
         this.name = new Name(name);
         this.strategy = strategy;
         this.position = position;
+        if (strategy == null) {
+            throw new IllegalArgumentException("NumberGeneratorStrategy는 null일 수 없습니다.");
+        }
     }
 
     public void move() {
