@@ -1,4 +1,6 @@
-package racingCar.domains;
+package racingCar.utils;
+
+import racingCar.domains.NumberGeneratorStrategy;
 
 public class FixedNumberGenerator implements NumberGeneratorStrategy {
     private int number;

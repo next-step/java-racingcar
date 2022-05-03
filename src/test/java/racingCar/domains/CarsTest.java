@@ -3,6 +3,7 @@ package racingCar.domains;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingCar.utils.FixedNumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
