@@ -35,6 +35,6 @@ public class Racing {
     }
 
     public List<Car> findWinners() {
-        return Winner.findWinner(this.cars.getCars());
+        return this.cars.findWinners();
     }
 }
