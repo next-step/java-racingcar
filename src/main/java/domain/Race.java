@@ -1,7 +1,5 @@
 package domain;
 
-import util.CommonUtil;
-
 import java.util.LinkedList;
 import java.util.List;
 
@@ -10,28 +8,12 @@ public class Race {
     private final List<Car> cars;
     private final int turns;
 
-    CommonUtil util = new CommonUtil();
-
     public Race(List<Car> cars, int turns) {
         this.cars = cars;
         this.turns = turns;
     }
 
-    public void beginTurn(List<Car> cars) {
-        for (Car car : cars) {
-            getEachTurn(car);
-        }
-    }
-
-    public void getEachTurn(Car car) {
-        if (util.getRandomNumber() > 6) {
-            car.getSteps().append("-");
-            car.addForward();
-        }
-    }
-
-    public List<Car> getWinner(Race race) {
-        List<Car> cars = race.getCars();
+    public static List<Car> getWinner(List<Car> cars) {
         Car currentMax = cars.get(0);
 
         List<Car> winners = new LinkedList<>();
@@ -49,10 +31,6 @@ public class Race {
             }
         }
         return winners;
-    }
-
-    public List<Car> getCars() {
-        return cars;
     }
 
     public int getTurns() {
