@@ -1,5 +1,7 @@
 package domain;
 
+import util.CommonUtil;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,6 +16,7 @@ public class Race {
     }
 
     public static List<Car> getWinner(List<Car> cars) {
+
         Car currentMax = cars.get(0);
 
         List<Car> winners = new LinkedList<>();
