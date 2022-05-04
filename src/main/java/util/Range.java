@@ -17,4 +17,8 @@ public class Range<N extends Number> {
 		return start.doubleValue() <= target.doubleValue()
 			&& target.doubleValue() <= end.doubleValue();
 	}
+
+	public <N extends Number> boolean notContain(N target) {
+		return !contain(target);
+	}
 }
