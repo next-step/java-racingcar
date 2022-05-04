@@ -2,6 +2,10 @@ package racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.domain.Car;
+import racing.domain.MovableStrategy;
+import racing.domain.NumberProvider;
+import racing.domain.RandomNumMovableStrategy;
 
 import java.util.Random;
 

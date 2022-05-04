@@ -1,5 +1,11 @@
 package racing;
 
+import racing.domain.Car;
+import racing.domain.Cars;
+import racing.domain.MovableStrategy;
+import racing.view.Input;
+import racing.view.View;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +28,7 @@ public class Application {
 
         for(int i=0; i<tryCnt; i++){
             cars.moveAll();
-            view.printRaceResult(cars);
+            view.printRaceResult(cars.getCurPositionResult());
         }
 
         view.printGameResult(cars);
@@ -30,11 +36,8 @@ public class Application {
 
     private Cars generateCars(String[] carNames){
         List<Car> carList = new ArrayList<>();
-        for(int i=0; i<carNames.length; i++){
-            if(carNames[i].length() > 5){
-                throw new IllegalArgumentException("자동차의 이름은 5글자를 초과할 수 없습니다.");
-            }
-            carList.add(new Car(movableStrategy, carNames[i]));
+        for (String name: carNames) {
+            carList.add(new Car(movableStrategy, name));
         }
         return new Cars(carList);
     }

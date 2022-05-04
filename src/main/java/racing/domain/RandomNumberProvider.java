@@ -1,4 +1,6 @@
-package racing;
+package racing.domain;
+
+import racing.util.RandomNumberGenerator;
 
 public class RandomNumberProvider implements NumberProvider{
     @Override
