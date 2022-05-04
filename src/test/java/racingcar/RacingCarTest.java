@@ -2,6 +2,9 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
+import racingcar.domain.RacingCar;
 import racingcar.pattern.RandomNumberGenerator;
 
 import java.util.ArrayList;

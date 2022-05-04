@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.domain.Cars;
+import racingcar.domain.RacingCar;
 import racingcar.pattern.RandomNumberGenerator;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
