@@ -1,4 +1,4 @@
-package racing;
+package racing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,29 +12,23 @@ public class Cars {
     }
 
     public List<Integer> moveAll(){
-        List<Integer> curLocList = new ArrayList<>();
+        List<Integer> currentPositionList = new ArrayList<>();
         for (int i=0; i<cars.size(); i++) {
             Car car = cars.get(i);
-            curLocList.add(car.move());
+            currentPositionList.add(car.move());
         }
-        return curLocList;
+        return currentPositionList;
     }
 
-    public List<String> getCurMoveStateExps(){
-        List<String> curMoveStateBars = new ArrayList<>();
-        for(Car car: cars){
-            curMoveStateBars.add(car.getCurMoveStateExp());
+
+    public List<CurPositionResult> getCurPositionResult(){
+        List<CurPositionResult> curPositionResults = new ArrayList<>();
+        for (Car car: cars) {
+            curPositionResults.add(CurPositionResult.of(car));
         }
-        return curMoveStateBars;
+        return curPositionResults;
     }
 
-    public List<String> getNames(){
-        List<String> nameList = new ArrayList<>();
-        for(Car car: cars){
-            nameList.add(car.getName());
-        }
-        return nameList;
-    }
 
     public List<String> getWinners(){
         List<String> res = new ArrayList<>();
