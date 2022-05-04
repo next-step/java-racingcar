@@ -2,6 +2,10 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
+import racingcar.domain.RacingCar;
+import racingcar.domain.Round;
 import racingcar.pattern.RandomNumberGenerator;
 
 import java.util.ArrayList;
@@ -16,11 +20,10 @@ class RacingCarTest {
     void argumentExceptionErrorTest() {
         int round = -1;
 
-        Cars cars = Cars.createCars("green,so");
         RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-        assertThatThrownBy(() -> new RacingCar(cars, round, randomNumberGenerator))
+        assertThatThrownBy(() -> new RacingCar(new Cars("green,so"), new Round(round), randomNumberGenerator))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("round는 음수가 될 수 없습니다");
+                .hasMessage("라운드는 음수가 될 수 없습니다");
     }
 
     @Test
@@ -28,28 +31,37 @@ class RacingCarTest {
     void roundErrorTest() {
         int round = 4;
 
-        Cars cars = Cars.createCars("green,so");
         RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-        RacingCar racingCar = new RacingCar(cars, round, randomNumberGenerator);
+        RacingCar racingCar = new RacingCar(new Cars("green,so"), new Round(round), randomNumberGenerator);
 
         for (int currentRound = 0; currentRound < round; currentRound++) {
             racingCar.playRound();
         }
 
         assertThatThrownBy(racingCar::playRound)
-                .isInstanceOf(IllegalStateException.class)
-                .hasMessage("모든 라운드가 종료 되었습니다.");
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     @DisplayName("우승자를 찾는 테스트")
     void findWinner() {
         List<Car> carList = new ArrayList<>();
-        Car winner = new Car("win",4);
+        Car winner = new Car("win", 4);
         carList.add(winner);
-        carList.add(new Car("lose",2));
-        RacingCar racingCar = new RacingCar(new Cars(carList), 3, new RandomNumberGenerator());
+        carList.add(new Car("lose", 2));
+        RacingCar racingCar = new RacingCar(new Cars(carList), new Round(3), new RandomNumberGenerator());
 
         assertThat(racingCar.findWinners().getWinners().get(0)).isEqualTo(winner);
+    }
+
+    @Test
+    @DisplayName("우승자는 두명 이상일 수도 있다.")
+    void findTwoWinner() {
+        List<Car> carList = new ArrayList<>();
+        carList.add(new Car("win", 4));
+        carList.add(new Car("win2", 4));
+        RacingCar racingCar = new RacingCar(new Cars(carList), new Round(4), new RandomNumberGenerator());
+
+        assertThat(racingCar.findWinners().getWinners().size()).isEqualTo(2);
     }
 }

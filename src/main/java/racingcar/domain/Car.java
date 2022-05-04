@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.Objects;
 
@@ -63,7 +63,7 @@ public class Car {
         return position.maxPosition(maxPosition);
     }
 
-    public boolean isWinner(Position maxPosition) {
-        return position.isMaxPosition(maxPosition);
+    public boolean isSamePosition(Position position) {
+        return this.position.equals(position);
     }
 }

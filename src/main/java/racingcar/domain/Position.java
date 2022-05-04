@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.Objects;
 
@@ -43,9 +43,5 @@ public class Position {
             return this;
         }
         return maxPosition;
-    }
-
-    public boolean isMaxPosition(Position maxPosition) {
-        return this == maxPosition;
     }
 }

@@ -2,6 +2,9 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import racingcar.domain.CarName;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -22,9 +25,10 @@ public class CarNameTest {
         assertThatIllegalArgumentException().isThrownBy(() -> new CarName(name));
     }
 
-    @Test
+    @ParameterizedTest
+    @NullAndEmptySource
     @DisplayName("자동차이름은 Null이 될 수 없습니다.")
-    void nullTest() {
-        assertThatIllegalArgumentException().isThrownBy(() -> new CarName(""));
+    void nullTest(String input) {
+        assertThatIllegalArgumentException().isThrownBy(() -> new CarName(input));
     }
 }

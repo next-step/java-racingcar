@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import racingcar.pattern.NumberGenerator;
 
@@ -10,17 +10,22 @@ import java.util.stream.Collectors;
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
-        this.cars = cars;
+    public Cars(String names) {
+        this(createCars(names));
     }
 
-    public static Cars createCars(String names) {
+    private static List<Car> createCars(String names) {
         String[] carNames = names.split(",");
         List<Car> cars = new ArrayList<>();
-        for (int number = 0; number < carNames.length; number++) {
-            cars.add(new Car(carNames[number]));
+
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
         }
-        return new Cars(cars);
+        return cars;
+    }
+
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
     public void play(NumberGenerator numberGenerator) {
@@ -33,8 +38,8 @@ public class Cars {
         return cars;
     }
 
-    public List<Car> getWinners(Position maxPosition) {
-        return getCars().stream().filter(car -> car.isWinner(maxPosition)).collect(Collectors.toList());
+    public Winners getWinners() {
+        return new Winners(getCars().stream().filter(car -> car.isSamePosition(getMaxPosition())).collect(Collectors.toList()));
     }
 
     public Position getMaxPosition() {
@@ -47,9 +52,9 @@ public class Cars {
 
     public Map<String, Integer> getPositions() {
         return cars.stream()
-                   .collect(Collectors.toMap(
-                           Car::getName,
-                           Car::getDistance
-                   ));
+                .collect(Collectors.toMap(
+                        Car::getName,
+                        Car::getDistance
+                ));
     }
 }

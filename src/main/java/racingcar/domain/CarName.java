@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.Objects;
 
@@ -12,12 +12,16 @@ public class CarName {
     }
 
     private void validateCarName(String name) {
-        if (name.length() > MAX_NUMBER_OF_CAR_NAME) {
-            throw new IllegalArgumentException("자동차 이름은 5글자를 넘을 수 없습니다.");
+        if(name == null) {
+            throw new IllegalArgumentException("자동차 이름은 null이 될 수 없습니다.");
         }
 
-        if(name.isBlank()) {
+        if(name.isBlank() || name.isEmpty()) {
             throw new IllegalArgumentException("자동차 이름은 null이 될 수 없습니다.");
+        }
+
+        if (name.length() > MAX_NUMBER_OF_CAR_NAME) {
+            throw new IllegalArgumentException("자동차 이름은 5글자를 넘을 수 없습니다.");
         }
     }
 
