@@ -1,6 +1,6 @@
-package racingCar.domains;
+package racingCar.utils;
 
-import racingCar.interfaces.NumberGeneratorStrategy;
+import racingCar.domains.NumberGeneratorStrategy;
 
 import java.util.Random;
 
