@@ -27,19 +27,25 @@ public class Position {
         return position;
     }
 
-    public void increase() {
-        this.position++;
+    public Position move() {
+        position++;
+        return this;
     }
 
-    public boolean checkPosition(int position) {
+    public Position move2() {
+        return new Position(position + 1);
+    }
+
+    public void move3() {
+        position++;
+    }
+
+    public boolean isSamePosition(int position) {
         return this.position == position;
     }
 
-    public boolean comparePosition(int comparePosition) {
-        if (comparePosition > this.position) {
-            return true;
-        }
-        return false;
+    public boolean isBigPosition(int maxPosition) {
+        return (maxPosition < this.position);
     }
 
     @Override

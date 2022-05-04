@@ -7,7 +7,6 @@ import racingCar.domain.Winners;
 
 import java.util.Arrays;
 
-
 import static org.assertj.core.api.Assertions.*;
 
 public class WinnersTest {
@@ -16,7 +15,7 @@ public class WinnersTest {
         Cars cars = new Cars(Arrays.asList(new Car("crong", 4), new Car("pobi", 3), new Car("honux", 2)));
         Winners winners = new Winners(Arrays.asList(new Car("crong", 4)));
 
-        assertThat(winners).isEqualTo(cars.winnerCars());
+        assertThat(winners).isEqualTo(cars.findWinners());
     }
 
     @Test
@@ -24,6 +23,13 @@ public class WinnersTest {
         Cars cars = new Cars(Arrays.asList(new Car("crong", 4), new Car("pobi", 4), new Car("honux", 2)));
         Winners winners = new Winners(Arrays.asList(new Car("crong", 4), new Car("pobi", 4)));
 
-        assertThat(winners).isEqualTo(cars.winnerCars());
+        assertThat(winners).isEqualTo(cars.findWinners());
+    }
+
+    @Test
+    void 우승자이름출력() {
+        Winners winners = new Winners(Arrays.asList(new Car("crong", 4), new Car("pobi", 4)));
+        assertThat(winners.winnersNameList()).isEqualTo("crong, pobi");
+
     }
 }

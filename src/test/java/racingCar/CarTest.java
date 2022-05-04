@@ -11,14 +11,14 @@ public class CarTest {
     void 이동() {
         Car car = new Car(3);
         car.move(4);
-        assertThat(car.checkPosition(4)).isTrue();
+        assertThat(car.isSamePosition(4)).isTrue();
     }
 
     @Test
     void 정지() {
         Car car = new Car(3);
         car.move(3);
-        assertThat(car.checkPosition(3)).isTrue();
+        assertThat(car.isSamePosition(3)).isTrue();
     }
 
     @Test
@@ -26,7 +26,7 @@ public class CarTest {
         assertThatThrownBy(() -> {
             Car car = new Car();
             car.move(10);
-        }).isInstanceOf(IllegalStateException.class);
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test

@@ -10,13 +10,13 @@ public class NameTest {
     void 이름공백예외처리() {
         assertThatThrownBy(() -> {
             Name name = new Name("");
-        }).isInstanceOf(IllegalStateException.class);
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 이름글자수예외처리() {
         assertThatThrownBy(() -> {
             Name name = new Name("123456");
-        }).isInstanceOf(IllegalStateException.class);
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 }

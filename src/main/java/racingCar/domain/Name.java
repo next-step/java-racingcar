@@ -3,14 +3,14 @@ package racingCar.domain;
 import java.util.Objects;
 
 public class Name {
-    private String name;
+    private final String name;
 
     public Name(String name) {
         if (name.isBlank()) {
-            throw new IllegalStateException("이름을 반드시 입력하세요.");
+            throw new IllegalArgumentException("이름을 반드시 입력하세요.");
         }
         if (name.length() > 5) {
-            throw new IllegalStateException("이름 글자 수는 반드시 5글자 이하여야 합니다. : " + name);
+            throw new IllegalArgumentException("이름 글자 수는 반드시 5글자 이하여야 합니다. : " + name);
         }
         this.name = name;
     }

@@ -16,8 +16,8 @@ public class ResultView {
     }
 
     public static void resultOfWinners(Cars cars) {
-        Winners winners = cars.winnerCars();
-        System.out.println(winners.winnersNameList(cars) + "가 최종 우승했습니다.");
+        Winners winners = cars.findWinners();
+        System.out.println(winners.winnersNameList() + "가 최종 우승했습니다.");
     }
 
 }

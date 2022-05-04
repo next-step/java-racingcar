@@ -40,11 +40,11 @@ public class Car {
 
     public void move(int randomNumber) {
         if (!new RandomNumber().validateRandomNumber(randomNumber)) {
-            throw new IllegalStateException("randomNumber의 유효범위는 0~9입니다.");
+            throw new IllegalArgumentException("randomNumber의 유효범위는 0~9입니다.");
         }
 
         if (canMovePosition(randomNumber)) {
-            this.position.increase();
+            position = position.move();
         }
     }
 
@@ -52,17 +52,13 @@ public class Car {
         return (randomNumber >= MOVE_CRITERIA);
     }
 
-    public Boolean checkPosition(int position) {
-        return this.position.checkPosition(position);
+    public Boolean isSamePosition(int position) {
+        return this.position.isSamePosition(position);
 
-    }
-
-    public boolean isMaxPosition(int maxPosition) {
-        return this.position.getPosition() == maxPosition;
     }
 
     public int maxPosition(int maxPosition) {
-        if (maxPosition < this.position.getPosition()) {
+        if (position.isBigPosition(maxPosition)) {
             return this.currentPosition();
         }
         return maxPosition;

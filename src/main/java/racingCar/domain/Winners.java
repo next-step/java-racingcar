@@ -4,13 +4,13 @@ import java.util.List;
 import java.util.Objects;
 
 public class Winners {
-    private List<Car> winners;
+    private final List<Car> winners;
 
     public Winners(List<Car> winnerList) {
         this.winners = winnerList;
     }
 
-    public String winnersNameList(Cars cars) {
+    public String winnersNameList() {
         String winnersNameList = "";
         for (Car winner : this.winners) {
             winnersNameList += winner.toString();
