@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.RacingCar;
+import racingcar.domain.Round;
 import racingcar.pattern.RandomNumberGenerator;
 
 import java.util.ArrayList;
@@ -21,9 +22,9 @@ class RacingCarTest {
 
         Cars cars = Cars.createCars("green,so");
         RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-        assertThatThrownBy(() -> new RacingCar(cars, round, randomNumberGenerator))
+        assertThatThrownBy(() -> new RacingCar(cars, new Round(round), randomNumberGenerator))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("round는 음수가 될 수 없습니다");
+                .hasMessage("라운드는 음수가 될 수 없습니다");
     }
 
     @Test
@@ -33,15 +34,14 @@ class RacingCarTest {
 
         Cars cars = Cars.createCars("green,so");
         RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-        RacingCar racingCar = new RacingCar(cars, round, randomNumberGenerator);
+        RacingCar racingCar = new RacingCar(cars, new Round(round), randomNumberGenerator);
 
         for (int currentRound = 0; currentRound < round; currentRound++) {
             racingCar.playRound();
         }
 
         assertThatThrownBy(racingCar::playRound)
-                .isInstanceOf(IllegalStateException.class)
-                .hasMessage("모든 라운드가 종료 되었습니다.");
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -51,7 +51,7 @@ class RacingCarTest {
         Car winner = new Car("win",4);
         carList.add(winner);
         carList.add(new Car("lose",2));
-        RacingCar racingCar = new RacingCar(new Cars(carList), 3, new RandomNumberGenerator());
+        RacingCar racingCar = new RacingCar(new Cars(carList), new Round(3), new RandomNumberGenerator());
 
         assertThat(racingCar.findWinners().getWinners().get(0)).isEqualTo(winner);
     }
