@@ -1,4 +1,8 @@
-package racingCar;
+package racingCar.view;
+
+import racingCar.domain.Cars;
+import racingCar.domain.RandomNumber;
+import racingCar.domain.Winners;
 
 public class ResultView {
     public static void resultOfCars(Cars cars) {
@@ -11,7 +15,7 @@ public class ResultView {
         System.out.println("");
     }
 
-    public void resultOfWinners(Cars cars) {
+    public static void resultOfWinners(Cars cars) {
         Winners winners = cars.winnerCars();
         System.out.println(winners.winnersNameList(cars) + "가 최종 우승했습니다.");
     }

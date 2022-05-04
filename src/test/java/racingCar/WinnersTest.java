@@ -1,7 +1,9 @@
 package racingCar;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import racingCar.domain.Car;
+import racingCar.domain.Cars;
+import racingCar.domain.Winners;
 
 import java.util.Arrays;
 

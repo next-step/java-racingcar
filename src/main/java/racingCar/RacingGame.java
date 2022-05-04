@@ -1,17 +1,20 @@
 package racingCar;
 
+import racingCar.domain.Cars;
+import racingCar.domain.NumberOfGame;
+import racingCar.view.InputView;
+import racingCar.view.ResultView;
+
 public class RacingGame {
     public void startGame() {
-        InputView inputView = new InputView();
-        ResultView resultView = new ResultView();
-        Cars cars = new Cars(inputView.nameList());
-        NumberOfGame numberOfGame = new NumberOfGame(inputView.numberOfGame());
+        Cars cars = new Cars(InputView.nameList());
+        NumberOfGame numberOfGame = new NumberOfGame(InputView.numberOfGame());
 
         System.out.println("\n실행 결과");
         while (!numberOfGame.isEndGame()) {
-            resultView.resultOfCars(cars);
+            ResultView.resultOfCars(cars);
             numberOfGame.decreaseNumberOfGame();
         }
-        resultView.resultOfWinners(cars);
+        ResultView.resultOfWinners(cars);
     }
 }

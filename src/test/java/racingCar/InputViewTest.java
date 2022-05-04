@@ -1,10 +1,9 @@
 package racingCar;
 
 import org.junit.jupiter.api.Test;
+import racingCar.view.InputView;
 
 import java.io.ByteArrayInputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 import static java.lang.System.lineSeparator;
 import static java.lang.System.setIn;

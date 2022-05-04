@@ -1,4 +1,4 @@
-package racingCar;
+package racingCar.domain;
 
 public class RandomNumber {
     public static final int ROUNDUP_NUMBER = 10;

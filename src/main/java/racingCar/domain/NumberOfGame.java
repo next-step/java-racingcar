@@ -1,4 +1,4 @@
-package racingCar;
+package racingCar.domain;
 
 public class NumberOfGame {
     public static final int GAME_OVER_NUMBER = 0;
