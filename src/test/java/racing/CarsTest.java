@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.domain.*;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
