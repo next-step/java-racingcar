@@ -1,5 +1,9 @@
 package racing;
 
+import racing.domain.*;
+import racing.view.Input;
+import racing.view.View;
+
 public class Main {
 
 
