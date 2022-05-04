@@ -17,8 +17,9 @@ public class Cars {
     public static Cars createCars(String names) {
         String[] carNames = names.split(",");
         List<Car> cars = new ArrayList<>();
-        for (int number = 0; number < carNames.length; number++) {
-            cars.add(new Car(carNames[number]));
+
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
         }
         return new Cars(cars);
     }
@@ -33,8 +34,8 @@ public class Cars {
         return cars;
     }
 
-    public List<Car> getWinners(Position maxPosition) {
-        return getCars().stream().filter(car -> car.isWinner(maxPosition)).collect(Collectors.toList());
+    public Winners getWinners() {
+        return new Winners(getCars().stream().filter(car -> car.isWinner(getMaxPosition())).collect(Collectors.toList()));
     }
 
     public Position getMaxPosition() {
@@ -47,9 +48,9 @@ public class Cars {
 
     public Map<String, Integer> getPositions() {
         return cars.stream()
-                   .collect(Collectors.toMap(
-                           Car::getName,
-                           Car::getDistance
-                   ));
+                .collect(Collectors.toMap(
+                        Car::getName,
+                        Car::getDistance
+                ));
     }
 }
