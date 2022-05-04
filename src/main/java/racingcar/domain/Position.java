@@ -44,8 +44,4 @@ public class Position {
         }
         return maxPosition;
     }
-
-    public boolean isMaxPosition(Position maxPosition) {
-        return this == maxPosition;
-    }
 }

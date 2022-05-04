@@ -11,6 +11,6 @@ class CarsTest {
     @Test
     @DisplayName("3개의 자동차를 참가시키면 Cars의 크기는 3이된다.")
     void crateCarTest() {
-        assertThat(Cars.createCars("one,two,three").getCars()).hasSize(3);
+        assertThat(new Cars("one,two,three").getCars()).hasSize(3);
     }
 }

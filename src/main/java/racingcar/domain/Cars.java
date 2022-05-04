@@ -10,18 +10,22 @@ import java.util.stream.Collectors;
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
-        this.cars = cars;
+    public Cars(String names) {
+        this(createCars(names));
     }
 
-    public static Cars createCars(String names) {
+    private static List<Car> createCars(String names) {
         String[] carNames = names.split(",");
         List<Car> cars = new ArrayList<>();
 
         for (String carName : carNames) {
             cars.add(new Car(carName));
         }
-        return new Cars(cars);
+        return cars;
+    }
+
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
     public void play(NumberGenerator numberGenerator) {
@@ -35,7 +39,7 @@ public class Cars {
     }
 
     public Winners getWinners() {
-        return new Winners(getCars().stream().filter(car -> car.isWinner(getMaxPosition())).collect(Collectors.toList()));
+        return new Winners(getCars().stream().filter(car -> car.isSamePosition(getMaxPosition())).collect(Collectors.toList()));
     }
 
     public Position getMaxPosition() {
