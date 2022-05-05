@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class RacingCarStatusTest {
+class RacingCarPositionTest {
     @Test
     @DisplayName("RacingCarStatus를 생성 후 add를 호출했을 때 value가 증가하는지 확인한다.")
     void value_add() {
@@ -13,4 +13,5 @@ class RacingCarStatusTest {
         rcp = rcp.add();
         assertThat(rcp).isEqualTo(new RacingCarPosition(1));
     }
+    
 }
