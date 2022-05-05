@@ -31,19 +31,19 @@ public class Car {
     public String makeNameAndPosition() {
         return name + " : " + position.makePosition();
     }
-    
-    public void move(int randomNumber) {
-        if (!movable(randomNumber)) {
-            throw new IllegalArgumentException("randomNumber의 유효범위는 0~9입니다.");
+
+    public void move(int number) {
+        if (!movable(number)) {
+            throw new IllegalArgumentException("number의 유효범위는 0~9입니다.");
         }
 
-        if (canMovePosition(randomNumber)) {
+        if (canMovePosition(number)) {
             position = position.move();
         }
     }
 
-    public static boolean movable(int Number) {
-        return MOVE_NUMBER_MINIMUM <= Number && Number <= MOVE_NUMBER_MAXIMUM;
+    public boolean movable(int number) {
+        return MOVE_NUMBER_MINIMUM <= number && number <= MOVE_NUMBER_MAXIMUM;
 
     }
 
@@ -63,9 +63,6 @@ public class Car {
         return maxPosition;
     }
 
-    public Position maxPosition() {
-        return this.position;
-    }
 
     @Override
     public boolean equals(Object o) {
