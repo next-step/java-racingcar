@@ -1,39 +1,40 @@
 package racing.domain;
 
-public class Car implements Comparable<Car> {
+public class Car {
 
     public static final int FORWARD_STANDARD_NUMBER = 4;
 
-    private String name;
-    private int distance;
-
-    public Car() {
-    }
+    private Name name;
+    private Position position;
 
     public Car(String name) {
-        this.name = name;
+        this(name, new Position(0));
+    }
+
+    public Car(String name, Position position) {
+        this.name = new Name(name);
+        this.position = position;
     }
 
     public String getName() {
-        return name;
+        return name.toString();
     }
 
-    public int getDistance() {
-        return distance;
+    public Position getPosition() {
+        return position;
+    }
+
+    public boolean isWinner(Position maxPosition) {
+        return maxPosition == this.position;
     }
 
     public void move(int value) {
         if(isAvailableForward(value)) {
-            this.distance++;
+            position = new Position(this.position.getValue() + 1);
         }
     }
 
     private boolean isAvailableForward(int value) {
         return value >= FORWARD_STANDARD_NUMBER;
-    }
-
-    @Override
-    public int compareTo(Car o) {
-        return this.distance - o.distance;
     }
 }
