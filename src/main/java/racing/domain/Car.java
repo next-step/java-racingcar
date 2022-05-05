@@ -24,6 +24,10 @@ public class Car {
         return position;
     }
 
+    public boolean isWinner(Position maxPosition) {
+        return maxPosition == this.position;
+    }
+
     public void move(int value) {
         if(isAvailableForward(value)) {
             position = new Position(this.position.getValue() + 1);
