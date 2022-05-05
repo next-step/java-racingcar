@@ -1,38 +1,43 @@
 package racingCar;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import racingCar.domain.Car;
+import racingCar.domain.Cars;
+import racingCar.domain.Winners;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
+
+import static org.assertj.core.api.Assertions.*;
 
 public class WinnersTest {
-
     @Test
-    void 단일우승자(){
-        ArrayList<Car> carList = new ArrayList<>();
-        Car crong = new Car("crong",4);
-        carList.add(crong);
-        carList.add(new Car("pobi",3));
-        carList.add(new Car("honux",2));
+    void 단일우승자() {
+        Cars cars = new Cars(Arrays.asList(new Car("crong", 4), new Car("pobi", 3), new Car("honux", 2)));
+        Winners winners = new Winners(Arrays.asList(new Car("crong", 4)));
 
-        Cars cars = new Cars(carList);
-        List<Car> winners = cars.winnerCars();
-
-        Assertions.assertThat(winners).contains(crong);
+        assertThat(winners).isEqualTo(cars.findWinners());
     }
+
     @Test
-    void 복수우승자(){
-        ArrayList<Car> carList = new ArrayList<>();
-        Car crong = new Car("crong",4);
-        Car pobi = new Car("pobi",4);
-        carList.add(crong);
-        carList.add(pobi);
-        carList.add(new Car("honux",2));
+    void 복수우승자() {
+        Cars cars = new Cars(Arrays.asList(new Car("crong", 4), new Car("pobi", 4), new Car("honux", 2)));
+        Winners winners = new Winners(Arrays.asList(new Car("crong", 4), new Car("pobi", 4)));
 
-        Cars cars = new Cars(carList);
-        List<Car> winners = cars.winnerCars();
+        assertThat(winners).isEqualTo(cars.findWinners());
+    }
 
-        Assertions.assertThat(winners).contains(crong,pobi);
+    @Test
+    void 복수우승자2() {
+        Cars cars = new Cars(Arrays.asList(new Car("crong", 4), new Car("pobi", 4), new Car("honux", 4)));
+        Winners winners = new Winners(Arrays.asList(new Car("crong", 4), new Car("pobi", 4), new Car("honux", 4)));
+
+        assertThat(winners).isEqualTo(cars.findWinners());
+    }
+
+    @Test
+    void 우승자이름출력() {
+        Winners winners = new Winners(Arrays.asList(new Car("crong", 4), new Car("pobi", 4)));
+        assertThat(winners.winnersNameList()).isEqualTo("crong, pobi");
+
     }
 }
