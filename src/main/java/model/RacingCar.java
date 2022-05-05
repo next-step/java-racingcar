@@ -1,16 +1,16 @@
 package model;
 
 public class RacingCar {
-    private final RacingCarStatus status;
+    private RacingCarPosition status;
     private final MovableStrategy movableStrategy = new RandomMovableStrategy();
 
     public RacingCar() {
-        this.status = new RacingCarStatus();
+        this.status = new RacingCarPosition();
     }
 
     public void move() {
         if (movableStrategy.isMovable()) {
-            status.add();
+            this.status = status.add();
         }
     }
 
