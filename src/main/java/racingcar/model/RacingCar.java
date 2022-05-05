@@ -8,6 +8,10 @@ public class RacingCar {
         this.status = new RacingCarPosition();
     }
 
+    public RacingCar(RacingCarPosition status) {
+        this.status = status;
+    }
+
     public void move() {
         if (movableStrategy.isMovable()) {
             this.status = status.add();
