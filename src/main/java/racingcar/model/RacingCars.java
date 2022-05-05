@@ -8,7 +8,7 @@ public class RacingCars {
     private final List<RacingCar> racingCars;
 
     public RacingCars(List<RacingCar> racingCars) {
-        this.racingCars = racingCars;
+        this.racingCars = Collections.unmodifiableList(racingCars);
     }
 
     public List<RacingCar> getValue() {
