@@ -4,7 +4,7 @@ public class RacingCarPosition {
     private final int value;
 
     public RacingCarPosition() {
-        this.value = 0;
+        this(0);
     }
 
     public RacingCarPosition(int value) {
