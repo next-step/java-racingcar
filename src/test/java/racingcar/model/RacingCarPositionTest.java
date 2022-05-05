@@ -13,5 +13,11 @@ class RacingCarPositionTest {
         rcp = rcp.add();
         assertThat(rcp).isEqualTo(new RacingCarPosition(1));
     }
-    
+
+    @Test
+    @DisplayName("위치가 0 이상인지 검증한다.")
+    void value_validation() {
+        RacingCarPosition rcp = new RacingCarPosition(-1);
+        assertThat(rcp.checkPosition()).isFalse();
+    }
 }
