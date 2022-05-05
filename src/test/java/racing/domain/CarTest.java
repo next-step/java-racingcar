@@ -8,23 +8,23 @@ class CarTest {
 
     @Test
     void 자동차_이동_숫자_4_미만() {
-        Car car = new Car();
-        int prevDistance = car.getDistance();
+        Car car = new Car("car1");
+        Position prevDistance = car.getPosition();
         int value = 3;
 
         car.move(value);
 
-        assertThat(prevDistance).isEqualTo(car.getDistance());
+        assertThat(prevDistance).isEqualTo(car.getPosition());
     }
 
     @Test
     void 자동차_이동_숫자_4_이상() {
-        Car car = new Car();
-        int prevDistance = car.getDistance();
+        Car car = new Car("car1");
+        Position prevDistance = car.getPosition();
         int value = 4;
 
         car.move(value);
 
-        assertThat(prevDistance+1).isEqualTo(car.getDistance());
+        assertThat(new Position(prevDistance.getValue()+1)).isEqualTo(car.getPosition());
     }
 }

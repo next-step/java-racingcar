@@ -16,7 +16,7 @@ public class ResultView {
 
     private void printCarPosition(Car car) {
         System.out.print(car.getName() + " : ");
-        for (int distance = 0; distance < car.getDistance(); distance++) {
+        for (int position = 0; position < car.getPosition().getValue(); position++) {
             System.out.print("-");
         }
         System.out.println();

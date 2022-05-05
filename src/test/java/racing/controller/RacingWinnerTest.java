@@ -3,6 +3,7 @@ package racing.controller;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racing.domain.Car;
+import racing.domain.Position;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,40 +13,33 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RacingWinnerTest {
 
     static List<Car> cars = new ArrayList<>();
-    static int MAX_DISTANCE = 5;
+    static Position MAX_POSITION = new Position(5);
 
     @BeforeEach
     void create_car() {
-        addCar("car1", 4);
-        addCar("car2", 3);
-        addCar("car3", 4);
-    }
-
-    private Car addCar(String carName, int distance) {
-        Car car = new Car(carName);
-        for (int i = 0; i < distance; i++) {
-            car.move(Car.FORWARD_STANDARD_NUMBER);
-        }
-        cars.add(car);
-        return car;
+        cars.add(new Car("car1", new Position(4)));
+        cars.add(new Car("car2", new Position(3)));
+        cars.add(new Car("car3", new Position(4)));
     }
 
     @Test
     void 자동차_중_가장_긴_거리() {
-        addCar("newCar", MAX_DISTANCE);
+        cars.add(new Car("newCar", MAX_POSITION));
         RacingWinner racingWinner = new RacingWinner();
 
         List<Car> winnerList = racingWinner.getWinnerList(cars);
-        int winnerCarDistance = winnerList.get(0).getDistance();
+        Position winnerCarDistance = winnerList.get(0).getPosition();
 
-        assertThat(winnerCarDistance).isEqualTo(MAX_DISTANCE);
+        assertThat(winnerCarDistance).isEqualTo(MAX_POSITION);
     }
 
 
     @Test
     void 우승자_자동차() {
-        Car newCar1 = addCar("newCar1", MAX_DISTANCE);
-        Car newCar2 = addCar("newCar2", MAX_DISTANCE);
+        Car newCar1 = new Car("newCar1", MAX_POSITION);
+        cars.add(newCar1);
+        Car newCar2 = new Car("newCar2", MAX_POSITION);
+        cars.add(newCar2);
         RacingWinner racingWinner = new RacingWinner();
 
         List<Car> winnerList = racingWinner.getWinnerList(cars);
