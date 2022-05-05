@@ -6,13 +6,7 @@ import java.util.List;
 
 public class ResultView {
 
-    public void printTurnResult(List<Car> cars) {
-        for (Car car : cars) {
-            printEachCarResult(car);
-        }
-    }
-
-    public void printEachCarResult(Car car) {
+    public static void printEachCarResult(Car car) {
         System.out.println(car.getName() + " : " + car.getSteps());
     }
 
