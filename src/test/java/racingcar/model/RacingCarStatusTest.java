@@ -11,6 +11,6 @@ class RacingCarStatusTest {
     void value_add() {
         RacingCarPosition rcp = new RacingCarPosition();
         rcp = rcp.add();
-        assertThat(rcp.equals(new RacingCarPosition(1)));
+        assertThat(rcp).isEqualTo(new RacingCarPosition(1));
     }
 }
