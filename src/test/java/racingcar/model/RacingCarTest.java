@@ -6,14 +6,14 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingCarTest {
-
     @Test
-    @DisplayName("자동차와 움직인 자동차를 비교한다.")
-    void racing_car_move() {
-        RacingCar defaultCar = new RacingCar();
+    @DisplayName("RacingCar가 움직였는지 확인한다.")
+    void is_move() {
+        RacingCar car = new RacingCar(new RacingCarPosition(1));
         RacingCar movedCar = new RacingCar();
         movedCar.move();
-
-        assertThat(movedCar).isNotEqualTo(defaultCar);
+        
+        assertThat(car).isEqualTo(movedCar);
     }
+
 }
