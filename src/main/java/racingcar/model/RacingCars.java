@@ -28,7 +28,7 @@ public class RacingCars {
     }
 
     public void move() {
-        for (RacingCar racingCar : this.getValue()) {
+        for (RacingCar racingCar : racingCars) {
             racingCar.move();
         }
     }
