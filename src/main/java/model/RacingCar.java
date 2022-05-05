@@ -1,4 +1,4 @@
-package model;
+package racingcar.model;
 
 public class RacingCar {
     private RacingCarPosition status;

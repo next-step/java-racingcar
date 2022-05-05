@@ -1,8 +1,8 @@
-package controller;
+package racingcar.controller;
 
-import model.RacingCars;
-import view.InputView;
-import view.ResultView;
+import racingcar.model.RacingCars;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 public class RacingCarController {
     private static String INPUT_COUNT_ERROR_MESSAGE = "0 이상의 수를 입력해주세요.";

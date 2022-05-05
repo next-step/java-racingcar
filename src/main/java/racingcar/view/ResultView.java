@@ -1,6 +1,6 @@
-package view;
+package racingcar.view;
 
-import model.RacingCars;
+import racingcar.model.RacingCars;
 
 public class ResultView {
     private ResultView() {
