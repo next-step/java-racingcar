@@ -9,49 +9,45 @@ public class Cars {
     public Cars(int countOfCar) {
         for (int i = 0; i < countOfCar; i++) {
             Car car = new Car();
-            this.carList.add(car);
+            carList.add(car);
         }
     }
 
     public Cars(String[] nameList) {
         for (int i = 0; i < nameList.length; i++) {
             Car car = new Car(nameList[i]);
-            this.carList.add(car);
+            carList.add(car);
         }
     }
 
     public Cars(List<Car> cars) {
         for (int i = 0; i < cars.size(); i++) {
-            this.carList.add(cars.get(i));
+            Car temporaryCar = cars.get(i);
+            carList.add(temporaryCar);
         }
     }
 
     public void carMove(int index, int randomNumber) {
-        this.carList.get(index).move(randomNumber);
-    }
-
-    public int carsSize() {
-        return this.carList.size();
-    }
-
-    public String carMakePosition(int index) {
-        return this.carList.get(index).makePosition();
+        Car temporaryCar = carList.get(index);
+        temporaryCar.move(randomNumber);
     }
 
     public String carMakeNameAndPosition(int index) {
-        return this.carList.get(index).makeNameAndPosition();
+        Car temporaryCar = carList.get(index);
+        return temporaryCar.makeNameAndPosition();
     }
 
 
-    public int carsMaxPosition() {
-        int maxPosition = Integer.MIN_VALUE;
-        for (int i = 0; i < this.carList.size(); i++) {
-            maxPosition = this.carList.get(i).maxPosition(maxPosition);
+    public Position carsMaxPosition() {
+        Position maxPosition = new Position();
+        for (int i = 0; i < carList.size(); i++) {
+            Car temporaryCar = carList.get(i);
+            maxPosition = temporaryCar.maxPosition(maxPosition);
         }
         return maxPosition;
     }
 
-    public void isMaxCar(Car car, int maxPosition, List<Car> winners) {
+    public void isMaxCar(Car car, Position maxPosition, List<Car> winners) {
         if (car.isSamePosition(maxPosition)) {
             winners.add(car);
         }
@@ -59,9 +55,9 @@ public class Cars {
 
     public Winners findWinners() {
         List<Car> winnerCars = new ArrayList<>();
-        int maxPosition = carsMaxPosition();
-        for (int i = 0; i < this.carList.size(); i++) {
-            isMaxCar(this.carList.get(i), maxPosition, winnerCars);
+        Position maxPosition = carsMaxPosition();
+        for (int i = 0; i < carList.size(); i++) {
+            isMaxCar(carList.get(i), maxPosition, winnerCars);
         }
         return new Winners(winnerCars);
     }

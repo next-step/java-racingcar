@@ -14,7 +14,7 @@ public class NumberOfGame {
     }
 
     public void decreaseNumberOfGame() {
-        this.numberOfGame--;
+        numberOfGame--;
     }
 
     public boolean checkNumberOfGame(int numberOfGame) {

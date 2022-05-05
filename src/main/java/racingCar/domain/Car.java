@@ -4,6 +4,8 @@ import java.util.Objects;
 
 public class Car {
     public static final int MOVE_CRITERIA = 4;
+    public static final int MOVE_NUMBER_MINIMUM = 0;
+    public static final int MOVE_NUMBER_MAXIMUM = 9;
 
     private Name name;
     private Position position;
@@ -26,20 +28,16 @@ public class Car {
         this.position = new Position(position);
     }
 
-    public int currentPosition() {
-        return this.position.getPosition();
-    }
-
     public String makeNameAndPosition() {
-        return this.name + " : " + makePosition();
+        return name + " : " + makePosition();
     }
 
     public String makePosition() {
-        return this.position.makePosition();
+        return position.makePosition();
     }
 
     public void move(int randomNumber) {
-        if (!new RandomNumber().validateRandomNumber(randomNumber)) {
+        if (!movable(randomNumber)) {
             throw new IllegalArgumentException("randomNumber의 유효범위는 0~9입니다.");
         }
 
@@ -48,18 +46,23 @@ public class Car {
         }
     }
 
+    public static boolean movable(int Number) {
+        return MOVE_NUMBER_MINIMUM <= Number && Number <= MOVE_NUMBER_MAXIMUM;
+
+    }
+
     public boolean canMovePosition(int randomNumber) {
         return (randomNumber >= MOVE_CRITERIA);
     }
 
-    public Boolean isSamePosition(int position) {
+    public Boolean isSamePosition(Position position) {
         return this.position.isSamePosition(position);
 
     }
 
-    public int maxPosition(int maxPosition) {
-        if (position.isBigPosition(maxPosition)) {
-            return this.currentPosition();
+    public Position maxPosition(Position maxPosition) {
+        if (position.isBigCurrentPosition(maxPosition)) {
+            return this.position;
         }
         return maxPosition;
     }

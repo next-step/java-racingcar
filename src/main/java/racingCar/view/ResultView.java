@@ -1,15 +1,15 @@
 package racingCar.view;
 
+import racingCar.domain.Car;
 import racingCar.domain.Cars;
 import racingCar.domain.RandomNumber;
 import racingCar.domain.Winners;
 
 public class ResultView {
-    public static void resultOfCars(Cars cars) {
-        RandomNumber randomNumber = new RandomNumber();
-        for (int i = 0; i < cars.carsSize(); i++) {
+    public static void resultOfCars(Cars cars, int carOfNumber) {
+        for (int i = 0; i < carOfNumber; i++) {
             System.out.println(cars.carMakeNameAndPosition(i));
-            int temporaryRandomNumber = randomNumber.createRandomNumber();
+            int temporaryRandomNumber = RandomNumber.createRandomNumber();
             cars.carMove(i, temporaryRandomNumber);
         }
         System.out.println("");
@@ -19,5 +19,6 @@ public class ResultView {
         Winners winners = cars.findWinners();
         System.out.println(winners.winnersNameList() + "가 최종 우승했습니다.");
     }
+
 
 }

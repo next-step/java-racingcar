@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Winners {
-    private final List<Car> winners;
+    private List<Car> winners;
 
     public Winners(List<Car> winnerList) {
         this.winners = winnerList;

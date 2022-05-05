@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Position {
     public static final int INITIAL_VALUE = 1;
+    public static final int POSITION_MINIMUM = 0;
 
     private int position;
 
@@ -12,6 +13,9 @@ public class Position {
     }
 
     public Position(int position) {
+        if (position < POSITION_MINIMUM) {
+            throw new IllegalArgumentException("position 값은 0 미만이 될 수 없습니다.");
+        }
         this.position = position;
     }
 
@@ -23,29 +27,18 @@ public class Position {
         return temporaryString;
     }
 
-    public int getPosition() {
-        return position;
-    }
 
     public Position move() {
         position++;
         return this;
     }
 
-    public Position move2() {
-        return new Position(position + 1);
+    public boolean isSamePosition(Position position) {
+        return this.equals(position);
     }
 
-    public void move3() {
-        position++;
-    }
-
-    public boolean isSamePosition(int position) {
-        return this.position == position;
-    }
-
-    public boolean isBigPosition(int maxPosition) {
-        return (maxPosition < this.position);
+    public boolean isBigCurrentPosition(Position maxPosition) {
+        return (maxPosition.position < this.position);
     }
 
     @Override
@@ -53,11 +46,12 @@ public class Position {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Position position1 = (Position) o;
-        return getPosition() == position1.getPosition();
+        return position == position1.position;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getPosition());
+        return Objects.hash(position);
     }
+
 }
