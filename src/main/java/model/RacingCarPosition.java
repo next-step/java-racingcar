@@ -1,13 +1,13 @@
 package model;
 
-public class RacingCarStatus {
+public class RacingCarPosition {
     private int value;
 
-    public RacingCarStatus() {
+    public RacingCarPosition() {
         this.value = 0;
     }
 
-    public RacingCarStatus(int value) {
+    public RacingCarPosition(int value) {
         this.value = value;
     }
 
