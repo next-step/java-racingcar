@@ -4,7 +4,7 @@ public class Car {
 
     public static final int FORWARD_STANDARD_NUMBER = 4;
 
-    private String name;
+    private Name name;
     private Position position;
 
     public Car(String name) {
@@ -12,12 +12,12 @@ public class Car {
     }
 
     public Car(String name, Position position) {
-        this.name = name;
+        this.name = new Name(name);
         this.position = position;
     }
 
     public String getName() {
-        return name;
+        return name.toString();
     }
 
     public Position getPosition() {

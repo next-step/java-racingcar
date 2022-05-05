@@ -24,7 +24,7 @@ class RacingWinnerTest {
 
     @Test
     void 자동차_중_가장_긴_거리() {
-        cars.add(new Car("newCar", MAX_POSITION));
+        cars.add(new Car("new", MAX_POSITION));
         RacingWinner racingWinner = new RacingWinner();
 
         List<Car> winnerList = racingWinner.getWinnerList(cars);
@@ -36,9 +36,9 @@ class RacingWinnerTest {
 
     @Test
     void 우승자_자동차() {
-        Car newCar1 = new Car("newCar1", MAX_POSITION);
+        Car newCar1 = new Car("new1", MAX_POSITION);
         cars.add(newCar1);
-        Car newCar2 = new Car("newCar2", MAX_POSITION);
+        Car newCar2 = new Car("new2", MAX_POSITION);
         cars.add(newCar2);
         RacingWinner racingWinner = new RacingWinner();
 
