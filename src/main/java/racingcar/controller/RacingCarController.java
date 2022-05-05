@@ -5,13 +5,9 @@ import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
 public class RacingCarController {
-    private static String INPUT_COUNT_ERROR_MESSAGE = "0 이상의 수를 입력해주세요.";
+    private static final String INPUT_COUNT_ERROR_MESSAGE = "0 이상의 수를 입력해주세요.";
 
-    public static RacingCarController init() {
-        return new RacingCarController();
-    }
-
-    public void start() {
+    public static void start() {
         int carCount = getRacingCarCount();
         int attemptCount = getAttemptCount();
 
@@ -22,22 +18,22 @@ public class RacingCarController {
         }
     }
 
-    private int getRacingCarCount() {
+    private static int getRacingCarCount() {
         return validateCount(InputView.inputCarCount());
     }
 
-    private int getAttemptCount() {
+    private static int getAttemptCount() {
         return validateCount(InputView.inputAttemptCount());
     }
 
-    private int validateCount(int count) {
+    private static int validateCount(int count) {
         if (count <= 0) {
             throw new IllegalStateException(INPUT_COUNT_ERROR_MESSAGE);
         }
         return count;
     }
 
-    private RacingCars createRacingCar(int carCount) {
+    private static RacingCars createRacingCar(int carCount) {
         return RacingCars.create(carCount);
     }
 }
