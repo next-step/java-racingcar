@@ -21,6 +21,10 @@ public class RacingCarPosition {
         return this.value;
     }
 
+    public boolean checkPosition() {
+        return value >= 0;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
