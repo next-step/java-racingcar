@@ -1,13 +1,11 @@
 package racingcar.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RacingCars {
-    private List<RacingCar> racingCars = null;
-
-    public RacingCars() {
-    }
+    private final List<RacingCar> racingCars;
 
     public RacingCars(List<RacingCar> racingCars) {
         this.racingCars = racingCars;
