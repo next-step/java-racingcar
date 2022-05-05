@@ -10,11 +10,13 @@ public class RacingCarController {
     public static void start() {
         int carCount = getRacingCarCount();
         int attemptCount = getAttemptCount();
+        Round round = Round.create(InputView.inputAttemptCount());
 
         RacingCars racingCars = createRacingCar(carCount);
-        for (int i = 0; i < attemptCount; i++) {
+        while (round.checkRound()) {
             racingCars.move();
             ResultView.printStatus(racingCars);
+            round = round.decrease();
         }
     }
 
@@ -22,9 +24,6 @@ public class RacingCarController {
         return validateCount(InputView.inputCarCount());
     }
 
-    private static int getAttemptCount() {
-        return validateCount(InputView.inputAttemptCount());
-    }
 
     private static int validateCount(int count) {
         if (count <= 0) {
