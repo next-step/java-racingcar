@@ -27,18 +27,13 @@ public class Position {
         return temporaryString;
     }
 
-
     public Position move() {
         position++;
         return this;
     }
 
-    public boolean isSamePosition(Position position) {
-        return this.equals(position);
-    }
-
     public boolean isBigCurrentPosition(Position maxPosition) {
-        return (maxPosition.position < this.position);
+        return (maxPosition.position <= this.position);
     }
 
     @Override

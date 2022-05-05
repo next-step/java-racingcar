@@ -29,13 +29,9 @@ public class Car {
     }
 
     public String makeNameAndPosition() {
-        return name + " : " + makePosition();
+        return name + " : " + position.makePosition();
     }
-
-    public String makePosition() {
-        return position.makePosition();
-    }
-
+    
     public void move(int randomNumber) {
         if (!movable(randomNumber)) {
             throw new IllegalArgumentException("randomNumber의 유효범위는 0~9입니다.");
@@ -56,7 +52,7 @@ public class Car {
     }
 
     public Boolean isSamePosition(Position position) {
-        return this.position.isSamePosition(position);
+        return this.position.equals(position);
 
     }
 
@@ -65,6 +61,10 @@ public class Car {
             return this.position;
         }
         return maxPosition;
+    }
+
+    public Position maxPosition() {
+        return this.position;
     }
 
     @Override

@@ -27,6 +27,14 @@ public class WinnersTest {
     }
 
     @Test
+    void 복수우승자2() {
+        Cars cars = new Cars(Arrays.asList(new Car("crong", 4), new Car("pobi", 4), new Car("honux", 4)));
+        Winners winners = new Winners(Arrays.asList(new Car("crong", 4), new Car("pobi", 4), new Car("honux", 4)));
+
+        assertThat(winners).isEqualTo(cars.findWinners());
+    }
+
+    @Test
     void 우승자이름출력() {
         Winners winners = new Winners(Arrays.asList(new Car("crong", 4), new Car("pobi", 4)));
         assertThat(winners.winnersNameList()).isEqualTo("crong, pobi");
