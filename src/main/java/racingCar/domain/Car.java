@@ -33,21 +33,21 @@ public class Car {
     }
 
     public void move(int number) {
-        if (!movable(number)) {
+        validateMoving(number);
+
+        if (canMove(number)) {
+            position = position.increase();
+        }
+    }
+
+    public void validateMoving(int number) {
+        if (!(MOVE_NUMBER_MINIMUM <= number && number <= MOVE_NUMBER_MAXIMUM)) {
             throw new IllegalArgumentException("number의 유효범위는 0~9입니다.");
         }
 
-        if (canMovePosition(number)) {
-            position = position.move();
-        }
     }
 
-    public boolean movable(int number) {
-        return MOVE_NUMBER_MINIMUM <= number && number <= MOVE_NUMBER_MAXIMUM;
-
-    }
-
-    public boolean canMovePosition(int randomNumber) {
+    public boolean canMove(int randomNumber) {
         return (randomNumber >= MOVE_CRITERIA);
     }
 
@@ -57,10 +57,7 @@ public class Car {
     }
 
     public Position maxPosition(Position maxPosition) {
-        if (position.isBigCurrentPosition(maxPosition)) {
-            return this.position;
-        }
-        return maxPosition;
+        return position.maxPosition(maxPosition);
     }
 
     @Override
