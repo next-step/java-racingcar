@@ -1,6 +1,7 @@
 package racing_refactoring.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RacingWinners {
@@ -34,6 +35,6 @@ public class RacingWinners {
     }
 
     public List<RacingCar> getWinners() {
-        return winners;
+        return Collections.unmodifiableList(winners);
     }
 }
