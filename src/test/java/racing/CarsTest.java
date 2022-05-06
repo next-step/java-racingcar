@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 class CarsTest {
     private static final int START_MOVE_VALUE = 0;
@@ -12,8 +13,11 @@ class CarsTest {
     @Test
     void isMaxPosition() {
         int maxPosition = 3;
-        assertThat(new Car("car1", 3).isWinner(maxPosition)).isTrue();
-        assertThat(new Car("car1", 2).isWinner(maxPosition)).isFalse();
+        assertAll(
+                () -> assertThat(new Car("car1", 3).isWinner(maxPosition)).isTrue(),
+                () -> assertThat(new Car("car1", 2).isWinner(maxPosition)).isFalse()
+        );
+
     }
 
     @DisplayName("최대 이동 거리 확인")
