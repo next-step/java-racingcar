@@ -14,7 +14,7 @@ public class NameTest {
         Name name = new Name("pobi");
         assertThat(name.toString()).isEqualTo("pobi");
     }
-
+    
     @Test
     void 이름공백예외처리() {
         assertThatThrownBy(() -> {
