@@ -17,7 +17,6 @@ class CarsTest {
                 () -> assertThat(new Car("car1", 3).isWinner(maxPosition)).isTrue(),
                 () -> assertThat(new Car("car1", 2).isWinner(maxPosition)).isFalse()
         );
-
     }
 
     @DisplayName("최대 이동 거리 확인")
