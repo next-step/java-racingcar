@@ -17,7 +17,6 @@ public class PositionTest {
     @Test
     void create() {
         assertThat(new Position(1)).isEqualTo(new Position(1));
-        assertThat(new Position(1)).isEqualTo(new Position(1));
     }
 
     @Test

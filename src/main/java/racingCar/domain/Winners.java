@@ -12,6 +12,7 @@ public class Winners {
 
     public String winnersNameList() {
         String winnersNameList = "";
+
         for (Car winner : winners) {
             winnersNameList += winner.toString();
         }

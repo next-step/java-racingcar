@@ -1,11 +1,20 @@
 package racingCar;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import racingCar.domain.Name;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class NameTest {
+
+    @Test
+    void create() {
+        Name name = new Name("pobi");
+        assertThat(name.toString()).isEqualTo("pobi");
+    }
+    
     @Test
     void 이름공백예외처리() {
         assertThatThrownBy(() -> {

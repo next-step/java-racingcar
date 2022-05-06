@@ -37,9 +37,8 @@ public class Cars {
         return temporaryCar.makeNameAndPosition();
     }
 
-
     public Position carsMaxPosition() {
-        Position maxPosition = new Position();
+        Position maxPosition = new Position(0);
         for (int i = 0; i < carList.size(); i++) {
             Car temporaryCar = carList.get(i);
             maxPosition = temporaryCar.maxPosition(maxPosition);
