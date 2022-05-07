@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.exception.RaceException;
 
 public class RaceTest {
     List<RacingCar> cars;
@@ -51,7 +52,7 @@ public class RaceTest {
     void 경기회수_에러_테스트() {
         assertThatThrownBy(() -> {
             Race race = new Race(0, new RacingCars(cars));
-        }).isInstanceOf(IllegalArgumentException.class)
+        }).isInstanceOf(RaceException.class)
                 .hasMessageMatching("경기 회수는 1 이상의 수를 입력해주세요");
     }
 }

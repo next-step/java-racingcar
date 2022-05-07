@@ -3,6 +3,7 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import racingcar.exception.RaceException;
 
 public class Race {
     private int raceCount;
@@ -11,7 +12,7 @@ public class Race {
 
     public Race(int raceCount, RacingCars racingCars) {
         if (raceCount <= 0) {
-            throw new IllegalArgumentException("경기 회수는 1 이상의 수를 입력해주세요");
+            throw new RaceException("경기 회수는 1 이상의 수를 입력해주세요");
         }
 
         this.raceCount = raceCount;
@@ -20,7 +21,7 @@ public class Race {
 
     public void startRace(List<RandomNumbers> randoms) {
         if (randoms.size() != raceCount) {
-            throw new IllegalArgumentException("경기 횟수와 동일한 크기의 숫자 리스트를 입력해주세요");
+            throw new RaceException("경기 횟수와 동일한 크기의 숫자 리스트를 입력해주세요");
         }
 
         for (int i = 0; i < raceCount; i++) {

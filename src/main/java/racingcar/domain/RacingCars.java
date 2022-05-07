@@ -3,13 +3,14 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import racingcar.exception.RacingCarsException;
 
 public class RacingCars {
     private List<RacingCar> racingCars;
 
     public RacingCars(List<RacingCar> racingCars) {
         if (racingCars == null || racingCars.isEmpty()) {
-            throw new IllegalArgumentException("자동차는 한 개 이상 입력해야 합니다");
+            throw new RacingCarsException("자동차는 한 개 이상 입력해야 합니다");
         }
 
         this.racingCars = racingCars;
@@ -27,7 +28,7 @@ public class RacingCars {
     void moveCars(RandomNumbers randomNumbers) {
         for (int i = 0; i < racingCars.size(); ++i) {
             if (!randomNumbers.hasSize(racingCars.size())) {
-                throw new IllegalArgumentException("자동차 개수와 동일한 크기의 숫자 리스트를 입력해주세요");
+                throw new RacingCarsException("자동차 개수와 동일한 크기의 숫자 리스트를 입력해주세요");
             }
 
             racingCars.get(i).move(randomNumbers.get(i));

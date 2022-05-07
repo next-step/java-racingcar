@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.exception.RacingCarsException;
 
 public class RacingCarsTest {
     List<RacingCar> cars;
@@ -72,7 +73,7 @@ public class RacingCarsTest {
     void 빈_자동차리스트_테스트() {
         assertThatThrownBy(() -> {
             RacingCars racingCars = new RacingCars(null);
-        }).isInstanceOf(IllegalArgumentException.class)
+        }).isInstanceOf(RacingCarsException.class)
                 .hasMessageMatching("자동차는 한 개 이상 입력해야 합니다");
     }
 }
