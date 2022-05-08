@@ -1,52 +1,30 @@
 package racingcar.view;
 
-
-import racingcar.DataKey;
-import racingcar.racing.RacingGame;
-import racingcar.racing.dto.RacingGameParam;
-import racingcar.validator.InputStringValidator;
-
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 public class InputView {
 
     private static final Scanner scanner = new Scanner(System.in);
-    private static final String CAR_NUMBER_QUESTION = "자동차 대수는 몇 대 인가요?";
+
+    private static final String PARTICIPANT_QUESTION = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     private static final String TRY_NUMBER_QUESTION = "시도할 회수는 몇 회 인가요?";
-    private static final String carNumberKey = DataKey.CARNUMBER.getKeyName();
-    private static final String tryNumberKey = DataKey.TRYNUMBER.getKeyName();
+    private static final String INSTANCE_ERROR_MESSAGE = "InputView 클래스틑 인스턴스화 할수 없습니다";
 
-    public static Map<String, Integer> show() {
-        int carNumber = InputStringValidator.valid(enterTheNumberOfCars());
-
-        int tryNumber = InputStringValidator.valid(enterTheNumberOfTry());
-
-        Map<String, Integer> map = new HashMap<>();
-
-        map.put(carNumberKey, carNumber);
-        map.put(tryNumberKey, tryNumber);
-
-        return map;
+    // 인스턴스화 방지용
+    private InputView() {
+        throw new AssertionError(INSTANCE_ERROR_MESSAGE);
     }
 
-    public static RacingGameParam enterParam() {
-        int carNumber = InputStringValidator.valid(enterTheNumberOfCars());
+    public static String getCarNames() {
+        System.out.println(PARTICIPANT_QUESTION);
 
-        int tryNumber = InputStringValidator.valid(enterTheNumberOfTry());
-
-        return new RacingGameParam(carNumber, tryNumber);
-    }
-
-    private static String enterTheNumberOfCars() {
-        System.out.println(CAR_NUMBER_QUESTION);
         return scanner.nextLine();
     }
 
-    private static String enterTheNumberOfTry() {
+    public static int getTryNumber() {
         System.out.println(TRY_NUMBER_QUESTION);
-        return scanner.nextLine();
+
+        return scanner.nextInt();
     }
 
 }
