@@ -11,7 +11,8 @@ class RoundTest {
     @DisplayName("Round 객체를 만들 때 0 이하의 수를 입력하면 예외가 발생한다.")
     void create_round_negative() throws Exception {
         assertThatThrownBy(() -> Round.create(0))
-                .isInstanceOf(RuntimeException.class);
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("0 이상의 수를 입력해주세요.");
     }
 
     @Test
