@@ -11,8 +11,12 @@ class RacingCarTest {
     void is_move() {
         RacingCar car = new RacingCar(new RacingCarPosition(1));
         RacingCar movedCar = new RacingCar();
-        movedCar.move();
-        
+        MovableStrategy movableStrategy = new RandomMovableStrategy();
+        boolean movable = movableStrategy.isMovable();
+        if (movable) {
+            movedCar.move(movableStrategy);
+        }
+
         assertThat(car).isEqualTo(movedCar);
     }
 
