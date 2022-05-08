@@ -32,5 +32,18 @@ class RacingCarsTest {
                 .isInstanceOf(RuntimeException.class)
                 .hasMessage("구분자는 ,를 사용해서 이름을 1개 이상 입력해주세요");
     }
+
+    @Test
+    @DisplayName("레이싱 게임의 승리자를 추출한다")
+    void extract_winner() {
+        RacingCars racingCars = new RacingCars(Arrays.asList(new RacingCar("one", new RacingCarPosition(3)),
+                new RacingCar("two", new RacingCarPosition(2)),
+                new RacingCar("three", new RacingCarPosition(3))));
+        racingCars = racingCars.extractWinner();
+
+        RacingCars winnerCars = new RacingCars(Arrays.asList(new RacingCar("one", new RacingCarPosition(3)),
+                new RacingCar("three", new RacingCarPosition(3))));
+
+        assertThat(racingCars).isEqualTo(winnerCars);
     }
 }
