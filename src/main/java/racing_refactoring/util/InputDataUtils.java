@@ -1,11 +1,11 @@
-package racing_refactoring.view;
+package racing_refactoring.util;
 
 import java.util.Scanner;
 
-public class InputDataView {
+public class InputDataUtils {
     private static final Scanner scanner = new Scanner(System.in);
 
-    private InputDataView() {
+    private InputDataUtils() {
         throw new AssertionError();
     }
 

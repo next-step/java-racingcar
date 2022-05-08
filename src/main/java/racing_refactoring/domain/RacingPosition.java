@@ -3,24 +3,14 @@ package racing_refactoring.domain;
 import java.util.Objects;
 
 public class RacingPosition {
-    private static final int MOVE = 1;
-    private static final int NOT_MOVE = 0;
-
-    private final int position;
+    private int position;
 
     RacingPosition(int position) {
         this.position = position;
     }
 
-    RacingPosition move(MovingStrategy movingStrategy) {
-        return new RacingPosition(this.position + increase(movingStrategy));
-    }
-
-    private int increase(MovingStrategy movingStrategy) {
-        if (movingStrategy.checkCondition()) {
-            return MOVE;
-        }
-        return NOT_MOVE;
+    RacingPosition move() {
+        return new RacingPosition(this.position + 1);
     }
 
     boolean isMaxPosition(int maxPosition) {

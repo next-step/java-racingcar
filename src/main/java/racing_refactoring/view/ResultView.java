@@ -2,7 +2,6 @@ package racing_refactoring.view;
 
 import racing_refactoring.domain.RacingCar;
 import racing_refactoring.domain.RacingCars;
-import racing_refactoring.domain.RacingWinners;
 
 import java.util.List;
 
@@ -34,9 +33,9 @@ public class ResultView {
         System.out.println(stringBuilder);
     }
 
-    public static void renderResult(RacingWinners winners) {
+    public static void renderResult(RacingCars winners) {
         StringBuilder stringBuilder = new StringBuilder();
-        List<RacingCar> winnerList = winners.getWinners();
+        List<RacingCar> winnerList = winners.getRacingCars();
         for (int i = 0; i < winnerList.size(); i++) {
             writeWinnerList(winnerList.get(i), stringBuilder, i);
         }

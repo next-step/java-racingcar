@@ -6,9 +6,9 @@ public class RacingCar {
     private static final int START_POSITION = 0;
 
     private final RacingName name;
-    private final RacingPosition position;
+    private RacingPosition position;
 
-    RacingCar(String name) {
+    public RacingCar(String name) {
         this(name, START_POSITION);
     }
 
@@ -25,9 +25,10 @@ public class RacingCar {
         this.position = position;
     }
 
-    RacingCar move() {
-        MovingStrategy movingStrategy = new RandomMovingStrategy();
-        return new RacingCar(this.name, position.move(movingStrategy));
+    void move(MovingStrategy movingStrategy) {
+        if (movingStrategy.checkCondition()) {
+            this.position = position.move();
+        }
     }
 
     boolean isWinner(int maxPosition) {
