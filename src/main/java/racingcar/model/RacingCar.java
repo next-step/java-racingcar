@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class RacingCar {
     private RacingCarPosition status;
+    private RacingCarName name;
 
     public RacingCar() {
         this.status = new RacingCarPosition();
@@ -11,6 +12,16 @@ public class RacingCar {
 
     public RacingCar(RacingCarPosition status) {
         this.status = status;
+    }
+
+    public RacingCar(String name) {
+        this.status = new RacingCarPosition();
+        this.name = new RacingCarName(name);
+    }
+
+    public RacingCar(String name, RacingCarPosition status) {
+        this.status = status;
+        this.name = new RacingCarName(name);
     }
 
     public void move(MovableStrategy movableStrategy) {
@@ -23,6 +34,8 @@ public class RacingCar {
         return this.status.getValue();
     }
 
+    public String getName() {
+        return this.name.getValue();
     }
 
     @Override

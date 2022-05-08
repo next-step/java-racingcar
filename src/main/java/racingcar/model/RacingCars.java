@@ -1,11 +1,9 @@
 package racingcar.model;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class RacingCars {
-    private static final String INPUT_COUNT_ERROR_MESSAGE = "0 이상의 수를 입력해주세요.";
+    private static final String INPUT_COUNT_ERROR_MESSAGE = "구분자는 ,를 사용해서 이름을 1개 이상 입력해주세요";
 
     private final List<RacingCar> racingCars;
 
@@ -17,11 +15,11 @@ public class RacingCars {
         return Collections.unmodifiableList(racingCars);
     }
 
-    public static RacingCars create(int count) {
-        validate(count);
+    public static RacingCars create(String names) {
         List<RacingCar> racingCars = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
-            racingCars.add(new RacingCar());
+        String[] namesArray = validate(names);
+        for (int i = 0; i < namesArray.length; i++) {
+            racingCars.add(new RacingCar(namesArray[i]));
         }
 
         return new RacingCars(racingCars);
