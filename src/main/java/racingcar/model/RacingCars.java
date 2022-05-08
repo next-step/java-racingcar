@@ -10,11 +10,11 @@ public class RacingCars {
     private final List<RacingCar> racingCars;
 
     public RacingCars(List<RacingCar> racingCars) {
-        this.racingCars = Collections.unmodifiableList(racingCars);
+        this.racingCars = racingCars;
     }
 
     public List<RacingCar> getValue() {
-        return racingCars;
+        return Collections.unmodifiableList(racingCars);
     }
 
     public static RacingCars create(int count) {
