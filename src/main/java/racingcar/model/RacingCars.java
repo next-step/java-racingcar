@@ -27,11 +27,9 @@ public class RacingCars {
         return new RacingCars(racingCars);
     }
 
-    public void move() {
+    public void move(MovableStrategy movableStrategy) {
         for (RacingCar racingCar : racingCars) {
-            if (racingCar.isMovable()) {
-                racingCar.move();
-            }
+            racingCar.move(movableStrategy);
         }
     }
 
