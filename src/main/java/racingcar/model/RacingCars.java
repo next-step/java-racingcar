@@ -31,10 +31,41 @@ public class RacingCars {
         }
     }
 
-    private static int validate(int value) {
-        if (value <= 0) {
+    public RacingCars extractWinner() {
+        List<RacingCar> winner = new ArrayList<>();
+        this.getValue()
+                .stream()
+                .sorted(Comparator.comparing(RacingCar::getStatus).reversed())
+                .forEach((racingCar) -> {
+                    addWinner(winner, racingCar);
+                });
+        return new RacingCars(winner);
+    }
+
+    private void addWinner(List<RacingCar> racingCars, RacingCar racingCar) {
+        if (racingCars.isEmpty() || racingCar.getStatus() == racingCars.get(0).getStatus()) {
+            racingCars.add(racingCar);
+        }
+    }
+
+    private static String[] validate(String value) {
+        if (value.length() <= 0) {
             throw new IllegalStateException(INPUT_COUNT_ERROR_MESSAGE);
         }
-        return value;
+        String[] names = value.split(",");
+        return names;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RacingCars that = (RacingCars) o;
+        return Objects.equals(racingCars, that.racingCars);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(racingCars);
     }
 }
