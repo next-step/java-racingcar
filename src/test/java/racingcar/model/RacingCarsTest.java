@@ -11,7 +11,7 @@ class RacingCarsTest {
     @Test
     @DisplayName("RacingCars 객체를 만든다.")
     void create_racing_cars() {
-        RacingCars rc = RacingCars.create(3);
+        RacingCars rc = RacingCars.create("a,b,c");
         assertThat(rc.getValue().size()).isEqualTo(3);
     }
 
