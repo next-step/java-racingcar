@@ -70,11 +70,8 @@ public class Car implements Comparable<Car> {
 		return this.moveCount.compareTo(target.moveCount);
 	}
 
-	MoveCount maxPosition(MoveCount maxPosition) {
-		if (maxPosition.isLessThen(this.moveCount)) {
-			return moveCount;
-		}
-		return maxPosition;
+	MoveCount max(MoveCount maxPosition) {
+		return this.moveCount.max(maxPosition);
 	}
 
 	@Override

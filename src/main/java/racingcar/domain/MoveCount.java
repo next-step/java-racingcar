@@ -30,6 +30,13 @@ public class MoveCount implements Comparable<MoveCount> {
 		return this.move < moveCount.move;
 	}
 
+	public MoveCount max(MoveCount target) {
+		if (this.move < target.move) {
+			return target;
+		}
+		return this;
+	}
+
 	@Override
 	public int compareTo(MoveCount targetMoveCount) {
 		if (this.move > targetMoveCount.move) {
