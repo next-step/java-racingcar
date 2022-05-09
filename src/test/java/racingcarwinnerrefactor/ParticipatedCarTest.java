@@ -25,7 +25,7 @@ class ParticipatedCarTest {
         car2 = new Car(new Name("crong"), new Position(5));
         car3 = new Car(new Name("honux"), new Position(3));
 
-        participatedCars = new ParticipatedCars(Arrays.asList(new Car[]{car1, car2, car3}));
+        participatedCars = new ParticipatedCars(Arrays.asList(car1, car2, car3));
     }
 
     @Test

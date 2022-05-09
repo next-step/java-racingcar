@@ -5,12 +5,18 @@ import racingcarwinnerrefactor.domain.TryCount;
 import racingcarwinnerrefactor.domain.WinnerCars;
 import racingcarwinnerrefactor.view.ResultView;
 
-public class GameUtil {
+public class GameController {
 
     private final TryCount tryCount;
     private final ParticipatedCars participatedCars;
+    private static GameController gameController;
 
-    public GameUtil(TryCount tryCount, ParticipatedCars participatedCars) {
+    public static GameController gameControllerFactory(TryCount tryCount, ParticipatedCars participatedCars) {
+        if(gameController == null)  gameController = new GameController(tryCount, participatedCars);
+        return gameController;
+    }
+
+    private GameController(TryCount tryCount, ParticipatedCars participatedCars) {
         this.tryCount = tryCount;
         this.participatedCars = participatedCars;
     }
@@ -18,7 +24,9 @@ public class GameUtil {
     public void play() {
         ResultView.init();
 
-        for (int i = 0; tryCount.isBiggerThan(i); i++) {
+        int count = tryCount.getCount();
+
+        for (int i = 0; i < count ; i++) {
             participatedCars.moveAllCars();
             ResultView.printCurrentResult(participatedCars);
         }
@@ -27,7 +35,7 @@ public class GameUtil {
     }
 
     public void findWinner() {
-        WinnerCars winnerCars = ObjectFactory.winnerCars();
+        WinnerCars winnerCars = new WinnerCars(participatedCars);
         ResultView.printWinnerResult(winnerCars);
     }
 }

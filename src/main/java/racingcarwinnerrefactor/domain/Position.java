@@ -1,6 +1,5 @@
 package racingcarwinnerrefactor.domain;
 
-import racingcarwinnerrefactor.Constants;
 import racingcarwinnerrefactor.util.Strategy;
 
 import java.util.Objects;
@@ -8,6 +7,8 @@ import java.util.Objects;
 public class Position {
     private int position;
     private StringBuilder stringPosition = new StringBuilder();
+    public static final String GO = "-";
+    public static final int ADD = 1;
 
     public Position() {
         this(0);
@@ -18,8 +19,8 @@ public class Position {
     }
 
     public void moveForward() {
-        this.position += Constants.ADD;
-        stringPosition.append(Constants.GO);
+        this.position += ADD;
+        stringPosition.append(GO);
     }
 
     public boolean isBiggerThan(Position maxPosition) {

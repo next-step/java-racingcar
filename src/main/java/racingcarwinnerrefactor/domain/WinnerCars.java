@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 public class WinnerCars {
 
     private final List<Car> cars;
+    public static final String DELIMITER = ", ";
 
     public WinnerCars(ParticipatedCars participatedCars) {
         List<Car> winnerCars = participatedCars.findWinnerList();
@@ -21,6 +22,6 @@ public class WinnerCars {
 
     @Override
     public String toString() {
-        return cars.stream().map(Car::toStringName).collect(Collectors.joining(", "));
+        return cars.stream().map(Car::toStringName).collect(Collectors.joining(DELIMITER));
     }
 }

@@ -18,12 +18,12 @@ class PositionTest {
     @Test
     void 자동차위치_한칸전진() {
         position.move(() -> true);
-        assertThat(position.equals(new Position(1))).isTrue();
+        assertThat(position).isEqualTo(new Position(1));
     }
 
     @Test
     void 자동차위치_정지() {
         position.move(() -> false);
-        assertThat(position.equals(new Position())).isTrue();
+        assertThat(position).isEqualTo(new Position(0));
     }
 }

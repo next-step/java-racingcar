@@ -1,9 +1,9 @@
 package racingcarwinnerrefactor.domain;
 
-import racingcarwinnerrefactor.Constants;
 import racingcarwinnerrefactor.util.Strategy;
 
 public class Car {
+    public static final String NAME_DELIMITER = " : ";
 
     private final Name name;
     private final Position position;
@@ -37,7 +37,7 @@ public class Car {
     @Override
     public String toString() {
         StringBuilder out = new StringBuilder();
-        out.append(name.toString()).append(Constants.NAME_DELIMITER).append(position.toString());
+        out.append(name.toString()).append(NAME_DELIMITER).append(position.toString());
         return out.toString();
     }
 
