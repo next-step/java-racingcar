@@ -12,17 +12,8 @@ public class CountOfGamePlay {
 		this.playCount = playCount;
 	}
 
-	public List<RoundResult> run(RacingCars racingCars, EngineStrategy engineStrategy) {
-		List<RoundResult> results = new ArrayList<>();
-		for (int i = 0; i < playCount; i++) {
-			race(racingCars, engineStrategy);
-		}
-		return results;
-	}
-
-	public void race(RacingCars racingCars, EngineStrategy engineStrategy) {
+	public void race() {
 		if (racing()) {
-			racingCars.play(engineStrategy);
 			playCount--;
 		}
 	}

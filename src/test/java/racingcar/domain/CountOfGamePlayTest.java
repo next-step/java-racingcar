@@ -12,9 +12,7 @@ public class CountOfGamePlayTest {
 	public void reduceCountTest() {
 		CountOfGamePlay countOfGamePlay = new CountOfGamePlay(5);
 
-		countOfGamePlay.race(
-			RacingCars.of(new CarNames("zieun,poby")),
-			new EngineRandomStrategy());
+		countOfGamePlay.race();
 
 		assertThat(countOfGamePlay).isEqualTo(new CountOfGamePlay(4));
 	}
