@@ -3,18 +3,20 @@ package racingcar;
 import java.util.Scanner;
 
 public class InputView {
-    private static int numberOfCars;
-    private static int numberOfGames;
+
+    public static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        System.out.println("<InputView>");
+    }
 
+    public static int getNumberOfCars() {
         System.out.print("자동차 대수는 몇 대 인가요?");
-        numberOfCars = scanner.nextInt();
+        return scanner.nextInt();
+    }
 
+    public static int getNumberOfGames() {
         System.out.print("시도할 횟수는 몇 회 인가요?");
-        numberOfGames = scanner.nextInt();
-
-        RacingGame.racing(numberOfCars, numberOfGames);
+        return scanner.nextInt();
     }
 }

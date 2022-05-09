@@ -58,7 +58,7 @@ public class StringAddCalculator {
         }
         return sum;
     }
-    
+
     private static int toInt(String value) {
         int number = Integer.parseInt(value);
         if (0 > number) {
