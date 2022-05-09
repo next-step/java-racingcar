@@ -3,8 +3,6 @@ package racingcar.domain;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import racingcar.view.RoundResult;
-
 public class RacingCars {
 	private final List<Car> cars;
 
@@ -19,13 +17,9 @@ public class RacingCars {
 			.collect(Collectors.toList()));
 	}
 
-	public RoundResult play(EngineStrategy engineStrategy) {
+	public void play(EngineStrategy engineStrategy) {
 		cars.forEach(
 			car -> car.run(engineStrategy.generate()));
-
-		return new RoundResult(cars.stream()
-			.map(Car::toString)
-			.collect(Collectors.toList()));
 	}
 
 	public boolean isSameSize(int size) {
@@ -34,5 +28,11 @@ public class RacingCars {
 
 	public Winners rankWinners() {
 		return new Winners(cars);
+	}
+
+	public List<String> results() {
+		return cars.stream()
+			.map(Car::toString)
+			.collect(Collectors.toList());
 	}
 }

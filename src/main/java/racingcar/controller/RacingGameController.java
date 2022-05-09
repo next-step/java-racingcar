@@ -18,18 +18,21 @@ public class RacingGameController {
 		int playCount = InputView.inputPlayCount();
 
 		CountOfGamePlay countOfGamePlay = new CountOfGamePlay(playCount);
-
 		RacingCars racingCars = RacingCars.of(carNames);
 
-		List<RoundResult> results = new ArrayList<>();
+		List<RoundResult> roundResults = playResults(countOfGamePlay, racingCars);
+
+		ResultView.printGameRound(roundResults);
+		ResultView.printWinner(racingCars.rankWinners());
+	}
+
+	private List<RoundResult> playResults(CountOfGamePlay countOfGamePlay, RacingCars racingCars) {
+		List<RoundResult> roundResults = new ArrayList<>();
 		while (countOfGamePlay.racing()) {
 			racingCars.play(new EngineRandomStrategy());
 			countOfGamePlay.race();
+			roundResults.add(new RoundResult(racingCars.results()));
 		}
-
-		// List<RoundResult> roundResults = countOfGamePlay.run(racingCars, new EngineRandomStrategy());
-
-		// ResultView.printGameRound(roundResults);
-		ResultView.printWinner(racingCars.rankWinners());
+		return roundResults;
 	}
 }
