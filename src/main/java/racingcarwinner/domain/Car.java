@@ -5,17 +5,20 @@ import racingcarwinner.strategy.MoveStrategy;
 
 public class Car {
     private static final String POSITION_STRING = "-";
+    private static final int NAME_MAX_LENGTH = 5;
+    private static final int GO = 1;
     private final StringBuilder position;
     private final String name;
     private int currentPosition;
 
     public Car(String name) {
-        this.name = assertNameSize(name);
+        assertValidName(name);
+        this.name = name;
         position = new StringBuilder().append(name).append(" : ");
     }
 
-    private String assertNameSize(String name) {
-        if(name.length() <= 5)  return name;
+    private String assertValidName(String name) {
+        if(name.length() <= NAME_MAX_LENGTH)  return name;
         throw new IllegalNameSizeException();
     }
 
@@ -33,7 +36,7 @@ public class Car {
 
     private void go() {
         position.append(POSITION_STRING);
-        currentPosition += 1;
+        currentPosition += GO;
     }
 
     @Override
@@ -46,7 +49,6 @@ public class Car {
     }
 
     public int isMax(int max) {
-        if(max < currentPosition)   return currentPosition;
-        return max;
+        return Math.max(max, currentPosition);
     }
 }

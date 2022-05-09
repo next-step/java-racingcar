@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 public class WinnerCars {
 
     private final List<Car> winnerCars;
-    private final StringBuilder stringBuilder = new StringBuilder();
 
     public WinnerCars(ParticipatedCars participatedCars) {
         this.winnerCars = participatedCars.getMaxPositionList();

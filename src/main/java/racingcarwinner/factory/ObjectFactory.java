@@ -9,21 +9,18 @@ import racingcarwinner.service.RacingCarGameUtils;
 import racingcarwinner.view.InputView;
 
 public class ObjectFactory {
-    public Car createCar(String name) {
-        return new Car(name);
-    }
 
-    public ParticipatedCars createParticipatedCars() {
+    public static ParticipatedCars createParticipatedCars() {
         String carNames = InputView.getCarNamesInput();
         return new ParticipatedCars(ParticipatedCarsUtils.splitCarNames(carNames));
     }
 
-    public TryCount createTryCount() {
+    public static TryCount createTryCount() {
         int number = InputView.getTryCountInput();
         return new TryCount(number);
     }
 
-    public RacingCarGameUtils createRacingCarGameUtils(TryCount tryCount) {
+    public static RacingCarGameUtils createRacingCarGameUtils(TryCount tryCount) {
         return new RacingCarGameUtils(tryCount);
     }
 }

@@ -7,24 +7,21 @@ import racingcarwinner.view.OutputView;
 
 public class RacingCarGameUtils {
     private final TryCount tryCount;
-    private OutputView outputView;
 
     public RacingCarGameUtils(TryCount tryCount) {
         this.tryCount = tryCount;
-        outputView = new OutputView();
+
     }
 
     public void play(ParticipatedCars participatedCars) {
+        OutputView.print();
         for(int i = 0; i < tryCount.getTryCount(); i++) {
             participatedCars.moveAllCars();
-            outputView.printGameResult(participatedCars);
+            OutputView.printGameResult(participatedCars);
         }
 
         WinnerCars winnerCars = new WinnerCars(participatedCars);
-        outputView.printWinnerResult(winnerCars);
+        OutputView.printWinnerResult(winnerCars);
     }
-
-
-
 
 }

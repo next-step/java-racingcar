@@ -11,13 +11,11 @@ public class RacingCarGame {
 
     public static void main(String[] args) {
 
-        ObjectFactory factory = new ObjectFactory();
+        ParticipatedCars participatedCars = ObjectFactory.createParticipatedCars();
 
-        ParticipatedCars participatedCars = factory.createParticipatedCars();
+        TryCount tryCount = ObjectFactory.createTryCount();
 
-        TryCount tryCount = factory.createTryCount();
-
-        RacingCarGameUtils racingCarGameUtils = factory.createRacingCarGameUtils(tryCount);
+        RacingCarGameUtils racingCarGameUtils = ObjectFactory.createRacingCarGameUtils(tryCount);
 
         racingCarGameUtils.play(participatedCars);
 
