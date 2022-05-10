@@ -22,7 +22,7 @@ public class Winners {
 		MoveCount maxPosition = MoveCount.of(0);
 		for (Car car : cars) {
 			// 최대값비교하기
-			maxPosition = car.maxPosition(maxPosition);
+			maxPosition = car.max(maxPosition);
 		}
 		return maxPosition;
 	}
