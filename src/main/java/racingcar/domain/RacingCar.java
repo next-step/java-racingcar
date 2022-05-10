@@ -53,8 +53,7 @@ public class RacingCar {
         return Objects.hash(name, position);
     }
 
-    @Override
-    public String toString() {
+    public String racingCarStatusString() {
         return name + " : " + "-".repeat(position);
     }
 }

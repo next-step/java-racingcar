@@ -31,7 +31,7 @@ public class Race {
 
     private void oneRound(RandomNumbers randomNumbers) {
         racingCars.moveCars(randomNumbers);
-        raceResults.add(racingCars.toString());
+        raceResults.add(racingCars.racingCarsStatusString());
     }
 
     public List<String> getRaceResults() {

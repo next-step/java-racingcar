@@ -73,11 +73,10 @@ public class RacingCars {
         return Objects.hash(racingCars);
     }
 
-    @Override
-    public String toString() {
+    public String racingCarsStatusString() {
         String result = "";
         for (RacingCar racingCar : racingCars) {
-            result = result + racingCar.toString() + "\n";
+            result = result + racingCar.racingCarStatusString() + "\n";
         }
 
         return result + "\n";
