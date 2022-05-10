@@ -26,10 +26,6 @@ public class MoveCount implements Comparable<MoveCount> {
 		return MOVE_DEFAULT_STRING.repeat(move);
 	}
 
-	public boolean isLessThen(MoveCount moveCount) {
-		return this.move < moveCount.move;
-	}
-
 	public MoveCount max(MoveCount target) {
 		if (this.move < target.move) {
 			return target;

@@ -14,4 +14,14 @@ public class MoveCountTest {
 
 		assertThat(moveCount.equals(compareMoveCount)).isTrue();
 	}
+
+	@DisplayName("더 큰 값을 리턴")
+	@Test
+	public void maxReturnTest() {
+		MoveCount moveCount = MoveCount.of(4);
+		MoveCount target = MoveCount.of(9);
+
+		assertThat(moveCount.max(target)).isEqualTo(new MoveCount(9));
+		assertThat(target.max(moveCount)).isEqualTo(new MoveCount(9));
+	}
 }
