@@ -17,7 +17,7 @@ public class ResultView {
     private static final String WINNER_COMMENT = "가 최종 우승했습니다.\n";
     private static final String SEMICOLON = " : ";
     private static final String NEXT_LINE = "\n";
-    private static final String INSTANCE_ERROR_MESSAGE = "InputView 클래스틑 인스턴스화 할수 없습니다";
+    private static final String INSTANCE_ERROR_MESSAGE = "InputView 클래스를 인스턴스화 할수 없습니다";
 
     private static StringBuilder strBuilder;
 
