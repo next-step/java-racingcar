@@ -10,7 +10,6 @@ public class InputView {
     private static final String TRY_NUMBER_QUESTION = "시도할 회수는 몇 회 인가요?";
     private static final String INSTANCE_ERROR_MESSAGE = "InputView 클래스틑 인스턴스화 할수 없습니다";
 
-    // 인스턴스화 방지용
     private InputView() {
         throw new AssertionError(INSTANCE_ERROR_MESSAGE);
     }

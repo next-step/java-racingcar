@@ -14,17 +14,19 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class CarsTest {
 
     @Test
-    @DisplayName("cars 생성자 불변성 보장 테스트")
+    @DisplayName("Cars 객체 생성시 불변성 보장 테스트")
     void carsConstructorTest() {
         List<Car> carList = new ArrayList<>();
         carList.add(new Car(new Participant("hong"), new Position(3)));
+
         Cars cars = new Cars(carList);
         carList.add(new Car(new Participant("bok"), new Position(2)));
+
         assertThat(cars.getCars()).doesNotContain(new Car(new Participant("bok"), new Position(2)));
     }
 
     @Test
-    @DisplayName("getCars 불변성 보장 테스트")
+    @DisplayName("Cars getCars 반환값 불변성 보장 테스트")
     void getCarsTest() {
         List<Car> carList = new ArrayList<>();
         carList.add(new Car(new Participant("hong"), new Position(3)));

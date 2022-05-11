@@ -11,31 +11,33 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(String names) {
-        this.cars = initCars(names);
-    }
-
     public Cars(List<Car> cars) {
         this.cars = new ArrayList<>(cars);
     }
 
-    private List<Car> initCars(String carNames) {
+    public static Cars newInstance(String carNames) {
         String[] names = StringUtils.split(carNames);
         List<Car> cars = new ArrayList<>();
         for (String name : names) {
-            cars.add(new Car(new Participant(name)));
+            cars.add(Car.newInstance(name));
         }
 
-        return cars;
+        return new Cars(cars);
     }
 
     public void move(MovePolicy policy) {
         for (Car car : cars) {
-            car.move(policy.apply());
+            car.move(policy);
         }
     }
 
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
+    }
+
+    public void save() {
+        for (Car car : cars) {
+            car.save(RacingRecord.newInstance(car.isCurrentPosition()));
+        }
     }
 }

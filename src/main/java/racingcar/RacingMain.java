@@ -1,8 +1,9 @@
 package racingcar;
 
-import racingcar.domain.RacingGame;
+import racingcar.domain.racinggame.RacingGame;
 import racingcar.domain.policy.MovePolicy;
 import racingcar.domain.policy.ZeroToNineRandomMovePolicy;
+import racingcar.domain.racinggame.TryNumber;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
@@ -12,14 +13,13 @@ public class RacingMain {
         int tryNumber = InputView.getTryNumber();
 
         MovePolicy movePolicy = new ZeroToNineRandomMovePolicy();
+
         RacingGame racingGame = new RacingGame(carNames, tryNumber, movePolicy);
 
         ResultView.printHead();
-        while (racingGame.isKeepGoing()) {
-            racingGame.race();
-            ResultView.printCars(racingGame.getCars());
-        }
+        racingGame.race();
 
+        ResultView.printRacingGameResult(racingGame.getCars(), new TryNumber(tryNumber));
         ResultView.printWinners(racingGame.getWinners());
     }
 }

@@ -6,6 +6,7 @@ import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
 import racingcar.domain.car.Participant;
 import racingcar.domain.car.Position;
+import racingcar.domain.racinggame.Winners;
 
 import java.util.ArrayList;
 import java.util.List;

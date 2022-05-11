@@ -1,7 +1,10 @@
-package racingcar.domain;
+package racingcar.domain.racinggame;
 
 import racingcar.domain.car.Cars;
 import racingcar.domain.policy.MovePolicy;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RacingGame {
 
@@ -10,18 +13,20 @@ public class RacingGame {
     private final TryNumber tryNumber;
 
     public RacingGame(String carNames, int tryNumber, MovePolicy policy) {
-        this.cars = new Cars(carNames);
+        this.cars = Cars.newInstance(carNames);
         this.tryNumber = new TryNumber(tryNumber);
         this.policy = policy;
     }
 
-
     public void race() {
-        this.tryNumber.decrease();
-        this.cars.move(policy);
+        while(isKeepGoing()) {
+            this.cars.move(policy);
+            this.cars.save();
+            this.tryNumber.decrease();
+        }
     }
 
-    public boolean isKeepGoing() {
+    private boolean isKeepGoing() {
         return this.tryNumber.isNotZero();
     }
 
@@ -32,6 +37,4 @@ public class RacingGame {
     public Winners getWinners() {
         return new Winners(cars);
     }
-
-
 }
