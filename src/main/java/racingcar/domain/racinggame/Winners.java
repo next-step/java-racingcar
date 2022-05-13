@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.racinggame;
 
 import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
@@ -7,6 +7,7 @@ import racingcar.domain.car.Position;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Winners {
 
@@ -33,14 +34,9 @@ public class Winners {
     }
 
     private List<Car> addWinners(List<Car> cars, Position maxPosition) {
-        List<Car> winners = new ArrayList<>();
-        for (Car car : cars) {
-            if (car.isMaxPosition(maxPosition)) {
-                winners.add(car);
-            }
-        }
-
-        return winners;
+        return cars.stream()
+                .filter(car -> car.isMaxPosition(maxPosition))
+                .collect(Collectors.toList());
     }
 
     public List<Car> getWinners() {

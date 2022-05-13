@@ -1,5 +1,9 @@
 package racingcar.domain.car;
 
+import racingcar.domain.policy.MovePolicy;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Car {
@@ -10,15 +14,20 @@ public class Car {
 
     private Position position = new Position();
 
+    private RacingRecords records;
+
+    public static Car newInstance(String name) {
+        return new Car(new Participant(name));
+    }
 
     public Car(Participant participant) {
         this(participant, new Position());
     }
 
-
     public Car(Participant participant, Position position) {
         this.participant = participant;
         this.position = position;
+        this.records = new RacingRecords();
     }
 
     public Position maxPosition(Position maxPosition) {
@@ -29,6 +38,15 @@ public class Car {
         return maxPosition;
     }
 
+
+    public Position isCurrentPosition() {
+        return this.position;
+    }
+
+    public RacingRecord readRacingRecord(int tryNumber) {
+        return this.records.readRacingRecord(tryNumber);
+    }
+
     public Position getPosition() {
         return this.position;
     }
@@ -37,16 +55,21 @@ public class Car {
         return this.participant;
     }
 
-    public void move(boolean isGo) {
-        if (isGo) {
+    public void move(MovePolicy policy) {
+        if (policy.apply()) {
             this.position.plus();
         }
+    }
+
+    public void save(RacingRecord racingRecord) {
+        List<RacingRecord> recordList = new ArrayList<>(records.getRacingRecords());
+        recordList.add(racingRecord);
+        this.records = new RacingRecords(recordList);
     }
 
     public boolean isMaxPosition(Position maxPosition) {
         return this.position.equals(maxPosition);
     }
-
 
     @Override
     public boolean equals(Object o) {

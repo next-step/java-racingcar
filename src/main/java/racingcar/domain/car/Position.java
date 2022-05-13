@@ -28,6 +28,10 @@ public class Position implements Comparable<Position> {
         return this.value;
     }
 
+    public void plus() {
+        this.value = this.value + 1;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -40,10 +44,12 @@ public class Position implements Comparable<Position> {
         return value == position1.value;
     }
 
+
     @Override
     public int hashCode() {
         return Objects.hash(value);
     }
+
 
     @Override
     public String toString() {
@@ -55,9 +61,5 @@ public class Position implements Comparable<Position> {
     @Override
     public int compareTo(Position position) {
         return Integer.compare(this.value, position.getValue());
-    }
-
-    public void plus() {
-        this.value++;
     }
 }

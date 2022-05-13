@@ -2,11 +2,19 @@ package racingcar.domain.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.policy.MovePolicy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 
 class CarTest {
+
+
+    @Test
+    void saveTest() {
+        Car car = Car.newInstance("hong");
+
+    }
 
     @Test
     void findMaxPositionTest() {
@@ -29,7 +37,7 @@ class CarTest {
     @DisplayName("자동차 이동 테스트")
     void moveTest() {
         Car car = new Car(new Participant("hong"));
-        car.move(true);
+        car.move(() -> true);
         assertThat(car.getPosition()).isEqualTo(new Position(1));
     }
 
@@ -37,9 +45,9 @@ class CarTest {
     @DisplayName("자동차 정지 테스트")
     void stopTest() {
         Car car = new Car(new Participant("hong"));
-        car.move(true);
-        car.move(false);
-        car.move(false);
+        car.move(() -> true);
+        car.move(() -> false);
+        car.move(() -> false);
         assertThat(car.getPosition()).isEqualTo(new Position(1));
     }
 }
