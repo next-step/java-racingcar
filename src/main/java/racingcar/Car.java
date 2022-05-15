@@ -1,43 +1,43 @@
 package racingcar;
 
-import java.util.Random;
-
 public class Car {
-    private int carNumber;
+    
+    private static final int STANDARD_NUMBER = 4;
+
+    private String carName;
     private int position;
 
-    private final int STANDARD_NUMBER = 4;
-    public static Random random = new Random();
-
-    public Car(int carNumber) {
-        new Car(carNumber, 0);
+    public Car(String carName) {
+        this.carName = carName;
+        this.position = 0;
     }
 
-    private Car(int carNumber, int position) {
-        this.carNumber = carNumber;
-        this.position = position;
+    public String getCarName() {
+        return carName;
     }
 
     public void moveOrStop() {
-        if (randomNumberExtraction() >= STANDARD_NUMBER) {
+        if (moveForwardYn()) {
             increasePosition();
         }
+    }
+
+    public int getRandomNumber() {
+        RandomNumber randomNumber = new RandomNumber();
+        return randomNumber.getRandomNumber();
+    }
+
+    public boolean moveForwardYn() {
+        return getRandomNumber() >= STANDARD_NUMBER;
     }
 
     private void increasePosition() {
         position++;
     }
 
-    public static int randomNumberExtraction() {
-        return random.nextInt(10);
-    }
-
     public int getPosition() {
         return position;
     }
 
-    public int getCarNumber() {
-        return carNumber;
-    }
 }
 
