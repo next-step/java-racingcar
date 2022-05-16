@@ -7,21 +7,16 @@ public class RacingCar {
     private RacingCarName name;
 
     public RacingCar() {
-        this.status = new RacingCarPosition();
-    }
 
-    public RacingCar(RacingCarPosition status) {
-        this.status = status;
-    }
-
-    public RacingCar(String name) {
-        this.status = new RacingCarPosition();
-        this.name = new RacingCarName(name);
     }
 
     public RacingCar(String name, RacingCarPosition status) {
         this.status = status;
         this.name = new RacingCarName(name);
+    }
+
+    public RacingCar(String name) {
+        this(name, new RacingCarPosition());
     }
 
     public void move(MovableStrategy movableStrategy) {

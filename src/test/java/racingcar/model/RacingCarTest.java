@@ -9,8 +9,8 @@ class RacingCarTest {
     @Test
     @DisplayName("RacingCar가 움직였는지 확인한다.")
     void is_move() {
-        RacingCar car = new RacingCar(new RacingCarPosition(1));
-        RacingCar movedCar = new RacingCar();
+        RacingCar car = new RacingCar("car1", new RacingCarPosition(1));
+        RacingCar movedCar = new RacingCar("car2", new RacingCarPosition(1));
         MovableStrategy movableStrategy = new RandomMovableStrategy();
         boolean movable = movableStrategy.isMovable();
         if (movable) {
