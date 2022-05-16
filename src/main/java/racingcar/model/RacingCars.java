@@ -17,7 +17,8 @@ public class RacingCars {
 
     public static RacingCars create(String names) {
         List<RacingCar> racingCars = new ArrayList<>();
-        String[] namesArray = validate(names);
+        validate(names);
+        String[] namesArray = split(names);
         for (int i = 0; i < namesArray.length; i++) {
             racingCars.add(new RacingCar(namesArray[i]));
         }
@@ -48,12 +49,14 @@ public class RacingCars {
         }
     }
 
-    private static String[] validate(String value) {
+    private static void validate(String value) {
         if (value.length() <= 0) {
             throw new IllegalStateException(INPUT_COUNT_ERROR_MESSAGE);
         }
-        String[] names = value.split(",");
-        return names;
+    }
+
+    private static String[] split(String value) {
+        return value.split(",");
     }
 
     @Override
