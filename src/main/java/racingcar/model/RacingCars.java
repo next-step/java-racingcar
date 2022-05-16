@@ -19,8 +19,8 @@ public class RacingCars {
         List<RacingCar> racingCars = new ArrayList<>();
         validate(names);
         String[] namesArray = split(names);
-        for (int i = 0; i < namesArray.length; i++) {
-            racingCars.add(new RacingCar(namesArray[i]));
+        for (String name : namesArray) {
+            racingCars.add(new RacingCar(name));
         }
 
         return new RacingCars(racingCars);
