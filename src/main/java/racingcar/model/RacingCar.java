@@ -38,11 +38,12 @@ public class RacingCar {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RacingCar racingCar = (RacingCar) o;
-        return Objects.equals(status, racingCar.status);
+        return Objects.equals(status, racingCar.status) && Objects.equals(name, racingCar.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(status);
+        return Objects.hash(status, name);
+    }
     }
 }
