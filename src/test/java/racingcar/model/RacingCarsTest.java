@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -14,8 +15,10 @@ class RacingCarsTest {
     @Test
     @DisplayName("RacingCars 객체를 만든다.")
     void create_racing_cars() {
-        RacingCars rc = RacingCars.create("a,b,c");
-        assertThat(rc.getValue().size()).isEqualTo(3);
+        RacingCars rc = RacingCars.create("a");
+
+        List<RacingCar> cars = List.of(new RacingCar("a"));
+        assertThat(rc).isEqualTo(new RacingCars(cars));
     }
 
     @Test
