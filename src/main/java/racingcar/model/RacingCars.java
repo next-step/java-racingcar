@@ -1,6 +1,9 @@
 package racingcar.model;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
 
 public class RacingCars {
     private static final String INPUT_COUNT_ERROR_MESSAGE = "구분자는 ,를 사용해서 이름을 1개 이상 입력해주세요";
@@ -34,9 +37,8 @@ public class RacingCars {
 
     public RacingCars extractWinner() {
         List<RacingCar> winner = new ArrayList<>();
-        this.getValue()
-                .stream()
-                .sorted(Comparator.comparing(RacingCar::getStatus).reversed())
+        racingCars.stream()
+                .sorted(RacingCar::compareTo)
                 .forEach((racingCar) -> {
                     addWinner(winner, racingCar);
                 });
