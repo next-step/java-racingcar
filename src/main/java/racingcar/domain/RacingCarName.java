@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.domain;
 
 public class RacingCarName {
     private static final String NAME_LENGTH_ERROR_MESSAGE = "자동차 이름은 5자를 초과할 수 없습니다.";
