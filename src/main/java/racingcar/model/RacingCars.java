@@ -3,42 +3,74 @@ package racingcar.model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class RacingCars {
-    private static final String INPUT_COUNT_ERROR_MESSAGE = "0 이상의 수를 입력해주세요.";
+    private static final String INPUT_COUNT_ERROR_MESSAGE = "구분자는 ,를 사용해서 이름을 1개 이상 입력해주세요";
 
     private final List<RacingCar> racingCars;
 
     public RacingCars(List<RacingCar> racingCars) {
-        this.racingCars = Collections.unmodifiableList(racingCars);
+        this.racingCars = racingCars;
     }
 
     public List<RacingCar> getValue() {
-        return racingCars;
+        return Collections.unmodifiableList(racingCars);
     }
 
-    public static RacingCars create(int count) {
-        validate(count);
+    public static RacingCars create(String names) {
         List<RacingCar> racingCars = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
-            racingCars.add(new RacingCar());
+        validate(names);
+        String[] namesArray = split(names);
+        for (String name : namesArray) {
+            racingCars.add(new RacingCar(name));
         }
 
         return new RacingCars(racingCars);
     }
 
-    public void move() {
+    public void move(MovableStrategy movableStrategy) {
         for (RacingCar racingCar : racingCars) {
-            if (racingCar.isMovable()) {
-                racingCar.move();
-            }
+            racingCar.move(movableStrategy);
         }
     }
 
-    private static int validate(int value) {
-        if (value <= 0) {
+    public RacingCars extractWinner() {
+        List<RacingCar> winner = new ArrayList<>();
+        racingCars.stream()
+                .sorted(RacingCar::compareTo)
+                .forEach((racingCar) -> {
+                    addWinner(winner, racingCar);
+                });
+        return new RacingCars(winner);
+    }
+
+    private void addWinner(List<RacingCar> racingCars, RacingCar racingCar) {
+        if (racingCars.isEmpty() || racingCar.getStatus() == racingCars.get(0).getStatus()) {
+            racingCars.add(racingCar);
+        }
+    }
+
+    private static void validate(String value) {
+        if (value.length() <= 0) {
             throw new IllegalStateException(INPUT_COUNT_ERROR_MESSAGE);
         }
-        return value;
+    }
+
+    private static String[] split(String value) {
+        return value.split(",");
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RacingCars that = (RacingCars) o;
+        return Objects.equals(racingCars, that.racingCars);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(racingCars);
     }
 }
