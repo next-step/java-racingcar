@@ -1,33 +1,42 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
+    private ResultView resultView = new ResultView();
+    private List<Car> cars = new ArrayList<>();
+    private int maxPosition = 0;
 
-    private List<Car> cars;
+    public Cars(String inputNames) {
+        CarNameValidation carNameValidation = new CarNameValidation(inputNames);
+        makeCars(carNameValidation.getCarNames());
+    }
 
-    public Cars(List<Car> cars) {
-        this.cars = cars;
+    public void makeCars(String[] names) {
+        for (int i = 0; i < names.length; i++) {
+            cars.add(new Car(names[i]));
+        }
     }
 
     public void move() {
-        cars.forEach(Car::moveOrStop);
-        print();
-    }
-
-    public void print() {
         for (Car car : cars) {
-            System.out.println(append(car.getPosition()));
+            car.moveOrStop(RandomNumber.randomNumberExtraction());
+            saveMaxPosition(car.getPosition());
+            resultView.roundResult(car.getCarName(), car.getPosition());
         }
-        System.out.println("");
+        resultView.emptyLIne();
     }
 
-    public static String append(int position) {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < position; i++) {
-            stringBuilder.append("-");
-        }
-        return stringBuilder.toString();
+    protected void saveMaxPosition(int position) {
+        maxPosition = Math.max(maxPosition, position);
     }
 
+    public int maxPosition() {
+        return maxPosition;
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
 }

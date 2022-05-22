@@ -35,11 +35,6 @@ public class StringAddCalculator {
         return false;
     }
 
-    /*
-    배열보다는 리스트(제네릭)를 사용하는건 어떨까요?
-    이펙티브 자바 아이템 28: 배열보다는 리스트를 사용하라를 한번 찾아보시면 좋을거 같아요.
-    --> 배열오류 (런타임에서 발생) << 리스트오류(컴파일 오류) :에러를 훨씬 빨리 잡을 수 있음
-     */
     private static ArrayList<Integer> toInts(String[] values) {
 
         ArrayList<Integer> numbers = new ArrayList<>();

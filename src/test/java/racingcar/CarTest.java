@@ -1,21 +1,24 @@
 package racingcar;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Java6Assertions.assertThat;
 
 public class CarTest {
-    @DisplayName("랜덤넘버추출 체크_숫자가 0이상")
+    Car car = new Car("TestCar");
+
     @Test
-    void 게임횟수_숫자확인_1이상() {
-        assertThat(Car.randomNumberExtraction()).isGreaterThanOrEqualTo(0);
+    void 랜덤값_4이상_전진테스트() {
+        car.moveOrStop(4);
+        car.moveOrStop(4);
+        car.moveOrStop(4);
+        assertThat(car.getPosition()).isEqualTo(3);
     }
 
-    @DisplayName("랜덤넘버추출 체크_숫자가 9이하인지 확인")
     @Test
-    void 게임횟수_숫자확인_9이하() {
-        assertThat(Car.randomNumberExtraction()).isLessThanOrEqualTo(9);
+    void 랜덤값_4이하_정지테스트() {
+        car.moveOrStop(0);
+        car.moveOrStop(1);
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 }
-
