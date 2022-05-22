@@ -1,10 +1,9 @@
 package racingcar;
 
 public class Car {
-    
-    private static final int STANDARD_NUMBER = 4;
 
-    private String carName;
+    private static final int STANDARD_NUMBER = 4;
+    private final String carName;
     private int position;
 
     public Car(String carName) {
@@ -16,23 +15,10 @@ public class Car {
         return carName;
     }
 
-    public void moveOrStop() {
-        if (moveForwardYn()) {
-            increasePosition();
+    public void moveOrStop(int randomNumber) {
+        if (randomNumber >= STANDARD_NUMBER) {
+            position++;
         }
-    }
-
-    public int getRandomNumber() {
-        RandomNumber randomNumber = new RandomNumber();
-        return randomNumber.getRandomNumber();
-    }
-
-    public boolean moveForwardYn() {
-        return getRandomNumber() >= STANDARD_NUMBER;
-    }
-
-    private void increasePosition() {
-        position++;
     }
 
     public int getPosition() {

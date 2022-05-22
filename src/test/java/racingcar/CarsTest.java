@@ -3,24 +3,26 @@ package racingcar;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
+import static org.assertj.core.api.Java6Assertions.assertThatThrownBy;
 
 
 public class CarsTest {
     Cars cars = new Cars("car");
+
     @Test
-    void 포지션_문자로_출력() {
-        assertThat(cars.append(3)).isEqualTo("---");
+    void 차이름_길이_최댓값_초과() {
+        assertThatThrownBy(() -> new Cars("나는자동차이름입니다")).isInstanceOf(RuntimeException.class);
     }
 
     @Test
-    void 이름_최대자리수_5_초과_여부() {
-        assertThat(cars.checkLength("내이름은홍길동")).isFalse();
-        assertThat(cars.checkLength("내이름은")).isTrue();
+    void 차이름_길이_최솟값_미달() {
+        assertThatThrownBy(() -> new Cars("")).isInstanceOf(RuntimeException.class);
     }
 
     @Test
-    void 최댓값_구하기() {
-        assertThat(cars.setMaxPosition(0, 5)).isEqualTo(5);
+    void 포지션_최댓값_구하기() {
+        cars.saveMaxPosition(3);
+        cars.saveMaxPosition(5);
+        assertThat(cars.maxPosition()).isEqualTo(5);
     }
-
 }
