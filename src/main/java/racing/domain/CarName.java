@@ -15,7 +15,7 @@ public class CarName {
     }
 
     private void validate(final String name) {
-        if (name.isEmpty()) {
+        if (Objects.isNull(name) || name.isEmpty()) {
             throw new GameException("car name can't be empty");
         }
 

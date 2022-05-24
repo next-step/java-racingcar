@@ -9,11 +9,16 @@ import java.util.stream.Collectors;
 import racing.exception.GameException;
 
 public class RacingCars {
+    private static final int MIN_NUMBER_OF_PARTICIPANT = 1;
     private final List<Car> cars = new LinkedList<>();
 
     private RacingCars() {}
 
     public RacingCars(List<String> names) {
+        if (names.size() < MIN_NUMBER_OF_PARTICIPANT) {
+            throw new GameException("최소 참가자 수는 " + MIN_NUMBER_OF_PARTICIPANT + "개 이상이어야 합니다.");
+        }
+
         names.stream()
              .map(Car::new)
              .forEach(cars::add);
