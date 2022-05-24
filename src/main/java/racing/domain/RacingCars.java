@@ -3,7 +3,6 @@ package racing.domain;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import racing.exception.GameException;
@@ -47,9 +46,7 @@ public class RacingCars {
     }
 
     public Car findForwardMostCar() {
-        return cars.stream()
-                   .max(Car::compareLocation)
-                   .orElseThrow(() -> new GameException("가장 앞선 차를 찾지 못했습니다."));
+        return Collections.max(cars);
     }
 
     public int numberOfCars() {
