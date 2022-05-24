@@ -11,10 +11,18 @@ import racing.exception.GameException;
 public class RacingCars {
     private final List<Car> cars = new LinkedList<>();
 
+    private RacingCars() {}
+
     public RacingCars(List<String> names) {
         names.stream()
              .map(Car::new)
              .forEach(cars::add);
+    }
+
+    public static RacingCars of(List<Car> cars) {
+        final RacingCars racingCars = new RacingCars();
+        racingCars.cars.addAll(cars);
+        return racingCars;
     }
 
     public List<Car> getCars() {
