@@ -39,16 +39,17 @@ public class RacingCars {
     }
 
     public List<Car> findWinners() {
-        Car forwardMostCar = findForwardMostCar().orElseThrow(() -> new GameException("가장 앞선 차를 찾지 못했습니다."));
+        Car forwardMostCar = findForwardMostCar();
 
         return cars.stream()
                    .filter(car -> car.isEqualLocation(forwardMostCar))
                    .collect(Collectors.toList());
     }
 
-    public Optional<Car> findForwardMostCar() {
+    public Car findForwardMostCar() {
         return cars.stream()
-                   .max(Car::compareLocation);
+                   .max(Car::compareLocation)
+                   .orElseThrow(() -> new GameException("가장 앞선 차를 찾지 못했습니다."));
     }
 
     public int numberOfCars() {
