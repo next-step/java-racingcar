@@ -2,7 +2,7 @@ package racing.domain;
 
 import java.util.Objects;
 
-public class Car {
+public class Car implements Comparable<Car> {
     private final CarName name;
     private Location location;
 
@@ -19,10 +19,6 @@ public class Car {
         if (gameRule.isPassedCondition()) {
             this.location = location.forward();
         }
-    }
-
-    public int compareLocation(Car car) {
-        return this.location.compareTo(car.location);
     }
 
     public boolean isEqualLocation(Car car) {
@@ -56,5 +52,10 @@ public class Car {
                "name=" + name +
                ", location=" + location +
                '}';
+    }
+
+    @Override
+    public int compareTo(final Car o) {
+        return this.location.compareTo(o.location);
     }
 }

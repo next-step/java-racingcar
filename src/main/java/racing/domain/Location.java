@@ -2,13 +2,15 @@ package racing.domain;
 
 import java.util.Objects;
 
+import racing.exception.InvalidLocationException;
+
 public class Location implements Comparable<Location> {
     private static final int DEFAULT_LOCATION = 0;
     private final int number;
 
     public Location(final int number) {
         if (number < DEFAULT_LOCATION) {
-            throw new IllegalArgumentException("위치는 " + DEFAULT_LOCATION + "이상이어야 합니다.");
+            throw new InvalidLocationException("위치는 " + DEFAULT_LOCATION + "이상이어야 합니다.");
         }
         this.number = number;
     }

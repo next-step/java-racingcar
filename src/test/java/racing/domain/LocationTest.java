@@ -2,10 +2,11 @@ package racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import racing.exception.InvalidLocationException;
 
 class LocationTest {
     @DisplayName("forward하면 위치가 1 증가한다.")
@@ -20,7 +21,6 @@ class LocationTest {
     @Test
     void defaultLocation() {
         assertThatThrownBy(() -> new Location(-1))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("위치는 0이상이어야 합니다.");
+                .isInstanceOf(InvalidLocationException.class);
     }
 }
