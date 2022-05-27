@@ -1,7 +1,6 @@
-package racingcar;
+package racingcar.domain;
 
 public class Car {
-
     private static final int STANDARD_NUMBER = 4;
     private final String carName;
     private int position;

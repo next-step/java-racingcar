@@ -1,16 +1,22 @@
 package racingcar;
 
+import racingcar.domain.Cars;
+import racingcar.domain.RacingGame;
+
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class InputView {
+    private static Scanner scanner = new Scanner(System.in);
+    private Cars cars;
+    
+    public Cars enterCarNames() {
+        cars = new Cars(scanner.nextLine());
+        return cars;
+    }
 
-    public static void main(String[] args) {
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,)를 기준으로 구분)\n");
-        Cars cars = new Cars(scanner.nextLine());
-
-        System.out.print("시도할 횟수는 몇 회 인가요?");
+    public void enterNumberOfGames(Cars cars) {
         new RacingGame(cars, scanner.nextInt());
     }
 

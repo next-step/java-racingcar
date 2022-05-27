@@ -1,9 +1,10 @@
 package racingcar;
 
 public class ResultView {
+    private StringBuilder stringBuilder = new StringBuilder();
 
-    public void roundResult(String CarName, int maxPosition) {
-        System.out.println(CarName + " : " + appendPosition(maxPosition));
+    public void roundResult(String carName, int maxPosition) {
+        System.out.println(carName + " : " + appendPosition(maxPosition));
     }
 
     public void emptyLIne() {
@@ -11,7 +12,7 @@ public class ResultView {
     }
 
     protected String appendPosition(int position) {
-        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.setLength(0);
 
         for (int i = 0; i < position; i++) {
             stringBuilder.append("-");
