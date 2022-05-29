@@ -1,8 +1,6 @@
 package racingcar.domain;
 
-import racingcar.ResultView;
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
+import racingcar.view.ResultView;
 
 import java.util.List;
 
@@ -10,20 +8,24 @@ public class RacingGame {
     private StringBuilder stringBuilder = new StringBuilder();
     private String winner = "";
 
-    public RacingGame(Cars cars, int numberOfGames) {
-        ResultView resultView = new ResultView();
+    public RacingGame() {
+    }
 
+    public RacingGame(Cars cars, int numberOfGames) {
         for (int i = 0; i < numberOfGames; i++) {
             cars.move();
         }
-        findWinnerCar(cars.maxPosition(), cars.getCars());
-        resultView.gameResult(winner);
     }
 
-    private void findWinnerCar(int maxPosition, List<Car> cars) {
+    public void findWinnerCar(int maxPosition, List<Car> cars) {
         for (Car car : cars) {
             maxPositionCarName(maxPosition, car);
         }
+    }
+
+    public void printWinners() {
+        ResultView resultView = new ResultView();
+        resultView.gameResult(winner);
     }
 
     private void maxPositionCarName(int maxPosition, Car car) {

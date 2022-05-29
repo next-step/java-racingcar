@@ -1,20 +1,19 @@
 package racingcar.domain;
 
-public class CarName {
+import racingcar.exception.CarNameEmptyException;
+import racingcar.exception.CarNameOverLengthException;
+
+public class CarNames {
     private static final String DELIMITER = "[,]";
     private static final int MAX_LENGTH = 5;
     private static final int MIN_LENGTH = 1;
-    private String[] carNames;
 
-    public CarName(String inputCarNames) {
-        inputCarNames = inputCarNames.replace(" ", "");
-        carNames = toArray(inputCarNames);
-        checkValidation(carNames);
+    public CarNames(String inputCarNames) {
+        checkValidation(toArray(inputCarNames));
     }
 
-    private String[] toArray(String inputCarNames) {
-        carNames = inputCarNames.split(DELIMITER);
-        return carNames;
+    public String[] toArray(String inputCarNames) {
+        return inputCarNames.split(DELIMITER);
     }
 
     private void checkValidation(String[] carNames) {
@@ -30,9 +29,5 @@ public class CarName {
         if (carName.length() < MIN_LENGTH) {
             throw new CarNameEmptyException("자동차 이름 미입력");
         }
-    }
-
-    public String[] getCarNames() {
-        return carNames;
     }
 }

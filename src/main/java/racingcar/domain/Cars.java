@@ -1,6 +1,7 @@
 package racingcar.domain;
 
-import racingcar.ResultView;
+import racingcar.util.RandomNumber;
+import racingcar.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,11 +12,13 @@ public class Cars {
     private int maxPosition = 0;
 
     public Cars(String inputNames) {
-        CarName carName = new CarName(inputNames);
-        makeCars(carName.getCarNames());
+        inputNames = inputNames.replace(" ", "");
+
+        CarNames carNames = new CarNames(inputNames);
+        makeCars(carNames.toArray(inputNames));
     }
 
-    public void makeCars(String[] names) {
+    private void makeCars(String[] names) {
         for (int i = 0; i < names.length; i++) {
             cars.add(new Car(names[i]));
         }
