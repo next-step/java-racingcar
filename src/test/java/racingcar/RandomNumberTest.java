@@ -2,6 +2,7 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.util.RandomNumber;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
