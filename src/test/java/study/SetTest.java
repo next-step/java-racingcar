@@ -24,7 +24,6 @@ public class SetTest {
         numbers.add(3);
     }
 
-
     @DisplayName("Set 사이즈 확인")
     @Test
     void size() {

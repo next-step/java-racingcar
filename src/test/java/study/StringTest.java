@@ -35,7 +35,6 @@ public class StringTest {
         assertThat(result).isEqualTo('a');
     }
 
-
     @DisplayName("charAt 테스트 범위 초과 시 예외발생")
     @Test
     void charAt_exception() {
