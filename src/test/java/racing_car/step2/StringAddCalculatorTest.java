@@ -38,4 +38,11 @@ public class StringAddCalculatorTest {
         int result = StringAddCalculator.splitAndSum("//;\n1;2;3");
         assertThat(result).isEqualTo(6);
     }
+    
+    @Test
+    public void splitAndSum_negative() throws Exception {
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("음수는 입력할 수 없습니다.");
+    }
 }
