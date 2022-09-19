@@ -18,4 +18,11 @@ public class StringTest {
         String[] result = "1,2".split(",");
         assertThat(result).containsExactly("1", "2");
     }
+
+    @Test
+    @DisplayName("문자열을 substring() 함수로 처음과 끝을 제거할 수 있다.")
+    void substring_first_last(){
+        String result = "(1,2)".substring(1, 4);
+        assertThat(result).isEqualTo("1,2");
+    }
 }
