@@ -42,7 +42,6 @@ public class SetTest {
 		assertThat(numbers.contains(3)).isTrue();
 	}
 
-	@DisplayName("")
 	@ParameterizedTest
 	@ValueSource(ints = {1, 2, 3})
 	void contains_ShouldReturnTrueAllCase(int number) {
