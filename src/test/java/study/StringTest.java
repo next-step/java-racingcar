@@ -18,4 +18,10 @@ public class StringTest {
         String result = "(1,2)".substring(1, 4);
         assertThat(result).isEqualTo("1,2");
     }
+
+    @Test
+    void charAt() {
+        char result = "abc".charAt(1);
+        assertThat(result).isEqualTo('b');
+    }
 }
