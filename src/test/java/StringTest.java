@@ -1,4 +1,6 @@
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -24,5 +26,23 @@ public class StringTest {
     void substring_first_last(){
         String result = "(1,2)".substring(1, 4);
         assertThat(result).isEqualTo("1,2");
+    }
+
+    @Test
+    @DisplayName("charAt() 메소드가 문자열의 인덱스를 벗어나면 OutOfBoundsException을 발생시킨다.")
+    void chartAt_bounds_exception(){
+        assertThatThrownBy(() -> {
+            "abc".charAt(3);
+        }).isInstanceOf(IndexOutOfBoundsException.class)
+            .hasMessageContaining("index out of range");
+    }
+
+    @Test
+    @DisplayName("예외 메세지를 withMessageMatching() 메소드를 이용해 패턴으로 검증 가능하다.")
+    void chartAt_bounds_exception_by_pattern_matching(){
+        assertThatExceptionOfType(IndexOutOfBoundsException.class)
+            .isThrownBy(() -> {
+                "abc".charAt(3);
+            }).withMessageMatching("String index out of range: \\d+");
     }
 }
