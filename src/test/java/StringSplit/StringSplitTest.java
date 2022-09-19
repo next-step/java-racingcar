@@ -2,8 +2,6 @@ package StringSplit;
 
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Array;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StringSplitTest {
@@ -30,5 +28,15 @@ public class StringSplitTest {
         //then
         assertThat(splitResult).contains("1");
         assertThat(splitResult).containsExactly("1");
+    }
+
+    @Test
+    void  substring_method_test(){
+        //given
+        String testString = "(1,2)";
+        //when
+        String subStringResult = testString.substring(1,4);
+        //then
+        assertThat(subStringResult).isEqualTo("1,2");
     }
 }
