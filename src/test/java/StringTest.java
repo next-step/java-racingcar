@@ -36,8 +36,7 @@ public class StringTest {
         String str = "(1,2)";
 
         //when
-        String replaced = str.substring(1);
-        replaced = replaced.substring(0, replaced.length()-1);
+        String replaced = str.substring(1, str.length()-1);
 
         //then
         assertThat(replaced).isEqualTo("1,2");
