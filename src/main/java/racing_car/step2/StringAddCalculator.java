@@ -10,7 +10,7 @@ public class StringAddCalculator {
             return 0;
         }
         
-        String[] split = formula.split(",");
+        String[] split = formula.split("[,:]");
         if (split.length == 1) {
             return 1;
         }
