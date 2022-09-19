@@ -32,4 +32,17 @@ public class SetTest {
             assertThat(numbers.size()).isEqualTo(3);
         }
     }
+
+    @Nested
+    @DisplayName("요구사항 2")
+    class Requirement2 {
+
+        @Test
+        @DisplayName("Set의 contains() 메소드를 활용해 1, 2, 3의 값이 존재하는지를 확인하는 학습 테스트")
+        void contains() {
+            assertThat(numbers.contains(1)).isTrue();
+            assertThat(numbers.contains(2)).isTrue();
+            assertThat(numbers.contains(3)).isTrue();
+        }
+    }
 }
