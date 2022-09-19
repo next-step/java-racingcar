@@ -35,6 +35,9 @@ public class StringTest {
     @DisplayName("charAt 메소드 IndexOutOfBoundsException 발생 학습 테스트")
     void charAtException() {
         ThrowingCallable result = () -> "abc".charAt(3);
-        assertThatThrownBy(result).hasMessageContaining("String index out of range: 3");
+
+        assertThatThrownBy(result)
+            .isInstanceOf(IndexOutOfBoundsException.class)
+            .hasMessageContaining("String index out of range: 3");
     }
 }
