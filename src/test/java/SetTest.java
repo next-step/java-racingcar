@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class SetTest {
@@ -32,5 +33,11 @@ public class SetTest {
     @DisplayName("Set 클래스의 contains() 메소드를 활용해 값이 존재하는지 확인할 수 있다.")
     void set_contains_by_parametrizedTest(int number){
         assertThat(numbers.contains(number)).isTrue();
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1, true", "2, true", "3, true", "4, false", "5, false"})
+    void test(int inputNumber, boolean expected){
+        assertThat(numbers.contains(inputNumber)).isEqualTo(expected);
     }
 }
