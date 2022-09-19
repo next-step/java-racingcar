@@ -19,7 +19,7 @@ public class StringAddCalculator {
         Matcher matcher = Pattern.compile("//(.)\\n(.+)").matcher(formula);
         if (matcher.matches()) {
             String delimer = matcher.group(1);
-            return matcher.group(2).split(delimer);
+            return matcher.group(2).split("[" + delimer + "]");
         }
         
         return formula.split("[,:]");
