@@ -15,7 +15,7 @@ public class StringAddCalculator {
 
         String[] tokens = splitToken(input);
 
-        return getSum(tokens);
+        return sum(tokens);
     }
 
     private static boolean isNullOrEmpty(String input) {
@@ -32,7 +32,7 @@ public class StringAddCalculator {
         return input.split(DEFAULT_DELIMITER_REGEX);
     }
 
-    private static int getSum(String[] tokens) {
+    private static int sum(String[] tokens) {
         int result = 0;
 
         for (String token : tokens) {
