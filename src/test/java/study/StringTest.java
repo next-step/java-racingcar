@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 public class StringTest {
 
     @Test
+    @DisplayName("split 메소드 학습 테스트")
     void split() {
         String[] result = "1,2".split(",");
         assertThat(result).contains("1");
@@ -17,18 +18,21 @@ public class StringTest {
     }
 
     @Test
+    @DisplayName("substring 메소드 학습 테스트")
     void substring() {
         String result = "(1,2)".substring(1, 4);
         assertThat(result).isEqualTo("1,2");
     }
 
     @Test
+    @DisplayName("charAt 메소드 학습 테스트")
     void charAt() {
         char result = "abc".charAt(1);
         assertThat(result).isEqualTo('b');
     }
 
     @Test
+    @DisplayName("charAt 메소드 IndexOutOfBoundsException 발생 학습 테스트")
     void charAtException() {
         ThrowingCallable result = () -> "abc".charAt(3);
         assertThatThrownBy(result).hasMessageContaining("String index out of range: 3");
