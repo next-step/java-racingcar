@@ -6,9 +6,6 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
 public class StringTest {
-    /*
-    String 클래스 학습테스트
-     */
     @Test
     @DisplayName("요구사항 1 : split test")
     void split() {
@@ -44,5 +41,4 @@ public class StringTest {
         }).isInstanceOf(IndexOutOfBoundsException.class)
                 .hasMessageContaining("%d", index);
     }
-
 }
