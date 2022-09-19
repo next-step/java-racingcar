@@ -11,13 +11,8 @@ public class StringAddCalculator {
         if (StringUtils.isBlank(formula)) {
             return 0;
         }
-    
-        String[] split = getSplit(formula);
-        if (split.length == 1) {
-            return 1;
-        }
         
-        return sum(split);
+        return sum(getSplit(formula));
     }
     
     private static String[] getSplit(String formula) {
