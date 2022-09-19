@@ -4,12 +4,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SetTest {
@@ -41,5 +44,18 @@ public class SetTest {
     void use_contain_method_check_value(int number){
         assertTrue(numbers.contains(number));
         assertThat(numbers.contains(number)).isTrue();
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1,true","2,true","3,true","4,false","5,false"})
+    @DisplayName("numbers에서 포함된 숫자일 때는 true를 아니면 false를 반환한다.")
+    void if_number_contain_value_return_true_or_return_false(String input, String expected){
+        //given
+        int inputValue = Integer.parseInt(input);
+        boolean expectedBoolean = Boolean.parseBoolean(expected);
+        //when
+
+        //then
+        assertEquals(numbers.contains(inputValue),expectedBoolean);
     }
 }
