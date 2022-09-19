@@ -16,4 +16,11 @@ class StringTest {
         String[] sut = str.split(",");
         assertThat(sut).isEqualTo(new String[]{"1"});
     }
+
+    @Test
+    void 문자열을_부분적으로_추출할_수_있다() {
+        String str = "(1,2)";
+        String sut = str.substring(1, 4);
+        assertThat(sut).isEqualTo("1,2");
+    }
 }
