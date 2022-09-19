@@ -30,16 +30,16 @@ public class SetTest {
         assertThat(numbers.size()).isEqualTo(3);
     }
 
-    @DisplayName("Set 원소 확인")
+    @DisplayName("Set 원소 확인-성공 케이스")
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     void contains(int input) {
         assertThat(numbers.contains(input)).isTrue();
     }
 
-    @DisplayName("Set 원소 확인")
+    @DisplayName("Set 원소 확인-성공/실패 케이스")
     @ParameterizedTest
-    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
+    @CsvSource(value = {"1,true", "2,true", "3,true", "4,false", "5,false"})
     void contains(int input, boolean expected) {
         assertThat(numbers.contains(input)).isEqualTo(expected);
     }
