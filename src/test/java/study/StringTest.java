@@ -1,6 +1,7 @@
 package study;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.assertj.core.api.ThrowableAssert.ThrowingCallable;
@@ -39,5 +40,8 @@ public class StringTest {
         assertThatThrownBy(result)
             .isInstanceOf(IndexOutOfBoundsException.class)
             .hasMessageContaining("String index out of range: 3");
+        assertThatExceptionOfType(IndexOutOfBoundsException.class)
+            .isThrownBy(result)
+            .withMessageMatching("String index out of range: 3");
     }
 }
