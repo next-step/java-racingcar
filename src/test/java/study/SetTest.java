@@ -12,8 +12,6 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-//import static org.assertj.core.api.Assertions.assertThat;
-
 public class SetTest {
     private Set<Integer> numbers;
 
@@ -68,6 +66,5 @@ public class SetTest {
     void toLowerCase_ShouldGenerateTheExpectedLowercaseValue(String input, String expected) {
         String actual = input.toLowerCase();
         assertThat(actual).isEqualTo(expected);
-
     }
 }
