@@ -37,8 +37,10 @@ public class StringTest {
 	@DisplayName("StringIndexOutOfBoundsException 확인")
 	public void 요구사항4() throws Exception {
 		String str = "abc";
+		int index = 3;
 
-		assertThatThrownBy(() -> str.charAt(3))
-			.isInstanceOf(StringIndexOutOfBoundsException.class);
+		assertThatThrownBy(() -> str.charAt(index))
+			.isInstanceOf(StringIndexOutOfBoundsException.class)
+			.hasMessage("String index out of range: " + index);
 	}
 }
