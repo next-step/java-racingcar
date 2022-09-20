@@ -1,6 +1,7 @@
 package step3.application;
 
-import step3.domain.Cars;
+import step3.domain.Car;
+import step3.domain.CarRace;
 import step3.domain.NumberGenerator;
 
 public class ConsoleOut {
@@ -12,10 +13,10 @@ public class ConsoleOut {
         System.out.println("시도할 회수는 몇 회 인가요?");
     }
 
-    public void result(Cars cars, NumberGenerator numberGenerator) {
-        cars.cars().forEach(car -> {
-            car.move(numberGenerator);
-            String strState = "-".repeat(car.state());
+    public void result(CarRace carRace, NumberGenerator numberGenerator) {
+        carRace.cars().stream().map(car -> {
+            Car moveCar = car.move(numberGenerator);
+            String strState = "-".repeat(moveCar.state());
             System.out.println(strState);
         });
         System.out.println();

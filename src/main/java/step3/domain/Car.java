@@ -1,12 +1,15 @@
 package step3.domain;
 
 public class Car {
-    private int state = 0;
+    private final int state;
 
-    public void move(NumberGenerator numberGenerator) {
-        if (numberGenerator.randomNumber() >= 4) {
-            state++;
-        }
+    public Car(int state) {
+        this.state = state;
+    }
+
+
+    public Car move() {
+        return new Car(state + 1);
     }
 
     public int state() {
