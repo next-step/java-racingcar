@@ -15,9 +15,7 @@ class StringStudyTest {
     @DisplayName("문자열 1,2 을 ,로 split 했을 때 1과 2로 잘 분리된다.")
     void string_split() {
 
-        final String sut = "1,2";
-
-        final String[] actual = sut.split(",");
+        final String[] actual = "1,2".split(",");
 
         assertThat(actual).containsExactly("1", "2");
     }
@@ -26,9 +24,7 @@ class StringStudyTest {
     @DisplayName("문자열 1을 ,로 split 했을 때 1만을 포함하는 배열을 반환한다.")
     void string_split_2() {
 
-        final String sut = "1,";
-
-        final String[] actual = sut.split(",");
+        final String[] actual = "1,".split(",");
 
         assertThat(actual).containsExactly("1");
     }
@@ -38,7 +34,6 @@ class StringStudyTest {
     void string_split_3() {
 
         final String sut = "(1,2)";
-
         final String actual = sut.substring(1, sut.length() - 1);
 
         assertThat(actual).isEqualTo("1,2");
@@ -49,9 +44,7 @@ class StringStudyTest {
     @DisplayName("문자열 abc 에서 특정 위치의 문자를 가져온다.")
     void string_split_4(final int index, final char expect) {
 
-        final String sut = "abc";
-
-        assertThat(sut.charAt(index)).isEqualTo(expect);
+        assertThat("abc".charAt(index)).isEqualTo(expect);
     }
 
     @ParameterizedTest
@@ -59,9 +52,7 @@ class StringStudyTest {
     @DisplayName("문자열 abc 에서 범위를 벗어난 문자을 호출하면 익셉션 처리한다.")
     void string_split_5(final int index) {
 
-        final String sut = "abc";
-
-        assertThatThrownBy(() -> sut.charAt(index))
+        assertThatThrownBy(() -> "abc".charAt(index))
                 .isInstanceOf(IndexOutOfBoundsException.class)
                 .hasMessageContaining("String index out of range:");
     }
