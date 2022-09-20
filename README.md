@@ -7,3 +7,8 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 1단계- 학습 테스트 실습
+실습 환경을 구축하고 (브랜치 생성, fork, clone) 실습용 학습 테스트를 작성한다
+* String 클래스에 대한 학습 테스트 (study.StringTest)
+* Set Collection에 대한 학습 테스트 (study.SetTest)
