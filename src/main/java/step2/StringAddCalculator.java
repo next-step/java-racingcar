@@ -9,7 +9,7 @@ public class StringAddCalculator {
         }
 
         if (calculatorString.numeral()) {
-            return Integer.parseInt(text);
+            return parseOne(calculatorString.text());
         }
 
         int[] numbers = split(calculatorString.text(), calculatorString.delimiter());
@@ -23,11 +23,7 @@ public class StringAddCalculator {
 
         for (int i = 0; i < stringNumbers.length; ++i) {
             int num = Integer.parseInt(stringNumbers[i]);
-
-            if (num < 0) {
-                throw new RuntimeException("Negative number can't calculated.");
-            }
-
+            validateNumber(num);
             numbers[i] = num;
         }
 
@@ -42,5 +38,17 @@ public class StringAddCalculator {
         }
 
         return sum;
+    }
+
+    public static int parseOne(String text) {
+        int num = Integer.parseInt(text);
+        validateNumber(num);
+        return num;
+    }
+
+    private static void validateNumber(int num) {
+        if (num < 0) {
+            throw new RuntimeException("Negative number can't calculated.");
+        }
     }
 }
