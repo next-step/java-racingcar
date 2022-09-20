@@ -3,6 +3,8 @@ package Study;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.*;
 
@@ -25,5 +27,25 @@ public class SetTest {
     void testSetSize(){
         assertThat(numbers.size()).isEqualTo(3);
     }
+
+
+    @Test
+    @DisplayName("TestSet Contains")
+    void testContains(){
+        assertThat(numbers.contains(1)).isTrue();
+        assertThat(numbers.contains(2)).isTrue();
+        assertThat(numbers.contains(3)).isTrue();
+
+    }
+
+    @ParameterizedTest
+    @DisplayName("TestSet Contains without dup")
+    @ValueSource(ints = {1,2,3})
+    void testContainsWithoutDup(int input){
+        assertThat(numbers.contains(input)).isTrue();
+    }
+
+
+
 
 }
