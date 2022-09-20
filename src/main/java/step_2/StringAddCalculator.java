@@ -7,11 +7,11 @@ import java.util.regex.Pattern;
 public class StringAddCalculator {
     private StringAddCalculator() {}
 
-    public static int splitAndSum(String str) {
-        if (StringUtils.isEmpty(str)) return 0;
+    public static int splitAndSum(String text) {
+        if (StringUtils.isEmpty(text)) return 0;
         
         // 문자열을 숫자 문자열 배열로 변환
-        String[] numberStrings = parseTokens(str);
+        String[] numberStrings = parseToNumberStringArray(text);
 
         // 숫자 문자열 검증
         validateNumberStrings(numberStrings);
@@ -24,13 +24,17 @@ public class StringAddCalculator {
         for (String token : tokens) {
             int number = Integer.parseInt(token);
 
-            if (number < 0) {
-                throw new RuntimeException();
-            }
+            checkMinusNumber(number);
         }
     }
 
-    private static String[] parseTokens(String str) {
+    private static void checkMinusNumber(int number) {
+        if (number < 0) {
+            throw new RuntimeException();
+        }
+    }
+
+    private static String[] parseToNumberStringArray(String str) {
         Matcher m = Pattern.compile("//(.)\n(.*)").matcher(str);
         if (m.find()) {
             String delimiter = m.group(1);
