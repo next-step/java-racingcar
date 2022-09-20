@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 
 public class StringCalculatorTest {
@@ -65,5 +66,14 @@ public class StringCalculatorTest {
         //then
         assertThat(result).isEqualTo(6);
         assertThat(result2).isEqualTo(6);
+    }
+
+    @Test
+    @DisplayName("문자열에 음수값이 포함되면 런타임 예외를 던진다")
+    void stringSum_if_addValue_negative_throws_RuntimeException() {
+        //given//when//then
+        assertThatThrownBy(()
+                -> calculator.stringSum("-1,2,3")).isInstanceOf(RuntimeException.class)
+                .hasMessageContaining("음수를 입력했습니다.");
     }
 }

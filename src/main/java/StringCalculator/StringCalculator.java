@@ -10,7 +10,9 @@ public class StringCalculator {
     public int stringSum(Object addValues) {
         if (validateNullOrEmpty(addValues))
             return 0;
-        return stringSplit(addValues).stream().reduce(Integer::sum).get();
+        List<Integer> splitAddValues = stringSplitAndParaInt(addValues);
+        validateNegative(splitAddValues);
+        return splitAddValues.stream().reduce(Integer::sum).get();
     }
 
     private boolean validateNullOrEmpty(Object addValues) {
@@ -20,7 +22,14 @@ public class StringCalculator {
         return false;
     }
 
-    private List<Integer> stringSplit(Object addValues) {
+    private void validateNegative(List<Integer> splitAddValues) {
+        splitAddValues.forEach(addValue -> {
+            if (addValue < 0)
+                throw new NegativeException("음수를 입력했습니다.");
+        });
+    }
+
+    private List<Integer> stringSplitAndParaInt(Object addValues) {
         String upcastAddValues = (String) addValues;
         Matcher m = Pattern.compile("//(.)\n(.*)").matcher(upcastAddValues);
 
