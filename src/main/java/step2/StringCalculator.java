@@ -12,7 +12,7 @@ public class StringCalculator {
     }
 
     private void validation(String numbers) {
-        if (numbers != null && !numbers.matches("\\d")) {
+        if (numbers != null && !numbers.isEmpty() && !numbers.matches(".*[\n]*[0-9].*")) {
             throw new RuntimeException("숫자가 없습니다.");
         }
         if (numbers != null && numbers.matches("(.*)-\\d(.*)")) {
