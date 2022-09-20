@@ -1,25 +1,30 @@
 package StringCalculator;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class StringCalculator {
-    public int stringSum(String addValues) {
-        return stringSplit(addValues);
-    }
-
-    private int validateNullOrEmpty(String addValues) {
-        if (addValues == null || addValues == "") {
+    public int stringSum(Object addValues) {
+        if (validateNullOrEmpty(addValues))
             return 0;
-        }
-        return stringSplit(addValues);
+        return stringSplit(addValues).stream().reduce(Integer::sum).get();
     }
 
-    private int stringSplit(String addValues) {
-        return Arrays.stream(addValues.split(","))
-                .mapToInt(addValue -> Integer.parseInt(addValue))
-                .reduce(Integer::sum)
-                .getAsInt();
+    private boolean validateNullOrEmpty(Object addValues) {
+        if (addValues == null || addValues == "") {
+            return true;
+        }
+        return false;
+    }
 
+    private List<Integer> stringSplit(Object addValues) {
+        String upcastAddValues = (String) addValues;
+
+        return Arrays.stream(upcastAddValues.split(",|:"))
+                .mapToInt(Integer::parseInt)
+                .boxed()
+                .collect(Collectors.toList());
     }
 
 
