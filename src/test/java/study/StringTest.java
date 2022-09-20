@@ -14,4 +14,13 @@ public class StringTest {
         Assertions.assertThat(splitArray2).containsExactly("1");
     }
 
+    @Test
+    void substring() {
+        String str = "(1,2)";
+
+        String result = str.substring(str.indexOf("(") + 1, str.indexOf(")"));
+
+        Assertions.assertThat(result).isEqualTo("1,2");
+    }
+
 }
