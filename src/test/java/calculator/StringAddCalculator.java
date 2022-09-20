@@ -34,14 +34,13 @@ public class StringAddCalculator {
 
     private static Integer mapToInt(String input) {
         try {
-            return isMinusNumber(input);
+            return throwExpIfMinus(Integer.parseInt(input));
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("input must be number", e);
         }
     }
 
-    private static int isMinusNumber(String input) {
-        int num = Integer.parseInt(input);
+    private static int throwExpIfMinus(int num) {
         if (num < 0) {
             throw new IllegalArgumentException("input number must be positive");
         }
