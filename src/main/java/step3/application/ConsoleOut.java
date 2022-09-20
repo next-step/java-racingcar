@@ -18,6 +18,7 @@ public class ConsoleOut {
             Car moveCar = car.move(numberGenerator);
             String strState = "-".repeat(moveCar.state());
             System.out.println(strState);
+            return moveCar;
         });
         System.out.println();
 
