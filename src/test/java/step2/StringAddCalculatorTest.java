@@ -22,6 +22,12 @@ public class StringAddCalculatorTest {
     }
 
     @Test
+    public void splitAndSum_음수하나() throws Exception {
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1"))
+                .isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
     public void splitAndSum_쉼표구분자() throws Exception {
         int result = StringAddCalculator.splitAndSum("1,2");
         assertThat(result).isEqualTo(3);
@@ -42,6 +48,12 @@ public class StringAddCalculatorTest {
     @Test
     public void splitAndSum_negative() throws Exception {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
+                .isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    public void splitAndSum_not_number() throws Exception {
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,a,b,2"))
                 .isInstanceOf(RuntimeException.class);
     }
 }
