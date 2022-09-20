@@ -22,7 +22,7 @@ public class StringAddCalculator {
 
     private static void validateNumberStrings(String[] tokens) {
         for (String token : tokens) {
-            int number = NumberUtils.parseInt(token);
+            int number = Integer.parseInt(token);
 
             if (number < 0) {
                 throw new RuntimeException();
@@ -42,7 +42,7 @@ public class StringAddCalculator {
 
     public static int sum(String[] strArr) {
         return Arrays.stream(strArr)
-                .mapToInt(NumberUtils::parseInt)
+                .mapToInt(Integer::parseInt)
                 .sum();
     }
 }
