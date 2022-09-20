@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
@@ -34,6 +35,12 @@ public class SetTest {
 	@DisplayName("요구사항 2 ParameterizedTest를 활용한 중복코드 제거")
 	void isContainsTest(int number) {
 		assertThat(numbers).contains(number);
+	}
+	
+	@ParameterizedTest
+	@CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
+	void isContainsReturnTrueAndIsNotContainsReturnFalse(int number , boolean expected) {
+		assertThat(numbers.contains(number)).isEqualTo(expected);
 	}
 	
 }
