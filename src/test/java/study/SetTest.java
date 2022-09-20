@@ -4,6 +4,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -25,6 +27,12 @@ public class SetTest {
     @Test
     void size() {
         Assertions.assertThat(numbers.size()).isEqualTo(3);
+    }
+
+    @ParameterizedTest(name = "set이 추가한 값을 포함하고 있는지 검사한다.")
+    @ValueSource(ints = {1,2,3})
+    void contains(int num){
+        Assertions.assertThat(numbers.contains(num)).isTrue();
     }
 
 }
