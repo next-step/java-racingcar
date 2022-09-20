@@ -2,6 +2,9 @@ package study;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -49,64 +52,33 @@ public class StringTest {
                 .isEqualTo("1, 2");
     }
 
-    @Test
+    @ParameterizedTest
+    @CsvSource(value = {"0:a", "1:b", "2:c"}, delimiter = ':')
     @DisplayName("\"abc\" 값이 주어졌을 때 String의 charAt() 메소드를 활용해 0번 위치의 문자를 가져온다")
-    void charAt_0() {
+    void charAt(int index, char expected) {
         // given
         String input = "abc";
-        int index = 0;
 
         // when
         char result = input.charAt(index);
 
         // then
         assertThat(result)
-                .isEqualTo('a');
+                .isEqualTo(expected);
     }
-
-    @Test
-    @DisplayName("\"abc\" 값이 주어졌을 때 String의 charAt() 메소드를 활용해 1번 위치의 문자를 가져온다")
-    void charAt_1() {
-        // given
-        String input = "abc";
-        int index = 1;
-
-        // when
-        char result = input.charAt(index);
-
-        // then
-        assertThat(result)
-                .isEqualTo('b');
-    }
-
-    @Test
-    @DisplayName("\"abc\" 값이 주어졌을 때 String의 charAt() 메소드를 활용해 2번 위치의 문자를 가져온다")
-    void charAt_2() {
-        // given
-        String input = "abc";
-        int index = 2;
-
-        // when
-        char result = input.charAt(index);
-
-        // then
-        assertThat(result)
-                .isEqualTo('c');
-    }
-
-    @Test
+    @ParameterizedTest
+    @ValueSource(ints = {-1, 4})
     @DisplayName("String의 charAt() 메소드를 활용 시 범위를 벗어나면 Exception 발생")
-    void charAt_outOfBound() {
+    void charAt_outOfBound(int index) {
         // given
         String input = "abc";
-        int index = 4;
 
         // then
         assertThatExceptionOfType(IndexOutOfBoundsException.class)
                 .isThrownBy(() -> {
                     // when
-                    char result = input.charAt(index);
+                    input.charAt(index);
                 })
-                .withMessageContaining("String index out of range: 4");
+                .withMessageContaining("String index out of range: " + index);
     }
 }
