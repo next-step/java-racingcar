@@ -30,7 +30,7 @@ public class StringTest {
     void 요구사항2_소괄호_제거여부_확인() {
         String givenString = "(1,2)";
 
-        String subString = givenString.substring(1, 3);
+        String subString = givenString.substring(1, 4);
 
         assertThat(subString).isEqualTo("1,2");
     }
