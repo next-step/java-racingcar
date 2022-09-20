@@ -1,7 +1,9 @@
 package Study;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import static org.assertj.core.api.Assertions.assertThat;
+
+import static org.assertj.core.api.Assertions.*;
 
 public class StringTest {
 
@@ -22,4 +24,25 @@ public class StringTest {
     public String substring(String s){
         return s.substring(1,4);
     }
+
+    @Test
+    @DisplayName("CharAt()의 문자 Test, OutOfBoundException Test")
+    void testCharat(){
+        String s = "abc";
+        assertThat(s.charAt(0)).isEqualTo('a');
+        assertThat(s.charAt(1)).isEqualTo('b');
+        assertThat(s.charAt(2)).isEqualTo('c');
+
+        assertThatThrownBy(()->{
+            s.charAt(3);
+        }).isInstanceOf(StringIndexOutOfBoundsException.class);
+
+//.hasMessageContaining("Index 3 out of bounds for length 3");
+
+//        assertThatExceptionOfType(IndexOutOfBoundsException.class)
+//                .isThrownBy(()-> {
+//                    throw new IndexOutOfBoundsException();
+//                }).withMessageContaining("out of bounds");
+    }
+
 }
