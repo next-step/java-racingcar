@@ -4,12 +4,19 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringAddCalculatorTest {
 
+    @ParameterizedTest
+    @ValueSource(strings = {"1", "2", "3", "11"})
+    @DisplayName("숫자로 이루어진 문자열을 입력하면 해당 숫자를 반환한다.")
+    void isCalculate_ShouldReturnNumberForSingleNumber(String number) {
+        assertThat(StringAddCalculator.calculate(number)).isEqualTo(Integer.parseInt(number));
+    }
 
     @ParameterizedTest
     @CsvSource(value = {"null, 0", "'', 0", "' ', 0"}, nullValues = {"null"})
