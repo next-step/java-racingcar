@@ -37,12 +37,6 @@ public class StringTest {
             s.charAt(3);
         }).isInstanceOf(StringIndexOutOfBoundsException.class);
 
-//.hasMessageContaining("Index 3 out of bounds for length 3");
-
-//        assertThatExceptionOfType(IndexOutOfBoundsException.class)
-//                .isThrownBy(()-> {
-//                    throw new IndexOutOfBoundsException();
-//                }).withMessageContaining("out of bounds");
     }
 
 }
