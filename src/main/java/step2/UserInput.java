@@ -2,7 +2,8 @@ package step2;
 
 public class UserInput {
     private static final String DEFAULT_VALUE = "0";
-    private final String numbers;
+
+    private final String value;
 
     public UserInput(String numbers) {
         this.value = validation(numbers);
@@ -12,7 +13,7 @@ public class UserInput {
         return value;
     }
 
-    private static String vaildation(String numbers) {
+    private static String validation(String numbers) {
         if (numbers == null || numbers.isEmpty()) {
             return DEFAULT_VALUE;
         }
