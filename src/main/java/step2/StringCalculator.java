@@ -5,7 +5,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringCalculator {
-    // "1:2:3:4,5"
     private static final Pattern PATTERN = Pattern.compile(("//(.)\n(.*)"));
     private static final String DEFAULT_SEPARATOR = ":|,";
     private final UserInput userInput;
@@ -22,7 +21,6 @@ public class StringCalculator {
                 .sum();
     }
 
-    @SuppressWarnings("magicNumber")
     private String extractSeparator() {
         Matcher matcher = PATTERN.matcher(userInput.value());
         if (matcher.find()) {
