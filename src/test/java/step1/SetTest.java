@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -26,7 +26,7 @@ public class SetTest {
     @Test
     @DisplayName("Set의 크기 확인 테스트")
     void checkSizeTest() {
-        //given
+        //when
         int size = numbers.size();
 
         //then
@@ -34,11 +34,15 @@ public class SetTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {
-            1, 2, 3
+    @CsvSource(value = {
+            "1: true",
+            "2: true",
+            "3: true",
+            "4: false",
+
     })
     @DisplayName("Set 값 존재 확인 테스트")
-    void checkContainsValueTest(int number) {
-        assertThat(numbers.contains(number)).isTrue();
+    void checkContainsValueTest(int number, boolean isContains) {
+        assertThat(numbers.contains(number)).isEqualTo(isContains);
     }
 }
