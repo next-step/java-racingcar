@@ -8,10 +8,11 @@ public class InputView {
     public static final String INPUT_NUMBER_OF_CARS_MESSAGE = "자동차 대수는 몇 대인가요?";
     public static final String INPUT_NUMBER_OF_TRY_MESSAGE = "시도할 회수는 몇 회 인가요?";
     public static final String NUMBER_FORMAT_EXCEPTION_MESSAGE = "숫자만 입력할 수 있습니다. 다시 입력해 주세요.";
+    public static final String NEGATIVE_NUMBER_EXCEPTION_MESSAGE = "음수는 입력할 수 없습니다. 다시 입력해주세요.";
     
     public static int inputNumberOfCars() {
         System.out.println(INPUT_NUMBER_OF_CARS_MESSAGE);
-        return inputNum();
+        return correctNum();
     }
     
     public static int inputNumberOfTry() {
@@ -21,10 +22,18 @@ public class InputView {
     
     private static int correctNum() {
         try {
-            return inputNum();
+            int inputNum = inputNum();
+            isNegative(inputNum);
+            return inputNum;
         } catch (UnsupportedOperationException e) {
             System.out.println(e.getMessage());
             return correctNum();
+        }
+    }
+    
+    static void isNegative(int inputNum) throws UnsupportedOperationException {
+        if (inputNum < 0) {
+            throw new UnsupportedOperationException(NEGATIVE_NUMBER_EXCEPTION_MESSAGE);
         }
     }
     
