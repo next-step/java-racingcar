@@ -43,4 +43,11 @@ public class StringAddCalculatorTest {
                 .isInstanceOf(RuntimeException.class)
                 .hasMessageContaining("음수는 들어올 수 없습니다.");
     }
+
+    @Test
+    public void splitAndSum_숫자형태가_아닌_값() throws Exception {
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("1/2,2,3"))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessageContaining("숫자 형태가 아닌 값이 존재합니다.");
+    }
 }
