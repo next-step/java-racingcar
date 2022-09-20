@@ -25,7 +25,7 @@ public class SetTest {
         numbers.add(2);
         numbers.add(3);
     }
-    
+
 
     @Test
     @DisplayName("set 사이즈 체크")
