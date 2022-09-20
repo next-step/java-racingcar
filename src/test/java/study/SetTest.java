@@ -47,7 +47,7 @@ public class SetTest {
 
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-    @DisplayName("Set의 contains() 메소드를 활용해 1, 2, 3의 값이 존재하는지를 확인")
+    @DisplayName("Set의 contains() 메소드를 활용해 존재하는 값과 존재하지 않는 값의 응답값 구분")
     void containsOrNot(int input, boolean expected) {
         // when
         boolean contains = numbers.contains(input);
