@@ -20,11 +20,9 @@ public class StringCalculator {
     }
 
     public int calculate() {
-        String regex = getRegex();
-
-        String number = deleteSeparator();
-
-        return Arrays.stream(number.split(regex))
+        String separator = extractSeparator();
+        String expression = extractExpression();
+        return Arrays.stream(expression.split(separator))
                 .mapToInt(Integer::parseInt)
                 .sum();
     }
