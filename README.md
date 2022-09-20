@@ -7,3 +7,11 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+##  자동차 경주
+- 진행에 따라 업데이트 중입니다.
+
+| Level | 과제 | 내용 | MERGE |
+| ------ | -- | -- |----------- |
+| 1단계 | String에 대한 메서드 | split(),contains(),containsExactly(), substring(), charAt()| ☑️
+| 1단계 | Set Collection에 대한 메서드 |  @ParameterizedTest, @CsvSource | ☑️

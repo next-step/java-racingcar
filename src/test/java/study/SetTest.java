@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.HashSet;
 import java.util.Set;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -42,7 +41,7 @@ public class SetTest {
   @ParameterizedTest
   @CsvSource({"1,true","2,true","3,true","4,false","5,false"})
   @DisplayName("값의 존재 여부에 따른 True ,False 반환")
-  void getBoolean(int number,Boolean expected){
+  void True_False_존재여부(int number,Boolean expected){
     assertThat(numbers.contains(number)).isEqualTo(expected);
   }
 }
