@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringTest {
     @Test
-    @DisplayName("split 학습 테스트")
+    @DisplayName("split 메서드 학습 테스트")
     void split() {
         String[] strings = "1,2".split(",");
         assertThat(strings).contains("1", "2");
@@ -18,14 +18,14 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("substring 학습 테스트")
+    @DisplayName("substring 메서드 학습 테스트")
     void substring() {
         String substringResult = "(1,2)".substring(1, 4);
         assertThat(substringResult).contains("1,2");
     }
 
     @Test
-    @DisplayName("charAt 학습 테스트")
+    @DisplayName("charAt 메서드 학습 테스트")
     void charAt() {
         char c = "abc".charAt(0);
         assertThat(c).isEqualTo('a');
