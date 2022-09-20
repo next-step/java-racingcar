@@ -35,7 +35,7 @@ public class SetCollectionTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     void parameterized_test(int parameter){
-        assertThat(numbers.contains(parameter)).isTrue();
+        assertThat(numbers).contains(parameter);
     }
 
     @ParameterizedTest
@@ -60,36 +60,4 @@ public class SetCollectionTest {
             Arguments.of(5, false)
         );
     }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
