@@ -10,7 +10,7 @@ public class StringTest {
 
     @Test
     @DisplayName("\"1,2\"을 ,로 split 했을 때 1과 2로 잘 분리되는지 확인")
-    void testSplit1() {
+    void splitTest1() {
         String given = "1,2";
 
         String[] expected = new String[]{"1", "2"};
@@ -20,7 +20,7 @@ public class StringTest {
 
     @Test
     @DisplayName("\"1\"을 ,로 split 했을 때 1만을 포함하는 배열이 반환되는지 확인")
-    void testSplit2() {
+    void splitTest2() {
         String given = "1";
 
         String[] expected = new String[]{"1"};
@@ -30,7 +30,7 @@ public class StringTest {
 
     @Test
     @DisplayName("\"(1,2)\" 값이 주어졌을 때 String의 substring() 메소드를 활용해 ()을 제거하고 \"1,2\"를 반환")
-    void testSubString() {
+    void substringTest() {
         String given = "(1,2)";
 
         String expected = "1,2";
@@ -40,7 +40,7 @@ public class StringTest {
 
     @Test
     @DisplayName("\"abc\" 값이 주어졌을 때 String의 charAt() 메소드를 활용해 특정 위치의 문자를 잘가져오는지 확인")
-    void testCharAt1() {
+    void charAtTest1() {
         String given = "abc";
 
         char expected = 'b';
@@ -50,7 +50,7 @@ public class StringTest {
 
     @Test
     @DisplayName("charAt() 메소드가 위치 값을 벗어나면 StringIndexOutOfBoundsException이 발생하는지 확인")
-    void testCharAt2() {
+    void charAtTest2() {
         String given = "abc";
 
         String expectedMessage = "range: " + given.length();
