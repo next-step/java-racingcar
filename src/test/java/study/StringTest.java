@@ -8,6 +8,12 @@ public class StringTest {
     @Test
     void split() {
         String[] result = "1,2".split(",");
+        assertThat(result).contains("1");
+    }
+
+    @Test
+    void splitString() {
+        String[] result = "1,2".split(",");
         assertThat(result).containsExactly("1","2");
     }
 }
