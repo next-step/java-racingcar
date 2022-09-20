@@ -22,9 +22,11 @@ public class StringCalculator {
     public int calculate() {
         String regex = getRegex();
 
-        String number = numbers.numbers().replaceAll("//\\D\\n", "");
+        String number = deleteSeparator();
 
-        return Arrays.stream(number.split(regex)).mapToInt(Integer::parseInt).sum();
+        return Arrays.stream(number.split(regex))
+                .mapToInt(Integer::parseInt)
+                .sum();
     }
 
     private String getRegex() {
@@ -34,5 +36,9 @@ public class StringCalculator {
             regex = separatorMatcher.group(1);
         }
         return regex;
+    }
+
+    private String deleteSeparator() {
+        return numbers.numbers().replaceAll("//\\D\\n", "");
     }
 }
