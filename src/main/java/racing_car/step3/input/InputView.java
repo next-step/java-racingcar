@@ -16,15 +16,23 @@ public class InputView {
     
     public static int inputNumberOfTry() {
         System.out.println(INPUT_NUMBER_OF_TRY_MESSAGE);
-        return inputNum();
+        return correctNum();
     }
     
-    private static int inputNum() {
+    private static int correctNum() {
+        try {
+            return inputNum();
+        } catch (UnsupportedOperationException e) {
+            System.out.println(e.getMessage());
+            return correctNum();
+        }
+    }
+    
+    private static int inputNum() throws UnsupportedOperationException {
         try {
             return SCANNER.nextInt();
         } catch (InputMismatchException e) {
-            System.out.println(NUMBER_FORMAT_EXCEPTION_MESSAGE);
-            return inputNum();
+            throw new UnsupportedOperationException(NUMBER_FORMAT_EXCEPTION_MESSAGE);
         }
     }
 }
