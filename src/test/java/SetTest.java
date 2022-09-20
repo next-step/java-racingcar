@@ -31,16 +31,9 @@ public class SetTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3})
-    @DisplayName("Set의 contains() 메소드를 활용해 1, 2, 3의 값이 존재하는지를 확인")
-    void contains(int given) {
-        assertThat(numbers.contains(given)).isTrue();
-    }
-
-    @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
     @DisplayName("1, 2, 3 값은 contains 메소드 실행결과 true, 4, 5 값을 넣으면 false 가 반환되는 테스트")
-    void toLowerCase_ShouldGenerateTheExpectedLowercaseValue(int given, boolean expected) {
+    void containsTest(int given, boolean expected) {
         assertThat(numbers.contains(given)).isEqualTo(expected);
     }
 }
