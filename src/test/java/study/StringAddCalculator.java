@@ -19,28 +19,29 @@ public class StringAddCalculator {
         if (m.find()){
             String customDelimiter = m.group(1);
             String[] tokens= m.group(2).split(customDelimiter);
-            for(String s : tokens){
-                int num = Integer.parseInt(s);
-                if (num<0){
-                    throw new RuntimeException();
-                }
-                sum += num;
-            }
+            sum = sumAll(tokens);
             if(sum > 0) return sum;
 
         }
         else{
             String[] numbers = text.split(",|:");
-            for(String s : numbers){
-                int num = Integer.parseInt(s);
-                if (num<0){
-                    throw new RuntimeException();
-                }
-                sum += num;
-            }
+            sum = sumAll(numbers);
+
             if(sum > 0) return sum;
         }
 
         return -1;
+    }
+    public static int sumAll (String[] s){
+        int total=0;
+        for(String i : s){
+            int num = Integer.parseInt(i);
+            if (num<0){
+                throw new RuntimeException();
+            }
+            total += num;
+        }
+        return total;
+
     }
 }
