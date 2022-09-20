@@ -3,6 +3,8 @@ package study;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -28,5 +30,10 @@ public class SetTest {
         assertThat(size).isEqualTo(3);
     }
 
+    @ParameterizedTest
+    @ValueSource(ints = {1,2,3})
+    void 요구사항2_특정값이_존재하는지_확인(int givenValue){
+        assertThat(numbers.contains(givenValue)).isTrue();
+    }
 
 }
