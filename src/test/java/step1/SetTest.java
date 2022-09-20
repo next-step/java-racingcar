@@ -29,6 +29,7 @@ public class SetTest {
 	@DisplayName("Set 크기 확인")
 	public void 요구사항1() throws Exception {
 		assertThat(numbers.size()).isEqualTo(3);
+		assertThat(numbers).hasSize(3);
 	}
 
 	@Test
