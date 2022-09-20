@@ -12,8 +12,11 @@ public class ResultView {
     public static final String RESULT_MESSAGE = "실행 결과";
     public static final String BAR = "-";
     
-    public static void processPrint(Cars cars) {
+    public static void resultMessagePrint() {
         System.out.println(RESULT_MESSAGE);
+    }
+    
+    public static void processPrint(Cars cars) {
         List<CarDTO> carDTOs = cars.information();
         carDTOs.forEach(carDTO -> {
                     IntStream.range(0, carDTO.getPosition()).forEach(count -> System.out.print(BAR));

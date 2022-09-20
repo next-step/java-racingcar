@@ -15,6 +15,7 @@ public class RacingGame {
     
     public void play() {
         int numberOfTry = InputView.inputNumberOfTry();
+        ResultView.resultMessagePrint();
         while (numberOfTry-- > 0) {
             cars.move();
             ResultView.processPrint(cars);

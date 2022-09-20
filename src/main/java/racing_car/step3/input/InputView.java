@@ -17,7 +17,9 @@ public class InputView {
     
     public static int inputNumberOfTry() {
         System.out.println(INPUT_NUMBER_OF_TRY_MESSAGE);
-        return correctNum();
+        int numberOfTry = correctNum();
+        System.out.println();
+        return numberOfTry;
     }
     
     private static int correctNum() {
