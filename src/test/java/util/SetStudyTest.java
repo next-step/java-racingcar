@@ -28,7 +28,7 @@ class SetStudyTest {
     @DisplayName("Set의 size() 메소드를 활용해 Set의 크기를 확인하는 학습테스트를 구현한다.")
     void set_size() {
 
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
