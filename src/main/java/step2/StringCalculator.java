@@ -1,43 +1,37 @@
 package step2;
 
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StringCalculator {
-    private final String numbers;
+    private static final Pattern CUSTOM_SEPARATOR = Pattern.compile(("//(.)\n(.*)"));
+    private static final String FIRST_DEFAULT_DELIMITER = ":";
+    private static final String SECOND_DEFAULT_DELIMITER = ",";
+    private static final String OR = "|";
+    private final Numbers numbers;
 
-
-    public StringCalculator(String numbers) {
-        validation(numbers);
+    public StringCalculator(Numbers numbers) {
         this.numbers = numbers;
     }
 
-    private void validation(String numbers) {
-        if (numbers != null && !numbers.isEmpty() && !numbers.matches(".*[\n]*[0-9].*")) {
-            throw new RuntimeException("숫자가 없습니다.");
-        }
-        if (numbers != null && numbers.matches("(.*)-\\d(.*)")) {
-            throw new RuntimeException("음수는 입력할 수 없습니다.");
-        }
+    public StringCalculator(String numbers) {
+        this(new Numbers(numbers));
     }
 
     public int calculate() {
-        if (numbers == null) {
-            return 0;
-        }
-        if (numbers.isEmpty()) {
-            return 0;
-        }
         String regex = getRegex();
 
-        return Arrays.stream(numbers.replaceAll("//\\D\\n", "").split(regex))
-                .mapToInt(Integer::parseInt)
-                .sum();
+        String number = numbers.numbers().replaceAll("//\\D\\n", "");
+
+        return Arrays.stream(number.split(regex)).mapToInt(Integer::parseInt).sum();
     }
 
     private String getRegex() {
-        String regex = "[,|:]";
-        if (numbers.contains("//")) {
-            regex = String.valueOf(numbers.substring(2).charAt(0));
+        Matcher separatorMatcher = CUSTOM_SEPARATOR.matcher(numbers.numbers());
+        String regex = FIRST_DEFAULT_DELIMITER + OR + SECOND_DEFAULT_DELIMITER;
+        if (separatorMatcher.find()) {
+            regex = separatorMatcher.group(1);
         }
         return regex;
     }
