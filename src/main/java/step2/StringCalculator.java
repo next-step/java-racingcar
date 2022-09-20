@@ -10,7 +10,7 @@ public class StringCalculator {
     }
 
     public Integer sum(String originalSource) {
-        if (originalSource.isEmpty()) {
+        if (isNullOrEmpty(originalSource)) {
             return 0;
         }
 
@@ -20,5 +20,9 @@ public class StringCalculator {
         return Stream.of(numberStrings)
                 .mapToInt(numberConverter::toPositive)
                 .sum();
+    }
+
+    private boolean isNullOrEmpty(String source) {
+        return source == null || source.isEmpty();
     }
 }

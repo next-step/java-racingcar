@@ -55,9 +55,10 @@ class StringCalculatorTest {
         assertThat(actual).isEqualTo(expected);
     }
 
-    @DisplayName("빈 문자열을 전달하는 경우 0을 반환한다")
+    @DisplayName("빈 문자열이나 null을 전달하는 경우 0을 반환한다")
     @ParameterizedTest(name = "{displayName}")
     @EmptySource
+    @NullSource
     void zeroWhenEmptyString(String emptySource) {
         // given
         StringCalculator sut = new StringCalculator();
@@ -67,6 +68,21 @@ class StringCalculatorTest {
 
         // then
         Integer expected = 0;
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @DisplayName("숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환한다")
+    @ParameterizedTest(name = "{displayName} {index} => ''{0}''")
+    @ValueSource(strings = {"1", "2", "0"})
+    void selfWhenOneNumber(String source) {
+        // given
+        StringCalculator sut = new StringCalculator();
+
+        // when
+        Integer actual = sut.sum(source);
+
+        // then
+        Integer expected = Integer.valueOf(source);
         assertThat(actual).isEqualTo(expected);
     }
 
@@ -80,17 +96,5 @@ class StringCalculatorTest {
         // when & then
         assertThatExceptionOfType(RuntimeException.class)
                 .isThrownBy(() -> sut.sum(wrongSource));
-    }
-
-    @DisplayName("null을 전달하는 경우 RuntimeException 예외를 던진다")
-    @ParameterizedTest(name = "{displayName}")
-    @NullSource
-    void exceptionWhenNull(String nullSource) {
-        // given
-        StringCalculator sut = new StringCalculator();
-
-        // when & then
-        assertThatExceptionOfType(RuntimeException.class)
-                .isThrownBy(() -> sut.sum(nullSource));
     }
 }
