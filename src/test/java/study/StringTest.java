@@ -2,7 +2,7 @@ package study;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class StringTest {
 
@@ -24,6 +24,21 @@ public class StringTest {
 		int endIdx = Goal.indexOf(")");
 		result = Goal.substring(startIdx+1,endIdx);
 		assertThat(result).isEqualTo("1,2");
+		
+	}
+	
+	@Test
+	@DisplayName("요구사항 3 charAt메소드에 대한 학습과 IndexOutOfBounds에 대한 학습 테스트")
+	void charAtTestAndExceptionTest() {
+		String str = "abc";
+		
+		assertThat(str.charAt(0)).isEqualTo('a');
+		assertThat(str.charAt(1)).isEqualTo('b');
+		assertThat(str.charAt(2)).isEqualTo('c');
+		
+		assertThatThrownBy(()->{
+			str.charAt(3);
+		}).isInstanceOf(StringIndexOutOfBoundsException.class).hasMessageContaining("String index out of range");
 		
 	}
 	
