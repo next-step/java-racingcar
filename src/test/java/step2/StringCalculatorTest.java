@@ -12,7 +12,7 @@ public class StringCalculatorTest {
     @DisplayName("문자열 덧셈 계산기 클래스 생성 테스트")
     void constructorTest() {
         // given
-        Numbers numbers = new Numbers("1,2:3");
+        UserInput numbers = new UserInput("1,2:3");
 
         // then
         assertDoesNotThrow(() -> new StringCalculator(numbers));
@@ -22,7 +22,7 @@ public class StringCalculatorTest {
     @DisplayName("쉼표 콜론 문자열 자르기")
     void splitStringTest() {
         // given
-        Numbers numbers = new Numbers("1:2:3:4,5");
+        UserInput numbers = new UserInput("1:2:3:4,5");
         StringCalculator stringCalculator = new StringCalculator(numbers);
 
         // when
@@ -36,7 +36,7 @@ public class StringCalculatorTest {
     @DisplayName("구분자 지정하기")
     void customSeparatorTest() {
         // given
-        Numbers numbers = new Numbers("//;\n1;2;3");
+        UserInput numbers = new UserInput("//;\n1;2;3");
         StringCalculator stringCalculator = new StringCalculator(numbers);
 
         // when
