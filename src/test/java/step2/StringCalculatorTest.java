@@ -43,10 +43,24 @@ public class StringCalculatorTest {
     }
 
     @Test
-    @DisplayName("null값일 경우 0을 반환한다")
-    void nullTest() {
+    @DisplayName("빈 값일 경우 0을 반환한다")
+    void emptyStringTest() {
         //given
         String numbers = "";
+        StringCalculator stringCalculator = new StringCalculator(numbers);
+
+        //when
+        int sum = stringCalculator.calculate();
+
+        //then
+        assertThat(sum).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("null 값일 경우 0을 반환한다")
+    void nullStringTest() {
+        //given
+        String numbers = null;
         StringCalculator stringCalculator = new StringCalculator(numbers);
 
         //when
