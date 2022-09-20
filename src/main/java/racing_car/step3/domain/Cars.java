@@ -5,7 +5,6 @@ import racing_car.step3.dto.CarDTO;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Cars {
     private final List<Car> cars;

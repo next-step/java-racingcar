@@ -1,6 +1,5 @@
 package racing_car.step3.input;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputView {
