@@ -1,5 +1,7 @@
 package racing_car.step3.domain;
 
+import racing_car.step3.dto.CarDTO;
+
 import java.util.Objects;
 
 public class Car {
@@ -16,6 +18,10 @@ public class Car {
         if (moveStrategy.isMove()) {
             position++;
         }
+    }
+    
+    public CarDTO information() {
+        return new CarDTO(position);
     }
     
     @Override

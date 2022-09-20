@@ -1,13 +1,27 @@
 package racing_car.step3.domain;
 
+import racing_car.step3.dto.CarDTO;
+
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Cars {
     private final List<Car> cars;
     
     public Cars(List<Car> cars) {
         this.cars = cars;
+    }
+    
+    public void move() {
+        cars.forEach(car -> car.move(new RandomMoveStrategy()));
+    }
+    
+    public List<CarDTO> information() {
+        return cars.stream()
+                .map(Car::information)
+                .collect(Collectors.toList());
     }
     
     @Override
