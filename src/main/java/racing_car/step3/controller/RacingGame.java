@@ -7,7 +7,7 @@ import racing_car.step3.output.ResultView;
 
 public class RacingGame {
     public void play() {
-        Cars cars = getCars();
+        Cars cars = createCars();
         startMove(cars, InputView.inputNumberOfTry());
     }
     
@@ -20,7 +20,7 @@ public class RacingGame {
         }
     }
     
-    private static Cars getCars() {
+    private static Cars createCars() {
         int numberOfCars = InputView.inputNumberOfCars();
         return new Cars(CarsFactory.from(numberOfCars));
     }
