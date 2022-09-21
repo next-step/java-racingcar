@@ -1,25 +1,16 @@
 package racingcar.domain;
 
 public class Car {
-    public static final String POSITION_EXCEPTION_MESSAGE = "위치는 0 이상이어야 합니다.";
     public static final int DEFAULT_MOVEMENT_DISTANCE = 1;
 
-    private final int position;
+    private final Position position;
 
     public Car(int position) {
-        validate(position);
+        this.position = new Position(position);
+    }
 
+    public Car(Position position) {
         this.position = position;
-    }
-
-    private void validate(int position) {
-        if (isNegative(position)) {
-            throw new IllegalArgumentException(POSITION_EXCEPTION_MESSAGE);
-        }
-    }
-
-    private boolean isNegative(int position) {
-        return position < 0;
     }
 
     public Car() {
@@ -27,12 +18,13 @@ public class Car {
     }
 
     public int position() {
-        return position;
+        return position.getPosition();
     }
 
     public Car move(MoveStrategy moveStrategy) {
         if (moveStrategy.isMovable()) {
-            return new Car(position + DEFAULT_MOVEMENT_DISTANCE);
+            Position newPosition = position.add(new Position(DEFAULT_MOVEMENT_DISTANCE));
+            return new Car(newPosition);
         }
 
         return this;
@@ -40,6 +32,6 @@ public class Car {
 
     @Override
     public String toString() {
-        return "-".repeat(position);
+        return "-".repeat(position.getPosition());
     }
 }
