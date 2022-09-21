@@ -1,26 +1,28 @@
+package study;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
     public int splitAndSum(String data) {
-        int sum = 0;
         int number = 0;
-        String[] patternDataList = null;
+
+        if (data == null || data.isEmpty()) {
+            return 0;
+        }
 
         if (data.length() == 1) {
-            number = Integer.parseInt(data);
-        }else if(data.length() > 0){
-            number = dataNullChk(data);
+            return number = Integer.parseInt(data);
         }
 
         Matcher pattern = Pattern.compile("//(.)\n(.*)").matcher(data);
-
         if (pattern.find()) {
-            number = dataSum(pattern.group(2), pattern.group(1), sum);
+            number = dataSum(pattern.group(2), pattern.group(1), 0);
+        }else{
+            number = dataSum(data, ",|:", 0);
         }
 
-        number = dataSum(data, ",|:", sum);
         return number;
     }
 
@@ -34,14 +36,6 @@ public class StringAddCalculator {
             }
         }
         return sum;
-    }
-
-    public int dataNullChk(String data) {
-        if (data == null || data.isEmpty()) {
-            return 0;
-        }else{
-            return Integer.parseInt(data);
-        }
     }
 
 }
