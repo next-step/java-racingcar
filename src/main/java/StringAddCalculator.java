@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
-    public static int splitAndSum(String input) throws Exception {
+    public static int splitAndSum(String input) throws RuntimeException {
         if (input == null || input.isEmpty()) {
             return 0;
         }
@@ -21,6 +21,12 @@ public class StringAddCalculator {
             numbers = m.group(2).split(customDelimiter);
         } else {
             numbers = input.split(",|:");
+        }
+
+        for (String number: numbers) {
+            if (number.startsWith("-")) {
+                throw new RuntimeException("cannot input negative numbers");
+            }
         }
 
         return Arrays.stream(numbers)
