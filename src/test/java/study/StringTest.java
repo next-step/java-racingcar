@@ -31,4 +31,17 @@ public class StringTest {
 		// then
 		Assertions.assertThat(strArr).containsExactly("1");
 	}
+
+	@Test
+	@DisplayName("문자열 (1,2)을 substring 하면 1,2를 반환한다.")
+	void Given_String_When_Substring_Then_ReturnWithoutSeparator(){
+		// given
+		String str = "(1,2)";
+
+		// when
+		String result = str.substring(1, 4);
+
+		// then
+		Assertions.assertThat(result).isEqualTo("1,2");
+	}
 }
