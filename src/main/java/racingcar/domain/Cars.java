@@ -1,14 +1,14 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
-    private final List<Car> cars;
+    private List<Car> cars = new ArrayList<>();
 
     public Cars() {
-        this.cars = new ArrayList<>();
     }
 
     public Cars(List<Car> cars) {
@@ -16,7 +16,7 @@ public class Cars {
     }
 
     public List<Car> getCars() {
-        return cars;
+        return Collections.unmodifiableList(cars);
     }
 
     public int size() {
