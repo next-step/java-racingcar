@@ -3,7 +3,6 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Cars {
     private List<Car> cars = new ArrayList<>();
@@ -27,11 +26,7 @@ public class Cars {
         cars.add(car);
     }
 
-    public Cars move(MoveStrategy moveStrategy) {
-        List<Car> movedCars = cars.stream()
-                .map(car -> car.move(moveStrategy))
-                .collect(Collectors.toList());
-
-        return new Cars(movedCars);
+    public void move(MoveStrategy moveStrategy) {
+        cars.forEach(car -> car.move(moveStrategy));
     }
 }

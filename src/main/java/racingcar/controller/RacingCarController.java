@@ -1,12 +1,11 @@
 package racingcar.controller;
 
-import racingcar.domain.CarFactory;
-import racingcar.domain.Cars;
-import racingcar.domain.RaceGame;
+import racingcar.service.RacingGame;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
 public class RacingCarController {
+    private final RacingGame racingGame = new RacingGame();
 
     public void run() {
         int numberOfCars;
@@ -19,13 +18,8 @@ public class RacingCarController {
             tryCount = Integer.parseInt(InputView.inputTryCount());
         } while (tryCount < 0);
 
-        Cars cars = CarFactory.createCars(numberOfCars);
-        RaceGame game = new RaceGame(cars);
 
-        ResultView.printResult();
-        for (int i = 0; i < tryCount; i++) {
-            game.race();
-            ResultView.printGameStatus(game);
-        }
+        racingGame.join(numberOfCars);
+        ResultView.printResult(racingGame.race(tryCount));
     }
 }

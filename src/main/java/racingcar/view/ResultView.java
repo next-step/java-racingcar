@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import racingcar.domain.RaceGame;
+import racingcar.domain.RacingGameResult;
 
 public class ResultView {
 
@@ -9,14 +9,8 @@ public class ResultView {
     private ResultView() {
     }
 
-    public static void printResult() {
+    public static void printResult(RacingGameResult result) {
         System.out.println(RESULT_MESSAGE);
-    }
-
-    public static void printGameStatus(RaceGame game) {
-        game.getCars()
-            .forEach(System.out::println);
-
-        System.out.println();
+        System.out.println(result.getReport());
     }
 }
