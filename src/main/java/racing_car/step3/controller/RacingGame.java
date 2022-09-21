@@ -6,19 +6,22 @@ import racing_car.step3.input.InputView;
 import racing_car.step3.output.ResultView;
 
 public class RacingGame {
-    private final Cars cars;
-    
-    public RacingGame() {
-        int numberOfCars = InputView.inputNumberOfCars();
-        this.cars = new Cars(CarsFactory.from(numberOfCars));
+    public void play() {
+        Cars cars = getCars();
+        startMove(cars, InputView.inputNumberOfTry());
     }
     
-    public void play() {
-        int numberOfTry = InputView.inputNumberOfTry();
+    private static void startMove(Cars cars, int numberOfTry) {
         ResultView.resultMessagePrint();
+        
         while (numberOfTry-- > 0) {
             cars.move();
             ResultView.processPrint(cars);
         }
+    }
+    
+    private static Cars getCars() {
+        int numberOfCars = InputView.inputNumberOfCars();
+        return new Cars(CarsFactory.from(numberOfCars));
     }
 }
