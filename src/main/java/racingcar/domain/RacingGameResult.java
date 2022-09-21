@@ -6,6 +6,7 @@ import java.util.List;
 
 public class RacingGameResult {
     private static final String MOVEMENT_MARK = "-";
+    public static final String NEW_LINE = "\n";
 
     List<String> records = new ArrayList<>();
 
@@ -25,7 +26,7 @@ public class RacingGameResult {
     }
 
     private String createMovementMark(Car car) {
-        return MOVEMENT_MARK.repeat(car.position());
+        return MOVEMENT_MARK.repeat(car.position()) + NEW_LINE;
     }
 
     public List<String> records() {
