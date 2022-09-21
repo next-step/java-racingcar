@@ -36,4 +36,14 @@ public class StringCalculateTest {
 
 		assertThat(new int[] {1, 2, 3}).isEqualTo(expected);
 	}
+
+	@Test
+	@DisplayName("숫자배열 더하기")
+	public void addInt() throws Exception {
+		StringCalculator calculator = new StringCalculator();
+		int[] arr = {1, 2, 3};
+		int expected = calculator.add(arr);
+
+		assertThat(6).isEqualTo(expected);
+	}
 }
