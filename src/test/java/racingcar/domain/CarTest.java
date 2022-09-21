@@ -23,6 +23,14 @@ public class CarTest {
         assertThat(car.position()).isEqualTo(2);
     }
 
+    @DisplayName("여러 자동차를 등록한다.")
+    @Test
+    void createCars() {
+        Cars cars = CarFactory.createCars(3);
+
+        assertThat(cars.size()).isEqualTo(3);
+    }
+
     @DisplayName("자동차 이동 확인")
     @Test
     void move() {
