@@ -7,4 +7,9 @@ public class StringCalculator {
 		}
 		return 0;
 	}
+
+	public String[] split(String input) {
+		String separators = ",|:";
+		return input.split(separators);
+	}
 }

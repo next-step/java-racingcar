@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class StringCalculateTest {
 	@Test
@@ -14,5 +16,14 @@ public class StringCalculateTest {
 		StringCalculator calculator = new StringCalculator();
 		assertThat(calculator.calculate(str1)).isEqualTo(0);
 		assertThat(calculator.calculate(str2)).isEqualTo(0);
+	}
+
+	@ParameterizedTest
+	@DisplayName("기본 구분자로 split 하기")
+	@ValueSource(strings = {"1,2,3", "1:2:3"})
+	public void splitByOtherSeparators(String input) throws Exception {
+		StringCalculator calculator = new StringCalculator();
+		String[] expected = calculator.split(input);
+		assertThat(new String[] {"1", "2", "3"}).isEqualTo(expected);
 	}
 }
