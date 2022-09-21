@@ -17,7 +17,7 @@ public class StringTest {
 
     @Test
     @DisplayName("'1'을_,로_split_했을_때_1만_포함한다")
-    void splitSingleValue() {
+    void split_withSingleValue() {
         String value = "1";
         String[] result = value.split(",");
 
