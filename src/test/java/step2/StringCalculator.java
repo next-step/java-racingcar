@@ -12,4 +12,12 @@ public class StringCalculator {
 		String separators = ",|:";
 		return input.split(separators);
 	}
+
+	public int[] convertToInt(String[] arr) {
+		int[] convert = new int[arr.length];
+		for (int i = 0; i < arr.length; i++) {
+			convert[i] = Integer.parseInt(arr[i]);
+		}
+		return convert;
+	}
 }

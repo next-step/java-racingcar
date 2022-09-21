@@ -26,4 +26,14 @@ public class StringCalculateTest {
 		String[] expected = calculator.split(input);
 		assertThat(new String[] {"1", "2", "3"}).isEqualTo(expected);
 	}
+
+	@Test
+	@DisplayName("분리된 문자배열을 숫자배열로 반환")
+	public void convertToIntArray() throws Exception {
+		StringCalculator calculator = new StringCalculator();
+		String[] arr = {"1", "2", "3"};
+		int[] expected = calculator.convertToInt(arr);
+
+		assertThat(new int[] {1, 2, 3}).isEqualTo(expected);
+	}
 }
