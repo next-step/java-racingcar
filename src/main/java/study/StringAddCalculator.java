@@ -5,7 +5,20 @@ public class StringAddCalculator {
         if(text == null || text.isEmpty()) {
             return 0;
         }
-        return Integer.parseInt(text);
+        String[] split = split(text);
+        return sum(split);
+    }
+
+    public static String[] split(String text){
+        return text.split(",");
+    }
+
+    public static int sum(String[] textArray){
+        int result = 0;
+        for (String text : textArray) {
+            result += Integer.parseInt(text);
+        }
+        return result;
     }
 
 
