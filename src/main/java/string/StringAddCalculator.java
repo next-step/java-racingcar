@@ -10,18 +10,18 @@ public class StringAddCalculator {
         if (isEmpty(text)) {
             return 0;
         }
-        int[] splitText = convertIntArray(text);
-        existsNegative(splitText);
-        return sum(splitText);
+        int[] numbers = convertIntArray(text);
+        existsNegativeNumber(numbers);
+        return sum(numbers);
     }
 
-    private static void existsNegative(int[] splitNumbers) {
-        if (isNegative(splitNumbers)) {
+    private static void existsNegativeNumber(int[] splitNumbers) {
+        if (isNegativeNumber(splitNumbers)) {
             throw new RuntimeException();
         }
     }
 
-    private static boolean isNegative(int[] splitNumbers) {
+    private static boolean isNegativeNumber(int[] splitNumbers) {
         return Arrays.stream(splitNumbers).anyMatch(n -> n < 0);
     }
 
