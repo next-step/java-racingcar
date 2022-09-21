@@ -1,18 +1,23 @@
 package calculator;
 
+import exception.ValidateNegative;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
+    private static final Pattern CUSTOM_SEPARATOR = Pattern.compile("//(.)\n(.*)");
+    private static final int ZERO = 0;
+
     public static int splitAndSum(String text) {
 
         if (text == null) {
-            return 0;
+            return ZERO;
         }
 
         if (text.isEmpty()) {
-            return 0;
+            return ZERO;
         }
 
         String[] tokens = split(text);
@@ -21,7 +26,7 @@ public class StringAddCalculator {
     }
 
     public static String[] split(String text) {
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        Matcher m = isCustomSeparator(text);
 
         if (m.find()) {
             String customDelimiter = m.group(1);
@@ -31,18 +36,27 @@ public class StringAddCalculator {
     }
 
     public static int sum(String[] tokens) {
-        int result = 0;
+        int result = ZERO;
 
         for (String token : tokens) {
             int parseIntToken = Integer.parseInt(token);
 
-            if (parseIntToken < 0) {
-                throw new ValidateNegative();
-            }
+            validateNegative(parseIntToken);
+
             result = result + parseIntToken;
         }
 
         return result;
+    }
+
+    public static Matcher isCustomSeparator(String text) {
+        return CUSTOM_SEPARATOR.matcher(text);
+    }
+
+    public static void validateNegative(int parseIntToken) {
+        if (parseIntToken < ZERO) {
+            throw new ValidateNegative();
+        }
     }
 
 }
