@@ -17,6 +17,6 @@ class CarRacingGameTest {
     }
     @Test
     void run() {
-        CarRacingGame.racing();
+        CarRacingGame.run();
     }
 }
