@@ -1,5 +1,7 @@
 package ThirdStep;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class GameSetting {
@@ -22,5 +24,18 @@ public class GameSetting {
 
         System.out.println("시도할 회수는 몇 회 인가요?");
         attempts = scanner.nextInt();
+    }
+
+    public static List<Car> getCars() {
+        List<Car> cars = new ArrayList<>();
+        for (int count = 0 ; count < GameSetting.getCarCount() ; ++count) {
+            cars.add(new Car());
+        }
+
+        return cars;
+    }
+
+    public static void reduceAttempts() {
+        --attempts;
     }
 }
