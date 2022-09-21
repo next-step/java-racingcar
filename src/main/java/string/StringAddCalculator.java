@@ -20,7 +20,7 @@ public class StringAddCalculator {
 
     private static void existsNegativeNumber(int[] splitNumbers) {
         if (isNegativeNumber(splitNumbers)) {
-            throw new RuntimeException();
+            throw new ExistsNegativeNumberException();
         }
     }
 
