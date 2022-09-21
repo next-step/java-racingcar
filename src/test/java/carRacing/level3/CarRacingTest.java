@@ -34,4 +34,13 @@ public class CarRacingTest {
 
   }
 
+  @ParameterizedTest
+  @ValueSource(ints = {-5,10})
+  @DisplayName("랜덤값이 0~10범위가 아니라면 false를 반환한다.")
+  void 랜덤값_예외_테스트(int value) {
+
+    assertThat(RaceSetting.isMoving(value)).isFalse();
+
+  }
+
 }
