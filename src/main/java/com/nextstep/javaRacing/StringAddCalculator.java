@@ -9,14 +9,8 @@ public class StringAddCalculator {
 
     public static int splitAndSum(String s) {
         if (s == null || s.isEmpty()) return 0;
-        if (isNumeric(s)) return parse(s);
         String[] tokens = tokenize(s);
         return parseAndSum(tokens);
-    }
-
-    private static boolean isNumeric(String s) {
-        Matcher m = singleNumberPattern.matcher(s);
-        return m.matches();
     }
 
     private static String[] tokenize(String s) {
@@ -42,5 +36,10 @@ public class StringAddCalculator {
             throw new IllegalArgumentException("input must be positive number : " + s);
         }
         return Integer.parseInt(s);
+    }
+
+    private static boolean isNumeric(String s) {
+        Matcher m = singleNumberPattern.matcher(s);
+        return m.matches();
     }
 }
