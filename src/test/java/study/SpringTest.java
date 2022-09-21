@@ -8,6 +8,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class SpringTest  {
 
+    @DisplayName("1과 2 split 하기")
     @Test
     void splitWithOneAndTwo() {
         //given & when
@@ -18,6 +19,7 @@ public class SpringTest  {
         assertThat(split).contains("1", "2");
     }
 
+    @DisplayName("1 split 하기")
     @Test
     void splitWithOne() {
         //given & when
@@ -28,6 +30,7 @@ public class SpringTest  {
         assertThat(split).containsExactly("1");
     }
 
+    @DisplayName("(1,2) 에서 괄호 없애기")
     @Test
     void substring() {
         //given & when

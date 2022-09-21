@@ -35,14 +35,14 @@ public class SetTest {
     }
 
     @DisplayName("1, 2, 3의 값이 존재하는지")
-    @ParameterizedTest
+    @ParameterizedTest(name = "{index}: {displayName} name={0}")
     @ValueSource(ints = {1, 2, 3})
     void contains(int input) {
         assertThat(numbers.contains(input)).isTrue();
     }
 
     @DisplayName("contains 실행 결과에 따라 true/false 반환")
-    @ParameterizedTest
+    @ParameterizedTest(name = "{index}: {displayName} name={0}")
     @CsvSource(value = {"1,true", "2,true", "3,true", "4,false", "5,false"})
     void containsTrueOrFalse(int number, boolean expected) {
         assertThat(numbers.contains(number)).isEqualTo(expected);
