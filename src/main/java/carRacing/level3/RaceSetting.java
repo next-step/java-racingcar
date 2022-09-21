@@ -2,17 +2,17 @@ package carRacing.level3;
 
 import java.util.Random;
 
-public class CarRace {
+public class RaceSetting {
 
   private static final Integer BOUNDARY = 10;
   private static final Integer PIVOT = 4;
 
-  public static int getRandomNum() {
+  public static int randomNum() {
     Random random = new Random();
     return random.nextInt(BOUNDARY);
   }
 
-  public static Boolean canMove(int randomNum) {
+  public static Boolean isMoving(int randomNum) {
     if (randomNum >= PIVOT) {
       return true;
     }
