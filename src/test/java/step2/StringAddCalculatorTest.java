@@ -12,7 +12,6 @@ class StringAddCalculatorTest {
         assertThat(result).isZero();
 
         result = StringAddCalculator.splitAndSum("");
-        assertThat(result).isZero();
     }
 
     @Test
