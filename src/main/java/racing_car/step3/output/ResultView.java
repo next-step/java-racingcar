@@ -8,8 +8,8 @@ import java.util.stream.IntStream;
 
 public class ResultView {
     
-    public static final String RESULT_MESSAGE = "실행 결과";
-    public static final String BAR = "-";
+    private static final String RESULT_MESSAGE = "실행 결과";
+    private static final String BAR = "-";
     
     public static void resultMessagePrint() {
         System.out.println(RESULT_MESSAGE);
@@ -17,10 +17,16 @@ public class ResultView {
     
     public static void processPrint(Cars cars) {
         List<CarDTO> carDTOs = cars.information();
-        carDTOs.forEach(carDTO -> {
-            IntStream.range(0, carDTO.getPosition()).forEach(count -> System.out.print(BAR));
-            System.out.println();
-        });
+        
+        for (CarDTO carDTO : carDTOs) {
+            processBarPrint(carDTO.getPosition());
+        }
         System.out.println();
+    }
+    
+    private static void processBarPrint(int position) {
+        while (position-- > 0) {
+            System.out.print(BAR);
+        }
     }
 }
