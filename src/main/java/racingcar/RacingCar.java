@@ -10,6 +10,10 @@ public class RacingCar {
     private final int MOVE_LENGTH = 1;
     private int position = 0;
 
+    public RacingCar() {
+        this.random = new RandomGenerator();
+    }
+
     public RacingCar(Random random) {
         this.random = random;
     }

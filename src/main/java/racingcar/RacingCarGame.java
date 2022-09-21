@@ -32,7 +32,7 @@ public class RacingCarGame {
 
     private static List<RacingCar> createRacingCars(int initRacingCarCount) {
         return IntStream.range(0, initRacingCarCount)
-            .mapToObj(i -> new RacingCar(new RandomGenerator()))
+            .mapToObj(i -> new RacingCar())
             .collect(Collectors.toCollection(ArrayList::new));
     }
 
