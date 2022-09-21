@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
@@ -11,7 +13,15 @@ public class StringAddCalculator {
             return Integer.parseInt(input);
         }
 
-        String[] numbers = input.split(",");
+        String[] numbers;
+        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(input);
+
+        if (m.find()) {
+            String customDelimiter = m.group(1);
+            numbers = m.group(2).split(customDelimiter);
+        } else {
+            numbers = input.split(",|:");
+        }
 
         return Arrays.stream(numbers)
                 .map(Integer::parseInt)
