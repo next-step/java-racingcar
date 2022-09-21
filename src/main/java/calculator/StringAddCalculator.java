@@ -25,9 +25,6 @@ public class StringAddCalculator {
         for (String number : numbers) {
             validatePositveNumber(number);
             int parseNum = Integer.parseInt(number);
-            if (parseNum < 0) {
-                throw new RuntimeException();
-            }
             sum += parseNum;
         }
         return sum;
@@ -42,6 +39,5 @@ public class StringAddCalculator {
         } catch (NumberFormatException e) {
             throw new RuntimeException("숫자 형태가 아닌 값이 존재합니다.");
         }
-
     }
 }
