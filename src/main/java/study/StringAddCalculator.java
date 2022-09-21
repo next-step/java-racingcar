@@ -11,14 +11,8 @@ public class StringAddCalculator {
         if(text == null || text.isEmpty()) {
             return 0;
         }
-        String[] tokens = tokens(text);
+        String[] tokens = split(text);
         return sum(tokens);
-    }
-
-    private static String[] tokens(final String text) {
-        String delimiter = delimiter(text);
-        String convertedText = convertText(text);
-        return split(convertedText, delimiter);
     }
 
     private static String delimiter(final String text){
@@ -37,7 +31,9 @@ public class StringAddCalculator {
         return text;
     }
 
-    private static String[] split(final String convertedText, final String delimiter){
+    private static String[] split(final String text){
+        String delimiter = delimiter(text);
+        String convertedText = convertText(text);
         return convertedText.split(delimiter);
     }
 
