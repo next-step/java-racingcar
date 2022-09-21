@@ -2,6 +2,9 @@ package ThirdStep;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -17,13 +20,14 @@ class CarTest {
         assertThat(car.getLocation()).isEqualTo(INIT_LOCATION);
     }
 
-    @Test
-    @DisplayName("Car의 move 메소드는 location을 1 증가시킨다.")
-    void Car_이동() {
+    @ParameterizedTest
+    @DisplayName("최초 생성되어 location이 0인 Car의 move에 true가 전달되면 location은 1, false가 전달되면 그대로 0이다.")
+    @CsvSource(value = {"true:1", "false:0"}, delimiter = ':')
+    void Car_이동(boolean canMoveForward, int location) {
         Car car = new Car();
 
-        car.move();
+        car.move(canMoveForward);
 
-        assertThat(car.getLocation()).isEqualTo(INIT_LOCATION + 1);
+        assertThat(car.getLocation()).isEqualTo(location);
     }
 }

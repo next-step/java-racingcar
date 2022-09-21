@@ -12,8 +12,10 @@ public class Car {
         return location;
     }
 
-    public void move() {
-        ++location;
+    public void move(boolean canMoveForward) {
+        if (canMoveForward) {
+            ++location;
+        }
     }
 
     public void printLocation() {

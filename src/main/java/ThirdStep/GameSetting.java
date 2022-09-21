@@ -34,8 +34,4 @@ public class GameSetting {
 
         return cars;
     }
-
-    public static void reduceAttempts() {
-        --attempts;
-    }
 }
