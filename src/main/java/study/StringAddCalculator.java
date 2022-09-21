@@ -25,7 +25,11 @@ public class StringAddCalculator {
     public static int sum(String[] textArray){
         int result = 0;
         for (String text : textArray) {
-            result += Integer.parseInt(text);
+            int number = Integer.parseInt(text);
+            if(number<0){
+                throw new RuntimeException();
+            }
+            result += number;
         }
         return result;
     }
