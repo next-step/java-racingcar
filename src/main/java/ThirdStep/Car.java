@@ -4,7 +4,7 @@ public class Car {
     private int location;
 
     public Car() {
-        this.location = 0;
+        this.location = 1;
     }
 
     public int getLocation() {
@@ -15,5 +15,9 @@ public class Car {
         if (canForward) {
             ++location;
         }
+    }
+
+    public void printLocation() {
+        System.out.println("-".repeat(location));
     }
 }

@@ -8,8 +8,15 @@ public class CarRacingGame {
         GameSetting.setting();
 
         List<Car> cars = GameSetting.getCars();
+
+        System.out.println("실행 결과");
         while (GameSetting.getAttempts() > 0) {
-            cars.forEach(car -> car.move(CarRacingGame.CanForward()));
+            cars.forEach(car -> {
+                car.move(CarRacingGame.CanForward());
+                car.printLocation();
+            });
+
+            System.out.println();
             GameSetting.reduceAttempts();
         }
     }
