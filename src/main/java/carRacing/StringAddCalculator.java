@@ -5,26 +5,31 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
+
+  private static final String DELIMITER_REGEX = "//(.)\n(.*)";
+  private static final String DEFAULT_REGEX = ",|:";
+  private static final Integer TARGET_DELIMITER = 1;
+  private static final Integer TARGET_TOKENS = 2;
+
   public static int splitAndSum(String input) {
 
-    //최종 계산 값
     int answer = 0;
 
     if (input == null || input.isEmpty()) {
       return 0;
     }
 
-    Matcher m = Pattern.compile("//(.)\n(.*)").matcher(input);
+    Matcher m = Pattern.compile(DELIMITER_REGEX).matcher(input);
 
     if (m.find()) {
 
-      String customDelimiter = m.group(1);
-      String[] tokens = m.group(2).split(customDelimiter);
+      String customDelimiter = m.group(TARGET_DELIMITER);
+      String[] tokens = m.group(TARGET_TOKENS).split(customDelimiter);
 
       return calculate(tokens, answer);
 
     }
-    String[] tokens = input.split(",|:");
+    String[] tokens = input.split(DEFAULT_REGEX);
     return calculate(tokens, answer);
 
   }
@@ -34,7 +39,7 @@ public class StringAddCalculator {
     for (String token : tokens) {
       int num = Integer.parseInt(token);
 
-      if (num < 0){
+      if (num < 0) {
         throw new RuntimeException();
       }
       answer += num;
