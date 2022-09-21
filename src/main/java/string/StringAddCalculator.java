@@ -7,16 +7,11 @@ import java.util.regex.Pattern;
 public class StringAddCalculator {
 
     public static int splitAndSum(String text) {
-        int result = 0;
-
         if (isEmpty(text)) {
-            return result;
+            return 0;
         }
-
         existsNegative(convertIntArray(text));
-        result = sum(convertIntArray(text));
-
-        return result;
+        return sum(convertIntArray(text));
     }
 
     private static void existsNegative(int[] splitNumbers) {
