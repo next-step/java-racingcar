@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class StringAddCalculator {
 
     public static int splitAndSum(String input) throws Exception {
@@ -9,7 +11,11 @@ public class StringAddCalculator {
             return Integer.parseInt(input);
         }
 
-        return 1;
+        String[] numbers = input.split(",");
+
+        return Arrays.stream(numbers)
+                .map(Integer::parseInt)
+                .reduce(0, Integer::sum);
     }
 
     private static boolean isNumeric(String input) {
