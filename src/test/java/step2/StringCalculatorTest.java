@@ -55,4 +55,10 @@ public class StringCalculatorTest {
                 () ->Assertions.assertThat(stringCalculator.addOperation("22")).isEqualTo(22)
         );
     }
+
+    @DisplayName("숫자 두개를 컴마 구분자로 입력할 경우 두 숫자의 합을 반환한다.")
+    @Test
+    void addOperationSeparateByRest(){
+        Assertions.assertThat(stringCalculator.addOperation("1,2")).isEqualTo(3);
+    }
 }
