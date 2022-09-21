@@ -1,47 +1,87 @@
 package study;
 
-import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Stream;
 
 public class StringAddCalculator {
-    static int splitAndSum(String text){
-        int sum = 0;
-        if (text==null || text.isEmpty()){
+    public static int splitAndSum(String text) {
+        if (emptyOrNull(text)){
             return 0;
         }
-        if (text.length()==1){
-            int number = Integer.parseInt(text);
-            return number;
+        if (singleNum(text)) {
+            return Integer.parseInt(text);
         }
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
-        if (m.find()){
-            String customDelimiter = m.group(1);
-            String[] tokens= m.group(2).split(customDelimiter);
-            sum = sumAll(tokens);
-            if(sum > 0) return sum;
 
+        Matcher pattern = Pattern.compile("//(.)\n(.*)").matcher(text);
+
+        int patternSum = 0;
+        int notPatternSum =0 ;
+
+        if (isPatternMatched(pattern)) {
+            patternSum = sumPattern(pattern);
+        } else {
+            notPatternSum = sumAll(text);
         }
-        else{
-            String[] numbers = text.split(",|:");
-            sum = sumAll(numbers);
-
-            if(sum > 0) return sum;
+        if (patternSum >0){
+            return  patternSum;
+        }
+        if (notPatternSum>0){
+            return notPatternSum;
         }
 
         return -1;
     }
-    public static int sumAll (String[] s){
-        int total=0;
-        for(String i : s){
-            int num = Integer.parseInt(i);
-            if (num<0){
+
+    private static boolean emptyOrNull(String text) {
+        boolean isEmptyOrNull = false;
+        if (text == null || text.isEmpty()) {
+            isEmptyOrNull = true;
+        }
+        return isEmptyOrNull;
+    }
+
+    private static boolean singleNum(String text){
+        boolean isSingleNum = false;
+        if (text.length() == 1){
+            isSingleNum = true;
+        }
+        return isSingleNum;
+    }
+
+    private static boolean isPatternMatched (Matcher pattern){
+        boolean isPattern = false;
+        if (pattern.find()){
+            isPattern = true;
+        }
+        return  isPattern;
+
+    }
+
+    private static int sumPattern(Matcher pattern){
+        int delimiternum = 1;
+        int textnum = 2;
+        String customDelimiter = pattern.group(delimiternum);
+        String[] patternList = pattern.group(textnum).split(customDelimiter);
+        int total = 0;
+        for (String number : patternList) {
+            int num = Integer.parseInt(number);
+            if (num < 0) {
                 throw new RuntimeException();
             }
             total += num;
         }
         return total;
-
+    }
+    private static int sumAll(String text) {
+        String[] numbers = text.split(",|:");
+        int total = 0;
+        for (String number : numbers) {
+            int num = Integer.parseInt(number);
+            if (num < 0) {
+                throw new RuntimeException();
+            }
+            total += num;
+        }
+        return total;
     }
 }

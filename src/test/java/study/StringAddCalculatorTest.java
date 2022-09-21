@@ -1,6 +1,5 @@
 package study;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -48,7 +47,7 @@ public class StringAddCalculatorTest {
     }
 
     @Test
-    @DisplayName("음수")
+    @DisplayName("음수일 경우 RuntimeException 발생")
     public void splitAndSum_negative() throws Exception {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
                 .isInstanceOf(RuntimeException.class);
