@@ -19,13 +19,13 @@ public class StringAddCalculator {
         String[] tokens = splitString(text);
 
         // 요구사항 6
-        List<Integer> numbers = validateNumbers(convertStringsToNumbers(tokens));
+        List<Integer> numbers = validatePositiveNumbers(convertStringsToNumbers(tokens));
 
         // 요구사항 2 & 3
         return addNumbers(numbers);
     }
 
-    private static List<Integer> validateNumbers(List<Integer> numbers) {
+    private static List<Integer> validatePositiveNumbers(List<Integer> numbers) {
         numbers = numbers.stream()
                 .peek(number -> {
                     if (number < 0) {
