@@ -1,6 +1,6 @@
-package StringAddCalculatorTest;
+package stringAddCalculatorTest;
 
-import StringCalculator.StringCalculator;
+import stringCalculator.StringCalculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
