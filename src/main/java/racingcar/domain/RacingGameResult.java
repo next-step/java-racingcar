@@ -5,7 +5,7 @@ import java.util.List;
 
 public class RacingGameResult {
     private static final String NEW_LINE = "\n";
-    public static final String MOVEMENT_MARK = "-";
+    private static final String MOVEMENT_MARK = "-";
 
     List<String> records = new ArrayList<>();
 

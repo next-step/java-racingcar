@@ -1,7 +1,7 @@
 package racingcar.domain;
 
 public class Car {
-    public static final int DEFAULT_MOVEMENT_DISTANCE = 1;
+    private static final int DEFAULT_MOVEMENT_DISTANCE = 1;
 
     private Position position;
 
