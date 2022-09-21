@@ -1,10 +1,12 @@
 package racingcar;
 
-public class RacingCar {
+public class Car {
 
     private final Integer currentPosition;
 
-    public RacingCar(Integer currentPosition) {
+    private static final Integer MOVE_CRITERIA = 4;
+
+    public Car(Integer currentPosition) {
         this.currentPosition = currentPosition;
     }
 
@@ -12,12 +14,12 @@ public class RacingCar {
         return currentPosition;
     }
 
-    public static RacingCar positionOf(Integer position) {
-        return new RacingCar(position);
+    public static Car positionOf(Integer position) {
+        return new Car(position);
     }
 
     public Integer nextPosition(Integer randomNumber) {
-        if (randomNumber >= 4) {
+        if (randomNumber >= MOVE_CRITERIA) {
             return currentPosition + 1;
         }
         return currentPosition;

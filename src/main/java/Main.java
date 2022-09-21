@@ -1,4 +1,4 @@
-import racingcar.RacingCarList;
+import racingcar.CarList;
 import racingcar.model.InputView;
 import racingcar.model.ResultView;
 
@@ -6,13 +6,13 @@ public class Main {
     public static void main(String[] args) {
         InputView input = InputView.scan();
 
-        RacingCarList racingCars = RacingCarList.initialize(input.carCount());
+        CarList cars = CarList.initialize(input.carCount());
 
-        System.out.println("실행 결과");
+        ResultView.printStartComment();
         for (int i = 0; i < input.tryCount(); i++) {
-            racingCars = racingCars.next();
+            cars = cars.next();
 
-            ResultView.print(racingCars);
+            ResultView.print(cars);
         }
     }
 }
