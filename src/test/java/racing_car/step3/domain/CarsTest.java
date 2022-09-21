@@ -1,5 +1,6 @@
 package racing_car.step3.domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -12,11 +13,17 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarsTest {
+    private List<Car> carsList;
+    
+    @BeforeEach
+    void setUp() {
+        carsList = Arrays.asList(new Car(0), new Car(0), new Car(0));
+    }
+    
     @Test
     @DisplayName("차량 객체 생성 대수")
     void createCars() {
-        List<Car> cars = Arrays.asList(new Car(0), new Car(0), new Car(0));
-        assertThat(new Cars(cars)).isEqualTo(new Cars(CarsFactory.from(3)));
+        assertThat(new Cars(carsList)).isEqualTo(new Cars(CarsFactory.from(3)));
     }
     
     @DisplayName("차량들의 정보(CarDTO) 확인")
@@ -26,5 +33,18 @@ class CarsTest {
         List<Car> carsList = Arrays.asList(new Car(4), new Car(5), new Car(2));
         List<CarDTO> carDTOS = new Cars(carsList).information();
         assertThat(carDTOS.get(idx).getPosition()).isEqualTo(position);
+    }
+    
+    @Test
+    @DisplayName("차량 이동 여부 확인")
+    void move() {
+        Cars cars = new Cars(carsList);
+        List<Car> tmpCarsList = Arrays.asList(new Car(0), new Car(0), new Car(0));
+        
+        for (int i = 0; i < 100; i++) {
+            cars.move();
+        }
+        
+        assertThat(cars).isNotEqualTo(new Cars(tmpCarsList));
     }
 }
