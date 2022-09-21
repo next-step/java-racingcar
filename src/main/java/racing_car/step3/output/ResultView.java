@@ -28,5 +28,6 @@ public class ResultView {
         while (position-- > 0) {
             System.out.print(BAR);
         }
+        System.out.println();
     }
 }
