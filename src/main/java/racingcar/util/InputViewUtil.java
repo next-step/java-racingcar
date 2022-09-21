@@ -7,6 +7,9 @@ import java.io.InputStreamReader;
 public class InputViewUtil {
     private static final BufferedReader BR = new BufferedReader(new InputStreamReader(System.in));
 
+    private InputViewUtil() {
+    }
+
     public static String input(String inputMessage) {
         System.out.print(inputMessage);
 
