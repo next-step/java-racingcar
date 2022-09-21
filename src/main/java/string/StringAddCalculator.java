@@ -6,6 +6,9 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
+    public static final String CUSTOM_SPLIT_REGEX = "//(.)\n(.*)";
+    public static final String COMMA_COLON_REGEX = "[,:]";
+
     public static int splitAndSum(String text) {
         if (isEmpty(text)) {
             return 0;
@@ -26,12 +29,12 @@ public class StringAddCalculator {
     }
 
     private static String[] splitText(String text) {
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        Matcher m = Pattern.compile(CUSTOM_SPLIT_REGEX).matcher(text);
         if (m.find()) {
             String customDelimiter = m.group(1);
             return m.group(2).split(customDelimiter);
         }
-        return text.split("[,:]");
+        return text.split(COMMA_COLON_REGEX);
     }
 
     private static int sum(int[] numbers) {
