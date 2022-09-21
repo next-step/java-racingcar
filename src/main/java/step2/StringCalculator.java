@@ -35,6 +35,9 @@ public class StringCalculator {
         if (text.isEmpty()) {
             return 0;
         }
-        return Integer.parseInt(text);
+        if (text.chars().allMatch(Character::isDigit))
+            return Integer.parseInt(text);
+        throw new RuntimeException();
     }
+
 }
