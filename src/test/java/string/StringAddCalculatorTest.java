@@ -51,4 +51,11 @@ class StringAddCalculatorTest {
         int result = StringAddCalculator.splitAndSum("1,2:3");
         assertThat(result).isEqualTo(6);
     }
+
+    @Test
+    @DisplayName("'//'과'\\n' 사이에 있는 문자를 구분자로 사용하여 구분자를 기준으로 분리한 각 숫자의 합을 반환한다.")
+    public void splitAndSum_custom_구분자() throws Exception {
+        int result = StringAddCalculator.splitAndSum("//;\n1;2;3");
+        assertThat(result).isEqualTo(6);
+    }
 }
