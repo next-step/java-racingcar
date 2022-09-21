@@ -3,10 +3,10 @@ package racing_car.step3.input;
 import java.util.Scanner;
 
 public class InputView {
-    public static final String INPUT_NUMBER_OF_CARS_MESSAGE = "자동차 대수는 몇 대인가요?";
-    public static final String INPUT_NUMBER_OF_TRY_MESSAGE = "시도할 회수는 몇 회 인가요?";
-    public static final String NUMBER_FORMAT_EXCEPTION_MESSAGE = "숫자만 입력할 수 있습니다. 다시 입력해 주세요.";
-    public static final String NEGATIVE_NUMBER_EXCEPTION_MESSAGE = "음수는 입력할 수 없습니다. 다시 입력해주세요.";
+    private static final String INPUT_NUMBER_OF_CARS_MESSAGE = "자동차 대수는 몇 대인가요?";
+    private static final String INPUT_NUMBER_OF_TRY_MESSAGE = "시도할 회수는 몇 회 인가요?";
+    private static final String NUMBER_FORMAT_EXCEPTION_MESSAGE = "숫자만 입력할 수 있습니다. 다시 입력해 주세요.";
+    static final String NEGATIVE_NUMBER_EXCEPTION_MESSAGE = "음수는 입력할 수 없습니다. 다시 입력해주세요.";
     
     private static final Scanner SCANNER = new Scanner(System.in);
     
