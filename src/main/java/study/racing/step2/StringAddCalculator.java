@@ -1,7 +1,5 @@
 package study.racing.step2;
 
-import org.junit.platform.commons.util.StringUtils;
-
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -12,7 +10,7 @@ public class StringAddCalculator {
     private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
 
     public static int calculate(String text) {
-        if (StringUtils.isBlank(text)) {
+        if (isBlank(text)) {
             return 0;
         }
 
@@ -75,4 +73,9 @@ public class StringAddCalculator {
             return false;
         }
     }
+
+    private static boolean isBlank(String text) {
+        return text == null || text.isBlank();
+    }
+
 }
