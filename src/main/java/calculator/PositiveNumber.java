@@ -37,8 +37,14 @@ public class PositiveNumber {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof PositiveNumber)) return false;
+        if (this == o) {
+            return true;
+        }
+
+        if (!(o instanceof PositiveNumber)) {
+            return false;
+        }
+
         PositiveNumber that = (PositiveNumber) o;
         return number == that.number;
     }
