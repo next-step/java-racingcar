@@ -11,20 +11,20 @@ public class StringAddCalculator {
         Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(text);
         if(matcher.find()){
             String customDelimiter = matcher.group(1);
-            String[] split = matcher.group(2).split(customDelimiter);
-            return sum(split);
+            String[] tokens = matcher.group(2).split(customDelimiter);
+            return sum(tokens);
         }
-        String[] split = split(text);
-        return sum(split);
+        String[] tokens = split(text);
+        return sum(tokens);
     }
 
     public static String[] split(String text){
         return text.split(",|:");
     }
 
-    public static int sum(String[] textArray){
+    public static int sum(String[] token){
         int result = 0;
-        for (String text : textArray) {
+        for (String text : token) {
             int number = Integer.parseInt(text);
             if(number<0){
                 throw new RuntimeException();
