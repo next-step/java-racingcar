@@ -1,5 +1,8 @@
 package stringAddCalculatorTest;
 
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EmptySource;
+import org.junit.jupiter.params.provider.NullSource;
 import stringCalculator.StringCalculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -10,24 +13,15 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 
 public class StringCalculatorTest {
-    private StringCalculator calculator;
+    private StringCalculator calculator = new StringCalculator();
 
-    @BeforeEach
-    void setUp() {
-        calculator = new StringCalculator();
-    }
-
-    @Test
+    @ParameterizedTest
+    @NullSource
+    @EmptySource
     @DisplayName("null이나 빈 문자를 입력시 0을 반환한다")
-    void stringSum_null_또는_빈문자() {
-        //given//when
-        int result = calculator.stringSum(null);
-        //then
-        assertThat(result).isEqualTo(0);
-        //given//when
-        result = calculator.stringSum("");
-        //then
-        assertThat(result).isEqualTo(0);
+    void stringSum_null_또는_빈문자(String text) {
+        //given//when//then
+        assertThat(calculator.stringSum(text)).isEqualTo(0);
     }
 
     @Test

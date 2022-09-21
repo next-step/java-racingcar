@@ -68,4 +68,5 @@ public class StringSplitTest {
                 -> testString.charAt(3)).isInstanceOf(StringIndexOutOfBoundsException.class)
                 .hasMessageContaining("String index out of range: 3");
     }
+
 }
