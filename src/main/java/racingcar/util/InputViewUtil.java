@@ -5,13 +5,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class InputViewUtil {
+    private static final BufferedReader BR = new BufferedReader(new InputStreamReader(System.in));
 
     public static String input(String inputMessage) {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.print(inputMessage);
 
         try {
-            return br.readLine();
+            return BR.readLine();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

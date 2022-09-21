@@ -4,7 +4,7 @@ import racingcar.domain.RaceGame;
 
 public class ResultView {
 
-    public static final String RESULT_MESSAGE = "\n실행 결과";
+    private static final String RESULT_MESSAGE = "\n실행 결과";
 
     public static void printResult() {
         System.out.println(RESULT_MESSAGE);
