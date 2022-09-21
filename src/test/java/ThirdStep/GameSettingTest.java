@@ -39,4 +39,14 @@ class GameSettingTest {
         assertThat(cars.size()).isEqualTo(CAR_COUNT);
         cars.forEach(car -> assertThat(car.getLocation()).isEqualTo(0));
     }
+
+    @Test
+    @DisplayName("GameSetting의 reduceAttempts는 이동 시도 횟수를 1 감소시킨다.")
+    void reduceAttepmts_테스트() {
+        GameSetting.setting();
+
+        GameSetting.reduceAttempts();
+
+        assertThat(GameSetting.getAttempts()).isEqualTo(ATTEMPTS - 1);
+    }
 }
