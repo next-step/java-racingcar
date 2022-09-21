@@ -25,7 +25,7 @@ public class InputView {
     private static int correctNum() {
         try {
             int inputNum = inputNum();
-            isNegative(inputNum);
+            negativeCheck(inputNum);
             return inputNum;
         } catch (UnsupportedOperationException e) {
             System.out.println(e.getMessage());
@@ -33,7 +33,7 @@ public class InputView {
         }
     }
     
-    static void isNegative(int inputNum) throws UnsupportedOperationException {
+    static void negativeCheck(int inputNum) throws UnsupportedOperationException {
         if (inputNum < 0) {
             throw new UnsupportedOperationException(NEGATIVE_NUMBER_EXCEPTION_MESSAGE);
         }
