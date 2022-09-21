@@ -6,19 +6,7 @@ import java.io.InputStreamReader;
 import java.util.function.Supplier;
 
 public class InputViewUtil {
-    private static final BufferedReader BR = new BufferedReader(new InputStreamReader(System.in));
-
     private InputViewUtil() {
-    }
-
-    public static String input(String inputMessage) {
-        System.out.print(inputMessage);
-
-        try {
-            return BR.readLine();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     public static int inputPositiveInt(Supplier<String> inputView) {
