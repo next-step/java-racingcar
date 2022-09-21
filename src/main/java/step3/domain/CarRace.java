@@ -7,9 +7,6 @@ import java.util.stream.Collectors;
 public class CarRace {
 
     private List<Car> cars;
-    //그럼 그냥 일급컬렉션은 불변으로 하지말깜
-    //이것두 한번 리뷰어한테 물어봐야겠담.
-    // dnd
     private final NumberGenerator numberGenerator;
 
     public CarRace(List<Car> cars, NumberGenerator numberGenerator) {
