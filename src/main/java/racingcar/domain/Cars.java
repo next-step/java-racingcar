@@ -27,9 +27,9 @@ public class Cars {
         cars.add(car);
     }
 
-    public Cars move() {
+    public Cars move(MoveStrategy moveStrategy) {
         List<Car> movedCars = cars.stream()
-                .map(car -> car.move(new RandomMoveStrategy()))
+                .map(car -> car.move(moveStrategy))
                 .collect(Collectors.toList());
 
         return new Cars(movedCars);

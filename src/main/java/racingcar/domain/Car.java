@@ -2,6 +2,7 @@ package racingcar.domain;
 
 public class Car {
     public static final String POSITION_EXCEPTION_MESSAGE = "위치는 0 이상이어야 합니다.";
+    public static final int DEFAULT_MOVEMENT_DISTANCE = 1;
 
     private final int position;
 
@@ -31,7 +32,7 @@ public class Car {
 
     public Car move(MoveStrategy moveStrategy) {
         if (moveStrategy.isMovable()) {
-            return new Car(position + 1);
+            return new Car(position + DEFAULT_MOVEMENT_DISTANCE);
         }
 
         return this;
