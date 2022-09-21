@@ -1,6 +1,5 @@
 package calculator;
 
-import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -10,15 +9,18 @@ public class StringAddCalculator {
     private static final String NEGATIVE = "-";
     private static final Pattern REGULAR_CUSTOM = Pattern.compile("//(.)\n(.*)");
     private static final Pattern REGULAR_COMMA_DELIMITER = Pattern.compile(COMMA_DELIMITER);
-    public static final int SIZE_ONE_NUMBER = 1;
+    public static final int REGEX_FIRST_GROUP = 1;
+    public static final int REGEX_SECOND_GROUP = 2;
+
+    private StringAddCalculator() {}
 
     public static int splitAndSum(String str) {
 
-        if (Objects.isNull(str) || str.isEmpty()) {
+        if (str == null || str.isEmpty()) {
             return 0;
         }
 
-        if (str.length() == SIZE_ONE_NUMBER) {
+        if (str.length() == 1) {
             return Integer.parseInt(str);
         }
 
@@ -39,12 +41,6 @@ public class StringAddCalculator {
         throw new IllegalArgumentException("값을 잘못 입력하였습니다.");
     }
 
-    private static String[] findByRegular(final Matcher matcher) {
-
-        String customDelimiter = matcher.group(1);
-        return matcher.group(2).split(customDelimiter);
-    }
-
     private static int addStringArray(final String[] splitStrings) {
 
         int result = 0;
@@ -53,5 +49,11 @@ public class StringAddCalculator {
             result += Integer.parseInt(splitString);
         }
         return result;
+    }
+
+    private static String[] findByRegular(final Matcher matcher) {
+
+        String customDelimiter = matcher.group(REGEX_FIRST_GROUP);
+        return matcher.group(REGEX_SECOND_GROUP).split(customDelimiter);
     }
 }
