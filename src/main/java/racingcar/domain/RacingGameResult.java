@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RacingGameResult {
@@ -16,16 +17,19 @@ public class RacingGameResult {
     private String createStringRecord(Cars cars) {
         StringBuilder record = new StringBuilder();
 
-        for (Car car : cars.getCars()) {
-            String distance = MOVEMENT_MARK.repeat(car.position());
-            record.append(distance)
-                    .append(NEW_LINE);
-        }
+        cars.getCars()
+            .stream()
+            .map(this::createMovementMark)
+            .forEach(record::append);
 
         return record.toString();
     }
 
-    public String getReport() {
-        return String.join(NEW_LINE, records);
+    private String createMovementMark(Car car) {
+        return MOVEMENT_MARK.repeat(car.position());
+    }
+
+    public List<String> records() {
+        return Collections.unmodifiableList(records);
     }
 }

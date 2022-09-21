@@ -11,6 +11,7 @@ public class ResultView {
 
     public static void printResult(RacingGameResult result) {
         System.out.println(RESULT_MESSAGE);
-        System.out.println(result.getReport());
+        result.records()
+                .forEach(System.out::println);
     }
 }
