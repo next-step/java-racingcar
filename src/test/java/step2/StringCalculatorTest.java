@@ -8,11 +8,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.List;
 import java.util.stream.Stream;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 
 public class StringCalculatorTest {
@@ -49,16 +45,22 @@ public class StringCalculatorTest {
 
     @DisplayName("숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환한다.")
     @Test
-    void textCheckProvidesANumber(){
+    void textCheckProvidesANumber() {
         org.junit.jupiter.api.Assertions.assertAll(
                 () -> Assertions.assertThat(stringCalculator.addOperation("1")).isEqualTo(1),
-                () ->Assertions.assertThat(stringCalculator.addOperation("22")).isEqualTo(22)
+                () -> Assertions.assertThat(stringCalculator.addOperation("22")).isEqualTo(22)
         );
     }
 
     @DisplayName("숫자 두개를 컴마 구분자로 입력할 경우 두 숫자의 합을 반환한다.")
     @Test
-    void addOperationSeparateByRest(){
+    void addOperationSeparateByRest() {
         Assertions.assertThat(stringCalculator.addOperation("1,2")).isEqualTo(3);
+    }
+
+    @DisplayName("구분자를 컴마 이외에 콜론을 사용할 수 있다.")
+    @Test
+    void addOperationSeparateByRestAndColon() {
+        Assertions.assertThat(stringCalculator.addOperation("1,2:3")).isEqualTo(6);
     }
 }

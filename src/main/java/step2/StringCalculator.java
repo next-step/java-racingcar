@@ -4,9 +4,9 @@ import java.util.Arrays;
 
 public class StringCalculator {
     public int addOperation(String text) {
-        if(text==null)
+        if (text == null)
             return 0;
-        String[] split = text.split(",");
+        String[] split = text.split(",|:");
         int result = add(split);
         return result;
     }
