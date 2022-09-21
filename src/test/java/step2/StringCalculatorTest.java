@@ -9,6 +9,16 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class StringCalculatorTest {
 
     @Test
+    @DisplayName("splintAndAdd() 메소드에 null 혹은 빈 문자열이 입력되면 0을 반환한다")
+    void split_and_add_return_0() {
+        StringCalculator calculator = new StringCalculator();
+        Integer sumByEmpty = calculator.splitAndSum("");
+        Integer sumByNull = calculator.splitAndSum(null);
+        assertThat(sumByEmpty).isEqualTo(0);
+        assertThat(sumByNull).isEqualTo(0);
+    }
+
+    @Test
     @DisplayName("splitAndAdd() 메소드는 쉼표 또는 콜론을 구분자를 기준으로 분리한 각 수자의 합을 반환한다.")
     void split_and_add() {
         StringCalculator calculator = new StringCalculator();
