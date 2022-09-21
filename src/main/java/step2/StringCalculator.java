@@ -5,6 +5,10 @@ import java.util.regex.Pattern;
 
 public class StringCalculator {
     public Integer splitAndSum(String text) {
+        if (isNullAndEmpty(text)) {
+            return 0;
+        }
+
         String[] numbers = split(text);
 
         return sum(numbers);
@@ -36,5 +40,17 @@ public class StringCalculator {
         }
 
         return sum;
+    }
+
+    public boolean isNullAndEmpty(String text){
+        if (text == null) {
+            return true;
+        }
+
+        if (text.isEmpty()) {
+            return true;
+        }
+
+        return false;
     }
 }
