@@ -1,6 +1,5 @@
 package step2;
 
-import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,14 +12,13 @@ public class StringAddCalculator {
      */
     public static int splitAndSum(String text) {
         String delimiters = ",|:";
-        String[] tokens = {};
         int answer = 0;
 
         if (text  == null || text.isEmpty()) {
             return 0;
         }
 
-        tokens = text.split(delimiters);
+        String[] tokens = text.split(delimiters);
 
         Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
         if (m.find()) {
@@ -33,12 +31,16 @@ public class StringAddCalculator {
 
     private static int getAnswer(String[] tokens, int answer) {
         for (String token : tokens) {
-            int x = Integer.parseInt(token);
-            if (x < 0) {
-                throw new RuntimeException();
-            }
-            answer += x;
+            answer += isPositiveNum(token);;
         }
         return answer;
     }
+
+   private static int isPositiveNum(String token) throws NumberFormatException{
+        int x = Integer.parseInt(token);
+        if (x < 0) {
+            throw new RuntimeException();
+        }
+        return x;
+   }
 }
