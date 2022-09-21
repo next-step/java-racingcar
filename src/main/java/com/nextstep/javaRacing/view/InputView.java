@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class InputView {
 
-    int cars;
-    int turns;
+    private final int cars;
+    private final int turns;
 
     public InputView(int cars, int turns) {
         this.cars = cars;

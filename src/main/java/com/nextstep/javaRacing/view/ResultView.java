@@ -1,11 +1,11 @@
 package com.nextstep.javaRacing.view;
 
-import com.nextstep.javaRacing.Car;
+import com.nextstep.javaRacing.car.Car;
 
 import java.util.List;
 
 public class ResultView {
-    List<Car> cars;
+    private final List<Car> cars;
 
     public ResultView(List<Car> cars) {
         this.cars = cars;

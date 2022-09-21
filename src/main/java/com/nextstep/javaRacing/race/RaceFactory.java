@@ -1,5 +1,8 @@
-package com.nextstep.javaRacing;
+package com.nextstep.javaRacing.race;
 
+import com.nextstep.javaRacing.car.Car;
+import com.nextstep.javaRacing.car.RaceCar;
+import com.nextstep.javaRacing.car.RandomMoveStrategy;
 import com.nextstep.javaRacing.view.InputView;
 
 import java.util.LinkedList;

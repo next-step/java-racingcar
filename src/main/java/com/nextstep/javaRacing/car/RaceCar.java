@@ -1,9 +1,9 @@
-package com.nextstep.javaRacing;
+package com.nextstep.javaRacing.car;
 
 public class RaceCar implements Car {
     private final String name;
-    private int position;
     private final MoveStrategy moveStrategy;
+    private int position;
 
     public RaceCar(String name, MoveStrategy moveStrategy) {
         this.name = name;

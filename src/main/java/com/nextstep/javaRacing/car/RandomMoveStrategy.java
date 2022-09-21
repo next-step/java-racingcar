@@ -1,4 +1,4 @@
-package com.nextstep.javaRacing;
+package com.nextstep.javaRacing.car;
 
 import java.util.Random;
 

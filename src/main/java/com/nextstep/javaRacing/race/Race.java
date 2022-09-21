@@ -1,5 +1,6 @@
-package com.nextstep.javaRacing;
+package com.nextstep.javaRacing.race;
 
+import com.nextstep.javaRacing.car.Car;
 import com.nextstep.javaRacing.view.InputView;
 import com.nextstep.javaRacing.view.ResultView;
 
@@ -7,8 +8,8 @@ import java.util.List;
 
 public class Race {
 
-    protected List<Car> cars;
-    protected int turns;
+    protected final List<Car> cars;
+    protected final int turns;
 
     protected Race(List<Car> cars, int turns) {
         this.cars = cars;
