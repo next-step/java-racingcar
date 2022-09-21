@@ -46,4 +46,13 @@ public class StringCalculatorTest {
                 () -> Assertions.assertThat(stringCalculator.addOperation(null)).isEqualTo(0)
         );
     }
+
+    @DisplayName("숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환한다.")
+    @Test
+    void textCheckProvidesANumber(){
+        org.junit.jupiter.api.Assertions.assertAll(
+                () -> Assertions.assertThat(stringCalculator.addOperation("1")).isEqualTo(1),
+                () ->Assertions.assertThat(stringCalculator.addOperation("22")).isEqualTo(22)
+        );
+    }
 }

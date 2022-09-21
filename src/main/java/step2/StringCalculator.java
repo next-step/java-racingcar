@@ -13,6 +13,6 @@ public class StringCalculator {
         if (text.isEmpty()) {
             return 0;
         }
-        throw new RuntimeException();
+        return Integer.parseInt(text);
     }
 }
