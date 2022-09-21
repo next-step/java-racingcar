@@ -10,7 +10,6 @@ public class StringAddCalculator {
     private static final int CUSTOM_DELIMITER_POSITION = 1;
     private static final int NUMBERS_POSITION = 2;
 
-
     public static int splitAndSum(String input) {
         if (isNullOrEmpty(input)) {
             return 0;
