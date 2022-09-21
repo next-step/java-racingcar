@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.service.RacingGame;
 
 import java.util.List;
 
@@ -14,7 +15,8 @@ public class RaceGameTest {
     void join() {
         Cars cars = new Cars(List.of(new Car(), new Car(), new Car()));
 
-        RaceGame game = new RaceGame(cars);
+        RacingGame game = new RacingGame();
+        game.join(cars);
 
         assertThat(game.joinCount()).isEqualTo(3);
     }
@@ -23,10 +25,10 @@ public class RaceGameTest {
     @Test
     void race() {
         Cars cars = CarFactory.createCars(2);
-        RaceGame game = new RaceGame(cars, () -> true);
+        RacingGame game = new RacingGame(() -> true);
 
-        game.race();
-        game.race();
+        game.join(cars);
+        game.race(2);
 
         List<Car> movedCars = game.getCars();
         assertThat(movedCars.get(0).position()).isEqualTo(2);
@@ -37,10 +39,10 @@ public class RaceGameTest {
     @Test
     void raceNoMove() {
         Cars cars = CarFactory.createCars(2);
-        RaceGame game = new RaceGame(cars, () -> false);
+        RacingGame game = new RacingGame(() -> false);
 
-        game.race();
-        game.race();
+        game.join(cars);
+        game.race(2);
 
         List<Car> movedCars = game.getCars();
         assertThat(movedCars.get(0).position()).isEqualTo(0);

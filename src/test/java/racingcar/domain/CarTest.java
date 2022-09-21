@@ -44,9 +44,8 @@ public class CarTest {
     void move() {
         Car car = new Car();
 
-        Car movedCar = car.move(() -> true);
+        car.move(() -> true);
 
-        assertThat(movedCar.position()).isEqualTo(1);
-        assertThat(movedCar.toString()).isEqualTo("-");
+        assertThat(car.position()).isEqualTo(1);
     }
 }
