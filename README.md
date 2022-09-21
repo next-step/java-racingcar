@@ -15,3 +15,4 @@
 | ------ | -- | -- |----------- |
 | 1단계 | String에 대한 메서드 | split(),contains(),containsExactly(), substring(), charAt()| ☑️
 | 1단계 | Set Collection에 대한 메서드 |  @ParameterizedTest, @CsvSource | ☑️
+| 2단계 | 문자열 덧셈 계산기 |  java.util.regex 패키지의 Matcher, Pattern  | ☑️
