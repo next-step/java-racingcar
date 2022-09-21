@@ -5,6 +5,19 @@ public class StringAddCalculator {
             return 0;
         }
 
+        if (isNumeric(input)) {
+            return Integer.parseInt(input);
+        }
+
         return 1;
+    }
+
+    private static boolean isNumeric(String input) {
+        try {
+            Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        return true;
     }
 }
