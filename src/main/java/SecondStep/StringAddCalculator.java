@@ -8,13 +8,14 @@ import java.util.stream.Collectors;
 
 public class StringAddCalculator {
 
+    private static final int DEFAULT = 0;
     private static final Pattern CUSTOM_SEPARATOR_PATTERN = Pattern.compile("//(.)\n(.*)");
     private static final Pattern COMMON_SEPARATOR_PATTERN = Pattern.compile("^[0-9,:]*$");
     private static final Pattern ONLY_POSITIVE_NUMBER_PATTERN = Pattern.compile("^\\d*$");
 
     public static int splitAndSum(String target) {
         if (target == null || target.isEmpty()) {
-            return 0;
+            return DEFAULT;
         }
 
         if (ONLY_POSITIVE_NUMBER_PATTERN.matcher(target).matches()) {
@@ -28,7 +29,7 @@ public class StringAddCalculator {
         }
 
         Matcher matcher = CUSTOM_SEPARATOR_PATTERN.matcher(target);
-        if(matcher.find()) {
+        if (matcher.find()) {
             String customDelimiter = matcher.group(1);
             String[] tokens = matcher.group(2).split(customDelimiter);
             List<Integer> numbers = getNumbers(tokens);
