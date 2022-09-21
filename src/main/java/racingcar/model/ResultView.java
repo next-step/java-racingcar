@@ -1,13 +1,11 @@
 package racingcar.model;
 
-import racingcar.RacingCar;
-
-import java.util.List;
+import racingcar.RacingCarList;
 
 public class ResultView {
 
-    public static void print(List<RacingCar> racingCars) {
-        racingCars.forEach(racingCar -> System.out.println("-".repeat(racingCar.currentPosition())));
+    public static void print(RacingCarList racingCars) {
+        racingCars.currentRacingCars().forEach(racingCar -> System.out.println("-".repeat(racingCar.currentPosition())));
         System.out.println();
     }
 }
