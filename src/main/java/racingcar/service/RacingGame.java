@@ -27,6 +27,7 @@ public class RacingGame {
     public RacingGameResult race(int tryCount) {
         RacingGameResult result = new RacingGameResult();
 
+        result.record(cars);
         for (int i = 0; i < tryCount; i++) {
             cars.move(moveStrategy);
             result.record(cars);

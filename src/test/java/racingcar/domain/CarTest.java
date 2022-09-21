@@ -8,12 +8,12 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
 
-    @DisplayName("기본 생성자로 생성 시 위치는 0이다.")
+    @DisplayName("기본 생성자로 생성 시 위치는 1이다.")
     @Test
     void createCar() {
         Car car = new Car();
 
-        assertThat(car.position()).isEqualTo(0);
+        assertThat(car.position()).isEqualTo(1);
     }
 
     @DisplayName("생성 시 위치를 지정할 수 있다.")
@@ -46,6 +46,6 @@ public class CarTest {
 
         car.move(() -> true);
 
-        assertThat(car.position()).isEqualTo(1);
+        assertThat(car.position()).isEqualTo(2);
     }
 }

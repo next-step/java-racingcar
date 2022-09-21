@@ -31,8 +31,8 @@ public class RaceGameTest {
         game.race(2);
 
         List<Car> movedCars = game.getCars();
-        assertThat(movedCars.get(0).position()).isEqualTo(2);
-        assertThat(movedCars.get(1).position()).isEqualTo(2);
+        assertThat(movedCars.get(0).position()).isEqualTo(3);
+        assertThat(movedCars.get(1).position()).isEqualTo(3);
     }
 
     @DisplayName("모두 출발하지 못한 경우")
@@ -45,7 +45,7 @@ public class RaceGameTest {
         game.race(2);
 
         List<Car> movedCars = game.getCars();
-        assertThat(movedCars.get(0).position()).isEqualTo(0);
-        assertThat(movedCars.get(1).position()).isEqualTo(0);
+        assertThat(movedCars.get(0).position()).isEqualTo(1);
+        assertThat(movedCars.get(1).position()).isEqualTo(1);
     }
 }

@@ -14,7 +14,7 @@ public class Car {
     }
 
     public Car() {
-        this(0);
+        this(new Position());
     }
 
     public int position() {

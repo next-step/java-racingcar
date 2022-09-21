@@ -3,9 +3,14 @@ package racingcar.domain;
 import java.util.Objects;
 
 public class Position {
-    private static final String POSITION_EXCEPTION_MESSAGE = "위치는 0 이상이어야 합니다.";
+    private static final String POSITION_EXCEPTION_MESSAGE = "위치는 1 이상이어야 합니다.";
+    private static final int DEFAULT_POSITION = 1;
 
     private final int position;
+
+    public Position() {
+        this(DEFAULT_POSITION);
+    }
 
     public Position(int position) {
         validate(position);
@@ -20,7 +25,7 @@ public class Position {
     }
 
     private boolean isNegative(int position) {
-        return position < 0;
+        return position < DEFAULT_POSITION;
     }
 
     public Position add(Position other) {
