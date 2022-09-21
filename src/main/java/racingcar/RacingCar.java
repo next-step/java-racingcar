@@ -10,6 +10,9 @@ public class RacingCar {
     private final int MOVE_LENGTH = 1;
     private int position = 0;
 
+    public RacingCar(Random random) {
+        this.random = random;
+    }
 
     private boolean canMove() {
         return MIN_RANDOM_NUM_CAN_MOVED <= random.nextInt();
