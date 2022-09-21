@@ -1,9 +1,8 @@
 package com.nextstep.javaRacing;
 
-import com.nextstep.javaRacing.Position;
-
 public interface Car {
 
-    Position position();
+    String name();
+    int position();
     void move();
 }
