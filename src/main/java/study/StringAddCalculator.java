@@ -15,6 +15,21 @@ public class StringAddCalculator {
         return sum(tokens);
     }
 
+    private static String[] split(final String text){
+        String delimiter = delimiter(text);
+        String convertedText = convertText(text);
+        return convertedText.split(delimiter);
+    }
+
+    private static int sum(final String[] token){
+        int result = 0;
+        for (String text : token) {
+            int number = parsePositiveNumber(text);
+            result += number;
+        }
+        return result;
+    }
+
     private static String delimiter(final String text){
         Matcher matcher = Pattern.compile(CUSTOM_DELIMITER_PATTERN).matcher(text);
         if(matcher.find()){
@@ -29,21 +44,6 @@ public class StringAddCalculator {
             return matcher.group(2);
         }
         return text;
-    }
-
-    private static String[] split(final String text){
-        String delimiter = delimiter(text);
-        String convertedText = convertText(text);
-        return convertedText.split(delimiter);
-    }
-
-    private static int sum(final String[] token){
-        int result = 0;
-        for (String text : token) {
-            int number = parsePositiveNumber(text);
-            result += number;
-        }
-        return result;
     }
 
     private static int parsePositiveNumber(final String text) {
