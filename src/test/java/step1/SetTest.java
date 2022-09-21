@@ -1,3 +1,5 @@
+package step1;
+
 import static org.assertj.core.api.AssertionsForClassTypes.*;
 
 import java.util.HashSet;
