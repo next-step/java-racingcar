@@ -18,12 +18,12 @@ public class CarTest {
     @DisplayName("Car 전진 테스트")
     void moveCarTest() {
         //given
-        Car car = new Car(0);
+        Car car = new Car();
 
         //when
-        car.move();
+        Car moveCar = car.move();
 
         //then
-        assertThat(car.state()).isEqualTo(1);
+        assertThat(moveCar.state()).isEqualTo(1);
     }
 }
