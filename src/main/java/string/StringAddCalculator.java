@@ -10,8 +10,9 @@ public class StringAddCalculator {
         if (isEmpty(text)) {
             return 0;
         }
-        existsNegative(convertIntArray(text));
-        return sum(convertIntArray(text));
+        int[] splitText = convertIntArray(text);
+        existsNegative(splitText);
+        return sum(splitText);
     }
 
     private static void existsNegative(int[] splitNumbers) {
