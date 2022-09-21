@@ -30,6 +30,9 @@ public class InputView {
         } catch (UnsupportedOperationException e) {
             System.out.println(e.getMessage());
             return correctNum();
+        } catch (NumberFormatException e) {
+            System.out.println(NUMBER_FORMAT_EXCEPTION_MESSAGE);
+            return correctNum();
         }
     }
     
@@ -40,10 +43,6 @@ public class InputView {
     }
     
     private static int inputNum() throws UnsupportedOperationException {
-        try {
-            return Integer.parseInt(SCANNER.nextLine());
-        } catch (NumberFormatException e) {
-            throw new UnsupportedOperationException(NUMBER_FORMAT_EXCEPTION_MESSAGE);
-        }
+        return Integer.parseInt(SCANNER.nextLine());
     }
 }
