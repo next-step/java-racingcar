@@ -46,4 +46,15 @@ public class StringCalculateTest {
 
 		assertThat(6).isEqualTo(expected);
 	}
+
+	@ParameterizedTest
+	@DisplayName("음수 또는 숫자가 아닐 때 RuntimeException throw")
+	@ValueSource(strings = {"-1,2,3", "a:2:3"})
+	public void minusOrNotNumber(String input) throws Exception {
+		StringCalculator calculator = new StringCalculator();
+		String[] split = calculator.split(input);
+
+		assertThatThrownBy(() -> calculator.convertToInt(split))
+			.isInstanceOf(RuntimeException.class);
+	}
 }
