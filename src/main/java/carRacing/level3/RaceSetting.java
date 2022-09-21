@@ -13,7 +13,7 @@ public class RaceSetting {
   }
 
   public static Boolean isMoving(int randomNum) {
-    if (randomNum >= PIVOT) {
+    if (randomNum >= PIVOT && randomNum < BOUNDARY) {
       return true;
     }
     return false;
