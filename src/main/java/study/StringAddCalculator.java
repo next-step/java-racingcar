@@ -25,12 +25,17 @@ public class StringAddCalculator {
     public static int sum(String[] token){
         int result = 0;
         for (String text : token) {
-            int number = Integer.parseInt(text);
-            if(number<0){
-                throw new RuntimeException();
-            }
+            int number = parsePositiveNumber(text);
             result += number;
         }
         return result;
+    }
+
+    private static int parsePositiveNumber(String text) {
+        int number = Integer.parseInt(text);
+        if(number<0){
+            throw new RuntimeException();
+        }
+        return number;
     }
 }
