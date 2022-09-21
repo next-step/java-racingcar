@@ -24,11 +24,11 @@ public class StringAddCalculator {
         return split(text);
     }
 
-    public static String[] split(String text){
+    private static String[] split(String text){
         return text.split(DEFAULT_DELIMITER);
     }
 
-    public static int sum(String[] token){
+    private static int sum(String[] token){
         int result = 0;
         for (String text : token) {
             int number = parsePositiveNumber(text);
