@@ -1,6 +1,10 @@
 public class StringAddCalculator {
 
     public static int splitAndSum(String input) throws Exception {
-        return 0;
+        if (input == null || input.isEmpty()) {
+            return 0;
+        }
+
+        return 1;
     }
 }
