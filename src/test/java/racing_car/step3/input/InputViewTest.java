@@ -11,7 +11,7 @@ class InputViewTest {
     void negativeCheck() {
         assertThatThrownBy(() -> InputView.negativeCheck(-1))
                 .isInstanceOf(UnsupportedOperationException.class)
-                .hasMessage(InputView.NEGATIVE_NUMBER_EXCEPTION_MESSAGE);
+                .hasMessage("음수는 입력할 수 없습니다. 다시 입력해주세요.");
     }
     
 }
