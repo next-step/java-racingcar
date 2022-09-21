@@ -1,7 +1,5 @@
 package racingcar.view;
 
-import racingcar.util.InputViewUtil;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
