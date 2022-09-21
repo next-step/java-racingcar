@@ -4,6 +4,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class CarRacingTest {
 
@@ -13,31 +16,21 @@ public class CarRacingTest {
     assertThat(RaceSetting.randomNum()).isLessThan(10);
   }
 
-  @Test
+  @ParameterizedTest
+  @ValueSource(ints = {6,7,4})
   @DisplayName("isMoving()는 랜덤값이 4이상이면 True를 반환한다.")
-  void isTrue() {
+  void isTrue(int value) {
 
-    int random1 = 5;
-    int random2 = 4;
-    int random3 = 9;
-
-    assertThat(RaceSetting.isMoving(random1)).isTrue();
-    assertThat(RaceSetting.isMoving(random2)).isTrue();
-    assertThat(RaceSetting.isMoving(random3)).isTrue();
+    assertThat(RaceSetting.isMoving(value)).isTrue();
 
   }
 
-  @Test
+  @ParameterizedTest
+  @ValueSource(ints = {1,2,3})
   @DisplayName("랜덤값이 4 미만이면 false를 반환한다.")
-  void isFalse() {
+  void isFalse(int value) {
 
-    int random1 = 0;
-    int random2 = 3;
-    int random3 = 2;
-
-    assertThat(RaceSetting.isMoving(random1)).isFalse();
-    assertThat(RaceSetting.isMoving(random2)).isFalse();
-    assertThat(RaceSetting.isMoving(random3)).isFalse();
+    assertThat(RaceSetting.isMoving(value)).isFalse();
 
   }
 
