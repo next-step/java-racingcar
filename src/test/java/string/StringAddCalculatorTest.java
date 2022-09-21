@@ -58,4 +58,11 @@ class StringAddCalculatorTest {
         int result = StringAddCalculator.splitAndSum("//;\n1;2;3");
         assertThat(result).isEqualTo(6);
     }
+
+    @Test
+    @DisplayName("구분자 사이에 음수가 포함되어있으면 RuntimeException예외가 발생한다.")
+    public void splitAndSum_negative() throws Exception {
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
+            .isInstanceOf(RuntimeException.class);
+    }
 }
