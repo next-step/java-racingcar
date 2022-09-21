@@ -1,9 +1,10 @@
 package racingcar.util;
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomNumberGenerator {
-    private static final Random RANDOM = new Random();
+    private static final Random RANDOM = ThreadLocalRandom.current();
 
     private RandomNumberGenerator() {
     }
