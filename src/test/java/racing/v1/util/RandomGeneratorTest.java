@@ -9,7 +9,7 @@ public class RandomGeneratorTest {
     @Test
     @DisplayName("랜덤 숫자는 0~9까지 이다.")
     void step1() {
-        assertThat(new RandomGenerator().generate(10))
+        assertThat(new RandomGenerator().generate())
                 .isGreaterThanOrEqualTo(0)
                 .isLessThanOrEqualTo(9);
     }
