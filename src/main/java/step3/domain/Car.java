@@ -1,18 +1,26 @@
 package step3.domain;
 
 public class Car {
-    private final int state;
+    private final Position position;
 
-    public Car(int state) {
-        this.state = state;
+    public Car() {
+        this(0);
+    }
+
+    public Car(Position position) {
+        this.position = position;
+    }
+
+    public Car(int position) {
+        this(new Position(position));
     }
 
 
     public Car move() {
-        return new Car(state + 1);
+        return new Car(position.advance());
     }
 
     public int state() {
-        return state;
+        return position.value();
     }
 }
