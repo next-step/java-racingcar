@@ -7,7 +7,7 @@ public class RandomNumberGenerator implements NumberGenerator {
 
     private final Random random = new Random();
 
-    public RandomNumberGenerator(int bound) {
+    protected RandomNumberGenerator(int bound) {
         validation(bound);
         this.bound = bound;
     }

@@ -7,6 +7,9 @@ public interface NumberGenerator {
     static NumberGenerator RandomNumberGenerator(int bound) {
         return new RandomNumberGenerator(bound);
     }
+    static NumberGenerator RandomNumberGenerator() {
+        return new RandomNumberGenerator(10);
+    }
 
 
 }
