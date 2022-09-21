@@ -40,8 +40,17 @@ public class StringTest {
     @DisplayName("위치 값을 벗어나면 StringIndexOutOfBoundsException이 발생하는 부분에 대한 학습 테스트")
     public void testStringIndexOutOfBoundsException() {
         final String input = "abc";
+        final int indexOutOfBounds = 100;
 
-        assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
-            .isThrownBy(() -> input.charAt(input.length()));
+        // assertThatExceptionOfType 사용한 테스트 코드
+        assertThatExceptionOfType(IndexOutOfBoundsException.class)
+            .isThrownBy(() -> {
+                input.charAt(indexOutOfBounds);
+            }).withMessageMatching(String.format("String index out of range: %d", indexOutOfBounds));
+
+        // assertThatThrownBy 사용한 테스트 코드
+        assertThatThrownBy(() -> input.charAt(indexOutOfBounds))
+                .isInstanceOf(IndexOutOfBoundsException.class)
+                .hasMessageContaining(String.format("String index out of range: %d", indexOutOfBounds));
     }
 }
