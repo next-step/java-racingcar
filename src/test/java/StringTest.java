@@ -7,7 +7,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class StringTest {
 
     @Test
-    public void split테스트() {
+    @DisplayName("하나의 문자열을 구분자(,)로 자르는 테스트 케이스")
+    public void split() {
         // given
         String firstCase = "1,2";
         String secondCase = "1";
@@ -22,7 +23,8 @@ public class StringTest {
     }
 
     @Test
-    public void parsing테스트() {
+    @DisplayName("하나의 문자열을 파싱하는 테스트 케이스")
+    public void parse() {
         // given
         String firstCase = "(1,2)";
 
@@ -34,7 +36,7 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("문자열에서 특정 위치의 문자 가져오는 테스트")
+    @DisplayName("문자열에서 특정 위치의 문자 한 개를 가져오는 테스트")
     public void charOf() {
         String firstCase = "abc";
 
@@ -49,7 +51,7 @@ public class StringTest {
                 .hasMessageContaining("out of range: -1");
 
         assertThatThrownBy(() -> {
-           firstCase.charAt(4);
+            firstCase.charAt(4);
         }).isInstanceOf(IndexOutOfBoundsException.class)
                 .hasMessageContaining("out of range: 4");
     }
