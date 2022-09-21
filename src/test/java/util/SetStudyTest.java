@@ -32,7 +32,7 @@ class SetStudyTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"1:True", "2:True", "3:True", "4:False"}, delimiter = ':')
+    @CsvSource(value = {"1,True", "2,True", "3,True", "4,False"})
     void set_contains(final int number, final boolean result) {
 
         assertThat(numbers.contains(number)).isEqualTo(result);

@@ -20,7 +20,7 @@ class StringAddCalculatorTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"0:0", "1:1", "2:2", "3:3", "4:4", "5:5", "6:6", "7:7", "8:8", "9:9"}, delimiter = ':')
+    @CsvSource(value = {"0,0", "1,1", "2,2", "3,3", "4,4", "5,5", "6,6", "7,7", "8,8", "9,9"})
     void splitAndSum_문자열_숫자하나인_경우_숫자로_반환함(final String str, final int expect) {
 
         assertThat(StringAddCalculator.splitAndSum(str)).isEqualTo(expect);

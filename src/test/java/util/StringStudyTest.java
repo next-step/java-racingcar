@@ -40,7 +40,7 @@ class StringStudyTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"0:a", "1:b", "2:c"}, delimiter = ':')
+    @CsvSource(value = {"0,a", "1,b", "2,c"})
     @DisplayName("문자열 abc 에서 특정 위치의 문자를 가져온다.")
     void string_split_4(final int index, final char expect) {
 
