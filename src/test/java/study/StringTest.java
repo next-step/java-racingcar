@@ -22,7 +22,6 @@ public class StringTest {
         String given = "(1,2)";
         String result = given.substring(1, 4);
 
-        System.out.println(result);
         assertThat(result).isEqualTo("1,2");
     }
 
