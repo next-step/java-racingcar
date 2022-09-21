@@ -13,9 +13,20 @@ public class StringAddCalculator {
             return result;
         }
 
-        result = sum(splitText(text));
+        existsNegative(convertIntArray(text));
+        result = sum(convertIntArray(text));
 
         return result;
+    }
+
+    private static void existsNegative(int[] splitNumbers) {
+        if (isNegative(splitNumbers)) {
+            throw new RuntimeException();
+        }
+    }
+
+    private static boolean isNegative(int[] splitNumbers) {
+        return Arrays.stream(splitNumbers).anyMatch(n -> n < 0);
     }
 
     private static String[] splitText(String text) {
@@ -27,10 +38,15 @@ public class StringAddCalculator {
         return text.split("[,:]");
     }
 
-    private static int sum(String[] splitText) {
-        return Arrays.stream(splitText)
-            .mapToInt(StringAddCalculator::convertNumber)
+    private static int sum(int[] numbers) {
+        return Arrays.stream(numbers)
             .sum();
+    }
+
+    private static int[] convertIntArray(String text) {
+        return Arrays.stream(splitText(text))
+            .mapToInt(StringAddCalculator::convertNumber)
+            .toArray();
     }
 
     private static int convertNumber(String text) {
