@@ -21,6 +21,10 @@ public class Race {
         race.race();
     }
 
+    public static void main(String[] args) {
+        Race.start();
+    }
+
     public void race() {
         for (int turn = 0; turn < turns; turn++) {
             move();
@@ -37,9 +41,5 @@ public class Race {
     private void draw() {
         ResultView view = new ResultView(cars);
         view.draw();
-    }
-
-    public static void main(String[] args) {
-        Race.start();
     }
 }

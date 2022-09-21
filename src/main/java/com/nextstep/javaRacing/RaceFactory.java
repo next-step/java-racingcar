@@ -14,7 +14,7 @@ public class RaceFactory {
     public static Race prepareRace(int cars, int turns) {
         List<Car> raceCars = new LinkedList<>();
         for (int i = 0; i < cars; i++) {
-            Car car = new RaceCar("raceCar_"+i, new RandomMoveStrategy());
+            Car car = new RaceCar("raceCar_" + i, new RandomMoveStrategy());
             raceCars.add(car);
         }
         return new Race(raceCars, turns);

@@ -10,6 +10,6 @@ public class RandomMoveStrategy implements MoveStrategy {
     @Override
     public int move() {
         int r = random.nextInt(MAX_RANDOM);
-        return r>=4?1:0;
+        return r >= 4 ? 1 : 0;
     }
 }

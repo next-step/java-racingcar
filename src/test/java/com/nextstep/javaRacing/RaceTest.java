@@ -19,12 +19,12 @@ class RaceTest {
     void race(int cars, int turns) {
         List<Car> carList = new LinkedList<>();
         for (int i = 0; i < cars; i++) {
-            carList.add(new RaceCar("raceCar"+i, mockMoveStrategy));
+            carList.add(new RaceCar("testCar" + i, mockMoveStrategy));
         }
         Race race = new Race(carList, turns);
 
         race.race();
-        int endPositionSum = race.cars.stream().mapToInt(c->c.position()).sum();
+        int endPositionSum = race.cars.stream().mapToInt(c -> c.position()).sum();
         int expected = cars * turns;
         assertThat(endPositionSum).isEqualTo(expected);
     }

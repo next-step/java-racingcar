@@ -12,14 +12,14 @@ public class InputView {
         this.turns = turns;
     }
 
-    public InputView(){
+    public InputView() {
         System.out.println("몇 대의 차량이 있나요? : ");
         cars = scanNumber();
         System.out.println("몇 회 반복할까요? : ");
         turns = scanNumber();
     }
 
-    private int scanNumber(){
+    private int scanNumber() {
         Scanner scanner = new Scanner(System.in);
         int number = scanner.nextInt();
         return number;
