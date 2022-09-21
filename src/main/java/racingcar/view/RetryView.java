@@ -7,19 +7,19 @@ public class RetryView {
     private RetryView() {
     }
 
-    public static int retryIfInputNegativeNumber(View inputView) {
+    public static int retryIfNotValidNumber(View inputView) {
         int number;
 
         try {
             number = Integer.parseInt(inputView.input());
         } catch (NumberFormatException e) {
             System.out.println(RETRY_MESSAGE);
-            return retryIfInputNegativeNumber(inputView);
+            return retryIfNotValidNumber(inputView);
         }
 
         if (isZeroOrNegative(number)) {
             System.out.println(RETRY_MESSAGE);
-            return retryIfInputNegativeNumber(inputView);
+            return retryIfNotValidNumber(inputView);
         }
 
         return number;

@@ -9,8 +9,8 @@ public class RacingCarController {
     private final RacingGame racingGame = new RacingGame();
 
     public void run() {
-        int numberOfCars = RetryView.retryIfInputNegativeNumber(InputView::inputNumberOfCars);
-        int tryCount = RetryView.retryIfInputNegativeNumber(InputView::inputTryCount);
+        int numberOfCars = RetryView.retryIfNotValidNumber(InputView::inputNumberOfCars);
+        int tryCount = RetryView.retryIfNotValidNumber(InputView::inputTryCount);
 
         racingGame.join(numberOfCars);
         ResultView.printResult(racingGame.race(tryCount));
