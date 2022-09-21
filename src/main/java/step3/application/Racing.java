@@ -24,14 +24,15 @@ public class Racing {
         consoleOut.askMoveCount();
         int moveCount = consoleIn.moveCount();
         for (int i = 0; i < moveCount; i++) {
-            consoleOut.result(carRace, NumberGenerator.RandomNumberGenerator(10));
+            carRace.move();
+            consoleOut.result(carRace);
         }
     }
 
     private CarRace makeCars(int numberOfCars) {
         List<Car> carList = IntStream.range(0, numberOfCars)
-                .mapToObj(__ -> new Car(state))
+                .mapToObj(__ -> new Car())
                 .collect(Collectors.toList());
-        return new CarRace(carList, numberGenerator);
+        return new CarRace(carList, NumberGenerator.RandomNumberGenerator());
     }
 }
