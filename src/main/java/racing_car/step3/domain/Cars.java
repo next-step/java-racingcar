@@ -14,7 +14,11 @@ public class Cars {
     }
     
     public void move() {
-        cars.forEach(car -> car.move(new RandomMoveStrategy()));
+        move(new RandomMoveStrategy());
+    }
+    
+    public void move(MoveStrategy moveStrategy) {
+        cars.forEach(car -> car.move(moveStrategy));
     }
     
     public List<CarDTO> information() {

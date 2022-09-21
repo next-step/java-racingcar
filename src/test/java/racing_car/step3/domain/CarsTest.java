@@ -39,12 +39,11 @@ class CarsTest {
     @DisplayName("차량 이동 여부 확인")
     void move() {
         Cars cars = new Cars(carsList);
-        List<Car> tmpCarsList = Arrays.asList(new Car(0), new Car(0), new Car(0));
+        List<Car> tmpCarsList = Arrays.asList(new Car(2), new Car(2), new Car(2));
         
-        for (int i = 0; i < 100; i++) {
-            cars.move();
-        }
+        cars.move(() -> true);
+        cars.move(() -> true);
         
-        assertThat(cars).isNotEqualTo(new Cars(tmpCarsList));
+        assertThat(cars).isEqualTo(new Cars(tmpCarsList));
     }
 }
