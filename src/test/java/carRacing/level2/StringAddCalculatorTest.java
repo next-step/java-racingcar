@@ -1,6 +1,5 @@
 package carRacing.level2;
 
-import carRacing.StringAddCalculator;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
