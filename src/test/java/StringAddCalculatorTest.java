@@ -40,7 +40,8 @@ class StringAddCalculatorTest {
     @Test
     public void splitAndSum_negative() throws Exception {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
-                .isInstanceOf(RuntimeException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("음수가 들어오면 안됩니다.");
     }
 
     @Test
