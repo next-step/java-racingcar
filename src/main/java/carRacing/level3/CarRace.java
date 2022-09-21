@@ -7,4 +7,11 @@ public class CarRace {
     Random random = new Random();
     return random.nextInt(10);
   }
+
+  public static Boolean canMove(int randomNum) {
+    if(randomNum >= 4){
+      return true;
+    }return false;
+  }
+
 }
