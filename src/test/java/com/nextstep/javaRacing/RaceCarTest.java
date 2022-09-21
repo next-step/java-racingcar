@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RaceCarTest {
 
-    MoveStrategy mockMoveStrategy = () -> 1;
+    private static final MoveStrategy mockMoveStrategy = () -> 1;
 
     @Test
     @DisplayName("이동하면 위치가 변한다")
