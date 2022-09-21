@@ -15,7 +15,7 @@ class CarsTest {
     @Test
     @DisplayName("차량 객체 생성 대수")
     void createCars() {
-        List<Car> cars = Arrays.asList(new Car(), new Car(), new Car());
+        List<Car> cars = Arrays.asList(new Car(0), new Car(0), new Car(0));
         assertThat(new Cars(cars)).isEqualTo(new Cars(CarsFactory.from(3)));
     }
     

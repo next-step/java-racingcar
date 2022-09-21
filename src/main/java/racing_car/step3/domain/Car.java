@@ -7,9 +7,6 @@ import java.util.Objects;
 public class Car {
     private int position;
     
-    public Car() {
-    }
-    
     public Car(int position) {
         this.position = position;
     }
