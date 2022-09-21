@@ -11,12 +11,14 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 public class StringTest {
 
     @Test
+    @DisplayName("특정 String 값에 대해 ")
     void test1() {
         assertThat("1,2".split(",")).contains("1", "2");
         assertThat("1".split(",")).containsExactly("1");
     }
 
     @Test
+    @DisplayName("특정 String에 대해 subString 하여 원하는 값 만들기")
     void test2(){
         assertThat("(1,2)".substring(1, 4)).isEqualTo("1,2");
     }
