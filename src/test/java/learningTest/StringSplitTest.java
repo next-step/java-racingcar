@@ -1,4 +1,4 @@
-package LearningTest;
+package learningTest;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -68,4 +68,5 @@ public class StringSplitTest {
                 -> testString.charAt(3)).isInstanceOf(StringIndexOutOfBoundsException.class)
                 .hasMessageContaining("String index out of range: 3");
     }
+
 }
