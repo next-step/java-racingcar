@@ -8,14 +8,17 @@ public class StringAddCalculator {
         if(text == null || text.isEmpty()) {
             return 0;
         }
+        String[] tokens = tokens(text);
+        return sum(tokens);
+    }
+
+    private static String[] tokens(String text) {
         Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(text);
         if(matcher.find()){
             String customDelimiter = matcher.group(1);
-            String[] tokens = matcher.group(2).split(customDelimiter);
-            return sum(tokens);
+            return matcher.group(2).split(customDelimiter);
         }
-        String[] tokens = split(text);
-        return sum(tokens);
+        return split(text);
     }
 
     public static String[] split(String text){
