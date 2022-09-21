@@ -27,15 +27,17 @@ public class SetTest {
     @Test
     @DisplayName("Set 크기 확인")
     void size() {
-        int size = numbers.size();
-        assertThat(size).isEqualTo(3);
+//        int size = numbers.size();
+//        assertThat(size).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     @DisplayName("Set 원소 확인")
     void contains(int input) {
-        assertThat(numbers.contains(input)).isTrue();
+//        assertThat(numbers.contains(input)).isTrue();
+        assertThat(numbers).contains(1, 2, 3);
     }
 
     @ParameterizedTest
