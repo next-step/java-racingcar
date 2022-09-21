@@ -49,13 +49,11 @@ public class StringAddCalculator {
     }
 
     private static int convertNumber(String text) {
-        int result = 0;
         try {
-            result = Integer.parseInt(text);
+            return Integer.parseInt(text);
         } catch (NumberFormatException e) {
             throw new IncludeNotNumberException(text);
         }
-        return result;
     }
 
     private static boolean isEmpty(String text) {
