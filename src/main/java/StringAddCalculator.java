@@ -14,7 +14,7 @@ public class StringAddCalculator {
             String[] tokens = m.group(2).split(customDelimiter);
             return cacluateSum(tokens);
         }
-        String[] numbers = text.split(COMMA + "|" + DOUBLE_DOT);
+        String[] numbers = text.split("[" + COMMA + DOUBLE_DOT + "]");
         return cacluateSum(numbers);
     }
 
