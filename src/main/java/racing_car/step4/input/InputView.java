@@ -36,7 +36,7 @@ public class InputView {
         }
     }
     
-    static void checkNegative(int inputNum) throws UnsupportedOperationException {
+    private static void checkNegative(int inputNum) throws UnsupportedOperationException {
         if (inputNum < POSITION_MIN_NUMBER) {
             throw new UnsupportedOperationException(NEGATIVE_NUMBER_EXCEPTION_MESSAGE);
         }
