@@ -1,7 +1,5 @@
 package racingcar;
 
-import java.util.Random;
-
 import org.junit.jupiter.api.Test;
 
 class RacingCarGameTest {
