@@ -4,18 +4,18 @@ import java.util.Scanner;
 
 public class RacingGameInitializer {
 
-    private static Scanner scanner = new Scanner(System.in);
+    private final static Scanner SCANNER = new Scanner(System.in);
 
     public static int initTryCount() {
         RacingGamePrinter.printInitTryCountPhrase();
-        int tryCount = scanner.nextInt();
+        int tryCount = SCANNER.nextInt();
         validateOneLessThen(tryCount);
         return tryCount;
     }
 
     public static int initRacingCarCount() {
         RacingGamePrinter.printInitCarCountPhrase();
-        int racingCarCount = scanner.nextInt();
+        int racingCarCount = SCANNER.nextInt();
         validateOneLessThen(racingCarCount);
         return racingCarCount;
     }
