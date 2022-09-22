@@ -18,7 +18,7 @@ public class Car {
     }
     
     public boolean isWinner(int maxPosition) {
-        return position.isSame(maxPosition);
+        return position.equals(new Position(maxPosition));
     }
     
     public Car moveTry(MoveStrategy moveStrategy) {
