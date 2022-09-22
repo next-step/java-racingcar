@@ -1,14 +1,16 @@
-package racingcar.domain;
+package racingcar.service;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.service.RacingGame;
+import racingcar.domain.Car;
+import racingcar.domain.CarFactory;
+import racingcar.domain.Cars;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RaceGameTest {
+public class RacingGameTest {
 
     @DisplayName("참여한 자동차 수 확인")
     @Test
