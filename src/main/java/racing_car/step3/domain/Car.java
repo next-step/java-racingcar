@@ -5,16 +5,17 @@ import racing_car.step3.dto.CarDTO;
 import java.util.Objects;
 
 public class Car {
-    private Position position;
+    private final Position position;
     
-    public Car(int position) {
-        this.position = new Position(position);
+    public Car(Position position) {
+        this.position = position;
     }
     
-    public void move(MoveStrategy moveStrategy) {
+    public Car moveTry(MoveStrategy moveStrategy) {
         if (moveStrategy.isMove()) {
-            this.position = position.increase();
+            return new Car(position.increase());
         }
+        return this;
     }
     
     public CarDTO information() {

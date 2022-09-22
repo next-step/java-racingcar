@@ -12,17 +12,17 @@ public class CarTest {
     
     @BeforeEach
     void setUp() {
-        car = new Car(0);
-        car.move(() -> true);
-        car.move(() -> true);
-        car.move(() -> false);
-        car.move(() -> true);
+        car = new Car(new Position(0));
+        for (int i = 0; i < 3; i++) {
+            car = car.moveTry(() -> true);
+        }
+        car = car.moveTry(() -> false);
     }
     
     @Test
     @DisplayName("랜덤 숫자가 4이상이면 move, 3이하이면 stop")
     void move() {
-        assertThat(car).isEqualTo(new Car(3));
+        assertThat(car).isEqualTo(new Car(new Position(3)));
     }
     
     @Test

@@ -17,7 +17,8 @@ class CarsTest {
     
     @BeforeEach
     void setUp() {
-        carsList = Arrays.asList(new Car(0), new Car(0), new Car(0));
+        Position zeroPosition = new Position(0);
+        carsList = Arrays.asList(new Car(zeroPosition), new Car(zeroPosition), new Car(zeroPosition));
     }
     
     @Test
@@ -30,19 +31,20 @@ class CarsTest {
     @ParameterizedTest(name = "{displayName} : index = {0}, position : {1}")
     @CsvSource(value = {"0:4", "1:5", "2:2"}, delimiter = ':')
     void carInfo(int idx, int position) {
-        List<Car> carsList = Arrays.asList(new Car(4), new Car(5), new Car(2));
+        List<Car> carsList = Arrays.asList(new Car(new Position(4)), new Car(new Position(5)), new Car(new Position(2)));
         List<CarDTO> carDTOS = new Cars(carsList).information();
         assertThat(carDTOS.get(idx).getPosition()).isEqualTo(new Position(position));
     }
     
     @Test
     @DisplayName("차량 이동 여부 확인")
-    void move() {
+    void moveTry() {
         Cars cars = new Cars(carsList);
-        List<Car> tmpCarsList = Arrays.asList(new Car(2), new Car(2), new Car(2));
+        Position twoPosition = new Position(2);
+        List<Car> tmpCarsList = Arrays.asList(new Car(twoPosition), new Car(twoPosition), new Car(twoPosition));
         
-        cars.move(() -> true);
-        cars.move(() -> true);
+        cars = new Cars(cars.moveTry(() -> true));
+        cars = new Cars(cars.moveTry(() -> true));
         
         assertThat(cars).isEqualTo(new Cars(tmpCarsList));
     }

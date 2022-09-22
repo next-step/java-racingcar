@@ -15,7 +15,7 @@ public class RacingGame {
         ResultView.resultMessagePrint();
         
         while (numberOfTry-- > 0) {
-            cars.move();
+            cars = new Cars(cars.moveTry());
             ResultView.processPrint(cars);
         }
     }

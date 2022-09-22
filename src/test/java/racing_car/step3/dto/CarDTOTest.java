@@ -13,7 +13,7 @@ class CarDTOTest {
     @Test
     @DisplayName("차량의 포지션 정보 확인")
     void getPosition() {
-        Car car = new Car(3);
+        Car car = new Car(new Position(3));
         CarDTO carDTO = car.information();
         assertThat(carDTO.getPosition()).isEqualTo(new Position(3));
     }
