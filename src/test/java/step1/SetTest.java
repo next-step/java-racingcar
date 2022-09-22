@@ -5,7 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -27,13 +26,12 @@ public class SetTest {
 
     @Test
     void size() {
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {1,2,3})
-    void contains(int num) {
-        assertThat(numbers.contains(num)).isTrue();
+    @Test
+    void contains() {
+        assertThat(numbers).contains(1,2,3);
     }
 
     @DisplayName("@CsvSource를 이용해 1,2,3이면 true 4 이면 false 반환")
