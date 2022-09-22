@@ -46,7 +46,7 @@ class CarsTest {
     
     @Test
     @DisplayName("차량 이동 여부 확인")
-    void moveTry() {
+    void tryMove() {
         Cars cars = new Cars(carsList);
         Position twoPosition = new Position(2);
         List<Car> tmpCarsList = Arrays.asList(new Car(jun, twoPosition), new Car(pobi, twoPosition), new Car(young, twoPosition));
