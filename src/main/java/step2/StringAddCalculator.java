@@ -16,13 +16,13 @@ public class StringAddCalculator {
     public static String[] split(String text) {
         String delimiter = ":|,";
         Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        String target = "";
 
         if (m.find()) {
             delimiter += "|" + m.group(1);
-            text = m.group(2);
+            target = m.group(2);
         }
-
-        return text.split(delimiter);
+        return target.split(delimiter);
     }
 
     private static boolean isNullOrEmpty(String text) {
@@ -38,10 +38,10 @@ public class StringAddCalculator {
     private static int convertPositiveNumber(String text) {
         try {
             int number = Integer.parseInt(text);
-            if (number > 0) {
-                return number;
-            } else {
+            if (number < 0) {
                 throw new RuntimeException("음수입력 불가");
+            } else {
+                return number;
             }
         } catch (NumberFormatException e) {
             throw new RuntimeException("NumberFormatException");
@@ -51,7 +51,7 @@ public class StringAddCalculator {
     private static int getSumValue(String[] numbers){
         return Arrays.stream(numbers)
                 .map(
-                        s -> convertPositiveNumber(s)
+                        s -> convertPositiveNumber( isNullOrEmpty(s) ? "0" : s)
                 ).mapToInt(i -> i).sum();
     }
 }
