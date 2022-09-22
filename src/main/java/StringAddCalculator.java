@@ -1,10 +1,17 @@
 public class StringAddCalculator {
 
     static int splitAndSum(String str) {
-        try {
-            return Integer.parseInt(str);
-        } catch (NumberFormatException ex) {
-            return 0;
+        String delimiter = ",";
+        int sum = 0;
+
+        if (str == null || str.isBlank()) return sum;
+
+        String[] splitString = str.split(delimiter);
+
+        for (String value : splitString) {
+            sum += Integer.parseInt(value);
         }
+
+        return sum;
     }
 }
