@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 public class StringTest {
 
 	@Test
-	@DisplayName("문자열 1,2를 split 하면 문자열 배열로 반환한다.")
+	@DisplayName("문자열을 split 하면 문자열 배열을 반환한다.")
 	void Given_String_When_Split_Then_SplitToArr(){
 		// given
 		String str = "1,2";
@@ -21,7 +21,7 @@ public class StringTest {
 	}
 
 	@Test
-	@DisplayName("문자열 1을 split 하면 1만을 포함하는 배열을 반환한다.")
+	@DisplayName("문자열을 split 하면 구분자를 제외한 배열을 반환한다.")
 	void Given_String_When_Split_Then_ReturnWithoutSeparator(){
 		// given
 		String str = "1,";
@@ -40,15 +40,15 @@ public class StringTest {
 		String str = "(1,2)";
 
 		// when
-		String result = str.substring(1, 4);
+		String result = str.substring(1, str.length() - 1);
 
 		// then
 		assertThat(result).isEqualTo("1,2");
 	}
 
 	@Test
-	@DisplayName("String의 charAt() 메소드를 활용해 특정 위치의 문자를 가져온다.")
-	void Given_String_When_CharAt_Then_ReturnIndexOfString(){
+	@DisplayName("문자열의 특정 위치의 문자를 반환한다.")
+	void Given_Index_When_CharAt_Then_ReturnIndexOfString(){
 		// given
 		String str = "abc";
 		int index = str.length() - 1;
@@ -61,8 +61,8 @@ public class StringTest {
 	}
 
 	@Test
-	@DisplayName("String의 charAt() 메소드를 활용해 특정 위치의 문자를 가져올 때 위치 값을 벗어나면 예외를 발생한다.")
-	void Given_String_When_CharAt_Then_ThrowException(){
+	@DisplayName("특정 위치의 문자를 가져올 때 위치 값을 벗어나면 예외를 발생한다.")
+	void Given_OutOfIndex_When_CharAt_Then_ThrowException(){
 		// given
 		String str = "abc";
 		int index = str.length();
