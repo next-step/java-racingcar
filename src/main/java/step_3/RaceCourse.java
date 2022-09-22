@@ -1,5 +1,7 @@
 package step_3;
 
+import step_3.dto.RaceConfigurationDTO;
+
 import java.util.List;
 
 public class RaceCourse {
@@ -7,15 +9,15 @@ public class RaceCourse {
     private final ResultView resultView = new ResultView();
 
     private final List<Car> cars;
-    private final int roundCount;
+    private final RaceConfigurationDTO raceConfigurationDTO;
 
-    public RaceCourse(List<Car> cars, int roundCount) {
+    public RaceCourse(List<Car> cars, RaceConfigurationDTO raceConfigurationDTO) {
         this.cars = cars;
-        this.roundCount = roundCount;
+        this.raceConfigurationDTO = raceConfigurationDTO;
     }
 
     public void startRace() {
-        for (int i = 0; i < roundCount; i++) {
+        for (int i = 0; i < raceConfigurationDTO.roundCount(); i++) {
             moveCar();
             resultView.saveRaceResult(cars);
         }

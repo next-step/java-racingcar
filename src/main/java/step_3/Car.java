@@ -6,7 +6,7 @@ import java.util.function.IntPredicate;
 
 public class Car {
 
-    private final int CAN_MOVE_MIN_NUMBER = 4;
+    private static final int CAN_MOVE_MIN_NUMBER = 4;
 
     private final IntPredicate canMovePredicate;
 

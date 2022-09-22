@@ -1,6 +1,7 @@
 package step_3;
 
 import org.junit.jupiter.api.Test;
+import step_3.dto.RaceConfigurationDTO;
 
 import java.util.List;
 import java.util.function.IntPredicate;
@@ -12,8 +13,9 @@ class RaceCourseTest {
     @Test
     void 자동차_경주_횟수만큼_자동차가_이동한다() {
         //given
+        RaceConfigurationDTO dto = new RaceConfigurationDTO(3, 1);
         List<Car> cars = getCars();
-        RaceCourse raceCourse = new RaceCourse(cars, 3);
+        RaceCourse raceCourse = new RaceCourse(cars, dto);
 
         //when
         raceCourse.startRace();
