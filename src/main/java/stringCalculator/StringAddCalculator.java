@@ -1,77 +1,70 @@
 package stringCalculator;
 
-import lombok.extern.log4j.Log4j;
-import lombok.extern.slf4j.Slf4j;
+import stringCalculator.domain.Positive;
+import stringCalculator.domain.Positives;
 
-import java.util.Arrays;
 import java.util.NoSuchElementException;
-import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.IntStream;
 
-@Slf4j
 public class StringAddCalculator {
 
-    static Pattern customDelimiterPattern = Pattern.compile("//(.)\n(.*)");
+    private static Pattern customDelimiterPattern = Pattern.compile("//(.)\n(.*)");
+
+    private StringAddCalculator() {
+    }
 
     public static int splitAndSum(String text) {
 
-        if(isNullOrEmpty(text)){
+        if (isNullOrEmpty(text)) {
             return 0;
-        };
-
-        if(isNumber(text)){
-            return Integer.parseInt(text);
         }
 
-        if(isSplitCommaOrColon(text)){
-            return Arrays.stream(text.split(",|:")).mapToInt(Integer::parseInt).sum();
+        if (isOnlyNumber(text)) {
+            Positive positive = new Positive(text);
+            return positive.parseInt();
+        }
+
+        if (isSplitCommaOrColon(text)) {
+            Positives positives = new Positives(text.split(",|:"));
+            return positives.getSum();
         }
 
         return splitCustomDelimiterAndAdd(text);
     }
 
-    private static boolean isSplitCustom(String text) {
-        return customDelimiterPattern.matcher(text).find();
-    }
 
     private static int splitCustomDelimiterAndAdd(String text) {
 
         Matcher matcher = customDelimiterPattern.matcher(text);
 
-        if(!matcher.find()){
+        if (!matcher.find()) {
             throw new NoSuchElementException();
-        };
-
-        String customDelimiter = matcher.group(1);
-        String[] tokens= matcher.group(2).split(customDelimiter);
-
-        Arrays.stream(tokens).mapToInt(Integer::parseInt).filter(n->n<0).findAny().ifPresent(a->{throw new RuntimeException();});
-        return Arrays.stream(tokens).mapToInt(Integer::parseInt).reduce(0, Integer::sum);
-    }
-
-
-    private static boolean isSplitCommaOrColon(String text) {
-
-        if(text.matches("^[0-9](.*)")){
-          return true;
         }
 
-        return false;
+        String customDelimiter = matcher.group(1);
+        String[] tokens = matcher.group(2).split(customDelimiter);
+
+        Positives positives = new Positives(tokens);
+
+        return positives.getSum();
+    }
+
+    private static boolean isSplitCommaOrColon(String text) {
+        return text.matches("^[0-9](.*)");
     }
 
     private static boolean isNullOrEmpty(String text) {
-        if(text == null) {
-            return true;
-        }
-        if(text.isEmpty()){
-            return true;
-        }
-        return false;
+        return text == null || text.isEmpty();
     }
 
-    private static boolean isNumber(String text) {
-        return text.chars().allMatch(Character::isDigit);
+    private static boolean isOnlyNumber(String text) {
+        try {
+            Integer.parseInt(text);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
+
 }
