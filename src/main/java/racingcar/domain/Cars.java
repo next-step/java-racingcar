@@ -1,9 +1,6 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -26,6 +23,24 @@ public class Cars {
 
     public int size() {
         return elements.size();
+    }
+
+    public Cars findWinners() {
+        Position maxPosition = getMaxPosition();
+        return getCarsSamePosition(maxPosition);
+    }
+
+    private Cars getCarsSamePosition(Position position) {
+        return Cars.of(elements.stream()
+                .filter(car -> car.isSamePosition(position))
+                .collect(Collectors.toList()));
+    }
+
+    private Position getMaxPosition() {
+        return elements.stream()
+                .map(Car::position)
+                .max((p1, p2) -> p1.compare(p1, p2))
+                .orElseThrow(NoSuchElementException::new);
     }
 
     public void add(Car car) {

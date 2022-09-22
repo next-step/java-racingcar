@@ -14,30 +14,30 @@ public class CarTest {
         Car car = new Car("noose");
 
         assertThat(car.name()).isEqualTo("noose");
-        assertThat(car.position()).isEqualTo(1);
+        assertThat(car.positionValue()).isEqualTo(1);
     }
 
     @DisplayName("생성 시 위치를 지정할 수 있다.")
     @Test
     void createCarWithPosition() {
-        Car car = new Car(2);
+        Car car = new Car("test", 2);
 
-        assertThat(car.position()).isEqualTo(2);
+        assertThat(car.positionValue()).isEqualTo(2);
     }
 
     @DisplayName("위치가 음수인 경우 예외 발생")
     @Test
     void createCarWithNegativePosition() {
-        assertThatThrownBy(() -> new Car(-1)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new Car("test", -1)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("자동차 이동 확인")
     @Test
     void move() {
-        Car car = new Car();
+        Car car = new Car("test");
 
         Car movedCar = car.move(() -> true);
 
-        assertThat(movedCar.position()).isEqualTo(2);
+        assertThat(movedCar.positionValue()).isEqualTo(2);
     }
 }

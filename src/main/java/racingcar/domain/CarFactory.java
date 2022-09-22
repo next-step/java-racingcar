@@ -12,6 +12,7 @@ public class CarFactory {
         Cars cars = new Cars();
 
         Stream.of(carNames.split(DELIMITER))
+                .map(String::strip)
                 .map(Car::new)
                 .forEach(cars::add);
 
