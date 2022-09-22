@@ -15,43 +15,31 @@ public class StringAddCalculator {
             return parseOne(calculatorString.getText());
         }
 
-        List<Integer> numbers = split(calculatorString.getText(), calculatorString.getDelimiter());
-
-        return sum(numbers);
+        return sum(split(calculatorString.getText(), calculatorString.getDelimiter()));
     }
 
-    public List<Integer> split(String text, String delimiter) {
+    public List<Positive> split(String text, String delimiter) {
         String[] stringNumbers = text.split(delimiter);
-        List<Integer> numbers = new ArrayList<>();
+        List<Positive> numbers = new ArrayList<>();
 
         for (String s : stringNumbers) {
-            int num = Integer.parseInt(s);
-            validateNumber(num);
-            numbers.add(num);
+            numbers.add(new Positive(Integer.parseInt(s)));
         }
 
         return numbers;
     }
 
-    public int sum(List<Integer> numbers) {
-        int sum = 0;
+    public int sum(List<Positive> numbers) {
+        Positive sum = new Positive(0);
 
-        for (int n : numbers) {
-            sum += n;
+        for (Positive n : numbers) {
+            sum = sum.plus(n);
         }
 
-        return sum;
+        return sum.getNumber();
     }
 
     private int parseOne(String text) {
-        int num = Integer.parseInt(text);
-        validateNumber(num);
-        return num;
-    }
-
-    private void validateNumber(int num) {
-        if (num < 0) {
-            throw new RuntimeException("Negative number can't calculated.");
-        }
+        return new Positive(text).getNumber();
     }
 }
