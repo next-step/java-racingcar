@@ -1,46 +1,47 @@
 package racingcar;
 
-import java.util.Random;
-
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.BDDAssertions.then;
 
 public class RacingCarTest {
 
-    class CanMoveRandomGenerate extends Random {
+    class CanMoveCondition implements MoveCondition {
 
         @Override
-        public int nextInt() {
-            return 4;
+        public boolean canMove() {
+            return true;
         }
     }
 
-    class CantMoveRandomGenerate extends Random {
+    class CantMoveCondition implements MoveCondition {
 
         @Override
-        public int nextInt() {
-            return 0;
+        public boolean canMove() {
+            return false;
         }
     }
 
     @Test
     void move() {
-        RacingCar cantMoveRacingCar = new RacingCar(new CanMoveRandomGenerate());
+        CanMoveCondition canMoveCondition = new CanMoveCondition();
+        RacingCar cantMoveRacingCar = new RacingCar();
         then(cantMoveRacingCar.getPosition()).isZero();
-        cantMoveRacingCar.move();
+        cantMoveRacingCar.move(canMoveCondition);
         then(cantMoveRacingCar.getPosition()).isEqualTo(1);
-        cantMoveRacingCar.move();
+        cantMoveRacingCar.move(canMoveCondition);
         then(cantMoveRacingCar.getPosition()).isEqualTo(2);
-        cantMoveRacingCar.move();
+        cantMoveRacingCar.move(canMoveCondition);
         then(cantMoveRacingCar.getPosition()).isEqualTo(3);
     }
 
     @Test
     void cantMove() {
-        RacingCar cantMoveRacingCar = new RacingCar(new CantMoveRandomGenerate());
+        CantMoveCondition cantMoveCondition = new CantMoveCondition();
+
+        RacingCar cantMoveRacingCar = new RacingCar();
         then(cantMoveRacingCar.getPosition()).isZero();
-        cantMoveRacingCar.move();
+        cantMoveRacingCar.move(cantMoveCondition);
         then(cantMoveRacingCar.getPosition()).isZero();
     }
 }

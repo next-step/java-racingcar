@@ -24,9 +24,7 @@ public class RacingCarGame {
     }
 
     private void allRacingCarMove() {
-        for (RacingCar racingCar : racingCars) {
-            racingCar.move();
-        }
+        racingCars.forEach(racingCar -> racingCar.move(new RacingCarMoveCondition()));
     }
 
     private static List<RacingCar> createRacingCars(int initRacingCarCount) {
