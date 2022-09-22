@@ -5,10 +5,10 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
     private static final String DEFAULT_DELIMITER = ",|:";
-    private static final String CUSTOM_DELIMITER_PATTERN = "//(.)\\n(.*)";
+    private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\\n(.*)");
 
     public static int splitAndSum(final String text) {
-        if(text == null || text.isEmpty()) {
+        if (text == null || text.isEmpty()) {
             return 0;
         }
         String[] tokens = split(text);
@@ -31,7 +31,7 @@ public class StringAddCalculator {
     }
 
     private static String delimiter(final String text){
-        Matcher matcher = Pattern.compile(CUSTOM_DELIMITER_PATTERN).matcher(text);
+        Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(text);
         if(matcher.find()){
             return matcher.group(1);
         }
@@ -39,7 +39,7 @@ public class StringAddCalculator {
     }
 
     private static String convertText(final String text){
-        Matcher matcher = Pattern.compile(CUSTOM_DELIMITER_PATTERN).matcher(text);
+        Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(text);
         if(matcher.find()){
             return matcher.group(2);
         }
