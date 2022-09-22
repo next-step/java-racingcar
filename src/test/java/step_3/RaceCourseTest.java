@@ -16,7 +16,9 @@ class RaceCourseTest {
         RaceConfigurationDTO dto = new RaceConfigurationDTO(3, 1);
         RaceResultView raceResultView = new RaceResultView();
 
-        List<Car> cars = getCars();
+        IntPredicate canMovePredicate = randomNumber -> true;
+        List<Car> cars = List.of(new Car(canMovePredicate), new Car(canMovePredicate), new Car(canMovePredicate));
+
         RaceCourse raceCourse = new RaceCourse(cars, dto);
 
         //when
@@ -24,10 +26,5 @@ class RaceCourseTest {
 
         //then
         assertThat(cars.get(0).distance()).isEqualTo(3);
-    }
-
-    private List<Car> getCars() {
-        IntPredicate canMovePredicate = randomNumber -> true;
-        return List.of(new Car(canMovePredicate), new Car(canMovePredicate), new Car(canMovePredicate));
     }
 }
