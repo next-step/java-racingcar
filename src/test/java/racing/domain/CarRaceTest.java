@@ -1,13 +1,13 @@
-package step3.domain;
-
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.List;
+package racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+
+import java.util.ArrayList;
+import java.util.List;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import racing.domain.car.Car;
 
 public class CarRaceTest {
 
@@ -20,13 +20,13 @@ public class CarRaceTest {
     void ctorTest() {
         //given
         List<Car> carList = List.of(
-                new Car(),
-                new Car(),
-                new Car()
+            new Car(),
+            new Car(),
+            new Car()
         );
 
         //then
-        assertDoesNotThrow(() -> new CarRace(carList, NumberGenerator.RandomNumberGenerator(10)));
+        assertDoesNotThrow(() -> new CarRace(carList, new DefaultNumberGenerator(10)));
     }
 
     @Test
@@ -36,7 +36,7 @@ public class CarRaceTest {
         List<Car> list = List.of(new Car(0));
 
         //when
-        CarRace carRace = new CarRace(list, NumberGenerator.RandomNumberGenerator(10));
+        CarRace carRace = new CarRace(list, new DefaultNumberGenerator(10));
 
         //then
         assertThat(carRace.size()).isEqualTo(1);
@@ -48,7 +48,7 @@ public class CarRaceTest {
     void addCarTest() {
         //given
         List<Car> list = new ArrayList<>(List.of(new Car(0)));
-        CarRace carRace = new CarRace(list, NumberGenerator.RandomNumberGenerator(10));
+        CarRace carRace = new CarRace(list, new DefaultNumberGenerator(10));
 
         //when
         carRace.addCar(new Car(0));
@@ -68,22 +68,25 @@ public class CarRaceTest {
         carRace.move();
 
         //then
-        Car moveCar = carRace.cars().get(0);
-        assertThat(moveCar.state()).isEqualTo(1);
+        assertThat(carRace.cars())
+            .filteredOn(car -> car.position() == 1)
+            .isNotEmpty();
     }
 
     @Test
     @DisplayName("전체 자동차 전진 실패 테스트")
     void notAdvanceCarTest() {
         //given
-        List<Car> list = new ArrayList<>(List.of(new Car(0)));;
+        List<Car> list = new ArrayList<>(List.of(new Car(0)));
         CarRace carRace = new CarRace(list, notAdvanced);
 
         //when
         carRace.move();
 
         //then
-        assertThat(carRace.cars().get(0).state()).isEqualTo(0);
+        assertThat(carRace.cars())
+            .filteredOn(car -> car.position() == 0)
+            .isNotEmpty();
     }
 
 

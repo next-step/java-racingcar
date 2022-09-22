@@ -1,10 +1,10 @@
-package step3.domain;
-
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+package racing.domain.car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 public class CarTest {
 
@@ -24,6 +24,6 @@ public class CarTest {
         Car moveCar = car.move();
 
         //then
-        assertThat(moveCar.state()).isEqualTo(1);
+        assertThat(moveCar.position()).isEqualTo(1);
     }
 }
