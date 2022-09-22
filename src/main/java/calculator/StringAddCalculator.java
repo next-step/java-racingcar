@@ -11,7 +11,7 @@ public class StringAddCalculator {
             return 0;
 
         if(target.length() == 1) {
-            return convertToInt(target);
+            return new Positive(target).number();
         }
 
         Matcher m = pattern.matcher(target);
@@ -33,24 +33,9 @@ public class StringAddCalculator {
     private static int sum(String[] numberStr) {
         int sum = 0;
         for (String s : numberStr) {
-            sum += checkPositiveAndNumeric(s);
+            var positive = new Positive(s);
+            sum += positive.number();
         }
         return sum;
-    }
-
-    private static int checkPositiveAndNumeric(String target) {
-        int targetNum = convertToInt(target);
-        if (targetNum < 0) {
-            throw new RuntimeException("인자로 받는 숫자는 모두 양수여야 합니다.");
-        }
-        return targetNum;
-    }
-
-    private static int convertToInt(String target) {
-        try {
-            return Integer.parseInt(target);
-        } catch(NumberFormatException e) {
-            throw new RuntimeException("숫자 형태의 문자만 인자로 받을 수 있습니다.");
-        }
     }
 }
