@@ -2,16 +2,22 @@ package step2;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-import org.junit.platform.commons.util.StringUtils;
 
 public class StringAddCalculator {
 
+    private static final Pattern PATTERN = Pattern.compile("//(.)\n(.*)");
+    private static final int DELIMITER_INDEX = 1;
+    private static final int TOKEN_INDEX = 2;
+
     public static int splitAndSum(String text) {
         // 요구사항 1
-        if (StringUtils.isBlank(text)) {
+        if (Optional.ofNullable(text)
+                .orElse("")
+                .isEmpty()) {
             return 0;
         }
 
@@ -25,15 +31,17 @@ public class StringAddCalculator {
         return addNumbers(numbers);
     }
 
-    private static List<Integer> validatePositiveNumbers(List<Integer> numbers) {
-        numbers = numbers.stream()
-                .peek(number -> {
-                    if (number < 0) {
-                        throw new NegativeNumberException();
-                    }
-                })
-                .collect(Collectors.toList());
-        return numbers;
+    private static String[] splitString(String text) {
+        String[] tokens;
+        Matcher m = PATTERN.matcher(text);
+
+        if (m.find()) {
+            String customDelimiter = m.group(DELIMITER_INDEX);
+            tokens = m.group(TOKEN_INDEX).split(customDelimiter);
+        } else {
+            tokens = text.split(",|:");
+        }
+        return tokens;
     }
 
     private static List<Integer> convertStringsToNumbers(String[] tokens) {
@@ -47,25 +55,19 @@ public class StringAddCalculator {
                 }).collect(Collectors.toList());
     }
 
-    private static String[] splitString(String text) {
-        String[] tokens;
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
-
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            tokens = m.group(2).split(customDelimiter);
-        } else {
-            tokens = text.split(",|:");
+    private static List<Integer> validatePositiveNumbers(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if (number < 0) {
+                throw new NegativeNumberException();
+            }
         }
-        return tokens;
+        return numbers;
     }
 
     private static int addNumbers(List<Integer> numbers) {
-        int result = 0;
-        for (Integer number : numbers) {
-            result += number;
-        }
-        return result;
+        return numbers.stream()
+                .mapToInt(Integer::intValue)
+                .sum();
     }
 
 }
