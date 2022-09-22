@@ -17,17 +17,16 @@ public class Car {
         this(new Position());
     }
 
-    public static Car of(Car car) {
-        return new Car(car.position);
-    }
-
     public int position() {
         return position.getPosition();
     }
 
-    public void move(MoveStrategy moveStrategy) {
+    public Car move(MoveStrategy moveStrategy) {
         if (moveStrategy.isMovable()) {
-            this.position = position.add(new Position(DEFAULT_MOVEMENT_DISTANCE));
+            Position newPosition = position.add(new Position(DEFAULT_MOVEMENT_DISTANCE));
+            return new Car(newPosition);
         }
+
+        return this;
     }
 }

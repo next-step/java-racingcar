@@ -1,41 +1,40 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
-    private List<Car> cars = new ArrayList<>();
+    private List<Car> elements = new ArrayList<>();
+
+    public static Cars of(Collection<Car> values) {
+        return new Cars(new ArrayList<>(values));
+    }
 
     public Cars() {
     }
 
     public Cars(List<Car> cars) {
-        this.cars = cars;
+        this.elements = cars;
     }
 
-    public List<Car> getCars() {
-        return deepCopy(cars);
-    }
-
-    private List<Car> deepCopy(List<Car> src) {
-        List<Car> dest = new ArrayList<>();
-
-        for (Car car : src) {
-            dest.add(Car.of(car));
-        }
-
-        return dest;
+    public List<Car> getElements() {
+        return Collections.unmodifiableList(elements);
     }
 
     public int size() {
-        return cars.size();
+        return elements.size();
     }
 
     public void add(Car car) {
-        cars.add(car);
+        elements.add(car);
     }
 
     public void move(MoveStrategy moveStrategy) {
-        cars.forEach(car -> car.move(moveStrategy));
+        elements = elements.stream()
+                .map(car -> car.move(moveStrategy))
+                .collect(Collectors.toList());
     }
 }

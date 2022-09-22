@@ -2,6 +2,7 @@ package racingcar.service;
 
 import racingcar.domain.*;
 import racingcar.repository.RacingCarTable;
+import racingcar.view.RacingGameResult;
 
 import java.util.List;
 
@@ -32,12 +33,19 @@ public class RacingGame {
 
         Cars cars = carTable.findAll();
         result.record(cars);
+
         for (int i = 0; i < tryCount; i++) {
             cars.move(moveStrategy);
             result.record(cars);
         }
 
+        clearAndSave(cars);
         return result;
+    }
+
+    private void clearAndSave(Cars cars) {
+        carTable.clear();
+        carTable.saveAll(cars);
     }
 
     public int joinCount() {
@@ -47,6 +55,6 @@ public class RacingGame {
 
     public List<Car> getCars() {
         return carTable.findAll()
-                        .getCars();
+                        .getElements();
     }
 }

@@ -3,11 +3,11 @@ package racingcar.repository;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class RacingCarTable {
-    private final HashMap<Integer, Car> table = new HashMap<>();
+    private final Map<Integer, Car> table = new ConcurrentHashMap<>();
     private static int sequence = 0;
 
     public void save(Car car) {
@@ -15,11 +15,15 @@ public class RacingCarTable {
     }
 
     public void saveAll(Cars cars) {
-        cars.getCars()
+        cars.getElements()
             .forEach(this::save);
     }
 
     public Cars findAll() {
-        return new Cars(new ArrayList<>(table.values()));
+        return Cars.of(table.values());
+    }
+
+    public void clear() {
+        table.clear();
     }
 }

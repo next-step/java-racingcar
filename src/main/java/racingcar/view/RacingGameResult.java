@@ -1,4 +1,7 @@
-package racingcar.domain;
+package racingcar.view;
+
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,7 +20,7 @@ public class RacingGameResult {
     private String createStringRecord(Cars cars) {
         StringBuilder record = new StringBuilder();
 
-        cars.getCars()
+        cars.getElements()
             .stream()
             .map(this::createMovementMark)
             .forEach(record::append);
