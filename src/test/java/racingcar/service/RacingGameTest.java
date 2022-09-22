@@ -27,7 +27,7 @@ public class RacingGameTest {
     @DisplayName("모두 출발하는 경우")
     @Test
     void race() {
-        Cars cars = CarFactory.createCars(2);
+        Cars cars = CarFactory.createCars("nooose,pobi");
         RacingGame game = new RacingGame(new RacingCarTable(), () -> true);
 
         game.join(cars);
@@ -41,7 +41,7 @@ public class RacingGameTest {
     @DisplayName("모두 출발하지 못한 경우")
     @Test
     void raceNoMove() {
-        Cars cars = CarFactory.createCars(2);
+        Cars cars = CarFactory.createCars("nooose,pobi");
         RacingGame game = new RacingGame(new RacingCarTable(), () -> false);
 
         game.join(cars);

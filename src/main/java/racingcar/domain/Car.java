@@ -3,6 +3,7 @@ package racingcar.domain;
 public class Car {
     private static final int DEFAULT_MOVEMENT_DISTANCE = 1;
 
+    private Name name;
     private Position position;
 
     public Car(int position) {
@@ -15,6 +16,15 @@ public class Car {
 
     public Car() {
         this(new Position());
+    }
+
+    public Car(String name) {
+        this.name = new Name(name);
+        this.position = new Position();
+    }
+
+    public String name() {
+        return name.name();
     }
 
     public int position() {

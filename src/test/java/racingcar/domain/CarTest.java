@@ -8,11 +8,12 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
 
-    @DisplayName("기본 생성자로 생성 시 위치는 1이다.")
+    @DisplayName("생성 시 이름을 부여할 수 있고 기본 생성 위치는 1이다.")
     @Test
     void createCar() {
-        Car car = new Car();
+        Car car = new Car("noose");
 
+        assertThat(car.name()).isEqualTo("noose");
         assertThat(car.position()).isEqualTo(1);
     }
 
@@ -28,15 +29,6 @@ public class CarTest {
     @Test
     void createCarWithNegativePosition() {
         assertThatThrownBy(() -> new Car(-1)).isInstanceOf(IllegalArgumentException.class);
-    }
-
-
-    @DisplayName("여러 자동차를 등록한다.")
-    @Test
-    void createCars() {
-        Cars cars = CarFactory.createCars(3);
-
-        assertThat(cars.size()).isEqualTo(3);
     }
 
     @DisplayName("자동차 이동 확인")

@@ -20,8 +20,8 @@ public class RacingGame {
         this.moveStrategy = moveStrategy;
     }
 
-    public void join(int numberOfCars) {
-        join(CarFactory.createCars(numberOfCars));
+    public void join(String carNames) {
+        join(CarFactory.createCars(carNames));
     }
 
     public void join(Cars cars) {
