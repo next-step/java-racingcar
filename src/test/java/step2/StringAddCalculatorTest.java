@@ -1,19 +1,19 @@
 package step2;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class StringAddCalculatorTest
 {
-    @Test
-    void splitAndSum_null_또는_빈문자()
+    @ParameterizedTest
+    @NullAndEmptySource
+    void splitAndSum_null_또는_빈문자(String value)
     {
-        int result = StringAddCalculator.splitAndSum(null);
-        assertThat(result).isZero();
-
-        result = StringAddCalculator.splitAndSum("");
+        int result = StringAddCalculator.splitAndSum(value);
         assertThat(result).isZero();
     }
 
@@ -49,6 +49,21 @@ class StringAddCalculatorTest
     void splitAndSum_negative()
     {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
-            .isInstanceOf(RuntimeException.class);
+            .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void splitAndSum_문자만()
+    {
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("abcdefg"))
+            .isInstanceOf(NumberFormatException.class);
+    }
+
+    @Test
+    void splitAndSum_십의자리숫자()
+    {
+        int result = StringAddCalculator.splitAndSum("//;\n20;2;30");
+        assertThat(result).isEqualTo(52);
+    }
+
 }
