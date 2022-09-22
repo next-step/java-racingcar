@@ -16,7 +16,7 @@ public class RacingGameTest {
     @DisplayName("참여한 자동차 수 확인")
     @Test
     void join() {
-        Cars cars = new Cars(List.of(new Car(), new Car(), new Car()));
+        Cars cars = new Cars(List.of(new Car("a"), new Car("b"), new Car("c")));
 
         RacingGame game = new RacingGame(new RacingCarTable());
         game.join(cars);
@@ -34,8 +34,8 @@ public class RacingGameTest {
         game.race(2);
 
         List<Car> movedCars = game.getCars();
-        assertThat(movedCars.get(0).position()).isEqualTo(3);
-        assertThat(movedCars.get(1).position()).isEqualTo(3);
+        assertThat(movedCars.get(0).positionValue()).isEqualTo(3);
+        assertThat(movedCars.get(1).positionValue()).isEqualTo(3);
     }
 
     @DisplayName("모두 출발하지 못한 경우")
@@ -48,7 +48,7 @@ public class RacingGameTest {
         game.race(2);
 
         List<Car> movedCars = game.getCars();
-        assertThat(movedCars.get(0).position()).isEqualTo(1);
-        assertThat(movedCars.get(1).position()).isEqualTo(1);
+        assertThat(movedCars.get(0).positionValue()).isEqualTo(1);
+        assertThat(movedCars.get(1).positionValue()).isEqualTo(1);
     }
 }

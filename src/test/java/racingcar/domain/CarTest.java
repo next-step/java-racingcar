@@ -22,7 +22,7 @@ public class CarTest {
     void createCarWithPosition() {
         Car car = new Car("test", 2);
 
-        assertThat(car.positionValue()).isEqualTo(2);
+        assertThat(car.position()).isEqualTo(new Position(2));
     }
 
     @DisplayName("위치가 음수인 경우 예외 발생")
@@ -38,6 +38,6 @@ public class CarTest {
 
         Car movedCar = car.move(() -> true);
 
-        assertThat(movedCar.positionValue()).isEqualTo(2);
+        assertThat(movedCar.position()).isEqualTo(new Position(2));
     }
 }

@@ -11,5 +11,6 @@ public class ResultView {
         System.out.println(RESULT_MESSAGE);
         result.records()
                 .forEach(System.out::println);
+        System.out.println(result.getWinMessage());
     }
 }

@@ -39,6 +39,8 @@ public class RacingGame {
             result.record(cars);
         }
 
+        result.winner(cars.findWinners());
+
         clearAndSave(cars);
         return result;
     }

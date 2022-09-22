@@ -21,8 +21,8 @@ class RacingCarTableTest {
     @DisplayName("Car 저장")
     @Test
     void save() {
-        Car carA = new Car();
-        Car carB = new Car();
+        Car carA = new Car("testA");
+        Car carB = new Car("testB");
 
         carTable.save(carA);
         carTable.save(carB);
@@ -54,6 +54,6 @@ class RacingCarTableTest {
 
         Car carB = carTable.findAll().getElements().get(0);
 
-        assertThat(carB.position()).isEqualTo(1);
+        assertThat(carB.positionValue()).isEqualTo(1);
     }
 }
