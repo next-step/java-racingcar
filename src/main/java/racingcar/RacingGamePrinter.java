@@ -21,16 +21,16 @@ public class RacingGamePrinter {
         System.out.println(GAME_RESULT_MESSAGE);
     }
 
-    private static void printRacingCarPositionExpression(int count) {
-        for (int i = 0; i < count; i++) {
-            System.out.print(RACING_CAR_POSITION_EXPRESSION);
+    public static void printRacingCarsPositionExpression(List<RacingCar> racingCars) {
+        for (RacingCar racingCar : racingCars) {
+            printRacingCarPositionExpression(racingCar.getPosition());
         }
         System.out.println();
     }
 
-    public static void printRacingCarsPositionExpression(List<RacingCar> racingCars) {
-        for (RacingCar racingCar : racingCars) {
-            printRacingCarPositionExpression(racingCar.getPosition());
+    private static void printRacingCarPositionExpression(int count) {
+        for (int i = 0; i < count; i++) {
+            System.out.print(RACING_CAR_POSITION_EXPRESSION);
         }
         System.out.println();
     }
