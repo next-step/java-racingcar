@@ -2,10 +2,10 @@ package racing_car.step4.controller;
 
 import racing_car.step4.domain.Cars;
 import racing_car.step4.domain.RandomMoveStrategy;
-import racing_car.step4.output.ResultView;
+import racing_car.step4.view.output.ResultView;
 
-import static racing_car.step4.input.InputView.createCars;
-import static racing_car.step4.input.InputView.inputNumberOfTry;
+import static racing_car.step4.view.input.InputView.createCars;
+import static racing_car.step4.view.input.InputView.inputNumberOfTry;
 
 public class RacingGame {
     public void play() {

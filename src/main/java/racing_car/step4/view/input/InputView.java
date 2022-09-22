@@ -1,4 +1,4 @@
-package racing_car.step4.input;
+package racing_car.step4.view.input;
 
 import racing_car.step4.domain.Cars;
 import racing_car.step4.domain.CarsFactory;

@@ -1,4 +1,4 @@
-package racing_car.step4.output;
+package racing_car.step4.view.output;
 
 import racing_car.step4.domain.Cars;
 import racing_car.step4.dto.CarDTO;
