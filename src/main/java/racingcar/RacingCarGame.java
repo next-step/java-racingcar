@@ -1,6 +1,5 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -33,7 +32,7 @@ public class RacingCarGame {
     private static List<RacingCar> createRacingCars(int initRacingCarCount) {
         return IntStream.range(0, initRacingCarCount)
             .mapToObj(i -> new RacingCar())
-            .collect(Collectors.toCollection(ArrayList::new));
+            .collect(Collectors.toList());
     }
 
     public static void main(String[] args) {
