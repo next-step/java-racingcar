@@ -12,7 +12,6 @@ public class RacingCarTable {
 
     public void save(Car car) {
         table.put(sequence++, car);
-        System.out.println(table);
     }
 
     public void saveAll(Cars cars) {
