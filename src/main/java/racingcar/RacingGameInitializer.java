@@ -6,6 +6,8 @@ public class RacingGameInitializer {
 
     private final static Scanner SCANNER = new Scanner(System.in);
 
+    private RacingGameInitializer() {}
+
     public static int initTryCount() {
         RacingGamePrinter.printInitTryCountPhrase();
         int tryCount = SCANNER.nextInt();
