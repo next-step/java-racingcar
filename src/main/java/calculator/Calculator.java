@@ -30,6 +30,25 @@ public class Calculator {
         return parseCustomizedInput(input).stream().mapToInt(e -> e).sum();
     }
 
+    private static int add(String input) {
+        validateInput(input);
+        return parseInput(input).stream().mapToInt(e -> e).sum();
+    }
+
+    private static void validateCustomizedInput(String input) throws IllegalArgumentException  {
+        char customDelimiter = input.charAt(2);
+        String parsedInput = input.substring(5);
+        if (!parsedInput.matches("\\d*[,|:|" + customDelimiter + "\\d]*")) {
+            throw new IllegalArgumentException(INVALID_INPUT_EXCEPTION);
+        }
+    }
+
+    private static void validateInput(String input) throws IllegalArgumentException {
+        if (!input.matches("\\d*[,|:\\d]*")) {
+            throw new IllegalArgumentException(INVALID_INPUT_EXCEPTION);
+        }
+    }
+
     private static List<Integer> parseCustomizedInput(String input) {
         Matcher matcher = Pattern.compile("\\/\\/(.)\\\\n(.*)").matcher(input);
         if (matcher.find()) {
@@ -38,25 +57,6 @@ public class Calculator {
             return stringArrayToList(tokens);
         }
         return List.of();
-    }
-
-    private static void validateCustomizedInput(String input) {
-        char customDelimiter = input.charAt(2);
-        String parsedInput = input.substring(5);
-        if (!parsedInput.matches("\\d*[,|:|" + customDelimiter + "\\d]*")) {
-            throw new IllegalArgumentException(INVALID_INPUT_EXCEPTION);
-        }
-    }
-
-    private static int add(String input) {
-        validateInput(input);
-        return parseInput(input).stream().mapToInt(e -> e).sum();
-    }
-
-    private static void validateInput(String input) throws IllegalArgumentException {
-        if (!input.matches("\\d*[,|:\\d]*")) {
-            throw new IllegalArgumentException(INVALID_INPUT_EXCEPTION);
-        }
     }
 
     private static List<Integer> parseInput(String input) {
