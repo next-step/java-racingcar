@@ -1,4 +1,4 @@
-package carRacing.step2;
+package carracing.step2;
 
 import java.util.StringTokenizer;
 

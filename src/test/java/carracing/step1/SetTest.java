@@ -1,4 +1,4 @@
-package carRacing.step1;
+package carracing.step1;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
