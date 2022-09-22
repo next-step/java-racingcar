@@ -6,37 +6,37 @@ import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 public class StringAddCalculator {
-    private static final String CUSTOM_DELIMITER_PATTERN = "//(.)\n(.*)";
+    private static final String COMMA_OR_COLON = ",|:";
+    private static final String CUSTOM_DELIMITER = "//(.)\n(.*)";
+    private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile(CUSTOM_DELIMITER);
 
     public static int splitAndSum(String text) {
         if(isNullOrEmpty(text)) return 0;
-        String[] strings = splitString(text);
-        int[] ints = convertArrayStringToInteger(strings);
-        return sum(ints);
+        return sum(toInt(splitString(text)));
     }
 
     private static boolean isNullOrEmpty(String text) {
-        if(text == null) return true;
-        return text.isEmpty();
+        return text == null || text.isEmpty();
     }
 
     private static String[] splitString(String text) {
-        String[] strings = {text};
-        Matcher m = Pattern.compile(CUSTOM_DELIMITER_PATTERN).matcher(text);
+        Matcher m = CUSTOM_DELIMITER_PATTERN.matcher(text);
         if(m.find()) {
             String customDelimiter = m.group(1);
             return m.group(2).split(customDelimiter);
-        } else if(text.contains(",") || text.contains(":")) {
-            return text.split(",|:");
         }
-        return strings;
+        return text.split(COMMA_OR_COLON);
     }
 
-    private static int[] convertArrayStringToInteger(String[] strings) {
+    private static int[] toInt(String[] strings) {
         return Stream.of(strings).mapToInt(StringAddCalculator::parseInt).toArray();
     }
 
     private static int parseInt(String string) {
+        return isPositive(string);
+    }
+
+    private static int isPositive(String string) {
         int intNum = Integer.parseInt(string);
         if(intNum < 0) throw new RuntimeException("음수입니다.");
         return intNum;
