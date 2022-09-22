@@ -2,36 +2,42 @@ package ThirdStep;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class GameSetting {
-    private static int carCount;
-    private static int attempts;
+    private int carCount;
+    private int attempts;
 
-    public static int getCarCount() {
+    private final List<Car> cars;
+
+    public GameSetting() {
+        cars = new ArrayList<>();
+    }
+
+    public int getCarCount() {
         return carCount;
     }
 
-    public static int getAttempts() {
+    public int getAttempts() {
         return attempts;
     }
 
-    public static void setting() {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        carCount = scanner.nextInt();
-
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        attempts = scanner.nextInt();
+    public List<Car> getCars() {
+        return cars;
     }
 
-    public static List<Car> getCars() {
-        List<Car> cars = new ArrayList<>();
-        for (int count = 0 ; count < GameSetting.getCarCount() ; ++count) {
+    public void setting() {
+        TextPrinter.print("자동차 대수는 몇 대 인가요?");
+        carCount = UserInputScanner.intScan();
+
+        TextPrinter.print("시도할 회수는 몇 회 인가요?");
+        attempts = UserInputScanner.intScan();
+
+        setCars();
+    }
+
+    private void setCars() {
+        for (int count = 0 ; count < this.getCarCount() ; ++count) {
             cars.add(new Car());
         }
-
-        return cars;
     }
 }
