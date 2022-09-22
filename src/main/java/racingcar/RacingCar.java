@@ -4,10 +4,9 @@ import java.util.Random;
 
 public class RacingCar {
 
-    private Random random;
     private static final int MIN_RANDOM_NUM_CAN_MOVED = 4;
-
     private final int MOVE_LENGTH = 1;
+    private Random random;
     private int position = 0;
 
     public RacingCar() {
