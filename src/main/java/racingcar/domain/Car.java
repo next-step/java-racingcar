@@ -17,6 +17,10 @@ public class Car {
         this(new Position());
     }
 
+    public static Car of(Car car) {
+        return new Car(car.position);
+    }
+
     public int position() {
         return position.getPosition();
     }

@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Cars {
@@ -15,7 +14,17 @@ public class Cars {
     }
 
     public List<Car> getCars() {
-        return Collections.unmodifiableList(cars);
+        return deepCopy(cars);
+    }
+
+    private List<Car> deepCopy(List<Car> src) {
+        List<Car> dest = new ArrayList<>();
+
+        for (Car car : src) {
+            dest.add(Car.of(car));
+        }
+
+        return dest;
     }
 
     public int size() {
