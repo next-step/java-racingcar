@@ -8,12 +8,12 @@ public class StringAddCalculator {
 
     final static String regex = "(?<=//)(.*)(?=\\n)";
 
-    static int splitAndSum(String str) {
+    static int splitAndSum(String input) {
         int sum = 0;
 
-        if (str != null && !str.isBlank()) {
-            String customDelimiter = checkCustomDelimiter(str);
-            List<String> splitString = customDelimiter == null ? splitByDefault(str) : splitByCustom(str, customDelimiter);
+        if (input != null && !input.isBlank()) {
+            String customDelimiter = checkCustomDelimiter(input);
+            List<String> splitString = customDelimiter == null ? splitByDefault(input) : splitByCustom(input, customDelimiter);
 
             for (String value : splitString) {
                 sum += Integer.parseUnsignedInt(value);
@@ -23,21 +23,21 @@ public class StringAddCalculator {
         return sum;
     }
 
-    static List<String> splitByDefault(String str) {
+    static List<String> splitByDefault(String input) {
         List<String> result = new ArrayList();
-        String[] splitString = str.split(",");
+        String[] splitStringByRest = input.split(",");
 
-        for (String value : splitString) {
-            String[] element = value.split(":");
-            result.addAll(Arrays.asList(element));
+        for (String value : splitStringByRest) {
+            String[] splitStringByColon = value.split(":");
+            result.addAll(Arrays.asList(splitStringByColon));
         }
 
         return result;
     }
 
-    static List<String> splitByCustom(String str, String delimiter) {
-        String target = str.split("\n")[1];
-        return Arrays.asList(target.split(delimiter));
+    static List<String> splitByCustom(String input, String delimiter) {
+        String inputWithoutDelimiter = input.split("\n")[1];
+        return Arrays.asList(inputWithoutDelimiter.split(delimiter));
     }
 
     static String checkCustomDelimiter(String str) {
