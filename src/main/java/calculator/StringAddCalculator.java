@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 public class StringAddCalculator {
 
 	private static final String PATTERN = "//(.)\n(.*)";
-	private static final String COMMA_OR_COLON = ",|:";
+	private static final String DEFAULT_DELIMITER = ",|:";
 	private static final int DEFAULT_RETURN_VALUE = 0;
 
 	public static int splitAndSum(String input) {
@@ -27,7 +27,7 @@ public class StringAddCalculator {
 			String customDelimiter = matcher.group(1);
 			return matcher.group(2).split(customDelimiter);
 		}
-		return input.split(COMMA_OR_COLON);
+		return input.split(DEFAULT_DELIMITER);
 	}
 
 	private static int sum(String[] numbers) {
