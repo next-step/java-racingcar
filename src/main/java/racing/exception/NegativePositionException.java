@@ -1,4 +1,4 @@
-package step3.exception;
+package racing.exception;
 
 public class NegativePositionException extends IllegalArgumentException {
 
