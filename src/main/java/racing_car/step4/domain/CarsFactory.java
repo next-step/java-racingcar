@@ -1,13 +1,13 @@
 package racing_car.step4.domain;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class CarsFactory {
-    public static List<Car> from(int numberOfCars) {
-        return IntStream.range(0, numberOfCars)
-                .mapToObj(count -> new Car())
+    public static List<Car> from(String[] carsName) {
+        return Arrays.stream(carsName)
+                .map(carName -> new Car(new Name(carName)))
                 .collect(Collectors.toList());
     }
 }

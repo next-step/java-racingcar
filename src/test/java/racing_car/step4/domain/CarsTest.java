@@ -14,24 +14,30 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarsTest {
     private List<Car> carsList;
+    private Name jun;
+    private Name pobi;
+    private Name young;
     
     @BeforeEach
     void setUp() {
+        jun = new Name("jun");
+        pobi = new Name("pobi");
+        young = new Name("young");
         Position zeroPosition = new Position(0);
-        carsList = Arrays.asList(new Car(zeroPosition), new Car(zeroPosition), new Car(zeroPosition));
+        carsList = Arrays.asList(new Car(jun, zeroPosition), new Car(pobi, zeroPosition), new Car(young, zeroPosition));
     }
     
     @Test
     @DisplayName("차량 객체 생성 대수")
     void createCars() {
-        assertThat(new Cars(carsList)).isEqualTo(new Cars(CarsFactory.from(3)));
+        assertThat(new Cars(carsList)).isEqualTo(new Cars(CarsFactory.from(new String[]{"jun", "pobi", "young"})));
     }
     
     @DisplayName("차량들의 정보(CarDTO) 확인")
     @ParameterizedTest(name = "{displayName} : index = {0}, position : {1}")
     @CsvSource(value = {"0:4", "1:5", "2:2"}, delimiter = ':')
     void carInfo(int idx, int position) {
-        List<Car> carsList = Arrays.asList(new Car(new Position(4)), new Car(new Position(5)), new Car(new Position(2)));
+        List<Car> carsList = Arrays.asList(new Car(jun, new Position(4)), new Car(pobi, new Position(5)), new Car(young, new Position(2)));
         List<CarDTO> carDTOS = new Cars(carsList).information();
         assertThat(carDTOS.get(idx).getPosition()).isEqualTo(position);
     }
@@ -41,7 +47,7 @@ class CarsTest {
     void moveTry() {
         Cars cars = new Cars(carsList);
         Position twoPosition = new Position(2);
-        List<Car> tmpCarsList = Arrays.asList(new Car(twoPosition), new Car(twoPosition), new Car(twoPosition));
+        List<Car> tmpCarsList = Arrays.asList(new Car(jun, twoPosition), new Car(pobi, twoPosition), new Car(young, twoPosition));
         
         cars = new Cars(cars.tryMove(() -> true));
         cars = new Cars(cars.tryMove(() -> true));
