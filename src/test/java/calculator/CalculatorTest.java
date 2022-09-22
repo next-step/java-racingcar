@@ -44,4 +44,13 @@ public class CalculatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("");
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"//;\\n-1;2;3:6", "//a\\n1a-2a3:6"}, delimiter = ':')
+    @DisplayName("커스텀 구분자를 포함한 문자열을 전달하는 경우 음수를 전달하는 경우 IllegalArgumentException 예외를 throw한다.")
+    void add_ShouldThrowExceptionWhenNonNumberInputWithCustomizedDelimiter(String input, String output) {
+        assertThatThrownBy(() -> Calculator.sum(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("");
+    }
 }
