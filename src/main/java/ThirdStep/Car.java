@@ -1,5 +1,7 @@
 package ThirdStep;
 
+import ThirdStep.interfaces.MovingCondition;
+
 public class Car {
 
     private static final String LOCATION_SIGN = "-";
@@ -14,8 +16,8 @@ public class Car {
         return location;
     }
 
-    public void move(boolean canMoveForward) {
-        if (canMoveForward) {
+    public void move(MovingCondition movingCondition) {
+        if (movingCondition.canMoveForward()) {
             ++location;
         }
     }
