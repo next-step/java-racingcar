@@ -14,10 +14,10 @@ public class RaceCourse {
         this.raceConfigurationDTO = raceConfigurationDTO;
     }
 
-    public void startRace(ResultView resultView) {
+    public void startRace(RaceResultView raceResultView) {
         for (int i = 0; i < raceConfigurationDTO.roundCount(); i++) {
             moveCar();
-            resultView.saveRaceResult(cars);
+            raceResultView.saveRaceResult(cars);
         }
     }
 

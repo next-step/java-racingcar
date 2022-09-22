@@ -2,7 +2,7 @@ package step_3;
 
 import java.util.List;
 
-public class ResultView {
+public class RaceResultView {
 
     private static final String PRINT_DISTANCE_MARK = "-";
     private final StringBuilder carMoveDistanceResult = new StringBuilder();

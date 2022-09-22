@@ -12,7 +12,7 @@ public class Race {
     }
 
     private void start() {
-        ResultView resultView = new ResultView();
+        RaceResultView raceResultView = new RaceResultView();
         RaceConfigurationScanner raceConfigurationScanner = new RaceConfigurationScanner();
 
         RaceConfigurationDTO raceConfigurationDTO = raceConfigurationScanner.scan();
@@ -20,9 +20,9 @@ public class Race {
         List<Car> cars = CarFactory.produce(raceConfigurationDTO);
 
         RaceCourse raceCourse = new RaceCourse(cars, raceConfigurationDTO);
-        raceCourse.startRace(resultView);
+        raceCourse.startRace(raceResultView);
 
-        resultView.viewResult();
+        raceResultView.viewResult();
         System.out.println("종료");
     }
 
