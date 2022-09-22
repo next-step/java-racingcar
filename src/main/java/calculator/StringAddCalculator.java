@@ -8,10 +8,11 @@ public class StringAddCalculator {
 
 	private static final String PATTERN = "//(.)\n(.*)";
 	private static final String COMMA_OR_COLON = ",|:";
+	private static final int DEFAULT_RETURN_VALUE = 0;
 
 	public static int splitAndSum(String input) {
 		if (validate(input)) {
-			return 0;
+			return DEFAULT_RETURN_VALUE;
 		}
 		return sum(split(input));
 	}
