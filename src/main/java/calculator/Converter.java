@@ -11,6 +11,9 @@ public class Converter {
 
     private static final String DEFAULT_DELIMITER = ",|:";
     private static final Pattern pattern = Pattern.compile("//(.)\n(.*)");
+    private static final int GROUP_NUMBER_OF_DELIMITER = 1;
+    private static final int GROUP_NUMBER_OF_STRING_NUMBERS = 2;
+
     public List<Integer> convert(String input) {
         if (input == null || input.isEmpty()) {
             return Collections.emptyList();
@@ -18,7 +21,7 @@ public class Converter {
 
         Matcher matcher = pattern.matcher(input);
         if (matcher.find()) {
-            return splitWithDelimiter(matcher.group(2), matcher.group(1));
+            return splitWithDelimiter(matcher.group(GROUP_NUMBER_OF_STRING_NUMBERS), matcher.group(GROUP_NUMBER_OF_DELIMITER));
         }
         return splitWithDelimiter(input, DEFAULT_DELIMITER);
     }
@@ -32,7 +35,7 @@ public class Converter {
     private int parsePositiveIntOrThrow(String str) {
         int num = Integer.parseInt(str);
         if (num < 0) {
-            throw new RuntimeException("음수를 전달할 수 없습니다");
+            throw new RuntimeException("음수를 전달할 수 없습니다.");
         }
         return num;
     }
