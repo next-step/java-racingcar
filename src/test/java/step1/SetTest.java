@@ -26,36 +26,18 @@ public class SetTest {
 	}
 
 	@Test
-	@DisplayName("Set 크기 확인")
-	public void 요구사항1() throws Exception {
-		assertThat(numbers.size()).isEqualTo(3);
+	public void Set_크기_확인() throws Exception {
 		assertThat(numbers).hasSize(3);
 	}
 
 	@Test
-	@DisplayName("Set 가지고 있는 수 확인")
-	public void 요구사항2() throws Exception {
+	public void Set_가지고_있는_수_확인() throws Exception {
 		assertThat(numbers.contains(1)).isTrue();
 		assertThat(numbers.contains(2)).isTrue();
 		assertThat(numbers.contains(3)).isTrue();
 	}
 
 	@ParameterizedTest
-	@DisplayName("Set 가지고 있는 수 확인(중복제거)")
-	@ValueSource(ints = {1,2,3})
-	public void 요구사항3(int input) throws Exception {
-		assertThat(numbers.contains(input)).isTrue();
-	}
-
-	@ParameterizedTest
-	@DisplayName("Set 가지고 있지 않은 수 확인(중복제거)")
-	@ValueSource(ints = {4,5})
-	public void 요구사항4(int input) throws Exception {
-		assertThat(numbers.contains(input)).isFalse();
-	}
-
-	@ParameterizedTest
-	@DisplayName("Set 가지고 있는 수 true, false 둘 다 확인(중복제거)")
 	@CsvSource(value = {
 		"1:true",
 		"2:true",
@@ -63,7 +45,7 @@ public class SetTest {
 		"4:false",
 		"5:false"
 	}, delimiter = ':')
-	public void 요구사항5(int input, boolean expected) throws Exception {
+	public void Set_가지고_있는_수_true_false(int input, boolean expected) throws Exception {
 		assertThat(numbers.contains(input)).isEqualTo(expected);
 	}
 }
