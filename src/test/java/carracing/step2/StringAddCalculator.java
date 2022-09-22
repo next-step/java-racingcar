@@ -9,12 +9,14 @@ public class StringAddCalculator {
             return 0;
         }
 
-        StringBuilder delim = new StringBuilder(",:");
+        StringBuilder delimiter = new StringBuilder(",:");
         if(text.charAt(0) == '/') {
-            text = text.substring(getStartIdxAndDelim(text, delim));
+            int stringStartIdx = getStringStartIdx(text);
+            delimiter.append(text, 2, stringStartIdx - 1);
+            text = text.substring(stringStartIdx);
         }
 
-        StringTokenizer tokens = new StringTokenizer(text, delim.toString());
+        StringTokenizer tokens = new StringTokenizer(text, delimiter.toString());
         int result = 0;
         while (tokens.hasMoreTokens()) {
             int number = getNumber(tokens);
@@ -24,12 +26,12 @@ public class StringAddCalculator {
         return result;
     }
 
-    private static int getStartIdxAndDelim(String text, StringBuilder delim) {
-        int idx;
-        for (idx = 2; text.charAt(idx) != '\n'; idx += 1) {
-            delim.append(text.charAt(idx));
+    private static int getStringStartIdx(String text) {
+        int idx = 2;
+        while(text.charAt(idx) != '\n') {
+            idx += 1;
         }
-        return idx;
+        return idx + 1;
     }
 
     private static int getNumber(StringTokenizer tokens) {
