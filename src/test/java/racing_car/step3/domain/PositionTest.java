@@ -10,8 +10,6 @@ class PositionTest {
     @Test
     @DisplayName("포지션 증가 확인")
     void increase() {
-        Position position = new Position(1);
-        Position tmpPosition = new Position(0);
-        assertThat(position).isEqualTo(tmpPosition.increase());
+        assertThat(new Position(1)).isEqualTo(new Position(0).increase());
     }
 }
