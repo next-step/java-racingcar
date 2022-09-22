@@ -1,8 +1,9 @@
 package racingcar;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.toList;
 
@@ -16,15 +17,14 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars initialize(int carCount) {
-        List<Car> cars = IntStream.range(0, carCount)
-                .map(integer -> 0)
-                .mapToObj(Car::positionOf)
+    public static Cars of(List<String> names) {
+        List<Car> cars = names.stream()
+                .map(name -> Car.of(0, name))
                 .collect(toList());
         return new Cars(cars);
     }
 
-    public List<Car> currentCars() {
+    public List<Car> cars() {
         return cars;
     }
 
@@ -32,8 +32,25 @@ public class Cars {
         List<Car> nextCars = cars.stream()
                 .map(car -> {
                     int randomNumber = ThreadLocalRandom.current().nextInt(MIN_NUM, MAX_NUM);
-                    return Car.positionOf(car.nextPosition(randomNumber));
+                    return Car.of(car.nextPosition(randomNumber), car.name());
                 }).collect(toList());
         return new Cars(nextCars);
+    }
+
+    public List<Car> winners() {
+        return findCarsByPosition(maxPosition());
+    }
+
+    private Integer maxPosition() {
+        return cars.stream()
+                .max(Comparator.comparing(Car::currentPosition))
+                .orElseThrow(IllegalStateException::new)
+                .currentPosition();
+    }
+
+    private List<Car> findCarsByPosition(Integer position) {
+        return cars.stream()
+                .filter(car -> Objects.equals(car.currentPosition(), position))
+                .collect(toList());
     }
 }

@@ -12,7 +12,7 @@ class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     void nextPosition_plusOne(Integer randomNumber) {
-        Car car = Car.positionOf(0);
+        Car car = Car.of(0, "");
 
         assertThat(car.nextPosition(randomNumber)).isEqualTo(1);
     }
@@ -21,7 +21,7 @@ class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3})
     void nextPosition_same(Integer randomNumber) {
-        Car car = Car.positionOf(0);
+        Car car = Car.of(0, "");
 
         assertThat(car.nextPosition(randomNumber)).isEqualTo(0);
     }
