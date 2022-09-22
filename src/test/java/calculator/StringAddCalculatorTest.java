@@ -59,4 +59,14 @@ public class StringAddCalculatorTest {
 
         assertThat(result).isEqualTo(expected);
     }
+
+    @Test
+    @DisplayName("입력된 delimiter를 사용해 계산")
+    void custom_delimiter() {
+        String input = "//;\n1;2;3";
+
+        int result = calculate(input);
+
+        assertThat(result).isEqualTo(6);
+    }
 }
