@@ -7,22 +7,27 @@ import java.util.Scanner;
 
 public class RaceConfigurationScanner {
 
-    public RaceConfigurationDTO scan() {
-        Scanner sc = new Scanner(System.in);
+    private static final String ASK_CAR_COUNT_MESSAGE = "경기할 자동차는 몇 대 인가요?";;
+    private static final String ASK_RACE_COUNT_MESSAGE = "경기는 회수는 몇 회 진행 할까요?";
+    private static final String INPUT_IS_NOT_NUMBER_MESSAGE = "숫자만 입력할 수 있습니다.";
+    private static final String COMMON_ERROR_MESSAGE = "에러가 발생 했습니다.";
 
+    private static final Scanner sc = new Scanner(System.in);
+
+    public RaceConfigurationDTO scan() {
         try {
-            System.out.println("자동차 대수는 몇 대 인가요?");
+            System.out.println(ASK_CAR_COUNT_MESSAGE);
             int carCount = sc.nextInt();
 
-            System.out.println("시도할 회수는 몇 회 인가요?");
+            System.out.println(ASK_RACE_COUNT_MESSAGE);
             int roundCount = sc.nextInt();
 
             return new RaceConfigurationDTO(carCount, roundCount);
         } catch (InputMismatchException e) {
-            System.err.println("숫자만 입력할 수 있습니다.");
+            System.err.println(INPUT_IS_NOT_NUMBER_MESSAGE);
             throw e;
         } catch (Exception e) {
-            System.err.println("에러가 발생 했습니다." + e);
+            System.err.println(COMMON_ERROR_MESSAGE + " " + e);
             throw e;
         }
     }
