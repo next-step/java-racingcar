@@ -23,6 +23,6 @@ class CarsTest {
 
         Cars nextCars = cars.next();
 
-        assertThat(nextCars.currentCars().size()).isEqualTo(3);
+        assertThat(nextCars.currentCars()).hasSize(3);
     }
 }
