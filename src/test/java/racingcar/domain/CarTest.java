@@ -25,6 +25,14 @@ public class CarTest {
         assertThat(car.position()).isEqualTo(new Position(2));
     }
 
+    @DisplayName("자동차의 위치 비교")
+    @Test
+    void isSamePosition() {
+        Car car = new Car("test", 2);
+
+        assertThat(car.isSamePosition(new Position(2))).isTrue();
+    }
+
     @DisplayName("위치가 음수인 경우 예외 발생")
     @Test
     void createCarWithNegativePosition() {
