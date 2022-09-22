@@ -3,6 +3,9 @@ package carracing.step2;
 import java.util.StringTokenizer;
 
 public class StringAddCalculator {
+
+    private static final char customDelimiterStarter = '/';
+
     public static int splitAndSum(String originText) {
         String text = originText;
         if (text == null || text.isEmpty()) {
@@ -10,7 +13,7 @@ public class StringAddCalculator {
         }
 
         StringBuilder delimiter = new StringBuilder(",:");
-        if(text.charAt(0) == '/') {
+        if(text.charAt(0) == customDelimiterStarter) {
             int stringStartIdx = getStringStartIdx(text);
             delimiter.append(text, 2, stringStartIdx - 1);
             text = text.substring(stringStartIdx);
