@@ -3,7 +3,8 @@ package carracing.step2;
 import java.util.StringTokenizer;
 
 public class StringAddCalculator {
-    public static int splitAndSum(String text) {
+    public static int splitAndSum(String originText) {
+        String text = originText;
         if (text == null || text.isEmpty()) {
             return 0;
         }
