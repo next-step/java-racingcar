@@ -5,5 +5,9 @@
 * 코드 리뷰 피드백에 대한 개선 작업을 하고 다시 PUSH한다.
 * 모든 피드백을 완료하면 다음 단계를 도전하고 앞의 과정을 반복한다.
 
-## 온라인 코드 리뷰 과정
-* [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+## 단계별 코드리뷰 사항
+* Step2
+  * 코드를 읽을 때 위에서 아래로 읽어내려가므로 메서드의 위치도 그에 맞게 배치한다.
+  * 외부에서 사용되지 않는 메서드는 적절한 접근 지정자를 설정한다.
+  * 패턴에 대한 역할을 변수 혹은 상수명으로 나타내준다.
+  * Null/Empty 테스트는 @ParameterizedTest/@NullAndEmptySource 어노테이션을 사용한다.

@@ -3,7 +3,11 @@ package step2;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
 public class StringCalculator {
+
+    public static final String CUSTOM_DELIMITER = "//(.)\n(.*)";
+
     public Integer splitAndSum(String text) {
         if (isNullAndEmpty(text)) {
             return 0;
@@ -14,10 +18,22 @@ public class StringCalculator {
         return sum(numbers);
     }
 
-    public String[] split(String text) {
+    private boolean isNullAndEmpty(String text){
+        if (text == null) {
+            return true;
+        }
+
+        if (text.isEmpty()) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private String[] split(String text) {
         String delimiter = ":|,";
 
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        Matcher m = Pattern.compile(CUSTOM_DELIMITER).matcher(text);
 
         if (m.find()) {
             delimiter = m.group(1);
@@ -27,7 +43,7 @@ public class StringCalculator {
         return text.split(delimiter);
     }
 
-    public Integer sum(String[] numbers){
+    private Integer sum(String[] numbers){
         Integer sum = 0;
 
         for (String number  : numbers) {
@@ -40,17 +56,5 @@ public class StringCalculator {
         }
 
         return sum;
-    }
-
-    public boolean isNullAndEmpty(String text){
-        if (text == null) {
-            return true;
-        }
-
-        if (text.isEmpty()) {
-            return true;
-        }
-
-        return false;
     }
 }
