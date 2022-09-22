@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.CarFactory;
 import racingcar.domain.Cars;
+import racingcar.domain.Position;
 import racingcar.repository.RacingCarTable;
 
 import java.util.List;
@@ -34,8 +35,8 @@ public class RacingGameTest {
         game.race(2);
 
         List<Car> movedCars = game.getCars();
-        assertThat(movedCars.get(0).positionValue()).isEqualTo(3);
-        assertThat(movedCars.get(1).positionValue()).isEqualTo(3);
+        assertThat(movedCars.get(0).position()).isEqualTo(new Position(3));
+        assertThat(movedCars.get(1).position()).isEqualTo(new Position(3));
     }
 
     @DisplayName("모두 출발하지 못한 경우")
@@ -48,7 +49,7 @@ public class RacingGameTest {
         game.race(2);
 
         List<Car> movedCars = game.getCars();
-        assertThat(movedCars.get(0).positionValue()).isEqualTo(1);
-        assertThat(movedCars.get(1).positionValue()).isEqualTo(1);
+        assertThat(movedCars.get(0).position()).isEqualTo(new Position());
+        assertThat(movedCars.get(1).position()).isEqualTo(new Position());
     }
 }
