@@ -3,7 +3,7 @@ package racingcar.domain;
 import java.util.Objects;
 
 public class Name {
-    public static final String NOT_VALID_MESSAGE = "은(는) 유효한 이름이 아닙니다.";
+    private static final String NOT_VALID_MESSAGE = "은(는) 유효한 이름이 아닙니다.";
     public static final int MAX_LENGTH = 5;
 
     private final String name;

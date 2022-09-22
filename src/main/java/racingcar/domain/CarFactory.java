@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class CarFactory {
-    private static final String DELIMITER = ",";
+    public static final String DELIMITER = ",";
 
     private CarFactory() {
     }
@@ -19,7 +19,7 @@ public class CarFactory {
         return Cars.of(cars);
     }
 
-    private static String[] splitName(String carNames) {
+    public static String[] splitName(String carNames) {
         return carNames.split(DELIMITER);
     }
 }
