@@ -26,7 +26,7 @@ public class SetTest {
 	}
 
 	@Test
-	@DisplayName("Set의 size()로 Set의 크기를 확인한다.")
+	@DisplayName("Set 의 크기를 확인한다.")
 	void Given_Set_When_Size_Then_ReturnSetSize(){
 
 		// when
@@ -36,7 +36,7 @@ public class SetTest {
 		assertThat(result).isEqualTo(3);
 	}
 
-	@DisplayName("Set의 contains() 메소드를 활용해 1, 2, 3의 값이 존재하는지를 확인")
+	@DisplayName("Set 의 값을 확인한다.")
 	@ParameterizedTest
 	@ValueSource(ints = {1, 2, 3})
 	void Given_Set_When_Contains_Then_ReturnTrue(int value){
@@ -48,7 +48,7 @@ public class SetTest {
 		assertThat(result).isEqualTo(true);
 	}
 
-	@DisplayName("Set의 contains() 메소드를 활용해 존재하는 값은 true, 존재하지 않으면 false를 반환한다")
+	@DisplayName("Set 의 값을 확인하고, 존재하면 true, 존재하지 않으면 false 를 반환한다")
 	@ParameterizedTest
 	@CsvSource(value = {
 		"1:true",
@@ -58,7 +58,7 @@ public class SetTest {
 		"5:false"
 	},
 		delimiter = ':')
-	void Given_Set_When_Contains_Then_ReturnTrueAndFalse(int value, boolean hasValue){
+	void Given_Set_When_Contains_Then_ReturnTrueOrFalse(int value, boolean hasValue){
 
 		// when
 		boolean result = numbers.contains(value);
