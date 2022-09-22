@@ -40,7 +40,9 @@ public class Cars {
         return cars.stream()
                 .mapToInt(car -> car.information().getPosition())
                 .max()
-                .orElseThrow(() -> {throw new UnsupportedOperationException(NO_SUCH_WINNER);});
+                .orElseThrow(() -> {
+                    throw new UnsupportedOperationException(NO_SUCH_WINNER);
+                });
     }
     
     @Override
