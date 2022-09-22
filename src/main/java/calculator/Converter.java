@@ -14,7 +14,7 @@ public class Converter {
     private static final int GROUP_NUMBER_OF_DELIMITER = 1;
     private static final int GROUP_NUMBER_OF_STRING_NUMBERS = 2;
 
-    public List<Integer> convert(String input) {
+    public List<PositiveInteger> convert(String input) {
         if (input == null || input.isEmpty()) {
             return Collections.emptyList();
         }
@@ -26,18 +26,10 @@ public class Converter {
         return splitWithDelimiter(input, DEFAULT_DELIMITER);
     }
 
-    private List<Integer> splitWithDelimiter(String input, String delimiter) {
+    private List<PositiveInteger> splitWithDelimiter(String input, String delimiter) {
         return Arrays.stream(input.split(delimiter))
-                .map(this::parsePositiveIntOrThrow)
+                .map(PositiveInteger::from)
                 .collect(Collectors.toList());
-    }
-
-    private int parsePositiveIntOrThrow(String str) {
-        int num = Integer.parseInt(str);
-        if (num < 0) {
-            throw new RuntimeException("음수를 전달할 수 없습니다.");
-        }
-        return num;
     }
 
 }

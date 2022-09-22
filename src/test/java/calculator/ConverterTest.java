@@ -23,15 +23,19 @@ class ConverterTest {
             "0:1:2"
     })
     void convert_withDefaultDelimiter(String input) {
-        List<Integer> actual = converter.convert(input);
-        assertThat(actual).containsExactly(0, 1, 2);
+        List<PositiveInteger> actual = converter.convert(input);
+        assertThat(actual).containsExactly(
+                new PositiveInteger(0),
+                new PositiveInteger(1),
+                new PositiveInteger(2)
+        );
     }
 
     @DisplayName("null 또는 빈문자열을 전달하는 경우, 빈 리스트을 반환해야 한다.")
     @ParameterizedTest
     @NullAndEmptySource
     void convent_givenNullOrEmpty(String input) {
-        List<Integer> actual = converter.convert(input);
+        List<PositiveInteger> actual = converter.convert(input);
         assertThat(actual).isEmpty();
     }
 
@@ -47,8 +51,12 @@ class ConverterTest {
     @Test
     void convert_givenCustomDelimiter() {
         String input = "//;\n1;2;3";
-        List<Integer> actual = converter.convert(input);
-        assertThat(actual).containsExactly(1, 2, 3);
+        List<PositiveInteger> actual = converter.convert(input);
+        assertThat(actual).containsExactly(
+                new PositiveInteger(1),
+                new PositiveInteger(2),
+                new PositiveInteger(3)
+        );
     }
 
     @DisplayName("음수를 포함하는 경우, 예외가 발생해야 한다.")
