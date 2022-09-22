@@ -7,6 +7,8 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Cars {
+    private static final String NO_SUCH_WINNER = "우승자가 없습니다.";
+    
     private final List<Car> cars;
     
     public Cars(List<Car> cars) {
@@ -23,6 +25,22 @@ public class Cars {
         return cars.stream()
                 .map(Car::information)
                 .collect(Collectors.toList());
+    }
+    
+    public List<CarDTO> findWinners() {
+        int maxPosition = getMaxPosition();
+        
+        return cars.stream()
+                .filter(car -> car.isWinner(maxPosition))
+                .map(Car::information)
+                .collect(Collectors.toList());
+    }
+    
+    private int getMaxPosition() {
+        return cars.stream()
+                .mapToInt(car -> car.information().getPosition())
+                .max()
+                .orElseThrow(() -> {throw new UnsupportedOperationException(NO_SUCH_WINNER);});
     }
     
     @Override

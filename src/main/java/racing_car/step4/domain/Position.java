@@ -17,6 +17,10 @@ public class Position {
         return this.position;
     }
     
+    public boolean isSame(int maxPosition) {
+        return position == maxPosition;
+    }
+    
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

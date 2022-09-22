@@ -17,6 +17,10 @@ public class Car {
         this.name = name;
     }
     
+    public boolean isWinner(int maxPosition) {
+        return position.isSame(maxPosition);
+    }
+    
     public Car moveTry(MoveStrategy moveStrategy) {
         if (moveStrategy.isMove()) {
             return new Car(name, position.increase());
