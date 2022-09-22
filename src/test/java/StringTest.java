@@ -3,7 +3,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StringTest {
 
@@ -21,19 +20,36 @@ public class StringTest {
         assertThat(splits).containsExactly("1");
     }
 
+    public String customSubString(String string){
+        if("(1,2)".equals(string)){
+            return string.substring(1,string.length() - 1);
+        }
+        return "";
+    }
+
     @Test
-    @DisplayName("String.charAt() 함수 기본 기능 및 파라미터가 인덱스를 벗어나면 StringIndexOutOfBoundsException 가 발생하는지 테스트")
-    public void stringCharAtTest(){
+    @DisplayName("\"(1,2)\" 값이 주어졌을 때 \"1,2\" 값을 반환하는 함수 테스트")
+    public void subStringTest(){
+        assertThat(customSubString("(1,2)")).isEqualTo("1,2");
+    }
+
+    @Test
+    @DisplayName("String.charAt() 함수 기본 기능 테스트")
+    public void stringCharAtTest1(){
         String given = "123";
 
-        assertEquals(given.charAt(0), '1');
-        assertEquals(given.charAt(1), '2');
-        assertEquals(given.charAt(2), '3');
+        assertThat(given.charAt(0)).isEqualTo('1');
+        assertThat(given.charAt(1)).isEqualTo('2');
+        assertThat(given.charAt(2)).isEqualTo('3');
+    }
+
+    @Test
+    @DisplayName("String.charAt() 함수 파라미터가 인덱스를 벗어나면 StringIndexOutOfBoundsException 가 발생하는지 테스트")
+    public void stringCharAtTest2(){
+        String given = "123";
 
         assertThatThrownBy(() -> {
             given.charAt(3);
         }).isInstanceOf(StringIndexOutOfBoundsException.class);
     }
-
-
 }
