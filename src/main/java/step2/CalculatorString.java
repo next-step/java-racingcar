@@ -4,19 +4,50 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CalculatorString {
-    private String text;
-    private String delimiter;
+    private static final String DELIMITER_EMPTY = " ";
+    private static final String DELIMITER_COMMA = ",";
+    private static final String DELIMITER_COLON = ":";
+    private static final String DELIMITER_MIX = DELIMITER_COMMA + "|" + DELIMITER_COLON;
 
-    public CalculatorString(String text) {
+    private final String text;
+    private final String delimiter;
+
+    private CalculatorString(String text, String delimiter) {
         this.text = text;
-        this.delimiter = extractDelimiter();
+        this.delimiter = delimiter;
     }
 
-    public String text() {
+    public static CalculatorString of(String text) {
+        if (text == null || text.trim().isEmpty()) {
+            return new CalculatorString(text, DELIMITER_EMPTY);
+        }
+
+        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+
+        if (m.find()) {
+            return new CalculatorString(m.group(2), m.group(1));
+        }
+
+        if (text.indexOf(DELIMITER_COMMA) != -1 && text.indexOf(DELIMITER_COLON) != -1) {
+            return new CalculatorString(text, DELIMITER_MIX);
+        }
+
+        if (text.indexOf(DELIMITER_COMMA) != -1) {
+            return new CalculatorString(text, DELIMITER_COMMA);
+        }
+
+        if (text.indexOf(DELIMITER_COLON) != -1) {
+            return new CalculatorString(text, DELIMITER_COLON);
+        }
+
+        return new CalculatorString(text, DELIMITER_EMPTY);
+    }
+
+    public String getText() {
         return this.text;
     }
 
-    public String delimiter() {
+    public String getDelimiter() {
         return this.delimiter;
     }
 
@@ -35,32 +66,5 @@ public class CalculatorString {
         } catch (NumberFormatException e) {
             return false;
         }
-    }
-
-    private String extractDelimiter() {
-        if (this.empty()) {
-            return null;
-        }
-
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(this.text);
-
-        if (m.find()) {
-            this.text = m.group(2);
-            return m.group(1);
-        }
-
-        if (this.text.indexOf(',') != -1 && this.text.indexOf(':') != -1) {
-            return ",|:";
-        }
-
-        if (this.text.indexOf(',') != -1) {
-            return ",";
-        }
-
-        if (this.text.indexOf(':') != -1) {
-            return ":";
-        }
-
-        return null;
     }
 }
