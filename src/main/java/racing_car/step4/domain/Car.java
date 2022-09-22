@@ -7,6 +7,10 @@ import java.util.Objects;
 public class Car {
     private final Position position;
     
+    public Car() {
+        this(new Position(0));
+    }
+    
     public Car(Position position) {
         this.position = position;
     }
