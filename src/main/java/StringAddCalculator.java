@@ -1,6 +1,10 @@
 public class StringAddCalculator {
 
     static int splitAndSum(String str) {
-        return 0;
+        try {
+            return Integer.parseInt(str);
+        } catch (NumberFormatException ex) {
+            return 0;
+        }
     }
 }
