@@ -14,12 +14,13 @@ class RaceCourseTest {
     void 자동차_경주_횟수만큼_자동차가_이동한다() {
         //given
         RaceConfigurationDTO dto = new RaceConfigurationDTO(3, 1);
+        ResultView resultView = new ResultView();
+
         List<Car> cars = getCars();
         RaceCourse raceCourse = new RaceCourse(cars, dto);
 
         //when
-        raceCourse.startRace();
-        raceCourse.viewRaceResult();
+        raceCourse.startRace(resultView);
 
         //then
         assertThat(cars.get(0).distance()).isEqualTo(3);

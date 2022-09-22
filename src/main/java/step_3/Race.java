@@ -12,15 +12,17 @@ public class Race {
     }
 
     private void start() {
+        ResultView resultView = new ResultView();
         RaceConfigurationScanner raceConfigurationScanner = new RaceConfigurationScanner();
+
         RaceConfigurationDTO raceConfigurationDTO = raceConfigurationScanner.scan();
 
         List<Car> cars = CarFactory.produce(raceConfigurationDTO);
 
         RaceCourse raceCourse = new RaceCourse(cars, raceConfigurationDTO);
-        raceCourse.startRace();
-        raceCourse.viewRaceResult();
+        raceCourse.startRace(resultView);
 
+        resultView.viewResult();
         System.out.println("종료");
     }
 
