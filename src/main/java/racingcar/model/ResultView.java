@@ -11,7 +11,8 @@ public class ResultView {
     }
 
     public static void print(Cars cars) {
-        cars.currentCars().forEach(car -> System.out.println(BAR.repeat(car.currentPosition())));
+        cars.currentCars()
+                .forEach(car -> System.out.println(BAR.repeat(car.currentPosition())));
         System.out.println();
     }
 }
