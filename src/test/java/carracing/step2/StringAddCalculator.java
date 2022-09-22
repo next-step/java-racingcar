@@ -16,13 +16,16 @@ public class StringAddCalculator {
             text = text.substring(stringStartIdx);
         }
 
+        return addAllNumber(text, delimiter);
+    }
+
+    private static int addAllNumber(String text, StringBuilder delimiter) {
         StringTokenizer tokens = new StringTokenizer(text, delimiter.toString());
         int result = 0;
         while (tokens.hasMoreTokens()) {
             int number = getNumber(tokens);
             result += number;
         }
-
         return result;
     }
 
