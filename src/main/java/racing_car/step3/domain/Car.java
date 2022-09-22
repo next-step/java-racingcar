@@ -5,15 +5,15 @@ import racing_car.step3.dto.CarDTO;
 import java.util.Objects;
 
 public class Car {
-    private int position;
+    private Position position;
     
     public Car(int position) {
-        this.position = position;
+        this.position = new Position(position);
     }
     
     public void move(MoveStrategy moveStrategy) {
         if (moveStrategy.isMove()) {
-            position++;
+            this.position = position.increase();
         }
     }
     
@@ -26,7 +26,7 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return position == car.position;
+        return Objects.equals(position, car.position);
     }
     
     @Override

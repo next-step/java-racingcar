@@ -1,13 +1,15 @@
 package racing_car.step3.dto;
 
+import racing_car.step3.domain.Position;
+
 public class CarDTO {
-    private final int position;
+    private final Position position;
     
-    public CarDTO(int position) {
+    public CarDTO(Position position) {
         this.position = position;
     }
     
-    public int getPosition() {
+    public Position getPosition() {
         return position;
     }
 }

@@ -3,6 +3,7 @@ package racing_car.step3.dto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing_car.step3.domain.Car;
+import racing_car.step3.domain.Position;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,6 +15,6 @@ class CarDTOTest {
     void getPosition() {
         Car car = new Car(3);
         CarDTO carDTO = car.information();
-        assertThat(carDTO.getPosition()).isEqualTo(3);
+        assertThat(carDTO.getPosition()).isEqualTo(new Position(3));
     }
 }

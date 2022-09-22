@@ -1,6 +1,7 @@
 package racing_car.step3.output;
 
 import racing_car.step3.domain.Cars;
+import racing_car.step3.domain.Position;
 import racing_car.step3.dto.CarDTO;
 
 import java.util.List;
@@ -19,7 +20,8 @@ public class ResultView {
         List<CarDTO> carDTOs = cars.information();
         
         for (CarDTO carDTO : carDTOs) {
-            processBarPrint(carDTO.getPosition());
+            Position position = carDTO.getPosition();
+            processBarPrint(position.getPosition());
         }
         System.out.println();
     }
