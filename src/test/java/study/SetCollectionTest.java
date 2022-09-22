@@ -10,7 +10,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class SetCollectionTest {
@@ -29,8 +29,7 @@ public class SetCollectionTest {
     @Test
     @DisplayName("요구사항1_size()메소드 이용하기")
     void size(){
-        int result = numbers.size();
-        assertThat(result).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     // ---요구사항2---
@@ -38,9 +37,7 @@ public class SetCollectionTest {
     @Test
     @DisplayName("요구사항2_contains()를 이용한 값 확인")
     void contains(){
-        assertThat(numbers.contains(1)).isTrue();
-        assertThat(numbers.contains(2)).isTrue();
-        assertThat(numbers.contains(3)).isTrue();
+        assertThat(numbers).contains(1,2,3);
     }
 
     // ※질문
