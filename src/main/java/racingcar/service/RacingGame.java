@@ -9,13 +9,13 @@ public class RacingGame {
     private final RacingCarTable carTable;
     private final MoveStrategy moveStrategy;
 
-    public RacingGame() {
-        this.carTable = new RacingCarTable();
+    public RacingGame(RacingCarTable racingCarTable) {
+        this.carTable = racingCarTable;
         moveStrategy = new RandomMoveStrategy();
     }
 
-    public RacingGame(MoveStrategy moveStrategy) {
-        this.carTable = new RacingCarTable();
+    public RacingGame(RacingCarTable racingCarTable, MoveStrategy moveStrategy) {
+        this.carTable = racingCarTable;
         this.moveStrategy = moveStrategy;
     }
 
