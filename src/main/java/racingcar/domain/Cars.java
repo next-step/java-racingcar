@@ -6,8 +6,12 @@ import java.util.stream.Collectors;
 public class Cars {
     private List<Car> elements = new ArrayList<>();
 
-    public static Cars of(Collection<Car> values) {
-        return new Cars(new ArrayList<>(values));
+    public static Cars of(Collection<Car> elements) {
+        return new Cars(new ArrayList<>(elements));
+    }
+
+    public static Cars of(List<Car> elements) {
+        return new Cars(elements);
     }
 
     public Cars() {

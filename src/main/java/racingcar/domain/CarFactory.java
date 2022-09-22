@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class CarFactory {
@@ -9,13 +11,15 @@ public class CarFactory {
     }
 
     public static Cars createCars(String carNames) {
-        Cars cars = new Cars();
-
-        Stream.of(carNames.split(DELIMITER))
+        List<Car> cars = Stream.of(splitName(carNames))
                 .map(String::strip)
                 .map(Car::new)
-                .forEach(cars::add);
+                .collect(Collectors.toList());
 
-        return cars;
+        return Cars.of(cars);
+    }
+
+    private static String[] splitName(String carNames) {
+        return carNames.split(DELIMITER);
     }
 }
