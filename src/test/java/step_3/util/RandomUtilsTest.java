@@ -1,5 +1,6 @@
 package step_3.util;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
@@ -9,6 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RandomUtilsTest {
 
+    @Disabled
     @Test
     void 랜덤_숫자가_0_9_사이로_생성된다() {
         //given
