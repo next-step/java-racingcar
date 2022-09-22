@@ -4,7 +4,11 @@ public class Positive {
     private final int number;
 
     public Positive(String target) {
-        this.number = Integer.parseInt(target);
+        try {
+            this.number = Integer.parseInt(target);
+        } catch(NumberFormatException e) {
+            throw new RuntimeException("숫자 형태의 문자만 인자로 받을 수 있습니다.");
+        }
         if(this.number < 0) {
             throw new RuntimeException("양수만 가능합니다.");
         }
@@ -15,6 +19,10 @@ public class Positive {
             throw new RuntimeException("양수만 가능합니다.");
         }
         this.number = number;
+    }
+
+    public int number() {
+        return this.number;
     }
 
     @Override
