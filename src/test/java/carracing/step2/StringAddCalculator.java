@@ -25,15 +25,9 @@ public class StringAddCalculator {
     }
 
     private static int getStartIdxAndDelim(String text, StringBuilder delim) {
-        int idx = 2;
-        while(true) {
-            char c = text.charAt(idx);
-            if(c == '\n') {
-                idx += 1;
-                break;
-            }
-            delim.append(c);
-            idx += 1;
+        int idx;
+        for (idx = 2; text.charAt(idx) != '\n'; idx += 1) {
+            delim.append(text.charAt(idx));
         }
         return idx;
     }
