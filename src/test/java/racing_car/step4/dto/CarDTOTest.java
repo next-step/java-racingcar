@@ -2,9 +2,8 @@ package racing_car.step4.dto;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing_car.step3.domain.Car;
-import racing_car.step3.domain.Position;
-import racing_car.step3.dto.CarDTO;
+import racing_car.step4.domain.Car;
+import racing_car.step4.domain.Position;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

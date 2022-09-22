@@ -3,18 +3,16 @@ package racing_car.step4.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing_car.step3.domain.Car;
-import racing_car.step3.domain.Position;
-import racing_car.step3.dto.CarDTO;
+import racing_car.step4.dto.CarDTO;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
-    private racing_car.step3.domain.Car car;
+    private Car car;
     
     @BeforeEach
     void setUp() {
-        car = new racing_car.step3.domain.Car(new racing_car.step3.domain.Position(0));
+        car = new Car(new Position(0));
         for (int i = 0; i < 3; i++) {
             car = car.moveTry(() -> true);
         }

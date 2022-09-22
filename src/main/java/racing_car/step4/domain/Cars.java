@@ -13,11 +13,7 @@ public class Cars {
         this.cars = cars;
     }
     
-    public List<Car> moveTry() {
-        return moveTry(new RandomMoveStrategy());
-    }
-    
-    public List<Car> moveTry(MoveStrategy moveStrategy) {
+    public List<Car> tryMove(MoveStrategy moveStrategy) {
         return cars.stream()
                 .map(car -> car.moveTry(moveStrategy))
                 .collect(Collectors.toList());

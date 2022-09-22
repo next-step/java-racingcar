@@ -2,7 +2,6 @@ package racing_car.step4.input;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing_car.step3.input.InputView;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
