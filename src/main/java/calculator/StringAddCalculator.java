@@ -1,3 +1,5 @@
+package calculator;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -5,9 +7,8 @@ public class StringAddCalculator {
     private static final Pattern pattern = Pattern.compile("//(.)\n(.*)");
 
     public static int splitAndSum(String target) {
-        if(target == null || target.isBlank()) {
+        if(isBlank(target))
             return 0;
-        }
 
         if(target.length() == 1) {
             return convertToInt(target);
@@ -23,19 +24,26 @@ public class StringAddCalculator {
         String[] splitResults = target.split(",|:");
         return sum(splitResults);
 
+    }
 
+    private static boolean isBlank(String target) {
+        return target == null || target.isBlank();
     }
 
     private static int sum(String[] numberStr) {
         int sum = 0;
         for (String s : numberStr) {
-            int targetNum = convertToInt(s);
-            if (targetNum < 0) {
-                throw new RuntimeException("인자로 받는 숫자는 모두 양수여야 합니다.");
-            }
-            sum += targetNum;
+            sum += checkPositiveAndNumeric(s);
         }
         return sum;
+    }
+
+    private static int checkPositiveAndNumeric(String target) {
+        int targetNum = convertToInt(target);
+        if (targetNum < 0) {
+            throw new RuntimeException("인자로 받는 숫자는 모두 양수여야 합니다.");
+        }
+        return targetNum;
     }
 
     private static int convertToInt(String target) {
