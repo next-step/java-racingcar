@@ -13,16 +13,18 @@ public class RetryView {
     }
 
     public static String retryIfNotValidNames(View inputView) {
-        if (isNotValid(inputView)) {
+        String names = inputView.input();
+
+        if (isNotValid(names)) {
             System.out.println(RETRY_INPUT_NAME_MESSAGE);
             return retryIfNotValidNames(inputView);
         }
 
-        return inputView.input();
+        return names;
     }
 
-    private static boolean isNotValid(View inputView) {
-        return Stream.of((inputView.input().split(DELIMITER)))
+    private static boolean isNotValid(String names) {
+        return Stream.of(names.split(DELIMITER))
                 .map(String::strip)
                 .anyMatch(name -> name.length() > MAX_LENGTH);
     }
