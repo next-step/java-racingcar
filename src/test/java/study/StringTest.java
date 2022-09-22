@@ -54,7 +54,7 @@ public class StringTest {
 
     @ParameterizedTest
     @CsvSource(value = {"0,a", "1,b", "2,c"})
-    @DisplayName("\"abc\" 값이 주어졌을 때 String의 charAt() 메소드를 활용해 0번 위치의 문자를 가져온다")
+    @DisplayName("\"abc\" 값이 주어졌을 때 String의 charAt() 메소드를 활용해 해당 위치의 문자를 가져온다")
     void charAt(int index, char expected) {
         // given
         String input = "abc";
