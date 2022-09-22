@@ -9,7 +9,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SetTest {
     private Set<Integer> numbers;
@@ -26,7 +25,7 @@ public class SetTest {
     @Test
     @DisplayName("Set.size() 메소드 기능 테스트")
     public void setTest1(){
-        assertEquals(numbers.size(), 3);
+        assertThat(numbers.size()).isEqualTo(3);
     }
 
     @ParameterizedTest
@@ -39,8 +38,8 @@ public class SetTest {
     @ParameterizedTest
     @DisplayName("Set.contains() 메소드 기능 추가 케이스 테스트")
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-    void toLowerCase_ShouldGenerateTheExpectedLowercaseValue(int input, String expected) {
-        assertEquals(numbers.contains(input), Boolean.valueOf(expected));
+    void setTest3(int input, Boolean expected) {
+        assertThat(numbers.contains(input)).isEqualTo(expected);
     }
 
 }
