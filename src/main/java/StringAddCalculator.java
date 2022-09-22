@@ -11,13 +11,13 @@ public class StringAddCalculator {
     static int splitAndSum(String str) {
         int sum = 0;
 
-        if (str == null || str.isBlank()) return sum;
+        if (str != null && !str.isBlank()) {
+            String customDelimiter = checkCustomDelimiter(str);
+            List<String> splitString = customDelimiter == null ? splitByDefault(str) : splitByCustom(str, customDelimiter);
 
-        String customDelimiter = checkCustomDelimiter(str);
-        List<String> splitString = customDelimiter == null ? splitByDefault(str) : splitByCustom(str, customDelimiter);
-
-        for (String value : splitString) {
-            sum += Integer.parseInt(value);
+            for (String value : splitString) {
+                sum += Integer.parseUnsignedInt(value);
+            }
         }
 
         return sum;
