@@ -6,9 +6,9 @@ import racing_car.step4.dto.CarDTO;
 import java.util.List;
 
 public class ResultView {
-    
     private static final String RESULT_MESSAGE = "실행 결과";
     private static final String BAR = "-";
+    public static final String COLON = " : ";
     
     public static void resultMessagePrint() {
         System.out.println(RESULT_MESSAGE);
@@ -18,6 +18,7 @@ public class ResultView {
         List<CarDTO> carDTOs = cars.information();
         
         for (CarDTO carDTO : carDTOs) {
+            System.out.print(carDTO.getName() + COLON);
             processBarPrint(carDTO.getPosition());
         }
         System.out.println();
