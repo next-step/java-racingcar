@@ -8,11 +8,15 @@ public class StringAddCalculator {
     private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\\n(.*)");
 
     public static int splitAndSum(final String text) {
-        if (text == null || text.isBlank()) {
+        if (isNullOrBlank(text)) {
             return 0;
         }
         String[] tokens = split(text);
         return sum(tokens);
+    }
+
+    private static boolean isNullOrBlank(String text) {
+        return text == null || text.isBlank();
     }
 
     private static String[] split(final String text){
