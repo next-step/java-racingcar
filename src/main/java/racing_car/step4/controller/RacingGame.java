@@ -12,7 +12,7 @@ public class RacingGame {
         startMove(cars, InputView.inputNumberOfTry());
     }
     
-    private static void startMove(Cars cars, int numberOfTry) {
+    private void startMove(Cars cars, int numberOfTry) {
         ResultView.resultMessagePrint();
         
         while (numberOfTry-- > 0) {
@@ -21,7 +21,7 @@ public class RacingGame {
         }
     }
     
-    private static Cars createCars() {
+    private Cars createCars() {
         int numberOfCars = InputView.inputNumberOfCars();
         return new Cars(CarsFactory.from(numberOfCars));
     }
