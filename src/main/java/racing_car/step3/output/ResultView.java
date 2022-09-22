@@ -20,8 +20,7 @@ public class ResultView {
         List<CarDTO> carDTOs = cars.information();
         
         for (CarDTO carDTO : carDTOs) {
-            Position position = carDTO.getPosition();
-            processBarPrint(position.getPosition());
+            processBarPrint(carDTO.getPosition());
         }
         System.out.println();
     }

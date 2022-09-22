@@ -29,6 +29,6 @@ public class CarTest {
     @DisplayName("해당 차량의 정보(CarDTO) 확인")
     void carInfo() {
         CarDTO carDTO = car.information();
-        assertThat(carDTO.getPosition()).isEqualTo(new Position(3));
+        assertThat(carDTO.getPosition()).isEqualTo(3);
     }
 }

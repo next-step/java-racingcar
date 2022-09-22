@@ -33,7 +33,7 @@ class CarsTest {
     void carInfo(int idx, int position) {
         List<Car> carsList = Arrays.asList(new Car(new Position(4)), new Car(new Position(5)), new Car(new Position(2)));
         List<CarDTO> carDTOS = new Cars(carsList).information();
-        assertThat(carDTOS.get(idx).getPosition()).isEqualTo(new Position(position));
+        assertThat(carDTOS.get(idx).getPosition()).isEqualTo(position);
     }
     
     @Test

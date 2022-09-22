@@ -15,6 +15,6 @@ class CarDTOTest {
     void getPosition() {
         Car car = new Car(new Position(3));
         CarDTO carDTO = car.information();
-        assertThat(carDTO.getPosition()).isEqualTo(new Position(3));
+        assertThat(carDTO.getPosition()).isEqualTo(3);
     }
 }
