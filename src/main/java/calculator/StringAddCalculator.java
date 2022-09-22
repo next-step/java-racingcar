@@ -5,6 +5,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
+
+    private static final Pattern CUSTOM_PATTERN = Pattern.compile("//(.)\n(.*)");
+    private static final String DEFAULT_DELIMITER = ",|:";
+    private static final int REGEX_DELIMITER_GROUP = 1;
+    private static final int REGEX_NUMBER_GROUP = 2;
     public static int splitAndSum(String text) {
 
         if (isNullOfEmpty(text)) {
@@ -35,16 +40,16 @@ public class StringAddCalculator {
         return false;
     }
     public static String[] splitTokens(String input) {
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(input);
+        Matcher m = CUSTOM_PATTERN.matcher(input);
 
         if (m.find()) {
-            String customDelimiter = m.group(1);
-            String[] tokens = m.group(2).split(customDelimiter);
+            String customDelimiter = m.group(REGEX_DELIMITER_GROUP);
+            String[] tokens = m.group(REGEX_NUMBER_GROUP).split(customDelimiter);
 
             return tokens;
         }
 
-        return input.split(",|:");
+        return input.split(DEFAULT_DELIMITER);
     }
 
     public static boolean hasNegativeNumber(String[] tokens) {
