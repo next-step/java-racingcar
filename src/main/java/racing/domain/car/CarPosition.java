@@ -1,15 +1,16 @@
-package step3.domain;
+package racing.domain.car;
 
-import step3.exception.NegativePositionException;
+import racing.exception.NegativePositionException;
 
-public class Position {
+public class CarPosition {
+
     private final int position;
 
-    public Position() {
+    public CarPosition() {
         this(0);
     }
 
-    public Position(int position) {
+    public CarPosition(int position) {
         validation(position);
         this.position = position;
     }
@@ -20,8 +21,8 @@ public class Position {
         }
     }
 
-    public Position advance() {
-        return new Position(position + 1);
+    public CarPosition advance() {
+        return new CarPosition(position + 1);
     }
 
     public int value() {
