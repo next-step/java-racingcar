@@ -5,15 +5,16 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
-	static final String Separator = ",|:";
-	static final String pattern = "//(.)\n(.*)";
-	static final String IntegerPattern = "^[0-9]*$";
+	static final private String SEPARATOR = ",|:";
+	static final private String PATTERN = "//(.)\n(.*)";
+	static final private String POSITIVE_PATTERN = "^[0-9]*$";
+	static final private Pattern SPECIAL_SEPARATOR_PATTERN = Pattern.compile(PATTERN);
 
 	public static int splitAndSum(String str) {
 		if (isBlankOrNull(str)) {
 			return 0;
 		}
-		if (isInteger(str)) {
+		if (isPositive(str)) {
 			return Integer.parseInt(str);
 		}
 		return getSum(split(str));
@@ -21,11 +22,11 @@ public class StringAddCalculator {
 
 	private static int getSum(String[] numbers) {
 		int result = 0;
-		int strToNumber;
-		for (String str : numbers) {
-			strToNumber = Integer.parseInt(str);
-			result += strToNumber;
-			if (!isInteger(str)) {
+
+		for (String string : numbers) {
+			int stringToNumber = Integer.parseInt(string);
+			result += stringToNumber;
+			if (!isPositive(string)) {
 				throw new RuntimeException();
 			}
 		}
@@ -33,16 +34,16 @@ public class StringAddCalculator {
 	}
 
 	private static String[] split(String str) {
-		Matcher m = Pattern.compile(pattern).matcher(str);
+		Matcher m = SPECIAL_SEPARATOR_PATTERN.matcher(str);
 		if (m.find()) {
 			String customDelimiter = m.group(1);
 			return m.group(2).split(customDelimiter);
 		}
-		return str.split(Separator);
+		return str.split(SEPARATOR);
 	}
 
-	private static boolean isInteger(String str) {
-		return Pattern.matches(IntegerPattern, str);
+	private static boolean isPositive(String str) {
+		return Pattern.matches(POSITIVE_PATTERN, str);
 	}
 
 	private static boolean isBlankOrNull(String str) {
