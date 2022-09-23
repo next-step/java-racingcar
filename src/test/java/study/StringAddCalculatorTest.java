@@ -29,4 +29,11 @@ public class StringAddCalculatorTest {
         int result = StringAddCalculator.splitAndSum("1,2");
         assertThat(result).isEqualTo(3);
     }
+
+    @Test
+    @DisplayName("구분자를 컴마(,) 이외에 콜론(:)을 사용할 수 있다.")
+    public void splitAndSum_separate_number_with_comma_and_colon() throws Exception {
+        int result = StringAddCalculator.splitAndSum("1,2:3");
+        assertThat(result).isEqualTo(6);
+    }
 }
