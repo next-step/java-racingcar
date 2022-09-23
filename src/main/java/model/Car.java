@@ -3,7 +3,7 @@ package model;
 
 public class Car {
 
-    public static final String POSITION_UNIT = "-";
+    private static final String POSITION_UNIT = "-";
     private int currentPosition = 0;
 
     public void move(){
@@ -15,6 +15,6 @@ public class Car {
         for (int i = 0 ; i < currentPosition ; i++){
             builder.append(POSITION_UNIT);
         }
-        return builder.toString();
+        return builder + "\n";
     }
 }

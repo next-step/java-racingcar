@@ -1,4 +1,5 @@
 import model.Car;
+import model.GameResult;
 import service.GameStrategy;
 
 import java.util.ArrayList;
@@ -18,13 +19,17 @@ public class RacingGame {
         }
     }
 
-    public void play(){
-        cars.stream().forEach((car)->moveCarByStrategy(car));
+    public GameResult play(){
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0 ; i < cars.size();  i++){
+            Car car = cars.get(i);
+            builder.append(car.getCurrentPosition());
+            moveCarByStrategy(car);
+        }
+        return new GameResult(builder.toString());
     }
 
-    private void moveCarByStrategy(Car car){
-        String currentPosition = car.getCurrentPosition();
-        System.out.println(currentPosition);
+    void moveCarByStrategy(Car car){
         if(!this.strategy.isCarMove()){
             return;
         }
