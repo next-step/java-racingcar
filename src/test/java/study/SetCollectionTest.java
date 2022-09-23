@@ -42,8 +42,7 @@ public class SetCollectionTest {
 
     // ※질문
     // ParameterizedTest를 사용하면 DisplayName은 무시되는건가?
-    @DisplayName("ParameterizedTest를 활용한 중복제거")
-    @ParameterizedTest
+    @ParameterizedTest(name = "{0}ParameterizedTest를 활용한 중복제거")
     @ValueSource(ints = {1, 2, 3})
     void ParameterizedTest(int input){
         assertThat(numbers.contains(input)).isTrue();
@@ -52,7 +51,7 @@ public class SetCollectionTest {
     // ---요구사항3---
     // 입력 값에 따라 결과 값이 다른 경우에 대한 테스트도 가능하도록 구현하기
     @DisplayName("요구사항3_입력 값에 따라 결과 값이 다른 경우에 대한 테스트")
-    @ParameterizedTest
+    @ParameterizedTest(name = "{0}요구사항3_입력 값에 따라 결과 값이 다른 경우에 대한 테스트")
     @CsvSource(value = {"1:true", "2:true", "3:true"}, delimiter = ':')
     void ParameterizedTest02(String input, String expected){
         int testData = Integer.parseInt(input);
