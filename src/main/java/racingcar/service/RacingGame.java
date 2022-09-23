@@ -1,22 +1,22 @@
 package racingcar.service;
 
 import racingcar.domain.*;
-import racingcar.repository.RacingCarTable;
+import racingcar.repository.RacingCarRepository;
 import racingcar.view.RacingGameResult;
 
 import java.util.List;
 
 public class RacingGame {
-    private final RacingCarTable carTable;
+    private final RacingCarRepository carTable;
     private final MoveStrategy moveStrategy;
 
-    public RacingGame(RacingCarTable racingCarTable) {
-        this.carTable = racingCarTable;
+    public RacingGame(RacingCarRepository racingCarRepository) {
+        this.carTable = racingCarRepository;
         moveStrategy = new RandomMoveStrategy();
     }
 
-    public RacingGame(RacingCarTable racingCarTable, MoveStrategy moveStrategy) {
-        this.carTable = racingCarTable;
+    public RacingGame(RacingCarRepository racingCarRepository, MoveStrategy moveStrategy) {
+        this.carTable = racingCarRepository;
         this.moveStrategy = moveStrategy;
     }
 
