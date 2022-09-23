@@ -41,7 +41,7 @@ public class PositionTest {
         List<Position> positions = List.of(new Position(1), new Position(10), new Position(100));
 
         Optional<Position> max = positions.stream()
-                .max((p1, p2) -> p1.compare(p1, p2));
+                .max(Position::compareTo);
 
         assertThat(max).contains(new Position(100));
     }

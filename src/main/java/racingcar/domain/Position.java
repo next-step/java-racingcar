@@ -1,9 +1,8 @@
 package racingcar.domain;
 
-import java.util.Comparator;
 import java.util.Objects;
 
-public class Position implements Comparator<Position> {
+public class Position implements Comparable<Position> {
     private static final String POSITION_EXCEPTION_MESSAGE = "위치는 1 이상이어야 합니다.";
     private static final int DEFAULT_POSITION = 1;
 
@@ -42,11 +41,6 @@ public class Position implements Comparator<Position> {
     }
 
     @Override
-    public int compare(Position p1, Position p2) {
-        return p1.value - p2.value;
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -63,5 +57,10 @@ public class Position implements Comparator<Position> {
     @Override
     public int hashCode() {
         return Objects.hash(value);
+    }
+
+    @Override
+    public int compareTo(Position o) {
+        return value - o.value;
     }
 }
