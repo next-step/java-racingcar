@@ -7,6 +7,8 @@ public class StringCalculator {
 
 	private static final Pattern INPUT_PATTERN = Pattern.compile("//(.*)\\n(.*)");
 	public static final String DEFAULT_SEPARATOR = ",|:";
+	public static final int SEPARATOR_GROUP_NUMBER = 1;
+	public static final int EXPRESSION_GROUP_NUMBER = 2;
 
 	public Positive calculate(String input) {
 		if (input == null || input.isBlank())
@@ -20,14 +22,14 @@ public class StringCalculator {
 	private String separator(String input) {
 		Matcher matcher = INPUT_PATTERN.matcher(input);
 		if (matcher.find())
-			return matcher.group(1);
+			return matcher.group(SEPARATOR_GROUP_NUMBER);
 		return DEFAULT_SEPARATOR;
 	}
 
 	private String expression(String input) {
 		Matcher matcher = INPUT_PATTERN.matcher(input);
 		if (matcher.matches())
-			return matcher.group(2);
+			return matcher.group(EXPRESSION_GROUP_NUMBER);
 		return input;
 	}
 
