@@ -1,4 +1,4 @@
-package carRacing.step2;
+package carracing.step2;
 
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
