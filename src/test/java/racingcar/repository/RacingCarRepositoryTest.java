@@ -9,13 +9,13 @@ import racingcar.domain.MoveStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class RacingCarTableTest {
+class RacingCarRepositoryTest {
 
-    RacingCarTable carTable;
+    RacingCarRepository carTable;
 
     @BeforeEach
     void setUp() {
-        carTable = new RacingCarTable();
+        carTable = new RacingCarRepository();
     }
 
     @DisplayName("Car 저장")
@@ -57,10 +57,23 @@ class RacingCarTableTest {
         assertThat(carB.positionValue()).isEqualTo(1);
     }
 
-    // TODO: 동시성 테스트
     @DisplayName("동시에 데이터를 저장하는 경우에도 잘 처리한다.")
     @Test
-    void sync() {
+    void sync() throws InterruptedException {
+        for (int i = 0; i < 100; i++) {
+            new Thread(save(100)).start();
+        }
 
+        Thread.sleep(1000);
+        Cars cars = carTable.findAll();
+        assertThat(cars.size()).isEqualTo(10000);
+    }
+
+    private Runnable save(int loopSize) {
+        return () -> {
+            for (int i = 0; i < loopSize; i++) {
+                carTable.save(new Car("test"));
+            }
+        };
     }
 }

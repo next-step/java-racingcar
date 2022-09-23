@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.Position;
-import racingcar.repository.RacingCarTable;
+import racingcar.repository.RacingCarRepository;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class RacingGameTest {
     void join() {
         Cars cars = new Cars(List.of(new Car("a"), new Car("b"), new Car("c")));
 
-        RacingGame game = new RacingGame(new RacingCarTable());
+        RacingGame game = new RacingGame(new RacingCarRepository());
         game.join(cars);
 
         assertThat(game.joinCount()).isEqualTo(3);
@@ -28,7 +28,7 @@ public class RacingGameTest {
     @Test
     void race() {
         RacingRequest request = new RacingRequest("noose,pobi", 2);
-        RacingGame game = new RacingGame(new RacingCarTable(), () -> false);
+        RacingGame game = new RacingGame(new RacingCarRepository(), () -> false);
 
         game.start(request);
 
@@ -41,7 +41,7 @@ public class RacingGameTest {
     @Test
     void raceNoMove() {
         RacingRequest request = new RacingRequest("noose,pobi", 2);
-        RacingGame game = new RacingGame(new RacingCarTable(), () -> false);
+        RacingGame game = new RacingGame(new RacingCarRepository(), () -> false);
 
         game.start(request);
 
