@@ -1,15 +1,23 @@
 package calculator;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class C {
     public static int calculator(String text) {
         if (text == null || text.equals("")) {
             return 0;
         }
-        String[] arr = text.split(",|:");
-        int result = 0;
-        for (String str : arr) {
-            result += Integer.parseInt(str);
+        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        if (m.find()) {
+            String customDelimiter = m.group(1);
+            String[] arr = m.group(2).split(customDelimiter);
+            int result = 0;
+            for (String str : arr) {
+                result += Integer.parseInt(str);
+            }
+            return result;
         }
-        return result;
+        return 0;
     }
 }

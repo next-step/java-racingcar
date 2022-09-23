@@ -3,6 +3,9 @@ package calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CTest {
@@ -34,8 +37,14 @@ public class CTest {
     }
 
     @Test
-    @DisplayName("구분자를 컴마(,) 이외에 콜론(:)을 사용할 수 있다")
+    @DisplayName("구분자를 컴마(,) 이외에 콜론(:)을 사용할 수 있ㄴ")
     void regex() {
         assertThat(C.calculator("1,2:3")).isEqualTo(6);
+    }
+
+    @Test
+    @DisplayName("//”와 “\\n” 문자 사이에 커스텀 구분자를 지정할 수 있다")
+    void customRegex() {
+        assertThat(C.calculator("//;\n1;2;3")).isEqualTo(6);
     }
 }
