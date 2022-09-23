@@ -12,39 +12,43 @@ public class StringCalculatorTest {
 	@DisplayName("빈 문자열은 0으로 취급한다")
 	@Test
 	void consider_blank_as_zero() {
-		assertThat(stringCalculator.calculate(null)).isZero();
-		assertThat(stringCalculator.calculate("")).isZero();
+		Positive zero = new Positive(0);
+
+		assertThat(stringCalculator.calculate(null)).isEqualTo(zero);
+		assertThat(stringCalculator.calculate("")).isEqualTo(zero);
 	}
 
 	@DisplayName("문자열에서 숫자를 분리해 더한다")
 	@Test
 	void split_and_sum() {
-		assertThat(stringCalculator.calculate("1,2,3")).isEqualTo(6);
+		assertThat(stringCalculator.calculate("1,2,3")).isEqualTo(new Positive(6));
 	}
 
 	@DisplayName("쉼표나 콜론을 구분자로 사용한다")
 	@Test
 	void comma_or_colon_is_a_separator() {
-		assertThat(stringCalculator.calculate("1,2:3")).isEqualTo(6);
+		assertThat(stringCalculator.calculate("1,2:3")).isEqualTo(new Positive(6));
 	}
 
 	@DisplayName("숫자 하나는 그대로 반환한다")
 	@Test
 	void return_single_number_untouched() {
-		assertThat(stringCalculator.calculate("33")).isEqualTo(33);
+		assertThat(stringCalculator.calculate("33")).isEqualTo(new Positive(33));
 	}
 
 	@DisplayName("커스텀 구분자를 지정할 수 있다")
 	@Test
 	void custom_separator_available() {
 		String input = "//;\n1;2;3";
-		assertThat(stringCalculator.calculate(input)).isEqualTo(6);
+
+		assertThat(stringCalculator.calculate(input)).isEqualTo(new Positive(6));
 	}
 
 	@DisplayName("수식에 문자가 있으면 안된다")
 	@Test
 	void character_should_not_be_in_expression() {
 		String input = "//;\n1;2;z;3";
+
 		assertThatThrownBy(() -> stringCalculator.calculate(input))
 			.isInstanceOf(RuntimeException.class);
 	}
@@ -53,6 +57,7 @@ public class StringCalculatorTest {
 	@Test
 	void negative_should_not_be_in_expression() {
 		String input = "//;\n1;2;-1;3";
+
 		assertThatThrownBy(() -> stringCalculator.calculate(input))
 			.isInstanceOf(RuntimeException.class);
 	}

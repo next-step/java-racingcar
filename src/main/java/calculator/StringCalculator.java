@@ -8,13 +8,13 @@ public class StringCalculator {
 	private static final Pattern INPUT_PATTERN = Pattern.compile("//(.*)\\n(.*)");
 	public static final String DEFAULT_SEPARATOR = ",|:";
 
-	public int calculate(String input) {
+	public Positive calculate(String input) {
 		if (input == null || input.isBlank())
-			return 0;
+			return new Positive(0);
 		String separator = separator(input);
 		String expression = expression(input);
-		String[] expressions = expression.split(separator);
-		return sum(numbers(expressions));
+		String[] numbers = expression.split(separator);
+		return sum(positives(numbers));
 	}
 
 	private String separator(String input) {
@@ -31,20 +31,19 @@ public class StringCalculator {
 		return input;
 	}
 
-	private int sum(int[] numbers) {
-		int sum = 0;
-		for (int number : numbers) {
-			sum += number;
+	private Positive sum(Positive[] numbers) {
+		Positive sum = new Positive(0);
+		for (Positive number : numbers) {
+			sum = sum.plus(number);
 		}
 		return sum;
 	}
 
-	private int[] numbers(String[] expressions) {
-		int[] numbers = new int[expressions.length];
-		for (int i = 0; i < expressions.length; i++) {
-			numbers[i] = Integer.parseInt(expressions[i]);
-			if(numbers[i] < 0) throw new RuntimeException("음수가 있습니다");
+	private Positive[] positives(String[] numbers) {
+		Positive[] positives = new Positive[numbers.length];
+		for (int i = 0; i < numbers.length; i++) {
+			positives[i] = new Positive(numbers[i]);
 		}
-		return numbers;
+		return positives;
 	}
 }
