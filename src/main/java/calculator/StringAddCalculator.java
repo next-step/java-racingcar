@@ -9,18 +9,20 @@ public class StringAddCalculator {
     private static final String NEGATIVE = "-";
     private static final Pattern REGULAR_CUSTOM = Pattern.compile("//(.)\n(.*)");
     private static final Pattern REGULAR_COMMA_DELIMITER = Pattern.compile(COMMA_DELIMITER);
-    public static final int REGEX_FIRST_GROUP = 1;
-    public static final int REGEX_SECOND_GROUP = 2;
+    public static final int MATCHER_DELIMITER_INDEX = 1;
+    public static final int MATCHER_TARGET_INDEX = 2;
 
     private StringAddCalculator() {}
 
     public static int splitAndSum(String str) {
+
 
         if (str == null || str.isEmpty()) {
             return 0;
         }
 
         if (str.length() == 1) {
+            validateDigit(str);
             return Integer.parseInt(str);
         }
 
@@ -53,7 +55,21 @@ public class StringAddCalculator {
 
     private static String[] findByRegular(final Matcher matcher) {
 
-        String customDelimiter = matcher.group(REGEX_FIRST_GROUP);
-        return matcher.group(REGEX_SECOND_GROUP).split(customDelimiter);
+        final String customDelimiter = matcher.group(MATCHER_DELIMITER_INDEX);
+        return matcher.group(MATCHER_TARGET_INDEX).split(customDelimiter);
+    }
+
+    private static void validateDigit(final String str) {
+
+        for (int i = 0; i < str.length(); i++) {
+            validateDigit(str.charAt(i));
+        }
+    }
+
+    private static void validateDigit(char c) {
+
+        if (!Character.isDigit(c)) {
+            throw new IllegalArgumentException("숫자만 입력해야 합니다.");
+        }
     }
 }
