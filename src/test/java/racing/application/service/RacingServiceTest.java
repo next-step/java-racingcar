@@ -3,46 +3,37 @@ package racing.application.service;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.domain.car.usecase.CreateUseCase;
-import racing.domain.car.usecase.RacingUseCase;
-import racing.dto.CarDto;
-import racing.dto.CarRaceDto;
-import racing.service.FakeCreateUseCase;
-import racing.service.FakeRacingUseCase;
+import racing.application.view.Score;
+import racing.domain.car.Car;
+import racing.domain.car.CarRace;
 
 class RacingServiceTest {
 
     @Test
-    @DisplayName("자동차를 생성한다")
-    void createCarTest() {
+    void 자동차를_입력한_개수만큼_생성한다() {
         //given
-        CreateUseCase createUseCase = new FakeCreateUseCase();
-        int numberOfCar = 3;
+        int count = 3;
+        RacingService racingService = new RacingServiceImpl();
 
         //when
-        CarRaceDto carRaceDto = createUseCase.makeCars(numberOfCar);
+        CarRace carRace = racingService.makeCars(count);
 
         //then
-        assertThat(carRaceDto.size()).isEqualTo(numberOfCar);
+        assertThat(carRace.size()).isEqualTo(count);
     }
 
     @Test
-    @DisplayName("자동차 움직이는 테스트")
-    void moveCarTest() {
+    void 자동차가_움직이고_점수를_반환한다() {
         //given
-        RacingUseCase racingUseCase = new FakeRacingUseCase();
-        CarRaceDto carRaceDto = new CarRaceDto(List.of(
-            new CarDto(),
-            new CarDto(),
-            new CarDto()
-        ));
+        int count = 3;
+        RacingService racingService = new RacingServiceImpl();
+        CarRace carRace = new CarRace(List.of(new Car()));
 
         //when
-        CarRaceDto racingGame = racingUseCase.racingGame(carRaceDto);
+        Score score = racingService.scoreBoard(carRace, count);
 
         //then
-        assertThat(carRaceDto).isNotEqualTo(racingGame);
+        assertThat(score.size()).isEqualTo(count);
     }
 }
