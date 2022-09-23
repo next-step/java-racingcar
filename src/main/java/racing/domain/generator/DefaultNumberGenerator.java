@@ -1,10 +1,11 @@
-package racing.domain;
+package racing.domain.generator;
 
 import java.util.Random;
 
 public class DefaultNumberGenerator implements NumberGenerator {
 
     private static int EXCEPTION_BOUND = 0;
+
     private final int bound;
 
     private final Random random = new Random();

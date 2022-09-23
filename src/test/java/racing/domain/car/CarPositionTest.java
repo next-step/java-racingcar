@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.exception.NegativePositionException;
+import racing.domain.car.exception.NegativePositionException;
 
 class CarPositionTest {
 

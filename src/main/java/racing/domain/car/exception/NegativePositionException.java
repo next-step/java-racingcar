@@ -1,4 +1,4 @@
-package racing.exception;
+package racing.domain.car.exception;
 
 public class NegativePositionException extends IllegalArgumentException {
 

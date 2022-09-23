@@ -1,6 +1,6 @@
 package racing.domain.car;
 
-import racing.exception.NegativePositionException;
+import racing.domain.car.exception.NegativePositionException;
 
 public class CarPosition {
 

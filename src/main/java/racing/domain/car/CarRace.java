@@ -1,13 +1,16 @@
-package racing.domain;
+package racing.domain.car;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import racing.domain.car.Car;
+import java.util.stream.IntStream;
+import racing.domain.generator.DefaultNumberGenerator;
+import racing.domain.generator.NumberGenerator;
 
 public class CarRace {
 
     private static int MOVE_NUMBER = 4;
+
     private List<Car> cars;
     private final NumberGenerator numberGenerator;
 
@@ -19,6 +22,16 @@ public class CarRace {
     public CarRace(List<Car> cars) {
         this.cars = cars;
         this.numberGenerator = new DefaultNumberGenerator();
+    }
+
+    public CarRace(int count) {
+        this(makeCars(count));
+    }
+
+    private static List<Car> makeCars(int count) {
+        return IntStream.range(0, count)
+            .mapToObj(__ -> new Car())
+            .collect(Collectors.toList());
     }
 
     public int size() {

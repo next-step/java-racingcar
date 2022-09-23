@@ -1,9 +1,9 @@
 package racing.controller;
 
+import racing.application.service.RacingService;
+import racing.application.view.InputView;
+import racing.application.view.OutputView;
 import racing.dto.CarRaceDto;
-import racing.service.RacingService;
-import racing.view.InputView;
-import racing.view.OutputView;
 
 public class RacingController {
 
