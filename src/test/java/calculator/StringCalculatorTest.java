@@ -25,4 +25,10 @@ public class StringCalculatorTest {
         assertThat(parseAndSum("1,2:3")).isEqualTo(6);
     }
 
+    @Test
+    void 커스텀_구분자() {
+        assertThat(parseAndSum("//-\n1-2-3")).isEqualTo(6);
+        assertThat(parseAndSum("//#\n1#2#3#4")).isEqualTo(10);
+    }
+
 }
