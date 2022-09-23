@@ -24,7 +24,7 @@ public class RacingSupport {
     }
 
     static Car[] moveByRandom(Boolean isMove, Car[] preparedCars, Integer j) {
-        if (isMove) {;
+        if (isMove) {
             preparedCars[j].moveForward();
             return preparedCars;
         }
