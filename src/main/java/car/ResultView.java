@@ -1,4 +1,7 @@
 package car;
 
-public class ResultView {
+import java.util.List;
+
+public interface ResultView {
+    void print(List<Car> cars, int tryNum);
 }

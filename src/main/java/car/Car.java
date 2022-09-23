@@ -1,19 +1,31 @@
 package car;
 
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Car {
-    private int distance = 0;
+    private List<Boolean> distance;
     private static final int RACING_CONDITION = 4;
 
-    public int getDistance() {
-        return distance;
+    public Car() {
+        distance = new ArrayList<>();
+    }
+    public boolean isMoveAble(int index) {
+        if(index >= distance.size()) {
+            return false;
+        }
+        return distance.get(index);
     }
 
-    public void racing() {
-        Random random = new Random();
-        if(RACING_CONDITION <= random.nextInt(10)) {
-            distance++;
+    public void racing(RandomUtil randomUtil) {
+        if(isMoveAble(randomUtil)) {
+            distance.add(true);
+            return;
         }
+        distance.add(false);
+    }
+
+    private boolean isMoveAble(RandomUtil randomUtil) {
+        return RACING_CONDITION <= randomUtil.generateRandomNumber();
     }
 }

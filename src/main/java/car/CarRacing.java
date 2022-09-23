@@ -4,9 +4,13 @@ import java.util.List;
 
 public class CarRacing {
     private final InputView inputView;
+    private final ResultView resultView;
+    private final RandomUtil randomUtil;
 
-    public CarRacing() {
-        inputView = new InputView();
+    public CarRacing(InputView inputView, ResultView resultView, RandomUtil randomUtil) {
+        this.inputView = inputView;
+        this.resultView = resultView;
+        this.randomUtil = randomUtil;
     }
 
     public void start() {
@@ -18,11 +22,13 @@ public class CarRacing {
         racing(cars, tryNum);
     }
 
-    public void racing(List<Car> cars, int tryNum) {
+    private void racing(List<Car> cars, int tryNum) {
+        System.out.println("실행결과");
         for (int i = 0; i < tryNum; i++) {
             for (Car car : cars) {
-                car.racing();
+                car.racing(randomUtil);
             }
+            resultView.print(cars, i);
         }
     }
 }
