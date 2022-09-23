@@ -2,10 +2,13 @@ package study;
 
 public class StringAddCalculator {
     public static int splitAndSum(String str) {
-        int result = 0;
-        if (str == null || str == "") {
-            result = 0;
+        if (isBlank(str)) {
+            return 0;
         }
-        return result;
+        return Integer.parseInt(str);
+    }
+
+    private static boolean isBlank(String str) {
+        return str == null || str == "";
     }
 }
