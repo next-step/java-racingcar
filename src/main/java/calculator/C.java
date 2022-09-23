@@ -5,7 +5,7 @@ public class C {
         if (text == null || text.equals("")) {
             return 0;
         }
-        String[] arr = text.split(",");
+        String[] arr = text.split(",|:");
         int result = 0;
         for (String str : arr) {
             result += Integer.parseInt(str);

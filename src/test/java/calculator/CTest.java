@@ -32,4 +32,10 @@ public class CTest {
     void inputStringArr() {
         assertThat(C.calculator("1,2")).isEqualTo(3);
     }
+
+    @Test
+    @DisplayName("구분자를 컴마(,) 이외에 콜론(:)을 사용할 수 있다")
+    void regex() {
+        assertThat(C.calculator("1,2:3")).isEqualTo(6);
+    }
 }
