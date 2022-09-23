@@ -2,7 +2,7 @@ package racingcar.step2;
 
 public class StringAddCalculator {
 
-	public static final String COMMA = ",";
+	public static final String SEPARATOR = "[,:]";
 
 	public static int calculate(String input) {
 		if (isBlank(input)) {
@@ -21,7 +21,7 @@ public class StringAddCalculator {
 	}
 
 	private static String[] split(String input) {
-		return input.split(COMMA);
+		return input.split(SEPARATOR);
 	}
 
 	private static int sum(String[] numbers) {

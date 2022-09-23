@@ -37,4 +37,12 @@ class StringAddCalculatorTest {
 
 		assertThat(result).isEqualTo(3);
 	}
+
+	@DisplayName("컴마와 콜론으로 구분한 숫자들의 합을 반환")
+	@Test
+	void splitWithSeparatorAndSumTest() {
+		int result = StringAddCalculator.calculate("1,2:3");
+
+		assertThat(result).isEqualTo(6);
+	}
 }
