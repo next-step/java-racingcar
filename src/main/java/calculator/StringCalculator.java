@@ -6,30 +6,25 @@ import java.util.regex.Pattern;
 public class StringCalculator {
 
     private static final String DEFAULT_SEPARATOR = ",|:";
-    private static final String CUSTOM_SEPARATOR_REGEX = "//(.)\n(.*)";
-    private static Matcher matcher;
+    private static final Pattern CUSTOM_SEPARATOR_PATTERN = Pattern.compile("//(.)\n(.*)");
 
-    public static int parseAndSum(String text) {
+    public static int splitAndSum(String text) {
         if (isBlank(text)) {
             return 0;
         }
-        if (isCustomized(text)) {
-            return sum(toInts(splitCustomizedText()));
+        Matcher matcher = createMatcher(text);
+        if (matcher.find()) {
+            return sum(toInts(splitCustomizedText(matcher)));
         }
-        return sum(toInts(splitDefaultText(text)));
+        return sum(toInts(split(text, DEFAULT_SEPARATOR)));
     }
 
     private static boolean isBlank(String text) {
         return text == null || text.isBlank();
     }
 
-    private static boolean isCustomized(String text) {
-        matcher = createMatcher(text);
-        return matcher.find();
-    }
-
     private static Matcher createMatcher(String text) {
-        return Pattern.compile(CUSTOM_SEPARATOR_REGEX).matcher(text);
+        return CUSTOM_SEPARATOR_PATTERN.matcher(text);
     }
 
     private static int sum(int[] numbers) {
@@ -70,15 +65,10 @@ public class StringCalculator {
         }
     }
 
-    private static String[] splitCustomizedText() {
-        String customSeparator = matcher.group(1);
-        String text = matcher.group(2);
-        return split(text, customSeparator);
+    private static String[] splitCustomizedText(Matcher matcher) {
+        return split(matcher.group(2), matcher.group(1));
     }
 
-    private static String[] splitDefaultText(String text) {
-        return split(text, DEFAULT_SEPARATOR);
-    }
 
     private static String[] split(String text, String separator) {
         return text.split(separator);
