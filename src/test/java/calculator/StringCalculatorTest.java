@@ -21,4 +21,10 @@ public class StringCalculatorTest {
 	void split_and_sum() {
 		assertThat(stringCalculator.calculate("1,2,3")).isEqualTo(6);
 	}
+
+	@DisplayName("쉼표나 콜론을 구분자로 사용한다")
+	@Test
+	void comma_or_colon_is_a_separator() {
+		assertThat(stringCalculator.calculate("1,2:3")).isEqualTo(6);
+	}
 }
