@@ -26,7 +26,7 @@ public class StringAddCalculator {
         StringTokenizer tokens = new StringTokenizer(text, delimiter.toString());
         int result = 0;
         while (tokens.hasMoreTokens()) {
-            int number = getNumber(tokens);
+            int number = getNumberOfParsingToken(tokens);
             result += number;
         }
         return result;
@@ -40,7 +40,7 @@ public class StringAddCalculator {
         return idx + 1;
     }
 
-    private static int getNumber(StringTokenizer tokens) {
+    private static int getNumberOfParsingToken(StringTokenizer tokens) {
         int number = Integer.parseInt(tokens.nextToken());
         if(number < 0) {
             throw new RuntimeException("음수 발생");
