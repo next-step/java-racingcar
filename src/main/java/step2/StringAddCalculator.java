@@ -5,10 +5,13 @@ public class StringAddCalculator {
     private static final int ZERO = 0;
 
     public static int splitAndSum(String text) {
-        int result = 0;
-        if (text == null || text.isBlank()) {
-            result = ZERO;
+        if (isBlank(text)) {
+            return ZERO;
         }
-        return result;
+        return Integer.parseInt(text);
+    }
+
+    private static boolean isBlank(String text) {
+        return text == null || text.isBlank();
     }
 }
