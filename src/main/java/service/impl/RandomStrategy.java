@@ -6,8 +6,8 @@ import java.util.Random;
 
 public class RandomStrategy implements GameStrategy {
 
-    private final int MAX_BOUND_NUMBER = 10;
-    private final int MIN_MOVE_NUMBER = 4;
+    public final int MAX_BOUND_NUMBER = 10;
+    public static final int MIN_MOVE_NUMBER = 4;
     private final Random random = new Random();
 
     @Override
@@ -20,6 +20,6 @@ public class RandomStrategy implements GameStrategy {
     }
 
     boolean isCarMove(int randNumber) {
-        return randNumber < MIN_MOVE_NUMBER;
+        return randNumber >= MIN_MOVE_NUMBER;
     }
 }
