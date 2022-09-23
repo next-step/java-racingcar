@@ -1,14 +1,15 @@
 package racing.application.view;
 
-import racing.dto.CarRaceDto;
+public class OutputView implements View {
 
-public class OutputView {
+    private final Score score;
 
-    public void result(CarRaceDto carRaceDto) {
-        carRaceDto.carRace().forEach(car -> {
-            String strState = "-".repeat(car.position());
-            System.out.println(strState);
-        });
-        System.out.println();
+    public OutputView(Score score) {
+        this.score = score;
+    }
+
+    @Override
+    public void print() {
+        score.print();
     }
 }
