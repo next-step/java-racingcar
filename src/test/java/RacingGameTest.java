@@ -6,9 +6,9 @@ import org.junit.jupiter.api.Test;
 class RacingGameTest {
 
     @Test
-    void shouldMoveCarByStrategy(){
+    void shouldMoveCarByStrategy() {
         int carNumber = 3;
-        RacingGame game = new RacingGame(()->true, carNumber);
+        RacingGame game = new RacingGame(() -> true, carNumber);
         Car car = new Car();
         String beforeGame = car.getCurrentPosition();
         game.moveCarByStrategy(car);
@@ -17,9 +17,9 @@ class RacingGameTest {
     }
 
     @Test
-    void shouldNotMoveCarByStrategy(){
+    void shouldNotMoveCarByStrategy() {
         int carNumber = 3;
-        RacingGame game = new RacingGame(()->false, carNumber);
+        RacingGame game = new RacingGame(() -> false, carNumber);
         Car car = new Car();
         String beforeGame = car.getCurrentPosition();
         game.moveCarByStrategy(car);
@@ -28,23 +28,23 @@ class RacingGameTest {
     }
 
     @Test
-    void shouldReturnProperGameResult_whenCarStopped(){
+    void shouldReturnProperGameResult_whenCarStopped() {
         int carNumber = 1;
-        RacingGame game = new RacingGame(()->false, carNumber);
+        RacingGame game = new RacingGame(() -> false, carNumber);
         GameResult resultA = game.play();
         GameResult resultB = game.play();
-        Assertions.assertThat(resultA.getResult()).isEqualTo(Car.POSITION_UNIT+"\n");
-        Assertions.assertThat(resultB.getResult()).isEqualTo(Car.POSITION_UNIT+"\n");
+        Assertions.assertThat(resultA.getResult()).isEqualTo(Car.POSITION_UNIT + "\n");
+        Assertions.assertThat(resultB.getResult()).isEqualTo(Car.POSITION_UNIT + "\n");
     }
 
     @Test
-    void shouldReturnProperGameResult_whenCarMoved(){
+    void shouldReturnProperGameResult_whenCarMoved() {
         int carNumber = 1;
-        RacingGame game = new RacingGame(()->true, carNumber);
+        RacingGame game = new RacingGame(() -> true, carNumber);
         GameResult resultA = game.play();
         GameResult resultB = game.play();
-        Assertions.assertThat(resultA.getResult()).isEqualTo(Car.POSITION_UNIT+"\n");
-        Assertions.assertThat(resultB.getResult()).isEqualTo(Car.POSITION_UNIT+Car.POSITION_UNIT+"\n");
+        Assertions.assertThat(resultA.getResult()).isEqualTo(Car.POSITION_UNIT + "\n");
+        Assertions.assertThat(resultB.getResult()).isEqualTo(Car.POSITION_UNIT + Car.POSITION_UNIT + "\n");
     }
 
 }
