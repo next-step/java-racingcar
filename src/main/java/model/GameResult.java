@@ -1,19 +1,17 @@
 package model;
 
 
+import java.util.List;
+
 public class GameResult {
 
-    private final String result;
+    private final List<Integer> carPositions;
 
-    public GameResult(String result) {
-        this.result = result;
+    public GameResult(List<Integer> carPositions) {
+        this.carPositions = carPositions;
     }
 
-    public String getResult() {
-        return result;
-    }
-
-    public void show() {
-        System.out.println(this.result);
+    public List<Integer> getCarPositions() {
+        return carPositions;
     }
 }

@@ -1,25 +1,20 @@
 package service.impl;
 
 import service.GameStrategy;
-
-import java.util.Random;
+import service.NumberPicker;
 
 public class RandomStrategy implements GameStrategy {
 
-    public final int MAX_BOUND_NUMBER = 10;
     public static final int MIN_MOVE_NUMBER = 4;
-    private final Random random = new Random();
+
+    private final NumberPicker numberPicker;
+
+    public RandomStrategy(NumberPicker numberPicker) {
+        this.numberPicker = numberPicker;
+    }
 
     @Override
     public boolean isCarMove() {
-        return this.isCarMove(getRandomNum());
-    }
-
-    private int getRandomNum() {
-        return this.random.nextInt(MAX_BOUND_NUMBER);
-    }
-
-    boolean isCarMove(int randNumber) {
-        return randNumber >= MIN_MOVE_NUMBER;
+        return this.numberPicker.pick() >= MIN_MOVE_NUMBER;
     }
 }

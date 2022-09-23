@@ -6,9 +6,14 @@ public class GameParam {
 
     private final int tryNum;
 
-    private GameParam(GameParamBuilder builder) {
-        this.carNum = builder.carNum;
-        this.tryNum = builder.tryNum;
+
+    private GameParam(int carNum, int tryNum) {
+        this.carNum = carNum;
+        this.tryNum = tryNum;
+    }
+
+    public static GameParam paramWithCarNumAndTryNum(int carNum, int tryNum) {
+        return new GameParam(carNum, tryNum);
     }
 
     public int getCarNum() {
@@ -17,25 +22,5 @@ public class GameParam {
 
     public int getTryNum() {
         return tryNum;
-    }
-
-    public static class GameParamBuilder {
-        private int carNum;
-
-        private int tryNum;
-
-        public GameParamBuilder carNum(int carNum) {
-            this.carNum = carNum;
-            return this;
-        }
-
-        public GameParamBuilder tryNum(int tryNum) {
-            this.tryNum = tryNum;
-            return this;
-        }
-
-        public GameParam build() {
-            return new GameParam(this);
-        }
     }
 }

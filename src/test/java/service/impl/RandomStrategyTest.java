@@ -6,20 +6,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RandomStrategyTest {
 
-    private final RandomStrategy strategy = new RandomStrategy();
-
     @Test
     void shouldMove_whenLargeOrEqual() {
-        boolean resultA = strategy.isCarMove(RandomStrategy.MIN_MOVE_NUMBER);
-        assertThat(resultA).isTrue();
-        boolean resultB = strategy.isCarMove(RandomStrategy.MIN_MOVE_NUMBER + 1);
-        assertThat(resultB).isTrue();
+        RandomStrategy strategyA = new RandomStrategy(() -> RandomStrategy.MIN_MOVE_NUMBER);
+        assertThat(strategyA.isCarMove()).isTrue();
+        RandomStrategy strategyB = new RandomStrategy(() -> RandomStrategy.MIN_MOVE_NUMBER + 1);
+        assertThat(strategyB.isCarMove()).isTrue();
     }
 
     @Test
     void shouldNotMove_whenSmaller() {
-        boolean result = strategy.isCarMove(RandomStrategy.MIN_MOVE_NUMBER - 1);
-        assertThat(result).isFalse();
+        RandomStrategy strategy = new RandomStrategy(() -> RandomStrategy.MIN_MOVE_NUMBER - 1);
+        assertThat(strategy.isCarMove()).isFalse();
     }
 
 }

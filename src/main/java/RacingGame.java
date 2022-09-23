@@ -20,13 +20,13 @@ public class RacingGame {
     }
 
     public GameResult play() {
-        StringBuilder builder = new StringBuilder();
+        List<Integer> carPositions = new ArrayList<>();
         for (int i = 0; i < cars.size(); i++) {
             Car car = cars.get(i);
-            builder.append(car.getCurrentPosition());
             moveCarByStrategy(car);
+            carPositions.add(car.getCurrentPosition());
         }
-        return new GameResult(builder.toString());
+        return new GameResult(carPositions);
     }
 
     void moveCarByStrategy(Car car) {
@@ -35,4 +35,5 @@ public class RacingGame {
         }
         car.move();
     }
+
 }
