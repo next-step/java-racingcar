@@ -40,4 +40,20 @@ public class StringCalculatorTest {
 		String input = "//;\n1;2;3";
 		assertThat(stringCalculator.calculate(input)).isEqualTo(6);
 	}
+
+	@DisplayName("수식에 문자가 있으면 안된다")
+	@Test
+	void character_should_not_be_in_expression() {
+		String input = "//;\n1;2;z;3";
+		assertThatThrownBy(() -> stringCalculator.calculate(input))
+			.isInstanceOf(RuntimeException.class);
+	}
+
+	@DisplayName("수식에 음수가 있으면 안된다")
+	@Test
+	void negative_should_not_be_in_expression() {
+		String input = "//;\n1;2;-1;3";
+		assertThatThrownBy(() -> stringCalculator.calculate(input))
+			.isInstanceOf(RuntimeException.class);
+	}
 }

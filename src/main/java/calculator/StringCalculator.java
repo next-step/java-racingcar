@@ -43,6 +43,7 @@ public class StringCalculator {
 		int[] numbers = new int[expressions.length];
 		for (int i = 0; i < expressions.length; i++) {
 			numbers[i] = Integer.parseInt(expressions[i]);
+			if(numbers[i] < 0) throw new RuntimeException("음수가 있습니다");
 		}
 		return numbers;
 	}
