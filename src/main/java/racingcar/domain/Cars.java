@@ -20,7 +20,7 @@ public class Cars {
         return Cars.of(cars);
     }
 
-    private static String[] splitName(String carNames) {
+    public static String[] splitName(String carNames) {
         return carNames.split(DELIMITER);
     }
 
@@ -30,9 +30,6 @@ public class Cars {
 
     public static Cars of(List<Car> elements) {
         return new Cars(elements);
-    }
-
-    public Cars() {
     }
 
     public Cars(List<Car> cars) {
@@ -47,22 +44,23 @@ public class Cars {
         return elements.size();
     }
 
+    // TODO: 우승 조건이 달라질 경우를 대비해 유연하게 설계해보자
     public Cars findWinners() {
         Position maxPosition = getMaxPosition();
         return getCarsSamePosition(maxPosition);
+    }
+
+    private Position getMaxPosition() {
+        return elements.stream()
+                .map(Car::position)
+                .max(Position::compareTo)
+                .orElseThrow(NoSuchElementException::new);
     }
 
     private Cars getCarsSamePosition(Position position) {
         return Cars.of(elements.stream()
                 .filter(car -> car.isSamePosition(position))
                 .collect(Collectors.toList()));
-    }
-
-    private Position getMaxPosition() {
-        return elements.stream()
-                .map(Car::position)
-                .max((p1, p2) -> p1.compare(p1, p2))
-                .orElseThrow(NoSuchElementException::new);
     }
 
     public void add(Car car) {

@@ -56,4 +56,11 @@ class RacingCarTableTest {
 
         assertThat(carB.positionValue()).isEqualTo(1);
     }
+
+    // TODO: 동시성 테스트
+    @DisplayName("동시에 데이터를 저장하는 경우에도 잘 처리한다.")
+    @Test
+    void sync() {
+
+    }
 }

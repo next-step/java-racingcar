@@ -6,6 +6,7 @@ import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.Position;
 import racingcar.repository.RacingCarTable;
+import racingcar.view.RacingRequest;
 
 import java.util.List;
 
@@ -27,11 +28,10 @@ public class RacingGameTest {
     @DisplayName("모두 출발하는 경우")
     @Test
     void race() {
-        Cars cars = Cars.of("noose,pobi");
-        RacingGame game = new RacingGame(new RacingCarTable(), () -> true);
+        RacingRequest request = new RacingRequest("noose,pobi", 2);
+        RacingGame game = new RacingGame(new RacingCarTable(), () -> false);
 
-        game.join(cars);
-        game.race(2);
+        game.start(request);
 
         List<Car> movedCars = game.getCars();
         assertThat(movedCars.get(0).position()).isEqualTo(new Position(3));
@@ -41,11 +41,10 @@ public class RacingGameTest {
     @DisplayName("모두 출발하지 못한 경우")
     @Test
     void raceNoMove() {
-        Cars cars = Cars.of("noose,pobi");
+        RacingRequest request = new RacingRequest("noose,pobi", 2);
         RacingGame game = new RacingGame(new RacingCarTable(), () -> false);
 
-        game.join(cars);
-        game.race(2);
+        game.start(request);
 
         List<Car> movedCars = game.getCars();
         assertThat(movedCars.get(0).position()).isEqualTo(new Position());

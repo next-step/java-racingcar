@@ -3,6 +3,7 @@ package racingcar.service;
 import racingcar.domain.*;
 import racingcar.repository.RacingCarTable;
 import racingcar.view.RacingGameResult;
+import racingcar.view.RacingRequest;
 
 import java.util.List;
 
@@ -20,6 +21,11 @@ public class RacingGame {
         this.moveStrategy = moveStrategy;
     }
 
+    public RacingGameResult start(RacingRequest request) {
+        join(request.getCarNames());
+        return race(request.getTryCount());
+    }
+
     public void join(String carNames) {
         join(Cars.of(carNames));
     }
@@ -28,7 +34,7 @@ public class RacingGame {
         carTable.saveAll(cars);
     }
 
-    public RacingGameResult race(int tryCount) {
+    private RacingGameResult race(int tryCount) {
         RacingGameResult result = new RacingGameResult();
 
         Cars cars = carTable.findAll();

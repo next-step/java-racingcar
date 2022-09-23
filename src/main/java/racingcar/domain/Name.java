@@ -1,35 +1,19 @@
 package racingcar.domain;
 
+import racingcar.domain.validator.NameValidator;
+
 import java.util.Objects;
 
 public class Name {
-    private static final String NOT_VALID_MESSAGE = "은(는) 유효한 이름이 아닙니다.";
-    public static final int MAX_LENGTH = 5;
-
     private final String value;
 
     public Name(String value) {
-        validate(value);
+        NameValidator.validate(value);
 
         this.value = value.strip();
     }
 
-    private void validate(String name) {
-        if (isNullOrEmpty(name) ||
-            isOverLength(name)) {
-            throw new IllegalArgumentException(name + NOT_VALID_MESSAGE);
-        }
-    }
-
-    private boolean isOverLength(String name) {
-        return name.strip().length() > MAX_LENGTH;
-    }
-
-    private boolean isNullOrEmpty(String name) {
-        return name == null || name.isEmpty();
-    }
-
-    public String name() {
+    public String value() {
         return value;
     }
 
