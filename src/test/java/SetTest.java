@@ -7,8 +7,10 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 
 public class SetTest {
@@ -17,11 +19,20 @@ public class SetTest {
 
     @BeforeEach
     void setUp() {
-        numbers = new HashSet<>();
-        numbers.add(1);
-        numbers.add(1);
-        numbers.add(2);
-        numbers.add(3);
+        // 기존 방식
+//        numbers = new HashSet<>();
+//        numbers.add(1);
+//        numbers.add(1);
+//        numbers.add(2);
+//        numbers.add(3);
+
+        // Set.of 이용 -> 중복 값에 대해서는 Exception 발생함
+        numbers = Set.of(1, 2, 3);
+
+        // addAll 메소드 이용 -> 파라미터가 Collection 형태여야 함
+//        int[] intAry = new int[] {1, 1, 2, 3};
+//        numbers = new HashSet<>();
+//        numbers.addAll(Arrays.stream(intAry).boxed().collect(Collectors.toList()));
     }
 
     /**
@@ -31,10 +42,8 @@ public class SetTest {
     @Test
     @DisplayName("요구사항1")
     void setTestNo1(){
-        int numbersSize = numbers.size();
-
         // numbers의 크기가 3인지 확인
-        assertThat(numbersSize).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     /**
@@ -49,7 +58,7 @@ public class SetTest {
     @DisplayName("요구사항2")
     void setTestNo2(int input){
         // input value 가 numbers에 contains 되어있는지 확인
-        assertThat(numbers.contains(input)).isTrue();
+        assertThat(numbers).contains(input);
     }
 
     /**
@@ -62,14 +71,14 @@ public class SetTest {
     @ParameterizedTest
     @CsvSource(value = {"1,2,3:true", "4,5:false"}, delimiter = ':')
     @DisplayName("요구사항3")
-    void setTestNo3(String input, String expected){
+    void setTestNo3(String input, boolean expected){
         // input String을 ,로 분리
         String[] splitedInput = input.split(",");
 
         // 각 int String을 int 로 parse 후 numbers에 cotains 되어있는지 확인
         for(String intStr : splitedInput) {
             int value = Integer.parseInt(intStr);
-            assertThat(numbers.contains(value)).isEqualTo(Boolean.valueOf(expected));
+            assertThat(numbers.contains(value)).isEqualTo(expected);
         }
     }
 
