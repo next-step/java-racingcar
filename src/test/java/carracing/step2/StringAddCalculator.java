@@ -3,38 +3,41 @@ package carracing.step2;
 import java.util.StringTokenizer;
 
 public class StringAddCalculator {
-    public static int splitAndSum(String text) {
+
+    private static final char customDelimiterStarter = '/';
+
+    public static int splitAndSum(String originText) {
+        String text = originText;
         if (text == null || text.isEmpty()) {
             return 0;
         }
 
-        StringBuilder delim = new StringBuilder(",:");
-        if(text.charAt(0) == '/') {
-            text = text.substring(getStartIdxAndDelim(text, delim));
+        StringBuilder delimiter = new StringBuilder(",:");
+        if(text.charAt(0) == customDelimiterStarter) {
+            int stringStartIdx = getStringStartIdx(text);
+            delimiter.append(text, 2, stringStartIdx - 1);
+            text = text.substring(stringStartIdx);
         }
 
-        StringTokenizer tokens = new StringTokenizer(text, delim.toString());
+        return addAllNumber(text, delimiter);
+    }
+
+    private static int addAllNumber(String text, StringBuilder delimiter) {
+        StringTokenizer tokens = new StringTokenizer(text, delimiter.toString());
         int result = 0;
         while (tokens.hasMoreTokens()) {
             int number = getNumber(tokens);
             result += number;
         }
-
         return result;
     }
 
-    private static int getStartIdxAndDelim(String text, StringBuilder delim) {
+    private static int getStringStartIdx(String text) {
         int idx = 2;
-        while(true) {
-            char c = text.charAt(idx);
-            if(c == '\n') {
-                idx += 1;
-                break;
-            }
-            delim.append(c);
+        while(text.charAt(idx) != '\n') {
             idx += 1;
         }
-        return idx;
+        return idx + 1;
     }
 
     private static int getNumber(StringTokenizer tokens) {
