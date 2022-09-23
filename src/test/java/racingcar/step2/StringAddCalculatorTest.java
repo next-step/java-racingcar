@@ -3,6 +3,7 @@ package racingcar.step2;
 import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullSource;
@@ -15,7 +16,7 @@ class StringAddCalculatorTest {
 	@NullSource
 	@ValueSource(strings = {"", " "})
 	void sumNullOrEmptyTest(String input) {
-		int result = StringAddCalculator.sum(input);
+		int result = StringAddCalculator.calculate(input);
 
 		assertThat(result).isZero();
 	}
@@ -24,8 +25,16 @@ class StringAddCalculatorTest {
 	@ParameterizedTest
 	@CsvSource(value = {"1:1", "2:2", "3:3"}, delimiter = ':')
 	void sumOneNumberTest(String input, int expected) {
-		int result = StringAddCalculator.sum(input);
+		int result = StringAddCalculator.calculate(input);
 
 		assertThat(result).isEqualTo(expected);
+	}
+
+	@DisplayName("숫자 두 개를 컴마(,)로 구분해 합을 반환")
+	@Test
+	void splitWithCommaAndSumTest() {
+		int result = StringAddCalculator.calculate("1,2");
+
+		assertThat(result).isEqualTo(3);
 	}
 }
