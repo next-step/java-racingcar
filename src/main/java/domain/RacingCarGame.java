@@ -23,7 +23,7 @@ public class RacingCarGame {
 
     private static void gamePlay(final RacingAttempt racingAttempt, final RacingCars racingCars) {
 
-        final RacingScore racingScore = RacingScore.init();
+        final RacingScore racingScore = RacingScore.getInstance();
         raceStart(racingAttempt, racingCars, racingScore);
         ResultView.resultPrint(racingScore);
     }
@@ -31,7 +31,7 @@ public class RacingCarGame {
     private static void raceStart(final RacingAttempt racingAttempt, final RacingCars racingCars, final RacingScore racingScore) {
 
         while (racingAttempt.isAttempt()) {
-            racingAttempt.race(racingCars);
+            racingAttempt.nextPlay(racingCars);
             racingScore.save(racingCars);
         }
     }

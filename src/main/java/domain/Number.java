@@ -2,8 +2,6 @@ package domain;
 
 public class Number {
 
-    private static final int ZERO = 0;
-
     private int number;
 
     private Number(final String number) {
@@ -17,32 +15,9 @@ public class Number {
         return new Number(str);
     }
 
-    private void validate(final String attempt) {
-
-        validateDigit(attempt);
-
-        if (Integer.parseInt(attempt) == ZERO) {
-            throw new IllegalArgumentException("입력값은 1 이상이어야 합니다.");
-        }
-    }
-
-    private static void validateDigit(final String str) {
-
-        for (int i = 0; i < str.length(); i++) {
-            validateDigit(str.charAt(i));
-        }
-    }
-
-    private static void validateDigit(char c) {
-
-        if (!Character.isDigit(c)) {
-            throw new IllegalArgumentException("숫자만 입력해야 합니다.");
-        }
-    }
-
     public int getNumber() {
 
-        return number;
+        return this.number;
     }
 
     public void nextAttempt() {
@@ -53,5 +28,28 @@ public class Number {
     public boolean isAttempt() {
 
         return this.number > 0;
+    }
+
+    private void validate(final String attempt) {
+
+        validateDigit(attempt);
+
+        if (Integer.parseInt(attempt) == 0) {
+            throw new IllegalArgumentException("입력값은 1 이상이어야 합니다.");
+        }
+    }
+
+    private static void validateDigit(final String str) {
+
+        for (int i = 0; i < str.length(); i++) {
+            validateDigitByChar(str.charAt(i));
+        }
+    }
+
+    private static void validateDigitByChar(final char charAt) {
+
+        if (!Character.isDigit(charAt)) {
+            throw new IllegalArgumentException("숫자만 입력해야 합니다.");
+        }
     }
 }

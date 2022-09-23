@@ -7,27 +7,32 @@ import java.util.stream.Collectors;
 
 public class RacingScore {
 
-    private Map<Integer, List<String>> racingScores = new HashMap<>();
+    private static final Map<Integer, List<String>> racingScores = new HashMap<>();
+    private static int sequence = 0;
 
-    private int index;
+    private static final RacingScore instance = new RacingScore();
 
     private RacingScore() {}
 
-    public static RacingScore init() {
+    public static RacingScore getInstance() {
+        return instance;
+    }
 
-        return new RacingScore();
+    public Map<Integer, List<String>> score() {
+
+        return racingScores;
     }
 
     public void save(final RacingCars racingCars) {
 
-        this.racingScores.put(index++, calculator(racingCars.score()));
+        racingScores.put(sequence++, calculator(racingCars.score()));
     }
 
     private List<String> calculator(final List<RacingCar> score) {
 
         return score.stream()
                 .map(racingCar ->
-                        convert(racingCar.moveDistance())
+                        convert(racingCar.distance())
                 )
                 .collect(Collectors.toList());
     }
@@ -39,10 +44,5 @@ public class RacingScore {
             result.append("-");
         }
         return result.toString();
-    }
-
-    public Map<Integer, List<String>> score() {
-
-        return this.racingScores;
     }
 }

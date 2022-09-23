@@ -14,7 +14,7 @@ class RacingScoreTest {
         final RacingCar racingCar = RacingCar.init();
         racingCar.move(() -> true);
         final RacingCars racingCars = RacingCars.from(racingCar);
-        final RacingScore racingScore = RacingScore.init();
+        final RacingScore racingScore = RacingScore.getInstance();
         racingScore.save(racingCars);
 
         assertThat(racingScore.score().get(0)).contains("-");

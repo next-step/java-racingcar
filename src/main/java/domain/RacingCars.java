@@ -8,13 +8,13 @@ import java.util.List;
 
 public class RacingCars {
 
-    private Number count;
+    private Number participant;
     private List<RacingCar> racingCars;
 
-    private RacingCars(final String cars) {
+    private RacingCars(final String participant) {
 
-        this.count = Number.from(cars);
-        this.racingCars = participate(count.getNumber());
+        this.participant = Number.from(participant);
+        this.racingCars = participate(this.participant.getNumber());
     }
 
     private RacingCars(final RacingCar racingCar) {
@@ -22,9 +22,9 @@ public class RacingCars {
         this.racingCars = List.of(racingCar);
     }
 
-    public static RacingCars from(final String cars) {
+    public static RacingCars from(final String participant) {
 
-        return new RacingCars(cars);
+        return new RacingCars(participant);
     }
 
     public static RacingCars from(final RacingCar racingCar) {
@@ -32,10 +32,10 @@ public class RacingCars {
         return new RacingCars(racingCar);
     }
 
-    private List<RacingCar> participate(final int count) {
+    private List<RacingCar> participate(final int participant) {
 
         List<RacingCar> racingCars = new ArrayList<>();
-        for(int i = 0; i < count; i++) {
+        for(int i = 0; i < participant; i++) {
             racingCars.add(RacingCar.init());
         }
         return racingCars;
@@ -46,7 +46,7 @@ public class RacingCars {
         return this.racingCars.size();
     }
 
-    public void play() {
+    public void roundPlay() {
 
         for (RacingCar racingCar : racingCars) {
             racingCar.move(new RandomMovingStrategy());

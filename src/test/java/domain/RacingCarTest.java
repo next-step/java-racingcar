@@ -16,6 +16,6 @@ class RacingCarTest {
         final RacingCar racingCar = RacingCar.init();
         racingCar.move(() -> movable);
 
-        assertThat(racingCar.moveDistance()).isEqualTo(position);
+        assertThat(racingCar.distance()).isEqualTo(position);
     }
 }

@@ -2,26 +2,26 @@ package domain;
 
 public class RacingAttempt {
 
-    private Number numberAttempt;
+    private Number attempt;
 
     private RacingAttempt(final String attempt) {
 
-        this.numberAttempt = Number.from(attempt);
+        this.attempt = Number.from(attempt);
     }
 
-    public static RacingAttempt from(final String count) {
+    public static RacingAttempt from(final String attempt) {
 
-        return new RacingAttempt(count);
+        return new RacingAttempt(attempt);
     }
 
-    public void race(final RacingCars racingCars) {
+    public void nextPlay(final RacingCars racingCars) {
 
-        this.numberAttempt.nextAttempt();
-        racingCars.play();
+        this.attempt.nextAttempt();
+        racingCars.roundPlay();
     }
 
     public boolean isAttempt() {
 
-        return this.numberAttempt.isAttempt();
+        return this.attempt.isAttempt();
     }
 }

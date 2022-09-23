@@ -20,7 +20,7 @@ public class RacingCar {
         }
     }
 
-    public int moveDistance() {
+    public int distance() {
 
         return this.position;
     }
