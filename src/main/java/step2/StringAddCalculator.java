@@ -3,6 +3,7 @@ package step2;
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import step2.exception.InvalidStringException;
 import step2.exception.NegativeNumberException;
 
 public class StringAddCalculator {
@@ -39,11 +40,19 @@ public class StringAddCalculator {
     }
 
     private static int toPositive(String value) {
-        int number = Integer.parseInt(value);
+        int number = toNumber(value);
         if (number < 0) {
             throw new NegativeNumberException();
         }
         return number;
+    }
+
+    private static int toNumber(String value) {
+        try {
+            return Integer.parseInt(value);
+        } catch (Exception e) {
+            throw new InvalidStringException();
+        }
     }
 
     private static int sum(int[] numbers) {
