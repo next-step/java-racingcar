@@ -11,7 +11,7 @@ public class CarRace {
 
     private static int MOVE_NUMBER = 4;
 
-    private List<Car> cars;
+    private final List<Car> cars;
     private final NumberGenerator numberGenerator;
 
     public CarRace(List<Car> cars, NumberGenerator numberGenerator) {
@@ -28,28 +28,25 @@ public class CarRace {
         this(makeCars(count));
     }
 
-    private static List<Car> makeCars(int count) {
-        return IntStream.range(0, count)
-            .mapToObj(__ -> new Car())
-            .collect(Collectors.toList());
-    }
-
     public int size() {
         return cars.size();
     }
 
-    public void addCar(Car car) {
-        cars.add(car);
+    private static List<Car> makeCars(int count) {
+        return IntStream.range(0, count)
+            .mapToObj(Car::new)
+            .collect(Collectors.toList());
     }
 
     public List<Car> cars() {
         return new ArrayList<>(cars);
     }
 
-    public void move() {
-        this.cars = cars.stream()
+    public CarRace move() {
+        List<Car> carList = cars.stream()
             .map(car -> move(car, numberGenerator))
             .collect(Collectors.toList());
+        return new CarRace(carList);
     }
 
     private Car move(Car car, NumberGenerator numberGenerator) {
