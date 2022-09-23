@@ -5,13 +5,9 @@ import java.util.Random;
 public class GasStation {
 
     private static final int FUEL_SEED = 10;
-    private final Random random;
+    private static final Random random = new Random();
 
-    public GasStation() {
-        random = new Random();
-    }
-
-    public int sellFuel() {
+    public static int sellFuel() {
         return random.nextInt(FUEL_SEED);
     }
 }
