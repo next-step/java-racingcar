@@ -6,15 +6,15 @@ import java.util.List;
 
 public class Race {
 
-    public static void main(String[] args) {
-        Race race = new Race();
-        race.start();
+    private final RaceResultView raceResultView;
+    private final RaceConfigurationScanner raceConfigurationScanner;
+
+    public Race(RaceResultView raceResultView, RaceConfigurationScanner raceConfigurationScanner) {
+        this.raceResultView = raceResultView;
+        this.raceConfigurationScanner = raceConfigurationScanner;
     }
 
-    private void start() {
-        RaceResultView raceResultView = new RaceResultView();
-        RaceConfigurationScanner raceConfigurationScanner = new RaceConfigurationScanner();
-
+    public void start() {
         RaceConfigurationDTO raceConfigurationDTO = raceConfigurationScanner.scan();
 
         List<Car> cars = CarFactory.produce(raceConfigurationDTO);
@@ -25,5 +25,4 @@ public class Race {
         raceResultView.viewResult();
         System.out.println("종료");
     }
-
 }
