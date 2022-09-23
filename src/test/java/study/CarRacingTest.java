@@ -11,7 +11,8 @@ public class CarRacingTest {
 
     @BeforeEach
     void 셋업() {
-        carRacing = new CarRacing(3, 3);
+        carRacing = new CarRacing();
+        carRacing.start(3, 3);
     }
 
     @Test

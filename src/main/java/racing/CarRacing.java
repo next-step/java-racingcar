@@ -12,13 +12,14 @@ public class CarRacing {
 
     public static void main(String[] args) {
         CarRacing carRacing = new CarRacing();
+        carRacing.start();
     }
 
-    public CarRacing() {
+    public void start() {
         prepare();
     }
 
-    public CarRacing(int carCount, int rounds) {
+    public void start(int carCount, int rounds) {
         for (int i = 0; i < carCount; i++) {
             cars.add(new Car());
         }
