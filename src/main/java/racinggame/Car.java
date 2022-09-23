@@ -1,6 +1,6 @@
-package step_3;
+package racinggame;
 
-import step_3.util.RandomUtils;
+import racinggame.util.RandomUtils;
 
 import java.util.function.IntPredicate;
 

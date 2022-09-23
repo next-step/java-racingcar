@@ -1,6 +1,6 @@
-package step_3;
+package racinggame;
 
-import step_3.dto.RaceConfigurationDTO;
+import racinggame.dto.RaceConfigurationDTO;
 
 import java.util.List;
 import java.util.stream.Collectors;

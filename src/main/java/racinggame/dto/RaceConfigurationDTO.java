@@ -1,4 +1,4 @@
-package step_3.dto;
+package racinggame.dto;
 
 public class RaceConfigurationDTO {
     private int roundCount;

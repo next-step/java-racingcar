@@ -1,4 +1,4 @@
-package step_3.util;
+package racinggame.util;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;

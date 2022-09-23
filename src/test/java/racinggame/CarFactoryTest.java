@@ -1,7 +1,7 @@
-package step_3;
+package racinggame;
 
 import org.junit.jupiter.api.Test;
-import step_3.dto.RaceConfigurationDTO;
+import racinggame.dto.RaceConfigurationDTO;
 
 import java.util.List;
 
