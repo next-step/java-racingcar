@@ -6,15 +6,15 @@ import java.util.Objects;
 
 public class Car {
     private final Position position;
-    private final Name name;
+    private final CarName carName;
     
-    public Car(Name name) {
-        this(name, new Position(0));
+    public Car(CarName carName) {
+        this(carName, new Position(0));
     }
     
-    public Car(Name name, Position position) {
+    public Car(CarName carName, Position position) {
         this.position = position;
-        this.name = name;
+        this.carName = carName;
     }
     
     public boolean isWinner(int maxPosition) {
@@ -23,13 +23,13 @@ public class Car {
     
     public Car moveTry(MoveStrategy moveStrategy) {
         if (moveStrategy.isMove()) {
-            return new Car(name, position.increase());
+            return new Car(carName, position.increase());
         }
         return this;
     }
     
     public CarDTO information() {
-        return new CarDTO(name, position);
+        return new CarDTO(carName, position);
     }
     
     @Override
@@ -37,11 +37,11 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return Objects.equals(position, car.position) && Objects.equals(name, car.name);
+        return Objects.equals(position, car.position) && Objects.equals(carName, car.carName);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(position, name);
+        return Objects.hash(position, carName);
     }
 }

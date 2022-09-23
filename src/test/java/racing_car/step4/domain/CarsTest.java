@@ -16,15 +16,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CarsTest {
     private List<Car> carsList;
     private List<Car> carsListPositionDiff;
-    private Name jun;
-    private Name pobi;
-    private Name young;
+    private CarName jun;
+    private CarName pobi;
+    private CarName young;
     
     @BeforeEach
     void setUp() {
-        jun = new Name("jun");
-        pobi = new Name("pobi");
-        young = new Name("young");
+        jun = new CarName("jun");
+        pobi = new CarName("pobi");
+        young = new CarName("young");
         Position zeroPosition = new Position(0);
         carsList = Arrays.asList(new Car(jun, zeroPosition), new Car(pobi, zeroPosition), new Car(young, zeroPosition));
         carsListPositionDiff = Arrays.asList(new Car(jun, new Position(4)), new Car(pobi, new Position(5)), new Car(young, new Position(2)));
@@ -62,7 +62,7 @@ class CarsTest {
     void winnerOne() {
         Cars cars = new Cars(carsListPositionDiff);
         List<String> winners = cars.findWinners().stream()
-                .map(CarDTO::getName)
+                .map(CarDTO::getCarName)
                 .collect(Collectors.toList());
         assertThat(winners).hasSize(1).isEqualTo(List.of("pobi"));
     }
@@ -72,7 +72,7 @@ class CarsTest {
     void winnerTwo() {
         Cars cars = new Cars(Arrays.asList(new Car(jun, new Position(5)), new Car(pobi, new Position(5)), new Car(young, new Position(2))));
         List<String> winners = cars.findWinners().stream()
-                .map(CarDTO::getName)
+                .map(CarDTO::getCarName)
                 .collect(Collectors.toList());
         assertThat(winners).hasSize(2).isEqualTo(List.of("jun", "pobi"));
     }

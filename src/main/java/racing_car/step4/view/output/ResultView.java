@@ -19,7 +19,7 @@ public class ResultView {
         List<CarDTO> carDTOs = cars.information();
         
         for (CarDTO carDTO : carDTOs) {
-            System.out.print(carDTO.getName() + COLON);
+            System.out.print(carDTO.getCarName() + COLON);
             processBarPrint(carDTO.getPosition());
         }
         System.out.println();
@@ -38,7 +38,7 @@ public class ResultView {
     
     private static List<String> getWinnersNameList(Cars cars) {
         return cars.findWinners().stream()
-                .map(CarDTO::getName)
+                .map(CarDTO::getCarName)
                 .collect(Collectors.toList());
     }
 }
