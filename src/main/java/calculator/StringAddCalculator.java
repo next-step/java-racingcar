@@ -8,33 +8,26 @@ public class StringAddCalculator {
     private StringAddCalculator() {}
 
     public static int splitAndSum(String text) {
-        if (StringUtils.isEmpty(text)) return 0;
-        
-        // 문자열을 숫자 문자열 배열로 변환
-        String[] numberStrings = parseToNumberStringArray(text);
-
-        // 숫자 문자열 검증
-        validateNumberStrings(numberStrings);
-
-        // 더하기
-        return sum(numberStrings);
-    }
-
-    private static void validateNumberStrings(String[] tokens) {
-        for (String token : tokens) {
-            int number = Integer.parseInt(token);
-
-            checkMinusNumber(number);
+        if (StringUtils.isEmpty(text)) {
+            return 0;
         }
+
+        return sum(toPositiveNumbers(split(text)));
     }
 
-    private static void checkMinusNumber(int number) {
-        if (number < 0) {
-            throw new RuntimeException();
-        }
+    private static int[] toPositiveNumbers(String[] textTokens) {
+        return Arrays.stream(textTokens)
+                .mapToInt(textToken -> {
+                    int number = Integer.parseInt(textToken);
+                    if (number < 0) {
+                        throw new RuntimeException();
+                    }
+                    return number;
+                })
+                .toArray();
     }
 
-    private static String[] parseToNumberStringArray(String str) {
+    private static String[] split(String str) {
         Matcher m = Pattern.compile("//(.)\n(.*)").matcher(str);
         if (m.find()) {
             String delimiter = m.group(1);
@@ -44,9 +37,8 @@ public class StringAddCalculator {
         return str.split("[,:]");
     }
 
-    public static int sum(String[] strArr) {
-        return Arrays.stream(strArr)
-                .mapToInt(Integer::parseInt)
+    public static int sum(int[] positiveNumbers) {
+        return Arrays.stream(positiveNumbers)
                 .sum();
     }
 }
