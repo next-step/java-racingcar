@@ -4,7 +4,7 @@ import java.util.StringTokenizer;
 
 public class StringAddCalculator {
 
-    private static final char customDelimiterStarter = '/';
+    private static final char CUSTOM_DELIMITER_STARTER = '/';
 
     public static int splitAndSum(String originText) {
         String text = originText;
@@ -13,7 +13,7 @@ public class StringAddCalculator {
         }
 
         StringBuilder delimiter = new StringBuilder(",:");
-        if(text.charAt(0) == customDelimiterStarter) {
+        if(text.charAt(0) == CUSTOM_DELIMITER_STARTER) {
             int stringStartIdx = getStringStartIdx(text);
             delimiter.append(text, 2, stringStartIdx - 1);
             text = text.substring(stringStartIdx);
