@@ -3,7 +3,6 @@ package racingcar.service;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
-import racingcar.domain.CarFactory;
 import racingcar.domain.Cars;
 import racingcar.domain.Position;
 import racingcar.repository.RacingCarTable;
@@ -28,7 +27,7 @@ public class RacingGameTest {
     @DisplayName("모두 출발하는 경우")
     @Test
     void race() {
-        Cars cars = CarFactory.createCars("noose,pobi");
+        Cars cars = Cars.of("noose,pobi");
         RacingGame game = new RacingGame(new RacingCarTable(), () -> true);
 
         game.join(cars);
@@ -42,7 +41,7 @@ public class RacingGameTest {
     @DisplayName("모두 출발하지 못한 경우")
     @Test
     void raceNoMove() {
-        Cars cars = CarFactory.createCars("noose,pobi");
+        Cars cars = Cars.of("noose,pobi");
         RacingGame game = new RacingGame(new RacingCarTable(), () -> false);
 
         game.join(cars);

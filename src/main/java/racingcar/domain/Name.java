@@ -6,12 +6,12 @@ public class Name {
     private static final String NOT_VALID_MESSAGE = "은(는) 유효한 이름이 아닙니다.";
     public static final int MAX_LENGTH = 5;
 
-    private final String name;
+    private final String value;
 
-    public Name(String name) {
-        validate(name);
+    public Name(String value) {
+        validate(value);
 
-        this.name = name.strip();
+        this.value = value.strip();
     }
 
     private void validate(String name) {
@@ -21,16 +21,16 @@ public class Name {
         }
     }
 
-    private static boolean isOverLength(String name) {
-        return name.length() > MAX_LENGTH;
+    private boolean isOverLength(String name) {
+        return name.strip().length() > MAX_LENGTH;
     }
 
-    private static boolean isNullOrEmpty(String name) {
+    private boolean isNullOrEmpty(String name) {
         return name == null || name.isEmpty();
     }
 
     public String name() {
-        return name;
+        return value;
     }
 
     @Override
@@ -44,11 +44,11 @@ public class Name {
         }
 
         Name name1 = (Name) o;
-        return Objects.equals(name, name1.name);
+        return Objects.equals(value, name1.value);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        return Objects.hash(value);
     }
 }

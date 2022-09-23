@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
-import racingcar.domain.CarFactory;
+import racingcar.domain.Cars;
 import racingcar.domain.MoveStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -35,7 +35,7 @@ class RacingCarTableTest {
     @DisplayName("Cars 저장")
     @Test
     void saveAll() {
-        carTable.saveAll(CarFactory.createCars("noose,pobi,honux"));
+        carTable.saveAll(Cars.of("noose,pobi,honux"));
 
         int size = carTable.findAll()
                             .size();
@@ -45,7 +45,7 @@ class RacingCarTableTest {
     @DisplayName("불러온 데이터에 수정을 해도 테이블에 저장된 데이터는 변경되지 않는다.")
     @Test
     void findAll() {
-        carTable.saveAll(CarFactory.createCars("noose,pobi,honux"));
+        carTable.saveAll(Cars.of("noose,pobi,honux"));
 
         Car carA = carTable.findAll().getElements().get(0);
         MoveStrategy forward = () -> true;

@@ -54,7 +54,7 @@ public class RacingGameResult {
         return Collections.unmodifiableList(records);
     }
 
-    public void winner(Cars winners) {
+    public void setWinners(Cars winners) {
         this.winners = winners;
     }
 }

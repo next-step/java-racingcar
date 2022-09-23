@@ -9,13 +9,15 @@ public class Car {
     private Position position;
 
     public Car(String name) {
-        this.name = new Name(name);
-        this.position = new Position();
+        this(name, new Position());
+    }
+
+    public Car(String name, Position position) {
+        this(new Name(name), position);
     }
 
     public Car(String name, int position) {
-        this.name = new Name(name);
-        this.position = new Position(position);
+        this(new Name(name), new Position(position));
     }
 
     public Car(Name name, Position position) {
@@ -33,7 +35,7 @@ public class Car {
     }
 
     public int positionValue() {
-        return position.getPosition();
+        return position.getValue();
     }
 
     public Position position() {

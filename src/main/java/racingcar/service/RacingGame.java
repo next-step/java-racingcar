@@ -21,7 +21,7 @@ public class RacingGame {
     }
 
     public void join(String carNames) {
-        join(CarFactory.createCars(carNames));
+        join(Cars.of(carNames));
     }
 
     public void join(Cars cars) {
@@ -39,7 +39,7 @@ public class RacingGame {
             result.record(cars);
         }
 
-        result.winner(cars.findWinners());
+        result.setWinners(cars.findWinners());
 
         clearAndSave(cars);
         return result;

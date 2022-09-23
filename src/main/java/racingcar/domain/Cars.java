@@ -1,10 +1,28 @@
 package racingcar.domain;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Cars {
+    public static final String DELIMITER = ",";
     private List<Car> elements = new ArrayList<>();
+
+    public static Cars of(String carNames) {
+        List<Car> cars = Stream.of(splitName(carNames))
+                .map(Car::new)
+                .collect(Collectors.toList());
+
+        return Cars.of(cars);
+    }
+
+    private static String[] splitName(String carNames) {
+        return carNames.split(DELIMITER);
+    }
 
     public static Cars of(Collection<Car> elements) {
         return new Cars(new ArrayList<>(elements));
