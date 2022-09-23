@@ -1,10 +1,10 @@
 package step3;
 
 public class Car {
-    private Integer location=0;
+    private Integer location = 0;
     private final String INDEX = "-";
 
-    void moveForward(){
+    void moveForward() {
         this.location++;
     }
 

@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class RacingSupport {
 
-    static Car[] prepareCar(Car[] cars){
+    static Car[] prepareCar(Car[] cars) {
         for (int i = 0; i < cars.length; i++) {
             cars[i] = new Car();
         }
@@ -36,7 +36,7 @@ public class RacingSupport {
         RacingCarOutput.printRacingResult(preparedCars[j]);
     }
 
-    private static Boolean isRandomGreaterThanThree(){
+    private static Boolean isRandomGreaterThanThree() {
         int random = new Random().nextInt(10);
         if (random > 3) {
             return true;
