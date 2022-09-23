@@ -5,14 +5,24 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CarRacing {
-    public List<Car> cars = new ArrayList<>();
+    private List<Car> cars = new ArrayList<>();
+    private int rounds = 0;
 
-    public CarRacing(int carCount) {
-        participate(carCount);
+    public CarRacing(int carCount, int rounds) {
+        setRace(carCount, rounds);
     }
 
     public int carsCount() {
         return cars.size();
+    }
+
+    public int rounds() {
+        return rounds;
+    }
+
+    private void setRace(int carCount, int rounds) {
+        participate(carCount);
+        this.rounds = rounds;
     }
 
     private void participate(int carCount) {
