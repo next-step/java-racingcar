@@ -3,7 +3,7 @@ package model;
 
 public class Car {
 
-    private static final String POSITION_UNIT = "-";
+    public static final String POSITION_UNIT = "-";
     private int currentPosition = 0;
 
     public void move() {
