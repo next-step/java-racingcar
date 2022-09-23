@@ -1,17 +1,25 @@
 package racingcar.domain;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public class CarFactory {
+    public static final String DELIMITER = ",";
 
     private CarFactory() {
     }
 
-    public static Cars createCars(int numberOfCars) {
-        Cars cars = new Cars();
+    public static Cars createCars(String carNames) {
+        List<Car> cars = Stream.of(splitName(carNames))
+                .map(String::strip)
+                .map(Car::new)
+                .collect(Collectors.toList());
 
-        for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car());
-        }
+        return Cars.of(cars);
+    }
 
-        return cars;
+    public static String[] splitName(String carNames) {
+        return carNames.split(DELIMITER);
     }
 }

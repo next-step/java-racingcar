@@ -7,13 +7,13 @@ import java.io.InputStreamReader;
 public class InputView {
     private static final BufferedReader BR = new BufferedReader(new InputStreamReader(System.in));
     private static final String INPUT_TRY_COUNT_MESSAGE = "시도할 회수는 몇 회 인가요?\n";
-    private static final String INPUT_NUMBER_OF_CARS_MESSAGE = "자동차 대수는 몇 대 인가요?\n";
+    private static final String INPUT_CAR_NAMES_MESSAGE = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).\n";
 
     private InputView() {
     }
 
-    public static String inputNumberOfCars() {
-        return input(INPUT_NUMBER_OF_CARS_MESSAGE);
+    public static String inputCarNames() {
+        return input(INPUT_CAR_NAMES_MESSAGE);
     }
 
     public static String inputTryCount() {

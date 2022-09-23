@@ -1,7 +1,5 @@
 package racingcar.view;
 
-import racingcar.domain.RacingGameResult;
-
 public class ResultView {
 
     private static final String RESULT_MESSAGE = "\n실행 결과";
@@ -13,5 +11,6 @@ public class ResultView {
         System.out.println(RESULT_MESSAGE);
         result.records()
                 .forEach(System.out::println);
+        System.out.println(result.getWinMessage());
     }
 }

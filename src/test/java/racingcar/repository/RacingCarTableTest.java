@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.CarFactory;
+import racingcar.domain.MoveStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -20,8 +21,8 @@ class RacingCarTableTest {
     @DisplayName("Car 저장")
     @Test
     void save() {
-        Car carA = new Car();
-        Car carB = new Car();
+        Car carA = new Car("testA");
+        Car carB = new Car("testB");
 
         carTable.save(carA);
         carTable.save(carB);
@@ -34,7 +35,7 @@ class RacingCarTableTest {
     @DisplayName("Cars 저장")
     @Test
     void saveAll() {
-        carTable.saveAll(CarFactory.createCars(3));
+        carTable.saveAll(CarFactory.createCars("noose,pobi,honux"));
 
         int size = carTable.findAll()
                             .size();
@@ -44,14 +45,15 @@ class RacingCarTableTest {
     @DisplayName("불러온 데이터에 수정을 해도 테이블에 저장된 데이터는 변경되지 않는다.")
     @Test
     void findAll() {
-        carTable.saveAll(CarFactory.createCars(1));
+        carTable.saveAll(CarFactory.createCars("noose,pobi,honux"));
 
-        Car carA = carTable.findAll().getCars().get(0);
-        carA.move(() -> true);
-        carA.move(() -> true);
+        Car carA = carTable.findAll().getElements().get(0);
+        MoveStrategy forward = () -> true;
+        carA.move(forward);
+        carA.move(forward);
 
-        Car carB = carTable.findAll().getCars().get(0);
+        Car carB = carTable.findAll().getElements().get(0);
 
-        assertThat(carB.position()).isEqualTo(1);
+        assertThat(carB.positionValue()).isEqualTo(1);
     }
 }
