@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
-    final static String regex = "(?<=//)(.*)(?=\\n)";
+    final static Pattern customDelimiterPattern = Pattern.compile("(?<=//)(.*)(?=\\n)", Pattern.MULTILINE);
 
     static int splitAndSum(String input) {
         int sum = 0;
@@ -41,7 +41,7 @@ public class StringAddCalculator {
     }
 
     static String checkCustomDelimiter(String str) {
-        Matcher matcher = Pattern.compile(regex, Pattern.MULTILINE).matcher(str);
+        Matcher matcher = customDelimiterPattern.matcher(str);
 
         if(matcher.find())
             return matcher.group(0);
