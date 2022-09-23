@@ -1,13 +1,23 @@
 package step3.racinggame;
 
+import step3.racinggame.core.GameInitializer;
 import step3.racinggame.core.RacingGame;
+import step3.racinggame.core.ScoreBoard;
+import step3.racinggame.view.GamePad;
+import step3.racinggame.view.ScoreScreen;
 
 public class GamePlayer {
 
-    // 정말로 게임을 실행시켜보고 싶어서 만들었습니다. 요구사항과는 무관합니다.
     public static void main(String[] args) {
-        RacingGame game = new RacingGame();
-        game.play();
+        GamePad.printNumOfCarInputMsg();
+        int numOfCar = GamePad.insertData();
+        GamePad.printNumOfGameInputMsg();
+        int numOfGame = GamePad.insertData();
+
+        RacingGame racingGame = new RacingGame(GameInitializer.initCars(numOfCar), GameInitializer.initFuelTank(numOfGame, numOfCar));
+        ScoreBoard scoreBoard = racingGame.play(numOfGame);
+
+        ScoreScreen.printScoreBoard(scoreBoard);
     }
 
 }
