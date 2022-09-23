@@ -5,10 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.util.List;
-import java.util.Optional;
-
-import static org.assertj.core.api.Assertions.assertThat;
+ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
@@ -33,16 +30,5 @@ public class PositionTest {
         Position newPosition = new Position(1).add(new Position(position));
 
         assertThat(newPosition).isEqualTo(new Position(expected));
-    }
-
-    @DisplayName("Position 리스트 중 가장 큰 값을 찾기")
-    @Test
-    void findMax() {
-        List<Position> positions = List.of(new Position(1), new Position(10), new Position(100));
-
-        Optional<Position> max = positions.stream()
-                .max(Position::compareTo);
-
-        assertThat(max).contains(new Position(100));
     }
 }
