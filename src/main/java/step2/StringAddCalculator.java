@@ -1,10 +1,7 @@
 package step2;
 
-import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import step2.exception.InvalidStringException;
-import step2.exception.NegativeNumberException;
 
 public class StringAddCalculator {
 
@@ -17,7 +14,7 @@ public class StringAddCalculator {
         if (isBlank(text)) {
             return ZERO;
         }
-        return sum(toInts(split(text)));
+        return sum(toInts(split(text))).getValue();
     }
 
     private static boolean isBlank(String text) {
@@ -33,29 +30,19 @@ public class StringAddCalculator {
         return text.split(SEPARATOR);
     }
 
-    private static int[] toInts(String[] values) {
-        return Arrays.stream(values)
-            .mapToInt(StringAddCalculator::toPositive)
-            .toArray();
-    }
-
-    private static int toPositive(String value) {
-        int number = toNumber(value);
-        if (number < 0) {
-            throw new NegativeNumberException();
+    private static Positive[] toInts(String[] values) {
+        Positive[] numbers = new Positive[values.length];
+        for (int i = 0; i < values.length; i++) {
+            numbers[i] = new Positive(values[i]);
         }
-        return number;
+        return numbers;
     }
 
-    private static int toNumber(String value) {
-        try {
-            return Integer.parseInt(value);
-        } catch (Exception e) {
-            throw new InvalidStringException();
+    private static Positive sum(Positive[] numbers) {
+        Positive result = new Positive(ZERO);
+        for (Positive number : numbers) {
+            result = result.plus(number);
         }
-    }
-
-    private static int sum(int[] numbers) {
-        return Arrays.stream(numbers).sum();
+        return result;
     }
 }
