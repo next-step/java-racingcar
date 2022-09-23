@@ -14,10 +14,24 @@ public class C {
             String[] arr = m.group(2).split(customDelimiter);
             int result = 0;
             for (String str : arr) {
-                result += Integer.parseInt(str);
+                int number = Integer.parseInt(str);
+                if (number < 0) {
+                    throw new RuntimeException();
+                }
+                result += number;
+            }
+            return result;
+        } else {
+            String[] arr = text.split(",|:");
+            int result = 0;
+            for (String str : arr) {
+                int number = Integer.parseInt(str);
+                if (number < 0) {
+                    throw new RuntimeException();
+                }
+                result += number;
             }
             return result;
         }
-        return 0;
     }
 }

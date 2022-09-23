@@ -7,6 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CTest {
     @Test
@@ -46,5 +47,13 @@ public class CTest {
     @DisplayName("//”와 “\\n” 문자 사이에 커스텀 구분자를 지정할 수 있다")
     void customRegex() {
         assertThat(C.calculator("//;\n1;2;3")).isEqualTo(6);
+    }
+
+    @Test
+    @DisplayName("음수를 전달할 경우 RuntimeException 예외가 발생해야 한다")
+    void negativeNumberException() {
+        assertThatThrownBy(() -> C.calculator("-1:2:3"))
+                .isInstanceOf(RuntimeException.class);
+
     }
 }
