@@ -2,6 +2,7 @@ package racingcar.view;
 
 import racingcar.domain.Cars;
 import racingcar.domain.validator.NameValidator;
+import racingcar.service.RacingRequest;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package racingcar.view;
+package racingcar.service;
 
 public class RacingRequest {
     private final String carNames;

@@ -4,7 +4,7 @@ import racingcar.repository.RacingCarTable;
 import racingcar.service.RacingGame;
 import racingcar.view.InputView;
 import racingcar.view.RacingGameResult;
-import racingcar.view.RacingRequest;
+import racingcar.service.RacingRequest;
 import racingcar.view.ResultView;
 
 public class RacingCarController {

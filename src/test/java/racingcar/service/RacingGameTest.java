@@ -6,7 +6,6 @@ import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.Position;
 import racingcar.repository.RacingCarTable;
-import racingcar.view.RacingRequest;
 
 import java.util.List;
 
