@@ -33,4 +33,11 @@ public class StringCalculatorTest {
 	void return_single_number_untouched() {
 		assertThat(stringCalculator.calculate("33")).isEqualTo(33);
 	}
+
+	@DisplayName("커스텀 구분자를 지정할 수 있다")
+	@Test
+	void custom_separator_available() {
+		String input = "//;\n1;2;3";
+		assertThat(stringCalculator.calculate(input)).isEqualTo(6);
+	}
 }
