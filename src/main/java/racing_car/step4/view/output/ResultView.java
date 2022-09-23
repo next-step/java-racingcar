@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class ResultView {
     private static final String RESULT_MESSAGE = "실행 결과";
     private static final String BAR = "-";
-    public static final String COLON = " : ";
+    private static final String COLON = " : ";
     
     public static void resultMessagePrint() {
         System.out.println(RESULT_MESSAGE);
