@@ -9,9 +9,17 @@ public class StringAddCalculator {
     private static String MATCH_PATTERN = "//(.)\n(.*)";
     private static String COMMA_OR_COLON = ",|:";
 
-    // 음수 체크
-    private static boolean isNagative(int number) {
-        return number < 0;
+    public static int splitAndSum(String number) {
+        if (validate(number)) {
+            return 0;
+        }
+
+        return sum(split(number));
+    }
+
+    // 빈 문자열 또는 null 체크
+    private static boolean validate(String text) {
+        return text == null || text.isEmpty();
     }
 
     // split
@@ -23,21 +31,11 @@ public class StringAddCalculator {
         }
         return text.split(COMMA_OR_COLON);
     }
-
-    public static int splitAndSum(String number) {
-        if (validate(number)) return 0;
-
-        return sum(split(number));
-    }
-
-    // 빈 문자열 또는 null 체크
-    private static boolean validate(String text) {
-        return text == null || text.isEmpty();
-    }
-
     // sum
     private static int sum(String[] numbers) {
-        return Arrays.stream(numbers).mapToInt(StringAddCalculator::getPositiveNumber).sum();
+        return Arrays.stream(numbers)
+                .mapToInt(StringAddCalculator::getPositiveNumber)
+                .sum();
     }
 
     // 음수 발라내고 양수만 가져오기
@@ -47,5 +45,10 @@ public class StringAddCalculator {
         if (isNagative(result)) throw new IllegalArgumentException("음수는 입력할 수 없습니다. 양수를 입력해주세요.");
 
         return result;
+    }
+
+    // 음수 체크
+    private static boolean isNagative(int number) {
+        return number < 0;
     }
 }
