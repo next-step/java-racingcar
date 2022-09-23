@@ -13,12 +13,9 @@ public class StringAddCalculator {
         String[] tokens = convertTextToTokens(text);
 
         return Arrays.stream(tokens)
-                .mapToInt(token -> {
-                    int n = Integer.parseInt(token);
-                    if (n < 0) throw new RuntimeException("contains negative number : " + n);
-                    return n;
-                })
+                .mapToInt(Integer::parseUnsignedInt)
                 .sum();
+
     }
 
     private static String[] convertTextToTokens(String text) {
