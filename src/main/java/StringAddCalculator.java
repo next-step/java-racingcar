@@ -10,14 +10,7 @@ public class StringAddCalculator {
             return 0;
         }
 
-        String[] tokens;
-        Matcher m = CUSTOM_DELIMITER.matcher(text);
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            tokens = m.group(2).split(customDelimiter);
-        } else {
-            tokens = text.split(",|:");
-        }
+        String[] tokens = convertTextToTokens(text);
 
         return Arrays.stream(tokens)
                 .mapToInt(token -> {
@@ -26,5 +19,14 @@ public class StringAddCalculator {
                     return n;
                 })
                 .sum();
+    }
+
+    private static String[] convertTextToTokens(String text) {
+        Matcher m = CUSTOM_DELIMITER.matcher(text);
+        if (m.find()) {
+            String customDelimiter = m.group(1);
+            return m.group(2).split(customDelimiter);
+        }
+        return text.split(",|:");
     }
 }
