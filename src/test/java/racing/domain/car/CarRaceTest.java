@@ -31,34 +31,6 @@ public class CarRaceTest {
     }
 
     @Test
-    @DisplayName("size체크 테스트")
-    void getSizeTest() {
-        //given
-        List<Car> list = List.of(new Car(0));
-
-        //when
-        CarRace carRace = new CarRace(list, new DefaultNumberGenerator(10));
-
-        //then
-        assertThat(carRace.size()).isEqualTo(1);
-
-    }
-
-    @Test
-    @DisplayName("자동차 추가 테스트")
-    void addCarTest() {
-        //given
-        List<Car> list = new ArrayList<>(List.of(new Car(0)));
-        CarRace carRace = new CarRace(list, new DefaultNumberGenerator(10));
-
-        //when
-        carRace.addCar(new Car(0));
-
-        //then
-        assertThat(carRace.size()).isEqualTo(2);
-    }
-
-    @Test
     @DisplayName("전체 자동차 전진 테스트")
     void advanceCarTest() {
         //given
@@ -66,12 +38,10 @@ public class CarRaceTest {
         CarRace carRace = new CarRace(list, advanced);
 
         //when
-        carRace.move();
+        CarRace movedCarRace = carRace.move();
 
         //then
-        assertThat(carRace.cars())
-            .filteredOn(car -> car.position() == 1)
-            .isNotEmpty();
+        assertThat(movedCarRace).isEqualTo(new CarRace(List.of(new Car(1))));
     }
 
     @Test
@@ -82,13 +52,10 @@ public class CarRaceTest {
         CarRace carRace = new CarRace(list, notAdvanced);
 
         //when
-        carRace.move();
+        CarRace movedCarRace = carRace.move();
 
         //then
-        assertThat(carRace.cars())
-            .filteredOn(car -> car.position() == 0)
-            .isNotEmpty();
+        assertThat(movedCarRace).isEqualTo(carRace);
     }
-
 
 }
