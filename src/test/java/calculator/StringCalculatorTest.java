@@ -19,4 +19,10 @@ public class StringCalculatorTest {
         assertThat(parseAndSum("1")).isEqualTo(1);
     }
 
+    @Test
+    void 숫자_구분자로_두개이상() {
+        assertThat(parseAndSum("1,2")).isEqualTo(3);
+        assertThat(parseAndSum("1,2:3")).isEqualTo(6);
+    }
+
 }
