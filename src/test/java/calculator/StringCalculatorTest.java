@@ -27,4 +27,10 @@ public class StringCalculatorTest {
 	void comma_or_colon_is_a_separator() {
 		assertThat(stringCalculator.calculate("1,2:3")).isEqualTo(6);
 	}
+
+	@DisplayName("숫자 하나는 그대로 반환한다")
+	@Test
+	void return_single_number_untouched() {
+		assertThat(stringCalculator.calculate("33")).isEqualTo(33);
+	}
 }
