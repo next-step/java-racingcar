@@ -1,11 +1,24 @@
 package racing;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class CarRacing {
-    private static String result = "실행 결과";
-    public String play() {
-        return announceResult();
+    public List<Car> cars = new ArrayList<>();
+
+    public CarRacing(int carCount) {
+        participate(carCount);
     }
-    private String announceResult() {
-        return result;
+
+    public int carsCount() {
+        return cars.size();
+    }
+
+    private void participate(int carCount) {
+        cars = new ArrayList<>();
+        for (int i = 0; i < carCount; i++) {
+            cars.add(new Car());
+        }
     }
 }
