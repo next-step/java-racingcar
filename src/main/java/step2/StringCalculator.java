@@ -1,12 +1,12 @@
 package step2;
 
 public class StringCalculator {
-	public static final String SEPARATORS = ",|:";
+	public static String SEPARATORS = ",|:";
 	public int calculate(String input) {
 		if (input == null || input.isBlank()) {
 			return 0;
 		}
-		return add(convertToInt(split(input)));
+		return add(convertToInt(split(separatorCheck(input))));
 	}
 
 	public String[] split(String input) {
@@ -38,5 +38,15 @@ public class StringCalculator {
 			sum += i;
 		}
 		return sum;
+	}
+
+	public String separatorCheck(String input) {
+		if (input.contains("\n")) {
+			String[] split = input.split("\n");
+			String separator = String.valueOf(split[0].charAt(split[0].length() - 1));
+			SEPARATORS += "|" + separator;
+			return split[1];
+		}
+		return input;
 	}
 }

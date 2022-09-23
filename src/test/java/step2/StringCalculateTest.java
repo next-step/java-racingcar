@@ -30,7 +30,6 @@ class StringCalculateTest {
 	@DisplayName("기본 구분자로 split 하기")
 	@ValueSource(strings = {"1,2,3", "1:2:3"})
 	void splitByOtherSeparators(String input) throws Exception {
-		StringCalculator calculator = new StringCalculator();
 
 		assertThat(new String[] {"1", "2", "3"}).isEqualTo(calculator.split(input));
 	}
@@ -38,7 +37,6 @@ class StringCalculateTest {
 	@Test
 	@DisplayName("분리된 문자배열을 숫자배열로 반환")
 	void convertToIntArray() throws Exception {
-		StringCalculator calculator = new StringCalculator();
 		String[] arr = {"1", "2", "3"};
 
 		assertThat(new int[] {1, 2, 3}).isEqualTo(calculator.convertToInt(arr));
@@ -47,7 +45,6 @@ class StringCalculateTest {
 	@Test
 	@DisplayName("숫자배열 더하기")
 	void addInt() throws Exception {
-		StringCalculator calculator = new StringCalculator();
 		int[] arr = {1, 2, 3};
 
 		assertThat(6).isEqualTo(calculator.add(arr));
@@ -57,10 +54,7 @@ class StringCalculateTest {
 	@DisplayName("음수 또는 숫자가 아닐 때 RuntimeException throw")
 	@ValueSource(strings = {"-1,2,3", "a:2:3"})
 	void minusOrNotNumber(String input) throws Exception {
-		StringCalculator calculator = new StringCalculator();
-		String[] split = calculator.split(input);
-
-		assertThatThrownBy(() -> calculator.convertToInt(split))
+		assertThatThrownBy(() -> calculator.convertToInt(calculator.split(input)))
 			.isInstanceOf(RuntimeException.class);
 	}
 
@@ -72,5 +66,11 @@ class StringCalculateTest {
 	}, delimiter = ';')
 	void plus(String input, int expected) {
 		assertThat(calculator.calculate(input)).isEqualTo(expected);
+	}
+
+	@Test
+	@DisplayName("커스텀 구분자 테스트")
+	void customSeparator() {
+		assertThat(calculator.calculate("//;\n1;2;3")).isEqualTo(6);
 	}
 }
