@@ -9,15 +9,14 @@ public class StringAddCalculator {
     final static Pattern customDelimiterPattern = Pattern.compile("(?<=//)(.*)(?=\\n)", Pattern.MULTILINE);
 
     static int splitAndSum(String input) {
+        if (input == null || input.isBlank()) return 0;
+
         int sum = 0;
+        String customDelimiter = checkCustomDelimiter(input);
+        List<String> splitString = customDelimiter == null ? splitByDefault(input) : splitByCustom(input, customDelimiter);
 
-        if (input != null && !input.isBlank()) {
-            String customDelimiter = checkCustomDelimiter(input);
-            List<String> splitString = customDelimiter == null ? splitByDefault(input) : splitByCustom(input, customDelimiter);
-
-            for (String value : splitString) {
-                sum += Integer.parseUnsignedInt(value);
-            }
+        for (String value : splitString) {
+            sum += Integer.parseUnsignedInt(value);
         }
 
         return sum;
