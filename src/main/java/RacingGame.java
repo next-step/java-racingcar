@@ -14,14 +14,14 @@ public class RacingGame {
 
     public RacingGame(GameStrategy strategy, int carNumber) {
         this.strategy = strategy;
-        for(int  i = 0 ; i < carNumber ; i++){
+        for (int i = 0; i < carNumber; i++) {
             this.cars.add(new Car());
         }
     }
 
-    public GameResult play(){
+    public GameResult play() {
         StringBuilder builder = new StringBuilder();
-        for (int i = 0 ; i < cars.size();  i++){
+        for (int i = 0; i < cars.size(); i++) {
             Car car = cars.get(i);
             builder.append(car.getCurrentPosition());
             moveCarByStrategy(car);
@@ -29,8 +29,8 @@ public class RacingGame {
         return new GameResult(builder.toString());
     }
 
-    void moveCarByStrategy(Car car){
-        if(!this.strategy.isCarMove()){
+    void moveCarByStrategy(Car car) {
+        if (!this.strategy.isCarMove()) {
             return;
         }
         car.move();

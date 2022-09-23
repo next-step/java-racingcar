@@ -15,11 +15,11 @@ public class RandomStrategy implements GameStrategy {
         return this.isCarMove(getRandomNum());
     }
 
-    private int getRandomNum(){
+    private int getRandomNum() {
         return this.random.nextInt(MAX_BOUND_NUMBER);
     }
 
-    boolean isCarMove(int randNumber){
+    boolean isCarMove(int randNumber) {
         return randNumber < MIN_MOVE_NUMBER;
     }
 }

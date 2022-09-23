@@ -2,29 +2,9 @@ package model;
 
 public class GameParam {
 
-    private int carNum;
+    private final int carNum;
 
-    private int tryNum;
-
-    public static class GameParamBuilder {
-        private int carNum;
-
-        private int tryNum;
-
-        public GameParamBuilder carNum(int carNum){
-            this.carNum = carNum;
-            return this;
-        }
-
-        public GameParamBuilder tryNum(int tryNum){
-            this.tryNum = tryNum;
-            return this;
-        }
-
-        public GameParam build(){
-            return new GameParam(this);
-        }
-    }
+    private final int tryNum;
 
     private GameParam(GameParamBuilder builder) {
         this.carNum = builder.carNum;
@@ -37,5 +17,25 @@ public class GameParam {
 
     public int getTryNum() {
         return tryNum;
+    }
+
+    public static class GameParamBuilder {
+        private int carNum;
+
+        private int tryNum;
+
+        public GameParamBuilder carNum(int carNum) {
+            this.carNum = carNum;
+            return this;
+        }
+
+        public GameParamBuilder tryNum(int tryNum) {
+            this.tryNum = tryNum;
+            return this;
+        }
+
+        public GameParam build() {
+            return new GameParam(this);
+        }
     }
 }
