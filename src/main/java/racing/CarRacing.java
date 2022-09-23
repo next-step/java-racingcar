@@ -2,14 +2,27 @@ package racing;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class CarRacing {
+    private static final String INPUT_CAR_COUNT_TEXT = "자동차 대수는 몇 대 인가요?";
+    private static final String INPUT_ROUND_COUNT_TEXT = "시도할 회수는 몇 회 인가요?";
     private List<Car> cars = new ArrayList<>();
     private int rounds = 0;
+    private int carCount = 0;
+
+    public static void main(String[] args) {
+        CarRacing carRacing = new CarRacing();
+    }
+
+    public CarRacing() {
+        prepare();
+    }
 
     public CarRacing(int carCount, int rounds) {
-        setRace(carCount, rounds);
+        for (int i = 0; i < carCount; i++) {
+            cars.add(new Car());
+        }
+        this.rounds = rounds;
     }
 
     public int carsCount() {
@@ -20,13 +33,17 @@ public class CarRacing {
         return rounds;
     }
 
-    private void setRace(int carCount, int rounds) {
-        participate(carCount);
-        this.rounds = rounds;
+    private void prepare() {
+        participateCars();
+        setRounds();
     }
 
-    private void participate(int carCount) {
-        cars = new ArrayList<>();
+    private void setRounds() {
+        this.rounds = InputView.input(INPUT_ROUND_COUNT_TEXT);
+    }
+
+    private void participateCars() {
+        int carCount = InputView.input(INPUT_CAR_COUNT_TEXT);
         for (int i = 0; i < carCount; i++) {
             cars.add(new Car());
         }
