@@ -43,9 +43,31 @@ public class StringCalculator {
     private static int[] toInts(String[] values) {
         int[] numbers = new int[values.length];
         for (int i = 0; i < values.length; i++) {
-            numbers[i] = Integer.parseInt(values[i]);
+            numbers[i] = toPositiveInt(values[i]);;
         }
         return numbers;
+    }
+
+    private static int toPositiveInt(String value) {
+        int number = validateValueIsNumber(value);
+        validateValueIsPositive(number);
+        return number;
+    }
+
+    private static int validateValueIsNumber(String values) {
+        int number;
+        try {
+            number = Integer.parseInt(values);
+        } catch (NumberFormatException exception) {
+            throw new RuntimeException("숫자 이의의 값은 입력될 수 없습니다.");
+        }
+        return number;
+    }
+
+    private static void validateValueIsPositive(int number) {
+        if (number < 0) {
+            throw new RuntimeException("음수는 입력될 수 없습니다.");
+        }
     }
 
     private static String[] splitCustomizedText() {

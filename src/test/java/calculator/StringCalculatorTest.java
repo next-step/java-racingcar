@@ -31,4 +31,15 @@ public class StringCalculatorTest {
         assertThat(parseAndSum("//#\n1#2#3#4")).isEqualTo(10);
     }
 
+    @Test
+    void 숫자_이외의_값_혹은_음수() {
+        assertThatThrownBy(() -> {
+            parseAndSum("1,-2");
+        }).isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> {
+            parseAndSum("1,a");
+        }).isInstanceOf(RuntimeException.class);
+    }
+
+
 }
