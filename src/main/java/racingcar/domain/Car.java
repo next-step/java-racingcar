@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import java.util.Objects;
 
-public class Car {
+public class Car implements Comparable<Car> {
     private static final int DEFAULT_MOVEMENT_DISTANCE = 1;
 
     private Name name;
@@ -29,9 +29,8 @@ public class Car {
         return name.value();
     }
 
-
-    public boolean isSamePosition(Position position) {
-        return this.position.equals(position);
+    public boolean isSameCondition(Car other) {
+        return this.position.equals(other.position);
     }
 
     public int positionValue() {
@@ -66,5 +65,10 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(name, position);
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return positionValue() - o.positionValue();
     }
 }

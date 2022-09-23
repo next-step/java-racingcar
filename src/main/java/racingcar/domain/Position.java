@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import java.util.Objects;
 
-public class Position implements Comparable<Position> {
+ public class Position {
     private static final String POSITION_EXCEPTION_MESSAGE = "위치는 1 이상이어야 합니다.";
     private static final int DEFAULT_POSITION = 1;
 
@@ -57,10 +57,5 @@ public class Position implements Comparable<Position> {
     @Override
     public int hashCode() {
         return Objects.hash(value);
-    }
-
-    @Override
-    public int compareTo(Position o) {
-        return value - o.value;
     }
 }

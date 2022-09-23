@@ -30,7 +30,7 @@ public class CarTest {
     void isSamePosition() {
         Car car = new Car("test", 2);
 
-        assertThat(car.isSamePosition(new Position(2))).isTrue();
+        assertThat(car.isSameCondition(new Car("abc", 2))).isTrue();
     }
 
     @DisplayName("위치가 음수인 경우 예외 발생")

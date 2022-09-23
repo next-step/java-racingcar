@@ -44,23 +44,17 @@ public class Cars {
         return elements.size();
     }
 
-    // TODO: 우승 조건이 달라질 경우를 대비해 유연하게 설계해보자
     public Cars findWinners() {
-        Position maxPosition = getMaxPosition();
-        return getCarsSamePosition(maxPosition);
-    }
-
-    private Position getMaxPosition() {
-        return elements.stream()
-                .map(Car::position)
-                .max(Position::compareTo)
-                .orElseThrow(NoSuchElementException::new);
-    }
-
-    private Cars getCarsSamePosition(Position position) {
-        return Cars.of(elements.stream()
-                .filter(car -> car.isSamePosition(position))
+        Car winner = getWinner();
+        return new Cars(elements.stream()
+                .filter(car -> car.isSameCondition(winner))
                 .collect(Collectors.toList()));
+    }
+
+    private Car getWinner() {
+        return elements.stream()
+                .max(Car::compareTo)
+                .orElseThrow(NoSuchElementException::new);
     }
 
     public void add(Car car) {
