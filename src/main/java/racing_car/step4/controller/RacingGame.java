@@ -7,11 +7,11 @@ import racing_car.step4.view.output.ResultView;
 
 public class RacingGame {
     public void play() {
-        Cars cars = moveAndGetCars(InputView.createCars(), InputView.inputNumberOfTry());
+        Cars cars = moveCars(InputView.createCars(), InputView.inputNumberOfTry());
         ResultView.winnersPrint(cars);
     }
     
-    private Cars moveAndGetCars(Cars cars, int numberOfTry) {
+    private Cars moveCars(Cars cars, int numberOfTry) {
         ResultView.resultMessagePrint();
         return startMove(cars, numberOfTry);
     }
