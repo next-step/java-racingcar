@@ -9,7 +9,6 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 public class StringAddCalculatorTest {
 
-
     @ParameterizedTest
     @NullAndEmptySource
     @DisplayName("빈 문자열 또는 null 값을 입력할 경우 0을 반환해야 한다.")
@@ -23,5 +22,12 @@ public class StringAddCalculatorTest {
     void splitAndSum2() {
         int result = StringAddCalculator.splitAndSum("1");
         assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("숫자 두개를 컴마(,) 구분자로 입력할 경우 두 숫자의 합을 반환한다.")
+    void splitAndSum3() {
+        int result = StringAddCalculator.splitAndSum("1,2");
+        assertThat(result).isEqualTo(3);
     }
 }
