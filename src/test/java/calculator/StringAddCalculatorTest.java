@@ -2,8 +2,9 @@ package calculator;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.*;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -27,21 +28,18 @@ class StringAddCalculatorTest {
     }
 
     @Test
-    void splitAndSum_쉼표구분자로_자르고_합을_구함() {
+    void splitAndSum_문자열_하나인_경우_익셉션_처리함() {
 
-        assertThat(StringAddCalculator.splitAndSum("1,2")).isEqualTo(3);
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("a"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("숫자만 입력해야 합니다.");
     }
 
-    @Test
-    void splitAndSum_쉼표_또는_콜론_구분자로_자르고_합을_구함() {
+    @ParameterizedTest
+    @MethodSource("provideStringFor")
+    void splitAndSum_쉼표구분자_쉼표_콜론_커스텀_구분자로_자르고_합을_구함(final String str, final int expect) {
 
-        assertThat(StringAddCalculator.splitAndSum("1,2:3")).isEqualTo(6);
-    }
-
-    @Test
-    void splitAndSum_custom_구분자로_자르고_합을_구함() {
-
-        assertThat(StringAddCalculator.splitAndSum("//;\n1;2;3")).isEqualTo(6);
+        assertThat(StringAddCalculator.splitAndSum(str)).isEqualTo(expect);
     }
 
     @Test
@@ -58,5 +56,14 @@ class StringAddCalculatorTest {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum("1P23s"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("값을 잘못 입력하였습니다.");
+    }
+
+    private static Stream<Arguments> provideStringFor() {
+
+        return Stream.of(
+                Arguments.of("1,2", 3),
+                Arguments.of("1,2:3", 6),
+                Arguments.of("//;\n1;2;3", 6)
+        );
     }
 }
