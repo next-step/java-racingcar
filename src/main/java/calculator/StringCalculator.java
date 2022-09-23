@@ -2,18 +2,46 @@ package calculator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class StringAddCalculator {
+public class StringCalculator {
     private static final String COMMA = ",";
     private static final String DOUBLE_DOT = ":";
 
-    public static int splitAndSum(String text) {
+    public static int calculateInputText() {
+        List<String> userInput = getUserInput();
+        List<Integer> intList = splitText(userInput.get(0));
+        Operator op = Operator.findBySymbol(userInput.get(1));
+        return calculate(intList, op);
+    }
+
+    private static List<String> getUserInput() {
+        System.out.print("[{text} {operator}] 순서로 입력해주세요. ex) 1,2,3 + \n" +
+                "--> ");
+        Scanner scanner = new Scanner(System.in).useDelimiter(" ");
+        String text = scanner.next();
+        String operText = scanner.nextLine().trim();
+        return List.of(text, operText);
+    }
+
+    public static List<Integer> splitText(String text) {
         if (text == null || text.isEmpty())
+            return List.of();
+        return convertTextToIntList(text);
+    }
+
+    public static int calculate(List<Integer> intList, Operator operator) {
+        if (intList.isEmpty()) {
             return 0;
-        List<Integer> numbers = convertTextToIntList(text);
-        return cacluateSum(numbers);
+        }
+        int result = intList.get(0);
+        for (int i = 1; i < intList.size(); i++) {
+            int num = intList.get(i);
+            result = operator.execute(result, num);
+        }
+        return result;
     }
 
     public static List<Integer> convertTextToIntList(String text) {
@@ -34,14 +62,6 @@ public class StringAddCalculator {
             list.add(Integer.parseInt(number));
         }
         return list;
-    }
-
-    private static int cacluateSum(List<Integer> intList) {
-        int sum = 0;
-        for (int number : intList) {
-            sum += number;
-        }
-        return sum;
     }
 
     private static void validatePositveNumber(String number) {
