@@ -36,7 +36,7 @@ public class InputView {
     }
     
     private static String deleteSpace(String input) {
-        return input.replace(" ", "");
+        return input.trim();
     }
     
     private static void checkCarsNameLength(String[] carsName) throws UnsupportedOperationException {
