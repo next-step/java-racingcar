@@ -10,7 +10,7 @@ public class Main {
 
         ResultView.printStartComment();
         for (int i = 0; i < input.tryCount(); i++) {
-            cars = cars.next();
+            cars = cars.race();
 
             ResultView.printRacing(cars);
         }

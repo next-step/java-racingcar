@@ -15,17 +15,17 @@ class CarsTest {
         Cars cars = Cars.of(List.of("name1", "name2", "name3"));
 
         assertThat(cars.cars().size()).isEqualTo(3);
-        assertThat(cars.cars().get(0).currentPosition()).isEqualTo(0);
+        assertThat(cars.cars().get(0).position()).isEqualTo(0);
     }
 
-    @DisplayName("다음 자동차 경주 리스트를 반환한다")
+    @DisplayName("자동차 경주를 시작하고 결과를 반환한다")
     @Test
-    void next() {
+    void race() {
         Cars cars = Cars.of(List.of("name1", "name2", "name3"));
 
-        Cars nextCars = cars.next();
+        Cars racedCars = cars.race();
 
-        assertThat(nextCars.cars()).hasSize(3);
+        assertThat(racedCars.cars()).hasSize(3);
     }
 
     @DisplayName("자동차 중 가장 많이 이동한 차들을 구한다")

@@ -20,7 +20,7 @@ public class ResultView {
         cars.cars()
                 .forEach(car -> System.out.println(RACING_PRINT_FORMAT
                         .replace("{carName}", car.name())
-                        .replace("{position}", BAR.repeat(car.currentPosition()))));
+                        .replace("{position}", BAR.repeat(car.position()))));
         System.out.println();
     }
 

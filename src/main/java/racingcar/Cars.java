@@ -28,11 +28,11 @@ public class Cars {
         return cars;
     }
 
-    public Cars next() {
+    public Cars race() {
         List<Car> nextCars = cars.stream()
                 .map(car -> {
                     int randomNumber = ThreadLocalRandom.current().nextInt(MIN_NUM, MAX_NUM);
-                    return Car.of(car.nextPosition(randomNumber), car.name());
+                    return car.move(randomNumber);
                 }).collect(toList());
         return new Cars(nextCars);
     }
@@ -43,14 +43,14 @@ public class Cars {
 
     private Integer maxPosition() {
         return cars.stream()
-                .max(Comparator.comparing(Car::currentPosition))
+                .max(Comparator.comparing(Car::position))
                 .orElseThrow(IllegalStateException::new)
-                .currentPosition();
+                .position();
     }
 
     private List<Car> findCarsByPosition(Integer position) {
         return cars.stream()
-                .filter(car -> Objects.equals(car.currentPosition(), position))
+                .filter(car -> Objects.equals(car.position(), position))
                 .collect(toList());
     }
 }
