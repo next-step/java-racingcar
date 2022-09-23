@@ -30,7 +30,14 @@ public class StringAddCalculator {
     }
 
     private static int toInt(String str) {
+        if (!isNumeric(str)) {
+            throw new IllegalArgumentException("음수는 들어가면 안돼요 --> " + str);
+        }
         return Integer.parseInt(str);
+    }
+
+    private static boolean isNumeric(String str) {
+        return str.chars().allMatch(Character::isDigit);
     }
 
     private static boolean isBlank(String str) {
