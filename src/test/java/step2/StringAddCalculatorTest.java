@@ -1,11 +1,13 @@
 package step2;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+import step2.exception.NegativeNumberException;
 
 public class StringAddCalculatorTest {
 
@@ -43,5 +45,13 @@ public class StringAddCalculatorTest {
     void splitAndSum5() {
         int result = StringAddCalculator.splitAndSum("//;\n1;2;3");
         assertThat(result).isEqualTo(6);
+    }
+
+    @Test
+    @DisplayName("음수를 전달할 경우 RuntimeException 예외가 발생해야 한다.")
+    void splitAndSum6() {
+        assertThatExceptionOfType(NegativeNumberException.class)
+            .isThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
+            .withMessageMatching("음수는 입력할 수 없습니다.");
     }
 }
