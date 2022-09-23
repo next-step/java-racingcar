@@ -2,6 +2,9 @@ package calculator;
 
 public class C {
     public static int calculator(String s) {
-        return 0;
+        if (s == null || s.equals("")) {
+            return 0;
+        }
+        return Integer.parseInt(s);
     }
 }

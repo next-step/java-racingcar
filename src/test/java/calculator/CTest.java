@@ -19,4 +19,11 @@ public class CTest {
         int result = C.calculator(null);
         assertThat(result).isZero();
     }
+
+    @Test
+    @DisplayName("숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환한다")
+    void inputString() {
+        int number = C.calculator("1");
+        assertThat(number).isEqualTo(1);
+    }
 }
