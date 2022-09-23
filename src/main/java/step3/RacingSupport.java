@@ -4,7 +4,9 @@ import java.util.Random;
 
 public class RacingSupport {
 
-    static Car[] prepareCar(Car[] cars) {
+    static Car[] prepareCar(Integer carCount) {
+        Car[] cars = new Car[carCount];
+
         for (int i = 0; i < cars.length; i++) {
             cars[i] = new Car();
         }
@@ -12,28 +14,22 @@ public class RacingSupport {
         return cars;
     }
 
-    static void race(Car[] preparedCar, Integer tryCount) {
-        RacingCarOutput.printResultStartMessage();
-        for (int i = 0; i < tryCount; i++) {
-            raceEachCar(preparedCar);
-        }
-    }
-
-    private static void raceEachCar(Car[] preparedCar) {
+    static Car[] raceEachCar(Car[] preparedCar) {
         for (int j = 0; j < preparedCar.length; j++) {
-            moveByRandom(isRandomGreaterThanThree(), preparedCar, j);
+            preparedCar = moveByRandom(isRandomGreaterThanThree(), preparedCar, j);
         }
-        RacingCarOutput.printDividingLine();
+
+        return preparedCar;
+
     }
 
-    private static void moveByRandom(Boolean isMove, Car[] preparedCars, Integer j) {
-        if (isMove) {
+    static Car[] moveByRandom(Boolean isMove, Car[] preparedCars, Integer j) {
+        if (isMove) {;
             preparedCars[j].moveForward();
-            RacingCarOutput.printRacingResult(preparedCars[j]);
-            return;
+            return preparedCars;
         }
 
-        RacingCarOutput.printRacingResult(preparedCars[j]);
+        return preparedCars;
     }
 
     private static Boolean isRandomGreaterThanThree() {

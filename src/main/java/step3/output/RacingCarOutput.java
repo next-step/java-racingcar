@@ -1,4 +1,6 @@
-package step3;
+package step3.output;
+
+import step3.Car;
 
 public class RacingCarOutput {
 
@@ -10,8 +12,11 @@ public class RacingCarOutput {
         System.out.println("시도할 회수는 몇 회인가요?");
     }
 
-    public static void printRacingResult(Car car) {
-        System.out.println(car);
+    public static void printRacingResult(Car[] cars) {
+        for (Car car : cars) {
+            System.out.println(car);
+        }
+        printDividingLine();
     }
 
     public static void printResultStartMessage() {

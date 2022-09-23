@@ -1,15 +1,15 @@
-package step3;
+package step3.input;
 
 import java.util.Scanner;
 
 public class RacingCarInput {
 
-    static Integer carCount() {
+    public static Integer carCount() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
     }
 
-    static Integer tryCount() {
+    public static Integer tryCount() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
     }

@@ -1,5 +1,8 @@
 package step3;
 
+import step3.input.RacingCarInput;
+import step3.output.RacingCarOutput;
+
 public class RacingCar {
     public static void main(String[] args) {
         RacingCarOutput.printCarCount();
@@ -7,9 +10,13 @@ public class RacingCar {
         RacingCarOutput.printTryCount();
         Integer tryCount = RacingCarInput.tryCount();
 
-        Car[] cars = new Car[carCount];
-        Car[] preparedCar = RacingSupport.prepareCar(cars);
+        Car[] preparedCar = RacingSupport.prepareCar(carCount);
 
-        RacingSupport.race(preparedCar, tryCount);
+        RacingCarOutput.printResultStartMessage();
+
+        for (int i = 0; i < tryCount; i++) {
+            Car[] afterRaceCars = RacingSupport.raceEachCar(preparedCar);
+            RacingCarOutput.printRacingResult(afterRaceCars);
+        }
     }
 }
