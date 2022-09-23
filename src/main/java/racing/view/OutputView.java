@@ -2,7 +2,7 @@ package racing.view;
 
 import racing.dto.CarRaceDto;
 
-public class ResultView {
+public class OutputView {
 
     public void result(CarRaceDto carRaceDto) {
         carRaceDto.carRace().forEach(car -> {

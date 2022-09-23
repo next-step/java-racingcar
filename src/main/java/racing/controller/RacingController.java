@@ -3,12 +3,12 @@ package racing.controller;
 import racing.dto.CarRaceDto;
 import racing.service.RacingService;
 import racing.view.InputView;
-import racing.view.ResultView;
+import racing.view.OutputView;
 
 public class RacingController {
 
     InputView inputView = new InputView();
-    ResultView resultView = new ResultView();
+    OutputView outputView = new OutputView();
     RacingService racingService = new RacingService();
 
     public CarRaceDto makeCars() {
@@ -20,7 +20,7 @@ public class RacingController {
 
         for (int i = 0; i < moveCount; i++) {
             carRaceDto = racingService.racingGame(carRaceDto);
-            resultView.result(carRaceDto);
+            outputView.result(carRaceDto);
         }
     }
 
