@@ -24,5 +24,4 @@ public class NameValidator {
     private static boolean isNullOrEmpty(String name) {
         return name == null || name.isEmpty();
     }
-
 }
