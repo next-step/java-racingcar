@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class StringAddCalculator {
 
     private static final int ZERO = 0;
-    public static final String SEPARATOR = ",";
+    public static final String SEPARATOR = "[,:]";
 
     public static int splitAndSum(String text) {
         if (isBlank(text)) {

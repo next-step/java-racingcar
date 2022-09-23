@@ -30,4 +30,11 @@ public class StringAddCalculatorTest {
         int result = StringAddCalculator.splitAndSum("1,2");
         assertThat(result).isEqualTo(3);
     }
+
+    @Test
+    @DisplayName("구분자를 컴마(,) 이외에 콜론(:)을 사용할 수 있다.")
+    void splitAndSum4() {
+        int result = StringAddCalculator.splitAndSum("1,2:3");
+        assertThat(result).isEqualTo(6);
+    }
 }
