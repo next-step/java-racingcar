@@ -1,12 +1,29 @@
 package carRacing.level3.controller;
 
+import carRacing.level3.input.InputView;
 import carRacing.level3.output.OutPutView;
 import carRacing.level3.service.CarService;
 
 public class RacingGame {
+	public static final Integer INIT_ROUND = 1;
 
 	CarService carService = new CarService();
 	OutPutView outPutView = new OutPutView();
+	InputView inputView = new InputView();
+
+	public void gameStart() {
+
+		int carSum = inputView.askNumberofCars();
+		int carRound = inputView.askValueofRound();
+
+		initRace(carSum);
+
+		for (int i = 0; i < carRound - INIT_ROUND; i++) {
+			driveCar(carSum);
+			printSpace();
+		}
+
+	}
 
 	public void initRace(int carSum) {
 		for (int car = 0; car < carSum; car++) {
