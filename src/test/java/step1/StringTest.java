@@ -10,41 +10,23 @@ public class StringTest {
 
     @Test
     void split() {
-        //given
-        String str1 = "1,2";
-        String str2 = "1";
+        final String[] actual = "1,2".split(",");
+        assertThat(actual).contains("1","2");
 
-        //when
-        String[] strArr1 = str1.split(",");
-        String[] strArr2 = str2.split(",");
-
-        //then
-        assertThat(strArr1).contains("1","2");
-        assertThat(strArr2).containsExactly("1");
+        final String[] actual2 = "1".split(",");
+        assertThat(actual2).containsExactly("1");
     }
 
     @Test
     void substring() {
-        //given
-        String str = "(1,2)";
-
-        //when
-        String result = str.substring(1,4);
-
-        //then
+        final String result = "(1,2)".substring(1,4);
         assertThat(result).isEqualTo("1,2");
     }
 
     @Test
     @DisplayName("")
     void charAt() {
-        //given
-        String str = "abc";
-
-        //when
-        char c = str.charAt(2);
-
-        //then
+        final char c = "abc".charAt(2);
         assertThat(c).isEqualTo('c');
     }
 
