@@ -45,4 +45,12 @@ class StringAddCalculatorTest {
 
 		assertThat(result).isEqualTo(6);
 	}
+
+	@DisplayName("//와 \\n 문자 사이의 커스텀 구분자를 이용하여 구분한 숫자들의 합 반환")
+	@Test
+	void splitWithCustomSeparatorAndSumTest() {
+		int result = StringAddCalculator.calculate("//;\n1;2;3");
+
+		assertThat(result).isEqualTo(6);
+	}
 }
