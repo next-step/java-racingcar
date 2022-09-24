@@ -8,4 +8,11 @@ public class RacingCar {
         Random random = new Random();
         return random.nextInt(10);
     }
+
+    public static boolean isFourOrMore(int number) {
+        if (number >= 4 ) {
+            return true;
+        }
+        return false;
+    }
 }
