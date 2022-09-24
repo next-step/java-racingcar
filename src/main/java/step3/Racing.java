@@ -1,5 +1,6 @@
 package step3;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Racing {
@@ -7,8 +8,8 @@ public class Racing {
 	private Scanner sc = new Scanner(System.in);
 
 	public static int random() {
-		int random = (int)(Math.random()*10);
-		return random;
+		Random random = new Random();
+		return random.nextInt(10);
 	}
 
 	public static String movingCount(int input) {
