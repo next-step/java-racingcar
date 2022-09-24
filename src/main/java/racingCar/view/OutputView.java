@@ -12,7 +12,7 @@ public class OutputView {
     }
     public void showRacingResult(List<Car> cars) {
         for (Car car : cars) {
-            System.out.println(car.showDistance());
+            System.out.println(car.showDistanceGraph());
 
         }
         System.out.println();
