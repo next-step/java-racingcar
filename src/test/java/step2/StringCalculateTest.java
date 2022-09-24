@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class StringCalculateTest {
@@ -17,38 +18,39 @@ class StringCalculateTest {
 		calculator = new StringCalculator();
 	}
 
-	@Test
+	@ParameterizedTest
+	@NullAndEmptySource
 	@DisplayName("빈 문자열이거나 null 일 때 0 처리")
-	void blankOrNull() throws Exception {
-		String str1 = "";
-		String str2 = null;
-
-		assertThat(calculator.calculate(str1)).isEqualTo(0);
-		assertThat(calculator.calculate(str2)).isEqualTo(0);
+	void blankOrNull(String input) throws Exception {
+		assertThat(calculator.calculate(input)).isZero();
+		assertThat(calculator.calculate(input)).isZero();
 	}
 
 	@ParameterizedTest
 	@DisplayName("기본 구분자로 split 하기")
 	@ValueSource(strings = {"1,2,3", "1:2:3"})
 	void splitByOtherSeparators(String input) throws Exception {
+		String[] actual = calculator.split(input);
+		String[] expected = {"1", "2", "3"};
 
-		assertThat(new String[] {"1", "2", "3"}).isEqualTo(calculator.split(input));
+		assertThat(actual).isEqualTo(expected);
 	}
 
 	@Test
 	@DisplayName("분리된 문자배열을 숫자배열로 반환")
 	void convertToIntArray() throws Exception {
-		String[] arr = {"1", "2", "3"};
+		int[] actual = calculator.convertToInt(new String[]{"1", "2", "3"});
+		int[] expected = {1, 2, 3};
 
-		assertThat(new int[] {1, 2, 3}).isEqualTo(calculator.convertToInt(arr));
+		assertThat(actual).isEqualTo(expected);
 	}
 
 	@Test
 	@DisplayName("숫자배열 더하기")
 	void addInt() throws Exception {
-		int[] arr = {1, 2, 3};
+		int actual = calculator.sum(new int[]{1, 2, 3});
 
-		assertThat(6).isEqualTo(calculator.sum(arr));
+		assertThat(actual).isEqualTo(6);
 	}
 
 	@ParameterizedTest
