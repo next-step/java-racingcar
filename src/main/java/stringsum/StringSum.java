@@ -9,8 +9,8 @@ public class StringSum {
         return testData.split(",|:");
     }
 
-    public int basicSum(){
-        String[] splitResult = basicSplitStr("1:2:3,5,7,6");
+    public int basicSum(String testData){
+        String[] splitResult = testData.split(",|:");
         int sum = 0;
         for(String td : splitResult){
             sum += Integer.parseInt(td);
@@ -36,15 +36,6 @@ public class StringSum {
         }
         custom = ",|:|" + customChar(testData);
         return testData.substring(4).split(custom);
-    }
-
-    public int customSum(){
-        String[] splitResult = splitStr("//-\n1-23:5,67");
-        int sum = 0;
-        for(String td : splitResult){
-            sum += Integer.parseInt(td);
-        }
-        return sum;
     }
 
     public int calculator(){
