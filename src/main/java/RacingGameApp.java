@@ -7,6 +7,8 @@ import service.impl.MultipleWinnerStrategy;
 import service.impl.RandomNumberPicker;
 import service.impl.RandomStrategy;
 
+import java.util.stream.IntStream;
+
 
 public class RacingGameApp {
 
@@ -15,9 +17,7 @@ public class RacingGameApp {
         GameParam param = inputView.getInputFromUser();
         OutputView outputView = new ConsoleOutputView();
         RacingGame game = initGameWithParam(param);
-        for (int i = 0; i < param.getTryNum(); i++) {
-            outputView.printResult(game.play());
-        }
+        IntStream.range(0, param.getTryNum()).forEach((idx) -> outputView.printResult(game.play()));
         outputView.printWinner(game.getWinners());
     }
 
