@@ -9,14 +9,23 @@ public class RacingCar {
     private static final Random random = new Random();
 
     public static void main(String[] args){
-        //inputView
-        //자동차 대수 스캔
-        //실행할 결과 스캔
+        int carCount = carCountScan();
+        int round = roundScan();
 
         //경주
 
         //resultView
         //결과 출력
+    }
+
+    private static int roundScan() {
+        InputView.roundView();
+        return scan();
+    }
+
+    private static int carCountScan() {
+        InputView.carCountView();
+        return scan();
     }
 
     public static int random() {
