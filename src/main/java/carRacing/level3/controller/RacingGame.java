@@ -12,4 +12,10 @@ public class RacingGame {
 		}
 	}
 
+	public void driveCar(int carSum) {
+		for (int car = 0; car < carSum; car++) {
+			carService.moveCar(car);
+		}
+	}
+
 }
