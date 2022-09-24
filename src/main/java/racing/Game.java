@@ -9,17 +9,19 @@ public class Game {
     private List<Racer> racers = new ArrayList<>();
     private Umpire umpire = new Umpire();
 
-    public void play() {
-        Scanner sc = new Scanner(System.in);
+    private GameInput input = new GameInput();
 
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        final int racerCount = sc.nextInt();
-        System.out.println(racerCount);
+    private GameOutput output = new GameOutput();
+
+    public void play() {
+        output.printAskRacerCount();
+        final int racerCount = input.racerCount();
+        output.printRacerCount(racerCount);
 
         this.racerSetting(racerCount);
 
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        final int roundCount = sc.nextInt();
+        output.printAskRoundCount();
+        final int roundCount = input.roundCount();
         this.playRace(roundCount);
 
     }
@@ -33,9 +35,9 @@ public class Game {
     private void playRound() {
         for (Racer racer : racers) {
             this.isGoStraight(racer);
-            racer.printRacerAndCurrentLocation();
+            output.printRacerAndCurrentLocation(racer);
         }
-        System.out.println("라운드 종료");
+        output.printDivideRound();
     }
 
     private void isGoStraight(Racer racer) {
@@ -50,6 +52,5 @@ public class Game {
             Racer racer = new Racer(i);
             racers.add(racer);
         }
-
     }
 }
