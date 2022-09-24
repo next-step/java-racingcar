@@ -3,26 +3,17 @@ package racingcar.domain;
 
 import java.util.Random;
 
-public class RandomNumber {
+public class RandomNumber implements Randomable {
 
-    private int min;
-    private int max;
     private Random random;
 
-    public RandomNumber(int min, int max) {
-        this.min = min;
-        this.max = max;
+    public RandomNumber() {
         this.random = new Random();
     }
 
-    public int nextInt() {
-        return this.random.nextInt(this.max-min+1)+this.min;
+    @Override
+    public int getIntInRange(int min, int max) {
+        return this.random.nextInt(max-min+1)+min;
     }
 
-    public int max(){
-        return max;
-    }
-    public int min(){
-        return min;
-    }
 }
