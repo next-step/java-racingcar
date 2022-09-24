@@ -10,6 +10,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SetTest {
     private Set<Integer> numbers;
@@ -37,6 +39,12 @@ public class SetTest {
         assertThat(numbers.contains(2)).isTrue();
         assertThat(numbers.contains(3)).isTrue();
 
+        assertThat(numbers).containsExactlyInAnyOrder(1,2,3);
+
+        assertAll(
+                ()->assertTrue(numbers.contains(1),"Number does not Contain X")
+                //,()->assertTrue(numbers.contains(4),"Number does not Contain X")
+        );
     }
 
     @ParameterizedTest
@@ -52,6 +60,15 @@ public class SetTest {
     void testNotContains(int input , boolean expected){
         assertThat(numbers.contains(input)).isEqualTo(expected);
     }
+
+    @ParameterizedTest
+    @DisplayName("TestSet Not Contains")
+    @CsvSource(value = {"1,true","2,true","3,true","4,false","5,false"})
+    void testNotContainsWithDelimeter(int input , boolean expected){
+        assertThat(numbers.contains(input)).isEqualTo(expected);
+    }
+
+
 
 
 
