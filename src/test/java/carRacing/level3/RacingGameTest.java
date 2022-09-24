@@ -24,4 +24,11 @@ public class RacingGameTest {
 			Assertions.assertEquals(DEFAULT_STATUS, carService.carStatus(car));
 		}
 	}
+
+	@Test
+	@DisplayName("전체 자동차 운전 시작")
+	public void driveCar() {
+		int totalCarNum = 3;
+		race.driveCar(totalCarNum);
+	}
 }
