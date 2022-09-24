@@ -6,7 +6,7 @@ public class StringOperator {
     final static Pattern CUSTOM_REGEX_PATTERN = Pattern.compile("(//)(.*?)(\n)");
     final static String DEFAULT_REGEX = ",|:|//|\n|";
 
-    private static String message;
+    private String message;
 
     public StringOperator(String message) {
         this.message = message;
