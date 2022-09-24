@@ -7,7 +7,6 @@ public class Car {
     private int distance;
     private RandomNumber randomNumber;
 
-    private static final String GRAPH_BAR = "-";
     private static final int RUNNABLE_BOUND = 4;
     private static final int MAX_VALUE = 9;
     private static final int MIN_VALUE = 0;
@@ -32,15 +31,7 @@ public class Car {
         }
     }
 
-    public String showDistanceGraph() {
-        StringBuilder graph = new StringBuilder();
-        for (int i = 0; i < this.distance; i++) {
-            graph.append(GRAPH_BAR);
-        }
-        return graph.toString();
-    }
-
-    public int distance() {
+    public int getDistance() {
         return this.distance;
     }
 
