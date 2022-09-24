@@ -10,20 +10,19 @@ public class StringAddCalculator {
             return 0;
         }
 
-        String[] tokens = convertTextToTokens(text);
-
-        return Arrays.stream(tokens)
-                .mapToInt(Integer::parseUnsignedInt)
-                .sum();
-
-    }
-
-    private static String[] convertTextToTokens(String text) {
         Matcher m = CUSTOM_DELIMITER.matcher(text);
         if (m.find()) {
             String customDelimiter = m.group(1);
-            return m.group(2).split(customDelimiter);
+            return sum(m.group(2).split(customDelimiter));
         }
-        return text.split(",|:");
+        return sum(text.split(",|:"));
+
     }
+
+    private static int sum(String[] tokens) {
+        return Arrays.stream(tokens)
+                .mapToInt(Integer::parseUnsignedInt)
+                .sum();
+    }
+
 }
