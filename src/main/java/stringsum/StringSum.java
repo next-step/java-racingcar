@@ -38,6 +38,15 @@ public class StringSum {
         return testData.substring(4).split(custom);
     }
 
+    public int customSum(){
+        String[] splitResult = splitStr("//-\n1-23:5,67");
+        int sum = 0;
+        for(String td : splitResult){
+            sum += Integer.parseInt(td);
+        }
+        return sum;
+    }
+
     public int calculator(){
         String[] splitResult = basicSplitStr("1:2:3,5,7,6,d");
         int sum = 0;
