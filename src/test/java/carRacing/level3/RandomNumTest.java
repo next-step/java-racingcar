@@ -7,12 +7,13 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-public class RaceSettingTest {
+public class RandomNumTest {
 
+	RandomNum randomNum;
 	@Test
 	@DisplayName("randomNum()는 0~9까지의 랜덤값을 생성해준다")
 	void getRandomNum() {
-		assertThat(RaceSetting.randomNum()).isLessThan(10);
+		assertThat(randomNum.randomNum()).isLessThan(10);
 	}
 
 	@ParameterizedTest
@@ -20,7 +21,7 @@ public class RaceSettingTest {
 	@DisplayName("isMoving()는 랜덤값이 4이상이면 True를 반환한다.")
 	void isTrue(int value) {
 
-		assertThat(RaceSetting.isMoving(value)).isTrue();
+		assertThat(randomNum.isMovable(value)).isTrue();
 
 	}
 
@@ -29,7 +30,7 @@ public class RaceSettingTest {
 	@DisplayName("랜덤값이 4 미만이면 false를 반환한다.")
 	void isFalse(int value) {
 
-		assertThat(RaceSetting.isMoving(value)).isFalse();
+		assertThat(randomNum.isMovable(value)).isFalse();
 
 	}
 
@@ -38,7 +39,7 @@ public class RaceSettingTest {
 	@DisplayName("랜덤값이 0~10범위가 아니라면 false를 반환한다.")
 	void 랜덤값_예외_테스트(int value) {
 
-		assertThat(RaceSetting.isMoving(value)).isFalse();
+		assertThat(randomNum.isMovable(value)).isFalse();
 
 	}
 
