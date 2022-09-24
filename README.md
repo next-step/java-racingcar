@@ -7,3 +7,10 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 기능 목록
+* 자동차 대수와 시도 회수를 입력 받는다.(InputView)
+* 0 ~ 9 사이 랜덤 값을 구한다.
+* 랜덤 값이 4 이상인지 체크한다.
+* 4이상이라면 전진(+1)한다.
+* 결과를 출력한다. (OutputView)
