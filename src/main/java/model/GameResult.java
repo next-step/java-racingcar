@@ -7,6 +7,7 @@ public class GameResult {
 
     private final List<Car> cars;
 
+
     public GameResult(List<Car> cars) {
         this.cars = cars;
     }
@@ -14,4 +15,5 @@ public class GameResult {
     public List<Car> getCars() {
         return cars;
     }
+
 }
