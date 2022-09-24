@@ -59,10 +59,17 @@ public class StringCalculator {
 
 	private int parseInt(String number) {
 		try {
-			return Integer.parseInt(number);
+			return parseIntConsideringBlank(number);
 		} catch (NumberFormatException exception) {
 			throw new NotANumberException();
 		}
+	}
+
+	private int parseIntConsideringBlank(String number) {
+		if (number.isBlank()) {
+			return 0;
+		}
+		return Integer.parseInt(number);
 	}
 
 	private void validateNotNegative(int integer) {
