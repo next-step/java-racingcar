@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 import static java.util.stream.Collectors.toList;
 
-public class ParedStringByCustomDelimiter implements Parsed {
+public class ParsedStringByCustomDelimiter implements Parsed {
 
     private static final Pattern NEGATIVE_JUDGMENT = Pattern.compile("(//.*\n)?.*-[0-9].*");
 
@@ -16,7 +16,7 @@ public class ParedStringByCustomDelimiter implements Parsed {
 
     private final String stringToBeParsed;
 
-    public ParedStringByCustomDelimiter(String stringToBeParsed) {
+    public ParsedStringByCustomDelimiter(String stringToBeParsed) {
         this.stringToBeParsed = stringToBeParsed;
     }
 
