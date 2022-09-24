@@ -12,21 +12,19 @@ public class RacingGame {
 
     private final GameStrategy strategy;
 
-    public RacingGame(GameStrategy strategy, int carNumber) {
+    public RacingGame(GameStrategy strategy, String[] carNames) {
         this.strategy = strategy;
-        for (int i = 0; i < carNumber; i++) {
-            this.cars.add(new Car());
+        for (int i = 0; i < carNames.length; i++) {
+            this.cars.add(Car.carWithName(carNames[i]));
         }
     }
 
     public GameResult play() {
-        List<Integer> carPositions = new ArrayList<>();
         for (int i = 0; i < cars.size(); i++) {
             Car car = cars.get(i);
             moveCarByStrategy(car);
-            carPositions.add(car.getCurrentPosition());
         }
-        return new GameResult(carPositions);
+        return new GameResult(cars);
     }
 
     void moveCarByStrategy(Car car) {

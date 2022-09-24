@@ -13,7 +13,7 @@ public class RacingGameApp {
         InputView inputView = new ConsoleInputView();
         GameParam param = inputView.getInputFromUser();
         OutputView outputView = new ConsoleOutputView();
-        RacingGame game = new RacingGame(new RandomStrategy(new RandomNumberPicker()), param.getCarNum());
+        RacingGame game = new RacingGame(new RandomStrategy(new RandomNumberPicker()), param.getCarNames());
         for (int i = 0; i < param.getTryNum(); i++) {
             outputView.printResult(game.play());
         }
