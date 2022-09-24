@@ -1,6 +1,7 @@
 package racing_car.step4.view.output;
 
 import racing_car.step4.domain.Cars;
+import racing_car.step4.domain.Referee;
 import racing_car.step4.dto.CarDTO;
 
 import java.util.List;
@@ -32,13 +33,7 @@ public class ResultView {
         System.out.println();
     }
     
-    public static void winnersPrint(Cars cars) {
-        System.out.println(String.join(", ", getWinnersNameList(cars)) + "가 최종 우승했습니다.");
-    }
-    
-    private static List<String> getWinnersNameList(Cars cars) {
-        return cars.findWinners().stream()
-                .map(CarDTO::getCarName)
-                .collect(Collectors.toList());
+    public static void winnersPrint(Referee referee) {
+        System.out.println(String.join(", ", referee.getWinnersNameList()) + "가 최종 우승했습니다.");
     }
 }
