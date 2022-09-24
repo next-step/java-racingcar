@@ -6,7 +6,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 public class RacingCarTest {
 	@Test
@@ -39,6 +38,6 @@ public class RacingCarTest {
 		"9:-"
 	}, delimiter = ':')
 	void whenMoveMoreThan4(int input, String expected) {
-		assertThat(Racing.move(input)).isEqualTo(expected);
+		assertThat(Racing.movingCount(input)).isEqualTo(expected);
 	}
 }
