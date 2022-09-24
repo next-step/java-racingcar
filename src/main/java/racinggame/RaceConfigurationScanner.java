@@ -22,7 +22,7 @@ public class RaceConfigurationScanner {
             System.out.println(ASK_RACE_COUNT_MESSAGE);
             int roundCount = sc.nextInt();
 
-            return new RaceConfigurationDTO(carCount, roundCount);
+            return new RaceConfigurationDTO(roundCount, carCount);
         } catch (InputMismatchException e) {
             System.err.println(INPUT_IS_NOT_NUMBER_MESSAGE);
             throw e;
