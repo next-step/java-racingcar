@@ -47,8 +47,8 @@ public class StringSumTest {
 
     @DisplayName("요구사항2_합구하기")
     @Test
-    void custeomSumTest(){
-        assertThat(strSum.basicSum()).isEqualTo(0);
+    void customSumTest(){
+        assertThat(strSum.customSum()).isEqualTo(96);
     }
 
     @DisplayName("요구사항3_계산기 예외처리")
