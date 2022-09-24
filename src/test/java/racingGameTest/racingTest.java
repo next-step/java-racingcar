@@ -48,6 +48,6 @@ public class racingTest {
         //then
         assertThat(result.size()).isEqualTo(2);
         assertThat(result.get(0)).isEqualTo(car);
-        assertThat(result.get(0)).isEqualTo(car);
+        assertThat(result.get(1)).isEqualTo(car);
     }
 }
