@@ -31,4 +31,10 @@ public class RacingGameTest {
 		int totalCarNum = 3;
 		race.driveCar(totalCarNum);
 	}
+
+	@Test
+	@DisplayName("경기 시작 - 라운드 만큼 운전 반복")
+	public void gameStart(){
+		race.gameStart();
+	}
 }
