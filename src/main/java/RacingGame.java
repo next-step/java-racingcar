@@ -23,8 +23,8 @@ public class RacingGame {
     }
 
     public GameResult play() {
-        for (int i = 0; i < cars.size(); i++) {
-            moveCarByStrategy(cars.get(i));
+        for(Car car : this.cars){
+            this.moveCarByStrategy(car);
         }
         return new GameResult(cars);
     }
