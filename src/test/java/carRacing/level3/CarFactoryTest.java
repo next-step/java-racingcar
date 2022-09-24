@@ -10,17 +10,21 @@ public class CarFactoryTest {
 
 	public static final Integer CARNUM = 1;
 
+	CarFactory carFactory;
+
 	@BeforeEach
-	void CarFactory(){
-		CarFactory carFactory =new CarFactory();
+	void CarFactory() {
+		CarFactory carFactory = new CarFactory();
 	}
 
 	@Test
 	@DisplayName("처음 라운드는 모두 한칸씩 이동하여 현재 이동 상태는 1이다.")
-	void setInitTest(){
+	void setInitTest() {
 		carFactory.setInitStatus(CARNUM);
 		int status = carFactory.getCarStatus(CARNUM);
-		Assertions.assertEquals(status,1);
+		Assertions.assertEquals(status, 1);
 	}
+
+
 
 }

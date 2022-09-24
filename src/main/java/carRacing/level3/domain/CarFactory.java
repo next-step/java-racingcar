@@ -11,4 +11,8 @@ public class CarFactory {
 		carMap.put(carNum, DEFAULT_STATUS);
 	}
 
+	public Integer getCarStatus(int carNum) {
+		return carMap.get(carNum);
+	}
+
 }
