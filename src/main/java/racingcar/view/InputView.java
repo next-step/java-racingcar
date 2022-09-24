@@ -32,7 +32,7 @@ public class InputView {
 
         try {
             validateNames(names);
-        } catch (RuntimeException e) {
+        } catch (IllegalArgumentException e) {
             System.out.println(RETRY_INPUT_NAME_MESSAGE);
             return inputCarNames();
         }
