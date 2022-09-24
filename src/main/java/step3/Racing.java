@@ -11,6 +11,13 @@ public class Racing {
 		return random;
 	}
 
+	public static String move(int input) {
+		if (4 <= input) {
+			return "-";
+		}
+		return "";
+	}
+
 	public void play() {
 		print.howManyCars();
 		String cars = sc.nextLine();
