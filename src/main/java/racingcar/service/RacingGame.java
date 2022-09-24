@@ -1,34 +1,39 @@
 package racingcar.service;
 
 import racingcar.domain.*;
-import racingcar.repository.RacingCarTable;
+import racingcar.repository.RacingCarRepository;
 import racingcar.view.RacingGameResult;
 
 import java.util.List;
 
 public class RacingGame {
-    private final RacingCarTable carTable;
+    private final RacingCarRepository carTable;
     private final MoveStrategy moveStrategy;
 
-    public RacingGame(RacingCarTable racingCarTable) {
-        this.carTable = racingCarTable;
+    public RacingGame(RacingCarRepository racingCarRepository) {
+        this.carTable = racingCarRepository;
         moveStrategy = new RandomMoveStrategy();
     }
 
-    public RacingGame(RacingCarTable racingCarTable, MoveStrategy moveStrategy) {
-        this.carTable = racingCarTable;
+    public RacingGame(RacingCarRepository racingCarRepository, MoveStrategy moveStrategy) {
+        this.carTable = racingCarRepository;
         this.moveStrategy = moveStrategy;
     }
 
+    public RacingGameResult start(RacingRequest request) {
+        join(request.getCarNames());
+        return race(request.getTryCount());
+    }
+
     public void join(String carNames) {
-        join(CarFactory.createCars(carNames));
+        join(Cars.of(carNames));
     }
 
     public void join(Cars cars) {
         carTable.saveAll(cars);
     }
 
-    public RacingGameResult race(int tryCount) {
+    private RacingGameResult race(int tryCount) {
         RacingGameResult result = new RacingGameResult();
 
         Cars cars = carTable.findAll();
@@ -39,7 +44,7 @@ public class RacingGame {
             result.record(cars);
         }
 
-        result.winner(cars.findWinners());
+        result.setWinners(cars.findWinners());
 
         clearAndSave(cars);
         return result;

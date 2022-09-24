@@ -6,12 +6,12 @@ import racingcar.domain.Cars;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class RacingCarTable {
-    private final Map<Integer, Car> table = new ConcurrentHashMap<>();
+public class RacingCarRepository {
+    private final Map<Integer, Car> repository = new ConcurrentHashMap<>();
     private static int sequence = 0;
 
-    public void save(Car car) {
-        table.put(sequence++, car);
+    public synchronized void save(Car car) {
+        repository.put(sequence++, car);
     }
 
     public void saveAll(Cars cars) {
@@ -20,10 +20,10 @@ public class RacingCarTable {
     }
 
     public Cars findAll() {
-        return Cars.of(table.values());
+        return Cars.of(repository.values());
     }
 
     public void clear() {
-        table.clear();
+        repository.clear();
     }
 }

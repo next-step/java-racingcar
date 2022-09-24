@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class RacingGameResult {
     private static final String MOVEMENT_MARK = "-";
-    public static final String NEW_LINE = "\n";
+    private static final String NEW_LINE = "\n";
 
     List<String> records = new ArrayList<>();
     private Cars winners;
@@ -54,7 +54,7 @@ public class RacingGameResult {
         return Collections.unmodifiableList(records);
     }
 
-    public void winner(Cars winners) {
+    public void setWinners(Cars winners) {
         this.winners = winners;
     }
 }

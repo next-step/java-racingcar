@@ -1,22 +1,21 @@
 package racingcar.domain;
 
-import java.util.Comparator;
 import java.util.Objects;
 
-public class Position implements Comparator {
+ public class Position {
     private static final String POSITION_EXCEPTION_MESSAGE = "위치는 1 이상이어야 합니다.";
     private static final int DEFAULT_POSITION = 1;
 
-    private final int position;
+    private final int value;
 
     public Position() {
         this(DEFAULT_POSITION);
     }
 
-    public Position(int position) {
-        validate(position);
+    public Position(int value) {
+        validate(value);
 
-        this.position = position;
+        this.value = value;
     }
 
     private void validate(int position) {
@@ -30,20 +29,15 @@ public class Position implements Comparator {
     }
 
     public Position add(int position) {
-        return new Position(this.position + position);
+        return new Position(this.value + position);
     }
 
     public Position add(Position other) {
-        return new Position(position + other.getPosition());
+        return new Position(value + other.getValue());
     }
 
-    public int getPosition() {
-        return position;
-    }
-
-    @Override
-    public int compare(Object o1, Object o2) {
-        return ((Position) o1).position - ((Position) o2).position;
+    public int getValue() {
+        return value;
     }
 
     @Override
@@ -57,11 +51,11 @@ public class Position implements Comparator {
         }
 
         Position other = (Position) o;
-        return position == other.position;
+        return value == other.value;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(position);
+        return Objects.hash(value);
     }
 }
