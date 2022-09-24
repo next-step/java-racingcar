@@ -21,9 +21,9 @@ public class CarRaceTest {
     void ctorTest() {
         //given
         List<Car> carList = List.of(
-            new Car(),
-            new Car(),
-            new Car()
+            new Car("1"),
+            new Car("2"),
+            new Car("3")
         );
 
         //then
@@ -34,21 +34,23 @@ public class CarRaceTest {
     @DisplayName("전체 자동차 전진 테스트")
     void advanceCarTest() {
         //given
-        List<Car> list = new ArrayList<>(List.of(new Car(0)));
+        String name = "name";
+        List<Car> list = new ArrayList<>(List.of(new Car(0, name)));
         CarRace carRace = new CarRace(list, advanced);
 
         //when
         CarRace movedCarRace = carRace.move();
 
         //then
-        assertThat(movedCarRace).isEqualTo(new CarRace(List.of(new Car(1))));
+        assertThat(movedCarRace).isEqualTo(new CarRace(List.of(new Car(1, name))));
     }
 
     @Test
     @DisplayName("전체 자동차 전진 실패 테스트")
     void notAdvanceCarTest() {
         //given
-        List<Car> list = new ArrayList<>(List.of(new Car(0)));
+        String name = "name";
+        List<Car> list = new ArrayList<>(List.of(new Car(0, name)));
         CarRace carRace = new CarRace(list, notAdvanced);
 
         //when

@@ -2,6 +2,7 @@ package racing.domain.car;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import racing.domain.generator.DefaultNumberGenerator;
@@ -34,7 +35,7 @@ public class CarRace {
 
     private static List<Car> makeCars(int count) {
         return IntStream.range(0, count)
-            .mapToObj(Car::new)
+            .mapToObj(__ -> new Car(""))
             .collect(Collectors.toList());
     }
 
@@ -54,5 +55,22 @@ public class CarRace {
             return car;
         }
         return car.move();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CarRace carRace = (CarRace) o;
+        return Objects.equals(cars, carRace.cars);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cars);
     }
 }
