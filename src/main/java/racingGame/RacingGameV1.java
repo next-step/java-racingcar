@@ -1,27 +1,31 @@
 package racingGame;
 
+import racingGame.racingRule.RacingRule;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGameV1 {
-    private int carNum;
-    private int tryNUm;
+    private GameInput gameInput;
 
-    public RacingGameV1(int carNum, int tryNum) {
-        this.carNum = carNum;
-        this.tryNUm = tryNum;
+    public RacingGameV1(GameInput gameInput) {
+        this.gameInput = gameInput;
     }
 
-    public List<Car> start() {
-        String carMark = "-";
-        List<String> carMarks = new ArrayList<>();
-        for (int i = 0; i < tryNUm; i++) {
-            carMarks.add(carMark);
+    public List<Car> start(RacingRule racingRule) {
+        //랜덤 값이 4이상 인걸 알아야한다.
+        // 그 후 움직인다.
+        //움직이는 건 RGV1의 할일일까?
+        List<Car> cars = new ArrayList<>();
+        for (int k = 0; k < gameInput.getCarNum(); k++) {
+            Car car = new Car();
+            for (int i = 0; i < gameInput.getTryNum(); i++) {
+                if (racingRule.createRandomResult() > 4) {
+                    car.move();
+                }
+            }
+            cars.add(car);
         }
-        List<Car> Cars = new ArrayList<>();
-        for (int i = 0; i < carNum; i++) {
-            Cars.add(new Car(carMarks));
-        }
-        return Cars;
+        return cars;
     }
 }

@@ -26,6 +26,14 @@ public class GameInput {
         }
     }
 
+    public int getCarNum() {
+        return inputs.get(0);
+    }
+
+    public int getTryNum() {
+        return inputs.get(1);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
