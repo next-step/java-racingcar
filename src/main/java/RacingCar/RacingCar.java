@@ -1,10 +1,12 @@
 package RacingCar;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class RacingCar {
 
     private static final Scanner scanner = new Scanner(System.in);
+    private static final Random random = new Random();
 
     public static void main(String[] args){
         //inputView
@@ -15,6 +17,10 @@ public class RacingCar {
 
         //resultView
         //결과 출력
+    }
+
+    public static int random() {
+        return random.nextInt(10);
     }
 
     public static int scan() {

@@ -28,20 +28,13 @@ public class RacingCarTest {
         assertThat(result).isInstanceOf(Integer.class);
     }
 
-//    @Test
-//    @DisplayName("자동차 대수 스캔 구현")
-//    void carCountScan() {
-//    }
-//
-//    @Test
-//    @DisplayName("실행할 결과 스캔 구현")
-//    void roundScan() {
-//    }
-//
-//    @Test
-//    @DisplayName("랜덤 구현")
-//    void random() {
-//    }
+    @Test
+    @DisplayName("랜덤 구현")
+    void random() {
+        int result = RacingCar.random();
+
+        assertThat(result).isBetween(0, 9);
+    }
 //
 //    @Test
 //    @DisplayName("자동차 이동 구현")
