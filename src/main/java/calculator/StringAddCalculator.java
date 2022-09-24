@@ -15,7 +15,7 @@ public class StringAddCalculator {
         }
 
         String[] numbers = parseNumberStrings(input);
-        return sum(toIntegers(numbers));
+        return sum(toPositives(numbers)).getNumber();
     }
 
     private static String[] parseNumberStrings(String input) {
@@ -26,15 +26,15 @@ public class StringAddCalculator {
         return input.split(DEFAULT_DELIMITERS_REGEXP);
     }
 
-    private static Integer[] toIntegers(String[] numberStrings) {
+    private static Positive[] toPositives(String[] numberStrings) {
         return Stream.of(numberStrings)
-                     .map(Integer::valueOf)
-                     .toArray(Integer[]::new);
+                     .map(Positive::new)
+                     .toArray(Positive[]::new);
     }
 
-    private static int sum(Integer[] numbers) {
+    private static Positive sum(Positive[] numbers) {
         return Stream.of(numbers)
-                     .reduce(0, Integer::sum);
+                     .reduce(new Positive(), Positive::sum);
     }
 
     private static boolean hasCustomDelimiter(String input) {
