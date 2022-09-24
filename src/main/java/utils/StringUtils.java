@@ -2,7 +2,7 @@ package utils;
 
 public class StringUtils {
 
-    public StringUtils() {
+    private StringUtils() {
     }
 
     public static boolean isNumeric(String value) {
