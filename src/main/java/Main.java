@@ -6,13 +6,14 @@ public class Main {
     public static void main(String[] args) {
         InputView input = InputView.scan();
 
-        Cars cars = Cars.initialize(input.carCount());
+        Cars cars = Cars.of(input.carNames());
 
         ResultView.printStartComment();
         for (int i = 0; i < input.tryCount(); i++) {
-            cars = cars.next();
+            cars = cars.race();
 
-            ResultView.print(cars);
+            ResultView.printRacing(cars);
         }
+        ResultView.printWinners(cars);
     }
 }
