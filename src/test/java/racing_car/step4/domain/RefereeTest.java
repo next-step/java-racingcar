@@ -10,10 +10,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RefereeTest {
     @Test
-    @DisplayName("우승자 구하기")
+    @DisplayName("우승자 한 명 구하기")
     void findWinner() {
-        Cars cars = new Cars(Arrays.asList(new Car(new CarName("jun"), new Position(5)), new Car(new CarName("pobi"), new Position(4)), new Car(new CarName("young"), new Position(3))));
+        Car jun = new Car(new CarName("jun"), new Position(5));
+        Car pobi = new Car(new CarName("pobi"), new Position(4));
+        Car young = new Car(new CarName("young"), new Position(3));
+        Cars cars = new Cars(Arrays.asList(jun, pobi, young));
         Referee referee = new Referee(cars);
+        
         List<String> winnersName = referee.getWinnersNameList();
         assertThat(winnersName).isEqualTo(List.of("jun"));
     }
