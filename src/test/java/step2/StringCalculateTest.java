@@ -16,6 +16,7 @@ class StringCalculateTest {
 	void setUp() {
 		calculator = new StringCalculator();
 	}
+
 	@Test
 	@DisplayName("빈 문자열이거나 null 일 때 0 처리")
 	void blankOrNull() throws Exception {
@@ -47,7 +48,7 @@ class StringCalculateTest {
 	void addInt() throws Exception {
 		int[] arr = {1, 2, 3};
 
-		assertThat(6).isEqualTo(calculator.add(arr));
+		assertThat(6).isEqualTo(calculator.sum(arr));
 	}
 
 	@ParameterizedTest

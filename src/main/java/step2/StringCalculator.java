@@ -1,12 +1,16 @@
 package step2;
 
 public class StringCalculator {
-	public static String SEPARATORS = ",|:";
+	public static final String SEPARATORS = ",|:";
 	public int calculate(String input) {
-		if (input == null || input.isBlank()) {
+		if (validateNullOrNumber(input)) {
 			return 0;
 		}
-		return add(convertToInt(split(separatorCheck(input))));
+		return sum(convertToInt(separatorCheck(input)));
+	}
+
+	private boolean validateNullOrNumber(String input) {
+		return input == null || input.isBlank();
 	}
 
 	public String[] split(String input) {
@@ -21,18 +25,18 @@ public class StringCalculator {
 
 	private void checkMinusOrNotNumber(String[] arr, int[] convert) {
 		for (int i = 0; i < arr.length; i++) {
-			validMinusOrNotNumber(arr, i);
+			validatePositiveNumber(arr, i);
 			convert[i] = Integer.parseInt(arr[i]);
 		}
 	}
 
-	private void validMinusOrNotNumber(String[] arr, int i) {
+	private void validatePositiveNumber(String[] arr, int i) {
 		if (arr[i].charAt(0) == '-' || (89 < (arr[i].charAt(0)) && (arr[i].charAt(0)) < 80)) {
 			throw new RuntimeException();
 		}
 	}
 
-	public int add(int[] arr) {
+	public int sum(int[] arr) {
 		int sum = 0;
 		for (int i : arr) {
 			sum += i;
@@ -40,13 +44,16 @@ public class StringCalculator {
 		return sum;
 	}
 
-	public String separatorCheck(String input) {
+	public String[] separatorCheck(String input) {
 		if (input.contains("\n")) {
 			String[] split = input.split("\n");
 			String separator = String.valueOf(split[0].charAt(split[0].length() - 1));
-			SEPARATORS += "|" + separator;
-			return split[1];
+			return customSplit(split[1], separator);
 		}
-		return input;
+		return split(input);
+	}
+
+	private String[] customSplit(String input, String separator) {
+		return input.split(separator);
 	}
 }
