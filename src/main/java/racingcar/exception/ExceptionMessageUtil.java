@@ -1,4 +1,4 @@
-package racingCar.exception;
+package racingcar.exception;
 
 import java.text.MessageFormat;
 

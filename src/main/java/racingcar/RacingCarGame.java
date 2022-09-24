@@ -1,8 +1,8 @@
-package racingCar;
+package racingcar;
 
-import racingCar.domain.Car;
-import racingCar.view.InputView;
-import racingCar.view.OutputView;
+import racingcar.domain.Car;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,12 +15,10 @@ public class RacingCarGame {
     }
 
     public void play(){
-        InputView inputView = new InputView();
-        OutputView outputView = new OutputView();
 
         // 자동차 갯수, 경주 횟수 입력받기
-        int numberOfCars = inputView.askHowMayCars();
-        int numberOfTimes = inputView.askHowManyTimes();
+        int numberOfCars = InputView.askHowManyCars();
+        int numberOfTimes = InputView.askHowManyTimes();
 
         List<Car> cars = new ArrayList<>();
 
@@ -29,12 +27,12 @@ public class RacingCarGame {
             cars.add(new Car());
         }
 
-        outputView.printRacingResultTitle();
+        OutputView.printRacingResultTitle();
 
         //자동차 경주 및 결과 출력
         for (int j = 0; j < numberOfTimes; j++) {
             cars.forEach(Car::run);
-            outputView.showRacingResult(cars);
+            OutputView.showRacingResult(cars);
         }
     }
 }

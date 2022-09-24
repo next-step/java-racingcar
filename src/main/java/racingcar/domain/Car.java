@@ -1,6 +1,6 @@
-package racingCar.domain;
+package racingcar.domain;
 
-import racingCar.exception.ExceptionMessageUtil;
+import racingcar.exception.ExceptionMessageUtil;
 
 public class Car {
 

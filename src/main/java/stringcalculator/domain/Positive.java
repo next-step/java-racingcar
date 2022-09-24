@@ -1,4 +1,4 @@
-package stringCalculator.domain;
+package stringcalculator.domain;
 
 public class Positive {
 

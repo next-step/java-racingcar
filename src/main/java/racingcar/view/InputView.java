@@ -1,31 +1,34 @@
-package racingCar.view;
+package racingcar.view;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputView {
+
     private static final String ASK_HOW_MANY_CARS_MESSAGE = "자동 대수는 몇 대 인가요?";
     private static final String ASK_HOW_MANY_TIMES_MESSAGE = "시도할 회수는 몇 회 인가요?";
-    private static final String NOT_INTEGER_TYPE ="정수 타입이 아닙니다.";
-    private static final String PLEASE_ENTER_AGAIN = "다시 입력 해주세요.";
-    public int askHowMayCars(){
+    private static final String NOT_INTEGER_TYPE_MESSAGE ="정수 타입이 아닙니다.";
+    private static final String PLEASE_ENTER_AGAIN_MESSAGE = "다시 입력 해주세요.";
+
+    public static int askHowManyCars(){
         System.out.println(ASK_HOW_MANY_CARS_MESSAGE);
-        return scanInt();
-    }
-    public int askHowManyTimes(){
-        System.out.println(ASK_HOW_MANY_TIMES_MESSAGE);
-        return scanInt();
+        return scanInputNumber();
     }
 
-    private int scanInt(){
+    public static int askHowManyTimes(){
+        System.out.println(ASK_HOW_MANY_TIMES_MESSAGE);
+        return scanInputNumber();
+    }
+
+    private static int scanInputNumber(){
         Scanner scanner = new Scanner(System.in);
         try{
             int number = scanner.nextInt();
             return number;
         }catch (InputMismatchException e){
-            System.out.println(NOT_INTEGER_TYPE);
-            System.out.println(PLEASE_ENTER_AGAIN);
-            scanInt();
+            System.out.println(NOT_INTEGER_TYPE_MESSAGE);
+            System.out.println(PLEASE_ENTER_AGAIN_MESSAGE);
+            scanInputNumber();
         }
         return 0;
     }
