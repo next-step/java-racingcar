@@ -1,7 +1,11 @@
 package step2;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class StringCalculator {
 	public static final String SEPARATORS = ",|:";
+	public static final String CUSTOMSEPARATORS = "//(.)\n(.*)";
 	public int calculate(String input) {
 		if (validateNullOrNumber(input)) {
 			return 0;
@@ -45,10 +49,12 @@ public class StringCalculator {
 	}
 
 	public String[] separatorCheck(String input) {
-		if (input.contains("\n")) {
-			String[] split = input.split("\n");
-			String separator = String.valueOf(split[0].charAt(split[0].length() - 1));
-			return customSplit(split[1], separator);
+		if (input.matches(CUSTOMSEPARATORS)) {
+			Pattern pattern = Pattern.compile(CUSTOMSEPARATORS);
+			Matcher matcher = pattern.matcher(input);
+			while (matcher.find()) {
+				return customSplit(matcher.group(2), matcher.group(1));
+			}
 		}
 		return split(input);
 	}
