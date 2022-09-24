@@ -31,10 +31,8 @@ public class CarFactoryTest {
 	@Test
 	@DisplayName("한번 이동 후 이동 상태를 +1하여 수정한다.")
 	void updateStatus() {
-		int current_status = carFactory.getCarStatus(CARNUM);
-		carFactory.updateStatus(CARNUM);
-		int new_status = carFactory.getCarStatus(CARNUM);
-		Assertions.assertEquals(new_status, current_status + 1);
+		carFactory.saveStatus(CARNUM,1);
+		int new_status = carFactory.updateStatus(CARNUM);
+		Assertions.assertEquals(new_status,  2);
 	}
-
 }
