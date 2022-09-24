@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import racing.application.view.Score;
+import racing.application.view.Winner;
 import racing.domain.car.Car;
 import racing.domain.car.CarRace;
 
@@ -32,6 +33,6 @@ public class RacingServiceImpl implements RacingService {
             carRaceList.add(current);
         }
 
-        return new Score(carRaceList);
+        return new Score(carRaceList, new Winner(current.winner()));
     }
 }

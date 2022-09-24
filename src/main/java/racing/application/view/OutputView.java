@@ -10,6 +10,7 @@ public class OutputView implements View {
 
     @Override
     public void print() {
-        score.print();
+        score.printGame();
+        score.printWinner();
     }
 }
