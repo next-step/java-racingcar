@@ -1,23 +1,25 @@
 package model;
 
+import java.util.List;
+
 public class GameParam {
 
-    private final int carNum;
+    private final String[] carNames;
 
     private final int tryNum;
 
 
-    private GameParam(int carNum, int tryNum) {
-        this.carNum = carNum;
+    private GameParam(String[] carNames, int tryNum) {
+        this.carNames = carNames;
         this.tryNum = tryNum;
     }
 
-    public static GameParam paramWithCarNumAndTryNum(int carNum, int tryNum) {
-        return new GameParam(carNum, tryNum);
+    public static GameParam paramWithCarNamesAndTryNum(String[] carNames, int tryNum) {
+        return new GameParam(carNames, tryNum);
     }
 
-    public int getCarNum() {
-        return carNum;
+    public String[] getCarNames() {
+        return carNames;
     }
 
     public int getTryNum() {
