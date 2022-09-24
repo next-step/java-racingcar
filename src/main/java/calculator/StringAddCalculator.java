@@ -4,8 +4,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
+
+    public static final String SEPERATOR = ",|:";
+
     public int calculate(String text) {
-        if (text == null || text.isBlank()) {
+        if (isBlank(text)) {
             return 0;
         }
 
@@ -13,26 +16,36 @@ public class StringAddCalculator {
             throw new RuntimeException();
         }
 
-        if (text.contains(",")) {
-            String[] numbers = text.split(",|:");
-            int sum = 0;
-            for (String number: numbers) {
-                 sum += Integer.parseInt(number);
-            }
-            return sum;
-        }
+        return toSum(toInt(split(text)));
+    }
 
+    private String[] split(String text) {
         Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
         if (m.find()) {
             String customDelimiter = m.group(1);
             String[] token = m.group(2).split(customDelimiter);
-            int sum = 0;
-            for (String number: token) {
-                sum += Integer.parseInt(number);
-            }
-            return sum;
+            return token;
         }
+        return text.split(SEPERATOR);
+    }
 
-        return Integer.parseInt(text);
+    private boolean isBlank(String text) {
+        return text == null || text.isBlank();
+    }
+
+    private int toSum(int[] numbers) {
+        int sum = 0;
+        for (int number: numbers) {
+            sum += number;
+        }
+        return sum;
+    }
+
+    private int[] toInt(String[] values) {
+        int[] numbers = new int[values.length];
+        for (int i = 0; i < values.length; i++) {
+            numbers[i] = Integer.parseInt(values[i]);
+        }
+        return numbers;
     }
 }

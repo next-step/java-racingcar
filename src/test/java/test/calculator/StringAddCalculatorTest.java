@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class StringAddCalculatorTest {
 
     @Test
-    void 빈문자열() {
+    void 빈문자열_null_space() {
         StringAddCalculator cal = new StringAddCalculator();
         int inputEmpty = cal.calculate("");
         int inputNull = cal.calculate(null);
