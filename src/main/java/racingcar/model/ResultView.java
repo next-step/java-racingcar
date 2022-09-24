@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
 public class ResultView {
     private static final String EXECUTION_RESULT = "실행 결과";
     private static final String BAR = "-";
-    private static final String RACING_PRINT_FORMAT = "{carName}: {position}";
-    private static final String WINNERS_PRINT_FORMAT = "{winners}가 최종 우승했습니다.";
+    private static final String RACING_PRINT_FORMAT = "%s: %s";
+    private static final String WINNERS_PRINT_FORMAT = "%s가 최종 우승했습니다.";
     private static final String WINNERS_DELIMITER = ", ";
 
     public static void printStartComment() {
@@ -18,9 +18,7 @@ public class ResultView {
 
     public static void printRacing(Cars cars) {
         cars.cars()
-                .forEach(car -> System.out.println(RACING_PRINT_FORMAT
-                        .replace("{carName}", car.name())
-                        .replace("{position}", BAR.repeat(car.position()))));
+                .forEach(car -> System.out.println(String.format(RACING_PRINT_FORMAT, car.name(), BAR.repeat(car.position()))));
         System.out.println();
     }
 
@@ -29,6 +27,6 @@ public class ResultView {
                 .map(Car::name)
                 .collect(Collectors.joining(WINNERS_DELIMITER));
 
-        System.out.println(WINNERS_PRINT_FORMAT.replace("{winners}", winners));
+        System.out.println(String.format(WINNERS_PRINT_FORMAT, winners));
     }
 }

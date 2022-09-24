@@ -8,12 +8,12 @@ public class Car {
     private final Integer position;
     private final String name;
 
-    public Car(Integer position, String name) {
+    private Car(Integer position, String name) {
         this.position = position;
         this.name = name;
     }
 
-    public static Car of(Integer position, String name) {
+    static Car of(Integer position, String name) {
         return new Car(position, name);
     }
 
@@ -25,7 +25,7 @@ public class Car {
         return name;
     }
 
-    public Car move(Integer randomNumber) {
+    Car move(Integer randomNumber) {
         return Car.of(nextPosition(randomNumber), name);
     }
 
