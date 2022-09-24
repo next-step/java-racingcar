@@ -20,7 +20,7 @@ public class NumberOperator {
         return value;
     }
 
-    private static void validateNegative(int number) {
+    private void validateNegative(int number) {
         if (number < 0) {
             throw new RuntimeException();
         }

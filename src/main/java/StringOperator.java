@@ -12,15 +12,15 @@ public class StringOperator {
         this.message = message;
     }
 
-    public static boolean isNotBlank(StringOperator message) {
-        return StringOperator.message != null && !StringOperator.message.isBlank();
+    public boolean isNotBlank() {
+        return message != null && !message.isBlank();
     }
 
-    public static String[] split() {
+    public String[] split() {
         return message.split(getRegex(message));
     }
 
-    private static String getRegex(String numberString) {
+    private String getRegex(String numberString) {
         String regex = DEFAULT_REGEX;
 
         Matcher matcher = CUSTOM_REGEX_PATTERN.matcher(numberString);

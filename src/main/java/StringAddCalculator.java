@@ -4,7 +4,7 @@ public class StringAddCalculator {
         NumberOperator numberOperator = new NumberOperator();
         StringOperator stringOperator = new StringOperator(value);
 
-        if (stringOperator.isNotBlank(stringOperator)) {
+        if (stringOperator.isNotBlank()) {
             String[] numberArr = stringOperator.split();
 
             numberOperator.parseIntList(numberArr).forEach(numberOperator::sum);
