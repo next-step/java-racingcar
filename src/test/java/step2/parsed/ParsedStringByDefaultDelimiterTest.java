@@ -8,13 +8,13 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
-class ParsedStringTest {
+class ParsedStringByDefaultDelimiterTest {
 
     @Test
     @DisplayName("문자열에 음수가 있는 경우 예외가 발생한다")
     void a() {
         String stringToBeParsed = "-1";
-        Parsed sut = new ParsedString(stringToBeParsed);
+        Parsed sut = new ParsedStringByDefaultDelimiter(stringToBeParsed);
 
         Assertions.assertThatThrownBy(() -> sut.parsedValue())
                 .isInstanceOf(RuntimeException.class)
@@ -25,7 +25,7 @@ class ParsedStringTest {
     @DisplayName("숫자 이외의 문자에 대한 유효성 검증")
     void b() {
         String stringToBeParsed = "*";
-        Parsed sut = new ParsedString(stringToBeParsed);
+        Parsed sut = new ParsedStringByDefaultDelimiter(stringToBeParsed);
 
         Assertions.assertThatThrownBy(() -> sut.parsedValue())
                 .isInstanceOf(RuntimeException.class)
@@ -39,7 +39,7 @@ class ParsedStringTest {
     @ParameterizedTest
     @DisplayName("쉼표(,)와 콜론(:)을 구분자를 가지는 문자열 일 경우 구분자로 기준으로 분리된 숫자들을 반환한다")
     void c(String stringToBeParsed) {
-        Parsed sut = new ParsedString(stringToBeParsed);
+        Parsed sut = new ParsedStringByDefaultDelimiter(stringToBeParsed);
 
         List<String> parsedValue = sut.parsedValue();
 
