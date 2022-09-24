@@ -4,7 +4,12 @@ import static calculator.StringAddCalculator.splitAndSum;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.stream.Stream;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class StringAddCalculatorTest {
 
@@ -32,5 +37,28 @@ public class StringAddCalculatorTest {
   @Test
   void 숫자_음수() {
     assertThatThrownBy(() -> splitAndSum("1,2:-3")).isInstanceOf(RuntimeException.class);
+  }
+
+  @ParameterizedTest
+  @MethodSource("provideSuccessCustomSeparator")
+  @DisplayName("커스텀 연산자 성공 케이스 연산 테스트")
+  void 커스텀_구분자(String str, int expected) {
+    assertThat(splitAndSum(str)).isEqualTo(expected);
+  }
+
+  @ParameterizedTest
+  @MethodSource("provideSuccessCustomSeparator")
+  @DisplayName("복잡한 성공 케이스 연산 테스트")
+  void complexCalculation(String str, int expected) {
+    assertThat(splitAndSum(str)).isEqualTo(expected);
+  }
+
+  private static Stream<Arguments> provideSuccessCustomSeparator() {
+    return Stream.of(
+        Arguments.of("//;\n1,2;3", 6),
+        Arguments.of("//;\n1;2:3", 6),
+        Arguments.of("//;\n1;2;3", 6),
+        Arguments.of("//;\n1,2:3;4", 10)
+    );
   }
 }

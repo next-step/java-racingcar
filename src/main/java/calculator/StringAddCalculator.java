@@ -1,8 +1,12 @@
 package calculator;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class StringAddCalculator {
 
   public static final String SEPERATOR = ",|:";
+  public static final Pattern REGEX_SEPERATOR = Pattern.compile("//(.)\n(.*)|,|:");
 
   public static int splitAndSum(String text) {
     if (isBlank(text)) {
@@ -12,7 +16,13 @@ public class StringAddCalculator {
   }
 
   private static String[] split(String text) {
-    return text.split(SEPERATOR);
+    Matcher m = REGEX_SEPERATOR.matcher(text);
+    String customDelimiter = SEPERATOR;
+    if (m.find()) {
+      customDelimiter += "|" + m.group(1);
+      text = m.group(2);
+    }
+    return text.split(customDelimiter);
   }
 
   private static boolean isBlank(String text) {
