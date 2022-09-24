@@ -15,4 +15,8 @@ public class CarFactory {
 		return carMap.get(carNum);
 	}
 
+	public void saveStatus(int carNum, int newStatus) {
+		carMap.put(carNum, newStatus);
+	}
+
 }
