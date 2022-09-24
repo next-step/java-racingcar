@@ -52,7 +52,7 @@ public class StringAddCalculator {
 	private static int toPositive(String value) {
 		int number = parseToInt(value);
 		if (isNegative(number)) {
-			throw new IllegalArgumentException(NEGATIVE_NUMBER_MESSAGE);
+			throw new NumberFormatException(NEGATIVE_NUMBER_MESSAGE);
 		}
 
 		return number;
