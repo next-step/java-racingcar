@@ -10,9 +10,9 @@ public class CarRacingTest {
     private static CarRacing carRacing;
 
     @BeforeEach
-    void 셋업() {
+    void 게임_시작() {
         carRacing = new CarRacing();
-        carRacing.start(3, 3);
+        carRacing.play(3, 3);
     }
 
     @Test

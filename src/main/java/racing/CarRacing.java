@@ -8,18 +8,13 @@ public class CarRacing {
     private static final String INPUT_ROUND_COUNT_TEXT = "시도할 회수는 몇 회 인가요?";
     private List<Car> cars = new ArrayList<>();
     private int rounds = 0;
-    private int carCount = 0;
 
     public static void main(String[] args) {
         CarRacing carRacing = new CarRacing();
-        carRacing.start();
+        carRacing.play();
     }
 
-    public void start() {
-        prepare();
-    }
-
-    public void start(int carCount, int rounds) {
+    public void play(int carCount, int rounds) {
         for (int i = 0; i < carCount; i++) {
             cars.add(new Car());
         }
@@ -32,6 +27,10 @@ public class CarRacing {
 
     public int rounds() {
         return rounds;
+    }
+
+    private void play() {
+        prepare();
     }
 
     private void prepare() {
