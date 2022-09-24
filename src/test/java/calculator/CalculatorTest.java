@@ -10,4 +10,9 @@ public class CalculatorTest {
         assertThat(StringAddCalculator.splitAndAddString(null)).isEqualTo(0);
         assertThat(StringAddCalculator.splitAndAddString("")).isEqualTo(0);
     }
+
+    @Test
+    public void splitAndAddString_숫자_하나() throws Exception {
+        assertThat(StringAddCalculator.splitAndAddString("3")).isEqualTo(3);
+    }
 }
