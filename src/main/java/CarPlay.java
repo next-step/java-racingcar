@@ -2,39 +2,43 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
 
 public class CarPlay {
-    private int cars;
-    private List<Integer> carList;
 
-    public CarPlay() {
-
-    }
+    private final int cars;
+    private static final int MIN_LIMIT_NUMBER = 4;
+    private static final int MAX_LIMIT_BOUND_NUMBER = 10;
 
     public CarPlay(InputReview inputReview) {
         this.cars = inputReview.getCars();
-        this.carList = new ArrayList<>(Collections.nCopies(cars, 0));
     }
 
-    public List<Integer> carMovement(List<Integer> carList, int cars) {
-        for (int i = 0; i < cars; i++) {
-            if(addMoveCount()) carList.set(i, carList.get(i) + 1);
+    public List<Integer> carMovement() {
+
+        List<Integer> newCarList = renewedCarList();
+
+        for (int i = 0; i < this.cars; i++) {
+            if (addMoveCount())
+                newCarList.set(i, newCarList.get(i) + 1);
         }
-        return carList;
+        return newCarList;
     }
 
-    public boolean addMoveCount() {
+    private List<Integer> renewedCarList() {
+        return new ArrayList<>(Collections.nCopies(cars, 0));
+    }
+
+    private boolean addMoveCount() {
         int randomNum = generateRandomNum();
         return isMovingForward(randomNum);
     }
 
-    public int generateRandomNum() {
+    private int generateRandomNum() {
         Random random = new Random();
-        return random.nextInt(10);
+        return random.nextInt(MAX_LIMIT_BOUND_NUMBER);
     }
 
-    public boolean isMovingForward(int randomNumber) {
-        return randomNumber >= 4;
+    private boolean isMovingForward(int randomNumber) {
+        return randomNumber >= MIN_LIMIT_NUMBER;
     }
 }

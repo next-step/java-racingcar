@@ -1,21 +1,39 @@
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class InputReview {
 
     private int cars;
     private int attempts;
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public InputReview() {
+    }
+
+    public InputReview(int cars, int attempts) {
+        this.cars = cars;
+        this.attempts = attempts;
+    }
 
     public void inputCarNumber() {
 
-        Scanner scanner = new Scanner(System.in);
-
         System.out.println("자동차 대수는 몇 대 인가요?");
-        this.cars = scanner.nextInt();
+        try {
+            this.cars = scanner.nextInt();
+        } catch (Exception e) {
+            throw new NotNumberException("숫자만 입력하세요!");
+        }
+        if (this.cars < 0) throw new NotPositiveNumberException("양수만 입력하세요");
+    }
+
+    public void inputAttemptNumber() {
 
         System.out.println("시도할 회수는 몇 회 인가요?");
-        this.attempts = scanner.nextInt();
+        try {
+            this.attempts = scanner.nextInt();
+        } catch (Exception e) {
+            throw new NotNumberException("숫자만 입력하세요!");
+        }
+        if (this.attempts < 0) throw new NotPositiveNumberException("양수만 입력하세요");
     }
 
     public int getCars() {
