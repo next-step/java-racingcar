@@ -11,4 +11,12 @@ public class Print {
 	void howManyMovingCount() {
 		System.out.println(HOW_MANY_MOVING_COUNT);
 	}
+
+	void newLine() {
+		System.out.println();
+	}
+
+	void print(String input) {
+		System.out.println(input);
+	}
 }
