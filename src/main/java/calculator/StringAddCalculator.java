@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class StringAddCalculator {
 
   public static final String SEPERATOR = ",|:";
-  public static final Pattern REGEX_SEPERATOR = Pattern.compile("//(.)\n(.*)|,|:");
+  public static final Pattern REGEX_SEPERATOR = Pattern.compile("//(.)\n(.*)");
 
   public static int splitAndSum(String text) {
     if (isBlank(text)) {
