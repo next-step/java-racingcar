@@ -53,4 +53,18 @@ class StringAddCalculatorTest {
 
 		assertThat(result).isEqualTo(6);
 	}
+
+	@DisplayName("음수를 전달할 경우 RuntimeException 발생")
+	@Test
+	void sumNegativeNumberTest() {
+		assertThatThrownBy(() -> StringAddCalculator.calculate("-1,2,3"))
+			.isInstanceOf(RuntimeException.class);
+	}
+
+	@DisplayName("숫자 이외의 값 전달할 경우 RuntimeException 발생")
+	@Test
+	void sumNotNumberValueTest() {
+		assertThatThrownBy(() -> StringAddCalculator.calculate("-1,a,3"))
+			.isInstanceOf(RuntimeException.class);
+	}
 }

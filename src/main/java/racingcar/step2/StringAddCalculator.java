@@ -7,6 +7,7 @@ public class StringAddCalculator {
 
 	private static final String SEPARATOR = "[,:]";
 	private static final Pattern PATTERN = Pattern.compile("//(.)\n(.*)");
+	private static final String NEGATIVE_NUMBER_MESSAGE = "음수는 계산할 수 없습니다.";
 
 	private StringAddCalculator() {
 	}
@@ -43,8 +44,21 @@ public class StringAddCalculator {
 	private static int sum(String[] values) {
 		int result = 0;
 		for (String value : values) {
-			result += parseToInt(value);
+			result += toPositive(value);
 		}
 		return result;
+	}
+
+	private static int toPositive(String value) {
+		int number = parseToInt(value);
+		if (isNegative(number)) {
+			throw new IllegalArgumentException(NEGATIVE_NUMBER_MESSAGE);
+		}
+
+		return number;
+	}
+
+	private static boolean isNegative(int number) {
+		return number < 0;
 	}
 }
