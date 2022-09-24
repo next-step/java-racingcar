@@ -1,7 +1,7 @@
 package carRacing.level3.controller;
 
-import carRacing.level3.input.InputView;
-import carRacing.level3.output.OutPutView;
+import carRacing.level3.service.input.InputView;
+import carRacing.level3.service.output.OutPutView;
 import carRacing.level3.service.CarService;
 
 public class RacingGame {
