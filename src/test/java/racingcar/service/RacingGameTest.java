@@ -28,7 +28,7 @@ public class RacingGameTest {
     @Test
     void race() {
         RacingRequest request = new RacingRequest("noose,pobi", 2);
-        RacingGame game = new RacingGame(new RacingCarRepository(), () -> false);
+        RacingGame game = new RacingGame(new RacingCarRepository(), () -> true);
 
         game.start(request);
 
