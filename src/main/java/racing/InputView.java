@@ -21,7 +21,7 @@ public class InputView {
         return times;
     }
 
-    public void inputView(Scanner scanner) {
+    public void input(Scanner scanner) {
         inputCars(scanner);
         inputTimes(scanner);
     }

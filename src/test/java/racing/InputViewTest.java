@@ -2,7 +2,6 @@ package racing;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -23,7 +22,7 @@ public class InputViewTest {
     @ValueSource(strings = {"3 4"})
     void 차량대수_시도회수_입력(String input) {
         Scanner scanner = scannerIn(input);
-        inputView.inputView(scanner);
+        inputView.input(scanner);
 
         Assertions.assertThat(inputView.getCars()).isEqualTo(3);
         Assertions.assertThat(inputView.getTimes()).isEqualTo(4);
