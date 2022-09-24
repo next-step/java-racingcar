@@ -6,7 +6,7 @@ public class ResultView {
     public static final String FORWARD_TEXT = "-";
     public static final String END_TEXT = "";
 
-    public static void resultPrint(int num){
+    public static void resultPrint(int num) {
         System.out.println(FORWARD_TEXT.repeat(num));
     }
 

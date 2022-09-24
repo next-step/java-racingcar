@@ -1,6 +1,7 @@
 package step3;
 
 import org.junit.jupiter.api.Test;
+
 import static org.assertj.core.api.Assertions.*;
 import static step3.GameRule.*;
 
@@ -11,6 +12,7 @@ class RacingCarTest {
         int result = GameRule.randomNum();
         assertThat(result).isLessThan(10);
     }
+
     @Test
     void move_forward_차가_전진했을_경우() {
         assertThat(decideMove(4)).isEqualTo(1);

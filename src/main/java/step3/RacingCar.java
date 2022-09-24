@@ -17,8 +17,8 @@ public class RacingCar {
         }
     }
 
-    private static void exeOneCycle(int carNum){
-        for(int i=0; i< carNum; i++){
+    private static void exeOneCycle(int carNum) {
+        for (int i = 0; i < carNum; i++) {
             moves[i] += decideMove(randomNum());
             ResultView.resultPrint(moves[i]);
         }
