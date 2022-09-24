@@ -2,7 +2,8 @@ package calculator;
 
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CalculatorTest {
     @Test
@@ -30,5 +31,11 @@ public class CalculatorTest {
     public void splitAndAddString_custom_구분자() throws Exception {
         int result = StringAddCalculator.splitAndAddString("//;\n1;2;3");
         assertThat(result).isEqualTo(6);
+    }
+
+    @Test
+    public void splitAndAddString_negative() throws Exception {
+        assertThatThrownBy(() -> StringAddCalculator.splitAndAddString("-1,2,3"))
+                .isInstanceOf(RuntimeException.class);
     }
 }

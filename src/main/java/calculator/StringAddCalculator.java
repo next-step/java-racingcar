@@ -21,8 +21,12 @@ public class StringAddCalculator {
             numbers = numbersText.split(",|:");
         }
 
-        for (String number : numbers) {
-            result += Integer.parseInt(number);
+        for (String text : numbers) {
+            int number = Integer.parseInt(text);
+            if (number < 0) {
+                throw new RuntimeException();
+            }
+            result += number;
         }
 
         return result;
