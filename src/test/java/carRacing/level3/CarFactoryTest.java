@@ -1,6 +1,6 @@
 package carRacing.level3;
 
-import carRacing.level3.domain.CarFactory;
+import carRacing.level3.repository.CarFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,8 +14,8 @@ public class CarFactoryTest {
 	@Test
 	@DisplayName("처음 라운드는 모두 한칸씩 이동하여 현재 이동 상태는 1이다.")
 	void setInitTest() {
-		carFactory.setInitStatus(CARNUM);
-		int status = carFactory.getCarStatus(CARNUM);
+		carFactory.initStatus(CARNUM);
+		int status = carFactory.carStatus(CARNUM);
 		Assertions.assertEquals(status, 1);
 	}
 
@@ -24,7 +24,7 @@ public class CarFactoryTest {
 	void saveStatus() {
 		int status = 2;
 		carFactory.saveStatus(CARNUM, status);
-		int new_status = carFactory.getCarStatus(CARNUM);
+		int new_status = carFactory.carStatus(CARNUM);
 		Assertions.assertEquals(new_status, 2);
 	}
 

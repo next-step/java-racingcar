@@ -1,4 +1,4 @@
-package carRacing.level3.domain;
+package carRacing.level3.repository;
 
 import java.util.HashMap;
 
@@ -8,11 +8,11 @@ public class CarFactory {
 	public static final Integer MOVE_CAR_STATUS = 1;
 	public static HashMap<Integer, Integer> carMap = new HashMap<>();
 
-	public void setInitStatus(int carNum) {
+	public void initStatus(int carNum) {
 		carMap.put(carNum, DEFAULT_STATUS);
 	}
 
-	public Integer getCarStatus(int carNum) {
+	public Integer carStatus(int carNum) {
 		return carMap.get(carNum);
 	}
 
@@ -22,7 +22,7 @@ public class CarFactory {
 
 	public Integer updateStatus(int carNum) {
 
-		int status = getCarStatus(carNum);
+		int status = (carNum);
 		status += MOVE_CAR_STATUS;
 
 		return status;
