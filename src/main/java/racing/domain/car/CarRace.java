@@ -1,16 +1,17 @@
 package racing.domain.car;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import racing.domain.car.exception.NegativePositionException;
 import racing.domain.generator.DefaultNumberGenerator;
 import racing.domain.generator.NumberGenerator;
 
 public class CarRace {
 
-    private static int MOVE_NUMBER = 4;
+    private static int MOVE_THRESHOLD = 4;
 
     private final List<Car> cars;
     private final NumberGenerator numberGenerator;
@@ -25,18 +26,8 @@ public class CarRace {
         this.numberGenerator = new DefaultNumberGenerator();
     }
 
-    public CarRace(int count) {
-        this(makeCars(count));
-    }
-
     public int size() {
         return cars.size();
-    }
-
-    private static List<Car> makeCars(int count) {
-        return IntStream.range(0, count)
-            .mapToObj(__ -> new Car(""))
-            .collect(Collectors.toList());
     }
 
     public List<Car> cars() {
@@ -50,8 +41,23 @@ public class CarRace {
         return new CarRace(carList);
     }
 
+    public List<Name> winner() {
+        int position = maxPosition();
+        return cars.stream()
+            .filter(car -> car.position() == position)
+            .map(Car::name)
+            .collect(Collectors.toList());
+    }
+
+    private int maxPosition() {
+        return this.cars.stream()
+            .max(Comparator.comparing(Car::position))
+            .orElseThrow(() -> new NegativePositionException("전진한 자동차가 없습니다."))
+            .position();
+    }
+
     private Car move(Car car, NumberGenerator numberGenerator) {
-        if (numberGenerator.randomNumber() < MOVE_NUMBER) {
+        if (numberGenerator.randomNumber() < MOVE_THRESHOLD) {
             return car;
         }
         return car.move();
