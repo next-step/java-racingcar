@@ -1,7 +1,6 @@
 package calculator;
 
 import calculator.exception.NegativeException;
-import calculator.exception.NotANumberException;
 
 @Deprecated
 public class Positive {
@@ -19,7 +18,7 @@ public class Positive {
 		try {
 			return new Positive(Integer.parseInt(number));
 		} catch (NumberFormatException exception) {
-			throw new NotANumberException();
+			throw new NumberFormatException("숫자가 아닌 문자가 있습니다");
 		}
 	}
 

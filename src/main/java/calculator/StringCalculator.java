@@ -4,7 +4,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import calculator.exception.NegativeException;
-import calculator.exception.NotANumberException;
 
 public class StringCalculator {
 
@@ -61,7 +60,7 @@ public class StringCalculator {
 		try {
 			return parseIntConsideringBlank(number);
 		} catch (NumberFormatException exception) {
-			throw new NotANumberException();
+			throw new NumberFormatException("숫자가 아닌 문자가 있습니다");
 		}
 	}
 
