@@ -2,6 +2,7 @@ package carRacing.level3;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import carRacing.level3.service.RandomNum;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

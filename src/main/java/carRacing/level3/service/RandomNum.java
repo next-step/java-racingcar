@@ -1,4 +1,4 @@
-package carRacing.level3;
+package carRacing.level3.service;
 
 import java.util.Random;
 

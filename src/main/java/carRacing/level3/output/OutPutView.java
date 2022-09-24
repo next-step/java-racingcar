@@ -1,4 +1,4 @@
-package carRacing.level3;
+package carRacing.level3.output;
 
 import java.util.HashMap;
 
