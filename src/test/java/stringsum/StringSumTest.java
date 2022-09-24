@@ -8,8 +8,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOf
 
 public class StringSumTest {
     StringSum strSum = new StringSum();
-    // 요구사항1
-    // 쉼표(,) 또는 콜론(:)을 구분자로 가지는 문자열을 전달하는 경우 구분자를 기준으로 분리한 각 숫자의 합을 반환
+
     @DisplayName("요구사항1_쉽표(,)구분자로 문자열 분리하기")
     @Test
     void splitRestTest(){
@@ -34,8 +33,6 @@ public class StringSumTest {
         assertThat(strSum.basicSum()).isEqualTo(24);
     }
 
-    // 요구사항2
-    // 앞의 기본 구분자(쉼표, 콜론)외에 커스텀 구분자를 지정할 수 있다. 커스텀 구분자는 문자열 앞부분의 “//”와 “\n” 사이에 위치하는 문자를 커스텀 구분자로 사용
     @DisplayName("요구사항2_커스텀 구분자 찾기")
     @Test
     void customCharTest(){
@@ -54,8 +51,6 @@ public class StringSumTest {
         assertThat(strSum.basicSum()).isEqualTo(0);
     }
 
-    // 요구사항3
-    // 문자열 계산기에 숫자 이외의 값 또는 음수를 전달하는 경우 RuntimeException 예외를 throw
     @DisplayName("요구사항3_계산기 예외처리")
     @Test
     void calculatorTest(){
