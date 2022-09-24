@@ -5,8 +5,9 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
-  public static final String SEPERATOR = ",|:";
-  public static final Pattern REGEX_SEPERATOR = Pattern.compile("//(.)\n(.*)");
+  public static final String REGEX_DELIMITER = "|";
+  public static final String SEPARATOR = ",|:";
+  public static final Pattern REGEX_SEPARATOR = Pattern.compile("//(.)\n(.*)");
 
   public static int splitAndSum(String text) {
     if (isBlank(text)) {
@@ -16,13 +17,17 @@ public class StringAddCalculator {
   }
 
   private static String[] split(String text) {
-    Matcher m = REGEX_SEPERATOR.matcher(text);
-    String customDelimiter = SEPERATOR;
-    if (m.find()) {
-      customDelimiter += "|" + m.group(1);
-      text = m.group(2);
+    Matcher separatorMatcher = REGEX_SEPARATOR.matcher(text);
+    String customDelimiter = SEPARATOR;
+    if (separatorMatcher.find()) {
+      customDelimiter = String.join(REGEX_DELIMITER, customDelimiter, separatorMatcher.group(1));
+      text = separatorMatcher.group(2);
     }
     return text.split(customDelimiter);
+  }
+
+  private static String parseDelimiter(Matcher m) {
+    return SEPARATOR + REGEX_DELIMITER + m.group(1);
   }
 
   private static boolean isBlank(String text) {
