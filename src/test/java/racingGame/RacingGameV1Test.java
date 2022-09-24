@@ -1,16 +1,13 @@
-package racingGameTest;
+package racingGame;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingGame.Car;
-import racingGame.RacingGameV1;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class racingTest {
+public class RacingGameV1Test {
 
     @Test
     @DisplayName("차 대수 1, 시행 횟수 1를 입력하면 -를 list로 반환한다.")

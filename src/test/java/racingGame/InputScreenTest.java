@@ -1,4 +1,4 @@
-package racingGameTest;
+package racingGame;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -28,7 +28,7 @@ public class InputScreenTest {
 
     @ParameterizedTest
     @MethodSource("provideInput")
-    @DisplayName("입력 값을 list로 반환한다")
+    @DisplayName("입력 값을 GameInput으로 반환한다")
     void askInputTest(String carNum, String tryNum) {
         InputStream input = createInputStream(carNum, tryNum);
         System.setIn(input);
@@ -36,20 +36,7 @@ public class InputScreenTest {
         scanner = new Scanner(System.in);
         InputScreen inputScreen = new InputScreen();
 
-        assertThat(inputScreen.askInput(scanner)).isEqualTo(List.of(1, 2));
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"1,-2"})
-    @DisplayName("음수를 입력시 IllegalArgumentException을 던진다.")
-    void if_input_negative_throw_exception(String input) {
-        InputStream inputStream = generateUserInput(input);
-        System.setIn(inputStream);
-        InputScreen inputScreen = new InputScreen();
-        scanner =new Scanner(System.in);
-        assertThrows(IllegalArgumentException.class, () ->{
-           inputScreen.askInput(scanner);
-        });
+        assertThat(inputScreen.askInput(scanner)).isEqualTo(new GameInput("1","2"));
     }
 
     private InputStream createInputStream(String carNum, String tryNUm) {
