@@ -36,6 +36,6 @@ public class Car {
     }
 
     private boolean isRunnable() {
-        return RUNNABLE_BOUND < randomNumber.nextInt();
+        return RUNNABLE_BOUND <= randomNumber.nextInt();
     }
 }
