@@ -13,60 +13,60 @@ public class NumericString {
     private static final String POSITIVE_INTEGER_REGEX = "[0-9]+";
     private static final Pattern POSITIVE_INTEGER_PATTERN = Pattern.compile(POSITIVE_INTEGER_REGEX);
 
-    public NumericString(String numericString){
+    public NumericString(String numericString) {
         this.numericString = numericString;
     }
 
-    public boolean nullOrEmpty(){
+    public boolean nullOrEmpty() {
         return numericString == null || numericString.isEmpty();
     }
 
-    public int sum(){
+    public int sum() {
         int[] ints = splitToInts();
         return IntStream.of(ints).sum();
     }
 
-    private int[] splitToInts(){
+    private int[] splitToInts() {
         return toInts(split());
     }
 
     private String[] split() {
-        if(isCustomDelimiter()){
+        if (isCustomDelimiter()) {
             return splitByCustomDelimiter();
         }
         return splitByCommaOrColonDelimiter();
     }
 
-    private int[] toInts(String[] numbers){
+    private int[] toInts(String[] numbers) {
         int[] ints = new int[numbers.length];
-        for(int i = 0; i < numbers.length; i++){
+        for (int i = 0; i < numbers.length; i++) {
             ints[i] = parseInt(numbers[i]);
         }
         return ints;
     }
 
-    private int parseInt(String number){
+    private int parseInt(String number) {
         isPositive(number);
         return Integer.parseInt(number);
     }
 
-    private boolean isCustomDelimiter(){
+    private boolean isCustomDelimiter() {
         return numericString.startsWith("//");
     }
 
-    private String[] splitByCommaOrColonDelimiter(){
+    private String[] splitByCommaOrColonDelimiter() {
         return numericString.split(COMMA_OR_COLON_DELIMITER);
     }
 
-    private String[] splitByCustomDelimiter(){
+    private String[] splitByCustomDelimiter() {
         Matcher m = CUSTOM_DELIMITER_PATTERN.matcher(numericString);
         m.find();
         String customDelimiter = m.group(1);
         return m.group(2).split(customDelimiter);
     }
 
-    private void isPositive(String number){
-        if(!POSITIVE_INTEGER_PATTERN.matcher(number).matches()){
+    private void isPositive(String number) {
+        if (!POSITIVE_INTEGER_PATTERN.matcher(number).matches()) {
             throw new RuntimeException("음수는 입력될 수 없습니다.");
         }
     }
