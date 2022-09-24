@@ -3,15 +3,18 @@ package step2;
 import static org.assertj.core.api.AssertionsForClassTypes.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.assertj.core.util.Strings;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class StringAddCalculatorTest {
-    @Test
-    public void splitAndSum_null_또는_빈문자() {
-        int result = StringAddCalculator.splitAndSum(null);
-        assertThat(result).isEqualTo(0);
-
-        result = StringAddCalculator.splitAndSum("");
+    @ParameterizedTest(name="splitAndSum_null_또는_빈문자")
+    @NullAndEmptySource
+    public void splitAndSum_null_또는_빈문자(String str) {
+        int result = StringAddCalculator.splitAndSum(str);
         assertThat(result).isEqualTo(0);
     }
 
@@ -39,9 +42,9 @@ class StringAddCalculatorTest {
         assertThat(result).isEqualTo(6);
     }
 
-    @Test
-    public void splitAndSum_negative() throws Exception {
-        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
-            .isInstanceOf(RuntimeException.class);
+    @ParameterizedTest(name="{index} splitAndSum_음수_숫자없는_문자열 {arguments}")
+    @ValueSource(strings = {"-1,2:3", "hello world", "\\@\n-1@2@3"})
+    public void splitAndSum_invalid_input(String str) throws Exception {
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum(str)).isInstanceOf(RuntimeException.class);
     }
 }
