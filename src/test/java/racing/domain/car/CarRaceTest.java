@@ -5,8 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import racing.domain.generator.DefaultNumberGenerator;
 import racing.domain.generator.NumberGenerator;
 
@@ -60,4 +64,31 @@ public class CarRaceTest {
         assertThat(movedCarRace).isEqualTo(carRace);
     }
 
+    @ParameterizedTest
+    @MethodSource("winnerTest")
+    @DisplayName("우승자 뽑기 테스트")
+    void getWinner_Test(List<Car> winnerList, int people) {
+        //given
+        CarRace carRace = new CarRace(winnerList, advanced);
+
+        //when
+        List<Name> winnerNameList = carRace.winner();
+
+        //then
+        assertThat(winnerNameList.size()).isEqualTo(people);
+    }
+
+    private static Stream<Arguments> winnerTest() {
+        return Stream.of(
+            Arguments.of(List.of(
+                new Car(0, "mang"),
+                new Car(10, "winer")
+            ), 1),
+            Arguments.of(List.of(
+                new Car(0, "mang"),
+                new Car(10, "first"),
+                new Car(10, "third")
+            ), 2)
+        );
+    }
 }
