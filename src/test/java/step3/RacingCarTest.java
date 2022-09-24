@@ -19,4 +19,11 @@ public class RacingCarTest {
 		int actual = Cars.move("5");
 		assertThat(actual).isEqualTo(5);
 	}
+
+	@Test
+	@DisplayName("전진하는 조건 0~9 랜덤값 테스트")
+	void randomNumber() {
+		int actual = Racing.random();
+		assertThat(actual).isBetween(0, 9);
+	}
 }
