@@ -6,11 +6,11 @@ public class GameInput {
 
     private final Scanner scanner = new Scanner(System.in);
 
-    public Integer racerCount() {
+    public int carCount() {
         return scanner.nextInt();
     }
 
-    public Integer roundCount() {
+    public int roundCount() {
         return scanner.nextInt();
     }
 }

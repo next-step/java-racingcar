@@ -5,52 +5,50 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Game {
-
-    private List<Racer> racers = new ArrayList<>();
-    private Umpire umpire = new Umpire();
-
     private GameInput input = new GameInput();
 
     private GameOutput output = new GameOutput();
 
     public void play() {
-        output.printAskRacerCount();
-        final int racerCount = input.racerCount();
-        output.printRacerCount(racerCount);
+        output.printAskCarCount();
+        final int carCount = input.carCount();
+        output.printCarCount(carCount);
 
-        this.racerSetting(racerCount);
+        List<Car> cars = this.carSetting(carCount);
 
         output.printAskRoundCount();
         final int roundCount = input.roundCount();
-        this.playRace(roundCount);
+        this.playRace(roundCount, cars);
 
     }
 
-    private void playRace(int roundCount) {
+    private void playRace(int roundCount, List<Car> cars) {
         for (int i = 0; i < roundCount; i++) {
-            this.playRound();
+            this.playRound(cars);
         }
     }
 
-    private void playRound() {
-        for (Racer racer : racers) {
-            this.isGoStraight(racer);
-            output.printRacerAndCurrentLocation(racer);
+    private void playRound(List<Car> cars) {
+        for (Car car : cars) {
+            this.isGoStraight(car);
+            output.printCurrentLocation(car);
         }
         output.printDivideRound();
     }
 
-    private void isGoStraight(Racer racer) {
-        umpire.resetAdvanceCondition();
-        if (umpire.isGoStraight()) {
-            racer.goStraight();
+    private void isGoStraight(Car car) {
+        car.resetAdvanceCondition();
+        if (car.isGoStraight()) {
+            car.goStraight();
         }
     }
 
-    private void racerSetting(int racerCount) {
-        for (int i = 1; i <= racerCount; i++) {
-            Racer racer = new Racer(i);
-            racers.add(racer);
+    private List<Car> carSetting(int carCount) {
+        List<Car> Cars = new ArrayList<>();
+        for (int i = 1; i <= carCount; i++) {
+            Car car = new Car();
+            Cars.add(car);
         }
+        return Cars;
     }
 }
