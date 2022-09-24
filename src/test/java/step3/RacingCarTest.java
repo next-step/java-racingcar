@@ -12,4 +12,11 @@ public class RacingCarTest {
 		int actual = Cars.participant("3");
 		assertThat(actual).isEqualTo(3);
 	}
+
+	@Test
+	@DisplayName("자동차 움직임 횟수 테스트")
+	void howManyPlayGames() {
+		int actual = Cars.move("5");
+		assertThat(actual).isEqualTo(5);
+	}
 }
