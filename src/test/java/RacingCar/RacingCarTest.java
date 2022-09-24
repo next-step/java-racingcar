@@ -35,11 +35,14 @@ public class RacingCarTest {
 
         assertThat(result).isBetween(0, 9);
     }
-//
-//    @Test
-//    @DisplayName("자동차 이동 구현")
-//    void go() {
-//    }
+
+    @Test
+    @DisplayName("자동차 이동 구현")
+    void move() {
+        int result = RacingCar.move();
+
+        assertThat(result).isBetween(0,1);
+    }
 
 
 }

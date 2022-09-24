@@ -26,4 +26,14 @@ public class RacingCar {
     public static int scan() {
         return scanner.nextInt();
     }
+
+    public static int move() {
+        int result = random();
+
+        if(result >= 4){
+            return 1;
+        }
+
+        return 0;
+    }
 }
