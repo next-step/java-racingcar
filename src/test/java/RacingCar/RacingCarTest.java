@@ -41,7 +41,7 @@ public class RacingCarTest {
     void move() {
         int result = RacingCar.move();
 
-        assertThat(result).isBetween(0,1);
+        assertThat(result).isBetween(0, 1);
     }
 
 

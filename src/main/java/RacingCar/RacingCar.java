@@ -1,21 +1,47 @@
 package RacingCar;
 
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class RacingCar {
 
     private static final Scanner scanner = new Scanner(System.in);
     private static final Random random = new Random();
+    private static final List<Car> carList = new ArrayList<>();
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         int carCount = carCountScan();
         int round = roundScan();
 
-        //경주
+        initCar(carCount);
 
-        //resultView
-        //결과 출력
+        racing(round);
+    }
+
+    private static void racing(int round) {
+        ResultView.resultView();
+        for (int i = 0; i < round; i++) {
+            round();
+            roundResult();
+        }
+    }
+
+    private static void roundResult() {
+        for (Car car : carList) {
+            ResultView.positionView(car.currentPosition());
+        }
+        System.out.println();
+    }
+
+    private static void round() {
+        for (Car car : carList) {
+            car.move();
+        }
+    }
+
+    private static void initCar(int carCount) {
+        for (int i = 0; i < carCount; i++) {
+            carList.add(new Car(i, 0));
+        }
     }
 
     private static int roundScan() {
@@ -39,7 +65,7 @@ public class RacingCar {
     public static int move() {
         int result = random();
 
-        if(result >= 4){
+        if (result >= 4) {
             return 1;
         }
 
