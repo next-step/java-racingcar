@@ -8,6 +8,10 @@ public class StringAddCalculator {
 
     public static final String SEPARATOR = ",|:";
     public static final String CUSTOM = "//(.)\n(.*)";
+    public static final int CUSTOMSEPARATOR = 1;
+    public static final int VALUE = 2;
+    public static final Pattern PATTERN = Pattern.compile(CUSTOM);
+
 
     static int splitAndSum(String param) {
         if (param == null || param.isEmpty()) {
@@ -27,10 +31,10 @@ public class StringAddCalculator {
 
     static int customSeparator(String param) {
         int result = 0;
-        Matcher m = Pattern.compile(CUSTOM).matcher(param);
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            String[] tokens = m.group(2).split(customDelimiter);
+        Matcher matcher = PATTERN.matcher(param);
+        if (matcher.find()) {
+            String customDelimiter = matcher.group(CUSTOMSEPARATOR);
+            String[] tokens = matcher.group(VALUE).split(customDelimiter);
             result = validation(tokens);
         }
         return result;
