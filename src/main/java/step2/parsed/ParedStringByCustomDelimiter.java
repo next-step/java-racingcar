@@ -2,10 +2,13 @@ package step2.parsed;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import static java.util.stream.Collectors.toList;
 
 public class ParedStringByCustomDelimiter implements Parsed {
+
+    private static final Pattern NEGATIVE_JUDGMENT = Pattern.compile("(//.*\n)?.*-[0-9].*");
 
     private static final int CUSTOM_DELIMITER_INDEX = 2;
 
@@ -19,10 +22,18 @@ public class ParedStringByCustomDelimiter implements Parsed {
 
     @Override
     public List<String> parsedValue() {
+        verifyNegative();
+
         final String customDelimiter = customDelimiter();
         final String stringParsedIntro = stringParsedIntro();
         return Arrays.stream(stringParsedIntro.split(customDelimiter))
                 .collect(toList());
+    }
+
+    private void verifyNegative() {
+        if (NEGATIVE_JUDGMENT.matcher(stringToBeParsed).find()) {
+            throw new RuntimeException("음수를 입력할 수 없습니다.");
+        }
     }
 
     private String customDelimiter() {
