@@ -1,34 +1,29 @@
 package step2;
 
 import java.util.Objects;
-import step2.exception.InvalidStringException;
-import step2.exception.NegativeNumberException;
 
 public class Positive {
 
     private final int value;
+    public static final Positive ZERO = new Positive(0);
 
     public Positive(String text) {
         this(toInt(text));
     }
 
-    private static int toInt(String text) {
-        try {
-            return Integer.parseInt(text);
-        } catch (Exception e) {
-            throw new InvalidStringException();
-        }
-    }
-
     public Positive(int value) {
         if (value < 0) {
-            throw new NegativeNumberException();
+            throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
         }
         this.value = value;
     }
 
-    public int getValue() {
-        return value;
+    public Positive plus(Positive number) {
+        return new Positive(this.value + number.value);
+    }
+
+    private static int toInt(String text) {
+        return Integer.parseInt(text);
     }
 
     @Override
@@ -46,9 +41,5 @@ public class Positive {
     @Override
     public int hashCode() {
         return Objects.hash(value);
-    }
-
-    public Positive plus(Positive number) {
-        return new Positive(this.value + number.value);
     }
 }

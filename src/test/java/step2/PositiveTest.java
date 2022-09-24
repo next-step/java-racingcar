@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step2.exception.NegativeNumberException;
 
 public class PositiveTest {
 
@@ -18,14 +17,21 @@ public class PositiveTest {
     @Test
     @DisplayName("생성자에 음수를 입력하면 예외가 발생한다.")
     void create2() {
-        assertThatExceptionOfType(NegativeNumberException.class)
+        assertThatExceptionOfType(IllegalArgumentException.class)
             .isThrownBy(() -> new Positive("-1"))
             .withMessageMatching("음수는 입력할 수 없습니다.");
     }
 
     @Test
+    @DisplayName("생성자에 숫자 이외의 값을 입력하면 예외가 발생한다.")
+    void create3() {
+        assertThatExceptionOfType(NumberFormatException.class)
+            .isThrownBy(() -> new Positive("a"));
+    }
+
+    @Test
     @DisplayName("값 객체를 더하게 되면 더한 값을 갖는 Positive 객체가 반환된다.")
-    void sum() {
+    void plus() {
         Positive positive1 = new Positive("1");
         Positive positive2 = new Positive("2");
         assertThat(positive1.plus(positive2)).isEqualTo(new Positive(3));

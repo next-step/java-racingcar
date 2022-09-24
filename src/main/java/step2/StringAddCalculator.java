@@ -1,20 +1,25 @@
 package step2;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class StringAddCalculator {
 
     private static final int ZERO = 0;
-    public static final String SEPARATOR = "[,:]";
-    private static final String PATTERN = "//(.)\n(.*)";
+    private static final String SEPARATOR = "[,:]";
+    private static final Pattern PATTERN = Pattern.compile("//(.)\n(.*)");
 
+    private StringAddCalculator() {
+    }
 
-    public static int splitAndSum(String text) {
+    public static Positive splitAndSum(String text) {
         if (isBlank(text)) {
-            return ZERO;
+            return Positive.ZERO;
         }
-        return sum(toInts(split(text))).getValue();
+        return sum(toPositives(split(text)));
     }
 
     private static boolean isBlank(String text) {
@@ -22,27 +27,23 @@ public class StringAddCalculator {
     }
 
     private static String[] split(String text) {
-        Matcher m = Pattern.compile(PATTERN).matcher(text);
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            return m.group(2).split(customDelimiter);
+        Matcher matcher = PATTERN.matcher(text);
+        if (matcher.find()) {
+            String customDelimiter = matcher.group(1);
+            return matcher.group(2).split(customDelimiter);
         }
         return text.split(SEPARATOR);
     }
 
-    private static Positive[] toInts(String[] values) {
-        Positive[] numbers = new Positive[values.length];
-        for (int i = 0; i < values.length; i++) {
-            numbers[i] = new Positive(values[i]);
-        }
-        return numbers;
+    private static List<Positive> toPositives(String[] values) {
+        return Arrays.stream(values).map(Positive::new).collect(Collectors.toList());
     }
 
-    private static Positive sum(Positive[] numbers) {
-        Positive result = new Positive(ZERO);
-        for (Positive number : numbers) {
-            result = result.plus(number);
+    private static Positive sum(List<Positive> positives) {
+        Positive sum = new Positive(ZERO);
+        for (Positive positive : positives) {
+            sum = sum.plus(positive);
         }
-        return result;
+        return sum;
     }
 }
