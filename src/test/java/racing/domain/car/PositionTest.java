@@ -6,20 +6,20 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.exception.NegativePositionException;
+import racing.domain.car.exception.NegativePositionException;
 
-class CarPositionTest {
+class PositionTest {
 
     @Test
     @DisplayName("생성 테스트")
     void ctorStateTest() {
-        assertDoesNotThrow(() -> new CarPosition());
+        assertDoesNotThrow(() -> new Position());
     }
 
     @Test
     @DisplayName("음수 예외처리 테스트")
     void negativeTest() {
-        assertThatThrownBy(() -> new CarPosition(-1))
+        assertThatThrownBy(() -> new Position(-1))
             .isInstanceOf(NegativePositionException.class)
             .hasMessage("음수의 전진 상태는 존재하지 않습니다.");
     }
@@ -28,13 +28,13 @@ class CarPositionTest {
     @DisplayName("상태 +1 테스트")
     void changeStateTest() {
         //given
-        CarPosition carPosition = new CarPosition();
+        Position position = new Position();
 
         //when
-        CarPosition advanceCarPosition = carPosition.advance();
+        Position advancePosition = position.advance();
 
         //then
-        assertThat(advanceCarPosition.value()).isEqualTo(1);
+        assertThat(position).isNotEqualTo(advancePosition);
     }
 
 }

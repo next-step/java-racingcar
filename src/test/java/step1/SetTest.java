@@ -1,15 +1,14 @@
 package step1;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.HashSet;
+import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-
-import java.util.HashSet;
-import java.util.Set;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class SetTest {
     private Set<Integer> numbers;
@@ -35,12 +34,11 @@ public class SetTest {
 
     @ParameterizedTest
     @CsvSource(value = {
-            "1: true",
-            "2: true",
-            "3: true",
-            "4: false",
-
-    })
+        "1:true",
+        "2:true",
+        "3:true",
+        "4:false",
+    }, delimiter = ':')
     @DisplayName("Set 값 존재 확인 테스트")
     void checkContainsValueTest(int number, boolean isContains) {
         assertThat(numbers.contains(number)).isEqualTo(isContains);

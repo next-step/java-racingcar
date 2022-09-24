@@ -1,4 +1,4 @@
-package racing.domain;
+package racing.domain.generator;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertTrue;

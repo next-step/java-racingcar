@@ -11,19 +11,19 @@ public class CarTest {
     @Test
     @DisplayName("Car 객체 생성 테스트")
     void constructorCarTest() {
-        assertDoesNotThrow(() -> new Car(0));
+        assertDoesNotThrow(() -> new Car("name"));
     }
 
     @Test
     @DisplayName("Car 전진 테스트")
     void moveCarTest() {
         //given
-        Car car = new Car();
+        Car car = new Car("joo");
 
         //when
         Car moveCar = car.move();
 
         //then
-        assertThat(moveCar.position()).isEqualTo(1);
+        assertThat(moveCar).isEqualTo(new Car(1, "joo"));
     }
 }
