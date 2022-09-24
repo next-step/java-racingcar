@@ -6,11 +6,9 @@ public class InputView {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public int numberOfCars() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        int count = scanner.nextInt();
-        scanner.nextLine();
-        return count;
+    public String inputNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉽표(,)를 기준으로 구분.");
+        return scanner.nextLine();
     }
 
     public int moveCount() {

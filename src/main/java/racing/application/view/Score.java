@@ -24,6 +24,7 @@ public class Score {
     }
 
     private void printCar(Car car) {
-        System.out.println("-".repeat(car.position()));
+        String position = "-".repeat(car.position());
+        System.out.printf("%s: %s\n", car.name(), position);
     }
 }

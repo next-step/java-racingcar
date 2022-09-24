@@ -11,10 +11,10 @@ public class Main {
         InputView inputView = new InputView();
         RacingController racingController = new RacingController(new RacingServiceImpl());
 
-        int numberOfCars = inputView.numberOfCars();
+        String names = inputView.inputNames();
         int moveCount = inputView.moveCount();
 
-        View view = racingController.racingGame(numberOfCars, moveCount);
+        View view = racingController.racingGame(names, moveCount);
 
         view.print();
     }
