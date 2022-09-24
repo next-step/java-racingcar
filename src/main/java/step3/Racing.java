@@ -11,7 +11,7 @@ public class Racing {
 		return random;
 	}
 
-	public static String move(int input) {
+	public static String movingCount(int input) {
 		if (4 <= input) {
 			return "-";
 		}
@@ -24,7 +24,28 @@ public class Racing {
 		print.howManyMovingCount();
 		String moveCount = sc.nextLine();
 
-		Cars.participant(cars);
-		Cars.move(moveCount);
+		racingStart(Cars.participant(cars), Cars.move(moveCount));
+	}
+
+	private void racingStart(int participant, int movingCount) {
+		move(participant, movingCount, initialize(participant));
+	}
+
+	private void move(int participant, int move, String[] cars) {
+		for (int i = 0; i < move; i++) {
+			for (int j = 0; j < participant; j++) {
+				cars[j] += movingCount(random());
+				print.print(cars[j]);
+			}
+			print.newLine();
+		}
+	}
+
+	private String[] initialize(int participant) {
+		String[] cars = new String[participant];
+		for (int i = 0; i < participant; i++) {
+			cars[i] = "";
+		}
+		return cars;
 	}
 }
