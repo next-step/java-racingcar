@@ -13,8 +13,8 @@ public class RacingGame {
 
 	public void gameStart() {
 
-		int carSum = inputView.askNumberofCars();
-		int carRound = inputView.askValueofRound();
+		int carSum = inputView.askNumberCars();
+		int carRound = inputView.askValueRound();
 
 		initRace(carSum);
 

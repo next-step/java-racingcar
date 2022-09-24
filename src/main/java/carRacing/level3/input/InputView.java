@@ -10,12 +10,12 @@ public class InputView {
 		scanner = new Scanner(System.in);
 	}
 
-	public int askNumberofCars() {
+	public int askNumberCars() {
 		System.out.println("자동차 대수는 몇 대 인가요?");
 		return scanner.nextInt();
 	}
 
-	public int askValueofRound() {
+	public int askValueRound() {
 		System.out.println("시도 회수는 몇회인가요?");
 		return scanner.nextInt();
 	}
