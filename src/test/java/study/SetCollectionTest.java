@@ -25,21 +25,21 @@ public class SetCollectionTest {
 
     @Test
     @DisplayName("요구사항1 - Set의 크기를 확인한다.")
-    void sizeTest() {
+    void size() {
         assertThat(numbers.size()).isEqualTo(3);
     }
 
     @DisplayName("요구사항2 - 1, 2, 3의 값이 존재하는지를 확인한다.")
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
-    void containsTest(int number) {
+    void contains(int number) {
         assertThat(numbers.contains(number)).isTrue();
     }
 
     @DisplayName("요구사항3 - 입력값에 따라 contains true/false 반환한다.")
     @ParameterizedTest
     @CsvSource(value = {"-1:false, 0:false, 1:true", "2:true", "3:true", "4:false"}, delimiter = ':')
-    void csvValueOfContainsTest(int input, boolean expected) {
+    void csvValueOfContains(int input, boolean expected) {
         assertThat(numbers.contains(input)).isEqualTo(expected);
     }
 
