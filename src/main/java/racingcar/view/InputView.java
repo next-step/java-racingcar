@@ -14,8 +14,6 @@ public class InputView {
     private static final String INPUT_TRY_COUNT_MESSAGE = "시도할 회수는 몇 회 인가요?\n";
     private static final String INPUT_CAR_NAMES_MESSAGE = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).\n";
     private static final String RETRY_INPUT_NUMBER_MESSAGE = "1 이상의 숫자만 입력해 주세요.";
-    private static final String RETRY_INPUT_NAME_MESSAGE = "유효한 이름을 입력해주세요.";
-
 
     private InputView() {
     }
@@ -33,7 +31,7 @@ public class InputView {
         try {
             validateNames(names);
         } catch (IllegalArgumentException e) {
-            System.out.println(RETRY_INPUT_NAME_MESSAGE);
+            System.out.println(e.getMessage());
             return inputCarNames();
         }
 
