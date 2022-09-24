@@ -7,6 +7,8 @@ public class ParsedString implements Parsed {
 
     private static final Pattern NEGATIVE_JUDGMENT = Pattern.compile(".*-[0-9].*");
 
+    private static final Pattern NUMBER_JUDGMENT = Pattern.compile(".*[0-9].*");
+
     private final String stringToBeParsed;
 
     public ParsedString(String stringToBeParsed) {
@@ -16,6 +18,7 @@ public class ParsedString implements Parsed {
     @Override
     public List<String> parsedValue() {
         verifyNegative();
+        verifyNumber();
         return null;
     }
 
@@ -24,4 +27,11 @@ public class ParsedString implements Parsed {
             throw new RuntimeException("음수를 입력할 수 없습니다.");
         }
     }
+
+    private void verifyNumber() {
+        if (!NUMBER_JUDGMENT.matcher(stringToBeParsed).find()) {
+            throw new RuntimeException("숫자 이외의 문자를 입력할 수 없습니다.");
+        }
+    }
+
 }
