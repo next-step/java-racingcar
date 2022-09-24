@@ -15,4 +15,14 @@ public class CalculatorTest {
     public void splitAndAddString_숫자_하나() throws Exception {
         assertThat(StringAddCalculator.splitAndAddString("3")).isEqualTo(3);
     }
+
+    @Test
+    public void splitAndAddString_쉼표_구분자() throws Exception {
+        assertThat(StringAddCalculator.splitAndAddString("1,2")).isEqualTo(3);
+    }
+
+    @Test
+    public void splitAndAddString_쉼표_또는_콜론_구분자() throws Exception {
+        assertThat(StringAddCalculator.splitAndAddString("1,2:3")).isEqualTo(6);
+    }
 }
