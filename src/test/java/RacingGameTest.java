@@ -6,9 +6,9 @@ class RacingGameTest {
 
     @Test
     void shouldMoveCarByStrategy() {
-        int carNumber = 3;
-        RacingGame game = new RacingGame(() -> true, carNumber);
-        Car car = new Car();
+        String carName = "testCar";
+        RacingGame game = new RacingGame(() -> true ,(candidates) -> candidates, new String[]{carName});
+        Car car = Car.carWithName(carName);
         int beforeGame = car.getCurrentPosition();
         game.moveCarByStrategy(car);
         int afterGame = car.getCurrentPosition();
@@ -17,9 +17,9 @@ class RacingGameTest {
 
     @Test
     void shouldNotMoveCarByStrategy() {
-        int carNumber = 3;
-        RacingGame game = new RacingGame(() -> false, carNumber);
-        Car car = new Car();
+        String carName = "testCar";
+        RacingGame game = new RacingGame(() -> false ,(candidates) -> candidates, new String[]{carName});
+        Car car = Car.carWithName(carName);
         int beforeGame = car.getCurrentPosition();
         game.moveCarByStrategy(car);
         int afterGame = car.getCurrentPosition();
@@ -28,18 +28,22 @@ class RacingGameTest {
 
     @Test
     void shouldReturnProperGameResult_whenCarStopped() {
-        int carNumber = 1;
-        RacingGame game = new RacingGame(() -> false, carNumber);
-        Assertions.assertThat(game.play().getCarPositions()).containsExactly(0);
-        Assertions.assertThat(game.play().getCarPositions()).containsExactly(0);
+        String carName = "testCar";
+        RacingGame game = new RacingGame(() -> false ,(candidates) -> candidates, new String[]{carName});
+        Assertions.assertThat(getFistCarPosition(game)).isEqualTo(0);
+        Assertions.assertThat(getFistCarPosition(game)).isEqualTo(0);
     }
 
     @Test
     void shouldReturnProperGameResult_whenCarMoved() {
-        int carNumber = 1;
-        RacingGame game = new RacingGame(() -> true, carNumber);
-        Assertions.assertThat(game.play().getCarPositions()).containsExactly(1);
-        Assertions.assertThat(game.play().getCarPositions()).containsExactly(2);
+        String carName = "testCar";
+        RacingGame game = new RacingGame(() -> true ,(candidates) -> candidates, new String[]{carName});
+        Assertions.assertThat(getFistCarPosition(game)).isEqualTo(1);
+        Assertions.assertThat(getFistCarPosition(game)).isEqualTo(2);
+    }
+
+    private int getFistCarPosition(RacingGame game) {
+        return game.play().getCars().get(0).getCurrentPosition();
     }
 
 }
