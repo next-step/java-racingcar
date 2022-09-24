@@ -7,3 +7,12 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+
+### 🚀 1단계 - 학습 테스트 실습
+
+- [x] split으로 string이 잘 나눠지는지 테스트코드 작성
+- [x] substring 메소드를 활용하여 ()이 제거 되는지 테스트 코드 작성
+- [x] chartAt 메소드, 예외 케이스 테스트 코드 작성
+- [x] Set의 size() 메소드를 활용해 Set의 크기를 확인하는 테스트 코드 작성
+- [x] Set의 contains을 테스트 코드 작성
