@@ -28,11 +28,9 @@ public class Car {
         return name;
     }
 
-    @Override
-    public String toString() {
-        return this.name + ":" + this.positionToString();
+    public boolean isSamePosition(int position){
+        return this.currentPosition == position;
     }
-
     private String positionToString() {
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < this.currentPosition; i++) {
@@ -40,4 +38,9 @@ public class Car {
         }
         return builder + "\n";
     }
+    @Override
+    public String toString() {
+        return this.name + ":" + this.positionToString();
+    }
+
 }

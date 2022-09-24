@@ -13,6 +13,6 @@ public class MultipleWinnerStrategy implements WinnerStrategy {
     @Override
     public List<Car> pickWinner(List<Car> candidates) {
         Integer maxPosition = candidates.stream().map(Car::getCurrentPosition).max(Integer::compareTo).orElse(DEFAULT_CAR_POSITION);
-        return candidates.stream().filter((car) -> car.getCurrentPosition() == maxPosition).collect(Collectors.toList());
+        return candidates.stream().filter((car)->car.isSamePosition(maxPosition)).collect(Collectors.toList());
     }
 }
