@@ -14,9 +14,9 @@ public class CarTest {
     }
 
     @Test
-    void 전진하면_주행거리_올라감() {
+    void 전진하면_주행거리_올라가거나_그대로() {
         assertThat(car.distance()).isEqualTo(0);
         car.run();
-        assertThat(car.distance()).isEqualTo(1);
+        assertThat(car.distance()).isIn(0, 1);
     }
 }
