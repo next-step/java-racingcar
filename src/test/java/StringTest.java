@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class StringTest {
@@ -11,7 +12,7 @@ public class StringTest {
      */
     @Test
     @DisplayName("요구사항1")
-    void stringTestNo1(){
+    void stringTestNo1() {
         String sampleText = "1,2";
         String[] splitedText = sampleText.split(",");
 
@@ -28,7 +29,7 @@ public class StringTest {
      */
     @Test
     @DisplayName("요구사항2")
-    void stringTestNo2(){
+    void stringTestNo2() {
         String sampleText = "(1,2)";
         int indexOfOpen = sampleText.indexOf("(") + 1;
         int indexOfClose = sampleText.lastIndexOf(")");
@@ -46,7 +47,7 @@ public class StringTest {
      */
     @Test
     @DisplayName("요구사항3 : charAt() 메소드 사용 시 StringIndexOutOfBoundsException이 발생하는 것을 확인")
-    void stringTestNo3(){
+    void stringTestNo3() {
         String sampleText = "abc";
 
         assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
