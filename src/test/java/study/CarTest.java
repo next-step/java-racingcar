@@ -1,12 +1,18 @@
 package study;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racing.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
-    Car car = new Car();
+    private static Car car;
+
+    @BeforeEach
+    void 셋업() {
+        car = new Car();
+    }
 
     @Test
     void 주행거리() {

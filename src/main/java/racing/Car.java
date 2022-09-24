@@ -1,10 +1,14 @@
 package racing;
 
 public class Car {
-    private static int distance = 0;
+    private int distance = 0;
     private static final int AVAILABLE_RUN_THRESHOLD = 4;
     public void run() {
         if (canRun()) { distance += 1; }
+    }
+
+    public void printDistance() {
+        ResultView.printDistance(distance());
     }
 
     public int distance() {
