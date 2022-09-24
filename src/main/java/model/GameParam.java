@@ -1,7 +1,5 @@
 package model;
 
-import java.util.List;
-
 public class GameParam {
 
     private final String[] carNames;

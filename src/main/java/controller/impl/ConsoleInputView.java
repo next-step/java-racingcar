@@ -26,7 +26,7 @@ public class ConsoleInputView implements InputView {
         } catch (InputMismatchException e) {
             System.out.println(RUN_FAIL_MSG);
             throw new IllegalArgumentException(e);
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println(INVALID_CAR_NAME_MSG);
             throw e;
         }

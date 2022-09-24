@@ -8,13 +8,14 @@ public class Car {
     private int currentPosition = 0;
 
 
-    public static Car carWithName(String name){
+    private Car(String name) {
+        this.name = name;
+    }
+
+    public static Car carWithName(String name) {
         return new Car(name);
     }
 
-    private Car(String name){
-        this.name = name;
-    }
     public void move() {
         this.currentPosition++;
     }
@@ -29,7 +30,7 @@ public class Car {
 
     @Override
     public String toString() {
-        return  this.name + ":" + this.positionToString();
+        return this.name + ":" + this.positionToString();
     }
 
     private String positionToString() {

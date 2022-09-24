@@ -7,7 +7,7 @@ class RacingGameTest {
     @Test
     void shouldMoveCarByStrategy() {
         String carName = "testCar";
-        RacingGame game = new RacingGame(() -> true ,(candidates) -> candidates, new String[]{carName});
+        RacingGame game = new RacingGame(() -> true, (candidates) -> candidates, new String[]{carName});
         Car car = Car.carWithName(carName);
         int beforeGame = car.getCurrentPosition();
         game.moveCarByStrategy(car);
@@ -18,7 +18,7 @@ class RacingGameTest {
     @Test
     void shouldNotMoveCarByStrategy() {
         String carName = "testCar";
-        RacingGame game = new RacingGame(() -> false ,(candidates) -> candidates, new String[]{carName});
+        RacingGame game = new RacingGame(() -> false, (candidates) -> candidates, new String[]{carName});
         Car car = Car.carWithName(carName);
         int beforeGame = car.getCurrentPosition();
         game.moveCarByStrategy(car);
@@ -29,7 +29,7 @@ class RacingGameTest {
     @Test
     void shouldReturnProperGameResult_whenCarStopped() {
         String carName = "testCar";
-        RacingGame game = new RacingGame(() -> false ,(candidates) -> candidates, new String[]{carName});
+        RacingGame game = new RacingGame(() -> false, (candidates) -> candidates, new String[]{carName});
         Assertions.assertThat(getFistCarPosition(game)).isEqualTo(0);
         Assertions.assertThat(getFistCarPosition(game)).isEqualTo(0);
     }
@@ -37,7 +37,7 @@ class RacingGameTest {
     @Test
     void shouldReturnProperGameResult_whenCarMoved() {
         String carName = "testCar";
-        RacingGame game = new RacingGame(() -> true ,(candidates) -> candidates, new String[]{carName});
+        RacingGame game = new RacingGame(() -> true, (candidates) -> candidates, new String[]{carName});
         Assertions.assertThat(getFistCarPosition(game)).isEqualTo(1);
         Assertions.assertThat(getFistCarPosition(game)).isEqualTo(2);
     }

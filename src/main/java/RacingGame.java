@@ -14,7 +14,7 @@ public class RacingGame {
     private final GameStrategy gameStrategy;
     private final WinnerStrategy winnerStrategy;
 
-    public RacingGame(GameStrategy gameStrategy , WinnerStrategy winnerStrategy, String[] carNames) {
+    public RacingGame(GameStrategy gameStrategy, WinnerStrategy winnerStrategy, String[] carNames) {
         this.gameStrategy = gameStrategy;
         this.winnerStrategy = winnerStrategy;
         for (int i = 0; i < carNames.length; i++) {
@@ -37,8 +37,8 @@ public class RacingGame {
         car.move();
     }
 
-    public GameResult getWinners(){
-       return new GameResult(this.winnerStrategy.pickWinner(this.cars));
+    public GameResult getWinners() {
+        return new GameResult(this.winnerStrategy.pickWinner(this.cars));
     }
 
 }

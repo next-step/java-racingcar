@@ -14,9 +14,10 @@ public class ConsoleOutputView implements OutputView {
         result.getCars().stream().forEach(System.out::print);
 
     }
+
     @Override
-    public void printWinner(GameResult result){
-        String winnerNames = result.getCars().stream().map(Car::getName).reduce((x,y)->x+ DEFAULT_CONCAT_STRING +y).orElseThrow(IllegalStateException::new);
+    public void printWinner(GameResult result) {
+        String winnerNames = result.getCars().stream().map(Car::getName).reduce((x, y) -> x + DEFAULT_CONCAT_STRING + y).orElseThrow(IllegalStateException::new);
         System.out.println(winnerNames + WINNER_MSG);
     }
 }
