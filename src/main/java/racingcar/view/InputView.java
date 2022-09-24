@@ -1,7 +1,7 @@
 package racingcar.view;
 
 import racingcar.domain.Cars;
-import racingcar.domain.validator.NameValidator;
+import racingcar.domain.Name;
 import racingcar.service.RacingRequest;
 
 import java.io.BufferedReader;
@@ -30,7 +30,9 @@ public class InputView {
     private static String inputCarNames() {
         String names = inputWithText(INPUT_CAR_NAMES_MESSAGE);
 
-        if (isNotValid(names)) {
+        try {
+            validateNames(names);
+        } catch (RuntimeException e) {
             System.out.println(RETRY_INPUT_NAME_MESSAGE);
             return inputCarNames();
         }
@@ -38,9 +40,9 @@ public class InputView {
         return names;
     }
 
-    private static boolean isNotValid(String names) {
-        return Stream.of(Cars.splitName(names))
-                .anyMatch(NameValidator::isNotValid);
+    private static void validateNames(String names) {
+        Stream.of(Cars.splitName(names))
+                .forEach(Name::new);
     }
 
     private static int inputTryCount() {
