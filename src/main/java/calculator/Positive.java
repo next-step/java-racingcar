@@ -1,17 +1,26 @@
 package calculator;
 
+import calculator.exception.NegativeException;
+import calculator.exception.NotANumberException;
+
+@Deprecated
 public class Positive {
 
 	private final Integer integer;
 
 	public Positive(int integer) {
-		if (integer < 0)
-			throw new RuntimeException("음수가 있습니다");
+		if (integer < 0) {
+			throw new NegativeException();
+		}
 		this.integer = integer;
 	}
 
-	public Positive(String number) {
-		this(Integer.parseInt(number));
+	public static Positive ofString(String number) {
+		try {
+			return new Positive(Integer.parseInt(number));
+		} catch (NumberFormatException exception) {
+			throw new NotANumberException();
+		}
 	}
 
 	public Positive plus(Positive other) {

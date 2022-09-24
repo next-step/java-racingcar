@@ -3,6 +3,9 @@ package calculator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import calculator.exception.NegativeException;
+import calculator.exception.NotANumberException;
+
 public class StringCalculator {
 
 	private static final Pattern INPUT_PATTERN = Pattern.compile("//(.*)\\n(.*)");
@@ -10,42 +13,61 @@ public class StringCalculator {
 	public static final int SEPARATOR_GROUP_NUMBER = 1;
 	public static final int EXPRESSION_GROUP_NUMBER = 2;
 
-	public Positive calculate(String input) {
-		if (input == null || input.isBlank())
-			return new Positive(0);
-		String separator = separator(input);
-		String expression = expression(input);
+	public int calculate(String input) {
+		if (input == null || input.isBlank()) {
+			return 0;
+		}
+		String separator = parseSeparator(input);
+		String expression = parseExpression(input);
 		String[] numbers = expression.split(separator);
-		return sum(positives(numbers));
+		return sum(parseInts(numbers));
 	}
 
-	private String separator(String input) {
+	private String parseSeparator(String input) {
 		Matcher matcher = INPUT_PATTERN.matcher(input);
-		if (matcher.find())
+		if (matcher.find()) {
 			return matcher.group(SEPARATOR_GROUP_NUMBER);
+		}
 		return DEFAULT_SEPARATOR;
 	}
 
-	private String expression(String input) {
+	private String parseExpression(String input) {
 		Matcher matcher = INPUT_PATTERN.matcher(input);
-		if (matcher.matches())
+		if (matcher.matches()) {
 			return matcher.group(EXPRESSION_GROUP_NUMBER);
+		}
 		return input;
 	}
 
-	private Positive sum(Positive[] numbers) {
-		Positive sum = new Positive(0);
-		for (Positive number : numbers) {
-			sum = sum.plus(number);
+	private int sum(int[] numbers) {
+		int sum = 0;
+		for (int number : numbers) {
+			sum += number;
 		}
 		return sum;
 	}
 
-	private Positive[] positives(String[] numbers) {
-		Positive[] positives = new Positive[numbers.length];
+	private int[] parseInts(String[] numbers) {
+		int[] positives = new int[numbers.length];
 		for (int i = 0; i < numbers.length; i++) {
-			positives[i] = new Positive(numbers[i]);
+			int integer = parseInt(numbers[i]);
+			validateNotNegative(integer);
+			positives[i] = integer;
 		}
 		return positives;
+	}
+
+	private int parseInt(String number) {
+		try {
+			return Integer.parseInt(number);
+		} catch (NumberFormatException exception) {
+			throw new NotANumberException();
+		}
+	}
+
+	private void validateNotNegative(int integer) {
+		if (integer < 0) {
+			throw new NegativeException();
+		}
 	}
 }
