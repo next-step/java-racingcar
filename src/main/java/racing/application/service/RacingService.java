@@ -5,7 +5,7 @@ import racing.domain.car.CarRace;
 
 public interface RacingService {
 
-    CarRace makeCars(int count);
+    CarRace makeCars(String names);
 
     Score scoreBoard(CarRace carRace, int moveCount);
 

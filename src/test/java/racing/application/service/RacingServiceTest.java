@@ -11,16 +11,16 @@ import racing.domain.car.CarRace;
 class RacingServiceTest {
 
     @Test
-    void 자동차를_입력한_개수만큼_생성한다() {
+    void 자동차를_입력한_이름만큼_생성한다() {
         //given
-        int count = 3;
+        String names = "pobi,crong,honux";
         RacingService racingService = new RacingServiceImpl();
 
         //when
-        CarRace carRace = racingService.makeCars(count);
+        CarRace carRace = racingService.makeCars(names);
 
         //then
-        assertThat(carRace.size()).isEqualTo(count);
+        assertThat(carRace.size()).isEqualTo(names.split(",").length);
     }
 
     @Test
@@ -28,7 +28,7 @@ class RacingServiceTest {
         //given
         int count = 3;
         RacingService racingService = new RacingServiceImpl();
-        CarRace carRace = new CarRace(List.of(new Car()));
+        CarRace carRace = new CarRace(List.of(new Car("")));
 
         //when
         Score score = racingService.scoreBoard(carRace, count);

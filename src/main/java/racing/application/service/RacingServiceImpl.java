@@ -1,9 +1,9 @@
 package racing.application.service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import racing.application.view.Score;
 import racing.domain.car.Car;
 import racing.domain.car.CarRace;
@@ -11,9 +11,11 @@ import racing.domain.car.CarRace;
 public class RacingServiceImpl implements RacingService {
 
     @Override
-    public CarRace makeCars(int count) {
-        List<Car> carList = IntStream.range(0, count)
-            .mapToObj(i -> new Car())
+    public CarRace makeCars(String names) {
+        String[] splitName = names.split(",");
+
+        List<Car> carList = Arrays.stream(splitName)
+            .map(Car::new)
             .collect(Collectors.toList());
 
         return new CarRace(carList);
