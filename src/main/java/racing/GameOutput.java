@@ -17,7 +17,7 @@ public class GameOutput {
     }
 
     public void printRacerAndCurrentLocation(Racer racer) {
-        racer.printRacerAndCurrentLocation();
+        System.out.println(racer.printRacerAndCurrentLocation());
     }
 
     public void printDivideRound() {
