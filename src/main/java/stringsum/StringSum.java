@@ -6,6 +6,9 @@ import java.util.regex.Pattern;
 public class StringSum {
 
     public int basicSum(String testData){
+        if(testData == null || testData.isBlank() || testData.trim().isEmpty()){
+            return 0;
+        }
         String[] splitResult = testData.split(",|:");
         int sum = 0;
         for(String td : splitResult){
@@ -15,6 +18,9 @@ public class StringSum {
     }
 
     public String customChar(String testData){
+        if(testData == null || testData.isBlank() || testData.trim().isEmpty()){
+            return "";
+        }
         Pattern pattern = Pattern.compile("[/][/](.*?)[\\n]");
         Matcher matcher = pattern.matcher(testData);
         String result = "";
@@ -26,8 +32,8 @@ public class StringSum {
 
     public String[] splitStr(String testData){
         String custom = customChar(testData);
-        if(custom.length() == 0 || custom.isEmpty()){
-            return testData.split(",|:");
+        if(custom == "" || custom.isBlank() || custom.trim().isEmpty()){
+            return custom.split(",|:");
         }
         else if(custom.equals("+")){
             custom = "\\+|,|:";
@@ -39,6 +45,9 @@ public class StringSum {
 
     public int customSum(String testData){
         String[] splitResult = splitStr(testData);
+        if(splitResult[0] == ""){
+            return 0;
+        }
         int sum = 0;
         for(String str : splitResult){
             sum += Integer.parseInt(str);
