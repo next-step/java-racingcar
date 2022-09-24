@@ -21,11 +21,12 @@ public class CarFactoryTest {
 
 	@Test
 	@DisplayName("새로운 이동 상태를 저장한다.")
-	void saveStatus(){
+	void saveStatus() {
 		int status = 2;
-		carFactory.saveStatus(CARNUM,status);
-		carFactory.getCarStatus(CARNUM);
-		Assertions.assertEquals(status, 2);
+		carFactory.saveStatus(CARNUM, status);
+		int new_status = carFactory.getCarStatus(CARNUM);
+		Assertions.assertEquals(new_status, 2);
 	}
+
 
 }
