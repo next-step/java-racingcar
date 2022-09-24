@@ -1,7 +1,12 @@
 package calculator;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class StringAddCalculator {
-    public static final String SEPARATOR = "[,;]";
+    private static final String SEPARATOR = "[,;]";
+    private static final String CUSTOM_SEPARATOR_REGEX = "//(.)\n(.*)";
+    private static final Pattern CUSTOM_SEPARATOR_PATTERN = Pattern.compile(CUSTOM_SEPARATOR_REGEX);
 
     private StringAddCalculator() {
         throw new UnsupportedOperationException("This is a utility class and cannot be instantiated");
@@ -27,7 +32,10 @@ public class StringAddCalculator {
     }
 
     private static String[] split(String text) {
+        Matcher m = CUSTOM_SEPARATOR_PATTERN.matcher(text);
+        if (m.find()) {
+            return m.group(2).split(m.group(1));
+        }
         return text.split(SEPARATOR);
     }
-
 }
