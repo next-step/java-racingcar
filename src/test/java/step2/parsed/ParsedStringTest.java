@@ -17,4 +17,14 @@ class ParsedStringTest {
                 .hasMessage("음수를 입력할 수 없습니다.");
     }
 
+    @Test
+    @DisplayName("숫자 이외의 문자에 대한 유효성 검증")
+    void b() {
+        String stringToBeParsed = "*";
+        Parsed sut = new ParsedString(stringToBeParsed);
+
+        Assertions.assertThatThrownBy(() -> sut.parsedValue())
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("숫자 이외의 문자를 입력할 수 없습니다.");
+    }
 }
