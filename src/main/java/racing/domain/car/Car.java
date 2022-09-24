@@ -28,8 +28,8 @@ public class Car {
         return position.value();
     }
 
-    public String name() {
-        return name.value();
+    public Name name() {
+        return name;
     }
 
     @Override
