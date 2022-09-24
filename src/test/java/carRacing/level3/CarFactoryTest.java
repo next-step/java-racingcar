@@ -19,4 +19,13 @@ public class CarFactoryTest {
 		Assertions.assertEquals(status, 1);
 	}
 
+	@Test
+	@DisplayName("새로운 이동 상태를 저장한다.")
+	void saveStatus(){
+		int status = 2;
+		carFactory.saveStatus(CARNUM,status);
+		carFactory.getCarStatus(CARNUM);
+		Assertions.assertEquals(status, 2);
+	}
+
 }
