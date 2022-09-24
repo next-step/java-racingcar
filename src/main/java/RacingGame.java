@@ -24,8 +24,7 @@ public class RacingGame {
 
     public GameResult play() {
         for (int i = 0; i < cars.size(); i++) {
-            Car car = cars.get(i);
-            moveCarByStrategy(car);
+            moveCarByStrategy(cars.get(i));
         }
         return new GameResult(cars);
     }
