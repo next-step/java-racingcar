@@ -5,6 +5,7 @@ import java.util.Random;
 
 public class Racing {
 
+	private static final int RANGE_OF_RANDOM_NUMBER = 10;
 	private final Random random = new Random();
 	private final List<Car> cars;
 
@@ -14,7 +15,7 @@ public class Racing {
 
 	public void race() {
 		for (Car car : cars) {
-			car.move(random.nextInt(10));
+			car.move(random.nextInt(RANGE_OF_RANDOM_NUMBER));
 		}
 	}
 }
