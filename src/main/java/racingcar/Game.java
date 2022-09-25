@@ -12,8 +12,8 @@ import racingcar.view.OutputView;
 
 public class Game {
 
-	public static final InputView INPUT_VIEW = new InputView();
-	public static final OutputView OUTPUT_VIEW = new OutputView();
+	private static final InputView INPUT_VIEW = new InputView();
+	private static final OutputView OUTPUT_VIEW = new OutputView();
 
 	public static void main(String[] args) {
 		int carCount = getCarCount();

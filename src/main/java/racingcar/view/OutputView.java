@@ -5,8 +5,8 @@ import java.util.List;
 
 public class OutputView {
 
-	public static final String PROGRESS_INDICATOR = "-";
-	public static final String RESULT_MESSAGE = "\n실행 결과";
+	private static final String PROGRESS_INDICATOR = "-";
+	private static final String RESULT_MESSAGE = "\n실행 결과";
 
 	public void promptCarCount() {
 		System.out.println("자동차 대수는 몇 대 인가요?");
