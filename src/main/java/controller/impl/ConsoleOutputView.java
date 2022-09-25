@@ -8,6 +8,7 @@ public class ConsoleOutputView implements OutputView {
 
     private static final String POSITION_STRING_UNIT = "-";
     private static final String JOIN_DELIMITER = ",";
+    private static final String CAR_NAME_POSITION_DELIMITER = ":";
 
     @Override
     public void printResult(GameResult result) {
@@ -28,7 +29,7 @@ public class ConsoleOutputView implements OutputView {
     }
 
     private String carToString(Car car) {
-        return getCarName(car) + ":" + this.positionToString(car.getCurrentPosition());
+        return getCarName(car) + CAR_NAME_POSITION_DELIMITER + this.positionToString(car.getCurrentPosition());
     }
 
     private String getCarName(Car car) {
