@@ -2,35 +2,36 @@ package carracing.step3;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+import java.util.function.Supplier;
 
 public class Cars {
 
     private static final int MOVABLE_THRESHOLD = 4;
-    private static final int MAX_BOUND = 10;
     private final List<Car> cars;
+    private final Supplier<Integer> numberGenerator;
 
-    public Cars(int carCount) {
+    public Cars(int carCount, Supplier<Integer> numberGenerator) {
         cars = new ArrayList<>(carCount);
         for (int i = 0; i < carCount; i++) {
             cars.add(new Car());
         }
+        this.numberGenerator = numberGenerator;
     }
 
-    public void moveAllCarsRandomly() {
+    public void moveAllCars() {
         for (int i = 0; i < cars.size(); i++) {
-            moveCarRandomly(i);
+            moveCar(i);
         }
     }
 
-    private void moveCarRandomly(int carNum) {
+    private void moveCar(int carNum) {
         if (isMovable()) {
             cars.get(carNum).move();
         }
     }
 
     private boolean isMovable() {
-        return new Random().nextInt(MAX_BOUND) >= MOVABLE_THRESHOLD;
+        return numberGenerator.get() >= MOVABLE_THRESHOLD;
     }
 
     public String getAllCarsTrace() {
