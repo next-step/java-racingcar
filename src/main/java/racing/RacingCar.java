@@ -5,25 +5,25 @@ import java.util.Scanner;
 
 public class RacingCar {
 
-    private static Scanner scanner = new Scanner(System.in);
-    private static InputView inputView = new InputView();
-    private static ResultView resultView = new ResultView();
-    private static int[] position;
-
     public static void racing() {
-        inputView.input(scanner);
 
-        position = new int[inputView.getCars()];
+        Scanner scanner = new Scanner(System.in);
+        InputView inputView = new InputView();
+        ResultView resultView = new ResultView();
+
+        inputView.input(scanner);
 
         resultView.printTitle();
 
         for(int i=0 ; i< inputView.getTimes() ; i++) {
-            getResult(inputView.getCars());
+            getResult(inputView.getCars(), inputView.getCars(), resultView);
             resultView.printBlank();
         }
     }
 
-    private static void getResult(int cars) {
+    private static void getResult(int cars, int carsNumber, ResultView resultView) {
+        int[] position = new int[carsNumber];
+
         for(int j = 0; j < cars ; j++) {
             position[j] = plusCount(position[j], getRandomNum());
             resultView.printResult(position[j]);
