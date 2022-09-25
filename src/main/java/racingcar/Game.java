@@ -22,9 +22,26 @@ public class Game {
 		List<Car> carList = createCarList(carCount);
 		Cars cars = new Cars(carList);
 
+		move(cars, trialCount);
+	}
+
+	private static void move(Cars cars, int trialCount) {
+		OUTPUT_VIEW.printResultMessage();
+		for (int i = 0; i < trialCount; ++i) {
+			moveOnce(cars);
+			printPositions(cars);
+		}
+	}
+
+	private static void printPositions(Cars cars) {
+		List<Integer> positions = cars.getPositions();
+		OUTPUT_VIEW.printResult(positions);
+	}
+
+	private static void moveOnce(Cars cars) {
 		NumberStrategy numberStrategy = new RandomNumber(9);
 		MoveStrategy moveStrategy = new NumberOverFourStrategy(numberStrategy);
-		cars.move(moveStrategy, trialCount);
+		cars.move(moveStrategy);
 	}
 
 	private static int getTrialCount() {
