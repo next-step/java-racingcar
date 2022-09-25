@@ -4,7 +4,6 @@ import exception.NegativeNumberException;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Stream;
 
 public class StringAddCalculator {
     public static final String INPUT_TEXT_IS_NOT_NUMBER = "Input text is not number.";
@@ -60,7 +59,7 @@ public class StringAddCalculator {
 
     private static int sum(int[] numbers) {
         int result = 0;
-        for(int number : numbers) {
+        for (int number : numbers) {
             result += number;
         }
         return result;
