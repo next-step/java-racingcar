@@ -1,17 +1,15 @@
 package racing;
 
 import java.util.Random;
-import java.util.Scanner;
 
 public class RacingCar {
 
     public static void racing() {
 
-        Scanner scanner = new Scanner(System.in);
         InputView inputView = new InputView();
         ResultView resultView = new ResultView();
 
-        inputView.input(scanner);
+        inputView.input();
 
         resultView.printTitle();
 

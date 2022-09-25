@@ -17,7 +17,9 @@ public class InputView {
         return times;
     }
 
-    public void input(Scanner scanner) {
+    public void input() {
+        Scanner scanner = new Scanner(System.in);
+
         inputCars(scanner);
         inputTimes(scanner);
     }
