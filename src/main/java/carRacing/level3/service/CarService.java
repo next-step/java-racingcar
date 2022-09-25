@@ -3,7 +3,6 @@ package carRacing.level3.service;
 import carRacing.level3.repository.CarFactory;
 
 public class CarService {
-
 	private static final Integer BOUNDARY = 10;
 	private static final Integer PIVOT = 4;
 	CarFactory carFactory = new CarFactory();

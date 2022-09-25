@@ -4,9 +4,9 @@ import java.util.HashMap;
 
 public class CarFactory {
 
-	public static final Integer DEFAULT_STATUS = 1;
-	public static final Integer MOVE_CAR_STATUS = 1;
-	public static HashMap<Integer, Integer> carMap = new HashMap<>();
+	private static final Integer DEFAULT_STATUS = 1;
+	private static final Integer MOVE_CAR_STATUS = 1;
+	private static HashMap<Integer, Integer> carMap = new HashMap<>();
 
 	public void initStatus(int carNum) {
 		carMap.put(carNum, DEFAULT_STATUS);

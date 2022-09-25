@@ -6,7 +6,7 @@ import carRacing.level3.service.CarService;
 
 public class RacingGame {
 
-	public static final Integer INIT_ROUND = 1;
+	private static final Integer INIT_ROUND = 1;
 
 	CarService carService = new CarService();
 	OutPutView outPutView = new OutPutView();
