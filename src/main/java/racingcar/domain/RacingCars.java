@@ -9,7 +9,7 @@ public class RacingCars {
 
     public RacingCars(String carNameText) {
         this.cars = new ArrayList<>();
-        Arrays.stream(carNameText.split(",")).forEach(name -> this.cars.add(new Car(name)));
+        Arrays.stream(carNameText.split(",")).forEach(name -> this.cars.add(new Car(name.trim())));
     }
 
     public void race() {

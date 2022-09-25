@@ -26,7 +26,7 @@ public class OutputView {
 
     private static String printGraph(Car car) {
         StringBuilder graph = new StringBuilder();
-        IntStream.range(1, car.showDistance()).forEach(a -> graph.append(GRAPH_FIGURE));
+        IntStream.range(0, car.showDistance()).forEach(a -> graph.append(GRAPH_FIGURE));
         return graph.toString();
     }
 }

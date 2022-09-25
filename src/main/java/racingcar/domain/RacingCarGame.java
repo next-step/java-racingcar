@@ -15,7 +15,7 @@ public class RacingCarGame {
     }
 
     public void play() {
-        IntStream.range(1, numberOfTimes).forEach(a -> {
+        IntStream.range(0, numberOfTimes).forEach(a -> {
             racingCars.race();
             OutputView.printRacing(racingCars.showCars());
         });
