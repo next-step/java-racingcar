@@ -1,0 +1,34 @@
+package calculator;
+
+import org.junit.jupiter.api.Test;
+
+import static calculator.StringAddCalculator.splitAndSum;
+import static org.assertj.core.api.Assertions.*;
+
+public class StringAddCalculatorTest {
+    @Test
+    void null_또는_space(){
+        assertThat(splitAndSum("")).isEqualTo(0);
+        assertThat(splitAndSum(null)).isEqualTo(0);
+    }
+
+    @Test
+    void 문자열_하나(){
+        assertThat(splitAndSum("1")).isEqualTo(1);
+    }
+
+    @Test
+    void 컴마_구분자(){
+        assertThat(splitAndSum("1,2")).isEqualTo(3);
+    }
+
+    @Test
+    void 컴마_쉼표_구분자(){
+        assertThat(splitAndSum("1,2;3")).isEqualTo(6);
+    }
+
+    @Test
+    void 마이너스(){
+        assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> splitAndSum("-1,2;3"));
+    }
+}
