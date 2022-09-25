@@ -18,7 +18,7 @@ public class RacingCarTest {
     @ParameterizedTest(name = "{0}가 4 이상인 지 체크")
     @CsvSource(value = {"3:false","4:true","5:true"}, delimiter = ':')
     void checkNumberSize(int input, Boolean result) {
-        assertThat(RacingCar.isFourOrMore(input)).isEqualTo(result);
+        assertThat(RacingCar.isSatisfiedConditionForMove(input)).isEqualTo(result);
     }
 
     @ParameterizedTest(name = "{0}가 4 이상이면 +1")

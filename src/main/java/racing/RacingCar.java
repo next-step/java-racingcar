@@ -6,6 +6,8 @@ import java.util.Random;
 
 public class RacingCar {
 
+    private static final int CONDITION = 4;
+
     public static void racing() {
         InputView inputView = new InputView();
         ResultView resultView = new ResultView();
@@ -38,7 +40,7 @@ public class RacingCar {
     }
 
     public static int plusCount(int count, int number) {
-        if(isFourOrMore(number)) {
+        if(isSatisfiedConditionForMove(number)) {
             return count+1;
         }
         return count;
@@ -49,8 +51,8 @@ public class RacingCar {
         return random.nextInt(10);
     }
 
-    public static boolean isFourOrMore(int number) {
-        if (number >= 4 ) {
+    public static boolean isSatisfiedConditionForMove(int number) {
+        if (number >= CONDITION) {
             return true;
         }
         return false;
