@@ -7,12 +7,8 @@ public class StringAddCalculator {
       return 0;
     }
 
-    if (NumberParser.isNumber(source)) {
-      return Integer.parseInt(source);
-    }
-
     String[] tokens = Tokenizer.tokenize(source);
-    return sum(NumberParser.parse(tokens));
+    return sum(NumberParser.parseOnlyPositive(tokens));
   }
 
   private static boolean isBlank(String source) {
@@ -20,6 +16,8 @@ public class StringAddCalculator {
   }
 
   private static int sum(List<Integer> numbers) {
-    return numbers.stream().reduce((x, y) -> x + y).orElse(0);
+    return numbers.stream()
+        .reduce((x, y) -> x + y)
+        .orElse(0);
   }
 }

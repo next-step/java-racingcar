@@ -39,7 +39,16 @@ public class StringAddCalculatorTest {
 
   @Test
   public void splitAndSum_negative() throws Exception {
+    assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1"))
+        .isInstanceOf(RuntimeException.class);
+
     assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
+        .isInstanceOf(RuntimeException.class);
+  }
+
+  @Test
+  public void splitAndSum_negativeWithCustom() {
+    assertThatThrownBy(() -> StringAddCalculator.splitAndSum("//;\n-1;2;3"))
         .isInstanceOf(RuntimeException.class);
   }
 }
