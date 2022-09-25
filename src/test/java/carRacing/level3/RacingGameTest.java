@@ -15,13 +15,13 @@ public class RacingGameTest {
 
 	@Test
 	@DisplayName("전체 자동차 처음 셋팅 - 이동 상태 1")
-	public void carsInitStatus() {
+	public void carsInit() {
 
 		int totalCarNum = 3;
 		race.initRace(totalCarNum);
 
 		for (int car = 0; car < totalCarNum; car++) {
-			Assertions.assertEquals(DEFAULT_STATUS, carService.carStatus(car));
+			Assertions.assertEquals(DEFAULT_STATUS, carService.carMovingLocation(car));
 		}
 	}
 

@@ -14,25 +14,25 @@ public class CarFactoryTest {
 	@Test
 	@DisplayName("처음 라운드는 모두 한칸씩 이동하여 현재 이동 상태는 1이다.")
 	void setInitTest() {
-		carFactory.initStatus(CARNUM);
-		int status = carFactory.carStatus(CARNUM);
-		Assertions.assertEquals(status, 1);
+		carFactory.initCarLocation(CARNUM);
+		int newLocation = carFactory.moveCarLocation(CARNUM);
+		Assertions.assertEquals(newLocation, 1);
 	}
 
 	@Test
 	@DisplayName("새로운 이동 상태를 저장한다.")
 	void saveStatus() {
 		int status = 2;
-		carFactory.saveStatus(CARNUM, status);
-		int new_status = carFactory.carStatus(CARNUM);
-		Assertions.assertEquals(new_status, 2);
+		carFactory.saveCarLocation(CARNUM, status);
+		int newLocation = carFactory.moveCarLocation(CARNUM);
+		Assertions.assertEquals(newLocation, 2);
 	}
 
 	@Test
 	@DisplayName("한번 이동 후 이동 상태를 +1하여 수정한다.")
 	void updateStatus() {
-		carFactory.saveStatus(CARNUM,1);
-		int new_status = carFactory.updateStatus(CARNUM);
-		Assertions.assertEquals(new_status,  2);
+		carFactory.saveCarLocation(CARNUM,1);
+		int newLocation = carFactory.moveCarLocation(CARNUM);
+		Assertions.assertEquals(newLocation,  2);
 	}
 }

@@ -14,22 +14,22 @@ public class CarService {
 		return false;
 	}
 
-	public Integer carStatus(int carNum) {
-		return carFactory.carStatus(carNum);
+	public Integer carMovingLocation(int carNum) {
+		return carFactory.carLocation(carNum);
 	}
 
 	public void initRace(int carNum) {
-		carFactory.initStatus(carNum);
+		carFactory.initCarLocation(carNum);
 	}
 
 	public void moveCar(int carNum) {
 
 		Boolean movable = isMovable(RandomNum.randomNum());
 
-		int new_status = carFactory.updateStatus(carNum);
+		int new_status = carFactory.moveCarLocation(carNum);
 
 		if (movable) {
-			carFactory.saveStatus(carNum, new_status);
+			carFactory.saveCarLocation(carNum, new_status);
 		}
 	}
 }

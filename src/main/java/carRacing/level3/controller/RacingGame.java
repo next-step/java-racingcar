@@ -42,7 +42,7 @@ public class RacingGame {
 	}
 
 	public void showRace(int carNum) {
-		outPutView.showCar(carService.carStatus(carNum));
+		outPutView.showCar(carService.carMovingLocation(carNum));
 	}
 
 	public void printSpace() {

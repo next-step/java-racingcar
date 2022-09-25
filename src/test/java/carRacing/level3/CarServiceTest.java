@@ -17,10 +17,10 @@ public class CarServiceTest {
 	@DisplayName("경주가 시작되면 자동차는 랜덤값에 따라 이동한다.")
 	public void moveCar() {
 		carService.initRace(CAR_NUM);
-		int current_status = carService.carStatus(CAR_NUM);
+		int current_status = carService.carMovingLocation(CAR_NUM);
 
 		carService.moveCar(CAR_NUM);
-		int new_status = carService.carStatus(CAR_NUM);
+		int new_status = carService.carMovingLocation(CAR_NUM);
 
 		assertEquals(current_status + MOVE_STATUS, new_status);
 

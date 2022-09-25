@@ -4,28 +4,28 @@ import java.util.HashMap;
 
 public class CarFactory {
 
-	private static final Integer DEFAULT_STATUS = 1;
-	private static final Integer MOVE_CAR_STATUS = 1;
+	private static final Integer DEFAULT_LOCATION = 1;
+	private static final Integer MOVE_CAR_LOCATION = 1;
 	private static HashMap<Integer, Integer> carMap = new HashMap<>();
 
-	public void initStatus(int carNum) {
-		carMap.put(carNum, DEFAULT_STATUS);
+	public void initCarLocation(int carNum) {
+		carMap.put(carNum, DEFAULT_LOCATION);
 	}
 
-	public Integer carStatus(int carNum) {
+	public Integer carLocation(int carNum) {
 		return carMap.get(carNum);
 	}
 
-	public void saveStatus(int carNum, int newStatus) {
-		carMap.put(carNum, newStatus);
+	public void saveCarLocation(int carNum, int newLocation) {
+		carMap.put(carNum, newLocation);
 	}
 
-	public Integer updateStatus(int carNum) {
+	public Integer moveCarLocation(int carNum) {
 
-		int status = (carNum);
-		status += MOVE_CAR_STATUS;
+		int currentLocation = carNum;
+		currentLocation += MOVE_CAR_LOCATION;
 
-		return status;
+		return currentLocation;
 	}
 
 }
