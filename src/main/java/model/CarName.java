@@ -1,19 +1,23 @@
-package controller;
+package model;
 
-import java.util.Arrays;
-
-public class InputValidator {
+public class CarName {
 
     private static final int MAX_CAR_NAME_LENGTH = 5;
+    private final String name;
 
-    public void validateName(String[] names) {
-        Arrays.stream(names).filter(this::isInvalid).findAny().ifPresent((name) -> {
+    public CarName(String name) {
+        if (isInvalid(name)) {
             throw new IllegalArgumentException(name);
-        });
+        }
+        this.name = name;
     }
 
     private boolean isInvalid(String name) {
         return name == null || name.isBlank() || name.length() > MAX_CAR_NAME_LENGTH;
+    }
+
+    public String getName() {
+        return name;
     }
 
 }

@@ -1,4 +1,5 @@
 import model.Car;
+import model.CarName;
 import model.GameResult;
 import service.GameStrategy;
 import service.WinnerStrategy;
@@ -14,16 +15,16 @@ public class RacingGame {
     private final GameStrategy gameStrategy;
     private final WinnerStrategy winnerStrategy;
 
-    public RacingGame(GameStrategy gameStrategy, WinnerStrategy winnerStrategy, String[] carNames) {
+    public RacingGame(GameStrategy gameStrategy, WinnerStrategy winnerStrategy, List<CarName> carNames) {
         this.gameStrategy = gameStrategy;
         this.winnerStrategy = winnerStrategy;
-        for (int i = 0; i < carNames.length; i++) {
-            this.cars.add(Car.carWithName(carNames[i]));
+        for (CarName carName : carNames) {
+            this.cars.add(Car.carWithName(carName));
         }
     }
 
     public GameResult play() {
-        for(Car car : this.cars){
+        for (Car car : this.cars) {
             this.moveCarByStrategy(car);
         }
         return new GameResult(cars);

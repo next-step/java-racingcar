@@ -17,6 +17,7 @@ public class RacingGameApp {
         GameParam param = inputView.getInputFromUser();
         OutputView outputView = new ConsoleOutputView();
         RacingGame game = initGameWithParam(param);
+        outputView.printResultMsg();
         IntStream.range(0, param.getTryNum()).forEach((idx) -> outputView.printResult(game.play()));
         outputView.printWinner(game.getWinners());
     }
