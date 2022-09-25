@@ -15,12 +15,12 @@ public class RacingGame {
         this.cars = initCars();
     }
 
-    public static RacingGame ready(Input input) {
-        return new RacingGame(input.getCarQuantity(), input.getMovementCount());
-    }
-
     public static RacingGame ready(int carQuantity, int movementCount) {
         return new RacingGame(carQuantity, movementCount);
+    }
+
+    public static RacingGame ready(Input input) {
+        return ready(input.getCarQuantity(), input.getMovementCount());
     }
 
     private List<Car> initCars() {
