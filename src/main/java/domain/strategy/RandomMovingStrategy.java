@@ -4,18 +4,18 @@ import java.util.Random;
 
 public class RandomMovingStrategy implements MovingStrategy {
 
-    private static final int OVER_FOUR = 4;
-    private static final int BOUND_TEM = 10;
-    private static final Random random = new Random();
+    private static final int MOVABLE_THRESHOLD_NUMBER = 4;
+    private static final int BOUND_NUMBER = 10;
+    private static final Random RANDOM = new Random();
 
     @Override
-    public boolean movable() {
+    public boolean isMovable() {
 
-        return randomNumber() >= OVER_FOUR;
+        return randomize() >= MOVABLE_THRESHOLD_NUMBER;
     }
 
-    private int randomNumber() {
+    private int randomize() {
 
-        return random.nextInt(BOUND_TEM);
+        return RANDOM.nextInt(BOUND_NUMBER);
     }
 }
