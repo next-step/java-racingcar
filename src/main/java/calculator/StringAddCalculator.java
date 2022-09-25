@@ -16,7 +16,7 @@ public class StringAddCalculator {
             return 0;
         }
 
-        String[] tokens = splitTokens(text);
+        String[] tokens = splits(text);
 
         if (hasNegativeNumber(tokens)) {
             throw new RuntimeException();
@@ -39,12 +39,12 @@ public class StringAddCalculator {
         }
         return false;
     }
-    public static String[] splitTokens(String input) {
-        Matcher m = CUSTOM_PATTERN.matcher(input);
+    public static String[] splits(String input) {
+        Matcher matcher = CUSTOM_PATTERN.matcher(input);
 
-        if (m.find()) {
-            String customDelimiter = m.group(REGEX_DELIMITER_GROUP);
-            String[] tokens = m.group(REGEX_NUMBER_GROUP).split(customDelimiter);
+        if (matcher.find()) {
+            String customDelimiter = matcher.group(REGEX_DELIMITER_GROUP);
+            String[] tokens = matcher.group(REGEX_NUMBER_GROUP).split(customDelimiter);
 
             return tokens;
         }
