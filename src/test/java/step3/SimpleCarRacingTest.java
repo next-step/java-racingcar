@@ -3,9 +3,6 @@ package step3;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import step3.SimpleCarRacing.Car;
-import step3.SimpleCarRacing.GameRule;
-
 public class SimpleCarRacingTest {
 
     @Test
@@ -19,7 +16,24 @@ public class SimpleCarRacingTest {
         Car car = new Car(1);
 
         car.tryMove(1);
+
         Assertions.assertThat(car.getStraightCount()).isEqualTo(0);
+    }
+
+    private RacingCondition createRacingCondition(Integer carCount, Integer attemptCount) {
+        return new RacingCondition(carCount, attemptCount);
+    }
+
+    @Test
+    public void play_게임을시작한다() {
+        RacingCondition racingCondition = createRacingCondition(3, 3);
+        Game game = Game.prepare(racingCondition);
+
+        Assertions.assertThat(game.isEnded()).isFalse();
+
+        game.play();
+
+        Assertions.assertThat(game.isEnded()).isTrue();
     }
 
 }
