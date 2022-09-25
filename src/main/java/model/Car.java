@@ -5,32 +5,31 @@ public class Car {
 
 
     private final CarName carName;
-    private int currentPosition = 0;
+    private CarPosition carPosition;
 
 
-    private Car(CarName carName) {
+    private Car(CarName carName, CarPosition carPosition) {
         this.carName = carName;
+        this.carPosition = carPosition;
     }
 
-    public static Car carWithName(CarName carName) {
-        return new Car(carName);
+    public static Car carWithName(CarName carName){
+        return new Car(carName,new CarPosition(0));
     }
 
     public void move() {
-        this.currentPosition++;
+        this.carPosition = this.carPosition.move();
     }
 
-    public boolean isSamePosition(int position) {
-        return this.currentPosition == position;
-    }
-
-    public int getCurrentPosition() {
-        return currentPosition;
+    public boolean isSamePosition(CarPosition carPosition) {
+        return this.carPosition.equals(carPosition);
     }
 
     public CarName getCarName() {
-        return carName;
+        return new CarName(this.carName.getName());
     }
 
-
+    public CarPosition getCarPosition() {
+        return new CarPosition(this.carPosition.getPosition());
+    }
 }

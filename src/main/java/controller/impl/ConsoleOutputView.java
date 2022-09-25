@@ -35,11 +35,14 @@ public class ConsoleOutputView implements OutputView {
     }
 
     private String carToString(Car car) {
-        return getCarName(car) + CAR_NAME_POSITION_DELIMITER + this.positionToString(car.getCurrentPosition());
+        return getCarName(car) + CAR_NAME_POSITION_DELIMITER + this.positionToString(this.getCarPosition(car));
     }
 
     private String getCarName(Car car) {
         return car.getCarName().getName();
+    }
+    private int getCarPosition(Car car) {
+        return car.getCarPosition().getPosition();
     }
 
     private String positionToString(int currentPosition) {
