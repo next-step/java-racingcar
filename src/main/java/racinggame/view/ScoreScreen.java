@@ -1,7 +1,6 @@
-package step3.racinggame.view;
+package racinggame.view;
 
-import java.util.Arrays;
-import step3.racinggame.core.ScoreBoard;
+import racinggame.core.ScoreBoard;
 
 public class ScoreScreen {
 

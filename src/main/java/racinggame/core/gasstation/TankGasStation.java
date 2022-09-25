@@ -1,7 +1,7 @@
-package step3.racinggame.core.gasstation;
+package racinggame.core.gasstation;
 
 import java.util.Queue;
-import step3.racinggame.exception.EmptyTankException;
+import racinggame.exception.EmptyTankException;
 
 public class TankGasStation implements GasStation {
 

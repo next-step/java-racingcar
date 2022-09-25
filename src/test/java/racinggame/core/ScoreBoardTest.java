@@ -1,4 +1,4 @@
-package step3.racinggame.core;
+package racinggame.core;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -7,9 +7,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import step3.racinggame.exception.InvalidCarNumberException;
-import step3.racinggame.exception.InvalidDistanceNumberException;
-import step3.racinggame.exception.InvalidGameNumberException;
+import racinggame.exception.InvalidCarNumberException;
+import racinggame.exception.InvalidDistanceNumberException;
+import racinggame.exception.InvalidGameNumberException;
 
 class ScoreBoardTest {
 

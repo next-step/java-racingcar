@@ -1,4 +1,4 @@
-package step3.racinggame.core.gasstation;
+package racinggame.core.gasstation;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Queue;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.racinggame.exception.EmptyTankException;
+import racinggame.exception.EmptyTankException;
 
 class TankGasStationTest {
 

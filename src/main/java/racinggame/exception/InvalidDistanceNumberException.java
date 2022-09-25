@@ -1,4 +1,4 @@
-package step3.racinggame.exception;
+package racinggame.exception;
 
 public class InvalidDistanceNumberException extends RuntimeException {
 

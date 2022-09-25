@@ -1,4 +1,4 @@
-package step3.racinggame.core;
+package racinggame.core;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Queue;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.racinggame.core.gasstation.GasStation;
-import step3.racinggame.core.gasstation.TankGasStation;
+import racinggame.core.gasstation.GasStation;
+import racinggame.core.gasstation.TankGasStation;
 
 class RacingGameTest {
 

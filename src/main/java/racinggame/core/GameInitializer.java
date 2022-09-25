@@ -1,4 +1,4 @@
-package step3.racinggame.core;
+package racinggame.core;
 
 import java.util.ArrayList;
 import java.util.List;

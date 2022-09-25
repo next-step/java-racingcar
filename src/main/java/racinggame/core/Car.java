@@ -1,4 +1,4 @@
-package step3.racinggame.core;
+package racinggame.core;
 
 public class Car {
 

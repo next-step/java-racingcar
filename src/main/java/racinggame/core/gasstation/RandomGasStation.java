@@ -1,4 +1,4 @@
-package step3.racinggame.core.gasstation;
+package racinggame.core.gasstation;
 
 import java.util.Random;
 

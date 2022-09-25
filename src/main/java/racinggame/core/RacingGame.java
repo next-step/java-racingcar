@@ -1,7 +1,7 @@
-package step3.racinggame.core;
+package racinggame.core;
 
 import java.util.List;
-import step3.racinggame.core.gasstation.GasStation;
+import racinggame.core.gasstation.GasStation;
 
 public class RacingGame {
 

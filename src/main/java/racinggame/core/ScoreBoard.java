@@ -1,8 +1,8 @@
-package step3.racinggame.core;
+package racinggame.core;
 
-import step3.racinggame.exception.InvalidCarNumberException;
-import step3.racinggame.exception.InvalidDistanceNumberException;
-import step3.racinggame.exception.InvalidGameNumberException;
+import racinggame.exception.InvalidCarNumberException;
+import racinggame.exception.InvalidDistanceNumberException;
+import racinggame.exception.InvalidGameNumberException;
 
 public class ScoreBoard {
 
