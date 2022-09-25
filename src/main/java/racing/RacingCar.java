@@ -8,6 +8,7 @@ public class RacingCar {
 
     private static final int CONDITION = 4;
     private static final int BETWEEN_ZERO_AND_NINE = 10;
+    private static Random random = new Random();
 
     public static void racing() {
         InputView inputView = new InputView();
@@ -48,14 +49,10 @@ public class RacingCar {
     }
 
     public static int getRandomNum() {
-        Random random = new Random();
         return random.nextInt(BETWEEN_ZERO_AND_NINE);
     }
 
     public static boolean isSatisfiedConditionForMove(int number) {
-        if (number >= CONDITION) {
-            return true;
-        }
-        return false;
+        return number >= CONDITION;
     }
 }
