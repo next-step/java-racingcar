@@ -14,13 +14,7 @@ public class StringAddCalculator {
     }
 
     private static boolean isEmpty(String string){
-        if(string == null){
-            return true;
-        }
-        if(string.isEmpty()){
-            return true;
-        }
-        return false;
+        return string == null || string.isEmpty();
     }
 
     private static String[] split(String numberString){
