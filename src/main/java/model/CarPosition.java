@@ -2,7 +2,7 @@ package model;
 
 import java.util.Objects;
 
-public class CarPosition implements Comparable<CarPosition> {
+public final class CarPosition implements Comparable<CarPosition> {
 
     private final int position;
 

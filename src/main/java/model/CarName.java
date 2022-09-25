@@ -1,6 +1,6 @@
 package model;
 
-public class CarName {
+public final class CarName {
 
     private static final int MAX_CAR_NAME_LENGTH = 5;
     private final String name;
