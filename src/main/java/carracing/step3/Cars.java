@@ -22,13 +22,18 @@ public class Cars {
     }
 
     private void moveCarRandomly(int carNum) {
-        final int MOVE_FORWARD_BORDER = 4;
+
         final int RANDOM_NUMBER_SCOPE = 10;
 
         int randomNumber = new Random().nextInt(RANDOM_NUMBER_SCOPE);
-        if (randomNumber > MOVE_FORWARD_BORDER) {
+        if (isMovable(randomNumber)) {
             carsMoveTrace.get(carNum).append("-");
         }
+    }
+
+    private static boolean isMovable(int randomNumber) {
+        final int MOVE_FORWARD_BORDER = 4;
+        return randomNumber > MOVE_FORWARD_BORDER;
     }
 
     public String getAllCarsTrace() {
