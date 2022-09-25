@@ -46,4 +46,29 @@ public class CarsTest {
 		assertThat(carList).allSatisfy(
 			car -> assertThat(car).isEqualByComparingTo(new Car()));
 	}
+
+	@Test
+	@DisplayName("n번 움직일 수 있다")
+	void cars_can_move_n_times() {
+		NumberStrategy numberStrategy = new FixedNumber(4);
+		MoveStrategy moveStrategy = new NumberOverFourStrategy(numberStrategy);
+		List<Car> carListMovedOne = new ArrayList<>();
+		for (int i = 0; i < 5; ++i) {
+			carListMovedOne.add(new Car());
+		}
+		Cars carsMovedOne = new Cars(carListMovedOne);
+		carsMovedOne.move(moveStrategy, 1);
+
+		List<Car> carListMovedTwo = new ArrayList<>();
+		for (int i = 0; i < 5; ++i) {
+			carListMovedTwo.add(new Car());
+		}
+		Cars carsMovedTwo = new Cars(carListMovedTwo);
+		carsMovedTwo.move(moveStrategy, 2);
+
+		assertThat(carListMovedTwo).allSatisfy(
+			carMovedTwo -> assertThat(carListMovedOne).allSatisfy(
+				carMovedOne -> assertThat(carMovedTwo).isGreaterThan(carMovedOne)
+			));
+	}
 }

@@ -17,4 +17,10 @@ public class Cars {
 			car.move(moveStrategy);
 		}
 	}
+
+	public void move(MoveStrategy moveStrategy, int times) {
+		for (int i = 0; i < times; ++i) {
+			move(moveStrategy);
+		}
+	}
 }
