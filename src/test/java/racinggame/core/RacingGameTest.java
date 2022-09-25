@@ -11,6 +11,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racinggame.core.gasstation.GasStation;
 import racinggame.core.gasstation.TankGasStation;
+import racinggame.core.scoreboard.ScoreBoard;
+import racinggame.core.scoreboard.Score;
 
 class RacingGameTest {
 
@@ -24,25 +26,31 @@ class RacingGameTest {
 
         ScoreBoard resultScoreBoard = game.play(NUM_OF_GAME);
 
+        Score scoreOfRound1 = resultScoreBoard.getScore(1);
+        Score scoreOfRound2 = resultScoreBoard.getScore(2);
+        Score scoreOfRound3 = resultScoreBoard.getScore(3);
+        Score scoreOfRound4 = resultScoreBoard.getScore(4);
+
         assertAll(
-                () -> assertThat(resultScoreBoard.getDistance(1, 1)).isEqualTo(0),
-                () -> assertThat(resultScoreBoard.getDistance(1, 2)).isEqualTo(0),
-                () -> assertThat(resultScoreBoard.getDistance(1, 3)).isEqualTo(1),
-                () -> assertThat(resultScoreBoard.getDistance(1, 4)).isEqualTo(1),
-                () -> assertThat(resultScoreBoard.getDistance(2, 1)).isEqualTo(0),
-                () -> assertThat(resultScoreBoard.getDistance(2, 2)).isEqualTo(1),
-                () -> assertThat(resultScoreBoard.getDistance(2, 3)).isEqualTo(2),
-                () -> assertThat(resultScoreBoard.getDistance(2, 4)).isEqualTo(1),
-                () -> assertThat(resultScoreBoard.getDistance(3, 1)).isEqualTo(1),
-                () -> assertThat(resultScoreBoard.getDistance(3, 2)).isEqualTo(2),
-                () -> assertThat(resultScoreBoard.getDistance(3, 3)).isEqualTo(2),
-                () -> assertThat(resultScoreBoard.getDistance(3, 4)).isEqualTo(1)
+                () -> assertThat(scoreOfRound1.getScore("pobi")).isEqualTo(0),
+                () -> assertThat(scoreOfRound1.getScore("crong")).isEqualTo(0),
+                () -> assertThat(scoreOfRound1.getScore("honux")).isEqualTo(1),
+                () -> assertThat(scoreOfRound2.getScore("pobi")).isEqualTo(1),
+                () -> assertThat(scoreOfRound2.getScore("crong")).isEqualTo(0),
+                () -> assertThat(scoreOfRound2.getScore("honux")).isEqualTo(2),
+                () -> assertThat(scoreOfRound3.getScore("pobi")).isEqualTo(2),
+                () -> assertThat(scoreOfRound3.getScore("crong")).isEqualTo(0),
+                () -> assertThat(scoreOfRound3.getScore("honux")).isEqualTo(3),
+                () -> assertThat(scoreOfRound4.getScore("pobi")).isEqualTo(3),
+                () -> assertThat(scoreOfRound4.getScore("crong")).isEqualTo(0),
+                () -> assertThat(scoreOfRound4.getScore("honux")).isEqualTo(3)
         );
 
         /*  <result>
-            [0, 0, 1, 1]
-            [0, 1, 2, 1]
-            [1, 2, 2, 1]
+            [0, 0, 1]
+            [1, 0, 2]
+            [2, 0, 3]
+            [3, 0, 3]
          */
     }
 

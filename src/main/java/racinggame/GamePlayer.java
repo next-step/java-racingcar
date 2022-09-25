@@ -3,22 +3,22 @@ package racinggame;
 import racinggame.core.GameInitializer;
 import racinggame.core.RacingGame;
 import racinggame.core.gasstation.RandomGasStation;
+import racinggame.core.scoreboard.ScoreBoard;
 import racinggame.view.GamePad;
 import racinggame.view.ScoreScreen;
-import racinggame.core.ScoreBoard;
 
 public class GamePlayer {
 
     public static void main(String[] args) {
         GamePad.printCarNamesInputMsg();
         String carNames = GamePad.insertStringData();
-        GamePad.printNumOfGameInputMsg();
-        int numOfGame = GamePad.insertIntData();
+        GamePad.printNumOfRoundInputMsg();
+        int numOfRound = GamePad.insertIntData();
 
         RacingGame racingGame = new RacingGame(
                 GameInitializer.initCars(carNames),
                 new RandomGasStation());
-        ScoreBoard scoreBoard = racingGame.play(numOfGame);
+        ScoreBoard scoreBoard = racingGame.play(numOfRound);
 
         ScoreScreen.printScoreBoard(scoreBoard);
     }

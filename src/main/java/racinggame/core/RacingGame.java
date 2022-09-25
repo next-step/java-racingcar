@@ -2,6 +2,7 @@ package racinggame.core;
 
 import java.util.List;
 import racinggame.core.gasstation.GasStation;
+import racinggame.core.scoreboard.ScoreBoard;
 
 public class RacingGame {
 
@@ -14,22 +15,21 @@ public class RacingGame {
         this.gasStation = gasStation;
     }
 
-    public ScoreBoard play(int numOfGame) {
-        ScoreBoard scoreBoard = new ScoreBoard(numOfGame, cars.size());
+    public ScoreBoard play(int round) {
+        ScoreBoard scoreBoard = new ScoreBoard();
 
-        for (int i = 0; i < numOfGame; i++) {
-            playRound(i, scoreBoard);
+        for (int i = 0; i < round; i++) {
+            playRound(scoreBoard);
         }
 
         return scoreBoard;
     }
 
-    private void playRound(int round, ScoreBoard scoreBoard) {
+    private void playRound(ScoreBoard scoreBoard) {
         for (int j = 0; j < cars.size(); j++) {
             Car car = cars.get(j);
             car.move(gasStation.sellFuel());
-
-            scoreBoard.setDistance(car.getDistance(), round + 1, j + 1);
         }
+        scoreBoard.recordScore(cars);
     }
 }
