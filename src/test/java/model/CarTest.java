@@ -23,5 +23,4 @@ class CarTest {
 
         assertThat(testCar.getCarPosition()).isEqualTo(originPosition);
     }
-
 }
