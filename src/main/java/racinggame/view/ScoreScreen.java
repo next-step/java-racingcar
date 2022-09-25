@@ -7,6 +7,16 @@ import racinggame.core.scoreboard.Score;
 
 public class ScoreScreen {
 
+    public static void printWinner(ScoreBoard scoreBoard) {
+        List<String> winners = scoreBoard.getWinner(
+                scoreBoard.getCountOfRound());
+        System.out.println(
+                String.format("%s가 최종 우승했습니다.",
+                        String.join(" ,",
+                                winners.toArray(new String[0]))
+                ));
+    }
+
     public static void printScoreBoard(ScoreBoard scoreBoard) {
         System.out.println("실행 결과");
 

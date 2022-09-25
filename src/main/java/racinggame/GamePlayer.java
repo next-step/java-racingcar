@@ -21,6 +21,7 @@ public class GamePlayer {
         ScoreBoard scoreBoard = racingGame.play(numOfRound);
 
         ScoreScreen.printScoreBoard(scoreBoard);
+        ScoreScreen.printWinner(scoreBoard);
     }
 
 }
