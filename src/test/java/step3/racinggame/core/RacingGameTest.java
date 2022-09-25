@@ -4,10 +4,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.racinggame.view.GamePad;
+import step3.racinggame.core.gasstation.GasStation;
+import step3.racinggame.core.gasstation.TankGasStation;
 
 class RacingGameTest {
 
@@ -17,7 +20,7 @@ class RacingGameTest {
     @Test
     @DisplayName("주어진 게임 정보에 대해 경기 후의 결과 테스트")
     void play_with_game_info() {
-        RacingGame game = new RacingGame(initCars(), initFuelTank());
+        RacingGame game = new RacingGame(initCars(), initGasStation());
 
         ScoreBoard resultScoreBoard = game.play(NUM_OF_GAME);
 
@@ -51,13 +54,15 @@ class RacingGameTest {
         return cars;
     }
 
-    private FuelTank initFuelTank() {
-        FuelTank fuelTank = new FuelTank();
+    private GasStation initGasStation() {
+        Queue<Integer> tank = new LinkedList<>();
+
         for (int i = 0; i < NUM_OF_GAME * NUM_OF_CAR; i++) {
-            fuelTank.addFuel(i * 3 % 10);
+            tank.add(i * 3 % 10);
             //연료: 0, 3, 6, 9,  12, 15, 18, 21,  24, 27, 30, 33
         }
-        return fuelTank;
+
+        return new TankGasStation(tank);
     }
 
 }

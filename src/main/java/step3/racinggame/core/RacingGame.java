@@ -1,16 +1,17 @@
 package step3.racinggame.core;
 
 import java.util.List;
+import step3.racinggame.core.gasstation.GasStation;
 
 public class RacingGame {
 
     private final List<Car> cars;
 
-    private final FuelTank fuelTank;
+    private final GasStation gasStation;
 
-    public RacingGame(List<Car> cars, FuelTank fuelTank) {
+    public RacingGame(List<Car> cars, GasStation gasStation) {
         this.cars = cars;
-        this.fuelTank = fuelTank;
+        this.gasStation = gasStation;
     }
 
     public ScoreBoard play(int numOfGame) {
@@ -26,7 +27,7 @@ public class RacingGame {
     private void playRound(int round, ScoreBoard scoreBoard) {
         for (int j = 0; j < cars.size(); j++) {
             Car car = cars.get(j);
-            car.move(fuelTank.takeFuel());
+            car.move(gasStation.sellFuel());
 
             scoreBoard.setDistance(car.getDistance(), round + 1, j + 1);
         }

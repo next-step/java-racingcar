@@ -14,13 +14,4 @@ public class GameInitializer {
         return cars;
     }
 
-    public static FuelTank initFuelTank(int numOfGame, int numOfCar) {
-        FuelTank fuelTank = new FuelTank();
-        for (int i = 0; i < numOfGame * numOfCar; i++) {
-            fuelTank.addFuel(GasStation.sellFuel());
-        }
-        return fuelTank;
-
-    }
-
 }
