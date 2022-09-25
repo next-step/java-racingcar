@@ -31,7 +31,6 @@ public class StringTest {
         assertThat(c).isEqualTo('a');
         assertThatThrownBy(() -> {
             "abc".charAt(10);
-        }).isInstanceOf(IndexOutOfBoundsException.class)
-          .hasMessageContaining("String index out of range: 10");
+        }).isInstanceOf(IndexOutOfBoundsException.class).hasMessageContaining("String index out of range: 10");
     }
 }

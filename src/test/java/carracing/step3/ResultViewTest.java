@@ -12,8 +12,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ResultViewTest {
 
-    private ResultView resultView;
     private final ByteArrayOutputStream output = new ByteArrayOutputStream();
+    private ResultView resultView;
 
     @BeforeEach
     void setUp() {

@@ -13,7 +13,7 @@ public class StringAddCalculator {
         }
 
         StringBuilder delimiter = new StringBuilder(",:");
-        if(text.charAt(0) == CUSTOM_DELIMITER_STARTER) {
+        if (text.charAt(0) == CUSTOM_DELIMITER_STARTER) {
             int stringStartIdx = getStringStartIdx(text);
             delimiter.append(text, 2, stringStartIdx - 1);
             text = text.substring(stringStartIdx);
@@ -34,7 +34,7 @@ public class StringAddCalculator {
 
     private static int getStringStartIdx(String text) {
         int idx = 2;
-        while(text.charAt(idx) != '\n') {
+        while (text.charAt(idx) != '\n') {
             idx += 1;
         }
         return idx + 1;
@@ -42,7 +42,7 @@ public class StringAddCalculator {
 
     private static int getNumberOfParsingToken(StringTokenizer tokens) {
         int number = Integer.parseInt(tokens.nextToken());
-        if(number < 0) {
+        if (number < 0) {
             throw new RuntimeException("음수 발생");
         }
         return number;

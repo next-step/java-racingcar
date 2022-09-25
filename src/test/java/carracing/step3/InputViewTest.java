@@ -1,6 +1,7 @@
 package carracing.step3;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -44,9 +45,7 @@ class InputViewTest {
 
         assertThatThrownBy(() -> {
             this.inputView.enterCarCount();
-        })
-                .isInstanceOf(NumberFormatException.class)
-                .hasMessageContaining("잘못된 숫자를 입력하였습니다.");
+        }).isInstanceOf(NumberFormatException.class).hasMessageContaining("잘못된 숫자를 입력하였습니다.");
     }
 
     @ParameterizedTest(name = "시도 횟수 입력 테스트 : 입력 2 : 결과 2")
@@ -64,9 +63,7 @@ class InputViewTest {
 
         assertThatThrownBy(() -> {
             this.inputView.enterTryCount();
-        })
-                .isInstanceOf(NumberFormatException.class)
-                .hasMessageContaining("잘못된 숫자를 입력하였습니다.");
+        }).isInstanceOf(NumberFormatException.class).hasMessageContaining("잘못된 숫자를 입력하였습니다.");
     }
 
 }
