@@ -63,6 +63,23 @@ public class CarsTest {
 			carMovedOne -> assertThat(greaterCar).isGreaterThan(carMovedOne));
 	}
 
+	@Test
+	@DisplayName("n대 자동차의 위치를 순서대로 반환할 수 있다")
+	void positions_can_be_returned() {
+		NumberStrategy numberStrategy = new FixedNumber(3);
+		MoveStrategy moveStrategy = new NumberOverFourStrategy(numberStrategy);
+		List<Car> carList = createCarList();
+		Cars cars = new Cars(carList);
+		cars.move(moveStrategy);
+
+		List<Integer> positions = new ArrayList<>();
+		for(Car car : carList){
+			positions.add(car.getPosition());
+		}
+
+		assertThat(cars.getPositions()).containsExactlyElementsOf(positions);
+	}
+
 	private List<Car> createCarList() {
 		List<Car> carList = new ArrayList<>();
 		for (int i = 0; i < 5; ++i) {
