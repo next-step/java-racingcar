@@ -2,18 +2,14 @@ package step3.service;
 
 import java.util.Scanner;
 
-import step3.domain.Car;
 import step3.exception.NotNumberException;
 import step3.exception.NotPositiveNumberException;
 
-public class InputReview {
+public class InputView {
 
-    private Car car;
+    private int carNumber;
+    private int attempts;
     private static final Scanner scanner = new Scanner(System.in);
-
-    public InputReview(Car car) {
-        this.car = car;
-    }
 
     public void inputCarNumber() {
 
@@ -27,7 +23,7 @@ public class InputReview {
         }
         if (inputNumber < 0)
             throw new NotPositiveNumberException("양수만 입력하세요");
-        car.setCars(inputNumber);
+        this.carNumber = inputNumber;
     }
 
     public void inputAttemptNumber() {
@@ -42,6 +38,14 @@ public class InputReview {
         }
         if (inputAttempt < 0)
             throw new NotPositiveNumberException("양수만 입력하세요");
-        car.setAttempts(inputAttempt);
+        this.attempts = inputAttempt;
+    }
+
+    public int getCarNumber() {
+        return carNumber;
+    }
+
+    public int getAttempts() {
+        return attempts;
     }
 }

@@ -2,21 +2,21 @@ package step3;
 
 import step3.domain.Car;
 import step3.service.CarPlay;
-import step3.service.InputReview;
+import step3.service.InputView;
 import step3.service.ResultView;
 
 public class Main {
 
     public static void main(String[] args) {
 
+        InputView inputView = new InputView();
+        inputView.inputCarNumber();
+        inputView.inputAttemptNumber();
         Car car = new Car();
-        InputReview inputReview = new InputReview(car);
-        inputReview.inputCarNumber();
-        inputReview.inputAttemptNumber();
 
-        CarPlay carPlay = new CarPlay(car);
+        CarPlay carPlay = new CarPlay(car, inputView);
 
-        ResultView resultView = new ResultView(car, carPlay);
+        ResultView resultView = new ResultView(carPlay, inputView);
         resultView.printTotalCarStatus();
 
     }
