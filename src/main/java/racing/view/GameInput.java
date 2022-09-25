@@ -22,6 +22,7 @@ public class GameInput {
     }
 
     private void inputCount() {
+        count = SCANNER.nextInt();
         while (notPositiveCount()) {
             System.out.println("양수만 입력 가능합니다.");
             count = SCANNER.nextInt();
