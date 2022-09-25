@@ -1,3 +1,5 @@
+package stringadder;
+
 class StringAdder {
     private final Numbers numbers;
 
