@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class Car {
@@ -50,5 +51,18 @@ public class Car {
 
     public int getTotalTryCount() {
         return this.position + stopCount;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return position == car.position && stopCount == car.stopCount;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(position, stopCount);
     }
 }

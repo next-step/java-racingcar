@@ -46,7 +46,9 @@ public class RacingGame {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RacingGame that = (RacingGame) o;
-        return carQuantity == that.carQuantity && movementCount == that.movementCount && cars.size() == that.cars.size();
+        return carQuantity == that.carQuantity
+                && movementCount == that.movementCount
+                && cars.equals(that.cars);
     }
 
     @Override

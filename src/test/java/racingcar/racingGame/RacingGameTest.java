@@ -23,4 +23,15 @@ public class RacingGameTest {
         assertThat(actual).isEqualTo(expected);
     }
 
+    @Test
+    @DisplayName("start() 메소드가 실행되면 cars의 상태가 변경되어 인스턴스 동등성 비교가 실패한다.")
+    void start() {
+        Input input = new FakeInput(CAR_QUANTITY, MOVEMENT_COUNT);
+        RacingGame readyGame = RacingGame.ready(input);
+        RacingGame expected = RacingGame.ready(input);
+
+        RacingGame startedGame = readyGame.start();
+
+        assertThat(startedGame).isNotEqualTo(expected);
+    }
 }
