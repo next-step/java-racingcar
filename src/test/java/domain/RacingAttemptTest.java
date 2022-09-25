@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+@DisplayName("레이싱 게임 시도 횟수 관련")
 class RacingAttemptTest {
 
     @DisplayName("시도 횟수는 0이하인 경우 익셉션 처리한다.")
