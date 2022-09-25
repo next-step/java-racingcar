@@ -4,12 +4,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 public class StringAddCalculatorTest {
     @Test
-    void empty_or_null() {
-        assertThat(StringAddCalculator.splitAndAdd( "")).isEqualTo(0);
+    @NullAndEmptySource
+    @ParameterizedTest
+    @DisplayName("빈문자열에 대해서는 0을 반환한다")
+    void empty_or_null(String input) {
+        assertThat(StringAddCalculator.splitAndAdd( input)).isEqualTo(0);
     }
 
     @Test
@@ -22,18 +28,14 @@ public class StringAddCalculatorTest {
     @Test
     void 문자열2개() {
         String input = "1,2";
-        String[] strNumbers = input.split(",");
-
-        int result = StringAddCalculator.add(strNumbers);
+        int result = StringAddCalculator.splitAndAdd(input);
         assertThat(result).isEqualTo(3);
     }
 
     @Test
     void 문자열3개() {
         String input = "1,2,3";
-        String[] strNumbers = input.split(",");
-
-        assertThat(StringAddCalculator.add(strNumbers)).isEqualTo(6);
+        assertThat(StringAddCalculator.splitAndAdd(input)).isEqualTo(6);
     }
 
     @Test
@@ -48,7 +50,7 @@ public class StringAddCalculatorTest {
     void 커스텀구분자를추출한다() {
         String input = "//a\n";
 
-        assertThat(StringAddCalculator.extractDelimiter(input)).isEqualTo("a");
+        assertThat(StringAddCalculator.extractDelimiterOrElseThrow(input)).isEqualTo("a");
     }
 
     @Test

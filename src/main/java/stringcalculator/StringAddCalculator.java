@@ -1,6 +1,6 @@
 package stringcalculator;
 
-import java.util.Objects;
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,14 +16,8 @@ public class StringAddCalculator {
         return add(split(parseInputExpression(input)));
     }
 
-    public static int add(String[] strNumbers) {
-        int sum = 0;
-
-        for (String strNumber : strNumbers) {
-            sum += parseInt(strNumber);
-        }
-
-        return sum;
+    private static int add(String[] stringNumberArray) {
+        return Arrays.stream(stringNumberArray).mapToInt(StringAddCalculator::parseInt).sum();
     }
 
     public static int parseInt(String maybeNumberString) {
@@ -40,28 +34,18 @@ public class StringAddCalculator {
         }
     }
 
-    public static int add(Integer[] numbers) {
-        int sum = 0;
-
-        for (Integer number : numbers) {
-            sum += number;
-        }
-
-        return sum;
-    }
-
     public static String[] split(Input input) {
         return input.getInput().split(input.getDelimiter());
     }
 
-    public static String extractDelimiter(String input) {
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(input);
+    public static String extractDelimiterOrElseThrow(String input) {
+        Matcher m = CUSTOM_DELIMITER_PATTERN.matcher(input);
 
         if (m.find()) {
             return m.group(1);
         }
 
-        return null;
+        throw new DelimiterNotFoundException();
     }
 
     public static boolean hasCustomDelimiter(String input) {
@@ -103,59 +87,5 @@ public class StringAddCalculator {
         return Input.hasNoDelimiter(input);
     }
 
-    public static class Input {
-        private static final String DEFAULT_DELIMITERS = ",|:";
 
-        private String originalInput;
-        private String delimiterRemovedInput;
-        private String customDelimiter;
-
-        private Input(String originalInput, String delimiterRemovedInput, String customDelimiter) {
-            this.originalInput = originalInput;
-            this.delimiterRemovedInput = delimiterRemovedInput;
-            this.customDelimiter = customDelimiter;
-        }
-
-        public static Input hasDelimiter(String input, String delimiterRemovedInput, String customDelimiter) {
-            return new Input(input, delimiterRemovedInput, customDelimiter);
-        }
-
-        public static Input hasNoDelimiter(String input) {
-            return new Input(input, input, "");
-        }
-
-        public boolean useCustomDelimiter() {
-            return customDelimiter != null && !customDelimiter.isBlank();
-        }
-
-        public String getDelimiter() {
-            return useCustomDelimiter() ? customDelimiter : DEFAULT_DELIMITERS;
-        }
-
-        public String getInput() {
-            return useCustomDelimiter() ? delimiterRemovedInput : originalInput;
-        }
-
-        public String[] split() {
-            return getInput().split(getDelimiter());
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) {
-                return true;
-            }
-            if (!(o instanceof Input)) {
-                return false;
-            }
-            Input input = (Input) o;
-            return originalInput.equals(input.originalInput) && Objects.equals(delimiterRemovedInput,
-                    input.delimiterRemovedInput) && Objects.equals(customDelimiter, input.customDelimiter);
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(originalInput, delimiterRemovedInput, customDelimiter);
-        }
-    }
 }
