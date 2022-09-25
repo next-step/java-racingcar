@@ -1,6 +1,8 @@
 import model.Car;
+import model.CarName;
 import model.GameResult;
 import service.GameStrategy;
+import service.WinnerStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,30 +12,33 @@ public class RacingGame {
 
     private final List<Car> cars = new ArrayList();
 
-    private final GameStrategy strategy;
+    private final GameStrategy gameStrategy;
+    private final WinnerStrategy winnerStrategy;
 
-    public RacingGame(GameStrategy strategy, int carNumber) {
-        this.strategy = strategy;
-        for (int i = 0; i < carNumber; i++) {
-            this.cars.add(new Car());
+    public RacingGame(GameStrategy gameStrategy, WinnerStrategy winnerStrategy, List<CarName> carNames) {
+        this.gameStrategy = gameStrategy;
+        this.winnerStrategy = winnerStrategy;
+        for (CarName carName : carNames) {
+            this.cars.add(Car.carWithName(carName));
         }
     }
 
     public GameResult play() {
-        List<Integer> carPositions = new ArrayList<>();
-        for (int i = 0; i < cars.size(); i++) {
-            Car car = cars.get(i);
-            moveCarByStrategy(car);
-            carPositions.add(car.getCurrentPosition());
+        for (Car car : this.cars) {
+            this.moveCarByStrategy(car);
         }
-        return new GameResult(carPositions);
+        return new GameResult(cars);
     }
 
     void moveCarByStrategy(Car car) {
-        if (!this.strategy.isCarMove()) {
+        if (!this.gameStrategy.isCarMove()) {
             return;
         }
         car.move();
+    }
+
+    public GameResult getWinners() {
+        return new GameResult(this.winnerStrategy.pickWinner(this.cars));
     }
 
 }

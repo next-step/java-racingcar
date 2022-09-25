@@ -5,13 +5,15 @@ import java.util.List;
 
 public class GameResult {
 
-    private final List<Integer> carPositions;
+    private final List<Car> cars;
 
-    public GameResult(List<Integer> carPositions) {
-        this.carPositions = carPositions;
+
+    public GameResult(List<Car> cars) {
+        this.cars = cars;
     }
 
-    public List<Integer> getCarPositions() {
-        return carPositions;
+    public List<Car> getCars() {
+        return cars;
     }
+
 }

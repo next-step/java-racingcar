@@ -1,45 +1,60 @@
 import model.Car;
-import org.assertj.core.api.Assertions;
+import model.CarName;
+import model.GameResult;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingGameTest {
 
     @Test
     void shouldMoveCarByStrategy() {
-        int carNumber = 3;
-        RacingGame game = new RacingGame(() -> true, carNumber);
-        Car car = new Car();
+        CarName carName = new CarName("test");
+        RacingGame game = new RacingGame(() -> true, (candidates) -> candidates, List.of(carName));
+        Car car = Car.carWithName(carName);
         int beforeGame = car.getCurrentPosition();
+
         game.moveCarByStrategy(car);
+
         int afterGame = car.getCurrentPosition();
-        Assertions.assertThat(beforeGame).isLessThan(afterGame);
+        assertThat(beforeGame).isLessThan(afterGame);
     }
 
     @Test
     void shouldNotMoveCarByStrategy() {
-        int carNumber = 3;
-        RacingGame game = new RacingGame(() -> false, carNumber);
-        Car car = new Car();
+        CarName carName = new CarName("test");
+        RacingGame game = new RacingGame(() -> false, (candidates) -> candidates, List.of(carName));
+        Car car = Car.carWithName(carName);
         int beforeGame = car.getCurrentPosition();
+
         game.moveCarByStrategy(car);
+
         int afterGame = car.getCurrentPosition();
-        Assertions.assertThat(afterGame).isEqualTo(beforeGame);
+        assertThat(afterGame).isEqualTo(beforeGame);
     }
 
     @Test
     void shouldReturnProperGameResult_whenCarStopped() {
-        int carNumber = 1;
-        RacingGame game = new RacingGame(() -> false, carNumber);
-        Assertions.assertThat(game.play().getCarPositions()).containsExactly(0);
-        Assertions.assertThat(game.play().getCarPositions()).containsExactly(0);
+        CarName carName = new CarName("test");
+        RacingGame game = new RacingGame(() -> false, (candidates) -> candidates, List.of(carName));
+
+        assertThat(getFistCarPosition(game.play())).isEqualTo(0);
+        assertThat(getFistCarPosition(game.play())).isEqualTo(0);
     }
 
     @Test
     void shouldReturnProperGameResult_whenCarMoved() {
-        int carNumber = 1;
-        RacingGame game = new RacingGame(() -> true, carNumber);
-        Assertions.assertThat(game.play().getCarPositions()).containsExactly(1);
-        Assertions.assertThat(game.play().getCarPositions()).containsExactly(2);
+        CarName carName = new CarName("test");
+        RacingGame game = new RacingGame(() -> true, (candidates) -> candidates, List.of(carName));
+
+        assertThat(getFistCarPosition(game.play())).isEqualTo(1);
+        assertThat(getFistCarPosition(game.play())).isEqualTo(2);
+    }
+
+    private int getFistCarPosition(GameResult result) {
+        return result.getCars().get(0).getCurrentPosition();
     }
 
 }
