@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 public class Car {
-
     public String positionView = "";
     private int criteriaNum = 4;
 
