@@ -18,6 +18,14 @@ public class Car {
         this.randomable = new RandomNumber();
     }
 
+    public Car(String name,Randomable randomable) {
+        validateCarName(name);
+        this.name = name;
+        this.distance = 0;
+        this.randomable = randomable;
+    }
+
+
     public Car(Randomable randomable) {
         this.distance = 0;
         this.randomable = randomable;
@@ -52,5 +60,13 @@ public class Car {
         if (name.length() > MAX_NAME_LENGTH){
             throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "name='" + name + '\'' +
+                ", distance=" + distance +
+                '}';
     }
 }

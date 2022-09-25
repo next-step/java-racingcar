@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.domain.RacingCarGame;
+import racingcar.domain.RacingCars;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -12,10 +13,9 @@ public class RacingCarGameMain {
         String carNameText = InputView.askCarNames();
         int numberOfTimes = InputView.askHowManyTimes();
 
-        racingCarGame.start(carNameText, numberOfTimes);
-
         OutputView.printRacingResultTitle();
-        racingCarGame.play();
+        RacingCars result = racingCarGame.play(new RacingCars(carNameText), numberOfTimes);
+        OutputView.printWinners(racingCarGame.pickWinners(result));
     }
-    
+
 }
