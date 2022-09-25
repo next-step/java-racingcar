@@ -7,12 +7,9 @@ public class Main {
         int carCount = inputView.enterCarCount();
         int tryCount = inputView.enterTryCount();
 
-        Car[] cars = new Car[carCount];
-        for (int i = 0; i < carCount; ++i) {
-            cars[i] = new Car();
-        }
+        Cars cars = new Cars(carCount);
 
         ResultView resultView = new ResultView();
-        resultView.printResults(carCount, tryCount, cars);
+        resultView.printResults(tryCount, cars);
     }
 }

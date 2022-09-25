@@ -32,17 +32,10 @@ class ResultViewTest {
     void printResults() {
         final int carCount = 3;
         final int tryCount = 4;
-        final Car[] cars = setCarForTest(carCount);
+        final Cars cars = new Cars(carCount);
 
-        this.resultView.printResults(carCount, tryCount, cars);
+        this.resultView.printResults(tryCount, cars);
         assertThat(output.toString()).contains("-");
     }
 
-    private Car[] setCarForTest(final int carCount) {
-        Car[] cars = new Car[carCount];
-        for (int i = 0; i < carCount; i++) {
-            cars[i] = new Car();
-        }
-        return cars;
-    }
 }
