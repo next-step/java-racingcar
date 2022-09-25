@@ -46,6 +46,6 @@ class CarTest {
 
         car.move(value);
 
-        assertThat(car.getStatus()).isGreaterThan(nowStatus);
+        assertThat(car.getStatus()).isEqualTo(nowStatus);
     }
 }
