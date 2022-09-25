@@ -1,4 +1,4 @@
-package step3;
+package car_racing;
 
 import java.util.Scanner;
 
@@ -11,11 +11,11 @@ public class RacingCondition {
         this.attemptCount = attemptCount;
     }
 
-    public Integer getCarCount() {
+    public Integer carCount() {
         return carCount;
     }
 
-    public Integer getAttemptCount() {
+    public Integer attemptCount() {
         return attemptCount;
     }
 
