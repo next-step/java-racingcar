@@ -14,6 +14,14 @@ public class Car {
     private int position = START_POSITION;
     private int stopCount = DEFAULT_STOP_COUNT;
 
+    public int getPosition() {
+        return position;
+    }
+
+    public int getTotalTryCount() {
+        return this.position + stopCount;
+    }
+
     public void tryMove(int attemptCount) {
         for (int i = 0; i < attemptCount; i++) {
             moveOrStop();
@@ -42,9 +50,5 @@ public class Car {
 
     private void stop() {
         stopCount += DEFAULT_STOP;
-    }
-
-    public int getTotalTryCount() {
-        return this.position + stopCount;
     }
 }

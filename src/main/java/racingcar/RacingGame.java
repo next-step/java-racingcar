@@ -36,6 +36,11 @@ public class RacingGame {
         return this;
     }
 
+    public void result(Output output) {
+        output.printResultMessage();
+        cars.forEach(car -> output.printPosition(car.getPosition()));
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
