@@ -14,8 +14,8 @@ import racinggame.core.gasstation.TankGasStation;
 
 class RacingGameTest {
 
-    private static final int NUM_OF_GAME = 3;
-    private static final int NUM_OF_CAR = 4;
+    private static final int NUM_OF_GAME = 4;
+    private static final String CAR_NAMES = "pobi,crong,honux";
 
     @Test
     @DisplayName("주어진 게임 정보에 대해 경기 후의 결과 테스트")
@@ -48,18 +48,19 @@ class RacingGameTest {
 
     private List<Car> initCars() {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < NUM_OF_CAR; i++) {
-            cars.add(new Car());
+        for (String carName : CAR_NAMES.split(",")) {
+            cars.add(new Car(carName));
         }
+
         return cars;
     }
 
     private GasStation initGasStation() {
         Queue<Integer> tank = new LinkedList<>();
 
-        for (int i = 0; i < NUM_OF_GAME * NUM_OF_CAR; i++) {
+        for (int i = 0; i < NUM_OF_GAME * CAR_NAMES.split(",").length; i++) {
             tank.add(i * 3 % 10);
-            //연료: 0, 3, 6, 9,  12, 15, 18, 21,  24, 27, 30, 33
+            //연료: 0, 3, 6,  9, 12, 15,  18, 21, 24,  27, 30, 33
         }
 
         return new TankGasStation(tank);

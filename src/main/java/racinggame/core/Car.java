@@ -6,10 +6,16 @@ public class Car {
     private static final int STANDSTILL = 0;
     private static final int FUEL_TO_MOVE = 4;
 
+    private String name;
     private int distance;
 
-    public Car() {
+    public Car(String name) {
+        this.name = name;
         distance = 0;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getDistance() {
