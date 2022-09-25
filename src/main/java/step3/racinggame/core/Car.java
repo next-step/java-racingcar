@@ -17,10 +17,10 @@ public class Car {
     }
 
     public void move(int fuel) {
-        distance += assureDistance(fuel);
+        distance += getForwardDistance(fuel);
     }
 
-    private int assureDistance(int fuel) {
+    private int getForwardDistance(int fuel) {
         if (fuel >= FUEL_TO_MOVE) {
             return FORWARD_DISTANCE;
         }

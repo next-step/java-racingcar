@@ -3,6 +3,6 @@ package step3.racinggame.exception;
 public class InvalidCarNumberException extends RuntimeException {
 
     public InvalidCarNumberException() {
-        super("잘못된 차량 값입니다.");
+        super("등록된 차량 수를 벗어난 값입니다.");
     }
 }

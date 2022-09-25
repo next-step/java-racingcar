@@ -3,6 +3,6 @@ package step3.racinggame.exception;
 public class InvalidGameNumberException extends RuntimeException {
 
     public InvalidGameNumberException() {
-        super("잘못된 게임 값입니다.");
+        super("등록된 게임 회차를 벗어난 게임 회차 값입니다.");
     }
 }
