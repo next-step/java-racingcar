@@ -5,6 +5,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.stream.IntStream;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
@@ -40,9 +42,7 @@ class CarTest {
         //given
         Car car = new Car((min, max) -> 9);
         //when
-        for (int time = 0; time < numberOfTimes; time++) {
-            car.run();
-        }
+        IntStream.range(1, numberOfTimes).forEach(a -> car.run());
         //then
         assertThat(car.getDistance()).isEqualTo(numberOfTimes);
     }
