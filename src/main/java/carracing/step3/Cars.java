@@ -6,42 +6,38 @@ import java.util.Random;
 
 public class Cars {
 
-    private final List<StringBuilder> carsMoveTrace;
+    private static final int MOVABLE_THRESHOLD = 4;
+    private static final int MAX_BOUND = 10;
+    private final List<Car> cars;
 
     public Cars(int carCount) {
-        carsMoveTrace = new ArrayList<>(carCount);
+        cars = new ArrayList<>(carCount);
         for (int i = 0; i < carCount; i++) {
-            carsMoveTrace.add(new StringBuilder());
+            cars.add(new Car());
         }
     }
 
     public void moveAllCarsRandomly() {
-        for (int i = 0; i < carsMoveTrace.size(); i++) {
+        for (int i = 0; i < cars.size(); i++) {
             moveCarRandomly(i);
         }
     }
 
     private void moveCarRandomly(int carNum) {
-
-        final int RANDOM_NUMBER_SCOPE = 10;
-
-        int randomNumber = new Random().nextInt(RANDOM_NUMBER_SCOPE);
-        if (isMovable(randomNumber)) {
-            carsMoveTrace.get(carNum).append("-");
+        if (isMovable()) {
+            cars.get(carNum).move();
         }
     }
 
-    private static boolean isMovable(int randomNumber) {
-        final int MOVE_FORWARD_BORDER = 4;
-        return randomNumber > MOVE_FORWARD_BORDER;
+    private boolean isMovable() {
+        return new Random().nextInt(MAX_BOUND) > MOVABLE_THRESHOLD;
     }
 
     public String getAllCarsTrace() {
         StringBuilder allCarTrace = new StringBuilder();
-        for (StringBuilder carMoveTrace : carsMoveTrace) {
-            allCarTrace.append(carMoveTrace.toString()).append("\n");
+        for (Car car : cars) {
+            allCarTrace.append(car.moveTrace()).append("\n");
         }
-        allCarTrace.append("\n");
         return allCarTrace.toString();
     }
 
