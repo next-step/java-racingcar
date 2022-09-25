@@ -38,6 +38,6 @@ class CarRacingTest {
             }
         };
 
-        return new CarRacing(inputView, resultView, new RandomUtilImpl());
+        return new CarRacing(inputView, resultView, new RacingCarFactory());
     }
 }
