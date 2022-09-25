@@ -30,12 +30,8 @@ class ResultViewTest {
     @Test
     @DisplayName("자동차 경주 결과 테스트 : 결과 PASS")
     void printResults() {
-        final int carCount = 3;
-        final int tryCount = 4;
-        final Cars cars = new Cars(carCount);
-
-        this.resultView.printResults("-", 0);
-        assertThat(output.toString()).contains("-");
+        resultView.printResults("-", 0);
+        assertThat(output.toString()).isEqualTo("실행 결과\n-\n");
     }
 
 }
