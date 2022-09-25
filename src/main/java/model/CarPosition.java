@@ -2,18 +2,19 @@ package model;
 
 import java.util.Objects;
 
-public class CarPosition implements Comparable<CarPosition>{
+public class CarPosition implements Comparable<CarPosition> {
 
     private final int position;
 
     public CarPosition(int position) {
-        if (position < 0){
+        if (position < 0) {
             throw new IllegalArgumentException("position must be positive");
         }
         this.position = position;
     }
+
     public CarPosition move() {
-        return new CarPosition(this.position+1);
+        return new CarPosition(this.position + 1);
     }
 
     public int getPosition() {
@@ -23,7 +24,7 @@ public class CarPosition implements Comparable<CarPosition>{
 
     @Override
     public int compareTo(CarPosition target) {
-        return Integer.compare(this.position,target.position);
+        return Integer.compare(this.position, target.position);
     }
 
     @Override

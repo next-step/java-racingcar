@@ -7,9 +7,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CarTest {
 
     @Test
-    void shouldMove(){
+    void shouldMove() {
         CarPosition originPosition = new CarPosition(0);
-        Car testCar = Car.carWithNameAndPosition(new CarName("test"),originPosition);
+        Car testCar = Car.carWithNameAndPosition(new CarName("test"), originPosition);
 
         testCar.move();
 
@@ -17,9 +17,9 @@ class CarTest {
     }
 
     @Test
-    void shouldNotMove(){
+    void shouldNotMove() {
         CarPosition originPosition = new CarPosition(0);
-        Car testCar = Car.carWithNameAndPosition(new CarName("test"),originPosition);
+        Car testCar = Car.carWithNameAndPosition(new CarName("test"), originPosition);
 
         assertThat(testCar.getCarPosition()).isEqualTo(originPosition);
     }

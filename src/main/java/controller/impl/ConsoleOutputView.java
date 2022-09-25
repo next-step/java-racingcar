@@ -22,7 +22,7 @@ public class ConsoleOutputView implements OutputView {
 
     @Override
     public void printWinner(GameResult result) {
-        System.out.println(String.join(JOIN_DELIMITER,getWinnerNames(result)) + WINNER_MSG);
+        System.out.println(String.join(JOIN_DELIMITER, getWinnerNames(result)) + WINNER_MSG);
     }
 
     private List<String> getWinnerNames(GameResult result) {
@@ -41,6 +41,7 @@ public class ConsoleOutputView implements OutputView {
     private String getCarName(Car car) {
         return car.getCarName().getName();
     }
+
     private int getCarPosition(Car car) {
         return car.getCarPosition().getPosition();
     }

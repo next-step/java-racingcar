@@ -13,12 +13,12 @@ public class Car {
         this.carPosition = carPosition;
     }
 
-    public static Car carWithName(CarName carName){
-        return new Car(carName,new CarPosition(0));
+    public static Car carWithName(CarName carName) {
+        return new Car(carName, new CarPosition(0));
     }
 
-    public static Car carWithNameAndPosition(CarName carName, CarPosition carPosition){
-        return new Car(carName,carPosition);
+    public static Car carWithNameAndPosition(CarName carName, CarPosition carPosition) {
+        return new Car(carName, carPosition);
     }
 
     public void move() {
