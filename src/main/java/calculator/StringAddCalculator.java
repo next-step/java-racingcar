@@ -1,11 +1,14 @@
 package calculator;
 
+import exception.NegativeNumberException;
+
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 public class StringAddCalculator {
+    public static final String INPUT_TEXT_IS_NOT_NUMBER = "Input text is not number.";
     private static final String COMMA_OR_COLON = "[,:]";
     private static final String CUSTOM_DELIMITER = "//(.)\n(.*)";
     private static final int PATTERN_MATCHER_GROUP_CUSTOM_DELIMITER_INDEX = 1;
@@ -37,15 +40,19 @@ public class StringAddCalculator {
     }
 
     private static int parsePositiveIntOrThrow(String splitText) {
-        int intNum = Integer.parseInt(splitText);
+        int intNum = toNumber(splitText);
         if (intNum < 0) {
-            StringAddCalculator.occurExceptionWithMessage();
+            throw new NegativeNumberException();
         }
         return intNum;
     }
 
-    public static void occurExceptionWithMessage() throws RuntimeException {
-        throw new PositiveException("Positive Exception is occurred");
+    private static int toNumber(String splitText) {
+        try {
+            return Integer.parseInt(splitText);
+        } catch (Exception e) {
+            throw new NumberFormatException(INPUT_TEXT_IS_NOT_NUMBER);
+        }
     }
 
     private static int sum(int[] ints) {

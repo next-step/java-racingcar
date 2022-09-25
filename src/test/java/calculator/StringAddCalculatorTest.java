@@ -51,7 +51,7 @@ class StringAddCalculatorTest {
     @Test
     @DisplayName("요구사항 6. 음수를 전달할 경우 RuntimeException 예외가 발생")
     void splitAndSum_negative() {
-        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("a,-1,2,3"))
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
                 .isInstanceOf(RuntimeException.class);
     }
 }
