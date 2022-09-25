@@ -15,7 +15,9 @@ public class GameDashBoard {
                 System.out.print("-");
             }
 
-            System.out.println("\n");
+            System.out.println("");
         }
+
+        System.out.println("");
     }
 }

@@ -38,9 +38,10 @@ public class Game {
 
     private void doTry() {
         counter++;
+        Random random = new Random(System.currentTimeMillis());
 
         for (Car car : cars) {
-            car.tryMove(new Random(System.currentTimeMillis()).nextInt(GameRule.RANDOM_LIMIT));
+            car.tryMove(random.nextInt(GameRule.RANDOM_LIMIT));
         }
     }
 }
