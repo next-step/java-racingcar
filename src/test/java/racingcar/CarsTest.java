@@ -12,15 +12,15 @@ import racingcar.movestrategy.MoveStrategy;
 
 public class CarsTest {
 
-	MoveStrategy movableStrategy = () -> true;
-	MoveStrategy unmovableStrategy = () -> false;
+	MoveStrategy moveStrategyMovable = () -> true;
+	MoveStrategy moveStrategyNotMovable = () -> false;
 
 	@Test
 	@DisplayName("n대의 자동차는 전진할 수 있다")
 	void n_cars_can_move() {
 		List<Car> carList = createCarList();
 		Cars cars = new Cars(carList);
-		cars.move(movableStrategy);
+		cars.move(moveStrategyMovable);
 
 		assertThat(carList).allSatisfy(
 			car -> assertThat(car).isGreaterThan(new Car()));
@@ -31,7 +31,7 @@ public class CarsTest {
 	void n_cars_can_stay() {
 		List<Car> carList = createCarList();
 		Cars cars = new Cars(carList);
-		cars.move(unmovableStrategy);
+		cars.move(moveStrategyNotMovable);
 
 		assertThat(carList).allSatisfy(
 			car -> assertThat(car).isEqualByComparingTo(new Car()));
@@ -42,11 +42,11 @@ public class CarsTest {
 	void cars_can_move_n_times() {
 		List<Car> carListMovedOne = createCarList();
 		Cars carsMovedOne = new Cars(carListMovedOne);
-		carsMovedOne.move(movableStrategy, 1);
+		carsMovedOne.move(moveStrategyMovable, 1);
 
 		List<Car> carListMovedTwo = createCarList();
 		Cars carsMovedTwo = new Cars(carListMovedTwo);
-		carsMovedTwo.move(movableStrategy, 2);
+		carsMovedTwo.move(moveStrategyMovable, 2);
 
 		assertThatListGreaterThanOther(carListMovedTwo, carListMovedOne);
 	}
@@ -66,10 +66,10 @@ public class CarsTest {
 	void positions_can_be_returned_ordered() {
 		List<Car> carList = createCarList();
 		Cars cars = new Cars(carList);
-		cars.move(movableStrategy);
+		cars.move(moveStrategyNotMovable);
 
 		List<Integer> positions = getPositions(carList);
-		List<Integer> retrievedPositions = getPositionsFromDTO(cars.getCarDTOs());
+		List<Integer> retrievedPositions = getPositionsFromDTOs(cars.getCarDTOs());
 
 		assertThat(retrievedPositions).containsExactlyElementsOf(positions);
 	}
@@ -82,7 +82,7 @@ public class CarsTest {
 		return positions;
 	}
 
-	private List<Integer> getPositionsFromDTO(List<CarDTO> carDTOs) {
+	private List<Integer> getPositionsFromDTOs(List<CarDTO> carDTOs) {
 		List<Integer> retrievedPositions = new ArrayList<>();
 		for (CarDTO carDTO : carDTOs) {
 			retrievedPositions.add(carDTO.getPosition());

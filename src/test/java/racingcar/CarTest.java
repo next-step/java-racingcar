@@ -12,14 +12,14 @@ import racingcar.numberstrategy.NumberStrategy;
 
 public class CarTest {
 
-	MoveStrategy movableStrategy = () -> true;
-	MoveStrategy unmovableStrategy = () -> false;
+	MoveStrategy moveStrategyMovable = () -> true;
+	MoveStrategy moveStrategyNotMovable = () -> false;
 
 	@Test
 	@DisplayName("차는 전진할 수 있다")
 	void car_can_move() {
 		Car car = new Car();
-		car.move(movableStrategy);
+		car.move(moveStrategyMovable);
 
 		assertThat(car).isGreaterThan(new Car());
 	}
@@ -28,7 +28,7 @@ public class CarTest {
 	@DisplayName("차는 멈춰있을 수 있다")
 	void car_can_stay() {
 		Car car = new Car();
-		car.move(unmovableStrategy);
+		car.move(moveStrategyNotMovable);
 
 		assertThat(car).isEqualByComparingTo(new Car());
 	}
@@ -37,7 +37,7 @@ public class CarTest {
 	@DisplayName("차는 위치를 반환할 수 있다")
 	void car_can_return_position() {
 		Car car = new Car();
-		car.move(movableStrategy);
+		car.move(moveStrategyMovable);
 
 		assertThat(car.getPosition()).isOne();
 	}
