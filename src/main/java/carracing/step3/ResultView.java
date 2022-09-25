@@ -13,9 +13,9 @@ public class ResultView {
     }
 
     private void moveCarAndPrintTrace(final int carCount, final Car[] cars) {
-        for(int j=0; j<carCount; ++j) {
-            cars[j].move();;
-            System.out.println(cars[j].moveTrace());
+        for(int i=0; i<carCount; ++i) {
+            cars[i].move();
+            System.out.println(cars[i].moveTrace());
         }
     }
 
