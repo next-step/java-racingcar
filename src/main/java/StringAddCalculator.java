@@ -32,22 +32,24 @@ public class StringAddCalculator {
 
     private static int sum(String[] numberStringArray){
         return Arrays.stream(numberStringArray)
-                .map(StringAddCalculator::getInteger)
+                .map(StringAddCalculator::convertStringToInteger)
                 .reduce(0, Integer::sum);
     }
 
-    // String -> int 형변환
-    private static int getInteger(String numberString) throws RuntimeException {
-        int number;
-        try {
-            number = Integer.parseInt(numberString);
-            if(number < 0 ){
-                throw new RuntimeException("Wrong Input: Negative Number");
-            }
-        } catch (NumberFormatException nfe) {
-            throw new RuntimeException("Wrong Input: Not Number");
+    private static int convertStringToInteger(String numberString) throws RuntimeException {
+        return isValidNumberString(numberString) ? Integer.parseInt(numberString) : 0;
+    }
+
+    private static boolean isValidNumberString(String numberString){
+        // 양수인지 검증
+        if(! isPositiveNumber(numberString)){
+            throw new RuntimeException("Wrong Input");
         }
-        return number;
+        return true;
+    }
+
+    private static boolean isPositiveNumber(String numberString){
+        return positiveNumberPattern.matcher(numberString).find();
     }
 
 }
