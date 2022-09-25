@@ -2,7 +2,7 @@ package calculator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.NullSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -11,8 +11,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class StringAddCalculatorTest {
 
     @ParameterizedTest
-    @NullSource
-    @ValueSource(strings = {""})
+    @NullAndEmptySource
     @DisplayName("요구사항 1. 빈 문자열 또는 null 값을 입력할 경우 0을 반환")
     void splitAndSum_nullOrEmpty(String input) {
         int result = StringAddCalculator.splitAndSum(input);
@@ -56,6 +55,6 @@ class StringAddCalculatorTest {
     @DisplayName("요구사항 6. 음수를 전달할 경우 RuntimeException 예외가 발생")
     void splitAndSum_negative(String input) {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum(input))
-                .isInstanceOf(RuntimeException.class);
+                .isInstanceOf(NumberFormatException.class);
     }
 }
