@@ -11,12 +11,12 @@ public class CarTest {
 
         car.move(0);
         car.move(3);
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.getPositionString()).isEqualTo("-");
 
         car.move(4);
-        assertThat(car.getPosition()).isEqualTo(2);
+        assertThat(car.getPositionString()).isEqualTo("--");
 
         car.move(9);
-        assertThat(car.getPosition()).isEqualTo(3);
+        assertThat(car.getPositionString()).isEqualTo("--");
     }
 }

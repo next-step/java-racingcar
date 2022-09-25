@@ -1,5 +1,7 @@
 package step3;
 
+import java.util.stream.IntStream;
+
 public class Car {
     private int id;
     private int position = 1;
@@ -18,8 +20,9 @@ public class Car {
         return point >= 4;
     }
 
-    // 테스트용
-    public Integer getPosition(){
-        return this.position;
+    public String getPositionString(){
+        StringBuilder positionString = new StringBuilder();
+        IntStream.range(0, position).forEach(vo -> positionString.append("-"));
+        return positionString.toString();
     }
 }
