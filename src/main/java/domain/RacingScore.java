@@ -32,7 +32,7 @@ public class RacingScore {
 
         return score.stream()
                 .map(racingCar ->
-                        convert(racingCar.distance())
+                        convert(racingCar.getPosition())
                 )
                 .collect(Collectors.toList());
     }
