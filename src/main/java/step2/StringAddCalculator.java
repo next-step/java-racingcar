@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
-    private static Pattern customDelimiterPattern = Pattern.compile("//(.)\n(.*)");
+    private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
 
     public static int splitAndAdd(String input) {
         if (input == null || input.isEmpty()) {
@@ -65,13 +65,13 @@ public class StringAddCalculator {
     }
 
     public static boolean hasCustomDelimiter(String input) {
-        Matcher matcher = customDelimiterPattern.matcher(input);
+        Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(input);
         return matcher.find();
     }
 
     public static String getCustomDelimiter(String input) {
         if (hasCustomDelimiter(input)) {
-            Matcher matcher = customDelimiterPattern.matcher(input);
+            Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(input);
             return matcher.find() ? matcher.group(1) : input;
         }
 
@@ -79,7 +79,7 @@ public class StringAddCalculator {
     }
 
     public static String removeCustomDelimiter(String input) {
-        Matcher matcher = customDelimiterPattern.matcher(input);
+        Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(input);
         if (matcher.find()) {
             return matcher.group(2);
         }
