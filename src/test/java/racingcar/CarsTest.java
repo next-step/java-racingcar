@@ -26,4 +26,21 @@ public class CarsTest {
 		assertThat(carList).allSatisfy(
 			car -> assertThat(car).isGreaterThan(notMovedCar));
 	}
+
+	@Test
+	@DisplayName("n대의 자동차는 정지할 수 있다")
+	void n_cars_can_stay() {
+		NumberStrategy numberStrategy = new FixedNumber(3);
+		List<Car> carList = new ArrayList<>();
+		for (int i = 0; i < 5; ++i) {
+			carList.add(new Car(numberStrategy));
+		}
+		Cars cars = new Cars(carList);
+		cars.move();
+
+		Car notMovedCar = new Car(numberStrategy);
+
+		assertThat(carList).allSatisfy(
+			car -> assertThat(car).isEqualByComparingTo(notMovedCar));
+	}
 }
