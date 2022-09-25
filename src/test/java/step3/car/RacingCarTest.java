@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step3.number.Number;
+import step3.number.Number.Fake;
 
 class RacingCarTest {
 
