@@ -7,3 +7,18 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 구현할 기능 목록
+1. 입력 UI 기능 (InputView)
+   - 자동차 대수 입력
+   - 시도 횟수 입력
+2. 출력 UI 기능 (ResultView)
+   - 경주 게임 결과 출력
+3. Cars 기능 (Cars)
+   - 전체 자동차 움직이기
+   - 전체 자동차 움직인 결과 리턴하기
+4. 자동차 기능 (Car)
+   - 자동차 움직이기
+   - 자동차 움직인 결과 리턴하기
+5. Main
+   - 자동차 경주 수행하기
