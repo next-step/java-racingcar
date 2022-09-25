@@ -3,7 +3,7 @@ package racingcar;
 import java.util.List;
 
 public class ResultView {
-    public static void printResult(List<Car>carList) {
+    public static void printResult(List<Car> carList) {
         for (Car car : carList) {
             printCarPosition(car);
         }
@@ -11,6 +11,6 @@ public class ResultView {
     }
 
     private static void printCarPosition(Car car) {
-        System.out.println(car.printPosition());
+        System.out.println(car.makePositionShape());
     }
 }

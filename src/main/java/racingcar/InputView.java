@@ -5,15 +5,16 @@ import java.util.Scanner;
 public class InputView {
 
     public static RacingCar getRacingCarInput() {
-        int carNums = getAnswerInput("자동차 대수는 몇 대 인가요?");
-        int tryNums = getAnswerInput("시도할 횟수는 몇 회 인가요?");
+        Scanner scanner = new Scanner(System.in);
+        int carNums = getAnswerInput("자동차 대수는 몇 대 인가요?", scanner);
+        int tryNums = getAnswerInput("시도할 횟수는 몇 회 인가요?", scanner);
         return new RacingCar(carNums, tryNums);
     }
 
-    private static int getAnswerInput(String question) {
-        Scanner scanner = new Scanner(System.in);
+    private static int getAnswerInput(String question, Scanner scanner) {
         System.out.println(question);
-        return toInt(scanner.nextLine());
+        String s = scanner.nextLine();
+        return toInt(s);
     }
 
     public static int toInt(String str) {

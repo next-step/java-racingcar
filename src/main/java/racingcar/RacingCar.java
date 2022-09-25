@@ -2,6 +2,7 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class RacingCar {
     private static final int FORWARD_CONDITION = 4;
@@ -18,17 +19,15 @@ public class RacingCar {
         System.out.println("실행 결과");
         List<Car> carList = createCarList();
         for (int i = 0; i < tryNums; i++) {
-            //System.out.println("===START RACING " + (i + 1) + "===");
             moveFowardCarList(carList);
             ResultView.printResult(carList);
-            //System.out.println("===END RACING " + (i + 1) + "===");
         }
     }
 
     private List<Car> createCarList() {
         List<Car> carList = new ArrayList<>();
         for (int i = 0; i < carNums; i++) {
-            carList.add(new Car(i));
+            carList.add(new Car());
         }
         return carList;
     }
@@ -53,5 +52,18 @@ public class RacingCar {
 
     private static boolean isForward(int value) {
         return value >= FORWARD_CONDITION;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RacingCar racingCar = (RacingCar) o;
+        return carNums == racingCar.carNums && tryNums == racingCar.tryNums;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(carNums, tryNums);
     }
 }

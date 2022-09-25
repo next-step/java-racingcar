@@ -1,11 +1,9 @@
 package racingcar;
 
 public class Car {
-    int order;
     int position;
 
-    public Car(int order) {
-        this.order = order;
+    public Car() {
         this.position = 0;
     }
 
@@ -14,7 +12,7 @@ public class Car {
         return position;
     }
 
-    public String printPosition() {
+    public String makePositionShape() {
         return "-".repeat(position);
     }
 }
