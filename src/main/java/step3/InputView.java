@@ -6,7 +6,7 @@ public class InputView {
     Integer numberOfCar;
     Integer tryCount;
 
-    public void readUserInput(){
+    public void readUserInput() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("자동차 대수는 몇 대 인가요?");
         int numberOfCar = scanner.nextInt();
