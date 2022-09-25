@@ -15,14 +15,14 @@ public class StringAdderTest {
     @ParameterizedTest
     @MethodSource("numbers")
     void add(String numbers, int expected) {
-        assertThat(new StringAdder(numbers).calc()).isEqualTo(expected);
+        assertThat(new StringAdder(numbers).calculate()).isEqualTo(expected);
     }
 
     @DisplayName("구분자를 기준으로 분리된 숫자 중에서 음수가 있다면 RuntimeException 을 발생시킨다")
     @ParameterizedTest
     @ValueSource(strings = { "//,\n-1,2", "1,-2,3", "1,2:-3" })
     void add_when_negative_number(String numbers) {
-        assertThatThrownBy(() -> new StringAdder(numbers).calc()).isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> new StringAdder(numbers).calculate()).isInstanceOf(RuntimeException.class);
     }
 
     private static Stream<Arguments> numbers() {
