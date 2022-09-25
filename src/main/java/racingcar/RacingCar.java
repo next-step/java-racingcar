@@ -3,6 +3,7 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 public class RacingCar {
     private static final int FORWARD_CONDITION = 4;
@@ -16,7 +17,7 @@ public class RacingCar {
     }
 
     public void racingStart() {
-        System.out.println("실행 결과");
+        ResultView.printStartMessage();
         List<Car> carList = createCarList();
         for (int i = 0; i < tryNums; i++) {
             moveFowardCarList(carList);
@@ -45,12 +46,15 @@ public class RacingCar {
     }
 
     private boolean forwardCondition() {
-        double random = Math.random();
-        int value = (int) (random * 10);
-        return isForward(value);
+        int randomValue = generateRandomValue();
+        return isForwardCondition(randomValue);
     }
 
-    private static boolean isForward(int value) {
+    private static int generateRandomValue() {
+        return new Random().nextInt(10);
+    }
+
+    private static boolean isForwardCondition(int value) {
         return value >= FORWARD_CONDITION;
     }
 

@@ -4,6 +4,11 @@ import java.util.Scanner;
 
 public class InputView {
 
+    public static void main(String[] args) {
+        RacingCar racingCar = getRacingCarInput();
+        racingCar.racingStart();
+    }
+
     public static RacingCar getRacingCarInput() {
         Scanner scanner = new Scanner(System.in);
         int carNums = getAnswerInput("자동차 대수는 몇 대 인가요?", scanner);

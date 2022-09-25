@@ -2,11 +2,9 @@ package racingcar;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class RacingCarTest {
     @Test
-    void test() {
+    void racing_정상_진행() {
         RacingCar racingCar = new RacingCar(3, 5);
         racingCar.racingStart();
     }

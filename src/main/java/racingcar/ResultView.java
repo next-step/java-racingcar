@@ -13,4 +13,8 @@ public class ResultView {
     private static void printCarPosition(Car car) {
         System.out.println(car.makePositionShape());
     }
+
+    public static void printStartMessage() {
+        System.out.println("실행 결과");
+    }
 }
