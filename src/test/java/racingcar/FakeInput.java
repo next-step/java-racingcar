@@ -1,4 +1,4 @@
-package racingcar.racingGame;
+package racingcar;
 
 import racingcar.Input;
 
