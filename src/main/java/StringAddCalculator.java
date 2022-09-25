@@ -3,29 +3,28 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
-    private static Pattern pattern = Pattern.compile("//(.)\n(.*)");
+    private static Pattern separatePattern = Pattern.compile("//(.)\n(.*)");
+    private static Pattern positiveNumberPattern = Pattern.compile("^[0-9]\\d*(\\.\\d+)?$");
 
     public static int splitAndSum(String numbersString){
         if(isEmpty(numbersString)){
             return 0;
         }
-
-        String[] numberStringArray = split(numbersString);
-        return sum(numberStringArray);
+        return sum(split(numbersString));
     }
 
     private static boolean isEmpty(String string){
         if(string == null){
-            return false;
+            return true;
         }
         if(string.isEmpty()){
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     private static String[] split(String numberString){
-        Matcher matcher = pattern.matcher(numberString);
+        Matcher matcher = separatePattern.matcher(numberString);
 
         // 커스텀 구분자로 Split
         if (matcher.find()) {
@@ -43,7 +42,7 @@ public class StringAddCalculator {
                 .reduce(0, Integer::sum);
     }
 
-    // String -> int 형변환. 음수이거나 숫자가 아니면 예외 발생
+    // String -> int 형변환
     private static int getInteger(String numberString) throws RuntimeException {
         int number;
         try {
