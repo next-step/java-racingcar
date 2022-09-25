@@ -17,4 +17,15 @@ public class CarTest {
 
 		assertThat(car).isNotEqualByComparingTo(notMovedCar);
 	}
+
+	@Test
+	@DisplayName("차는 4 미만이면 멈춰있는다")
+	void stay_on_number_over_4() {
+		NumberStrategy numberStrategy = new FixedNumber(3);
+		Car notMovedCar = new Car(numberStrategy);
+		Car car = new Car(numberStrategy);
+		car.move();
+
+		assertThat(car).isEqualByComparingTo(notMovedCar);
+	}
 }
