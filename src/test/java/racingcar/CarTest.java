@@ -33,4 +33,15 @@ public class CarTest {
 
 		assertThat(car).isEqualByComparingTo(new Car());
 	}
+
+	@Test
+	@DisplayName("차는 위치를 반환할 수 있다")
+	void car_can_return_position() {
+		NumberStrategy numberStrategy = new FixedNumber(4);
+		MoveStrategy moveStrategy = new NumberOverFourStrategy(numberStrategy);
+		Car car = new Car();
+		car.move(moveStrategy);
+
+		assertThat(car.getPosition()).isOne();
+	}
 }
