@@ -10,5 +10,5 @@
 - [x] Car 객체 구현
 - [x] RacingGame 객체 구현
 - [x] View 영역 구현
-- [ ] Controller 구현
+- [x] Controller 구현
 
