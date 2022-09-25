@@ -18,7 +18,9 @@ class RacingCarTest {
         racingCar.racing();
 
         // then
-        assertThat(cars.get(0).getStatus()).isLessThanOrEqualTo(1);
+        for (Car car : cars) {
+            assertThat(car.getStatus()).isLessThanOrEqualTo(1);
+        }
     }
 
 }
