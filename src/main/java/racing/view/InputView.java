@@ -22,4 +22,9 @@ public class InputView {
 		}
 		return cars;
 	}
+
+	public static int inputTimes() {
+		System.out.println("시도할 회수는 몇 회 인가요?");
+		return scanner.nextInt();
+	}
 }
