@@ -8,13 +8,16 @@ public class RacingCars {
     private List<Car> cars;
 
     public RacingCars(String carNameText) {
-        cars = new ArrayList<>();
-        Arrays.stream(carNameText.split(",")).forEach(name -> cars.add(new Car(name)));
+        this.cars = new ArrayList<>();
+        Arrays.stream(carNameText.split(",")).forEach(name -> this.cars.add(new Car(name)));
     }
 
-    public List<Car> race() {
-        cars.forEach(Car::run);
-        return cars;
+    public void race() {
+        this.cars.forEach(Car::run);
+    }
+
+    public List<Car> showCars(){
+        return this.cars;
     }
 
 }
