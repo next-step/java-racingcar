@@ -14,6 +14,8 @@ public class ParsedStringByDefaultDelimiter implements Parsed {
 
     private static final String DEFAULT_DELIMITER_REGEX = "[,:]";
 
+    private static final String EMPTY_STRING = "";
+
     private final String stringToBeParsed;
 
     public ParsedStringByDefaultDelimiter(String stringToBeParsed) {
@@ -22,7 +24,7 @@ public class ParsedStringByDefaultDelimiter implements Parsed {
 
     @Override
     public List<String> parsedValue() {
-        if (stringToBeParsed == null || stringToBeParsed.equals("")) {
+        if (stringToBeParsed == null || stringToBeParsed.equals(EMPTY_STRING)) {
             return List.of("0");
         }
 
