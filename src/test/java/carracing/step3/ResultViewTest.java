@@ -34,7 +34,7 @@ class ResultViewTest {
         final int tryCount = 4;
         final Cars cars = new Cars(carCount);
 
-        this.resultView.printResults(tryCount, cars);
+        this.resultView.printResults("-", 0);
         assertThat(output.toString()).contains("-");
     }
 
