@@ -8,8 +8,10 @@ public class Main {
         int tryCount = inputView.enterTryCount();
 
         Cars cars = new Cars(carCount);
-
         ResultView resultView = new ResultView();
-        resultView.printResults(tryCount, cars);
+        for (int i = 0; i < tryCount; i++) {
+            cars.moveAllCarsRandomly();
+            resultView.printResults(cars.getAllCarsTrace(), i);
+        }
     }
 }
