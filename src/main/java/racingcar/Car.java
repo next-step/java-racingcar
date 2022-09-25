@@ -3,13 +3,13 @@ package racingcar;
 import java.util.Random;
 
 public class Car {
-    public static final int START_POSITION = 0;
-    public static final int DEFAULT_STOP_COUNT = 0;
-    public static final int DEFAULT_MOVE = 1;
-    public static final int DEFAULT_STOP = 1;
-    public static final int BOUND = 10;
-    public static final int CONDITION = 4;
-    public static final Random random = new Random();
+    private static final int START_POSITION = 0;
+    private static final int DEFAULT_STOP_COUNT = 0;
+    private static final int DEFAULT_MOVE = 1;
+    private static final int DEFAULT_STOP = 1;
+    private static final int BOUND = 10;
+    private static final int CONDITION = 4;
+    private static final Random random = new Random();
 
     private int position = START_POSITION;
     private int stopCount = DEFAULT_STOP_COUNT;

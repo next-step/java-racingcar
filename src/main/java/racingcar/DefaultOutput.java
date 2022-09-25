@@ -2,7 +2,7 @@ package racingcar;
 
 public class DefaultOutput implements Output {
 
-    public static final String RACING_RESULT_MESSAGE = "레이싱 게임 결과입니다.";
+    private static final String RACING_RESULT_MESSAGE = "레이싱 게임 결과입니다.";
 
     @Override
     public void printResultMessage() {
