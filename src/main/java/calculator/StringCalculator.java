@@ -9,11 +9,18 @@ import static util.StringUtils.isNullOrEmpty;
 
 public class StringCalculator {
 
-    private StringCalculator() {}
+    private static final int DEFAULT_NUMBER = 0;
+
+    private StringCalculator() {
+    }
 
     public static int calculate(String expression) {
-        if (isNullOrEmpty(expression)) return 0;
-        if (containsNegativeNumber(expression)) throw new RuntimeException("입력 값에는 숫자를 제외한 문자는 포함될 수 없습니다.");
+        if (isNullOrEmpty(expression)) {
+            return DEFAULT_NUMBER;
+        }
+        if (containsNegativeNumber(expression)) {
+            throw new RuntimeException("입력 값에는 숫자를 제외한 문자는 포함될 수 없습니다.");
+        }
 
         String[] numbers = separate(expression);
 
