@@ -12,7 +12,7 @@ class ParsedStringByCustomDelimiterTest {
     @DisplayName("문자열에 음수가 있는 경우 예외가 발생한다")
     void a() {
         String stringToBeParsed = "//-1\n";
-        Parsed sut = new ParsedStringByDefaultDelimiter(stringToBeParsed);
+        Parsed sut = new ParsedStringByCustomDelimiter(stringToBeParsed);
 
         Assertions.assertThatThrownBy(() -> sut.parsedValue())
                 .isInstanceOf(RuntimeException.class)
