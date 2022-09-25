@@ -6,7 +6,6 @@ import java.util.Random;
 
 public class RacingCar {
     private List<Car> cars = new ArrayList<>();
-    private static final int MAX_NUMBER = 4;
 
     public RacingCar(int number) {
         for (int i = 0; i < number; i++) {
@@ -14,24 +13,16 @@ public class RacingCar {
         }
     }
 
-    public void racing() {
+    public List<Car> racing() {
         for (Car car : cars) {
-            int randomResult = randomNumber();
-            tryMove(car, randomResult);
-            System.out.println("-".repeat(car.getStatus()));
+            car.move(createRandomNumber());
         }
-        System.out.println();
+        return cars;
     }
 
-    public int randomNumber() {
+    private int createRandomNumber() {
         Random random = new Random();
         return random.nextInt(10);
-    }
-
-    public void tryMove(Car car, int number) {
-        if (number >= MAX_NUMBER) {
-            car.forward();
-        }
     }
 
     public List<Car> getCars() {
