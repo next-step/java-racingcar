@@ -1,18 +1,19 @@
 package car_racing;
 
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class CarTest {
-    @Test
-    public void tryMove_직진한다() {
-        Car car = new Car(1);
 
-        car.tryMove(1);
-        Assertions.assertThat(car.getStraightCount()).isEqualTo(0);
 
-        car.tryMove(9);
-        Assertions.assertThat(car.getStraightCount()).isEqualTo(1);
+    @ParameterizedTest
+    @CsvSource(value = {"1,0", "9,1"})
+    public void tryMove_직진한다(int givenCondition, int expected) {
+        Car car = new Car(0);
+
+        car.tryMove(givenCondition);
+        Assertions.assertThat(car.getStraightCount()).isEqualTo(expected);
     }
 
 }

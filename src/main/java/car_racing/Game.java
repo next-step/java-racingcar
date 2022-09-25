@@ -6,12 +6,12 @@ import java.util.stream.IntStream;
 
 public class Game {
     private Integer totalTryCount;
-    private Integer counter;
+    private Round round;
     private Cars cars;
 
     public Game(int totalTryCount, Cars cars) {
         this.totalTryCount = totalTryCount;
-        this.counter = 0;
+        this.round = new Round();
         this.cars = cars;
     }
 
@@ -20,7 +20,7 @@ public class Game {
     }
 
     public boolean isEnded() {
-        return Objects.equals(totalTryCount, counter);
+        return Objects.equals(totalTryCount, round.count());
     }
 
     public void play() {
@@ -28,7 +28,7 @@ public class Game {
     }
 
     private void doTry() {
-        counter++;
+        round.start();
         cars.goOrStop();
         new GameDashBoard(cars).show();
     }
