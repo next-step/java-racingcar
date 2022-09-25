@@ -2,6 +2,7 @@ package racingcar.domain;
 
 public class Car {
 
+    private String name;
     private int distance;
     private Randomable randomable;
 
@@ -10,6 +11,12 @@ public class Car {
     private static final int MIN_VALUE = 0;
 
     public Car() {
+        this.distance = 0;
+        this.randomable = new RandomNumber();
+    }
+
+    public Car(String name) {
+        this.name = name;
         this.distance = 0;
         this.randomable = new RandomNumber();
     }
