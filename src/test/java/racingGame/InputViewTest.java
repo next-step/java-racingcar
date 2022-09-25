@@ -4,20 +4,17 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
-import racingGame.InputScreen;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.SequenceInputStream;
-import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class InputScreenTest {
+public class InputViewTest {
 
     private static Stream<Arguments> provideInput() {
         return Stream.of(
@@ -34,9 +31,9 @@ public class InputScreenTest {
         System.setIn(input);
 
         scanner = new Scanner(System.in);
-        InputScreen inputScreen = new InputScreen();
+        InputView inputView = new InputView();
 
-        assertThat(inputScreen.askInput(scanner)).isEqualTo(new GameInput("1","2"));
+        assertThat(inputView.askInput(scanner)).isEqualTo(new InputParameters("1","2"));
     }
 
     private InputStream createInputStream(String carNum, String tryNUm) {

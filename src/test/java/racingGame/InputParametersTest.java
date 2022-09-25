@@ -17,7 +17,7 @@ class GameInputTest {
         String carNum = "1";
         String tryNum = "-1";
         assertThrows(NegativeExceptionV1.class, () -> {
-            new GameInput(carNum, tryNum);
+            new InputParameters(carNum, tryNum);
         });
     }
 
