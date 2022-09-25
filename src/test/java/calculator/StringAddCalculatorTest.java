@@ -34,4 +34,10 @@ public class StringAddCalculatorTest {
             splitAndSum("1,2:-3");
         }).isInstanceOf(RuntimeException.class);
     }
+
+    @Test
+    void 문자열_커스텀_구분자() {
+        int result = splitAndSum("//;\n1;2;3");
+        assertThat(result).isEqualTo(6);
+    }
 }
