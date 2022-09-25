@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class RacingGame {
+
     private final int carQuantity;
     private final int movementCount;
     private List<Car> cars;
@@ -15,8 +16,8 @@ public class RacingGame {
         this.cars = initCars();
     }
 
-    public static RacingGame ready(int carQuantity, int movementCount) {
-        return new RacingGame(carQuantity, movementCount);
+    public static RacingGame ready(Positive carQuantity, Positive movementCount) {
+        return new RacingGame(carQuantity.getValue(), movementCount.getValue());
     }
 
     public static RacingGame ready(Input input) {

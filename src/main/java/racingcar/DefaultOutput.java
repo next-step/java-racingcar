@@ -16,4 +16,8 @@ public class DefaultOutput implements Output {
         }
         System.out.println();
     }
+
+    public void printMessage(String message) {
+        System.out.println(message);
+    }
 }

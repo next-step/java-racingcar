@@ -3,21 +3,23 @@ package racingcar;
 import racingcar.Input;
 
 public class FakeInput implements Input {
-    private final int carQuantity;
-    private final int movementCount;
 
-    public FakeInput(int carQuantity, int movementCount) {
+    private final Positive carQuantity;
+    private final Positive movementCount;
+
+    public FakeInput(Positive carQuantity, Positive movementCount) {
         this.carQuantity = carQuantity;
         this.movementCount = movementCount;
     }
 
     @Override
-    public int getCarQuantity() {
+    public Positive getCarQuantity() {
         return this.carQuantity;
     }
 
     @Override
-    public int getMovementCount() {
+    public Positive getMovementCount() {
         return this.movementCount;
     }
+
 }

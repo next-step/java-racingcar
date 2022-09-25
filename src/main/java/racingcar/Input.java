@@ -2,7 +2,7 @@ package racingcar;
 
 public interface Input {
 
-    int getCarQuantity();
+    Positive getCarQuantity();
 
-    int getMovementCount();
+    Positive getMovementCount();
 }
