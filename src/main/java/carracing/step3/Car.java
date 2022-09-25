@@ -5,6 +5,7 @@ import java.util.Random;
 public class Car {
 
     private final StringBuilder moveTrace;
+    private final int MOVE_FORWARD_BORDER = 4;
 
     public Car() {
         this.moveTrace = new StringBuilder();
@@ -12,7 +13,7 @@ public class Car {
 
     public void move() {
         int randomNumber = new Random().nextInt(10);
-        if(randomNumber > 4) {
+        if (randomNumber > MOVE_FORWARD_BORDER) {
             moveTrace.append("-");
         }
     }
