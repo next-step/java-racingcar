@@ -9,7 +9,7 @@ public class InputView {
         String userInput = CustomUserInputHandler.scan();
 
         int result = CustomUserInputHandler.parseInt(userInput);
-        if(CustomUserInputHandler.validate(result)){
+        if (CustomUserInputHandler.validate(result)) {
             return result;
         }
 

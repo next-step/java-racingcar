@@ -5,12 +5,13 @@ import java.util.Scanner;
 public class CustomUserInputHandler {
     private static Scanner scanner = new Scanner(System.in);
 
-    public static String scan(){
+    public static String scan() {
         return scanner.nextLine();
     }
+
     public static boolean validate(Object userInput) {
         try {
-            return (int)userInput > 0;
+            return (int) userInput > 0;
         } catch (Exception e) {
             return false;
         }

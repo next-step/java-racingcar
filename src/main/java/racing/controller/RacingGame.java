@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    public void start(){
+    public void start() {
         List<Car> cars = generateCar(InputView.makeQuestion("자동차 대수는 몇 대 인가요?"));
         int count = InputView.makeQuestion("시도할 회수는 몇 회 인가요?");
 
@@ -32,14 +32,14 @@ public class RacingGame {
     }
 
     private void CarMoveProcess(Car car) {
-        if(car.canMove(RandomGenerator.generate())) {
+        if (car.canMove(RandomGenerator.generate())) {
             car.move();
         }
     }
 
     public List<Car> generateCar(int carCount) {
         List<Car> cars = new ArrayList<>();
-        for(int i = 0; i < carCount; i++){
+        for (int i = 0; i < carCount; i++) {
             cars.add(new Car());
         }
         return cars;
