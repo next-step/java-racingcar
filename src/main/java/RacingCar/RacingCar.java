@@ -27,7 +27,7 @@ public class RacingCar {
 
     private static void roundResult() {
         for (Car car : carList) {
-            ResultView.positionView(car.currentPosition());
+            ResultView.positionView(car.getPosition());
         }
         System.out.println();
     }
@@ -38,7 +38,7 @@ public class RacingCar {
         }
     }
 
-    private static void initCar(int carCount) {
+    public static void initCar(int carCount) {
         for (int i = 0; i < carCount; i++) {
             carList.add(new Car(i, 0));
         }
@@ -62,13 +62,5 @@ public class RacingCar {
         return scanner.nextInt();
     }
 
-    public static int move() {
-        int result = random();
 
-        if (result >= 4) {
-            return 1;
-        }
-
-        return 0;
-    }
 }
