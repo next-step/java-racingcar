@@ -8,7 +8,7 @@
 
 ## 기능목록
 - [x] Car 객체 구현
-- [ ] RacingGame 객체 구현
+- [x] RacingGame 객체 구현
 - [ ] View 영역 구현
 - [ ] Controller 구현
 
