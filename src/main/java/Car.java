@@ -9,11 +9,11 @@ public class Car {
     }
 
     public void move(int randomValue) {
-        if(randomValue < 0 || randomValue > 9) throw new RuntimeException("not available value");
-        if(remainMoveCount <= 0) throw new RuntimeException("out of move count");
+        if (randomValue < 0 || randomValue > 9) throw new RuntimeException("not available value");
+        if (remainMoveCount <= 0) throw new RuntimeException("out of move count");
 
         remainMoveCount--;
-        if(randomValue < 4) return;
+        if (randomValue < 4) return;
         currentPosition++;
     }
 }

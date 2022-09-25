@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class CarTest {
 
     @ParameterizedTest
-    @CsvSource(value = {"0:0", "1:0", "2:0", "3:0", "4:1","5:1", "6:1", "7:1", "8:1", "9:1"}, delimiter = ':')
+    @CsvSource(value = {"0:0", "1:0", "2:0", "3:0", "4:1", "5:1", "6:1", "7:1", "8:1", "9:1"}, delimiter = ':')
     void carMoveTest(int given, int expected) {
         Car car = new Car(1);
         car.move(given);
