@@ -12,7 +12,7 @@ public class Car implements Comparable<Car> {
 		}
 	}
 
-	public int getPosition() {
+	protected int getPosition() {
 		return position;
 	}
 
