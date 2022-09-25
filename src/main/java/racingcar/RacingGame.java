@@ -1,14 +1,18 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class RacingGame {
-    int carQuantity;
-    int movementCount;
+    private final int carQuantity;
+    private final int movementCount;
+    private List<Car> cars;
 
     private RacingGame(int carQuantity, int movementCount) {
         this.carQuantity = carQuantity;
         this.movementCount = movementCount;
+        this.cars = initCars();
     }
 
     public static RacingGame ready(Input input) {
@@ -19,16 +23,29 @@ public class RacingGame {
         return new RacingGame(carQuantity, movementCount);
     }
 
+    private List<Car> initCars() {
+        cars = new ArrayList<>();
+        for (int i = 0; i < this.carQuantity; i++) {
+            cars.add(new Car());
+        }
+        return cars;
+    }
+
+    public RacingGame start() {
+        cars.forEach(car -> car.tryMove(movementCount));
+        return this;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RacingGame that = (RacingGame) o;
-        return carQuantity == that.carQuantity && movementCount == that.movementCount;
+        return carQuantity == that.carQuantity && movementCount == that.movementCount && cars.size() == that.cars.size();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(carQuantity, movementCount);
+        return Objects.hash(carQuantity, movementCount, cars);
     }
 }
