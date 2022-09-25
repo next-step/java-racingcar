@@ -1,17 +1,13 @@
 package racingcar;
 
+import racingcar.movestrategy.MoveStrategy;
+
 public class Car implements Comparable<Car> {
 
 	private int position = 0;
-	private final NumberStrategy numberStrategy;
 
-	public Car(NumberStrategy numberStrategy) {
-		this.numberStrategy = numberStrategy;
-	}
-
-	public void move() {
-		int generated = numberStrategy.generate();
-		if (generated >= 4) {
+	public void move(MoveStrategy moveStrategy) {
+		if (moveStrategy.isMovable()) {
 			position += 1;
 		}
 	}

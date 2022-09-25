@@ -5,27 +5,32 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import racingcar.movestrategy.MoveStrategy;
+import racingcar.movestrategy.NumberOverFourStrategy;
+import racingcar.numberstrategy.FixedNumber;
+import racingcar.numberstrategy.NumberStrategy;
+
 public class CarTest {
 
 	@Test
-	@DisplayName("차는 4 이상이면 전진한다")
-	void move_on_number_over_4() {
+	@DisplayName("차는 전진할 수 있다")
+	void car_can_move() {
 		NumberStrategy numberStrategy = new FixedNumber(4);
-		Car notMovedCar = new Car(numberStrategy);
-		Car car = new Car(numberStrategy);
-		car.move();
+		MoveStrategy moveStrategy = new NumberOverFourStrategy(numberStrategy);
+		Car car = new Car();
+		car.move(moveStrategy);
 
-		assertThat(car).isNotEqualByComparingTo(notMovedCar);
+		assertThat(car).isNotEqualByComparingTo(new Car());
 	}
 
 	@Test
-	@DisplayName("차는 4 미만이면 멈춰있는다")
-	void stay_on_number_over_4() {
+	@DisplayName("차는 멈춰있을 수 있다")
+	void car_can_stay() {
 		NumberStrategy numberStrategy = new FixedNumber(3);
-		Car notMovedCar = new Car(numberStrategy);
-		Car car = new Car(numberStrategy);
-		car.move();
+		MoveStrategy moveStrategy = new NumberOverFourStrategy(numberStrategy);
+		Car car = new Car();
+		car.move(moveStrategy);
 
-		assertThat(car).isEqualByComparingTo(notMovedCar);
+		assertThat(car).isEqualByComparingTo(new Car());
 	}
 }

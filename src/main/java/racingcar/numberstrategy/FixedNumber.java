@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.numberstrategy;
 
 public class FixedNumber implements NumberStrategy {
 

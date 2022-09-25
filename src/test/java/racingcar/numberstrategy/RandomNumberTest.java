@@ -1,9 +1,12 @@
-package racingcar;
+package racingcar.numberstrategy;
 
 import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
+
+import racingcar.numberstrategy.NumberStrategy;
+import racingcar.numberstrategy.RandomNumber;
 
 public class RandomNumberTest {
 
