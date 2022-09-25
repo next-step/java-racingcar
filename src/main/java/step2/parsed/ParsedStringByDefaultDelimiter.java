@@ -22,6 +22,10 @@ public class ParsedStringByDefaultDelimiter implements Parsed {
 
     @Override
     public List<String> parsedValue() {
+        if (stringToBeParsed == null || stringToBeParsed.equals("")) {
+            return List.of("0");
+        }
+
         verifyNegative();
         verifyNumber();
         return Arrays.stream(stringToBeParsed.split(DEFAULT_DELIMITER_REGEX))
