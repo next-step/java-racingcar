@@ -1,7 +1,5 @@
 package domain;
 
-import domain.strategy.MovingStrategy;
-
 public class RacingCar {
 
     private int position;
@@ -13,14 +11,12 @@ public class RacingCar {
         return new RacingCar();
     }
 
-    public void move(final MovingStrategy movingStrategy) {
+    public void move() {
 
-        if (movingStrategy.movable()) {
-            this.position++;
-        }
+        this.position++;
     }
 
-    public int distance() {
+    public int getPosition() {
 
         return this.position;
     }
