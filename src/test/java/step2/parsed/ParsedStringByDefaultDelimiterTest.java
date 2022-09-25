@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
@@ -44,6 +45,17 @@ class ParsedStringByDefaultDelimiterTest {
         List<String> parsedValue = sut.parsedValue();
 
         Assertions.assertThat(parsedValue).containsExactly("1", "2");
+    }
+
+    @ParameterizedTest
+    @NullAndEmptySource
+    @DisplayName("null 값이거나 빈 문자열일 때 0을 반환한다.")
+    void d(String stringToBeParsed) {
+        Parsed sut = new ParsedStringByDefaultDelimiter(stringToBeParsed);
+
+        List<String> parsedValue = sut.parsedValue();
+
+        Assertions.assertThat(parsedValue).containsExactly("0");
     }
 
 }
