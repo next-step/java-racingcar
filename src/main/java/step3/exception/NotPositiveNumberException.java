@@ -1,5 +1,7 @@
+package step3.exception;
+
 public class NotPositiveNumberException extends RuntimeException {
-    NotPositiveNumberException(String message) {
+    public NotPositiveNumberException(String message) {
         super(message);
     }
 }

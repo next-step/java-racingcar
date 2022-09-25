@@ -1,4 +1,8 @@
+package step3.service;
+
 import java.util.List;
+
+import step3.domain.Car;
 
 public class ResultView {
 
@@ -7,10 +11,10 @@ public class ResultView {
     private List<Integer> accumulatedList;
     private final CarPlay carPlay;
 
-    public ResultView(CarPlay carPlay, InputReview inputReview) {
-        this.cars = inputReview.getCars();
+    public ResultView(Car car, CarPlay carPlay) {
+        this.cars = car.getCars();
         this.carPlay = carPlay;
-        this.attempts = inputReview.getAttempts();
+        this.attempts = car.getAttempts();
     }
 
     public void printTotalCarStatus() {
