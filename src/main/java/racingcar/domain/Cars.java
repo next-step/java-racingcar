@@ -1,15 +1,12 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.ThreadLocalRandom;
 
 import static java.util.stream.Collectors.toList;
 
 public class Cars {
-    private static final Integer MIN_NUM = 0;
-    private static final Integer MAX_NUM = 10;
 
     private final List<Car> cars;
 
@@ -30,10 +27,8 @@ public class Cars {
 
     public Cars race() {
         List<Car> nextCars = cars.stream()
-                .map(car -> {
-                    int randomNumber = ThreadLocalRandom.current().nextInt(MIN_NUM, MAX_NUM);
-                    return car.move(randomNumber);
-                }).collect(toList());
+                .map(car -> car.move(new RandomMovingPolicy()))
+                .collect(toList());
         return new Cars(nextCars);
     }
 
