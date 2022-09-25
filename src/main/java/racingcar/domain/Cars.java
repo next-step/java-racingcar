@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 
 public class Cars {
 
-    List<Car> carList;
+    private List<Car> carList;
 
     public Cars(int carNum) {
         carList = Stream.generate(Car::new).limit(carNum).collect(Collectors.toList());
