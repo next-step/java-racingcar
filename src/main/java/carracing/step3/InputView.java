@@ -17,13 +17,11 @@ public class InputView {
     }
 
     private int parseCount(String count) {
-        int parsedCount;
         try {
-            parsedCount = Integer.parseInt(count);
+            return Integer.parseInt(count);
         } catch (NumberFormatException e) {
             throw new NumberFormatException("잘못된 숫자를 입력하였습니다.");
         }
-        return parsedCount;
     }
 
 }
