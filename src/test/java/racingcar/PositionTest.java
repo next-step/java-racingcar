@@ -19,4 +19,9 @@ public class PositionTest {
         assertThat(position).isEqualTo(new Position(1));
     }
 
+    @Test
+    void getPosition() {
+        assertThat(new Position(2).getPosition()).isEqualTo(2);
+    }
+
 }
