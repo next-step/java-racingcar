@@ -3,6 +3,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
+    private static Pattern pattern = Pattern.compile("//(.)\n(.*)");
 
     public static int splitAndSum(String numbersString){
         if(isEmpty(numbersString)){
@@ -26,11 +27,11 @@ public class StringAddCalculator {
     private static String[] split(String numberString){
         String[] numberStringArray;
 
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(numberString);
-        if (m.find()) {
+        Matcher matcher = pattern.matcher(numberString);
+        if (matcher.find()) {
             // 커스텀 구분자로 Split
-            String customDelimiter = m.group(1);
-            numberStringArray = m.group(2).split(customDelimiter);
+            String customDelimiter = matcher.group(1);
+            numberStringArray = matcher.group(2).split(customDelimiter);
         } else {
             // 일반 구분자로 Split
             numberStringArray= numberString.split(",|:");
