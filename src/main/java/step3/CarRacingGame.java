@@ -2,8 +2,10 @@ package step3;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class CarRacingGame {
+    private Random random = new Random();
     private Integer numberOfCar;
     private Integer tryCount;
     private List<Car> carEntryList;
@@ -16,6 +18,14 @@ public class CarRacingGame {
     // 게임 시작
     public void doGame(){
         readyToCarEntry();
+        for(int index = 0; index < this.tryCount; index++){
+            doRacing();
+        }
+    }
+
+    private void doRacing(){
+        this.carEntryList
+                .forEach(vo->vo.move(random.nextInt(10)));
     }
 
     private void readyToCarEntry(){
