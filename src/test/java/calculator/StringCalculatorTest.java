@@ -5,13 +5,16 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 class StringCalculatorTest {
 
     @DisplayName("빈 문자열 또는 null 값을 입력할 경우 0을 반환")
-    @Test
-    void check_space_null() {
-        assertEquals(0, StringCalculator.splitAndSum(""));
+    @ParameterizedTest
+    @NullAndEmptySource
+    void check_space_null(String str) {
+        assertEquals(0, StringCalculator.splitAndSum(str));
     }
 
     @DisplayName("숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환")

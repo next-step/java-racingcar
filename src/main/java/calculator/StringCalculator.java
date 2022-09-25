@@ -6,25 +6,26 @@ import java.util.regex.Pattern;
 public class StringCalculator {
 
     public static final String COMMA_OR_COLON = ",|:";
+    public static final Pattern COMPILE = Pattern.compile("//(.)\n(.*)");
 
     public static int splitAndSum(String input) {
-        if (input.isBlank()) return 0;
+        if (input == null || input.isBlank()) return 0;
 
-        String[] tokens;
+        String[] factors = splitWithCommaOrColon(input);
+        Matcher matcher = COMPILE.matcher(input);
 
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(input);
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            tokens= m.group(2).split(customDelimiter);
-        } else {
-            tokens = splitWithCommaOrColon(input);
+        if (matcher.find()) {
+            factors= matcher.group(2).split(matcher.group(1));
         }
 
-        int sum = 0;
-        for (String c : tokens) {
-            int number = getParseInt(c);
-            isPositive(number);
+        return add(factors);
+    }
 
+    private static int add(String[] factors) {
+        int sum = 0;
+        for (String factor : factors) {
+            int number = getParseInt(factor);
+            isPositive(number);
             sum += number;
         }
         return sum;
@@ -36,11 +37,11 @@ public class StringCalculator {
         }
     }
 
-    private static int getParseInt(String c) {
-        return Integer.parseInt(c);
+    private static int getParseInt(String factor) {
+        return Integer.parseInt(factor);
     }
 
-    private static String[] splitWithCommaOrColon(String s) {
-        return s.split(COMMA_OR_COLON);
+    private static String[] splitWithCommaOrColon(String str) {
+        return str.split(COMMA_OR_COLON);
     }
 }
