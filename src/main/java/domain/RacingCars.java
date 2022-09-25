@@ -1,6 +1,6 @@
 package domain;
 
-import domain.strategy.RandomMovingStrategy;
+import domain.strategy.MovingStrategy;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,13 +8,11 @@ import java.util.List;
 
 public class RacingCars {
 
-    private Number participant;
     private List<RacingCar> racingCars;
 
     private RacingCars(final String participant) {
 
-        this.participant = Number.from(participant);
-        this.racingCars = participate(this.participant.getNumber());
+        this.racingCars = participate(convert(participant));
     }
 
     private RacingCars(final RacingCar racingCar) {
@@ -32,6 +30,24 @@ public class RacingCars {
         return new RacingCars(racingCar);
     }
 
+    private int convert(final String attempt) {
+
+        try {
+            int number = Integer.parseInt(attempt);
+            validateZero(number);
+            return number;
+        } catch (NumberFormatException nfe) {
+            throw new IllegalArgumentException("숫자만 입력해야 합니다.");
+        }
+    }
+
+    private void validateZero(final int attempt) {
+
+        if (attempt == 0) {
+            throw new IllegalArgumentException("입력값은 1 이상이어야 합니다.");
+        }
+    }
+
     private List<RacingCar> participate(final int participant) {
 
         List<RacingCar> racingCars = new ArrayList<>();
@@ -46,10 +62,17 @@ public class RacingCars {
         return this.racingCars.size();
     }
 
-    public void roundPlay() {
+    public void roundPlay(final MovingStrategy movingStrategy) {
 
         for (RacingCar racingCar : racingCars) {
-            racingCar.move(new RandomMovingStrategy());
+            playRacingCar(racingCar, movingStrategy);
+        }
+    }
+
+    private void playRacingCar(final RacingCar racingCar, final MovingStrategy movingStrategy) {
+
+        if (movingStrategy.isMovable()) {
+            racingCar.move();
         }
     }
 
