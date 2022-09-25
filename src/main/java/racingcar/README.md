@@ -22,7 +22,7 @@
 ### InputView
 - [x] 자동차 대수 입력 받기
 - [x] 몇 회 전진할 지 입력 받기
-### OutputView
+### ResultView
 - [x] 매 이동마다 실행 결과 출력
   - [x] 현재 자동차 `position`에 따른 실행 결과 출력을 위한 문자열 (ex. `"---"`) 생성 필요
 ### GameController

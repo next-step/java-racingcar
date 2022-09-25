@@ -1,7 +1,7 @@
 package racingcar;
 
 import racingcar.view.InputView;
-import racingcar.view.OutputView;
+import racingcar.view.ResultView;
 
 import java.util.List;
 
@@ -11,11 +11,11 @@ public class GameController {
 
     public static void main(String[] args) {
         RacingCarGame racingCarGame = createRacingCarGame();
-        OutputView.printTitle();
+        ResultView.printTitle();
 
         while (!racingCarGame.isEnd()) {
             List<Position> playResults = racingCarGame.play(MOVING_STRATEGY);
-            OutputView.printPlayResults(playResults);
+            ResultView.printPlayResults(playResults);
         }
     }
 

@@ -4,7 +4,7 @@ import racingcar.Position;
 
 import java.util.List;
 
-public class OutputView {
+public class ResultView {
 
     public static final String RESULT_MESSAGE = "-";
 
