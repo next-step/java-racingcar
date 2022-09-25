@@ -25,19 +25,16 @@ public class StringAddCalculator {
     }
 
     private static String[] split(String numberString){
-        String[] numberStringArray;
-
         Matcher matcher = pattern.matcher(numberString);
+
+        // 커스텀 구분자로 Split
         if (matcher.find()) {
-            // 커스텀 구분자로 Split
             String customDelimiter = matcher.group(1);
-            numberStringArray = matcher.group(2).split(customDelimiter);
-        } else {
-            // 일반 구분자로 Split
-            numberStringArray= numberString.split(",|:");
+            return matcher.group(2).split(customDelimiter);
         }
 
-        return numberStringArray;
+        // 일반 구분자로 Split
+        return numberString.split(",|:");
     }
 
     private static int sum(String[] numberStringArray){
