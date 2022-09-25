@@ -20,10 +20,7 @@ public class CarsTest {
 	void n_cars_can_move() {
 		NumberStrategy numberStrategy = new FixedNumber(4);
 		MoveStrategy moveStrategy = new NumberOverFourStrategy(numberStrategy);
-		List<Car> carList = new ArrayList<>();
-		for (int i = 0; i < 5; ++i) {
-			carList.add(new Car());
-		}
+		List<Car> carList = createCarList();
 		Cars cars = new Cars(carList);
 		cars.move(moveStrategy);
 
@@ -36,10 +33,7 @@ public class CarsTest {
 	void n_cars_can_stay() {
 		NumberStrategy numberStrategy = new FixedNumber(3);
 		MoveStrategy moveStrategy = new NumberOverFourStrategy(numberStrategy);
-		List<Car> carList = new ArrayList<>();
-		for (int i = 0; i < 5; ++i) {
-			carList.add(new Car());
-		}
+		List<Car> carList = createCarList();
 		Cars cars = new Cars(carList);
 		cars.move(moveStrategy);
 
@@ -52,23 +46,28 @@ public class CarsTest {
 	void cars_can_move_n_times() {
 		NumberStrategy numberStrategy = new FixedNumber(4);
 		MoveStrategy moveStrategy = new NumberOverFourStrategy(numberStrategy);
-		List<Car> carListMovedOne = new ArrayList<>();
-		for (int i = 0; i < 5; ++i) {
-			carListMovedOne.add(new Car());
-		}
+		List<Car> carListMovedOne = createCarList();
 		Cars carsMovedOne = new Cars(carListMovedOne);
 		carsMovedOne.move(moveStrategy, 1);
 
-		List<Car> carListMovedTwo = new ArrayList<>();
-		for (int i = 0; i < 5; ++i) {
-			carListMovedTwo.add(new Car());
-		}
+		List<Car> carListMovedTwo = createCarList();
 		Cars carsMovedTwo = new Cars(carListMovedTwo);
 		carsMovedTwo.move(moveStrategy, 2);
 
 		assertThat(carListMovedTwo).allSatisfy(
-			carMovedTwo -> assertThat(carListMovedOne).allSatisfy(
-				carMovedOne -> assertThat(carMovedTwo).isGreaterThan(carMovedOne)
-			));
+			carMovedTwo -> assertThatCarIsGreaterThanList(carListMovedOne, carMovedTwo));
+	}
+
+	private void assertThatCarIsGreaterThanList(List<Car> smallerCarList, Car greaterCar) {
+		assertThat(smallerCarList).allSatisfy(
+			carMovedOne -> assertThat(greaterCar).isGreaterThan(carMovedOne));
+	}
+
+	private List<Car> createCarList() {
+		List<Car> carList = new ArrayList<>();
+		for (int i = 0; i < 5; ++i) {
+			carList.add(new Car());
+		}
+		return carList;
 	}
 }
