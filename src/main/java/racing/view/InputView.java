@@ -10,7 +10,7 @@ public class InputView {
 
 	private static final Scanner scanner = new Scanner(System.in);
 
-	public static List<Car> countCar() {
+	public static List<Car> generateCars() {
 		System.out.println("자동차 대수는 몇 대 인가요?");
 		return generateCars(scanner.nextInt());
 	}
