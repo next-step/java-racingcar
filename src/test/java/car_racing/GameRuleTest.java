@@ -1,12 +1,14 @@
 package car_racing;
 
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class GameRuleTest {
-    @Test
-    public void isGoStraight_4이상은직진이다() {
-        Assertions.assertThat(GameRule.isGoStraight(1)).isFalse();
-        Assertions.assertThat(GameRule.isGoStraight(5)).isTrue();
+
+    @ParameterizedTest
+    @CsvSource(value = {"1:false", "5:true"}, delimiter = ':')
+    public void isGoStraight_4이상은직진이다(int input, boolean expected) {
+        Assertions.assertThat(GameRule.isGoStraight(input)).isEqualTo(expected);
     }
 }

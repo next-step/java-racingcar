@@ -6,8 +6,10 @@ import org.junit.jupiter.api.Test;
 public class GameTest {
     @Test
     public void play_게임을시작한다() {
+
         RacingCondition racingCondition = createRacingCondition(3, 3);
-        Game game = Game.prepare(racingCondition);
+        Cars cars = new Cars(racingCondition.carCount());
+        Game game = Game.prepare(racingCondition.attemptCount(), cars);
 
         Assertions.assertThat(game.isEnded()).isFalse();
 
