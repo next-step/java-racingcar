@@ -30,7 +30,7 @@ public class Cars {
     }
 
     private boolean isMovable() {
-        return new Random().nextInt(MAX_BOUND) > MOVABLE_THRESHOLD;
+        return new Random().nextInt(MAX_BOUND) >= MOVABLE_THRESHOLD;
     }
 
     public String getAllCarsTrace() {
