@@ -14,4 +14,9 @@ public class Cars {
         }
     }
 
+    public void playGame() {
+        for (Car car : this.cars) {
+            car.play();
+        }
+    }
 }
