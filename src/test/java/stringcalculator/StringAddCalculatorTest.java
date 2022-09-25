@@ -47,13 +47,6 @@ public class StringAddCalculatorTest {
     }
 
     @Test
-    void 커스텀구분자를추출한다() {
-        String input = "//a\n";
-
-        assertThat(StringAddCalculator.extractDelimiterOrElseThrow(input)).isEqualTo("a");
-    }
-
-    @Test
     void 커스텀구분자가들어있는경우() {
         String input = "//;\n1;2;3";
         String inputContainsNegative = input + ";-1";
@@ -69,7 +62,7 @@ public class StringAddCalculatorTest {
         String input = "zzz";
 
         Assertions.assertThatThrownBy(() -> {
-            StringAddCalculator.parseInt(input);
+            StringAddCalculator.splitAndAdd(input);
         }).isInstanceOf(RuntimeException.class);
     }
 
@@ -78,16 +71,17 @@ public class StringAddCalculatorTest {
         String input = "-1";
 
         Assertions.assertThatThrownBy(() -> {
-            StringAddCalculator.parseInt(input);
+            StringAddCalculator.splitAndAdd(input);
         }).isInstanceOf(RuntimeException.class);
     }
 
     @Test
-    void hasCustomDelimiter_커스구분자를식별한다() {
+    @DisplayName("커스텀구분자를 식별해서 연산을 수행한다")
+    void splitAndAdd_커스구분자를식별한다() {
         String customDelimiter = "//;\n";
-        String input = customDelimiter + "1";
+        String input = customDelimiter + "1;2;3;4";
 
-        assertThat(StringAddCalculator.hasCustomDelimiter(input)).isTrue();
+        assertThat(StringAddCalculator.splitAndAdd(input)).isEqualTo(10);
     }
 
     @Test

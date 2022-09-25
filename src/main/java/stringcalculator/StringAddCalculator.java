@@ -20,7 +20,7 @@ public class StringAddCalculator {
         return Arrays.stream(stringNumberArray).mapToInt(StringAddCalculator::parseInt).sum();
     }
 
-    public static int parseInt(String maybeNumberString) {
+    private static int parseInt(String maybeNumberString) {
         try {
             int parsedValue = Integer.parseInt(maybeNumberString);
 
@@ -34,35 +34,27 @@ public class StringAddCalculator {
         }
     }
 
-    public static String[] split(Input input) {
+    private static String[] split(Input input) {
         return input.getInput().split(input.getDelimiter());
     }
 
-    public static String extractDelimiterOrElseThrow(String input) {
-        Matcher m = CUSTOM_DELIMITER_PATTERN.matcher(input);
+    private static boolean hasCustomDelimiter(String input) {
+        Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(input);
+        return matcher.find();
+    }
 
-        if (m.find()) {
-            return m.group(1);
+    private static String getCustomDelimiterOrElseThrow(String input) {
+        if (hasCustomDelimiter(input)) {
+            Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(input);
+            if (matcher.find()) {
+                return matcher.group(1);
+            }
         }
 
         throw new DelimiterNotFoundException();
     }
 
-    public static boolean hasCustomDelimiter(String input) {
-        Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(input);
-        return matcher.find();
-    }
-
-    public static String getCustomDelimiter(String input) {
-        if (hasCustomDelimiter(input)) {
-            Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(input);
-            return matcher.find() ? matcher.group(1) : input;
-        }
-
-        return input;
-    }
-
-    public static String removeCustomDelimiter(String input) {
+    private static String removeCustomDelimiter(String input) {
         Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(input);
         if (matcher.find()) {
             return matcher.group(2);
@@ -81,11 +73,9 @@ public class StringAddCalculator {
 
     public static Input parseInputExpression(String input) {
         if (hasCustomDelimiter(input)) {
-            return new Input(input, getValidInput(input), getCustomDelimiter(input));
+            return new Input(input, getValidInput(input), getCustomDelimiterOrElseThrow(input));
         }
 
         return Input.hasNoDelimiter(input);
     }
-
-
 }
