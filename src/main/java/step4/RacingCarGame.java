@@ -2,6 +2,7 @@ package step4;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -22,6 +23,30 @@ public class RacingCarGame {
             allRacingCarMove();
             RacingGamePrinter.printRacingCarsPositionExpression(racingCars);
         });
+
+        String[] winnerNames = getWinnerRacingCarNames();
+        RacingGamePrinter.printRacingCarWinnerResult(winnerNames);
+    }
+
+    private String[] getWinnerRacingCarNames() {
+        List<RacingCar> winnerRacingCars = getWinnerRacingCars();
+        return winnerRacingCars.stream()
+            .map(RacingCar::getName)
+            .toArray(String[]::new);
+    }
+
+    private List<RacingCar> getWinnerRacingCars() {
+        int maxPosition = getMaxPosition();
+        return racingCars.stream()
+            .filter(racingCar -> racingCar.getPosition() == maxPosition)
+            .collect(Collectors.toList());
+    }
+
+    private int getMaxPosition() {
+        return racingCars.stream()
+            .mapToInt(RacingCar::getPosition)
+            .max()
+            .orElseThrow(NoSuchElementException::new);
     }
 
     private void allRacingCarMove() {
