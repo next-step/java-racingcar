@@ -1,31 +1,32 @@
 package step3;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class RacingSupport {
 
-    static Car[] prepareCar(Integer carCount) {
-        Car[] cars = new Car[carCount];
+    static List<Car> prepareCar(Integer carCount) {
+        List<Car> cars = new ArrayList<>();
 
-        for (int i = 0; i < cars.length; i++) {
-            cars[i] = new Car();
+        for (int i = 0; i < carCount; i++) {
+            cars.add(new Car());
         }
 
         return cars;
     }
 
-    static Car[] raceEachCar(Car[] preparedCar) {
-        for (int j = 0; j < preparedCar.length; j++) {
-            preparedCar = moveByRandom(isRandomGreaterThanThree(), preparedCar, j);
+    static List<Car> raceEachCar(List<Car> preparedCar) {
+        for (int j = 0; j < preparedCar.size(); j++) {
+            moveByRaceRule(isRandomGreaterThanThree(), preparedCar, j);
         }
 
         return preparedCar;
-
     }
 
-    static Car[] moveByRandom(Boolean isMove, Car[] preparedCars, Integer j) {
+    static List<Car> moveByRaceRule(Boolean isMove, List<Car> preparedCars, Integer j) {
         if (isMove) {
-            preparedCars[j].moveForward();
+            preparedCars.get(j).moveForward();
             return preparedCars;
         }
 
@@ -33,11 +34,8 @@ public class RacingSupport {
     }
 
     private static Boolean isRandomGreaterThanThree() {
-        int random = new Random().nextInt(10);
-        if (random > 3) {
-            return true;
-        }
+        final int isMove = new Random().nextInt(10);
 
-        return false;
+        return isMove> 3;
     }
 }

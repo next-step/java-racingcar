@@ -1,5 +1,7 @@
 package step3;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -11,20 +13,20 @@ class RacingSupportTest {
 
     @ParameterizedTest
     @ValueSource(ints = {1, 3, 5})
-    @DisplayName("prepareCar() 메서드는 입력값 만큼의 길이를 가진 Car 객체 배열을 반환한다")
+    @DisplayName("prepareCar() 메서드는 입력값 만큼의 길이를 가진 Car 리스트를 반환한다")
     void prepare_int_to_array(int input) {
-        Car[] cars = RacingSupport.prepareCar(input);
-        int carCount = cars.length;
+        List<Car> cars = RacingSupport.prepareCar(input);
+        int carCount = cars.size();
         assertThat(carCount).isEqualTo(input);
     }
 
     @Test
     @DisplayName("moveByRandom() 메서드 isMove 파라미터가 true 면 location 한 칸 증가한다")
     void move_when_isMove_true(){
-        Car[] cars = new Car[1];
-        cars[0] = new Car();
-        Car[] movedCar = RacingSupport.moveByRandom(true, cars, 0);
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car());
+        RacingSupport.moveByRaceRule(true, cars, 0);
 
-        assertThat(movedCar[0].getLocation()).isEqualTo(1);
+        assertThat(cars.get(0).getLocation()).isEqualTo(1);
     }
 }
