@@ -20,7 +20,7 @@ public class CarTest {
 		Car car = new Car();
 		car.move(moveStrategy);
 
-		assertThat(car).isNotEqualByComparingTo(new Car());
+		assertThat(car).isGreaterThan(new Car());
 	}
 
 	@Test
