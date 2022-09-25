@@ -4,6 +4,9 @@ import controller.OutputView;
 import model.Car;
 import model.GameResult;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class ConsoleOutputView implements OutputView {
 
     private static final String POSITION_STRING_UNIT = "-";
@@ -19,8 +22,11 @@ public class ConsoleOutputView implements OutputView {
 
     @Override
     public void printWinner(GameResult result) {
-        String winnerNames = result.getCars().stream().map(this::getCarName).reduce((x, y) -> String.join(JOIN_DELIMITER, x, y)).orElseThrow(IllegalStateException::new);
-        System.out.println(winnerNames + WINNER_MSG);
+        System.out.println(String.join(JOIN_DELIMITER,getWinnerNames(result)) + WINNER_MSG);
+    }
+
+    private List<String> getWinnerNames(GameResult result) {
+        return result.getCars().stream().map(this::getCarName).collect(Collectors.toList());
     }
 
     @Override
