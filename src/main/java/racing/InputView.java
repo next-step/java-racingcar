@@ -9,10 +9,6 @@ public class InputView {
     private int cars;
     private int times;
 
-    public InputView() {
-
-    }
-
     public int getCars() {
         return cars;
     }
