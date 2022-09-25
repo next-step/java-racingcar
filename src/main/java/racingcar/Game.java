@@ -26,16 +26,17 @@ public class Game {
 	}
 
 	private static void move(Cars cars, int trialCount) {
-		OUTPUT_VIEW.printResultMessage();
+		List<Result> results = new ArrayList<>();
 		for (int i = 0; i < trialCount; ++i) {
 			moveOnce(cars);
-			printPositions(cars);
+			accumulateResult(cars, results);
 		}
+		OUTPUT_VIEW.printResults(results);
 	}
 
-	private static void printPositions(Cars cars) {
-		List<Integer> positions = cars.getPositions();
-		OUTPUT_VIEW.printResult(positions);
+	private static void accumulateResult(Cars cars, List<Result> results) {
+		List<CarDTO> carDTOs = cars.getCarDTOs();
+		results.add(new Result(carDTOs));
 	}
 
 	private static void moveOnce(Cars cars) {

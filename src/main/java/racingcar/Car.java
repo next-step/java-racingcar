@@ -22,4 +22,11 @@ public class Car implements Comparable<Car> {
 	public int compareTo(Car other) {
 		return Integer.compare(position, other.position);
 	}
+
+	@Override
+	public String toString() {
+		return "Car{" +
+			"position=" + position +
+			'}';
+	}
 }

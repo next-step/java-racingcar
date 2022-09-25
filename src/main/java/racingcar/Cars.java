@@ -25,11 +25,11 @@ public class Cars {
 		}
 	}
 
-	public List<Integer> getPositions() {
-		List<Integer> positions = new ArrayList<>();
+	public List<CarDTO> getCarDTOs() {
+		List<CarDTO> carDTOs = new ArrayList<>();
 		for (Car car : cars) {
-			positions.add(car.getPosition());
+			carDTOs.add(new CarDTO(car));
 		}
-		return positions;
+		return carDTOs;
 	}
 }

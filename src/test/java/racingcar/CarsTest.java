@@ -9,20 +9,18 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import racingcar.movestrategy.MoveStrategy;
-import racingcar.movestrategy.NumberOverFourStrategy;
-import racingcar.numberstrategy.FixedNumber;
-import racingcar.numberstrategy.NumberStrategy;
 
 public class CarsTest {
+
+	MoveStrategy movableStrategy = () -> true;
+	MoveStrategy unmovableStrategy = () -> false;
 
 	@Test
 	@DisplayName("n대의 자동차는 전진할 수 있다")
 	void n_cars_can_move() {
-		NumberStrategy numberStrategy = new FixedNumber(4);
-		MoveStrategy moveStrategy = new NumberOverFourStrategy(numberStrategy);
 		List<Car> carList = createCarList();
 		Cars cars = new Cars(carList);
-		cars.move(moveStrategy);
+		cars.move(movableStrategy);
 
 		assertThat(carList).allSatisfy(
 			car -> assertThat(car).isGreaterThan(new Car()));
@@ -31,11 +29,9 @@ public class CarsTest {
 	@Test
 	@DisplayName("n대의 자동차는 정지할 수 있다")
 	void n_cars_can_stay() {
-		NumberStrategy numberStrategy = new FixedNumber(3);
-		MoveStrategy moveStrategy = new NumberOverFourStrategy(numberStrategy);
 		List<Car> carList = createCarList();
 		Cars cars = new Cars(carList);
-		cars.move(moveStrategy);
+		cars.move(unmovableStrategy);
 
 		assertThat(carList).allSatisfy(
 			car -> assertThat(car).isEqualByComparingTo(new Car()));
@@ -44,40 +40,54 @@ public class CarsTest {
 	@Test
 	@DisplayName("n번 움직일 수 있다")
 	void cars_can_move_n_times() {
-		NumberStrategy numberStrategy = new FixedNumber(4);
-		MoveStrategy moveStrategy = new NumberOverFourStrategy(numberStrategy);
 		List<Car> carListMovedOne = createCarList();
 		Cars carsMovedOne = new Cars(carListMovedOne);
-		carsMovedOne.move(moveStrategy, 1);
+		carsMovedOne.move(movableStrategy, 1);
 
 		List<Car> carListMovedTwo = createCarList();
 		Cars carsMovedTwo = new Cars(carListMovedTwo);
-		carsMovedTwo.move(moveStrategy, 2);
+		carsMovedTwo.move(movableStrategy, 2);
 
-		assertThat(carListMovedTwo).allSatisfy(
-			carMovedTwo -> assertThatCarIsGreaterThanList(carListMovedOne, carMovedTwo));
+		assertThatListGreaterThanOther(carListMovedTwo, carListMovedOne);
 	}
 
-	private void assertThatCarIsGreaterThanList(List<Car> smallerCarList, Car greaterCar) {
-		assertThat(smallerCarList).allSatisfy(
-			carMovedOne -> assertThat(greaterCar).isGreaterThan(carMovedOne));
+	private void assertThatListGreaterThanOther(List<Car> list, List<Car> others) {
+		assertThat(list).allSatisfy(
+			carFromList -> assertThatCarGreaterThanOthers(carFromList, others));
+	}
+
+	private void assertThatCarGreaterThanOthers(Car car, List<Car> others) {
+		assertThat(others).allSatisfy(
+			carFromOthers -> assertThat(car).isGreaterThan(carFromOthers));
 	}
 
 	@Test
 	@DisplayName("n대 자동차의 위치를 순서대로 반환할 수 있다")
-	void positions_can_be_returned() {
-		NumberStrategy numberStrategy = new FixedNumber(3);
-		MoveStrategy moveStrategy = new NumberOverFourStrategy(numberStrategy);
+	void positions_can_be_returned_ordered() {
 		List<Car> carList = createCarList();
 		Cars cars = new Cars(carList);
-		cars.move(moveStrategy);
+		cars.move(movableStrategy);
 
+		List<Integer> positions = getPositions(carList);
+		List<Integer> retrievedPositions = getPositionsFromDTO(cars.getCarDTOs());
+
+		assertThat(retrievedPositions).containsExactlyElementsOf(positions);
+	}
+
+	private List<Integer> getPositions(List<Car> carList) {
 		List<Integer> positions = new ArrayList<>();
-		for(Car car : carList){
+		for (Car car : carList) {
 			positions.add(car.getPosition());
 		}
+		return positions;
+	}
 
-		assertThat(cars.getPositions()).containsExactlyElementsOf(positions);
+	private List<Integer> getPositionsFromDTO(List<CarDTO> carDTOs) {
+		List<Integer> retrievedPositions = new ArrayList<>();
+		for (CarDTO carDTO : carDTOs) {
+			retrievedPositions.add(carDTO.getPosition());
+		}
+		return retrievedPositions;
 	}
 
 	private List<Car> createCarList() {

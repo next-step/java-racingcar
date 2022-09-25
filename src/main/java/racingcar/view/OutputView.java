@@ -1,7 +1,12 @@
 package racingcar.view;
 
-import java.util.ArrayList;
+import static java.lang.System.*;
+
 import java.util.List;
+import java.util.stream.Collectors;
+
+import racingcar.CarDTO;
+import racingcar.Result;
 
 public class OutputView {
 
@@ -16,21 +21,24 @@ public class OutputView {
 		System.out.println("시도할 회수는 몇 회 인가요?");
 	}
 
-	public void printResultMessage() {
+	public void printResults(List<Result> results) {
 		System.out.println(RESULT_MESSAGE);
+
+		String resultString = results.stream()
+			.map(Result::getCarDTOs)
+			.map(this::getResultString)
+			.collect(Collectors.joining(lineSeparator()));
+		System.out.print(resultString);
 	}
 
-	public void printResult(List<Integer> positions) {
-		List<String> progressStrings = new ArrayList<>();
-		for (Integer position : positions) {
-			progressStrings.add(getProgressString(position));
-		}
-		String result = String.join(System.lineSeparator(), progressStrings);
-		System.out.println(result);
-		System.out.println();
+	private String getResultString(List<CarDTO> carDTOs) {
+		return carDTOs.stream()
+			.map(CarDTO::getPosition)
+			.map(this::getProgressString)
+			.collect(Collectors.joining());
 	}
 
 	private String getProgressString(Integer position) {
-		return PROGRESS_INDICATOR.repeat(position);
+		return PROGRESS_INDICATOR.repeat(position) + lineSeparator();
 	}
 }
