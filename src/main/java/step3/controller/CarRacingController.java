@@ -1,48 +1,40 @@
 package step3.controller;
 
 import step3.model.Car;
+import step3.model.Try;
+import step3.util.numberGenerator.NumberGenerator;
+import step3.util.numberGenerator.RandomNumberGenerator;
 import step3.view.InputView;
+import step3.view.InputViewImpl;
 import step3.view.ResultView;
+import step3.view.ResultViewImpl;
 
+import java.util.List;
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class CarRacingController {
-    Random random = new Random();
-    InputView inputView = new InputView();
-    ResultView resultView = new ResultView();
 
-    private final int MAX_BOUND = 10;
-    private final int MOVE_STANDARD = 4;
+    public void racingGame() {
+        ResultView resultView = new ResultViewImpl();
+        InputView inputView = new InputViewImpl();
 
-    // 난수 생성
-    public int randomNumberGenerator(){
-        return random.nextInt(MAX_BOUND);
-    }
-
-    // 차 움직임 판별
-    public void moveCar(int num, Car car) {
-        if (num >= MOVE_STANDARD) {
-            car.move();
-        }
-    }
-
-    // 레이싱 게임
-    public void racing() {
         int numberOfCars = inputView.askNumberOfCars();
-        int numberOfTrys = inputView.askNumberOfTrys();
+        Try numberOfTrys = new Try(inputView.askNumberOfTrys());
 
-        ArrayList<Car> list = new ArrayList<>();
+        List<Car> carList = IntStream.range(0, numberOfCars).mapToObj(i -> new Car()).collect(Collectors.toCollection(ArrayList::new));
 
-        for (int i = 0; i < numberOfCars; i++) {
-            list.add(new Car());
+        NumberGenerator numberGenerator = new RandomNumberGenerator();
+        for (int i = 0; i < numberOfTrys.getTryCnt(); i++) {
+            racing(numberGenerator, carList);
+            resultView.drawResult(carList);
         }
+    }
 
-        for (int i = 0; i < numberOfTrys; i++) {
-            for (Car car : list) {
-                moveCar(randomNumberGenerator(), car);
-            }
-            resultView.drawResult(list);
+    private void racing(NumberGenerator numberGenerator, List<Car> list) {
+        for (Car car : list) {
+            car.decideMoveOrStop(numberGenerator);
         }
     }
 }
