@@ -10,11 +10,6 @@ public class Car {
     private static final int MAX_VALUE = 9;
     private static final int MIN_VALUE = 0;
 
-    public Car() {
-        this.distance = 0;
-        this.randomable = new RandomNumber();
-    }
-
     public Car(String name) {
         this.name = name;
         this.distance = 0;
@@ -32,8 +27,12 @@ public class Car {
         }
     }
 
-    public int getDistance() {
+    public int showDistance() {
         return this.distance;
+    }
+
+    public String showName() {
+        return name;
     }
 
     private boolean isRunnable() {

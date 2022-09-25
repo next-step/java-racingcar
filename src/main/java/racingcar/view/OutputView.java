@@ -3,32 +3,30 @@ package racingcar.view;
 import racingcar.domain.Car;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class OutputView {
 
-    private static final String RACING_RESULT = "실행 결과";
+    private static final String TITLE_RACING_RESULT = "실행 결과";
     private static final String GRAPH_FIGURE = "-";
+    private static final String FORMAT_PRINT_RACING = "%s : %s \n";
 
     private OutputView() {
 
     }
 
     public static void printRacingResultTitle(){
-        System.out.println(RACING_RESULT);
+        System.out.println(TITLE_RACING_RESULT);
     }
 
-    public static void showRacingResult(List<Car> cars) {
-        cars.forEach(car -> {
-            System.out.println(drawGraph(car));
-        });
+    public static void printRacing(List<Car> cars) {
+        cars.forEach(car -> System.out.printf(FORMAT_PRINT_RACING ,car.showName(), printGraph(car)));
         System.out.println();
     }
 
-    private static String drawGraph(Car car) {
+    private static String printGraph(Car car) {
         StringBuilder graph = new StringBuilder();
-        for (int i = 0; i < car.getDistance(); i++) {
-            graph.append(GRAPH_FIGURE);
-        }
+        IntStream.range(1, car.showDistance()).forEach(a -> graph.append(GRAPH_FIGURE));
         return graph.toString();
     }
 }

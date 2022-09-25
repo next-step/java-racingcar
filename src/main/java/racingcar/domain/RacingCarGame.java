@@ -2,21 +2,20 @@ package racingcar.domain;
 
 import racingcar.view.OutputView;
 
+import java.util.stream.IntStream;
+
 public class RacingCarGame {
 
     private int numberOfTimes;
-    private Cars cars;
-
-    public RacingCarGame() {
-    }
+    private RacingCars racingCars;
 
     public void start(String carNameText, int numberOfTimes) {
-        this.cars = new Cars(carNameText);
+        this.racingCars = new RacingCars(carNameText);
         this.numberOfTimes = numberOfTimes;
     }
 
     public void play() {
-        cars.race();
-        OutputView.showRacing(cars);
+        IntStream.range(1, numberOfTimes).forEach(a -> OutputView.printRacing(racingCars.race()));
     }
+
 }
