@@ -1,11 +1,16 @@
 package calculator;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
     public static final String SEPARATOR = ",|:";
     public static final String CUSTOM_SEPARATOR = "//(.)\n(.*)";
+    public static final int SPLIT_FIRST = 1;
+    public static final int SPLIT_SECOND = 2;
+    public static final Pattern customSeparatorPattern = Pattern.compile(CUSTOM_SEPARATOR);
 
     public static int splitAndAddString(String numbersText) {
         if (isEmptyText(numbersText)) {
@@ -16,11 +21,11 @@ public class StringAddCalculator {
     }
 
     private static String[] split(String numbersText) {
-        Matcher m = Pattern.compile(CUSTOM_SEPARATOR).matcher(numbersText);
+        Matcher customSeparatorMatcher = customSeparatorPattern.matcher(numbersText);
 
-        if (containCustomSeparator(m)) {
-            String customDelimiter = m.group(1);
-            return m.group(2).split(customDelimiter);
+        if (containCustomSeparator(customSeparatorMatcher)) {
+            String customDelimiter = customSeparatorMatcher.group(SPLIT_FIRST);
+            return customSeparatorMatcher.group(SPLIT_SECOND).split(customDelimiter);
         }
 
         return numbersText.split(SEPARATOR);
@@ -30,16 +35,17 @@ public class StringAddCalculator {
         return m.find();
     }
 
-    public static int[] stringArrayToIntArray (String[] numbers) {
-        int[] result = new int[numbers.length];
+    public static List<Integer> stringArrayToIntArray (String[] numbers) {
+        List<Integer> result = new ArrayList<>();
 
-        for (int i = 0; i < numbers.length; i++) {
-            result[i] = textToInt(numbers[i]);
+        for (String number : numbers) {
+            result.add(textToInt(number));
         }
+
         return result;
     }
 
-    private static int add(int[] numbers) {
+    private static int add(List<Integer> numbers) {
         int result = 0;
 
         for (int number : numbers) {

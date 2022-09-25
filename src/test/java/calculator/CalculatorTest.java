@@ -13,28 +13,28 @@ public class CalculatorTest {
     }
 
     @Test
-    public void 숫자_하나() throws Exception {
+    public void 숫자_하나() {
         assertThat(StringAddCalculator.splitAndAddString("3")).isEqualTo(3);
     }
 
     @Test
-    public void 쉼표_구분자() throws Exception {
+    public void 쉼표_구분자() {
         assertThat(StringAddCalculator.splitAndAddString("1,2")).isEqualTo(3);
     }
 
     @Test
-    public void 쉼표_또는_콜론_구분자() throws Exception {
+    public void 쉼표_또는_콜론_구분자() {
         assertThat(StringAddCalculator.splitAndAddString("1,2:3")).isEqualTo(6);
     }
 
     @Test
-    public void custom_구분자() throws Exception {
+    public void custom_구분자() {
         int result = StringAddCalculator.splitAndAddString("//;\n1;2;3");
         assertThat(result).isEqualTo(6);
     }
 
     @Test
-    public void 음수_Error_발생() throws Exception {
+    public void 음수_Error_발생() {
         assertThatThrownBy(() -> StringAddCalculator.splitAndAddString("-1,2,3"))
                 .isInstanceOf(RuntimeException.class);
     }
