@@ -6,6 +6,7 @@ build/
 !**/src/main/**
 !**/src/test/**
 gradle.properties
+**/application.properties
 
 ### STS ###
 .apt_generated

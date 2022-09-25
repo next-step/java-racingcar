@@ -1,7 +1,7 @@
-package stringCalculator;
+package stringcalculator;
 
-import stringCalculator.domain.Positive;
-import stringCalculator.domain.Positives;
+import stringcalculator.domain.Positive;
+import stringcalculator.domain.Positives;
 
 import java.util.NoSuchElementException;
 import java.util.regex.Matcher;
