@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 
 public class Client {
 
-    private static final Pattern CUSTOM_DELIMITER_JUDGMENT = Pattern.compile("(//.*\n)?.*[0-9].*");
+    private static final Pattern CUSTOM_DELIMITER_JUDGMENT = Pattern.compile("(//.*\n).*[0-9].*");
 
     public static void main(String[] args) {
         int calculated = calculated();
@@ -26,6 +26,11 @@ public class Client {
             inputValue = br.readLine();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+
+        if (inputValue == null) {
+            Calculated calculated = new CalculatedString(new ParsedStringByDefaultDelimiter(inputValue));
+            return calculated.calculatedResult();
         }
 
         if (CUSTOM_DELIMITER_JUDGMENT.matcher(inputValue).find()) {
