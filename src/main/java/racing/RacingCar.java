@@ -7,6 +7,7 @@ import java.util.Random;
 public class RacingCar {
 
     private static final int CONDITION = 4;
+    private static final int BETWEEN_ZERO_AND_NINE = 10;
 
     public static void racing() {
         InputView inputView = new InputView();
@@ -48,7 +49,7 @@ public class RacingCar {
 
     public static int getRandomNum() {
         Random random = new Random();
-        return random.nextInt(10);
+        return random.nextInt(BETWEEN_ZERO_AND_NINE);
     }
 
     public static boolean isSatisfiedConditionForMove(int number) {
