@@ -14,7 +14,9 @@ public class PositionTest {
     @Test
     void move() {
         Position position = new Position();
-        assertThat(position.move()).isEqualTo(new Position(1));
+        position.move();
+
+        assertThat(position).isEqualTo(new Position(1));
     }
 
 }

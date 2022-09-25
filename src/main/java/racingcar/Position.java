@@ -14,9 +14,8 @@ public class Position {
         this.position = position;
     }
 
-    public Position move() {
+    public void move() {
         position++;
-        return this;
     }
 
     @Override
