@@ -2,7 +2,6 @@ package calculator;
 
 import exception.NegativeNumberException;
 
-import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
@@ -19,7 +18,7 @@ public class StringAddCalculator {
         if (isNullOrEmpty(text)) {
             return 0;
         }
-        return sum(toInt(splitString(text)));
+        return sum(toInts(splitString(text)));
     }
 
     private static boolean isNullOrEmpty(String text) {
@@ -35,8 +34,12 @@ public class StringAddCalculator {
         return text.split(COMMA_OR_COLON);
     }
 
-    private static int[] toInt(String[] splitTextArray) {
-        return Stream.of(splitTextArray).mapToInt(StringAddCalculator::parsePositiveIntOrThrow).toArray();
+    private static int[] toInts(String[] splitTextArray) {
+        int[] numbers = new int[splitTextArray.length];
+        for (int i = 0; i < splitTextArray.length; i++) {
+            numbers[i] = parsePositiveIntOrThrow(splitTextArray[i]);
+        }
+        return numbers;
     }
 
     private static int parsePositiveIntOrThrow(String splitText) {
@@ -55,7 +58,11 @@ public class StringAddCalculator {
         }
     }
 
-    private static int sum(int[] ints) {
-        return Arrays.stream(ints).sum();
+    private static int sum(int[] numbers) {
+        int result = 0;
+        for(int number : numbers) {
+            result += number;
+        }
+        return result;
     }
 }
