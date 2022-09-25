@@ -1,4 +1,4 @@
-package step2;
+package stringcalculator;
 
 import java.util.Objects;
 import java.util.regex.Matcher;
