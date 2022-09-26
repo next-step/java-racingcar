@@ -7,7 +7,7 @@ public class StringAddCalculator {
     private static final String delimiter = ",|:";
     private static final Pattern customDelimiterPattern = Pattern.compile("//(.)\n(.*)");
 
-    private StringAddCalculator(){
+    private StringAddCalculator() {
 
     }
 
@@ -43,7 +43,7 @@ public class StringAddCalculator {
     }
 
     private static void validationCheck(String number) {
-        if(!PositiveNumberFormatChecker.validationCheck(number)){
+        if (!PositiveNumberFormatChecker.validationCheck(number)) {
             throw new NumberFormatException();
         }
     }
