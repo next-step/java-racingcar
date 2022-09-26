@@ -7,17 +7,20 @@ import java.util.regex.Pattern;
 public class StringAddCalculator {
 
     private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
+    private static final String DEFAULT_DELIMITERS = ",|:";
 
     public static int splitAndAdd(String input) {
         if (input == null || input.isEmpty()) {
             return 0;
         }
 
-        return add(split(parseInputExpression(input)));
+        return add(split(getValidInput(input), getDelimiter(input)));
     }
 
     private static int add(String[] stringNumberArray) {
-        return Arrays.stream(stringNumberArray).mapToInt(StringAddCalculator::parseInt).sum();
+        return Arrays.stream(stringNumberArray)
+                     .mapToInt(StringAddCalculator::parseInt)
+                     .sum();
     }
 
     private static int parseInt(String maybeNumberString) {
@@ -25,7 +28,7 @@ public class StringAddCalculator {
             int parsedValue = Integer.parseInt(maybeNumberString);
 
             if (parsedValue < 0) {
-                throw new RuntimeException();
+                throw new RuntimeException("0 또는 양수만 처리 가능합니다");
             }
 
             return parsedValue;
@@ -34,8 +37,8 @@ public class StringAddCalculator {
         }
     }
 
-    private static String[] split(Input input) {
-        return input.getInput().split(input.getDelimiter());
+    private static String[] split(String input, String delimiter) {
+        return input.split(delimiter);
     }
 
     private static boolean hasCustomDelimiter(String input) {
@@ -43,7 +46,7 @@ public class StringAddCalculator {
         return matcher.find();
     }
 
-    private static String getCustomDelimiterOrElseThrow(String input) {
+    private static String getDelimiter(String input) {
         if (hasCustomDelimiter(input)) {
             Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(input);
             if (matcher.find()) {
@@ -51,7 +54,7 @@ public class StringAddCalculator {
             }
         }
 
-        throw new DelimiterNotFoundException();
+        return DEFAULT_DELIMITERS;
     }
 
     private static String removeCustomDelimiter(String input) {
@@ -63,19 +66,11 @@ public class StringAddCalculator {
         return input;
     }
 
-    public static String getValidInput(String input) {
+    private static String getValidInput(String input) {
         if (hasCustomDelimiter(input)) {
             return removeCustomDelimiter(input);
         }
 
         return input;
-    }
-
-    public static Input parseInputExpression(String input) {
-        if (hasCustomDelimiter(input)) {
-            return new Input(input, getValidInput(input), getCustomDelimiterOrElseThrow(input));
-        }
-
-        return Input.hasNoDelimiter(input);
     }
 }
