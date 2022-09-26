@@ -2,13 +2,18 @@ package step3;
 
 public class Racing {
 	public static int participate(String input) {
-		return Integer.parseInt(input);
+		return Integer.parseInt(checkInput(input));
 	}
 
-	public static void checkInput(String input) {
-		if (Integer.parseInt(input) < 0 || validateCharacter(input)) {
+	public static String checkInput(String input) {
+		if (validateMinus(input) || validateCharacter(input)) {
 			throw new RuntimeException();
 		}
+		return input;
+	}
+
+	private static boolean validateMinus(String input) {
+		return Integer.parseInt(input) < 0;
 	}
 
 	private static boolean validateCharacter(String input) {
