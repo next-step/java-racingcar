@@ -6,7 +6,7 @@ public class Car {
     private static final int STANDSTILL = 0;
     private static final int FUEL_TO_MOVE = 4;
 
-    private String name;
+    private final String name;
     private int distance;
 
     public Car(String name) {
