@@ -27,8 +27,6 @@ public class SetTest {
     @Test
     @DisplayName("Set 크기 확인")
     void size() {
-//        int size = numbers.size();
-//        assertThat(size).isEqualTo(3);
         assertThat(numbers).hasSize(3);
     }
 
