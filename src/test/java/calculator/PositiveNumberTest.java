@@ -7,19 +7,21 @@ import static org.assertj.core.api.Assertions.*;
 public class PositiveNumberTest {
     @Test
     void create() {
-        assertThat(new PositiveNumber("1")).isEqualTo(new PositiveNumber(1));
+        assertThat(PositiveNumber.of("1")).isEqualTo(PositiveNumber.of(1));
     }
 
     @Test
     void plus() {
-        PositiveNumber positive = new PositiveNumber("1");
+        PositiveNumber positive = PositiveNumber.of(1);
         PositiveNumber result = positive.plus(2);
-        assertThat(result).isEqualTo(new PositiveNumber(3));
+        assertThat(result).isEqualTo(PositiveNumber.of(3));
     }
 
     @Test
     void negative() {
-        assertThatThrownBy(() -> new PositiveNumber(-1))
+        assertThatThrownBy(() -> PositiveNumber.of(-1))
+                .isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> PositiveNumber.of("-1"))
                 .isInstanceOf(RuntimeException.class);
     }
 }

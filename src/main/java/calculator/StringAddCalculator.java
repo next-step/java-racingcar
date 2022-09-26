@@ -22,7 +22,7 @@ public class StringAddCalculator {
     }
 
     private static PositiveNumber sum(PositiveNumber[] numbers) {
-        PositiveNumber result = new PositiveNumber(0);
+        PositiveNumber result = PositiveNumber.of(0);
         for (PositiveNumber number : numbers) {
             result = result.plus(number);
         }
@@ -38,7 +38,7 @@ public class StringAddCalculator {
     }
 
     private static PositiveNumber toPositive(String str) {
-        return new PositiveNumber(str);
+        return PositiveNumber.of(str);
     }
 
     private static boolean isBlank(String text) {

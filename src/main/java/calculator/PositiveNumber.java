@@ -4,15 +4,26 @@ import java.util.Objects;
 
 public class PositiveNumber {
     private final int number;
-    public PositiveNumber(String value) {
-        this.number = Integer.parseInt(value);
+
+    private PositiveNumber(int number) {
+        this.number = number;
     }
 
-    public PositiveNumber(int number) {
+    public static PositiveNumber of(String value) {
+        int number = Integer.parseInt(value);
+        checkPositive(number);
+        return new PositiveNumber(number);
+    }
+
+    public static PositiveNumber of(int number) {
+        checkPositive(number);
+        return new PositiveNumber(number);
+    }
+
+    private static void checkPositive(int number) {
         if (number < 0) {
             throw new RuntimeException();
         }
-        this.number = number;
     }
 
     public PositiveNumber plus(int number) {
