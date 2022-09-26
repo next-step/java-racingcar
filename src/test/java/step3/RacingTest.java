@@ -12,7 +12,7 @@ public class RacingTest {
 	@DisplayName("레이싱 참가자 수 테스트")
 	void participantOfRacing() throws Exception {
 		Cars actual = Racing.participate("3");
-		assertThat(actual.cars.size()).isEqualTo(3);
+		assertThat(actual.getCars().size()).isEqualTo(3);
 	}
 
 	@ParameterizedTest

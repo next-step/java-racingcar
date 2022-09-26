@@ -1,5 +1,7 @@
 package step3;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -28,17 +30,21 @@ public class Racing {
 	}
 
 	private static void playMatch(Cars cars) {
-		for (int i = 0; i < cars.cars.size(); i++) {
+		for (int i = 0; i < cars.getCars().size(); i++) {
 			int rand = new Random().nextInt(10);
-			cars.cars.get(i).move(move(rand));
-			Print.resultOfRound(cars.cars.get(i).getStatus());
+			cars.getCars().get(i).move(move(rand));
+			Print.resultOfRound(cars.getCars().get(i).getStatus());
 		}
 		Print.newLine();
 	}
 
 	public static Cars participate(String input) {
+		List<Car> cars = new ArrayList<>();
 		int participant = Integer.parseInt(checkInput(input));
-		return new Cars(participant);
+		for (int i = 0; i < participant; i++) {
+			cars.add(new Car());
+		}
+		return new Cars(cars);
 	}
 
 	public static String checkInput(String input) {

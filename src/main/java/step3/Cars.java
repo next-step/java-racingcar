@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-	public List<Car> cars;
+	private List<Car> cars;
 
-	public Cars(int participant) {
-		cars = new ArrayList<>();
-		for (int i = 0; i < participant; i++) {
-			cars.add(new Car());
-		}
+	public Cars(List<Car> cars) {
+		this.cars = cars;
+	}
+
+	public List<Car> getCars() {
+		return cars;
 	}
 }
