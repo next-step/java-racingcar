@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Winners {
     private List<Car> winners;
@@ -10,11 +9,9 @@ public class Winners {
         this.winners = winners;
     }
 
-    public String showWinnerNames(){
-       return winners.stream()
-               .map(Car::showName)
-               .collect(Collectors.joining(","));
+
+    public List<Car> showWinners() {
+        return winners;
     }
 
-    
 }
