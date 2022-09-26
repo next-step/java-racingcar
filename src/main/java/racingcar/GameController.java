@@ -2,7 +2,7 @@ package racingcar;
 
 import java.util.List;
 
-public class ApplicationMain {
+public class GameController {
 
     private static final ConsoleInput INPUT = new ConsoleInput();
     private static final ConsoleOutput OUTPUT = new ConsoleOutput();
@@ -13,11 +13,11 @@ public class ApplicationMain {
 
         RacingGame racingGame = new RacingGame(carQuantity);
 
-        OUTPUT.printResultMessage();
+        OUTPUT.resultMessage();
         for (int i = 0; i < movementCount; i++) {
             List<Integer> resultPosition = racingGame.play();
-            resultPosition.forEach(OUTPUT::printPosition);
-            System.out.println();
+            resultPosition.forEach(OUTPUT::position);
+            OUTPUT.newLine();
         }
     }
 }
