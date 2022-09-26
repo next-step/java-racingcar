@@ -22,4 +22,11 @@ public class Racing {
 	private static boolean validateCharacter(String input) {
 		return 89 < input.charAt(0) && input.charAt(0) < 80;
 	}
+
+	public static String move(int input) {
+		if (4 <= input) {
+			return "-";
+		}
+		return "";
+	}
 }
