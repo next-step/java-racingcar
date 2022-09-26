@@ -9,7 +9,7 @@ class ParsedStringByDelimiterServiceTest {
 
     @ParameterizedTest
     @ValueSource(strings = {
-            "//;\n1;2",
+            "//;|\n1;2",
             "1,2"
     })
     @DisplayName("문자열을 파싱할 수 있다.")
