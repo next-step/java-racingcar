@@ -7,7 +7,11 @@ public class Car {
 		this.status = "";
 	}
 
-	public String move(String advanced) {
-		return this.status += advanced;
+	public void move(String advanced) {
+		this.status += advanced;
+	}
+
+	public String getStatus() {
+		return this.status;
 	}
 }
