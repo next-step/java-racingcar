@@ -8,8 +8,8 @@ public class CarName {
     String name;
 
     public CarName(String name) {
-        validateCarName(name);
-        this.name = name;
+        this.name = name.trim();
+        validateCarName(this.name);
     }
 
     private void validateCarName(String name) {
