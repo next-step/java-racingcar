@@ -1,6 +1,7 @@
 package study;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -25,18 +26,21 @@ public class SetCollectionTest {
 
     @Test
     void size() {
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3})
-    void contains(int num) {
-        assertThat(numbers.contains(num)).isTrue();
-    }
+    @Nested
+    class containsTest {
+        @ParameterizedTest
+        @ValueSource(ints = {1, 2, 3})
+        void contains(int num) {
+            assertThat(numbers).contains(num);
+        }
 
-    @ParameterizedTest
-    @CsvSource(value = {"1:true","2:true","3:true","4:false","5:false"}, delimiter = ':')
-    void containsFalse(int num, boolean expected) {
-        assertThat(numbers.contains(num)).isEqualTo(expected);
+        @ParameterizedTest
+        @CsvSource(value = {"1:true","2:true","3:true","4:false","5:false"}, delimiter = ':')
+        void containsFalse(int num, boolean expected) {
+            assertThat(numbers.contains(num)).isEqualTo(expected);
+        }
     }
 }
