@@ -1,6 +1,6 @@
 package racing.application.view;
 
-public class OutputView implements View {
+public class OutputView {
 
     private final Score score;
 
@@ -8,9 +8,9 @@ public class OutputView implements View {
         this.score = score;
     }
 
-    @Override
     public void print() {
         score.printGame();
         score.printWinner();
     }
+
 }
