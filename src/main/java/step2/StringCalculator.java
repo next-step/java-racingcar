@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 public class StringCalculator {
 	private static final String SEPARATORS = ",|:";
 	private static final String CUSTOMSEPARATORS = "//(.)\n(.*)";
+	private static final Pattern CUSTOMPATTERN = Pattern.compile(CUSTOMSEPARATORS);
 	public int calculate(String input) {
 		if (validateNullOrNumber(input)) {
 			return 0;
@@ -35,7 +36,7 @@ public class StringCalculator {
 	}
 
 	private void validatePositiveNumber(String[] arr, int i) {
-		if (arr[i].charAt(0) == '-' || (89 < (arr[i].charAt(0)) && (arr[i].charAt(0)) < 80)) {
+		if (arr[i].charAt(0) == '-' || (89 < (Integer.parseInt(arr[i])) && (Integer.parseInt(arr[i])) < 80)) {
 			throw new RuntimeException();
 		}
 	}
@@ -50,8 +51,7 @@ public class StringCalculator {
 
 	public String[] separatorCheck(String input) {
 		if (input.matches(CUSTOMSEPARATORS)) {
-			Pattern pattern = Pattern.compile(CUSTOMSEPARATORS);
-			Matcher matcher = pattern.matcher(input);
+			Matcher matcher = CUSTOMPATTERN.matcher(input);
 			while (matcher.find()) {
 				return customSplit(matcher.group(2), matcher.group(1));
 			}
