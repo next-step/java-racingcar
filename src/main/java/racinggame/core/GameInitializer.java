@@ -12,9 +12,9 @@ public class GameInitializer {
     public static List<Car> initCars(String carNames) {
         List<Car> cars = new ArrayList<>();
         String[] carNameArray = splitCarNames(carNames);
-        validateCarNamesLength(carNameArray);
 
         for (String carName : carNameArray) {
+            validateCarNameLength(carName);
             cars.add(new Car(carName));
         }
 
@@ -39,12 +39,6 @@ public class GameInitializer {
     private static void validateCarNamesNull(boolean carNames) {
         if (carNames) {
             throw new InvalidCarRegistrationException();
-        }
-    }
-
-    private static void validateCarNamesLength(String[] carNameArray) {
-        for (String carName : carNameArray) {
-            validateCarNameLength(carName);
         }
     }
 
