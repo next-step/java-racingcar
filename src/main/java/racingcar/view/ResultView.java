@@ -12,10 +12,6 @@ public class ResultView {
         System.out.println(message);
     }
 
-    private static void printNewLine() {
-        System.out.println();
-    }
-
     private static void printStartMessage() {
         System.out.println("실행 결과");
     }

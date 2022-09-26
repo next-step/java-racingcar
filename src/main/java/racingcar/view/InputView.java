@@ -17,12 +17,4 @@ public class InputView {
     private static String readAnswer(Scanner scanner) {
         return scanner.nextLine();
     }
-
-    public static int toInt(String str) {
-        try {
-            return Integer.parseInt(str);
-        } catch (NumberFormatException e) {
-            throw new RuntimeException("정수를 입력해주세요.");
-        }
-    }
 }
