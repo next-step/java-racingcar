@@ -9,4 +9,12 @@ public class GameAttribute {
 		this.carCount = carCount;
 		this.tryCount = tryCount;
 	}
+
+	public int getCarCount() {
+		return this.carCount;
+	}
+
+	public int getTryCount() {
+		return this.tryCount;
+	}
 }

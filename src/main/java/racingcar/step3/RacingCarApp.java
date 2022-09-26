@@ -5,5 +5,8 @@ public class RacingCarApp {
 	public static void main(String[] args) {
 		InputView inputView = new InputView();
 		GameAttribute gameAttribute = inputView.getGameAttribute();
+
+		Game game = new Game();
+		game.play(gameAttribute);
 	}
 }
