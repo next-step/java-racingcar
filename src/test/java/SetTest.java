@@ -25,21 +25,22 @@ public class SetTest {
   @Test
   @DisplayName("요구사항1: Set 의 사이즈 확인")
   void sizeTest() {
-    assertThat(numbers.size()).isEqualTo(3);
+    assertThat(numbers).hasSize(3);
   }
 
   @ParameterizedTest
   @ValueSource(ints = {1, 2, 3})
   @DisplayName("요구사항2: Set 이 1,2,3 값 존재하는지 확인")
   void containsUsingValue(int input) {
-    assertThat(numbers.contains(input)).isTrue();
+    assertThat(numbers).contains(input);
   }
 
   @ParameterizedTest
-  @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
+  @CsvSource(
+      value = {"1:true", "2:true", "3:true", "4:false", "5:false"},
+      delimiter = ':')
   @DisplayName("요구사항3: Set 에 1,2,3 값 존재하고 4,5 값 존재하지 않는지 확인")
   void containsUsingCsv(int input, boolean expected) {
     assertThat(numbers.contains(input)).isEqualTo(expected);
   }
-
 }
