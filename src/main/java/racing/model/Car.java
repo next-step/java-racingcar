@@ -1,28 +1,43 @@
 package racing.model;
 
-public class Car {
-    private int position;
-    private final int MOVE_THRESHOLD = 4;
+import racing.strategy.CarMoveStrategy;
 
-    public Car(int initPosition) {
+public abstract class Car {
+    private CarPosition position;
+    private CarMoveStrategy carMoveStrategy;
+
+    public Car(CarPosition initPosition) {
         this.position = initPosition;
-    }
-
-    public Car() {
-        this.position = 1;
+        setDefaultCarMoveStrategy();
     }
 
     public boolean canMove(int randomNum) {
-        return randomNum >= MOVE_THRESHOLD;
+        return carMoveStrategy.canMove(randomNum);
+    }
+
+    public void setStrategy(CarMoveStrategy carMoveStrategy) {
+        this.carMoveStrategy = carMoveStrategy;
+    }
+
+    public int getPosition(){
+        return position.getPosition();
+    }
+
+    public void move() {
+        carMoveStrategy.move(position);
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
 
         Car car = (Car) obj;
-        return car.position == this.position;
+        return car.position.getPosition() == this.position.getPosition();
     }
 
     @Override
@@ -30,15 +45,7 @@ public class Car {
         return super.hashCode();
     }
 
-    public void move() {
-        this.position += 1;
-    }
+    public abstract void setDefaultCarMoveStrategy();
 
-    public String printPosition() {
-        String currentLocation = "";
-        for (int i = 0; i < position; i++) {
-            currentLocation += "-";
-        }
-        return currentLocation;
-    }
+    public abstract String getTireMark();
 }
