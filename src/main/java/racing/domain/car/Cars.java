@@ -9,19 +9,19 @@ import racing.domain.car.exception.NegativePositionException;
 import racing.domain.generator.DefaultNumberGenerator;
 import racing.domain.generator.NumberGenerator;
 
-public class CarRace {
+public class Cars {
 
     private static int MOVE_THRESHOLD = 4;
 
     private final List<Car> cars;
     private final NumberGenerator numberGenerator;
 
-    public CarRace(List<Car> cars, NumberGenerator numberGenerator) {
+    public Cars(List<Car> cars, NumberGenerator numberGenerator) {
         this.cars = cars;
         this.numberGenerator = numberGenerator;
     }
 
-    public CarRace(List<Car> cars) {
+    public Cars(List<Car> cars) {
         this.cars = cars;
         this.numberGenerator = new DefaultNumberGenerator();
     }
@@ -34,14 +34,14 @@ public class CarRace {
         return new ArrayList<>(cars);
     }
 
-    public CarRace move() {
+    public Cars move() {
         List<Car> carList = cars.stream()
             .map(car -> move(car, numberGenerator))
             .collect(Collectors.toList());
-        return new CarRace(carList);
+        return new Cars(carList);
     }
 
-    public List<Name> winner() {
+    public List<Name> farPeople() {
         int position = maxPosition();
         return cars.stream()
             .filter(car -> car.position() == position)
@@ -71,8 +71,8 @@ public class CarRace {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CarRace carRace = (CarRace) o;
-        return Objects.equals(cars, carRace.cars);
+        Cars cars = (Cars) o;
+        return Objects.equals(this.cars, cars.cars);
     }
 
     @Override

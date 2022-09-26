@@ -14,7 +14,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import racing.domain.generator.DefaultNumberGenerator;
 import racing.domain.generator.NumberGenerator;
 
-public class CarRaceTest {
+public class CarsTest {
 
     NumberGenerator advanced = () -> 4;
     NumberGenerator notAdvanced = () -> 3;
@@ -31,7 +31,7 @@ public class CarRaceTest {
         );
 
         //then
-        assertDoesNotThrow(() -> new CarRace(carList, new DefaultNumberGenerator(10)));
+        assertDoesNotThrow(() -> new Cars(carList, new DefaultNumberGenerator(10)));
     }
 
     @Test
@@ -40,13 +40,13 @@ public class CarRaceTest {
         //given
         String name = "name";
         List<Car> list = new ArrayList<>(List.of(new Car(0, name)));
-        CarRace carRace = new CarRace(list, advanced);
+        Cars cars = new Cars(list, advanced);
 
         //when
-        CarRace movedCarRace = carRace.move();
+        Cars movedCars = cars.move();
 
         //then
-        assertThat(movedCarRace).isEqualTo(new CarRace(List.of(new Car(1, name))));
+        assertThat(movedCars).isEqualTo(new Cars(List.of(new Car(1, name))));
     }
 
     @Test
@@ -55,27 +55,27 @@ public class CarRaceTest {
         //given
         String name = "name";
         List<Car> list = new ArrayList<>(List.of(new Car(0, name)));
-        CarRace carRace = new CarRace(list, notAdvanced);
+        Cars cars = new Cars(list, notAdvanced);
 
         //when
-        CarRace movedCarRace = carRace.move();
+        Cars movedCars = cars.move();
 
         //then
-        assertThat(movedCarRace).isEqualTo(carRace);
+        assertThat(movedCars).isEqualTo(cars);
     }
 
     @ParameterizedTest
     @MethodSource("winnerTest")
-    @DisplayName("우승자 뽑기 테스트")
+    @DisplayName("멀리간 운전자 찾기 테스트")
     void getWinner_Test(List<Car> winnerList, int people) {
         //given
-        CarRace carRace = new CarRace(winnerList, advanced);
+        Cars cars = new Cars(winnerList, advanced);
 
         //when
-        List<Name> winnerNameList = carRace.winner();
+        List<Name> farPeople = cars.farPeople();
 
         //then
-        assertThat(winnerNameList.size()).isEqualTo(people);
+        assertThat(farPeople.size()).isEqualTo(people);
     }
 
     private static Stream<Arguments> winnerTest() {
