@@ -67,4 +67,15 @@ public class RacingGameTest {
         assertThat(outputStream.toString()).contains("자동차 대수는 몇 대 인가요?");
     }
 
+    @DisplayName("자동차의 대수를 할 때 \"시도할 회수는 몇 회 인가요?\" 라는 안내 문구를 출력한다")
+    @Test
+    void input_Number_Of_Round_Guide() {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+        System.setIn(new ByteArrayInputStream("1".getBytes()));
+        racingGame.inputNumberOfRound();
+
+        assertThat(outputStream.toString()).contains("시도할 회수는 몇 회 인가요?");
+    }
+
 }
