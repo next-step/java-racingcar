@@ -14,7 +14,7 @@ public class Car {
     }
 
     public static Car carWithName(CarName carName) {
-        return new Car(carName, new CarPosition(0));
+        return new Car(carName, CarPosition.ZERO);
     }
 
     public void move() {

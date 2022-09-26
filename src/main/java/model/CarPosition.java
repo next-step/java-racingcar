@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public final class CarPosition implements Comparable<CarPosition> {
 
+    public static CarPosition ZERO =  new CarPosition(0);
     private final int position;
 
     public CarPosition(int position) {
