@@ -1,18 +1,25 @@
 package racingcar;
 
 public class Car {
-    int position;
+
+    private int position;
 
     public Car() {
         this.position = 0;
     }
 
-    public int moveForward() {
-        this.position++;
+    public int getPosition() {
         return position;
     }
 
-    public String makePositionShape() {
-        return "-".repeat(position);
+    public void forwardCarByCondition(int value) {
+        if (ForwardCondition.isForwardCondition(value)) {
+            moveForward();
+        }
     }
+
+    private void moveForward() {
+        this.position++;
+    }
+
 }
