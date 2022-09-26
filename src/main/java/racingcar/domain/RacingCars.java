@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -9,15 +8,18 @@ import java.util.stream.Collectors;
 public class RacingCars {
     private List<Car> cars;
 
-    public RacingCars(String carNameText) {
-        this.cars = new ArrayList<>();
-        cars = createRacingCars(carNameText);
+    public RacingCars(List<Car> cars) {
+        this.cars = cars;
     }
 
-    private List<Car> createRacingCars(String carNameText) {
-        return Arrays.stream(carNameText.split(","))
+    public static RacingCars of(String carNameText) {
+        return new RacingCars(Arrays.stream(carNameText.split(","))
                 .map(Car::new)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()));
+    }
+
+    public int size() {
+        return cars.size();
     }
 
     public void race() {
@@ -39,6 +41,10 @@ public class RacingCars {
     public String showGraph(String figure) {
         return cars.stream()
                 .map(car -> car.showGraph(figure))
-                .collect(Collectors.joining("/n"));
+                .collect(Collectors.joining("\n"));
+    }
+
+    public boolean contains(Car car) {
+        return cars.contains(car);
     }
 }

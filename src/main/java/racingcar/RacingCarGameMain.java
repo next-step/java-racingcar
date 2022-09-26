@@ -8,11 +8,10 @@ public class RacingCarGameMain {
 
     public static void main(String[] args) {
         String carNameText = InputView.askCarNames();
+        RacingCars racingCars = RacingCars.of(carNameText);
         int numberOfTimes = InputView.askHowManyTimes();
 
         OutputView.printRacingResultTitle();
-
-        RacingCars racingCars = new RacingCars(carNameText);
 
         for (int time = 0; time < numberOfTimes; time++) {
             racingCars.race();
