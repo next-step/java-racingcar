@@ -1,22 +1,22 @@
 package step3;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class Cars {
-    Car[] cars;
+    List<Car> cars;
 
     public Cars(int n) {
-        this.cars = new Car[n];
-        this.init();
-    }
-
-    public void init() {
-        for (int i=0; i<cars.length; i++) {
-            cars[i] = new Car();
+        this.cars = new ArrayList<>();
+        for (int i=0; i<n; i++) {
+            cars.add(new Car());
         }
     }
 
     public void playGame() {
         for (Car car : this.cars) {
-            car.play();
+            car.play(new Random());
         }
     }
 }
