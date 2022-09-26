@@ -1,6 +1,5 @@
 package game;
 
-
 public class Car {
 
     private int location;
@@ -10,6 +9,6 @@ public class Car {
     }
 
     public void forward() {
-        location+=1;
+        location += 1;
     }
 }

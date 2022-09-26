@@ -36,7 +36,7 @@ public class RacingGame {
     }
 
     private void changeCarLocation(Car car) {
-        if(isForward(pickRandomNumber(CHANGE_LOCATION_BOUND))){
+        if (isForward(pickRandomNumber(CHANGE_LOCATION_BOUND))) {
             car.forward();
         }
     }
