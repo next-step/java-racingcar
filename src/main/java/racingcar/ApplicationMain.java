@@ -1,23 +1,23 @@
 package racingcar;
 
+import java.util.List;
+
 public class ApplicationMain {
 
-    private static final Input INPUT = new DefaultInput();
-    private static final Output OUTPUT = new DefaultOutput();
+    private static final ConsoleInput INPUT = new ConsoleInput();
+    private static final ConsoleOutput OUTPUT = new ConsoleOutput();
 
     public static void main(String[] args) {
-        ready(INPUT, OUTPUT)
-                .start()
-                .result(OUTPUT);
-    }
+        int carQuantity = INPUT.getCarQuantity();
+        int movementCount = INPUT.getMovementCount();
 
-    private static RacingGame ready(Input input, Output output) {
-        try {
-            return RacingGame.ready(input);
-        } catch (NotPositiveNumberException e) {
-            output.printMessage(e.getMessage());
-            return ready(input, output);
+        RacingGame racingGame = new RacingGame(carQuantity);
+
+        OUTPUT.printResultMessage();
+        for (int i = 0; i < movementCount; i++) {
+            List<Integer> resultPosition = racingGame.play();
+            resultPosition.forEach(OUTPUT::printPosition);
+            System.out.println();
         }
     }
-
 }

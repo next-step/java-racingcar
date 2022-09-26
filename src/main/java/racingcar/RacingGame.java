@@ -2,61 +2,35 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.Random;
+import java.util.stream.Collectors;
 
 public class RacingGame {
 
-    private final int carQuantity;
-    private final int movementCount;
-    private List<Car> cars;
+    private final List<Car> cars;
 
-    private RacingGame(int carQuantity, int movementCount) {
-        this.carQuantity = carQuantity;
-        this.movementCount = movementCount;
-        this.cars = initCars();
+    public RacingGame(int carQuantity) {
+        cars = initCars(carQuantity);
     }
 
-    public static RacingGame ready(Positive carQuantity, Positive movementCount) {
-        return new RacingGame(carQuantity.getValue(), movementCount.getValue());
+    public List<Integer> play() {
+        moveCars();
+        return mapToPosition();
     }
 
-    public static RacingGame ready(Input input) {
-        return ready(input.getCarQuantity(), input.getMovementCount());
+    private void moveCars() {
+        cars.forEach(car -> car.move(new CarCondition()));
     }
 
-    private List<Car> initCars() {
-        cars = new ArrayList<>();
-        for (int i = 0; i < this.carQuantity; i++) {
+    private List<Integer> mapToPosition() {
+        return cars.stream().mapToInt(Car::getPosition).boxed().collect(Collectors.toList());
+    }
+
+    private List<Car> initCars(int carQuantity) {
+        List<Car> cars = new ArrayList<>();
+        for (int i = 0; i < carQuantity; i++) {
             cars.add(new Car());
         }
         return cars;
     }
 
-    public RacingGame start() {
-        for (int i = 0; i < movementCount; i++) {
-            cars.forEach(car -> car.move(new CarCondition()));
-        }
-        return this;
-    }
-
-    public void result(Output output) {
-        output.printResultMessage();
-        cars.forEach(car -> output.printPosition(car.getPosition()));
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        RacingGame that = (RacingGame) o;
-        return carQuantity == that.carQuantity
-                && movementCount == that.movementCount
-                && cars.equals(that.cars);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(carQuantity, movementCount, cars);
-    }
 }
