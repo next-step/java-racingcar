@@ -8,13 +8,11 @@ import racinggame.core.scoreboard.Score;
 public class ScoreScreen {
 
     public static void printWinner(ScoreBoard scoreBoard) {
-        List<String> winners = scoreBoard.getWinner(
-                scoreBoard.getCountOfRound());
-        System.out.println(
-                String.format("%s가 최종 우승했습니다.",
-                        String.join(" ,",
-                                winners.toArray(new String[0]))
-                ));
+        List<String> winners = scoreBoard.getWinner(scoreBoard.getCountOfRound());
+        System.out.printf(
+                "%s가 최종 우승했습니다.%n",
+                String.join(" ,", winners.toArray(new String[0]))
+        );
     }
 
     public static void printScoreBoard(ScoreBoard scoreBoard) {
@@ -28,10 +26,10 @@ public class ScoreScreen {
     private static void printRoundResult(Score score) {
         Map<String, Integer> scoreInfo = score.getAllScore();
         for (Map.Entry<String, Integer> entry : scoreInfo.entrySet()) {
-            System.out.println(
-                    String.format("%s : %s",
-                            entry.getKey(),
-                            "-".repeat(entry.getValue())));
+            System.out.printf("%s : %s%n",
+                    entry.getKey(),
+                    "-".repeat(entry.getValue())
+            );
         }
         System.out.println();
     }
