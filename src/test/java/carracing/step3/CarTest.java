@@ -16,16 +16,16 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("자동차 움직임 테스트 : 결과 PASS")
+    @DisplayName("자동차 움직임 테스트 : 결과 1")
     void move() {
-        car.move();
-        assertThat(car.moveTrace()).isEqualTo("-");
+        car.move(9);
+        assertThat(car.moveTrace()).isEqualTo(1);
     }
 
     @Test
-    @DisplayName("자동차 움직인 자국 테스트 : 결과 -")
+    @DisplayName("자동차 움직인 자국 테스트 : 결과 1")
     void moveTrace() {
-        car.move();
-        assertThat(car.moveTrace()).isEqualTo("-");
+        car.move(9);
+        assertThat(car.moveTrace()).isEqualTo(1);
     }
 }

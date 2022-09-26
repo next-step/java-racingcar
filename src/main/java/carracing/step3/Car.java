@@ -14,8 +14,8 @@ public class Car {
         return moveNumber >= MOVABLE_THRESHOLD;
     }
 
-    public String moveTrace() {
-        return "-".repeat(Math.max(0, moveCnt));
+    public int moveTrace() {
+        return moveCnt;
     }
 
 }

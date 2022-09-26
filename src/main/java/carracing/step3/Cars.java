@@ -26,12 +26,12 @@ public class Cars {
         cars.get(carNum).move(numberGenerator.get());
     }
 
-    public String getAllCarsTrace() {
-        StringBuilder allCarTrace = new StringBuilder();
+    public List<Integer> getAllCarsTrace() {
+        List<Integer> allCarTrace = new ArrayList<>();
         for (Car car : cars) {
-            allCarTrace.append(car.moveTrace()).append("\n");
+            allCarTrace.add(car.moveTrace());
         }
-        return allCarTrace.toString();
+        return allCarTrace;
     }
 
 }
