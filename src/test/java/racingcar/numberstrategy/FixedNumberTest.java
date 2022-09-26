@@ -9,7 +9,7 @@ public class FixedNumberTest {
 
 	@Test
 	@DisplayName("지정된 숫자를 반환한다")
-	void generate_random_number_in_boundary() {
+	void generate_desired_number() {
 		NumberStrategy fixedNumber = new FixedNumber(9);
 		int generatedNumber = fixedNumber.generate();
 
