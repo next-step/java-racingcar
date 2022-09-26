@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class StringSum {
 
     public String customChar(String testData) {
-        if (testData == null || testData.isBlank() || testData.trim().isEmpty()) {
+        if (testData == null || testData.isBlank()) {
             return "";
         }
         Pattern pattern = Pattern.compile("[/][/](.*?)[\\n]");
@@ -23,7 +23,7 @@ public class StringSum {
         if (testData == null) {
             return new String[]{""};
         }
-        if (custom == "" || custom.isBlank() || custom.trim().isEmpty()) {
+        if (custom.isBlank()) {
             return testData.split(",|:");
         }
         if (custom.equals("+")) {
