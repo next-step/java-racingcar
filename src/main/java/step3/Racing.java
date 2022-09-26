@@ -1,8 +1,12 @@
 package step3;
 
+import java.util.List;
+
 public class Racing {
-	public static int participate(String input) {
-		return Integer.parseInt(checkInput(input));
+	public static Cars participate(String input) {
+		int participant = Integer.parseInt(checkInput(input));
+		Cars cars = new Cars();
+		return cars.participate(participant);
 	}
 
 	public static String checkInput(String input) {
