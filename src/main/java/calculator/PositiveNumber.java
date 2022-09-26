@@ -2,6 +2,8 @@ package calculator;
 
 import java.util.Objects;
 
+import static calculator.Calculator.PLUS;
+
 public class PositiveNumber {
     private final int number;
 
@@ -27,11 +29,11 @@ public class PositiveNumber {
     }
 
     public PositiveNumber plus(int number) {
-        return new PositiveNumber(this.number + number);
+        return new PositiveNumber(PLUS.apply(this.number, number));
     }
 
     public PositiveNumber plus(PositiveNumber number) {
-        return new PositiveNumber(this.number + number.number);
+        return new PositiveNumber(PLUS.apply(this.number, number.number));
     }
 
     public int getNumber() {
