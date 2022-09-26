@@ -33,23 +33,16 @@ public class Car {
         }
     }
 
-    public int showDistance() {
-        return this.distance;
-    }
-
-    public CarName showName() {
-        return name;
+    public String showName() {
+        return name.toString();
     }
 
     private boolean isRunnable() {
         return RUNNABLE_BOUND <= randomable.getIntInRange(MIN_VALUE, MAX_VALUE);
     }
 
-    @Override
-    public String toString() {
-        return "Car{" +
-                "name='" + name + '\'' +
-                ", distance=" + distance +
-                '}';
+    public String showGraph(String figure) {
+        return this.name + ":" + figure.repeat(this.distance);
     }
+
 }
