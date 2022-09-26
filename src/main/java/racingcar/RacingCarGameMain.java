@@ -13,6 +13,7 @@ public class RacingCarGameMain {
         OutputView.printRacingResultTitle();
 
         RacingCars racingCars = new RacingCars(carNameText);
+
         for (int time = 0; time < numberOfTimes; time++) {
             racingCars.race();
             OutputView.printRacing(racingCars);

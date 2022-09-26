@@ -37,8 +37,8 @@ public class RacingCars {
     }
 
     public String showGraph(String figure) {
-         return cars.stream()
-                 .map(car -> car.showGraph(figure))
-                 .collect(Collectors.joining("/n"));
+        return cars.stream()
+                .map(car -> car.showGraph(figure))
+                .collect(Collectors.joining("/n"));
     }
 }
