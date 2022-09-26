@@ -40,6 +40,6 @@ class StringAddCalculatorTest {
 
     @Test
     void 숫자_음수() {
-        assertThatThrownBy(() -> splitAndSum("1,2;-3")).isInstanceOf(UnsupportedOperationException.class);
+        assertThatThrownBy(() -> splitAndSum("1,2;-3")).isInstanceOf(IllegalArgumentException.class);
     }
 }
