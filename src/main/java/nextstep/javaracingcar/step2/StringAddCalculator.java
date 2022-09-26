@@ -13,11 +13,11 @@ public class StringAddCalculator {
 
         final StringCalculatorInput stringCalculatorInput = new StringCalculatorInput(input);
 
-        PositiveNumber accumulator = PositiveNumber.ZERO;
+        PositiveNumber sum = PositiveNumber.ZERO;
         for (final PositiveNumber positiveNumber : stringCalculatorInput.values()) {
-            accumulator = accumulator.plus(positiveNumber);
+            sum = sum.plus(positiveNumber);
         }
-        return accumulator;
+        return sum;
     }
 
     private static boolean isBlank(final String value) {
