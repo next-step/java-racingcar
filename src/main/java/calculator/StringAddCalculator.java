@@ -1,22 +1,22 @@
 package calculator;
 
-import calculator.operator.NumberOperator;
-import calculator.operator.StringOperator;
+import calculator.operator.PositiveNumber;
+import calculator.operator.MessageOperator;
 
-import static calculator.operator.NumberOperator.parseNumberOperators;
+import static calculator.operator.PositiveNumber.parseNumberOperators;
 
 public class StringAddCalculator {
 
-    public static int splitAndSum(String value) {
-        NumberOperator numberOperator = new NumberOperator(0);
-        StringOperator stringOperator = new StringOperator(value);
+    public static PositiveNumber splitAndSum(String value) {
+        PositiveNumber numberOperator = new PositiveNumber(0);
+        MessageOperator messageOperator = new MessageOperator(value);
 
-        if (stringOperator.isNotBlank()) {
-            String[] numberArr = stringOperator.split();
+        if (messageOperator.isNotBlank()) {
+            String[] numberArr = messageOperator.split();
 
             parseNumberOperators(numberArr).forEach(numberOperator::sum);
         }
 
-        return numberOperator.getValue();
+        return numberOperator;
     }
 }
