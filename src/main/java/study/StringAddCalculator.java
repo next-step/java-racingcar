@@ -10,7 +10,7 @@ public class StringAddCalculator {
     private final String[] defaultSeparators = new String[] { ",", ":" };
 
     int sumBySeparator(String input) {
-        if (input == null || input == "") {
+        if (input == null) {
             return 0;
         }
         String[] inputSeparators = this.parseSeparatorDefinition(input);
@@ -35,9 +35,8 @@ public class StringAddCalculator {
         if (existNegative) {
             throw new RuntimeException("음수는 더할수 없습니다.");
         }
-        return this.sumIntegerList(integerList);
+        return this.sum(integerList);
     }
-
 
     private String[] parseSeparatorDefinition(String input) {
         int[] location;
@@ -97,8 +96,8 @@ public class StringAddCalculator {
 
     }
 
-    private int sumIntegerList(List<Integer> integerList) {
-        return integerList.stream().mapToInt(Integer::intValue).sum();
+    private int sum(List<Integer> inputs) {
+        return inputs.stream().mapToInt(Integer::intValue).sum();
     }
 
 }
