@@ -9,16 +9,18 @@ public class StringAddCalculator {
 	private static final String DEFAULT_DELIMITER = ",|:";
 
 	public int splitAndSum(final String text) {
+		// 빈 문자열 또는 null 값을 입력한 경우
 		if(checkNullOrEmpty(text)){
 			return 0;
 		}
 
+		// 커스텀 구분자로 나누는 경우
 		if(checkCustomDelimiter(text)){
-			String[] tokens = split(findCustomDelimiter(text), trimCustomDelimiter(text));
-			return sum(tokens);
+			return convertToIntAndSum(trimCustomDelimiter(text).split(findCustomDelimiter(text)));
 		}
 
-		return sum(split(text, DEFAULT_DELIMITER));
+		// 기본 구분자로 나누는 경우(커스텀 구분자가 없는 경우)
+		return convertToIntAndSum(text.split(DEFAULT_DELIMITER));
 	}
 
 	private boolean checkNullOrEmpty(final String text) {
@@ -45,11 +47,7 @@ public class StringAddCalculator {
 		return "";
 	}
 
-	private String[] split(final String text, final String delimiters) {
-		return text.split(delimiters);
-	}
-
-	private int sum(final String[] tokens) {
+	private int convertToIntAndSum(final String[] tokens) {
 		int result = 0;
 		for (String token : tokens) {
 			if(!checkConvertToInt(token) || !checkPositiveNumber(token)){
