@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.Objects;
+import java.util.stream.IntStream;
 
 public class Car implements Comparable<Car> {
 
@@ -24,19 +25,22 @@ public class Car implements Comparable<Car> {
         this.randomable = randomable;
     }
 
-    public Car(Randomable randomable) {
-        this.distance = 0;
-        this.randomable = randomable;
-    }
-
     public void run() {
         if (isRunnable()) {
             this.distance += 1;
         }
     }
 
+    public void run(int distance) {
+        IntStream.range(0, distance).forEach(a -> this.run());
+    }
+
     public String showName() {
-        return name.toString();
+        return this.name.toString();
+    }
+
+    public int showDistance() {
+        return this.distance;
     }
 
     private boolean isRunnable() {
@@ -56,7 +60,7 @@ public class Car implements Comparable<Car> {
     public boolean equals(Object obj) {
         if (obj instanceof Car) {
             Car o = (Car) obj;
-            return this.name.equals(o.name);
+            return this.name.equals(o.name) && this.distance == o.distance;
         }
         return false;
     }
