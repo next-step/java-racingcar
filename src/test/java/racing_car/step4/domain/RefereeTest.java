@@ -26,7 +26,7 @@ public class RefereeTest {
         Cars cars = new Cars(Arrays.asList(jun, pobi, young));
         Referee referee = new Referee(cars);
         
-        List<String> winnersName = referee.getWinnersNameList();
+        List<String> winnersName = referee.getWinnersName();
         assertThat(winnersName).isEqualTo(List.of("jun"));
     }
     
@@ -37,7 +37,7 @@ public class RefereeTest {
         Cars cars = new Cars(Arrays.asList(jun, pobi, young));
         Referee referee = new Referee(cars);
         
-        List<String> winnersName = referee.getWinnersNameList();
+        List<String> winnersName = referee.getWinnersName();
         assertThat(winnersName).isEqualTo(List.of("jun", "pobi"));
     }
 }

@@ -5,7 +5,6 @@ import racing_car.step4.domain.Referee;
 import racing_car.step4.dto.CarDTO;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ResultView {
     private static final String RESULT_MESSAGE = "실행 결과";
@@ -34,6 +33,6 @@ public class ResultView {
     }
     
     public static void winnersPrint(Referee referee) {
-        System.out.println(String.join(", ", referee.getWinnersNameList()) + "가 최종 우승했습니다.");
+        System.out.println(String.join(", ", referee.getWinnersName()) + "가 최종 우승했습니다.");
     }
 }

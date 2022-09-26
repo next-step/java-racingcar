@@ -12,13 +12,9 @@ public class Referee {
         this.cars = cars;
     }
     
-    public List<String> getWinnersNameList() {
-        return findWinners().stream()
+    public List<String> getWinnersName() {
+        return cars.findWinners().stream()
                 .map(CarDTO::getCarName)
                 .collect(Collectors.toList());
-    }
-    
-    private List<CarDTO> findWinners() {
-        return cars.findWinners();
     }
 }
