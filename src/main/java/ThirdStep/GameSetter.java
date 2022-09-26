@@ -19,7 +19,7 @@ public class GameSetter {
     }
 
     public void setting() {
-        TextPrinter.print("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)?");
+        TextPrinter.print("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)");
         String carNameInput = UserInputScanner.stringScan();
 
         List<CarRequest> carRequests = Arrays

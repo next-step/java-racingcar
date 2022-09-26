@@ -13,6 +13,6 @@ public class CarAction {
     }
 
     public void printLocation(Car car) {
-        TextPrinter.print(LOCATION_SIGN.repeat(car.getLocation()));
+        TextPrinter.print(String.format("%s : %s", car.getName(), LOCATION_SIGN.repeat(car.getLocation())));
     }
 }
