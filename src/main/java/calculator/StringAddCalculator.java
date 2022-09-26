@@ -32,13 +32,9 @@ public class StringAddCalculator {
     private static PositiveNumber[] toPositives(String[] values) {
         PositiveNumber[] result = new PositiveNumber[values.length];
         for (int i = 0; i < values.length; i++) {
-            result[i] = toPositive(values[i]);
+            result[i] = PositiveNumber.of(values[i]);
         }
         return result;
-    }
-
-    private static PositiveNumber toPositive(String str) {
-        return PositiveNumber.of(str);
     }
 
     private static boolean isBlank(String text) {
