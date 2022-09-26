@@ -39,6 +39,6 @@ class CarRacingTest {
             }
         };
 
-        return new CarRacing(inputView, resultView, new RacingCarFactory());
+        return new CarRacing(inputView, resultView);
     }
 }

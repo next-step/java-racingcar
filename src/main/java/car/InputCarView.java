@@ -6,7 +6,9 @@ import java.util.Scanner;
 public class InputCarView implements InputView {
     private final CarFactory carFactory;
 
-    public InputCarView() {this.carFactory = new RacingCarFactory();}
+    public InputCarView() {
+        this.carFactory = new RacingCarFactory();
+    }
 
     @Override
     public List<Car> enterCar() {
