@@ -5,12 +5,13 @@ import java.util.Random;
 public class RandomMovingCondition implements MovingCondition {
 
     private final int RANDOM_MAGIC_NUMBER  = 10;
+    private final int FORWARD_CONDITION_NUMBER = 4;
 
     public boolean canMove() {
-        return generateRandomIntValue() >= 4;
+        return generateRandomIntValue() >= FORWARD_CONDITION_NUMBER;
     }
 
     private int generateRandomIntValue() {
-        return new Random().nextInt(10);
+        return new Random().nextInt(RANDOM_MAGIC_NUMBER);
     }
 }
