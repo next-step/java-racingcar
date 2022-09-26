@@ -1,6 +1,7 @@
 package racinggame.view;
 
 import java.util.Scanner;
+import racinggame.exception.RoundMismatchException;
 
 public class GamePad {
 
@@ -19,7 +20,11 @@ public class GamePad {
     }
 
     public static int insertIntData() {
-        return scanner.nextInt();
+        try {
+            return scanner.nextInt();
+        } catch (Exception e) {
+            throw new RoundMismatchException();
+        }
     }
 
     public static String insertStringData() {
