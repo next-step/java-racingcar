@@ -1,4 +1,4 @@
-package operator;
+package calculator.operator;
 
 import java.util.Arrays;
 import java.util.List;

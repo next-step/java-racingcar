@@ -1,5 +1,7 @@
-import operator.NumberOperator;
-import operator.StringOperator;
+package calculator;
+
+import calculator.operator.NumberOperator;
+import calculator.operator.StringOperator;
 
 public class StringAddCalculator {
 
