@@ -2,18 +2,20 @@ package calculator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringAddCalculatorTest {
-    @Test
-    @DisplayName("빈 문자열을 입력할 경우 0을 반환한다")
-    void splitAndSum_null_and_blank() {
-        int result = StringAddCalculator.splitAndSum("");
-        assertThat(result).isZero();
-
-        result = StringAddCalculator.splitAndSum(null);
+    @ParameterizedTest
+    @NullAndEmptySource
+    @ValueSource(strings = "")
+    void splitAndSum_null_and_blank(String str) {
+        int result = StringAddCalculator.splitAndSum(str);
         assertThat(result).isZero();
     }
 
