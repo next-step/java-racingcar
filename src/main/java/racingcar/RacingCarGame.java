@@ -64,7 +64,7 @@ public class RacingCarGame {
 
     private static void validateEmpty(String[] names) {
         if (names == null || names.length == 0) {
-            throw new RuntimeException("최소 하나 이상의 자동차 이름이 차필요합니다.");
+            throw new RuntimeException("최소 하나 이상의 자동차 이름이 필요합니다.");
         }
     }
 
