@@ -1,9 +1,9 @@
 package racinggame;
 
-import racinggame.core.CarsInitializer;
-import racinggame.core.RacingGame;
-import racinggame.core.gasstation.RandomGasStation;
-import racinggame.core.scoreboard.ScoreBoard;
+import racinggame.domain.car.CarsInitializer;
+import racinggame.domain.RacingGame;
+import racinggame.domain.gasstation.RandomGasStation;
+import racinggame.domain.scoreboard.ScoreBoard;
 import racinggame.view.GamePad;
 import racinggame.view.ScoreScreen;
 

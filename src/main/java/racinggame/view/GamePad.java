@@ -1,7 +1,7 @@
 package racinggame.view;
 
 import java.util.Scanner;
-import racinggame.exception.IntegerMismatchException;
+import racinggame.domain.exception.IntegerMismatchException;
 
 public class GamePad {
 

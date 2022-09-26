@@ -2,8 +2,8 @@ package racinggame.view;
 
 import java.util.List;
 import java.util.Map;
-import racinggame.core.scoreboard.ScoreBoard;
-import racinggame.core.scoreboard.Score;
+import racinggame.domain.scoreboard.ScoreBoard;
+import racinggame.domain.scoreboard.Score;
 
 public class ScoreScreen {
 
