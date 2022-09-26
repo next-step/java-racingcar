@@ -8,9 +8,9 @@ public class Racing {
 	private static final Scanner sc = new Scanner(System.in);
 
 	public static void playRace() {
-		System.out.println("자동차 대수는 몇 대 인가요?");
+		Print.howManyCars();
 		String participant = sc.nextLine();
-		System.out.println("시도할 회수는 몇 회 인가요?");
+		Print.howManyMatches();
 		String matches = sc.nextLine();
 
 		result(checkInput(participant), checkInput(matches));
@@ -23,13 +23,17 @@ public class Racing {
 
 	private static void playMatches(Cars cars, String matches) {
 		for (int i = 0; i < Integer.parseInt(matches); i++) {
-			for (int j = 0; j < cars.cars.size(); j++) {
-				int rand = new Random().nextInt(10);
-				cars.cars.get(j).move(move(rand));
-				System.out.println(cars.cars.get(j).getStatus());
-			}
-			System.out.println();
+			playMatch(cars);
 		}
+	}
+
+	private static void playMatch(Cars cars) {
+		for (int i = 0; i < cars.cars.size(); i++) {
+			int rand = new Random().nextInt(10);
+			cars.cars.get(i).move(move(rand));
+			Print.resultOfRound(cars.cars.get(i).getStatus());
+		}
+		Print.newLine();
 	}
 
 	public static Cars participate(String input) {
