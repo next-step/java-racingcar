@@ -1,9 +1,7 @@
 package racingcar.view;
 
-import racingcar.domain.Car;
+import racingcar.domain.RacingCars;
 import racingcar.domain.Winners;
-
-import java.util.List;
 
 public class OutputView {
 
@@ -18,8 +16,8 @@ public class OutputView {
         System.out.println(TITLE_RACING_RESULT);
     }
 
-    public static void printRacing(List<Car> cars) {
-        cars.forEach(car -> System.out.println(car.showGraph(GRAPH_FIGURE)));
+    public static void printRacing(RacingCars racingCars) {
+        System.out.println(racingCars.showGraph(GRAPH_FIGURE));
         System.out.println();
     }
 

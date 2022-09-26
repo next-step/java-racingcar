@@ -34,4 +34,9 @@ public class RacingCars {
         return new Winners(winners);
     }
 
+    public String showGraph(String figure) {
+         return cars.stream()
+                 .map(car -> car.showGraph(figure))
+                 .collect(Collectors.joining("/n"));
+    }
 }
