@@ -1,25 +1,29 @@
 package racing.application.view;
 
 import java.util.ArrayDeque;
-import java.util.List;
 import java.util.Objects;
 import racing.domain.car.Car;
-import racing.domain.car.CarRace;
 import racing.domain.car.Name;
+import racing.domain.car.Track;
+import racing.domain.score.History;
 
 public class Score {
 
-    private final List<CarRace> carRaces;
+    private final History history;
     private final Winner winner;
 
-    public Score(List<CarRace> carRaces, Winner winner) {
-        this.carRaces = carRaces;
+    public Score(History history, Winner winner) {
+        this.history = history;
         this.winner = winner;
     }
 
+    public Score(Track track) {
+        this(track.getHistory(), new Winner(track.winner()));
+    }
+
     public void printGame() {
-        carRaces.forEach(carRace -> {
-            carRace.cars().forEach(this::printCar);
+        history.history().forEach(cars -> {
+            cars.cars().forEach(this::printCar);
             System.out.println();
         });
     }
@@ -39,10 +43,6 @@ public class Score {
 
         System.out.println(winner);
 
-    }
-
-    public int size() {
-        return carRaces.size();
     }
 
     private void printCar(Car car) {
