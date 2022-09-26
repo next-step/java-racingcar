@@ -2,6 +2,7 @@ package step2.parsed;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import static java.util.stream.Collectors.toList;
 
@@ -13,6 +14,8 @@ public class ParsedStringByCustomDelimiter implements Parsed {
 
     private static final String INTRO_TO_BE_PARSED = "//.\n";
 
+    private static final Pattern JUDGMENT_CORRECT_STRING = Pattern.compile("^(//.\n)");
+
     private final String stringToBeParsed;
 
     public ParsedStringByCustomDelimiter(String stringToBeParsed) {
@@ -21,6 +24,8 @@ public class ParsedStringByCustomDelimiter implements Parsed {
 
     @Override
     public List<String> parsedValue() {
+        verifyPosition();
+
         final String customDelimiter = customDelimiter();
         final String stringParsedIntro = stringParsedIntro();
 
@@ -30,6 +35,12 @@ public class ParsedStringByCustomDelimiter implements Parsed {
 
         return Arrays.stream(stringParsedIntro.split(customDelimiter))
                 .collect(toList());
+    }
+
+    private void verifyPosition() {
+        if (!JUDGMENT_CORRECT_STRING.matcher(stringToBeParsed).find()) {
+            throw new RuntimeException("유효한 문자열이 아닙니다.");
+        }
     }
 
     private String customDelimiter() {
