@@ -8,12 +8,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class RacingGameTest {
     @Test
-    void 자동차_생성이_정상적으로_되는지() {
+    void 자동차_3대를_생성하면_정상적으로_3대가_생성되는지() {
         assertThat(new RacingGame().generateCar(3).size()).isEqualTo(3);
-    }
-
-    @Test
-    void 입력한_실행횟수만큼_돌아가는지() {
-
     }
 }

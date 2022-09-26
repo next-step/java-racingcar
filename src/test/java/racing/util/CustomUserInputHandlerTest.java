@@ -1,30 +1,29 @@
 package racing.util;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import racing.util.CustomUserInputHandler;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CustomUserInputHandlerTest {
-    @Test
-    void 음수를_입력했을때_에러() {
-        assertThat(CustomUserInputHandler.validate(-1)).isFalse();
+    @ParameterizedTest
+    @CsvSource(value = {"-1,false", "3,true"})
+    void 음수_양수_판단_테스트(int number, boolean expect) {
+        assertThat(CustomUserInputHandler.validate(number)).isEqualTo(expect);
     }
 
-    @Test
-    void 문자를_입력했을때_에러() {
-        assertThat(CustomUserInputHandler.validate("a")).isFalse();
+    @ParameterizedTest
+    @CsvSource(value = {"a,false", "b,false"})
+    void 문자_숫자_입력테스트(String str, boolean expect) {
+        assertThat(CustomUserInputHandler.validate(str)).isEqualTo(expect);
     }
 
     @Test
     void 숫자를_입력했을때_정상() {
         assertThat(CustomUserInputHandler.validate(3)).isTrue();
-    }
-
-    @Test
-    void 문자열을_숫자로_변경테스트() {
-        assertThat(CustomUserInputHandler.parseInt("1")).isEqualTo(1);
     }
 
 }
