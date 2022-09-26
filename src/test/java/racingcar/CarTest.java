@@ -7,15 +7,23 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    public static final int TRY_COUNT = 5;
+    @Test
+    @DisplayName("자동차는 움직일 수 있다.")
+    void move() {
+        Car car = new Car();
+
+        car.move(() -> true);
+
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
 
     @Test
-    @DisplayName("자동차가 주어진 수 만큼 움직이거나 멈춘다.")
+    @DisplayName("자동차는 움직이지 않을 수 있다.")
     void tryMove() {
         Car car = new Car();
 
-        car.tryMove(TRY_COUNT);
+        car.move(() -> false);
 
-        assertThat(car.getTotalTryCount()).isEqualTo(TRY_COUNT);
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 }

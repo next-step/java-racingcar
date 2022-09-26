@@ -3,6 +3,7 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 public class RacingGame {
 
@@ -33,7 +34,9 @@ public class RacingGame {
     }
 
     public RacingGame start() {
-        cars.forEach(car -> car.tryMove(movementCount));
+        for (int i = 0; i < movementCount; i++) {
+            cars.forEach(car -> car.move(new CarCondition()));
+        }
         return this;
     }
 
