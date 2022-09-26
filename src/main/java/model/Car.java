@@ -17,10 +17,6 @@ public class Car {
         return new Car(carName, new CarPosition(0));
     }
 
-    public static Car carWithNameAndPosition(CarName carName, CarPosition carPosition) {
-        return new Car(carName, carPosition);
-    }
-
     public void move() {
         this.carPosition = this.carPosition.move();
     }

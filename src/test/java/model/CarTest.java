@@ -8,8 +8,8 @@ class CarTest {
 
     @Test
     void shouldMove() {
-        CarPosition originPosition = new CarPosition(0);
-        Car testCar = Car.carWithNameAndPosition(new CarName("test"), originPosition);
+        Car testCar = Car.carWithName(new CarName("test"));
+        CarPosition originPosition = testCar.getCarPosition();
 
         testCar.move();
 
@@ -18,9 +18,8 @@ class CarTest {
 
     @Test
     void shouldNotMove() {
-        CarPosition originPosition = new CarPosition(0);
-        Car testCar = Car.carWithNameAndPosition(new CarName("test"), originPosition);
+        Car testCar = Car.carWithName(new CarName("test"));
 
-        assertThat(testCar.getCarPosition()).isEqualTo(originPosition);
+        assertThat(testCar.getCarPosition()).isEqualTo(testCar.getCarPosition());
     }
 }
