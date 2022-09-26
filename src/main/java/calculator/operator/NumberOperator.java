@@ -28,13 +28,13 @@ public class NumberOperator {
         }
     }
 
-    public List<NumberOperator> parseNumberOperators(String[] numbers) {
+    public static List<NumberOperator> parseNumberOperators(String[] numbers) {
         return Arrays.stream(numbers)
-                .map(this::stringToInt)
+                .map(NumberOperator::stringToInt)
                 .collect(Collectors.toList());
     }
 
-    private NumberOperator stringToInt(String numberStr) {
+    private static NumberOperator stringToInt(String numberStr) {
         if (!numberStr.isBlank()) {
             return new NumberOperator(Integer.parseInt(numberStr));
         }
