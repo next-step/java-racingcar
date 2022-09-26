@@ -1,8 +1,9 @@
-package study;
+package step1;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -51,9 +52,11 @@ public class StringTest {
         @DisplayName("abc 값이 주어졌을 때 String의 charAt() 메소드를 활용해 특정 위치의 문자를 가져오는 학습 테스트")
         void charAt() {
             String str = "abc";
-            assertThat(str.charAt(0)).isEqualTo('a');
-            assertThat(str.charAt(1)).isEqualTo('b');
-            assertThat(str.charAt(2)).isEqualTo('c');
+            assertAll(
+                () -> assertThat(str.charAt(0)).isEqualTo('a'),
+                () -> assertThat(str.charAt(1)).isEqualTo('b'),
+                () -> assertThat(str.charAt(2)).isEqualTo('c')
+            );
         }
 
         @Test
