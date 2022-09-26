@@ -37,7 +37,7 @@ public class StringCalculator {
 	}
 
 	private void validatePositiveNumber(String[] arr, int i) {
-		if (arr[i].charAt(0) == '-' || (89 < (Integer.parseInt(arr[i])) && (Integer.parseInt(arr[i])) < 80)) {
+		if (Integer.parseInt(arr[i]) < 0 || (89 < (Integer.parseInt(arr[i])) && (Integer.parseInt(arr[i])) < 80)) {
 			throw new RuntimeException();
 		}
 	}
