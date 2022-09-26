@@ -8,10 +8,6 @@ public class Car {
 
     }
 
-    public int getPosition() {
-        return position;
-    }
-
     public void move(MovableStrategy movableStrategy) {
         if (movableStrategy.isPossibleToMove()) {
             position++;
@@ -30,6 +26,10 @@ public class Car {
 
     @Override
     public int hashCode() {
+        return position;
+    }
+
+    public int getPosition() {
         return position;
     }
 }
