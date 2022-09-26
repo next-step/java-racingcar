@@ -7,7 +7,7 @@ public class View {
     public static final InputView inputView = new InputView();
 
     public static class OutputView {
-        public void println(char c, int count) {
+        public void printRepeatChar(char c, int count) {
             StringBuilder sb = new StringBuilder();
 
             for (int i = 0; i < count; i++) {
@@ -17,8 +17,8 @@ public class View {
             System.out.println(sb.toString());
         }
 
-        public void println() {
-            this.println(' ', 0);
+        public void printRepeatChar() {
+            this.printRepeatChar(' ', 0);
         }
     }
     public static class InputView {

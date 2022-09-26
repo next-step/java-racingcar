@@ -18,10 +18,10 @@ public class Racing {
             });
 
             cars.stream().forEach(car -> {
-                View.outputView.println('-', car.getDistance());
+                View.outputView.printRepeatChar('-', car.getDistance());
             });
 
-            View.outputView.println();
+            View.outputView.printRepeatChar();
         }
     }
 }
