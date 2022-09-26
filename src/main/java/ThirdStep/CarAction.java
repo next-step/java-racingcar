@@ -5,7 +5,6 @@ import ThirdStep.model.Car;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 public class CarAction {
@@ -29,26 +28,9 @@ public class CarAction {
     }
 
     private List<Car> getWinners(List<Car> cars) {
-        AtomicReference<List<Car>> atomicWinner = new AtomicReference<>(Collections.singletonList(cars.get(0)));
+        List<Integer> locations = cars.stream().map(Car::getLocation).collect(Collectors.toList());
+        int max = Collections.max(locations);
 
-        cars.subList(1, cars.size())
-                .forEach(car -> updateWinner(atomicWinner, car));
-
-        return atomicWinner.get();
-    }
-
-    private static void updateWinner(AtomicReference<List<Car>> atomicWinner, Car car) {
-        List<Car> winners = atomicWinner.get();
-
-        int headLocation = winners.get(0).getLocation();
-
-        if (headLocation < car.getLocation()) {
-            atomicWinner.set(List.of(car));
-            return;
-        }
-
-        if (headLocation == car.getLocation()) {
-            winners.add(car);
-        }
+        return cars.stream().filter(car -> car.getLocation() == max).collect(Collectors.toList());
     }
 }
