@@ -2,14 +2,16 @@ package racinggame.core;
 
 import java.util.ArrayList;
 import java.util.List;
+import racinggame.core.car.Car;
+import racinggame.core.car.Cars;
 import racinggame.exception.InvalidCarNameException;
 import racinggame.exception.InvalidCarRegistrationException;
 
-public class GameInitializer {
+public class CarsInitializer {
 
     public static final String DELIMITER = ",";
 
-    public static List<Car> initCars(String carNames) {
+    public static Cars initCars(String carNames) {
         List<Car> cars = new ArrayList<>();
         String[] carNameArray = splitCarNames(carNames);
 
@@ -18,7 +20,7 @@ public class GameInitializer {
             cars.add(new Car(carName));
         }
 
-        return cars;
+        return new Cars(cars);
     }
 
     private static String[] splitCarNames(String carNames) {

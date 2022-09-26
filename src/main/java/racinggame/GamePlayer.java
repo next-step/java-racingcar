@@ -1,6 +1,6 @@
 package racinggame;
 
-import racinggame.core.GameInitializer;
+import racinggame.core.CarsInitializer;
 import racinggame.core.RacingGame;
 import racinggame.core.gasstation.RandomGasStation;
 import racinggame.core.scoreboard.ScoreBoard;
@@ -16,7 +16,7 @@ public class GamePlayer {
         int numOfRound = GamePad.insertIntData();
 
         RacingGame racingGame = new RacingGame(
-                GameInitializer.initCars(carNames),
+                CarsInitializer.initCars(carNames),
                 new RandomGasStation());
         ScoreBoard scoreBoard = racingGame.play(numOfRound);
 

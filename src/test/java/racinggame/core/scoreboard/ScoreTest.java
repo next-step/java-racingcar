@@ -7,7 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racinggame.core.Car;
+import racinggame.core.car.Car;
+import racinggame.core.car.Cars;
 import racinggame.exception.InvalidUnknownCarNameException;
 
 class ScoreTest {
@@ -58,12 +59,12 @@ class ScoreTest {
         return score;
     }
 
-    private List<Car> getDefaultCars() {
-        List<Car> cars = List.of(new Car("A"), new Car("B"), new Car("C"));
-        cars.get(0).move(ENOUGH_FUEL);
-        cars.get(1).move(NOT_ENOUGH_FUEL);
-        cars.get(2).move(ENOUGH_FUEL);
+    private Cars getDefaultCars() {
+        List<Car> carList = List.of(new Car("A"), new Car("B"), new Car("C"));
+        carList.get(0).move(ENOUGH_FUEL);
+        carList.get(1).move(NOT_ENOUGH_FUEL);
+        carList.get(2).move(ENOUGH_FUEL);
 
-        return cars;
+        return new Cars(carList);
     }
 }

@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Queue;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racinggame.core.car.Car;
+import racinggame.core.car.Cars;
 import racinggame.core.gasstation.GasStation;
 import racinggame.core.gasstation.TankGasStation;
 import racinggame.core.scoreboard.ScoreBoard;
@@ -54,13 +56,13 @@ class RacingGameTest {
          */
     }
 
-    private List<Car> initCars() {
-        List<Car> cars = new ArrayList<>();
+    private Cars initCars() {
+        List<Car> carList = new ArrayList<>();
         for (String carName : CAR_NAMES) {
-            cars.add(new Car(carName));
+            carList.add(new Car(carName));
         }
 
-        return cars;
+        return new Cars(carList);
     }
 
     private GasStation initGasStation() {

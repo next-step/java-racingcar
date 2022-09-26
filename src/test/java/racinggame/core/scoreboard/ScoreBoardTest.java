@@ -7,7 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racinggame.core.Car;
+import racinggame.core.car.Car;
+import racinggame.core.car.Cars;
 import racinggame.exception.InvalidRoundException;
 
 class ScoreBoardTest {
@@ -51,14 +52,14 @@ class ScoreBoardTest {
     }
 
     private ScoreBoard getDefaultNewScoreBoard() {
-        List<Car> cars = List.of(new Car("A"), new Car("B"), new Car("C"));
+        List<Car> carList = List.of(new Car("A"), new Car("B"), new Car("C"));
 
-        cars.get(0).move(ENOUGH_FUEL);
-        cars.get(1).move(NOT_ENOUGH_FUEL);
-        cars.get(2).move(ENOUGH_FUEL);
+        carList.get(0).move(ENOUGH_FUEL);
+        carList.get(1).move(NOT_ENOUGH_FUEL);
+        carList.get(2).move(ENOUGH_FUEL);
 
         ScoreBoard scoreBoard = new ScoreBoard();
-        scoreBoard.recordScore(cars);
+        scoreBoard.recordScore(new Cars(carList));
 
         return scoreBoard;
     }

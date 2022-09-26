@@ -7,15 +7,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
-import racinggame.core.Car;
+import racinggame.core.car.Car;
+import racinggame.core.car.Cars;
 import racinggame.exception.InvalidUnknownCarNameException;
 
 public class Score {
 
     private final Map<String, Integer> scoreInfo = new LinkedHashMap<>();
 
-    public void recordScore(List<Car> cars) {
-        for (Car car : cars) {
+    public void recordScore(Cars cars) {
+        for (int i = 0; i < cars.getSize(); i++) {
+            Car car = cars.getCar(i);
             scoreInfo.put(car.getName(), car.getDistance());
         }
     }
@@ -46,7 +48,8 @@ public class Score {
         return scoreDatalist;
     }
 
-    private List<String> pickCarNamesWithDistance(List<Entry<String, Integer>> scoreDatalist, int distance) {
+    private List<String> pickCarNamesWithDistance(List<Entry<String, Integer>> scoreDatalist,
+            int distance) {
         return scoreDatalist.stream()
                 .filter(entry -> entry.getValue() == distance)
                 .map(Entry::getKey)

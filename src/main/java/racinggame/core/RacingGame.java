@@ -1,16 +1,17 @@
 package racinggame.core;
 
-import java.util.List;
+import racinggame.core.car.Car;
+import racinggame.core.car.Cars;
 import racinggame.core.gasstation.GasStation;
 import racinggame.core.scoreboard.ScoreBoard;
 
 public class RacingGame {
 
-    private final List<Car> cars;
+    private final Cars cars; //일급 컬렉션 적용 대상 -> Cars
 
     private final GasStation gasStation;
 
-    public RacingGame(List<Car> cars, GasStation gasStation) {
+    public RacingGame(Cars cars, GasStation gasStation) {
         this.cars = cars;
         this.gasStation = gasStation;
     }
@@ -26,8 +27,8 @@ public class RacingGame {
     }
 
     private void playRound(ScoreBoard scoreBoard) {
-        for (int j = 0; j < cars.size(); j++) {
-            Car car = cars.get(j);
+        for (int j = 0; j < cars.getSize(); j++) {
+            Car car = cars.getCar(j);
             car.move(gasStation.sellFuel());
         }
         scoreBoard.recordScore(cars);
