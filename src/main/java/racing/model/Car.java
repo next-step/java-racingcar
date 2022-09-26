@@ -8,9 +8,16 @@ public class Car {
 
     private int currentLocation;
 
-    public Car(int startLocation) {
+    private Name name;
+
+    public Car(int startLocation,String name) {
+        this(new Name(name));
         this.currentLocation = startLocation;
     }
+    public Car(Name name){
+        this.name = name;
+    }
+
 
     public int getCurrentLocation() {
         return this.currentLocation;
