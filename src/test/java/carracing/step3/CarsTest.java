@@ -18,7 +18,7 @@ class CarsTest {
     void moveAllCarsRandomly(int carCount, Supplier<Integer> generateNine) {
         Cars cars = new Cars(carCount, generateNine);
         cars.moveAllCars();
-        assertThat(cars.getAllCarsTrace()).isEqualTo("-\n");
+        assertThat(cars.getAllCarsTrace()).contains(1);
     }
 
     @ParameterizedTest(name = "자동차 움직임 테스트 : 입력 1, ()->1 : 결과 \n")
@@ -26,7 +26,7 @@ class CarsTest {
     void moveAllCarsRandomly2(int carCount, Supplier<Integer> generateNine) {
         Cars cars = new Cars(carCount, generateNine);
         cars.moveAllCars();
-        assertThat(cars.getAllCarsTrace()).isEqualTo("\n");
+        assertThat(cars.getAllCarsTrace()).contains(0);
     }
 
     @ParameterizedTest(name = "자동차 움직임 흔적 테스트 : 입력 1, ()->9 : 결과 -\n")
@@ -34,7 +34,7 @@ class CarsTest {
     void getAllCarsTrace(int carCount, Supplier<Integer> generateNine) {
         Cars cars = new Cars(carCount, generateNine);
         cars.moveAllCars();
-        assertThat(cars.getAllCarsTrace()).isEqualTo("-\n");
+        assertThat(cars.getAllCarsTrace()).contains(1);
     }
 
     @ParameterizedTest(name = "자동차 움직임 흔적 테스트 : 입력 1, ()->1 : 결과 \n")
@@ -42,7 +42,7 @@ class CarsTest {
     void getAllCarsTrace2(int carCount, Supplier<Integer> generateNine) {
         Cars cars = new Cars(carCount, generateNine);
         cars.moveAllCars();
-        assertThat(cars.getAllCarsTrace()).isEqualTo("\n");
+        assertThat(cars.getAllCarsTrace()).contains(0);
     }
 
 

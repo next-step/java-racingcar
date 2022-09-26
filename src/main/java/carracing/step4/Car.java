@@ -1,8 +1,14 @@
-package carracing.step3;
+package carracing.step4;
 
 public class Car {
-    private int moveCnt;
     private static final int MOVABLE_THRESHOLD = 4;
+    private final String name;
+    private int moveCnt;
+
+    public Car(String name) {
+        this.name = name;
+        this.moveCnt = 0;
+    }
 
     public void move(int moveNumber) {
         if (isMovable(moveNumber)) {
@@ -14,7 +20,11 @@ public class Car {
         return moveNumber >= MOVABLE_THRESHOLD;
     }
 
-    public int moveTrace() {
+    public String getName() {
+        return name;
+    }
+
+    public int getMoveCnt() {
         return moveCnt;
     }
 

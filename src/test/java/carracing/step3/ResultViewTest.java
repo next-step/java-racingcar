@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -30,8 +32,10 @@ class ResultViewTest {
     @Test
     @DisplayName("자동차 경주 결과 테스트 : 결과 PASS")
     void printResults() {
-        resultView.printResults("-", 0);
-        assertThat(output.toString()).isEqualTo("실행 결과\n-\n");
+        List<Integer> result = new ArrayList<>();
+        result.add(1);
+        resultView.printResults(result, 0);
+        assertThat(output.toString()).isEqualTo("실행 결과\n-\n\n");
     }
 
 }
