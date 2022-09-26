@@ -28,4 +28,8 @@ public class Play {
         gameSetting.setAttempts(gameSetting.getAttempts() - 1);
         this.racing(gameSetting);
     }
+
+    public void announceWinner(GameSetting gameSetting) {
+        carAction.printWinner(gameSetting.getCars());
+    }
 }

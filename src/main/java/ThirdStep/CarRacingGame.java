@@ -7,9 +7,10 @@ public class CarRacingGame {
         GameSetter gameSetter = new GameSetter();
         gameSetter.setting();
 
-        TextPrinter.print("실행 결과");
+        TextPrinter.println("실행 결과");
         Play play = new Play(new CarAction());
         GameSetting gameSetting = gameSetter.getGameSetting();
         play.racing(gameSetting);
+        play.announceWinner(gameSetting);
     }
 }
