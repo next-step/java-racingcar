@@ -41,16 +41,10 @@ public class StringSum {
         }
         int sum = 0;
         for (String str : splitResult) {
+            if (Integer.parseInt(str) < 0) {
+                throw new RuntimeException();
+            }
             sum += Integer.parseInt(str);
-        }
-        return sum;
-    }
-
-    public int calculator() {
-        String[] splitResult = splitStr("1:2:3,5,7,6,d");
-        int sum = 0;
-        for (String td : splitResult) {
-            sum += Integer.parseInt(td);
         }
         return sum;
     }

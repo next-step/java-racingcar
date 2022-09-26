@@ -56,8 +56,7 @@ public class StringSumTest {
     void calculatorTest() {
         assertThatExceptionOfType(RuntimeException.class)
                 .isThrownBy(() -> {
-                    assertThat(strSum.calculator()).isEqualTo(24);
+                    assertThat(strSum.customSum("1:2:3,5,7,6,-1")).isEqualTo(24);
                 });
-
     }
 }
