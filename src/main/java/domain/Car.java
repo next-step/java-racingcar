@@ -27,4 +27,8 @@ public class Car {
     private int getIntValue() {
         return new Random().nextInt(10);
     }
+
+    public int getPosition() {
+        return position;
+    }
 }

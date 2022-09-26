@@ -30,7 +30,7 @@ public class InputView {
         if (intValue < 0) {
             throw new RuntimeException("0 이상의 숫자를 입력하세요.");
         }
-        
+
         return intValue;
     }
 
@@ -38,8 +38,4 @@ public class InputView {
         System.out.println(PLAY_COUNT);
         return scanner.nextInt(getPositiveIntValue());
     }
-
-
-
-
 }
