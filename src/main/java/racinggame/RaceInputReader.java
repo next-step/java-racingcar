@@ -1,11 +1,13 @@
 package racinggame;
 
-import racinggame.dto.RaceConfigurationDTO;
+import racinggame.dto.RaceInputDTO;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class RaceConfigurationScanner {
+public class RaceInputReader {
+    private RaceInputReader() {
+    }
 
     private static final String ASK_CAR_COUNT_MESSAGE = "경기할 자동차는 몇 대 인가요?";
     private static final String ASK_RACE_COUNT_MESSAGE = "경기는 회수는 몇 회 진행 할까요?";
@@ -14,7 +16,7 @@ public class RaceConfigurationScanner {
 
     private static final Scanner sc = new Scanner(System.in);
 
-    public RaceConfigurationDTO scan() {
+    public static RaceInputDTO raed() {
         try {
             System.out.println(ASK_CAR_COUNT_MESSAGE);
             int carCount = sc.nextInt();
@@ -22,7 +24,7 @@ public class RaceConfigurationScanner {
             System.out.println(ASK_RACE_COUNT_MESSAGE);
             int roundCount = sc.nextInt();
 
-            return new RaceConfigurationDTO(roundCount, carCount);
+            return new RaceInputDTO(roundCount, carCount);
         } catch (InputMismatchException e) {
             System.err.println(INPUT_IS_NOT_NUMBER_MESSAGE);
             throw e;

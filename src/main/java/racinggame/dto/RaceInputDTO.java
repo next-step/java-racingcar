@@ -1,10 +1,10 @@
 package racinggame.dto;
 
-public class RaceConfigurationDTO {
+public class RaceInputDTO {
     private int roundCount;
     private int carCount;
 
-    public RaceConfigurationDTO(int roundCount, int carCount) {
+    public RaceInputDTO(int roundCount, int carCount) {
         this.roundCount = roundCount;
         this.carCount = carCount;
     }

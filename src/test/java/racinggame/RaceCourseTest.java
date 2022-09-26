@@ -1,7 +1,9 @@
 package racinggame;
 
 import org.junit.jupiter.api.Test;
-import racinggame.dto.RaceConfigurationDTO;
+import racinggame.domain.Car;
+import racinggame.dto.RaceInputDTO;
+import racinggame.service.RaceService;
 
 import java.util.List;
 import java.util.function.IntPredicate;
@@ -13,16 +15,14 @@ class RaceCourseTest {
     @Test
     void 자동차_경주_횟수만큼_자동차가_이동한다() {
         //given
-        RaceConfigurationDTO dto = new RaceConfigurationDTO(3, 1);
-        RaceResultView raceResultView = new RaceResultView();
-
         IntPredicate canMovePredicate = randomNumber -> true;
         List<Car> cars = List.of(new Car(canMovePredicate), new Car(canMovePredicate), new Car(canMovePredicate));
+        RaceInputDTO raceInputDTO = new RaceInputDTO(3, 3);
 
-        RaceCourse raceCourse = new RaceCourse(cars, dto);
+        RaceService raceService = new RaceService();
 
         //when
-        raceCourse.startRace(raceResultView);
+        raceService.startRace(raceInputDTO, cars);
 
         //then
         assertThat(cars.get(0).distance()).isEqualTo(3);

@@ -1,7 +1,9 @@
 package racinggame;
 
 import org.junit.jupiter.api.Test;
-import racinggame.dto.RaceConfigurationDTO;
+import racinggame.domain.Car;
+import racinggame.domain.CarFactory;
+import racinggame.dto.RaceInputDTO;
 
 import java.util.List;
 
@@ -12,7 +14,7 @@ class CarFactoryTest {
     @Test
     void 자동차가_조건에따라_생성된다() {
         //given
-        RaceConfigurationDTO dto = new RaceConfigurationDTO(1,3);
+        RaceInputDTO dto = new RaceInputDTO(1, 3);
 
         //when
         List<Car> cars = CarFactory.produce(dto);

@@ -1,6 +1,6 @@
-package racinggame;
+package racinggame.domain;
 
-import racinggame.dto.RaceConfigurationDTO;
+import racinggame.dto.RaceInputDTO;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,7 +10,7 @@ public class CarFactory {
     private CarFactory() {
     }
 
-    public static List<Car> produce(RaceConfigurationDTO dto) {
+    public static List<Car> produce(RaceInputDTO dto) {
         return IntStream.range(0, dto.carCount())
                 .mapToObj(i -> new Car())
                 .collect(Collectors.toList());
