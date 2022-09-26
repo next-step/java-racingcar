@@ -1,9 +1,10 @@
-package step3;
+package step3.utils;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import java.util.Random;
 import org.junit.jupiter.api.Test;
+import step3.utils.RandomSingleton;
 
 public class RandomSingletonTest {
     @Test

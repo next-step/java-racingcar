@@ -1,7 +1,7 @@
 package step3.ui;
 
 import java.util.List;
-import step3.Car;
+import step3.models.Car;
 
 public class OutputView {
     private static final char MOVE_CHARACTER = '-';

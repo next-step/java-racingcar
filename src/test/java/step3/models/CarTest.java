@@ -1,9 +1,10 @@
-package step3;
+package step3.models;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import step3.models.Car;
 
 public class CarTest {
     @ParameterizedTest

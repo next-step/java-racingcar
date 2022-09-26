@@ -1,4 +1,4 @@
-package step3;
+package step3.models;
 
 public class Car {
     private static final int MIN_NUM_TO_MOVE = 4;
