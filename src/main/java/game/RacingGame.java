@@ -6,8 +6,10 @@ public class RacingGame {
 
     private Integer numberOfCar;
     private Integer round;
+    private final static String INPUT_CAR_GUIDE = "자동차 대수는 몇 대 인가요?";
 
     public void inputNumberOfCar() {
+        System.out.println(INPUT_CAR_GUIDE);
         this.numberOfCar = inputPositiveNumber();
     }
 
