@@ -5,8 +5,7 @@ import java.util.List;
 public class Racing {
 	public static Cars participate(String input) {
 		int participant = Integer.parseInt(checkInput(input));
-		Cars cars = new Cars();
-		return cars.participate(participant);
+		return new Cars(participant);
 	}
 
 	public static String checkInput(String input) {
