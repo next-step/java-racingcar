@@ -35,7 +35,7 @@ public class RacingCarGame {
     }
 
     private void allRacingCarMove() {
-        racingCars.forEach(racingCar -> racingCar.move(new RacingCarMoveCondition()));
+        racingCars.forEach(racingCar -> racingCar.move(MoveConditionGenerator.getMoveCondition()));
     }
 
     private static List<RacingCar> createRacingCars(String[] names) {

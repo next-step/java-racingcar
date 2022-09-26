@@ -12,19 +12,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class RacingCarGameWinnerSelectorTest {
 
     private RacingCar createRacingCar(String name, int position) {
-        class CanMoveCondition implements MoveCondition {
-
-            @Override
-            public boolean canMove() {
-                return true;
-            }
-        }
-
         RacingCar racingCar = new RacingCar(name);
 
-        CanMoveCondition canMoveCondition = new CanMoveCondition();
         for (int i = 0; i < position; i++) {
-            racingCar.move(canMoveCondition);
+            racingCar.move(() -> true);
         }
         return racingCar;
     }

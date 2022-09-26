@@ -11,22 +11,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RacingCarTest {
 
-    class CanMoveCondition implements MoveCondition {
-
-        @Override
-        public boolean canMove() {
-            return true;
-        }
-    }
-
-    class CantMoveCondition implements MoveCondition {
-
-        @Override
-        public boolean canMove() {
-            return false;
-        }
-    }
-
     private RacingCar createRacingCar() {
         return new RacingCar("test");
     }
@@ -53,20 +37,18 @@ public class RacingCarTest {
     @Test
     @DisplayName("RacingCar의 move 호출 시 MoveCondition.canMove()에서 true 반환시 position 값 증가")
     void canMove() {
-        CanMoveCondition canMoveCondition = new CanMoveCondition();
         RacingCar canMoveRacingCar = createRacingCar();
         then(canMoveRacingCar.getPosition()).isZero();
-        canMoveRacingCar.move(canMoveCondition);
+        canMoveRacingCar.move(() -> true);
         then(canMoveRacingCar.getPosition()).isOne();
     }
 
     @Test
     @DisplayName("RacingCar의 move 호출 시 MoveCondition.canMove()에서 false 반환시 position 값 변화 없음")
     void cantMove() {
-        CantMoveCondition cantMoveCondition = new CantMoveCondition();
         RacingCar cantMoveRacingCar = createRacingCar();
         then(cantMoveRacingCar.getPosition()).isZero();
-        cantMoveRacingCar.move(cantMoveCondition);
+        cantMoveRacingCar.move(() -> false);
         then(cantMoveRacingCar.getPosition()).isZero();
     }
 
