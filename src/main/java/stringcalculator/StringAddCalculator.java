@@ -28,7 +28,7 @@ public class StringAddCalculator {
             int parsedValue = Integer.parseInt(maybeNumberString);
 
             if (parsedValue < 0) {
-                throw new RuntimeException("0 또는 양수만 처리 가능합니다");
+                throw new RuntimeException("0 또는 양수만 처리 가능합니다. 입력값=" + maybeNumberString);
             }
 
             return parsedValue;
