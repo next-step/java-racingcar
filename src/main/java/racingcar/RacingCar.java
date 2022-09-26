@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class RacingCar {
 
-    private static final Random random = new Random();
+    private static final Random RANDOM = new Random();
     private int distance = 0;
 
     public void move() {
@@ -14,7 +14,7 @@ public class RacingCar {
     }
 
     private boolean isMovable() {
-        return random.nextInt(10) >= 4;
+        return RANDOM.nextInt(10) >= 4;
     }
 
     public String getLocationString() {
