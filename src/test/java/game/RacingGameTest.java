@@ -28,7 +28,7 @@ public class RacingGameTest {
         System.setIn(new ByteArrayInputStream(number.toString().getBytes()));
         racingGame.inputNumberOfCar();
 
-        assertThat(racingGame.cars()).isEqualTo(number);
+        assertThat(racingGame.cars().size()).isEqualTo(number);
     }
 
     @ParameterizedTest(name = "음수 또는 숫자 이외의 값이 전달되면 RuntimeException을 반환한다.")

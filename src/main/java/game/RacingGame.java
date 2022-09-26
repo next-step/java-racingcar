@@ -54,8 +54,8 @@ public class RacingGame {
         }
     }
 
-    public int cars() {
-        return cars.size();
+    public List<Car> cars() {
+        return cars;
     }
 
     public int round() {
