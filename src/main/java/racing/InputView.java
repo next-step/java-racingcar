@@ -5,8 +5,11 @@ import java.util.Scanner;
 public class InputView {
     private static Scanner scanner = new Scanner(System.in);
 
-    public static int input(String question) {
+    public static int inputPositive(String question) {
         System.out.println(question);
-        return scanner.nextInt();
+        int value = scanner.nextInt();
+        if (value < 1) { value = 1; }
+
+        return value;
     }
 }

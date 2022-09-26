@@ -51,11 +51,11 @@ public class CarRacing {
     }
 
     private void setRounds() {
-        this.rounds = InputView.input(INPUT_ROUND_COUNT_TEXT);
+        this.rounds = InputView.inputPositive(INPUT_ROUND_COUNT_TEXT);
     }
 
     private void participateCars() {
-        int carCount = InputView.input(INPUT_CAR_COUNT_TEXT);
+        int carCount = InputView.inputPositive(INPUT_CAR_COUNT_TEXT);
         for (int i = 0; i < carCount; i++) {
             cars.add(new Car());
         }
