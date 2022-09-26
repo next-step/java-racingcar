@@ -1,6 +1,6 @@
 package calculator;
 
-import exception.NegativeNumberException;
+import calculator.exception.NegativeNumberException;
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

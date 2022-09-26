@@ -4,7 +4,7 @@ import static calculator.StringAddCalculator.splitAndSum;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import exception.NegativeNumberException;
+import calculator.exception.NegativeNumberException;
 import org.junit.jupiter.api.Test;
 
 class StringAddCalculatorTest {
