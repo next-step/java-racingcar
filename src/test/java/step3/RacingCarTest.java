@@ -4,12 +4,25 @@ import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class RacingCarTest {
 	@Test
 	@DisplayName("레이싱 참가자 수 테스트")
-	public void participantOfRacing() throws Exception {
+	void participantOfRacing() throws Exception {
 		int actual = Racing.participate("3");
 		assertThat(actual).isEqualTo(3);
+	}
+
+	@ParameterizedTest
+	@DisplayName("레이싱 참가자 수 음수 또는 문자 확인")
+	@CsvSource(value = {
+		"a",
+		"-1"
+	})
+	void checkInput(String input) {
+		assertThatThrownBy(() -> Racing.checkInput(input))
+			.isInstanceOf(RuntimeException.class);
 	}
 }
