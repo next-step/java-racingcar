@@ -2,6 +2,7 @@ package racing.domain;
 
 public class Car {
     private final static int RACING_CONDITION = 4;
+    private final static String GO_DELIMETER = "-";
 
     private StringBuilder moved;
 
@@ -15,7 +16,7 @@ public class Car {
 
     public void move(int movable) {
         if(RACING_CONDITION <= movable) {
-            moved.append("-");
+            moved.append(GO_DELIMETER);
         }
     }
 
