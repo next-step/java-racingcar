@@ -1,10 +1,12 @@
+package operator;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringOperator {
 
-    final static Pattern CUSTOM_REGEX_PATTERN = Pattern.compile("(//)(.*?)(\n)");
-    final static String DEFAULT_REGEX = ",|:|//|\n|";
+    private static final Pattern CUSTOM_REGEX_PATTERN = Pattern.compile("(//)(.*?)(\n)");
+    private static final String DEFAULT_REGEX = ",|:|//|\n|";
 
     private String message;
 
