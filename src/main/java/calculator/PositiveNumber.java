@@ -22,6 +22,14 @@ public class PositiveNumber {
         return new PositiveNumber(number);
     }
 
+    public static PositiveNumber[] of(String[] values) {
+        PositiveNumber[] result = new PositiveNumber[values.length];
+        for (int i = 0; i < values.length; i++) {
+            result[i] = of(values[i]);
+        }
+        return result;
+    }
+
     private static void checkPositive(int number) {
         if (number < 0) {
             throw new RuntimeException("음수가 입력되었습니다.");
