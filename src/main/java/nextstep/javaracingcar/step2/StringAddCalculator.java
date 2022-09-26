@@ -15,7 +15,7 @@ public class StringAddCalculator {
         final StringCalculatorInput stringCalculatorInput = new StringCalculatorInput(input);
 
         PositiveNumber sum = PositiveNumber.ZERO;
-        for (final PositiveNumber positiveNumber : stringCalculatorInput.values()) {
+        for (final PositiveNumber positiveNumber : stringCalculatorInput.toNumbers()) {
             sum = sum.plus(positiveNumber);
         }
         return sum;
