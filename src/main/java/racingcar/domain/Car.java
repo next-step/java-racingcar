@@ -2,14 +2,14 @@ package racingcar.domain;
 
 public class Car {
 
-    private String name;
-    private int distance;
-    private Randomable randomable;
-
     private static final int RUNNABLE_BOUND = 4;
     private static final int MAX_VALUE = 9;
     private static final int MIN_VALUE = 0;
     private static final int MAX_NAME_LENGTH = 5;
+
+    private String name;
+    private int distance;
+    private Randomable randomable;
 
     public Car(String name) {
         validateCarName(name);
@@ -24,7 +24,6 @@ public class Car {
         this.distance = 0;
         this.randomable = randomable;
     }
-
 
     public Car(Randomable randomable) {
         this.distance = 0;
