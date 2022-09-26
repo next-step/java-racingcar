@@ -3,21 +3,18 @@ package car;
 import java.util.List;
 
 public class ResultCarView implements ResultView {
-    private static final String OUT_PUT_TEXT = "_ ";
-
     public void print(List<Car> cars, int tryNum) {
-        for (Car car : cars) {
-            printCar(car, tryNum);
+        System.out.println("실행결과");
+        for (int i = 0; i < tryNum; i++) {
+            printRacing(cars, i);
+            System.out.println();
         }
-        System.out.println();
     }
 
-    private void printCar(Car car, int tryNum) {
-        for (int i = 0; i <= tryNum; i++) {
-            if (car.isMoveAble(i)) {
-                System.out.print(OUT_PUT_TEXT);
-            }
+    private void printRacing(List<Car> cars, int stage) {
+        for (Car car : cars) {
+            car.racing();
+            car.printResult();
         }
-        System.out.println();
     }
 }

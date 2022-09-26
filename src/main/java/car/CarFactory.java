@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface CarFactory {
-    default List<Car> generateCar(int num) {
+    default List<Car> generateCar(Integer num) {
         List<Car> cars = new ArrayList<>();
         for(int i = 0; i < num; i++) {
             cars.add(generateCar());
@@ -12,6 +12,5 @@ public interface CarFactory {
 
         return cars;
     }
-
     Car generateCar();
 }

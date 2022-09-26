@@ -20,9 +20,10 @@ class CarRacingTest {
 
     private CarRacing init(int carNum, int tryNum) {
         InputView inputView = new InputView() {
+            CarFactory carFactory = new RacingCarFactory();
             @Override
-            public int enterCarCount() {
-                return carNum;
+            public List<Car> enterCar() {
+                return carFactory.generateCar(carNum);
             }
 
             @Override
