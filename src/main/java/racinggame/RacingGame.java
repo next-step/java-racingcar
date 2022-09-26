@@ -9,17 +9,16 @@ public class RacingGame {
 
     private final NumberGenerator numberGenerator;
     private final int numOfCar;
-    private final int tryCount;
+    private final int round;
     private final List<Car> cars;
     private final int[][] result;
 
-
-    public RacingGame(NumberGenerator numberGenerator, int numOfCar, int tryCount) {
+    public RacingGame(NumberGenerator numberGenerator, int numOfCar, int round) {
         this.numberGenerator = numberGenerator;
         this.numOfCar = numOfCar;
-        this.tryCount = tryCount;
+        this.round = round;
         this.cars = createCars();
-        this.result = new int[tryCount][numOfCar];
+        this.result = new int[round][numOfCar];
     }
 
     private List<Car> createCars() {
@@ -31,24 +30,24 @@ public class RacingGame {
     }
 
     public int[][] run() {
-        for (int i = 0; i < tryCount; i++) {
-            writeOneTryResult(i);
+        for (int i = 0; i < round; i++) {
+            runRound(i);
         }
         return result;
     }
 
-    private void writeOneTryResult(int index) {
-        for (int j = 0; j < cars.size(); j++) {
-            result[index][j] = getCarPosition(j);
+    private void runRound(int indexOfRound) {
+        for (int i = 0; i < cars.size(); i++) {
+            Car car = cars.get(i);
+            moveCar(car);
+            result[indexOfRound][i] = car.getPosition();
         }
     }
 
-    private int getCarPosition(int index) {
-        Car car = cars.get(index);
+    private void moveCar(Car car) {
         if (isCarMovable()) {
             car.move();
         }
-        return car.getPosition();
     }
 
     private boolean isCarMovable() {
