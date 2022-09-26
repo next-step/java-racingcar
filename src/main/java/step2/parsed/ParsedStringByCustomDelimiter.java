@@ -12,9 +12,9 @@ public class ParsedStringByCustomDelimiter implements Parsed {
 
     private static final int CUSTOM_DELIMITER_INDEX = 2;
 
-    private static final String INTRO_TO_BE_PARSED = "//.\n";
+    private static final String INTRO_TO_BE_PARSED = "//.|\n";
 
-    private static final Pattern JUDGMENT_CORRECT_STRING = Pattern.compile("^(//.\n)");
+    private static final Pattern JUDGMENT_CORRECT_STRING = Pattern.compile("//(.)|\n(.*)");
 
     private final String stringToBeParsed;
 
