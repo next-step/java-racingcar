@@ -2,6 +2,8 @@ package step3;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -11,8 +13,8 @@ public class RacingCarTest {
 	@Test
 	@DisplayName("레이싱 참가자 수 테스트")
 	void participantOfRacing() throws Exception {
-		int actual = Racing.participate("3");
-		assertThat(actual).isEqualTo(3);
+		Cars actual = Racing.participate("3");
+		assertThat(actual.cars.size()).isEqualTo(3);
 	}
 
 	@ParameterizedTest
