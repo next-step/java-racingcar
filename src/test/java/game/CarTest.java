@@ -14,5 +14,15 @@ public class CarTest {
         car = new Car();
     }
 
+    @DisplayName("자동차의 위치를 1 증가시킨다")
+    @Test
+    void forward(){
+        int expected = car.location() + 1;
+
+        car.forward();
+
+        Assertions.assertThat(car.location()).isEqualTo(expected);
+    }
+
 
 }
