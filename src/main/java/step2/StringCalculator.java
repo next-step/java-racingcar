@@ -7,6 +7,7 @@ public class StringCalculator {
 	private static final String SEPARATORS = ",|:";
 	private static final String CUSTOMSEPARATORS = "//(.)\n(.*)";
 	private static final Pattern CUSTOMPATTERN = Pattern.compile(CUSTOMSEPARATORS);
+
 	public int calculate(String input) {
 		if (validateNullOrNumber(input)) {
 			return 0;
