@@ -1,7 +1,7 @@
 package racinggame.view;
 
 import java.util.Scanner;
-import racinggame.exception.RoundMismatchException;
+import racinggame.exception.IntegerMismatchException;
 
 public class GamePad {
 
@@ -23,7 +23,7 @@ public class GamePad {
         try {
             return scanner.nextInt();
         } catch (Exception e) {
-            throw new RoundMismatchException();
+            throw new IntegerMismatchException();
         }
     }
 
