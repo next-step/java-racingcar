@@ -5,12 +5,11 @@ import racing.strategy.GoStraightStrategy;
 import java.util.Random;
 
 public class Car {
-    private static final int START_LOCATION = 0;
 
     private int currentLocation;
 
-    public Car() {
-        this.currentLocation = START_LOCATION;
+    public Car(int startLocation) {
+        this.currentLocation = startLocation;
     }
 
     public int getCurrentLocation() {

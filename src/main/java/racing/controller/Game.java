@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Game {
 
-    private GoStraightStrategy goStraightStrategy = new RandomNumberGoStraightStrategy();
+
     private GameInput input = new GameInput();
     private GameOutput output = new GameOutput();
 
@@ -29,7 +29,7 @@ public class Game {
     private List<Car> carSetting(int carCount) {
         List<Car> Cars = new ArrayList<>();
         for (int i = 1; i <= carCount; i++) {
-            Car car = new Car();
+            Car car = new Car(0);
             Cars.add(car);
         }
         return Cars;
@@ -42,16 +42,11 @@ public class Game {
     }
 
     private void playRound(List<Car> cars) {
+        final GoStraightStrategy goStraightStrategy = new RandomNumberGoStraightStrategy();
         for (Car car : cars) {
-            this.isGoStraightAndTrueAndGoStraight(car);
+            car.goStraight(goStraightStrategy);
             output.printCurrentLocation(car);
         }
         output.printDivideRound();
     }
-
-    private void isGoStraightAndTrueAndGoStraight(Car car) {
-        car.goStraight(goStraightStrategy);
-    }
-
-
 }
