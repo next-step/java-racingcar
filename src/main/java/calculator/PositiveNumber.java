@@ -22,7 +22,7 @@ public class PositiveNumber {
 
     private static void checkPositive(int number) {
         if (number < 0) {
-            throw new RuntimeException();
+            throw new RuntimeException("음수가 입력되었습니다.");
         }
     }
 
