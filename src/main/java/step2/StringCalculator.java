@@ -4,8 +4,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringCalculator {
-	public static final String SEPARATORS = ",|:";
-	public static final String CUSTOMSEPARATORS = "//(.)\n(.*)";
+	private static final String SEPARATORS = ",|:";
+	private static final String CUSTOMSEPARATORS = "//(.)\n(.*)";
 	public int calculate(String input) {
 		if (validateNullOrNumber(input)) {
 			return 0;
