@@ -14,6 +14,17 @@ public class Car {
     }
 
     public int move() {
-        return position + 1;
+        if (canMove()) {
+            position++;
+        }
+        return position;
+    }
+
+    private boolean canMove() {
+        return getIntValue() >= 4;
+    }
+
+    private int getIntValue() {
+        return new Random().nextInt(10);
     }
 }
