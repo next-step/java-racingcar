@@ -1,12 +1,22 @@
 package step2;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class StringCalculator {
-	public static String SEPARATORS = ",|:";
+	private static final String SEPARATORS = ",|:";
+	private static final String CUSTOMSEPARATORS = "//(.)\n(.*)";
+	private static final Pattern CUSTOMPATTERN = Pattern.compile(CUSTOMSEPARATORS);
+
 	public int calculate(String input) {
-		if (input == null || input.isBlank()) {
+		if (validateNullOrNumber(input)) {
 			return 0;
 		}
-		return add(convertToInt(split(separatorCheck(input))));
+		return sum(convertToInt(separatorCheck(input)));
+	}
+
+	private boolean validateNullOrNumber(String input) {
+		return input == null || input.isBlank();
 	}
 
 	public String[] split(String input) {
@@ -21,18 +31,18 @@ public class StringCalculator {
 
 	private void checkMinusOrNotNumber(String[] arr, int[] convert) {
 		for (int i = 0; i < arr.length; i++) {
-			validMinusOrNotNumber(arr, i);
+			validatePositiveNumber(arr, i);
 			convert[i] = Integer.parseInt(arr[i]);
 		}
 	}
 
-	private void validMinusOrNotNumber(String[] arr, int i) {
-		if (arr[i].charAt(0) == '-' || (89 < (arr[i].charAt(0)) && (arr[i].charAt(0)) < 80)) {
+	private void validatePositiveNumber(String[] arr, int i) {
+		if (Integer.parseInt(arr[i]) < 0 || (89 < (Integer.parseInt(arr[i])) && (Integer.parseInt(arr[i])) < 80)) {
 			throw new RuntimeException();
 		}
 	}
 
-	public int add(int[] arr) {
+	public int sum(int[] arr) {
 		int sum = 0;
 		for (int i : arr) {
 			sum += i;
@@ -40,13 +50,17 @@ public class StringCalculator {
 		return sum;
 	}
 
-	public String separatorCheck(String input) {
-		if (input.contains("\n")) {
-			String[] split = input.split("\n");
-			String separator = String.valueOf(split[0].charAt(split[0].length() - 1));
-			SEPARATORS += "|" + separator;
-			return split[1];
+	public String[] separatorCheck(String input) {
+		if (input.matches(CUSTOMSEPARATORS)) {
+			Matcher matcher = CUSTOMPATTERN.matcher(input);
+			while (matcher.find()) {
+				return customSplit(matcher.group(2), matcher.group(1));
+			}
 		}
-		return input;
+		return split(input);
+	}
+
+	private String[] customSplit(String input, String separator) {
+		return input.split(separator);
 	}
 }
