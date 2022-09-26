@@ -14,7 +14,7 @@ public class RacingCars {
         cars = createRacingCars(carNameText);
     }
 
-    protected List<Car> createRacingCars(String carNameText) {
+    private List<Car> createRacingCars(String carNameText) {
         return Arrays.stream(carNameText.split(",")).map(Car::new).collect(Collectors.toList());
     }
 
