@@ -2,13 +2,14 @@ package racing_car.step4.controller;
 
 import racing_car.step4.domain.Cars;
 import racing_car.step4.domain.RandomMoveStrategy;
+import racing_car.step4.domain.Referee;
 import racing_car.step4.view.input.InputView;
 import racing_car.step4.view.output.ResultView;
 
 public class RacingGame {
     public void play() {
         Cars cars = moveCars(InputView.createCars(), InputView.inputNumberOfTry());
-        ResultView.winnersPrint(cars);
+        ResultView.winnersPrint(new Referee(cars));
     }
     
     private Cars moveCars(Cars cars, int numberOfTry) {
