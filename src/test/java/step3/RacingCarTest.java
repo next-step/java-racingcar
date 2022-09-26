@@ -9,7 +9,7 @@ class RacingCarTest {
 
     @Test
     void random_0_9_사이() {
-        int result = GameRule.randomNum();
+        int result = GameRule.createRandomNum();
         assertThat(result).isLessThan(10);
     }
 

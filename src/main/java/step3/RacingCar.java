@@ -7,19 +7,20 @@ public class RacingCar {
     public static int[] moves;
 
     public static void main(String[] args) {
-        int[] racingRule = InputView.input();
-        moves = new int[racingRule[0]];
+        int carNum = InputView.inputCarNum();
+        int tryNum = InputView.inputTryNum();
+        moves = new int[carNum];
 
         ResultView.start();
-        for (int i = 0; i < racingRule[1]; i++) {
-            exeOneCycle(racingRule[0]);
+        for (int i = 0; i < tryNum; i++) {
+            exeOneCycle(carNum);
             ResultView.cycleEnd();
         }
     }
 
     private static void exeOneCycle(int carNum) {
         for (int i = 0; i < carNum; i++) {
-            moves[i] += decideMove(randomNum());
+            moves[i] += decideMove(createRandomNum());
             ResultView.resultPrint(moves[i]);
         }
     }
