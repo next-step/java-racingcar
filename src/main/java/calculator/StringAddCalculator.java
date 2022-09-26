@@ -4,7 +4,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
-    private static final String SEPARATOR = "[,;]";
+    public static final int DEFAULT_RETURN_NUMBER = 0;
+    private static final String COMMA_AND_SEMICOLON_SEPARATOR = "[,;]";
     private static final String CUSTOM_SEPARATOR_REGEX = "//(.)\n(.*)";
     private static final Pattern CUSTOM_SEPARATOR_PATTERN = Pattern.compile(CUSTOM_SEPARATOR_REGEX);
 
@@ -14,7 +15,7 @@ public class StringAddCalculator {
 
     public static int splitAndSum(String text) {
         if (isBlank(text)) {
-            return 0;
+            return DEFAULT_RETURN_NUMBER;
         }
         return sum(split(text));
     }
@@ -36,6 +37,6 @@ public class StringAddCalculator {
         if (m.find()) {
             return m.group(2).split(m.group(1));
         }
-        return text.split(SEPARATOR);
+        return text.split(COMMA_AND_SEMICOLON_SEPARATOR);
     }
 }

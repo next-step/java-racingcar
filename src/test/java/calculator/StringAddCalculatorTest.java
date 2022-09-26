@@ -1,6 +1,5 @@
 package calculator;
 
-import exception.NumberException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
@@ -41,6 +40,6 @@ class StringAddCalculatorTest {
 
     @Test
     void 숫자_음수() {
-        assertThatThrownBy(() -> splitAndSum("1,2;-3")).isInstanceOf(NumberException.class);
+        assertThatThrownBy(() -> splitAndSum("1,2;-3")).isInstanceOf(UnsupportedOperationException.class);
     }
 }
