@@ -8,8 +8,4 @@ public class CarRacingGame {
         TextPrinter.print("실행 결과");
         Play.racing(newGameSetting.getCars(), newGameSetting.getAttempts());
     }
-
-
-
-
 }
