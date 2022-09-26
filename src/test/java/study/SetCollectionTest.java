@@ -30,7 +30,7 @@ public class SetCollectionTest {
     }
 
     @Nested
-    class containsTest {
+    class ContainsTest {
         @ParameterizedTest
         @ValueSource(ints = {1, 2, 3})
         void contains(int num) {
