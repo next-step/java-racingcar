@@ -30,6 +30,10 @@ public class RacingCar {
         }
     }
 
+    public boolean isEqualsPosition(int position) {
+        return this.position == position;
+    }
+
     private void validateName(String name) {
         validateNameLongerThenFive(name);
         validateNameIsEmpty(name);

@@ -69,4 +69,11 @@ public class RacingCarTest {
         cantMoveRacingCar.move(cantMoveCondition);
         then(cantMoveRacingCar.getPosition()).isZero();
     }
+
+    @Test
+    void isEqualsPosition() {
+        RacingCar racingCar = createRacingCar();
+        then(racingCar.isEqualsPosition(0)).isTrue();
+        then(racingCar.isEqualsPosition(1)).isFalse();
+    }
 }
