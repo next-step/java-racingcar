@@ -2,8 +2,9 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.MoveCondition;
-import racingcar.RacingCar;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.BDDAssertions.then;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -30,12 +31,10 @@ public class RacingCarTest {
         return new RacingCar("test");
     }
 
-    @Test
-    void create() {
-        assertThrows(RuntimeException.class, () -> new RacingCar("1"));
-        assertThrows(RuntimeException.class, () -> new RacingCar("test"));
-        assertThrows(RuntimeException.class, () -> new RacingCar("테스트"));
-        assertThrows(RuntimeException.class, () -> new RacingCar("가나다라마"));
+    @ParameterizedTest
+    @ValueSource(strings = {"1", "test", "테스트", "가나다라마"})
+    void create(String name) {
+        then(new RacingCar(name)).isInstanceOf(RacingCar.class);
     }
 
     @Test
@@ -44,11 +43,11 @@ public class RacingCarTest {
         assertThrows(RuntimeException.class, () -> new RacingCar("5글자넘어요"));
     }
 
-    @Test
+    @ParameterizedTest
+    @NullAndEmptySource
     @DisplayName("RacingCar 생성시 자동차 이름이 비어있는 경우 에러 발생")
-    void validateNameIsEmpty() {
-        assertThrows(RuntimeException.class, () -> new RacingCar(null));
-        assertThrows(RuntimeException.class, () -> new RacingCar(""));
+    void validateNameIsEmpty(String name) {
+        assertThrows(RuntimeException.class, () -> new RacingCar(name));
     }
 
     @Test
