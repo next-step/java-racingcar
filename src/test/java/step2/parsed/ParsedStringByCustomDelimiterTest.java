@@ -25,8 +25,8 @@ class ParsedStringByCustomDelimiterTest {
 
     private static Stream<Arguments> a() {
         return Stream.of(
-                Arguments.of("//;\n1;2", new String[]{"1", "2"}),
-                Arguments.of("//;\n", new String[]{"0"})
+                Arguments.of("//;|\n1;2", new String[]{"1", "2"}),
+                Arguments.of("//;|\n", new String[]{"0"})
         );
     }
 
@@ -41,5 +41,5 @@ class ParsedStringByCustomDelimiterTest {
                 .isInstanceOf(RuntimeException.class)
                 .hasMessage("유효한 문자열이 아닙니다.");
     }
-    
+
 }
