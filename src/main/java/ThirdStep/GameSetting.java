@@ -1,20 +1,17 @@
 package ThirdStep;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class GameSetting {
-    private int carCount;
     private int attempts;
 
     private final List<Car> cars;
 
     public GameSetting() {
         cars = new ArrayList<>();
-    }
-
-    public int getCarCount() {
-        return carCount;
     }
 
     public int getAttempts() {
@@ -26,18 +23,16 @@ public class GameSetting {
     }
 
     public void setting() {
-        TextPrinter.print("자동차 대수는 몇 대 인가요?");
-        carCount = UserInputScanner.intScan();
+        TextPrinter.print("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)?");
+        String[] carNames = UserInputScanner.stringScan().split(",");
 
         TextPrinter.print("시도할 회수는 몇 회 인가요?");
         attempts = UserInputScanner.intScan();
 
-        setCars();
+        setCars(carNames);
     }
 
-    private void setCars() {
-        for (int count = 0 ; count < this.getCarCount() ; ++count) {
-            cars.add(new Car());
-        }
+    private void setCars(String[] carNames) {
+        cars.addAll(Arrays.stream(carNames).map(Car::new).collect(Collectors.toList()));
     }
 }

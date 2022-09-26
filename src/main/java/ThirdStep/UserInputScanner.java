@@ -9,4 +9,8 @@ public class UserInputScanner {
     public static int intScan() {
         return SCANNER.nextInt();
     }
+
+    public static String stringScan() {
+        return SCANNER.nextLine();
+    }
 }

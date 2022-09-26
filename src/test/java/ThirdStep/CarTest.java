@@ -14,7 +14,7 @@ class CarTest {
 
     @BeforeEach
     void setCar() {
-        car = new Car();
+        car = new Car("robin");
     }
 
     @Test
