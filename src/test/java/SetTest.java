@@ -24,28 +24,20 @@ public class SetTest {
     }
 
     @Test
-    @DisplayName("Set의 크기를 확인한다.")
-    void countSizeOfSet(){
-        // WHEN
-        int size = numbers.size();
-
-        // THEN
-        int expectedSize = 3;
-        assertThat(size).isEqualTo(expectedSize);
+    void 크기(){
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1,2,3})
-    @DisplayName("예상되는 값이 존재하는지 확인한다.")
-    void checkIfHasNums(int input){
-        // WHEN & THEN
-        assertThat(numbers.contains(input)).isTrue();
+    void 예상값_존재(int input){
+        assertThat(numbers).contains(input);
     }
 
     @ParameterizedTest
     @CsvSource(value = {"1,true", "2,true", "3,true", "4,false", "5,false"})
     @DisplayName("여러 값의 존재 유무를 확인한다.")
-    void checkIfHasNumsWithCase(int input, boolean expected){
+    void 케이스별_예상값_존재(int input, boolean expected){
         // WHEN & THEN
         assertThat(numbers.contains(input))
                 .isEqualTo(expected);
