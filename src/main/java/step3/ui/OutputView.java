@@ -6,8 +6,13 @@ import step3.models.Car;
 public class OutputView {
     private static final char MOVE_CHARACTER = '-';
     private static final String TITLE = "실행 결과";
+    private final List<List<Car>> results;
 
-    public void printResult(List<List<Car>> results) {
+    public OutputView(List<List<Car>> results) {
+        this.results = results;
+    }
+
+    public void printResult() {
         System.out.println(TITLE);
         results.forEach(result -> {
             printCars(result);
