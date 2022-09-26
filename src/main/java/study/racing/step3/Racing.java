@@ -12,9 +12,7 @@ public class Racing {
 
         for (int i = 0; i < loopCount; i++) {
             cars.stream().forEach(car -> {
-                if (car.isMovable(RandomGenerator.generate())) {
-                    car.move();
-                }
+                car.move(RandomGenerator.generate());
             });
 
             cars.stream().forEach(car -> {
