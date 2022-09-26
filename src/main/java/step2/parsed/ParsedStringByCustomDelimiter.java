@@ -26,13 +26,12 @@ public class ParsedStringByCustomDelimiter implements Parsed {
     public List<String> parsedValue() {
         verifyPosition();
 
-        final String customDelimiter = customDelimiter();
         final String stringParsedIntro = stringParsedIntro();
-
         if (stringParsedIntro.length() == EMPTY_STRING_LENGTH) {
             return List.of("0");
         }
 
+        final String customDelimiter = customDelimiter();
         return Arrays.stream(stringParsedIntro.split(customDelimiter))
                 .collect(toList());
     }
