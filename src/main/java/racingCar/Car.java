@@ -17,13 +17,13 @@ public class Car {
         this.position = position;
     }
 
-    public void move() {
-        if (makeRandomNum() >= MOVE_MIN_NUM) {
+    public void move(int num) {
+        if (num >= MOVE_MIN_NUM) {
             position++;
         }
     }
 
-    private int makeRandomNum() {
+    public int makeRandomNum() {
         return random.nextInt(10);
     }
 }

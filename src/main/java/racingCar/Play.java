@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Play {
-    public final List<Car> cars = new ArrayList<>();
+    private final List<Car> cars = new ArrayList<>();
     ResultView resultView = new ResultView();
 
     Play(int carCnt, int round) {
@@ -26,7 +26,7 @@ public class Play {
 
     private void playRace() {
         for (Car car : cars) {
-            car.move();
+            car.move(car.makeRandomNum());
             resultView.print(car.getPosition());
         }
         System.out.println();
