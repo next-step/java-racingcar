@@ -42,7 +42,7 @@ public class Game {
     }
 
     private void playRound(List<Car> cars) {
-        final GoStraightStrategy goStraightStrategy = new RandomNumberGoStraightStrategy();
+        final GoStraightStrategy goStraightStrategy = RandomNumberGoStraightStrategy.getInstance();
         for (Car car : cars) {
             car.goStraight(goStraightStrategy);
             output.printCurrentLocation(car);
