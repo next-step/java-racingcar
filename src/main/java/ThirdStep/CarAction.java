@@ -1,6 +1,5 @@
 package ThirdStep;
 
-import ThirdStep.Enums.Compare;
 import ThirdStep.interfaces.MovingCondition;
 import ThirdStep.model.Car;
 
@@ -11,6 +10,7 @@ import java.util.stream.Collectors;
 
 public class CarAction {
     private static final String LOCATION_SIGN = "-";
+    private static final String WINNER_DELIMITER = ", ";
 
     public void move(Car car, MovingCondition movingCondition) {
         if (movingCondition.canMoveForward()) {
@@ -24,26 +24,31 @@ public class CarAction {
 
     public void printWinner(List<Car> cars) {
         List<Car> winners = this.getWinners(cars);
-        String winnerNames = winners.stream().map(Car::getName).collect(Collectors.joining(", "));
+        String winnerNames = winners.stream().map(Car::getName).collect(Collectors.joining(WINNER_DELIMITER));
         TextPrinter.println(String.format("%s가 최종 우승했습니다.", winnerNames));
     }
 
     private List<Car> getWinners(List<Car> cars) {
-        AtomicReference<List<Car>> winner = new AtomicReference<>(Collections.singletonList(cars.get(0)));
+        AtomicReference<List<Car>> atomicWinner = new AtomicReference<>(Collections.singletonList(cars.get(0)));
 
-        cars.forEach(car -> {
-            int headLocation = winner.get().get(0).getLocation();
-            if (headLocation > car.getLocation()) {
-                return;
-            }
-            if (headLocation == car.getLocation()) {
-                winner.get().add(car);
-            }
-            if (headLocation < car.getLocation()) {
-                winner.set(List.of(car));
-            }
-        });
+        cars.subList(1, cars.size())
+                .forEach(car -> updateWinner(atomicWinner, car));
 
-        return winner.get();
+        return atomicWinner.get();
+    }
+
+    private static void updateWinner(AtomicReference<List<Car>> atomicWinner, Car car) {
+        List<Car> winners = atomicWinner.get();
+
+        int headLocation = winners.get(0).getLocation();
+
+        if (headLocation < car.getLocation()) {
+            atomicWinner.set(List.of(car));
+            return;
+        }
+
+        if (headLocation == car.getLocation()) {
+            winners.add(car);
+        }
     }
 }

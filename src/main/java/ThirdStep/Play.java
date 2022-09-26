@@ -1,9 +1,6 @@
 package ThirdStep;
 
-import ThirdStep.model.Car;
 import ThirdStep.model.GameSetting;
-
-import java.util.List;
 
 public class Play {
 

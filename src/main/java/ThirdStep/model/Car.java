@@ -1,8 +1,5 @@
 package ThirdStep.model;
 
-import ThirdStep.TextPrinter;
-import ThirdStep.interfaces.MovingCondition;
-
 public class Car {
 
     private static final int START_LOCATION = 0;
