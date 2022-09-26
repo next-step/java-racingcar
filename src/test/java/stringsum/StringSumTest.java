@@ -30,7 +30,7 @@ public class StringSumTest {
     @DisplayName("요구사항2_합구하기")
     @Test
     void customSumTest() {
-        assertThat(strSum.customSum("//-\n1-23:5,67")).isEqualTo(96);
+        assertThat(strSum.customSum("//+\n1+23:5,67")).isEqualTo(96);
     }
 
     @DisplayName("null값이 들어오는 경우")

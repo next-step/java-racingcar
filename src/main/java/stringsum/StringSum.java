@@ -20,12 +20,13 @@ public class StringSum {
 
     public String[] splitStr(String testData) {
         String custom = customChar(testData);
-        if(testData == null){
+        if (testData == null) {
             return new String[]{""};
         }
         if (custom == "" || custom.isBlank() || custom.trim().isEmpty()) {
             return testData.split(",|:");
-        } else if (custom.equals("+")) {
+        }
+        if (custom.equals("+")) {
             custom = "\\+|,|:";
             return testData.substring(4).split(custom);
         }
