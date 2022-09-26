@@ -1,41 +1,64 @@
 package game;
 
+import game.view.InputView;
+import game.view.ResultView;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 
 public class RacingGame {
 
     private List<Car> cars = new ArrayList<>();
-    private Integer round;
-    private final static String INPUT_CAR_GUIDE = "자동차 대수는 몇 대 인가요?";
-    private final static String INPUT_ROUND_GUIDE = "시도할 회수는 몇 회 인가요?";
-    private final static String RESULT_GUIDE = "실행 결과";
+    private int round;
     private final static int CHANGE_LOCATION_BOUND = 10;
 
     public static void start() {
         RacingGame racingGame = new RacingGame();
-        racingGame.inputNumberOfCar();
-        racingGame.inputNumberOfRound();
-        System.out.println(RESULT_GUIDE);
-        for (int i = 0; i < racingGame.round(); i++) {
-            racingGame.progressRound(racingGame);
+        racingGame.makeCar(racingGame.inputNumberOfCar());
+        racingGame.setRound(racingGame.inputNumberOfRound());
+        racingGame.progressGame();
+    }
+
+    private void progressGame() {
+        ResultView.startGame();
+        for (int i = 0; i < round(); i++) {
+            progressRound(cars());
+            ResultView.printCarsStatus(cars());
+            ResultView.finishRound();
         }
     }
 
-    private void progressRound(RacingGame racingGame) {
-        for (Car car : racingGame.cars()) {
-            Random random = new Random();
-            car.changeLocation(random.nextInt(CHANGE_LOCATION_BOUND));
-            car.showLocation();
+    private void progressRound(List<Car> cars) {
+        for (Car car : cars) {
+            changeCarLocation(car);
         }
-        System.out.println();
     }
 
-    public void inputNumberOfCar() {
-        System.out.println(INPUT_CAR_GUIDE);
-        makeCar(inputPositiveNumber());
+    public void changeCarLocation(Car car) {
+        if(isForward(pickRandomNumber(CHANGE_LOCATION_BOUND))){
+            car.forward();
+        }
+    }
+
+    public boolean isForward(int number) {
+        return number >= 4;
+    }
+
+    private int pickRandomNumber(int bound) {
+        Random random = new Random();
+        return random.nextInt(bound);
+    }
+
+
+    private int inputNumberOfCar() {
+        InputView.printInputCarGuide();
+        return Input.inputPositiveNumber();
+    }
+
+    private int inputNumberOfRound() {
+        InputView.printInputRoundGuide();
+        return Input.inputPositiveNumber();
     }
 
     private void makeCar(int inputPositiveNumber) {
@@ -44,27 +67,8 @@ public class RacingGame {
         }
     }
 
-    public void inputNumberOfRound() {
-        System.out.println(INPUT_ROUND_GUIDE);
-        this.round = inputPositiveNumber();
-    }
-
-    private static int inputPositiveNumber() {
-        try {
-            Scanner sc = new Scanner(System.in);
-            int result = sc.nextInt();
-            checkPositiveNumber(result);
-            return result;
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new RuntimeException();
-        }
-    }
-
-    private static void checkPositiveNumber(int result) {
-        if (result < 0) {
-            throw new RuntimeException();
-        }
+    private void setRound(int number) {
+        round = number;
     }
 
     public List<Car> cars() {
