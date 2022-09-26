@@ -9,9 +9,12 @@ public class Car {
     private int location;
     private String name;
 
-    public Car(String name) {
-        this.name = name;
+    public Car() {
         this.location = START_LOCATION;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getLocation() {
@@ -20,6 +23,12 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    public static Car of(CarRequest carRequest) {
+        Car car = new Car();
+        car.setName(carRequest.getName());
+        return car;
     }
 
     public void move(MovingCondition movingCondition) {

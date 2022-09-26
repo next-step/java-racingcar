@@ -16,9 +16,10 @@ class PlayTest {
 
     @BeforeEach
     void setCars() {
-        cars.add(new Car("name"));
-        cars.add(new Car("name"));
-        cars.add(new Car("name"));
+        CarRequest carRequest = new CarRequest("name");
+        cars.add(Car.of(carRequest));
+        cars.add(Car.of(carRequest));
+        cars.add(Car.of(carRequest));
     }
 
 
