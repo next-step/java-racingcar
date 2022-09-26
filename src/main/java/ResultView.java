@@ -13,7 +13,7 @@ public class ResultView {
     }
 
     private static void printCarPosition(Car car) {
-        for (int i = 0; i < car.currentPosition + 1; i++) {
+        for (int i = 0; i < car.getCurrentPosition() + 1; i++) {
             System.out.print("-");
         }
         System.out.println();

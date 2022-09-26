@@ -24,7 +24,7 @@ public class CarRacing {
         if (remainMoveCount <= 0) throw new RuntimeException("out of move count");
         remainMoveCount--;
         for (Car car : carList) {
-            car.move(random.nextInt(10));
+            car.move();
         }
     }
 }
