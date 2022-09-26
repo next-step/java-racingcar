@@ -30,7 +30,7 @@ public class StringAddCalculatorTest {
 
     @Test
     void 숫자_음수() {
-        assertThatThrownBy( ()-> {
+        assertThatThrownBy(() -> {
             splitAndSum("1,2:-3");
         }).isInstanceOf(RuntimeException.class);
     }
