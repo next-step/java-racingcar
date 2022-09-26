@@ -7,3 +7,10 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+
+
+## 추가할 로직
+* 자동차 대수, 시도할 회수를 입력 받음
+* 전진 기능 구현 전진 조건 제한 설정
+* 자동사 상태 화면 출력
