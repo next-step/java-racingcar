@@ -35,13 +35,13 @@ public class RacingGame {
         }
     }
 
-    public void changeCarLocation(Car car) {
+    private void changeCarLocation(Car car) {
         if(isForward(pickRandomNumber(CHANGE_LOCATION_BOUND))){
             car.forward();
         }
     }
 
-    public boolean isForward(int number) {
+    private boolean isForward(int number) {
         return number >= 4;
     }
 
@@ -51,23 +51,23 @@ public class RacingGame {
     }
 
 
-    private int inputNumberOfCar() {
+    public int inputNumberOfCar() {
         InputView.printInputCarGuide();
         return Input.inputPositiveNumber();
     }
 
-    private int inputNumberOfRound() {
+    public int inputNumberOfRound() {
         InputView.printInputRoundGuide();
         return Input.inputPositiveNumber();
     }
 
-    private void makeCar(int inputPositiveNumber) {
+    public void makeCar(int inputPositiveNumber) {
         for (int i = 0; i < inputPositiveNumber; i++) {
             cars.add(new Car());
         }
     }
 
-    private void setRound(int number) {
+    public void setRound(int number) {
         round = number;
     }
 

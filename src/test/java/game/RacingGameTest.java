@@ -19,50 +19,45 @@ public class RacingGameTest {
 
     @BeforeEach
     void setRacingGame() {
-//        racingGame = new RacingGame();
+        racingGame = new RacingGame();
     }
 
-    @Disabled
-    @DisplayName("자동차의 대수를와 몇번을 이동 할 것인지 입력한다")
-    @Test
-    void input_Number_Of_Cars() {
-        System.setIn(new ByteArrayInputStream("1\n2".getBytes()));
-        RacingGame.start();
+    @ParameterizedTest(name = "자동차의 대수를 입력한다")
+    @ValueSource(ints = {1, 22, 333})
+    void input_Number_Of_Cars(Integer expected) {
+        System.setIn(new ByteArrayInputStream(expected.toString().getBytes()));
+        racingGame.makeCar(racingGame.inputNumberOfCar());
 
-        assertThat(racingGame.cars().size()).isEqualTo(1);
-        assertThat(racingGame.round()).isEqualTo(2);
+        assertThat(racingGame.cars().size()).isEqualTo(expected);
     }
 
-    @Disabled
     @ParameterizedTest(name = "몇번의 이동을 할 것인지 입력한다")
     @ValueSource(ints = {1, 22, 333})
-    void input_Number_Of_Round(Integer number) {
-        System.setIn(new ByteArrayInputStream(number.toString().getBytes()));
-//        racingGame.setRound(number);
+    void input_Number_Of_Round(Integer expected) {
+        System.setIn(new ByteArrayInputStream(expected.toString().getBytes()));
+        racingGame.setRound(racingGame.inputNumberOfRound());
 
-        assertThat(racingGame.round()).isEqualTo(number);
+        assertThat(racingGame.round()).isEqualTo(expected);
     }
 
-    @Disabled
     @DisplayName("자동차의 대수를 할 때 \"자동차 대수는 몇 대 인가요?\" 라는 안내 문구를 출력한다")
     @Test
     void input_Number_Of_Cars_Guide() {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
         System.setIn(new ByteArrayInputStream("1".getBytes()));
-//        racingGame.inputNumberOfCar();
+        racingGame.inputNumberOfCar();
 
         assertThat(outputStream.toString()).contains("자동차 대수는 몇 대 인가요?");
     }
 
-    @Disabled
     @DisplayName("자동차의 대수를 할 때 \"시도할 회수는 몇 회 인가요?\" 라는 안내 문구를 출력한다")
     @Test
     void input_Number_Of_Round_Guide() {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
         System.setIn(new ByteArrayInputStream("1".getBytes()));
-//        racingGame.inputNumberOfRound();
+        racingGame.inputNumberOfRound();
 
         assertThat(outputStream.toString()).contains("시도할 회수는 몇 회 인가요?");
     }
