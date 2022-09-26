@@ -13,11 +13,11 @@ public class NumberOperator {
         this.value = value;
     }
 
-    public int getValue() {
+    public Integer getValue() {
         return value;
     }
 
-    public int sum(NumberOperator number) {
+    public Integer sum(NumberOperator number) {
         value += number.getValue();
         return value;
     }
