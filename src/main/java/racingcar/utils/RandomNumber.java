@@ -2,11 +2,16 @@ package racingcar.utils;
 
 import java.util.Random;
 
-public class RandomNumber {
+public final class RandomNumber {
 
     private static final Random random = new Random();
     private static final int MAX_NUM = 10;
-    public static int generate(){
+
+    private RandomNumber() {
+        throw new AssertionError("No utils.RandomNumber instance For you!");
+    }
+
+    public static int generate() {
         return random.nextInt(MAX_NUM);
     }
 }
