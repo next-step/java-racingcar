@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WinnerCar implements Car {
+    private static final String OUT_PUT_TEXT = "- ";
+
     private String name;
     private List<Boolean> distance;
     private MovableStrategy movableStrategy;
@@ -17,12 +19,37 @@ public class WinnerCar implements Car {
 
     @Override
     public void racing() {
+        if(movableStrategy.isMovable()) {
+            distance.add(true);
+            return;
+        }
 
+        distance.add(false);
+    }
+
+    public long raceDistance() {
+        return distance.stream().filter(d -> d).count();
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override
     public String printResult() {
-        return null;
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(name + " : ");
+        for(int i = 0; i < distance.size(); i++) {
+            stringBuilder.append(printRace(i));
+        }
+        return stringBuilder.toString();
+    }
+
+    private String printRace(int stage) {
+        if(distance.get(stage)) {
+            return OUT_PUT_TEXT;
+        }
+        return "";
     }
 
     public void inputName(String name) {

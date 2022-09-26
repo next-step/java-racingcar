@@ -32,7 +32,7 @@ class CarRacingTest {
             }
         };
 
-        ResultView resultView = new ResultView() {
+        ResultView resultView = new ResultView<Car>() {
             @Override
             public void print(List<Car> cars, int tryNum) {
                 resultCar = cars;

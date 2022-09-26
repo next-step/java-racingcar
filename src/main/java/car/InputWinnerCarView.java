@@ -16,7 +16,7 @@ public class InputWinnerCarView implements InputView {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
         String[] carNames = input.split(",");
-        return null;
+        return carFactory.generateCar(carNames);
     }
 
     @Override
