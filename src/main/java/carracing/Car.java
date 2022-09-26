@@ -8,15 +8,20 @@ public class Car {
     private final int CAN_MOVE_THRESHOLD = 4;
 
     public Car() {
-        this.position = 1;
+        this.position = 0;
     }
 
-    public void move(int number) {
-        if (number < 0) {
-            throw new RuntimeException("음수는 이동할 수 없습니다");
+    public void move(int random) {
+        checkBet(random);
+        if (canMove(random)){
+            this.position += 1;
         }
-        checkThreshold(number);
-        this.position += number;
+    }
+
+    private void checkBet(int random) {
+        if (random < 0 && random > 9) {
+            throw new RuntimeException("0부터 9까지만 베팅가능합니다.");
+        }
     }
 
     public String trail() {
@@ -31,10 +36,9 @@ public class Car {
         return trail;
     }
 
-    private void checkThreshold(int number) {
-        if (number > CAN_MOVE_THRESHOLD) {
-            throw new RuntimeException("임계점 이하로만 이동할 수 있습니다.");
-        }
+    private boolean canMove(int random) {
+        if (random > CAN_MOVE_THRESHOLD) return true;
+        return false;
     }
 
     @Override
