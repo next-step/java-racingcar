@@ -7,14 +7,14 @@ public class PositiveNumber {
 
     public PositiveNumber(String value) {
         if (!StringUtils.isPositiveNumeric(value)) {
-            throw new UnsupportedOperationException("숫자가 아닌 문자열은 들어올 수 없습니다.");
+            throw new IllegalArgumentException("숫자가 아닌 문자열은 들어올 수 없습니다.");
         }
         this.number = Integer.parseInt(value);
     }
 
     public PositiveNumber(int number) {
         if (number < 0) {
-            throw new UnsupportedOperationException("음수 값이 들어올 수 없습니다.");
+            throw new IllegalArgumentException("음수 값이 들어올 수 없습니다.");
         }
         this.number = number;
     }

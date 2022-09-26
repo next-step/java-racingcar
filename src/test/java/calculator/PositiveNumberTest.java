@@ -20,7 +20,7 @@ class PositiveNumberTest {
 
     @Test
     void 음수() {
-        assertThatThrownBy(() -> splitAndSum("-1")).isInstanceOf(UnsupportedOperationException.class);
+        assertThatThrownBy(() -> splitAndSum("-1")).isInstanceOf(IllegalArgumentException.class);
     }
 
 }
