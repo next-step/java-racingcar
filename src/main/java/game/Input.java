@@ -5,8 +5,7 @@ import java.util.Scanner;
 public class Input {
 
     public static int inputPositiveNumber() {
-        try {
-            Scanner sc = new Scanner(System.in);
+        try (Scanner sc = new Scanner(System.in)) {
             int result = sc.nextInt();
             checkPositiveNumber(result);
             return result;
