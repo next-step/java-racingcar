@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class RacingGame {
 
     private Integer numberOfCar;
+    private Integer round;
     public void inputNumberOfCar() {
         try(Scanner sc = new Scanner(System.in)) {
             this.numberOfCar = inputPositiveNumber(sc);;
@@ -21,5 +22,15 @@ public class RacingGame {
 
     public int cars() {
         return numberOfCar;
+    }
+
+    public void inputNumberOfRound() {
+        try(Scanner sc = new Scanner(System.in)) {
+            this.round = inputPositiveNumber(sc);;
+        }
+    }
+
+    public int round(){
+        return round;
     }
 }

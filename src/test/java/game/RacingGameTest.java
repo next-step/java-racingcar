@@ -34,4 +34,13 @@ public class RacingGameTest {
 
         Assertions.assertThatThrownBy(() -> racingGame.inputNumberOfCar()).isInstanceOf(RuntimeException.class);
     }
+
+    @ParameterizedTest(name = "몇번의 이동을 할 것인지 입력한다")
+    @ValueSource(ints = {1,22,333})
+    void input_Number_Of_Round(Integer number) {
+        System.setIn(new ByteArrayInputStream(number.toString().getBytes()));
+        racingGame.inputNumberOfRound();
+
+        Assertions.assertThat(racingGame.round()).isEqualTo(number);
+    }
 }
