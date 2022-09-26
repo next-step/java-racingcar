@@ -18,9 +18,13 @@ public class Car implements Comparable<Car>{
         return this.position;
     }
 
+    public String printPosition(){
+        return "-".repeat(this.position) + "|" + this.name;
+    }
+
     @Override
     public String toString(){
-        return "-".repeat(this.position) + "|" + this.name;
+        return String.format("car{name=%s, position=%s}",this.name, this.position);
     }
 
     @Override

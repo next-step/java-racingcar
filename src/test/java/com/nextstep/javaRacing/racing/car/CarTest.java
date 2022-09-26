@@ -51,6 +51,6 @@ class CarTest {
         Car car = new Car("car", mockMoveStrategy);
         car.move();
 
-        assertThat(car.toString()).isEqualTo("-|car");
+        assertThat(car.printPosition()).isEqualTo("-|car");
     }
 }
