@@ -4,8 +4,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Racing {
-	private Print print = new Print();
-	private Scanner sc = new Scanner(System.in);
+	private static Print print = new Print();
+	private static Scanner sc = new Scanner(System.in);
 
 	public static int random() {
 		Random random = new Random();
