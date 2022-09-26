@@ -9,8 +9,6 @@ import java.util.stream.Collectors;
 
 public class MultipleWinnerStrategy implements WinnerStrategy {
 
-    private static final CarPosition DEFAULT_CAR_POSITION = new CarPosition(0);
-
     @Override
     public List<Car> pickWinner(List<Car> candidates) {
         CarPosition maxPosition = getMaxPosition(candidates);
@@ -18,6 +16,6 @@ public class MultipleWinnerStrategy implements WinnerStrategy {
     }
 
     private CarPosition getMaxPosition(List<Car> candidates) {
-        return candidates.stream().map(Car::getCarPosition).max(CarPosition::compareTo).orElse(DEFAULT_CAR_POSITION);
+        return candidates.stream().map(Car::getCarPosition).max(CarPosition::compareTo).orElse(CarPosition.ZERO);
     }
 }
