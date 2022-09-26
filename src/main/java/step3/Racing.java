@@ -7,13 +7,23 @@ public class Racing {
 	private static Print print = new Print();
 	private static Scanner sc = new Scanner(System.in);
 
+	private static int ADVANCE_CONDITION = 4;
+
+	public static int participant(String input) {
+		return Integer.parseInt(input);
+	}
+
+	public static int move(String input) {
+		return Integer.parseInt(input);
+	}
+
 	public static int random() {
 		Random random = new Random();
 		return random.nextInt(10);
 	}
 
 	public static String movingCount(int input) {
-		if (4 <= input) {
+		if (ADVANCE_CONDITION <= input) {
 			return "-";
 		}
 		return "";
@@ -25,7 +35,7 @@ public class Racing {
 		print.howManyMovingCount();
 		String moveCount = sc.nextLine();
 
-		racingStart(Cars.participant(cars), Cars.move(moveCount));
+		racingStart(participant(cars), move(moveCount));
 	}
 
 	private void racingStart(int participant, int movingCount) {
