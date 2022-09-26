@@ -8,7 +8,7 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racinggame.core.Car;
-import racinggame.exception.InvalidCarNameException;
+import racinggame.exception.InvalidUnknownCarNameException;
 
 class ScoreTest {
 
@@ -36,7 +36,7 @@ class ScoreTest {
     void fail_to_get_score_of_invalid_car_name() {
         Score score = getDefaultScore();
         assertThatThrownBy(() -> score.getScore("D"))
-                .isInstanceOf(InvalidCarNameException.class);
+                .isInstanceOf(InvalidUnknownCarNameException.class);
     }
 
     @Test

@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 import racinggame.core.Car;
-import racinggame.exception.InvalidCarNameException;
+import racinggame.exception.InvalidUnknownCarNameException;
 
 public class Score {
 
@@ -27,19 +27,28 @@ public class Score {
     public Integer getScore(String name) {
         Integer distance = scoreInfo.get(name);
         if (distance == null) {
-            throw new InvalidCarNameException();
+            throw new InvalidUnknownCarNameException();
         }
         return distance;
     }
 
     public List<String> getWinner() {
-        List<Entry<String, Integer>> list = new ArrayList<>(scoreInfo.entrySet());
-        list.sort(Entry.comparingByValue(Comparator.reverseOrder()));
-        int maxDistance = list.get(0)
+        List<Entry<String, Integer>> scoreDatalist = sortScoreDataReverseByDistance();
+        int maxDistance = scoreDatalist.get(0)
                 .getValue();
 
-        return list.stream()
-                .filter(entry -> entry.getValue() == maxDistance)
+        return pickCarNamesWithDistance(scoreDatalist, maxDistance);
+    }
+
+    private List<Entry<String, Integer>> sortScoreDataReverseByDistance() {
+        List<Entry<String, Integer>> scoreDatalist = new ArrayList<>(scoreInfo.entrySet());
+        scoreDatalist.sort(Entry.comparingByValue(Comparator.reverseOrder()));
+        return scoreDatalist;
+    }
+
+    private List<String> pickCarNamesWithDistance(List<Entry<String, Integer>> scoreDatalist, int distance) {
+        return scoreDatalist.stream()
+                .filter(entry -> entry.getValue() == distance)
                 .map(Entry::getKey)
                 .collect(Collectors.toList());
     }
