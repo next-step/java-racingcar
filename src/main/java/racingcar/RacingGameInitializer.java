@@ -4,9 +4,10 @@ import java.util.Scanner;
 
 public class RacingGameInitializer {
 
-    private final static Scanner SCANNER = new Scanner(System.in);
+    private static final Scanner SCANNER = new Scanner(System.in);
 
-    private RacingGameInitializer() {}
+    private RacingGameInitializer() {
+    }
 
     public static int initTryCount() {
         RacingGamePrinter.printInitTryCountPhrase();
@@ -15,11 +16,10 @@ public class RacingGameInitializer {
         return tryCount;
     }
 
-    public static int initRacingCarCount() {
-        RacingGamePrinter.printInitCarCountPhrase();
-        int racingCarCount = SCANNER.nextInt();
-        validateOneLessThen(racingCarCount);
-        return racingCarCount;
+    public static String[] initRacingCarNames() {
+        RacingGamePrinter.printInitRacingCarPhrase();
+        String inputLine = SCANNER.next();
+        return inputLine.split(",");
     }
 
     private static void validateOneLessThen(int i) {
