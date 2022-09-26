@@ -29,18 +29,18 @@ public class RacingCar {
         }
     }
 
-    private static void validateName(String name) {
+    private void validateName(String name) {
         validateNameLongerThenFive(name);
         validateNameIsEmpty(name);
     }
 
-    private static void validateNameLongerThenFive(String name) {
+    private void validateNameLongerThenFive(String name) {
         if (name.length() > 5) {
             throw new RuntimeException("자동차의 이름은 5자를 초과할 수 없습니다.");
         }
     }
 
-    private static void validateNameIsEmpty(String name) {
+    private void validateNameIsEmpty(String name) {
         if (name == null || name.isEmpty()) {
             throw new RuntimeException("자동차의 이름은 빈 문자열로 설정할 수 없습니다.");
         }
