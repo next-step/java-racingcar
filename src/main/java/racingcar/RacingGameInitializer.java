@@ -22,8 +22,8 @@ public class RacingGameInitializer {
         return inputLine.split(",");
     }
 
-    private static void validateOneLessThen(int i) {
-        if (i <= 0) {
+    private static void validateOneLessThen(int num) {
+        if (num <= 0) {
             throw new RuntimeException("1보다 작은 숫자를 허용하지 않습니다.");
         }
     }
