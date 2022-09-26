@@ -1,5 +1,7 @@
 package ThirdStep;
 
+import ThirdStep.model.Car;
+import ThirdStep.model.GameSetting;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,6 +20,8 @@ class GameSettingTest {
     private final static int CAR_COUNT = 3;
     private final static int ATTEMPTS = 5;
 
+    private final GameSetter gameSetter = new GameSetter();
+
     @BeforeEach
     void initInput() {
         InputStream settings = new ByteArrayInputStream(String.format("%s\n%d", CAR_NAMES_INPUT, ATTEMPTS).getBytes());
@@ -27,9 +31,9 @@ class GameSettingTest {
     @Test
     @DisplayName("게임에 참여할 자동차 수와 시도 회수를 입력받고 저장할 수 있다.")
     void 경기_셋팅_테스트() {
-        GameSetting gameSetting = new GameSetting();
+        gameSetter.setting();
 
-        gameSetting.setting();
+        GameSetting gameSetting = gameSetter.getGameSetting();
 
         assertThat(gameSetting.getCars().size()).isEqualTo(3);
         assertThat(gameSetting.getAttempts()).isEqualTo(5);
@@ -38,9 +42,9 @@ class GameSettingTest {
     @Test
     @DisplayName("입력된 자동차 이름 만큼의 현재 위치가 0인 Car를 생성한다.")
     void 자동차_생성_테스트() {
-        GameSetting gameSetting = new GameSetting();
+        gameSetter.setting();
 
-        gameSetting.setting();
+        GameSetting gameSetting = gameSetter.getGameSetting();
         List<Car> cars = gameSetting.getCars();
 
         assertThat(cars.size()).isEqualTo(CAR_COUNT);
@@ -50,9 +54,9 @@ class GameSettingTest {
     @Test
     @DisplayName("입력된 자동차 이름을 가지는 Car를 생성한다.")
     void 자동차_생성_이름_테스트() {
-        GameSetting gameSetting = new GameSetting();
+        gameSetter.setting();
 
-        gameSetting.setting();
+        GameSetting gameSetting = gameSetter.getGameSetting();
         List<Car> cars = gameSetting.getCars();
 
         List<String> carNames = cars.stream().map(Car::getName).collect(Collectors.toList());

@@ -1,4 +1,4 @@
-package ThirdStep;
+package ThirdStep.model;
 
 public class CarRequest {
     private String name;

@@ -1,6 +1,8 @@
-package ThirdStep;
+package ThirdStep.validator;
 
-public class InputValidation {
+import ThirdStep.model.CarRequest;
+
+public class RequestValidator {
 
     public static final int NAME_LENGTH = 5;
 
@@ -10,7 +12,7 @@ public class InputValidation {
         }
     }
 
-    public static boolean carNameLengthValidation(String carName) {
+    private static boolean carNameLengthValidation(String carName) {
         return carName.length() <= NAME_LENGTH;
     }
 }

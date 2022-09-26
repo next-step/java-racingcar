@@ -1,22 +1,31 @@
 package ThirdStep;
 
+import ThirdStep.model.Car;
+import ThirdStep.model.GameSetting;
+
 import java.util.List;
 
 public class Play {
 
     public static final int ZERO = 0;
+    public CarAction carAction;
 
-    public static void racing(List<Car> cars, int attempts) {
-        if (attempts == ZERO) {
+    public Play(CarAction carAction) {
+        this.carAction = carAction;
+    }
+
+    public void racing(GameSetting gameSetting) {
+        if (gameSetting.getAttempts() == ZERO) {
             return;
         }
 
-        cars.forEach(car -> {
-            car.move(RandomMovingCondition.create());
-            car.printLocation();
+        gameSetting.getCars().forEach(car -> {
+            carAction.move(car, RandomMovingCondition.create());
+            carAction.printLocation(car);
         });
 
         System.out.println();
-        Play.racing(cars, --attempts);
+        gameSetting.setAttempts(gameSetting.getAttempts() - 1);
+        this.racing(gameSetting);
     }
 }

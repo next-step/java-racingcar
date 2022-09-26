@@ -1,5 +1,8 @@
 package ThirdStep;
 
+import ThirdStep.model.Car;
+import ThirdStep.model.CarRequest;
+import ThirdStep.model.GameSetting;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,7 +15,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 class PlayTest {
 
     private List<Car> cars = new ArrayList<>();
-    final private int INIT_ATTEMPTS = 5;
+    private final int INIT_ATTEMPTS = 5;
+    private final int ZERO = 0;
+
+    private final Play play = new Play(new CarAction());
 
     @BeforeEach
     void setCars() {
@@ -24,12 +30,14 @@ class PlayTest {
 
 
     @Test
-    @DisplayName("racing 함수가 종료되어도 처음 전달된 attempts 값은 유지된다.")
+    @DisplayName("racing 함수가 종료 시 gameSetting의 attempts 값은 0이다.")
     void racing_test() {
-        int attempts = INIT_ATTEMPTS;
+        GameSetting gameSetting = new GameSetting();
+        gameSetting.setAttempts(INIT_ATTEMPTS);
+        gameSetting.setCars(cars);
 
-        Play.racing(cars, attempts);
+        play.racing(gameSetting);
 
-        assertThat(attempts).isEqualTo(INIT_ATTEMPTS);
+        assertThat(gameSetting.getAttempts()).isEqualTo(ZERO);
     }
 }
