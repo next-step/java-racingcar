@@ -1,9 +1,10 @@
-package study;
+package com.nextstep.javaRacing.study;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class StringTest {
 
@@ -25,7 +26,7 @@ public class StringTest {
     @DisplayName("요구사항2 : (1,2)에서 substring 으로 괄호를 제거하고 split한 배열은 1과 2를 요소로 가진다")
     void split_substring() {
         String[] actual = "(1,2)".substring(1, 4).split(",");
-        assertThat(actual).containsExactly("1","2");
+        assertThat(actual).containsExactly("1", "2");
     }
 
     @Test
@@ -35,7 +36,7 @@ public class StringTest {
         assertThat(sut.charAt(1)).isEqualTo('b');
 
         assertThatExceptionOfType(IndexOutOfBoundsException.class)
-                .isThrownBy(()->sut.charAt(3))
+                .isThrownBy(() -> sut.charAt(3))
                 .withMessageMatching("String index out of range: \\d$");
     }
 }

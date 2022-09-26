@@ -1,4 +1,4 @@
-package com.nextstep.javaRacing;
+package com.nextstep.javaRacing.stringAddCalculator;
 
 import org.junit.jupiter.api.Test;
 

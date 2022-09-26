@@ -1,4 +1,4 @@
-package com.nextstep.javaRacing;
+package com.nextstep.javaRacing.stringAddCalculator;
 
 import java.util.Arrays;
 import java.util.regex.Matcher;

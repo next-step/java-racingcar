@@ -1,4 +1,4 @@
-package com.nextstep.javaRacing.car;
+package com.nextstep.javaRacing.racing.car;
 
 public interface MoveStrategy {
 

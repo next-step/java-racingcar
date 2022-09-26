@@ -1,4 +1,4 @@
-package study;
+package com.nextstep.javaRacing.study;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -19,7 +19,7 @@ public class SetTest {
     @BeforeEach
     void setUp() {
         numbers = new HashSet<>();
-        numbers.addAll(List.of(1,1,2,3));
+        numbers.addAll(List.of(1, 1, 2, 3));
     }
 
     @Test

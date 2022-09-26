@@ -1,8 +1,8 @@
-package com.nextstep.javaRacing.race;
+package com.nextstep.javaRacing.racing.race;
 
-import com.nextstep.javaRacing.car.Car;
-import com.nextstep.javaRacing.car.MoveStrategy;
-import com.nextstep.javaRacing.car.RaceCar;
+import com.nextstep.javaRacing.racing.car.Car;
+import com.nextstep.javaRacing.racing.car.MoveStrategy;
+import com.nextstep.javaRacing.racing.race.Race;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -22,12 +22,12 @@ class RaceTest {
     void race(int cars, int turns) {
         List<Car> carList = new LinkedList<>();
         for (int i = 0; i < cars; i++) {
-            carList.add(new RaceCar("testCar" + i, mockMoveStrategy));
+            carList.add(new Car("testCar" + i, mockMoveStrategy));
         }
         Race race = new Race(carList, turns);
 
         race.race();
-        int endPositionSum = race.cars.stream().mapToInt(c -> c.position()).sum();
+        int endPositionSum = race.cars.stream().mapToInt(Car::getPosition).sum();
         int expected = cars * turns;
         assertThat(endPositionSum).isEqualTo(expected);
     }

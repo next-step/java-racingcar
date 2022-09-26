@@ -1,5 +1,7 @@
-package com.nextstep.javaRacing.race;
+package com.nextstep.javaRacing.racing.race;
 
+import com.nextstep.javaRacing.racing.race.Race;
+import com.nextstep.javaRacing.racing.race.RaceFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
