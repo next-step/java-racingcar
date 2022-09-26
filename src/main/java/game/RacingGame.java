@@ -6,15 +6,16 @@ public class RacingGame {
 
     private Integer numberOfCar;
     private Integer round;
+
     public void inputNumberOfCar() {
-        try(Scanner sc = new Scanner(System.in)) {
-            this.numberOfCar = inputPositiveNumber(sc);;
+        try (Scanner sc = new Scanner(System.in)) {
+            this.numberOfCar = inputPositiveNumber(sc);
         }
     }
 
     private static int inputPositiveNumber(Scanner sc) {
         int result = sc.nextInt();
-        if(result<0){
+        if (result < 0) {
             throw new RuntimeException();
         }
         return result;
@@ -25,12 +26,12 @@ public class RacingGame {
     }
 
     public void inputNumberOfRound() {
-        try(Scanner sc = new Scanner(System.in)) {
-            this.round = inputPositiveNumber(sc);;
+        try (Scanner sc = new Scanner(System.in)) {
+            this.round = inputPositiveNumber(sc);
         }
     }
 
-    public int round(){
+    public int round() {
         return round;
     }
 }
