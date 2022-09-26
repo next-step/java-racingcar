@@ -7,10 +7,15 @@ import java.util.stream.Collectors;
 import step3.utils.RandomSingleton;
 
 public class Game {
+    static final String CREATE_ERROR_MSG = "횟수에 음수는 들어올 수 없습니다.";
     private final int carNumber;
     private final int tryNumber;
 
     public Game(int carNumber, int tryNumber) {
+        if (carNumber < 0 || tryNumber < 0) {
+            throw new IllegalArgumentException(CREATE_ERROR_MSG);
+        }
+
         this.carNumber = carNumber;
         this.tryNumber = tryNumber;
     }
