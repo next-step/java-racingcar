@@ -12,7 +12,6 @@ public class Winner {
         this.winner = winner;
     }
 
-
     public List<Name> winners() {
         return new ArrayList<>(winner);
     }
