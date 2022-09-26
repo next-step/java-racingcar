@@ -16,21 +16,6 @@ public class CarRacing {
         carRacing.play();
     }
 
-    public void play(int carCount, int rounds) {
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
-        }
-        this.rounds = rounds;
-    }
-
-    public int carsCount() {
-        return cars.size();
-    }
-
-    public int rounds() {
-        return rounds;
-    }
-
     private void play() {
         prepare();
         for (int i = 1; i <= rounds; i++) {
