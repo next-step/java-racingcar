@@ -3,6 +3,7 @@ package step3;
 import java.util.List;
 
 public class Racing {
+	private static final int MOVECONDITION = 4;
 	public static Cars participate(String input) {
 		int participant = Integer.parseInt(checkInput(input));
 		return new Cars(participant);
@@ -24,7 +25,7 @@ public class Racing {
 	}
 
 	public static String move(int input) {
-		if (4 <= input) {
+		if (MOVECONDITION <= input) {
 			return "-";
 		}
 		return "";
