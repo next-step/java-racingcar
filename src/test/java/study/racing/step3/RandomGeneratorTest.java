@@ -12,7 +12,6 @@ public class RandomGeneratorTest {
     void isGenerate_ShouldReturnFromZeroToNine() {
         //when
         int number = RandomGenerator.generate();
-        System.out.println(number);
 
         //then
         assertThat(number).isBetween(0, 9);
