@@ -20,7 +20,7 @@ public class RacingCar {
         return RANDOM.nextInt(RANDOM_BOUND) >= MOVABLE_MIN_RANDOM_VALUE;
     }
 
-    public String getLocationString() {
-        return "-".repeat(distance);
+    public int getDistance() {
+        return distance;
     }
 }

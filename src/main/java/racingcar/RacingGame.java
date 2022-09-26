@@ -25,7 +25,7 @@ public class RacingGame {
 
     private void log() {
         this.gameLogs.add(this.racingCars.stream()
-                                         .map(RacingCar::getLocationString)
+                                         .map(ResultView::getLocationString)
                                          .collect(Collectors.joining("\n")));
     }
 
