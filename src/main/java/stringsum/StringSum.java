@@ -5,18 +5,6 @@ import java.util.regex.Pattern;
 
 public class StringSum {
 
-    public int basicSum(String testData) {
-        if (testData == null || testData.isBlank() || testData.trim().isEmpty()) {
-            return 0;
-        }
-        String[] splitResult = testData.split(",|:");
-        int sum = 0;
-        for (String td : splitResult) {
-            sum += Integer.parseInt(td);
-        }
-        return sum;
-    }
-
     public String customChar(String testData) {
         if (testData == null || testData.isBlank() || testData.trim().isEmpty()) {
             return "";
@@ -25,15 +13,18 @@ public class StringSum {
         Matcher matcher = pattern.matcher(testData);
         String result = "";
         if (matcher.find() && matcher.start() == 0) {
-            return testData.substring(2, matcher.end() - 1); // 특정 단어 사이의 값 추출
+            return testData.substring(2, matcher.end() - 1);
         }
         return result;
     }
 
     public String[] splitStr(String testData) {
         String custom = customChar(testData);
+        if(testData == null){
+            return new String[]{""};
+        }
         if (custom == "" || custom.isBlank() || custom.trim().isEmpty()) {
-            return custom.split(",|:");
+            return testData.split(",|:");
         } else if (custom.equals("+")) {
             custom = "\\+|,|:";
             return testData.substring(4).split(custom);
