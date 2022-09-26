@@ -3,6 +3,7 @@ package nextstep.javaracingcar.step2;
 public class StringAddCalculator {
 
     private StringAddCalculator() {
+        throw new AssertionError("해당 객체는 생성이 불가합니다.");
     }
 
     public static PositiveNumber calculate(final String input) {
