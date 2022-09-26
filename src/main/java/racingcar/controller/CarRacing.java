@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import racingcar.domain.Cars;
+import racingcar.domain.RandomMovingPolicy;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
@@ -13,7 +14,7 @@ public class CarRacing {
 
         ResultView.printStartComment();
         for (int i = 0; i < input.tryCount(); i++) {
-            cars = cars.race();
+            cars = cars.race(new RandomMovingPolicy());
 
             ResultView.printRacing(cars);
         }

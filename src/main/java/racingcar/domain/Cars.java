@@ -25,15 +25,28 @@ public class Cars {
         return cars;
     }
 
-    public Cars race() {
+    public Cars race(MovingPolicy movingPolicy) {
         List<Car> nextCars = cars.stream()
-                .map(car -> car.move(new RandomMovingPolicy()))
+                .map(car -> car.move(movingPolicy))
                 .collect(toList());
         return new Cars(nextCars);
     }
 
     public List<Car> winners() {
         return findCarsByPosition(maxPosition());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cars cars1 = (Cars) o;
+        return Objects.equals(cars, cars1.cars);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cars);
     }
 
     private Integer maxPosition() {
