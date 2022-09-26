@@ -8,27 +8,29 @@ public class RacingGame {
     private Integer round;
 
     public void inputNumberOfCar() {
+        this.numberOfCar = inputPositiveNumber();
+    }
+
+    public void inputNumberOfRound() {
+        this.round = inputPositiveNumber();
+    }
+
+    private static int inputPositiveNumber() {
         try (Scanner sc = new Scanner(System.in)) {
-            this.numberOfCar = inputPositiveNumber(sc);
+            int result = sc.nextInt();
+            checkPositiveNumber(result);
+            return result;
         }
     }
 
-    private static int inputPositiveNumber(Scanner sc) {
-        int result = sc.nextInt();
+    private static void checkPositiveNumber(int result) {
         if (result < 0) {
             throw new RuntimeException();
         }
-        return result;
     }
 
     public int cars() {
         return numberOfCar;
-    }
-
-    public void inputNumberOfRound() {
-        try (Scanner sc = new Scanner(System.in)) {
-            this.round = inputPositiveNumber(sc);
-        }
     }
 
     public int round() {
