@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class Cars {
-
-    private static final int MOVABLE_THRESHOLD = 4;
     private final List<Car> cars;
     private final Supplier<Integer> numberGenerator;
 
@@ -25,13 +23,7 @@ public class Cars {
     }
 
     private void moveCar(int carNum) {
-        if (isMovable()) {
-            cars.get(carNum).move();
-        }
-    }
-
-    private boolean isMovable() {
-        return numberGenerator.get() >= MOVABLE_THRESHOLD;
+        cars.get(carNum).move(numberGenerator.get());
     }
 
     public String getAllCarsTrace() {
