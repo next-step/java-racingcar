@@ -16,7 +16,6 @@ public class ResultView {
     public static void showRacingProcess(List<Car> cars) {
         for (Car car : cars) {
             printSkidMark(car);
-            System.out.println(car.getPosition());
         }
         System.out.println();
     }
