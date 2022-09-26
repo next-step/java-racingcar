@@ -9,11 +9,10 @@ public class Car {
 
     private int currentStatus;
 
-
     public Car() {
     }
 
-    public Car returnCar() {
+    public Car carAction() {
         int randomNum = generateRandomNum();
         if (isMovingForward(randomNum)) {
             this.currentStatus += 1;
@@ -32,10 +31,6 @@ public class Car {
 
     public int getCurrentStatus() {
         return currentStatus;
-    }
-
-    public void setCurrentStatus(int status) {
-        this.currentStatus = status;
     }
 
 }

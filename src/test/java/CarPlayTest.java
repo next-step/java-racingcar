@@ -1,7 +1,9 @@
 
-import java.util.List;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -18,36 +20,38 @@ class CarPlayTest {
     private CarPlay carPlay;
     private InputView inputView;
     private Car car;
+    private int carNumber = 1;
+    private int attempts = 1;
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
     @BeforeEach
     void setTest() {
         car = new Car();
-        carPlay = new CarPlay(car, inputView);
+        inputView = new InputView(carNumber, attempts);
+        carPlay = new CarPlay(inputView);
+        System.setOut(new PrintStream(outContent));
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7})
-    @DisplayName("4이상일 경우에만 true 값을 반환하는지 확인")
+    @ValueSource(ints = {0, 1, 2, 3, 4, 5, 6, 7})
+    @DisplayName("자동차의 현재 상태를 0또는 1만 반환하는 지 확인")
     void checkReturnBiggerThanFour(int input) {
 
-        if (input >= 4) {
-          //  assertThat(car.isMovingForward(input)).isTrue();
+        Car testCar = car.carAction();
+
+        if (input < 2) {
+            assertThat(testCar.getCurrentStatus()).isGreaterThanOrEqualTo(input);
         } else {
-            //assertThat(car.isMovingForward(input)).isFalse();
+            assertThat(testCar.getCurrentStatus()).isLessThanOrEqualTo(input);
         }
     }
 
     @Test
-    @DisplayName("0과 1만 포함된 랜덤 자동차 리스트를 출력하는지 확인")
-    void randomCarListContainsOnlyOneAndZero() {
+    @DisplayName("자동차 상태값이 '-' 로 변환되어 출력 되는지 확인")
+    void checkConvertStatusAndPrint() {
 
-        int maxNumber = 2;
+        carPlay.convertCarStatusToPrint(inputView);
 
-        List<Integer> randomList = carPlay.carMovement();
-
-        for (Integer randomElement : randomList) {
-            assertThat(randomElement).isLessThan(maxNumber);
-        }
+        assertEquals("-\n", outContent.toString());
     }
-
 }

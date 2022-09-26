@@ -11,6 +11,14 @@ public class InputView {
     private int attempts;
     private static final Scanner scanner = new Scanner(System.in);
 
+    public InputView() {
+    }
+
+    public InputView(int carNumber, int attempts) {
+        this.carNumber = carNumber;
+        this.attempts = attempts;
+    }
+
     public void inputCarNumber() {
 
         System.out.println("자동차 대수는 몇 대 인가요?");

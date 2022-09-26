@@ -12,12 +12,11 @@ public class Main {
         InputView inputView = new InputView();
         inputView.inputCarNumber();
         inputView.inputAttemptNumber();
-        Car car = new Car();
 
-        CarPlay carPlay = new CarPlay(car, inputView);
+        CarPlay carPlay = new CarPlay(inputView);
 
-        ResultView resultView = new ResultView(carPlay, inputView);
-        resultView.printTotalCarStatus();
+        ResultView resultView = new ResultView(carPlay);
+        resultView.printTotalCarStatus(inputView);
 
     }
 }
