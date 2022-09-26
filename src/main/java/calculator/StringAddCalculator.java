@@ -21,24 +21,24 @@ public class StringAddCalculator {
         return text.split(REGEX);
     }
 
-    private static Positive sum(Positive[] numbers) {
-        Positive result = new Positive(0);
-        for (Positive number : numbers) {
+    private static PositiveNumber sum(PositiveNumber[] numbers) {
+        PositiveNumber result = new PositiveNumber(0);
+        for (PositiveNumber number : numbers) {
             result = result.plus(number);
         }
         return result;
     }
 
-    private static Positive[] toPositives(String[] values) {
-        Positive[] result = new Positive[values.length];
+    private static PositiveNumber[] toPositives(String[] values) {
+        PositiveNumber[] result = new PositiveNumber[values.length];
         for (int i = 0; i < values.length; i++) {
             result[i] = toPositive(values[i]);
         }
         return result;
     }
 
-    private static Positive toPositive(String str) {
-        return new Positive(str);
+    private static PositiveNumber toPositive(String str) {
+        return new PositiveNumber(str);
     }
 
     private static boolean isBlank(String text) {
