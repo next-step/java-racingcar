@@ -3,7 +3,7 @@ package ThirdStep;
 import ThirdStep.model.GameSetting;
 
 public class CarRacingGame {
-    public static void run() {
+    public static void main(String[] args) {
         GameSetter gameSetter = new GameSetter();
         gameSetter.setting();
 
