@@ -19,7 +19,7 @@ public abstract class Car {
         this.carMoveStrategy = carMoveStrategy;
     }
 
-    public int getPosition(){
+    public int getPosition() {
         return position.getPosition();
     }
 

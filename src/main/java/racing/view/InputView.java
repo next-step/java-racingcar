@@ -3,14 +3,15 @@ package racing.view;
 import racing.util.CustomUserInputHandler;
 
 public class InputView {
-    private InputView(){
+    private InputView() {
 
     }
-    public static int getCarCount(){
+
+    public static int getCarCount() {
         return makeQuestion("자동차 대수는 몇 대 인가요?");
     }
 
-    public static int getGameCount(){
+    public static int getGameCount() {
         return makeQuestion("시도할 회수는 몇 회 인가요?");
     }
 

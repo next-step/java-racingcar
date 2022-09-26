@@ -5,9 +5,10 @@ import racing.model.Car;
 import java.util.List;
 
 public class ResultView {
-    private ResultView(){
+    private ResultView() {
 
     }
+
     public static void printResultTitle() {
         System.out.println("실행 결과");
     }
