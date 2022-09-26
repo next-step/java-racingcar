@@ -15,7 +15,9 @@ public class RacingCars {
     }
 
     private List<Car> createRacingCars(String carNameText) {
-        return Arrays.stream(carNameText.split(",")).map(Car::new).collect(Collectors.toList());
+        return Arrays.stream(carNameText.split(","))
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     public void race() {
