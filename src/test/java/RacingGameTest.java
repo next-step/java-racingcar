@@ -1,5 +1,6 @@
 import model.Car;
 import model.CarName;
+import model.CarPosition;
 import model.GameResult;
 import org.junit.jupiter.api.Test;
 
@@ -14,12 +15,12 @@ class RacingGameTest {
         CarName carName = new CarName("test");
         RacingGame game = new RacingGame(() -> true, (candidates) -> candidates, List.of(carName));
         Car car = Car.carWithName(carName);
-        int beforeGame = car.getCurrentPosition();
+        CarPosition beforeGame = car.getCarPosition();
 
         game.moveCarByStrategy(car);
 
-        int afterGame = car.getCurrentPosition();
-        assertThat(beforeGame).isLessThan(afterGame);
+        CarPosition afterGame = car.getCarPosition();
+        assertThat(afterGame.compareTo(beforeGame)).isPositive();
     }
 
     @Test
@@ -27,21 +28,22 @@ class RacingGameTest {
         CarName carName = new CarName("test");
         RacingGame game = new RacingGame(() -> false, (candidates) -> candidates, List.of(carName));
         Car car = Car.carWithName(carName);
-        int beforeGame = car.getCurrentPosition();
+        CarPosition beforeGame = car.getCarPosition();
 
         game.moveCarByStrategy(car);
 
-        int afterGame = car.getCurrentPosition();
-        assertThat(afterGame).isEqualTo(beforeGame);
+        CarPosition afterGame = car.getCarPosition();
+        assertThat(afterGame.compareTo(beforeGame)).isZero();
     }
 
     @Test
     void shouldReturnProperGameResult_whenCarStopped() {
         CarName carName = new CarName("test");
         RacingGame game = new RacingGame(() -> false, (candidates) -> candidates, List.of(carName));
+        CarPosition carPosition = new CarPosition(0);
 
-        assertThat(getFistCarPosition(game.play())).isEqualTo(0);
-        assertThat(getFistCarPosition(game.play())).isEqualTo(0);
+        assertThat(getFistCarPosition(game.play())).isEqualTo(carPosition);
+        assertThat(getFistCarPosition(game.play())).isEqualTo(carPosition);
     }
 
     @Test
@@ -49,12 +51,12 @@ class RacingGameTest {
         CarName carName = new CarName("test");
         RacingGame game = new RacingGame(() -> true, (candidates) -> candidates, List.of(carName));
 
-        assertThat(getFistCarPosition(game.play())).isEqualTo(1);
-        assertThat(getFistCarPosition(game.play())).isEqualTo(2);
+        assertThat(getFistCarPosition(game.play())).isEqualTo(new CarPosition(1));
+        assertThat(getFistCarPosition(game.play())).isEqualTo(new CarPosition(2));
     }
 
-    private int getFistCarPosition(GameResult result) {
-        return result.getCars().get(0).getCurrentPosition();
+    private CarPosition getFistCarPosition(GameResult result) {
+        return result.getCars().get(0).getCarPosition();
     }
 
 }
