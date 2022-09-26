@@ -19,8 +19,7 @@ public class Racing {
 	}
 
 	private static void result(String participant, String matches) {
-		Cars cars = participate(participant);
-		playMatches(cars, matches);
+		playMatches(participate(participant), matches);
 	}
 
 	private static void playMatches(Cars cars, String matches) {
@@ -40,8 +39,7 @@ public class Racing {
 
 	public static Cars participate(String input) {
 		List<Car> cars = new ArrayList<>();
-		int participant = Integer.parseInt(checkInput(input));
-		for (int i = 0; i < participant; i++) {
+		for (int i = 0; i < Integer.parseInt(checkInput(input)); i++) {
 			cars.add(new Car());
 		}
 		return new Cars(cars);
