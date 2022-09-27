@@ -6,6 +6,11 @@ import java.util.List;
 
 public class OutputView {
 
+	public static void printResultMessage() {
+		System.out.println();
+		System.out.println("실행 결과");
+	}
+
 	public static void printCarsPosition(List<Car> cars) {
 		for (Car car : cars) {
 			printCarPosition(car);

@@ -14,6 +14,7 @@ public class RacingController {
 		int times = InputView.inputTimes();
 		Racing racing = new Racing(cars);
 
+		OutputView.printResultMessage();
 		for (int i = 0; i < times; i++) {
 			racing.race();
 			OutputView.printCarsPosition(cars);
