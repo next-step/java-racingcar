@@ -1,8 +1,8 @@
-import racing.RacingCar;
+package racing;
 
 public class Main {
 
     public static void main(String[] args) {
-        RacingCar.racing();
+        new RacingController().run();
     }
 }
