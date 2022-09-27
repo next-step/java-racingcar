@@ -5,10 +5,11 @@ public class RacingGameApplication {
         InputView inputView = new InputView();
         ResultView resultView = new ResultView();
 
-        int number = inputView.inputUserCarCount();
+        String inputNames = inputView.inputUserCarName();
+        String[] names = inputNames.split(",");
         int tryCount = inputView.inputUserTryCount();
 
-        RacingCar racingCar = new RacingCar(number);
+        RacingCar racingCar = new RacingCar(names.length);
 
         resultView.printResultMessage();
         for (int i = 0; i < tryCount; i++) {
