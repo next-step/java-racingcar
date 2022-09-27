@@ -28,7 +28,7 @@ public final class RacingCar implements Car {
         if (number.generatedNumber() >= NUMBER_OF_JUDGMENT_THAT_CAN_GO_FORWARD) {
             return new RacingCar(position.movedPosition(), number);
         }
-        return new RacingCar(position, number);
+        return this;
     }
 
     @Override
