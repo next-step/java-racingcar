@@ -34,7 +34,7 @@
 ## 리팩토링 요구 사항
 - [x] `MovingStrategy` 팩토리로 주입
 - [x] `strategy` 패키지 분리
-- [ ] `RandomMovingStrategy의` `Random` 객체 매번 생성하지 않고 재사용 되도록
+- [x] `RandomMovingStrategy`의 `Random` 객체 매번 생성하지 않고 재사용 되도록
 - [ ] `GameController`의 `RacingCarGame` 생성 부분 팩토리로 분리
 - [ ] `Cars.move()` 에서 `ArrayList` 를 매번 생성해 반환하지 않고 필드인 `List<Car>`를 반환하도록 수정
 
