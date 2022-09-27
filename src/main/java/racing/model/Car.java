@@ -4,15 +4,15 @@ public class Car {
 
 	private static final int MOVING_SIZE = 1;
 	private static final int MOVABLE_NUMBER = 4;
-	private int position;
+	private Position position;
 
 	public Car() {
-		this.position = 0;
+		this.position = new Position(0);
 	}
 
 	public void move(int random) {
 		if (isMovable(random)) {
-			position += MOVING_SIZE;
+			this.position = new Position(position.getPosition() + MOVING_SIZE);
 		}
 	}
 
@@ -21,6 +21,6 @@ public class Car {
 	}
 
 	public int getPosition() {
-		return position;
+		return position.getPosition();
 	}
 }
