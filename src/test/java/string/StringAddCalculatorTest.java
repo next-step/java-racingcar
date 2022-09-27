@@ -21,14 +21,14 @@ class StringAddCalculatorTest {
 
     @Test
     @DisplayName("숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환한다.")
-    public void splitAndSum_숫자하나() throws Exception {
+    public void splitAndSum_숫자하나() {
         int result = StringAddCalculator.splitAndSum("1");
         assertThat(result).isEqualTo(1);
     }
 
     @Test
     @DisplayName("문자열 -> 숫자 변환시 NumberFormatException이 발생할 경우 IncludeNotNumberException 예외발생한다.")
-    public void splitAndSum_숫자변환시_예외발생() throws Exception {
+    public void splitAndSum_숫자변환시_예외발생() {
         String data = "A";
 
         ThrowingCallable result = () -> StringAddCalculator.splitAndSum(data);
@@ -40,28 +40,28 @@ class StringAddCalculatorTest {
 
     @Test
     @DisplayName("쉼표를 구분자로 가지는 문자열이 입력되면 구분자를 기준으로 분리한 각 숫자의 합을 반환한다.")
-    public void splitAndSum_쉼표구분자() throws Exception {
+    public void splitAndSum_쉼표구분자() {
         int result = StringAddCalculator.splitAndSum("1,2");
         assertThat(result).isEqualTo(3);
     }
 
     @Test
     @DisplayName("쉽표와 콜론을 구분자로 가지는 문자열이 입력되면 구분자를 기준으로 분리한 각 숫자의 합을 반환한다.")
-    public void splitAndSum_쉼표_또는_콜론_구분자() throws Exception {
+    public void splitAndSum_쉼표_또는_콜론_구분자() {
         int result = StringAddCalculator.splitAndSum("1,2:3");
         assertThat(result).isEqualTo(6);
     }
 
     @Test
     @DisplayName("'//'과'\\n' 사이에 있는 문자를 구분자로 사용하여 구분자를 기준으로 분리한 각 숫자의 합을 반환한다.")
-    public void splitAndSum_custom_구분자() throws Exception {
+    public void splitAndSum_custom_구분자() {
         int result = StringAddCalculator.splitAndSum("//;\n1;2;3");
         assertThat(result).isEqualTo(6);
     }
 
     @Test
     @DisplayName("구분자 사이에 음수가 포함되어있으면 RuntimeException예외가 발생한다.")
-    public void splitAndSum_negative() throws Exception {
+    public void splitAndSum_negative() {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
             .isInstanceOf(ExistsNegativeNumberException.class);
     }
