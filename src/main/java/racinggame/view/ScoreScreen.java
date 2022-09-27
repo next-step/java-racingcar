@@ -2,8 +2,8 @@ package racinggame.view;
 
 import java.util.List;
 import java.util.Map;
-import racinggame.domain.scoreboard.ScoreBoard;
 import racinggame.domain.scoreboard.Score;
+import racinggame.domain.scoreboard.ScoreBoard;
 
 public class ScoreScreen {
 
@@ -11,7 +11,7 @@ public class ScoreScreen {
         List<String> winners = scoreBoard.getWinner(scoreBoard.getCountOfRound());
         System.out.printf(
                 "%s가 최종 우승했습니다.%n",
-                String.join(" ,", winners.toArray(new String[0]))
+                String.join(", ", winners.toArray(new String[0]))
         );
     }
 
