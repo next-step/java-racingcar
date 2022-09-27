@@ -1,4 +1,4 @@
-package study;
+package study.racing;
 
 public class CarRacingTest {
 }
