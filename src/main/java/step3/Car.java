@@ -1,26 +1,35 @@
 package step3;
 
+import java.util.Random;
+
 public class Car {
     private int id;
     private int position = 1;
 
-    private final static int LIMIT_POINT_TO_MOVE = 4;
+    private static final Random random = new Random();
+    private static final int RANGE_TO_RANDOM_NUMBER = 10;
+    private static final int LIMIT_POINT_TO_MOVE = 4;
 
     Car(int id) {
         this.id = id;
     }
 
-    public void move(int point) {
-        if (isMovable(point)) {
+    public void run() {
+        if (isMovable()) {
             this.position++;
         }
-    }
-
-    private boolean isMovable(int point) {
-        return point >= LIMIT_POINT_TO_MOVE ;
     }
 
     public int getPosition() {
         return this.position;
     }
+
+    private boolean isMovable() {
+        return generateRandomPoint() >= LIMIT_POINT_TO_MOVE ;
+    }
+
+    private static int generateRandomPoint(){
+        return random.nextInt(RANGE_TO_RANDOM_NUMBER);
+    }
+
 }
