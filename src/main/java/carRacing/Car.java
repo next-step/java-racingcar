@@ -16,9 +16,8 @@ public class Car {
     }
 
     private boolean isMovable(int movePoint) {
-        return movePoint >= LIMIT_POINT_TO_MOVE ;
+        return movePoint >= LIMIT_POINT_TO_MOVE;
     }
-
 
 
 }

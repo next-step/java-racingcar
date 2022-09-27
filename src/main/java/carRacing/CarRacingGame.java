@@ -32,7 +32,7 @@ public class CarRacingGame {
 
     private void doRacing() {
         this.carEntryList
-                .forEach(vo->vo.run(RandomUtil.generateRandomNumber(RANGE_TO_MOVE_POINT)));
+                .forEach(vo -> vo.run(RandomUtil.generateRandomNumber(RANGE_TO_MOVE_POINT)));
     }
 
 }

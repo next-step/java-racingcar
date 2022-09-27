@@ -8,18 +8,18 @@ public class StringAddCalculator {
     private static final Pattern SEPARATE_PATTERN = Pattern.compile("//(.)\n(.*)");
     private static final Pattern POSITIVE_NUMBER_PATTERN = Pattern.compile("^[0-9]\\d*(\\.\\d+)?$");
 
-    public static int splitAndSum(String numbersString){
-        if(isEmpty(numbersString)){
+    public static int splitAndSum(String numbersString) {
+        if (isEmpty(numbersString)) {
             return 0;
         }
         return sum(split(numbersString));
     }
 
-    private static boolean isEmpty(String string){
+    private static boolean isEmpty(String string) {
         return string == null || string.isEmpty();
     }
 
-    private static String[] split(String numberString){
+    private static String[] split(String numberString) {
         Matcher matcher = SEPARATE_PATTERN.matcher(numberString);
 
         // 커스텀 구분자로 Split
@@ -32,7 +32,7 @@ public class StringAddCalculator {
         return numberString.split(",|:");
     }
 
-    private static int sum(String[] numberStringArray){
+    private static int sum(String[] numberStringArray) {
         return Arrays.stream(numberStringArray)
                 .map(StringAddCalculator::convertStringToInteger)
                 .reduce(0, Integer::sum);
@@ -42,15 +42,15 @@ public class StringAddCalculator {
         return isValidNumberString(numberString) ? Integer.parseInt(numberString) : 0;
     }
 
-    private static boolean isValidNumberString(String numberString){
+    private static boolean isValidNumberString(String numberString) {
         // 양수인지 검증
-        if(! isPositiveNumber(numberString)){
+        if (!isPositiveNumber(numberString)) {
             throw new RuntimeException("Wrong Input");
         }
         return true;
     }
 
-    private static boolean isPositiveNumber(String numberString){
+    private static boolean isPositiveNumber(String numberString) {
         return POSITIVE_NUMBER_PATTERN.matcher(numberString).find();
     }
 

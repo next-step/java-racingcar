@@ -1,7 +1,5 @@
 package carRacing;
 
-import carRacing.Car;
-import carRacing.CarRacingGame;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -26,7 +24,7 @@ public class CarRacingGameTest {
     public void carRacingGameTest1(int testNumber) {
         CarRacingGame carRacingGame = new CarRacingGame(testNumber, testNumber);
         carRacingGame.doGame();
-        for(Car car : carRacingGame.getCarEntryList()){
+        for (Car car : carRacingGame.getCarEntryList()) {
             assertThat(car.getPosition() - DEFAULT_POSITION).isLessThanOrEqualTo(testNumber);
         }
     }

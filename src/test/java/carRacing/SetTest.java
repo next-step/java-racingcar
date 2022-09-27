@@ -26,7 +26,7 @@ public class SetTest {
 
     @Test
     @DisplayName("Set.size() 메소드 기능 테스트")
-    public void setTest1(){
+    public void setTest1() {
         assertThat(numbers.size()).isEqualTo(3);
     }
 
