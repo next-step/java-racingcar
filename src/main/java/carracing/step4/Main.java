@@ -2,6 +2,7 @@ package carracing.step4;
 
 import java.util.List;
 import java.util.Random;
+import java.util.function.Supplier;
 
 public class Main {
 
@@ -13,7 +14,8 @@ public class Main {
         List<String> carNames = inputView.enterCarNames();
         int tryCount = inputView.enterTryCount();
 
-        Cars cars = new Cars(carNames, () -> new Random().nextInt(MAX_BOUND));
+        Supplier<Integer> generateRandomNumber = () -> new Random().nextInt(MAX_BOUND);
+        Cars cars = new Cars(carNames, generateRandomNumber);
         ResultView resultView = new ResultView();
         for (int i = 0; i < tryCount; i++) {
             cars.moveAllCars();
