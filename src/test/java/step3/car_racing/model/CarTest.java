@@ -14,6 +14,6 @@ class CarTest {
         Car car = new Car();
 
         // expected
-        assertEquals(car.getDistance() + 1, car.moveForward());
+        assertEquals(car.getDistance() + "-", car.moveForward());
     }
 }

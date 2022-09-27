@@ -22,8 +22,15 @@
 
 * Racing 클래스 구현
 
-  * Car 클래스를 인자로 받아서 랜덤 조건을 계산 후 자동차 클래스에 넣어준다.
+  * Car List 개수와 레이싱 횟수를 인자로 받는다.
+  * 레이싱 횟수 마다 Car 의 distance 를 출력한다.
 
-## ui
+## util
 
-- 결과 클래스 : UI 로직 클래스
+* RandomUtil 클래스 구현
+
+  * 랜덤 값을 계산하여 true / false 로 반환한다.
+
+## view
+
+- ResultView 클래스 : UI 로직 클래스
