@@ -11,7 +11,9 @@ import static java.util.stream.Collectors.toList;
  * Created by seungwoo.song on 2022-09-26
  */
 public class RaceResultDTO {
-    List<List<CarMoveInfo>> raceResult = new ArrayList<>();
+
+    private List<List<CarMoveInfo>> raceResult = new ArrayList<>();
+    private List<Car> winners;
 
     public List<List<CarMoveInfo>> getRaceResult() {
         return raceResult;
@@ -22,5 +24,13 @@ public class RaceResultDTO {
                 cars.stream()
                         .map(CarMoveInfo::new)
                         .collect(toList()));
+    }
+
+    public List<Car> winners() {
+        return winners;
+    }
+
+    public void addWinners(List<Car> winners) {
+        this.winners = winners;
     }
 }

@@ -4,7 +4,10 @@ import racinggame.domain.Car;
 import racinggame.dto.RaceInputDTO;
 import racinggame.dto.RaceResultDTO;
 
+import java.util.Comparator;
 import java.util.List;
+
+import static java.util.stream.Collectors.groupingBy;
 
 public class RaceService {
 
@@ -17,7 +20,17 @@ public class RaceService {
             raceResultDTO.addCarMoveResult(cars);
         }
 
+        raceResultDTO.addWinners(winCars(cars));
         return raceResultDTO;
+    }
+
+    public List<Car> winCars(List<Car> allCars) {
+        return allCars.stream()
+                .collect(groupingBy(Car::distance))
+                .entrySet().stream()
+                .max(Comparator.comparing(entry -> Integer.valueOf(entry.getKey())))
+                .get()
+                .getValue();
     }
 
     private void moveCar(List<Car> cars) {
