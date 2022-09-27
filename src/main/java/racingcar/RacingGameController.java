@@ -35,7 +35,7 @@ public class RacingGameController {
         List<Car> cars = new ArrayList<>();
 
         for (int i = 0; i < carCount; ++i) {
-            cars.add(Car.createInitialOne());
+            cars.add(new Car("test"));
         }
 
         return cars;

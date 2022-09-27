@@ -1,7 +1,7 @@
 package racingcar.view;
 
-import java.util.List;
-
+import racingcar.domain.Name;
+import racingcar.domain.Position;
 import racingcar.domain.RoundResult;
 
 public class ResultView {
@@ -13,10 +13,14 @@ public class ResultView {
     }
 
     public void printResult(RoundResult roundResult) {
-        for(var position: roundResult.getPositions()) {
-            System.out.println(PATH_STRING.repeat(position));
+        for(var car: roundResult.getCarStats()) {
+            System.out.println(makeFormattedString(car.getName(), car.getPosition()));
         }
         printNewLine();
+    }
+
+    private String makeFormattedString(Name name, Position position) {
+        return String.format("%s : %s", name.getValue(), PATH_STRING.repeat(position.getValue()));
     }
 
     private void printNewLine() {

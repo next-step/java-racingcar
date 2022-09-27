@@ -6,14 +6,12 @@ public class Position {
     private final int position;
 
     public Position(int position) {
-        if(position < 0) {
-            throw new RuntimeException("위치는 음수일 수 없습니다.");
-        }
+        validate(position);
 
         this.position = position;
     }
 
-    public int getPosition() {
+    public int getValue() {
         return position;
     }
 
@@ -22,7 +20,13 @@ public class Position {
     }
 
     public Position add(Position other) {
-        return add(other.getPosition());
+        return add(other.getValue());
+    }
+
+    private void validate(int position) {
+        if(position < 0) {
+            throw new RuntimeException("위치는 음수일 수 없습니다.");
+        }
     }
 
     @Override

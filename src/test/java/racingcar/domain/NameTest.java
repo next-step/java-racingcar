@@ -11,7 +11,7 @@ class NameTest {
     @ValueSource(strings = {"안녕", "hello", "hi"})
     void validName(String nameStr) {
         Name name = new Name(nameStr);
-        assertThat(name.getName().length()).isEqualTo(nameStr.length());
+        assertThat(name.getValue().length()).isEqualTo(nameStr.length());
     }
 
     @ParameterizedTest(name = "Name 조건을 만족하지 못하는 테스트: {0}")

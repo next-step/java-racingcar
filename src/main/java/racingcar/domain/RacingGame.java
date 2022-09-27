@@ -30,10 +30,10 @@ public class RacingGame {
 
     private RoundResult playNextRound() {
         remainPlayCount--;
-        List<Integer> result = new ArrayList<>();
+        List<CarStat> result = new ArrayList<>();
 
         for (Car car : cars) {
-            result.add(car.move(movingCondition));
+            result.add(new CarStat(car.getName(), car.move(movingCondition)));
         }
 
         return new RoundResult(result);

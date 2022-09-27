@@ -3,13 +3,13 @@ package racingcar.domain;
 import java.util.List;
 
 public class RoundResult {
-    private final List<Integer> positions;
+    private final List<CarStat> carStats;
 
-    public RoundResult(List<Integer> positions) {
-        this.positions = positions;
+    public RoundResult(List<CarStat> carStats) {
+        this.carStats = carStats;
     }
 
-    public List<Integer> getPositions() {
-        return positions;
+    public List<CarStat> getCarStats() {
+        return carStats;
     }
 }
