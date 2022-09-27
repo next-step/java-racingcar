@@ -7,3 +7,13 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## myManual
+1.
+
+2. 머지 이후
+2-1) ohseungcheol 브랜치로 체크아웃
+2-2) git fetch upstream ohseungcheol
+2-3) git rebase upstream/ohseungcheol
+2-4) 기존 미션 브랜치 삭제(선택)
+2-5) 신규 미션 브랜치 생성
