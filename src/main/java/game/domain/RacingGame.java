@@ -11,14 +11,19 @@ import java.util.Random;
 public class RacingGame {
 
     private List<Car> cars = new ArrayList<>();
+    private RacingGameRule racingGameRule;
     private int round;
     private final static int CHANGE_LOCATION_BOUND = 10;
 
-    public static void start() {
-        RacingGame racingGame = new RacingGame();
+    public static void start(RacingGameRule racingGameRule) {
+        RacingGame racingGame = new RacingGame(racingGameRule);
         racingGame.makeCar(racingGame.inputNumberOfCar());
         racingGame.setRound(racingGame.inputNumberOfRound());
         racingGame.progressGame();
+    }
+
+    public RacingGame(RacingGameRule racingGameRule) {
+        this.racingGameRule = racingGameRule;
     }
 
     private void progressGame() {
@@ -37,14 +42,11 @@ public class RacingGame {
     }
 
     private void changeCarLocation(Car car) {
-        if (isForward(pickRandomNumber(CHANGE_LOCATION_BOUND))) {
+        if (racingGameRule.isForward(pickRandomNumber(CHANGE_LOCATION_BOUND))) {
             car.forward();
         }
     }
 
-    private boolean isForward(int number) {
-        return number >= 4;
-    }
 
     private int pickRandomNumber(int bound) {
         Random random = new Random();
@@ -79,4 +81,5 @@ public class RacingGame {
     public int round() {
         return round;
     }
+
 }

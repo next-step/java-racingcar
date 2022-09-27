@@ -19,7 +19,7 @@ public class RacingGameTest {
 
     @BeforeEach
     void setRacingGame() {
-        racingGame = new RacingGame();
+        racingGame = new RacingGame(new RacingGameRule(4));
     }
 
     @ParameterizedTest(name = "자동차의 대수를 입력한다")
