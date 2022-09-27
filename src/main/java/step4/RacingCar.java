@@ -9,7 +9,7 @@ public class RacingCar {
 
     public static List<Car> carList;
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
         carList = InputView.inputCarName();
         int tryNum = InputView.inputTryNum();
 
