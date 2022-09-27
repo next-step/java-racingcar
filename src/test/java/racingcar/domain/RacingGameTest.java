@@ -1,17 +1,9 @@
 package racingcar.domain;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-import org.assertj.core.api.Assert;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -20,22 +12,44 @@ import racingcar.domain.movingcondition.MovingCondition;
 
 class RacingGameTest {
 
+    @ParameterizedTest(name = "라운드를 진행했을 때 게임 종료 여부 체크: {4}")
+    @MethodSource("provideRacingGameInput")
+    void isGameEnded(List<Car> cars, MovingCondition condition, boolean isCarMovable, int playCount, String testDescription) {
+        RacingGame racingGame = new RacingGame(cars, condition, playCount);
+
+        for (int i = 0; i < playCount - 1; ++i) {
+            racingGame.play();
+        }
+        Assertions.assertThat(racingGame.isGameEnd()).isFalse();
+
+        racingGame.play();
+        Assertions.assertThat(racingGame.isGameEnd()).isTrue();
+    }
+
     @ParameterizedTest(name = "레이싱 게임을 진행했을 때 주어진 조건에 따라 움직였는지 테스트: {4}")
     @MethodSource("provideRacingGameInput")
     void play(List<Car> cars, MovingCondition condition, boolean isCarMovable, int playCount, String testDescription) {
         RacingGame racingGame = new RacingGame(cars, condition, playCount);
 
-        int playRounds = 0;
-
-        while (!racingGame.isGameEnd()) {
-            playRounds++;
-            List<Integer> roundResult = racingGame.play();
-            List<Integer> expectedResult = getExpectedResult(isCarMovable, playRounds);
-            Assertions.assertThat(roundResult).isEqualTo(expectedResult);
+        for (int round = 1; round <= playCount; ++round) {
+            RoundResult roundResult = racingGame.play();
+            List<Integer> expectedResult = getExpectedResult(isCarMovable, round);
+            Assertions.assertThat(roundResult.getPositions()).isEqualTo(expectedResult);
         }
-
-        Assertions.assertThat(playRounds).isEqualTo(playCount);
     }
+
+    @ParameterizedTest(name = "게임 종료 이후에도 레이스 진행 시도 시 예외 반환: {4}")
+    @MethodSource("provideRacingGameInput")
+    void playAfterRacingEnd(List<Car> cars, MovingCondition condition, boolean isCarMovable, int playCount, String testDescription) {
+        RacingGame racingGame = new RacingGame(cars, condition, playCount);
+
+        Assertions.assertThatThrownBy(() -> {
+            for (int round = 1; round <= playCount + 1; ++round) {
+                racingGame.play();
+            };
+        }).isInstanceOf(RuntimeException.class);
+    }
+
 
     private List<Integer> getExpectedResult(boolean isCarMovable, int playRounds) {
         return isCarMovable ? List.of(playRounds) : List.of(0);
@@ -43,8 +57,8 @@ class RacingGameTest {
 
     private static Stream<Arguments> provideRacingGameInput() {
         return Stream.of(
-            Arguments.of(List.of(new Car()), (MovingCondition)() -> true, true, 3, "차가 움직일 수 있을 때"),
-            Arguments.of(List.of(new Car()), (MovingCondition)() -> false, false, 3, "차가 움직일 수 없을 때")
+            Arguments.of(List.of(Car.createInitialOne()), (MovingCondition)() -> true, true, 3, "차가 움직일 수 있을 때"),
+            Arguments.of(List.of(Car.createInitialOne()), (MovingCondition)() -> false, false, 3, "차가 움직일 수 없을 때")
         );
     }
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import racingcar.domain.Car;
 import racingcar.domain.RacingGame;
+import racingcar.domain.RoundResult;
 import racingcar.domain.movingcondition.MovingCondition;
 import racingcar.domain.movingcondition.RandomMovingCondition;
 import racingcar.view.InputView;
@@ -12,6 +13,7 @@ import racingcar.view.ResultView;
 
 public class RacingGameController {
     private static final MovingCondition MOVING_CONDITION = new RandomMovingCondition();
+
     private final InputView inputView;
     private final ResultView resultView;
 
@@ -33,7 +35,7 @@ public class RacingGameController {
         List<Car> cars = new ArrayList<>();
 
         for (int i = 0; i < carCount; ++i) {
-            cars.add(new Car());
+            cars.add(Car.createInitialOne());
         }
 
         return cars;
@@ -43,7 +45,7 @@ public class RacingGameController {
         RacingGame racingGame = new RacingGame(cars, MOVING_CONDITION, playCount);
 
         while (!racingGame.isGameEnd()) {
-            List<Integer> roundResult = racingGame.play();
+            RoundResult roundResult = racingGame.play();
             resultView.printResult(roundResult);
         }
     }

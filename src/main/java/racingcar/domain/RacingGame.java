@@ -20,15 +20,15 @@ public class RacingGame {
         return remainPlayCount <= 0;
     }
 
-    public List<Integer> play() {
+    public RoundResult play() {
         if (!isGameEnd()) {
             return playNextRound();
         }
 
-        return List.of();
+        throw new RuntimeException("이미 종료된 게임입니다.");
     }
 
-    private List<Integer> playNextRound() {
+    private RoundResult playNextRound() {
         remainPlayCount--;
         List<Integer> result = new ArrayList<>();
 
@@ -36,6 +36,6 @@ public class RacingGame {
             result.add(car.move(movingCondition));
         }
 
-        return result;
+        return new RoundResult(result);
     }
 }

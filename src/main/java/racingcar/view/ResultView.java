@@ -2,6 +2,8 @@ package racingcar.view;
 
 import java.util.List;
 
+import racingcar.domain.RoundResult;
+
 public class ResultView {
 
     private static final String RESULT_DESCRIPTION = "실행 결과";
@@ -10,8 +12,8 @@ public class ResultView {
         System.out.println("\n" + RESULT_DESCRIPTION);
     }
 
-    public void printResult(List<Integer> result) {
-        for(var position: result) {
+    public void printResult(RoundResult roundResult) {
+        for(var position: roundResult.getPositions()) {
             System.out.println(PATH_STRING.repeat(position));
         }
         printNewLine();

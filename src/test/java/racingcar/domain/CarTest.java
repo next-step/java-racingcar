@@ -16,13 +16,13 @@ class CarTest {
     @ParameterizedTest(name = "조건에 따른 차 움직임 테스트: {2}")
     @MethodSource("provideMovingCondition")
     void moveTest(MovingCondition condition, int expectedPosition) {
-        assertThat(new Car().move(condition)).isEqualTo(expectedPosition);
+        assertThat(Car.createInitialOne().move(condition)).isEqualTo(expectedPosition);
     }
 
     @ParameterizedTest(name = "움직임 횟수에 따른 이동 거리 테스트: {0}회")
     @ValueSource(ints = {1, 2, 3, 4, 10})
     void positionTest(int moveCount) {
-        Car car = new Car();
+        Car car = Car.createInitialOne();
         int position = 0;
 
         for (int i = 0; i < moveCount; ++i) {

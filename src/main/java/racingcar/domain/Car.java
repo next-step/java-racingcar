@@ -6,8 +6,8 @@ public class Car {
 
     private int position;
 
-    public Car() {
-        this(0);
+    public static Car createInitialOne() {
+        return new Car(0);
     }
 
     public Car(int position) {
