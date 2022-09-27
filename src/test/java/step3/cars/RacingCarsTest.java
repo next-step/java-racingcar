@@ -1,11 +1,13 @@
 package step3.cars;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step3.car.Car;
 import step3.car.RacingCar;
 import step3.number.Number;
+import step3.position.CarPosition;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingCarsTest {
 
@@ -17,7 +19,7 @@ class RacingCarsTest {
 
         final Cars sut = new RacingCars();
 
-        Assertions.assertThat(sut.carsWithAddCar(car)).isEqualTo(new RacingCars().carsWithAddCar(car));
+        assertThat(sut.carsWithAddCar(car)).isEqualTo(new RacingCars().carsWithAddCar(car));
     }
 
     @Test
@@ -29,7 +31,19 @@ class RacingCarsTest {
 
         final Cars sut = cars.carsWithAddCar(car);
 
-        Assertions.assertThat(sut.carsWithRemoveCar(car)).isEqualTo(new RacingCars());
+        assertThat(sut.carsWithRemoveCar(car)).isEqualTo(new RacingCars());
+    }
+
+    @Test
+    @DisplayName("자동차들에게 턴을 사용할 있게 알람을 줄 수 있다.")
+    void c() {
+        final Number number = new Number.Fake(4);
+        final Car car = new RacingCar(number);
+        final Cars cars = new RacingCars();
+
+        final Cars sut = cars.carsWithAddCar(car);
+
+        assertThat(sut.carsWithTurnUsed()).isEqualTo(cars.carsWithAddCar(new RacingCar(new CarPosition(1), number)));
     }
 
 }
