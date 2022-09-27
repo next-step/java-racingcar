@@ -25,14 +25,4 @@ public class RacingTest {
 		assertThatThrownBy(() -> Racing.checkInput(input))
 			.isInstanceOf(RuntimeException.class);
 	}
-
-	@ParameterizedTest
-	@DisplayName("4이상 일때만 전진 테스트")
-	@CsvSource(value = {
-		"3:''",
-		"4:-"
-	}, delimiter = ':')
-	void moveTest(int input, String expected) {
-		assertThat(Racing.move(input)).isEqualTo(expected);
-	}
 }
