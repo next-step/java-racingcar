@@ -1,6 +1,4 @@
-package step3;
-
-import java.util.Scanner;
+package racingCar;
 
 public class ResultView {
 
@@ -17,6 +15,7 @@ public class ResultView {
     }
 
     public static void print_carPosition(Car car) {
+        System.out.print(car.getName() + " : ");
         for (int i = 0; i < car.getPos(); i++) {
             System.out.print("-");
         }
