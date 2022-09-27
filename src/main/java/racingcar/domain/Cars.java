@@ -1,26 +1,27 @@
 package racingcar.domain;
 
 import racingcar.strategy.MovingStrategy;
-import racingcar.view.ResultView;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class CarRace {
-    private List<Car> cars;
+public class Cars {
+    private List<Car> carRacing = new ArrayList<>();
 
-    public CarRace(List<Car> cars) {
-        this.cars = cars;
+    public Cars(int carCount) {
+        for (int i = 0; i < carCount; i++) {
+            carRacing.add(new Car());
+        }
     }
 
-    public List<Car> getCars() {
-        return cars;
-    }
-
-    public void move(MovingStrategy movingStrategy) {
-        cars.forEach(car -> car.move(movingStrategy));
-    }
-
-    public void print(ResultView resultView) {
-        cars.forEach(resultView::print);
+    public void move(int tryCount, MovingStrategy movingStrategy) {
+        for (int i = 0; i < tryCount; i++) {
+            Car car = new Car();
+            car.move(movingStrategy);
+            if (car.equals(new Car(1))) {
+                System.out.print("-");
+            }
+        }
+        System.out.println();
     }
 }
