@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.strategy.MovingStrategy;
+
 public class Car {
 
     private final Position position;

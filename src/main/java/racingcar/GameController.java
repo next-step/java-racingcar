@@ -1,13 +1,17 @@
 package racingcar;
 
+import racingcar.strategy.MovingStrategy;
+import racingcar.strategy.MovingStrategyFactory;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
 import java.util.List;
 
+import static racingcar.strategy.MovingStrategyType.*;
+
 public class GameController {
 
-    public static final MovingStrategy MOVING_STRATEGY = new RandomMovingStrategy();
+    public static final MovingStrategy MOVING_STRATEGY = MovingStrategyFactory.getInstance(RANDOM);
 
     public static void main(String[] args) {
         RacingCarGame racingCarGame = createRacingCarGame();

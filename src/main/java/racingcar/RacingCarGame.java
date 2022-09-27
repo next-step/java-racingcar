@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.strategy.MovingStrategy;
+
 import java.util.List;
 
 public class RacingCarGame {
