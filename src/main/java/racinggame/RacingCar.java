@@ -1,16 +1,14 @@
 package racinggame;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class RacingCar {
     private List<Car> cars = new ArrayList<>();
 
-    public RacingCar(String[] names) {
-        for (String name : names) {
-            cars.add(new Car(name));
-        }
+
+    public RacingCar(List<Car> cars) {
+        this.cars = cars;
     }
 
     public List<Car> racing() {
@@ -27,5 +25,24 @@ public class RacingCar {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public List<Car> getWinners() {
+        int max = cars.stream()
+                .mapToInt(Car::getStatus)
+                .max()
+                .orElse(0);
+
+        return cars.stream()
+                .filter(c -> c.getStatus() == max)
+                .collect(Collectors.toList());
+    }
+
+    public static RacingCar of(List<String> names) {
+        List<Car> cars = names.stream()
+                .map(name -> new Car(name))
+                .collect(Collectors.toList());
+
+        return new RacingCar(cars);
     }
 }

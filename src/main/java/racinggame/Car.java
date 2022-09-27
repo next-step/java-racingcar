@@ -15,6 +15,11 @@ public class Car {
         this.status = 0;
     }
 
+    public Car(String name, int status) {
+        this(name);
+        this.status = status;
+    }
+
     public void forward() {
         this.status++;
     }
@@ -37,6 +42,11 @@ public class Car {
         if (name.length() > MAX_NAME_LENGTH) {
             throw new RuntimeException(ERR_MAX_NAME_LENGTH);
         }
+        return name;
+    }
+
+    @Override
+    public String toString() {
         return name;
     }
 }
