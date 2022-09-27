@@ -20,20 +20,14 @@ public class CarRacingGame {
         readyToCarEntry();
         for (int index = 0; index < this.tryCount; index++) {
             doRacing();
-            displayRacingState(index);
+            // 각 게임 회차마다 현황 출력
+            ResultView.displayRacingState(this.carEntryList);
         }
     }
 
     private void doRacing() {
         this.carEntryList
                 .forEach(vo -> vo.move(random.nextInt(10)));
-    }
-
-    private void displayRacingState(int index) {
-        System.out.println((index + 1) + "번째 게임 결과");
-        this.carEntryList
-                .forEach(car -> System.out.println(car.getPositionString()));
-        System.out.println("");
     }
 
     private void readyToCarEntry() {

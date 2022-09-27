@@ -1,12 +1,10 @@
 package step3;
 
-import java.util.stream.IntStream;
-
 public class Car {
     private int id;
     private int position = 1;
 
-    final static int LIMIT_POINT_TO_MOVE = 4;
+    private final static int LIMIT_POINT_TO_MOVE = 4;
 
     Car(int id) {
         this.id = id;
@@ -22,9 +20,7 @@ public class Car {
         return point >= LIMIT_POINT_TO_MOVE ;
     }
 
-    public String getPositionString() {
-        StringBuilder positionString = new StringBuilder();
-        IntStream.range(0, position).forEach(vo -> positionString.append("-"));
-        return positionString.toString();
+    public int getPosition() {
+        return this.position;
     }
 }
