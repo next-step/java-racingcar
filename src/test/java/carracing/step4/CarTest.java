@@ -16,23 +16,22 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("Move 테스트 : moveNumber 9 : 결과 1")
+    @DisplayName("자동차 이동 시 moveNumber가 4 이상일 경우, moveCount가 1 반환")
     void moveTest1() {
         car.move(9);
         assertThat(car.getMoveCount()).isEqualTo(1);
     }
 
     @Test
-    @DisplayName("Move 테스트 : moveNumber 1 : 결과 0")
+    @DisplayName("자동차 이동 시 moveNumber가 4 미만일 경우, moveCount가 0 반환")
     void moveTest2() {
         car.move(1);
         assertThat(car.getMoveCount()).isEqualTo(0);
     }
 
     @Test
-    @DisplayName("Name 테스트 : name 'test' : 결과 'test'")
+    @DisplayName("객체 생성 시 name값이 test일 경우, name가 test 반환")
     void getName() {
-        car = new Car("test");
         assertThat(car.getName()).isEqualTo("test");
     }
 
