@@ -9,10 +9,6 @@ public class Car {
         if (canRun()) { distance += 1; }
     }
 
-    public void printDistance() {
-        ResultView.printDistance(distance());
-    }
-
     public int distance() {
         return distance;
     }
