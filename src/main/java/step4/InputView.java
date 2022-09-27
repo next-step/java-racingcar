@@ -14,8 +14,8 @@ public class InputView {
     public static List<Car> inputCarName() {
         System.out.println(CAR_NUM_TEXT);
         String inputName = scanner.next();
-        List<Car> carList= new ArrayList<>();
-        for(String name : inputName.split(",")){
+        List<Car> carList = new ArrayList<>();
+        for (String name : inputName.split(",")) {
             Car car = new Car(name);
             carList.add(car);
         }
