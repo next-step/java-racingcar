@@ -6,6 +6,8 @@ public class Car {
     private int id;
     private int position = 1;
 
+    final static int LIMIT_POINT_TO_MOVE = 4;
+
     Car(int id) {
         this.id = id;
     }
@@ -17,7 +19,7 @@ public class Car {
     }
 
     private boolean isMovable(int point) {
-        return point >= 4;
+        return point >= LIMIT_POINT_TO_MOVE ;
     }
 
     public String getPositionString() {
