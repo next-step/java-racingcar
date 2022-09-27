@@ -1,5 +1,6 @@
-package racingcar.domain;
+package racingcar.strategy;
 
+@FunctionalInterface
 public interface MovingStrategy {
-    void move();
+    boolean isMovable();
 }
