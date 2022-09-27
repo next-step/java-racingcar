@@ -2,13 +2,15 @@ package racing;
 
 public class ResultView {
     private static final String DISTANCE_CHARACTER = "-";
+    private static final String ROUND = "라운드";
+    private static final String RESULT_TITLE = "실행 결과";
 
-    public static void print(String str) {
-        System.out.println(str);
+    public static void printRound(int index) {
+        System.out.println(ROUND + " " + index);
     }
 
-    public static void print(String str, int index) {
-        System.out.println(str + " " + index);
+    public static void printResult() {
+        System.out.println(RESULT_TITLE);
     }
 
     public static void printDistance(int distance) {

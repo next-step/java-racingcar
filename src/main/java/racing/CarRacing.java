@@ -4,16 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarRacing {
-    private static final String INPUT_CAR_COUNT_TEXT = "자동차 대수는 몇 대 인가요?";
-
-    private static final String INPUT_ROUND_COUNT_TEXT = "시도할 회수는 몇 회 인가요?";
-
-    private static final String ROUND = "라운드";
-
-    private static final String RESULT_TITLE = "실행 결과";
-
     private int rounds = 0;
-
     private List<Car> cars = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -41,19 +32,19 @@ public class CarRacing {
     }
 
     private void setRounds() {
-        this.rounds = InputView.inputPositive(INPUT_ROUND_COUNT_TEXT);
+        this.rounds = InputView.inputRounds();
     }
 
     private void participateCars() {
-        int carCount = InputView.inputPositive(INPUT_CAR_COUNT_TEXT);
+        int carCount = InputView.inputCars();
         for (int i = 0; i < carCount; i++) {
             cars.add(new Car());
         }
     }
 
     private void announceResult(int round) {
-        if (round == 1) ResultView.print(RESULT_TITLE);
-        ResultView.print(ROUND, round);
+        if (round == 1) ResultView.printResult();
+        ResultView.printRound(round);
         for (Car car: cars) {
            car.printDistance();
         }
