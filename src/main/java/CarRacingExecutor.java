@@ -29,8 +29,6 @@ public class CarRacingExecutor {
     }
 
     public void proceedNextRound() {
-        for (Car car : carList) {
-            car.move();
-        }
+        carList.forEach(Car::move);
     }
 }
