@@ -23,16 +23,16 @@ public class SetCollectionTest {
     }
 
     @Test
-    @DisplayName("size() 메소드 테스트")
+    @DisplayName("set size 테스트")
     void testSize() {
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @DisplayName("value source를 이용한 contains() 메소드 반복 테스트")
     @ParameterizedTest(name = "{index} {displayName} value={0}")
     @ValueSource(ints = {1, 2, 3})
     void testContainsByValueSource(int number) {
-        assertThat(numbers.contains(number)).isTrue();
+        assertThat(numbers).contains(number);
     }
 
     @DisplayName("csv source를 이용한 contains() 메소드 반복 테스트")
