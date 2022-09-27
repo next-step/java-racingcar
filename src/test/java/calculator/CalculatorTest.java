@@ -1,4 +1,4 @@
-package step_2;
+package calculator;
 
 import org.junit.jupiter.api.Test;
 
@@ -43,6 +43,12 @@ class CalculatorTest {
     @Test
     void splitAndSum_negative() throws Exception {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
+                .isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    void splitAndSum_문자() {
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("a,b,3"))
                 .isInstanceOf(RuntimeException.class);
     }
 }
