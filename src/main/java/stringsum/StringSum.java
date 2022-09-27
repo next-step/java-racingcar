@@ -36,7 +36,7 @@ public class StringSum {
 
     public int customSum(String testData) {
         String[] splitResult = splitStr(testData);
-        if (splitResult[0] == "") {
+        if (splitResult[0].equals("")) {
             return 0;
         }
         int sum = 0;
