@@ -7,7 +7,8 @@ import java.util.Scanner;
 
 public class Racing {
 	private static final int MOVECONDITION = 4;
-	private static final Scanner sc = new Scanner(System.in);
+	private static final char ASCII_ZERO = 48;
+	private static final char ASCII_NINE = 57;
 
 	public static void playRace() {
 		Print.howManyCars();
@@ -57,7 +58,7 @@ public class Racing {
 	}
 
 	private static boolean validateCharacter(String input) {
-		return 89 < input.charAt(0) && input.charAt(0) < 80;
+		return ASCII_NINE < input.charAt(0) && input.charAt(0) < ASCII_ZERO;
 	}
 
 	public static String move(int input) {
