@@ -14,7 +14,7 @@ public class Racing {
 		generateCars(carCount);
 	}
 
-	public void generateCars(int carCount) {
+	private void generateCars(int carCount) {
 		this.cars = new ArrayList<>();
 		for (int i = 0; i < carCount; i++) {
 			cars.add(new Car());
