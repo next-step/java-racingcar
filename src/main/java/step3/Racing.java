@@ -11,9 +11,9 @@ public class Racing {
 
 	public static void playRace() {
 		Print.howManyCars();
-		String participant = sc.nextLine();
+		String participant = InputView.input();
 		Print.howManyMatches();
-		String matches = sc.nextLine();
+		String matches = InputView.input();
 
 		result(checkInput(participant), checkInput(matches));
 	}
