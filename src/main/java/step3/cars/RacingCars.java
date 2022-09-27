@@ -22,14 +22,14 @@ public final class RacingCars implements Cars {
 
     @Override
     public Cars carsWithAddCar(Car car) {
-        ArrayList<Car> existedCars = new ArrayList<>(cars);
+        final ArrayList<Car> existedCars = new ArrayList<>(cars);
         existedCars.add(car);
         return new RacingCars(Collections.unmodifiableList(existedCars));
     }
 
     @Override
     public Cars carsWithRemoveCar(Car car) {
-        ArrayList<Car> existedCars = new ArrayList<>(cars);
+        final ArrayList<Car> existedCars = new ArrayList<>(cars);
         existedCars.remove(car);
         return new RacingCars(Collections.unmodifiableList(existedCars));
     }
