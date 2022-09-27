@@ -10,9 +10,9 @@ public class ResultView {
         int carMovingNum = new InputView().getCarMovingNum();
         RacingCar racingCar = new RacingCar(numberOfCar);
         List<String> carStatus;
-        for (int i = 0; i < carMovingNum; i++){
+        for (int i = 0; i < carMovingNum; i++) {
             carStatus = racingCar.carMoving();
-            for (int j = 0; j < numberOfCar; j++){
+            for (int j = 0; j < numberOfCar; j++) {
                 System.out.println(carStatus.get(j));
             }
             System.out.println();
