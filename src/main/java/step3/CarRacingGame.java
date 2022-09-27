@@ -7,6 +7,8 @@ public class CarRacingGame {
     private final Integer tryCount;
     private final List<Car> carEntryList = new ArrayList<>();
 
+    private final static int RANGE_TO_MOVE_POINT = 10;
+
     CarRacingGame(int numberOfCar, int tryCount) {
         this.tryCount = tryCount;
         for (int index = 0; index < numberOfCar; index++) {
@@ -27,7 +29,7 @@ public class CarRacingGame {
 
     private void doRacing() {
         this.carEntryList
-                .forEach(Car::run);
+                .forEach(vo->vo.run(RandomUtil.generateRandomNumber(RANGE_TO_MOVE_POINT)));
     }
 
 }
