@@ -6,15 +6,23 @@ public class StringAddCalculator {
         if (isBlank(text)) {
             return 0;
         }
-        return sum(split(text));
+        return sum(toInts(split(text)));
     }
 
-    private static int sum(String[] numbers) {
+    private static int sum(int[] numbers) {
         int sum = 0;
-        for (String number : numbers) {
-            sum += Integer.parseInt(number);
+        for (int number : numbers) {
+            sum += number;
         }
         return sum;
+    }
+
+    private static int[] toInts(String[] numbersStr) {
+        int[] numbers = new int[numbersStr.length];
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = Integer.parseInt(numbersStr[i]);
+        }
+        return numbers;
     }
 
     private static String[] split(String text) {
