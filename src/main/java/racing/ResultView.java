@@ -11,7 +11,7 @@ public class ResultView {
         System.out.println(ROUND + " " + index);
     }
 
-    public static void printResult() {
+    public static void printResultTitle() {
         System.out.println(RESULT_TITLE);
     }
 

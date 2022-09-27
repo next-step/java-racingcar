@@ -14,7 +14,7 @@ public class CarRacing {
 
     private void play() {
         prepare();
-        ResultView.printResult();
+        ResultView.printResultTitle();
         for (int i = 1; i <= rounds; i++) {
             playRound();
             announceResult(i);
