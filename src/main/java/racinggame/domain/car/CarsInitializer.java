@@ -7,11 +7,13 @@ import racinggame.domain.exception.InvalidCarRegistrationException;
 
 public class CarsInitializer {
 
+    private static final int MAXIMUM_NAME_LENGTH = 5;
+    private static final int MINIMUM_NAME_LENGTH = 1;
     public static final String DELIMITER = ",";
 
     public static Cars initCars(String carNames) {
         List<Car> cars = new ArrayList<>();
-        String[] carNameArray = splitCarNames(carNames);
+        String[] carNameArray = getCarNameArray(carNames);
 
         for (String carName : carNameArray) {
             validateCarNameLength(carName);
@@ -21,13 +23,22 @@ public class CarsInitializer {
         return new Cars(cars);
     }
 
-    private static String[] splitCarNames(String carNames) {
-        validateCarNamesNull(carNames == null);
-
-        String[] carNameArray = carNames.split(DELIMITER);
+    private static String[] getCarNameArray(String carNames) {
+        String[] carNameArray = splitCarNames(carNames);
         validateCarCount(carNameArray);
 
         return carNameArray;
+    }
+
+    private static String[] splitCarNames(String carNames) {
+        validateCarNamesNull(carNames);
+        return carNames.split(DELIMITER);
+    }
+
+    private static void validateCarNamesNull(String carNames) {
+        if (carNames == null) {
+            throw new InvalidCarRegistrationException();
+        }
     }
 
     private static void validateCarCount(String[] carNameArray) {
@@ -36,14 +47,8 @@ public class CarsInitializer {
         }
     }
 
-    private static void validateCarNamesNull(boolean carNames) {
-        if (carNames) {
-            throw new InvalidCarRegistrationException();
-        }
-    }
-
     private static void validateCarNameLength(String carName) {
-        if (carName.length() > 5 || carName.length() == 0) {
+        if (carName.length() > MAXIMUM_NAME_LENGTH || carName.length() < MINIMUM_NAME_LENGTH) {
             throw new InvalidCarNameException();
         }
     }
