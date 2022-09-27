@@ -2,12 +2,9 @@ package racing.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Racing {
 
-	private static final int RANGE_OF_RANDOM_NUMBER = 10;
-	private final Random random = new Random();
 	private List<Car> cars;
 
 	public Racing(int carCount) {
@@ -21,9 +18,9 @@ public class Racing {
 		}
 	}
 
-	public void race() {
+	public void race(MoveStrategy moveStrategy) {
 		for (Car car : cars) {
-			car.move(random.nextInt(RANGE_OF_RANDOM_NUMBER));
+			car.move(moveStrategy.isMovable(moveStrategy.getRandomNumber()));
 		}
 	}
 
