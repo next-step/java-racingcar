@@ -1,4 +1,4 @@
-package game.view;
+package game.io.output;
 
 public class InputView {
 

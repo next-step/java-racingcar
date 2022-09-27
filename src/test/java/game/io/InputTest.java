@@ -1,5 +1,6 @@
-package game;
+package game.io;
 
+import game.io.input.Input;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 

@@ -1,7 +1,8 @@
-package game;
+package game.domain;
 
-import game.view.InputView;
-import game.view.ResultView;
+import game.io.input.Input;
+import game.io.output.InputView;
+import game.io.output.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;

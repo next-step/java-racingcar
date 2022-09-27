@@ -1,4 +1,4 @@
-package game;
+package game.io.input;
 
 import java.util.Scanner;
 
