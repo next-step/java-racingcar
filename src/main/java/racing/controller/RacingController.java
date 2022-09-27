@@ -1,23 +1,22 @@
 package racing.controller;
 
-import racing.model.Car;
 import racing.model.Racing;
 import racing.view.InputView;
 import racing.view.OutputView;
 
-import java.util.List;
-
 public class RacingController {
 
 	public void run() {
-		List<Car> cars = InputView.generateCars();
+		int carCount = InputView.inputCarCount();
 		int times = InputView.inputTimes();
-		Racing racing = new Racing(cars);
+		playGame(times, new Racing(carCount));
+	}
 
+	private void playGame(int times, Racing racing) {
 		OutputView.printResultMessage();
 		for (int i = 0; i < times; i++) {
 			racing.race();
-			OutputView.printCarsPosition(cars);
+			OutputView.printCarsPosition(racing.getCars());
 		}
 	}
 }
