@@ -8,7 +8,8 @@ public class CarsTest {
 
     @Test
     void create() {
-        assertThat(new Cars(5).move(() -> true)).hasSize(5);
+        String[] carNames = {"carA", "carB", "carC", "carD", "carE"};
+        assertThat(new Cars(carNames).move(() -> true)).hasSize(5);
     }
 
 }

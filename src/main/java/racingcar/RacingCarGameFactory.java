@@ -5,8 +5,8 @@ import racingcar.view.InputView;
 public class RacingCarGameFactory {
 
     public static RacingCarGame getInstance() {
-        int carCount = InputView.getCarCount();
+        String[] carNames = InputView.getCarNames();
         int playCount = InputView.getPlayCount();
-        return new RacingCarGame(carCount, playCount);
+        return new RacingCarGame(carNames, playCount);
     }
 }

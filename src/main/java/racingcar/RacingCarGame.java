@@ -9,8 +9,8 @@ public class RacingCarGame {
     private final Cars cars;
     private int playCount;
 
-    public RacingCarGame(int carCount, int playCount) {
-        this.cars = new Cars(carCount);
+    public RacingCarGame(String[] carNames, int playCount) {
+        this.cars = new Cars(carNames);
         this.playCount = playCount;
     }
 

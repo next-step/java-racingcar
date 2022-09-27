@@ -4,11 +4,13 @@ import java.util.Scanner;
 
 public class InputView {
 
+    public static final String CAR_NAME_SEPARATOR = ",";
+
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static int getCarCount() {
+    public static String[] getCarNames() {
         System.out.println("자동차 대수는 몇 대 인가요?");
-        return nextInt();
+        return nextLine().split(CAR_NAME_SEPARATOR);
     }
 
     public static int getPlayCount() {
@@ -18,6 +20,10 @@ public class InputView {
 
     public static int nextInt() {
         return scanner.nextInt();
+    }
+
+    public static String nextLine() {
+        return scanner.nextLine();
     }
 
 }

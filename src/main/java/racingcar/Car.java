@@ -5,17 +5,15 @@ import racingcar.strategy.MovingStrategy;
 public class Car {
 
     private final Position position;
+    private final Name name;
 
-    public Car() {
-        this(0);
+    public Car(String name) {
+        this(0, name);
     }
 
-    public Car(int position) {
+    public Car(int position, String name) {
         this.position = new Position(position);
-    }
-
-    public int getPosition() {
-        return position.getPosition();
+        this.name = new Name(name);
     }
 
     public Position move(MovingStrategy movingStrategy) {
@@ -23,5 +21,13 @@ public class Car {
             position.move();
         }
         return position;
+    }
+
+    public int getPosition() {
+        return position.getPosition();
+    }
+
+    public String getName() {
+        return name.getName();
     }
 }

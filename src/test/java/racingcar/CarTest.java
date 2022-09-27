@@ -14,7 +14,7 @@ public class CarTest {
     @ParameterizedTest(name="{2}")
     @MethodSource("strategyParameterProvider")
     void move(MovingStrategy movingStrategy, Position expected, String displayMessage) {
-        assertThat(new Car().move(movingStrategy)).isEqualTo(expected);
+        assertThat(new Car("carA").move(movingStrategy)).isEqualTo(expected);
     }
 
     static Stream<Arguments> strategyParameterProvider() {

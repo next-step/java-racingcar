@@ -9,14 +9,14 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(int carCount) {
-        cars = createCars(carCount);
+    public Cars(String[] carNames) {
+        cars = createCars(carNames);
     }
 
-    private List<Car> createCars(int carCount) {
+    private List<Car> createCars(String[] carNames) {
         final List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
         }
         return cars;
     }
