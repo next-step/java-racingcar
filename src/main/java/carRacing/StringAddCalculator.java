@@ -5,7 +5,6 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
-
 	private static final String DELIMITER_REGEX = "//(.)\n(.*)";
 	private static final String DEFAULT_REGEX = ",|:";
 	private static final Integer TARGET_DELIMITER = 1;
@@ -38,7 +37,7 @@ public class StringAddCalculator {
 		return m.group(TARGET_TOKENS).split(customDelimiter);
 	}
 
-	public static int calculate(String[] tokens) {
+	private static int calculate(String[] tokens) {
 
 		for (String token : tokens) {
 			answer += toInt(token);
