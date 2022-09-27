@@ -1,5 +1,7 @@
 package step4;
 
+import java.util.List;
+
 public class ResultView {
 
     public static final String RESULT_TEXT = "실행 결과";
@@ -17,6 +19,10 @@ public class ResultView {
 
     public static void cycleEnd() {
         System.out.println(END_TEXT);
+    }
+
+    public static void getWinner(String winner) {
+        System.out.println(winner + "가 최종 우승했습니다.");
     }
 }
 

@@ -8,6 +8,11 @@ public class Car {
         this.name = name;
     }
 
+    public Car(String name, int location) {
+        this.name = name;
+        this.location = location;
+    }
+
     public void moveForward() {
         this.location += 1;
     }

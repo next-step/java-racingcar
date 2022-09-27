@@ -3,11 +3,14 @@ package step4;
 import org.junit.jupiter.api.Test;
 import step3.GameRule;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static step3.GameRule.decideMove;
+import static step4.CarFactory.*;
+import static step4.Winner.*;
 
 class RacingCarTest {
 
@@ -29,18 +32,36 @@ class RacingCarTest {
 
     @Test
     void input_이름만큼_차_생산() {
-        assertThat(CarFactory.produceCar("pobi,crong,honux").size()).isEqualTo(3);
+        assertThat(produceCar("pobi,crong,honux").size()).isEqualTo(3);
     }
 
     @Test
     void input_이름_알맞게_저장확인() {
-        assertThat(CarFactory.produceCar("pobi,crong,honux").get(0).name).isEqualTo("pobi");
+        assertThat(produceCar("pobi,crong,honux").get(0).name).isEqualTo("pobi");
     }
 
     @Test
     void input_이름이_5글자_넘어가면_에러() {
         assertThatThrownBy(() -> {
-            CarFactory.produceCar("pobi,crong,honux,yeonsu");
+            produceCar("pobi,crong,honux,yeonsu");
         }).isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    void winner_구하기() {
+        List<Car> carList = new ArrayList<>();
+        carList.add(new Car("pobi", 5));
+        carList.add(new Car("crong", 3));
+        carList.add(new Car("honux", 2));
+        assertThat(getWinner(carList)).isEqualTo("pobi");
+    }
+
+    @Test
+    void winner_2명일_때() {
+        List<Car> carList = new ArrayList<>();
+        carList.add(new Car("pobi", 5));
+        carList.add(new Car("crong", 5));
+        carList.add(new Car("honux", 2));
+        assertThat(getWinner(carList)).isEqualTo("pobi, crong");
     }
 }
