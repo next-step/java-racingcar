@@ -27,4 +27,27 @@ class CarsTest {
         assertThat(cars.getCars().get(2).getName()).isEqualTo("honux");
     }
 
+    @Test
+    void 우승자_테스트() {
+        List<Car> carList = new ArrayList<>();
+        carList.add(new Car(3, "pobi"));
+        carList.add(new Car(4, "crong"));
+        carList.add(new Car(5, "honux"));
+        Cars cars = new Cars(carList);
+
+        List<String> winners = cars.getWinners();
+        assertThat(winners).containsExactly("honux");
+    }
+
+    @Test
+    void 우승자_2명이상_테스트() {
+        List<Car> carList = new ArrayList<>();
+        carList.add(new Car(5, "pobi"));
+        carList.add(new Car(4, "crong"));
+        carList.add(new Car(5, "honux"));
+        Cars cars = new Cars(carList);
+
+        List<String> winners = cars.getWinners();
+        assertThat(winners).contains("pobi", "honux");
+    }
 }

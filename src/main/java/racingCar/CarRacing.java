@@ -1,7 +1,6 @@
 package racingCar;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class CarRacing {
     public static void main(String[] args) {
@@ -12,13 +11,15 @@ public class CarRacing {
         Cars cars = new Cars(new ArrayList<>());
         cars = cars.createCars(carNames);
 
-        ResultView.print_GameResult();
+        ResultView.printGameResult();
 
         for (int i = 0; i < tryNum; i++) {
             cars.playGame();
-            ResultView.print_PlayResult(cars);
+            ResultView.printPlayResult(cars);
             System.out.println();
         }
+
+        ResultView.printWinners(cars.getWinners());
     }
 
 

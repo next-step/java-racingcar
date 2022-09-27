@@ -3,7 +3,7 @@ package racingCar;
 
 import java.util.Random;
 
-public class Car {
+public class Car implements Comparable<Car> {
     public static final int MOVE_NUM = 4;
     public static final int RANDOM_BOUND = 10;
     public static final String ERR_MSG_NAME_LENGTH = "이름은 5글자를 초과할 수 없습니다.";
@@ -14,8 +14,8 @@ public class Car {
         this.pos = 0;
     }
 
-    public Car(String name) {
-        this.pos = 0;
+    public Car(int pos, String name) {
+        this.pos = pos;
         this.name = name;
     }
 
@@ -43,5 +43,10 @@ public class Car {
 
     public String getName() {
         return this.name;
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return o.pos - this.pos;
     }
 }
