@@ -1,20 +1,15 @@
 package RacingCar;
 
-import static RacingCar.RacingCar.random;
-
 public class Car {
-    private final int name;
     private int position;
+    private int STANDARD_TO_MOVE_NUMBER = 4;
 
-    public Car(int name, int position) {
-        this.name = name;
-        this.position = position;
+    public Car() {
+        this.position = 1;
     }
 
-    public void move() {
-        int result = random();
-
-        if (result >= 4) {
+    public void move(int input) {
+        if (input >= STANDARD_TO_MOVE_NUMBER) {
             position += 1;
         }
     }
