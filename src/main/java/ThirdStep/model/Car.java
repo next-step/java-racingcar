@@ -10,12 +10,8 @@ public class Car {
         this.location = START_LOCATION;
     }
 
-    public void setName(String name) {
+    private void setName(String name) {
         this.name = name;
-    }
-
-    public void setLocation(int location) {
-        this.location = location;
     }
 
     public int getLocation() {
@@ -24,6 +20,10 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    public void move() {
+        ++this.location;
     }
 
     public static Car of(CarRequest carRequest) {

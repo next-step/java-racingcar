@@ -3,6 +3,8 @@ package ThirdStep;
 import ThirdStep.model.Car;
 import ThirdStep.model.CarRequest;
 import ThirdStep.model.GameSetting;
+import ThirdStep.services.CarService;
+import ThirdStep.services.PlayService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,13 +14,13 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class PlayTest {
+class PlayServiceTest {
 
     private List<Car> cars = new ArrayList<>();
     private final int INIT_ATTEMPTS = 5;
     private final int ZERO = 0;
 
-    private final Play play = new Play(new CarAction());
+    private final PlayService play = new PlayService(new CarService());
 
     @BeforeEach
     void setCars() {

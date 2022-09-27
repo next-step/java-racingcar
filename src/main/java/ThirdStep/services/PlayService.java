@@ -1,14 +1,15 @@
-package ThirdStep;
+package ThirdStep.services;
 
+import ThirdStep.RandomMovingCondition;
 import ThirdStep.model.GameSetting;
 
-public class Play {
+public class PlayService {
 
     public static final int ZERO = 0;
-    public CarAction carAction;
+    public CarService carService;
 
-    public Play(CarAction carAction) {
-        this.carAction = carAction;
+    public PlayService(CarService carService) {
+        this.carService = carService;
     }
 
     public void racing(GameSetting gameSetting) {
@@ -17,8 +18,8 @@ public class Play {
         }
 
         gameSetting.getCars().forEach(car -> {
-            carAction.move(car, RandomMovingCondition.create());
-            carAction.printLocation(car);
+            carService.move(car, RandomMovingCondition.create());
+            carService.printLocation(car);
         });
 
         System.out.println();
@@ -27,6 +28,6 @@ public class Play {
     }
 
     public void announceWinner(GameSetting gameSetting) {
-        carAction.printWinner(gameSetting.getCars());
+        carService.printWinner(gameSetting.getCars());
     }
 }

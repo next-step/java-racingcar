@@ -1,6 +1,6 @@
-package ThirdStep;
+package ThirdStep.utils;
 
-public class TextPrinter {
+public class TextPrintUtils {
 
     public static void println(String text) {
         System.out.println(text);
