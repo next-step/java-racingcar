@@ -3,10 +3,10 @@ package step3;
 import java.util.Scanner;
 
 public class InputView {
-    Integer numberOfCar;
-    Integer tryCount;
+    private Integer numberOfCar;
+    private Integer tryCount;
 
-    public void readUserInput() {
+    public InputView() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("자동차 대수는 몇 대 인가요?");
         int numberOfCar = scanner.nextInt();
@@ -17,7 +17,13 @@ public class InputView {
         this.tryCount = tryCount;
     }
 
-    public CarRacingGame getCarRacingGame() {
-        return new CarRacingGame(numberOfCar, tryCount);
+    public Integer getNumberOfCar() {
+        return numberOfCar;
     }
+
+    public Integer getTryCount() {
+        return tryCount;
+    }
+
+
 }

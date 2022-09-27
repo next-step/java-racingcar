@@ -14,6 +14,10 @@ public class CarRacingGame {
         }
     }
 
+    public List<Car> getCarEntryList() {
+        return carEntryList;
+    }
+
     // 게임 시작
     public void doGame() {
         for (int index = 0; index < this.tryCount; index++) {
