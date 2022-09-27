@@ -3,7 +3,7 @@ package racinggame.domain.scoreboard;
 import java.util.ArrayList;
 import java.util.List;
 import racinggame.domain.car.Cars;
-import racinggame.domain.exception.InvalidRoundException;
+import racinggame.domain.exception.OutOfRoundException;
 
 public class ScoreBoard {
 
@@ -14,16 +14,18 @@ public class ScoreBoard {
     }
 
     public Score getScore(int round) {
-        try {
-            return scoredBoard.get(round - 1);
-        } catch (Exception e) {
-            throw new InvalidRoundException();
+        validateNumOfRound(round);
+        return scoredBoard.get(round - 1);
+    }
+
+    private void validateNumOfRound(int round) {
+        if (round <= 0 || round > scoredBoard.size()) {
+            throw new OutOfRoundException();
         }
     }
 
     public List<String> getWinner(int round) {
-        return getScore(round)
-                .getWinner();
+        return getScore(round).getWinner();
     }
 
     public int getCountOfRound() {

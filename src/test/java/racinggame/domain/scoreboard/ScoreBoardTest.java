@@ -9,7 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racinggame.domain.car.Car;
 import racinggame.domain.car.Cars;
-import racinggame.domain.exception.InvalidRoundException;
+import racinggame.domain.exception.OutOfRoundException;
 
 class ScoreBoardTest {
 
@@ -47,8 +47,13 @@ class ScoreBoardTest {
     @DisplayName("존재하지 않는 라운드 확인 시 예외 발생.")
     void fail_get_invalid_round_score() {
         ScoreBoard scoreBoard = getDefaultNewScoreBoard();
-        assertThatThrownBy(() -> scoreBoard.getWinner(-1))
-                .isInstanceOf(InvalidRoundException.class);
+
+        assertAll(
+                () -> assertThatThrownBy(() -> scoreBoard.getWinner(-1))
+                        .isInstanceOf(OutOfRoundException.class),
+                () -> assertThatThrownBy(() -> scoreBoard.getWinner(4))
+                        .isInstanceOf(OutOfRoundException.class)
+        );
     }
 
     private ScoreBoard getDefaultNewScoreBoard() {
