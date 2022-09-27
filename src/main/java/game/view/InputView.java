@@ -8,27 +8,28 @@ public class InputView {
 
     private static final String QUESTION_FOR_CAR_NUM = "자동차 대수는 몇 대 인가요?";
     private static final String QUESTION_FOR_TRY_NUM = "시도할 횟수는 몇 회 인가요?";
-    private static final Scanner SCANNER = new Scanner(System.in);
 
     private InputView() {
         throw new UnsupportedOperationException("This is a utility class and cannot be instantiated");
     }
 
     public static GameParam getGameParam() {
-        return new GameParam(inputCountOfCar(), inputCountOfTry());
+        try(Scanner scanner = new Scanner(System.in)) {
+            return new GameParam(inputCountOfCar(scanner), inputCountOfTry(scanner));
+        }
     }
 
-    private static int inputCountOfCar() {
+    private static int inputCountOfCar(Scanner scanner) {
         System.out.println(QUESTION_FOR_CAR_NUM);
-        return inputNum();
+        return inputNum(scanner);
     }
 
-    private static int inputCountOfTry() {
+    private static int inputCountOfTry(Scanner scanner) {
         System.out.println(QUESTION_FOR_TRY_NUM);
-        return inputNum();
+        return inputNum(scanner);
     }
 
-    private static int inputNum() {
-        return Integer.parseInt(SCANNER.nextLine());
+    private static int inputNum(Scanner scanner) {
+        return Integer.parseInt(scanner.nextLine());
     }
 }

@@ -13,6 +13,7 @@ public class OutputView {
     }
 
     public static void printOutputStart() {
+        System.out.println();
         System.out.println(OUTPUT_START_MESSAGE);
     }
 
