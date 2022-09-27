@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import static racingcar.domain.Moving.*;
+
 public class Car {
     private Distance total;
 
@@ -7,8 +9,8 @@ public class Car {
         total = Distance.ZERO;
     }
 
-    public Distance move(MovingFlag flag) {
-        if (flag.canMove()) {
+    public Distance move(Moving moving) {
+        if (moving == GO) {
             total = total.increment();
         }
         return total;
