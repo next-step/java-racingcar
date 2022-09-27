@@ -29,7 +29,7 @@ public class Cars {
     }
 
     public List<CarVo> getAllCarsTrace() {
-        return cars.stream().map(car -> new CarVo(car.getName(), car.getMoveCnt())).collect(toList());
+        return cars.stream().map(car -> new CarVo(car.getName(), car.getMoveCount())).collect(toList());
     }
 
     public List<String> getWinner() {
@@ -43,10 +43,10 @@ public class Cars {
     private List<Car> getWinnerCars(List<Car> winnerCars, Car car) {
         if (winnerCars.isEmpty()) {
             winnerCars.add(car);
-        } else if (winnerCars.get(0).getMoveCnt() < car.getMoveCnt()) {
+        } else if (winnerCars.get(0).getMoveCount() < car.getMoveCount()) {
             winnerCars.clear();
             winnerCars.add(car);
-        } else if (winnerCars.get(0).getMoveCnt() == car.getMoveCnt()) {
+        } else if (winnerCars.get(0).getMoveCount() == car.getMoveCount()) {
             winnerCars.add(car);
         }
         return winnerCars;

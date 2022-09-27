@@ -3,16 +3,16 @@ package carracing.step4;
 public class Car {
     private static final int MOVABLE_THRESHOLD = 4;
     private final String name;
-    private int moveCnt;
+    private int moveCount;
 
     public Car(String name) {
         this.name = name;
-        this.moveCnt = 0;
+        this.moveCount = 0;
     }
 
     public void move(int moveNumber) {
         if (isMovable(moveNumber)) {
-            moveCnt += 1;
+            moveCount += 1;
         }
     }
 
@@ -24,8 +24,8 @@ public class Car {
         return name;
     }
 
-    public int getMoveCnt() {
-        return moveCnt;
+    public int getMoveCount() {
+        return moveCount;
     }
 
 }

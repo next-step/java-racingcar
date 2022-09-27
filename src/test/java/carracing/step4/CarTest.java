@@ -19,14 +19,14 @@ class CarTest {
     @DisplayName("Move 테스트 : moveNumber 9 : 결과 1")
     void moveTest1() {
         car.move(9);
-        assertThat(car.getMoveCnt()).isEqualTo(1);
+        assertThat(car.getMoveCount()).isEqualTo(1);
     }
 
     @Test
     @DisplayName("Move 테스트 : moveNumber 1 : 결과 0")
     void moveTest2() {
         car.move(1);
-        assertThat(car.getMoveCnt()).isEqualTo(0);
+        assertThat(car.getMoveCount()).isEqualTo(0);
     }
 
     @Test
