@@ -15,11 +15,17 @@ public class InputView {
     }
 
     public static GameParam getGameParam() {
+        return new GameParam(inputCountOfCar(), inputCountOfTry());
+    }
+
+    private static int inputCountOfCar() {
         System.out.println(QUESTION_FOR_CAR_NUM);
-        int carNumber = inputNum();
+        return inputNum();
+    }
+
+    private static int inputCountOfTry() {
         System.out.println(QUESTION_FOR_TRY_NUM);
-        int tryNumber = inputNum();
-        return new GameParam(carNumber, tryNumber);
+        return inputNum();
     }
 
     private static int inputNum() {
