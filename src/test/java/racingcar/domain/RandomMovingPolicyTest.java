@@ -3,6 +3,7 @@ package racingcar.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racingcar.controller.RandomGenerator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -17,7 +18,12 @@ class RandomMovingPolicyTest {
             "10,1"
     })
     void nextStep(Integer randomNumber, Integer expected) {
-        RandomMovingPolicy randomMovingPolicy = new RandomMovingPolicy(randomNumber);
+        RandomMovingPolicy randomMovingPolicy = new RandomMovingPolicy(new RandomGenerator() {
+            @Override
+            public Integer randomNumber() {
+                return randomNumber;
+            }
+        });
 
         assertThat(randomMovingPolicy.nextStep()).isEqualTo(expected);
     }
