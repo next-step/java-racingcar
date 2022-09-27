@@ -9,9 +9,9 @@ public class Car implements Comparable<Car> {
     private static final int MAX_VALUE = 9;
     private static final int MIN_VALUE = 0;
 
-    private CarName name;
+    private final CarName name;
     private int distance;
-    private Randomable randomable;
+    private final Randomable randomable;
 
     public Car(String name) {
         this.name = new CarName(name);
@@ -45,6 +45,10 @@ public class Car implements Comparable<Car> {
 
     private boolean isRunnable() {
         return RUNNABLE_BOUND <= randomable.getIntInRange(MIN_VALUE, MAX_VALUE);
+    }
+
+    public boolean hasSameDistance(Car input){
+        return this.distance == input.distance;
     }
 
     public String showGraph(String figure) {

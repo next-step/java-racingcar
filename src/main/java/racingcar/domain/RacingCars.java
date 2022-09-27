@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingCars {
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public RacingCars(List<Car> cars) {
         this.cars = cars;
@@ -32,7 +32,7 @@ public class RacingCars {
         Car firstWinner = cars.get(0);
 
         List<Car> winners = cars.stream()
-                .filter(car -> car.compareTo(firstWinner) == 0)
+                .filter(car -> car.hasSameDistance(firstWinner))
                 .collect(Collectors.toList());
 
         return new Winners(winners);
