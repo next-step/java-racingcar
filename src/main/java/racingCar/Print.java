@@ -1,4 +1,4 @@
-package step3;
+package racingCar;
 
 public class Print {
 	public static void howManyCars() {
