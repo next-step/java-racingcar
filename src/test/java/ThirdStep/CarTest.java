@@ -7,7 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarTest {
 
@@ -15,31 +15,16 @@ class CarTest {
 
     private Car car;
     private final CarService carService = new CarService();
+    private CarRequest carRequest;
 
     @BeforeEach
-    void setCar() {
-        car = Car.of(new CarRequest("yerin"));
+    void setCarRequest() {
+        carRequest = new CarRequest("hello_world");
     }
 
     @Test
-    @DisplayName("Car를 최초 생성 시 location = 0이다.")
-    void Car_초기화() {
-        assertThat(car.getLocation()).isEqualTo(INIT_LOCATION);
-    }
-
-    @Test
-    @DisplayName("최초 생성되어 location이 0인 Car의 move에 true가 전달되면 location은 1이 된다.")
-    void Car_이동_true() {
-        carService.move(car, () -> true);
-
-        assertThat(car.getLocation()).isEqualTo(1);
-    }
-
-    @Test
-    @DisplayName("최초 생성되어 location이 0인 Car의 move에 false가 전달되면 그대로 0이다.")
-    void Car_이동_false() {
-        carService.move(car, () -> true);
-
-        assertThat(car.getLocation()).isEqualTo(1);
+    @DisplayName("5글자가 넘는 이름으로 Car를 생성하려하면 에러가 발생한다.")
+    void create_car_test() {
+        assertThatThrownBy(() -> Car.of(carRequest)).isInstanceOf(RuntimeException.class);
     }
 }

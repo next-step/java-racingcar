@@ -41,7 +41,7 @@ class GameSettingServiceTest {
     }
 
     @Test
-    @DisplayName("입력된 자동차 이름 만큼의 현재 위치가 0인 Car를 생성한다.")
+    @DisplayName("입력된 자동차 이름 개수와 동일한 수의 Car를 생성한다.")
     void 자동차_생성_테스트() {
         gameSettingService.setting();
 
@@ -49,7 +49,6 @@ class GameSettingServiceTest {
         List<Car> cars = gameSetting.getCars();
 
         assertThat(cars.size()).isEqualTo(CAR_COUNT);
-        cars.forEach(car -> assertThat(car.getLocation()).isEqualTo(0));
     }
 
     @Test
