@@ -8,9 +8,9 @@ public final class RacingCar implements Car {
 
     private static final int NUMBER_OF_JUDGMENT_THAT_CAN_GO_FORWARD = 4;
 
-    private int position;
+    private final int position;
 
-    private Number number;
+    private final Number number;
 
     public RacingCar(Number number) {
         this(0, number);
@@ -22,10 +22,11 @@ public final class RacingCar implements Car {
     }
 
     @Override
-    public void useTurn() {
+    public Car movedCar() {
         if (number.generatedNumber() >= NUMBER_OF_JUDGMENT_THAT_CAN_GO_FORWARD) {
-            position += 1;
+            return new RacingCar(1, number);
         }
+        return new RacingCar(0, number);
     }
 
     @Override
