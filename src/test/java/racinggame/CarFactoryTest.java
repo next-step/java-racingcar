@@ -14,12 +14,13 @@ class CarFactoryTest {
     @Test
     void 자동차가_조건에따라_생성된다() {
         //given
-        RaceInputDTO dto = new RaceInputDTO(1, 3);
+        RaceInputDTO dto = new RaceInputDTO(1, new String[]{"car1","car3","car2"});
 
         //when
         List<Car> cars = CarFactory.produce(dto);
 
         //then
         assertThat(cars).hasSize(3);
+        assertThat(cars.get(0).name()).isEqualTo("car1");
     }
 }

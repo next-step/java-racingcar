@@ -13,13 +13,13 @@ public class RaceInputReader {
 
     public static RaceInputDTO raed() {
         try {
-            System.out.println("경기할 자동차는 몇 대 인가요?");
-            int carCount = sc.nextInt();
+            System.out.println("자동차 이름을 입력해 주세요 (여러개인 경우 , 로 구분)");
+            String carNames = sc.nextLine();
 
             System.out.println("경기는 회수는 몇 회 진행 할까요?");
             int roundCount = sc.nextInt();
 
-            return new RaceInputDTO(roundCount, carCount);
+            return new RaceInputDTO(roundCount, carNames.split(","));
         } catch (InputMismatchException e) {
             System.err.println("숫자만 입력할 수 있습니다.");
             throw e;
