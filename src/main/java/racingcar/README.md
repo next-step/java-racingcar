@@ -28,3 +28,38 @@
 ### GameController
 - [x] 입력, 출력, 게임 진행 전반을 제어하는 컨트롤러
 - [x] `RacingCarGame.isEnd()` 의 값이 false면 계속해서 `move()` 메소드를 호출해 게임을 진행한다
+
+---
+
+## 리팩토링 요구 사항
+- [ ] `MovingStrategy` 팩토리로 주입
+- [ ] `straregy` 패키지 분리
+- [ ] `RandomMovingStrategy의` `Random` 객체 매번 생성하지 않고 재사용 되도록
+- [ ] `GameController`의 `RacingCarGame` 생성 부분 팩토리로 분리
+- [ ] `Cars.move()` 에서 `ArrayList` 를 매번 생성해 반환하지 않고 필드인 `List<Car>`를 반환하도록 수정
+
+## Step4 기능 요구 사항
+### Car
+- [ ] 자동차에 이름 부여 가능
+  - `Name` 클래스로 분리
+### Name
+- [ ] 자동차 이름을 저장
+- [ ] 생성 시 유효하지 않은 입력 예외 처리 수행
+  - 자동차의 이름은 5자를 초과할 수 없음
+### InputView
+- [ ] 자동차 이름 입력 받기
+  - [ ] 자동차 이름은 쉼표 `,` 를 기준으로 구분
+### Position
+- [ ] 자신의 position과 인자로 주어진 position의 크기를 비교해 더 큰 인스턴스를 반환하는 메서드 추가 - `getBigger()`
+### Car
+- [ ] 주어진 Car이 현재 Car과 같은 Position (값)을 가지고 있는지 반환 - `isPositionEqual(Position position)`
+### Cars
+- [ ] 가장 앞서 있는 자동차의 Position 값 찾기 - `findMaxPosition()`
+  - `List<Car>`의 Position을 순회하며 `Position.getBigger()` 호출
+- [ ] `Car.isPositionEqual()`가 `true`인 `List<Car>`를 반환하는 메서드 제공 - `getSamePositionCars()`
+### RacingCarGame
+- [ ] 경주 완료 후 우승자 찾기 (여러명 가능) - `findWinners()`
+  - `Cars.findMaxPosition()`으로 최대 값 `Position`을 찾은 후 `Cars.getSamePositionCars()`를 통해 우승 Cars의 List를 얻기 
+### OutputView
+- [ ] 게임 결과 출력 시 자동차 이름 같이 표시해야 함
+- [ ] 게임 종료 후 우승자 출력 필요
