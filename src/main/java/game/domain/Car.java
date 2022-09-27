@@ -8,7 +8,8 @@ public class Car {
         return location;
     }
 
-    public void forward() {
-        location += 1;
+    public void forward(int number) {
+        location += number;
     }
+
 }

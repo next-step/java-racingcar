@@ -1,85 +1,53 @@
 package game.domain;
 
-import game.io.input.Input;
-import game.io.output.InputView;
-import game.io.output.ResultView;
+import game.io.output.RacingGameOutput;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class RacingGame {
 
-    private List<Car> cars = new ArrayList<>();
+    private static final Random random = new Random();
+    private CarList carList;
     private RacingGameRule racingGameRule;
     private int round;
-    private final static int CHANGE_LOCATION_BOUND = 10;
 
-    public static void start(RacingGameRule racingGameRule) {
-        RacingGame racingGame = new RacingGame(racingGameRule);
-        racingGame.makeCar(racingGame.inputNumberOfCar());
-        racingGame.setRound(racingGame.inputNumberOfRound());
-        racingGame.progressGame();
-    }
-
-    public RacingGame(RacingGameRule racingGameRule) {
+    public RacingGame(RacingGameRule racingGameRule, CarList cars, int round) {
         this.racingGameRule = racingGameRule;
+        this.carList = cars;
+        this.round = round;
     }
 
-    private void progressGame() {
-        ResultView.startGame();
+    public void progressGame() {
+        RacingGameOutput.startGame();
         for (int i = 0; i < round(); i++) {
-            progressRound(cars());
-            ResultView.printCarsStatus(cars());
-            ResultView.finishRound();
+            progressRound(carList);
         }
     }
 
-    private void progressRound(List<Car> cars) {
-        for (Car car : cars) {
-            changeCarLocation(car);
+    private void progressRound(CarList carList) {
+        for (Car car : carList.cars()) {
+            forwardByRule(car, pickRandomNumber());
+        }
+        RacingGameOutput.printCarsStatus(carList);
+        RacingGameOutput.finishRound();
+    }
+
+    public void forwardByRule(Car car, int number) {
+        if (racingGameRule.isForward(number)) {
+            car.forward(racingGameRule.forwardDistance());
         }
     }
 
-    private void changeCarLocation(Car car) {
-        if (racingGameRule.isForward(pickRandomNumber(CHANGE_LOCATION_BOUND))) {
-            car.forward();
-        }
-    }
-
-
-    private int pickRandomNumber(int bound) {
-        Random random = new Random();
-        return random.nextInt(bound);
-    }
-
-
-    public int inputNumberOfCar() {
-        InputView.printInputCarGuide();
-        return Input.inputPositiveNumber();
-    }
-
-    public int inputNumberOfRound() {
-        InputView.printInputRoundGuide();
-        return Input.inputPositiveNumber();
-    }
-
-    public void makeCar(int inputPositiveNumber) {
-        for (int i = 0; i < inputPositiveNumber; i++) {
-            cars.add(new Car());
-        }
-    }
-
-    public void setRound(int number) {
-        round = number;
-    }
-
-    public List<Car> cars() {
-        return cars;
+    public CarList carList() {
+        return carList;
     }
 
     public int round() {
         return round;
+    }
+
+    public int pickRandomNumber() {
+        return random.nextInt(racingGameRule.bound());
     }
 
 }

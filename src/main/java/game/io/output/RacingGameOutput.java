@@ -1,16 +1,15 @@
 package game.io.output;
 
 import game.domain.Car;
+import game.domain.CarList;
 
-import java.util.List;
-
-public class ResultView {
+public class RacingGameOutput {
 
     private final static String RESULT_GUIDE = "실행 결과";
     private final static String LOCATION_CHARACTER = "-";
 
-    public static void printCarsStatus(List<Car> cars) {
-        for (Car car : cars) {
+    public static void printCarsStatus(CarList carList) {
+        for (Car car : carList.cars()) {
             printCarLocation(car);
         }
     }
@@ -23,12 +22,12 @@ public class ResultView {
         System.out.println(stringBuilder);
     }
 
-    public static void finishRound() {
-        System.out.println();
-    }
-
     public static void startGame() {
         System.out.println(RESULT_GUIDE);
+    }
+
+    public static void finishRound() {
+        System.out.println();
     }
 
 }

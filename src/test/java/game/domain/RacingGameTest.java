@@ -1,65 +1,41 @@
 package game.domain;
 
-import game.domain.RacingGame;
-import org.junit.jupiter.api.BeforeEach;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
 
-    private RacingGame racingGame;
+    @DisplayName("racingGameRule의 범위 안에 있는 숫자를 뽑는다.")
+    @RepeatedTest(10)
+    void pickRandomNumber() {
+        RacingGameRule racingGameRule = new RacingGameRule(4, 6);
+        RacingGame racingGame = new RacingGame(racingGameRule, CarList.makeCars(3), 3);
 
-    @BeforeEach
-    void setRacingGame() {
-        racingGame = new RacingGame(new RacingGameRule(4));
+        Assertions.assertThat(racingGame.pickRandomNumber()).isBetween(0, racingGameRule.bound());
     }
 
-    @ParameterizedTest(name = "자동차의 대수를 입력한다")
-    @ValueSource(ints = {1, 22, 333})
-    void input_Number_Of_Cars(Integer expected) {
-        System.setIn(new ByteArrayInputStream(expected.toString().getBytes()));
-        racingGame.makeCar(racingGame.inputNumberOfCar());
-
-        assertThat(racingGame.cars().size()).isEqualTo(expected);
-    }
-
-    @ParameterizedTest(name = "몇번의 이동을 할 것인지 입력한다")
-    @ValueSource(ints = {1, 22, 333})
-    void input_Number_Of_Round(Integer expected) {
-        System.setIn(new ByteArrayInputStream(expected.toString().getBytes()));
-        racingGame.setRound(racingGame.inputNumberOfRound());
-
-        assertThat(racingGame.round()).isEqualTo(expected);
-    }
-
-    @DisplayName("자동차의 대수를 할 때 \"자동차 대수는 몇 대 인가요?\" 라는 안내 문구를 출력한다")
+    @DisplayName("RacingGameRule에 따라서 자동차의 위치를 변경한다.")
     @Test
-    void input_Number_Of_Cars_Guide() {
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outputStream));
-        System.setIn(new ByteArrayInputStream("1".getBytes()));
-        racingGame.inputNumberOfCar();
+    void forwardByRule() {
+        RacingGameRule racingGameRule = new RacingGameRule(4, 10);
+        RacingGame racingGame = new RacingGame(racingGameRule, CarList.makeCars(3), 3);
+        Car car = racingGame.carList().cars().get(0);
 
-        assertThat(outputStream.toString()).contains("자동차 대수는 몇 대 인가요?");
-    }
-
-    @DisplayName("자동차의 대수를 할 때 \"시도할 회수는 몇 회 인가요?\" 라는 안내 문구를 출력한다")
-    @Test
-    void input_Number_Of_Round_Guide() {
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outputStream));
-        System.setIn(new ByteArrayInputStream("1".getBytes()));
-        racingGame.inputNumberOfRound();
-
-        assertThat(outputStream.toString()).contains("시도할 회수는 몇 회 인가요?");
+        org.junit.jupiter.api.Assertions.assertAll(
+                () -> {
+                    racingGame.forwardByRule(car, racingGameRule.canForwardNumber() - 1);
+                    assertThat(car.location()).isEqualTo(car.location());
+                },
+                () -> {
+                    int expected = car.location() + racingGameRule.forwardDistance();
+                    racingGame.forwardByRule(car, racingGameRule.canForwardNumber());
+                    assertThat(car.location()).isEqualTo(expected);
+                }
+        );
     }
 
 }
