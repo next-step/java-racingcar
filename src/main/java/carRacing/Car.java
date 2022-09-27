@@ -1,4 +1,4 @@
-package step3;
+package carRacing;
 
 public class Car {
     private int position = 1;

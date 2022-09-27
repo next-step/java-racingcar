@@ -1,4 +1,4 @@
-package step3;
+package carRacing;
 
 public class RacingApplication {
     public static void main(String[] args) {

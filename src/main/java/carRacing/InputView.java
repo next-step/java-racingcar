@@ -1,4 +1,4 @@
-package step3;
+package carRacing;
 
 import java.util.Scanner;
 

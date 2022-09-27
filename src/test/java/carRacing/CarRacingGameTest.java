@@ -1,5 +1,7 @@
-package step3;
+package carRacing;
 
+import carRacing.Car;
+import carRacing.CarRacingGame;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
