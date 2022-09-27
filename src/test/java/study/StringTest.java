@@ -3,9 +3,8 @@ package study;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringTest {
 
@@ -30,8 +29,7 @@ public class StringTest {
     void split3() {
         String target = "123";
         assertThatThrownBy(() -> {
-            char ch = target.charAt(target.length());
-            System.out.println(ch);
+            target.charAt(target.length());
         }).hasMessageContaining("index out of range");
     }
 }
