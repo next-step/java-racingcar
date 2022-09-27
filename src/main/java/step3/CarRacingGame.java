@@ -22,8 +22,11 @@ public class CarRacingGame {
 
     // 게임 시작
     public void doGame() {
+        System.out.println("\n실행 결과");
         for (int index = 0; index < this.tryCount; index++) {
             doRacing();
+            // 게임 현황 출력
+            ResultView.displayRacingState(this.carEntryList);
         }
     }
 

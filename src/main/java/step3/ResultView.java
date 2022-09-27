@@ -7,7 +7,6 @@ public class ResultView {
     private static final StringBuilder tempPositionString = new StringBuilder();
 
     public static void displayRacingState(List<Car> carList) {
-        System.out.println("게임 결과");
         carList
                 .forEach(car -> System.out.println(getPositionString(car.getPosition())));
         System.out.println("");
