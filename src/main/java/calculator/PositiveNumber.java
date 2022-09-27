@@ -11,21 +11,21 @@ public class PositiveNumber {
         this.number = number;
     }
 
-    public static PositiveNumber of(String value) {
+    public static PositiveNumber from(String value) {
         int number = Integer.parseInt(value);
         checkPositive(number);
         return new PositiveNumber(number);
     }
 
-    public static PositiveNumber of(int number) {
+    public static PositiveNumber from(int number) {
         checkPositive(number);
         return new PositiveNumber(number);
     }
 
-    public static PositiveNumber[] of(String[] values) {
+    public static PositiveNumber[] from(String[] values) {
         PositiveNumber[] result = new PositiveNumber[values.length];
         for (int i = 0; i < values.length; i++) {
-            result[i] = of(values[i]);
+            result[i] = from(values[i]);
         }
         return result;
     }

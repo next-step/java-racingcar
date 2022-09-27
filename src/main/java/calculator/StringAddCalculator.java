@@ -10,7 +10,7 @@ public class StringAddCalculator {
         if (isBlank(text)) {
             return 0;
         }
-        return sum(PositiveNumber.of(split(text))).getNumber();
+        return sum(PositiveNumber.from(split(text))).getNumber();
     }
 
     private static String[] split(String text) {
@@ -22,7 +22,7 @@ public class StringAddCalculator {
     }
 
     private static PositiveNumber sum(PositiveNumber[] numbers) {
-        PositiveNumber result = PositiveNumber.of(0);
+        PositiveNumber result = PositiveNumber.from(0);
         for (PositiveNumber number : numbers) {
             result = result.plus(number);
         }
