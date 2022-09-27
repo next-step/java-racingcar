@@ -22,10 +22,9 @@ public class CarTest {
 	}
 
 	@Test
-	@DisplayName("4이상 일때 전진 다음 정지 테스트")
+	@DisplayName("4이상 일때 정지 테스트")
 	void checkCarMovingAndStopMoving() {
-		car.move(Racing.move(4));
 		car.move(Racing.move(3));
-		assertThat(car.getStatus()).isEqualTo("-");
+		assertThat(car.getStatus()).isEqualTo("");
 	}
 }
