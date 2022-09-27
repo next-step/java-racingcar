@@ -48,4 +48,12 @@ class CarTest {
 
         assertThat(car.getStatus()).isEqualTo(nowStatus);
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"booooooo", "dfsfgfd", "csdffdgfdg"})
+    @DisplayName("자동차 이름은 5글자를 초과할 수 없다.")
+    void 이름이_5미만(String value) {
+        assertThatThrownBy(() -> new Car(value))
+                .isInstanceOf(RuntimeException.class);
+    }
 }

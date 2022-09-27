@@ -7,9 +7,9 @@ import java.util.Random;
 public class RacingCar {
     private List<Car> cars = new ArrayList<>();
 
-    public RacingCar(int number) {
-        for (int i = 0; i < number; i++) {
-            cars.add(new Car());
+    public RacingCar(String[] names) {
+        for (String name : names) {
+            cars.add(new Car(name));
         }
     }
 

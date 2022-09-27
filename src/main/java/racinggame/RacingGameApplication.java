@@ -9,7 +9,7 @@ public class RacingGameApplication {
         String[] names = inputNames.split(",");
         int tryCount = inputView.inputUserTryCount();
 
-        RacingCar racingCar = new RacingCar(names.length);
+        RacingCar racingCar = new RacingCar(names);
 
         resultView.printResultMessage();
         for (int i = 0; i < tryCount; i++) {

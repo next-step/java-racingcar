@@ -11,7 +11,7 @@ class RacingCarTest {
     @Test
     void racing() {
         // given
-        RacingCar racingCar = new RacingCar(3);
+        RacingCar racingCar = new RacingCar(new String[]{"a", "b", "c"});
         List<Car> cars = racingCar.getCars();
 
         // when
