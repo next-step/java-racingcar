@@ -10,7 +10,7 @@ public class CarRacingGame {
     CarRacingGame(int numberOfCar, int tryCount) {
         this.tryCount = tryCount;
         for (int index = 0; index < numberOfCar; index++) {
-            this.carEntryList.add(new Car(index));
+            this.carEntryList.add(new Car());
         }
     }
 
