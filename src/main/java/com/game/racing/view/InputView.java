@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class InputView {
 
-    // Suppresses default constructor, ensuring non-instantiability.
     private InputView() {
+        throw new IllegalStateException("InputView 클래스는 인스턴스화할 수 없습니다!");
     }
 
     public static final String INPUT_MESSAGE_OF_CAR_COUNT = "자동차 대수는 몇 대 인가요?";

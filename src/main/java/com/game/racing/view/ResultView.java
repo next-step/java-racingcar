@@ -1,9 +1,11 @@
 package com.game.racing.view;
 
+import com.game.racing.car.Car;
+
 public class ResultView {
 
-    // Suppresses default constructor, ensuring non-instantiability.
     private ResultView() {
+        throw new IllegalStateException("ResultView 클래스는 인스턴스화할 수 없습니다!");
     }
 
     public static final String RESULT_MESSAGE_OF_GAME_END = "실행결과";
@@ -23,4 +25,11 @@ public class ResultView {
         return result.toString();
     }
 
+    public static void printCarCurrentPosition(Car car) {
+        printDashByInt(car.getPosition());
+    }
+
+    public static void printNewLine() {
+        System.out.println();
+    }
 }

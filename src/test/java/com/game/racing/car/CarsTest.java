@@ -1,8 +1,8 @@
 package com.game.racing.car;
 
-import com.game.racing.generator.MovableIntegerGenerator;
-import com.game.racing.generator.NotMovableIntegerGenerator;
-import com.game.racing.generator.RandomIntegerGenerator;
+import com.game.racing.generator.MovableNumberGenerator;
+import com.game.racing.generator.NotMovableNumberGenerator;
+import com.game.racing.generator.RandomNumberGenerator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -15,10 +15,11 @@ public class CarsTest {
      * 움직인 자동차 수가 전체 자동차 수 이하임을 확인한다.
      */
     @Test
-    public void cars_moveCars_byRandomIntegerGenerator() {
+    void cars_move_all_by_random_number() {
         Integer carCount = 3;
-        cars = new Cars(carCount, new RandomIntegerGenerator());
-        Assertions.assertThat(cars.moveCars()).isLessThanOrEqualTo(carCount);
+        cars = new Cars(carCount, new RandomNumberGenerator());
+        cars.moveCars();
+        Assertions.assertThat(cars.getMovedCarTotalCount()).isLessThanOrEqualTo(carCount);
     }
 
     /**
@@ -26,10 +27,11 @@ public class CarsTest {
      * 움직인 자동차 수가 전체 자동차 수와 동일한지 확인한다.
      */
     @Test
-    public void cars_moveCars_byMovableIntegerGenerator() {
+    public void cars_move_all_by_movable_number() {
         Integer carCount = 3;
-        cars = new Cars(carCount, new MovableIntegerGenerator());
-        Assertions.assertThat(cars.moveCars()).isEqualTo(carCount);
+        cars = new Cars(carCount, new MovableNumberGenerator());
+        cars.moveCars();
+        Assertions.assertThat(cars.getMovedCarTotalCount()).isEqualTo(carCount);
     }
 
     /**
@@ -37,10 +39,11 @@ public class CarsTest {
      * 움직인 자동차 수가 없는지 확인한다.
      */
     @Test
-    public void cars_moveCars_byNotMovableIntegerGenerator() {
+    void cars_move_all_by_not_movable_number() {
         Integer carCount = 3;
-        cars = new Cars(carCount, new NotMovableIntegerGenerator());
-        Assertions.assertThat(cars.moveCars()).isEqualTo(0);
+        cars = new Cars(carCount, new NotMovableNumberGenerator());
+        cars.moveCars();
+        Assertions.assertThat(cars.getMovedCarTotalCount()).isZero();
     }
 
     /**
@@ -48,10 +51,11 @@ public class CarsTest {
      * 자동차의 움직임이 1 이하임을 확인한다. (1=움직임. 0=안움직임)
      */
     @Test
-    public void cars_moveCarByGeneratedValue_byRandomIntegerGenerator() {
-        cars = new Cars(1, new RandomIntegerGenerator());
+    void cars_move_each_car_by_random_number() {
+        cars = new Cars(1, new RandomNumberGenerator());
         Car car = new Car();
-        Assertions.assertThat(cars.moveCarByGeneratedValue(car)).isLessThanOrEqualTo(1);
+        cars.moveCarByGeneratedValue(car);
+        Assertions.assertThat(cars.getMovedCarTotalCount()).isLessThanOrEqualTo(1);
     }
 
     /**
@@ -59,10 +63,11 @@ public class CarsTest {
      * 자동차의 움직임이 1 임을 확인한다. (1=움직임. 0=안움직임)
      */
     @Test
-    public void cars_moveCarByGeneratedValue_byMovableIntegerGenerator() {
-        cars = new Cars(1, new MovableIntegerGenerator());
+    void cars_move_each_car_by_movable_number() {
+        cars = new Cars(1, new MovableNumberGenerator());
         Car car = new Car();
-        Assertions.assertThat(cars.moveCarByGeneratedValue(car)).isEqualTo(1);
+        cars.moveCarByGeneratedValue(car);
+        Assertions.assertThat(cars.getMovedCarTotalCount()).isEqualTo(1);
     }
 
     /**
@@ -70,10 +75,11 @@ public class CarsTest {
      * 자동차의 움직임이 0 임을 확인한다. (1=움직임. 0=안움직임)
      */
     @Test
-    public void cars_moveCarsByNotMovableIntegerGenerator() {
-        cars = new Cars(1, new NotMovableIntegerGenerator());
+    void cars_move_each_car_by_not_movable_number() {
+        cars = new Cars(1, new NotMovableNumberGenerator());
         Car car = new Car();
-        Assertions.assertThat(cars.moveCarByGeneratedValue(car)).isEqualTo(0);
+        cars.moveCarByGeneratedValue(car);
+        Assertions.assertThat(cars.getMovedCarTotalCount()).isZero();
     }
 
 }

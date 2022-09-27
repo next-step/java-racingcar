@@ -1,7 +1,7 @@
 package com.game.racing.play;
 
 import com.game.racing.car.Cars;
-import com.game.racing.generator.RandomIntegerGenerator;
+import com.game.racing.generator.RandomNumberGenerator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,17 +17,17 @@ public class RacingGameTest {
     }
 
     @Test
-    public void racingGame_playRacingGame() {
+    void racing_game_play() {
         Integer carCount = 3;
         Integer tryCount = 5;
         assertThatNoException().isThrownBy(() -> {
-            racingGame.playRacingGame(carCount, tryCount);
+            racingGame.play(carCount, tryCount);
         });
     }
 
     @Test
-    public void racingGame_moveCarsByTryCount() {
-        Cars cars = new Cars(4, new RandomIntegerGenerator());
+    void racing_game_move_cars_by_try_count() {
+        Cars cars = new Cars(4, new RandomNumberGenerator());
         Integer tryCount = 5;
         assertThatNoException().isThrownBy(() -> {
             racingGame.moveCarsByTryCount(cars, tryCount);

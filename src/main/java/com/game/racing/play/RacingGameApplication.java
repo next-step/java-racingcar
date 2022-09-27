@@ -2,17 +2,17 @@ package com.game.racing.play;
 
 import com.game.racing.view.InputView;
 
-public class PlayRacingGameMain {
+public class RacingGameApplication {
 
     public static void main(String[] args) {
-        PlayRacingGameMain playRacingGameMain = new PlayRacingGameMain();
-        playRacingGameMain.playRacingGameByUserInput();
+        RacingGameApplication racingGameApplication = new RacingGameApplication();
+        racingGameApplication.playRacingGameByUserInput();
     }
 
     public void playRacingGameByUserInput() {
         RacingGame racingGame = new RacingGame();
         Integer carCount = InputView.inputCarCount();
         Integer tryCount = InputView.inputTryCount();
-        racingGame.playRacingGame(carCount, tryCount);
+        racingGame.play(carCount, tryCount);
     }
 }

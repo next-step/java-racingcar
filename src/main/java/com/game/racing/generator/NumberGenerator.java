@@ -1,5 +1,5 @@
 package com.game.racing.generator;
 
-public interface IntegerGenerator {
+public interface NumberGenerator {
     Integer generate();
 }

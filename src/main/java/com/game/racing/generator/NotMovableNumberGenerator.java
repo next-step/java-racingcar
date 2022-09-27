@@ -1,6 +1,6 @@
 package com.game.racing.generator;
 
-public class NotMovableIntegerGenerator implements IntegerGenerator {
+public class NotMovableNumberGenerator implements NumberGenerator {
 
     private static final Integer NOT_MOVABLE_INTEGER = 2;
 

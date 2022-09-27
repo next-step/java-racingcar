@@ -1,6 +1,8 @@
 package com.game.racing.car;
 
-import com.game.racing.generator.IntegerGenerator;
+import com.game.racing.count.MovedCarTotalCount;
+import com.game.racing.generator.NumberGenerator;
+import com.game.racing.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,12 +16,15 @@ public class Cars {
 
     private final List<Car> cars;
 
-    private final IntegerGenerator integerGenerator;
+    private final NumberGenerator numberGenerator;
 
-    public Cars(Integer count, IntegerGenerator integerGenerator) {
+    private final MovedCarTotalCount movedCarTotalCount;
+
+    public Cars(Integer count, NumberGenerator numberGenerator) {
         this.cars = new ArrayList<>();
         addNewCarsToListAsCount(count);
-        this.integerGenerator = integerGenerator;
+        this.numberGenerator = numberGenerator;
+        this.movedCarTotalCount = new MovedCarTotalCount();
     }
 
     private void addNewCarsToListAsCount(Integer count) {
@@ -28,39 +33,27 @@ public class Cars {
         }
     }
 
-    /**
-     * 등록된 전체 자동차를 움직이는 메소드
-     *
-     * @return 움직인 자동차의 수를 Integer 형태로 리턴
-     */
-    public Integer moveCars() {
-        int movedCarTotalCount = 0;
-        for (Car car : cars) {
-            movedCarTotalCount = moveCarAndGetCountIfMoves(movedCarTotalCount, car);
-        }
-        return movedCarTotalCount;
+    public Integer getMovedCarTotalCount() {
+        return movedCarTotalCount.get();
     }
 
-    private int moveCarAndGetCountIfMoves(int movedCarTotalCount, Car car) {
-        if (moveCarByGeneratedValue(car) > 0) {
-            movedCarTotalCount++;
+    public void moveCars() {
+        for (Car car : cars) {
+            moveCarByGeneratedValue(car);
         }
-        return movedCarTotalCount;
+        ResultView.printNewLine();
     }
 
     /**
      * 개별 자동차를 IntegerGenerator 를 통해 판별값에 따라 움직이고, 위치를 -(dash)로 출력하는 메소드
      *
      * @param car 개별 자동차
-     * @return 개별 자동차가 움직이면 1, 움직이지 않았으면 0 을 리턴하는 메소드
      */
-    public Integer moveCarByGeneratedValue(Car car) {
-        int movedCarCount = 0;
-        if (integerGenerator.generate() >= MIN_VALUE_TO_MOVE_CAR) {
+    public void moveCarByGeneratedValue(Car car) {
+        ResultView.printCarCurrentPosition(car);
+        if (numberGenerator.generate() >= MIN_VALUE_TO_MOVE_CAR) {
             car.move();
-            movedCarCount++;
+            movedCarTotalCount.addCount();
         }
-        car.printCurrentPosition();
-        return movedCarCount;
     }
 }

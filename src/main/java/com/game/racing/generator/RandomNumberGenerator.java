@@ -2,14 +2,10 @@ package com.game.racing.generator;
 
 import java.util.Random;
 
-public class RandomIntegerGenerator implements IntegerGenerator {
+public class RandomNumberGenerator implements NumberGenerator {
 
     private static final Integer RANDOM_INTEGER_MAX_BOUND = 10;
-    private final Random random;
-
-    public RandomIntegerGenerator() {
-        random = new Random();
-    }
+    private static final Random random = new Random();
 
     @Override
     public Integer generate() {

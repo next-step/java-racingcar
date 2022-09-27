@@ -8,15 +8,14 @@ public class CarTest {
     private Car car;
 
     @Test
-    public void car_move() {
+    void car_move() {
         car = new Car();
         Assertions.assertEquals(2, car.move());
     }
 
     @Test
-    public void car_moveAndPrintCurrentPosition() {
+    void car_get_position() {
         car = new Car();
-        car.move();
-        Assertions.assertEquals("--", car.printCurrentPosition());
+        Assertions.assertEquals(1, car.getPosition());
     }
 }

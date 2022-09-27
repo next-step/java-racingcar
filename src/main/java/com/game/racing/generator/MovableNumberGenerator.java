@@ -1,6 +1,6 @@
 package com.game.racing.generator;
 
-public class MovableIntegerGenerator implements IntegerGenerator {
+public class MovableNumberGenerator implements NumberGenerator {
 
     private static final Integer MOVABLE_INTEGER = 5;
 
