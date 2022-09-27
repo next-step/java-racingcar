@@ -1,15 +1,35 @@
 package racingcar;
 
-public class RacingCar {
+import java.util.ArrayList;
+import java.util.List;
 
-    public int randomNumber() {
-        return (int) Math.random();
+public class RacingCar {
+    static int numberOfCar;
+    static List<String> carStatus;
+
+    public RacingCar(int numberOfCar) {
+        this.numberOfCar = numberOfCar;
+        this.carStatus = new ArrayList<>();
+        for (int i = 0; i < numberOfCar; i++) {
+            carStatus.add(i, "");
+        }
     }
 
-    public boolean goStop(int randomNum) {
+    public int randomNumber() {
+        return (int) (Math.random() * 10);
+    }
+
+    public String goStop(int randomNum) {
         if (randomNum >= 4) {
-            return true;
+            return "-";
         }
-        return false;
+        return "";
+    }
+
+    public List<String> carMoving() {
+        for (int i = 0; i < numberOfCar; i++) {
+            carStatus.set(i, carStatus.get(i) + goStop(randomNumber()));
+        }
+        return carStatus;
     }
 }

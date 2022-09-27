@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarTest {
 
-    RacingCar racingCar = new RacingCar();
+    RacingCar racingCar = new RacingCar(3);
 
     @DisplayName("0~9 랜덤한 숫자 가져오기")
     @Test
@@ -18,8 +18,8 @@ public class RacingCarTest {
     }
 
     @ParameterizedTest(name = "{0}go/stop 판별하기")
-    @CsvSource(value = {"0:false", "1:false", "2:false", "3:false", "4:true", "5:true", "6:true", "7:true", "8:true", "9:true"}, delimiter = ':')
+    @CsvSource(value = {"0:''", "1:''", "2:''", "3:''", "4:-", "5:-", "6:-", "7:-", "8:-", "9:-"}, delimiter = ':')
     void goStopTest(String input, String result) {
-        assertThat(racingCar.goStop(Integer.parseInt(input))).isEqualTo(Boolean.parseBoolean(result));
+        assertThat(racingCar.goStop(Integer.parseInt(input))).isEqualTo(result);
     }
 }
