@@ -36,7 +36,6 @@ public class SetTest {
 
     @ParameterizedTest
     @CsvSource(value = {"1,true", "2,true", "3,true", "4,false", "5,false"})
-    @DisplayName("여러 값의 존재 유무를 확인한다.")
     void 케이스별_예상값_존재(int input, boolean expected){
         // WHEN & THEN
         assertThat(numbers.contains(input))
