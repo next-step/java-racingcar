@@ -23,21 +23,20 @@ public class RacingGameController {
     }
 
     public void run() {
-        int carCount = inputView.getCarCount();
+        List<String> carNames = inputView.getCarNames();
         int playCount = inputView.getPlayCount();
         resultView.printTitle();
 
-        List<Car> cars = generateCarList(carCount);
+        List<Car> cars = generateCarList(carNames);
         play(cars, playCount);
     }
 
-    private List<Car> generateCarList(int carCount) {
+    private List<Car> generateCarList(List<String> carNames) {
         List<Car> cars = new ArrayList<>();
 
-        for (int i = 0; i < carCount; ++i) {
-            cars.add(new Car("test"));
+        for(String carName: carNames) {
+            cars.add(new Car(carName));
         }
-
         return cars;
     }
 
