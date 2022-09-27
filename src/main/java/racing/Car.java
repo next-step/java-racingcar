@@ -1,8 +1,10 @@
 package racing;
 
 public class Car {
-    private int distance = 0;
     private static final int AVAILABLE_RUN_THRESHOLD = 4;
+
+    private int distance = 0;
+
     public void run() {
         if (canRun()) { distance += 1; }
     }
