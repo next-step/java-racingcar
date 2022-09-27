@@ -38,13 +38,11 @@ public class RacingCars {
         return new Winners(winners);
     }
 
-    public String showGraph(String figure) {
-        return cars.stream()
-                .map(car -> car.showGraph(figure))
-                .collect(Collectors.joining("\n"));
-    }
-
     public boolean contains(Car car) {
         return cars.contains(car);
+    }
+
+    public List<Car> getCars(){
+        return cars;
     }
 }

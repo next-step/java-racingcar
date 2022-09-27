@@ -50,7 +50,6 @@ class RacingCarsTest {
         //given
         RacingCars racingCars = RacingCars.of("red");
         //when
-        System.out.println(racingCars.showGraph(""));
         //then
         assertAll(
                 () -> assertThat(racingCars.size()).isEqualTo(1),

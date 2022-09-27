@@ -39,7 +39,7 @@ public class Car implements Comparable<Car> {
         return this.name.toString();
     }
 
-    public int showDistance() {
+    public int getDistance() {
         return this.distance;
     }
 
@@ -49,10 +49,6 @@ public class Car implements Comparable<Car> {
 
     public boolean hasSameDistance(Car input){
         return this.distance == input.distance;
-    }
-
-    public String showGraph(String figure) {
-        return this.name + ":" + figure.repeat(this.distance);
     }
 
     @Override

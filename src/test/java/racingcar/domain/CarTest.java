@@ -2,7 +2,6 @@ package racingcar.domain;
 
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -19,7 +18,7 @@ class CarTest {
         //when
         car.run();
         //then
-        assertThat(car.showDistance()).isEqualTo(1);
+        assertThat(car.getDistance()).isEqualTo(1);
     }
 
     @ParameterizedTest
@@ -31,7 +30,7 @@ class CarTest {
         //when
         car.run();
         //then
-        assertThat(car.showDistance()).isZero();
+        assertThat(car.getDistance()).isZero();
     }
 
     @ParameterizedTest
@@ -43,20 +42,7 @@ class CarTest {
         //when
         car.run(numberOfTimes);
         //then
-        assertThat(car.showDistance()).isEqualTo(numberOfTimes);
+        assertThat(car.getDistance()).isEqualTo(numberOfTimes);
     }
-
-    @Test
-    @DisplayName("그래프 그리기 figure : -")
-    void draw_graph_with_figure() {
-        //given
-        Car car = new Car("name", ((min, max) -> 9));
-        //when
-        car.run(5);
-        //then
-        String graph = car.showGraph("-");
-        assertThat(graph).isEqualTo("name:-----");
-    }
-
 
 }
