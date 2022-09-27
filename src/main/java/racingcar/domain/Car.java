@@ -1,25 +1,22 @@
-package step3.racingcar.domain;
+package racingcar.domain;
 
-public class Car {
-    public static final int MOVING_THRESHOLD = 4;
-    private int randomValue;
+import racingcar.strategy.MovingStrategy;
 
-    private Car() {
+public class RacingCar {
+    private int position;
+
+    public RacingCar() {
+        this.position = 0;
     }
 
-    public Car(int randomValue) {
-        if(isMoving(randomValue)) {
-
-        }
-    }
-    
-    public int run(int randomValue) {
-        if(isMoving(randomValue)) {
-            return 0;
+    public void move(MovingStrategy movingStrategy) {
+        if (isMovable(movingStrategy)) {
+            this.position++;
+            System.out.println("position = " + position);
         }
     }
 
-    private boolean isMoving(int randomValue) {
-        return randomValue >= MOVING_THRESHOLD;
+    private boolean isMovable(MovingStrategy movingStrategy) {
+        return movingStrategy.isMovable();
     }
 }
