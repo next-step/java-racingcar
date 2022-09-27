@@ -17,12 +17,7 @@ class RandomMovingPolicyTest {
             "10,1"
     })
     void nextStep(Integer randomNumber, Integer expected) {
-        RandomMovingPolicy randomMovingPolicy = new RandomMovingPolicy() {
-            @Override
-            Integer randomNumber() {
-                return randomNumber;
-            }
-        };
+        RandomMovingPolicy randomMovingPolicy = new RandomMovingPolicy(randomNumber);
 
         assertThat(randomMovingPolicy.nextStep()).isEqualTo(expected);
     }
