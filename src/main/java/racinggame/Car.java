@@ -23,6 +23,10 @@ public class Car {
         return status;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void move(int number) {
         if (number >= MAX_NUMBER) {
             status++;
