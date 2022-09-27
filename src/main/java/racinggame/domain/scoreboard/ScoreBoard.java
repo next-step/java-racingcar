@@ -10,9 +10,7 @@ public class ScoreBoard {
     private final List<Score> scoredBoard = new ArrayList<>();
 
     public void recordScore(Cars cars) {
-        Score score = new Score();
-        score.recordScore(cars);
-        scoredBoard.add(score);
+        scoredBoard.add(new Score(cars));
     }
 
     public Score getScore(int round) {
