@@ -5,13 +5,14 @@ import java.util.Objects;
 public class Car {
     private int location;
     public static final int MOVE_DISTANCE = 1;
+    public static final int START_LOCATION = 1;
 
     private Car(int location) {
         this.location = location;
     }
 
     private Car() {
-        this.location = 0;
+        this.location = START_LOCATION;
     }
 
     public static Car from(int location) {
@@ -24,6 +25,10 @@ public class Car {
 
     public void moveForward() {
         location += MOVE_DISTANCE;
+    }
+
+    public int getLocation() {
+        return location;
     }
 
     @Override
