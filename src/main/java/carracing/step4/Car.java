@@ -10,10 +10,12 @@ public class Car {
         this.moveCount = 0;
     }
 
-    public void move(int moveNumber) {
+    public boolean move(int moveNumber) {
         if (isMovable(moveNumber)) {
             moveCount += 1;
+            return true;
         }
+        return false;
     }
 
     private boolean isMovable(int moveNumber) {
