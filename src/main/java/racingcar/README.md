@@ -16,6 +16,7 @@
 - [x] View 영역 구현
 - [x] Controller 구현
 - [x] 자동차의 Name 객체 구현 (w/ 글자수 검증)
+- [x] 자동차의 Position 객체 구현
 - [ ] 레이싱 결과에 자동차 이름도 함께 넘김
 - [ ] InputView에서 차 이름 입력 받기
 - [ ] ResultView에서 우승자 출력
