@@ -20,9 +20,17 @@ public class StringAddCalculator {
     private static int[] toInts(String[] numbersStr) {
         int[] numbers = new int[numbersStr.length];
         for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = Integer.parseInt(numbersStr[i]);
+            numbers[i] = positive(numbersStr[i]);
         }
         return numbers;
+    }
+
+    private static int positive(String numbersStr) {
+        int number = Integer.parseInt(numbersStr);
+        if (number < 0) {
+            throw new RuntimeException("음수 값이 들어올 수 없습니다.");
+        }
+        return number;
     }
 
     private static String[] split(String text) {
