@@ -7,7 +7,7 @@ public class InputView {
     public static final String Q_TRY_TIMES = "시도할 회수는 몇 회 인가요?";
     Scanner scanner = new Scanner(System.in);
 
-    public int printQuestion(String question) {
+    public static int printQuestion(String question) {
         System.out.println(question);
         return scanner.nextInt();
     }

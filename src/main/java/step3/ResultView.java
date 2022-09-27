@@ -6,11 +6,11 @@ public class ResultView {
 
     private static final String S_GAME_RESULT = "실행 결과";
 
-    public void print_GameResult() {
+    public static void print_GameResult() {
         System.out.println(S_GAME_RESULT);
     }
     
-    public void print_PlayResult(Cars cars) {
+    public static void print_PlayResult(Cars cars) {
         for (Car car : cars.cars) {
             print_carPosition(car);
         }
