@@ -6,48 +6,58 @@ import java.util.regex.Pattern;
 public class StringAddCalculator {
 
 
-  private static final String DELIMITER_REGEX = "//(.)\n(.*)";
-  private static final String DEFAULT_REGEX = ",|:";
-  private static final Integer TARGET_DELIMITER = 1;
-  private static final Integer TARGET_TOKENS = 2;
+	private static final String DELIMITER_REGEX = "//(.)\n(.*)";
+	private static final String DEFAULT_REGEX = ",|:";
+	private static final Integer TARGET_DELIMITER = 1;
+	private static final Integer TARGET_TOKENS = 2;
+	private static Integer answer = 0;
 
-  public static int splitAndSum(String input) {
+	public static int splitAndSum(String input) {
 
-    int answer = 0;
+		if (input == null || input.isEmpty()) {
+			return 0;
+		}
 
-    if (input == null || input.isEmpty()) {
-      return 0;
-    }
+		Matcher m = matcher(input);
 
-    Matcher m = Pattern.compile(DELIMITER_REGEX).matcher(input);
+		if (m.find()) {
+			return calculate(Tokens(m));
+		}
 
-    if (m.find()) {
+		String[] tokens = input.split(DEFAULT_REGEX);
+		return calculate(tokens);
 
-      String customDelimiter = m.group(TARGET_DELIMITER);
-      String[] tokens = m.group(TARGET_TOKENS).split(customDelimiter);
+	}
 
-      return calculate(tokens, answer);
+	private static Matcher matcher(String input) {
+		return Pattern.compile(DELIMITER_REGEX).matcher(input);
+	}
 
-    }
-    String[] tokens = input.split(DEFAULT_REGEX);
-    return calculate(tokens, answer);
+	private static String[] Tokens(Matcher m) {
+		String customDelimiter = m.group(TARGET_DELIMITER);
+		return m.group(TARGET_TOKENS).split(customDelimiter);
+	}
 
-  }
+	public static int calculate(String[] tokens) {
 
-  public static int calculate(String[] tokens, int answer) {
+		for (String token : tokens) {
+			answer += toInt(token);
+		}
 
-    for (String token : tokens) {
-      int num = Integer.parseInt(token);
+		return answer;
 
-      if (num < 0) {
-        throw new RuntimeException();
-      }
-      answer += num;
-    }
+	}
 
-    return answer;
+	private static int toInt(String token) {
 
-  }
+		int num = Integer.parseInt(token);
+
+		if (num < 0) {
+			throw new RuntimeException();
+		}
+
+		return num;
+	}
 }
 
 
