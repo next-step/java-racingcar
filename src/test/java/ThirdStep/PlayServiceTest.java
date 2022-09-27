@@ -34,9 +34,7 @@ class PlayServiceTest {
     @Test
     @DisplayName("racing 함수가 종료 시 gameSetting의 attempts 값은 0이다.")
     void racing_test() {
-        GameSetting gameSetting = new GameSetting();
-        gameSetting.setAttempts(INIT_ATTEMPTS);
-        gameSetting.setCars(cars);
+        GameSetting gameSetting = new GameSetting(INIT_ATTEMPTS, cars);
 
         play.racing(gameSetting);
 

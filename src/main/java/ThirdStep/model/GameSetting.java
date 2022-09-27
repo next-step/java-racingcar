@@ -1,21 +1,13 @@
 package ThirdStep.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameSetting {
     private int attempts;
-    private List<Car> cars;
+    private final List<Car> cars;
 
-    public GameSetting() {
-        cars = new ArrayList<>();
-    }
-
-    public void setAttempts(int attempts) {
+    public GameSetting(int attempts, List<Car> cars) {
         this.attempts = attempts;
-    }
-
-    public void setCars(List<Car> cars) {
         this.cars = cars;
     }
 
@@ -25,5 +17,9 @@ public class GameSetting {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public void reduceAttempts() {
+        attempts = attempts - 1;
     }
 }

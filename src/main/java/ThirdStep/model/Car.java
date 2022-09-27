@@ -1,5 +1,7 @@
 package ThirdStep.model;
 
+import ThirdStep.validator.RequestValidator;
+
 public class Car {
 
     private static final int START_LOCATION = 0;
@@ -27,6 +29,8 @@ public class Car {
     }
 
     public static Car of(CarRequest carRequest) {
+        RequestValidator.carValidation(carRequest);
+
         Car car = new Car();
         car.setName(carRequest.getName());
         return car;

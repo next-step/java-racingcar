@@ -23,7 +23,7 @@ public class PlayService {
         });
 
         System.out.println();
-        gameSetting.setAttempts(gameSetting.getAttempts() - 1);
+        gameSetting.reduceAttempts();
         this.racing(gameSetting);
     }
 
