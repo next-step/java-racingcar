@@ -14,6 +14,7 @@ public class StringAddCalculatorTest {
     @ParameterizedTest
     @NullAndEmptySource
     @ValueSource(strings = "")
+    @DisplayName("null 이거나 공백인 문자열일 경우 0을 반환한다")
     void splitAndSum_null_and_blank(String str) {
         int result = StringAddCalculator.splitAndSum(str);
         assertThat(result).isZero();
