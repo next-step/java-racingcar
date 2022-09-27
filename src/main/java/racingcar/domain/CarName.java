@@ -5,7 +5,7 @@ import java.util.Objects;
 public class CarName {
     private static final int MAX_NAME_LENGTH = 5;
 
-    String name;
+    private final String name;
 
     public CarName(String name) {
         this.name = name.trim();
