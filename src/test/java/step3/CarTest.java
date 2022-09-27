@@ -1,16 +1,18 @@
 package step3;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
-    @RepeatedTest(10)
-    @DisplayName("Car 의 run 수행 시 position 이 변하지 않거나, 1 만큼 증가하는지 테스트")
-    public void carMoveTest() {
+    @ParameterizedTest
+    @CsvSource(value = {"0:1", "1:1", "2:1", "3:1", "4:2", "5:2", "6:2", "7:2", "8:2", "9:2"}, delimiter = ':')
+    @DisplayName("movePoint 가 4 이상일 때만 Car 의 position 증가하는지 테스트")
+    public void carMoveTest(int movePoint, int expectedPosition) {
         Car car = new Car();
-        car.run();
-        assertThat(car.getPosition()).matches(position -> position == 1 || position == 2);
+        car.run(movePoint);
+        assertThat(car.getPosition()).isEqualTo(expectedPosition);
     }
 }
