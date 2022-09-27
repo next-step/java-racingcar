@@ -1,23 +1,22 @@
 package step2;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 public class StringCalculatorTest {
 
     StringCalculator calculator = new StringCalculator();
 
-    @Test
+    @ParameterizedTest
+    @NullAndEmptySource
     @DisplayName("splintAndAdd() 메소드에 null 혹은 빈 문자열이 입력되면 0을 반환한다")
-    void split_and_add_return_0() {
-        Integer sumByEmpty = calculator.splitAndSum("");
-        assertThat(sumByEmpty).isEqualTo(0);
-
-        Integer sumByNull = calculator.splitAndSum(null);
-        assertThat(sumByNull).isEqualTo(0);
+    void split_and_add_return_0(String input) {
+        assertThat(calculator.splitAndSum(input)).isEqualTo(0);
     }
 
     @Test
