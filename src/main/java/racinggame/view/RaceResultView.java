@@ -1,38 +1,62 @@
 package racinggame.view;
 
+import racinggame.domain.Car;
 import racinggame.dto.CarMoveInfo;
 import racinggame.dto.RaceResultDTO;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RaceResultView {
 
     private static final String PRINT_DISTANCE_MARK = "-";
-    private final StringBuilder carMoveDistanceResult = new StringBuilder();
+    private final StringBuilder raceResult = new StringBuilder();
 
     public void printResult() {
-        System.out.println(carMoveDistanceResult);
+        System.out.println(raceResult);
     }
 
-    public void readRaceReslut(RaceResultDTO raceResultDTO) {
-        List<List<CarMoveInfo>> raceResult = raceResultDTO.getRaceResult();
+    public void readRaceResult(RaceResultDTO raceResultDTO) {
+        changeLine();
+        raceResult.append("실행 결과");
+        changeLine();
 
-        for (List<CarMoveInfo> carMoveInfosPerRound : raceResult) {
+        for (List<CarMoveInfo> carMoveInfosPerRound : raceResultDTO.getRaceResult()) {
             readCarMoveInfosPerRound(carMoveInfosPerRound);
-            carMoveDistanceResult.append(System.lineSeparator());
+            changeLine();
         }
+
+        raceResult.append(winnersName(raceResultDTO.winners()) + "가 최종 우승했습니다.");
+    }
+
+    private String winnersName(List<Car> winners) {
+        return winners.stream()
+                .map(Car::name)
+                .collect(Collectors.joining(", "));
     }
 
     private void readCarMoveInfosPerRound(List<CarMoveInfo> carMoveInfos) {
-        for (CarMoveInfo carMoveInfo : carMoveInfos) {
-            readCarMoveInfo(carMoveInfo);
-        }
+        carMoveInfos.forEach(this::readCarMoveInfo);
     }
 
     private void readCarMoveInfo(CarMoveInfo carMoveInfo) {
+        readName(carMoveInfo);
+        readDistance(carMoveInfo);
+        changeLine();
+    }
+
+    private void changeLine() {
+        raceResult.append(System.lineSeparator());
+    }
+
+    private void readName(CarMoveInfo carMoveInfo) {
+        raceResult.append(carMoveInfo.name());
+        raceResult.append(" : ");
+    }
+
+    private void readDistance(CarMoveInfo carMoveInfo) {
         for (int i = 0; i < carMoveInfo.distance(); i++) {
-            carMoveDistanceResult.append(PRINT_DISTANCE_MARK);
+            raceResult.append(PRINT_DISTANCE_MARK);
         }
-        carMoveDistanceResult.append(System.lineSeparator());
     }
 }
