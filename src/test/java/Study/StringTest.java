@@ -18,12 +18,9 @@ public class StringTest {
 
     @Test
     void testSubstring(){
-        assertThat(substring("(1,2)")).contains("1,2");
+        assertThat("\"1,2\"".substring(1,4)).contains("1,2");
     }
 
-    public String substring(String s){
-        return s.substring(1,4);
-    }
 
     @Test
     @DisplayName("CharAt()의 문자 Test, OutOfBoundException Test")
