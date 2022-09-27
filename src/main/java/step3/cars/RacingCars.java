@@ -27,6 +27,13 @@ public final class RacingCars implements Cars {
     }
 
     @Override
+    public Cars carsWithRemoveCar(Car car) {
+        ArrayList<Car> existedCars = new ArrayList<>(cars);
+        existedCars.remove(car);
+        return new RacingCars(Collections.unmodifiableList(existedCars));
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
