@@ -16,11 +16,10 @@ public class Car {
         this.name = new Name(name);
     }
 
-    public Position move(MovingStrategy movingStrategy) {
+    public void move(MovingStrategy movingStrategy) {
         if (movingStrategy.shouldMove()) {
             position.move();
         }
-        return position;
     }
 
     public int getPosition() {
