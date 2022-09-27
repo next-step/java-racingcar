@@ -5,28 +5,24 @@ import java.util.stream.IntStream;
 
 public class Car implements Comparable<Car> {
 
-    private static final int RUNNABLE_BOUND = 4;
-    private static final int MAX_VALUE = 9;
-    private static final int MIN_VALUE = 0;
-
     private final CarName name;
     private int distance;
-    private final Randomable randomable;
+    private final RunStrategy runStrategy;
 
     public Car(String name) {
         this.name = new CarName(name);
         this.distance = 0;
-        this.randomable = new RandomNumber();
+        this.runStrategy = new RandomRunStrategy();
     }
 
-    public Car(String name, Randomable randomable) {
+    public Car(String name, RunStrategy runStrategy) {
         this.name = new CarName(name);
         this.distance = 0;
-        this.randomable = randomable;
+        this.runStrategy = runStrategy;
     }
 
     public void run() {
-        if (isRunnable()) {
+        if (runStrategy.runnable()) {
             this.distance += 1;
         }
     }
@@ -43,11 +39,8 @@ public class Car implements Comparable<Car> {
         return this.distance;
     }
 
-    private boolean isRunnable() {
-        return RUNNABLE_BOUND <= randomable.getIntInRange(MIN_VALUE, MAX_VALUE);
-    }
 
-    public boolean hasSameDistance(Car input){
+    public boolean hasSameDistance(Car input) {
         return this.distance == input.distance;
     }
 

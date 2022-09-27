@@ -63,12 +63,13 @@ class RacingCarsTest {
     void one_winner() {
         //given
         List<Car> cars = new ArrayList<>();
+        RunStrategy runStrategy = () -> true;
 
-        Car car1 = new Car("1", ((min, max) -> 9));
+        Car car1 = new Car("1", runStrategy);
         car1.run(1);
-        Car car2 = new Car("2", ((min, max) -> 9));
+        Car car2 = new Car("2", runStrategy);
         car2.run(2);
-        Car car3 = new Car("3", ((min, max) -> 9));
+        Car car3 = new Car("3", runStrategy);
         car3.run(3);
 
         cars.add(car1);
@@ -92,12 +93,13 @@ class RacingCarsTest {
     void several_winners() {
         //given
         List<Car> cars = new ArrayList<>();
+        RunStrategy runStrategy = () -> true;
 
-        Car car1 = new Car("1", ((min, max) -> 9));
+        Car car1 = new Car("1", runStrategy);
         car1.run(1);
-        Car car2 = new Car("2", ((min, max) -> 9));
+        Car car2 = new Car("2", runStrategy);
         car2.run(3);
-        Car car3 = new Car("3", ((min, max) -> 9));
+        Car car3 = new Car("3", runStrategy);
         car3.run(3);
 
         cars.add(car1);
