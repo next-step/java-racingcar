@@ -1,6 +1,8 @@
 package step3.car;
 
 import step3.number.Number;
+import step3.position.CarPosition;
+import step3.position.Position;
 
 import java.util.Objects;
 
@@ -8,15 +10,15 @@ public final class RacingCar implements Car {
 
     private static final int NUMBER_OF_JUDGMENT_THAT_CAN_GO_FORWARD = 4;
 
-    private final int position;
+    private final Position position;
 
     private final Number number;
 
     public RacingCar(Number number) {
-        this(0, number);
+        this(new CarPosition(0), number);
     }
 
-    public RacingCar(int position, Number number) {
+    public RacingCar(Position position, Number number) {
         this.position = position;
         this.number = number;
     }
@@ -24,9 +26,9 @@ public final class RacingCar implements Car {
     @Override
     public Car movedCar() {
         if (number.generatedNumber() >= NUMBER_OF_JUDGMENT_THAT_CAN_GO_FORWARD) {
-            return new RacingCar(1, number);
+            return new RacingCar(position.movedPosition(), number);
         }
-        return new RacingCar(0, number);
+        return new RacingCar(position, number);
     }
 
     @Override
@@ -34,7 +36,7 @@ public final class RacingCar implements Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RacingCar racingCar = (RacingCar) o;
-        return position == racingCar.position && Objects.equals(number, racingCar.number);
+        return Objects.equals(position, racingCar.position) && Objects.equals(number, racingCar.number);
     }
 
     @Override
