@@ -1,10 +1,17 @@
 package racingcar;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
 
-    public static String getLocationString(RacingCar racingCar) {
+    public static String getLocationStrings(List<RacingCar> racingCars) {
+        return racingCars.stream()
+                         .map(ResultView::getLocationString)
+                         .collect(Collectors.joining("\n"));
+    }
+
+    private static String getLocationString(RacingCar racingCar) {
         return "-".repeat(racingCar.getDistance());
     }
 
