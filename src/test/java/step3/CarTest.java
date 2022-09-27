@@ -1,22 +1,16 @@
 package step3;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
-    @Test
+    @RepeatedTest(10)
+    @DisplayName("Car 의 run 수행 시 position 이 변하지 않거나, 1 만큼 증가하는지 테스트")
     public void carMoveTest() {
         Car car = new Car(0);
-
-        car.move(0);
-        car.move(3);
-        assertThat(car.getPosition()).isEqualTo(1);
-
-        car.move(4);
-        assertThat(car.getPosition()).isEqualTo(2);
-
-        car.move(9);
-        assertThat(car.getPosition()).isEqualTo(3);
+        car.run();
+        assertThat(car.getPosition()).matches(position -> position == 1 || position == 2);
     }
 }
