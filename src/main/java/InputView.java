@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class InputView {
 
-    public static CarRacing inputCarRacingInformation() {
+    public static CarRacingExecutor inputCarRacingInformation() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("자동차 대수는 몇 대 인가요?");
         int carCount = scanner.nextInt();
@@ -10,6 +10,6 @@ public class InputView {
         int moveCount = scanner.nextInt();
         scanner.close();
 
-        return new CarRacing(carCount, moveCount);
+        return new CarRacingExecutor(carCount, moveCount);
     }
 }
