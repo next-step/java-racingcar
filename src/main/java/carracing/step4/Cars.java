@@ -29,7 +29,9 @@ public class Cars {
     }
 
     public List<CarVo> getAllCarsTrace() {
-        return cars.stream().map(car -> new CarVo(car.getName(), car.getMoveCount())).collect(toList());
+        return cars.stream()
+                .map(car -> new CarVo(car.getName(), car.getMoveCount()))
+                .collect(toList());
     }
 
     public List<String> getWinner() {
@@ -37,7 +39,9 @@ public class Cars {
         for (Car car : cars) {
             winnerCars = getWinnerCars(winnerCars, car);
         }
-        return winnerCars.stream().map(Car::getName).collect(toList());
+        return winnerCars.stream()
+                .map(Car::getName)
+                .collect(toList());
     }
 
     private List<Car> getWinnerCars(List<Car> winnerCars, Car car) {
