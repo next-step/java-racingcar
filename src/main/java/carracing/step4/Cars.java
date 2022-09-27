@@ -37,14 +37,14 @@ public class Cars {
     public List<String> getWinner() {
         List<Car> winnerCars = new ArrayList<>();
         for (Car car : cars) {
-            winnerCars = getWinnerCars(winnerCars, car);
+            winnerCars = pickWinners(winnerCars, car);
         }
         return winnerCars.stream()
                 .map(Car::getName)
                 .collect(toList());
     }
 
-    private List<Car> getWinnerCars(List<Car> winnerCars, Car car) {
+    private List<Car> pickWinners(List<Car> winnerCars, Car car) {
         if (winnerCars.isEmpty()) {
             winnerCars.add(car);
         } else if (winnerCars.get(0).getMoveCount() < car.getMoveCount()) {
