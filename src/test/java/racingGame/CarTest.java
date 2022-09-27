@@ -3,7 +3,6 @@ package racingGame;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingGame.racingRule.FowardRule;
-import racingGame.racingRule.NotMoveRule;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -11,14 +10,12 @@ class CarTest {
     private FowardRule fowardRule = new FowardRule();
 
     @Test
-    @DisplayName("move 메서드가 동작하면 -가 담긴다.")
-    void move() {
+    @DisplayName("움직이는 성공했을시 createTrace를 성공한 만큼 -를 반환")
+    void createTrace() {
         Car car = new Car();
 
-        car.move();
-
-        assertThat(car.getCarTracesValue(0)).isEqualTo("-");
+        car.move(fowardRule);
+        car.move(fowardRule);
+        assertThat(car.createTrace("-")).isEqualTo("--");
     }
-
-
 }

@@ -1,49 +1,40 @@
 package racingGame;
 
-import racingGame.exception.NegativeExceptionV1;
+import racingGame.view.InputVerifier;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class InputParameters {
-    private List<Integer> inputs = new ArrayList<>();
-
+    int carNum;
+    int tryNum;
     public InputParameters(String carNum, String tryNum) {
-        validateNegative(carNum);
-        validateNegative(tryNum);
-        this.inputs.add(parseInput(carNum));
-        this.inputs.add(parseInput(tryNum));
+        InputVerifier.validateInput(carNum,tryNum);
+        this.carNum = parseInput(carNum);
+        this.tryNum  = parseInput(tryNum);
     }
 
     private int parseInput(String input) {
         return Integer.parseInt(input);
     }
 
-    private void validateNegative(String input) {
-        if (Integer.parseInt(input) < 0) {
-            throw new NegativeExceptionV1("0보단 큰 숫자를 입력해주세요");
-        }
-    }
-
     public int getCarNum() {
-        return inputs.get(0);
+        return carNum;
     }
 
     public int getTryNum() {
-        return inputs.get(1);
+        return tryNum;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        InputParameters inputParameters = (InputParameters) o;
-        return Objects.equals(inputs, inputParameters.inputs);
+        InputParameters that = (InputParameters) o;
+        return carNum == that.carNum && tryNum == that.tryNum;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(inputs);
+        return Objects.hash(carNum, tryNum);
     }
 }
