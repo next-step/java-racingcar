@@ -9,6 +9,7 @@ public class RacingGame {
         Cars cars = Cars.create(carNumber);
         for (int i = 0; i < moveNumber; i++) {
             cars.moving();
+            cars.print();
         }
     }
 }

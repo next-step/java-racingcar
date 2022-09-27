@@ -32,4 +32,11 @@ public class Cars {
     private int getRandomNumber() {
         return random.nextInt(10);
     }
+
+    public void print() {
+        for (Car car : cars) {
+            System.out.println("-".repeat(car.getLocation()));
+        }
+        System.out.println("\n");
+    }
 }

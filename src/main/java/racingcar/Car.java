@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Car {
     private int location;
     public static final int MOVE_DISTANCE = 1;
-    public static final int START_LOCATION = 1;
+    public static final int START_LOCATION = 0;
 
     private Car(int location) {
         this.location = location;
