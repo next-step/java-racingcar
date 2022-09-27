@@ -6,6 +6,7 @@ import racinggame.dto.RaceResultDTO;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 
 import static java.util.stream.Collectors.groupingBy;
 
@@ -28,7 +29,7 @@ public class RaceService {
         return allCars.stream()
                 .collect(groupingBy(Car::distance))
                 .entrySet().stream()
-                .max(Comparator.comparing(entry -> Integer.valueOf(entry.getKey())))
+                .max(Comparator.comparing(Map.Entry::getKey))
                 .get()
                 .getValue();
     }

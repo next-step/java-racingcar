@@ -12,7 +12,7 @@ public class CarFactory {
 
     public static List<Car> produce(RaceInputDTO dto) {
         return Arrays.stream(dto.getCarNames())
-                .map(name -> new Car(name))
+                .map(Car::new)
                 .collect(Collectors.toList());
     }
 

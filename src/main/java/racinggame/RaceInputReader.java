@@ -33,6 +33,6 @@ public class RaceInputReader {
     }
 
     private static String[] split(String carNames) {
-        return carNames.replaceAll(" ", "").split(CAR_NAME_SEPERATOR);
+        return carNames.replace(" ", "").split(CAR_NAME_SEPERATOR);
     }
 }
