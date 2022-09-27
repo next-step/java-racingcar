@@ -2,18 +2,18 @@ package carracing.step4;
 
 public class CarVo {
     private final String name;
-    private final int moveCnt;
+    private final int moveCount;
 
-    public CarVo(String name, int moveCnt) {
-        this.name = name;
-        this.moveCnt = moveCnt;
+    public CarVo(Car car) {
+        this.name = car.getName();
+        this.moveCount = car.getMoveCount();
     }
 
     public String getName() {
         return name;
     }
 
-    public int getMoveCnt() {
-        return moveCnt;
+    public int getMoveCount() {
+        return moveCount;
     }
 }

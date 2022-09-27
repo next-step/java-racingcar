@@ -9,7 +9,7 @@ public class ResultView {
             System.out.println("실행 결과");
         }
         for (CarVo carVo : result) {
-            System.out.printf("%s : %s\n", carVo.getName(), "-".repeat(carVo.getMoveCnt()));
+            System.out.printf("%s : %s\n", carVo.getName(), "-".repeat(carVo.getMoveCount()));
         }
         System.out.println();
     }

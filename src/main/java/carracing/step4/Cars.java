@@ -30,7 +30,7 @@ public class Cars {
 
     public List<CarVo> getAllCarsTrace() {
         return cars.stream()
-                .map(car -> new CarVo(car.getName(), car.getMoveCount()))
+                .map(CarVo::new)
                 .collect(toList());
     }
 
