@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import racingcar.Position;
+import racingcar.Car;
 
 import java.util.List;
 
@@ -13,9 +13,9 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public static void printPlayResults(List<Position> playResults) {
-        for (Position position : playResults) {
-            System.out.println(resolveResultMessage(position.getPosition()));
+    public static void printPlayResults(List<Car> playResults) {
+        for (Car car : playResults) {
+            System.out.println(resolveResultMessage(car.getPosition()));
         }
         printNewLine();
     }

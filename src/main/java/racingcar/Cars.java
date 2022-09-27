@@ -21,11 +21,10 @@ public class Cars {
         return cars;
     }
 
-    public List<Position> move(MovingStrategy movingStrategy) {
-        List<Position> positions = new ArrayList<>();
+    public List<Car> move(MovingStrategy movingStrategy) {
         for (Car car : cars) {
-            positions.add(car.move(movingStrategy));
+            car.move(movingStrategy);
         }
-        return positions;
+        return cars;
     }
 }

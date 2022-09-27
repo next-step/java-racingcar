@@ -36,7 +36,7 @@
 - [x] `strategy` 패키지 분리
 - [x] `RandomMovingStrategy`의 `Random` 객체 매번 생성하지 않고 재사용 되도록
 - [x] `GameController`의 `RacingCarGame` 생성 부분 팩토리로 분리
-- [ ] `Cars.move()` 에서 `ArrayList` 를 매번 생성해 반환하지 않고 필드인 `List<Car>`를 반환하도록 수정
+- [x] `Cars.move()` 에서 `ArrayList` 를 매번 생성해 반환하지 않고 필드인 `List<Car>`를 반환하도록 수정
 
 ## Step4 기능 요구 사항
 ### Car

@@ -14,7 +14,7 @@ public class RacingCarGame {
         this.playCount = playCount;
     }
 
-    public List<Position> play(MovingStrategy movingStrategy) {
+    public List<Car> play(MovingStrategy movingStrategy) {
         playCount--;
         return cars.move(movingStrategy);
     }

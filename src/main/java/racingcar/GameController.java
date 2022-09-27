@@ -17,7 +17,7 @@ public class GameController {
         ResultView.printTitle();
 
         while (!racingCarGame.isEnd()) {
-            List<Position> playResults = racingCarGame.play(MOVING_STRATEGY);
+            List<Car> playResults = racingCarGame.play(MOVING_STRATEGY);
             ResultView.printPlayResults(playResults);
         }
     }
