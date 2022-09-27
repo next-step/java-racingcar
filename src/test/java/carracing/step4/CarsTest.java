@@ -22,8 +22,8 @@ class CarsTest {
     @DisplayName("전체 자동차를 움직일 경우, carTrace가 1, 1, 1 발생")
     void moveAllCars() {
         cars.moveAllCars();
-        assertThat(cars.getAllCarsTrace())
-                .extracting("moveCnt", int.class)
+        assertThat(cars.getAllCars())
+                .extracting("moveCount", int.class)
                 .containsExactly(1, 1, 1);
     }
 

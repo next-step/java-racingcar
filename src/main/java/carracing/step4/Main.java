@@ -3,6 +3,9 @@ package carracing.step4;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 public class Main {
 
@@ -19,7 +22,11 @@ public class Main {
         ResultView resultView = new ResultView();
         for (int i = 0; i < tryCount; i++) {
             cars.moveAllCars();
-            resultView.printEachPlayResult(cars.getAllCarsTrace(), i);
+            List<CarVo> carVos = cars.getAllCars()
+                    .stream()
+                    .map(CarVo::new)
+                    .collect(toList());
+            resultView.printEachPlayResult(carVos, i);
         }
         resultView.printWinner(cars.getWinner());
     }

@@ -28,10 +28,8 @@ public class Cars {
         cars.get(carNum).move(numberGenerator.get());
     }
 
-    public List<CarVo> getAllCarsTrace() {
-        return cars.stream()
-                .map(CarVo::new)
-                .collect(toList());
+    public List<Car> getAllCars() {
+        return cars;
     }
 
     public List<String> getWinner() {
