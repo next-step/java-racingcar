@@ -1,32 +1,36 @@
 package step3.view;
 
-import step3.model.Cars;
+import step3.model.Car;
 
+import java.util.List;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class ResultView
 {
-    private final Cars cars;
-
-    public ResultView(Cars cars)
+    private final int tryNumber;
+    public ResultView(int tryNumber)
     {
-        this.cars = cars;
+        this.tryNumber = tryNumber;
     }
 
-    public void draw()
+    public void draw(List<Car> cars)
     {
         System.out.println("실행 결과");
-        print();
-
+        IntStream.range(0, tryNumber).forEach(value -> step(cars));
     }
 
-    private void print()
+    private void step(List<Car> cars)
     {
-        IntStream.range(0, cars.getTryNumber())
-            .forEach(value ->
-            {
-                cars.stream().forEach(car -> System.out.println(car.moving()));
-                System.out.println("");
-            });
+        cars.forEach(car -> positionDraw(car.moving()));
+        System.out.println();
+    }
+
+    private void positionDraw(Car car)
+    {
+        StringBuilder builder = new StringBuilder();
+        IntStream.range(0, car.getPosition()).forEach(value -> builder.append("-"));
+
+        System.out.println(builder);
     }
 }

@@ -2,21 +2,25 @@ package step3.model;
 
 public class Car
 {
-    private final StringBuilder position;
-    private final Move move;
+    private int position;
+    private final MovingStrategy movingStrategy;
 
-    public Car(Move move)
+    public Car(MovingStrategy movingStrategy)
     {
-        position = new StringBuilder();
-        this.move = move;
+        this.movingStrategy = movingStrategy;
     }
 
-    public String moving()
+    public Car moving()
     {
-        if (move.move())
+        if (movingStrategy.movable())
         {
-           position.append("-");
+            position++;
         }
-        return position.toString();
+        return this;
+    }
+
+    public int getPosition()
+    {
+        return position;
     }
 }
