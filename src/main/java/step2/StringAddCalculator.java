@@ -3,6 +3,7 @@ package step2;
 
 import step2.util.StringUtil;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -22,9 +23,10 @@ public class StringAddCalculator
         {
             return DEFAULT_RESULT;
         }
-        Number number = new Number(split(value));
-
-        return number.sum();
+        return Arrays.stream(split(value))
+            .map(PositiveNumber::new)
+            .reduce(PositiveNumber::plus)
+            .get().getNumber();
     }
     private static String[] split(String value)
     {
