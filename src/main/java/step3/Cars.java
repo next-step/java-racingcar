@@ -5,13 +5,17 @@ import java.util.List;
 import java.util.Random;
 
 public class Cars {
-    List<Car> cars;
+    private List<Car> cars;
 
     public Cars(int n) {
         this.cars = new ArrayList<>();
         for (int i = 0; i < n; i++) {
             cars.add(new Car());
         }
+    }
+
+    public List<Car> getCars() {
+        return this.cars;
     }
 
     public void playGame() {

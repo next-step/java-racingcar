@@ -11,13 +11,13 @@ public class ResultView {
     }
     
     public static void print_PlayResult(Cars cars) {
-        for (Car car : cars.cars) {
+        for (Car car : cars.getCars()) {
             print_carPosition(car);
         }
     }
 
-    public void print_carPosition(Car car) {
-        for (int i=0; i<car.getPos(); i++) {
+    public static void print_carPosition(Car car) {
+        for (int i = 0; i < car.getPos(); i++) {
             System.out.print("-");
         }
         System.out.println();
