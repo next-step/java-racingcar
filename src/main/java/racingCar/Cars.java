@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Cars {
     private List<Car> cars;
@@ -12,23 +13,16 @@ public class Cars {
         this.cars = cars;
     }
 
-    public Cars(int n) {
+    public Cars(String carNames) {
         this.cars = new ArrayList<>();
-        for (int i = 0; i < n; i++) {
-            cars.add(new Car());
+        String[] sCars = carNames.split(",");
+        for (String sCar : sCars) {
+            cars.add(new Car().createCar(sCar));
         }
     }
 
     public List<Car> getCars() {
         return this.cars;
-    }
-
-    public Cars createCars(String carNames) {
-        String[] sCars = carNames.split(",");
-        for (String sCar : sCars) {
-            cars.add(new Car().createCar(sCar));
-        }
-        return this;
     }
 
     public void playGame() {
@@ -38,15 +32,20 @@ public class Cars {
     }
 
     public List<String> getWinners() {
+        int maxPos = getMaxPos();
+
         List<String> winners = new ArrayList<>();
-        Collections.sort(getCars());
-        int maxPos = getCars().get(0).getPos();
-        for (Car car : cars) {
-            if (maxPos > car.getPos()) break;
-            winners.add(car.getName());
-        }
+        cars.stream()
+                .filter(car -> car.getPos() == maxPos)
+                .forEach(car -> winners.add(car.getName()));
 
         return winners;
+    }
+
+    private int getMaxPos() {
+        Collections.sort(getCars());
+        int maxPos = getCars().get(0).getPos();
+        return maxPos;
     }
 
 }

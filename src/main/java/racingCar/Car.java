@@ -4,9 +4,10 @@ package racingCar;
 import java.util.Random;
 
 public class Car implements Comparable<Car> {
-    public static final int MOVE_NUM = 4;
-    public static final int RANDOM_BOUND = 10;
-    public static final String ERR_MSG_NAME_LENGTH = "이름은 5글자를 초과할 수 없습니다.";
+    private static final int MOVE_NUM = 4;
+    private static final int RANDOM_BOUND = 10;
+    private static final String ERR_MSG_NAME_LENGTH = "이름은 5글자를 초과할 수 없습니다.";
+    public static final int NAME_LEN_BOUND = 5;
     private int pos;
     private String name;
 
@@ -34,7 +35,7 @@ public class Car implements Comparable<Car> {
     }
 
     public Car createCar(String name) {
-        if (name.length() > 5) {
+        if (name.length() > NAME_LEN_BOUND) {
             throw new RuntimeException(ERR_MSG_NAME_LENGTH);
         }
         this.name = name;

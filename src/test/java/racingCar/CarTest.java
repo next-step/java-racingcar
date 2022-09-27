@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
 
-    Car car = new Car();
+    private Car car = new Car();
 
     @Test
     public void 랜덤값_4이상이면_전진() {
