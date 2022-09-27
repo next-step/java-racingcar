@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public final class RacingCars implements Cars {
 
@@ -31,6 +32,14 @@ public final class RacingCars implements Cars {
         ArrayList<Car> existedCars = new ArrayList<>(cars);
         existedCars.remove(car);
         return new RacingCars(Collections.unmodifiableList(existedCars));
+    }
+
+    @Override
+    public Cars carsWithTurnUsed() {
+        final List<Car> carsWithTurnUsed = cars.stream()
+                .map(Car::movedCar)
+                .collect(Collectors.toList());
+        return new RacingCars(carsWithTurnUsed);
     }
 
     @Override

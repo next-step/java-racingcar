@@ -8,4 +8,6 @@ public interface Cars {
 
     Cars carsWithRemoveCar(Car car);
 
+    Cars carsWithTurnUsed();
+
 }
