@@ -2,34 +2,19 @@ package game.model;
 
 public class Car {
 
-    private int position = 0;
+    private final Position position;
 
     public Car() {
-
+        this.position = new Position(0);
     }
 
     public void move(MovableStrategy movableStrategy) {
         if (movableStrategy.isPossibleToMove()) {
-            position++;
+            this.position.increase();
         }
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Car)) return false;
-
-        Car car = (Car) o;
-
-        return position == car.position;
-    }
-
-    @Override
-    public int hashCode() {
-        return position;
-    }
-
     public int getPosition() {
-        return position;
+        return position.getPosition();
     }
 }
