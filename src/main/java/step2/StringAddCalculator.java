@@ -5,8 +5,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
-    private static Pattern separatePattern = Pattern.compile("//(.)\n(.*)");
-    private static Pattern positiveNumberPattern = Pattern.compile("^[0-9]\\d*(\\.\\d+)?$");
+    private static final Pattern SEPARATE_PATTERN = Pattern.compile("//(.)\n(.*)");
+    private static final Pattern POSITIVE_NUMBER_PATTERN = Pattern.compile("^[0-9]\\d*(\\.\\d+)?$");
 
     public static int splitAndSum(String numbersString){
         if(isEmpty(numbersString)){
@@ -20,7 +20,7 @@ public class StringAddCalculator {
     }
 
     private static String[] split(String numberString){
-        Matcher matcher = separatePattern.matcher(numberString);
+        Matcher matcher = SEPARATE_PATTERN.matcher(numberString);
 
         // 커스텀 구분자로 Split
         if (matcher.find()) {
@@ -51,7 +51,7 @@ public class StringAddCalculator {
     }
 
     private static boolean isPositiveNumber(String numberString){
-        return positiveNumberPattern.matcher(numberString).find();
+        return POSITIVE_NUMBER_PATTERN.matcher(numberString).find();
     }
 
 }
