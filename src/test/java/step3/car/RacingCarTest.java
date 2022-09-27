@@ -14,9 +14,7 @@ class RacingCarTest {
         final Number number = new Fake(4);
         final Car sut = new RacingCar(number);
 
-        sut.useTurn();
-
-        Assertions.assertThat(sut).isEqualTo(new RacingCar(1, number));
+        Assertions.assertThat(sut.movedCar()).isEqualTo(new RacingCar(1, number));
     }
 
     @Test
@@ -25,9 +23,8 @@ class RacingCarTest {
         final Number number = new Fake(3);
         final Car sut = new RacingCar(number);
 
-        sut.useTurn();
-
-        Assertions.assertThat(sut).isEqualTo(new RacingCar(0, number));
+        Assertions.assertThat(sut.movedCar()).isEqualTo(new RacingCar(0, number));
     }
 
 }
+
