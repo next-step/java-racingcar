@@ -28,20 +28,20 @@ public class Game {
 		List<Result> results = new ArrayList<>();
 		for (int i = 0; i < trialCount; ++i) {
 			moveOnce(cars);
-			accumulateResult(cars, results);
+			accumulateResult(results, cars);
 		}
 		OUTPUT_VIEW.printResults(results);
-	}
-
-	private static void accumulateResult(Cars cars, List<Result> results) {
-		List<Integer> positions = cars.getPositions();
-		results.add(new Result(positions));
 	}
 
 	private static void moveOnce(Cars cars) {
 		NumberStrategy numberStrategy = new RandomNumberStrategy(9);
 		MoveStrategy moveStrategy = new NumberOverFourStrategy(numberStrategy);
 		cars.move(moveStrategy);
+	}
+
+	private static void accumulateResult(List<Result> results, Cars cars) {
+		List<Integer> positions = cars.getPositions();
+		results.add(new Result(positions));
 	}
 
 	private static int getTrialCount() {
