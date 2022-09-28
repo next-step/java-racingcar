@@ -30,19 +30,19 @@ public class Number {
         return Objects.hash(number);
     }
 
-    public Number add(Number number) {
+    Number add(Number number) {
         return new Number(this.number + number.number);
     }
 
-    public Number subtract(Number number) {
+    Number subtract(Number number) {
         return new Number(this.number - number.number);
     }
 
-    public Number multiply(Number number) {
+    Number multiply(Number number) {
         return new Number(this.number * number.number);
     }
 
-    public Number divide(Number number) {
+    Number divide(Number number) {
         return new Number(this.number / number.number);
     }
 }
