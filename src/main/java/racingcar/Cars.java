@@ -14,7 +14,14 @@ public class Cars {
     }
 
     public static Cars create(int number) {
+        validateNumber(number);
         return new Cars(number);
+    }
+
+    private static void validateNumber(int number) {
+        if (number < 0) {
+            throw new IllegalArgumentException("정수값만 입력가능합니다.");
+        }
     }
 
     public void moving() {
@@ -37,6 +44,5 @@ public class Cars {
         for (Car car : cars) {
             System.out.println("-".repeat(car.getLocation()));
         }
-        System.out.println("\n");
     }
 }
