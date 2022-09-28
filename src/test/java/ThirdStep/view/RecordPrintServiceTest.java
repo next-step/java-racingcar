@@ -1,9 +1,8 @@
-package ThirdStep.services;
+package ThirdStep.view;
 
 import ThirdStep.domain.model.Car;
-import ThirdStep.domain.model.request.CarRequest;
 import ThirdStep.domain.model.RecordByCar;
-import ThirdStep.domain.RecordService;
+import ThirdStep.domain.model.request.CarRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,16 +14,15 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class RecordServiceTest {
-
-    private final RecordService recordService = new RecordService();
+class RecordPrintServiceTest {
+    private final RecordPrintService recordPrintService = new RecordPrintService();
     private Method getWinnersMethod;
 
     private final List<RecordByCar> recordByCars = new ArrayList<>();
 
     @BeforeEach
     public void setGetWinnersMethod() throws NoSuchMethodException {
-        getWinnersMethod = recordService.getClass().getDeclaredMethod("getWinners", List.class);
+        getWinnersMethod = recordPrintService.getClass().getDeclaredMethod("getWinners", List.class);
         getWinnersMethod.setAccessible(true);
     }
 
@@ -42,7 +40,7 @@ class RecordServiceTest {
     @Test
     @DisplayName("가장 멀리 간 차가 한 대인 경우, 승자는 1명이고 이름은 car2이다.")
     void test1() throws InvocationTargetException, IllegalAccessException {
-        List<Car> winner = (List<Car>) getWinnersMethod.invoke(recordService, recordByCars);
+        List<Car> winner = (List<Car>) getWinnersMethod.invoke(recordPrintService, recordByCars);
 
         assertThat(winner.size()).isEqualTo(1);
         assertThat(winner.get(0).getName()).isEqualTo("car2");
@@ -54,10 +52,11 @@ class RecordServiceTest {
         Car car4 = new Car(new CarRequest("car4"));
         recordByCars.add(new RecordByCar(car4, 15));
 
-        List<Car> winner = (List<Car>) getWinnersMethod.invoke(recordService, recordByCars);
+        List<Car> winner = (List<Car>) getWinnersMethod.invoke(recordPrintService, recordByCars);
 
         assertThat(winner.size()).isEqualTo(2);
         assertThat(winner.get(0).getName()).isEqualTo("car2");
         assertThat(winner.get(1).getName()).isEqualTo("car4");
     }
+
 }

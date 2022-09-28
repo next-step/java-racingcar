@@ -1,6 +1,5 @@
 package ThirdStep.domain;
 
-import ThirdStep.domain.CarService;
 import ThirdStep.domain.strategy.RandomMovingStrategy;
 import ThirdStep.domain.model.Car;
 import ThirdStep.domain.model.RecordByCar;
