@@ -7,46 +7,68 @@ import racing.view.GameInput;
 import racing.view.GameOutput;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Game {
-
-
     private GameInput input = new GameInput();
     private GameOutput output = new GameOutput();
 
     public void play() {
-        final int carCount = input.carCount();
-        output.printCarCount(carCount);
-
-        List<Car> cars = this.carSetting(carCount);
+        final String[] carArray = input.getCarArrayBySplit();
+        List<Car> cars = this.carSetting(carArray);
+        output.printCarCount(cars);
 
         final int roundCount = input.roundCount();
         output.printRoundCount(roundCount);
         this.playRace(roundCount, cars);
+        List<Car> winner = this.summaryRaceResult(cars);
+        output.printNoticeWinner(winner);
     }
 
-    private List<Car> carSetting(int carCount) {
+    private List<Car> carSetting(String[] carArray) {
         List<Car> Cars = new ArrayList<>();
-        for (int i = 1; i <= carCount; i++) {
-            Car car = new Car(0);
+        int carCount = carArray.length;
+        for (int i = 0; i < carCount; i++) {
+            String carName = carArray[i];
+            Car car = new Car(0, carName);
             Cars.add(car);
         }
         return Cars;
     }
 
     private void playRace(int roundCount, List<Car> cars) {
+        output.printStartRace();
         for (int i = 0; i < roundCount; i++) {
             this.playRound(cars);
+            output.printDivideRound();
         }
+    }
+
+    private List<Car> summaryRaceResult(List<Car> cars) {
+        Collections.sort(cars);
+        int winnerLocation = cars.get(0).getCurrentLocation();
+        return getWinner(winnerLocation, cars);
     }
 
     private void playRound(List<Car> cars) {
         final GoStraightStrategy goStraightStrategy = RandomNumberGoStraightStrategy.getInstance();
         for (Car car : cars) {
             car.goStraight(goStraightStrategy);
-            output.printCurrentLocation(car);
+            output.printCurrentLocationAndCarName(car);
         }
-        output.printDivideRound();
+    }
+
+    private List<Car> getWinner(int winnerLocation, List<Car> cars) {
+        List<Car> winner = new ArrayList<>();
+        for (Car car : cars) {
+            if (isNotWinnerCar(winnerLocation, car)) return winner;
+            winner.add(car);
+        }
+        return winner;
+    }
+
+    private static boolean isNotWinnerCar(int winnerLocation, Car car) {
+        return car.getCurrentLocation() < winnerLocation;
     }
 }

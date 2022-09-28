@@ -32,7 +32,7 @@ public class GameOutput {
         System.out.println(COUNT_ROUND + roundCount);
     }
 
-    public void printRaceResult() {
+    public void printStartRace() {
         System.out.println(RACE_RESULT);
     }
 
