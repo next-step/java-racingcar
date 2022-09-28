@@ -21,7 +21,7 @@ public class RacingCarApplication {
             RacingCarOutput.printRacingResult(cars);
         }
 
-        List<String> winner = RacingSupport.chooseWinner(cars);
+        String winner = WinnerSupport.chooseWinner(cars);
         RacingCarOutput.printWinner(winner);
     }
 }

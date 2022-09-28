@@ -39,8 +39,7 @@ public class RacingCarOutput {
         System.out.println();
     }
 
-    public static void printWinner(List<String> winners) {
-        String winner = String.join(WINNER_DELIMITER, winners);
-        System.out.println(winner + WINNER_NOTICE_MESSAGE);
+    public static void printWinner(String winners) {
+        System.out.println(winners + WINNER_NOTICE_MESSAGE);
     }
 }
