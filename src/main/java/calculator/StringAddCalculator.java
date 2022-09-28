@@ -9,15 +9,24 @@ public class StringAddCalculator {
         if (isBlank(text)) {
             return 0;
         }
+        return sum(toInts(split(text)));
+    }
+
+    private static String[] split(String text) {
         Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(text);
-        String[] tokens;
         if (matcher.find()) {
-            String customDelimiter = matcher.group(1);
-            tokens = matcher.group(2).split(customDelimiter);
-        } else {
-            tokens = split(text);
+            return customSplit(matcher);
         }
-        return sum(toInts(tokens));
+        return basicSplit(text);
+    }
+
+    private static String[] customSplit(Matcher matcher) {
+        String customDelimiter = matcher.group(1);
+        return matcher.group(2).split(customDelimiter);
+    }
+
+    private static String[] basicSplit(String text) {
+        return text.split(SEPARATOR);
     }
 
     private static int sum(int[] numbers) {
@@ -42,10 +51,6 @@ public class StringAddCalculator {
             throw new RuntimeException("음수 값이 들어올 수 없습니다.");
         }
         return number;
-    }
-
-    private static String[] split(String text) {
-        return text.split(SEPARATOR);
     }
 
     private static boolean isBlank(String text) {
