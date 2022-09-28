@@ -12,22 +12,20 @@ class CarsTest {
     @Test
     void 전진_테스트() {
         Cars cars = new Cars(List.of(new Car(), new Car()));
-        MovableStrategy movableStrategy = () -> 9;
+        cars.move(() -> 1);
 
-        cars.move(movableStrategy);
-
-        assertThat(cars.getCars().stream().map(Car::getMoved)).containsExactly("-", "-");
+        assertThat(cars.getCars().stream()
+            .map(Car::getMoved)).containsExactly(1, 1);
     }
 
     @DisplayName("모든 자동차 제자리")
     @Test
     void 제자리_테스트() {
         Cars cars = new Cars(List.of(new Car(), new Car()));
-        MovableStrategy movableStrategy = () -> 1;
+        cars.move(() -> 0);
 
-        cars.move(movableStrategy);
-
-        assertThat(cars.getCars().stream().map(Car::getMoved)).containsExactly("", "");
+        assertThat(cars.getCars().stream()
+            .map(Car::getMoved)).containsExactly(0, 0);
     }
 
 }

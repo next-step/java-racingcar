@@ -3,29 +3,26 @@ package racing.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.api.Test;
 
 class CarTest {
 
-    @DisplayName("4, 5, 6, 7, 8, 9이면 전진")
-    @ParameterizedTest
-    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
-    void 전진하는_경우_테스트(int movable) {
+    @DisplayName("앞으로 한칸 전지")
+    @Test
+    void 전진하는_경우_테스트() {
         Car car = new Car();
-        car.move(movable);
+        car.move(() -> 1);
 
-        assertThat(car.getMoved()).isEqualTo("-");
+        assertThat(car.getMoved()).isEqualTo(1);
     }
 
-    @DisplayName("0, 1, 2, 3이면 제자리")
-    @ParameterizedTest
-    @ValueSource(ints = {0, 1, 2, 3})
-    void 제자리에_있는_테스트(int movable) {
+    @DisplayName("제자리 걸음")
+    @Test
+    void 제자리에_있는_테스트() {
         Car car = new Car();
-        car.move(movable);
+        car.move(() -> 0);
 
-        assertThat(car.getMoved()).isEqualTo("");
+        assertThat(car.getMoved()).isEqualTo(0);
     }
 
 }
