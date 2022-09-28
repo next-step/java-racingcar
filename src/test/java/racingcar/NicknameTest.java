@@ -40,11 +40,22 @@ public class NicknameTest {
 
     @Test
     @DisplayName("nickname 앞뒤에 공백이 있으면 제거된다.")
-    void nicknameBlank() {
+    void nicknameRemoveBlank() {
         String expected = "blank";
 
         String actual = new Nickname(" blank ").getValue();
 
         assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("nickname 이 공백이면 예외가 발생한다.")
+    void nicknameBlank() {
+
+        ThrowingCallable actual = () -> new Nickname(" ");
+
+        assertThatThrownBy(actual)
+                .isExactlyInstanceOf(CanNotBlankNicknameException.class)
+                .hasMessage("공백인 인자값은 nickname이 될 수 없습니다.");
     }
 }

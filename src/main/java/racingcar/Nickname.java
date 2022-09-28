@@ -13,6 +13,7 @@ public class Nickname {
     }
 
     private void validate(String value) {
+        validateBlank(value);
         validateMaxLength(value);
     }
 
@@ -24,6 +25,12 @@ public class Nickname {
 
     private String removeBlank(String value) {
         return value.trim();
+    }
+
+    private void validateBlank(String value) {
+        if(value.isBlank()) {
+            throw new CanNotBlankNicknameException();
+        }
     }
 
     private void validateMaxLength(String value) {
