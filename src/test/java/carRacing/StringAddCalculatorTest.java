@@ -1,5 +1,6 @@
-package step2;
+package carRacing;
 
+import carRacing.StringAddCalculator;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

@@ -7,3 +7,23 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## myManual
+1. 푸시 이후
+1-1) https://github.com/next-step/java-racingcar 접근
+1-2) Pull requests > New pull request
+1-3) 설정 세팅 및 코맨트 추가
+ base repository: next-step/java-racingcar
+ base: ohseungcheol
+ head repository: OhSeungCheol/java-racingcar
+ compare: 작업 브랜치
+1-4) Create Pull Request
+1-5) https://edu.nextstep.camp/s/DVVUSLFe 에서 리뷰 요청 버튼 클릭
+1-6) Slack 에 리뷰 요청 메시지 생성 여부 확인
+
+2. 머지 이후
+2-1) ohseungcheol 브랜치로 체크아웃
+2-2) git fetch upstream ohseungcheol
+2-3) git rebase upstream/ohseungcheol
+2-4) 기존 미션 브랜치 삭제(선택)
+2-5) 신규 미션 브랜치 생성
