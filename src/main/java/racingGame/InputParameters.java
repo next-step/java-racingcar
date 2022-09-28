@@ -5,8 +5,8 @@ import racingGame.view.InputVerifier;
 import java.util.Objects;
 
 public class InputParameters {
-    int carNum;
-    int tryNum;
+    private int carNum;
+    private int tryNum;
     public InputParameters(String carNum, String tryNum) {
         InputVerifier.validateInput(carNum,tryNum);
         this.carNum = parseInput(carNum);

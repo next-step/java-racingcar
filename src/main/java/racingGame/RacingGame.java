@@ -16,7 +16,7 @@ public class RacingGame {
     }
 
     public Cars play(RacingRule racingRule) {
-        IntStream.range(0, inputParameters.tryNum)
+        IntStream.range(0, inputParameters.getTryNum())
                 .forEach(car -> moveCar(racingRule));
         return new Cars(cars);
     }
