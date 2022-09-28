@@ -1,0 +1,6 @@
+package race;
+
+class InputViewTest {
+
+
+}
