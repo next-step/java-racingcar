@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -23,9 +23,13 @@ class CarsTest {
     void race() {
         Cars cars = Cars.of(List.of("name1", "name2", "name3"));
 
-        Cars racedCars = cars.race();
+        Cars result = cars.race(() -> 5);
 
-        assertThat(racedCars.cars()).hasSize(3);
+        Cars expected = new Cars(List.of(
+                Car.of(5, "name1"),
+                Car.of(5, "name2"),
+                Car.of(5, "name3")));
+        assertThat(result).isEqualTo(expected);
     }
 
     @DisplayName("자동차 중 가장 많이 이동한 차들을 구한다")

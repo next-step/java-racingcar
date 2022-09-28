@@ -1,10 +1,8 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.Objects;
 
 public class Car {
-    private static final Integer MOVE_CRITERIA = 4;
-
     private final Integer position;
     private final String name;
 
@@ -25,15 +23,8 @@ public class Car {
         return name;
     }
 
-    Car move(Integer randomNumber) {
-        return Car.of(nextPosition(randomNumber), name);
-    }
-
-    private Integer nextPosition(Integer randomNumber) {
-        if (randomNumber >= MOVE_CRITERIA) {
-            return position + 1;
-        }
-        return position;
+    Car move(MovingPolicy movingPolicy) {
+        return Car.of(position + movingPolicy.nextStep(), name);
     }
 
     @Override
