@@ -29,9 +29,9 @@ class RecordServiceTest {
 
     @BeforeEach
     public void setCars() {
-        Car car1 = Car.of(new CarRequest("car1"));
-        Car car2 = Car.of(new CarRequest("car2"));
-        Car car3 = Car.of(new CarRequest("car3"));
+        Car car1 = new Car(new CarRequest("car1"));
+        Car car2 = new Car(new CarRequest("car2"));
+        Car car3 = new Car(new CarRequest("car3"));
 
         recordByCars.add(new RecordByCar(car1, 10));
         recordByCars.add(new RecordByCar(car2, 15));
@@ -50,7 +50,7 @@ class RecordServiceTest {
     @Test
     @DisplayName("가장 멀리간 차가 두 대인 경우, 승자는 2명이고 이름은 car2, car4이다.")
     void test2() throws InvocationTargetException, IllegalAccessException {
-        Car car4 = Car.of(new CarRequest("car4"));
+        Car car4 = new Car(new CarRequest("car4"));
         recordByCars.add(new RecordByCar(car4, 15));
 
         List<Car> winner = (List<Car>) getWinnersMethod.invoke(recordService, recordByCars);

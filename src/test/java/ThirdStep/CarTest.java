@@ -25,6 +25,6 @@ class CarTest {
     @Test
     @DisplayName("5글자가 넘는 이름으로 Car를 생성하려하면 에러가 발생한다.")
     void create_car_test() {
-        assertThatThrownBy(() -> Car.of(carRequest)).isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> new Car(carRequest)).isInstanceOf(RuntimeException.class);
     }
 }

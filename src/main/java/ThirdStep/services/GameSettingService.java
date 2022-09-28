@@ -28,7 +28,7 @@ public class GameSettingService {
 
         List<CarRequest> carRequests = generateCarRequest(carNameInput);
 
-        gameSetting = new GameSetting(attempts, carRequests.stream().map(Car::of).collect(Collectors.toList()));
+        gameSetting = new GameSetting(attempts, carRequests.stream().map(Car::new).collect(Collectors.toList()));
     }
 
     private static List<CarRequest> generateCarRequest(String carNameInput) {
