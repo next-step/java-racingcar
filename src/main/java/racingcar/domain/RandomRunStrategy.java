@@ -7,6 +7,7 @@ public class RandomRunStrategy implements RunStrategy {
 
     private static final int RUNNABLE_BOUND = 4;
     private static final int MAX_VALUE = 10;
+    private static final Random random = new Random();
 
     @Override
     public boolean runnable() {
@@ -14,7 +15,6 @@ public class RandomRunStrategy implements RunStrategy {
     }
 
     private int getRandomNumber() {
-        Random random = new Random();
         return random.nextInt(MAX_VALUE);
     }
 
