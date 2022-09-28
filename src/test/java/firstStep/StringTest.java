@@ -39,7 +39,6 @@ public class StringTest {
     void charAtTest(){
         //given
         String str = "abc";
-
         //then
         assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
                 .isThrownBy(() ->{
