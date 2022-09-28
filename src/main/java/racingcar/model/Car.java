@@ -1,6 +1,6 @@
-package racingcar;
+package racingcar.model;
 
-import racingcar.nickname.Nickname;
+import racingcar.model.nickname.Nickname;
 
 public class Car {
 

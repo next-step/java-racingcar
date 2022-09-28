@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.model;
+
+import racingcar.controller.CarStatusDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class Cars {
 
-    public static final int MIN_WINNER_POSITION = 0;
+    private static final int MIN_WINNER_POSITION = 0;
     private final List<Car> cars;
 
     public Cars(List<String> names) {

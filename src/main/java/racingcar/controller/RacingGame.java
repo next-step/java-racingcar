@@ -1,4 +1,9 @@
-package racingcar;
+package racingcar.controller;
+
+import racingcar.model.CarNameSeparator;
+import racingcar.model.Cars;
+import racingcar.view.ConsoleInput;
+import racingcar.view.ConsoleOutput;
 
 public class RacingGame {
 

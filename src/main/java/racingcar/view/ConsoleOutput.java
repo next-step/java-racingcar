@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.view;
+
+import racingcar.controller.CarStatusDto;
 
 import java.util.List;
 
@@ -8,7 +10,7 @@ public class ConsoleOutput {
     private static final String RAIL = "-";
     private static final String STATUS_FORMAT = "%s : %s%n";
     private static final String COMMA = ", ";
-    public static final String WIN_MESSAGE = "가 최종 우승했습니다.";
+    private static final String WIN_MESSAGE = "가 최종 우승했습니다.";
 
     public void resultMessage() {
         System.out.println(RACING_RESULT_MESSAGE);

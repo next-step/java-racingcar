@@ -1,4 +1,4 @@
-package racingcar.nickname;
+package racingcar.model.nickname;
 
 public class CanNotOverFiveCharacterNicknameException extends RuntimeException {
 

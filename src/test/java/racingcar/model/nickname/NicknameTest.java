@@ -1,12 +1,8 @@
-package racingcar;
+package racingcar.model.nickname;
 
 import org.assertj.core.api.ThrowableAssert.ThrowingCallable;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.nickname.CanNotBlankNicknameException;
-import racingcar.nickname.CanNotNullNicknameException;
-import racingcar.nickname.CanNotOverFiveCharacterNicknameException;
-import racingcar.nickname.Nickname;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
