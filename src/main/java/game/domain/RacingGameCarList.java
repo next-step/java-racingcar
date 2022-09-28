@@ -1,5 +1,7 @@
 package game.domain;
 
+import game.domain.car.RacingGameCar;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +9,7 @@ public class RacingGameCarList {
 
     private List<RacingGameCar> cars;
 
-    private RacingGameCarList(List<RacingGameCar> cars) {
+    public RacingGameCarList(List<RacingGameCar> cars) {
         this.cars = cars;
     }
 
@@ -29,6 +31,10 @@ public class RacingGameCarList {
             racingGameCarList.add(new RacingGameCar(name));
         }
         return new RacingGameCarList(racingGameCarList);
+    }
+
+    public RacingGameCar getLast(){
+        return cars.get(cars.size()-1);
     }
 
 }

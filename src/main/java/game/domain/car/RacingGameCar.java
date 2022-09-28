@@ -1,4 +1,7 @@
-package game.domain;
+package game.domain.car;
+
+import game.domain.RacingGameRule;
+import game.domain.car.Car;
 
 public class RacingGameCar extends Car {
 
