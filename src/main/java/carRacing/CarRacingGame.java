@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 public class CarRacingGame {
     private final Integer tryCount;
@@ -46,4 +47,11 @@ public class CarRacingGame {
                 .orElseThrow(NoSuchElementException::new);
     }
 
+    public List<Car> getWinnerList(){
+        int maxPosition = getMaxCarPosition();
+        return this.carEntryList
+                .stream()
+                .filter(vo->vo.getPosition() == maxPosition)
+                .collect(Collectors.toList());
+    }
 }
