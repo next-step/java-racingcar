@@ -14,6 +14,10 @@ public class RacingCarGame {
         this.playCount = playCount;
     }
 
+    public List<Car> findWinners() {
+        return cars.findMaxPositionCars();
+    }
+
     public List<Car> play(MovingStrategy movingStrategy) {
         playCount--;
         return cars.move(movingStrategy);

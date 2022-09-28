@@ -14,12 +14,14 @@ public class GameController {
 
     public static void main(String[] args) {
         RacingCarGame racingCarGame = RacingCarGameFactory.getInstance();
-        ResultView.printTitle();
 
+        ResultView.printTitle();
         while (!racingCarGame.isEnd()) {
             List<Car> playResults = racingCarGame.play(MOVING_STRATEGY);
             ResultView.printPlayResults(playResults);
         }
+
+        ResultView.printWinners(racingCarGame.findWinners());
     }
 
 }

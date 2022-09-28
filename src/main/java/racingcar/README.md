@@ -58,8 +58,8 @@
   - `List<Car>`의 getPosition() 값을 순회하며 `Position.getBigger()` 호출
 - [x] `Car.isPositionEqual(maximum Position 값)`이 `true`인 `List<Car>`를 반환하는 메서드 제공 - `findMaxPositionCars()`
 ### RacingCarGame
-- [ ] 경주 완료 후 우승자 찾기 (여러명 가능) - `findWinners()`
+- [x] 경주 완료 후 우승자 찾기 (여러명 가능) - `findWinners()`
   - cars의 `findMaxPositionCars()` 메서드 호출
 ### OutputView
-- [ ] 게임 결과 출력 시 자동차 이름 같이 표시해야 함
-- [ ] 게임 종료 후 우승자 출력 필요
+- [x] 게임 결과 출력 시 자동차 이름 같이 표시해야 함
+- [x] 게임 종료 후 우승자 출력 필요
