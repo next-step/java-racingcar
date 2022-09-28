@@ -9,23 +9,24 @@ class RacingTest {
 
     @ParameterizedTest
     @CsvSource(value = {"2:3", "0:2", "3:0", "0:0"}, delimiter = ':')
-    void start(int participantNumber, int iterate) {
+    void start(int carNumber, int iterate) {
         //when
-        Racing racing = new Racing(participantNumber, iterate);
+        Racing racing = new Racing(carNumber, iterate);
         racing.start();
-        List<List<Integer>> participantsRecords = racing.getParticipantsRecord();
+        List<Car> cars = racing.getRacingRecordOfCars();
 
         //then
-        assertThat(participantsRecords.size()).isEqualTo(participantNumber);
-        for (int i = 0; i < participantsRecords.size(); i++) {
-            assertThat(participantsRecords.get(i).size()).isEqualTo(iterate);
+        assertThat(cars.size()).isEqualTo(carNumber);
+        for (int i = 0; i < cars.size(); i++) {
+            assertThat(cars.get(i).getRacingRecord().size()).isEqualTo(iterate);
         }
-        for (List<Integer> participantsRecord : participantsRecords) {
-            if (participantsRecord.size() < 2) {
+        for (Car car : cars) {
+            List<Integer> racingRecord = car.getRacingRecord();
+            if (racingRecord.size() < 2) {
                 break;
             }
-            for (int i = 1; i < participantsRecord.size(); i++) {
-                assertThat(participantsRecord.get(i - 1)).isLessThanOrEqualTo(participantsRecord.get(i));
+            for (int i = 1; i < racingRecord.size(); i++) {
+                assertThat(racingRecord.get(i - 1)).isLessThanOrEqualTo(racingRecord.get(i));
             }
         }
     }

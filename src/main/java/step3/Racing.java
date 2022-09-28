@@ -6,14 +6,14 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Racing {
-    final int participantNumber;
+    final int carNumber;
 
     final int iterate;
 
-    private final List<Participant> participants = new ArrayList<Participant>();
+    private final List<Car> cars = new ArrayList<Car>();
 
-    public Racing(int participantNumber, int iterate) {
-        this.participantNumber = participantNumber;
+    public Racing(int carNumber, int iterate) {
+        this.carNumber = carNumber;
         this.iterate = iterate;
         this.createParticipants();
     }
@@ -25,16 +25,16 @@ public class Racing {
     }
 
     private void createParticipants() {
-        for (int i = 0; i < this.participantNumber; i++) {
-            this.participants.add(new Participant());
+        for (int i = 0; i < this.carNumber; i++) {
+            this.cars.add(new Car());
         }
     }
 
     private void runRound() {
-        this.participants.forEach(Participant::moveByRandomOnRound);
+        this.cars.forEach(Car::moveByRandomOnRound);
     }
 
-    public List<List<Integer>> getParticipantsRecord() {
-        return this.participants.stream().map(Participant::getRacingRecord).collect(Collectors.toList());
+    public List<Car> getRacingRecordOfCars() {
+        return this.cars;
     }
 }
