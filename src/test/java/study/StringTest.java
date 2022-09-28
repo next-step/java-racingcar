@@ -21,7 +21,11 @@ public class StringTest {
     }
 
     @Nested
+<<<<<<< HEAD
     class testCharAt {
+=======
+    class CharAtTest {
+>>>>>>> 2f563663486c84b8f8713cec53bc3ef69d1d9355
         @Test
         void charAt() {
             char result = "abc".charAt(0);
@@ -32,9 +36,14 @@ public class StringTest {
             String data = "abc";
             int idx = 10;
             assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
+<<<<<<< HEAD
                     .isThrownBy(() -> {
                         data.charAt(idx);
                     }).withMessageMatching("String index out of range: " + idx);
+=======
+                    .isThrownBy(() -> data.charAt(idx))
+                    .withMessageMatching("String index out of range: " + idx);
+>>>>>>> 2f563663486c84b8f8713cec53bc3ef69d1d9355
         }
     }
 }
