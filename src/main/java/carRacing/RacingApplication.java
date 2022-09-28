@@ -8,5 +8,8 @@ public class RacingApplication {
         // 게임 초기화 및 경주 진행
         CarRacingGame carRacingGame = new CarRacingGame(inputView.getCarNamesString(), inputView.getTryCount());
         carRacingGame.doGame();
+
+        // 최종 우승자 출력
+        ResultView.displayRacingWinner(carRacingGame.getWinnerList());
     }
 }
