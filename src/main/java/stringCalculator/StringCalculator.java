@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class StringCalculator {
     private static final Pattern customDelimiter = Pattern.compile("//(.)\n(.*)");
-
+    private static final String SEPARATOR = "[,:]";
     public int stringSum(String addValues) {
         if (validateNullOrEmpty(addValues))
             return 0;
@@ -42,7 +42,7 @@ public class StringCalculator {
             String customDelimiter = m.group(1);
             return m.group(2).split(customDelimiter);
         }
-        return addValues.split("[,:]");
+        return addValues.split(SEPARATOR);
     }
 
 }
