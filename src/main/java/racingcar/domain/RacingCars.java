@@ -27,7 +27,7 @@ public class RacingCars {
     }
 
     public Winners pickWinners() {
-        Collections.sort(cars);
+        Collections.sort(cars, Collections.reverseOrder());
 
         Car firstWinner = cars.get(0);
 

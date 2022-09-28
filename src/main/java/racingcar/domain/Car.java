@@ -6,16 +6,16 @@ import java.util.stream.IntStream;
 public class Car implements Comparable<Car> {
 
     private final CarName name;
-    private int distance;
+    private final Position position;
 
     public Car(String name) {
         this.name = new CarName(name);
-        this.distance = 0;
+        this.position = new Position(0);
     }
 
     public void run(RunStrategy runStrategy) {
         if (runStrategy.runnable()) {
-            this.distance += 1;
+            this.position.move();
         }
     }
 
@@ -28,24 +28,19 @@ public class Car implements Comparable<Car> {
     }
 
     public int getDistance() {
-        return this.distance;
+        return this.position.showPosition();
     }
 
 
     public boolean hasSameDistance(Car input) {
-        return this.distance == input.distance;
-    }
-
-    @Override
-    public int compareTo(Car car) {
-        return Integer.compare(car.distance, this.distance);
+        return this.position.equals(input.position);
     }
 
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Car) {
             Car o = (Car) obj;
-            return this.name.equals(o.name) && this.distance == o.distance;
+            return this.name.equals(o.name) && this.position.equals(o.position);
         }
         return false;
     }
@@ -53,5 +48,10 @@ public class Car implements Comparable<Car> {
     @Override
     public int hashCode() {
         return Objects.hash(name);
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return this.position.compareTo(o.position);
     }
 }
