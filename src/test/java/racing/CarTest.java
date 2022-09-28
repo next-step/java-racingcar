@@ -17,7 +17,7 @@ class CarTest {
     void 자동차_위치_표시_테스트(){
         Car car = new Car();
         car.move();
-        assertThat(car.location()).isIn("--", "-");
+        assertThat(car.location()).isIn("", "-");
     }
 
 }
