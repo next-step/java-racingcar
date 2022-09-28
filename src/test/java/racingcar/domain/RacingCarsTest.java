@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -66,7 +66,7 @@ class RacingCarsTest {
         Car car2 = new Car("2", 2);
         Car car3 = new Car("3", 3);
 
-        List<Car> cars = new ArrayList<>(List.of(car1, car2, car3));
+        List<Car> cars = Arrays.asList(car1, car2, car3);
 
         RacingCars racingCars = new RacingCars(cars);
         //when
@@ -88,7 +88,7 @@ class RacingCarsTest {
         Car car2 = new Car("2", 3);
         Car car3 = new Car("3", 3);
 
-        List<Car> cars = new ArrayList<>(List.of(car1, car2, car3));
+        List<Car> cars = Arrays.asList(car1, car2, car3);
 
         RacingCars racingCars = new RacingCars(cars);
         //when
