@@ -17,7 +17,7 @@ public class GameData {
         this.playCount = playCount;
 
         for (int i = 0; i < playerCount; i++) {
-            cars.add(new Car(0, ""));
+            cars.add(new Car(""));
         }
     }
 

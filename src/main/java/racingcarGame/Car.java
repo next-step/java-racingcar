@@ -2,28 +2,22 @@ package racingcarGame;
 
 import java.util.Objects;
 
-import static racingcarGame.client.MessageClient.show;
-
 public class Car {
-    private static final String POSITION_SHOW_MARK = "-";
+    private static final String POSITION_STR = "-";
 
-    private int position;
-    private String movement;
+    private String position;
 
-    public Car(int position, String movement) {
+    public Car(String position) {
         this.position = position;
-        this.movement = movement;
     }
 
     public Car move() {
-        this.position += 1;
-        this.movement += POSITION_SHOW_MARK;
-
-        return new Car(position, movement);
+        this.position += POSITION_STR;
+        return new Car(position);
     }
 
-    public void showMovement() {
-        show(this.movement);
+    public String getPosition() {
+        return position;
     }
 
     @Override
@@ -31,12 +25,11 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return position == car.position &&
-                Objects.equals(movement, car.movement);
+        return Objects.equals(position, car.position);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(position, movement);
+        return Objects.hash(position);
     }
 }

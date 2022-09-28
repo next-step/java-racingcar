@@ -13,11 +13,10 @@ public class CarTest {
     @CsvSource(value = {"1:2", "2:3"}, delimiter = ':')
     @DisplayName("자동차 이동 검증")
     public void moveCar(int input, int expected) {
-
-        Car car = new Car(input, getCarMovement(input));
+        Car car = new Car(getCarMovement(input));
         Car result = car.move();
 
-        assertThat(result).isEqualTo(new Car(expected, getCarMovement(expected)));
+        assertThat(result).isEqualTo(new Car(getCarMovement(expected)));
     }
 
     private String getCarMovement(int position) {

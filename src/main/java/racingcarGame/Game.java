@@ -1,12 +1,13 @@
 package racingcarGame;
 
+import racingcarGame.client.ResultView;
 import racingcarGame.dto.GameData;
 import racingcarGame.util.RandomNumber;
 
 import java.util.Objects;
 
-import static racingcarGame.client.MessageClient.nextLine;
-import static racingcarGame.client.MessageClient.show;
+import static racingcarGame.client.ResultView.nextLine;
+import static racingcarGame.client.ResultView.showCarPosition;
 import static racingcarGame.dto.GameData.getRandomBaseValue;
 
 public class Game {
@@ -17,7 +18,7 @@ public class Game {
     }
 
     public void start() {
-        show("실행 결과");
+        ResultView.resultGame();
 
         for (int i = 0; i < gameData.getPlayCount(); i++) {
             playRound();
@@ -30,7 +31,7 @@ public class Game {
             int randomNumber = RandomNumber.generate();
 
             if (isMovable(randomNumber)) {
-                car.move().showMovement();
+                showCarPosition(car.move());
             }
         });
     }
