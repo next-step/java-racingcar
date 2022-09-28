@@ -4,6 +4,7 @@ import racingcarGame.Car;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class GameData {
     private static final int RANDOM_BASE_VALUE = 4;
@@ -30,5 +31,19 @@ public class GameData {
 
     public int getPlayCount() {
         return playCount;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GameData gameData = (GameData) o;
+        return playCount == gameData.playCount &&
+                Objects.equals(cars, gameData.cars);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cars, playCount);
     }
 }
