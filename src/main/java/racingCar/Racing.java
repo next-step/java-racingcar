@@ -47,7 +47,7 @@ public class Racing {
 	}
 
 	public static String checkInput(String input) {
-		if (validateMinus(input) || validateCharacter(input)) {
+		if (validateMinus(input) || validateCharacterNotNumber(input)) {
 			throw new RuntimeException();
 		}
 		return input;
