@@ -1,18 +1,13 @@
 package racingCar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Car {
-	private String status;
+	private List<Integer> status = new ArrayList<>();
 	private String name;
 
-	public Car() {
-		this.status = "";
-	}
-
-	public void move(String advanced) {
-		this.status += advanced;
-	}
-
-	public String getStatus() {
+	public List<Integer> getStatus() {
 		return this.status;
 	}
 
@@ -25,5 +20,9 @@ public class Car {
 
 	public String getName() {
 		return this.name;
+	}
+
+	public void movingOfRound(int random) {
+		this.status.add(random);
 	}
 }
