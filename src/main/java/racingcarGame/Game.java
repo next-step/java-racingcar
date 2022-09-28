@@ -20,7 +20,7 @@ public class Game {
     public void start() {
         ResultView.resultGame();
 
-        for (int i = 0; i < gameData.getPlayCount(); i++) {
+        for (var i = 0; i < gameData.getPlayCount(); i++) {
             playRound();
             nextLine();
         }
@@ -31,8 +31,10 @@ public class Game {
             int randomNumber = RandomNumber.generate();
 
             if (isMovable(randomNumber)) {
-                showCarPosition(car.move());
+                car = car.move();
             }
+
+            showCarPosition(car);
         });
     }
 

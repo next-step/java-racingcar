@@ -8,7 +8,7 @@ public class ResultView {
     }
 
     public static void nextLine() {
-        show("");
+        System.out.println();
     }
 
     public static void resultGame() {
