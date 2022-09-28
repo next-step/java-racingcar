@@ -16,7 +16,7 @@ class RacingCarTest {
             return 4 <= randomNum;
         });
         car.racing();
-        assertThat(car.isMoveAble(0)).isFalse();
+        assertThat(car.printResult().length()).isZero();
     }
 
     @DisplayName("랜덤 발생 숫자가 4이상인 경우")
@@ -27,6 +27,6 @@ class RacingCarTest {
             return 4 <= randomNum;
         });
         car.racing();
-        assertThat(car.isMoveAble(0)).isTrue();
+        assertThat(car.printResult()).isEqualTo("- ");
     }
 }

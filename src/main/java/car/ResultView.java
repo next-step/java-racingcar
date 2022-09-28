@@ -2,6 +2,6 @@ package car;
 
 import java.util.List;
 
-public interface ResultView {
-    void print(List<Car> cars, int tryNum);
+public interface ResultView <T extends Car> {
+    void print(List<T> cars, int tryNum);
 }

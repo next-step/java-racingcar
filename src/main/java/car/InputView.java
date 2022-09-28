@@ -1,6 +1,8 @@
 package car;
 
+import java.util.List;
+
 public interface InputView {
-    int enterCarCount();
+    List<Car> enterCar();
     int enterTryCount();
 }

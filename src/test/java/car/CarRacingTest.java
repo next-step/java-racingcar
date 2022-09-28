@@ -20,9 +20,10 @@ class CarRacingTest {
 
     private CarRacing init(int carNum, int tryNum) {
         InputView inputView = new InputView() {
+            CarFactory carFactory = new RacingCarFactory();
             @Override
-            public int enterCarCount() {
-                return carNum;
+            public List<Car> enterCar() {
+                return carFactory.generateCar(carNum);
             }
 
             @Override
@@ -31,13 +32,13 @@ class CarRacingTest {
             }
         };
 
-        ResultView resultView = new ResultView() {
+        ResultView resultView = new ResultView<Car>() {
             @Override
             public void print(List<Car> cars, int tryNum) {
                 resultCar = cars;
             }
         };
 
-        return new CarRacing(inputView, resultView, new RacingCarFactory());
+        return new CarRacing(inputView, resultView);
     }
 }
