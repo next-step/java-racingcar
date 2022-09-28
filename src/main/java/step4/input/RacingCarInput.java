@@ -4,12 +4,12 @@ import java.util.Scanner;
 
 public class RacingCarInput {
 
-    public static Integer carCount() {
+    public static int carCount() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
     }
 
-    public static Integer tryCount() {
+    public static int tryCount() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
     }

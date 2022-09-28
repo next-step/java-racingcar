@@ -8,16 +8,16 @@ import java.util.List;
 public class RacingCarApplication {
     public static void main(String[] args) {
         RacingCarOutput.printCarCount();
-        Integer carCount = RacingCarInput.carCount();
+        int carCount = RacingCarInput.carCount();
         RacingCarOutput.printTryCount();
-        Integer tryCount = RacingCarInput.tryCount();
+        int tryCount = RacingCarInput.tryCount();
 
-        List<Car> cars = RacingSupport.prepareCar(carCount);
+        List<Car> cars = PrepareRacing.prepareCar(carCount);
 
-        RacingCarOutput.printResultStartMessage();
+        RacingCarOutput.printStartMessage();
 
         for (int i = 0; i < tryCount; i++) {
-            List<Car> afterRaceCars = RacingSupport.raceEachCar(cars);
+            List<Car> afterRaceCars = RacingStarter.start(cars);
             RacingCarOutput.printRacingResult(afterRaceCars);
         }
     }

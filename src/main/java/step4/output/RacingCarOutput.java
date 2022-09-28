@@ -24,7 +24,7 @@ public class RacingCarOutput {
         printDividingLine();
     }
 
-    public static void printResultStartMessage() {
+    public static void printStartMessage() {
         System.out.println("실행 결과");
     }
 
