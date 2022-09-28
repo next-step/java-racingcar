@@ -5,7 +5,6 @@ import java.util.List;
 public class ResultView {
 
 	private static final char DASH_MARK = '-';
-	private static final char LINE_BREAK_CHARACTER = '\n';
 
 	public void printEachTryResult(List<Car> cars) {
 		StringBuilder stringBuilder = new StringBuilder();
@@ -20,7 +19,7 @@ public class ResultView {
 		for (int i = 0; i < carPosition; i++) {
 			stringBuilder.append(DASH_MARK);
 		}
-		stringBuilder.append(LINE_BREAK_CHARACTER);
+		stringBuilder.append(System.lineSeparator());
 		return stringBuilder.toString();
 	}
 }
