@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
 
-    private Car car = new Car();
+    private Car car = new Car("test");
 
     @Test
     public void 랜덤값_4이상이면_전진() {
@@ -37,7 +37,7 @@ public class CarTest {
     @ValueSource(strings = {"testname", "thisistest"})
     void 자동차_이름_5글자_초과(String name) {
         assertThatThrownBy(() -> {
-            car.createCar(name);
+            Car car = new Car(name);
         })
                 .isInstanceOf(RuntimeException.class)
                 .hasMessageContaining("이름은 5글자를 초과할 수 없습니다.");
@@ -46,7 +46,7 @@ public class CarTest {
     @ParameterizedTest
     @ValueSource(strings = {"pobi", "conan"})
     void 자동차_이름_5글자_이하(String name) {
-        car.createCar(name);
+        Car car = new Car(name);
         assertThat(car.getName()).isEqualTo(name);
     }
 }

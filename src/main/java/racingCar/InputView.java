@@ -17,8 +17,4 @@ public class InputView {
         System.out.println(question);
         return scanner.nextLine();
     }
-
-    public String inputString() {
-        return scanner.nextLine();
-    }
 }

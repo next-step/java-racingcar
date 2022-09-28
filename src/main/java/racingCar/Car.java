@@ -9,11 +9,7 @@ public class Car implements Comparable<Car> {
     private static final String ERR_MSG_NAME_LENGTH = "이름은 5글자를 초과할 수 없습니다.";
     public static final int NAME_LEN_BOUND = 5;
     private int pos;
-    private String name;
-
-    public Car() {
-        this.pos = 0;
-    }
+    private final String name;
 
     public Car(String name) {
         if (name.length() > NAME_LEN_BOUND) {
