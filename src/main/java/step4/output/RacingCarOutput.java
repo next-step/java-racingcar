@@ -10,7 +10,6 @@ public class RacingCarOutput {
     private static final String TRY_COUNT_NOTICE_MESSAGE = "시도할 회수는 몇 회인가요?";
     private static final String CAR_POSITION_INDEX = "-";
     private static final String RESULT_NOTICE_MESSAGE = "실행 결과";
-    private static final String WINNER_DELIMITER = ",";
     private static final String WINNER_NOTICE_MESSAGE = "가 최종 우승했습니다.";
 
     public static void printCarNames(){

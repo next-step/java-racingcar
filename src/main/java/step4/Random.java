@@ -1,11 +1,11 @@
 package step4;
 
-public class RandomGenerator {
+public class Random {
 
     private static final int MOVABLE_BOUNDARY = 3;
     private static int random;
 
-    public RandomGenerator() {
+    public Random() {
         this.random = new java.util.Random().nextInt(10);
     }
 
