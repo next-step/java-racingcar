@@ -6,6 +6,12 @@ import java.util.List;
 public class Car {
     private final List<Integer> records = new ArrayList<Integer>();
 
+    private final String name;
+
+    public Car(String name) {
+        this.name = name;
+    }
+
     public void moveByRandomOnRound() {
         int preRecord = this.getPreRecord();
         if (this.newRandomNumber() > 3) {
@@ -13,6 +19,14 @@ public class Car {
             return;
         }
         this.records.add(preRecord);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<Integer> getRacingRecord() {
+        return records;
     }
 
     private int getPreRecord() {
@@ -24,16 +38,5 @@ public class Car {
 
     private int newRandomNumber() {
         return (int) (Math.random() * 10);
-    }
-
-    public List<Integer> getRacingRecord() {
-        return records;
-    }
-
-    @Override
-    public String toString() {
-        return "Car{" +
-                "records=" + records +
-                '}';
     }
 }
