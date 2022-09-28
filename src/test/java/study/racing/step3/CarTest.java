@@ -21,6 +21,6 @@ public class CarTest {
         car.move(input);
 
         //then
-        assertThat(car).isEqualTo(new Car(movingCondition, expected));
+        assertThat(car.getDistance()).isEqualTo(expected);
     }
 }

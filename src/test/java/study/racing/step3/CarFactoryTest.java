@@ -20,7 +20,7 @@ public class CarFactoryTest {
         List<Car> cars = new ArrayList<>();
 
         //when
-        cars = CarFactory.createCars(count);
+        cars = CarFactory.createCars(count, new RandomMovingCondition());
 
         //then
         assertThat(cars).hasSize(count);

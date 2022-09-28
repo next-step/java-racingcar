@@ -6,18 +6,8 @@ public class Car {
     private MovingCondition movingCondition;
     private int distance;
 
-    public Car() {
-        this.distance = 0;
-    }
-
     public Car(MovingCondition movingCondition) {
-        this.distance = 0;
         this.movingCondition = movingCondition;
-    }
-
-    public Car(MovingCondition movingCondition, int distance) {
-        this.movingCondition = movingCondition;
-        this.distance = distance;
     }
 
     public void move(int number) {
