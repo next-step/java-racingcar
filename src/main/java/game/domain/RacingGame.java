@@ -2,52 +2,39 @@ package game.domain;
 
 import game.io.output.RacingGameOutput;
 
-import java.util.Random;
-
 public class RacingGame {
 
-    private static final Random random = new Random();
-    private CarList carList;
+    private RacingGameCarList racingGameCarList;
     private RacingGameRule racingGameRule;
     private int round;
 
-    public RacingGame(RacingGameRule racingGameRule, CarList cars, int round) {
+    public RacingGame(RacingGameRule racingGameRule, RacingGameCarList cars, int round) {
         this.racingGameRule = racingGameRule;
-        this.carList = cars;
+        this.racingGameCarList = cars;
         this.round = round;
     }
 
     public void progressGame() {
         RacingGameOutput.startGame();
         for (int i = 0; i < round(); i++) {
-            progressRound(carList);
+            progressRound(racingGameCarList);
         }
     }
 
-    private void progressRound(CarList carList) {
-        for (Car car : carList.cars()) {
-            forwardByRule(car, pickRandomNumber());
+    private void progressRound(RacingGameCarList racingGameCarList) {
+        for (Car car : racingGameCarList.cars()) {
+            car.forward(racingGameRule);
         }
-        RacingGameOutput.printCarsStatus(carList);
+        RacingGameOutput.printCarsStatus(racingGameCarList);
         RacingGameOutput.finishRound();
     }
 
-    public void forwardByRule(Car car, int number) {
-        if (racingGameRule.isForward(number)) {
-            car.forward(racingGameRule.forwardDistance());
-        }
-    }
-
-    public CarList carList() {
-        return carList;
+    public RacingGameCarList carList() {
+        return racingGameCarList;
     }
 
     public int round() {
         return round;
-    }
-
-    public int pickRandomNumber() {
-        return random.nextInt(racingGameRule.bound());
     }
 
 }

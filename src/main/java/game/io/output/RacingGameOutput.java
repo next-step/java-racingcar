@@ -1,15 +1,15 @@
 package game.io.output;
 
 import game.domain.Car;
-import game.domain.CarList;
+import game.domain.RacingGameCarList;
 
 public class RacingGameOutput {
 
     private final static String RESULT_GUIDE = "실행 결과";
     private final static String LOCATION_CHARACTER = "-";
 
-    public static void printCarsStatus(CarList carList) {
-        for (Car car : carList.cars()) {
+    public static void printCarsStatus(RacingGameCarList racingGameCarList) {
+        for (Car car : racingGameCarList.cars()) {
             printCarLocation(car);
         }
     }

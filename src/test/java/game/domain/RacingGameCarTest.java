@@ -6,13 +6,13 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class CarTest {
+public class RacingGameCarTest {
 
-    private Car car;
+    private RacingGameCar car;
 
     @BeforeEach
     private void setCar() {
-        car = new Car();
+        car = new RacingGameCar();
     }
 
     @ParameterizedTest(name = "자동차의 위치를 숫자만큼 증가시킨다")
