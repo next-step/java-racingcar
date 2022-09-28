@@ -20,20 +20,18 @@ public class StringAddCalculatorTest {
 
     //구분자가 입력되지 않은경우 테스트
     @Test
-    @DisplayName("sumBySeparator / 구분자없음 / 성공: null 입력시 0이 반환되어야함")
+    @DisplayName("sumBySeparator 실패: null 입력시 RuntimeException이 발생되어야 함 ")
     void sumBySeparator_noSeparator_null() {
-        int result = this.stringAddCalculator.sumBySeparator(null);
-        assertThat(result).isEqualTo(0);
+        Throwable thrown = catchThrowable(() -> { this.stringAddCalculator.sumBySeparator(null); });
+        assertThat(thrown).isInstanceOf(RuntimeException.class);
     }
 
-    @DisplayName("sumBySeparator 성공: 빈문자열 입력시 0이 반환되어야함")
+    @DisplayName("sumBySeparator 실패: 숫자부분이 빈경우 RuntimeException이 발생되어야 함")
     @ParameterizedTest(name = "{index} {displayName} parameter=\"{0}\"")
     @ValueSource(strings = {"", "//\n", "//;\n", "//;!\n"})
     public void sumBySeparator_빈문자열(String input) {
-        System.out.println("input = " + input);
-        int result = this.stringAddCalculator.sumBySeparator(input);
-        assertThat(result).isEqualTo(0);
-        System.out.println("테스트통과" + input);
+        Throwable thrown = catchThrowable(() -> { this.stringAddCalculator.sumBySeparator(input); });
+        assertThat(thrown).isInstanceOf(RuntimeException.class);
     }
 
     @DisplayName("sumBySeparator 성공: 숫자하나를 문자열로 입력시 그숫자가 숫자형으로 반환되어야함")

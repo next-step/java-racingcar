@@ -10,8 +10,8 @@ public class StringAddCalculator {
     private final String[] defaultSeparators = new String[] { ",", ":" };
 
     int sumBySeparator(String input) {
-        if (input == null) {
-            return 0;
+        if (input == null || this.isEmpty(input)) {
+            throw new RuntimeException("하나이상의 숫자를 입력해야합니다.");
         }
         String[] inputSeparators = this.parseSeparatorDefinition(input);
         Set<String> separators = this.mergeSeparators(inputSeparators);
@@ -19,8 +19,8 @@ public class StringAddCalculator {
         if (inputSeparators.length > 0) {
             inputExcludeSeparatorDefinition = this.removeSeparatorDefinition(input);
         }
-        if(inputExcludeSeparatorDefinition.length() < 1) {
-            return 0;
+        if(this.isEmpty(inputExcludeSeparatorDefinition)) {
+            throw new RuntimeException("하나이상의 숫자를 입력해야합니다.");
         }
 
         String[] splitInputs = this.splitBySeparators(inputExcludeSeparatorDefinition, separators);
@@ -36,6 +36,10 @@ public class StringAddCalculator {
             throw new RuntimeException("음수는 더할수 없습니다.");
         }
         return this.sum(integerList);
+    }
+
+    private boolean isEmpty(String input) {
+        return input == "";
     }
 
     private String[] parseSeparatorDefinition(String input) {
