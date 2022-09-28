@@ -1,16 +1,16 @@
 package racingcar;
 
-import java.util.Objects;
+import racingcar.nickname.Nickname;
 
 public class Car {
 
     private static final int START_POSITION = 0;
 
     private int position = START_POSITION;
-    private final String nickname;
+    private final Nickname nickname;
 
     public Car(String nickname) {
-        this.nickname = nickname;
+        this.nickname = new Nickname(nickname);
     }
 
     public void move(Condition carCondition) {
@@ -24,6 +24,6 @@ public class Car {
     }
 
     public String getName() {
-        return this.nickname;
+        return nickname.getValue();
     }
 }
