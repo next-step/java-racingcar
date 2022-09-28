@@ -37,4 +37,14 @@ public class NicknameTest {
                 .isExactlyInstanceOf(CanNotNullNicknameException.class)
                 .hasMessage("null인 인자값은 nickname이 될 수 없습니다.");
     }
+
+    @Test
+    @DisplayName("nickname 앞뒤에 공백이 있으면 제거된다.")
+    void nicknameBlank() {
+        String expected = "blank";
+
+        String actual = new Nickname(" blank ").getValue();
+
+        assertThat(actual).isEqualTo(expected);
+    }
 }

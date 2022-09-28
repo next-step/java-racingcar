@@ -6,12 +6,13 @@ public class Nickname {
     private final String value;
 
     public Nickname(String value) {
+        validateNull(value);
+        value = removeBlank(value);
         validate(value);
         this.value = value;
     }
 
     private void validate(String value) {
-        validateNull(value);
         validateMaxLength(value);
     }
 
@@ -19,6 +20,10 @@ public class Nickname {
         if(value == null) {
             throw new CanNotNullNicknameException();
         }
+    }
+
+    private String removeBlank(String value) {
+        return value.trim();
     }
 
     private void validateMaxLength(String value) {
