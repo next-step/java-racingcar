@@ -10,7 +10,11 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(String[] carNames) {
-        cars = createCars(carNames);
+        this.cars = createCars(carNames);
+    }
+
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
     private List<Car> createCars(String[] carNames) {
@@ -26,5 +30,29 @@ public class Cars {
             car.move(movingStrategy);
         }
         return cars;
+    }
+
+    public List<Car> findMaxPositionCars() {
+        Position maxPosition = findMaxPosition();
+
+        List<Car> maxPositionCars = new ArrayList<>();
+        for (Car car : cars) {
+            addToCarListIfPositionEquals(car, maxPosition, maxPositionCars);
+        }
+        return maxPositionCars;
+    }
+
+    private Position findMaxPosition() {
+        Position maxPosition = new Position();
+        for (Car car : cars) {
+            maxPosition = car.getPosition().getBigger(maxPosition);
+        }
+        return maxPosition;
+    }
+
+    private void addToCarListIfPositionEquals(Car car, Position maxPosition, List<Car> maxPositionCars) {
+        if (car.isPositionEquals(maxPosition)) {
+            maxPositionCars.add(car);
+        }
     }
 }

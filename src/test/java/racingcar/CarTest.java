@@ -23,7 +23,7 @@ public class CarTest {
 
     @Test
     void isPositionEquals() {
-        assertThat(new Car(5, "carA").isPositionEquals(new Car(5, "carB"))).isTrue();
+        assertThat(new Car(5, "carA").isPositionEquals(new Position(5))).isTrue();
     }
 
     static Stream<Arguments> strategyParameterProvider() {

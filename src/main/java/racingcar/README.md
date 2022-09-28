@@ -54,9 +54,9 @@
 ### Car
 - [x] 주어진 `Car` 객체와 자신을 비교하여 같은 Position 값이 같으면 true를 반환하는 `isPositionEquals(Position position)` 구현
 ### Cars
-- [ ] 가장 앞서 있는 자동차의 Position 값 찾기 - `findMaxPosition()`
+- [x] 가장 앞서 있는 자동차의 Position 값 찾기 - `findMaxPosition()`
   - `List<Car>`의 getPosition() 값을 순회하며 `Position.getBigger()` 호출
-- [ ] `Car.isPositionEqual(maximum Position 값)`이 `true`인 `List<Car>`를 반환하는 메서드 제공 - `findMaxPositionCars()`
+- [x] `Car.isPositionEqual(maximum Position 값)`이 `true`인 `List<Car>`를 반환하는 메서드 제공 - `findMaxPositionCars()`
 ### RacingCarGame
 - [ ] 경주 완료 후 우승자 찾기 (여러명 가능) - `findWinners()`
   - cars의 `findMaxPositionCars()` 메서드 호출

@@ -22,8 +22,8 @@ public class Car {
         }
     }
 
-    public boolean isPositionEquals(Car other) {
-        return this.position.equals(other.position);
+    public boolean isPositionEquals(Position position) {
+        return this.position.equals(position);
     }
 
     public Position getPosition() {
