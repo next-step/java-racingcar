@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Car {
-	private List<Integer> status = new ArrayList<>();
+	private final List<Integer> status = new ArrayList<>();
 	private String name;
 
 	public List<Integer> getStatus() {
