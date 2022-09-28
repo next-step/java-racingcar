@@ -6,10 +6,10 @@ import java.util.Random;
 public class Car implements Comparator<Car> {
     private static final String ROAD = "-";
 
-    private int location = 1;
+    private int location = 0;
 
-    public void move(){
-        if(isPossibleToMove()){
+    public void move() {
+        if (isPossibleToMove()) {
             location++;
         }
     }
@@ -25,6 +25,6 @@ public class Car implements Comparator<Car> {
     }
 
     public String location() {
-        return ROAD.repeat(Math.max(1, location));
+        return ROAD.repeat(Math.max(0, location));
     }
 }
