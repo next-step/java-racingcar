@@ -37,13 +37,19 @@ public class InputView {
 
 	private int getInputToInt() {
 		String inputValue = scanner.nextLine();
-		inputValidator.isNumber(inputValue);
-		inputValidator.isNegative(inputValue);
 
-		return toInt(inputValue);
+		return convertToInt(inputValue);
 	}
 
-	private int toInt(String value) {
-		return Integer.parseInt(value);
+	private int convertToInt(String value) {
+		int intValue;
+		try {
+			intValue = Integer.parseInt(value);
+		} catch (NumberFormatException e) {
+			throw new NumberFormatException("숫자를 입력해주세요.");
+		}
+		inputValidator.isZeroOrNegative(intValue);
+
+		return intValue;
 	}
 }
