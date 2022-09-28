@@ -18,7 +18,7 @@ class CarTest {
     @Test
     @DisplayName("자동차는 움직일 수 있다.")
     void move() {
-        car.move(() -> true);
+        car.move(new GoodCondition());
 
         assertThat(car.getPosition()).isEqualTo(1);
     }
@@ -26,7 +26,7 @@ class CarTest {
     @Test
     @DisplayName("자동차는 움직이지 않을 수 있다.")
     void tryMove() {
-        car.move(() -> false);
+        car.move(new BadCondition());
 
         assertThat(car.getPosition()).isEqualTo(0);
     }
