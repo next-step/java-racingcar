@@ -6,14 +6,13 @@ import racingcarGame.util.RandomNumber;
 
 import java.util.Objects;
 
-import static racingcarGame.client.ResultView.nextLine;
-import static racingcarGame.client.ResultView.showCarPosition;
+import static racingcarGame.client.ResultView.showResult;
 import static racingcarGame.dto.GameData.getRandomBaseValue;
 
-public class Game {
+public class RacingGame {
     private final GameData gameData;
 
-    public Game(GameData gameData) {
+    public RacingGame(GameData gameData) {
         this.gameData = gameData;
     }
 
@@ -21,20 +20,18 @@ public class Game {
         ResultView.resultGame();
 
         for (var i = 0; i < gameData.getPlayCount(); i++) {
-            playRound();
-            nextLine();
+            play();
+            showResult(gameData.getCars());
         }
     }
 
-    private void playRound() {
+    private void play() {
         gameData.getCars().forEach(car -> {
             int randomNumber = RandomNumber.generate();
 
             if (isMovable(randomNumber)) {
-                car = car.move();
+                car.move();
             }
-
-            showCarPosition(car);
         });
     }
 
@@ -46,8 +43,8 @@ public class Game {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Game game = (Game) o;
-        return Objects.equals(gameData, game.gameData);
+        RacingGame racingGame = (RacingGame) o;
+        return Objects.equals(gameData, racingGame.gameData);
     }
 
     @Override
