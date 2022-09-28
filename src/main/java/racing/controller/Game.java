@@ -28,7 +28,7 @@ public class Game {
 
     public List<Car> carSetting(String[] carArray) {
         List<Car> Cars = new ArrayList<>();
-        int carCount = carArray.length;
+        final int carCount = carArray.length;
         for (int i = 0; i < carCount; i++) {
             String carName = carArray[i];
             Car car = new Car(0, carName);
@@ -47,7 +47,7 @@ public class Game {
 
     public List<Car> summaryRaceResult(List<Car> cars) {
         Collections.sort(cars);
-        int winnerLocation = cars.get(0).getCurrentLocation();
+        final int winnerLocation = cars.get(0).getCurrentLocation();
         return getWinner(winnerLocation, cars);
     }
 
