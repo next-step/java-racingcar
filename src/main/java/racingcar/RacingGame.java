@@ -1,36 +1,24 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingGame {
 
-    private final List<Car> cars;
+    private static final ConsoleInput INPUT = new ConsoleInput();
+    private static final ConsoleOutput OUTPUT = new ConsoleOutput();
 
-    public RacingGame(int carQuantity) {
-        cars = initCars(carQuantity);
-    }
+    public void start() {
+        int carQuantity = INPUT.getCarQuantity();
+        int movementCount = INPUT.getMovementCount();
 
-    public List<Integer> play() {
-        moveCars();
-        return mapToPosition();
-    }
+        Cars cars = new Cars(carQuantity);
 
-    private void moveCars() {
-        cars.forEach(car -> car.move(new CarCondition()));
-    }
-
-    private List<Integer> mapToPosition() {
-        return cars.stream().mapToInt(Car::getPosition).boxed().collect(Collectors.toList());
-    }
-
-    private List<Car> initCars(int carQuantity) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carQuantity; i++) {
-            cars.add(new Car("boost"));
+        OUTPUT.resultMessage();
+        for (int i = 0; i < movementCount; i++) {
+            List<Integer> resultPosition = cars.play();
+            resultPosition.forEach(OUTPUT::position);
+            OUTPUT.newLine();
         }
-        return cars;
     }
 
 }
