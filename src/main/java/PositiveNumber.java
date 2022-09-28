@@ -8,7 +8,9 @@ public class PositiveNumber {
     }
 
     public PositiveNumber(int value) {
-        if(value < 0) throw new RuntimeException("NEGATIVE NUMBER");
+        if(value < 0) {
+            throw new IllegalArgumentException("NEGATIVE NUMBER");
+        }
         this.value = value;
     }
 

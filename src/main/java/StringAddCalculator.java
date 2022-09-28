@@ -1,11 +1,10 @@
-/*
-* {} 없는 if문은 어떻게 생각하시나요?
-* */
 public class StringAddCalculator {
 
     public static int splitAndSum(String text){
         InputText inputText = InputText.from(text);
-        if(inputText.isBlank()) return 0;
+        if(inputText.isBlank()) {
+            return 0;
+        }
         return sum(toPositiveNumbers(inputText.split()));
     }
 
@@ -19,7 +18,7 @@ public class StringAddCalculator {
 
     private static PositiveNumber[] toPositiveNumbers(String[] tokens) {
         PositiveNumber[] result = new PositiveNumber[tokens.length];
-        for (int i = 0; i < tokens.length; i++) {
+        for(int i = 0; i < tokens.length; i++) {
             result[i] = PositiveNumber.from(tokens[i]);
         }
         return result;

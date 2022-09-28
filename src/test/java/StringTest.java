@@ -1,5 +1,3 @@
-import org.assertj.core.data.Index;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -44,7 +42,6 @@ public class StringTest {
         assertThat(result3).isEqualTo('b');
     }
 
-    // 실무에서 test 메소드명을 지으실 때 영어를 선호하시나요 한글을 선호하시나요?
     @Test
     void chatAt_예외(){
         String input1 = "abc";

@@ -7,9 +7,11 @@ public class InputText {
     private static final String CUSTOM_SEPARATOR_FINDERS = "//(.)\n(.*)";
 
     private final String text;
+    private final Pattern pattern;
 
     public InputText(String text) {
         this.text = text;
+        this.pattern = Pattern.compile(CUSTOM_SEPARATOR_FINDERS);
     }
 
     public static InputText from(String text){
@@ -20,11 +22,16 @@ public class InputText {
         return this.text == null || this.text.isEmpty();
     }
 
+    private boolean hasCustomSeparator(){
+        return pattern.matcher(this.text).matches();
+    }
+
     public String[] split(){
-        Matcher m = Pattern.compile(CUSTOM_SEPARATOR_FINDERS).matcher(this.text);
-        if(m.find()){
-            String customDelimiter = m.group(1);
-            return m.group(2).split(customDelimiter);
+        if(hasCustomSeparator()){
+            Matcher matcher = pattern.matcher(this.text);
+            matcher.find();
+            String customDelimiter = matcher.group(1);
+            return matcher.group(2).split(customDelimiter);
         }
         return this.text.split(DEFAULT_SEPARATORS);
     }
