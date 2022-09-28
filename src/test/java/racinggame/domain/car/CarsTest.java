@@ -3,6 +3,7 @@ package racinggame.domain.car;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,6 +11,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racinggame.domain.exception.InvalidCarIndexException;
+import racinggame.domain.exception.InvalidCarRegistrationException;
 
 class CarsTest {
 
@@ -42,6 +44,13 @@ class CarsTest {
                 .isInstanceOf(InvalidCarIndexException.class);
     }
 
+    @Test
+    @DisplayName("차량을 아예 등록하지 않으면 예외 발생.")
+    void fail_to_register_no_car() {
+        assertThatThrownBy(() -> new Cars(new ArrayList<>()))
+                .isInstanceOf(InvalidCarRegistrationException.class);
+    }
+
     private Cars getDefaultCars() {
         return new Cars(
                 List.of(
@@ -51,4 +60,5 @@ class CarsTest {
                 )
         );
     }
+
 }
