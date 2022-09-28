@@ -2,6 +2,7 @@ package racingCar;
 
 public class Car {
 	private String status;
+	private String name;
 
 	public Car() {
 		this.status = "";
@@ -13,5 +14,12 @@ public class Car {
 
 	public String getStatus() {
 		return this.status;
+	}
+
+	public void createName(String name) {
+		if (5 < name.length()) {
+			throw new RuntimeException();
+		}
+		this.name = name;
 	}
 }
