@@ -8,10 +8,10 @@ public class RacingGame {
     private static final ConsoleOutput OUTPUT = new ConsoleOutput();
 
     public void start() {
-        int carQuantity = INPUT.getCarQuantity();
+        String carQuantity = INPUT.getCarNames();
         int movementCount = INPUT.getMovementCount();
 
-        Cars cars = new Cars(carQuantity);
+        Cars cars = new Cars(CarNameSeparator.separateNames(carQuantity));
 
         OUTPUT.resultMessage();
         for (int i = 0; i < movementCount; i++) {
