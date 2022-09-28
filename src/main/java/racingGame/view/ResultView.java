@@ -10,7 +10,6 @@ public class ResultView {
 
     public static void printRacingResult(Cars cars) {
         printTitle();
-        final StringBuilder stringBuilder = new StringBuilder();
         cars.getCars().forEach(car -> System.out.println(car.createTrace(TIRE_MARK)));
     }
 
