@@ -9,7 +9,8 @@ public class RoundCars {
     private final List<Car> cars = new ArrayList<>();
 
     public RoundCars(int carNums) {
-        for (int i = 0; i < carNums; i++) {
+        Positive positive = new Positive(carNums);
+        for (int i = 0; i < positive.getNumber(); i++) {
             cars.add(new Car());
         }
     }

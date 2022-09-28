@@ -1,16 +1,14 @@
 package racingcar;
 
-import racingcar.util.ConvertUtil;
 import racingcar.view.InputView;
-import racingcar.view.QuestionView;
 import racingcar.view.ResultView;
 
 public class RacingCarApplication {
 
     public static void main(String[] args) {
-        String carNums = InputView.askQuestion(QuestionView.QUESTION_CAR_NUMS);
-        String tryNums = InputView.askQuestion(QuestionView.QUESTION_TRY_NUMS);
-        RacingGame racingCar = new RacingGame(ConvertUtil.toInt(carNums), ConvertUtil.toInt(tryNums));
+        int carNums = InputView.askQuestionAnswerInt("자동차 대수는 몇 대 인가요?");
+        int tryNums = InputView.askQuestionAnswerInt("시도할 횟수는 몇 회 인가요?");
+        RacingGame racingCar = new RacingGame(carNums, tryNums);
         RacingRecord racingRecord = racingCar.racingStart();
         ResultView.printRoundRecord(racingRecord, "-");
     }

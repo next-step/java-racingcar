@@ -1,12 +1,13 @@
 package racingcar;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.util.RandomUtil;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 class CarTest {
+
     Car car;
     @BeforeEach
     void setUp() {
