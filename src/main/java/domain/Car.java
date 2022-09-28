@@ -27,10 +27,11 @@ public class Car {
         return name;
     }
 
-    public void move(boolean isMove) {
+    public Car move(boolean isMove) {
         if (isMove) {
             currentLocation += 1;
         }
+        return null;
     }
 
     public static Car createCar(String carName) {

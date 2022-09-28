@@ -14,26 +14,28 @@ public class CarRace {
 
     private static final int MIN_LIMIT_NUMBER = 4;
     private static final int MAX_LIMIT_BOUND_NUMBER = 10;
-
-    private static List<Car> racingCars;
+    private List<Car> racingCars;
 
     public CarRace() {
     }
     public CarRace(List<Car> racingCars) {
-        CarRace.racingCars = racingCars;
+        this.racingCars = racingCars;
     }
 
-    public static void updateCurrentLocation() {
+    public void updateCurrentLocation() {
         int randomNum = generateRandomNum();
-        racingCars.forEach(it -> it.move(isMovingForward(randomNum)));
+
+        for (int i = 0; i < racingCars.size(); i ++) {
+            this.racingCars.set(i, racingCars.get(i).move(isMovingForward(randomNum)));
+        }
     }
 
-    private static int generateRandomNum() {
+    private int generateRandomNum() {
         Random random = new Random();
         return random.nextInt(MAX_LIMIT_BOUND_NUMBER);
     }
 
-    private static boolean isMovingForward(int randomNumber) {
+    private boolean isMovingForward(int randomNumber) {
         return randomNumber >= MIN_LIMIT_NUMBER;
     }
 

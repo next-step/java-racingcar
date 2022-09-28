@@ -1,23 +1,19 @@
 package Service;
 
-import domain.Car;
-import java.util.List;
-
 public class ResultView {
 
 
-    public void printCarLocation(List<Car> carList, int attempts) {
-
+    public void printCarLocation(CarRace carRace, int attempts) {
         for (int i = 0; i < attempts; i++) {
-            convertCarLocation(carList);
+            convertCarLocation(carRace);
         }
     }
 
-    public void convertCarLocation(List<Car> carList) {
-        CarRace.updateCurrentLocation();
-        for (int i = 0; i < carList.size(); i++) {
-            for (int j = 0; j < carList.get(i).getCurrentLocation(); j++) {
-                System.out.print(carList.get(i).getName() + ":" + "-");
+    public void convertCarLocation(CarRace carRace) {
+        carRace.updateCurrentLocation();
+        for (int i = 0; i < carRace.getRacingCars().size(); i++) {
+            for (int j = 0; j < carRace.getRacingCars().get(i).getCurrentLocation(); j++) {
+                System.out.print(carRace.getRacingCars().get(i).getName() + " : " + "-");
             }
             System.out.println();
         }

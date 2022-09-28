@@ -12,6 +12,6 @@ public class Main {
         carRace.createInitCarList(inputView.getCarNames());
 
         ResultView resultView = new ResultView();
-        resultView.printCarLocation(carRace.getRacingCars(), inputView.getAttempts());
+        resultView.printCarLocation(carRace, inputView.getAttempts());
     }
 }
