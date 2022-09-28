@@ -3,7 +3,7 @@ package car;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WinnerCar implements Car {
+public class NamingCar implements Car {
     private static final String OUT_PUT_TEXT = "- ";
 
     private String name;
@@ -12,7 +12,7 @@ public class WinnerCar implements Car {
 
     private static final int MAX_LENGTH = 5;
 
-    public WinnerCar(MovableStrategy movableStrategy) {
+    public NamingCar(MovableStrategy movableStrategy) {
         this.distance = new ArrayList<>();
         this.movableStrategy = movableStrategy;
     }

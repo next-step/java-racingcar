@@ -3,11 +3,11 @@ package car;
 import java.util.List;
 import java.util.Scanner;
 
-public class InputWinnerCarView implements InputView {
-    private WinnerCarFactory carFactory;
+public class InputNamingCarView implements InputView {
+    private NamingCarFactory carFactory;
 
-    public InputWinnerCarView() {
-        this.carFactory = new WinnerCarFactory();
+    public InputNamingCarView() {
+        this.carFactory = new NamingCarFactory();
     }
 
     @Override

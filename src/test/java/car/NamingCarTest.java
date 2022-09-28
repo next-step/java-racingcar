@@ -7,12 +7,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class WinnerCarTest {
+class NamingCarTest {
     @DisplayName("랜덤 발생 숫자가 4미만인 경우")
     @ParameterizedTest
     @ValueSource(ints = { 1, 2, 3 })
     void car_random_under_4(int randomNum) {
-        WinnerCar car = new WinnerCar(() -> {
+        NamingCar car = new NamingCar(() -> {
             return 4 <= randomNum;
         });
         car.inputName("test");
@@ -24,7 +24,7 @@ class WinnerCarTest {
     @ParameterizedTest
     @ValueSource(ints = { 4, 5, 6, 7, 8, 9 })
     void car_random_upper_4(int randomNum) {
-        WinnerCar car = new WinnerCar(() -> {
+        NamingCar car = new NamingCar(() -> {
             return 4 <= randomNum;
         });
         car.inputName("test");
@@ -35,7 +35,7 @@ class WinnerCarTest {
     @DisplayName("차 이름이 5를 넘기면 Exception")
     @Test
     void car_name_test() {
-        WinnerCar car = new WinnerCar(new CarMovableStrategy());
+        NamingCar car = new NamingCar(new CarMovableStrategy());
         assertThatThrownBy(() -> {
             car.inputName("123455");
         }).isInstanceOf(IllegalArgumentException.class)
