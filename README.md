@@ -58,3 +58,25 @@
 - 기능을 구현하기 전에 README.md 파일에 구현할 기능 목록을 정리해 추가한다.
 - git의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가한다.
     - 참고문서: [AngularJS Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)
+
+### MVC 정리
+
+- MVC
+  - Mocde - View - Controller
+  - 소프트웨어 디자인 패턴
+  - 비즈니스 로직과 화면을 구분하는데 중점을 둠
+  - 관심사를 분리하여 향상된 관리를 제공
+  - 
+
+- Model
+  - 데이터와 비즈니스 로직을 관리
+  - 앱에 포함될 데이터가 무엇인지 정의
+  - 데이터의 상태가 변경되면 View 또는 Controller에게 알림
+
+- View
+  - 레이아웃과 화면을 처리
+  - 데이터를 보여주는 방식을 정의
+
+- Controller
+  - 명령을 Model과 View 부분으로 라우팅
+  - 사용자로부터의 입력에 대한 응답으로 Model, View를 업데이트 하는 로직을 포함
