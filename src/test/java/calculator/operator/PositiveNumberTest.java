@@ -14,7 +14,7 @@ class PositiveNumberTest {
     public void sum_합산_검증(int num1, int num2, int expected) {
         PositiveNumber result = new PositiveNumber(num1);
 
-        result.sum(new PositiveNumber(num2));
+        result.plus(new PositiveNumber(num2));
 
         assertThat(result).isEqualTo(new PositiveNumber(expected));
     }

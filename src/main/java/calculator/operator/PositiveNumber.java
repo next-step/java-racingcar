@@ -14,9 +14,9 @@ public class PositiveNumber {
         this.value = value;
     }
 
-    public PositiveNumber sum(PositiveNumber number) {
+    public PositiveNumber plus(PositiveNumber number) {
         this.value += number.value;
-        return this;
+        return new PositiveNumber(value);
     }
 
     private void validateRange(int number) {

@@ -1,4 +1,4 @@
-package calculatorTest;
+package stringAddcalculator;
 
 import calculator.StringAddCalculator;
 import calculator.operator.PositiveNumber;
