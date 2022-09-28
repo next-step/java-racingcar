@@ -22,4 +22,12 @@ public class Print {
 	public static void newLine() {
 		System.out.println();
 	}
+
+	public static void printResult(String name, String status) {
+		System.out.println(name + " : " + status);
+	}
+
+	public static void execute() {
+		System.out.println("실행 결과");
+	}
 }
