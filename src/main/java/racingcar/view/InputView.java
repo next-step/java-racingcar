@@ -1,23 +1,23 @@
-package racingcar;
+package racingcar.view;
 
 import java.util.Scanner;
 
-public class RacingGameInitializer {
+public class InputView {
 
     private static final Scanner SCANNER = new Scanner(System.in);
 
-    private RacingGameInitializer() {
+    private InputView() {
     }
 
     public static int initTryCount() {
-        RacingGamePrinter.printInitTryCountPhrase();
+        PrintView.printInitTryCountPhrase();
         int tryCount = SCANNER.nextInt();
         validateOneLessThen(tryCount);
         return tryCount;
     }
 
     public static String[] initRacingCarNames() {
-        RacingGamePrinter.printInitRacingCarPhrase();
+        PrintView.printInitRacingCarPhrase();
         String inputLine = SCANNER.next();
         return inputLine.split(",");
     }
