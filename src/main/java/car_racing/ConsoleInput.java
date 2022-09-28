@@ -13,7 +13,7 @@ public class ConsoleInput implements InputInterface {
         return new RacingCondition(carCount, attemptCount);
     }
 
-    private static int getIntInput(Scanner scanner, String question) {
+    private int getIntInput(Scanner scanner, String question) {
         System.out.println(question);
         return scanner.nextInt();
     }

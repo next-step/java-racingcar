@@ -9,14 +9,10 @@ public class Game {
     private Round round;
     private Cars cars;
 
-    public Game(int totalTryCount, Cars cars) {
+    public Game(Integer totalTryCount, Cars cars) {
         this.totalTryCount = totalTryCount;
         this.round = new Round();
         this.cars = cars;
-    }
-
-    public static Game prepare(Integer attemptCount, Cars cars) {
-        return new Game(attemptCount, cars);
     }
 
     public boolean isEnded() {

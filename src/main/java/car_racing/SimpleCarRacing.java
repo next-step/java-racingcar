@@ -3,9 +3,9 @@ package car_racing;
 public class SimpleCarRacing {
 
     public static void main(String[] args) {
-        RacingCondition racingCondition = RacingCondition.getInput();
+        RacingCondition racingCondition = new ConsoleInput().getInputs();
         Cars cars = new Cars(racingCondition.carCount());
-        Game game = Game.prepare(racingCondition.attemptCount(), cars);
+        Game game = new Game(racingCondition.attemptCount(), cars);
         game.play();
     }
 }
