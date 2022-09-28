@@ -17,7 +17,7 @@ public class Cars {
         this.cars = new ArrayList<>();
         String[] sCars = carNames.split(",");
         for (String sCar : sCars) {
-            cars.add(new Car().createCar(sCar));
+            cars.add(new Car(sCar));
         }
     }
 
@@ -34,12 +34,9 @@ public class Cars {
     public List<String> getWinners() {
         int maxPos = getMaxPos();
 
-        List<String> winners = new ArrayList<>();
-        cars.stream()
+        return cars.stream()
                 .filter(car -> car.getPos() == maxPos)
-                .forEach(car -> winners.add(car.getName()));
-
-        return winners;
+                .map(car -> car.getName()).collect(Collectors.toList());
     }
 
     private int getMaxPos() {
