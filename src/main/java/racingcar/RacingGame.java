@@ -15,8 +15,8 @@ public class RacingGame {
 
         OUTPUT.resultMessage();
         for (int i = 0; i < movementCount; i++) {
-            List<Integer> resultPosition = cars.play();
-            resultPosition.forEach(OUTPUT::position);
+            List<CarStatusDto> carStatusDtos = cars.move();
+            carStatusDtos.forEach(carStatus -> OUTPUT.position(carStatus.getPosition()));
             OUTPUT.newLine();
         }
     }

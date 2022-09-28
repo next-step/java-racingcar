@@ -2,11 +2,8 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Cars {
-
-    private static final String SEPARATOR = ",";
 
     private final List<Car> cars;
 
@@ -14,17 +11,17 @@ public class Cars {
         cars = initCars(names);
     }
 
-    public List<Integer> play() {
-        moveCars();
-        return mapToPosition();
-    }
-
-    private void moveCars() {
+    public List<CarStatusDto> move() {
         cars.forEach(car -> car.move(new CarCondition()));
+        return getCarStatus();
     }
 
-    private List<Integer> mapToPosition() {
-        return cars.stream().mapToInt(Car::getPosition).boxed().collect(Collectors.toList());
+    private List<CarStatusDto> getCarStatus() {
+        List<CarStatusDto> carStatusDtos = new ArrayList<>();
+        cars.forEach(
+                car -> carStatusDtos.add(new CarStatusDto(car.getPosition(), car.getName()))
+        );
+        return carStatusDtos;
     }
 
     private List<Car> initCars(List<String> names) {
