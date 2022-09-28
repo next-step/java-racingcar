@@ -23,4 +23,12 @@ public class RacingGameCarList {
         return new RacingGameCarList(racingGameCarList);
     }
 
+    public static RacingGameCarList makeRacingGameCars(List<String> names) {
+        List<RacingGameCar> racingGameCarList = new ArrayList<>();
+        for (String name : names) {
+            racingGameCarList.add(new RacingGameCar(name));
+        }
+        return new RacingGameCarList(racingGameCarList);
+    }
+
 }
