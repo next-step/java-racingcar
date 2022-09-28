@@ -1,4 +1,4 @@
-package racingcar.step3;
+package racingcar.step3_4;
 
 public class GameAttribute {
 

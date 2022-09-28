@@ -1,4 +1,4 @@
-package racingcar.step3;
+package racingcar.step3_4;
 
 @FunctionalInterface
 public interface RandomValueGenerator {

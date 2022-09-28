@@ -1,4 +1,4 @@
-package racingcar.step3;
+package racingcar.step3_4;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
