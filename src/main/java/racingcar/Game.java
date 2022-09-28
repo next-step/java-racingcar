@@ -15,6 +15,7 @@ public class Game {
 
 	private static final InputView INPUT_VIEW = new InputView();
 	private static final OutputView OUTPUT_VIEW = new OutputView();
+	private static final int RANDOM_NUMBER_BOUND_INCLUSIVE = 9;
 
 	public static void main(String[] args) {
 		int carCount = getCarCount();
@@ -34,7 +35,7 @@ public class Game {
 	}
 
 	private static void moveOnce(Cars cars) {
-		NumberStrategy numberStrategy = new RandomNumberStrategy(9);
+		NumberStrategy numberStrategy = new RandomNumberStrategy(RANDOM_NUMBER_BOUND_INCLUSIVE);
 		MoveStrategy moveStrategy = new NumberOverFourStrategy(numberStrategy);
 		cars.move(moveStrategy);
 	}
