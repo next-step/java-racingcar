@@ -1,9 +1,7 @@
 package racinggame.domain.scoreboard;
 
 import java.util.ArrayList;
-import java.util.Deque;
 import java.util.LinkedHashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import racinggame.domain.car.Car;
@@ -34,27 +32,36 @@ public class Score {
     }
 
     public List<String> getWinner() {
-        Deque<String> winnerDeque = new LinkedList<>();
+        return getWinners(getMaxDistance());
+    }
 
+    private int getMaxDistance() {
+        int maxDistance = -1;
         for (String name : scoreInfo.keySet()) {
-            updateWinner(winnerDeque, name);
+            maxDistance = getMaxDistance(maxDistance, name);
         }
-
-        return new ArrayList<>(winnerDeque);
+        return maxDistance;
     }
 
-    private void updateWinner(Deque<String> winnerStack, String name) {
+    private int getMaxDistance(int maxDistance, String name) {
         int distance = scoreInfo.get(name);
-        removeLoser(winnerStack, distance);
-
-        if (winnerStack.isEmpty() || distance == scoreInfo.get(winnerStack.peek())) {
-            winnerStack.add(name);
+        if (distance > maxDistance) {
+            maxDistance = distance;
         }
+        return maxDistance;
     }
 
-    private void removeLoser(Deque<String> winnerStack, int distance) {
-        while (!winnerStack.isEmpty() && distance > scoreInfo.get(winnerStack.peek())) {
-            winnerStack.pop();
+    private List<String> getWinners(int maxDistance) {
+        List<String> winners = new ArrayList<>();
+        for (String name : scoreInfo.keySet()) {
+            updateWinners(maxDistance, winners, name);
+        }
+        return winners;
+    }
+
+    private void updateWinners(int maxDistance, List<String> winners, String name) {
+        if (scoreInfo.get(name) == maxDistance) {
+            winners.add(name);
         }
     }
 
