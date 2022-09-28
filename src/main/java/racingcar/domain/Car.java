@@ -10,9 +10,7 @@ public class Car implements Comparable<Car> {
     private final RunStrategy runStrategy;
 
     public Car(String name) {
-        this.name = new CarName(name);
-        this.distance = 0;
-        this.runStrategy = new RandomRunStrategy();
+        this(name, new RandomRunStrategy());
     }
 
     public Car(String name, RunStrategy runStrategy) {
