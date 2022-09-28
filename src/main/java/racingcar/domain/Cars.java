@@ -4,24 +4,44 @@ import racingcar.strategy.MovingStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Cars {
-    private List<Car> carRacing = new ArrayList<>();
+    private final List<Car> values;
 
     public Cars(int carCount) {
-        for (int i = 0; i < carCount; i++) {
-            carRacing.add(new Car());
-        }
+        this.values = createCarList(carCount);
     }
 
-    public void move(int tryCount, MovingStrategy movingStrategy) {
-        for (int i = 0; i < tryCount; i++) {
-            Car car = new Car();
-            car.move(movingStrategy);
-            if (car.equals(new Car(1))) {
-                System.out.print("-");
-            }
+    public Cars(List<Car> values) {
+        this.values = values;
+    }
+
+    private List<Car> createCarList(int carCount) {
+        List<Car> carList = new ArrayList<>();
+        for (int i = 0; i < carCount; i++) {
+            carList.add(new Car());
         }
-        System.out.println();
+        return carList;
+    }
+
+    public List<Car> racing(int tryCount, MovingStrategy movingStrategy) {
+        for (int i = 0; i < tryCount; i++) {
+            values.forEach(car -> car.move(movingStrategy));
+        }
+        return values;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cars cars = (Cars) o;
+        return Objects.equals(values, cars.values);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(values);
     }
 }
