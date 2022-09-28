@@ -25,18 +25,18 @@ public class OutputView {
 
 		String resultString = results.stream()
 			.map(Result::getPositions)
-			.map(this::getResultString)
+			.map(this::getProgresses)
 			.collect(Collectors.joining(lineSeparator()));
 		System.out.print(resultString);
 	}
 
-	private String getResultString(List<Integer> positions) {
+	private String getProgresses(List<Integer> positions) {
 		return positions.stream()
-			.map(this::getProgressString)
+			.map(this::getProgress)
 			.collect(Collectors.joining());
 	}
 
-	private String getProgressString(Integer position) {
+	private String getProgress(Integer position) {
 		return PROGRESS_INDICATOR.repeat(position) + lineSeparator();
 	}
 }
