@@ -1,6 +1,7 @@
 package step3.view;
 
 import step3.model.Car;
+import step3.model.Cars;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -16,15 +17,12 @@ public class ResultView
         return resultView;
     }
 
-
-    public void draw(List<Car> cars)
+    public void draw(int tryNumber, List<Car> cars)
     {
-        System.out.println("실행 결과");
-        stepDraw(cars);
-    }
-
-    private void stepDraw(List<Car> cars)
-    {
+        if (tryNumber == 0)
+        {
+            System.out.println("실행 결과");
+        }
         cars.forEach(this::positionDraw);
         System.out.println();
     }
@@ -34,6 +32,11 @@ public class ResultView
         StringBuilder builder = new StringBuilder();
         IntStream.range(0, car.getPosition()).forEach(value -> builder.append(SKID_MARK));
 
-        System.out.println(builder);
+        System.out.printf("%s : %s%n", car.getCarName(), builder);
+    }
+
+    public void winnerDraw(Cars cars)
+    {
+        System.out.println(cars.getWinner() + "가 최종 우승했습니다.");
     }
 }

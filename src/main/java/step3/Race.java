@@ -18,10 +18,12 @@ public class Race
     public static void start()
     {
         InputView inputView = InputView.getInstance();
-        Cars cars = new Cars(inputView.carNumber(), new RandomMovingStrategy());
+        Cars cars = new Cars(inputView.carName(), new RandomMovingStrategy());
 
         ResultView resultView = ResultView.getInstance();
         IntStream.range(0, inputView.tryNumber())
-                .forEach(value -> resultView.draw(cars.moving()));
+                .forEach(tryNumber -> resultView.draw(tryNumber, cars.moving()));
+
+        resultView.winnerDraw(cars);
     }
 }
