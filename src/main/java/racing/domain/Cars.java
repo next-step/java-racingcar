@@ -15,8 +15,12 @@ public class Cars {
         return cars;
     }
 
+    public Car getCar(int index) {
+        return cars.get(index);
+    }
+
     public void move(MovableStrategy movableStrategy) {
-        cars.forEach(car -> car.move(movableStrategy.randomMovable()));
+        cars.forEach(car -> car.move(movableStrategy));
     }
 
     public void print(ResultView resultView) {

@@ -1,23 +1,19 @@
 package racing.domain;
 
 public class Car {
-    private final static int RACING_CONDITION = 4;
-    private final static String GO_DELIMETER = "-";
 
-    private StringBuilder moved;
+    private int moved;
 
     public Car() {
-        this.moved = new StringBuilder();
+        this.moved = 0;
     }
 
-    public String getMoved() {
-        return moved.toString();
+    public int getMoved() {
+        return moved;
     }
 
-    public void move(int movable) {
-        if(RACING_CONDITION <= movable) {
-            moved.append(GO_DELIMETER);
-        }
+    public void move(MovableStrategy movableStrategy) {
+        moved += movableStrategy.randomMovable();
     }
 
 }
