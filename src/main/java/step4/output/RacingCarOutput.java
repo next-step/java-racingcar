@@ -8,8 +8,8 @@ public class RacingCarOutput {
 
     private static final String CAR_POSITION_INDEX = "-";
 
-    public static void printCarCount() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
+    public static void printCarNames(){
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
     }
 
     public static void printTryCount() {
@@ -18,8 +18,11 @@ public class RacingCarOutput {
 
     public static void printRacingResult(List<Car> cars) {
 
+
         for (int i = 0; i < cars.size(); i++) {
-            System.out.println(CAR_POSITION_INDEX.repeat(cars.get(i).getLocation()));
+            String carName = cars.get(i).getCarName();
+            int position = cars.get(i).getLocation();
+            System.out.println(carName + " : " + CAR_POSITION_INDEX.repeat(position));
         }
         printDividingLine();
     }
