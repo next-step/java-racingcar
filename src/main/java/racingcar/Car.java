@@ -26,6 +26,10 @@ public class Car {
         return this.position.equals(position);
     }
 
+    public Position getBiggerPosition(Position position) {
+        return this.position.getBigger(position);
+    }
+
     public Position getPosition() {
         return position;
     }

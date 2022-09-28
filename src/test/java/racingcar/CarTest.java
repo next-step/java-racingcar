@@ -26,6 +26,11 @@ public class CarTest {
         assertThat(new Car(5, "carA").isPositionEquals(new Position(5))).isTrue();
     }
 
+    @Test
+    void getBiggerPosition() {
+        assertThat(new Car(5, "carA").getBiggerPosition(new Position(3))).isEqualTo(new Position(5));
+    }
+
     static Stream<Arguments> strategyParameterProvider() {
         return Stream.of(
                 Arguments.of((MovingStrategy) () -> true, new Position(1), "move() 전진 가능한 경우"),
