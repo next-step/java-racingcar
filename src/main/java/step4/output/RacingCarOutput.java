@@ -34,4 +34,9 @@ public class RacingCarOutput {
     public static void printDividingLine() {
         System.out.println();
     }
+
+    public static void printWinner(List<String> winners) {
+        String winner = String.join(",", winners);
+        System.out.println(winner + "가 최종 우승했습니다.");
+    }
 }

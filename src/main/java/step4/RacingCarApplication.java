@@ -17,8 +17,11 @@ public class RacingCarApplication {
         RacingCarOutput.printStartMessage();
 
         for (int i = 0; i < tryCount; i++) {
-            List<Car> afterRaceCars = RacingStarter.start(cars);
-            RacingCarOutput.printRacingResult(afterRaceCars);
+            RacingSupport.start(cars);
+            RacingCarOutput.printRacingResult(cars);
         }
+
+        List<String> winner = RacingSupport.chooseWinner(cars);
+        RacingCarOutput.printWinner(winner);
     }
 }
