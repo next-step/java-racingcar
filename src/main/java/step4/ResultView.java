@@ -9,7 +9,7 @@ public class ResultView {
     public static final String END_TEXT = "";
     public static final String NAME_SEPARATOR = " : ";
 
-    public static void resultPrint(Car car) {
+    public static void printResult(Car car) {
         System.out.println(car.name + NAME_SEPARATOR + FORWARD_TEXT.repeat(car.location));
     }
 
@@ -21,7 +21,7 @@ public class ResultView {
         System.out.println(END_TEXT);
     }
 
-    public static void getWinner(String winner) {
+    public static void printWinner(String winner) {
         System.out.println(winner + "가 최종 우승했습니다.");
     }
 }

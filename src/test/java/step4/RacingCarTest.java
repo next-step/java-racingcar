@@ -15,12 +15,6 @@ import static step4.Winner.*;
 class RacingCarTest {
 
     @Test
-    void random_0_9_사이() {
-        int result = GameRule.createRandomNum();
-        assertThat(result).isLessThan(10);
-    }
-
-    @Test
     void move_forward_차가_전진했을_경우() {
         assertThat(decideMove(4)).isEqualTo(1);
     }
