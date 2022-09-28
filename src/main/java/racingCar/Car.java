@@ -5,17 +5,17 @@ import java.util.List;
 
 public class Car {
 	private final List<Integer> status = new ArrayList<>();
-	private String name;
+	private final String name;
 
-	public List<Integer> getStatus() {
-		return this.status;
-	}
-
-	public void createName(String name) {
+	public Car(String name) {
 		if (5 < name.length()) {
 			throw new RuntimeException();
 		}
 		this.name = name;
+	}
+
+	public List<Integer> getStatus() {
+		return this.status;
 	}
 
 	public String getName() {
