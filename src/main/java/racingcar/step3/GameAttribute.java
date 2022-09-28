@@ -14,11 +14,11 @@ public class GameAttribute {
 	}
 
 	public int getCarCount() {
-		return this.carCount;
+		return carCount;
 	}
 
 	public int getTryCount() {
-		return this.tryCount;
+		return tryCount;
 	}
 
 	private void validateNegative(int value) {
