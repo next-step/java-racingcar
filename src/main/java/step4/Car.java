@@ -13,7 +13,6 @@ public class Car {
     }
 
     private void validateName(String carName) {
-        System.out.println(carName);
         if(Objects.isNull(carName) || carName.isEmpty()){
             throw new IllegalArgumentException("자동차 이름은 널이나 공백이 들어올 수 없습니다.");
         }

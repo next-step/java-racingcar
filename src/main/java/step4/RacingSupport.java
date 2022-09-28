@@ -11,7 +11,7 @@ public class RacingSupport {
     }
 
     private static boolean isMovable() {
-        Random random = new Random();
+        RandomNumber random = new RandomNumber();
         return random.isRandomNumberGreaterThanThree();
     }
 }
