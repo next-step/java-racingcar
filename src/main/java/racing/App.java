@@ -1,19 +1,41 @@
 package racing;
 
-import java.util.List;
-import java.util.Scanner;
+import racing.game.Car;
+import racing.game.RacingGame;
+import racing.game.result.RacingResult;
+import racing.game.random.PositiveRandomNumber;
 
-import static racing.InputView.initializeGame;
-import static racing.ResultView.printResult;
+import java.util.ArrayList;
+import java.util.List;
+
+import static racing.view.InputView.namesOfCar;
+import static racing.view.InputView.numberOfAttempts;
+import static racing.view.ResultView.printResult;
 
 public class App {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        printResult(run(initializeGame(scanner)));
+        printResult(run(initializeGame()));
     }
 
-    private static List<List<Integer>> run(RacingGame game) {
-        return game.run();
+
+    private static RacingGame initializeGame() {
+        return new RacingGame(carsFrom(namesOfCar()), numberOfAttempts());
+    }
+
+    private static RacingResult run(RacingGame racing) {
+        return racing.run();
+    }
+
+    private static List<Car> carsFrom(String[] namesOfCar) {
+        List<Car> cars = new ArrayList<>();
+        addCars(namesOfCar, cars);
+        return cars;
+    }
+
+    private static void addCars(String[] namesOfCar, List<Car> cars) {
+        for (String name : namesOfCar) {
+            cars.add(new Car(name, new PositiveRandomNumber()));
+        }
     }
 }
