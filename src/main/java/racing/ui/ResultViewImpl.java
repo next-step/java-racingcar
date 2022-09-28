@@ -6,13 +6,14 @@ public class ResultViewImpl implements ResultView {
 
     private static final String BEGIN_TEXT = "실행 결과";
 
-    public ResultViewImpl() {
+    @Override
+    public void start() {
         System.out.println(BEGIN_TEXT);
     }
 
     @Override
     public void print(Car car) {
-        System.out.println(car.getMoved());
+        System.out.println("-".repeat(car.getMoved()));
     }
 
 }
