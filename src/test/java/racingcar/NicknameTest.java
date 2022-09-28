@@ -27,4 +27,14 @@ public class NicknameTest {
                 .isExactlyInstanceOf(CanNotOverFiveCharacterNicknameException.class)
                 .hasMessage("다섯자를 초과하는 닉네임은 사용할 수 없습니다.");
     }
+
+    @Test
+    @DisplayName("null 이면 CanNotNullNicknameException이 발생한다.")
+    void nicknameNull() {
+        ThrowingCallable actual = () -> new Nickname(null);
+
+        assertThatThrownBy(actual)
+                .isExactlyInstanceOf(CanNotNullNicknameException.class)
+                .hasMessage("null인 인자값은 nickname이 될 수 없습니다.");
+    }
 }

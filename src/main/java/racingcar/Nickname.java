@@ -11,7 +11,14 @@ public class Nickname {
     }
 
     private void validate(String value) {
+        validateNull(value);
         validateMaxLength(value);
+    }
+
+    private void validateNull(String value) {
+        if(value == null) {
+            throw new CanNotNullNicknameException();
+        }
     }
 
     private void validateMaxLength(String value) {
