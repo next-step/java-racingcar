@@ -23,7 +23,7 @@ public class RacingCars {
     }
 
     public void race() {
-        this.cars.forEach(Car::run);
+        this.cars.forEach(car -> car.run(new RandomRunStrategy()));
     }
 
     public Winners pickWinners() {

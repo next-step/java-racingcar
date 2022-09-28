@@ -7,26 +7,20 @@ public class Car implements Comparable<Car> {
 
     private final CarName name;
     private int distance;
-    private final RunStrategy runStrategy;
 
     public Car(String name) {
-        this(name, new RandomRunStrategy());
-    }
-
-    public Car(String name, RunStrategy runStrategy) {
         this.name = new CarName(name);
         this.distance = 0;
-        this.runStrategy = runStrategy;
     }
 
-    public void run() {
+    public void run(RunStrategy runStrategy) {
         if (runStrategy.runnable()) {
             this.distance += 1;
         }
     }
 
-    public void run(int distance) {
-        IntStream.range(0, distance).forEach(a -> this.run());
+    public void run(int numberOfTimes, RunStrategy runStrategy) {
+        IntStream.range(0, numberOfTimes).forEach(a -> this.run(runStrategy));
     }
 
     public String showName() {

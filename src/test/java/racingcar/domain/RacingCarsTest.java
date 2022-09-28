@@ -65,12 +65,12 @@ class RacingCarsTest {
         List<Car> cars = new ArrayList<>();
         RunStrategy runStrategy = () -> true;
 
-        Car car1 = new Car("1", runStrategy);
-        car1.run(1);
-        Car car2 = new Car("2", runStrategy);
-        car2.run(2);
-        Car car3 = new Car("3", runStrategy);
-        car3.run(3);
+        Car car1 = new Car("1");
+        car1.run(1, runStrategy);
+        Car car2 = new Car("2");
+        car2.run(2, runStrategy);
+        Car car3 = new Car("3");
+        car3.run(3, runStrategy);
 
         cars.add(car1);
         cars.add(car2);
@@ -95,12 +95,12 @@ class RacingCarsTest {
         List<Car> cars = new ArrayList<>();
         RunStrategy runStrategy = () -> true;
 
-        Car car1 = new Car("1", runStrategy);
-        car1.run(1);
-        Car car2 = new Car("2", runStrategy);
-        car2.run(3);
-        Car car3 = new Car("3", runStrategy);
-        car3.run(3);
+        Car car1 = new Car("1");
+        car1.run(1, runStrategy);
+        Car car2 = new Car("2");
+        car2.run(3, runStrategy);
+        Car car3 = new Car("3");
+        car3.run(3, runStrategy);
 
         cars.add(car1);
         cars.add(car2);
