@@ -15,6 +15,7 @@ public class RecordPrintService {
     private static final String WINNER_DELIMITER = ", ";
 
     public void printRecord(List<RecordByRound> recordByRounds) {
+        TextPrintUtils.println("실행 결과");
         recordByRounds.forEach(recordByRound -> {
             printByRound(recordByRound);
             TextPrintUtils.println("");
