@@ -3,6 +3,7 @@ package racingGame;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingGame.racingRule.FowardRule;
+import racingGame.racingRule.NotMoveRule;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -17,5 +18,14 @@ class CarTest {
         car.move(fowardRule);
         car.move(fowardRule);
         assertThat(car.createTrace("-")).isEqualTo("--");
+    }
+
+    @Test
+    @DisplayName("움직이는 실패할 시 공백을 반환.")
+    void not_move() {
+        Car car = new Car();
+
+        car.move(new NotMoveRule());
+        assertThat(car.createTrace("-")).isEqualTo("");
     }
 }

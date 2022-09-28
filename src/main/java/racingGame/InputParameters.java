@@ -5,24 +5,37 @@ import racingGame.view.InputVerifier;
 import java.util.Objects;
 
 public class InputParameters {
-    private int carNum;
-    private int tryNum;
+    private Input carNum;
+    private Input tryNum;
+
     public InputParameters(String carNum, String tryNum) {
-        InputVerifier.validateInput(carNum,tryNum);
-        this.carNum = parseInput(carNum);
-        this.tryNum  = parseInput(tryNum);
+        this.carNum = new Input(carNum);
+        this.tryNum = new Input(tryNum);
     }
 
-    private int parseInput(String input) {
-        return Integer.parseInt(input);
+    public class Input {
+        private int input;
+
+        public Input(String inputNum) {
+            InputVerifier.validateInput(inputNum);
+            this.input = parseInput(inputNum);
+        }
+
+        public int getInput() {
+            return this.input;
+        }
+
+        private int parseInput(String input) {
+            return Integer.parseInt(input);
+        }
     }
 
     public int getCarNum() {
-        return carNum;
+        return carNum.getInput();
     }
 
     public int getTryNum() {
-        return tryNum;
+        return tryNum.getInput();
     }
 
     @Override
