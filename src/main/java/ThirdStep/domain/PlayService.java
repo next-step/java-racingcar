@@ -1,14 +1,11 @@
-package ThirdStep.services;
+package ThirdStep.domain;
 
-import ThirdStep.RandomMovingCondition;
-import ThirdStep.model.Car;
-import ThirdStep.model.GameSetting;
-import ThirdStep.model.RecordByCar;
-import ThirdStep.model.RecordByRound;
+import ThirdStep.domain.model.GameSetting;
+import ThirdStep.domain.model.RecordByCar;
+import ThirdStep.domain.model.RecordByRound;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class PlayService {
 

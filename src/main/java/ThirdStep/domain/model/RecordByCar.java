@@ -1,4 +1,4 @@
-package ThirdStep.model;
+package ThirdStep.domain.model;
 
 public class RecordByCar {
     private Car car;

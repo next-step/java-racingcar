@@ -1,10 +1,10 @@
-package ThirdStep.services;
+package ThirdStep.domain;
 
-import ThirdStep.model.Car;
-import ThirdStep.model.CarRequest;
-import ThirdStep.model.GameSetting;
-import ThirdStep.utils.TextPrintUtils;
-import ThirdStep.utils.UserInputScanUtils;
+import ThirdStep.domain.model.Car;
+import ThirdStep.domain.model.request.CarRequest;
+import ThirdStep.domain.model.GameSetting;
+import ThirdStep.view.utils.TextPrintUtils;
+import ThirdStep.view.utils.UserInputScanUtils;
 
 import java.util.Arrays;
 import java.util.List;

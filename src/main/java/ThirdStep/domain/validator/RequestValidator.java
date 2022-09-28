@@ -1,6 +1,6 @@
-package ThirdStep.validator;
+package ThirdStep.domain.validator;
 
-import ThirdStep.model.CarRequest;
+import ThirdStep.domain.model.request.CarRequest;
 
 public class RequestValidator {
 

@@ -1,7 +1,7 @@
-package ThirdStep.model;
+package ThirdStep.domain.model.request;
 
 public class CarRequest {
-    private String name;
+    private final String name;
 
     public CarRequest(String name) {
         this.name = name;

@@ -1,10 +1,11 @@
-package ThirdStep;
+package ThirdStep.controller;
 
-import ThirdStep.model.RecordByRound;
-import ThirdStep.services.GameSettingService;
-import ThirdStep.services.PlayService;
-import ThirdStep.services.RecordService;
-import ThirdStep.utils.TextPrintUtils;
+import ThirdStep.domain.model.RecordByRound;
+import ThirdStep.domain.GameSettingService;
+import ThirdStep.domain.PlayService;
+import ThirdStep.view.RecordPrintService;
+import ThirdStep.domain.RecordService;
+import ThirdStep.view.utils.TextPrintUtils;
 
 import java.util.List;
 
@@ -18,7 +19,8 @@ public class CarRacingGame {
         List<RecordByRound> record = play.racing(gameSettingService.getGameSetting());
 
         TextPrintUtils.println("실행 결과");
-        recordService.printRecord(record);
-        recordService.announceWinner(record);
+        RecordPrintService recordPrintService = new RecordPrintService();
+        recordPrintService.printRecord(record);
+        recordPrintService.announceWinner(record);
     }
 }

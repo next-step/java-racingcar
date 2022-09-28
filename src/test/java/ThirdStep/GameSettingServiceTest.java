@@ -1,8 +1,8 @@
 package ThirdStep;
 
-import ThirdStep.model.Car;
-import ThirdStep.model.GameSetting;
-import ThirdStep.services.GameSettingService;
+import ThirdStep.domain.model.Car;
+import ThirdStep.domain.model.GameSetting;
+import ThirdStep.domain.GameSettingService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

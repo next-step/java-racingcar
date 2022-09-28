@@ -1,11 +1,10 @@
 package ThirdStep;
 
-import ThirdStep.model.Car;
-import ThirdStep.model.CarRequest;
-import ThirdStep.model.GameSetting;
-import ThirdStep.services.CarService;
-import ThirdStep.services.PlayService;
-import ThirdStep.services.RecordService;
+import ThirdStep.domain.model.Car;
+import ThirdStep.domain.model.request.CarRequest;
+import ThirdStep.domain.model.GameSetting;
+import ThirdStep.domain.PlayService;
+import ThirdStep.domain.RecordService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

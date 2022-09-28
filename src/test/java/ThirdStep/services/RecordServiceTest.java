@@ -1,8 +1,9 @@
 package ThirdStep.services;
 
-import ThirdStep.model.Car;
-import ThirdStep.model.CarRequest;
-import ThirdStep.model.RecordByCar;
+import ThirdStep.domain.model.Car;
+import ThirdStep.domain.model.request.CarRequest;
+import ThirdStep.domain.model.RecordByCar;
+import ThirdStep.domain.RecordService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

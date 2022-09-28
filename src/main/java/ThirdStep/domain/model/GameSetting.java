@@ -1,4 +1,4 @@
-package ThirdStep.model;
+package ThirdStep.domain.model;
 
 import java.util.List;
 

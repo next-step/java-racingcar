@@ -1,4 +1,4 @@
-package ThirdStep.utils;
+package ThirdStep.view.utils;
 
 public class TextPrintUtils {
 
