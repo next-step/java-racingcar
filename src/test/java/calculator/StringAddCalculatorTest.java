@@ -3,9 +3,8 @@ package calculator;
 import static calculator.StringAddCalculator.splitAndSum;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
-import com.sun.jdi.NativeMethodException;
+import calculator.exception.NegativeNumberException;
 import org.junit.jupiter.api.Test;
 
 class StringAddCalculatorTest {
@@ -39,6 +38,6 @@ class StringAddCalculatorTest {
     @Test
     public void splitAndSum_negative() {
         assertThatThrownBy(() -> splitAndSum("-1,2,3"))
-            .isInstanceOf(RuntimeException.class);
+            .isInstanceOf(NegativeNumberException.class);
     }
 }

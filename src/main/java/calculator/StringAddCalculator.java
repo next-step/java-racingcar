@@ -1,13 +1,13 @@
 package calculator;
 
-import exception.NegativeNumberException;
+import calculator.exception.NegativeNumberException;
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
-    public static final String COMMA_SEPARATOR = "[,:]";
-    public static final String PATTERN = "//(.)\n(.*)";
+    private static final String COMMA_SEPARATOR = "[,:]";
+    private static final Pattern PATTERN = Pattern.compile("//(.)\n(.*)");
 
     public static int splitAndSum(String text) {
         if (isBlank(text)) {
@@ -23,10 +23,10 @@ public class StringAddCalculator {
     }
 
     private static String[] split(String text) {
-        Matcher m = Pattern.compile(PATTERN).matcher(text);
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            return m.group(2).split(customDelimiter);
+        Matcher matcher = PATTERN.matcher(text);
+        if (matcher.find()) {
+            String customDelimiter = matcher.group(1);
+            return matcher.group(2).split(customDelimiter);
         }
 
         return text.split(COMMA_SEPARATOR);
