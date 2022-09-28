@@ -4,7 +4,6 @@ import ThirdStep.domain.model.Car;
 import ThirdStep.domain.model.request.CarRequest;
 import ThirdStep.domain.model.GameSetting;
 import ThirdStep.domain.PlayService;
-import ThirdStep.domain.RecordService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,7 +19,7 @@ class PlayServiceTest {
     private final int INIT_ATTEMPTS = 5;
     private final int FIRST_RACE = 1;
 
-    private final PlayService play = new PlayService(new RecordService());
+    private final PlayService play = new PlayService();
 
     @BeforeEach
     void setCars() {

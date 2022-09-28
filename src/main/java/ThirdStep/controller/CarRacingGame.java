@@ -1,23 +1,26 @@
 package ThirdStep.controller;
 
+import ThirdStep.domain.model.GameSetting;
 import ThirdStep.domain.model.RecordByRound;
-import ThirdStep.domain.GameSettingService;
 import ThirdStep.domain.PlayService;
-import ThirdStep.view.RecordPrintService;
-import ThirdStep.domain.RecordService;
+import ThirdStep.domain.model.request.SettingRequest;
+import ThirdStep.view.RecordPrintView;
+import ThirdStep.view.UserInputView;
 
 import java.util.List;
 
 public class CarRacingGame {
+    public static RecordPrintView recordPrintView = new RecordPrintView();
+    public static UserInputView userInputView = new UserInputView();
+    public static PlayService playService = new PlayService();
+
     public static void main(String[] args) {
-        GameSettingService gameSettingService = new GameSettingService();
-        gameSettingService.setting();
+        SettingRequest settingRequest = userInputView.generateSettingRequest();
+        GameSetting gameSetting = new GameSetting(settingRequest);
 
-        PlayService play = new PlayService(new RecordService());
-        List<RecordByRound> record = play.racing(gameSettingService.getGameSetting());
+        List<RecordByRound> record = playService.racing(gameSetting);
 
-        RecordPrintService recordPrintService = new RecordPrintService();
-        recordPrintService.printRecord(record);
-        recordPrintService.announceWinner(record);
+        recordPrintView.printRecord(record);
+        recordPrintView.announceWinner(record);
     }
 }

@@ -12,8 +12,8 @@ public class PlayService {
     public static final int FIRST_ROUND = 1;
     public RecordService recordService;
 
-    public PlayService(RecordService recordService) {
-        this.recordService = recordService;
+    public PlayService() {
+        this.recordService = new RecordService();
     }
 
     public List<RecordByRound> racing(GameSetting gameSetting) {

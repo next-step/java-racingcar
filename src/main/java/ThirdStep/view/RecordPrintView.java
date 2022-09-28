@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RecordPrintService {
+public class RecordPrintView {
 
     private static final String LOCATION_SIGN = "-";
     private static final String WINNER_DELIMITER = ", ";

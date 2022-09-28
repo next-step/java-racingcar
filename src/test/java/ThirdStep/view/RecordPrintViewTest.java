@@ -14,15 +14,15 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class RecordPrintServiceTest {
-    private final RecordPrintService recordPrintService = new RecordPrintService();
+class RecordPrintViewTest {
+    private final RecordPrintView recordPrintView = new RecordPrintView();
     private Method getWinnersMethod;
 
     private final List<RecordByCar> recordByCars = new ArrayList<>();
 
     @BeforeEach
     public void setGetWinnersMethod() throws NoSuchMethodException {
-        getWinnersMethod = recordPrintService.getClass().getDeclaredMethod("getWinners", List.class);
+        getWinnersMethod = recordPrintView.getClass().getDeclaredMethod("getWinners", List.class);
         getWinnersMethod.setAccessible(true);
     }
 
@@ -40,7 +40,7 @@ class RecordPrintServiceTest {
     @Test
     @DisplayName("가장 멀리 간 차가 한 대인 경우, 승자는 1명이고 이름은 car2이다.")
     void test1() throws InvocationTargetException, IllegalAccessException {
-        List<Car> winner = (List<Car>) getWinnersMethod.invoke(recordPrintService, recordByCars);
+        List<Car> winner = (List<Car>) getWinnersMethod.invoke(recordPrintView, recordByCars);
 
         assertThat(winner.size()).isEqualTo(1);
         assertThat(winner.get(0).getName()).isEqualTo("car2");
@@ -52,7 +52,7 @@ class RecordPrintServiceTest {
         Car car4 = new Car(new CarRequest("car4"));
         recordByCars.add(new RecordByCar(car4, 15));
 
-        List<Car> winner = (List<Car>) getWinnersMethod.invoke(recordPrintService, recordByCars);
+        List<Car> winner = (List<Car>) getWinnersMethod.invoke(recordPrintView, recordByCars);
 
         assertThat(winner.size()).isEqualTo(2);
         assertThat(winner.get(0).getName()).isEqualTo("car2");
