@@ -15,7 +15,9 @@ public class ConsoleOutput {
     }
 
     public void status(List<CarStatusDto> carStatusDto) {
-        carStatusDto.forEach(carStatus -> System.out.printf(STATUS_FORMAT, carStatus.getName(), rails(carStatus.getPosition())));
+        carStatusDto.forEach(
+                carStatus -> System.out.printf(STATUS_FORMAT, carStatus.getName(), rails(carStatus.getPosition()))
+        );
         newLine();
     }
 

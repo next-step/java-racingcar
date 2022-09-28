@@ -13,7 +13,7 @@ public class Nickname {
     }
 
     private void validateNull(String value) {
-        if(value == null) {
+        if (value == null) {
             throw new CanNotNullNicknameException();
         }
     }
@@ -24,13 +24,13 @@ public class Nickname {
     }
 
     private void validateBlank(String value) {
-        if(value.isBlank()) {
+        if (value.isBlank()) {
             throw new CanNotBlankNicknameException();
         }
     }
 
     private void validateMaxLength(String value) {
-        if(value.length() > MAX_LENGTH) {
+        if (value.length() > MAX_LENGTH) {
             throw new CanNotOverFiveCharacterNicknameException();
         }
     }
