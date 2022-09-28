@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.nickname;
 
 public class CanNotNullNicknameException extends RuntimeException {
 

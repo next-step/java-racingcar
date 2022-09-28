@@ -3,6 +3,10 @@ package racingcar;
 import org.assertj.core.api.ThrowableAssert.ThrowingCallable;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.nickname.CanNotBlankNicknameException;
+import racingcar.nickname.CanNotNullNicknameException;
+import racingcar.nickname.CanNotOverFiveCharacterNicknameException;
+import racingcar.nickname.Nickname;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -15,17 +19,6 @@ public class NicknameTest {
         String expected = "boost";
 
         assertThat(new Nickname("boost").getValue()).isEqualTo(expected);
-    }
-
-    @Test
-    @DisplayName("다섯자를 초과하는 닉네임은 사용하면 CanNotOverFiveCharacterNicknameException이 발생한다.")
-    void nicknameMax() {
-
-        ThrowingCallable actual = () -> new Nickname("orange");
-
-        assertThatThrownBy(actual)
-                .isExactlyInstanceOf(CanNotOverFiveCharacterNicknameException.class)
-                .hasMessage("다섯자를 초과하는 닉네임은 사용할 수 없습니다.");
     }
 
     @Test
@@ -57,5 +50,16 @@ public class NicknameTest {
         assertThatThrownBy(actual)
                 .isExactlyInstanceOf(CanNotBlankNicknameException.class)
                 .hasMessage("공백인 인자값은 nickname이 될 수 없습니다.");
+    }
+
+    @Test
+    @DisplayName("다섯자를 초과하는 닉네임은 사용하면 CanNotOverFiveCharacterNicknameException이 발생한다.")
+    void nicknameMax() {
+
+        ThrowingCallable actual = () -> new Nickname("orange");
+
+        assertThatThrownBy(actual)
+                .isExactlyInstanceOf(CanNotOverFiveCharacterNicknameException.class)
+                .hasMessage("다섯자를 초과하는 닉네임은 사용할 수 없습니다.");
     }
 }

@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.nickname;
 
 public class Nickname {
 
@@ -7,14 +7,9 @@ public class Nickname {
 
     public Nickname(String value) {
         validateNull(value);
-        value = removeBlank(value);
+        value = value.trim();
         validate(value);
         this.value = value;
-    }
-
-    private void validate(String value) {
-        validateBlank(value);
-        validateMaxLength(value);
     }
 
     private void validateNull(String value) {
@@ -23,8 +18,9 @@ public class Nickname {
         }
     }
 
-    private String removeBlank(String value) {
-        return value.trim();
+    private void validate(String value) {
+        validateBlank(value);
+        validateMaxLength(value);
     }
 
     private void validateBlank(String value) {
