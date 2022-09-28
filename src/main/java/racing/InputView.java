@@ -6,6 +6,27 @@ import java.util.Scanner;
 public class InputView {
 
     public static void main(String[] args) {
+        Race race = createRace();
+        race.play();
+        showResult(race);
+    }
+
+    private static void showResult(Race race) {
+        ArrayList<ArrayList<String>> result = race.result();
+        System.out.println("실행 결과");
+        for (ArrayList<String> carsLocation : result) {
+            showCarLocations(carsLocation);
+            System.out.println();
+        }
+    }
+
+    private static void showCarLocations(ArrayList<String> carsLocation) {
+        for (String location : carsLocation) {
+            System.out.println(location);
+        }
+    }
+
+    private static Race createRace() {
         System.out.println("자동차 대수는 몇 대 인가요?");
         Scanner carScanner = new Scanner(System.in);
         int numberOfCars = carScanner.nextInt();
@@ -13,17 +34,6 @@ public class InputView {
         Scanner playScanner = new Scanner(System.in);
         int numberOfPlays = playScanner.nextInt();
 
-        Race race = new Race(numberOfCars, numberOfPlays);
-
-        race.play();
-
-        System.out.println("실행 결과");
-        ArrayList<ArrayList<String>> result = race.result();
-        for (ArrayList<String> strings : result) {
-            for (String string : strings) {
-                System.out.println(string);
-            }
-            System.out.println();
-        }
+        return new Race(numberOfCars, numberOfPlays);
     }
 }
