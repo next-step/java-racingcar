@@ -1,7 +1,5 @@
 package racingcar;
 
-import java.util.List;
-
 public class RacingGame {
 
     private static final ConsoleInput INPUT = new ConsoleInput();
@@ -15,9 +13,7 @@ public class RacingGame {
 
         OUTPUT.resultMessage();
         for (int i = 0; i < movementCount; i++) {
-            List<CarStatusDto> carStatusDtos = cars.move();
-            carStatusDtos.forEach(carStatus -> OUTPUT.position(carStatus.getPosition()));
-            OUTPUT.newLine();
+            OUTPUT.status(cars.move());
         }
     }
 
