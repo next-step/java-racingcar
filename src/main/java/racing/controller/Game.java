@@ -26,7 +26,7 @@ public class Game {
         output.printNoticeWinner(winner);
     }
 
-    private List<Car> carSetting(String[] carArray) {
+    public List<Car> carSetting(String[] carArray) {
         List<Car> Cars = new ArrayList<>();
         int carCount = carArray.length;
         for (int i = 0; i < carCount; i++) {
@@ -37,7 +37,7 @@ public class Game {
         return Cars;
     }
 
-    private void playRace(int roundCount, List<Car> cars) {
+    public void playRace(int roundCount, List<Car> cars) {
         output.printStartRace();
         for (int i = 0; i < roundCount; i++) {
             this.playRound(cars);
@@ -45,7 +45,7 @@ public class Game {
         }
     }
 
-    private List<Car> summaryRaceResult(List<Car> cars) {
+    public List<Car> summaryRaceResult(List<Car> cars) {
         Collections.sort(cars);
         int winnerLocation = cars.get(0).getCurrentLocation();
         return getWinner(winnerLocation, cars);

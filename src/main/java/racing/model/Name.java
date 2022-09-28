@@ -15,8 +15,12 @@ public class Name {
         if (name.length() > MAX_LENGTH) {
             throw new IllegalArgumentException();
         }
+        if (name.isEmpty() || name == null) {
+            throw new IllegalArgumentException();
+        }
     }
-    public String getName(){
+
+    public String getName() {
         return this.name;
     }
 
