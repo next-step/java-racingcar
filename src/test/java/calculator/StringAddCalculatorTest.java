@@ -28,6 +28,11 @@ class StringAddCalculatorTest {
     }
 
     @Test
+    void 커스텀_구분자() {
+        assertThat(splitAndSum("//;\n1;2;3")).isEqualTo(6);
+    }
+
+    @Test
     void 숫자외의값() {
         assertThatThrownBy(() -> splitAndSum("a,b:c"))
                 .isInstanceOf(NumberFormatException.class)
