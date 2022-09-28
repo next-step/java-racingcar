@@ -6,9 +6,11 @@ import java.util.Scanner;
 
 public class Input {
 
+    public static Scanner SCANNER = new Scanner(System.in);
+
     public static int inputPositiveNumber() {
-        try (Scanner sc = new Scanner(System.in)) {
-            int result = sc.nextInt();
+        try {
+            int result = SCANNER.nextInt();
             checkPositiveNumber(result);
             return result;
         } catch (Exception e) {
@@ -18,8 +20,8 @@ public class Input {
     }
 
     public static List<String> inputNames() {
-        try (Scanner sc = new Scanner(System.in)) {
-            return names(sc.nextLine());
+        try {
+            return names(SCANNER.nextLine());
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException();
