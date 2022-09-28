@@ -40,12 +40,8 @@ class SetTest {
 
     @ParameterizedTest
     @CsvSource(value = {"1, true", "2, true", "3, true", "4, false", "5, false"})
-    void containsReturnBooleanByWhetherGivenElementIsInSetOrNot(String sourceString, String expectedString) {
-        Integer source = Integer.parseInt(sourceString);
-
+    void containsReturnBooleanByWhetherGivenElementIsInSetOrNot(int source, boolean expected) {
         Boolean actual = numbers.contains(source);
-        Boolean expected = Boolean.valueOf(expectedString);
-
         assertThat(actual).isEqualTo(expected);
     }
 }

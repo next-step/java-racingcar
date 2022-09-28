@@ -2,10 +2,7 @@ package calculator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.EmptySource;
-import org.junit.jupiter.params.provider.NullSource;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -57,8 +54,7 @@ class StringCalculatorTest {
 
     @DisplayName("빈 문자열이나 null을 전달하는 경우 0을 반환한다")
     @ParameterizedTest(name = "{displayName}")
-    @EmptySource
-    @NullSource
+    @NullAndEmptySource
     void zeroWhenEmptyString(String emptySource) {
         // given
         StringCalculator sut = new StringCalculator();
