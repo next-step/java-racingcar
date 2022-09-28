@@ -1,6 +1,7 @@
 package calculator;
 
 import org.junit.jupiter.api.Test;
+import racingcar.calculator.StringAddCalculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
