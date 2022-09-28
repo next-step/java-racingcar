@@ -1,18 +1,19 @@
 package racing.domain;
 
+import racing.rule.move.MoveStrategy;
+
 public class Car {
 
-    private static final String WHEEL_MARKS = "-";
+    private int forwardCount = 1;
 
-    private StringBuilder position = new StringBuilder(WHEEL_MARKS);
 
-    public void move(boolean move) {
-        if (move) {
-            this.position = position.append(WHEEL_MARKS);
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.move()) {
+            this.forwardCount ++;
         }
     }
 
-    public String getPosition() {
-        return position.toString();
+    public int getForwardCount() {
+        return forwardCount;
     }
 }

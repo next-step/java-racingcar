@@ -1,44 +1,69 @@
 package racing.domain;
 
-import racing.rule.Rule;
+import racing.rule.move.MoveStrategy;
+import racing.rule.move.RandomMove;
+
+import static util.NumberUtils.notPositive;
 
 public class GameSet {
-
-    private final Rule rule;
-
+    private final static int POSITIVE_NUMBER_ONE = 1;
+    private MoveStrategy moveStrategy;
     private int numberOfCars = 0;
     private int numberOfMove = 0;
 
-    public GameSet(Rule rule) {
-        if (rule == null) {
-            throw new IllegalArgumentException("설정된 게임 규칙이 올바르지 않습니다.");
-        }
-        this.rule = rule;
+    private GameSet(GameSetBuilder builder) {
+        moveStrategy = builder.moveStrategy;
+        numberOfCars = builder.numberOfCars;
+        numberOfMove = builder.numberOfMove;
     }
 
-    public int getNumberOfMove() {
-        return numberOfMove;
+    public static class GameSetBuilder {
+        private final int numberOfCars;
+        private final int numberOfMove;
+        private final MoveStrategy moveStrategy;
+
+        public GameSetBuilder() {
+            this(1, 1, new RandomMove());
+        }
+
+        public GameSetBuilder(int numberOfCars) {
+            this(numberOfCars, 1, new RandomMove());
+        }
+
+        public GameSetBuilder(int numberOfCars, int numberOfMove) {
+            this(numberOfCars, numberOfMove, new RandomMove());
+        }
+
+        public GameSetBuilder(int numberOfCars, int numberOfMove, MoveStrategy moveStrategy) {
+            validate(numberOfCars, numberOfMove, moveStrategy);
+            this.numberOfCars = numberOfCars;
+            this.numberOfMove = numberOfMove;
+            this.moveStrategy = moveStrategy;
+        }
+
+        public GameSet build() {
+            return new GameSet(this);
+        }
+
+        public void validate(int numberOfCars, int numberOfMove, MoveStrategy moveStrategy) {
+            if (moveStrategy == null) {
+                throw new IllegalArgumentException("게임 규칙 설정이 잘못되었습니다.");
+            }
+            if (notPositive(numberOfCars) || notPositive(numberOfMove)) {
+                throw new IllegalArgumentException("양수만 입력 가능합니다.");
+            }
+        }
     }
 
-    public void setNumberOfMove(int numberOfMove) {
-        if (numberOfMove < 1) {
-            throw new IllegalArgumentException("양수만 입력 가능합니다.");
-        }
-        this.numberOfMove = numberOfMove;
+    public MoveStrategy getMoveStrategy() {
+        return moveStrategy;
     }
 
     public int getNumberOfCars() {
         return numberOfCars;
     }
 
-    public void setNumberOfCars(int numberOfCars) {
-        if (numberOfCars < 1) {
-            throw new IllegalArgumentException("양수만 입력 가능합니다.");
-        }
-        this.numberOfCars = numberOfCars;
-    }
-
-    public Rule getRule() {
-        return rule;
+    public int getNumberOfMove() {
+        return numberOfMove;
     }
 }

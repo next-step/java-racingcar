@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class RacingGame {
+public class Game {
     private final static String NEXT_LINE = "\n";
     private final static String GAME_RESULT = "게임 결과";
     private final static int FIRST = 0;
@@ -13,7 +13,7 @@ public class RacingGame {
     private List<Car> cars;
     private StringBuilder builder = new StringBuilder(GAME_RESULT);
 
-    public RacingGame(GameSet gameSet) {
+    public Game(GameSet gameSet) {
         if (gameSet == null) {
             throw new IllegalArgumentException("입력된 게임 설정이 올바르지 않습니다.");
         }
