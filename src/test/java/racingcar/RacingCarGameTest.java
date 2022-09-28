@@ -8,7 +8,7 @@ public class RacingCarGameTest {
 
     @Test
     void isEnd() {
-        RacingCarGame racingCarGame = new RacingCarGame(3, 1);
+        RacingCarGame racingCarGame = new RacingCarGame(new String[]{"carA", "carB"}, 1);
         assertThat(racingCarGame.isEnd()).isFalse();
 
         racingCarGame.play(() -> true);

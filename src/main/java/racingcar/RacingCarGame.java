@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.strategy.MovingStrategy;
+
 import java.util.List;
 
 public class RacingCarGame {
@@ -7,12 +9,16 @@ public class RacingCarGame {
     private final Cars cars;
     private int playCount;
 
-    public RacingCarGame(int carCount, int playCount) {
-        this.cars = new Cars(carCount);
+    public RacingCarGame(String[] carNames, int playCount) {
+        this.cars = new Cars(carNames);
         this.playCount = playCount;
     }
 
-    public List<Position> play(MovingStrategy movingStrategy) {
+    public List<Car> findWinners() {
+        return cars.findMaxPositionCars();
+    }
+
+    public List<Car> play(MovingStrategy movingStrategy) {
         playCount--;
         return cars.move(movingStrategy);
     }

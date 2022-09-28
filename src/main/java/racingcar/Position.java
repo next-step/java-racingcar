@@ -18,6 +18,13 @@ public class Position {
         position++;
     }
 
+    public Position getBigger(Position other) {
+        if (this.position > other.position) {
+            return this;
+        }
+        return other;
+    }
+
     public int getPosition() {
         return position;
     }

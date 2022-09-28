@@ -4,11 +4,13 @@ import java.util.Scanner;
 
 public class InputView {
 
+    public static final String CAR_NAME_SEPARATOR = ",";
+
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static int getCarCount() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        return nextInt();
+    public static String[] getCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        return nextLine().split(CAR_NAME_SEPARATOR);
     }
 
     public static int getPlayCount() {
@@ -18,6 +20,10 @@ public class InputView {
 
     public static int nextInt() {
         return scanner.nextInt();
+    }
+
+    public static String nextLine() {
+        return scanner.nextLine();
     }
 
 }

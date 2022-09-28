@@ -1,8 +1,10 @@
 package racingcar;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import racingcar.strategy.MovingStrategy;
 
 import java.util.stream.Stream;
 
@@ -13,7 +15,20 @@ public class CarTest {
     @ParameterizedTest(name="{2}")
     @MethodSource("strategyParameterProvider")
     void move(MovingStrategy movingStrategy, Position expected, String displayMessage) {
-        assertThat(new Car().move(movingStrategy)).isEqualTo(expected);
+        Car car = new Car("carA");
+        car.move(movingStrategy);
+
+        assertThat(car.getPosition()).isEqualTo(expected);
+    }
+
+    @Test
+    void isPositionEquals() {
+        assertThat(new Car(5, "carA").isPositionEquals(new Position(5))).isTrue();
+    }
+
+    @Test
+    void getBiggerPosition() {
+        assertThat(new Car(5, "carA").getBiggerPosition(new Position(3))).isEqualTo(new Position(5));
     }
 
     static Stream<Arguments> strategyParameterProvider() {

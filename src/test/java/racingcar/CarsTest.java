@@ -9,11 +9,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CarsTest {
 
     @Test
-    void create_and_move() {
-        List<Position> move = new Cars(5).move(() -> true);
+    void create() {
+        String[] carNames = {"carA", "carB", "carC", "carD", "carE"};
+        assertThat(new Cars(carNames).move(() -> true)).hasSize(5);
+    }
 
-        assertThat(move).hasSize(5);
-        assertThat(move).containsOnly(new Position(1));
+    @Test
+    void findMaxPositionCars() {
+        Cars cars = new Cars(List.of(
+                new Car(5, "carA"),
+                new Car(5, "carB"),
+                new Car(4, "carC"),
+                new Car(3, "carD")));
+        assertThat(cars.findMaxPositionCars().stream().map(Car::getName).toArray())
+                .containsExactly(new Name("carA"), new Name("carB"));
     }
 
 }

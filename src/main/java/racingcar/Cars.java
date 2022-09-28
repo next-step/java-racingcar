@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.strategy.MovingStrategy;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,23 +9,50 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(int carCount) {
-        cars = createCars(carCount);
+    public Cars(String[] carNames) {
+        this.cars = createCars(carNames);
     }
 
-    private List<Car> createCars(int carCount) {
+    public Cars(List<Car> cars) {
+        this.cars = cars;
+    }
+
+    private List<Car> createCars(String[] carNames) {
         final List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
         }
         return cars;
     }
 
-    public List<Position> move(MovingStrategy movingStrategy) {
-        List<Position> positions = new ArrayList<>();
+    public List<Car> move(MovingStrategy movingStrategy) {
         for (Car car : cars) {
-            positions.add(car.move(movingStrategy));
+            car.move(movingStrategy);
         }
-        return positions;
+        return cars;
+    }
+
+    public List<Car> findMaxPositionCars() {
+        Position maxPosition = findMaxPosition();
+
+        List<Car> maxPositionCars = new ArrayList<>();
+        for (Car car : cars) {
+            addToCarListIfPositionEquals(car, maxPosition, maxPositionCars);
+        }
+        return maxPositionCars;
+    }
+
+    private Position findMaxPosition() {
+        Position maxPosition = new Position();
+        for (Car car : cars) {
+            maxPosition = car.getBiggerPosition(maxPosition);
+        }
+        return maxPosition;
+    }
+
+    private void addToCarListIfPositionEquals(Car car, Position maxPosition, List<Car> maxPositionCars) {
+        if (car.isPositionEquals(maxPosition)) {
+            maxPositionCars.add(car);
+        }
     }
 }

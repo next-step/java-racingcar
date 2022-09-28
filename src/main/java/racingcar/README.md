@@ -28,3 +28,38 @@
 ### GameController
 - [x] 입력, 출력, 게임 진행 전반을 제어하는 컨트롤러
 - [x] `RacingCarGame.isEnd()` 의 값이 false면 계속해서 `move()` 메소드를 호출해 게임을 진행한다
+
+---
+
+## 리팩토링 요구 사항
+- [x] `MovingStrategy` 팩토리로 주입
+- [x] `strategy` 패키지 분리
+- [x] `RandomMovingStrategy`의 `Random` 객체 매번 생성하지 않고 재사용 되도록
+- [x] `GameController`의 `RacingCarGame` 생성 부분 팩토리로 분리
+- [x] `Cars.move()` 에서 `ArrayList` 를 매번 생성해 반환하지 않고 필드인 `List<Car>`를 반환하도록 수정
+
+## Step4 기능 요구 사항
+### Car
+- [x] 자동차에 이름 부여 가능
+  - `Name` 클래스로 분리
+### Name
+- [x] 자동차 이름을 저장
+- [x] 생성 시 유효하지 않은 입력 예외 처리 수행
+  - 자동차의 이름은 1~5자여야하며, null도 허용하지 않음
+### InputView
+- [x] 자동차 이름 입력 받기
+  - [x] 자동차 이름은 쉼표 `,` 를 기준으로 구분
+### Position
+- [x] 주어진 `Position` 객체와 자신을 비교하여 더 큰 객체를 반환하는 `getBigger()` 구현
+### Car
+- [x] 주어진 `Car` 객체와 자신을 비교하여 같은 Position 값이 같으면 true를 반환하는 `isPositionEquals(Position position)` 구현
+### Cars
+- [x] 가장 앞서 있는 자동차의 Position 값 찾기 - `findMaxPosition()`
+  - `List<Car>`의 getPosition() 값을 순회하며 `Position.getBigger()` 호출
+- [x] `Car.isPositionEqual(maximum Position 값)`이 `true`인 `List<Car>`를 반환하는 메서드 제공 - `findMaxPositionCars()`
+### RacingCarGame
+- [x] 경주 완료 후 우승자 찾기 (여러명 가능) - `findWinners()`
+  - cars의 `findMaxPositionCars()` 메서드 호출
+### OutputView
+- [x] 게임 결과 출력 시 자동차 이름 같이 표시해야 함
+- [x] 게임 종료 후 우승자 출력 필요
