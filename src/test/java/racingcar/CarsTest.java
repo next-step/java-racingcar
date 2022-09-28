@@ -69,7 +69,7 @@ public class CarsTest {
 		cars.move(moveStrategyNotMovable);
 
 		List<Integer> positions = getPositions(carList);
-		List<Integer> retrievedPositions = getPositionsFromDTOs(cars.getCarDTOs());
+		List<Integer> retrievedPositions = cars.getPositions();
 
 		assertThat(retrievedPositions).containsExactlyElementsOf(positions);
 	}
@@ -80,14 +80,6 @@ public class CarsTest {
 			positions.add(car.getPosition());
 		}
 		return positions;
-	}
-
-	private List<Integer> getPositionsFromDTOs(List<CarDTO> carDTOs) {
-		List<Integer> retrievedPositions = new ArrayList<>();
-		for (CarDTO carDTO : carDTOs) {
-			retrievedPositions.add(carDTO.getPosition());
-		}
-		return retrievedPositions;
 	}
 
 	private List<Car> createCarList() {

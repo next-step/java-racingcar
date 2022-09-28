@@ -35,8 +35,8 @@ public class Game {
 	}
 
 	private static void accumulateResult(Cars cars, List<Result> results) {
-		List<CarDTO> carDTOs = cars.getCarDTOs();
-		results.add(new Result(carDTOs));
+		List<Integer> positions = cars.getPositions();
+		results.add(new Result(positions));
 	}
 
 	private static void moveOnce(Cars cars) {

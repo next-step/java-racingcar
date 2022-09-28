@@ -1,16 +1,17 @@
 package racingcar;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Result {
 
-	private final List<CarDTO> carDTOs;
+	private final List<Integer> positions;
 
-	public Result(List<CarDTO> carDTOs) {
-		this.carDTOs = carDTOs;
+	public Result(List<Integer> positions) {
+		this.positions = positions;
 	}
 
-	public List<CarDTO> getCarDTOs() {
-		return carDTOs;
+	public List<Integer> getPositions() {
+		return Collections.unmodifiableList(positions);
 	}
 }

@@ -5,7 +5,6 @@ import static java.lang.System.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import racingcar.CarDTO;
 import racingcar.Result;
 
 public class OutputView {
@@ -25,15 +24,14 @@ public class OutputView {
 		System.out.println(RESULT_MESSAGE);
 
 		String resultString = results.stream()
-			.map(Result::getCarDTOs)
+			.map(Result::getPositions)
 			.map(this::getResultString)
 			.collect(Collectors.joining(lineSeparator()));
 		System.out.print(resultString);
 	}
 
-	private String getResultString(List<CarDTO> carDTOs) {
-		return carDTOs.stream()
-			.map(CarDTO::getPosition)
+	private String getResultString(List<Integer> positions) {
+		return positions.stream()
 			.map(this::getProgressString)
 			.collect(Collectors.joining());
 	}
