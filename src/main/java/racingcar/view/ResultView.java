@@ -17,17 +17,13 @@ public class ResultView {
 
     public static void printPlayResults(List<Car> playResults) {
         for (Car car : playResults) {
-            System.out.println(car.getName() + " : " + resolvePositionResultMessage(car.getPosition().getPosition()));
+            System.out.println(car.getName() + " : " + resolvePositionResultMessage(car.getPositionValue()));
         }
         printNewLine();
     }
 
     private static String resolvePositionResultMessage(int position) {
         return RESULT_MESSAGE.repeat(Math.max(0, position));
-    }
-
-    private static void printNewLine() {
-        System.out.println();
     }
 
     public static void printWinners(List<Car> winnerCars) {
@@ -41,5 +37,9 @@ public class ResultView {
 
     public static String removeBrackets(String text) {
         return text.replaceAll(BRACKETS_REGEX, "");
+    }
+
+    private static void printNewLine() {
+        System.out.println();
     }
 }
