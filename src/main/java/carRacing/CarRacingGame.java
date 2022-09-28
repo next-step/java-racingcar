@@ -9,10 +9,11 @@ public class CarRacingGame {
 
     private final static int RANGE_TO_MOVE_POINT = 10;
 
-    CarRacingGame(int numberOfCar, int tryCount) {
+    CarRacingGame(String carNamesString, int tryCount) {
         this.tryCount = tryCount;
-        for (int index = 0; index < numberOfCar; index++) {
-            this.carEntryList.add(new Car());
+        String[] carNames = carNamesString.split(",");
+        for (String carName : carNames) {
+            this.carEntryList.add(new Car(carName));
         }
     }
 

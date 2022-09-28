@@ -6,7 +6,7 @@ public class RacingApplication {
         InputView inputView = new InputView();
 
         // 게임 초기화 및 경주 진행
-        CarRacingGame carRacingGame = new CarRacingGame(inputView.getNumberOfCar(), inputView.getTryCount());
+        CarRacingGame carRacingGame = new CarRacingGame(inputView.getCarNamesString(), inputView.getTryCount());
         carRacingGame.doGame();
     }
 }
