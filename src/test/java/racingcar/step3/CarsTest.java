@@ -12,12 +12,15 @@ class CarsTest {
 	@Test
 	void createCarsTest() {
 		Cars cars = Cars.createCars(3);
+		Car firstCar = cars.getCars().get(0);
+		Car secondCar = cars.getCars().get(1);
+		Car thirdCar = cars.getCars().get(2);
 
 		assertAll(
 			() -> assertThat(cars.getCarsCount()).isEqualTo(3),
-			() -> assertThat(cars.getCars().get(0).getPosition()).isZero(),
-			() -> assertThat(cars.getCars().get(0).getPosition()).isZero(),
-			() -> assertThat(cars.getCars().get(0).getPosition()).isZero()
+			() -> assertThat(firstCar.getPosition()).isZero(),
+			() -> assertThat(secondCar.getPosition()).isZero(),
+			() -> assertThat(thirdCar.getPosition()).isZero()
 		);
 	}
 
@@ -25,12 +28,16 @@ class CarsTest {
 	@Test
 	void moveCars() {
 		Cars cars = Cars.createCars(3);
+		Car firstCar = cars.getCars().get(0);
+		Car secondCar = cars.getCars().get(1);
+		Car thirdCar = cars.getCars().get(2);
+
 		cars.move(() -> 5);
 
 		assertAll(
-			() -> assertThat(cars.getCars().get(0).getPosition()).isEqualTo(1),
-			() -> assertThat(cars.getCars().get(0).getPosition()).isEqualTo(1),
-			() -> assertThat(cars.getCars().get(0).getPosition()).isEqualTo(1)
+			() -> assertThat(firstCar.getPosition()).isEqualTo(1),
+			() -> assertThat(secondCar.getPosition()).isEqualTo(1),
+			() -> assertThat(thirdCar.getPosition()).isEqualTo(1)
 		);
 	}
 
@@ -38,11 +45,14 @@ class CarsTest {
 	@Test
 	void moveEachCar() {
 		Cars cars = Cars.createCars(3);
+		Car firstCar = cars.getCars().get(0);
+		Car secondCar = cars.getCars().get(1);
+		Car thirdCar = cars.getCars().get(2);
 
 		assertAll(
-			() -> assertThat(cars.getCars().get(0).move(() -> 3)).isEqualTo(0),
-			() -> assertThat(cars.getCars().get(1).move(() -> 4)).isEqualTo(1),
-			() -> assertThat(cars.getCars().get(2).move(() -> 9)).isEqualTo(1)
+			() -> assertThat(firstCar.move(() -> 3)).isEqualTo(0),
+			() -> assertThat(secondCar.move(() -> 4)).isEqualTo(1),
+			() -> assertThat(thirdCar.move(() -> 9)).isEqualTo(1)
 		);
 	}
 }
