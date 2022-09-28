@@ -2,10 +2,11 @@ package step3.models;
 
 public class Car {
     private static final int MIN_NUM_TO_MOVE = 4;
+
     private final int position;
 
-    public Car() {
-        this.position = 0;
+    public static Car init() {
+        return new Car(0);
     }
 
     private Car(int position) {

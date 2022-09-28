@@ -24,7 +24,7 @@ public class InputView {
         return n;
     }
 
-    int inputInt() {
+    private int inputInt() {
         try {
             return scanner.nextInt();
         } catch (NoSuchElementException e) {

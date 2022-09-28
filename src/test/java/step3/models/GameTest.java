@@ -29,7 +29,6 @@ public class GameTest {
     })
     void Given_NegativeNumber_When_CreateGame_Then_ThrowError(int carNumber, int tryNumber) {
         assertThatThrownBy(() -> new Game(carNumber, tryNumber))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(Game.CREATE_ERROR_MSG);
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
