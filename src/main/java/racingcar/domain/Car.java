@@ -13,6 +13,11 @@ public class Car implements Comparable<Car> {
         this.position = new Position(0);
     }
 
+    public Car(String name, int position){
+        this.name = new CarName(name);
+        this.position = new Position(position);
+    }
+
     public void run(RunStrategy runStrategy) {
         if (runStrategy.runnable()) {
             this.position.move();
@@ -30,7 +35,6 @@ public class Car implements Comparable<Car> {
     public int getDistance() {
         return this.position.showPosition();
     }
-
 
     public boolean hasSameDistance(Car input) {
         return this.position.equals(input.position);
@@ -54,4 +58,5 @@ public class Car implements Comparable<Car> {
     public int compareTo(Car o) {
         return this.position.compareTo(o.position);
     }
+
 }
