@@ -1,5 +1,7 @@
 package step3;
 
+import java.util.List;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -8,9 +10,9 @@ public class Main {
         int tryCnt = InputView.generateTryCnt();
 
         RacingGame racingGame = new RacingGame(carCnt, tryCnt);
+        RacingGameHandler racingGameHandler = new RacingGameHandler(racingGame, new RandomMoveStrategy());
+        List<List<Integer>> racingResults = racingGameHandler.playWithMoveStrategy();
 
-        ResultView resultView = new ResultView(racingGame);
-
-        resultView.playWithMoveStrategy(new RandomMoveStrategy());
+        new ResultView().showResult(racingResults);
     }
 }

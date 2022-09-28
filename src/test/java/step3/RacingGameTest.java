@@ -32,6 +32,22 @@ public class RacingGameTest {
     }
 
 
+    @Test
+    void RacingGame_리셋_테스트(){
+
+        RacingGame racingGame = new RacingGame(3, 10);
+        MoveStrategy randomMoveStrategy = new RandomMoveStrategy();
+        int resetTryCnt = 5;
+
+        while(!racingGame.isEnd()){
+            racingGame.race(randomMoveStrategy);
+        }
+
+        racingGame = racingGame.resetGame(3, resetTryCnt);
+
+        assertThat(racingGame.currentPositions()).containsExactly(0, 0, 0);
+        assertThat(racingGame.getTryCnt()).isEqualTo(resetTryCnt);
+    }
 
 
 }

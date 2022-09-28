@@ -41,4 +41,12 @@ public class RacingGame {
                 .collect(Collectors.toList());
     }
 
+    public RacingGame resetGame(int carCnt, int tryCnt){
+        return new RacingGame(carCnt, tryCnt);
+    }
+
+    public int getTryCnt(){
+        return this.tryCnt;
+    }
+
 }
