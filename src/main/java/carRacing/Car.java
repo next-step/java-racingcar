@@ -7,8 +7,8 @@ public class Car {
     private static final int BASIS_POINT_TO_MOVE = 4;
     private static final int LIMIT_LENGTH_TO_CAR_NAME = 5;
 
-    Car(String name){
-        if(!isValidName(name)){
+    Car(String name) {
+        if (!isValidName(name)) {
             throw new RuntimeException("lengthToCarName must less than 6  : " + name);
         }
 
@@ -33,7 +33,7 @@ public class Car {
         return movePoint >= BASIS_POINT_TO_MOVE;
     }
 
-    private boolean isValidName(String name){
+    private boolean isValidName(String name) {
         return name != null && name.length() <= LIMIT_LENGTH_TO_CAR_NAME;
     }
 

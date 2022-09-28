@@ -39,7 +39,7 @@ public class CarRacingGame {
                 .forEach(vo -> vo.run(RandomUtil.generateRandomNumber(RANGE_TO_MOVE_POINT)));
     }
 
-    private int getMaxCarPosition(){
+    private int getMaxCarPosition() {
         return this.carEntryList
                 .stream()
                 .map(Car::getPosition)
@@ -47,11 +47,11 @@ public class CarRacingGame {
                 .orElseThrow(NoSuchElementException::new);
     }
 
-    public List<Car> getWinnerList(){
+    public List<Car> getWinnerList() {
         int maxPosition = getMaxCarPosition();
         return this.carEntryList
                 .stream()
-                .filter(vo->vo.getPosition() == maxPosition)
+                .filter(vo -> vo.getPosition() == maxPosition)
                 .collect(Collectors.toList());
     }
 }

@@ -9,11 +9,11 @@ public class ResultView {
 
     public static void displayRacingState(List<Car> carList) {
         carList
-                .forEach(car -> System.out.println(car.getName() + " : " +getPositionString(car.getPosition())));
+                .forEach(car -> System.out.println(car.getName() + " : " + getPositionString(car.getPosition())));
         System.out.println("");
     }
 
-    public static void displayRacingWinner(List<Car> winnerList){
+    public static void displayRacingWinner(List<Car> winnerList) {
         tempPositionString.setLength(0);
         String winnerNames = winnerList
                 .stream()
