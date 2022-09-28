@@ -12,7 +12,7 @@ public class RacingGame {
 
     private static void validateMoveNumber(int moveNumber) {
         if (moveNumber < 0) {
-            throw new IllegalArgumentException("정수값만 입력가능합니다.");
+            throw new RacingCarException(RacingCarErrorCode.MOVE_NUMBER_BAD_REQUEST);
         }
     }
 }

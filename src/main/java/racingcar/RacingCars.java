@@ -23,7 +23,7 @@ public class RacingCars {
 
     private static void validateNumber(int number) {
         if (number < 0) {
-            throw new IllegalArgumentException("정수값만 입력가능합니다.");
+            throw new RacingCarException(RacingCarErrorCode.CAR_NUMBER_BAD_REQUEST);
         }
     }
 
