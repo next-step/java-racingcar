@@ -7,10 +7,12 @@ import java.util.List;
 
 public class RacingCarApplication {
     public static void main(String[] args) {
+        String[] carNames = RacingCarInput.carNames();
         RacingCarOutput.printCarCount();
         int carCount = RacingCarInput.carCount();
         RacingCarOutput.printTryCount();
         int tryCount = RacingCarInput.tryCount();
+
 
         List<Car> cars = PrepareRacing.prepareCar(carCount);
 
