@@ -11,8 +11,8 @@ public class RacingGameApplication {
 
     public void playRacingGameByUserInput() {
         RacingGame racingGame = new RacingGame();
-        Integer carCount = InputView.inputCarCount();
+        String carNames = InputView.inputCarNames();
         Integer tryCount = InputView.inputTryCount();
-        racingGame.play(carCount, tryCount);
+        racingGame.play(carNames, tryCount);
     }
 }

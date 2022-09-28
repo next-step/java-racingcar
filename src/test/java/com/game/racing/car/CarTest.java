@@ -1,21 +1,27 @@
 package com.game.racing.car;
 
-import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class CarTest {
 
     private Car car;
 
-    @Test
-    void car_move() {
-        car = new Car();
-        Assertions.assertEquals(2, car.move());
+    @BeforeEach
+    void set_up() {
+        car = new Car("honux");
     }
 
     @Test
-    void car_get_position() {
-        car = new Car();
-        Assertions.assertEquals(1, car.getPosition());
+    void car_move_and_get_position() {
+        car.move();
+        assertEquals(1, car.getPosition().get());
+    }
+
+    @Test
+    void car_get_name() {
+        assertEquals("honux", car.getName());
     }
 }

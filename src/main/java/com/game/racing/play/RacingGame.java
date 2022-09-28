@@ -6,8 +6,8 @@ import com.game.racing.car.Cars;
 
 public class RacingGame {
 
-    public void play(Integer carCount, Integer tryCount) {
-        Cars cars = new Cars(carCount, new RandomNumberGenerator());
+    public void play(String carNames, Integer tryCount) {
+        Cars cars = new Cars(carNames, new RandomNumberGenerator());
         moveCarsByTryCount(cars, tryCount);
     }
 
@@ -16,6 +16,7 @@ public class RacingGame {
         for (int i = 0; i < tryCount; i++) {
             cars.moveCars();
         }
+        ResultView.printWinner(cars.getRacingWinners());
     }
 
 }
