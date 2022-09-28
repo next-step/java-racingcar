@@ -3,13 +3,13 @@ package step4;
 public class Random {
 
     private static final int MOVABLE_BOUNDARY = 3;
-    private static int random;
+    private static int randomNumber;
 
     public Random() {
-        this.random = new java.util.Random().nextInt(10);
+        this.randomNumber = new java.util.Random().nextInt(10);
     }
 
-    boolean isRandomGreaterThanThree() {
-        return this.random > MOVABLE_BOUNDARY;
+    boolean isRandomNumberGreaterThanThree() {
+        return this.randomNumber > MOVABLE_BOUNDARY;
     }
 }
