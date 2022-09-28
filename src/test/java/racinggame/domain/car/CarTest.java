@@ -1,9 +1,13 @@
 package racinggame.domain.car;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import racinggame.domain.exception.InvalidCarNameException;
 
 class CarTest {
 
@@ -29,6 +33,14 @@ class CarTest {
         car.move(impossibleMoveFuel);
 
         assertThat(car.getDistance()).isEqualTo(beforeDistance);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"", "looooooongname"})
+    @DisplayName("0자 혹은 5자 초과의 이름을 등록하면 예외 발생.")
+    void fail_to_register_empty_name_car(String carName) {
+        assertThatThrownBy(() -> new Car((carName)))
+                .isInstanceOf(InvalidCarNameException.class);
     }
 
 }
