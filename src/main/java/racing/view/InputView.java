@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 public class InputView {
 
-	public static GameRequestDto inputGameRequest() {
+	public static GameRequest inputGameRequest() {
 		try (Scanner scanner = new Scanner(System.in)) {
-			return new GameRequestDto(inputCarCount(scanner), inputTimes(scanner));
+			return new GameRequest(inputCarCount(scanner), inputTimes(scanner));
 		}
 	}
 

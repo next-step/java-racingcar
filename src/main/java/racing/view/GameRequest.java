@@ -1,11 +1,11 @@
 package racing.view;
 
-public class GameRequestDto {
+public class GameRequest {
 
 	private final int carCount;
 	private final int times;
 
-	public GameRequestDto(int carCount, int times) {
+	public GameRequest(int carCount, int times) {
 		this.carCount = carCount;
 		this.times = times;
 	}

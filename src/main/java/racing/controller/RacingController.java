@@ -2,7 +2,7 @@ package racing.controller;
 
 import racing.model.MoveStrategy;
 import racing.model.Racing;
-import racing.view.GameRequestDto;
+import racing.view.GameRequest;
 import racing.view.InputView;
 import racing.view.OutputView;
 
@@ -11,8 +11,8 @@ public class RacingController {
 	private static final MoveStrategy moveStrategy = new MoveStrategy();
 
 	public void run() {
-		GameRequestDto gameRequestDto = InputView.inputGameRequest();
-		playGame(gameRequestDto.getTimes(), new Racing(gameRequestDto.getCarCount()));
+		GameRequest gameRequest = InputView.inputGameRequest();
+		playGame(gameRequest.getTimes(), new Racing(gameRequest.getCarCount()));
 	}
 
 	private void playGame(int times, Racing racing) {
