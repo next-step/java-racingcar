@@ -1,19 +1,26 @@
 package step4;
 
+import java.util.Objects;
+
 public class Car {
 
     private String carName;
     private int location = 0;
-    private boolean isMovable;
 
     public Car(String carName) {
+        validateName(carName);
         this.carName = carName;
     }
 
-    void moveForward(boolean isMovable) {
-        this.isMovable = isMovable;
+    private void validateName(String carName) {
+        System.out.println(carName);
+        if(Objects.isNull(carName) || carName.isEmpty()){
+            throw new IllegalArgumentException("자동차 이름은 널이나 공백이 들어올 수 없습니다.");
+        }
+    }
 
-        if (this.isMovable) {
+    void moveForward(boolean isMovable) {
+        if (isMovable) {
             this.location++;
         }
     }
