@@ -27,4 +27,11 @@ public class CarTest {
 		car.move(Racing.move(3));
 		assertThat(car.getStatus()).isEqualTo("");
 	}
+
+	@Test
+	@DisplayName("자동차 이름 5자 초과하면 예외발생")
+	void carNameOverFive() {
+		assertThatThrownBy(() -> car.createName("abcdef"))
+			.isInstanceOf(RuntimeException.class);
+	}
 }
