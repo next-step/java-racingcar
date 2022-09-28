@@ -5,16 +5,14 @@ import java.util.List;
 
 public class CarFacility {
 
-    public CarFacility() {
-    }
+  public List<Car> buildCar(int carNum) {
 
-    public List<Car> buildCar(int carNum) {
-        List<Car> carList = new ArrayList<>();
-        for (int i = 0; i < carNum; i++) {
-            carList.add(new Car());
-        }
-        return carList;
+    List<Car> cars = new Cars().cars;
+    for (int i = 0; i < carNum; i++) {
+      cars.add(new Car());
     }
+    return cars;
+  }
 
 
 }
