@@ -52,7 +52,7 @@
 ### Position
 - [x] 주어진 `Position` 객체와 자신을 비교하여 더 큰 객체를 반환하는 `getBigger()` 구현
 ### Car
-- [ ] 주어진 `Car` 객체와 자신을 비교하여 같은 Position 값이 같으면 true를 반환하는 `isPositionEquals(Position position)` 구현
+- [x] 주어진 `Car` 객체와 자신을 비교하여 같은 Position 값이 같으면 true를 반환하는 `isPositionEquals(Position position)` 구현
 ### Cars
 - [ ] 가장 앞서 있는 자동차의 Position 값 찾기 - `findMaxPosition()`
   - `List<Car>`의 getPosition() 값을 순회하며 `Position.getBigger()` 호출
