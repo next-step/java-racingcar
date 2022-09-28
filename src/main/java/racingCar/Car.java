@@ -15,6 +15,14 @@ public class Car implements Comparable<Car> {
         this.pos = 0;
     }
 
+    public Car(String name) {
+        if (name.length() > NAME_LEN_BOUND) {
+            throw new RuntimeException(ERR_MSG_NAME_LENGTH);
+        }
+        this.pos = 0;
+        this.name = name;
+    }
+
     public Car(int pos, String name) {
         this.pos = pos;
         this.name = name;
@@ -34,13 +42,6 @@ public class Car implements Comparable<Car> {
         move(random.nextInt(RANDOM_BOUND));
     }
 
-    public Car createCar(String name) {
-        if (name.length() > NAME_LEN_BOUND) {
-            throw new RuntimeException(ERR_MSG_NAME_LENGTH);
-        }
-        this.name = name;
-        return this;
-    }
 
     public String getName() {
         return this.name;
