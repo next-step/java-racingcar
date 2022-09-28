@@ -19,9 +19,7 @@ public class Game {
 		int carCount = getCarCount();
 		int trialCount = getTrialCount();
 
-		List<Car> carList = createCarList(carCount);
-		Cars cars = new Cars(carList);
-
+		Cars cars = new Cars(carCount);
 		move(cars, trialCount);
 	}
 
@@ -53,13 +51,5 @@ public class Game {
 	private static int getCarCount() {
 		OUTPUT_VIEW.promptCarCount();
 		return INPUT_VIEW.readCarCount();
-	}
-
-	private static List<Car> createCarList(int carCount) {
-		List<Car> carList = new ArrayList<>();
-		for (int i = 0; i < carCount; ++i) {
-			carList.add(new Car());
-		}
-		return carList;
 	}
 }

@@ -13,6 +13,13 @@ public class Cars {
 		this.cars = cars;
 	}
 
+	public Cars(int count) {
+		this(new ArrayList<>());
+		for (int i = 0; i < count; ++i) {
+			cars.add(new Car());
+		}
+	}
+
 	public void move(MoveStrategy moveStrategy) {
 		for (Car car : cars) {
 			car.move(moveStrategy);
