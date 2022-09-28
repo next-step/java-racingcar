@@ -6,9 +6,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import racingcar.movestrategy.MoveStrategy;
-import racingcar.movestrategy.NumberOverFourStrategy;
-import racingcar.numberstrategy.FixedNumber;
-import racingcar.numberstrategy.NumberStrategy;
 
 public class CarTest {
 
