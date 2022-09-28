@@ -13,7 +13,7 @@ public class CarTest {
 
     @ParameterizedTest(name="{2}")
     @MethodSource("strategyParameterProvider")
-    void move(MovingStrategy movingStrategy, int expected, String displayMessage) {
+    void move(MovingStrategy movingStrategy, Position expected, String displayMessage) {
         Car car = new Car("carA");
         car.move(movingStrategy);
 
@@ -22,8 +22,8 @@ public class CarTest {
 
     static Stream<Arguments> strategyParameterProvider() {
         return Stream.of(
-                Arguments.of((MovingStrategy) () -> true, 1, "move() 전진 가능한 경우"),
-                Arguments.of((MovingStrategy) () -> false, 0, "move() 전진 불가능한 경우")
+                Arguments.of((MovingStrategy) () -> true, new Position(1), "move() 전진 가능한 경우"),
+                Arguments.of((MovingStrategy) () -> false, new Position(0), "move() 전진 불가능한 경우")
         );
     }
 }

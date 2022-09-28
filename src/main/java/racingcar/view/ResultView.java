@@ -15,7 +15,7 @@ public class ResultView {
 
     public static void printPlayResults(List<Car> playResults) {
         for (Car car : playResults) {
-            System.out.println(resolveResultMessage(car.getPosition()));
+            System.out.println(resolveResultMessage(car.getPosition().getPosition()));
         }
         printNewLine();
     }

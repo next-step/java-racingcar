@@ -50,7 +50,7 @@
 - [x] 자동차 이름 입력 받기
   - [x] 자동차 이름은 쉼표 `,` 를 기준으로 구분
 ### Position
-- [ ] 주어진 `Position` 객체와 자신을 비교하여 더 큰 객체를 반환하는 `getBigger()` 구현
+- [x] 주어진 `Position` 객체와 자신을 비교하여 더 큰 객체를 반환하는 `getBigger()` 구현
 ### Car
 - [ ] 주어진 `Car` 객체와 자신을 비교하여 같은 Position 값이 같으면 true를 반환하는 `isPositionEquals(Position position)` 구현
 ### Cars
