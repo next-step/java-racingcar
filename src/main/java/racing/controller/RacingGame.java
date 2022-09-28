@@ -3,24 +3,29 @@ package racing.controller;
 import racing.domain.CarMovableStrategy;
 import racing.domain.Cars;
 import racing.service.RacingGameService;
-import racing.service.RacingGameServiceImpl;
 import racing.ui.InputView;
+import racing.ui.ResultView;
 
 public class RacingGame {
 
     private final InputView inputView;
+    private final ResultView resultView;
 
-    public RacingGame(InputView inputView) {
+    public RacingGame(InputView inputView, ResultView resultView) {
         this.inputView = inputView;
+        this.resultView = resultView;
     }
 
     public void start() {
-        int entryCount = inputView.enterCarCount();
+        int totalCount = inputView.enterCarCount();
         int tryCount = inputView.enterTryCount();
 
-        RacingGameService racingGameService = new RacingGameServiceImpl(entryCount, tryCount);
-        Cars cars = racingGameService.prepare();
-        racingGameService.racing(cars, new CarMovableStrategy());
+        RacingGameService racingGameService = new RacingGameService();
+
+        Cars cars = racingGameService.prepare(totalCount);
+
+        resultView.start();
+        racingGameService.racing(cars, tryCount, resultView, new CarMovableStrategy());
     }
 
 }
