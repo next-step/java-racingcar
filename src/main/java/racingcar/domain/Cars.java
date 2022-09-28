@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import racingcar.movestrategy.MoveStrategy;
@@ -10,7 +11,7 @@ public class Cars {
 	private final List<Car> cars;
 
 	public Cars(List<Car> cars) {
-		this.cars = cars;
+		this.cars = new ArrayList<>(cars);
 	}
 
 	public Cars(int count) {
@@ -37,6 +38,6 @@ public class Cars {
 		for (Car car : cars) {
 			positions.add(car.getPosition());
 		}
-		return positions;
+		return Collections.unmodifiableList(positions);
 	}
 }
