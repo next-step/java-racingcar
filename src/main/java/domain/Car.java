@@ -29,9 +29,9 @@ public class Car {
 
     public Car move(boolean isMove) {
         if (isMove) {
-            currentLocation += 1;
+            setCurrentLocation();
         }
-        return null;
+        return this;
     }
 
     public static Car createCar(String carName) {
@@ -44,6 +44,10 @@ public class Car {
 
     public int getCurrentLocation() {
         return currentLocation;
+    }
+
+    public void setCurrentLocation(Car car) {
+        this.currentLocation += car.getCurrentLocation();
     }
 
 }

@@ -18,16 +18,14 @@ public class CarRace {
 
     public CarRace() {
     }
-    public CarRace(List<Car> racingCars) {
-        this.racingCars = racingCars;
-    }
 
-    public void updateCurrentLocation() {
+    public List<Car> updateCurrentLocation(List<Car> racingCars) {
         int randomNum = generateRandomNum();
 
         for (int i = 0; i < racingCars.size(); i ++) {
             this.racingCars.set(i, racingCars.get(i).move(isMovingForward(randomNum)));
         }
+        return this.racingCars;
     }
 
     private int generateRandomNum() {
@@ -40,10 +38,10 @@ public class CarRace {
     }
 
     public void createInitCarList(String[] carNames) {
-        racingCars = Arrays.stream(carNames).map(Car::createCar).collect(Collectors.toList());
+        this.racingCars = Arrays.stream(carNames).map(Car::createCar).collect(Collectors.toList());
     }
 
     public List<Car> getRacingCars() {
-        return racingCars;
+        return this.racingCars;
     }
 }

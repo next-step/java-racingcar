@@ -1,6 +1,9 @@
+import java.util.List;
+
 import Service.CarRace;
 import Service.InputView;
 import Service.ResultView;
+import domain.Car;
 
 public class Main {
 
@@ -10,8 +13,9 @@ public class Main {
 
         CarRace carRace = new CarRace();
         carRace.createInitCarList(inputView.getCarNames());
+        List<Car> carList = carRace.updateCurrentLocation(carRace.getRacingCars());
 
         ResultView resultView = new ResultView();
-        resultView.printCarLocation(carRace, inputView.getAttempts());
+        resultView.printCarLocation(carRace, carList, inputView.getAttempts());
     }
 }
