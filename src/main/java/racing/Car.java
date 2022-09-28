@@ -1,6 +1,7 @@
 package racing;
 
 import java.util.Comparator;
+import java.util.Random;
 
 public class Car implements Comparator<Car> {
     private static final String ROAD = "-";
@@ -8,7 +9,14 @@ public class Car implements Comparator<Car> {
     private int location = 1;
 
     public void move(){
-        location++;
+        if(isPossibleToMove()){
+            location++;
+        }
+    }
+
+    private boolean isPossibleToMove() {
+        Random random = new Random();
+        return random.nextInt(9) >= 4;
     }
 
     @Override
@@ -17,8 +25,6 @@ public class Car implements Comparator<Car> {
     }
 
     public String location() {
-        StringBuilder result = new StringBuilder();
-        result.append(ROAD.repeat(Math.max(1, location)));
-        return result.toString();
+        return ROAD.repeat(Math.max(1, location));
     }
 }
