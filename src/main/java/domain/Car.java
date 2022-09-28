@@ -11,7 +11,8 @@ public class Car {
     }
 
     public Car(String name) {
-        this.name = name;
+        this.name = carNameValidation(name);
+        this.currentLocation = 0;
     }
 
     public Car(String name, int currentLocation) {
@@ -19,14 +20,29 @@ public class Car {
         this.currentLocation = currentLocation;
     }
 
-    public static void carNameValidation (String name) {
+    public static String carNameValidation(String name) {
         if (name.length() > 5) {
             throw new NotValidNameException("자동차의 이름은 5자를 넘을 수 없습니다.");
         }
+        return name;
     }
 
-    // public boolean move() {
-    //
-    // }
+    public void move(boolean isMove) {
+        if (isMove) {
+            currentLocation += 1;
+        }
+    }
+
+    public static Car createCar(String carName) {
+        return new Car(carName);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getCurrentLocation() {
+        return currentLocation;
+    }
 
 }
