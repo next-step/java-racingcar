@@ -1,7 +1,9 @@
 package carRacing;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class CarRacingGame {
     private final Integer tryCount;
@@ -34,6 +36,14 @@ public class CarRacingGame {
     private void doRacing() {
         this.carEntryList
                 .forEach(vo -> vo.run(RandomUtil.generateRandomNumber(RANGE_TO_MOVE_POINT)));
+    }
+
+    private int getMaxCarPosition(){
+        return this.carEntryList
+                .stream()
+                .map(Car::getPosition)
+                .max(Comparator.comparing(x -> x))
+                .orElseThrow(NoSuchElementException::new);
     }
 
 }
