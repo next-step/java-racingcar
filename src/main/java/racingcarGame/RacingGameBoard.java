@@ -2,8 +2,8 @@ package racingcarGame;
 
 import racingcarGame.dto.GameData;
 
-import static racingcarGame.client.InputView.getCarCount;
-import static racingcarGame.client.InputView.getPlayCount;
+import static racingcarGame.client.InputView.scanCarCount;
+import static racingcarGame.client.InputView.scanPlayCount;
 
 public class RacingGameBoard {
 
@@ -12,7 +12,10 @@ public class RacingGameBoard {
     }
 
     private static RacingGame ready() {
-        GameData gameData = new GameData(getCarCount(), getPlayCount());
+        int carCount = scanCarCount();
+        int playCount = scanPlayCount();
+
+        GameData gameData = new GameData(carCount, playCount);
 
         return new RacingGame(gameData);
     }

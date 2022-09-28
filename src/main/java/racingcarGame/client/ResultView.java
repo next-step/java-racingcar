@@ -8,7 +8,7 @@ public class ResultView {
         System.out.println(message);
     }
 
-    public static void resultGame() {
+    public static void showResultGame() {
         show("실행 결과");
     }
 

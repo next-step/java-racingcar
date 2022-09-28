@@ -17,7 +17,7 @@ public class RacingGame {
     }
 
     public void start() {
-        ResultView.resultGame();
+        ResultView.showResultGame();
 
         for (var i = 0; i < gameData.getPlayCount(); i++) {
             play();
