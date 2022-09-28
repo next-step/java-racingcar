@@ -36,6 +36,12 @@ public class RacingCars {
         return racingCars.size();
     }
 
+    public List<RacingCarPrintDTO> getRacingCarPrintDTOs() {
+        return racingCars.stream()
+            .map(RacingCarPrintDTO::new)
+            .collect(Collectors.toList());
+    }
+
     private void validateConditionsCount(List<MoveCondition> conditions) {
         if (conditions.size() != racingCars.size()) {
             throw new RuntimeException("racingCars와 conditions의 개수는 같아야합니다..");
