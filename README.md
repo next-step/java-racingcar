@@ -25,3 +25,8 @@
     * main() 함수의 클래스는 *Application 으로 네이밍
     * INDEX 상수를 Car 도메인에서 관리해야 할까?
     * 배열보다는 사용성이 좋은 컬렉션 프레임워크를 사용하기
+    * equals(), hashcode() 의메 생각하기
+    * 불필요한 return 제거
+    * 불필요한 파라미터 줄이기
+    * 변수명에 동사 사용하지 않기
+    * RacingSupport class 역할 줄이기
