@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputView {
@@ -7,10 +8,18 @@ public class InputView {
 	private static final Scanner SCANNER = new Scanner(System.in);
 
 	public int readCarCount() {
-		return SCANNER.nextInt();
+		return readInt();
 	}
 
 	public int readTrialCount() {
-		return SCANNER.nextInt();
+		return readInt();
+	}
+
+	private int readInt() {
+		try {
+			return SCANNER.nextInt();
+		} catch (InputMismatchException exception) {
+			throw new InputMismatchException("숫자만 입력해야 합니다");
+		}
 	}
 }
