@@ -57,7 +57,7 @@ public class Racing {
 		return Integer.parseInt(input) < 0;
 	}
 
-	private static boolean validateCharacter(String input) {
+	private static boolean validateCharacterNotNumber(String input) {
 		return ASCII_NINE < input.charAt(0) && input.charAt(0) < ASCII_ZERO;
 	}
 
