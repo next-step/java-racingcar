@@ -13,4 +13,11 @@ class CarTest {
         assertThat(car.compare(car, new Car())).isEqualTo(1);
     }
 
+    @Test
+    void 자동차_위치_표시_테스트(){
+        Car car = new Car();
+        car.move();
+        assertThat(car.location()).isEqualTo("--");
+    }
+
 }
