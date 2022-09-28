@@ -15,6 +15,7 @@ public class RacingGame {
         for (int i = 0; i < movementCount; i++) {
             OUTPUT.status(cars.move());
         }
+        OUTPUT.winner(cars.getWinners());
     }
 
 }
