@@ -5,6 +5,8 @@ import step3.model.RandomMovingStrategy;
 import step3.view.InputView;
 import step3.view.ResultView;
 
+import java.util.stream.IntStream;
+
 
 public class Race
 {
@@ -17,9 +19,9 @@ public class Race
     {
         InputView inputView = InputView.getInstance();
         Cars cars = new Cars(inputView.carNumber(), new RandomMovingStrategy());
-        ResultView resultView = new ResultView(inputView.tryNumber());
 
-        resultView.draw(cars.getCarList());
+        ResultView resultView = ResultView.getInstance();
+        IntStream.range(0, inputView.tryNumber())
+                .forEach(value -> resultView.draw(cars.moving()));
     }
-
 }

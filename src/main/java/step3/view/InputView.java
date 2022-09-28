@@ -4,11 +4,14 @@ import java.util.Scanner;
 
 public class InputView
 {
+    private static final InputView inputView = new InputView();
     private final Scanner scanner = new Scanner(System.in);
+
+    private InputView() {}
 
     public static InputView getInstance()
     {
-        return new InputView();
+        return inputView;
     }
 
     public int carNumber()

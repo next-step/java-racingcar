@@ -4,32 +4,35 @@ import step3.model.Car;
 
 import java.util.List;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class ResultView
 {
-    private final int tryNumber;
-    public ResultView(int tryNumber)
+    private ResultView() {}
+    private static final ResultView resultView = new ResultView();
+    private static final String SKID_MARK = "-";
+
+    public static ResultView getInstance()
     {
-        this.tryNumber = tryNumber;
+        return resultView;
     }
+
 
     public void draw(List<Car> cars)
     {
         System.out.println("실행 결과");
-        IntStream.range(0, tryNumber).forEach(value -> step(cars));
+        stepDraw(cars);
     }
 
-    private void step(List<Car> cars)
+    private void stepDraw(List<Car> cars)
     {
-        cars.forEach(car -> positionDraw(car.moving()));
+        cars.forEach(this::positionDraw);
         System.out.println();
     }
 
     private void positionDraw(Car car)
     {
         StringBuilder builder = new StringBuilder();
-        IntStream.range(0, car.getPosition()).forEach(value -> builder.append("-"));
+        IntStream.range(0, car.getPosition()).forEach(value -> builder.append(SKID_MARK));
 
         System.out.println(builder);
     }

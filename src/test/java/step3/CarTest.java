@@ -20,7 +20,7 @@ class CarTest
         Car car = new Car(() -> true);
         int tryNumber = 5;
         //when
-        IntStream.range(0, tryNumber).forEach(value -> car.moving());
+        IntStream.range(0, tryNumber).forEach(value -> car.moveForward());
         //then
         assertThat(car.getPosition()).isEqualTo(tryNumber);
     }
@@ -34,7 +34,7 @@ class CarTest
         Car car = new Car(() -> false);
         int tryNumber = 5;
         //when
-        IntStream.range(0, tryNumber).forEach(value -> car.moving());
+        IntStream.range(0, tryNumber).forEach(value -> car.moveForward());
         //then
         assertThat(car.getPosition()).isEqualTo(0);
     }

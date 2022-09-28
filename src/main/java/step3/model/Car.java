@@ -10,13 +10,12 @@ public class Car
         this.movingStrategy = movingStrategy;
     }
 
-    public Car moving()
+    public void moveForward()
     {
         if (movingStrategy.movable())
         {
             position++;
         }
-        return this;
     }
 
     public int getPosition()

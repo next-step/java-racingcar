@@ -22,4 +22,11 @@ public class Cars
     {
         return carList;
     }
+
+    public List<Car> moving()
+    {
+        carList.forEach(Car::moveForward);
+
+        return carList;
+    }
 }
