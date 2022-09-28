@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingCars {
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public RacingCars(List<Car> cars) {
         this.cars = cars;
@@ -23,28 +23,26 @@ public class RacingCars {
     }
 
     public void race() {
-        this.cars.forEach(Car::run);
+        this.cars.forEach(car -> car.run(new RandomRunStrategy()));
     }
 
     public Winners pickWinners() {
-        Collections.sort(cars);
+        Collections.sort(cars, Collections.reverseOrder());
 
         Car firstWinner = cars.get(0);
 
         List<Car> winners = cars.stream()
-                .filter(car -> car.compareTo(firstWinner) == 0)
+                .filter(car -> car.hasSameDistance(firstWinner))
                 .collect(Collectors.toList());
 
         return new Winners(winners);
     }
 
-    public String showGraph(String figure) {
-        return cars.stream()
-                .map(car -> car.showGraph(figure))
-                .collect(Collectors.joining("\n"));
-    }
-
     public boolean contains(Car car) {
         return cars.contains(car);
+    }
+
+    public List<Car> getCars(){
+        return cars;
     }
 }

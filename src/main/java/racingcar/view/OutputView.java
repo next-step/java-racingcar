@@ -1,7 +1,10 @@
 package racingcar.view;
 
+import racingcar.domain.Car;
 import racingcar.domain.RacingCars;
 import racingcar.domain.Winners;
+
+import java.util.List;
 
 public class OutputView {
 
@@ -17,8 +20,13 @@ public class OutputView {
     }
 
     public static void printRacing(RacingCars racingCars) {
-        System.out.println(racingCars.showGraph(GRAPH_FIGURE));
+        List<Car> cars = racingCars.getCars();
+        cars.forEach(OutputView::printCar);
         System.out.println();
+    }
+
+    private static void printCar(Car car) {
+        System.out.println(car.showName() + ":" + GRAPH_FIGURE.repeat(car.getDistance()));
     }
 
     public static void printWinners(Winners winners) {
