@@ -2,20 +2,23 @@ package racingcar;
 
 import java.util.Random;
 
-public class Cars {
+public class RacingCars {
     private final Car[] cars;
+    private final static int MINIMUM_VALUE = 4;
+    private final static int MAXIMUM_VALUE = 10;
+    private final static String LOCATION_PRINT_LETTER = "-";
     private final Random random = new Random();
 
-    private Cars(int number) {
+    private RacingCars(int number) {
         this.cars = new Car[number];
         for (int i = 0; i < number; i++) {
             cars[i] = Car.from();
         }
     }
 
-    public static Cars create(int number) {
+    public static RacingCars create(int number) {
         validateNumber(number);
-        return new Cars(number);
+        return new RacingCars(number);
     }
 
     private static void validateNumber(int number) {
@@ -25,24 +28,24 @@ public class Cars {
     }
 
     public void moving() {
-        for (int i = 0; i < cars.length; i++) {
+        for (Car car : cars) {
             if (isValidNumber(getRandomNumber())) {
-                cars[i].moveForward();
+                car.moveForward();
             }
         }
     }
 
     private boolean isValidNumber(int number) {
-        return number >= 4;
+        return number >= MINIMUM_VALUE;
     }
 
     private int getRandomNumber() {
-        return random.nextInt(10);
+        return random.nextInt(MAXIMUM_VALUE);
     }
 
     public void print() {
         for (Car car : cars) {
-            System.out.println("-".repeat(car.getLocation()));
+            System.out.println(LOCATION_PRINT_LETTER.repeat(car.getLocation()));
         }
     }
 }
