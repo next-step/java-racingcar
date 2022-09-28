@@ -1,9 +1,9 @@
 package step2;
 
 
-import step2.util.NumberUtil;
 import step2.util.StringUtil;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,15 +23,21 @@ public class StringAddCalculator
         {
             return DEFAULT_RESULT;
         }
-
-        String[] splitValue = StringUtil.split(value, DELIMITER);
+        return Arrays.stream(split(value))
+            .map(PositiveNumber::new)
+            .reduce(PositiveNumber::plus)
+            .get().getNumber();
+    }
+    private static String[] split(String value)
+    {
+        String[] splitValue = value.split(DELIMITER);
         Matcher matcher = CUSTOM_PATTERN.matcher(value);
         if (matcher.find())
         {
             String customDelimiter = matcher.group(1);
-            splitValue = StringUtil.split(matcher.group(2), customDelimiter);
+            splitValue = matcher.group(2).split(customDelimiter);
         }
 
-        return NumberUtil.sum(splitValue);
+        return splitValue;
     }
 }
