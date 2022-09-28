@@ -34,4 +34,11 @@ public class CarTest {
 		assertThatThrownBy(() -> car.createName("abcdef"))
 			.isInstanceOf(RuntimeException.class);
 	}
+
+	@Test
+	@DisplayName("자동차 이름 5자 이하면 통과")
+	void carNameBelowFive() {
+		car.createName("abcde");
+		assertThat(car.getName()).isEqualTo("abcde");
+	}
 }
