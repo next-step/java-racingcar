@@ -1,8 +1,9 @@
 package step3.position;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class PositionTest {
 
@@ -13,7 +14,15 @@ class PositionTest {
 
         final Position positionMovedOneSpace = sut.movedPosition();
 
-        Assertions.assertThat(positionMovedOneSpace).isEqualTo(new CarPosition(1));
+        assertThat(positionMovedOneSpace).isEqualTo(new CarPosition(1));
+    }
+
+    @Test
+    @DisplayName("포지션 위치를 반환할 수 있다.")
+    void b() {
+        final Position sut = new CarPosition(0);
+
+        assertThat(sut.position()).isZero();
     }
 
 }
