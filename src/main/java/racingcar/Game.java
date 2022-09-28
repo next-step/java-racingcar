@@ -3,6 +3,7 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.List;
 
+import racingcar.domain.Cars;
 import racingcar.movestrategy.MoveStrategy;
 import racingcar.movestrategy.NumberOverFourStrategy;
 import racingcar.numberstrategy.NumberStrategy;

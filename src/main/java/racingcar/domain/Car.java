@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import racingcar.movestrategy.MoveStrategy;
 
@@ -14,7 +14,7 @@ public class Car implements Comparable<Car> {
 		}
 	}
 
-	protected int getPosition() {
+	public int getPosition() {
 		return position;
 	}
 
