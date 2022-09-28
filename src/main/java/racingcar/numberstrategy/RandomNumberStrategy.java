@@ -2,13 +2,13 @@ package racingcar.numberstrategy;
 
 import java.util.Random;
 
-public class RandomNumber implements NumberStrategy {
+public class RandomNumberStrategy implements NumberStrategy {
 
 	private static final int BOUNDARY_OFFSET = 1;
 
 	private final int boundInclusive;
 
-	public RandomNumber(int boundInclusive) {
+	public RandomNumberStrategy(int boundInclusive) {
 		this.boundInclusive = boundInclusive;
 	}
 

@@ -6,7 +6,7 @@ import java.util.List;
 import racingcar.movestrategy.MoveStrategy;
 import racingcar.movestrategy.NumberOverFourStrategy;
 import racingcar.numberstrategy.NumberStrategy;
-import racingcar.numberstrategy.RandomNumber;
+import racingcar.numberstrategy.RandomNumberStrategy;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -38,7 +38,7 @@ public class Game {
 	}
 
 	private static void moveOnce(Cars cars) {
-		NumberStrategy numberStrategy = new RandomNumber(9);
+		NumberStrategy numberStrategy = new RandomNumberStrategy(9);
 		MoveStrategy moveStrategy = new NumberOverFourStrategy(numberStrategy);
 		cars.move(moveStrategy);
 	}
