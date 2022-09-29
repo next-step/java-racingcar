@@ -16,6 +16,6 @@ class RacingCarNameTest {
     @ParameterizedTest
     @NullAndEmptySource
     void validateNameIsEmpty(String name) {
-        assertThrows(RuntimeException.class, () -> new RacingCarName(name));
+        assertThrows(IllegalArgumentException.class, () -> new RacingCarName(name));
     }
 }

@@ -39,7 +39,7 @@ public class RacingCars {
 
     private void validateConditionsCount(List<MoveCondition> conditions) {
         if (conditions.size() != value.size()) {
-            throw new RuntimeException("racingCars와 conditions의 개수는 같아야합니다..");
+            throw new IllegalArgumentException("racingCars와 conditions의 개수는 같아야합니다. | racingCars 개수: " + value.size() + " | conditions 개수: " + conditions.size());
         }
     }
 
@@ -50,19 +50,19 @@ public class RacingCars {
 
     private void validateEmpty(List<RacingCar> racingCars) {
         if (racingCars == null || racingCars.isEmpty()) {
-            throw new RuntimeException("racingCars 값은 비어있을 수 없습니다.");
+            throw new IllegalArgumentException("racingCars 값은 비어있을 수 없습니다. | 입력된 names: " + racingCars);
         }
     }
 
     private void validateEmpty(String[] names) {
         if (names == null || names.length == 0) {
-            throw new RuntimeException("names 값은 비어있을 수 없습니다.");
+            throw new IllegalArgumentException("names 값은 비어있을 수 없습니다. | 입력된 names: " + Arrays.toString(names));
         }
     }
 
     private void validateDuplicateName(String[] names) {
         if (Arrays.stream(names).distinct().count() != names.length) {
-            throw new RuntimeException("중복된 자동차 이름이 존재할 수 없습니다.");
+            throw new IllegalArgumentException("중복된 자동차 이름이 존재할 수 없습니다. | 입력된 names: " + Arrays.toString(names));
         }
     }
 

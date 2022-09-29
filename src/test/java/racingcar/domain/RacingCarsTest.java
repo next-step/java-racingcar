@@ -14,18 +14,18 @@ class RacingCarsTest {
     @ParameterizedTest
     @NullAndEmptySource
     void validateEmpty(List<RacingCar> racingCars) {
-        assertThrows(RuntimeException.class, () -> new RacingCars(racingCars));
+        assertThrows(IllegalArgumentException.class, () -> new RacingCars(racingCars));
     }
 
     @ParameterizedTest
     @NullAndEmptySource
     void validateEmpty(String[] names) {
-        assertThrows(RuntimeException.class, () -> new RacingCars(names));
+        assertThrows(IllegalArgumentException.class, () -> new RacingCars(names));
     }
 
     @Test
     void validateDuplicateName() {
-        assertThrows(RuntimeException.class, () -> new RacingCars(new String[]{"same", "same"}));
+        assertThrows(IllegalArgumentException.class, () -> new RacingCars(new String[]{"same", "same"}));
     }
 
     @Test
@@ -55,8 +55,8 @@ class RacingCarsTest {
     @Test
     void validateConditionsCount() {
         RacingCars racingCars = new RacingCars(new String[]{"1", "2"});
-        assertThrows(RuntimeException.class, () -> racingCars.move(List.of(() -> true)));
-        assertThrows(RuntimeException.class, () -> racingCars.move(List.of(() -> true, () -> false, () -> true)));
+        assertThrows(IllegalArgumentException.class, () -> racingCars.move(List.of(() -> true)));
+        assertThrows(IllegalArgumentException.class, () -> racingCars.move(List.of(() -> true, () -> false, () -> true)));
     }
 
     @Test

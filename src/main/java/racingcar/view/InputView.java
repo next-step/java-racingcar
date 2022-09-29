@@ -24,7 +24,7 @@ public class InputView {
 
     private static void validateOneLessThen(int num) {
         if (num <= 0) {
-            throw new RuntimeException("1보다 작은 숫자를 허용하지 않습니다.");
+            throw new RuntimeException("1보다 작은 숫자를 허용하지 않습니다. | 입력된 숫자: " + num);
         }
     }
 }

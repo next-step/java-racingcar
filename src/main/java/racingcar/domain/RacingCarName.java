@@ -24,13 +24,13 @@ public class RacingCarName {
 
     private void validateNameLongerThenFive(String name) {
         if (name.length() > MAX_LENGTH_NAME) {
-            throw new RuntimeException("자동차의 이름은 5자를 초과할 수 없습니다.");
+            throw new IllegalArgumentException("자동차의 이름은 5자를 초과할 수 없습니다. | 입력된 name: " + name);
         }
     }
 
     private void validateNameIsEmpty(String name) {
         if (name == null || name.isEmpty()) {
-            throw new RuntimeException("자동차의 이름은 빈 문자열로 설정할 수 없습니다.");
+            throw new IllegalArgumentException("자동차의 이름은 빈 문자열로 설정할 수 없습니다.  | 입력된 name: " + name);
         }
     }
 
