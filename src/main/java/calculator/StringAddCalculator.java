@@ -4,7 +4,17 @@ import java.util.Arrays;
 
 public class StringAddCalculator {
 
-	public static int splitAndSum(String text) {
+	private int sum(Positive[] positives) {
+		return Arrays.stream(positives)
+			.mapToInt(Positive::getNumber)
+			.sum();
+	}
+
+	private Positive[] split(InputText text) {
+		return text.split();
+	}
+
+	public int splitAndSum(String text) {
 
 		InputText inputText = new InputText(text);
 
@@ -17,17 +27,7 @@ public class StringAddCalculator {
 		return sum(positives);
 	}
 
-	private static int sum(Positive[] positives) {
-		return Arrays.stream(positives)
-			.mapToInt(Positive::getNumber)
-			.sum();
-	}
-
-	private static Positive[] split(InputText text) {
-		return text.split();
-	}
-
-	static class InputText {
+	class InputText {
 
 		private static final String CUSTOM_DELIMETER_START = "//";
 		private static final String CUSTOM_DELIMETER_END = "\n";
