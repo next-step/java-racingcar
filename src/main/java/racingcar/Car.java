@@ -19,10 +19,7 @@ public class Car {
     }
 
     public void print() {
-        for (int i = 0; i < position; i++) {
-            System.out.print("-");
-        }
-        System.out.println();
+        ResultView.printCarPosition(position);
     }
 
     public void go() {

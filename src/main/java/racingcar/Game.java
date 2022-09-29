@@ -21,6 +21,7 @@ public class Game {
     }
 
     public void start() {
+        ResultView.println("실행 결과");
         for (int i = 0; i < repeat; i++) {
             round();
         }
@@ -32,9 +33,6 @@ public class Game {
     }
 
     private void print() {
-        for (Car car: cars) {
-            car.print();
-        }
-        System.out.println();
+        ResultView.printRoundResult(cars);
     }
 }
