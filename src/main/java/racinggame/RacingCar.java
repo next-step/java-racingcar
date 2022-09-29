@@ -4,8 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class RacingCar {
-    private List<Car> cars = new ArrayList<>();
-
+    private List<Car> cars;
 
     public RacingCar(List<Car> cars) {
         this.cars = cars;
@@ -34,13 +33,13 @@ public class RacingCar {
                 .orElse(0);
 
         return cars.stream()
-                .filter(c -> c.getStatus() == max)
+                .filter(car -> car.getStatus() == max)
                 .collect(Collectors.toList());
     }
 
     public static RacingCar of(List<String> names) {
         List<Car> cars = names.stream()
-                .map(name -> new Car(name))
+                .map(Car::new)
                 .collect(Collectors.toList());
 
         return new RacingCar(cars);
