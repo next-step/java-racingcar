@@ -7,10 +7,6 @@ public abstract class Car {
     private CarMoveStrategy carMoveStrategy;
     private String name;
 
-    private Car(CarPosition initPosition) {
-        // 이름없이 처리되지 못하도록 막음
-    }
-
     public Car(String name, CarPosition position) {
         this.name = name;
         this.position = position;
