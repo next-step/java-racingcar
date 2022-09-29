@@ -2,7 +2,7 @@ package racingcar.domain;
 
 public class Position {
 
-    private int position;
+    private final int position;
 
     public Position() {
         this(0);
@@ -12,12 +12,12 @@ public class Position {
         this.position = position;
     }
 
-    public int getValue() {
-        return position;
+    public Position(Position position, int move_length) {
+        this(position.getValue() + move_length);
     }
 
-    public void increase(int n) {
-        this.position += n;
+    public int getValue() {
+        return position;
     }
 
     @Override

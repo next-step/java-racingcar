@@ -8,7 +8,7 @@ public class RacingCar {
     private final int MAX_LENGTH_NAME = 5;
 
     private final String name;
-    private final Position position;
+    private Position position;
 
     public RacingCar(String name) {
         this(name, 0);
@@ -22,7 +22,7 @@ public class RacingCar {
 
     public void move(MoveCondition moveCondition) {
         if (moveCondition.canMove()) {
-            position.increase(MOVE_LENGTH);
+            this.position = new Position(position, MOVE_LENGTH);
         }
     }
 
