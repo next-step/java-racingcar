@@ -18,8 +18,7 @@ public class RacingController {
 	private void playGame(int times, Racing racing) {
 		OutputView.printResultMessage();
 		for (int i = 0; i < times; i++) {
-			racing.race(moveStrategy);
-			OutputView.printCarsPosition(racing.getCars());
+			OutputView.printResult(racing.race(moveStrategy));
 		}
 	}
 }

@@ -9,10 +9,11 @@ public class Car {
 		this.position = new Position(0);
 	}
 
-	public void move(boolean isMovable) {
+	public Position move(boolean isMovable) {
 		if (isMovable) {
 			position.move();
 		}
+		return position;
 	}
 
 	public int getPosition() {
