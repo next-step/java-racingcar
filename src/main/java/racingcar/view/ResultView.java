@@ -12,14 +12,14 @@ public class ResultView {
         for (RoundCars roundCar : roundCars) {
             List<Car> cars = roundCar.retrieveCars();
             for (Car car : cars) {
-                printPosition(car.getPosition(), shape);
+                printCar(car, shape);
             }
             print("");
         }
     }
 
-    private static void printPosition(int position, String shape) {
-        System.out.println(shape.repeat(position));
+    private static void printCar(Car car, String shape) {
+        System.out.println(car.getName() + " : " + shape.repeat(car.getPosition()));
     }
 
     private static void print(String message) {

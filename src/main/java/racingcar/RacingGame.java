@@ -1,19 +1,21 @@
 package racingcar;
 
+import java.util.List;
 import racingcar.strategy.MovingStrategy;
 
 public class RacingGame {
-    private final Positive carNums;
+
     private final Positive tryNums;
+    private final List<String> carNames;
     private final RacingRecord racingRecord = new RacingRecord();
 
-    public RacingGame(int carNums, int tryNums) {
-        this.carNums = new Positive(carNums);
+    public RacingGame(int tryNums, List<String> names) {
         this.tryNums = new Positive(tryNums);
+        this.carNames = names;
     }
 
     public RacingRecord racingStart(MovingStrategy movingStrategy) {
-        RoundCars roundCars = new RoundCars(carNums.getNumber());
+        RoundCars roundCars = new RoundCars(carNames);
         for (int round = 0; round < tryNums.getNumber(); round++) {
             roundCars.moveCars(racingRecord, movingStrategy);
         }

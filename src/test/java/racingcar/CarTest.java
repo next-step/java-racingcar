@@ -13,7 +13,7 @@ class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car();
+        car = new Car("test");
     }
     @Test
     public void position_증가() {

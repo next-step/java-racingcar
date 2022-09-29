@@ -1,20 +1,23 @@
 package racingcar;
 
+import java.util.List;
 import racingcar.strategy.RandomStrategy;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
 public class RacingCarApplication {
 
-    public static final int FORWARD_CONDITION_LOW_BOUND = 4;
+    public static final int FORWARD_CONDITION_LOW_BOUND = 2;
     public static final int FORWARD_CONDITION_HIGH_BOUND = 9;
+    public static final String COMMA_REGEX = ",";
 
     public static void main(String[] args) {
-        int carNums = InputView.askQuestionAnswerInt("자동차 대수는 몇 대 인가요?");
-        int tryNums = InputView.askQuestionAnswerInt("시도할 횟수는 몇 회 인가요?");
+        String answer = InputView.askQuestionAnswer("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분");
+        int tryNums = InputView.askQuestionAnswerInt("시도할 회수는 몇회인가요?");
+        List<String> names = InputView.split(answer, COMMA_REGEX);
 
         RandomStrategy randomStrategy = new RandomStrategy(FORWARD_CONDITION_LOW_BOUND, FORWARD_CONDITION_HIGH_BOUND);
-        RacingGame racingCar = new RacingGame(carNums, tryNums);
+        RacingGame racingCar = new RacingGame(tryNums, names);
 
         RacingRecord racingRecord = racingCar.racingStart(randomStrategy);
         ResultView.printRoundRecord(racingRecord, "-");

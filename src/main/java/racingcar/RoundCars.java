@@ -8,15 +8,20 @@ public class RoundCars {
 
     private final List<Car> cars = new ArrayList<>();
 
-    public RoundCars(int carNums) {
-        Positive positive = new Positive(carNums);
-        for (int i = 0; i < positive.getNumber(); i++) {
-            cars.add(new Car());
-        }
+    private RoundCars() {
     }
 
-    public RoundCars(List<Car> cars) {
-        this.cars.addAll(cars);
+    public RoundCars(List<String> names) {
+        names
+                .stream()
+                .map(Car::new)
+                .forEach(cars::add);
+    }
+
+    public static RoundCars createRoundCars(List<Car> cars) {
+        RoundCars roundCars = new RoundCars();
+        roundCars.addCars(cars);
+        return roundCars;
     }
 
     public void moveCars(RacingRecord racingRecord, MovingStrategy movingStrategy) {
@@ -31,12 +36,17 @@ public class RoundCars {
         List<Car> cars = this.retrieveCars();
 
         for (Car car : cars) {
-            recordCars.add(new Car(car.getPosition()));
+            recordCars.add(new Car(car.getPosition(), car.getName()));
         }
-        return new RoundCars(recordCars);
+        return RoundCars.createRoundCars(recordCars);
     }
 
     public List<Car> retrieveCars() {
         return cars;
     }
+
+    private void addCars(List<Car> cars) {
+        this.cars.addAll(cars);
+    }
+
 }
