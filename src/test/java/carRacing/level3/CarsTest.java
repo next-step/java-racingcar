@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import carRacing.level3.domain.Car;
 import carRacing.level3.domain.Cars;
+import carRacing.level3.service.RandomMovingStartegy;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,7 +12,6 @@ import org.junit.jupiter.api.Test;
 public class CarsTest {
 
 	private static final Integer TEST_CARSUM = 2;
-	private static final Integer TEST_CARNUM = 1;
 	private static final Integer DEFAULT_LOCATION = 1;
 
 	@Test
@@ -28,11 +28,14 @@ public class CarsTest {
 	}
 
 	@Test
-	@DisplayName("처음 라운드는 모두 한칸씩 이동하여 현재 이동 상태는 2이다")
-	void setInitTest() {
+	@DisplayName("처음 라운드는 모두 한칸씩 이동하여 현재 이동 상태는 1이다")
+	void 초기_자동차_리스트_생성_테스트() {
 		Cars cars = new Cars(List.of(new Car(), new Car()));
-		cars.moveCarLocation(TEST_CARNUM);
-		assertEquals(cars.carLocation(TEST_CARNUM),DEFAULT_LOCATION+1);
+		cars.moveCarLocation(new RandomMovingStartegy());
+
+		for (int i = 0; i < TEST_CARSUM; i++) {
+			assertEquals(cars.carLocation(i), DEFAULT_LOCATION);
+		}
 	}
 
 }

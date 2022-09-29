@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import carRacing.level3.domain.Cars;
 import carRacing.level3.service.CarService;
+import carRacing.level3.service.RandomMovingStartegy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -23,7 +24,7 @@ public class CarServiceTest {
 	@DisplayName("경주를 진행한다")
 	void 경주_진행() {
 		Cars cars = carService.prepare(CAR_SUM);
-		carService.moveCar(cars);
+		carService.moveCar(cars,new RandomMovingStartegy());
 		for (int i = 0; i < CAR_SUM; i++) {
 			assertThat(cars.carLocation(i)).isGreaterThanOrEqualTo(DEFAULT_LOCATION);
 		}
