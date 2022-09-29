@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class InputView
 {
-    private static final InputView inputView = new InputView();
+    private static InputView inputView;
     private static final Scanner scanner = new Scanner(System.in);
     private static final String COMMA = ",";
 
@@ -12,6 +12,10 @@ public class InputView
 
     public static InputView getInstance()
     {
+        if (inputView == null)
+        {
+            inputView = new InputView();
+        }
         return inputView;
     }
 

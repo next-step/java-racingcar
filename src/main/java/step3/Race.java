@@ -10,17 +10,29 @@ import java.util.stream.IntStream;
 
 public class Race
 {
-    public static void main(String[] args)
+    private static Race race;
+    private final InputView inputView;
+    private final ResultView resultView;
+
+    private Race()
     {
-        Race.start();
+        this.inputView = InputView.getInstance();
+        this.resultView = ResultView.getInstance();
     }
 
-    public static void start()
+    public static Race setup()
     {
-        InputView inputView = InputView.getInstance();
+        if (race == null)
+        {
+            race = new Race();
+        }
+        return race;
+    }
+
+    public void start()
+    {
         Cars cars = new Cars(inputView.carName(), new RandomMovingStrategy());
 
-        ResultView resultView = ResultView.getInstance();
         IntStream.range(0, inputView.tryNumber())
                 .forEach(tryNumber -> resultView.draw(tryNumber, cars.moving()));
 

@@ -11,6 +11,7 @@ public class ResultView
     private ResultView() {}
     private static final ResultView resultView = new ResultView();
     private static final String SKID_MARK = "-";
+    private static final StringBuilder BUILDER = new StringBuilder();
 
     public static ResultView getInstance()
     {
@@ -29,14 +30,19 @@ public class ResultView
 
     private void positionDraw(Car car)
     {
-        StringBuilder builder = new StringBuilder();
-        IntStream.range(0, car.getPosition()).forEach(value -> builder.append(SKID_MARK));
+        builderClear();
+        IntStream.range(0, car.getPosition()).forEach(value -> BUILDER.append(SKID_MARK));
 
-        System.out.printf("%s : %s%n", car.getCarName(), builder);
+        System.out.printf("%s : %s%n", car.getCarName(), BUILDER);
     }
 
     public void winnerDraw(Cars cars)
     {
         System.out.println(cars.getWinner() + "가 최종 우승했습니다.");
+    }
+
+    private void builderClear()
+    {
+        BUILDER.delete(0, BUILDER.length());
     }
 }

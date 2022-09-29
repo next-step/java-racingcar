@@ -10,6 +10,7 @@ import java.util.stream.IntStream;
 public class Cars
 {
     private final List<Car> carList;
+    private static final String DELEMETER = ", ";
 
     public Cars(int number, MovingStrategy movingStrategy)
     {
@@ -41,16 +42,17 @@ public class Cars
 
     public String getWinner()
     {
+        int winnerPosition = getWinnerPosition();
         return carList.stream()
-            .filter(car -> car.getPosition() == getWinnerPosition())
-            .map(Car::getCarName).collect(Collectors.joining(", "));
+            .filter(car -> car.getPosition() == winnerPosition)
+            .map(Car::getCarName).collect(Collectors.joining(DELEMETER));
     }
 
     private int getWinnerPosition()
     {
         return carList.stream()
-            .max(Comparator.comparingInt(Car::getPosition)).
-            get()
+            .max(Comparator.comparingInt(Car::getPosition))
+            .get()
             .getPosition();
     }
 }
