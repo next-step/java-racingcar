@@ -6,7 +6,7 @@ import carRacing.view.InputView;
 import carRacing.view.ResultView;
 
 public class CarRacingController {
-    public CarRacingController(){
+    public CarRacingController() {
         // 유저로부터 파라미터 입력
         InputView inputView = new InputView();
 

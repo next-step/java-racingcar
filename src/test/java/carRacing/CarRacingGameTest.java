@@ -16,7 +16,7 @@ public class CarRacingGameTest {
     @Test
     @DisplayName("CarRacingGame 인스턴스를 생성했을 때 CarEntry 값이 올바른지 테스트")
     public void carRacingGameTest1() {
-        CarRacingGame carRacingGame = new CarRacingGame(CAR_NAMES_STRING_TO_TEST , 3);
+        CarRacingGame carRacingGame = new CarRacingGame(CAR_NAMES_STRING_TO_TEST, 3);
         assertThat(carRacingGame.getCarEntryList()).isNotNull();
         assertThat(carRacingGame.getCarEntryList().size()).isEqualTo(CAR_NAMES_STRING_TO_TEST.split(",").length);
     }

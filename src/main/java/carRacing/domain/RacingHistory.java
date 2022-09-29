@@ -13,14 +13,14 @@ public class RacingHistory {
                 .collect(Collectors.toUnmodifiableList());
     }
 
-    public void doRecord(int round, List<Car> carList){
-        for(Car car : carList){
+    public void doRecord(int round, List<Car> carList) {
+        for (Car car : carList) {
             recordList.add(new Record(round, car.getName(), car.getPosition()));
         }
     }
 
 
-    public int getLastRound(){
+    public int getLastRound() {
         return recordList
                 .stream()
                 .map(Record::getRound)

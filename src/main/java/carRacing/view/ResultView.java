@@ -10,10 +10,10 @@ import java.util.stream.IntStream;
 public class ResultView {
     private static final StringBuilder tempPositionString = new StringBuilder();
 
-    public static void displayGameResult(RacingHistory racingHistory){
+    public static void displayGameResult(RacingHistory racingHistory) {
         // 각 회차 현황 출력
         int lastRound = racingHistory.getLastRound();
-        for(int round = 1; round <= lastRound; round++){
+        for (int round = 1; round <= lastRound; round++) {
             displayRacingState(racingHistory.getRecordList(round));
         }
 
