@@ -6,8 +6,13 @@ import java.util.regex.Pattern;
 public class StringAddCalculator {
     public static final String DEFAULT_DELIMITER = "[,:]";
     public static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\\n(.*)");
+    private final String input;
 
-    public static int calculate(String input) {
+    public StringAddCalculator(String input) {
+        this.input = input;
+    }
+
+    public int calculate() {
         if (isBlank(input)) {
             return 0;
         }
@@ -15,11 +20,11 @@ public class StringAddCalculator {
         return sum(toInts(split(input)));
     }
 
-    private static boolean isBlank(String input) {
+    private boolean isBlank(String input) {
         return input == null || input.isBlank();
     }
 
-    private static String[] split(String input) {
+    private String[] split(String input) {
         String delimiter = DEFAULT_DELIMITER;
         Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(input);
         if (matcher.matches()) {
@@ -30,7 +35,7 @@ public class StringAddCalculator {
         return input.split(delimiter);
     }
 
-    private static Positive[] toInts(String[] values) {
+    private Positive[] toInts(String[] values) {
         Positive[] numbers = new Positive[values.length];
         for (int i = 0; i < values.length; i++) {
             String value = values[i];
@@ -39,7 +44,7 @@ public class StringAddCalculator {
         return numbers;
     }
 
-    private static int sum(Positive[] numbers) {
+    private int sum(Positive[] numbers) {
         int result = 0;
         for (Positive number: numbers) {
             result += number.get();
