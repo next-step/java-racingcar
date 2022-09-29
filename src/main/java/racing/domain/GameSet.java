@@ -8,7 +8,6 @@ import java.util.List;
 import static util.NumberUtils.notPositive;
 
 public class GameSet {
-    private final static int POSITIVE_NUMBER_ONE = 1;
     private MoveStrategy moveStrategy;
     private List<String> carNames;
     private int numberOfMove;
