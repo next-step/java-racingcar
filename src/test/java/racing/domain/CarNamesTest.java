@@ -22,7 +22,7 @@ class CarNamesTest {
         assertThat(carNames.list()).hasSize(size);
     }
 
-    @DisplayName("입력된 사용자 중 이름이 빈 값이 포함되어 있다면 익셉션 처리한다.")
+    @DisplayName("입력된 자동차 이름이 빈 값이 포함되어 있다면 익셉션 처리한다.")
     @ParameterizedTest
     @ValueSource(strings = {",pobi,", " ,pobi, "})
     void error_input_name(final String input) {
@@ -32,7 +32,7 @@ class CarNamesTest {
                 .hasMessage("자동차 이름은 필수값입니다.");
     }
 
-    @DisplayName("참여한 자동차가 없으면 예외 처리를 한다.")
+    @DisplayName("입력된 자동차 이름이 없으면 예외 처리를 한다.")
     @ParameterizedTest
     @NullAndEmptySource
     void error_input_null_empty(final String input) {
