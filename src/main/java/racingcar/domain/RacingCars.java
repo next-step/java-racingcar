@@ -17,8 +17,7 @@ public class RacingCars {
     }
 
     public RacingCars(String[] names) {
-        validateEmpty(names);
-        validateDuplicateName(names);
+        validateNames(names);
         this.value = Arrays.stream(names)
             .map(RacingCar::new)
             .collect(Collectors.toList());
@@ -46,6 +45,11 @@ public class RacingCars {
         if (conditions.size() != value.size()) {
             throw new RuntimeException("racingCars와 conditions의 개수는 같아야합니다..");
         }
+    }
+
+    private void validateNames(String[] names) {
+        validateEmpty(names);
+        validateDuplicateName(names);
     }
 
     private void validateEmpty(List<RacingCar> racingCars) {
