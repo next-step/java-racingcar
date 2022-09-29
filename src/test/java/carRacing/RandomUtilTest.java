@@ -11,6 +11,6 @@ class RandomUtilTest {
     @RepeatedTest(10)
     @DisplayName("[랜덤 요소 존재] RandomUtil 에 의해 생성되는 데이터가 올바른 범위를 가지는지 테스트")
     void generateRandomNumber() {
-        assertThat(RandomUtil.generateRandomNumber(RANGE_TO_MOVE_POINT)).matches(randomNumber -> (0 <= randomNumber && randomNumber < RANGE_TO_MOVE_POINT));
+        assertThat(RandomUtil.generateRandomNumber(RANGE_TO_MOVE_POINT)).isBetween(0, 9);
     }
 }
