@@ -1,6 +1,9 @@
 package racingCar;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Views {
 	private static final int MOVECONDITION = 4;
@@ -26,4 +29,40 @@ public class Views {
 		}
 		return temp;
 	}
+
+	// public static void findWinner(Cars cars) {
+	// 	List<Integer> forwardCount = new ArrayList<>();
+	//
+	// 	for (int i = 0; i < cars.getCars().size(); i++) {
+	// 		List<Integer> overFour = cars.getCars().get(i).getStatus()
+	// 			.stream()
+	// 			.filter(status -> status > 4)
+	// 			.collect(Collectors.toList());
+	//
+	// 		System.out.println("overFour : "+overFour);
+	//
+	// 		forwardCount.add(overFour.size());
+	// 	}
+	//
+	// 	Print.winner(cars, winners(forwardCount));
+	// }
+	//
+	// private static List<Integer> winners(List<Integer> forwardCount) {
+	// 	Collections.sort(forwardCount);
+	// 	int max = forwardCount.get(forwardCount.size() - 1);
+	//
+	// 	List<Integer> peopleIndex = new ArrayList<>();
+	//
+	// 	for (Integer index : forwardCount) {
+	// 		winnerList(max, peopleIndex, index);
+	// 	}
+	//
+	// 	return peopleIndex;
+	// }
+	//
+	// private static void winnerList(int max, List<Integer> peopleIndex, Integer index) {
+	// 	if (max == index) {
+	// 		peopleIndex.add(index);
+	// 	}
+	// }
 }

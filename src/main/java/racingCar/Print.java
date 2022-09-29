@@ -1,5 +1,6 @@
 package racingCar;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Print {
@@ -30,4 +31,15 @@ public class Print {
 	public static void execute() {
 		System.out.println("실행 결과");
 	}
+	//
+	// public static void winner(Cars cars, List<Integer> winners) {
+	// 	String temp = "";
+	// 	for (int i = 0; i < winners.size(); i++) {
+	// 		temp += cars.getCars().get(winners.get(i)).getName() + ", ";
+	// 	}
+	//
+	// 	String win = temp.substring(0, temp.length() - 2);
+	//
+	// 	System.out.println(win + "가 최종 우승했습니다");
+	// }
 }

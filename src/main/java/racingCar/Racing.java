@@ -28,6 +28,7 @@ public class Racing {
 	private static void playMatch(Cars cars, int index) {
 		cars.move();
 		Views.results(cars, index);
+		// Views.findWinner(cars);
 	}
 
 	public static Cars participate(String input) {
