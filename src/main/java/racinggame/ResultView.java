@@ -1,6 +1,7 @@
 package racinggame;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
 
@@ -15,6 +16,9 @@ public class ResultView {
     }
 
     public void printWinner(List<Car> winners) {
-        System.out.println(winners + " 최종 우승했습니다.");
+        List<String> names = winners.stream()
+                .map(Car::getName)
+                .collect(Collectors.toList());
+        System.out.println(names + " 최종 우승했습니다.");
     }
 }
