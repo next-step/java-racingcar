@@ -1,7 +1,7 @@
-package step3.view;
+package racing.view;
 
-import step3.model.Car;
-import step3.model.Cars;
+import racing.domain.Car;
+import racing.domain.Cars;
 
 import java.util.List;
 import java.util.stream.IntStream;
