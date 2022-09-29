@@ -20,5 +20,6 @@ public class RacingController {
 		for (int i = 0; i < times; i++) {
 			OutputView.printResults(racing.race(moveStrategy));
 		}
+		OutputView.printWinners(racing.getWinners());
 	}
 }
