@@ -5,44 +5,58 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
-  public static int splitAndSum(String input) {
+	private static final String DELIMITER_REGEX = "//(.)\n(.*)";
+	private static final String DEFAULT_REGEX = ",|:";
+	private static final Integer TARGET_DELIMITER = 1;
+	private static final Integer TARGET_TOKENS = 2;
+	private static Integer answer = 0;
 
-    //최종 계산 값
-    int answer = 0;
+	public static int splitAndSum(String input) {
 
-    if (input == null || input.isEmpty()) {
-      return 0;
-    }
+		if (input == null || input.isEmpty()) {
+			return 0;
+		}
 
-    Matcher m = Pattern.compile("//(.)\n(.*)").matcher(input);
+		Matcher m = matcher(input);
 
-    if (m.find()) {
+		if (m.find()) {
+			return calculate(Tokens(m));
+		}
 
-      String customDelimiter = m.group(1);
-      String[] tokens = m.group(2).split(customDelimiter);
+		String[] tokens = input.split(DEFAULT_REGEX);
+		return calculate(tokens);
 
-      return calculate(tokens, answer);
+	}
 
-    }
-    String[] tokens = input.split(",|:");
-    return calculate(tokens, answer);
+	private static Matcher matcher(String input) {
+		return Pattern.compile(DELIMITER_REGEX).matcher(input);
+	}
 
-  }
+	private static String[] Tokens(Matcher m) {
+		String customDelimiter = m.group(TARGET_DELIMITER);
+		return m.group(TARGET_TOKENS).split(customDelimiter);
+	}
 
-  public static int calculate(String[] tokens, int answer) {
+	private static int calculate(String[] tokens) {
 
-    for (String token : tokens) {
-      int num = Integer.parseInt(token);
+		for (String token : tokens) {
+			answer += toInt(token);
+		}
 
-      if (num < 0){
-        throw new RuntimeException();
-      }
-      answer += num;
-    }
+		return answer;
 
-    return answer;
+	}
 
-  }
+	private static int toInt(String token) {
+
+		int num = Integer.parseInt(token);
+
+		if (num < 0) {
+			throw new RuntimeException();
+		}
+
+		return num;
+	}
 }
 
 
