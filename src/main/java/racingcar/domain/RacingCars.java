@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import racingcar.dto.RacingCarPrintDTO;
-
 public class RacingCars {
 
     private final List<RacingCar> value;
@@ -35,10 +33,8 @@ public class RacingCars {
         return value.size();
     }
 
-    public List<RacingCarPrintDTO> getRacingCarPrintDTOs() {
-        return value.stream()
-            .map(RacingCarPrintDTO::new)
-            .collect(Collectors.toList());
+    public List<RacingCar> getValue() {
+        return value;
     }
 
     private void validateConditionsCount(List<MoveCondition> conditions) {

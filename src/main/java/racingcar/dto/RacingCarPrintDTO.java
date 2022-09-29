@@ -1,21 +1,31 @@
 package racingcar.dto;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import racingcar.domain.RacingCar;
+import racingcar.domain.RacingCarName;
+import racingcar.domain.RacingCars;
 
 public class RacingCarPrintDTO {
 
-    private final String racingCarName;
+    private final RacingCarName racingCarName;
     private final int position;
 
     public RacingCarPrintDTO(RacingCar racingCar) {
-        this.racingCarName = racingCar.getName();
+        this.racingCarName = new RacingCarName(racingCar.getName());
         this.position = racingCar.getPosition();
     }
 
+    public static List<RacingCarPrintDTO> fromRacingCars(RacingCars racingCars) {
+        return racingCars.getValue().stream()
+            .map(RacingCarPrintDTO::new)
+            .collect(Collectors.toList());
+    }
+
     public String getRacingCarName() {
-        return racingCarName;
+        return racingCarName.getValue();
     }
 
     public int getPosition() {

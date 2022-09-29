@@ -7,6 +7,7 @@ import racingcar.domain.MoveCondition;
 import racingcar.domain.MoveConditionGenerator;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RacingCars;
+import racingcar.dto.RacingCarPrintDTO;
 import racingcar.view.InputView;
 import racingcar.view.PrintView;
 
@@ -22,7 +23,7 @@ public class RacingGame {
         for (int i = 0; i < tryCount; i++) {
             List<MoveCondition> conditions = MoveConditionGenerator.getMoveConditions(size);
             racingCars.move(conditions);
-            PrintView.printRacingCarPrintRecords(racingCars.getRacingCarPrintDTOs());
+            PrintView.printRacingCarPrintRecords(RacingCarPrintDTO.fromRacingCars(racingCars));
         }
 
         List<RacingCar> winners = racingCars.getWinners();
