@@ -5,17 +5,17 @@ import racing.rule.move.MoveStrategy;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameRound {
+public class Round {
 
     List<Integer> forwardCountOfCars = new ArrayList<>();
     List<Car> cars;
 
     public void racing(List<Car> cars, MoveStrategy moveStrategy) {
         this.cars = cars;
-        for (Car car : cars) {
+        cars.stream().forEach(car -> {
             car.move(moveStrategy);
             forwardCountOfCars.add(car.getForwardCount());
-        }
+        });
     }
 
     public List<Integer> getForwardCountOfCars() {

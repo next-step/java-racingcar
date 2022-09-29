@@ -3,17 +3,17 @@ package racing.controller;
 import racing.domain.GameSet;
 import racing.domain.Game;
 import racing.rule.move.RandomMove;
-import racing.view.GameInput;
-import racing.view.GameResult;
+import racing.view.GameInputView;
+import racing.view.GameResultView;
 
 public class RacingCarController {
 
     public void racingCarGame() {
-        GameInput gameInput = new GameInput();
+        GameInputView gameInputView = new GameInputView();
         Game game = new Game(new GameSet.GameSetBuilder(
-                gameInput.inputCarCount(), gameInput.inputMoveCount(), new RandomMove()).build());
+                new RandomMove(), gameInputView.inputCarNames(), gameInputView.inputMoveCount()).build());
 
         game.start();
-        new GameResult(game).result();
+        new GameResultView().result(game);
     }
 }

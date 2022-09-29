@@ -2,29 +2,34 @@ package racing.view;
 
 import racing.domain.Car;
 import racing.domain.Game;
-import racing.domain.GameRound;
+import racing.domain.GameResult;
+import racing.domain.Round;
 
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class GameResult {
+public class GameResultView {
     private final static String COLON = ":";
     private final static String WHEEL_MARK = "-";
     private final static String GAME_RESULT = "게임 결과";
     private final static int FIRST_CAR = 0;
 
     public void result(Game game) {
-        racing.domain.GameResult gameResult = game.getGameResult();
+        System.out.println(GAME_RESULT);
+        GameResult gameResult = game.getGameResult();
         resultPerRound(gameResult.getGameRoundList());
-        gameResult.gameWinner();
+        gameWinner(gameResult.gameWinner());
     }
 
-    private void resultPerRound(List<GameRound> roundList) {
-        System.out.println(GAME_RESULT);
+    private void resultPerRound(List<Round> roundList) {
         roundList.stream()
                 .forEach(round -> {
                     forwardCountOfCarPerRound(round.getForwardCountOfCars(), round.getCars());
                 });
+    }
+
+    private void gameWinner(String winners) {
+        System.out.println(winners + "가 최종 우승했습니다.");
     }
 
     private void forwardCountOfCarPerRound(List<Integer> forwardCountOfCars, List<Car> cars) {

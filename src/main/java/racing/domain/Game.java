@@ -5,13 +5,12 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Game {
-    private final static String NEXT_LINE = "\n";
-    private final static String GAME_RESULT = "게임 결과";
-    private final static int FIRST = 0;
+    private final static int FIRST_ROUND = 1;
+    private final static int FIRST_CAR = 0;
 
     private final GameSet gameSet;
+    private GameResult gameResult;
     private List<Car> cars;
-    private StringBuilder builder = new StringBuilder(GAME_RESULT);
 
     public Game(GameSet gameSet) {
         if (gameSet == null) {
@@ -22,33 +21,20 @@ public class Game {
     }
 
     public void start() {
-        round();
+        gameResult = new GameResult(this);
+
+        IntStream.rangeClosed(FIRST_ROUND, gameSet.getNumberOfMove())
+                .mapToObj(round -> new Round())
+                .forEach(round -> {
+                    round.racing(cars, gameSet.getMoveStrategy());
+                    gameResult.addRound(round);
+                });
     }
 
     private void lineUp() {
-        cars = IntStream.range(FIRST, this.gameSet.getNumberOfCars())
-                .mapToObj(car -> new Car())
+        cars = IntStream.range(FIRST_CAR, gameSet.getCarNames().size())
+                .mapToObj(car -> new Car(gameSet.getCarNames().get(car)))
                 .collect(Collectors.toList());
-    }
-
-    private void round() {
-        for (int round = FIRST; round < this.gameSet.getNumberOfMove(); round++) {
-            racing(builder);
-        }
-    }
-
-    private void racing(StringBuilder builder) {
-        for (Car car : cars) {
-            builder.append(NEXT_LINE);
-            car.move(this.gameSet.getRule().move());
-
-            builder.append(car.getPosition());
-        }
-        builder.append(NEXT_LINE);
-    }
-
-    public String result() {
-        return builder.toString();
     }
 
     public GameSet getGameSet() {
@@ -57,5 +43,9 @@ public class Game {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public GameResult getGameResult() {
+        return gameResult;
     }
 }
