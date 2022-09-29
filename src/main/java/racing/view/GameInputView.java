@@ -18,9 +18,9 @@ public class GameInput {
     private String carNames = "";
 
     public List<String> inputCarNames() {
-        System.out.println("자동차의 수는 몇 대 인가요?");
+        System.out.println("경주할 자동차들의 이름을 입력하세요. (조건: 차량명 구분 기준은 쉼표, 5자 이하의 이름만 가능)");
         inputString();
-        return Arrays.asList(carNames);
+        return Arrays.asList(carNames.split(CAR_NAME_SEPARATOR));
     }
 
     public int inputMoveCount() {
