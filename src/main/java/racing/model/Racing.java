@@ -20,7 +20,7 @@ public class Racing {
 
 	public void race(MoveStrategy moveStrategy) {
 		for (Car car : cars) {
-			car.move(moveStrategy.isMovable(moveStrategy.getRandomNumber()));
+			car.move(moveStrategy.isMovable());
 		}
 	}
 
