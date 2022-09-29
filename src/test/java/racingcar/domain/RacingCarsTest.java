@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import java.util.List;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
@@ -11,19 +12,32 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class RacingCarsTest {
 
+    @Test
+    @DisplayName("자동차 이름 문자 리스트로 생성시 정상적으로 생성되었는지 검증")
+    void constructByNames() {
+        then(
+            new RacingCars(new String[]{"1", "2", "3", "4"})
+        ).isEqualTo(
+            new RacingCars(List.of(new RacingCar("1"), new RacingCar("2"), new RacingCar("3"), new RacingCar("4")))
+        );
+    }
+
     @ParameterizedTest
     @NullAndEmptySource
+    @DisplayName("생성자에서 받은 racingCars List<RacingCar> 비어있는지 검증")
     void validateEmpty(List<RacingCar> racingCars) {
         assertThrows(IllegalArgumentException.class, () -> new RacingCars(racingCars));
     }
 
     @ParameterizedTest
     @NullAndEmptySource
+    @DisplayName("생성자에서 받은 names String[] 비어있는지 검증")
     void validateEmpty(String[] names) {
         assertThrows(IllegalArgumentException.class, () -> new RacingCars(names));
     }
 
     @Test
+    @DisplayName("중복된 자동차 이름 검증")
     void validateDuplicateName() {
         assertThrows(IllegalArgumentException.class, () -> new RacingCars(new String[]{"same", "same"}));
     }
@@ -34,6 +48,7 @@ class RacingCarsTest {
     }
 
     @Test
+    @DisplayName("RacingCars.move 에 넘긴 MoveCondition 리스트 상태에 맞게 이동하는지 Position 값으로 검증")
     void move() {
         RacingCar racingCar1 = new RacingCar("test1", 0);
         RacingCar racingCar2 = new RacingCar("test2", 1);
@@ -53,6 +68,7 @@ class RacingCarsTest {
     }
 
     @Test
+    @DisplayName("RacingCars.move 에 넘긴 MoveCondition 리스트 개수와 자동차 수가 맞는지 검증")
     void validateConditionsCount() {
         RacingCars racingCars = new RacingCars(new String[]{"1", "2"});
         assertThrows(IllegalArgumentException.class, () -> racingCars.move(List.of(() -> true)));
@@ -60,15 +76,7 @@ class RacingCarsTest {
     }
 
     @Test
-    void constructByNames() {
-        then(
-            new RacingCars(new String[]{"1", "2", "3", "4"})
-        ).isEqualTo(
-            new RacingCars(List.of(new RacingCar("1"), new RacingCar("2"), new RacingCar("3"), new RacingCar("4")))
-        );
-    }
-
-    @Test
+    @DisplayName("가장 높은 Position 값을 가진 자동차로 우승자 선별하는지 검증")
     void getWinners() {
         RacingCar racingCar1 = new RacingCar("test1", 0);
         RacingCar racingCar2 = new RacingCar("test2", 1);
