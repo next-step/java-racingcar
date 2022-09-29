@@ -44,7 +44,7 @@ public abstract class Car {
         }
 
         Car car = (Car) obj;
-        if(car.name != this.name) return false;
+        if (car.name != this.name) return false;
         return car.position.getPosition() == this.position.getPosition();
     }
 
@@ -56,6 +56,7 @@ public abstract class Car {
     public abstract void setDefaultCarMoveStrategy();
 
     public abstract String getTireMark();
+
     public abstract void move();
 
     public String getName() {

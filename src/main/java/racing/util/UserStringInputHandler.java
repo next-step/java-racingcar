@@ -9,7 +9,7 @@ public class UserStringInputHandler extends UserInputHandler {
         return split(names).length;
     }
 
-    public static String[] split(String names){
+    public static String[] split(String names) {
         return names.split(",");
     }
 
@@ -18,9 +18,9 @@ public class UserStringInputHandler extends UserInputHandler {
         return validate(split(String.valueOf(name)));
     }
 
-    public boolean validate(String[] names){
+    public boolean validate(String[] names) {
         boolean result = true;
-        for(String name: names){
+        for (String name : names) {
             // 하나라도 false면 false 반환
             result = result && validate(name);
         }
@@ -31,7 +31,7 @@ public class UserStringInputHandler extends UserInputHandler {
         return name != null && name != "" && validateStringLength(name);
     }
 
-    public boolean validateStringLength(String name){
+    public boolean validateStringLength(String name) {
         return name.length() <= 5 && name.length() > 0;
     }
 }

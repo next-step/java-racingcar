@@ -12,12 +12,6 @@ public class UserStringInputHandlerTest {
         assertThat(new UserStringInputHandler().validate(name)).isEqualTo(expected);
     }
 
-//    @ParameterizedTest
-//    @CsvSource(value = {"a,b,b:false", "a,b,c:true"})
-//    void 자동차의_이름이_중복이면_안된다(String name, boolean expected) {
-//        assertThat(new UserStringInputHandler().validate(name)).isEqualTo(expected);
-//    }
-
     @ParameterizedTest
     @CsvSource(value = {"a,b,c:3", "a,b:2", "a:1", "abc:1"}, delimiter = ':')
     void 자동차의_이름은_쉼표로_구분한다(String name, int expectedCount) {

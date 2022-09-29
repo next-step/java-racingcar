@@ -22,7 +22,7 @@ public class RacingGameSerice {
 
     public List<Car> generateCar(String[] carNames) {
         List<Car> cars = new ArrayList<>();
-        for (String name: carNames) {
+        for (String name : carNames) {
             cars.add(new DefaultCar(name));
         }
         return cars;
@@ -31,7 +31,7 @@ public class RacingGameSerice {
     public List<Car> getWinner(List<Car> cars) {
         List<Car> winners = new ArrayList<>();
         int winnerPosition = 0;
-        for(Car car : cars){
+        for (Car car : cars) {
             winners = findWinners(winners, winnerPosition, car);
             winnerPosition = changeWinnerPosition(winnerPosition, car);
         }
@@ -39,17 +39,17 @@ public class RacingGameSerice {
     }
 
     private int changeWinnerPosition(int winnerPosition, Car car) {
-        if(car.getPosition() > winnerPosition) {
+        if (car.getPosition() > winnerPosition) {
             winnerPosition = car.getPosition();
         }
         return winnerPosition;
     }
 
     private List<Car> findWinners(List<Car> winners, int winnerPosition, Car car) {
-        if(car.getPosition() == winnerPosition) {
+        if (car.getPosition() == winnerPosition) {
             winners.add(car);
         }
-        if(car.getPosition() > winnerPosition) {
+        if (car.getPosition() > winnerPosition) {
             winners = new ArrayList<>();
             winners.add(car);
 

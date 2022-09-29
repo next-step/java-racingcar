@@ -18,7 +18,7 @@ public class RacingGameController {
         RacingGameSerice racingGameSerice = new RacingGameSerice(names);
 
         ResultView.printResultTitle();
-        for(int i = 0; i < count; i++) {
+        for (int i = 0; i < count; i++) {
             ResultView.printRace(racingGameSerice.race());
         }
 
