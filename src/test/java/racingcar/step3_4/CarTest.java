@@ -34,4 +34,13 @@ class CarTest {
 
 		assertThat(car.move(() -> value)).isZero();
 	}
+
+	@DisplayName("이름을 설정하여 자동차 생성")
+	@Test
+	void createWithNameTest() {
+		Car car = new Car(new Name("pobi"));
+
+		assertThat(car).isEqualTo(new Car(new Name("pobi")));
+		assertThat(car.getPosition()).isZero();
+	}
 }

@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class InputValidatorTest {
@@ -22,5 +23,14 @@ class InputValidatorTest {
 	void validatePositiveInputTest(int input) {
 		assertThatThrownBy(() -> inputValidator.isZeroOrNegative(input))
 			.isExactlyInstanceOf(NumberFormatException.class);
+	}
+
+	@DisplayName("입력된 값이 빈 문자열일 경우 예외 발생")
+	@ParameterizedTest
+	@NullSource
+	@ValueSource(strings = {"", " "})
+	void validateBlankInputTest(String input) {
+		assertThatThrownBy(() -> inputValidator.isBlank(input))
+			.isExactlyInstanceOf(IllegalArgumentException.class);
 	}
 }

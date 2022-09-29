@@ -11,9 +11,9 @@ public class Cars {
 		this.cars = cars;
 	}
 
-	public static Cars createCars(int carCount) {
+	public static Cars createCars(Names carNames) {
 		List<Car> cars = new ArrayList<>();
-		for (int i = 0; i < carCount; i++) {
+		for (int i = 0; i < carNames.getCount(); i++) {
 			cars.add(new Car());
 		}
 
