@@ -1,9 +1,11 @@
 package carRacing.level3.domain;
 
-import carRacing.level3.service.MovingStartegy;
+import carRacing.level3.service.RandomMovingStartegy;
+import carRacing.level3.service.output.OutPutView;
+
 public class Car {
 
-	private static final Integer DEFAULT_LOCATION = 1;
+	private static final Integer DEFAULT_LOCATION = 0;
 	private static final Integer MOVE_LOCATION = 1;
 	private Integer location;
 
@@ -15,10 +17,12 @@ public class Car {
 		return location;
 	}
 
-	public void moveLocation(MovingStartegy movingStartegy) {
+	public void moveLocation(RandomMovingStartegy movingStartegy) {
 		if(movingStartegy.isMovable())
-		this.location += MOVE_LOCATION;
+		location += MOVE_LOCATION;
 	}
-
+	public void showMovement(OutPutView outPutView){
+		outPutView.showCar(carLocation());
+	}
 
 }
