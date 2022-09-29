@@ -5,9 +5,8 @@ import java.util.Objects;
 public class RacingCar {
 
     private final int MOVE_LENGTH = 1;
-    private final int MAX_LENGTH_NAME = 5;
 
-    private final String name;
+    private final RacingCarName name;
     private Position position;
 
     public RacingCar(String name) {
@@ -15,8 +14,7 @@ public class RacingCar {
     }
 
     public RacingCar(String name, int position) {
-        validateName(name);
-        this.name = name;
+        this.name = new RacingCarName(name);
         this.position = new Position(position);
     }
 
@@ -31,28 +29,11 @@ public class RacingCar {
     }
 
     public String getName() {
-        return name;
+        return name.getValue();
     }
 
     public boolean isEqualsPosition(int position) {
         return this.position.getValue() == position;
-    }
-
-    private void validateName(String name) {
-        validateNameLongerThenFive(name);
-        validateNameIsEmpty(name);
-    }
-
-    private void validateNameLongerThenFive(String name) {
-        if (name.length() > MAX_LENGTH_NAME) {
-            throw new RuntimeException("자동차의 이름은 5자를 초과할 수 없습니다.");
-        }
-    }
-
-    private void validateNameIsEmpty(String name) {
-        if (name == null || name.isEmpty()) {
-            throw new RuntimeException("자동차의 이름은 빈 문자열로 설정할 수 없습니다.");
-        }
     }
 
     @Override

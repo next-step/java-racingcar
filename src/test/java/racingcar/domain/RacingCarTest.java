@@ -1,26 +1,12 @@
 package racingcar.domain;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.BDDAssertions.then;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class RacingCarTest {
 
     private final RacingCar racingCar = new RacingCar("test");
-
-    @Test
-    void validateNameLongerThenFive() {
-        assertThrows(RuntimeException.class, () -> new RacingCar("5글자넘어요"));
-    }
-
-    @ParameterizedTest
-    @NullAndEmptySource
-    void validateNameIsEmpty(String name) {
-        assertThrows(RuntimeException.class, () -> new RacingCar(name));
-    }
 
     @Test
     void getPosition() {
