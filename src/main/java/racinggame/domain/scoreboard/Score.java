@@ -1,12 +1,9 @@
 package racinggame.domain.scoreboard;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
 import racinggame.domain.car.Car;
 import racinggame.domain.car.Cars;
 import racinggame.domain.exception.InvalidUnknownCarNameException;
@@ -15,7 +12,7 @@ public class Score {
 
     private final Map<String, Integer> scoreInfo = new LinkedHashMap<>();
 
-    public void recordScore(Cars cars) {
+    public Score(Cars cars) {
         for (int i = 0; i < cars.getSize(); i++) {
             Car car = cars.getCar(i);
             scoreInfo.put(car.getName(), car.getDistance());
@@ -35,25 +32,37 @@ public class Score {
     }
 
     public List<String> getWinner() {
-        List<Entry<String, Integer>> scoreDatalist = sortScoreDataReverseByDistance();
-        int maxDistance = scoreDatalist.get(0)
-                .getValue();
-
-        return pickCarNamesWithDistance(scoreDatalist, maxDistance);
+        return getWinners(getMaxDistance());
     }
 
-    private List<Entry<String, Integer>> sortScoreDataReverseByDistance() {
-        List<Entry<String, Integer>> scoreDatalist = new ArrayList<>(scoreInfo.entrySet());
-        scoreDatalist.sort(Entry.comparingByValue(Comparator.reverseOrder()));
-        return scoreDatalist;
+    private int getMaxDistance() {
+        int maxDistance = -1;
+        for (String name : scoreInfo.keySet()) {
+            maxDistance = getMaxDistance(maxDistance, name);
+        }
+        return maxDistance;
     }
 
-    private List<String> pickCarNamesWithDistance(List<Entry<String, Integer>> scoreDatalist,
-            int distance) {
-        return scoreDatalist.stream()
-                .filter(entry -> entry.getValue() == distance)
-                .map(Entry::getKey)
-                .collect(Collectors.toList());
+    private int getMaxDistance(int maxDistance, String name) {
+        int distance = scoreInfo.get(name);
+        if (distance > maxDistance) {
+            maxDistance = distance;
+        }
+        return maxDistance;
+    }
+
+    private List<String> getWinners(int maxDistance) {
+        List<String> winners = new ArrayList<>();
+        for (String name : scoreInfo.keySet()) {
+            updateWinners(maxDistance, winners, name);
+        }
+        return winners;
+    }
+
+    private void updateWinners(int maxDistance, List<String> winners, String name) {
+        if (scoreInfo.get(name) == maxDistance) {
+            winners.add(name);
+        }
     }
 
 }

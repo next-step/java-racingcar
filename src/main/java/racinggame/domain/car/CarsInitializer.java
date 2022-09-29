@@ -2,7 +2,6 @@ package racinggame.domain.car;
 
 import java.util.ArrayList;
 import java.util.List;
-import racinggame.domain.exception.InvalidCarNameException;
 import racinggame.domain.exception.InvalidCarRegistrationException;
 
 public class CarsInitializer {
@@ -14,7 +13,6 @@ public class CarsInitializer {
         String[] carNameArray = splitCarNames(carNames);
 
         for (String carName : carNameArray) {
-            validateCarNameLength(carName);
             cars.add(new Car(carName));
         }
 
@@ -22,29 +20,13 @@ public class CarsInitializer {
     }
 
     private static String[] splitCarNames(String carNames) {
-        validateCarNamesNull(carNames == null);
-
-        String[] carNameArray = carNames.split(DELIMITER);
-        validateCarCount(carNameArray);
-
-        return carNameArray;
+        validateCarNamesNull(carNames);
+        return carNames.split(DELIMITER);
     }
 
-    private static void validateCarCount(String[] carNameArray) {
-        if (carNameArray.length == 0) {
+    private static void validateCarNamesNull(String carNames) {
+        if (carNames == null) {
             throw new InvalidCarRegistrationException();
-        }
-    }
-
-    private static void validateCarNamesNull(boolean carNames) {
-        if (carNames) {
-            throw new InvalidCarRegistrationException();
-        }
-    }
-
-    private static void validateCarNameLength(String carName) {
-        if (carName.length() > 5 || carName.length() == 0) {
-            throw new InvalidCarNameException();
         }
     }
 

@@ -19,8 +19,7 @@ class ScoreTest {
     @Test
     @DisplayName("라운드 스코어 기록.")
     void get_scores_of_round() {
-        Score score = new Score();
-        score.recordScore(getDefaultCars());
+        Score score = new Score(getDefaultCars());
 
         assertThat(score.getAllScore()).hasSize(3);
     }
@@ -54,9 +53,7 @@ class ScoreTest {
     }
 
     private Score getDefaultScore() {
-        Score score = new Score();
-        score.recordScore(getDefaultCars());
-        return score;
+        return new Score(getDefaultCars());
     }
 
     private Cars getDefaultCars() {

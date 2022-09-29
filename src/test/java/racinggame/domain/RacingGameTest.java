@@ -1,6 +1,7 @@
 package racinggame.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 import java.util.ArrayList;
@@ -11,14 +12,15 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racinggame.domain.car.Car;
 import racinggame.domain.car.Cars;
+import racinggame.domain.exception.InvalidRoundException;
 import racinggame.domain.gasstation.GasStation;
 import racinggame.domain.gasstation.TankGasStation;
-import racinggame.domain.scoreboard.ScoreBoard;
 import racinggame.domain.scoreboard.Score;
+import racinggame.domain.scoreboard.ScoreBoard;
 
 class RacingGameTest {
 
-    private static final int NUM_OF_GAME = 4;
+    private static final int VALID_ROUND = 4;
     private static final String[] CAR_NAMES = {"pobi", "crong", "honux"};
 
     @Test
@@ -26,7 +28,7 @@ class RacingGameTest {
     void play_with_game_info() {
         RacingGame game = new RacingGame(initCars(), initGasStation());
 
-        ScoreBoard resultScoreBoard = game.play(NUM_OF_GAME);
+        ScoreBoard resultScoreBoard = game.play(VALID_ROUND);
 
         Score scoreOfRound1 = resultScoreBoard.getScore(1);
         Score scoreOfRound2 = resultScoreBoard.getScore(2);
@@ -56,6 +58,15 @@ class RacingGameTest {
          */
     }
 
+    @Test
+    @DisplayName("0 이하의 라운드값이 주어질 경우 예외 발생.")
+    void fail_to_play_with_wrong_round() {
+        RacingGame game = new RacingGame(initCars(), initGasStation());
+        int invalidRound = 0;
+        assertThatThrownBy(() -> game.play(invalidRound))
+                .isInstanceOf(InvalidRoundException.class);
+    }
+
     private Cars initCars() {
         List<Car> carList = new ArrayList<>();
         for (String carName : CAR_NAMES) {
@@ -68,7 +79,7 @@ class RacingGameTest {
     private GasStation initGasStation() {
         Queue<Integer> tank = new LinkedList<>();
 
-        for (int i = 0; i < NUM_OF_GAME * CAR_NAMES.length; i++) {
+        for (int i = 0; i < VALID_ROUND * CAR_NAMES.length; i++) {
             tank.add(i * 3 % 10);
             //연료: 0, 3, 6,  9, 12, 15,  18, 21, 24,  27, 30, 33
         }
