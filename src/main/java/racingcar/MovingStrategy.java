@@ -1,16 +1,10 @@
 package racingcar;
 
-public class MovingStrategy {
+import racingcar.domain.Car;
 
-  private boolean isMoveAble(int randomInt, int criteriaNum) {
-    return randomInt >= criteriaNum;
-  }
+public interface MovingStrategy {
 
-  public String moveCar(int randomint, String positionView, int criteriaNum) {
-    if (isMoveAble(randomint, criteriaNum)) {
-      positionView += "-";
-    }
-    return positionView;
-  }
+  int getRandNum();
 
+  int move(Car car, int randomInt, int criteriaNum);
 }
