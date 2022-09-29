@@ -8,7 +8,6 @@ public class Car {
     private String name;
     private int status;
 
-    public Car() {}
 
     public Car(String name) {
         this.name = limitNameLength(name);
