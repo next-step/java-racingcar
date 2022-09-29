@@ -1,3 +1,5 @@
+package step2;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,10 +21,14 @@ public class StringAddCalculator {
   }
 
   private static Positive sum(List<Positive> positives) {
-    return positives.stream().reduce((x, y) -> x.add(y)).orElse(Positive.zero());
+    return positives.stream()
+        .reduce((x, y) -> x.add(y))
+        .orElse(Positive.zero());
   }
 
   private static List<Positive> toPositives(String[] numbers) {
-    return Arrays.stream(numbers).map(token -> Positive.of(token)).collect(Collectors.toList());
+    return Arrays.stream(numbers)
+        .map(token -> Positive.of(token))
+        .collect(Collectors.toList());
   }
 }

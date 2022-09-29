@@ -1,7 +1,10 @@
+package step2;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
+import step2.StringAddCalculator;
 
 public class StringAddCalculatorTest {
   @Test
