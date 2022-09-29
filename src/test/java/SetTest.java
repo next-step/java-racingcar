@@ -23,23 +23,21 @@ public class SetTest {
     }
 
     @Test
-    @DisplayName("numbers의 크기를 테스트하는 케이스")
-    public void size() {
-        assertThat(numbers.size()).isEqualTo(4);
+    @DisplayName("numbers 사이즈 테스트")
+    public void hasSizeFour_ShouldReturnTrueForSizeFour() {
+        assertThat(numbers).hasSize(4);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "numbers 안에 숫자 {0} 값의 존재유무 테스트")
     @ValueSource(ints = {1, 2, 3})
-    @DisplayName("numbers 안에 숫자 1,2,3 값의 존재유무 테스트하는 케이스")
     public void isOneTwoThree_ShouldReturnTrueForOneTwoThree(int input) {
         assertThat(numbers.contains(input)).isTrue();
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"1,2,3", "4,5"}, delimiter = ',')
-    @DisplayName("numbers 안에 존재하는 숫자면 성공, 그렇지 않으면 실패하는 테스트 케이스")
-    public void containsValue_ShouldReturnTrueForContainsValue(String input, String expected) {
-        int actual = Integer.parseInt(input);
-        assertThat(numbers.contains(actual)).isEqualTo(numbers.contains(Integer.parseInt(expected)));
+    @CsvSource(value = {"1,2,3", "4,5"})
+    @DisplayName("numbers 안에 존재하는 숫자면 성공, 그렇지 않으면 실패하는 테스트")
+    public void containsValue_ShouldReturnTrueForContainsValue(int actual, int expected) {
+        assertThat(numbers.contains(actual)).isEqualTo(numbers.contains(expected));
     }
 }
