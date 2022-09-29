@@ -1,35 +1,21 @@
 package carRacing.level3.service;
 
-import carRacing.level3.repository.CarFactory;
+import carRacing.level3.domain.Car;
+import carRacing.level3.domain.Cars;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class CarService {
-	private static final Integer BOUNDARY = 10;
-	private static final Integer PIVOT = 4;
-	CarFactory carFactory = new CarFactory();
 
-	public Boolean isMovable(int randomNum) {
-		if (randomNum >= PIVOT && randomNum < BOUNDARY) {
-			return true;
-		}
-		return false;
+	public Cars prepare(int carSum) {
+		return new Cars(
+			IntStream.range(0, carSum)
+				.mapToObj(index -> new Car())
+				.collect(Collectors.toList()));
 	}
 
-	public Integer carMovingLocation(int carNum) {
-		return carFactory.carLocation(carNum);
+	public void moveCar(Cars cars) {
+		cars.moveCarLocation();
 	}
 
-	public void initRace(int carNum) {
-		carFactory.initCarLocation(carNum);
-	}
-
-	public void moveCar(int carNum) {
-
-		Boolean movable = isMovable(RandomNum.randomNum());
-
-		int new_status = carFactory.moveCarLocation(carNum);
-
-		if (movable) {
-			carFactory.saveCarLocation(carNum, new_status);
-		}
-	}
 }
