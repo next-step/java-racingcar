@@ -1,11 +1,11 @@
 package racing_game;
 
-import racing_game.core.RacingGame;
+import racing_game.domain.Game;
 
 public class App {
 
   public static void main(String[] args) {
-    new RacingGame().run();
+    new Game().run();
   }
 
 }

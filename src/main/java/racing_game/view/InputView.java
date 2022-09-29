@@ -2,6 +2,7 @@ package racing_game.view;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import racing_game.core.Positive;
 import racing_game.core.Result;
 
 public class InputView {
@@ -19,28 +20,28 @@ public class InputView {
     return new InputView(ment, reader);
   }
 
-  public Integer getNumberInput() throws IOException {
+  public Positive getNumberInput() throws IOException {
     Result result = receive();
     while (Result.SUCCESS != result) {
       alertWrong();
       result = receive();
     }
-    return Integer.parseInt(value);
+    return Positive.of(value);
   }
 
   private Result receive() throws IOException {
     System.out.println(ment);
     String readValue = reader.readLine();
-    if (isNumberFormat(readValue)) {
+    if (isPositiveFormat(readValue)) {
       this.value = readValue;
       return Result.SUCCESS;
     }
     return Result.FAIL;
   }
 
-  private boolean isNumberFormat(String value) {
+  private boolean isPositiveFormat(String value) {
     try {
-      Integer.parseInt(value);
+      Positive.of(value);
     } catch (NumberFormatException e) {
       return false;
     }
