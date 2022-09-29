@@ -1,5 +1,6 @@
 package carRacing.level3.domain;
 
+import carRacing.level3.service.MovingStartegy;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -17,8 +18,8 @@ public class Cars {
 			.collect(Collectors.toList()));
 	}
 
-	public void moveCarLocation() {
-		carList.forEach(car -> car.moveLocation());
+	public void moveCarLocation(MovingStartegy movingStartegy) {
+		carList.forEach(car -> car.moveLocation(movingStartegy));
 	}
 
 	public int carLocation(int carNum){

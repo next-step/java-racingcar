@@ -6,7 +6,7 @@ public class Car {
 	private static final Integer DEFAULT_LOCATION = 1;
 	private static final Integer MOVE_LOCATION = 1;
 	private Integer location;
-	private MovingStartegy movingStartegy = new MovingStartegy();
+
 	public Car() {
 		this.location = DEFAULT_LOCATION;
 	}
@@ -15,7 +15,7 @@ public class Car {
 		return location;
 	}
 
-	public void moveLocation() {
+	public void moveLocation(MovingStartegy movingStartegy) {
 		if(movingStartegy.isMovable())
 		this.location += MOVE_LOCATION;
 	}
