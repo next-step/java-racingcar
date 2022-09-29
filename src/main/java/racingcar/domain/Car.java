@@ -2,7 +2,19 @@ package racingcar.domain;
 
 public class Car {
 
-  public String positionView = "";
-  public int criteriaNum = 4;
+  private int position = 0;
+  private static final int criteriaNum = 4;
+
+  public int go(){
+    return position++;
+  }
+
+  public int getPosition() {
+    return position;
+  }
+
+  public int getcriteriaNum() {
+    return criteriaNum;
+  }
 
 }
