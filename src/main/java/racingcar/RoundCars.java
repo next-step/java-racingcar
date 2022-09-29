@@ -26,6 +26,16 @@ public class RoundCars {
         racingRecord.addCarsPosition(this);
     }
 
+    public RoundCars deepCopy() {
+        List<Car> recordCars = new ArrayList<>();
+        List<Car> cars = this.retrieveCars();
+
+        for (Car car : cars) {
+            recordCars.add(new Car(car.getPosition()));
+        }
+        return new RoundCars(recordCars);
+    }
+
     public List<Car> retrieveCars() {
         return cars;
     }

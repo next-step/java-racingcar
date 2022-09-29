@@ -11,14 +11,6 @@ public class RacingRecord {
     }
 
     public void addCarsPosition(RoundCars roundCars) {
-        List<Car> recordCars = new ArrayList<>();
-        List<Car> cars = roundCars.retrieveCars();
-
-        for (Car car : cars) {
-            recordCars.add(new Car(car.getPosition()));
-        }
-
-        RoundCars recordRoundCar = new RoundCars(recordCars);
-        records.add(recordRoundCar);
+        records.add(roundCars.deepCopy());
     }
 }
