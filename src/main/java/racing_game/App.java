@@ -1,6 +1,6 @@
-package step3;
+package racing_game;
 
-import step3.core.RacingGame;
+import racing_game.core.RacingGame;
 
 public class App {
 
