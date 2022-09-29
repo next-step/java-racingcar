@@ -3,12 +3,23 @@ package racing.model;
 import racing.strategy.CarMoveStrategy;
 
 public abstract class Car {
-    private CarPosition position;
+    protected CarPosition position;
     private CarMoveStrategy carMoveStrategy;
+    private String name;
 
-    public Car(CarPosition initPosition) {
-        this.position = initPosition;
+    private Car(CarPosition initPosition) {
+        // 이름없이 처리되지 못하도록 막음
+    }
+
+    public Car(String name, CarPosition position) {
+        this.name = name;
+        this.position = position;
+
         setDefaultCarMoveStrategy();
+    }
+
+    public Car(String name) {
+        this(name, new CarPosition());
     }
 
     public boolean canMove(int randomNum) {
@@ -23,10 +34,6 @@ public abstract class Car {
         return position.getPosition();
     }
 
-    public void move() {
-        carMoveStrategy.move(position);
-    }
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -37,6 +44,7 @@ public abstract class Car {
         }
 
         Car car = (Car) obj;
+        if(car.name != this.name) return false;
         return car.position.getPosition() == this.position.getPosition();
     }
 
@@ -48,4 +56,9 @@ public abstract class Car {
     public abstract void setDefaultCarMoveStrategy();
 
     public abstract String getTireMark();
+    public abstract void move();
+
+    public String getName() {
+        return this.name;
+    }
 }

@@ -4,13 +4,14 @@ import racing.strategy.DefaultCarMoveStrategy;
 
 public class DefaultCar extends Car {
     private String tireMark = "-";
+    private int speed = 1;
 
-    public DefaultCar() {
-        this(new CarPosition(1));
+    public DefaultCar(String name, CarPosition position) {
+        super(name, position);
     }
 
-    public DefaultCar(CarPosition position) {
-        super(position);
+    public DefaultCar(String name) {
+        super(name);
     }
 
     @Override
@@ -21,5 +22,10 @@ public class DefaultCar extends Car {
     @Override
     public String getTireMark() {
         return tireMark;
+    }
+
+    @Override
+    public void move() {
+        position.move(speed);
     }
 }
