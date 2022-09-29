@@ -1,21 +1,25 @@
 package racingGame;
 
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingGame.exception.NegativeExceptionV1;
+import racingGame.exception.WrongInputException;
 import racingGame.view.InputVerifier;
-
-import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class InputVerifierTest {
+class ValueVerifierTest {
     @ParameterizedTest
     @ValueSource(strings = {"-1,-,#, ,&,@,%"})
-    void validateInput(String input) {
-        assertThrows(NegativeExceptionV1.class, ()
-                -> InputVerifier.validateInput(input));
+    void validateTryNumInput(String input) {
+        assertThrows(WrongInputException.class, ()
+                -> InputVerifier.validateTryInput(input));
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1,2,-1,#,$"})
+    void validateCarNameInput(String input) {
+        assertThrows(WrongInputException.class, ()
+                -> InputVerifier.validateNameInput(input));
+    }
+
 }

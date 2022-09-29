@@ -1,28 +1,51 @@
 package racingGame;
 
+import racingGame.exception.WrongInputException;
 import racingGame.view.InputVerifier;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class InputParameters {
-    private Input carNum;
-    private Input tryNum;
+    private Value value;
 
-    public InputParameters(String carNum, String tryNum) {
-        this.carNum = new Input(carNum);
-        this.tryNum = new Input(tryNum);
+    public InputParameters(String carNames, String tryNum) {
+        value  = new Value(carNames,tryNum);
     }
 
-    public class Input {
-        private int input;
+    private class Value {
+        private List<String> carNames;
+        private int tryNum;
 
-        public Input(String inputNum) {
-            InputVerifier.validateInput(inputNum);
-            this.input = parseInput(inputNum);
+        private Value(String carNames, String tryNum) {
+            InputVerifier.validateNameInput(carNames);
+            InputVerifier.validateTryInput(tryNum);
+            this.carNames = splitNames(carNames);
+            this.tryNum = parseInput(tryNum);
+
         }
 
-        public int getInput() {
-            return this.input;
+        private List<String> splitNames(String carNames) {
+            return Arrays.stream(carNames.split(","))
+                    .filter(this::checkNameLength)
+                    .collect(Collectors.toList());
+        }
+
+        private boolean checkNameLength(String i) {
+            if (i.length() > 5){
+                throw new WrongInputException("5보다 큰 이름은 입력 받을 수 없습니다.");
+            }
+            return true;
+        }
+
+        private int getTryNum() {
+            return this.tryNum;
+        }
+
+        private List<String> getCarName() {
+            return carNames;
         }
 
         private int parseInput(String input) {
@@ -30,12 +53,16 @@ public class InputParameters {
         }
     }
 
-    public int getCarNum() {
-        return carNum.getInput();
+    public int getCarsSize() {
+        return value.getCarName().size();
+    }
+
+    public List<String> getCarName() {
+        return value.getCarName();
     }
 
     public int getTryNum() {
-        return tryNum.getInput();
+        return value.getTryNum();
     }
 
     @Override
@@ -43,11 +70,11 @@ public class InputParameters {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         InputParameters that = (InputParameters) o;
-        return carNum == that.carNum && tryNum == that.tryNum;
+        return Objects.equals(value, that.value);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(carNum, tryNum);
+        return Objects.hash(value);
     }
 }

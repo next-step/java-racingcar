@@ -27,13 +27,13 @@ public class RacingGame {
 
     private List<Car> createCars() {
         List<Car> mocCars = new ArrayList<>();
-        addNewCar(mocCars);
+        addNewCars(mocCars);
         return mocCars;
     }
 
-    private void addNewCar(List<Car> mocCars) {
-        for (int i =0; i < inputParameters.getCarNum(); i++){
-           mocCars.add(new Car());
+    private void addNewCars(List<Car> mocCars) {
+        for (int i = 0; i < inputParameters.getCarsSize(); i++){
+           mocCars.add(new Car(inputParameters.getCarName().get(i)));
         }
     }
 

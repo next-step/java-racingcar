@@ -8,12 +8,18 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class Car {
+public class Car implements Comparable<Car> {
 
     private int position;
+    private String carName;
 
-    public Car() {
+    public Car(String carName) {
+        this.carName = carName;
         this.position = 0;
+    }
+
+    public String getCarName() {
+        return carName;
     }
 
     public void move(RacingRule racingRule) {
@@ -45,4 +51,9 @@ public class Car {
         return Objects.hash(position);
     }
 
+
+    @Override
+    public int compareTo(Car o) {
+        return this.position - o.position;
+    }
 }
