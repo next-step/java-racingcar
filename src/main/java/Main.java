@@ -4,6 +4,7 @@ import Service.CarRace;
 import Service.InputView;
 import Service.ResultView;
 import domain.Car;
+import repository.CarHistory;
 
 public class Main {
 
@@ -12,10 +13,12 @@ public class Main {
         inputView.inputCarInfo();
 
         CarRace carRace = new CarRace();
-        carRace.createInitCarList(inputView.getCarNames());
-        List<Car> carList = carRace.updateCurrentLocation(carRace.getRacingCars());
+        List<Car> carList = carRace.createInitCarList(inputView.getCarNames());
+
+        CarHistory carHistory = new CarHistory();
+        carHistory.saveCarHistory(carList);
 
         ResultView resultView = new ResultView();
-        resultView.printCarLocation(carRace, carList, inputView.getAttempts());
+        resultView.printCarLocation(carRace, carHistory, inputView.getAttempts());
     }
 }

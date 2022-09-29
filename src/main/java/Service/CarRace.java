@@ -1,31 +1,32 @@
 package Service;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import domain.Car;
+import repository.CarHistory;
+
 import java.util.Random;
 import java.util.stream.Collectors;
 
 public class CarRace {
 
-
     private static final int MIN_LIMIT_NUMBER = 4;
     private static final int MAX_LIMIT_BOUND_NUMBER = 10;
-    private List<Car> racingCars;
-
     public CarRace() {
     }
 
-    public List<Car> updateCurrentLocation(List<Car> racingCars) {
-        int randomNum = generateRandomNum();
+    public List<Car> updateCurrentLocation(CarHistory carHistory, List<Car> racingCars) {
 
-        for (int i = 0; i < racingCars.size(); i ++) {
-            this.racingCars.set(i, racingCars.get(i).move(isMovingForward(randomNum)));
+        List<Car> updatedCarList = new ArrayList<>();
+        for (Car car : racingCars) {
+            int randomNum = generateRandomNum();
+            Car updatedCar = car.move(car, isMovingForward(randomNum));
+            updatedCarList.add(updatedCar);
         }
-        return this.racingCars;
+        carHistory.saveCarHistory(updatedCarList);
+        return updatedCarList;
     }
 
     private int generateRandomNum() {
@@ -37,11 +38,8 @@ public class CarRace {
         return randomNumber >= MIN_LIMIT_NUMBER;
     }
 
-    public void createInitCarList(String[] carNames) {
-        this.racingCars = Arrays.stream(carNames).map(Car::createCar).collect(Collectors.toList());
+    public List<Car> createInitCarList(String[] carNames) {
+        return Arrays.stream(carNames).map(Car::createCar).collect(Collectors.toList());
     }
 
-    public List<Car> getRacingCars() {
-        return this.racingCars;
-    }
 }

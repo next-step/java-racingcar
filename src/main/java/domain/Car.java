@@ -27,15 +27,20 @@ public class Car {
         return name;
     }
 
-    public Car move(boolean isMove) {
+    public Car move(Car car, boolean isMove) {
+        int isGo = car.getCurrentLocation();
         if (isMove) {
-            setCurrentLocation();
+            return Car.of(car.getName(), isGo + 1);
         }
         return this;
     }
 
     public static Car createCar(String carName) {
         return new Car(carName);
+    }
+
+    public static Car of (String name, int currentLocation) {
+        return new Car(name, currentLocation);
     }
 
     public String getName() {
