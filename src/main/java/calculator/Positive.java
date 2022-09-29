@@ -1,5 +1,8 @@
 package calculator;
 
+import calculator.exception.ErrorMessage;
+import calculator.exception.NegativeNumberException;
+
 public class Positive {
 
 	private int number;
@@ -10,7 +13,7 @@ public class Positive {
 
 	public Positive(int value) {
 		if (isNegative(value)) {
-			throw new NumberFormatException("유효하지 않는 숫자 포맷(음수)입니다.");
+			throw new NegativeNumberException(ErrorMessage.POSITIVE_CAN_NOT_BE_NEGATIVE, value);
 		}
 		this.number = value;
 	}

@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
+import calculator.exception.NegativeNumberException;
+
 public class StringAddCalculatorTest {
 
 	private StringAddCalculator stringAddCalculator = new StringAddCalculator();
@@ -44,6 +46,6 @@ public class StringAddCalculatorTest {
 	@Test
 	public void splitAndSum_negative() throws Exception {
 		assertThatThrownBy(() -> stringAddCalculator.splitAndSum("-1,2,3"))
-			.isInstanceOf(RuntimeException.class);
+			.isInstanceOf(NegativeNumberException.class);
 	}
 }
