@@ -1,16 +1,22 @@
 package racingcar;
 
-import java.io.IOException;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
+
+import java.util.List;
 
 public class RacingCarApplication {
-    public static void main(String[] args) throws IOException {
-        int carCount = InputView.carCountScan();
+    public static void main(String[] args) {
+        String[] carNames = InputView.carNamesScan();
         int round = InputView.roundScan();
+        List<Car> cars = null;
 
-        Race race = new Race(carCount);
+        Race race = new Race(carNames);
         ResultView.printStartMessage();
         for (int i = 0; i < round; i++) {
-            ResultView.print(race.playRace());
+            cars = race.playRace();
+            ResultView.printRace(cars);
         }
+        ResultView.printResult(race.findWinner(cars));
     }
 }

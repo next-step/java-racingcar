@@ -3,11 +3,21 @@ package racingcar;
 
 public class Car {
     private static final int MOVE_MIN_NUM = 4;
+    private final String carName;
 
-    private int position;
+    private int position = 0;
 
-    public Car(int position) {
+    public Car(String carName) {
+        this.carName = carName;
+    }
+
+    public Car(String carName, int position) {
+        this.carName = carName;
         this.position = position;
+    }
+
+    public String getCarName() {
+        return carName;
     }
 
     public int getPosition() {
