@@ -1,7 +1,9 @@
 package step2;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class StringAddCalculator {
     public int splitAndSum(String text) {
@@ -20,23 +22,17 @@ public class StringAddCalculator {
 
     public List<Positive> split(String text, String delimiter) {
         String[] stringNumbers = text.split(delimiter);
-        List<Positive> numbers = new ArrayList<>();
 
-        for (String s : stringNumbers) {
-            numbers.add(new Positive(Integer.parseInt(s)));
-        }
-
-        return numbers;
+        return Arrays.stream(stringNumbers)
+                .map(str -> new Positive(Integer.parseInt(str)))
+                .collect(Collectors.toList());
     }
 
     public int sum(List<Positive> numbers) {
-        Positive sum = new Positive(0);
-
-        for (Positive n : numbers) {
-            sum = sum.plus(n);
-        }
-
-        return sum.getNumber();
+        return numbers.stream()
+                .reduce((a, b) -> a.plus(b))
+                .map(Positive::getNumber)
+                .orElse(0);
     }
 
     private int parseOne(String text) {

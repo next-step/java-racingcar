@@ -8,6 +8,8 @@ public class CalculatorString {
     private static final String DELIMITER_COMMA = ",";
     private static final String DELIMITER_COLON = ":";
     private static final String DELIMITER_MIX = DELIMITER_COMMA + "|" + DELIMITER_COLON;
+    private static final String PATTERN_STRING = "//(.)\n(.*)";
+    private static final Pattern COMPILED_PATTERN =  Pattern.compile(PATTERN_STRING);
 
     private final String text;
     private final String delimiter;
@@ -22,21 +24,21 @@ public class CalculatorString {
             return new CalculatorString(text, DELIMITER_EMPTY);
         }
 
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        Matcher m = COMPILED_PATTERN.matcher(text);
 
         if (m.find()) {
             return new CalculatorString(m.group(2), m.group(1));
         }
 
-        if (text.indexOf(DELIMITER_COMMA) != -1 && text.indexOf(DELIMITER_COLON) != -1) {
+        if (text.contains(DELIMITER_COMMA) && text.contains(DELIMITER_COLON)) {
             return new CalculatorString(text, DELIMITER_MIX);
         }
 
-        if (text.indexOf(DELIMITER_COMMA) != -1) {
+        if (text.contains(DELIMITER_COMMA)) {
             return new CalculatorString(text, DELIMITER_COMMA);
         }
 
-        if (text.indexOf(DELIMITER_COLON) != -1) {
+        if (text.contains(DELIMITER_COLON)) {
             return new CalculatorString(text, DELIMITER_COLON);
         }
 
