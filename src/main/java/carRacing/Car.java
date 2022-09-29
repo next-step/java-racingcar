@@ -1,7 +1,7 @@
 package carRacing;
 
 public class Car {
-    private String name;
+    private final String name;
     private int position = 1;
 
     private static final int BASIS_POINT_TO_MOVE = 4;
