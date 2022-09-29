@@ -1,6 +1,6 @@
 package carRacing.level3.domain;
 
-import carRacing.level3.service.RandomMovingStrategy;
+import carRacing.level3.service.MovingStrategy;
 import carRacing.level3.service.output.OutPutView;
 
 public class Car {
@@ -17,8 +17,8 @@ public class Car {
 		return location;
 	}
 
-	public void moveLocation(RandomMovingStrategy startegy) {
-		if (startegy.getRandomMovement()) {
+	public void moveLocation(MovingStrategy strategy) {
+		if (strategy.getMovement()) {
 			location += MOVE_LOCATION;
 		}
 	}
