@@ -1,11 +1,11 @@
 package racingcar;
 
-import racingcar.util.RandomUtil;
-
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.strategy.MovingStrategy;
 
 public class RoundCars {
+
     private final List<Car> cars = new ArrayList<>();
 
     public RoundCars(int carNums) {
@@ -15,10 +15,9 @@ public class RoundCars {
         }
     }
 
-    public void moveCars(RacingRecord racingRecord) {
+    public void moveCars(RacingRecord racingRecord, MovingStrategy movingStrategy) {
         for (Car car : cars) {
-            int conditionValue = RandomUtil.generateRandomValue(ForwardCondition.LOWEST_BOUND, ForwardCondition.HIGHEST_BOUND);
-            car.forwardCarByCondition(conditionValue);
+            car.move(movingStrategy);
             racingRecord.addCarPosition(car.getPosition());
         }
     }

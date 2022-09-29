@@ -4,33 +4,44 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.util.RandomUtil;
+import racingcar.strategy.MovingStrategy;
 
 class CarTest {
 
     Car car;
+    MovingStrategy testMovingStrategy;
+
     @BeforeEach
     void setUp() {
         car = new Car();
     }
     @Test
-    public void 조건을_만족할때_position_증가() {
-        int num = RandomUtil.generateRandomValue(ForwardCondition.FORWARD_CONDITION_LOW_BOUND, ForwardCondition.FORWARD_CONDITION_HIGH_BOUND);
-        car.forwardCarByCondition(num);
+    public void position_증가() {
+        testMovingStrategy = new TestSuccessMoveStrategy();
+        car.move(testMovingStrategy);
         assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @Test
-    public void 조건을_만족하지_않을_때_포지션변화() {
-        int num = RandomUtil.generateRandomValue(0, ForwardCondition.FORWARD_CONDITION_LOW_BOUND);
-        car.forwardCarByCondition(num);
+    public void 포지션변화_실패() {
+        testMovingStrategy = new TestFailMoveStrategy();
+        car.move(testMovingStrategy);
         assertThat(car.getPosition()).isEqualTo(0);
     }
 
-    @Test
-    public void 조건을_만족하지_않을_때_포지션변화2() {
-        int num = RandomUtil.generateRandomValue(ForwardCondition.FORWARD_CONDITION_HIGH_BOUND + 1, ForwardCondition.HIGHEST_BOUND + 1);
-        car.forwardCarByCondition(num);
-        assertThat(car.getPosition()).isEqualTo(0);
+    public static class TestSuccessMoveStrategy implements MovingStrategy {
+
+        @Override
+        public boolean isMove() {
+            return true;
+        }
+    }
+
+    public static class TestFailMoveStrategy implements MovingStrategy {
+
+        @Override
+        public boolean isMove() {
+            return false;
+        }
     }
 }

@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.strategy.MovingStrategy;
+
 public class RacingGame {
     private final Positive carNums;
     private final Positive tryNums;
@@ -10,11 +12,11 @@ public class RacingGame {
         this.tryNums = new Positive(tryNums);
     }
 
-    public RacingRecord racingStart() {
+    public RacingRecord racingStart(MovingStrategy movingStrategy) {
         RoundCars roundCars = new RoundCars(carNums.getNumber());
         for (int round = 0; round < tryNums.getNumber(); round++) {
             racingRecord.createNewRoundRecord();
-            roundCars.moveCars(racingRecord);
+            roundCars.moveCars(racingRecord, movingStrategy);
         }
         return racingRecord;
     }

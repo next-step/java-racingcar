@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.strategy.MovingStrategy;
+
 public class Car {
 
     private int position;
@@ -12,14 +14,10 @@ public class Car {
         return position;
     }
 
-    public void forwardCarByCondition(int value) {
-        if (ForwardCondition.isForwardCondition(value)) {
-            moveForward();
+    public int move(MovingStrategy movingStrategy) {
+        if (movingStrategy.isMove()) {
+            return ++this.position;
         }
+        return position;
     }
-
-    private void moveForward() {
-        this.position++;
-    }
-
 }
