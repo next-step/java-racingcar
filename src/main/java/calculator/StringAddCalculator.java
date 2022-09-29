@@ -1,16 +1,18 @@
 package calculator;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class StringAddCalculator {
 
-	private int sum(Positive[] positives) {
-		return Arrays.stream(positives)
+	private int sum(List<Positive> positives) {
+		return positives.stream()
 			.mapToInt(Positive::getNumber)
 			.sum();
 	}
 
-	private Positive[] split(InputText text) {
+	private List<Positive> split(InputText text) {
 		return text.split();
 	}
 
@@ -22,7 +24,7 @@ public class StringAddCalculator {
 			return 0;
 		}
 
-		Positive[] positives = split(inputText);
+		List<Positive> positives = split(inputText);
 
 		return sum(positives);
 	}
@@ -55,18 +57,13 @@ public class StringAddCalculator {
 			return this.text.substring(this.text.indexOf(CUSTOM_DELIMETER_END) + CUSTOM_DELIMETER_END.length());
 		}
 
-		private Positive[] getPositives(String[] splitedStrings) {
-			for (int i = 0; i < splitedStrings.length; i++) {
-				System.out.println(splitedStrings[i]);
-
-			}
-
-			return Arrays.stream(splitedStrings)
-				.map(Positive::new)
-				.toArray(Positive[]::new);
+		private List<Positive> getPositives(String[] splitedStrings) {
+			return Arrays.stream(splitedStrings).
+				map(Positive::new).
+				collect(Collectors.toList());
 		}
 
-		private Positive[] split() {
+		private List<Positive> split() {
 			if (this.hasCustomDelimeter()) {
 				return getPositives(this.getRemovedCustomDelimterText().split(getCustomDelimeter()));
 			}
