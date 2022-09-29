@@ -1,8 +1,8 @@
-package ThirdStep.model;
+package ThirdStep.domain.model;
 
 public class RecordByCar {
-    private Car car;
-    private int location;
+    private final Car car;
+    private final int location;
 
     public RecordByCar(Car car, int location) {
         this.car = car;

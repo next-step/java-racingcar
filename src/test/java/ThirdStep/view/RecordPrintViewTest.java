@@ -1,8 +1,8 @@
-package ThirdStep.services;
+package ThirdStep.view;
 
-import ThirdStep.model.Car;
-import ThirdStep.model.CarRequest;
-import ThirdStep.model.RecordByCar;
+import ThirdStep.domain.model.Car;
+import ThirdStep.domain.model.RecordByCar;
+import ThirdStep.domain.model.request.CarRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,24 +14,23 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class RecordServiceTest {
-
-    private final RecordService recordService = new RecordService();
+class RecordPrintViewTest {
+    private final RecordPrintView recordPrintView = new RecordPrintView();
     private Method getWinnersMethod;
 
     private final List<RecordByCar> recordByCars = new ArrayList<>();
 
     @BeforeEach
     public void setGetWinnersMethod() throws NoSuchMethodException {
-        getWinnersMethod = recordService.getClass().getDeclaredMethod("getWinners", List.class);
+        getWinnersMethod = recordPrintView.getClass().getDeclaredMethod("getWinners", List.class);
         getWinnersMethod.setAccessible(true);
     }
 
     @BeforeEach
     public void setCars() {
-        Car car1 = Car.of(new CarRequest("car1"));
-        Car car2 = Car.of(new CarRequest("car2"));
-        Car car3 = Car.of(new CarRequest("car3"));
+        Car car1 = new Car(new CarRequest("car1"));
+        Car car2 = new Car(new CarRequest("car2"));
+        Car car3 = new Car(new CarRequest("car3"));
 
         recordByCars.add(new RecordByCar(car1, 10));
         recordByCars.add(new RecordByCar(car2, 15));
@@ -41,7 +40,7 @@ class RecordServiceTest {
     @Test
     @DisplayName("가장 멀리 간 차가 한 대인 경우, 승자는 1명이고 이름은 car2이다.")
     void test1() throws InvocationTargetException, IllegalAccessException {
-        List<Car> winner = (List<Car>) getWinnersMethod.invoke(recordService, recordByCars);
+        List<Car> winner = (List<Car>) getWinnersMethod.invoke(recordPrintView, recordByCars);
 
         assertThat(winner.size()).isEqualTo(1);
         assertThat(winner.get(0).getName()).isEqualTo("car2");
@@ -50,13 +49,14 @@ class RecordServiceTest {
     @Test
     @DisplayName("가장 멀리간 차가 두 대인 경우, 승자는 2명이고 이름은 car2, car4이다.")
     void test2() throws InvocationTargetException, IllegalAccessException {
-        Car car4 = Car.of(new CarRequest("car4"));
+        Car car4 = new Car(new CarRequest("car4"));
         recordByCars.add(new RecordByCar(car4, 15));
 
-        List<Car> winner = (List<Car>) getWinnersMethod.invoke(recordService, recordByCars);
+        List<Car> winner = (List<Car>) getWinnersMethod.invoke(recordPrintView, recordByCars);
 
         assertThat(winner.size()).isEqualTo(2);
         assertThat(winner.get(0).getName()).isEqualTo("car2");
         assertThat(winner.get(1).getName()).isEqualTo("car4");
     }
+
 }

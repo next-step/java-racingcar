@@ -1,4 +1,4 @@
-package ThirdStep.utils;
+package ThirdStep.view.utils;
 
 import java.util.Scanner;
 

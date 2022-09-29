@@ -1,22 +1,21 @@
-package ThirdStep.services;
+package ThirdStep.view;
 
-import ThirdStep.RandomMovingCondition;
-import ThirdStep.model.Car;
-import ThirdStep.model.RecordByCar;
-import ThirdStep.model.RecordByRound;
-import ThirdStep.utils.TextPrintUtils;
+import ThirdStep.domain.model.Car;
+import ThirdStep.domain.model.RecordByCar;
+import ThirdStep.domain.model.RecordByRound;
+import ThirdStep.view.utils.TextPrintUtils;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RecordService {
+public class RecordPrintView {
 
     private static final String LOCATION_SIGN = "-";
     private static final String WINNER_DELIMITER = ", ";
-    private static final int START_LOCATION = 0;
 
     public void printRecord(List<RecordByRound> recordByRounds) {
+        TextPrintUtils.println("실행 결과");
         recordByRounds.forEach(recordByRound -> {
             printByRound(recordByRound);
             TextPrintUtils.println("");
@@ -27,7 +26,7 @@ public class RecordService {
         recordByRound
                 .getRecordByCars()
                 .forEach(record ->
-                    TextPrintUtils.println(String.format("%s : %s", record.getCar().getName(), LOCATION_SIGN.repeat(record.getLocation())))
+                        TextPrintUtils.println(String.format("%s : %s", record.getCar().getName(), LOCATION_SIGN.repeat(record.getLocation())))
                 );
     }
 
@@ -52,22 +51,6 @@ public class RecordService {
                 .stream()
                 .filter(recordByCar -> recordByCar.getLocation() == max)
                 .map(RecordByCar::getCar)
-                .collect(Collectors.toList());
-    }
-
-    public List<RecordByCar> initRecordByCars(List<Car> cars) {
-        return cars.stream()
-                .map(car -> new RecordByCar(car, START_LOCATION))
-                .collect(Collectors.toList());
-    }
-
-    public List<RecordByCar> generateRecordByCar(List<RecordByCar> recordByCars) {
-        return recordByCars
-                .stream()
-                .map(recordByCar -> new RecordByCar(
-                        recordByCar.getCar(),
-                        recordByCar.getLocation() + CarService.movedDistance(RandomMovingCondition.create()))
-                )
                 .collect(Collectors.toList());
     }
 }

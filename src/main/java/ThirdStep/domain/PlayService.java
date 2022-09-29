@@ -1,22 +1,19 @@
-package ThirdStep.services;
+package ThirdStep.domain;
 
-import ThirdStep.RandomMovingCondition;
-import ThirdStep.model.Car;
-import ThirdStep.model.GameSetting;
-import ThirdStep.model.RecordByCar;
-import ThirdStep.model.RecordByRound;
+import ThirdStep.domain.model.GameSetting;
+import ThirdStep.domain.model.RecordByCar;
+import ThirdStep.domain.model.RecordByRound;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class PlayService {
 
     public static final int FIRST_ROUND = 1;
     public RecordService recordService;
 
-    public PlayService(RecordService recordService) {
-        this.recordService = recordService;
+    public PlayService() {
+        this.recordService = new RecordService();
     }
 
     public List<RecordByRound> racing(GameSetting gameSetting) {

@@ -1,7 +1,7 @@
 package ThirdStep;
 
-import ThirdStep.model.CarRequest;
-import ThirdStep.validator.RequestValidator;
+import ThirdStep.domain.model.request.CarRequest;
+import ThirdStep.domain.validator.RequestValidator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

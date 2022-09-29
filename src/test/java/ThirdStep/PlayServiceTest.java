@@ -1,11 +1,9 @@
 package ThirdStep;
 
-import ThirdStep.model.Car;
-import ThirdStep.model.CarRequest;
-import ThirdStep.model.GameSetting;
-import ThirdStep.services.CarService;
-import ThirdStep.services.PlayService;
-import ThirdStep.services.RecordService;
+import ThirdStep.domain.model.Car;
+import ThirdStep.domain.model.request.CarRequest;
+import ThirdStep.domain.model.GameSetting;
+import ThirdStep.domain.PlayService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -21,14 +19,14 @@ class PlayServiceTest {
     private final int INIT_ATTEMPTS = 5;
     private final int FIRST_RACE = 1;
 
-    private final PlayService play = new PlayService(new RecordService());
+    private final PlayService play = new PlayService();
 
     @BeforeEach
     void setCars() {
         CarRequest carRequest = new CarRequest("name");
-        cars.add(Car.of(carRequest));
-        cars.add(Car.of(carRequest));
-        cars.add(Car.of(carRequest));
+        cars.add(new Car(carRequest));
+        cars.add(new Car(carRequest));
+        cars.add(new Car(carRequest));
     }
 
 

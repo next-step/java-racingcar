@@ -1,18 +1,16 @@
-package ThirdStep;
-
-import ThirdStep.interfaces.MovingCondition;
+package ThirdStep.domain.strategy;
 
 import java.util.Random;
 
-public class RandomMovingCondition implements MovingCondition {
+public class RandomMovingStrategy implements MovingStrategy {
 
     public static final int RANDOM_NUMBER_BOUND = 10;
     public static final int FORWARD_CRITERIA = 4;
 
     public static final Random RANDOM_GENERATOR = new Random();
 
-    public static RandomMovingCondition create() {
-        return new RandomMovingCondition();
+    public static RandomMovingStrategy create() {
+        return new RandomMovingStrategy();
     }
 
     @Override
