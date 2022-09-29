@@ -8,20 +8,16 @@ public class RacingGame {
     private static final int MIN_VALUE_OF_CAR_MOVE = 4;
 
     private final NumberGenerator numberGenerator;
-    private final int numOfCar;
-    private final int round;
     private final List<Car> cars;
-    private final int[][] result;
+    private final RacingGameResult result;
 
     public RacingGame(NumberGenerator numberGenerator, int numOfCar, int round) {
         this.numberGenerator = numberGenerator;
-        this.numOfCar = numOfCar;
-        this.round = round;
-        this.cars = createCars();
-        this.result = new int[round][numOfCar];
+        this.cars = createCars(numOfCar);
+        this.result = new RacingGameResult(round, numOfCar);
     }
 
-    private List<Car> createCars() {
+    private List<Car> createCars(int numOfCar) {
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < numOfCar; i++) {
             cars.add(new Car());
@@ -29,8 +25,8 @@ public class RacingGame {
         return cars;
     }
 
-    public int[][] run() {
-        for (int i = 0; i < round; i++) {
+    public RacingGameResult run() {
+        for (int i = 0; i < result.getNumOfRound(); i++) {
             runRound(i);
         }
         return result;
@@ -40,7 +36,7 @@ public class RacingGame {
         for (int i = 0; i < cars.size(); i++) {
             Car car = cars.get(i);
             moveCar(car);
-            result[indexOfRound][i] = car.getPosition();
+            result.writeResult(indexOfRound, i, car.getPosition());
         }
     }
 
