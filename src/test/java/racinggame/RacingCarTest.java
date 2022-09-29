@@ -38,6 +38,5 @@ class RacingCarTest {
 
         // then
         assertThat(winners).isEqualTo(expected);
-        assertThat(winners.size()).isEqualTo(expected.size());
     }
 }
