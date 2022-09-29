@@ -1,4 +1,4 @@
-package carRacing;
+package carRacing.view;
 
 import java.util.Scanner;
 
@@ -13,7 +13,7 @@ public class InputView {
         System.out.println("시도할 회수는 몇회인가요?");
         int tryCount = scanner.nextInt();
 
-        this.carNamesString= carNameString;
+        this.carNamesString = carNameString;
         this.tryCount = tryCount;
     }
 

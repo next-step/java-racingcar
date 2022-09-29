@@ -1,5 +1,6 @@
 package carRacing;
 
+import carRacing.domain.Car;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -21,7 +22,7 @@ public class CarTest {
 
     @Test
     @DisplayName("Car 이름 길이가 5자를 초과하면 예외가 발생하는지 테스트")
-    public void carMoveTest2(){
+    public void carMoveTest2() {
         assertThatThrownBy(() -> {
             new Car("123456");
         }).isInstanceOf(RuntimeException.class);

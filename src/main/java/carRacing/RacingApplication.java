@@ -1,15 +1,9 @@
 package carRacing;
 
+import carRacing.controller.CarRacingController;
+
 public class RacingApplication {
     public static void main(String[] args) {
-        // 유저로부터 파라미터 입력
-        InputView inputView = new InputView();
-
-        // 게임 초기화 및 경주 진행
-        CarRacingGame carRacingGame = new CarRacingGame(inputView.getCarNamesString(), inputView.getTryCount());
-        carRacingGame.doGame();
-
-        // 최종 우승자 출력
-        ResultView.displayRacingWinner(carRacingGame.getWinnerList());
+        new CarRacingController();
     }
 }
