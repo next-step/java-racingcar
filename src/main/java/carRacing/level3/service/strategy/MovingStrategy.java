@@ -1,4 +1,4 @@
-package carRacing.level3.service;
+package carRacing.level3.service.strategy;
 
 public interface MovingStrategy {
 

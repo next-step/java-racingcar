@@ -1,6 +1,6 @@
 package carRacing.level3.domain;
 
-import carRacing.level3.service.MovingStrategy;
+import carRacing.level3.service.strategy.MovingStrategy;
 import carRacing.level3.service.output.OutPutView;
 
 public class Car {
@@ -22,7 +22,8 @@ public class Car {
 			location += MOVE_LOCATION;
 		}
 	}
-	public void showMovement(OutPutView outPutView){
+
+	public void showMovement(OutPutView outPutView) {
 		outPutView.showCar(carLocation());
 	}
 

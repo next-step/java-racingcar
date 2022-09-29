@@ -1,7 +1,6 @@
 package carRacing.level3.domain;
 
-import carRacing.level3.service.MovingStrategy;
-import carRacing.level3.service.RandomMovingStrategy;
+import carRacing.level3.service.strategy.MovingStrategy;
 import carRacing.level3.service.output.OutPutView;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,6 +11,7 @@ public class Cars {
 	private static final Integer DEFAULT_CAR_SUM = 0;
 
 	private List<Car> carList;
+	private OutPutView outPutView = new OutPutView();
 
 	public Cars(List<Car> carList) {
 		this.carList = carList;
@@ -23,13 +23,12 @@ public class Cars {
 			.collect(Collectors.toList()));
 	}
 
-	public void moveCarLocation(MovingStrategy movingStartegy) {
-
+	public void moveCarLocation(MovingStrategy movingStrategy) {
 		carList.forEach(car -> {
-			car.moveLocation(movingStartegy);
-			car.showMovement(new OutPutView());
+			car.moveLocation(movingStrategy);
+			car.showMovement(outPutView);
 		});
-		new OutPutView().printSpace();
+		outPutView.printSpace();
 	}
 
 	public int carLocation(int carNum) {

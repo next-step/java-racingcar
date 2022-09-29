@@ -1,16 +1,17 @@
-package carRacing.level3.service;
+package carRacing.level3.service.strategy;
 
-public class RandomMovingStrategy {
+public class RandomMovingStrategy implements MovingStrategy {
 
 	private static final Integer PIVOT = 4;
 	private static final Integer BOUNDARY = 10;
-
 	RandomNum randomNum= new RandomNum();
 
-	public Boolean getRandomMovement(){
+	@Override
+	public Boolean getMovement(){
 		return isMovable(randomNum.randomNum());
 	}
 
+	@Override
 	public Boolean isMovable(int num) {
 
 		if (num >= PIVOT && num < BOUNDARY) {

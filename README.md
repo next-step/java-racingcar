@@ -16,8 +16,8 @@
 | ------ | -- | -- |----------- |
 | 1단계 | String에 대한 메서드 | split(),contains(),containsExactly(), substring(), charAt()| ☑️
 | 1단계 | Set Collection에 대한 메서드 |  @ParameterizedTest, @CsvSource | ☑️
-| 2단계 | 문자열 덧셈 계산기 |  java.util.regex 패키지의 Matcher, Pattern  | ☑
-| 3단계 | 자동차 경주 | 자동차 수 & 시도횟수 입력    |
+| 2단계 | 문자열 덧셈 계산기 |  java.util.regex 패키지의 Matcher, Pattern  | ☑️
+| 3단계 | 자동차 경주 | 자동차 수 & 시도횟수 입력 | 
 
 
 ## 구현 기능 목록
