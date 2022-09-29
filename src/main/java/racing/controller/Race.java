@@ -1,9 +1,9 @@
-package step3;
+package racing.controller;
 
-import step3.model.Cars;
-import step3.model.RandomMovingStrategy;
-import step3.view.InputView;
-import step3.view.ResultView;
+import racing.domain.Cars;
+import racing.domain.RandomMovingStrategy;
+import racing.view.InputView;
+import racing.view.ResultView;
 
 import java.util.stream.IntStream;
 
@@ -13,6 +13,8 @@ public class Race
     private static Race race;
     private final InputView inputView;
     private final ResultView resultView;
+
+    private int tryNumber;
 
     private Race()
     {
@@ -31,11 +33,21 @@ public class Race
 
     public void start()
     {
-        Cars cars = new Cars(inputView.carName(), new RandomMovingStrategy());
-
-        IntStream.range(0, inputView.tryNumber())
+        Cars cars = Cars.newCars(inputView.carName(), new RandomMovingStrategy());
+        setTryNumber();
+        IntStream.range(0, tryNumber)
                 .forEach(tryNumber -> resultView.draw(tryNumber, cars.moving()));
 
         resultView.winnerDraw(cars);
+    }
+
+    private void setTryNumber()
+    {
+        this.tryNumber = inputView.tryNumber();
+
+        if (tryNumber <= 0)
+        {
+            throw new IllegalArgumentException("시도 횟수는 0이하 일 수는 없습니다.");
+        }
     }
 }
