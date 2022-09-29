@@ -5,55 +5,52 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racing.rule.RandomRule;
+import racing.rule.move.MoveStrategy;
+import racing.rule.move.RandomMove;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class GameSetTest {
 
-    RandomRule randomRule;
-    GameSet settings;
-
-    @BeforeEach
-    void settings() {
-        randomRule = new RandomRule();
-        settings = new GameSet(randomRule);
-    }
-
     @Test
     @DisplayName("게임 설정 - 규칙 설정 확인")
-    void checkRuleSet() {
-        assertThat(settings.getRule()).isEqualTo(randomRule);
-    }
+    void 설정규칙_확인() {
+        RandomMove randomMove = new RandomMove();
+        List<String> carNames = Arrays.asList("car1", "car2");
+        GameSet gameSet = new GameSet.GameSetBuilder(
+                randomMove, carNames, 3).build();
 
-    @ParameterizedTest
-    @DisplayName("게임 설정 - 자동차 수 및 이동 수 확인")
-    @ValueSource(ints = {4, 5})
-    void checkNumberOfCarAndMovements(int number) {
-        // 기본 값
-        assertThat(settings.getNumberOfCars()).isZero();
-        assertThat(settings.getNumberOfMove()).isZero();
-
-        // 설정 값
-        settings.setNumberOfCars(number);
-        settings.setNumberOfMove(number);
-
-        assertThat(settings.getNumberOfCars()).isEqualTo(number);
-        assertThat(settings.getNumberOfMove()).isEqualTo(number);
+        assertThat(gameSet.getMoveStrategy()).isEqualTo(randomMove);
+        assertThat(gameSet.getCarNames()).isEqualTo(carNames);
+        assertThat(gameSet.getNumberOfMove()).isEqualTo(3);
     }
 
     @Test
-    @DisplayName("게임 설정 - 자동차, 이동 수 음수 입력 확인")
-    void checkNegativeNumber() {
-        assertThatThrownBy(() -> settings.setNumberOfCars(-1))
+    @DisplayName("게임 설정 - 이동 규칙 예외 검증")
+    void 설정규칙_빌더_이동규칙_예외_검증() {
+        assertThatThrownBy(() -> new GameSet.GameSetBuilder(
+                null, Arrays.asList("car1", "car2"), 3).build())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
-    @DisplayName("게임 설정 - 규칙 설정 에러 발생")
-    void createConstructorException() {
-        assertThatThrownBy(() -> new GameSet(null))
+    @DisplayName("게임 설정 - 차량명 예외 검증")
+    void 설정규칙_빌더_차량명_예외_검증() {
+        assertThatThrownBy(() -> new GameSet.GameSetBuilder(
+                new RandomMove(), new ArrayList<String>(), 3).build())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("게임 설정 - 이동 수 예외 검증")
+    void 설정규칙_빌더_이동수_예외_검증() {
+        assertThatThrownBy(() -> new GameSet.GameSetBuilder(
+                new RandomMove(), Arrays.asList("car1", "car2"), -1).build())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

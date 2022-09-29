@@ -1,18 +1,30 @@
 package racing.domain;
 
+import racing.rule.move.MoveStrategy;
+
 public class Car {
+    private final static int CAR_NAME_MAX_LENGTH = 5;
+    private final String carName;
+    private int forwardCount = 1;
 
-    private static final String WHEEL_MARKS = "-";
+    public Car(String carName) {
+        if (carName.length() > CAR_NAME_MAX_LENGTH) {
+            throw new IllegalArgumentException("차량명은 5자를 넘을 수 없습니다.");
+        }
+        this.carName = carName;
+    }
 
-    private StringBuilder position = new StringBuilder(WHEEL_MARKS);
-
-    public void move(boolean move) {
-        if (move) {
-            this.position = position.append(WHEEL_MARKS);
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.move()) {
+            this.forwardCount++;
         }
     }
 
-    public String getPosition() {
-        return position.toString();
+    public String getCarName() {
+        return carName;
+    }
+
+    public int getForwardCount() {
+        return forwardCount;
     }
 }

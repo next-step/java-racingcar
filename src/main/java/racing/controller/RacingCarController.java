@@ -1,27 +1,19 @@
 package racing.controller;
 
 import racing.domain.GameSet;
-import racing.domain.RacingGame;
-import racing.rule.Rule;
-import racing.view.GameInput;
-import racing.view.GameResult;
+import racing.domain.Game;
+import racing.rule.move.RandomMove;
+import racing.view.GameInputView;
+import racing.view.GameResultView;
 
 public class RacingCarController {
-    private final GameSet gameSet;
-    private final GameResult gameResult = new GameResult();
-
-    public RacingCarController(Rule rule) {
-        this.gameSet = new GameSet(rule);
-    }
 
     public void racingCarGame() {
-        GameInput gameInput = new GameInput();
-        gameSet.setNumberOfCars(gameInput.inputCarCount());
-        gameSet.setNumberOfMove(gameInput.inputTryCount());
+        GameInputView gameInputView = new GameInputView();
+        Game game = new Game(new GameSet.GameSetBuilder(
+                new RandomMove(), gameInputView.inputCarNames(), gameInputView.inputMoveCount()).build());
 
-        RacingGame racingGame = new RacingGame(gameSet);
-        racingGame.start();
-
-        gameResult.print(racingGame.result());
+        game.start();
+        new GameResultView().result(game);
     }
 }

@@ -6,25 +6,20 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
 
-    private Car car = new Car();
-
     @Test
     @DisplayName("자동차 검증 - 출발지 확인")
-    void checkStartingPoint() {
-        assertThat(car.getPosition()).isEqualTo("-");
+    void 차량_기본_출발지_확인() {
+        assertThat(new Car("car").getForwardCount()).isEqualTo(1);
     }
 
-    @ParameterizedTest
-    @DisplayName("자동차 검증 - 이동 여부 검증")
-    @CsvSource(
-            delimiter = '|',
-            value = {"true|'--'", "false|'-'"}
-    )
-    void moveForward(boolean move, String expected) {
-        car.move(move);
-        assertThat(car.getPosition()).isEqualTo(expected);
+    @Test
+    @DisplayName("자동차 검증 - 차량명 유효성 확인")
+    void 차량명_길이_확인() {
+        assertThatThrownBy(() -> new Car("123456"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }

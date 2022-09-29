@@ -23,7 +23,7 @@ public class SetTest {
         numbers.add(2);
         numbers.add(3);
     }
-    
+
     @Test
     @DisplayName("요구사항1: Set의 size() 확인 테스트")
     void checkSize() {
