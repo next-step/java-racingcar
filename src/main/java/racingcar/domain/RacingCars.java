@@ -37,6 +37,12 @@ public class RacingCars {
         return value;
     }
 
+    public List<String> getAllNames() {
+        return value.stream()
+            .map(RacingCar::getName)
+            .collect(Collectors.toList());
+    }
+
     private void validateConditionsCount(List<MoveCondition> conditions) {
         if (conditions.size() != value.size()) {
             throw new IllegalArgumentException("racingCars와 conditions의 개수는 같아야합니다. | racingCars 개수: " + value.size() + " | conditions 개수: " + conditions.size());
@@ -64,23 +70,6 @@ public class RacingCars {
         if (Arrays.stream(names).distinct().count() != names.length) {
             throw new IllegalArgumentException("중복된 자동차 이름이 존재할 수 없습니다. | 입력된 names: " + Arrays.toString(names));
         }
-    }
-
-    public List<RacingCar> getWinners() {
-        int maxPosition = getMaxPosition();
-        return value.stream()
-            .filter(racingCar -> racingCar.isEqualsPosition(maxPosition))
-            .collect(Collectors.toList());
-    }
-
-    private int getMaxPosition() {
-        int maxPosition = 0;
-        for (RacingCar racingCar : value) {
-            int position = racingCar.getPosition();
-            maxPosition = Math.max(maxPosition, position);
-        }
-
-        return maxPosition;
     }
 
     @Override

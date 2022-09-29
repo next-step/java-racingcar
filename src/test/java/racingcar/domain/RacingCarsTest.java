@@ -76,15 +76,9 @@ class RacingCarsTest {
     }
 
     @Test
-    @DisplayName("가장 높은 Position 값을 가진 자동차로 우승자 선별하는지 검증")
-    void getWinners() {
-        RacingCar racingCar1 = new RacingCar("test1", 0);
-        RacingCar racingCar2 = new RacingCar("test2", 1);
-        RacingCar racingCar3 = new RacingCar("test3", 2);
-        RacingCar racingCar4 = new RacingCar("test4", 3);
-        RacingCar racingCar5 = new RacingCar("test5", 3);
-
-        RacingCars racingCars = new RacingCars(List.of(racingCar1, racingCar2, racingCar3, racingCar4, racingCar5));
-        then(racingCars.getWinners()).isEqualTo(List.of(racingCar4, racingCar5));
+    @DisplayName("RacingCars 내의 자동차 모든 이름 반환 검증")
+    void getAllNames() {
+        RacingCars racingCars = new RacingCars(new String[]{"1", "2", "3"});
+        then(racingCars.getAllNames()).isEqualTo(List.of("1", "2", "3"));
     }
 }

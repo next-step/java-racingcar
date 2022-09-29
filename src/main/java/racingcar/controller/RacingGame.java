@@ -1,11 +1,10 @@
 package racingcar.controller;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import racingcar.domain.MoveCondition;
 import racingcar.domain.MoveConditionGenerator;
-import racingcar.domain.RacingCar;
+import racingcar.domain.RacingCarWinnerSelector;
 import racingcar.domain.RacingCars;
 import racingcar.dto.RacingCarPrintDTO;
 import racingcar.view.InputView;
@@ -26,12 +25,8 @@ public class RacingGame {
             PrintView.printRacingCarPrintRecords(RacingCarPrintDTO.fromRacingCars(racingCars));
         }
 
-        List<RacingCar> winners = racingCars.getWinners();
-        List<String> winnerNames = winners.stream()
-            .map(RacingCar::getName)
-            .collect(Collectors.toList());
-
-        PrintView.printRacingCarWinnerResult(winnerNames);
+        RacingCars winners = RacingCarWinnerSelector.selectWinners(racingCars);
+        PrintView.printRacingCarWinnerResult(winners.getAllNames());
     }
 
     public static void main(String[] args) {
