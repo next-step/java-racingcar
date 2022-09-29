@@ -49,4 +49,17 @@ public class RoundCars {
         this.cars.addAll(cars);
     }
 
+    public List<String> retrieveWinners() {
+        int maxPosition = 0;
+        List<String> winners = new ArrayList<>();
+        for (Car car : cars) {
+            int carPosition = car.getPosition();
+            if (maxPosition <= carPosition) {
+                maxPosition = carPosition;
+                winners.add(car.getName());
+            }
+        }
+        return winners;
+    }
+
 }

@@ -19,6 +19,7 @@ public class RacingGame {
         for (int round = 0; round < tryNums.getNumber(); round++) {
             roundCars.moveCars(racingRecord, movingStrategy);
         }
+        racingRecord.addWinners(roundCars.retrieveWinners());
         return racingRecord;
     }
 }
