@@ -19,9 +19,4 @@ public class RacingCarApplication {
         RacingRecord racingRecord = racingCar.racingStart(randomStrategy);
         ResultView.printRoundRecord(racingRecord, "-");
     }
-
-    public int a() {
-        return 1;
-    }
-
 }

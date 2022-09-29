@@ -4,26 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingRecord {
-    private static final List<List<Integer>> record = new ArrayList<>();
+    private static final List<RoundCars> records = new ArrayList<>();
 
-    public void addCarPosition(int position) {
-        List<Integer> roundCarPositions = record.get(record.size() - 1);
-        roundCarPositions.add(position);
+    public List<RoundCars> retrieveRecord() {
+        return records;
     }
 
-    public void createNewRoundRecord() {
-        record.add(new ArrayList<>());
-    }
+    public void addCarsPosition(RoundCars roundCars) {
+        List<Car> recordCars = new ArrayList<>();
+        List<Car> cars = roundCars.retrieveCars();
 
-    public String printRecordWithSymbol(String symbol) {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (List<Integer> list : record) {
-            for (int carPosition : list) {
-                stringBuilder.append(symbol.repeat(carPosition));
-                stringBuilder.append("\n");
-            }
-            stringBuilder.append("\n");
+        for (Car car : cars) {
+            recordCars.add(new Car(car.getPosition()));
         }
-        return stringBuilder.toString();
+
+        RoundCars recordRoundCar = new RoundCars(recordCars);
+        records.add(recordRoundCar);
     }
 }

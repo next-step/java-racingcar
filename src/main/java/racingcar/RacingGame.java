@@ -15,7 +15,6 @@ public class RacingGame {
     public RacingRecord racingStart(MovingStrategy movingStrategy) {
         RoundCars roundCars = new RoundCars(carNums.getNumber());
         for (int round = 0; round < tryNums.getNumber(); round++) {
-            racingRecord.createNewRoundRecord();
             roundCars.moveCars(racingRecord, movingStrategy);
         }
         return racingRecord;

@@ -15,10 +15,18 @@ public class RoundCars {
         }
     }
 
+    public RoundCars(List<Car> cars) {
+        this.cars.addAll(cars);
+    }
+
     public void moveCars(RacingRecord racingRecord, MovingStrategy movingStrategy) {
         for (Car car : cars) {
             car.move(movingStrategy);
-            racingRecord.addCarPosition(car.getPosition());
         }
+        racingRecord.addCarsPosition(this);
+    }
+
+    public List<Car> retrieveCars() {
+        return cars;
     }
 }
