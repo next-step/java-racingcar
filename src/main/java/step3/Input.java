@@ -1,4 +1,4 @@
-package racing;
+package step3;
 
 public class Input {
     private static int carsQuantity;
