@@ -1,13 +1,12 @@
 package racinggame;
 
 public class Car {
-    private static final int MAX_NUMBER = 4;
+    private static final int MAX_POINT_TO_MOVE = 4;
     private static final int MAX_NAME_LENGTH = 5;
     private static final String ERR_MAX_NAME_LENGTH = "자동차 이름은 5글자를 초과할 수 없습니다.";
 
     private String name;
     private int status;
-
 
     public Car(String name) {
         this.name = limitNameLength(name);
@@ -32,7 +31,7 @@ public class Car {
     }
 
     public void move(int number) {
-        if (number >= MAX_NUMBER) {
+        if (number >= MAX_POINT_TO_MOVE) {
             status++;
         }
     }
