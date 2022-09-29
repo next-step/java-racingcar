@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarRacingGameTest {
@@ -32,35 +30,4 @@ public class CarRacingGameTest {
         }
     }
 
-    @Test
-    @DisplayName("우승자 조회 테스트 (한명인 경우)")
-    public void carRacingGameTest3(){
-        // given
-        CarRacingGame carRacingGame = new CarRacingGame(CAR_NAMES_STRING_TO_TEST, 1);
-
-        // when
-        Car car = carRacingGame.getCarEntryList().get(0);
-        car.run(4);
-        car.run(4);
-
-        // then
-        List<Car> winnerList = carRacingGame.getWinnerList();
-        assertThat(winnerList).isNotNull();
-        assertThat(winnerList.size()).isEqualTo(1);
-        assertThat(winnerList.get(0).getName()).isEqualTo(car.getName());
-    }
-
-    @Test
-    @DisplayName("우승자 조회 테스트 (여러명인 경우)")
-    public void carRacingGameTest4(){
-        // given
-        CarRacingGame carRacingGame = new CarRacingGame(CAR_NAMES_STRING_TO_TEST, 1);
-
-        // 아무도 전진하지 않으면 참가자 전원이 우승자
-
-        // then
-        List<Car> winnerList = carRacingGame.getWinnerList();
-        assertThat(winnerList).isNotNull();
-        assertThat(winnerList.size()).isEqualTo(CAR_NAMES_STRING_TO_TEST.split(",").length);
-    }
 }
