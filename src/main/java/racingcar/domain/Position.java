@@ -2,14 +2,14 @@ package racingcar.domain;
 
 public class Position {
 
-    private final int position;
+    private final int value;
 
     public Position() {
         this(0);
     }
 
-    public Position(int position) {
-        this.position = position;
+    public Position(int value) {
+        this.value = value;
     }
 
     public Position(Position position, int move_length) {
@@ -17,7 +17,7 @@ public class Position {
     }
 
     public int getValue() {
-        return position;
+        return value;
     }
 
     @Override
@@ -31,11 +31,11 @@ public class Position {
 
         Position position1 = (Position) o;
 
-        return position == position1.position;
+        return value == position1.value;
     }
 
     @Override
     public int hashCode() {
-        return position;
+        return value;
     }
 }

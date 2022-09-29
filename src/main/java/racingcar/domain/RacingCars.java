@@ -9,41 +9,41 @@ import racingcar.dto.RacingCarPrintDTO;
 
 public class RacingCars {
 
-    private final List<RacingCar> racingCars;
+    private final List<RacingCar> value;
 
-    public RacingCars(List<RacingCar> racingCars) {
-        validateEmpty(racingCars);
-        this.racingCars = racingCars;
+    public RacingCars(List<RacingCar> value) {
+        validateEmpty(value);
+        this.value = value;
     }
 
     public RacingCars(String[] names) {
         validateEmpty(names);
         validateDuplicateName(names);
-        this.racingCars = Arrays.stream(names)
+        this.value = Arrays.stream(names)
             .map(RacingCar::new)
             .collect(Collectors.toList());
     }
 
     public void move(List<MoveCondition> conditions) {
         validateConditionsCount(conditions);
-        for (int i = 0; i < racingCars.size(); i++) {
-            RacingCar racingCar = racingCars.get(i);
+        for (int i = 0; i < value.size(); i++) {
+            RacingCar racingCar = value.get(i);
             racingCar.move(conditions.get(i));
         }
     }
 
     public int size() {
-        return racingCars.size();
+        return value.size();
     }
 
     public List<RacingCarPrintDTO> getRacingCarPrintDTOs() {
-        return racingCars.stream()
+        return value.stream()
             .map(RacingCarPrintDTO::new)
             .collect(Collectors.toList());
     }
 
     private void validateConditionsCount(List<MoveCondition> conditions) {
-        if (conditions.size() != racingCars.size()) {
+        if (conditions.size() != value.size()) {
             throw new RuntimeException("racingCars와 conditions의 개수는 같아야합니다..");
         }
     }
@@ -68,14 +68,14 @@ public class RacingCars {
 
     public List<RacingCar> getWinners() {
         int maxPosition = getMaxPosition();
-        return racingCars.stream()
+        return value.stream()
             .filter(racingCar -> racingCar.isEqualsPosition(maxPosition))
             .collect(Collectors.toList());
     }
 
     private int getMaxPosition() {
         int maxPosition = 0;
-        for (RacingCar racingCar : racingCars) {
+        for (RacingCar racingCar : value) {
             int position = racingCar.getPosition();
             maxPosition = Math.max(maxPosition, position);
         }
@@ -93,11 +93,11 @@ public class RacingCars {
         }
 
         RacingCars that = (RacingCars) o;
-        return Objects.equals(racingCars, that.racingCars);
+        return Objects.equals(value, that.value);
     }
 
     @Override
     public int hashCode() {
-        return racingCars != null ? racingCars.hashCode() : 0;
+        return value != null ? value.hashCode() : 0;
     }
 }
