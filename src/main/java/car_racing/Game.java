@@ -6,17 +6,13 @@ import java.util.stream.IntStream;
 
 public class Game {
     private Integer totalTryCount;
-    private Round round;
     private Cars cars;
+    private OutputInterface outputInterface;
 
-    public Game(Integer totalTryCount, Cars cars) {
+    public Game(Integer totalTryCount, Integer carCount, OutputInterface outputInterface) {
         this.totalTryCount = totalTryCount;
-        this.round = new Round();
-        this.cars = cars;
-    }
-
-    public boolean isEnded() {
-        return Objects.equals(totalTryCount, round.count());
+        this.cars = new Cars(carCount);
+        this.outputInterface = outputInterface;
     }
 
     public void play() {
@@ -24,8 +20,7 @@ public class Game {
     }
 
     private void doTry() {
-        round.start();
         cars.goOrStop();
-        new GameDashBoard(cars).show();
+        cars.straightCounts().forEach(outputInterface::showCurrentStatus);
     }
 }

@@ -8,10 +8,6 @@ public class Cars {
     private List<Car> cars;
 
     public Cars(int numberOfCars) {
-        if (numberOfCars < 0) {
-            throw new IllegalArgumentException();
-        }
-
         this.cars = new ArrayList<>();
 
         for (int index = 0; index < numberOfCars; index++) {
