@@ -1,10 +1,9 @@
-package step3;
+package racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.model.Car;
-import step3.model.RandomMovingStrategy;
-
+import racing.domain.Car;
+import racing.domain.model.CarName;
 
 import java.util.stream.IntStream;
 
@@ -18,7 +17,7 @@ class CarTest
     void moveTest()
     {
         //given
-        Car car = new Car(() -> true);
+        Car car = Car.newCar(() -> true);
         int tryNumber = 5;
         //when
         IntStream.range(0, tryNumber).forEach(value -> car.moveForward());
@@ -31,19 +30,20 @@ class CarTest
     void stopTest()
     {
         //given
-        Car car = new Car(() -> false);
+        Car car = Car.newCar(() -> false);
         int tryNumber = 5;
         //when
         IntStream.range(0, tryNumber).forEach(value -> car.moveForward());
         //then
-        assertThat(car.getPosition()).isZero();
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 
     @Test
     @DisplayName("Car객체가 생성 될때 이름의 크기가 5자 이상일 경우 IllegalArgumentException이 발생하는지 확인한다.")
     void nameFiveCharactersExcessTest()
     {
+        //then
         assertThatExceptionOfType(IllegalArgumentException.class)
-            .isThrownBy(() -> new Car("abcdefgh", ()-> true));
+            .isThrownBy(() -> Car.newCar(CarName.of("abcdefgh"), ()-> true));
     }
 }
