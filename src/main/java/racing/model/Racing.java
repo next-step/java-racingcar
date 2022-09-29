@@ -18,10 +18,11 @@ public class Racing {
 		}
 	}
 
-	public List<Position> race(MoveStrategy moveStrategy) {
-		List<Position> result = new ArrayList<>();
+	public List<Result> race(MoveStrategy moveStrategy) {
+		List<Result> result = new ArrayList<>();
 		for (Car car : cars) {
-			result.add(car.move(moveStrategy.isMovable()));
+			car.move(moveStrategy.isMovable());
+			result.add(new Result(car.getPosition(), car.getName()));
 		}
 		return result;
 	}
