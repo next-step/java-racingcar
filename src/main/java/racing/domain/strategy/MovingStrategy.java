@@ -1,4 +1,4 @@
-package domain.strategy;
+package racing.domain.strategy;
 
 public interface MovingStrategy {
 
