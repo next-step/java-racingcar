@@ -1,0 +1,5 @@
+package race;
+
+class ResultViewTest {
+
+}
