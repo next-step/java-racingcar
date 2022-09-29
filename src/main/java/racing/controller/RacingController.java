@@ -12,7 +12,7 @@ public class RacingController {
 
 	public void run() {
 		GameRequest gameRequest = InputView.inputGameRequest();
-		playGame(gameRequest.getTimes(), new Racing(gameRequest.getCarCount()));
+		playGame(gameRequest.getTimes(), new Racing(gameRequest.getNames()));
 	}
 
 	private void playGame(int times, Racing racing) {

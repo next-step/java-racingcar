@@ -7,14 +7,14 @@ public class Racing {
 
 	private List<Car> cars;
 
-	public Racing(int carCount) {
-		generateCars(carCount);
+	public Racing(List<Name> names) {
+		generateCars(names);
 	}
 
-	private void generateCars(int carCount) {
+	private void generateCars(List<Name> names) {
 		this.cars = new ArrayList<>();
-		for (int i = 0; i < carCount; i++) {
-			cars.add(new Car());
+		for (Name name : names) {
+			cars.add(new Car(name));
 		}
 	}
 

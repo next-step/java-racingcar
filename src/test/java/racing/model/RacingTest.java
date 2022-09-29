@@ -4,12 +4,17 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 class RacingTest {
 
-	@DisplayName("자동차 개수를 입력하면 개수만큼 자동차가 생성된다.")
+	@DisplayName("자동차 이름의 개수만큼 자동차가 생성된다.")
 	@Test
 	void generateCars() {
-		Racing racing = new Racing(3);
-		Assertions.assertThat(racing.getCars()).hasSize(3);
+		List<Name> names = new ArrayList<>(Arrays.asList(new Name("a"), new Name("b")));
+		Racing racing = new Racing(names);
+		Assertions.assertThat(racing.getCars()).hasSize(2);
 	}
 }
