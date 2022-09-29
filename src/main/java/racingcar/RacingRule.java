@@ -5,23 +5,23 @@ import racingcar.domain.Car;
 
 public class RacingRule {
 
-  public static void cycleTryTimes(int tryTimes, List<Car> cars) {
-    for (int i = 0; i < tryTimes; i++) {
-      cycleCarMove(cars);
-      System.out.println();
+  public void play(int trynum, List<Car> cars) {
+    for (int i = 0; i < trynum; i++) {
+      System.out.println("실행 결과");
+      ResultView resultView = new ResultView();
+      resultView.printResult(cycleCarMove(cars));
     }
   }
 
-  private static void cycleCarMove(List<Car> cars) {
-
-    RandomNum randomNum = new RandomNum();
-    MovingStrategy movingStrategy = new MovingStrategy();
+  private static List<Car> cycleCarMove(List<Car> cars) {
 
     for (Car car : cars) {
-      int randNum = randomNum.createRandNum();
-      car.positionView = movingStrategy.moveCar(randNum, car.positionView, car.criteriaNum);
-      System.out.println(car.positionView);
+      RandomMovingStrategy randomMovingStrategy = new RandomMovingStrategy();
+      randomMovingStrategy.move(car, randomMovingStrategy.getRandNum(),
+          car.getcriteriaNum());
     }
+    return cars;
   }
+
 
 }
