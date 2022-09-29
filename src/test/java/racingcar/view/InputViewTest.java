@@ -23,7 +23,7 @@ class InputViewTest {
     }
 
     @Test
-    @DisplayName("자이차 이름에 공백이 있다면 공백제거")
+    @DisplayName("자동차 이름에 공백이 있다면 공백제거")
     void 차_이름_공백_제거() {
         assertThat(InputView.carNameValidCheck(new String[]{"c  ar1","c ar2","car 3"}))
                 .isEqualTo(new String[]{"car1","car2","car3"});
