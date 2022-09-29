@@ -2,6 +2,7 @@ package game.domain;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -18,5 +19,14 @@ public class RacingGameRuleTest {
                 () -> assertThat(racingGameRule.isForward(66)).isEqualTo(true),
                 () -> assertThat(racingGameRule.isForward(3)).isEqualTo(false)
         );
+    }
+
+    @DisplayName("racingGameRule의 범위 안에 있는 숫자를 뽑는다.")
+    @RepeatedTest(10)
+    void pickRandomNumber() {
+        RacingGameRule racingGameRule = new RacingGameRule(4, 6);
+        RacingGame racingGame = new RacingGame(racingGameRule, RacingGameCarList.makeRacingGameCars(3), 3);
+
+        org.assertj.core.api.Assertions.assertThat(racingGameRule.pickRandomNumber()).isBetween(0, racingGameRule.bound());
     }
 }

@@ -1,10 +1,13 @@
 package game.domain;
 
+import java.util.Random;
+
 public class RacingGameRule {
 
+    private static final int FORWARD_DISTANCE = 1;
+    private static final Random RANDOM = new Random();
     private int canForwardNumber;
     private int bound;
-    private static final int forwardDistance = 1;
 
     public RacingGameRule(int canForwardNumber, int bound) {
         this.canForwardNumber = canForwardNumber;
@@ -24,7 +27,11 @@ public class RacingGameRule {
     }
 
     public int forwardDistance() {
-        return forwardDistance;
+        return FORWARD_DISTANCE;
+    }
+
+    public int pickRandomNumber() {
+        return RANDOM.nextInt(bound);
     }
 
 }

@@ -2,11 +2,18 @@ package game.io.input;
 
 import game.io.output.InputView;
 
+import java.util.List;
+
 public class RacingGameInput {
 
     public static int inputNumberOfCar() {
         InputView.printInputCarGuide();
         return Input.inputPositiveNumber();
+    }
+
+    public static List<String> inputCarNames() {
+        InputView.printInputNameGuide();
+        return Input.inputNames();
     }
 
     public static int inputNumberOfRound() {

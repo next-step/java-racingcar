@@ -1,41 +1,29 @@
 package game.domain;
 
+import game.domain.car.Car;
+import game.domain.car.RacingGameCar;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import java.util.Arrays;
 
 public class RacingGameTest {
 
-    @DisplayName("racingGameRule의 범위 안에 있는 숫자를 뽑는다.")
-    @RepeatedTest(10)
-    void pickRandomNumber() {
-        RacingGameRule racingGameRule = new RacingGameRule(4, 6);
-        RacingGame racingGame = new RacingGame(racingGameRule, CarList.makeCars(3), 3);
-
-        Assertions.assertThat(racingGame.pickRandomNumber()).isBetween(0, racingGameRule.bound());
-    }
-
-    @DisplayName("RacingGameRule에 따라서 자동차의 위치를 변경한다.")
+    @DisplayName("자동차 중 위치 값이 가장 높은 자동차를 우승자로 반환한다.")
     @Test
-    void forwardByRule() {
-        RacingGameRule racingGameRule = new RacingGameRule(4, 10);
-        RacingGame racingGame = new RacingGame(racingGameRule, CarList.makeCars(3), 3);
-        Car car = racingGame.carList().cars().get(0);
+    void winners(){
+        RacingGameCar car1 = new RacingGameCar("1");
+        car1.forward(4);
+        RacingGameCar car2 = new RacingGameCar("2");
+        car2.forward(3);
+        RacingGameCar car3 = new RacingGameCar("3");
+        car3.forward(4);
+        RacingGameCarList racingGameCars = new RacingGameCarList(Arrays.asList(car1, car2, car3));
+        RacingGame racingGame = new RacingGame(new RacingGameRule(4,10),racingGameCars,5);
 
-        org.junit.jupiter.api.Assertions.assertAll(
-                () -> {
-                    racingGame.forwardByRule(car, racingGameRule.canForwardNumber() - 1);
-                    assertThat(car.location()).isEqualTo(car.location());
-                },
-                () -> {
-                    int expected = car.location() + racingGameRule.forwardDistance();
-                    racingGame.forwardByRule(car, racingGameRule.canForwardNumber());
-                    assertThat(car.location()).isEqualTo(expected);
-                }
-        );
+        Assertions.assertThat(racingGame.winners(racingGameCars).cars()).containsOnly(car1,car3);
+        Assertions.assertThat(racingGame.winners(racingGameCars).cars()).doesNotContain(car2);
     }
-
 }
