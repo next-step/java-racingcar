@@ -1,6 +1,7 @@
 package carRacing;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CarRacingGame {
@@ -18,7 +19,7 @@ public class CarRacingGame {
     }
 
     public List<Car> getCarEntryList() {
-        return carEntryList;
+        return Collections.unmodifiableList(carEntryList);
     }
 
     // 게임 시작

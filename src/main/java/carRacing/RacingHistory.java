@@ -1,9 +1,6 @@
 package carRacing;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class RacingHistory {
@@ -12,8 +9,8 @@ public class RacingHistory {
     public List<Record> getRecordList(int round) {
         return recordList
                 .stream()
-                .filter(vo->vo.getRound() == round)
-                .collect(Collectors.toList());
+                .filter(vo -> vo.getRound() == round)
+                .collect(Collectors.toUnmodifiableList());
     }
 
     public void doRecord(int round, List<Car> carList){
@@ -32,12 +29,10 @@ public class RacingHistory {
     }
 
     public List<Record> getWinnerRecordList() {
-        int maxPosition = getMaxCarPosition();
-        int lastRound = getLastRound();
         return recordList
                 .stream()
-                .filter(vo -> vo.getPosition() == maxPosition)
-                .filter(vo -> vo.getRound() == lastRound)
+                .filter(vo -> vo.getPosition() == getMaxCarPosition())
+                .filter(vo -> vo.getRound() == getLastRound())
                 .collect(Collectors.toList());
     }
 
