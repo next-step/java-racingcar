@@ -24,7 +24,7 @@ public class CarServiceTest {
 	@DisplayName("경주를 진행한다")
 	void 경주_진행() {
 		Cars cars = carService.prepare(CAR_SUM);
-		carService.moveCar(cars,new RandomMovingStartegy());
+		carService.moveCar(3,cars,new RandomMovingStartegy());
 		for (int i = 0; i < CAR_SUM; i++) {
 			assertThat(cars.carLocation(i)).isGreaterThanOrEqualTo(DEFAULT_LOCATION);
 		}

@@ -14,8 +14,10 @@ public class CarService {
 				.collect(Collectors.toList()));
 	}
 
-	public void moveCar(Cars cars,MovingStartegy movingStartegy) {
-		cars.moveCarLocation(movingStartegy);
+	public void moveCar(int carRound,Cars cars, RandomMovingStartegy movingStartegy) {
+		for (int i = 0; i < carRound; i++) {
+			cars.moveCarLocation(movingStartegy);
+		}
 	}
 
 }
