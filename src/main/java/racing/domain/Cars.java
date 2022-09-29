@@ -1,4 +1,6 @@
-package step3.model;
+package racing.domain;
+
+import racing.domain.model.CarName;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,22 +12,32 @@ import java.util.stream.IntStream;
 public class Cars
 {
     private final List<Car> carList;
-    private static final String DELEMETER = ", ";
+    private static final String DELEMETER = ",";
 
-    public Cars(int number, MovingStrategy movingStrategy)
+    private Cars(int number, MovingStrategy movingStrategy)
     {
         this.carList = new ArrayList<>();
 
         IntStream.range(0, number)
-            .forEach(carName -> carList.add(new Car(movingStrategy)));
+            .forEach(carName -> carList.add(Car.newCar(movingStrategy)));
     }
 
-    public Cars(String[] carNames, MovingStrategy movingStrategy)
+    private Cars(String[] carNames, MovingStrategy movingStrategy)
     {
         this.carList = new ArrayList<>();
 
         Arrays.stream(carNames)
-            .forEach(carName -> carList.add(new Car(carName, movingStrategy)));
+            .forEach(carName -> carList.add(Car.newCar(CarName.of(carName), movingStrategy)));
+    }
+
+    public static Cars newCars(String[] carNames, MovingStrategy movingStrategy)
+    {
+        return new Cars(carNames, movingStrategy);
+    }
+
+    public static Cars newCars(int number, MovingStrategy movingStrategy)
+    {
+        return new Cars(number, movingStrategy);
     }
 
     public List<Car> getCarList()

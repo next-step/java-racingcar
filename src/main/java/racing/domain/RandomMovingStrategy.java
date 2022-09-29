@@ -1,4 +1,4 @@
-package step3.model;
+package racing.domain;
 
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
