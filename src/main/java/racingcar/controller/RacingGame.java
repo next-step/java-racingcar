@@ -13,15 +13,10 @@ import racingcar.view.PrintView;
 
 public class RacingGame {
 
-    private final RacingCars racingCars;
-    private final int tryCount;
-
-    public RacingGame(RacingCars racingCars, int tryCount) {
-        this.racingCars = racingCars;
-        this.tryCount = tryCount;
+    private RacingGame() {
     }
 
-    private void gameStart() {
+    private static void gameStart(RacingCars racingCars, int tryCount) {
         PrintView.printGameResultMessage();
 
         int size = racingCars.size();
@@ -43,7 +38,6 @@ public class RacingGame {
         int tryCount = InputView.initTryCount();
         String[] racingCarNames = InputView.initRacingCarNames();
         RacingCars racingCars = new RacingCars(racingCarNames);
-        RacingGame racingGame = new RacingGame(racingCars, tryCount);
-        racingGame.gameStart();
+        RacingGame.gameStart(racingCars, tryCount);
     }
 }
