@@ -1,4 +1,4 @@
-package carRacing;
+package carRacing.domain;
 
 public class Car {
     private final String name;
@@ -7,7 +7,7 @@ public class Car {
     private static final int BASIS_POINT_TO_MOVE = 4;
     private static final int LIMIT_LENGTH_TO_CAR_NAME = 5;
 
-    Car(String name) {
+    public Car(String name) {
         if (!isValidName(name)) {
             throw new RuntimeException("lengthToCarName must less than 6  : " + name);
         }

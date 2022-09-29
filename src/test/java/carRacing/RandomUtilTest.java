@@ -1,5 +1,6 @@
 package carRacing;
 
+import carRacing.util.RandomUtil;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 

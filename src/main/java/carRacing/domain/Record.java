@@ -1,4 +1,4 @@
-package carRacing;
+package carRacing.domain;
 
 public class Record {
     private final int round;

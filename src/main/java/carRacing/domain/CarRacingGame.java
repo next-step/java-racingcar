@@ -1,4 +1,6 @@
-package carRacing;
+package carRacing.domain;
+
+import carRacing.util.RandomUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,7 +12,7 @@ public class CarRacingGame {
 
     private final static int RANGE_TO_MOVE_POINT = 10;
 
-    CarRacingGame(String carNamesString, int tryCount) {
+    public CarRacingGame(String carNamesString, int tryCount) {
         this.tryCount = tryCount;
         String[] carNames = carNamesString.split(",");
         for (String carName : carNames) {

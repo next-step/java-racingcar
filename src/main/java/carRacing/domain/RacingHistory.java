@@ -1,4 +1,4 @@
-package carRacing;
+package carRacing.domain;
 
 import java.util.*;
 import java.util.stream.Collectors;

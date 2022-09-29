@@ -1,4 +1,7 @@
-package carRacing;
+package carRacing.view;
+
+import carRacing.domain.RacingHistory;
+import carRacing.domain.Record;
 
 import java.util.List;
 import java.util.stream.Collectors;
