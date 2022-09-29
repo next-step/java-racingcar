@@ -18,7 +18,7 @@ public class StringAddCalculator {
     }
 
     private static boolean isEmptyString(String str) {
-        return str == null || str.length() == 0;
+        return str == null || str.isEmpty();
     }
 
     private static List<Integer> split(String str) {
