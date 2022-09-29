@@ -17,6 +17,6 @@ public class RacingCarApplication {
             cars = race.playRace();
             ResultView.printRace(cars);
         }
-        ResultView.printResult(race.findWinner(cars));
+        ResultView.printResult(race.findWinners(cars));
     }
 }

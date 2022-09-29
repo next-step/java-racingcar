@@ -1,19 +1,18 @@
 package racingcar;
 
-
 public class Car {
     private static final int MOVE_MIN_NUM = 4;
     private final String carName;
 
-    private int position = 0;
+    private int position;
 
     public Car(String carName) {
-        this.carName = carName;
+        this(carName, 0);
     }
 
     public Car(String carName, int position) {
         this.carName = carName;
-        this.position = position;
+        this.position = positionValidCheck(position);
     }
 
     public String getCarName() {
@@ -28,5 +27,17 @@ public class Car {
         if (num >= MOVE_MIN_NUM) {
             position++;
         }
+    }
+
+    private int positionValidCheck(int position) {
+        if (position < 0) {
+            throw new RuntimeException("1이상의 숫자만 가능합니다.");
+        }
+        return position;
+    }
+
+    @Override
+    public String toString() {
+        return carName;
     }
 }

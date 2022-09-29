@@ -28,4 +28,11 @@ class InputViewTest {
         assertThat(InputView.carNameValidCheck(new String[]{"c  ar1","c ar2","car 3"}))
                 .isEqualTo(new String[]{"car1","car2","car3"});
     }
+
+    @Test
+    @DisplayName("round 입력 시 음수일 경우 에러 발생")
+    void round_음수() {
+        assertThatThrownBy(() -> InputView.roundValidCheck(-1))
+                .isInstanceOf(RuntimeException.class);
+    }
 }

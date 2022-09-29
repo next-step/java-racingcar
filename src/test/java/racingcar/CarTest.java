@@ -2,8 +2,10 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.view.InputView;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
 
@@ -21,5 +23,12 @@ public class CarTest {
         Car car = new Car("car2");
         car.move(3);
         assertThat(car.getPosition()).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("Car 인스턴스 생성시 position 음수값일 경우 에러 발생")
+    void 생성자_음수입력() {
+        assertThatThrownBy(() -> new Car("car1",-1))
+                .isInstanceOf(RuntimeException.class);
     }
 }

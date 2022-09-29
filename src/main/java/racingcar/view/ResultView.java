@@ -2,13 +2,13 @@ package racingcar.view;
 
 import racingcar.Car;
 
-import java.io.BufferedWriter;
-import java.io.OutputStreamWriter;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class ResultView {
     private static final String DASH = "-";
+
+    private ResultView() {}
 
     public static void printStartMessage() {
         System.out.println("실행 결과");

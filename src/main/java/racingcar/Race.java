@@ -29,7 +29,7 @@ public class Race {
         return cars;
     }
 
-    public List<Car> findWinner(List<Car> cars) {
+    public List<Car> findWinners(List<Car> cars) {
         return cars.stream().collect(groupingBy(Car::getPosition)).entrySet().stream()
                 .max(Comparator.comparing(Map.Entry::getKey))
                 .get()
