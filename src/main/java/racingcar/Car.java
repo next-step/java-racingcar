@@ -18,13 +18,20 @@ public class Car {
         return position;
     }
 
+    public void print() {
+        for (int i = 0; i < position; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+    }
+
     public void go() {
         if (isMove()) {
             move();
         }
     }
 
-    public void move() {
+    private void move() {
         this.position++;
     }
 
