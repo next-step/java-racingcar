@@ -3,8 +3,16 @@ package racingcar;
 import java.util.Random;
 
 public class Car {
-    private static final Random random = new Random();
+    private final Random random;
     private int position = 0;
+
+    public Car() {
+        this.random = new Random();
+    }
+
+    public Car(Random random) {
+        this.random = random;
+    }
 
     public int getPosition() {
         return position;
