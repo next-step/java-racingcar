@@ -45,4 +45,18 @@ class CarTest {
         assertThatThrownBy(() -> new Car(0, BLANK)).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    @DisplayName("자동차를 생성할 때 Null을 넣을 경우 에러를 발생한다.")
+    void constructorTestNull() {
+        assertThatThrownBy(() -> new Car(0, null)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("자동차 이름이 같더라도 다른 객체로 판단한다.")
+    void sameNameButDifferentCar() {
+        Car car = new Car(0, NORMAL_NAME);
+        Car car2 = new Car(0, NORMAL_NAME);
+        assertThat(car).isNotEqualTo(car2);
+    }
+
 }

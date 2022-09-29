@@ -35,7 +35,6 @@ public class Car implements Comparable<Car> {
 
     @Override
     public int compareTo(Car o) {
-        if (this.currentLocation < o.getCurrentLocation()) return 1;
-        return -1;
+        return Integer.compare(o.currentLocation, this.currentLocation);
     }
 }

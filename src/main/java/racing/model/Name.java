@@ -7,15 +7,15 @@ public class Name {
     private final String name;
 
     public Name(String name) {
-        validateNameLength(name);
+        validateName(name);
         this.name = name;
     }
 
-    private void validateNameLength(String name) {
-        if (name.length() > MAX_LENGTH) {
+    private void validateName(String name) {
+        if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException();
         }
-        if (name.isEmpty() || name == null) {
+        if (name.length() > MAX_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
@@ -24,4 +24,16 @@ public class Name {
         return this.name;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Name)) return false;
+        Name name1 = (Name) o;
+        return getName().equals(name1.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName());
+    }
 }
