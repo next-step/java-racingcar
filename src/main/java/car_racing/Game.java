@@ -1,7 +1,6 @@
 package car_racing;
 
 
-import java.util.Objects;
 import java.util.stream.IntStream;
 
 public class Game {
@@ -9,9 +8,9 @@ public class Game {
     private Cars cars;
     private OutputInterface outputInterface;
 
-    public Game(Integer totalTryCount, Integer carCount, OutputInterface outputInterface) {
+    public Game(Integer totalTryCount, Cars cars, OutputInterface outputInterface) {
         this.totalTryCount = totalTryCount;
-        this.cars = new Cars(carCount);
+        this.cars = cars;
         this.outputInterface = outputInterface;
     }
 
@@ -21,6 +20,6 @@ public class Game {
 
     private void doTry() {
         cars.goOrStop();
-        cars.straightCounts().forEach(outputInterface::showCurrentStatus);
+        cars.gatherMoveResults().forEach(outputInterface::showCurrentStatus);
     }
 }

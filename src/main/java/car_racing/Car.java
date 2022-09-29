@@ -3,13 +3,22 @@ package car_racing;
 
 import java.util.Objects;
 
-public class Car {
+public class Car implements Movable {
     private Integer carNumber;
-    private Integer straightCount;
 
-    public Car(Integer carNumber) {
+    private MovableStrategy movableStrategy;
+
+    private MoveResult moveResult;
+
+    public Car(Integer carNumber, MovableStrategy movableStrategy) {
         this.carNumber = carNumber;
-        this.straightCount = 0;
+        this.movableStrategy = movableStrategy;
+        this.moveResult = new MoveResult();
+    }
+
+    @Override
+    public MovableStrategy movableStrategy() {
+        return movableStrategy;
     }
 
     @Override
@@ -29,17 +38,11 @@ public class Car {
         return Objects.hash(carNumber);
     }
 
-    public void tryMove(int givenCondition) {
-        if (GameRule.isGoStraight(givenCondition)) {
-            move();
-        }
+    public void tryMove() {
+        moveResult.applyMoveResult(movableStrategy().canMove());
     }
 
-    private void move() {
-        this.straightCount += 1;
-    }
-
-    public Integer getStraightCount() {
-        return straightCount;
+    public MoveResult getMoveResult() {
+        return moveResult;
     }
 }

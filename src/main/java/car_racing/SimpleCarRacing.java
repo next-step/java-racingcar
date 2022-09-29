@@ -4,7 +4,11 @@ public class SimpleCarRacing {
 
     public static void main(String[] args) {
         RacingCondition racingCondition = new ConsoleInput().getInputs();
-        Game game = new Game(racingCondition.attemptCount(), racingCondition.carCount(), new ConsoleGameDashBoard());
+
+        Cars cars = new Cars(racingCondition.carCount(), new RandomMovableStrategy());
+
+        Game game = new Game(racingCondition.attemptCount(), cars, new ConsoleGameDashBoard());
+
         game.play();
     }
 }

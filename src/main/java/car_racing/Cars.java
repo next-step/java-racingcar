@@ -7,20 +7,19 @@ import java.util.stream.Collectors;
 public class Cars {
     private List<Car> cars;
 
-    public Cars(int numberOfCars) {
+    public Cars(int numberOfCars, MovableStrategy movableStrategy) {
         this.cars = new ArrayList<>();
 
         for (int index = 0; index < numberOfCars; index++) {
-            this.cars.add(new Car(index));
+            this.cars.add(new Car(index, movableStrategy));
         }
     }
 
     public void goOrStop() {
-        cars.forEach(car -> car.tryMove(GameRule.pickRandom()));
+        cars.forEach(Car::tryMove);
     }
 
-    public List<Integer> straightCounts() {
-        return cars.stream().map(Car::getStraightCount).collect(Collectors.toList());
+    public List<MoveResult> gatherMoveResults() {
+        return cars.stream().map(Car::getMoveResult).collect(Collectors.toList());
     }
-
 }
