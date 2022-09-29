@@ -1,8 +1,7 @@
 package racingcar.game;
 
 import racingcar.InputView;
-import racingcar.MovingStrategy;
-import racingcar.ResultView;
+import racingcar.RacingRule;
 import racingcar.domain.Car;
 import racingcar.domain.CarFacility;
 
@@ -18,12 +17,11 @@ public class RacingCarGame {
 
     int tryTimes = inputView.createTryTimes();
 
-    MovingStrategy movingStrategy = new MovingStrategy();
     CarFacility carFacility = new CarFacility();
     List<Car> cars = carFacility.buildCar(carNum);
 
-    ResultView resultView = new ResultView();
-    resultView.printResult(tryTimes, cars);
+    RacingRule racingRule = new RacingRule();
+    racingRule.play(tryTimes, cars);
 
   }
 
