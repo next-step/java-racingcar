@@ -2,7 +2,6 @@ package racingcar.controller;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import racingcar.domain.MoveCondition;
 import racingcar.domain.MoveConditionGenerator;
@@ -20,11 +19,11 @@ public class RacingGame {
         PrintView.printGameResultMessage();
 
         int size = racingCars.size();
-        IntStream.range(0, tryCount).forEach(i -> {
-            List<MoveCondition> moveConditions = MoveConditionGenerator.getMoveConditions(size);
-            racingCars.move(moveConditions);
+        for (int i = 0; i < tryCount; i++) {
+            List<MoveCondition> conditions = MoveConditionGenerator.getMoveConditions(size);
+            racingCars.move(conditions);
             PrintView.printRacingCarPrintRecords(racingCars.getRacingCarPrintDTOs());
-        });
+        }
 
         List<RacingCar> winners = racingCars.getWinners();
         List<String> winnerNames = winners.stream()
