@@ -14,8 +14,7 @@ public class ResultView {
         System.out.println();
     }
 
-    public void printWinner(RacingCar racingCar) {
-        List<Car> winners = racingCar.getWinners();
+    public void printWinner(List<Car> winners) {
         System.out.println(winners + " 최종 우승했습니다.");
     }
 }

@@ -17,6 +17,6 @@ public class RacingGameApplication {
         for (int i = 0; i < tryCount; i++) {
             resultView.printStatus(racingCar.racing());
         }
-        resultView.printWinner(racingCar);
+        resultView.printWinner(racingCar.getWinners());
     }
 }
