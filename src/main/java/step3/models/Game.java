@@ -7,29 +7,24 @@ import java.util.stream.Collectors;
 import step3.utils.RandomSingleton;
 
 public class Game {
-    static final String INVALID_CAR_NUMBER_MSG = "자동차 개수는 음수가 될 수 없습니다.";
-    static final String INVALID_TRY_NUMBER_MSG = "횟수는 음수가 될 수 없습니다.";
+    private static final String INVALID_TRY_NUMBER_MSG = "횟수는 음수가 될 수 없습니다.";
 
-    private final int carNumber;
+    private final List<Car> carList;
     private final int tryNumber;
 
-    public Game(int carNumber, int tryNumber) {
-        if (carNumber < 0) {
-            throw new IllegalArgumentException(INVALID_CAR_NUMBER_MSG);
-        }
-
+    public Game(List<Car> carList, int tryNumber) {
         if (tryNumber < 0) {
             throw new IllegalArgumentException(INVALID_TRY_NUMBER_MSG);
         }
 
-        this.carNumber = carNumber;
+        this.carList = carList;
         this.tryNumber = tryNumber;
     }
 
     public List<List<Car>> play() {
         List<List<Car>> results = new ArrayList<>();
 
-        List<Car> previousCars = initCars();
+        List<Car> previousCars = List.copyOf(carList);
 
         for (int i = 0; i < tryNumber; ++i) {
             List<Car> carsAfterMove = moveCars(previousCars);
@@ -39,14 +34,6 @@ public class Game {
 
         return results.stream()
                 .collect(Collectors.toList());
-    }
-
-    private List<Car> initCars() {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carNumber; ++i) {
-            cars.add(Car.init());
-        }
-        return cars;
     }
 
     private List<Car> moveCars(List<Car> cars) {
