@@ -4,8 +4,30 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RacingGameLogStoreTest {
+
+    @DisplayName("자동차 경주 로그에 자동차 이름이 포함되는지 확인")
+    @Test
+    void logWithRacingCarName() {
+        // given
+        final String racingCarNames = "woody,beans,isla";
+        final int gameTurnCount = 5;
+        RacingGameCondition condition = new RacingGameCondition(racingCarNames, gameTurnCount);
+        RacingGame game = RacingGameFactory.make(condition);
+
+        // when
+        game.run();
+
+        // then
+        boolean containAllRacingCarName = game.getGameLogs()
+                                              .stream()
+                                              .allMatch(log -> log.contains("woody")
+                                                      && log.contains("beans")
+                                                      && log.contains("isla"));
+        assertTrue(containAllRacingCarName);
+    }
 
     @DisplayName("자동차 경주 로그 저장소 사이즈 확인")
     @Test
