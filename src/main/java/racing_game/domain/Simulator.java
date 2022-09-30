@@ -4,20 +4,20 @@ import racing_game.core.Positive;
 
 public class Simulator {
 
-  private Cars cars;
-  private Positive numberOfTrials;
+  private final Cars cars;
+  private Positive trialCount;
 
-  private Simulator(Positive numberOfCars, Positive numberOfTrials) {
-    this.cars = Cars.create(numberOfCars);
-    this.numberOfTrials = numberOfTrials;
+  private Simulator(Positive CarCount, Positive trialCount) {
+    this.cars = Cars.create(CarCount);
+    this.trialCount = trialCount;
   }
 
   public static Simulator create(Config config) {
-    return new Simulator(config.getNumberOfCars(), config.getNumberOfTrials());
+    return new Simulator(config.getCarCount(), config.getTrialCount());
   }
 
   public Simulator simulate() {
-    for (int i = 0; i < numberOfTrials.toInteger(); i++) {
+    for (int i = 0; i < trialCount.toInt(); i++) {
       cars.moveAll();
     }
     return this;
@@ -27,7 +27,7 @@ public class Simulator {
     return cars;
   }
 
-  public Positive getNumberOfTrials() {
-    return numberOfTrials;
+  public Positive getTrialCount() {
+    return trialCount;
   }
 }

@@ -4,23 +4,23 @@ import racing_game.core.Positive;
 
 public class Config {
 
-  private Positive numberOfCars;
-  private Positive numberOfTrials;
+  private Positive carCount;
+  private Positive trialCount;
 
-  private Config(Positive numberOfCars, Positive numberOfTrials) {
-    this.numberOfCars = numberOfCars;
-    this.numberOfTrials = numberOfTrials;
+  private Config(Positive carCount, Positive trialCount) {
+    this.carCount = carCount;
+    this.trialCount = trialCount;
   }
 
-  public static Config create(Positive numberOfCars, Positive numberOfTrials) {
-    return new Config(numberOfCars, numberOfTrials);
+  public static Config create(Positive carCount, Positive trialCount) {
+    return new Config(carCount, trialCount);
   }
 
-  public Positive getNumberOfCars() {
-    return numberOfCars;
+  public Positive getCarCount() {
+    return carCount;
   }
 
-  public Positive getNumberOfTrials() {
-    return numberOfTrials;
+  public Positive getTrialCount() {
+    return trialCount;
   }
 }

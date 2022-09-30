@@ -7,12 +7,12 @@ import racing_game.core.Positive;
 
 public class Car {
 
-  private int currentTime;
-  private List<Positive> distance; // time x distance - 시간 대별(회차) 거리
-  private Random random;
+  private int now;
+  private final List<Positive> distance; // time x distance - 시간 대별(회차) 거리
+  private final Random random;
 
   private Car(Random random) {
-    this.currentTime = 0;
+    this.now = 0;
     this.distance = new ArrayList<>();
     this.distance.add(Positive.zero());
     this.random = (random == null) ? new Random() : random;
@@ -27,34 +27,31 @@ public class Car {
   }
 
   public void move() {
-    Positive currentDistance = distance.get(currentTime++);
-    distance.add(Positive.copy(currentDistance));
-    if (isGoAvailable()) {
-      distance.get(currentTime).addOne();
+    nextTime();
+    if (canMove()) {
+      distance.get(now).addOne();
     }
   }
 
-  private boolean isGoAvailable() {
+  private void nextTime() {
+    Positive current = distance.get(now++);
+    distance.add(Positive.copy(current));
+  }
+
+  private boolean canMove() {
     return random.nextInt(10) >= 4;
   }
 
-  public int getDistance(int targetTime) {
-    return distance.get(targetTime).toInteger();
+  public int getDistance(int time) {
+    return distance.get(time).toInt();
   }
 
   public int getCurrentDistance() {
-    return distance.get(currentTime).toInteger();
+    return distance.get(now).toInt();
   }
 
   @Override
   public String toString() {
-    return "Car{"
-        + "currentTime="
-        + currentTime
-        + ", distance="
-        + distance
-        + ", random="
-        + random
-        + '}';
+    return "Car{" + "currentTime=" + now + ", distance=" + distance + ", random=" + random + '}';
   }
 }

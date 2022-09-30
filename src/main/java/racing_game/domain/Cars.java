@@ -10,19 +10,19 @@ import racing_game.core.Positive;
 
 public class Cars implements Iterable<Car> {
 
-  private List<Car> holder;
-  Random random;
+  private final List<Car> holder;
+  private final Random random;
 
-  private Cars(int numberOfCars) {
+  private Cars(int count) {
     random = new Random();
     holder = new ArrayList<>();
-    for (int i = 0; i < numberOfCars; i++) {
+    for (int i = 0; i < count; i++) {
       holder.add(Car.create(random));
     }
   }
 
-  public static Cars create(Positive numberOfCars) {
-    return new Cars(numberOfCars.toInteger());
+  public static Cars create(Positive count) {
+    return new Cars(count.toInt());
   }
 
   public void moveAll() {

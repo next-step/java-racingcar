@@ -7,29 +7,27 @@ import racing_game.core.Result;
 
 public class InputView {
 
-  private String ment;
-  private BufferedReader reader;
+  private final BufferedReader reader;
   private String value;
 
-  private InputView(String ment, BufferedReader reader) {
-    this.ment = ment;
+  private InputView(BufferedReader reader) {
     this.reader = reader;
   }
 
-  public static InputView create(String ment, BufferedReader reader) {
-    return new InputView(ment, reader);
+  public static InputView create(BufferedReader reader) {
+    return new InputView(reader);
   }
 
-  public Positive getNumberInput() throws IOException {
-    Result result = receive();
+  public Positive getNumberInput(String ment) throws IOException {
+    Result result = receive(ment);
     while (Result.SUCCESS != result) {
       alertWrong();
-      result = receive();
+      result = receive(ment);
     }
     return Positive.of(value);
   }
 
-  private Result receive() throws IOException {
+  private Result receive(String ment) throws IOException {
     System.out.println(ment);
     String readValue = reader.readLine();
     if (isPositiveFormat(readValue)) {

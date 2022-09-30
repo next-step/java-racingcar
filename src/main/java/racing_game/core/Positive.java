@@ -26,14 +26,14 @@ public class Positive {
     if (number == null) {
       number = Positive.zero();
     }
-    return Positive.of(number.toInteger());
+    return Positive.of(number.toInt());
   }
 
   public Positive add(Positive number) {
     if (number == null) {
       number = Positive.zero();
     }
-    this.holder += number.toInteger();
+    this.holder += number.toInt();
     return this;
   }
 
@@ -45,7 +45,7 @@ public class Positive {
     return add(1);
   }
 
-  public Integer toInteger() {
+  public Integer toInt() {
     return this.holder;
   }
 }
