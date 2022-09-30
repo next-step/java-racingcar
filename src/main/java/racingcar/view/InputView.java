@@ -1,7 +1,5 @@
 package racingcar.view;
 
-import exception.NegativeNumberException;
-
 import java.util.Scanner;
 
 public class InputView {
@@ -26,11 +24,7 @@ public class InputView {
 
     private static int inputAnswer() {
         try {
-            int answer = SCANNER.nextInt();
-            if (answer < 1) {
-                throw new NegativeNumberException();
-            }
-            return answer;
+            return SCANNER.nextInt();
         } catch (Exception e) {
             throw new NumberFormatException(INPUT_POSITIVE_NUMBER_MESSAGE);
         }

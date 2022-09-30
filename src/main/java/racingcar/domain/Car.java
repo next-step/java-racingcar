@@ -6,6 +6,7 @@ import java.util.Objects;
 
 public class Car {
     private static final int INIT_POSITION = 0;
+
     private int position;
 
     public Car() {
@@ -16,18 +17,14 @@ public class Car {
         this.position = position;
     }
 
-    public int getPosition() {
-        return position;
-    }
-
-    public void move(MovingStrategy movingStrategy) {
-        if (isMovable(movingStrategy)) {
+    public void moves(MovingStrategy movingStrategy) {
+        if (movingStrategy.isMovable()) {
             this.position++;
         }
     }
 
-    private boolean isMovable(MovingStrategy movingStrategy) {
-        return movingStrategy.isMovable();
+    public int getPosition() {
+        return position;
     }
 
     @Override

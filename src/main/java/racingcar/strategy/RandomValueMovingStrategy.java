@@ -2,7 +2,7 @@ package racingcar.strategy;
 
 import java.util.Random;
 
-public class RandomValueStrategy implements MovingStrategy {
+public class RandomValueMovingStrategy implements MovingStrategy {
 
     private static final Random RANDOM = new Random();
     private static final int RANDOM_MAX_BOUND_VALUE = 10;

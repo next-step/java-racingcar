@@ -25,10 +25,13 @@ public class Cars {
         return carList;
     }
 
-    public List<Car> racing(int tryCount, MovingStrategy movingStrategy) {
-        for (int i = 0; i < tryCount; i++) {
-            values.forEach(car -> car.move(movingStrategy));
+    public void move(MovingStrategy movingStrategy) {
+        for (Car value : values) {
+            value.moves(movingStrategy);
         }
+    }
+
+    public List<Car> getValues() {
         return values;
     }
 
