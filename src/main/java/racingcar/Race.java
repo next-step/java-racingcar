@@ -1,25 +1,40 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
+import racingcar.util.RandomNumber;
+
+import java.util.*;
+
+import static java.util.stream.Collectors.groupingBy;
 
 public class Race {
-    private final List<Car> cars = new ArrayList<>();
+    private static final List<Car> cars = new ArrayList<>();
 
-    public Race(int carCnt) {
-        ready(carCnt);
-    }
+    private Race(){}
 
-    private void ready(int carCnt) {
-        for (int i = 0; i < carCnt; i++) {
-            cars.add(new Car(0));
+    public static void ready(String[] carNames) {
+        for (int i = 0; i < carNames.length; i++) {
+            cars.add(new Car(carNames[i]));
         }
     }
 
-    public List<Car> playRace() {
+    public static List<Car> playRace() {
         for (Car car : cars) {
-            car.move(RandomNum.makeRandomNum());
+            car.move(RandomNumber.makeRandomNumber());
         }
         return cars;
     }
+
+    public static List<Car> findWinners(List<Car> cars) {
+        return getPositionEntrySet(cars)
+                .stream().max(Comparator.comparing(Map.Entry::getKey))
+                .get()
+                .getValue();
+    }
+
+    private static Set<Map.Entry<Integer, List<Car>>> getPositionEntrySet(List<Car> cars) {
+        return cars.stream().collect(groupingBy(Car::getPosition)).entrySet();
+    }
+
+
+
 }
