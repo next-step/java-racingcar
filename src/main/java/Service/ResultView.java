@@ -1,15 +1,16 @@
 package Service;
 
 import domain.Car;
+
 import java.util.List;
 import java.util.stream.Collectors;
+
 import repository.CarHistory;
 
 public class ResultView {
 
     private static final String DASH = "-";
     private static final String DELIMITER = " : ";
-
 
     public void printCarLocation(CarRace carRace, CarHistory carHistory, int attempts) {
         for (int i = 0; i < attempts; i++) {
@@ -48,12 +49,13 @@ public class ResultView {
             message = "우승자가 없습니다";
             return message;
         }
+        return winnerMessage(winnerCars);
+    }
+
+    private String winnerMessage(List<Car> winnerCars) {
         List<String> winnerNames = winnerCars.stream().map(Car::getCarName)
             .collect(Collectors.toList());
         String winners = String.join(", ", winnerNames);
-        message = winners + " 가 최종 우승했습니다!";
-        return message;
+        return winners + " 가 최종 우승했습니다!";
     }
-
-    private String printWinner
 }
