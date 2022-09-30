@@ -1,22 +1,17 @@
 package racingGame.view;
 
-import racingGame.Car;
 import racingGame.Cars;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class ResultView {
     private static final String TIRE_MARK = "-";
     private static final String WINNING_SENTENCE = "가 최종 우승했습니다.";
     private static final String EMPTY = " ";
     private static final String SEPARATOR = ":";
+    private static final StringBuilder sb = new StringBuilder();
 
     public static void printRacingResult(Cars cars) {
         printTitle();
-        StringBuilder sb = new StringBuilder();
-        combineResult(cars, sb);
-        System.out.println(sb);
+        System.out.println(combineResult(cars));
         System.out.println(joinWinners(cars));
     }
 
@@ -24,16 +19,19 @@ public class ResultView {
         return String.join(", ", cars.getWinners()).concat(WINNING_SENTENCE);
     }
 
-    private static void combineResult(Cars cars, StringBuilder sb) {
+    private static StringBuilder combineResult(Cars cars) {
         int carsNum = cars.getCars().size();
         for (int i = 0; i < carsNum; i++) {
-            sb.append(cars.getCars().get(i).getCarName());
-            sb.append(EMPTY);
-            sb.append(SEPARATOR);
-            sb.append(EMPTY);
-            sb.append(cars.getCars().get(i).createTrace(TIRE_MARK));
-            sb.append("\n");
+            sb.append(joinFinalRound(cars, i));
         }
+        return sb;
+    }
+
+    private static String joinFinalRound(Cars cars, int i) {
+        return String.format("%s%s%s%s%s\n",
+                cars.getCars().get(i).getCarName(),
+                EMPTY, SEPARATOR, EMPTY,
+                cars.getCars().get(i).createTrace(TIRE_MARK));
     }
 
     private static void printTitle() {
