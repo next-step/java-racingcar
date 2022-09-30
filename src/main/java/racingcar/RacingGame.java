@@ -2,6 +2,7 @@ package racingcar;
 
 import racingcar.strategy.RandomMovingStrategy;
 
+import java.util.Collections;
 import java.util.List;
 
 public class RacingGame {
@@ -29,6 +30,6 @@ public class RacingGame {
     }
 
     public List<String> getGameLogs() {
-        return racingGameLogStore.getLogs();
+        return Collections.unmodifiableList(racingGameLogStore.getLogs());
     }
 }

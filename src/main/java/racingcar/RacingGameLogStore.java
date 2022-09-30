@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RacingGameLogStore {
@@ -12,6 +13,6 @@ public class RacingGameLogStore {
     }
 
     public List<String> getLogs() {
-        return logs;
+        return Collections.unmodifiableList(logs);
     }
 }
