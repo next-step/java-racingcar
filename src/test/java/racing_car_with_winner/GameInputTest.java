@@ -26,4 +26,5 @@ public class GameInputTest {
             CarName name = new CarName("");
         }).isInstanceOf(InvalidInputException.class);
     }
+
 }
