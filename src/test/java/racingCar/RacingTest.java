@@ -11,7 +11,7 @@ public class RacingTest {
 	@Test
 	@DisplayName("레이싱 참가자 수 테스트")
 	void participantOfRacing() throws Exception {
-		Cars actual = Racing.participate("3");
+		Cars actual = Racing.participate("a,b,c");
 		assertThat(actual.getCars().size()).isEqualTo(3);
 	}
 
