@@ -24,7 +24,6 @@ public class RacingGame {
         }
     }
 
-
     private RandomMovingStrategy getRandomMovableStrategy() {
         return new RandomMovingStrategy();
     }

@@ -11,9 +11,9 @@ public class RacingGameLogStoreTest {
     @Test
     void sizeLogs() {
         // given
-        final int racingCarCount = 3;
+        final String racingCarNames = "woody,beans,isla";
         final int gameTurnCount = 5;
-        RacingGameCondition condition = new RacingGameCondition(racingCarCount, gameTurnCount);
+        RacingGameCondition condition = new RacingGameCondition(racingCarNames, gameTurnCount);
         RacingGame game = RacingGameFactory.make(condition);
 
         // when

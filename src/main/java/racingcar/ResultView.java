@@ -12,10 +12,10 @@ public class ResultView {
     }
 
     private static String getLocationString(RacingCar racingCar) {
-        return "-".repeat(racingCar.getDistance());
+        return String.format("%s : %s", racingCar.getName(), "-".repeat(racingCar.getDistance()));
     }
 
     public static void printRacingGameLogs(List<String> racingGameLogs) {
-        System.out.println("실행 결과\n" + String.join("\n\n", racingGameLogs));
+        System.out.println("\n실행 결과\n" + String.join("\n\n", racingGameLogs));
     }
 }
