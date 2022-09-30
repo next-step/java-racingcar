@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class RacingCar {
 
-    private final int MOVE_LENGTH = 1;
+    private static final int MOVE_LENGTH = 1;
 
     private final RacingCarName name;
     private Position position;
