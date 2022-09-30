@@ -1,9 +1,11 @@
-package car;
+package car.domain;
+
+import car.strategy.MovableStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class NamingCar implements Car {
+public class NamingRacingCar implements NamingCar {
     private static final String OUT_PUT_TEXT = "- ";
 
     private String name;
@@ -12,14 +14,14 @@ public class NamingCar implements Car {
 
     private static final int MAX_LENGTH = 5;
 
-    public NamingCar(MovableStrategy movableStrategy) {
+    public NamingRacingCar(MovableStrategy movableStrategy) {
         this.distance = new ArrayList<>();
         this.movableStrategy = movableStrategy;
     }
 
     @Override
     public void racing() {
-        if(movableStrategy.isMovable()) {
+        if (movableStrategy.isMovable()) {
             distance.add(true);
             return;
         }
@@ -27,10 +29,12 @@ public class NamingCar implements Car {
         distance.add(false);
     }
 
+    @Override
     public long raceDistance() {
         return distance.stream().filter(d -> d).count();
     }
 
+    @Override
     public String getName() {
         return name;
     }
@@ -39,14 +43,14 @@ public class NamingCar implements Car {
     public String printResult() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(name + " : ");
-        for(int i = 0; i < distance.size(); i++) {
+        for (int i = 0; i < distance.size(); i++) {
             stringBuilder.append(printRace(i));
         }
         return stringBuilder.toString();
     }
 
     private String printRace(int stage) {
-        if(distance.get(stage)) {
+        if (distance.get(stage)) {
             return OUT_PUT_TEXT;
         }
         return "";
@@ -58,7 +62,7 @@ public class NamingCar implements Car {
     }
 
     private void checkNameLength(int len) {
-        if(MAX_LENGTH < len) {
+        if (MAX_LENGTH < len) {
             throw new IllegalArgumentException("이름은 5글자를 초과할 수 없습니다.");
         }
     }

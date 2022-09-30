@@ -6,7 +6,8 @@ import car.domain.NamingCar;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ResultNamingCarView implements ResultView<NamingCar>{
+public class ResultNamingCarView implements ResultView<NamingCar> {
+
     @Override
     public void print(List<NamingCar> cars, int tryNum) {
         System.out.println("실행 결과");
@@ -34,7 +35,7 @@ public class ResultNamingCarView implements ResultView<NamingCar>{
             System.out.print(winners.get(idx));
             return;
         }
-        System.out.println(winners.get(idx) + ", ");
+        System.out.print(winners.get(idx) + ", ");
     }
 
     private List<String> findWinner(List<NamingCar> cars) {

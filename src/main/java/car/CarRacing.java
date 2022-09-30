@@ -8,7 +8,7 @@ import java.util.List;
 
 public class CarRacing {
     private final InputView inputView;
-    private final ResultView resultView;
+    private final ResultView<Car> resultView;
 
     public CarRacing(InputView inputView, ResultView resultView) {
         this.inputView = inputView;

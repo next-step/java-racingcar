@@ -1,16 +1,15 @@
 package car;
 
-import static org.assertj.core.api.Assertions.*;
-
-import java.util.List;
-
 import car.domain.Car;
-import car.factory.CarFactory;
 import car.factory.RacingCarFactory;
 import car.input.InputView;
 import car.output.ResultView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class CarRacingTest {
     List<Car> resultCar;
@@ -25,7 +24,7 @@ class CarRacingTest {
 
     private CarRacing init(int carNum, int tryNum) {
         InputView inputView = new InputView() {
-            CarFactory carFactory = new RacingCarFactory();
+            RacingCarFactory carFactory = new RacingCarFactory();
             @Override
             public List<Car> enterCar() {
                 return carFactory.generateCar(carNum);
@@ -37,7 +36,7 @@ class CarRacingTest {
             }
         };
 
-        ResultView resultView = new ResultView<Car>() {
+        ResultView resultView = new ResultView<>() {
             @Override
             public void print(List<Car> cars, int tryNum) {
                 resultCar = cars;
