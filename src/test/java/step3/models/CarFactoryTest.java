@@ -19,11 +19,7 @@ public class CarFactoryTest {
         List<Car> carList = factory.createCarList();
 
         IntStream.range(0, carList.size()).boxed()
-                .forEach(i -> {
-                    String actualCarName = carList.get(i).getName();
-                    String expectCarName = expected.get(i).getName();
-                    assertThat(actualCarName).isEqualTo(expectCarName);
-                });
+                .forEach(i -> assertThat(carList.get(i)).isEqualTo(expected.get(i)));
     }
 
     static Stream<Arguments> parametersProvider() {

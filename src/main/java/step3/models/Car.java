@@ -1,9 +1,10 @@
 package step3.models;
 
+import java.util.Objects;
 import step3.exception.ExceedLengthException;
 import step3.exception.NullOrEmptyException;
 
-public class Car {
+public class Car implements Comparable<Car> {
     private static final int MIN_NUM_TO_MOVE = 4;
     private static final int MAX_NAME_LENGTH = 5;
 
@@ -22,7 +23,7 @@ public class Car {
         return new Car(name, 0);
     }
 
-    private Car(String name, int position) {
+    Car(String name, int position) {
         this.name = name;
         this.position = position;
     }
@@ -41,5 +42,29 @@ public class Car {
 
     public String getName() {
         return this.name;
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return this.getPosition() < o.getPosition() ? -1 : 1;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.name, this.position);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
+        Car car = (Car) obj;
+        return Objects.equals(this.name, car.name) &&
+                Objects.equals(this.position, car.position);
     }
 }

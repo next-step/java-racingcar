@@ -18,7 +18,7 @@ public class CarTest {
             "9,true"
     })
     void Given_Integer_GreaterThanFour_When_Move_Then_MoveForward(int number, boolean expected) {
-        Car car = Car.init("");
+        Car car = Car.init("car");
 
         Car moveCar = car.move(number);
 
