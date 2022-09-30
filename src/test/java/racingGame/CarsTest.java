@@ -2,6 +2,8 @@ package racingGame;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingGame.domain.Car;
+import racingGame.domain.Cars;
 import racingGame.racingRule.FowardRule;
 
 import java.util.List;
@@ -31,7 +33,7 @@ class CarsTest {
         Cars cars = new Cars(List.of(winnerCar, new Car("b"), new Car("c")));
         cars.getCars().forEach(car ->  car.move(fowardRule));
 
-        assertThat(cars.getWinners().size()).isEqualTo(1);
-        assertThat(cars.getWinners().get(0)).isEqualTo("A");
+        assertThat(cars.findCoWinner().size()).isEqualTo(1);
+        assertThat(cars.findCoWinner().get(0)).isEqualTo("A");
     }
 }

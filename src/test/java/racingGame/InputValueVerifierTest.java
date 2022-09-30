@@ -7,7 +7,7 @@ import racingGame.view.InputVerifier;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ValueVerifierTest {
+class InputValueVerifierTest {
     @ParameterizedTest
     @ValueSource(strings = {"-1,-,#, ,&,@,%"})
     void validateTryNumInput(String input) {

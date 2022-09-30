@@ -1,6 +1,6 @@
 package racingGame.view;
 
-import racingGame.Cars;
+import racingGame.domain.Cars;
 
 public class ResultView {
     private static final String TIRE_MARK = "-";
@@ -16,7 +16,7 @@ public class ResultView {
     }
 
     private static String joinWinners(Cars cars) {
-        return String.join(", ", cars.getWinners()).concat(WINNING_SENTENCE);
+        return String.join(", ", cars.findCoWinner()).concat(WINNING_SENTENCE);
     }
 
     private static StringBuilder combineResult(Cars cars) {

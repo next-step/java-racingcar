@@ -2,6 +2,7 @@ package racingGame;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingGame.domain.Car;
 import racingGame.racingRule.FowardRule;
 import racingGame.racingRule.NotMoveRule;
 
