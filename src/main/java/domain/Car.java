@@ -22,7 +22,7 @@ public class Car {
 
     public static String carNameValidation(String name) {
         if (name.length() > 5) {
-            throw new NotValidNameException("자동차의 이름은 5자를 넘을 수 없습니다.");
+            throw new NotValidNameException("자동차의 이름은 5글자를 초과할 수 없습니다.");
         }
         return name;
     }
@@ -30,29 +30,25 @@ public class Car {
     public Car move(Car car, boolean isMove) {
         int isGo = car.getCurrentLocation();
         if (isMove) {
-            return Car.of(car.getName(), isGo + 1);
+            return Car.of(car.getCarName(), isGo + 1);
         }
         return this;
     }
 
-    public static Car createCar(String carName) {
+    public static Car createCarWithName(String carName) {
         return new Car(carName);
     }
 
-    public static Car of (String name, int currentLocation) {
+    public static Car of(String name, int currentLocation) {
         return new Car(name, currentLocation);
     }
 
-    public String getName() {
+    public String getCarName() {
         return name;
     }
 
     public int getCurrentLocation() {
         return currentLocation;
-    }
-
-    public void setCurrentLocation(Car car) {
-        this.currentLocation += car.getCurrentLocation();
     }
 
 }

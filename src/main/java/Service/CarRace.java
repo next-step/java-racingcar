@@ -14,6 +14,7 @@ public class CarRace {
 
     private static final int MIN_LIMIT_NUMBER = 4;
     private static final int MAX_LIMIT_BOUND_NUMBER = 10;
+
     public CarRace() {
     }
 
@@ -39,7 +40,7 @@ public class CarRace {
     }
 
     public List<Car> createInitCarList(String[] carNames) {
-        return Arrays.stream(carNames).map(Car::createCar).collect(Collectors.toList());
+        return Arrays.stream(carNames).map(Car::createCarWithName).collect(Collectors.toList());
     }
 
 }
