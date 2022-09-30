@@ -21,6 +21,7 @@ public class ResultView {
         for (GameRecord gameRecord : gameHistory.getValues()) {
             history.append(gameRecordToString(gameRecord));
             history.append(NEW_LINE);
+            history.append(NEW_LINE);
         }
         print(history.toString());
     }
