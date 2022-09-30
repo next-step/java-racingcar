@@ -16,6 +16,10 @@ public class Position {
         return value;
     }
 
+    public Position increase(int count) {
+        return new Position(value + count);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

@@ -13,4 +13,9 @@ class PositionTest {
         then(new Position(0).getValue()).isEqualTo(0);
         then(new Position(new Position(0), 1).getValue()).isEqualTo(1);
     }
+
+    @Test
+    void increase() {
+        then(new Position(0).increase(1)).isEqualTo(new Position(1));
+    }
 }

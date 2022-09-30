@@ -20,7 +20,7 @@ public class RacingCar {
 
     public void move(MoveCondition moveCondition) {
         if (moveCondition.canMove()) {
-            this.position = new Position(position, MOVE_LENGTH);
+            this.position = this.position.increase(MOVE_LENGTH);
         }
     }
 
