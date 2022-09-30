@@ -6,4 +6,8 @@ public class Car {
     public void forward() {
         position += 1;
     }
+
+    public String getPositionString() {
+        return "-".repeat(position);
+    }
 }

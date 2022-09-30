@@ -11,8 +11,10 @@ public class RacingCarApplication {
         RacingGame racingGame = new RacingGame();
         racingGame.createCars(carNumber);
 
+        ResultView.printFirstLine();
         for (int i = 0; i < tryCount; i++) {
             racingGame.tryGame();
+            ResultView.printGameResult(racingGame.getCars());
         }
     }
 
