@@ -1,4 +1,4 @@
-package step2;
+package calculator;
 
 
 public class PositiveNumber
@@ -14,7 +14,7 @@ public class PositiveNumber
     {
         if (number < 0)
         {
-            throw new IllegalArgumentException("홀수로는 생성 할 수 없습니다.");
+            throw new IllegalArgumentException("음수로는 생성 할 수 없습니다.");
         }
         this.number = number;
     }

@@ -1,7 +1,7 @@
-package step2;
+package calculator;
 
 
-import step2.util.StringUtil;
+import calculator.util.StringUtil;
 
 import java.util.Arrays;
 import java.util.regex.Matcher;

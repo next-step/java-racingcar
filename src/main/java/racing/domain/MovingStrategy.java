@@ -1,4 +1,4 @@
-package step3.model;
+package racing.domain;
 
 public interface MovingStrategy
 {
