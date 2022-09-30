@@ -14,11 +14,12 @@ public class RacingCars {
         this.value = value;
     }
 
-    public RacingCars(String[] names) {
+    public static RacingCars from(String[] names) {
         validateNames(names);
-        this.value = Arrays.stream(names)
+        List<RacingCar> cars = Arrays.stream(names)
             .map(RacingCar::new)
             .collect(Collectors.toList());
+        return new RacingCars(cars);
     }
 
     public void move(List<MoveCondition> conditions) {
@@ -49,7 +50,7 @@ public class RacingCars {
         }
     }
 
-    private void validateNames(String[] names) {
+    private static void validateNames(String[] names) {
         validateEmpty(names);
         validateDuplicateName(names);
     }
@@ -60,13 +61,13 @@ public class RacingCars {
         }
     }
 
-    private void validateEmpty(String[] names) {
+    private static void validateEmpty(String[] names) {
         if (names == null || names.length == 0) {
             throw new IllegalArgumentException("names 값은 비어있을 수 없습니다. | 입력된 names: " + Arrays.toString(names));
         }
     }
 
-    private void validateDuplicateName(String[] names) {
+    private static void validateDuplicateName(String[] names) {
         if (Arrays.stream(names).distinct().count() != names.length) {
             throw new IllegalArgumentException("중복된 자동차 이름이 존재할 수 없습니다. | 입력된 names: " + Arrays.toString(names));
         }

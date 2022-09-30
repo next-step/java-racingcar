@@ -16,7 +16,7 @@ class RacingCarsTest {
     @DisplayName("자동차 이름 문자 리스트로 생성시 정상적으로 생성되었는지 검증")
     void constructByNames() {
         then(
-            new RacingCars(new String[]{"1", "2", "3", "4"})
+            RacingCars.from(new String[]{"1", "2", "3", "4"})
         ).isEqualTo(
             new RacingCars(List.of(new RacingCar("1"), new RacingCar("2"), new RacingCar("3"), new RacingCar("4")))
         );
@@ -33,18 +33,18 @@ class RacingCarsTest {
     @NullAndEmptySource
     @DisplayName("생성자에서 받은 names String[] 비어있는지 검증")
     void validateEmpty(String[] names) {
-        assertThrows(IllegalArgumentException.class, () -> new RacingCars(names));
+        assertThrows(IllegalArgumentException.class, () -> RacingCars.from(names));
     }
 
     @Test
     @DisplayName("중복된 자동차 이름 검증")
     void validateDuplicateName() {
-        assertThrows(IllegalArgumentException.class, () -> new RacingCars(new String[]{"same", "same"}));
+        assertThrows(IllegalArgumentException.class, () -> RacingCars.from(new String[]{"same", "same"}));
     }
 
     @Test
     void size() {
-        then(new RacingCars(new String[]{"1", "2"}).size()).isEqualTo(2);
+        then(RacingCars.from(new String[]{"1", "2"}).size()).isEqualTo(2);
     }
 
     @Test
@@ -70,7 +70,7 @@ class RacingCarsTest {
     @Test
     @DisplayName("RacingCars.move 에 넘긴 MoveCondition 리스트 개수와 자동차 수가 맞는지 검증")
     void validateConditionsCount() {
-        RacingCars racingCars = new RacingCars(new String[]{"1", "2"});
+        RacingCars racingCars = RacingCars.from(new String[]{"1", "2"});
         assertThrows(IllegalArgumentException.class, () -> racingCars.move(List.of(() -> true)));
         assertThrows(IllegalArgumentException.class, () -> racingCars.move(List.of(() -> true, () -> false, () -> true)));
     }
@@ -78,7 +78,7 @@ class RacingCarsTest {
     @Test
     @DisplayName("RacingCars 내의 자동차 모든 이름 반환 검증")
     void getAllNames() {
-        RacingCars racingCars = new RacingCars(new String[]{"1", "2", "3"});
+        RacingCars racingCars = RacingCars.from(new String[]{"1", "2", "3"});
         then(racingCars.getAllNames()).isEqualTo(List.of("1", "2", "3"));
     }
 }

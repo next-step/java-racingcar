@@ -32,7 +32,7 @@ public class RacingGame {
     public static void main(String[] args) {
         int tryCount = InputView.initTryCount();
         String[] racingCarNames = InputView.initRacingCarNames();
-        RacingCars racingCars = new RacingCars(racingCarNames);
+        RacingCars racingCars = RacingCars.from(racingCarNames);
         RacingGame.gameStart(racingCars, tryCount);
     }
 }
