@@ -12,20 +12,20 @@ class CarTest {
 
 	@BeforeEach
 	void before() {
-		new Car(new Name("name"));
+		car = new Car(new Name("name"));
 	}
 
 	@DisplayName("자동차는 움직일 수 있다.")
 	@Test
 	void move() {
 		car.move(true);
-		assertThat(car.getPosition()).isEqualTo(1);
+		assertThat(car.getPosition()).isEqualTo(new Position(1));
 	}
 
 	@DisplayName("자동차는 움직이지 않는다.")
 	@Test
 	void notMove() {
 		car.move(false);
-		assertThat(car.getPosition()).isEqualTo(0);
+		assertThat(car.getPosition()).isEqualTo(new Position(0));
 	}
 }

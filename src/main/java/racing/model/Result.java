@@ -5,9 +5,9 @@ public class Result {
 	private int position;
 	private String name;
 
-	public Result(int position, String name) {
-		this.position = position;
-		this.name = name;
+	public Result(Position position, Name name) {
+		this.position = position.getPosition();
+		this.name = name.getName();
 	}
 
 	public int getPosition() {
