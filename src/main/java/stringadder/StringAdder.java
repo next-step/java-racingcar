@@ -1,3 +1,5 @@
+package stringadder;
+
 class StringAdder {
     private final Numbers numbers;
 
@@ -5,7 +7,7 @@ class StringAdder {
         this.numbers = Numbers.of(numbers);
     }
 
-    public int calc() {
+    public int calculate() {
         if (numbers.containsNegative()) {
             throw new RuntimeException("Negative values does not support addition.");
         }
