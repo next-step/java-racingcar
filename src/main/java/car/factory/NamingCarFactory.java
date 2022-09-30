@@ -1,4 +1,8 @@
-package car;
+package car.factory;
+
+import car.domain.Car;
+import car.domain.NamingCar;
+import car.strategy.CarMovableStrategy;
 
 import java.util.ArrayList;
 import java.util.List;

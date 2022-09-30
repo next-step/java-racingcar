@@ -1,4 +1,7 @@
-package car;
+package car.output;
+
+import car.domain.Car;
+import car.domain.NamingCar;
 
 import java.util.ArrayList;
 import java.util.List;

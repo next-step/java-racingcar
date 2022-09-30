@@ -1,4 +1,6 @@
-package car;
+package car.factory;
+
+import car.domain.Car;
 
 import java.util.ArrayList;
 import java.util.List;

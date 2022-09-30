@@ -1,4 +1,6 @@
-package car;
+package car.output;
+
+import car.domain.Car;
 
 import java.util.List;
 

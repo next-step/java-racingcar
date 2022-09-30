@@ -1,7 +1,7 @@
-package car;
+package car.factory;
 
-import java.util.ArrayList;
-import java.util.List;
+import car.domain.RacingCar;
+import car.strategy.CarMovableStrategy;
 
 public class RacingCarFactory implements CarFactory {
 
