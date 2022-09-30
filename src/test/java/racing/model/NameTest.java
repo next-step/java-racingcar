@@ -32,4 +32,13 @@ class NameTest {
 				new Name("");
 			});
 	}
+
+	@DisplayName("이름이 null이면 에러를 반환한다.")
+	@Test
+	void validateNameIsNull() {
+		assertThatExceptionOfType(IllegalArgumentException.class)
+			.isThrownBy(() -> {
+				new Name(null);
+			});
+	}
 }

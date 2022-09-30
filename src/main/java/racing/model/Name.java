@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Name {
 
+	private static final int MAX_NAME_LENGTH = 5;
 	private String name;
 
 	public Name(String name) {
@@ -14,7 +15,8 @@ public class Name {
 	}
 
 	private boolean isValid(String name) {
-		return !name.isBlank() && name.length() < 5;
+
+		return name != null && !name.isEmpty() && name.length() < MAX_NAME_LENGTH;
 	}
 
 	public String getName() {
