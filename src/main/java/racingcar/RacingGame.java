@@ -4,6 +4,7 @@ import racingcar.strategy.RandomMovingStrategy;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
 
@@ -22,6 +23,8 @@ public class RacingGame {
             this.racingCars.forEach(racingCar -> racingCar.move(getRandomMovableStrategy()));
             racingGameLogStore.store(ResultView.getLocationStrings(this.racingCars));
         }
+
+        racingGameLogStore.store(ResultView.getWinnerString(getWinners()));
     }
 
     private RandomMovingStrategy getRandomMovableStrategy() {
@@ -30,5 +33,23 @@ public class RacingGame {
 
     public List<String> getGameLogs() {
         return Collections.unmodifiableList(racingGameLogStore.getLogs());
+    }
+
+    public List<RacingCar> getWinners() {
+        final int maxDistance = getMaxDistance();
+        return this.racingCars.stream()
+                              .filter(racingCar -> racingCar.getDistance() == maxDistance)
+                              .collect(Collectors.toUnmodifiableList());
+
+    }
+
+    private int getMaxDistance() {
+        int maxDistance = Integer.MIN_VALUE;
+
+        for (RacingCar racingCar : this.racingCars) {
+            maxDistance = Math.max(maxDistance, racingCar.getDistance());
+        }
+
+        return maxDistance;
     }
 }
