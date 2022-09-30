@@ -7,7 +7,7 @@ import java.util.Random;
 public class RacingGame {
     private final static int MAX_BOUND = 10;
     private final static int MOVABLE_THRESHOLD = 4;
-    private List<Car> cars = new ArrayList<>();
+    private final List<Car> cars = new ArrayList<>();
 
     public void createCars(int number) {
         for (int i = 0; i < number; i++) {
