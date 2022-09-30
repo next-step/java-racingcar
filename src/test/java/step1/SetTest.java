@@ -7,6 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,27 +19,27 @@ public class SetTest {
     @BeforeEach
     void setUp() {
         numbers = new HashSet<>();
-        numbers.add(1);
-        numbers.add(1);
-        numbers.add(2);
-        numbers.add(3);
+        numbers.addAll(Arrays.asList(1, 1, 2, 3));
     }
 
     // Test Case 구현
     @Test
-    void test1(){
-        assertThat(numbers.size()).isEqualTo(3);
+    @DisplayName("set의 사이즈 확인")
+    void test1() {
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1,2,3})
-    void test2(int value){
-        assertThat(numbers.contains(value)).isTrue();
+    @DisplayName("set의 value값 확인")
+    @ValueSource(ints = {1, 2, 3})
+    void test2(int value) {
+        assertThat(numbers).containsAll(Arrays.asList(1, 2, 3));
     }
 
     @ParameterizedTest
+    @DisplayName("set에 포함된 값과 포함되지 않은 값에 대해 contains 메서드로 확인")
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-    void test3(int value, boolean result){
+    void test3(int value, boolean result) {
         assertThat(numbers.contains(value)).isEqualTo(result);
     }
 }
