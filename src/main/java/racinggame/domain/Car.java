@@ -15,11 +15,7 @@ public class Car {
     public Car(String name, int status) {
         this(name);
         this.status = status;
-    }
-
-    public void forward() {
-        this.status++;
-    }
+    }거
 
     public int getStatus() {
         return status;
