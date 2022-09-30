@@ -4,6 +4,7 @@ import racingGame.exception.WrongInputException;
 import racingGame.view.InputVerifier;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -58,23 +59,11 @@ public class InputParameters {
     }
 
     public List<String> getCarName() {
-        return value.getCarName();
+        return Collections.unmodifiableList(value.getCarName());
     }
 
     public int getTryNum() {
         return value.getTryNum();
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        InputParameters that = (InputParameters) o;
-        return Objects.equals(value, that.value);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(value);
-    }
 }

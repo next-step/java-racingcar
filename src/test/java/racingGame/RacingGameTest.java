@@ -16,9 +16,9 @@ public class RacingGameTest {
 
     private static Stream<Arguments> provideInputParameter() {
         return Stream.of(
-                Arguments.of("3", "2"),
-                Arguments.of("4", "2"),
-                Arguments.of("5", "2")
+                Arguments.of("A", "2"),
+                Arguments.of("B", "2"),
+                Arguments.of("V", "2")
         );
     }
 
@@ -32,7 +32,7 @@ public class RacingGameTest {
         //when
         Cars result = game.play(fowardRule);
         //then
-        assertThat(result.getCars()).hasSize(Integer.parseInt(carNum));
+        assertThat(result.getCars()).hasSize(1);
         assertThat(result.getCars().get(0).getPosition()).isEqualTo(Integer.parseInt(tryNum));
     }
 }
