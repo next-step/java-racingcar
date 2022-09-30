@@ -2,6 +2,8 @@ package com.nextstep.javaRacing.racing.car;
 
 public class Car implements Comparable<Car>{
 
+    private static final int NAME_MAX_LENGTH = 5;
+
     private final String name;
     private final MoveStrategy moveStrategy;
     private int position;
@@ -14,7 +16,7 @@ public class Car implements Comparable<Car>{
 
     private void validate() {
         if(name.length()>5) {
-            throw new IllegalArgumentException("자동차 이름은 5글자를 초과할 수 없습니다 : " + name);
+            throw new IllegalArgumentException("자동차 이름은 " + NAME_MAX_LENGTH + "글자를 초과할 수 없습니다 : " + name);
         }
     }
 
@@ -28,7 +30,7 @@ public class Car implements Comparable<Car>{
 
     public void move() {
         if (moveStrategy.isMovable()) {
-            this.position++;
+            this.position += 1;
         }
     }
 
