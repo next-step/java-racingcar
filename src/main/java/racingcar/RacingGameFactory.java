@@ -13,6 +13,6 @@ public class RacingGameFactory {
     private static List<RacingCar> makeRacingCars(List<String> racingCarNames) {
         return racingCarNames.stream()
                              .map(RacingCar::new)
-                             .collect(Collectors.toList());
+                             .collect(Collectors.toUnmodifiableList());
     }
 }
