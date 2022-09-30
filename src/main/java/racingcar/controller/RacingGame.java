@@ -1,9 +1,10 @@
 package racingcar.controller;
 
-import racingcar.model.CarNameSeparator;
 import racingcar.model.Cars;
 import racingcar.view.ConsoleInput;
 import racingcar.view.ConsoleOutput;
+
+import java.util.List;
 
 public class RacingGame {
 
@@ -11,10 +12,10 @@ public class RacingGame {
     private static final ConsoleOutput OUTPUT = new ConsoleOutput();
 
     public void start() {
-        String carQuantity = INPUT.getCarNames();
+        List<String> carNames = INPUT.getCarNames();
         int movementCount = INPUT.getMovementCount();
 
-        Cars cars = new Cars(CarNameSeparator.separateNames(carQuantity));
+        Cars cars = new Cars(carNames);
 
         OUTPUT.resultMessage();
         for (int i = 0; i < movementCount; i++) {
