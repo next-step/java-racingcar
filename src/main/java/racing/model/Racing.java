@@ -5,53 +5,30 @@ import java.util.List;
 
 public class Racing {
 
-	private List<Car> cars;
-	private int maxPosition;
+	private final Cars cars;
 
 	public Racing(List<Name> names) {
-		generateCars(names);
+		cars = generateCars(names);
 	}
 
-	private void generateCars(List<Name> names) {
-		this.cars = new ArrayList<>();
-		for (Name name : names) {
-			cars.add(new Car(name));
-		}
+	private Cars generateCars(List<Name> names) {
+		return new Cars(names);
 	}
 
 	public List<Result> race(MoveStrategy moveStrategy) {
 		List<Result> result = new ArrayList<>();
-		for (Car car : cars) {
+		for (Car car : cars.getCars()) {
 			car.move(moveStrategy.isMovable());
 			result.add(new Result(car.getPosition(), car.getName()));
-			updateMaxPosition(car);
 		}
 		return result;
 	}
 
-	private void updateMaxPosition(Car car) {
-		maxPosition = Math.max(maxPosition, car.getPosition());
-	}
-
-	public List<Car> getCars() {
+	public Cars getCars() {
 		return cars;
 	}
 
 	public List<String> getWinners() {
-		List<String> winners = new ArrayList<>();
-		for (Car car : cars) {
-			chooseWinner(winners, car);
-		}
-		return winners;
-	}
-
-	private void chooseWinner(List<String> winners, Car car) {
-		if (isWinner(car)) {
-			winners.add(car.getName());
-		}
-	}
-
-	private boolean isWinner(Car car) {
-		return car.getPosition() == maxPosition;
+		return cars.getWinners();
 	}
 }
