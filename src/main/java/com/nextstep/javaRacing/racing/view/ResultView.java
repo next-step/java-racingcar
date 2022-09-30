@@ -9,6 +9,10 @@ public class ResultView {
     public static void draw(int turn, List<Car> cars) {
         System.out.println();
         System.out.println("turn : "+turn);
-        cars.forEach(car-> System.out.println(car.printPosition()));
+        cars.forEach(ResultView::drawCar);
+    }
+
+    private static void drawCar(Car car) {
+        System.out.println("-".repeat(car.getPosition()) + "|" + car.getName());
     }
 }

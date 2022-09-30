@@ -10,8 +10,7 @@ public class RandomMoveStrategy implements MoveStrategy {
     private final Random random = new Random();
 
     @Override
-    public int move() {
-        if (random.nextInt(MAX_RANDOM) >= THRESHOLD) return 1;
-        return 0;
+    public boolean isMovable() {
+        return random.nextInt(MAX_RANDOM) >= THRESHOLD;
     }
 }

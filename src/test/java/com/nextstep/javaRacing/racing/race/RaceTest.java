@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RaceTest {
 
-    private static final MoveStrategy mockMoveStrategy = () -> 1;
+    private static final MoveStrategy mockMoveStrategy = () -> true;
 
     @ParameterizedTest
     @CsvSource(value = {"1,2", "3,4", "5,6"})

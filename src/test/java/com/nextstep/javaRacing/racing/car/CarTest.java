@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 class CarTest {
 
-    private static final MoveStrategy mockMoveStrategy = () -> 1;
+    private static final MoveStrategy mockMoveStrategy = () -> true;
 
     @Test
     @DisplayName("자동차의 생성")
@@ -17,8 +17,8 @@ class CarTest {
         Car car = new Car(carName, mockMoveStrategy);
 
         assertAll(
-                () -> assertThat(car.name).isEqualTo(carName),
-                () -> assertThat(car.position).isEqualTo(0)
+                () -> assertThat(car.getName()).isEqualTo(carName),
+                () -> assertThat(car.getPosition()).isEqualTo(0)
         );
     }
 
@@ -43,14 +43,5 @@ class CarTest {
         Car movedCar = new Car("movedCar", mockMoveStrategy);
         movedCar.move();
         assertThat(movedCar.compareTo(stoppedCar)).isGreaterThan(0);
-    }
-
-    @Test
-    @DisplayName("위치와 이름을 특정 포맷으로 출력한다")
-    void printPosition() {
-        Car car = new Car("car", mockMoveStrategy);
-        car.move();
-
-        assertThat(car.printPosition()).isEqualTo("-|car");
     }
 }

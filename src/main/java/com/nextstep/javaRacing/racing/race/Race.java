@@ -1,6 +1,7 @@
 package com.nextstep.javaRacing.racing.race;
 
 import com.nextstep.javaRacing.racing.car.Car;
+import com.nextstep.javaRacing.racing.view.InputView;
 import com.nextstep.javaRacing.racing.view.ResultView;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public class Race {
     }
 
     public static void start() {
-        Race race = RaceFactory.prepareRace();
+        Race race = RaceFactory.prepareRace(InputView.scanCars(), InputView.scanTurns());
         race.race();
     }
 

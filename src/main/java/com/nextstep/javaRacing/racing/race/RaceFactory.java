@@ -11,10 +11,6 @@ public class RaceFactory {
 
     private static final String DEFAULT_CAR_NAME_PREFIX = "raceCar_";
 
-    public static Race prepareRace() {
-        return prepareRace(InputView.scanCars(), InputView.scanTurns());
-    }
-
     public static Race prepareRace(int cars, int turns) {
         List<Car> raceCars = new LinkedList<>();
         for (int i = 0; i < cars; i++) {
