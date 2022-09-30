@@ -1,8 +1,8 @@
 package step3.ui;
 
 import java.util.List;
-import step3.models.Car;
-import step3.models.GameResult;
+import step3.domains.Car;
+import step3.domains.GameResult;
 
 public class ResultView {
     private static final char MOVE_CHARACTER = '-';

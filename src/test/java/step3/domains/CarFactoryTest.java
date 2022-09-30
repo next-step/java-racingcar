@@ -1,4 +1,4 @@
-package step3.models;
+package step3.domains;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.params.provider.Arguments.arguments;

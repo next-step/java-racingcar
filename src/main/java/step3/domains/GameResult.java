@@ -1,4 +1,4 @@
-package step3.models;
+package step3.domains;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package step3.models;
+package step3.domains;
 
 import java.util.Objects;
 import step3.exception.ExceedLengthException;

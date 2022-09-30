@@ -1,8 +1,8 @@
 package step3;
 
 import java.util.Scanner;
-import step3.models.CarFactory;
-import step3.models.Game;
+import step3.domains.CarFactory;
+import step3.domains.Game;
 import step3.ui.InputView;
 import step3.ui.ResultView;
 
