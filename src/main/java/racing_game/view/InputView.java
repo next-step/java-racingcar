@@ -3,12 +3,10 @@ package racing_game.view;
 import java.io.BufferedReader;
 import java.io.IOException;
 import racing_game.core.Parsable;
-import racing_game.core.Result;
 
 public class InputView<T extends Parsable<T>> {
 
   private final BufferedReader reader;
-  private String value;
 
   private InputView(BufferedReader reader) {
     this.reader = reader;
@@ -19,22 +17,17 @@ public class InputView<T extends Parsable<T>> {
   }
 
   public T fromInput(String ment, T target) throws IOException {
-    Result result = receive(ment, target);
-    while (result.isFail()) {
+    String read = receive(ment, target);
+    while (!target.canParse(read)) {
       wrongAlert();
-      result = receive(ment, target);
+      read = receive(ment, target);
     }
-    return target.parse(value);
+    return target.parse(read);
   }
 
-  private Result receive(String ment, T target) throws IOException {
+  private String receive(String ment, T target) throws IOException {
     System.out.println(ment);
-    String readValue = reader.readLine();
-    if (target.canParse(readValue)) {
-      this.value = readValue;
-      return Result.SUCCESS;
-    }
-    return Result.FAIL;
+    return reader.readLine();
   }
 
   private void wrongAlert() {
