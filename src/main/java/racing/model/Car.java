@@ -2,7 +2,6 @@ package racing.model;
 
 public class Car {
 
-	private static final int MOVING_SIZE = 1;
 	private final Position position;
 	private final Name name;
 
@@ -11,11 +10,10 @@ public class Car {
 		this.name = name;
 	}
 
-	public Position move(boolean isMovable) {
+	public void move(boolean isMovable) {
 		if (isMovable) {
 			position.move();
 		}
-		return position;
 	}
 
 	public Position getPosition() {

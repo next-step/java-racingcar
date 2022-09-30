@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class Cars {
 
-	private List<Car> cars = new ArrayList<>();
+	private final List<Car> cars = new ArrayList<>();
 
 	public Cars(List<Name> names) {
 		for (Name name : names) {

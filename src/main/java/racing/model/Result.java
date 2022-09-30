@@ -2,8 +2,8 @@ package racing.model;
 
 public class Result {
 
-	private int position;
-	private String name;
+	private final int position;
+	private final String name;
 
 	public Result(Position position, Name name) {
 		this.position = position.getPosition();
