@@ -1,26 +1,27 @@
 package racingcar.domain;
 
-import racingcar.view.ResultView;
+import racingcar.utils.RandomNumber;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Cars {
+    
+    private final List<Car> values;
 
-    private List<Car> carList;
-
-    public Cars(int carNum) {
-        carList = Stream.generate(Car::new).limit(carNum).collect(Collectors.toList());
+    public Cars(List<Car> values) {
+        this.values = values;
     }
 
-    public void play() {
-        for (Car car : carList) {
-            car.move();
+    public GameRecord play() {
+        GameRecord gameRecord = new GameRecord();
+        for (Car car : values) {
+            car.move(randomMoveStrategy());
+            gameRecord.add(car.getPosition());
         }
+        return gameRecord;
     }
 
-    public void printPosition() {
-        ResultView.print(carList);
+    private MoveStrategy randomMoveStrategy() {
+        return new RandomMoveStrategy(RandomNumber.generate());
     }
 }

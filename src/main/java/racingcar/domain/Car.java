@@ -1,31 +1,21 @@
 package racingcar.domain;
 
-import racingcar.utils.RandomNumber;
-
 public class Car {
 
+    private static final int ZERO = 0;
     private int position;
-    private static final int MOVING_CONDITION_MIN_VALUE = 4;
 
-    public Car(){
-        this.position = 0;
+    public Car() {
+        this.position = ZERO;
     }
 
-    public void move() {
-        if(isMovable()){
-            this.position++;
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.movable()) {
+            position++;
         }
     }
 
-    private boolean isMovable() {
-        return generateRandomNumber() >= MOVING_CONDITION_MIN_VALUE;
-    }
-
-    protected int generateRandomNumber(){
-        return RandomNumber.generate();
-    }
-
-    public int getPosition(){
-        return this.position;
+    public int getPosition() {
+        return position;
     }
 }
