@@ -1,15 +1,19 @@
 package step3;
 
+import java.util.List;
+
 public class GameRunner {
     public static void main(String[] args) {
         EnterGameConfig enterGameConfig = new EnterGameConfig();
-        int carNumber = enterGameConfig.enterCarNumber();
+        String[] carNames = enterGameConfig.enterCarNames();
         int iterate = enterGameConfig.enterIterate();
 
-        Racing racing = new Racing(carNumber, iterate);
+        Racing racing = new Racing(carNames, iterate);
         racing.start();
+        List<String> winners = racing.getWinners();
 
         ResultPrinter resultView = new ResultPrinter(iterate);
-        resultView.print(racing.getRacingRecordOfCars());
+        resultView.printRecord(racing.getRacingRecordOfCars());
+        resultView.printWinner(winners);
     }
 }
