@@ -2,7 +2,11 @@ package racingcar.view;
 
 import java.util.Scanner;
 
-public class InputView {
+public final class InputView {
+
+    private InputView() {
+        throw new AssertionError("No instance");
+    }
 
     private static final Scanner scanner = new Scanner(System.in);
     private static final String HOW_MANY_CAR = "자동차 대수는 몇 대 인가요?";

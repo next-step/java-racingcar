@@ -1,30 +1,37 @@
 package racingcar.view;
 
-import racingcar.domain.Car;
+import racingcar.domain.GameHistory;
+import racingcar.domain.GameRecord;
 
-import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
 
+    private static final String NEW_LINE = "\n";
     private static final String POSITION_MARK = "_";
+    private static final StringBuilder history = new StringBuilder();
+    private static final String GAME_RESULT = "계임결과";
 
-    public static void print(List<Car> cars) {
-
-        for (Car car : cars) {
-            print(makePositionMark(car.getPosition()));
-        }
-        System.out.println();
+    private ResultView() {
+        throw new AssertionError("No instance");
     }
 
-    private static void print(String mark) {
-        System.out.println(mark);
+    public static void printGameHistory(GameHistory gameHistory) {
+        history.append(GAME_RESULT);
+        for (GameRecord gameRecord : gameHistory.getValues()) {
+            history.append(gameRecordToString(gameRecord));
+            history.append(NEW_LINE);
+        }
+        print(history.toString());
     }
 
-    private static String makePositionMark(int position) {
-        StringBuilder mark = new StringBuilder();
-        for (int i = 0; i < position; i++) {
-            mark.append(POSITION_MARK);
-        }
-        return mark.toString();
+    private static String gameRecordToString(GameRecord gameRecord) {
+        return gameRecord.getValues().stream()
+                .map(POSITION_MARK::repeat)
+                .collect(Collectors.joining(NEW_LINE));
+    }
+
+    private static void print(String result) {
+        System.out.println(result);
     }
 }
