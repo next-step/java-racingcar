@@ -6,13 +6,13 @@ import java.util.List;
 
 public class ResultView {
 
-    public static void draw(int turn, List<Car> cars) {
+    public static void drawCircuit(int turn, List<Car> cars) {
         System.out.println();
-        System.out.println("turn : "+turn);
+        System.out.println("turn : "+ (turn+1));
         cars.forEach(ResultView::drawCar);
     }
 
     private static void drawCar(Car car) {
-        System.out.println("-".repeat(car.getPosition()) + "|" + car.getName());
+        System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
     }
 }

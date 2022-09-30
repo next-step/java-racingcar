@@ -9,14 +9,17 @@ public class Car implements Comparable<Car>{
     public Car(String name, MoveStrategy moveStrategy) {
         this.name = name;
         this.moveStrategy = moveStrategy;
+        validate();
+    }
+
+    private void validate() {
+        if(name.length()>5) {
+            throw new IllegalArgumentException("자동차 이름은 5글자를 초과할 수 없습니다 : " + name);
+        }
     }
 
     public String getName() {
         return name;
-    }
-
-    public MoveStrategy getMoveStrategy() {
-        return moveStrategy;
     }
 
     public int getPosition(){

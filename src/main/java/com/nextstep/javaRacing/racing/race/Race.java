@@ -4,7 +4,10 @@ import com.nextstep.javaRacing.racing.car.Car;
 import com.nextstep.javaRacing.racing.view.InputView;
 import com.nextstep.javaRacing.racing.view.ResultView;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Race {
 
@@ -20,23 +23,23 @@ public class Race {
         Race.start();
     }
 
-    public static void start() {
-        Race race = RaceFactory.prepareRace(InputView.scanCars(), InputView.scanTurns());
+    private static void start() {
+        Race race = RaceFactory.prepareRace(InputView.scanCarNames(), InputView.scanTurns());
         race.race();
     }
 
     public void race() {
         for (int turn = 0; turn < turns; turn++) {
             move();
-            draw(turn);
+            drawCircuit(turn);
         }
     }
 
-    public void move() {
+    private void move() {
         cars.forEach(Car::move);
     }
 
-    private void draw(int turn) {
-        ResultView.draw(turn, cars);
+    private void drawCircuit(int turn) {
+        ResultView.drawCircuit(turn, cars);
     }
 }
