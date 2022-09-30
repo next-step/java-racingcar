@@ -1,36 +1,25 @@
 package step3.domain;
 
-import step3.util.InputUtil;
-
 public class Car {
 
-    private final StringBuilder steps;
+    private int steps;
 
-    public Car(StringBuilder steps) {
+    public Car(int steps) {
         this.steps = steps;
     }
 
-    public static Car create() {
-        return new Car(new StringBuilder());
-    }
-
-    public void goOrStop() {
-        int randomNumber = InputUtil.getRandomNumberBetweenZeroAndNine();
-
-        if (this.isMovable(randomNumber)) {
+    public void move(boolean isMovable) {
+        if (isMovable) {
             this.addStep();
         }
     }
 
-    public boolean isMovable(int randomNumber) {
-        return randomNumber >= 4;
+    private void addStep() {
+        this.steps += 1;
     }
 
-    public void addStep() {
-        this.steps.append("-");
-    }
-
-    public StringBuilder getSteps() {
+    public int getSteps() {
         return this.steps;
     }
+
 }
