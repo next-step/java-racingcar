@@ -12,14 +12,9 @@ public class RacingCar {
 
     public List<Car> racing() {
         for (Car car : cars) {
-            car.move(createRandomNumber());
+            car.move(new RandomMovingStrategy());
         }
         return cars;
-    }
-
-    private int createRandomNumber() {
-        Random random = new Random();
-        return random.nextInt(10);
     }
 
     public List<Car> getCars() {
