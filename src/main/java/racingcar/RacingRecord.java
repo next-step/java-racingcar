@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingRecord {
-    private static final List<RoundCars> records = new ArrayList<>();
-    private static final List<String> winners = new ArrayList<>();
+    private final List<RoundCars> records = new ArrayList<>();
+    private final List<String> winners = new ArrayList<>();
 
     public List<RoundCars> retrieveRecord() {
         return records;
