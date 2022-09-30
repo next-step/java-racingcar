@@ -29,7 +29,7 @@ public class CarTest {
 	void carStatusOfRound() {
 		Car car = new Car("test");
 		Random random = new Random();
-		car.movingOfRound(random.nextInt(10));
-		assertThat(car.getStatus().size()).isEqualTo(1);
+		car.movingOfRound(4);
+		assertThat(car.getStatus()).isEqualTo(1);
 	}
 }
