@@ -17,9 +17,9 @@ public class RacingCarApplication {
         List<String> names = InputView.split(answer, COMMA_REGEX);
 
         RandomStrategy randomStrategy = new RandomStrategy(FORWARD_CONDITION_LOW_BOUND, FORWARD_CONDITION_HIGH_BOUND);
-        RacingGame racingCar = new RacingGame(tryNums, names);
+        RacingGame racingGame = new RacingGame(tryNums, names);
 
-        RacingRecord racingRecord = racingCar.racingStart(randomStrategy);
+        RacingRecord racingRecord = racingGame.racingStart(randomStrategy);
         ResultView.printRoundRecord(racingRecord, "-");
     }
 }
