@@ -30,18 +30,18 @@ public class ResultView {
 
     public static void printWinner(List<Car> racingWinners) {
         int size = racingWinners.size();
-        StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= size; i++) {
-            sb.append(racingWinners.get(i - 1).getName());
-            appendComma(size, sb, i);
+        StringBuilder resultMessage = new StringBuilder();
+        for (int index = 1; index <= size; index++) {
+            resultMessage.append(racingWinners.get(index - 1).getName());
+            appendComma(size, resultMessage, index);
         }
-        sb.append("가 최종 우승했습니다.");
-        System.out.println(sb);
+        resultMessage.append("가 최종 우승했습니다.");
+        System.out.println(resultMessage);
     }
 
-    private static void appendComma(int size, StringBuilder sb, int i) {
-        if (size != i) {
-            sb.append(", ");
+    private static void appendComma(int size, StringBuilder resultMessage, int index) {
+        if (size != index) {
+            resultMessage.append(", ");
         }
     }
 }

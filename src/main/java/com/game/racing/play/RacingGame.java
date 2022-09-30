@@ -1,5 +1,6 @@
 package com.game.racing.play;
 
+import com.game.racing.car.Winner;
 import com.game.racing.generator.RandomNumberGenerator;
 import com.game.racing.view.ResultView;
 import com.game.racing.car.Cars;
@@ -16,7 +17,7 @@ public class RacingGame {
         for (int i = 0; i < tryCount; i++) {
             cars.moveCars();
         }
-        ResultView.printWinner(cars.getRacingWinners());
+        ResultView.printWinner(Winner.getRacingWinners(cars));
     }
 
 }

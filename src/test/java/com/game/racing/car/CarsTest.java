@@ -6,7 +6,6 @@ import com.game.racing.generator.RandomNumberGenerator;
 
 import static org.assertj.core.api.Assertions.*;
 
-import com.game.racing.position.Position;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +17,7 @@ public class CarsTest {
 
     @BeforeEach
     void set_up() {
-        Position.resetMaxValue();
+        Winner.resetWinnerPositionValue();
     }
 
     @Test
@@ -37,7 +36,7 @@ public class CarsTest {
     void cars_move_all_by_random_number() {
         cars = new Cars(carNames, new RandomNumberGenerator());
         cars.moveCars();
-        assertThat(cars.getRacingWinners().size()).isLessThanOrEqualTo(cars.getTotalCarSize());
+        assertThat(Winner.getRacingWinners(cars).size()).isLessThanOrEqualTo(cars.getTotalCarSize());
     }
 
     /**
@@ -49,7 +48,7 @@ public class CarsTest {
         cars = new Cars(carNames, new MovableNumberGenerator());
         cars.moveCars();
         assertThat(cars.getCarByName(carName).getPosition().get()).isEqualTo(1);
-        assertThat(cars.getRacingWinners().size()).isEqualTo(cars.getTotalCarSize());
+        assertThat(Winner.getRacingWinners(cars).size()).isEqualTo(cars.getTotalCarSize());
     }
 
     /**
@@ -61,7 +60,7 @@ public class CarsTest {
         cars = new Cars(carNames, new NotMovableNumberGenerator());
         cars.moveCars();
         assertThat(cars.getCarByName(carName).getPosition().get()).isZero();
-        assertThat(cars.getRacingWinners().size()).isEqualTo(cars.getTotalCarSize());
+        assertThat(Winner.getRacingWinners(cars).size()).isEqualTo(cars.getTotalCarSize());
     }
 
     /**
@@ -73,7 +72,7 @@ public class CarsTest {
         cars = new Cars(carNames, new RandomNumberGenerator());
         Car car = cars.getCarByName(carName);
         cars.moveCarByGeneratedValue(car);
-        assertThat(cars.getRacingWinners().size()).isIn(1, cars.getTotalCarSize());
+        assertThat(Winner.getRacingWinners(cars).size()).isIn(1, cars.getTotalCarSize());
     }
 
     /**
@@ -85,7 +84,7 @@ public class CarsTest {
         cars = new Cars(carNames, new MovableNumberGenerator());
         Car car = cars.getCarByName(carName);
         cars.moveCarByGeneratedValue(car);
-        assertThat(cars.getRacingWinners().size()).isEqualTo(1);
+        assertThat(Winner.getRacingWinners(cars).size()).isEqualTo(1);
     }
 
     /**
@@ -97,7 +96,7 @@ public class CarsTest {
         cars = new Cars(carNames, new NotMovableNumberGenerator());
         Car car = cars.getCarByName(carName);
         cars.moveCarByGeneratedValue(car);
-        assertThat(cars.getRacingWinners().size()).isEqualTo(cars.getTotalCarSize());
+        assertThat(Winner.getRacingWinners(cars).size()).isEqualTo(cars.getTotalCarSize());
     }
 
 }

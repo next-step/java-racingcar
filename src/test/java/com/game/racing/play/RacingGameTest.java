@@ -1,6 +1,7 @@
 package com.game.racing.play;
 
 import com.game.racing.car.Cars;
+import com.game.racing.car.Winner;
 import com.game.racing.generator.RandomNumberGenerator;
 import com.game.racing.position.Position;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,7 +16,7 @@ public class RacingGameTest {
     @BeforeEach
     void setUp() {
         racingGame = new RacingGame();
-        Position.resetMaxValue();
+        Winner.resetWinnerPositionValue();
     }
 
     @Test

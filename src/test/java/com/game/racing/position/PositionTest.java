@@ -1,5 +1,6 @@
 package com.game.racing.position;
 
+import com.game.racing.car.Winner;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +13,7 @@ class PositionTest {
     @BeforeEach
     void set_up() {
         position = new Position();
-        Position.resetMaxValue();
+        Winner.resetWinnerPositionValue();
     }
 
     @Test
@@ -25,6 +26,6 @@ class PositionTest {
     void position_compare_and_get_max_value() {
         position.add();
         position.add();
-        assertEquals(2, Position.getMaxValue());
+        assertEquals(2, Winner.getWinnerPosition());
     }
 }

@@ -1,12 +1,12 @@
 package com.game.racing.car;
 
 import com.game.racing.generator.NumberGenerator;
-import com.game.racing.position.Position;
 import com.game.racing.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Cars {
 
@@ -14,11 +14,11 @@ public class Cars {
      * 자동차를 움직일 수 있는 최소 기준값
      */
     public static final Integer MIN_VALUE_TO_MOVE_CAR = 4;
+    public static final Integer MAX_LENGTH_OF_CAR_NAME = 5;
 
     private static final String CAR_NAMES_SEPARATOR = ",";
 
-    private final LinkedHashMap<String, Car> cars;
-    private List<Car> racingWinners;
+    private final Map<String, Car> cars;
 
     private final NumberGenerator numberGenerator;
 
@@ -45,7 +45,7 @@ public class Cars {
     }
 
     private void validateCarName(String carName) {
-        if (carName.length() > 5) {
+        if (carName.length() > MAX_LENGTH_OF_CAR_NAME) {
             throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다!");
         }
     }
@@ -69,17 +69,7 @@ public class Cars {
         ResultView.printCarNameAndPosition(car);
     }
 
-    public List<Car> getRacingWinners() {
-        racingWinners = new ArrayList<>();
-        for (String carName : cars.keySet()) {
-            addRacingWinners(cars.get(carName));
-        }
-        return racingWinners;
-    }
-
-    private void addRacingWinners(Car car) {
-        if (car.getPosition().get() == Position.getMaxValue()) {
-            racingWinners.add(car);
-        }
+    public List<Car> getRacingCars() {
+        return new ArrayList<>(cars.values());
     }
 }
