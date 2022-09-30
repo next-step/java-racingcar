@@ -12,23 +12,23 @@ public class Racing {
 
 		Print.execute();
 
-		result(participant, checkInput(matches));
+		Views.winOfRacing(result(participant, checkInput(matches)));
 	}
 
-	private static void result(String participant, String matches) {
-		playMatches(participate(participant), matches);
+	private static Cars result(String participant, String matches) {
+		return playMatches(participate(participant), matches);
 	}
 
-	private static void playMatches(Cars cars, String matches) {
+	private static Cars playMatches(Cars cars, String matches) {
 		for (int i = 0; i < Integer.parseInt(matches); i++) {
 			playMatch(cars, i);
 		}
+		return cars;
 	}
 
 	private static void playMatch(Cars cars, int index) {
 		cars.move();
 		Views.results(cars, index);
-		// Views.findWinner(cars);
 	}
 
 	public static Cars participate(String input) {
