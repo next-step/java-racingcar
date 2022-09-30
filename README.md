@@ -7,3 +7,10 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+ 3단계 자동차 경주 기능 목록
+- input 로직 구현
+- 자동차 클래스 및 필요 기능 구현
+- 경주 게임 로직 구현
+- output 로직 구현
+- 테스트 구현
