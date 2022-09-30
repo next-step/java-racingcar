@@ -29,7 +29,7 @@ public class CarResultView implements ResultView<Simulator> {
   private void draw(Cars cars, int time, StringBuilder sb) {
     for (Car car : cars) {
       int distance = car.getDistance(time);
-      sb.append("_".repeat(distance)).append("\n");
+      sb.append("_ ".repeat(distance)).append("\n");
     }
   }
 }

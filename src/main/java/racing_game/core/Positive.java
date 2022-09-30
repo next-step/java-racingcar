@@ -1,5 +1,7 @@
 package racing_game.core;
 
+import java.util.Objects;
+
 public class Positive {
   private Integer holder;
 
@@ -47,5 +49,27 @@ public class Positive {
 
   public Integer toInt() {
     return this.holder;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o instanceof Number) {
+      return Objects.equals(holder, o);
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+
+    Positive positive = (Positive) o;
+
+    return Objects.equals(holder, positive.holder);
+  }
+
+  @Override
+  public int hashCode() {
+    return holder != null ? holder.hashCode() : 0;
   }
 }

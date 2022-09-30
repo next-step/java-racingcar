@@ -11,4 +11,8 @@ public enum Result {
   public boolean isSuccess() {
     return SUCCESS == this;
   }
+
+  public boolean isFail() {
+    return FAIL == this;
+  }
 }

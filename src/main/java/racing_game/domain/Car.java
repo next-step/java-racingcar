@@ -43,6 +43,9 @@ public class Car {
   }
 
   public int getDistance(int time) {
+    if (time >= distance.size()) {
+      throw new IllegalArgumentException("time is over than current car dist");
+    }
     return distance.get(time).toInt();
   }
 

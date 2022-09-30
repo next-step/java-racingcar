@@ -31,6 +31,10 @@ public class Cars implements Iterable<Car> {
     }
   }
 
+  public int size() {
+    return holder.size();
+  }
+
   @Override
   public Iterator<Car> iterator() {
     return holder.iterator();

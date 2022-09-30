@@ -20,7 +20,7 @@ public class InputView {
 
   public Positive getNumberInput(String ment) throws IOException {
     Result result = receive(ment);
-    while (result.isSuccess()) {
+    while (result.isFail()) {
       wrongAlert();
       result = receive(ment);
     }
