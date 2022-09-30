@@ -2,6 +2,8 @@ package car;
 
 import static org.assertj.core.api.Assertions.*;
 
+import car.domain.NamingCar;
+import car.strategy.CarMovableStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

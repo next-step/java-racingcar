@@ -1,4 +1,6 @@
-package car;
+package car.domain;
+
+import car.strategy.MovableStrategy;
 
 import java.util.ArrayList;
 import java.util.List;

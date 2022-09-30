@@ -4,6 +4,11 @@ import static org.assertj.core.api.Assertions.*;
 
 import java.util.List;
 
+import car.domain.Car;
+import car.factory.CarFactory;
+import car.factory.RacingCarFactory;
+import car.input.InputView;
+import car.output.ResultView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
