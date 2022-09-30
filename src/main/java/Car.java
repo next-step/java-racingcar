@@ -3,8 +3,7 @@ import java.util.Random;
 public class Car {
 
     private int currentPosition;
-    private CarMoveCondition carMoveCondition;
-    private Random random;
+    private final CarMoveCondition carMoveCondition;
 
     public int getCurrentPosition() {
         return currentPosition;
@@ -12,13 +11,11 @@ public class Car {
 
     public Car() {
         this.currentPosition = 0;
-        this.carMoveCondition = new CarMoveCondition();
-        this.random = new Random();
+        this.carMoveCondition = new CarMoveCondition(new RandomIntegerGenerator());
     }
 
     public void move() {
-        int randomValue = random.nextInt(carMoveCondition.getMaxValue());
-        if (carMoveCondition.checkMoveCondition(randomValue)) return;
+        if (carMoveCondition.checkMoveCondition()) return;
         currentPosition++;
     }
 }

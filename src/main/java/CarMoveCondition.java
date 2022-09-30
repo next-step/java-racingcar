@@ -5,11 +5,18 @@ public class CarMoveCondition {
 
     private final int minValueForMove = 4;
 
+    private final IntegerGenerator integerGenerator;
+
     public int getMaxValue() {
         return maxValue;
     }
 
-    public boolean checkMoveCondition(int value) {
+    public CarMoveCondition(IntegerGenerator integerGenerator) {
+        this.integerGenerator = integerGenerator;
+    }
+
+    public boolean checkMoveCondition() {
+        int value = integerGenerator.getValue();
         if (value < 0 || value > maxValue) {
             throw new RuntimeException("not available value");
         }

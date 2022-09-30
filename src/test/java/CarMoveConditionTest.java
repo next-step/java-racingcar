@@ -8,18 +8,16 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class CarMoveConditionTest {
 
     @ParameterizedTest
-    @CsvSource(value = {"0:3:false", "4:9:true"}, delimiter = ':')
-    void carMoveTest(int startGiven, int endGiven, boolean expected) {
-        CarMoveCondition carMoveCondition = new CarMoveCondition();
+    @CsvSource(value = {"3:false", "4:true", "9:true"}, delimiter = ':')
+    void carMoveTest(int given, boolean expected) {
+        CarMoveCondition carMoveCondition = new CarMoveCondition(() -> given);
 
-        for(int given = startGiven; given <= endGiven; given++){
-            assertThat(carMoveCondition.checkMoveCondition(given)).isEqualTo(expected);
-        }
+        assertThat(carMoveCondition.checkMoveCondition()).isEqualTo(expected);
     }
 
     @Test
     void carMoveFailedTest() {
-        assertThatThrownBy(() -> new CarMoveCondition().checkMoveCondition(-1))
+        assertThatThrownBy(() -> new CarMoveCondition(() -> 10).checkMoveCondition())
                 .isInstanceOf(RuntimeException.class)
                 .hasMessageContaining("not available value");
     }
