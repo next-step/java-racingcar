@@ -18,8 +18,8 @@ public class RacingCarName {
     }
 
     private void validateName(String name) {
-        validateNameLongerThenFive(name);
         validateNameIsEmpty(name);
+        validateNameLongerThenFive(name);
     }
 
     private void validateNameLongerThenFive(String name) {
