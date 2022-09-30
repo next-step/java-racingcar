@@ -9,7 +9,6 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RaceTest {
-    private final Race race = new Race(new String[]{});
     @Test
     @DisplayName("우승자가 한명일때 우승자 찾기")
     void 우승자_한명_찾기() {
@@ -19,8 +18,7 @@ class RaceTest {
         Car car3 = new Car("car3", 7);
 
         List<Car> cars = List.of(car1, car2, car3);
-        List<Car> winner = race.findWinners(cars);
-        ResultView.printResult(winner);
+        List<Car> winner = Race.findWinners(cars);
         assertThat(winner).contains(car3);
     }
 
@@ -32,8 +30,7 @@ class RaceTest {
                 new Car("car2", 3),
                 new Car("car3", 5)
         );
-        List<Car> winner = race.findWinners(cars);
-        ResultView.printResult(winner);
+        List<Car> winner = Race.findWinners(cars);
         assertThat(winner.size()).isEqualTo(2);
     }
 }

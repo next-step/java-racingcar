@@ -11,12 +11,14 @@ public class RacingCarApplication {
         int round = InputView.roundScan();
         List<Car> cars = null;
 
-        Race race = new Race(carNames);
+        Race.ready(carNames);
+
         ResultView.printStartMessage();
+
         for (int i = 0; i < round; i++) {
-            cars = race.playRace();
-            ResultView.printRace(cars);
+            cars = Race.playRace();
+            ResultView.printRace(Race.playRace());
         }
-        ResultView.printResult(race.findWinners(cars));
+        ResultView.printResult(Race.findWinners(cars));
     }
 }

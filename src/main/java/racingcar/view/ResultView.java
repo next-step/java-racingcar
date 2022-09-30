@@ -23,6 +23,11 @@ public class ResultView {
     }
 
     public static void printResult(List<Car> cars) {
-        System.out.println(cars.stream().map(n -> n.getCarName()).collect(Collectors.joining(",")));
+        System.out.println(cars
+                .stream()
+                .map(n -> n.getCarName())
+                .collect(Collectors.joining(","))
+                +"가 최종 우승했습니다."
+        );
     }
 }

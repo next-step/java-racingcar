@@ -1,7 +1,14 @@
 package racingcar;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import static java.util.stream.Collectors.groupingBy;
+
 public class Car {
     private static final int MOVE_MIN_NUM = 4;
+
     private final String carName;
 
     private int position;
@@ -36,8 +43,5 @@ public class Car {
         return position;
     }
 
-    @Override
-    public String toString() {
-        return carName;
-    }
+
 }
