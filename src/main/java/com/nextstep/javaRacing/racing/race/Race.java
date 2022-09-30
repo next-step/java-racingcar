@@ -33,6 +33,7 @@ public class Race {
             move();
             drawCircuit(turn);
         }
+        drawWinners(getWinners());
     }
 
     private void move() {
@@ -41,5 +42,16 @@ public class Race {
 
     private void drawCircuit(int turn) {
         ResultView.drawCircuit(turn, cars);
+    }
+
+    private List<Car> getWinners() {
+        int bestRecord = Collections.max(cars).getPosition();
+        return cars.stream()
+                .filter(car->car.getPosition()==bestRecord)
+                .collect(Collectors.toList());
+    }
+
+    private void drawWinners(List<Car> winners) {
+        ResultView.drawWinners(winners);
     }
 }
