@@ -17,15 +17,15 @@ public class InputView<T extends Parsable<T>> {
   }
 
   public T fromInput(String ment, T target) throws IOException {
-    String read = receive(ment, target);
-    while (!target.canParse(read)) {
+    String input = request(ment);
+    while (!target.canParse(input)) {
       wrongAlert();
-      read = receive(ment, target);
+      input = request(ment);
     }
-    return target.parse(read);
+    return target.parse(input);
   }
 
-  private String receive(String ment, T target) throws IOException {
+  private String request(String ment) throws IOException {
     System.out.println(ment);
     return reader.readLine();
   }
