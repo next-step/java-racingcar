@@ -7,11 +7,13 @@ import java.util.Objects;
 
 public class RacingCar {
 
+    private static final int MAX_NAME_LENGTH = 5;
+
     private final String name;
     private int distance;
 
     public RacingCar(String name) {
-        if (Objects.isNull(name) || name.length() == 0 || name.length() > 5) {
+        if (Objects.isNull(name) || name.length() == 0 || name.length() > MAX_NAME_LENGTH) {
             throw new RacingCarNameOverSizeException();
         }
 
