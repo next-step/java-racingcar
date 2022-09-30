@@ -7,18 +7,22 @@ public class Number {
     private final int number;
 
     public Number(int number) {
+        validateIsPositive(number);
         this.number = number;
     }
 
-    public Number(String string) {
-        int parse = parseNumber(string);
-        if (parse < 0) {
+    private void validateIsPositive(int number) {
+        if (number < 0) {
             throw new IllegalArgumentException();
         }
-        this.number = parse;
     }
 
-    private int parseNumber(String string) {
+    public static Number parse(String string) {
+        int parse = parseInt(string);
+        return new Number(parse);
+    }
+
+    private static int parseInt(String string) {
         try {
             return Integer.parseInt(string);
         } catch (Exception e) {
