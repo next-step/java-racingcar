@@ -2,6 +2,9 @@ package racingcar.model;
 
 import racingcar.model.nickname.Nickname;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Car {
 
     private static final int START_POSITION = 0;
@@ -19,11 +22,24 @@ public class Car {
         }
     }
 
-    public int getPosition() {
-        return position;
+    public static List<Car> getWinner(List<Car> cars) {
+        return cars.stream()
+                .filter(car -> car.position >= getBiggestPosition(cars))
+                .collect(Collectors.toList());
+    }
+
+    private static int getBiggestPosition(List<Car> cars) {
+        return cars.stream()
+                .mapToInt(car -> car.position)
+                .max()
+                .orElse(START_POSITION);
     }
 
     public String getName() {
         return nickname.getValue();
+    }
+
+    public int getPosition() {
+        return position;
     }
 }

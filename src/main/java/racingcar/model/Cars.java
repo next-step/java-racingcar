@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 
 public class Cars {
 
-    private static final int MIN_WINNER_POSITION = 0;
     private final List<Car> cars;
 
     public Cars(List<String> names) {
@@ -16,11 +15,9 @@ public class Cars {
     }
 
     private List<Car> initCars(List<String> names) {
-        List<Car> resultCars = new ArrayList<>();
-        names.forEach(
-                name -> resultCars.add(new Car(name))
-        );
-        return resultCars;
+        return names.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     public List<CarStatusDto> move() {
@@ -35,18 +32,10 @@ public class Cars {
     }
 
     public List<CarStatusDto> getWinners() {
-        int maxPosition = getMaxPosition();
-        return cars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
-                .map(this::createCarStatusDto)
+        return Car.getWinner(cars)
+                .stream()
+                .map(car -> new CarStatusDto(car.getPosition(), car.getName()))
                 .collect(Collectors.toList());
-    }
-
-    private int getMaxPosition() {
-        return cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElse(MIN_WINNER_POSITION);
     }
 
     private CarStatusDto createCarStatusDto(Car car) {
