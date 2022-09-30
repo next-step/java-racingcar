@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.TestMovingStrategy.TestFailMoveStrategy;
+import racingcar.TestMovingStrategy.TestSuccessMoveStrategy;
 import racingcar.strategy.MovingStrategy;
 
 class CarTest {
@@ -44,21 +46,5 @@ class CarTest {
         testMovingStrategy = new TestFailMoveStrategy();
         car.move(testMovingStrategy);
         assertThat(car.getPosition()).isEqualTo(0);
-    }
-
-    public static class TestSuccessMoveStrategy implements MovingStrategy {
-
-        @Override
-        public boolean isMove() {
-            return true;
-        }
-    }
-
-    public static class TestFailMoveStrategy implements MovingStrategy {
-
-        @Override
-        public boolean isMove() {
-            return false;
-        }
     }
 }
