@@ -1,6 +1,6 @@
 package racing.view;
 
-import racing.model.Result;
+import racing.dto.RacingResult;
 
 import java.util.List;
 
@@ -15,8 +15,8 @@ public class OutputView {
 		System.out.println("실행 결과");
 	}
 
-	public static void printResults(List<Result> results) {
-		for (Result result : results) {
+	public static void printResults(List<RacingResult> results) {
+		for (RacingResult result : results) {
 			printResult(result.getPosition(), result.getName());
 			System.out.println();
 		}

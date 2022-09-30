@@ -1,8 +1,8 @@
 package racing.controller;
 
+import racing.dto.GameRequest;
 import racing.model.MoveStrategy;
 import racing.model.Racing;
-import racing.view.GameRequest;
 import racing.view.InputView;
 import racing.view.OutputView;
 

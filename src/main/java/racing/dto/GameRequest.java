@@ -1,4 +1,4 @@
-package racing.view;
+package racing.dto;
 
 import racing.model.Name;
 

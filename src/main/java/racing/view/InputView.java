@@ -1,5 +1,7 @@
 package racing.view;
 
+import racing.dto.GameRequest;
+
 import java.util.Scanner;
 
 public class InputView {

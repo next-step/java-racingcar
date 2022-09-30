@@ -1,5 +1,7 @@
 package racing.model;
 
+import racing.dto.RacingResult;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,11 +17,11 @@ public class Racing {
 		return new Cars(names);
 	}
 
-	public List<Result> race(MoveStrategy moveStrategy) {
-		List<Result> result = new ArrayList<>();
+	public List<RacingResult> race(MoveStrategy moveStrategy) {
+		List<RacingResult> result = new ArrayList<>();
 		for (Car car : cars.getCars()) {
 			car.move(moveStrategy.isMovable());
-			result.add(new Result(car.getPosition(), car.getName()));
+			result.add(new RacingResult(car.getPosition(), car.getName()));
 		}
 		return result;
 	}
