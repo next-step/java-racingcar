@@ -16,7 +16,7 @@ class ValueVerifierTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"1,2,-1,#,$"})
+    @ValueSource(strings = {" ,-12,-1,#,$"})
     void validateCarNameInput(String input) {
         assertThrows(WrongInputException.class, ()
                 -> InputVerifier.validateNameInput(input));
