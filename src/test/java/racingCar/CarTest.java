@@ -7,6 +7,8 @@ import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class CarTest {
 
@@ -24,12 +26,21 @@ public class CarTest {
 		assertThat(car.getName()).isEqualTo("abcde");
 	}
 
-	@Test
-	@DisplayName("라운드 당 랜덤값 상태 확인")
-	void carStatusOfRound() {
+	@ParameterizedTest
+	@DisplayName("자동차 정지 검증")
+	@ValueSource(ints = {1,2,3})
+	void stopStatusOfRound(int input) {
 		Car car = new Car("test");
-		Random random = new Random();
-		car.movingOfRound(4);
+		car.movingOfRound(input);
+		assertThat(car.getStatus()).isEqualTo(0);
+	}
+
+	@ParameterizedTest
+	@DisplayName("자동차 전진 검증")
+	@ValueSource(ints = {4,5,6})
+	void forwardStatusOfRound(int input) {
+		Car car = new Car("test");
+		car.movingOfRound(input);
 		assertThat(car.getStatus()).isEqualTo(1);
 	}
 }
