@@ -2,6 +2,7 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.strategy.MovingStrategy;
 
 public class RoundCars {
@@ -50,16 +51,18 @@ public class RoundCars {
     }
 
     public List<String> retrieveWinners() {
-        int maxPosition = 0;
-        List<String> winners = new ArrayList<>();
-        for (Car car : cars) {
-            int carPosition = car.getPosition();
-            if (maxPosition <= carPosition) {
-                maxPosition = carPosition;
-                winners.add(car.getName());
-            }
-        }
-        return winners;
+        int maxPosition = retrieveMaxPosition();
+        return cars.stream()
+                .filter(car -> car.isSamePosition(maxPosition))
+                .map(Car::getName)
+                .collect(Collectors.toList());
+    }
+
+    private int retrieveMaxPosition() {
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
     }
 
 }
