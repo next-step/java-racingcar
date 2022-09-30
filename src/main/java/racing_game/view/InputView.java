@@ -20,8 +20,8 @@ public class InputView {
 
   public Positive getNumberInput(String ment) throws IOException {
     Result result = receive(ment);
-    while (Result.SUCCESS != result) {
-      alertWrong();
+    while (result.isSuccess()) {
+      wrongAlert();
       result = receive(ment);
     }
     return Positive.of(value);
@@ -46,7 +46,7 @@ public class InputView {
     return true;
   }
 
-  private void alertWrong() {
+  private void wrongAlert() {
     System.out.println("잘못된 입력입니다.");
   }
 }

@@ -7,4 +7,8 @@ public enum Result {
   public static Result of(boolean value) {
     return value ? SUCCESS : FAIL;
   }
+
+  public boolean isSuccess() {
+    return SUCCESS == this;
+  }
 }
