@@ -2,22 +2,19 @@ package racing_game.core;
 
 import java.util.Objects;
 
-public class Positive {
-  private Integer holder;
+public class Positive implements Parsable<Positive> {
+  private int holder;
 
-  private Positive(Integer number) {
-    this.holder = number;
-  }
-
-  public static Positive of(Integer number) {
-    if (number == null || number < 0) {
-      throw new NumberFormatException("only positive available");
-    }
-    return new Positive(number);
+  private Positive(String number) {
+    parse(number);
   }
 
   public static Positive of(String number) {
-    return Positive.of(Integer.parseInt(number));
+    return new Positive(number);
+  }
+
+  public static Positive of(int number) {
+    return Positive.of(String.valueOf(number));
   }
 
   public static Positive zero() {
@@ -29,6 +26,28 @@ public class Positive {
       number = Positive.zero();
     }
     return Positive.of(number.toInt());
+  }
+
+  @Override
+  public boolean canParse(String value) {
+    try {
+      int number = Integer.parseInt(value);
+      if (number < 0) {
+        throw new NumberFormatException();
+      }
+    } catch (NumberFormatException e) {
+      return false;
+    }
+    return true;
+  }
+
+  @Override
+  public Positive parse(String value) {
+    if (!canParse(value)) {
+      throw new NumberFormatException("only positive available");
+    }
+    this.holder = Integer.parseInt(value);
+    return this;
   }
 
   public Positive add(Positive number) {
@@ -64,12 +83,11 @@ public class Positive {
     }
 
     Positive positive = (Positive) o;
-
-    return Objects.equals(holder, positive.holder);
+    return holder == positive.holder;
   }
 
   @Override
   public int hashCode() {
-    return holder != null ? holder.hashCode() : 0;
+    return holder;
   }
 }
