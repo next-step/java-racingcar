@@ -8,26 +8,35 @@ public class RacingGame {
 
 
     public static void main(String[] args) {
-        InputView inputView = new InputView();
+        InputView inputView = new InputView();;
         ResultView resultView = new ResultView();
-        resultView.racingResult(carMoveCount(makeCarList(inputView.carCount()), inputView.tryCount()));
+        resultView.racingResult(carMoveCount(makeCarList(inputView.carName()), inputView.tryCount()));
     }
 
-    public static List<Car> makeCarList(int count) {
+    public static List<Car> makeCarList(String carName) {
         List<Car> carList = new ArrayList<>();
-        for (int i = 0; i < count; i++){
-            carList.add(new Car());
+        for (int i = 0; i < carNameList(carName).length; i++){
+            carList.add(new Car(carNameList(carName)[i]));
         }
         return carList;
+    }
+
+    private static String[] carNameList(String carName) {
+        String[]carNameList = carName.split(",");
+        return carNameList;
     }
 
     public static List<Car> carMoveCount(List<Car> carList, int count){
         for(Car car : carList) {
-            for(int i = 0; i < count; i++) {
-                car.move(getRandom());
-            }
+            carMoveTry(car,count);
         }
         return carList;
+    }
+
+    private static void carMoveTry(Car car,int count) {
+        for(int i = 0; i < count; i++) {
+            car.move(getRandom());
+        }
     }
 
     public static int getRandom() {
