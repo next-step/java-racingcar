@@ -22,7 +22,7 @@ public class RacingGame {
         for (int i = 0; i < tryCount; i++) {
             List<MoveCondition> conditions = MoveConditionGenerator.getMoveConditions(size);
             racingCars.move(conditions);
-            PrintView.printRacingCarPrintRecords(RacingCarPrintDTO.fromRacingCars(racingCars));
+            PrintView.printRacingCarPrintRecords(RacingCarPrintDTO.from(racingCars));
         }
 
         RacingCars winners = RacingCarWinnerSelector.selectWinners(racingCars);

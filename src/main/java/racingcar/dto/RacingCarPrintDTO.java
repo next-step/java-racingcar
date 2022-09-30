@@ -5,27 +5,27 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 import racingcar.domain.RacingCar;
-import racingcar.domain.RacingCarName;
 import racingcar.domain.RacingCars;
 
 public class RacingCarPrintDTO {
 
-    private final RacingCarName racingCarName;
+    private final String name;
     private final int position;
 
     public RacingCarPrintDTO(RacingCar racingCar) {
-        this.racingCarName = new RacingCarName(racingCar.getName());
+        this.name = racingCar.getName();
         this.position = racingCar.getPosition();
     }
 
-    public static List<RacingCarPrintDTO> fromRacingCars(RacingCars racingCars) {
-        return racingCars.getValue().stream()
+    public static List<RacingCarPrintDTO> from(RacingCars racingCars) {
+        return racingCars.getValue()
+            .stream()
             .map(RacingCarPrintDTO::new)
             .collect(Collectors.toList());
     }
 
-    public String getRacingCarName() {
-        return racingCarName.getValue();
+    public String getName() {
+        return name;
     }
 
     public int getPosition() {
@@ -46,12 +46,12 @@ public class RacingCarPrintDTO {
         if (position != that.position) {
             return false;
         }
-        return Objects.equals(racingCarName, that.racingCarName);
+        return Objects.equals(name, that.name);
     }
 
     @Override
     public int hashCode() {
-        int result = racingCarName != null ? racingCarName.hashCode() : 0;
+        int result = name != null ? name.hashCode() : 0;
         result = 31 * result + position;
         return result;
     }

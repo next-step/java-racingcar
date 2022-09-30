@@ -27,7 +27,7 @@ public class PrintView {
 
     public static void printRacingCarPrintRecords(List<RacingCarPrintDTO> racingCarPrintDTOS) {
         for (RacingCarPrintDTO racingCarPrintDTO : racingCarPrintDTOS) {
-            System.out.print(racingCarPrintDTO.getRacingCarName() + " : ");
+            System.out.print(racingCarPrintDTO.getName() + " : ");
             IntStream.range(0, racingCarPrintDTO.getPosition()).mapToObj(i -> RACING_CAR_POSITION_EXPRESSION).forEach(System.out::print);
             System.out.println();
         }
