@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.List;
 import java.util.Map;
@@ -8,7 +8,7 @@ import static java.util.stream.Collectors.groupingBy;
 
 public class Car {
     private static final int MOVE_MIN_NUM = 4;
-
+    private static final int MIN_POSITION = 0;
     private final String carName;
 
     private int position;
@@ -37,8 +37,8 @@ public class Car {
     }
 
     private int positionValidCheck(int position) {
-        if (position < 0) {
-            throw new RuntimeException("1이상의 숫자만 가능합니다.");
+        if (position < MIN_POSITION) {
+            throw new RuntimeException("유효한 자동차 위치 값이 아닙니다.");
         }
         return position;
     }

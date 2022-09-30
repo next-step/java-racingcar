@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
     private static final int MAX_CAR_NAME_LENGTH = 5;
-    private static final int MIN_ROUND = 0;
+    private static final int MIN_ROUND = 1;
 
     private InputView() {}
 
@@ -38,7 +38,7 @@ public class InputView {
 
     private static void carNameLengthCheck(String carName) {
         if (carName.length() > MAX_CAR_NAME_LENGTH) {
-            throw new RuntimeException("자동차 이름은 5자를 초과할 수 없습니다");
+            throw new RuntimeException("자동차 이름 "+carName+"은 5자를 초과할 수 없습니다");
         }
     }
 

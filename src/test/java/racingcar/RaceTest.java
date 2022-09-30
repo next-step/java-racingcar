@@ -2,7 +2,8 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.view.ResultView;
+import racingcar.domain.Car;
+import racingcar.domain.Race;
 
 import java.util.List;
 
@@ -16,9 +17,11 @@ class RaceTest {
         Car car1 = new Car("car1", 3);
         Car car2 = new Car("car2", 5);
         Car car3 = new Car("car3", 7);
-
         List<Car> cars = List.of(car1, car2, car3);
-        List<Car> winner = Race.findWinners(cars);
+
+        Race race = new Race(cars);
+        List<Car> winner = race.findWinners();
+
         assertThat(winner).contains(car3);
     }
 
@@ -30,7 +33,10 @@ class RaceTest {
                 new Car("car2", 3),
                 new Car("car3", 5)
         );
-        List<Car> winner = Race.findWinners(cars);
+
+        Race race = new Race(cars);
+        List<Car> winner = race.findWinners();
+
         assertThat(winner.size()).isEqualTo(2);
     }
 }

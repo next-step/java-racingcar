@@ -1,24 +1,24 @@
 package racingcar;
 
+import racingcar.domain.Cars;
+import racingcar.domain.Race;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
-
-import java.util.List;
 
 public class RacingCarApplication {
     public static void main(String[] args) {
         String[] carNames = InputView.carNamesScan();
         int round = InputView.roundScan();
-        List<Car> cars = null;
+        Cars cars = new Cars(carNames);
 
-        Race.ready(carNames);
+        Race race = new Race(cars.getCars());
 
         ResultView.printStartMessage();
 
         for (int i = 0; i < round; i++) {
-            cars = Race.playRace();
-            ResultView.printRace(Race.playRace());
+            ResultView.printRace(race.playRace());
         }
-        ResultView.printResult(Race.findWinners(cars));
+        ResultView.printResult(race.findWinners());
     }
+
 }
