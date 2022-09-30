@@ -4,7 +4,7 @@ import java.util.Scanner;
 import step3.models.CarFactory;
 import step3.models.Game;
 import step3.ui.InputView;
-import step3.ui.OutputView;
+import step3.ui.ResultView;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,8 +17,9 @@ public class Main {
 
         Game game = new Game(carFactory.createCarList(), tryNumber);
 
-        OutputView outputView = new OutputView(game.play());
+        ResultView outputView = new ResultView(game.play());
 
         outputView.printResult();
+        outputView.printWinnerList();
     }
 }

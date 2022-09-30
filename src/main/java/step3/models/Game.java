@@ -1,6 +1,5 @@
 package step3.models;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -21,19 +20,18 @@ public class Game {
         this.tryNumber = tryNumber;
     }
 
-    public List<List<Car>> play() {
-        List<List<Car>> results = new ArrayList<>();
+    public GameResult play() {
+        GameResult results = GameResult.init();
 
         List<Car> previousCars = List.copyOf(carList);
 
         for (int i = 0; i < tryNumber; ++i) {
             List<Car> carsAfterMove = moveCars(previousCars);
-            results.add(carsAfterMove);
+            results = results.addResult(carsAfterMove);
             previousCars = carsAfterMove;
         }
 
-        return results.stream()
-                .collect(Collectors.toList());
+        return results;
     }
 
     private List<Car> moveCars(List<Car> cars) {

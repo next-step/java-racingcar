@@ -6,8 +6,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 public class GameTest {
     List<Car> carList;
@@ -26,7 +24,7 @@ public class GameTest {
         int tryNumber = 5;
         Game game = new Game(carList, tryNumber);
 
-        List<List<Car>> results = game.play();
+        List<List<Car>> results = game.play().getResults();
 
         assertThat(results.size()).isEqualTo(tryNumber);
         results.forEach(result -> assertThat(result.size()).isEqualTo(carList.size()));
