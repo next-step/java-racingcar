@@ -20,8 +20,18 @@ class PositiveIntegerTest {
     }
 
     @Test
-    void equals() {
+    void numericIntAndString() {
         assertThat(new PositiveInteger("1")).isEqualTo(new PositiveInteger("1"));
+        assertThat(new PositiveInteger("1")).isEqualTo(new PositiveInteger(1));
+        assertThat(new PositiveInteger(1)).isEqualTo(new PositiveInteger("1"));
+        assertThat(new PositiveInteger(1)).isEqualTo(new PositiveInteger(1));
     }
 
+    @Test
+    void plus() {
+        PositiveInteger one = new PositiveInteger("1");
+        assertThat(one.plus(new PositiveInteger("2"))).isEqualTo(new PositiveInteger("3"));
+        // assert that "one" is immutable even after add operation
+        assertThat(one).isEqualTo(new PositiveInteger("1"));
+    }
 }

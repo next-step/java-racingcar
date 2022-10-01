@@ -4,25 +4,31 @@ import java.util.Objects;
 
 public class PositiveInteger {
 
+    public static final PositiveInteger ZERO = new PositiveInteger("0");
+
     private final int value;
 
     public PositiveInteger(String value) {
-        this.value = parse(value);
+        this(parseInt(value));
     }
 
-    private static int parse(String value) {
+    public PositiveInteger(int value) {
+        if (value < 0) {
+            throw new NumberFormatException("minus");
+        }
+        this.value = value;
+    }
+
+    public PositiveInteger plus(PositiveInteger positiveInteger) {
+        Objects.requireNonNull(positiveInteger);
+        return new PositiveInteger(value + positiveInteger.value);
+    }
+
+    private static int parseInt(String value) {
         if (isBlank(value)) {
             return 0;
         }
-        return parsePositiveInt(value);
-    }
-
-    private static int parsePositiveInt(String value) {
-        int number = Integer.parseInt(value);
-        if (number < 0) {
-            throw new NumberFormatException("minus");
-        }
-        return number;
+        return Integer.parseInt(value);
     }
 
     private static boolean isBlank(String value) {
@@ -49,4 +55,5 @@ public class PositiveInteger {
     public int hashCode() {
         return Objects.hash(value);
     }
+
 }

@@ -30,6 +30,11 @@ public class StringNumberCalculatorTest {
     @CsvSource(value = {"1:1", "5:5", "10:10", "100:100"}, delimiter = ':')
     void onePositive(String input, int expected) {
         assertThat(StringNumberCalculator.splitAndSum(input)).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1,2:3", "2,1:3", "5,10:15", "10,5:15"}, delimiter = ':')
+    void commaDelimiter(String input, int expected) {
         assertThat(StringNumberCalculator.splitAndSum(input)).isEqualTo(expected);
     }
 
