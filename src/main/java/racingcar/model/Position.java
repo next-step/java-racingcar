@@ -24,7 +24,7 @@ public class Position {
         return new Position(biggestValue);
     }
 
-    public void moveForward() {
+    void moveForward() {
         this.value++;
     }
 

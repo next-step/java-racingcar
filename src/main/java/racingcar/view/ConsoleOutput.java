@@ -16,10 +16,9 @@ public class ConsoleOutput {
         System.out.println(RACING_RESULT_MESSAGE);
     }
 
-    public void status(List<Car> carStatusDto) {
-        carStatusDto.forEach(
-                carStatus -> System.out.printf(STATUS_FORMAT, carStatus.getName(), rails(carStatus.getPosition()))
-        );
+    public void status(List<Car> cars) {
+        cars.forEach(
+                carStatus -> System.out.printf(STATUS_FORMAT, carStatus.getName(), rails(carStatus.getPosition())));
         newLine();
     }
 
@@ -27,10 +26,10 @@ public class ConsoleOutput {
         return RAIL.repeat(Math.max(0, position));
     }
 
-    public void winner(List<Car> carStatusDtos) {
-        for (int i = 0; i < carStatusDtos.size(); i++) {
+    public void winner(List<Car> cars) {
+        for (int i = 0; i < cars.size(); i++) {
             printComma(i);
-            System.out.print(carStatusDtos.get(i).getName());
+            System.out.print(cars.get(i).getName());
         }
         System.out.println(WIN_MESSAGE);
     }

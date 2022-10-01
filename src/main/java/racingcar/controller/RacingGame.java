@@ -15,7 +15,7 @@ public class RacingGame {
         List<String> carNames = INPUT.getCarNames();
         int movementCount = INPUT.getMovementCount();
 
-        Cars cars = new Cars(carNames);
+        Cars cars = Cars.of(carNames);
 
         OUTPUT.resultMessage();
         for (int i = 0; i < movementCount; i++) {

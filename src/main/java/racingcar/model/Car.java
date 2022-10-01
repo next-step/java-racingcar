@@ -11,8 +11,7 @@ public class Car {
     private final Nickname nickname;
 
     public Car(String nickname) {
-        this.position = new Position();
-        this.nickname = new Nickname(nickname);
+        this(new Nickname(nickname));
     }
 
     public Car(Nickname nickname) {
@@ -20,7 +19,7 @@ public class Car {
         this.nickname = nickname;
     }
 
-    public void move(Condition carCondition) {
+    void move(Condition carCondition) {
         if (carCondition.inspect()) {
             position.moveForward();
         }
