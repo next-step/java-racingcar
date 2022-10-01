@@ -20,7 +20,7 @@ public class Cars {
 
     private static List<Car> initCars(List<String> names) {
         return names.stream()
-                .map(name -> new Car(new Nickname(name)))
+                .map(Car::new)
                 .collect(Collectors.toList());
     }
 
