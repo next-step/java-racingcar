@@ -5,8 +5,6 @@ public class ResultView {
     private static final String ROUND = "라운드";
     private static final String RESULT_TITLE = "실행 결과";
 
-    private static StringBuilder stringBuilder;
-
     public static void printRound(int index) {
         System.out.println(ROUND + " " + index);
     }
@@ -20,9 +18,7 @@ public class ResultView {
     }
 
     private static String generateDistanceToString(int distance) {
-        if (distance == 0) return "";
-
-        stringBuilder = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < distance; i++) {
             stringBuilder.append(DISTANCE_CHARACTER);
             if (distance == 1) break;
