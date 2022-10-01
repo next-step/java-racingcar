@@ -24,19 +24,11 @@ public class Cars {
 		return winners.stream().map(Name::getName).collect(Collectors.toList());
 	}
 
-	private int getMaxPosition() {
-		int maxPosition = 0;
-		for (Car car : cars) {
-			maxPosition = comparePosition(maxPosition, car.getPosition());
-		}
-		return maxPosition;
+	private Position getMaxPosition() {
+		return cars.stream().map(Car::getPosition).max(Position::compareTo).orElse(Position.ZERO);
 	}
 
-	private int comparePosition(int maxPosition, Position position) {
-		return Math.max(maxPosition, position.getPosition());
-	}
-
-	private void chooseWinners(List<Name> winners, int maxPosition) {
+	private void chooseWinners(List<Name> winners, Position maxPosition) {
 		for (Car car : cars) {
 			if (isWinner(car.getPosition(), maxPosition)) {
 				winners.add(car.getName());
@@ -44,7 +36,7 @@ public class Cars {
 		}
 	}
 
-	private boolean isWinner(Position position, int maxPosition) {
-		return position.getPosition() == maxPosition;
+	private boolean isWinner(Position position, Position maxPosition) {
+		return position.equals(maxPosition);
 	}
 }
