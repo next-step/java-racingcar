@@ -1,6 +1,5 @@
 package racing;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class InputView {
@@ -8,23 +7,7 @@ public class InputView {
     public static void main(String[] args) {
         Race race = createRace();
         race.play();
-        //FIXME: OUTPUT_VIEW 로 분리
-        showResult(race);
-    }
-
-    private static void showResult(Race race) {
-        ArrayList<ArrayList<String>> result = race.result();
-        System.out.println("실행 결과");
-        for (ArrayList<String> carsLocation : result) {
-            showCarLocations(carsLocation);
-            System.out.println();
-        }
-    }
-
-    private static void showCarLocations(ArrayList<String> carsLocation) {
-        for (String location : carsLocation) {
-            System.out.println(location);
-        }
+        OutputView.showResult(race);
     }
 
     private static Race createRace() {
