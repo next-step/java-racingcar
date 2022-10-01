@@ -16,8 +16,7 @@ public class Car {
     }
 
     public void decideMoveOrStop(int generatedNumber) {
-        if (generatedNumber > MAX_BOUND || generatedNumber < MIN_BOUND)
-            throw new RuntimeException("생성된 숫자가 경주에 필요한 값의 범위를 벗어났습니다.");
+        if (generatedNumber > MAX_BOUND || generatedNumber < MIN_BOUND) throw new RuntimeException("생성된 숫자가 경주에 필요한 값의 범위를 벗어났습니다.");
         if (generatedNumber >= MOVE_STANDARD) this.moveCnt += 1;
     }
 }
