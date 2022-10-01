@@ -14,10 +14,14 @@ class WinnerSupportTest {
 
     @BeforeEach
     void setUp(){
+        CarName firstCarName = new CarName("suchan");
+        CarName secondCarName = new CarName("pob");
+        CarName thirdCarName = new CarName("jon");
+
         cars = Arrays.asList(
-                new Car("suchan"),
-                new Car("pob"),
-                new Car("jon")
+                new Car(firstCarName),
+                new Car(secondCarName),
+                new Car(thirdCarName)
         );
     }
 
@@ -25,7 +29,7 @@ class WinnerSupportTest {
     @DisplayName("chooserWinner()로 우승자 문자열을 구한다.")
     void chooseWinner_String(){
         for (Car car : cars) {
-            car.moveForward(true);
+            car.moveForward();
         };
 
         String winner = WinnerSupport.chooseWinner(cars);

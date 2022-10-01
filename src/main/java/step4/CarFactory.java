@@ -3,7 +3,10 @@ package step4;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PrepareRacing {
+public class CarFactory {
+
+    private CarFactory(){
+    }
 
     static List<Car> prepareCar(String[] carNames) {
         List<Car> cars = new ArrayList<>();

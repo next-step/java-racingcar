@@ -11,11 +11,11 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 class CarTest {
 
     @Test
-    @DisplayName("moveForward() 메서드 파라미터가 true 면 location 한 칸 증가한다")
+    @DisplayName("moveForward() 메서드 호출 시 location 한 칸 증가한다")
     void move_when_isMove_true() {
         CarName carName = new CarName("suchan");
         Car car = new Car(carName);
-        car.moveForward(true);
+        car.moveForward();
         assertThat(car.getLocation()).isEqualTo(1);
     }
 

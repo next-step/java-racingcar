@@ -9,10 +9,8 @@ public class Car {
         this.carName = carName;
     }
 
-    void moveForward(boolean isMovable) {
-        if (isMovable) {
-            this.location++;
-        }
+    void moveForward() {
+        this.location++;
     }
 
     public String getCarName(){

@@ -6,7 +6,9 @@ public class RacingSupport {
 
     static void start(List<Car> cars) {
         for (Car car : cars) {
-            car.moveForward(isMovable());
+            if(isMovable()) {
+                car.moveForward();
+            }
         }
     }
 
