@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class StringNumberCalculatorTest {
 
@@ -15,10 +16,10 @@ public class StringNumberCalculatorTest {
         assertThat(StringNumberCalculator.splitAndSum("")).isEqualTo(0);
     }
 
-    @Test
-    void nonNumericOrMinus() {
-        assertThatThrownBy(() -> StringNumberCalculator.splitAndSum("TDD")).isInstanceOf(RuntimeException.class);
-        assertThatThrownBy(() -> StringNumberCalculator.splitAndSum("-1")).isInstanceOf(RuntimeException.class);
+    @ParameterizedTest
+    @ValueSource(strings = {"TDD", "-1", "-5", "-100"})
+    void nonNumericOrMinus(String input) {
+        assertThatThrownBy(() -> StringNumberCalculator.splitAndSum(input)).isInstanceOf(RuntimeException.class);
     }
 
     @Test
@@ -33,15 +34,22 @@ public class StringNumberCalculatorTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"1,2:3", "2,1:3", "5,10:15", "10,5:15"}, delimiter = ':')
+    @CsvSource(value = {"1,2:3", "2,1:3", "5,10:15", "10,5:15", "1,2,3:6", "3,2,1:6", "1,2,3,4:10", "4,3,2,1:10"}, delimiter = ':')
     void commaDelimiter(String input, int expected) {
         assertThat(StringNumberCalculator.splitAndSum(input)).isEqualTo(expected);
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"1:2,3", "2:1,3", "5:10,15", "10:5,15"}, delimiter = ',')
+    @CsvSource(value = {"1:2,3", "2:1,3", "5:10,15", "10:5,15", "1:2:3,6", "3:2:1,6", "1:2:3:4,10", "4:3:2:1,10"}, delimiter = ',')
     void colonDelimiter(String input, int expected) {
         assertThat(StringNumberCalculator.splitAndSum(input)).isEqualTo(expected);
     }
+
+    @Test
+    void customDelimiter() {
+        assertThat(StringNumberCalculator.splitAndSum("//;\n1;2")).isEqualTo(3);
+        assertThat(StringNumberCalculator.splitAndSum("//;\n2;1")).isEqualTo(3);
+    }
+
 
 }

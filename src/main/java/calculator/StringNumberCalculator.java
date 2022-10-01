@@ -1,8 +1,12 @@
 package calculator;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class StringNumberCalculator {
 
-    public static final String DEFAULT_DELIMITER = ",|:";
+    private static final String DEFAULT_DELIMITER = ",|:";
+    private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
 
     public static int splitAndSum(String input) {
         if (isBlank(input)) {
@@ -19,8 +23,16 @@ public class StringNumberCalculator {
         return result;
     }
 
+    private static String[] split(String input, String delimiter) {
+        return input.split(delimiter);
+    }
+
     private static String[] split(String input) {
-        return input.split(DEFAULT_DELIMITER);
+        Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(input);
+        if (!matcher.find()) {
+            return split(input, DEFAULT_DELIMITER);
+        }
+        return split(matcher.group(2), matcher.group(1));
     }
 
     private static PositiveInteger[] toPositiveIntegers(String[] values) {
