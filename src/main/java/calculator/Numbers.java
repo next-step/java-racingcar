@@ -12,11 +12,7 @@ public class Numbers {
     }
 
     public static Numbers create(String[] tokens) {
-        List<Number> numbers = new ArrayList<>();
-        for (String token : tokens) {
-            numbers.add(new Number(token));
-        }
-        return new Numbers(numbers);
+        return new Numbers(Arrays.stream(tokens).map(Number::parse).collect(Collectors.toList()));
     }
 
     public int sum() {
