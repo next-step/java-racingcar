@@ -3,13 +3,13 @@ package step3.output;
 @FunctionalInterface
 public interface OutputView {
 
-    void print(int i);
+    void print(int count);
 
     class Fake implements OutputView {
 
         @Override
-        public void print(int i) {
-            System.out.println("(호출완료) i = " + i);
+        public void print(int count) {
+            System.out.println("(호출완료) count = " + count);
         }
     }
 }
