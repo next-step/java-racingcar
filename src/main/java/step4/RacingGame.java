@@ -1,7 +1,6 @@
 package step4;
 
 import java.util.List;
-import java.util.Random;
 
 public class RacingGame {
 
@@ -12,6 +11,6 @@ public class RacingGame {
     }
 
     private static int randomNumber() {
-        return new Random().nextInt(10);
+        return new RandomNumber().getRandomNumber();
     }
 }

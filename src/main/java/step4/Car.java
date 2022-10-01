@@ -5,23 +5,24 @@ public class Car {
     private static final int MOVABLE_BOUNDARY = 3;
 
     private CarName carName;
-    private int location = 0;
+    private Location location;
 
     public Car(CarName carName) {
+        this.location = new Location();
         this.carName = carName;
     }
 
     void moveForward(int randomNumber) {
-        if(randomNumber > MOVABLE_BOUNDARY) {
-            this.location++;
+        if (randomNumber > MOVABLE_BOUNDARY) {
+            this.location.move();
         }
     }
 
-    public String getCarName(){
+    public String getCarName() {
         return this.carName.getName();
     }
 
     public int getLocation() {
-        return this.location;
+        return this.location.getLocation();
     }
 }

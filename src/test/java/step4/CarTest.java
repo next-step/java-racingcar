@@ -31,7 +31,6 @@ class CarTest {
         assertThat(car.getLocation()).isEqualTo(0);
     }
 
-
     @ParameterizedTest
     @NullAndEmptySource
     @DisplayName("자동차 이름은 빈 값이나 null이 입력될 수 없다")
