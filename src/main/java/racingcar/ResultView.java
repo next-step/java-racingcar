@@ -13,7 +13,8 @@ public class ResultView {
         List<String> carStatus;
         for (int i = 0; i < carMovingNum; i++) {
             carStatus = racingCar.carMoving();
-            System.out.println(carStatus);
+            System.out.println("*********" + (i + 1) + "번째 자동차 위치*********");
+            System.out.println(racingCar.printResult(carStatus));
         }
     }
 }

@@ -53,4 +53,12 @@ public class RacingCar {
         }
         return movePrint;
     }
+
+    public String printResult(List<String> carMoving) {
+        String result = "";
+        for (int i = 0; i < numberOfCar; i++) {
+            result += carMoving.get(i) + "\n";
+        }
+        return result;
+    }
 }
