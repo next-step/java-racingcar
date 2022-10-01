@@ -13,20 +13,19 @@ public class Number {
 
     private void validateIsPositive(int number) {
         if (number < 0) {
-            throw new IllegalArgumentException();
+            throw new NumberFormatException("0보다 작을 수 없습니다.");
         }
     }
 
     public static Number parse(String string) {
-        int parse = parseInt(string);
-        return new Number(parse);
+        return new Number(parseInt(string));
     }
 
     private static int parseInt(String string) {
         try {
             return Integer.parseInt(string);
-        } catch (Exception e) {
-            throw new IllegalArgumentException();
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException("숫자가 아닙니다.");
         }
     }
 

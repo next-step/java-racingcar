@@ -11,10 +11,21 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class NumberTest {
 
     @ParameterizedTest(name = "입력: {0}")
-    @ValueSource(strings = {"-1", "a"})
-    @DisplayName("음수나 숫자 이외의 값이 들어오면 예외를 반환한다.")
-    void negative_or_except_numbers_throw_error(String input) {
-        assertThatThrownBy(() -> Number.parse(input)).isInstanceOf(IllegalArgumentException.class);
+    @ValueSource(strings = {"-1", "-3"})
+    @DisplayName("음수가 들어오면 예외를 반환한다.")
+    void negative_numbers_throw_error(String input) {
+        assertThatThrownBy(() -> Number.parse(input))
+                .isInstanceOf(NumberFormatException.class)
+                .hasMessageContaining("0보다 작을 수 없습니다.");
+    }
+
+    @ParameterizedTest(name = "입력: {0}")
+    @ValueSource(strings = {"#", "a"})
+    @DisplayName("숫자 이외의 값이 들어오면 예외를 반환한다.")
+    void except_numbers_throw_error(String input) {
+        assertThatThrownBy(() -> Number.parse(input))
+                .isInstanceOf(NumberFormatException.class)
+                .hasMessageContaining("숫자가 아닙니다.");
     }
 
     @Test
