@@ -1,8 +1,8 @@
 package racing;
 
-import org.junit.jupiter.api.Test;
-
 import static org.assertj.core.api.Assertions.assertThat;
+
+import org.junit.jupiter.api.Test;
 
 class CarTest {
 
@@ -17,7 +17,7 @@ class CarTest {
     void 자동차_위치_표시_테스트(){
         Car car = new Car();
         car.move();
-        assertThat(car.location()).isIn("", "-");
+        assertThat(car.location()).isIn(0, 1);
     }
 
 }
