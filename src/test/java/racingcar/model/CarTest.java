@@ -3,6 +3,7 @@ package racingcar.model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.model.nickname.Nickname;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -12,7 +13,7 @@ class CarTest {
 
     @BeforeEach
     void setData() {
-        car = createCar();
+        car = new Car("boost");
     }
 
     @Test
@@ -35,11 +36,15 @@ class CarTest {
     @DisplayName("자동차를 생성할때 닉네임을 받을 수 있다.")
     void nickname() {
         String expected = "boost";
+
         assertThat(car.getName()).isEqualTo(expected);
     }
 
-    private Car createCar() {
-        String nickname = "boost";
-        return new Car(nickname);
+    @Test
+    @DisplayName("자동차를 생성할때 Nickname 클래스를 받을 수 있다.")
+    void nickname_arg() {
+        Car car = new Car(new Nickname("boost"));
+
+        assertThat(this.car).isEqualTo(car);
     }
 }

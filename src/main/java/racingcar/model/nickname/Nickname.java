@@ -1,5 +1,7 @@
 package racingcar.model.nickname;
 
+import java.util.Objects;
+
 public class Nickname {
 
     private static final int MAX_LENGTH = 5;
@@ -38,5 +40,18 @@ public class Nickname {
 
     public String getValue() {
         return this.value;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Nickname nickname = (Nickname) o;
+        return Objects.equals(value, nickname.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 }

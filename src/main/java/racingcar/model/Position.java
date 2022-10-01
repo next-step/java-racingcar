@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Position {
 
@@ -34,5 +35,18 @@ public class Position {
 
     public int getValue() {
         return value;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Position position = (Position) o;
+        return value == position.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 }
