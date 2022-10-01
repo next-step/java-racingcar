@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import java.util.Comparator;
 import java.util.Objects;
 
 public class Position implements Comparable<Position> {
@@ -10,10 +9,6 @@ public class Position implements Comparable<Position> {
         validate(position);
 
         this.position = position;
-    }
-
-    public int getValue() {
-        return position;
     }
 
     public Position add(int distance) {
@@ -28,6 +23,10 @@ public class Position implements Comparable<Position> {
         if (position < 0) {
             throw new RuntimeException("위치는 음수일 수 없습니다.");
         }
+    }
+
+    public int getValue() {
+        return position;
     }
 
     @Override

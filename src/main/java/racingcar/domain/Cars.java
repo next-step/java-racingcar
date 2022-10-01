@@ -6,7 +6,7 @@ import java.util.List;
 import racingcar.domain.movingcondition.MovingCondition;
 
 public class Cars {
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public Cars(List<Car> cars) {
         this.cars = cars;
@@ -23,21 +23,20 @@ public class Cars {
     }
 
     public List<CarStat> findWinners() {
-        Position maxPosition = findMaxPosition();
+        Car representativeWinner = findRepresentativeWinner();
         List<CarStat> winners = new ArrayList<>();
 
-        for(Car car: cars) {
-            if(car.getPosition().equals(maxPosition)) {
+        for (Car car : cars) {
+            if (car.hasSamePosition(representativeWinner)) {
                 winners.add(new CarStat(car.getName(), car.getPosition()));
             }
         }
         return winners;
     }
 
-    private Position findMaxPosition() {
+    private Car findRepresentativeWinner() {
         return cars.stream()
-            .map(Car::getPosition)
-            .max(Position::compareTo)
+            .max(Car::isWinner)
             .orElseThrow();
     }
 }

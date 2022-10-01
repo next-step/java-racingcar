@@ -46,10 +46,9 @@ class RacingGameTest {
         Assertions.assertThatThrownBy(() -> {
             for (int round = 1; round <= playCount + 1; ++round) {
                 racingGame.play();
-            };
+            }
         }).isInstanceOf(RuntimeException.class);
     }
-
 
     private List<CarStat> getExpectedResult(Name name, boolean isCarMovable, int playRounds) {
         return isCarMovable ? List.of(new CarStat(name, new Position(playRounds))) : List.of(new CarStat(name, new Position(0)));

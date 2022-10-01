@@ -3,12 +3,13 @@ package racingcar.domain;
 import racingcar.domain.movingcondition.MovingCondition;
 
 public class Car {
+    private static final int DEFAULT_POSITION = 0;
 
-    private Name name;
+    private final Name name;
     private Position position;
 
     public Car(String name) {
-        this(name, 0);
+        this(name, DEFAULT_POSITION);
     }
 
     public Car(String name, int position) {
@@ -23,6 +24,15 @@ public class Car {
         return position;
     }
 
+
+    public int isWinner(Car other) {
+        return position.compareTo(other.position);
+    }
+
+    public boolean hasSamePosition(Car other) {
+        return position.equals(other.position);
+    }
+
     public Name getName() {
         return name;
     }
@@ -30,4 +40,5 @@ public class Car {
     public Position getPosition() {
         return position;
     }
+
 }

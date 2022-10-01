@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class RandomMovingCondition implements MovingCondition {
 
-    private static final int RANDOM_MAGIC_NUMBER  = 10;
+    private static final int RANDOM_MAGIC_NUMBER = 10;
     private static final int FORWARD_CONDITION_NUMBER = 4;
     private final Random random = new Random();
 

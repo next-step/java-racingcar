@@ -35,7 +35,7 @@ public class RacingGameController {
     private List<Car> generateCarList(List<String> carNames) {
         List<Car> cars = new ArrayList<>();
 
-        for(String carName: carNames) {
+        for (String carName : carNames) {
             cars.add(new Car(carName));
         }
         return cars;

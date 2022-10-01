@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 public class StringTest {
 
-
     @Test
     @DisplayName("여러 숫자 사이에 ,가 있는 문자열을 , split 했을 때 숫자들만 포함한 숫자만 반환된다.")
     void twoNumberWithCommaSplitTest() {
@@ -17,7 +16,7 @@ public class StringTest {
         String[] result = sut.split(",");
 
         // then
-        Assertions.assertThat(result).containsExactly("1","2");
+        Assertions.assertThat(result).containsExactly("1", "2");
     }
 
     @Test
@@ -69,8 +68,8 @@ public class StringTest {
 
         // when & then
         Assertions.assertThatThrownBy(() -> {
-            sut.charAt(sut.length());
-        }).isInstanceOf(StringIndexOutOfBoundsException.class)
-                .hasMessageContaining("String index out of range");
+                sut.charAt(sut.length());
+            }).isInstanceOf(StringIndexOutOfBoundsException.class)
+            .hasMessageContaining("String index out of range");
     }
 }
