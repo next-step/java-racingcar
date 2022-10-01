@@ -13,4 +13,10 @@ public class StringNumberCalculatorTest {
         assertThat(StringNumberCalculator.splitAndSum("")).isEqualTo(0);
     }
 
+    @Test
+    void nonNumericOrMinusNumber() {
+        assertThatThrownBy(() -> StringNumberCalculator.splitAndSum("TDD")).isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> StringNumberCalculator.splitAndSum("-1")).isInstanceOf(RuntimeException.class);
+    }
+
 }

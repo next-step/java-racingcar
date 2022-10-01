@@ -6,10 +6,12 @@ public class StringNumberCalculator {
         if (isBlank(input)) {
             return 0;
         }
+        PositiveInteger positiveInteger = new PositiveInteger(input);
         return 1;
     }
 
     private static boolean isBlank(String input) {
         return input == null || input.isBlank();
     }
+
 }
