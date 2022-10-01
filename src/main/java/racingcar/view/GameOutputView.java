@@ -1,18 +1,16 @@
 package racingcar.view;
 
-import java.util.List;
-
-import racingcar.domain.Distance;
+import racingcar.domain.Watcher;
 
 public class GameOutputView {
-    private final Display displayer;
+    private final Watcher watcher;
 
     public GameOutputView(Display displayer) {
-        this.displayer = displayer;
+        watcher = new Watcher(distances -> { displayer.show(distances); });
     }
 
-    public void notify(List<Distance> distance) {
-        displayer.show(distance);
+    public Watcher watcher() {
+        return watcher;
     }
 }
 
