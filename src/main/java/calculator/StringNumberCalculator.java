@@ -2,7 +2,7 @@ package calculator;
 
 public class StringNumberCalculator {
 
-    public static final String DEFAULT_DELIMITER = ",";
+    public static final String DEFAULT_DELIMITER = ",|:";
 
     public static int splitAndSum(String input) {
         if (isBlank(input)) {

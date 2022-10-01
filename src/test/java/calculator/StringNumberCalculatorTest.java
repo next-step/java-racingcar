@@ -38,4 +38,10 @@ public class StringNumberCalculatorTest {
         assertThat(StringNumberCalculator.splitAndSum(input)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {"1:2,3", "2:1,3", "5:10,15", "10:5,15"}, delimiter = ',')
+    void colonDelimiter(String input, int expected) {
+        assertThat(StringNumberCalculator.splitAndSum(input)).isEqualTo(expected);
+    }
+
 }
