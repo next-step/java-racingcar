@@ -1,10 +1,13 @@
 package step3.cars;
 
 import step3.car.Car;
+import step3.car.RacingCar;
+import step3.number.RandomNumber;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class RacingCars implements Cars {
 
@@ -38,6 +41,25 @@ public class RacingCars implements Cars {
     @Override
     public int hashCode() {
         return Objects.hash(cars);
+    }
+
+    public static class Factory {
+
+        private final int numberOfCars;
+
+        public Factory(int numberOfCars) {
+            this.numberOfCars = numberOfCars;
+        }
+
+        public Cars cars() {
+            List<Car> cars = IntStream.range(0, numberOfCars)
+                    .boxed()
+                    .map(number -> new RacingCar(new RandomNumber()))
+                    .collect(Collectors.toUnmodifiableList());
+
+            return new RacingCars(cars);
+        }
+
     }
 
 }
