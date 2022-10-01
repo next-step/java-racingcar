@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Position {
 
-	private int position;
+	private final int position;
 
 	public Position(int position) {
 		if (!isValid(position)) {
@@ -17,8 +17,8 @@ public class Position {
 		return position >= 0;
 	}
 
-	public void move() {
-		position++;
+	public Position move() {
+		return new Position(this.position + 1);
 	}
 
 	public int getPosition() {

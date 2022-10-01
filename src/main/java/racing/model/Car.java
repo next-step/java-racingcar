@@ -2,7 +2,7 @@ package racing.model;
 
 public class Car {
 
-	private final Position position;
+	private Position position;
 	private final Name name;
 
 	public Car(Name name) {
@@ -12,7 +12,7 @@ public class Car {
 
 	public void move(boolean isMovable) {
 		if (isMovable) {
-			position.move();
+			position = position.move();
 		}
 	}
 
