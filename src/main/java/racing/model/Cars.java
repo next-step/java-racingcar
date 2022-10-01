@@ -18,25 +18,15 @@ public class Cars {
 		return cars;
 	}
 
-	public List<String> getWinners() {
-		List<Name> winners = new ArrayList<>();
-		chooseWinners(winners, getMaxPosition());
-		return winners.stream().map(Name::getName).collect(Collectors.toList());
+	public List<Name> getWinners() {
+		return chooseWinners(getMaxPosition());
 	}
 
 	private Position getMaxPosition() {
 		return cars.stream().map(Car::getPosition).max(Position::compareTo).orElse(Position.ZERO);
 	}
 
-	private void chooseWinners(List<Name> winners, Position maxPosition) {
-		for (Car car : cars) {
-			if (isWinner(car.getPosition(), maxPosition)) {
-				winners.add(car.getName());
-			}
-		}
-	}
-
-	private boolean isWinner(Position position, Position maxPosition) {
-		return position.equals(maxPosition);
+	private List<Name> chooseWinners(Position maxPosition) {
+		return cars.stream().filter(car -> car.isWinner(maxPosition)).map(Car::getName).collect(Collectors.toList());
 	}
 }

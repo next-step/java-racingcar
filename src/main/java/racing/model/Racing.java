@@ -4,6 +4,7 @@ import racing.dto.RacingResult;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Racing {
 
@@ -31,6 +32,7 @@ public class Racing {
 	}
 
 	public List<String> getWinners() {
-		return cars.getWinners();
+		List<Name> winners = cars.getWinners();
+		return winners.stream().map(Name::getName).collect(Collectors.toList());
 	}
 }
