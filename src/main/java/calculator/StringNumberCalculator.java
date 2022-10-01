@@ -6,8 +6,7 @@ public class StringNumberCalculator {
         if (isBlank(input)) {
             return 0;
         }
-        PositiveInteger positiveInteger = new PositiveInteger(input);
-        return 1;
+        return new PositiveInteger(input).intValue();
     }
 
     private static boolean isBlank(String input) {

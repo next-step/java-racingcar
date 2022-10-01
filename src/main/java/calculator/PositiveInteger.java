@@ -29,6 +29,10 @@ public class PositiveInteger {
         return value == null || value.isBlank();
     }
 
+    public int intValue() {
+        return value;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
