@@ -1,7 +1,6 @@
-package racingcar.model;
+package racingcar.view;
 
 import org.junit.jupiter.api.Test;
-import racingcar.view.CarNameSeparator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

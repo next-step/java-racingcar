@@ -9,7 +9,7 @@ public class CarCondition implements Condition {
     private static final int CONDITION = 4;
 
     public boolean inspect() {
-        return random.nextInt(BOUND) > CONDITION;
+        return random.nextInt(BOUND) >= CONDITION;
     }
 
 }
