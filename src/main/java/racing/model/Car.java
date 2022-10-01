@@ -6,7 +6,7 @@ public class Car {
 	private final Name name;
 
 	public Car(Name name) {
-		this.position = new Position(0);
+		this.position = Position.ZERO;
 		this.name = name;
 	}
 
