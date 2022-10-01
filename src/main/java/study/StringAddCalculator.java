@@ -23,11 +23,7 @@ public class StringAddCalculator {
     private static int dataOperator(String []dataList) {
         int sum = 0;
         for (String sumData : dataList) {
-            if (parseInt(sumData) < 0) {
-                throw new RuntimeException("음수가 들어왔습니다");
-            } else {
-                sum = Operator.PLUS.calculate(sum,parseInt(sumData));
-            }
+            sum = Operator.PLUS.calculate(sum,new Number(parseInt(sumData)).getValue());
         }
         return sum;
     }
