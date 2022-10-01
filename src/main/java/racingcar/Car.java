@@ -1,7 +1,4 @@
-package racingCar;
-
-import java.util.ArrayList;
-import java.util.List;
+package racingcar;
 
 public class Car {
 	private static final int MOVINGCONDITION = 4;

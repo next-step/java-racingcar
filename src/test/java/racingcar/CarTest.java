@@ -1,10 +1,7 @@
-package racingCar;
+package racingcar;
 
 import static org.assertj.core.api.Assertions.*;
 
-import java.util.Random;
-
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

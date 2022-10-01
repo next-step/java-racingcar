@@ -1,6 +1,5 @@
-package racingCar;
+package racingcar;
 
-import java.util.Collections;
 import java.util.List;
 
 public class Print {

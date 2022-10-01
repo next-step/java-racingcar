@@ -1,4 +1,4 @@
-package racingCar;
+package racingcar;
 
 public class Racing {
 	private static final char ASCII_ZERO = 48;
