@@ -29,11 +29,8 @@ public class SetTest {
 	@DisplayName("Set 의 크기를 확인한다.")
 	void Given_Set_When_Size_Then_ReturnSetSize(){
 
-		// when
-		int result = numbers.size();
-
 		// then
-		assertThat(result).isEqualTo(3);
+		assertThat(numbers).hasSize(3);
 	}
 
 	@DisplayName("Set 의 값을 확인한다.")
@@ -45,7 +42,7 @@ public class SetTest {
 		boolean result = numbers.contains(value);
 
 		// then
-		assertThat(result).isEqualTo(true);
+		assertThat(numbers).contains(1, 2, 3);
 	}
 
 	@DisplayName("Set 의 값을 확인하고, 존재하면 true, 존재하지 않으면 false 를 반환한다")
