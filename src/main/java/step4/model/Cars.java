@@ -7,9 +7,13 @@ import java.util.List;
 public class Cars {
 	private static final String SPLIT_STANDARD = ",";
 
-	private final static List<Car> cars = new ArrayList<>();
+	private final List<Car> cars;
 
-	public void init(String nameListString) {
+    public Cars() {
+        cars = new ArrayList<>();
+    }
+
+    public void init(String nameListString) {
 		String[] names = nameListString.split(SPLIT_STANDARD);
 		Arrays.stream(names).map(Car::new).forEachOrdered(cars::add);
 	}

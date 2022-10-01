@@ -6,9 +6,13 @@ import java.util.stream.Collectors;
 
 public class Winners {
 
-	private final static List<String> winners = new ArrayList<>();
+	private final List<String> winners;
 
-	public int getWinnerStandard(Cars cars){
+    public Winners() {
+        this.winners = new ArrayList<>();
+    }
+
+    public int getWinnerStandard(Cars cars){
 		int maxMoveCnt = 0;
 		for(Car car : cars.getCars()){
 			maxMoveCnt = Math.max(maxMoveCnt, car.getMoveCnt());
@@ -24,6 +28,6 @@ public class Winners {
 	}
 
 	public String getWinners(){
-		return winners.stream().map(winner -> String.valueOf(winner)).collect(Collectors.joining(", "));
+		return winners.stream().map(String::valueOf).collect(Collectors.joining(", "));
 	}
 }
