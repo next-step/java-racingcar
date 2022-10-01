@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
 
 public class Car {
 
-    private final Position position;
     private final Nickname nickname;
+    private final Position position;
 
     public Car(String nickname) {
         this(new Nickname(nickname));
@@ -18,6 +18,11 @@ public class Car {
     public Car(Nickname nickname) {
         this.position = new Position();
         this.nickname = nickname;
+    }
+
+    public Car(Nickname nickname, Position position) {
+        this.nickname = nickname;
+        this.position = position;
     }
 
     void move(Condition carCondition) {

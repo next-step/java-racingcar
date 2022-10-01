@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import racingcar.model.CarCondition;
 import racingcar.model.Cars;
 import racingcar.view.ConsoleInput;
 import racingcar.view.ConsoleOutput;
@@ -19,7 +20,7 @@ public class RacingGame {
 
         OUTPUT.resultMessage();
         for (int i = 0; i < movementCount; i++) {
-            OUTPUT.status(cars.move());
+            OUTPUT.status(cars.move(new CarCondition()));
         }
         OUTPUT.winner(cars.getWinners());
     }

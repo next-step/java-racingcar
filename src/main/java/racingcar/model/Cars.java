@@ -24,8 +24,8 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public List<Car> move() {
-        cars.forEach(car -> car.move(new CarCondition()));
+    public List<Car> move(Condition condition) {
+        cars.forEach(car -> car.move(condition));
         return List.copyOf(cars);
     }
 
