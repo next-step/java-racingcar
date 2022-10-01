@@ -4,6 +4,6 @@ public interface Position {
 
     Position movedPosition();
 
-    int position();
+    void printPosition();
 
 }
