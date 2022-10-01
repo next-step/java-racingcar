@@ -3,6 +3,8 @@ package racingcar.model.nickname;
 import org.assertj.core.api.ThrowableAssert.ThrowingCallable;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -17,10 +19,10 @@ public class NicknameTest {
         assertThat(new Nickname("boost").getValue()).isEqualTo(expected);
     }
 
-    @Test
-    @DisplayName("null 이면 CanNotNullNicknameException이 발생한다.")
-    void nicknameNull() {
-        ThrowingCallable actual = () -> new Nickname(null);
+    @ParameterizedTest
+    @NullSource
+    void nicknameNull(String value) {
+        ThrowingCallable actual = () -> new Nickname(value);
 
         assertThatThrownBy(actual)
                 .isExactlyInstanceOf(CanNotNullNicknameException.class)
