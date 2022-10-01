@@ -14,6 +14,9 @@ public class Position {
     }
 
     public Position(int value) {
+        if (value < 0) {
+            throw new IllegalStateException("0 미만의 수는 Position이 될 수 없습니다.");
+        }
         this.value = value;
     }
 
@@ -33,10 +36,6 @@ public class Position {
         return this.value >= position.value;
     }
 
-    public int getValue() {
-        return value;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -48,5 +47,9 @@ public class Position {
     @Override
     public int hashCode() {
         return Objects.hash(value);
+    }
+
+    public int getValue() {
+        return value;
     }
 }
