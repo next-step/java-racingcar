@@ -12,13 +12,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class DistanceTest {
-    @DisplayName("주행거리 만큼 주행거리(-) 를 표시한다.")
-    @ParameterizedTest
-    @CsvSource(value = { "0,''", "1,-", "2,--", "5,-----" }, delimiter = ',')
-    void to_string(int distance, String expected) {
-        assertThat(new Distance(distance).toString()).isEqualTo(expected);
-    }
-
     @DisplayName("주행거리가 같으면 주행거리 객체는 같다.")
     @ParameterizedTest
     @MethodSource("distance")

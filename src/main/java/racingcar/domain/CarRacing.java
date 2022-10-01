@@ -1,19 +1,19 @@
 package racingcar.domain;
 
-import racingcar.view.Watcher;
+import racingcar.view.GameOutputView;
 
 public class CarRacing {
     private final Racing racing;
-    private final Watcher watcher;
+    private final GameOutputView gameOutputView;
 
-    public CarRacing(Racing racing, Watcher watcher) {
+    public CarRacing(Racing racing, GameOutputView gameOutputView) {
         this.racing = racing;
-        this.watcher = watcher;
+        this.gameOutputView = gameOutputView;
     }
 
     public void race() {
         while(!racing.isFinish()) {
-            racing.race(watcher);
+            racing.race(gameOutputView);
         }
     }
 }

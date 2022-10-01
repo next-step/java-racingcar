@@ -9,14 +9,14 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import racingcar.domain.exception.AlreadyRaceFinishedException;
-import racingcar.view.Watcher;
+import racingcar.view.GameOutputView;
 
 class RacingTest {
-    private Watcher watcher;
+    private GameOutputView gameOutputView;
 
     @BeforeEach
     void setUp() {
-        watcher = new Watcher(distances -> {});
+        gameOutputView = new GameOutputView(distances -> {});
     }
 
     @DisplayName("자동차 대수나 시도 횟수가 유효하다면 Racing 객체를 리턴한다.")
@@ -57,7 +57,7 @@ class RacingTest {
 
     private void race(Racing racing, int maxRetryCount) {
         for (int count = 0; count < maxRetryCount; count++) {
-            racing.race(watcher);
+            racing.race(gameOutputView);
         }
     }
 }

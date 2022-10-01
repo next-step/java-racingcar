@@ -1,7 +1,7 @@
 package racingcar.domain;
 
 import racingcar.domain.exception.AlreadyRaceFinishedException;
-import racingcar.view.Watcher;
+import racingcar.view.GameOutputView;
 
 public class Racing {
     private final Cars cars;
@@ -13,12 +13,12 @@ public class Racing {
         this.tryCount = tryCount;
     }
 
-    public void race(Watcher watcher) {
+    public void race(GameOutputView gameOutputView) {
         if (isFinish()) {
             throw new AlreadyRaceFinishedException();
         }
         currentTryCount++;
-        watcher.notify(cars.move());
+        gameOutputView.notify(cars.move());
     }
     
     public boolean isFinish() {

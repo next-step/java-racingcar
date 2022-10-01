@@ -14,7 +14,11 @@ public class Distance {
     public Distance increment() {
         return new Distance(distance + 1);
     }
-    
+
+    public int getDistance() {
+        return distance;
+    }
+
     @Override
     public boolean equals(Object other) {
         if (this == other) {
@@ -30,12 +34,5 @@ public class Distance {
     @Override
     public int hashCode() {
         return Objects.hash(distance);
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder result = new StringBuilder();
-        result.append("-".repeat(Math.max(0, distance)));
-        return result.toString();
     }
 }

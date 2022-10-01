@@ -14,6 +14,6 @@ public class CarRacingGame {
     }
 
     public void start() {
-        new CarRacing(input.racing(), output.watcher()).race();
+        new CarRacing(input.racing(), output).race();
     }
 }
