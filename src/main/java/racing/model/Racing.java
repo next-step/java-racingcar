@@ -36,7 +36,7 @@ public class Racing {
 	}
 
 	public List<String> getWinners() {
-		List<Name> winners = cars.getWinners();
-		return winners.stream().map(Name::getName).collect(Collectors.toList());
+		List<Car> winners = cars.getWinners();
+		return winners.stream().map(Car::getName).map(Name::getName).collect(Collectors.toList());
 	}
 }

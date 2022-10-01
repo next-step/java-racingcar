@@ -11,7 +11,7 @@ public class Cars {
 		this.cars = cars;
 	}
 
-	public List<Name> getWinners() {
+	public List<Car> getWinners() {
 		return chooseWinners(getMaxPosition());
 	}
 
@@ -19,8 +19,8 @@ public class Cars {
 		return cars.stream().map(Car::getPosition).max(Position::compareTo).orElse(Position.ZERO);
 	}
 
-	private List<Name> chooseWinners(Position maxPosition) {
-		return cars.stream().filter(car -> car.isWinner(maxPosition)).map(Car::getName).collect(Collectors.toList());
+	private List<Car> chooseWinners(Position maxPosition) {
+		return cars.stream().filter(car -> car.isWinner(maxPosition)).collect(Collectors.toList());
 	}
 
 	public List<Car> getCars() {
