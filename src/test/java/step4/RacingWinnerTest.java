@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 
-class WinnerSupportTest {
+class RacingWinnerTest {
 
     private List<Car> cars;
 
@@ -32,7 +32,7 @@ class WinnerSupportTest {
             car.moveForward(4);
         };
 
-        String winner = WinnerSupport.chooseWinner(cars);
+        String winner = RacingWinner.chooseWinner(cars);
 
         Assertions.assertThat(winner).isEqualTo("suchan,pob,jon");
     }

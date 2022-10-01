@@ -1,5 +1,6 @@
 package step4;
 
+import java.util.ArrayList;
 import step4.input.RacingCarInput;
 import step4.output.RacingCarOutput;
 
@@ -9,6 +10,7 @@ public class RacingCarApplication {
     public static void main(String[] args) {
         RacingCarOutput.printCarNames();
         String[] carNames = RacingCarInput.carNames();
+        int carCount = carNames.length;
         RacingCarOutput.printTryCount();
         int tryCount = RacingCarInput.tryCount();
 
@@ -16,12 +18,14 @@ public class RacingCarApplication {
 
         RacingCarOutput.printStartMessage();
 
+        List<RacingResult> racingResults = new ArrayList<>();
         for (int i = 0; i < tryCount; i++) {
-            RacingGame.start(cars);
-            RacingCarOutput.printRacingResult(cars);
+            racingResults.addAll(RacingGame.start(cars));
         }
 
-        String winner = WinnerSupport.chooseWinner(cars);
+        RacingCarOutput.printRacingResults(racingResults, carCount);
+
+        String winner = RacingWinner.chooseWinner(cars);
         RacingCarOutput.printWinner(winner);
     }
 }

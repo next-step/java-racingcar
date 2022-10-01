@@ -3,7 +3,7 @@ package step4;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class WinnerSupport {
+public class RacingWinner {
 
     static String chooseWinner(List<Car> cars) {
         int foreFrontLocation = getForeFrontLocation(cars);

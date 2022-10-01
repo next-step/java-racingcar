@@ -1,8 +1,8 @@
 package step4.output;
 
-import step4.Car;
-
+import java.util.Iterator;
 import java.util.List;
+import step4.RacingResult;
 
 public class RacingCarOutput {
 
@@ -20,14 +20,22 @@ public class RacingCarOutput {
         System.out.println(TRY_COUNT_NOTICE_MESSAGE);
     }
 
-    public static void printRacingResult(List<Car> cars) {
-        for (int i = 0; i < cars.size(); i++) {
-            String carName = cars.get(i).getCarName();
-            int position = cars.get(i).getLocation();
-            System.out.println(carName + " : " + CAR_POSITION_INDEX.repeat(position));
-        }
+    public static void printRacingResults(List<RacingResult> racingResults, int carCount) {
+        Iterator<RacingResult> racingResultIterator = racingResults.iterator();
 
-        printDividingLine();
+        while (racingResultIterator.hasNext()) {
+            printEachRoundResult(racingResultIterator, carCount);
+            printDividingLine();
+        }
+    }
+
+    private static void printEachRoundResult(Iterator<RacingResult> racingResultIterator, int carCount) {
+        for (int i = 0; i < carCount; i++) {
+            RacingResult result = racingResultIterator.next();
+            String carName = result.getCarName();
+            int location = result.getLocation();
+            System.out.println(carName + " : " + CAR_POSITION_INDEX.repeat(location));
+        }
     }
 
     public static void printStartMessage() {
