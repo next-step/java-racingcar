@@ -18,11 +18,11 @@ public class Race {
 
     public void play() {
         for (int i = 0; i < play; i++) {
-            run();
+            race();
         }
     }
 
-    private void run() {
+    private void race() {
         RaceResult result = new RaceResult();
         for (Car car : cars) {
             car.move();
