@@ -17,13 +17,13 @@ public class Number {
         }
     }
 
-    public static Number parse(String string) {
-        return new Number(parseInt(string));
+    public static Number parse(String input) {
+        return new Number(parseInt(input));
     }
 
-    private static int parseInt(String string) {
+    private static int parseInt(String input) {
         try {
-            return Integer.parseInt(string);
+            return Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new NumberFormatException("숫자가 아닙니다.");
         }
