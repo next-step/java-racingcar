@@ -1,3 +1,5 @@
+package calculator;
+
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
