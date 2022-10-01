@@ -9,9 +9,9 @@ public class Race {
     private final ArrayList<ArrayList<Integer>> scoreBoard = new ArrayList<>();
     private final int play;
 
-    public Race(final int numberOfCars, final int numberOfPlays) {
+    public Race(final int numberOfCars, final int numberOfPlays, final MovingRule movingRule) {
         for (int i = 0; i < numberOfCars; i++) {
-            this.cars.add(createCar());
+            this.cars.add(createCar(movingRule));
         }
         this.play = numberOfPlays;
     }
@@ -22,7 +22,6 @@ public class Race {
         }
     }
 
-    //TODO: 인터페이스로 정의
     private void run() {
         ArrayList<Integer> result = new ArrayList<>();
         for (Car car : cars) {
@@ -32,8 +31,8 @@ public class Race {
         scoreBoard.add(result);
     }
 
-    private Car createCar() {
-        return new Car();
+    private Car createCar(MovingRule movingRule) {
+        return new Car(movingRule);
     }
 
 

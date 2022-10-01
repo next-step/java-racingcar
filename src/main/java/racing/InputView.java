@@ -12,6 +12,6 @@ public class InputView {
         Scanner playScanner = new Scanner(System.in);
         int numberOfPlays = playScanner.nextInt();
 
-        return new Race(numberOfCars, numberOfPlays);
+        return new Race(numberOfCars, numberOfPlays, new RandomRule());
     }
 }
