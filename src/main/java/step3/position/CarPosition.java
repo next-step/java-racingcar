@@ -1,5 +1,7 @@
 package step3.position;
 
+import step3.output.OutputView;
+
 import java.util.Objects;
 
 public final class CarPosition implements Position {
@@ -8,18 +10,21 @@ public final class CarPosition implements Position {
 
     private final int position;
 
-    public CarPosition(int position) {
+    private final OutputView outputView;
+
+    public CarPosition(int position, OutputView outputView) {
         this.position = position;
+        this.outputView = outputView;
     }
 
     @Override
     public Position movedPosition() {
-        return new CarPosition(position + DISTANCE);
+        return new CarPosition(position + DISTANCE, outputView);
     }
 
     @Override
-    public int position() {
-        return position;
+    public void printPosition() {
+        outputView.print(position);
     }
 
     @Override
@@ -27,12 +32,12 @@ public final class CarPosition implements Position {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CarPosition that = (CarPosition) o;
-        return position == that.position;
+        return position == that.position && Objects.equals(outputView, that.outputView);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(position);
+        return Objects.hash(position, outputView);
     }
 
 }
