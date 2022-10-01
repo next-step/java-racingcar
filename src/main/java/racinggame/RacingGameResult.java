@@ -24,7 +24,7 @@ public class RacingGameResult {
     public String getContent() {
         return result.stream()
                 .map(RacingGameRoundResult::getContent)
-                .collect(Collectors.joining(StringConstants.NEW_LINE.repeat(2)));
+                .collect(Collectors.joining(StringConstants.NEW_LINE));
     }
 
     @Override
@@ -40,4 +40,8 @@ public class RacingGameResult {
         return Objects.hash(result);
     }
 
+    public List<String> getWinnerNames() {
+        RacingGameRoundResult lastRound = result.get(result.size() - 1);
+        return lastRound.getFarthestCarNames();
+    }
 }

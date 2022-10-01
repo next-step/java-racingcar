@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 public class RacingGameRoundResult {
 
     private static final String DISTANCE_SYMBOL = "-";
+    private static final int MIN_VALUE_OF_POSITION = 0;
 
     private final List<Car> cars;
 
@@ -26,11 +27,26 @@ public class RacingGameRoundResult {
     public String getContent() {
         return cars.stream()
                 .map(this::getContentFormat)
-                .collect(Collectors.joining(StringConstants.NEW_LINE));
+                .collect(Collectors.joining());
     }
 
     private String getContentFormat(Car car) {
-        return String.format("%s : %s", car.getName(), DISTANCE_SYMBOL.repeat(car.getPosition()));
+        return String.format("%s : %s" + StringConstants.NEW_LINE, car.getName(), DISTANCE_SYMBOL.repeat(car.getPosition()));
+    }
+
+    public List<String> getFarthestCarNames() {
+        int maxPosition = getMaxPosition();
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .collect(Collectors.toList());
+    }
+
+    private int getMaxPosition() {
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(MIN_VALUE_OF_POSITION);
     }
 
     @Override

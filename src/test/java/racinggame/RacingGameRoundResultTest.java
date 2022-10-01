@@ -29,4 +29,17 @@ class RacingGameRoundResultTest {
         assertThat(roundResult1).isEqualTo(roundResult2);
     }
 
+    @DisplayName("가장 멀리 있는 자동차의 이름을 반환해야 한다.")
+    @Test
+    void getFarthestCarNames() {
+        RacingGameRoundResult round = new RacingGameRoundResult(
+                List.of(
+                        new Car("car1", 0),
+                        new Car("car2", 2),
+                        new Car("car3", 1)
+                )
+        );
+        assertThat(round.getFarthestCarNames()).containsExactly("car2");
+    }
+
 }
