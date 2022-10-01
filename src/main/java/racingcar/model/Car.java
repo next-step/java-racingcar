@@ -7,32 +7,36 @@ import java.util.stream.Collectors;
 
 public class Car {
 
-    private static final int START_POSITION = 0;
-
-    private int position = START_POSITION;
+    private final Position position;
     private final Nickname nickname;
 
     public Car(String nickname) {
+        this.position = new Position();
         this.nickname = new Nickname(nickname);
+    }
+
+    public Car(Nickname nickname) {
+        this.position = new Position();
+        this.nickname = nickname;
     }
 
     public void move(Condition carCondition) {
         if (carCondition.inspect()) {
-            this.position = position + 1;
+            position.moveForward();
         }
     }
 
     public static List<Car> getWinner(List<Car> cars) {
+        Position biggestPosition = Position.biggestPosition(mapToPosition(cars));
         return cars.stream()
-                .filter(car -> car.position >= getBiggestPosition(cars))
+                .filter(car -> car.position.greaterThanOrEqual(biggestPosition))
                 .collect(Collectors.toList());
     }
 
-    private static int getBiggestPosition(List<Car> cars) {
+    private static List<Position> mapToPosition(List<Car> cars) {
         return cars.stream()
-                .mapToInt(car -> car.position)
-                .max()
-                .orElse(START_POSITION);
+                .map(c -> c.position)
+                .collect(Collectors.toList());
     }
 
     public String getName() {
@@ -40,6 +44,6 @@ public class Car {
     }
 
     public int getPosition() {
-        return position;
+        return position.getValue();
     }
 }
