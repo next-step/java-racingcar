@@ -21,11 +21,11 @@ public class RacingGame {
     }
 
     public RoundResult play() {
-        if (!isGameEnd()) {
-            return playNextRound();
+        if (isGameEnd()) {
+            throw new RuntimeException("이미 종료된 게임입니다.");
         }
 
-        throw new RuntimeException("이미 종료된 게임입니다.");
+        return playNextRound();
     }
 
     public List<CarStat> findWinners() {
