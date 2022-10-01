@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class RacingSupportTest {
+class RacingGameTest {
 
     @ParameterizedTest
     @ValueSource(ints = {1, 3, 5})

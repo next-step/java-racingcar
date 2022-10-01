@@ -17,7 +17,7 @@ public class RacingCarApplication {
         RacingCarOutput.printStartMessage();
 
         for (int i = 0; i < tryCount; i++) {
-            RacingSupport.start(cars);
+            RacingGame.start(cars);
             RacingCarOutput.printRacingResult(cars);
         }
 

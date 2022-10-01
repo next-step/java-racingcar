@@ -2,7 +2,7 @@ package step4;
 
 import java.util.List;
 
-public class RacingSupport {
+public class RacingGame {
 
     static void start(List<Car> cars) {
         for (Car car : cars) {
