@@ -6,8 +6,7 @@ import java.util.List;
 public class Race {
 
     private final List<Car> cars = new ArrayList<>();
-    //FIXME: final 로 정의
-    private ArrayList<ArrayList<String>> scoreBoard = new ArrayList<>();
+    private final ArrayList<ArrayList<String>> scoreBoard = new ArrayList<>();
     private final int play;
 
     public Race(final int numberOfCars, final int numberOfPlays) {
