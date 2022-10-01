@@ -8,7 +8,7 @@ public class CarFactory {
     private CarFactory(){
     }
 
-    static List<Car> prepareCar(String[] carNames) {
+    static List<Car> createCar(String[] carNames) {
         List<Car> cars = new ArrayList<>();
         int carCount = carNames.length;
 

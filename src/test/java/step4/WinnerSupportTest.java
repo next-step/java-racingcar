@@ -29,7 +29,7 @@ class WinnerSupportTest {
     @DisplayName("chooserWinner()로 우승자 문자열을 구한다.")
     void chooseWinner_String(){
         for (Car car : cars) {
-            car.moveForward();
+            car.moveForward(4);
         };
 
         String winner = WinnerSupport.chooseWinner(cars);

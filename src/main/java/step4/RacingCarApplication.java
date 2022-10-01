@@ -12,7 +12,7 @@ public class RacingCarApplication {
         RacingCarOutput.printTryCount();
         int tryCount = RacingCarInput.tryCount();
 
-        List<Car> cars = CarFactory.prepareCar(carNames);
+        List<Car> cars = CarFactory.createCar(carNames);
 
         RacingCarOutput.printStartMessage();
 
