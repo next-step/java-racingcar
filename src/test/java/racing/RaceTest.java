@@ -1,29 +1,28 @@
 package racing;
 
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
+import java.util.List;
+import org.junit.jupiter.api.Test;
 
 class RaceTest {
 
-    @Test
-    void 자동차_경주_결과_경기_횟수_확인(){
-        Race race = new Race(3, 5);
-        race.play();
-
-        ArrayList<ArrayList<Integer>> result = race.result();
-
-        Assertions.assertThat(result).hasSize(5);
-    }
 
     @Test
-    void 자동차_경주_결과_자동차_댓수_확인(){
-        Race race = new Race(3, 5);
+    void 자동차_경주_결과_테스트() {
+        Race race = new Race(3, 5, new NoRule());
         race.play();
         ArrayList<ArrayList<Integer>> result = race.result();
-
-        Assertions.assertThat(result.get(0)).hasSize(3);
+        assertThat(result).isEqualTo(
+                List.of(
+                        List.of(1, 1, 1),
+                        List.of(2, 2, 2),
+                        List.of(3, 3, 3),
+                        List.of(4, 4, 4),
+                        List.of(5, 5, 5)
+                )
+        );
     }
 
 }

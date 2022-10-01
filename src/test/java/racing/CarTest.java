@@ -7,17 +7,16 @@ import org.junit.jupiter.api.Test;
 class CarTest {
 
     @Test
-    void 자동차를_이동_시킨다(){
-        Car car = new Car();
+    void 자동차를_무작위로_이동_시킨다(){
+        Car car = new Car(new RandomRule());
         car.move();
-        assertThat(car.compare(car, new Car())).isIn(1, 0);
+        assertThat(car.compare(car, new Car(new RandomRule()))).isIn(1, 0);
     }
 
     @Test
-    void 자동차_위치_표시_테스트(){
-        Car car = new Car();
+    void 자동차가_무조건_이동(){
+        Car car = new Car(new NoRule());
         car.move();
-        assertThat(car.location()).isIn(0, 1);
+        assertThat(car.compare(car, new Car(new NoRule()))).isEqualTo(1);
     }
-
 }
