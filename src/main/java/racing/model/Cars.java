@@ -1,21 +1,14 @@
 package racing.model;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
 
-	private final List<Car> cars = new ArrayList<>();
+	private final List<Car> cars;
 
-	public Cars(List<Name> names) {
-		for (Name name : names) {
-			cars.add(new Car(name));
-		}
-	}
-
-	public List<Car> getCars() {
-		return cars;
+	public Cars(List<Car> cars) {
+		this.cars = cars;
 	}
 
 	public List<Name> getWinners() {
@@ -28,5 +21,9 @@ public class Cars {
 
 	private List<Name> chooseWinners(Position maxPosition) {
 		return cars.stream().filter(car -> car.isWinner(maxPosition)).map(Car::getName).collect(Collectors.toList());
+	}
+
+	public List<Car> getCars() {
+		return cars;
 	}
 }

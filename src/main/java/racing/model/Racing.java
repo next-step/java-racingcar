@@ -11,11 +11,15 @@ public class Racing {
 	private final Cars cars;
 
 	public Racing(List<Name> names) {
-		cars = generateCars(names);
+		cars = new Cars(generateCars(names));
 	}
 
-	private Cars generateCars(List<Name> names) {
-		return new Cars(names);
+	private List<Car> generateCars(List<Name> names) {
+		List<Car> cars = new ArrayList<>();
+		for (Name name : names) {
+			cars.add(new Car(name));
+		}
+		return cars;
 	}
 
 	public List<RacingResult> race(MoveStrategy moveStrategy) {
