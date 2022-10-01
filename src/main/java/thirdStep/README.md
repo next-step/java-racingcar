@@ -7,7 +7,9 @@
   * ResultView
 
 * logic
-  * getRandomNumber 
-  * carMove
-  * startRace
+  * Race
+    * getRandomNumber 
+    * carMove
+    * startOneRace
+    * getCarStatus 
 
