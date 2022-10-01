@@ -1,7 +1,5 @@
 package racingcar.model;
 
-import racingcar.model.nickname.Nickname;
-
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
