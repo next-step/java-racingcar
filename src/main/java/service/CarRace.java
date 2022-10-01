@@ -27,4 +27,5 @@ public class CarRace {
     private boolean isMovingForward(int randomNumber) {
         return randomNumber >= MIN_LIMIT_NUMBER;
     }
+
 }
