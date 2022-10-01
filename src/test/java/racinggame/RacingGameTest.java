@@ -12,14 +12,15 @@ class RacingGameTest {
     @DisplayName("4 이상일 경우, 자동차가 전진한 결과를 반환해야 한다.")
     @Test
     void run_givenGreaterThanOrEqualTo4() {
+        String carName = "car";
         RacingGame game = new RacingGame(new ConstantNumberGenerator(4));
-        RacingGameResult actual = game.run(1, 3);
+        RacingGameResult actual = game.run(List.of(carName), 3);
 
         RacingGameResult expected = new RacingGameResult(
                 List.of(
-                        new RacingGameRoundResult(List.of(1)),
-                        new RacingGameRoundResult(List.of(2)),
-                        new RacingGameRoundResult(List.of(3))
+                        new RacingGameRoundResult(List.of(new Car(carName, 1))),
+                        new RacingGameRoundResult(List.of(new Car(carName, 2))),
+                        new RacingGameRoundResult(List.of(new Car(carName, 3)))
                 )
         );
         assertThat(actual).isEqualTo(expected);
@@ -28,14 +29,15 @@ class RacingGameTest {
     @DisplayName("3 보다 작을 경우, 자동차가 정지한 결과를 반환해야 한다.")
     @Test
     void run_givenLessThan3() {
+        String carName = "car";
         RacingGame game = new RacingGame(new ConstantNumberGenerator(3));
-        RacingGameResult actual = game.run(1, 3);
+        RacingGameResult actual = game.run(List.of(carName), 3);
 
         RacingGameResult expected = new RacingGameResult(
                 List.of(
-                        new RacingGameRoundResult(List.of(0)),
-                        new RacingGameRoundResult(List.of(0)),
-                        new RacingGameRoundResult(List.of(0))
+                        new RacingGameRoundResult(List.of(new Car(carName, 0))),
+                        new RacingGameRoundResult(List.of(new Car(carName, 0))),
+                        new RacingGameRoundResult(List.of(new Car(carName, 0)))
                 )
         );
         assertThat(actual).isEqualTo(expected);

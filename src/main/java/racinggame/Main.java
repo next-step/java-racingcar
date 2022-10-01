@@ -8,7 +8,7 @@ public class Main {
         List<String> carNames = InputView.inputCarNames();
         int tryCount = InputView.inputTryCount();
         RacingGame game = new RacingGame(new RandomNumberGenerator());
-        RacingGameResult result = game.run(carNames.size(), tryCount);
+        RacingGameResult result = game.run(carNames, tryCount);
         OutputView.printResult(result);
     }
 

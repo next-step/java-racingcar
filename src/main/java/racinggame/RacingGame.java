@@ -1,7 +1,7 @@
 package racinggame;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
 
@@ -13,8 +13,8 @@ public class RacingGame {
         this.numberGenerator = numberGenerator;
     }
 
-    public RacingGameResult run(int numOfCar, int round) {
-        List<Car> cars = createCars(numOfCar);
+    public RacingGameResult run(List<String> carNames, int round) {
+        List<Car> cars = createCars(carNames);
         RacingGameResult result = new RacingGameResult();
         for (int i = 0; i < round; i++) {
             result.add(runRound(cars));
@@ -22,19 +22,17 @@ public class RacingGame {
         return result;
     }
 
-    private List<Car> createCars(int numOfCar) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < numOfCar; i++) {
-            cars.add(new Car());
-        }
-        return cars;
+    private List<Car> createCars(List<String> carNames) {
+        return carNames.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     private RacingGameRoundResult runRound(List<Car> cars) {
         RacingGameRoundResult roundResult = new RacingGameRoundResult();
         cars.forEach(car -> {
             moveCar(car);
-            roundResult.add(car.getPosition());
+            roundResult.add(Car.from(car));
         });
         return roundResult;
     }

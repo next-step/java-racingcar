@@ -9,24 +9,28 @@ public class RacingGameRoundResult {
 
     private static final String DISTANCE_SYMBOL = "-";
 
-    private final List<Integer> positions;
+    private final List<Car> cars;
 
     public RacingGameRoundResult() {
-        this.positions = new ArrayList<>();
+        this.cars = new ArrayList<>();
     }
 
-    public RacingGameRoundResult(List<Integer> positions) {
-        this.positions = positions;
+    public RacingGameRoundResult(List<Car> cars) {
+        this.cars = cars;
     }
 
-    public void add(int position) {
-        positions.add(position);
+    public void add(Car car) {
+        cars.add(car);
     }
 
     public String getContent() {
-        return positions.stream()
-                .map(DISTANCE_SYMBOL::repeat)
+        return cars.stream()
+                .map(this::getContentFormat)
                 .collect(Collectors.joining(StringConstants.NEW_LINE));
+    }
+
+    private String getContentFormat(Car car) {
+        return String.format("%s : %s", car.getName(), DISTANCE_SYMBOL.repeat(car.getPosition()));
     }
 
     @Override
@@ -34,12 +38,12 @@ public class RacingGameRoundResult {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RacingGameRoundResult that = (RacingGameRoundResult) o;
-        return Objects.equals(positions, that.positions);
+        return Objects.equals(cars, that.cars);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(positions);
+        return Objects.hash(cars);
     }
 
 }
