@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import racingcar.controller.CarStatusDto;
+import racingcar.model.Car;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ public class ConsoleOutput {
         System.out.println(RACING_RESULT_MESSAGE);
     }
 
-    public void status(List<CarStatusDto> carStatusDto) {
+    public void status(List<Car> carStatusDto) {
         carStatusDto.forEach(
                 carStatus -> System.out.printf(STATUS_FORMAT, carStatus.getName(), rails(carStatus.getPosition()))
         );
@@ -27,7 +27,7 @@ public class ConsoleOutput {
         return RAIL.repeat(Math.max(0, position));
     }
 
-    public void winner(List<CarStatusDto> carStatusDtos) {
+    public void winner(List<Car> carStatusDtos) {
         for (int i = 0; i < carStatusDtos.size(); i++) {
             printComma(i);
             System.out.print(carStatusDtos.get(i).getName());
