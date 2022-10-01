@@ -1,18 +1,20 @@
 package racing.view;
 
+import racing.dto.GameRequest;
+
 import java.util.Scanner;
 
 public class InputView {
 
 	public static GameRequest inputGameRequest() {
 		try (Scanner scanner = new Scanner(System.in)) {
-			return new GameRequest(inputCarCount(scanner), inputTimes(scanner));
+			return new GameRequest(inputNames(scanner), inputTimes(scanner));
 		}
 	}
 
-	private static int inputCarCount(Scanner scanner) {
-		System.out.println("자동차 대수는 몇 대 인가요?");
-		return scanner.nextInt();
+	private static String inputNames(Scanner scanner) {
+		System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+		return scanner.nextLine();
 	}
 
 	private static int inputTimes(Scanner scanner) {

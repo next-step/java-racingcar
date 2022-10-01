@@ -2,20 +2,25 @@ package racing.model;
 
 public class Car {
 
-	private static final int MOVING_SIZE = 1;
-	private Position position;
+	private final Position position;
+	private final Name name;
 
-	public Car() {
+	public Car(Name name) {
 		this.position = new Position(0);
+		this.name = name;
 	}
 
 	public void move(boolean isMovable) {
 		if (isMovable) {
-			this.position = new Position(position.getPosition() + MOVING_SIZE);
+			position.move();
 		}
 	}
 
-	public int getPosition() {
-		return position.getPosition();
+	public Position getPosition() {
+		return position;
+	}
+
+	public Name getName() {
+		return name;
 	}
 }

@@ -10,16 +10,29 @@ class MoveStrategyTest {
 	@DisplayName("random 값이 4이상일 때 움직인다.")
 	@Test
 	void moveCondition() {
-		MoveStrategy moveStrategy = new MoveStrategy();
-		boolean movable = moveStrategy.isMovable(4);
+		RandomNumber randomNumber = new RandomNumber() {
+			@Override
+			public int getRandomNumber() {
+				return 4;
+			}
+		};
+		MoveStrategy moveStrategy = new MoveStrategy(randomNumber);
+		boolean movable = moveStrategy.isMovable();
 		assertThat(movable).isTrue();
 	}
 
 	@DisplayName("random 값이 3이하일 때 움직이지 않는다.")
 	@Test
 	void notMoveCondition() {
-		MoveStrategy moveStrategy = new MoveStrategy();
-		boolean movable = moveStrategy.isMovable(3);
+		RandomNumber randomNumber = new RandomNumber() {
+			@Override
+			public int getRandomNumber() {
+				return 3;
+			}
+		};
+		MoveStrategy moveStrategy = new MoveStrategy(randomNumber);
+		boolean movable = moveStrategy.isMovable();
 		assertThat(movable).isFalse();
 	}
+
 }

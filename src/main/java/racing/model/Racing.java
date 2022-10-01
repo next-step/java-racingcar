@@ -1,30 +1,36 @@
 package racing.model;
 
+import racing.dto.RacingResult;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Racing {
 
-	private List<Car> cars;
+	private final Cars cars;
 
-	public Racing(int carCount) {
-		generateCars(carCount);
+	public Racing(List<Name> names) {
+		cars = generateCars(names);
 	}
 
-	private void generateCars(int carCount) {
-		this.cars = new ArrayList<>();
-		for (int i = 0; i < carCount; i++) {
-			cars.add(new Car());
+	private Cars generateCars(List<Name> names) {
+		return new Cars(names);
+	}
+
+	public List<RacingResult> race(MoveStrategy moveStrategy) {
+		List<RacingResult> result = new ArrayList<>();
+		for (Car car : cars.getCars()) {
+			car.move(moveStrategy.isMovable());
+			result.add(new RacingResult(car.getPosition(), car.getName()));
 		}
+		return result;
 	}
 
-	public void race(MoveStrategy moveStrategy) {
-		for (Car car : cars) {
-			car.move(moveStrategy.isMovable(moveStrategy.getRandomNumber()));
-		}
-	}
-
-	public List<Car> getCars() {
+	public Cars getCars() {
 		return cars;
+	}
+
+	public List<String> getWinners() {
+		return cars.getWinners();
 	}
 }
