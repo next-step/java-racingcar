@@ -27,6 +27,11 @@ public class RacingGameResult {
                 .collect(Collectors.joining(StringConstants.NEW_LINE));
     }
 
+    public List<String> getWinnerNames() {
+        RacingGameRoundResult lastRound = result.get(result.size() - 1);
+        return lastRound.getFarthestCarNames();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -40,8 +45,4 @@ public class RacingGameResult {
         return Objects.hash(result);
     }
 
-    public List<String> getWinnerNames() {
-        RacingGameRoundResult lastRound = result.get(result.size() - 1);
-        return lastRound.getFarthestCarNames();
-    }
 }
