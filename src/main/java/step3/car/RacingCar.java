@@ -1,6 +1,7 @@
 package step3.car;
 
 import step3.number.Number;
+import step3.output.BarOutputView;
 import step3.position.CarPosition;
 import step3.position.Position;
 
@@ -15,7 +16,7 @@ public final class RacingCar implements Car {
     private final Number number;
 
     public RacingCar(Number number) {
-        this(new CarPosition(0), number);
+        this(new CarPosition(0, new BarOutputView()), number);
     }
 
     public RacingCar(Position position, Number number) {
@@ -29,6 +30,11 @@ public final class RacingCar implements Car {
             return new RacingCar(position.movedPosition(), number);
         }
         return this;
+    }
+
+    @Override
+    public void printPosition() {
+        position.printPosition();
     }
 
     @Override
