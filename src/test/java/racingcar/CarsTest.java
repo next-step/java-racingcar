@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -17,39 +18,53 @@ public class CarsTest {
 	MoveStrategy moveStrategyMovable = () -> true;
 	MoveStrategy moveStrategyNotMovable = () -> false;
 
+	List<Car> newCarList;
+
+	@BeforeEach
+	void setUp() {
+		this.newCarList = createCarList(5);
+	}
+
+	private List<Car> createCarList(int size) {
+		List<Car> carList = new ArrayList<>();
+		for (int i = 0; i < size; ++i) {
+			carList.add(new Car());
+		}
+		return carList;
+	}
+
 	@Test
 	@DisplayName("n대의 자동차는 전진할 수 있다")
 	void n_cars_can_move() {
-		List<Car> carList = createCarList();
-		Cars cars = new Cars(carList);
+		Cars cars = new Cars(newCarList);
 		cars.move(moveStrategyMovable);
 
-		assertThat(carList).allSatisfy(
+		assertThat(newCarList).allSatisfy(
 			car -> assertThat(car).isGreaterThan(new Car()));
 	}
 
 	@Test
 	@DisplayName("n대의 자동차는 정지할 수 있다")
 	void n_cars_can_stay() {
-		List<Car> carList = createCarList();
-		Cars cars = new Cars(carList);
+		Cars cars = new Cars(newCarList);
 		cars.move(moveStrategyNotMovable);
 
-		assertThat(carList).allSatisfy(
+		assertThat(newCarList).allSatisfy(
 			car -> assertThat(car).isEqualByComparingTo(new Car()));
 	}
 
 	@Test
 	@DisplayName("n번 움직일 수 있다")
 	void cars_can_move_n_times() {
-		List<Car> carListMovedOne = createCarList();
+		List<Car> carListMovedOne = createCarList(5);
 		Cars carsMovedOne = new Cars(carListMovedOne);
 		carsMovedOne.move(moveStrategyMovable, 1);
 
-		List<Car> carListMovedTwo = createCarList();
+		List<Car> carListMovedTwo = createCarList(5);
 		Cars carsMovedTwo = new Cars(carListMovedTwo);
 		carsMovedTwo.move(moveStrategyMovable, 2);
 
+		assertThatListGreaterThanOther(carListMovedOne, newCarList);
 		assertThatListGreaterThanOther(carListMovedTwo, carListMovedOne);
 	}
 
@@ -66,11 +81,10 @@ public class CarsTest {
 	@Test
 	@DisplayName("n대 자동차의 위치를 순서대로 반환할 수 있다")
 	void positions_can_be_returned_ordered() {
-		List<Car> carList = createCarList();
-		Cars cars = new Cars(carList);
+		Cars cars = new Cars(newCarList);
 		cars.move(moveStrategyNotMovable);
 
-		List<Integer> positions = getPositions(carList);
+		List<Integer> positions = getPositions(newCarList);
 		List<Integer> retrievedPositions = cars.getPositions();
 
 		assertThat(retrievedPositions).containsExactlyElementsOf(positions);
@@ -82,13 +96,5 @@ public class CarsTest {
 			positions.add(car.getPosition());
 		}
 		return positions;
-	}
-
-	private List<Car> createCarList() {
-		List<Car> carList = new ArrayList<>();
-		for (int i = 0; i < 5; ++i) {
-			carList.add(new Car());
-		}
-		return carList;
 	}
 }
