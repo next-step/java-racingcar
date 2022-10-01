@@ -22,4 +22,10 @@ public class RacingCarTest {
     void goStopTest(String input, String result) {
         assertThat(racingCar.goStop(Integer.parseInt(input))).isEqualTo(result);
     }
+
+    @DisplayName("자동차 움직임 출력")
+    @Test
+    void carMovePrintTest() {
+        assertThat(racingCar.carMovePrint(5)).isEqualTo("-----");
+    }
 }
