@@ -4,13 +4,7 @@ import java.util.Scanner;
 
 public class InputView {
 
-    public static void main(String[] args) {
-        Race race = createRace();
-        race.play();
-        OutputView.showResult(race);
-    }
-
-    private static Race createRace() {
+    public static Race createRace() {
         System.out.println("자동차 대수는 몇 대 인가요?");
         Scanner carScanner = new Scanner(System.in);
         int numberOfCars = carScanner.nextInt();
