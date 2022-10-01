@@ -1,41 +1,43 @@
 package racinggame;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class RacingGameResult {
 
-    private static final String DISTANCE_SYMBOL = "-";
-    private static final String NEW_LINE = "\n";
+    private final List<RacingGameRoundResult> result;
 
-    private final int[][] result;
-
-    public RacingGameResult(int round, int numOfSize) {
-        this.result = new int[round][numOfSize];
+    public RacingGameResult() {
+        this.result = new ArrayList<>();
     }
 
-    public void writeResult(int indexOfRound, int indexOfCar, int positionOfCar) {
-        this.result[indexOfRound][indexOfCar] = positionOfCar;
+    public RacingGameResult(List<RacingGameRoundResult> result) {
+        this.result = result;
+    }
+
+    public void add(RacingGameRoundResult roundResult) {
+        result.add(roundResult);
     }
 
     public String getContent() {
-        return Arrays.stream(result)
-                .map(this::joinRound)
-                .collect(Collectors.joining(NEW_LINE.repeat(2)));
+        return result.stream()
+                .map(RacingGameRoundResult::getContent)
+                .collect(Collectors.joining(StringConstants.NEW_LINE.repeat(2)));
     }
 
-    private String joinRound(int[] round) {
-        return Arrays.stream(round)
-                .mapToObj(DISTANCE_SYMBOL::repeat)
-                .collect(Collectors.joining(NEW_LINE));
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RacingGameResult that = (RacingGameResult) o;
+        return Objects.equals(result, that.result);
     }
 
-    public boolean isEqualResult(int indexOfRound, int indexOfCar, int value) {
-        return result[indexOfRound][indexOfCar] == value;
-    }
-
-    public int getNumOfRound() {
-        return result.length;
+    @Override
+    public int hashCode() {
+        return Objects.hash(result);
     }
 
 }
