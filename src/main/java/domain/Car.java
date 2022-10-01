@@ -1,43 +1,23 @@
 package domain;
 
-import exception.NotValidNameException;
-
 public class Car {
 
-    private String name;
+    private final String name;
     private int currentLocation;
 
     public Car(String name) {
-        this.name = carNameLengthValidation(name);
+        this.name = name;
         this.currentLocation = 0;
     }
 
-    public Car(String name, int currentLocation) {
-        this.name = name;
-        this.currentLocation = currentLocation;
-    }
-
-    public static String carNameLengthValidation(String name) {
-        if (name.length() > 5) {
-            throw new NotValidNameException("자동차의 이름은 5글자를 초과할 수 없습니다.");
-        }
-        return name;
-    }
-
-    public Car move(Car car, boolean isMove) {
-        int isGo = car.getCurrentLocation();
+    public void move(boolean isMove) {
         if (isMove) {
-            return Car.of(car.getCarName(), isGo + 1);
+            currentLocation += 1;
         }
-        return this;
     }
 
     public static Car createCarWithName(String carName) {
         return new Car(carName);
-    }
-
-    public static Car of(String name, int currentLocation) {
-        return new Car(name, currentLocation);
     }
 
     public String getCarName() {

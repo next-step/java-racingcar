@@ -40,7 +40,4 @@ public class InputView {
     public int getAttempts() {
         return attempts;
     }
-    public String[] getCarNames() {
-        return carNames;
-    }
 }

@@ -1,24 +1,19 @@
-import java.util.List;
 
-import Service.CarRace;
-import Service.InputView;
-import Service.ResultView;
-import domain.Car;
-import repository.CarHistory;
+import domain.Cars;
+import service.CarRace;
+import view.InputView;
+import view.ResultView;
 
 public class Main {
 
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        inputView.inputCarInfo();
+        String[] carNames = inputView.inputCarInfo();
 
         CarRace carRace = new CarRace();
-        List<Car> carList = carRace.createInitCarList(inputView.getCarNames());
-
-        CarHistory carHistory = new CarHistory();
-        carHistory.saveCarHistory(carList);
+        Cars cars = new Cars(carNames);
 
         ResultView resultView = new ResultView();
-        resultView.printCarLocation(carRace, carHistory, inputView.getAttempts());
+        resultView.printCarLocation(cars, carRace, inputView.getAttempts());
     }
 }

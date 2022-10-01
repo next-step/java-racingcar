@@ -18,5 +18,4 @@ public abstract class TestSupport {
         return new Car("test3");
     }
 
-
 }
