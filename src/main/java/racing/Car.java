@@ -19,6 +19,10 @@ public class Car implements Comparator<Car> {
     }
 
     private boolean isPossibleToMove() {
+        return doesRandomNumberAboveTargetNumber();
+    }
+
+    private boolean doesRandomNumberAboveTargetNumber() {
         Random random = new Random();
         return random.nextInt(RANDOM_BOUND) >= TARGET_NUMBER;
     }
