@@ -57,7 +57,7 @@ public class StringAddCalculator {
         return numbers;
     }
 
-    private static int toPositive(Stringg value) {
+    private static int toPositive(String value) {
         int number = Integer.parseInt(value);
         if (number < 0) {
             throw new RuntimeException("음수 값이 들어올 수 없습니다.");
