@@ -6,7 +6,7 @@ import java.util.List;
 public class Race {
 
     private final List<Car> cars = new ArrayList<>();
-    private final ArrayList<ArrayList<Integer>> scoreBoard = new ArrayList<>();
+    private final ScoreBoard scoreBoard = new ScoreBoard();
     private final int play;
 
     public Race(final int numberOfCars, final int numberOfPlays, final MovingRule movingRule) {
@@ -23,20 +23,19 @@ public class Race {
     }
 
     private void run() {
-        ArrayList<Integer> result = new ArrayList<>();
+        RaceResult result = new RaceResult();
         for (Car car : cars) {
             car.move();
-            result.add(car.location());
+            result.addCarLocation(car.location());
         }
-        scoreBoard.add(result);
+        scoreBoard.addResult(result);
     }
 
     private Car createCar(MovingRule movingRule) {
         return new Car(movingRule);
     }
 
-
-    public ArrayList<ArrayList<Integer>> result() {
+    public ScoreBoard result() {
         return scoreBoard;
     }
 }
