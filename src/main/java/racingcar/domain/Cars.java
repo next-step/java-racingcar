@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import racingcar.utils.RandomNumber;
+import racingcar.utils.RandomUtils;
 
 import java.util.List;
 
@@ -22,6 +22,6 @@ public class Cars {
     }
 
     private MoveStrategy randomMoveStrategy() {
-        return new RandomMoveStrategy(RandomNumber.generate());
+        return new RandomMoveStrategy(RandomUtils.generate());
     }
 }
