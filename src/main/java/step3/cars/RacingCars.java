@@ -2,44 +2,29 @@ package step3.cars;
 
 import step3.car.Car;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public final class RacingCars implements Cars {
+public class RacingCars implements Cars {
 
     private final List<Car> cars;
-
-    public RacingCars() {
-        this(List.of());
-    }
 
     public RacingCars(List<Car> cars) {
         this.cars = cars;
     }
 
     @Override
-    public Cars carsWithAddCar(Car car) {
-        final ArrayList<Car> existedCars = new ArrayList<>(cars);
-        existedCars.add(car);
-        return new RacingCars(Collections.unmodifiableList(existedCars));
-    }
-
-    @Override
-    public Cars carsWithRemoveCar(Car car) {
-        final ArrayList<Car> existedCars = new ArrayList<>(cars);
-        existedCars.remove(car);
-        return new RacingCars(Collections.unmodifiableList(existedCars));
-    }
-
-    @Override
     public Cars carsWithTurnUsed() {
-        final List<Car> carsWithTurnUsed = cars.stream()
+        List<Car> movedCars = cars.stream()
                 .map(Car::movedCar)
-                .collect(Collectors.toList());
-        return new RacingCars(carsWithTurnUsed);
+                .collect(Collectors.toUnmodifiableList());
+        return new RacingCars(movedCars);
+    }
+
+    @Override
+    public void printPosition() {
+        cars.forEach(Car::printPosition);
     }
 
     @Override
