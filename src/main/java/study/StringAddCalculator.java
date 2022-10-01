@@ -51,7 +51,7 @@ public class StringAddCalculator {
 		int result = 0;
 		for (String token : tokens) {
 			if(!checkConvertToInt(token) || !checkPositiveNumber(token)){
-				throw new RuntimeException();
+				throw new IllegalArgumentException();
 			}
 			result += Integer.parseInt(token);
 		}
