@@ -2,17 +2,19 @@ package car;
 
 import static org.assertj.core.api.Assertions.*;
 
+import car.domain.NamingRacingCar;
+import car.strategy.CarMovableStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class NamingCarTest {
+class NamingRacingCarTest {
     @DisplayName("랜덤 발생 숫자가 4미만인 경우")
     @ParameterizedTest
     @ValueSource(ints = { 1, 2, 3 })
     void car_random_under_4(int randomNum) {
-        NamingCar car = new NamingCar(() -> {
+        NamingRacingCar car = new NamingRacingCar(() -> {
             return 4 <= randomNum;
         });
         car.inputName("test");
@@ -24,7 +26,7 @@ class NamingCarTest {
     @ParameterizedTest
     @ValueSource(ints = { 4, 5, 6, 7, 8, 9 })
     void car_random_upper_4(int randomNum) {
-        NamingCar car = new NamingCar(() -> {
+        NamingRacingCar car = new NamingRacingCar(() -> {
             return 4 <= randomNum;
         });
         car.inputName("test");
@@ -35,7 +37,7 @@ class NamingCarTest {
     @DisplayName("차 이름이 5를 넘기면 Exception")
     @Test
     void car_name_test() {
-        NamingCar car = new NamingCar(new CarMovableStrategy());
+        NamingRacingCar car = new NamingRacingCar(new CarMovableStrategy());
         assertThatThrownBy(() -> {
             car.inputName("123455");
         }).isInstanceOf(IllegalArgumentException.class)

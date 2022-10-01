@@ -1,4 +1,7 @@
-package car;
+package car.input;
+
+import car.domain.Car;
+import car.factory.NamingCarFactory;
 
 import java.util.List;
 import java.util.Scanner;
