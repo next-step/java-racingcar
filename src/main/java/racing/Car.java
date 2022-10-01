@@ -32,7 +32,8 @@ public class Car implements Comparator<Car> {
         return Integer.compare(o1.location, o2.location);
     }
 
-    public String location() {
-        return ROAD.repeat(Math.max(0, location));
+    public int location() {
+        return location;
+        //return ROAD.repeat(Math.max(0, location));
     }
 }

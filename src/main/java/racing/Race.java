@@ -6,7 +6,7 @@ import java.util.List;
 public class Race {
 
     private final List<Car> cars = new ArrayList<>();
-    private final ArrayList<ArrayList<String>> scoreBoard = new ArrayList<>();
+    private final ArrayList<ArrayList<Integer>> scoreBoard = new ArrayList<>();
     private final int play;
 
     public Race(final int numberOfCars, final int numberOfPlays) {
@@ -24,7 +24,7 @@ public class Race {
 
     //TODO: 인터페이스로 정의
     private void run() {
-        ArrayList<String> result = new ArrayList<>();
+        ArrayList<Integer> result = new ArrayList<>();
         for (Car car : cars) {
             car.move();
             result.add(car.location());
@@ -37,7 +37,7 @@ public class Race {
     }
 
 
-    public ArrayList<ArrayList<String>> result() {
+    public ArrayList<ArrayList<Integer>> result() {
         return scoreBoard;
     }
 }
