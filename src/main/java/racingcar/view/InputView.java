@@ -26,8 +26,7 @@ public class InputView {
 	private int readInt() {
 		try {
 			return SCANNER.nextInt();
-		}
-		catch (InputMismatchException exception){
+		} catch (InputMismatchException exception) {
 			throw new InputMismatchException("정수를 입력해야 합니다");
 		}
 	}
