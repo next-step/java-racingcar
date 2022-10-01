@@ -4,15 +4,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
-    public static void main(String[] args) {
-        System.out.println("문자열 덧셈 결과입니다 : " + splitAndSum("1,2,3"));
-    }
 
     public static int splitAndSum(String data) {
         if(data == null || data.isEmpty()){
             return 0;
         }
-        return dataSum(regexSplit(data));
+        return dataOperator(regexSplit(data));
     }
 
     private static String[] regexSplit(String data) {
@@ -23,13 +20,13 @@ public class StringAddCalculator {
         return data.split(",|:");
     }
 
-    private static int dataSum(String []dataList) {
+    private static int dataOperator(String []dataList) {
         int sum = 0;
         for (String sumData : dataList) {
             if (parseInt(sumData) < 0) {
                 throw new RuntimeException("음수가 들어왔습니다");
             } else {
-                sum += parseInt(sumData);
+                sum = Operator.PLUS.calculate(sum,parseInt(sumData));
             }
         }
         return sum;
