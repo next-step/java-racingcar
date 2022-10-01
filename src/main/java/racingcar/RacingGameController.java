@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import racingcar.domain.Car;
+import racingcar.domain.Cars;
 import racingcar.domain.RacingGame;
 import racingcar.domain.RoundResult;
 import racingcar.domain.movingcondition.MovingCondition;
@@ -41,11 +42,13 @@ public class RacingGameController {
     }
 
     private void play(List<Car> cars, int playCount) {
-        RacingGame racingGame = new RacingGame(cars, MOVING_CONDITION, playCount);
+        RacingGame racingGame = new RacingGame(new Cars(cars), MOVING_CONDITION, playCount);
 
         while (!racingGame.isGameEnd()) {
             RoundResult roundResult = racingGame.play();
             resultView.printResult(roundResult);
         }
+
+        resultView.printWinners(racingGame.findWinners());
     }
 }

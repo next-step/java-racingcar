@@ -1,8 +1,9 @@
 package racingcar.domain;
 
+import java.util.Comparator;
 import java.util.Objects;
 
-public class Position {
+public class Position implements Comparable<Position> {
     private final int position;
 
     public Position(int position) {
@@ -24,17 +25,19 @@ public class Position {
     }
 
     private void validate(int position) {
-        if(position < 0) {
+        if (position < 0) {
             throw new RuntimeException("위치는 음수일 수 없습니다.");
         }
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o)
+        if (this == o) {
             return true;
-        if (o == null || getClass() != o.getClass())
+        }
+        if (o == null || getClass() != o.getClass()) {
             return false;
+        }
         Position position1 = (Position)o;
         return position == position1.position;
     }
@@ -42,5 +45,16 @@ public class Position {
     @Override
     public int hashCode() {
         return Objects.hash(position);
+    }
+
+    @Override
+    public int compareTo(Position o) {
+        if (this.position < o.position) {
+            return -1;
+        }
+        if (this.position > o.position) {
+            return 1;
+        }
+        return 0;
     }
 }

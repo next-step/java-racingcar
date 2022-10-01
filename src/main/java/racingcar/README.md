@@ -19,5 +19,5 @@
 - [x] 자동차의 Position 객체 구현
 - [x] 레이싱 결과에 자동차 이름도 함께 넘김
 - [x] InputView에서 차 이름 입력 받기
-- [ ] ResultView에서 우승자 출력
-- [ ] 일급 콜렉션 객체 Cars 구현
+- [x] ResultView에서 우승자 출력
+- [x] 일급 콜렉션 객체 Cars 구현
