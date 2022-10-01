@@ -16,6 +16,6 @@ class NumbersTest {
     void sum_numbers() {
         List<Number> numbers = new ArrayList<>();
         Collections.addAll(numbers, new Number(1), new Number(2), new Number(3));
-        assertThat(new Numbers(numbers).sum()).isEqualTo(new Number(6));
+        assertThat(new Numbers(numbers).sum()).isEqualTo(6);
     }
 }

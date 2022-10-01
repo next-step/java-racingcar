@@ -1,7 +1,8 @@
 package calculator;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Numbers {
     private final List<Number> numbers;
@@ -18,11 +19,11 @@ public class Numbers {
         return new Numbers(numbers);
     }
 
-    public Number sum() {
+    public int sum() {
         Number sum = new Number(0);
         for (Number number : numbers) {
             sum = sum.add(number);
         }
-        return sum;
+        return sum.getNumber();
     }
 }
