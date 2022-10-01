@@ -6,6 +6,7 @@ import java.util.List;
 public class Race {
 
     private final List<Car> cars = new ArrayList<>();
+    //FIXME: final 로 정의
     private ArrayList<ArrayList<String>> scoreBoard = new ArrayList<>();
     private final int play;
 
@@ -22,6 +23,7 @@ public class Race {
         }
     }
 
+    //TODO: 인터페이스로 정의
     private void run() {
         ArrayList<String> result = new ArrayList<>();
         for (Car car : cars) {

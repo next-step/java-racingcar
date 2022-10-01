@@ -8,6 +8,7 @@ public class InputView {
     public static void main(String[] args) {
         Race race = createRace();
         race.play();
+        //FIXME: OUTPUT_VIEW 로 분리
         showResult(race);
     }
 

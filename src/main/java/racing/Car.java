@@ -4,6 +4,7 @@ import java.util.Comparator;
 import java.util.Random;
 
 public class Car implements Comparator<Car> {
+    //FIXME: 도메인에서 UI로직 제거.
     private static final String ROAD = "-";
 
     private int location = 0;
@@ -16,6 +17,7 @@ public class Car implements Comparator<Car> {
 
     private boolean isPossibleToMove() {
         Random random = new Random();
+        //FIXME: 의미 부여
         return random.nextInt(9) >= 4;
     }
 
