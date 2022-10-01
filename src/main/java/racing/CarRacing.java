@@ -14,11 +14,11 @@ public class CarRacing {
     private void start() {
         prepare();
         int rounds = InputView.inputRounds();
-        ResultView.printResultTitle();
         play(rounds);
     }
 
     private void play(int rounds) {
+        ResultView.printResultTitle();
         for (int i = 1; i <= rounds; i++) {
             playRound();
             announceResult(i);
