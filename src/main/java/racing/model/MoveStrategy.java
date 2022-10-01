@@ -2,14 +2,14 @@ package racing.model;
 
 public class MoveStrategy {
 
-	private final RandomNumber randomNumber;
+	private final NumberGenerator numberGenerator;
 	private static final int MOVABLE_NUMBER = 4;
 
-	public MoveStrategy(RandomNumber randomNumber) {
-		this.randomNumber = randomNumber;
+	public MoveStrategy(NumberGenerator randomNumber) {
+		this.numberGenerator = randomNumber;
 	}
 
 	public boolean isMovable() {
-		return randomNumber.getRandomNumber() >= MOVABLE_NUMBER;
+		return numberGenerator.generate() >= MOVABLE_NUMBER;
 	}
 }
