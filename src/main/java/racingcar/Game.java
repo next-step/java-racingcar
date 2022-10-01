@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import racingcar.domain.Cars;
-import racingcar.movestrategy.MoveStrategy;
-import racingcar.movestrategy.NumberOverFourStrategy;
-import racingcar.numberstrategy.NumberStrategy;
-import racingcar.numberstrategy.RandomNumberStrategy;
+import racingcar.strategy.MoveStrategy;
+import racingcar.strategy.NumberOverFourStrategy;
+import racingcar.strategy.NumberStrategy;
+import racingcar.strategy.RandomNumberStrategy;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 

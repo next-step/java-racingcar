@@ -1,4 +1,4 @@
-package racingcar.numberstrategy;
+package racingcar.strategy;
 
 import static org.assertj.core.api.Assertions.*;
 

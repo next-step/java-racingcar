@@ -1,6 +1,4 @@
-package racingcar.movestrategy;
-
-import racingcar.numberstrategy.NumberStrategy;
+package racingcar.strategy;
 
 public class NumberOverFourStrategy implements MoveStrategy {
 

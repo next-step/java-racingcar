@@ -1,7 +1,7 @@
-package racingcar.movestrategy;
+package racingcar.strategy;
 
 import static org.assertj.core.api.Assertions.*;
-import static racingcar.movestrategy.NumberOverFourStrategy.*;
+import static racingcar.strategy.NumberOverFourStrategy.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import racingcar.movestrategy.MoveStrategy;
+import racingcar.strategy.MoveStrategy;
 
 public class Cars {
 

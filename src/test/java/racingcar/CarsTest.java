@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
-import racingcar.movestrategy.MoveStrategy;
+import racingcar.strategy.MoveStrategy;
 
 public class CarsTest {
 
