@@ -7,9 +7,6 @@ public class Car implements Comparator<Car> {
     private static final int RANDOM_BOUND = 9;
     private static final int TARGET_NUMBER = 4;
 
-    //FIXME: 도메인에서 UI로직 제거.
-    private static final String ROAD = "-";
-
     private int location = 0;
 
     public void move() {
@@ -34,6 +31,5 @@ public class Car implements Comparator<Car> {
 
     public int location() {
         return location;
-        //return ROAD.repeat(Math.max(0, location));
     }
 }
