@@ -79,15 +79,15 @@ public class CarsTest {
 	}
 
 	@Test
-	@DisplayName("n대 자동차의 위치를 순서대로 반환할 수 있다")
-	void positions_can_be_returned_ordered() {
+	@DisplayName("n대 자동차의 위치를 반환할 수 있다")
+	void positions_can_be_returned() {
 		Cars cars = new Cars(newCarList);
 		cars.move(moveStrategyNotMovable);
 
 		List<Integer> positions = getPositions(newCarList);
 		List<Integer> retrievedPositions = cars.getPositions();
 
-		assertThat(retrievedPositions).containsExactlyElementsOf(positions);
+		assertThat(retrievedPositions).containsAll(positions);
 	}
 
 	private List<Integer> getPositions(List<Car> carList) {
