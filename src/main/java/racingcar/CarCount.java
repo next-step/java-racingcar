@@ -18,4 +18,12 @@ public class CarCount {
             throw new IllegalArgumentException("자동차 한대 이상이 필요합니다.");
         }
     }
+
+    public List<Car> create() {
+        List<Car> cars = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            cars.add(new Car());
+        }
+        return cars;
+    }
 }
