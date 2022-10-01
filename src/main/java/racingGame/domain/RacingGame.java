@@ -1,6 +1,6 @@
-package racingGame;
+package racingGame.domain;
 
-import racingGame.racingRule.RacingRule;
+import racingGame.domain.racingRule.RacingRule;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,15 +8,15 @@ import java.util.stream.IntStream;
 
 public class RacingGame {
     private List<Car> cars;
-    private InputParameters inputParameters;
+    private InputValue inputValue;
 
-    public RacingGame(InputParameters inputParameters) {
-        this.inputParameters = inputParameters;
+    public RacingGame(InputValue inputValue) {
+        this.inputValue = inputValue;
         this.cars = createCars();
     }
 
     public Cars play(RacingRule racingRule) {
-        IntStream.range(0, inputParameters.tryNum)
+        IntStream.range(0, inputValue.getTryNum())
                 .forEach(car -> moveCar(racingRule));
         return new Cars(cars);
     }
@@ -27,13 +27,13 @@ public class RacingGame {
 
     private List<Car> createCars() {
         List<Car> mocCars = new ArrayList<>();
-        addNewCar(mocCars);
+        addNewCars(mocCars);
         return mocCars;
     }
 
-    private void addNewCar(List<Car> mocCars) {
-        for (int i =0; i < inputParameters.getCarNum(); i++){
-           mocCars.add(new Car());
+    private void addNewCars(List<Car> mocCars) {
+        for (int i = 0; i < inputValue.getCarsSize(); i++){
+           mocCars.add(new Car(inputValue.getCarName().get(i)));
         }
     }
 

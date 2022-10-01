@@ -1,23 +1,41 @@
 package racingGame.view;
 
-import racingGame.Car;
-import racingGame.Cars;
-
-import java.util.List;
+import racingGame.domain.Cars;
 
 public class ResultView {
     private static final String TIRE_MARK = "-";
+    private static final String WINNING_SENTENCE = "가 최종 우승했습니다.";
+    private static final String EMPTY = " ";
+    private static final String SEPARATOR = ":";
+    private static final StringBuilder sb = new StringBuilder();
 
     public static void printRacingResult(Cars cars) {
         printTitle();
-        final StringBuilder stringBuilder = new StringBuilder();
-        cars.getCars().forEach(car -> System.out.println(car.createTrace(TIRE_MARK)));
+        System.out.println(combineResult(cars));
+        System.out.println(joinWinners(cars));
     }
 
+    private static String joinWinners(Cars cars) {
+        return String.join(", ", cars.findCoWinner()).concat(WINNING_SENTENCE);
+    }
+
+    private static StringBuilder combineResult(Cars cars) {
+        int carsNum = cars.getCars().size();
+        for (int i = 0; i < carsNum; i++) {
+            sb.append(joinFinalRound(cars, i));
+        }
+        return sb;
+    }
+
+    private static String joinFinalRound(Cars cars, int i) {
+        return String.format("%s%s%s%s%s\n",
+                cars.getCars().get(i).getCarName(),
+                EMPTY, SEPARATOR, EMPTY,
+                cars.getCars().get(i).createTrace(TIRE_MARK));
+    }
 
     private static void printTitle() {
         System.out.println("살행결과");
     }
-
 
 }

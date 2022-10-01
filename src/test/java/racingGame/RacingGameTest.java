@@ -4,6 +4,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import racingGame.domain.Cars;
+import racingGame.domain.InputValue;
+import racingGame.domain.RacingGame;
 import racingGame.racingRule.FowardRule;
 
 import java.util.stream.Stream;
@@ -16,9 +19,9 @@ public class RacingGameTest {
 
     private static Stream<Arguments> provideInputParameter() {
         return Stream.of(
-                Arguments.of("3", "2"),
-                Arguments.of("4", "2"),
-                Arguments.of("5", "2")
+                Arguments.of("A", "2"),
+                Arguments.of("B", "2"),
+                Arguments.of("V1", "2")
         );
     }
 
@@ -27,12 +30,13 @@ public class RacingGameTest {
     @DisplayName("차 대수와 시행 횟수를 입력한 만큼 게임을 진행한다.")
     void when_play_create_cars(String carNum, String tryNum) {
         //given
-        InputParameters testInput = new InputParameters(carNum, tryNum);
+
+        InputValue testInput = new InputValue(carNum, tryNum);
         RacingGame game = new RacingGame(testInput);
         //when
         Cars result = game.play(fowardRule);
         //then
-        assertThat(result.getCars()).hasSize(Integer.parseInt(carNum));
+        assertThat(result.getCars()).hasSize(1);
         assertThat(result.getCars().get(0).getPosition()).isEqualTo(Integer.parseInt(tryNum));
     }
 }
