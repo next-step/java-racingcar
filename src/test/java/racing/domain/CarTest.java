@@ -1,8 +1,11 @@
-package racing;
+package racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
+import racing.domain.Car;
+import racing.domain.NoRule;
+import racing.domain.RandomRule;
 
 class CarTest {
 

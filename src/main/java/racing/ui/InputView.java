@@ -1,6 +1,8 @@
-package racing;
+package racing.ui;
 
 import java.util.Scanner;
+import racing.domain.Race;
+import racing.domain.RandomRule;
 
 public class InputView {
 

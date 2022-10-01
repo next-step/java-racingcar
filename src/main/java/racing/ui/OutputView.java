@@ -1,6 +1,9 @@
-package racing;
+package racing.ui;
 
 import java.util.List;
+import racing.domain.Race;
+import racing.domain.RaceResult;
+import racing.domain.ScoreBoard;
 
 public class OutputView {
 
