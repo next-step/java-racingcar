@@ -1,5 +1,6 @@
 package step3.position;
 
+import step3.output.BarOutputView;
 import step3.output.OutputView;
 
 import java.util.Objects;
@@ -11,6 +12,10 @@ public final class CarPosition implements Position {
     private final int position;
 
     private final OutputView outputView;
+
+    public CarPosition(int position) {
+        this(position, new BarOutputView());
+    }
 
     public CarPosition(int position, OutputView outputView) {
         this.position = position;
