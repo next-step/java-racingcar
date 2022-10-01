@@ -14,6 +14,8 @@ public class CarRacing {
 
     private void play() {
         prepare();
+        int rounds = InputView.inputRounds();
+
         ResultView.printResultTitle();
         for (int i = 1; i <= rounds; i++) {
             playRound();
@@ -23,17 +25,12 @@ public class CarRacing {
 
     private void prepare() {
         participateCars();
-        setRounds();
     }
 
     private void playRound() {
         for (Car car : cars) {
             car.run();
         }
-    }
-
-    private void setRounds() {
-        this.rounds = InputView.inputRounds();
     }
 
     private void participateCars() {
