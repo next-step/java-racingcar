@@ -10,7 +10,8 @@ public class PrepareRacing {
         int carCount = carNames.length;
 
         for (int i = 0; i < carCount; i++) {
-            cars.add(new Car(carNames[i]));
+            CarName carName = new CarName(carNames[i]);
+            cars.add(new Car(carName));
         }
 
         return cars;
