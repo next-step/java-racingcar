@@ -1,16 +1,14 @@
-package racinggame.dto;
-
-import racinggame.domain.Car;
+package racinggame.domain;
 
 /**
  * Created by seungwoo.song on 2022-09-26
  */
-public class CarMoveInfo {
+public class CarSnapshot {
 
     private String name;
     private int distance;
 
-    public CarMoveInfo(Car car) {
+    public CarSnapshot(Car car) {
         this.name = car.name();
         this.distance = car.distance();
     }

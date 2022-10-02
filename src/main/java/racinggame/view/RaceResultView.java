@@ -1,8 +1,9 @@
 package racinggame.view;
 
 import racinggame.domain.Car;
-import racinggame.dto.CarMoveInfo;
+import racinggame.domain.CarSnapshot;
 import racinggame.dto.RaceResultDTO;
+import racinggame.domain.RoundSnapshot;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,12 +22,12 @@ public class RaceResultView {
         raceResult.append("실행 결과");
         changeLine();
 
-        for (List<CarMoveInfo> carMoveInfosPerRound : raceResultDTO.getRaceResult()) {
-            readCarMoveInfosPerRound(carMoveInfosPerRound);
+        for (RoundSnapshot roundSnapshot : raceResultDTO.getRoundSnapshots()) {
+            readRoundSnapshot(roundSnapshot);
             changeLine();
         }
 
-        raceResult.append(winnersName(raceResultDTO.winners()) + "가 최종 우승했습니다.");
+        raceResult.append(winnersName(raceResultDTO.getWinners()) + "가 최종 우승했습니다.");
     }
 
     private String winnersName(List<Car> winners) {
@@ -35,13 +36,13 @@ public class RaceResultView {
                 .collect(Collectors.joining(", "));
     }
 
-    private void readCarMoveInfosPerRound(List<CarMoveInfo> carMoveInfos) {
-        carMoveInfos.forEach(this::readCarMoveInfo);
+    private void readRoundSnapshot(RoundSnapshot roundSnapshot) {
+        roundSnapshot.getCarSnapshots().forEach(this::readCarMoveInfo);
     }
 
-    private void readCarMoveInfo(CarMoveInfo carMoveInfo) {
-        readName(carMoveInfo);
-        readDistance(carMoveInfo);
+    private void readCarMoveInfo(CarSnapshot carSnapshot) {
+        readName(carSnapshot);
+        readDistance(carSnapshot);
         changeLine();
     }
 
@@ -49,13 +50,13 @@ public class RaceResultView {
         raceResult.append(System.lineSeparator());
     }
 
-    private void readName(CarMoveInfo carMoveInfo) {
-        raceResult.append(carMoveInfo.name());
+    private void readName(CarSnapshot carSnapshot) {
+        raceResult.append(carSnapshot.name());
         raceResult.append(" : ");
     }
 
-    private void readDistance(CarMoveInfo carMoveInfo) {
-        for (int i = 0; i < carMoveInfo.distance(); i++) {
+    private void readDistance(CarSnapshot carSnapshot) {
+        for (int i = 0; i < carSnapshot.distance(); i++) {
             raceResult.append(PRINT_DISTANCE_MARK);
         }
     }

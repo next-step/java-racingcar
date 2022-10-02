@@ -10,10 +10,12 @@ public class CarFactory {
     private CarFactory() {
     }
 
-    public static List<Car> produce(RaceInputDTO dto) {
-        return Arrays.stream(dto.getCarNames())
+    public static RacingCars produce(RaceInputDTO dto) {
+        List<Car> cars = Arrays.stream(dto.getCarNames())
                 .map(Car::new)
                 .collect(Collectors.toList());
+
+        return new RacingCars(cars);
     }
 
 }
