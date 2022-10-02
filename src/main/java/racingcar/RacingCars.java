@@ -4,9 +4,7 @@ import java.util.Random;
 
 public class RacingCars {
     private static final int MINIMUM_VALUE = 4;
-    private static final int MAXIMUM_VALUE = 10;
     private final Car[] cars;
-    private final Random random = new Random();
 
     private RacingCars(int number) {
         this.cars = new Car[number];
@@ -28,7 +26,7 @@ public class RacingCars {
 
     public void moving() {
         for (Car car : cars) {
-            if (isValidNumber(getRandomNumber())) {
+            if (isValidNumber(RandomNumberGenerator.getRandomNumber())) {
                 car.moveForward();
             }
         }
@@ -42,9 +40,5 @@ public class RacingCars {
         for (Car car : cars) {
             RacingCarView.printRacingCar(car);
         }
-    }
-
-    private int getRandomNumber() {
-        return random.nextInt(MAXIMUM_VALUE);
     }
 }
