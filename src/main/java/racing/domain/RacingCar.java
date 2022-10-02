@@ -1,5 +1,7 @@
 package racing.domain;
 
+import java.util.Objects;
+
 public class RacingCar {
 
     public static final int DEFAULT = 0;
@@ -45,5 +47,18 @@ public class RacingCar {
             result.append("-");
         }
         return result.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RacingCar racingCar = (RacingCar) o;
+        return Objects.equals(name, racingCar.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }
