@@ -7,3 +7,8 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 할 일
+- [x] 자동차 클래스 추가
+- [x] 자동차 전진 시도 기능 추가
+- [x] 입출력 기능 추가
