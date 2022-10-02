@@ -1,6 +1,6 @@
 package racingcar;
 
-import java.util.Random;
+import java.util.Arrays;
 
 public class RacingCars {
     private static final int MINIMUM_VALUE = 4;
@@ -40,5 +40,18 @@ public class RacingCars {
         for (Car car : cars) {
             RacingCarView.printRacingCar(car);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RacingCars that = (RacingCars) o;
+        return Arrays.equals(cars, that.cars);
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(cars);
     }
 }
