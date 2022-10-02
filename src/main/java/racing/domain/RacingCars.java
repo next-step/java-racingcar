@@ -1,7 +1,6 @@
 package racing.domain;
 
 import racing.domain.strategy.MovingStrategy;
-import racing.domain.strategy.RandomMovingStrategy;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,9 +16,9 @@ public class RacingCars {
         this.racingCars = racingCars;
     }
 
-    public static RacingCars from(final CarNames carNames) {
+    public static RacingCars from(final List<CarName> carNames) {
 
-        final List<RacingCar> racingCarList = convert(carNames.list());
+        final List<RacingCar> racingCarList = convert(carNames);
         return new RacingCars(racingCarList);
     }
 
@@ -39,20 +38,12 @@ public class RacingCars {
         return racingCars;
     }
 
-    public void play(final RacingAttempt racingAttempt, final RacingScore racingScore) {
-
-        while (racingAttempt.canAttempt()) {
-            racingAttempt.remain();
-            enter(new RandomMovingStrategy());
-            racingScore.save(this);
-        }
-    }
-
-    public void enter(final MovingStrategy movingStrategy) {
+    public void enter(final RacingScore racingScore, final MovingStrategy movingStrategy) {
 
         for (RacingCar racingCar : racingCars) {
             playRacingCar(racingCar, movingStrategy);
         }
+        racingScore.save(this);
     }
 
     private void playRacingCar(final RacingCar racingCar, final MovingStrategy movingStrategy) {
