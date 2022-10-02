@@ -9,11 +9,7 @@ public class RacingCarApplication {
         String carList = inputView.carNameList();
         int round = inputView.round();
 
-        if(Validate.emptyCheck(carList)){
-            return;
-        }
-
-
+        Validate.emptyCheck(carList);
 
         Racing racing = new Racing(carList, round);
         ResultView resultView = new ResultView();

@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -15,10 +16,25 @@ public class CarTest {
         assertThat(car.getName()).isEqualTo("Jason");
     }
 
+    @ParameterizedTest
+    @DisplayName("자동차 이름 테스트")
+    @CsvSource(value = {"jason:true", "tomboy:false"}, delimiter = ':')
+    void nameValidateTest(String input, boolean result) {
+        boolean check = true;
+        try{
+            Validate.carNameCheck(input);
+        }
+        catch (Exception e){
+            check = false;
+        }
+
+        assertThat(check).isEqualTo(result);
+    }
+
     @Test
     @DisplayName("자동차 대수 테스트")
     void initRacingTest() {
-        Racing racing = new Racing("pj,jw", 5);
+        Racing racing = new Racing("pj,jw,tom", 5);
         assertThat(racing.getCarList().size()).isEqualTo(3);
     }
 
