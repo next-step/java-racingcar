@@ -1,55 +1,54 @@
 package racingcarGame;
 
 import racingcarGame.client.ResultView;
-import racingcarGame.dto.GameData;
-import racingcarGame.util.RandomNumber;
+import racingcarGame.model.Car;
 
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
 
+import static racingcarGame.client.InputView.scanCarCount;
+import static racingcarGame.client.InputView.scanPlayCount;
 import static racingcarGame.client.ResultView.showResult;
-import static racingcarGame.dto.GameData.getRandomBaseValue;
 
+/**
+ * 컨트롤 - 조종
+ * 모델을 어쩌구저쩌구
+ * 뷰에다가 표시해
+ * <p>
+ * 자동차 게임을 개최한다. (컨)
+ * 자동차(모델)가 주사위를 던지고 당첨되면 1칸 앞으로! (모델이 일을 한다 - oop)
+ * n번 시행 - 컨
+ * 화면에 표시. - 컨트롤러가 모델을 뷰에다가 던져서 표시하도록
+ */
 public class RacingGame {
-    private final GameData gameData;
+    public static void main(String[] args) {
+        List<Car> cars = readyCars();
 
-    public RacingGame(GameData gameData) {
-        this.gameData = gameData;
-    }
+        int playCount = scanPlayCount();
 
-    public void start() {
-        ResultView.showResultGame();
+        ResultView.showGameResultTitle();
 
-        for (var i = 0; i < gameData.getPlayCount(); i++) {
-            play();
-            showResult(gameData.getCars());
+        for (var i = 0; i < playCount; i++) {
+            play(cars);
+            showResult(cars);
         }
     }
 
-    private void play() {
-        gameData.getCars().forEach(car -> {
-            int randomNumber = RandomNumber.generate();
-
-            if (isMovable(randomNumber)) {
-                car.move();
-            }
+    private static void play(List<Car> cars) {
+       cars.forEach(car -> {
+            int chosenNumber = car.pickRandomlyNumber();
+            car.move(chosenNumber);
         });
     }
 
-    static boolean isMovable(int num) {
-        return num >= getRandomBaseValue();
-    }
+    private static List<Car> readyCars() {
+        List<Car> cars = new ArrayList<>();
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        RacingGame racingGame = (RacingGame) o;
-        return Objects.equals(gameData, racingGame.gameData);
-    }
+        int carCount = scanCarCount();
+        for (int i = 0; i < carCount; i++) {
+            cars.add(new Car(0));
+        }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(gameData);
+        return cars;
     }
-
 }
