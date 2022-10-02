@@ -14,4 +14,19 @@ public class View {
         System.out.println("시도할 회수는 몇 회 인가요?");
         return scanner.nextInt();
     }
+
+    public void printResult(Cars cars) {
+        System.out.println();
+        System.out.println("실행 결과");
+        for (Car car : cars.getCarList()) {
+            printLocation(car);
+            System.out.println();
+        }
+    }
+
+    private void printLocation(Car car) {
+        for (int i = 0; i < car.getLocation(); i++) {
+            System.out.print("-");
+        }
+    }
 }

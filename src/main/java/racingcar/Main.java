@@ -6,5 +6,10 @@ public class Main {
 
         CarCount carCount = new CarCount(view.inputCarCount());
         TrialCount trialCount = new TrialCount(view.inputTrialCount());
+
+        Cars cars = new Cars(carCount.create());
+        trialCount.start(cars);
+
+        view.printResult(cars);
     }
 }
