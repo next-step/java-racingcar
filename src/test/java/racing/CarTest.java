@@ -13,7 +13,7 @@ public class CarTest {
         assertThat(car.getMoves()).isEqualTo(0);
     }
 
-    @ParameterizedTest(name = "test_car_moving [{0}]")
+    @ParameterizedTest(name = "test_car_moving {0}")
     @ValueSource(ints = {1, 3})
     void test_car_moving(int moves) {
         Car car = new Car();
