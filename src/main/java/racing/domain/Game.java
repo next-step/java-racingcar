@@ -1,5 +1,6 @@
 package racing.domain;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -24,9 +25,9 @@ public class Game {
         gameResult = new GameResult(this);
 
         IntStream.rangeClosed(FIRST_ROUND, gameSet.getNumberOfMove())
-                .mapToObj(round -> new Round())
+                .mapToObj(round -> new Round(cars, gameSet.getMoveStrategy()))
                 .forEach(round -> {
-                    round.racing(cars, gameSet.getMoveStrategy());
+                    round.racing();
                     gameResult.addRound(round);
                 });
     }
@@ -42,7 +43,7 @@ public class Game {
     }
 
     public List<Car> getCars() {
-        return cars;
+        return Collections.unmodifiableList(cars);
     }
 
     public GameResult getGameResult() {
