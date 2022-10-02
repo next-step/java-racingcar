@@ -7,3 +7,9 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## TO DO LIST
+- [ ] 자동차 클래스 구현
+- [ ] 자동차 클래스 테스트 코드 작성
+- [ ] 입력 뷰 클래스 구현
+- [ ] 출력 뷰 클래스 구현
