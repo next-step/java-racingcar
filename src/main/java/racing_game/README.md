@@ -14,6 +14,3 @@ $ ./gradlew run
 
 ```
 
-[] step3 input view 정의
-[] core 정의
-[] test code 정리
