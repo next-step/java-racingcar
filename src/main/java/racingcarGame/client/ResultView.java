@@ -16,6 +16,10 @@ public class ResultView {
         show("실행 결과");
     }
 
+    public static void showWinner(String winner) {
+        show(winner + "가 최종 우승했습니다.");
+    }
+
     public static void showResult(List<Car> cars) {
         cars.forEach(car -> {
             String movement = "";
