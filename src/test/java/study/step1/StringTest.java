@@ -1,4 +1,4 @@
-package study;
+package study.step1;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -10,14 +10,12 @@ public class StringTest {
 	@Test
 	@DisplayName("문자열을 split 하면 문자열 배열을 반환한다.")
 	void Given_String_When_Split_Then_SplitToArr(){
-		// given
-		String str = "1,2";
 
 		// when
-		String[] result = str.split(",");
+		final String[] actual = "1,2".split(",");
 
 		// then
-		assertThat(result).contains("1", "2");
+		assertThat(actual).contains("1", "2");
 	}
 
 	@Test

@@ -1,4 +1,4 @@
-package study;
+package study.step2;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -51,7 +51,7 @@ public class StringAddCalculator {
 		int result = 0;
 		for (String token : tokens) {
 			if(!checkConvertToInt(token) || !checkPositiveNumber(token)){
-				throw new RuntimeException();
+				throw new IllegalArgumentException();
 			}
 			result += Integer.parseInt(token);
 		}
