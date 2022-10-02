@@ -1,10 +1,12 @@
 package racingcarGame.client;
 
 import racingcarGame.model.Car;
+
 import java.util.List;
 
 public class ResultView {
     private static final String POSITION_STR = "-";
+    private static final String SEPARATE_COLON = " : ";
 
     public static void show(String message) {
         System.out.println(message);
@@ -21,7 +23,7 @@ public class ResultView {
                 movement += POSITION_STR;
             }
 
-            show(movement);
+            show(car.getName() + SEPARATE_COLON + movement);
         });
 
         System.out.println();
