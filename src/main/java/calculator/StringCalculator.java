@@ -1,19 +1,18 @@
 package calculator;
 
-import static java.lang.Integer.parseInt;
-
 import calculator.operator.Operator;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import number.PositiveInt;
 
 public class StringCalculator {
+
     private static final String SEPARATORS = "[,:]";
     private static final String CUSTOM_SEPARATOR_PATTERN = "//(.)\n(.*)";
-    private static final String POSITIVE_INT_PATTERN = "[0-9]";
-
 
     public static int splitAndCalculate(String input, String operator) {
-        if (input == null || input.isEmpty()) {
+        if (Objects.isNull(input) || input.isEmpty()) {
             return 0;
         }
 
@@ -46,21 +45,9 @@ public class StringCalculator {
     private static int calculate(String[] splited, Operator operator) {
         int result = 0;
         for (String token : splited) {
-            result = operator.execute(result, parsePositiveInt(token));
+            result = operator.execute(result, PositiveInt.fromString(token).value());
         }
 
         return result;
-    }
-
-    private static int parsePositiveInt(String input) {
-        if (isImpossibleToParse(input)) {
-            throw new RuntimeException("허용하지 않는 값이 존재합니다.");
-        }
-
-        return parseInt(input);
-    }
-
-    private static boolean isImpossibleToParse(String input) {
-        return !Pattern.matches(POSITIVE_INT_PATTERN, input);
     }
 }
