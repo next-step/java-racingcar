@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.backend.domain;
 
 import java.util.List;
 

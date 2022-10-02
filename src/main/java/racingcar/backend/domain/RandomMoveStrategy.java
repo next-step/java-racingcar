@@ -1,6 +1,6 @@
-package racingcar.domain;
+package racingcar.backend.domain;
 
-import racingcar.utils.RandomUtils;
+import racingcar.backend.utils.RandomUtils;
 
 public class RandomMoveStrategy implements MoveStrategy {
 

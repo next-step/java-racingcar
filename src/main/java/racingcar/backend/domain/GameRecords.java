@@ -1,13 +1,13 @@
-package racingcar.domain;
+package racingcar.backend.domain;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameHistory {
+public class GameRecords {
 
     private List<GameRecord> values;
 
-    public GameHistory() {
+    public GameRecords() {
         this.values = new ArrayList<>();
     }
 

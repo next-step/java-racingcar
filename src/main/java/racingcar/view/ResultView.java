@@ -1,7 +1,7 @@
 package racingcar.view;
 
-import racingcar.domain.GameHistory;
-import racingcar.domain.GameRecord;
+import racingcar.backend.domain.GameRecords;
+import racingcar.backend.domain.GameRecord;
 
 import java.util.stream.Collectors;
 
@@ -16,7 +16,7 @@ public class ResultView {
         throw new AssertionError("No instance");
     }
 
-    public static void printGameHistory(GameHistory gameHistory) {
+    public static void printGameHistory(GameRecords gameHistory) {
         history.append(GAME_RESULT);
         history.append(NEW_LINE);
         for (GameRecord gameRecord : gameHistory.getValues()) {
