@@ -1,15 +1,22 @@
 package calculator;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static calculator.StringAddCalculator.splitAndSum;
 import static org.assertj.core.api.Assertions.*;
 
 public class StringAddCalculatorTest {
+
     @Test
-    void null_또는_space() {
-        assertThat(splitAndSum("")).isEqualTo(0);
+    void null검사() {
         assertThat(splitAndSum(null)).isEqualTo(0);
+    }
+    @ParameterizedTest
+    @ValueSource(strings = {"", " "})
+    void space(String space) {
+        assertThat(splitAndSum(space)).isEqualTo(0);
     }
 
     @Test
@@ -33,16 +40,19 @@ public class StringAddCalculatorTest {
                 () -> splitAndSum("1,2:-3")
         ).isInstanceOf(RuntimeException.class);
     }
-    ///
-    @Test
-    public void splitAndSum_null_또는_빈문자() {
-        int result = StringAddCalculator.splitAndSum(null);
-        assertThat(result).isEqualTo(0);
 
-        result = StringAddCalculator.splitAndSum("");
+    @Test
+    public void splitAndSum_null() {
+        int result = StringAddCalculator.splitAndSum(null);
         assertThat(result).isEqualTo(0);
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"", " "})
+    public void splitAndSum_빈문자(String input) {
+        int result = StringAddCalculator.splitAndSum(input);
+        assertThat(result).isEqualTo(0);
+    }
     @Test
     public void splitAndSum_숫자하나() throws Exception {
         int result = StringAddCalculator.splitAndSum("1");
