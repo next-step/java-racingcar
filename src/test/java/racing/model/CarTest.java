@@ -1,8 +1,7 @@
-package racing;
+package racing.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.model.Car;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -10,8 +9,6 @@ class CarTest {
 
     private static final int NOT_START = 0;
     private static final int ONE_GO_STRAIGHT = 1;
-    private static final String OVER_FIVE_IN_LENGTH = "123456";
-    private static final String BLANK = "";
     private static final String NORMAL_NAME = "TEST";
 
     @Test
@@ -31,24 +28,6 @@ class CarTest {
         car.goStraight(() -> false);
         final int curLocation = car.getCurrentLocation();
         assertThat(curLocation).isEqualTo(NOT_START);
-    }
-
-    @Test
-    @DisplayName("자동차를 생성할 때 5자를 초과할 경우 에러를 발생한다.")
-    void constructorTestOverFiveinLengthError() {
-        assertThatThrownBy(() -> new Car(0, OVER_FIVE_IN_LENGTH)).isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    @DisplayName("자동차를 생성할 때 빈값을 넣을 경우 에러를 발생한다.")
-    void constructorTestBlank() {
-        assertThatThrownBy(() -> new Car(0, BLANK)).isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    @DisplayName("자동차를 생성할 때 Null을 넣을 경우 에러를 발생한다.")
-    void constructorTestNull() {
-        assertThatThrownBy(() -> new Car(0, null)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
