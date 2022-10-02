@@ -22,7 +22,7 @@ public class PositionsTest {
 
         Map<String, Integer> positions = position.getPositions();
 
-        assertThat(positions.size()).isEqualTo(3);
+        assertThat(positions.size()).isEqualTo(2);
         assertThat(positions.get("test1")).isEqualTo(0);
     }
 

@@ -9,6 +9,12 @@ public class Racing {
     private static final int CONDITION = 4;
     private static Random random = new Random();
 
+    public void racing (Position position, Car car, OutputResult outputResult) {
+        for (int i = 0 ; i < car.getTimes() ; i++) {
+            racingRound(position, car.getNames());
+            outputResult.outputRound(position.getPositions());
+        }
+    }
     public void racingRound(Position position, List<String> names) {
         for (int i = 0; i < names.size(); i++) {
             moveOrStop(position, names.get(i));

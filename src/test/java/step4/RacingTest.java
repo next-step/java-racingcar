@@ -14,6 +14,7 @@ public class RacingTest {
     Position positions;
     Car car;
     Racing racing;
+    OutputResult outputResult;
 
     @BeforeEach
     void init() {
@@ -24,6 +25,7 @@ public class RacingTest {
         car = new Car(names, 3);
 
         racing = new Racing();
+        outputResult = new OutputResult();
 
     }
 
@@ -40,6 +42,6 @@ public class RacingTest {
 
     @Test
     void test() {
-        racing.racing(positions, car);
+        racing.racing(positions, car, outputResult);
     }
 }

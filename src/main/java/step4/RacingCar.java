@@ -6,12 +6,19 @@ public class RacingCar {
         InputRacingCar inputRacingCar = new InputRacingCar();
         Position position = new Position();
         Racing racing = new Racing();
+        Result result = new Result();
+        OutputResult outputResult = new OutputResult();
 
         Car car = inputRacingCar.input();
+
         position.initPosition(car.getNames());
 
-        for (int i = 0 ; i < car.getTimes() ; i++) {
-            racing.racingRound(position, car.getNames());
-        }
+        outputResult.printTitle();
+
+        racing.racing(position, car, outputResult);
+
+        result.findWinner(position.getPositions());
+
+        outputResult.printResult(result.getWinner());
     }
 }
