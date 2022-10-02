@@ -1,8 +1,8 @@
 package racing.view;
 
-import racing.domain.RacingCar;
 import racing.domain.RacingScore;
 import racing.domain.WinnerRacingCars;
+import racing.dto.RacingCarDto;
 
 import java.util.List;
 import java.util.Map;
@@ -26,7 +26,7 @@ public class ResultView {
         totalResultPrint(racingScore.score());
     }
 
-    private static void totalResultPrint(final Map<Integer, List<RacingCar>> score) {
+    private static void totalResultPrint(final Map<Integer, List<RacingCarDto>> score) {
 
         for (Integer integer : score.keySet()) {
             racingPrint(score.get(integer));
@@ -34,13 +34,13 @@ public class ResultView {
         }
     }
 
-    private static void racingPrint(final List<RacingCar> racingCars) {
+    private static void racingPrint(final List<RacingCarDto> racingCarDtos) {
 
-        racingCars.stream()
+        racingCarDtos.stream()
                 .forEach(racingCar -> {
-                    final String stringBuilder = racingCar.getName().getCarName() +
+                    final String stringBuilder = racingCar.getName() +
                             " : " +
-                            racingCar.convert();
+                            racingCar.getPosition();
                     System.out.println(stringBuilder);
                 });
     }

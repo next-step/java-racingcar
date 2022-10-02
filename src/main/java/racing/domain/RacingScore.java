@@ -1,5 +1,7 @@
 package racing.domain;
 
+import racing.dto.RacingCarDto;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class RacingScore {
 
-    private final Map<Integer, List<RacingCar>> racingScores = new HashMap<>();
+    private final Map<Integer, List<RacingCarDto>> racingScores = new HashMap<>();
     private int sequence = 0;
 
     private RacingScore() {}
@@ -17,7 +19,7 @@ public class RacingScore {
         return new RacingScore();
     }
 
-    public Map<Integer, List<RacingCar>> score() {
+    public Map<Integer, List<RacingCarDto>> score() {
 
         return racingScores;
     }
@@ -27,15 +29,15 @@ public class RacingScore {
         racingScores.put(sequence++, getRacingCars(racingCars));
     }
 
-    private List<RacingCar> getRacingCars(final RacingCars racingCars) {
+    private List<RacingCarDto> getRacingCars(final RacingCars racingCars) {
 
         return racingCars.score()
                 .stream()
-                .map(racingCar -> new RacingCar(racingCar.getName(), racingCar.getPosition()))
+                .map(RacingCarDto::from)
                 .collect(Collectors.toList());
     }
 
-    public List<RacingCar> findByIndex(final int index) {
+    public List<RacingCarDto> findByIndex(final int index) {
 
         return racingScores.get(index);
     }

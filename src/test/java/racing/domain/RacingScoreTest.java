@@ -2,6 +2,7 @@ package racing.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.dto.RacingCarDto;
 
 import java.util.List;
 
@@ -20,12 +21,13 @@ class RacingScoreTest {
                 , new RacingCar(new CarName("line"), 1)
         );
         final RacingCars racingCars = new RacingCars(oneRound);
+        final RacingCarDto racingCarDto = RacingCarDto.from(new RacingCar(new CarName("pobi"), 0));
 
         racingScore.save(racingCars);
 
         assertAll(
                 () -> assertThat(racingScore.findByIndex(0)).hasSize(2),
-                () -> assertThat(racingScore.findByIndex(0).get(0)).isEqualTo(oneRound.get(0))
+                () -> assertThat(racingScore.findByIndex(0).get(0)).isEqualTo(racingCarDto)
         );
 
     }
