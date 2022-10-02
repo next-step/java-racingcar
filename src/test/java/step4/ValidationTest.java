@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 public class ValidationTest {
 
     @Test
-    void test() {
+    void validation_test() {
         Assertions.assertThatThrownBy(() -> {
             Validation.checkName("test12345");
         }).isInstanceOf(RuntimeException.class);
