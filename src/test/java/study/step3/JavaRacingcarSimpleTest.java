@@ -1,7 +1,6 @@
 package study.step3;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,13 +13,13 @@ class JavaRacingcarSimpleTest {
 	@Test
 	void Given_MoreThen4_Then_ReturnTrue() {
 		boolean result = javaRacingcarSimple.isGoForward(4);
-		assertTrue(result);
+		assertThat(result).isTrue();
 	}
 
 	@DisplayName("random 값이 4 미만인 경우 false 를 반환한다")
 	@Test
 	void Given_Under4_Then_ReturnFalse() {
 		boolean result = javaRacingcarSimple.isGoForward(3);
-		assertFalse(result);
+		assertThat(result).isFalse();
 	}
 }

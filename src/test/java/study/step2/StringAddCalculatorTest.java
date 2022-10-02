@@ -16,8 +16,7 @@ public class StringAddCalculatorTest {
 
 	final StringAddCalculator stringAddCalculator = new StringAddCalculator();
 
-	@DisplayName("빈 문자열 또는 null 값을 입력할 경우 0을 반환한다.")
-	@ParameterizedTest
+	@ParameterizedTest(name = "빈 문자열 또는 null 값을 입력할 경우 0을 반환한다.")
 	@NullAndEmptySource
 	public void Given_NullOrEmpty_Then_ReturnZero(String input) {
 		int result = stringAddCalculator.splitAndSum(input);
