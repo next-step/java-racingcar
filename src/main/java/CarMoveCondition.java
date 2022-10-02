@@ -1,7 +1,7 @@
 
 public class CarMoveCondition {
 
-    private static final int MAX_VALUE = 9;
+    public static final int MAX_VALUE = 9;
 
     private static final int MIN_VALUE_FOR_MOVE = 4;
 
