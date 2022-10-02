@@ -20,5 +20,6 @@ public class Game {
 			cars.move(randomValueGenerator);
 			resultView.printEachTryResult(cars.getCars());
 		}
+		resultView.printWinners(cars.determineWinners());
 	}
 }

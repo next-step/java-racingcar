@@ -1,6 +1,7 @@
 package racingcar.step3_4;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
 
@@ -23,5 +24,16 @@ public class ResultView {
 		}
 		stringBuilder.append(System.lineSeparator());
 		return stringBuilder.toString();
+	}
+
+	public void printWinners(List<Car> winners) {
+		System.out.println(getWinnersName(winners) + "가 최종 우승했습니다.");
+	}
+
+	private String getWinnersName(List<Car> winners) {
+		return winners.stream()
+			.map(Car::getName)
+			.map(Name::toString)
+			.collect(Collectors.joining(", "));
 	}
 }
