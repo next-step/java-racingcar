@@ -2,6 +2,7 @@ package racingcarGame;
 
 import racingcarGame.client.ResultView;
 import racingcarGame.model.Car;
+import racingcarGame.util.RandomNumber;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,18 +24,11 @@ public class RacingGame {
         ResultView.showGameResultTitle();
 
         for (var i = 0; i < playCount; i++) {
-            play(cars);
+            cars.forEach(car -> car.move(RandomNumber.generate()));
             showResult(cars);
         }
 
         showWinner(findWinner(cars));
-    }
-
-    private static void play(List<Car> cars) {
-        cars.forEach(car -> {
-            int chosenNumber = car.pickRandomlyNumber();
-            car.move(chosenNumber);
-        });
     }
 
     public static String findWinner(List<Car> cars) {
