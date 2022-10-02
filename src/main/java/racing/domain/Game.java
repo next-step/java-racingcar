@@ -24,9 +24,9 @@ public class Game {
         gameResult = new GameResult(this);
 
         IntStream.rangeClosed(FIRST_ROUND, gameSet.getNumberOfMove())
-                .mapToObj(round -> new Round())
+                .mapToObj(round -> new Round(cars, gameSet.getMoveStrategy()))
                 .forEach(round -> {
-                    round.racing(cars, gameSet.getMoveStrategy());
+                    round.racing();
                     gameResult.addRound(round);
                 });
     }

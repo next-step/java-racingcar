@@ -15,7 +15,8 @@ public class GameResultTest {
     @Test
     @DisplayName("게임 결과 - 라운드별 결과 추가")
     void 라운드목록_라운드별_기록추가() {
-        assertThat(Arrays.asList(new Round(), new Round()).size()).isEqualTo(2);
+        List<Car> cars = Arrays.asList(new Car("car1"), new Car("car2"));
+        assertThat(Arrays.asList(new Round(cars, new RandomMove()), new Round(cars, new RandomMove())).size()).isEqualTo(2);
     }
 
     @Test
