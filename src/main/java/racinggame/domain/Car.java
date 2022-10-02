@@ -1,6 +1,6 @@
 package racinggame.domain;
 
-public class Car {
+public class Car implements Comparable<Car>{
     private static final int MAX_NAME_LENGTH = 5;
     private static final String ERR_MAX_NAME_LENGTH = "자동차 이름은 5글자를 초과할 수 없습니다.";
 
@@ -38,4 +38,11 @@ public class Car {
         return name;
     }
 
+    @Override
+    public int compareTo(Car other) {
+        if (this.status > other.getStatus()) {
+            return this.status;
+        }
+        return other.getStatus();
+    }
 }

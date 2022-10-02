@@ -23,10 +23,7 @@ public class RacingCar {
 
     public List<Car> getWinners() {
         return cars.stream()
-                .filter(car -> car.getStatus() == cars.stream()
-                        .mapToInt(Car::getStatus)
-                        .max()
-                        .orElse(0))
+                .filter(car -> car.getStatus() == car.compareTo(Collections.max(cars)))
                 .collect(Collectors.toList());
     }
 
