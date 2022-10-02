@@ -8,6 +8,9 @@ public class Cars {
     private List<Car> cars;
 
     public Cars(int numberOfCars) {
+        if (numberOfCars < 0) {
+            throw new IllegalArgumentException("자동차 대수는 0 또는 양수만 가능합니다.");
+        }
         this.cars = new ArrayList<>();
 
         for (int index = 0; index < numberOfCars; index++) {
