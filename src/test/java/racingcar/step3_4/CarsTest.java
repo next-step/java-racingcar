@@ -34,6 +34,16 @@ class CarsTest {
 		);
 	}
 
+	@DisplayName("자동차 생성 - 이름 확인")
+	@Test
+	void createCarsNameTest() {
+		assertAll(
+			() -> assertThat(firstCar).isEqualTo(new Car(new Name("pobi"))),
+			() -> assertThat(secondCar).isEqualTo(new Car(new Name("crong"))),
+			() -> assertThat(thirdCar).isEqualTo(new Car(new Name("honux")))
+		);
+	}
+
 	@DisplayName("자동차들 전진")
 	@Test
 	void moveCars() {

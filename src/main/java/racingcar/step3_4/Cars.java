@@ -13,8 +13,8 @@ public class Cars {
 
 	public static Cars createCars(Names carNames) {
 		List<Car> cars = new ArrayList<>();
-		for (int i = 0; i < carNames.getCount(); i++) {
-			cars.add(new Car());
+		for (Name name : carNames.getNames()) {
+			cars.add(new Car(name));
 		}
 
 		return new Cars(cars);
