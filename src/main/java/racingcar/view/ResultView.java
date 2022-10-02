@@ -18,15 +18,16 @@ public class ResultView {
 
     public static void printGameHistory(GameHistory gameHistory) {
         history.append(GAME_RESULT);
+        history.append(NEW_LINE);
         for (GameRecord gameRecord : gameHistory.getValues()) {
-            history.append(gameRecordToString(gameRecord));
             history.append(NEW_LINE);
+            history.append(gameRecordToString(gameRecord));
             history.append(NEW_LINE);
         }
         print(history.toString());
     }
 
-    private static String gameRecordToString(GameRecord gameRecord) {
+    public static String gameRecordToString(GameRecord gameRecord) {
         return gameRecord.getValues().stream()
                 .map(POSITION_MARK::repeat)
                 .collect(Collectors.joining(NEW_LINE));
