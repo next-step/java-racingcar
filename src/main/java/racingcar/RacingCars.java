@@ -5,7 +5,6 @@ import java.util.Random;
 public class RacingCars {
     private static final int MINIMUM_VALUE = 4;
     private static final int MAXIMUM_VALUE = 10;
-    private static final String LOCATION_PRINT_LETTER = "-";
     private final Car[] cars;
     private final Random random = new Random();
 
@@ -41,7 +40,7 @@ public class RacingCars {
 
     public void print() {
         for (Car car : cars) {
-            System.out.println(LOCATION_PRINT_LETTER.repeat(car.getLocation()));
+            RacingCarView.printRacingCar(car);
         }
     }
 
