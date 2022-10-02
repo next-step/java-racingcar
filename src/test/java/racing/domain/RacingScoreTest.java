@@ -13,10 +13,9 @@ class RacingScoreTest {
 
     @Test
     @DisplayName("레이싱 결과를 저장한다.")
-    void asdasd() {
+    void racing_score() {
 
         final RacingScore racingScore = RacingScore.getInstance();
-
         final List<RacingCar> oneRound = List.of(new RacingCar(new CarName("pobi"), 0)
                 , new RacingCar(new CarName("line"), 1)
         );
@@ -26,7 +25,7 @@ class RacingScoreTest {
 
         assertAll(
                 () -> assertThat(racingScore.findByIndex(0)).hasSize(2),
-                () -> assertThat(racingScore.findByIndex(0)).isEqualTo(oneRound)
+                () -> assertThat(racingScore.findByIndex(0).get(0)).isEqualTo(oneRound.get(0))
         );
 
     }
