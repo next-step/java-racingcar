@@ -36,4 +36,12 @@ class CarsTest {
 
 		Assertions.assertThat(cars.getWinners()).containsExactly(a, b);
 	}
+
+	@DisplayName("자동차 이름의 개수만큼 자동차가 생성된다.")
+	@Test
+	void generateCars() {
+		ArrayList<Name> names = new ArrayList<>(Arrays.asList(new Name("a"), new Name("b")));
+		Cars cars = new Cars(names);
+		Assertions.assertThat(cars.getCars()).hasSize(2);
+	}
 }

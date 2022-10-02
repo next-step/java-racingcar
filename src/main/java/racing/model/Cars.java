@@ -14,6 +14,12 @@ public class Cars {
 		}
 	}
 
+	public Cars(ArrayList<Name> names) {
+		for (Name name : names) {
+			cars.add(new Car(name));
+		}
+	}
+
 	public List<Car> getWinners() {
 		return chooseWinners(getMaxPosition());
 	}
