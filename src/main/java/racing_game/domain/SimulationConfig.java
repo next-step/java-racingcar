@@ -4,8 +4,8 @@ import racing_game.core.Positive;
 
 public class SimulationConfig {
 
-  private Positive carCount;
-  private Positive tryCount;
+  private final Positive carCount;
+  private final Positive tryCount;
 
   private SimulationConfig(Positive carCount, Positive tryCount) {
     this.carCount = carCount;

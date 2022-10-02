@@ -1,21 +1,17 @@
 package racing_game.domain;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
-import java.util.Spliterator;
-import java.util.function.Consumer;
+import java.util.stream.Collectors;
 import racing_game.core.Positive;
 
-public class Cars implements Iterable<Car> {
+public class Cars {
 
   private final List<Car> holder;
-  private final Random random;
 
   private Cars(int count) {
-    random = new Random();
+    Random random = new Random();
     holder = new ArrayList<>();
     for (int i = 0; i < count; i++) {
       holder.add(Car.create(random));
@@ -32,22 +28,12 @@ public class Cars implements Iterable<Car> {
     }
   }
 
+  public Distances getDistances() {
+    return Distances.create(
+        holder.stream().map(Car::getDistance).collect(Collectors.toUnmodifiableList()));
+  }
+
   public int size() {
     return holder.size();
-  }
-
-  @Override
-  public Iterator<Car> iterator() {
-    return holder.iterator();
-  }
-
-  @Override
-  public void forEach(Consumer<? super Car> action) {
-    holder.forEach(action);
-  }
-
-  @Override
-  public Spliterator<Car> spliterator() {
-    return holder.spliterator();
   }
 }

@@ -2,18 +2,19 @@ package racing_game.view;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import racing_game.core.Parsable;
 
 public class InputView<T extends Parsable<T>> {
 
   private final BufferedReader reader;
 
-  private InputView(BufferedReader reader) {
+  public InputView(BufferedReader reader) {
     this.reader = reader;
   }
 
-  public static InputView create(BufferedReader reader) {
-    return new InputView(reader);
+  public InputView() {
+    this.reader = new BufferedReader(new InputStreamReader(System.in));
   }
 
   public T fromInput(String ment, T target) throws IOException {

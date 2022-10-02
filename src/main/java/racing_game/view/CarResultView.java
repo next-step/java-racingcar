@@ -1,10 +1,10 @@
 package racing_game.view;
 
-import racing_game.domain.Car;
-import racing_game.domain.Cars;
-import racing_game.domain.Simulator;
+import racing_game.core.Positive;
+import racing_game.core.SnapShot;
+import racing_game.domain.Distances;
 
-public class CarResultView implements ResultView<Simulator> {
+public class CarResultView implements ResultView<SnapShot<Distances>> {
 
   private CarResultView() {}
 
@@ -13,23 +13,20 @@ public class CarResultView implements ResultView<Simulator> {
   }
 
   @Override
-  public String resolve(Simulator result) {
-    Cars cars = result.getCars();
-    int tryCount = result.getTryCount().toInt();
-
+  public String resolve(SnapShot<Distances> distanceSnapShot) {
     StringBuilder sb = new StringBuilder("실행 결과\n");
-    for (int time = 1; time <= tryCount; time++) {
-      draw(cars, time, sb);
+    int i = 0;
+    for (Distances distances : distanceSnapShot) {
+      sb.append(++i).append(" 회차 ---------------\n");
+      draw(distances, sb);
       sb.append("\n");
     }
-
     return sb.toString();
   }
 
-  private void draw(Cars cars, int time, StringBuilder sb) {
-    for (Car car : cars) {
-      int distance = car.getDistance(time);
-      sb.append("_ ".repeat(distance)).append("\n");
+  private void draw(Distances distances, StringBuilder sb) {
+    for (Positive distance : distances) {
+      sb.append("_ ".repeat(distance.toInt())).append("\n");
     }
   }
 }
