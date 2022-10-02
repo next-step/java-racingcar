@@ -29,7 +29,7 @@ public class Cars {
 	}
 
 	private List<Car> chooseWinners(Position maxPosition) {
-		return cars.stream().filter(car -> car.isWinner(maxPosition)).collect(Collectors.toList());
+		return cars.stream().filter(car -> car.isSamePosition(maxPosition)).collect(Collectors.toList());
 	}
 
 	public List<Car> getCars() {
