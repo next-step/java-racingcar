@@ -2,6 +2,7 @@ package racingcar.step3_4;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -24,6 +25,19 @@ public class Cars {
 		for (Car car : cars) {
 			car.move(randomValueGenerator);
 		}
+	}
+
+	public List<Car> determineWinners() {
+		return cars.stream()
+			.filter(car -> car.getPosition() == getMaxPosition())
+			.collect(Collectors.toList());
+	}
+
+	private int getMaxPosition() {
+		return cars.stream()
+			.mapToInt(Car::getPosition)
+			.max()
+			.getAsInt();
 	}
 
 	public int getCarsCount() {

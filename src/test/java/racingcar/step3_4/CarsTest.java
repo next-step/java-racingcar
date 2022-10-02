@@ -3,6 +3,7 @@ package racingcar.step3_4;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -64,5 +65,29 @@ class CarsTest {
 			() -> assertThat(secondCar.move(() -> 4)).isEqualTo(1),
 			() -> assertThat(thirdCar.move(() -> 9)).isEqualTo(1)
 		);
+	}
+
+	@DisplayName("최종 우승 자동차 결정 - 우승자 한 명")
+	@Test
+	void determineWinnerTest() {
+		firstCar.move(() -> 3);
+		secondCar.move(() -> 2);
+		thirdCar.move(() -> 9);
+
+		List<Car> winners = cars.determineWinners();
+
+		assertThat(winners).hasSize(1);
+	}
+
+	@DisplayName("최종 우승 자동차 결정 - 우승자 두 명이상")
+	@Test
+	void determineWinnersTest() {
+		firstCar.move(() -> 3);
+		secondCar.move(() -> 4);
+		thirdCar.move(() -> 9);
+
+		List<Car> winners = cars.determineWinners();
+
+		assertThat(winners).hasSize(2);
 	}
 }
