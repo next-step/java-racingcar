@@ -1,14 +1,10 @@
 package racingcar;
 
 import java.util.List;
-import racingcar.strategy.RandomStrategy;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
 public class RacingCarApplication {
-
-    public static final int FORWARD_CONDITION_LOW_BOUND = 2;
-    public static final int FORWARD_CONDITION_HIGH_BOUND = 9;
 
     public static final String COMMA_REGEX = ",";
 
@@ -17,10 +13,9 @@ public class RacingCarApplication {
         int tryNums = InputView.askQuestionAnswerInt("시도할 회수는 몇회인가요?");
         List<String> names = InputView.split(answer, COMMA_REGEX);
 
-        RandomStrategy randomStrategy = new RandomStrategy(FORWARD_CONDITION_LOW_BOUND, FORWARD_CONDITION_HIGH_BOUND);
         RacingGame racingGame = new RacingGame(tryNums, names);
 
-        RacingRecord racingRecord = racingGame.racingStart(randomStrategy);
+        RacingRecord racingRecord = racingGame.racingStart();
         ResultView.printRoundRecord(racingRecord, "-");
     }
 }

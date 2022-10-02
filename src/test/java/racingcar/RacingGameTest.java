@@ -28,9 +28,10 @@ class RacingGameTest {
     @Test
     void racingStart() {
         RacingGame racingGame = new RacingGame(3, names);
-
         MovingStrategy movingStrategy = new TestSuccessMoveStrategy();
-        RacingRecord racingRecord = racingGame.racingStart(movingStrategy);
+        racingGame.changeMovingStrategy(movingStrategy);
+
+        RacingRecord racingRecord = racingGame.racingStart();
 
         List<RoundCars> roundCars = racingRecord.retrieveRecord();
         assertThat(roundCars)
