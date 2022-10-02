@@ -2,15 +2,15 @@ package racingcarGame.model;
 
 import racingcarGame.util.RandomNumber;
 
-import java.util.Objects;
-
 public class Car {
     private static final int RANDOM_BASE_VALUE = 4;
 
     private int position;
+    private String name;
 
-    public Car(int position) {
+    public Car(int position, String name) {
         this.position = position;
+        this.name = name;
     }
 
     public void move(int chosenNumber) {
@@ -19,7 +19,7 @@ public class Car {
         }
     }
 
-    public int pickRandomlyNumber(){
+    public int pickRandomlyNumber() {
         return RandomNumber.generate();
     }
 
@@ -31,16 +31,8 @@ public class Car {
         return position;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Car car = (Car) o;
-        return Objects.equals(position, car.position);
+    public String getName() {
+        return name;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(position);
-    }
 }
