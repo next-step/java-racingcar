@@ -4,8 +4,7 @@ package racing.model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.controller.Game;
-import racing.util.StringUtil;
+import racing.view.GameOutput;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +35,7 @@ class CarsTest {
         this.goStraightCarByName(NORMAL_NAME1);
 
         Cars winner = cars.getWinner();
-        assertThat(StringUtil.getNameInCarList(winner.getCarList())).isEqualTo(NORMAL_NAME1);
+        assertThat(GameOutput.getNameInCars(winner.getCarList())).isEqualTo(NORMAL_NAME1);
     }
 
     @Test
@@ -46,7 +45,7 @@ class CarsTest {
             car.goStraight(() -> true);
         }
         Cars winner = cars.getWinner();
-        assertThat(StringUtil.getNameInCarList(winner.getCarList())).contains(
+        assertThat(GameOutput.getNameInCars(winner.getCarList())).contains(
                 NORMAL_NAME1 + COMMA + NORMAL_NAME2 + COMMA + NORMAL_NAME3
         );
     }

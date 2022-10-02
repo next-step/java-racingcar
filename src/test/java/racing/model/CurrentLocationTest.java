@@ -8,7 +8,6 @@ import static org.assertj.core.api.Assertions.*;
 class CurrentLocationTest {
 
     static final int MINUS_VALUE = -1;
-
     private static final int NOT_START = 0;
     private static final int ONE_GO_STRAIGHT = 1;
 
@@ -30,11 +29,9 @@ class CurrentLocationTest {
 
     @Test
     @DisplayName("똑같은 위치에 있을 때 똑같다고 판단하는지에 대한 테스트")
-    void isSameLocationTest(){
+    void isSameLocationTest() {
         CurrentLocation oneLocation = new CurrentLocation(ONE_GO_STRAIGHT);
         CurrentLocation oneLocation2 = new CurrentLocation(ONE_GO_STRAIGHT);
         assertThat(oneLocation.isSameCurrentLocation(oneLocation2)).isEqualTo(true);
     }
-
-
 }

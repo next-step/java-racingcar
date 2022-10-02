@@ -30,7 +30,7 @@ public class CurrentLocation {
     }
 
     private void validateLocation(int startLocation) {
-        if (startLocation < 0) {
+        if (startLocation < Min_Location) {
             throw new IllegalArgumentException();
         }
     }
