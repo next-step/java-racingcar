@@ -1,21 +1,21 @@
 package thirdStep.logic;
 
 import thirdStep.View.InputView;
+
 import java.util.Random;
+import java.util.stream.IntStream;
 
 public class Race {
-    public static Random random = new Random();
-    public static int carCount = InputView.getCarCount();
-    public static int[] carStatus = new int[carCount];
+    private static Random random = new Random();
+    private static int carCount = InputView.getCarCount();
+    private static int[] carStatus = new int[carCount];
 
     public static int getRandomNumber() {
         return random.nextInt(9);
     }
 
     public static void startOneRace() {
-        for (int index : carStatus) {
-            carMove(index, getRandomNumber());
-        }
+        IntStream.range(0, carCount).forEach(index -> carMove(index, getRandomNumber()));
     }
 
     public static void carMove(int index, int randomNumber) {
@@ -27,5 +27,4 @@ public class Race {
     public static int[] getCarStatus() {
         return carStatus;
     }
-
 }
