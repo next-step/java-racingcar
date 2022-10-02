@@ -12,13 +12,13 @@ public class StringNumberCalculator {
         if (isBlank(input)) {
             return 0;
         }
-        return sum(toPositiveIntegers(split(input))).intValue();
+        return sum(toPositiveIntegers(parseInts(split(input)))).intValue();
     }
 
-    private static PositiveInteger sum(PositiveInteger[] positiveIntegers) {
-        PositiveInteger result = PositiveInteger.ZERO;
-        for (PositiveInteger positiveInteger : positiveIntegers) {
-            result = result.plus(positiveInteger);
+    private static PositiveNumber sum(PositiveNumber[] positiveNumbers) {
+        PositiveNumber result = PositiveNumber.ZERO;
+        for (PositiveNumber positiveNumber : positiveNumbers) {
+            result = result.plus(positiveNumber);
         }
         return result;
     }
@@ -35,20 +35,31 @@ public class StringNumberCalculator {
         return split(matcher.group(2), matcher.group(1));
     }
 
-    private static PositiveInteger[] toPositiveIntegers(String[] values) {
-        PositiveInteger[] positiveIntegers = new PositiveInteger[values.length];
+    private static int[] parseInts(String[] values) {
+        int[] result = new int[values.length];
         for (int i = 0; i < values.length; i++) {
-            positiveIntegers[i] = toPositiveInteger(values[i]);
+            result[i] = parseInt(values[i]);
         }
-        return positiveIntegers;
+        return result;
     }
 
-    private static PositiveInteger toPositiveInteger(String value) {
-        return new PositiveInteger(value);
+    private static int parseInt(String value) {
+        if (isBlank(value)) {
+            return 0;
+        }
+        return Integer.parseInt(value);
     }
 
     private static boolean isBlank(String input) {
         return input == null || input.isBlank();
+    }
+
+    private static PositiveNumber[] toPositiveIntegers(int[] values) {
+        PositiveNumber[] positiveNumbers = new PositiveNumber[values.length];
+        for (int i = 0; i < values.length; i++) {
+            positiveNumbers[i] = new PositiveNumber(values[i]);
+        }
+        return positiveNumbers;
     }
 
 }
