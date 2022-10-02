@@ -3,9 +3,9 @@ package racingcar;
 import java.util.Objects;
 
 public class Car {
-    private int location;
     public static final int MOVE_DISTANCE = 1;
     public static final int START_LOCATION = 0;
+    private int location;
 
     private Car(int location) {
         this.location = location;

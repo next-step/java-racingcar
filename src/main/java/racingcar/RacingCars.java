@@ -3,10 +3,10 @@ package racingcar;
 import java.util.Random;
 
 public class RacingCars {
+    private static final int MINIMUM_VALUE = 4;
+    private static final int MAXIMUM_VALUE = 10;
+    private static final String LOCATION_PRINT_LETTER = "-";
     private final Car[] cars;
-    private final static int MINIMUM_VALUE = 4;
-    private final static int MAXIMUM_VALUE = 10;
-    private final static String LOCATION_PRINT_LETTER = "-";
     private final Random random = new Random();
 
     private RacingCars(int number) {
@@ -39,13 +39,13 @@ public class RacingCars {
         return number >= MINIMUM_VALUE;
     }
 
-    private int getRandomNumber() {
-        return random.nextInt(MAXIMUM_VALUE);
-    }
-
     public void print() {
         for (Car car : cars) {
             System.out.println(LOCATION_PRINT_LETTER.repeat(car.getLocation()));
         }
+    }
+
+    private int getRandomNumber() {
+        return random.nextInt(MAXIMUM_VALUE);
     }
 }
