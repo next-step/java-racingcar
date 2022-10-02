@@ -1,4 +1,6 @@
-package com.game.racing.car;
+package com.game.racing.domain.car;
+
+import com.game.racing.view.ResultView;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,6 +13,14 @@ public class Winner {
         return WINNER_POSITION;
     }
 
+    private final List<Car> winners;
+
+    public Winner(Cars racingCars) {
+        this.winners = racingCars.getRacingCars().stream()
+                .filter(car -> car.getPosition().get() == WINNER_POSITION)
+                .collect(Collectors.toUnmodifiableList());
+    }
+
     public static void compareWithWinnerPosition(int position) {
         if (position > WINNER_POSITION) {
             WINNER_POSITION = position;
@@ -21,9 +31,8 @@ public class Winner {
         WINNER_POSITION = 0;
     }
 
-    public static List<Car> getRacingWinners(Cars cars) {
-        return cars.getRacingCars().stream()
-                .filter(car -> car.getPosition().get() == WINNER_POSITION)
-                .collect(Collectors.toList());
+    public Integer printWinnersAndGetWinnersSize() {
+        ResultView.printWinner(winners);
+        return winners.size();
     }
 }

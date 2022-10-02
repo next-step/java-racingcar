@@ -1,6 +1,6 @@
-package com.game.racing.position;
+package com.game.racing.domain.position;
 
-import com.game.racing.car.Winner;
+import com.game.racing.domain.car.Winner;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
