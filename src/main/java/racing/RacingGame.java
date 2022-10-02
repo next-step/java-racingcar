@@ -1,27 +1,26 @@
-package step3;
+package racing;
+
+import racing.domain.Car;
+import racing.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static step3.Random.createRandomValue;
+import static racing.util.Random.createRandomValue;
 
 public class RacingGame {
     private static final List<Car> cars = new ArrayList<>();
-    private static final InputView inputView = new InputView();
     private static final ResultView resultView = new ResultView();
+    private Integer tryCount;
 
-    public static void main(String[] args) {
-        setCar(inputView.inputCarCount());
-        tryEvent(inputView.inputTryCount());
-    }
-
-    public static void setCar(int carCount) {
+    RacingGame(int carCount, int tryCount) {
         for(int i = 0; i < carCount; i++){
             cars.add(new Car());
         }
+        this.tryCount = tryCount;
     }
 
-    public static void tryEvent(int tryCount) {
+    public void tryEvent() {
         resultView.init();
         for (int i = 0; i < tryCount; i++) {
             System.out.println("");
@@ -31,9 +30,7 @@ public class RacingGame {
 
     public static void moveEvent(int randomValue) {
         for (Car car : cars) {
-            if (car.isMove(randomValue)) {
-                car.setDistance();
-            }
+            car.move(randomValue);
             resultView.result(car.getDistance());
         }
     }

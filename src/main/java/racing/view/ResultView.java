@@ -1,4 +1,4 @@
-package step3;
+package racing.view;
 
 public class ResultView {
     private static final String DASH = "-";
