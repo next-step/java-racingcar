@@ -26,7 +26,7 @@ class CarsTest {
 
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3, 100})
-    @DisplayName("입력한 차 대수만큼의 차가 이동한다.")
+    @DisplayName("입력한 차 대수만큼의 차들이 이동한다.")
     void movingCarsTest_thenIsEqualTo(int carCount) {
         Cars cars = new Cars(carCount);
         cars.move(new RandomValueMovingStrategy());
