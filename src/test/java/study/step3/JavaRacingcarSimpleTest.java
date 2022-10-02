@@ -22,4 +22,24 @@ class JavaRacingcarSimpleTest {
 		boolean result = javaRacingcarSimple.isGoForward(3);
 		assertThat(result).isFalse();
 	}
+
+	@DisplayName("initRacingCar 메서드 실행하면 position 값은 0으로 초기화한다.")
+	@Test
+	void Given_initRacingCar_Then_InitPosition() {
+		Racingcar racingcar = javaRacingcarSimple.initRacingCar();
+
+		assertThat(racingcar.getPosition()).isEqualTo(0);
+	}
+
+	@DisplayName("Racingcar 의 move 메서드를 실행하면 position 값이 1 증가한다.")
+	@Test
+	void Given_MoveRacingCar_Then_InitPosition() {
+		Racingcar racingcar = new Racingcar();
+		racingcar.initPosition();
+		int beforePosition = racingcar.getPosition();
+
+		racingcar.move();
+		int afterPostion = racingcar.getPosition();
+		assertThat(beforePosition + 1).isEqualTo(afterPostion);
+	}
 }
