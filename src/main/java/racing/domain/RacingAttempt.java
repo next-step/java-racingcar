@@ -32,7 +32,7 @@ public class RacingAttempt {
         return this.attempt > 0;
     }
 
-    public void remain() {
+    public void attempt() {
 
         this.attempt--;
     }
