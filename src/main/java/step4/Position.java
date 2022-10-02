@@ -18,7 +18,7 @@ public class Position {
     }
 
     public void move(String name) {
-        positions.put(name, positions.get(name) + 1);
+        positions.put(name, positions.get(name) + MOVE);
     }
 
     public Map<String, Integer> getPositions() {
