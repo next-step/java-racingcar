@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class View {
@@ -15,9 +16,16 @@ public class View {
         return scanner.nextInt();
     }
 
-    public void printResult(Cars cars) {
+    public void printResult(List<Cars> trials) {
         System.out.println();
         System.out.println("실행 결과");
+        for (Cars cars : trials) {
+            printTrial(cars);
+            System.out.println();
+        }
+    }
+
+    private void printTrial(Cars cars) {
         for (Car car : cars.getCarList()) {
             printLocation(car);
             System.out.println();

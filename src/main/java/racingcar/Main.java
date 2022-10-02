@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
         View view = new View();
@@ -8,8 +10,8 @@ public class Main {
         TrialCount trialCount = new TrialCount(view.inputTrialCount());
 
         Cars cars = new Cars(carCount.create());
-        trialCount.start(cars);
+        List<Cars> trials = trialCount.start(cars);
 
-        view.printResult(cars);
+        view.printResult(trials);
     }
 }

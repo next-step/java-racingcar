@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
@@ -10,10 +11,12 @@ public class Cars {
         this.carList = carList;
     }
 
-    public void nextTrial() {
+    public Cars nextTrial() {
+        List<Car> nextCars = new ArrayList<>();
         for (Car car : carList) {
-            car.nextTurn(generator);
+            nextCars.add(car.nextTurn(generator));
         }
+        return new Cars(nextCars);
     }
 
     public List<Car> getCarList() {

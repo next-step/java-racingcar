@@ -1,5 +1,8 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TrialCount {
     public static final int MIN_COUNT = 1;
 
@@ -16,9 +19,13 @@ public class TrialCount {
         }
     }
 
-    public void start(Cars cars) {
+    public List<Cars> start(Cars initializedCars) {
+        Cars cars = initializedCars;
+        List<Cars> trials = new ArrayList<>();
         for (int i = 0; i < count; i++) {
-            cars.nextTrial();
+            cars = cars.nextTrial();
+            trials.add(cars);
         }
+        return trials;
     }
 }
