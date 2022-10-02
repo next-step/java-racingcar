@@ -19,7 +19,7 @@ public class ResultView {
     public static void print(Cars cars) {
         List<Car> values = cars.getValues();
         for (Car value : values) {
-            ResultView.printPositionMark(value.getPosition());
+            printPositionMark(value.getPosition());
         }
         System.out.println();
     }

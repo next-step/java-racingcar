@@ -7,11 +7,8 @@ import racingcar.view.ResultView;
 
 public class RacingCarGame {
 
-    private int carCount;
-    private int tryCount;
-
-    private RacingCarGame() {
-    }
+    private final int carCount;
+    private final int tryCount;
 
     public RacingCarGame(int carCount, int tryCount) {
         this.carCount = validationPositiveNumber(carCount);
@@ -27,7 +24,7 @@ public class RacingCarGame {
     }
 
     private int validationPositiveNumber(int value) {
-        if(value < 0) {
+        if (value < 0) {
             throw new NegativeNumberException();
         }
         return value;
