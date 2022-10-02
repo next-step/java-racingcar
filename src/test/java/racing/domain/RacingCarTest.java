@@ -26,14 +26,4 @@ class RacingCarTest {
 
         assertThat(racingCar.getPosition()).isEqualTo(1);
     }
-
-    @DisplayName("중간 결과 포맷을 확인한다.")
-    @Test
-    void car_move_format() {
-
-        final RacingCar racingCar = new RacingCar(new CarName("codeleesh"));
-        racingCar.move();
-
-        assertThat(racingCar.extracted()).isEqualTo("codeleesh : -");
-    }
 }
