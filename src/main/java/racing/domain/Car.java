@@ -2,6 +2,7 @@ package racing.domain;
 
 import racing.domain.model.CarName;
 import racing.domain.model.Position;
+import racing.domain.strategy.MovingStrategy;
 
 public class Car
 {
@@ -9,26 +10,16 @@ public class Car
     private Position position;
     private final MovingStrategy movingStrategy;
 
-    private Car(CarName carName, MovingStrategy movingStrategy)
+    public Car(CarName carName, MovingStrategy movingStrategy)
     {
         this.carName = carName;
-        this.position = Position.newPosition(0);
+        this.position = Position.of(0);
         this.movingStrategy = movingStrategy;
     }
 
-    private Car(MovingStrategy movingStrategy)
+    public Car(MovingStrategy movingStrategy)
     {
         this.movingStrategy = movingStrategy;
-    }
-
-    public static Car newCar(CarName carName, MovingStrategy movingStrategy)
-    {
-        return new Car(carName, movingStrategy);
-    }
-
-    public static Car newCar(MovingStrategy movingStrategy)
-    {
-        return new Car(movingStrategy);
     }
 
     public void moveForward()
@@ -47,5 +38,10 @@ public class Car
     public String getCarName()
     {
         return carName.getCarName();
+    }
+
+    public boolean isWinner(int winnerPosition)
+    {
+        return position.getPosition() == winnerPosition;
     }
 }

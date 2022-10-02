@@ -13,7 +13,7 @@ public class CarName
         this.carName = carName;
     }
 
-    public static CarName of(String carName)
+    public static CarName from(String carName)
     {
         return new CarName(carName);
     }
