@@ -1,5 +1,9 @@
 package racingcar;
 
+import racingcar.domain.CarCount;
+import racingcar.domain.Cars;
+import racingcar.domain.TrialCount;
+
 import java.util.List;
 
 public class Main {
