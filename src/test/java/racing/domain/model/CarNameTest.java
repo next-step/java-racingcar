@@ -13,7 +13,7 @@ class CarNameTest {
     {
         //then
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> CarName.of("abcdefgh"));
+                .isThrownBy(() -> CarName.from("abcdefgh"));
     }
 
     @Test
@@ -21,7 +21,7 @@ class CarNameTest {
     {
         //then
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> CarName.of(""));
+                .isThrownBy(() -> CarName.from(""));
     }
 
     @Test
@@ -29,6 +29,6 @@ class CarNameTest {
     {
         //then
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> CarName.of(null));
+                .isThrownBy(() -> CarName.from(null));
     }
 }

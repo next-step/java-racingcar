@@ -14,7 +14,7 @@ class PositionTest {
     void increase_호출시_값이_증가_하는지_테스트(int before, int after)
     {
         //given
-        Position position = Position.newPosition(before);
+        Position position = Position.of(before);
         //when
         position.increase();
         //then

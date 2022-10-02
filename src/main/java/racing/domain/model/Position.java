@@ -1,5 +1,6 @@
 package racing.domain.model;
 
+
 public class Position
 {
     private int position;
@@ -9,7 +10,7 @@ public class Position
         this.position = position;
     }
 
-    public static Position newPosition(int position)
+    public static Position of(int position)
     {
         return new Position(position);
     }

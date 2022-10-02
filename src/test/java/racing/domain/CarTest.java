@@ -1,8 +1,7 @@
-package racing;
+package racing.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.domain.Car;
 import racing.domain.model.CarName;
 
 import java.util.stream.IntStream;
@@ -17,7 +16,7 @@ class CarTest
     void moveTest()
     {
         //given
-        Car car = Car.newCar(() -> true);
+        Car car = new Car(() -> true);
         int tryNumber = 5;
         //when
         IntStream.range(0, tryNumber).forEach(value -> car.moveForward());
@@ -30,7 +29,7 @@ class CarTest
     void stopTest()
     {
         //given
-        Car car = Car.newCar(() -> false);
+        Car car = new Car(() -> false);
         int tryNumber = 5;
         //when
         IntStream.range(0, tryNumber).forEach(value -> car.moveForward());
@@ -44,6 +43,6 @@ class CarTest
     {
         //then
         assertThatExceptionOfType(IllegalArgumentException.class)
-            .isThrownBy(() -> Car.newCar(CarName.of("abcdefgh"), ()-> true));
+            .isThrownBy(() -> new Car(CarName.from("abcdefgh"), ()-> true));
     }
 }
