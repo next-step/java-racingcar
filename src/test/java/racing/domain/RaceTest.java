@@ -10,7 +10,7 @@ class RaceTest {
 
     @Test
     void 자동차_경주_결과_테스트() {
-        Race race = new Race(3, 5, new NoRule());
+        Race race = new Race(3, 5, new AlwaysMovingRule());
         race.play();
         ScoreBoard scoreBoard = race.result();
         assertThat(scoreBoard).isEqualTo(

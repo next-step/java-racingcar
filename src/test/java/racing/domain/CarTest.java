@@ -15,8 +15,8 @@ class CarTest {
 
     @Test
     void 자동차가_무조건_이동() {
-        Car car = new Car(new NoRule());
+        Car car = new Car(new AlwaysMovingRule());
         car.move();
-        assertThat(car.compare(car, new Car(new NoRule()))).isEqualTo(1);
+        assertThat(car.compare(car, new Car(new AlwaysMovingRule()))).isEqualTo(1);
     }
 }
