@@ -3,10 +3,6 @@ package RacingCar;
 import java.util.*;
 
 public class Racing {
-    private static final Random random = new Random();
-    private static final int RANDOM_NUMBER_RANGE = 10;
-
-    private int carCount;
     private int round;
     private List<Car> carList;
 
@@ -22,14 +18,13 @@ public class Racing {
         }
     }
 
-    public void round() {
-        for (Car car : carList) {
-            car.move(random());
-        }
-    }
+    public void round(List<Integer> randomList) {
+        for (int i = 0; i < carList.size(); i++) {
+            Car car = carList.get(i);
+            int randomNumber = randomList.get(i);
 
-    private int random() {
-        return random.nextInt(RANDOM_NUMBER_RANGE);
+            car.move(randomNumber);
+        }
     }
 
     public List<Car> getCarList() {
