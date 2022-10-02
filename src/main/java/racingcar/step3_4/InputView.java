@@ -14,7 +14,9 @@ public class InputView {
     }
 
     public GameAttribute getGameAttribute() {
-        return new GameAttribute(getRacingCarNames(), getTryCount());
+        Names racingCarNames = getRacingCarNames();
+        int tryCount = getTryCount();
+        return new GameAttribute(racingCarNames, tryCount);
     }
 
     private Names getRacingCarNames() {
@@ -49,14 +51,12 @@ public class InputView {
     }
 
     private int convertToInt(String value) {
-        int intValue;
         try {
-            intValue = Integer.parseInt(value);
+            int intValue = Integer.parseInt(value);
+            INPUT_VALIDATOR.isZeroOrNegative(intValue);
+            return intValue;
         } catch (NumberFormatException e) {
             throw new NumberFormatException("숫자를 입력해주세요.");
         }
-        INPUT_VALIDATOR.isZeroOrNegative(intValue);
-
-        return intValue;
     }
 }
