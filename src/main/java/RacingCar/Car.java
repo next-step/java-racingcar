@@ -1,10 +1,12 @@
 package RacingCar;
 
 public class Car {
+    private String name;
     private int position;
     private int STANDARD_TO_MOVE_NUMBER = 4;
 
-    public Car() {
+    public Car(String name) {
+        this.name = name;
         this.position = 1;
     }
 
@@ -16,5 +18,9 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    public String getName(){
+        return name;
     }
 }

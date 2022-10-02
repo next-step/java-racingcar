@@ -6,15 +6,18 @@ public class Racing {
     private int round;
     private List<Car> carList;
 
-    public Racing(int carCount, int round) {
-        initCarList(carCount);
+    public Racing(String carInput, int round) {
+        initCarList(carInput);
         this.round = round;
     }
 
-    private void initCarList(int carCount) {
+    private void initCarList(String carInput) {
         carList = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            carList.add(new Car());
+
+        String[] carArray = carInput.split(",");
+
+        for (String carName : carArray) {
+            carList.add(new Car(carName));
         }
     }
 

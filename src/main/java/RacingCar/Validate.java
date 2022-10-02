@@ -17,4 +17,12 @@ public class Validate {
             throw new InputMismatchException();
         }
     }
+
+    public static boolean emptyCheck(String carList){
+        if(carList == null || carList.isEmpty() || carList.isBlank()){
+            return false;
+        }
+
+        return true;
+    }
 }

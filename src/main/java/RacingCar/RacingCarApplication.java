@@ -6,17 +6,23 @@ public class RacingCarApplication {
     public static void main(String[] args) {
         InputView inputView = new InputView();
 
-        int carCount = inputView.carCount();
+        String carList = inputView.carNameList();
         int round = inputView.round();
 
-        Racing racing = new Racing(carCount, round);
+        if(Validate.emptyCheck(carList)){
+            return;
+        }
+
+
+
+        Racing racing = new Racing(carList, round);
         ResultView resultView = new ResultView();
         RandomNumber randomNumber = new RandomNumber();
 
         resultView.resultView();
-        for (int i = 0; i < racing.getRound(); i++) {
-            racing.round(randomNumber.randomList(carCount));
-            resultView.roundView(racing.getCarList());
-        }
+//        for (int i = 0; i < racing.getRound(); i++) {
+//            racing.round(randomNumber.randomList(carCount));
+//            resultView.roundView(racing.getCarList());
+//        }
     }
 }
