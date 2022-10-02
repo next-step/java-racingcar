@@ -15,11 +15,11 @@ public class RaceResult {
         this.carLocations = carLocations;
     }
 
-    public void addCarLocation(final int location){
+    public void addCarLocation(final int location) {
         carLocations.add(location);
     }
 
-    public List<Integer> carLocations(){
+    public List<Integer> carLocations() {
         return carLocations;
     }
 

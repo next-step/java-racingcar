@@ -15,11 +15,11 @@ public class ScoreBoard {
         this.raceResults = raceResults;
     }
 
-    public void addResult(final RaceResult raceResult){
+    public void addResult(final RaceResult raceResult) {
         raceResults.add(raceResult);
     }
 
-    public List<RaceResult> raceResults(){
+    public List<RaceResult> raceResults() {
         return raceResults;
     }
 
