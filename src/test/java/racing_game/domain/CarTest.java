@@ -1,7 +1,6 @@
 package racing_game.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
 
@@ -17,21 +16,7 @@ class CarTest {
   void move() {
     Car car = Car.create();
     car.move();
-    int distance = car.getDistance(1);
+    int distance = car.getDistance().toInt();
     assertThat(distance).isGreaterThanOrEqualTo(0);
-
-    assertThatThrownBy(() -> car.getDistance(2)).isInstanceOf(RuntimeException.class);
-  }
-
-  @Test
-  void getCurrentDistance() {
-    Car car = Car.create();
-    car.move();
-    car.move();
-    car.move();
-    car.move();
-    int distance1 = car.getDistance(4);
-    int distance2 = car.getCurrentDistance();
-    assertThat(distance1).isEqualTo(distance2);
   }
 }

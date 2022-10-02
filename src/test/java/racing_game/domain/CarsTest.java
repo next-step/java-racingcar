@@ -1,7 +1,6 @@
 package racing_game.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
 import racing_game.core.Positive;
@@ -20,8 +19,6 @@ class CarsTest {
     Cars cars = Cars.create(Positive.of(3));
     cars.moveAll();
 
-    cars.forEach(car -> assertThat(car.getDistance(1)).isGreaterThanOrEqualTo(0));
-    cars.forEach(
-        car -> assertThatThrownBy(() -> car.getDistance(2)).isInstanceOf(RuntimeException.class));
+    assertThat(cars.getDistances()).extracting("holder").containsAnyOf(0, 1);
   }
 }

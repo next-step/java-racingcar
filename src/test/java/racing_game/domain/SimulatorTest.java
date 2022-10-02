@@ -1,9 +1,12 @@
 package racing_game.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.InstanceOfAssertFactories.LIST;
 
+import org.assertj.core.api.InstanceOfAssertFactories;
 import org.junit.jupiter.api.Test;
 import racing_game.core.Positive;
+import racing_game.core.SnapShot;
 
 class SimulatorTest {
 
@@ -22,7 +25,7 @@ class SimulatorTest {
     Positive carCount = Positive.of(3);
     Positive tryCount = Positive.of(4);
     Simulator simulator = Simulator.create(SimulationConfig.create(carCount, tryCount));
-    simulator.simulate();
-    simulator.getCars().forEach(car -> assertThat(car.getDistance(4)).isGreaterThanOrEqualTo(0));
+    SnapShot<Distances> result = simulator.simulate();
+    assertThat(result).hasSize(4);
   }
 }
