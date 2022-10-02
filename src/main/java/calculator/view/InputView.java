@@ -1,4 +1,4 @@
-package view;
+package calculator.view;
 
 import java.util.Objects;
 import java.util.Scanner;
@@ -11,12 +11,12 @@ public class InputView {
         return new String[]{inputString(), inputOperator()};
     }
 
-    public static String inputString() {
+    private static String inputString() {
         System.out.println("계산하고 싶은 문자열을 입력해 주세요.");
         return scanner.next();
     }
 
-    public static String inputOperator() {
+    private static String inputOperator() {
         System.out.println("계산하려는 연산 방법을 부호로 입력해 주세요.");
         String operator = scanner.next();
 

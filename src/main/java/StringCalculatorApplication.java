@@ -1,6 +1,6 @@
 import static calculator.StringCalculator.splitAndCalculate;
-import static view.InputView.input;
-import static view.OutputView.print;
+import static calculator.view.InputView.input;
+import static calculator.view.OutputView.print;
 
 public class StringCalculatorApplication {
 

@@ -1,4 +1,4 @@
-package number;
+package calculator.number;
 
 import static java.lang.Integer.parseInt;
 
