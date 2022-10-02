@@ -11,7 +11,7 @@ class SimulatorTest {
   void create() {
     Positive carCount = Positive.of(3);
     Positive tryCount = Positive.of(4);
-    Simulator simulator = Simulator.create(Config.create(carCount, tryCount));
+    Simulator simulator = Simulator.create(SimulationConfig.create(carCount, tryCount));
     assertThat(simulator).isNotNull();
     assertThat(simulator.getCars().size()).isEqualTo(3);
     assertThat(simulator.getTryCount()).isEqualTo(4);
@@ -21,7 +21,7 @@ class SimulatorTest {
   void simulate() {
     Positive carCount = Positive.of(3);
     Positive tryCount = Positive.of(4);
-    Simulator simulator = Simulator.create(Config.create(carCount, tryCount));
+    Simulator simulator = Simulator.create(SimulationConfig.create(carCount, tryCount));
     simulator.simulate();
     simulator.getCars().forEach(car -> assertThat(car.getDistance(4)).isGreaterThanOrEqualTo(0));
   }

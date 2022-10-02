@@ -12,8 +12,8 @@ public class Simulator {
     this.tryCount = tryCount;
   }
 
-  public static Simulator create(Config config) {
-    return new Simulator(config.getCarCount(), config.getTryCount());
+  public static Simulator create(SimulationConfig simulationConfig) {
+    return new Simulator(simulationConfig.getCarCount(), simulationConfig.getTryCount());
   }
 
   public Simulator simulate() {

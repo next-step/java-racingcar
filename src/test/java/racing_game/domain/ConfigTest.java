@@ -9,9 +9,9 @@ class ConfigTest {
 
   @Test
   void create() {
-    Config config = Config.create(Positive.of(3), Positive.of(4));
-    assertThat(config).isNotNull();
-    assertThat(config.getCarCount()).isEqualTo(3);
-    assertThat(config.getTryCount()).isEqualTo(4);
+    SimulationConfig simulationConfig = SimulationConfig.create(Positive.of(3), Positive.of(4));
+    assertThat(simulationConfig).isNotNull();
+    assertThat(simulationConfig.getCarCount()).isEqualTo(3);
+    assertThat(simulationConfig.getTryCount()).isEqualTo(4);
   }
 }

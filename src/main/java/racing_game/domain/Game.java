@@ -6,8 +6,8 @@ public class Game {
 
   public void run() {
     try {
-      Config config = InputConfigManager.create().getConfig();
-      Simulator simulationResult = Simulator.create(config).simulate();
+      SimulationConfig simulationConfig = InputConfigManager.create().getConfig();
+      Simulator simulationResult = Simulator.create(simulationConfig).simulate();
       CarResultView.create().printResult(simulationResult);
     } catch (Exception e) {
       System.out.println("the game error occurred");
