@@ -1,6 +1,7 @@
 package RacingCar;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Racing {
     private int round;
@@ -34,6 +35,12 @@ public class Racing {
 
             car.move(randomNumber);
         }
+    }
+
+    public List<Car> winner(){
+        int max = carList.stream().max(Comparator.comparing(Car::getPosition)).get().getPosition();
+
+        return carList.stream().filter(x -> x.getPosition() == max).collect(Collectors.toList());
     }
 
     public List<Car> getCarList() {

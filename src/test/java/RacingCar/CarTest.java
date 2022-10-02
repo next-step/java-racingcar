@@ -30,13 +30,6 @@ public class CarTest {
         assertThat(check).isEqualTo(result);
     }
 
-    @Test
-    @DisplayName("자동차 대수 테스트")
-    void initRacingTest() {
-        Racing racing = new Racing("pj,jw,tom", 5);
-        assertThat(racing.getCarList().size()).isEqualTo(3);
-    }
-
     @ParameterizedTest
     @DisplayName("자동차 이동 테스트")
     @CsvSource(value = {"3:1", "4:2"}, delimiter = ':')

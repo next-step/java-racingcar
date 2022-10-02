@@ -14,7 +14,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class RacingTest {
-
     @Test
     @DisplayName("자동차 리스트 초기화 테스트")
     void nameValidateTest() {
@@ -25,5 +24,26 @@ public class RacingTest {
         for (int i = 0; i < list.size(); i++) {
             assertThat(list.get(i).getName()).isEqualTo(result[i]);
         }
+    }
+
+    @Test
+    @DisplayName("자동차 대수 테스트")
+    void initRacingTest() {
+        Racing racing = new Racing("jason,tom,jane", 5);
+        assertThat(racing.getCarList().size()).isEqualTo(3);
+    }
+
+    @Test
+    void winnerTest() {
+        Racing racing = new Racing("jason,tom,jane", 5);
+        List<Integer> randomNumber = new ArrayList<>();
+        randomNumber.add(1);
+        randomNumber.add(4);
+        randomNumber.add(1);
+        racing.round(randomNumber);
+
+        List<Car> result = racing.winner();
+
+        assertThat(result.get(0).getName()).isEqualTo("tom");
     }
 }
