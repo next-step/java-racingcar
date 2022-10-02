@@ -1,5 +1,7 @@
 package racing.view;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class GameInput {
@@ -9,9 +11,9 @@ public class GameInput {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static String[] getCarArrayBySplit() {
+    public static List<String> getCarArrayBySplit() {
         System.out.println(ASK_CAR_COUNT);
-        return scanner.nextLine().split(",");
+        return Arrays.asList(scanner.nextLine().split(","));
     }
 
     public static int roundCount() {

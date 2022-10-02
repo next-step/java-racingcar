@@ -2,6 +2,7 @@ package racing.view;
 
 import racing.model.Car;
 import racing.model.Cars;
+import racing.util.StringUtil;
 
 import java.util.List;
 
@@ -14,16 +15,15 @@ public class GameOutput {
     private static final String GO_STRAIGHT_TEXT = "-";
     private static final String COLON = " : ";
 
-    public static void printCurrentLocationAndCarName(Car car) {
-        System.out.println(car.getName() + COLON + GO_STRAIGHT_TEXT.repeat(car.getCurrentLocation()));
-    }
-
-    public static void printDivideRound() {
+    public static void printRoundResultCurrentLocationAndCarName(List<Car> carList) {
+        for (Car car : carList) {
+            System.out.println(car.getName() + COLON + GO_STRAIGHT_TEXT.repeat(car.getCurrentLocation()));
+        }
         System.out.println(ROUND_CLOSE);
     }
 
     public static void printCarCount(Cars cars) {
-        System.out.println(cars.getNameInCarList());
+        System.out.println(StringUtil.getNameInCarList(cars.getCarList()));
     }
 
     public static void printRoundCount(int roundCount) {
@@ -35,7 +35,7 @@ public class GameOutput {
     }
 
     public static void printNoticeWinner(Cars cars) {
-        String winner = cars.getNameInCarList();
+        String winner = StringUtil.getNameInCarList(cars.getCarList());
         System.out.println(winner + NOTICE_WINNER);
     }
 

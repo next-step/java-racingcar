@@ -6,17 +6,19 @@ import java.util.Random;
 
 public class Car implements Comparable<Car> {
 
-    private int currentLocation;
+//    private int currentLocation;
+
+    private CurrentLocation currentLocation;
 
     private Name name;
 
     public Car(int startLocation, String name) {
-        this(new Name(name));
-        this.currentLocation = startLocation;
+        this(new Name(name),new CurrentLocation(startLocation));
     }
 
-    public Car(Name name) {
+    public Car(Name name,CurrentLocation startLocation) {
         this.name = name;
+        this.currentLocation = startLocation;
     }
 
     public String getName() {
@@ -24,17 +26,20 @@ public class Car implements Comparable<Car> {
     }
 
     public int getCurrentLocation() {
-        return this.currentLocation;
+        return currentLocation.getCurrentLocation();
     }
 
     public void goStraight(GoStraightStrategy goStraightStrategy) {
         if (goStraightStrategy.isGoStraight()) {
-            this.currentLocation++;
+            this.currentLocation.geStraight();
         }
+    }
+    public boolean isSameCurrentLocation(Car comparisonCar){
+        return currentLocation.isSameCurrentLocation(comparisonCar.currentLocation);
     }
 
     @Override
     public int compareTo(Car o) {
-        return Integer.compare(o.currentLocation, this.currentLocation);
+        return currentLocation.compareCurrentLocation(o.currentLocation);
     }
 }

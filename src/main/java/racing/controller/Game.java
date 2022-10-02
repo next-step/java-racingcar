@@ -11,8 +11,8 @@ import java.util.List;
 public class Game {
 
     public void play() {
-        final String[] carArray = GameInput.getCarArrayBySplit();
-        final Cars cars = this.carSetting(carArray);
+        final List<String> carNameList = GameInput.getCarArrayBySplit();
+        final Cars cars = this.carSetting(carNameList);
         GameOutput.printCarCount(cars);
 
         final int roundCount = GameInput.roundCount();
@@ -22,11 +22,9 @@ public class Game {
         GameOutput.printNoticeWinner(winner);
     }
 
-    public Cars carSetting(String[] carArray) {
+    public Cars carSetting(List<String> carNameList) {
         List<Car> Cars = new ArrayList<>();
-        final int carCount = carArray.length;
-        for (int i = 0; i < carCount; i++) {
-            String carName = carArray[i];
+        for (String carName : carNameList) {
             Car car = new Car(0, carName);
             Cars.add(car);
         }
@@ -38,12 +36,11 @@ public class Game {
         GameOutput.printStartRace();
         for (int i = 0; i < roundCount; i++) {
             cars.playRound();
-            GameOutput.printDivideRound();
+            GameOutput.printRoundResultCurrentLocationAndCarName(cars.getCarList());
         }
     }
 
     public Cars summaryRaceResult(Cars cars) {
-        final int winnerLocation = cars.getWinnerLocation();
-        return cars.getWinner(winnerLocation);
+        return cars.getWinner();
     }
 }

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import racing.controller.Game;
 import racing.model.Car;
 import racing.model.Cars;
+import racing.util.StringUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,23 +38,35 @@ class GameTest {
     @DisplayName("레이스 우승자 찾기 Test 우승자는 단 한명")
     void getWinner() {
         Game game = new Game();
-        Car car = cars.getCar(0);
-        car.goStraight(() -> true);
+        this.goStraightCarByName(NORMAL_NAME1);
+
         Cars winner = game.summaryRaceResult(cars);
-        assertThat(winner.getNameInCarList()).isEqualTo(NORMAL_NAME1);
+        assertThat(StringUtil.getNameInCarList(winner.getCarList())).isEqualTo(NORMAL_NAME1);
     }
 
     @Test
     @DisplayName("레이스 우승자 찾기 Test 우승자는 여러명")
     void getWinners() {
         Game game = new Game();
-        for (int i = 0; i < 3; i++) {
-            cars.getCar(i).goStraight(() -> true);
+        for (Car car : cars.getCarList()) {
+            car.goStraight(() -> true);
         }
         Cars winner = game.summaryRaceResult(cars);
-        assertThat(winner.getNameInCarList()).contains(
+        assertThat(StringUtil.getNameInCarList(winner.getCarList())).contains(
                 NORMAL_NAME1 + COMMA + NORMAL_NAME2 + COMMA + NORMAL_NAME3
         );
+    }
+
+    private void goStraightCarByName(String name) {
+        for (Car car : cars.getCarList()) {
+            if (isSameCarByName(name, car)) {
+                car.goStraight(() -> true);
+            }
+        }
+    }
+
+    private boolean isSameCarByName(String name, Car car) {
+        return name.equals(car.getName());
     }
 
 
