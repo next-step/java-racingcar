@@ -1,23 +1,22 @@
-package step3.domain;
+package service;
 
+import java.util.List;
 import java.util.Random;
 
-public class Car {
+import domain.Car;
+
+public class CarRace {
 
     private static final int MIN_LIMIT_NUMBER = 4;
     private static final int MAX_LIMIT_BOUND_NUMBER = 10;
 
-    private int currentStatus;
+    public List<Car> updateCurrentLocation(List<Car> racingCars) {
 
-    public Car() {
-    }
-
-    public Car carAction() {
-        int randomNum = generateRandomNum();
-        if (isMovingForward(randomNum)) {
-            this.currentStatus += 1;
+        for (Car car : racingCars) {
+            int randomNum = generateRandomNum();
+            car.move(isMovingForward(randomNum));
         }
-        return this;
+        return racingCars;
     }
 
     private int generateRandomNum() {
@@ -27,10 +26,6 @@ public class Car {
 
     private boolean isMovingForward(int randomNumber) {
         return randomNumber >= MIN_LIMIT_NUMBER;
-    }
-
-    public int getCurrentStatus() {
-        return currentStatus;
     }
 
 }
