@@ -14,7 +14,7 @@ public class StringAddCalculator {
         if (messageOperator.isNotBlank()) {
             String[] numberArr = messageOperator.split();
 
-            parseNumberOperators(numberArr).forEach(numberOperator::sum);
+            parseNumberOperators(numberArr).forEach(numberOperator::plus);
         }
 
         return numberOperator;
