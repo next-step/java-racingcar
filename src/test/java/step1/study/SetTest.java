@@ -1,4 +1,4 @@
-package study;
+package step1.study;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -28,7 +28,7 @@ public class SetTest {
     @Test
     @DisplayName("요구사항 1 : set size")
     void check_size() {
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
@@ -40,7 +40,7 @@ public class SetTest {
 
     @ParameterizedTest
     @DisplayName("요구사항 3 : ParameterizedTest, CsvSource 를 활용해 true, false 확인")
-    @CsvSource(value = {"1:true", "2:true", "4:false", "5:false"}, delimiter = ':')
+    @CsvSource(value = {"1,true", "2,true", "4,false", "5,false"})
     void parameterized_csv(String input, String expected) {
         // given
         int number = Integer.parseInt(input);
