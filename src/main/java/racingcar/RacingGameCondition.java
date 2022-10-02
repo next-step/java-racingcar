@@ -1,17 +1,20 @@
 package racingcar;
 
+import java.util.Collections;
+import java.util.List;
+
 public class RacingGameCondition {
 
-    private final int racingCarCount;
+    private final List<String> racingCarNames;
     private final int gameTurnCount;
 
-    public RacingGameCondition(int racingCarCount, int gameTurnCount) {
-        this.racingCarCount = racingCarCount;
+    public RacingGameCondition(String racingCarNamesJointComma, int gameTurnCount) {
+        this.racingCarNames = List.of(racingCarNamesJointComma.split(","));
         this.gameTurnCount = gameTurnCount;
     }
 
-    public int getRacingCarCount() {
-        return racingCarCount;
+    public List<String> getRacingCarNames() {
+        return Collections.unmodifiableList(racingCarNames);
     }
 
     public int getGameTurnCount() {
