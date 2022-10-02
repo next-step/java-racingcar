@@ -7,15 +7,14 @@ import java.util.stream.Collectors;
 
 public class RacingScore {
 
-    private static final Map<Integer, List<RacingCar>> racingScores = new HashMap<>();
-    private static int sequence = 0;
-
-    private static final RacingScore instance = new RacingScore();
+    private final Map<Integer, List<RacingCar>> racingScores = new HashMap<>();
+    private int sequence = 0;
 
     private RacingScore() {}
 
-    public static RacingScore getInstance() {
-        return instance;
+    public static RacingScore init() {
+
+        return new RacingScore();
     }
 
     public Map<Integer, List<RacingCar>> score() {
