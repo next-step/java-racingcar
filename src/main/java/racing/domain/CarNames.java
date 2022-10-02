@@ -10,25 +10,25 @@ public class CarNames {
 
     private List<CarName> carNames;
 
-    private CarNames(final String name) {
+    private CarNames(final List<CarName> carNames) {
 
-        validate(name);
-        this.carNames = split(name);
+        this.carNames = carNames;
     }
 
     public static CarNames from(final String name) {
 
-        return new CarNames(name);
+        validate(name);
+        return new CarNames(split(name));
     }
 
-    private void validate(final String name) {
+    private static void validate(final String name) {
 
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("자동차 이름은 필수값입니다.");
         }
     }
 
-    private List<CarName> split(final String name) {
+    private static List<CarName> split(final String name) {
 
         return Arrays.stream(name.split(REGEX_COMMA))
                 .map(CarName::new)
@@ -38,10 +38,5 @@ public class CarNames {
     public List<CarName> list() {
 
         return this.carNames;
-    }
-
-    public boolean exist() {
-
-        return !this.carNames.isEmpty();
     }
 }
