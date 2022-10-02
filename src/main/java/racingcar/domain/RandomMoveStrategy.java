@@ -1,12 +1,14 @@
 package racingcar.domain;
 
+import racingcar.utils.RandomUtils;
+
 public class RandomMoveStrategy implements MoveStrategy {
 
     private static final int MOVING_CONDITION_MIN_VALUE = 4;
     private int randomNumber;
 
-    public RandomMoveStrategy(int value) {
-        this.randomNumber = value;
+    public RandomMoveStrategy() {
+        this.randomNumber = RandomUtils.generate();
     }
 
     @Override

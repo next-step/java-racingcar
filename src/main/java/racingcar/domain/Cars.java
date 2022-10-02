@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import racingcar.utils.RandomUtils;
-
 import java.util.List;
 
 public class Cars {
@@ -15,13 +13,9 @@ public class Cars {
     public GameRecord play() {
         GameRecord gameRecord = new GameRecord();
         for (Car car : values) {
-            car.move(randomMoveStrategy());
+            car.move(new RandomMoveStrategy());
             gameRecord.add(car.getPosition());
         }
         return gameRecord;
-    }
-
-    private MoveStrategy randomMoveStrategy() {
-        return new RandomMoveStrategy(RandomUtils.generate());
     }
 }
