@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 public class StringAddCalculator {
 
     public static final String SEPARATOR = ",|:";
+    public static final Pattern CUSTOM_REGEX_PATTERN = Pattern.compile("//(.)\n(.*)");
 
     public static int splitAndSum(String text) {
         if (isBlank(text)){
@@ -15,21 +16,11 @@ public class StringAddCalculator {
     }
 
     private static String[] split(String text) {
-        String[] tokens = customSplit(text);
-        if (tokens != null) {
-            return tokens;
+        Matcher m = CUSTOM_REGEX_PATTERN.matcher(text);
+        if (m.find()) {
+            return m.group(2).split(m.group(1));
         }
         return text.split(SEPARATOR);
-    }
-
-    private static String[] customSplit(String text) {
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            String[] tokens= m.group(2).split(customDelimiter);
-            return tokens;
-        }
-        return null;
     }
 
     private static boolean isBlank(String text) {

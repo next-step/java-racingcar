@@ -1,4 +1,4 @@
-package carracing;
+package carracing.view;
 
 import java.util.Scanner;
 
@@ -7,20 +7,29 @@ public class InputView {
     public static final String QUESTION_CAR_COUNTS = "자동차 대수는 몇대인가요?";
     Scanner scanner = new Scanner(System.in);
 
-    public void printQuestionCarCount() {
+    public int scanTimes() {
+        printQuestionCarCount();
+        return tryTimes();
+    }
+
+    public int scanCounts() {
+        printQuestionTryTimes();
+        return carCounts();
+    }
+
+    private void printQuestionCarCount() {
         System.out.println(QUESTION_CAR_COUNTS);
     }
 
-    public void printQuestionTryTimes() {
+    private void printQuestionTryTimes() {
         System.out.println(QUESTION_TRY_TIMES);
     }
 
-    public int carCounts() {
+    private int carCounts() {
         return scanner.nextInt();
     }
 
-    public int tryTimes() {
+    private int tryTimes() {
         return scanner.nextInt();
     }
-
 }

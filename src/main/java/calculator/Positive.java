@@ -5,15 +5,15 @@ import java.util.Objects;
 public class Positive {
     private final int number;
 
-    public Positive(String value) {
-        this(Integer.parseInt(value));
-    }
-
     public Positive(int number){
         if(number < 0){
             throw new RuntimeException("음수 값이 올 수 없습니다.");
         }
         this.number = number;
+    }
+
+    public Positive(String value) {
+        this(Integer.parseInt(value));
     }
 
     public Positive plus(int number) {
