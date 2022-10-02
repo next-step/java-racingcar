@@ -6,7 +6,7 @@ import racingcarGame.model.Car;
 import java.util.ArrayList;
 import java.util.List;
 
-import static racingcarGame.client.InputView.scanCarCount;
+import static racingcarGame.client.InputView.scanCars;
 import static racingcarGame.client.InputView.scanPlayCount;
 import static racingcarGame.client.ResultView.showResult;
 
@@ -35,7 +35,7 @@ public class RacingGame {
     }
 
     private static void play(List<Car> cars) {
-       cars.forEach(car -> {
+        cars.forEach(car -> {
             int chosenNumber = car.pickRandomlyNumber();
             car.move(chosenNumber);
         });
@@ -44,9 +44,10 @@ public class RacingGame {
     private static List<Car> readyCars() {
         List<Car> cars = new ArrayList<>();
 
-        int carCount = scanCarCount();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car(0));
+        String[] carNames = scanCars();
+
+        for (int i = 0; i < carNames.length; i++) {
+            cars.add(new Car(0, carNames[i]));
         }
 
         return cars;
