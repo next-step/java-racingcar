@@ -6,5 +6,6 @@ public class Main {
         InputRacingCar inputRacingCar = new InputRacingCar();
 
         Car car = inputRacingCar.input();
+
     }
 }
