@@ -2,8 +2,7 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -17,19 +16,17 @@ class CarTest {
         car = new Car();
     }
 
-    @ParameterizedTest
-    @DisplayName("랜덤숫자가 4이상 move")
-    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
-    void car_move_test(int input) {
-        car.move(new RandomMoveStrategy(input));
+    @Test
+    @DisplayName("자동차 전진")
+    void car_move_test() {
+        car.move(() -> true);
         assertThat(car.getPosition()).isEqualTo(INITIAL_POSITION + 1);
     }
 
-    @ParameterizedTest
-    @DisplayName("랜덤숫자가 4이하 스탑")
-    @ValueSource(ints = {1, 2, 3})
-    void car_not_move_test(int input) {
-        car.move(new RandomMoveStrategy(input));
+    @Test
+    @DisplayName("자동차 멈춤")
+    void car_not_move_test() {
+        car.move(() -> false);
         assertThat(car.getPosition()).isEqualTo(INITIAL_POSITION);
     }
 }
