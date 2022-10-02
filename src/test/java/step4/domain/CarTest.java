@@ -20,7 +20,7 @@ public class CarTest {
     void isMovableSuccess() {
         boolean isMovable = true;
         mockCar.move(isMovable);
-        assertThat(mockCar.getSteps()).isEqualTo(1);
+        assertThat(mockCar.getCarProperty().getStep()).isEqualTo(1);
     }
 
     @Test
@@ -28,7 +28,7 @@ public class CarTest {
     void isMovableFail() {
         boolean isMovable = false;
         mockCar.move(isMovable);
-        assertThat(mockCar.getSteps()).isEqualTo(0);
+        assertThat(mockCar.getCarProperty().getStep()).isEqualTo(0);
     }
 
 }

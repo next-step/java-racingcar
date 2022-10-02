@@ -13,16 +13,15 @@ public class RaceMain {
         int numOfRounds = inputView.askAndReceiveNumOfRounds();
 
         Race race = new Race();
-        race.setUpRace(ConvertUtil.splitStringToArray(carNames), numOfRounds);
+        race.setUpRace(ConvertUtil.splitStringToArray(carNames));
 
         ResultView resultView = new ResultView();
         resultView.printRaceStart();
 
-        for (int i = 0; i < race.getNumOfRounds(); i++) {
-            race.runOneRound();
-            resultView.printEachRaceResult(race.getCars());
+        for (int i = 0; i < numOfRounds; i++) {
+            resultView.printEachRaceResult(race.runOneRound());
         }
 
-        resultView.printWinners(race.getRaceWinners());
+        resultView.printWinners(race.getCars().getWinningCars());
     }
 }

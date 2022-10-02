@@ -39,28 +39,28 @@ public class ConvertUtilTest {
 
     @Test
     @DisplayName("여러 문자열을 콤마를 더해 하나의 문자열로 생성해 성공")
-    void appendToStringOneValueSuccess() {
+    void joinStringByCommaOneValueSuccess() {
         Set<String> values = new HashSet<>();
         values.add("winner1");
 
         String value = "winner1";
 
         assertThat(
-                ConvertUtil.appendToString(values))
+                ConvertUtil.joinStringByComma(values))
                 .isEqualToIgnoringCase(value);
     }
 
     @Test
     @DisplayName("여러 문자열을 콤마를 더해 하나의 문자열로 생성해 성공")
-    void appendToStringMultipleValuesSuccess() {
+    void joinStringByCommaMultipleValuesSuccess() {
         Set<String> values = new HashSet<>();
         values.add("winner1");
         values.add("winner2");
 
-        String value = "winner1, winner2";
+        String value = "winner1,winner2";
 
         assertThat(
-                ConvertUtil.appendToString(values))
+                ConvertUtil.joinStringByComma(values))
                 .isEqualToIgnoringCase(value);
     }
 }
