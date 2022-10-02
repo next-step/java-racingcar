@@ -7,6 +7,8 @@ import java.util.Objects;
 public class Car {
     private static final int INIT_POSITION = 0;
 
+
+    private String name;
     private int position;
 
     public Car() {
@@ -17,10 +19,24 @@ public class Car {
         this.position = position;
     }
 
+    public Car(String name) {
+        this.name = name;
+        this.position = INIT_POSITION;
+    }
+
+    public Car(String name, int position) {
+        this.name = name;
+        this.position = position;
+    }
+
     public void moves(MovingStrategy movingStrategy) {
         if (movingStrategy.isMovable()) {
             this.position++;
         }
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getPosition() {
