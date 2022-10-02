@@ -2,6 +2,8 @@ package study;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -21,11 +23,12 @@ public class RacingGameTest {
         /* 요부분은 고민하고있습니다 ㅜㅜ..*/
     }
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(ints = {1,2,4,5})
     @DisplayName("4이상의 숫자가 들어오면 전진")
-    void carMove(){
+    void carMove(int number){
         Car car = new Car();
-        car.move(5);
-        assertThat(car.getMoveCount()).isEqualTo(1);
+        car.move(number);
+        assertThat(car.getMoveCount()).isEqualTo(2);
     }
 }
