@@ -32,11 +32,12 @@ public class RacingGame {
     }
 
     public static String findWinner(List<Car> cars) {
-        Collections.sort(cars, (o1, o2) -> o2.getPosition() - o1.getPosition());
+        List<Car> sortedCars = new ArrayList(cars);
+        Collections.sort(sortedCars, (o1, o2) -> o2.getPosition() - o1.getPosition());
 
-        int highScore = cars.get(0).getPosition();
+        int highScore = sortedCars.get(0).getPosition();
 
-        return cars.stream()
+        return sortedCars.stream()
                 .filter(car -> highScore == car.getPosition())
                 .map(Car::getName)
                 .collect(Collectors.joining(", "));
