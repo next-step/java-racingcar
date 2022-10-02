@@ -7,3 +7,8 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+### step3 요구사항
+1) InputView 구현
+2) 숫자를 입력받아 로직 만드는 것 구현
+3) ResultView 구현
