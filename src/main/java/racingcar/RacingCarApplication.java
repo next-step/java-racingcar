@@ -9,6 +9,7 @@ public class RacingCarApplication {
 
     public static final int FORWARD_CONDITION_LOW_BOUND = 2;
     public static final int FORWARD_CONDITION_HIGH_BOUND = 9;
+
     public static final String COMMA_REGEX = ",";
 
     public static void main(String[] args) {

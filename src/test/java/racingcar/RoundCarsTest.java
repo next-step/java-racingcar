@@ -79,7 +79,7 @@ class RoundCarsTest {
 
     @Test
     void deepCopy_서로_다른_인스턴스인지() {
-        RoundCars copyRoundCars = roundCars.deepCopy();
+        RoundCars copyRoundCars = roundCars.getRoundCars();
         List<Car> cars = roundCars.retrieveCars();
         List<Car> copyCar = copyRoundCars.retrieveCars();
 

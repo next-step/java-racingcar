@@ -12,7 +12,7 @@ public class RacingRecord {
     }
 
     public void addCarsPosition(RoundCars roundCars) {
-        records.add(roundCars.deepCopy());
+        records.add(roundCars.getRoundCars());
     }
 
     public List<String> retrieveWinners() {
