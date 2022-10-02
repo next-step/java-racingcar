@@ -1,22 +1,26 @@
 package racingcarGame.model;
 
+import racingcarGame.util.RandomNumber;
+
 import java.util.Objects;
 
 public class Car {
     private static final int RANDOM_BASE_VALUE = 4;
 
     private int position;
-    private String name;
 
-    public Car(int position, String name) {
+    public Car(int position) {
         this.position = position;
-        this.name = name;
     }
 
     public void move(int chosenNumber) {
         if (isMovable(chosenNumber)) {
             this.position += 1;
         }
+    }
+
+    public int pickRandomlyNumber(){
+        return RandomNumber.generate();
     }
 
     boolean isMovable(int num) {
@@ -27,21 +31,16 @@ public class Car {
         return position;
     }
 
-    public String getName() {
-        return name;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return position == car.position &&
-                Objects.equals(name, car.name);
+        return Objects.equals(position, car.position);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(position, name);
+        return Objects.hash(position);
     }
 }
