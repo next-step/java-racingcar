@@ -21,10 +21,9 @@ public class CarTest {
     @CsvSource(value = {"jason:true", "tomboy:false"}, delimiter = ':')
     void nameValidateTest(String input, boolean result) {
         boolean check = true;
-        try{
+        try {
             Validate.carNameCheck(input);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             check = false;
         }
 

@@ -27,7 +27,7 @@ public class InputView {
         return inputNumber;
     }
 
-    public static String scan(){
+    public static String scan() {
         return SCANNER.nextLine();
     }
 }

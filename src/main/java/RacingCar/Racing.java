@@ -16,7 +16,13 @@ public class Racing {
 
         String[] carArray = carInput.split(",");
 
+        init(carArray);
+    }
+
+    private void init(String[] carArray) {
         for (String carName : carArray) {
+            Validate.carNameCheck(carName);
+
             carList.add(new Car(carName));
         }
     }
