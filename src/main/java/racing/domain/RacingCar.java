@@ -35,15 +35,10 @@ public class RacingCar {
         return this.position;
     }
 
-    public String extracted() {
-
-        return this.getName().getCarName() + " : " + convert(this.position);
-    }
-
-    private String convert(final int position) {
+    public String convert() {
 
         final StringBuilder result = new StringBuilder();
-        for (int i = 0; i < position; i++) {
+        for (int i = 0; i < this.position; i++) {
             result.append("-");
         }
         return result.toString();
@@ -51,6 +46,7 @@ public class RacingCar {
 
     @Override
     public boolean equals(Object o) {
+
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RacingCar racingCar = (RacingCar) o;
@@ -59,6 +55,7 @@ public class RacingCar {
 
     @Override
     public int hashCode() {
+
         return Objects.hash(name);
     }
 }
