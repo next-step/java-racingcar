@@ -1,8 +1,7 @@
 package racing.controller;
 
 import racing.model.Car;
-import racing.strategy.GoStraightStrategy;
-import racing.strategy.RandomNumberGoStraightStrategy;
+import racing.model.Cars;
 import racing.view.GameInput;
 import racing.view.GameOutput;
 
@@ -11,47 +10,37 @@ import java.util.List;
 
 public class Game {
 
-    private GoStraightStrategy goStraightStrategy = new RandomNumberGoStraightStrategy();
-    private GameInput input = new GameInput();
-    private GameOutput output = new GameOutput();
-
     public void play() {
-        final int carCount = input.carCount();
-        output.printCarCount(carCount);
+        final List<String> carNameList = GameInput.getCarArrayBySplit();
+        final Cars cars = this.carSetting(carNameList);
+        GameOutput.printCarCount(cars);
 
-        List<Car> cars = this.carSetting(carCount);
-
-        final int roundCount = input.roundCount();
-        output.printRoundCount(roundCount);
+        final int roundCount = GameInput.roundCount();
+        GameOutput.printRoundCount(roundCount);
         this.playRace(roundCount, cars);
+        Cars winner = this.summaryRaceResult(cars);
+        GameOutput.printNoticeWinner(winner);
     }
 
-    private List<Car> carSetting(int carCount) {
+    public Cars carSetting(List<String> carNameList) {
         List<Car> Cars = new ArrayList<>();
-        for (int i = 1; i <= carCount; i++) {
-            Car car = new Car();
+        for (String carName : carNameList) {
+            Car car = new Car(0, carName);
             Cars.add(car);
         }
-        return Cars;
+        Cars cars = new Cars(Cars);
+        return cars;
     }
 
-    private void playRace(int roundCount, List<Car> cars) {
+    public void playRace(int roundCount, Cars cars) {
+        GameOutput.printStartRace();
         for (int i = 0; i < roundCount; i++) {
-            this.playRound(cars);
+            cars.playRound();
+            GameOutput.printRoundResultCurrentLocationAndCarName(cars.getCarList());
         }
     }
 
-    private void playRound(List<Car> cars) {
-        for (Car car : cars) {
-            this.isGoStraightAndTrueAndGoStraight(car);
-            output.printCurrentLocation(car);
-        }
-        output.printDivideRound();
+    public Cars summaryRaceResult(Cars cars) {
+        return cars.getWinner();
     }
-
-    private void isGoStraightAndTrueAndGoStraight(Car car) {
-        car.goStraight(goStraightStrategy);
-    }
-
-
 }
