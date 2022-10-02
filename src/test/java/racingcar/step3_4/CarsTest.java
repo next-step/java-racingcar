@@ -17,7 +17,7 @@ class CarsTest {
 
 	@BeforeEach
 	void setUp() {
-		Names names = Names.of(new String[]{"pobi", "crong", "honux"});
+		Names names = Names.of(List.of("pobi", "crong", "honux"));
 		cars = Cars.createCars(names);
 		firstCar = cars.getCars().get(0);
 		secondCar = cars.getCars().get(1);

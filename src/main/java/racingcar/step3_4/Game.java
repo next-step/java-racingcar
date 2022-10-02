@@ -15,7 +15,8 @@ public class Game {
 	}
 
 	public void play(GameAttribute gameAttribute) {
-		Cars cars = Cars.createCars(gameAttribute.getCarNames());
+		Names names = Names.of(gameAttribute.getCarNames());
+		Cars cars = Cars.createCars(names);
 		for (int i = 0; i < gameAttribute.getTryCount(); i++) {
 			cars.move(randomValueGenerator);
 			resultView.printEachTryResult(cars.getCars());

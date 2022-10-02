@@ -1,5 +1,6 @@
 package racingcar.step3_4;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
@@ -14,21 +15,21 @@ public class InputView {
     }
 
     public GameAttribute getGameAttribute() {
-        Names racingCarNames = getRacingCarNames();
+        List<String> racingCarNames = getRacingCarNames();
         int tryCount = getTryCount();
         return new GameAttribute(racingCarNames, tryCount);
     }
 
-    private Names getRacingCarNames() {
+    private List<String> getRacingCarNames() {
         printCarNamesInputRequestMessage();
         return getInputToNames();
     }
 
-    private Names getInputToNames() {
+    private List<String> getInputToNames() {
         String inputValue = SCANNER.nextLine();
         INPUT_VALIDATOR.isBlank(inputValue);
 
-        return Names.of(inputValue.split(COMMA_SEPERATOR));
+        return List.of(inputValue.split(COMMA_SEPERATOR));
     }
 
     private void printCarNamesInputRequestMessage() {

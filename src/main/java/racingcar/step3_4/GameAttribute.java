@@ -1,22 +1,24 @@
 package racingcar.step3_4;
 
+import java.util.List;
+
 public class GameAttribute {
 
 	private static final int MINIMUM_CAR_NAMES_COUNT = 1;
 	private static final int MINIMUM_VALID_NUMBER = 0;
 
-	private final Names carNames;
+	private final List<String> carNames;
 	private final int tryCount;
 
-	public GameAttribute(Names carNames, int tryCount) {
+	public GameAttribute(List<String> carNames, int tryCount) {
 		validateEmpty(carNames);
 		validateNegative(tryCount);
 		this.carNames = carNames;
 		this.tryCount = tryCount;
 	}
 
-	private void validateEmpty(Names carNames) {
-		if (carNames.getCount() < MINIMUM_CAR_NAMES_COUNT) {
+	private void validateEmpty(List<String> carNames) {
+		if (carNames.size() < MINIMUM_CAR_NAMES_COUNT) {
 			throw new IllegalArgumentException("자동차 이름을 1개 이상 입력해주세요.");
 		}
 	}
@@ -27,7 +29,7 @@ public class GameAttribute {
 		}
 	}
 
-	public Names getCarNames() {
+	public List<String> getCarNames() {
 		return carNames;
 	}
 

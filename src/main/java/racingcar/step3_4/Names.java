@@ -1,6 +1,5 @@
 package racingcar.step3_4;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,14 +11,10 @@ public class Names {
         this.names = names;
     }
 
-    public static Names of(String[] names) {
-        return new Names(toList(names));
-    }
-
-    private static List<Name> toList(String[] names) {
-        return Arrays.stream(names)
+    public static Names of(List<String> names) {
+        return names.stream()
             .map(Name::new)
-            .collect(Collectors.toList());
+            .collect(Collectors.collectingAndThen(Collectors.toList(), Names::new));
     }
 
     public List<Name> getNames() {

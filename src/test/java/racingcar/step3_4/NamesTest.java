@@ -2,6 +2,7 @@ package racingcar.step3_4;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -23,7 +24,7 @@ class NamesTest {
     @ParameterizedTest
     @CsvSource(value = {"0:pobi", "1:crong", "2:honux"}, delimiter = ':')
     void toNameListTest(int index, String name) {
-        String[] names = new String[]{"pobi", "crong", "honux"};
+        List<String> names = List.of("pobi", "crong", "honux");
 
         Names result = Names.of(names);
 
@@ -33,7 +34,7 @@ class NamesTest {
     @DisplayName("입력한 자동차 이름 개수 반환")
     @Test
     void countTest() {
-        String[] names = new String[]{"pobi", "crong", "honux"};
+        List<String> names = List.of("pobi", "crong", "honux");
 
         Names result = Names.of(names);
 
