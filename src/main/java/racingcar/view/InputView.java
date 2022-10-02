@@ -14,15 +14,15 @@ public class InputView {
 
     public static int inputCarCount() {
         System.out.println(CAR_COUNT_QUESTION_MESSAGE);
-        return inputAnswer();
+        return inputPositiveNumber();
     }
 
     public static int inputTryCount() {
         System.out.println(TRY_COUNT_QUESTION_MESSAGE);
-        return inputAnswer();
+        return inputPositiveNumber();
     }
 
-    private static int inputAnswer() {
+    private static int inputPositiveNumber() {
         try {
             return SCANNER.nextInt();
         } catch (Exception e) {
