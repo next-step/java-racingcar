@@ -1,11 +1,12 @@
 package racing;
 
-import racing.controller.Race;
+import racing.controller.RaceController;
+import racing.service.RaceService;
 
 public class Game
 {
     public static void main(String[] args)
     {
-        Race.setup().start();
+        RaceController.getInstance(RaceService.getInstance()).run();
     }
 }
