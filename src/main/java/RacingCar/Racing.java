@@ -37,7 +37,7 @@ public class Racing {
         }
     }
 
-    public List<Car> winner(){
+    public List<Car> winner() {
         int max = carList.stream().max(Comparator.comparing(Car::getPosition)).get().getPosition();
 
         return carList.stream().filter(x -> x.getPosition() == max).collect(Collectors.toList());

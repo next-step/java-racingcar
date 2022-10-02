@@ -18,19 +18,19 @@ public class Validate {
         }
     }
 
-    public static void emptyCheck(String input){
-        if(input == null || input.isEmpty() || input.isBlank()){
+    public static void emptyCheck(String input) {
+        if (input == null || input.isEmpty() || input.isBlank()) {
             throw new IllegalArgumentException();
         }
     }
 
-    public static void carNameCheck(String name){
+    public static void carNameCheck(String name) {
         emptyCheck(name);
         nameLengthCheck(name);
     }
 
     private static void nameLengthCheck(String name) {
-        if(name.length() > 5){
+        if (name.length() > 5) {
             throw new IllegalArgumentException();
         }
     }

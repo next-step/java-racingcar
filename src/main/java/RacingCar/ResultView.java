@@ -16,13 +16,13 @@ public class ResultView {
         System.out.println();
     }
 
-    public void winnerView(List<Car> winners){
+    public void winnerView(List<Car> winners) {
         StringBuilder stringBuilder = new StringBuilder();
         for (Car car : winners) {
             stringBuilder.append(car.getName());
             stringBuilder.append(", ");
         }
-        stringBuilder.delete(stringBuilder.length()-2, stringBuilder.length());
+        stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length());
         stringBuilder.append("가 최종 우승했습니다.");
         clearStringBuilder(stringBuilder);
     }

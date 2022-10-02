@@ -34,6 +34,7 @@ public class RacingTest {
     }
 
     @Test
+    @DisplayName("우승자 테스트")
     void winnerTest() {
         Racing racing = new Racing("jason,tom,jane", 5);
         List<Integer> randomNumber = new ArrayList<>();
