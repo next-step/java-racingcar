@@ -2,11 +2,9 @@ package racing.model;
 
 import racing.strategy.GoStraightStrategy;
 import racing.strategy.RandomNumberGoStraightStrategy;
-import racing.view.GameOutput;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -24,14 +22,11 @@ public class Cars {
     }
 
     public Cars getWinner() {
-        List<Car> winner = new ArrayList<>();
         Car winnerCar = this.getWinnerCar();
-        for (Car car : cars) {
-            if (isWinnerLocation(winnerCar, car)) {
-                winner.add(car);
-            }
-        }
-        return new Cars(winner);
+        final List<Car> winners = cars.stream()
+                .filter(it -> winnerCar.isSameCurrentLocation(it))
+                .collect(Collectors.toList());
+        return new Cars(winners);
     }
 
     public List<Car> getCarList() {
@@ -43,9 +38,4 @@ public class Cars {
                 .max(Car::compareTo)
                 .orElseThrow();
     }
-
-    private boolean isWinnerLocation(Car winnerCar, Car comparisonCar) {
-        return winnerCar.isSameCurrentLocation(comparisonCar);
-    }
-
 }

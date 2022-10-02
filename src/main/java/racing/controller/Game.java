@@ -5,14 +5,14 @@ import racing.model.Cars;
 import racing.view.GameInput;
 import racing.view.GameOutput;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Game {
 
     public void play() {
-        final List<String> carNameList = GameInput.getCarArrayBySplit();
-        final Cars cars = this.carSetting(carNameList);
+        final List<String> carNames = GameInput.getCarArrayBySplit();
+        final Cars cars = this.carSetting(carNames);
         GameOutput.printCarCount(cars);
 
         final int roundCount = GameInput.roundCount();
@@ -22,14 +22,12 @@ public class Game {
         GameOutput.printNoticeWinner(winner);
     }
 
-    public Cars carSetting(List<String> carNameList) {
-        List<Car> Cars = new ArrayList<>();
-        for (String carName : carNameList) {
-            Car car = new Car(0, carName);
-            Cars.add(car);
-        }
-        Cars cars = new Cars(Cars);
-        return cars;
+    public Cars carSetting(List<String> carNames) {
+        return new Cars(
+                carNames.stream()
+                        .map(it -> new Car(0, it))
+                        .collect(Collectors.toList())
+        );
     }
 
     public void playRace(int roundCount, Cars cars) {

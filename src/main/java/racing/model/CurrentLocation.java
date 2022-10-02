@@ -13,18 +13,22 @@ public class CurrentLocation {
         this.currentLocation = startLocation;
     }
 
-    public void geStraight(){
-        this.currentLocation ++;
+    public void goStraight() {
+        this.currentLocation++;
     }
-    public int compareCurrentLocation (CurrentLocation o){
+
+    public int compareCurrentLocation(CurrentLocation o) {
         return Integer.compare(this.currentLocation, o.currentLocation);
     }
-    public int getCurrentLocation(){
+
+    public int getCurrentLocation() {
         return this.currentLocation;
     }
-    public boolean isSameCurrentLocation(CurrentLocation comparisonCurrentLocation){
+
+    public boolean isSameCurrentLocation(CurrentLocation comparisonCurrentLocation) {
         return this.currentLocation == comparisonCurrentLocation.currentLocation;
     }
+
     private void validateLocation(int startLocation) {
         if (startLocation < 0) {
             throw new IllegalArgumentException();
