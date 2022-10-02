@@ -30,7 +30,7 @@ public class RacingTest {
     }
 
     @Test
-    void getRandomNum() {
+    void getRandomNumTest() {
         assertThat(racing.getRandomNum()).isGreaterThanOrEqualTo(0).isLessThanOrEqualTo(9);
     }
 
@@ -41,7 +41,7 @@ public class RacingTest {
     }
 
     @Test
-    void test() {
+    void racingTest() {
         racing.racing(positions, car, outputResult);
     }
 }

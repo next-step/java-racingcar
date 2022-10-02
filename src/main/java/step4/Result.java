@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 public class Result {
-    private static final int INIT_NUM = 0;
     private List<String> winner = new ArrayList<>();
 
     public void findWinner(Map<String, Integer> results) {
