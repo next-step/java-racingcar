@@ -34,10 +34,15 @@ public class ResultView {
         }
     }
 
-    private static void racingPrint(final List<RacingCar> strings) {
+    private static void racingPrint(final List<RacingCar> racingCars) {
 
-        strings.stream()
-                .forEach(racingCar -> System.out.println(racingCar.extracted()));
+        racingCars.stream()
+                .forEach(racingCar -> {
+                    final String stringBuilder = racingCar.getName().getCarName() +
+                            " : " +
+                            racingCar.convert();
+                    System.out.println(stringBuilder);
+                });
     }
 
     private static void blank() {
