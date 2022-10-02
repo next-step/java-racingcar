@@ -19,7 +19,7 @@ public class Game {
     }
 
     private void doTry() {
-        cars.goOrStop();
+        cars.goOrStop(new RandomMovableStrategy());
         cars.gatherMoveResults().forEach(outputInterface::showCurrentStatus);
     }
 }

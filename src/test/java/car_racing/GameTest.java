@@ -7,17 +7,7 @@ public class GameTest {
     public void play_게임을시작한다() {
         RacingCondition racingCondition = createRacingCondition(3, 3);
 
-        Cars cars = new Cars(racingCondition.carCount(), new MovableStrategy<Integer>() {
-            @Override
-            public Integer getCondition() {
-                return 1;
-            }
-
-            @Override
-            public boolean predicate(Integer condition) {
-                return true;
-            }
-        });
+        Cars cars = new Cars(racingCondition.carCount());
 
         Game game = new Game(racingCondition.attemptCount(), cars, new ConsoleGameDashBoard());
 

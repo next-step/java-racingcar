@@ -9,7 +9,9 @@ public class CarTest {
     @ParameterizedTest
     @CsvSource(value = {"1,0", "9,1"})
     public void tryMove_직진한다(int givenCondition, int expected) {
-        Car car = new Car(0, new MovableStrategy<Integer>() {
+        Car car = new Car();
+
+        car.tryMove(new MovableStrategy<Integer>() {
             @Override
             public Integer getCondition() {
                 return givenCondition;
@@ -20,8 +22,6 @@ public class CarTest {
                 return GameRule.isGoStraight(condition);
             }
         });
-
-        car.tryMove();
 
         Assertions.assertThat(car.getMoveResult().getStraightCount()).isEqualTo(expected);
     }
