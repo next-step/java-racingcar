@@ -5,18 +5,25 @@ import java.util.List;
 
 public class RacingGame {
 
+    private static final int MOVABLE_BOUNDARY = 3;
+
     static List<RacingResult> start(List<Car> cars) {
         List<RacingResult> racingResults = new ArrayList<>();
-
         for (Car car : cars) {
-            car.moveForward(randomNumber());
-            racingResults.add(new RacingResult(car));
+            moveCar(car, isMovable());
         }
 
         return racingResults;
     }
 
-    private static int randomNumber() {
-        return new RandomNumber().getRandomNumber();
+    private static void moveCar(Car car, boolean isMovable) {
+        if (isMovable) {
+            car.moveForward();
+        }
+    }
+
+    private static boolean isMovable() {
+        int randomNumber = RandomNumber.getRandomNumber();
+        return randomNumber > MOVABLE_BOUNDARY;
     }
 }

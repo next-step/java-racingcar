@@ -2,8 +2,6 @@ package step4;
 
 public class Car {
 
-    private static final int MOVABLE_BOUNDARY = 3;
-
     private CarName carName;
     private Location location;
 
@@ -12,10 +10,8 @@ public class Car {
         this.carName = carName;
     }
 
-    void moveForward(int randomNumber) {
-        if (randomNumber > MOVABLE_BOUNDARY) {
-            this.location.move();
-        }
+    void moveForward() {
+        this.location.move();
     }
 
     public String getCarName() {
