@@ -29,7 +29,8 @@ class CarTest {
 
     @Test
     void 자동차가_이름은_5글자_이상이면_예외가_발생한다() {
-        assertThatThrownBy(() -> new Car("12345", new CarDistance(0)))
+        CarDistance carDistance = new CarDistance(0);
+        assertThatThrownBy(() -> new Car("12345", carDistance))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
