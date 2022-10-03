@@ -5,7 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step3.number.Number;
 import step3.number.Number.Fake;
-import step3.position.CarPosition;
+import step3.position.Position;
 
 class RacingCarTest {
 
@@ -15,7 +15,7 @@ class RacingCarTest {
         final Number number = new Fake(4);
         final RacingCar sut = new RacingCar(number);
 
-        Assertions.assertThat(sut.movedCar()).isEqualTo(new RacingCar(new CarPosition(1), number));
+        Assertions.assertThat(sut.movedCar()).isEqualTo(new RacingCar(new Position(1), number));
     }
 
     @Test
@@ -24,7 +24,7 @@ class RacingCarTest {
         final Number number = new Fake(3);
         final RacingCar sut = new RacingCar(number);
 
-        Assertions.assertThat(sut.movedCar()).isEqualTo(new RacingCar(new CarPosition(0), number));
+        Assertions.assertThat(sut.movedCar()).isEqualTo(new RacingCar(new Position(0), number));
     }
 
 }

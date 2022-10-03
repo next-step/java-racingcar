@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import step3.car.RacingCar;
 import step3.number.Number;
 import step3.number.RandomNumber;
-import step3.position.CarPosition;
+import step3.position.Position;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ class RacingCarsTest {
         RacingCar car = new RacingCar(number);
         RacingCars sut = new RacingCars(List.of(car));
 
-        RacingCar movedCar = new RacingCar(new CarPosition(1), number);
+        RacingCar movedCar = new RacingCar(new Position(1), number);
         assertThat(sut.carsWithTurnUsed()).isEqualTo(new RacingCars(List.of(movedCar)));
     }
 
