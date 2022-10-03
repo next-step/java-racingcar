@@ -1,6 +1,5 @@
 package step3.position;
 
-import step3.output.BarOutputView;
 import step3.output.OutputView;
 
 import java.util.Objects;
@@ -12,10 +11,6 @@ public final class Position {
     private final int position;
 
     private final OutputView outputView;
-
-    public Position(int position) {
-        this(position, new BarOutputView());
-    }
 
     public Position(int position, OutputView outputView) {
         this.position = position;
@@ -34,13 +29,13 @@ public final class Position {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Position that = (Position) o;
-        return position == that.position && Objects.equals(outputView, that.outputView);
+        Position position1 = (Position) o;
+        return position == position1.position;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(position, outputView);
+        return Objects.hash(position);
     }
 
 }
