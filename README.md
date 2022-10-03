@@ -7,3 +7,9 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## step3 자동차 경주 구현할 기능 목록
+* 사용자에게 자동차 대수, 시도할 회수 입력 받기
+* 주어진 횟수 동안 n대 자동차 전진
+  * 0에서 9 사이에 random 값 구한다. 4 이상이면 전진
+* 자동차의 상태를 출력한다. 

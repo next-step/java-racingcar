@@ -1,26 +1,27 @@
 package racingcar;
 
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Rc {
+public class CarRace {
+    public static int COMPARE_NUM = 4;
 
-    public static void main(String[] args) {
-
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        Scanner scanner = new Scanner(System.in);
-        String joinedCar = scanner.nextLine();
-        new Rc().joinRace(joinedCar);
-
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        String raceCnt = scanner.nextLine();
-        new Rc().startRace(raceCnt);
+    public List<Car> createCars(int cars) {
+        List<Car> carList = new ArrayList<>();
+        for (int i = 0; i < cars; i++) {
+            carList.add(new Car(0));
+        }
+        return carList;
     }
 
-    public int joinRace(String joinedCar) {
-        return Integer.parseInt(joinedCar);
-    }
-
-    public int startRace(String value) {
-        return Integer.parseInt(value);
+    public List<Car> startRace(int raceCnt, List<Car> carList) {
+        for (int i = 0; i < raceCnt; i++) {
+            for (Car car: carList) {
+                if (new RandomUtil().isBiggerThan(COMPARE_NUM)) {
+                    car.moveForward();
+                }
+            }
+        }
+        return carList;
     }
 }
