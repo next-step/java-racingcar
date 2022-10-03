@@ -16,11 +16,15 @@ public class Car {
         this.position = position;
     }
 
+    public void move() {
+        position.move();
+    }
+
     public String getName() {
         return name;
     }
 
-    public Position getPosition() {
-        return position;
+    public int getPosition() {
+        return position.getPosition();
     }
 }

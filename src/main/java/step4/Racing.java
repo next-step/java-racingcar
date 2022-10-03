@@ -1,6 +1,5 @@
 package step4;
 
-import java.util.List;
 import java.util.Random;
 
 public class Racing {
@@ -9,21 +8,21 @@ public class Racing {
     private static final int CONDITION = 4;
     private static Random random = new Random();
 
-    public void racing (Position position, Car car, OutputResult outputResult) {
-        for (int i = 0 ; i < car.getTimes() ; i++) {
-            racingRound(position, car.getNames());
-            outputResult.outputRound(position.getPositions());
+    public void racing (Car[] cars, int times) {
+        for (int i = 0 ; i < times ; i++) {
+            racingRound(cars);
         }
     }
-    public void racingRound(Position position, List<String> names) {
-        for (int i = 0; i < names.size(); i++) {
-            moveOrStop(position, names.get(i));
+    public void racingRound(Car[] cars) {
+        for (int i = 0; i < cars.length ; i++) {
+            moveOrStop(cars[i]);
         }
+
     }
 
-    private void moveOrStop(Position position, String name) {
+    private void moveOrStop(Car car) {
         if (isSatisfiedConditionForMove(getRandomNum())) {
-            position.move(name);
+            car.move();
         }
     }
 
