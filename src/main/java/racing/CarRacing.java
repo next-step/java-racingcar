@@ -12,7 +12,7 @@ public class CarRacing {
     }
 
     private void start() {
-        prepare();
+        participateCars();
         int rounds = InputView.inputRounds();
         play(rounds);
     }
@@ -23,10 +23,6 @@ public class CarRacing {
             playRound();
             announceResult(i);
         }
-    }
-
-    private void prepare() {
-        participateCars();
     }
 
     private void playRound() {
