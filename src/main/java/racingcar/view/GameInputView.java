@@ -2,6 +2,7 @@ package racingcar.view;
 
 import java.util.Scanner;
 
+import racingcar.domain.CarNames;
 import racingcar.domain.Racing;
 
 public class GameInputView {
@@ -12,12 +13,12 @@ public class GameInputView {
     }
 
     public Racing racing() {
-        return Racing.of(carCount(), tryCount());
+        return Racing.of(carNames(), tryCount());
     }
 
-    private int carCount() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        return input.nextInt();
+    private CarNames carNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        return CarNames.of(input.nextLine());
     }
 
     private int tryCount() {

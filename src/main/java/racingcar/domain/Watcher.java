@@ -1,16 +1,21 @@
 package racingcar.domain;
 
 import java.util.List;
-import java.util.function.Consumer;
+
+import racingcar.view.Display;
 
 public class Watcher {
-    private final Consumer<List<Distance>> action;
+    private final Display displayer;
 
-    public Watcher(Consumer<List<Distance>> action) {
-        this.action = action;
+    public Watcher(Display displayer) {
+        this.displayer = displayer;
     }
-    
-    public void notify(List<Distance> distance) {
-        action.accept(distance);
+
+    public void notify(Distances distancese) {
+        displayer.show(distancese);
+    }
+
+    public void notifyFinish(Distances distances) {
+        displayer.showWinners(distances);
     }
 }

@@ -20,17 +20,23 @@ class CarTest {
     
     private static Stream<Arguments> moving() {
         return Stream.of(
-                Arguments.arguments(car(0), STOP, new Distance(0)),
-                Arguments.arguments(car(0), GO, new Distance(1)),
-                Arguments.arguments(car(3), GO, new Distance(4))
+                Arguments.arguments(car(0), STOP, ZERO),
+                Arguments.arguments(car(0), GO, distance(1)),
+                Arguments.arguments(car(3), GO, distance(4))
         );
     }
     
     private static Car car(int distance) {
-        Car car = new Car();
+        Car car = new Car("name");
         for(int tryCount = 0; tryCount < distance; tryCount++) {
             car.move(GO);
         }
         return car;
     }
+
+    private static Distance distance(int distance) {
+        return new Distance("name", distance);
+    }
+
+    private static final Distance ZERO = distance(0);
 }

@@ -5,8 +5,8 @@ import static racingcar.domain.Moving.*;
 public class Car {
     private Distance total;
 
-    public Car() {
-        total = Distance.ZERO;
+    public Car(String name) {
+        total = new Distance(name);
     }
 
     public Distance move(Moving moving) {

@@ -3,16 +3,28 @@ package racingcar.domain;
 import java.util.Objects;
 
 public class Distance {
-    public static final Distance ZERO = new Distance(0);
-    
+    private final String carName;
     private final int distance;
+
+    public Distance(String carName) {
+        this(carName, 0);
+    }
     
-    public Distance(int distance) {
+    public Distance(String carName, int distance) {
+        this.carName = carName;
         this.distance = distance;
     }
 
     public Distance increment() {
-        return new Distance(distance + 1);
+        return new Distance(carName,distance + 1);
+    }
+
+    public boolean greaterThan(Distance other) {
+        return distance > other.distance;
+    }
+
+    public String getCarName() {
+        return carName;
     }
 
     public int getDistance() {

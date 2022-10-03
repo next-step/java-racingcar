@@ -1,9 +1,9 @@
 package racingcar.view;
 
-import java.util.List;
-
-import racingcar.domain.Distance;
+import racingcar.domain.Distances;
 
 public interface Display {
-    void show(List<Distance> distances);
+    void show(Distances distances);
+    
+    void showWinners(Distances distances);
 }

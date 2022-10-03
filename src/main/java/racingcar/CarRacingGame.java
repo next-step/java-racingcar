@@ -1,6 +1,5 @@
 package racingcar;
 
-import racingcar.domain.CarRacing;
 import racingcar.view.GameInputView;
 import racingcar.view.GameOutputView;
 
@@ -14,6 +13,6 @@ public class CarRacingGame {
     }
 
     public void start() {
-        new CarRacing(input.racing(), output.watcher()).race();
+        input.racing().race(output.watcher());
     }
 }
