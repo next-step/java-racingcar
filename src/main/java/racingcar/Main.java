@@ -5,8 +5,7 @@ public class Main {
         int numOfCars = InputView.getNumOfCars();
         int tryingCount = InputView.getTryCount();
 
-        RacingCarFactory factory = RacingCarFactory.getFactory(numOfCars, tryingCount);
-        ResultView resultView = new ResultView(factory.manufactoringCars());
+        ResultView resultView = new ResultView(RacingCarFactory.manufactoringCars(numOfCars, tryingCount));
         resultView.printCars();
 
     }

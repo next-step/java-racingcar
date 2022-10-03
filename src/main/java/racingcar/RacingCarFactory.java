@@ -5,26 +5,13 @@ import java.util.List;
 import java.util.Random;
 
 public class RacingCarFactory {
-    private final int numOfCars;
-    private final int tryingCount;
-    private final Random random = new Random();
+    private static final Random random = new Random();
 
-    private static RacingCarFactory factory; // singleton
-
-    private RacingCarFactory(int numOfCars, int tryingCount) {
-        this.numOfCars = numOfCars;
-        this.tryingCount = tryingCount;
+    private RacingCarFactory() {
+        throw new RuntimeException("인스턴스화가 불가능한 클래스입니다.");
     }
 
-    public static RacingCarFactory getFactory(int numOfCars, int tryingCount) {
-        if(factory == null) {
-            factory = new RacingCarFactory(numOfCars, tryingCount);
-            return factory;
-        }
-        return factory;
-    }
-
-    public List<RacingCar> manufactoringCars() {
+    public static List<RacingCar> manufactoringCars(int numOfCars, int tryingCount) {
         List<RacingCar> cars = new ArrayList<>(numOfCars);
         for(int i=0 ; i<numOfCars ; i++) {
             cars.add(new RacingCar(random, tryingCount));
