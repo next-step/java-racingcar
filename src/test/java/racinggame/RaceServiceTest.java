@@ -5,6 +5,7 @@ import racinggame.domain.Car;
 import racinggame.domain.RacingCars;
 import racinggame.dto.RaceInputDTO;
 import racinggame.dto.RaceResultDTO;
+import racinggame.dto.WinCarsDTO;
 import racinggame.service.RaceService;
 
 import java.util.List;
@@ -51,10 +52,9 @@ class RaceServiceTest {
         RaceResultDTO raceResultDTO = raceService.startRace(raceInputDTO, new RacingCars(cars));
 
         //then
-        List<Car> winners = raceResultDTO.getWinners();
+        List<WinCarsDTO> winners = raceResultDTO.getWinners();
         assertThat(winners).hasSize(2);
-        assertThat(winners.get(0).distance()).isEqualTo(3);
-        assertThat(winners.get(0).name()).isEqualTo("car1");
-        assertThat(winners.get(1).name()).isEqualTo("car3");
+        assertThat(winners.get(0).getName()).isEqualTo("car1");
+        assertThat(winners.get(1).getName()).isEqualTo("car3");
     }
 }

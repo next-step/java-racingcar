@@ -1,6 +1,7 @@
 package racinggame.domain;
 
 import org.junit.jupiter.api.Test;
+import racinggame.dto.WinCarsDTO;
 
 import java.util.List;
 
@@ -17,9 +18,9 @@ class RacingCarsTest {
 
         RacingCars racingCars = new RacingCars(cars);
         racingCars.move();
-        List<Car> winners = racingCars.winners();
+        List<WinCarsDTO> winners = racingCars.winners();
 
         assertThat(winners).hasSize(1);
-        assertThat(winners.get(0).name()).isEqualTo("car1");
+        assertThat(winners.get(0).getName()).isEqualTo("car1");
     }
 }

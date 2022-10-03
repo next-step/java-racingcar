@@ -1,9 +1,9 @@
 package racinggame.view;
 
-import racinggame.domain.Car;
 import racinggame.domain.CarSnapshot;
-import racinggame.dto.RaceResultDTO;
 import racinggame.domain.RoundSnapshot;
+import racinggame.dto.RaceResultDTO;
+import racinggame.dto.WinCarsDTO;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,9 +30,9 @@ public class RaceResultView {
         raceResult.append(winnersName(raceResultDTO.getWinners()) + "가 최종 우승했습니다.");
     }
 
-    private String winnersName(List<Car> winners) {
+    private String winnersName(List<WinCarsDTO> winners) {
         return winners.stream()
-                .map(Car::name)
+                .map(WinCarsDTO::getName)
                 .collect(Collectors.joining(", "));
     }
 

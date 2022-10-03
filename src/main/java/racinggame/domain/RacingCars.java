@@ -1,5 +1,7 @@
 package racinggame.domain;
 
+import racinggame.dto.WinCarsDTO;
+
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -25,12 +27,15 @@ public class RacingCars {
         cars.forEach(Car::move);
     }
 
-    public List<Car> winners() {
+    public List<WinCarsDTO> winners() {
         return cars.stream()
                 .collect(groupingBy(Car::distance))
                 .entrySet().stream()
                 .max(Comparator.comparing(Map.Entry::getKey))
                 .get()
-                .getValue();
+                .getValue()
+                .stream()
+                .map(WinCarsDTO::new)
+                .collect(toList());
     }
 }
