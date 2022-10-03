@@ -29,4 +29,12 @@ public class RacingCarWinner {
         }
         car.setParticipant(participantInformation);
     }
+
+    public int judgmentGoStop() {
+        int randomNum = (int) (Math.random() * 10);
+        if (randomNum >= 4) {
+            return 1;
+        }
+        return 0;
+    }
 }
