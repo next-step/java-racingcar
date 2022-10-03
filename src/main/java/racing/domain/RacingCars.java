@@ -10,13 +10,7 @@ public class RacingCars {
 		this.racingCars = racingCars;
 	}
 
-	public void startRacing(int count) {
-		IntStream.range(0, count).
-			forEach(i -> moveCars());
-
-	}
-
-	private void moveCars() {
+	public void moveCars() {
 		IntStream.range(0, racingCars.size())
 			.forEach(i -> racingCars.get(i).move());
 	}

@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Car {
 
-	private final static int START_POINT = 0;
+	private final static int START_POINT = 1;
 	private final static int MOVE_PIVOT = 4;
 	private int location;
 

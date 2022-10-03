@@ -47,9 +47,16 @@ public class RacingGame {
 			mapToObj(i -> new Car()).
 			collect(Collectors.toList()));
 
-		racingCars.startRacing(carMoveCount);
+		startRacing();
+	}
 
-		resultView.printCarLocations(racingCars);
+	private void startRacing() {
+		IntStream.range(0, carMoveCount)
+			.forEach(i -> {
+				racingCars.moveCars();
+				resultView.printCarLocations(racingCars);
+				System.out.println();
+			});
 	}
 
 	private void quit() {
