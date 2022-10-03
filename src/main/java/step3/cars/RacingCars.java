@@ -1,6 +1,5 @@
 package step3.cars;
 
-import step3.car.Car;
 import step3.car.RacingCar;
 import step3.number.RandomNumber;
 
@@ -11,23 +10,23 @@ import java.util.stream.IntStream;
 
 public class RacingCars implements Cars {
 
-    private final List<Car> cars;
+    private final List<RacingCar> cars;
 
-    public RacingCars(List<Car> cars) {
+    public RacingCars(List<RacingCar> cars) {
         this.cars = cars;
     }
 
     @Override
     public Cars carsWithTurnUsed() {
-        List<Car> movedCars = cars.stream()
-                .map(Car::movedCar)
+        List<RacingCar> movedCars = cars.stream()
+                .map(RacingCar::movedCar)
                 .collect(Collectors.toUnmodifiableList());
         return new RacingCars(movedCars);
     }
 
     @Override
     public void printPosition() {
-        cars.forEach(Car::printPosition);
+        cars.forEach(RacingCar::printPosition);
     }
 
     @Override
@@ -52,7 +51,7 @@ public class RacingCars implements Cars {
         }
 
         public Cars cars() {
-            List<Car> cars = IntStream.range(0, numberOfCars)
+            List<RacingCar> cars = IntStream.range(0, numberOfCars)
                     .boxed()
                     .map(number -> new RacingCar(new RandomNumber()))
                     .collect(Collectors.toUnmodifiableList());

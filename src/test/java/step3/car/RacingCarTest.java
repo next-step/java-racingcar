@@ -13,7 +13,7 @@ class RacingCarTest {
     @DisplayName("숫자가 4이상 나올 경우 자동차는 한 칸 전진한다.")
     void a() {
         final Number number = new Fake(4);
-        final Car sut = new RacingCar(number);
+        final RacingCar sut = new RacingCar(number);
 
         Assertions.assertThat(sut.movedCar()).isEqualTo(new RacingCar(new CarPosition(1), number));
     }
@@ -22,7 +22,7 @@ class RacingCarTest {
     @DisplayName("숫자가 4미만 나올 경우 자동차는 현재 위치에 움직이지 않는다.")
     void b() {
         final Number number = new Fake(3);
-        final Car sut = new RacingCar(number);
+        final RacingCar sut = new RacingCar(number);
 
         Assertions.assertThat(sut.movedCar()).isEqualTo(new RacingCar(new CarPosition(0), number));
     }

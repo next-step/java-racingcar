@@ -7,7 +7,7 @@ import step3.position.Position;
 
 import java.util.Objects;
 
-public final class RacingCar implements Car {
+public final class RacingCar {
 
     private static final int NUMBER_OF_JUDGMENT_THAT_CAN_GO_FORWARD = 4;
 
@@ -24,20 +24,17 @@ public final class RacingCar implements Car {
         this.number = number;
     }
 
-    @Override
-    public Car movedCar() {
+    public RacingCar movedCar() {
         if (number.generatedNumber() >= NUMBER_OF_JUDGMENT_THAT_CAN_GO_FORWARD) {
             return new RacingCar(position.movedPosition(), number);
         }
         return this;
     }
 
-    @Override
     public void printPosition() {
         position.printPosition();
     }
 
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
