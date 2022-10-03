@@ -1,20 +1,33 @@
 package carRacing.level3.controller;
 
+import carRacing.level3.domain.Car;
+import carRacing.level3.domain.Cars;
 import carRacing.level3.service.strategy.MovingStrategy;
 import carRacing.level3.service.input.InputView;
-import carRacing.level3.service.CarService;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class RacingGameController {
 
-	CarService carService = new CarService();
+	private static final Integer DEFAULT_CAR_NUM = 0;
 	InputView inputView = new InputView();
 
 	public void gameStart(MovingStrategy strategy) {
 
-		int totalCarNum = inputView.askNumberCars();
 		int gameRound = inputView.askValueRound();
-		carService.moveCar(gameRound, carService.prepare(totalCarNum), strategy);
+		Cars cars = initiateCars(inputView.askNumberCars());
 
+		for (int i = 0; i < gameRound; i++) {
+			cars.moveCarLocation(strategy);
+		}
+
+	}
+
+	public Cars initiateCars(int totalCarNum){
+		return new Cars(
+			IntStream.range(DEFAULT_CAR_NUM, totalCarNum)
+				.mapToObj(index -> new Car())
+				.collect(Collectors.toList()));
 	}
 
 }
