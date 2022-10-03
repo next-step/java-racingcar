@@ -1,16 +1,16 @@
 package racingcar;
 
-import racingcar.backend.controller.RacingCarGame;
-import racingcar.view.InputView;
-import racingcar.view.ResultView;
+import racingcar.backend.controller.RacingCarGameController;
+import racingcar.frontend.InputView;
+import racingcar.frontend.ResultView;
 
 public class GameApp {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
-        int carNum = InputView.askNumberOfCar();
+        String names = InputView.askNames();
         int times = InputView.askTimes();
 
-        RacingCarGame racingCarGame = new RacingCarGame(carNum, times);
+        RacingCarGameController racingCarGame = new RacingCarGameController(names, times);
         ResultView.printGameHistory(racingCarGame.start());
     }
 }
