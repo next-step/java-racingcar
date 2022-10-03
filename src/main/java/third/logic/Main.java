@@ -13,15 +13,17 @@ public class Main {
         int raceCount = InputView.inputRaceCount();
         int carCount = InputView.inputCarCount();
 
-        for(int i =0; i < carCount; i++) {
-            Car car = new Car();
+        ArrayList<Car> carList = new ArrayList<>();
+
+        for (int i = 0; i < carCount; i++) {
+            carList.add(new Car());
         }
 
-        ArrayList<Car> carArrayList = Car.getCarArrayList();
+        ResultView.printResultLine();
 
-        for( int i = 0; i < raceCount; i++){
-            Race.startOneRace(carArrayList, carCount);
-            ResultView.printOneRace(carArrayList);
+        for (int i = 0; i < raceCount; i++) {
+            Race.startOneRace(carList, carCount);
+            ResultView.printOneRace(carList);
         }
     }
 }
