@@ -4,6 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
+
     private static final String REGEX = "[,:]";
     private static final Pattern PATTERN = Pattern.compile("//(.)\n(.*)");
     public static int splitAndSum(String text) {

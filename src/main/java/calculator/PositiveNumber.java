@@ -5,6 +5,7 @@ import java.util.Objects;
 import static calculator.Calculator.PLUS;
 
 public class PositiveNumber {
+
     private final int number;
 
     private PositiveNumber(int number) {

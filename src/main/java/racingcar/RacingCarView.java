@@ -1,6 +1,7 @@
 package racingcar;
 
 public class RacingCarView {
+
     private static final String LOCATION_PRINT_LETTER = "-";
 
     public static void printRacingCar(Car car) {

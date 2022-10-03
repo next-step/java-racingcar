@@ -3,6 +3,7 @@ package racingcar;
 import java.util.Objects;
 
 public class Car {
+
     public static final int MOVE_DISTANCE = 1;
     public static final int START_LOCATION = 0;
     private int location;

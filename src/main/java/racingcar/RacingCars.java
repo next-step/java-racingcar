@@ -3,6 +3,7 @@ package racingcar;
 import java.util.Arrays;
 
 public class RacingCars {
+
     private static final int MINIMUM_VALUE = 4;
     private final Car[] cars;
 
