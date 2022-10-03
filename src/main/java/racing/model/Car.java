@@ -1,14 +1,40 @@
 package racing.model;
 
 import racing.strategy.CarMoveStrategy;
+import racing.strategy.DefaultCarMoveStrategy;
 
-public abstract class Car {
+public class Car {
+    private final static String TIRE_MARK = "-";
+    private final static int SPEED = 1;
+
     private CarPosition position;
     private CarMoveStrategy carMoveStrategy;
+    private CarName name;
 
-    public Car(CarPosition initPosition) {
-        this.position = initPosition;
+    public Car(CarName name, CarPosition position) {
+        this.name = name;
+        this.position = position;
         setDefaultCarMoveStrategy();
+    }
+
+    public Car(String name, int position) {
+        this(new CarName(name), new CarPosition(position));
+    }
+
+    public Car(String name) {
+        this(new CarName(name), new CarPosition());
+    }
+
+    public void setDefaultCarMoveStrategy() {
+        setStrategy(new DefaultCarMoveStrategy());
+    }
+
+    public String getTireMark() {
+        return TIRE_MARK;
+    }
+
+    public void move() {
+        position.move(SPEED);
     }
 
     public boolean canMove(int randomNum) {
@@ -23,8 +49,8 @@ public abstract class Car {
         return position.getPosition();
     }
 
-    public void move() {
-        carMoveStrategy.move(position);
+    public String getName() {
+        return this.name.getName();
     }
 
     @Override
@@ -37,15 +63,18 @@ public abstract class Car {
         }
 
         Car car = (Car) obj;
+        if (!car.getName().equals(this.getName())) {
+            return false;
+        }
+
         return car.position.getPosition() == this.position.getPosition();
     }
 
-    @Override
-    public int hashCode() {
-        return super.hashCode();
+    public String getSkidMark() {
+        String skidMark = getName() + " : ";
+        for (int i = 0; i < this.getPosition(); i++) {
+            skidMark += this.getTireMark();
+        }
+        return skidMark;
     }
-
-    public abstract void setDefaultCarMoveStrategy();
-
-    public abstract String getTireMark();
 }

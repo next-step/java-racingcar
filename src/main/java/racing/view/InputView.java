@@ -1,29 +1,29 @@
 package racing.view;
 
-import racing.util.CustomUserInputHandler;
+import racing.util.UserInputHandler;
+import racing.util.UserIntegerInputHandler;
+import racing.util.UserStringInputHandler;
 
 public class InputView {
     private InputView() {
 
     }
 
-    public static int getCarCount() {
-        return makeQuestion("자동차 대수는 몇 대 인가요?");
-    }
-
     public static int getGameCount() {
-        return makeQuestion("시도할 회수는 몇 회 인가요?");
+        return Integer.parseInt(getUserInput("시도할 회수는 몇 회 인가요?", new UserIntegerInputHandler()));
     }
 
-    public static int makeQuestion(String message) {
+    public static String[] getCarNames() {
+        UserStringInputHandler userStringInputHandler = new UserStringInputHandler();
+        return UserStringInputHandler.split(getUserInput("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).", userStringInputHandler));
+    }
+
+    public static String getUserInput(String message, UserInputHandler handler) {
         System.out.println(message);
-        String userInput = CustomUserInputHandler.scan();
-
-        int result = CustomUserInputHandler.parseInt(userInput);
-        if (CustomUserInputHandler.validate(result)) {
-            return result;
+        String userInput = handler.scan();
+        if (handler.validate(userInput)) {
+            return userInput;
         }
-
-        return makeQuestion(message);
+        return getUserInput(message, handler);
     }
 }
