@@ -8,7 +8,7 @@ public class WinCarsDTO {
 
     public WinCarsDTO(Car car) {
         if (car == null) {
-            new IllegalArgumentException("car는 null일수 없습니다.");
+            throw new IllegalArgumentException("car는 null일수 없습니다.");
         }
 
         this.carName = car.getCarName();

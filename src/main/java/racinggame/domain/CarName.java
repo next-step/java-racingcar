@@ -7,13 +7,13 @@ import java.util.Objects;
 public class CarName {
 
     public static final int MAX_NAME_LENGTH = 4;
-    private final String carName;
+    private final String name;
 
-    public CarName(String carName) {
-        if (isInValidName(carName)) {
+    public CarName(String name) {
+        if (isInValidName(name)) {
             throw new IllegalArgumentException("이름은 4글자 이하만 가능합니다.");
         }
-        this.carName = carName;
+        this.name = name;
     }
 
     private boolean isInValidName(String name) {
@@ -27,16 +27,16 @@ public class CarName {
 
         CarName carName1 = (CarName) o;
 
-        return Objects.equals(carName, carName1.carName);
+        return Objects.equals(name, carName1.name);
     }
 
     @Override
     public int hashCode() {
-        return carName != null ? carName.hashCode() : 0;
+        return name != null ? name.hashCode() : 0;
     }
 
     @Override
     public String toString() {
-        return carName;
+        return name;
     }
 }

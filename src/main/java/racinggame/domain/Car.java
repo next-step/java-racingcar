@@ -44,7 +44,7 @@ public class Car {
             return;
         }
 
-        this.carDistance = carDistance.plus();;
+        this.carDistance = carDistance.plus();
     }
 
 
