@@ -4,20 +4,17 @@ public class Car {
     private final Record record;
 
     private final String name;
+    private final MovableStrategy movableStrategy;
 
-    public Car(String name) {
+    public Car(String name, MovableStrategy movableStrategy) {
         this.record = new Record();
         this.name = name;
+        this.movableStrategy = movableStrategy;
     }
 
-    public Car(Record record, String name) {
-        this.record = record;
-        this.name = name;
-    }
-
-    public void moveByRandomOnRound(RandomNumber randomNumber) {
+    public void move() {
         int lastRecord = record.getLastRecord();
-        if (randomNumber.make() > 3) {
+        if (this.movableStrategy.move()) {
             this.record.addRecord(lastRecord + 1);
             return;
         }
@@ -30,13 +27,5 @@ public class Car {
 
     public Record getRecord() {
         return record;
-    }
-
-    @Override
-    public String toString() {
-        return "Car{" +
-                "record=" + record +
-                ", name='" + name + '\'' +
-                '}';
     }
 }

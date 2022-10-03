@@ -8,13 +8,8 @@ public class Racing {
 
     private final int iterate;
 
-    public Racing(String[] carNames, int iterate) {
-        this.cars = this.createCars(carNames);
-        this.iterate = iterate;
-    }
-
-    public Racing(List<Car> cars, int iterate) {
-        this.cars = cars;
+    public Racing(String[] carNames, int iterate, MovableStrategy movableStrategy) {
+        this.cars = this.createCars(carNames, movableStrategy);
         this.iterate = iterate;
     }
 
@@ -23,6 +18,7 @@ public class Racing {
             this.runRound();
         }
     }
+
     public List<Car> getCars() {
         return this.cars;
     }
@@ -33,12 +29,14 @@ public class Racing {
         return this.filterWinners(winnerLastRecord, lastRecords);
     }
 
-    private List<Car> createCars(String[] carNames) {
-        return Arrays.stream(carNames).map(Car::new).collect(Collectors.toList());
+    private void runRound() {
+        this.cars.forEach(Car::move);
     }
 
-    public void runRound() {
-        this.cars.forEach(car -> car.moveByRandomOnRound(new RandomNumber0by10()));
+    private List<Car> createCars(String[] carNames, MovableStrategy movableStrategy) {
+        return Arrays.stream(carNames)
+                .map((carName) -> new Car(carName, movableStrategy))
+                .collect(Collectors.toList());
     }
 
     private Map<String, Integer> mapLastRecords(List<Car> cars) {

@@ -10,24 +10,15 @@ public class Record {
         this.record = new ArrayList<>();
     }
 
-    public Record(List<Integer> record) {
-        this.record = record;
-    }
-
     public void addRecord(int record) {
-        System.out.println("record = " + record);
         this.record.add(record);
     }
 
     public int getLastRecord() {
-        if (this.isEmpty()) {
+        if (record.size() == 0) {
             return 0;
         }
         return record.get(record.size() - 1);
-    }
-
-    private boolean isEmpty() {
-        return record.size() == 0;
     }
 
     public List<Integer> getRecord() {
