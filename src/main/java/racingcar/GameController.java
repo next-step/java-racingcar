@@ -1,5 +1,8 @@
 package racingcar;
 
+import racingcar.domain.Car;
+import racingcar.domain.RacingCarGame;
+import racingcar.domain.RacingCarGameFactory;
 import racingcar.strategy.MovingStrategy;
 import racingcar.strategy.MovingStrategyFactory;
 import racingcar.view.ResultView;
