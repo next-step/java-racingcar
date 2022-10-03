@@ -18,19 +18,19 @@ class CarsTest {
     void a() {
         Number number = new Number.Fake(4);
         Car car = new Car(number);
-        RacingCars sut = new RacingCars(List.of(car));
+        Cars sut = new Cars(List.of(car));
 
         Car movedCar = new Car(new Position(1), number);
-        assertThat(sut.carsWithTurnUsed()).isEqualTo(new RacingCars(List.of(movedCar)));
+        assertThat(sut.carsWithTurnUsed()).isEqualTo(new Cars(List.of(movedCar)));
     }
 
     @Test
     @DisplayName("만드려는 자동차 개수를 입력하면 해당 개수 만큼 자동차들이 만들어진다")
     void b() {
-        RacingCars.Factory sut = new RacingCars.Factory(1);
+        Cars.Factory sut = new Cars.Factory(1);
 
         Car car = new Car(new RandomNumber());
-        assertThat(sut.cars()).isEqualTo(new RacingCars(List.of(car)));
+        assertThat(sut.cars()).isEqualTo(new Cars(List.of(car)));
     }
 
 

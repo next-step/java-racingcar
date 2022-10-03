@@ -8,19 +8,19 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class RacingCars {
+public class Cars {
 
     private final List<Car> cars;
 
-    public RacingCars(List<Car> cars) {
+    public Cars(List<Car> cars) {
         this.cars = cars;
     }
 
-    public RacingCars carsWithTurnUsed() {
+    public Cars carsWithTurnUsed() {
         List<Car> movedCars = cars.stream()
                 .map(Car::movedCar)
                 .collect(Collectors.toUnmodifiableList());
-        return new RacingCars(movedCars);
+        return new Cars(movedCars);
     }
 
     public void printPosition() {
@@ -31,7 +31,7 @@ public class RacingCars {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        RacingCars that = (RacingCars) o;
+        Cars that = (Cars) o;
         return Objects.equals(cars, that.cars);
     }
 
@@ -48,13 +48,13 @@ public class RacingCars {
             this.numberOfCars = numberOfCars;
         }
 
-        public RacingCars cars() {
+        public Cars cars() {
             List<Car> cars = IntStream.range(0, numberOfCars)
                     .boxed()
                     .map(number -> new Car(new RandomNumber()))
                     .collect(Collectors.toUnmodifiableList());
 
-            return new RacingCars(cars);
+            return new Cars(cars);
         }
 
     }
