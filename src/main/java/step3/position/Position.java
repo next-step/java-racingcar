@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public final class Position {
 
-    private static final int DISTANCE = 1;
+    private static final int DISTANCE_TO_MOVE = 1;
 
     private final int position;
 
@@ -23,7 +23,7 @@ public final class Position {
     }
 
     public Position movedPosition() {
-        return new Position(position + DISTANCE, outputView);
+        return new Position(position + DISTANCE_TO_MOVE, outputView);
     }
 
     public void printPosition() {
