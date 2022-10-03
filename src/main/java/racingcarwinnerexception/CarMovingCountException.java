@@ -1,12 +1,12 @@
 package racingcarwinnerexception;
 
-public class CarMovingCountException extends Exception{
+public class CarMovingCountException extends Exception {
 
-    public CarMovingCountException(){
+    public CarMovingCountException() {
         super();
     }
 
-    public CarMovingCountException(String message){
+    public CarMovingCountException(String message) {
         super(message);
     }
 }

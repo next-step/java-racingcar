@@ -1,12 +1,12 @@
 package racingcarwinnerexception;
 
-public class NameOutOfLengthException extends Exception{
+public class NameOutOfLengthException extends Exception {
 
-    public NameOutOfLengthException(){
+    public NameOutOfLengthException() {
         super();
     }
 
-    public NameOutOfLengthException(String message){
+    public NameOutOfLengthException(String message) {
         super(message);
     }
 }
