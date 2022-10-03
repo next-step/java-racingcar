@@ -8,8 +8,8 @@ public class Race {
 
     private static final Random random = new Random();
 
-    public static void startOneRace(ArrayList<Car> carArrayList, int carCount) {
-        IntStream.range(0, carCount).forEach(index -> carArrayList.get(index).carMove(getRandomNumber()));
+    public static void startOneRace(ArrayList<Car> carList, int carCount) {
+        IntStream.range(0, carCount).forEach(index -> carList.get(index).Move(getRandomNumber()));
     }
 
     public static int getRandomNumber() {
