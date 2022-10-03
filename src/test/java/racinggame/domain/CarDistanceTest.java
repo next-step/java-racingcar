@@ -11,4 +11,10 @@ class CarDistanceTest {
         CarDistance carDistance = new CarDistance(5);
         assertThat(carDistance).isEqualTo(new CarDistance(5));
     }
+
+    @Test
+    void plus() {
+        CarDistance carDistance = new CarDistance(5);
+        assertThat(carDistance.plus()).isEqualTo(new CarDistance(6));
+    }
 }

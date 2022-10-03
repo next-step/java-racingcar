@@ -39,10 +39,10 @@ public class RaceResultView {
     }
 
     private void readRoundSnapshot(RoundSnapshot roundSnapshot) {
-        roundSnapshot.getCarSnapshots().forEach(this::readCarMoveInfo);
+        roundSnapshot.getCarSnapshots().forEach(this::readCarSnapshot);
     }
 
-    private void readCarMoveInfo(CarSnapshot carSnapshot) {
+    private void readCarSnapshot(CarSnapshot carSnapshot) {
         readName(carSnapshot);
         readDistance(carSnapshot);
         changeLine();
@@ -58,7 +58,7 @@ public class RaceResultView {
     }
 
     private void readDistance(CarSnapshot carSnapshot) {
-        for (int i = 0; i < carSnapshot.distance(); i++) {
+        for (int i = 0; i < carSnapshot.getCarDistance().getDistance(); i++) {
             raceResult.append(PRINT_DISTANCE_MARK);
         }
     }

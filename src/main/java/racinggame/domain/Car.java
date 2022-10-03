@@ -10,8 +10,8 @@ public class Car {
 
     private IntPredicate canMovePredicate;
 
-    private int distance;
-    private CarName carName;
+    private CarDistance carDistance;
+    private final CarName carName;
 
     public Car(String name) {
         this(name, randomNumber -> randomNumber >= CAN_MOVE_MIN_NUMBER);
@@ -24,10 +24,11 @@ public class Car {
 
         this.canMovePredicate = canMovePredicate;
         this.carName = new CarName(name);
+        this.carDistance = new CarDistance(0);
     }
 
-    public int distance() {
-        return distance;
+    public CarDistance getCarDistance() {
+        return this.carDistance;
     }
 
     public CarName getCarName() {
@@ -43,7 +44,7 @@ public class Car {
             return;
         }
 
-        this.distance++;
+        this.carDistance = carDistance.plus();;
     }
 
 

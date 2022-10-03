@@ -1,6 +1,7 @@
 package racinggame.dto;
 
 import racinggame.domain.Car;
+import racinggame.domain.CarDistance;
 import racinggame.domain.CarName;
 
 /**
@@ -8,19 +9,19 @@ import racinggame.domain.CarName;
  */
 public class CarSnapshot {
 
-    private CarName name;
-    private int distance;
+    private CarName carName;
+    private CarDistance carDistance;
 
     public CarSnapshot(Car car) {
-        this.name = car.getCarName();
-        this.distance = car.distance();
+        this.carName = car.getCarName();
+        this.carDistance = car.getCarDistance();
     }
 
     public CarName name() {
-        return name;
+        return carName;
     }
 
-    public int distance() {
-        return distance;
+    public CarDistance getCarDistance() {
+        return carDistance;
     }
 }
