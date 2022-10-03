@@ -12,16 +12,20 @@ public class Cars {
     }
 
     public void add() {
-        carList.add(new Car());
+        this.carList.add(new Car());
     }
 
     public void add(int number) {
         for (int i = 0; i < number; i++) {
-            carList.add(new Car());
+            this.carList.add(new Car());
         }
     }
 
     public void moveAll() {
-        carList.forEach(Car::move);
+        this.carList.forEach(Car::move);
+    }
+
+    public void clear() {
+        this.carList.clear();
     }
 }

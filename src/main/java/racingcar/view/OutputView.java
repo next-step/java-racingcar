@@ -1,14 +1,11 @@
 package racingcar.view;
 
-import racingcar.Car;
 import racingcar.Cars;
 
 public class OutputView {
 
     public static void printResult(Cars cars) {
-        cars.moveAll();
         cars.carList().forEach(car -> printCarTrack(car.totalMoveCount()));
-
         System.out.println();
     }
 
