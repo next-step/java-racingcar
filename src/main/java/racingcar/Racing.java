@@ -1,8 +1,7 @@
 package racingcar;
 
 public class Racing {
-	private static final char ASCII_ZERO = 48;
-	private static final char ASCII_NINE = 57;
+	private static ConditionStrategy conditionStrategy = new MatchCondition();
 
 	public static void playRace() {
 		Print.participantsOfRacing();
@@ -39,17 +38,7 @@ public class Racing {
 	}
 
 	public static String checkInput(String input) {
-		if (validateMinus(input) || validateCharacterNotNumber(input)) {
-			throw new RuntimeException();
-		}
+		conditionStrategy.validInput(input);
 		return input;
-	}
-
-	private static boolean validateMinus(String input) {
-		return Integer.parseInt(input) < 0;
-	}
-
-	private static boolean validateCharacterNotNumber(String input) {
-		return ASCII_NINE < input.charAt(0) && input.charAt(0) < ASCII_ZERO;
 	}
 }
