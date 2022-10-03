@@ -1,9 +1,6 @@
-package racingCar;
+package racingCar.domain;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -17,7 +14,7 @@ public class Cars {
         this.cars = new ArrayList<>();
         String[] sCars = carNames.split(",");
         for (String sCar : sCars) {
-            cars.add(new Car().createCar(sCar));
+            cars.add(new Car(sCar));
         }
     }
 
@@ -34,18 +31,19 @@ public class Cars {
     public List<String> getWinners() {
         int maxPos = getMaxPos();
 
-        List<String> winners = new ArrayList<>();
-        cars.stream()
+        return cars.stream()
                 .filter(car -> car.getPos() == maxPos)
-                .forEach(car -> winners.add(car.getName()));
-
-        return winners;
+                .map(car -> car.getName())
+                .collect(Collectors.toList());
     }
 
     private int getMaxPos() {
-        Collections.sort(getCars());
-        int maxPos = getCars().get(0).getPos();
-        return maxPos;
+
+        return cars
+                .stream()
+                .mapToInt(car -> car.getPos())
+                .max()
+                .orElseThrow(NoSuchElementException::new);
     }
 
 }

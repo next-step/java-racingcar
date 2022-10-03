@@ -1,4 +1,4 @@
-package racingCar;
+package racingCar.view;
 
 import java.util.Scanner;
 
@@ -15,10 +15,6 @@ public class InputView {
 
     public static String printQuestionInputString(String question) {
         System.out.println(question);
-        return scanner.nextLine();
-    }
-
-    public String inputString() {
         return scanner.nextLine();
     }
 }
