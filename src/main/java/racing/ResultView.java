@@ -1,5 +1,8 @@
 package racing;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class ResultView {
     private static final String DISTANCE_CHARACTER = "-";
     private static final String ROUND = "라운드";
@@ -31,5 +34,11 @@ public class ResultView {
 
     public static void printNewLine() {
         System.out.println();
+    }
+
+    public static void printWinners(List<String> winnerNames) {
+        String names = winnerNames.stream().collect(Collectors.joining(","));
+        String msg = String.format("%s가 최종 우승했습니다.", names);
+        System.out.println(msg);
     }
 }

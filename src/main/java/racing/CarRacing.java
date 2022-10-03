@@ -3,6 +3,7 @@ package racing;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarRacing {
     private List<Car> cars = new ArrayList<>();
@@ -24,7 +25,17 @@ public class CarRacing {
             playRound();
             announceRoundResult(i);
         }
+        announceWinner();
+    }
 
+    private void announceWinner() {
+        List<String> winnerNames = findWinners();
+        ResultView.printWinners(winnerNames);
+    }
+
+    private List<String> findWinners() {
+        int maxDistance = cars.stream().mapToInt(Car::getDistance).max().getAsInt();
+        return cars.stream().filter(car -> car.getDistance() == maxDistance).map(car -> car.getName()).collect(Collectors.toList());
     }
 
     private void playRound() {
