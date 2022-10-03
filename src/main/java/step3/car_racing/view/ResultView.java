@@ -1,17 +1,34 @@
 package step3.car_racing.view;
 
+import step3.car_racing.model.Car;
+import step3.car_racing.model.Cars;
 import step3.car_racing.service.Racing;
 
 public class ResultView {
 
-    public void result(InputView input) {
+    public static void result(int carSize, int racingSize) {
 
         System.out.println();
 
         System.out.println("실행결과");
 
-        new Racing().race(input);
+        Cars cars = new Cars(carSize);
+
+        racing(racingSize, cars);
     }
 
+    private static void racing(int racingSize, Cars cars) {
+        for (int i = 0; i < racingSize; i++) {
+            Racing racing = new Racing(cars);
+            printDistance(racing);
+        }
+    }
+
+    private static void printDistance(Racing racing) {
+        for (Car car : racing.getRaceResult().getCarList()) {
+            System.out.println(car.getDistance());
+        }
+        System.out.println();
+    }
 
 }

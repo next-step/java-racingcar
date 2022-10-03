@@ -12,10 +12,13 @@ class CarsTest {
     void makeCarList() {
 
         // given
-        Cars cars = new Cars();
         int carSize = 5;
 
-        // expected
-        assertThat(cars.makeCarList(carSize).getCarList().size()).isEqualTo(carSize);
+        // when
+        Cars cars = new Cars(5);
+
+        // then
+        assertThat(cars.getCarList().size()).isEqualTo(carSize);
     }
+
 }

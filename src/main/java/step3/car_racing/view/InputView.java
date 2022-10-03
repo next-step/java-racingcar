@@ -15,17 +15,17 @@ public class InputView {
         throw new AssertionError();
     }
 
-    public int inputCarSize() {
+    public static int inputCarSize() {
         System.out.println(CAR_SIZE_REQUEST_MESSAGE);
         return validateInput();
     }
 
-    public int inputRacingSize() {
+    public static int inputRacingSize() {
         System.out.println(RACING_SIZE_REQUEST_MESSAGE);
         return validateInput();
     }
 
-    private int validateInput() {
+    private static int validateInput() {
         String input = SCANNER.next();
 
         while (!validatePositive(input)) {
@@ -36,7 +36,7 @@ public class InputView {
         return Integer.parseInt(input);
     }
 
-    private boolean validatePositive(String input) {
+    private static boolean validatePositive(String input) {
         try {
             return Integer.parseInt(input) > ZERO;
         } catch (NumberFormatException e) {
