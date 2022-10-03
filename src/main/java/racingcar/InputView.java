@@ -16,7 +16,7 @@ public class InputView {
         return numOfCars;
     }
 
-    public static int getTryCount() {
+    public static int getTryingCount() {
         System.out.print("시도할 회수는 몇 회 인가요?");
         int count = scanner.nextInt();
 
