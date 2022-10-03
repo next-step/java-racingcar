@@ -8,11 +8,11 @@ import racinggame.view.RaceResultView;
 public class RaceRunner {
 
     public static void main(String[] args) {
-        RaceController race = new RaceController(new RaceService());
-        RaceResultDTO raceResultDTO = race.start(RaceInputReader.raed());
+        RaceController raceController = new RaceController(new RaceService());
+        RaceResultDTO raceResultDTO = raceController.start(RaceInputReader.raed());
 
         RaceResultView raceResultView = new RaceResultView();
-        raceResultView.readRaceReslut(raceResultDTO);
+        raceResultView.readRaceResult(raceResultDTO);
         raceResultView.printResult();
     }
 }

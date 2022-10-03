@@ -2,18 +2,20 @@ package racinggame.domain;
 
 import racinggame.dto.RaceInputDTO;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class CarFactory {
     private CarFactory() {
     }
 
-    public static List<Car> produce(RaceInputDTO dto) {
-        return IntStream.range(0, dto.carCount())
-                .mapToObj(i -> new Car())
+    public static RacingCars produce(RaceInputDTO dto) {
+        List<Car> cars = Arrays.stream(dto.getCarNames())
+                .map(Car::new)
                 .collect(Collectors.toList());
+
+        return new RacingCars(cars);
     }
 
 }

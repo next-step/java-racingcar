@@ -1,19 +1,19 @@
 package racinggame.dto;
 
 public class RaceInputDTO {
-    private int roundCount;
-    private int carCount;
+    private final int roundCount;
+    private final String[] carNames;
 
-    public RaceInputDTO(int roundCount, int carCount) {
+    public RaceInputDTO(int roundCount, String[] carNames) {
         this.roundCount = roundCount;
-        this.carCount = carCount;
+        this.carNames = carNames;
     }
 
     public int roundCount() {
         return roundCount;
     }
 
-    public int carCount() {
-        return carCount;
+    public String[] getCarNames() {
+        return carNames;
     }
 }
