@@ -23,6 +23,6 @@ class CarCountTest {
     @Test
     @DisplayName("자동차 대수 만큼 자동차를 생성한다.")
     void create_cars_with_count() {
-        assertThat(new CarCount(2).create().size()).isEqualTo(2);
+        assertThat(new CarCount(2).create()).hasSize(2);
     }
 }
