@@ -10,6 +10,10 @@ public class Position extends AtomicInteger {
         super(0);
     }
 
+    public Position(Integer position) {
+        super(position);
+    }
+
     public void add() {
         Winner.compareWithWinnerPosition(this.addAndGet(1));
     }

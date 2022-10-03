@@ -1,21 +1,20 @@
 package com.game.racing.domain.car;
 
-import com.game.racing.domain.generator.NumberGenerator;
 import com.game.racing.domain.position.Position;
-import com.game.racing.view.ResultView;
 
 public class Car {
 
-    public static final Integer MIN_VALUE_TO_MOVE_CAR = 4;
     private final Position position;
+    private final CarName name;
 
-    private final NumberGenerator numberGenerator;
-    private final String name;
+    public Car(String name) {
+        this.position = new Position(0);
+        this.name = new CarName(name);
+    }
 
-    public Car(String name, NumberGenerator numberGenerator) {
-        this.position = new Position();
-        this.name = name;
-        this.numberGenerator = numberGenerator;
+    public Car(String name, Position position) {
+        this.position = position;
+        this.name = new CarName(name);
     }
 
     public Position getPosition() {
@@ -23,17 +22,11 @@ public class Car {
     }
 
     public String getName() {
-        return name;
+        return name.getCarName();
     }
 
     public void move() {
-        moveCarByGeneratedValue();
-        ResultView.printCarNameAndPosition(this);
+        this.position.add();
     }
 
-    private void moveCarByGeneratedValue() {
-        if (numberGenerator.generate() >= MIN_VALUE_TO_MOVE_CAR) {
-            position.add();
-        }
-    }
 }

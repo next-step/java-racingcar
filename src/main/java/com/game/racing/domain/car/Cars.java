@@ -1,40 +1,38 @@
 package com.game.racing.domain.car;
 
-import com.game.racing.domain.generator.NumberGenerator;
-import com.game.racing.view.ResultView;
-
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.stream.Collectors;
+
+import static com.game.racing.domain.car.Winner.getWinnerPosition;
 
 public class Cars {
 
-    private final Map<String, Car> cars;
+    private final List<Car> cars;
 
-    public Cars(String[] carNames, NumberGenerator numberGenerator) {
-        this.cars = new LinkedHashMap<>();
-        addNewCarsWithNames(carNames, numberGenerator);
+    public Cars(String[] carNames) {
+        this.cars = new ArrayList<>();
+        addNewCarsWithNames(carNames);
     }
 
-    private void addNewCarsWithNames(String[] carNames, NumberGenerator numberGenerator) {
+    private void addNewCarsWithNames(String[] carNames) {
         for (String carName : carNames) {
-            this.cars.put(carName, new Car(carName, numberGenerator));
+            this.cars.add(new Car(carName));
         }
     }
 
-    public Integer getTotalCarSize() {
+    public int getTotalCarSize() {
         return cars.size();
     }
 
-    public void moveCars() {
-        for (String carName : cars.keySet()) {
-            cars.get(carName).move();
-        }
-        ResultView.printNewLine();
+    public List<Car> getRacingCars() {
+        return cars;
     }
 
-    public List<Car> getRacingCars() {
-        return new ArrayList<>(cars.values());
+    public List<Car> getRacingWinners() {
+        return cars.stream()
+                .filter(car -> car.getPosition().get() == getWinnerPosition())
+                .collect(Collectors.toUnmodifiableList());
     }
+
 }

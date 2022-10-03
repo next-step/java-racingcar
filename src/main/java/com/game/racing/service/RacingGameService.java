@@ -1,29 +1,53 @@
 package com.game.racing.service;
 
+import com.game.racing.domain.car.Car;
 import com.game.racing.domain.car.Cars;
+import com.game.racing.domain.generator.NumberGenerator;
 import com.game.racing.domain.generator.RandomNumberGenerator;
 import com.game.racing.view.ResultView;
 
 public class RacingGameService {
 
+    public static final Integer MIN_VALUE_TO_MOVE_CAR = 4;
+
     private final Cars cars;
     private final Integer tryCount;
+    private final NumberGenerator numberGenerator;
 
     public RacingGameService(String[] carNames, Integer tryCount) {
-        this.cars = new Cars(carNames, new RandomNumberGenerator());
+        this(carNames, tryCount, new RandomNumberGenerator());
+    }
+
+    public RacingGameService(String[] carNames, Integer tryCount, NumberGenerator numberGenerator) {
+        this.numberGenerator = numberGenerator;
+        this.cars = new Cars(carNames);
         this.tryCount = tryCount;
     }
 
-    public Cars playRacingGame() {
-        moveCarsByTryCount(cars, tryCount);
+    public void playRacingGame() {
+        moveCarsByTryCountAndGetCars();
+        ResultView.printWinner(cars.getRacingWinners());
+    }
+
+    public Cars moveCarsByTryCountAndGetCars() {
+        ResultView.printResultMessage();
+        for (int i = 0; i < tryCount; i++) {
+            for (Car car : cars.getRacingCars()) {
+                moveCarByGeneratedValue(car);
+            }
+            ResultView.printNewLine();
+        }
         return cars;
     }
 
-    public void moveCarsByTryCount(Cars cars, Integer tryCount) {
-        ResultView.printResultMessage();
-        for (int i = 0; i < tryCount; i++) {
-            cars.moveCars();
+    private void moveCarByGeneratedValue(Car car) {
+        if (numberGenerator.generate() >= MIN_VALUE_TO_MOVE_CAR) {
+            car.move();
         }
+        ResultView.printCarNameAndPosition(car);
     }
 
+    public Cars getCars() {
+        return cars;
+    }
 }
