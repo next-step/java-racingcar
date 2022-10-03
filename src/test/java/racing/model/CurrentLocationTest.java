@@ -22,7 +22,8 @@ class CurrentLocationTest {
     void goStraightTest() {
         CurrentLocation currentLocation = new CurrentLocation(NOT_START);
         currentLocation = currentLocation.goStraight();
-        assertThat(currentLocation.getCurrentLocation()).isEqualTo(ONE_GO_STRAIGHT);
+        CurrentLocation oneGoStraight = new CurrentLocation(ONE_GO_STRAIGHT);
+        assertThat(currentLocation).isEqualTo(oneGoStraight);
     }
 
     @Test
@@ -30,6 +31,6 @@ class CurrentLocationTest {
     void isSameLocationTest() {
         CurrentLocation oneLocation = new CurrentLocation(ONE_GO_STRAIGHT);
         CurrentLocation oneLocation2 = new CurrentLocation(ONE_GO_STRAIGHT);
-        assertThat(oneLocation.isSameCurrentLocation(oneLocation2)).isEqualTo(true);
+        assertThat(oneLocation).isEqualTo(oneLocation2);
     }
 }

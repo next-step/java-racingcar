@@ -11,7 +11,7 @@ public class GameInput {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static List<String> getCarArrayBySplit() {
+    public static List<String> getCarNames() {
         System.out.println(ASK_CAR_COUNT);
         return Arrays.asList(scanner.nextLine().split(","));
     }

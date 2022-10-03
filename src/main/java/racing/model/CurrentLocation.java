@@ -23,10 +23,6 @@ public class CurrentLocation implements Comparable<CurrentLocation> {
         return this.currentLocation;
     }
 
-    public boolean isSameCurrentLocation(CurrentLocation comparisonCurrentLocation) {
-        return this.currentLocation == comparisonCurrentLocation.currentLocation;
-    }
-
     private void validateLocation(int startLocation) {
         if (startLocation < MIN_LOCATION) {
             throw new IllegalArgumentException(MINUS_LOCATION_ERROR_MESSAGE + startLocation);

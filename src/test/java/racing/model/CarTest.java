@@ -31,11 +31,18 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("자동차 이름이 같더라도 다른 객체로 판단한다.")
-    void sameNameButDifferentCar() {
+    @DisplayName("자동차 이름이 같더라도  위치가 다르면 다른 객체로 판단한다.")
+    void sameNameAndDifferentLocationIsDifferentCar() {
         Car car = new Car(0, NORMAL_NAME);
-        Car car2 = new Car(0, NORMAL_NAME);
+        Car car2 = new Car(1, NORMAL_NAME);
         assertThat(car).isNotEqualTo(car2);
     }
 
+    @Test
+    @DisplayName("자동차 이름과 위치가 같다면 같은 객체로 판단한다.")
+    void sameNameAndSameocationIsEqualCar() {
+        Car car = new Car(0, NORMAL_NAME);
+        Car car2 = new Car(0, NORMAL_NAME);
+        assertThat(car).isEqualTo(car2);
+    }
 }

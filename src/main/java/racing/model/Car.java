@@ -2,6 +2,8 @@ package racing.model;
 
 import racing.strategy.GoStraightStrategy;
 
+import java.util.Objects;
+
 public class Car implements Comparable<Car> {
 
     private CurrentLocation currentLocation;
@@ -32,11 +34,24 @@ public class Car implements Comparable<Car> {
     }
 
     public boolean isSameCurrentLocation(Car comparisonCar) {
-        return currentLocation.isSameCurrentLocation(comparisonCar.currentLocation);
+        return currentLocation.equals(comparisonCar.currentLocation);
     }
 
     @Override
     public int compareTo(Car o) {
         return currentLocation.compareTo(o.currentLocation);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Car)) return false;
+        Car car = (Car) o;
+        return Objects.equals(getCurrentLocation(), car.getCurrentLocation()) && Objects.equals(getName(), car.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getCurrentLocation(), getName());
     }
 }

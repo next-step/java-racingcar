@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public class Game {
 
     public void play() {
-        final List<String> carNames = GameInput.getCarArrayBySplit();
+        final List<String> carNames = GameInput.getCarNames();
         final Cars cars = this.carSetting(carNames);
         GameOutput.printCarCount(cars);
 

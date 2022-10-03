@@ -3,11 +3,12 @@ package racing.model;
 import java.util.Objects;
 
 public class Name {
+
     private static final String NULL_OR_BLANK_ERROR_MESSAGE = "자동차의 이름은 빈 문자열 혹은 Null로 설정할 수 없습니다.";
     private static final String FIVE_LENGTH_OVER_ERROR_MESSAGE = "자동차의 이름은 5자를 초과할 수 없습니다. 입력한 자동차이름 : ";
     private static final int MAX_LENGTH = 5;
-    private final String name;
 
+    private final String name;
 
     public Name(String name) {
         validateName(name);
