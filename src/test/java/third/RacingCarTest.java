@@ -16,9 +16,9 @@ public class RacingCarTest {
     }
 
     @Test
-    public void carMoveTest() {
+    public void MoveTest() {
         Car car = new Car();
-        car.carMove(4);
-        assertThat(car.getCarLocation().length()).isEqualTo(2);
+        car.Move(4);
+        assertThat(car.getCarLocation()).isEqualTo(2);
     }
 }
