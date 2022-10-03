@@ -2,9 +2,9 @@ package racing.view;
 
 import racing.model.Car;
 import racing.model.Cars;
-import racing.util.StringUtil;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class GameOutput {
 
@@ -14,6 +14,7 @@ public class GameOutput {
     private static final String NOTICE_WINNER = "가 최종 우승했습니다.";
     private static final String GO_STRAIGHT_TEXT = "-";
     private static final String COLON = " : ";
+    private static final String COMMA = ", ";
 
     public static void printRoundResultCurrentLocationAndCarName(List<Car> carList) {
         for (Car car : carList) {
@@ -23,7 +24,7 @@ public class GameOutput {
     }
 
     public static void printCarCount(Cars cars) {
-        System.out.println(StringUtil.getNameInCarList(cars.getCarList()));
+        System.out.println(getNameInCars(cars.getCarList()));
     }
 
     public static void printRoundCount(int roundCount) {
@@ -35,8 +36,14 @@ public class GameOutput {
     }
 
     public static void printNoticeWinner(Cars cars) {
-        String winner = StringUtil.getNameInCarList(cars.getCarList());
+        String winner = getNameInCars(cars.getCarList());
         System.out.println(winner + NOTICE_WINNER);
+    }
+
+    public static String getNameInCars(List<Car> cars) {
+        return cars.stream()
+                .map(it -> it.getName())
+                .collect(Collectors.joining(COMMA));
     }
 
 }
