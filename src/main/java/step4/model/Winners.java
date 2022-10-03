@@ -6,10 +6,12 @@ import java.util.stream.Collectors;
 
 public class Winners {
 
+	private static final String DELIMITER = ", ";
+
 	private final List<String> winners;
 
     public Winners() {
-        this.winners = new ArrayList<>();
+        winners = new ArrayList<>();
     }
 
     public int getWinnerStandard(Cars cars){
@@ -23,11 +25,19 @@ public class Winners {
 
 	public void checkWinners(Cars cars, int maxMoveCnt) {
 		for(Car car : cars.getCars()){
-			if(maxMoveCnt == car.getMoveCnt()) winners.add(car.getName());
+			isWinner(maxMoveCnt, car);
+		}
+	}
+
+	private void isWinner(int maxMoveCnt, Car car) {
+		if(maxMoveCnt == car.getMoveCnt()) {
+			winners.add(car.getName());
 		}
 	}
 
 	public String getWinners(){
-		return winners.stream().map(String::valueOf).collect(Collectors.joining(", "));
+		return winners.stream()
+				.map(String::valueOf)
+				.collect(Collectors.joining(DELIMITER));
 	}
 }

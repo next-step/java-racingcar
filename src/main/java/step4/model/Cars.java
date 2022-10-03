@@ -15,7 +15,9 @@ public class Cars {
 
     public void init(String nameListString) {
 		String[] names = nameListString.split(SPLIT_STANDARD);
-		Arrays.stream(names).map(Car::new).forEachOrdered(cars::add);
+		Arrays.stream(names)
+				.map(Car::new)
+				.forEachOrdered(cars::add);
 	}
 
 	public List<Car> getCars() {
