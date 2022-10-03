@@ -45,7 +45,7 @@ public class CarRacing {
     private void announceResult(int round) {
         ResultView.printRound(round);
         for (Car car: cars) {
-            ResultView.printDistance(car.distance());
+            ResultView.printDistance(car.getDistance());
         }
         ResultView.printNewLine();
     }

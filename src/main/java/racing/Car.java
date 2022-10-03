@@ -9,7 +9,7 @@ public class Car {
         if (canRun()) { distance += 1; }
     }
 
-    public int distance() {
+    public int getDistance() {
         return distance;
     }
 
