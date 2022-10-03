@@ -10,9 +10,9 @@ public class Main {
         int numberOfTrials = InputView.queryNumberOfTrials();
 
         List<Car> cars = createCars(numberOfCars);
-        CarRace carRace = new CarRace(cars);
+        CarRace race = new CarRace(cars);
         for (int i = 0; i < numberOfTrials; i++) {
-            carRace.race();
+            race.round();
             ResultView.printCars(cars);
         }
     }
