@@ -1,6 +1,12 @@
+package model;
+
 import java.util.Scanner;
 
-public class InputView {
+public final class InputView {
+
+    private InputView() {
+    }
+
     public static int inputInteger() {
         Scanner sc = new Scanner(System.in);
         return sc.nextInt();

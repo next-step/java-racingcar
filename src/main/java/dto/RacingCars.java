@@ -1,3 +1,5 @@
+package dto;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,6 +20,14 @@ public class RacingCars {
 
         for (String name : names) {
             racingCars.add(new RacingCar(0, name));
+        }
+    }
+
+    public RacingCars(int numOfCars, int[] distances, String[] names) {
+        racingCars = new ArrayList<>();
+
+        for (int index = 0; index < numOfCars; index++) {
+            racingCars.add(new RacingCar(distances[index], names[index]));
         }
     }
 

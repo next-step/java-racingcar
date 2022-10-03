@@ -1,3 +1,8 @@
+package service;
+
+import dto.RacingCar;
+import dto.RacingCars;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -5,6 +10,7 @@ public class RacingCarService {
 
     public List<String> findRaceWinners(RacingCars racingCars) {
         int raceWinnerDistance = findRaceWinnerDistance(racingCars.distance());
+        if (raceWinnerDistance <= 0) throw new IllegalStateException("우승자가 존재하지 않습니다.");
         return findRaceWinners(racingCars.getRacingCars(), raceWinnerDistance);
     }
 
