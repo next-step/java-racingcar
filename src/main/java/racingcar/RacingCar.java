@@ -10,6 +10,9 @@ public class RacingCar {
 
     public RacingCar(Random random, int count) {
         this.random = random;
+        if(count < 0 || count > 99) {
+            throw new RuntimeException("count는 1에서 99까지의 숫자만 입력가능합니다.");
+        }
         this.histories = new int[count];
         initHistories();
     }
