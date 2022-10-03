@@ -4,7 +4,8 @@ import java.util.Objects;
 import step3.exception.ExceedLengthException;
 import step3.exception.NullOrEmptyException;
 
-public class Car implements Comparable<Car> {
+public class Car {
+    private static final int START_POSITION = 0;
     private static final int MIN_NUM_TO_MOVE = 4;
     private static final int MAX_NAME_LENGTH = 5;
 
@@ -20,10 +21,10 @@ public class Car implements Comparable<Car> {
             throw new ExceedLengthException(MAX_NAME_LENGTH);
         }
 
-        return new Car(name, 0);
+        return new Car(name, START_POSITION);
     }
 
-    Car(String name, int position) {
+    public Car(String name, int position) {
         this.name = name;
         this.position = position;
     }
@@ -36,17 +37,16 @@ public class Car implements Comparable<Car> {
         return this;
     }
 
+    public boolean isWinner(Car other) {
+        return this.position >= other.position;
+    }
+
     public int getPosition() {
         return this.position;
     }
 
     public String getName() {
         return this.name;
-    }
-
-    @Override
-    public int compareTo(Car o) {
-        return this.getPosition() < o.getPosition() ? -1 : 1;
     }
 
     @Override

@@ -1,6 +1,8 @@
 package step3.ui;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
 import step3.domains.Car;
 import step3.domains.GameResult;
 
@@ -18,8 +20,7 @@ public class ResultView {
     public void printWinnerList() {
         String winner = gameResult.getWinners().stream()
                 .map(Car::getName)
-                .reduce((n1, n2) -> n1 + ", " + n2)
-                .get();
+                .collect(Collectors.joining(", "));
 
         System.out.println(String.format(WINNER_TITLE_FORMAT, winner));
     }
