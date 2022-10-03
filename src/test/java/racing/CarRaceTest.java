@@ -17,7 +17,10 @@ public class CarRaceTest {
 
     @Test
     void test_round() {
-        List<Car> cars = List.of(new Car(() -> true), new Car(() -> true));
+        List<Car> cars = List.of(
+                new Car("car1", () -> true),
+                new Car("car2", () -> true)
+        );
         CarRace carRace = new CarRace(cars);
         carRace.round();
 

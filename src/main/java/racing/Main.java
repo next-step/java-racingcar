@@ -1,15 +1,15 @@
 package racing;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
-        int numberOfCars = InputView.queryNumberOfCars();
+        String[] carNames = InputView.queryCarNames();
         int numberOfTrials = InputView.queryNumberOfTrials();
 
-        List<Car> cars = createCars(numberOfCars);
+        List<Car> cars = createCars(carNames);
         CarRace race = new CarRace(cars);
         for (int i = 0; i < numberOfTrials; i++) {
             race.round();
@@ -17,9 +17,7 @@ public class Main {
         }
     }
 
-    private static List<Car> createCars(int numberOfCars) {
-        return Stream.generate(Car::new)
-                .limit(numberOfCars)
-                .collect(Collectors.toList());
+    private static List<Car> createCars(String[] carNames) {
+        return Arrays.stream(carNames).map(Car::new).collect(Collectors.toList());
     }
 }
