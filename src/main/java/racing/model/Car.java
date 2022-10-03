@@ -27,7 +27,7 @@ public class Car implements Comparable<Car> {
 
     public void goStraight(GoStraightStrategy goStraightStrategy) {
         if (goStraightStrategy.isGoStraight()) {
-            this.currentLocation.goStraight();
+            this.currentLocation = this.currentLocation.goStraight();
         }
     }
 
@@ -37,6 +37,6 @@ public class Car implements Comparable<Car> {
 
     @Override
     public int compareTo(Car o) {
-        return currentLocation.compareCurrentLocation(o.currentLocation);
+        return currentLocation.compareTo(o.currentLocation);
     }
 }

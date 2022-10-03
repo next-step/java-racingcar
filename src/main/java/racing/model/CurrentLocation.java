@@ -2,23 +2,21 @@ package racing.model;
 
 import java.util.Objects;
 
-public class CurrentLocation {
+public class CurrentLocation implements Comparable<CurrentLocation> {
 
-    private static final int Min_Location = 0;
+    private static final String MINUS_LOCATION_ERROR_MESSAGE = "자동차의 거리를 음수로 설정할 수 없습니다. 현재 거리 설정값 : ";
+    private static final int MIN_LOCATION = 0;
+    private static final int ONE_GO_STRAIGHT = 1;
 
-    private int currentLocation;
+    private final int currentLocation;
 
     public CurrentLocation(int startLocation) {
         validateLocation(startLocation);
         this.currentLocation = startLocation;
     }
 
-    public void goStraight() {
-        this.currentLocation++;
-    }
-
-    public int compareCurrentLocation(CurrentLocation o) {
-        return Integer.compare(this.currentLocation, o.currentLocation);
+    public CurrentLocation goStraight() {
+        return new CurrentLocation(this.currentLocation + ONE_GO_STRAIGHT);
     }
 
     public int getCurrentLocation() {
@@ -30,11 +28,10 @@ public class CurrentLocation {
     }
 
     private void validateLocation(int startLocation) {
-        if (startLocation < Min_Location) {
-            throw new IllegalArgumentException();
+        if (startLocation < MIN_LOCATION) {
+            throw new IllegalArgumentException(MINUS_LOCATION_ERROR_MESSAGE + startLocation);
         }
     }
-
 
     @Override
     public boolean equals(Object o) {
@@ -47,5 +44,10 @@ public class CurrentLocation {
     @Override
     public int hashCode() {
         return Objects.hash(currentLocation);
+    }
+
+    @Override
+    public int compareTo(CurrentLocation o) {
+        return Integer.compare(this.currentLocation, o.currentLocation);
     }
 }

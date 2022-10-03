@@ -7,11 +7,9 @@ import static org.assertj.core.api.Assertions.*;
 
 class CurrentLocationTest {
 
-    static final int MINUS_VALUE = -1;
+    private static final int MINUS_VALUE = -1;
     private static final int NOT_START = 0;
     private static final int ONE_GO_STRAIGHT = 1;
-
-    static final
 
     @Test
     @DisplayName("시작점을 생성할 때 음수를 입력할 경우 에러를 발생한다.")
@@ -23,7 +21,7 @@ class CurrentLocationTest {
     @DisplayName("전진을 할 때 1칸 앞으로 가는지 판단한다.")
     void goStraightTest() {
         CurrentLocation currentLocation = new CurrentLocation(NOT_START);
-        currentLocation.goStraight();
+        currentLocation = currentLocation.goStraight();
         assertThat(currentLocation.getCurrentLocation()).isEqualTo(ONE_GO_STRAIGHT);
     }
 
