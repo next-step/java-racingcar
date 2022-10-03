@@ -3,13 +3,16 @@ package util;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class StringCalculator {
-    private final String DEFAULT_PATTERN = "[,:]";
+public final class StringCalculator {
+    private static final String DEFAULT_PATTERN = "[,:]";
     private static final Pattern PATTERN = Pattern.compile("//(.)\n(.*)");
-    private final String EMPTY_STRING = "";
-    private final int ZERO = 0;
+    private static final String EMPTY_STRING = "";
+    private static final int ZERO = 0;
 
-    public long addStringNumber(String text) {
+    private StringCalculator() {
+    }
+
+    public static long addStringNumber(String text) {
         if (isNullOrEmpty(text)) return ZERO;
 
         String[] words = split(text);
@@ -19,7 +22,7 @@ public class StringCalculator {
         return sum(numbers);
     }
 
-    public String[] split(String text) {
+    public static String[] split(String text) {
         String[] words = text.split(findDelimiter(text));
         String[] result = new String[words.length];
 
@@ -33,15 +36,15 @@ public class StringCalculator {
         return result;
     }
 
-    private Boolean isNullOrEmpty(String text) {
+    private static Boolean isNullOrEmpty(String text) {
         return text == null || text.equals(EMPTY_STRING);
     }
 
-    private Boolean isIllegalStringNumber(String word) {
+    private static Boolean isIllegalStringNumber(String word) {
         return word.equals("//");
     }
 
-    private Positive[] convertStringToNumber(String[] words) {
+    private static Positive[] convertStringToNumber(String[] words) {
 
         Positive[] numbers = new Positive[words.length];
 
@@ -55,7 +58,7 @@ public class StringCalculator {
         return numbers;
     }
 
-    private String findDelimiter(String text) {
+    private static String findDelimiter(String text) {
         String comma = ",";
         String colon = ":";
 
@@ -69,7 +72,7 @@ public class StringCalculator {
         return EMPTY_STRING;
     }
 
-    private long sum(Positive[] numbers) {
+    private static long sum(Positive[] numbers) {
         Positive result = new Positive(0);
         for (Positive number : numbers) {
             if (number == null) continue;
