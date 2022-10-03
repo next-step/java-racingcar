@@ -7,6 +7,7 @@ public class RacingCars {
     private final Car[] cars;
 
     private RacingCars(int number) {
+        validateNumber(number);
         this.cars = new Car[number];
         for (int i = 0; i < number; i++) {
             cars[i] = Car.from();
@@ -14,7 +15,6 @@ public class RacingCars {
     }
 
     public static RacingCars create(int number) {
-        validateNumber(number);
         return new RacingCars(number);
     }
 
