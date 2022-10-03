@@ -6,15 +6,16 @@ import java.util.stream.Collectors;
 
 public class Cars {
 
-	private List<Car> cars = new ArrayList<>();
+	private final List<Car> cars = new ArrayList<>();
 
-	public Cars(List<Car> cars) {
-		if (cars != null) {
-			this.cars = cars;
+	public Cars(List<Name> names) {
+		if (names == null) {
+			throw new IllegalArgumentException("자동차를 생성할 수 없습니다.");
 		}
+		generateCars(names);
 	}
 
-	public Cars(ArrayList<Name> names) {
+	private void generateCars(List<Name> names) {
 		for (Name name : names) {
 			cars.add(new Car(name));
 		}
