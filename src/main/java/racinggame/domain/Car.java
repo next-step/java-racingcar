@@ -1,11 +1,10 @@
-package racinggame;
+package racinggame.domain;
 
-public class Car {
-    private static final int MAX_POINT_TO_MOVE = 4;
+public class Car implements Comparable<Car>{
     private static final int MAX_NAME_LENGTH = 5;
     private static final String ERR_MAX_NAME_LENGTH = "자동차 이름은 5글자를 초과할 수 없습니다.";
 
-    private String name;
+    private final String name;
     private int status;
 
     public Car(String name) {
@@ -18,10 +17,6 @@ public class Car {
         this.status = status;
     }
 
-    public void forward() {
-        this.status++;
-    }
-
     public int getStatus() {
         return status;
     }
@@ -30,8 +25,8 @@ public class Car {
         return name;
     }
 
-    public void move(int number) {
-        if (number >= MAX_POINT_TO_MOVE) {
+    public void move(MovingStrategy movingStrategy) {
+        if (movingStrategy.movable()) {
             status++;
         }
     }
@@ -43,4 +38,11 @@ public class Car {
         return name;
     }
 
+    @Override
+    public int compareTo(Car other) {
+        if (this.status > other.getStatus()) {
+            return this.status;
+        }
+        return other.getStatus();
+    }
 }

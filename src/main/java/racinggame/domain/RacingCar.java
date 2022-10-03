@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.domain;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -12,14 +12,9 @@ public class RacingCar {
 
     public List<Car> racing() {
         for (Car car : cars) {
-            car.move(createRandomNumber());
+            car.move(new RandomMovingStrategy());
         }
         return cars;
-    }
-
-    private int createRandomNumber() {
-        Random random = new Random();
-        return random.nextInt(10);
     }
 
     public List<Car> getCars() {
@@ -27,13 +22,8 @@ public class RacingCar {
     }
 
     public List<Car> getWinners() {
-        int max = cars.stream()
-                .mapToInt(Car::getStatus)
-                .max()
-                .orElse(0);
-
         return cars.stream()
-                .filter(car -> car.getStatus() == max)
+                .filter(car -> car.getStatus() == car.compareTo(Collections.max(cars)))
                 .collect(Collectors.toList());
     }
 
