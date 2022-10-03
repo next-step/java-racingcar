@@ -1,21 +1,25 @@
 package step3;
 
 import java.util.Scanner;
-import step3.models.Game;
+import step3.domains.CarFactory;
+import step3.domains.Game;
 import step3.ui.InputView;
-import step3.ui.OutputView;
+import step3.ui.ResultView;
 
 public class Main {
     public static void main(String[] args) {
         InputView inputView = new InputView(new Scanner(System.in));
 
-        int carNumber = inputView.inputCarNumber();
+        String carsString = inputView.inputString();
         int tryNumber = inputView.inputTryNumber();
 
-        Game game = new Game(carNumber, tryNumber);
+        CarFactory carFactory = new CarFactory(carsString);
 
-        OutputView outputView = new OutputView(game.play());
+        Game game = new Game(carFactory.createCarList(), tryNumber);
+
+        ResultView outputView = new ResultView(game.play());
 
         outputView.printResult();
+        outputView.printWinnerList();
     }
 }
