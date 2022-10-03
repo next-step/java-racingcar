@@ -1,4 +1,6 @@
-package racingcarGame.model;
+package racingcar.model;
+
+import racingcar.exception.InvalidParameterException;
 
 import java.util.Objects;
 
@@ -9,6 +11,10 @@ public class Car {
     private String name;
 
     public Car(int position, String name) {
+        if (name.length() > 5) {
+            throw new InvalidParameterException("자동차 이름이 5자를 초과 할 수 없습니다");
+        }
+
         this.position = position;
         this.name = name;
     }
@@ -19,8 +25,8 @@ public class Car {
         }
     }
 
-    boolean isMovable(int num) {
-        return num >= RANDOM_BASE_VALUE;
+    private boolean isMovable(int chosenNumber) {
+        return chosenNumber >= RANDOM_BASE_VALUE;
     }
 
     public int getPosition() {

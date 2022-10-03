@@ -1,8 +1,8 @@
-package racingcarGame.client;
+package racingcar.client;
 
 import java.util.Scanner;
 
-import static racingcarGame.client.ResultView.show;
+import static racingcar.client.ResultView.show;
 
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);

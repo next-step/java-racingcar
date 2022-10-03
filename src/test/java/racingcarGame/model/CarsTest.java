@@ -1,25 +1,25 @@
-package racingcarGame;
+package racingcarGame.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcarGame.model.Car;
+import racingcar.model.Car;
+import racingcar.model.Cars;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racingcarGame.RacingGame.findWinner;
 
-class RacingGameTest {
+class CarsTest {
 
     @Test
     @DisplayName("게임 우승자가 1명의 경우 검증")
     public void find_winner() {
-        List<Car> cars = List.of(
+        Cars cars = new Cars(List.of(
                 new Car(4, "bella"),
-                new Car(3, "demian")
-        );
+                new Car(3, "demi")
+        ));
 
-        String result = findWinner(cars);
+        String result = cars.findWinner();
 
         assertThat(result).isEqualTo("bella");
     }
@@ -27,14 +27,14 @@ class RacingGameTest {
     @Test
     @DisplayName("게임 우승자가 여러 명의 경우 검증")
     public void find_winners() {
-        List<Car> cars = List.of(
+        Cars cars = new Cars(List.of(
                 new Car(4, "bella"),
-                new Car(4, "demian"),
+                new Car(4, "demi"),
                 new Car(2, "tina")
-        );
+        ));
 
-        String result = findWinner(cars);
+        String result = cars.findWinner();
 
-        assertThat(result).isEqualTo("bella, demian");
+        assertThat(result).isEqualTo("bella, demi");
     }
 }

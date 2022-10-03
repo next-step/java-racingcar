@@ -1,8 +1,6 @@
-package racingcarGame.client;
+package racingcar.client;
 
-import racingcarGame.model.Car;
-
-import java.util.List;
+import racingcar.model.Cars;
 
 public class ResultView {
     private static final String POSITION_DASH = "-";
@@ -20,8 +18,8 @@ public class ResultView {
         show(winner + "가 최종 우승했습니다.");
     }
 
-    public static void showResult(List<Car> cars) {
-        cars.forEach(car -> show(car.getName() + SEPARATE_COLON + POSITION_DASH.repeat(car.getPosition())));
+    public static void showResult(Cars cars) {
+        cars.getCars().forEach(car -> show(car.getName() + SEPARATE_COLON + POSITION_DASH.repeat(car.getPosition())));
         System.out.println();
     }
 }

@@ -1,13 +1,22 @@
-package racingcarGame;
+package racingcarGame.model;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racingcarGame.model.Car;
+import racingcar.model.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
+
+    @Test
+    @DisplayName("자동차 이름 5자 초과 검증")
+    public void createCar() {
+        assertThatThrownBy(() -> new Car(0, "bellas"))
+                .isInstanceOf(RuntimeException.class);
+    }
 
     @ParameterizedTest
     @CsvSource(value = {"4:1", "5:1"}, delimiter = ':')
