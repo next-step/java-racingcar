@@ -1,6 +1,5 @@
 package step3;
 
-import step3.cars.Cars;
 import step3.cars.RacingCars;
 import step3.input.ConsoleInputView;
 import step3.input.InputView;
@@ -17,7 +16,7 @@ public class Client {
         InputView inputView = new ConsoleInputView();
 
         RacingCars.Factory racingCarsFactory = new RacingCars.Factory(inputView.answerToQuestion("자동차 대수는 몇 대 인가요?"));
-        Cars cars = racingCarsFactory.cars();
+        RacingCars cars = racingCarsFactory.cars();
 
         int numberOfGames = inputView.answerToQuestion("시도할 회수는 몇 회 인가요?");
 

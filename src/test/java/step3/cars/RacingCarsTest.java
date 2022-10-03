@@ -18,7 +18,7 @@ class RacingCarsTest {
     void a() {
         Number number = new Number.Fake(4);
         RacingCar car = new RacingCar(number);
-        Cars sut = new RacingCars(List.of(car));
+        RacingCars sut = new RacingCars(List.of(car));
 
         RacingCar movedCar = new RacingCar(new CarPosition(1), number);
         assertThat(sut.carsWithTurnUsed()).isEqualTo(new RacingCars(List.of(movedCar)));

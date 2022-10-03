@@ -8,7 +8,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class RacingCars implements Cars {
+public class RacingCars {
 
     private final List<RacingCar> cars;
 
@@ -16,15 +16,13 @@ public class RacingCars implements Cars {
         this.cars = cars;
     }
 
-    @Override
-    public Cars carsWithTurnUsed() {
+    public RacingCars carsWithTurnUsed() {
         List<RacingCar> movedCars = cars.stream()
                 .map(RacingCar::movedCar)
                 .collect(Collectors.toUnmodifiableList());
         return new RacingCars(movedCars);
     }
 
-    @Override
     public void printPosition() {
         cars.forEach(RacingCar::printPosition);
     }
@@ -50,7 +48,7 @@ public class RacingCars implements Cars {
             this.numberOfCars = numberOfCars;
         }
 
-        public Cars cars() {
+        public RacingCars cars() {
             List<RacingCar> cars = IntStream.range(0, numberOfCars)
                     .boxed()
                     .map(number -> new RacingCar(new RandomNumber()))
