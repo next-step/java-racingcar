@@ -48,6 +48,8 @@ public class RacingGame {
 			collect(Collectors.toList()));
 
 		racingCars.startRacing(carMoveCount);
+
+		resultView.printCarLocations(racingCars);
 	}
 
 	private void quit() {
