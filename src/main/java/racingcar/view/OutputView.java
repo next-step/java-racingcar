@@ -1,25 +1,18 @@
 package racingcar.view;
 
-import java.util.List;
 import racingcar.Car;
+import racingcar.Cars;
 
 public class OutputView {
 
-    public static void printResult(List<Car> cars, int tryNumber) {
-        System.out.println("실행 결과");
+    public static void printResult(Cars cars) {
+        cars.moveAll();
+        cars.carList().forEach(car -> printCarTrack(car.totalMoveCount()));
 
-        for (int i = 0; i < tryNumber; i++) {
-            for (Car car : cars) {
-                car.move();
-                printCarTrack(car);
-            }
-
-            System.out.println();
-        }
+        System.out.println();
     }
 
-    private static void printCarTrack(Car car) {
-        int totalMoveCount = car.totalMoveCount();
+    public static void printCarTrack(int totalMoveCount) {
         for (int i = 0; i < totalMoveCount; i++) {
             System.out.print("-");
         }

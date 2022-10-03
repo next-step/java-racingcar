@@ -4,6 +4,8 @@ import java.util.Random;
 
 public class Car {
 
+    private static final Random random = new Random();
+
     private int totalMoveCount;
 
     public int totalMoveCount() {
@@ -17,6 +19,6 @@ public class Car {
     }
 
     private boolean isPossibleToMove() {
-        return (new Random().nextInt(10) >= 4);
+        return (random.nextInt(10) >= 4);
     }
 }

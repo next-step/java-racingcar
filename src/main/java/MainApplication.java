@@ -5,6 +5,7 @@ import static racingcar.view.OutputView.printResult;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.Car;
+import racingcar.Cars;
 
 public class MainApplication {
 
@@ -12,11 +13,12 @@ public class MainApplication {
         int carNumber = inputCarNumber();
         int tryNumber = inputTryNumber();
 
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carNumber; i++) {
-            cars.add(new Car());
-        }
+        Cars cars = new Cars();
+        cars.add(carNumber);
 
-        printResult(cars, tryNumber);
+        System.out.println("실행 결과");
+        for (int i = 0; i < tryNumber; i++) {
+            printResult(cars);
+        }
     }
 }
