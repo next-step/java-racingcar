@@ -1,6 +1,7 @@
 package racing;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarRace {
     private final List<Car> cars;
@@ -14,5 +15,10 @@ public class CarRace {
 
     public void round() {
         cars.forEach(Car::tryMove);
+    }
+
+    public List<Car> getWinners() {
+        int maxMoves = cars.stream().mapToInt(Car::getMoves).max().orElseThrow();
+        return cars.stream().filter(car -> car.getMoves() == maxMoves).collect(Collectors.toList());
     }
 }

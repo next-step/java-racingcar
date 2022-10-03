@@ -28,4 +28,17 @@ public class CarRaceTest {
             assertThat(car.getMoves()).isEqualTo(1);
         }
     }
+
+    @Test
+    void test_get_winner() {
+        Car winner1 = new Car("car1", () -> true);
+        Car winner2 = new Car("car1", () -> true);
+        Car loser1 = new Car("car1", () -> false);
+        List<Car> cars = List.of(winner1, winner2, loser1);
+
+        CarRace carRace = new CarRace(cars);
+        carRace.round();
+
+        assertThat(carRace.getWinners()).contains(winner1, winner2);
+    }
 }

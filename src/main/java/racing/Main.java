@@ -15,6 +15,7 @@ public class Main {
             race.round();
             ResultView.printCars(cars);
         }
+        ResultView.printWinners(race.getWinners());
     }
 
     private static List<Car> createCars(String[] carNames) {
