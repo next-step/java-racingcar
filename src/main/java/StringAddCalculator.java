@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 public class StringAddCalculator {
     final static String COMMA_OR_COLON = ",|:";
     final static String CUSTOM_DELIMITER_PATTERN = "//(.)\n(.*)";
+
     public static int splitAndSum(String text) {
         if (isNullOrBlank(text)) {
             return 0;
@@ -37,6 +38,7 @@ public class StringAddCalculator {
         }
         return numbers;
     }
+
     private static void checkNegative(List<Integer> numbers) {
         for (Integer number : numbers) {
             if (number < 0) {

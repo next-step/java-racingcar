@@ -18,11 +18,4 @@ public class CarTest {
 
         assertThat(car.getPosition()).isEqualTo(3);
     }
-
-    @Test
-    @DisplayName("자동차 위치를 나타내는 문자열 출력 테스트")
-    void testGetPositionString() {
-        Car car = new Car(4);
-        assertThat(car.getPositionString()).isEqualTo("----");
-    }
 }

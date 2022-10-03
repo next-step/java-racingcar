@@ -5,16 +5,8 @@ public class Car {
 
     public Car() {}
 
-    public Car(int position) {
-        this.position = position;
-    }
-
     public void forward() {
         position += 1;
-    }
-
-    public String getPositionString() {
-        return "-".repeat(position);
     }
 
     public int getPosition() {
