@@ -18,7 +18,7 @@ public class Car {
 	}
 
 	public void moveLocation(MovingStrategy strategy) {
-		if (strategy.getMovement()) {
+		if (strategy.isMovable()) {
 			location += MOVE_LOCATION;
 		}
 	}

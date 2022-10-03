@@ -7,12 +7,12 @@ public class RandomMovingStrategy implements MovingStrategy {
 	RandomNum randomNum= new RandomNum();
 
 	@Override
-	public Boolean getMovement(){
-		return isMovable(randomNum.randomNum());
+	public Boolean isMovable(){
+		return movingStrandard(randomNum.randomNum());
 	}
 
 	@Override
-	public Boolean isMovable(int num) {
+	public Boolean movingStrandard(int num) {
 
 		if (num >= PIVOT && num < BOUNDARY) {
 			return true;
