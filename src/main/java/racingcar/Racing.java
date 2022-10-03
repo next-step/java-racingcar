@@ -27,7 +27,10 @@ public class Racing {
 	}
 
 	private static void playMatch(Cars cars, int index) {
-		cars.move();
+		for (int i = 0; i < cars.getCars().size(); i++) {
+			int random = cars.getCars().get(i).makeRandom();
+			cars.getCars().get(i).movingOfRound(random);
+		}ㅂ
 		Views.results(cars, index);
 	}
 
