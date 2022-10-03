@@ -1,18 +1,21 @@
 package racingcar;
 
-import racingcar.util.ConvertUtil;
+import java.util.List;
 import racingcar.view.InputView;
-import racingcar.view.QuestionView;
 import racingcar.view.ResultView;
 
 public class RacingCarApplication {
 
+    public static final String COMMA_REGEX = ",";
+
     public static void main(String[] args) {
-        String carNums = InputView.askQuestion(QuestionView.QUESTION_CAR_NUMS);
-        String tryNums = InputView.askQuestion(QuestionView.QUESTION_TRY_NUMS);
-        RacingGame racingCar = new RacingGame(ConvertUtil.toInt(carNums), ConvertUtil.toInt(tryNums));
-        RacingRecord racingRecord = racingCar.racingStart();
+        String answer = InputView.askQuestionAnswer("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분");
+        int tryNums = InputView.askQuestionAnswerInt("시도할 회수는 몇회인가요?");
+        List<String> names = InputView.split(answer, COMMA_REGEX);
+
+        RacingGame racingGame = new RacingGame(tryNums, names);
+
+        RacingRecord racingRecord = racingGame.racingStart();
         ResultView.printRoundRecord(racingRecord, "-");
     }
-
 }
