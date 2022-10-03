@@ -10,8 +10,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int raceCount = InputView.inputCarCount();
-        int carCount = InputView.inputRaceCount();
+        int raceCount = InputView.inputRaceCount();
+        int carCount = InputView.inputCarCount();
 
         for(int i =0; i < carCount; i++) {
             Car car = new Car();
