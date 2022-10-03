@@ -16,10 +16,12 @@ public class Car {
 		this.randomNumber = randomNumber;
 	}
 
-	public void move() {
+	public int move() {
 		if (isMovable(randomNumber.getRandomNumber())) {
 			moveForward();
+			return 1;
 		}
+		return 0;
 	}
 
 	private boolean isMovable(int randomNumber) {
