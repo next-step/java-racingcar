@@ -3,11 +3,18 @@ package racingcar;
 public class Car {
     private int position;
 
+    private NumberGenerator numberGenerator;
+
     public Car() {
-        this.position = 0;
+        this(new RandomGenerator());
     }
 
-    public void move() {
+    public Car(NumberGenerator generator) {
+        this.position = 0;
+        this.numberGenerator = generator;
+    }
+
+    private void move() {
         this.position++;
     }
 
@@ -16,11 +23,7 @@ public class Car {
     }
 
     public int tryMove() {
-        return tryMove(RandomGenerator.makeRandomValue());
-    }
-
-    public int tryMove(int value) {
-        if (MovingCondtion.isMove(value)) {
+        if (MovingCondtion.isMove(numberGenerator.makeValue())) {
             move();
         }
         return position;

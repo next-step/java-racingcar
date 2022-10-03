@@ -3,6 +3,7 @@ package racingcar;
 import racingcar.ui.ResultView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,7 +17,7 @@ public class RacingCarGame {
     }
 
     public List<Car> getCarList() {
-        return this.carList;
+        return Collections.unmodifiableList(this.carList);
     }
 
     private List<Car> createCars(int carCount) {

@@ -10,8 +10,7 @@ public class ResultView {
     }
 
     public static void printRoundResult(List<Integer> roundResult) {
-        roundResult.stream()
-                .forEach(position -> System.out.println(getPathString(position)));
+        roundResult.forEach(position -> System.out.println(getPathString(position)));
 
         System.out.println();
     }

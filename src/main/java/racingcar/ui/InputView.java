@@ -1,6 +1,10 @@
 package racingcar.ui;
 
+import util.NumberUtil;
+
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class InputView {
     private static final String CAR_DESCRIPTION = "자동차 대수는 몇 대 인가요?";
@@ -10,19 +14,11 @@ public class InputView {
 
     public static int getCarCount() {
         System.out.println(CAR_DESCRIPTION);
-        return getPositiveInteger(scanner.nextLine());
+        return NumberUtil.getPositiveInteger(scanner.nextLine());
     }
 
     public static int getTryCount() {
         System.out.println(TRY_DESCRIPTION);
-        return getPositiveInteger(scanner.nextLine());
-    }
-
-    public static int getPositiveInteger(String value) {
-        try {
-            return Integer.parseUnsignedInt(value);
-        } catch (Exception e){
-            throw new RuntimeException("0 이상의 숫자만 입력해주세요.");
-        }
+        return NumberUtil.getPositiveInteger(scanner.nextLine());
     }
 }
