@@ -1,6 +1,7 @@
-package thirdstep.View;
+package thirdstep.view;
 
 import thirdstep.logic.Car;
+
 import java.util.ArrayList;
 
 public class ResultView {
