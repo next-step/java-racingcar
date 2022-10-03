@@ -1,6 +1,5 @@
 package step4;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,7 +10,7 @@ public class Car {
 
     public Car(String[] names, int times) {
 
-        for(String name : names) {
+        for (String name : names) {
             Validation.checkName(name);
         }
 

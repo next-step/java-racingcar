@@ -22,7 +22,7 @@ public class Racing {
     }
 
     private void moveOrStop(Position position, String name) {
-        if(isSatisfiedConditionForMove(getRandomNum())) {
+        if (isSatisfiedConditionForMove(getRandomNum())) {
             position.move(name);
         }
     }
