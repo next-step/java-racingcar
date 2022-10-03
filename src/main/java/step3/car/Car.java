@@ -1,7 +1,7 @@
 package step3.car;
 
 import step3.number.Number;
-import step3.output.BarOutputView;
+import step3.output.OutputView;
 import step3.position.Position;
 
 import java.util.Objects;
@@ -14,8 +14,8 @@ public final class Car {
 
     private final Number number;
 
-    public Car(Number number) {
-        this(new Position(0, new BarOutputView()), number);
+    public Car(Number number, OutputView outputView) {
+        this(new Position(0, outputView), number);
     }
 
     public Car(Position position, Number number) {
