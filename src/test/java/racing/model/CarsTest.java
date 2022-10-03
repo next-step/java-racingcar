@@ -6,8 +6,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.view.GameOutput;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -15,18 +15,15 @@ class CarsTest {
     private static final String NORMAL_NAME1 = "TEST1";
     private static final String NORMAL_NAME2 = "TEST2";
     private static final String NORMAL_NAME3 = "TEST3";
-    private static final String COMMA = ", ";
+    private static final int EXPECT_WINNER_SIZE = 3;
     private Cars cars;
 
     @BeforeEach
     void setUp() {
         List<String> carNames = List.of(NORMAL_NAME1, NORMAL_NAME2, NORMAL_NAME3);
-        List<Car> carList = new ArrayList<>();
-        for (String carName : carNames) {
-            Car car = new Car(0, carName);
-            carList.add(car);
-        }
-        cars = new Cars(carList);
+        cars = new Cars(carNames.stream()
+                .map(it -> new Car(0, it))
+                .collect(Collectors.toList()));
     }
 
     @Test
@@ -45,9 +42,8 @@ class CarsTest {
             car.goStraight(() -> true);
         }
         Cars winner = cars.getWinner();
-        assertThat(GameOutput.getNameInCars(winner.getCarList())).contains(
-                NORMAL_NAME1 + COMMA + NORMAL_NAME2 + COMMA + NORMAL_NAME3
-        );
+        int winnerSize = winner.getCarList().size();
+        assertThat(winnerSize).isEqualTo(EXPECT_WINNER_SIZE);
     }
 
     private void goStraightCarByName(String name) {
