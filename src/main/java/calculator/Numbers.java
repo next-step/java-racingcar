@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Numbers {
+    public static final Number zero = new Number(0);
     private final List<Number> numbers;
 
     public Numbers(List<Number> numbers) {
@@ -17,8 +18,8 @@ public class Numbers {
                 .collect(Collectors.toList()));
     }
 
-    public int sum() {
-        Number sum = new Number(0);
+    public Number sum() {
+        Number sum = zero;
         for (Number number : numbers) {
             sum = sum.add(number);
         }
