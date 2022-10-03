@@ -14,7 +14,7 @@ class RacingGameTest {
     void run_givenGreaterThanOrEqualTo4() {
         String carName = "car";
         RacingGame game = new RacingGame(new ConstantNumberGenerator(4));
-        RacingGameResult actual = game.run(List.of(carName), 3);
+        RacingGameResult actual = game.run(List.of(new Car("car")), 3);
 
         RacingGameResult expected = new RacingGameResult(
                 List.of(
@@ -31,7 +31,7 @@ class RacingGameTest {
     void run_givenLessThan3() {
         String carName = "car";
         RacingGame game = new RacingGame(new ConstantNumberGenerator(3));
-        RacingGameResult actual = game.run(List.of(carName), 3);
+        RacingGameResult actual = game.run(List.of(new Car(carName)), 3);
 
         RacingGameResult expected = new RacingGameResult(
                 List.of(
