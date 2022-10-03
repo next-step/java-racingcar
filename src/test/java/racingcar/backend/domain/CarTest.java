@@ -8,8 +8,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    private Car car;
     private static final int INITIAL_POSITION = 0;
+    private Car car;
 
     @BeforeEach
     private void setUp() {
