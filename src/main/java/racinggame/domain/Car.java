@@ -2,31 +2,28 @@ package racinggame.domain;
 
 import racinggame.domain.embeded.CarDistance;
 import racinggame.domain.embeded.CarName;
-import racinggame.util.RandomUtils;
-
-import java.util.function.IntPredicate;
+import racinggame.domain.strategy.MoveStrategy;
+import racinggame.domain.strategy.RandomMoveStrategy;
 
 public class Car {
 
-    private static final int CAN_MOVE_MIN_NUMBER = 4;
-
-    private IntPredicate canMovePredicate;
+    private MoveStrategy moveStrategy;
 
     private CarDistance carDistance;
     private final CarName carName;
 
-    public Car(String name) {
-        this(name, randomNumber -> randomNumber >= CAN_MOVE_MIN_NUMBER);
+    public Car(String name, CarDistance carDistance) {
+        this(name, carDistance, new RandomMoveStrategy());
     }
 
-    public Car(String name, IntPredicate canMovePredicate) {
-        if (canMovePredicate == null) {
+    public Car(String name, CarDistance carDistance, MoveStrategy moveStrategy) {
+        if (moveStrategy == null) {
             throw new IllegalArgumentException("이동 전략을 필수값 입니다.");
         }
 
-        this.canMovePredicate = canMovePredicate;
+        this.moveStrategy = moveStrategy;
         this.carName = new CarName(name);
-        this.carDistance = new CarDistance(0);
+        this.carDistance = carDistance;
     }
 
     public CarDistance getCarDistance() {
@@ -38,11 +35,7 @@ public class Car {
     }
 
     public void move() {
-        move(RandomUtils.randomNumber(RandomUtils.MAX_RANDOM_NUMBER));
-    }
-
-    public void move(int randomNumber) {
-        if (!canMovePredicate.test(randomNumber)) {
+        if (!moveStrategy.movable()) {
             return;
         }
 

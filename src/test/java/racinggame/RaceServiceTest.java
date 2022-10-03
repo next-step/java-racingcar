@@ -2,16 +2,15 @@ package racinggame;
 
 import org.junit.jupiter.api.Test;
 import racinggame.domain.Car;
+import racinggame.domain.RacingCars;
 import racinggame.domain.embeded.CarDistance;
 import racinggame.domain.embeded.CarName;
-import racinggame.domain.RacingCars;
 import racinggame.dto.RaceInputDTO;
 import racinggame.dto.RaceResultDTO;
 import racinggame.dto.WinCarsDTO;
 import racinggame.service.RaceService;
 
 import java.util.List;
-import java.util.function.IntPredicate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -22,11 +21,10 @@ class RaceServiceTest {
         //given
         RaceInputDTO raceInputDTO = new RaceInputDTO(3, new String[] {"car1", "car2", "car3"});
 
-        IntPredicate canMovePredicate = randomNumber -> true;
         List<Car> cars = List.of(
-                new Car("car1", canMovePredicate),
-                new Car("car2", canMovePredicate),
-                new Car("car3", canMovePredicate));
+                new Car("car1", new CarDistance(0), () -> true),
+                new Car("car2", new CarDistance(0), () -> false),
+                new Car("car3", new CarDistance(0), () -> true));
 
         RaceService raceService = new RaceService();
 
@@ -36,6 +34,7 @@ class RaceServiceTest {
         //then
         assertThat(cars.get(0).getCarDistance()).isEqualTo(new CarDistance(3));
         assertThat(cars.get(0).getCarName()).isEqualTo(new CarName("car1"));
+        assertThat(cars.get(2).getCarName()).isEqualTo(new CarName("car3"));
     }
 
     @Test
@@ -44,9 +43,9 @@ class RaceServiceTest {
         RaceInputDTO raceInputDTO = new RaceInputDTO(3, new String[] {"car1", "car2", "car3"});
 
         List<Car> cars = List.of(
-                new Car("car1", randomNumber -> true),
-                new Car("car2", randomNumber -> false),
-                new Car("car3", randomNumber -> true));
+                new Car("car1", new CarDistance(4), () -> true),
+                new Car("car2", new CarDistance(2), () -> false),
+                new Car("car3", new CarDistance(4), () -> true));
 
         RaceService raceService = new RaceService();
 
