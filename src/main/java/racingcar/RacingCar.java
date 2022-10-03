@@ -5,6 +5,8 @@ import java.util.Random;
 public class RacingCar {
     private final Random random;
     private final int[] histories;
+    private static final int RANDOM_NUMBER_BOUND = 9;
+    private static final int NUMBER_FOR_DECISION_OF_STRAIGHT = 4;
 
     public RacingCar(Random random, int count) {
         this.random = random;
@@ -25,13 +27,13 @@ public class RacingCar {
 
     private void initHistories() {
         for(int i=0 ; i<histories.length ; i++) {
-            int ranNum = random.nextInt(9);
+            int ranNum = random.nextInt(RANDOM_NUMBER_BOUND);
             histories[i] = straightOrStop(ranNum);
         }
     }
 
     private int straightOrStop(int randomNumber) {
-        if(randomNumber >= 4) {
+        if(randomNumber >= NUMBER_FOR_DECISION_OF_STRAIGHT) {
             return 1;
         }
         return 0;
