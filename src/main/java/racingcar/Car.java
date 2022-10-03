@@ -7,19 +7,19 @@ public class Car {
 	private static int MAXOFRANDOM = 10;
 	private static final int MOVINGCONDITION = 4;
 	private final String name;
-	private int stauts;
+	private int status;
 
 	public Car(String name) {
 		if (LIMITOFNAMELENGTH < name.length() || name.isBlank()) {
 			throw new RuntimeException();
 		}
 		this.name = name;
-		this.stauts = 0;
+		this.status = 0;
 	}
 
 	public void movingOfRound(int random) {
 		if (random >= MOVINGCONDITION) {
-			this.stauts++;
+			this.status++;
 		}
 	}
 
@@ -28,7 +28,7 @@ public class Car {
 	}
 
 	public int getStatus() {
-		return this.stauts;
+		return this.status;
 	}
 
 	public String getName() {
