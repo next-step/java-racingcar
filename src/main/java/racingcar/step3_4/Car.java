@@ -7,16 +7,8 @@ public class Car {
 	private static final int INITIAL_POSITION = 0;
 	private static final int MIN_MOVE_VALUE = 4;
 
-	private Name name;
+	private final Name name;
 	private int position;
-
-	public Car() {
-		this(INITIAL_POSITION);
-	}
-
-	public Car(int position) {
-		this.position = position;
-	}
 
 	public Car(Name name) {
 		this.name = name;
