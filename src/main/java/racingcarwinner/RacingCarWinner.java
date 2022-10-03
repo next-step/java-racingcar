@@ -12,6 +12,7 @@ public class RacingCarWinner {
     private String[] participantNames;
     private int participantNumber;
     private Map<String, Integer> carNowInformation;
+    private String printingStatus = "";
     private Car car = new Car();
 
     public RacingCarWinner(String participantName, int carMovingCount) {
@@ -60,6 +61,24 @@ public class RacingCarWinner {
             carNowInformation.replace(participantNameKey, eachNumberOfMove);
         }
         car.setParticipant(carNowInformation);
+        printGameStatus();
+    }
+
+    public String printGameStatus() {
+        for (String participant : participantNames) {
+            printingStatus += participant + " : " + printCarBar(participant) + "\n";
+        }
+        printingStatus += "\n";
+        return printingStatus;
+    }
+
+    public String printCarBar(String participant) {
+        int moveDistance = carNowInformation.get(participant);
+        String distanceBar = "";
+        for (int i = 0; i < moveDistance; i++) {
+            distanceBar += "-";
+        }
+        return distanceBar;
     }
 
 }
