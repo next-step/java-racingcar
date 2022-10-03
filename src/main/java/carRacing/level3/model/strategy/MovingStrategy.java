@@ -4,5 +4,5 @@ public interface MovingStrategy {
 
 	Boolean isMovable();
 
-	Boolean movingStrandard(int num);
+	Boolean movingStandard(int num);
 }

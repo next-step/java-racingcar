@@ -8,11 +8,11 @@ public class RandomMovingStrategy implements MovingStrategy {
 
 	@Override
 	public Boolean isMovable(){
-		return movingStrandard(randomNum.randomNum());
+		return movingStandard(randomNum.randomNum());
 	}
 
 	@Override
-	public Boolean movingStrandard(int num) {
+	public Boolean movingStandard(int num) {
 
 		if (num >= PIVOT && num < BOUNDARY) {
 			return true;
