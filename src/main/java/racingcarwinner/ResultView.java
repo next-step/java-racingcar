@@ -12,5 +12,8 @@ public class ResultView {
         System.out.println("시도할 회수는 몇번인가요?");
         int carMovingCount = inputView.enterCarMovingCount();
         System.out.println();
+        RacingCarWinner racingCarWinner = new RacingCarWinner(participantName, carMovingCount);
+        System.out.println("실행결과");
+        System.out.println(racingCarWinner.startGame());
     }
 }
