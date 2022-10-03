@@ -1,7 +1,9 @@
 package racing;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarRacing {
     private List<Car> cars = new ArrayList<>();
@@ -32,9 +34,9 @@ public class CarRacing {
     }
 
     private void participateCars() {
-        int carCount = InputView.inputCars();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+        List<String> carNames = generateCarNames();
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
         }
     }
 
@@ -44,5 +46,10 @@ public class CarRacing {
             ResultView.printDistance(car.getDistance());
         }
         ResultView.printNewLine();
+    }
+
+    private List<String> generateCarNames() {
+        String names = InputView.inputCarNames();
+        return Arrays.stream(names.split(",")).collect(Collectors.toList());
     }
 }

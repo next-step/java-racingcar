@@ -11,7 +11,7 @@ public class CarTest {
 
     @BeforeEach
     void 셋업() {
-        car = new Car();
+        car = new Car("sample_name");
     }
 
     @Test
@@ -28,6 +28,6 @@ public class CarTest {
 
     @Test
     void 이름() {
-        assertThat(car.getName()).isEqualTo("");
+        assertThat(car.getName()).isEqualTo("sample_name");
     }
 }
