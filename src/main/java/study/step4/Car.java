@@ -7,7 +7,7 @@ public class Car {
 	public Car() {}
 
 	public void checkName(String name) {
-		int MAX_NAME_LENGTH = 5;
+		final int MAX_NAME_LENGTH = 5;
 		if(name.length() > MAX_NAME_LENGTH){
 			throw new BadRequestException("이름은 5글자를 초과할 수 없습니다.");
 		}
