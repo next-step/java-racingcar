@@ -11,9 +11,6 @@ public class InputView {
     private static final Scanner SCANNER = new Scanner(System.in);
     private static final InputValidator INPUT_VALIDATOR = new InputValidator();
 
-    public InputView() {
-    }
-
     public GameAttribute getGameAttribute() {
         List<String> racingCarNames = getRacingCarNames();
         int tryCount = getTryCount();
