@@ -1,4 +1,4 @@
-package thirdstep.logic;
+package third.logic;
 
 import java.util.ArrayList;
 import java.util.stream.IntStream;

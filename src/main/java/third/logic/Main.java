@@ -1,7 +1,7 @@
-package thirdstep.logic;
+package third.logic;
 
-import thirdstep.view.InputView;
-import thirdstep.view.ResultView;
+import third.view.InputView;
+import third.view.ResultView;
 
 import java.util.ArrayList;
 

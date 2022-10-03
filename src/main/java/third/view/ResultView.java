@@ -1,6 +1,6 @@
-package thirdstep.view;
+package third.view;
 
-import thirdstep.logic.Car;
+import third.logic.Car;
 
 import java.util.ArrayList;
 

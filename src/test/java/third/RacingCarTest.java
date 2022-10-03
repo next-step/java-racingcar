@@ -1,10 +1,10 @@
-package thirdstep;
+package third;
 
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
-import thirdstep.logic.Car;
-import thirdstep.logic.Race;
+import third.logic.Car;
+import third.logic.Race;
 
 
 public class RacingCarTest {
