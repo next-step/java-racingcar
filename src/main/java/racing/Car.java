@@ -4,6 +4,7 @@ public class Car {
     private static final int AVAILABLE_RUN_THRESHOLD = 4;
 
     private int distance = 0;
+    private String name = "";
 
     public void run() {
         if (canRun()) { distance += 1; }
@@ -11,6 +12,10 @@ public class Car {
 
     public int getDistance() {
         return distance;
+    }
+
+    public String getName() {
+        return name;
     }
 
     private static boolean canRun() {

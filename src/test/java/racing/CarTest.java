@@ -25,4 +25,9 @@ public class CarTest {
         car.run();
         assertThat(car.getDistance()).isIn(0, 1);
     }
+
+    @Test
+    void 이름() {
+        assertThat(car.getName()).isEqualTo("");
+    }
 }
