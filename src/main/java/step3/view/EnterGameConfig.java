@@ -1,10 +1,9 @@
-package step3;
+package step3.view;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class EnterGameConfig {
     private final Scanner scanner = new Scanner(System.in);
@@ -43,8 +42,7 @@ public class EnterGameConfig {
     }
 
     private String[] nameInputParse(String nameInput) {
-        String[] split = nameInput.split(",");
-        return split;
+        return nameInput.split(",");
     }
 
     private void carNameValidate(String[] carNames) {

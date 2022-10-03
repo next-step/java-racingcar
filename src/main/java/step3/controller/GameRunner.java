@@ -1,4 +1,9 @@
-package step3;
+package step3.controller;
+
+import step3.domain.Car;
+import step3.domain.Racing;
+import step3.view.EnterGameConfig;
+import step3.view.ResultPrinter;
 
 import java.util.List;
 
@@ -10,10 +15,12 @@ public class GameRunner {
 
         Racing racing = new Racing(carNames, iterate);
         racing.start();
+        List<Car> cars = racing.getCars();
         List<String> winners = racing.getWinners();
+        System.out.println("winners = " + winners);
 
         ResultPrinter resultView = new ResultPrinter(iterate);
-        resultView.printRecord(racing.getRacingRecordOfCars());
+        resultView.printRecord(cars);
         resultView.printWinner(winners);
     }
 }
