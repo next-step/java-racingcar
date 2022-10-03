@@ -8,7 +8,6 @@ class CarTest {
 
 	RandomNumber randomNumber = new RandomNumber();
 	Car car = new Car(randomNumber);
-	int movePivot = 4;
 
 	@DisplayName("move() 테스트")
 	@Test
