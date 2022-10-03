@@ -1,4 +1,4 @@
-package thirdstep.View;
+package thirdstep.view;
 
 
 import java.util.InputMismatchException;
