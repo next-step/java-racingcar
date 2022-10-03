@@ -10,8 +10,16 @@ public class ConsoleInputView implements InputView {
 
     @Override
     public int answerToQuestion(String question) throws IOException {
+        verifyOnlyNumber(question);
+
         System.out.println(question);
         return Integer.parseInt(BUFFERED_READER.readLine());
+    }
+
+    private void verifyOnlyNumber(String question) {
+        if (question.matches("\\D")) {
+            throw new IllegalArgumentException("숫자만 들어올 수 있습니다.");
+        }
     }
 
 }
