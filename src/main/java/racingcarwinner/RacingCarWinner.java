@@ -81,4 +81,19 @@ public class RacingCarWinner {
         return distanceBar;
     }
 
+    public String winner() {
+        String max = participantNames[0];
+        String winnerParticipant = participantNames[0];
+        for (int i = 1; i < participantNumber; i++) {
+            if (carNowInformation.get(max) == carNowInformation.get(participantNames[i])) {
+                winnerParticipant += "," + participantNames[i];
+            }
+            if (carNowInformation.get(max) < carNowInformation.get(participantNames[i])) {
+                max = participantNames[i];
+                winnerParticipant = participantNames[i];
+            }
+        }
+        return winnerParticipant + "가 최종우승했습니다.";
+    }
+
 }
