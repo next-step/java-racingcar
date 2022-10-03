@@ -17,7 +17,7 @@ class CarsTest {
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     void go_forward_car_value_more_than_4(int randomValue) {
         Cars movedCars = cars.move(new ManualValueGenerator(randomValue));
-        for (Car car : movedCars.getCarList()) {
+        for (Car car : movedCars.getCars()) {
             assertThat(car.getLocation()).isEqualTo(1);
         }
     }
@@ -27,7 +27,7 @@ class CarsTest {
     @ValueSource(ints = {0, 1, 2, 3})
     void stop_car_value_smaller_than_4(int randomValue) {
         Cars movedCars = cars.move(new ManualValueGenerator(randomValue));
-        for (Car car : movedCars.getCarList()) {
+        for (Car car : movedCars.getCars()) {
             assertThat(car.getLocation()).isEqualTo(0);
         }
     }

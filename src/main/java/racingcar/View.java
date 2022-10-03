@@ -29,7 +29,7 @@ public class View {
     }
 
     private void printTrial(Cars cars) {
-        for (Car car : cars.getCarList()) {
+        for (Car car : cars.getCars()) {
             printLocation(car);
             System.out.println();
         }
