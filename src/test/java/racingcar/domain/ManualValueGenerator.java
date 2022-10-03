@@ -1,22 +1,14 @@
 package racingcar.domain;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Queue;
-
 public class ManualValueGenerator implements Generator {
 
-    private final Queue<Integer> values;
+    private final int value;
 
-    public ManualValueGenerator(Integer... values) {
-        this.values = new LinkedList<>(Arrays.asList(values));
+    public ManualValueGenerator(int value) {
+        this.value = value;
     }
 
     public int nextValue() {
-        return values.poll();
-    }
-
-    public boolean hasNext() {
-        return values.isEmpty();
+        return value;
     }
 }

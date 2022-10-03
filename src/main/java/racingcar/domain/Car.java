@@ -15,7 +15,7 @@ public class Car {
         return this.location;
     }
 
-    public Car nextTurn(Generator generator) {
+    public Car move(Generator generator) {
         if (generator.nextValue() >= 4) {
             return new Car(this.location + 1);
         }
