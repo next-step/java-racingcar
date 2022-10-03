@@ -1,4 +1,6 @@
-package racinggame.domain;
+package racinggame.dto;
+
+import racinggame.domain.Car;
 
 /**
  * Created by seungwoo.song on 2022-09-26

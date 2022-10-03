@@ -1,7 +1,7 @@
 package racinggame.view;
 
-import racinggame.domain.CarSnapshot;
-import racinggame.domain.RoundSnapshot;
+import racinggame.dto.CarSnapshot;
+import racinggame.dto.RoundSnapshot;
 import racinggame.dto.RaceResultDTO;
 import racinggame.dto.WinCarsDTO;
 

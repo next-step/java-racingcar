@@ -1,7 +1,5 @@
 package racinggame.dto;
 
-import racinggame.domain.RoundSnapshot;
-
 import java.util.ArrayList;
 import java.util.List;
 
