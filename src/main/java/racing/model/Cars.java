@@ -9,42 +9,31 @@ public class Cars {
 	private final List<Car> cars = new ArrayList<>();
 
 	public Cars(List<Name> names) {
+		if (names == null) {
+			throw new IllegalArgumentException("자동차를 생성할 수 없습니다.");
+		}
+		generateCars(names);
+	}
+
+	private void generateCars(List<Name> names) {
 		for (Name name : names) {
 			cars.add(new Car(name));
 		}
 	}
 
+	public List<Car> getWinners() {
+		return chooseWinners(getMaxPosition());
+	}
+
+	private Position getMaxPosition() {
+		return cars.stream().map(Car::getPosition).max(Position::compareTo).orElse(Position.ZERO);
+	}
+
+	private List<Car> chooseWinners(Position maxPosition) {
+		return cars.stream().filter(car -> car.isSamePosition(maxPosition)).collect(Collectors.toList());
+	}
+
 	public List<Car> getCars() {
 		return cars;
-	}
-
-	public List<String> getWinners() {
-		List<Name> winners = new ArrayList<>();
-		chooseWinners(winners, getMaxPosition());
-		return winners.stream().map(Name::getName).collect(Collectors.toList());
-	}
-
-	private int getMaxPosition() {
-		int maxPosition = 0;
-		for (Car car : cars) {
-			maxPosition = comparePosition(maxPosition, car.getPosition());
-		}
-		return maxPosition;
-	}
-
-	private int comparePosition(int maxPosition, Position position) {
-		return Math.max(maxPosition, position.getPosition());
-	}
-
-	private void chooseWinners(List<Name> winners, int maxPosition) {
-		for (Car car : cars) {
-			if (isWinner(car.getPosition(), maxPosition)) {
-				winners.add(car.getName());
-			}
-		}
-	}
-
-	private boolean isWinner(Position position, int maxPosition) {
-		return position.getPosition() == maxPosition;
 	}
 }

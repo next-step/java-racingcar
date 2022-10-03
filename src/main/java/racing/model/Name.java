@@ -15,7 +15,6 @@ public class Name {
 	}
 
 	private boolean isValid(String name) {
-
 		return name != null && !name.isEmpty() && name.length() < MAX_NAME_LENGTH;
 	}
 

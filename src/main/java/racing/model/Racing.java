@@ -4,17 +4,14 @@ import racing.dto.RacingResult;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Racing {
 
 	private final Cars cars;
 
 	public Racing(List<Name> names) {
-		cars = generateCars(names);
-	}
-
-	private Cars generateCars(List<Name> names) {
-		return new Cars(names);
+		cars = new Cars(names);
 	}
 
 	public List<RacingResult> race(MoveStrategy moveStrategy) {
@@ -31,6 +28,7 @@ public class Racing {
 	}
 
 	public List<String> getWinners() {
-		return cars.getWinners();
+		List<Car> winners = cars.getWinners();
+		return winners.stream().map(Car::getName).map(Name::getName).collect(Collectors.toList());
 	}
 }

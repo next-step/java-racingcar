@@ -2,9 +2,10 @@ package racing.model;
 
 import java.util.Objects;
 
-public class Position {
+public class Position implements Comparable<Position> {
 
-	private int position;
+	public static final Position ZERO = new Position(0);
+	private final int position;
 
 	public Position(int position) {
 		if (!isValid(position)) {
@@ -17,12 +18,17 @@ public class Position {
 		return position >= 0;
 	}
 
-	public void move() {
-		position++;
+	public Position move() {
+		return new Position(this.position + 1);
 	}
 
 	public int getPosition() {
 		return position;
+	}
+
+	@Override
+	public int compareTo(Position o) {
+		return Integer.compare(this.position, o.position);
 	}
 
 	@Override

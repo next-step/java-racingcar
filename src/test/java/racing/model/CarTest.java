@@ -26,6 +26,6 @@ class CarTest {
 	@Test
 	void notMove() {
 		car.move(false);
-		assertThat(car.getPosition()).isEqualTo(new Position(0));
+		assertThat(car.getPosition()).isEqualTo(Position.ZERO);
 	}
 }
