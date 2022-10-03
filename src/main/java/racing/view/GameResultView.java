@@ -22,10 +22,9 @@ public class GameResultView {
     }
 
     private void resultPerRound(List<Round> roundList) {
-        roundList.stream()
-                .forEach(round -> {
-                    forwardCountOfCarPerRound(round.getForwardCountOfCars(), round.getCars());
-                });
+        for (Round round : roundList) {
+            forwardCountOfCarPerRound(round.getForwardCountOfCars(), round.getCars());
+        }
     }
 
     private void gameWinner(String winners) {

@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import racing.rule.move.RandomMove;
 
 import java.util.Arrays;
+import java.util.List;
+
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -28,5 +30,13 @@ public class GameTest {
     void 생성자주입_설정값_예외발생_검증() {
         assertThatThrownBy(() -> new Game(null))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 경주차목록_불변성_검증() {
+        Game game = new Game(new GameSet.GameSetBuilder(new RandomMove(), Arrays.asList("car1", "car2"), 3).build());
+        List<Car> cars = game.getCars();
+        assertThatThrownBy(() -> cars.add(new Car("car3")))
+                .isInstanceOf(UnsupportedOperationException.class);
     }
 }
