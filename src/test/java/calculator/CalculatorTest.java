@@ -27,7 +27,7 @@ public class CalculatorTest {
     @Test
     void 쉼표_분리() {
         String value = "1,2";
-        int[] numbers = Calculator.split(value);
+        int[] numbers = Calculator.splitByDelimiter(value);
         assertThat(numbers).contains(1,2);
         assertThat(Calculator.sum(value)).isEqualTo(3);
     }
@@ -35,7 +35,7 @@ public class CalculatorTest {
     @Test
     void 쉼표_또는_콜론_분리() {
         String value = "1,2:3";
-        int[] numbers = Calculator.split(value);
+        int[] numbers = Calculator.splitByDelimiter(value);
         assertThat(numbers).contains(1,2,3);
         assertThat(Calculator.sum(value)).isEqualTo(6);
     }
