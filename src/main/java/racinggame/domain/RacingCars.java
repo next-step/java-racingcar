@@ -17,10 +17,8 @@ public class RacingCars {
         this.cars = cars;
     }
 
-    public List<CarSnapshot> makeSnapshot() {
-        return this.cars.stream()
-                .map(CarSnapshot::new)
-                .collect(toList());
+    public List<Car> getCars() {
+        return cars;
     }
 
     public void move() {
