@@ -36,8 +36,8 @@ public class RacingGame {
 
 	private void startGame() {
 		try {
-			carCount = this.inputView.askCountQuestion(CAR_COUNT_QUESTION);
-			carMoveCount = this.inputView.askCountQuestion(CAR_MOVE_COUNT_QUESTION);
+			carCount = inputView.askCountQuestion(CAR_COUNT_QUESTION);
+			carMoveCount = inputView.askCountQuestion(CAR_MOVE_COUNT_QUESTION);
 		} catch (InputMismatchException | NegativeNumberException exception) {
 			System.out.println(exception.getMessage());
 			quit();
