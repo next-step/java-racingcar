@@ -3,14 +3,13 @@ package racingcar.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class CarCountTest {
     @Test
     @DisplayName("자동차 개수는 한대 이상이다.")
     void create_with_count_over_minimum() {
-        new CarCount(1);
+        assertThatNoException().isThrownBy(() -> new CarCount(1));
     }
 
     @Test
