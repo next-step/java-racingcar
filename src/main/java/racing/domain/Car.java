@@ -4,8 +4,8 @@ public class Car {
 
 	private final static int START_POINT = 1;
 	private final static int MOVE_PIVOT = 4;
+	private final RandomNumber randomNumber;
 	private int location;
-	private RandomNumber randomNumber;
 
 	public Car(RandomNumber randomNumber) {
 		this(START_POINT, randomNumber);
@@ -32,5 +32,9 @@ public class Car {
 
 	public int getLocation() {
 		return location;
+	}
+
+	public RandomNumber getRandomNumber() {
+		return randomNumber;
 	}
 }
