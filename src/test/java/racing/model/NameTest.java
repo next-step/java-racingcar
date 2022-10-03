@@ -22,13 +22,13 @@ class NameTest {
     @ParameterizedTest
     @NullSource
     @EmptySource
-    @DisplayName("이름을 생성할 때 Null을 넣을 경우 에러를 발생한다.")
+    @DisplayName("이름을 생성할 때 Null 혹은 빈값을 넣을 경우 에러를 발생한다.")
     void constructorTestNullOrBlank(String text) {
         assertThatThrownBy(() -> new Name(text)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
-    @DisplayName("이름을 생성할 때 Null을 넣을 경우 에러를 발생한다.")
+    @DisplayName("정상적인 이름값에 대한 테스트")
     void constructorTestNormal() {
         Name name = new Name(NORMAL_NAME);
         assertThat(name.getName()).isEqualTo(NORMAL_NAME);
