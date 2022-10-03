@@ -15,14 +15,10 @@ public class Car {
     private String name;
 
     public Car(String name) {
-        init(name, randomNumber -> randomNumber >= CAN_MOVE_MIN_NUMBER);
+        this(name, randomNumber -> randomNumber >= CAN_MOVE_MIN_NUMBER);
     }
 
     public Car(String name, IntPredicate canMovePredicate) {
-        init(name, canMovePredicate);
-    }
-
-    private void init(String name, IntPredicate canMovePredicate) {
         validateName(name);
         if (canMovePredicate == null) {
             throw new IllegalArgumentException("이동 전략을 필수값 입니다.");
