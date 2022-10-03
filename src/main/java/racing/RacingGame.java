@@ -6,6 +6,7 @@ import java.util.stream.IntStream;
 
 import racing.domain.Car;
 import racing.domain.RacingCars;
+import racing.domain.RandomNumber;
 import racing.exception.NegativeNumberException;
 import racing.view.InputView;
 import racing.view.ResultView;
@@ -43,8 +44,9 @@ public class RacingGame {
 			quit();
 		}
 
+		RandomNumber randomNumber = new RandomNumber();
 		racingCars = new RacingCars(IntStream.range(0, carCount).
-			mapToObj(i -> new Car()).
+			mapToObj(i -> new Car(randomNumber)).
 			collect(Collectors.toList()));
 
 		startRacing();

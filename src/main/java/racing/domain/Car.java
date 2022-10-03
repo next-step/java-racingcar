@@ -1,28 +1,29 @@
 package racing.domain;
 
-import java.util.Random;
-
 public class Car {
 
 	private final static int START_POINT = 1;
 	private final static int MOVE_PIVOT = 4;
 	private int location;
+	private RandomNumber randomNumber;
 
-	public Car() {
-		this(START_POINT);
+	public Car(RandomNumber randomNumber) {
+		this(START_POINT, randomNumber);
 	}
 
-	public Car(int location) {
+	public Car(int location, RandomNumber randomNumber) {
 		this.location = location;
+		this.randomNumber = randomNumber;
 	}
 
 	public void move() {
-		Random random = new Random();
-		int randomNumber = random.nextInt(10);
-
-		if (randomNumber >= MOVE_PIVOT) {
+		if (isMovable(randomNumber.getRandomNumber())) {
 			moveForward();
 		}
+	}
+
+	private boolean isMovable(int randomNumber) {
+		return randomNumber >= MOVE_PIVOT;
 	}
 
 	private void moveForward() {
