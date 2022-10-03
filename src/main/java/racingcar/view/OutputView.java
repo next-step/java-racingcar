@@ -1,19 +1,14 @@
 package racingcar.view;
 
-import racingcar.Cars;
+import java.util.List;
 
 public class OutputView {
 
-    public static void printResult(Cars cars) {
-        cars.carList().forEach(car -> printCarTrack(car.totalMoveCount()));
-        System.out.println();
-    }
-
-    public static void printCarTrack(int totalMoveCount) {
-        for (int i = 0; i < totalMoveCount; i++) {
-            System.out.print("-");
+    public static void printResult(List<Integer> result) {
+        for(int i : result) {
+            System.out.print("-".repeat(i));
+            System.out.println();
         }
-
         System.out.println();
     }
 }

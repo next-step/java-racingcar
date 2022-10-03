@@ -7,6 +7,15 @@ public class Cars {
 
     private final List<Car> carList = new ArrayList<>();
 
+    public Cars() {
+    }
+
+    public Cars(int number) {
+        for (int i = 0; i < number; i++) {
+            this.carList.add(new Car());
+        }
+    }
+
     public List<Car> carList() {
         return this.carList;
     }
