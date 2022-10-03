@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class RaceInputReader {
 
-    public static final String CAR_NAME_SEPERATOR = ",";
+    public static final String CAR_NAME_SEPARATOR = ",";
 
     private RaceInputReader() {
     }
@@ -33,6 +33,6 @@ public class RaceInputReader {
     }
 
     private static String[] split(String carNames) {
-        return carNames.replace(" ", "").split(CAR_NAME_SEPERATOR);
+        return carNames.replace(" ", "").split(CAR_NAME_SEPARATOR);
     }
 }
