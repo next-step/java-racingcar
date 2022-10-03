@@ -1,8 +1,9 @@
 package step3;
 
-import step3.cars.Cars;
+import step3.game.CarGame;
 import step3.input.ConsoleInputView;
-import step3.input.InputView;
+import step3.number.RandomNumber;
+import step3.output.BarOutputView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,21 +14,10 @@ public class Client {
     private static final BufferedReader BUFFERED_READER = new BufferedReader(new InputStreamReader(System.in));
 
     public static void main(String[] args) throws IOException {
-        InputView inputView = new ConsoleInputView();
-
-        Cars.Factory racingCarsFactory = new Cars.Factory(inputView.answerToQuestion("자동차 대수는 몇 대 인가요?"));
-        Cars cars = racingCarsFactory.cars();
-
-        int numberOfGames = inputView.answerToQuestion("시도할 회수는 몇 회 인가요?");
-
-        for (int i = 0; i < numberOfGames; i++) {
-            cars = cars.carsWithTurnUsed();
-            cars.printPosition();
-            System.out.println();
-        }
-
+        CarGame carGame = new CarGame(new RandomNumber(), new ConsoleInputView(), new BarOutputView());
+        carGame.run();
         BUFFERED_READER.close();
     }
 
-
 }
+
