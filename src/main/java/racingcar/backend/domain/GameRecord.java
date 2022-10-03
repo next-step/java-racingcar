@@ -1,21 +1,20 @@
 package racingcar.backend.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class GameRecord {
 
-    private List<Integer> values;
+    private List<Map<String, Integer>> values;
 
     public GameRecord() {
         this.values = new ArrayList<>();
     }
 
-    public void add(int position) {
-        values.add(position);
+    public void add(Map<String, Integer> record) {
+        values.add(record);
     }
 
-    public List<Integer> getValues() {
-        return values;
+    public List<Map<String, Integer>> getValues() {
+        return new ArrayList<>(values);
     }
 }
