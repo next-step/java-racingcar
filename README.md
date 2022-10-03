@@ -9,6 +9,7 @@
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
 ### step3 요구사항
-1) InputView 구현
-2) 숫자를 입력받아 로직 만드는 것 구현
-3) ResultView 구현
+* 자동차의 대수를 입력받는 로직 구현
+* 시도할 횟수를 입력받는 로직 구현   
+* 랜덤값을 구한 후 4 이상일 때 전진하는 로직 구현
+* 자동차의 상태를 화면에 출력하는 로직 구현
