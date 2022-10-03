@@ -67,6 +67,7 @@ public class RacingGame {
 
 		for (int i = 0; i < participants.size(); i++) {
 			Car car = proceedCar(participants.get(i));
+			// 게임을 진행 후에 최대 위치를 계산
 			maxPosition = Math.max(maxPosition, car.getPosition());
 			car.printName();
 			car.printPosition();

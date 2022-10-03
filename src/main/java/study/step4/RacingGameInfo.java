@@ -54,6 +54,7 @@ public class RacingGameInfo {
 		ArrayList<Car> participants = this.getParticipants();
 		int maxPosition = this.getMaxPosition();
 
+		// participants의 위치가 maxPosition 과 같은 경우 우승자로 추가
 		for (int i = 0; i < participants.size(); i++) {
 			if (participants.get(i).getPosition() == maxPosition) {
 				winners.add(participants.get(i));
