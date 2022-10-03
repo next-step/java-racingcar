@@ -6,11 +6,9 @@ public class ResultView {
 
     public void result(InputView inputView) {
 
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        int carSize = inputView.input();
+        int carSize = inputView.inputCarSize();
 
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        int racingCount = inputView.input();
+        int racingCount = inputView.inputRacingSize();
 
         System.out.println();
 
