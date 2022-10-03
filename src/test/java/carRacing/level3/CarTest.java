@@ -3,9 +3,8 @@ package carRacing.level3;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import carRacing.level3.domain.Car;
-import carRacing.level3.service.strategy.RandomMovingStrategy;
-import org.junit.jupiter.api.Assertions;
+import carRacing.level3.model.Car;
+import carRacing.level3.model.strategy.RandomMovingStrategy;
 import org.junit.jupiter.api.Test;
 
 public class CarTest {

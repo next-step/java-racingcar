@@ -1,4 +1,4 @@
-package carRacing.level3.service.strategy;
+package carRacing.level3.model.strategy;
 
 public class RandomMovingStrategy implements MovingStrategy {
 

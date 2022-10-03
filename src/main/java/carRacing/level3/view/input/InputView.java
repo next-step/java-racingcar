@@ -1,4 +1,4 @@
-package carRacing.level3.service.input;
+package carRacing.level3.view.input;
 
 import java.util.Scanner;
 

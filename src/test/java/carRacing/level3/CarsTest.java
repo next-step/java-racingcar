@@ -2,8 +2,8 @@ package carRacing.level3;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import carRacing.level3.domain.Car;
-import carRacing.level3.domain.Cars;
+import carRacing.level3.model.Car;
+import carRacing.level3.model.Cars;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

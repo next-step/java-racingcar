@@ -1,9 +1,9 @@
 package carRacing.level3.controller;
 
-import carRacing.level3.domain.Car;
-import carRacing.level3.domain.Cars;
-import carRacing.level3.service.strategy.MovingStrategy;
-import carRacing.level3.service.input.InputView;
+import carRacing.level3.model.Car;
+import carRacing.level3.model.Cars;
+import carRacing.level3.model.strategy.MovingStrategy;
+import carRacing.level3.view.input.InputView;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 

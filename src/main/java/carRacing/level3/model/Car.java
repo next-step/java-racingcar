@@ -1,7 +1,7 @@
-package carRacing.level3.domain;
+package carRacing.level3.model;
 
-import carRacing.level3.service.strategy.MovingStrategy;
-import carRacing.level3.service.output.OutPutView;
+import carRacing.level3.model.strategy.MovingStrategy;
+import carRacing.level3.view.output.OutPutView;
 
 public class Car {
 

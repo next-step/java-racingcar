@@ -2,7 +2,7 @@ package carRacing.level3;
 
 
 import carRacing.level3.controller.RacingGameController;
-import carRacing.level3.service.strategy.RandomMovingStrategy;
+import carRacing.level3.model.strategy.RandomMovingStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

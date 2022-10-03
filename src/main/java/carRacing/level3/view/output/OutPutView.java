@@ -1,4 +1,4 @@
-package carRacing.level3.service.output;
+package carRacing.level3.view.output;
 
 public class OutPutView {
 
