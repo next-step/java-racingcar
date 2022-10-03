@@ -1,7 +1,7 @@
 package step3.cars;
 
 import step3.car.Car;
-import step3.number.RandomNumber;
+import step3.number.Number;
 import step3.output.OutputView;
 
 import java.util.List;
@@ -49,10 +49,10 @@ public class Cars {
             this.numberOfCars = numberOfCars;
         }
 
-        public Cars cars(OutputView outputView) {
+        public Cars cars(Number number, OutputView outputView) {
             List<Car> cars = IntStream.range(0, numberOfCars)
                     .boxed()
-                    .map(number -> new Car(new RandomNumber(), outputView))
+                    .map(numberOfCar -> new Car(number, outputView))
                     .collect(Collectors.toUnmodifiableList());
 
             return new Cars(cars);
