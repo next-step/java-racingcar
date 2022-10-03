@@ -6,6 +6,11 @@ import step3.car_racing.service.Racing;
 
 public class ResultView {
 
+    private ResultView() {
+        // 인스턴스화 방지
+        throw new AssertionError();
+    }
+
     public static void result(int carSize, int racingSize) {
 
         System.out.println();
