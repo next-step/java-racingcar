@@ -31,8 +31,7 @@ class CarsTest {
         Cars.Factory sut = new Cars.Factory(1);
 
         Car car = new Car(new RandomNumber(), new OutputView.Fake());
-        assertThat(sut.cars(new OutputView.Fake())).isEqualTo(new Cars(List.of(car)));
+        assertThat(sut.cars(new Number.Fake(1), new OutputView.Fake())).isEqualTo(new Cars(List.of(car)));
     }
-
 
 }
