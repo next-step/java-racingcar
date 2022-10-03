@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racinggame.domain.Car;
+import racinggame.domain.CarName;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -21,7 +22,7 @@ class CarTest {
 
         //then
         assertThat(car.distance()).isEqualTo(inputDistance);
-        assertThat(car.name()).isEqualTo(name);
+        assertThat(car.getCarName()).isEqualTo(new CarName(name));
     }
 
     @Test

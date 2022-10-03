@@ -21,6 +21,6 @@ class RacingCarsTest {
         List<WinCarsDTO> winners = racingCars.winners();
 
         assertThat(winners).hasSize(1);
-        assertThat(winners.get(0).getName()).isEqualTo("car1");
+        assertThat(winners.get(0).getCarName()).isEqualTo(new CarName("car1"));
     }
 }

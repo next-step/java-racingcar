@@ -2,6 +2,7 @@ package racinggame;
 
 import org.junit.jupiter.api.Test;
 import racinggame.domain.Car;
+import racinggame.domain.CarName;
 import racinggame.domain.RacingCars;
 import racinggame.dto.RaceInputDTO;
 import racinggame.dto.RaceResultDTO;
@@ -33,7 +34,7 @@ class RaceServiceTest {
 
         //then
         assertThat(cars.get(0).distance()).isEqualTo(3);
-        assertThat(cars.get(0).name()).isEqualTo("car1");
+        assertThat(cars.get(0).getCarName()).isEqualTo(new CarName("car1"));
     }
 
     @Test
@@ -54,7 +55,7 @@ class RaceServiceTest {
         //then
         List<WinCarsDTO> winners = raceResultDTO.getWinners();
         assertThat(winners).hasSize(2);
-        assertThat(winners.get(0).getName()).isEqualTo("car1");
-        assertThat(winners.get(1).getName()).isEqualTo("car3");
+        assertThat(winners.get(0).getCarName()).isEqualTo(new CarName("car1"));
+        assertThat(winners.get(1).getCarName()).isEqualTo(new CarName("car3"));
     }
 }

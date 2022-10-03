@@ -1,6 +1,5 @@
 package racinggame.domain;
 
-import calculator.StringUtils;
 import racinggame.util.RandomUtils;
 
 import java.util.function.IntPredicate;
@@ -12,34 +11,27 @@ public class Car {
     private IntPredicate canMovePredicate;
 
     private int distance;
-    private String name;
+    private CarName carName;
 
     public Car(String name) {
         this(name, randomNumber -> randomNumber >= CAN_MOVE_MIN_NUMBER);
     }
 
     public Car(String name, IntPredicate canMovePredicate) {
-        validateName(name);
         if (canMovePredicate == null) {
             throw new IllegalArgumentException("이동 전략을 필수값 입니다.");
         }
 
         this.canMovePredicate = canMovePredicate;
-        this.name = name;
-    }
-
-    private void validateName(String name) {
-        if (isInValidName(name)) {
-            throw new IllegalArgumentException("이름은  4글자 이하여야 합니다.");
-        }
+        this.carName = new CarName(name);
     }
 
     public int distance() {
         return distance;
     }
 
-    public String name() {
-        return this.name;
+    public CarName getCarName() {
+        return this.carName;
     }
 
     public void move() {
@@ -54,7 +46,5 @@ public class Car {
         this.distance++;
     }
 
-    private boolean isInValidName(String name) {
-        return (StringUtils.isEmpty(name) || name.length() >= 5);
-    }
+
 }

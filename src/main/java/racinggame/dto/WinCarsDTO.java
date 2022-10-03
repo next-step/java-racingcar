@@ -1,19 +1,20 @@
 package racinggame.dto;
 
 import racinggame.domain.Car;
+import racinggame.domain.CarName;
 
 public class WinCarsDTO {
-    private String name;
+    private CarName carName;
 
     public WinCarsDTO(Car car) {
         if (car == null) {
             new IllegalArgumentException("car는 null일수 없습니다.");
         }
 
-        this.name = car.name();
+        this.carName = car.getCarName();
     }
 
-    public String getName() {
-        return name;
+    public CarName getCarName() {
+        return carName;
     }
 }
