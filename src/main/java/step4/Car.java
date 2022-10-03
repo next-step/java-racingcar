@@ -1,28 +1,26 @@
 package step4;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class Car {
+    private static final int NAME_LENGTH = 5;
 
-    private List<String> names;
-    private int times;
+    private String name;
+    private Position position;
 
-    public Car(String[] names, int times) {
+    public Car(String name, Position position) {
 
-        for (String name : names) {
-            Validation.checkName(name);
+        if(name.length() > NAME_LENGTH) {
+            throw new IllegalArgumentException("이름은 5자를 초과할 수 없습니다.");
         }
 
-        this.names = Arrays.asList(names);
-        this.times = times;
+        this.name = name;
+        this.position = position;
     }
 
-    public List<String> getNames() {
-        return names;
+    public String getName() {
+        return name;
     }
 
-    public int getTimes() {
-        return times;
+    public Position getPosition() {
+        return position;
     }
 }
