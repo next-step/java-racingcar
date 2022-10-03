@@ -22,9 +22,4 @@ public class Car {
 			location += MOVE_LOCATION;
 		}
 	}
-
-	public void showMovement(OutPutView outPutView) {
-		outPutView.showCar(carLocation());
-	}
-
 }

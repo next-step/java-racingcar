@@ -1,7 +1,6 @@
 package carRacing.level3.model;
 
 import carRacing.level3.model.strategy.MovingStrategy;
-import carRacing.level3.view.output.OutPutView;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -11,7 +10,6 @@ public class Cars {
 	private static final Integer DEFAULT_CAR_SUM = 0;
 
 	private List<Car> carList;
-	private OutPutView outPutView = new OutPutView();
 
 	public Cars(List<Car> carList) {
 		this.carList = carList;
@@ -26,9 +24,7 @@ public class Cars {
 	public void moveCarLocation(MovingStrategy movingStrategy) {
 		carList.forEach(car -> {
 			car.moveLocation(movingStrategy);
-			car.showMovement(outPutView);
 		});
-		outPutView.printSpace();
 	}
 
 	public int carLocation(int carNum) {
