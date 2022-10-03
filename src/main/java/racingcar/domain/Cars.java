@@ -4,6 +4,7 @@ import racingcar.strategy.MovingStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -17,7 +18,7 @@ public class Cars {
         this.cars = cars;
     }
 
-    private List<Car> createCars(String[] carNames) {
+    protected static List<Car> createCars(String[] carNames) {
         final List<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
             cars.add(new Car(carName));
@@ -25,34 +26,14 @@ public class Cars {
         return cars;
     }
 
-    public List<Car> move(MovingStrategy movingStrategy) {
+    public void move(MovingStrategy movingStrategy) {
         for (Car car : cars) {
             car.move(movingStrategy);
         }
-        return cars;
     }
 
-    public List<Car> findMaxPositionCars() {
-        Position maxPosition = findMaxPosition();
-
-        List<Car> maxPositionCars = new ArrayList<>();
-        for (Car car : cars) {
-            addToCarListIfPositionEquals(car, maxPosition, maxPositionCars);
-        }
-        return maxPositionCars;
+    public List<PlayResult> getPlayResults() {
+        return cars.stream().map(Car::getPlayResult).collect(Collectors.toUnmodifiableList());
     }
 
-    private Position findMaxPosition() {
-        Position maxPosition = new Position();
-        for (Car car : cars) {
-            maxPosition = car.getBiggerPosition(maxPosition);
-        }
-        return maxPosition;
-    }
-
-    private void addToCarListIfPositionEquals(Car car, Position maxPosition, List<Car> maxPositionCars) {
-        if (car.isPositionEquals(maxPosition)) {
-            maxPositionCars.add(car);
-        }
-    }
 }

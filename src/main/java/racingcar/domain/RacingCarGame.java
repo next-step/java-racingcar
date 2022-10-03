@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import racingcar.strategy.MovingStrategy;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarGame {
@@ -14,13 +15,35 @@ public class RacingCarGame {
         this.playCount = playCount;
     }
 
-    public List<Car> findWinners() {
-        return cars.findMaxPositionCars();
+    public static List<PlayResult> findWinners(List<PlayResult> playResults) {
+        return findWinners(playResults, getMaxPosition(playResults));
     }
 
-    public List<Car> play(MovingStrategy movingStrategy) {
+    private static List<PlayResult> findWinners(List<PlayResult> playResults, Position maxPosition) {
+        List<PlayResult> winners = new ArrayList<>();
+        for (PlayResult playResult : playResults) {
+            if (playResult.isPositionEquals(maxPosition)) {
+                winners.add(playResult);
+            }
+        }
+        return winners;
+    }
+
+    private static Position getMaxPosition(List<PlayResult> playResults) {
+        Position maxPosition = new Position();
+        for (PlayResult playResult : playResults) {
+            maxPosition = playResult.getBiggerPosition(maxPosition);
+        }
+        return maxPosition;
+    }
+
+    public void play(MovingStrategy movingStrategy) {
         playCount--;
-        return cars.move(movingStrategy);
+        cars.move(movingStrategy);
+    }
+
+    public List<PlayResult> getPlayResults() {
+        return cars.getPlayResults();
     }
 
     public boolean isEnd() {

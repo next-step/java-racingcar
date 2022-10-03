@@ -2,6 +2,8 @@ package racingcar.domain;
 
 import racingcar.strategy.MovingStrategy;
 
+import java.util.Objects;
+
 public class Car {
 
     private final Position position;
@@ -22,23 +24,20 @@ public class Car {
         }
     }
 
-    public boolean isPositionEquals(Position position) {
-        return this.position.equals(position);
+    public PlayResult getPlayResult() {
+        return new PlayResult(position, name);
     }
 
-    public Position getBiggerPosition(Position position) {
-        return this.position.getBigger(position);
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(position, car.position) && Objects.equals(name, car.name);
     }
 
-    public Position getPosition() {
-        return position;
-    }
-
-    public Name getName() {
-        return name;
-    }
-
-    public int getPositionValue() {
-        return position.getPosition();
+    @Override
+    public int hashCode() {
+        return Objects.hash(position, name);
     }
 }

@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.domain.Car;
+import racingcar.domain.PlayResult;
 import racingcar.domain.RacingCarGame;
 import racingcar.domain.RacingCarGameFactory;
 import racingcar.strategy.MovingStrategy;
@@ -19,12 +20,13 @@ public class GameController {
         RacingCarGame racingCarGame = RacingCarGameFactory.getInstance();
 
         ResultView.printTitle();
+
         while (!racingCarGame.isEnd()) {
-            List<Car> playResults = racingCarGame.play(MOVING_STRATEGY);
-            ResultView.printPlayResults(playResults);
+            racingCarGame.play(MOVING_STRATEGY);
+            ResultView.printPlayResults(racingCarGame.getPlayResults());
         }
 
-        ResultView.printWinners(racingCarGame.findWinners());
+        ResultView.printWinners(RacingCarGame.findWinners(racingCarGame.getPlayResults()));
     }
 
 }

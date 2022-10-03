@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import racingcar.domain.Car;
+import racingcar.domain.PlayResult;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,9 +16,10 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public static void printPlayResults(List<Car> playResults) {
-        for (Car car : playResults) {
-            System.out.println(car.getName() + " : " + resolvePositionResultMessage(car.getPositionValue()));
+    public static void printPlayResults(List<PlayResult> playResults) {
+        for (PlayResult playResult : playResults) {
+            System.out.println(playResult.getNameValue() + " : "
+                    + resolvePositionResultMessage(playResult.getPositionValue()));
         }
         printNewLine();
     }
@@ -26,8 +28,8 @@ public class ResultView {
         return RESULT_MESSAGE.repeat(Math.max(0, position));
     }
 
-    public static void printWinners(List<Car> winnerCars) {
-        System.out.println(mapArrayToString(winnerCars.stream().map(Car::getName).toArray()) +
+    public static void printWinners(List<PlayResult> playResults) {
+        System.out.println(mapArrayToString(playResults.stream().map(PlayResult::getNameValue).toArray()) +
                 "가 최종 우승했습니다.");
     }
 
