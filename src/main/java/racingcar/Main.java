@@ -1,8 +1,6 @@
 package racingcar;
 
-import racingcar.domain.CarCount;
-import racingcar.domain.Cars;
-import racingcar.domain.TrialCount;
+import racingcar.domain.*;
 
 import java.util.List;
 
@@ -14,7 +12,8 @@ public class Main {
         TrialCount trialCount = new TrialCount(view.inputTrialCount());
 
         Cars cars = new Cars(carCount.create());
-        List<Cars> trials = trialCount.start(cars);
+        Generator generator = new RandomValueGenerator();
+        List<Cars> trials = trialCount.start(cars, generator);
 
         view.printResult(trials);
     }

@@ -19,11 +19,11 @@ public class TrialCount {
         }
     }
 
-    public List<Cars> start(Cars initializedCars) {
+    public List<Cars> start(Cars initializedCars, Generator generator) {
         Cars cars = initializedCars;
         List<Cars> trials = new ArrayList<>();
         for (int i = 0; i < count; i++) {
-            cars = cars.nextTrial();
+            cars = cars.move(generator);
             trials.add(cars);
         }
         return trials;
