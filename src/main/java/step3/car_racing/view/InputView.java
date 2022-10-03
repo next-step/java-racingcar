@@ -10,6 +10,11 @@ public class InputView {
     private static final String RACING_SIZE_REQUEST_MESSAGE = "시도할 회수는 몇 회 인가요?";
     private static final Integer ZERO = 0;
 
+    private InputView() {
+        // 인스턴스화 방지
+        throw new AssertionError();
+    }
+
     public int inputCarSize() {
         System.out.println(CAR_SIZE_REQUEST_MESSAGE);
         return validateInput();
