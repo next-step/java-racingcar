@@ -1,34 +1,21 @@
 package domain;
 
-import java.util.Random;
-
 public class Car {
 
-    private int position;
+    private Position position;
+    private static final int MOVING_SIZE = 1;
 
     public Car() {
-        this(0);
-    }
-    public Car(int position) {
-        this.position = position;
+        this.position = new Position(0);
     }
 
-    public int move() {
-        if (canMove()) {
-            position++;
+    public void move(boolean isMovable) {
+        if (isMovable) {
+            this.position = new Position(position.getPosition() + MOVING_SIZE);
         }
-        return position;
-    }
-
-    private boolean canMove() {
-        return getIntValue() >= 4;
-    }
-
-    private int getIntValue() {
-        return new Random().nextInt(10);
     }
 
     public int getPosition() {
-        return position;
+        return position.getPosition();
     }
 }

@@ -1,19 +1,26 @@
 package domain;
 
 import org.junit.jupiter.api.Test;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
     @Test
-    void 자동차_random_3이하_미전진() {
+    void 자동차는_움직인다() {
         Car car = new Car();
-        assertThat(car.move()).isEqualTo(0);
+        MovingStrategy movingStrategy = new MovingStrategy();
+        car.move(true);
+
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @Test
-    void 자동차_random_4이상_전진() {
+    void 자동차는_움직이지_않는다() {
         Car car = new Car();
-        assertThat(car.move()).isEqualTo(1);
+        MovingStrategy movingStrategy = new MovingStrategy();
+        car.move(false);
+
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 }
