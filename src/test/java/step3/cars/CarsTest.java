@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import step3.car.Car;
 import step3.number.Number;
 import step3.number.RandomNumber;
+import step3.output.OutputView;
 import step3.position.Position;
 
 import java.util.List;
@@ -17,10 +18,10 @@ class CarsTest {
     @DisplayName("자동차들에게 턴을 사용할 있게 알람을 줄 수 있다.")
     void a() {
         Number number = new Number.Fake(4);
-        Car car = new Car(number);
+        Car car = new Car(number, new OutputView.Fake());
         Cars sut = new Cars(List.of(car));
 
-        Car movedCar = new Car(new Position(1), number);
+        Car movedCar = new Car(new Position(1, new OutputView.Fake()), number);
         assertThat(sut.carsWithTurnUsed()).isEqualTo(new Cars(List.of(movedCar)));
     }
 
@@ -29,8 +30,8 @@ class CarsTest {
     void b() {
         Cars.Factory sut = new Cars.Factory(1);
 
-        Car car = new Car(new RandomNumber());
-        assertThat(sut.cars()).isEqualTo(new Cars(List.of(car)));
+        Car car = new Car(new RandomNumber(), new OutputView.Fake());
+        assertThat(sut.cars(new OutputView.Fake())).isEqualTo(new Cars(List.of(car)));
     }
 
 
