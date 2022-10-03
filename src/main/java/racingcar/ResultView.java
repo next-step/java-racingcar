@@ -18,7 +18,7 @@ public class ResultView {
         for (int i=0 ; i<count ; i++) {
             for (int j=0 ; j<cars.size() ; j++) {
                 RacingCar car = cars.get(j);
-                printDash(car, resultString.get(j), i);
+                System.out.println(updateDashString(car, resultString.get(j), i));
             }
             System.out.println();
         }
@@ -30,12 +30,11 @@ public class ResultView {
         }
     }
 
-    private void printDash(RacingCar car, StringBuilder str, int indexOfCount) {
+    private StringBuilder updateDashString(RacingCar car, StringBuilder str, int indexOfCount) {
         if(car.getHistoriesByIndex(indexOfCount) == 1) {
             str.append("-");
         }
-        System.out.println(str);
+        return str;
     }
-
 
 }
