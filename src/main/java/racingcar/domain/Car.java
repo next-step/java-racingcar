@@ -1,6 +1,8 @@
 package racingcar.domain;
 
 public class Car {
+    public static final int MINIMUM_MOVE_VALUE = 4;
+
     private final int location;
 
     public Car() {
@@ -16,7 +18,7 @@ public class Car {
     }
 
     public Car move(Generator generator) {
-        if (generator.nextValue() >= 4) {
+        if (generator.nextValue() >= MINIMUM_MOVE_VALUE) {
             return new Car(this.location + 1);
         }
         return new Car(this.location);
