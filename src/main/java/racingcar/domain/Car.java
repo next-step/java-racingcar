@@ -24,12 +24,14 @@ public class Car {
         return position;
     }
 
-
-    public int isWinner(Car other) {
-        return position.compareTo(other.position);
+    public boolean isWinner(Car other) {
+        if (position.compareTo(other.position) >= 0) {
+            return true;
+        }
+        return false;
     }
 
-    public boolean hasSamePosition(Car other) {
+    public boolean isDraw(Car other) {
         return position.equals(other.position);
     }
 
