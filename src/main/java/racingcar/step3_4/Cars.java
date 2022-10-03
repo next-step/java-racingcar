@@ -2,6 +2,7 @@ package racingcar.step3_4;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -37,7 +38,7 @@ public class Cars {
 		return cars.stream()
 			.mapToInt(Car::getPosition)
 			.max()
-			.getAsInt();
+			.orElseThrow(() -> new NoSuchElementException("우승 위치의 자동차가 존재하지 않습니다."));
 	}
 
 	public int getCarsCount() {
