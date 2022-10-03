@@ -11,7 +11,7 @@ public class RacingGame {
 
     public void play() {
         GameParam param = InputView.getGameParam();
-        Cars cars = new Cars(param.getCountOfCar());
+        Cars cars = new Cars(param.getCarNames());
         OutputView.printOutputStart();
         for (int i = 0; i < param.getCountOfRound(); i++) {
             playRound(cars);

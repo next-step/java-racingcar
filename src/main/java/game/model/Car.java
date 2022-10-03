@@ -4,8 +4,11 @@ public class Car {
 
     private final Position position;
 
-    public Car() {
+    private final CarName carName;
+
+    public Car(String carName) {
         this.position = new Position(0);
+        this.carName = new CarName(carName);
     }
 
     public void move(MovableStrategy movableStrategy) {
@@ -16,5 +19,9 @@ public class Car {
 
     public int getPosition() {
         return position.getPosition();
+    }
+
+    public String getCarName() {
+        return carName.getName();
     }
 }

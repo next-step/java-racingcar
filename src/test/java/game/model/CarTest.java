@@ -8,7 +8,7 @@ class CarTest {
 
     @Test
     void 이동_가능() {
-        Car car = new Car();
+        Car car = new Car("a");
 
         car.move(() -> true);
 
@@ -17,7 +17,7 @@ class CarTest {
 
     @Test
     void 이동_불가능() {
-        Car car = new Car();
+        Car car = new Car("a");
 
         car.move(() -> false);
 

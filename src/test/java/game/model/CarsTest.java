@@ -3,11 +3,13 @@ package game.model;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 class CarsTest {
 
     @Test
     void 자동차_경주_이동_가능() {
-        Cars cars = new Cars(3);
+        Cars cars = new Cars(List.of("a", "b", "c"));
 
         cars.moveCarList(() -> true);
 
@@ -18,7 +20,7 @@ class CarsTest {
 
     @Test
     void 자동차_경주_이동_불가능() {
-        Cars cars = new Cars(3);
+        Cars cars = new Cars(List.of("a", "b", "c"));
 
         cars.moveCarList(() -> false);
 
