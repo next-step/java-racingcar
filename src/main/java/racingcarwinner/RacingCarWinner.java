@@ -96,4 +96,18 @@ public class RacingCarWinner {
         return winnerParticipant + "가 최종우승했습니다.";
     }
 
+    public String racingCarGame() {
+        for (int i = 0; i < carMovingCount; i++) {
+            updateParticipantInformation();
+        }
+        printingStatus += winner();
+        return printingStatus;
+    }
+
+    public String startGame() {
+        enterParticipantInformation();
+        racingCarMove();
+        return racingCarGame();
+    }
+
 }
