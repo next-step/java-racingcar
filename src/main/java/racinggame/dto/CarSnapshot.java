@@ -1,7 +1,7 @@
 package racinggame.dto;
 
 import racinggame.domain.Car;
-import racinggame.domain.CarDistance;
+import racinggame.domain.embeded.CarDistance;
 import racinggame.domain.CarName;
 
 /**

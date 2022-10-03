@@ -1,6 +1,6 @@
 package racinggame.controller;
 
-import racinggame.domain.CarFactory;
+import racinggame.domain.embeded.CarFactory;
 import racinggame.dto.RaceInputDTO;
 import racinggame.dto.RaceResultDTO;
 import racinggame.service.RaceService;

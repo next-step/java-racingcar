@@ -1,6 +1,7 @@
 package racinggame.domain;
 
 import org.junit.jupiter.api.Test;
+import racinggame.domain.embeded.CarDistance;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -1,4 +1,4 @@
-package racinggame.domain;
+package racinggame.domain.embeded;
 
 public class CarDistance {
 

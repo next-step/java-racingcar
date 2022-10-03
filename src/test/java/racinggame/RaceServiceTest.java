@@ -2,7 +2,7 @@ package racinggame;
 
 import org.junit.jupiter.api.Test;
 import racinggame.domain.Car;
-import racinggame.domain.CarDistance;
+import racinggame.domain.embeded.CarDistance;
 import racinggame.domain.CarName;
 import racinggame.domain.RacingCars;
 import racinggame.dto.RaceInputDTO;

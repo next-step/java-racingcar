@@ -1,5 +1,7 @@
-package racinggame.domain;
+package racinggame.domain.embeded;
 
+import racinggame.domain.Car;
+import racinggame.domain.RacingCars;
 import racinggame.dto.RaceInputDTO;
 
 import java.util.Arrays;
