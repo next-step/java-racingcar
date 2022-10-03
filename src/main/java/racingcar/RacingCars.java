@@ -1,17 +1,20 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 
 public class RacingCars {
 
     private static final int MINIMUM_VALUE = 4;
-    private final Car[] cars;
+    private final List<Car> cars;
 
     private RacingCars(int number) {
         validateNumber(number);
-        this.cars = new Car[number];
+        this.cars = new ArrayList<>();
         for (int i = 0; i < number; i++) {
-            cars[i] = Car.from();
+            cars.add(Car.from());
         }
     }
 
@@ -48,11 +51,11 @@ public class RacingCars {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RacingCars that = (RacingCars) o;
-        return Arrays.equals(cars, that.cars);
+        return Objects.equals(cars, that.cars);
     }
 
     @Override
     public int hashCode() {
-        return Arrays.hashCode(cars);
+        return Objects.hash(cars);
     }
 }
