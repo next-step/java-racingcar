@@ -1,6 +1,7 @@
 package step3;
 
-import java.util.List;
+import step3.domain.Play;
+import step3.view.InputView;
 
 public class RacingCarApplication {
 
@@ -8,10 +9,9 @@ public class RacingCarApplication {
     private static final Play PLAY = new Play();
 
     public static void main(String[] args) {
-        Cars cars = new Cars();
-        List<Car> carList = cars.Cars(INPUT_VIEW.numberOfCar());
+        int numberOfCar = INPUT_VIEW.numberOfCar();
         int count = INPUT_VIEW.count();
 
-        PLAY.playGame(carList, count);
+        PLAY.playGame(numberOfCar, count);
     }
 }
