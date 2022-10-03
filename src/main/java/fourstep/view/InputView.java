@@ -1,5 +1,4 @@
-package thirdstep.View;
-
+package fourstep.view;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -7,15 +6,17 @@ import java.util.Scanner;
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static int inputCarCount() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
+    public static String[] inputCarCount() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         try {
-            return scanner.nextInt();
+            String str = scanner.nextLine();
+            String[] strArr = str.split(",");
+            return strArr;
         }
         catch (InputMismatchException e) {
             System.out.println("정수값만 입력해 주세요.");
         }
-        return 0;
+        return new String[1];
     }
 
     public static int inputRaceCount() {
@@ -29,3 +30,4 @@ public class InputView {
         return 0;
     }
 }
+
