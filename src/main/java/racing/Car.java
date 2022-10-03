@@ -7,7 +7,14 @@ public class Car {
     private String name = "";
 
     public Car(String name) {
+        validName(name);
         this.name = name;
+    }
+
+    private void validName(String name) {
+        if (name.length() > 5) {
+            throw new RuntimeException("최대 5글자까지 입력 가능합니다.");
+        }
     }
 
     public void run() {

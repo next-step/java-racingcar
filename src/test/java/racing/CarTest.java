@@ -5,13 +5,14 @@ import org.junit.jupiter.api.Test;
 import racing.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
 
 public class CarTest {
     private static Car car;
 
     @BeforeEach
     void 셋업() {
-        car = new Car("sample_name");
+        car = new Car("name");
     }
 
     @Test
@@ -28,6 +29,12 @@ public class CarTest {
 
     @Test
     void 이름() {
-        assertThat(car.getName()).isEqualTo("sample_name");
+        assertThat(car.getName()).isEqualTo("name");
+    }
+
+    @Test
+    void 이름_5자_초과하면_에러() {
+        Throwable thrown = catchThrowable(() -> {car = new Car("sample_name");});
+        assertThat(thrown).hasMessageContaining("최대 5글자까지 입력 가능합니다.");
     }
 }
