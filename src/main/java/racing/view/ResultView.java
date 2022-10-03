@@ -3,7 +3,6 @@ package racing.view;
 import racing.model.Car;
 import racing.model.RaceResult;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ResultView {
@@ -35,7 +34,7 @@ public class ResultView {
         List<String> record = raceResult.getRecord();
         printResultTitle();
 
-        for(String lap: record){
+        for (String lap : record) {
             printRace(lap);
         }
         printWinner(raceResult.getWinnerName());

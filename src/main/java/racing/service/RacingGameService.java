@@ -23,7 +23,7 @@ public class RacingGameService {
         RaceResult raceResult = new RaceResult();
         cars = generateCar(names);
 
-        for(int i = 0; i< count ; i++){
+        for (int i = 0; i < count; i++) {
             raceStep(cars);
             raceResult.checkLap(cars.getLapTime());
         }

@@ -20,8 +20,8 @@ public class Cars {
         int winnerPosition = getWinnerPosition();
         List<Car> winners = new ArrayList<>();
 
-        for(Car car: cars){
-            if(car.getPosition() == winnerPosition) {
+        for (Car car : cars) {
+            if (car.getPosition() == winnerPosition) {
                 winners.add(car);
             }
         }

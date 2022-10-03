@@ -4,7 +4,7 @@ import racing.strategy.CarMoveStrategy;
 import racing.strategy.DefaultCarMoveStrategy;
 
 public class Car {
-    private final static String TIREMARK = "-";
+    private final static String TIRE_MARK = "-";
     private final static int SPEED = 1;
 
     private CarPosition position;
@@ -16,6 +16,7 @@ public class Car {
         this.position = position;
         setDefaultCarMoveStrategy();
     }
+
     public Car(String name, int position) {
         this(new CarName(name), new CarPosition(position));
     }
@@ -29,7 +30,7 @@ public class Car {
     }
 
     public String getTireMark() {
-        return TIREMARK;
+        return TIRE_MARK;
     }
 
     public void move() {
@@ -69,7 +70,7 @@ public class Car {
         return car.position.getPosition() == this.position.getPosition();
     }
 
-    public String getSkidMark(){
+    public String getSkidMark() {
         String skidMark = getName() + " : ";
         for (int i = 0; i < this.getPosition(); i++) {
             skidMark += this.getTireMark();

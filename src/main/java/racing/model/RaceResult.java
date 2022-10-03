@@ -1,6 +1,5 @@
 package racing.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RaceResult {
@@ -11,20 +10,19 @@ public class RaceResult {
         racingRecord = new RacingRecord();
     }
 
-    public void checkLap(List<String> skidMark){
+    public void checkLap(List<String> skidMark) {
         racingRecord.addAll(skidMark);
     }
 
-    public List<String> getRecord(){
+    public List<String> getRecord() {
         return racingRecord.getRacingRecord();
     }
 
-    public void checkWinner(List<Car> cars){
+    public void checkWinner(List<Car> cars) {
         this.winner = new RacingWinner(cars);
     }
 
     public String getWinnerName() {
         return this.winner.getWinnerName();
-
     }
 }

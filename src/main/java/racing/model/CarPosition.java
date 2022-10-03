@@ -1,7 +1,5 @@
 package racing.model;
 
-import racing.strategy.DefaultCarMoveStrategy;
-
 public class CarPosition {
     private int position;
 

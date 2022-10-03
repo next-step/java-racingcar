@@ -18,7 +18,7 @@ public class RacingWinner {
         return join(names);
     }
 
-    public String join(List<String> names){
+    public String join(List<String> names) {
         return String.join(",", names);
     }
 }
