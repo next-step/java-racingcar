@@ -5,7 +5,7 @@ public class Car {
 	public Car() {
 	}
 
-	private void move() {
+	public void move() {
 
 	}
 }

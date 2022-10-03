@@ -31,10 +31,10 @@ public class RacingGame {
 
 	public static void main(String[] args) {
 		RacingGame racingGame = new RacingGame();
-		racingGame.start();
+		racingGame.startGame();
 	}
 
-	private void start() {
+	private void startGame() {
 		try {
 			carCount = this.inputView.askCountQuestion(CAR_COUNT_QUESTION);
 			carMoveCount = this.inputView.askCountQuestion(CAR_MOVE_COUNT_QUESTION);
@@ -46,6 +46,8 @@ public class RacingGame {
 		racingCars = new RacingCars(IntStream.range(0, carCount).
 			mapToObj(i -> new Car()).
 			collect(Collectors.toList()));
+
+		racingCars.startRacing(carMoveCount);
 	}
 
 	private void quit() {
