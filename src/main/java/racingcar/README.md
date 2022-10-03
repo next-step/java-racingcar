@@ -10,7 +10,7 @@
 ### 클래스 별 설명
 - **InputView** : 사용자에게 자동차 갯수와 몇번의 이동을 할것인지 입력을 받고, 해당 입력값을 리턴하는 정적 메서드를 정의한다.
 - **RacingCar** : 자동차 경주 게임의 대상이 되는 자동차 클래스로, 각 이동 횟수별 전진/멈춤 기록을 담은 히스토리 배열을 갖고 있다.
-- **RacingCarFactory** : RacingCar를 자동차 갯수, 이동횟수 값에 따라 List<RacingCar> 값을 만들어 리턴한다. 싱글턴으로 구현하였다.
+- **RacingCarFactory** : RacingCar를 자동차 갯수, 이동횟수 값에 따라 List<RacingCar> 값을 만들어 리턴하는 static 메서드를 작성한다. 
 - **ResultView** : `RacingCar` 리스트를 멤버로 갖는 출력용 클래스로, 각 `RacingCar`의 전진/멈춤 기록 히스토리를 순차적으로 출력한다.
 추가로 멤버로 RacingCar 리스트 크기와 같은 `StringBuilder` 리스트를 추가로 갖고있어, 이전 히스토리 출력 기록을 `StringBuilder`에 기록해 놓기위해 출력에 해당 필드를 활용한다.
 - **Main** : 각 클래스들을 선언하고 실행시키는 메인 클래스이다. 
