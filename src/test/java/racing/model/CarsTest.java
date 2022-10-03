@@ -32,11 +32,9 @@ class CarsTest {
 	@DisplayName("우승자 한명")
 	@Test
 	void winner() {
-		List<Name> names = new ArrayList<>(Arrays.asList(new Name("a"), new Name("b")));
-		Cars cars = new Cars(names);
+		Cars cars = getCars();
 		List<Car> carList = cars.getCars();
 		Car a = carList.get(0);
-		Car b = carList.get(1);
 
 		a.move(true);
 
@@ -46,8 +44,7 @@ class CarsTest {
 	@DisplayName("우승자 여러명")
 	@Test
 	void winners() {
-		List<Name> names = new ArrayList<>(Arrays.asList(new Name("a"), new Name("b")));
-		Cars cars = new Cars(names);
+		Cars cars = getCars();
 		List<Car> carList = cars.getCars();
 		Car a = carList.get(0);
 		Car b = carList.get(1);
@@ -56,5 +53,10 @@ class CarsTest {
 		b.move(true);
 
 		Assertions.assertThat(cars.getWinners()).containsExactly(a, b);
+	}
+
+	private Cars getCars() {
+		List<Name> names = new ArrayList<>(Arrays.asList(new Name("a"), new Name("b")));
+		return new Cars(names);
 	}
 }

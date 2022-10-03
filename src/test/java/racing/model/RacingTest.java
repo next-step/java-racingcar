@@ -23,8 +23,7 @@ class RacingTest {
 	@DisplayName("모든 자동차는 경기가 끝났을 때 한칸 전진한다.")
 	@Test
 	void raceByMovableTrue() {
-		List<Name> names = new ArrayList<>(Arrays.asList(new Name("a"), new Name("b")));
-		Racing racing = new Racing(names);
+		Racing racing = getRacing();
 		MoveStrategy moveStrategy = new MoveStrategy(() -> 4);
 
 		List<RacingResult> race = racing.race(moveStrategy);
@@ -36,13 +35,17 @@ class RacingTest {
 	@DisplayName("모든 자동차는 경기가 끝났을 때 전진하지 않는다.")
 	@Test
 	void raceByMovableFalse() {
-		List<Name> names = new ArrayList<>(Arrays.asList(new Name("a"), new Name("b")));
-		Racing racing = new Racing(names);
+		Racing racing = getRacing();
 		MoveStrategy moveStrategy = new MoveStrategy(() -> 3);
 
 		List<RacingResult> race = racing.race(moveStrategy);
 
 		Assertions.assertThat(race.get(0).getPosition()).isEqualTo(0);
 		Assertions.assertThat(race.get(1).getPosition()).isEqualTo(0);
+	}
+
+	private Racing getRacing() {
+		List<Name> names = new ArrayList<>(Arrays.asList(new Name("a"), new Name("b")));
+		return new Racing(names);
 	}
 }
