@@ -13,12 +13,14 @@ public class ResultView {
         System.out.println(RESULT_TITLE);
     }
 
-    public static void printDistance(int distance) {
-        System.out.println(generateDistanceToString(distance));
+    public static void printDistance(String name, int distance) {
+        System.out.println(generateDistanceToString(name, distance));
     }
 
-    private static String generateDistanceToString(int distance) {
+    private static String generateDistanceToString(String name, int distance) {
         StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(name);
+        stringBuilder.append(": ");
         for (int i = 0; i < distance; i++) {
             stringBuilder.append(DISTANCE_CHARACTER);
             if (distance == 1) break;

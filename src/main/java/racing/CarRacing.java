@@ -43,7 +43,7 @@ public class CarRacing {
     private void announceResult(int round) {
         ResultView.printRound(round);
         for (Car car: cars) {
-            ResultView.printDistance(car.getDistance());
+            ResultView.printDistance(car.getName(), car.getDistance());
         }
         ResultView.printNewLine();
     }
