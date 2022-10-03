@@ -5,7 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racinggame.domain.Car;
 import racinggame.domain.embeded.CarDistance;
-import racinggame.domain.CarName;
+import racinggame.domain.embeded.CarName;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;

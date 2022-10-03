@@ -1,4 +1,4 @@
-package racinggame.domain.embeded;
+package racinggame.domain;
 
 import racinggame.domain.Car;
 import racinggame.domain.RacingCars;

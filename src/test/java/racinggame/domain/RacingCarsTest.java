@@ -1,6 +1,7 @@
 package racinggame.domain;
 
 import org.junit.jupiter.api.Test;
+import racinggame.domain.embeded.CarName;
 import racinggame.dto.WinCarsDTO;
 
 import java.util.List;

@@ -1,6 +1,7 @@
 package racinggame.domain;
 
 import racinggame.domain.embeded.CarDistance;
+import racinggame.domain.embeded.CarName;
 import racinggame.util.RandomUtils;
 
 import java.util.function.IntPredicate;

@@ -2,7 +2,7 @@ package racinggame.dto;
 
 import racinggame.domain.Car;
 import racinggame.domain.embeded.CarDistance;
-import racinggame.domain.CarName;
+import racinggame.domain.embeded.CarName;
 
 /**
  * Created by seungwoo.song on 2022-09-26

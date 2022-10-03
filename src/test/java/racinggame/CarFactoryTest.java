@@ -2,8 +2,8 @@ package racinggame;
 
 import org.junit.jupiter.api.Test;
 import racinggame.domain.Car;
-import racinggame.domain.embeded.CarFactory;
-import racinggame.domain.CarName;
+import racinggame.domain.CarFactory;
+import racinggame.domain.embeded.CarName;
 import racinggame.domain.RacingCars;
 import racinggame.dto.RaceInputDTO;
 
