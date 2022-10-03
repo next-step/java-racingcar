@@ -10,11 +10,11 @@ public class InputView {
     private static Scanner scanner = new Scanner(System.in);
 
     public static int inputRounds() {
-        return inputPositive(CAR_COUNT_TEXT);
+        return inputPositive(ROUND_COUNT_TEXT);
     }
 
     public static int inputCars() {
-        return inputPositive(ROUND_COUNT_TEXT);
+        return inputPositive(CAR_COUNT_TEXT);
     }
 
     private static int inputPositive(String question) {
