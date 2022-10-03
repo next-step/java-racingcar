@@ -1,6 +1,7 @@
 package racing.view;
 
 import racing.model.Car;
+import racing.model.RaceResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,11 +15,8 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public static void printRace(List<Car> cars) {
-        for (Car car : cars) {
-            printSkidMark(car);
-        }
-        System.out.println();
+    public static void printRace(String record) {
+        System.out.println(record);
     }
 
     private static void printSkidMark(Car car) {
@@ -29,11 +27,17 @@ public class ResultView {
         System.out.println(skidMark);
     }
 
-    public static void printWinner(List<Car> winners) {
-        List<String> winnerNames = new ArrayList<>();
-        for (Car car : winners) {
-            winnerNames.add(car.getName());
+    public static void printWinner(String winnersName) {
+        System.out.println(winnersName + "가 최종 우승했습니다.");
+    }
+
+    public static void printResult(RaceResult raceResult) {
+        List<String> record = raceResult.getRecord();
+        printResultTitle();
+
+        for(String lap: record){
+            printRace(lap);
         }
-        System.out.println(String.join(",", winnerNames) + "가 최종 우승했습니다.");
+        printWinner(raceResult.getWinnerName());
     }
 }

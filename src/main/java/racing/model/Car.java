@@ -1,21 +1,39 @@
 package racing.model;
 
 import racing.strategy.CarMoveStrategy;
+import racing.strategy.DefaultCarMoveStrategy;
 
-public abstract class Car {
-    protected CarPosition position;
+public class Car {
+    private final static String TIREMARK = "-";
+    private final static int SPEED = 1;
+
+    private CarPosition position;
     private CarMoveStrategy carMoveStrategy;
-    private String name;
+    private CarName name;
 
-    public Car(String name, CarPosition position) {
+    public Car(CarName name, CarPosition position) {
         this.name = name;
         this.position = position;
-
         setDefaultCarMoveStrategy();
+    }
+    public Car(String name, int position) {
+        this(new CarName(name), new CarPosition(position));
     }
 
     public Car(String name) {
-        this(name, new CarPosition());
+        this(new CarName(name), new CarPosition());
+    }
+
+    public void setDefaultCarMoveStrategy() {
+        setStrategy(new DefaultCarMoveStrategy());
+    }
+
+    public String getTireMark() {
+        return TIREMARK;
+    }
+
+    public void move() {
+        position.move(SPEED);
     }
 
     public boolean canMove(int randomNum) {
@@ -30,6 +48,10 @@ public abstract class Car {
         return position.getPosition();
     }
 
+    public String getName() {
+        return this.name.getName();
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -40,22 +62,18 @@ public abstract class Car {
         }
 
         Car car = (Car) obj;
-        if (car.name != this.name) return false;
+        if (!car.getName().equals(this.getName())) {
+            return false;
+        }
+
         return car.position.getPosition() == this.position.getPosition();
     }
 
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
-
-    public abstract void setDefaultCarMoveStrategy();
-
-    public abstract String getTireMark();
-
-    public abstract void move();
-
-    public String getName() {
-        return this.name;
+    public String getSkidMark(){
+        String skidMark = getName() + " : ";
+        for (int i = 0; i < this.getPosition(); i++) {
+            skidMark += this.getTireMark();
+        }
+        return skidMark;
     }
 }
