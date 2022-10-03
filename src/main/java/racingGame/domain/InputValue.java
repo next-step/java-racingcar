@@ -1,7 +1,7 @@
 package racingGame.domain;
 
+import racingGame.InputVerifier;
 import racingGame.exception.WrongInputException;
-import racingGame.view.InputVerifier;
 
 import java.util.Arrays;
 import java.util.Collections;

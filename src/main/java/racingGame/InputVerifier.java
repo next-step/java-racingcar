@@ -1,4 +1,4 @@
-package racingGame.view;
+package racingGame;
 
 import racingGame.exception.WrongInputException;
 

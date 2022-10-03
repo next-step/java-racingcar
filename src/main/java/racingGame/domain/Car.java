@@ -1,6 +1,6 @@
 package racingGame.domain;
 
-import racingGame.domain.racingRule.RacingRule;
+import racingGame.racingRule.RacingRule;
 
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -10,9 +10,11 @@ public class Car implements Comparable<Car> {
 
     private int position;
     private String carName;
+    private RacingRule racingRule;
 
-    public Car(String carName) {
+    public Car(String carName, RacingRule racingRule) {
         this.carName = carName;
+        this.racingRule = racingRule;
         this.position = 0;
     }
 
@@ -20,8 +22,8 @@ public class Car implements Comparable<Car> {
         return carName;
     }
 
-    public void move(RacingRule racingRule) {
-        if (racingRule.createRandomResult()) {
+    public void move() {
+        if (racingRule.moveOrNot()) {
             position++;
         }
     }

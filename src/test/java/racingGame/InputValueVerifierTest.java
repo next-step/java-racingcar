@@ -3,7 +3,6 @@ package racingGame;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingGame.exception.WrongInputException;
-import racingGame.view.InputVerifier;
 
 import static org.junit.jupiter.api.Assertions.*;
 
