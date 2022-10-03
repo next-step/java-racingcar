@@ -1,6 +1,8 @@
 package racingcarwinner;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class RacingCarWinner {
@@ -9,6 +11,7 @@ public class RacingCarWinner {
     private int carMovingCount;
     private String[] participantNames;
     private int participantNumber;
+    private Map<String, Integer> carNowInformation;
     private Car car = new Car();
 
     public RacingCarWinner(String participantName, int carMovingCount) {
@@ -37,4 +40,26 @@ public class RacingCarWinner {
         }
         return 0;
     }
+
+    public List<Integer> racingCarMove() {
+        List<Integer> carMovement = new ArrayList<>();
+        for (int i = 0; i < participantNumber; i++) {
+            carMovement.add(i, judgmentGoStop());
+        }
+        return carMovement;
+    }
+
+    public void updateParticipantInformation() {
+        List<Integer> carMovement = racingCarMove();
+        carNowInformation = car.getParticipant();
+        String participantNameKey = "";
+        int eachNumberOfMove = 0;
+        for (int i = 0; i < participantNumber; i++) {
+            participantNameKey = participantNames[i];
+            eachNumberOfMove = carNowInformation.get(participantNameKey) + carMovement.get(i);
+            carNowInformation.replace(participantNameKey, eachNumberOfMove);
+        }
+        car.setParticipant(carNowInformation);
+    }
+
 }
