@@ -6,7 +6,7 @@ import step3.position.Position;
 
 import java.util.Objects;
 
-public final class RacingCar {
+public final class Car {
 
     private static final int NUMBER_OF_JUDGMENT_THAT_CAN_GO_FORWARD = 4;
 
@@ -14,18 +14,18 @@ public final class RacingCar {
 
     private final Number number;
 
-    public RacingCar(Number number) {
+    public Car(Number number) {
         this(new Position(0, new BarOutputView()), number);
     }
 
-    public RacingCar(Position position, Number number) {
+    public Car(Position position, Number number) {
         this.position = position;
         this.number = number;
     }
 
-    public RacingCar movedCar() {
+    public Car movedCar() {
         if (number.generatedNumber() >= NUMBER_OF_JUDGMENT_THAT_CAN_GO_FORWARD) {
-            return new RacingCar(position.movedPosition(), number);
+            return new Car(position.movedPosition(), number);
         }
         return this;
     }
@@ -37,8 +37,8 @@ public final class RacingCar {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        RacingCar racingCar = (RacingCar) o;
-        return Objects.equals(position, racingCar.position) && Objects.equals(number, racingCar.number);
+        Car car = (Car) o;
+        return Objects.equals(position, car.position) && Objects.equals(number, car.number);
     }
 
     @Override
