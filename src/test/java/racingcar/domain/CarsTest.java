@@ -21,11 +21,10 @@ class CarsTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {0, 1, 2, 3, 100})
-    @DisplayName("입력한 차 대수만큼의 차들이 이동한다.")
-    void movingCarsTest_thenIsEqualTo(int carCount) {
-        Cars cars = new Cars(carCount);
-        cars.move(new RandomValueMovingStrategy());
+    @ValueSource(strings = {"pobi,crong,honux", "a,b,c,d,e"})
+    @DisplayName("입력한 자동차 이름을 ','로 구분하고, 구분한 개수만큼 자동차를 생성한다.")
+    void carsCreateTest_thenIsEqualTo(String carNames) {
+        Cars cars = new Cars(carNames);
         List<Car> values = cars.getValues();
 
         assertThat(cars).isEqualTo(new Cars(values));
