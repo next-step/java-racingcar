@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Test;
 
 public class NumberOverFourStrategyTest {
 
-	MoveStrategy moveStrategyMovable = new NumberOverFourStrategy(() -> MOVE_BOUNDARY_INCLUSIVE);
-	MoveStrategy moveStrategyNotMovable = new NumberOverFourStrategy(() -> MOVE_BOUNDARY_INCLUSIVE - 1);
+	private final MoveStrategy moveStrategyMovable = new NumberOverFourStrategy(() -> MOVE_BOUNDARY_INCLUSIVE);
+	private final MoveStrategy moveStrategyNotMovable = new NumberOverFourStrategy(() -> MOVE_BOUNDARY_INCLUSIVE - 1);
 
 	@DisplayName("숫자가 4 이상이어야 움직일 수 있다")
 	@Test

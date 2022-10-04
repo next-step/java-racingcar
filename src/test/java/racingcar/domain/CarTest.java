@@ -9,8 +9,8 @@ import racingcar.strategy.MoveStrategy;
 
 public class CarTest {
 
-	MoveStrategy moveStrategyMovable = () -> true;
-	MoveStrategy moveStrategyNotMovable = () -> false;
+	private final MoveStrategy moveStrategyMovable = () -> true;
+	private final MoveStrategy moveStrategyNotMovable = () -> false;
 
 	@Test
 	@DisplayName("차는 전진할 수 있다")

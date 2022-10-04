@@ -13,10 +13,10 @@ import racingcar.strategy.MoveStrategy;
 
 public class CarsTest {
 
-	MoveStrategy moveStrategyMovable = () -> true;
-	MoveStrategy moveStrategyNotMovable = () -> false;
+	private final MoveStrategy moveStrategyMovable = () -> true;
+	private final MoveStrategy moveStrategyNotMovable = () -> false;
 
-	List<Car> newCarList;
+	private List<Car> newCarList;
 
 	@BeforeEach
 	void setUp() {
