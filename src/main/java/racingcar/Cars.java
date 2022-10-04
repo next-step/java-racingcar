@@ -2,6 +2,7 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 	private List<Car> cars = new ArrayList<>();
@@ -17,27 +18,21 @@ public class Cars {
 	}
 
 	public List<Car> findWinner() {
+		return findWinners(findWinnerPosition(), getCars());
+	}
+
+	private int findWinnerPosition() {
 		int max = 0;
-		List<Car> winners = new ArrayList<>();
 		for (int i = 0; i < cars.size(); i++) {
-			max = bestPosition(max, i);
+			max = Math.max(max, cars.get(i).getStatus().getPosition());
 		}
-		return findWinners(max, winners);
+		return max;
 	}
 
 	private List<Car> findWinners(int max, List<Car> winners) {
-		for (Car car : cars) {
-			if (car.getStatus().getPosition() == max) {
-				winners.add(car);
-			}
-		}
-		return winners;
-	}
-
-	private int bestPosition(int max, int i) {
-		if (max <= cars.get(i).getStatus().getPosition()) {
-			max = cars.get(i).getStatus().getPosition();
-		}
-		return max;
+		List<Car> classify = winners.stream()
+			.filter(car -> car.getStatus().getPosition() == max)
+			.collect(Collectors.toList());
+		return classify;
 	}
 }
