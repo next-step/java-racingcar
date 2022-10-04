@@ -7,7 +7,7 @@ public class RacingGameTestDrive {
         int carNumber, moveNumber;
         carNumber = RacingGameInputView.inputCarNumber();
         moveNumber = RacingGameInputView.inputMoveNumber();
-        System.out.println("실행 결과");
+        RacingCarView.printMessage();
         RacingGame.race(carNumber, moveNumber);
     }
 }

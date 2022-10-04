@@ -7,4 +7,8 @@ public class RacingCarView {
     public static void printRacingCar(int location) {
         System.out.println(LOCATION_PRINT_LETTER.repeat(location));
     }
+
+    public static void printMessage() {
+        System.out.println("실행 결과");
+    }
 }
