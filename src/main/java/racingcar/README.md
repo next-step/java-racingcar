@@ -92,6 +92,6 @@
 ### MovingStrategyType
 - [x] Type이 value로 `Supplier` 를 갖도록 변경하여 Enum 만으로 Type에 해당하는 MovingStrategy 구현체를 얻을 수 있도록 수정
 ### ResultView
-- [ ] 괄호 제거하는 로직 -> `Collections.joining` 으로 개선
+- [x] 괄호 제거하는 로직 -> `Collections.joining` 으로 개선
 ### CarsTest
-- [ ] `create()`에서 테스트하고자 하는 대상인 `생성`과 실제 테스트인 `move()`의 목적이 일치하지 않는 문제 수정
+- [x] `create()`에서 테스트하고자 하는 대상인 `생성`과 실제 테스트인 `move()`의 목적이 일치하지 않는 문제 수정

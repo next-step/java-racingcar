@@ -1,15 +1,13 @@
 package racingcar.view;
 
-import racingcar.domain.Car;
 import racingcar.domain.PlayResult;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
 
     public static final String RESULT_MESSAGE = "-";
-    public static final String BRACKETS_REGEX = "\\[|\\]";
 
     public static void printTitle() {
         printNewLine();
@@ -29,16 +27,10 @@ public class ResultView {
     }
 
     public static void printWinners(List<PlayResult> playResults) {
-        System.out.println(mapArrayToString(playResults.stream().map(PlayResult::getNameValue).toArray()) +
-                "가 최종 우승했습니다.");
-    }
-
-    public static String mapArrayToString(Object[] list) {
-        return removeBrackets(Arrays.toString(list));
-    }
-
-    public static String removeBrackets(String text) {
-        return text.replaceAll(BRACKETS_REGEX, "");
+        String winnerCarNames = playResults.stream()
+                .map(PlayResult::getNameValue)
+                .collect(Collectors.joining(", "));
+        System.out.println(winnerCarNames + "가 최종 우승했습니다.");
     }
 
     private static void printNewLine() {
