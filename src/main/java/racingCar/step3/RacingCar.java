@@ -16,7 +16,7 @@ public class RacingCar {
         }
     }
 
-    private boolean canMove(int randomNumber) {
+    public boolean canMove(int randomNumber) {
         return 4 <= randomNumber;
     }
 
