@@ -1,20 +1,24 @@
 package racingCar.step3;
 
 public class RacingGame {
-    private final int numOfCars;
+    public static final String CAR_NAME_DELIMITER = ",";
+    //    private final int numOfCars;
+    private final RacingCar[] cars;
     private final int numOfRounds;
 
     private final ResultView printer;
 
     public RacingGame(InputView keyboardInput, ResultView printer) {
-        this.numOfCars = keyboardInput.numberOfCars();
+        this.cars = initializedCars(getCarNames(keyboardInput));
         this.numOfRounds = keyboardInput.numberOfRounds();
         this.printer = printer;
     }
 
-    public void start() {
-        RacingCar[] cars = initializedCars(numOfCars);
+    private static String[] getCarNames(InputView keyboardInput) {
+        return keyboardInput.nameOfCars().split(CAR_NAME_DELIMITER);
+    }
 
+    public void start() {
         printer.print("실행 결과");
 
         for (int i = 0; i < numOfRounds; i++) {
@@ -26,10 +30,10 @@ public class RacingGame {
         }
     }
 
-    private RacingCar[] initializedCars(int numOfCars) {
-        RacingCar[] cars = new RacingCar[numOfCars];
-        for (int i = 0; i < numOfCars; i++) {
-            cars[i] = new RacingCar(System.currentTimeMillis() + i);
+    private RacingCar[] initializedCars(String[] carNames) {
+        RacingCar[] cars = new RacingCar[carNames.length];
+        for (int i = 0; i < carNames.length; i++) {
+            cars[i] = new RacingCar(carNames[i], System.currentTimeMillis() + i);
         }
 
         return cars;
