@@ -16,6 +16,7 @@ public class Car implements Comparable<Car> {
 
 	public Car(String name) {
 		validateNameLength(name);
+		validateNameNotBlank(name);
 		this.name = name;
 	}
 
@@ -39,6 +40,12 @@ public class Car implements Comparable<Car> {
 		}
 		if (name.length() > 5) {
 			throw new RuntimeException("이름은 5글자 이하입니다");
+		}
+	}
+
+	public void validateNameNotBlank(String name) {
+		if(name.isBlank()){
+			throw new RuntimeException("이름은 공백이 될 수 없습니다");
 		}
 	}
 
