@@ -84,12 +84,11 @@
 - [x] `getMaxPosition()` 로직을 `Stream.max()`를 사용하도록 변경
   - [x] 연관된 `PlayResult.getBiggerPosition()`, `Position.getBigger()` 메소드 삭제
   - [x] `Position`에 `compareTo` 구현
+- [x] findWinners()에서 `List<PlayResult>`를 불변 객체로 반환하도록 수정
 ### Name
 - [x] validation 시 trim 이후 한번에 validate 하도록 수정
 ### Position
 - [x] 음수 값 들어가지 못하도록 validation 로직 추가
-### Cars
-- [ ] findMaxPositionCars()에서 불변 객체 반환하도록 수정
 ### MovingFactoryType
 - [ ] Type이 value로 `Supplier` 를 갖도록 변경하여 Enum 만으로 Type에 해당하는 MovingStrategy 구현체를 얻을 수 있도록 수정
 ### ResultView

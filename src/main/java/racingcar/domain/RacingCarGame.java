@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import racingcar.strategy.MovingStrategy;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,7 +23,7 @@ public class RacingCarGame {
     private static List<PlayResult> findWinners(List<PlayResult> playResults, Position maxPosition) {
         return playResults.stream()
                 .filter(playResult -> playResult.isPositionEquals(maxPosition))
-                .collect(Collectors.toList());
+                .collect(Collectors.toUnmodifiableList());
     }
 
     private static Position getMaxPosition(List<PlayResult> playResults) {
