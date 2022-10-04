@@ -21,6 +21,7 @@ public class RacingGame {
     private static void playRound(Cars cars) {
         cars.moveCarList(getMovableStrategy());
         OutputView.printOutputBody(cars);
+        OutputView.printOutputResult(cars);
     }
 
 }

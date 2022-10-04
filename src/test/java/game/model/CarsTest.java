@@ -28,4 +28,11 @@ class CarsTest {
             Assertions.assertThat(car.getPosition()).isZero();
         }
     }
+
+    @Test
+    void 높은_위치에_위치한_자동차_리스트_조회() {
+        Cars cars = new Cars(List.of("a", "b", "c"));
+
+        Assertions.assertThat(cars.getLocatedHighPositionCars()).isEqualTo(cars.getCarList());
+    }
 }
