@@ -1,3 +1,5 @@
+package com.nextlevel.kky.racing.ui;
+
 import java.util.Scanner;
 
 public class InputView {

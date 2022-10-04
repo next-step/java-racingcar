@@ -1,3 +1,8 @@
+package com.nextlevel.kky.racing;
+
+import com.nextlevel.kky.racing.ui.InputView;
+import com.nextlevel.kky.racing.ui.ResultView;
+
 import java.util.Scanner;
 
 public class CarRacingApplication {

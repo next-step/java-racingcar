@@ -1,4 +1,4 @@
-import java.util.Random;
+package com.nextlevel.kky.racing;
 
 public class Car {
 

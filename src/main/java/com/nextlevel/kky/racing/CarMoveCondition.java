@@ -1,3 +1,4 @@
+package com.nextlevel.kky.racing;
 
 public class CarMoveCondition {
 

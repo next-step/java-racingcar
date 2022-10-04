@@ -1,3 +1,5 @@
+package com.nextlevel.kky.racing;
+
 import java.util.Random;
 
 public class RandomIntegerGenerator implements IntegerGenerator {
