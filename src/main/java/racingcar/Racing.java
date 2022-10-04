@@ -4,12 +4,13 @@ import java.util.Random;
 
 public class Racing extends Condition {
 	private static final int MAX_OF_RANDOM = 10;
+	private static final RandomStrategy random = () -> new Random().nextInt(MAX_OF_RANDOM);
 
 	public Racing() {
 		super(new NumberCondition());
 	}
 
-	public static void playRace() {
+	public void playRace() {
 		Print.participantsOfRacing();
 		String participant = InputView.input();
 		Print.howManyMatches();
@@ -33,7 +34,6 @@ public class Racing extends Condition {
 
 	private static void playMatch(Cars cars, int index) {
 		for (int i = 0; i < cars.getCars().size(); i++) {
-			RandomStrategy random = () -> new Random().nextInt(MAX_OF_RANDOM);
 			cars.getCars().get(i).movingOfRound(random.makeRandom());
 		}
 		Views.results(cars, index);
@@ -43,7 +43,7 @@ public class Racing extends Condition {
 		return new Cars(input.split(","));
 	}
 
-	public static String checkInput(String input) {
+	public String checkInput(String input) {
 		if (validInput(input)) {
 			throw new RuntimeException();
 		}
