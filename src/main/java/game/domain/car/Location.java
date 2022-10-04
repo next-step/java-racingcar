@@ -4,11 +4,12 @@ import java.util.Objects;
 
 public class Location {
 
+    public static int LOCATION_MINIMUM = 0;
     public static String LOCATION_EXCEPTION = "Location은 음수일 수 없습니다.";
     public int location;
 
     public Location(int location) {
-        if (location < 0) {
+        if (location < LOCATION_MINIMUM) {
             throw new IllegalArgumentException(LOCATION_EXCEPTION);
         }
         this.location = location;
@@ -16,6 +17,10 @@ public class Location {
 
     public Location(Location location) {
         this(location.getLocation());
+    }
+
+    public Location() {
+        this(LOCATION_MINIMUM);
     }
 
     public int getLocation() {

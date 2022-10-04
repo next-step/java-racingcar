@@ -4,10 +4,11 @@ import java.util.Objects;
 
 public class ForwardNumber {
 
+    private static int FORWARD_MINIMUM = 0;
     private int forwardNumber;
 
     public ForwardNumber(int forwardNumber) {
-        if (forwardNumber < 0) {
+        if (forwardNumber < FORWARD_MINIMUM) {
             throw new IllegalArgumentException("ForwardNumber는 음수일 수 없습니다.");
         }
         this.forwardNumber = forwardNumber;

@@ -12,7 +12,7 @@ public abstract class Car {
 
     public Car(String name) {
         this.carName = new CarName(name);
-        this.location = new Location(0);
+        this.location = new Location();
     }
 
     public Location location() {
