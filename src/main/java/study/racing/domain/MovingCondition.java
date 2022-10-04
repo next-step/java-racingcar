@@ -1,4 +1,4 @@
-package study.racing.step3;
+package study.racing.domain;
 
 public interface MovingCondition {
     boolean movable(int number);

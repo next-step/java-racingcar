@@ -1,4 +1,4 @@
-package study.racing.step3;
+package study.racing.domain;
 
 public class RandomMovingCondition implements MovingCondition {
     public static final int MINIMUM_NUMBER_TO_MOVE = 4;
