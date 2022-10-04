@@ -1,10 +1,7 @@
 package game.domain.rule;
 
-import game.domain.game.RacingGame;
-import game.domain.car.RacingGameCarList;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -23,12 +20,4 @@ public class RacingGameRuleTest {
         );
     }
 
-    @DisplayName("racingGameRule의 범위 안에 있는 숫자를 뽑는다.")
-    @RepeatedTest(10)
-    void pickRandomNumber() {
-        RacingGameRule racingGameRule = new RacingGameRule(4, 6);
-        RacingGame racingGame = new RacingGame(racingGameRule, RacingGameCarList.makeRacingGameCars(3), 3);
-
-        org.assertj.core.api.Assertions.assertThat(racingGame.pickRandomNumber()).isBetween(0, racingGameRule.bound().getBound());
-    }
 }
