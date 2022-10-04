@@ -28,8 +28,8 @@ public class Car {
         location += MOVE_DISTANCE;
     }
 
-    public int getLocation() {
-        return location;
+    public void print() {
+        RacingCarView.printRacingCar(location);
     }
 
     @Override

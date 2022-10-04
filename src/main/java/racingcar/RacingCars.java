@@ -42,7 +42,7 @@ public class RacingCars {
 
     public void print() {
         for (Car car : cars) {
-            RacingCarView.printRacingCar(car);
+            car.print();
         }
     }
 
