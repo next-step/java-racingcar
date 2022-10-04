@@ -11,4 +11,9 @@ public class BoundTest {
 
         Assertions.assertThat(bound).isEqualTo(new Bound(5));
     }
+
+    @Test
+    void valid(){
+        Assertions.assertThatThrownBy(() -> new Bound(0)).isInstanceOf(IllegalArgumentException.class);
+    }
 }
