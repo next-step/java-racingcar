@@ -1,9 +1,9 @@
 package step3and4.game;
 
+import step3and4.client.input.InputView;
+import step3and4.client.number.Number;
+import step3and4.client.output.OutputView;
 import step3and4.game.car.Cars;
-import step3and4.input.InputView;
-import step3and4.number.Number;
-import step3and4.output.OutputView;
 
 import java.io.IOException;
 

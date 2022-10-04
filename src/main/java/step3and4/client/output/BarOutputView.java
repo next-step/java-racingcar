@@ -1,4 +1,4 @@
-package step3and4.output;
+package step3and4.client.output;
 
 public class BarOutputView implements OutputView {
 

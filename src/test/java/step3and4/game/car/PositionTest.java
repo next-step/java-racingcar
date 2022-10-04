@@ -2,7 +2,7 @@ package step3and4.game.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3and4.output.OutputView;
+import step3and4.client.output.OutputView;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;

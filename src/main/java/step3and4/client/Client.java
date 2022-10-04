@@ -1,9 +1,9 @@
-package step3and4;
+package step3and4.client;
 
+import step3and4.client.input.ConsoleInputView;
+import step3and4.client.number.RandomNumber;
+import step3and4.client.output.BarOutputView;
 import step3and4.game.CarGame;
-import step3and4.input.ConsoleInputView;
-import step3and4.number.RandomNumber;
-import step3and4.output.BarOutputView;
 
 import java.io.BufferedReader;
 import java.io.IOException;

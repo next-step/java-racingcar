@@ -3,8 +3,8 @@ package step3and4.game.car;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3and4.number.Number;
-import step3and4.output.OutputView;
+import step3and4.client.number.Number;
+import step3and4.client.output.OutputView;
 
 class CarTest {
 

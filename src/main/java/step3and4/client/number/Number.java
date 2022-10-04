@@ -1,4 +1,4 @@
-package step3and4.number;
+package step3and4.client.number;
 
 @FunctionalInterface
 public interface Number {

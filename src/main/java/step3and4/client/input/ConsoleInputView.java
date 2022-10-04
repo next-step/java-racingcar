@@ -1,4 +1,4 @@
-package step3and4.input;
+package step3and4.client.input;
 
 import java.io.BufferedReader;
 import java.io.IOException;
