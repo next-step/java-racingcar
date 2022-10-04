@@ -1,10 +1,8 @@
 package racingcar;
 
-import java.util.Random;
-
 public class Car {
 
-    private static final Random random = new Random();
+    private static final int AVAILABLE_MOVE_BOUND = 4;
 
     private int totalMoveCount;
 
@@ -12,13 +10,9 @@ public class Car {
         return totalMoveCount;
     }
 
-    public void move() {
-        if (isPossibleToMove()) {
+    public void move(int number) {
+        if (number >= AVAILABLE_MOVE_BOUND) {
             this.totalMoveCount += 1;
         }
-    }
-
-    private boolean isPossibleToMove() {
-        return (random.nextInt(10) >= 4);
     }
 }
