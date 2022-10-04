@@ -1,4 +1,4 @@
-package car_racing;
+package carracing;
 
 public class ConsoleGameDashBoard implements OutputInterface {
     private static final String STRAIGHT_MARK = "-";

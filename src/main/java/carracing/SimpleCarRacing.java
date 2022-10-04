@@ -1,4 +1,4 @@
-package car_racing;
+package carracing;
 
 public class SimpleCarRacing {
 

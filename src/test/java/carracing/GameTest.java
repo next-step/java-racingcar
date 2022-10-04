@@ -1,4 +1,4 @@
-package car_racing;
+package carracing;
 
 import org.junit.jupiter.api.Test;
 
