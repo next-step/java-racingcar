@@ -6,6 +6,8 @@ import racingcar.strategy.MovingStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.OptionalInt;
+import java.util.stream.Collectors;
 
 public class RacingCarGame {
     private static final int ZERO = 0;
@@ -28,6 +30,14 @@ public class RacingCarGame {
             carsValues.add(new CarsDto(cars.move(movingStrategy)));
         }
         return carsValues;
+    }
+
+    public List<Car> findWinner() {
+        List<Car> values = cars.getValues();
+        OptionalInt max = values.stream().mapToInt(Car::getPosition).max();
+        return values.stream()
+                .filter(value -> value.getPosition() == max.getAsInt())
+                .collect(Collectors.toList());
     }
 
     private int validationPositiveNumber(int value) {

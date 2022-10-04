@@ -12,5 +12,6 @@ public class RacingCarGameApplication {
         ResultView.printResultMessage();
         RacingCarGame racingCarWinnerGame = new RacingCarGame(carName, tryCount);
         ResultView.printRacingCars(racingCarWinnerGame.play(new RandomValueMovingStrategy()));
+        ResultView.printWinner(racingCarWinnerGame.findWinner());
     }
 }
