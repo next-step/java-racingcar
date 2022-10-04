@@ -1,5 +1,7 @@
 package racing_car_with_winner.model;
 
+import java.util.Objects;
+
 public class MoveResult {
     private final int moveCount;
 
@@ -24,5 +26,22 @@ public class MoveResult {
 
     public int getMoveCount() {
         return moveCount;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof MoveResult)) {
+            return false;
+        }
+        MoveResult that = (MoveResult) o;
+        return moveCount == that.moveCount;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(moveCount);
     }
 }

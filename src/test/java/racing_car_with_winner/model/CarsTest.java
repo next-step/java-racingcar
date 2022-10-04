@@ -11,5 +11,4 @@ public class CarsTest {
 
         Assertions.assertThat(new Cars(names).getCars()).hasSize(3);
     }
-
 }
