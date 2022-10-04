@@ -1,7 +1,5 @@
 package step4;
 
-import java.util.List;
-
 public class RacingGame {
 
     public static void run() {
@@ -9,14 +7,13 @@ public class RacingGame {
         OutputRacingCar outputResult = new OutputRacingCar();
         Racing racing = new Racing();
         Result result = new Result();
+        Cars cars = new Cars();
 
-        List<Car> cars = inputRacingCar.inputCar();
+        cars.addCars(inputRacingCar.inputNames());
         int times = inputRacingCar.inputTimes();
 
         outputResult.printTitle();
         racing.racing(cars, times, outputResult);
-        result.findWinner(cars);
-        outputResult.printResult(result.getWinner());
-
+        outputResult.printResult(result.findWinner(cars));
     }
 }

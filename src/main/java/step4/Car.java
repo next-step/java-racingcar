@@ -11,14 +11,14 @@ public class Car {
     private String name;
     private Position position;
 
-    public Car(String name, Position position) {
+    public Car(String name) {
 
         if (name.length() > NAME_LENGTH) {
             throw new IllegalArgumentException("이름은 5자를 초과할 수 없습니다.");
         }
 
         this.name = name;
-        this.position = position;
+        this.position = new Position();
     }
 
     public void moveOrStop() {

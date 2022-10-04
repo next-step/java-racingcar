@@ -1,19 +1,17 @@
 package step4;
 
-import java.util.List;
-
 public class Racing {
 
-
-    public void racing (List<Car> cars, int times, OutputRacingCar outputResult) {
+    public void racing (Cars cars, int times, OutputRacingCar outputResult) {
         for (int i = 0 ; i < times ; i++) {
             outputResult.printRound(racingRound(cars));
         }
     }
 
-    public List<Car> racingRound(List<Car> cars) {
-        for (int i = 0; i < cars.size() ; i++) {
-            cars.get(i).moveOrStop();
+    public Cars racingRound(Cars cars) {
+        for (int i = 0; i < cars.getCarsSize() ; i++) {
+            Car car = cars.getCar(i);
+            car.moveOrStop();
         }
         return cars;
     }

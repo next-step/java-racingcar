@@ -12,16 +12,13 @@ import java.util.Map;
 public class ResultTest {
     Result result;
 
-    List<Car> cars;
+    Cars cars;
 
     @BeforeEach
     void init() {
         result = new Result();
-        cars = new ArrayList<>();
-        cars.add(new Car("test0", new Position()));
-        cars.add(new Car("test1", new Position()));
-        cars.add(new Car("test2", new Position()));
-
+        cars = new Cars();
+        cars.addCars(new String[]{"test0", "test1", "test2"});
     }
 
     @Test

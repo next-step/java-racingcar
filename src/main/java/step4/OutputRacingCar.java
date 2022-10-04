@@ -4,8 +4,9 @@ import java.util.List;
 
 public class OutputRacingCar {
 
-    public void printRound(List<Car> cars) {
-        for (Car car : cars) {
+    public void printRound(Cars cars) {
+        for (int i = 0 ; i < cars.getCarsSize() ; i++) {
+            Car car = cars.getCar(i);
             System.out.println(car.getName() + " : " + printBar(car.getPosition()));
         }
         System.out.println();
@@ -13,7 +14,7 @@ public class OutputRacingCar {
 
     private String printBar(int value) {
         String result = "";
-        for(int i = 0 ; i < value ; i++) {
+        for (int i = 0 ; i < value ; i++) {
             result += "-";
         }
         return result;

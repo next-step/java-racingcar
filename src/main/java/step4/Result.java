@@ -5,21 +5,18 @@ import java.util.*;
 public class Result {
     private List<String> winner = new ArrayList<>();
 
-    public void findWinner(List<Car> cars) {
-        Car maxValue = cars.stream().max(Comparator.comparing(Car::getPosition)).get();
+    public List<String> findWinner(Cars cars) {
+        Car maxValue = cars.findMaxValue();
 
-        for (Car car : cars) {
-            addWinner(maxValue, car);
+        for (int i = 0 ; i < cars.getCarsSize() ; i++) {
+            addWinner(maxValue, cars.getCar(i));
         }
+        return winner;
     }
 
     private void addWinner(Car maxValue, Car car) {
         if (car.getPosition() == maxValue.getPosition()) {
             winner.add(car.getName());
         }
-    }
-
-    public List<String> getWinner() {
-        return winner;
     }
 }

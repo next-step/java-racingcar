@@ -1,22 +1,14 @@
 package step4;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class InputRacingCar {
     private static final Scanner scanner = new Scanner(System.in);
 
-    public List<Car> inputCar() {
+    public String[] inputNames() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
 
-        String[] names = splitNames();
-        List<Car> cars = new ArrayList<>();
-
-        for (int i = 0 ; i < names.length ; i++) {
-            cars.add(new Car(names[i], new Position()));
-        }
-        return cars;
+        return splitNames();
     }
 
     public int inputTimes() {
