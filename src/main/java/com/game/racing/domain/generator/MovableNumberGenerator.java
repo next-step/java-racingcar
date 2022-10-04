@@ -1,4 +1,4 @@
-package com.game.racing.generator;
+package com.game.racing.domain.generator;
 
 public class MovableNumberGenerator implements NumberGenerator {
 

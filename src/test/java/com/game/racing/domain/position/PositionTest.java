@@ -1,6 +1,6 @@
-package com.game.racing.position;
+package com.game.racing.domain.position;
 
-import com.game.racing.car.Winner;
+import com.game.racing.domain.car.Winner;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

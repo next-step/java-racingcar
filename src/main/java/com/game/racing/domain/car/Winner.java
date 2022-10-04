@@ -1,7 +1,4 @@
-package com.game.racing.car;
-
-import java.util.List;
-import java.util.stream.Collectors;
+package com.game.racing.domain.car;
 
 public class Winner {
 
@@ -21,9 +18,4 @@ public class Winner {
         WINNER_POSITION = 0;
     }
 
-    public static List<Car> getRacingWinners(Cars cars) {
-        return cars.getRacingCars().stream()
-                .filter(car -> car.getPosition().get() == WINNER_POSITION)
-                .collect(Collectors.toList());
-    }
 }

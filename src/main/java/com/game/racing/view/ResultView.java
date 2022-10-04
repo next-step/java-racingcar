@@ -1,11 +1,11 @@
 package com.game.racing.view;
 
-import com.game.racing.car.Car;
+import com.game.racing.domain.car.Car;
 
 import java.util.List;
 
 public class ResultView {
-    public static final String RESULT_MESSAGE_OF_GAME_END = "실행결과";
+    public static final String RESULT_MESSAGE_OF_GAME_END = "\n실행 결과";
     public static final String DASH_STRING = "-";
 
     private ResultView() {
