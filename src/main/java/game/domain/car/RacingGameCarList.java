@@ -40,7 +40,7 @@ public class RacingGameCarList {
         return winners(winnerLocation());
     }
 
-    private RacingGameCarList winners(int winnerLocation) {
+    private RacingGameCarList winners(Location winnerLocation) {
         List<RacingGameCar> result = new ArrayList<>();
         for (RacingGameCar car : cars()) {
             isWinner(winnerLocation, result, car);
@@ -48,17 +48,17 @@ public class RacingGameCarList {
         return new RacingGameCarList(result);
     }
 
-    private static void isWinner(int winnerLocation, List<RacingGameCar> result, RacingGameCar car) {
-        if(car.location() == winnerLocation){
+    private static void isWinner(Location winnerLocation, List<RacingGameCar> result, RacingGameCar car) {
+        if(car.location().equals(winnerLocation)){
             result.add(car);
         }
     }
 
-    private int winnerLocation() {
+    private Location winnerLocation() {
         int max = Integer.MIN_VALUE;
         for (RacingGameCar car : cars()) {
-            max = Math.max(car.location(),max);
+            max = Math.max(car.location().getLocation(),max);
         }
-        return max;
+        return new Location(max);
     }
 }

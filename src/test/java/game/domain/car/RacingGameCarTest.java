@@ -22,7 +22,7 @@ public class RacingGameCarTest {
     @ParameterizedTest(name = "자동차의 위치를 숫자만큼 증가시킨다")
     @ValueSource(ints = {1, 33, 999})
     void forward(int number) {
-        int expected = car.location() + number;
+        Location expected = new Location(car.location().getLocation() + number);
 
         car.forward(number);
 
@@ -32,14 +32,14 @@ public class RacingGameCarTest {
     @DisplayName(value = "RacingGameRule과 숫자가 주어지고 RacingGameRule의 이동 가능한 숫자보다 큰 값이 주어지면 RacingGameRule의 이동 거리만큼 이동한다.")
     @Test
     void forwardRacingGameRule() {
-        RacingGameRule racingGameRule = new RacingGameRule(4,10);
+        RacingGameRule racingGameRule = new RacingGameRule(4, 10);
 
-        int expected = car.location();
-        car.forward(racingGameRule,3);
-        assertThat(car.location()).isEqualTo(expected);
+        Location expected = new Location(car.location().getLocation());
+        car.forward(racingGameRule, 3);
+        assertThat(car.location()).isEqualTo(new Location(expected));
 
-        expected = car.location() + racingGameRule.forwardDistance();
-        car.forward(racingGameRule,4);
+        expected = new Location(car.location().getLocation() + racingGameRule.forwardDistance());
+        car.forward(racingGameRule, 4);
         assertThat(car.location()).isEqualTo(expected);
     }
 

@@ -26,7 +26,7 @@ public class RacingGameCar extends Car {
     }
 
     public void forward(int number) {
-        location += number;
+        location.forward(number);
     }
 
     private static String checkNameLength(String name) {

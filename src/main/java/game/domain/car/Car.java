@@ -4,7 +4,7 @@ import game.domain.rule.RacingGameRule;
 
 public abstract class Car {
 
-    protected int location;
+    protected Location location;
     private String name;
 
     public Car() {
@@ -12,10 +12,11 @@ public abstract class Car {
 
     public Car(String name) {
         this.name = name;
+        this.location = new Location(0);
     }
 
-    public int location() {
-        return location;
+    public Location location() {
+        return new Location(location);
     }
 
     public String name() {

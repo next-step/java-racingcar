@@ -20,7 +20,7 @@ public class RacingGameOutput {
     private static void printCarLocation(Car car) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(car.name()).append(LOCATION_GUIDE);
-        for (int i = 0; i < car.location(); i++) {
+        for (int i = 0; i < car.location().getLocation(); i++) {
             stringBuilder.append(LOCATION_CHARACTER);
         }
         System.out.println(stringBuilder);

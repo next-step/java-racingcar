@@ -6,11 +6,20 @@ public class Location {
 
     public static String LOCATION_EXCEPTION = "Location은 음수일 수 없습니다.";
     public int location;
+
     public Location(int location) {
-        if(location<0){
+        if (location < 0) {
             throw new IllegalArgumentException(LOCATION_EXCEPTION);
         }
         this.location = location;
+    }
+
+    public Location(Location location) {
+        this(location.getLocation());
+    }
+
+    public int getLocation() {
+        return this.location;
     }
 
     @Override
@@ -24,5 +33,9 @@ public class Location {
     @Override
     public int hashCode() {
         return Objects.hash(location);
+    }
+
+    public void forward(int number) {
+        this.location += number;
     }
 }
