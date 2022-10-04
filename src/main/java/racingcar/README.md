@@ -85,9 +85,9 @@
   - [x] 연관된 `PlayResult.getBiggerPosition()`, `Position.getBigger()` 메소드 삭제
   - [x] `Position`에 `compareTo` 구현
 ### Name
-- [ ] validation 시 trim 이후 한번에 validate 하도록 수정
+- [x] validation 시 trim 이후 한번에 validate 하도록 수정
 ### Position
-- [ ] 음수 값 들어가지 못하도록 validation 로직 추가
+- [x] 음수 값 들어가지 못하도록 validation 로직 추가
 ### Cars
 - [ ] findMaxPositionCars()에서 불변 객체 반환하도록 수정
 ### MovingFactoryType

@@ -11,7 +11,14 @@ public class Position implements Comparable<Position> {
     }
 
     public Position(int position) {
-        this.position = position;
+        this.position = validate(position);
+    }
+
+    private int validate(int position) {
+        if (position < 0) {
+            throw new IllegalArgumentException("Position 값은 음수일 수 없습니다.");
+        }
+        return position;
     }
 
     public int getPosition() {
