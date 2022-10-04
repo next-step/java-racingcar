@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import racing_car_with_winner.exception.InvalidInputException;
 
-public class GameInputTest {
+public class CarNameTest {
 
     @DisplayName("입력받는 자동차의 이름은 주어진 길이를 초과할 수 없다")
     @ParameterizedTest
