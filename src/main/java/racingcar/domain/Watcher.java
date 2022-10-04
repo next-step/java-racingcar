@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import java.util.List;
-
 import racingcar.view.Display;
 
 public class Watcher {

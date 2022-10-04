@@ -2,31 +2,14 @@ package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.*;
 
-import java.util.List;
 import java.util.stream.Stream;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import racingcar.view.Display;
-
 class RacingTest {
-    private Watcher watcher;
-
-    @BeforeEach
-    void setUp() {
-        watcher = new Watcher(new Display() {
-            @Override
-            public void show(Distances distances) {}
-
-            @Override
-            public void showWinners(Distances distances) {}
-        });
-    }
-
     @DisplayName("자동차 대수나 시도 횟수가 유효하다면 Racing 객체를 리턴한다.")
     @ParameterizedTest
     @MethodSource("cars")
