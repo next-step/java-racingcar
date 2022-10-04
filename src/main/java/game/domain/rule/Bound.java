@@ -8,7 +8,7 @@ public class Bound {
     private int bound;
 
     public Bound(int bound) {
-        if (bound < 0) {
+        if (bound <= 0) {
             throw new IllegalArgumentException(BOUND_EXCEPTION);
         }
         this.bound = bound;
