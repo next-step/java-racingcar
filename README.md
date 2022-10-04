@@ -70,4 +70,4 @@
 
 > 기능 목록 및 commit 로그 요구사항
 - [x] 기능 구현 전 README.md 파일에 구현할 기능 목록 정리해 추가.
-- [ ] git 의 commit 단위 : README.md파일에 정리한 기능 목록 단위로 추가.
+- [] git 의 commit 단위 : README.md파일에 정리한 기능 목록 단위로 추가.

@@ -7,17 +7,8 @@ import java.util.Objects;
 public class Car {
     private static final int INIT_POSITION = 0;
 
-
-    private String name;
+    private final String name;
     private int position;
-
-    public Car() {
-        this.position = INIT_POSITION;
-    }
-
-    public Car(int position) {
-        this.position = position;
-    }
 
     public Car(String name) {
         this.name = name;
