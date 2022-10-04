@@ -32,7 +32,7 @@ public class Race {
     }
 
     private Car createCar(MovingRule movingRule) {
-        return new Car(movingRule);
+        return new Car(movingRule, "쌩썡이");
     }
 
     public ScoreBoard result() {
