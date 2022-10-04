@@ -6,6 +6,8 @@ import step3.car_racing.service.Racing;
 
 import java.util.List;
 
+import static step3.car_racing.util.WinnerUtil.findWinner;
+
 public class ResultView {
 
     private ResultView() {
@@ -29,6 +31,8 @@ public class ResultView {
             Racing racing = new Racing(cars);
             printCarNameAndDistance(racing);
         }
+        String winner = findWinner(cars);
+        System.out.println(winner);
     }
 
     private static void printCarNameAndDistance(Racing racing) {

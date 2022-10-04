@@ -48,6 +48,6 @@ public class InputView {
     }
 
     private static List<String> makeNameList() {
-        return Arrays.stream(SCANNER.next().split(",")).collect(Collectors.toList());
+        return Arrays.stream(SCANNER.nextLine().trim().split(",")).collect(Collectors.toList());
     }
 }
