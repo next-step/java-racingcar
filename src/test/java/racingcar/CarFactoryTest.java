@@ -9,15 +9,14 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import racingcar.RacingCar;
-import racingcar.RacingCarFactory;
 
-public class RacingCarFactoryTest {
+public class CarFactoryTest {
+    private final String carNameList = "niro, tusan, genesis";
 
     @ParameterizedTest
     @MethodSource("getManufactoringCarsTestParams")
     public void manufactoringCars(int numOfCars, int tryingCount) {
-        List<RacingCar> cars = RacingCarFactory.manufactoringCars(numOfCars, tryingCount);
+        List<Car> cars = CarFactory.manufactoringCars(carNameList, tryingCount);
         assertThat(cars.size()).isEqualTo(numOfCars);
         cars.forEach(car -> {
             assertThat(car).isNotNull();
