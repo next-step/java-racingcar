@@ -1,4 +1,4 @@
-package carracing;
+package carracing.view;
 
 public class RacingCondition {
     private Integer carCount;

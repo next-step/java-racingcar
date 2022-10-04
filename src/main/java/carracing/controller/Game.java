@@ -1,7 +1,11 @@
-package carracing;
+package carracing.controller;
 
 
 import java.util.stream.IntStream;
+
+import carracing.model.Cars;
+import carracing.model.RandomMovableStrategy;
+import carracing.view.OutputInterface;
 
 public class Game {
     private Integer totalTryCount;

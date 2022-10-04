@@ -1,8 +1,10 @@
-package carracing;
+package carracing.model;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import carracing.model.Cars;
 
 public class CarsTest {
 

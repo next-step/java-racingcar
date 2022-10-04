@@ -1,5 +1,11 @@
 package carracing;
 
+import carracing.model.Cars;
+import carracing.controller.Game;
+import carracing.view.ConsoleGameDashBoard;
+import carracing.view.ConsoleInput;
+import carracing.view.RacingCondition;
+
 public class SimpleCarRacing {
 
     public static void main(String[] args) {

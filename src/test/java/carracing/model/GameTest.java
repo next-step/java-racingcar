@@ -1,6 +1,11 @@
-package carracing;
+package carracing.model;
 
 import org.junit.jupiter.api.Test;
+
+import carracing.model.Cars;
+import carracing.controller.Game;
+import carracing.view.ConsoleGameDashBoard;
+import carracing.view.RacingCondition;
 
 public class GameTest {
     @Test

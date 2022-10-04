@@ -1,4 +1,4 @@
-package carracing;
+package carracing.model;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;

@@ -1,6 +1,8 @@
-package carracing;
+package carracing.model;
 
 import java.util.Random;
+
+import carracing.GameRule;
 
 public class RandomMovableStrategy implements MovableStrategy<Integer> {
     private static final Random random = new Random();

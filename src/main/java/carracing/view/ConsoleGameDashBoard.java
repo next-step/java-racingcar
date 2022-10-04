@@ -1,4 +1,6 @@
-package carracing;
+package carracing.view;
+
+import carracing.model.MoveResult;
 
 public class ConsoleGameDashBoard implements OutputInterface {
     private static final String STRAIGHT_MARK = "-";

@@ -1,8 +1,12 @@
-package carracing;
+package carracing.model;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import carracing.GameRule;
+import carracing.model.Car;
+import carracing.model.MovableStrategy;
 
 public class CarTest {
 
