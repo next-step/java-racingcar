@@ -27,8 +27,8 @@ public class CarsTest {
 		cars.getCars().get(0).movingOfRound(3);
 		cars.getCars().get(1).movingOfRound(4);
 
-		assertThat(cars.getCars().get(0).getStatus()).isEqualTo(0);
-		assertThat(cars.getCars().get(1).getStatus()).isEqualTo(1);
+		assertThat(cars.getCars().get(0).getStatus()).isEqualTo(new Position());
+		assertThat(cars.getCars().get(1).getStatus()).isEqualTo(new Position(1));
 	}
 
 	@Test
@@ -38,7 +38,7 @@ public class CarsTest {
 		cars.getCars().get(0).movingOfRound(1);
 		cars.getCars().get(1).movingOfRound(4);
 
-		assertThat(cars.findWinner().size()).isEqualTo(1);
+		assertThat(cars.findWinner().get(0).getName()).isEqualTo(new Name("bbb"));
 	}
 
 	@Test
@@ -48,6 +48,6 @@ public class CarsTest {
 		cars.getCars().get(0).movingOfRound(1);
 		cars.getCars().get(1).movingOfRound(4);
 
-		assertThat(cars.findWinner().get(0).getStatus()).isEqualTo(1);
+		assertThat(cars.findWinner().get(0).getStatus()).isEqualTo(new Position(1));
 	}
 }
