@@ -8,7 +8,7 @@ public class RacingGameInput {
 
     public static int inputNumberOfCar() {
         InputView.printInputCarGuide();
-        return Input.inputPositiveNumber();
+        return Input.inputNumber();
     }
 
     public static List<String> inputCarNames() {
@@ -18,7 +18,7 @@ public class RacingGameInput {
 
     public static int inputNumberOfRound() {
         InputView.printInputRoundGuide();
-        return Input.inputPositiveNumber();
+        return Input.inputNumber();
     }
 
 }

@@ -12,6 +12,10 @@ public class RacingGameCarList {
         this.cars = cars;
     }
 
+    public RacingGameCarList(RacingGameCarList racingGameCarList) {
+        this(racingGameCarList.cars());
+    }
+
     public List<RacingGameCar> cars() {
         return Collections.unmodifiableList(cars);
     }

@@ -15,6 +15,6 @@ public class InputTest {
     void input_Number_Of_Cars(String given) {
         System.setIn(new ByteArrayInputStream(given.getBytes()));
 
-        assertThatThrownBy(() -> Input.inputPositiveNumber()).isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> Input.inputNumber()).isInstanceOf(RuntimeException.class);
     }
 }

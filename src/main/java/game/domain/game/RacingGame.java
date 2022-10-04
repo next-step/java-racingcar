@@ -3,7 +3,6 @@ package game.domain.game;
 import game.domain.car.Car;
 import game.domain.car.RacingGameCarList;
 import game.domain.rule.RacingGameRule;
-import game.view.output.RacingGameOutput;
 
 import java.util.Random;
 
@@ -21,24 +20,14 @@ public class RacingGame {
         this.round = new Round(round);
     }
 
-    public void progressGame() {
-        RacingGameOutput.startGame();
-        for (int i = 0; i < round().getRound(); i++) {
-            progressRound(racingGameCarList);
-        }
-        RacingGameOutput.endGame(racingGameCarList.winners());
-    }
-
-    private void progressRound(RacingGameCarList racingGameCarList) {
+    public void progressRound() {
         for (Car car : racingGameCarList.cars()) {
             car.forward(racingGameRule, pickRandomNumber());
         }
-        RacingGameOutput.printCarsStatus(racingGameCarList);
-        RacingGameOutput.finishRound();
     }
 
     public RacingGameCarList carList() {
-        return racingGameCarList;
+        return new RacingGameCarList(racingGameCarList);
     }
 
     public Round round() {

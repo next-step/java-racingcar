@@ -8,11 +8,9 @@ public class Input {
 
     public static Scanner SCANNER = new Scanner(System.in);
 
-    public static int inputPositiveNumber() {
+    public static int inputNumber() {
         try {
-            int result = SCANNER.nextInt();
-            checkPositiveNumber(result);
-            return result;
+            return SCANNER.nextInt();
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException();
@@ -34,11 +32,5 @@ public class Input {
             result.add(name);
         }
         return result;
-    }
-
-    private static void checkPositiveNumber(int result) {
-        if (result < 0) {
-            throw new RuntimeException();
-        }
     }
 }
