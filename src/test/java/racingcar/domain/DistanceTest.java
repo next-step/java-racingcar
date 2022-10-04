@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.stream.Stream;
 
@@ -34,23 +33,22 @@ class DistanceTest {
     }
 
     private static Distance distance(int distance) {
-        return new Distance("name", distance);
+        return new Distance(distance);
     }
 
     private static Stream<Arguments> equalsSet() {
         return Stream.of(
-                Arguments.arguments(new Distance("A", 1), new Distance("A", 1), true),
-                Arguments.arguments(new Distance("A", 1), new Distance("B", 1), true),
-                Arguments.arguments(new Distance("A", 1), new Distance("A", 2), false)
+                Arguments.arguments(new Distance(1), new Distance(1), true),
+                Arguments.arguments(new Distance(1), new Distance(2), false)
 
         );
     }
     
     private static Stream<Arguments> greaterThanSet() {
         return Stream.of(
-                Arguments.arguments(new Distance("A", 5), new Distance("A", 1), true),
-                Arguments.arguments(new Distance("A", 4), new Distance("B", 4), false),
-                Arguments.arguments(new Distance("A", 3), new Distance("A", 5), false)
+                Arguments.arguments(new Distance(5), new Distance(1), true),
+                Arguments.arguments(new Distance(4), new Distance(4), false),
+                Arguments.arguments(new Distance(3), new Distance(5), false)
 
         );
     }

@@ -9,6 +9,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import racingcar.domain.exception.InvalidCarCountException;
+
 class RacingTest {
     @DisplayName("자동차 대수나 시도 횟수가 유효하다면 Racing 객체를 리턴한다.")
     @ParameterizedTest
@@ -23,7 +25,7 @@ class RacingTest {
     void of_when_invalid_count(CarNames names, int tryCount) {
         assertThatThrownBy(() -> {
             Racing.of(names, tryCount);
-        }).isInstanceOf(IllegalArgumentException.class).hasMessageMatching("Number of cars is greater than 0 and trial count must be greater than or equal to 1.");
+        }).isInstanceOf(InvalidCarCountException.class).hasMessageMatching("Number of cars is greater than 0 and trial count must be greater than or equal to 1.");
     }
 
     private static Stream<Arguments> cars() {
