@@ -4,9 +4,11 @@ public class Car {
 
     private static final int CAN_MOVE_NUMBER = 4;
 
+    private String name;
     private int position;
 
-    public Car() {
+    public Car(String name) {
+        this.name = name;
         this.position = 1;
     }
 
@@ -18,6 +20,10 @@ public class Car {
 
     private void move() {
         position++;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getPosition() {

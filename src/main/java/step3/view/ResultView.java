@@ -10,16 +10,16 @@ public class ResultView {
 
     public void output(List<Car> carList) {
         for (Car car : carList) {
-            print(car.getPosition());
+            System.out.println(car.getName() + " : " + hyphen(car.getPosition()));
         }
         System.out.println();
     }
 
-    private void print(int position) {
-        String print = "";
+    private String hyphen(int position) {
+        String hyphen = "";
         for (int i = 0; i < position; i++) {
-            print += HYPHEN;
+            hyphen += HYPHEN;
         }
-        System.out.println(print);
+        return hyphen;
     }
 }
