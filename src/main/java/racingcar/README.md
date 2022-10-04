@@ -80,6 +80,10 @@
   - [x] `findWinner` 관련 로직 `RacingCarGame` 클래스로 이동
   - [x] `ResultView` 로직 `List<Car>` 대신 `List<PlayResult>`를 받아 출력하도록 수정
   - [x] 관련 테스트 추가 및 수정
+### RacingCarGame
+- [x] `getMaxPosition()` 로직을 `Stream.max()`를 사용하도록 변경
+  - [x] 연관된 `PlayResult.getBiggerPosition()`, `Position.getBigger()` 메소드 삭제
+  - [x] `Position`에 `compareTo` 구현
 ### Name
 - [ ] validation 시 trim 이후 한번에 validate 하도록 수정
 ### Cars
@@ -90,5 +94,5 @@
 - [ ] 괄호 제거하는 로직 -> `Collections.joining` 으로 개선
 ### CarsTest
 - [ ] `create()`에서 테스트하고자 하는 대상인 `생성`과 실제 테스트인 `move()`의 목적이 일치하지 않는 문제 수정
-### Position
+### Position 
 - [ ] 음수 값 들어가지 못하도록 validation 로직 추가

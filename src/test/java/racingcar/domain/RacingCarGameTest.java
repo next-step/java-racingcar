@@ -20,9 +20,9 @@ public class RacingCarGameTest {
 
     @Test
     void findWinners() {
-        PlayResult playResult1 = new PlayResult(1, "carA");
-        PlayResult playResult2 = new PlayResult(2, "carB");
-        PlayResult playResult3 = new PlayResult(2, "carC");
+        PlayResult playResult1 = new PlayResult(2, "carA");
+        PlayResult playResult2 = new PlayResult(3, "carB");
+        PlayResult playResult3 = new PlayResult(3, "carC");
         List<PlayResult> playResults = Arrays.asList(playResult1, playResult2, playResult3);
 
         assertThat(RacingCarGame.findWinners(playResults)).containsExactly(playResult2, playResult3);

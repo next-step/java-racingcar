@@ -3,6 +3,7 @@ package racingcar.domain;
 import racingcar.strategy.MovingStrategy;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,11 +28,9 @@ public class RacingCarGame {
     }
 
     private static Position getMaxPosition(List<PlayResult> playResults) {
-        Position maxPosition = new Position();
-        for (PlayResult playResult : playResults) {
-            maxPosition = playResult.getBiggerPosition(maxPosition);
-        }
-        return maxPosition;
+        return playResults.stream().max(Comparator.comparing(PlayResult::getPosition))
+                .map(PlayResult::getPosition)
+                .orElse(new Position(0));
     }
 
     public void play(MovingStrategy movingStrategy) {

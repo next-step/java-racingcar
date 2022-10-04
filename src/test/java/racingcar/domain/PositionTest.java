@@ -24,12 +24,4 @@ public class PositionTest {
         assertThat(new Position(2).getPosition()).isEqualTo(2);
     }
 
-    @Test
-    void getBigger() {
-        Position biggerPosition = new Position(3);
-        Position smallerPosition = new Position(1);
-
-        assertThat(biggerPosition.getBigger(smallerPosition)).isEqualTo(biggerPosition);
-    }
-
 }

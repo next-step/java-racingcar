@@ -20,10 +20,4 @@ class PlayResultTest {
                 .isTrue();
     }
 
-    @Test
-    void getBiggerPosition() {
-        assertThat(new PlayResult(5, "carA").getBiggerPosition(new Position(3)))
-                .isEqualTo(new Position(5));
-    }
-
 }
