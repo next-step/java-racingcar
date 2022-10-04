@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import racingcar.exception.RacingCarNameOverSizeException;
 import racingcar.strategy.MovingStrategy;

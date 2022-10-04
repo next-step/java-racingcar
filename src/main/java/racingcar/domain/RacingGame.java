@@ -1,6 +1,7 @@
-package racingcar;
+package racingcar.domain;
 
 import racingcar.strategy.RandomMovingStrategy;
+import racingcar.view.ResultView;
 
 import java.util.Collections;
 import java.util.List;
