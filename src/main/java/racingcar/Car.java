@@ -12,7 +12,7 @@ public class Car {
 
 	public void movingOfRound(int random) {
 		if (random >= MOVING_CONDITION) {
-			this.position = new Position(this.position.getPosition() + 1);
+			this.position = this.position.increase();
 		}
 	}
 
