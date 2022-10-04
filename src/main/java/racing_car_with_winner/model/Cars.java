@@ -1,20 +1,10 @@
 package racing_car_with_winner.model;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
-
-    @Deprecated
-    public Cars(String[] carNames) {
-        this.cars = new ArrayList<>();
-
-        for (String carName : carNames) {
-            this.cars.add(new Car(new CarName(carName)));
-        }
-    }
 
     public Cars(List<Car> cars) {
         this.cars = cars;
