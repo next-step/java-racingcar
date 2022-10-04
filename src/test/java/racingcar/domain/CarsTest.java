@@ -52,31 +52,6 @@ public class CarsTest {
 	}
 
 	@Test
-	@DisplayName("n번 움직일 수 있다")
-	void cars_can_move_n_times() {
-		List<Car> carListMovedOne = createCarList(5);
-		Cars carsMovedOne = new Cars(carListMovedOne);
-		carsMovedOne.move(moveStrategyMovable, 1);
-
-		List<Car> carListMovedTwo = createCarList(5);
-		Cars carsMovedTwo = new Cars(carListMovedTwo);
-		carsMovedTwo.move(moveStrategyMovable, 2);
-
-		assertThatListGreaterThanOther(carListMovedOne, newCarList);
-		assertThatListGreaterThanOther(carListMovedTwo, carListMovedOne);
-	}
-
-	private void assertThatListGreaterThanOther(List<Car> list, List<Car> others) {
-		assertThat(list).allSatisfy(
-			carFromList -> assertThatCarGreaterThanOthers(carFromList, others));
-	}
-
-	private void assertThatCarGreaterThanOthers(Car car, List<Car> others) {
-		assertThat(others).allSatisfy(
-			carFromOthers -> assertThat(car).isGreaterThan(carFromOthers));
-	}
-
-	@Test
 	@DisplayName("n대 자동차의 위치를 반환할 수 있다")
 	void positions_can_be_returned() {
 		Cars cars = new Cars(newCarList);

@@ -27,12 +27,6 @@ public class Cars {
 		}
 	}
 
-	public void move(MoveStrategy moveStrategy, int times) {
-		for (int i = 0; i < times; ++i) {
-			move(moveStrategy);
-		}
-	}
-
 	public List<Integer> getPositions() {
 		List<Integer> positions = new ArrayList<>();
 		for (Car car : cars) {
