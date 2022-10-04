@@ -2,14 +2,17 @@ package racingcar;
 
 import java.util.Random;
 
-public class Car {
+public class Car extends Condition{
 	private static int MAX_OF_RANDOM = 10;
 	private static final int MOVING_CONDITION = 4;
-	private final String name;
+	private String name;
 	private Position position;
 
 	public Car(String name) {
-		this.name = name;
+		super(new NameCondition());
+		if (validInput(name)) {
+			this.name = name;
+		}
 		this.position = new Position();
 	}
 
