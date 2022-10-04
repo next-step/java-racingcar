@@ -20,7 +20,7 @@ public class CarTest {
 	@DisplayName("자동차 이름 5자 이하면 통과")
 	void carNameBelowFive() {
 		Car car = new Car("abcde");
-		assertThat(car.getName()).isEqualTo("abcde");
+		assertThat(car.getName()).isEqualTo(new Name("abcde"));
 	}
 
 	@ParameterizedTest
@@ -29,7 +29,7 @@ public class CarTest {
 	void stopStatusOfRound(int input) {
 		Car car = new Car("test");
 		car.movingOfRound(input);
-		assertThat(car.getStatus()).isEqualTo(0);
+		assertThat(car.getStatus()).isEqualTo(new Position());
 	}
 
 	@ParameterizedTest
@@ -38,6 +38,6 @@ public class CarTest {
 	void forwardStatusOfRound(int input) {
 		Car car = new Car("test");
 		car.movingOfRound(input);
-		assertThat(car.getStatus()).isEqualTo(1);
+		assertThat(car.getStatus()).isEqualTo(new Position(1));
 	}
 }
