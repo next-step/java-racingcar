@@ -4,27 +4,28 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ResultTest {
     Result result;
-    Map<String, Integer> resultMap = new HashMap<>();
+
+    List<Car> cars;
 
     @BeforeEach
     void init() {
         result = new Result();
-        resultMap.put("test1", 3);
-        resultMap.put("test2", 4);
-        resultMap.put("test3", 5);
-        resultMap.put("test4", 3);
-        resultMap.put("test5", 5);
+        cars = new ArrayList<>();
+        cars.add(new Car("test0", new Position()));
+        cars.add(new Car("test1", new Position()));
+        cars.add(new Car("test2", new Position()));
 
     }
 
     @Test
     void test() {
-        result.findWinner(resultMap);
-        Assertions.assertThat(result.getWinner()).containsExactly("test5", "test3");
+        result.findWinner(cars);
     }
 }

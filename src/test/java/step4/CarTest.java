@@ -1,6 +1,8 @@
 package step4;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -18,6 +20,19 @@ public class CarTest {
         Car car = new Car("1234", new Position());
 
         assertThat(car.getName()).isEqualTo("1234");
-        assertThat(car.getPosition()).isEqualTo(new Position());
+        assertThat(car.getPosition()).isEqualTo(0);
+    }
+
+    @Test
+    void getRandomNumTest() {
+        Car car = new Car("123", new Position());
+        assertThat(car.getRandomNum()).isGreaterThanOrEqualTo(0).isLessThanOrEqualTo(9);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"4:true", "3:false"}, delimiter = ':')
+    void isSatisfiedConditionForMoveTest(int number, boolean result) {
+        Car car = new Car("123", new Position());
+        assertThat(car.isSatisfiedConditionForMove(number)).isEqualTo(result);
     }
 }

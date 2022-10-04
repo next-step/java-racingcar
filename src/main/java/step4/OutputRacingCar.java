@@ -1,14 +1,12 @@
 package step4;
 
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
-public class OutputResult {
+public class OutputRacingCar {
 
-    public void outputRound(Map<String, Integer> positions) {
-        for(Entry<String, Integer> position : positions.entrySet()) {
-            System.out.println(position.getKey() + " : " + printBar(position.getValue()));
+    public void printRound(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.println(car.getName() + " : " + printBar(car.getPosition()));
         }
         System.out.println();
     }
@@ -22,9 +20,9 @@ public class OutputResult {
     }
 
     public void printResult(List<String> winners) {
-
         System.out.print(String.join(", ", winners) + "가 최종 우승했습니다.");
     }
+
 
     public void printTitle() {
         System.out.println("\n실행 결과");
