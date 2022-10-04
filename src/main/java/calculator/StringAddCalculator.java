@@ -1,3 +1,5 @@
+package calculator;
+
 public class StringAddCalculator {
 
     public static int splitAndSum(String text){
@@ -22,5 +24,13 @@ public class StringAddCalculator {
             result[i] = PositiveNumber.from(tokens[i]);
         }
         return result;
+    }
+
+    public static void main(String[] args) {
+        InputText test1 = InputText.from("jackson");
+        InputText test2 = InputText.from("jason");
+
+        System.out.println(System.identityHashCode(test1.getPattern()));
+        System.out.println(System.identityHashCode(test2.getPattern()));
     }
 }
