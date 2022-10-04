@@ -7,46 +7,39 @@ import java.util.stream.Collectors;
 
 public class RacingGameRoundResult {
 
-    private static final String DISTANCE_SYMBOL = "-";
     private static final int MIN_VALUE_OF_POSITION = 0;
 
-    private final List<Car> cars;
+    private final List<RacingGameCarResult> cars;
 
     public RacingGameRoundResult() {
-        this.cars = new ArrayList<>();
+        this(new ArrayList<>());
     }
 
-    public RacingGameRoundResult(List<Car> cars) {
+    public RacingGameRoundResult(List<RacingGameCarResult> cars) {
         this.cars = cars;
     }
 
-    public void add(Car car) {
+    public void add(RacingGameCarResult car) {
         cars.add(car);
-    }
-
-    public String getContent() {
-        return cars.stream()
-                .map(this::getContentFormat)
-                .collect(Collectors.joining());
-    }
-
-    private String getContentFormat(Car car) {
-        return String.format("%s : %s" + StringConstants.NEW_LINE, car.getName(), DISTANCE_SYMBOL.repeat(car.getPosition()));
     }
 
     public List<String> getFarthestCarNames() {
         int maxPosition = getMaxPosition();
         return cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
-                .map(Car::getName)
+                .map(RacingGameCarResult::getName)
                 .collect(Collectors.toList());
     }
 
     private int getMaxPosition() {
         return cars.stream()
-                .mapToInt(Car::getPosition)
+                .mapToInt(RacingGameCarResult::getPosition)
                 .max()
                 .orElse(MIN_VALUE_OF_POSITION);
+    }
+
+    public List<RacingGameCarResult> getCars() {
+        return cars;
     }
 
     @Override

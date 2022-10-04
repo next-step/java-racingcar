@@ -29,10 +29,6 @@ public class Car {
         }
     }
 
-    public static Car from(Car car) {
-        return new Car(car.name, car.position);
-    }
-
     public void move() {
         position++;
     }

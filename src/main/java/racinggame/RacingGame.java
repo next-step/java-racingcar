@@ -24,7 +24,7 @@ public class RacingGame {
         RacingGameRoundResult roundResult = new RacingGameRoundResult();
         cars.forEach(car -> {
             moveCar(car);
-            roundResult.add(Car.from(car));
+            roundResult.add(RacingGameCarResult.from(car));
         });
         return roundResult;
     }

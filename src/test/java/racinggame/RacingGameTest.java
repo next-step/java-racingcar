@@ -18,9 +18,9 @@ class RacingGameTest {
 
         RacingGameResult expected = new RacingGameResult(
                 List.of(
-                        new RacingGameRoundResult(List.of(new Car(carName, 1))),
-                        new RacingGameRoundResult(List.of(new Car(carName, 2))),
-                        new RacingGameRoundResult(List.of(new Car(carName, 3)))
+                        new RacingGameRoundResult(List.of(new RacingGameCarResult(carName, 1))),
+                        new RacingGameRoundResult(List.of(new RacingGameCarResult(carName, 2))),
+                        new RacingGameRoundResult(List.of(new RacingGameCarResult(carName, 3)))
                 )
         );
         assertThat(actual).isEqualTo(expected);
@@ -35,9 +35,9 @@ class RacingGameTest {
 
         RacingGameResult expected = new RacingGameResult(
                 List.of(
-                        new RacingGameRoundResult(List.of(new Car(carName, 0))),
-                        new RacingGameRoundResult(List.of(new Car(carName, 0))),
-                        new RacingGameRoundResult(List.of(new Car(carName, 0)))
+                        new RacingGameRoundResult(List.of(new RacingGameCarResult(carName, 0))),
+                        new RacingGameRoundResult(List.of(new RacingGameCarResult(carName, 0))),
+                        new RacingGameRoundResult(List.of(new RacingGameCarResult(carName, 0)))
                 )
         );
         assertThat(actual).isEqualTo(expected);

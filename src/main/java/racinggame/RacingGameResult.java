@@ -3,33 +3,30 @@ package racinggame;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class RacingGameResult {
 
-    private final List<RacingGameRoundResult> result;
+    private final List<RacingGameRoundResult> rounds;
 
     public RacingGameResult() {
-        this.result = new ArrayList<>();
+        this.rounds = new ArrayList<>();
     }
 
-    public RacingGameResult(List<RacingGameRoundResult> result) {
-        this.result = result;
+    public RacingGameResult(List<RacingGameRoundResult> rounds) {
+        this.rounds = rounds;
     }
 
-    public void add(RacingGameRoundResult roundResult) {
-        result.add(roundResult);
-    }
-
-    public String getContent() {
-        return result.stream()
-                .map(RacingGameRoundResult::getContent)
-                .collect(Collectors.joining(StringConstants.NEW_LINE));
+    public void add(RacingGameRoundResult round) {
+        rounds.add(round);
     }
 
     public List<String> getWinnerNames() {
-        RacingGameRoundResult lastRound = result.get(result.size() - 1);
+        RacingGameRoundResult lastRound = rounds.get(rounds.size() - 1);
         return lastRound.getFarthestCarNames();
+    }
+
+    public List<RacingGameRoundResult> getRounds() {
+        return rounds;
     }
 
     @Override
@@ -37,12 +34,12 @@ public class RacingGameResult {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RacingGameResult that = (RacingGameResult) o;
-        return Objects.equals(result, that.result);
+        return Objects.equals(rounds, that.rounds);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(result);
+        return Objects.hash(rounds);
     }
 
 }

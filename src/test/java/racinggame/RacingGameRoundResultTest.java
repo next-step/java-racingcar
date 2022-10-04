@@ -14,16 +14,16 @@ class RacingGameRoundResultTest {
     void equalsAndHashCode() {
         RacingGameRoundResult roundResult1 = new RacingGameRoundResult(
                 List.of(
-                        new Car("car1", 0),
-                        new Car("car2", 1),
-                        new Car("car3", 2)
+                        new RacingGameCarResult("car1", 0),
+                        new RacingGameCarResult("car2", 1),
+                        new RacingGameCarResult("car3", 2)
                 )
         );
         RacingGameRoundResult roundResult2 = new RacingGameRoundResult(
                 List.of(
-                        new Car("car1", 0),
-                        new Car("car2", 1),
-                        new Car("car3", 2)
+                        new RacingGameCarResult("car1", 0),
+                        new RacingGameCarResult("car2", 1),
+                        new RacingGameCarResult("car3", 2)
                 )
         );
         assertThat(roundResult1).isEqualTo(roundResult2);
@@ -34,9 +34,9 @@ class RacingGameRoundResultTest {
     void getFarthestCarNames() {
         RacingGameRoundResult round = new RacingGameRoundResult(
                 List.of(
-                        new Car("car1", 0),
-                        new Car("car2", 2),
-                        new Car("car3", 1)
+                        new RacingGameCarResult("car1", 0),
+                        new RacingGameCarResult("car2", 2),
+                        new RacingGameCarResult("car3", 1)
                 )
         );
         assertThat(round.getFarthestCarNames()).containsExactly("car2");

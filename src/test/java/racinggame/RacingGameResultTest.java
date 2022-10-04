@@ -14,17 +14,17 @@ class RacingGameResultTest {
     void equalsAndHashCode() {
         RacingGameRoundResult round1 = new RacingGameRoundResult(
                 List.of(
-                        new Car("car1", 0),
-                        new Car("car2", 1),
-                        new Car("car3", 2)
+                        new RacingGameCarResult("car1", 0),
+                        new RacingGameCarResult("car2", 1),
+                        new RacingGameCarResult("car3", 2)
                 )
         );
         RacingGameResult result1 = new RacingGameResult(List.of(round1));
         RacingGameRoundResult round2 = new RacingGameRoundResult(
                 List.of(
-                        new Car("car1", 0),
-                        new Car("car2", 1),
-                        new Car("car3", 2)
+                        new RacingGameCarResult("car1", 0),
+                        new RacingGameCarResult("car2", 1),
+                        new RacingGameCarResult("car3", 2)
                 )
         );
         RacingGameResult result2 = new RacingGameResult(List.of(round2));
@@ -37,16 +37,16 @@ class RacingGameResultTest {
     void getWinner() {
         RacingGameRoundResult round1 = new RacingGameRoundResult(
                 List.of(
-                        new Car("car1", 0),
-                        new Car("car2", 1),
-                        new Car("car3", 0)
+                        new RacingGameCarResult("car1", 0),
+                        new RacingGameCarResult("car2", 1),
+                        new RacingGameCarResult("car3", 0)
                 )
         );
         RacingGameRoundResult round2 = new RacingGameRoundResult(
                 List.of(
-                        new Car("car1", 0),
-                        new Car("car2", 1),
-                        new Car("car3", 1)
+                        new RacingGameCarResult("car1", 0),
+                        new RacingGameCarResult("car2", 1),
+                        new RacingGameCarResult("car3", 1)
                 )
         );
         RacingGameResult result = new RacingGameResult(List.of(round1, round2));
