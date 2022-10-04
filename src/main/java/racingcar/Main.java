@@ -2,11 +2,13 @@ package racingcar;
 
 public class Main {
     public static void main(String[] args) {
-        int numOfCars = InputView.getNumOfCars();
+        String nameListOfCars = InputView.getNameListOfCars();
         int tryingCount = InputView.getTryingCount();
 
-        ResultView resultView = new ResultView(RacingCarFactory.manufactoringCars(numOfCars, tryingCount));
-        resultView.printCars();
+        CarGameInfo carGameInfo = new CarGameInfo(CarFactory.manufactoringCars(nameListOfCars, tryingCount));
+
+        ResultView.printCars(carGameInfo, tryingCount);
+        ResultView.printWinners(carGameInfo);
 
     }
 }
