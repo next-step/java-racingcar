@@ -4,8 +4,12 @@ import java.util.Objects;
 
 public class Location {
 
+    public static String LOCATION_EXCEPTION = "Location은 음수일 수 없습니다.";
     public int location;
     public Location(int location) {
+        if(location<0){
+            throw new IllegalArgumentException(LOCATION_EXCEPTION);
+        }
         this.location = location;
     }
 

@@ -11,4 +11,9 @@ public class LocationTest {
 
         Assertions.assertThat(location).isEqualTo(new Location(5));
     }
+
+    @Test
+    void valid(){
+        Assertions.assertThatThrownBy(() -> new Location(-1)).isInstanceOf(IllegalArgumentException.class);
+    }
 }
