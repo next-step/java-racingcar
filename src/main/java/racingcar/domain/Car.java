@@ -15,6 +15,7 @@ public class Car implements Comparable<Car> {
 	}
 
 	public Car(String name) {
+		validateNameLength(name);
 		this.name = name;
 	}
 
@@ -30,6 +31,15 @@ public class Car implements Comparable<Car> {
 
 	public String getName() {
 		return name;
+	}
+
+	public void validateNameLength(String name) {
+		if (name.length() < 1) {
+			throw new RuntimeException("이름은 1글자 이상입니다");
+		}
+		if (name.length() > 5) {
+			throw new RuntimeException("이름은 5글자 이하입니다");
+		}
 	}
 
 	@Override

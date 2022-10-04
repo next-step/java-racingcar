@@ -47,4 +47,20 @@ public class CarTest {
 
 		assertThat(car.getName()).isEqualTo(name);
 	}
+
+	@Test
+	@DisplayName("이름은 1자 이상이다")
+	void name_must_have_length() {
+		String name = "";
+
+		assertThatThrownBy(() -> new Car(name)).isInstanceOf(RuntimeException.class);
+	}
+
+	@Test
+	@DisplayName("이름은 5자 이하이다")
+	void name_length_less_or_equal_5() {
+		String name = "123456";
+
+		assertThatThrownBy(() -> new Car(name)).isInstanceOf(RuntimeException.class);
+	}
 }
