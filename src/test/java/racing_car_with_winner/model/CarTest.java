@@ -16,7 +16,7 @@ public class CarTest {
         });
 
         Assertions.assertThat(movedCar.getMoveResult().getMoveCount()).isEqualTo(1);
-        Assertions.assertThat(car.getMoveResult()).isEqualTo(movedCar.getMoveResult());
+        Assertions.assertThat(car.getMoveResult()).isNotEqualTo(movedCar.getMoveResult());
     }
 
     @Test
@@ -30,5 +30,6 @@ public class CarTest {
         });
 
         Assertions.assertThat(movedCar.getMoveResult().getMoveCount()).isEqualTo(0);
+        Assertions.assertThat(car.getMoveResult()).isEqualTo(movedCar.getMoveResult());
     }
 }
