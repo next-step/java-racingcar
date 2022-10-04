@@ -1,6 +1,6 @@
-package game.io.input;
+package game.view.input;
 
-import game.io.output.InputView;
+import game.view.output.InputView;
 
 import java.util.List;
 

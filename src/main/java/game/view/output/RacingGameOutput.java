@@ -1,4 +1,4 @@
-package game.io.output;
+package game.view.output;
 
 import game.domain.car.Car;
 import game.domain.RacingGameCarList;

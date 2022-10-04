@@ -1,7 +1,7 @@
 package game.domain;
 
 import game.domain.car.Car;
-import game.io.output.RacingGameOutput;
+import game.view.output.RacingGameOutput;
 
 import java.util.Random;
 

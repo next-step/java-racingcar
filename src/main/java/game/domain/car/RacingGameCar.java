@@ -1,7 +1,6 @@
 package game.domain.car;
 
 import game.domain.RacingGameRule;
-import game.domain.car.Car;
 
 public class RacingGameCar extends Car {
 
@@ -31,7 +30,7 @@ public class RacingGameCar extends Car {
     }
 
     private static String checkNameLength(String name) {
-        if(name.length()>5){
+        if (name.length() > 5) {
             throw new RuntimeException(NAME_LIMIT_MESSAGE);
         }
         return name;
