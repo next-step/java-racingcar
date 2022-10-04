@@ -3,13 +3,12 @@ package racingcar.strategy;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racingcar.strategy.MovingStrategyType.*;
 
-public class MovingStrategyFactoryTest {
+class MovingStrategyTypeTest {
 
     @Test
-    void randomMovingStrategy() {
-        assertThat(MovingStrategyFactory.getInstance(RANDOM))
+    void RandomMovingStrategy() {
+        assertThat(MovingStrategyType.getStrategy(MovingStrategyType.RANDOM))
                 .isInstanceOf(RandomMovingStrategy.class);
     }
 

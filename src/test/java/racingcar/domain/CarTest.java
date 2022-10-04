@@ -1,6 +1,5 @@
-package racingcar;
+package racingcar.domain;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -12,23 +11,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
-    @ParameterizedTest(name="{2}")
+    @ParameterizedTest(name = "{2}")
     @MethodSource("strategyParameterProvider")
     void move(MovingStrategy movingStrategy, Position expected, String displayMessage) {
         Car car = new Car("carA");
         car.move(movingStrategy);
 
-        assertThat(car.getPosition()).isEqualTo(expected);
-    }
-
-    @Test
-    void isPositionEquals() {
-        assertThat(new Car(5, "carA").isPositionEquals(new Position(5))).isTrue();
-    }
-
-    @Test
-    void getBiggerPosition() {
-        assertThat(new Car(5, "carA").getBiggerPosition(new Position(3))).isEqualTo(new Position(5));
+        assertThat(car.getPlayResult().getPosition()).isEqualTo(expected);
     }
 
     static Stream<Arguments> strategyParameterProvider() {

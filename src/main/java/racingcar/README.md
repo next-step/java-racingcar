@@ -63,3 +63,35 @@
 ### OutputView
 - [x] 게임 결과 출력 시 자동차 이름 같이 표시해야 함
 - [x] 게임 종료 후 우승자 출력 필요
+
+---
+
+## Step5 리팩토링 요구사항
+### 공통
+- [x] Stream 활용 가능한 부분 찾고 적극 적용하기
+### PlayResult
+- [x] Car과 CarDto를 분리하기 (PlayResult를 CarDto로 사용)
+- [x] 구조 변경에 맞게 나머지 코드 리팩토링
+  - [x] `Car`에 `PlayResult getPlayResult()` 메소드 추가
+  - [x] `Car`에 나머지 getter 메소드 삭제
+  - [x] `Car`의 `isPositionEquls()`와 `getBiggerPosition()` 메서드 `PlayResult`로 이동
+  - [x] `Cars`의 `move()` 메소드의 반환 값을 없애고, `getPlayResults()`가 `List<PlayResult>`를 반환하도록 수정 (cqrs 만족)
+  - [x] `RecingCarGame`에도 마찬가지로 cqrs 적용
+  - [x] `findWinner` 관련 로직 `RacingCarGame` 클래스로 이동
+  - [x] `ResultView` 로직 `List<Car>` 대신 `List<PlayResult>`를 받아 출력하도록 수정
+  - [x] 관련 테스트 추가 및 수정
+### RacingCarGame
+- [x] `getMaxPosition()` 로직을 `Stream.max()`를 사용하도록 변경
+  - [x] 연관된 `PlayResult.getBiggerPosition()`, `Position.getBigger()` 메소드 삭제
+  - [x] `Position`에 `compareTo` 구현
+- [x] findWinners()에서 `List<PlayResult>`를 불변 객체로 반환하도록 수정
+### Name
+- [x] validation 시 trim 이후 한번에 validate 하도록 수정
+### Position
+- [x] 음수 값 들어가지 못하도록 validation 로직 추가
+### MovingStrategyType
+- [x] Type이 value로 `Supplier` 를 갖도록 변경하여 Enum 만으로 Type에 해당하는 MovingStrategy 구현체를 얻을 수 있도록 수정
+### ResultView
+- [x] 괄호 제거하는 로직 -> `Collections.joining` 으로 개선
+### CarsTest
+- [x] `create()`에서 테스트하고자 하는 대상인 `생성`과 실제 테스트인 `move()`의 목적이 일치하지 않는 문제 수정

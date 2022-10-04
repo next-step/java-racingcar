@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.Objects;
 
@@ -11,23 +11,17 @@ public class Name {
     }
 
     private String validateName(String name) {
-        assertNameNotNull(name);
-
-        name = name.trim();
-        assertValidNameLength(name);
-        return name;
+        if (name == null) {
+            throw new IllegalArgumentException("자동차 이름이 유효하지 않습니다.");
+        }
+        return assertValidNameLength(name.trim());
     }
 
-    private static void assertValidNameLength(String name) {
+    private static String assertValidNameLength(String name) {
         if (name.length() == 0 || name.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 1~5자 사이어야 합니다.");
         }
-    }
-
-    private static void assertNameNotNull(String name) {
-        if (name == null) {
-            throw new IllegalArgumentException("유효하지 않은 자동차 이름입니다.");
-        }
+        return name;
     }
 
     public String getName() {
@@ -47,8 +41,4 @@ public class Name {
         return Objects.hash(name);
     }
 
-    @Override
-    public String toString() {
-        return name;
-    }
 }

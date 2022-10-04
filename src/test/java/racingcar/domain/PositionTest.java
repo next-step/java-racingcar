@@ -1,14 +1,20 @@
-package racingcar;
+package racingcar.domain;
 
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class PositionTest {
 
     @Test
     void 생성() {
         assertThat(new Position()).isEqualTo(new Position(0));
+    }
+
+    @Test
+    void 음수_생성() {
+        assertThatThrownBy(() -> new Position(-1)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -22,14 +28,6 @@ public class PositionTest {
     @Test
     void getPosition() {
         assertThat(new Position(2).getPosition()).isEqualTo(2);
-    }
-
-    @Test
-    void getBigger() {
-        Position biggerPosition = new Position(3);
-        Position smallerPosition = new Position(1);
-
-        assertThat(biggerPosition.getBigger(smallerPosition)).isEqualTo(biggerPosition);
     }
 
 }

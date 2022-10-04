@@ -1,8 +1,8 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.Objects;
 
-public class Position {
+public class Position implements Comparable<Position> {
 
     private int position;
 
@@ -11,22 +11,27 @@ public class Position {
     }
 
     public Position(int position) {
-        this.position = position;
+        this.position = validate(position);
+    }
+
+    private int validate(int position) {
+        if (position < 0) {
+            throw new IllegalArgumentException("Position 값은 음수일 수 없습니다.");
+        }
+        return position;
+    }
+
+    public int getPosition() {
+        return position;
     }
 
     public void move() {
         position++;
     }
 
-    public Position getBigger(Position other) {
-        if (this.position > other.position) {
-            return this;
-        }
-        return other;
-    }
-
-    public int getPosition() {
-        return position;
+    @Override
+    public int compareTo(Position o) {
+        return this.position - o.position;
     }
 
     @Override
