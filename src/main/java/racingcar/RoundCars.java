@@ -36,13 +36,13 @@ public class RoundCars {
     }
 
     public RoundCars getRoundCars() {
-        List<Car> recordCars = new ArrayList<>();
+        List<Car> copyCars = new ArrayList<>();
         List<Car> cars = this.retrieveCars();
 
         for (Car car : cars) {
-            recordCars.add(new Car(car.getPosition(), car.getName()));
+            copyCars.add(new Car(car.getPosition(), car.getName()));
         }
-        return createRoundCars(recordCars);
+        return createRoundCars(copyCars);
     }
 
     public List<Car> retrieveCars() {
