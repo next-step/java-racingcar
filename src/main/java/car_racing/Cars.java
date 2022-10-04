@@ -18,6 +18,10 @@ public class Cars {
         }
     }
 
+    public Cars(List<Car> cars) {
+        this.cars = cars;
+    }
+
     public void goOrStop(MovableStrategy movableStrategy) {
         cars.forEach(car -> car.tryMove(movableStrategy));
     }

@@ -9,7 +9,7 @@ public class Car {
     }
 
     public void tryMove(MovableStrategy movableStrategy) {
-        moveResult.applyMoveResult(movableStrategy.canMove());
+        moveResult = moveResult.applyMoveResult(movableStrategy.canMove());
     }
 
     public MoveResult getMoveResult() {

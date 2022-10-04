@@ -2,19 +2,25 @@ package car_racing;
 
 
 public class MoveResult {
-    private Integer straightCount;
+    private final int straightCount;
 
     public MoveResult() {
         this.straightCount = 0;
     }
 
-    public void applyMoveResult(boolean moved) {
-        if (moved) {
-            this.straightCount++;
-        }
+    public MoveResult(final int straightCount) {
+        this.straightCount = straightCount;
     }
 
-    public Integer getStraightCount() {
+    public MoveResult applyMoveResult(boolean moved) {
+        if (moved) {
+            return new MoveResult(this.straightCount + 1);
+        }
+
+        return this;
+    }
+
+    public int getStraightCount() {
         return straightCount;
     }
 }

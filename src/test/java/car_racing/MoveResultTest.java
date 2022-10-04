@@ -10,7 +10,7 @@ public class MoveResultTest {
     @CsvSource(value = { "true: 1", "false:0" }, delimiter = ':')
     void applyMoveResult_결과에맞게기록한다(boolean condition, int expected) {
         MoveResult moveResult = new MoveResult();
-        moveResult.applyMoveResult(condition);
+        moveResult = moveResult.applyMoveResult(condition);
         Assertions.assertThat(moveResult.getStraightCount()).isEqualTo(expected);
     }
 }
