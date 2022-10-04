@@ -1,10 +1,13 @@
 package racingcar;
 
+import racingcar.domain.PlayResult;
 import racingcar.domain.RacingCarGame;
 import racingcar.domain.RacingCarGameFactory;
 import racingcar.strategy.MovingStrategy;
 import racingcar.strategy.MovingStrategyType;
 import racingcar.view.ResultView;
+
+import java.util.List;
 
 import static racingcar.strategy.MovingStrategyType.RANDOM;
 
@@ -17,12 +20,15 @@ public class GameController {
 
         ResultView.printTitle();
 
+        List<PlayResult> playResults = null;
         while (!racingCarGame.isEnd()) {
             racingCarGame.play(MOVING_STRATEGY);
-            ResultView.printPlayResults(racingCarGame.getPlayResults());
+            playResults = racingCarGame.getPlayResults();
+
+            ResultView.printPlayResults(playResults);
         }
 
-        ResultView.printWinners(RacingCarGame.findWinners(racingCarGame.getPlayResults()));
+        ResultView.printWinners(RacingCarGame.findWinners(playResults));
     }
 
 }
