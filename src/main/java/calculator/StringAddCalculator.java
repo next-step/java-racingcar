@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 public class StringAddCalculator {
     public static final String DEFAULT_DELIMITER = "[,:]";
     public static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\\n(.*)");
+
     private String input;
     private String delimiter = DEFAULT_DELIMITER;
 
