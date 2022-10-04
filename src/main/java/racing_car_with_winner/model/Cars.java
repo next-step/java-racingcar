@@ -1,7 +1,10 @@
 package racing_car_with_winner.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import javax.swing.ListSelectionModel;
 
 public class Cars {
     private final List<Car> cars;
@@ -20,9 +23,8 @@ public class Cars {
         return new Cars(movedCars);
     }
 
-    public List<MoveResult> gatherResults() {
-        return cars.stream()
-                   .map(Car::getMoveResult)
-                   .collect(Collectors.toList());
+    public List<Car> findWinner() {
+        return new ArrayList<>();
     }
+
 }

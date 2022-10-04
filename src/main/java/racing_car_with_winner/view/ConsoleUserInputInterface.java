@@ -2,7 +2,7 @@ package racing_car_with_winner.view;
 
 import java.util.Scanner;
 
-public class ConsoleUserInterface implements UserInterface {
+public class ConsoleUserInputInterface implements UserInputInterface {
     Scanner scanner = new Scanner(System.in);
 
     @Override

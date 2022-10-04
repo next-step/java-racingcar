@@ -1,6 +1,6 @@
 package racing_car_with_winner.view;
 
-public interface UserInterface {
+public interface UserInputInterface {
     void show(String message);
     String getStringInput();
 }

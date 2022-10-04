@@ -2,9 +2,9 @@ package racing_car_with_winner.view;
 
 public class CarNameInputInterface {
     private String question;
-    private UserInterface userInterface;
+    private UserInputInterface userInterface;
 
-    public CarNameInputInterface(String question, UserInterface userInterface) {
+    public CarNameInputInterface(String question, UserInputInterface userInterface) {
         this.question = question;
         this.userInterface = userInterface;
     }

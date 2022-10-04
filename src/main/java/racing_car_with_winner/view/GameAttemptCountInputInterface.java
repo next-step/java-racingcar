@@ -2,9 +2,9 @@ package racing_car_with_winner.view;
 
 public class GameAttemptCountInputInterface {
     private String question;
-    private UserInterface userInterface;
+    private UserInputInterface userInterface;
 
-    public GameAttemptCountInputInterface(String question, UserInterface userInterface) {
+    public GameAttemptCountInputInterface(String question, UserInputInterface userInterface) {
         this.question = question;
         this.userInterface = userInterface;
     }
