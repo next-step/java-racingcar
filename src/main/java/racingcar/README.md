@@ -89,8 +89,8 @@
 - [x] validation 시 trim 이후 한번에 validate 하도록 수정
 ### Position
 - [x] 음수 값 들어가지 못하도록 validation 로직 추가
-### MovingFactoryType
-- [ ] Type이 value로 `Supplier` 를 갖도록 변경하여 Enum 만으로 Type에 해당하는 MovingStrategy 구현체를 얻을 수 있도록 수정
+### MovingStrategyType
+- [x] Type이 value로 `Supplier` 를 갖도록 변경하여 Enum 만으로 Type에 해당하는 MovingStrategy 구현체를 얻을 수 있도록 수정
 ### ResultView
 - [ ] 괄호 제거하는 로직 -> `Collections.joining` 으로 개선
 ### CarsTest
