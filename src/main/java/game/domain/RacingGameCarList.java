@@ -3,18 +3,19 @@ package game.domain;
 import game.domain.car.RacingGameCar;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RacingGameCarList {
 
-    private List<RacingGameCar> cars;
+    private final List<RacingGameCar> cars;
 
     public RacingGameCarList(List<RacingGameCar> cars) {
         this.cars = cars;
     }
 
     public List<RacingGameCar> cars() {
-        return cars;
+        return Collections.unmodifiableList(cars);
     }
 
     public static RacingGameCarList makeRacingGameCars(int number) {
@@ -34,7 +35,32 @@ public class RacingGameCarList {
     }
 
     public RacingGameCar getLast(){
-        return cars.get(cars.size()-1);
+        return new RacingGameCar(cars.get(cars.size()-1));
     }
 
+    public RacingGameCarList winners() {
+        return winners(winnerLocation());
+    }
+
+    private RacingGameCarList winners(int winnerLocation) {
+        List<RacingGameCar> result = new ArrayList<>();
+        for (RacingGameCar car : cars()) {
+            isWinner(winnerLocation, result, car);
+        }
+        return new RacingGameCarList(result);
+    }
+
+    private static void isWinner(int winnerLocation, List<RacingGameCar> result, RacingGameCar car) {
+        if(car.location() == winnerLocation){
+            result.add(car);
+        }
+    }
+
+    private int winnerLocation() {
+        int max = Integer.MIN_VALUE;
+        for (RacingGameCar car : cars()) {
+            max = Math.max(car.location(),max);
+        }
+        return max;
+    }
 }
