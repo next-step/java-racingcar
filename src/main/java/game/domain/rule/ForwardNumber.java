@@ -13,6 +13,18 @@ public class ForwardNumber {
         this.forwardNumber = forwardNumber;
     }
 
+    public ForwardNumber(ForwardNumber forwardNumber) {
+        this(forwardNumber.getForwardNumber());
+    }
+
+    private int getForwardNumber() {
+        return forwardNumber;
+    }
+
+    public boolean isForward(int number) {
+        return number >= forwardNumber;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

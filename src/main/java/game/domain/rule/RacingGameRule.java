@@ -1,34 +1,31 @@
 package game.domain.rule;
 
-import java.util.Random;
-
 public class RacingGameRule {
 
     private static final int FORWARD_DISTANCE = 1;
-    private int canForwardNumber;
+    private ForwardNumber forwardNumber;
     private Bound bound;
 
     public RacingGameRule(int canForwardNumber, int bound) {
-        this.canForwardNumber = canForwardNumber;
+        this.forwardNumber = new ForwardNumber(canForwardNumber);
         this.bound = new Bound(bound);
     }
 
     public boolean isForward(int number) {
-        return number >= canForwardNumber;
+        return forwardNumber.isForward(number);
     }
 
     public Bound bound() {
         return new Bound(bound);
     }
 
-    public int canForwardNumber() {
-        return canForwardNumber;
+    public ForwardNumber forwardNumber() {
+        return new ForwardNumber(forwardNumber);
     }
 
     public int forwardDistance() {
         return FORWARD_DISTANCE;
     }
-
 
 
 }
