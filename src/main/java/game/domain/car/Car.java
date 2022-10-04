@@ -1,6 +1,6 @@
 package game.domain.car;
 
-import game.domain.RacingGameRule;
+import game.domain.rule.RacingGameRule;
 
 public abstract class Car {
 

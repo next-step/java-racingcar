@@ -1,6 +1,6 @@
-package game.domain;
+package game.domain.car;
 
-import game.domain.car.RacingGameCar;
+import game.domain.rule.RacingGameRule;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

@@ -1,5 +1,7 @@
-package game.domain;
+package game.domain.rule;
 
+import game.domain.game.RacingGame;
+import game.domain.car.RacingGameCarList;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;

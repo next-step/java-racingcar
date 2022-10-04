@@ -1,6 +1,6 @@
-package game.domain;
+package game.domain.car;
 
-import game.domain.car.RacingGameCar;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +14,7 @@ public class RacingGameCarListTest {
     @DisplayName("만들 자동차의 대수를 입력하면 리스트에 대수만큼 자동차를 추가한다.")
     @Test
     void makeCars() {
-        assertThat(RacingGameCarList.makeRacingGameCars(4).cars().size()).isEqualTo(4);
+        Assertions.assertThat(RacingGameCarList.makeRacingGameCars(4).cars().size()).isEqualTo(4);
     }
 
     @DisplayName("자동차 중 위치 값이 가장 높은 자동차를 우승자로 반환한다.")

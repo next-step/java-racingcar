@@ -1,4 +1,4 @@
-package game.domain;
+package game.domain.rule;
 
 import java.util.Random;
 

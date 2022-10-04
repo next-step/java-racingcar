@@ -1,5 +1,6 @@
-package game.domain;
+package game.domain.game;
 
+import game.domain.game.Round;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;

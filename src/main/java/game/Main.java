@@ -1,8 +1,8 @@
 package game;
 
-import game.domain.RacingGame;
-import game.domain.RacingGameCarList;
-import game.domain.RacingGameRule;
+import game.domain.game.RacingGame;
+import game.domain.car.RacingGameCarList;
+import game.domain.rule.RacingGameRule;
 import game.view.input.RacingGameInput;
 
 public class Main {

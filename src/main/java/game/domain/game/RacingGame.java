@@ -1,6 +1,8 @@
-package game.domain;
+package game.domain.game;
 
 import game.domain.car.Car;
+import game.domain.car.RacingGameCarList;
+import game.domain.rule.RacingGameRule;
 import game.view.output.RacingGameOutput;
 
 import java.util.Random;
