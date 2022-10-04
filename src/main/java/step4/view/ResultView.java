@@ -1,2 +1,4 @@
-package step4.view;public class ResultView {
+package step4.view;
+
+public class ResultView {
 }
