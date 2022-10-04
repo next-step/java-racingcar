@@ -7,8 +7,8 @@ import java.util.Objects;
 public class Car {
     private static final int INIT_POSITION = 0;
 
-    private final String name;
     private int position;
+    private final String name;
 
     public Car(String name) {
         this.name = name;

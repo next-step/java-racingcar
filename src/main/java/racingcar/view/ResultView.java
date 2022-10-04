@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ResultView {
-    private static final String RESULT_MESSAGE = "실행결과";
-    private static final String POSITION_MARK = "-";
     private static final String COMMA = ",";
+    private static final String POSITION_MARK = "-";
+    private static final String RESULT_MESSAGE = "실행결과";
     private static final String FINAL_WON_MESSAGE = " 가 최종 우승했습니다.";
 
     private ResultView() {

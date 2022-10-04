@@ -12,8 +12,8 @@ import java.util.stream.Collectors;
 public class RacingCarGame {
     private static final int ZERO = 0;
 
-    private final Cars cars;
     private int tryCount;
+    private final Cars cars;
 
     public RacingCarGame(Cars cars) {
         this.cars = cars;
