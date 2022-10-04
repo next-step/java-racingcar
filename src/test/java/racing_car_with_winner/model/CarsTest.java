@@ -6,6 +6,11 @@ import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import racing_car_with_winner.model.car.Car;
+import racing_car_with_winner.model.car.CarName;
+import racing_car_with_winner.model.car.Cars;
+import racing_car_with_winner.model.car.MoveResult;
+
 public class CarsTest {
 
     @Test

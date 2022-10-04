@@ -1,6 +1,8 @@
-package racing_car_with_winner.model;
+package racing_car_with_winner.model.car;
 
 import java.util.Objects;
+
+import racing_car_with_winner.model.MovableStrategy;
 
 public class Car {
     private final CarName carName;
