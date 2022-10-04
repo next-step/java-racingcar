@@ -5,8 +5,17 @@ import java.util.Objects;
 public class Round {
 
     public int round;
+
     public Round(int round) {
         this.round = round;
+    }
+
+    public Round(Round round) {
+        this.round = round.getRound();
+    }
+
+    public int getRound(){
+        return round;
     }
 
     @Override

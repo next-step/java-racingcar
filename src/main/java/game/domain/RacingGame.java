@@ -9,19 +9,19 @@ public class RacingGame {
 
     private RacingGameCarList racingGameCarList;
     private RacingGameRule racingGameRule;
-    private int round;
+    private Round round;
     private static final Random RANDOM = new Random();
 
 
     public RacingGame(RacingGameRule racingGameRule, RacingGameCarList cars, int round) {
         this.racingGameRule = racingGameRule;
         this.racingGameCarList = cars;
-        this.round = round;
+        this.round = new Round(round);
     }
 
     public void progressGame() {
         RacingGameOutput.startGame();
-        for (int i = 0; i < round(); i++) {
+        for (int i = 0; i < round().getRound(); i++) {
             progressRound(racingGameCarList);
         }
         RacingGameOutput.endGame(racingGameCarList.winners());
@@ -39,8 +39,8 @@ public class RacingGame {
         return racingGameCarList;
     }
 
-    public int round() {
-        return round;
+    public Round round() {
+        return new Round(round);
     }
 
     public int pickRandomNumber() {
