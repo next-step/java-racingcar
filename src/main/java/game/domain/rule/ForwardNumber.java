@@ -7,6 +7,9 @@ public class ForwardNumber {
     private int forwardNumber;
 
     public ForwardNumber(int forwardNumber) {
+        if (forwardNumber < 0) {
+            throw new IllegalArgumentException("ForwardNumber는 음수일 수 없습니다.");
+        }
         this.forwardNumber = forwardNumber;
     }
 
