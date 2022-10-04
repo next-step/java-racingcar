@@ -23,14 +23,6 @@ public class CarsTest {
 		this.newCarList = createCarList(5);
 	}
 
-	private List<Car> createCarList(int size) {
-		List<Car> carList = new ArrayList<>();
-		for (int i = 0; i < size; ++i) {
-			carList.add(new Car());
-		}
-		return carList;
-	}
-
 	@Test
 	@DisplayName("n대의 자동차는 전진할 수 있다")
 	void n_cars_can_move() {
@@ -69,5 +61,13 @@ public class CarsTest {
 			positions.add(car.getPosition());
 		}
 		return positions;
+	}
+
+	private List<Car> createCarList(int size) {
+		List<Car> carList = new ArrayList<>();
+		for (int i = 0; i < size; ++i) {
+			carList.add(new Car());
+		}
+		return carList;
 	}
 }
