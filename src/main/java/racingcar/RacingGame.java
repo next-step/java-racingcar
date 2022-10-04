@@ -5,7 +5,7 @@ public class RacingGame {
         validateMoveNumber(moveNumber);
         RacingCars cars = RacingCars.create(carNumber);
         for (int i = 0; i < moveNumber; i++) {
-            cars.moving();
+            cars.moving(new RandomNumberGenerator());
             cars.print();
         }
     }

@@ -28,9 +28,9 @@ public class RacingCars {
         }
     }
 
-    public void moving() {
+    public void moving(NumberGenerator numberGenerator) {
         for (Car car : cars) {
-            if (isValidNumber(RandomNumberGenerator.getRandomNumber())) {
+            if (isValidNumber(numberGenerator.generate())) {
                 car.moveForward();
             }
         }
