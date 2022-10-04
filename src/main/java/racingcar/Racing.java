@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Racing extends Condition {
@@ -40,7 +42,11 @@ public class Racing extends Condition {
 	}
 
 	public static Cars participate(String input) {
-		return new Cars(input.split(","));
+		List<Car> cars = new ArrayList<>();
+		for (String car : input.split(",")) {
+			cars.add(new Car(car));
+		}
+		return new Cars(cars);
 	}
 
 	public String checkInput(String input) {

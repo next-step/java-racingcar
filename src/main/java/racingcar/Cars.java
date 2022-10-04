@@ -5,12 +5,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
-	private List<Car> cars = new ArrayList<>();
+	private List<Car> cars;
 
-	public Cars(String[] cars) {
-		for (String carName : cars) {
-			this.cars.add(new Car(carName));
-		}
+	public Cars(final List<Car> cars) {
+		this.cars = cars;
 	}
 
 	public List<Car> getCars() {
