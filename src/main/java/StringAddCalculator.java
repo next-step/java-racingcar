@@ -1,14 +1,18 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
+    final static String COMMA_OR_COLON = ",|:";
+    final static String CUSTOM_DELIMITER_PATTERN = "//(.)\n(.*)";
 
     public static int splitAndSum(String text) {
         if (isNullOrBlank(text)) {
             return 0;
         }
 
-        int[] numbers = toInts(toTokens(text));
+        List<Integer> numbers = toInts(toTokens(text));
         checkNegative(numbers);
         return sum(numbers);
     }
@@ -17,34 +21,35 @@ public class StringAddCalculator {
         return text == null || text.isBlank();
     }
 
-    private static String[] toTokens(String text) {
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            return m.group(2).split(customDelimiter);
+    private static List<String> toTokens(String text) {
+        Matcher matcher = Pattern.compile(CUSTOM_DELIMITER_PATTERN).matcher(text);
+        if (matcher.find()) {
+            String customDelimiter = matcher.group(1);
+            return List.of(matcher.group(2).split(customDelimiter));
         }
 
-        return text.split(",|:");
+        return List.of(text.split(COMMA_OR_COLON));
     }
 
-    private static int[] toInts(String[] tokens) {
-        int[] numbers = new int[tokens.length];
-        for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = Integer.parseInt(tokens[i]);
+    private static List<Integer> toInts(List<String> tokens) {
+        List<Integer> numbers = new ArrayList<>();
+        for (String token : tokens) {
+            numbers.add(Integer.parseInt(token));
         }
         return numbers;
     }
-    private static void checkNegative(int[] numbers) {
-        for (int number : numbers) {
+
+    private static void checkNegative(List<Integer> numbers) {
+        for (Integer number : numbers) {
             if (number < 0) {
                 throw new RuntimeException("음수는 포함될 수 없습니다.");
             }
         }
     }
 
-    private static int sum(int[] numbers) {
+    private static int sum(List<Integer> numbers) {
         int result = 0;
-        for (int number : numbers) {
+        for (Integer number : numbers) {
             result += number;
         }
         return result;
