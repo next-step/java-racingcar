@@ -1,6 +1,5 @@
-package step3and4.cars;
+package step3and4.car;
 
-import step3and4.car.Car;
 import step3and4.number.Number;
 import step3and4.output.OutputView;
 

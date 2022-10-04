@@ -1,6 +1,6 @@
 package step3and4.game;
 
-import step3and4.cars.Cars;
+import step3and4.car.Cars;
 import step3and4.input.InputView;
 import step3and4.number.Number;
 import step3and4.output.OutputView;
