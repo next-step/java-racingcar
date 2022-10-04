@@ -1,10 +1,9 @@
 package racing_car_with_winner.model;
 
-import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
-
-import javax.swing.ListSelectionModel;
 
 public class Cars {
     private final List<Car> cars;
@@ -18,13 +17,21 @@ public class Cars {
     }
 
     public Cars moveCars(MovableStrategy movableStrategy) {
-        List<Car> movedCars = cars.stream().map(car -> car.tryMove(movableStrategy)).collect(Collectors.toList());
+        List<Car> movedCars = cars.stream()
+                                  .map(car -> car.tryMove(movableStrategy))
+                                  .collect(Collectors.toList());
 
         return new Cars(movedCars);
     }
 
     public List<Car> findWinner() {
-        return new ArrayList<>();
-    }
+        Map<MoveResult, List<Car>> groupByMoveResult = this.cars.stream()
+                                                                .collect(Collectors.groupingBy(Car::getMoveResult));
 
+        MoveResult winnerResult = groupByMoveResult.keySet().stream()
+                                                   .max(Comparator.comparingInt(MoveResult::getMoveCount))
+                                                   .orElseThrow(() -> new IllegalArgumentException("우승자가 존재하지 않습니다"));
+
+        return groupByMoveResult.get(winnerResult);
+    }
 }

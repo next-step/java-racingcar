@@ -1,5 +1,7 @@
 package racing_car_with_winner.model;
 
+import java.util.Objects;
+
 import racing_car_with_winner.exception.InvalidInputException;
 
 public class CarName {
@@ -15,5 +17,22 @@ public class CarName {
         }
 
         this.value = value;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof CarName)) {
+            return false;
+        }
+        CarName carName = (CarName) o;
+        return value.equals(carName.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 }
