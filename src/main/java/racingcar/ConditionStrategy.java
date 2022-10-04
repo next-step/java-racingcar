@@ -1,5 +1,5 @@
 package racingcar;
 
 public interface ConditionStrategy {
-	boolean validInput(String input);
+	boolean validInput(String input) throws RuntimeException;
 }

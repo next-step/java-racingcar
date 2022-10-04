@@ -11,8 +11,9 @@ public class Car extends Condition{
 	public Car(String name) {
 		super(new NameCondition());
 		if (validInput(name)) {
-			this.name = name;
+			throw new RuntimeException();
 		}
+		this.name = name;
 		this.position = new Position();
 	}
 

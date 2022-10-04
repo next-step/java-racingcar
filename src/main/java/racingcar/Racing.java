@@ -1,7 +1,9 @@
 package racingcar;
 
-public class Racing {
-	private static ConditionStrategy conditionStrategy = new MatchCondition();
+public class Racing extends Condition {
+	public Racing() {
+		super(new NumberCondition());
+	}
 
 	public static void playRace() {
 		Print.participantsOfRacing();
@@ -38,7 +40,9 @@ public class Racing {
 	}
 
 	public static String checkInput(String input) {
-		conditionStrategy.validInput(input);
+		if (validInput(input)) {
+			throw new RuntimeException();
+		}
 		return input;
 	}
 }
