@@ -22,7 +22,7 @@ public class RacingTest {
 		"-1"
 	})
 	void checkInput(String input) {
-		assertThatThrownBy(() -> Racing.checkInput(input))
+		assertThatThrownBy(() -> new Racing().checkInput(input))
 			.isInstanceOf(RuntimeException.class);
 	}
 }
