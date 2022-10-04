@@ -1,6 +1,10 @@
 package racingcar;
 
+import java.util.Random;
+
 public class Racing extends Condition {
+	private static final int MAX_OF_RANDOM = 10;
+
 	public Racing() {
 		super(new NumberCondition());
 	}
@@ -29,8 +33,8 @@ public class Racing extends Condition {
 
 	private static void playMatch(Cars cars, int index) {
 		for (int i = 0; i < cars.getCars().size(); i++) {
-			int random = cars.getCars().get(i).makeRandom();
-			cars.getCars().get(i).movingOfRound(random);
+			RandomStrategy random = () -> new Random().nextInt(MAX_OF_RANDOM);
+			cars.getCars().get(i).movingOfRound(random.makeRandom());
 		}
 		Views.results(cars, index);
 	}
