@@ -1,18 +1,12 @@
 package racingcar;
 
-import java.util.Random;
-
-public class Car extends Condition{
+public class Car {
 	private static final int MOVING_CONDITION = 4;
-	private String name;
+	private Name name;
 	private Position position;
 
 	public Car(String name) {
-		super(new NameCondition());
-		if (validInput(name)) {
-			throw new RuntimeException();
-		}
-		this.name = name;
+		this.name = new Name(name);
 		this.position = new Position();
 	}
 
@@ -22,11 +16,11 @@ public class Car extends Condition{
 		}
 	}
 
-	public int getStatus() {
-		return this.position.getPosition();
+	public Position getStatus() {
+		return this.position;
 	}
 
-	public String getName() {
-		return this.name;
+	public Name getName() {
+		return name;
 	}
 }
