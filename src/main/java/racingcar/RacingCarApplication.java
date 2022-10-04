@@ -2,7 +2,7 @@ package racingcar;
 
 import java.util.List;
 import racingcar.view.RacingInputView;
-import racingcar.view.ResultView;
+import racingcar.view.RacingResultView;
 
 public class RacingCarApplication {
     public static void main(String[] args) {
@@ -12,6 +12,6 @@ public class RacingCarApplication {
         RacingGame racingGame = new RacingGame(tryNums, carNames);
         RacingRecord racingRecord = racingGame.racingStart();
 
-        ResultView.printRoundRecord(racingRecord, "-");
+        RacingResultView.printRoundRecord(racingRecord);
     }
 }
