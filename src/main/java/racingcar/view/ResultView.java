@@ -29,20 +29,18 @@ public class ResultView {
     }
 
     public static void printWinner(List<Car> winnerValues) {
-        System.out.println();
         List<String> winnerCarNames = winnerValues.stream().map(Car::getName).collect(Collectors.toList());
-        System.out.print(String.join(COMMA, winnerCarNames));
-        System.out.println(FINAL_WON_MESSAGE);
+        System.out.println("\n" + String.join(COMMA, winnerCarNames).concat(FINAL_WON_MESSAGE));
     }
 
     private static void printCarsRound(List<CarDto> values) {
         for (CarDto value : values) {
-            System.out.print(value.getName() + " : ");
-            printPositionMark(value.getPosition());
+            printCarPosition(value);
         }
     }
 
-    private static void printPositionMark(int position) {
-        System.out.println(POSITION_MARK.repeat(position));
+    private static void printCarPosition(CarDto value) {
+        System.out.print(value.getName() + " : ");
+        System.out.println(POSITION_MARK.repeat(value.getPosition()));
     }
 }
