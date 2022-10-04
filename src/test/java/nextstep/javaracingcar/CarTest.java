@@ -13,20 +13,22 @@ class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 10})
     public void spec01(final int movableDistance) {
-        final Car car = new Car(() -> PositiveNumber.from(movableDistance));
+        final String carName = "TEST_CAR";
+        final Car car = new Car(carName, () -> PositiveNumber.from(movableDistance));
         car.move();
-        assertThat(car.dashboard()).isEqualTo(new CarDashboard(PositiveNumber.from(movableDistance)));
+        assertThat(car.dashboard()).isEqualTo(new CarDashboard(carName, PositiveNumber.from(movableDistance)));
     }
 
     @DisplayName("Car 는 주어진 이동할 때 마다 주어진 거리만큼 이동한다.")
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 10})
     public void spec02(final int moveCount) {
+        final String carName = "TEST_CAR";
         final CarEngine oneDistanceSupplier = () -> PositiveNumber.from(1);
-        final Car car = new Car(oneDistanceSupplier);
+        final Car car = new Car(carName, oneDistanceSupplier);
         for (int i = 0; i < moveCount; i++) {
             car.move();
         }
-        assertThat(car.dashboard()).isEqualTo(new CarDashboard(PositiveNumber.from(moveCount)));
+        assertThat(car.dashboard()).isEqualTo(new CarDashboard(carName,PositiveNumber.from(moveCount)));
     }
 }

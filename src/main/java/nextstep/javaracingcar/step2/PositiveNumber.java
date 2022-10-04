@@ -1,9 +1,12 @@
 package nextstep.javaracingcar.step2;
 
-public class PositiveNumber {
+import java.util.function.IntConsumer;
+
+public class PositiveNumber implements Comparable<PositiveNumber> {
     private final int number;
 
     public static final PositiveNumber ZERO = new PositiveNumber(0);
+    public static final PositiveNumber ONE = new PositiveNumber(1);
 
     private PositiveNumber(final int value) {
         if (value < 0) {
@@ -20,8 +23,13 @@ public class PositiveNumber {
         return from(Integer.parseInt(value));
     }
 
-    public PositiveNumber plus(PositiveNumber one) {
-        return new PositiveNumber(this.number + one.number);
+    public PositiveNumber plus(final PositiveNumber other) {return new PositiveNumber(this.number + other.number);
+    }
+    public PositiveNumber decrease() {
+        if(this.number == 0) {
+            throw new IllegalStateException("0 은 감소할 수 없습니다.");
+        }
+        return new PositiveNumber(this.number - 1);
     }
 
     @Override
@@ -35,6 +43,11 @@ public class PositiveNumber {
     }
 
     @Override
+    public int compareTo(final PositiveNumber other) {
+        return Integer.compare(this.number, other.number);
+    }
+
+    @Override
     public int hashCode() {
         return number;
     }
@@ -42,5 +55,11 @@ public class PositiveNumber {
     @Override
     public String toString() {
         return "Positive{" + "number=" + number + '}';
+    }
+
+    public void loop(final IntConsumer consumer) {
+        for (int i = 0; i < this.number; i++) {
+            consumer.accept(i);
+        }
     }
 }

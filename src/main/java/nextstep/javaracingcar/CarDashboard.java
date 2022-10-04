@@ -4,32 +4,43 @@ import nextstep.javaracingcar.step2.PositiveNumber;
 
 import java.util.Objects;
 
+
 public class CarDashboard {
+    private final String name;
     private final PositiveNumber distance;
 
-    public CarDashboard(PositiveNumber distance) {
+    public CarDashboard(final String name, final PositiveNumber distance) {
+        this.name = name;
         this.distance = distance;
     }
 
+    public PositiveNumber distance() {
+        return this.distance;
+    }
+
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
         CarDashboard that = (CarDashboard) o;
 
+        if (!Objects.equals(name, that.name)) return false;
         return Objects.equals(distance, that.distance);
     }
 
     @Override
     public int hashCode() {
-        return distance != null ? distance.hashCode() : 0;
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (distance != null ? distance.hashCode() : 0);
+        return result;
     }
 
     @Override
     public String toString() {
         return "CarDashboard{" +
-                "distance=" + distance +
+                "name='" + name + '\'' +
+                ", distance=" + distance +
                 '}';
     }
 }
