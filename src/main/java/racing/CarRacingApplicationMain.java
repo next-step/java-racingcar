@@ -11,7 +11,7 @@ public class CarRacingApplicationMain {
     public static void main(String[] args) {
         MovingRule movingRule = new RandomRule();
         Form form = InputView.createForm();
-        Race race = new Race(form.getNumberOfCars(), form.getNumberOfPlays(), movingRule);
+        Race race = new Race(form.getNameOfCars(), form.getNumberOfPlays(), movingRule);
         race.play();
         OutputView.showResult(race);
     }
