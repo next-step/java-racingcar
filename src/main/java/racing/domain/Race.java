@@ -26,7 +26,7 @@ public class Race {
         RaceResult result = new RaceResult();
         for (Car car : cars) {
             car.move();
-            result.addCarLocation(car.location());
+            result.addRecord(car);
         }
         scoreBoard.addResult(result);
     }

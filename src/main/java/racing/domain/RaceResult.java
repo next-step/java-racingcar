@@ -5,22 +5,22 @@ import java.util.List;
 import java.util.Objects;
 
 public class RaceResult {
-    private final List<Integer> carLocations;
+    private final List<Record> record;
 
     public RaceResult() {
-        this.carLocations = new ArrayList<>();
+        this.record = new ArrayList<>();
     }
 
-    public RaceResult(List<Integer> carLocations) {
-        this.carLocations = carLocations;
+    public RaceResult(List<Record> record) {
+        this.record = record;
     }
 
-    public void addCarLocation(final int location) {
-        carLocations.add(location);
+    public void addRecord(final Car car) {
+        record.add(Record.record(car));
     }
 
-    public List<Integer> carLocations() {
-        return carLocations;
+    public List<Record> records() {
+        return record;
     }
 
     @Override
@@ -32,11 +32,11 @@ public class RaceResult {
             return false;
         }
         RaceResult result = (RaceResult) o;
-        return Objects.equals(carLocations, result.carLocations);
+        return Objects.equals(record, result.record);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(carLocations);
+        return Objects.hash(record);
     }
 }
