@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
-    @ParameterizedTest(name="{2}")
+    @ParameterizedTest(name = "{2}")
     @MethodSource("strategyParameterProvider")
     void move(MovingStrategy movingStrategy, Position expected, String displayMessage) {
         Car car = new Car("carA");
