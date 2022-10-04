@@ -7,13 +7,19 @@ public class Car {
 	private static final int DEFAULT_LOCATION = 0;
 	private static final int MOVE_LOCATION = 1;
 	private int location;
+	private String carName;
 
-	public Car() {
+	public Car(String carName) {
 		this.location = DEFAULT_LOCATION;
+		this.carName = carName;
 	}
 
 	public int carLocation() {
 		return location;
+	}
+
+	public String carName() {
+		return carName;
 	}
 
 	public void moveLocation(MovingStrategy strategy) {

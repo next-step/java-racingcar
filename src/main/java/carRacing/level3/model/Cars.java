@@ -20,5 +20,9 @@ public class Cars {
 		return carList.get(carNum).carLocation();
 	}
 
+	public String carName(int carNum) {
+		return carList.get(carNum).carName();
+	}
+
 }
 

@@ -13,13 +13,13 @@ public class CarTest {
 
 	@Test
 	void 자동차_한대_생성() {
-		Car car = new Car();
+		Car car = new Car("testCar1");
 		assertEquals(car.carLocation(), DEFAULT_LOCATION);
 	}
 
 	@Test
 	void 자동차_전진() {
-		Car car = new Car();
+		Car car = new Car("testCar1");
 		car.moveLocation(new RandomMovingStrategy());
 		assertThat(car.carLocation()).isGreaterThanOrEqualTo(DEFAULT_LOCATION);
 	}

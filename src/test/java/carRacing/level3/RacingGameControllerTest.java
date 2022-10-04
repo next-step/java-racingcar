@@ -12,7 +12,7 @@ public class RacingGameControllerTest {
 
 	@Test
 	@DisplayName("경주시작")
-	public void driveCar() {
+	public void driveCar() throws Exception {
 		race.gameStart(new RandomMovingStrategy());
 	}
 
