@@ -7,13 +7,13 @@ public class Position {
     private final int position;
 
     public Position(int position) {
-        if (!gameEnd(position)) {
+        if (!isValid(position)) {
             throw new IllegalArgumentException("위치는 0 이상 이어야 합니다.");
         }
         this.position = position;
     }
 
-    private boolean gameEnd(int position) {
+    private boolean isValid(int position) {
         return position >= 0;
     }
 
