@@ -1,34 +1,65 @@
 package racingcar.domain;
 
+import racingcar.dto.CarDto;
 import racingcar.strategy.MovingStrategy;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Cars {
+    private static final String EMPTY_STRING = "";
+    private static final String BLANK_STRING = " ";
+    private static final String COMMA_SEPARATOR = ",";
+    private static final int CAR_NAME_MAX_LENGTH = 5;
+    private static final String INVALID_CAR_NAME_MESSAGE = "잘못 입력하여 다시 입력하세요. (" + CAR_NAME_MAX_LENGTH + "자 이하로)";
+
     private final List<Car> values;
 
-    public Cars(int carCount) {
-        this.values = createCarList(carCount);
+    public Cars(String carNames) {
+        this.values = createCarList(carNames);
     }
 
     public Cars(List<Car> values) {
         this.values = values;
     }
 
-    private List<Car> createCarList(int carCount) {
-        List<Car> carList = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            carList.add(new Car());
-        }
-        return carList;
+    private List<Car> createCarList(String carNames) {
+        List<String> carNameValues = toStringList(carNames);
+        return carNameValues.stream().map(Car::new).collect(Collectors.toList());
     }
 
-    public void move(MovingStrategy movingStrategy) {
+    public List<CarDto> move(MovingStrategy movingStrategy) {
+        List<CarDto> carValues = new ArrayList<>();
         for (Car value : values) {
             value.moves(movingStrategy);
+            carValues.add(new CarDto(value.getName(), value.getPosition()));
         }
+        return carValues;
+    }
+
+    private static List<String> toStringList(String value) {
+        String[] splitValues = value.replace(BLANK_STRING, EMPTY_STRING).split(COMMA_SEPARATOR);
+        for (String splitValue : splitValues) {
+            checkInvalidInputValue(splitValue);
+        }
+        return Arrays.asList(splitValues);
+    }
+
+    private static void checkInvalidInputValue(String value) {
+        if (isBlankValue(value) || isMoreThanValueLength(value)) {
+            throw new IllegalArgumentException(INVALID_CAR_NAME_MESSAGE);
+        }
+    }
+
+    private static boolean isBlankValue(String value) {
+        return value.isBlank();
+    }
+
+    private static boolean isMoreThanValueLength(String value) {
+        return value.length() > CAR_NAME_MAX_LENGTH;
     }
 
     public List<Car> getValues() {
