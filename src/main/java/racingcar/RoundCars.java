@@ -20,11 +20,11 @@ public class RoundCars {
                 .collect(Collectors.toList());
     }
 
-    public void moveCars(RacingRecord racingRecord, MovingStrategy movingStrategy) {
+    public RoundCars moveCars(MovingStrategy movingStrategy) {
         for (Car car : cars) {
             car.move(movingStrategy);
         }
-        racingRecord.addCarsPosition(this);
+        return getRoundCars();
     }
 
     public List<String> retrieveWinners() {

@@ -35,11 +35,10 @@ class RoundCarsTest {
 
     @Test
     void moveCars_포지션_증가성공_전략() {
-        RacingRecord racingRecord = new RacingRecord();
         MovingStrategy movingStrategy = new TestSuccessMoveStrategy();
 
-        roundCars.moveCars(racingRecord, movingStrategy);
-        roundCars.moveCars(racingRecord, movingStrategy);
+        roundCars.moveCars(movingStrategy);
+        roundCars.moveCars(movingStrategy);
 
         List<Car> cars = roundCars.retrieveCars();
         assertThat(cars)
@@ -49,11 +48,10 @@ class RoundCarsTest {
 
     @Test
     void moveCars_포지션_증가실패_전략() {
-        RacingRecord racingRecord = new RacingRecord();
         MovingStrategy movingStrategy = new TestFailMoveStrategy();
 
-        roundCars.moveCars(racingRecord, movingStrategy);
-        roundCars.moveCars(racingRecord, movingStrategy);
+        roundCars.moveCars(movingStrategy);
+        roundCars.moveCars(movingStrategy);
 
         List<Car> cars = roundCars.retrieveCars();
         assertThat(cars)
@@ -63,11 +61,10 @@ class RoundCarsTest {
 
     @Test
     void 우승자_도출_테스트() {
-        RacingRecord racingRecord = new RacingRecord();
         MovingStrategy movingStrategy = new TestSuccessMoveStrategy();
 
-        roundCars.moveCars(racingRecord, movingStrategy);
-        roundCars.moveCars(racingRecord, movingStrategy);
+        roundCars.moveCars(movingStrategy);
+        roundCars.moveCars(movingStrategy);
         List<Car> cars = roundCars.retrieveCars();
         Car winnerCar = cars.get(1);
         winnerCar.move(movingStrategy);
