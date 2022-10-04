@@ -1,9 +1,11 @@
 package calculator;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Numbers {
+    public static final Number zero = new Number(0);
     private final List<Number> numbers;
 
     public Numbers(List<Number> numbers) {
@@ -11,18 +13,16 @@ public class Numbers {
     }
 
     public static Numbers create(String[] tokens) {
-        List<Number> numbers = new ArrayList<>();
-        for (String token : tokens) {
-            numbers.add(new Number(token));
-        }
-        return new Numbers(numbers);
+        return new Numbers(Arrays.stream(tokens)
+                .map(Number::parse)
+                .collect(Collectors.toList()));
     }
 
     public Number sum() {
-        Number sum = new Number(0);
+        Number sum = zero;
         for (Number number : numbers) {
             sum = sum.add(number);
         }
-        return sum;
+        return sum.getNumber();
     }
 }

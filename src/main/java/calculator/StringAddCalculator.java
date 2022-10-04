@@ -13,7 +13,7 @@ public class StringAddCalculator {
         }
 
         Numbers numbers = Numbers.create(splitNumber(input));
-        return numbers.sum().getNumber();
+        return numbers.sum();
     }
 
     private boolean isNullOrEmpty(String input) {
