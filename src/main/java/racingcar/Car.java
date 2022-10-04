@@ -9,8 +9,11 @@ public class Car {
     private int position = 0;
     private Random randomGenerator;
 
-    public Car() {
+    public Car(){
         randomGenerator = new Random();
+    }
+    public Car(Random random) {
+        randomGenerator = random;
     }
 
     public void move() {
