@@ -1,4 +1,4 @@
-package step3and4.car;
+package step3and4.game.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

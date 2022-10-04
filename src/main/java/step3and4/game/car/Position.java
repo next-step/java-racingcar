@@ -1,4 +1,4 @@
-package step3and4.car;
+package step3and4.game.car;
 
 import step3and4.output.OutputView;
 
