@@ -5,6 +5,7 @@ import java.util.Random;
 public class Car {
 
     private int location;
+    private final int ADVANCED_VALUE = 4;
 
     public Car(int location) {
         this.location = location;
@@ -12,7 +13,7 @@ public class Car {
 
     public int advanceCar(int randomValue) {
         if(isAdvanced(randomValue)) {
-            this.location += 1;
+            this.location++;
             return this.location;
         }
         return this.location;
@@ -23,7 +24,7 @@ public class Car {
     }
 
     private boolean isAdvanced(int value) {
-        return value >= 4;
+        return value >= ADVANCED_VALUE;
     }
 
 }

@@ -12,6 +12,5 @@ public class ResultView {
         for(int i = 0; i < carLocation; i++) {
             System.out.print("-");
         }
-        System.out.println("\n");
     }
 }
