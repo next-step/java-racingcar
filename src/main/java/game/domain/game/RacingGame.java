@@ -46,7 +46,7 @@ public class RacingGame {
     }
 
     public int pickRandomNumber() {
-        return RANDOM.nextInt(racingGameRule.bound());
+        return RANDOM.nextInt(racingGameRule.bound().getBound());
     }
 
 }
