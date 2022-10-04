@@ -1,13 +1,19 @@
 package game.domain;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.*;
 
 public class RoundTest {
 
     @Test
     void create(){
         Round round = new Round(5);
-        Assertions.assertThat(round).isEqualTo(new Round(5));
+        assertThat(round).isEqualTo(new Round(5));
+    }
+
+    @Test
+    void valid(){
+        assertThatThrownBy(() -> new Round(-1)).isInstanceOf(IllegalArgumentException.class);
     }
 }

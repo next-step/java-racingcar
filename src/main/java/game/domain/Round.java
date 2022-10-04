@@ -4,9 +4,13 @@ import java.util.Objects;
 
 public class Round {
 
+    public static String ROUND_BOUND_EXCEPTION = "Round는 음수 값을 가질 수 없습니다.";
     public int round;
 
     public Round(int round) {
+        if(round < 0){
+            throw new IllegalArgumentException(ROUND_BOUND_EXCEPTION);
+        }
         this.round = round;
     }
 
