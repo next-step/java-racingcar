@@ -11,7 +11,8 @@ class CarTest {
     @DisplayName("car 초기 거리 설정 테스트")
     void moveInit() {
         // given
-        Car car = new Car();
+        String name = "이상원";
+        Car car = new Car(name);
 
         // expected
         assertThat(car.getDistance()).isEqualTo("-");
@@ -21,7 +22,8 @@ class CarTest {
     @DisplayName("랜덤값 테스트 : isForword 가 true 이면 전진")
     void moveForward() {
         // given
-        Car car = new Car();
+        String name = "이상원";
+        Car car = new Car(name);
 
         // when
         car.move(Boolean.TRUE);
@@ -34,12 +36,26 @@ class CarTest {
     @DisplayName("랜덤값 테스트 : isForword 가 false 이면 제자리")
     void moveStay() {
         // given
-        Car car = new Car();
+        String name = "이상원";
+        Car car = new Car(name);
 
         // when
         car.move(Boolean.FALSE);
 
         // then
         assertThat(car.getDistance().length()).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("자동차를 생성하고 이름을 확인한다.")
+    void getName() {
+        // given
+        String name = "이상원";
+
+        // when
+        Car car = new Car(name);
+
+        // then
+        assertThat(car.getName()).isEqualTo(name);
     }
 }
