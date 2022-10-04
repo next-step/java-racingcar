@@ -17,9 +17,9 @@ public class StringAddCalculator {
 
     public static int calculateSum(String[] strArr) {
         int sum = 0;
-        for (int i = 0; i < strArr.length; i++ ) {
-            checkMinus(strArr[i]);
-            sum += Integer.parseInt(strArr[i]);
+        for (String s : strArr) {
+            checkMinus(s);
+            sum += Integer.parseInt(s);
         }
         return sum;
     }
