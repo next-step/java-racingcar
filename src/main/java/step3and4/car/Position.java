@@ -1,6 +1,6 @@
-package step3.position;
+package step3and4.car;
 
-import step3.output.OutputView;
+import step3and4.output.OutputView;
 
 import java.util.Objects;
 

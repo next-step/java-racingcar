@@ -1,9 +1,9 @@
-package step3.game;
+package step3and4.game;
 
-import step3.cars.Cars;
-import step3.input.InputView;
-import step3.number.Number;
-import step3.output.OutputView;
+import step3and4.cars.Cars;
+import step3and4.input.InputView;
+import step3and4.number.Number;
+import step3and4.output.OutputView;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package step3.output;
+package step3and4.output;
 
 public class BarOutputView implements OutputView {
 

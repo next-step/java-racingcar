@@ -1,8 +1,8 @@
-package step3.position;
+package step3and4.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.output.OutputView;
+import step3and4.output.OutputView;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
