@@ -7,6 +7,13 @@ import org.junit.jupiter.api.Test;
 
 public class CarsTest {
 	@Test
+	@DisplayName("이름이 5자 초과하는 자동차 예외")
+	void validCar() {
+		assertThatThrownBy(() -> new Cars(new String[] {"abcdef"}))
+			.isInstanceOf(RuntimeException.class);
+	}
+
+	@Test
 	@DisplayName(", 로 분리된 배열을 받아서 List<Car> 생성")
 	void createCars() {
 		Cars cars = new Cars(new String[] {"pobi", "crong", "honux"});
