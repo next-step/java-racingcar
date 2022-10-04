@@ -27,13 +27,13 @@ public class ResultView {
     private static void racing(int racingSize, Cars cars) {
         for (int i = 0; i < racingSize; i++) {
             Racing racing = new Racing(cars);
-            printDistance(racing);
+            printCarNameAndDistance(racing);
         }
     }
 
-    private static void printDistance(Racing racing) {
+    private static void printCarNameAndDistance(Racing racing) {
         for (Car car : racing.getRaceResult().getCarList()) {
-            System.out.println(car.getDistance());
+            System.out.println(car.getName() + " : " + car.getDistance());
         }
         System.out.println();
     }

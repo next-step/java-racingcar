@@ -18,7 +18,7 @@ public class InputView {
         throw new AssertionError();
     }
 
-    public static List<String> inputCarSize() {
+    public static List<String> inputCarNameList() {
         System.out.println(CAR_NAME_REQUEST_MESSAGE);
         return makeNameList();
     }
