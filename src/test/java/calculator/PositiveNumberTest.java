@@ -1,27 +1,31 @@
 package calculator;
 
+import exception.CustomException;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
 public class PositiveNumberTest {
     @Test
-    void create() {
-        assertThat(PositiveNumber.of("1")).isEqualTo(PositiveNumber.of(1));
+    void 객체_생성() {
+        assertThat(PositiveNumber.from("1")).isEqualTo(PositiveNumber.from(1));
     }
 
     @Test
-    void plus() {
-        PositiveNumber positive = PositiveNumber.of(1);
+    void 덧셈() {
+        PositiveNumber positive = PositiveNumber.from(1);
         PositiveNumber result = positive.plus(2);
-        assertThat(result).isEqualTo(PositiveNumber.of(3));
+        assertThat(result).isEqualTo(PositiveNumber.from(3));
     }
 
     @Test
-    void negative() {
-        assertThatThrownBy(() -> PositiveNumber.of(-1))
-                .isInstanceOf(RuntimeException.class);
-        assertThatThrownBy(() -> PositiveNumber.of("-1"))
-                .isInstanceOf(RuntimeException.class);
+    void 뺄셈() {
+        assertThatThrownBy(() -> PositiveNumber.from(-1))
+                .isInstanceOf(CustomException.class)
+                .hasMessage(NumberException.NEGATIVE_NUMBER_BAD_REQUEST.getMessage());
+        assertThatThrownBy(() -> PositiveNumber.from("-1"))
+                .isInstanceOf(CustomException.class)
+                .hasMessage(NumberException.NEGATIVE_NUMBER_BAD_REQUEST.getMessage());
     }
 }

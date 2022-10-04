@@ -4,13 +4,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
+
     private static final String REGEX = "[,:]";
     private static final Pattern PATTERN = Pattern.compile("//(.)\n(.*)");
     public static int splitAndSum(String text) {
         if (isBlank(text)) {
             return 0;
         }
-        return sum(PositiveNumber.of(split(text))).getNumber();
+        return sum(PositiveNumber.from(split(text))).getNumber();
     }
 
     private static String[] split(String text) {
@@ -22,7 +23,7 @@ public class StringAddCalculator {
     }
 
     private static PositiveNumber sum(PositiveNumber[] numbers) {
-        PositiveNumber result = PositiveNumber.of(0);
+        PositiveNumber result = PositiveNumber.from(0);
         for (PositiveNumber number : numbers) {
             result = result.plus(number);
         }

@@ -1,5 +1,6 @@
 package calculator;
 
+import exception.CustomException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -14,6 +15,7 @@ public class StringAddCalculatorTest {
     @ParameterizedTest
     @NullAndEmptySource
     @ValueSource(strings = "")
+    @DisplayName("null 이거나 공백인 문자열일 경우 0을 반환한다")
     void splitAndSum_null_and_blank(String str) {
         int result = StringAddCalculator.splitAndSum(str);
         assertThat(result).isZero();
@@ -48,8 +50,8 @@ public class StringAddCalculatorTest {
     @DisplayName("음수를 전달할 경우 RuntimeException 예외가 발생해야 한다")
     void negativeNumberException() {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1:2:3"))
-                .isInstanceOf(RuntimeException.class)
-                .hasMessage("음수가 입력되었습니다.");
+                .isInstanceOf(CustomException.class)
+                .hasMessage(NumberException.NEGATIVE_NUMBER_BAD_REQUEST.getMessage());
 
     }
 }
