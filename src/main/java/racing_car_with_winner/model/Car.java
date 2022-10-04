@@ -14,7 +14,11 @@ public class Car {
         this.moveResult = moveResult;
     }
 
-    public Car tryMove() {
-        return new Car(this.carName, moveResult.move());
+    public Car tryMove(MovableStrategy movableStrategy) {
+        return new Car(this.carName, moveResult.move(movableStrategy.canMove()));
+    }
+
+    public MoveResult getMoveResult() {
+        return moveResult;
     }
 }

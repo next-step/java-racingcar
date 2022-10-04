@@ -14,7 +14,15 @@ public class MoveResult {
         this.moveCount = moveCount;
     }
 
-    public MoveResult move() {
-        return new MoveResult(this.moveCount + 1);
+    public MoveResult move(boolean isMoved) {
+        if (isMoved) {
+            return new MoveResult(this.moveCount + 1);
+        }
+
+        return this;
+    }
+
+    public int getMoveCount() {
+        return moveCount;
     }
 }
