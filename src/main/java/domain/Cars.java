@@ -1,7 +1,7 @@
 package domain;
 
-import static java.lang.Math.max;
 
+import static java.lang.Math.max;
 import java.util.List;
 import java.util.stream.Collectors;
 

@@ -8,9 +8,11 @@
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
+
 ### 리펙토링
 1. step4에서 PR코멘트의 내용을 반영한다
 2. package별 분리 및 MVC 패턴으로 리펙토링 한다
+
 
 ### 추가할 로직
 1. 차량을 입력받는 메서드를 작성
