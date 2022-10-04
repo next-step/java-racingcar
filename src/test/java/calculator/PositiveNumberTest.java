@@ -1,5 +1,6 @@
 package calculator;
 
+import exception.CustomException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -21,8 +22,10 @@ public class PositiveNumberTest {
     @Test
     void 뺄셈() {
         assertThatThrownBy(() -> PositiveNumber.from(-1))
-                .isInstanceOf(RuntimeException.class);
+                .isInstanceOf(CustomException.class)
+                .hasMessage(NumberException.NEGATIVE_NUMBER_BAD_REQUEST.getMessage());
         assertThatThrownBy(() -> PositiveNumber.from("-1"))
-                .isInstanceOf(RuntimeException.class);
+                .isInstanceOf(CustomException.class)
+                .hasMessage(NumberException.NEGATIVE_NUMBER_BAD_REQUEST.getMessage());
     }
 }

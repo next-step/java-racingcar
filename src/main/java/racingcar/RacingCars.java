@@ -1,5 +1,7 @@
 package racingcar;
 
+import exception.CustomException;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -24,7 +26,7 @@ public class RacingCars {
 
     private static void validateNumber(int number) {
         if (number < 0) {
-            throw new RacingCarException(RacingCarErrorCode.CAR_NUMBER_BAD_REQUEST);
+            throw new CustomException(RacingCarErrorCode.CAR_NUMBER_BAD_REQUEST);
         }
     }
 
