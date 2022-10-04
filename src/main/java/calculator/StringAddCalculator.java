@@ -49,10 +49,10 @@ public class StringAddCalculator {
     }
 
     private int sum(Positive[] numbers) {
-        int result = 0;
+        Positive result = new Positive(0);
         for (Positive number: numbers) {
-            result += number.get();
+            result = result.plus(number);
         }
-        return result;
+        return result.get();
     }
 }
