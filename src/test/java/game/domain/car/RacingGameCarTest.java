@@ -1,7 +1,6 @@
 package game.domain.car;
 
 import game.domain.rule.RacingGameRule;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -41,15 +40,6 @@ public class RacingGameCarTest {
         expected = new Location(car.location().getLocation() + racingGameRule.forwardDistance());
         car.forward(racingGameRule, 4);
         assertThat(car.location()).isEqualTo(expected);
-    }
-
-    @DisplayName("자동차 이름을 부여한다 자동차 이름은 5자를 초과할 수 없다.")
-    @Test
-    void checkNameLength() {
-        Assertions.assertAll(
-                () -> assertThat(new RacingGameCar("name").name()).isEqualTo("name"),
-                () -> assertThatThrownBy(() -> new RacingGameCar("overLength")).isInstanceOf(RuntimeException.class)
-        );
     }
 
 }

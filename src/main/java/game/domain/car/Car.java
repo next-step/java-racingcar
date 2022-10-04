@@ -5,13 +5,13 @@ import game.domain.rule.RacingGameRule;
 public abstract class Car {
 
     protected Location location;
-    private String name;
+    private CarName carName;
 
     public Car() {
     }
 
     public Car(String name) {
-        this.name = name;
+        this.carName = new CarName(name);
         this.location = new Location(0);
     }
 
@@ -19,8 +19,8 @@ public abstract class Car {
         return new Location(location);
     }
 
-    public String name() {
-        return name;
+    public CarName carName() {
+        return new CarName(carName);
     }
 
     public abstract void forward(RacingGameRule racingGameRule, int number);
