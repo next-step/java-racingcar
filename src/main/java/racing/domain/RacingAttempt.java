@@ -1,19 +1,12 @@
-package domain;
-
-import domain.strategy.RandomMovingStrategy;
+package racing.domain;
 
 public class RacingAttempt {
 
     private int attempt;
 
-    private RacingAttempt(final String attempt) {
+    public RacingAttempt(final String attempt) {
 
         this.attempt = convert(attempt);
-    }
-
-    public static RacingAttempt from(final String attempt) {
-
-        return new RacingAttempt(attempt);
     }
 
     private int convert(final String attempt) {
@@ -30,22 +23,16 @@ public class RacingAttempt {
     private void validateZero(final int attempt) {
 
         if (attempt == 0) {
-            throw new IllegalArgumentException("입력값은 1 이상이어야 합니다.");
+            throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
         }
     }
 
-    public boolean isAttempt() {
+    public boolean canAttempt() {
 
         return this.attempt > 0;
     }
 
-    public void nextPlay(final RacingCars racingCars) {
-
-        nextAttempt();
-        racingCars.roundPlay(new RandomMovingStrategy());
-    }
-
-    public void nextAttempt() {
+    public void attempt() {
 
         this.attempt--;
     }
