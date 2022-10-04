@@ -32,12 +32,15 @@ public class StringTest {
 
         assertThat(result).isEqualTo("1,2");
     }
+
     @Test
     @DisplayName("대상_문자열의_위치_값을_벗어난_인덱스로_charAt_메소드를_호출하면_StringIndexOutOfBoundsException이_발생한다")
     void charAt() {
         String value = "01234";
 
-        assertThatThrownBy(() -> {value.charAt(5);})
+        assertThatThrownBy(() -> {
+            value.charAt(5);
+        })
             .isInstanceOf(StringIndexOutOfBoundsException.class);
     }
 }
