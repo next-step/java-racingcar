@@ -86,6 +86,8 @@
   - [x] `Position`에 `compareTo` 구현
 ### Name
 - [ ] validation 시 trim 이후 한번에 validate 하도록 수정
+### Position
+- [ ] 음수 값 들어가지 못하도록 validation 로직 추가
 ### Cars
 - [ ] findMaxPositionCars()에서 불변 객체 반환하도록 수정
 ### MovingFactoryType
@@ -94,5 +96,3 @@
 - [ ] 괄호 제거하는 로직 -> `Collections.joining` 으로 개선
 ### CarsTest
 - [ ] `create()`에서 테스트하고자 하는 대상인 `생성`과 실제 테스트인 `move()`의 목적이 일치하지 않는 문제 수정
-### Position 
-- [ ] 음수 값 들어가지 못하도록 validation 로직 추가
