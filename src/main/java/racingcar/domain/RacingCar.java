@@ -34,4 +34,17 @@ public class RacingCar {
     public String getName() {
         return this.name;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RacingCar racingCar = (RacingCar) o;
+        return distance == racingCar.distance && Objects.equals(name, racingCar.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, distance);
+    }
 }
