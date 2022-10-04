@@ -1,6 +1,4 @@
-package racing_car_with_winner;
-
-import static org.junit.jupiter.api.Assertions.*;
+package racing_car_with_winner.model;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

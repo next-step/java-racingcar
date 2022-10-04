@@ -1,4 +1,4 @@
-package racing_car_with_winner;
+package racing_car_with_winner.model;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -7,6 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import racing_car_with_winner.exception.InvalidInputException;
+import racing_car_with_winner.model.CarName;
 
 public class CarNameTest {
 

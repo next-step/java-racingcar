@@ -1,4 +1,4 @@
-package racing_car_with_winner;
+package racing_car_with_winner.view;
 
 public class CarNameInputInterface {
     private String question;
