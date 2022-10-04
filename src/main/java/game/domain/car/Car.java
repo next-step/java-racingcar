@@ -22,6 +22,6 @@ public abstract class Car {
         return name;
     }
 
-    public abstract void forward(RacingGameRule racingGameRule);
+    public abstract void forward(RacingGameRule racingGameRule, int number);
 
 }

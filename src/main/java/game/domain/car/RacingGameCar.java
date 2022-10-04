@@ -20,8 +20,8 @@ public class RacingGameCar extends Car {
     }
 
     @Override
-    public void forward(RacingGameRule racingGameRule) {
-        if (racingGameRule.isForward(racingGameRule.pickRandomNumber())) {
+    public void forward(RacingGameRule racingGameRule, int number) {
+        if (racingGameRule.isForward(number)) {
             forward(racingGameRule.forwardDistance());
         }
     }

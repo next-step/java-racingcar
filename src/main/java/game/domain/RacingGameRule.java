@@ -5,7 +5,6 @@ import java.util.Random;
 public class RacingGameRule {
 
     private static final int FORWARD_DISTANCE = 1;
-    private static final Random RANDOM = new Random();
     private int canForwardNumber;
     private int bound;
 
@@ -30,8 +29,6 @@ public class RacingGameRule {
         return FORWARD_DISTANCE;
     }
 
-    public int pickRandomNumber() {
-        return RANDOM.nextInt(bound);
-    }
+
 
 }

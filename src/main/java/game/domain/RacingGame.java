@@ -3,11 +3,15 @@ package game.domain;
 import game.domain.car.Car;
 import game.io.output.RacingGameOutput;
 
+import java.util.Random;
+
 public class RacingGame {
 
     private RacingGameCarList racingGameCarList;
     private RacingGameRule racingGameRule;
     private int round;
+    private static final Random RANDOM = new Random();
+
 
     public RacingGame(RacingGameRule racingGameRule, RacingGameCarList cars, int round) {
         this.racingGameRule = racingGameRule;
@@ -25,7 +29,7 @@ public class RacingGame {
 
     private void progressRound(RacingGameCarList racingGameCarList) {
         for (Car car : racingGameCarList.cars()) {
-            car.forward(racingGameRule);
+            car.forward(racingGameRule, pickRandomNumber());
         }
         RacingGameOutput.printCarsStatus(racingGameCarList);
         RacingGameOutput.finishRound();
@@ -37,6 +41,10 @@ public class RacingGame {
 
     public int round() {
         return round;
+    }
+
+    public int pickRandomNumber() {
+        return RANDOM.nextInt(racingGameRule.bound());
     }
 
 }

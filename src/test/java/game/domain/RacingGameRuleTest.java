@@ -27,6 +27,6 @@ public class RacingGameRuleTest {
         RacingGameRule racingGameRule = new RacingGameRule(4, 6);
         RacingGame racingGame = new RacingGame(racingGameRule, RacingGameCarList.makeRacingGameCars(3), 3);
 
-        org.assertj.core.api.Assertions.assertThat(racingGameRule.pickRandomNumber()).isBetween(0, racingGameRule.bound());
+        org.assertj.core.api.Assertions.assertThat(racingGame.pickRandomNumber()).isBetween(0, racingGameRule.bound());
     }
 }
