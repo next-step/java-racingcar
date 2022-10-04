@@ -20,6 +20,7 @@ class PositiveTest {
     @DisplayName("음수값 예외")
     void NotPositiveException() {
         Assertions.assertThatThrownBy(() -> new PositiveNumber(-1))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("Positive는 양수만 들어올 수 있습니다.");
     }
 }
