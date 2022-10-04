@@ -1,13 +1,13 @@
 package racingcar;
 
 public class Condition {
-	private static ConditionStrategy conditionStrategy;
+	private ConditionStrategy conditionStrategy;
 
 	public Condition(ConditionStrategy conditionStrategy) {
 		this.conditionStrategy = conditionStrategy;
 	}
 
-	public static boolean validInput(String input) {
+	public boolean validInput(String input) {
 		return conditionStrategy.validInput(input);
 	}
 }
