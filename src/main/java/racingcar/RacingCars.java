@@ -16,7 +16,7 @@ public class RacingCars {
         validateNumber(number);
         this.cars = new ArrayList<>();
         for (int i = 0; i < number; i++) {
-            cars.add(Car.from());
+            cars.add(Car.from(0));
         }
     }
 
