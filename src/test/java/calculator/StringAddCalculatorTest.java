@@ -4,7 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.NullSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -12,8 +12,7 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 public class StringAddCalculatorTest {
     @ParameterizedTest
-    @NullSource
-    @ValueSource(strings = {""})
+    @NullAndEmptySource
     @DisplayName("빈 값이나 null을 calculate했을 때 0을 반환한다")
     void null_or_space(String input) {
         int result = new StringAddCalculator(input).calculate();
@@ -42,7 +41,7 @@ public class StringAddCalculatorTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"1,2 3", "5,4 9", "11,63 74"}, delimiter = ' ')
+    @CsvSource(value = {"1,2 3", "5,4 9", "11,63 74", "4,2,3 9", "1,5,2,3,4 15"}, delimiter = ' ')
     @DisplayName(", 구분자로 여러 개의 숫자 입력")
     void multi_number_(String input, int expected) {
         int result = new StringAddCalculator(input).calculate();
