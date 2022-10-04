@@ -2,9 +2,9 @@ package racingcar.domain;
 
 import racingcar.strategy.MovingStrategy;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Cars {
 
@@ -19,17 +19,11 @@ public class Cars {
     }
 
     protected static List<Car> createCars(String[] carNames) {
-        final List<Car> cars = new ArrayList<>();
-        for (String carName : carNames) {
-            cars.add(new Car(carName));
-        }
-        return cars;
+        return Stream.of(carNames).map(Car::new).collect(Collectors.toList());
     }
 
     public void move(MovingStrategy movingStrategy) {
-        for (Car car : cars) {
-            car.move(movingStrategy);
-        }
+        cars.forEach(car -> car.move(movingStrategy));
     }
 
     public List<PlayResult> getPlayResults() {

@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.Objects;
+import java.util.stream.Stream;
 
 public class Position {
 

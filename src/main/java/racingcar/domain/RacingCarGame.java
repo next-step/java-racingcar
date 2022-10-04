@@ -4,6 +4,7 @@ import racingcar.strategy.MovingStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingCarGame {
 
@@ -20,13 +21,9 @@ public class RacingCarGame {
     }
 
     private static List<PlayResult> findWinners(List<PlayResult> playResults, Position maxPosition) {
-        List<PlayResult> winners = new ArrayList<>();
-        for (PlayResult playResult : playResults) {
-            if (playResult.isPositionEquals(maxPosition)) {
-                winners.add(playResult);
-            }
-        }
-        return winners;
+        return playResults.stream()
+                .filter(playResult -> playResult.isPositionEquals(maxPosition))
+                .collect(Collectors.toList());
     }
 
     private static Position getMaxPosition(List<PlayResult> playResults) {

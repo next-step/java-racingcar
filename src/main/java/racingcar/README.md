@@ -68,7 +68,7 @@
 
 ## Step5 리팩토링 요구사항
 ### 공통
-- [ ] Stream 활용 가능한 부분 찾고 적극 적용하기
+- [x] Stream 활용 가능한 부분 찾고 적극 적용하기
 ### PlayResult
 - [x] Car과 CarDto를 분리하기 (PlayResult를 CarDto로 사용)
 - [x] 구조 변경에 맞게 나머지 코드 리팩토링
