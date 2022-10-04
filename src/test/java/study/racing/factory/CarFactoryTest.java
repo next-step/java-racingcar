@@ -20,14 +20,6 @@ public class CarFactoryTest {
 
     public MovingCondition movingCondition = new DefaultMovingCondition();
 
-    @ParameterizedTest
-    @ValueSource(ints = {3, 6})
-    @DisplayName("CreateCar는 해당하는 숫자만큼 차량을 생성한다.")
-    void isCreateCars_ShouldReturnCarsAccordingToCount(int count) {
-        List<Car> cars = CarFactory.createCars(count, movingCondition);
-        assertThat(cars).hasSize(count);
-    }
-
     @Test
     @DisplayName("CreateCar는 해당하는 이름을 가진 차량을 생성한다.")
     void isCreateCars_ShouldReturnCarsAccordingToName() {

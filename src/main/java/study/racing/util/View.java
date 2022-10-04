@@ -33,13 +33,11 @@ public class View {
     public static class InputView {
         private static final Scanner scanner = new Scanner(System.in);
 
-        public static int inputInt(String message) {
-            System.out.println(message);
+        public static int inputInt() {
             return scanner.nextInt();
         }
 
-        public static String inputString(String message) {
-            System.out.println(message);
+        public static String inputString() {
             return scanner.nextLine();
         }
     }

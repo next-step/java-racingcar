@@ -9,12 +9,6 @@ import java.util.stream.IntStream;
 
 public class CarFactory {
 
-    public static List<Car> createCars(int count, MovingCondition movingCondition) {
-        return IntStream.range(0, count)
-                .mapToObj(i -> new Car(movingCondition))
-                .collect(Collectors.toList());
-    }
-
     public static List<Car> createCars(int count, String[] names, MovingCondition movingCondition) {
         return IntStream.range(0, count)
                 .mapToObj(i -> new Car(names[i], movingCondition))

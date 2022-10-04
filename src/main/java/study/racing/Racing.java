@@ -12,14 +12,17 @@ import java.util.stream.Collectors;
 public class Racing {
 
     public static void main(String[] args) {
-        String[] carNames = View.inputView.inputString("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).").split(",");
-        final int carCount = carNames.length;
-        final int loopCount = View.inputView.inputInt("시도할 회수는 몇 회 인가요?");
+        View.outputView.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        String[] carNames = View.inputView.inputString().split(",");
 
+        View.outputView.println("시도할 회수는 몇 회 인가요?");
+        final int loopCount = View.inputView.inputInt();
+
+        final int carCount = carNames.length;
         List<Car> cars = CarFactory.createCars(carCount, carNames, new RandomMovingCondition());
 
         for (int i = 0; i < loopCount; i++) {
-            cars.stream().forEach(car -> {
+            cars.forEach(car -> {
                 car.move(RandomNumberGenerator.getInstance().generate());
             });
 
@@ -38,7 +41,7 @@ public class Racing {
     }
 
     private static void printResult(List<Car> cars) {
-        cars.stream().forEach(car -> {
+        cars.forEach(car -> {
             View.outputView.printRepeatChar(car.getName() + " : ", '-', car.getDistance());
         });
 

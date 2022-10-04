@@ -7,12 +7,13 @@ import java.util.Objects;
 
 public class Car implements Comparable<Car> {
     public static final int MAXIMUM_NAME_LENGTH = 5;
-    private String name;
+    private final String name;
+    private final MovingCondition movingCondition;
     private Integer distance = 0;
-    private MovingCondition movingCondition;
+
 
     public Car() {
-     this(RandomNameGenerator.getInstance().generate(), new DefaultMovingCondition());
+        this(RandomNameGenerator.getInstance().generate(), new DefaultMovingCondition());
     }
 
     public Car(MovingCondition movingCondition) {
