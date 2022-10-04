@@ -6,14 +6,14 @@ import org.junit.jupiter.api.Test;
 public class LocationTest {
 
     @Test
-    void create(){
+    void create() {
         Location location = new Location(5);
 
         Assertions.assertThat(location).isEqualTo(new Location(5));
     }
 
     @Test
-    void valid(){
+    void valid() {
         Assertions.assertThatThrownBy(() -> new Location(-1)).isInstanceOf(IllegalArgumentException.class);
     }
 }

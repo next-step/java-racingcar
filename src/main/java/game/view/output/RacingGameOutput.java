@@ -36,7 +36,7 @@ public class RacingGameOutput {
 
     public static void endGame(RacingGameCarList racingGameCarList) {
         StringBuilder result = new StringBuilder();
-        for(int i = 0; i < racingGameCarList.cars().size() - 1; i++){
+        for (int i = 0; i < racingGameCarList.cars().size() - 1; i++) {
             result.append(racingGameCarList.cars().get(i).carName()).append(WINNER_SEPARATOR);
         }
         result.append(racingGameCarList.getLast().carName());

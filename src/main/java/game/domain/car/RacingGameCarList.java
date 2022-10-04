@@ -36,8 +36,8 @@ public class RacingGameCarList {
         return new RacingGameCarList(racingGameCarList);
     }
 
-    public RacingGameCar getLast(){
-        return new RacingGameCar(cars.get(cars.size()-1));
+    public RacingGameCar getLast() {
+        return new RacingGameCar(cars.get(cars.size() - 1));
     }
 
     public RacingGameCarList winners() {
@@ -53,7 +53,7 @@ public class RacingGameCarList {
     }
 
     private static void isWinner(Location winnerLocation, List<RacingGameCar> result, RacingGameCar car) {
-        if(car.location().equals(winnerLocation)){
+        if (car.location().equals(winnerLocation)) {
             result.add(car);
         }
     }
@@ -61,7 +61,7 @@ public class RacingGameCarList {
     private Location winnerLocation() {
         int max = Integer.MIN_VALUE;
         for (RacingGameCar car : cars()) {
-            max = Math.max(car.location().getLocation(),max);
+            max = Math.max(car.location().getLocation(), max);
         }
         return new Location(max);
     }

@@ -9,7 +9,7 @@ public class Round {
     public int round;
 
     public Round(int round) {
-        if(round < ROUND_MINIMUM){
+        if (round < ROUND_MINIMUM) {
             throw new IllegalArgumentException(ROUND_BOUND_EXCEPTION);
         }
         this.round = round;
@@ -19,7 +19,7 @@ public class Round {
         this.round = round.getRound();
     }
 
-    public int getRound(){
+    public int getRound() {
         return round;
     }
 

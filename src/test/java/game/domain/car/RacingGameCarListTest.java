@@ -19,7 +19,7 @@ public class RacingGameCarListTest {
 
     @DisplayName("자동차 중 위치 값이 가장 높은 자동차를 우승자로 반환한다.")
     @Test
-    void winners(){
+    void winners() {
         RacingGameCar car1 = new RacingGameCar("1");
         car1.forward(4);
         RacingGameCar car2 = new RacingGameCar("2");
@@ -29,7 +29,7 @@ public class RacingGameCarListTest {
         RacingGameCarList racingGameCars = new RacingGameCarList(Arrays.asList(car1, car2, car3));
 
         assertAll(
-                () -> assertThat(racingGameCars.winners().cars()).containsOnly(car1,car3),
+                () -> assertThat(racingGameCars.winners().cars()).containsOnly(car1, car3),
                 () -> assertThat(racingGameCars.winners().cars()).doesNotContain(car2)
         );
     }

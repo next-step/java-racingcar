@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         RacingGameController racingGameController
                 = new RacingGameController(
-                        4,
+                4,
                 10,
                 RacingGameInput.inputCarNames(),
                 RacingGameInput.inputNumberOfRound());
