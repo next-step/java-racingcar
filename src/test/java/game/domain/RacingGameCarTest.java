@@ -29,6 +29,20 @@ public class RacingGameCarTest {
         assertThat(car.location()).isEqualTo(expected);
     }
 
+    @DisplayName(value = "RacingGameRule과 숫자가 주어지고 RacingGameRule의 이동 가능한 숫자보다 큰 값이 주어지면 RacingGameRule의 이동 거리만큼 이동한다.")
+    @Test
+    void forwardRacingGameRule() {
+        RacingGameRule racingGameRule = new RacingGameRule(4,10);
+
+        int expected = car.location();
+        car.forward(racingGameRule,3);
+        assertThat(car.location()).isEqualTo(expected);
+
+        expected = car.location() + racingGameRule.forwardDistance();
+        car.forward(racingGameRule,4);
+        assertThat(car.location()).isEqualTo(expected);
+    }
+
     @DisplayName("자동차 이름을 부여한다 자동차 이름은 5자를 초과할 수 없다.")
     @Test
     void checkNameLength() {
