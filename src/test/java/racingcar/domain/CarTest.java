@@ -38,4 +38,13 @@ public class CarTest {
 
 		assertThat(car.getPosition()).isOne();
 	}
+
+	@Test
+	@DisplayName("이름이 있는 차를 생성한다")
+	void construct_car_with_name() {
+		String name = "이름";
+		Car car = new Car(name);
+
+		assertThat(car.getName()).isEqualTo(name);
+	}
 }
