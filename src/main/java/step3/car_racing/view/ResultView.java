@@ -4,6 +4,8 @@ import step3.car_racing.model.Car;
 import step3.car_racing.model.Cars;
 import step3.car_racing.service.Racing;
 
+import java.util.List;
+
 public class ResultView {
 
     private ResultView() {
@@ -11,13 +13,13 @@ public class ResultView {
         throw new AssertionError();
     }
 
-    public static void result(int carSize, int racingSize) {
+    public static void result(List<String> carNames, int racingSize) {
 
         System.out.println();
 
         System.out.println("실행결과");
 
-        Cars cars = new Cars(carSize);
+        Cars cars = new Cars(carNames);
 
         racing(racingSize, cars);
     }

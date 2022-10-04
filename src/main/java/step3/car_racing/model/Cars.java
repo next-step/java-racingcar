@@ -7,8 +7,8 @@ public class Cars {
 
     private final List<Car> carList = new ArrayList<>();
 
-    public Cars(Integer carSize) {
-        for (int i = 0; i < carSize; i++) {
+    public Cars(List<String> carNameList) {
+        for (int i = 0; i < carNameList.size(); i++) {
             this.carList.add(new Car());
         }
     }

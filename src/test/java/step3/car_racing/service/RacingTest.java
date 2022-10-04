@@ -1,7 +1,6 @@
 package step3.car_racing.service;
 
 import org.junit.jupiter.api.Test;
-import step3.car_racing.model.Cars;
 
 class RacingTest {
 
@@ -10,10 +9,10 @@ class RacingTest {
 
         // given
         int carSize = 5;
-        Cars cars = new Cars(carSize);
+//        Cars cars = new Cars(carSize);
 
         // when
-        Racing racing = new Racing(cars);
+//        Racing racing = new Racing(cars);
 
         // then
 
