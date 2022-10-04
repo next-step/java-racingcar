@@ -9,6 +9,10 @@ public class Car {
         return distance;
     }
 
+    public void setDistance() {
+        this.distance++;
+    }
+
     public void move(int randomValue) {
         if (MOVE_CONDITION <= randomValue) {
             this.distance++;
