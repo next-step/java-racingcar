@@ -16,10 +16,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RacingCarGameTest {
     private static final String CAR_NAMES = "pobi,crong,honux";
     private static final int TRY_COUNT = 5;
-    List<Car> carValues = new ArrayList<>();
+
+    private List<Car> carValues;
 
     @BeforeEach
     void setUp() {
+        carValues = new ArrayList<>();
         carValues.add(new Car("pobi", 5));
         carValues.add(new Car("crong", 4));
         carValues.add(new Car("honux", 5));
