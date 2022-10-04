@@ -6,12 +6,12 @@ public class Car {
     private final CarName carName;
     private final MoveResult moveResult;
 
-    public Car(CarName carName) {
+    public Car(final CarName carName) {
         this.carName = carName;
         this.moveResult = new MoveResult();
     }
 
-    public Car(CarName carName, MoveResult moveResult) {
+    public Car(final CarName carName, final MoveResult moveResult) {
         this.carName = carName;
         this.moveResult = moveResult;
     }

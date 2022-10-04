@@ -7,7 +7,7 @@ import racing_car_with_winner.exception.InvalidInputException;
 public class CarName {
     private String value;
 
-    public CarName(String value) {
+    public CarName(final String value) {
         if (value == null || value.isBlank()) {
             throw new InvalidInputException("자동차의 이름은 공백을 가질 수 없습니다");
         }

@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 public class CarFactory {
     private final CarNameInput carNameInput;
 
-    public CarFactory(CarNameInput carNameInput) {
+    public CarFactory(final CarNameInput carNameInput) {
         this.carNameInput = carNameInput;
     }
 

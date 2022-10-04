@@ -4,7 +4,7 @@ public class CarNameInput {
     private static final String DELIMITER = ",";
     private String input;
 
-    public CarNameInput(String input) {
+    public CarNameInput(final String input) {
         this.input = input;
     }
 

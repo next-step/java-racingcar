@@ -9,7 +9,7 @@ public class MoveResult {
         this.moveCount = 0;
     }
 
-    public MoveResult(int moveCount) {
+    public MoveResult(final int moveCount) {
         if (moveCount < 0) {
             throw new IllegalArgumentException("전진 결과는 음수가 될 수 없습니다");
         }
