@@ -1,4 +1,4 @@
-package racing.model;
+package racing.domain;
 
 import org.junit.jupiter.api.Test;
 
@@ -8,13 +8,13 @@ public class CarPositionTest {
     @Test
     void 처음_시작은_1이다() {
         CarPosition carPosition = new CarPosition();
-        assertThat(carPosition.getPosition()).isEqualTo(1);
+        assertThat(carPosition).isEqualTo(new CarPosition(1));
     }
 
     @Test
     void 한번_이동하면_입력된_값을_이동한다() {
         CarPosition carPosition = new CarPosition();
-        carPosition.move(1);
-        assertThat(carPosition.getPosition()).isEqualTo(2);
+        carPosition.move();
+        assertThat(carPosition).isEqualTo(new CarPosition(2));
     }
 }

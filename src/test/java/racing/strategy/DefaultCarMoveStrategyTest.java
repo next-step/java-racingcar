@@ -3,7 +3,7 @@ package racing.strategy;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racing.model.Car;
+import racing.domain.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

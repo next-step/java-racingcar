@@ -1,4 +1,4 @@
-package racing.model;
+package racing.domain;
 
 import org.junit.jupiter.api.Test;
 
@@ -21,7 +21,7 @@ public class CarTest {
     @Test
     void 기본_자동차가_한번_움직이면_위치가_2가되어야한다() {
         Car car = new Car("test");
-        car.move();
+        car.move(4);
         assertThat(car).isEqualTo(new Car("test", 2));
     }
 
