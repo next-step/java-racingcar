@@ -12,7 +12,7 @@ public class RacingCarApplication {
     private static final Play PLAY = new Play();
 
     public static void main(String[] args) {
-        String[] names = INPUT_VIEW.input();
+        List<String> names = INPUT_VIEW.input();
         int count = INPUT_VIEW.count();
 
         PLAY.playGame(names, count);

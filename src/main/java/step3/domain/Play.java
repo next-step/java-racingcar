@@ -10,7 +10,7 @@ public class Play {
     private static final RandomNumber RANDOM_NUMBER = new RandomNumber();
     private static final Winner WINNER = new Winner();
     
-    public void playGame(String[] names, int count) {
+    public void playGame(List<String> names, int count) {
         List<Car> carList = createCarList(names);
         for (int i = 0; i < count; i++) {
             run(carList);
@@ -20,7 +20,7 @@ public class Play {
         }
     }
 
-    private List<Car> createCarList(String[] names) {
+    private List<Car> createCarList(List<String> names) {
         Cars cars = new Cars(names);
         return cars.getCarList();
     }
