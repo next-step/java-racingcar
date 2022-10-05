@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.domain;
+
+import racingcar.domain.ConditionStrategy;
 
 public class NumberCondition implements ConditionStrategy {
 	private static final char ASCII_ZERO = 48;

@@ -1,6 +1,8 @@
-package racingcar;
+package racingcar.util;
 
 import java.util.List;
+
+import racingcar.domain.Car;
 
 public class Print {
 	public static void participantsOfRacing() {

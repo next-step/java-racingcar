@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.domain;
+
+import racingcar.domain.ConditionStrategy;
 
 public class NameCondition implements ConditionStrategy {
 	private final int MAX_OF_NAME = 5;
