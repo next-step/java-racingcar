@@ -3,24 +3,21 @@ package racingcar.domain;
 public class Car {
     public static final int MINIMUM_MOVE_VALUE = 4;
 
-    private final int location;
+    private final Name name;
+    private Location location;
 
-    public Car() {
-        this.location = 0;
+    public Car(Name name) {
+        this.name = name;
+        this.location = new Location();
     }
 
-    public Car(int location) {
-        this.location = location;
+    public Location getLocation() {
+        return location;
     }
 
-    public int getLocation() {
-        return this.location;
-    }
-
-    public Car move(Generator generator) {
+    public void move(Generator generator) {
         if (generator.nextValue() >= MINIMUM_MOVE_VALUE) {
-            return new Car(this.location + 1);
+            location = location.next();
         }
-        return new Car(this.location);
     }
 }

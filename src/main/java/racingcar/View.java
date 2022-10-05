@@ -2,6 +2,7 @@ package racingcar;
 
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.domain.Location;
 
 import java.util.List;
 import java.util.Scanner;
@@ -30,13 +31,13 @@ public class View {
 
     private void printTrial(Cars cars) {
         for (Car car : cars.getCars()) {
-            printLocation(car);
+            printLocation(car.getLocation());
             System.out.println();
         }
     }
 
-    private void printLocation(Car car) {
-        for (int i = 0; i < car.getLocation(); i++) {
+    private void printLocation(Location location) {
+        for (int i = 0; i < location.getLocation(); i++) {
             System.out.print("-");
         }
     }

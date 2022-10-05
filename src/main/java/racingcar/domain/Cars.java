@@ -11,15 +11,28 @@ public class Cars {
         this.cars = new ArrayList<>(cars);
     }
 
-    public Cars move(Generator generator) {
-        List<Car> moveCars = new ArrayList<>();
+    public void move(Generator generator) {
         for (Car car : cars) {
-            moveCars.add(car.move(generator));
+            car.move(generator);
         }
-        return new Cars(moveCars);
     }
 
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
+    }
+
+    public static Cars create(String names) {
+        validateIsNullOrEmpty(names);
+        List<Car> cars = new ArrayList<>();
+        for (String name : StringUtil.splitNames(names)) {
+            cars.add(new Car(new Name(name)));
+        }
+        return new Cars(cars);
+    }
+
+    private static void validateIsNullOrEmpty(String names) {
+        if (names == null || names.length() == 0) {
+            throw new IllegalArgumentException("자동차 이름을 입력해주세요.");
+        }
     }
 }

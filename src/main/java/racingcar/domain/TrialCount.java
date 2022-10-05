@@ -23,7 +23,7 @@ public class TrialCount {
         Cars cars = initializedCars;
         List<Cars> trials = new ArrayList<>();
         for (int i = 0; i < count; i++) {
-            cars = cars.move(generator);
+            cars.move(generator);
             trials.add(cars);
         }
         return trials;
