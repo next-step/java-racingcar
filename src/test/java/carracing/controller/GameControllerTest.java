@@ -1,22 +1,16 @@
-package carracing.model;
+package carracing.controller;
 
 import org.junit.jupiter.api.Test;
 
-import carracing.model.Cars;
-import carracing.controller.Game;
 import carracing.view.ConsoleGameDashBoard;
 import carracing.view.RacingCondition;
 
-public class GameTest {
+public class GameControllerTest {
     @Test
     public void play_게임을시작한다() {
         RacingCondition racingCondition = createRacingCondition(3, 3);
-
-        Cars cars = new Cars(racingCondition.carCount());
-
-        Game game = new Game(racingCondition.attemptCount(), cars, new ConsoleGameDashBoard());
-
-        game.play();
+        GameController gameController = new GameController(new ConsoleGameDashBoard());
+        gameController.play(racingCondition);
     }
 
     private RacingCondition createRacingCondition(Integer carCount, Integer attemptCount) {
