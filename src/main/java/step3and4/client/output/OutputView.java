@@ -1,15 +1,10 @@
 package step3and4.client.output;
 
+import step3and4.game.car.Cars;
+
 @FunctionalInterface
 public interface OutputView {
 
-    void print(int count);
+    void print(Cars cars);
 
-    class Fake implements OutputView {
-
-        @Override
-        public void print(int count) {
-            System.out.println("(호출완료) count = " + count);
-        }
-    }
 }
