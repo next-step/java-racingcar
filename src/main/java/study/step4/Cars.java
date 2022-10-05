@@ -23,6 +23,10 @@ public class Cars {
 		return this.cars.get(index);
 	}
 
+	public int size() {
+		return this.cars.size();
+	}
+
 	public Cars getAllByPosition(int position) {
 		return new Cars(this.cars.stream()
 			.filter(car -> car.getPosition() == position)
@@ -42,7 +46,7 @@ public class Cars {
 
 	public void printAll() {
 		this.cars.forEach(car ->
-				System.out.println(car.getName() + ":" + car.getRepeater()));
+				System.out.println(car.getName() + " : " + car.getRepeater()));
 	}
 
 	public void printName() {

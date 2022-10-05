@@ -14,10 +14,9 @@ public class Car {
 		}
 	}
 
-	public String setName(String name) {
+	public void setName(String name) {
 		checkName(name);
 		this.name = name;
-		return name;
 	}
 
 	public String getName() {
