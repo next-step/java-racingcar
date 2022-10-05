@@ -66,16 +66,17 @@ public class CarsTest {
 	}
 
 	@Test
-	@DisplayName("우승자들을 반환한다")
-	void return_winners() {
+	@DisplayName("우승자들 이름을 반환한다")
+	void return_winner_names() {
 		List<Car> expectedWinners = newCarList.subList(1, 3);
 		Cars winningCars = new Cars(expectedWinners);
+		List<String> expectedNames = winningCars.getNames();
 		winningCars.move(moveStrategyMovable);
 
 		Cars cars = new Cars(newCarList);
-		List<Car> winners = cars.findWinners();
+		List<String> winnerNames = cars.findWinnerNames();
 
-		assertThat(winners).containsAll(expectedWinners);
+		assertThat(winnerNames).containsAll(expectedNames);
 	}
 
 	private List<Integer> getPositions(List<Car> carList) {

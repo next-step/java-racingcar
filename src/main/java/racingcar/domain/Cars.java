@@ -35,10 +35,11 @@ public class Cars {
 		}
 	}
 
-	public List<Car> findWinners() {
+	public List<String> findWinnerNames() {
 		Car maxCar = getMaxCar();
 		return cars.stream()
 			.filter(car -> car.equals(maxCar))
+			.map(Car::getName)
 			.collect(Collectors.toList());
 	}
 
