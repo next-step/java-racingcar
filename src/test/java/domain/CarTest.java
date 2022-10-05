@@ -13,20 +13,28 @@ public class CarTest {
     protected static final int INCREASED_DISTANCE = 1;
 
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9})
-    @DisplayName("4 이상의 숫자가 주어졌을 때 현재 자동차의 위치값이 증가하는지를 확인")
-    void carMovingTest(int randomNum) {
+    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
+    @DisplayName("자동차가 이동하는 경우 (4이상의 값만 주어짐)")
+    void carMovingForwardTest(int randomNum) {
 
-        Car testCar = new Car("testCar");
+        Car testCar = Car.of("testCar");
 
         testCar.move(randomNum);
 
-        if (randomNum >= 4) {
-            assertThat(testCar.getCurrentLocation()).isEqualTo(INCREASED_DISTANCE);
-        } else {
-            assertThat(testCar.getCurrentLocation()).isEqualTo(INIT_LOCATION);
-        }
+        assertThat(testCar.getCurrentLocation()).isEqualTo(INCREASED_DISTANCE);
     }
 
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    @DisplayName("자동차가 이동하지 않는 경우 (4미만의 값만 주어짐)")
+    void carMovingStopTest(int randomNum) {
+
+        Car testCar = Car.of("testCar");
+
+        testCar.move(randomNum);
+
+        assertThat(testCar.getCurrentLocation()).isEqualTo(INIT_LOCATION);
+
+    }
 
 }

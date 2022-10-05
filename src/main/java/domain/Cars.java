@@ -15,7 +15,7 @@ public class Cars {
 
     public List<Car> createInitCarList(List<String> carNames) {
         return carNames.stream()
-            .map(Car::createCarWithName)
+            .map(Car::of)
             .collect(Collectors.toList());
     }
 

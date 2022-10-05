@@ -20,15 +20,15 @@ class CarRaceTest {
     protected static String[] testCarNames = {"test1", "test2", "test3"};
 
     protected static Car testCar1() {
-        return new Car("test1");
+        return Car.of("test1");
     }
 
     protected static Car testCar2() {
-        return new Car("test2");
+        return Car.of("test2");
     }
 
     protected static Car testCar3() {
-        return new Car("test3");
+        return Car.of("test3");
     }
 
     private Cars cars;

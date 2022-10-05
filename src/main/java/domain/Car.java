@@ -2,17 +2,16 @@ package domain;
 
 public class Car {
 
+    private static final int MIN_LIMIT_NUMBER = 4;
     private final String name;
     private int currentLocation;
 
-    private static final int MIN_LIMIT_NUMBER = 4;
-
-    public Car(String name) {
+    private Car(String name) {
         this.name = name;
         this.currentLocation = 0;
     }
 
-    public static Car createCarWithName(String carName) {
+    public static Car of(String carName) {
         return new Car(carName);
     }
 
@@ -22,10 +21,9 @@ public class Car {
         }
     }
 
-    public boolean isMovingForward(int randomNumber) {
+    private boolean isMovingForward(int randomNumber) {
         return randomNumber >= MIN_LIMIT_NUMBER;
     }
-
 
     public String getCarName() {
         return name;
@@ -34,5 +32,6 @@ public class Car {
     public int getCurrentLocation() {
         return currentLocation;
     }
+
 
 }
