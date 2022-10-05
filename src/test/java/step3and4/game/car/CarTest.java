@@ -1,5 +1,6 @@
 package step3and4.game.car;
 
+import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step3and4.client.number.Number;
@@ -34,5 +35,34 @@ class CarTest {
         assertThat(sut).hasToString("12345 : -");
     }
 
-}
+    @Test
+    @DisplayName("자동차의 이름이 5글자를 초과하면 예외가 발생한다.")
+    void d() {
+        final Car sut = new Car(new Position(1), new Number.Fake(3), new Name("123456"));
 
+        verifyCarNameLengthException(sut).assertAll();
+    }
+
+    private SoftAssertions verifyCarNameLengthException(Car sut) {
+        SoftAssertions softAssertions = new SoftAssertions();
+
+        softAssertions.assertThatThrownBy(() -> sut.toString())
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessage("이름은 5글자를 초과할 수 없다.");
+
+        softAssertions.assertThatThrownBy(() -> sut.equals(""))
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessage("이름은 5글자를 초과할 수 없다.");
+
+        softAssertions.assertThatThrownBy(() -> sut.hashCode())
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessage("이름은 5글자를 초과할 수 없다.");
+
+        softAssertions.assertThatThrownBy(() -> sut.movedCar())
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessage("이름은 5글자를 초과할 수 없다.");
+
+        return softAssertions;
+    }
+
+}
