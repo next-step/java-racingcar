@@ -24,6 +24,8 @@ public class Name {
 
     @Override
     public boolean equals(Object o) {
+        verifyLengthMustNotExceedFive();
+
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Name name = (Name) o;
@@ -32,6 +34,8 @@ public class Name {
 
     @Override
     public int hashCode() {
+        verifyLengthMustNotExceedFive();
+
         return Objects.hash(value);
     }
 
