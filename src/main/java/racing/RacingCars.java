@@ -6,7 +6,7 @@ import java.util.stream.IntStream;
 
 public class RacingCars {
 
-    private List<RacingCar> racingCars;
+    private final List<RacingCar> racingCars;
 
     private RacingCars(final int carCount) {
         racingCars = IntStream.range(0, carCount)
@@ -28,13 +28,5 @@ public class RacingCars {
 
     public List<RacingCar> getRacingCars() {
         return racingCars;
-    }
-
-    public void setRacingCars(List<RacingCar> racingCars) {
-        this.racingCars = racingCars;
-    }
-
-    public RacingCar getCar(final int index) {
-        return racingCars.get(index);
     }
 }
