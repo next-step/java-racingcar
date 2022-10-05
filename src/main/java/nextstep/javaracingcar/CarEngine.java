@@ -1,5 +1,5 @@
 package nextstep.javaracingcar;
 
 public interface CarEngine {
-    PositiveNumber work();
+    Distance work();
 }

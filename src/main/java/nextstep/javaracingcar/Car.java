@@ -2,12 +2,12 @@ package nextstep.javaracingcar;
 
 public class Car {
     private final String name;
-    private PositiveNumber distance;
+    private Distance distance;
     private final CarEngine engine;
 
     public Car(final String name, final CarEngine engine) {
         this.name = name;
-        this.distance = PositiveNumber.ZERO;
+        this.distance = Distance.ZERO;
         this.engine = engine;
     }
 

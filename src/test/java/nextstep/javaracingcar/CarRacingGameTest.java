@@ -14,12 +14,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarRacingGameTest {
 
-    private final CarEngine ONE_MOVING_ENGINE = () -> PositiveNumber.ONE;
+    private final CarEngine ONE_MOVING_ENGINE = () -> Distance.ONE;
 
     @DisplayName("게임을 시작시 자동차수와 시도할 횟수를 입력 받는다.(0 보다 크거나 같다)")
     @Test
     public void spec01() {
-        final CarEngine DUMMY_ENGINE = () -> PositiveNumber.ZERO;
+        final CarEngine DUMMY_ENGINE = () -> Distance.ZERO;
         final CarRacingGame carRacingGame = new CarRacingGame(from(1), from(1), DUMMY_ENGINE);
         assertThat(carRacingGame).isNotNull();
     }
@@ -57,11 +57,11 @@ class CarRacingGameTest {
             final List<CarDashboard> result = carRacingGame.runRound();
             roundCounter++;
             assertThat(result).hasSize(carCount);
-            assertThat(result).containsAll(dashboards(carCount, from(roundCounter)));
+            assertThat(result).containsAll(dashboards(carCount, new Distance(roundCounter)));
         }
     }
 
-    private List<CarDashboard> dashboards(final int carCount, final PositiveNumber distance) {
+    private List<CarDashboard> dashboards(final int carCount, final Distance distance) {
         final List<CarDashboard> dashboards = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
             dashboards.add(new CarDashboard(String.valueOf(i), distance));

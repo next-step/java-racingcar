@@ -5,14 +5,14 @@ import java.util.Objects;
 
 public class CarDashboard {
     private final String name;
-    private final PositiveNumber distance;
+    private final Distance distance;
 
-    public CarDashboard(final String name, final PositiveNumber distance) {
+    public CarDashboard(final String name, final Distance distance) {
         this.name = name;
         this.distance = distance;
     }
 
-    public PositiveNumber distance() {
+    public Distance distance() {
         return this.distance;
     }
 

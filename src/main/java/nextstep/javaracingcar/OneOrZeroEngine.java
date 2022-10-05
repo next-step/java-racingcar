@@ -14,11 +14,11 @@ public class OneOrZeroEngine implements CarEngine {
     }
 
     @Override
-    public PositiveNumber work() {
+    public Distance work() {
         if (random.getAsInt() >= base) {
-            return PositiveNumber.ONE;
+            return Distance.ONE;
         }
 
-        return PositiveNumber.ZERO;
+        return Distance.ZERO;
     }
 }
