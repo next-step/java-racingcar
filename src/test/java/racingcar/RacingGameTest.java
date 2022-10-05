@@ -12,7 +12,7 @@ import racingcar.strategy.MovingStrategy;
 
 class RacingGameTest {
 
-    List<String> names;
+    private List<String> names;
 
     @BeforeEach
     void setUp() {

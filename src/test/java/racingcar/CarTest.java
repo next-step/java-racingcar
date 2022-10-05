@@ -11,8 +11,8 @@ import racingcar.strategy.MovingStrategy;
 
 class CarTest {
 
-    Car car;
-    MovingStrategy testMovingStrategy;
+    private Car car;
+    private MovingStrategy testMovingStrategy;
 
     @BeforeEach
     void setUp() {

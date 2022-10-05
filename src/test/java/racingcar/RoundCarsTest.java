@@ -14,8 +14,8 @@ import racingcar.strategy.MovingStrategy;
 
 class RoundCarsTest {
 
-    RoundCars roundCars;
-    List<String> names;
+    private RoundCars roundCars;
+    private List<String> names;
 
     @BeforeEach
     void setUp() {
