@@ -1,19 +1,14 @@
 package step3;
 
-import java.util.Random;
-
 public class Car {
 
     private int location;
 
-    private static final int RANDOM_BOUND = 10;
+    private final MovableStrategy movableStrategy;
 
-    private static final int THRESHOLD = 4;
-
-    private static final Random random = new Random();
-
-    public Car() {
+    public Car(MovableStrategy movableStrategy) {
         this.location = 0;
+        this.movableStrategy = movableStrategy;
     }
 
     public int location() {
@@ -21,8 +16,8 @@ public class Car {
     }
 
     public void moveOrStop() {
-        if (random.nextInt(RANDOM_BOUND) >= THRESHOLD) {
-            location++;
+        if (this.movableStrategy.isMovable()) {
+            this.location++;
         }
     }
 }

@@ -1,24 +1,19 @@
 package step3;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Race {
 
     private int currentRound = 1;
 
     private final int totalRound;
 
-    private final List<Car> cars = new ArrayList<>();
+    private final Cars cars;
 
-    public Race(int totalRound, int numberOfCar) {
+    public Race(int totalRound, int numberOfCar, MovableStrategy movableStrategy) {
         this.totalRound = totalRound;
-        for (int i = 0; i < numberOfCar; i++) {
-            this.cars.add(new Car());
-        }
+        this.cars = new Cars(numberOfCar, movableStrategy);
     }
 
-    public List<Car> cars() {
+    public Cars cars() {
         return this.cars;
     }
 
