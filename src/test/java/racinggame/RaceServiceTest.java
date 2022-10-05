@@ -19,7 +19,7 @@ class RaceServiceTest {
     @Test
     void 자동차_경주_횟수만큼_자동차가_이동한다() {
         //given
-        RaceInputDTO raceInputDTO = new RaceInputDTO(3, new String[] {"car1", "car2", "car3"});
+        RaceInputDTO raceInputDTO = new RaceInputDTO(3, new String[]{"car1", "car2", "car3"});
 
         List<Car> cars = List.of(
                 new Car("car1", new CarDistance(0), () -> true),
@@ -40,7 +40,7 @@ class RaceServiceTest {
     @Test
     void 우승자_찾기() {
         //given
-        RaceInputDTO raceInputDTO = new RaceInputDTO(3, new String[] {"car1", "car2", "car3"});
+        RaceInputDTO raceInputDTO = new RaceInputDTO(3, new String[]{"car1", "car2", "car3"});
 
         List<Car> cars = List.of(
                 new Car("car1", new CarDistance(4), () -> true),

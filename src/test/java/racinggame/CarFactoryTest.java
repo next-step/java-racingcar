@@ -3,8 +3,8 @@ package racinggame;
 import org.junit.jupiter.api.Test;
 import racinggame.domain.Car;
 import racinggame.domain.CarFactory;
-import racinggame.domain.embeded.CarName;
 import racinggame.domain.RacingCars;
+import racinggame.domain.embeded.CarName;
 import racinggame.dto.RaceInputDTO;
 
 import java.util.List;
@@ -16,7 +16,7 @@ class CarFactoryTest {
     @Test
     void 자동차가_조건에따라_생성된다() {
         //given
-        RaceInputDTO dto = new RaceInputDTO(1, new String[]{"car1","car2","car3"});
+        RaceInputDTO dto = new RaceInputDTO(1, new String[]{"car1", "car2", "car3"});
 
         //when
         RacingCars racingCars = CarFactory.produce(dto);
