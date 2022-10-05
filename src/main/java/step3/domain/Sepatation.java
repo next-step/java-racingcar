@@ -2,7 +2,9 @@ package step3.domain;
 
 public class Sepatation {
 
-    public String[] nameSepatation(String inputName) {
-        return inputName.split(",");
+    private static final String SEPARATOR = ",";
+
+    public String[] nameSeparation(String inputName) {
+        return inputName.split(SEPARATOR);
     }
 }

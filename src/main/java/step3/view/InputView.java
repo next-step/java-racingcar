@@ -1,9 +1,7 @@
 package step3.view;
 
-import step3.domain.Cars;
 import step3.domain.Sepatation;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
@@ -15,7 +13,7 @@ public class InputView {
 
     public String[] input() {
         System.out.println(CARS_NAME);
-        return SEPATATION.nameSepatation(SCANNER.nextLine());
+        return SEPATATION.nameSeparation(SCANNER.nextLine());
     }
 
     public int count() {

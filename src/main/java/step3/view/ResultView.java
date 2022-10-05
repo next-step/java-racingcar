@@ -15,6 +15,12 @@ public class ResultView {
         System.out.println();
     }
 
+    public void winnerOutput(List<Car> carList) {
+        for (Car car : carList) {
+            System.out.println("우승자 = " + car.getName());
+        }
+    }
+
     private String hyphen(int position) {
         String hyphen = "";
         for (int i = 0; i < position; i++) {

@@ -14,7 +14,7 @@ class CarsTest {
     @DisplayName("입력받은 문자 split 테스트")
     void splitTest() {
         Sepatation sepatation = new Sepatation();
-        String[] names = sepatation.nameSepatation("pobi,crong,honux");
+        String[] names = sepatation.nameSeparation("pobi,crong,honux");
         assertThat(names).containsExactly("pobi", "crong", "honux");
     }
 
