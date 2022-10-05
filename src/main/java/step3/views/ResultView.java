@@ -1,4 +1,4 @@
-package step3.ui;
+package step3.views;
 
 import java.util.List;
 import java.util.stream.Collectors;
