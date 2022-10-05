@@ -1,7 +1,10 @@
-package RacingCar;
+package RacingCar.Controller;
+
+import RacingCar.Model.*;
+import RacingCar.View.InputView;
+import RacingCar.View.ResultView;
 
 import java.util.List;
-import java.util.Random;
 
 public class RacingCarApplication {
     public static void main(String[] args) {
@@ -10,20 +13,20 @@ public class RacingCarApplication {
         String carListString = inputView.carNameList();
         int round = inputView.round();
 
-        Validate.emptyCheck(carListString);
-
-        Racing racing = new Racing(carListString, round);
+        Racing racing = new Racing(round);
+        List<Car> carList = racing.carList(carListString);
+        Winner winner = new Winner();
         ResultView resultView = new ResultView();
         RandomNumber randomNumber = new RandomNumber();
 
         resultView.resultView();
-        List<Car> carList = racing.getCarList();
+
         for (int i = 0; i < racing.getRound(); i++) {
-            racing.round(randomNumber.randomList(carList.size()));
+            racing.round(randomNumber, carList);
             resultView.roundView(carList);
         }
 
-        List<Car> winners = racing.winner();
+        List<Car> winners = winner.winner(carList);
 
         resultView.winnerView(winners);
     }

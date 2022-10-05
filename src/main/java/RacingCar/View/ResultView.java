@@ -1,4 +1,6 @@
-package RacingCar;
+package RacingCar.View;
+
+import RacingCar.Model.Car;
 
 import java.util.List;
 
