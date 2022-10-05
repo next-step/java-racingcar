@@ -15,23 +15,12 @@ class CarsTest {
     private FowardRule fowardRule = new FowardRule();
 
     @Test
-    @DisplayName("움직인만큼 -를 join 반환한다.")
-    void createTraces(){
-        String mark = "-";
-        Cars cars = new Cars(List.of(new Car("a",fowardRule), new Car("b",fowardRule), new Car("c",fowardRule)));
-        cars.getCars().forEach(car -> car.move());
-        cars.getCars().forEach(car -> car.move());
-
-        assertThat(cars.getCars().get(0).createTrace(mark)).isEqualTo("--");
-    }
-
-    @Test
     @DisplayName("가장 많이 움직인 차의 이름을 리스트에 담아 반환한다.")
     void getWinners(){
-        Car winnerCar = new Car("A",fowardRule);
-        Cars cars = new Cars(List.of(winnerCar, new Car("b",new NotMoveRule()), new Car("c",new NotMoveRule())));
-        cars.getCars().forEach(car ->  car.move());
-
+        Car winnerCar = new Car("A");
+        winnerCar.move(fowardRule);
+        Cars cars = new Cars(List.of(winnerCar, new Car("b"), new Car("c")));
+        cars.getCars().forEach(car ->  car.move(new NotMoveRule()));
         assertThat(cars.findCoWinner().size()).isEqualTo(1);
         assertThat(cars.findCoWinner().get(0)).isEqualTo("A");
     }

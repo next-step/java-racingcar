@@ -14,27 +14,27 @@ class CarTest {
     @Test
     @DisplayName("입력 받은 이름을 반환한다.")
     void getName(){
-        Car car = new Car("test",fowardRule);
+        Car car = new Car("test");
+        car.move(fowardRule);
 
         assertThat(car.getCarName()).isEqualTo("test");
     }
 
-    @Test
-    @DisplayName("움직이는 성공했을시 createTrace를 성공한 만큼 -를 반환")
-    void createTrace() {
-        Car car = new Car("Move",fowardRule);
 
-        car.move();
-        car.move();
-        assertThat(car.createTrace("-")).isEqualTo("--");
+    @Test
+    @DisplayName("최중 움직인 회수를 반환")
+    void getMaxSize(){
+        Car car = new Car("T");
+        car.move(fowardRule);
+        assertThat(car.getTraceSize()).isEqualTo(1);
     }
 
     @Test
-    @DisplayName("움직이는 실패할 시 공백을 반환.")
-    void not_move() {
-        Car car = new Car("notMove",new NotMoveRule());
-
-        car.move();
-        assertThat(car.createTrace("-")).isEqualTo("");
+    @DisplayName("나누는 문자와, 차의 이동을 알려주는 문자를 받으면 조합해서 회당 결과를 보여준다.")
+    void convert_trace(){
+        Car car = new Car("T");
+        car.move(fowardRule);
+        car.convertRound(":","-");
+        assertThat(car.convertRound(":","-")).isEqualTo("T:-");
     }
 }

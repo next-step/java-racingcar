@@ -1,8 +1,5 @@
 package racingGame.domain;
 
-import racingGame.domain.Car;
-
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,13 +16,13 @@ public class Cars {
     }
     public List<String> findCoWinner() {
         return cars.stream()
-                .filter(car -> car.getPosition() == getMaxPosition())
+                .filter(car -> car.getTraceSize() == getMaxPosition())
                 .map(Car::getCarName)
                 .collect(Collectors.toList());
     }
 
-    private int getMaxPosition() {
-        return getMaxCar().getPosition();
+    private long getMaxPosition() {
+        return getMaxCar().getTraceSize();
     }
 
     private Car getMaxCar() {
