@@ -11,4 +11,10 @@ public class InputView {
 
         return scanner.nextInt();
     }
+
+    public static String[] inputString(String msg) {
+        System.out.println(msg);
+
+        return msg.split(",");
+    }
 }
