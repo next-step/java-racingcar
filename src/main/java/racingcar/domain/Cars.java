@@ -35,6 +35,19 @@ public class Cars {
 		}
 	}
 
+	public List<Car> findWinners() {
+		Car maxCar = getMaxCar();
+		return cars.stream()
+			.filter(car -> car.equals(maxCar))
+			.collect(Collectors.toList());
+	}
+
+	private Car getMaxCar() {
+		return cars.stream()
+			.max(Car::compareTo)
+			.orElseThrow(() -> new RuntimeException("우승자를 찾지 못했습니다"));
+	}
+
 	public List<Integer> getPositions() {
 		List<Integer> positions = new ArrayList<>();
 		for (Car car : cars) {
