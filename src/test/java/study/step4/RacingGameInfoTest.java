@@ -3,6 +3,7 @@ package study.step4;
 import static org.assertj.core.api.Assertions.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -33,7 +34,7 @@ class RacingGameInfoTest {
 		racingGameInfo.setMaxPosition(1);
 		racingGameInfo.setParticipants(participants);
 
-		ArrayList<Car> winners = racingGameInfo.findWinners();
+		List<Car> winners = racingGameInfo.findWinners();
 
 		assertThat(winners.get(0).getPosition()).isEqualTo(racingGameInfo.getMaxPosition());
 	}

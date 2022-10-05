@@ -1,6 +1,7 @@
 package study.step4;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -19,7 +20,7 @@ public class RacingGame {
 		String input = SCANNER.next();
 
 		String[] names = splitCarNames(input);
-		ArrayList<Car> participants = registerParticipants(names);
+		List<Car> participants = registerParticipants(names);
 		racingGameInfo.setParticipants(participants);
 
 		// 시도할 회수를 입력받는 부분
@@ -46,8 +47,8 @@ public class RacingGame {
 		return input.split(",");
 	}
 
-	public static ArrayList<Car> registerParticipants(String[] names) {
-		ArrayList<Car> participants = new ArrayList<>();
+	public static List<Car> registerParticipants(String[] names) {
+		List<Car> participants = new ArrayList<>();
 		for (String name : names) {
 			Car car = new Car();
 			car.setName(name);
@@ -62,7 +63,7 @@ public class RacingGame {
 	}
 
 	public static void startRound(RacingGameInfo racingGameInfo) {
-		ArrayList<Car> participants = racingGameInfo.getParticipants();
+		List<Car> participants = racingGameInfo.getParticipants();
 		int maxPosition = 0;
 
 		for (int i = 0; i < participants.size(); i++) {

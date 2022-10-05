@@ -1,13 +1,14 @@
 package study.step4;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGameInfo {
-	private ArrayList<Car> participants;	// 참가 자동차
-	private ArrayList<Car> winners;			// 우승 자동차
-	private int maxPosition;				// 최대 이동 거리
-	private int round;						// 게임 라운드 수
-	private int currentRound;				// 현재 게임 라운드
+	private List<Car> participants;		// 참가 자동차
+	private List<Car> winners;			// 우승 자동차
+	private int maxPosition;			// 최대 이동 거리
+	private int round;					// 게임 라운드 수
+	private int currentRound;			// 현재 게임 라운드
 
 	public RacingGameInfo() {}
 
@@ -40,39 +41,30 @@ public class RacingGameInfo {
 		return this.currentRound;
 	}
 
-	public void setParticipants(ArrayList<Car> participants) {
+	public void setParticipants(List<Car> participants) {
 		this.participants = participants;
 	}
 
-	public ArrayList<Car> getParticipants() {
+	public List<Car> getParticipants() {
 		return this.participants;
 	}
 
-	public ArrayList<Car> findWinners() {
-		ArrayList<Car> winners = new ArrayList<>(); ;
+	// car 의 위치가 maxPosition 과 같은 경우 true 반환
+	public boolean isWinners(Car car) {
+		return car.getPosition() == this.maxPosition;
+	}
 
-		ArrayList<Car> participants = this.getParticipants();
-		int maxPosition = this.getMaxPosition();
-
-		// participants의 위치가 maxPosition 과 같은 경우 우승자로 추가
-		for (int i = 0; i < participants.size(); i++) {
-			if (participants.get(i).getPosition() == maxPosition) {
-				winners.add(participants.get(i));
-			}
-		}
-		this.winners = winners;
+	public List<Car> findWinners() {
+		this.winners = this.participants.stream()
+			.filter(this::isWinners)
+			.collect(Collectors.toList());
 		return this.winners;
 	}
 
 	public void printWinners() {
-		StringBuilder result = new StringBuilder();
-		for (int i = 0; i < this.winners.size(); i++) {
-			if (i == this.winners.size() - 1) {
-				result.append(this.winners.get(i).getName() + "가 최종 우승했습니다.");
-				break;
-			}
-			result.append(this.winners.get(i).getName() + ", ");
-		}
-		System.out.println(result);
+		System.out.print(winners.stream()
+			.map(Car::getName)
+			.collect(Collectors.joining(", ")));
+		System.out.println("가 최종 우승했습니다.");
 	}
 }
