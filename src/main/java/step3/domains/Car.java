@@ -6,7 +6,6 @@ import step3.exception.NullOrEmptyException;
 
 public class Car {
     private static final int START_POSITION = 0;
-    private static final int MIN_NUM_TO_MOVE = 4;
     private static final int MAX_NAME_LENGTH = 5;
 
     private final String name;
@@ -29,8 +28,8 @@ public class Car {
         this.position = position;
     }
 
-    public Car move(int number) {
-        if (number >= MIN_NUM_TO_MOVE) {
+    public Car move(MovingStrategy movingStrategy) {
+        if (movingStrategy.movable()) {
             return new Car(this.name, this.position + 1);
         }
 

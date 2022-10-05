@@ -17,12 +17,12 @@ public class CarTest {
             "4,true",
             "9,true"
     })
-    void Given_Integer_GreaterThanFour_When_Move_Then_MoveForward(int number, boolean expected) {
-        Car car = Car.init("car");
+    void Given_Integer_GreaterThanFour_When_Move_Then_MoveForward(int number, boolean isMove) {
+        Car car = new Car("car", number);
 
-        Car moveCar = car.move(number);
+        Car moveCar = car.move(() -> isMove);
 
-        assertThat(car.getPosition() != moveCar.getPosition()).isEqualTo(expected);
+        assertThat(!car.equals(moveCar)).isEqualTo(isMove);
     }
 
     @ParameterizedTest
