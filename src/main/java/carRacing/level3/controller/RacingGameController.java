@@ -3,6 +3,7 @@ package carRacing.level3.controller;
 import carRacing.level3.model.Car;
 import carRacing.level3.model.Cars;
 import carRacing.level3.model.strategy.MovingStrategy;
+import carRacing.level3.model.strategy.WinnerStrategy;
 import carRacing.level3.view.input.InputView;
 import carRacing.level3.view.output.OutPutView;
 import java.util.List;
@@ -15,32 +16,33 @@ public class RacingGameController {
 	InputView inputView = new InputView();
 	OutPutView outPutView = new OutPutView();
 
-	public void gameStart(MovingStrategy strategy) throws Exception {
+	public void gameStart(WinnerStrategy winnerStrategy, MovingStrategy movingStrategy)
+		throws Exception {
 
 		List<String> carNameList = inputView.saveCarNames();
-
-		int totalCarNum = inputView.carSum();
 		int gameRound = inputView.askValueRound();
 
-		Cars cars = initiateCars(carNameList,totalCarNum);
+		Cars cars = initiateCars(carNameList);
 
 		for (int i = 0; i < gameRound; i++) {
-			cars.moveCarLocation(strategy);
-			output(cars, totalCarNum);
+			cars.moveCarLocation(movingStrategy);
+			showRace(cars);
 		}
 
+		showRace(cars);
+		outPutView.showWinner(winnerStrategy.winnerList(cars));
 
 	}
 
-	public Cars initiateCars(List<String> carNameList,int totalCarNum) {
+	public Cars initiateCars(List<String> carNameList) {
 		return new Cars(
-			IntStream.range(DEFAULT_CAR_NUM, totalCarNum)
+			IntStream.range(DEFAULT_CAR_NUM, carNameList.size())
 				.mapToObj(index -> new Car(carNameList.get(index)))
 				.collect(Collectors.toList()));
 	}
 
-	public void output(Cars cars, int totalCarNum) {
-		outPutView.showRace(cars, totalCarNum);
+	public void showRace(Cars cars) {
+		outPutView.showRace(cars);
 	}
 
 }

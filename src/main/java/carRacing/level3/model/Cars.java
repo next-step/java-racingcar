@@ -16,12 +16,23 @@ public class Cars {
 			car.moveLocation(movingStrategy));
 	}
 
+	public int maxCarLocation() {
+		return carList.stream()
+			.mapToInt(car -> car.carLocation())
+			.max()
+			.getAsInt();
+	}
+
 	public int carLocation(int carNum) {
 		return carList.get(carNum).carLocation();
 	}
 
 	public String carName(int carNum) {
 		return carList.get(carNum).carName();
+	}
+
+	public int totalNum() {
+		return carList.size();
 	}
 
 }
