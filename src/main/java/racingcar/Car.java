@@ -1,17 +1,15 @@
 package racingcar;
 
-import java.util.Random;
-
 public class Car {
-    private final Random random;
+    private final CarMovePredicate movePredicate;
     private int position = 0;
 
     public Car() {
-        this.random = new Random();
+        this.movePredicate = new DefaultCarMovePredicate();
     }
 
-    public Car(Random random) {
-        this.random = random;
+    public Car(CarMovePredicate movePredicate) {
+        this.movePredicate = movePredicate;
     }
 
     public int getPosition() {
@@ -23,16 +21,12 @@ public class Car {
     }
 
     public void go() {
-        if (isMove()) {
+        if (movePredicate.test()) {
             move();
         }
     }
 
     private void move() {
         this.position++;
-    }
-
-    private boolean isMove() {
-        return random.nextInt(10) > 3;
     }
 }
