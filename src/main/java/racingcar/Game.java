@@ -13,7 +13,6 @@ public class Game {
         initCars(count);
 
         this.repeat = InputView.requestInputRepeat();
-        ResultView.println();
     }
 
     public Game(int count, int repeat) {
