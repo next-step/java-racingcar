@@ -25,9 +25,9 @@ class CarsTest {
     @Test
     @DisplayName("만드려는 자동차 개수를 입력하면 해당 개수 만큼 자동차들이 만들어진다")
     void b() {
-        Cars.Factory sut = new Cars.Factory(1);
+        Cars.Factory sut = new Cars.Factory(new String[]{"abc"});
 
-        Car car = new Car(new RandomNumber());
+        Car car = new Car(new RandomNumber(), "abc");
         assertThat(sut.cars(new Number.Fake(1))).isEqualTo(new Cars(List.of(car)));
     }
 
@@ -35,7 +35,7 @@ class CarsTest {
     @DisplayName("자동차들을 출력할 수 있다.")
     void c() {
         Number number = new Number.Fake(4);
-        Car car = new Car(number, new Name("abcde"));
+        Car car = new Car(number, "abced");
         Cars sut = new Cars(List.of(car));
 
         assertThat(sut.positionsAndNames()).containsExactly(car.toString());
