@@ -16,7 +16,7 @@ public class Name {
         return value + " : ";
     }
 
-    private void verifyLengthMustNotExceedFive() {
+    public void verifyLengthMustNotExceedFive() {
         if (value.length() > 5) {
             throw new IllegalStateException("이름은 5글자를 초과할 수 없다.");
         }
