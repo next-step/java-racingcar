@@ -12,13 +12,24 @@ public final class Car {
 
     private final Number number;
 
+    private final Name name;
+
+    public Car(Number number, Name name) {
+        this(new Position(0), number, name);
+    }
+
     public Car(Number number) {
-        this(new Position(0), number);
+        this(new Position(0), number, new Name(""));
     }
 
     public Car(Position position, Number number) {
+        this(position, number, new Name(""));
+    }
+
+    public Car(Position position, Number number, Name name) {
         this.position = position;
         this.number = number;
+        this.name = name;
     }
 
     public Car movedCar() {
@@ -26,6 +37,11 @@ public final class Car {
             return new Car(position.movedPosition(), number);
         }
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return name.toString() + position.toString();
     }
 
     @Override
