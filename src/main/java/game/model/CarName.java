@@ -4,7 +4,7 @@ import utils.StringUtils;
 
 public class CarName {
 
-    public static final int CAR_NAME_LIMIT_LENGTH = 5;
+    private static final int CAR_NAME_LIMIT_LENGTH = 5;
     private final String name;
 
     public CarName(String name) {

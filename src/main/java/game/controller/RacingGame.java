@@ -16,12 +16,12 @@ public class RacingGame {
         for (int i = 0; i < param.getCountOfRound(); i++) {
             playRound(cars);
         }
+        OutputView.printOutputResult(cars);
     }
 
     private static void playRound(Cars cars) {
         cars.moveCarList(getMovableStrategy());
         OutputView.printOutputBody(cars);
-        OutputView.printOutputResult(cars);
     }
 
 }

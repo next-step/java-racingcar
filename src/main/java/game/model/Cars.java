@@ -24,13 +24,13 @@ public class Cars {
     public List<Car> getLocatedHighPositionCars() {
         List<Car> locatedHighPositionCarList = new ArrayList<>();
         for (Car car : this.carList) {
-            addToHighPositionCars(locatedHighPositionCarList, car);
+            addToHighPositionCars(locatedHighPositionCarList, car, getMaxPosition());
         }
         return Collections.unmodifiableList(locatedHighPositionCarList);
     }
 
-    private void addToHighPositionCars(List<Car> result, Car car) {
-        if (car.getPosition() >= getMaxPosition()) {
+    private void addToHighPositionCars(List<Car> result, Car car, int maxPosition) {
+        if (car.getPosition() >= maxPosition) {
             result.add(car);
         }
     }

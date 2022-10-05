@@ -1,5 +1,7 @@
 package game.model;
 
+import static game.model.Position.*;
+
 public class Car {
 
     private final Position position;
@@ -7,7 +9,7 @@ public class Car {
     private final CarName carName;
 
     public Car(String carName) {
-        this.position = new Position(0);
+        this.position = new Position(DEFAULT_POSITION);
         this.carName = new CarName(carName);
     }
 
