@@ -1,16 +1,16 @@
 package racing.domain;
 
+import org.junit.jupiter.api.Test;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
-import org.junit.jupiter.api.Test;
 
 class CarTest {
 
     @Test
     void 자동차에_이름을_부여한다() {
         Car car = new Car(new AlwaysMovingRule(), "씽씽이");
-        assertThat(car.name()).isEqualTo("씽씽이");
+        assertThat(car.getName()).isEqualTo("씽씽이");
     }
 
     @Test

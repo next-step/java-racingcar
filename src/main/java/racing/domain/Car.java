@@ -28,7 +28,7 @@ public class Car implements Comparator<Car> {
         }
     }
 
-    public String name() {
+    public String getName() {
         return name;
     }
 

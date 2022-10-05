@@ -12,7 +12,7 @@ public class Record {
     }
 
     public static Record record(final Car car){
-        return new Record(car.name(), car.location());
+        return new Record(car.getName(), car.location());
     }
 
     public String getName() {
