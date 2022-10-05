@@ -25,6 +25,10 @@ public class Car implements Comparable<Car> {
         }
     }
 
+    public boolean isEqualPosition(Car car) {
+        return car.position == this.position;
+    }
+
     private boolean isMovable(int chosenNumber) {
         return chosenNumber >= RANDOM_BASE_VALUE;
     }
@@ -53,6 +57,6 @@ public class Car implements Comparable<Car> {
 
     @Override
     public int compareTo(Car car) {
-        return car.getPosition() - this.getPosition();
+        return Integer.compare(car.position, this.position);
     }
 }
