@@ -1,3 +1,5 @@
+package view;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -13,14 +15,14 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.*;
 
 @DisplayName("양의 정수 입력 테스트")
-public class CarRacingInputViewTest {
+public class RacingInputViewTest {
 
     @ParameterizedTest(name = "{index}: {2}")
     @MethodSource("validInputs_for_getPositiveIntegerInputTest")
     @DisplayName("양의 정수 데이터 입력")
     void getPositiveIntegerInput_witValidInput_test(String input, Integer output, String testName) {
         Scanner scanner = _generateInputScanner(input);
-        assertThat(CarRacingInputView.getPositiveIntegerInput(scanner)).isEqualTo(output);
+        assertThat(RacingInputView.getPositiveIntegerInput(scanner)).isEqualTo(output);
     }
 
     @ParameterizedTest(name = "{index}: {2}")
@@ -28,7 +30,7 @@ public class CarRacingInputViewTest {
     @DisplayName("양의 정수가 아닌 데이터 입력")
     void getPositiveIntegerInput_witInvalidInput_test(String input, Class exceptionClass, String testName) {
         Scanner scanner = _generateInputScanner(input);
-        assertThatThrownBy(() -> CarRacingInputView.getPositiveIntegerInput(scanner))
+        assertThatThrownBy(() -> RacingInputView.getPositiveIntegerInput(scanner))
                 .isInstanceOf(exceptionClass);
     }
 
