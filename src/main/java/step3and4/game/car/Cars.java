@@ -2,10 +2,10 @@ package step3and4.game.car;
 
 import step3and4.client.number.Number;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Cars {
 
@@ -42,16 +42,15 @@ public class Cars {
 
     public static class Factory {
 
-        private final int numberOfCars;
+        private final String[] carsNames;
 
-        public Factory(int numberOfCars) {
-            this.numberOfCars = numberOfCars;
+        public Factory(String[] carsNames) {
+            this.carsNames = carsNames;
         }
 
         public Cars cars(Number number) {
-            List<Car> cars = IntStream.range(0, numberOfCars)
-                    .boxed()
-                    .map(numberOfCar -> new Car(number))
+            List<Car> cars = Arrays.stream(carsNames)
+                    .map(carName -> new Car(number, carName))
                     .collect(Collectors.toUnmodifiableList());
 
             return new Cars(cars);
