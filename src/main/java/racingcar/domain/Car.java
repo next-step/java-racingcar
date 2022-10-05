@@ -18,6 +18,10 @@ public class Car {
 		}
 	}
 
+	public boolean hasSamePosition(int max) {
+		return position.hasSamePosition(max);
+	}
+
 	public Position getStatus() {
 		return this.position;
 	}
