@@ -33,6 +33,7 @@ public class Game {
 			accumulateResult(results, cars);
 		}
 		OUTPUT_VIEW.printResults(results);
+		OUTPUT_VIEW.printWinners(cars.findWinnerNames());
 	}
 
 	private static void moveOnce(Cars cars) {
