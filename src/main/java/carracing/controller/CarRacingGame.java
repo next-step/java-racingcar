@@ -1,12 +1,13 @@
 package carracing.controller;
 
 import carracing.domain.Car;
-import carracing.domain.CarFactory;
+import carracing.domain.Cars;
 import carracing.domain.RandomGenerator;
+import carracing.domain.WinnerChecker;
 import carracing.view.InputView;
 import carracing.view.OutputView;
 
-import java.util.List;
+import java.util.stream.IntStream;
 
 public class CarRacingGame {
 
@@ -19,22 +20,29 @@ public class CarRacingGame {
     }
 
     public void start() {
-        CarFactory carFactory = new CarFactory();
-        startRacing(carFactory.makeCars(inputView.scanCounts()), inputView.scanTimes());
+        Cars cars = Cars.makeCars(inputView.scanParticipantsName());
+        startRacing(cars, inputView.scanTimes());
     }
 
-    private void startRacing(List<Car> cars, int tryTimes) {
+    private void startRacing(Cars cars, int tryTimes) {
+
         RandomGenerator randomGenerator = new RandomGenerator();
-        for (int i = 0; i < tryTimes; i++) {
-            moveTry(cars, randomGenerator);
+        WinnerChecker winnerChecker = new WinnerChecker();
+
+        outputView.printStart();
+
+        for (int i = 0; i < tryTimes; i++){
+            cars.moveCars(randomGenerator);
+            printTrails(cars);
             outputView.printBlank();
         }
+
+        outputView.printWinner(winnerChecker.findWinners(cars));
     }
 
-    private void moveTry(List<Car> cars, RandomGenerator randomGenerator) {
-        for (Car car : cars) {
-            car.move(randomGenerator.makeRandomValue());
-            outputView.printTrail(car.getPosition());
+    private void printTrails(Cars cars) {
+        for (Car car : cars.getCars()) {
+            outputView.printTrail(car.getParticipantName(), car.getPosition());
         }
     }
 }
