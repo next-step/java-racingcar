@@ -28,10 +28,10 @@ public class Cars {
 
         Collections.sort(sortedCars);
 
-        int highScore = sortedCars.get(0).getPosition();
+        Car highScorePositionCar = sortedCars.get(0);
 
         return sortedCars.stream()
-                .filter(car -> highScore == car.getPosition())
+                .filter(highScorePositionCar::isEqualPosition)
                 .collect(Collectors.toList());
     }
 }
