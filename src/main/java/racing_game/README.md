@@ -1,6 +1,7 @@
 ## STEP3 자동차 경주
 
 ### RUN
+
 ```shell
 $ pwd
 -> {my-work-space}/java-racingcar

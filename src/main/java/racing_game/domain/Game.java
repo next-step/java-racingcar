@@ -5,14 +5,14 @@ import racing_game.view.CarResultView;
 
 public class Game {
 
-  public void run() {
-    try {
-      SimulationConfig simulationConfig = InputConfigManager.getConfig();
-      SnapShot<Distances> result = Simulator.create(simulationConfig).simulate();
-      CarResultView.create().printResult(result);
-    } catch (Exception e) {
-      System.out.println("the game error occurred");
-      e.printStackTrace();
+    public void run() {
+        try {
+            SimulationConfig simulationConfig = InputConfigManager.getConfig();
+            SnapShot<Distances> result = Simulator.create(simulationConfig).simulate();
+            CarResultView.create().printResult(result);
+        } catch (Exception e) {
+            System.out.println("the game error occurred");
+            e.printStackTrace();
+        }
     }
-  }
 }
