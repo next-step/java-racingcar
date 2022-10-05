@@ -26,6 +26,6 @@ public class RacingTest {
 	})
 	void checkInput(String input) {
 		assertThatThrownBy(() -> new Racing().checkInput(input))
-			.isInstanceOf(RuntimeException.class);
+			.isInstanceOf(IllegalArgumentException.class);
 	}
 }

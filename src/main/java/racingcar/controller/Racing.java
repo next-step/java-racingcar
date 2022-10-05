@@ -59,7 +59,7 @@ public class Racing extends Condition {
 
 	public String checkInput(String input) {
 		if (validInput(input)) {
-			throw new RuntimeException();
+			throw new IllegalArgumentException();
 		}
 		return input;
 	}
