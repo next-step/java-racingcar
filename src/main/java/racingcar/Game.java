@@ -48,11 +48,6 @@ public class Game {
 		return INPUT_VIEW.readTrialCount();
 	}
 
-	private static int getCarCount() {
-		OUTPUT_VIEW.promptCarCount();
-		return INPUT_VIEW.readCarCount();
-	}
-
 	private static List<String> getNames() {
 		OUTPUT_VIEW.promptNames();
 		return INPUT_VIEW.readNames();
