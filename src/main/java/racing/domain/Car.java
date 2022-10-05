@@ -1,12 +1,10 @@
-package racing.model;
+package racing.domain;
 
 import racing.strategy.CarMoveStrategy;
 import racing.strategy.DefaultCarMoveStrategy;
 
 public class Car {
     private final static String TIRE_MARK = "-";
-    private final static int SPEED = 1;
-
     private CarPosition position;
     private CarMoveStrategy carMoveStrategy;
     private CarName name;
@@ -33,8 +31,10 @@ public class Car {
         return TIRE_MARK;
     }
 
-    public void move() {
-        position.move(SPEED);
+    public void move(int randomNum) {
+        if(canMove(randomNum)) {
+            position.move();
+        }
     }
 
     public boolean canMove(int randomNum) {
@@ -76,5 +76,9 @@ public class Car {
             skidMark += this.getTireMark();
         }
         return skidMark;
+    }
+
+    public boolean isWinner(int winnerPosition) {
+        return this.position.equals(new CarPosition(winnerPosition));
     }
 }

@@ -1,9 +1,6 @@
 package racing.util;
 
-import java.util.Scanner;
-
 public class UserStringInputHandler extends UserInputHandler {
-    private static Scanner scanner = new Scanner(System.in);
 
     public static int getUserCount(String names) {
         return split(names).length;

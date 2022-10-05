@@ -1,7 +1,7 @@
 package racing.view;
 
-import racing.model.Car;
-import racing.model.RaceResult;
+import racing.domain.Car;
+import racing.domain.RaceResult;
 
 import java.util.List;
 
@@ -18,14 +18,6 @@ public class ResultView {
         System.out.println(record);
     }
 
-    private static void printSkidMark(Car car) {
-        String skidMark = car.getName() + " : ";
-        for (int i = 0; i < car.getPosition(); i++) {
-            skidMark += car.getTireMark();
-        }
-        System.out.println(skidMark);
-    }
-
     public static void printWinner(String winnersName) {
         System.out.println(winnersName + "가 최종 우승했습니다.");
     }
@@ -37,6 +29,10 @@ public class ResultView {
         for (String lap : record) {
             printRace(lap);
         }
-        printWinner(raceResult.getWinnerName());
+        printWinner(join(raceResult.getWinnersName()));
+    }
+
+    public static String join(List<String> names) {
+        return String.join(",", names);
     }
 }
