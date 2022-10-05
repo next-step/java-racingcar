@@ -1,38 +1,32 @@
 package step5.controller;
 
-import java.util.ArrayList;
 import java.util.List;
-import step5.domain.Car;
 import step5.domain.RacingResult;
-import step5.service.RacingGameService;
-import step5.service.RacingWinner;
-import step5.util.CarFactory;
+import step5.domain.RacingGame;
+import step5.service.RacingWinnerService;
 import step5.view.InputView;
 import step5.view.ResultView;
 
 public class RacingGameController {
 
-    public RacingGameController() {
-    }
+    private final RacingGame racingGame;
 
-    public static void start() {
+    public RacingGameController() {
         ResultView.printCarNames();
         String[] carNames = InputView.carNames();
         ResultView.printTryCount();
         int tryCount = InputView.tryCount();
-        int carCount = carNames.length;
+        this.racingGame = new RacingGame(carNames, tryCount);
+    }
+
+    public void start() {
         ResultView.printStartMessage();
 
-        List<Car> cars = CarFactory.createCar(carNames);
-
-        List<RacingResult> racingResults = new ArrayList<>();
-        for (int i = 0; i < tryCount; i++) {
-            racingResults.addAll(RacingGameService.start(cars));
-        }
+        List<RacingResult> racingResults = racingGame.start();
+        int carCount = racingGame.getCarCount();
+        String winner = RacingWinnerService.chooseWinner(racingResults);
 
         ResultView.printRacingResults(racingResults, carCount);
-
-        String winner = RacingWinner.chooseWinner(cars);
         ResultView.printWinner(winner);
     }
 }

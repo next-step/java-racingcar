@@ -1,14 +1,15 @@
 package step5.domain;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step5.service.RacingWinner;
+import step5.service.RacingWinnerService;
 
-class RacingWinnerTest {
+class RacingWinnerServiceTest {
 
     private List<Car> cars;
 
@@ -28,11 +29,13 @@ class RacingWinnerTest {
     @Test
     @DisplayName("chooserWinner()로 우승자 문자열을 구한다.")
     void chooseWinner_String(){
+        List<RacingResult> racingResults = new ArrayList<>();
         for (Car car : cars) {
             car.moveForward();
+            racingResults.add(new RacingResult(car));
         };
 
-        String winner = RacingWinner.chooseWinner(cars);
+        String winner = RacingWinnerService.chooseWinner(racingResults);
 
         Assertions.assertThat(winner).isEqualTo("suchan,pob,jon");
     }
