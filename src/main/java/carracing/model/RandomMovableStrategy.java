@@ -4,14 +4,9 @@ import java.util.Random;
 
 public class RandomMovableStrategy implements MovableStrategy<Integer> {
     private static final Random random = new Random();
-    
-    @Override
-    public Integer getCondition() {
-        return random.nextInt(GameRule.RANDOM_LIMIT);
-    }
 
     @Override
-    public boolean predicate(Integer condition) {
-        return GameRule.isGoStraight(condition);
+    public boolean canMove() {
+        return GameRule.isGoStraight(random.nextInt(GameRule.RANDOM_LIMIT));
     }
 }
