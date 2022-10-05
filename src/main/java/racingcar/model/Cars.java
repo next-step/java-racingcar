@@ -23,16 +23,15 @@ public class Cars {
         cars.forEach(car -> car.move(RandomNumber.generate()));
     }
 
-    public String findWinner() {
+    public List<Car> findWinner() {
         List<Car> sortedCars = new ArrayList<>(cars);
 
-        Collections.sort(sortedCars, (o1, o2) -> o2.getPosition() - o1.getPosition());
+        Collections.sort(sortedCars);
 
-        int highScore = sortedCars.get(0).getPosition();
+        Car highScorePositionCar = sortedCars.get(0);
 
         return sortedCars.stream()
-                .filter(car -> highScore == car.getPosition())
-                .map(Car::getName)
-                .collect(Collectors.joining(", "));
+                .filter(highScorePositionCar::isEqualPosition)
+                .collect(Collectors.toList());
     }
 }
