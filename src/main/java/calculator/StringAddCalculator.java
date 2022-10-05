@@ -1,11 +1,13 @@
 package calculator;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
     public static final String DEFAULT_DELIMITER = "[,:]";
     public static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\\n(.*)");
+
     private String input;
     private String delimiter = DEFAULT_DELIMITER;
 
@@ -40,19 +42,15 @@ public class StringAddCalculator {
     }
 
     private Positive[] toInts(String[] values) {
-        Positive[] numbers = new Positive[values.length];
-        for (int i = 0; i < values.length; i++) {
-            String value = values[i];
-            numbers[i] = new Positive(value);
-        }
-        return numbers;
+        return Arrays.stream(values)
+                .map(Positive::new)
+                .toArray(Positive[]::new);
     }
 
     private int sum(Positive[] numbers) {
-        int result = 0;
-        for (Positive number: numbers) {
-            result += number.get();
-        }
-        return result;
+        return Arrays.stream(numbers)
+                .reduce(Positive::plus)
+                .orElse(new Positive(0))
+                .get();
     }
 }
