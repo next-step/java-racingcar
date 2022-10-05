@@ -1,6 +1,7 @@
 package racing.domain;
 
 import java.util.Comparator;
+import java.util.Objects;
 
 public class Car implements Comparator<Car> {
     private final static int MAX_LENGTH_OF_NAME = 5;
@@ -39,5 +40,18 @@ public class Car implements Comparator<Car> {
 
     public int location() {
         return location;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }
