@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
 import racing_game.core.Positive;
-import racing_game.core.SimulationConfig;
 
 class ConfigTest {
 

@@ -3,9 +3,8 @@ package racing_game.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
+import racing_game.controller.Simulator;
 import racing_game.core.Positive;
-import racing_game.core.SimulationConfig;
-import racing_game.core.Simulator;
 import racing_game.core.SnapShot;
 
 class SimulatorTest {

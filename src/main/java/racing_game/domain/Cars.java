@@ -1,35 +1,35 @@
 package racing_game.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 import racing_game.core.Positive;
 
 public class Cars {
 
+    private final RandomGenerator randomGenerator;
     private final List<Car> holder;
 
-    private Cars(Positive count, int bound, int condition) {
+    private Cars(Positive count) {
+        randomGenerator = RandomGenerator.create();
         holder = new ArrayList<>();
         for (int i = 0; i < count.toInt(); i++) {
-            Car car = Car.create(new RandomMoving(bound, condition));
-            holder.add(car);
+            holder.add(Car.create());
         }
     }
 
-    public static Cars create(Positive count, int bound, int condition) {
-        return new Cars(count, bound, condition);
+    public static Cars create(Positive count) {
+        return new Cars(count);
     }
 
     public void moveAll() {
         for (Car car : holder) {
-            car.move();
+            car.move(randomGenerator.getRandomValue());
         }
     }
 
-    public Distances getDistances() {
-        return Distances.create(
-            holder.stream().map(Car::getDistance).collect(Collectors.toUnmodifiableList()));
+    public List<Car> toList() {
+        return Collections.unmodifiableList(holder);
     }
 
     public int size() {

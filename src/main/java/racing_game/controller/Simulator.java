@@ -1,7 +1,13 @@
-package racing_game.core;
+package racing_game.controller;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import racing_game.core.Positive;
+import racing_game.core.SnapShot;
+import racing_game.domain.Car;
 import racing_game.domain.Cars;
 import racing_game.domain.Distances;
+import racing_game.domain.SimulationConfig;
 
 public class Simulator {
 
@@ -10,7 +16,7 @@ public class Simulator {
     private final SnapShot<Distances> snapShot;
 
     private Simulator(Positive carCount, Positive tryCount) {
-        this.cars = Cars.create(carCount, 10, 4);
+        this.cars = Cars.create(carCount);
         this.tryCount = tryCount;
         this.snapShot = new SnapShot<>();
     }
@@ -22,7 +28,7 @@ public class Simulator {
     public SnapShot<Distances> simulate() {
         for (int i = 0; i < tryCount.toInt(); i++) {
             cars.moveAll();
-            snapShot.capture(cars.getDistances());
+            snapShot.capture(getDistances(cars));
         }
         return snapShot;
     }
@@ -33,5 +39,14 @@ public class Simulator {
 
     public Positive getTryCount() {
         return tryCount;
+    }
+
+    private Distances getDistances(Cars cars) {
+        List<Positive> distances = cars.toList()
+            .stream()
+            .map(Car::getDistance)
+            .collect(Collectors.toUnmodifiableList());
+
+        return Distances.create(distances);
     }
 }

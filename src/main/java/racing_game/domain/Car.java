@@ -2,24 +2,31 @@ package racing_game.domain;
 
 import racing_game.core.Positive;
 
-public class Car implements Moving {
+public class Car {
 
-    private final Moving movingStrategy;
+    private static final int THRESHOLD = 4;
+    private final Positive distance;
 
-    private Car(Moving movingStrategy) {
-        this.movingStrategy = movingStrategy;
+    private Car() {
+        this.distance = Positive.zero();
     }
 
-    public static Car create(Moving movingStrategy) {
-        return new Car(movingStrategy);
+    public static Car create() {
+        return new Car();
     }
 
-    public void move() {
-        movingStrategy.move();
+    public void move(int value) {
+        if (canMove(value)) {
+            distance.addOne();
+        }
+    }
+
+    private boolean canMove(int value) {
+        return value >= THRESHOLD;
     }
 
     public Positive getDistance() {
-        return movingStrategy.getDistance();
+        return Positive.copy(distance);
     }
 
 }
