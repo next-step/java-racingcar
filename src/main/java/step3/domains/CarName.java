@@ -14,11 +14,13 @@ public class CarName {
             throw new NullOrEmptyException();
         }
 
-        if (name.length() > MAX_NAME_LENGTH) {
+        String trimName = name.trim();
+
+        if (trimName.length() > MAX_NAME_LENGTH) {
             throw new ExceedLengthException(MAX_NAME_LENGTH);
         }
 
-        this.name = name;
+        this.name = trimName;
     }
 
     public String getName() {
