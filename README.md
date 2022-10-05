@@ -73,7 +73,7 @@
 - [x] git 의 commit 단위 : README.md파일에 정리한 기능 목록 단위로 추가.
 
 > 😘리뷰 반영
-- [ ] 컨벤션 오류 수정 (getter변수위치, asserthat 간략화, 함수이름) 
+- [x] 컨벤션 오류 수정 (getter변수위치, asserthat 간략화, 함수이름) 
 - [ ] 개행 "\n" 처리
 - [ ] Car 생성자 이용 및 생성자 중복 제거
 - [ ] 입력값에 대하여 exception 처리 수정 및 메세지 상세화

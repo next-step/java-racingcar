@@ -20,7 +20,7 @@ public class RacingCarGame {
     }
 
     public RacingCarGame(String carNames, int tryCount) {
-        this.tryCount = validationPositiveNumber(tryCount);
+        this.tryCount = validatePositiveNumber(tryCount);
         this.cars = new Cars(carNames);
     }
 
@@ -40,7 +40,7 @@ public class RacingCarGame {
                 .collect(Collectors.toList());
     }
 
-    private int validationPositiveNumber(int value) {
+    private int validatePositiveNumber(int value) {
         if (value < ZERO) {
             throw new NegativeNumberException();
         }

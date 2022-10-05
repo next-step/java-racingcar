@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -33,7 +32,7 @@ class RacingCarGameTest {
         RacingCarGame racingCarGame = new RacingCarGame(CAR_NAMES, TRY_COUNT);
         List<CarsDto> carsValues = racingCarGame.play(new RandomValueMovingStrategy());
 
-        Assertions.assertThat(carsValues).hasSize(TRY_COUNT);
+        assertThat(carsValues).hasSize(TRY_COUNT);
     }
 
     @Test
