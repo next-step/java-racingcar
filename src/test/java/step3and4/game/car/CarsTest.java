@@ -4,7 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step3and4.client.number.Number;
 import step3and4.client.number.RandomNumber;
-import step3and4.client.output.OutputView;
 
 import java.util.List;
 
@@ -29,7 +28,7 @@ class CarsTest {
         Cars.Factory sut = new Cars.Factory(1);
 
         Car car = new Car(new RandomNumber());
-        assertThat(sut.cars(new Number.Fake(1), new OutputView.Fake())).isEqualTo(new Cars(List.of(car)));
+        assertThat(sut.cars(new Number.Fake(1))).isEqualTo(new Cars(List.of(car)));
     }
 
 }

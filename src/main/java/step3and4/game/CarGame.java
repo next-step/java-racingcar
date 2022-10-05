@@ -31,7 +31,7 @@ public class CarGame {
 
     private Cars cars(int numberOfCars) {
         final Cars.Factory carsFactory = new Cars.Factory(numberOfCars);
-        return carsFactory.cars(number, outputView);
+        return carsFactory.cars(number);
     }
 
     private void useTurns(Cars cars, int numberOfGames) {
