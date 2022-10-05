@@ -1,9 +1,10 @@
 package step3and4.game.car;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step3and4.client.number.Number;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
@@ -13,7 +14,7 @@ class CarTest {
         final Number number = new Number.Fake(4);
         final Car sut = new Car(number);
 
-        Assertions.assertThat(sut.movedCar()).isEqualTo(new Car(new Position(1), number));
+        assertThat(sut.movedCar()).isEqualTo(new Car(new Position(1), number));
     }
 
     @Test
@@ -22,7 +23,15 @@ class CarTest {
         final Number number = new Number.Fake(3);
         final Car sut = new Car(number);
 
-        Assertions.assertThat(sut.movedCar()).isEqualTo(new Car(new Position(0), number));
+        assertThat(sut.movedCar()).isEqualTo(new Car(new Position(0), number));
+    }
+
+    @Test
+    @DisplayName("자동차를 출력할 수 있다.")
+    void c() {
+        final Car sut = new Car(new Position(1), new Number.Fake(3), new Name("12345"));
+
+        assertThat(sut).hasToString("12345 : -");
     }
 
 }
