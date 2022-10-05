@@ -18,6 +18,10 @@ public class Position {
 		return new Position(this.position + 1);
 	}
 
+	public boolean hasSamePosition(int max) {
+		return this.position == max;
+	}
+
 	public int getPosition() {
 		return this.position;
 	}
