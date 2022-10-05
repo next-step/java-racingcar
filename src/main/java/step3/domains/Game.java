@@ -25,7 +25,7 @@ public class Game {
 
         for (int i = 0; i < tryNumber; ++i) {
             List<Car> carsAfterMove = moveCars(previousCars);
-            results = results.addResult(carsAfterMove);
+            results.addResult(carsAfterMove);
             previousCars = carsAfterMove;
         }
 
