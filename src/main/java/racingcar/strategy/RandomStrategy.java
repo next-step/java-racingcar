@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class RandomStrategy implements MovingStrategy {
 
+    private static final Random random = new Random();
     private final int lowerBound;
     private final int highBound;
 
@@ -14,7 +15,7 @@ public class RandomStrategy implements MovingStrategy {
 
     @Override
     public boolean isMove() {
-        int value = new Random().nextInt(highBound);
+        int value = random.nextInt(highBound);
         return lowerBound <= value && value <= highBound;
     }
 }
