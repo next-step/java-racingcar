@@ -19,6 +19,6 @@ public class RacingResultView {
     }
 
     private static void printMovement(final int movementCount) {
-        System.out.println("-".repeat(Math.max(0, movementCount)));
+        System.out.println("-".repeat(movementCount));
     }
 }

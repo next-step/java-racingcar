@@ -7,21 +7,20 @@ public class GameSpec {
     private final int movementCondition;
     private final int randomMovementBound;
 
+    private GameSpec() {
+        this.movementCondition = 4;
+        this.randomMovementBound = 9;
+    }
+
     public static GameSpec createSimpleRacingCarSpec() {
         return new GameSpec();
     }
 
     public int movableCount() {
-        final int random = generateMoveCount();
-        if(random >= movementCondition) {
-            return random;
+        if(generateMoveCount() >= movementCondition) {
+            return 1;
         }
         return 0;
-    }
-
-    private GameSpec() {
-        this.movementCondition = 4;
-        this.randomMovementBound = 9;
     }
 
     private int generateMoveCount() {

@@ -6,9 +6,15 @@ import java.util.stream.IntStream;
 
 public class RacingGame {
 
-    private final RacingCars players;
+    private final RacingCars cars;
     private final GameSpec gameSpec;
     private final RacingLap lap;
+
+    private RacingGame(final RacingCars cars, final GameSpec gameSpec, final RacingLap lap) {
+        this.cars = cars;
+        this.gameSpec = gameSpec;
+        this.lap = lap;
+    }
 
     public static RacingGame createGame(int playerCount, int trialCount) {
         return new RacingGame(
@@ -19,23 +25,16 @@ public class RacingGame {
     }
 
     public List<RacingCars> start() {
-        return IntStream.of(0, lap.getRemain())
+        return IntStream.range(0, lap.getRemain())
                 .mapToObj(idx -> race())
                 .collect(Collectors.toList());
     }
 
     private RacingCars race() {
-        final List<RacingCar> racingCars = players.getRacingCars()
+        return cars.getRacingCars()
                 .stream()
                 .map(player -> player.move(gameSpec.movableCount()))
-                .collect(Collectors.toList());
-
-        return new RacingCars(racingCars);
+                .collect(Collectors.collectingAndThen(Collectors.toList(), RacingCars::new));
     }
 
-    private RacingGame(final RacingCars players, final GameSpec gameSpec, final RacingLap lap) {
-        this.players = players;
-        this.gameSpec = gameSpec;
-        this.lap = lap;
-    }
 }

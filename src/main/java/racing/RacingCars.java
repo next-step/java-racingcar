@@ -9,8 +9,9 @@ public class RacingCars {
     private final List<RacingCar> racingCars;
 
     public static RacingCars createRacingCars(final int playerCount) {
-        final List<RacingCar> cars = IntStream.range(0, playerCount).mapToObj(RacingCar::init).collect(Collectors.toList());
-        return new RacingCars(cars);
+        return IntStream.range(0, playerCount)
+                .mapToObj(RacingCar::init)
+                .collect(Collectors.collectingAndThen(Collectors.toList(), RacingCars::new));
     }
 
     public RacingCars(final List<RacingCar> racingCars) {
