@@ -22,12 +22,12 @@ public class Car {
 		return position.hasSamePosition(max);
 	}
 
-	public Position getStatus() {
-		return this.position;
+	public int takePosition() {
+		return this.position.getPosition();
 	}
 
-	public Name getName() {
-		return name;
+	public String takeName() {
+		return this.name.getName();
 	}
 
 	@Override

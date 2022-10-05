@@ -32,7 +32,7 @@ public class CarTest {
 	void stopStatusOfRound(int input) {
 		Car car = new Car("test");
 		car.movingOfRound(input);
-		assertThat(car.getStatus()).isEqualTo(new Position());
+		assertThat(car.takePosition()).isEqualTo(new Position().getPosition());
 	}
 
 	@ParameterizedTest
@@ -41,6 +41,6 @@ public class CarTest {
 	void forwardStatusOfRound(int input) {
 		Car car = new Car("test");
 		car.movingOfRound(input);
-		assertThat(car.getStatus()).isEqualTo(new Position(1));
+		assertThat(car.takePosition()).isEqualTo(new Position(1).getPosition());
 	}
 }

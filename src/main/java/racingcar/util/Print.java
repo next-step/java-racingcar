@@ -28,7 +28,7 @@ public class Print {
 	public static void printWinner(List<Car> winners) {
 		String temp = "";
 		for (Car winner : winners) {
-			temp += winner.getName().getName() + ", ";
+			temp += winner.takeName() + ", ";
 		}
 		System.out.println(temp.substring(0, temp.length() - 2) + "가 최종 우승했습니다");
 	}

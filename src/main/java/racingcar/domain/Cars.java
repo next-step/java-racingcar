@@ -10,10 +10,6 @@ public class Cars {
 		this.cars = cars;
 	}
 
-	public List<Car> getCars() {
-		return cars;
-	}
-
 	public List<Car> findWinner() {
 		return findWinners(findWinnerPosition(), getCars());
 	}
@@ -21,7 +17,7 @@ public class Cars {
 	private int findWinnerPosition() {
 		int max = 0;
 		for (int i = 0; i < cars.size(); i++) {
-			max = Math.max(max, cars.get(i).getStatus().getPosition());
+			max = Math.max(max, cars.get(i).takePosition());
 		}
 		return max;
 	}
@@ -30,5 +26,9 @@ public class Cars {
 		return winners.stream()
 			.filter(car -> car.hasSamePosition(max))
 			.collect(Collectors.toList());
+	}
+
+	public List<Car> getCars() {
+		return cars;
 	}
 }
