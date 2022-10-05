@@ -1,6 +1,8 @@
 package service;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
@@ -13,9 +15,10 @@ class StringAddCalculatorServiceTest {
 
     }
 
-    @Test
-    void splitAndSum_empty_string() {
-        assertThat(StringAddCalculatorService.splitAndSum("")).isZero();
+    @NullAndEmptySource
+    @ParameterizedTest
+    void splitAndSum_empty_string(String string) {
+        assertThat(StringAddCalculatorService.splitAndSum(string)).isZero();
     }
 
 

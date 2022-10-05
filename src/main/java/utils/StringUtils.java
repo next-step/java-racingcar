@@ -16,10 +16,9 @@ public class StringUtils {
 
     public static List<Integer> convertStringListToPositiveIntegerList(List<String> stringList) {
         List<Integer> integerList = convertStringListToIntegerList(stringList);
-        integerList.stream().filter(number -> number < 0).findFirst().ifPresent(none -> {
-                    throw new NumberFormatException("Negative Number is Invalid");
-                }
-        );
+        if (integerList.stream().anyMatch(number -> number < 0)) {
+            throw new NumberFormatException("Negative Number is Invalid");
+        }
         return integerList;
     }
 
