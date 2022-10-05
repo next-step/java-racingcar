@@ -11,9 +11,14 @@ public class CarRacingGame {
 
     public CarRacingGame(final PositiveNumber carCount, final PositiveNumber roundCount, final CarEngine carEngine) {
 
-        this.cars = new ArrayList<>();
-        carCount.loop(i -> this.cars.add(new Car(String.valueOf(i), carEngine)));
+        this.cars = this.createCars(carCount, carEngine);
         this.remainRound = roundCount;
+    }
+
+    private List<Car> createCars(final PositiveNumber carCount, final CarEngine carEngine) {
+        final List<Car> initCars = new ArrayList<>();
+        carCount.loop(i -> initCars.add(new Car(String.valueOf(i), carEngine)));
+        return initCars;
     }
 
     public boolean hasNextRound() {
