@@ -3,7 +3,7 @@ package calculator;
 public class Positive {
     private final int number;
 
-    public Positive(String s) throws NumberFormatException {
+    public Positive(String s) {
         this(Integer.parseInt(s));
     }
 
