@@ -42,7 +42,15 @@ class CarTest {
 
     @Test
     @DisplayName("자동차를 생성할때 Nickname 클래스를 받을 수 있다.")
-    void nickname_arg() {
+    void nicknameClass() {
+        Car car = new Car(new Nickname("boost"), new Position());
+
+        assertThat(this.car).isEqualTo(car);
+    }
+
+    @Test
+    @DisplayName("인자로 받는 car인스턴스와 같은 position인지 확인할 수 있다.")
+    void isSamePosition() {
         Car car = new Car(new Nickname("boost"));
 
         assertThat(this.car).isEqualTo(car);

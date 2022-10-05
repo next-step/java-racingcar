@@ -23,27 +23,12 @@ class PositionTest {
     }
 
     @Test
-    void biggestPosition() {
-        Position expected = new Position(3);
-        Position actual = Position.biggestPosition(positions);
-
-        assertThat(actual).isEqualTo(expected);
-    }
-
-    @Test
     void moveForward() {
         Position position = new Position();
 
         position.moveForward();
 
         assertThat(position.getValue()).isEqualTo(1);
-    }
-
-    @Test
-    void greaterThanOrEqual() {
-        Position expected = new Position(3);
-
-        assertThat(Position.biggestPosition(positions)).isEqualTo(expected);
     }
 
     @Test

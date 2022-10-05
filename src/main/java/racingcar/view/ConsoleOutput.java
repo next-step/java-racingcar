@@ -3,6 +3,7 @@ package racingcar.view;
 import racingcar.model.Car;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ConsoleOutput {
 
@@ -27,17 +28,12 @@ public class ConsoleOutput {
     }
 
     public void winner(List<Car> cars) {
-        for (int i = 0; i < cars.size(); i++) {
-            printComma(i);
-            System.out.print(cars.get(i).getName());
-        }
+        System.out.println(
+                cars.stream()
+                        .map(Car::getName)
+                        .collect(Collectors.joining(", "))
+        );
         System.out.println(WIN_MESSAGE);
-    }
-
-    private void printComma(int i) {
-        if (i != 0) {
-            System.out.print(COMMA);
-        }
     }
 
     private void newLine() {
