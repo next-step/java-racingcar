@@ -20,9 +20,10 @@ public class Game {
 
 	public static void main(String[] args) {
 		List<String> names = getNames();
+		Cars cars = Cars.ofNames(names);
+
 		int trialCount = getTrialCount();
 
-		Cars cars = Cars.ofNames(names);
 		move(cars, trialCount);
 	}
 
