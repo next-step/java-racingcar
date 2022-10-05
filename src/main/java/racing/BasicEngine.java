@@ -1,9 +1,11 @@
 package racing;
 
-public class BasicEngine implements Engine {
+import racing.util.RandomNumber;
 
-    private final int DEFAULT_MOVABLE_NUMBER = 4;
-    private int movableNumber = DEFAULT_MOVABLE_NUMBER;
+import java.util.Random;
+
+public class BasicEngine implements Engine {
+    private int movableNumber = 4;
 
     BasicEngine() {
     }
@@ -13,7 +15,8 @@ public class BasicEngine implements Engine {
     }
 
     @Override
-    public boolean canMove(int power) {
-        return power >= movableNumber;
+    public boolean canMove() {
+        return RandomNumber.generate(0, 10) >= movableNumber;
     }
+
 }

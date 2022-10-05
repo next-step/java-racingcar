@@ -1,10 +1,21 @@
 package racing;
 
-public class Track {
-    private final Car[] cars;
+import java.util.ArrayList;
+import java.util.List;
 
-    Track(Car[] cars) {
-        this.cars = cars;
+public class Track {
+    private List<Car> cars;
+    private final RacingOption option;
+
+    Track(RacingOption option) {
+        this.option = option;
+    }
+
+    public void createCars(){
+        this.cars = new ArrayList<>();
+        for (int idx = 0; idx < this.option.carCnt; idx++) {
+            this.cars.add(new Car());
+        }
     }
 
     public void start(int reps) {
