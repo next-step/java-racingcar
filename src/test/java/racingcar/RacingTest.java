@@ -1,4 +1,4 @@
-package step3;
+package racingcar;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -11,7 +11,7 @@ public class RacingTest {
 	@Test
 	@DisplayName("레이싱 참가자 수 테스트")
 	void participantOfRacing() throws Exception {
-		Cars actual = Racing.participate("3");
+		Cars actual = Racing.participate("a,b,c");
 		assertThat(actual.getCars().size()).isEqualTo(3);
 	}
 
@@ -22,17 +22,7 @@ public class RacingTest {
 		"-1"
 	})
 	void checkInput(String input) {
-		assertThatThrownBy(() -> Racing.checkInput(input))
+		assertThatThrownBy(() -> new Racing().checkInput(input))
 			.isInstanceOf(RuntimeException.class);
-	}
-
-	@ParameterizedTest
-	@DisplayName("4이상 일때만 전진 테스트")
-	@CsvSource(value = {
-		"3:''",
-		"4:-"
-	}, delimiter = ':')
-	void moveTest(int input, String expected) {
-		assertThat(Racing.move(input)).isEqualTo(expected);
 	}
 }
