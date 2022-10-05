@@ -4,7 +4,7 @@ public class Car {
     private int moveCount;
 
     public void move(int number){
-        if(number > 4){
+        if(number >= 4){
             this.moveCount++;
         }
     };
