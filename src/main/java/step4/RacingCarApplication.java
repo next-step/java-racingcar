@@ -3,18 +3,22 @@ package step4;
 import java.util.Random;
 import step4.model.Car;
 import step4.view.InputView;
+import step4.view.ResultView;
 
 public class RacingCarApplication {
 
-    private static Random random = new Random();
+    private static final Random random = new Random();
+    private static final InputView inputView = new InputView();
+    private static final ResultView resultView = new ResultView();
 
     public static void main(String[] args) {
-        InputView inputView = new InputView();
+
         String[] carNames = inputView.carName().split(",");
         int carNumber = inputView.carNumber();
         Car[] cars = newCar(carNames);
+        resultView.startResultView();
         for (int i = 0; i < carNumber; i ++) {
-            int location = advance(cars);
+            advance(cars);
         }
     }
 
@@ -26,11 +30,10 @@ public class RacingCarApplication {
         return cars;
     }
 
-    private static int advance(Car[] cars) {
+    private static void advance(Car[] cars) {
         for (Car car : cars) {
-            return car.advanceCar(random.nextInt(9));
+            resultView.result(car.currentName(), car.advanceCar(random.nextInt(9)));
         }
-        return 0;
     }
 
 }
