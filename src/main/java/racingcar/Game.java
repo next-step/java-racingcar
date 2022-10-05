@@ -24,20 +24,20 @@ public class Game {
 
 		int trialCount = getTrialCount();
 
-		move(cars, trialCount);
+		play(cars, trialCount);
 	}
 
-	private static void move(Cars cars, int trialCount) {
+	private static void play(Cars cars, int trialCount) {
 		List<Result> results = new ArrayList<>();
 		for (int i = 0; i < trialCount; ++i) {
-			moveOnce(cars);
+			move(cars);
 			results.add(new Result(cars));
 		}
 		OUTPUT_VIEW.printResults(results);
 		OUTPUT_VIEW.printWinners(cars.findWinnerNames());
 	}
 
-	private static void moveOnce(Cars cars) {
+	private static void move(Cars cars) {
 		NumberStrategy numberStrategy = new RandomNumberStrategy(RANDOM_NUMBER_BOUND_INCLUSIVE);
 		MoveStrategy moveStrategy = new NumberOverFourStrategy(numberStrategy);
 		cars.move(moveStrategy);
