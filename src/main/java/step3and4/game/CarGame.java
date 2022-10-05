@@ -4,6 +4,7 @@ import step3and4.client.input.InputView;
 import step3and4.client.number.Number;
 import step3and4.client.output.OutputView;
 import step3and4.game.car.Cars;
+import step3and4.game.car.WinningCars;
 
 import java.io.IOException;
 
@@ -27,7 +28,7 @@ public class CarGame {
 
         final int numberOfGames = inputView.answerToQuestion("시도할 회수는 몇 회 인가요?");
 
-        useTurns(cars, numberOfGames);
+        outputView.print(new WinningCars(lastUseTurnsCars(cars, numberOfGames)));
     }
 
     private Cars cars(String[] carsNames) {
@@ -35,11 +36,12 @@ public class CarGame {
         return carsFactory.cars(number);
     }
 
-    private void useTurns(Cars cars, int numberOfGames) {
+    private Cars lastUseTurnsCars(Cars cars, int numberOfGames) {
         for (int i = 0; i < numberOfGames; i++) {
             cars = cars.carsWithTurnUsed();
             outputView.print(cars);
         }
+        return cars;
     }
 
 }
