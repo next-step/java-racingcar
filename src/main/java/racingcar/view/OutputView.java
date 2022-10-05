@@ -2,15 +2,17 @@ package racingcar.view;
 
 import static java.lang.System.*;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import racingcar.Result;
+import racingcar.result.Result;
 
 public class OutputView {
 
 	private static final String PROGRESS_INDICATOR = "-";
 	private static final String RESULT_MESSAGE = lineSeparator() + "실행 결과";
+	private static final String RESULT_SEPARATOR = " : ";
 
 	public void promptCarCount() {
 		System.out.println("자동차 대수는 몇 대 인가요?");
@@ -27,17 +29,26 @@ public class OutputView {
 	public void printResults(List<Result> results) {
 		System.out.println(RESULT_MESSAGE);
 
-		String resultString = results.stream()
-			.map(Result::getPositions)
-			.map(this::getProgresses)
+		String resultStrings = results.stream()
+			.map(this::getResults)
 			.collect(Collectors.joining(lineSeparator()));
-		System.out.print(resultString);
+		System.out.print(resultStrings);
 	}
 
-	private String getProgresses(List<Integer> positions) {
-		return positions.stream()
-			.map(this::getProgress)
-			.collect(Collectors.joining());
+	private String getResults(Result result) {
+		Iterator<String> nameIterator = result.getNames().iterator();
+		Iterator<Integer> positionIterator = result.getPositions().iterator();
+		String resultString = "";
+		while (nameIterator.hasNext() && positionIterator.hasNext()) {
+			String name = nameIterator.next();
+			Integer position = positionIterator.next();
+			resultString += getResult(name, position);
+		}
+		return resultString;
+	}
+
+	private String getResult(String name, Integer position) {
+		return name + RESULT_SEPARATOR + getProgress(position);
 	}
 
 	private String getProgress(Integer position) {

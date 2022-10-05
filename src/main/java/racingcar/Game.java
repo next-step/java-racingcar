@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import racingcar.domain.Cars;
+import racingcar.result.Result;
 import racingcar.strategy.MoveStrategy;
 import racingcar.strategy.NumberOverFourStrategy;
 import racingcar.strategy.NumberStrategy;
@@ -41,8 +42,9 @@ public class Game {
 	}
 
 	private static void accumulateResult(List<Result> results, Cars cars) {
+		List<String> names = cars.getNames();
 		List<Integer> positions = cars.getPositions();
-		results.add(new Result(positions));
+		results.add(new Result(names, positions));
 	}
 
 	private static int getTrialCount() {
