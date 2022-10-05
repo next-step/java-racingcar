@@ -12,7 +12,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 public class CarGameInfoTest {
-    private static Random random = new Random();
+    private static final Random random = new Random();
 
     @ParameterizedTest
     @MethodSource("getCarListParams")
