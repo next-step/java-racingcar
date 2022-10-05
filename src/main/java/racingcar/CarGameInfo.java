@@ -35,14 +35,7 @@ public class CarGameInfo {
     }
 
     private int getMaxStraightCount() {
-        StringBuilder maxCount = resultString.get(0);
-        for(int i=1 ; i<resultString.size() ; i++) {
-            StringBuilder target = resultString.get(i);
-            if(target.length() >= maxCount.length()) {
-                maxCount = target;
-            }
-        }
-        return maxCount.length();
+        return resultString.stream().mapToInt(str -> str.length()).max().orElse(0);
     }
 
     public List<Car> getWinnerList() {
