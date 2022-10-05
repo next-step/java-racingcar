@@ -21,7 +21,7 @@ public class CarRacingGameConsoleLauncher {
 
         final Random random = new Random();
         final CarEngine randomMoveCarEngine = new OneOrZeroEngine(() -> random.nextInt(10), 4);
-        final CarRacingGame carRacingGame = new CarRacingGame(from(carCount), from(roundCount), randomMoveCarEngine);
+        final CarRacingGame carRacingGame = new CarRacingGame(from(carCount), new Round(roundCount), randomMoveCarEngine);
 
         printEmptyLine();
         this.outputConsumer.write("실행 결과");

@@ -7,12 +7,12 @@ import java.util.stream.Collectors;
 public class CarRacingGame {
 
     private final List<Car> cars;
-    private PositiveNumber remainRound;
+    private Round round;
 
-    public CarRacingGame(final PositiveNumber carCount, final PositiveNumber roundCount, final CarEngine carEngine) {
+    public CarRacingGame(final PositiveNumber carCount, final Round round, final CarEngine carEngine) {
 
         this.cars = this.createCars(carCount, carEngine);
-        this.remainRound = roundCount;
+        this.round = round;
     }
 
     private List<Car> createCars(final PositiveNumber carCount, final CarEngine carEngine) {
@@ -22,14 +22,14 @@ public class CarRacingGame {
     }
 
     public boolean hasNextRound() {
-        return this.remainRound.compareTo(PositiveNumber.ZERO) > 0;
+        return this.round.hasNextRound();
     }
 
     public List<CarDashboard> runRound() {
         for (Car car : this.cars) {
             car.move();
         }
-        this.remainRound = this.remainRound.decrease();
+        this.round.run();
         return result();
     }
 

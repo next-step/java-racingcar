@@ -20,7 +20,7 @@ class CarRacingGameTest {
     @Test
     public void spec01() {
         final CarEngine DUMMY_ENGINE = () -> Distance.ZERO;
-        final CarRacingGame carRacingGame = new CarRacingGame(from(1), from(1), DUMMY_ENGINE);
+        final CarRacingGame carRacingGame = new CarRacingGame(from(1), new Round(1), DUMMY_ENGINE);
         assertThat(carRacingGame).isNotNull();
     }
 
@@ -28,7 +28,7 @@ class CarRacingGameTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 3, 5, 20})
     public void spec02(final int carCount) {
-        final CarRacingGame carRacingGame = new CarRacingGame(from(carCount), from(1), ONE_MOVING_ENGINE);
+        final CarRacingGame carRacingGame = new CarRacingGame(from(carCount), new Round(1), ONE_MOVING_ENGINE);
         assertThat(carRacingGame.result()).hasSize(carCount);
     }
 
@@ -36,7 +36,7 @@ class CarRacingGameTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 3, 5, 20})
     public void spec03(final int round) {
-        final CarRacingGame carRacingGame = new CarRacingGame(from(1), from(round), ONE_MOVING_ENGINE);
+        final CarRacingGame carRacingGame = new CarRacingGame(from(1), new Round(round), ONE_MOVING_ENGINE);
         int roundCounter = 0;
         while (carRacingGame.hasNextRound()) {
             final List<CarDashboard> result = carRacingGame.runRound();
@@ -51,7 +51,7 @@ class CarRacingGameTest {
     @ParameterizedTest
     @CsvSource({"1,3", "5,10", "3,6"})
     public void spec04(final int carCount, final int round) {
-        final CarRacingGame carRacingGame = new CarRacingGame(from(carCount), from(round), ONE_MOVING_ENGINE);
+        final CarRacingGame carRacingGame = new CarRacingGame(from(carCount), new Round(round), ONE_MOVING_ENGINE);
         int roundCounter = 0;
         while (carRacingGame.hasNextRound()) {
             final List<CarDashboard> result = carRacingGame.runRound();
