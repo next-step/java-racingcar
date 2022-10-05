@@ -13,7 +13,7 @@ public class RacingCarTest {
     @DisplayName("자동차 객체 생성")
     public void 자동차_생성() {
         int carCount = 4;
-        ArrayList<Car> cars = ResultView.carMaker(carCount);
+        ArrayList<Car> cars = CarStorage.exit(carCount);
         int makedCarsCount = cars.size();
         assertThat(makedCarsCount).isEqualTo(4);
     }

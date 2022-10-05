@@ -1,30 +1,23 @@
 package step3;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class ResultView {
-    public static void main(String[] args) {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        int carCount = InputView.input();
 
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        int raceCount = InputView.input();
+    public static void displayDash(ArrayList<Car> cars) {
+        for (Car car : cars) {
+            int distance = car.getDistance();
+            while (distance > 0) {
+                System.out.print("-");
+                distance--;
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
 
-        ArrayList<Car> cars = carMaker(carCount);
-
+    public static void resultMessage() {
         System.out.println("\n실행 결과");
-        Race.result(cars,raceCount);
-
-
-        }
-
-    public static ArrayList<Car> carMaker(int carCount) {
-        ArrayList<Car> cars = new ArrayList<Car>();
-
-        for(int count = 1; count <= carCount; count++){
-            cars.add(new Car(1));
-        }
-
-        return cars;
     }
 
 }
