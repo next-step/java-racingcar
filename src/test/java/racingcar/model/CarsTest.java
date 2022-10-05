@@ -37,7 +37,7 @@ public class CarsTest {
         names.forEach(name -> expected.add(createCar(name, 1)));
 
         Cars cars = Cars.of(names);
-        List<Car> actual = cars.move(new GoodCondition());
+        List<Car> actual = cars.move(new SuccessCondition());
 
         assertThat(actual).isEqualTo(expected);
     }

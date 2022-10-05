@@ -14,10 +14,10 @@ public class Cars {
     }
 
     public static Cars of(List<String> names) {
-        return new Cars(initCars(names));
+        return new Cars(createCars(names));
     }
 
-    private static List<Car> initCars(List<String> names) {
+    private static List<Car> createCars(List<String> names) {
         return names.stream()
                 .map(Car::new)
                 .collect(Collectors.toList());

@@ -1,6 +1,6 @@
 package racingcar.model;
 
-public class GoodCondition implements Condition {
+public class SuccessCondition implements Condition {
 
     @Override
     public boolean inspect() {
