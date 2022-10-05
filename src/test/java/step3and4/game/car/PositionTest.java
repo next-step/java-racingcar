@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import step3and4.client.output.OutputView;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatCode;
 
 class PositionTest {
 
@@ -24,10 +23,9 @@ class PositionTest {
     @DisplayName("포지션 위치를 출력할 수 있다.")
     void b() {
         final OutputView.Fake outputView = new OutputView.Fake();
-        final Position sut = new Position(0, outputView);
+        final Position sut = new Position(1, outputView);
 
-        assertThatCode(() -> sut.printPosition())
-                .doesNotThrowAnyException();
+        assertThat(sut).hasToString("-");
     }
 
 }
