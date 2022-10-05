@@ -5,6 +5,7 @@ import java.util.Objects;
 public class Car {
 
     public static final int MOVE_DISTANCE = 1;
+
     private int location;
 
     private Car(int location) {
@@ -15,12 +16,16 @@ public class Car {
         return new Car(location);
     }
 
+    public static Car from(Car car) {
+        return new Car(car.location);
+    }
+
     public void moveForward() {
         location += MOVE_DISTANCE;
     }
 
-    public void print() {
-        RacingCarView.printRacingCar(location);
+    public int getLocation() {
+        return location;
     }
 
     @Override

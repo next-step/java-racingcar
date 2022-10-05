@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class RacingGameTestDrive {
@@ -8,6 +9,7 @@ public class RacingGameTestDrive {
         carNumber = RacingGameInputView.inputCarNumber();
         moveNumber = RacingGameInputView.inputMoveNumber();
         RacingCarView.printMessage();
-        RacingGame.race(carNumber, moveNumber);
+        List<Car> cars = RacingGame.race(carNumber, moveNumber);
+        RacingCarView.printRacingCar(cars);
     }
 }

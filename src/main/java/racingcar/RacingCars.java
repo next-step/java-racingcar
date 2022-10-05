@@ -10,6 +10,7 @@ import java.util.Objects;
 public class RacingCars {
 
     private static final int MINIMUM_VALUE = 4;
+
     private final List<Car> cars;
 
     private RacingCars(int number) {
@@ -42,10 +43,12 @@ public class RacingCars {
         return number >= MINIMUM_VALUE;
     }
 
-    public void print() {
+    public List<Car> copy() {
+        List<Car> result = new ArrayList<>();
         for (Car car : cars) {
-            car.print();
+            result.add(Car.from(car));
         }
+        return result;
     }
 
     @Override
