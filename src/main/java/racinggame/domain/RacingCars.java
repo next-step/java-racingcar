@@ -1,10 +1,7 @@
 package racinggame.domain;
 
-import racinggame.dto.WinCarsDTO;
-
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.toList;
@@ -25,9 +22,9 @@ public class RacingCars {
         cars.forEach(Car::move);
     }
 
-    public List<WinCarsDTO> winners() {
+    public List<Car> winners() {
         return cars.stream()
-                .collect(groupingBy(Car::getCarDistance, Collectors.mapping(WinCarsDTO::new, toList())))
+                .collect(groupingBy(Car::getCarDistance))
                 .entrySet()
                 .stream()
                 .max(Comparator.comparing(entry -> entry.getKey().getDistance()))

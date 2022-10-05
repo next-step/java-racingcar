@@ -16,7 +16,7 @@ public class RaceService {
             raceResultDTO.addRoundSnapshot(new RoundSnapshot(cars));
         }
 
-        raceResultDTO.addWinners(cars.winners());
+        raceResultDTO.addWinners(cars);
         return raceResultDTO;
     }
 }

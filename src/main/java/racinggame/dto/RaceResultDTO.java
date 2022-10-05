@@ -1,7 +1,10 @@
 package racinggame.dto;
 
+import racinggame.domain.RacingCars;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by seungwoo.song on 2022-09-26
@@ -23,7 +26,13 @@ public class RaceResultDTO {
         return winners;
     }
 
-    public void addWinners(List<WinCarsDTO> winners) {
-        this.winners = winners;
+    public void addWinners(RacingCars cars) {
+        winners = toWinCars(cars);
+    }
+
+    private List<WinCarsDTO> toWinCars(RacingCars cars) {
+        return cars.winners().stream()
+                .map(WinCarsDTO::new)
+                .collect(Collectors.toList());
     }
 }
