@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CarTest {
 
     @Test
-    void 자동차_리스트_생성(){
+    void 리스트_생성(){
         int size = 3;
         List<Car> carList = Car.makeCarList(size);
 
@@ -17,12 +17,23 @@ public class CarTest {
     }
 
     @Test
-    void 자동차_go_메소드(){
+    void go_메소드(){
         int distance = 10;
         Car car = Car.builder()
                 .distance(distance)
                 .build();
 
-        assertThat(car.go()).isEqualTo("----------");
+        String expect = "----------";
+        assertThat(car.go()).isEqualTo(expect);
+    }
+
+    @Test
+    void roll_메소드(){
+        Car car = new Car();
+
+        int rollResult = car.roll();
+
+        Car expect = Car.builder().distance(rollResult).build();
+        assertThat(car).isEqualTo(expect);
     }
 }

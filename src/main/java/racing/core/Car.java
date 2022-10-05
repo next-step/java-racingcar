@@ -2,6 +2,7 @@ package racing.core;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import racing.RandomUtil;
 
@@ -11,9 +12,11 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@EqualsAndHashCode
 public class Car {
     private int distance;
     private static final String DEFAULT_MARKER = "-";
+    private static int STEP_COUNT = 1;
 
     public static List<Car> makeCarList(int size) {
         List<Car> carList = new ArrayList<>();
@@ -27,7 +30,16 @@ public class Car {
         return DEFAULT_MARKER.repeat(Math.max(0, distance));
     }
 
-    private void oneStepAhead(){
-        this.distance += 1;
+    private void stepAhead(){
+        this.distance += STEP_COUNT;
+    }
+
+    public int roll() {
+        int randomNum = RandomUtil.getRandomNumUnder10();
+        if(randomNum >= 4){
+            this.distance += STEP_COUNT;
+            return 1;
+        }
+        return 0;
     }
 }
