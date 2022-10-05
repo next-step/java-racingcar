@@ -3,6 +3,7 @@ package step5.domain;
 import java.util.ArrayList;
 import java.util.List;
 import step5.util.CarFactory;
+import step5.util.RandomNumberGenerator;
 
 public class RacingGame {
 
@@ -37,7 +38,7 @@ public class RacingGame {
     }
 
     private boolean isMovable() {
-        int randomNumber = RandomNumber.getRandomNumber();
+        int randomNumber = RandomNumberGenerator.generate();
         return randomNumber > MOVABLE_BOUNDARY;
     }
 
