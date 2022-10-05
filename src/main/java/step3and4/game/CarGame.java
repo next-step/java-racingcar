@@ -22,15 +22,16 @@ public class CarGame {
     }
 
     public void run() throws IOException {
-        final int numberOfCars = inputView.answerToQuestion("자동차 대수는 몇 대 인가요?");
-        Cars cars = cars(numberOfCars);
+        final String[] carsNames = inputView.carsNames("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        Cars cars = cars(carsNames);
 
         final int numberOfGames = inputView.answerToQuestion("시도할 회수는 몇 회 인가요?");
+
         useTurns(cars, numberOfGames);
     }
 
-    private Cars cars(int numberOfCars) {
-        final Cars.Factory carsFactory = new Cars.Factory(numberOfCars);
+    private Cars cars(String[] carsNames) {
+        final Cars.Factory carsFactory = new Cars.Factory(carsNames);
         return carsFactory.cars(number);
     }
 
