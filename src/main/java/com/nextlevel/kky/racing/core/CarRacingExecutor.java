@@ -15,6 +15,14 @@ public class CarRacingExecutor {
         }
     }
 
+    public CarRacingExecutor(int carCount, String names[]) {
+        carList = new ArrayList();
+
+        for (int i = 0; i < carCount; i++) {
+            carList.add(new Car(names[i]));
+        }
+    }
+
     public void proceedNextRound() {
         carList.forEach(Car::move);
     }
