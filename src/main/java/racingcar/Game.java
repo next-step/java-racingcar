@@ -20,6 +20,10 @@ public class Game {
         initCars(count);
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
     private void initCars(int count) {
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < count; i++) {
