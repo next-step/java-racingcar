@@ -18,6 +18,7 @@ public class CarGameInfoTest {
     @MethodSource("getCarListParams")
     public void init(List<Car> carList) {
         CarGameInfo carGameInfo = new CarGameInfo(carList);
+        assertThat(carGameInfo).isNotNull();
     }
 
     @Test
