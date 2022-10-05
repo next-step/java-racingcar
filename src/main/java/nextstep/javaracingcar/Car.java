@@ -1,7 +1,5 @@
 package nextstep.javaracingcar;
 
-import nextstep.javaracingcar.step2.PositiveNumber;
-
 public class Car {
     private final String name;
     private PositiveNumber distance;

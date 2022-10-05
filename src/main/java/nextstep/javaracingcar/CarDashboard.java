@@ -1,7 +1,5 @@
 package nextstep.javaracingcar;
 
-import nextstep.javaracingcar.step2.PositiveNumber;
-
 import java.util.Objects;
 
 

@@ -1,4 +1,4 @@
-package nextstep.javaracingcar.step2;
+package nextstep.calculator;
 
 public class StringAddCalculator {
 

@@ -3,7 +3,7 @@ package nextstep.javaracingcar;
 import java.util.List;
 import java.util.Random;
 
-import static nextstep.javaracingcar.step2.PositiveNumber.from;
+import static nextstep.javaracingcar.PositiveNumber.from;
 
 public class CarRacingGameConsoleLauncher {
 

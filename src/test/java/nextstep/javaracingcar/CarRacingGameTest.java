@@ -1,6 +1,5 @@
 package nextstep.javaracingcar;
 
-import nextstep.javaracingcar.step2.PositiveNumber;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -10,7 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.ArrayList;
 import java.util.List;
 
-import static nextstep.javaracingcar.step2.PositiveNumber.from;
+import static nextstep.javaracingcar.PositiveNumber.from;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarRacingGameTest {
@@ -58,7 +57,7 @@ class CarRacingGameTest {
             final List<CarDashboard> result = carRacingGame.runRound();
             roundCounter++;
             assertThat(result).hasSize(carCount);
-            assertThat(result).containsAll(dashboards(carCount, PositiveNumber.from(roundCounter)));
+            assertThat(result).containsAll(dashboards(carCount, from(roundCounter)));
         }
     }
 
