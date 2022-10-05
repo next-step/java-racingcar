@@ -8,6 +8,14 @@ public class CarDistance {
         this.distance = carDistance;
     }
 
+    public CarDistance plus() {
+        return new CarDistance(distance + 1);
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -16,14 +24,6 @@ public class CarDistance {
         CarDistance that = (CarDistance) o;
 
         return distance == that.distance;
-    }
-
-    public CarDistance plus() {
-        return new CarDistance(distance + 1);
-    }
-
-    public int getDistance() {
-        return distance;
     }
 
     @Override
