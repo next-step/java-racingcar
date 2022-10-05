@@ -5,18 +5,19 @@ import racingcar.domain.Generator;
 import racingcar.domain.RandomValueGenerator;
 import racingcar.domain.TrialCount;
 
-import java.util.List;
-
 public class Main {
     public static void main(String[] args) {
         View view = new View();
 
-        Cars cars = Cars.create("a,b,c");
+        Cars cars = Cars.create(view.inputCarName());
         TrialCount trialCount = new TrialCount(view.inputTrialCount());
-
         Generator generator = new RandomValueGenerator();
-        List<Cars> trials = trialCount.start(cars, generator);
 
-        view.printResult(trials);
+        view.printResult();
+        while (trialCount.isRemain()) {
+            cars.move(generator);
+            view.printTrial(cars);
+            trialCount.decrease();
+        }
     }
 }

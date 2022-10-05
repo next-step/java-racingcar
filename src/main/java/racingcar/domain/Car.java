@@ -20,4 +20,8 @@ public class Car {
             location = location.next();
         }
     }
+
+    public Name getName() {
+        return name;
+    }
 }

@@ -3,16 +3,16 @@ package racingcar;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.Location;
+import racingcar.domain.Name;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class View {
     public static final Scanner scanner = new Scanner(System.in);
 
-    public int inputCarCount() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        return scanner.nextInt();
+    public String inputCarName() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        return scanner.nextLine();
     }
 
     public int inputTrialCount() {
@@ -20,20 +20,27 @@ public class View {
         return scanner.nextInt();
     }
 
-    public void printResult(List<Cars> trials) {
+    public void printResult() {
         System.out.println();
         System.out.println("실행 결과");
-        for (Cars cars : trials) {
-            printTrial(cars);
-            System.out.println();
-        }
     }
 
-    private void printTrial(Cars cars) {
+    public void printTrial(Cars cars) {
         for (Car car : cars.getCars()) {
-            printLocation(car.getLocation());
+            printCar(car);
             System.out.println();
         }
+        System.out.println();
+    }
+
+    private void printCar(Car car) {
+        printName(car.getName());
+        System.out.print(" : ");
+        printLocation(car.getLocation());
+    }
+
+    private void printName(Name name) {
+        System.out.print(name.getName());
     }
 
     private void printLocation(Location location) {

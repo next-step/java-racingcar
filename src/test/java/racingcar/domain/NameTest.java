@@ -22,7 +22,7 @@ public class NameTest {
     @Test
     @DisplayName("자동차 이름은 5글자를 초과할 수 없다.")
     void car_name_length_over_5() {
-        assertThatThrownBy(() -> new Name("over5"))
+        assertThatThrownBy(() -> new Name("over-5"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 5글자를 초과할 수 없다.");
     }

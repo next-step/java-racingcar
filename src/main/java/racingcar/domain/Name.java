@@ -6,9 +6,12 @@ import java.util.Objects;
 public class Name {
     public static final int MAXIMUM_LENGTH = 5;
 
+    private final String name;
+
     public Name(String name) {
         validateNullOrEmpty(name);
         validateOverMaximumLength(name);
+        this.name = name;
     }
 
     private void validateOverMaximumLength(String name) {
@@ -21,5 +24,9 @@ public class Name {
         if (Objects.isNull(name) || name.length() == 0) {
             throw new IllegalArgumentException("자동차 이름은 1글자 보다 작을 수 없다.");
         }
+    }
+
+    public String getName() {
+        return name;
     }
 }
