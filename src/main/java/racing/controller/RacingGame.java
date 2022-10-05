@@ -17,14 +17,13 @@ public class RacingGame {
     }
 
     public void start() {
-        int totalCount = inputView.enterCarCount();
+        String[] carNames = inputView.enterCarName();
         int tryCount = inputView.enterTryCount();
 
         RacingGameService racingGameService = new RacingGameService();
 
-        Cars cars = racingGameService.prepare(totalCount);
+        Cars cars = racingGameService.prepare(carNames);
 
-        resultView.start();
         racingGameService.racing(cars, tryCount, resultView, new CarMovableStrategy());
     }
 
