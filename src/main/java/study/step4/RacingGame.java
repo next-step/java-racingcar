@@ -24,16 +24,24 @@ public class RacingGame {
 	public static String[] getNames () {
 		System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
 		String input = SCANNER.next();
+		return split(input);
+	}
+
+	public static String[] split (String input) {
 		return input.split(SEPARATOR);
 	}
 
 	public static int getRound () {
 		System.out.println("시도할 회수는 몇회인가요?");
 		int round = SCANNER.nextInt();
+		validateRound(round);
+		return round;
+	}
+
+	public static void validateRound (int round) {
 		if (round < 0) {
 			throw new BadRequestException("음수는 입력할 수 없습니다.");
 		}
-		return round;
 	}
 
 	public static Cars registerParticipants(String[] names) {
