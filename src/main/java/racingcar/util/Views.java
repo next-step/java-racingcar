@@ -4,7 +4,7 @@ import racingcar.domain.Cars;
 
 public class Views {
 
-	public static void results(Cars cars, int index) {
+	public static void results(Cars cars) {
 		for (int i = 0; i < cars.getCars().size(); i++) {
 			Print.printResult(cars.getCars().get(i).getName().getName(), move(cars.getCars().get(i).getStatus().getPosition()));
 		}

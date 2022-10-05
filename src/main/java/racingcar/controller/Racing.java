@@ -37,16 +37,16 @@ public class Racing extends Condition {
 
 	private static Cars playMatches(Cars cars, String matches) {
 		for (int i = 0; i < Integer.parseInt(matches); i++) {
-			playMatch(cars, i);
+			playMatch(cars);
 		}
 		return cars;
 	}
 
-	private static void playMatch(Cars cars, int index) {
+	private static void playMatch(Cars cars) {
 		for (int i = 0; i < cars.getCars().size(); i++) {
 			cars.getCars().get(i).movingOfRound(random.makeRandom());
 		}
-		Views.results(cars, index);
+		Views.results(cars);
 	}
 
 	public static Cars participate(String input) {
