@@ -22,7 +22,7 @@ public class RaceController {
     }
 
     public void startRacing() {
-        while (currentRound<= raceInput.getTryCount() ) {
+        while (currentRound <= raceInput.getTryCount()) {
             doRaceRound();
         }
     }
