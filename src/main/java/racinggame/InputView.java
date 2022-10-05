@@ -1,5 +1,6 @@
 package racinggame;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
@@ -8,9 +9,10 @@ public class InputView {
 
     private InputView() {}
 
-    public static int inputNumberOfCar() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        return inputPositiveNumber();
+    public static List<String> inputCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        String[] carNames = SCANNER.nextLine().split(StringConstants.COMMA);
+        return List.of(carNames);
     }
 
     public static int inputTryCount() {
