@@ -6,9 +6,13 @@ import racingcar.exception.RacingCarErrorCode;
 import java.util.List;
 
 public class RacingGame {
-    public static List<Car> race(int carNumber, int moveNumber) {
+
+    private static final String REGEX = ",";
+
+    public static List<Car> race(String carNames, int moveNumber) {
         validateMoveNumber(moveNumber);
-        RacingCars cars = RacingCars.create(carNumber);
+        String[] names = splitNames(carNames);
+        RacingCars cars = RacingCars.create(names);
         for (int i = 0; i < moveNumber; i++) {
             cars.moving(new RandomNumberGenerator());
         }
@@ -19,5 +23,9 @@ public class RacingGame {
         if (moveNumber < 0) {
             throw new CustomException(RacingCarErrorCode.MOVE_NUMBER_BAD_REQUEST);
         }
+    }
+
+    private static String[] splitNames(String carNames) {
+        return carNames.split(REGEX);
     }
 }

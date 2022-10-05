@@ -32,7 +32,7 @@ public class Car {
     }
 
     public static Car from(Car car) {
-        return new Car(car.location);
+        return new Car(car.location, car.name);
     }
 
     public void moveForward() {

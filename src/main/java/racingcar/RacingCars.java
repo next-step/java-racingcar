@@ -21,8 +21,19 @@ public class RacingCars {
         }
     }
 
+    private RacingCars(String[] names) {
+        this.cars = new ArrayList<>();
+        for (String name : names) {
+            cars.add(Car.from(name));
+        }
+    }
+
     public static RacingCars create(int number) {
         return new RacingCars(number);
+    }
+
+    public static RacingCars create(String[] names) {
+        return new RacingCars(names);
     }
 
     private static void validateNumber(int number) {

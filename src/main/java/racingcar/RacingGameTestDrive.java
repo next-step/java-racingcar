@@ -5,11 +5,12 @@ import java.util.Scanner;
 
 public class RacingGameTestDrive {
     public static void main(String[] args) {
-        int carNumber, moveNumber;
-        carNumber = RacingGameInputView.inputCarNumber();
+        String carNames;
+        int moveNumber;
+        carNames = RacingGameInputView.inputCarNumber();
         moveNumber = RacingGameInputView.inputMoveNumber();
         RacingCarView.printMessage();
-        List<Car> cars = RacingGame.race(carNumber, moveNumber);
+        List<Car> cars = RacingGame.race(carNames, moveNumber);
         RacingCarView.printRacingCar(cars);
     }
 }
