@@ -1,6 +1,9 @@
 package racing.strategy;
 
-public interface CarMoveStrategy {
+public class CarMoveStrategy {
+    private final static int MOVE_THRESHOLD = 4;
 
-    boolean canMove(int randomNum);
+    public boolean canMove(int randomNum) {
+        return randomNum >= MOVE_THRESHOLD;
+    }
 }

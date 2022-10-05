@@ -17,6 +17,4 @@ public class RacingWinners {
         }
         return names;
     }
-
-
 }
