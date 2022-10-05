@@ -40,8 +40,10 @@ class RacingGameInfoTest {
 		racingGameInfo.setParticipants(participants);
 
 		participants.moveAll(randomMoveStrategy);
-		int winnerPosition = racingGameInfo.findWinners().get(0).getPosition();
 
-		assertThat(winnerPosition).isEqualTo(racingGameInfo.getMaxPosition());
+		int maxPosition = participants.findMaxPosition();
+		racingGameInfo.setMaxPosition(maxPosition);
+
+		assertThat(racingGameInfo.findWinners().get(0).getPosition()).isEqualTo(racingGameInfo.getMaxPosition());
 	}
 }
