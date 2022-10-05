@@ -30,4 +30,3 @@
 
 - 자동차 이동 시 값 증가 검증 테스트 코드 추가 CarTest
 - 게임 우승자 판정 검증 RacingGameTest
-
