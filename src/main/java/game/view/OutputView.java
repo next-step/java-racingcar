@@ -1,7 +1,7 @@
 package game.view;
 
-import game.model.Car;
-import game.model.Cars;
+import game.controller.dto.CarDto;
+import game.controller.dto.CarsDto;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,20 +22,20 @@ public class OutputView {
         System.out.println(OUTPUT_START_MESSAGE);
     }
 
-    public static void printOutputBody(Cars cars) {
-        for (Car car : cars.getCarList()) {
-            System.out.println(getStringForOutput(car));
+    public static void printOutputBody(CarsDto carsDto) {
+        for (CarDto carDto : carsDto.getCarList()) {
+            System.out.println(getStringForOutput(carDto));
         }
         System.out.println();
     }
 
-    private static String getStringForOutput(Car car) {
-        return String.format("%s : %s", car.getCarName(), OUTPUT_SYMBOL.repeat(car.getPosition()));
+    private static String getStringForOutput(CarDto carDto) {
+        return String.format("%s : %s", carDto.getCarName(), OUTPUT_SYMBOL.repeat(carDto.getPosition()));
     }
 
-    public static void printOutputResult(Cars cars) {
+    public static void printOutputResult(CarsDto cars) {
         List<String> winners = cars.getLocatedHighPositionCars().stream()
-                .map(Car::getCarName)
+                .map(CarDto::getCarName)
                 .collect(Collectors.toList());
         System.out.println(String.join(OUTPUT_WINNER_SEPARATOR, winners) + OUTPUT_FINAL_MESSAGE);
     }

@@ -19,11 +19,11 @@ public class Car {
         }
     }
 
-    public int getPosition() {
-        return position.getPosition();
+    public Position getPosition() {
+        return position;
     }
 
-    public String getCarName() {
-        return carName.getName();
+    public CarName getCarName() {
+        return carName;
     }
 }

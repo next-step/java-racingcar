@@ -14,7 +14,7 @@ class CarsTest {
         cars.moveCarList(() -> true);
 
         for (Car car : cars.getCarList()) {
-            Assertions.assertThat(car.getPosition()).isOne();
+            Assertions.assertThat(car.getPosition()).isEqualTo(new Position(1));
         }
     }
 
@@ -25,14 +25,7 @@ class CarsTest {
         cars.moveCarList(() -> false);
 
         for (Car car : cars.getCarList()) {
-            Assertions.assertThat(car.getPosition()).isZero();
+            Assertions.assertThat(car.getPosition()).isEqualTo(new Position(0));
         }
-    }
-
-    @Test
-    void 높은_위치에_위치한_자동차_리스트_조회() {
-        Cars cars = new Cars(List.of("a", "b", "c"));
-
-        Assertions.assertThat(cars.getLocatedHighPositionCars()).isEqualTo(cars.getCarList());
     }
 }
