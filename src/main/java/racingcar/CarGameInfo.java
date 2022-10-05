@@ -21,6 +21,15 @@ public class CarGameInfo {
         }
     }
 
+    public List<Car> getWinnerList() {
+        List<Car> winnerList = new LinkedList<>();
+        int maxStraightCount = getMaxStraightCount();
+        for(int i=0 ; i<resultString.size() ; i++) {
+            decideIsWinnerCar(winnerList, i, maxStraightCount);
+        }
+        return winnerList;
+    }
+
     private void initResultString() {
         for(int i=0 ; i<cars.size() ; i++) {
             resultString.add(new StringBuilder());
@@ -36,15 +45,6 @@ public class CarGameInfo {
 
     private int getMaxStraightCount() {
         return resultString.stream().mapToInt(str -> str.length()).max().orElse(0);
-    }
-
-    public List<Car> getWinnerList() {
-        List<Car> winnerList = new LinkedList<>();
-        int maxStraightCount = getMaxStraightCount();
-        for(int i=0 ; i<resultString.size() ; i++) {
-            decideIsWinnerCar(winnerList, i, maxStraightCount);
-        }
-        return winnerList;
     }
 
     private void decideIsWinnerCar(List<Car> winnerList, int index, int maxStraightCount) {
