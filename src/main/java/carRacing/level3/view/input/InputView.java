@@ -33,14 +33,6 @@ public class InputView {
 		}
 	}
 
-	public ArrayList<String> carNames() {
-		return carNames;
-	}
-
-	public int carSum() {
-		return carNames.size();
-	}
-
 	public List<String> saveCarNames() throws Exception {
 		for (String carName : askCarsName()) {
 			validateLength(carName);
