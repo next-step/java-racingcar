@@ -1,7 +1,7 @@
 package com.nextlevel.kky.racing.ui;
 
-import com.nextlevel.kky.racing.Car;
-import com.nextlevel.kky.racing.CarRacingExecutor;
+import com.nextlevel.kky.racing.core.Car;
+import com.nextlevel.kky.racing.core.CarRacingExecutor;
 
 public class ResultView {
 

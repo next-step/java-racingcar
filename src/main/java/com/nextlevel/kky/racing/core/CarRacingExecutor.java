@@ -1,4 +1,4 @@
-package com.nextlevel.kky.racing;
+package com.nextlevel.kky.racing.core;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.nextlevel.kky.racing;
 
-import com.nextlevel.kky.racing.Car;
+import com.nextlevel.kky.racing.core.Car;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
