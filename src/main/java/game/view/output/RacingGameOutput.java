@@ -1,7 +1,7 @@
-package game.io.output;
+package game.view.output;
 
 import game.domain.car.Car;
-import game.domain.RacingGameCarList;
+import game.domain.car.RacingGameCarList;
 
 public class RacingGameOutput {
 
@@ -19,8 +19,8 @@ public class RacingGameOutput {
 
     private static void printCarLocation(Car car) {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(car.name()).append(LOCATION_GUIDE);
-        for (int i = 0; i < car.location(); i++) {
+        stringBuilder.append(car.carName().getCarName()).append(LOCATION_GUIDE);
+        for (int i = 0; i < car.location().getLocation(); i++) {
             stringBuilder.append(LOCATION_CHARACTER);
         }
         System.out.println(stringBuilder);
@@ -36,10 +36,10 @@ public class RacingGameOutput {
 
     public static void endGame(RacingGameCarList racingGameCarList) {
         StringBuilder result = new StringBuilder();
-        for(int i = 0; i < racingGameCarList.cars().size() - 1; i++){
-            result.append(racingGameCarList.cars().get(i).name()).append(WINNER_SEPARATOR);
+        for (int i = 0; i < racingGameCarList.cars().size() - 1; i++) {
+            result.append(racingGameCarList.cars().get(i).carName()).append(WINNER_SEPARATOR);
         }
-        result.append(racingGameCarList.getLast().name());
+        result.append(racingGameCarList.getLast().carName());
         result.append(WINNER_GUIDE);
         System.out.println(result);
     }

@@ -1,6 +1,6 @@
-package game.io;
+package game.view;
 
-import game.io.input.Input;
+import game.view.input.Input;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -15,6 +15,6 @@ public class InputTest {
     void input_Number_Of_Cars(String given) {
         System.setIn(new ByteArrayInputStream(given.getBytes()));
 
-        assertThatThrownBy(() -> Input.inputPositiveNumber()).isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> Input.inputNumber()).isInstanceOf(RuntimeException.class);
     }
 }

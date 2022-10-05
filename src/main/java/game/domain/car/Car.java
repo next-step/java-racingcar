@@ -1,27 +1,28 @@
 package game.domain.car;
 
-import game.domain.RacingGameRule;
+import game.domain.rule.RacingGameRule;
 
 public abstract class Car {
 
-    protected int location;
-    private String name;
+    protected Location location;
+    private CarName carName;
 
     public Car() {
     }
 
     public Car(String name) {
-        this.name = name;
+        this.carName = new CarName(name);
+        this.location = new Location();
     }
 
-    public int location() {
-        return location;
+    public Location location() {
+        return new Location(location);
     }
 
-    public String name() {
-        return name;
+    public CarName carName() {
+        return new CarName(carName);
     }
 
-    public abstract void forward(RacingGameRule racingGameRule);
+    public abstract void forward(RacingGameRule racingGameRule, int number);
 
 }

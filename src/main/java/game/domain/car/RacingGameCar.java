@@ -1,7 +1,6 @@
 package game.domain.car;
 
-import game.domain.RacingGameRule;
-import game.domain.car.Car;
+import game.domain.rule.RacingGameRule;
 
 public class RacingGameCar extends Car {
 
@@ -9,25 +8,21 @@ public class RacingGameCar extends Car {
     }
 
     public RacingGameCar(String name) {
-        super(checkNameLength(name));
+        super(name);
+    }
+
+    public RacingGameCar(RacingGameCar racingGameCar) {
+        super(racingGameCar.carName().getCarName());
     }
 
     @Override
-    public void forward(RacingGameRule racingGameRule) {
-        if (racingGameRule.isForward(racingGameRule.pickRandomNumber())) {
+    public void forward(RacingGameRule racingGameRule, int number) {
+        if (racingGameRule.isForward(number)) {
             forward(racingGameRule.forwardDistance());
         }
     }
 
     public void forward(int number) {
-        location += number;
+        location.forward(number);
     }
-
-    private static String checkNameLength(String name) {
-        if(name.length()>5){
-            throw new RuntimeException("자동차 이름은 5자를 초과할 수 없다");
-        }
-        return name;
-    }
-
 }
