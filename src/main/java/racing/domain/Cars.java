@@ -1,6 +1,7 @@
 package racing.domain;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import racing.ui.ResultView;
 
 public class Cars {
@@ -25,6 +26,16 @@ public class Cars {
 
     public void print(ResultView resultView) {
         cars.forEach(resultView::print);
+        resultView.enter();
+    }
+
+    public String findWinners() {
+        int max = cars.stream().mapToInt(Car::getDistance).max().getAsInt();
+
+        return cars.stream()
+            .filter(car -> car.getDistance() == max)
+            .map(Car::getName)
+            .collect(Collectors.joining(", "));
     }
 
 }
