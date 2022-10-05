@@ -20,7 +20,7 @@ public class CarTest {
 	@DisplayName("자동차 이름 5자 이하면 통과")
 	void carNameBelowFive() {
 		Car car = new Car("abcde");
-		assertThat(car.getName()).isEqualTo(new Name("abcde"));
+		assertThat(car).isEqualTo(new Car("abcde"));
 	}
 
 	@ParameterizedTest
