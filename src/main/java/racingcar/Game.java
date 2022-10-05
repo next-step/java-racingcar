@@ -18,10 +18,10 @@ public class Game {
 	private static final int RANDOM_NUMBER_BOUND_INCLUSIVE = 9;
 
 	public static void main(String[] args) {
-		int carCount = getCarCount();
+		List<String> names = getNames();
 		int trialCount = getTrialCount();
 
-		Cars cars = new Cars(carCount);
+		Cars cars = Cars.ofNames(names);
 		move(cars, trialCount);
 	}
 
@@ -53,5 +53,10 @@ public class Game {
 	private static int getCarCount() {
 		OUTPUT_VIEW.promptCarCount();
 		return INPUT_VIEW.readCarCount();
+	}
+
+	private static List<String> getNames() {
+		OUTPUT_VIEW.promptNames();
+		return INPUT_VIEW.readNames();
 	}
 }

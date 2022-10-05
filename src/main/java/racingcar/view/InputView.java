@@ -1,10 +1,12 @@
 package racingcar.view;
 
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
 
+	private static final String NAME_DELIMITER = ",";
 	private static final Scanner SCANNER = new Scanner(System.in);
 
 	public int readCarCount() {
@@ -13,6 +15,12 @@ public class InputView {
 
 	public int readTrialCount() {
 		return readPositive();
+	}
+
+	public List<String> readNames() {
+		String input = SCANNER.nextLine();
+		String[] names = input.split(NAME_DELIMITER);
+		return List.of(names);
 	}
 
 	private int readPositive() {
