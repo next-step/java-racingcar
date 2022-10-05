@@ -1,13 +1,16 @@
-package step5;
+package step5.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import step5.domain.Car;
+import step5.domain.RacingResult;
+import step5.domain.RandomNumber;
 
-public class RacingGame {
+public class RacingGameService {
 
     private static final int MOVABLE_BOUNDARY = 3;
 
-    static List<RacingResult> start(List<Car> cars) {
+    public static List<RacingResult> start(List<Car> cars) {
         List<RacingResult> racingResults = new ArrayList<>();
         for (Car car : cars) {
             moveCar(car, isMovable());

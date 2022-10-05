@@ -1,8 +1,8 @@
-package step5.input;
+package step5.view;
 
 import java.util.Scanner;
 
-public class RacingCarInput {
+public class InputView {
 
     private static final String CAR_NAME_DELIMITER = ",";
 

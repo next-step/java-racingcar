@@ -1,4 +1,4 @@
-package step5;
+package step5.domain;
 
 public class Car {
 
@@ -10,7 +10,7 @@ public class Car {
         this.carName = carName;
     }
 
-    void moveForward() {
+    public void moveForward() {
         this.location.move();
     }
 

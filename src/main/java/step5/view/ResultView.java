@@ -1,10 +1,10 @@
-package step5.output;
+package step5.view;
 
 import java.util.Iterator;
 import java.util.List;
-import step5.RacingResult;
+import step5.domain.RacingResult;
 
-public class RacingCarOutput {
+public class ResultView {
 
     private static final String CAR_NAME_NOTICE_MESSAGE = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)";
     private static final String TRY_COUNT_NOTICE_MESSAGE = "시도할 회수는 몇 회인가요?";

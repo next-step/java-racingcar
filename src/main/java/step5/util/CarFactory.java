@@ -1,14 +1,16 @@
-package step5;
+package step5.util;
 
 import java.util.ArrayList;
 import java.util.List;
+import step5.domain.Car;
+import step5.domain.CarName;
 
 public class CarFactory {
 
     private CarFactory(){
     }
 
-    static List<Car> createCar(String[] carNames) {
+    public static List<Car> createCar(String[] carNames) {
         List<Car> cars = new ArrayList<>();
         int carCount = carNames.length;
 

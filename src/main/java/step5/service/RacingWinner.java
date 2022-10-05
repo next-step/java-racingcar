@@ -1,11 +1,12 @@
-package step5;
+package step5.service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import step5.domain.Car;
 
 public class RacingWinner {
 
-    static String chooseWinner(List<Car> cars) {
+    public static String chooseWinner(List<Car> cars) {
         int foreFrontLocation = getForeFrontLocation(cars);
 
         return cars.stream()
