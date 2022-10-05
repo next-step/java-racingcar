@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 public class CarRacingGame {
 
     private final List<Car> cars;
-    private Round round;
+    private final Round round;
 
     public CarRacingGame(final PositiveNumber carCount, final Round round, final CarEngine carEngine) {
 
@@ -17,7 +17,7 @@ public class CarRacingGame {
 
     private List<Car> createCars(final PositiveNumber carCount, final CarEngine carEngine) {
         final List<Car> initCars = new ArrayList<>();
-        carCount.loop(i -> initCars.add(new Car(String.valueOf(i), carEngine)));
+        carCount.forEach(i -> initCars.add(new Car(String.valueOf(i), carEngine)));
         return initCars;
     }
 

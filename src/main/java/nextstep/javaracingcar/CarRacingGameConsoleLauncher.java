@@ -51,7 +51,7 @@ public class CarRacingGameConsoleLauncher {
     private void printResult(List<CarDashboard> dashboards) {
         for (CarDashboard dashboard : dashboards) {
             final StringBuffer sb = new StringBuffer("-");
-//            dashboard.distance().toItera();
+            dashboard.distance().forEach(i -> sb.append("-"));
             outputConsumer.write(sb.toString());
         }
         printEmptyLine();

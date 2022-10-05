@@ -35,6 +35,6 @@ public class Distance implements Iterable<Integer> {
 
     @Override
     public Iterator<Integer> iterator() {
-        return new IntegerIterator(value);
+        return new SizeIterator(value);
     }
 }

@@ -1,12 +1,9 @@
 package nextstep.javaracingcar;
 
-import java.util.function.IntConsumer;
+import java.util.Iterator;
 
-public class PositiveNumber implements Comparable<PositiveNumber> {
+public class PositiveNumber implements Iterable<Integer> {
     private final int number;
-
-    public static final PositiveNumber ZERO = new PositiveNumber(0);
-    public static final PositiveNumber ONE = new PositiveNumber(1);
 
     private PositiveNumber(final int value) {
         if (value < 0) {
@@ -17,19 +14,6 @@ public class PositiveNumber implements Comparable<PositiveNumber> {
 
     public static PositiveNumber from(final int value) {
         return new PositiveNumber(value);
-    }
-
-    public static PositiveNumber from(final String value) {
-        return from(Integer.parseInt(value));
-    }
-
-    public PositiveNumber plus(final PositiveNumber other) {return new PositiveNumber(this.number + other.number);
-    }
-    public PositiveNumber decrease() {
-        if(this.number == 0) {
-            throw new IllegalStateException("0 은 감소할 수 없습니다.");
-        }
-        return new PositiveNumber(this.number - 1);
     }
 
     @Override
@@ -43,11 +27,6 @@ public class PositiveNumber implements Comparable<PositiveNumber> {
     }
 
     @Override
-    public int compareTo(final PositiveNumber other) {
-        return Integer.compare(this.number, other.number);
-    }
-
-    @Override
     public int hashCode() {
         return number;
     }
@@ -57,9 +36,8 @@ public class PositiveNumber implements Comparable<PositiveNumber> {
         return "Positive{" + "number=" + number + '}';
     }
 
-    public void loop(final IntConsumer consumer) {
-        for (int i = 0; i < this.number; i++) {
-            consumer.accept(i);
-        }
+    @Override
+    public Iterator<Integer> iterator() {
+        return new SizeIterator(number);
     }
 }

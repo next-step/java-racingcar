@@ -2,12 +2,12 @@ package nextstep.javaracingcar;
 
 import java.util.Iterator;
 
-class IntegerIterator implements Iterator<Integer> {
+class SizeIterator implements Iterator<Integer> {
 
     private int size;
     private int index;
 
-    IntegerIterator(final int size) {
+    SizeIterator(final int size) {
         this.index = 0;
         this.size = size;
     }
