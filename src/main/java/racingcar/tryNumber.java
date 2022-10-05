@@ -1,12 +1,11 @@
 package racingcar;
 
-public class PositiveNumber {
+public class tryNumber {
     private int number;
 
-    public
-    PositiveNumber(int number) {
+    public tryNumber(int number) {
         if (number <= 0) {
-            throw new IllegalArgumentException("Positive는 양수만 들어올 수 있습니다.");
+            throw new IllegalArgumentException("시도횟수는 0이상만 가능합니다.");
         }
         this.number = number;
     }
