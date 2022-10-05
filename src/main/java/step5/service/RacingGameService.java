@@ -14,8 +14,8 @@ public class RacingGameService {
         List<RacingResult> racingResults = new ArrayList<>();
         for (Car car : cars) {
             moveCar(car, isMovable());
+            racingResults.add(new RacingResult(car));
         }
-
         return racingResults;
     }
 
