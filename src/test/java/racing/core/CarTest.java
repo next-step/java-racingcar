@@ -23,7 +23,7 @@ public class CarTest {
                 .distance(distance)
                 .build();
 
-        String expect = "----------";
+        String expect = "-----------";
         assertThat(car.go()).isEqualTo(expect);
     }
 
@@ -34,6 +34,6 @@ public class CarTest {
         int rollResult = car.roll();
 
         Car expect = Car.builder().distance(rollResult).build();
-        assertThat(car).isEqualTo(expect);
+        assertThat(car.getDistance()).isEqualTo(expect.getDistance());
     }
 }

@@ -1,5 +1,6 @@
 package racing.view;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racing.core.RacingDto;
@@ -17,7 +18,7 @@ public class InputViewTest {
     }
 
     @Test
-    void view를_통한_유효값_생성(){
+    void view를_통한_유효Dto_생성(){
         String carCountIn = "3";
         String tryCountIn = "5";
         String input = carCountIn + "\n" + tryCountIn;
