@@ -55,14 +55,13 @@ public final class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return Objects.equals(position, car.position);
+        return Objects.equals(position, car.position) && Objects.equals(name, car.name);
     }
 
     @Override
     public int hashCode() {
         name.verifyLengthMustNotExceedFive();
 
-        return Objects.hash(position);
+        return Objects.hash(position, name);
     }
-
 }
