@@ -1,7 +1,10 @@
 package racingcar.domain;
 
+import static java.util.stream.Collectors.*;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import racingcar.domain.movingcondition.MovingCondition;
 
@@ -24,19 +27,23 @@ public class Cars {
 
     public List<CarStat> findWinners() {
         Car representativeWinner = findRepresentativeWinner();
-        List<CarStat> winners = new ArrayList<>();
 
-        for (Car car : cars) {
-            if (car.hasSamePosition(representativeWinner)) {
-                winners.add(new CarStat(car.getName(), car.getPosition()));
-            }
-        }
-        return winners;
+        return cars.stream()
+            .filter(car -> car.isDraw(representativeWinner))
+            .map(car -> new CarStat(car.getName(), car.getPosition()))
+            .collect(toList());
     }
 
     private Car findRepresentativeWinner() {
         return cars.stream()
-            .max(Car::isWinner)
+            .reduce(this::getWinner)
             .orElseThrow();
+    }
+
+    private Car getWinner(Car car1, Car car2) {
+        if (car1.isWinner(car2)) {
+            return car1;
+        }
+        return car2;
     }
 }
