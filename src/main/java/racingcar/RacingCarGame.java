@@ -11,8 +11,8 @@ public class RacingCarGame {
     private final List<Car> carList;
     private final int tryCount;
 
-    public RacingCarGame(int carCount, int tryCount) {
-        this.carList = createCars(carCount);
+    public RacingCarGame(List<String> carNames, int tryCount) {
+        this.carList = createCars(carNames);
         this.tryCount = tryCount;
     }
 
@@ -20,10 +20,10 @@ public class RacingCarGame {
         return Collections.unmodifiableList(this.carList);
     }
 
-    private List<Car> createCars(int carCount) {
+    private List<Car> createCars(List<String> carNames) {
         List<Car> carList = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            carList.add(new Car());
+        for (String carName : carNames) {
+            carList.add(new Car(carName));
         }
         return carList;
     }
