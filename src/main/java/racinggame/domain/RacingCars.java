@@ -2,7 +2,6 @@ package racinggame.domain;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.toList;
@@ -15,10 +14,8 @@ public class RacingCars {
         this.cars = cars;
     }
 
-    public List<CarSnapshot> makeSnapshot() {
-        return this.cars.stream()
-                .map(CarSnapshot::new)
-                .collect(toList());
+    public List<Car> getCars() {
+        return cars;
     }
 
     public void move() {
@@ -27,10 +24,13 @@ public class RacingCars {
 
     public List<Car> winners() {
         return cars.stream()
-                .collect(groupingBy(Car::distance))
-                .entrySet().stream()
-                .max(Comparator.comparing(Map.Entry::getKey))
+                .collect(groupingBy(Car::getCarDistance))
+                .entrySet()
+                .stream()
+                .max(Comparator.comparing(entry -> entry.getKey().getDistance()))
                 .get()
-                .getValue();
+                .getValue()
+                .stream()
+                .collect(toList());
     }
 }

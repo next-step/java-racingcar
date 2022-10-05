@@ -3,6 +3,7 @@ package racinggame;
 import racinggame.controller.RaceController;
 import racinggame.dto.RaceResultDTO;
 import racinggame.service.RaceService;
+import racinggame.view.RaceInputReader;
 import racinggame.view.RaceResultView;
 
 public class RaceRunner {

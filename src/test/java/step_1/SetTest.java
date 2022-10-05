@@ -23,7 +23,7 @@ class SetTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1,2,3})
+    @ValueSource(ints = {1, 2, 3})
     void testContains1(int input) {
         assertThat(numbers).contains(input);
     }

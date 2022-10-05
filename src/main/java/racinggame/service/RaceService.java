@@ -3,7 +3,7 @@ package racinggame.service;
 import racinggame.domain.RacingCars;
 import racinggame.dto.RaceInputDTO;
 import racinggame.dto.RaceResultDTO;
-import racinggame.domain.RoundSnapshot;
+import racinggame.dto.RoundSnapshot;
 
 public class RaceService {
 
@@ -16,7 +16,7 @@ public class RaceService {
             raceResultDTO.addRoundSnapshot(new RoundSnapshot(cars));
         }
 
-        raceResultDTO.addWinners(cars.winners());
+        raceResultDTO.addWinners(cars);
         return raceResultDTO;
     }
 }
