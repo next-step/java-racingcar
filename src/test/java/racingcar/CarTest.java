@@ -13,7 +13,7 @@ public class CarTest {
     @DisplayName("4이상일 경우 움직이는지 테스트")
     void 전진(){
         Car car = new Car("car1");
-        car.move(4);
+        car.move(() -> true);
         assertThat(car.getPosition()).isEqualTo(1);
     }
 
@@ -21,7 +21,7 @@ public class CarTest {
     @DisplayName("4이하일 경우 움직이는지 테스트")
     void 정지(){
         Car car = new Car("car2");
-        car.move(3);
+        car.move(() -> false);
         assertThat(car.getPosition()).isEqualTo(0);
     }
 

@@ -1,47 +1,33 @@
 package racingcar.domain;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import static java.util.stream.Collectors.groupingBy;
+import racingcar.strategy.MovingStrategy;
 
 public class Car {
-    private static final int MOVE_MIN_NUM = 4;
-    private static final int MIN_POSITION = 0;
-    private final String carName;
+    private final CarName carName;
 
-    private int position;
+    private Position position;
 
     public Car(String carName) {
         this(carName, 0);
     }
 
     public Car(String carName, int position) {
-        this.carName = carName;
-        this.position = positionValidCheck(position);
+        this.carName = new CarName(carName);
+        this.position = new Position(position);
     }
 
     public String getCarName() {
-        return carName;
+        return carName.getCarName();
     }
 
     public int getPosition() {
-        return position;
+        return position.getPosition();
     }
 
-    public void move(int num) {
-        if (num >= MOVE_MIN_NUM) {
-            position++;
+    public Car move(MovingStrategy movingStrategy) {
+        if (movingStrategy.isMovable()) {
+            position = position.move();
         }
+        return this;
     }
-
-    private int positionValidCheck(int position) {
-        if (position < MIN_POSITION) {
-            throw new RuntimeException("유효한 자동차 위치 값이 아닙니다.");
-        }
-        return position;
-    }
-
-
 }

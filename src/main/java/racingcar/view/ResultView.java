@@ -8,7 +8,8 @@ import java.util.stream.Collectors;
 public class ResultView {
     private static final String DASH = "-";
 
-    private ResultView() {}
+    private ResultView() {
+    }
 
     public static void printStartMessage() {
         System.out.println("실행 결과");
@@ -25,9 +26,9 @@ public class ResultView {
     public static void printResult(List<Car> cars) {
         System.out.println(cars
                 .stream()
-                .map(n -> n.getCarName())
+                .map(Car::getCarName)
                 .collect(Collectors.joining(","))
-                +"가 최종 우승했습니다."
+                + "가 최종 우승했습니다."
         );
     }
 }
