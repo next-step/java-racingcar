@@ -1,17 +1,11 @@
 package study;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static study.Number.getRandom;
+
 public class RacingGame {
-
-
-    public static void main(String[] args) {
-        InputView inputView = new InputView();
-        ResultView resultView = new ResultView();
-        resultView.racingResult(carMoveCount(makeCarList(inputView.carCount()), inputView.tryCount()));
-    }
 
     public static List<Car> makeCarList(int count) {
         List<Car> carList = new ArrayList<>();
@@ -21,18 +15,17 @@ public class RacingGame {
         return carList;
     }
 
-    public static List<Car> carMoveCount(List<Car> carList, int count){
-        for(Car car : carList) {
-            for(int i = 0; i < count; i++) {
-                car.move(getRandom());
-            }
+    public static Cars carTryMove(Cars cars, int count){
+        for(Car car : cars.getList()) {
+            carMoveCount(car, count);
         }
-        return carList;
+        return cars;
     }
 
-    public static int getRandom() {
-        Random random = new Random();
-        return random.nextInt(10);
+    private static void carMoveCount(Car car,int count) {
+        for(int i = 0; i < count; i++) {
+            car.move(getRandom());
+        }
     }
 
 
