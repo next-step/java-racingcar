@@ -1,8 +1,9 @@
 package study.step4;
 
 public class Car {
-	private String name;	// 자동차 이름
-	private int position;	// 자동차 현재 위치
+	private static final String REPEATER = "-";	// 반복할 문자
+	private String name;						// 자동차 이름
+	private int position;						// 자동차 현재 위치
 
 	public Car() {}
 
@@ -29,22 +30,17 @@ public class Car {
 	}
 
 	// 자동차의 위치가 1 증가
-	public void move() {
-		this.position++;
+	public void move(MoveStrategy moveStrategy) {
+		if (moveStrategy.isMovable()) {
+			this.position++;
+		}
 	}
 
 	public int getPosition() {
 		return this.position;
 	}
 
-	public void printName() {
-		System.out.print(this.getName() + " : ");
-	}
-
-	public void printPosition() {
-		for (int i = 0; i < position; i++) {
-			System.out.print("-");
-		}
-		System.out.println();
+	public String getRepeater() {
+		return REPEATER.repeat(this.position);
 	}
 }

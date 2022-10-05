@@ -1,54 +1,43 @@
 package study.step4;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 public class RacingGame {
-	private static final int STANDARD = 4;
-	private static final Random RANDOM = new Random();
-	private static final int BOUND = 10;
 	private static final Scanner SCANNER = new Scanner(System.in);
+	private static final String SEPARATOR = ",";
+	private static final RandomMoveStrategy randomMoveStrategy = new RandomMoveStrategy();
 
 	public static void main(String[] args) {
 		RacingGameInfo racingGameInfo = new RacingGameInfo();
 		racingGameInfo.initRacingGameInfo();
 
-		// 자동차 이름을 입력받는 부분
+		String[] names = getNames();
+		racingGameInfo.setParticipants(registerParticipants(names));
+
+		racingGameInfo.setRound(getRound());
+		racingGameInfo.setMoveStrategy(randomMoveStrategy);
+
+		start(racingGameInfo);
+		end(racingGameInfo);
+	}
+
+	public static String[] getNames () {
 		System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
 		String input = SCANNER.next();
+		return input.split(SEPARATOR);
+	}
 
-		String[] names = splitCarNames(input);
-		List<Car> participants = registerParticipants(names);
-		racingGameInfo.setParticipants(participants);
-
-		// 시도할 회수를 입력받는 부분
+	public static int getRound () {
 		System.out.println("시도할 회수는 몇회인가요?");
 		int round = SCANNER.nextInt();
 		if (round < 0) {
 			throw new BadRequestException("음수는 입력할 수 없습니다.");
 		}
-		racingGameInfo.setRound(round);
-
-		// 시도할 횟수만큼 레이싱 게임 실행
-		System.out.println("실행결과");
-		while (racingGameInfo.getCurrentRound() < racingGameInfo.getRound()) {
-			startRound(racingGameInfo);
-			racingGameInfo.addCurrentRound();
-		}
-
-		// 우승자 조회
-		racingGameInfo.findWinners();
-		racingGameInfo.printWinners();
+		return round;
 	}
 
-	public static String[] splitCarNames(String input) {
-		return input.split(",");
-	}
-
-	public static List<Car> registerParticipants(String[] names) {
-		List<Car> participants = new ArrayList<>();
+	public static Cars registerParticipants(String[] names) {
+		Cars participants = new Cars();
 		for (String name : names) {
 			Car car = new Car();
 			car.setName(name);
@@ -58,29 +47,28 @@ public class RacingGame {
 		return participants;
 	}
 
-	public static boolean isGoForward(int random) {
-		return random >= STANDARD;
+	public static void start(RacingGameInfo racingGameInfo) {
+		System.out.println("실행결과");
+		while (racingGameInfo.getCurrentRound() < racingGameInfo.getRound()) {
+			playRound(racingGameInfo);
+			racingGameInfo.addCurrentRound();
+		}
 	}
 
-	public static void startRound(RacingGameInfo racingGameInfo) {
-		List<Car> participants = racingGameInfo.getParticipants();
-		int maxPosition = 0;
+	public static void playRound(RacingGameInfo racingGameInfo) {
+		Cars participants = racingGameInfo.getParticipants();
+		participants.moveAll(racingGameInfo.getMoveStrategy());
 
-		for (int i = 0; i < participants.size(); i++) {
-			Car car = proceedCar(participants.get(i));
-			// 게임을 진행 후에 최대 위치를 계산
-			maxPosition = Math.max(maxPosition, car.getPosition());
-			car.printName();
-			car.printPosition();
-		}
-		System.out.println();
+		int maxPosition = participants.findMaxPosition();
 		racingGameInfo.setMaxPosition(maxPosition);
+
+		participants.printAll();
+		System.out.println();
 	}
 
-	public static Car proceedCar(Car car) {
-		if (isGoForward(RANDOM.nextInt(BOUND))) {
-			car.move();
-		}
-		return car;
+	public static void end(RacingGameInfo racingGameInfo) {
+		// 우승자 조회
+		racingGameInfo.findWinners();
+		racingGameInfo.printWinners();
 	}
 }
