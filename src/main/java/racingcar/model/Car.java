@@ -4,7 +4,7 @@ import racingcar.exception.InvalidParameterException;
 
 import java.util.Objects;
 
-public class Car {
+public class Car implements Comparable<Car> {
     private static final int RANDOM_BASE_VALUE = 4;
 
     private int position;
@@ -49,5 +49,10 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(position, name);
+    }
+
+    @Override
+    public int compareTo(Car car) {
+        return car.getPosition() - this.getPosition();
     }
 }
