@@ -1,25 +1,28 @@
 package step3.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class Cars {
+public class GameInfo {
 
     private final List<Car> carList;
+    private final int count;
 
-    public Cars(List<String> names) {
+    public GameInfo(List<String> names, int count) {
         this.carList = createCarList(names);
+        this.count = count;
     }
 
     private List<Car> createCarList(List<String> names) {
-        List<Car> list = new ArrayList<>();
-        for (int i = 0; i < names.size(); i++) {
-            list.add(new Car(names.get(i)));
-        }
+        Cars cars = new Cars(names);
+        List<Car> list = cars.getCarList();
         return list;
     }
 
     public List<Car> getCarList() {
         return carList;
+    }
+
+    public int getCount() {
+        return count;
     }
 }

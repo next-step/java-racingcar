@@ -11,19 +11,21 @@ public class Separation {
         return Arrays.asList(inputName.split(SEPARATOR));
     }
 
-    public String winnerSeparation(List<Car> carList) {
-        String names = "";
-        for (int i = 0; i < carList.size(); i++) {
-            names = addWinner(carList, names, i);
+    public String winnerSeparation(Winner winner) {
+        String outputWinner = "";
+        for (int i = 0; i < winner.getWinnerList().size(); i++) {
+            outputWinner
+                    += (winner.getWinnerList().get(i).getName()
+                    + addSeparatorCheck(i, winner.getWinnerList().size()));
         }
-        return names;
+        return outputWinner;
     }
 
-    private static String addWinner(List<Car> carList, String names, int i) {
-        names += carList.get(i).getName();
-        if (i != carList.size() - 1) {
-            names += SEPARATOR;
+    private String addSeparatorCheck(int loopCount, int size) {
+        String separator = "";
+        if (size != 1 && loopCount != size - 1) {
+            separator = SEPARATOR;
         }
-        return names;
+        return separator;
     }
 }

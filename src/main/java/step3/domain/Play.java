@@ -2,39 +2,32 @@ package step3.domain;
 
 import step3.view.ResultView;
 
-import java.util.List;
-
 public class Play {
 
     private static final ResultView RESULT_VIEW = new ResultView();
     private static final RandomNumber RANDOM_NUMBER = new RandomNumber();
-    private static final Winner WINNER = new Winner();
-    
-    public void playGame(List<String> names, int count) {
-        List<Car> carList = createCarList(names);
-        for (int i = 0; i < count; i++) {
-            run(carList);
-            if (i == count - 1) {
-                isLastGame(carList);
-            }
+
+    public void playGame(GameInfo gameInfo) {
+        for (int i = 1; i <= gameInfo.getCount(); i++) {
+            run(gameInfo);
+            countCheck(gameInfo, i);
         }
     }
 
-    private List<Car> createCarList(List<String> names) {
-        Cars cars = new Cars(names);
-        return cars.getCarList();
+    private void countCheck(GameInfo gameInfo, int loopPoint) {
+        if (loopPoint == gameInfo.getCount()) {
+            isLastGame(gameInfo);
+        }
     }
 
-    private void isLastGame(List<Car> carList) {
-        RESULT_VIEW.winnerOutput(WINNER.decide(carList));
+    private void run(GameInfo gameInfo) {
+        for (Car car : gameInfo.getCarList()) {
+            car.moveCheck(RANDOM_NUMBER.randomNumber());
+        }
+        RESULT_VIEW.racingOutput(gameInfo);
     }
 
-    private void run(List<Car> carList) {
-        carList.forEach(car -> car.moveCheck(RANDOM_NUMBER.randomNumber()));
-        output(carList);
-    }
-
-    private void output(List<Car> carList) {
-        RESULT_VIEW.output(carList);
+    private void isLastGame(GameInfo gameInfo) {
+        RESULT_VIEW.winnerOutput(new Winner(gameInfo));
     }
 }

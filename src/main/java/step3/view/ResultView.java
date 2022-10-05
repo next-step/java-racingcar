@@ -1,24 +1,26 @@
 package step3.view;
 
 import step3.domain.Car;
+import step3.domain.GameInfo;
 import step3.domain.Separation;
-
-import java.util.List;
+import step3.domain.Winner;
 
 public class ResultView {
 
     private static final Separation SEPARATION = new Separation();
     private static final String HYPHEN = "-";
+    private static final String COLON = " : ";
+    private static final String LAST_SENTENCE = " 가 최종 우승 했습니다.";
 
-    public void output(List<Car> carList) {
-        for (Car car : carList) {
-            System.out.println(car.getName() + " : " + hyphen(car.getPosition()));
+    public void racingOutput(GameInfo gameInfo) {
+        for (Car car : gameInfo.getCarList()) {
+            System.out.println(car.getName() + COLON + hyphen(car.getPosition()));
         }
         System.out.println();
     }
 
-    public void winnerOutput(List<Car> carList) {
-        System.out.println(SEPARATION.winnerSeparation(carList) + " 가 최종 우승했습니다.");
+    public void winnerOutput(Winner winner) {
+        System.out.println(SEPARATION.winnerSeparation(winner) + LAST_SENTENCE);
     }
 
     private String hyphen(int position) {

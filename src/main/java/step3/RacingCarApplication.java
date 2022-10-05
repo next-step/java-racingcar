@@ -1,6 +1,6 @@
 package step3;
 
-import step3.domain.Cars;
+import step3.domain.GameInfo;
 import step3.domain.Play;
 import step3.view.InputView;
 
@@ -15,6 +15,7 @@ public class RacingCarApplication {
         List<String> names = INPUT_VIEW.input();
         int count = INPUT_VIEW.count();
 
-        PLAY.playGame(names, count);
+        GameInfo gameInfo = new GameInfo(names, count);
+        PLAY.playGame(gameInfo);
     }
 }
