@@ -31,4 +31,13 @@ class CarsTest {
         assertThat(sut.cars(new Number.Fake(1))).isEqualTo(new Cars(List.of(car)));
     }
 
+    @Test
+    @DisplayName("자동차들을 출력할 수 있다.")
+    void c() {
+        Number number = new Number.Fake(4);
+        Car car = new Car(number, new Name("abcde"));
+        Cars sut = new Cars(List.of(car));
+
+        assertThat(sut.positionsAndNames()).containsExactly(car.toString());
+    }
 }
