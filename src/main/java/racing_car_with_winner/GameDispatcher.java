@@ -9,7 +9,7 @@ import racing_car_with_winner.view.ConsoleUserInputInterface;
 import racing_car_with_winner.view.ConsoleUserOutputInterface;
 import racing_car_with_winner.view.GameAttemptCountInputInterface;
 
-public class GameMachine {
+public class GameDispatcher {
 
     public static void main(String[] args) {
         CarNameInput carNameInput = new CarNameInput(new CarNameInputInterface(new ConsoleUserInputInterface()).getInput());
