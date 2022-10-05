@@ -1,7 +1,7 @@
 import dto.RacingCars;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import service.RacingCarService;
+import domain.RacingCarService;
 
 import java.util.ArrayList;
 import java.util.List;

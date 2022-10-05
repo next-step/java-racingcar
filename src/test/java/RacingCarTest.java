@@ -1,24 +1,22 @@
+import domain.FixedFalseMovingStrategy;
+import domain.FixedTrueMovingStrategy;
 import dto.RacingCar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class RacingCarTest {
     private final String TEST_NAME1 = "test1";
     private final String TEST_NAME2 = "test2";
-    private final String TEST_NAME3 = "test3";
     private RacingCar test1;
     private RacingCar test2;
-    private RacingCar test3;
 
     @BeforeEach
     public void init() {
         test1 = new RacingCar(0, TEST_NAME1);
         test2 = new RacingCar(0, TEST_NAME2);
-        test3 = new RacingCar(0, TEST_NAME3);
     }
 
     @Test
@@ -28,23 +26,14 @@ public class RacingCarTest {
                 .hasMessageContaining("이름은 5자를 넘길 수 없습니다.");
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {4, 9})
-    public void 자동차_전진_테스트(int input) {
-        int expected = 1;
-        assertThat(test1.move(input)).isEqualTo(expected);
-    }
-
-    @ParameterizedTest
-    @ValueSource(ints = {0, 3})
-    public void 자동차_멈춤_테스트(int input) {
-        int expected = 0;
-
-        assertThat(test2.move(input)).isEqualTo(expected);
-    }
-
     @Test
-    public void 자동차_속도_테스트() {
-        assertThat(test3.speedOf()).isBetween(0, 9);
+    public void 자동차_전진_멈춤_테스트() {
+        int go = 1;
+        int stop = 0;
+
+        assertAll(
+                () -> assertThat(test1.move(new FixedTrueMovingStrategy())).isEqualTo(go),
+                () -> assertThat(test2.move(new FixedFalseMovingStrategy())).isEqualTo(stop)
+        );
     }
 }
