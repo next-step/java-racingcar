@@ -21,7 +21,7 @@ public class ResultViewImpl implements ResultView {
             .add(car.getName())
             .add(DISTANCE_DELIMETER.repeat(car.getDistance()));
 
-        System.out.println(stringJoiner.toString());
+        System.out.println(stringJoiner);
     }
 
     @Override
