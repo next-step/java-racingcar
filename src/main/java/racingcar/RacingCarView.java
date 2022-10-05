@@ -16,4 +16,21 @@ public class RacingCarView {
             System.out.println(LOCATION_PRINT_LETTER.repeat(car.getLocation()));
         }
     }
+
+    public static void printWinner(List<Car> cars) {
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < cars.size(); i++) {
+            result.append(cars.get(i).getName());
+            generateComma(cars, result, i);
+        }
+
+        System.out.println(result + "가 최종 우승했습니다.");
+    }
+
+    private static void generateComma(List<Car> cars, StringBuilder result, int i) {
+        if (i != cars.size()-1) {
+            result.append(", ");
+        }
+    }
 }

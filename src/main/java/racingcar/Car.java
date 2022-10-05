@@ -10,7 +10,7 @@ public class Car {
     public static final int MOVE_DISTANCE = 1;
     public static final int NAME_MAXIMUM_VALUE = 5;
 
-    private int location;
+    private Integer location;
     private String name;
 
     private Car(int location) {
@@ -39,7 +39,7 @@ public class Car {
         location += MOVE_DISTANCE;
     }
 
-    public int getLocation() {
+    public Integer getLocation() {
         return location;
     }
 
@@ -58,11 +58,11 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return location == car.location;
+        return Objects.equals(location, car.location) && Objects.equals(name, car.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(location);
+        return Objects.hash(location, name);
     }
 }
