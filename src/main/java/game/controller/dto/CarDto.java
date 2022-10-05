@@ -8,7 +8,7 @@ public class CarDto {
 
     private final String carName;
 
-    public CarDto(int position, String carName) {
+    private CarDto(int position, String carName) {
         this.position = position;
         this.carName = carName;
     }

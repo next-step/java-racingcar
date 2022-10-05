@@ -11,7 +11,7 @@ public class CarsDto {
 
     private final List<CarDto> carList;
 
-    public CarsDto(List<CarDto> carList) {
+    private CarsDto(List<CarDto> carList) {
         this.carList = carList;
     }
 
