@@ -14,8 +14,8 @@ public final class Car {
 
     private final Name name;
 
-    public Car(Number number, Name name) {
-        this(new Position(0), number, name);
+    public Car(Number number, String name) {
+        this(new Position(0), number, new Name(name));
     }
 
     public Car(Number number) {
