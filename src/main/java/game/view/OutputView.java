@@ -2,7 +2,6 @@ package game.view;
 
 import game.model.Car;
 import game.model.Cars;
-import utils.StringUtils;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -38,7 +37,7 @@ public class OutputView {
         List<String> winners = cars.getLocatedHighPositionCars().stream()
                 .map(Car::getCarName)
                 .collect(Collectors.toList());
-        System.out.println(StringUtils.join(winners, OUTPUT_WINNER_SEPARATOR) + OUTPUT_FINAL_MESSAGE);
+        System.out.println(String.join(OUTPUT_WINNER_SEPARATOR, winners) + OUTPUT_FINAL_MESSAGE);
     }
 
 }

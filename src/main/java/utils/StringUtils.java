@@ -1,8 +1,5 @@
 package utils;
 
-import java.util.Collection;
-import java.util.StringJoiner;
-
 public class StringUtils {
 
     private StringUtils() {
@@ -15,13 +12,5 @@ public class StringUtils {
 
     public static boolean isEmpty(String text) {
         return text == null || text.isEmpty();
-    }
-
-    public static String join(Collection<String> collection, String separator) {
-        StringJoiner joiner = new StringJoiner(separator);
-        for (String s : collection) {
-            joiner.add(s);
-        }
-        return joiner.toString();
     }
 }
