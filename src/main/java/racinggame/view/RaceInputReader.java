@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.view;
 
 import racinggame.dto.RaceInputDTO;
 
