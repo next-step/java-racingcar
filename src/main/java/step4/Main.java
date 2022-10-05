@@ -1,8 +1,8 @@
-package racing;
+package step4;
 
 public class Main {
 
     public static void main(String[] args) {
-        new RacingController().run();
+        RacingGame.run();
     }
 }
