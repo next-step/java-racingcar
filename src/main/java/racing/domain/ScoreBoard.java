@@ -11,10 +11,6 @@ public class ScoreBoard {
         this.raceResults = new ArrayList<>();
     }
 
-    public ScoreBoard(List<RaceResult> raceResults) {
-        this.raceResults = raceResults;
-    }
-
     public void addResult(final RaceResult raceResult) {
         raceResults.add(raceResult);
     }
