@@ -21,13 +21,13 @@ public class StringAddCalculator {
         return text == null || text.isBlank();
     }
 
-    private static String[] split(final String text){
+    private static String[] split(final String text) {
         String delimiter = delimiter(text);
         String convertedText = convertText(text);
         return convertedText.split(delimiter);
     }
 
-    private static int sum(final String[] token){
+    private static int sum(final String[] token) {
         int result = 0;
         for (String text : token) {
             int number = parsePositiveNumber(text);
@@ -36,17 +36,17 @@ public class StringAddCalculator {
         return result;
     }
 
-    private static String delimiter(final String text){
+    private static String delimiter(final String text) {
         Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(text);
-        if(matcher.find()){
+        if (matcher.find()) {
             return matcher.group(DELIMITER_LOCATION);
         }
         return DEFAULT_DELIMITER;
     }
 
-    private static String convertText(final String text){
+    private static String convertText(final String text) {
         Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(text);
-        if(matcher.find()){
+        if (matcher.find()) {
             return matcher.group(TEXT_LOCATION);
         }
         return text;
@@ -54,7 +54,7 @@ public class StringAddCalculator {
 
     private static int parsePositiveNumber(final String text) {
         int number = Integer.parseInt(text);
-        if(number<0){
+        if (number < 0) {
             throw new RuntimeException();
         }
         return number;

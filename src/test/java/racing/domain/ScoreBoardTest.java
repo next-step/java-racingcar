@@ -1,10 +1,9 @@
 package racing.domain;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 class ScoreBoardTest {
 
@@ -22,7 +21,7 @@ class ScoreBoardTest {
         scoreBoard.addResult(new RaceResult(List.of(빵빵이2, 씽씽이2, 쌩쌩이2)));
 
         Assertions.assertThat(scoreBoard.winners()).hasSize(2)
-                .containsExactly(new Record("빵빵이", 2), new Record("쌩쌩이", 2));
+            .containsExactly(new Record("빵빵이", 2), new Record("쌩쌩이", 2));
     }
 
 }

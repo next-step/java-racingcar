@@ -31,15 +31,15 @@ public class RaceResult {
 
     private int getWinnersLocation() {
         return records.stream()
-                .mapToInt(Record::getLocation)
-                .max()
-                .orElseThrow(IllegalStateException::new);
+            .mapToInt(Record::getLocation)
+            .max()
+            .orElseThrow(IllegalStateException::new);
     }
 
-    private List<Record> getWinnerByLocation(final int location){
+    private List<Record> getWinnerByLocation(final int location) {
         return records.stream()
-                .filter(rcd -> rcd.getLocation() == location)
-                .collect(Collectors.toUnmodifiableList());
+            .filter(rcd -> rcd.getLocation() == location)
+            .collect(Collectors.toUnmodifiableList());
     }
 
     @Override

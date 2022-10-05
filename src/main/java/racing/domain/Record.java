@@ -11,7 +11,7 @@ public class Record {
         this.location = location;
     }
 
-    public static Record record(final Car car){
+    public static Record record(final Car car) {
         return new Record(car.getName(), car.location());
     }
 

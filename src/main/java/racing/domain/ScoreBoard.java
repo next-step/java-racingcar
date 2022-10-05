@@ -28,8 +28,8 @@ public class ScoreBoard {
         return lastRaceResult.winners();
     }
 
-    private RaceResult getLastRaceResult(){
-        return raceResults.get(raceResults.size() -1);
+    private RaceResult getLastRaceResult() {
+        return raceResults.get(raceResults.size() - 1);
     }
 
     @Override

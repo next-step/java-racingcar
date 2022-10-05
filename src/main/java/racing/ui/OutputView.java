@@ -23,15 +23,15 @@ public class OutputView {
         showWinner(scoreBoard.winners());
     }
 
-    private static void showWinner(List<Record> records){
+    private static void showWinner(List<Record> records) {
         String winners = joinWinnersName(records);
         System.out.printf("%s가 최종 우승했습니다.", winners);
     }
 
     private static String joinWinnersName(List<Record> records) {
         return records.stream()
-                .map(Record::getName)
-                .collect(Collectors.joining(NAME_SEPARATOR));
+            .map(Record::getName)
+            .collect(Collectors.joining(NAME_SEPARATOR));
     }
 
     private static void showCarLocationsWithName(List<Record> records) {
