@@ -12,7 +12,14 @@ public class Name {
 
     @Override
     public String toString() {
+        verifyLengthMustNotExceedFive();
         return value + " : ";
+    }
+
+    private void verifyLengthMustNotExceedFive() {
+        if (value.length() > 5) {
+            throw new IllegalStateException("이름은 5글자를 초과할 수 없다.");
+        }
     }
 
     @Override
