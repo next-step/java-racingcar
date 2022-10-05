@@ -9,7 +9,7 @@ public class Car {
     private static final int MAX_NAME_LENGTH = 5;
 
     private final String name;
-    private final int position;
+    private final Position position;
 
     public static Car init(String name) {
         if (name == null || name.isBlank()) {
@@ -24,23 +24,27 @@ public class Car {
     }
 
     public Car(String name, int position) {
+        this(name, new Position(position));
+    }
+
+    public Car(String name, Position position) {
         this.name = name;
         this.position = position;
     }
 
     public Car move(MovingStrategy movingStrategy) {
         if (movingStrategy.movable()) {
-            return new Car(this.name, this.position + 1);
+            return new Car(name, position.incrementAndGet());
         }
 
         return this;
     }
 
     public boolean isWinner(Car other) {
-        return this.position >= other.position;
+        return position.isGreaterOrEquals(other.position);
     }
 
-    public int getPosition() {
+    public Position getPosition() {
         return this.position;
     }
 
