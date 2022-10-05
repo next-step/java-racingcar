@@ -1,42 +1,46 @@
 package domain;
 
-import static java.lang.Math.*;
 
-import java.util.Arrays;
+import static java.lang.Math.max;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
 
-    private int max_dist = 0;
-    private final List<Car> carList;
+    private final List<Car> cars;
 
-    public Cars(String[] carNames) {
-        this.carList = createInitCarList(carNames);
+    public Cars(List<String> carNames) {
+        this.cars = createInitCarList(carNames);
     }
 
-    public List<Car> createInitCarList(String[] carNames) {
-        return Arrays.stream(carNames)
-            .map(Car::createCarWithName)
+    public List<Car> createInitCarList(List<String> carNames) {
+        return carNames.stream()
+            .map(Car::of)
             .collect(Collectors.toList());
     }
 
     public List<String> findWinner() {
-        findMaxDist();
-        return carList.stream()
-            .filter(it -> it.getCurrentLocation() == max_dist)
+        int maxDist = findMaxDistance();
+        return cars.stream()
+            .filter(car -> isSameDistance(car, maxDist))
             .map(Car::getCarName)
             .collect(Collectors.toList());
     }
 
-    private void findMaxDist() {
-        for (Car car : carList) {
-            max_dist = max(car.getCurrentLocation(), max_dist);
+    private int findMaxDistance() {
+        int maxDist = 0;
+        for (Car car : cars) {
+            maxDist = max(car.getCurrentLocation(), maxDist);
         }
+        return maxDist;
     }
 
-    public List<Car> getCarList() {
-        return carList;
+    private boolean isSameDistance(Car car, int maxDist) {
+        return car.getCurrentLocation() == maxDist;
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 
 }

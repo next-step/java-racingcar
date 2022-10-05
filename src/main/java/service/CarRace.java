@@ -1,22 +1,30 @@
 package service;
 
+import domain.Car;
 import java.util.List;
 import java.util.Random;
 
-import domain.Car;
-
 public class CarRace {
 
-    private static final int MIN_LIMIT_NUMBER = 4;
     private static final int MAX_LIMIT_BOUND_NUMBER = 10;
+    private static final String DASH = "-";
+    private static final String DELIMITER = " : ";
 
-    public List<Car> updateCurrentLocation(List<Car> racingCars) {
+    public List<Car> updateCurrentLocation(List<Car> cars) {
 
-        for (Car car : racingCars) {
+        for (Car car : cars) {
             int randomNum = generateRandomNum();
-            car.move(isMovingForward(randomNum));
+            car.move(randomNum);
         }
-        return racingCars;
+        return cars;
+    }
+
+    public void printCarLocationPerAttempt(List<Car> carList) {
+        List<Car> cars = updateCurrentLocation(carList);
+        for (Car car : cars) {
+            System.out.println(
+                car.getCarName() + DELIMITER + convertLocationToDash(car.getCurrentLocation()));
+        }
     }
 
     private int generateRandomNum() {
@@ -24,8 +32,8 @@ public class CarRace {
         return random.nextInt(MAX_LIMIT_BOUND_NUMBER);
     }
 
-    private boolean isMovingForward(int randomNumber) {
-        return randomNumber >= MIN_LIMIT_NUMBER;
+    private String convertLocationToDash(int location) {
+        return DASH.repeat(location);
     }
 
 }

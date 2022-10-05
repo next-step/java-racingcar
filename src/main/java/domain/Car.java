@@ -2,22 +2,27 @@ package domain;
 
 public class Car {
 
+    private static final int MIN_LIMIT_NUMBER = 4;
     private final String name;
     private int currentLocation;
 
-    public Car(String name) {
+    private Car(String name) {
         this.name = name;
         this.currentLocation = 0;
     }
 
-    public void move(boolean isMove) {
-        if (isMove) {
+    public static Car of(String carName) {
+        return new Car(carName);
+    }
+
+    public void move(int randomNumber) {
+        if (isMovingForward(randomNumber)) {
             currentLocation += 1;
         }
     }
 
-    public static Car createCarWithName(String carName) {
-        return new Car(carName);
+    private boolean isMovingForward(int randomNumber) {
+        return randomNumber >= MIN_LIMIT_NUMBER;
     }
 
     public String getCarName() {
@@ -27,5 +32,6 @@ public class Car {
     public int getCurrentLocation() {
         return currentLocation;
     }
+
 
 }

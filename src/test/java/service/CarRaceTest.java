@@ -1,35 +1,51 @@
-import static org.assertj.core.api.Assertions.*;
+package service;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import domain.Car;
+import domain.Cars;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import service.CarRace;
 
-import domain.Car;
-import domain.Cars;
-import service.*;
+class CarRaceTest {
 
-class CarRaceTest extends TestSupport {
+    protected static final int INIT_LOCATION = 0;
+
+    protected static String[] testCarNames = {"test1", "test2", "test3"};
+
+    protected static Car testCar1() {
+        return Car.of("test1");
+    }
+
+    protected static Car testCar2() {
+        return Car.of("test2");
+    }
+
+    protected static Car testCar3() {
+        return Car.of("test3");
+    }
 
     private Cars cars;
     private CarRace carRace;
     private List<Car> testCarList;
 
+
     @BeforeEach
     public void setUp() {
 
-        cars = new Cars(testCarNames);
+        cars = new Cars(List.of(testCarNames));
         carRace = new CarRace();
         testCarList = new ArrayList<>();
 
         testCarList.add(testCar1());
         testCarList.add(testCar2());
         testCarList.add(testCar3());
-
     }
 
     @Test
@@ -39,14 +55,15 @@ class CarRaceTest extends TestSupport {
         List<Car> result = carRace.updateCurrentLocation(testCarList);
 
         result.forEach(
-            it -> assertThat(it.getCurrentLocation()).isGreaterThanOrEqualTo(INIT_LOCATION));
+            it -> assertThat(it.getCurrentLocation()).isGreaterThanOrEqualTo(
+                INIT_LOCATION));
     }
 
     @Test
     @DisplayName("주어진 이름으로 자동차 기본상태 리스트를 생성한다")
     void createInitCarList() {
 
-        List<Car> carList = cars.createInitCarList(testCarNames);
+        List<Car> carList = cars.createInitCarList(List.of(testCarNames));
 
         for (int i = 0; i < carList.size(); i++) {
             assertThat(carList.get(i).getCarName()).isEqualTo(testCarNames[i]);
@@ -63,17 +80,4 @@ class CarRaceTest extends TestSupport {
 
         assertThat(winnerList.size()).isEqualTo(testCaseSize);
     }
-
-    @ParameterizedTest
-    @CsvSource(value = {"true:1", "false:0"}, delimiter = ':')
-    @DisplayName("true, false 값에 따라 차의 현재 위치값이 증가하는지 확인한다")
-    void carMovingTest(boolean flag, int moving) {
-
-        Car car = new Car("testCar");
-
-        car.move(flag);
-
-        assertThat(car.getCurrentLocation()).isEqualTo(moving);
-    }
-
 }

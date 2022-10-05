@@ -8,12 +8,13 @@ public class Main {
 
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        String[] carNames = inputView.inputCarInfo();
+
+        Cars cars =  inputView.inputCarInfo();
+        int attempts = inputView.getAttempts();
 
         CarRace carRace = new CarRace();
-        Cars cars = new Cars(carNames);
 
         ResultView resultView = new ResultView();
-        resultView.printCarLocation(cars, carRace, inputView.getAttempts());
+        resultView.printCarLocation(cars, carRace, attempts);
     }
 }
