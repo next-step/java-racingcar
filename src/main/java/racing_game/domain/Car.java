@@ -1,38 +1,25 @@
 package racing_game.domain;
 
-import java.util.Random;
 import racing_game.core.Positive;
 
-public class Car {
+public class Car implements Moving {
 
-    private final Random random;
-    private final Positive distance; // time x distance - 시간 대별(회차) 거리
+    private final Moving movingStrategy;
 
-    private Car(Random random) {
-        this.distance = Positive.zero();
-        this.random = (random == null) ? new Random() : random;
+    private Car(Moving movingStrategy) {
+        this.movingStrategy = movingStrategy;
     }
 
-    public static Car create() {
-        return new Car(null);
-    }
-
-    public static Car create(Random random) {
-        return new Car(random);
+    public static Car create(Moving movingStrategy) {
+        return new Car(movingStrategy);
     }
 
     public void move() {
-        if (canMove()) {
-            distance.addOne();
-        }
-    }
-
-    private boolean canMove() {
-        return random.nextInt(10) >= 4;
+        movingStrategy.move();
     }
 
     public Positive getDistance() {
-        return Positive.copy(distance);
+        return movingStrategy.getDistance();
     }
 
 }

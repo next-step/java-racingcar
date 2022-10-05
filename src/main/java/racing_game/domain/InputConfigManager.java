@@ -1,6 +1,7 @@
 package racing_game.domain;
 
 import racing_game.core.Positive;
+import racing_game.core.SimulationConfig;
 import racing_game.view.InputView;
 
 public class InputConfigManager {

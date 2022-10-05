@@ -1,5 +1,6 @@
 package racing_game.view;
 
+import java.util.List;
 import racing_game.core.Positive;
 import racing_game.core.SnapShot;
 import racing_game.domain.Distances;
@@ -19,13 +20,13 @@ public class CarResultView implements ResultView<SnapShot<Distances>> {
         int i = 0;
         for (Distances distances : distanceSnapShot) {
             sb.append(++i).append(" 회차 ---------------\n");
-            draw(distances, sb);
+            draw(distances.toPositives(), sb);
             sb.append("\n");
         }
         return sb.toString();
     }
 
-    private void draw(Distances distances, StringBuilder sb) {
+    private void draw(List<Positive> distances, StringBuilder sb) {
         for (Positive distance : distances) {
             sb.append("_ ".repeat(distance.toInt())).append("\n");
         }

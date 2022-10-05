@@ -1,6 +1,7 @@
-package racing_game.domain;
+package racing_game.core;
 
-import racing_game.core.SnapShot;
+import racing_game.domain.Distances;
+import racing_game.domain.InputConfigManager;
 import racing_game.view.CarResultView;
 
 public class Game {

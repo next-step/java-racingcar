@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
+import racing_game.core.exception.PositiveFormatException;
 
 class PositiveTest {
 
@@ -47,6 +48,6 @@ class PositiveTest {
 
     pos.parse("7");
     assertThat(pos).isEqualTo(7);
-    assertThatThrownBy(() -> pos.parse("unparsable")).isInstanceOf(NumberFormatException.class);
+    assertThatThrownBy(() -> pos.parse("unparsable")).isInstanceOf(PositiveFormatException.class);
   }
 }

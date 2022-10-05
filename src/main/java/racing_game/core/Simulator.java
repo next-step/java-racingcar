@@ -1,7 +1,7 @@
-package racing_game.domain;
+package racing_game.core;
 
-import racing_game.core.Positive;
-import racing_game.core.SnapShot;
+import racing_game.domain.Cars;
+import racing_game.domain.Distances;
 
 public class Simulator {
 
@@ -10,7 +10,7 @@ public class Simulator {
     private final SnapShot<Distances> snapShot;
 
     private Simulator(Positive carCount, Positive tryCount) {
-        this.cars = Cars.create(carCount);
+        this.cars = Cars.create(carCount, 10, 4);
         this.tryCount = tryCount;
         this.snapShot = new SnapShot<>();
     }

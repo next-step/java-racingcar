@@ -1,12 +1,10 @@
 package racing_game.domain;
 
-import java.util.Iterator;
+import java.util.Collections;
 import java.util.List;
-import java.util.Spliterator;
-import java.util.function.Consumer;
 import racing_game.core.Positive;
 
-public class Distances implements Iterable<Positive> {
+public class Distances {
 
     private final List<Positive> holder;
 
@@ -18,18 +16,7 @@ public class Distances implements Iterable<Positive> {
         return new Distances(distances);
     }
 
-    @Override
-    public Iterator<Positive> iterator() {
-        return holder.iterator();
-    }
-
-    @Override
-    public void forEach(Consumer<? super Positive> action) {
-        holder.forEach(action);
-    }
-
-    @Override
-    public Spliterator<Positive> spliterator() {
-        return holder.spliterator();
+    public List<Positive> toPositives() {
+        return Collections.unmodifiableList(holder);
     }
 }

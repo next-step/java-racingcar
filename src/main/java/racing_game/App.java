@@ -1,6 +1,6 @@
 package racing_game;
 
-import racing_game.domain.Game;
+import racing_game.core.Game;
 
 public class App {
 

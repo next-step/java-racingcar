@@ -1,6 +1,4 @@
-package racing_game.domain;
-
-import racing_game.core.Positive;
+package racing_game.core;
 
 public class SimulationConfig {
 

@@ -7,18 +7,22 @@ import racing_game.core.Positive;
 
 class CarsTest {
 
-  @Test
-  void create() {
-    Cars cars = Cars.create(Positive.of(3));
-    assertThat(cars).isNotNull();
-    assertThat(cars.size()).isEqualTo(3);
-  }
+    @Test
+    void create() {
+        Cars cars = Cars.create(Positive.of(3), 10, 4);
+        assertThat(cars).isNotNull();
+        assertThat(cars.size()).isEqualTo(3);
+    }
 
-  @Test
-  void moveAll() {
-    Cars cars = Cars.create(Positive.of(3));
-    cars.moveAll();
+    @Test
+    void moveAll() {
+        Cars cars = Cars.create(Positive.of(3), 10, 0);
+        cars.moveAll();
+        cars.moveAll();
+        cars.moveAll();
 
-    assertThat(cars.getDistances()).extracting("holder").containsAnyOf(0, 1);
-  }
+        Distances distances = cars.getDistances();
+
+        assertThat(cars.getDistances().toPositives()).containsOnly(Positive.of(3));
+    }
 }
