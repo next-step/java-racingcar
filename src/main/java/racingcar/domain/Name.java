@@ -9,7 +9,7 @@ public class Name extends Condition {
 	public Name(String input) {
 		super(new NameCondition());
 		if (validInput(input)) {
-			throw new RuntimeException();
+			throw new IllegalArgumentException();
 		}
 		this.name = input;
 	}
