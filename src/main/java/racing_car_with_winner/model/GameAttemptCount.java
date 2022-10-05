@@ -4,6 +4,7 @@ package racing_car_with_winner.model;
 import racing_car_with_winner.exception.InvalidInputException;
 
 public class GameAttemptCount {
+    private static final int LAST_VALUE = 0;
     private final int value;
 
     public GameAttemptCount(final int value) {
@@ -12,5 +13,13 @@ public class GameAttemptCount {
         }
 
         this.value = value;
+    }
+
+    public GameAttemptCount play() {
+        return new GameAttemptCount(this.value - 1);
+    }
+
+    public boolean isEnded() {
+        return this.value <= LAST_VALUE;
     }
 }

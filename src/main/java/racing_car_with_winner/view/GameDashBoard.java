@@ -10,6 +10,7 @@ import racing_car_with_winner.model.car.MoveResult;
 public class GameDashBoard {
     private static final String SHOW_MOVE_RESULT_TEMPLATE = "%s : %s";
     private static final String SHOW_WINNER_TEMPLATE = "%s가 최종 우승했습니다.";
+    private static final String MOVE = "-";
     private final UserOutputInterface userOutputInterface;
 
     public GameDashBoard(UserOutputInterface userOutputInterface) {
@@ -17,7 +18,17 @@ public class GameDashBoard {
     }
 
     public void showMoveResult(CarName carName, MoveResult moveResult) {
-        userOutputInterface.show(String.format(SHOW_MOVE_RESULT_TEMPLATE, carName.getValue(), moveResult.getMoveCount()));
+        userOutputInterface.show(String.format(SHOW_MOVE_RESULT_TEMPLATE, carName.getValue(), convertMoveResultToView(moveResult.getMoveCount())));
+    }
+
+    private String convertMoveResultToView(int count) {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 0; i < count; i++) {
+            stringBuilder.append(MOVE);
+        }
+
+        return stringBuilder.toString();
     }
 
     public void showWinner(List<Car> winners) {

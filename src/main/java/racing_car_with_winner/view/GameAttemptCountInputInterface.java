@@ -1,16 +1,15 @@
 package racing_car_with_winner.view;
 
 public class GameAttemptCountInputInterface {
-    private String question;
+    private static final String QUESTION = "시도할 회수는 몇회인가요?";
     private UserInputInterface userInterface;
 
-    public GameAttemptCountInputInterface(String question, UserInputInterface userInterface) {
-        this.question = question;
+    public GameAttemptCountInputInterface(UserInputInterface userInterface) {
         this.userInterface = userInterface;
     }
 
     public int getInput() {
-        userInterface.show(question);
+        userInterface.show(QUESTION);
         userInterface.show("\n");
         return Integer.parseInt(userInterface.getStringInput());
     }
