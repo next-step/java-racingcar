@@ -7,6 +7,11 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.step3_4.domain.Car;
+import racingcar.step3_4.domain.Cars;
+import racingcar.step3_4.domain.Name;
+import racingcar.step3_4.domain.Names;
+import racingcar.step3_4.domain.Winners;
 
 class CarsTest {
 

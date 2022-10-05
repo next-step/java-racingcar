@@ -1,7 +1,10 @@
-package racingcar.step3_4;
+package racingcar.step3_4.view;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.step3_4.domain.Car;
+import racingcar.step3_4.domain.Name;
+import racingcar.step3_4.domain.Winners;
 
 public class ResultView {
 

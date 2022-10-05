@@ -1,7 +1,8 @@
-package racingcar.step3_4;
+package racingcar.step3_4.view;
 
 import java.util.List;
 import java.util.Scanner;
+import racingcar.step3_4.domain.GameAttribute;
 
 public class InputView {
 

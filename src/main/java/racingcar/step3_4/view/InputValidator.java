@@ -1,4 +1,4 @@
-package racingcar.step3_4;
+package racingcar.step3_4.view;
 
 public class InputValidator {
 
