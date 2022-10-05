@@ -1,14 +1,13 @@
 package racing.view;
 
-import racing.game.result.RacingResult;
-import racing.game.result.RoundResult;
 
+import racing.domain.CarGroup;
+import racing.domain.car.Car;
+
+import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class ResultView {
-
-    private ResultView() {}
 
     private static final String RESULT = "\n실행 결과";
     private static final String WINNER_MESSAGE = "가 최종 우승했습니다.";
@@ -16,38 +15,33 @@ public class ResultView {
     private static final String NAME_TRACE_DELIMITER = " : ";
     private static final String NAME_DELIMITER = ", ";
 
+    private ResultView() {}
 
-    public static void printResult(RacingResult result) {
-        print(RESULT);
-        printGameResult(result.roundResults());
-        printWinner(result.winners());
-    }
-
-
-    private static void printGameResult(List<RoundResult> racingResult) {
-        for (RoundResult roundResult : racingResult) {
-            printRoundResult(roundResult);
-            print("");
-        }
-    }
-
-    private static void printWinner(List<String> winners) {
+    public static void printWinner(List<Car> winners) {
         print(nameOfWinners(winners) + WINNER_MESSAGE);
     }
 
+    public static void printRoundResult(CarGroup carGroup) {
+        for (Car car : carGroup.getCars()) {
+            print(car.getName() + NAME_TRACE_DELIMITER + carTrace(car.getPosition()));
+        }
+        print("");
+    }
 
-    private static void printRoundResult(RoundResult roundResult) {
-        for (String carName : roundResult.namesOfCar()) {
-            print(carName + NAME_TRACE_DELIMITER + carTrace(roundResult, carName));
+    private static String nameOfWinners(List<Car> winners) {
+        List<String> winnerNames = new ArrayList<>();
+        addWinnerNames(winners, winnerNames);
+        return String.join(NAME_DELIMITER, winnerNames);
+    }
+
+    private static void addWinnerNames(List<Car> winners, List<String> winnerNames) {
+        for (Car winner : winners) {
+            winnerNames.add(winner.getName());
         }
     }
 
-    private static String nameOfWinners(List<String> winners) {
-        return String.join(NAME_DELIMITER, winners);
-    }
-
-    private static String carTrace(RoundResult roundResult, String carName) {
-        return drawTrace(roundResult.positionOfCar(carName));
+    private static String carTrace(int position) {
+        return drawTrace(position);
     }
 
     private static String drawTrace(int carPosition) {

@@ -1,19 +1,16 @@
 package racing.view;
 
-import racing.view.valid.StringLengthValidator;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class InputView {
-
-    private InputView() {}
     private static final String NAME_OF_CARS = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)";
     private static final String NUMBER_OF_ATTEMPTS = "시도할 횟수는 몇 회인가요?";
     private static final String NAME_DELIMITER = ",";
-
     private static final Scanner scanner = new Scanner(System.in);
-    private static final StringLengthValidator validator = new StringLengthValidator(5);
 
+    private InputView() {}
 
     public static String[] namesOfCar() {
         String[] namesOfCar = namesFromUser();
@@ -30,7 +27,9 @@ public class InputView {
 
 
     private static boolean inputInvalid(String[] namesOfCar) {
-        return !validator.isAllUnderLimitLength(namesOfCar);
+        return Arrays
+                .stream(namesOfCar)
+                .anyMatch(name -> name.length() > 5);
     }
 
     private static String[] namesFromUser() {
