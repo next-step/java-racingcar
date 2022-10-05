@@ -12,6 +12,7 @@ public class RaceInput {
         this.numberOfCar = sc.nextInt();
         System.out.println("시도할 횟수는 몇 회 인가요?");
         this.tryCount = sc.nextInt();
+        System.out.println();
     }
 
     public int getNumberOfCar() {
