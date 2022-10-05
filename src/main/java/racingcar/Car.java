@@ -16,10 +16,6 @@ public class Car {
         return position;
     }
 
-    public void print() {
-        ResultView.printCarPosition(position);
-    }
-
     public void go() {
         if (movePredicate.test()) {
             move();

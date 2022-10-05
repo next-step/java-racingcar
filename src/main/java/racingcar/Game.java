@@ -29,20 +29,20 @@ public class Game {
     }
 
     public void start() {
-        ResultView.println("실행 결과");
+        ResultView.printResultStart();
         for (int i = 0; i < repeat; i++) {
             round();
+            printLanes();
         }
     }
 
     private void round() {
         cars.forEach(Car::go);
-        print();
     }
 
-    private void print() {
-        List<LaneView> lanes = cars.stream()
-                .map(car -> new LaneView(car.getPosition()))
+    private void printLanes() {
+        List<LaneViewModel> lanes = cars.stream()
+                .map(car -> new LaneViewModel(car.getPosition()))
                 .collect(Collectors.toList());
         ResultView.printRoundResult(lanes);
     }
