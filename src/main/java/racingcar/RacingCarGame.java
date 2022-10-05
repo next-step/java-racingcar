@@ -5,6 +5,7 @@ import racingcar.ui.ResultView;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingCarGame {
     private final List<Car> carList;
@@ -33,5 +34,18 @@ public class RacingCarGame {
             carList.forEach(Car::tryMove);
             ResultView.printRoundResult(carList);
         }
+
+        ResultView.printWinnerMessage(getWinnerName());
+    }
+
+    public List<String> getWinnerName() {
+        int winPosition = carList.stream()
+                .mapToInt(Car::getPosition)
+                .max().getAsInt();
+
+        return carList.stream()
+                .filter(car -> car.getPosition() == winPosition)
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 }

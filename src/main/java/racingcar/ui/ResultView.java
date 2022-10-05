@@ -9,6 +9,8 @@ public class ResultView {
 
     private static final String ROUND_RESULT_FORMAT = "%s : %s";
 
+    private static final String WINNER_RESULT_FORMAT = "%s가 최종 우승했습니다.";
+
     public static void printResultStartMessage() {
         System.out.println("실행 결과");
     }
@@ -25,5 +27,14 @@ public class ResultView {
 
     public static String getPathString(Integer position) {
         return PATH_STRING.repeat(position);
+    }
+
+    public static void printWinnerMessage(List<String> winnerName) {
+        System.out.println(getWinnerMessage(winnerName));
+    }
+
+    public static String getWinnerMessage(List<String> winnerName) {
+        String namesComma = String.join(", ", winnerName);
+        return String.format(WINNER_RESULT_FORMAT, namesComma);
     }
 }
