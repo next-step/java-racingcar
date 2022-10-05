@@ -74,9 +74,9 @@ class CarsTest {
 		secondCar.move(() -> 2);
 		thirdCar.move(() -> 9);
 
-		List<Car> winners = cars.determineWinners();
+		Winners winners = cars.determineWinners();
 
-		assertThat(winners).hasSize(1);
+		assertThat(winners.getNames()).hasSize(1);
 	}
 
 	@DisplayName("최종 우승 자동차 결정 - 우승자 두 명이상")
@@ -86,8 +86,8 @@ class CarsTest {
 		secondCar.move(() -> 4);
 		thirdCar.move(() -> 9);
 
-		List<Car> winners = cars.determineWinners();
+		Winners winners = cars.determineWinners();
 
-		assertThat(winners).hasSize(2);
+		assertThat(winners.getNames()).hasSize(2);
 	}
 }

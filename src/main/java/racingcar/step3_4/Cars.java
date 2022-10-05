@@ -26,10 +26,10 @@ public class Cars {
         }
     }
 
-    public List<Car> determineWinners() {
+    public Winners determineWinners() {
         return cars.stream()
             .filter(car -> car.getPosition() == getMaxPosition())
-            .collect(toList());
+            .collect(collectingAndThen(toList(), Winners::new));
     }
 
     private int getMaxPosition() {
