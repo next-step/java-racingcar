@@ -16,6 +16,13 @@ public class ConsoleInputView implements InputView {
         return Integer.parseInt(BUFFERED_READER.readLine());
     }
 
+    @Override
+    public String[] carsNames(String question) throws IOException {
+        System.out.println(question);
+        return BUFFERED_READER.readLine()
+                .split(",");
+    }
+
     private void verifyOnlyNumber(String question) {
         if (question.matches("\\D")) {
             throw new IllegalArgumentException("숫자만 들어올 수 있습니다.");
