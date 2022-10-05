@@ -2,20 +2,19 @@ package racingcar.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.Condition;
 import racingcar.domain.NumberCondition;
+import racingcar.domain.RandomMaker;
 import racingcar.domain.RandomStrategy;
 import racingcar.util.InputView;
 import racingcar.util.Print;
 import racingcar.util.Views;
 
 public class Racing extends Condition {
-	private static final int MAX_OF_RANDOM = 10;
-	private static final RandomStrategy random = () -> new Random().nextInt(MAX_OF_RANDOM);
+	private static final RandomStrategy random = new RandomMaker();
 
 	public Racing() {
 		super(new NumberCondition());
