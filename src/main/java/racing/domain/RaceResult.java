@@ -6,22 +6,22 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class RaceResult {
-    private final List<Record> record;
+    private final List<Record> records;
 
     public RaceResult() {
-        this.record = new ArrayList<>();
+        this.records = new ArrayList<>();
     }
 
     public RaceResult(List<Record> record) {
-        this.record = record;
+        this.records = record;
     }
 
     public void addRecord(final Car car) {
-        record.add(Record.record(car));
+        records.add(Record.record(car));
     }
 
-    public List<Record> records() {
-        return record;
+    public List<Record> getRecords() {
+        return records;
     }
 
     public List<Record> winners() {
@@ -30,14 +30,14 @@ public class RaceResult {
     }
 
     private int getWinnersLocation() {
-        return record.stream()
+        return records.stream()
                 .mapToInt(Record::getLocation)
                 .max()
                 .orElseThrow(IllegalStateException::new);
     }
 
     private List<Record> getWinnerByLocation(final int location){
-        return record.stream()
+        return records.stream()
                 .filter(rcd -> rcd.getLocation() == location)
                 .collect(Collectors.toUnmodifiableList());
     }
@@ -51,11 +51,11 @@ public class RaceResult {
             return false;
         }
         RaceResult result = (RaceResult) o;
-        return Objects.equals(record, result.record);
+        return Objects.equals(records, result.records);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(record);
+        return Objects.hash(records);
     }
 }

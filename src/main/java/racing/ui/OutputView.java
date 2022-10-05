@@ -1,12 +1,12 @@
 package racing.ui;
 
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import racing.domain.Race;
 import racing.domain.RaceResult;
 import racing.domain.Record;
 import racing.domain.ScoreBoard;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class OutputView {
 
@@ -17,7 +17,7 @@ public class OutputView {
         ScoreBoard scoreBoard = race.result();
         System.out.println("실행 결과");
         for (RaceResult raceResult : scoreBoard.raceResults()) {
-            showCarLocationsWithName(raceResult.records());
+            showCarLocationsWithName(raceResult.getRecords());
             System.out.println();
         }
         showWinner(scoreBoard.winners());
