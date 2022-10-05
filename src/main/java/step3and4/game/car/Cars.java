@@ -35,6 +35,11 @@ public class Cars {
         return Objects.hash(cars);
     }
 
+    public List<String> positionsAndNames() {
+        return cars.stream().map(Car::toString)
+                .collect(Collectors.toList());
+    }
+
     public static class Factory {
 
         private final int numberOfCars;
