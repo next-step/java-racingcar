@@ -43,6 +43,10 @@ public class Car {
         return location;
     }
 
+    public String getName() {
+        return name;
+    }
+
     private void validateName(String name) {
         if (name.length() > NAME_MAXIMUM_VALUE) {
             throw new CustomException(CarErrorCode.CAR_NAME_LENGTH_BAD_REQUEST);

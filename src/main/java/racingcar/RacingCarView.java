@@ -12,6 +12,7 @@ public class RacingCarView {
 
     public static void printRacingCar(List<Car> cars) {
         for (Car car : cars) {
+            System.out.print(car.getName() + " : ");
             System.out.println(LOCATION_PRINT_LETTER.repeat(car.getLocation()));
         }
     }
