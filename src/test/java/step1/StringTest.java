@@ -1,3 +1,5 @@
+package step1;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -17,7 +19,6 @@ public class StringTest {
     }
 
     @Test
-
     void substring() {
         String result = "(1,2)".substring(1, 4);
         assertThat(result).isEqualTo("1,2");
