@@ -1,33 +1,22 @@
 package step3.domains;
 
 import java.util.Objects;
-import step3.exception.ExceedLengthException;
-import step3.exception.NullOrEmptyException;
 
 public class Car {
     private static final int START_POSITION = 0;
-    private static final int MAX_NAME_LENGTH = 5;
 
-    private final String name;
+    private final CarName name;
     private final Position position;
 
     public static Car init(String name) {
-        if (name == null || name.isBlank()) {
-            throw new NullOrEmptyException();
-        }
-
-        if (name.length() > MAX_NAME_LENGTH) {
-            throw new ExceedLengthException(MAX_NAME_LENGTH);
-        }
-
         return new Car(name, START_POSITION);
     }
 
     public Car(String name, int position) {
-        this(name, new Position(position));
+        this(new CarName(name), new Position(position));
     }
 
-    public Car(String name, Position position) {
+    private Car(CarName name, Position position) {
         this.name = name;
         this.position = position;
     }
@@ -49,7 +38,7 @@ public class Car {
     }
 
     public String getName() {
-        return this.name;
+        return this.name.getName();
     }
 
     @Override
