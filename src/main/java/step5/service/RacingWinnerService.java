@@ -12,6 +12,7 @@ public class RacingWinnerService {
         return racingResults.stream()
                 .filter(car -> car.getLocation() == foreFrontLocation)
                 .map(RacingResult::getCarName)
+                .distinct()
                 .collect(Collectors.joining(","));
     }
 
