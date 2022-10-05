@@ -1,7 +1,6 @@
 package step3and4.game.car;
 
 import step3and4.client.number.Number;
-import step3and4.client.output.OutputView;
 
 import java.util.Objects;
 
@@ -13,8 +12,8 @@ public final class Car {
 
     private final Number number;
 
-    public Car(Number number, OutputView outputView) {
-        this(new Position(0, outputView), number);
+    public Car(Number number) {
+        this(new Position(0), number);
     }
 
     public Car(Position position, Number number) {
@@ -27,10 +26,6 @@ public final class Car {
             return new Car(position.movedPosition(), number);
         }
         return this;
-    }
-
-    public void printPosition() {
-        position.printPosition();
     }
 
     @Override

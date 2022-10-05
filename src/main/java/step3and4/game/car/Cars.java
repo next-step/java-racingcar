@@ -23,10 +23,6 @@ public class Cars {
         return new Cars(movedCars);
     }
 
-    public void printPosition() {
-        cars.forEach(Car::printPosition);
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -51,7 +47,7 @@ public class Cars {
         public Cars cars(Number number, OutputView outputView) {
             List<Car> cars = IntStream.range(0, numberOfCars)
                     .boxed()
-                    .map(numberOfCar -> new Car(number, outputView))
+                    .map(numberOfCar -> new Car(number))
                     .collect(Collectors.toUnmodifiableList());
 
             return new Cars(cars);

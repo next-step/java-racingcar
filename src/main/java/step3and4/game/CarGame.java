@@ -37,8 +37,6 @@ public class CarGame {
     private void useTurns(Cars cars, int numberOfGames) {
         for (int i = 0; i < numberOfGames; i++) {
             cars = cars.carsWithTurnUsed();
-            cars.printPosition();
-            System.out.println();
         }
     }
 
