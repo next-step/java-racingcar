@@ -5,8 +5,6 @@ import static org.assertj.core.api.Assertions.*;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.step3_4.domain.Name;
 import racingcar.step3_4.domain.Names;
 
@@ -23,9 +21,8 @@ class NamesTest {
     }
 
     @DisplayName("자동차 이름을 배열에서 Name 리스트로 변환 생성")
-    @ParameterizedTest
-    @CsvSource(value = {"0:pobi", "1:crong", "2:honux"}, delimiter = ':')
-    void toNameListTest(int index, String name) {
+	@Test
+    void toNameListTest() {
         List<String> names = List.of("pobi", "crong", "honux");
 
         Names result = Names.of(names);
