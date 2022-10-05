@@ -5,19 +5,16 @@ import racingcar.strategy.MoveStrategy;
 public class Car implements Comparable<Car> {
 
 	private static final int MOVE_AMOUNT = 1;
-	private static final String DEFAULT_NAME = "이름 없음";
 
 	private int position = 0;
-	private final String name;
+	private final Name name;
 
 	public Car() {
-		this(DEFAULT_NAME);
+		this.name = new Name();
 	}
 
 	public Car(String name) {
-		validateNameLength(name);
-		validateNameNotBlank(name);
-		this.name = name;
+		this.name = new Name(name);
 	}
 
 	public void move(MoveStrategy moveStrategy) {
@@ -31,22 +28,7 @@ public class Car implements Comparable<Car> {
 	}
 
 	public String getName() {
-		return name;
-	}
-
-	public void validateNameLength(String name) {
-		if (name.length() < 1) {
-			throw new RuntimeException("이름은 1글자 이상입니다");
-		}
-		if (name.length() > 5) {
-			throw new RuntimeException("이름은 5글자 이하입니다");
-		}
-	}
-
-	public void validateNameNotBlank(String name) {
-		if(name.isBlank()){
-			throw new RuntimeException("이름은 공백이 될 수 없습니다");
-		}
+		return name.getName();
 	}
 
 	@Override
