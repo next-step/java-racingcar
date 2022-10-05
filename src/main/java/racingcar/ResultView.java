@@ -11,9 +11,9 @@ public class ResultView {
         println();
     }
 
-    public static void printRoundResult(List<Car> cars) {
-        for (Car car: cars) {
-            car.print();
+    public static void printRoundResult(List<LaneView> lanes) {
+        for (LaneView lane: lanes) {
+            lane.print();
         }
 
         println();

@@ -2,10 +2,19 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Game {
     private final int repeat;
     private List<Car> cars;
+
+    public Game() {
+        int count = InputView.requestInputCount();
+        initCars(count);
+
+        this.repeat = InputView.requestInputRepeat();
+        ResultView.println();
+    }
 
     public Game(int count, int repeat) {
         this.repeat = repeat;
@@ -33,6 +42,9 @@ public class Game {
     }
 
     private void print() {
-        ResultView.printRoundResult(cars);
+        List<LaneView> lanes = cars.stream()
+                .map(car -> new LaneView(car.getPosition()))
+                .collect(Collectors.toList());
+        ResultView.printRoundResult(lanes);
     }
 }
