@@ -2,6 +2,8 @@ package carRacing.level3.model;
 
 import carRacing.level3.model.strategy.MovingStrategy;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Cars {
 
@@ -9,6 +11,12 @@ public class Cars {
 
 	public Cars(List<Car> carList) {
 		this.carList = carList;
+	}
+
+	public void initiateCars(List<String> carNameList) {
+		this.carList = IntStream.range(0, carNameList.size())
+			.mapToObj(index -> new Car(carNameList.get(index)))
+			.collect(Collectors.toList());
 	}
 
 	public void moveCarLocation(MovingStrategy movingStrategy) {
