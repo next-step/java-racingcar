@@ -1,6 +1,12 @@
 package domain;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import view.InputView;
+
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class CarNameTest {
@@ -25,4 +31,10 @@ public class CarNameTest {
         assertThatThrownBy(() -> new CarName(null))
                 .isInstanceOf(IllegalStateException.class);
     }
+
+    // TODO
+/*    @Test
+    void 자동차_이름은_쉼표_기준으로_생성한다(int input, String expected) {
+
+    }*/
 }

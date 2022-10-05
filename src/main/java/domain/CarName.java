@@ -5,26 +5,26 @@ import java.util.Objects;
 public class CarName {
 
     private final int MAX_CAR_NAME_LENGTH = 5;
-    private String name;
+    private String carName;
 
-    public CarName(String name) {
-        if (!isValid(name)) {
+    public CarName(String carName) {
+        if (!isValid(carName)) {
             throw new IllegalStateException("자동차 이름은 빈 값이거나 5자를 초과할 수 없습니다.");
         }
-        this.name = name;
+        this.carName = carName;
     }
 
-    private boolean isValid(String name) {
-        return name != null && !name.isEmpty() && name.length() < MAX_CAR_NAME_LENGTH;
+    private boolean isValid(String carName) {
+        return carName != null && !carName.isEmpty() && carName.length() < MAX_CAR_NAME_LENGTH;
     }
 
-    public String getName() {
-        return name;
+    public String getCarName() {
+        return carName;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        return Objects.hash(carName);
     }
 
     @Override
@@ -37,6 +37,6 @@ public class CarName {
         }
 
         CarName compareCarName = (CarName) obj;
-        return name == compareCarName.name;
+        return carName == compareCarName.carName;
     }
 }
