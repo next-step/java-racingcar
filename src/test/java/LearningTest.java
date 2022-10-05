@@ -73,6 +73,6 @@ public class LearningTest {
         assertThatExceptionOfType(IndexOutOfBoundsException.class)
                 .isThrownBy(() -> {
                     input1.charAt(5);
-                }).withMessageMatching("Index : \\d+, Size: \\d+");
+                }).withMessageMatching("String index out of range: 5");
     }
 }
