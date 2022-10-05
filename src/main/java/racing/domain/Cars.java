@@ -6,9 +6,7 @@ import racing.ui.ResultView;
 
 public class Cars {
 
-    private static final int DEFAULT_VALUE = 0;
-
-    private List<Car> cars;
+    List<Car> cars;
 
     public Cars(List<Car> cars) {
         this.cars = cars;
@@ -32,13 +30,10 @@ public class Cars {
     }
 
     public String findWinners() {
-        int maxPostion = cars.stream()
-            .mapToInt(Car::getPosition)
-            .max()
-            .orElse(DEFAULT_VALUE);
+        int max = cars.stream().mapToInt(Car::getDistance).max().getAsInt();
 
         return cars.stream()
-            .filter(car -> car.equalsPosition(maxPostion))
+            .filter(car -> car.getDistance() == max)
             .map(Car::getName)
             .collect(Collectors.joining(", "));
     }
