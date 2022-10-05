@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step3.domain.Cars;
-import step3.domain.Sepatation;
+import step3.domain.Separation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,12 +14,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarsTest {
 
-    Sepatation sepatation = new Sepatation();
+    Separation separation = new Separation();
     List<String> names = new ArrayList<>();
 
     @BeforeEach
     void beforeAll() {
-        names = sepatation.nameSeparation("pobi,crong,honux");
+        names = separation.nameSeparation("pobi,crong,honux");
     }
 
     @Test

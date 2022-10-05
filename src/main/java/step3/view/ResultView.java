@@ -1,11 +1,13 @@
 package step3.view;
 
 import step3.domain.Car;
+import step3.domain.Separation;
 
 import java.util.List;
 
 public class ResultView {
 
+    private static final Separation SEPARATION = new Separation();
     private static final String HYPHEN = "-";
 
     public void output(List<Car> carList) {
@@ -16,9 +18,7 @@ public class ResultView {
     }
 
     public void winnerOutput(List<Car> carList) {
-        for (Car car : carList) {
-            System.out.println("우승자 = " + car.getName());
-        }
+        System.out.println(SEPARATION.winnerSeparation(carList) + " 가 최종 우승했습니다.");
     }
 
     private String hyphen(int position) {
