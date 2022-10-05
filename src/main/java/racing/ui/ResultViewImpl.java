@@ -13,7 +13,7 @@ public class ResultViewImpl implements ResultView {
 
     @Override
     public void print(Car car) {
-        System.out.println("-".repeat(car.getMoved()));
+        System.out.println("-".repeat(car.getDistance()));
     }
 
 }

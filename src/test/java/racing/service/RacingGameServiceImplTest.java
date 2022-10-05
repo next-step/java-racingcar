@@ -32,7 +32,7 @@ class RacingGameServiceImplTest {
 
         racingGameService.racing(cars, tryCount, resultView, () -> 1);
 
-        assertThat(cars.getCar(0).getMoved()).isEqualTo(tryCount);
+        assertThat(cars.getCar(0).getDistance()).isEqualTo(tryCount);
     }
 
 }

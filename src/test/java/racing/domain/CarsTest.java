@@ -15,7 +15,7 @@ class CarsTest {
         cars.move(() -> 1);
 
         assertThat(cars.getCars().stream()
-            .map(Car::getMoved)).containsExactly(1, 1);
+            .map(Car::getDistance)).containsExactly(1, 1);
     }
 
     @DisplayName("모든 자동차 제자리")
@@ -25,7 +25,7 @@ class CarsTest {
         cars.move(() -> 0);
 
         assertThat(cars.getCars().stream()
-            .map(Car::getMoved)).containsExactly(0, 0);
+            .map(Car::getDistance)).containsExactly(0, 0);
     }
 
 }

@@ -2,18 +2,18 @@ package racing.domain;
 
 public class Car {
 
-    private int moved;
+    private int distance;
 
     public Car() {
-        this.moved = 0;
+        this.distance = 0;
     }
 
-    public int getMoved() {
-        return moved;
+    public int getDistance() {
+        return distance;
     }
 
     public void move(MovableStrategy movableStrategy) {
-        moved += movableStrategy.randomMovable();
+        distance += movableStrategy.randomMovable();
     }
 
 }
