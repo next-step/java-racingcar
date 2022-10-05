@@ -1,6 +1,7 @@
 package racingcar;
 
 import exception.CustomException;
+import racingcar.exception.RacingCarErrorCode;
 
 import java.util.List;
 
