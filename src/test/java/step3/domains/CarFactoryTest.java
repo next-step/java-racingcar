@@ -13,7 +13,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 public class CarFactoryTest {
     @ParameterizedTest
     @MethodSource("parametersProvider")
-    void a(String input, List<Car> expected) {
+    void Given_CarNameString_When_GenerateCar_Then_Equals_CarNumbers(String input, List<Car> expected) {
         CarFactory factory = new CarFactory(input);
 
         List<Car> carList = factory.createCarList();

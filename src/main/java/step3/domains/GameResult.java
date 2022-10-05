@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class GameResult {
-    private final List<List<Car>> resultList;
+    private List<List<Car>> resultList;
 
     public static GameResult init() {
         return new GameResult(new ArrayList<>());
@@ -16,11 +16,8 @@ public class GameResult {
         this.resultList = resultList;
     }
 
-    public GameResult addResult(List<Car> result) {
-        List<List<Car>> copyResultList = new ArrayList<>(resultList);
-        copyResultList.add(result);
-
-        return new GameResult(copyResultList);
+    public void addResult(List<Car> result) {
+        resultList.add(new ArrayList<>(result));
     }
 
     public List<List<Car>> getResults() {

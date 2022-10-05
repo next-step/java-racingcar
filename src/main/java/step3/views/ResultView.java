@@ -1,4 +1,4 @@
-package step3.ui;
+package step3.views;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -40,7 +40,7 @@ public class ResultView {
     private void printCar(Car car) {
         System.out.print(car.getName() + " : ");
 
-        for (int i = 0; i < car.getPosition(); ++i) {
+        for (int i = 0; i < car.getPosition().getPosition(); ++i) {
             System.out.print(MOVE_CHARACTER);
         }
 

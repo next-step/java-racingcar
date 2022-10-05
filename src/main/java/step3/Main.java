@@ -3,8 +3,8 @@ package step3;
 import java.util.Scanner;
 import step3.domains.CarFactory;
 import step3.domains.Game;
-import step3.ui.InputView;
-import step3.ui.ResultView;
+import step3.views.InputView;
+import step3.views.ResultView;
 
 public class Main {
     public static void main(String[] args) {
