@@ -23,7 +23,7 @@ class RacingGameTest {
     void constructorTryNumMinusFail() {
         assertThatThrownBy(() -> new RacingGame(-1, names))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("Positive는 양수만 들어올 수 있습니다.");
+                .hasMessageContaining("시도횟수는 0이상만 가능합니다.");
     }
 
     @Test
