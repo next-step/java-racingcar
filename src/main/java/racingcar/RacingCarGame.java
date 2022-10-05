@@ -5,7 +5,6 @@ import racingcar.ui.ResultView;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingCarGame {
     private final List<Car> carList;
@@ -31,10 +30,8 @@ public class RacingCarGame {
     public void play() {
         ResultView.printResultStartMessage();
         for (int i = 0; i < tryCount; i++) {
-            List<Integer> roundResult = carList.stream()
-                    .map(Car::tryMove)
-                    .collect(Collectors.toList());
-            ResultView.printRoundResult(roundResult);
+            carList.forEach(Car::tryMove);
+            ResultView.printRoundResult(carList);
         }
     }
 }
