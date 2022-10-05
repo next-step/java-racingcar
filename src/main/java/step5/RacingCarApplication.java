@@ -9,6 +9,6 @@ public class RacingCarApplication {
     }
 
     public static void run() {
-        new RacingGameController().start();
+        new RacingGameController().play();
     }
 }

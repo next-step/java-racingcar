@@ -19,7 +19,7 @@ public class RacingGameController {
         this.racingGame = new RacingGame(carNames, tryCount);
     }
 
-    public void start() {
+    public void play() {
         ResultView.printStartMessage();
 
         List<RacingResult> racingResults = racingGame.start();
