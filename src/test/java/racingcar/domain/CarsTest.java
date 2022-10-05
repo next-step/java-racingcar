@@ -55,6 +55,16 @@ public class CarsTest {
 		assertThat(retrievedPositions).containsAll(positions);
 	}
 
+	@Test
+	@DisplayName("이름들로 자동차를 생성한다")
+	void construct_cars_with_names() {
+		List<String> names = List.of("이름1", "이름2", "이름3");
+		Cars cars = Cars.ofNames(names);
+		List<String> retrievedNames = cars.getNames();
+
+		assertThat(retrievedNames).containsAll(names);
+	}
+
 	private List<Integer> getPositions(List<Car> carList) {
 		List<Integer> positions = new ArrayList<>();
 		for (Car car : carList) {
