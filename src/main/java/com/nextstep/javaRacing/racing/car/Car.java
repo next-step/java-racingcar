@@ -1,25 +1,32 @@
 package com.nextstep.javaRacing.racing.car;
 
 public class Car implements Comparable<Car>{
-    protected final String name;
-    protected final MoveStrategy moveStrategy;
-    protected int position;
+
+    private final CarName name;
+    private final MoveStrategy moveStrategy;
+    private int position;
 
     public Car(String name, MoveStrategy moveStrategy) {
-        this.name = name;
+        this.name = new CarName(name);
         this.moveStrategy = moveStrategy;
     }
 
-    public void move() {
-        this.position += moveStrategy.move();
+    public String getName() {
+        return name.getName();
     }
 
     public int getPosition(){
         return this.position;
     }
 
-    public String printPosition(){
-        return "-".repeat(this.position) + "|" + this.name;
+    public boolean hasSamePosition(int comparePosition) {
+        return this.position == comparePosition;
+    }
+
+    public void move() {
+        if (moveStrategy.isMovable()) {
+            this.position += 1;
+        }
     }
 
     @Override

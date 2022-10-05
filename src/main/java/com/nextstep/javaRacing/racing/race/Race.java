@@ -3,7 +3,9 @@ package com.nextstep.javaRacing.racing.race;
 import com.nextstep.javaRacing.racing.car.Car;
 import com.nextstep.javaRacing.racing.view.ResultView;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Race {
 
@@ -15,27 +17,30 @@ public class Race {
         this.turns = turns;
     }
 
-    public static void main(String[] args) {
-        Race.start();
-    }
-
-    public static void start() {
-        Race race = RaceFactory.prepareRace();
-        race.race();
-    }
-
     public void race() {
         for (int turn = 0; turn < turns; turn++) {
             move();
-            draw(turn);
+            drawCircuit(turn);
         }
+        drawWinners(getWinners());
     }
 
-    public void move() {
+    private void move() {
         cars.forEach(Car::move);
     }
 
-    private void draw(int turn) {
-        ResultView.draw(turn, cars);
+    private void drawCircuit(int turn) {
+        ResultView.drawCircuit(turn, cars);
+    }
+
+    private List<Car> getWinners() {
+        int bestRecord = Collections.max(cars).getPosition();
+        return cars.stream()
+                .filter(car->car.hasSamePosition(bestRecord))
+                .collect(Collectors.toList());
+    }
+
+    private void drawWinners(List<Car> winners) {
+        ResultView.drawWinners(winners);
     }
 }

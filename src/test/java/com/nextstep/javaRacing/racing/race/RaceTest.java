@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RaceTest {
 
-    private static final MoveStrategy mockMoveStrategy = () -> 1;
+    private static final MoveStrategy mockMoveStrategy = () -> true;
 
     @ParameterizedTest
     @CsvSource(value = {"1,2", "3,4", "5,6"})
@@ -22,7 +22,7 @@ class RaceTest {
     void race(int cars, int turns) {
         List<Car> carList = new LinkedList<>();
         for (int i = 0; i < cars; i++) {
-            carList.add(new Car("testCar" + i, mockMoveStrategy));
+            carList.add(new Car("car" + i, mockMoveStrategy));
         }
         Race race = new Race(carList, turns);
 
