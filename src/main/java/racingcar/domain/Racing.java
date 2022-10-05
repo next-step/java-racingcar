@@ -1,34 +1,36 @@
 package racingcar.domain;
 
-import racingcar.domain.exception.AlreadyRaceFinishedException;
-import racingcar.view.Watcher;
+import racingcar.domain.exception.InvalidCarCountException;
 
 public class Racing {
+    private static final int MIN_CAR_COUNT = 1;
+    private static final int MIN_TRY_COUNT = 1;
+    
+    private Progress progress;
     private final Cars cars;
-    private final int tryCount;
-    private int currentTryCount;
 
-    private Racing(Cars cars, int tryCount) {
+    private Racing(Progress progress, Cars cars) {
+        this.progress = progress;
         this.cars = cars;
-        this.tryCount = tryCount;
     }
 
-    public void race(Watcher watcher) {
-        if (isFinish()) {
-            throw new AlreadyRaceFinishedException();
-        }
-        currentTryCount++;
-        watcher.notify(cars.move());
+    public Cars race() {
+        progress = progress.proceed();
+        return cars.move();
     }
     
+    public static Racing of(CarNames names, int tryCount) {
+        if (names.carCount() < MIN_CAR_COUNT || tryCount < MIN_TRY_COUNT) {
+            throw new InvalidCarCountException();
+        }
+        return racing(names, tryCount);
+    }
+
+    private static Racing racing(CarNames names, int tryCount) {
+        return new Racing(new Progress(tryCount), Cars.from(names));
+    }
+
     public boolean isFinish() {
-        return currentTryCount >= tryCount;
-    }
-    
-    public static Racing of(int carCount, int tryCount) {
-        if (carCount <=0 || tryCount < 1) {
-            throw new IllegalArgumentException("Number of cars is greater than 0 and trial count must be greater than or equal to 1.");
-        }
-        return new Racing(Cars.create(carCount), tryCount);
+        return progress.isFinish();
     }
 }

@@ -3,10 +3,8 @@ package racingcar.domain;
 import java.util.Objects;
 
 public class Distance {
-    public static final Distance ZERO = new Distance(0);
-    
     private final int distance;
-    
+
     public Distance(int distance) {
         this.distance = distance;
     }
@@ -14,7 +12,15 @@ public class Distance {
     public Distance increment() {
         return new Distance(distance + 1);
     }
-    
+
+    public boolean greaterThan(Distance other) {
+        return distance > other.distance;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
     @Override
     public boolean equals(Object other) {
         if (this == other) {
@@ -30,12 +36,5 @@ public class Distance {
     @Override
     public int hashCode() {
         return Objects.hash(distance);
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder result = new StringBuilder();
-        result.append("-".repeat(Math.max(0, distance)));
-        return result.toString();
     }
 }
