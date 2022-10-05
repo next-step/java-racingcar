@@ -22,7 +22,7 @@ class NameTest {
     void b() {
         final Name sut = new Name("123456");
 
-        assertThatThrownBy(() -> sut.toString())
+        assertThatThrownBy(() -> sut.verifyLengthMustNotExceedFive())
                 .isInstanceOf(IllegalStateException.class)
                 .hasMessage("이름은 5글자를 초과할 수 없다.");
     }
