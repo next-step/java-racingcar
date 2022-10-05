@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import racingcar.domain.Cars;
 import racingcar.dto.CarDto;
 
 public class Result {
@@ -19,6 +20,10 @@ public class Result {
 		for (int i = 0; i < names.size(); ++i) {
 			carDtos.add(new CarDto(names.get(i), positions.get(i)));
 		}
+	}
+
+	public Result(Cars cars) {
+		this(cars.getNames(), cars.getPositions());
 	}
 
 	public List<String> getNames() {

@@ -30,7 +30,7 @@ public class Game {
 		List<Result> results = new ArrayList<>();
 		for (int i = 0; i < trialCount; ++i) {
 			moveOnce(cars);
-			accumulateResult(results, cars);
+			results.add(new Result(cars));
 		}
 		OUTPUT_VIEW.printResults(results);
 		OUTPUT_VIEW.printWinners(cars.findWinnerNames());
@@ -40,12 +40,6 @@ public class Game {
 		NumberStrategy numberStrategy = new RandomNumberStrategy(RANDOM_NUMBER_BOUND_INCLUSIVE);
 		MoveStrategy moveStrategy = new NumberOverFourStrategy(numberStrategy);
 		cars.move(moveStrategy);
-	}
-
-	private static void accumulateResult(List<Result> results, Cars cars) {
-		List<String> names = cars.getNames();
-		List<Integer> positions = cars.getPositions();
-		results.add(new Result(names, positions));
 	}
 
 	private static int getTrialCount() {
