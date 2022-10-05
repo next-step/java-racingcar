@@ -11,7 +11,6 @@ public class RacingGame {
 
     private final TryNumber tryNums;
     private final List<String> carNames;
-    private final RacingRecord racingRecord = new RacingRecord();
     private MovingStrategy movingStrategy;
 
     public RacingGame(int tryNums, List<String> names) {
@@ -22,10 +21,13 @@ public class RacingGame {
 
     public RacingRecord racingStart() {
         RoundCars roundCars = new RoundCars(carNames);
+        RacingRecord racingRecord = new RacingRecord();
+
         for (int round = 0; round < tryNums.getNumber(); round++) {
             RoundCars recordRoundCars = roundCars.moveCars(movingStrategy);
             racingRecord.addCarsPosition(recordRoundCars);
         }
+
         racingRecord.addWinners(roundCars.retrieveWinners());
         return racingRecord;
     }
