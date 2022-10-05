@@ -7,9 +7,13 @@ public class CarNameValidator {
 
     final static Pattern pattern = Pattern.compile("^[A-Za-z]{1,5}$", Pattern.MULTILINE);
 
-    public static boolean checkValidation(String name) {
-        Matcher matcher = pattern.matcher(name);
+    public static boolean checkValidation(String[] carNames) {
+        for (String carName : carNames) {
+            Matcher matcher = pattern.matcher(carName);
 
-        return matcher.find();
+            if(!matcher.find()) return false;
+        }
+
+        return true;
     }
 }

@@ -15,11 +15,11 @@ public class CarRacingExecutor {
         }
     }
 
-    public CarRacingExecutor(int carCount, String names[]) {
+    public CarRacingExecutor(String names[]) {
         carList = new ArrayList();
 
-        for (int i = 0; i < carCount; i++) {
-            carList.add(new Car(names[i]));
+        for (String name : names) {
+            carList.add(new Car(name));
         }
     }
 

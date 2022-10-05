@@ -15,6 +15,6 @@ public class InputView {
     public static String[] inputString(String msg) {
         System.out.println(msg);
 
-        return msg.split(",");
+        return scanner.next().split(",");
     }
 }
