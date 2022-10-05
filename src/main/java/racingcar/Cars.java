@@ -28,9 +28,8 @@ public class Cars {
 	}
 
 	private List<Car> findWinners(int max, List<Car> winners) {
-		List<Car> classify = winners.stream()
+		return winners.stream()
 			.filter(car -> car.getStatus().getPosition() == max)
 			.collect(Collectors.toList());
-		return classify;
 	}
 }
