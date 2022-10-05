@@ -21,10 +21,6 @@ public final class Position {
         return new Position(position + DISTANCE_TO_MOVE, outputView);
     }
 
-    public void printPosition() {
-        outputView.print(position);
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -38,4 +34,9 @@ public final class Position {
         return Objects.hash(position);
     }
 
+    @Override
+    public String toString() {
+        final String bar = "-";
+        return bar.repeat(position);
+    }
 }
