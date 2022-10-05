@@ -17,9 +17,11 @@ class CarsTest {
                 new Car(3, "demi")
         ));
 
-        String result = cars.findWinner();
+        List<Car> result = cars.findWinner();
 
-        assertThat(result).isEqualTo("bella");
+        List<Car> expected = List.of(new Car(4, "bella"));
+
+        assertThat(result).isEqualTo(expected);
     }
 
     @Test
@@ -31,8 +33,13 @@ class CarsTest {
                 new Car(2, "tina")
         ));
 
-        String result = cars.findWinner();
+        List<Car> result = cars.findWinner();
 
-        assertThat(result).isEqualTo("bella, demi");
+        List<Car> expected = List.of(
+                new Car(4, "bella"),
+                new Car(4, "demi")
+        );
+
+        assertThat(result).isEqualTo(expected);
     }
 }
