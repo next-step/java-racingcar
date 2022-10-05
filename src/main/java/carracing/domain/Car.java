@@ -2,12 +2,18 @@ package carracing.domain;
 
 import java.util.Objects;
 
-public class Car {
+public class Car{
     private static final int CAN_MOVE_THRESHOLD = 4;
     private int position;
+    private String participantName;
 
-    public Car() {
+    public Car(String participantName) {
         this.position = 0;
+        this.participantName = participantName;
+    }
+
+    public String getParticipantName() {
+        return participantName;
     }
 
     public int getPosition() {
