@@ -1,6 +1,7 @@
 package racingcar.domain;
 
-import org.assertj.core.util.Strings;
+
+import java.util.Objects;
 
 public class Name {
     public static final int MAXIMUM_LENGTH = 5;
@@ -17,7 +18,7 @@ public class Name {
     }
 
     private void validateNullOrEmpty(String name) {
-        if (Strings.isNullOrEmpty(name)) {
+        if (Objects.isNull(name) || name.length() == 0) {
             throw new IllegalArgumentException("자동차 이름은 1글자 보다 작을 수 없다.");
         }
     }
