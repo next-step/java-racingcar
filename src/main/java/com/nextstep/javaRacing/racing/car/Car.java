@@ -2,30 +2,25 @@ package com.nextstep.javaRacing.racing.car;
 
 public class Car implements Comparable<Car>{
 
-    private static final int NAME_MAX_LENGTH = 5;
-
-    private final String name;
+    private final CarName name;
     private final MoveStrategy moveStrategy;
     private int position;
 
     public Car(String name, MoveStrategy moveStrategy) {
-        this.name = name;
+        this.name = new CarName(name);
         this.moveStrategy = moveStrategy;
-        validate();
-    }
-
-    private void validate() {
-        if(name.length()>5) {
-            throw new IllegalArgumentException("자동차 이름은 " + NAME_MAX_LENGTH + "글자를 초과할 수 없습니다 : " + name);
-        }
     }
 
     public String getName() {
-        return name;
+        return name.getName();
     }
 
     public int getPosition(){
         return this.position;
+    }
+
+    public boolean hasSamePosition(int comparePosition) {
+        return this.position == comparePosition;
     }
 
     public void move() {

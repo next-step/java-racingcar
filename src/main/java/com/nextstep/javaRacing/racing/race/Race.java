@@ -1,10 +1,8 @@
 package com.nextstep.javaRacing.racing.race;
 
 import com.nextstep.javaRacing.racing.car.Car;
-import com.nextstep.javaRacing.racing.view.InputView;
 import com.nextstep.javaRacing.racing.view.ResultView;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,15 +15,6 @@ public class Race {
     protected Race(List<Car> cars, int turns) {
         this.cars = cars;
         this.turns = turns;
-    }
-
-    public static void main(String[] args) {
-        Race.start();
-    }
-
-    private static void start() {
-        Race race = RaceFactory.prepareRace(InputView.scanCarNames(), InputView.scanTurns());
-        race.race();
     }
 
     public void race() {
@@ -47,7 +36,7 @@ public class Race {
     private List<Car> getWinners() {
         int bestRecord = Collections.max(cars).getPosition();
         return cars.stream()
-                .filter(car->car.getPosition()==bestRecord)
+                .filter(car->car.hasSamePosition(bestRecord))
                 .collect(Collectors.toList());
     }
 

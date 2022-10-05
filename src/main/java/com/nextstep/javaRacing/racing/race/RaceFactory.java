@@ -11,7 +11,7 @@ import java.util.List;
 
 public class RaceFactory {
 
-    private static final String DEFAULT_CAR_NAME_PREFIX = "raceCar_";
+    private static final String DEFAULT_CAR_NAME_PREFIX = "car_";
     private static final MoveStrategy DEFAULT_MOVE_STRATEGY = new RandomMoveStrategy();
 
     public static Race prepareRace(int cars, int turns) {

@@ -13,7 +13,7 @@ class CarTest {
     @Test
     @DisplayName("자동차의 생성")
     void car_generater() {
-        String carName = "carName";
+        String carName = "car";
         Car car = new Car(carName, mockMoveStrategy);
 
         assertAll(
@@ -25,7 +25,7 @@ class CarTest {
     @Test
     @DisplayName("이동하면 위치가 변한다")
     void move_이동하면_위치가_변한다() {
-        Car car = new Car("testCar", mockMoveStrategy);
+        Car car = new Car("tc", mockMoveStrategy);
         int startPosition = car.getPosition();
         car.move();
         int movedPosition = car.getPosition();
@@ -39,8 +39,8 @@ class CarTest {
     @Test
     @DisplayName("이동하면 크기가 커진다")
     void move_compare() {
-        Car stoppedCar = new Car("stoppedCar", mockMoveStrategy);
-        Car movedCar = new Car("movedCar", mockMoveStrategy);
+        Car stoppedCar = new Car("stop", mockMoveStrategy);
+        Car movedCar = new Car("move", mockMoveStrategy);
         movedCar.move();
         assertThat(movedCar.compareTo(stoppedCar)).isGreaterThan(0);
     }

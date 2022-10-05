@@ -22,7 +22,7 @@ class RaceTest {
     void race(int cars, int turns) {
         List<Car> carList = new LinkedList<>();
         for (int i = 0; i < cars; i++) {
-            carList.add(new Car("testCar" + i, mockMoveStrategy));
+            carList.add(new Car("car" + i, mockMoveStrategy));
         }
         Race race = new Race(carList, turns);
 
