@@ -3,6 +3,7 @@ package racing.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class RaceResult {
     private final List<Record> record;
@@ -21,6 +22,24 @@ public class RaceResult {
 
     public List<Record> records() {
         return record;
+    }
+
+    public List<Record> winners() {
+        int location = getWinnersLocation();
+        return getWinnerByLocation(location);
+    }
+
+    private int getWinnersLocation() {
+        return record.stream()
+                .mapToInt(Record::getLocation)
+                .max()
+                .orElseThrow(IllegalStateException::new);
+    }
+
+    private List<Record> getWinnerByLocation(final int location){
+        return record.stream()
+                .filter(rcd -> rcd.getLocation() == location)
+                .collect(Collectors.toUnmodifiableList());
     }
 
     @Override

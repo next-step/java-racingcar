@@ -23,6 +23,15 @@ public class ScoreBoard {
         return raceResults;
     }
 
+    public List<Record> winners() {
+        RaceResult lastRaceResult = getLastRaceResult();
+        return lastRaceResult.winners();
+    }
+
+    private RaceResult getLastRaceResult(){
+        return raceResults.get(raceResults.size() -1);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
