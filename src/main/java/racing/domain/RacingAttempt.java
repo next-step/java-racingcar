@@ -4,12 +4,17 @@ public class RacingAttempt {
 
     private int attempt;
 
-    public RacingAttempt(final String attempt) {
+    private RacingAttempt(final int attempt) {
 
-        this.attempt = convert(attempt);
+        this.attempt = attempt;
     }
 
-    private int convert(final String attempt) {
+    public static RacingAttempt from(final String attempt) {
+
+        return new RacingAttempt(convert(attempt));
+    }
+
+    private static int convert(final String attempt) {
 
         try {
             int number = Integer.parseInt(attempt);
@@ -20,7 +25,7 @@ public class RacingAttempt {
         }
     }
 
-    private void validateZero(final int attempt) {
+    private static void validateZero(final int attempt) {
 
         if (attempt == 0) {
             throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
