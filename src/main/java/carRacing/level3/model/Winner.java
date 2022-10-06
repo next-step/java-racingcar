@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Winner {
 
-	private static int maxLocation;
+	private int maxLocation;
 	private List<String> winnerList;
 
 	public Winner(){

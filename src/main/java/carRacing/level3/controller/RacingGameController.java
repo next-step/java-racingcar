@@ -20,6 +20,8 @@ public class RacingGameController {
 
 		Cars cars = Cars.create(carNameList);
 
+		outPutView.showNotice();
+
 		for (int i = 0; i < gameRound; i++) {
 			cars.moveCarLocation(movingStrategy);
 			outPutView.showRace(cars);

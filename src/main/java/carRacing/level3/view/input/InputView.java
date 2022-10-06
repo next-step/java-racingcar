@@ -9,7 +9,7 @@ public class InputView {
 	private final Scanner scanner;
 	private final String CAR_NAME_DELIMITER = ",";
 
-	public static ArrayList<String> carNames = new ArrayList<>();
+	private final ArrayList<String> carNames = new ArrayList<>();
 
 	public InputView() {
 		scanner = new Scanner(System.in);

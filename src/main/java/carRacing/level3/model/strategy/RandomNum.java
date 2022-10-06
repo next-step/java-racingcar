@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class RandomNum {
 
-	private static final int BOUNDARY = 10;
+	private final int BOUNDARY = 10;
 
 	public int randomNum() {
 		Random random = new Random();
