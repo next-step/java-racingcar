@@ -9,6 +9,5 @@ public class Main {
 
         ResultView.printCars(carGameInfo, tryingCount);
         ResultView.printWinners(carGameInfo);
-
     }
 }
