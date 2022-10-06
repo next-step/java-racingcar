@@ -1,13 +1,14 @@
 package racingcar.view;
 
 import racingcar.domain.Car;
-import racingcar.dto.CarDto;
-import racingcar.dto.CarsDto;
+import racingcar.dto.CarRecord;
+import racingcar.dto.CarsRecord;
+import racingcar.dto.RacingRecord;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ResultView {
+public final class ResultView {
     private static final String COMMA = ",";
     private static final String COLON = " : ";
     private static final String POSITION_MARK = "-";
@@ -22,27 +23,29 @@ public class ResultView {
         System.out.println(NEW_LINE + RESULT_MESSAGE + NEW_LINE);
     }
 
-    public static void printRacingCars(List<CarsDto> carsValues) {
-        for (CarsDto carsValue : carsValues) {
-            List<CarDto> values = carsValue.getValues();
-            printCarsRound(values);
+    public static void printWinner(List<Car> winnerValues) {
+        List<CarRecord> winnerCarNames = winnerValues.stream().map(Car::generateRecord).collect(Collectors.toList());
+        List<String> winner = winnerCarNames.stream().map(CarRecord::getName).collect(Collectors.toList());
+        System.out.println(NEW_LINE + String.join(COMMA, winner).concat(FINAL_WON_MESSAGE));
+    }
+
+    public static void printRacingCars(RacingRecord racingRecord) {
+        List<CarsRecord> carsRecords = racingRecord.getRecords();
+        for (CarsRecord carsRecord : carsRecords) {
+            printCarsRound(carsRecord);
             System.out.println(NEW_LINE);
         }
     }
 
-    public static void printWinner(List<Car> winnerValues) {
-        List<String> winnerCarNames = winnerValues.stream().map(Car::getName).collect(Collectors.toList());
-        System.out.println(NEW_LINE + String.join(COMMA, winnerCarNames).concat(FINAL_WON_MESSAGE));
-    }
-
-    private static void printCarsRound(List<CarDto> values) {
-        for (CarDto value : values) {
+    private static void printCarsRound(CarsRecord carsRecord) {
+        List<CarRecord> values = carsRecord.getValues();
+        for (CarRecord value : values) {
             printCarPosition(value);
         }
     }
 
-    private static void printCarPosition(CarDto value) {
-        System.out.print(value.getName() + COLON);
-        System.out.println(POSITION_MARK.repeat(value.getPosition()));
+    private static void printCarPosition(CarRecord carRecord) {
+        System.out.print(carRecord.getName() + COLON);
+        System.out.println(POSITION_MARK.repeat(carRecord.getPosition()));
     }
 }

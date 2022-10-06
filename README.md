@@ -80,5 +80,6 @@
 - [x] 입력값에 대하여 exception 처리 수정 및 메세지 상세화
 - [x] carDTO, carsDTO 의 역할에 맞게 수정 -> Record
 - [x] WrapperClass : CarPosition, CarName 활용
-- [ ] Cars 의 일급컬렉션 사용 의미있게
-- [ ] findWinner함수에서 객체의 역할 수정
+- [x] Cars - findWinner 함수에서 객체의 역할 수정
+- [x] ResultView 기록받아 출력 구현
+- [ ] Cars 의 일급컬렉션 사용 의미있게 - 이 부분은 더 고민할 사항.
