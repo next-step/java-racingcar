@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import calculator.Positive;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -24,13 +26,11 @@ public class InputView {
         int number = 0;
 
         try {
-            number = scanNumber();
+            number = new Positive(scanNumber()).get();
         } catch (InputMismatchException e) {
             System.out.println("잘못된 문자가 입력되었습니다.");
             System.exit(1);
-        }
-
-        if (number < 1) {
+        } catch (IllegalArgumentException e) {
             System.out.println("너무 작은 숫자를 입력했습니다");
             System.exit(1);
         }
