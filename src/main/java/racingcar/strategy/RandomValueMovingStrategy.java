@@ -10,10 +10,6 @@ public class RandomValueMovingStrategy implements MovingStrategy {
 
     @Override
     public boolean isMovable() {
-        return makeRandomValue() >= MOVING_THRESHOLD_VALUE;
-    }
-
-    private int makeRandomValue() {
-        return RANDOM.nextInt(RANDOM_MAX_BOUND_VALUE);
+        return RANDOM.nextInt(RANDOM_MAX_BOUND_VALUE) >= MOVING_THRESHOLD_VALUE;
     }
 }
