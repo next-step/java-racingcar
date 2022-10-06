@@ -13,7 +13,7 @@ class CarTest {
 
     @BeforeEach
     void setData() {
-        car = new Car("boost");
+        car = new Car(new Nickname("boost"), new Position(0));
     }
 
     @Test
@@ -21,7 +21,7 @@ class CarTest {
     void moveSuccess() {
         car.move(new SuccessCondition());
 
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car).isEqualTo(new Car(new Nickname("boost"), new Position(1)));
     }
 
     @Test
@@ -29,15 +29,15 @@ class CarTest {
     void tryFail() {
         car.move(new FailCondition());
 
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car).isEqualTo(new Car(new Nickname("boost"), new Position(0)));
     }
 
     @Test
     @DisplayName("자동차를 생성할때 닉네임을 받을 수 있다.")
     void nickname() {
-        String expected = "boost";
+        Car expected = new Car("boost");
 
-        assertThat(car.getName()).isEqualTo(expected);
+        assertThat(car).isEqualTo(expected);
     }
 
     @Test

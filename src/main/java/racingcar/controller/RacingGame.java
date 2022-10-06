@@ -9,20 +9,17 @@ import java.util.List;
 
 public class RacingGame {
 
-    private static final ConsoleInput INPUT = new ConsoleInput();
-    private static final ConsoleOutput OUTPUT = new ConsoleOutput();
-
     public void start() {
-        List<String> carNames = INPUT.getCarNames();
-        int movementCount = INPUT.getMovementCount();
+        List<String> carNames = ConsoleInput.getCarNames();
+        int movementCount = ConsoleInput.getMovementCount();
 
         Cars cars = Cars.of(carNames);
 
-        OUTPUT.resultMessage();
+        ConsoleOutput.resultMessage();
         for (int i = 0; i < movementCount; i++) {
-            OUTPUT.status(cars.move(new CarCondition()));
+            ConsoleOutput.printStatus(cars.move(new CarCondition()));
         }
-        OUTPUT.winner(cars.findWinners());
+        ConsoleOutput.printWinner(cars.findWinners());
     }
 
 }

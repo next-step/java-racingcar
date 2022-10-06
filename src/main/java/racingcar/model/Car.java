@@ -32,11 +32,11 @@ public class Car implements Comparable<Car> {
         return this.position.equals(car.position);
     }
 
-    public String getName() {
+    public String knowName() {
         return nickname.getValue();
     }
 
-    public int getPosition() {
+    public int knowPosition() {
         return position.getValue();
     }
 

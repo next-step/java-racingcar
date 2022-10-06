@@ -8,36 +8,29 @@ import java.util.stream.Collectors;
 
 public class ConsoleOutput {
 
-    private static final String RACING_RESULT_MESSAGE = "레이싱 게임 결과입니다.";
-    private static final String RAIL = "-";
     private static final String STATUS_FORMAT = "%s : %s%n";
-    private static final String WIN_MESSAGE = "가 최종 우승했습니다.";
 
-    public void resultMessage() {
-        System.out.println(RACING_RESULT_MESSAGE);
+    private ConsoleOutput() {
     }
 
-    public void status(List<Car> cars) {
+    public static void resultMessage() {
+        System.out.println("레이싱 게임 결과입니다.");
+    }
+
+    public static void printStatus(List<Car> cars) {
         cars.forEach(
-                carStatus -> System.out.printf(STATUS_FORMAT, carStatus.getName(), rails(carStatus.getPosition())));
-        newLine();
+                car -> System.out.printf(STATUS_FORMAT, car.knowName(), "-".repeat(Math.max(0, car.knowPosition())))
+        );
+        System.out.println();
     }
 
-    private String rails(int position) {
-        return RAIL.repeat(Math.max(0, position));
-    }
-
-    public void winner(Winners winners) {
-        System.out.println(
+    public static void printWinner(Winners winners) {
+        System.out.print(
                 winners.getElements()
                         .stream()
-                        .map(Car::getName)
+                        .map(Car::knowName)
                         .collect(Collectors.joining(", "))
         );
-        System.out.println(WIN_MESSAGE);
-    }
-
-    private void newLine() {
-        System.out.println();
+        System.out.println("가 최종 우승했습니다.");
     }
 }

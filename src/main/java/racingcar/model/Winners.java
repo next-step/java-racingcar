@@ -25,6 +25,6 @@ public class Winners {
     }
 
     public List<Car> getElements() {
-        return elements;
+        return List.copyOf(elements);
     }
 }
