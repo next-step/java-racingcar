@@ -48,7 +48,7 @@ public class RacingCars {
 
     private void playRacingCar(final RacingCar racingCar, final MovingStrategy movingStrategy) {
 
-        if (movingStrategy.isMovable()) {
+        if (movingStrategy.canMove()) {
             racingCar.move();
         }
     }
