@@ -3,8 +3,8 @@ package racing_car_with_winner.view;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import racing_car_with_winner.model.car.Car;
-import racing_car_with_winner.model.car.CarName;
+import racing_car_with_winner.model.Car;
+import racing_car_with_winner.model.CarName;
 
 public class WinnerView {
     private static final String SHOW_WINNER_TEMPLATE = "\n%s가 최종 우승했습니다.";

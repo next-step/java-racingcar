@@ -1,8 +1,8 @@
-package racing_car_with_winner.model;
+package racing_car_with_winner.view;
 
 public class CarNameInput {
     private static final String DELIMITER = ",";
-    private String input;
+    private final String input;
 
     public CarNameInput(final String input) {
         this.input = input;

@@ -1,10 +1,10 @@
 package racing_car_with_winner.controller;
 
 import racing_car_with_winner.model.CarFactory;
-import racing_car_with_winner.model.CarNameInput;
+import racing_car_with_winner.view.CarNameInput;
 import racing_car_with_winner.model.GameAttemptCount;
 import racing_car_with_winner.model.MovableStrategy;
-import racing_car_with_winner.model.car.Cars;
+import racing_car_with_winner.model.Cars;
 import racing_car_with_winner.view.MoveResultView;
 import racing_car_with_winner.view.UserOutputInterface;
 import racing_car_with_winner.view.WinnerView;
@@ -22,8 +22,8 @@ public class GameController {
         Cars cars = new Cars(new CarFactory(carNameInput).build());
         GameAttemptCount playCount = gameAttemptCount;
 
-
         userOutputInterface.show("실행결과\n");
+
         do {
             playCount = playCount.play();
 

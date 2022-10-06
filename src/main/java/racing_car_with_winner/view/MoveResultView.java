@@ -1,7 +1,7 @@
 package racing_car_with_winner.view;
 
-import racing_car_with_winner.model.car.CarName;
-import racing_car_with_winner.model.car.MoveResult;
+import racing_car_with_winner.model.CarName;
+import racing_car_with_winner.model.MoveResult;
 
 public class MoveResultView {
     private static final String MOVE = "-";

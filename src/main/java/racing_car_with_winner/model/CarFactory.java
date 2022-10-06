@@ -4,8 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import racing_car_with_winner.model.car.Car;
-import racing_car_with_winner.model.car.CarName;
+import racing_car_with_winner.view.CarNameInput;
 
 public class CarFactory {
     private final CarNameInput carNameInput;

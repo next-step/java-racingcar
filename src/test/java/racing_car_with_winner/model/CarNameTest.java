@@ -7,7 +7,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import racing_car_with_winner.exception.InvalidInputException;
-import racing_car_with_winner.model.car.CarName;
 
 public class CarNameTest {
 

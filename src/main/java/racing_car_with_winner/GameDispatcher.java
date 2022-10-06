@@ -1,7 +1,7 @@
 package racing_car_with_winner;
 
 import racing_car_with_winner.controller.GameController;
-import racing_car_with_winner.model.CarNameInput;
+import racing_car_with_winner.view.CarNameInput;
 import racing_car_with_winner.model.GameAttemptCount;
 import racing_car_with_winner.model.RandomMovableStrategy;
 import racing_car_with_winner.view.CarNameInputInterface;
