@@ -7,6 +7,7 @@ import java.util.Map;
 
 public class RacingCarWinner {
 
+    private static final int advanceMinValue = 4;
     private String participantName;
     private int carMovingCount;
     private String[] participantNames;
@@ -36,7 +37,7 @@ public class RacingCarWinner {
 
     public int judgmentGoStop() {
         int randomNum = (int) (Math.random() * 10);
-        if (randomNum >= 4) {
+        if (randomNum >= advanceMinValue) {
             return 1;
         }
         return 0;
