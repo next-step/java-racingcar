@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import racingcar.domain.Car;
+
 import java.util.List;
 
 public class ConsoleResultView implements ResultView {
@@ -8,17 +10,17 @@ public class ConsoleResultView implements ResultView {
         System.out.println("실행 결과");
     }
 
-    public void printRoundResult(List<LaneViewModel> lanes) {
-        for (LaneViewModel lane: lanes) {
-            printLane(lane);
+    public void printRoundResult(List<Car> cars) {
+        for (Car car: cars) {
+            printLane(car);
         }
 
         System.out.println();
     }
 
-    private void printLane(LaneViewModel lane) {
-        System.out.print(lane.getName() + ": ");
-        for (int i = 0; i < lane.getPosition(); i++) {
+    private void printLane(Car car) {
+        System.out.print(car.getName() + ": ");
+        for (int i = 0; i < car.getPosition(); i++) {
             System.out.print("-");
         }
         System.out.println();

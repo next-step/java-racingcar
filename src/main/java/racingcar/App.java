@@ -1,7 +1,7 @@
 package racingcar;
 
 import racingcar.domain.Game;
-import racingcar.view.ConsoleResultView;
+import racingcar.listener.ConsoleGameEventListener;
 import racingcar.view.InputView;
 
 public class App {
@@ -13,7 +13,7 @@ public class App {
         String[] names = InputView.requestInputNames();
         int repeat = InputView.requestInputRepeat();
 
-        Game game = new Game(names, repeat, new ConsoleResultView());
+        Game game = new Game(names, repeat, new ConsoleGameEventListener());
         game.start();
     }
 }
