@@ -1,8 +1,8 @@
 package carRacing.level3.controller;
 
 import carRacing.level3.model.Cars;
+import carRacing.level3.model.Winner;
 import carRacing.level3.model.strategy.MovingStrategy;
-import carRacing.level3.model.strategy.WinnerStrategy;
 import carRacing.level3.view.input.InputView;
 import carRacing.level3.view.output.OutPutView;
 import java.util.List;
@@ -11,9 +11,9 @@ public class RacingGameController {
 
 	InputView inputView = new InputView();
 	OutPutView outPutView = new OutPutView();
+	Winner winner = new Winner();
 
-	public void gameStart(WinnerStrategy winnerStrategy, MovingStrategy movingStrategy)
-		throws Exception {
+	public void gameStart(MovingStrategy movingStrategy) {
 
 		List<String> carNameList = inputView.saveCarNames();
 		int gameRound = inputView.askValueRound();
@@ -25,7 +25,8 @@ public class RacingGameController {
 			outPutView.showRace(cars);
 		}
 
-		outPutView.showWinner(winnerStrategy.winnerList(cars));
+		winner.decideWinner(cars);
+		outPutView.showWinner(winner.getWinnerList());
 
 	}
 

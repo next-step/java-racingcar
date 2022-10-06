@@ -1,15 +1,22 @@
-package carRacing.level3.model.strategy;
+package carRacing.level3.model;
 
-import carRacing.level3.model.Cars;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WinnerStrategy {
+public class Winner {
 
 	private static int maxLocation;
-	List<String> winnerList = new ArrayList<>();
+	private List<String> winnerList;
 
-	public List<String> winnerList(Cars cars) {
+	public Winner(){
+		this(new ArrayList<>());
+	}
+
+	public Winner(List<String> winnerList) {
+		this.winnerList = winnerList;
+	}
+
+	public Winner decideWinner(Cars cars) {
 
 		maxLocation = cars.maxCarLocation();
 
@@ -17,13 +24,17 @@ public class WinnerStrategy {
 			addWinner(cars.carLocation(i), cars.carName(i));
 		}
 
-		return winnerList;
+		return new Winner(winnerList);
 	}
 
 	public void addWinner(int location, String carName) {
 		if (maxLocation == location) {
 			winnerList.add(carName);
 		}
+	}
+
+	public List<String> getWinnerList(){
+		return winnerList;
 	}
 
 }
