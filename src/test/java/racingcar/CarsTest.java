@@ -46,6 +46,9 @@ public class CarsTest {
 		bbb.movingOfRound(4);
 		Cars cars = new Cars(Arrays.asList(aaa, bbb));
 
-		assertThat(cars.findWinner().get(0).takePosition()).isEqualTo(new Position(1).getPosition());
+		List<Car> winner = cars.findWinner();
+		Cars carsOfWin = new Cars(winner);
+
+		assertThat(carsOfWin.getCarPosition(0)).isEqualTo(new Position(1).getPosition());
 	}
 }

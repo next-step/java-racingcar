@@ -16,7 +16,7 @@ public class CarTest {
 	@DisplayName("자동차 이름 5자 초과하면 예외발생")
 	void carNameOverFive() {
 		assertThatThrownBy(() -> new Car("abcdef"))
-			.isInstanceOf(RuntimeException.class);
+			.isInstanceOf(IllegalArgumentException.class);
 	}
 
 	@Test
