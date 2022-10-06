@@ -6,34 +6,29 @@ import java.util.stream.Collectors;
 
 public class WinnerRacingCars implements Comparator<RacingCar> {
 
-    private List<RacingCar> winners;
+    private List<RacingCar> winnerRacingCars;
 
     public WinnerRacingCars(final List<RacingCar> racingCars) {
 
-        this.winners = racingCars;
+        this.winnerRacingCars = racingCars;
     }
 
     public void win() {
 
         final RacingCar winner = descend();
-        this.winners = win(winner);
+        this.winnerRacingCars = win(winner);
     }
 
-    private List<RacingCar> win(final RacingCar first) {
+    private List<RacingCar> win(final RacingCar winner) {
 
-        return this.winners.stream()
-                .filter(racing -> isaBoolean(first, racing))
+        return this.winnerRacingCars.stream()
+                .filter(racingCar -> winner.tie(racingCar))
                 .collect(Collectors.toList());
-    }
-
-    private boolean isaBoolean(final RacingCar first, final RacingCar racing) {
-
-        return racing.getPosition() == first.getPosition();
     }
 
     private RacingCar descend() {
 
-        return this.winners.stream()
+        return this.winnerRacingCars.stream()
                 .min(this::compare)
                 .orElseThrow(IllegalArgumentException::new);
     }
@@ -44,27 +39,8 @@ public class WinnerRacingCars implements Comparator<RacingCar> {
         return racingCar2.getPosition() - racingCar.getPosition();
     }
 
-    public List<RacingCar> getWinners() {
+    public List<RacingCar> getWinnerRacingCars() {
 
-        return this.winners;
-    }
-
-    public String pick() {
-
-        final StringBuilder winner = new StringBuilder();
-        int index = 1;
-        for (RacingCar racingCar : winners) {
-            pick(winner, index, racingCar);
-            index++;
-        }
-        return winner.toString();
-    }
-
-    private void pick(final StringBuilder winner, final int index, final RacingCar racingCar) {
-
-        winner.append(racingCar.getName().getCarName());
-        if(index != winners.size()) {
-            winner.append(",");
-        }
+        return this.winnerRacingCars;
     }
 }
