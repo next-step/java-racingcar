@@ -17,11 +17,16 @@ public class CarRace {
     public List<Car> startRace(int raceCnt, List<Car> carList) {
         for (int i = 0; i < raceCnt; i++) {
             for (Car car: carList) {
-                if (new RandomUtil().isBiggerThan(COMPARE_NUM)) {
+                int randomNum = new RandomUtil().generateRandomNum();
+                if (isBiggerThanRandomNumber(randomNum)) {
                     car.moveForward();
                 }
             }
         }
         return carList;
+    }
+
+    private boolean isBiggerThanRandomNumber(int randomNumber) {
+        return randomNumber >= COMPARE_NUM;
     }
 }

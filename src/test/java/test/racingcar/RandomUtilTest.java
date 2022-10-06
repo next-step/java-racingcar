@@ -4,25 +4,15 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.RandomUtil;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RandomUtilTest {
 
     @Test
-    @DisplayName("음수 불가")
+    @DisplayName("전진 조건인 RandomNumber는 0에서 10 사이 숫자")
     void randomUtilTest1() {
-        assertThrows(RuntimeException.class, () -> {
-            new RandomUtil().isBiggerThan(-1);
-        });
+        int randomNum = new RandomUtil().generateRandomNum();
+        assertThat(randomNum).isGreaterThan(0);
+        assertThat(randomNum).isLessThan(10);
     }
-
-    @Test
-    @DisplayName("9 이상 불가")
-    void randomUtilTest2() {
-        assertThrows(RuntimeException.class, () -> {
-            new RandomUtil().isBiggerThan(10);
-        });
-    }
-
-    // todo : 난수 테스트
 }
