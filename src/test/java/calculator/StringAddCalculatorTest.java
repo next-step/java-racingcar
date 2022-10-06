@@ -3,14 +3,17 @@ package calculator;
 import static org.assertj.core.api.AssertionsForClassTypes.*;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 public class StringAddCalculatorTest {
-    @Test
-    public void null_또는_빈문자() {
-        int result = StringAddCalculator.splitAndSum(null);
+    @ParameterizedTest
+    @NullAndEmptySource
+    public void null_또는_빈문자(String target) {
+        int result = StringAddCalculator.splitAndSum(target);
         assertThat(result).isEqualTo(0);
 
-        result = StringAddCalculator.splitAndSum("");
+        result = StringAddCalculator.splitAndSum(target);
         assertThat(result).isEqualTo(0);
     }
 
