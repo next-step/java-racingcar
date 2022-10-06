@@ -1,16 +1,17 @@
 package racing.ui;
 
 public class Form {
-    private final int numberOfCars;
+    public static final String CAR_NAMES_SEPARATOR = ",";
+    private final String[] nameOfCars;
     private final int numberOfPlays;
 
-    public Form(int numberOfCars, int numberOfPlays) {
-        this.numberOfCars = numberOfCars;
+    public Form(String nameOfCars, int numberOfPlays) {
+        this.nameOfCars = nameOfCars.split(CAR_NAMES_SEPARATOR);
         this.numberOfPlays = numberOfPlays;
     }
 
-    public int getNumberOfCars() {
-        return numberOfCars;
+    public String[] getNameOfCars() {
+        return nameOfCars;
     }
 
     public int getNumberOfPlays() {

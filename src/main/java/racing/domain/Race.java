@@ -1,18 +1,15 @@
 package racing.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Race {
 
-    private final List<Car> cars = new ArrayList<>();
+    private final List<Car> cars;
     private final ScoreBoard scoreBoard = new ScoreBoard();
     private final int play;
 
-    public Race(final int numberOfCars, final int numberOfPlays, final MovingRule movingRule) {
-        for (int i = 0; i < numberOfCars; i++) {
-            this.cars.add(createCar(movingRule));
-        }
+    public Race(final List<Car> cars, final int numberOfPlays) {
+        this.cars = cars;
         this.play = numberOfPlays;
     }
 
@@ -26,13 +23,9 @@ public class Race {
         RaceResult result = new RaceResult();
         for (Car car : cars) {
             car.move();
-            result.addCarLocation(car.location());
+            result.addRecord(car);
         }
         scoreBoard.addResult(result);
-    }
-
-    private Car createCar(MovingRule movingRule) {
-        return new Car(movingRule);
     }
 
     public ScoreBoard result() {

@@ -3,24 +3,43 @@ package racing.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class RaceResult {
-    private final List<Integer> carLocations;
+    private final List<Record> records;
 
     public RaceResult() {
-        this.carLocations = new ArrayList<>();
+        this.records = new ArrayList<>();
     }
 
-    public RaceResult(List<Integer> carLocations) {
-        this.carLocations = carLocations;
+    public RaceResult(List<Record> record) {
+        this.records = record;
     }
 
-    public void addCarLocation(final int location) {
-        carLocations.add(location);
+    public void addRecord(final Car car) {
+        records.add(Record.record(car));
     }
 
-    public List<Integer> carLocations() {
-        return carLocations;
+    public List<Record> getRecords() {
+        return records;
+    }
+
+    public List<Record> winners() {
+        int location = getWinnersLocation();
+        return getWinnerByLocation(location);
+    }
+
+    private int getWinnersLocation() {
+        return records.stream()
+            .mapToInt(Record::getLocation)
+            .max()
+            .orElseThrow(IllegalStateException::new);
+    }
+
+    private List<Record> getWinnerByLocation(final int location) {
+        return records.stream()
+            .filter(rcd -> rcd.getLocation() == location)
+            .collect(Collectors.toUnmodifiableList());
     }
 
     @Override
@@ -32,11 +51,11 @@ public class RaceResult {
             return false;
         }
         RaceResult result = (RaceResult) o;
-        return Objects.equals(carLocations, result.carLocations);
+        return Objects.equals(records, result.records);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(carLocations);
+        return Objects.hash(records);
     }
 }

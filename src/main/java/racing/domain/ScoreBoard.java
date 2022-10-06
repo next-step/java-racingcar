@@ -11,16 +11,21 @@ public class ScoreBoard {
         this.raceResults = new ArrayList<>();
     }
 
-    public ScoreBoard(List<RaceResult> raceResults) {
-        this.raceResults = raceResults;
-    }
-
     public void addResult(final RaceResult raceResult) {
         raceResults.add(raceResult);
     }
 
     public List<RaceResult> raceResults() {
         return raceResults;
+    }
+
+    public List<Record> winners() {
+        RaceResult lastRaceResult = getLastRaceResult();
+        return lastRaceResult.winners();
+    }
+
+    private RaceResult getLastRaceResult() {
+        return raceResults.get(raceResults.size() - 1);
     }
 
     @Override
