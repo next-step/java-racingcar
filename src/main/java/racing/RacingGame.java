@@ -54,16 +54,15 @@ public class RacingGame {
 			.collect(Collectors.toList());
 		racingCars = new RacingCars(cars);
 
-		startRacing(carCount, carMoveCount);
+		startRacing(carMoveCount);
 	}
 
-	private void startRacing(int carCount, int carMoveCount) {
-		IntStream.range(0, carMoveCount)
-			.forEach(i -> {
-				racingCars.moveCars();
-				resultView.printCarLocations(racingCars);
-				System.out.println();
-			});
+	private void startRacing(int carMoveCount) {
+		for (int i = 0; i < carMoveCount; i++) {
+			racingCars.moveCars();
+			resultView.printCarLocations(racingCars);
+			System.out.println();
+		}
 	}
 
 	private void quit() {
