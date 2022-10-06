@@ -15,6 +15,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 public class CarTest {
     private final String carName = "niro";
+    private final int count = 5;
 
     @ParameterizedTest
     @ValueSource(ints = {1,3,5,10,20})
@@ -74,6 +75,20 @@ public class CarTest {
             car.getHistoriesByIndex(index);
         }).isInstanceOf(RuntimeException.class)
           .hasMessageContaining("index 값이 올바르지 않습니다.");
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2, 3, 4})
+    public void run(int countIndex) {
+        Car car = new Car(carName, count);
+        car.run(countIndex);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {-1, 5, 6, 7, 10})
+    public void runFailed(int countIndex) {
+        Car car = new Car(carName, count);
+        car.run(countIndex);
     }
 
     private static Stream<Arguments> getHistoriesByIndexTestParams() {

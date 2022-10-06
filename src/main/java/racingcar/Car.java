@@ -45,9 +45,12 @@ public class Car {
         return this.name;
     }
 
-    public void run(int index) {
+    public void run(int countIndex) {
+        if(countIndex < 0 || countIndex >= histories.length) {
+            throw new RuntimeException("잘못된 count의 index값입니다.");
+        }
         int result = RandomNumberMovingStrategy.straightOrStop();
-        histories[index] = result;
+        histories[countIndex] = result;
     }
 
     public int getTotalStraightCount() {
