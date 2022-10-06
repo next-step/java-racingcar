@@ -3,44 +3,45 @@ package carRacing.level3.model;
 import carRacing.level3.model.strategy.MovingStrategy;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Cars {
 
-	private List<Car> carList;
+	private List<Car> cars;
 
-	public Cars(List<Car> carList) {
-		this.carList = carList;
+	private Cars(List<Car> cars){
+		this.cars = cars;
 	}
 
-	public void initiateCars(List<String> carNameList) {
-		this.carList = IntStream.range(0, carNameList.size())
-			.mapToObj(index -> new Car(carNameList.get(index)))
+	public static Cars create(List<String>carNames){
+		List<Car> cars = carNames.stream()
+			.map(Car::new)
 			.collect(Collectors.toList());
+
+		return new Cars(cars);
 	}
 
 	public void moveCarLocation(MovingStrategy movingStrategy) {
-		carList.forEach(car ->
+		cars.forEach(car ->
 			car.moveLocation(movingStrategy));
 	}
 
 	public int maxCarLocation() {
-		return carList.stream()
-			.mapToInt(car -> car.carLocation())
+		return cars.stream()
+			.mapToInt(Car::carLocation)
 			.max()
 			.getAsInt();
 	}
 
 	public int carLocation(int carNum) {
-		return carList.get(carNum).carLocation();
+		return cars.get(carNum).carLocation();
 	}
 
 	public String carName(int carNum) {
-		return carList.get(carNum).carName();
+		return cars.get(carNum).carName();
 	}
 
 	public int totalNum() {
-		return carList.size();
+		return cars.size();
 	}
 
 }

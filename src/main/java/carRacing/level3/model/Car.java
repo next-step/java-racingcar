@@ -27,4 +27,5 @@ public class Car {
 			location += MOVE_LOCATION;
 		}
 	}
+
 }
