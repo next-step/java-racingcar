@@ -13,8 +13,10 @@ public class InputView {
 
     public String enterParticipantName() throws NameOutOfLengthException, NameIsEmptyNullException {
         String enterName = sc.nextLine();
+        NameLengthZero(enterName);
         participantNames = enterName.split(",");
         for (String name : participantNames) {
+            NameLengthZero(name);
             NameLengthDiscrimination(name);
         }
         return enterName;
@@ -32,8 +34,14 @@ public class InputView {
         if (name.length() > 5) {
             throw new NameOutOfLengthException("자동차 이름은 5글자를 넘길 수 없습니다.");
         }
+    }
+
+    public void NameLengthZero(String name) throws NameIsEmptyNullException {
         if (name == null || name.isBlank()) {
-            throw new NameOutOfLengthException("자동차 이름은 빈값이 들어올 수 없습니다.");
+            throw new NameIsEmptyNullException("자동차 이름은 빈값이 들어올 수 없습니다.");
+        }
+        if (name.charAt(name.length() - 1) == ',') {
+            throw new NameIsEmptyNullException("자동차 이름은 빈값이 들어올 수 없습니다.");
         }
     }
 }
