@@ -1,7 +1,7 @@
 package racingcar.controller;
 
-import racingcar.model.CarCondition;
-import racingcar.model.Cars;
+import racingcar.domain.CarCondition;
+import racingcar.domain.Cars;
 import racingcar.view.ConsoleInput;
 import racingcar.view.ConsoleOutput;
 

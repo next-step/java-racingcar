@@ -1,6 +1,6 @@
-package racingcar.model;
+package racingcar.domain;
 
-import racingcar.model.nickname.Nickname;
+import racingcar.domain.nickname.Nickname;
 
 import java.util.Objects;
 

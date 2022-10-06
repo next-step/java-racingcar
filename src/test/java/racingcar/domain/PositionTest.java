@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.domain;
 
 import org.assertj.core.api.ThrowableAssert.ThrowingCallable;
 import org.junit.jupiter.api.DisplayName;
