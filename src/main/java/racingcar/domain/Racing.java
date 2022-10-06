@@ -14,23 +14,24 @@ public class Racing {
         this.cars = cars;
     }
 
-    public Cars race() {
-        progress = progress.proceed();
-        return cars.move();
-    }
-    
     public static Racing of(CarNames names, int tryCount) {
         if (names.carCount() < MIN_CAR_COUNT || tryCount < MIN_TRY_COUNT) {
             throw new InvalidCarCountException();
         }
         return racing(names, tryCount);
     }
-
-    private static Racing racing(CarNames names, int tryCount) {
-        return new Racing(new Progress(tryCount), Cars.from(names));
+    
+    public Cars race() {
+        progress = progress.proceed();
+        cars.move();
+        return cars;
     }
 
     public boolean isFinish() {
         return progress.isFinish();
+    }
+    
+    private static Racing racing(CarNames names, int tryCount) {
+        return new Racing(new Progress(tryCount), Cars.from(names));
     }
 }

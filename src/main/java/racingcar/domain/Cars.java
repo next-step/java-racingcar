@@ -13,12 +13,18 @@ public class Cars implements Iterable<Car> {
         this.cars = cars;
     }
 
-    public Cars move() {
-        Cars cars = new Cars(new ArrayList(this.cars));
-        for (Car car : cars.cars) {
+    public static Cars from(CarNames names) {
+        List<Car> cars = new ArrayList<>();
+        for (String carName : names) {
+            cars.add(new Car(carName));
+        }
+        return new Cars(cars);
+    }
+    
+    public void move() {
+        for (Car car : cars) {
             car.move(Moving.create());
         }
-        return cars;
     }
 
     public Cars longest() {
@@ -38,12 +44,10 @@ public class Cars implements Iterable<Car> {
         return names;
     }
 
-    public static Cars from(CarNames names) {
-        List<Car> cars = new ArrayList<>();
-        for (String carName : names) {
-            cars.add(new Car(carName));
+    private void addEqualsDistance(Car max, List<Car> longest, Car car) {
+        if (max.distance() == car.distance()) {
+            longest.add(car);
         }
-        return new Cars(cars);
     }
     
     @Override
@@ -62,11 +66,5 @@ public class Cars implements Iterable<Car> {
     @Override
     public int hashCode() {
         return Objects.hash(cars);
-    }
-
-    private void addEqualsDistance(Car max, List<Car> longest, Car car) {
-        if (max.distance() == car.distance()) {
-            longest.add(car);
-        }
     }
 }

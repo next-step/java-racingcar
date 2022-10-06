@@ -8,22 +8,11 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 class CarsTest {
-    @DisplayName("자동차들이 이동하면 자동차 목록을 리턴한다.")
-    @Test
-    void move() {
-        List<String> carNames = List.of("pobby", "luna");
-        
-        Cars cars = cars(carNames);
-
-        assertThat(equalsByName(cars.move().names(), carNames)).isTrue();
-    }
-
     @DisplayName("가장 긴 거리를 이동한 자동차들을 리턴한다.")
     @ParameterizedTest
     @MethodSource("longestSet")
