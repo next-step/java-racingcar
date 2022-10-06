@@ -22,7 +22,7 @@ public class RacingGame {
         for (int i = 0; i < movementCount; i++) {
             OUTPUT.status(cars.move(new CarCondition()));
         }
-        OUTPUT.winner(cars.getWinners());
+        OUTPUT.winner(cars.findWinners());
     }
 
 }

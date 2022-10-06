@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import racingcar.model.Car;
+import racingcar.model.Winners;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,9 +27,10 @@ public class ConsoleOutput {
         return RAIL.repeat(Math.max(0, position));
     }
 
-    public void winner(List<Car> cars) {
+    public void winner(Winners winners) {
         System.out.println(
-                cars.stream()
+                winners.getElements()
+                        .stream()
                         .map(Car::getName)
                         .collect(Collectors.joining(", "))
         );

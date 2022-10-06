@@ -27,13 +27,14 @@ public class Cars {
         return List.copyOf(cars);
     }
 
-    public List<Car> getWinners() {
+    public Winners findWinners() {
         Car maxPositionCar = cars.stream()
                 .max(Car::compareTo)
                 .orElseThrow(() -> new IllegalStateException("경기에 출전한 자동차가 없습니다."));
-        return cars.stream()
+        List<Car> maxPositionCars = cars.stream()
                 .filter(car -> car.isSamePosition(maxPositionCar))
                 .collect(Collectors.toList());
+        return new Winners(maxPositionCars);
     }
 
     @Override

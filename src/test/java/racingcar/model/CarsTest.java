@@ -1,64 +1,67 @@
 package racingcar.model;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.nickname.Nickname;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarsTest {
 
-    private final List<Car> readyCars = new ArrayList<>();
-    private final List<String> names = new ArrayList<>();
+    private List<String> names;
 
     @BeforeEach
     void setUp() {
-        names.add("apple");
-        names.add("boost");
-        names.add("jung");
-
-        names.forEach(name -> readyCars.add(new Car(name)));
+        names = List.of("apple", "boost", "jung", "play");
     }
 
     @Test
+    @DisplayName("이름 목록으로 자동차 목록이 생성된다.")
     void of() {
-        Cars expected = new Cars(readyCars);
+        List<Car> cars = names.stream()
+                .map(name -> new Car(new Nickname(name), new Position(0)))
+                .collect(Collectors.toList());
+        Cars expected = new Cars(cars);
+
         Cars actual = Cars.of(names);
 
         assertThat(actual).isEqualTo(expected);
     }
 
     @Test
+    @DisplayName("자동차들이 이동한다.")
     void move() {
-        List<Car> expected = new ArrayList<>();
-        names.forEach(name -> expected.add(createCar(name, 1)));
-
+        List<Car> expected = names.stream()
+                .map(name -> new Car(new Nickname(name), new Position(1)))
+                .collect(Collectors.toList());
         Cars cars = Cars.of(names);
+
         List<Car> actual = cars.move(new SuccessCondition());
 
         assertThat(actual).isEqualTo(expected);
     }
 
     @Test
-    void getWinner() {
-        List<Car> expected = new ArrayList<>();
-        expected.add(createCar(names.get(2), 3));
-
-        List<Car> movedCars = new ArrayList<>();
-        movedCars.add(createCar(names.get(0), 1));
-        movedCars.add(createCar(names.get(1), 2));
-        movedCars.add(createCar(names.get(2), 3));
-
+    @DisplayName("우승한 자동차들을 알려준다.")
+    void findWinners() {
+        Winners expected = new Winners(List.of(
+                new Car(new Nickname(names.get(1)), new Position(3)),
+                new Car(new Nickname(names.get(3)), new Position(3))
+        ));
+        List<Car> movedCars = List.of(
+                new Car(new Nickname(names.get(0)), new Position(1)),
+                new Car(new Nickname(names.get(1)), new Position(3)),
+                new Car(new Nickname(names.get(2)), new Position(2)),
+                new Car(new Nickname(names.get(3)), new Position(3))
+        );
         Cars cars = new Cars(movedCars);
-        List<Car> actual = cars.getWinners();
+
+        Winners actual = cars.findWinners();
 
         assertThat(actual).isEqualTo(expected);
-    }
-
-    private Car createCar(String name, int position) {
-        return new Car(new Nickname(name), new Position(position));
     }
 }
