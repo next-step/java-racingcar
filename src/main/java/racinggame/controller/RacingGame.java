@@ -1,4 +1,10 @@
-package racinggame;
+package racinggame.controller;
+
+import racinggame.component.NumberGenerator;
+import racinggame.domain.Car;
+import racinggame.model.RacingGameCarResult;
+import racinggame.model.RacingGameResult;
+import racinggame.model.RacingGameRoundResult;
 
 import java.util.List;
 

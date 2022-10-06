@@ -1,4 +1,10 @@
-package racinggame;
+package racinggame.view;
+
+import racinggame.model.RacingGameCarResult;
+import racinggame.model.RacingGameResult;
+import racinggame.model.RacingGameRoundResult;
+import racinggame.common.StringConstants;
+import racinggame.domain.CarName;
 
 import java.util.List;
 import java.util.stream.Collectors;

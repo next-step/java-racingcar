@@ -1,4 +1,6 @@
-package racinggame;
+package racinggame.controller;
+
+import racinggame.component.NumberGenerator;
 
 public class ConstantNumberGenerator implements NumberGenerator {
 

@@ -1,4 +1,6 @@
-package racinggame;
+package racinggame.view;
+
+import racinggame.common.StringConstants;
 
 import java.util.List;
 import java.util.Scanner;

@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.component;
 
 public interface NumberGenerator {
 

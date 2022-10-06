@@ -1,4 +1,6 @@
-package racinggame;
+package racinggame.model;
+
+import racinggame.domain.CarName;
 
 import java.util.ArrayList;
 import java.util.List;
