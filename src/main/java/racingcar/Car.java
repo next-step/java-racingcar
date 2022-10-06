@@ -3,11 +3,12 @@ package racingcar;
 import java.util.Random;
 
 public class Car {
+    private static final int RANDOM_NUMBER_BOUND = 9;
+    private static final int NUMBER_FOR_DECISION_OF_STRAIGHT = 4;
+
     private final Random random;
     private final String name;
     private final int[] histories;
-    private static final int RANDOM_NUMBER_BOUND = 9;
-    private static final int NUMBER_FOR_DECISION_OF_STRAIGHT = 4;
 
     public Car(Random random, String name, int count) {
         this.random = random;
