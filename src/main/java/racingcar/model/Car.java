@@ -9,17 +9,17 @@ public class Car implements Comparable<Car> {
     private final Nickname nickname;
     private Position position;
 
-    public Car(Nickname nickname, Position position) {
-        this.nickname = nickname;
-        this.position = position;
+    public Car(final String nickname) {
+        this(new Nickname(nickname));
     }
 
-    public Car(Nickname nickname) {
+    public Car(final Nickname nickname) {
         this(nickname, new Position());
     }
 
-    public Car(String nickname) {
-        this(new Nickname(nickname));
+    public Car(final Nickname nickname, final Position position) {
+        this.nickname = nickname;
+        this.position = position;
     }
 
     void move(Condition carCondition) {

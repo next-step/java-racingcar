@@ -8,11 +8,11 @@ public class Nickname {
 
     private final String value;
 
-    public Nickname(String value) {
+    public Nickname(final String value) {
         validateNull(value);
-        value = value.trim();
-        validate(value);
-        this.value = value;
+        String trimmedValue = value.trim();
+        validate(trimmedValue);
+        this.value = trimmedValue;
     }
 
     private void validateNull(String value) {

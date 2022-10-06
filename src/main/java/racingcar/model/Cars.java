@@ -8,18 +8,14 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
+    public Cars(final List<Car> cars) {
         this.cars = cars;
     }
 
-    public static Cars of(List<String> names) {
-        return new Cars(createCars(names));
-    }
-
-    private static List<Car> createCars(List<String> names) {
-        return names.stream()
+    public static Cars of(final List<String> names) {
+        return new Cars(names.stream()
                 .map(Car::new)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()));
     }
 
     public List<Car> move(Condition condition) {
