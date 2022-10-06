@@ -14,7 +14,7 @@ class RacingAttemptTest {
     @Test
     void race_zero_attempt() {
 
-        assertThatThrownBy(() -> new RacingAttempt("0"))
+        assertThatThrownBy(() -> RacingAttempt.from("0"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("시도 횟수는 1 이상이어야 합니다.");
     }
@@ -24,7 +24,7 @@ class RacingAttemptTest {
     @ValueSource(strings = {"d1", "te"})
     void race_string_attempt(final String str) {
 
-        assertThatThrownBy(() -> new RacingAttempt(str))
+        assertThatThrownBy(() -> RacingAttempt.from(str))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("숫자만 입력해야 합니다.");
     }
