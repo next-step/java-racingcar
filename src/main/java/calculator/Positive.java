@@ -1,5 +1,7 @@
 package calculator;
 
+import java.util.Objects;
+
 public class Positive {
     private final int number;
 
@@ -32,6 +34,11 @@ public class Positive {
         }
         Positive target = (Positive) o;
         return this.number == target.number;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.number);
     }
 
     public int plus(int i) {
