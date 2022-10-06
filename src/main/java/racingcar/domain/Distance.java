@@ -3,6 +3,8 @@ package racingcar.domain;
 import java.util.Objects;
 
 public class Distance {
+    public static final Distance ZERO = new Distance(0);
+    
     private final int distance;
 
     public Distance(int distance) {

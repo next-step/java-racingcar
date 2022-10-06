@@ -5,7 +5,6 @@ import static racingcar.domain.Moving.*;
 import java.util.Objects;
 
 public class Car implements Comparable<Car> {
-    private static final Distance ZERO = new Distance(0);
     private static final int GREATER = 1;
     private static final int EQUALS = 0;
     private static final int LESS = -1;
@@ -15,7 +14,7 @@ public class Car implements Comparable<Car> {
 
     public Car(String name) {
         this.name = name;
-        total = ZERO;
+        total = Distance.ZERO;
     }
 
     public Distance move(Moving moving) {
