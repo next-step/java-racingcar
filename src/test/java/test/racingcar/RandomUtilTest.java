@@ -12,7 +12,7 @@ public class RandomUtilTest {
     @DisplayName("전진 조건인 RandomNumber는 0에서 10 사이 숫자")
     void randomUtilTest1() {
         int randomNum = new RandomUtil().generateRandomNum();
-        assertThat(randomNum).isGreaterThan(0);
+        assertThat(randomNum).isGreaterThanOrEqualTo(0);
         assertThat(randomNum).isLessThan(10);
     }
 }

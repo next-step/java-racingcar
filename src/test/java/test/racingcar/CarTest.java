@@ -11,7 +11,7 @@ public class CarTest {
     @Test
     @DisplayName("자동차 전진 테스트")
     void moveTest() {
-        Car car = new Car(0);
+        Car car = new Car();
         car.moveForward();
         assertThat(car).isEqualTo(new Car(1));
     }
@@ -22,6 +22,6 @@ public class CarTest {
         Car car = new Car(5);
         car.moveForward();
         assertThat(car).isEqualTo(new Car(6));
-        assertThat(car.printMovedDistance()).isEqualTo("======");
+        assertThat(car.printMovedDistance()).isEqualTo("------");
     }
 }

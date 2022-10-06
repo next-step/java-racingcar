@@ -9,8 +9,7 @@ public class Application {
         int raceCnt = inputView.inputRaceCnt();
 
         CarRace carRace = new CarRace();
-        List<Car> joinCars = carRace.createCars(cars);
-        List<Car> racedCars = carRace.startRace(raceCnt, joinCars);
+        List<Car> racedCars = carRace.race(cars, raceCnt);
         new OutView().printResult(racedCars);
     }
 }

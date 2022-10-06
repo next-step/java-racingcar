@@ -10,6 +10,10 @@ public class Car {
         this.move = move;
     }
 
+    public Car() {
+        this.move = 0;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -31,13 +35,13 @@ public class Car {
     }
 
     public void moveForward() {
-        this.move += 1;
+        this.move ++;
     }
 
     public String printMovedDistance() {
         String moved = "";
         for (int i = 0; i < this.move; i++) {
-            moved += "=";
+            moved += "-";
         }
         return moved;
     }
