@@ -1,6 +1,7 @@
 package racing;
 
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -47,9 +48,11 @@ public class RacingGame {
 		}
 
 		RandomNumber randomNumber = new RandomNumber();
-		racingCars = new RacingCars(IntStream.range(0, carCount).
-			mapToObj(i -> new Car(randomNumber)).
-			collect(Collectors.toList()));
+
+		List<Car> cars = IntStream.range(0, carCount)
+			.mapToObj(i -> new Car(randomNumber))
+			.collect(Collectors.toList());
+		racingCars = new RacingCars(cars);
 
 		startRacing(carCount, carMoveCount);
 	}
