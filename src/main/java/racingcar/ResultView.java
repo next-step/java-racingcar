@@ -14,7 +14,7 @@ public class ResultView {
 
     public static void printGameResult(List<Car> cars) {
         for (Car car: cars) {
-            System.out.println(getLengthString(car.getPosition()));
+            System.out.println(car.getName() + " : " + getLengthString(car.getPosition()));
         }
         System.out.println();
     }

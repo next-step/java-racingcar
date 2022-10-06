@@ -22,6 +22,12 @@ public class RacingGame {
         }
     }
 
+    public void createCars(List<String> names) {
+        for (String name: names) {
+            cars.add(new Car(name));
+        }
+    }
+
     public void tryGame() {
         for (Car car : cars) {
             if (isMovable()) {
