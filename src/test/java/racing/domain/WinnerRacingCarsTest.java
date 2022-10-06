@@ -25,7 +25,7 @@ class WinnerRacingCarsTest {
         final RacingCars racingCars = new RacingCars(racingCarList);
         final WinnerRacingCars winnerRacingCars = new WinnerRacingCars(racingCars.score());
         winnerRacingCars.win();
-        final String 우승자 = winnerRacingCars.getWinners().get(0).getName().getCarName();
+        final String 우승자 = winnerRacingCars.getWinnerRacingCars().get(0).getName().getName();
 
         assertThat(우승자).isEqualTo("codeleesh");
     }
@@ -46,8 +46,7 @@ class WinnerRacingCarsTest {
         winnerRacingCars.win();
 
         assertAll(
-                () -> assertThat(winnerRacingCars.getWinners()).hasSize(2),
-                () -> assertThat(winnerRacingCars.pick()).isEqualTo("pobi,codeleesh")
+                () -> assertThat(winnerRacingCars.getWinnerRacingCars()).hasSize(2)
         );
     }
 }
