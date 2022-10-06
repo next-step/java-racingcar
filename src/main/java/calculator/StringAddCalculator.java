@@ -1,5 +1,7 @@
 package calculator;
 
+import util.NumberUtil;
+
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -23,7 +25,7 @@ public class StringAddCalculator {
 
     private static int sum(String[] tokens) {
         return Arrays.stream(tokens)
-                .mapToInt(Integer::parseUnsignedInt)
+                .mapToInt(NumberUtil::getPositiveInteger)
                 .sum();
     }
 
