@@ -8,6 +8,7 @@ import racingcar.Car;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CarTest {
@@ -24,7 +25,8 @@ public class CarTest {
     @Test
     @DisplayName("car_race_동작_테스트")
     public void race_test() {
-        car.race();
-        assertEquals("-\n", outContent.toString());
+        car.race(5);
+        assertThat(car.getDistance()).isGreaterThan(0);
     }
+
 }
