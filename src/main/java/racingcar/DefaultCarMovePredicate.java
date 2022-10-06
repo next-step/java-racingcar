@@ -8,7 +8,7 @@ public class DefaultCarMovePredicate implements CarMovePredicate {
     private final Random random = new Random();
 
     @Override
-    public boolean test() {
+    public boolean isMovable() {
         return random.nextInt(LIMIT) > SUCCESS_CRITERIA;
     }
 }

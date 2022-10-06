@@ -2,5 +2,5 @@ package racingcar;
 
 @FunctionalInterface
 public interface CarMovePredicate {
-    boolean test();
+    boolean isMovable();
 }

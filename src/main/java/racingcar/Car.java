@@ -17,7 +17,7 @@ public class Car {
     }
 
     public void go() {
-        if (movePredicate.test()) {
+        if (movePredicate.isMovable()) {
             move();
         }
     }
