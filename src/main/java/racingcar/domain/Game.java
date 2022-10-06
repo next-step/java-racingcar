@@ -32,28 +32,11 @@ public class Game {
             eventListener.afterRound(cars);
         }
 
-        eventListener.afterGame(getWinnerNames());
+        eventListener.afterGame(cars);
     }
 
     private void round() {
         cars.forEach(Car::go);
-    }
-
-    private List<String> getWinnerNames() {
-        int position = winnerPosition();
-
-        return cars.stream()
-                .filter(car -> car.getPosition() == position)
-                .map(Car::getName)
-                .collect(Collectors.toList());
-    }
-
-    private int winnerPosition() {
-        int max = 0;
-        for (Car car: cars) {
-            max = Math.max(car.getPosition(), max);
-        }
-        return max;
     }
 
     public List<Car> getCars() {

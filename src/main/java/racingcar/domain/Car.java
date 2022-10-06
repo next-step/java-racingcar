@@ -6,12 +6,20 @@ public class Car {
     private int position = 0;
 
     public Car(String name) {
-        this.name = name;
-        this.movePredicate = new DefaultCarMovePredicate();
+        this(name, new DefaultCarMovePredicate());
+    }
+
+    public Car(String name, int position) {
+        this(name, position, new DefaultCarMovePredicate());
     }
 
     public Car(String name, CarMovePredicate movePredicate) {
+        this(name, 0, movePredicate);
+    }
+
+    public Car(String name, int position, CarMovePredicate movePredicate) {
         this.name = name;
+        this.position = position;
         this.movePredicate = movePredicate;
     }
 
@@ -31,5 +39,15 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Car)) {
+            return false;
+        }
+
+        Car target = (Car) obj;
+        return name.equals(target.name) && position == target.position;
     }
 }
