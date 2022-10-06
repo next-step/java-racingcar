@@ -9,11 +9,11 @@ public class Cars {
 
 	private final List<Car> cars;
 
-    public Cars() {
-        cars = new ArrayList<>();
-    }
+	public Cars() {
+		cars = new ArrayList<>();
+	}
 
-    public void init(String nameListString) {
+	public void init(String nameListString) {
 		String[] names = nameListString.split(SPLIT_STANDARD);
 		Arrays.stream(names)
 				.map(Car::new)
