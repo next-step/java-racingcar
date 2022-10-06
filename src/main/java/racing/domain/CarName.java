@@ -8,12 +8,12 @@ public class CarName {
 
     public static final String REGEX_COMMA = ",";
 
-    private final String carName;
+    private final String name;
 
-    public CarName(final String carName) {
+    public CarName(final String name) {
 
-        validate(carName);
-        this.carName = carName;
+        validate(name);
+        this.name = name;
     }
 
     public static List<CarName> from(final String name) {
@@ -36,8 +36,8 @@ public class CarName {
                 .collect(Collectors.toList());
     }
 
-    public String getCarName() {
+    public String getName() {
 
-        return carName;
+        return name;
     }
 }
