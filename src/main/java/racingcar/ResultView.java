@@ -23,4 +23,14 @@ public class ResultView {
         }
         System.out.println();
     }
+
+    public static void printWinner(List<String> winnerNames) {
+        System.out.print(winnerNames.get(0));
+        for (int i = 1; i < winnerNames.size(); i++) {
+            System.out.print(", ");
+            String winnerName = winnerNames.get(i);
+            System.out.print(winnerName);
+        }
+        System.out.println("이(가) 최종 우승했습니다.");
+    }
 }

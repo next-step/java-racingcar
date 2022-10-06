@@ -27,6 +27,8 @@ public class Game {
             round();
             printLanes();
         }
+
+        printWinner();
     }
 
     private void round() {
@@ -38,6 +40,28 @@ public class Game {
                 .map(car -> new LaneViewModel(car.getName(), car.getPosition()))
                 .collect(Collectors.toList());
         ResultView.printRoundResult(lanes);
+    }
+
+    private void printWinner() {
+        List<String> winnerNames = getWinnerNames();
+        ResultView.printWinner(winnerNames);
+    }
+
+    private List<String> getWinnerNames() {
+        int position = winnerPosition();
+
+        return cars.stream()
+                .filter(car -> car.getPosition() == position)
+                .map(Car::getName)
+                .collect(Collectors.toList());
+    }
+
+    private int winnerPosition() {
+        int max = 0;
+        for (Car car: cars) {
+            max = Math.max(car.getPosition(), max);
+        }
+        return max;
     }
 
     public List<Car> getCars() {
