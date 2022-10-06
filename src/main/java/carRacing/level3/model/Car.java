@@ -1,24 +1,29 @@
 package carRacing.level3.model;
 
 import carRacing.level3.model.strategy.MovingStrategy;
+import java.util.Objects;
 
 public class Car {
 
-	private static final int DEFAULT_LOCATION = 0;
-	private static final int MOVE_LOCATION = 1;
-	private int location;
+	private Location location;
+	private CarName carName;
 
-	public Car() {
-		this.location = DEFAULT_LOCATION;
+	public Car(String carName) {
+		this.location = new Location();
+		this.carName = new CarName(carName);
 	}
 
 	public int carLocation() {
-		return location;
+		return location.getLocation();
+	}
+
+	public String carName() {
+		return carName.Name();
 	}
 
 	public void moveLocation(MovingStrategy strategy) {
 		if (strategy.isMovable()) {
-			location += MOVE_LOCATION;
+			location.move();
 		}
 	}
 }

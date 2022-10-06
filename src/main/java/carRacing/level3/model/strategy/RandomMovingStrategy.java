@@ -2,21 +2,19 @@ package carRacing.level3.model.strategy;
 
 public class RandomMovingStrategy implements MovingStrategy {
 
-	private static final int PIVOT = 4;
-	private static final int BOUNDARY = 10;
-	RandomNum randomNum= new RandomNum();
+	private final int PIVOT = 4;
+	private final int BOUNDARY = 10;
+	RandomNum randomNum = new RandomNum();
 
 	@Override
-	public Boolean isMovable(){
-		return movingStandard(randomNum.randomNum());
-	}
+	public Boolean isMovable() {
 
-	@Override
-	public Boolean movingStandard(int num) {
+		int num = randomNum.randomNum();
 
 		if (num >= PIVOT && num < BOUNDARY) {
 			return true;
 		}
 		return false;
 	}
+
 }
