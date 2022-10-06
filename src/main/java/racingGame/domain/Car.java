@@ -1,70 +1,12 @@
 package racingGame.domain;
 
-import racingGame.racingRule.RacingRule;
+public interface Car {
+    void move();
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+    long getTraceSize();
 
-public class Car implements Comparable<Car> {
+    String convertRound(String separator, String mark);
 
-    private final List<Boolean> carTrace = new ArrayList<>();
-    private final String carName;
-    private final StringBuilder stringBuilder = new StringBuilder();
+    String getCarName();
 
-    public Car(String carName) {
-        this.carName = carName;
-    }
-
-    public String getCarName() {
-        return carName;
-    }
-
-    public void move(RacingRule racingRule) {
-        if (racingRule.moveOrNot()) {
-            carTrace.add(true);
-            return;
-        }
-        carTrace.add(false);
-    }
-
-    public String convertRound(String separator, String mark) {
-        stringBuilder.append(carName).append(separator);
-        for (int i = 0; i < carTrace.size(); i++) {
-            stringBuilder.append(convertTrace(i, mark));
-        }
-        String round = stringBuilder.toString();
-        stringBuilder.setLength(0);
-        return round;
-    }
-
-    private String convertTrace(int round, String mark) {
-        if (Boolean.TRUE.equals(carTrace.get(round))) {
-            return mark;
-        }
-        return "";
-    }
-
-    public long getTraceSize() {
-        return carTrace.stream().filter(i -> i).count();
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Car car = (Car) o;
-        return Objects.equals(carTrace, car.carTrace) && Objects.equals(carName, car.carName);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(carTrace, carName);
-    }
-
-    @Override
-    public int compareTo(Car o) {
-        return Math.toIntExact(this.getTraceSize() - o.getTraceSize());
-    }
 }
