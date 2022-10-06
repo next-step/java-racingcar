@@ -6,9 +6,15 @@ import java.util.Scanner;
 public class JavaRacingcarSimple {
 
 	private static final int STANDARD = 4;
+	private static final Random RANDOM = new Random();
+	private static final int BOUND = 10;
 	private static final Scanner SCANNER = new Scanner(System.in);
 
-	public void printJavaRacingcarSimple() {
+	public static void main(String[] args) {
+		printJavaRacingcarSimple();
+	}
+
+	public static void printJavaRacingcarSimple() {
 		System.out.println("자동차 대수는 몇 대 인가요?");
 		int number = SCANNER.nextInt();
 
@@ -27,7 +33,7 @@ public class JavaRacingcarSimple {
 	}
 
 	// Racingcar class 초기화
-	public Racingcar[] initRacingCars(int number) {
+	public static Racingcar[] initRacingCars(int number) {
 		Racingcar[] racingcars = new Racingcar[number];
 		for (int i = 0; i < number; i++) {
 			racingcars[i] = initRacingCar();
@@ -36,14 +42,14 @@ public class JavaRacingcarSimple {
 	}
 
 	// Racingcar class 초기화
-	public Racingcar initRacingCar() {
+	public static Racingcar initRacingCar() {
 		Racingcar racingcar = new Racingcar();
 		racingcar.initPosition();
 		return racingcar;
 	}
 
 	// 초간단 자동차 경주 게임 진행
-	public void proceedJavaRacingcarsSimple(Racingcar[] racingcars) {
+	public static void proceedJavaRacingcarsSimple(Racingcar[] racingcars) {
 		for (int i = 0; i < racingcars.length; i++) {
 			proceedJavaRacingcarSimple(racingcars[i]);
 			printCurrentStatus(racingcars[i].getPosition());
@@ -51,19 +57,19 @@ public class JavaRacingcarSimple {
 	}
 
 	// 초간단 자동차 경주 게임 진행
-	public void proceedJavaRacingcarSimple(Racingcar racingcar) {
-		if (isGoForward(new Random().nextInt(10))) {
+	public static void proceedJavaRacingcarSimple(Racingcar racingcar) {
+		if (isGoForward(RANDOM.nextInt(BOUND))) {
 			racingcar.move();
 		}
 	}
 
 	// random 값이 4이상인 경우 true 반환
-	public boolean isGoForward(int random) {
+	public static boolean isGoForward(int random) {
 		return random >= STANDARD;
 	}
 
 	// score 개수 만큼 "-" 출력
-	public void printCurrentStatus(int position) {
+	public static void printCurrentStatus(int position) {
 		for (int i = 0; i < position; i++) {
 			System.out.print("-");
 		}
