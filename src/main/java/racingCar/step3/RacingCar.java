@@ -31,7 +31,16 @@ public class RacingCar {
         return 4 <= randomNumber;
     }
 
-    public int movements() {
-        return numberOfMovement;
+    public String print() {
+        return this.name + " : " + printTrace();
+    }
+
+    private String printTrace() {
+        String trace = "";
+        for (int i = 0; i < this.numberOfMovement ; i++) {
+            trace += "-";
+        }
+
+        return trace;
     }
 }

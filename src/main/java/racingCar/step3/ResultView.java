@@ -13,9 +13,6 @@ public class ResultView {
     }
 
     private void print(RacingCar car) {
-        for (int i = 0; i < car.movements(); i++) {
-            System.out.print("-");
-        }
-        System.out.print("\n");
+        System.out.println(car.print());
     }
 }
