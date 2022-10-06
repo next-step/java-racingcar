@@ -5,28 +5,28 @@ public class Car {
 	private final static int START_POINT = 1;
 	private final static int MOVE_PIVOT = 4;
 
-	private final RandomNumber randomNumber;
+	private final RandomNum randomNum;
 	private int location;
 
-	public Car(RandomNumber randomNumber) {
-		this(START_POINT, randomNumber);
+	public Car(RandomNum randomNum) {
+		this(START_POINT, randomNum);
 	}
 
-	public Car(int location, RandomNumber randomNumber) {
+	public Car(int location, RandomNum randomNum) {
 		this.location = location;
-		this.randomNumber = randomNumber;
+		this.randomNum = randomNum;
 	}
 
 	public int move() {
-		if (isMovable(randomNumber.getRandomNumber())) {
+		if (isMovable(randomNum.getRandomNumber())) {
 			moveForward();
 			return 1;
 		}
 		return 0;
 	}
 
-	private boolean isMovable(int randomNumber) {
-		return randomNumber >= MOVE_PIVOT;
+	private boolean isMovable(int randomNum) {
+		return randomNum >= MOVE_PIVOT;
 	}
 
 	private void moveForward() {
@@ -35,9 +35,5 @@ public class Car {
 
 	public int getLocation() {
 		return location;
-	}
-
-	public RandomNumber getRandomNumber() {
-		return randomNumber;
 	}
 }
