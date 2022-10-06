@@ -4,27 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RaceController {
-    private final RaceInput raceInput;
     private int currentRound;
+    private final int tryCount;
     private final List<Car> cars;
 
-    public RaceController(RaceInput raceInput) {
-        cars = new ArrayList<>();
+    public RaceController(List<Car> cars, int tryCount) {
         currentRound = 1;
-        this.raceInput = raceInput;
-        for (int i = 0; i < raceInput.getNumberOfCar(); i++) {
-            this.cars.add(new Car());
-        }
+        this.tryCount = tryCount;
+        this.cars = cars;
     }
 
     public void doRaceRound() {
         currentRound++;
         cars.forEach(Car::race);
-        System.out.println();
+        RaceView.printCars(cars);
     }
 
     public void startRacing() {
-        while (currentRound <= raceInput.getTryCount()) {
+        System.out.println("실행 결과");
+        while (currentRound <= this.tryCount) {
             doRaceRound();
         }
     }

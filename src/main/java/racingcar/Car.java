@@ -7,20 +7,19 @@ public class Car {
     private static final int RACE_THRESHOLD = 4;
     private static final Random random = new Random();
 
-    private final StringBuilder distance;
+    private int distance;
 
     public Car() {
-        this.distance = new StringBuilder();
-    }
-
-    public void printCurrentDistance() {
-        System.out.println(this.distance);
+        this.distance = 0;
     }
 
     public void race() {
         if (random.nextInt(RANDOM_BOUND) >= RACE_THRESHOLD) {
-            distance.append("-");
+            distance++;
         }
-        printCurrentDistance();
+    }
+
+    public int getDistance() {
+        return this.distance;
     }
 }
