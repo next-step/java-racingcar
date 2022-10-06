@@ -1,8 +1,11 @@
 plugins {
     id 'java'
+    id 'application'
 }
 
 version '1.0'
+
+mainClassName = 'racing_game.App'
 
 repositories {
     mavenCentral()
@@ -11,6 +14,10 @@ repositories {
 dependencies {
     testImplementation 'org.assertj:assertj-core:3.22.0'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+}
+
+run {
+    standardInput = System.in
 }
 
 java {
