@@ -5,7 +5,7 @@ import step3.view.ResultView;
 public class Play {
 
     private static final ResultView RESULT_VIEW = new ResultView();
-    private static final RandomNumber RANDOM_NUMBER = new RandomNumber();
+    private static final MoveStrategy MOVE_STRATEGY = new MoveStrategy();
 
     public void playGame(GameInfo gameInfo) {
         for (int i = 1; i <= gameInfo.getCount(); i++) {
@@ -22,7 +22,7 @@ public class Play {
 
     private void run(GameInfo gameInfo) {
         for (Car car : gameInfo.getCarList()) {
-            car.moveCheck(RANDOM_NUMBER.randomNumber());
+            car.moveOrStop(MOVE_STRATEGY);
         }
         RESULT_VIEW.racingOutput(gameInfo);
     }

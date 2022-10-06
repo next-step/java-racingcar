@@ -11,7 +11,7 @@ class CarTest {
     @DisplayName("자동차 이동 가능 테스트")
     void moveTest() {
         Car car = new Car("내 자동차");
-        car.moveCheck(5);
+        car.moveOrStop(() -> true);
         assertThat(car.getPosition()).isEqualTo(2);
     }
 
@@ -19,7 +19,7 @@ class CarTest {
     @DisplayName("자동차 이동 불가능 테스트")
     void notMoveTest() {
         Car car = new Car("내 자동차");
-        car.moveCheck(3);
+        car.moveOrStop(() -> false);
         assertThat(car.getPosition()).isEqualTo(1);
     }
 }
