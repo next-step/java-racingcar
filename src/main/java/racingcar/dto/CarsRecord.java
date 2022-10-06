@@ -17,7 +17,7 @@ public class CarsRecord {
     }
 
     public void add(final Car car) {
-        values.add(car.record());
+        values.add(car.generateRecord());
     }
 
     public List<CarRecord> getValues() {
