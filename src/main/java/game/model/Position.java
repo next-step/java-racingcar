@@ -2,6 +2,7 @@ package game.model;
 
 public class Position {
 
+    public static final int DEFAULT_POSITION = 0;
     private int position;
 
     public Position(int position) {

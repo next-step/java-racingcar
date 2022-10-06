@@ -8,20 +8,20 @@ class CarTest {
 
     @Test
     void 이동_가능() {
-        Car car = new Car();
+        Car car = new Car("a");
 
         car.move(() -> true);
 
-        assertThat(car.getPosition()).isOne();
+        assertThat(car.getPosition()).isEqualTo(new Position(1));
     }
 
     @Test
     void 이동_불가능() {
-        Car car = new Car();
+        Car car = new Car("a");
 
         car.move(() -> false);
 
-        assertThat(car.getPosition()).isZero();
+        assertThat(car.getPosition()).isEqualTo(new Position(0));
     }
 
 }

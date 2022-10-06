@@ -9,4 +9,8 @@ public class StringUtils {
     public static boolean isPositiveNumeric(String value) {
         return value.chars().allMatch(Character::isDigit) && Integer.parseInt(value) >= 0;
     }
+
+    public static boolean isEmpty(String text) {
+        return text == null || text.isEmpty();
+    }
 }

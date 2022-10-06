@@ -1,5 +1,6 @@
 package game.controller;
 
+import game.controller.dto.CarsDto;
 import game.controller.dto.GameParam;
 import game.model.Cars;
 import game.view.InputView;
@@ -11,16 +12,17 @@ public class RacingGame {
 
     public void play() {
         GameParam param = InputView.getGameParam();
-        Cars cars = new Cars(param.getCountOfCar());
+        Cars cars = new Cars(param.getCarNames());
         OutputView.printOutputStart();
         for (int i = 0; i < param.getCountOfRound(); i++) {
             playRound(cars);
         }
+        OutputView.printOutputResult(CarsDto.from(cars));
     }
 
     private static void playRound(Cars cars) {
         cars.moveCarList(getMovableStrategy());
-        OutputView.printOutputBody(cars);
+        OutputView.printOutputBody(CarsDto.from(cars));
     }
 
 }

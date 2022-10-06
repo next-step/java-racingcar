@@ -1,18 +1,20 @@
 package game.controller.dto;
 
+import java.util.List;
+
 public class GameParam {
 
-    private final int countOfCar;
+    private final List<String> carNames;
 
     private final int countOfRound;
 
-    public GameParam(int countOfCar, int tryNum) {
-        this.countOfCar = countOfCar;
+    public GameParam(List<String> carNames, int tryNum) {
+        this.carNames = carNames;
         this.countOfRound = tryNum;
     }
 
-    public int getCountOfCar() {
-        return countOfCar;
+    public List<String> getCarNames() {
+        return carNames;
     }
 
     public int getCountOfRound() {

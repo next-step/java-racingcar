@@ -4,6 +4,7 @@ import utils.RandomNumberUtils;
 
 public class Movable {
 
+    public static final int BOUND = 10;
     public static final int STANDARD_TO_MOVE = 4;
 
     private Movable() {
@@ -11,6 +12,6 @@ public class Movable {
     }
 
     public static MovableStrategy getMovableStrategy() {
-        return () -> RandomNumberUtils.getRandomNumber(10) >= STANDARD_TO_MOVE;
+        return () -> RandomNumberUtils.getRandomNumber(BOUND) >= STANDARD_TO_MOVE;
     }
 }
