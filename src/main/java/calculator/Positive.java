@@ -21,7 +21,7 @@ public class Positive {
         this.number = number;
     }
 
-    public int number() {
+    public int getNumber() {
         return this.number;
     }
 

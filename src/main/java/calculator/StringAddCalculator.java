@@ -11,7 +11,7 @@ public class StringAddCalculator {
             return 0;
 
         if(target.length() == 1) {
-            return new Positive(target).number();
+            return new Positive(target).getNumber();
         }
 
         Matcher m = pattern.matcher(target);
@@ -34,7 +34,7 @@ public class StringAddCalculator {
         int sum = 0;
         for (String s : numberStr) {
             var positive = new Positive(s);
-            sum += positive.number();
+            sum += positive.getNumber();
         }
         return sum;
     }

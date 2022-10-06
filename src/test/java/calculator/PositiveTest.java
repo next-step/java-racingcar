@@ -12,7 +12,7 @@ public class PositiveTest {
 
     @Test
     public void 숫자로_생성() {
-        assertThat(new Positive(365).number()).isEqualTo(365);
+        assertThat(new Positive(365).getNumber()).isEqualTo(365);
     }
 
     @Test
