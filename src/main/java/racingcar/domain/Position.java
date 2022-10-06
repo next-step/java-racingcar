@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.Objects;
 
@@ -16,6 +16,10 @@ public class Position {
 
 	public Position increase() {
 		return new Position(this.position + 1);
+	}
+
+	public boolean hasSamePosition(int max) {
+		return this.position == max;
 	}
 
 	public int getPosition() {

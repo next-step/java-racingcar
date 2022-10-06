@@ -8,6 +8,10 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
+import racingcar.domain.Position;
+
 public class CarsTest {
 	@Test
 	@DisplayName("List<Car> 생성 - 일급 콜렉션")
@@ -42,6 +46,9 @@ public class CarsTest {
 		bbb.movingOfRound(4);
 		Cars cars = new Cars(Arrays.asList(aaa, bbb));
 
-		assertThat(cars.findWinner().get(0).getStatus()).isEqualTo(new Position(1));
+		List<Car> winner = cars.findWinner();
+		Cars carsOfWin = new Cars(winner);
+
+		assertThat(carsOfWin.getCarPosition(0)).isEqualTo(new Position(1).getPosition());
 	}
 }

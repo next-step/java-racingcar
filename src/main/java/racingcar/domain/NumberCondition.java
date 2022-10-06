@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 public class NumberCondition implements ConditionStrategy {
 	private static final char ASCII_ZERO = 48;
@@ -6,7 +6,7 @@ public class NumberCondition implements ConditionStrategy {
 
 	@Override
 	public boolean validInput(String input) throws RuntimeException {
-		if (Integer.parseInt(input) < 0 || (ASCII_NINE < input.charAt(0) && input.charAt(0) < ASCII_ZERO)) {
+		if (Integer.parseInt(input) <= 0 || (ASCII_NINE < input.charAt(0) && input.charAt(0) < ASCII_ZERO)) {
 			return true;
 		}
 		return false;

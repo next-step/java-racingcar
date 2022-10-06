@@ -7,20 +7,23 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import racingcar.domain.Car;
+import racingcar.domain.Position;
+
 public class CarTest {
 
 	@Test
 	@DisplayName("자동차 이름 5자 초과하면 예외발생")
 	void carNameOverFive() {
 		assertThatThrownBy(() -> new Car("abcdef"))
-			.isInstanceOf(RuntimeException.class);
+			.isInstanceOf(IllegalArgumentException.class);
 	}
 
 	@Test
 	@DisplayName("자동차 이름 5자 이하면 통과")
 	void carNameBelowFive() {
 		Car car = new Car("abcde");
-		assertThat(car.getName()).isEqualTo(new Name("abcde"));
+		assertThat(car).isEqualTo(new Car("abcde"));
 	}
 
 	@ParameterizedTest
@@ -29,7 +32,7 @@ public class CarTest {
 	void stopStatusOfRound(int input) {
 		Car car = new Car("test");
 		car.movingOfRound(input);
-		assertThat(car.getStatus()).isEqualTo(new Position());
+		assertThat(car.takePosition()).isEqualTo(new Position().getPosition());
 	}
 
 	@ParameterizedTest
@@ -38,6 +41,6 @@ public class CarTest {
 	void forwardStatusOfRound(int input) {
 		Car car = new Car("test");
 		car.movingOfRound(input);
-		assertThat(car.getStatus()).isEqualTo(new Position(1));
+		assertThat(car.takePosition()).isEqualTo(new Position(1).getPosition());
 	}
 }

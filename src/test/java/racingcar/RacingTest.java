@@ -7,6 +7,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import racingcar.controller.Racing;
+import racingcar.domain.Cars;
+
 public class RacingTest {
 	@Test
 	@DisplayName("레이싱 참가자 수 테스트")
@@ -23,6 +26,6 @@ public class RacingTest {
 	})
 	void checkInput(String input) {
 		assertThatThrownBy(() -> new Racing().checkInput(input))
-			.isInstanceOf(RuntimeException.class);
+			.isInstanceOf(IllegalArgumentException.class);
 	}
 }

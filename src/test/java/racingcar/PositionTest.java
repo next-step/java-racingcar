@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import racingcar.domain.Position;
+
 public class PositionTest {
 	@Test
 	@DisplayName("포지션 위치 확인")

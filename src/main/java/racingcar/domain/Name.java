@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.Objects;
 
@@ -9,7 +9,7 @@ public class Name extends Condition {
 	public Name(String input) {
 		super(new NameCondition());
 		if (validInput(input)) {
-			throw new RuntimeException();
+			throw new IllegalArgumentException("자동차 이름은 공백 또는 5 자를 초과할 수 없습니다");
 		}
 		this.name = input;
 	}

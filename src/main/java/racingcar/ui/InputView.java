@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.ui;
 
 import java.util.Scanner;
 

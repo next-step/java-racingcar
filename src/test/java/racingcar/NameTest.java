@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import racingcar.domain.Name;
+
 public class NameTest {
 	@Test
 	@DisplayName("이름 생성")
@@ -17,7 +19,7 @@ public class NameTest {
 	@DisplayName("5자 초과 예외발생")
 	void valid() {
 		assertThatThrownBy(() -> new Name("abcdef"))
-			.isInstanceOf(RuntimeException.class);
+			.isInstanceOf(IllegalArgumentException.class);
 	}
 
 	@Test

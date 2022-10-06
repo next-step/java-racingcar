@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.Objects;
 
@@ -18,12 +18,16 @@ public class Car {
 		}
 	}
 
-	public Position getStatus() {
-		return this.position;
+	public boolean hasSamePosition(int max) {
+		return position.hasSamePosition(max);
 	}
 
-	public Name getName() {
-		return name;
+	public int takePosition() {
+		return this.position.getPosition();
+	}
+
+	public String takeName() {
+		return this.name.getName();
 	}
 
 	@Override
