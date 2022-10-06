@@ -1,24 +1,20 @@
-package racing.model;
+package racing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RacingWinner {
+public class RacingWinners {
     private List<Car> winner;
 
-    public RacingWinner(List<Car> cars) {
+    public RacingWinners(List<Car> cars) {
         this.winner = cars;
     }
 
-    public String getWinnerName() {
+    public List<String> getWinnersName() {
         List<String> names = new ArrayList<>();
         for (Car car : winner) {
             names.add(car.getName());
         }
-        return join(names);
-    }
-
-    public String join(List<String> names) {
-        return String.join(",", names);
+        return names;
     }
 }

@@ -1,12 +1,11 @@
-package racing.model;
+package racing.domain;
 
 import racing.strategy.CarMoveStrategy;
-import racing.strategy.DefaultCarMoveStrategy;
+
+import java.util.Objects;
 
 public class Car {
     private final static String TIRE_MARK = "-";
-    private final static int SPEED = 1;
-
     private CarPosition position;
     private CarMoveStrategy carMoveStrategy;
     private CarName name;
@@ -14,7 +13,7 @@ public class Car {
     public Car(CarName name, CarPosition position) {
         this.name = name;
         this.position = position;
-        setDefaultCarMoveStrategy();
+        this.carMoveStrategy = new CarMoveStrategy();
     }
 
     public Car(String name, int position) {
@@ -25,24 +24,18 @@ public class Car {
         this(new CarName(name), new CarPosition());
     }
 
-    public void setDefaultCarMoveStrategy() {
-        setStrategy(new DefaultCarMoveStrategy());
-    }
-
     public String getTireMark() {
         return TIRE_MARK;
     }
 
-    public void move() {
-        position.move(SPEED);
+    public void move(int randomNum) {
+        if (canMove(randomNum)) {
+            position.move();
+        }
     }
 
     public boolean canMove(int randomNum) {
         return carMoveStrategy.canMove(randomNum);
-    }
-
-    public void setStrategy(CarMoveStrategy carMoveStrategy) {
-        this.carMoveStrategy = carMoveStrategy;
     }
 
     public int getPosition() {
@@ -53,28 +46,33 @@ public class Car {
         return this.name.getName();
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-
-        Car car = (Car) obj;
-        if (!car.getName().equals(this.getName())) {
-            return false;
-        }
-
-        return car.position.getPosition() == this.position.getPosition();
-    }
-
     public String getSkidMark() {
         String skidMark = getName() + " : ";
         for (int i = 0; i < this.getPosition(); i++) {
             skidMark += this.getTireMark();
         }
         return skidMark;
+    }
+
+    public boolean isWinner(int winnerPosition) {
+        return this.position.equals(new CarPosition(winnerPosition));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Car car = (Car) o;
+
+        return Objects.equals(position, car.position) && Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(position, carMoveStrategy, name);
     }
 }

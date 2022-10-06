@@ -1,16 +1,8 @@
 package racing.service;
 
-import racing.model.Car;
-import racing.model.Cars;
-import racing.model.RaceResult;
-import racing.util.RandomGenerator;
-
-import java.util.ArrayList;
-import java.util.List;
+import racing.domain.*;
 
 public class RacingGameService {
-    private Cars cars;
-
     public Cars generateCar(String[] carNames) {
         Cars cars = new Cars();
         for (String name : carNames) {
@@ -20,16 +12,15 @@ public class RacingGameService {
     }
 
     public RaceResult race(String[] names, int count) {
-        RaceResult raceResult = new RaceResult();
-        cars = generateCar(names);
+        Cars cars = generateCar(names);
+        RacingRecord racingRecord = new RacingRecord();
 
         for (int i = 0; i < count; i++) {
             raceStep(cars);
-            raceResult.checkLap(cars.getLapTime());
+            racingRecord.addAll(cars.getLapTime());
         }
 
-        raceResult.checkWinner(cars.getWinners());
-        return raceResult;
+        return new RaceResult(racingRecord, new RacingWinners(cars.getWinners()));
     }
 
     private void raceStep(Cars cars) {
