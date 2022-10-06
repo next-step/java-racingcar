@@ -10,6 +10,12 @@ public class Cars {
 		this.cars = cars;
 	}
 
+	public void move(int random) {
+		for (Car car : cars) {
+			car.movingOfRound(random);
+		}
+	}
+
 	public List<Car> findWinner() {
 		return findWinners(findWinnerPosition(), getCars());
 	}
