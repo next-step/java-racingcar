@@ -1,4 +1,4 @@
-package racingcar.Contoller;
+package racingcar.contoller;
 
 import racingcar.domain.Cars;
 import racingcar.domain.Race;
@@ -19,7 +19,7 @@ public class RacingCarController {
     public void run() {
         List<String> carNames = InputView.carNamesScan();
         int round = InputView.roundScan();
-        Race race = new Race(new Cars(Cars.makeCarsList(carNames)));
+        Race race = new Race(Cars.create(carNames));
 
         ResultView.printStartMessage();
 

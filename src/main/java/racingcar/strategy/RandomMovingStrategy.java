@@ -9,10 +9,7 @@ public class RandomMovingStrategy implements MovingStrategy {
 
     @Override
     public boolean isMovable() {
-        if (makeRandomNumber() >= MOVE_MIN_NUM) {
-            return true;
-        }
-        return false;
+        return makeRandomNumber() >= MOVE_MIN_NUM;
     }
 
     private int makeRandomNumber() {

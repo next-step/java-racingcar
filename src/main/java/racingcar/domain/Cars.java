@@ -7,17 +7,18 @@ import java.util.*;
 import static java.util.stream.Collectors.groupingBy;
 
 public class Cars {
-    private static List<Car> cars = new ArrayList<>();
+    private List<Car> cars;
 
     public Cars(List<Car> cars) {
         this.cars = cars;
     }
 
-    public static List<Car> makeCarsList(List<String> carNames) {
+    public static Cars create(List<String> carNames) {
+        List<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
             cars.add(new Car(carName));
         }
-        return cars;
+        return new Cars(cars);
     }
 
     public List<Car> move(MovingStrategy movingStrategy) {
