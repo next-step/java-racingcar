@@ -1,18 +1,14 @@
 package racingcarwinner;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class RacingCarWinner {
 
     private static final int ADVANCE_MIN_VALUE = 4;
     private String participantName;
     private int carMovingCount;
-    private String[] participantNames;
     private int participantNumber;
-    private String printingStatus = "";
     private List<Car> carList = new ArrayList<>();
 
     public RacingCarWinner(String participantName, int carMovingCount) {
@@ -21,7 +17,7 @@ public class RacingCarWinner {
     }
 
     public void splitParticipantName() {
-        participantNames = participantName.split(",");
+        String[] participantNames = participantName.split(",");
         participantNumber = participantNames.length;
         for (int i = 0; i < participantNumber; i++) {
             carList.add(new Car(participantNames[i]));
@@ -44,19 +40,20 @@ public class RacingCarWinner {
         return carMovement;
     }
 
-    public void updateParticipantInformation() {
+    public String updateParticipantInformation() {
         List<Integer> carMovement = racingCarMove();
         int eachNumberOfMove = 0;
         for (int i = 0; i < participantNumber; i++) {
             eachNumberOfMove = carList.get(i).getPosition() + carMovement.get(i);
             carList.get(i).setPosition(eachNumberOfMove);
         }
-        printGameStatus();
+        return printGameStatus();
     }
 
     public String printGameStatus() {
+        String printingStatus = "";
         for (int i = 0; i < participantNumber; i++) {
-            printingStatus += participantNames[i] + " : " + printCarBar(i) + "\n";
+            printingStatus += carList.get(i).getCarName() + " : " + printCarBar(i) + "\n";
         }
         printingStatus += "\n";
         return printingStatus;
@@ -87,8 +84,9 @@ public class RacingCarWinner {
     }
 
     public String racingCarGame() {
+        String printingStatus = "";
         for (int i = 0; i < carMovingCount; i++) {
-            updateParticipantInformation();
+            printingStatus += updateParticipantInformation();
         }
         printingStatus += winner();
         return printingStatus;
