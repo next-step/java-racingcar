@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class InputValue {
-    private List<String> carNames;
-    private int tryNum;
+    private final List<String> carNames;
+    private final int tryNum;
 
     public InputValue(String carNames, String tryNum) {
         InputVerifier.validateNameInput(carNames);
@@ -42,7 +42,7 @@ public class InputValue {
     }
 
     public int getCarsSize() {
-        return carNames.size();
+        return this.carNames.size();
     }
 
     private int parseInput(String input) {
