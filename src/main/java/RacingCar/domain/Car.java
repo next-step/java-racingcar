@@ -1,12 +1,14 @@
-package RacingCar.Model;
-
-import java.util.ArrayList;
-import java.util.List;
+package RacingCar.domain;
 
 public class Car {
+    private static int STANDARD_TO_MOVE_NUMBER = 4;
+
     private String name;
     private int position;
-    private int STANDARD_TO_MOVE_NUMBER = 4;
+
+    public Car(String name) {
+        this(name, 1);
+    }
 
     public Car(String name, int position) {
         carNameCheck(name);
@@ -22,7 +24,11 @@ public class Car {
     }
 
     public int getPosition() {
-        return position;
+        return this.position;
+    }
+
+    public boolean isSamePosition(int position) {
+        return this.position == position;
     }
 
     public String getName() {

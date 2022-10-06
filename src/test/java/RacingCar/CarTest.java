@@ -1,7 +1,6 @@
 package RacingCar;
 
-import RacingCar.Model.Car;
-import RacingCar.Model.Validate;
+import RacingCar.domain.Car;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -38,6 +37,6 @@ public class CarTest {
     void move(int value, int result) {
         Car car = new Car("test", 1);
         car.move(value);
-        assertThat(car.getPosition()).isEqualTo(result);
+        assertThat(car.isSamePosition(result)).isTrue();
     }
 }

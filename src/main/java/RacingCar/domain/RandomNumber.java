@@ -1,7 +1,5 @@
-package RacingCar.Model;
+package RacingCar.domain;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class RandomNumber implements Number {

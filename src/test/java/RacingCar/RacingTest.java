@@ -1,6 +1,6 @@
 package RacingCar;
 
-import RacingCar.Model.*;
+import RacingCar.domain.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -16,28 +16,21 @@ public class RacingTest {
     void nameValidateTest() {
         Racing racing = new Racing(3);
         List<Car> list = new ArrayList<>();
-        FixNumber fixNumber = new FixNumber();
+        MoveNumber moveNumber = new MoveNumber();
+        StopNumber stopNumber = new StopNumber();
 
-        list.add(new Car("tom", 1));
+        list.add(new Car("tom"));
 
-        racing.round(fixNumber, list);
+        racing.round(moveNumber, list);
 
-        assertThat(list.get(0).getPosition()).isEqualTo(2);
+        assertThat(list.get(0).isSamePosition(2)).isTrue();
+
+        list.add(new Car("jenny"));
+
+        racing.round(stopNumber, list);
+
+        assertThat(list.get(1).isSamePosition(1)).isTrue();
     }
 
-    @Test
-    @DisplayName("우승자 테스트")
-    void winnerTest() {
-        Winner winner = new Winner();
-        FixNumber randomNumber = new FixNumber();
-        List<Car> list = new ArrayList<>();
 
-        list.add(new Car("tom", 1));
-        list.add(new Car("jason", 2));
-        list.add(new Car("jenny", 3));
-
-        List<Car> result = winner.winner(list);
-
-        assertThat(result.get(0).getName()).isEqualTo("jenny");
-    }
 }
