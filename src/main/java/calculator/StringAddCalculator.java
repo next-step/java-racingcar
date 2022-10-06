@@ -30,12 +30,11 @@ public class StringAddCalculator {
         return target == null || target.isBlank();
     }
 
-    private static int sum(String[] numberStr) {
-        int sum = 0;
-        for (String s : numberStr) {
-            var positive = new Positive(s);
-            sum += positive.getNumber();
+    private static int sum(String[] numbersString) {
+        Positive sum = new Positive(0);
+        for (String number : numbersString) {
+            sum.plus(new Positive(number));
         }
-        return sum;
+        return sum.getNumber();
     }
 }

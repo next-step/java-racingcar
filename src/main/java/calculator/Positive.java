@@ -3,7 +3,7 @@ package calculator;
 import java.util.Objects;
 
 public class Positive {
-    private final int number;
+    private int number;
 
     public Positive(String target) {
         this.number = validateNumber(target);
@@ -56,6 +56,7 @@ public class Positive {
     }
 
     public int plus(Positive positive) {
-        return this.number + positive.number;
+        this.number = getNumber() + positive.getNumber();
+        return this.getNumber();
     }
 }
