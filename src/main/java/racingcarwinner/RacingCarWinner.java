@@ -7,14 +7,13 @@ import java.util.Map;
 
 public class RacingCarWinner {
 
-    private static final int advanceMinValue = 4;
+    private static final int ADVANCE_MIN_VALUE = 4;
     private String participantName;
     private int carMovingCount;
     private String[] participantNames;
     private int participantNumber;
-    private Map<String, Integer> carNowInformation;
     private String printingStatus = "";
-    private Car car = new Car();
+    private List<Car> carList = new ArrayList<>();
 
     public RacingCarWinner(String participantName, int carMovingCount) {
         this.participantName = participantName;
@@ -24,20 +23,14 @@ public class RacingCarWinner {
     public void splitParticipantName() {
         participantNames = participantName.split(",");
         participantNumber = participantNames.length;
-    }
-
-    public void enterParticipantInformation() {
-        Map<String, Integer> participantInformation = new HashMap<>();
-        splitParticipantName();
-        for (String name : participantNames) {
-            participantInformation.put(name, 0);
+        for (int i = 0; i < participantNumber; i++) {
+            carList.add(new Car(participantNames[i]));
         }
-        car.setParticipant(participantInformation);
     }
 
     public int judgmentGoStop() {
         int randomNum = (int) (Math.random() * 10);
-        if (randomNum >= advanceMinValue) {
+        if (randomNum >= ADVANCE_MIN_VALUE) {
             return 1;
         }
         return 0;
@@ -53,28 +46,24 @@ public class RacingCarWinner {
 
     public void updateParticipantInformation() {
         List<Integer> carMovement = racingCarMove();
-        carNowInformation = car.getParticipant();
-        String participantNameKey = "";
         int eachNumberOfMove = 0;
         for (int i = 0; i < participantNumber; i++) {
-            participantNameKey = participantNames[i];
-            eachNumberOfMove = carNowInformation.get(participantNameKey) + carMovement.get(i);
-            carNowInformation.replace(participantNameKey, eachNumberOfMove);
+            eachNumberOfMove = carList.get(i).getPosition() + carMovement.get(i);
+            carList.get(i).setPosition(eachNumberOfMove);
         }
-        car.setParticipant(carNowInformation);
         printGameStatus();
     }
 
     public String printGameStatus() {
-        for (String participant : participantNames) {
-            printingStatus += participant + " : " + printCarBar(participant) + "\n";
+        for (int i = 0; i < participantNumber; i++) {
+            printingStatus += participantNames[i] + " : " + printCarBar(i) + "\n";
         }
         printingStatus += "\n";
         return printingStatus;
     }
 
-    public String printCarBar(String participant) {
-        int moveDistance = carNowInformation.get(participant);
+    public String printCarBar(int participantTurn) {
+        int moveDistance = carList.get(participantTurn).getPosition();
         String distanceBar = "";
         for (int i = 0; i < moveDistance; i++) {
             distanceBar += "-";
@@ -83,15 +72,15 @@ public class RacingCarWinner {
     }
 
     public String winner() {
-        String max = participantNames[0];
-        String winnerParticipant = participantNames[0];
+        int max = carList.get(0).getPosition();
+        String winnerParticipant = carList.get(0).getCarName();
         for (int i = 1; i < participantNumber; i++) {
-            if (carNowInformation.get(max) == carNowInformation.get(participantNames[i])) {
-                winnerParticipant += "," + participantNames[i];
+            if (max == carList.get(i).getPosition()) {
+                winnerParticipant += "," + carList.get(i).getCarName();
             }
-            if (carNowInformation.get(max) < carNowInformation.get(participantNames[i])) {
-                max = participantNames[i];
-                winnerParticipant = participantNames[i];
+            if (max < carList.get(i).getPosition()) {
+                max = carList.get(i).getPosition();
+                winnerParticipant = carList.get(i).getCarName();
             }
         }
         return winnerParticipant + "가 최종우승했습니다.";
@@ -106,8 +95,7 @@ public class RacingCarWinner {
     }
 
     public String startGame() {
-        enterParticipantInformation();
-        racingCarMove();
+        splitParticipantName();
         return racingCarGame();
     }
 
