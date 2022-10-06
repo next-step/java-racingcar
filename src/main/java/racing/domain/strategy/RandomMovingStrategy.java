@@ -9,7 +9,7 @@ public class RandomMovingStrategy implements MovingStrategy {
     private static final Random RANDOM = new Random();
 
     @Override
-    public boolean isMovable() {
+    public boolean canMove() {
 
         return randomize() >= MOVABLE_THRESHOLD_NUMBER;
     }
