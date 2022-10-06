@@ -18,8 +18,6 @@ public class RacingGame {
 
 	private final InputView inputView;
 	private final ResultView resultView;
-	private int carCount;
-	private int carMoveCount;
 	private RacingCars racingCars;
 
 	public RacingGame(InputView inputView, ResultView resultView) {
@@ -37,6 +35,9 @@ public class RacingGame {
 	}
 
 	private void startGame() {
+		int carCount = 0;
+		int carMoveCount = 0;
+
 		try {
 			carCount = inputView.askCountQuestion(CAR_COUNT_QUESTION);
 			carMoveCount = inputView.askCountQuestion(CAR_MOVE_COUNT_QUESTION);
@@ -50,10 +51,10 @@ public class RacingGame {
 			mapToObj(i -> new Car(randomNumber)).
 			collect(Collectors.toList()));
 
-		startRacing();
+		startRacing(carCount, carMoveCount);
 	}
 
-	private void startRacing() {
+	private void startRacing(int carCount, int carMoveCount) {
 		IntStream.range(0, carMoveCount)
 			.forEach(i -> {
 				racingCars.moveCars();
