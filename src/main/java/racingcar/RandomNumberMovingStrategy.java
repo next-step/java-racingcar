@@ -12,7 +12,7 @@ public class RandomNumberMovingStrategy {
         return RANDOM.nextInt(RANDOM_NUMBER_BOUND);
     }
 
-    public static int straightOrStop() {
+    public static int move() {
         if(getRandomNumber() >= NUMBER_FOR_DECISION_OF_STRAIGHT) {
             return 1;
         }

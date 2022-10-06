@@ -49,7 +49,7 @@ public class Car {
         if(countIndex < 0 || countIndex >= histories.length) {
             throw new RuntimeException("잘못된 count의 index값입니다.");
         }
-        int result = RandomNumberMovingStrategy.straightOrStop();
+        int result = RandomNumberMovingStrategy.move();
         histories[countIndex] = result;
     }
 
