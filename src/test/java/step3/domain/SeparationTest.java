@@ -2,11 +2,13 @@ package step3.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step3.view.Separation;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class SeparationTest {
 
+    private Separation separation = new Separation();
     private String input = "pobi,crong,honux";
 
     @Test
@@ -19,8 +21,7 @@ class SeparationTest {
     @Test
     @DisplayName("우승자를 구분자로 구분해서 반환하는 테스트")
     void winnerSeparationTest() {
-        Separation separation = new Separation();
-        Winner winner = new Winner(new GameInfo(separation.nameSeparation(input), 5));
+        Winner winner = new Winner(new Cars(separation.nameSeparation(input)).getCarList());
         assertThat(separation.winnerSeparation(winner)).isEqualTo(input);
     }
 

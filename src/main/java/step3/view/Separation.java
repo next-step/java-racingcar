@@ -1,4 +1,6 @@
-package step3.domain;
+package step3.view;
+
+import step3.domain.Winner;
 
 import java.util.Arrays;
 import java.util.List;

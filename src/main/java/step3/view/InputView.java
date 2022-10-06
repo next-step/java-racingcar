@@ -1,7 +1,5 @@
 package step3.view;
 
-import step3.domain.Separation;
-
 import java.util.List;
 import java.util.Scanner;
 

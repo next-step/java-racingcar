@@ -1,7 +1,5 @@
 package step3.domain;
 
-import java.util.Random;
-
 public class MoveStrategy implements MovableStrategy {
 
     private static final RandomNumber RANDOM_NUMBER = new RandomNumber();

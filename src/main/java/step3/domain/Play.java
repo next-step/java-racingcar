@@ -16,7 +16,7 @@ public class Play {
 
     private void countCheck(GameInfo gameInfo, int loopPoint) {
         if (loopPoint == gameInfo.getCount()) {
-            isLastGame(gameInfo);
+            finalGame(gameInfo);
         }
     }
 
@@ -27,7 +27,7 @@ public class Play {
         RESULT_VIEW.racingOutput(gameInfo);
     }
 
-    private void isLastGame(GameInfo gameInfo) {
-        RESULT_VIEW.winnerOutput(new Winner(gameInfo));
+    private void finalGame(GameInfo gameInfo) {
+        RESULT_VIEW.winnerOutput(new Winner(gameInfo.getCarList()));
     }
 }

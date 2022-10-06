@@ -3,6 +3,7 @@ package step3.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step3.view.Separation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,7 @@ class CarsTest {
 
     @Test
     @DisplayName("split 된 입력받은 문자로 자동차 그룹 생성 테스트")
-    void createCarList(String initValue) {
+    void createCarList() {
         Cars cars = new Cars(names);
         assertThat(cars.getCarList().get(0).getName()).isEqualTo("pobi");
         assertThat(cars.getCarList().get(1).getName()).isEqualTo("crong");
