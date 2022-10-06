@@ -20,7 +20,7 @@ public class InputView {
         try {
             number = scanNumber();
         } catch (InputMismatchException e) {
-            System.out.println("잘못된 숫자가 입력되었습니다.");
+            System.out.println("잘못된 문자가 입력되었습니다.");
             System.exit(1);
         }
 
