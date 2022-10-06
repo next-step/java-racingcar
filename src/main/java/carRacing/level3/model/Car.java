@@ -4,13 +4,12 @@ import carRacing.level3.model.strategy.MovingStrategy;
 
 public class Car {
 
-	private static final int DEFAULT_LOCATION = 0;
 	private Location location;
-	private String carName;
+	private CarName carName;
 
 	public Car(String carName) {
-		this.location = new Location(DEFAULT_LOCATION);
-		this.carName = carName;
+		this.location = new Location();
+		this.carName = new CarName(carName);
 	}
 
 	public int carLocation() {
@@ -18,7 +17,7 @@ public class Car {
 	}
 
 	public String carName() {
-		return carName;
+		return carName.Name();
 	}
 
 	public void moveLocation(MovingStrategy strategy) {

@@ -5,6 +5,10 @@ public class Location {
 	private int location;
 	private final int MOVE_LOCATION = 1;
 
+	public Location(){
+		this(0);
+	}
+
 	public Location(int location) {
 		this.location = location;
 	}
