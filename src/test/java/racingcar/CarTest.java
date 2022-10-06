@@ -9,6 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 
@@ -26,12 +27,19 @@ public class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {-1,-10,100,200,300})
     @DisplayName("클래스 초기화 실패 케이스 테스트")
-    public void initializeFailed(int count) {
+    public void initializeFailedByCount(int count) {
         assertThatThrownBy(() -> {
             Car car = new Car(random, carName, count);
         }).isInstanceOf(RuntimeException.class)
           .hasMessageContaining("count는 1에서 99까지의 숫자만 입력가능합니다.");
+    }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"", " ", "testtestttestteststestse"})
+    public void intializeFailedByName(String name) {
+        assertThatThrownBy(() -> {
+            Car car = new Car(random, name, 10);
+        }).isInstanceOf(RuntimeException.class);
     }
 
     @ParameterizedTest
