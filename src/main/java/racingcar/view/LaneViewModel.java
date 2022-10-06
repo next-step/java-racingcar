@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.view;
 
 public class LaneViewModel {
     private final String name;

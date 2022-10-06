@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.domain;
+
+import racingcar.view.InputView;
 
 public class App {
     public static void main(String[] args) {
