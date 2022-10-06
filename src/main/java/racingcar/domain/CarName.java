@@ -9,14 +9,18 @@ public class CarName {
 
     private final String name;
 
-    public CarName(String name) {
-        if(name.isBlank()) {
+    public CarName(final String name) {
+        if (name.isBlank()) {
             throw new IllegalArgumentException(BLANK_VALUE_MESSAGE);
         }
-        if(name.length() > CAR_NAME_MAX_LENGTH) {
+        if (name.length() > CAR_NAME_MAX_LENGTH) {
             throw new IllegalArgumentException(INVALID_CAR_NAME_MESSAGE);
         }
         this.name = name;
+    }
+
+    String getName() {
+        return name;
     }
 
     @Override

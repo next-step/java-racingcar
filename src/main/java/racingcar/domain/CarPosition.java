@@ -3,16 +3,17 @@ package racingcar.domain;
 import java.util.Objects;
 
 public class CarPosition {
+    public static final int INIT_POSITION = 0;
     public static final String NEGATIVE_VALUE_MESSAGE = "position은 음수 값을 가질 수 없습니다.";
 
     private int position;
 
     public CarPosition() {
-        this(0);
+        this(INIT_POSITION);
     }
 
-    public CarPosition(int position) {
-        if (position < 0) {
+    public CarPosition(final int position) {
+        if (position < INIT_POSITION) {
             throw new IllegalArgumentException(NEGATIVE_VALUE_MESSAGE);
         }
         this.position = position;
@@ -25,6 +26,10 @@ public class CarPosition {
 
     public boolean isLessThan(CarPosition maxPosition) {
         return this.position < maxPosition.position;
+    }
+
+    int getPosition() {
+        return position;
     }
 
     @Override

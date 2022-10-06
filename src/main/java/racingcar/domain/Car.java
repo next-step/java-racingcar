@@ -1,12 +1,12 @@
 package racingcar.domain;
 
+import racingcar.dto.CarRecord;
 import racingcar.strategy.MovingStrategy;
 
 import java.util.Objects;
 
 public class Car {
     public static final int INIT_POSITION = 0;
-
     private final CarName name;
     private final CarPosition position;
 
@@ -15,7 +15,7 @@ public class Car {
     }
 
     public Car(String name, int position) {
-        this.name = new CarName(name);
+        this.name = new CarName(name.trim());
         this.position = new CarPosition(position);
     }
 
@@ -25,12 +25,19 @@ public class Car {
         }
     }
 
-    public int getPosition() {
-        return position;
+    boolean isWinner(CarPosition maxPosition) {
+        return position.equals(maxPosition);
     }
 
-    public String getName() {
-        return name;
+    CarPosition getMaxPosition(CarPosition maxPosition) {
+        if (position.isLessThan(maxPosition)) {
+            return maxPosition;
+        }
+        return this.position;
+    }
+
+    public CarRecord generateRecord() {
+        return new CarRecord(name.getName(), position.getPosition());
     }
 
     @Override
