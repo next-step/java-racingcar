@@ -39,7 +39,7 @@ class RacingGameRoundResultTest {
                         new RacingGameCarResult("car3", 1)
                 )
         );
-        assertThat(round.getFarthestCarNames()).containsExactly("car2");
+        assertThat(round.getFarthestCarNames()).containsExactly(new CarName("car2"));
     }
 
 }

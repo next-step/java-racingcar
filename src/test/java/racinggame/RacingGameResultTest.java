@@ -51,7 +51,7 @@ class RacingGameResultTest {
         );
         RacingGameResult result = new RacingGameResult(List.of(round1, round2));
 
-        assertThat(result.getWinnerNames()).containsExactly("car2", "car3");
+        assertThat(result.getWinnerNames()).containsExactly(new CarName("car2"), new CarName("car3"));
     }
 
 }

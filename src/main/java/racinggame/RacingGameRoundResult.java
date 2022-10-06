@@ -23,7 +23,7 @@ public class RacingGameRoundResult {
         cars.add(car);
     }
 
-    public List<String> getFarthestCarNames() {
+    public List<CarName> getFarthestCarNames() {
         int maxPosition = getMaxPosition();
         return cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
