@@ -17,9 +17,6 @@ public class InputView {
         for (String name : participantNames) {
             NameLengthDiscrimination(name);
         }
-        if (enterName == null || enterName.isBlank()) {
-            throw new NameIsEmptyNullException("자동차 이름은 빈값이 들어올 수 없습니다.");
-        }
         return enterName;
     }
 
@@ -34,6 +31,9 @@ public class InputView {
     public void NameLengthDiscrimination(String name) throws NameOutOfLengthException {
         if (name.length() > 5) {
             throw new NameOutOfLengthException("자동차 이름은 5글자를 넘길 수 없습니다.");
+        }
+        if (name == null || name.isBlank()) {
+            throw new NameOutOfLengthException("자동차 이름은 빈값이 들어올 수 없습니다.");
         }
     }
 }
