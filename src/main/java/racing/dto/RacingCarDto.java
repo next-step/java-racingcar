@@ -7,9 +7,9 @@ import java.util.Objects;
 public class RacingCarDto {
 
     private final String name;
-    private final String position;
+    private final int position;
 
-    private RacingCarDto(final String name, final String position) {
+    private RacingCarDto(final String name, final int position) {
 
         this.name = name;
         this.position = position;
@@ -17,7 +17,7 @@ public class RacingCarDto {
 
     public static RacingCarDto from(final RacingCar racingCar) {
 
-        return new RacingCarDto(racingCar.getName().getCarName(), racingCar.convert());
+        return new RacingCarDto(racingCar.getName().getName(), racingCar.getPosition());
     }
 
     public String getName() {
@@ -25,7 +25,7 @@ public class RacingCarDto {
         return name;
     }
 
-    public String getPosition() {
+    public int getPosition() {
 
         return position;
     }
