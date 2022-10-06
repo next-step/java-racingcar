@@ -1,6 +1,5 @@
 package carRacing.level3.view.input;
 
-import carRacing.level3.infra.error.NameLengthException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -9,7 +8,7 @@ public class InputView {
 
 	private final Scanner scanner;
 	private final String CAR_NAME_DELIMITER = ",";
-	private final int MAX_LENGTH = 5;
+
 	public static ArrayList<String> carNames = new ArrayList<>();
 
 	public InputView() {
@@ -27,18 +26,10 @@ public class InputView {
 
 	}
 
-	private void validateLength(String carName) {
-		if (carName.length() > MAX_LENGTH) {
-			throw new NameLengthException("자동차 이름이 제한 길이를 초과하였습니다");
-		}
-	}
-
-	public List<String> saveCarNames() throws Exception {
+	public List<String> saveCarNames() {
 		for (String carName : askCarsName()) {
-			validateLength(carName);
 			carNames.add(carName);
 		}
-
 		return carNames;
 	}
 
