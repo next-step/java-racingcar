@@ -16,6 +16,6 @@ class CarTest {
         Car car = new Car(input);
         car.moves(() -> true);
 
-        assertThat(car).isEqualTo(new Car(input, MOVING_POSITION));
+        assertThat(car).isEqualTo(new Car(MOVING_POSITION, input));
     }
 }

@@ -11,13 +11,12 @@ public class Car {
     private final String name;
 
     public Car(String name) {
-        this.name = name;
-        this.position = INIT_POSITION;
+        this(INIT_POSITION, name);
     }
 
-    public Car(String name, int position) {
-        this.name = name;
+    public Car(int position, String name) {
         this.position = position;
+        this.name = name;
     }
 
     public void moves(MovingStrategy movingStrategy) {

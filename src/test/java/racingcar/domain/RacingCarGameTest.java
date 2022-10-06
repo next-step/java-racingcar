@@ -21,9 +21,9 @@ class RacingCarGameTest {
     @BeforeEach
     void setUp() {
         carValues = new ArrayList<>();
-        carValues.add(new Car("pobi", 5));
-        carValues.add(new Car("crong", 4));
-        carValues.add(new Car("honux", 5));
+        carValues.add(new Car( 5, "pobi"));
+        carValues.add(new Car(4, "crong"));
+        carValues.add(new Car(5, "honux"));
     }
 
     @Test
