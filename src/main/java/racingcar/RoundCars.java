@@ -20,11 +20,11 @@ public class RoundCars {
                 .collect(Collectors.toList());
     }
 
-    public void moveCars(RacingRecord racingRecord, MovingStrategy movingStrategy) {
+    public RoundCars moveCars(MovingStrategy movingStrategy) {
         for (Car car : cars) {
             car.move(movingStrategy);
         }
-        racingRecord.addCarsPosition(this);
+        return getRoundCars();
     }
 
     public List<String> retrieveWinners() {
@@ -36,13 +36,13 @@ public class RoundCars {
     }
 
     public RoundCars getRoundCars() {
-        List<Car> recordCars = new ArrayList<>();
+        List<Car> copyCars = new ArrayList<>();
         List<Car> cars = this.retrieveCars();
 
         for (Car car : cars) {
-            recordCars.add(new Car(car.getPosition(), car.getName()));
+            copyCars.add(new Car(car.getPosition(), car.getName()));
         }
-        return createRoundCars(recordCars);
+        return createRoundCars(copyCars);
     }
 
     public List<Car> retrieveCars() {

@@ -12,7 +12,7 @@ import racingcar.strategy.MovingStrategy;
 
 class RacingGameTest {
 
-    List<String> names;
+    private List<String> names;
 
     @BeforeEach
     void setUp() {
@@ -22,7 +22,8 @@ class RacingGameTest {
     @Test
     void constructorTryNumMinusFail() {
         assertThatThrownBy(() -> new RacingGame(-1, names))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("시도횟수는 0이상만 가능합니다.");
     }
 
     @Test
