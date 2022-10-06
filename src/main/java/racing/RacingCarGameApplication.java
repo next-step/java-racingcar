@@ -10,7 +10,7 @@ public class RacingCarGameApplication {
     public static void main(String[] args) {
 
         final RacingCars racingCars = RacingCars.from(CarName.from(InputView.carName()));
-        final RacingAttempt racingAttempt = new RacingAttempt(InputView.playCount());
+        final RacingAttempt racingAttempt = RacingAttempt.from(InputView.playCount());
         final RacingScore racingScore = RacingScore.init();
 
         ResultView.titlePrint();
