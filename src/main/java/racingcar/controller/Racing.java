@@ -9,9 +9,9 @@ import racingcar.domain.Condition;
 import racingcar.domain.NumberCondition;
 import racingcar.domain.RandomMaker;
 import racingcar.domain.RandomStrategy;
-import racingcar.util.InputView;
-import racingcar.util.Print;
-import racingcar.util.Views;
+import racingcar.ui.InputView;
+import racingcar.ui.Print;
+import racingcar.ui.Views;
 
 public class Racing extends Condition {
 	private static final RandomStrategy random = new RandomMaker();
