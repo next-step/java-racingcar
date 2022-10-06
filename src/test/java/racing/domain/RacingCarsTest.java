@@ -16,8 +16,7 @@ class RacingCarsTest {
     @CsvSource(value = {"true,1", "false,0"})
     void round_play(final boolean result, final int score) {
 
-        final List<RacingCar> racingCarList = List.of(new RacingCar(new CarName("d1")));
-        final RacingCars racingCars = new RacingCars(racingCarList);
+        final RacingCars racingCars = RacingCars.from(CarName.from("codeleesh"));
         final RacingScore racingScore = RacingScore.init();
         racingCars.enter(racingScore, () -> result);
         final List<RacingCar> racingCarScore = racingCars.score();
