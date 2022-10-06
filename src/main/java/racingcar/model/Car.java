@@ -4,23 +4,22 @@ import racingcar.model.nickname.Nickname;
 
 import java.util.Objects;
 
-public class Car implements Comparable<Car>{
+public class Car implements Comparable<Car> {
 
     private final Nickname nickname;
     private Position position;
 
-    public Car(String nickname) {
-        this(new Nickname(nickname));
-    }
-
-    public Car(Nickname nickname) {
-        this.position = new Position();
-        this.nickname = nickname;
-    }
-
     public Car(Nickname nickname, Position position) {
         this.nickname = nickname;
         this.position = position;
+    }
+
+    public Car(Nickname nickname) {
+        this(nickname, new Position());
+    }
+
+    public Car(String nickname) {
+        this(new Nickname(nickname));
     }
 
     void move(Condition carCondition) {

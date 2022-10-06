@@ -2,7 +2,7 @@ package racingcar.model;
 
 import java.util.Objects;
 
-public class Position implements Comparable<Position>{
+public class Position implements Comparable<Position> {
 
     private static final int START_POSITION = 0;
 
