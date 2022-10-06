@@ -1,4 +1,9 @@
-package racingcar.step3;
+package racingcar.step3_4;
+
+import racingcar.step3_4.domain.Game;
+import racingcar.step3_4.domain.GameAttribute;
+import racingcar.step3_4.view.InputView;
+import racingcar.step3_4.view.ResultView;
 
 public class RacingCarApp {
 
