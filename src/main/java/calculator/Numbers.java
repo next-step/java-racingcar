@@ -23,6 +23,6 @@ public class Numbers {
         for (Number number : numbers) {
             sum = sum.add(number);
         }
-        return sum.getNumber();
+        return sum;
     }
 }
