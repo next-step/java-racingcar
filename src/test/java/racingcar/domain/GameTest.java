@@ -2,7 +2,8 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Game;
+import racingcar.view.ConsoleResultView;
+import racingcar.view.ResultView;
 
 import java.util.stream.IntStream;
 
@@ -17,8 +18,9 @@ public class GameTest {
                 .mapToObj(number -> "car" + number)
                 .toArray(String[]::new);
         int round = 100;
+        ResultView resultView = new ConsoleResultView();
 
-        Game game = new Game(names, round);
+        Game game = new Game(names, round, resultView);
         game.start();
 
         game.getCars()

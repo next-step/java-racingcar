@@ -8,12 +8,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Game {
+    private final ResultView resultView;
     private final int repeat;
     private List<Car> cars;
 
-    public Game(String[] names, int repeat) {
+    public Game(String[] names, int repeat, ResultView resultView) {
         this.repeat = repeat;
         initCars(names);
+        this.resultView = resultView;
     }
 
     private void initCars(String[] names) {
@@ -25,13 +27,13 @@ public class Game {
     }
 
     public void start() {
-        ResultView.printResultStart();
+        resultView.printStart();
         for (int i = 0; i < repeat; i++) {
             round();
             printLanes();
         }
 
-        printWinner();
+        resultView.printWinner(getWinnerNames());
     }
 
     private void round() {
@@ -42,12 +44,7 @@ public class Game {
         List<LaneViewModel> lanes = cars.stream()
                 .map(car -> new LaneViewModel(car.getName(), car.getPosition()))
                 .collect(Collectors.toList());
-        ResultView.printRoundResult(lanes);
-    }
-
-    private void printWinner() {
-        List<String> winnerNames = getWinnerNames();
-        ResultView.printWinner(winnerNames);
+        resultView.printRoundResult(lanes);
     }
 
     private List<String> getWinnerNames() {
