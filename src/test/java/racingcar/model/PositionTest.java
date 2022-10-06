@@ -1,27 +1,13 @@
 package racingcar.model;
 
 import org.assertj.core.api.ThrowableAssert.ThrowingCallable;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class PositionTest {
-
-    List<Position> positions;
-
-    @BeforeEach
-    void setUp() {
-        positions = new ArrayList<>();
-        positions.add(new Position(1));
-        positions.add(new Position(2));
-        positions.add(new Position(3));
-    }
 
     @Test
     @DisplayName("Position을 기본생성자로 생성하면 위치가 0이다.")
