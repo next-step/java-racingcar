@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class Car {
@@ -50,6 +51,10 @@ public class Car {
         int randomNumber = random.nextInt(RANDOM_NUMBER_BOUND);
         int result = straightOrStop(randomNumber);
         histories[index] = result;
+    }
+
+    public int getTotalStraightCount() {
+        return Arrays.stream(histories).sum();
     }
 
 }

@@ -45,8 +45,9 @@ public class CarGameInfo {
     }
 
     private int getMaxStraightCount() {
-        return resultString.stream().mapToInt(str -> str.length()).max().orElse(0);
+        return this.cars.stream().mapToInt(Car::getTotalStraightCount).max().orElse(0);
     }
+
 
     private void decideIsWinnerCar(List<Car> winnerList, int index, int maxStraightCount) {
         if(resultString.get(index).length() >= maxStraightCount) {
