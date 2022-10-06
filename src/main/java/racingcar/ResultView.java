@@ -17,6 +17,7 @@ public class ResultView {
     }
 
     public static void printLane(LaneViewModel lane) {
+        System.out.print(lane.getName() + ": ");
         for (int i = 0; i < lane.getPosition(); i++) {
             System.out.print("-");
         }

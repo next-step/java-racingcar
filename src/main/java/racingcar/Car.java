@@ -2,13 +2,16 @@ package racingcar;
 
 public class Car {
     private final CarMovePredicate movePredicate;
+    private final String name;
     private int position = 0;
 
-    public Car() {
+    public Car(String name) {
+        this.name = name;
         this.movePredicate = new DefaultCarMovePredicate();
     }
 
-    public Car(CarMovePredicate movePredicate) {
+    public Car(String name, CarMovePredicate movePredicate) {
+        this.name = name;
         this.movePredicate = movePredicate;
     }
 
@@ -20,6 +23,10 @@ public class Car {
 
     private void move() {
         this.position++;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getPosition() {

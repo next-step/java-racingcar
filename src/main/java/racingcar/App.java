@@ -6,10 +6,10 @@ public class App {
     }
 
     private static void start() {
-        int count = InputView.requestInputCount();
+        String[] names = InputView.requestInputNames();
         int repeat = InputView.requestInputRepeat();
 
-        Game game = new Game(count, repeat);
+        Game game = new Game(names, repeat);
         game.start();
     }
 }
