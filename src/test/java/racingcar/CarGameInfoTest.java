@@ -12,8 +12,6 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 public class CarGameInfoTest {
-    private static final Random random = new Random();
-
     @ParameterizedTest
     @MethodSource("getCarListParams")
     public void init(List<Car> carList) {
@@ -23,8 +21,8 @@ public class CarGameInfoTest {
 
     @Test
     public void getWinnerList() {
-        List<Car> cars = List.of(new Car(random, "niro", 5), new Car(random, "tusan", 3),
-                                 new Car(random, "porsche", 7));
+        List<Car> cars = List.of(new Car("niro", 5), new Car( "tusan", 3),
+                                 new Car( "porsche", 7));
         CarGameInfo carGameInfo = new CarGameInfo(cars);
         List<Car> winners = carGameInfo.getWinnerList();
         assertThat(winners).isNotNull();
@@ -33,9 +31,9 @@ public class CarGameInfoTest {
 
     private static Stream<Arguments> getCarListParams() {
         return Stream.of(
-                Arguments.of(List.of(new Car(random, "niro", 5))),
-                Arguments.of(List.of(new Car(random, "niro", 5), new Car(random, "tusan", 3))),
-                Arguments.of(List.of(new Car(random, "niro", 5), new Car(random, "tusan", 3),
-                                     new Car(random, "porsche", 7))));
+                Arguments.of(List.of(new Car( "niro", 5))),
+                Arguments.of(List.of(new Car( "niro", 5), new Car( "tusan", 3))),
+                Arguments.of(List.of(new Car( "niro", 5), new Car( "tusan", 3),
+                                     new Car( "porsche", 7))));
     }
 }

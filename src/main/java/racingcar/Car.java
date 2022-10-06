@@ -1,18 +1,12 @@
 package racingcar;
 
 import java.util.Arrays;
-import java.util.Random;
 
 public class Car {
-    private static final int RANDOM_NUMBER_BOUND = 9;
-    private static final int NUMBER_FOR_DECISION_OF_STRAIGHT = 4;
-
-    private final Random random;
     private final String name;
     private final int[] histories;
 
-    public Car(Random random, String name, int count) {
-        this.random = random;
+    public Car(String name, int count) {
         this.name = name;
 
         validateCount(count);
@@ -51,16 +45,8 @@ public class Car {
         return this.name;
     }
 
-    private int straightOrStop(int randomNumber) {
-        if(randomNumber >= NUMBER_FOR_DECISION_OF_STRAIGHT) {
-            return 1;
-        }
-        return 0;
-    }
-
     public void run(int index) {
-        int randomNumber = random.nextInt(RANDOM_NUMBER_BOUND);
-        int result = straightOrStop(randomNumber);
+        int result = RandomNumberMovingStrategy.straightOrStop();
         histories[index] = result;
     }
 

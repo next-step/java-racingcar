@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.Random;
 
 public class CarFactory {
-    private static final Random random = new Random();
-
     private CarFactory() {
         throw new RuntimeException("인스턴스화가 불가능한 클래스입니다.");
     }
@@ -15,7 +13,7 @@ public class CarFactory {
         String[] carNameList = getCarNameList(nameListOfCars);
         List<Car> cars = new ArrayList<>(carNameList.length);
         for (String s : carNameList) {
-            cars.add(new Car(random, s, tryingCount));
+            cars.add(new Car(s, tryingCount));
         }
         return cars;
     }
