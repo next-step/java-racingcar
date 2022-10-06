@@ -8,13 +8,6 @@ public class Game {
     private final int repeat;
     private List<Car> cars;
 
-    public Game() {
-        int count = InputView.requestInputCount();
-        initCars(count);
-
-        this.repeat = InputView.requestInputRepeat();
-    }
-
     public Game(int count, int repeat) {
         this.repeat = repeat;
         initCars(count);
