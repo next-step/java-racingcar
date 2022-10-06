@@ -16,7 +16,6 @@ public class Car {
 
         validateCount(count);
         this.histories = new int[count];
-        initHistories();
     }
 
     private void validateCount(int count) {
@@ -40,18 +39,17 @@ public class Car {
         return this.name;
     }
 
-    private void initHistories() {
-        for(int i=0 ; i<histories.length ; i++) {
-            int ranNum = random.nextInt(RANDOM_NUMBER_BOUND);
-            histories[i] = straightOrStop(ranNum);
-        }
-    }
-
     private int straightOrStop(int randomNumber) {
         if(randomNumber >= NUMBER_FOR_DECISION_OF_STRAIGHT) {
             return 1;
         }
         return 0;
+    }
+
+    public void run(int index) {
+        int randomNumber = random.nextInt(RANDOM_NUMBER_BOUND);
+        int result = straightOrStop(randomNumber);
+        histories[index] = result;
     }
 
 }

@@ -17,6 +17,7 @@ public class CarGameInfo {
     public void printCars(int indexOfCount) {
         for (int j=0 ; j<cars.size() ; j++) {
             Car car = cars.get(j);
+            car.run(indexOfCount);
             System.out.println(car.getName() + " : " + updateDashString(car, resultString.get(j), indexOfCount));
         }
     }
