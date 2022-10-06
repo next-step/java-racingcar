@@ -77,7 +77,7 @@
 - [x] 개행 "\n" 처리 수정
 - [x] Car 생성자 이용 및 생성자 중복 제거
 - [x] RandomValueMovingStrategy에서 랜덤숫자 생성, 움직일지의 여부 역할 분리
+- [x] 입력값에 대하여 exception 처리 수정 및 메세지 상세화
 - [ ] Cars 의 일급컬렉션 사용 의미있게
-- [ ] 입력값에 대하여 exception 처리 수정 및 메세지 상세화
 - [ ] carDTO, carsDTO 의 역할에 맞게 수정
 - [ ] findWinner함수에서 객체의 역할 수정

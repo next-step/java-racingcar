@@ -5,23 +5,23 @@ import racingcar.strategy.MovingStrategy;
 import java.util.Objects;
 
 public class Car {
-    private static final int INIT_POSITION = 0;
+    public static final int INIT_POSITION = 0;
 
-    private int position;
-    private final String name;
+    private final CarName name;
+    private final CarPosition position;
 
     public Car(String name) {
-        this(INIT_POSITION, name);
+        this(name, INIT_POSITION);
     }
 
-    public Car(int position, String name) {
-        this.position = position;
-        this.name = name;
+    public Car(String name, int position) {
+        this.name = new CarName(name);
+        this.position = new CarPosition(position);
     }
 
     public void moves(MovingStrategy movingStrategy) {
         if (movingStrategy.isMovable()) {
-            this.position++;
+            position.plus();
         }
     }
 
@@ -38,11 +38,11 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return position == car.position;
+        return Objects.equals(name, car.name) && Objects.equals(position, car.position);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(position);
+        return Objects.hash(name, position);
     }
 }

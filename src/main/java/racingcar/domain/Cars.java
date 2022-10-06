@@ -10,11 +10,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Cars {
-    private static final String EMPTY_STRING = "";
-    private static final String BLANK_STRING = " ";
     private static final String COMMA_SEPARATOR = ",";
-    private static final int CAR_NAME_MAX_LENGTH = 5;
-    private static final String INVALID_CAR_NAME_MESSAGE = "잘못 입력하여 다시 입력하세요. (" + CAR_NAME_MAX_LENGTH + "자 이하로)";
 
     private final List<Car> values;
 
@@ -27,8 +23,10 @@ public class Cars {
     }
 
     private List<Car> createCarList(String carNames) {
-        List<String> carNameValues = toStringList(carNames);
-        return carNameValues.stream().map(Car::new).collect(Collectors.toList());
+        List<String> carNameValues = Arrays.asList(carNames.split(COMMA_SEPARATOR));
+        return carNameValues.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     public List<CarDto> move(MovingStrategy movingStrategy) {
