@@ -3,7 +3,7 @@ package racingGame;
 import racingGame.domain.Car;
 import racingGame.domain.Cars;
 import racingGame.domain.InputValue;
-import racingGame.racingRule.RacingRule;
+import racingGame.racingRule.RacingRuleDefault;
 import racingGame.view.InputView;
 import racingGame.view.ResultView;
 
@@ -11,17 +11,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public abstract class RacingGame {
+public class RacingGameDefault implements RacingGame {
     private final InputView inputView;
     private final ResultView resultView;
     private final List<Car> cars = new ArrayList<>();
+    private final RacingRuleDefault racingRule = new RacingRuleDefault();
 
-    public RacingGame(InputView inputView, ResultView resultView) {
+
+    public RacingGameDefault(InputView inputView, ResultView resultView) {
         this.inputView = inputView;
         this.resultView = resultView;
     }
 
-    public void play(RacingRule racingRule) {
+    @Override
+    public void play() {
         InputValue inputValue = inputView.askInput(new Scanner(System.in));
         Cars cars = createCars(inputValue);
         resultView.printRacingResult(cars, racingRule, inputValue.getTryNum());
@@ -38,5 +41,4 @@ public abstract class RacingGame {
         }
     }
 
-    public abstract void play();
 }

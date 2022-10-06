@@ -10,6 +10,7 @@ public class Car implements Comparable<Car> {
 
     private final List<Boolean> carTrace = new ArrayList<>();
     private final String carName;
+    private final StringBuilder stringBuilder = new StringBuilder();
 
     public Car(String carName) {
         this.carName = carName;
@@ -28,12 +29,13 @@ public class Car implements Comparable<Car> {
     }
 
     public String convertRound(String separator, String mark) {
-        StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(carName).append(separator);
         for (int i = 0; i < carTrace.size(); i++) {
             stringBuilder.append(convertTrace(i, mark));
         }
-        return stringBuilder.toString();
+        String round = stringBuilder.toString();
+        stringBuilder.setLength(0);
+        return round;
     }
 
     private String convertTrace(int round, String mark) {
@@ -44,7 +46,7 @@ public class Car implements Comparable<Car> {
     }
 
     public long getTraceSize() {
-        return carTrace.stream().filter(i->i).count();
+        return carTrace.stream().filter(i -> i).count();
     }
 
 
