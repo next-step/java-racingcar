@@ -64,4 +64,12 @@ public class Car {
     private static int generateRandom() {
         return (int)(Math.random() * 10) + 1;
     }
+
+    public boolean isDistance(Car car) {
+        return this.distance == car.distance;
+    }
+
+    public boolean hasLogDistanceThan(Car car) {
+        return this.distance > car.distance;
+    }
 }

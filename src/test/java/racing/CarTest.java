@@ -41,4 +41,14 @@ public class CarTest {
         Throwable thrown = catchThrowable(() -> {car = new Car("sample_name");});
         assertThat(thrown).hasMessageContaining("최대 5글자까지 입력 가능합니다.");
     }
+
+    @Test
+    void distance_동일한지_검사() {
+        assertThat(new Car("name", 10).isDistance(new Car("name", 10))).isEqualTo(true);
+    }
+
+    @Test
+    void distance_큰지_검사() {
+        assertThat(new Car("name", 10).hasLogDistanceThan(new Car("name", 1))).isEqualTo(true);
+    }
 }

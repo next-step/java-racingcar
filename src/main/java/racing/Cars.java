@@ -36,8 +36,26 @@ public class Cars {
     }
 
     List<String> findWinnerNames() {
-        int maxDistance = cars.stream().mapToInt(Car::getDistance).max().getAsInt();
-        return cars.stream().filter(car -> car.getDistance() == maxDistance).map(car -> car.getName()).collect(Collectors.toList());
+        Car maxDistanceCar = findMaxDistanceCar();
+        List<String> winnerNames = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.isDistance(maxDistanceCar)) {
+                winnerNames.add(car.getName());
+            }
+        }
+        return winnerNames;
+    }
+
+    Car findMaxDistanceCar() {
+        Car maxDistanceCar = cars.get(0);
+        for (int i = 1; i < cars.size() - 1; i ++) {
+            Car car = cars.get(i + 1);
+            if (car.hasLogDistanceThan(maxDistanceCar)) {
+                maxDistanceCar = car;
+            }
+        }
+
+        return maxDistanceCar;
     }
 
     @Override
