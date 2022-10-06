@@ -2,11 +2,12 @@ import domain.Car;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
 public class CarTest {
 
 
     @Test
-    public void 자동차_생성처리(){
+    public void 자동차_생성처리() {
         Car car = new Car();
         assertThat(car.getDistance()).isEqualTo(0);
 
