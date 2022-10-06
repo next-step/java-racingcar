@@ -1,10 +1,10 @@
 package nextstep.javaracingcar.step02;
 
-import nextstep.javaracingcar.step2.PositiveNumber;
+import nextstep.calculator.PositiveNumber;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static nextstep.javaracingcar.step2.PositiveNumber.from;
+import static nextstep.calculator.PositiveNumber.from;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 

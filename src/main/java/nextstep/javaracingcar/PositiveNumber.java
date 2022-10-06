@@ -1,9 +1,9 @@
-package nextstep.javaracingcar.step2;
+package nextstep.javaracingcar;
 
-public class PositiveNumber {
+import java.util.Iterator;
+
+public class PositiveNumber implements Iterable<Integer> {
     private final int number;
-
-    public static final PositiveNumber ZERO = new PositiveNumber(0);
 
     private PositiveNumber(final int value) {
         if (value < 0) {
@@ -14,14 +14,6 @@ public class PositiveNumber {
 
     public static PositiveNumber from(final int value) {
         return new PositiveNumber(value);
-    }
-
-    public static PositiveNumber from(final String value) {
-        return from(Integer.parseInt(value));
-    }
-
-    public PositiveNumber plus(PositiveNumber one) {
-        return new PositiveNumber(this.number + one.number);
     }
 
     @Override
@@ -42,5 +34,10 @@ public class PositiveNumber {
     @Override
     public String toString() {
         return "Positive{" + "number=" + number + '}';
+    }
+
+    @Override
+    public Iterator<Integer> iterator() {
+        return new SizeIterator(number);
     }
 }

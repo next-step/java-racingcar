@@ -1,4 +1,4 @@
-package nextstep.javaracingcar.step2;
+package nextstep.calculator;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

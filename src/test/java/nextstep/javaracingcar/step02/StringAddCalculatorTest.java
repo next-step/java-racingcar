@@ -6,8 +6,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static nextstep.javaracingcar.step2.PositiveNumber.from;
-import static nextstep.javaracingcar.step2.StringAddCalculator.calculate;
+import static nextstep.calculator.PositiveNumber.from;
+import static nextstep.calculator.StringAddCalculator.calculate;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
