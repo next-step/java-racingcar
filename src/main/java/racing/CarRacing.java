@@ -1,12 +1,9 @@
 package racing;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class CarRacing {
-    private List<Car> cars = new ArrayList<>();
+    private Cars cars;
 
     public static void main(String[] args) {
         CarRacing carRacing = new CarRacing();
@@ -29,38 +26,22 @@ public class CarRacing {
     }
 
     private void announceWinner() {
-        List<String> winnerNames = findWinners();
+        List<String> winnerNames = cars.findWinners();
         ResultView.printWinners(winnerNames);
     }
 
-    private List<String> findWinners() {
-        int maxDistance = cars.stream().mapToInt(Car::getDistance).max().getAsInt();
-        return cars.stream().filter(car -> car.getDistance() == maxDistance).map(car -> car.getName()).collect(Collectors.toList());
-    }
-
     private void playRound() {
-        for (Car car : cars) {
-            car.run();
-        }
+        cars.run();
     }
 
     private void participateCars() {
-        List<String> carNames = generateCarNames();
-        for (String carName : carNames) {
-            cars.add(new Car(carName));
-        }
+        String names = InputView.inputCarNames();
+        cars = new Cars(names);
     }
 
     private void announceRoundResult(int round) {
         ResultView.printRound(round);
-        for (Car car: cars) {
-            ResultView.printDistance(car.getName(), car.getDistance());
-        }
+        cars.printDistance();
         ResultView.printNewLine();
-    }
-
-    private List<String> generateCarNames() {
-        String names = InputView.inputCarNames();
-        return Arrays.asList(names.split(","));
     }
 }
