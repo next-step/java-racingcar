@@ -1,4 +1,4 @@
-package racingGame.domain.racingRule;
+package racingGame.racingRule;
 
 import java.util.Random;
 
@@ -8,7 +8,7 @@ public class RacingRuleDefault implements RacingRule {
     private static final Random RANDOM = new Random();
 
     @Override
-    public boolean createRandomResult() {
+    public boolean moveOrNot() {
         return RANDOM.nextInt(MAXNUM) >= LIMIT;
     }
 }
