@@ -26,7 +26,7 @@ public class CarRacing {
     }
 
     private void announceWinner() {
-        List<String> winnerNames = cars.findWinners();
+        List<String> winnerNames = cars.findWinnerNames();
         ResultView.printWinners(winnerNames);
     }
 

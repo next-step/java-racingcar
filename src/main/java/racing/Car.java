@@ -9,8 +9,13 @@ public class Car {
     private String name = "";
 
     public Car(String name) {
+        this(name, 0);
+    }
+
+    public Car(String name, int distance) {
         validName(name);
         this.name = name;
+        this.distance = distance;
     }
 
     private void validName(String name) {

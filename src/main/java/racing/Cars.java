@@ -35,7 +35,7 @@ public class Cars {
         }
     }
 
-    List<String> findWinners() {
+    List<String> findWinnerNames() {
         int maxDistance = cars.stream().mapToInt(Car::getDistance).max().getAsInt();
         return cars.stream().filter(car -> car.getDistance() == maxDistance).map(car -> car.getName()).collect(Collectors.toList());
     }

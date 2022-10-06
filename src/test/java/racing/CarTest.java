@@ -2,7 +2,6 @@ package racing;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racing.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
@@ -13,6 +12,11 @@ public class CarTest {
     @BeforeEach
     void 셋업() {
         car = new Car("name");
+    }
+
+    @Test
+    void create() {
+        assertThat(new Car("ming", 1)).isEqualTo(new Car("ming", 1));
     }
 
     @Test
