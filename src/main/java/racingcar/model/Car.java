@@ -4,7 +4,7 @@ import racingcar.model.nickname.Nickname;
 
 import java.util.Objects;
 
-public class Car {
+public class Car implements Comparable<Car>{
 
     private final Nickname nickname;
     private Position position;
@@ -39,6 +39,11 @@ public class Car {
 
     public int getPosition() {
         return position.getValue();
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return position.compareTo(o.position);
     }
 
     @Override

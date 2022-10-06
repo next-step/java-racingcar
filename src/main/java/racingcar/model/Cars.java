@@ -1,6 +1,5 @@
 package racingcar.model;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -30,7 +29,7 @@ public class Cars {
 
     public List<Car> getWinners() {
         Car maxPositionCar = cars.stream()
-                .max(Comparator.comparing(Car::getPosition))
+                .max(Car::compareTo)
                 .orElseThrow(() -> new IllegalStateException("경기에 출전한 자동차가 없습니다."));
         return cars.stream()
                 .filter(car -> car.isSamePosition(maxPositionCar))
