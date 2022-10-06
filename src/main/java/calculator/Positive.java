@@ -6,21 +6,31 @@ public class Positive {
     private final int number;
 
     public Positive(String target) {
-        try {
-            this.number = Integer.parseInt(target);
-        } catch(NumberFormatException e) {
-            throw new RuntimeException("숫자 형태의 문자만 인자로 받을 수 있습니다.");
-        }
-        if(this.number < 0) {
-            throw new RuntimeException("양수만 가능합니다.");
-        }
+        this.number = validateNumber(target);
     }
 
     public Positive(int number) {
+        this.number = validateNumber(number);
+    }
+
+    private int validateNumber(String number) {
+        int targetNumber;
+        try {
+            targetNumber = Integer.parseInt(number);
+        } catch (NumberFormatException e) {
+            throw new RuntimeException("숫자 형태의 문자만 인자로 받을 수 있습니다.");
+        }
+        if (targetNumber < 0) {
+            throw new RuntimeException("양수만 가능합니다.");
+        }
+        return targetNumber;
+    }
+
+    private int validateNumber(int number) {
         if(number < 0) {
             throw new RuntimeException("양수만 가능합니다.");
         }
-        this.number = number;
+        return number;
     }
 
     public int getNumber() {
