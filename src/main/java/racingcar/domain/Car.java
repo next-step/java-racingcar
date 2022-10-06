@@ -7,8 +7,16 @@ public class Car {
     private Location location;
 
     public Car(Name name) {
+        this(name, new Location());
+    }
+
+    public Car(String name, int location) {
+        this(new Name(name), new Location(location));
+    }
+
+    public Car(Name name, Location location) {
         this.name = name;
-        this.location = new Location();
+        this.location = location;
     }
 
     public Location getLocation() {
@@ -23,5 +31,13 @@ public class Car {
 
     public Name getName() {
         return name;
+    }
+
+    public boolean isFar(Car compare) {
+        return this.location.isBig(compare.location);
+    }
+
+    public boolean isCollinear(Car compare) {
+        return this.location.equals(compare.location);
     }
 }

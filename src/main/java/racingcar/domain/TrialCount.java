@@ -19,7 +19,7 @@ public class TrialCount {
     }
 
     public boolean isRemain() {
-        return count > MIN_COUNT;
+        return count >= MIN_COUNT;
     }
 
     public void decrease() {

@@ -35,4 +35,31 @@ public class Cars {
             throw new IllegalArgumentException("자동차 이름을 입력해주세요.");
         }
     }
+
+    public List<Name> findWinners() {
+        Car max = new Car("init", 0);
+        for (Car car : cars) {
+            max = far(max, car);
+        }
+
+        List<Name> winners = new ArrayList<>();
+        for (Car car : cars) {
+            addSameLocation(winners, max, car);
+        }
+
+        return winners;
+    }
+
+    private Car far(Car max, Car target) {
+        if (target.isFar(max)) {
+            return target;
+        }
+        return max;
+    }
+
+    private void addSameLocation(List<Name> winners, Car max, Car target) {
+        if (target.isCollinear(max)) {
+            winners.add(target.getName());
+        }
+    }
 }

@@ -42,4 +42,8 @@ public class Location {
     public int hashCode() {
         return Objects.hash(location);
     }
+
+    public boolean isBig(Location compare) {
+        return location > compare.location;
+    }
 }

@@ -19,5 +19,6 @@ public class Main {
             view.printTrial(cars);
             trialCount.decrease();
         }
+        view.printWinners(cars.findWinners());
     }
 }

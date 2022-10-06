@@ -56,4 +56,22 @@ class CarsTest {
     void create_cars_with_name_count() {
         assertThat(Cars.create("a,b,c").getCars()).hasSize(3);
     }
+
+    @Test
+    @DisplayName("자동차 경주 우승자를 구한다.")
+    void find_one_winner() {
+        Cars endCars = new Cars(List.of(
+                new Car(new Name("A"), new Location(1)), new Car(new Name("B"), new Location(0)))
+        );
+        assertThat(endCars.findWinners()).contains(new Name("A"));
+    }
+
+    @Test
+    @DisplayName("자동차 경주 우승자는 여러명일 수 있다.")
+    void find_several_winner() {
+        Cars endCars = new Cars(List.of(
+                new Car(new Name("A"), new Location(1)), new Car(new Name("B"), new Location(1)))
+        );
+        assertThat(endCars.findWinners()).contains(new Name("A"), new Name("B"));
+    }
 }

@@ -5,6 +5,7 @@ import racingcar.domain.Cars;
 import racingcar.domain.Location;
 import racingcar.domain.Name;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class View {
@@ -46,6 +47,20 @@ public class View {
     private void printLocation(Location location) {
         for (int i = 0; i < location.getLocation(); i++) {
             System.out.print("-");
+        }
+    }
+
+    public void printWinners(List<Name> winners) {
+        for (int i = 0; i < winners.size(); i++) {
+            printComma(i);
+            printName(winners.get(i));
+        }
+        System.out.println("가 최종 우승 했습니다.");
+    }
+
+    private void printComma(int i) {
+        if (i != 0) {
+            System.out.print(",");
         }
     }
 }
