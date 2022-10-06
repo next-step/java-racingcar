@@ -22,4 +22,16 @@ public class ResultView {
     private static String getLengthString(int length) {
         return "-".repeat(length);
     }
+
+    public static void printWinners(List<String> winnerNames) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(winnerNames.get(0));
+
+        for (int i = 1; i < winnerNames.size(); i++) {
+            stringBuilder.append(", ").append(winnerNames.get(i));
+        }
+
+        stringBuilder.append("가 최종 우승했습니다.");
+        System.out.println(stringBuilder);
+    }
 }

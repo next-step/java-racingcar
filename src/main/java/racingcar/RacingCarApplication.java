@@ -1,7 +1,6 @@
 package racingcar;
 
 import java.util.List;
-import java.util.Scanner;
 
 public class RacingCarApplication {
 
@@ -17,6 +16,7 @@ public class RacingCarApplication {
             racingGame.tryGame();
             ResultView.printGameResult(racingGame.getCars());
         }
+        ResultView.printWinners(racingGame.getWinnerNames());
     }
 
 }
