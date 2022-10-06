@@ -1,6 +1,6 @@
 package racingcarwinnerexception;
 
-public class CarMovingCountException extends Exception {
+public class CarMovingCountException extends RuntimeException {
 
     public CarMovingCountException() {
         super();

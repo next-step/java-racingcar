@@ -1,6 +1,6 @@
 package racingcarwinnerexception;
 
-public class NameIsEmptyNullException extends Exception {
+public class NameIsEmptyNullException extends RuntimeException {
 
     public NameIsEmptyNullException() {
         super();

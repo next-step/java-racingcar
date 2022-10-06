@@ -1,6 +1,6 @@
 package racingcarwinnerexception;
 
-public class NameOutOfLengthException extends Exception {
+public class NameOutOfLengthException extends RuntimeException {
 
     public NameOutOfLengthException() {
         super();
