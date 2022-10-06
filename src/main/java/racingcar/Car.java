@@ -12,10 +12,6 @@ public class Car {
         this.movePredicate = movePredicate;
     }
 
-    public int getPosition() {
-        return position;
-    }
-
     public void go() {
         if (movePredicate.isMovable()) {
             move();
@@ -24,5 +20,9 @@ public class Car {
 
     private void move() {
         this.position++;
+    }
+
+    public int getPosition() {
+        return position;
     }
 }

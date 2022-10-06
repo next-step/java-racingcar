@@ -20,10 +20,6 @@ public class Game {
         initCars(count);
     }
 
-    public List<Car> getCars() {
-        return cars;
-    }
-
     private void initCars(int count) {
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < count; i++) {
@@ -49,5 +45,9 @@ public class Game {
                 .map(car -> new LaneViewModel(car.getPosition()))
                 .collect(Collectors.toList());
         ResultView.printRoundResult(lanes);
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }
