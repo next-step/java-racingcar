@@ -3,7 +3,6 @@ package carRacing.level3;
 
 import carRacing.level3.controller.RacingGameController;
 import carRacing.level3.model.strategy.RandomMovingStrategy;
-import carRacing.level3.model.strategy.WinnerStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +13,7 @@ public class RacingGameControllerTest {
 	@Test
 	@DisplayName("경주시작")
 	public void driveCar() throws Exception {
-		race.gameStart(new WinnerStrategy(), new RandomMovingStrategy());
+		race.gameStart(new RandomMovingStrategy());
 	}
 
 }

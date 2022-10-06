@@ -1,6 +1,7 @@
 package carRacing.level3;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import carRacing.level3.model.Car;
@@ -14,7 +15,7 @@ public class CarTest {
 	@Test
 	void 자동차_한대_생성() {
 		Car car = new Car("testCar1");
-		assertEquals(car.carLocation(), DEFAULT_LOCATION);
+		assertThat(car).isEqualTo(new Car("testCar1"));
 	}
 
 	@Test
