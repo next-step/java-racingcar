@@ -15,6 +15,7 @@ public class RacingGame {
 
 	private static final String CAR_COUNT_QUESTION = "자동차 대수는 몇 대 인가요?";
 	private static final String CAR_MOVE_COUNT_QUESTION = "자동차 갯수는 몇 대 인가요?";
+
 	private final InputView inputView;
 	private final ResultView resultView;
 	private int carCount;

@@ -4,6 +4,7 @@ public class Car {
 
 	private final static int START_POINT = 1;
 	private final static int MOVE_PIVOT = 4;
+
 	private final RandomNumber randomNumber;
 	private int location;
 
