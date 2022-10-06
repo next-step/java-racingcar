@@ -1,39 +1,26 @@
-package racingcar.model;
+package racingcar.domain;
 
-import java.util.List;
 import java.util.Objects;
 
-public class Position {
+public class Position implements Comparable<Position> {
 
     private static final int START_POSITION = 0;
 
-    private int value;
+    private final int value;
 
     public Position() {
         this.value = START_POSITION;
     }
 
-    public Position(int value) {
+    public Position(final int value) {
         if (value < 0) {
             throw new IllegalStateException("0 미만의 수는 Position이 될 수 없습니다.");
         }
         this.value = value;
     }
 
-    public static Position biggestPosition(List<Position> positions) {
-        int biggestValue = positions.stream()
-                .mapToInt(v -> v.value)
-                .max()
-                .orElse(START_POSITION);
-        return new Position(biggestValue);
-    }
-
-    void moveForward() {
-        this.value++;
-    }
-
-    public boolean greaterThanOrEqual(Position position) {
-        return this.value >= position.value;
+    Position moveForward() {
+        return new Position(this.value + 1);
     }
 
     @Override
@@ -42,6 +29,11 @@ public class Position {
         if (o == null || getClass() != o.getClass()) return false;
         Position position = (Position) o;
         return value == position.value;
+    }
+
+    @Override
+    public int compareTo(Position o) {
+        return this.value - o.value;
     }
 
     @Override

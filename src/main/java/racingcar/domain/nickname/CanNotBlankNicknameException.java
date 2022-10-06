@@ -1,4 +1,4 @@
-package racingcar.model.nickname;
+package racingcar.domain.nickname;
 
 public class CanNotBlankNicknameException extends RuntimeException {
 

@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.domain;
 
 import java.util.Random;
 
@@ -9,10 +9,6 @@ public class CarCondition implements Condition {
     private static final int CONDITION = 4;
 
     public boolean inspect() {
-        return random() >= CONDITION;
-    }
-
-    protected int random() {
-        return RANDOM.nextInt(BOUND);
+        return RANDOM.nextInt(BOUND) >= CONDITION;
     }
 }

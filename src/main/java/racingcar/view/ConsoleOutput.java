@@ -1,46 +1,36 @@
 package racingcar.view;
 
-import racingcar.model.Car;
+import racingcar.domain.Car;
+import racingcar.domain.Winners;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ConsoleOutput {
 
-    private static final String RACING_RESULT_MESSAGE = "레이싱 게임 결과입니다.";
-    private static final String RAIL = "-";
     private static final String STATUS_FORMAT = "%s : %s%n";
-    private static final String COMMA = ", ";
-    private static final String WIN_MESSAGE = "가 최종 우승했습니다.";
 
-    public void resultMessage() {
-        System.out.println(RACING_RESULT_MESSAGE);
+    private ConsoleOutput() {
     }
 
-    public void status(List<Car> cars) {
+    public static void resultMessage() {
+        System.out.println("레이싱 게임 결과입니다.");
+    }
+
+    public static void printStatus(List<Car> cars) {
         cars.forEach(
-                carStatus -> System.out.printf(STATUS_FORMAT, carStatus.getName(), rails(carStatus.getPosition())));
-        newLine();
-    }
-
-    private String rails(int position) {
-        return RAIL.repeat(Math.max(0, position));
-    }
-
-    public void winner(List<Car> cars) {
-        for (int i = 0; i < cars.size(); i++) {
-            printComma(i);
-            System.out.print(cars.get(i).getName());
-        }
-        System.out.println(WIN_MESSAGE);
-    }
-
-    private void printComma(int i) {
-        if (i != 0) {
-            System.out.print(COMMA);
-        }
-    }
-
-    private void newLine() {
+                car -> System.out.printf(STATUS_FORMAT, car.knowName(), "-".repeat(Math.max(0, car.knowPosition())))
+        );
         System.out.println();
+    }
+
+    public static void printWinner(Winners winners) {
+        System.out.print(
+                winners.getElements()
+                        .stream()
+                        .map(Car::knowName)
+                        .collect(Collectors.joining(", "))
+        );
+        System.out.println("가 최종 우승했습니다.");
     }
 }

@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.domain;
 
 import java.util.List;
 import java.util.Objects;
@@ -8,18 +8,14 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
+    public Cars(final List<Car> cars) {
         this.cars = cars;
     }
 
-    public static Cars of(List<String> names) {
-        return new Cars(initCars(names));
-    }
-
-    private static List<Car> initCars(List<String> names) {
-        return names.stream()
+    public static Cars of(final List<String> names) {
+        return new Cars(names.stream()
                 .map(Car::new)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()));
     }
 
     public List<Car> move(Condition condition) {
@@ -27,8 +23,14 @@ public class Cars {
         return List.copyOf(cars);
     }
 
-    public List<Car> getWinners() {
-        return List.copyOf(Car.getWinner(cars));
+    public Winners findWinners() {
+        Car maxPositionCar = cars.stream()
+                .max(Car::compareTo)
+                .orElseThrow(() -> new IllegalStateException("경기에 출전한 자동차가 없습니다."));
+        List<Car> maxPositionCars = cars.stream()
+                .filter(car -> car.isSamePosition(maxPositionCar))
+                .collect(Collectors.toList());
+        return new Winners(maxPositionCars);
     }
 
     @Override

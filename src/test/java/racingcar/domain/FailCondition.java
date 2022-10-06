@@ -1,6 +1,6 @@
-package racingcar.model;
+package racingcar.domain;
 
-public class BadCondition implements Condition {
+public class FailCondition implements Condition {
 
     @Override
     public boolean inspect() {
