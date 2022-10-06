@@ -4,7 +4,7 @@ import racingcar.domain.CarName;
 
 import java.util.Scanner;
 
-public class InputView {
+public final class InputView {
     private static final int POSITIVE_THRESHOLD_NUMBER = 1;
     private static final String COMMA_SEPARATOR = ",";
     private static final String REQUEST = "[REQUEST] ";
@@ -68,7 +68,7 @@ public class InputView {
 
     private static String validateCarName(String input) {
         String[] carNames = input.split(COMMA_SEPARATOR);
-        if(carNames.length == 0) {
+        if (carNames.length == 0) {
             throw new IllegalArgumentException(RETRY_INPUT_CAR_NAME_MESSAGE);
         }
         for (String carName : carNames) {
