@@ -6,18 +6,19 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
-    public static final String DEFAULT_SEPARATOR = ",|:";
-    public static final String CUSTOM_SEPARATOR_REGEX = "//(.)\n(.*)";
+    private static final String DEFAULT_SEPARATOR = ",|:";
+    private static final String CUSTOM_SEPARATOR_REGEX = "//(.)\n(.*)";
+    private static final Pattern CUSTOM_PATTERN = Pattern.compile(CUSTOM_SEPARATOR_REGEX);
 
     public static int calculate(final String text) {
         if(isBlank(text)) {
             return 0;
         }
-        return sum(toInts(split(text)));
+        return sum(toPositive(split(text))).getNumber();
     }
 
     private static String[] split(final String text) {
-        final Matcher m = Pattern.compile(CUSTOM_SEPARATOR_REGEX).matcher(text);
+        final Matcher m = CUSTOM_PATTERN.matcher(text);
         if (m.find()) {
             final String customDelimiter = m.group(1);
             return m.group(2).split(customDelimiter);
@@ -25,25 +26,17 @@ public class StringAddCalculator {
         return text.split(DEFAULT_SEPARATOR);
     }
 
-    private static int sum(final int[] numbers) {
-        return Arrays.stream(numbers).sum();
+    private static Positive sum(final Positive[] numbers) {
+        return Arrays.stream(numbers).reduce(Positive::plus).orElse(Positive.ZERO);
     }
 
-    private static int[] toInts(final String[] values) {
-        final int[] numbers = new int[values.length];
+    private static Positive[] toPositive(final String[] values) {
+        final Positive[] numbers = new Positive[values.length];
         for (int i = 0; i < values.length; i++) {
-            int number = toPositive(values[i]);
+            Positive number = new Positive(values[i]);
             numbers[i] = number;
         }
         return numbers;
-    }
-
-    private static int toPositive(final String value) {
-        int number = Integer.parseInt(value);
-        if(number < 0) {
-            throw new RuntimeException("음수 값이 들어올 수 없습니다.");
-        }
-        return number;
     }
 
     private static boolean isBlank(final String value) {

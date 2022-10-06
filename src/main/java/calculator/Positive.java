@@ -2,8 +2,11 @@ package calculator;
 
 import java.util.Objects;
 
+
 public class Positive {
     private final int number;
+
+    public static final Positive ZERO = new Positive(0);
 
     public Positive(final String value) {
         this(Integer.parseInt(value));
@@ -22,6 +25,10 @@ public class Positive {
 
     public Positive plus(final Positive positive) {
         return new Positive(this.number + positive.number);
+    }
+
+    public int getNumber() {
+        return number;
     }
 
     @Override
