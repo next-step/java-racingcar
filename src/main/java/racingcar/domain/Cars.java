@@ -10,10 +10,8 @@ public class Cars {
 		this.cars = cars;
 	}
 
-	public void move(int random) {
-		for (Car car : cars) {
-			car.movingOfRound(random);
-		}
+	public void move(int random, int index) {
+		cars.get(index).movingOfRound(random);
 	}
 
 	public List<Car> findWinner() {
@@ -32,6 +30,14 @@ public class Cars {
 		return winners.stream()
 			.filter(car -> car.hasSamePosition(max))
 			.collect(Collectors.toList());
+	}
+
+	public String getCarName(int index) {
+		return cars.get(index).takeName();
+	}
+
+	public int getCarPosition(int index) {
+		return cars.get(index).takePosition();
 	}
 
 	public List<Car> getCars() {

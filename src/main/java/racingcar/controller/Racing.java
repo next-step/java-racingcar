@@ -43,7 +43,9 @@ public class Racing extends Condition {
 	}
 
 	private static void playMatch(Cars cars) {
-		cars.move(random.makeRandom());
+		for (int i = 0; i < cars.getCars().size(); i++) {
+			cars.move(random.makeRandom(), i);
+		}
 		Views.results(cars);
 	}
 

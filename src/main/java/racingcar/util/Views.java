@@ -6,7 +6,7 @@ public class Views {
 
 	public static void results(Cars cars) {
 		for (int i = 0; i < cars.getCars().size(); i++) {
-			Print.printResult(cars.getCars().get(i).takeName(), move(cars.getCars().get(i).takePosition()));
+			Print.printResult(cars.getCarName(i), move(cars.getCarPosition(i)));
 		}
 		Print.newLine();
 	}
