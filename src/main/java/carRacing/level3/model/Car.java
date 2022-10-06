@@ -1,6 +1,7 @@
 package carRacing.level3.model;
 
 import carRacing.level3.model.strategy.MovingStrategy;
+import java.util.Objects;
 
 public class Car {
 
@@ -25,5 +26,4 @@ public class Car {
 			location.move();
 		}
 	}
-
 }
