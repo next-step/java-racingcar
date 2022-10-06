@@ -1,5 +1,7 @@
 package dto;
 
+import domain.MovingStrategy;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,9 +33,9 @@ public class RacingCars {
         }
     }
 
-    public void move() {
+    public void move(MovingStrategy movingStrategy) {
         for (RacingCar racingCar : racingCars) {
-            racingCar.move(racingCar.speedOf());
+            racingCar.move(movingStrategy);
         }
     }
 

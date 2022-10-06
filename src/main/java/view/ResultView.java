@@ -1,4 +1,4 @@
-package model;
+package view;
 
 public final class ResultView {
     private ResultView() {
