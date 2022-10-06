@@ -1,9 +1,9 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
 
 public class RacingGame {
     private final static int MAX_BOUND = 10;
@@ -42,24 +42,27 @@ public class RacingGame {
     }
 
     public List<String> getWinnerNames() {
-        List<Car> winners = List.of(cars.get(0));
+        int maxPosition = findMaxPosition();
 
-        for (int i = 1; i < cars.size(); i++) {
-            winners = comparePositionAndGetWinners(winners, cars.get(i));
+        List<String> winners = new ArrayList<>();
+        for (Car car: cars) {
+            comparePositionAndAddWinners(winners, car, maxPosition);
         }
 
-        return winners.stream().map(Car::getName).collect(Collectors.toList());
+        return winners;
     }
 
-    public List<Car> comparePositionAndGetWinners(List<Car> winners, Car car) {
-        if (car.getPosition() > winners.get(0).getPosition()) {
-            return List.of(car);
+    private void comparePositionAndAddWinners(List<String> winners, Car car, int maxPosition) {
+        if (car.getPosition() == maxPosition) {
+            winners.add(car.getName());
         }
+    }
 
-        if (car.getPosition() == winners.get(0).getPosition()) {
-            winners.add(car);
-        }
-        return winners;
+    private int findMaxPosition() {
+        return cars.stream()
+            .max(Comparator.comparingInt(Car::getPosition))
+            .orElseThrow()
+            .getPosition();
     }
 
     public List<Car> getCars() {
