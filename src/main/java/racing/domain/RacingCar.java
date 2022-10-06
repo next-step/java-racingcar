@@ -35,13 +35,9 @@ public class RacingCar {
         return this.position;
     }
 
-    public String convert() {
+    public boolean tie(final RacingCar racing) {
 
-        final StringBuilder result = new StringBuilder();
-        for (int i = 0; i < this.position; i++) {
-            result.append("-");
-        }
-        return result.toString();
+        return this.position == racing.position;
     }
 
     @Override
