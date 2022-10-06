@@ -57,7 +57,7 @@ public class Racing extends Condition {
 
 	public String checkInput(String input) {
 		if (validInput(input)) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("판 수는 0 이하 또는 문자가 될 수 없습니다");
 		}
 		return input;
 	}
