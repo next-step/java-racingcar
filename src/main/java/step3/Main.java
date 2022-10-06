@@ -7,7 +7,9 @@ public class Main {
         int carQuantity = printAndInputCarQuantity();
         int tryCount = printAndInputTryCount();
 
+        CarStorage carStorage = new CarStorage(new CarAddFactory().addCarsToList(carQuantity));
+
         ResultView resultView = new ResultView();
-        resultView.printResult(carQuantity, tryCount);
+        resultView.printResult(carStorage,tryCount);
     }
 }

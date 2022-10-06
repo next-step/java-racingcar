@@ -1,13 +1,15 @@
 package step3;
 
+import java.util.ArrayList;
 import java.util.List;
+
 import static step3.RandomNumber.generateRandomNumber;
 
 public class CarStorage {
     private final List<Car> cars;
 
     public CarStorage(List<Car> cars) {
-        this.cars = cars;
+        this.cars = new ArrayList<>(cars);
     }
 
     public void printLocation(int tryCount) {
@@ -17,11 +19,11 @@ public class CarStorage {
 
     private void printCarLocationsExceptInitCar(int tryCount) {
         for (int carSequence = 1; carSequence < tryCount; carSequence++) {
-            getAndPrintCarLocations();
+            printCarLocations();
         }
     }
 
-    private void getAndPrintCarLocations() {
+    private void printCarLocations() {
         for (Car car : cars) {
             System.out.println(getCarLocation(car));
         }
@@ -35,7 +37,7 @@ public class CarStorage {
         System.out.println();
     }
 
-    private static StringBuilder getCarLocation(Car car) {
+    private StringBuffer getCarLocation(Car car) {
         return car.getAdvancedOrDefaultLocation(generateRandomNumber());
     }
 }

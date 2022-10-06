@@ -1,21 +1,22 @@
 package step3;
 
+import static step3.AdvanceConstant.*;
+
 public class Car {
-    private static final int ADVANCE_COUNT = 4;
-    private final StringBuilder location;
+    private final StringBuffer location;
 
     public Car(String initLocation) {
-        this.location = new StringBuilder(initLocation);
+        this.location = new StringBuffer(initLocation);
     }
 
-    public StringBuilder getAdvancedOrDefaultLocation(int randomNumber) {
+    public StringBuffer getAdvancedOrDefaultLocation(int randomNumber) {
         if (isAdvance(randomNumber)) {
-            return getLocation().append("-");
+            return getLocation().append(ADVANCE_STRING);
         }
         return getLocation();
     }
 
-    public StringBuilder getLocation() {
+    public StringBuffer getLocation() {
         return location;
     }
 
