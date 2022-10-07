@@ -7,15 +7,14 @@ public class Cars {
 
     private final List<Car> carList;
 
-    public Cars(int numberOfCar) {
-        List<Car> list = createCarList(numberOfCar);
-        this.carList = list;
+    public Cars(List<String> names) {
+        this.carList = createCarList(names);
     }
 
-    private List<Car> createCarList(int numberOfCar) {
+    private List<Car> createCarList(List<String> names) {
         List<Car> list = new ArrayList<>();
-        for (int i = 0; i < numberOfCar; i++) {
-            list.add(new Car());
+        for (int i = 0; i < names.size(); i++) {
+            list.add(new Car(names.get(i)));
         }
         return list;
     }

@@ -1,9 +1,7 @@
-package step3;
+package step3.domain;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
-import step3.domain.RandomNumber;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
