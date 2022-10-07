@@ -3,40 +3,39 @@ package racingcar;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.strategy.NumberGenerateStrategy;
+import racingcar.strategy.RandomNumberGenerateStrategy;
 
 class CarsTest {
 
-    private static final Cars cars = new Cars();
+    @Test
+    @DisplayName("moveAll 메소드는 Cars가 갖고 있는 모든 자동차들을 모두 움직인다.")
+    void moveAll_test() {
+        Cars cars = new Cars(3, new NumberGenerateStrategy() {
+            @Override
+            public int generate() {
+                return 5;
+            }
+        });
+        cars.moveAll();
 
-    @AfterEach
-    void finish() {
-        cars.clear();
+        assertThat(cars.allPosition()).containsOnly(1);
     }
 
-    @Test
-    @DisplayName("add 메소드 실행 시, carList에 자동차가 한 대 추가된다.")
-    void add() {
-        cars.add();
-        assertThat(cars.carList()).hasSize(1);
-    }
 
     @Test
-    @DisplayName("add 메소드에 int 타입의 인수를 넘긴 경우, carList에 입력한 수만큼 자동차가 추가된다.")
-    void add_withNumberArgument() {
-        cars.add(3);
-        assertThat(cars.carList()).hasSize(3);
-    }
+    @DisplayName("allPosition 메소드는 Cars가 갖고 있는 모든 자동차들의 position을 담은 리스트를 반환한다.")
+    void allPosition_test() {
+        NumberGenerateStrategy strategy = new RandomNumberGenerateStrategy(10);
+        Cars cars = new Cars(3, strategy);
 
-    @Test
-    @DisplayName("clear 메소드 실행 시, carList에 있던 모든 자동차들이 제거된다.")
-    void clear() {
-        cars.add(3);
-        cars.clear();
-        assertThat(cars.carList()).hasSize(0);
+        assertThat(cars.allPosition()).hasSize(3);
     }
 }

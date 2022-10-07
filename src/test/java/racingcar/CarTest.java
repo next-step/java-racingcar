@@ -1,7 +1,6 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,7 +13,7 @@ class CarTest {
         Car car = new Car();
         car.move(4);
 
-        assertThat(car.totalMoveCount()).isEqualTo(1);
+        assertThat(car.position()).isEqualTo(1);
     }
 
     @Test
@@ -23,6 +22,6 @@ class CarTest {
         Car car = new Car();
         car.move(2);
 
-        assertThat(car.totalMoveCount()).isZero();
+        assertThat(car.position()).isZero();
     }
 }

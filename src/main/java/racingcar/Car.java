@@ -4,15 +4,15 @@ public class Car {
 
     private static final int AVAILABLE_MOVE_BOUND = 4;
 
-    private int totalMoveCount;
+    private int position;
 
-    public int totalMoveCount() {
-        return totalMoveCount;
+    public int position() {
+        return position;
     }
 
     public void move(int number) {
         if (number >= AVAILABLE_MOVE_BOUND) {
-            this.totalMoveCount += 1;
+            this.position += 1;
         }
     }
 }

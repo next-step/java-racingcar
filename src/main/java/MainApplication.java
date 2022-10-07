@@ -11,11 +11,9 @@ public class MainApplication {
         int carNumber = inputCarNumber();
         int tryNumber = inputTryNumber();
 
-        Cars cars = new Cars(carNumber);
+        Racing racing = new Racing(carNumber);
+        racing.race(tryNumber);
 
-        System.out.println("실행 결과");
-        for (int i = 0; i < tryNumber; i++) {
-            printResult(Racing.race(cars));
-        }
+        printResult(racing.result());
     }
 }
