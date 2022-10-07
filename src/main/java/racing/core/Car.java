@@ -1,16 +1,11 @@
 package racing.core;
 
-import lombok.*;
-import racing.RandomUtil;
-
-import java.util.ArrayList;
-import java.util.List;
-
-@NoArgsConstructor
-@EqualsAndHashCode
 public class Car {
 
     private int distance = 1;
+
+    public Car() {
+    }
 
     public Car(int distance) {
         this.distance += distance;

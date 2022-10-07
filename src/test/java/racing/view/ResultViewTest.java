@@ -1,9 +1,12 @@
 package racing.view;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.core.Car;
-import racing.core.ClientInput;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,31 +14,32 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class ResultViewTest {
 
-//    @Test
-//    void 생성자를_통한_객체전달(){
-//        int carCount = 5;
-//        int tryCount = 3;
-//        List<Car> carList = makeCarList(carCount);
-//        ClientInput racingDto = ClientInput.builder()
-//                .tryCount(tryCount)
-//                .carCount(carList.size())
-//                .build();
-//
-//        ResultView resultView = ResultView.builder()
-//                .carList(carList)
-//                .racingDto(racingDto)
-//                .build();
-//
-//        assertThat(resultView.getCarList()).isEqualTo(carList);
-//        assertThat(resultView.getRacingDto()).isEqualTo(racingDto);
-//    }
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    ResultView resultView = new ResultView();
 
-    private List<Car> makeCarList(int size) {
+    @BeforeEach
+    void setUpStream(){
+        System.setOut(new PrintStream(outContent));
+    }
+
+    @Test
+    @DisplayName("첫 메세지를 정상적으로 출력하는지 확인")
+    void testCorrectFirstText(){
+        resultView.printStartText();
+
+        assertThat(outContent.toString()).isEqualTo("\n실행 결과\n");
+    }
+
+    @Test
+    @DisplayName("CarList가 주어졌을 때 정상적인 출력값 확인")
+    void testPrintedTextWithCarList(){
         List<Car> carList = new ArrayList<>();
-        for(int i = 0; i < size; i++){
-            carList.add(new Car());
-        }
-        return carList;
+        carList.add(new Car(2));
+        carList.add(new Car(3));
+        carList.add(new Car(4));
+        resultView.printCarList(carList);
+
+        assertThat(outContent.toString()).isEqualTo("---\n----\n-----\n\n");
     }
 
 }

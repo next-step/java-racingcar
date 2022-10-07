@@ -5,7 +5,7 @@ import racing.RandomUtil;
 public class Mover {
 
     private static final int STEP_COUNT = 1;
-    private static final int DEFAULT_FORWARD_DECIDER = 4;
+    private static final int FORWARD_DECIDER = 4;
 
     public Mover() {}
 
@@ -17,7 +17,7 @@ public class Mover {
     }
 
     private boolean isForward(int num){
-        return num >= DEFAULT_FORWARD_DECIDER;
+        return num >= FORWARD_DECIDER;
     }
 
 }

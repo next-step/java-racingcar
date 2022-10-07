@@ -19,10 +19,16 @@ public class RacingApp {
         ClientInput racingDto = inputView.getClientInput();
         List<Car> carList = makeCarList(racingDto.getCarCount());
         for(int i = 0; i < racingDto.getTryCount(); i++){
-            if(i == 0) resultView.printStartText();
-            resultView.printCarList(carList);
-            moveCarList(carList);
+            print(carList, i);
+            moveCars(carList);
         }
+    }
+
+    private void print(List<Car> carList, int i) {
+        if(i == 0) {
+            resultView.printStartText();
+        }
+        resultView.printCarList(carList);
     }
 
     private List<Car> makeCarList(int size) {
@@ -33,7 +39,7 @@ public class RacingApp {
         return carList;
     }
 
-    private void moveCarList(List<Car> carList){
+    private void moveCars(List<Car> carList){
         carList.forEach(mover::move);
     }
 }
