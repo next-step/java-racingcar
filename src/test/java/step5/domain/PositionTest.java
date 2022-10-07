@@ -28,9 +28,9 @@ public class PositionTest {
     @DisplayName("자동차를 한 칸 전진시키는데 성공")
     void moveOnePositionSuccess() {
         Position position = new Position(2);
-        position.move();
+        Position newPosition = position.move();
 
-        assertThat(position.getPosition())
+        assertThat(newPosition.getPosition())
                 .isEqualTo(3);
     }
 }

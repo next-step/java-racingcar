@@ -2,7 +2,7 @@ package step5.domain;
 
 public class Car {
 
-    private final Position position;
+    private Position position;
     private final CarName carName;
 
     public Car(String name) {
@@ -12,7 +12,7 @@ public class Car {
 
     public void move(MovingStrategy movingStrategy) {
         if (movingStrategy.isMovable()) {
-            position.move();
+            position = position.move();
         }
     }
 

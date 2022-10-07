@@ -1,31 +1,26 @@
 package step5.domain;
 
-import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Race {
 
     private Cars cars;
 
     public void setUpRace(String[] carNames) {
-        Set<Car> carSet = new HashSet<>(carNames.length);
-
-        for (String name : carNames) {
-            Car car = new Car(name);
-            carSet.add(car);
-        }
-        this.cars = new Cars(carSet);
+        this.cars = new Cars(carNames);
     }
 
-    public Cars runOneRound() {
-        for (Car car : cars.getCars()) {
-            car.move(new RandomMovingStrategy());
-        }
-        return cars;
+    public Set<CarDto> runOneRound() {
+        Set<Car> movedCars = cars.moveCars();
+
+        return movedCars.stream()
+                .map(CarDto::new)
+                .collect(Collectors.toSet());
     }
 
-    public Cars getCars() {
-        return this.cars;
+    public Set<CarDto> getWinnersNames() {
+        return cars.getWinningCarNames();
     }
 
 }

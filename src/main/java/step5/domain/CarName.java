@@ -1,5 +1,7 @@
 package step5.domain;
 
+import java.util.Objects;
+
 public class CarName {
 
     private final String name;
@@ -17,7 +19,7 @@ public class CarName {
     }
 
     private void validateValueExists(String name) {
-        if (name.isBlank()) {
+        if (Objects.isNull(name) || name.isBlank()) {
             throw new IllegalArgumentException("빈값은 이름으로 쓸 수 없습니다.");
         }
     }

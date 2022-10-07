@@ -11,7 +11,11 @@ public class RandomMovingStrategy implements MovingStrategy {
 
     @Override
     public boolean isMovable() {
-        return random.nextInt(MAX_BOUND) >= MINIMUM_MOVABLE_VALUE;
+        return createRandomNumber() >= MINIMUM_MOVABLE_VALUE;
+    }
+
+    private int createRandomNumber() {
+        return random.nextInt(MAX_BOUND);
     }
 
 }

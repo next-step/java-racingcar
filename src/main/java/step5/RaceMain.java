@@ -22,6 +22,6 @@ public class RaceMain {
             resultView.printEachRaceResult(race.runOneRound());
         }
 
-        resultView.printWinners(race.getCars().getWinningCars());
+        resultView.printWinners(race.getWinnersNames());
     }
 }

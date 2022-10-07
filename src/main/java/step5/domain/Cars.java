@@ -1,32 +1,42 @@
 package step5.domain;
 
-import java.util.NoSuchElementException;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Cars {
 
+    private final RandomMovingStrategy strategy;
     private final Set<Car> cars;
 
-    public Cars(Set<Car> cars) {
-        this.cars = cars;
+    public Cars(String[] carNames) {
+        Set<Car> carSet = new HashSet<>(carNames.length);
+
+        for (String name : carNames) {
+            Car car = new Car(name);
+            carSet.add(car);
+        }
+
+        this.cars = carSet;
+        this.strategy = new RandomMovingStrategy();
     }
 
-    public Set<String> getWinningCars() {
-        int maxStep = this.cars.stream()
+    public Set<CarDto> getWinningCarNames() {
+        int maxPosition = this.cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
                 .orElseThrow(NoSuchElementException::new);
 
         return this.cars.stream()
-                .filter(car -> car.getPosition() == maxStep)
-                .map(Car::getCarName)
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(CarDto::new)
                 .collect(Collectors.toSet());
     }
 
-    public Set<Car> getCars() {
-        return this.cars;
+    public Set<Car> moveCars() {
+        for (Car car : cars) {
+            car.move(strategy);
+        }
+        return cars;
     }
 
     @Override
@@ -41,4 +51,5 @@ public class Cars {
     public int hashCode() {
         return Objects.hash(cars);
     }
+
 }
