@@ -19,7 +19,7 @@ public class ResultViewImpl implements ResultView {
     public void print(Car car) {
         StringJoiner stringJoiner = new StringJoiner(DELIMETER)
             .add(car.getName())
-            .add(DISTANCE_DELIMETER.repeat(car.getDistance()));
+            .add(DISTANCE_DELIMETER.repeat(car.getPosition()));
 
         System.out.println(stringJoiner);
     }
