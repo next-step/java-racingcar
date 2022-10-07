@@ -7,10 +7,11 @@ public class Main {
     public static void main(String[] args) {
         InputView inputView = new InputView();
 
-        int carCount = inputView.inputCarCount();
+        String[] carNames = inputView.inputCarName().split(",");
+        CarValidator.nameValidator(carNames);
         int raceCount = inputView.inputRaceCount();
 
-        ArrayList<Car> cars = CarStorage.exit(carCount);
+        ArrayList<Car> cars = CarStorage.exit(carNames);
 
         ResultView.resultMessage();
 
@@ -18,5 +19,6 @@ public class Main {
             Race.start(cars);
             ResultView.displayDash(cars);
         }
+        ResultView.displayWinners(Race.getWinners(cars));
     }
 }
