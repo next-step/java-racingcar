@@ -36,4 +36,11 @@ public class Cars {
             .map(Car::position)
             .collect(Collectors.toList());
     }
+
+    public int maxPosition() {
+        return carList.stream()
+            .mapToInt(Car::position)
+            .max()
+            .orElseThrow(() -> new RuntimeException("최대 값을 찾는데 실패했습니다."));
+    }
 }

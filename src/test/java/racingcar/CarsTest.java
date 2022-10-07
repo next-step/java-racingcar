@@ -40,4 +40,19 @@ class CarsTest {
 
         assertThat(cars.allPosition()).hasSize(3);
     }
+
+    @Test
+    @DisplayName("maxPosition 메소드는 Cars가 갖고 있는 모든 자동차들의 position 중 최대 값을 반환한다.")
+    void maxPosition_test() {
+        List<String> carNames = List.of("jordy", "penda", "kero");
+        Cars cars = new Cars(carNames, new NumberGenerateStrategy() {
+            @Override
+            public int generate() {
+                return 5;
+            }
+        });
+        cars.moveAll();
+
+        assertThat(cars.maxPosition()).isEqualTo(1);
+    }
 }

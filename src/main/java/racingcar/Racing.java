@@ -30,17 +30,10 @@ public class Racing {
     }
 
     public List<String> winners() {
-        int maxPosition = maxPosition();
+        int maxPosition = cars.maxPosition();
         return cars.carList().stream()
             .filter(car -> car.position() == maxPosition)
             .map(Car::name)
             .collect(Collectors.toList());
-    }
-
-    private int maxPosition() {
-        return cars.carList().stream()
-            .mapToInt(Car::position)
-            .max()
-            .orElseThrow(() -> new RuntimeException("최대 값을 찾는데 실패했습니다."));
     }
 }
