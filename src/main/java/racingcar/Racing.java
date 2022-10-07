@@ -2,7 +2,7 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.strategy.RandomNumberGenerateStrategy;
+import racingcar.strategy.NumberGenerateStrategy;
 
 public class Racing {
 
@@ -11,8 +11,8 @@ public class Racing {
 
     private Racing() {}
 
-    public Racing(int carNumber) {
-        this.cars = new Cars(carNumber, new RandomNumberGenerateStrategy(10));
+    public Racing(List<String> carNames, NumberGenerateStrategy strategy) {
+        this.cars = new Cars(carNames, strategy);
     }
 
     public void race(int tryNumber) {

@@ -7,6 +7,7 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.strategy.NumberGenerateStrategy;
+import racingcar.strategy.RandomNumberGenerateStrategy;
 
 class RacingTest {
 
@@ -14,7 +15,8 @@ class RacingTest {
     @DisplayName("race 메소드는 파라미터로 들어온 횟수만큼 경주를 진행한다.")
     void race_result() {
         List<String> carNames = List.of("jordy", "penda", "kero");
-        Racing racing = new Racing(carNames);
+        NumberGenerateStrategy strategy = new RandomNumberGenerateStrategy(10);
+        Racing racing = new Racing(carNames, strategy);
         racing.race(5);
 
         assertThat(racing.result()).hasSize(5);

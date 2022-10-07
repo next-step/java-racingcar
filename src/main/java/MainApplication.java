@@ -4,6 +4,7 @@ import static racingcar.view.OutputView.printResult;
 
 import racingcar.Cars;
 import racingcar.Racing;
+import racingcar.strategy.RandomNumberGenerateStrategy;
 
 public class MainApplication {
 
@@ -11,7 +12,7 @@ public class MainApplication {
         int carNumber = inputCarNumber();
         int tryNumber = inputTryNumber();
 
-        Racing racing = new Racing(carNumber);
+        Racing racing = new Racing(carNumber, new RandomNumberGenerateStrategy(10));
         racing.race(tryNumber);
 
         printResult(racing.result());

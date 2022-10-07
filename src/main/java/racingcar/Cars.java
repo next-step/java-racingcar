@@ -13,10 +13,11 @@ public class Cars {
     private Cars() {
     }
 
-    public Cars(int number, NumberGenerateStrategy numberGenerateStrategy) {
-        for (int i = 0; i < number; i++) {
-            this.carList.add(new Car());
-        }
+    public Cars(List<String> carNames, NumberGenerateStrategy numberGenerateStrategy) {
+        carNames.forEach(name -> {
+            this.carList.add(new Car(name));
+        });
+
         this.numberGenerateStrategy = numberGenerateStrategy;
     }
 
