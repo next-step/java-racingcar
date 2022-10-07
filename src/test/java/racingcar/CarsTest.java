@@ -18,7 +18,8 @@ class CarsTest {
     @Test
     @DisplayName("moveAll 메소드는 Cars가 갖고 있는 모든 자동차들을 모두 움직인다.")
     void moveAll_test() {
-        Cars cars = new Cars(3, new NumberGenerateStrategy() {
+        List<String> carNames = List.of("jordy", "penda", "kero");
+        Cars cars = new Cars(carNames, new NumberGenerateStrategy() {
             @Override
             public int generate() {
                 return 5;
@@ -33,8 +34,9 @@ class CarsTest {
     @Test
     @DisplayName("allPosition 메소드는 Cars가 갖고 있는 모든 자동차들의 position을 담은 리스트를 반환한다.")
     void allPosition_test() {
+        List<String> carNames = List.of("jordy", "penda", "kero");
         NumberGenerateStrategy strategy = new RandomNumberGenerateStrategy(10);
-        Cars cars = new Cars(3, strategy);
+        Cars cars = new Cars(carNames, strategy);
 
         assertThat(cars.allPosition()).hasSize(3);
     }
