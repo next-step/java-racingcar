@@ -1,4 +1,4 @@
-package RacingCar;
+package RacingCar.domain;
 
 import java.util.InputMismatchException;
 import java.util.regex.Pattern;
