@@ -1,6 +1,7 @@
 package step5.controller;
 
 import java.util.List;
+import step5.domain.MovingStrategy;
 import step5.domain.RacingResult;
 import step5.domain.RacingGame;
 import step5.service.RacingWinnerService;
@@ -11,12 +12,12 @@ public class RacingGameController {
 
     private final RacingGame racingGame;
 
-    public RacingGameController() {
+    public RacingGameController(MovingStrategy movingStrategy) {
         ResultView.printCarNames();
         String[] carNames = InputView.carNames();
         ResultView.printTryCount();
         int tryCount = InputView.tryCount();
-        this.racingGame = new RacingGame(carNames, tryCount);
+        this.racingGame = new RacingGame(carNames, tryCount, movingStrategy);
     }
 
     public void play() {

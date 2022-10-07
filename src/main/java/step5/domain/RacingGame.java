@@ -3,18 +3,18 @@ package step5.domain;
 import java.util.ArrayList;
 import java.util.List;
 import step5.util.CarFactory;
-import step5.util.RandomNumberGenerator;
 
 public class RacingGame {
 
-    private final int MOVABLE_BOUNDARY = 3;
     private final List<Car> cars = new ArrayList<>();
     private final List<RacingResult> racingResults = new ArrayList<>();
     private final int tryCount;
+    private final MovingStrategy movingStrategy;
 
-    public RacingGame(String[] carNames, int tryCount){
+    public RacingGame(String[] carNames, int tryCount, MovingStrategy movingStrategy){
         this.cars.addAll(CarFactory.createCar(carNames));
         this.tryCount = tryCount;
+        this.movingStrategy = movingStrategy;
     }
 
     public List<RacingResult> start() {
@@ -26,7 +26,7 @@ public class RacingGame {
 
     private void playEachRound() {
         for (Car car : this.cars) {
-            moveCar(car, isMovable());
+            moveCar(car, movingStrategy.isMovable());
             racingResults.add(new RacingResult(car));
         }
     }
@@ -35,11 +35,6 @@ public class RacingGame {
         if (isMovable) {
             car.moveForward();
         }
-    }
-
-    private boolean isMovable() {
-        int randomNumber = RandomNumberGenerator.generate();
-        return randomNumber > MOVABLE_BOUNDARY;
     }
 
     public int getCarCount(){

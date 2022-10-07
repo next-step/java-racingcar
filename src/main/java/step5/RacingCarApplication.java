@@ -1,6 +1,7 @@
 package step5;
 
 import step5.controller.RacingGameController;
+import step5.domain.RandomNumberStrategy;
 
 public class RacingCarApplication {
 
@@ -9,6 +10,6 @@ public class RacingCarApplication {
     }
 
     public static void run() {
-        new RacingGameController().play();
+        new RacingGameController(new RandomNumberStrategy()).play();
     }
 }
