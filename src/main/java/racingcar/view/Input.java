@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Input {
@@ -8,11 +10,11 @@ public class Input {
     private static final String NUMBER_OF_ATTEMPTS = "시도할 회수는 몇 회 인가요?";
     private static final String DELIMITER = ",";
 
-    public static String[] nameOfCars() {
+    public static List<String> nameOfCars() {
         System.out.println(NAME_OF_CARS);
         String names = sc.next();
         String[] name = names.split(DELIMITER);
-        return name;
+        return Arrays.asList(name);
     }
 
     public static int numberOfAttempts() {
