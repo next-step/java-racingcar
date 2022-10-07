@@ -18,7 +18,8 @@ public class RacingGameService {
                 .collect(Collectors.toList()));
     }
 
-    public void racing(Cars cars, int tryCount, ResultView resultView, MovableStrategy movableStrategy) {
+    public void racing(Cars cars, int tryCount, ResultView resultView,
+        MovableStrategy movableStrategy) {
         resultView.start();
 
         IntStream.range(FIRST_INDEX, tryCount)
