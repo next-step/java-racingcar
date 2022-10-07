@@ -4,35 +4,28 @@ import java.util.Objects;
 
 public class Car {
 
-    private static final int NAME_LENGTH = 5;
-    private static final String LENGTH_ERROR_TEXT = "이름은 5자를 초과할 수 없습니다.";
+    private Name name;
+    private Position position;
 
-    private String name;
-    private int distance;
-
-    public Car(String name, int distance) {
-        this.name = validateName(name);
-        this.distance = distance;
+    public Car(String name, int position) {
+        this.name = new Name(name);
+        this.position = new Position(position);
     }
 
     public String getName() {
-        return name;
+        return name.getName();
     }
 
-    public int getDistance() {
-        return distance;
+    public int getPosition() {
+        return position.getPosition();
     }
 
     public void move(MovableStrategy movableStrategy) {
-        distance += movableStrategy.randomMovable();
+        position.move(movableStrategy);
     }
 
-    private String validateName(String name) {
-        if(name.length() > 5) {
-            throw new IllegalArgumentException(LENGTH_ERROR_TEXT);
-        }
-
-        return name;
+    public boolean equalsPosition(int maxPosition) {
+        return position.equalsPosition(maxPosition);
     }
 
     @Override
@@ -44,11 +37,12 @@ public class Car {
             return false;
         }
         Car car = (Car) o;
-        return distance == car.distance && Objects.equals(name, car.name);
+        return Objects.equals(name, car.name) && Objects.equals(position,
+            car.position);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, distance);
+        return Objects.hash(name, position);
     }
 }
