@@ -1,9 +1,8 @@
 package racing.view;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racing.core.RacingDto;
+import racing.core.ClientInput;
 
 import java.io.*;
 
@@ -26,9 +25,9 @@ public class InputViewTest {
         System.setIn(in1);
 
         InputView inputView = new InputView();
-        inputView.start();
+        inputView.getClientInput();
 
-        RacingDto expectedDto = RacingDto.builder()
+        ClientInput expectedDto = ClientInput.builder()
                 .carCount(3)
                 .tryCount(5)
                 .build();

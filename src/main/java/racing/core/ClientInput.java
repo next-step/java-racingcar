@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Getter
 @Builder
-public class RacingDto {
+public class ClientInput {
     private final int carCount;
     private final int tryCount;
 }

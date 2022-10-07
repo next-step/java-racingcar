@@ -1,12 +1,12 @@
 package racing.view;
 
-import racing.core.RacingDto;
+import racing.core.ClientInput;
 
 import java.util.Scanner;
 
 public class InputView {
 
-    private RacingDto racingDto;
+    private ClientInput clientInput;
     private final Scanner scanner = new Scanner(System.in);
 
     private static final String CAR_QUESTION = "자동차 대수는 몇 대 인가요?";
@@ -14,18 +14,20 @@ public class InputView {
 
     public InputView() {}
 
-    public void start(){
+    public ClientInput getClientInput(){
         System.out.println(CAR_QUESTION);
         int carCount = scanner.nextInt();
         System.out.println(TRY_QUESTION);
         int tryCount = scanner.nextInt();
-        this.racingDto = RacingDto.builder()
+        this.clientInput = ClientInput.builder()
                 .carCount(carCount)
                 .tryCount(tryCount)
                 .build();
+        scanner.close();
+        return this.clientInput;
     }
 
-    public RacingDto getRacingDto() {
-        return racingDto;
+    public ClientInput getRacingDto() {
+        return this.clientInput;
     }
 }
