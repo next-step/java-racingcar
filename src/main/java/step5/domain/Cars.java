@@ -5,7 +5,8 @@ import java.util.stream.Collectors;
 
 public class Cars {
 
-    private final RandomMovingStrategy strategy;
+    RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+
     private final Set<Car> cars;
 
     public Cars(String[] carNames) {
@@ -17,7 +18,6 @@ public class Cars {
         }
 
         this.cars = carSet;
-        this.strategy = new RandomMovingStrategy();
     }
 
     public Set<CarDto> getWinningCarNames() {
@@ -34,7 +34,7 @@ public class Cars {
 
     public Set<Car> moveCars() {
         for (Car car : cars) {
-            car.move(strategy);
+            car.move(randomNumberGenerator.createRandomNumber());
         }
         return cars;
     }

@@ -12,13 +12,13 @@ public class CarTest {
 
     @BeforeEach
     void setUp() {
-        mockCar = new Car("testCar1");
+        mockCar = new Car("car1");
     }
 
     @Test
     @DisplayName("자동차가 한 칸 전진하는데 성공")
     void isMovableSuccess() {
-        mockCar.move(() -> true);
+        mockCar.move(4);
         assertThat(mockCar.getPosition())
                 .isEqualTo(1);
     }
@@ -26,7 +26,7 @@ public class CarTest {
     @Test
     @DisplayName("자동차가 한 칸 전진하는데 실패")
     void isMovableFail() {
-        mockCar.move(() -> false);
+        mockCar.move(3);
         assertThat(mockCar.getPosition())
                 .isEqualTo(0);
     }

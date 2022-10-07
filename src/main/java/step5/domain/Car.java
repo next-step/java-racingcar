@@ -2,6 +2,8 @@ package step5.domain;
 
 public class Car {
 
+    MovingStrategy movingStrategy = new RandomMovingStrategy();
+
     private Position position;
     private final CarName carName;
 
@@ -10,8 +12,8 @@ public class Car {
         this.carName = new CarName(name);
     }
 
-    public void move(MovingStrategy movingStrategy) {
-        if (movingStrategy.isMovable()) {
+    public void move(int value) {
+        if (movingStrategy.isMovable(value)) {
             position = position.move();
         }
     }
