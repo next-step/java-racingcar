@@ -1,16 +1,14 @@
 package racingcar;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 import racingcar.strategy.NumberGenerateStrategy;
 
 public class Racing {
 
     private Cars cars;
-    private final List<List<Integer>> result = new ArrayList<>();
+    private final List<List<RacingResult>> result = new ArrayList<>();
 
     private Racing() {}
 
@@ -18,15 +16,23 @@ public class Racing {
         this.cars = new Cars(carNames, strategy);
     }
 
-    public List<List<Integer>> result() {
+    public List<List<RacingResult>> result() {
         return this.result;
     }
 
     public void race(int tryNumber) {
         for (int i = 0; i < tryNumber; i++) {
             cars.moveAll();
-            result.add(cars.allPosition());
+            saveCurrentResult();
         }
+    }
+
+    private void saveCurrentResult() {
+        List<RacingResult> currentResult = new ArrayList<>();
+        cars.carList().forEach(car ->
+            currentResult.add(RacingResult.from(car))
+        );
+        result.add(currentResult);
     }
 
     public List<String> winners() {

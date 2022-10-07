@@ -15,6 +15,6 @@ public class MainApplication {
         Racing racing = new Racing(carNames, new RandomNumberGenerateStrategy(10));
         racing.race(tryNumber);
 
-        printResult(racing.result());
+        printResult(racing.result(), racing.winners());
     }
 }

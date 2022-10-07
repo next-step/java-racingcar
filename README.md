@@ -22,4 +22,4 @@
 - [x] Car 클래스에 이름 필드 추가
 - [x] InputView 클래스에 자동차 이름을 받는 메소드 추가
 - [x] Racing 클래스에 우승자를 알려주는 메소드 추가
-- [ ] OutputView.printResult 메소드 수정
+- [x] OutputView.printResult 메소드 수정
