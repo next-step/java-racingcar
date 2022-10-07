@@ -10,11 +10,15 @@ public class Car {
     private Car() {}
 
     public Car(String name) {
-        this.name;
+        this.name = name;
+    }
+
+    public String name() {
+        return this.name;
     }
 
     public int position() {
-        return position;
+        return this.position;
     }
 
     public void move(int number) {

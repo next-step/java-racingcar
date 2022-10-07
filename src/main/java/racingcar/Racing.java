@@ -1,7 +1,10 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 import racingcar.strategy.NumberGenerateStrategy;
 
 public class Racing {
@@ -15,6 +18,10 @@ public class Racing {
         this.cars = new Cars(carNames, strategy);
     }
 
+    public List<List<Integer>> result() {
+        return this.result;
+    }
+
     public void race(int tryNumber) {
         for (int i = 0; i < tryNumber; i++) {
             cars.moveAll();
@@ -22,7 +29,18 @@ public class Racing {
         }
     }
 
-    public List<List<Integer>> result() {
-        return this.result;
+    public List<String> winners() {
+        int maxPosition = maxPosition();
+        return cars.carList().stream()
+            .filter(car -> car.position() == maxPosition)
+            .map(Car::name)
+            .collect(Collectors.toList());
+    }
+
+    private int maxPosition() {
+        return cars.carList().stream()
+            .mapToInt(Car::position)
+            .max()
+            .orElseThrow(() -> new RuntimeException("최대 값을 찾는데 실패했습니다."));
     }
 }

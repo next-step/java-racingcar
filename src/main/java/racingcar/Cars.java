@@ -21,6 +21,10 @@ public class Cars {
         this.numberGenerateStrategy = numberGenerateStrategy;
     }
 
+    public List<Car> carList() {
+        return this.carList;
+    }
+
     public void moveAll() {
         this.carList.forEach(car -> {
             car.move(numberGenerateStrategy.generate());
