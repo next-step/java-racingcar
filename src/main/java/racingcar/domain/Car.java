@@ -1,32 +1,46 @@
 package racingcar.domain;
 
+import racingcar.condition.MoveCondition;
+import racingcar.condition.RandomMoveCondition;
+
+import java.util.Objects;
+
 public class Car {
-    private MoveCondition moveCondition;
-    private int position;
-    private String name;
     private final int MOVE_POSITION = 1;
     private final int NAME_MAX_LENGTH = 5;
+    private final String ERROR_CHECK_SPACE = "공백은 입력할 수 없다.";
+    private final String ERROR_CHECK_LENGTH = "자동차 이름은 " + NAME_MAX_LENGTH + "자를 초과할 수 없다.";
 
-    public Car(MoveCondition moveCondition) {
-        this.position = 0;
+    private MoveCondition moveCondition;
+    private String name;
+    private int position;
+
+    public Car(String name, MoveCondition moveCondition) {
+        this(name, 0, moveCondition);
+    }
+
+    public Car(String name, int position) {
+        this(name, position, null);
+    }
+
+    public Car(String name, int position, MoveCondition moveCondition) {
+        checkSpace(name);
+        checkLength(name);
+        this.name = name.trim();
+        this.position = position;
         this.moveCondition = moveCondition;
     }
 
-    public Car(String name) {
-        checkLength(name);
-        this.position = 0;
-        this.name = name;
+    private void checkSpace(String name) {
+        if (name.trim().isEmpty()) {
+            throw new IllegalArgumentException(ERROR_CHECK_SPACE);
+        }
     }
 
     private void checkLength(String name) {
         if (NAME_MAX_LENGTH < name.length()) {
-            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없다.");
+            throw new IllegalArgumentException(ERROR_CHECK_LENGTH);
         }
-    }
-
-    public Car(int position, String name) {
-        this.position = position;
-        this.name = name;
     }
 
     public int getPosition() {
@@ -37,10 +51,50 @@ public class Car {
         return name;
     }
 
-    public int move(int num) {
-        if (moveCondition.isMovable(num)) {
-            this.position += MOVE_POSITION;
+    boolean hasMaxPosition(int position) {
+        return this.position == position;
+    }
+
+    int comparePosition(int position) {
+        if (position < this.position) {
+            position = this.position;
         }
         return position;
+    }
+
+    public Car move(MoveCondition moveCondition) {
+        setMoveCondition(moveCondition);
+        if (moveCondition.isMovable()) {
+            this.position += MOVE_POSITION;
+        }
+        return new Car(name, position, moveCondition);
+    }
+
+    private void setMoveCondition(MoveCondition moveCondition) {
+        this.moveCondition = moveCondition;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return MOVE_POSITION == car.MOVE_POSITION && NAME_MAX_LENGTH == car.NAME_MAX_LENGTH && position == car.position && Objects.equals(ERROR_CHECK_SPACE, car.ERROR_CHECK_SPACE) && Objects.equals(ERROR_CHECK_LENGTH, car.ERROR_CHECK_LENGTH) && Objects.equals(moveCondition, car.moveCondition) && Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(MOVE_POSITION, NAME_MAX_LENGTH, ERROR_CHECK_SPACE, ERROR_CHECK_LENGTH, moveCondition, name, position);
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "moveCondition=" + moveCondition +
+                ", position=" + position +
+                ", name='" + name + '\'' +
+                ", MOVE_POSITION=" + MOVE_POSITION +
+                ", NAME_MAX_LENGTH=" + NAME_MAX_LENGTH +
+                '}';
     }
 }
