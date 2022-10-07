@@ -20,8 +20,6 @@
 ## TO DO LIST(Step4)
 - [x] 테스트 코드를 요구사항에 맞게 수정
 - [x] Car 클래스에 이름 필드 추가
-- [ ] InputView 클래스에 자동차 이름을 받은 메소드 추가
+- [x] InputView 클래스에 자동차 이름을 받는 메소드 추가
 - [ ] Racing 클래스에 우승자를 알려주는 메소드 추가
 - [ ] OutputView.printResult 메소드 수정
-
-- [x] 피드백 반영

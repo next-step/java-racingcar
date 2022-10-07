@@ -1,18 +1,18 @@
-import static racingcar.view.InputView.inputCarNumber;
+import static racingcar.view.InputView.inputCarNames;
 import static racingcar.view.InputView.inputTryNumber;
 import static racingcar.view.OutputView.printResult;
 
-import racingcar.Cars;
+import java.util.List;
 import racingcar.Racing;
 import racingcar.strategy.RandomNumberGenerateStrategy;
 
 public class MainApplication {
 
     public static void main(String[] args) {
-        int carNumber = inputCarNumber();
+        List<String> carNames = inputCarNames();
         int tryNumber = inputTryNumber();
 
-        Racing racing = new Racing(carNumber, new RandomNumberGenerateStrategy(10));
+        Racing racing = new Racing(carNames, new RandomNumberGenerateStrategy(10));
         racing.race(tryNumber);
 
         printResult(racing.result());
