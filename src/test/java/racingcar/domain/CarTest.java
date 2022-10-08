@@ -17,7 +17,7 @@ class CarTest {
         Car car = new Car(input);
         car.moves(() -> true);
 
-        assertThat(car).isEqualTo(new Car(input, MOVING_POSITION));
+        assertThat(car).isEqualTo(new Car(input, 1));
     }
 
     @ParameterizedTest
@@ -27,6 +27,6 @@ class CarTest {
         Car car = new Car(input);
         car.moves(() -> false);
 
-        assertThat(car).isEqualTo(new Car(input, STOP_POSITION));
+        assertThat(car).isEqualTo(new Car(input, 0));
     }
 }

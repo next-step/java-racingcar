@@ -6,7 +6,8 @@ import racingcar.strategy.MovingStrategy;
 import java.util.Objects;
 
 public class Car {
-    public static final int INIT_POSITION = 0;
+    private static final int INIT_POSITION = 0;
+
     private final CarName name;
     private final CarPosition position;
 

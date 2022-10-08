@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class CarName {
     private static final int CAR_NAME_MAX_LENGTH = 5;
-    public static final String BLANK_VALUE_MESSAGE = "자동차 이름의 값을 입력해주세요.";
+    private static final String BLANK_VALUE_MESSAGE = "자동차 이름의 값을 입력해주세요.";
     private static final String INVALID_CAR_NAME_MESSAGE = "자동차 이름이 너무 깁니다. (" + CAR_NAME_MAX_LENGTH + "자 이하로)";
 
     private final String name;

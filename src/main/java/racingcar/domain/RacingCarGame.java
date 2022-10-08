@@ -7,8 +7,6 @@ import racingcar.strategy.MovingStrategy;
 import java.util.List;
 
 public class RacingCarGame {
-    private static final int ZERO = 0;
-
     private final int tryCount;
     private final Cars cars;
     private final RacingRecord racingRecord = new RacingRecord();
@@ -30,7 +28,7 @@ public class RacingCarGame {
     }
 
     private int validatePositiveNumber(int value) {
-        if (value < ZERO) {
+        if (value < 0) {
             throw new NegativeNumberException();
         }
         return value;

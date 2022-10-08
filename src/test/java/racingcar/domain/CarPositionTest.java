@@ -9,12 +9,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarPositionTest {
-    public static final int CURRENT_POSITION = 3;
-
     @Test
     @DisplayName("포지션에 값을 입력하면 포지션이 해당 값이 된다.")
     void createPositionTest_thenIsEqualTo() {
-        CarPosition carPosition = new CarPosition(CURRENT_POSITION);
+        CarPosition carPosition = new CarPosition(3);
 
         assertThat(carPosition).isEqualTo(new CarPosition(3));
     }
@@ -30,7 +28,7 @@ class CarPositionTest {
     @Test
     @DisplayName("포지션에 plus하면 포지션이 1변경 된다.")
     void move() {
-        CarPosition carPosition = new CarPosition(CURRENT_POSITION);
+        CarPosition carPosition = new CarPosition(3);
 
         assertThat(carPosition.plus()).isEqualTo(new CarPosition(4));
     }

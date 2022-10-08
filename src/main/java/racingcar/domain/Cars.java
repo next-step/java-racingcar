@@ -9,7 +9,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Cars {
-    public static final String COMMA = ",";
+    private static final String SEPARATOR = ",";
 
     private final List<Car> values;
 
@@ -22,7 +22,7 @@ public class Cars {
     }
 
     private List<Car> create(String carNames) {
-        List<String> carNameValues = Arrays.asList(carNames.split(COMMA));
+        List<String> carNameValues = Arrays.asList(carNames.split(SEPARATOR));
         return carNameValues.stream()
                 .map(Car::new)
                 .collect(Collectors.toList());

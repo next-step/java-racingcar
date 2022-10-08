@@ -83,3 +83,7 @@
 - [x] Cars - findWinner 함수에서 객체의 역할 수정
 - [x] ResultView 기록받아 출력 구현
 - [ ] Cars 의 일급컬렉션 사용 의미있게 - 이 부분은 더 고민할 사항.
+- [x] 상수 public -> private로 접근제한자 설정 변경.
+- [x] 상수 이름 수정이나 불필요한 상수 삭제 
+- [ ] 메서드, 파라미터명, test 명 수정
+- [ ] InputView 유효성 검사 제외
