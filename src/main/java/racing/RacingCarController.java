@@ -7,7 +7,7 @@ import racing.ui.OutputView;
 
 import java.util.List;
 
-public class CarRacingApplicationMain {
+public class RacingCarController {
     public static void main(String[] args) {
         CarFactory carFactory = new CarFactory(new RandomStrategy());
         Form form = InputView.createForm();
