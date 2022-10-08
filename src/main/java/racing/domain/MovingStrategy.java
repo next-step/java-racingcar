@@ -1,5 +1,5 @@
 package racing.domain;
 
-public interface MovingRule {
+public interface MovingStrategy {
     boolean isPossibleToMove();
 }

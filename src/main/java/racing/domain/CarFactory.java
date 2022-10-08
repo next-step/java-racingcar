@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarFactory {
-    private final MovingRule movingRule;
+    private final MovingStrategy movingStrategy;
 
-    public CarFactory(MovingRule movingRule) {
-        this.movingRule = movingRule;
+    public CarFactory(MovingStrategy movingStrategy) {
+        this.movingStrategy = movingStrategy;
     }
 
     public Car create(final String name){
-        return new Car(movingRule, name);
+        return new Car(movingStrategy, name);
     }
 
     public List<Car> create(final String... names){

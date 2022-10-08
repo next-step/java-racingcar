@@ -1,6 +1,6 @@
 package racing.domain;
 
-public class AlwaysMovingRule implements MovingRule {
+public class AlwaysMovingStrategy implements MovingStrategy {
     @Override
     public boolean isPossibleToMove() {
         return true;

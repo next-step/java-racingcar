@@ -11,7 +11,7 @@ class RaceTest {
 
     @Test
     void 자동차_경주_결과_테스트() {
-        CarFactory carFactory = new CarFactory(new AlwaysMovingRule());
+        CarFactory carFactory = new CarFactory(new AlwaysMovingStrategy());
         Race race = new Race(carFactory.create("띠띠", "씽씽", "뚜뚜"), 3);
         race.play();
         ScoreBoard scoreBoard = race.result();

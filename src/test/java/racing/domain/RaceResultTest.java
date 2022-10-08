@@ -10,7 +10,7 @@ class RaceResultTest {
 
     @Test
     void 레코드_등록_테스트() {
-        Car 빵빵이 = new Car(new AlwaysMovingRule(), "빵빵이");
+        Car 빵빵이 = new Car(new AlwaysMovingStrategy(), "빵빵이");
         빵빵이.move();
         빵빵이.move();
 

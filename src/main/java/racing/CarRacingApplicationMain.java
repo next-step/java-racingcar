@@ -9,7 +9,7 @@ import java.util.List;
 
 public class CarRacingApplicationMain {
     public static void main(String[] args) {
-        CarFactory carFactory = new CarFactory(new RandomRule());
+        CarFactory carFactory = new CarFactory(new RandomStrategy());
         Form form = InputView.createForm();
         List<Car> cars = carFactory.create(form.getNameOfCars());
         Race race = new Race(cars, form.getNumberOfPlays());
