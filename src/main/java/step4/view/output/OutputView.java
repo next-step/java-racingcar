@@ -6,5 +6,5 @@ import step4.model.Winners;
 public interface OutputView {
     void printRacingResult(Cars cars);
 
-    void printWinner(Winners winners);
+    void printWinner(String winners);
 }

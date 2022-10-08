@@ -6,38 +6,39 @@ import java.util.stream.Collectors;
 
 public class Winners {
 
-    private static final String DELIMITER = ", ";
+	private static final String DELIMITER = ", ";
 
-    private final List<String> winners;
+	private final List<String> winners;
 
-    public Winners() {
-        winners = new ArrayList<>();
-    }
+	public Winners() {
+		winners = new ArrayList<>();
+	}
 
-    public int getWinnerStandard(Cars cars) {
-        int maxMoveCnt = 0;
-        for (Car car : cars.getCars()) {
-            maxMoveCnt = Math.max(maxMoveCnt, car.getMoveCnt());
-        }
+	public String getWinners(Cars cars) {
+		checkWinners(cars);
+		return winners.stream()
+				.map(String::valueOf)
+				.collect(Collectors.joining(DELIMITER));
+	}
 
-        return maxMoveCnt;
-    }
+	public void checkWinners(Cars cars) {
+		int maxMoveCnt = getWinnerStandard(cars);
+		for (Car car : cars.getCars()) {
+			isWinner(maxMoveCnt, car);
+		}
+	}
 
-    public void checkWinners(Cars cars, int maxMoveCnt) {
-        for (Car car : cars.getCars()) {
-            isWinner(maxMoveCnt, car);
-        }
-    }
+	public int getWinnerStandard(Cars cars) {
+		int maxMoveCnt = 0;
+		for (Car car : cars.getCars()) {
+			maxMoveCnt = car.maxPosition(maxMoveCnt);
+		}
+		return maxMoveCnt;
+	}
 
-    private void isWinner(int maxMoveCnt, Car car) {
-        if (maxMoveCnt == car.getMoveCnt()) {
-            winners.add(car.getName());
-        }
-    }
-
-    public String getWinners() {
-        return winners.stream()
-                .map(String::valueOf)
-                .collect(Collectors.joining(DELIMITER));
-    }
+	private void isWinner(int maxMoveCnt, Car car) {
+		if (car.isMaxPosition(maxMoveCnt)) {
+			winners.add(car.getName());
+		}
+	}
 }
