@@ -69,16 +69,29 @@ public class RacingCarWinner {
     public String winner() {
         int max = carList.get(0).getPosition();
         String winnerParticipant = carList.get(0).getCarName();
+        List<String> winnerResult = new ArrayList<>();
         for (Car carInformation : carList) {
-            if (max == carInformation.getPosition()) {
-                winnerParticipant += "," + carInformation.getCarName();
-            }
-            if (max < carInformation.getPosition()) {
-                max = carInformation.getPosition();
-                winnerParticipant = carInformation.getCarName();
-            }
+            winnerResult = maxDistanceCar(carInformation, max, winnerParticipant);
+            max = Integer.parseInt(winnerResult.get(0));
+            winnerParticipant = winnerResult.get(1);
         }
         return winnerParticipant + "가 최종우승했습니다.";
+    }
+
+    public List<String> maxDistanceCar(Car carInformation, int max, String winnerParticipant) {
+        List<String> maxDistanceResult  = new ArrayList<>();
+        int maxResult = max;
+        String winnerParticipantResult = winnerParticipant;
+        if (max == carInformation.getPosition()) {
+            winnerParticipantResult += "," + carInformation.getCarName();
+        }
+        if (max < carInformation.getPosition()) {
+            maxResult = carInformation.getPosition();
+            winnerParticipantResult = carInformation.getCarName();
+        }
+        maxDistanceResult.add(String.valueOf(maxResult));
+        maxDistanceResult.add(winnerParticipantResult);
+        return maxDistanceResult;
     }
 
     public String racingCarGame() {
