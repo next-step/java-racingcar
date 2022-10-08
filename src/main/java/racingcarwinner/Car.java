@@ -2,9 +2,9 @@ package racingcarwinner;
 
 public class Car {
 
+    private static final int DEFAULT_POSITION = 0;
     private String carName;
     private int position;
-    private static final int DEFAULT_POSITION = 0;
 
     public Car(String carName) {
         this.carName = carName;
