@@ -69,13 +69,13 @@ public class RacingCarWinner {
     public String winner() {
         int max = carList.get(0).getPosition();
         String winnerParticipant = carList.get(0).getCarName();
-        for (int i = 1; i < carList.size(); i++) {
-            if (max == carList.get(i).getPosition()) {
-                winnerParticipant += "," + carList.get(i).getCarName();
+        for (Car carInformation : carList) {
+            if (max == carInformation.getPosition()) {
+                winnerParticipant += "," + carInformation.getCarName();
             }
-            if (max < carList.get(i).getPosition()) {
-                max = carList.get(i).getPosition();
-                winnerParticipant = carList.get(i).getCarName();
+            if (max < carInformation.getPosition()) {
+                max = carInformation.getPosition();
+                winnerParticipant = carInformation.getCarName();
             }
         }
         return winnerParticipant + "가 최종우승했습니다.";
