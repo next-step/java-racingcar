@@ -1,15 +1,15 @@
 package racing.domain.car;
 
 
-import racing.domain.car.movingstrategy.MovingStrategy;
+import racing.domain.movingstrategy.MovingStrategy;
 
 public class Car {
 
-    private final Name name;
+    private final CarName carName;
     private Position position;
 
     public Car(String name, int position) {
-        this.name = new Name(name);
+        this.carName = new CarName(name);
         this.position = new Position(position);
     }
 
@@ -31,11 +31,11 @@ public class Car {
     }
 
     public String getName() {
-        return name.getNameValue();
+        return carName.getValue();
     }
 
     public int getPosition() {
-        return position.getPositionValue();
+        return position.getValue();
     }
 
     private boolean isLeadingThan(Car comparedCar) {
