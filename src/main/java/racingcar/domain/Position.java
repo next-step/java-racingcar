@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.exception.PositionException;
+
 public class Position implements Comparable<Position> {
 
 	private static final int INCREASE_AMOUNT = 1;
@@ -10,11 +12,18 @@ public class Position implements Comparable<Position> {
 	}
 
 	public Position(int position) {
+		validatePosition(position);
 		this.position = position;
 	}
 
 	public Position increase() {
 		return new Position(position + INCREASE_AMOUNT);
+	}
+
+	void validatePosition(int position) {
+		if(position < 0){
+			throw new PositionException("위치는 0 이상이어야 합니다");
+		}
 	}
 
 	public int getPosition() {
