@@ -1,4 +1,4 @@
-package racingcar.strategy;
+package racingcar.domain.strategy;
 
 import java.util.Random;
 
@@ -11,6 +11,6 @@ public class RandomMovingStrategy implements MovingStrategy {
   public boolean isMoveAble() {
     Random random = new Random();
     int randomNum = random.nextInt(MAX_NUMBER);
-    return MIN_NUMBER <= randomNum && randomNum < MAX_NUMBER;
+    return MIN_NUMBER <= randomNum;
   }
 }
