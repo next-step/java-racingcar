@@ -28,7 +28,7 @@ public class RacingGameController {
 
 	public void racingGame() {
 		if (nameInput.isBlank() || tryInput < MIN_TRY_CNT)
-			throw new RuntimeException("자동차 댓수 또는 시도 횟수는 적어도 양수여야 합니다.");
+			throw new IllegalArgumentException("자동차 댓수 또는 시도 횟수는 적어도 양수여야 합니다.");
 
 		final Winners winners = new Winners();
 		final OutputView outputView = new OutputViewImpl();

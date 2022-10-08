@@ -27,6 +27,8 @@ class RacingGameApplicationTest {
     @CsvSource(value = {"'', 4", "'hi,ho,hz', 0"})
     @DisplayName("정상적이지 못한 input 값에 대해서는 게임이 실행되지 않고 Exception을 내뱉어야 한다.")
     void racingGameWrongInputTest(String nameInput, int tryCount){
-        assertThatThrownBy(()-> new RacingGameController(nameInput, tryCount, STRATEGY)).isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(()-> {
+            new RacingGameController(nameInput, tryCount, STRATEGY).racingGame();
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 }
