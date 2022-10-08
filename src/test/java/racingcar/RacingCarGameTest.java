@@ -3,10 +3,7 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
-import racingcar.domain.FixedGenerator;
-import racingcar.domain.MovingCondition;
 import racingcar.domain.RacingCarGame;
-import racingcar.view.ResultView;
 
 import java.util.Arrays;
 import java.util.List;
@@ -26,14 +23,16 @@ public class RacingCarGameTest {
     }
 
     @Test
-    @DisplayName("자동차가 전진한만큼 차 위치 출력")
-    void resultPathTest() {
-        int moveCount = 3;
-        Car car = new Car(new FixedGenerator(MovingCondition.MOVABLE_MIN_VALUE), "test");
-        for (int i = 0; i < moveCount; i++) {
-            car.tryMove();
-        }
+    @DisplayName("경주 시도할 횟수 라운드 진행후 게임 끝나는지 확인")
+    void isEndTest() {
+        List<String> carNameList = Arrays.asList("yuno", "bingb");
+        RacingCarGame racingCarGame = new RacingCarGame(carNameList, 3);
 
-        assertThat(ResultView.getPathString(car.getPosition())).isEqualTo("---");
+        racingCarGame.playOneRound();
+        assertThat(racingCarGame.isEnd()).isFalse();
+        racingCarGame.playOneRound();
+        assertThat(racingCarGame.isEnd()).isFalse();
+        racingCarGame.playOneRound();
+        assertThat(racingCarGame.isEnd()).isTrue();
     }
 }

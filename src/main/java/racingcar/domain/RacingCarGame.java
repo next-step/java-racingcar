@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import racingcar.view.ResultView;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -9,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class RacingCarGame {
     private final List<Car> carList;
-    private final int tryCount;
+    private int tryCount;
 
     public RacingCarGame(List<String> carNames, int tryCount) {
         this.carList = createCars(carNames);
@@ -28,14 +26,16 @@ public class RacingCarGame {
         return carList;
     }
 
-    public void play() {
-        ResultView.printResultStartMessage();
-        for (int i = 0; i < tryCount; i++) {
+    public List<Car> playOneRound() {
+        if (!isEnd()) {
             carList.forEach(Car::tryMove);
-            ResultView.printRoundResult(carList);
+            tryCount--;
         }
+        return getCarList();
+    }
 
-        ResultView.printWinnerMessage(getWinnerName());
+    public boolean isEnd() {
+        return tryCount <= 0;
     }
 
     public List<String> getWinnerName() {
