@@ -5,7 +5,7 @@ public class CarName {
 
 	private final String carName;
 
-	public CarName(String carName) {
+	public CarName(final String carName) {
 		checkNameCondition(carName);
 		this.carName = carName;
 	}
@@ -14,7 +14,7 @@ public class CarName {
 		return carName;
 	}
 
-	void checkNameCondition(String carName) {
+	void checkNameCondition(final String carName) {
 		if (carName.length() > MAX_NAME_LENGTH || carName.isBlank()) {
 			throw new IllegalArgumentException("이름의 길이는 적어도 1자 이상 5자 이하이어야 합니다.");
 		}

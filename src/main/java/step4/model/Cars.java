@@ -5,7 +5,7 @@ import java.util.List;
 public class Cars {
 	private final List<Car> cars;
 
-	public Cars(List<Car> list){
+	public Cars(final List<Car> list){
 		this.cars = list;
 	}
 

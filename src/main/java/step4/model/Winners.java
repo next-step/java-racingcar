@@ -14,21 +14,21 @@ public class Winners {
 		winners = new ArrayList<>();
 	}
 
-	public String getWinners(Cars cars) {
+	public String getWinners(final Cars cars) {
 		checkWinners(cars);
 		return winners.stream()
 				.map(String::valueOf)
 				.collect(Collectors.joining(DELIMITER));
 	}
 
-	public void checkWinners(Cars cars) {
+	public void checkWinners(final Cars cars) {
 		int maxMoveCnt = getWinnerStandard(cars);
 		for (Car car : cars.getCars()) {
 			isWinner(maxMoveCnt, car);
 		}
 	}
 
-	public int getWinnerStandard(Cars cars) {
+	public int getWinnerStandard(final Cars cars) {
 		int maxMoveCnt = 0;
 		for (Car car : cars.getCars()) {
 			maxMoveCnt = car.maxPosition(maxMoveCnt);
@@ -36,7 +36,7 @@ public class Winners {
 		return maxMoveCnt;
 	}
 
-	private void isWinner(int maxMoveCnt, Car car) {
+	private void isWinner(final int maxMoveCnt, final Car car) {
 		if (car.isMaxPosition(maxMoveCnt)) {
 			winners.add(car.getName());
 		}

@@ -7,7 +7,7 @@ import java.util.Objects;
 public class Car {
     private final CarName carName;
     private Position position;
-    public Car(String name) {
+    public Car(final String name) {
         this(name, 0);
     }
 
