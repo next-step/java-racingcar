@@ -4,27 +4,27 @@ import racingcar.strategy.MoveStrategy;
 
 public class Car implements Comparable<Car> {
 
-	private static final int MOVE_AMOUNT = 1;
-
-	private int position = 0;
+	private Position position;
 	private final Name name;
 
 	public Car() {
 		this.name = new Name();
+		this.position = new Position();
 	}
 
 	public Car(String name) {
 		this.name = new Name(name);
+		this.position = new Position();
 	}
 
 	public void move(MoveStrategy moveStrategy) {
 		if (moveStrategy.isMovable()) {
-			position += MOVE_AMOUNT;
+			position = position.increase();
 		}
 	}
 
 	public int getPosition() {
-		return position;
+		return position.getPosition();
 	}
 
 	public String getName() {
@@ -33,7 +33,7 @@ public class Car implements Comparable<Car> {
 
 	@Override
 	public int compareTo(Car other) {
-		return Integer.compare(position, other.position);
+		return position.compareTo(other.position);
 	}
 
 	@Override
