@@ -3,6 +3,7 @@ package racing;
 
 import racing.domain.RacingGame;
 import racing.domain.car.Car;
+import racing.domain.movingstrategy.RandomNumberMovingStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,15 +16,15 @@ import static racing.view.ResultView.printWinner;
 public class App {
 
     public static void main(String[] args) {
-        run(initializeGame(), numberOfAttempts());
+        run(initializeGame());
     }
 
     private static RacingGame initializeGame() {
-        return new RacingGame(carsFrom(namesOfCar()));
+        return new RacingGame(carsFrom(namesOfCar()), numberOfAttempts(), new RandomNumberMovingStrategy());
     }
 
-    private static void run(RacingGame racing, int numberOfAttempts) {
-        while (numberOfAttempts-- > 0) {
+    private static void run(RacingGame racing) {
+        while (racing.isRunning()) {
             printRoundResult(racing.runRound());
         }
         printWinner(racing.winner());
