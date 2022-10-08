@@ -2,6 +2,7 @@ package racingcar.backend.controller;
 
 import racingcar.backend.domain.*;
 import racingcar.backend.service.PlayService;
+import racingcar.backend.strategy.RandomMoveStrategy;
 
 public class RacingCarGameController {
 

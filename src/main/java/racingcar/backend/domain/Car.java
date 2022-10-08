@@ -1,5 +1,7 @@
 package racingcar.backend.domain;
 
+import racingcar.backend.strategy.MoveStrategy;
+
 public class Car {
 
     private CarName carName;

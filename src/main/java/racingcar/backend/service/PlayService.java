@@ -1,6 +1,7 @@
 package racingcar.backend.service;
 
 import racingcar.backend.domain.*;
+import racingcar.backend.strategy.MoveStrategy;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

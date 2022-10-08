@@ -1,4 +1,4 @@
-package racingcar.backend.domain;
+package racingcar.backend.strategy;
 
 @FunctionalInterface
 public interface MoveStrategy {

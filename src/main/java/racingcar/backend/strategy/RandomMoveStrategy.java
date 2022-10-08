@@ -1,4 +1,4 @@
-package racingcar.backend.domain;
+package racingcar.backend.strategy;
 
 import racingcar.backend.utils.RandomUtils;
 
