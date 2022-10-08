@@ -1,31 +1,26 @@
 package racingcar.backend.domain;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
 
-    private final List<Car> values;
+    private final List<Car> cars;
+
+    public Cars(List<Car> cars) {
+        this.cars = new ArrayList<>(cars);
+    }
 
     public static Cars create(String[] names) {
         return new Cars(Arrays.asList(names).stream()
-                .map(Car::new).collect(Collectors.toList()));
-    }
-
-    public Cars(List<Car> values) {
-        this.values = values;
-    }
-
-    public GameRecord play() {
-        GameRecord gameRecord = new GameRecord();
-        for (Car car : values) {
-            gameRecord.add(car.move(new RandomMoveStrategy()));
-        }
-        return gameRecord;
+                .map(name -> Car.create(new CarName(name)))
+                .collect(Collectors.toList()));
     }
 
     public List<Car> getValues() {
-        return values;
+        return Collections.unmodifiableList(cars);
     }
 }
