@@ -12,11 +12,6 @@ public class InputView {
 
     private static final Scanner scanner= new Scanner(System.in);
 
-    public static int getCarCount() {
-        System.out.println(CAR_DESCRIPTION);
-        return NumberUtil.getPositiveInteger(scanner.nextLine());
-    }
-
     public static int getTryCount() {
         System.out.println(TRY_DESCRIPTION);
         return NumberUtil.getPositiveInteger(scanner.nextLine());

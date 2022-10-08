@@ -5,6 +5,8 @@ import java.util.regex.Pattern;
 public class NumberUtil {
     private static final Pattern POSITIVE_NUMBER_PATTERN = Pattern.compile("[0-9]+");
 
+    private NumberUtil() {}
+
     public static int getPositiveInteger(String strNum) {
         if (isPositiveNumber(strNum)) {
             return Integer.parseUnsignedInt(strNum);

@@ -25,7 +25,7 @@ public class RacingCarGameTest {
     @DisplayName("자동차가 전진한만큼 차 위치 출력")
     void resultPathTest() {
         int moveCount = 3;
-        Car car = new Car(new FixedGenerator(MovingCondtion.MOVABLE_MIN_VALUE), "test");
+        Car car = new Car(new FixedGenerator(MovingCondition.MOVABLE_MIN_VALUE), "test");
         for (int i = 0; i < moveCount; i++) {
             car.tryMove();
         }

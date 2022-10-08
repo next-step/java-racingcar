@@ -1,6 +1,8 @@
 package racingcar;
 
 public class Car {
+
+    private static final int NAME_LENGTH_LIMIT = 5;
     private int position;
 
     private final String name;
@@ -14,7 +16,7 @@ public class Car {
     public Car(NumberGenerator generator, String name) {
         this.position = 0;
         this.numberGenerator = generator;
-        this.name = vaildCheckName(name);
+        this.name = validCheckName(name);
     }
 
     private void move() {
@@ -29,15 +31,14 @@ public class Car {
         return name;
     }
 
-    public int tryMove() {
-        if (MovingCondtion.isMove(numberGenerator.makeValue())) {
+    public void tryMove() {
+        if (MovingCondition.isMove(numberGenerator.makeValue())) {
             move();
         }
-        return position;
     }
 
-    public String vaildCheckName(String name) {
-        if (name.length() > 5) {
+    public String validCheckName(String name) {
+        if (name.length() > NAME_LENGTH_LIMIT) {
             throw new RuntimeException(String.format("자동차 이름은 5자를 초과할 수 없다. - input name : [%s]", name));
         }
         return name;
