@@ -7,9 +7,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
-    public static final int MOVING_POSITION = 1;
-    public static final int STOP_POSITION = 0;
-
     @ParameterizedTest
     @ValueSource(strings = {"pobi"})
     @DisplayName("이름을 입력하면 자동차가 생성되고, 그 자동차가 움직인다면 해당 자동차의 위치가 1 증가한다.")
