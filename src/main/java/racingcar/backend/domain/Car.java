@@ -1,33 +1,27 @@
 package racingcar.backend.domain;
 
-import java.util.Collections;
-import java.util.Map;
-
 public class Car {
 
-    private static final int ZERO = 0;
-    private static final String ANONYMOUS = "익명";
-    private Position position;
     private CarName carName;
+    private Position position;
 
-    public Car() {
-        this(ANONYMOUS, ZERO);
+    public Car(CarName carName, Position position) {
+        this.carName = carName;
+        this.position = position;
     }
 
-    public Car(String name) {
-        this(name, ZERO);
+    public static Car create(CarName carName) {
+        return new Car(carName, Position.create(0));
     }
 
-    public Car(String name, int position) {
-        this.carName = new CarName(name);
-        this.position = new Position(position);
+    public static Car create(CarName carName, Position position) {
+        return new Car(carName, position);
     }
 
-    public Map<String, Integer> move(MoveStrategy moveStrategy) {
+    public void move(MoveStrategy moveStrategy) {
         if (moveStrategy.movable()) {
             position.forward();
         }
-        return getRecord();
     }
 
     public int getPosition() {
@@ -36,9 +30,5 @@ public class Car {
 
     public String getName() {
         return carName.getValue();
-    }
-
-    private Map<String, Integer> getRecord() {
-        return Collections.singletonMap(getName(), getPosition());
     }
 }

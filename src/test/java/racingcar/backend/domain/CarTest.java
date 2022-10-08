@@ -8,25 +8,24 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    private static final int INITIAL_POSITION = 0;
-    private Car car;
+    Car car;
 
     @BeforeEach
-    private void setUp() {
-        car = new Car();
+    void setUp() {
+        car = new Car(new CarName("익명"), new Position(0));
     }
 
     @Test
     @DisplayName("자동차 전진")
     void car_move_test() {
         car.move(() -> true);
-        assertThat(car.getPosition()).isEqualTo(INITIAL_POSITION + 1);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @Test
     @DisplayName("자동차 멈춤")
     void car_not_move_test() {
         car.move(() -> false);
-        assertThat(car.getPosition()).isEqualTo(INITIAL_POSITION);
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 }
