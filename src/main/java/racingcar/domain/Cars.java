@@ -32,10 +32,6 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public int getSize() {
-        return values.size();
-    }
-
     public CarsRecord move(MovingStrategy movingStrategy) {
         CarsRecord records = new CarsRecord();
         for (Car car : values) {

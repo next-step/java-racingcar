@@ -89,4 +89,4 @@
 - [x] carname trim 수정
 - [x] carpoint 추가시에 new로 생성함  
 - [x] InputView 유효성 검사 제외 - 중복 유효성 제거
-- [ ] getSize 함수 삭제 후 test코드 재 작성.
+- [x] getSize 함수 삭제 후 test코드 재 작성.

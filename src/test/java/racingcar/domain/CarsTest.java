@@ -17,7 +17,7 @@ class CarsTest {
     void carsCreateTest_thenIsEqualTo(String carNames) {
         Cars cars = new Cars(carNames);
 
-        assertThat(cars.getSize()).isEqualTo(3);
+        assertThat(cars).isEqualTo(new Cars(carNames));
     }
 
     @Test
