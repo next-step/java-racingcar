@@ -34,9 +34,9 @@ public class Cars {
 
     public CarsRecord move(MovingStrategy movingStrategy) {
         CarsRecord records = new CarsRecord();
-        for (Car value : values) {
-            value.moves(movingStrategy);
-            records.add(value);
+        for (Car car : values) {
+            car.moves(movingStrategy);
+            records.add(car);
         }
         return records;
     }
@@ -52,8 +52,8 @@ public class Cars {
 
     private CarPosition getMaxPosition() {
         CarPosition maxPosition = new CarPosition();
-        for (Car value : values) {
-            maxPosition = value.getMaxPosition(maxPosition);
+        for (Car car : values) {
+            maxPosition = car.getMaxPosition(maxPosition);
         }
         return maxPosition;
     }
