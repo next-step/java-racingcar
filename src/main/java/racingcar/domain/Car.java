@@ -31,6 +31,7 @@ public class Car implements Comparable<Car> {
 		return name.getName();
 	}
 
+	// (car1.compareTo(car2) == 0) != car1.equals(car2)
 	@Override
 	public int compareTo(Car other) {
 		return position.compareTo(other.position);
@@ -45,12 +46,16 @@ public class Car implements Comparable<Car> {
 
 		Car car = (Car)o;
 
-		return position == car.position;
+		if (!position.equals(car.position))
+			return false;
+		return name.equals(car.name);
 	}
 
 	@Override
 	public int hashCode() {
-		return position;
+		int result = position.hashCode();
+		result = 31 * result + name.hashCode();
+		return result;
 	}
 
 	@Override

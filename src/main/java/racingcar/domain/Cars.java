@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
@@ -32,7 +33,7 @@ public class Cars {
 	public List<String> findWinnerNames() {
 		Car maxCar = getMaxCar();
 		return cars.stream()
-			.filter(car -> car.equals(maxCar))
+			.filter(car -> car.compareTo(maxCar) == 0)
 			.map(Car::getName)
 			.collect(Collectors.toList());
 	}
