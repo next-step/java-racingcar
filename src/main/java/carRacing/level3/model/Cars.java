@@ -8,11 +8,11 @@ public class Cars {
 
 	private List<Car> cars;
 
-	private Cars(List<Car> cars){
+	private Cars(List<Car> cars) {
 		this.cars = cars;
 	}
 
-	public static Cars create(List<String>carNames){
+	public static Cars create(List<String> carNames) {
 		List<Car> cars = carNames.stream()
 			.map(Car::new)
 			.collect(Collectors.toList());
@@ -27,12 +27,14 @@ public class Cars {
 
 	public int maxCarLocation() {
 		return cars.stream()
-			.mapToInt(Car::carLocation)
+			.map(Car::carLocation)
+			.mapToInt(Location::getLocation)
 			.max()
 			.getAsInt();
 	}
 
-	public int carLocation(int carNum) {
+
+	public Location carLocation(int carNum) {
 		return cars.get(carNum).carLocation();
 	}
 

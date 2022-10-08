@@ -13,8 +13,8 @@ public class Car {
 		this.carName = new CarName(carName);
 	}
 
-	public int carLocation() {
-		return location.getLocation();
+	public Location carLocation() {
+		return location;
 	}
 
 	public String carName() {
@@ -25,5 +25,23 @@ public class Car {
 		if (strategy.isMovable()) {
 			location.move();
 		}
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		Car car = (Car) o;
+		return Objects.equals(location, car.location) && Objects.equals(carName,
+			car.carName);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(location, carName);
 	}
 }

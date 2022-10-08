@@ -8,6 +8,7 @@ public class Winner {
 	private int maxLocation;
 	private List<String> winnerList;
 
+
 	public Winner(){
 		this(new ArrayList<>());
 	}
@@ -18,6 +19,7 @@ public class Winner {
 
 	public Winner decideWinner(Cars cars) {
 
+		//TODO:객체 지향적으로 설계하기
 		maxLocation = cars.maxCarLocation();
 
 		for (int i = 0; i < cars.totalNum(); i++) {
@@ -27,8 +29,8 @@ public class Winner {
 		return new Winner(winnerList);
 	}
 
-	public void addWinner(int location, String carName) {
-		if (maxLocation == location) {
+	public void addWinner(Location location, String carName) {
+		if (location.isWinner(maxLocation)) {
 			winnerList.add(carName);
 		}
 	}

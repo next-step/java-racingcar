@@ -12,7 +12,7 @@ public class OutPutView {
 	public void showRace(Cars cars) {
 
 		for (int i = 0; i < cars.totalNum(); i++) {
-			System.out.printf("%s : %s\n", cars.carName(i), "-".repeat(cars.carLocation(i)));
+			System.out.printf("%s : %s\n", cars.carName(i), "-".repeat(cars.carLocation(i).getLocation()));
 		}
 		System.out.println("\n");
 	}
