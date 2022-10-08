@@ -10,7 +10,7 @@ public class ResultView {
         this.racingCars = racingCars;
         this.racingModel = racingModel;
     }
-    
+
     public void printEachRacingStep() {
         for (Car racingCar : racingCars) {
             System.out.println(racingCar.getPosition());
