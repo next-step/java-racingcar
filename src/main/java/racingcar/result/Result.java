@@ -1,8 +1,8 @@
 package racingcar.result;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import racingcar.domain.Cars;
 import racingcar.dto.CarDto;
@@ -26,15 +26,7 @@ public class Result {
 		this(cars.getNames(), cars.getPositions());
 	}
 
-	public List<String> getNames() {
-		return carDtos.stream()
-			.map(CarDto::getName)
-			.collect(Collectors.toUnmodifiableList());
-	}
-
-	public List<Integer> getPositions() {
-		return carDtos.stream()
-			.map(CarDto::getPosition)
-			.collect(Collectors.toUnmodifiableList());
+	public List<CarDto> getCarDtos() {
+		return Collections.unmodifiableList(carDtos);
 	}
 }

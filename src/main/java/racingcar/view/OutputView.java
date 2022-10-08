@@ -2,10 +2,10 @@ package racingcar.view;
 
 import static java.lang.System.*;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import racingcar.dto.CarDto;
 import racingcar.result.Result;
 
 public class OutputView {
@@ -33,26 +33,21 @@ public class OutputView {
 		String resultStrings = results.stream()
 			.map(this::getResults)
 			.collect(Collectors.joining(lineSeparator()));
-		System.out.print(resultStrings);
+		System.out.println(resultStrings);
 	}
 
 	private String getResults(Result result) {
-		Iterator<String> nameIterator = result.getNames().iterator();
-		Iterator<Integer> positionIterator = result.getPositions().iterator();
-		String resultString = "";
-		while (nameIterator.hasNext() && positionIterator.hasNext()) {
-			String name = nameIterator.next();
-			Integer position = positionIterator.next();
-			resultString += getResult(name, position);
-		}
-		return resultString;
+		List<CarDto> carDtos = result.getCarDtos();
+		return carDtos.stream()
+			.map(this::getResult)
+			.collect(Collectors.joining());
 	}
 
-	private String getResult(String name, Integer position) {
-		return name + RESULT_SEPARATOR + getProgress(position);
+	private String getResult(CarDto carDto) {
+		return carDto.getName() + RESULT_SEPARATOR + getProgress(carDto) + lineSeparator();
 	}
 
-	private String getProgress(Integer position) {
-		return PROGRESS_INDICATOR.repeat(position) + lineSeparator();
+	private String getProgress(CarDto carDto) {
+		return PROGRESS_INDICATOR.repeat(carDto.getPosition());
 	}
 }
