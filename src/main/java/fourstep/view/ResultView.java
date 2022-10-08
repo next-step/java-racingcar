@@ -16,7 +16,7 @@ public class ResultView {
         System.out.println();
     }
 
-    public static void printCarLocation(int carLocation) {
+    private static void printCarLocation(int carLocation) {
         IntStream.range(0, carLocation).mapToObj(i -> "-").forEach(System.out::print);
         System.out.println();
     }
