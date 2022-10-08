@@ -40,8 +40,8 @@ public class CarTest {
 	}
 
 	@Test
-	@DisplayName("이름이 있는 차를 생성한다")
-	void construct_car_with_name() {
+	@DisplayName("이름을 가질 수 있다")
+	void a_car_can_have_name() {
 		String name = "이름";
 		Car car = new Car(name);
 
