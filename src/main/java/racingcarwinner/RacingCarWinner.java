@@ -15,14 +15,14 @@ public class RacingCarWinner {
         this.carMovingCount = carMovingCount;
     }
 
-    public void splitParticipantName() {
+    private void splitParticipantName() {
         String[] participantNames = participantName.split(",");
         for (int i = 0; i < participantNames.length; i++) {
             carList.add(new Car(participantNames[i]));
         }
     }
 
-    public int judgmentGoStop() {
+    private int judgmentGoStop() {
         int randomNum = (int) (Math.random() * 10);
         if (randomNum >= ADVANCE_MIN_VALUE) {
             return 1;
@@ -30,7 +30,7 @@ public class RacingCarWinner {
         return 0;
     }
 
-    public List<Integer> racingCarMove() {
+    private List<Integer> racingCarMove() {
         List<Integer> carMovement = new ArrayList<>();
         for (int i = 0; i < carList.size(); i++) {
             carMovement.add(i, judgmentGoStop());
@@ -38,7 +38,7 @@ public class RacingCarWinner {
         return carMovement;
     }
 
-    public String updateParticipantInformation() {
+    private String updateParticipantInformation() {
         List<Integer> carMovement = racingCarMove();
         int eachNumberOfMove = 0;
         for (int i = 0; i < carList.size(); i++) {
@@ -48,7 +48,7 @@ public class RacingCarWinner {
         return printGameStatus();
     }
 
-    public String printGameStatus() {
+    private String printGameStatus() {
         String printingStatus = "";
         for (int i = 0; i < carList.size(); i++) {
             printingStatus += carList.get(i).getCarName() + " : " + printCarBar(i) + "\n";
@@ -57,7 +57,7 @@ public class RacingCarWinner {
         return printingStatus;
     }
 
-    public String printCarBar(int participantTurn) {
+    private String printCarBar(int participantTurn) {
         int moveDistance = carList.get(participantTurn).getPosition();
         String distanceBar = "";
         for (int i = 0; i < moveDistance; i++) {
@@ -66,20 +66,23 @@ public class RacingCarWinner {
         return distanceBar;
     }
 
-    public String winner() {
+    private String winner() {
         int max = carList.get(0).getPosition();
-        String winnerParticipant = carList.get(0).getCarName();
-        List<String> winnerResult = new ArrayList<>();
+        String winnerParticipant = "";
+        List<String> winnerResult;
         for (Car carInformation : carList) {
             winnerResult = maxDistanceCar(carInformation, max, winnerParticipant);
             max = Integer.parseInt(winnerResult.get(0));
             winnerParticipant = winnerResult.get(1);
         }
+        if (winnerParticipant.charAt(0) == ',') {
+            return winnerParticipant.substring(1, winnerParticipant.length());
+        }
         return winnerParticipant + "가 최종우승했습니다.";
     }
 
-    public List<String> maxDistanceCar(Car carInformation, int max, String winnerParticipant) {
-        List<String> maxDistanceResult  = new ArrayList<>();
+    private List<String> maxDistanceCar(Car carInformation, int max, String winnerParticipant) {
+        List<String> maxDistanceResult = new ArrayList<>();
         int maxResult = max;
         String winnerParticipantResult = winnerParticipant;
         if (max == carInformation.getPosition()) {
@@ -94,7 +97,7 @@ public class RacingCarWinner {
         return maxDistanceResult;
     }
 
-    public String racingCarGame() {
+    private String racingCarGame() {
         String printingStatus = "";
         for (int i = 0; i < carMovingCount; i++) {
             printingStatus += updateParticipantInformation();

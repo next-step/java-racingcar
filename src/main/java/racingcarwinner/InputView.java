@@ -30,13 +30,13 @@ public class InputView {
         return enterCarMoveCount;
     }
 
-    public void NameLengthDiscrimination(String name) throws NameOutOfLengthException {
+    private void NameLengthDiscrimination(String name) throws NameOutOfLengthException {
         if (name.length() > 5) {
             throw new NameOutOfLengthException("자동차 이름은 5글자를 넘길 수 없습니다.");
         }
     }
 
-    public void NameLengthZero(String name) throws NameIsEmptyNullException {
+    private void NameLengthZero(String name) throws NameIsEmptyNullException {
         if (name == null || name.isBlank()) {
             throw new NameIsEmptyNullException("자동차 이름은 빈값이 들어올 수 없습니다.");
         }
