@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 public class Cars {
     private static final String SEPARATOR = ",";
+    private static final String CAR_NAME_NULL_MESSAGE = "자동차의 이름의 값이 없습니다.";
 
     private final List<Car> values;
 
@@ -23,6 +24,9 @@ public class Cars {
 
     private List<Car> create(String carNames) {
         List<String> carNameValues = Arrays.asList(carNames.split(SEPARATOR));
+        if (carNameValues.isEmpty()) {
+            throw new IllegalArgumentException(CAR_NAME_NULL_MESSAGE);
+        }
         return carNameValues.stream()
                 .map(Car::new)
                 .collect(Collectors.toList());
