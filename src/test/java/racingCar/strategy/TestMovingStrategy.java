@@ -1,6 +1,6 @@
 package racingCar.strategy;
 
-import racingcar.strategy.MovingStrategy;
+import racingcar.domain.strategy.MovingStrategy;
 
 public class TestMovingStrategy implements MovingStrategy {
 
