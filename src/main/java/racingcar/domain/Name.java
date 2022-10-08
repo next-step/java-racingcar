@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.exception.NameException;
+
 public class Name {
 
 	private static final String DEFAULT_NAME = "이름 없음";
@@ -18,16 +20,16 @@ public class Name {
 
 	public void validateNameLength(String name) {
 		if (name.length() < 1) {
-			throw new RuntimeException("이름은 1글자 이상입니다");
+			throw new NameException("이름은 1글자 이상입니다");
 		}
 		if (name.length() > 5) {
-			throw new RuntimeException("이름은 5글자 이하입니다");
+			throw new NameException("이름은 5글자 이하입니다");
 		}
 	}
 
 	public void validateNameNotBlank(String name) {
 		if (name.isBlank()) {
-			throw new RuntimeException("이름은 공백이 될 수 없습니다");
+			throw new NameException("이름은 공백이 될 수 없습니다");
 		}
 	}
 

@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import racingcar.exception.NameException;
+
 class NameTest {
 
 	@Test
@@ -12,7 +14,7 @@ class NameTest {
 	void name_must_have_length() {
 		String name = "";
 
-		assertThatThrownBy(() -> new Name(name)).isInstanceOf(RuntimeException.class);
+		assertThatThrownBy(() -> new Name(name)).isInstanceOf(NameException.class);
 	}
 
 	@Test
@@ -20,7 +22,7 @@ class NameTest {
 	void name_length_less_or_equal_5() {
 		String name = "123456";
 
-		assertThatThrownBy(() -> new Name(name)).isInstanceOf(RuntimeException.class);
+		assertThatThrownBy(() -> new Name(name)).isInstanceOf(NameException.class);
 	}
 
 	@Test
@@ -28,6 +30,6 @@ class NameTest {
 	void name_is_not_blank() {
 		String name = "    ";
 
-		assertThatThrownBy(() -> new Name(name)).isInstanceOf(RuntimeException.class);
+		assertThatThrownBy(() -> new Name(name)).isInstanceOf(NameException.class);
 	}
 }

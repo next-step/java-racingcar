@@ -3,6 +3,7 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 import racingcar.strategy.MoveStrategy;
@@ -39,7 +40,7 @@ public class Cars {
 	private Car getMaxCar() {
 		return cars.stream()
 			.max(Car::compareTo)
-			.orElseThrow(() -> new RuntimeException("우승자를 찾지 못했습니다"));
+			.orElseThrow(() -> new NoSuchElementException("우승자를 찾지 못했습니다"));
 	}
 
 	public List<Integer> getPositions() {
