@@ -20,8 +20,7 @@ public class CarPosition {
     }
 
     public CarPosition plus() {
-        position++;
-        return this;
+        return new CarPosition(position++);
     }
 
     public boolean isLessThan(CarPosition maxPosition) {

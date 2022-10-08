@@ -87,5 +87,5 @@
 - [x] 상수 이름 수정이나 불필요한 상수 삭제.
 - [x] 메서드, 파라미터명, test 명 수정.
 - [x] carname trim 수정
-- [ ] carpoint 추가시에 new로 생성함  
+- [x] carpoint 추가시에 new로 생성함  
 - [ ] InputView 유효성 검사 제외
