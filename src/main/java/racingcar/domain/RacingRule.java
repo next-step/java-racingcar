@@ -34,9 +34,13 @@ public class RacingRule {
 
   private void cycleCars(MovingStrategy strategy) {
     for (Car car : cars.getCars()) {
-      if (strategy.isMoveAble()) {
-        car.move();
-      }
+      validateMove(strategy, car);
+    }
+  }
+
+  private static void validateMove(MovingStrategy strategy, Car car) {
+    if (strategy.isMoveAble()) {
+      car.move();
     }
   }
 
