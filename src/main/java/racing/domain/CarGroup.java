@@ -1,7 +1,7 @@
 package racing.domain;
 
 import racing.domain.car.Car;
-import racing.domain.car.movingstrategy.RandomNumberMovingStrategy;
+import racing.domain.movingstrategy.MovingStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +14,9 @@ public class CarGroup {
         this.cars = cars;
     }
 
-    public CarGroup moveAll() {
+    public CarGroup moveAll(MovingStrategy movingStrategy) {
         for (Car car : cars) {
-            car.move(new RandomNumberMovingStrategy());
+            car.move(movingStrategy);
         }
         return this;
     }
