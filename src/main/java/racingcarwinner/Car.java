@@ -1,7 +1,5 @@
 package racingcarwinner;
 
-import java.util.Map;
-
 public class Car {
 
     private String carName;
