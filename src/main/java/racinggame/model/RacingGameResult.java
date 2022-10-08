@@ -1,4 +1,6 @@
-package racinggame;
+package racinggame.model;
+
+import racinggame.domain.CarName;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +22,7 @@ public class RacingGameResult {
         rounds.add(round);
     }
 
-    public List<String> getWinnerNames() {
+    public List<CarName> getWinnerNames() {
         RacingGameRoundResult lastRound = rounds.get(rounds.size() - 1);
         return lastRound.getFarthestCarNames();
     }

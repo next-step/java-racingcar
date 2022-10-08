@@ -1,6 +1,13 @@
-package racinggame;
+package racinggame.view;
+
+import racinggame.model.RacingGameCarResult;
+import racinggame.model.RacingGameResult;
+import racinggame.model.RacingGameRoundResult;
+import racinggame.common.StringConstants;
+import racinggame.domain.CarName;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class OutputView {
 
@@ -23,8 +30,12 @@ public class OutputView {
         System.out.printf("%s : %s" + StringConstants.NEW_LINE, car.getName(), DISTANCE_SYMBOL.repeat(car.getPosition()));
     }
 
-    private static void printWinnerNames(List<String> winners) {
-        System.out.printf("%s가 최종 우승했습니다.", String.join(StringConstants.COMMA + StringConstants.SPACE, winners));
+    private static void printWinnerNames(List<CarName> winners) {
+        System.out.printf("%s가 최종 우승했습니다.",
+                winners.stream()
+                        .map(CarName::toString)
+                        .collect(Collectors.joining(StringConstants.COMMA + StringConstants.SPACE))
+        );
     }
 
 }

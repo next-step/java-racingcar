@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.common;
 
 public class StringConstants {
 

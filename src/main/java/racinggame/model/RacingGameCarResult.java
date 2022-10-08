@@ -1,22 +1,29 @@
-package racinggame;
+package racinggame.model;
+
+import racinggame.domain.Car;
+import racinggame.domain.CarName;
 
 import java.util.Objects;
 
 public class RacingGameCarResult {
 
-    private final String name;
+    private final CarName name;
     private final int position;
 
-    public RacingGameCarResult(String name, int position) {
+    public RacingGameCarResult(CarName name, int position) {
         this.name = name;
         this.position = position;
+    }
+
+    public RacingGameCarResult(String name, int position) {
+        this(new CarName(name), position);
     }
 
     public static RacingGameCarResult from(Car car) {
         return new RacingGameCarResult(car.getName(), car.getPosition());
     }
 
-    public String getName() {
+    public CarName getName() {
         return name;
     }
 

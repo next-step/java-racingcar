@@ -1,7 +1,11 @@
-package racinggame;
+package racinggame.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racinggame.domain.CarName;
+import racinggame.model.RacingGameCarResult;
+import racinggame.model.RacingGameResult;
+import racinggame.model.RacingGameRoundResult;
 
 import java.util.List;
 
@@ -51,7 +55,7 @@ class RacingGameResultTest {
         );
         RacingGameResult result = new RacingGameResult(List.of(round1, round2));
 
-        assertThat(result.getWinnerNames()).containsExactly("car2", "car3");
+        assertThat(result.getWinnerNames()).containsExactly(new CarName("car2"), new CarName("car3"));
     }
 
 }

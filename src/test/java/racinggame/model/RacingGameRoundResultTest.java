@@ -1,7 +1,10 @@
-package racinggame;
+package racinggame.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racinggame.domain.CarName;
+import racinggame.model.RacingGameCarResult;
+import racinggame.model.RacingGameRoundResult;
 
 import java.util.List;
 
@@ -39,7 +42,7 @@ class RacingGameRoundResultTest {
                         new RacingGameCarResult("car3", 1)
                 )
         );
-        assertThat(round.getFarthestCarNames()).containsExactly("car2");
+        assertThat(round.getFarthestCarNames()).containsExactly(new CarName("car2"));
     }
 
 }
