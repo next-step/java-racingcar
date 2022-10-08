@@ -4,17 +4,17 @@ import java.util.*;
 
 public class GameRecord {
 
-    private List<Map<String, Integer>> values;
+    private Map<CarName, Position> value;
 
-    public GameRecord() {
-        this.values = new ArrayList<>();
+    public GameRecord(Map<CarName, Position> record) {
+        this.value = record;
     }
 
-    public void add(Map<String, Integer> record) {
-        values.add(record);
+    public static GameRecord create(Map<CarName, Position> record) {
+        return new GameRecord(record);
     }
 
-    public List<Map<String, Integer>> getValues() {
-        return new ArrayList<>(values);
+    public Map<CarName, Position> getValue() {
+        return value;
     }
 }

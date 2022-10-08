@@ -11,31 +11,31 @@ public class GameRecords {
         this.values = new ArrayList<>();
     }
 
+    public static GameRecords create() {
+        return new GameRecords();
+    }
+
     public void add(GameRecord gameRecord) {
         values.add(gameRecord);
     }
 
-    public List<GameRecord> getValues() {
-        return values;
-    }
-
-    public List<String> finalWinner() {
-        int maxPosition = getMaxPosition();
-        return lastGame().stream()
-                .flatMap(e -> e.entrySet().stream())
-                .filter(e -> e.getValue() == maxPosition)
+    public List<CarName> finalWinner() {
+        return lastGame().entrySet().stream()
+                .filter(entry -> entry.getValue().getValue() == getMaxPosition())
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
     }
 
     private int getMaxPosition() {
-        return lastGame().stream()
-                .flatMap(e -> e.entrySet().stream())
-                .max(Map.Entry.comparingByValue())
-                .get().getValue();
+        return Collections.max(lastGame().values(),
+                Comparator.comparingInt(Position::getValue)).getValue();
     }
 
-    private List<Map<String, Integer>> lastGame() {
-        return values.get(values.size() - 1).getValues();
+    private Map<CarName, Position> lastGame() {
+        return values.get(values.size() - 1).getValue();
+    }
+
+    public List<GameRecord> getValues() {
+        return new ArrayList<>(values);
     }
 }
