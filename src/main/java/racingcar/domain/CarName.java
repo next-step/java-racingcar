@@ -16,7 +16,7 @@ public class CarName {
         if (name.length() > CAR_NAME_MAX_LENGTH) {
             throw new IllegalArgumentException(INVALID_CAR_NAME_MESSAGE);
         }
-        this.name = name;
+        this.name = name.trim();
     }
 
     String getName() {

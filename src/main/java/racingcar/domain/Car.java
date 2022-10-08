@@ -16,7 +16,7 @@ public class Car {
     }
 
     public Car(String name, int position) {
-        this.name = new CarName(name.trim());
+        this.name = new CarName(name);
         this.position = new CarPosition(position);
     }
 
