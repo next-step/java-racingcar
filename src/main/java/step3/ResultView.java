@@ -6,7 +6,9 @@ public class ResultView {
 
     private static final String TRY_RESULT = "실행 결과";
 
-    public void printResult(List<Car> cars, int tryCount) {
+    private ResultView() {}
+
+    public static void printResult(List<Car> cars, int tryCount) {
         System.out.println(TRY_RESULT);
         for (int i = 0; i < tryCount; i++) {
             for (Car car : cars) {
@@ -16,14 +18,14 @@ public class ResultView {
         }
     }
 
-    public void printRaceResult(List<Car> cars) {
+    public static void printRaceResult(List<Car> cars) {
         for (Car car : cars) {
             printCarDistance(car);
         }
         System.out.println();
     }
 
-    public void printCarDistance(Car car) {
+    public static void printCarDistance(Car car) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < car.getDistance(); i++) {
             sb.append("-");

@@ -6,9 +6,8 @@ import java.util.List;
 public class RacingCarGame {
 
     public void playGame() {
-        InputView inputView = new InputView();
-        int carCount = inputView.inputCarCount();
-        int tryCount = inputView.inputTryCount();
+        int carCount = InputView.inputCarCount();
+        int tryCount = InputView.inputTryCount();
 
         List<Car> cars = makeCars(carCount);
         tryRound(cars, tryCount);
@@ -23,8 +22,7 @@ public class RacingCarGame {
     }
 
     public void tryRound(List<Car> cars, int tryCount) {
-        ResultView resultView = new ResultView();
-        resultView.printResult(cars, tryCount);
+        ResultView.printResult(cars, tryCount);
     }
 
     public static void main(String[] args) {
