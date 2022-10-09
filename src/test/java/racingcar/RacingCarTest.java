@@ -18,9 +18,9 @@ public class RacingCarTest {
     }
 
     @ParameterizedTest(name = "{0}go/stop 판별하기")
-    @CsvSource(value = {"0:''", "1:''", "2:''", "3:''", "4:-", "5:-", "6:-", "7:-", "8:-", "9:-"}, delimiter = ':')
+    @CsvSource(value = {"0:0", "1:0", "2:0", "3:0", "4:1", "5:1", "6:1", "7:1", "8:1", "9:1"}, delimiter = ':')
     void goStopTest(String input, String result) {
-        assertThat(racingCar.goStop(Integer.parseInt(input))).isEqualTo(result);
+        assertThat(racingCar.goStop(Integer.parseInt(input))).isEqualTo(Integer.parseInt(result));
     }
 
     @DisplayName("자동차 움직임 출력")

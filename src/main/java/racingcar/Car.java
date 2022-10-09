@@ -5,8 +5,24 @@ import java.util.List;
 
 public class Car {
 
-    List<Integer> carStatus = new ArrayList<>();
-    int numberOfCar;
+    private List<Integer> carStatus = new ArrayList<>();
+    private int numberOfCar;
+
+    public List<Integer> getCarStatus() {
+        return this.carStatus;
+    }
+
+    public void setCarStatus(List<Integer> carStatus) {
+        this.carStatus = carStatus;
+    }
+
+    public int getNumberOfCar() {
+        return this.numberOfCar;
+    }
+
+    public void setNumberOfCar(int numberOfCar) {
+        this.numberOfCar = numberOfCar;
+    }
 
     public Car(int numberOfCar) {
         this.numberOfCar = numberOfCar;
