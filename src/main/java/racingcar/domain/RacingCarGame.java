@@ -5,18 +5,27 @@ import racingcar.dto.RacingRecord;
 import racingcar.strategy.MovingStrategy;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingCarGame {
-    private final int tryCount;
+    private static final String CAR_NAME_NULL_MESSAGE = "자동차의 이름의 값이 없습니다.";
+
     private final Cars cars;
     private final RacingRecord racingRecord = new RacingRecord();
 
-    public RacingCarGame(String carNames, int tryCount) {
-        this.tryCount = validatePositiveNumber(tryCount);
-        this.cars = new Cars(carNames);
+    public RacingCarGame(List<String> carNames) {
+        validateCarNames(carNames);
+        this.cars = new Cars(create(carNames));
     }
 
-    public RacingRecord play(MovingStrategy movingStrategy) {
+    private List<Car> create(List<String> carNames) {
+        return carNames.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
+    }
+
+    public RacingRecord play(MovingStrategy movingStrategy, int tryCount) {
+        validatePositiveNumber(tryCount);
         for (int i = 0; i < tryCount; i++) {
             racingRecord.add(cars.move(movingStrategy));
         }
@@ -27,10 +36,15 @@ public class RacingCarGame {
         return cars.findWinners();
     }
 
-    private int validatePositiveNumber(int value) {
+    private void validatePositiveNumber(int value) {
         if (value < 0) {
             throw new NegativeNumberException();
         }
-        return value;
+    }
+
+    private void validateCarNames(List<String> carNames) {
+        if (carNames.isEmpty()) {
+            throw new IllegalArgumentException(CAR_NAME_NULL_MESSAGE);
+        }
     }
 }

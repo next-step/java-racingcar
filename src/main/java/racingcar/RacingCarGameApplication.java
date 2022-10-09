@@ -11,11 +11,11 @@ import java.util.List;
 
 public class RacingCarGameApplication {
     public static void main(String[] args) {
-        String carName = InputView.inputCarNames();
+        List<String> carNames = InputView.inputCarNames();
+        RacingCarGame racingCarGame = new RacingCarGame(carNames);
         int tryCount = InputView.inputTryCount();
 
-        RacingCarGame racingCarGame = new RacingCarGame(carName, tryCount);
-        RacingRecord racingCarGameRecords = racingCarGame.play(new RandomValueMovingStrategy());
+        RacingRecord racingCarGameRecords = racingCarGame.play(new RandomValueMovingStrategy(), tryCount);
         List<Car> winners = racingCarGame.finish();
 
         ResultView.printResultMessage();

@@ -1,8 +1,11 @@
 package racingcar.view;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public final class InputView {
+    private static final String SEPARATOR = ",";
     private static final String REQUEST = "[REQUEST] ";
     private static final String RETRY = "[RETRY MESSAGE] ";
     private static final String TRY_COUNT_QUESTION_MESSAGE = "시도할 회수는 몇 회 인가요?";
@@ -18,7 +21,7 @@ public final class InputView {
         return inputPositiveNumber();
     }
 
-    public static String inputCarNames() {
+    public static List<String> inputCarNames() {
         System.out.println(REQUEST + INPUT_CAR_NAMES_MESSAGE);
         return inputStringValue();
     }
@@ -41,9 +44,10 @@ public final class InputView {
         }
     }
 
-    private static String inputStringValue() {
+    private static List<String> inputStringValue() {
         try {
-            return SCANNER.nextLine();
+            String carNames = SCANNER.nextLine();
+            return Arrays.asList(carNames.trim().split(SEPARATOR));
         } catch (Exception e) {
             System.out.print(RETRY);
             System.out.println(e.getMessage());
