@@ -4,12 +4,14 @@ import util.RandomNumberGenerator;
 
 public class Car {
 
+  public static final int START_LOCATION = 1;
+  public static final int DISTANCE_TO_MOVE_AT_ONCE = 1;
   public static final int MIN_TO_ALLOW_CAR_MOVE = 4;
 
   private int location;
 
   public Car() {
-    this.location = 0;
+    this.location = START_LOCATION;
   }
 
   public int nowLocation() {
@@ -23,7 +25,7 @@ public class Car {
   }
 
   public void move() {
-    this.location += 1;
+    this.location += DISTANCE_TO_MOVE_AT_ONCE;
   }
 
   public boolean isMovable() {
