@@ -19,7 +19,7 @@ public class CarTest {
   @DisplayName("자동차를 한칸 이동시킨다")
   void moveOnce() {
     int carLastLocation = car.nowLocation();
-    car.move(1);
+    car.move();
     assertThat(car.nowLocation()).isEqualTo(carLastLocation + 1);
   }
 }

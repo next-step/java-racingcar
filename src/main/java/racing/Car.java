@@ -1,6 +1,10 @@
 package racing;
 
+import util.RandomNumberGenerator;
+
 public class Car {
+
+  public static final int MIN_TO_ALLOW_CAR_MOVE = 4;
 
   private int location;
 
@@ -8,7 +12,17 @@ public class Car {
     return location;
   }
 
-  public void move(int distance) {
-    this.location += distance;
+  public void moveIfMovable(){
+    if (this.isMovable()) {
+      this.move();
+    }
+  }
+
+  public void move() {
+    this.location += 1;
+  }
+
+  public boolean isMovable() {
+    return RandomNumberGenerator.generateUnitsDigit() >= MIN_TO_ALLOW_CAR_MOVE;
   }
 }
