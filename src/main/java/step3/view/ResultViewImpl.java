@@ -1,9 +1,6 @@
 package step3.view;
 
-import step3.model.Car;
 import step3.model.Cars;
-
-import java.util.List;
 
 public class ResultViewImpl implements ResultView {
     private static final String MOVEMENT = "-";

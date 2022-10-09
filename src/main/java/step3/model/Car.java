@@ -1,7 +1,5 @@
 package step3.model;
 
-import step3.util.numberGenerator.NumberGenerator;
-
 public class Car {
     private static final int MOVE_STANDARD = 4;
     private static final int MAX_BOUND = 9;
