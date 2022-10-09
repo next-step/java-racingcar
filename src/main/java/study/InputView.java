@@ -11,12 +11,12 @@ public class InputView {
 
     public int carCount() {
         System.out.println(CAR_COUNT_MESSAGE);
-        return new Number(sc.nextInt()).getValue();
+        return new InputNumber(sc.nextInt()).getValue();
     }
 
     public int tryCount(){
         System.out.println(TRY_COUNT_MESSAGE);
-        return new Number(sc.nextInt()).getValue();
+        return new InputNumber(sc.nextInt()).getValue();
     }
 
 }
