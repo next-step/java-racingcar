@@ -1,35 +1,30 @@
 package racingcar;
 
+import racingcar.race.Car;
+import racingcar.race.RacingModel;
+import racingcar.race.Result;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
+
 import java.util.*;
 
 public class App {
     public static void main(String[] args) {
-        run();
-    }
-
-    private static void run() {
         Scanner scanner = new Scanner(System.in);
 
         InputView inputView = new InputView();
-        inputView.printStartScreen(scanner);
 
-        RacingModel racingModel = inputView.userInputRacingInfo();
+        RacingModel racingModel = inputView.printStartScreen(scanner);
 
         List<Car> cars = new ArrayList<>();
         initRacingCar(racingModel, cars);
 
         ResultView resultView = new ResultView(cars, racingModel);
-        racingStartAndPrint(racingModel, cars, resultView);
+        Result result = new Result(resultView);
+
+        result.racingStartAndPrint(racingModel, cars);
 
         scanner.close();
-    }
-
-    private static void racingStartAndPrint(RacingModel racingModel, List<Car> cars, ResultView resultView) {
-        System.out.println("실행 결과");
-        for (int trys = 0; trys < racingModel.getTryCount(); trys++) {
-            racingModel.racingStart(cars);
-            resultView.printEachRacingStep();
-        }
     }
 
     private static void initRacingCar(RacingModel racingModel, List<Car> cars) {
