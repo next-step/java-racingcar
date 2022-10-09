@@ -50,7 +50,7 @@ public class Cars {
 
         public Cars cars(Number number) {
             List<Car> cars = Arrays.stream(carsNames)
-                    .map(carName -> new Car(number, carName))
+                    .map(carName -> new Car.Factory(number, carName).car())
                     .collect(Collectors.toUnmodifiableList());
 
             return new Cars(cars);

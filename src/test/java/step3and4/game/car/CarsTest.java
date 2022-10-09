@@ -15,10 +15,10 @@ class CarsTest {
     @DisplayName("자동차들에게 턴을 사용할 있게 알람을 줄 수 있다.")
     void a() {
         Number number = new Number.Fake(4);
-        Car car = new Car(number);
+        Car car = new Car.Factory(number, "").car();
         Cars sut = new Cars(List.of(car));
 
-        Car movedCar = new Car(new Position(1), number);
+        Car movedCar = new Car.Factory(number, new Position(1), "").car();
         assertThat(sut.carsWithTurnUsed()).isEqualTo(new Cars(List.of(movedCar)));
     }
 
@@ -27,7 +27,7 @@ class CarsTest {
     void b() {
         Cars.Factory sut = new Cars.Factory(new String[]{"abc"});
 
-        Car car = new Car(new RandomNumber(), "abc");
+        Car car = new Car.Factory(new RandomNumber(), "abc").car();
         assertThat(sut.cars(new Number.Fake(1))).isEqualTo(new Cars(List.of(car)));
     }
 
@@ -35,7 +35,7 @@ class CarsTest {
     @DisplayName("자동차들을 출력할 수 있다.")
     void c() {
         Number number = new Number.Fake(4);
-        Car car = new Car(number, "abced");
+        Car car = new Car.Factory(number, "abced").car();
         Cars sut = new Cars(List.of(car));
 
         assertThat(sut.positionsAndNames()).containsExactly(car.toString());
