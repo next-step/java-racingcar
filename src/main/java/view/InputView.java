@@ -13,8 +13,9 @@ public class InputView {
     private static final String PLAY_COUNT = "시도할 회수는 몇 회 인가요?";
     private static final String SPLIT_COMMA = ",";
 
-    public List<CarName> getSplitCarName(String carName) {
+    public List<CarName> getSplitCarName() {
         System.out.println(INPUT_CAR_NAME);
+        String carName = scanner.nextLine();
         return Arrays.stream(carName.split(SPLIT_COMMA)).map(CarName::new).collect(Collectors.toList());
     }
 

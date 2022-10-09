@@ -21,7 +21,7 @@ public class RacingGameController {
     }
 
     public void run() {
-        List<CarName> carName = inputView.getSplitCarName(car.getCarName());
+        List<CarName> carName = inputView.getSplitCarName();
         int playCount = inputView.getPlayCount();
 
         play(new Racing(carName), playCount);

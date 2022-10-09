@@ -37,6 +37,6 @@ public class CarName {
         }
 
         CarName compareCarName = (CarName) obj;
-        return carName == compareCarName.carName;
+        return Objects.equals(carName, compareCarName.carName);
     }
 }
