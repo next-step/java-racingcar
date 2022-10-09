@@ -6,6 +6,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
+import racingcar.domain.moving.MovingStrategy;
+
 public class Cars implements Iterable<Car> {
     private final List<Car> cars;
 
@@ -21,9 +23,9 @@ public class Cars implements Iterable<Car> {
         return new Cars(cars);
     }
     
-    public void move() {
+    public void move(MovingStrategy movingStrategy) {
         for (Car car : cars) {
-            car.move(Moving.create());
+            car.move(movingStrategy.go());
         }
     }
 

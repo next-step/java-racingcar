@@ -26,6 +26,7 @@ class CarNamesTest {
     void of_invalid_car_name(String invalidCarNames) {
         assertThatThrownBy(() -> {
             CarNames.of(invalidCarNames);
-        }).isInstanceOf(InvalidCarNameException.class).hasMessageMatching("The car name is at least 1 characters and up to 5 characters.");
+        }).isInstanceOf(InvalidCarNameException.class)
+          .hasMessageMatching("The car name is at least 1 characters and up to 5 characters.");
     }
 }

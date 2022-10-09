@@ -1,8 +1,10 @@
 package racingcar.domain;
 
-import static racingcar.domain.Moving.*;
+import static racingcar.domain.moving.Moving.*;
 
 import java.util.Objects;
+
+import racingcar.domain.moving.Moving;
 
 public class Car implements Comparable<Car> {
     private static final int GREATER = 1;
@@ -14,7 +16,12 @@ public class Car implements Comparable<Car> {
 
     public Car(String name) {
         this.name = name;
-        total = Distance.ZERO;
+        this.total = Distance.ZERO;
+    }
+    
+    public Car(String name, Distance total) {
+        this.name = name;
+        this.total = total;
     }
 
     public Distance move(Moving moving) {

@@ -1,7 +1,7 @@
 package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.*;
-import static racingcar.domain.Moving.*;
+import static racingcar.domain.moving.Moving.*;
 
 import java.util.stream.Stream;
 
@@ -9,6 +9,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+
+import racingcar.domain.moving.Moving;
 
 class CarTest {
     @DisplayName("이동신호가 GO 이면 이동시 주행거리가 1만큼 증가하고 이동신호가 GO 가 아니면 이동하여도 주행거리가 증가하지 않는다.")

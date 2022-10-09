@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import racingcar.domain.exception.InvalidCarCountException;
+import racingcar.domain.moving.MovingStrategy;
 
 public class Racing {
     private static final int MIN_CAR_COUNT = 1;
@@ -9,7 +10,7 @@ public class Racing {
     private Progress progress;
     private final Cars cars;
 
-    private Racing(Progress progress, Cars cars) {
+    public Racing(Progress progress, Cars cars) {
         this.progress = progress;
         this.cars = cars;
     }
@@ -21,9 +22,9 @@ public class Racing {
         return racing(names, tryCount);
     }
     
-    public Cars race() {
+    public Cars race(MovingStrategy movingStrategy) {
         progress = progress.proceed();
-        cars.move();
+        cars.move(movingStrategy);
         return cars;
     }
 
