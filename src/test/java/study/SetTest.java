@@ -30,7 +30,6 @@ public class SetTest {
     @Test
     @DisplayName("set 사이즈 체크")
     void setSizeChk(){
-//        assertThat(numbers.size()).isEqualTo(3);
         assertThat(numbers).hasSize(3);
     }
 
@@ -38,7 +37,6 @@ public class SetTest {
     @ValueSource(ints = {1, 2, 3})
     @DisplayName("중복 코드 제거")
     void contains(int number){
-//        assertThat(numbers.contains(number)).isTrue();
         assertThat(numbers).contains(number);
     }
 
