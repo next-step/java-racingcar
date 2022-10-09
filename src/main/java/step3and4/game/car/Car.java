@@ -27,9 +27,8 @@ public final class Car {
         return this;
     }
 
-    @Override
-    public String toString() {
-        return name.toString() + position;
+    public String print() {
+        return name.print() + position.print();
     }
 
     @Override
