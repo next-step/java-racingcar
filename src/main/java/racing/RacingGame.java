@@ -40,9 +40,8 @@ public class RacingGame {
 
 		List<String> carNames = inputView.askCarNamesQuestion(CAR_NAME_QUESTION);
 		try {
-			carMoveCount = inputView.askCountQuestion(CAR_MOVE_COUNT_QUESTION);
-
 			racingCars = initRacingCars(carNames);
+			carMoveCount = inputView.askCountQuestion(CAR_MOVE_COUNT_QUESTION);
 		} catch (InputMismatchException | NegativeNumberException | InvalidCarNameLengthException exception) {
 			System.out.println(exception.getMessage());
 			quit();
