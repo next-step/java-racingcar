@@ -12,7 +12,7 @@ class NameTest {
     @DisplayName("이름은 출력할 수 있다.")
     void a() {
         final String value = "12345";
-        final Name sut = new Name(value);
+        final Name sut = new Name.Factory(value).name();
 
         assertThat(sut).hasToString(value + " : ");
     }
