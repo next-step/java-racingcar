@@ -30,12 +30,10 @@ public class Car implements Comparable<Car> {
 		return name.length() <= CAR_NAME_MAX_LENGTH;
 	}
 
-	public int move() {
+	public void move() {
 		if (isMovable(randomNum.getRandomNumber())) {
 			moveForward();
-			return 1;
 		}
-		return 0;
 	}
 
 	private boolean isMovable(int randomNum) {

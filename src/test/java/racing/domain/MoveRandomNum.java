@@ -1,9 +1,9 @@
 package racing.domain;
 
-public class RandomNumTestImpl implements RandomNum {
+public class MoveRandomNum implements RandomNum {
 
 	@Override
 	public int getRandomNumber() {
-		return 3;
+		return 4;
 	}
 }
