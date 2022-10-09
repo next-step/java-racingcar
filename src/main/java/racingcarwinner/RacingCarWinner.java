@@ -76,7 +76,7 @@ public class RacingCarWinner {
             winnerParticipant = winnerResult.get(1);
         }
         if (winnerParticipant.charAt(0) == ',') {
-            return winnerParticipant.substring(1, winnerParticipant.length());
+            return winnerParticipant.substring(1);
         }
         return winnerParticipant + "가 최종우승했습니다.";
     }
