@@ -1,20 +1,18 @@
 package racingcar.winner.controller;
 
 import racingcar.winner.model.CarFactory;
-import racingcar.winner.view.CarNameInput;
-import racingcar.winner.model.GameAttemptCount;
-import racingcar.winner.model.MovableStrategy;
 import racingcar.winner.model.Cars;
+import racingcar.winner.model.GameAttemptCount;
+import racingcar.winner.model.RandomMovableStrategy;
+import racingcar.winner.view.CarNameInput;
 import racingcar.winner.view.MoveResultView;
 import racingcar.winner.view.UserOutputInterface;
 import racingcar.winner.view.WinnerView;
 
 public class GameController {
-    private final MovableStrategy movableStrategy;
     private final UserOutputInterface userOutputInterface;
 
-    public GameController(MovableStrategy movableStrategy, UserOutputInterface userOutputInterface) {
-        this.movableStrategy = movableStrategy;
+    public GameController(UserOutputInterface userOutputInterface) {
         this.userOutputInterface = userOutputInterface;
     }
 
@@ -27,7 +25,7 @@ public class GameController {
         do {
             playCount = playCount.play();
 
-            cars = cars.moveCars(movableStrategy);
+            cars = cars.moveCars(new RandomMovableStrategy());
 
             cars.getCars().stream()
                 .map(car -> new MoveResultView(car.getCarName(), car.getMoveResult()).getMessage())
