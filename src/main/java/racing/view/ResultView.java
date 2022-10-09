@@ -1,7 +1,6 @@
 package racing.view;
 
-import java.util.stream.IntStream;
-
+import racing.domain.Car;
 import racing.domain.RacingCars;
 
 public class ResultView {
@@ -9,17 +8,21 @@ public class ResultView {
 	public ResultView() {
 	}
 
-	public void printCarLocations(RacingCars racingCars) {
-		IntStream.range(0, racingCars.getRacingCars().size())
-			.forEach(i -> {
-				printCarLocation(racingCars.getRacingCars().get(i).getLocation());
-			});
+	public void printCarStatuses(RacingCars racingCars) {
+		for (int i = 0; i < racingCars.getRacingCars().size(); i++) {
+			printCarName(racingCars.getRacingCars().get(i));
+			printCarLocation(racingCars.getRacingCars().get(i));
+		}
 	}
 
-	private void printCarLocation(int location) {
-		IntStream.range(0, location)
-			.mapToObj(i -> "-")
-			.forEach(System.out::print);
+	private void printCarName(Car car) {
+		System.out.print(car.getName() + " : ");
+	}
+
+	private void printCarLocation(Car car) {
+		for (int i = 0; i < car.getLocation(); i++) {
+			System.out.print("-");
+		}
 		System.out.println();
 	}
 }

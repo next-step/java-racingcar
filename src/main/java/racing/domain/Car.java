@@ -49,4 +49,8 @@ public class Car {
 	public int getLocation() {
 		return location;
 	}
+
+	public String getName() {
+		return name;
+	}
 }

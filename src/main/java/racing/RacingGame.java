@@ -63,7 +63,7 @@ public class RacingGame {
 	private void startRacing(int carMoveCount) {
 		for (int i = 0; i < carMoveCount; i++) {
 			racingCars.moveCars();
-			resultView.printCarLocations(racingCars);
+			resultView.printCarStatuses(racingCars);
 			System.out.println();
 		}
 	}
