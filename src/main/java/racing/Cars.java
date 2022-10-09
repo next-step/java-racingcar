@@ -22,4 +22,12 @@ public class Cars {
       car.moveIfMovable();
     }
   }
+
+  public List<Integer> getLocations() {
+    List<Integer> locations = new ArrayList<>();
+    for (Car car : values) {
+      locations.add(car.nowLocation());
+    }
+    return locations;
+  }
 }

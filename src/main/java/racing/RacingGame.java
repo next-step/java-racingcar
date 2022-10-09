@@ -1,5 +1,6 @@
 package racing;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class RacingGame {
@@ -16,6 +17,7 @@ public class RacingGame {
 
     for (int i = 0; i < numberOfChance; i++) {
       cars.move();
+      List<Integer> locations = cars.getLocations();
       System.out.println();
     }
   }
