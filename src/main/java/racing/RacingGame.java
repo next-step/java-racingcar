@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import racing.domain.Car;
 import racing.domain.RacingCars;
 import racing.domain.RandomNumber;
+import racing.exception.InvalidCarNameLengthException;
 import racing.exception.NegativeNumberException;
 import racing.view.InputView;
 import racing.view.ResultView;
@@ -40,14 +41,15 @@ public class RacingGame {
 		List<String> carNames = inputView.askCarNamesQuestion(CAR_NAME_QUESTION);
 		try {
 			carMoveCount = inputView.askCountQuestion(CAR_MOVE_COUNT_QUESTION);
-		} catch (InputMismatchException | NegativeNumberException exception) {
+
+			racingCars = initRacingCars(carNames);
+		} catch (InputMismatchException | NegativeNumberException | InvalidCarNameLengthException exception) {
 			System.out.println(exception.getMessage());
 			quit();
 		}
 
-		racingCars = initRacingCars(carNames);
-
 		startRacing(carMoveCount);
+
 	}
 
 	private RacingCars initRacingCars(List<String> carNames) {
