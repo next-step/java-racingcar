@@ -14,7 +14,7 @@ class NameTest {
         final String value = "12345";
         final Name sut = new Name.Factory(value).name();
 
-        assertThat(sut).hasToString(value + " : ");
+        assertThat(sut.print()).isEqualTo(value + " : ");
     }
 
     @Test
