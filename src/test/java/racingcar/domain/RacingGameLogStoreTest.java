@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.strategy.RandomMovingStrategy;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class RacingGameLogStoreTest {
         final String racingCarNames = "woody,beans,isla";
         final int gameTurnCount = 10;
         RacingGameCondition condition = new RacingGameCondition(racingCarNames, gameTurnCount);
-        RacingGame game = RacingGameFactory.make(condition);
+        RacingGame game = RacingGameFactory.make(new RandomMovingStrategy(), condition);
 
         // when
         game.run();
@@ -42,7 +43,7 @@ public class RacingGameLogStoreTest {
         final String racingCarNames = "woody,beans,isla";
         final int gameTurnCount = 5;
         RacingGameCondition condition = new RacingGameCondition(racingCarNames, gameTurnCount);
-        RacingGame game = RacingGameFactory.make(condition);
+        RacingGame game = RacingGameFactory.make(new RandomMovingStrategy(), condition);
 
         // when
         game.run();
@@ -64,7 +65,7 @@ public class RacingGameLogStoreTest {
         final String racingCarNames = "woody,beans,isla";
         final int gameTurnCount = 5;
         RacingGameCondition condition = new RacingGameCondition(racingCarNames, gameTurnCount);
-        RacingGame game = RacingGameFactory.make(condition);
+        RacingGame game = RacingGameFactory.make(new RandomMovingStrategy(), condition);
 
         // when
         game.run();

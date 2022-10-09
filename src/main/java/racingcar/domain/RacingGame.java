@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import racingcar.strategy.RandomMovingStrategy;
+import racingcar.strategy.MovingStrategy;
 import racingcar.view.ResultView;
 
 import java.util.Collections;
@@ -10,26 +10,24 @@ import java.util.stream.Collectors;
 public class RacingGame {
 
     private final List<RacingCar> racingCars;
+    private final MovingStrategy movingStrategy;
     private final int gameTurnCount;
     private final RacingGameLogStore racingGameLogStore;
 
-    public RacingGame(List<RacingCar> racingCars, int gameTurnCount) {
+    public RacingGame(List<RacingCar> racingCars, MovingStrategy movingStrategy, int gameTurnCount) {
         this.racingCars = racingCars;
+        this.movingStrategy = movingStrategy;
         this.gameTurnCount = gameTurnCount;
         this.racingGameLogStore = new RacingGameLogStore();
     }
 
     public void run() {
         for (int i = 0; i < this.gameTurnCount; i++) {
-            this.racingCars.forEach(racingCar -> racingCar.move(getRandomMovableStrategy()));
+            this.racingCars.forEach(racingCar -> racingCar.move(movingStrategy));
             racingGameLogStore.store(ResultView.getLocationStrings(this.racingCars));
         }
 
         racingGameLogStore.store(ResultView.getWinnerString(getWinners()));
-    }
-
-    private RandomMovingStrategy getRandomMovableStrategy() {
-        return new RandomMovingStrategy();
     }
 
     public List<String> getGameLogs() {

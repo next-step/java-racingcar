@@ -2,6 +2,8 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.strategy.MovingStrategy;
+import racingcar.strategy.RandomMovingStrategy;
 
 import java.util.List;
 
@@ -17,9 +19,10 @@ class RacingGameFactoryTest {
         int gameTurnCount = 5;
 
         RacingGameCondition racingGameCondition = new RacingGameCondition(racingCarNamesJointComma, gameTurnCount);
+        MovingStrategy movingStrategy = new RandomMovingStrategy();
 
         // when
-        RacingGame racingGame = RacingGameFactory.make(racingGameCondition);
+        RacingGame racingGame = RacingGameFactory.make(movingStrategy, racingGameCondition);
 
         // then
         assertThat(racingGame).isInstanceOf(RacingGame.class)
