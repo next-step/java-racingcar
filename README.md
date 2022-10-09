@@ -92,4 +92,4 @@
 - [x] getSize 함수 삭제 후 test코드 재 작성.
 - [x] 자동차 이름 받아서 split처리 inputView에서 처리하도록 로직 재구성
 - [x] Car 객체 불변성 적용
-- [ ] isWinner 함수 네이밍이 의도와 맞게 isMaxPosition 으로 변경 
+- [x] isWinner 함수 네이밍이 의도와 맞게 isMaxPosition 으로 변경 
