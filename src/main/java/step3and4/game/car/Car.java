@@ -8,33 +8,21 @@ public final class Car {
 
     private static final int NUMBER_OF_JUDGMENT_THAT_CAN_GO_FORWARD = 4;
 
-    private final Position position;
+    private final Name name;
 
     private final Number number;
 
-    private final Name name;
+    private final Position position;
 
-    public Car(Number number, String name) {
-        this(new Position(0), number, new Name(name));
-    }
-
-    public Car(Number number) {
-        this(new Position(0), number, new Name(""));
-    }
-
-    public Car(Position position, Number number) {
-        this(position, number, new Name(""));
-    }
-
-    public Car(Position position, Number number, Name name) {
-        this.position = position;
-        this.number = number;
+    private Car(Name name, Number number, Position position) {
         this.name = name;
+        this.number = number;
+        this.position = position;
     }
 
     public Car movedCar() {
         if (number.generatedNumber() >= NUMBER_OF_JUDGMENT_THAT_CAN_GO_FORWARD) {
-            return new Car(position.movedPosition(), number, name);
+            return new Car(name, number, position.movedPosition());
         }
         return this;
     }
@@ -55,5 +43,32 @@ public final class Car {
     @Override
     public int hashCode() {
         return Objects.hash(position, name);
+    }
+
+    public static class Factory {
+
+        private final Number number;
+
+        private final Position position;
+
+        private final Name.Factory nameFactory;
+
+        public Factory(Number number, String name) {
+            this(number, new Position(0), new Name.Factory(name));
+        }
+
+        public Factory(Number number, Position position, String name) {
+            this(number, position, new Name.Factory(name));
+        }
+
+        public Factory(Number number, Position position, Name.Factory nameFactory) {
+            this.number = number;
+            this.position = position;
+            this.nameFactory = nameFactory;
+        }
+
+        public Car car() {
+            return new Car(nameFactory.name(), number, position);
+        }
     }
 }
