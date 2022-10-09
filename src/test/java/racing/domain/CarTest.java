@@ -1,6 +1,7 @@
 package racing.domain;
 
-import org.assertj.core.api.Assertions;
+import static org.assertj.core.api.Assertions.*;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +19,7 @@ class CarTest {
 
 		car.move();
 
-		Assertions.assertThat(car.getLocation()).isGreaterThan(preCarLocation);
+		assertThat(car.getLocation()).isGreaterThan(preCarLocation);
 	}
 
 	@DisplayName("move() 움직이지 않았을 경우 테스트")
@@ -31,6 +32,6 @@ class CarTest {
 
 		car.move();
 
-		Assertions.assertThat(car.getLocation()).isEqualTo(preCarLocation);
+		assertThat(car.getLocation()).isEqualTo(preCarLocation);
 	}
 }

@@ -1,8 +1,9 @@
 package racing.domain;
 
+import static org.assertj.core.api.Assertions.*;
+
 import java.util.List;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -26,7 +27,7 @@ public class RacingCarsTest {
 
 		List<Car> cars = racingCars.getWinnersOfRacing();
 
-		Assertions.assertThat(cars).containsOnly(FirstCar);
+		assertThat(cars).containsOnly(FirstCar);
 	}
 
 	@DisplayName("복수 우승자 조회 테스트")
@@ -41,7 +42,7 @@ public class RacingCarsTest {
 
 		List<Car> cars = racingCars.getWinnersOfRacing();
 
-		Assertions.assertThat(cars).containsOnly(FirstCar, SecondCar);
+		assertThat(cars).containsOnly(FirstCar, SecondCar);
 	}
 
 }
