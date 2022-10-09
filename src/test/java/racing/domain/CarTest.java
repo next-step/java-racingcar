@@ -6,8 +6,10 @@ import org.junit.jupiter.api.Test;
 
 class CarTest {
 
+	private static final String TEST_CAR_NAME = "BANGBANG";
+
 	RandomNum randomNumber = new RandomNumTestImpl();
-	Car car = new Car(randomNumber);
+	Car car = new Car(TEST_CAR_NAME, randomNumber);
 
 	@DisplayName("move() 테스트")
 	@Test

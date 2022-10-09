@@ -3,7 +3,6 @@ package racing;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import racing.domain.Car;
 import racing.domain.RacingCars;
@@ -14,8 +13,8 @@ import racing.view.ResultView;
 
 public class RacingGame {
 
-	private static final String CAR_COUNT_QUESTION = "자동차 대수는 몇 대 인가요?";
-	private static final String CAR_MOVE_COUNT_QUESTION = "자동차 갯수는 몇 대 인가요?";
+	private static final String CAR_MOVE_COUNT_QUESTION = "시도할 횟수는 몇 회 인가요?";
+	private static final String CAR_NAME_QUESTION = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
 
 	private final InputView inputView;
 	private final ResultView resultView;
@@ -36,25 +35,29 @@ public class RacingGame {
 	}
 
 	private void startGame() {
-		int carCount = 0;
 		int carMoveCount = 0;
 
+		List<String> carNames = inputView.askCarNamesQuestion(CAR_NAME_QUESTION);
 		try {
-			carCount = inputView.askCountQuestion(CAR_COUNT_QUESTION);
 			carMoveCount = inputView.askCountQuestion(CAR_MOVE_COUNT_QUESTION);
 		} catch (InputMismatchException | NegativeNumberException exception) {
 			System.out.println(exception.getMessage());
 			quit();
 		}
 
-		RandomNumber randomNumber = new RandomNumber();
-
-		List<Car> cars = IntStream.range(0, carCount)
-			.mapToObj(i -> new Car(randomNumber))
-			.collect(Collectors.toList());
-		racingCars = new RacingCars(cars);
+		racingCars = initRacingCars(carNames);
 
 		startRacing(carMoveCount);
+	}
+
+	private RacingCars initRacingCars(List<String> carNames) {
+		RandomNumber randomNumber = new RandomNumber();
+
+		List<Car> cars = carNames.stream()
+			.map(carName -> new Car(carName, randomNumber))
+			.collect(Collectors.toList());
+
+		return new RacingCars(cars);
 	}
 
 	private void startRacing(int carMoveCount) {
