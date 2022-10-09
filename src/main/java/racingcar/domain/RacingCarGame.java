@@ -1,6 +1,4 @@
-package racingcar;
-
-import racingcar.ui.ResultView;
+package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class RacingCarGame {
     private final List<Car> carList;
-    private final int tryCount;
+    private int tryCount;
 
     public RacingCarGame(List<String> carNames, int tryCount) {
         this.carList = createCars(carNames);
@@ -28,24 +26,30 @@ public class RacingCarGame {
         return carList;
     }
 
-    public void play() {
-        ResultView.printResultStartMessage();
-        for (int i = 0; i < tryCount; i++) {
+    public List<Car> playOneRound() {
+        if (!isEnd()) {
             carList.forEach(Car::tryMove);
-            ResultView.printRoundResult(carList);
+            tryCount--;
         }
+        return getCarList();
+    }
 
-        ResultView.printWinnerMessage(getWinnerName());
+    public boolean isEnd() {
+        return tryCount <= 0;
     }
 
     public List<String> getWinnerName() {
-        int winPosition = carList.stream()
-                .mapToInt(Car::getPosition)
-                .max().getAsInt();
+        int maxPosition = getMaxPosition();
 
         return carList.stream()
-                .filter(car -> car.getPosition() == winPosition)
+                .filter(car -> car.getPosition() == maxPosition)
                 .map(Car::getName)
                 .collect(Collectors.toList());
+    }
+
+    private int getMaxPosition() {
+        return carList.stream()
+                .mapToInt(Car::getPosition)
+                .max().getAsInt();
     }
 }

@@ -1,6 +1,8 @@
 package racingcar;
 
-import racingcar.ui.InputView;
+import racingcar.domain.RacingCarGame;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 import java.util.List;
 
@@ -11,7 +13,10 @@ public class RacingCarMain {
         int tryCount = InputView.getTryCount();
 
         RacingCarGame racingCarGame = new RacingCarGame(carNames, tryCount);
-        racingCarGame.play();
-
+        ResultView.printResultStartMessage();
+        while (!racingCarGame.isEnd()) {
+            ResultView.printRoundResult(racingCarGame.playOneRound());
+        }
+        ResultView.printWinnerMessage(racingCarGame.getWinnerName());
     }
 }

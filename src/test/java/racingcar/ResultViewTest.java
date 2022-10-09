@@ -2,7 +2,7 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.ui.ResultView;
+import racingcar.view.ResultView;
 
 import java.util.Arrays;
 import java.util.List;

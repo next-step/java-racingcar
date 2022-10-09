@@ -1,7 +1,7 @@
 package racingcar;
 
 import org.junit.jupiter.api.Test;
-import racingcar.ui.InputView;
+import racingcar.view.InputView;
 
 import java.util.List;
 

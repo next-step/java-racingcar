@@ -1,6 +1,6 @@
-package racingcar;
+package racingcar.domain;
 
-public class MovingCondtion {
+public class MovingCondition {
     public static final int MOVABLE_MIN_VALUE = 4;
 
     public static boolean isMove(int value) {

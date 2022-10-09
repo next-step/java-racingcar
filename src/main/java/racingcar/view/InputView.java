@@ -1,4 +1,4 @@
-package racingcar.ui;
+package racingcar.view;
 
 import util.NumberUtil;
 
@@ -11,11 +11,6 @@ public class InputView {
     private static final String TRY_DESCRIPTION = "시도할 횟수는 몇 회 인가요?";
 
     private static final Scanner scanner= new Scanner(System.in);
-
-    public static int getCarCount() {
-        System.out.println(CAR_DESCRIPTION);
-        return NumberUtil.getPositiveInteger(scanner.nextLine());
-    }
 
     public static int getTryCount() {
         System.out.println(TRY_DESCRIPTION);
