@@ -2,7 +2,7 @@ package racing.ui;
 
 public interface InputView {
 
-    int enterCarCount();
+    String[] enterCarName();
 
     int enterTryCount();
 }
