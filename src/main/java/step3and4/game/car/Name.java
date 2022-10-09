@@ -12,20 +12,11 @@ public class Name {
 
     @Override
     public String toString() {
-        verifyLengthMustNotExceedFive();
         return value + " : ";
-    }
-
-    public void verifyLengthMustNotExceedFive() {
-        if (value.length() > 5) {
-            throw new IllegalStateException("이름은 5글자를 초과할 수 없다.");
-        }
     }
 
     @Override
     public boolean equals(Object o) {
-        verifyLengthMustNotExceedFive();
-
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Name name = (Name) o;
@@ -34,9 +25,27 @@ public class Name {
 
     @Override
     public int hashCode() {
-        verifyLengthMustNotExceedFive();
-
         return Objects.hash(value);
     }
 
+    public static class Factory {
+
+        private final String name;
+
+        public Factory(String name) {
+            this.name = name;
+        }
+
+        public Name name() {
+            verifyLengthMustNotExceedFive();
+            return new Name(name);
+        }
+
+        private void verifyLengthMustNotExceedFive() {
+            if (name.length() > 5) {
+                throw new IllegalStateException("이름은 5글자를 초과할 수 없다.");
+            }
+        }
+
+    }
 }

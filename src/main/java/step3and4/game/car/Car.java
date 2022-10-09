@@ -33,8 +33,6 @@ public final class Car {
     }
 
     public Car movedCar() {
-        name.verifyLengthMustNotExceedFive();
-
         if (number.generatedNumber() >= NUMBER_OF_JUDGMENT_THAT_CAN_GO_FORWARD) {
             return new Car(position.movedPosition(), number, name);
         }
@@ -43,15 +41,11 @@ public final class Car {
 
     @Override
     public String toString() {
-        name.verifyLengthMustNotExceedFive();
-
         return name.toString() + position;
     }
 
     @Override
     public boolean equals(Object o) {
-        name.verifyLengthMustNotExceedFive();
-
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
@@ -60,8 +54,6 @@ public final class Car {
 
     @Override
     public int hashCode() {
-        name.verifyLengthMustNotExceedFive();
-
         return Objects.hash(position, name);
     }
 }
