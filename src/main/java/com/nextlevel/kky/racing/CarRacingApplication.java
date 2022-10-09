@@ -25,5 +25,7 @@ public class CarRacingApplication {
             ResultView.printCarRacingResultWithName(carRacingExecutor);
             carRacingExecutor.proceedNextRound();
         }
+
+        ResultView.printCarWinners(carRacingExecutor.getCurrentWinners());
     }
 }
