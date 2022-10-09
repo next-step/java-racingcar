@@ -1,7 +1,6 @@
 package com.nextlevel.kky.racing.core;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,6 +22,10 @@ public class CarRacingExecutor {
         for (String name : names) {
             carList.add(new Car(name));
         }
+    }
+
+    public CarRacingExecutor(List<Car> carList) {
+        this.carList = carList;
     }
 
     public void proceedNextRound() {

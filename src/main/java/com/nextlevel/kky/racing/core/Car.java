@@ -27,8 +27,8 @@ public class Car {
         this.carMoveCondition = new CarMoveCondition(new RandomIntegerGenerator());
     }
 
-    public Car(IntegerGenerator integerGenerator) {
-        this.currentPosition = 0;
+    public Car(String name, IntegerGenerator integerGenerator) {
+        this.name = name;
         this.carMoveCondition = new CarMoveCondition(integerGenerator);
     }
 
