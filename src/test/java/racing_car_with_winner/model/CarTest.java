@@ -29,7 +29,13 @@ public class CarTest {
             }
         });
 
-        Assertions.assertThat(movedCar.getMoveResult().getMoveCount()).isEqualTo(0);
-        Assertions.assertThat(car.getMoveResult()).isEqualTo(movedCar.getMoveResult());
+        org.junit.jupiter.api.Assertions.assertAll(
+                () -> {
+                    Assertions.assertThat(movedCar.getMoveResult().getMoveCount()).isEqualTo(0);
+                },
+                () -> {
+                    Assertions.assertThat(car.getMoveResult()).isEqualTo(movedCar.getMoveResult());
+                });
+
     }
 }
