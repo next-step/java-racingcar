@@ -22,7 +22,7 @@ class PositionTest {
     void b() {
         final Position sut = new Position(1);
 
-        assertThat(sut).hasToString("-");
+        assertThat(sut.print()).isEqualTo("-");
     }
 
 }
