@@ -1,7 +1,6 @@
-import dto.RacingCars;
+import domain.racingcar.RacingCars;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import domain.RacingCarService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,16 +8,11 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class RacingCarServiceTest {
+public class RacingCarsTest {
     private final String[] NAMES = {"test1", "test2", "test3"};
-    private final RacingCarService racingCarService;
     private RacingCars racingCarsWithOneWinner;
     private RacingCars racingCarsWithTwoWinner;
     private RacingCars racingCarsWithZeroWinner;
-
-    public RacingCarServiceTest() {
-        racingCarService = new RacingCarService();
-    }
 
     @BeforeEach
     public void init() {
@@ -37,7 +31,7 @@ public class RacingCarServiceTest {
         List<String> expected = new ArrayList<>();
         expected.add("test3");
 
-        assertThat(racingCarService.findRaceWinners(racingCarsWithOneWinner)).isEqualTo(expected);
+        assertThat(racingCarsWithOneWinner.findRaceWinners()).isEqualTo(expected);
     }
 
     @Test
@@ -46,12 +40,12 @@ public class RacingCarServiceTest {
         expected.add("test2");
         expected.add("test3");
 
-        assertThat(racingCarService.findRaceWinners(racingCarsWithTwoWinner)).isEqualTo(expected);
+        assertThat(racingCarsWithTwoWinner.findRaceWinners()).isEqualTo(expected);
     }
 
     @Test
     public void 자동차_경주_우승자_0명_테스트() {
-        assertThatThrownBy(() -> racingCarService.findRaceWinners(racingCarsWithZeroWinner))
+        assertThatThrownBy(() -> racingCarsWithZeroWinner.findRaceWinners())
                 .isInstanceOf(IllegalStateException.class)
                 .hasMessageContaining("우승자가 존재하지 않습니다.");
     }

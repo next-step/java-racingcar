@@ -1,8 +1,8 @@
 package view;
 
-import domain.RandomMovingStrategy;
-import dto.RacingCars;
-import domain.RacingCarService;
+import domain.racingcar.dto.RandomMovingStrategy;
+import domain.racingcar.dto.RacingCar;
+import domain.racingcar.RacingCars;
 
 import java.util.List;
 
@@ -24,14 +24,13 @@ public class RacingCarWithoutWinner implements Result {
     @Override
     public void raceResult(RacingCars racingCars, int numOfRaces) {
         for (int count = 1; count <= numOfRaces; count++) {
-            racingCars.move(new RandomMovingStrategy());
-            outputCarsLocation(racingCars.distance());
+            outputCarsLocation(racingCars.move(new RandomMovingStrategy()));
         }
     }
 
-    private void outputCarsLocation(List<Integer> carsLocation) {
-        for (int distance : carsLocation) {
-            System.out.println(createCarDistanceBar(distance));
+    private void outputCarsLocation(List<RacingCar> racingCars) {
+        for (RacingCar racingCar : racingCars) {
+            System.out.println(createCarDistanceBar(racingCar.getDistance()));
         }
         System.out.println();
     }

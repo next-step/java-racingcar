@@ -1,6 +1,4 @@
-package dto;
-
-import domain.MovingStrategy;
+package domain.racingcar.dto;
 
 public class RacingCar {
     private final RacingCarInfo racingCarInfo;
@@ -26,5 +24,9 @@ public class RacingCar {
 
     public String getName() {
         return racingCarInfo.getName();
+    }
+
+    public boolean hasRaceWinnerDistance(int raceWinnerDistance) {
+        return racingCarInfo.hasRaceWinnerDistance(raceWinnerDistance);
     }
 }

@@ -1,6 +1,6 @@
 package view;
 
-import dto.RacingCars;
+import domain.racingcar.RacingCars;
 
 public interface Result {
     void view();

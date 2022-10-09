@@ -1,4 +1,4 @@
-package domain;
+package domain.racingcar.dto;
 
 import util.RandomNumberGenerator;
 
