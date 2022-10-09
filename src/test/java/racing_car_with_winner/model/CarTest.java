@@ -38,4 +38,12 @@ public class CarTest {
                 });
 
     }
+
+    @Test
+    void isInfrontOf_비교한다() {
+        Car mover = new Car(new CarName("car1"), new MoveResult(5));
+        Car follower = new Car(new CarName("car2"), new MoveResult(2));
+
+        Assertions.assertThat(mover.isInfrontOf(follower)).isTrue();
+    }
 }

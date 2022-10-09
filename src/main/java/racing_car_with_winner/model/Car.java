@@ -2,7 +2,7 @@ package racing_car_with_winner.model;
 
 import java.util.Objects;
 
-public class Car {
+public class Car implements Comparable<Car> {
     private final CarName carName;
     private final MoveResult moveResult;
 
@@ -28,6 +28,18 @@ public class Car {
         return carName;
     }
 
+    public boolean isInfrontOf(MoveResult moveResult) {
+        return this.moveResult.compareTo(moveResult) >= 0;
+    }
+
+    public boolean isInfrontOf(Car car) {
+        return this.moveResult.compareTo(car.moveResult) > 0;
+    }
+
+    public boolean isSameResult(Car car) {
+        return this.moveResult.compareTo(car.moveResult) == 0;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -43,5 +55,19 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(carName, moveResult);
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return this.moveResult.compareTo(o.moveResult);
+    }
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("Car{");
+        sb.append("carName=").append(carName);
+        sb.append(", moveResult=").append(moveResult);
+        sb.append('}');
+        return sb.toString();
     }
 }

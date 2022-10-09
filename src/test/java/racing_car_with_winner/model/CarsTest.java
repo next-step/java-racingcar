@@ -22,7 +22,7 @@ public class CarsTest {
         Car winnerCar2 = new Car(new CarName("B"), new MoveResult(5));
         Car loser = new Car(new CarName("C"), new MoveResult(1));
 
-        List<Car> testCars = List.of(winnerCar1, winnerCar2, loser);
+        List<Car> testCars = List.of(loser, winnerCar1, winnerCar2);
 
         Assertions.assertThat(new Cars(testCars).findWinner()).containsOnly(winnerCar1, winnerCar2);
     }

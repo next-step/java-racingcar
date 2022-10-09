@@ -2,7 +2,7 @@ package racing_car_with_winner.model;
 
 import java.util.Objects;
 
-public class MoveResult {
+public class MoveResult implements Comparable<MoveResult> {
     private final int moveCount;
 
     public MoveResult() {
@@ -43,5 +43,10 @@ public class MoveResult {
     @Override
     public int hashCode() {
         return Objects.hash(moveCount);
+    }
+
+    @Override
+    public int compareTo(MoveResult o) {
+        return Integer.compare(this.moveCount, o.moveCount);
     }
 }

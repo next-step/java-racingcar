@@ -1,8 +1,9 @@
 package racing_car_with_winner.model;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -25,13 +26,31 @@ public class Cars {
     }
 
     public List<Car> findWinner() {
-        Map<MoveResult, List<Car>> groupByMoveResult = this.cars.stream()
-                                                                .collect(Collectors.groupingBy(Car::getMoveResult));
+        List<Car> sortedCars = getArrangedCars();
+        
+        Car winner = sortedCars.get(0);
 
-        MoveResult winnerResult = groupByMoveResult.keySet().stream()
-                                                   .max(Comparator.comparingInt(MoveResult::getMoveCount))
-                                                   .orElseThrow(() -> new IllegalArgumentException("우승자가 존재하지 않습니다"));
+        List<Car> winners = new ArrayList<>();
+        winners.add(winner);
+        winners.addAll(getCoWinner(winner, sortedCars.subList(1, sortedCars.size()-1)));
 
-        return groupByMoveResult.get(winnerResult);
+        return winners;
     }
+
+    private List<Car> getArrangedCars() {
+        List<Car> sortedCars = new ArrayList<>(this.cars);
+
+        Collections.copy(sortedCars, this.cars);
+
+        sortedCars.sort(Comparator.reverseOrder());
+
+        return sortedCars;
+    }
+
+    private List<Car> getCoWinner(Car winner, List<Car> otherCars) {
+        return otherCars.stream()
+                        .filter(winner::isSameResult)
+                        .collect(Collectors.toList());
+    }
+
 }

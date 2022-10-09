@@ -19,4 +19,12 @@ class MoveResultTest {
 
         Assertions.assertThat(beforeMove).isNotEqualTo(afterMove);
     }
+
+    @Test
+    void 비교가능하다() {
+        MoveResult mover = new MoveResult(6);
+        MoveResult follower = new MoveResult(4);
+
+        Assertions.assertThat(mover.compareTo(follower)).isGreaterThan(0);
+    }
 }
