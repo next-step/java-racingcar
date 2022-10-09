@@ -21,6 +21,11 @@ public class RacingCar {
         this.distance = 0;
     }
 
+    public RacingCar(RacingCar racingCar) {
+        this.name = racingCar.getName();
+        this.distance = racingCar.getDistance();
+    }
+
     public void move(MovingStrategy movingStrategy) {
         if (movingStrategy.isMove()) {
             this.distance++;

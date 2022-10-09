@@ -6,13 +6,13 @@ import java.util.List;
 
 public class RacingGameLogStore {
 
-    private final List<String> logs = new ArrayList<>();
+    private final List<RacingGameLog> logs = new ArrayList<>();
 
-    public void store(String log) {
-        this.logs.add(log);
+    public void store(RacingGame racingGame) {
+        this.logs.add(new RacingGameLog(new RacingCars(racingGame.getRacingCars())));
     }
 
-    public List<String> getLogs() {
+    public List<RacingGameLog> getLogs() {
         return Collections.unmodifiableList(logs);
     }
 }

@@ -13,6 +13,6 @@ public class RacingGameMain {
         RacingGameCondition condition = InputView.inputRacingCarGameCondition();
         RacingGame game = RacingGameFactory.make(new RandomMovingStrategy(), condition);
         game.run();
-        ResultView.printRacingGameLogs(game.getGameLogs());
+        ResultView.printRacingGameResult(game);
     }
 }

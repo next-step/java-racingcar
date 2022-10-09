@@ -19,7 +19,7 @@ public class RacingGameTest {
         RacingGameCondition condition = new RacingGameCondition(racingCarNames, gameTurnCount);
         RacingGame game = RacingGameFactory.make(new RandomMovingStrategy(), condition);
         game.run();
-        ResultView.printRacingGameLogs(game.getGameLogs());
+        ResultView.printRacingGameResult(game);
     }
 
     @DisplayName("자동차 경주 게임 - 항상 이동 테스트")

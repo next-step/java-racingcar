@@ -31,9 +31,9 @@ class RacingGameFactoryTest {
 
         assertThat(racingGame).isInstanceOf(RacingGame.class)
                               .extracting("racingCars")
-                              .isEqualTo(List.of(new RacingCar("woody"),
+                              .isEqualTo(new RacingCars(List.of(new RacingCar("woody"),
                                       new RacingCar("beans"),
-                                      new RacingCar("isla")));
+                                      new RacingCar("isla"))));
 
         assertThat(racingGame).isInstanceOf(RacingGame.class)
                               .extracting("racingGameLogStore")
