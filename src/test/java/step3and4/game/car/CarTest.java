@@ -31,7 +31,7 @@ class CarTest {
     void c() {
         final Car sut = new Car.Factory(new Number.Fake(3), new Position(1), "12345").car();
 
-        assertThat(sut).hasToString("12345 : -");
+        assertThat(sut.print()).isEqualTo("12345 : -");
     }
 
 }
