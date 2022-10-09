@@ -1,4 +1,4 @@
-package game.model;
+package game.domain;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -9,7 +9,7 @@ class CarsTest {
 
     @Test
     void 자동차_경주_이동_가능() {
-        Cars cars = new Cars(List.of("a", "b", "c"));
+        Cars cars = new Cars(List.of(new Car(0, "a"), new Car(0, "b"), new Car(0, "c")));
 
         cars.moveCarList(() -> true);
 
@@ -20,7 +20,7 @@ class CarsTest {
 
     @Test
     void 자동차_경주_이동_불가능() {
-        Cars cars = new Cars(List.of("a", "b", "c"));
+        Cars cars = new Cars(List.of(new Car(0, "a"), new Car(0, "b"), new Car(0, "c")));
 
         cars.moveCarList(() -> false);
 

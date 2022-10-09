@@ -22,22 +22,22 @@ public class InputView {
         }
     }
 
-    private static int inputCountOfTry(Scanner scanner) {
+    private static int inputCountOfTry(final Scanner scanner) {
         System.out.println(QUESTION_FOR_TRY_NUM);
         return inputNum(scanner);
     }
 
-    private static List<String> inputCarNames(Scanner scanner) {
+    private static List<String> inputCarNames(final Scanner scanner) {
         System.out.println(QUESTION_FOR_CAR_NAMES);
         return Arrays.stream(inputString(scanner).split(COMMA_SEPARATOR))
                 .collect(Collectors.toList());
     }
 
-    private static int inputNum(Scanner scanner) {
+    private static int inputNum(final Scanner scanner) {
         return Integer.parseInt(scanner.nextLine());
     }
 
-    private static String inputString(Scanner scanner) {
+    private static String inputString(final Scanner scanner) {
         return scanner.nextLine();
     }
 }

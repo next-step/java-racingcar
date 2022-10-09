@@ -1,6 +1,6 @@
 package game.controller.dto;
 
-import game.model.Car;
+import game.domain.Car;
 
 public class CarDto {
 
@@ -8,12 +8,12 @@ public class CarDto {
 
     private final String carName;
 
-    private CarDto(int position, String carName) {
+    public CarDto(final int position, final String carName) {
         this.position = position;
         this.carName = carName;
     }
 
-    public static CarDto from(Car car) {
+    public static CarDto from(final Car car) {
         return new CarDto(car.getPosition().getPosition(), car.getCarName().getName());
     }
 

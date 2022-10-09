@@ -1,4 +1,4 @@
-package game.model;
+package game.domain;
 
 import utils.StringUtils;
 
@@ -7,12 +7,12 @@ public class CarName {
     private static final int CAR_NAME_LIMIT_LENGTH = 5;
     private final String name;
 
-    public CarName(String name) {
+    public CarName(final String name) {
         validateCarName(name);
         this.name = name;
     }
 
-    private static void validateCarName(String name) {
+    private static void validateCarName(final String name) {
         if (StringUtils.isEmpty(name)) {
             throw new IllegalArgumentException("자동차 이름은 null 혹은 공백일 수 없습니다.");
         }
