@@ -32,7 +32,7 @@ public class ClientInput {
         return Objects.hash(carCount, tryCount);
     }
 
-    public static ClientInput.ClientInputBuilder builder(){
+    public static ClientInput.ClientInputBuilder builder() {
         return new ClientInput.ClientInputBuilder();
     }
 
@@ -43,17 +43,17 @@ public class ClientInput {
         ClientInputBuilder() {
         }
 
-        public ClientInput.ClientInputBuilder carCount(int carCount){
+        public ClientInput.ClientInputBuilder carCount(int carCount) {
             this.carCount = carCount;
             return this;
         }
 
-        public ClientInput.ClientInputBuilder tryCount(int tryCount){
+        public ClientInput.ClientInputBuilder tryCount(int tryCount) {
             this.tryCount = tryCount;
             return this;
         }
 
-        public ClientInput build(){
+        public ClientInput build() {
             return new ClientInput(this.carCount, this.tryCount);
         }
     }

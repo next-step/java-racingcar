@@ -7,15 +7,11 @@ public class Car {
     public Car() {
     }
 
-    public Car(int distance) {
-        this.distance += distance;
-    }
-
-    public int getDistance(){
+    public int getDistance() {
         return this.distance;
     }
 
-    public void stepAhead(int stepCount){
+    public void stepAhead(int stepCount) {
         this.distance += stepCount;
     }
 }

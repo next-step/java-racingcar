@@ -11,17 +11,17 @@ public class ResultView {
     public ResultView() {
     }
 
-    public void printStartText(){
+    public void printStartText() {
         System.out.println();
         System.out.println(START_TEXT);
     }
 
-    public void printCarList(List<Car> carList){
+    public void printCarList(List<Car> carList) {
         carList.forEach(this::printCarDistance);
         System.out.println();
     }
 
-    private void printCarDistance(Car car){
+    private void printCarDistance(Car car) {
         System.out.println(DISTANCE_MARKER.repeat(Math.max(0, car.getDistance())));
     }
 }

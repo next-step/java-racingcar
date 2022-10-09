@@ -1,5 +1,6 @@
 package racing.core;
 
+import racing.RandomUtil;
 import racing.view.InputView;
 import racing.view.ResultView;
 
@@ -15,31 +16,28 @@ public class RacingApp {
     public RacingApp() {
     }
 
-    public void start(){
+    public void start() {
         ClientInput racingDto = inputView.getClientInput();
         List<Car> carList = makeCarList(racingDto.getCarCount());
-        for(int i = 0; i < racingDto.getTryCount(); i++){
-            print(carList, i);
+        resultView.printStartText();
+        for (int i = 0; i < racingDto.getTryCount(); i++) {
             moveCars(carList);
+            resultView.printCarList(carList);
         }
-    }
-
-    private void print(List<Car> carList, int i) {
-        if(i == 0) {
-            resultView.printStartText();
-        }
-        resultView.printCarList(carList);
     }
 
     private List<Car> makeCarList(int size) {
         List<Car> carList = new ArrayList<>();
-        for(int i = 0; i < size; i++){
+        for (int i = 0; i < size; i++) {
             carList.add(new Car());
         }
         return carList;
     }
 
-    private void moveCars(List<Car> carList){
-        carList.forEach(mover::move);
+    private void moveCars(List<Car> carList) {
+        carList.forEach(car -> {
+            int randomNum = RandomUtil.getRandomNumUnder10();
+            mover.decideMove(car, randomNum);
+        });
     }
 }
