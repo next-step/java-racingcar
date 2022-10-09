@@ -4,11 +4,11 @@ public class Car {
 
   private int location;
 
-  public int getLocation() {
+  public int nowLocation() {
     return location;
   }
 
-  public void move() {
-    this.location += 1;
+  public void move(int distance) {
+    this.location += distance;
   }
 }
