@@ -9,7 +9,7 @@ public class Car {
     private static final int INIT_POSITION = 0;
 
     private final CarName name;
-    private final CarPosition position;
+    private CarPosition position;
 
     public Car(String name) {
         this(name, INIT_POSITION);
@@ -22,7 +22,7 @@ public class Car {
 
     public void moves(MovingStrategy movingStrategy) {
         if (movingStrategy.isMovable()) {
-            position.plus();
+            this.position = position.plus();
         }
     }
 
