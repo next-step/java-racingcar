@@ -69,9 +69,8 @@ public class RacingCarWinner {
     private String winner() {
         int max = cars.get(0).getPosition();
         String winnerParticipant = "";
-        List<String> winnerResult;
         for (Car carInformation : cars) {
-            winnerResult = maxDistanceCar(carInformation, max, winnerParticipant);
+            List<String> winnerResult = maxDistanceCar(carInformation, max, winnerParticipant);
             max = Integer.parseInt(winnerResult.get(0));
             winnerParticipant = winnerResult.get(1);
         }
