@@ -1,12 +1,10 @@
 package study;
 
-import java.util.Random;
-
-public class Number {
+public class InputNumber {
     private int value;
     private static final String NEGATIVE_ERROR_MESSAGE = "음수가 들어왔습니다";
 
-    public Number(int value){
+    public InputNumber(int value){
         negativeChk(value);
         this.value = value;
     }
@@ -21,9 +19,5 @@ public class Number {
         return this.value;
     }
 
-    public static int getRandom() {
-        Random random = new Random();
-        return random.nextInt(10);
-    }
 
 }
