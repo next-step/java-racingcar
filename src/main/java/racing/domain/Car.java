@@ -1,16 +1,12 @@
 package racing.domain;
 
-import racing.exception.ErrorMessage;
-import racing.exception.InvalidCarNameLengthException;
-
 public class Car implements Comparable<Car> {
 
 	private static final int START_POINT = 1;
 	private static final int MOVE_PIVOT = 4;
-	private static final int CAR_NAME_MAX_LENGTH = 5;
 
 	private final RandomNum randomNum;
-	private String name;
+	private CarName name;
 	private int location;
 
 	public Car(String name, RandomNum randomNum) {
@@ -18,16 +14,9 @@ public class Car implements Comparable<Car> {
 	}
 
 	public Car(String name, int location, RandomNum randomNum) {
-		if (!isValidCarNameLength(name)) {
-			throw new InvalidCarNameLengthException(ErrorMessage.INVALID_CAR_NAME_LENGTH, name);
-		}
-		this.name = name;
+		this.name = new CarName(name);
 		this.location = location;
 		this.randomNum = randomNum;
-	}
-
-	private boolean isValidCarNameLength(String name) {
-		return name.length() <= CAR_NAME_MAX_LENGTH;
 	}
 
 	public void move() {
@@ -49,7 +38,7 @@ public class Car implements Comparable<Car> {
 	}
 
 	public String getName() {
-		return name;
+		return name.getName();
 	}
 
 	@Override
