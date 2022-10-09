@@ -4,11 +4,12 @@ import java.util.Random;
 
 public class Car {
 
-    private final Random randomGenerator;
+    private static final int MOVABLE_MINIMUM_VALUE = 4;
+    private static final int RANDOM_VALUE_RANGE = 10;
+    private static final Random randomGenerator = new Random();
     private int distance;
 
     public Car() {
-        randomGenerator = new Random();
         distance = 0;
     }
 
@@ -27,6 +28,6 @@ public class Car {
     }
 
     public boolean isMovable() {
-        return (4 <= this.randomGenerator.nextInt(10));
+        return (MOVABLE_MINIMUM_VALUE <= randomGenerator.nextInt(RANDOM_VALUE_RANGE));
     }
 }
