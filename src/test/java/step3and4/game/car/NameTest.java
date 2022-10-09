@@ -20,9 +20,7 @@ class NameTest {
     @Test
     @DisplayName("이름은 5글자를 초과할 수 없다.")
     void b() {
-        final Name sut = new Name("123456");
-
-        assertThatThrownBy(() -> sut.verifyLengthMustNotExceedFive())
+        assertThatThrownBy(() -> new Name.Factory("123456").name())
                 .isInstanceOf(IllegalStateException.class)
                 .hasMessage("이름은 5글자를 초과할 수 없다.");
     }
