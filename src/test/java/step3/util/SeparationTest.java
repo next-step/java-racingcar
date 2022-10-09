@@ -1,8 +1,10 @@
-package step3.domain;
+package step3.util;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.view.Separation;
+import step3.domain.Cars;
+import step3.domain.Winner;
+import step3.util.Separation;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

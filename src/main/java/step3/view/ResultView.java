@@ -3,6 +3,7 @@ package step3.view;
 import step3.domain.Car;
 import step3.domain.GameInfo;
 import step3.domain.Winner;
+import step3.util.Separation;
 
 public class ResultView {
 

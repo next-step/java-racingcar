@@ -7,8 +7,8 @@ public class GameInfo {
     private final List<Car> carList;
     private final int count;
 
-    public GameInfo(List<String> names, int count) {
-        this.carList = new Cars(names).getCarList();
+    public GameInfo(Cars cars, int count) {
+        this.carList = cars.getCarList();
         this.count = count;
     }
 
