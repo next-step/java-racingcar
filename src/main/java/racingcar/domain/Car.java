@@ -1,21 +1,24 @@
 package racingcar.domain;
 
-import racingcar.strategy.MovingStrategy;
-
 public class Car {
 
   private int carPosition = 0;
-  private String name;
+  private final String name;
 
   public Car(String name) {
+    validateCar(name);
     this.name = name;
     this.carPosition = 0;
   }
 
-  public void move(MovingStrategy movingStrategy) {
-    if (movingStrategy.isMoveAble()) {
-      carPosition++;
+  private void validateCar(String name) {
+    if (name.length() > 5) {
+      throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다");
     }
+  }
+
+  public void move() {
+    carPosition++;
   }
 
   public String getName() {
@@ -26,7 +29,4 @@ public class Car {
     return carPosition;
   }
 
-  public ScoreBoard scoreBoard() {
-    return new ScoreBoard(this.name, this.carPosition);
-  }
 }

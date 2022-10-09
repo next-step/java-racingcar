@@ -18,14 +18,11 @@ public class ScoreBoards {
   public List<String> findFirst() {
     return this.scoreBoards.stream()
         .filter(scoreBoard -> scoreBoard.getCarPosition() == maxPosition())
-        .map(scoreBoard -> scoreBoard.getName())
-        .collect(Collectors.toList());
+        .map(scoreBoard -> scoreBoard.getName()).collect(Collectors.toList());
   }
 
   private int maxPosition() {
-    return this.scoreBoards.stream()
-        .mapToInt(scoreBoard -> scoreBoard.getCarPosition())
-        .max()
+    return this.scoreBoards.stream().mapToInt(scoreBoard -> scoreBoard.getCarPosition()).max()
         .orElse(0);
   }
 

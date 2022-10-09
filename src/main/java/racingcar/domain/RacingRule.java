@@ -4,29 +4,24 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.strategy.MovingStrategy;
+import racingcar.domain.strategy.MovingStrategy;
 
 public class RacingRule {
 
   private static final String DELIMITER = ",";
-  private final List<Car> cars;
+  private final Cars cars;
   private int tryNum;
   private List<ScoreBoards> scoreBoardsList;
 
   public RacingRule(String names, int tryNum) {
     this.tryNum = tryNum;
-    this.cars = buildCars(names);
+    this.cars = new Cars(buildCars(names));
     this.scoreBoardsList = new ArrayList<>();
   }
 
-  public List<Car> getCars() {
-    return cars;
-  }
-
   private List<Car> buildCars(String names) {
-    return Arrays.asList(names.split(DELIMITER))
-        .stream()
-        .map(name -> new Car(name))
+    return Arrays.stream(names.split(DELIMITER))
+        .map(Car::new)
         .collect(Collectors.toList());
   }
 
@@ -38,18 +33,22 @@ public class RacingRule {
   }
 
   private void cycleCars(MovingStrategy strategy) {
-    this.cars.forEach(car -> car.move(strategy));
+    for (Car car : cars.getCars()) {
+      validateMove(strategy, car);
+    }
+  }
+
+  private static void validateMove(MovingStrategy strategy, Car car) {
+    if (strategy.isMoveAble()) {
+      car.move();
+    }
   }
 
   private void saveScoreBoards() {
-    List<ScoreBoard> scoreBoards = this.cars.stream()
-        .map(car -> car.scoreBoard())
+    List<ScoreBoard> scoreBoards = this.cars.getCars().stream()
+        .map(car -> new ScoreBoard(car.getName(), car.getCarPosition()))
         .collect(Collectors.toList());
     this.scoreBoardsList.add(new ScoreBoards(scoreBoards));
-  }
-
-  public List<ScoreBoards> getScoreBoardsList() {
-    return this.scoreBoardsList;
   }
 
   public List<String> findWinner() {
@@ -57,6 +56,14 @@ public class RacingRule {
     ScoreBoards scoreBoards = this.scoreBoardsList.get(index);
     return scoreBoards.findFirst();
 
+  }
+
+  public List<Car> getCars() {
+    return cars.getCars();
+  }
+
+  public List<ScoreBoards> getScoreBoardsList() {
+    return this.scoreBoardsList;
   }
 
 }

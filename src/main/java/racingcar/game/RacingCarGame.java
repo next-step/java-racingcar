@@ -3,10 +3,10 @@ package racingcar.game;
 import java.util.List;
 import racingcar.domain.RacingRule;
 import racingcar.domain.ScoreBoards;
-import racingcar.strategy.MovingStrategy;
-import racingcar.strategy.RandomMovingStrategy;
+import racingcar.domain.strategy.MovingStrategy;
+import racingcar.domain.strategy.RandomMovingStrategy;
 import racingcar.view.InputView;
-import racingcar.view.ResultViewImpl;
+import racingcar.view.ResultView;
 
 public class RacingCarGame {
 
@@ -19,9 +19,9 @@ public class RacingCarGame {
     MovingStrategy movingStrategy = new RandomMovingStrategy();
     racingRule.play(movingStrategy);
     List<ScoreBoards> scoreBoards = racingRule.getScoreBoardsList();
-    ResultViewImpl.showScores(scoreBoards);
+    ResultView.showScores(scoreBoards);
     List<String> winners = racingRule.findWinner();
-    ResultViewImpl.showWinners(winners);
+    ResultView.showWinners(winners);
 
   }
 
