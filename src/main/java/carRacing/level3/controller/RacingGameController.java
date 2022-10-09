@@ -9,9 +9,9 @@ import java.util.List;
 
 public class RacingGameController {
 
-	InputView inputView = new InputView();
-	OutPutView outPutView = new OutPutView();
-	Winner winner = new Winner();
+	private InputView inputView = new InputView();
+	private OutPutView outPutView = new OutPutView();
+	private Winner winner = new Winner();
 
 	public void gameStart(MovingStrategy movingStrategy) {
 
