@@ -8,6 +8,10 @@ public class Car {
 
   private int location;
 
+  public Car() {
+    this.location = 0;
+  }
+
   public int nowLocation() {
     return location;
   }

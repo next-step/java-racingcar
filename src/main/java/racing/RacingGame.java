@@ -12,13 +12,11 @@ public class RacingGame {
     int numberOfChance = input.nextInt();
     System.out.println("실행 결과");
 
-    while (numberOfChance > 0) {
-      play(numberOfCar);
+    Cars cars = new Cars(numberOfCar);
+
+    for (int i = 0; i < numberOfChance; i++) {
+      cars.move();
       System.out.println();
     }
-  }
-
-  private void play(int numberOfCar) {
-
   }
 }
