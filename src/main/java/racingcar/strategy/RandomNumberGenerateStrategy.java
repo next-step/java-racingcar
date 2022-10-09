@@ -5,13 +5,12 @@ import java.util.Random;
 public class RandomNumberGenerateStrategy implements NumberGenerateStrategy {
 
     private final Random random = new Random();
+    private final int DEFAULT_BOUND = 10;
 
     private int bound;
 
-    private RandomNumberGenerateStrategy() {}
-
-    public RandomNumberGenerateStrategy(int bound) {
-        this.bound = bound;
+    public RandomNumberGenerateStrategy() {
+        this.bound = DEFAULT_BOUND;
     }
 
     @Override

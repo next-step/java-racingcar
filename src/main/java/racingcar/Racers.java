@@ -5,41 +5,41 @@ import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.strategy.NumberGenerateStrategy;
 
-public class Cars {
+public class Racers {
 
-    private final List<Car> carList = new ArrayList<>();
+    private final List<Car> cars = new ArrayList<>();
     private NumberGenerateStrategy numberGenerateStrategy;
 
-    private Cars() {
+    private Racers() {
     }
 
-    public Cars(List<String> carNames, NumberGenerateStrategy numberGenerateStrategy) {
+    public Racers(final List<String> carNames, final NumberGenerateStrategy numberGenerateStrategy) {
         carNames.forEach(name -> {
-            this.carList.add(new Car(name));
+            this.cars.add(new Car(name));
         });
 
         this.numberGenerateStrategy = numberGenerateStrategy;
     }
 
-    public List<Car> carList() {
-        return this.carList;
+    public List<Car> getCars() {
+        return this.cars;
     }
 
     public void moveAll() {
-        this.carList.forEach(car -> {
+        this.cars.forEach(car -> {
             car.move(numberGenerateStrategy.generate());
         });
     }
 
-    public List<Integer> allPosition() {
-        return carList.stream()
-            .map(Car::position)
+    public List<Integer> positions() {
+        return cars.stream()
+            .map(Car::getPosition)
             .collect(Collectors.toList());
     }
 
     public int maxPosition() {
-        return carList.stream()
-            .mapToInt(Car::position)
+        return cars.stream()
+            .mapToInt(Car::getPosition)
             .max()
             .orElseThrow(() -> new RuntimeException("최대 값을 찾는데 실패했습니다."));
     }

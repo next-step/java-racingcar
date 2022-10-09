@@ -9,19 +9,19 @@ public class Car {
 
     private Car() {}
 
-    public Car(String name) {
+    public Car(final String name) {
         this.name = name;
     }
 
-    public String name() {
+    public String getName() {
         return this.name;
     }
 
-    public int position() {
+    public int getPosition() {
         return this.position;
     }
 
-    public void move(int number) {
+    public void move(final int number) {
         if (number >= AVAILABLE_MOVE_BOUND) {
             this.position += 1;
         }

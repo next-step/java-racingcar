@@ -14,15 +14,10 @@ class CarsTest {
     @DisplayName("moveAll 메소드는 Cars가 갖고 있는 모든 자동차들을 모두 움직인다.")
     void moveAll_test() {
         List<String> carNames = List.of("jordy", "penda", "kero");
-        Cars cars = new Cars(carNames, new NumberGenerateStrategy() {
-            @Override
-            public int generate() {
-                return 5;
-            }
-        });
+        Racers cars = new Racers(carNames, new SameNumberGenerateStrategy());
         cars.moveAll();
 
-        assertThat(cars.allPosition()).containsOnly(1);
+        assertThat(cars.positions()).containsOnly(1);
     }
 
 
@@ -30,22 +25,17 @@ class CarsTest {
     @DisplayName("allPosition 메소드는 Cars가 갖고 있는 모든 자동차들의 position을 담은 리스트를 반환한다.")
     void allPosition_test() {
         List<String> carNames = List.of("jordy", "penda", "kero");
-        NumberGenerateStrategy strategy = new RandomNumberGenerateStrategy(10);
-        Cars cars = new Cars(carNames, strategy);
+        NumberGenerateStrategy strategy = new RandomNumberGenerateStrategy();
+        Racers cars = new Racers(carNames, strategy);
 
-        assertThat(cars.allPosition()).hasSize(3);
+        assertThat(cars.positions()).hasSize(3);
     }
 
     @Test
     @DisplayName("maxPosition 메소드는 Cars가 갖고 있는 모든 자동차들의 position 중 최대 값을 반환한다.")
     void maxPosition_test() {
         List<String> carNames = List.of("jordy", "penda", "kero");
-        Cars cars = new Cars(carNames, new NumberGenerateStrategy() {
-            @Override
-            public int generate() {
-                return 5;
-            }
-        });
+        Racers cars = new Racers(carNames, new SameNumberGenerateStrategy());
         cars.moveAll();
 
         assertThat(cars.maxPosition()).isEqualTo(1);

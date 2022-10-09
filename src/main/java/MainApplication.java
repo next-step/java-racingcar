@@ -2,19 +2,18 @@ import static racingcar.view.InputView.inputCarNames;
 import static racingcar.view.InputView.inputTryNumber;
 import static racingcar.view.OutputView.printResult;
 
-import java.util.List;
 import racingcar.Racing;
+import racingcar.dto.RacingInput;
 import racingcar.strategy.RandomNumberGenerateStrategy;
 
 public class MainApplication {
 
     public static void main(String[] args) {
-        List<String> carNames = inputCarNames();
-        int tryNumber = inputTryNumber();
+        RacingInput input = new RacingInput(inputCarNames(), inputTryNumber());
 
-        Racing racing = new Racing(carNames, new RandomNumberGenerateStrategy(10));
-        racing.race(tryNumber);
+        Racing racing = new Racing(input.getCarNames());
+        racing.race(input.getTryNumber());
 
-        printResult(racing.result(), racing.winners());
+        printResult(racing.getResult(), racing.winners());
     }
 }

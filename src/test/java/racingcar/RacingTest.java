@@ -15,23 +15,18 @@ class RacingTest {
     @DisplayName("race 메소드는 파라미터로 들어온 횟수만큼 경주를 진행한다.")
     void race_result() {
         List<String> carNames = List.of("jordy", "penda", "kero");
-        NumberGenerateStrategy strategy = new RandomNumberGenerateStrategy(10);
+        NumberGenerateStrategy strategy = new RandomNumberGenerateStrategy();
         Racing racing = new Racing(carNames, strategy);
         racing.race(5);
 
-        assertThat(racing.result()).hasSize(5);
+        assertThat(racing.getResult()).hasSize(5);
     }
 
     @Test
     @DisplayName("winners 메소드는 경주 우승자 리스트를 반환한다.")
     void return_winners() {
         List<String> carNames = List.of("jordy", "penda", "kero");
-        Racing racing = new Racing(carNames, new NumberGenerateStrategy() {
-            @Override
-            public int generate() {
-                return 5;
-            }
-        });
+        Racing racing = new Racing(carNames, new SameNumberGenerateStrategy());
         racing.race(5);
 
         assertThat(racing.winners()).hasSize(3);
