@@ -13,10 +13,6 @@ public class Cars {
     }
   }
 
-  public int size() {
-    return values.size();
-  }
-
   public void move() {
     for (Car car : values) {
       car.moveIfMovable();
