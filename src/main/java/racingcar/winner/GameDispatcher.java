@@ -1,9 +1,8 @@
 package racingcar.winner;
 
 import racingcar.winner.controller.GameController;
-import racingcar.winner.view.CarNameInput;
 import racingcar.winner.model.GameAttemptCount;
-import racingcar.winner.model.RandomMovableStrategy;
+import racingcar.winner.view.CarNameInput;
 import racingcar.winner.view.CarNameInputInterface;
 import racingcar.winner.view.ConsoleUserInputInterface;
 import racingcar.winner.view.ConsoleUserOutputInterface;
@@ -15,6 +14,6 @@ public class GameDispatcher {
         CarNameInput carNameInput = new CarNameInput(new CarNameInputInterface(new ConsoleUserInputInterface()).getInput());
         GameAttemptCount gameAttemptCount = new GameAttemptCount(new GameAttemptCountInputInterface(new ConsoleUserInputInterface()).getInput());
 
-        new GameController(new RandomMovableStrategy(), new ConsoleUserOutputInterface()).play(carNameInput, gameAttemptCount);
+        new GameController(new ConsoleUserOutputInterface()).play(carNameInput, gameAttemptCount);
     }
 }
