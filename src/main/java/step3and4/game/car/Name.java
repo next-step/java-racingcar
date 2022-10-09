@@ -6,7 +6,7 @@ public class Name {
 
     private final String value;
 
-    public Name(String value) {
+    private Name(String value) {
         this.value = value;
     }
 
@@ -46,6 +46,5 @@ public class Name {
                 throw new IllegalStateException("이름은 5글자를 초과할 수 없다.");
             }
         }
-
     }
 }
