@@ -1,34 +1,30 @@
-package model;
+package view;
 
+import domain.RandomMovingStrategy;
 import dto.RacingCars;
-import service.RacingCarService;
+import domain.RacingCarService;
 
 import java.util.List;
 
 public class RacingCarWithoutWinner implements Result {
     @Override
     public void view() {
-
-        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        String racingCars = InputView.inputString();
-
-        String[] racingCarNames = racingCars.split(",");
-        RacingCars cars = new RacingCars(racingCarNames);
+        System.out.println("자동차 대수는 몇 대 인가요?");
+        int numOfCars = InputView.inputInteger();
 
         System.out.println("시도할 회수는 몇 회 인가요?");
         int races = InputView.inputInteger();
 
         System.out.println("실행 결과");
-        raceResult(cars, races);
+        RacingCars racingCars = new RacingCars(numOfCars);
 
-        RacingCarService racingCarService = new RacingCarService();
-        System.out.println(racingCarService.findRaceWinners(cars) + "가 최종 우승했습니다.");
+        raceResult(racingCars, races);
     }
 
     @Override
     public void raceResult(RacingCars racingCars, int numOfRaces) {
         for (int count = 1; count <= numOfRaces; count++) {
-            racingCars.move();
+            racingCars.move(new RandomMovingStrategy());
             outputCarsLocation(racingCars.distance());
         }
     }

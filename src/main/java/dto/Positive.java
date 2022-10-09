@@ -1,4 +1,4 @@
-package util;
+package dto;
 
 import java.util.Objects;
 
