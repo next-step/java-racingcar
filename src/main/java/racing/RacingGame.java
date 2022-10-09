@@ -50,6 +50,13 @@ public class RacingGame {
 
 		startRacing(carMoveCount);
 
+		printWinners();
+	}
+
+	private void printWinners() {
+		List<Car> winners = racingCars.getWinnersOfRacing();
+
+		resultView.printWinners(winners);
 	}
 
 	private RacingCars initRacingCars(List<String> carNames) {

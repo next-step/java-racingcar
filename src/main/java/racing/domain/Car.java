@@ -3,7 +3,7 @@ package racing.domain;
 import racing.exception.ErrorMessage;
 import racing.exception.InvalidCarNameLengthException;
 
-public class Car {
+public class Car implements Comparable<Car> {
 
 	private static final int START_POINT = 1;
 	private static final int MOVE_PIVOT = 4;
@@ -52,5 +52,14 @@ public class Car {
 
 	public String getName() {
 		return name;
+	}
+
+	@Override
+	public int compareTo(Car car) {
+		if (this.location > car.getLocation())
+			return 1;
+		else if (this.location < car.getLocation())
+			return -1;
+		return 0;
 	}
 }

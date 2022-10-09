@@ -1,7 +1,12 @@
 package racing.domain;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import racing.exception.ErrorMessage;
+import racing.exception.NoSuchWinnerException;
 
 public class RacingCars {
 	private List<Car> racingCars;
@@ -18,4 +23,33 @@ public class RacingCars {
 	public List<Car> getRacingCars() {
 		return racingCars;
 	}
+
+	public List<Car> getWinnersOfRacing() {
+		List<Car> winners;
+
+		final int maxLocation;
+		try {
+			maxLocation = getMaxLocation();
+		} catch (NoSuchWinnerException exception) {
+			return Collections.emptyList();
+		}
+
+		winners = IntStream.range(0, racingCars.size())
+			.filter(i -> racingCars.get(i).getLocation() == maxLocation)
+			.mapToObj(i -> racingCars.get(i))
+			.collect(Collectors.toList());
+
+		return winners;
+	}
+
+	private int getMaxLocation() {
+		Car anyWinner = racingCars.stream()
+			.max(Car::compareTo)
+			.orElseThrow(() -> {
+				throw new NoSuchWinnerException(ErrorMessage.NO_SUCH_WINNER);
+			});
+
+		return anyWinner.getLocation();
+	}
+
 }
