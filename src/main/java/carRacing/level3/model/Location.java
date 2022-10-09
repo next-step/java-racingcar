@@ -6,13 +6,14 @@ public class Location {
 
 	private int location;
 	private final int MOVE_LOCATION = 1;
+	private final int DEFAULT_LOCATION = 0;
 
-	public Location(){
+	public Location() {
 		this(0);
 	}
 
 	public Location(int location) {
-		if(location < 0){
+		if (location < DEFAULT_LOCATION) {
 			throw new RuntimeException();
 		}
 		this.location = location;
@@ -22,14 +23,12 @@ public class Location {
 		return location;
 	}
 
-	public Location move() {
+	public void move() {
 		location += MOVE_LOCATION;
-		return new Location(location);
 	}
 
-
 	public boolean isWinner(int maxLocation) {
-		if(location == maxLocation){
+		if (location == maxLocation) {
 			return true;
 		}
 		return false;

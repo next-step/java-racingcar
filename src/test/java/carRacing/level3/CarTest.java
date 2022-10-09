@@ -19,6 +19,7 @@ public class CarTest {
 		cars.moveCarLocation(new FixMovingStrategy());
 
 		assertThat(cars.carLocation(0)).isEqualTo(new Location(1));
+		assertThat(cars.carLocation(1)).isEqualTo(new Location(1));
 
 	}
 

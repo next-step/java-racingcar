@@ -33,7 +33,6 @@ public class Cars {
 			.getAsInt();
 	}
 
-
 	public Location carLocation(int carNum) {
 		return cars.get(carNum).carLocation();
 	}

@@ -6,10 +6,10 @@ import java.util.List;
 public class Winner {
 
 	private int maxLocation;
+
 	private List<String> winnerList;
 
-
-	public Winner(){
+	public Winner() {
 		this(new ArrayList<>());
 	}
 
@@ -19,7 +19,6 @@ public class Winner {
 
 	public Winner decideWinner(Cars cars) {
 
-		//TODO:객체 지향적으로 설계하기
 		maxLocation = cars.maxCarLocation();
 
 		for (int i = 0; i < cars.totalNum(); i++) {
@@ -35,7 +34,7 @@ public class Winner {
 		}
 	}
 
-	public List<String> getWinnerList(){
+	public List<String> getWinnerList() {
 		return winnerList;
 	}
 

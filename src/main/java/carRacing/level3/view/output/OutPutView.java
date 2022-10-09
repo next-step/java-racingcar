@@ -4,15 +4,18 @@ import carRacing.level3.model.Cars;
 import java.util.List;
 
 public class OutPutView {
+
 	private final String DELIMITER = ",";
 
-	public void showNotice(){
+	public void showNotice() {
 		System.out.println("실행 결과");
 	}
+
 	public void showRace(Cars cars) {
 
 		for (int i = 0; i < cars.totalNum(); i++) {
-			System.out.printf("%s : %s\n", cars.carName(i), "-".repeat(cars.carLocation(i).getLocation()));
+			System.out.printf("%s : %s\n", cars.carName(i),
+				"-".repeat(cars.carLocation(i).getLocation()));
 		}
 		System.out.println("\n");
 	}
