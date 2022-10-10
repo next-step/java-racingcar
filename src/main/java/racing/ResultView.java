@@ -23,6 +23,10 @@ public class ResultView {
         System.out.printf(WINNER_FORMAT, names);
     }
 
+    public static void printError(CarNameTooLongException exception) {
+        System.out.println("자동차 이름은 5자를 초과할 수 없습니다.");
+    }
+
     private static void printCar(Car car) {
         System.out.printf(CAR_FORMAT, car.getName(), MOVE_SYMBOL.repeat(car.getMoves()));
     }

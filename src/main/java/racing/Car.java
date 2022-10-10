@@ -1,6 +1,7 @@
 package racing;
 
 public class Car {
+    public static final int NAME_LENGTH_MAX = 5;
     private final String name;
     private int moves;
 
@@ -10,6 +11,9 @@ public class Car {
 
     // only for test
     public Car(String name, int moves) {
+        if (name.length() > NAME_LENGTH_MAX) {
+            throw new CarNameTooLongException();
+        }
         this.name = name;
         this.moves = moves;
     }
