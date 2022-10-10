@@ -31,6 +31,5 @@ public class Winner {
 
     public List<Car> getWinnerList() {
         return winnerList;
-
     }
 }

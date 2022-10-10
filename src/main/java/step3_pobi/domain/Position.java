@@ -6,10 +6,6 @@ public class Position {
 
     private final int position;
 
-    public Position() {
-        this.position = 0;
-    }
-
     public Position(int position) {
         if (position < 0) {
             throw new IllegalArgumentException("0이상의 값만 유효합니다.");
