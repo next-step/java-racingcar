@@ -1,27 +1,27 @@
 package racingcar.step3_4.domain;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
-import racingcar.step3_4.view.ResultView;
 
 public class Game {
 
-	private static final Random random = new Random();
-	private static final int LIMIT = 10;
-	private static final RandomValueGenerator randomValueGenerator = () -> random.nextInt(LIMIT);
+    private static final Random random = new Random();
+    private static final int LIMIT = 10;
+    private static final RandomValueGenerator randomValueGenerator = () -> random.nextInt(LIMIT);
 
-	private final ResultView resultView;
+    public GameRecord play(GameAttribute gameAttribute) {
+        Names names = Names.of(gameAttribute.getCarNames());
+        Cars cars = Cars.createCars(names);
 
-	public Game(ResultView resultView) {
-		this.resultView = resultView;
-	}
+        List<TryResult> tryResults = new ArrayList<>();
+        for (int i = 0; i < gameAttribute.getTryCount(); i++) {
+            cars.move(randomValueGenerator);
 
-	public void play(GameAttribute gameAttribute) {
-		Names names = Names.of(gameAttribute.getCarNames());
-		Cars cars = Cars.createCars(names);
-		for (int i = 0; i < gameAttribute.getTryCount(); i++) {
-			cars.move(randomValueGenerator);
-			resultView.printEachTryResult(cars.getCars());
-		}
-		resultView.printWinners(cars.determineWinners());
-	}
+            tryResults.add(TryResult.of(cars.getCars()));
+        }
+        Winners winners = cars.determineWinners();
+
+        return new GameRecord(List.copyOf(tryResults), winners);
+    }
 }

@@ -57,7 +57,7 @@
 
 ### 리팩토링 목록
 
-- [ ] Game 객체가 ResultView 객체에 의존하지 않도록 한다.
+- [X] Game 객체가 ResultView 객체에 의존하지 않도록 한다.
   - 시도마다 기록을 남김
   - 우승자 기록을 남김
   - 기록을 Controller에서 ResultView로 전달
