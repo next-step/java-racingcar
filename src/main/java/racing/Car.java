@@ -5,8 +5,8 @@ import java.util.Objects;
 public class Car {
     private static final int AVAILABLE_RUN_THRESHOLD = 4;
 
-    private int distance = 0;
-    private String name = "";
+    private int distance;
+    private String name;
 
     public Car(String name) {
         this(name, 0);
