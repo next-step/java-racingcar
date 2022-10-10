@@ -1,13 +1,18 @@
 package racingcar;
 
 public class Car {
+    private CarName name;
     private int position = 0;
-    private String name;
 
     public Car() {}
 
     public Car(String name) {
-        this.name = name;
+        this.name = new CarName(name);
+    }
+
+    public Car(String name, int position) {
+        this.name = new CarName(name);
+        this.position = position;
     }
 
     public void forward() {
@@ -18,7 +23,11 @@ public class Car {
         return position;
     }
 
-    public String getName() {
+    public CarName getName() {
         return name;
+    }
+
+    public boolean isPosition(int position) {
+        return this.position == position;
     }
 }

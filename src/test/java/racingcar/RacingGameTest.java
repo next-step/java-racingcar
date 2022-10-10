@@ -9,14 +9,14 @@ public class RacingGameTest {
 
     @Test
     void testTryGame() {
-        RacingGame racingGame = new RacingGame() {
+        Cars cars = Cars.createCarsByNumber(1);
+        RacingGame racingGame = new RacingGame(cars) {
             @Override
             protected boolean isMovable() {
                 return true;
             }
         };
 
-        racingGame.createCars(1);
         racingGame.tryGame();
         racingGame.tryGame();
         racingGame.tryGame();
@@ -26,13 +26,12 @@ public class RacingGameTest {
 
     @Test
     void testGetWinnerNames() {
-        RacingGame racingGame = new RacingGame();
-        racingGame.createCars(List.of("winner1", "winner2", "loser"));
+        Car car1 = new Car("win1", 2);
+        Car car2 = new Car("win2", 2);
+        Car car3 = new Car("loser", 1);
+        Cars cars = new Cars(List.of(car1, car2, car3));
+        RacingGame racingGame = new RacingGame(cars);
 
-        List<Car> cars = racingGame.getCars();
-        cars.get(0).forward();
-        cars.get(1).forward();
-
-        assertThat(racingGame.getWinnerNames()).containsOnly("winner1", "winner2");
+        assertThat(racingGame.getWinnerNames()).containsOnly("win1", "win2");
     }
 }

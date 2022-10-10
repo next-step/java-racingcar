@@ -1,14 +1,13 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class CarTest {
 
     @Test
-    @DisplayName("자동차의 전진 로직 테스트")
     void testForward() {
         Car car = new Car();
 
@@ -17,5 +16,11 @@ public class CarTest {
         car.forward();
 
         assertThat(car.getPosition()).isEqualTo(3);
+    }
+
+    @Test
+    void testNameLength() {
+        assertThatThrownBy(() -> new Car("over5LengthName"))
+            .isInstanceOf(IllegalArgumentException.class);
     }
 }

@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class InputView {
 
-    private final static Scanner scanner = new Scanner(System.in);
+    private final static Scanner SCANNER = new Scanner(System.in);
 
     private InputView() {
         throw new AssertionError();
@@ -13,12 +13,12 @@ public class InputView {
 
     public static int readInt(String displayText) {
         System.out.println(displayText);
-        return scanner.nextInt();
+        return SCANNER.nextInt();
     }
 
     public static List<String> readStringList(String displayText, String delimiter) {
         System.out.println(displayText);
-        return List.of(scanner.nextLine().split(delimiter));
+        return List.of(SCANNER.nextLine().split(delimiter));
     }
 
 }
