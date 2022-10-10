@@ -32,7 +32,7 @@ public class RacingCarGame {
         return racingRecord;
     }
 
-    public List<Car> finish() {
+    public List<Car> findFinalWinner() {
         return cars.findWinners();
     }
 

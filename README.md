@@ -97,4 +97,5 @@
   - isMaxPosition 
   - 차이름 null과 empty(blank)의미 포함하게 함수 네이밍 변경
   - 차이름 값 없을 때 상수 이름 의미 있게 수정
-  - 
+  - finish -> findFinalWinner
+  - inputString -> inputCarName

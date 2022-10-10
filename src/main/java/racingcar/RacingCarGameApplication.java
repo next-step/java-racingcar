@@ -16,7 +16,7 @@ public class RacingCarGameApplication {
         int tryCount = InputView.inputTryCount();
 
         RacingRecord racingCarGameRecords = racingCarGame.play(new RandomValueMovingStrategy(), tryCount);
-        List<Car> winners = racingCarGame.finish();
+        List<Car> winners = racingCarGame.findFinalWinner();
 
         ResultView.printResultMessage();
         ResultView.printRacingCars(racingCarGameRecords);
