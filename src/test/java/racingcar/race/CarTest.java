@@ -2,33 +2,41 @@ package racingcar.race;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import racingcar.race.Car;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
     @Test
     @DisplayName("차가 움직이면 위치가 증가한다")
     void move() {
-        Car car = new Car();
+        Car car = new Car(0);
 
-        car.move();
+        car.move(3);
 
-        assertThat(car.getPosition()).isEqualTo("-");
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 
-    @ParameterizedTest
-    @DisplayName("자동차는 여러번 움직일 수 있다")
-    @CsvSource(value = {"2:--", "5:-----"}, delimiter = ':')
-    void multiple_move(int moveCount, String position) {
-        Car car = new Car();
-        for (int count = 0; count < moveCount; count++) {
-            car.move();
-        }
-        assertThat(car.getPosition()).isEqualTo(position);
+    @DisplayName("숫자가 4보다 작으면 위치를 그대로 유지")
+    @Test
+    public void move_NumberIsLessThanFour_KeepPosition() {
+        Car car = new Car(1);
+
+        // When
+        car.move(3);
+
+        // Then
+        assertThat(car).extracting("position").isEqualTo(1);
+    }
+
+    @DisplayName("숫자가 4보다 크거나 같으면 위치를 1 증가")
+    @Test
+    public void move_NumberIsEqualOrGreaterThanFour_IncreasePositionByOne() {
+        Car car = new Car(1);
+
+        car.move(4);
+
+        assertThat(car).extracting("position").isEqualTo(2);
     }
 
 

@@ -2,11 +2,8 @@ package racingcar.race;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class RacingModelTest {
 
@@ -23,4 +20,15 @@ class RacingModelTest {
     void move_4_lower(int move, boolean isMovePossible) {
         Assertions.assertThat(RacingModel.isMovePossible(move)).isEqualTo(isMovePossible);
     }
+
+    @ParameterizedTest
+    @DisplayName("음수는 입력할 수 없다")
+    @CsvSource(value = {"-1:3", "3:-2"}, delimiter = ':')
+    void negative(int numOfCar, int tryCount) {
+        Assertions.assertThatThrownBy(
+                () -> {
+                    RacingModel racingModel = new RacingModel(numOfCar, tryCount);
+                }).isInstanceOf(RuntimeException.class).hasMessageContaining("0보다 큰 수를 입력하세요");
+    }
+
 }

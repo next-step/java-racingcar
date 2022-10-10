@@ -1,12 +1,14 @@
 package racingcar;
 
 import racingcar.race.Car;
+import racingcar.race.RacingCars;
 import racingcar.race.RacingModel;
 import racingcar.race.Result;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
@@ -16,7 +18,7 @@ public class App {
 
         RacingModel racingModel = inputView.printStartScreen(scanner);
 
-        List<Car> cars = new ArrayList<>();
+        RacingCars cars = new RacingCars(new ArrayList<>());
         initRacingCar(racingModel, cars);
 
         ResultView resultView = new ResultView(cars, racingModel);
@@ -27,9 +29,10 @@ public class App {
         scanner.close();
     }
 
-    private static void initRacingCar(RacingModel racingModel, List<Car> cars) {
+    private static void initRacingCar(RacingModel racingModel, RacingCars cars) {
+
         for (int carIndex = 0; carIndex < racingModel.getNumberOfCar(); carIndex++) {
-            cars.add(new Car());
+            cars.getRacingCars().add(new Car(0));
         }
     }
 }

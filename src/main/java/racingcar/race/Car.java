@@ -1,17 +1,18 @@
 package racingcar.race;
 
 public class Car {
-    private String position;
+    private int position;
 
-    public Car() {
-        this.position = "";
+    public Car(int position) {
+        this.position = position;
     }
 
-    public void move() {
-        StringBuilder stringBuilder = new StringBuilder(position);
-        this.position = stringBuilder.append("-").toString();
+    public void move(int number) {
+        if (RacingModel.isMovePossible(number)) {
+            this.position++;
+        }
     }
-    public String getPosition() {
+    public int getPosition() {
         return position;
     }
 

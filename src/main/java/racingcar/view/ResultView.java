@@ -1,22 +1,28 @@
 package racingcar.view;
 
 import racingcar.race.Car;
+import racingcar.race.RacingCars;
 import racingcar.race.RacingModel;
 
-import java.util.List;
-
 public class ResultView {
-    private List<Car> racingCars;
+    private RacingCars racingCars;
     private RacingModel racingModel;
 
-    public ResultView(List<Car> racingCars, RacingModel racingModel) {
+    public ResultView(RacingCars racingCars, RacingModel racingModel) {
         this.racingCars = racingCars;
         this.racingModel = racingModel;
     }
 
     public void printEachRacingStep() {
-        for (Car racingCar : racingCars) {
-            System.out.println(racingCar.getPosition());
+        for (Car racingCar : racingCars.getRacingCars()) {
+            printCarPosition(racingCar);
+        }
+        System.out.println();
+    }
+
+    private void printCarPosition(Car racingCar) {
+        for (int current = 0; current < racingCar.getPosition(); current++) {
+            System.out.print("-");
         }
         System.out.println();
     }
