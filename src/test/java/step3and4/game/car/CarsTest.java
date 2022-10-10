@@ -23,7 +23,7 @@ class CarsTest {
     }
 
     @Test
-    @DisplayName("만드려는 자동차 개수를 입력하면 해당 개수 만큼 자동차들이 만들어진다")
+    @DisplayName("만드려는 자동차의 이름을 입력하면 이름의 개수 만큼 자동차들이 만들어진다")
     void b() {
         Cars.Factory sut = new Cars.Factory(new String[]{"abc"});
 
