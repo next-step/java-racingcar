@@ -29,6 +29,6 @@ public class CarTest {
     @Test
     void 자동차는_이름을_선언할_수_있다() {
         Car car = new Car("A");
-        assertThat(car.getParticipantName()).isEqualTo("A");
+        assertThat(car.getName()).isEqualTo("A");
     }
 }

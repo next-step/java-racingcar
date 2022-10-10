@@ -7,8 +7,6 @@ import carracing.domain.WinnerChecker;
 import carracing.view.InputView;
 import carracing.view.OutputView;
 
-import java.util.stream.IntStream;
-
 public class CarRacingGame {
 
     private final InputView inputView;
@@ -42,7 +40,7 @@ public class CarRacingGame {
 
     private void printTrails(Cars cars) {
         for (Car car : cars.getCars()) {
-            outputView.printTrail(car.getParticipantName(), car.getPosition());
+            outputView.printTrail(car.getName(), car.getPosition());
         }
     }
 }

@@ -1,19 +1,17 @@
 package carracing.domain;
 
-import java.util.Objects;
-
 public class Car{
     private static final int CAN_MOVE_THRESHOLD = 4;
     private int position;
-    private String participantName;
+    private String Name;
 
-    public Car(String participantName) {
+    public Car(String Name) {
         this.position = 0;
-        this.participantName = participantName;
+        this.Name = Name;
     }
 
-    public String getParticipantName() {
-        return participantName;
+    public String getName() {
+        return Name;
     }
 
     public int getPosition() {

@@ -19,7 +19,7 @@ public class WinnerChecker {
 
     private void checkAndPutWinner(List<String> winners, int maxPosition, Car car) {
         if (car.getPosition() == maxPosition) {
-            winners.add(car.getParticipantName());
+            winners.add(car.getName());
         }
     }
 
