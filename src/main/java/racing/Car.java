@@ -22,16 +22,16 @@ public class Car {
         if (canRun()) { distance += 1; }
     }
 
-    int getDistance() {
-        return distance;
-    }
-
     String getName() {
         return name;
     }
 
     boolean isWinner(Car other) {
         return this.distance >= other.distance;
+    }
+
+    void printDistance() {
+        ResultView.printDistance(name, distance);
     }
 
     @Override

@@ -31,7 +31,7 @@ public class Cars {
 
     void printDistance() {
         for (Car car : cars) {
-            ResultView.printDistance(car.getName(), car.getDistance());
+            car.printDistance();
         }
     }
 
