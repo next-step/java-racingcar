@@ -1,19 +1,32 @@
 package racingcar.view;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Input {
     private static final Scanner sc = new Scanner(System.in);
-    private static final String NUMBER_OF_CARS = "자동차 대수는 몇 대 인가요?";
+    private static final String NAME_OF_CARS = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     private static final String NUMBER_OF_ATTEMPTS = "시도할 회수는 몇 회 인가요?";
+    private static final String ERROR_CHECK_SPACE = "공백은 입력할 수 없다.";
+    private static final String DELIMITER = ",";
 
-    public static int numberOfCars() {
-        System.out.println(NUMBER_OF_CARS);
-        return sc.nextInt();
+    public static List<String> nameOfCars() {
+        System.out.println(NAME_OF_CARS);
+        String names = sc.next();
+        checkSpace(names);
+        String[] name = names.split(DELIMITER);
+        return Arrays.asList(name);
     }
 
     public static int numberOfAttempts() {
         System.out.println(NUMBER_OF_ATTEMPTS);
         return sc.nextInt();
+    }
+
+    private static void checkSpace(String name) {
+        if (name.trim().isEmpty()) {
+            throw new IllegalArgumentException(ERROR_CHECK_SPACE);
+        }
     }
 }
