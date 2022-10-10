@@ -1,38 +1,43 @@
 package racingcar.domain;
 
+import racingcar.dto.CarsRecord;
 import racingcar.strategy.MovingStrategy;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> values;
-
-    public Cars(int carCount) {
-        this.values = createCarList(carCount);
-    }
 
     public Cars(List<Car> values) {
         this.values = values;
     }
 
-    private List<Car> createCarList(int carCount) {
-        List<Car> carList = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            carList.add(new Car());
+    public CarsRecord move(MovingStrategy movingStrategy) {
+        CarsRecord records = new CarsRecord();
+        for (Car car : values) {
+            car.moves(movingStrategy);
+            records.add(car);
         }
-        return carList;
+        return records;
     }
 
-    public void move(MovingStrategy movingStrategy) {
-        for (Car value : values) {
-            value.moves(movingStrategy);
-        }
+    public List<Car> findWinners() {
+        return getWinners(getMaxPosition());
     }
 
-    public List<Car> getValues() {
-        return values;
+    private List<Car> getWinners(CarPosition maxPosition) {
+        return values.stream().filter(value -> value.isMaxPosition(maxPosition))
+                .collect(Collectors.toList());
+    }
+
+    private CarPosition getMaxPosition() {
+        CarPosition maxPosition = new CarPosition();
+        for (Car car : values) {
+            maxPosition = car.getMaxPosition(maxPosition);
+        }
+        return maxPosition;
     }
 
     @Override

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class StringTest {
+class StringTest {
 
     @Test
     @DisplayName("요구사항1. 문자가 \",\"로 분리되는지 확인")
