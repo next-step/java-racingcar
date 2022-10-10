@@ -5,8 +5,6 @@ import com.nextlevel.kky.racing.core.CarRacingExecutor;
 import com.nextlevel.kky.racing.ui.InputView;
 import com.nextlevel.kky.racing.ui.ResultView;
 
-import java.util.Arrays;
-
 public class CarRacingApplication {
 
     public static void main(String[] args) {
@@ -20,10 +18,11 @@ public class CarRacingApplication {
         int roundCount = InputView.inputNumber("시도할 회수는 몇 회 인가요?");
 
         CarRacingExecutor carRacingExecutor = new CarRacingExecutor(carNames);
+        ResultView.printCarRacingResultWithName(carRacingExecutor);
 
         for (; roundCount > 0; roundCount--) {
-            ResultView.printCarRacingResultWithName(carRacingExecutor);
             carRacingExecutor.proceedNextRound();
+            ResultView.printCarRacingResultWithName(carRacingExecutor);
         }
 
         ResultView.printCarWinners(carRacingExecutor.getCurrentWinners());
