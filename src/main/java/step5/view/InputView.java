@@ -5,14 +5,13 @@ import java.util.Scanner;
 public class InputView {
 
     private static final String CAR_NAME_DELIMITER = ",";
+    public static final Scanner scanner = new Scanner(System.in);
 
     public static String[] carNames() {
-        Scanner scanner = new Scanner(System.in);
         return scanner.nextLine().split(CAR_NAME_DELIMITER);
     }
 
     public static int tryCount() {
-        Scanner scanner = new Scanner(System.in);
         int tryCount = scanner.nextInt();
         validateTryCount(tryCount);
         return tryCount;
