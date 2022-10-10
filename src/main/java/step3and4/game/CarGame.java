@@ -37,11 +37,19 @@ public class CarGame {
     }
 
     private Cars lastUseTurnsCars(Cars cars, int numberOfGames) {
+        verifyPositiveNumber(numberOfGames);
+
         for (int i = 0; i < numberOfGames; i++) {
             cars = cars.carsWithTurnUsed();
             outputView.print(cars);
         }
         return cars;
+    }
+
+    private void verifyPositiveNumber(int numberOfGames) {
+        if (numberOfGames <= 0) {
+            throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
+        }
     }
 
 }
