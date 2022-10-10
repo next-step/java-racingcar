@@ -20,8 +20,8 @@ public class Cars{
         return cars.size();
     }
 
-    public static Cars makeCars(String[] Name) {
-        List<Car> carList = makeCarList(Name);
+    public static Cars makeCars(String[] Names) {
+        List<Car> carList = makeCarList(Names);
         Cars cars = new Cars(carList);
         return cars;
     }
@@ -31,9 +31,9 @@ public class Cars{
                 .forEach(i -> cars.get(i).move(randomGenerator.makeRandomValue()));
     }
 
-    private static List<Car> makeCarList(String[] Name) {
+    private static List<Car> makeCarList(String[] Names) {
         List<Car> carList = new ArrayList<>();
-        for (String name : Name) {
+        for (String name : Names) {
             carList.add(new Car(name));
         }
         return carList;
