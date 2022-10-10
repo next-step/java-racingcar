@@ -18,8 +18,8 @@ public class RacingGameTest {
     RacingGame racingGame = new RacingGame();
 
     @Test
-    public void 자동차_리스트_생성(){
-        String[] carNames = {"sunny","test","myCar"};
+    public void 자동차_리스트_생성() {
+        String[] carNames = {"sunny", "test", "myCar"};
         List<Car> cars = racingGame.makeCars(carNames);
         assertThat(cars.size()).isEqualTo(carNames.length);
 
@@ -30,8 +30,8 @@ public class RacingGameTest {
     }
 
     @Test
-    public void 자동차_경주_우승자_확인_단독(){
-        List<Car> cars = Arrays.asList(new Car("sunny"),new Car("kookoo"),new Car("rin"));
+    public void 자동차_경주_우승자_확인_단독() {
+        List<Car> cars = Arrays.asList(new Car("sunny"), new Car("kookoo"), new Car("rin"));
         cars.get(0).move();
         cars.get(0).move();
         List<Car> winnerCars = racingGame.getWinners(cars);
@@ -41,7 +41,7 @@ public class RacingGameTest {
                 .max()
                 .getAsInt();
 
-        winnerCars.stream().filter(car -> car.getDistance()==max).collect(Collectors.toList());
+        winnerCars.stream().filter(car -> car.getDistance() == max).collect(Collectors.toList());
 
         assertThat(winnerCars.size()).isEqualTo(1);
         assertThat(winnerCars.get(0).getName()).isEqualTo("sunny");
@@ -50,8 +50,8 @@ public class RacingGameTest {
 
 
     @Test
-    public void 자동차_경주_우승자_확인_공동우승(){
-        List<Car> cars = Arrays.asList(new Car("sunny"),new Car("kookoo"),new Car("rin"));
+    public void 자동차_경주_우승자_확인_공동우승() {
+        List<Car> cars = Arrays.asList(new Car("sunny"), new Car("kookoo"), new Car("rin"));
         cars.get(0).move();
         cars.get(1).move();
         List<Car> winnerCars = racingGame.getWinners(cars);
@@ -61,7 +61,7 @@ public class RacingGameTest {
                 .max()
                 .getAsInt();
 
-        winnerCars.stream().filter(car -> car.getDistance()==max).collect(Collectors.toList());
+        winnerCars.stream().filter(car -> car.getDistance() == max).collect(Collectors.toList());
 
         assertThat(winnerCars.size()).isEqualTo(2);
         assertThat(winnerCars.get(0).getName()).isEqualTo("sunny");
