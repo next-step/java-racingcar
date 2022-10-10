@@ -11,10 +11,10 @@ public class RacingCarApplication {
     }
 
     public static void run() {
-        RacingGameController racingGameController = new RacingGameController();
-        String[] carNames = racingGameController.inputCarNames();
-        int tryCount = racingGameController.inputTryCount();
-        RacingGame racingGame = racingGameController.makeRacingGame(carNames, tryCount, new RandomNumberStrategy());
+        final RacingGameController racingGameController = new RacingGameController();
+        final String[] carNames = racingGameController.inputCarNames();
+        final int tryCount = racingGameController.inputTryCount();
+        final RacingGame racingGame = racingGameController.makeRacingGame(carNames, tryCount, new RandomNumberStrategy());
         racingGameController.play(racingGame);
     }
 }

@@ -2,10 +2,10 @@ package step5.domain;
 
 public class Car {
 
-    private CarName carName;
-    private Location location;
+    private final CarName carName;
+    private final Location location;
 
-    public Car(CarName carName) {
+    public Car(final CarName carName) {
         this.location = new Location();
         this.carName = carName;
     }

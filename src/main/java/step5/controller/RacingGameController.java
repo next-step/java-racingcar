@@ -19,19 +19,19 @@ public class RacingGameController {
         return InputView.tryCount();
     }
 
-    public void play(RacingGame racingGame) {
+    public void play(final RacingGame racingGame) {
         ResultView.printStartMessage();
 
-        List<RacingResult> racingResults = racingGame.start();
-        int carCount = racingGame.getCarCount();
-        String winner = RacingWinnerService.chooseWinner(racingResults);
+        final List<RacingResult> racingResults = racingGame.start();
+        final int carCount = racingGame.getCarCount();
+        final String winner = RacingWinnerService.chooseWinner(racingResults);
 
         ResultView.printRacingResults(racingResults, carCount);
         ResultView.printWinner(winner);
     }
 
-    public RacingGame makeRacingGame(String[] carNames, int tryCount,
-        MovingStrategy movingStrategy) {
+    public RacingGame makeRacingGame(final String[] carNames, final int tryCount,
+        final MovingStrategy movingStrategy) {
         return new RacingGame(carNames, tryCount, movingStrategy);
     }
 }
