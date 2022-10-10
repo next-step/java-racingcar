@@ -1,4 +1,4 @@
-package study;
+package calculator;
 
 import java.util.function.BiFunction;
 
