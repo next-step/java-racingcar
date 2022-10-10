@@ -1,9 +1,8 @@
 package racing.view;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racing.core.RacingDto;
+import racing.core.ClientInput;
 
 import java.io.*;
 
@@ -12,13 +11,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class InputViewTest {
 
     @BeforeEach
-    void setOutStream(){
+    void setOutStream() {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
     }
 
     @Test
-    void view를_통한_유효Dto_생성(){
+    void view를_통한_유효Dto_생성() {
         String carCountIn = "3";
         String tryCountIn = "5";
         String input = carCountIn + "\n" + tryCountIn;
@@ -26,12 +25,12 @@ public class InputViewTest {
         System.setIn(in1);
 
         InputView inputView = new InputView();
-        inputView.start();
+        ClientInput result = inputView.getClientInput();
 
-        RacingDto expectedDto = RacingDto.builder()
+        ClientInput expected = ClientInput.builder()
                 .carCount(3)
                 .tryCount(5)
                 .build();
-        assertThat(inputView.getRacingDto()).isEqualTo(expectedDto);
+        assertThat(result).isEqualTo(expected);
     }
 }
