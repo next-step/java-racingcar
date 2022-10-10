@@ -10,24 +10,23 @@ public class RacingCarApplication {
     public static void main(String[] args) {
         InputView inputView = new InputView();
 
-        String carListString = inputView.carNames();
+        String carNames = inputView.carNames();
         int round = inputView.round();
 
-        Racing racing = new Racing(round);
-        Cars cars = new Cars();
-        List<Car> racingCars = cars.makeCars(carListString);
-        Winner winner = new Winner();
         ResultView resultView = new ResultView();
-        RandomNumber randomNumber = new RandomNumber();
+        RandomMovingStrategy randomNumber = new RandomMovingStrategy();
 
         resultView.resultView();
 
-        for (int i = 0; i < racing.getRound(); i++) {
-            racing.round(randomNumber, racingCars);
-            resultView.roundView(racingCars);
+        Cars cars = new Cars(carNames);
+        for (int i = 0; i < round; i++) {
+            cars.move(randomNumber);
+            resultView.roundView(cars.getCars());
         }
 
-        List<Car> winners = winner.findWinners(racingCars);
+        Winner winner = new Winner(cars.getCars());
+
+        List<Car> winners = winner.findWinners();
 
         resultView.winnerView(winners);
     }

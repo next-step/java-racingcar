@@ -12,24 +12,21 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class RacingTest {
     @Test
-    @DisplayName("한 라운드 테스트")
+    @DisplayName("라운드 테스트")
     void nameValidateTest() {
-        Racing racing = new Racing(3);
-        List<Car> list = new ArrayList<>();
-        MoveNumber moveNumber = new MoveNumber();
-        StopNumber stopNumber = new StopNumber();
+        Cars moveCars = new Cars("tom");
+        MoveMovingStrategy moveNumber = new MoveMovingStrategy();
+        StopMovingStrategy stopNumber = new StopMovingStrategy();
 
-        list.add(new Car("tom"));
+        moveCars.move(moveNumber);
 
-        racing.round(moveNumber, list);
+        assertThat(moveCars.getCars().get(0).isSamePosition(2)).isTrue();
 
-        assertThat(list.get(0).isSamePosition(2)).isTrue();
+        Cars stopCars = new Cars("tom");
 
-        list.add(new Car("jenny"));
+        stopCars.move(stopNumber);
 
-        racing.round(stopNumber, list);
-
-        assertThat(list.get(1).isSamePosition(1)).isTrue();
+        assertThat(stopCars.getCars().get(0).isSamePosition(1)).isTrue();
     }
 
 

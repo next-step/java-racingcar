@@ -5,15 +5,21 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Winner {
-    public List<Car> findWinners(List<Car> cars) {
-        var car = cars.stream().max(Comparator.comparing(Car::getPosition)).orElse(null);
+    private List<Car> cars;
 
-        if (car == null) {
-            return null;
-        }
+    public Winner(List<Car> cars) {
+        this.cars = cars;
+    }
+
+    public List<Car> findWinners() {
+        var car = this.cars.stream()
+                .max(Comparator.comparing(Car::getPosition))
+                .orElseThrow(() -> new IllegalArgumentException());
 
         int max = car.getPosition();
 
-        return cars.stream().filter(x -> x.isSamePosition(max)).collect(Collectors.toList());
+        return cars.stream()
+                .filter(x -> x.isSamePosition(max))
+                .collect(Collectors.toList());
     }
 }

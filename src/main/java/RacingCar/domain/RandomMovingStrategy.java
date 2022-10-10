@@ -2,10 +2,10 @@ package RacingCar.domain;
 
 import java.util.Random;
 
-public class RandomNumber implements Number {
+public class RandomMovingStrategy implements MovingStrategy {
     private static final Random random = new Random();
 
-    public int random(int range) {
+    public int moveable(int range) {
         return random.nextInt(range);
     }
 }
