@@ -22,7 +22,7 @@ public class WinnerRacingCars implements Comparator<RacingCar> {
     private List<RacingCar> win(final RacingCar winner) {
 
         return this.winnerRacingCars.stream()
-                .filter(racingCar -> winner.tie(racingCar))
+                .filter(racingCar -> winner.isSamePosition(racingCar))
                 .collect(Collectors.toList());
     }
 

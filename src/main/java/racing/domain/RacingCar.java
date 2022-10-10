@@ -35,7 +35,7 @@ public class RacingCar {
         return this.position;
     }
 
-    public boolean tie(final RacingCar racing) {
+    public boolean isSamePosition(final RacingCar racing) {
 
         return this.position == racing.position;
     }
