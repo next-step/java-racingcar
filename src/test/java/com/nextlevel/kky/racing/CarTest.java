@@ -15,7 +15,7 @@ public class CarTest {
     void carMoveTest(String given, int expected) {
         String[] splitNumber = given.split(",");
 
-        Car car = new Car("", () -> Integer.parseInt(splitNumber[index++]));
+        Car car = new Car("", () -> Integer.parseInt(splitNumber[index++]), 0);
         for (int i = 0; i < 3; i++) {
             car.move();
         }
