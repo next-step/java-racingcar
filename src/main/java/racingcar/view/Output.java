@@ -1,8 +1,10 @@
 package racingcar.view;
 
 import racingcar.domain.Car;
+import racingcar.domain.Winners;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Output {
     private static final String RESULT_VALUE = "-";
@@ -19,5 +21,15 @@ public class Output {
             }
             System.out.println();
         }
+    }
+
+    public static void resultRacingString(List<Car> cars) {
+        sb.append(cars.get(0).getName());
+
+        for (int i = 1; i < cars.size(); i++) {
+            sb.append(", ").append(cars.get(i).getName());
+        }
+        sb.append(RESULT_ANNOUNCE);
+        System.out.println(sb);
     }
 }
