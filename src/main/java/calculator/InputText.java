@@ -1,3 +1,5 @@
+package calculator;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -5,6 +7,7 @@ public class InputText {
 
     private static final String DEFAULT_SEPARATORS = ",|:";
     private static final String CUSTOM_SEPARATOR_FINDERS = "//(.)\n(.*)";
+    private static final Pattern PATTERN = Pattern.compile(CUSTOM_SEPARATOR_FINDERS);
 
     private final String text;
     private final Pattern pattern;
@@ -27,12 +30,19 @@ public class InputText {
     }
 
     public String[] split(){
-        if(hasCustomSeparator()){
-            Matcher matcher = pattern.matcher(this.text);
-            matcher.find();
+        Matcher matcher = pattern.matcher(this.text);
+        if(matcher.find()){
             String customDelimiter = matcher.group(1);
             return matcher.group(2).split(customDelimiter);
         }
         return this.text.split(DEFAULT_SEPARATORS);
+    }
+
+    public String getDefaultSeparators(){
+        return DEFAULT_SEPARATORS;
+    }
+
+    public Pattern getPattern(){
+        return PATTERN;
     }
 }

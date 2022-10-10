@@ -1,3 +1,5 @@
+package calculator;
+
 import java.util.Objects;
 
 public class PositiveNumber {
