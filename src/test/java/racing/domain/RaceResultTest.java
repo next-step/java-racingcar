@@ -1,6 +1,10 @@
 package racing.domain;
 
 import org.junit.jupiter.api.Test;
+import racing.domain.car.AlwaysMovingStrategy;
+import racing.domain.car.Car;
+import racing.domain.race.RaceResult;
+import racing.domain.race.Record;
 
 import java.util.List;
 
@@ -10,7 +14,7 @@ class RaceResultTest {
 
     @Test
     void 레코드_등록_테스트() {
-        Car 빵빵이 = new Car(new AlwaysMovingRule(), "빵빵이");
+        Car 빵빵이 = new Car(new AlwaysMovingStrategy(), "빵빵이");
         빵빵이.move();
         빵빵이.move();
 

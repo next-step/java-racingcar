@@ -2,6 +2,9 @@ package racing.domain;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import racing.domain.race.RaceResult;
+import racing.domain.race.Record;
+import racing.domain.race.ScoreBoard;
 
 import java.util.List;
 

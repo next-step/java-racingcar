@@ -1,4 +1,4 @@
-package racing.domain;
+package racing.domain.car;
 
 import java.util.Comparator;
 import java.util.Objects;
@@ -6,13 +6,13 @@ import java.util.Objects;
 public class Car implements Comparator<Car> {
     private final static int MAX_LENGTH_OF_NAME = 5;
 
-    private final MovingRule movingRule;
+    private final MovingStrategy movingStrategy;
     private final String name;
     private int location;
 
 
-    public Car(MovingRule movingRule, String name) {
-        this.movingRule = movingRule;
+    public Car(MovingStrategy movingStrategy, String name) {
+        this.movingStrategy = movingStrategy;
         this.name = name;
         validateName();
     }
@@ -24,7 +24,7 @@ public class Car implements Comparator<Car> {
     }
 
     public void move() {
-        if (movingRule.isPossibleToMove()) {
+        if (movingStrategy.isPossibleToMove()) {
             location++;
         }
     }

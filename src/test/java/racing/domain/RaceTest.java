@@ -1,6 +1,12 @@
 package racing.domain;
 
 import org.junit.jupiter.api.Test;
+import racing.domain.car.AlwaysMovingStrategy;
+import racing.domain.car.CarFactory;
+import racing.domain.race.Race;
+import racing.domain.race.RaceResult;
+import racing.domain.race.Record;
+import racing.domain.race.ScoreBoard;
 
 import java.util.List;
 
@@ -11,7 +17,7 @@ class RaceTest {
 
     @Test
     void 자동차_경주_결과_테스트() {
-        CarFactory carFactory = new CarFactory(new AlwaysMovingRule());
+        CarFactory carFactory = new CarFactory(new AlwaysMovingStrategy());
         Race race = new Race(carFactory.create("띠띠", "씽씽", "뚜뚜"), 3);
         race.play();
         ScoreBoard scoreBoard = race.result();
