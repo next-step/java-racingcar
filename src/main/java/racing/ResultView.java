@@ -19,7 +19,10 @@ public class ResultView {
     }
 
     public static void printWinners(List<Car> cars) {
-        String names = cars.stream().map(Car::getName).collect(Collectors.joining(NAME_DELIMITER));
+        String names = cars.stream()
+                .map(Car::getName)
+                .map(CarName::toString)
+                .collect(Collectors.joining(NAME_DELIMITER));
         System.out.printf(WINNER_FORMAT, names);
     }
 
@@ -28,6 +31,6 @@ public class ResultView {
     }
 
     private static void printCar(Car car) {
-        System.out.printf(CAR_FORMAT, car.getName(), MOVE_SYMBOL.repeat(car.getMoves()));
+        System.out.printf(CAR_FORMAT, car, MOVE_SYMBOL.repeat(car.getMoves()));
     }
 }
