@@ -1,16 +1,16 @@
 package racingcar.step3_4.view;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import racingcar.step3_4.domain.GameRecord;
-import racingcar.step3_4.domain.Name;
 import racingcar.step3_4.domain.TryRecord;
 import racingcar.step3_4.domain.TryResult;
 import racingcar.step3_4.domain.Winners;
 
 public class ResultView {
 
+    private static final String COLON = " : ";
     private static final char DASH_MARK = '-';
+    private static final String COMMA = ", ";
 
     public void printGameResult(GameRecord gameRecord) {
         printEachTryResult(gameRecord.getTryResults());
@@ -27,7 +27,7 @@ public class ResultView {
         StringBuilder stringBuilder = new StringBuilder();
         for (TryRecord tryRecord : records) {
             stringBuilder.append(tryRecord.getName());
-            stringBuilder.append(" : ");
+            stringBuilder.append(COLON);
             stringBuilder.append(toDashMark(tryRecord.getPosition()));
         }
         System.out.println(stringBuilder);
@@ -39,17 +39,12 @@ public class ResultView {
 
     private String toDashMark(int carPosition) {
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < carPosition; i++) {
-            stringBuilder.append(DASH_MARK);
-        }
+        stringBuilder.append(String.valueOf(DASH_MARK).repeat(Math.max(0, carPosition)));
         stringBuilder.append(System.lineSeparator());
         return stringBuilder.toString();
     }
 
     private String getNames(Winners winners) {
-        return winners.getNames()
-            .stream()
-            .map(Name::toString)
-            .collect(Collectors.joining(", "));
+        return String.join(COMMA, winners.getNames());
     }
 }

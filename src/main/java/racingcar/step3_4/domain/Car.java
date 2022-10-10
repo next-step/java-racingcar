@@ -1,6 +1,7 @@
 package racingcar.step3_4.domain;
 
 import java.util.Objects;
+import racingcar.step3_4.strategy.ValueGenerator;
 
 public class Car {
 
@@ -15,8 +16,8 @@ public class Car {
 		this.position = INITIAL_POSITION;
 	}
 
-	public int move(RandomValueGenerator randomValueGenerator) {
-		if (randomValueGenerator.generate() >= MIN_MOVE_VALUE) {
+	public int move(ValueGenerator valueGenerator) {
+		if (valueGenerator.generate() >= MIN_MOVE_VALUE) {
 			this.position++;
 		}
 
@@ -40,8 +41,8 @@ public class Car {
 		return Objects.hash(name, position);
 	}
 
-	public Name getName() {
-		return name;
+	public String getName() {
+		return name.getName();
 	}
 
 	public int getPosition() {

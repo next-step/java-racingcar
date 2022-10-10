@@ -4,10 +4,10 @@ import java.util.Objects;
 
 public class TryRecord {
 
-    private final Name name;
+    private final String name;
     private final int position;
 
-    public TryRecord(Name name, int position) {
+    public TryRecord(String name, int position) {
         this.name = name;
         this.position = position;
     }
@@ -29,7 +29,7 @@ public class TryRecord {
         return Objects.hash(name, position);
     }
 
-    public Name getName() {
+    public String getName() {
         return name;
     }
 

@@ -24,9 +24,9 @@ class WinnersTest {
 	void getWinnersNameTest() {
 		Winners winners = new Winners(cars);
 
-		List<Name> result = winners.getNames();
+		List<String> result = winners.getNames();
 
 		assertThat(result).hasSize(3);
-		assertThat(result).contains(new Name("pobi"), new Name("honux"), new Name("crong"));
+		assertThat(result).contains("pobi", "honux", "crong");
 	}
 }

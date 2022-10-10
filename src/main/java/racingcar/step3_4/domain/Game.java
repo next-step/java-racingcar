@@ -2,13 +2,14 @@ package racingcar.step3_4.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.step3_4.strategy.ValueGenerator;
 
 public class Game {
 
-    private final RandomValueGenerator randomValueGenerator;
+    private final ValueGenerator valueGenerator;
 
-    public Game(RandomValueGenerator randomValueGenerator) {
-        this.randomValueGenerator = randomValueGenerator;
+    public Game(ValueGenerator valueGenerator) {
+        this.valueGenerator = valueGenerator;
     }
 
     public GameRecord play(GameAttribute gameAttribute) {
@@ -17,7 +18,7 @@ public class Game {
 
         List<TryResult> tryResults = new ArrayList<>();
         for (int i = 0; i < gameAttribute.getTryCount(); i++) {
-            cars.move(randomValueGenerator);
+            cars.move(valueGenerator);
 
             tryResults.add(TryResult.of(cars.getCars()));
         }
