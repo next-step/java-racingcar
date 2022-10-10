@@ -2,10 +2,8 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import racingcar.dto.RacingResult;
+import racingcar.output.RacingResult;
 import racingcar.strategy.NumberGenerateStrategy;
-import racingcar.strategy.RandomNumberGenerateStrategy;
 
 public class Racing {
 
@@ -16,10 +14,10 @@ public class Racing {
     }
 
     public Racing(final List<String> carNames) {
-        this.racers = new Racers(carNames, new RandomNumberGenerateStrategy());
+        this.racers = new Racers(carNames);
     }
 
-    public Racing(final List<String> carNames, NumberGenerateStrategy strategy) {
+    public Racing(final List<String> carNames, final NumberGenerateStrategy strategy) {
         this.racers = new Racers(carNames, strategy);
     }
 
@@ -35,10 +33,7 @@ public class Racing {
     }
 
     public List<String> winners() {
-        int maxPosition = racers.maxPosition();
-        return racers.getCars().stream()
-            .filter(car -> car.getPosition() == maxPosition)
-            .map(Car::getName)
-            .collect(Collectors.toList());
+        int maxPosition = racers.getMaxPosition();
+        return racers.findSamePositionCars(maxPosition);
     }
 }

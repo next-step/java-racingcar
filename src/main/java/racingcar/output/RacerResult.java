@@ -1,4 +1,4 @@
-package racingcar.dto;
+package racingcar.output;
 
 import racingcar.Car;
 
@@ -10,12 +10,13 @@ public class RacerResult {
     private RacerResult() {
     }
 
-    public static RacerResult from(final Car car) {
-        RacerResult racerResult = new RacerResult();
-        racerResult.carName = car.getName();
-        racerResult.carPosition = car.getPosition();
+    public RacerResult(final String carName, final int carPosition) {
+        this.carName = carName;
+        this.carPosition = carPosition;
+    }
 
-        return racerResult;
+    public static RacerResult from(final Car car) {
+        return new RacerResult(car.getName(), car.getPosition());
     }
 
     public String getCarName() {

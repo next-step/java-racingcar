@@ -15,8 +15,7 @@ class RacingTest {
     @DisplayName("race 메소드는 파라미터로 들어온 횟수만큼 경주를 진행한다.")
     void race_result() {
         List<String> carNames = List.of("jordy", "penda", "kero");
-        NumberGenerateStrategy strategy = new RandomNumberGenerateStrategy();
-        Racing racing = new Racing(carNames, strategy);
+        Racing racing = new Racing(carNames);
         racing.race(5);
 
         assertThat(racing.getResult()).hasSize(5);
