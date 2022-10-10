@@ -1,10 +1,8 @@
 package step3.car_racing.util;
 
-import step3.car_racing.model.Car;
 import step3.car_racing.model.Cars;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class WinnerUtil {
 
@@ -25,17 +23,7 @@ public class WinnerUtil {
     }
 
     private static List<String> findWinnerCarNameList(Cars cars) {
-        int max = cars.getCarList()
-                .stream()
-                .mapToInt(car -> car.getDistance().length())
-                .max()
-                .orElse(MIN_DISTANCE);
-
-        return cars.getCarList()
-                .stream()
-                .filter(car -> car.getDistance().length() == max)
-                .map(Car::getName)
-                .collect(Collectors.toList());
+        return cars.findWinner();
     }
 
 
