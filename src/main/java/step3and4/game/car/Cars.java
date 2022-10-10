@@ -36,8 +36,8 @@ public class Cars {
     }
 
     public List<String> positionsAndNames() {
-        return cars.stream().map(Car::toString)
-                .collect(Collectors.toList());
+        return cars.stream().map(Car::print)
+                .collect(Collectors.toUnmodifiableList());
     }
 
     public static class Factory {
