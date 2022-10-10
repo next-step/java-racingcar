@@ -1,6 +1,6 @@
 package carRacing.level3.model;
 
-import carRacing.level3.infra.error.NotFoundCarsException;
+import carRacing.level3.error.NotFoundCarsException;
 import carRacing.level3.model.strategy.MovingStrategy;
 import java.util.List;
 import java.util.stream.Collectors;

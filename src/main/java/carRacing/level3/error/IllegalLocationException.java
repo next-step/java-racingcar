@@ -1,4 +1,4 @@
-package carRacing.level3.infra.error;
+package carRacing.level3.error;
 
 public class IllegalLocationException extends RuntimeException{
 

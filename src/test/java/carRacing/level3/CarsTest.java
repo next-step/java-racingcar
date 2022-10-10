@@ -3,7 +3,7 @@ package carRacing.level3;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import carRacing.level3.infra.error.NotFoundCarsException;
+import carRacing.level3.error.NotFoundCarsException;
 import carRacing.level3.model.Cars;
 import carRacing.level3.model.Location;
 import java.util.ArrayList;

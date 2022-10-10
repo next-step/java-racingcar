@@ -1,6 +1,6 @@
 package carRacing.level3.model;
 
-import carRacing.level3.infra.error.NameLengthException;
+import carRacing.level3.error.NameLengthException;
 
 public class CarName {
 

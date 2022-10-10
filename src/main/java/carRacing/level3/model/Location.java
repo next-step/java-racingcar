@@ -1,6 +1,6 @@
 package carRacing.level3.model;
 
-import carRacing.level3.infra.error.IllegalLocationException;
+import carRacing.level3.error.IllegalLocationException;
 import java.util.Objects;
 
 public class Location {

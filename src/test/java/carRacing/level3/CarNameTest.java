@@ -2,7 +2,7 @@ package carRacing.level3;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import carRacing.level3.infra.error.NameLengthException;
+import carRacing.level3.error.NameLengthException;
 import carRacing.level3.model.CarName;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
