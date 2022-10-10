@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingCarGame {
-    private static final String CAR_NAME_NULL_MESSAGE = "자동차의 이름의 값이 없습니다.";
+    private static final String CAR_NAME_NO_VALUE_MESSAGE = "자동차의 이름의 값이 없습니다.";
 
     private final Cars cars;
     private final RacingRecord racingRecord = new RacingRecord();
@@ -43,8 +43,12 @@ public class RacingCarGame {
     }
 
     private void validateCarNames(List<String> carNames) {
-        if (carNames.isEmpty()) {
-            throw new IllegalArgumentException(CAR_NAME_NULL_MESSAGE);
+        if (isNullOrEmpty(carNames)) {
+            throw new IllegalArgumentException(CAR_NAME_NO_VALUE_MESSAGE);
         }
+    }
+
+    private boolean isNullOrEmpty(List<String> carNames) {
+        return carNames == null || carNames.isEmpty();
     }
 }
