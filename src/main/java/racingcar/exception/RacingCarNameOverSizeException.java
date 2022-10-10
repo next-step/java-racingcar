@@ -1,6 +1,6 @@
 package racingcar.exception;
 
-import racingcar.RacingCar;
+import racingcar.domain.RacingCar;
 
 public class RacingCarNameOverSizeException extends RuntimeException {
 

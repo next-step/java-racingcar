@@ -1,9 +1,8 @@
-package racingcar;
+package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
+import racingcar.strategy.RandomMovingStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -18,7 +17,7 @@ public class RacingGameLogStoreTest {
         final String racingCarNames = "woody,beans,isla";
         final int gameTurnCount = 10;
         RacingGameCondition condition = new RacingGameCondition(racingCarNames, gameTurnCount);
-        RacingGame game = RacingGameFactory.make(condition);
+        RacingGame game = RacingGameFactory.make(new RandomMovingStrategy(), condition);
 
         // when
         game.run();
@@ -26,12 +25,12 @@ public class RacingGameLogStoreTest {
         // then
         assertAll(
                 () -> assertThat(game.getGameLogs()
-                                     .size()).isEqualTo(gameTurnCount + 1),
-                () -> {
-                    List<String> gameLogs = game.getGameLogs();
-                    String lastGameLog = gameLogs.get(gameLogs.size() - 1);
-                    assertThat(lastGameLog).containsAnyOf("woody", "beans", "isla");
-                }
+                                     .size()).isEqualTo(gameTurnCount),
+                () -> assertTrue(game.getGameLogs()
+                                     .stream()
+                                     .allMatch(racingGameLog -> racingGameLog.getRacingCars()
+                                                                             .getRacingCars()
+                                                                             .size() == 3))
         );
     }
 
@@ -42,18 +41,17 @@ public class RacingGameLogStoreTest {
         final String racingCarNames = "woody,beans,isla";
         final int gameTurnCount = 5;
         RacingGameCondition condition = new RacingGameCondition(racingCarNames, gameTurnCount);
-        RacingGame game = RacingGameFactory.make(condition);
+        RacingGame game = RacingGameFactory.make(new RandomMovingStrategy(), condition);
 
         // when
         game.run();
 
         // then
         boolean containAllRacingCarName = game.getGameLogs()
-                                              .subList(0, gameTurnCount)
                                               .stream()
-                                              .allMatch(log -> log.contains("woody")
-                                                      && log.contains("beans")
-                                                      && log.contains("isla"));
+                                              .allMatch(log -> log.getRacingCars()
+                                                                  .getRacingCars()
+                                                                  .size() == 3);
         assertTrue(containAllRacingCarName);
     }
 
@@ -64,13 +62,13 @@ public class RacingGameLogStoreTest {
         final String racingCarNames = "woody,beans,isla";
         final int gameTurnCount = 5;
         RacingGameCondition condition = new RacingGameCondition(racingCarNames, gameTurnCount);
-        RacingGame game = RacingGameFactory.make(condition);
+        RacingGame game = RacingGameFactory.make(new RandomMovingStrategy(), condition);
 
         // when
         game.run();
 
         // then
         assertThat(game.getGameLogs()
-                       .size()).isEqualTo(6);
+                       .size()).isEqualTo(5);
     }
 }

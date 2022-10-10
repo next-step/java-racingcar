@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import racingcar.exception.RacingCarNameOverSizeException;
 import racingcar.strategy.MovingStrategy;
@@ -21,6 +21,11 @@ public class RacingCar {
         this.distance = 0;
     }
 
+    public RacingCar(RacingCar racingCar) {
+        this.name = racingCar.getName();
+        this.distance = racingCar.getDistance();
+    }
+
     public void move(MovingStrategy movingStrategy) {
         if (movingStrategy.isMove()) {
             this.distance++;
@@ -33,5 +38,18 @@ public class RacingCar {
 
     public String getName() {
         return this.name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RacingCar racingCar = (RacingCar) o;
+        return distance == racingCar.distance && Objects.equals(name, racingCar.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, distance);
     }
 }
