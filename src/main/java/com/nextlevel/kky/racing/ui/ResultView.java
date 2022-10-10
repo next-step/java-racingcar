@@ -8,7 +8,7 @@ import java.util.List;
 public class ResultView {
 
     public static void printCarRacingResultWithName(CarRacingExecutor carRacingExecutor) {
-        for (Car car : carRacingExecutor.carList) {
+        for (Car car : carRacingExecutor.getCarList()) {
             System.out.print(car.getName() + ": ");
             System.out.print("-".repeat(car.getCurrentPosition() + 1));
             System.out.println();

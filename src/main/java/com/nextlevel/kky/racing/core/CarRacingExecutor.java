@@ -6,9 +6,13 @@ import java.util.stream.Collectors;
 
 public class CarRacingExecutor {
 
-    public List<Car> carList;
+    private final List<Car> carList;
 
-    public CarRacingExecutor(String names[]) {
+    public List<Car> getCarList() {
+        return carList;
+    }
+
+    public CarRacingExecutor(String[] names) {
         carList = new ArrayList();
 
         for (String name : names) {
