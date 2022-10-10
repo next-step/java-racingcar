@@ -5,6 +5,7 @@ import java.util.List;
 
 public class WinnerChecker {
 
+    public static final int DEFAULT_POSITION = 0;
     private Cars cars;
 
     public WinnerChecker(Cars cars) {
@@ -33,10 +34,9 @@ public class WinnerChecker {
     }
 
     private int findMaxPosition(List<Car> carList) {
-        int maxPosition = -1;
-        for (Car car : carList) {
-            maxPosition = Math.max(maxPosition, car.getPosition());
-        }
-        return maxPosition;
+        return carList.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(DEFAULT_POSITION);
     }
 }
