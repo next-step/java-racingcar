@@ -13,6 +13,11 @@ public class Racing {
         this.iterate = iterate;
     }
 
+    public Racing(List<Car> cars, int iterate) {
+        this.cars = cars;
+        this.iterate = iterate;
+    }
+
     public void start() {
         for (int round = 0; round < this.iterate; round++) {
             this.runRound();
