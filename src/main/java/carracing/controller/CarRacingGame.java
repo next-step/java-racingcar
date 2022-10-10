@@ -25,7 +25,7 @@ public class CarRacingGame {
     private void startRacing(Cars cars, int tryTimes) {
 
         RandomGenerator randomGenerator = new RandomGenerator();
-        WinnerChecker winnerChecker = new WinnerChecker();
+        WinnerChecker winnerChecker = new WinnerChecker(cars);
 
         outputView.printStart();
 
@@ -35,7 +35,7 @@ public class CarRacingGame {
             outputView.printBlank();
         }
 
-        outputView.printWinner(winnerChecker.findWinners(cars));
+        outputView.printWinner(winnerChecker.findWinners());
     }
 
     private void printTrails(Cars cars) {

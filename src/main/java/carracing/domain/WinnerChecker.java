@@ -5,7 +5,13 @@ import java.util.List;
 
 public class WinnerChecker {
 
-    public List<String> findWinners(Cars cars) {
+    private Cars cars;
+
+    public WinnerChecker(Cars cars) {
+        this.cars = cars;
+    }
+
+    public List<String> findWinners() {
 
         List<String> winnersList = new ArrayList<>();
         int maxPosition = findMaxPosition(cars.getCars());
@@ -14,7 +20,6 @@ public class WinnerChecker {
             checkAndPutWinner(winnersList, maxPosition, car);
         }
         return winnersList;
-
     }
 
     private void checkAndPutWinner(List<String> winners, int maxPosition, Car car) {
