@@ -1,5 +1,6 @@
 package carRacing.level3.model;
 
+import carRacing.level3.infra.error.IllegalLocationException;
 import java.util.Objects;
 
 public class Location {
@@ -14,7 +15,7 @@ public class Location {
 
 	public Location(int location) {
 		if (location < DEFAULT_LOCATION) {
-			throw new RuntimeException();
+			throw new IllegalLocationException("위치는 음수가 될 수 없습니다");
 		}
 		this.location = location;
 	}
