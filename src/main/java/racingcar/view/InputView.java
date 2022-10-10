@@ -47,11 +47,15 @@ public final class InputView {
     private static List<String> inputStringValue() {
         try {
             String carNames = SCANNER.nextLine();
-            return Arrays.asList(carNames.trim().split(SEPARATOR));
+            return Arrays.asList(splitToArray(carNames));
         } catch (Exception e) {
             System.out.print(RETRY);
             System.out.println(e.getMessage());
             return inputStringValue();
         }
+    }
+
+    private static String[] splitToArray(String carNames) {
+        return carNames.trim().split(SEPARATOR);
     }
 }

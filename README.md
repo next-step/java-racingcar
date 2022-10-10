@@ -93,7 +93,7 @@
 - [x] 자동차 이름 받아서 split처리 inputView에서 처리하도록 로직 재구성
 - [x] Car 객체 불변성 적용
 - [x] isWinner 함수 네이밍이 의도와 맞게 isMaxPosition 으로 변경 
-- [ ] 메서드 이름 수정
+- [x] 메서드 이름 수정
   - isMaxPosition 
   - 차이름 null과 empty(blank)의미 포함하게 함수 네이밍 변경
   - 차이름 값 없을 때 상수 이름 의미 있게 수정
