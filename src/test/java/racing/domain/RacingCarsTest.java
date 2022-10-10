@@ -19,30 +19,30 @@ public class RacingCarsTest {
 	@DisplayName("우승자 조회 테스트")
 	@Test
 	void getWinnersOfRacing() {
-		Car FirstCar = new Car(TEST_CAR_NAME_ONE, 4, NOT_MOVE_RANDOM_NUM);
-		Car SecondCar = new Car(TEST_CAR_NAME_ONE, 3, NOT_MOVE_RANDOM_NUM);
+		Car firstCar = new Car(TEST_CAR_NAME_ONE, 4, NOT_MOVE_RANDOM_NUM);
+		Car secondCar = new Car(TEST_CAR_NAME_ONE, 3, NOT_MOVE_RANDOM_NUM);
 		RacingCars racingCars = new RacingCars(
-			List.of(FirstCar, SecondCar)
+			List.of(firstCar, secondCar)
 		);
 
 		List<Car> cars = racingCars.getWinnersOfRacing();
 
-		assertThat(cars).containsOnly(FirstCar);
+		assertThat(cars).containsOnly(firstCar);
 	}
 
 	@DisplayName("복수 우승자 조회 테스트")
 	@Test
 	void getMaxLocation() {
-		Car FirstCar = new Car(TEST_CAR_NAME_ONE, STANDARD_LOCATION, NOT_MOVE_RANDOM_NUM);
-		Car SecondCar = new Car(TEST_CAR_NAME_TWO, STANDARD_LOCATION, NOT_MOVE_RANDOM_NUM);
-		Car ThirdCar = new Car(TEST_CAR_NAME_THREE, LOWER_LOCATION, NOT_MOVE_RANDOM_NUM);
+		Car firstCar = new Car(TEST_CAR_NAME_ONE, STANDARD_LOCATION, NOT_MOVE_RANDOM_NUM);
+		Car secondCar = new Car(TEST_CAR_NAME_TWO, STANDARD_LOCATION, NOT_MOVE_RANDOM_NUM);
+		Car thirdCar = new Car(TEST_CAR_NAME_THREE, LOWER_LOCATION, NOT_MOVE_RANDOM_NUM);
 		RacingCars racingCars = new RacingCars(
-			List.of(FirstCar, SecondCar, ThirdCar)
+			List.of(firstCar, secondCar, thirdCar)
 		);
 
 		List<Car> cars = racingCars.getWinnersOfRacing();
 
-		assertThat(cars).containsOnly(FirstCar, SecondCar);
+		assertThat(cars).containsOnly(firstCar, secondCar);
 	}
 
 }
