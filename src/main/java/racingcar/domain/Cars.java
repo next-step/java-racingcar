@@ -23,18 +23,12 @@ public class Cars {
         return records;
     }
 
-    public CarsRecord findWinners() {
-        CarsRecord records = new CarsRecord();
-        List<Car> winners = getWinners(getMaxPosition());
-        for (Car winner : winners) {
-            records.add(winner);
-        }
-        return records;
+    public List<Car> findWinners() {
+        return getWinners(getMaxPosition());
     }
 
     private List<Car> getWinners(CarPosition maxPosition) {
-        return values.stream()
-                .filter(value -> value.isSamePosition(maxPosition))
+        return values.stream().filter(value -> value.isSamePosition(maxPosition))
                 .collect(Collectors.toList());
     }
 
