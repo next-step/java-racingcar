@@ -8,7 +8,6 @@ import java.util.Objects;
 public class Car {
     private final int MOVE_POSITION = 1;
     private final int NAME_MAX_LENGTH = 5;
-    private final String ERROR_CHECK_SPACE = "공백은 입력할 수 없다.";
     private final String ERROR_CHECK_LENGTH = "자동차 이름은 " + NAME_MAX_LENGTH + "자를 초과할 수 없다.";
 
     private MoveCondition moveCondition;
@@ -24,17 +23,10 @@ public class Car {
     }
 
     public Car(String name, int position, MoveCondition moveCondition) {
-        checkSpace(name);
         checkLength(name);
         this.name = name.trim();
         this.position = position;
         this.moveCondition = moveCondition;
-    }
-
-    private void checkSpace(String name) {
-        if (name.trim().isEmpty()) {
-            throw new IllegalArgumentException(ERROR_CHECK_SPACE);
-        }
     }
 
     private void checkLength(String name) {
@@ -79,12 +71,12 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return MOVE_POSITION == car.MOVE_POSITION && NAME_MAX_LENGTH == car.NAME_MAX_LENGTH && position == car.position && Objects.equals(ERROR_CHECK_SPACE, car.ERROR_CHECK_SPACE) && Objects.equals(ERROR_CHECK_LENGTH, car.ERROR_CHECK_LENGTH) && Objects.equals(moveCondition, car.moveCondition) && Objects.equals(name, car.name);
+        return MOVE_POSITION == car.MOVE_POSITION && NAME_MAX_LENGTH == car.NAME_MAX_LENGTH && position == car.position && Objects.equals(ERROR_CHECK_LENGTH, car.ERROR_CHECK_LENGTH) && Objects.equals(moveCondition, car.moveCondition) && Objects.equals(name, car.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(MOVE_POSITION, NAME_MAX_LENGTH, ERROR_CHECK_SPACE, ERROR_CHECK_LENGTH, moveCondition, name, position);
+        return Objects.hash(MOVE_POSITION, NAME_MAX_LENGTH, ERROR_CHECK_LENGTH, moveCondition, name, position);
     }
 
     @Override
