@@ -1,12 +1,14 @@
-package dto;
+package domain.racingcar;
 
-import domain.MovingStrategy;
+import domain.racingcar.dto.MovingStrategy;
+import domain.racingcar.dto.RacingCar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingCars {
+
+    private int winnerDistance = Integer.MIN_VALUE;
     private final List<RacingCar> racingCars;
 
     public RacingCars(int numOfCars) {
@@ -33,21 +35,30 @@ public class RacingCars {
         }
     }
 
-    public void move(MovingStrategy movingStrategy) {
+    public List<RacingCar> move(MovingStrategy movingStrategy) {
         for (RacingCar racingCar : racingCars) {
             racingCar.move(movingStrategy);
         }
-    }
 
-    public List<Integer> distance() {
-        return racingCars.stream().map(RacingCar::getDistance).collect(Collectors.toList());
-    }
-
-    public List<String> name() {
-        return racingCars.stream().map(RacingCar::getName).collect(Collectors.toList());
-    }
-
-    public List<RacingCar> getRacingCars() {
         return racingCars;
+    }
+
+    private int findRaceWinnerDistance() {
+        for (RacingCar racingCar : racingCars) {
+            winnerDistance = Math.max(winnerDistance, racingCar.getDistance());
+        }
+
+        if (winnerDistance <= 0) throw new IllegalStateException("우승자가 존재하지 않습니다.");
+
+        return winnerDistance;
+    }
+
+    public List<String> findRaceWinners() {
+        List<String> raceWinners = new ArrayList<>();
+        for (RacingCar racingCar : racingCars) {
+            if (racingCar.hasRaceWinnerDistance(findRaceWinnerDistance())) raceWinners.add(racingCar.getName());
+        }
+
+        return raceWinners;
     }
 }

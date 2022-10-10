@@ -1,6 +1,6 @@
-import domain.FixedFalseMovingStrategy;
-import domain.FixedTrueMovingStrategy;
-import dto.RacingCar;
+import domain.racingcar.dto.FixedFalseMovingStrategy;
+import domain.racingcar.dto.FixedTrueMovingStrategy;
+import domain.racingcar.dto.RacingCar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

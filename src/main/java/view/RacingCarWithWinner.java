@@ -1,8 +1,8 @@
 package view;
 
-import domain.RacingCarService;
-import domain.RandomMovingStrategy;
-import dto.RacingCars;
+import domain.racingcar.dto.RandomMovingStrategy;
+import domain.racingcar.dto.RacingCar;
+import domain.racingcar.RacingCars;
 
 import java.util.List;
 
@@ -21,25 +21,21 @@ public class RacingCarWithWinner implements Result {
         System.out.println("실행 결과");
         raceResult(cars, races);
 
-        RacingCarService racingCarService = new RacingCarService();
-        System.out.println(racingCarService.findRaceWinners(cars) + "가 최종 우승했습니다.");
+        System.out.println(cars.findRaceWinners() + "가 최종 우승했습니다.");
     }
 
     @Override
     public void raceResult(RacingCars racingCars, int numOfRaces) {
         for (int count = 1; count <= numOfRaces; count++) {
-            racingCars.move(new RandomMovingStrategy());
-            outputCarsLocation(racingCars);
+            outputCarsLocation(racingCars.move(new RandomMovingStrategy()));
         }
     }
 
-    private void outputCarsLocation(RacingCars racingCars) {
-        List<Integer> distances = racingCars.distance();
-        List<String> names = racingCars.name();
-
-        for (int index = 0; index < names.size(); index++) {
-            System.out.println(names.get(index) + " : " + createCarDistanceBar(distances.get(index)));
+    private void outputCarsLocation(List<RacingCar> racingCars) {
+        for (RacingCar racingCar : racingCars) {
+            System.out.println(racingCar.getName() + " : " + createCarDistanceBar(racingCar.getDistance()));
         }
+
         System.out.println();
     }
 }

@@ -1,6 +1,6 @@
 package util;
 
-import dto.Positive;
+import domain.calculator.dto.Positive;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

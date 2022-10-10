@@ -1,6 +1,6 @@
 package util;
 
-import dto.Positive;
+import domain.calculator.dto.Positive;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

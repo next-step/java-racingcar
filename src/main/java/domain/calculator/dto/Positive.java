@@ -1,4 +1,4 @@
-package dto;
+package domain.calculator.dto;
 
 import java.util.Objects;
 

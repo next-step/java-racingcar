@@ -1,4 +1,4 @@
-package domain;
+package domain.racingcar.dto;
 
 public class FixedTrueMovingStrategy implements MovingStrategy {
 
