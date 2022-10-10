@@ -1,41 +1,42 @@
 package racingcar.backend.domain;
 
-import java.util.*;
+import racingcar.backend.dto.CarDto;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class GameRecords {
 
-    private final List<GameRecord> values;
+    private final List<GameRecord> records;
 
     public GameRecords() {
-        this.values = new ArrayList<>();
-    }
-
-    public static GameRecords create() {
-        return new GameRecords();
+        this.records = new ArrayList<>();
     }
 
     public void add(GameRecord gameRecord) {
-        values.add(gameRecord);
+        records.add(gameRecord);
     }
 
-    public List<CarName> finalWinner() {
-        return lastGame().entrySet().stream()
-                .filter(entry -> entry.getValue().getValue() == getMaxPosition())
-                .map(Map.Entry::getKey)
+    public List<CarDto> getWinner() {
+        return lastGame().stream()
+                .filter(carDto -> carDto.getPosition().equals(maxPosition()))
                 .collect(Collectors.toList());
     }
 
-    private int getMaxPosition() {
-        return Collections.max(lastGame().values(),
-                Comparator.comparingInt(Position::getValue)).getValue();
+    private Position maxPosition() {
+        return lastGame().stream()
+                .max(Comparator.comparing(CarDto::getPosition))
+                .get()
+                .getPosition();
     }
 
-    private Map<CarName, Position> lastGame() {
-        return values.get(values.size() - 1).getValue();
+    private List<CarDto> lastGame() {
+        return records.get(records.size() - 1).getValue();
     }
 
     public List<GameRecord> getValues() {
-        return new ArrayList<>(values);
+        return records;
     }
 }
