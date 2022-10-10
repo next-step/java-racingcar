@@ -1,4 +1,4 @@
-package step3.input;
+package step3and4.client.input;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,6 +14,13 @@ public class ConsoleInputView implements InputView {
 
         System.out.println(question);
         return Integer.parseInt(BUFFERED_READER.readLine());
+    }
+
+    @Override
+    public String[] carsNames(String question) throws IOException {
+        System.out.println(question);
+        return BUFFERED_READER.readLine()
+                .split(",");
     }
 
     private void verifyOnlyNumber(String question) {

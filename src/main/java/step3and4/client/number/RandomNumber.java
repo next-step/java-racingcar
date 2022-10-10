@@ -1,4 +1,4 @@
-package step3.number;
+package step3and4.client.number;
 
 import java.util.concurrent.ThreadLocalRandom;
 

@@ -1,6 +1,4 @@
-package step3.position;
-
-import step3.output.OutputView;
+package step3and4.game.car;
 
 import java.util.Objects;
 
@@ -10,19 +8,17 @@ public final class Position {
 
     private final int position;
 
-    private final OutputView outputView;
-
-    public Position(int position, OutputView outputView) {
+    public Position(int position) {
         this.position = position;
-        this.outputView = outputView;
     }
 
     public Position movedPosition() {
-        return new Position(position + DISTANCE_TO_MOVE, outputView);
+        return new Position(position + DISTANCE_TO_MOVE);
     }
 
-    public void printPosition() {
-        outputView.print(position);
+    public String print() {
+        final String bar = "-";
+        return bar.repeat(position);
     }
 
     @Override
