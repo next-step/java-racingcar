@@ -1,26 +1,30 @@
 package step3;
 
-import java.util.Random;
-
 public class Car {
 
-    private int location;
+    private Name name;
+    private Position position;
     private final int ADVANCED_VALUE = 4;
 
-    public Car(int location) {
-        this.location = location;
+    public Car(Name name, Position position) {
+        this.name = name;
+        this.position = position;
     }
 
-    public int advanceCar(int randomValue) {
-        if(isAdvanced(randomValue)) {
-            this.location++;
-            return this.location;
+    public Position advanceCar(int randomValue) {
+        if (isAdvanced(randomValue)) {
+            this.position.advancedPosition();
+            return this.position;
         }
-        return this.location;
+        return this.position;
     }
 
-    public int currentLocation() {
-        return this.location;
+    public Position currentPosition() {
+        return this.position;
+    }
+
+    public Name currentName() {
+        return this.name;
     }
 
     private boolean isAdvanced(int value) {
