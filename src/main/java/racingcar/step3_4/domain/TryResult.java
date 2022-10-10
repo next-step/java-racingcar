@@ -12,11 +12,11 @@ public class TryResult {
     }
 
     public static TryResult of(List<Car> cars) {
-        List<TryRecord> collect = cars.stream()
+        List<TryRecord> records = cars.stream()
             .map(car -> new TryRecord(car.getName(), car.getPosition()))
             .collect(Collectors.toList());
 
-        return new TryResult(collect);
+        return new TryResult(records);
     }
 
     public List<TryRecord> getRecords() {
