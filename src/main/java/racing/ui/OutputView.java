@@ -1,9 +1,9 @@
 package racing.ui;
 
-import racing.domain.Race;
-import racing.domain.RaceResult;
-import racing.domain.Record;
-import racing.domain.ScoreBoard;
+import racing.domain.race.Race;
+import racing.domain.race.RaceResult;
+import racing.domain.race.Record;
+import racing.domain.race.ScoreBoard;
 
 import java.util.List;
 import java.util.stream.Collectors;

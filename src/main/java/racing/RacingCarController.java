@@ -1,6 +1,9 @@
 package racing;
 
-import racing.domain.*;
+import racing.domain.car.Car;
+import racing.domain.car.CarFactory;
+import racing.domain.car.RandomStrategy;
+import racing.domain.race.Race;
 import racing.ui.Form;
 import racing.ui.InputView;
 import racing.ui.OutputView;

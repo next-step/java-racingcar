@@ -1,6 +1,9 @@
 package racing.domain;
 
 import org.junit.jupiter.api.Test;
+import racing.domain.car.AlwaysMovingStrategy;
+import racing.domain.car.Car;
+import racing.domain.car.RandomStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;

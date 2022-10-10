@@ -1,6 +1,12 @@
 package racing.domain;
 
 import org.junit.jupiter.api.Test;
+import racing.domain.car.AlwaysMovingStrategy;
+import racing.domain.car.CarFactory;
+import racing.domain.race.Race;
+import racing.domain.race.RaceResult;
+import racing.domain.race.Record;
+import racing.domain.race.ScoreBoard;
 
 import java.util.List;
 

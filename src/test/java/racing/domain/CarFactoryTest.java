@@ -3,6 +3,9 @@ package racing.domain;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racing.domain.car.AlwaysMovingStrategy;
+import racing.domain.car.Car;
+import racing.domain.car.CarFactory;
 
 import java.util.List;
 

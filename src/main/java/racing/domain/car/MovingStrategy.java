@@ -1,4 +1,4 @@
-package racing.domain;
+package racing.domain.car;
 
 public interface MovingStrategy {
     boolean isPossibleToMove();
