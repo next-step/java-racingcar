@@ -5,25 +5,16 @@ import java.util.Objects;
 public class Positive {
     private int number;
 
-    public Positive(String target) {
-        this.number = validateNumber(target);
+    public static Positive from(String target) {
+        try {
+            return new Positive(Integer.parseInt(target));
+        } catch (NumberFormatException e) {
+            throw new RuntimeException("숫자 형태의 문자만 인자로 받을 수 있습니다.");
+        }
     }
 
     public Positive(int number) {
         this.number = validateNumber(number);
-    }
-
-    private int validateNumber(String number) {
-        int targetNumber;
-        try {
-            targetNumber = Integer.parseInt(number);
-        } catch (NumberFormatException e) {
-            throw new RuntimeException("숫자 형태의 문자만 인자로 받을 수 있습니다.");
-        }
-        if (targetNumber < 0) {
-            throw new RuntimeException("양수만 가능합니다.");
-        }
-        return targetNumber;
     }
 
     private int validateNumber(int number) {
