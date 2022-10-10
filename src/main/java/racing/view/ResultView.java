@@ -22,6 +22,6 @@ public class ResultView {
     }
 
     private void printCarDistance(Car car) {
-        System.out.println(DISTANCE_MARKER.repeat(Math.max(0, car.getDistance())));
+        System.out.println(car.getCarName() + " : " + DISTANCE_MARKER.repeat(Math.max(0, car.getDistance())));
     }
 }

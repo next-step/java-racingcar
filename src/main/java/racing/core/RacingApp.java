@@ -9,27 +9,40 @@ import java.util.List;
 
 public class RacingApp {
 
+    public static final String CARNAME_REGEX = ",";
     private final InputView inputView = new InputView();
     private final ResultView resultView = new ResultView();
     private final Mover mover = new Mover();
+    private final Validator validator = new Validator();
 
     public RacingApp() {
     }
 
     public void start() {
-        ClientInput racingDto = inputView.getClientInput();
-        List<Car> carList = makeCarList(racingDto.getCarCount());
+        ClientInput clientInput = inputView.getClientInput();
+        List<Car> carList = makeCars(clientInput.getCarNames());
+        try{
+            validator.validateCarNames(carList);
+        }catch (RuntimeException e){
+            System.out.println(e.getMessage());
+            return;
+        }
         resultView.printStartText();
-        for (int i = 0; i < racingDto.getTryCount(); i++) {
+        for (int i = 0; i < clientInput.getTryCount(); i++) {
             moveCars(carList);
             resultView.printCarList(carList);
         }
     }
 
-    private List<Car> makeCarList(int size) {
+    private List<Car> makeCars(String carNamesFromClient) {
+        String[] carNames = carNamesFromClient.split(CARNAME_REGEX);
+        return makeCars(carNames);
+    }
+
+    private List<Car> makeCars(String[] carNames) {
         List<Car> carList = new ArrayList<>();
-        for (int i = 0; i < size; i++) {
-            carList.add(new Car());
+        for(String carName : carNames){
+            carList.add(new Car(carName));
         }
         return carList;
     }
@@ -40,4 +53,6 @@ public class RacingApp {
             mover.decideMove(car, randomNum);
         });
     }
+
+
 }

@@ -1,6 +1,7 @@
 package racing.view;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.core.ClientInput;
 
@@ -17,10 +18,11 @@ public class InputViewTest {
     }
 
     @Test
-    void view를_통한_유효Dto_생성() {
-        String carCountIn = "3";
+    @DisplayName("InputView를 통해 ClientInput 받아오는지 확인")
+    void testIfGetClientInput() {
+        String carNamesIn = "jack,jason,eric";
         String tryCountIn = "5";
-        String input = carCountIn + "\n" + tryCountIn;
+        String input = carNamesIn + "\n" + tryCountIn;
         InputStream in1 = new ByteArrayInputStream(input.getBytes());
         System.setIn(in1);
 
@@ -28,7 +30,7 @@ public class InputViewTest {
         ClientInput result = inputView.getClientInput();
 
         ClientInput expected = ClientInput.builder()
-                .carCount(3)
+                .carNames("jack,jason,eric")
                 .tryCount(5)
                 .build();
         assertThat(result).isEqualTo(expected);
