@@ -1,5 +1,6 @@
 package carRacing.level3.model;
 
+import carRacing.level3.infra.error.NotFoundCarsException;
 import carRacing.level3.model.strategy.MovingStrategy;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,7 +31,7 @@ public class Cars {
 			.map(Car::carLocation)
 			.mapToInt(Location::getLocation)
 			.max()
-			.getAsInt();
+			.orElseThrow(()->new NotFoundCarsException("cars가 비어있습니다"));
 	}
 
 	public Location carLocation(int carNum) {
