@@ -10,6 +10,11 @@ public class Car {
         this.Name = Name;
     }
 
+    public Car(String Name, int position) {
+        this.Name = Name;
+        this.position = position;
+    }
+
     public void move(int value) {
         if (value > CAN_MOVE_THRESHOLD) {
             this.position += 1;
