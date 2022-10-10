@@ -38,6 +38,6 @@ class CarsTest {
         Car car = new Car.Factory(number, "abced").car();
         Cars sut = new Cars(List.of(car));
 
-        assertThat(sut.positionsAndNames()).containsExactly(car.toString());
+        assertThat(sut.positionsAndNames()).containsExactly(car.print());
     }
 }
