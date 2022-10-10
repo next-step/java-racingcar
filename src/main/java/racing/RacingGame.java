@@ -13,11 +13,18 @@ public class RacingGame {
     ResultView.printResultTitle();
 
     Cars cars = new Cars(numberOfCar);
+    play(numberOfChance, cars);
+  }
+
+  private void play(int numberOfChance, Cars cars) {
     for (int i = 0; i < numberOfChance; i++) {
-      cars.move();
-      List<Integer> locations = cars.getLocations();
-      ResultView.printTurnResult(locations);
-      System.out.println();
+      playATurn(cars);
     }
+  }
+
+  private void playATurn(Cars cars) {
+    cars.move();
+    List<Integer> locations = cars.getLocations();
+    ResultView.printTurnResult(locations);
   }
 }

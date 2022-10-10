@@ -15,5 +15,6 @@ public class ResultView {
     for (int location : locations) {
       System.out.println(CAR_TRACE.repeat(location));
     }
+    System.out.println();
   }
 }
