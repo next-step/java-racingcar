@@ -49,6 +49,8 @@ public class Cars {
         }
 
         public Cars cars(Number number) {
+            verifyCarsName();
+
             List<Car> cars = Arrays.stream(carsNames)
                     .map(carName -> new Car.Factory(number, carName).car())
                     .collect(Collectors.toUnmodifiableList());
@@ -56,6 +58,15 @@ public class Cars {
             return new Cars(cars);
         }
 
+        private void verifyCarsName() {
+            Arrays.stream(carsNames).forEach(this::verifyCarName);
+        }
+
+        private void verifyCarName(String carName) {
+            if (carName == null || carName.isEmpty() || carName.isBlank()) {
+                throw new IllegalStateException("유효한 문자열이 아닙니다.");
+            }
+        }
     }
 
 }
