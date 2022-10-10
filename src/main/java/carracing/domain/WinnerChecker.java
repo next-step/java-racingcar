@@ -8,12 +8,16 @@ public class WinnerChecker {
     private Cars cars;
 
     public WinnerChecker(Cars cars) {
+        if(cars.getCarsSize()<1){
+            throw new RuntimeException("한대 이상의 자동차가 필요합니다.");
+        }
+
         this.cars = cars;
     }
 
-    public List<String> findWinners() {
+    public List<Car> findWinners() {
 
-        List<String> winnersList = new ArrayList<>();
+        List<Car> winnersList = new ArrayList<>();
         int maxPosition = findMaxPosition(cars.getCars());
 
         for (Car car : cars.getCars()) {
@@ -22,9 +26,9 @@ public class WinnerChecker {
         return winnersList;
     }
 
-    private void checkAndPutWinner(List<String> winners, int maxPosition, Car car) {
+    private void checkAndPutWinner(List<Car> winners, int maxPosition, Car car) {
         if (car.getPosition() == maxPosition) {
-            winners.add(car.getName());
+            winners.add(car);
         }
     }
 
