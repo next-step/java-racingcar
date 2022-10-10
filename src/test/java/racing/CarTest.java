@@ -13,15 +13,15 @@ public class CarTest {
 
     @Test
     void test_car_try_move_with_fail() {
-        Car car = new Car("car", () -> false);
-        car.tryMove();
+        Car car = new Car("car");
+        car.tryMove(() -> false);
         assertThat(car.getMoves()).isEqualTo(0);
     }
 
     @Test()
     void test_car_try_move_with_success() {
-        Car car = new Car("car", () -> true);
-        car.tryMove();
+        Car car = new Car("car");
+        car.tryMove(() -> true);
         assertThat(car.getMoves()).isEqualTo(1);
     }
 }

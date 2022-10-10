@@ -1,21 +1,21 @@
 package racing;
 
 public class Car {
-    private final CarMovingStrategy carMovingStrategy;
     private final String name;
-    private int moves = 0;
+    private int moves;
 
     public Car(String name) {
-        this(name, new RandomCarMovingStrategy());
+        this(name, 0);
     }
 
-    public Car(String name, CarMovingStrategy strategy) {
+    // only for test
+    public Car(String name, int moves) {
         this.name = name;
-        this.carMovingStrategy = strategy;
+        this.moves = moves;
     }
 
-    public void tryMove() {
-        if (carMovingStrategy.shouldMove()) {
+    public void tryMove(CarMovingStrategy strategy) {
+        if (strategy.shouldMove()) {
             moves++;
         }
     }

@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 public class CarRace {
     private final List<Car> cars;
+    private static final CarMovingStrategy DEFAULT_STRATEGY = new RandomCarMovingStrategy();
 
     public CarRace(List<Car> cars) {
         if (cars.isEmpty()) {
@@ -14,10 +15,18 @@ public class CarRace {
     }
 
     public void round() {
-        cars.forEach(Car::tryMove);
+        round(DEFAULT_STRATEGY);
+    }
+
+    public void round(CarMovingStrategy movingStrategy) {
+        cars.forEach(car -> car.tryMove(movingStrategy));
     }
 
     public List<Car> getWinners() {
+        return getWinners(cars);
+    }
+
+    static List<Car> getWinners(List<Car> cars) {
         int maxMoves = cars.stream().mapToInt(Car::getMoves).max().orElseThrow();
         return cars.stream().filter(car -> car.getMoves() == maxMoves).collect(Collectors.toList());
     }

@@ -17,12 +17,9 @@ public class CarRaceTest {
 
     @Test
     void test_round() {
-        List<Car> cars = List.of(
-                new Car("car1", () -> true),
-                new Car("car2", () -> true)
-        );
+        List<Car> cars = List.of(new Car("car1"), new Car("car2"));
         CarRace carRace = new CarRace(cars);
-        carRace.round();
+        carRace.round(() -> true);
 
         for (Car car : cars) {
             assertThat(car.getMoves()).isEqualTo(1);
@@ -31,14 +28,10 @@ public class CarRaceTest {
 
     @Test
     void test_get_winner() {
-        Car winner1 = new Car("car1", () -> true);
-        Car winner2 = new Car("car1", () -> true);
-        Car loser1 = new Car("car1", () -> false);
+        Car winner1 = new Car("car1", 1);
+        Car winner2 = new Car("car2", 1);
+        Car loser1 = new Car("car3", 0);
         List<Car> cars = List.of(winner1, winner2, loser1);
-
-        CarRace carRace = new CarRace(cars);
-        carRace.round();
-
-        assertThat(carRace.getWinners()).contains(winner1, winner2);
+        assertThat(CarRace.getWinners(cars)).contains(winner1, winner2);
     }
 }
