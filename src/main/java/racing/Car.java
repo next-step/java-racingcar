@@ -24,15 +24,15 @@ public class Car {
         }
     }
 
-    public void run() {
+    void run() {
         if (canRun()) { distance += 1; }
     }
 
-    public int getDistance() {
+    int getDistance() {
         return distance;
     }
 
-    public String getName() {
+    String getName() {
         return name;
     }
 
@@ -65,11 +65,11 @@ public class Car {
         return (int)(Math.random() * 10) + 1;
     }
 
-    public boolean isDistance(Car car) {
+    boolean isDistance(Car car) {
         return this.distance == car.distance;
     }
 
-    public boolean hasLogDistanceThan(Car car) {
+    boolean hasLogDistanceThan(Car car) {
         return this.distance > car.distance;
     }
 
