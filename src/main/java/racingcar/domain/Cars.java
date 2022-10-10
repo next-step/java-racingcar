@@ -35,7 +35,7 @@ public class Cars {
         return cars;
     }
 
-    public boolean racing() {
+    public boolean isRacing() {
         return this.tryNum > 0;
     }
 

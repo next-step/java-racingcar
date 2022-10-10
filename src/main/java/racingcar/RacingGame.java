@@ -13,7 +13,7 @@ public class RacingGame {
         int numberOfAttempts = Input.numberOfAttempts();
 
         Cars cars = new Cars(nameOfCars, numberOfAttempts, new RandomMoveCondition());
-        while(cars.racing()) {
+        while(cars.isRacing()) {
             cars.race();
             Output.resultString(cars.getCars());
         }
