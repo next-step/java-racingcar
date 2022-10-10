@@ -27,8 +27,7 @@ public class Cars{
     }
 
     public void moveCars(RandomGenerator randomGenerator) {
-        IntStream.range(0, cars.size())
-                .forEach(i -> cars.get(i).move(randomGenerator.makeRandomValue()));
+        cars.forEach(car -> car.move(randomGenerator.makeRandomValue()));
     }
 
     private static List<Car> makeCarList(String[] Names) {
