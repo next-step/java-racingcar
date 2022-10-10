@@ -24,8 +24,9 @@ public class Cars {
     }
 
     void run() {
+        RandomNumMovingStrategy movingStrategy = new RandomNumMovingStrategy();
         for (Car car : cars) {
-            car.run();
+            car.run(movingStrategy);
         }
     }
 

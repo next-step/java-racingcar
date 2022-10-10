@@ -36,4 +36,18 @@ public class CarTest {
         assertThat(new Car("name1", 10).isWinner(new Car("name2", 10))).isEqualTo(true);
         assertThat(new Car("name1", 1).isWinner(new Car("name2", 10))).isEqualTo(false);
     }
+
+    @Test
+    void 이동() {
+        Car car = new Car("name", 0);
+        car.run(() -> true);
+        assertThat(car).isEqualTo(new Car("name", 1));
+    }
+
+    @Test
+    void 멈춤() {
+        Car car = new Car("name", 0);
+        car.run(() -> false);
+        assertThat(car).isEqualTo(new Car("name", 0));
+    }
 }

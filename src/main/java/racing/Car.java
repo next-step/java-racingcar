@@ -3,8 +3,6 @@ package racing;
 import java.util.Objects;
 
 public class Car {
-    private static final int AVAILABLE_RUN_THRESHOLD = 4;
-
     private int distance;
     private String name;
 
@@ -18,8 +16,8 @@ public class Car {
         this.distance = distance;
     }
 
-    void run() {
-        if (canRun()) { distance += 1; }
+    void run(MovingStrategy movingStrategy) {
+        if (movingStrategy.movable()) { distance += 1; }
     }
 
     String getName() {
@@ -53,14 +51,6 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(distance, name);
-    }
-
-    private static boolean canRun() {
-        return generateRandom() >= AVAILABLE_RUN_THRESHOLD;
-    }
-
-    private static int generateRandom() {
-        return (int)(Math.random() * 10) + 1;
     }
 
     private void validName(String name) {
