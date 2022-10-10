@@ -12,22 +12,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarRacingExecutorTest {
 
-    static int[] index = {0, 0, 0, 0};
+    public static int notAFunction() {
+        throw new RuntimeException("do not call it!");
+    }
 
     @Test
     void getWinnersTest() {
         CarRacingExecutor carRacingExecutor = new CarRacingExecutor(
                 Arrays.asList(
-                        new Car("kky", () -> new int[]{4, 5, 6}[index[0]++], 0),
-                        new Car("kdy", () -> new int[]{1, 2, 3}[index[1]++], 0),
-                        new Car("poltan", () -> new int[]{6, 7, 3}[index[2]++], 0),
-                        new Car("daddyking", () -> new int[]{6, 7, 8}[index[3]++], 0)
+                        new Car("kky", CarRacingExecutorTest::notAFunction, 3),
+                        new Car("kdy", CarRacingExecutorTest::notAFunction, 1),
+                        new Car("poltan", CarRacingExecutorTest::notAFunction, 2),
+                        new Car("daddyking", CarRacingExecutorTest::notAFunction, 3)
                 )
         );
-
-        for (int i = 0; i < 3; i++) {
-            carRacingExecutor.proceedNextRound();
-        }
 
         List<String> winnerNames = carRacingExecutor
                 .getCurrentWinners().stream()
