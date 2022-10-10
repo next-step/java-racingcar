@@ -37,7 +37,7 @@ public class ResultView {
     }
 
     public static void printWinners(List<String> winnerNames) {
-        String names = winnerNames.stream().collect(Collectors.joining(","));
+        String names = String.join(",", winnerNames);
         String msg = String.format("%s가 최종 우승했습니다.", names);
         System.out.println(msg);
     }
