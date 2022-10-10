@@ -16,10 +16,6 @@ public class Car {
         this(name, 0, moveCondition);
     }
 
-    public Car(String name, int position) {
-        this(name, position, null);
-    }
-
     public Car(String name, int position, MoveCondition moveCondition) {
         checkLength(name);
         this.name = name.trim();
