@@ -1,6 +1,5 @@
 package racingcar.view;
 
-import racingcar.domain.Car;
 import racingcar.dto.CarRecord;
 import racingcar.dto.CarsRecord;
 import racingcar.dto.RacingRecord;
@@ -23,9 +22,11 @@ public final class ResultView {
         System.out.println(NEW_LINE + RESULT_MESSAGE + NEW_LINE);
     }
 
-    public static void printWinner(List<Car> winnerValues) {
-        List<CarRecord> winnerCarNames = winnerValues.stream().map(Car::generateRecord).collect(Collectors.toList());
-        List<String> winner = winnerCarNames.stream().map(CarRecord::getName).collect(Collectors.toList());
+    public static void printWinner(CarsRecord winnerValues) {
+        List<String> winner = winnerValues.getValues()
+                .stream()
+                .map(CarRecord::getName)
+                .collect(Collectors.toList());
         System.out.println(NEW_LINE + String.join(COMMA, winner).concat(FINAL_WON_MESSAGE));
     }
 

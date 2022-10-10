@@ -1,7 +1,7 @@
 package racingcar;
 
-import racingcar.domain.Car;
 import racingcar.domain.RacingCarGame;
+import racingcar.dto.CarsRecord;
 import racingcar.dto.RacingRecord;
 import racingcar.strategy.RandomValueMovingStrategy;
 import racingcar.view.InputView;
@@ -16,7 +16,7 @@ public class RacingCarGameApplication {
         int tryCount = InputView.inputTryCount();
 
         RacingRecord racingCarGameRecords = racingCarGame.play(new RandomValueMovingStrategy(), tryCount);
-        List<Car> winners = racingCarGame.findFinalWinner();
+        CarsRecord winners = racingCarGame.findFinalWinner();
 
         ResultView.printResultMessage();
         ResultView.printRacingCars(racingCarGameRecords);

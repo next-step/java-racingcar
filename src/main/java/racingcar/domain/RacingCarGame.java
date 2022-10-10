@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import exception.NegativeNumberException;
+import racingcar.dto.CarsRecord;
 import racingcar.dto.RacingRecord;
 import racingcar.strategy.MovingStrategy;
 
@@ -32,7 +33,7 @@ public class RacingCarGame {
         return racingRecord;
     }
 
-    public List<Car> findFinalWinner() {
+    public CarsRecord findFinalWinner() {
         return cars.findWinners();
     }
 
