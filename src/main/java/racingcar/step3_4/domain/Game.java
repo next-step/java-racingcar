@@ -2,13 +2,14 @@ package racingcar.step3_4.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Game {
 
-    private static final Random random = new Random();
-    private static final int LIMIT = 10;
-    private static final RandomValueGenerator randomValueGenerator = () -> random.nextInt(LIMIT);
+    private final RandomValueGenerator randomValueGenerator;
+
+    public Game(RandomValueGenerator randomValueGenerator) {
+        this.randomValueGenerator = randomValueGenerator;
+    }
 
     public GameRecord play(GameAttribute gameAttribute) {
         Names names = Names.of(gameAttribute.getCarNames());

@@ -61,4 +61,4 @@
   - 시도마다 기록을 남김
   - 우승자 기록을 남김
   - 기록을 Controller에서 ResultView로 전달
-- [ ] 테스트를 위해 Random 값 생성 처리를 Main에서 하도록 한다.
+- [X] Game 테스트를 위해 Random 값 생성 처리를 Controller(main)에서 하도록 한다.
