@@ -1,20 +1,22 @@
 package racingcar.backend.domain;
 
-import java.util.*;
+import racingcar.backend.dto.CarDto;
+
+import java.util.List;
 
 public class GameRecord {
 
-    private Map<CarName, Position> value;
+    private List<CarDto> carDtos;
 
-    public GameRecord(Map<CarName, Position> record) {
-        this.value = record;
+    public GameRecord(List<CarDto> carDtos) {
+        this.carDtos = carDtos;
     }
 
-    public static GameRecord create(Map<CarName, Position> record) {
-        return new GameRecord(record);
+    public static GameRecord create(List<CarDto> carDtos) {
+        return new GameRecord(carDtos);
     }
 
-    public Map<CarName, Position> getValue() {
-        return value;
+    public List<CarDto> getValue() {
+        return carDtos;
     }
 }

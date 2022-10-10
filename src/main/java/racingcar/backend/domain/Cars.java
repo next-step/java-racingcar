@@ -1,26 +1,32 @@
 package racingcar.backend.domain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import racingcar.backend.strategy.MoveStrategy;
+
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
-        this.cars = new ArrayList<>(cars);
+    public Cars(final List<Car> cars) {
+        this.cars = cars;
     }
 
-    public static Cars create(String[] names) {
+    public static Cars create(final String[] names) {
         return new Cars(Arrays.asList(names).stream()
-                .map(name -> Car.create(new CarName(name)))
+                .map(name -> Car.create(new CarName(name), new Position(0)))
                 .collect(Collectors.toList()));
     }
 
+    public Cars move(MoveStrategy moveStrategy) {
+        for (Car car : cars) {
+            car.move(moveStrategy);
+        }
+        return this;
+    }
+
     public List<Car> getValues() {
-        return Collections.unmodifiableList(cars);
+        return new ArrayList<>(cars);
     }
 }

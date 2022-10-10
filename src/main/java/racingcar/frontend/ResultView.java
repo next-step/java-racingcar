@@ -2,6 +2,7 @@ package racingcar.frontend;
 
 import racingcar.backend.domain.GameRecord;
 import racingcar.backend.domain.GameRecords;
+import racingcar.backend.dto.CarDto;
 
 import java.util.stream.Collectors;
 
@@ -45,16 +46,16 @@ public class ResultView {
     }
 
     private static String gameRecordToString(GameRecord gameRecord) {
-        return gameRecord.getValue().entrySet()
+        return gameRecord.getValue()
                 .stream()
-                .map(entry -> entry.getKey().getValue() + " : " + POSITION_MARK.repeat(entry.getValue().getValue()))
+                .map(CarDto -> CarDto.printName() + " : " + CarDto.printPosition(POSITION_MARK))
                 .collect(Collectors.joining(NEW_LINE));
     }
 
     private static String gameWinnersToString(GameRecords gameRecords) {
-        return gameRecords.finalWinner()
+        return gameRecords.getWinner()
                 .stream()
-                .map(carName -> carName.getValue())
+                .map(CarDto::printName)
                 .collect(Collectors.joining(COMMA));
     }
 }
