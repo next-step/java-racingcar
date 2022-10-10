@@ -72,4 +72,8 @@ public class Car {
     public boolean hasLogDistanceThan(Car car) {
         return this.distance > car.distance;
     }
+
+    boolean isWinner(Car other) {
+        return this.distance >= other.distance;
+    }
 }

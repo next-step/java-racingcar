@@ -35,27 +35,28 @@ public class Cars {
         }
     }
 
-    List<String> findWinnerNames() {
-        Car maxDistanceCar = findMaxDistanceCar();
-        List<String> winnerNames = new ArrayList<>();
+    Car findWinner() {
+        Car winner = cars.get(0);
         for (Car car : cars) {
-            if (car.isDistance(maxDistanceCar)) {
-                winnerNames.add(car.getName());
-            }
+            winner = car.isWinner(winner) ? car : winner;
         }
-        return winnerNames;
+
+        return winner;
     }
 
-    Car findMaxDistanceCar() {
-        Car maxDistanceCar = cars.get(0);
-        for (int i = 1; i < cars.size() - 1; i ++) {
-            Car car = cars.get(i + 1);
-            if (car.hasLogDistanceThan(maxDistanceCar)) {
-                maxDistanceCar = car;
+    List<String> findWinnerNames() {
+        List<Car> winners = new ArrayList<>();
+        Car winner = findWinner();
+
+        for (Car car : cars) {
+            if (car.isWinner(winner)) {
+                winners.add(car);
             }
         }
 
-        return maxDistanceCar;
+        return winners.stream()
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 
     @Override

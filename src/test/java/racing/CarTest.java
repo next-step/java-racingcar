@@ -51,4 +51,11 @@ public class CarTest {
     void distance_큰지_검사() {
         assertThat(new Car("name", 10).hasLogDistanceThan(new Car("name", 1))).isEqualTo(true);
     }
+
+    @Test
+    void 경주에_이기는지_확인() {
+        assertThat(new Car("name1", 10).isWinner(new Car("name2", 1))).isEqualTo(true);
+        assertThat(new Car("name1", 10).isWinner(new Car("name2", 10))).isEqualTo(true);
+        assertThat(new Car("name1", 1).isWinner(new Car("name2", 10))).isEqualTo(false);
+    }
 }

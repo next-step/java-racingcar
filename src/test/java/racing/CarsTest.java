@@ -16,7 +16,7 @@ public class CarsTest {
 
     @Test
     void 우승자_찾기() {
-        List<Car> cars = Arrays.asList(new Car("jigu", 3), new Car("gogu", 1), new Car("dal", 1));
-        assertThat(new Cars(cars).findWinnerNames()).contains("jigu");
+        List<Car> cars = Arrays.asList(new Car("jigu", 3), new Car("gogu", 3), new Car("dal", 1));
+        assertThat(new Cars(cars).findWinnerNames()).containsOnly("jigu", "gogu");
     }
 }
