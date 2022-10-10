@@ -9,7 +9,7 @@ public class Car {
     }
 
     // only for test
-    public Car(String name, int moves) {
+    Car(String name, int moves) {
         this.name = new CarName(name);
         this.moves = moves;
     }
