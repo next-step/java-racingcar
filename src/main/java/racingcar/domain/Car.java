@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import racingcar.condition.MoveCondition;
-import racingcar.condition.RandomMoveCondition;
 
 import java.util.Objects;
 
@@ -9,7 +8,6 @@ public class Car {
     private final int MOVE_POSITION = 1;
     private final int NAME_MAX_LENGTH = 5;
     private final String ERROR_CHECK_LENGTH = "자동차 이름은 " + NAME_MAX_LENGTH + "자를 초과할 수 없다.";
-
     private MoveCondition moveCondition;
     private String name;
     private int position;
@@ -54,16 +52,10 @@ public class Car {
         return position;
     }
 
-    public Car move(MoveCondition moveCondition) {
-        setMoveCondition(moveCondition);
+    public void move(MoveCondition moveCondition) {
         if (moveCondition.isMovable()) {
             this.position += MOVE_POSITION;
         }
-        return new Car(name, position, moveCondition);
-    }
-
-    private void setMoveCondition(MoveCondition moveCondition) {
-        this.moveCondition = moveCondition;
     }
 
     @Override
