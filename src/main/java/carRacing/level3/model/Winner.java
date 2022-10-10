@@ -5,8 +5,6 @@ import java.util.List;
 
 public class Winner {
 
-	private int maxLocation;
-
 	private List<String> winnerList;
 
 	public Winner() {
@@ -19,18 +17,17 @@ public class Winner {
 
 	public Winner decideWinner(Cars cars) {
 
-		maxLocation = cars.maxCarLocation();
-
 		for (int i = 0; i < cars.totalNum(); i++) {
-			addWinner(cars.carLocation(i), cars.carName(i));
+			addWinner(cars, i);
 		}
 
 		return new Winner(winnerList);
 	}
 
-	public void addWinner(Location location, String carName) {
-		if (location.isWinner(maxLocation)) {
-			winnerList.add(carName);
+	public void addWinner(Cars cars, int carNum) {
+		Location location = cars.carLocation(carNum);
+		if (location.isWinner(cars.maxCarLocation())) {
+			winnerList.add(cars.carName(carNum));
 		}
 	}
 
