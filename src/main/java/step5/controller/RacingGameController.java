@@ -2,25 +2,24 @@ package step5.controller;
 
 import java.util.List;
 import step5.domain.MovingStrategy;
-import step5.domain.RacingResult;
 import step5.domain.RacingGame;
+import step5.domain.RacingResult;
 import step5.service.RacingWinnerService;
 import step5.view.InputView;
 import step5.view.ResultView;
 
 public class RacingGameController {
-
-    private final RacingGame racingGame;
-
-    public RacingGameController(MovingStrategy movingStrategy) {
+    public String[] inputCarNames() {
         ResultView.printCarNames();
-        String[] carNames = InputView.carNames();
-        ResultView.printTryCount();
-        int tryCount = InputView.tryCount();
-        this.racingGame = new RacingGame(carNames, tryCount, movingStrategy);
+        return InputView.carNames();
     }
 
-    public void play() {
+    public int inputTryCount() {
+        ResultView.printTryCount();
+        return InputView.tryCount();
+    }
+
+    public void play(RacingGame racingGame) {
         ResultView.printStartMessage();
 
         List<RacingResult> racingResults = racingGame.start();
@@ -29,5 +28,10 @@ public class RacingGameController {
 
         ResultView.printRacingResults(racingResults, carCount);
         ResultView.printWinner(winner);
+    }
+
+    public RacingGame makeRacingGame(String[] carNames, int tryCount,
+        MovingStrategy movingStrategy) {
+        return new RacingGame(carNames, tryCount, movingStrategy);
     }
 }
