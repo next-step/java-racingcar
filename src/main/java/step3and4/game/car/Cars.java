@@ -59,6 +59,10 @@ public class Cars {
         }
 
         private void verifyCarsName() {
+            if (carsNames.length == 0) {
+                throw new IllegalStateException("유효한 문자열이 아닙니다.");
+            }
+
             Arrays.stream(carsNames).forEach(this::verifyCarName);
         }
 
@@ -68,5 +72,4 @@ public class Cars {
             }
         }
     }
-
 }
