@@ -18,12 +18,6 @@ public class Car {
         this.distance = distance;
     }
 
-    private void validName(String name) {
-        if (name.length() > 5) {
-            throw new RuntimeException("최대 5글자까지 입력 가능합니다.");
-        }
-    }
-
     void run() {
         if (canRun()) { distance += 1; }
     }
@@ -34,6 +28,10 @@ public class Car {
 
     String getName() {
         return name;
+    }
+
+    boolean isWinner(Car other) {
+        return this.distance >= other.distance;
     }
 
     @Override
@@ -65,15 +63,9 @@ public class Car {
         return (int)(Math.random() * 10) + 1;
     }
 
-    boolean isDistance(Car car) {
-        return this.distance == car.distance;
-    }
-
-    boolean hasLogDistanceThan(Car car) {
-        return this.distance > car.distance;
-    }
-
-    boolean isWinner(Car other) {
-        return this.distance >= other.distance;
+    private void validName(String name) {
+        if (name.length() > 5) {
+            throw new RuntimeException("최대 5글자까지 입력 가능합니다.");
+        }
     }
 }
