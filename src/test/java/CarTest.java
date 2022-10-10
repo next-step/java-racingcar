@@ -1,4 +1,5 @@
 import domain.Car;
+import domain.NumberUtils;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -23,10 +24,16 @@ public class CarTest {
     }
 
     @Test
-    public void 자동차_이동거리출력() {
+    public void 자동차_정지_with_조건() {
         Car car = new Car();
-        car.move();
-        car.move();
-        assertThat(car.toString()).isEqualTo("--");
+        car.moveWithConditon(5,2);
+        assertThat(car.getDistance()).isEqualTo(0);
+    }
+
+    @Test
+    public void 자동차_이동_with_조건() {
+        Car car = new Car();
+        car.moveWithConditon(3,2);
+        assertThat(car.getDistance()).isEqualTo(1);
     }
 }

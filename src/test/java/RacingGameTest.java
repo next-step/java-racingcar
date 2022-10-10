@@ -3,10 +3,15 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import view.InputView;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.in;
 
 public class RacingGameTest {
 
@@ -14,30 +19,54 @@ public class RacingGameTest {
 
     @Test
     public void 자동차_리스트_생성(){
-        int carCnt = 2;
-        List<Car> cars = racingGame.makeCars(carCnt);
-        assertThat(cars.size()).isEqualTo(carCnt);
-        cars.forEach(car -> {
-            assertThat(car.getDistance()).isEqualTo(0);
+        String[] carNames = {"sunny","test","myCar"};
+        List<Car> cars = racingGame.makeCars(carNames);
+        assertThat(cars.size()).isEqualTo(carNames.length);
+
+        IntStream.range(0, cars.size()).forEach(idx -> {
+            assertThat(cars.get(idx).getDistance()).isEqualTo(0);
+            assertThat(cars.get(idx).getName()).isEqualTo(carNames[idx]);
         });
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
-    @DisplayName("자동차_경주 4이상이면 전진처리")
-    public void raceMove(){
-        Car car = new Car();
-        racingGame.race(car,5);
-        assertThat(car.getDistance()).isEqualTo(1);
+    @Test
+    public void 자동차_경주_우승자_확인_단독(){
+        List<Car> cars = Arrays.asList(new Car("sunny"),new Car("kookoo"),new Car("rin"));
+        cars.get(0).move();
+        cars.get(0).move();
+        List<Car> winnerCars = racingGame.getWinners(cars);
+
+        int max = cars.stream()
+                .mapToInt(Car::getDistance)
+                .max()
+                .getAsInt();
+
+        winnerCars.stream().filter(car -> car.getDistance()==max).collect(Collectors.toList());
+
+        assertThat(winnerCars.size()).isEqualTo(1);
+        assertThat(winnerCars.get(0).getName()).isEqualTo("sunny");
+
     }
 
+
     @Test
-    @ParameterizedTest
-    @ValueSource(ints = {1,2,3})
-    @DisplayName("자동차_경주 4미만이면 정지처리")
-    public void raceStop(){
-        Car car = new Car();
-        racingGame.race(car,1);
-        assertThat(car.getDistance()).isEqualTo(0);
+    public void 자동차_경주_우승자_확인_공동우승(){
+        List<Car> cars = Arrays.asList(new Car("sunny"),new Car("kookoo"),new Car("rin"));
+        cars.get(0).move();
+        cars.get(1).move();
+        List<Car> winnerCars = racingGame.getWinners(cars);
+
+        int max = cars.stream()
+                .mapToInt(Car::getDistance)
+                .max()
+                .getAsInt();
+
+        winnerCars.stream().filter(car -> car.getDistance()==max).collect(Collectors.toList());
+
+        assertThat(winnerCars.size()).isEqualTo(2);
+        assertThat(winnerCars.get(0).getName()).isEqualTo("sunny");
+        assertThat(winnerCars.get(1).getName()).isEqualTo("kookoo");
+
     }
+
 }
