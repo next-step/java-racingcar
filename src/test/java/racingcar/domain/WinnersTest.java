@@ -28,13 +28,7 @@ public class WinnersTest {
     @CsvSource(value = {"1,2:1", "1,2,3:2", "5,3,5:0,2", "472,314,555:2"}, delimiter = ':')
     @DisplayName("여러 케이스에서 승리자를 찾는다")
     void findWinner(String carPosition, String winnerString) {
-        String[] carPositionArray = carPosition.split(",");
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carPositionArray.length; i++) {
-            int position = Integer.parseInt(carPositionArray[i]);
-            cars.add(new Car("car" + i, position));
-        }
-
+        List<Car> cars = parseCarList(carPosition);
         List<Car> inputWinners = Arrays.stream(winnerString.split(","))
                 .map(Integer::parseInt)
                 .map(cars::get)
@@ -43,6 +37,16 @@ public class WinnersTest {
         Winners winners = new Winners(cars);
 
         assertThat(winners).hasFieldOrPropertyWithValue("winners", inputWinners);
+    }
+
+    private List<Car> parseCarList(String carListString) {
+        String[] carPositionArray = carListString.split(",");
+        List<Car> cars = new ArrayList<>();
+        for (int i = 0; i < carPositionArray.length; i++) {
+            int position = Integer.parseInt(carPositionArray[i]);
+            cars.add(new Car("car" + i, position));
+        }
+        return cars;
     }
 
     @Test
