@@ -2,6 +2,7 @@ package racing.core;
 
 public class Car {
 
+    private static final int STEP_COUNT = 1;
     private int distance = 1;
     private final String carName;
 
@@ -17,8 +18,8 @@ public class Car {
         return this.carName;
     }
 
-    public void stepAhead(int stepCount) {
-        this.distance += stepCount;
+    public void stepAhead() {
+        this.distance += STEP_COUNT;
     }
 
     @Override
