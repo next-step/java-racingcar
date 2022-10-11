@@ -1,3 +1,6 @@
+package com.nextlevel.kky.string;
+
+import com.nextlevel.kky.string.StringAddCalculator;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

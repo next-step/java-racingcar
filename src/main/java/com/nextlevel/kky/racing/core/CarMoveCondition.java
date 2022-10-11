@@ -1,3 +1,4 @@
+package com.nextlevel.kky.racing.core;
 
 public class CarMoveCondition {
 
@@ -13,9 +14,13 @@ public class CarMoveCondition {
 
     public boolean checkMoveCondition() {
         int value = integerGenerator.getValue();
-        if (value < 0 || value > MAX_VALUE) {
+        if (checkRangeValid(value)) {
             throw new RuntimeException("not available value");
         }
         return value >= MIN_VALUE_FOR_MOVE;
+    }
+
+    public boolean checkRangeValid(int value) {
+        return value < 0 || value > MAX_VALUE;
     }
 }
