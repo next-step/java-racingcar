@@ -3,6 +3,7 @@ package racingcar;
 import racingcar.domain.RacingGame;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static racingcar.view.InputView.inputCarNames;
 import static racingcar.view.InputView.inputTrial;
@@ -15,9 +16,26 @@ public class RacingGameApplication {
         int trial = inputTrial();
 
         RacingGame racingGame = new RacingGame();
-        racingGame.startGame(carNames, trial);
+        startGame(carNames, trial, racingGame);
         printGameResult(racingGame.getRoundResults());
-        printWinners(racingGame.getWinners());
+        printWinners(getWinners(racingGame));
+    }
+
+    private static void startGame(List<String> carNames, int trial, RacingGame racingGame) {
+        try {
+            racingGame.startGame(carNames, trial);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private static List<String> getWinners(RacingGame racingGame) {
+        try {
+            return racingGame.getWinners();
+        } catch (NoSuchElementException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
 
     public static List<String> parseCarNames(String carNamesString) {

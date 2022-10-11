@@ -54,6 +54,7 @@ class CarsTest {
         cars.race(0);
 
         assertThatThrownBy(cars::getWinners)
-                .isInstanceOf(NoSuchElementException.class);
+                .isInstanceOf(NoSuchElementException.class)
+                .hasMessageContaining("자동차가 존재하지 않습니다.");
     }
 }

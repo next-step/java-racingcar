@@ -14,7 +14,7 @@ public class Cars {
         carNames.forEach(carName -> cars.add(Car.nameOf(carName)));
     }
 
-    public static Cars namesOf(List<String> carNames) {
+    public static Cars namesOf(List<String> carNames) throws IllegalArgumentException {
         validateCarNames(carNames);
         return new Cars(carNames);
     }
@@ -59,7 +59,7 @@ public class Cars {
                 .map(Car::getPosition)
                 .mapToInt(x -> x)
                 .max()
-                .orElseThrow(NoSuchElementException::new);
+                .orElseThrow(() -> new NoSuchElementException("자동차가 존재하지 않습니다."));
 
         return cars.stream()
                 .filter(car -> car.getPosition() == winnerScore)
