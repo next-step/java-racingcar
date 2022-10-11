@@ -21,11 +21,11 @@ public class ResultView {
 
         System.out.println("실행결과");
 
-        Cars cars = new Cars().initCars(carNames);
+        Racing racing = new Racing(racingSize, new Cars().initCars(carNames));
 
-        printRacing(new Racing(racingSize, cars));
+        printRacing(racing);
 
-        System.out.println(printWinner(cars.findWinner()));
+        System.out.println(printWinner(racing.getFinalRace().findWinner()));
     }
 
     private static void printRacing(Racing racing) {

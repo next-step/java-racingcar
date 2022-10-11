@@ -18,6 +18,10 @@ public class Racing {
     }
 
     public List<Cars> getRaceResult() {
-        return raceResult;
+        return this.raceResult;
+    }
+
+    public Cars getFinalRace() {
+        return this.raceResult.get(this.raceResult.size() - 1);
     }
 }
