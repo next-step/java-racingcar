@@ -9,7 +9,19 @@ public class InputView {
 
     public static String[] requestInputNames() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분");
-        return scanString().split(",");
+
+        String[] names = scanString().split(",");
+        for (String name: names) {
+            validateName(name);
+        }
+
+        return names;
+    }
+
+    private static void validateName(String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+        }
     }
 
     private static String scanString() {
