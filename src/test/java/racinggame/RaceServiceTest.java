@@ -22,9 +22,9 @@ class RaceServiceTest {
         RaceInputDTO raceInputDTO = new RaceInputDTO(3, new String[]{"car1", "car2", "car3"});
 
         List<Car> cars = List.of(
-                new Car("car1", new CarDistance(0), () -> true),
-                new Car("car2", new CarDistance(0), () -> false),
-                new Car("car3", new CarDistance(0), () -> true));
+                new Car("car1", 0, () -> true),
+                new Car("car2", 0, () -> false),
+                new Car("car3", 0, () -> true));
 
         RaceService raceService = new RaceService();
 
@@ -43,9 +43,9 @@ class RaceServiceTest {
         RaceInputDTO raceInputDTO = new RaceInputDTO(3, new String[]{"car1", "car2", "car3"});
 
         List<Car> cars = List.of(
-                new Car("car1", new CarDistance(4), () -> true),
-                new Car("car2", new CarDistance(2), () -> false),
-                new Car("car3", new CarDistance(4), () -> true));
+                new Car("car1", 4, () -> true),
+                new Car("car2", 2, () -> false),
+                new Car("car3", 4, () -> true));
 
         RaceService raceService = new RaceService();
 

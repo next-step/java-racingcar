@@ -11,7 +11,7 @@ class CarTest {
 
     @Test
     void 이동() {
-        Car car = new Car("car1", new CarDistance(0), () -> true);
+        Car car = new Car("car1", 0, () -> true);
 
         car.move();
 
@@ -20,7 +20,7 @@ class CarTest {
 
     @Test
     void 정지() {
-        Car car = new Car("car1", new CarDistance(0), () -> true);
+        Car car = new Car("car1", 0, () -> true);
 
         car.move();
 
@@ -29,8 +29,7 @@ class CarTest {
 
     @Test
     void 자동차가_이름은_5글자_이상이면_예외가_발생한다() {
-        CarDistance carDistance = new CarDistance(0);
-        assertThatThrownBy(() -> new Car("12345", carDistance))
+        assertThatThrownBy(() -> new Car("12345", 0))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

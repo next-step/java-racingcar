@@ -13,9 +13,9 @@ class RacingCarsTest {
     @Test
     void 우승자_찾기() {
         List<Car> cars = List.of(
-                new Car("car1", new CarDistance(4)),
-                new Car("car2", new CarDistance(0)),
-                new Car("car3", new CarDistance(0)));
+                new Car("car1", 4),
+                new Car("car2", 0),
+                new Car("car3", 0));
 
         RacingCars racingCars = new RacingCars(cars);
         racingCars.move();
