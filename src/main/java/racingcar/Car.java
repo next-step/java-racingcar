@@ -1,18 +1,39 @@
 package racingcar;
 
+import racingcar.strategy.NumberGenerateStrategy;
+import racingcar.strategy.RandomNumberGenerateStrategy;
+
 public class Car {
 
     private static final int AVAILABLE_MOVE_BOUND = 4;
 
-    private int totalMoveCount;
+    private String name;
+    private int position;
+    private NumberGenerateStrategy strategy;
 
-    public int totalMoveCount() {
-        return totalMoveCount;
+    private Car() {}
+
+    public Car(final String name) {
+        this.name = name;
+        this.strategy = new RandomNumberGenerateStrategy();
     }
 
-    public void move(int number) {
-        if (number >= AVAILABLE_MOVE_BOUND) {
-            this.totalMoveCount += 1;
+    public Car(final String name, final NumberGenerateStrategy strategy) {
+        this.name = name;
+        this.strategy = strategy;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public int getPosition() {
+        return this.position;
+    }
+
+    public void move() {
+        if (strategy.generate() >= AVAILABLE_MOVE_BOUND) {
+            this.position += 1;
         }
     }
 }

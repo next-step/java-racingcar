@@ -1,21 +1,20 @@
-import static racingcar.view.InputView.inputCarNumber;
+import static racingcar.view.InputView.inputCarNames;
 import static racingcar.view.InputView.inputTryNumber;
 import static racingcar.view.OutputView.printResult;
 
-import racingcar.Cars;
 import racingcar.Racing;
+import racingcar.input.CarNamesInput;
+import racingcar.input.TryNumberInput;
 
 public class MainApplication {
 
     public static void main(String[] args) {
-        int carNumber = inputCarNumber();
-        int tryNumber = inputTryNumber();
+        CarNamesInput carNamesInput = new CarNamesInput(inputCarNames());
+        TryNumberInput tryNumberInput = new TryNumberInput(inputTryNumber());
 
-        Cars cars = new Cars(carNumber);
+        Racing racing = new Racing(carNamesInput.getCarNames());
+        racing.race(tryNumberInput.getTryNumber());
 
-        System.out.println("실행 결과");
-        for (int i = 0; i < tryNumber; i++) {
-            printResult(Racing.race(cars));
-        }
+        printResult(racing.getResult(), racing.winners());
     }
 }

@@ -8,9 +8,20 @@
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
-## TO DO LIST
+## TO DO LIST(Step3)
 - [x] 자동차 클래스 구현
 - [x] 자동차 일급 콜렉션 구현
 - [x] 자동차 클래스 테스트 코드 작성
 - [x] 입력 뷰 클래스 구현
 - [x] 출력 뷰 클래스 구현
+
+- [x] 피드백 반영
+
+## TO DO LIST(Step4)
+- [x] 테스트 코드를 요구사항에 맞게 수정
+- [x] Car 클래스에 이름 필드 추가
+- [x] InputView 클래스에 자동차 이름을 받는 메소드 추가
+- [x] Racing 클래스에 우승자를 알려주는 메소드 추가
+- [x] OutputView.printResult 메소드 수정
+
+- [x] 피드백 반영

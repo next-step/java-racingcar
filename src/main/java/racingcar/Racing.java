@@ -2,17 +2,38 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.output.RacingResult;
+import racingcar.strategy.NumberGenerateStrategy;
 
 public class Racing {
 
-    public static List<Integer> race(Cars cars) {
-        cars.moveAll();
+    private Racers racers;
+    private final List<RacingResult> result = new ArrayList<>();
 
-        List<Integer> result = new ArrayList<>();
-        for (Car car : cars.carList()) {
-            result.add(car.totalMoveCount());
+    private Racing() {
+    }
+
+    public Racing(final List<String> carNames) {
+        this.racers = new Racers(carNames);
+    }
+
+    public Racing(final List<String> carNames, final NumberGenerateStrategy strategy) {
+        this.racers = new Racers(carNames, strategy);
+    }
+
+    public List<RacingResult> getResult() {
+        return this.result;
+    }
+
+    public void race(int tryNumber) {
+        for (int i = 0; i < tryNumber; i++) {
+            racers.moveAll();
+            result.add(RacingResult.from(racers));
         }
+    }
 
-        return result;
+    public List<String> winners() {
+        int maxPosition = racers.getMaxPosition();
+        return racers.findSamePositionCars(maxPosition);
     }
 }
