@@ -3,6 +3,7 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -16,6 +17,19 @@ public class Cars {
     public static Cars namesOf(List<String> carNames) {
         validateCarNames(carNames);
         return new Cars(carNames);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Cars)) return false;
+        Cars cars1 = (Cars) o;
+        return cars.equals(cars1.cars);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cars);
     }
 
     private static void validateCarNames(List<String> carNames) throws IllegalArgumentException {
@@ -43,7 +57,8 @@ public class Cars {
     public List<String> getWinners() throws NoSuchElementException {
         int winnerScore = cars.stream()
                 .map(Car::getPosition)
-                .mapToInt(x -> x).max()
+                .mapToInt(x -> x)
+                .max()
                 .orElseThrow(NoSuchElementException::new);
 
         return cars.stream()

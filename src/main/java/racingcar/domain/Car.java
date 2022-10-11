@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import java.util.Objects;
+
 import static racingcar.domain.RandomNumber.isNotLessThanThreshold;
 
 public class Car {
@@ -9,6 +11,19 @@ public class Car {
 
     private Car(String name) {
         this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Car)) return false;
+        Car car = (Car) o;
+        return getPosition() == car.getPosition() && getName().equals(car.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getPosition(), getName());
     }
 
     public static Car nameOf(String name) {
