@@ -1,8 +1,8 @@
-package step3and4.game.car;
+package step3and4and5.game.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3and4.client.number.Number;
+import step3and4and5.client.number.Number;
 
 import java.util.List;
 

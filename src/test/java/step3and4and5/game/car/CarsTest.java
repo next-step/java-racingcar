@@ -1,12 +1,12 @@
-package step3and4.game.car;
+package step3and4and5.game.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
-import step3and4.client.number.Number;
-import step3and4.client.number.RandomNumber;
+import step3and4and5.client.number.Number;
+import step3and4and5.client.number.RandomNumber;
 
 import java.util.List;
 
