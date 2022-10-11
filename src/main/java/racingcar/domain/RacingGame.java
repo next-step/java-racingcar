@@ -7,8 +7,8 @@ public class RacingGame {
 
     private final RoundResults roundResults = new RoundResults();
 
-    public void startGame(int carCount, int trial) {
-        Cars cars = new Cars(carCount);
+    public void startGame(List<String> carNames, int trial) {
+        Cars cars = Cars.namesOf(carNames);
         for (int i = 0; i < trial; i++) {
             cars.race(MOVABLE_THRESHOLD);
             roundResults.recordResults(cars.getPositions());
