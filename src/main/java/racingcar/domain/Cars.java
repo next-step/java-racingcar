@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.dto.CarResultDto;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -33,9 +35,9 @@ public class Cars {
         cars.forEach(car -> car.moveForward(movableThreshold));
     }
 
-    public List<Integer> getPositions() {
+    public List<CarResultDto> getCars() {
         return cars.stream()
-                .map(Car::getPosition)
+                .map(CarResultDto::new)
                 .collect(Collectors.toList());
     }
 }

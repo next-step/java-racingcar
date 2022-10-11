@@ -1,15 +1,17 @@
 package racingcar.domain;
 
+import racingcar.dto.CarResultDto;
+
 import java.util.List;
 
 public class RoundResult {
-    private final List<Integer> results;
+    private final List<CarResultDto> results;
 
-    public RoundResult(List<Integer> results) {
+    public RoundResult(List<CarResultDto> results) {
         this.results = results;
     }
 
-    public List<Integer> getResults() {
+    public List<CarResultDto> getResults() {
         return results;
     }
 }

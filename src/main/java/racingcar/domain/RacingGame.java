@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.dto.CarResultDto;
+
 import java.util.List;
 
 public class RacingGame {
@@ -11,11 +13,11 @@ public class RacingGame {
         Cars cars = Cars.namesOf(carNames);
         for (int i = 0; i < trial; i++) {
             cars.race(MOVABLE_THRESHOLD);
-            roundResults.recordResults(cars.getPositions());
+            roundResults.recordResults(cars.getCars());
         }
     }
 
-    public List<List<Integer>> getRoundResults() {
+    public List<List<CarResultDto>> getRoundResults() {
         return roundResults.getResults();
     }
 }
