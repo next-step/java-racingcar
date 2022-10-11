@@ -9,8 +9,8 @@ import java.util.stream.Collectors;
 public class RoundResults {
     private final List<RoundResult> roundResults = new ArrayList<>();
 
-    public void recordResults(List<CarResultDto> currentCars) {
-        roundResults.add(new RoundResult(currentCars));
+    public void recordResults(Cars cars) {
+        roundResults.add(new RoundResult(cars));
     }
 
     public List<List<CarResultDto>> getResults() {

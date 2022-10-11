@@ -14,6 +14,6 @@ class CarsTest {
 
         cars.race(0);
 
-        assertThat(cars.getCars()).isEqualTo(List.of(1, 1, 1));
+        assertThat(cars.getPositions()).isEqualTo(List.of(1, 1, 1));
     }
 }

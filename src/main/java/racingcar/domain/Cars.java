@@ -35,9 +35,11 @@ public class Cars {
         cars.forEach(car -> car.moveForward(movableThreshold));
     }
 
-    public List<CarResultDto> getCars() {
-        return cars.stream()
-                .map(CarResultDto::new)
-                .collect(Collectors.toList());
+    public List<String> getCarNames() {
+        return cars.stream().map(Car::getName).collect(Collectors.toList());
+    }
+
+    public List<Integer> getPositions() {
+        return cars.stream().map(Car::getPosition).collect(Collectors.toList());
     }
 }

@@ -13,7 +13,7 @@ public class RacingGame {
         Cars cars = Cars.namesOf(carNames);
         for (int i = 0; i < trial; i++) {
             cars.race(MOVABLE_THRESHOLD);
-            roundResults.recordResults(cars.getCars());
+            roundResults.recordResults(cars);
         }
     }
 
