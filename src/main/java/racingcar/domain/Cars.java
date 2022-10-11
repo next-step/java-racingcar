@@ -1,16 +1,13 @@
 package racingcar.domain;
 
-import racingcar.dto.CarResultDto;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class Cars {
-    private final List<Car> cars = new ArrayList<>();
-
     private static final int CAR_NAME_THRESHOLD = 5;
-
+    private final List<Car> cars = new ArrayList<>();
 
     private Cars(List<String> carNames) {
         carNames.forEach(carName -> cars.add(Car.nameOf(carName)));
@@ -41,5 +38,17 @@ public class Cars {
 
     public List<Integer> getPositions() {
         return cars.stream().map(Car::getPosition).collect(Collectors.toList());
+    }
+
+    public List<String> getWinners() throws NoSuchElementException {
+        int winnerScore = cars.stream()
+                .map(Car::getPosition)
+                .mapToInt(x -> x).max()
+                .orElseThrow(NoSuchElementException::new);
+
+        return cars.stream()
+                .filter(car -> car.getPosition() == winnerScore)
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 }

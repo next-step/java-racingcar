@@ -7,6 +7,7 @@ import java.util.List;
 import static racingcar.view.InputView.inputCarNames;
 import static racingcar.view.InputView.inputTrial;
 import static racingcar.view.ResultView.printGameResult;
+import static racingcar.view.ResultView.printWinners;
 
 public class RacingGameApplication {
     public static void main(String[] args) {
@@ -16,6 +17,7 @@ public class RacingGameApplication {
         RacingGame racingGame = new RacingGame();
         racingGame.startGame(carNames, trial);
         printGameResult(racingGame.getRoundResults());
+        printWinners(racingGame.getWinners());
     }
 
     public static List<String> parseCarNames(String carNamesString) {

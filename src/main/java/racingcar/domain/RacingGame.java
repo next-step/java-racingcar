@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import racingcar.dto.CarResultDto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
@@ -9,15 +10,22 @@ public class RacingGame {
 
     private final RoundResults roundResults = new RoundResults();
 
+    private List<String> winners = new ArrayList<>();
+
     public void startGame(List<String> carNames, int trial) {
         Cars cars = Cars.namesOf(carNames);
         for (int i = 0; i < trial; i++) {
             cars.race(MOVABLE_THRESHOLD);
             roundResults.recordResults(cars);
         }
+        winners = cars.getWinners();
     }
 
     public List<List<CarResultDto>> getRoundResults() {
         return roundResults.getResults();
+    }
+
+    public List<String> getWinners() {
+        return winners;
     }
 }
