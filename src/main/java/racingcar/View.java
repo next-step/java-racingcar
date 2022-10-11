@@ -7,6 +7,7 @@ import racingcar.domain.Name;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class View {
     public static final Scanner scanner = new Scanner(System.in);
@@ -51,16 +52,11 @@ public class View {
     }
 
     public void printWinners(List<Name> winners) {
-        for (int i = 0; i < winners.size(); i++) {
-            printComma(i);
-            printName(winners.get(i));
-        }
-        System.out.println("가 최종 우승 했습니다.");
-    }
+        List<String> winnerNames = winners.stream()
+                .map(Name::getName)
+                .collect(Collectors.toList());
 
-    private void printComma(int i) {
-        if (i != 0) {
-            System.out.print(",");
-        }
+        System.out.print((String.join(",", winnerNames)));
+        System.out.println("가 최종 우승 했습니다.");
     }
 }
