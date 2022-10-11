@@ -10,22 +10,20 @@ import java.util.List;
 
 public class RacingCar {
 
-    public static List<Car> carList;
-
     public static void main(String[] args) {
-        carList = InputView.inputCarName();
+        List<Car> carList = InputView.inputCarName();
         int tryNum = InputView.inputTryNum();
 
-        ResultView.start();
+        ResultView.printRacingStart();
         for (int i = 0; i < tryNum; i++) {
-            exeOneCycle(carList.size());
-            ResultView.cycleEnd();
+            exeOneCycle(carList);
+            ResultView.printRacingCycleEnd();
         }
         ResultView.printWinner(Winner.getWinner(carList));
     }
 
-    private static void exeOneCycle(int carNum) {
-        for (int i = 0; i < carNum; i++) {
+    private static void exeOneCycle(List<Car> carList) {
+        for (int i = 0; i < carList.size(); i++) {
             Car car = carList.get(i);
             GameRule.decideMove(GameRule.createRandomNum(), car);
             ResultView.printResult(car);

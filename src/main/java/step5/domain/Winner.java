@@ -1,32 +1,20 @@
 package step5.domain;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Winner {
-    private static final String NAME_SEPARATOR = ", ";
-
-    public static String getWinner(List<Car> carList) {
+    public static List<Car> getWinner(List<Car> carList) {
 
         int max = carList.stream().mapToInt(it -> it.location).max().getAsInt();
-        String winner = "";
-        for (Car car : carList) {
-            winner = getWinnerString(car, max, winner);
-        }
-        return winner;
+        List<Car> winners = carList.stream().filter(it -> isWinner(it, max)).collect(Collectors.toList());
+        return winners;
     }
 
-    private static String getWinnerString(Car car, int max, String winner) {
+    private static boolean isWinner(Car car, int max) {
         if (max == car.location) {
-            winner += getWinnerString(car, winner);
+            return true;
         }
-        return winner;
-    }
-
-    private static String getWinnerString(Car car, String winner) {
-        if (!winner.isBlank()) {
-            winner += NAME_SEPARATOR;
-        }
-        winner += car.name;
-        return winner;
+        return false;
     }
 }

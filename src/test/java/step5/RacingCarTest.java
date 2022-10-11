@@ -28,18 +28,18 @@ class RacingCarTest {
 
     @Test
     void input_이름만큼_차_생산() {
-        assertThat(produceCar("pobi,crong,honux").size()).isEqualTo(3);
+        assertThat(produceCar(new String[]{"pobi","crong","honux"}).size()).isEqualTo(3);
     }
 
     @Test
     void input_이름_알맞게_저장확인() {
-        assertThat(produceCar("pobi,crong,honux").get(0).name).isEqualTo("pobi");
+        assertThat(produceCar(new String[]{"pobi","crong","honux"}).get(0).name).isEqualTo("pobi");
     }
 
     @Test
     void input_이름이_5글자_넘어가면_에러() {
         assertThatThrownBy(() -> {
-            produceCar("pobi,crong,honux,yeonsu");
+            produceCar(new String[]{"pobi","crong","honux","yeonsu"});
         }).isInstanceOf(RuntimeException.class);
     }
 
@@ -49,15 +49,18 @@ class RacingCarTest {
         carList.add(new Car("pobi", 5));
         carList.add(new Car("crong", 3));
         carList.add(new Car("honux", 2));
-        assertThat(getWinner(carList)).isEqualTo("pobi");
+        assertThat(getWinner(carList).size()).isEqualTo(1);
+        assertThat(getWinner(carList).get(0).name).isEqualTo("pobi");
     }
 
     @Test
     void winner_2명일_때() {
-        List<Car> carList = new ArrayList<>();
-        carList.add(new Car("pobi", 5));
-        carList.add(new Car("crong", 5));
-        carList.add(new Car("honux", 2));
-        assertThat(getWinner(carList)).isEqualTo("pobi, crong");
+        Car pobi = new Car("pobi", 5);
+        Car crong = new Car("crong", 5);
+        Car honux = new Car("honux", 2);
+        List<Car> carList = List.of(pobi,crong,honux);
+
+        assertThat(getWinner(carList).size()).isEqualTo(2);
+        assertThat(getWinner(carList)).isEqualTo(List.of(pobi,crong));
     }
 }
