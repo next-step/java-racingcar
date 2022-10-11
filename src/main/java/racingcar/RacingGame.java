@@ -5,6 +5,9 @@ import racingcar.exception.RacingCarErrorCode;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class RacingGame {
 
@@ -31,22 +34,17 @@ public class RacingGame {
     }
 
     public static List<Car> getWinners(List<Car> cars) {
-        sortByLocation(cars);
+        Integer maxPosition = getMaxPosition(cars);
 
-        Integer winnerLocation = cars.get(0).getLocation();
-
-        List<Car> winners = new ArrayList<>();
-
-        for (Car car : cars) {
-            Integer location = car.getLocation();
-            if (location < winnerLocation) break;
-            winners.add(car);
-        }
-
-        return winners;
+        return cars.stream()
+                .filter(car -> Objects.equals(car.getLocation(), maxPosition))
+                .collect(Collectors.toList());
     }
 
-    private static void sortByLocation(List<Car> cars) {
-        cars.sort((c1, c2) -> c2.getLocation() - c1.getLocation());
+    private static Integer getMaxPosition(List<Car> cars) {
+        return cars.stream()
+                .mapToInt(Car::getLocation)
+                .max()
+                .orElseThrow(NoSuchElementException::new);
     }
 }
