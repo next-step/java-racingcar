@@ -1,4 +1,7 @@
-package step3;
+package step3.view;
+
+import step3.domain.Car;
+import step3.domain.Record;
 
 import java.util.List;
 import java.util.Map;
@@ -21,7 +24,7 @@ public class ResultPrinter {
         Map<String, ProcessBar> processBarRecords = this.recordConvertToProcessBar(cars);
         for (int i = 0; i < this.iterate; i++) {
             this.printRoundRecord(processBarRecords, i);
-            this.printEndMessageOfRound(i);
+            this.printEndMessageOfRound();
         }
     }
 
@@ -32,7 +35,8 @@ public class ResultPrinter {
     private Map<String, ProcessBar> recordConvertToProcessBar(List<Car> cars) {
         return cars.stream()
                 .map(car -> {
-                    List<String> bars = car.getRacingRecord().stream()
+                    Record record = car.getRecord();
+                    List<String> bars = record.getRecord().stream()
                             .map(PROCESS_BAR::repeat)
                             .collect(Collectors.toList());
                     ProcessBar processBar = new ProcessBar(bars);
@@ -49,7 +53,7 @@ public class ResultPrinter {
         }
     }
 
-    private void printEndMessageOfRound(int round) {
+    private void printEndMessageOfRound() {
         String END_OF_ROUND_MESSAGE = "";
         System.out.println(END_OF_ROUND_MESSAGE);
     }
