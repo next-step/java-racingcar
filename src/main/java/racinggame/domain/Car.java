@@ -4,6 +4,7 @@ import racinggame.domain.embeded.CarDistance;
 import racinggame.domain.embeded.CarName;
 import racinggame.domain.strategy.MoveStrategy;
 import racinggame.domain.strategy.RandomMoveStrategy;
+import racinggame.util.RandomUtils;
 
 public class Car {
 
@@ -13,7 +14,7 @@ public class Car {
     private final CarName carName;
 
     public Car(String name, CarDistance carDistance) {
-        this(name, carDistance, new RandomMoveStrategy());
+        this(name, carDistance, new RandomMoveStrategy((randomNumber) -> RandomUtils.randomNumber(randomNumber)));
     }
 
     public Car(String name, CarDistance carDistance, MoveStrategy moveStrategy) {

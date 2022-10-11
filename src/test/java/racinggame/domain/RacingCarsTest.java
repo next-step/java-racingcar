@@ -3,7 +3,6 @@ package racinggame.domain;
 import org.junit.jupiter.api.Test;
 import racinggame.domain.embeded.CarDistance;
 import racinggame.domain.embeded.CarName;
-import racinggame.dto.WinCarsDTO;
 
 import java.util.List;
 
@@ -20,7 +19,7 @@ class RacingCarsTest {
 
         RacingCars racingCars = new RacingCars(cars);
         racingCars.move();
-        List<WinCarsDTO> winners = racingCars.winners();
+        List<Car> winners = racingCars.winners();
 
         assertThat(winners).hasSize(1);
         assertThat(winners.get(0).getCarName()).isEqualTo(new CarName("car1"));
