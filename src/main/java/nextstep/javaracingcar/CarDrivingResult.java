@@ -16,6 +16,17 @@ public class CarDrivingResult {
         return this.distance;
     }
 
+    public boolean isPosition(final Distance distance) {
+        return distance.equals(this.distance);
+    }
+
+    public Distance maxDistance(final Distance distance) {
+        if (this.distance.compareTo(distance) > 0) {
+            return this.distance;
+        }
+        return distance;
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;
