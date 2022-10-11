@@ -1,10 +1,10 @@
 package step3.car_racing.model;
 
+import step3.car_racing.util.RandomUtil;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static step3.car_racing.util.RandomUtil.isForward;
 
 public class Cars {
 
@@ -28,7 +28,7 @@ public class Cars {
 
     public List<Car> move() {
         for (Car car : this.carList) {
-            car.move(isForward());
+            car.move(new RandomUtil());
         }
         return this.carList;
     }

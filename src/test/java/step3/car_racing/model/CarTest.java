@@ -26,7 +26,7 @@ class CarTest {
         Car car = new Car().initCar(name);
 
         // when
-        car.move(Boolean.TRUE);
+        car.move(() -> true);
 
         // then
         assertThat(car.getDistance().length()).isGreaterThan(1);
@@ -40,7 +40,7 @@ class CarTest {
         Car car = new Car().initCar(name);
 
         // when
-        car.move(Boolean.FALSE);
+        car.move(() -> false);
 
         // then
         assertThat(car.getDistance().length()).isEqualTo(1);

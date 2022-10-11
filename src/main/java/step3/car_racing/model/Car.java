@@ -1,5 +1,7 @@
 package step3.car_racing.model;
 
+import step3.car_racing.util.MovingStrategy;
+
 public class Car {
 
     private static final String INIT_DISTANCE = "-";
@@ -18,8 +20,8 @@ public class Car {
         return this;
     }
 
-    public void move(Boolean isForward) {
-        if (isForward) {
+    public void move(MovingStrategy movingStrategy) {
+        if (movingStrategy.movable()) {
             this.distance = distance + FORWARD_DISTANCE;
         }
     }

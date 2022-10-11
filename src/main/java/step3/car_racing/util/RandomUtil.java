@@ -2,18 +2,18 @@ package step3.car_racing.util;
 
 import java.util.Random;
 
-public class RandomUtil {
+public class RandomUtil implements MovingStrategy {
 
     private static final Integer RANDOM_RANGE = 10;
     private static final Integer STANDARD_VALUE = 4;
     private static final Random random = new Random();
 
-    private RandomUtil() {
-        // 인스턴스화 방지
-        throw new AssertionError();
+    @Override
+    public boolean movable() {
+        return isForward();
     }
 
-    public static Boolean isForward() {
+    public Boolean isForward() {
         return random.nextInt(RANDOM_RANGE) > STANDARD_VALUE;
     }
 }
