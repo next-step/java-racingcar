@@ -1,12 +1,14 @@
-package racingcar;
+package racingcar.service;
+
+import racingcar.model.Car;
 
 import java.util.List;
 
-public class RaceView {
+public class RaceViewService {
     public static final String MOVE_SYMBOL = "-";
 
     public static void printCars(List<Car> cars) {
-        cars.forEach(RaceView::printCarDistance);
+        cars.forEach(RaceViewService::printCarDistance);
     }
 
     public static void printCarDistance(Car car) {

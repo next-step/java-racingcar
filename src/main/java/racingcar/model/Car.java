@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.model;
 
 import java.util.Random;
 
@@ -11,8 +11,8 @@ public class Car {
         this.distance = 0;
     }
 
-    public void race(int randomValue) {
-        if (randomValue >= RACE_THRESHOLD) {
+    public void race(int value) {
+        if (value >= RACE_THRESHOLD) {
             distance++;
         }
     }
