@@ -17,7 +17,7 @@ class CarsTest {
         List<String> carNameList = List.of("이상원", "원상이");
 
         // when
-        Cars cars = new Cars(carNameList);
+        Cars cars = new Cars().initCars(carNameList);
 
         // then
         assertThat(cars.getCarList().size()).isEqualTo(carNameList.size());

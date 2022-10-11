@@ -21,22 +21,25 @@ public class ResultView {
 
         System.out.println("실행결과");
 
-        Cars cars = new Cars(carNames);
+        Cars cars = new Cars().initCars(carNames);
 
-        racing(racingSize, cars);
+        Racing racing = new Racing(racingSize, cars);
+
+        printRacing(racing, cars);
     }
 
-    private static void racing(int racingSize, Cars cars) {
-        for (int i = 0; i < racingSize; i++) {
-            Racing racing = new Racing(cars);
-            printCarNameAndDistance(racing);
+    private static void printRacing(Racing racing, Cars cars) {
+        for (int i = 0; i < racing.getRaceResult().size(); i++) {
+            printCarNameAndDistance(racing.getRaceResult().get(i).getCarList());
         }
+
         String winner = findWinner(cars);
+
         System.out.println(winner);
     }
 
-    private static void printCarNameAndDistance(Racing racing) {
-        for (Car car : racing.getRaceResult().getCarList()) {
+    private static void printCarNameAndDistance(List<Car> cars) {
+        for (Car car : cars) {
             System.out.println(car.getName() + " : " + car.getDistance());
         }
         System.out.println();

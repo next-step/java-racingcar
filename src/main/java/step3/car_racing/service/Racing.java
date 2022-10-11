@@ -3,20 +3,21 @@ package step3.car_racing.service;
 import step3.car_racing.model.Car;
 import step3.car_racing.model.Cars;
 
-import static step3.car_racing.util.RandomUtil.isForward;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Racing {
 
-    private final Cars raceResult;
+    private final List<Cars> raceResult = new ArrayList<>();
 
-    public Racing(Cars cars) {
-        for (Car car : cars.getCarList()) {
-            car.move(isForward());
+    public Racing(int racingSize, Cars cars) {
+        for (int i = 0; i < racingSize; i++) {
+            List<Car> carList = cars.move();
+            this.raceResult.add(new Cars().resultCars(carList));
         }
-        this.raceResult = cars;
     }
 
-    public Cars getRaceResult() {
+    public List<Cars> getRaceResult() {
         return raceResult;
     }
 }

@@ -18,7 +18,7 @@ class WinnerUtilTest {
 
         // given
         List<String> carNameList = List.of("이상원", "원상이");
-        Cars cars = new Cars(carNameList);
+        Cars cars = new Cars().initCars(carNameList);
 
         // when
         String winner = WinnerUtil.findWinner(cars);

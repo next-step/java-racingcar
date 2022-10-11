@@ -5,10 +5,17 @@ public class Car {
     private static final String INIT_DISTANCE = "-";
     private static final String FORWARD_DISTANCE = "-";
     private String distance = INIT_DISTANCE;
-    private final String name;
+    private String name;
 
-    public Car(String name) {
+    public Car initCar(String name) {
         this.name = name;
+        return this;
+    }
+
+    public Car resultCar(String name, String distance) {
+        this.name = name;
+        this.distance = distance;
+        return this;
     }
 
     public void move(Boolean isForward) {

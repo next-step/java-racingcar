@@ -12,7 +12,7 @@ class CarTest {
     void moveInit() {
         // given
         String name = "이상원";
-        Car car = new Car(name);
+        Car car = new Car().initCar(name);
 
         // expected
         assertThat(car.getDistance()).isEqualTo("-");
@@ -23,7 +23,7 @@ class CarTest {
     void moveForward() {
         // given
         String name = "이상원";
-        Car car = new Car(name);
+        Car car = new Car().initCar(name);
 
         // when
         car.move(Boolean.TRUE);
@@ -37,7 +37,7 @@ class CarTest {
     void moveStay() {
         // given
         String name = "이상원";
-        Car car = new Car(name);
+        Car car = new Car().initCar(name);
 
         // when
         car.move(Boolean.FALSE);
@@ -53,7 +53,7 @@ class CarTest {
         String name = "이상원";
 
         // when
-        Car car = new Car(name);
+        Car car = new Car().initCar(name);
 
         // then
         assertThat(car.getName()).isEqualTo(name);

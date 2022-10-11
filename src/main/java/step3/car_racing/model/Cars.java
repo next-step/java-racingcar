@@ -4,16 +4,33 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static step3.car_racing.util.RandomUtil.isForward;
+
 public class Cars {
 
     private final List<Car> carList = new ArrayList<>();
 
     private static final Integer MIN_DISTANCE = 1;
 
-    public Cars(List<String> carNameList) {
+    public Cars initCars(List<String> carNameList) {
         for (String name : carNameList) {
-            this.carList.add(new Car(name));
+            this.carList.add(new Car().initCar(name));
         }
+        return this;
+    }
+
+    public Cars resultCars(List<Car> carList) {
+        for (Car car : carList) {
+            this.carList.add(new Car().resultCar(car.getName(), car.getDistance()));
+        }
+        return this;
+    }
+
+    public List<Car> move() {
+        for (Car car : this.carList) {
+            car.move(isForward());
+        }
+        return this.carList;
     }
 
     public List<Car> getCarList() {

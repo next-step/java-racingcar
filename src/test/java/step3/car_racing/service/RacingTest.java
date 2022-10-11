@@ -14,11 +14,11 @@ class RacingTest {
     void findWinner() {
         // given
         List<String> carNameList = List.of("123", "456");
-        Cars cars = new Cars(carNameList);
+        Cars cars = new Cars().initCars(carNameList);
 
         // when
-        Racing racing = new Racing(cars);
-        String winner = WinnerUtil.findWinner(racing.getRaceResult());
+        Racing racing = new Racing(5, cars);
+        String winner = WinnerUtil.findWinner(cars);
 
 
         // then
