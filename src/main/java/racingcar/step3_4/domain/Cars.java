@@ -4,6 +4,7 @@ import static java.util.stream.Collectors.*;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import racingcar.step3_4.strategy.ValueGenerator;
 
 public class Cars {
 
@@ -20,9 +21,9 @@ public class Cars {
             .collect(collectingAndThen(toList(), Cars::new));
     }
 
-    public void move(RandomValueGenerator randomValueGenerator) {
+    public void move(ValueGenerator valueGenerator) {
         for (Car car : cars) {
-            car.move(randomValueGenerator);
+            car.move(valueGenerator);
         }
     }
 
