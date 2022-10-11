@@ -1,12 +1,13 @@
 package step3.car_racing;
 
-import static step3.car_racing.view.InputView.inputCarNameList;
-import static step3.car_racing.view.InputView.inputRacingSize;
-import static step3.car_racing.view.ResultView.result;
+import step3.car_racing.view.InputView;
+import step3.car_racing.view.ResultView;
 
 public class Play {
 
     public static void main(String[] args) {
-        result(inputCarNameList(), inputRacingSize());
+        InputView input = new InputView();
+
+        new ResultView().result(input);
     }
 }

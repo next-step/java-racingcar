@@ -3,8 +3,6 @@ package step3.car_racing.model;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarsTest {
@@ -14,13 +12,10 @@ class CarsTest {
     void makeCarList() {
 
         // given
-        List<String> carNameList = List.of("이상원", "원상이");
+        Cars cars = new Cars();
+        int carSize = 5;
 
-        // when
-        Cars cars = new Cars().initCars(carNameList);
-
-        // then
-        assertThat(cars.getCarList().size()).isEqualTo(carNameList.size());
+        // expected
+        assertThat(cars.makeCarList(carSize).getCarList().size()).isEqualTo(carSize);
     }
-
 }

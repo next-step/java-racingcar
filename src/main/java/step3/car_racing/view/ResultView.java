@@ -1,48 +1,23 @@
 package step3.car_racing.view;
 
-import step3.car_racing.model.Car;
-import step3.car_racing.model.Cars;
 import step3.car_racing.service.Racing;
-
-import java.util.List;
 
 public class ResultView {
 
-    private static final String WINNER_MESSAGE = "가 최종 우승 했습니다.";
+    public void result(InputView inputView) {
 
-    private ResultView() {
-        // 인스턴스화 방지
-        throw new AssertionError();
-    }
+        System.out.println("자동차 대수는 몇 대 인가요?");
+        int carSize = inputView.input();
 
-    public static void result(List<String> carNames, int racingSize) {
+        System.out.println("시도할 회수는 몇 회 인가요?");
+        int racingCount = inputView.input();
 
         System.out.println();
 
         System.out.println("실행결과");
 
-        Racing racing = new Racing(racingSize, new Cars().initCars(carNames));
-
-        printRacing(racing);
-
-        System.out.println(printWinner(racing.getFinalRace().findWinner()));
+        new Racing().race(carSize, racingCount);
     }
 
-    private static void printRacing(Racing racing) {
-        for (int i = 0; i < racing.getRaceResult().size(); i++) {
-            printCarNameAndDistance(racing.getRaceResult().get(i).getCarList());
-        }
-    }
-
-    private static void printCarNameAndDistance(List<Car> cars) {
-        for (Car car : cars) {
-            System.out.println(car.getName() + " : " + car.getDistance());
-        }
-        System.out.println();
-    }
-
-    private static String printWinner(List<String> winnerList) {
-        return winnerList + WINNER_MESSAGE;
-    }
 
 }
