@@ -39,11 +39,8 @@ public class InputView {
 
         try {
             number = new Positive(scanNumber()).get();
-        } catch (InputMismatchException e) {
-            System.out.println("잘못된 문자가 입력되었습니다.");
-            System.exit(1);
-        } catch (IllegalArgumentException e) {
-            System.out.println("너무 작은 숫자를 입력했습니다");
+        } catch (InputMismatchException | IllegalArgumentException e) {
+            System.out.println("0 이상의 숫자를 입력해야 합니다.");
             System.exit(1);
         }
 
