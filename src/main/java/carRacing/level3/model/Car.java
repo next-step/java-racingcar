@@ -9,7 +9,11 @@ public class Car {
 	private CarName carName;
 
 	public Car(String carName) {
-		this.location = new Location();
+		this(carName,0);
+	}
+
+	public Car(String carName,int location){
+		this.location = new Location(location);
 		this.carName = new CarName(carName);
 	}
 

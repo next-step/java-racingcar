@@ -21,6 +21,10 @@ public class Cars {
 		return new Cars(cars);
 	}
 
+	public static Cars addCarList(List<Car>carList){
+		return new Cars(carList);
+	}
+
 	public void moveCarLocation(MovingStrategy movingStrategy) {
 		cars.forEach(car ->
 			car.moveLocation(movingStrategy));
