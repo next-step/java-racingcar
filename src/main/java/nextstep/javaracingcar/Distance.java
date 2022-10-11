@@ -2,7 +2,7 @@ package nextstep.javaracingcar;
 
 import java.util.Iterator;
 
-public class Distance implements Iterable<Integer> {
+public class Distance {
     public static final Distance ZERO = new Distance(0);
     public static final Distance ONE = new Distance(1);
     private final int value;
@@ -18,6 +18,9 @@ public class Distance implements Iterable<Integer> {
         return new Distance(this.value + other.value);
     }
 
+    public Iterable<Integer> toIterable() {
+        return () -> new SizeIterator(value);
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -31,10 +34,5 @@ public class Distance implements Iterable<Integer> {
     @Override
     public int hashCode() {
         return value;
-    }
-
-    @Override
-    public Iterator<Integer> iterator() {
-        return new SizeIterator(value);
     }
 }

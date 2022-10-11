@@ -15,7 +15,7 @@ class CarTest {
         final String carName = "TEST_CAR";
         final Car car = new Car(carName, () -> new Distance(movableDistance));
         car.move();
-        assertThat(car.dashboard()).isEqualTo(new CarDashboard(carName, new Distance(movableDistance)));
+        assertThat(car.racingResult()).isEqualTo(new CarDrivingResult(carName, new Distance(movableDistance)));
     }
 
     @DisplayName("Car 는 주어진 이동할 때 마다 주어진 거리만큼 이동한다.")
@@ -23,11 +23,11 @@ class CarTest {
     @ValueSource(ints = {1, 2, 10})
     public void spec02(final int moveCount) {
         final String carName = "TEST_CAR";
-        final CarEngine oneDistanceSupplier = () -> Distance.ONE;
+        final MovingStrategy oneDistanceSupplier = () -> Distance.ONE;
         final Car car = new Car(carName, oneDistanceSupplier);
         for (int i = 0; i < moveCount; i++) {
             car.move();
         }
-        assertThat(car.dashboard()).isEqualTo(new CarDashboard(carName,new Distance(moveCount)));
+        assertThat(car.racingResult()).isEqualTo(new CarDrivingResult(carName,new Distance(moveCount)));
     }
 }

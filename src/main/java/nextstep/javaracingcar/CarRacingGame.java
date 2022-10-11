@@ -9,15 +9,15 @@ public class CarRacingGame {
     private final List<Car> cars;
     private final Round round;
 
-    public CarRacingGame(final PositiveNumber carCount, final Round round, final CarEngine carEngine) {
+    public CarRacingGame(final PositiveNumber carCount, final Round round, final MovingStrategy movingStrategy) {
 
-        this.cars = this.createCars(carCount, carEngine);
+        this.cars = this.createCars(carCount, movingStrategy);
         this.round = round;
     }
 
-    private List<Car> createCars(final PositiveNumber carCount, final CarEngine carEngine) {
+    private List<Car> createCars(final PositiveNumber carCount, final MovingStrategy movingStrategy) {
         final List<Car> initCars = new ArrayList<>();
-        carCount.forEach(i -> initCars.add(new Car(String.valueOf(i), carEngine)));
+        carCount.forEach(i -> initCars.add(new Car(String.valueOf(i), movingStrategy)));
         return initCars;
     }
 
@@ -25,7 +25,7 @@ public class CarRacingGame {
         return this.round.hasNextRound();
     }
 
-    public List<CarDashboard> runRound() {
+    public List<CarDrivingResult> runRound() {
         for (Car car : this.cars) {
             car.move();
         }
@@ -33,7 +33,7 @@ public class CarRacingGame {
         return result();
     }
 
-    public List<CarDashboard> result() {
-        return cars.stream().map(Car::dashboard).collect(Collectors.toList());
+    public List<CarDrivingResult> result() {
+        return cars.stream().map(Car::drivingResult).collect(Collectors.toList());
     }
 }

@@ -1,6 +1,6 @@
 package nextstep.javaracingcar.view;
 
-import nextstep.javaracingcar.CarDashboard;
+import nextstep.javaracingcar.CarDrivingResult;
 
 import java.util.List;
 
@@ -16,10 +16,11 @@ public class ResultView {
         this.outputConsumer.write("실행 결과");
     }
 
-    public void printResult(final List<CarDashboard> dashboards) {
-        for (CarDashboard dashboard : dashboards) {
+    public void printResult(final List<CarDrivingResult> racingResults) {
+        for (CarDrivingResult racingResult : racingResults) {
             final StringBuffer sb = new StringBuffer("-");
-            dashboard.distance().forEach(i -> sb.append("-"));
+            final Iterable<Integer> distanceIterable = racingResult.distance().toIterable();
+            distanceIterable.forEach(i -> sb.append("-"));
             outputConsumer.write(sb.toString());
         }
         printEmptyLine();

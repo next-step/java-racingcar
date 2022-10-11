@@ -3,11 +3,11 @@ package nextstep.javaracingcar;
 import java.util.Objects;
 
 
-public class CarDashboard {
+public class CarDrivingResult {
     private final String name;
     private final Distance distance;
 
-    public CarDashboard(final String name, final Distance distance) {
+    public CarDrivingResult(final String name, final Distance distance) {
         this.name = name;
         this.distance = distance;
     }
@@ -21,7 +21,7 @@ public class CarDashboard {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CarDashboard that = (CarDashboard) o;
+        CarDrivingResult that = (CarDrivingResult) o;
 
         if (!Objects.equals(name, that.name)) return false;
         return Objects.equals(distance, that.distance);
