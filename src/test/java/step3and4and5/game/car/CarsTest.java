@@ -2,9 +2,6 @@ package step3and4and5.game.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.NullAndEmptySource;
-import org.junit.jupiter.params.provider.ValueSource;
 import step3and4and5.client.number.Number;
 import step3and4and5.client.number.RandomNumber;
 
@@ -45,15 +42,11 @@ class CarsTest {
         assertThat(sut.positionsAndNames()).containsExactly(car.print());
     }
 
-    @ParameterizedTest
-    @NullAndEmptySource
+    @Test
     @DisplayName("자동차 생성시 입력값 유효성 검증")
-    @ValueSource(strings = {
-            " "
-    })
-    void d(String str) {
-        assertThatThrownBy(() -> new Cars.Factory(new String[]{str}).cars(new Number.Fake(1)))
+    void d() {
+        assertThatThrownBy(() -> new Cars.Factory(new String[]{}).cars(new Number.Fake(1)))
                 .isInstanceOf(IllegalStateException.class)
-                .hasMessage("유효한 문자열이 아닙니다.");
+                .hasMessage("빈 공백일 수 없습니다.");
     }
 }
