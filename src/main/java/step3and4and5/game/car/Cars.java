@@ -59,16 +59,8 @@ public class Cars {
         }
 
         private void verifyCarsName() {
-            if (carsNames.length == 0) {
-                throw new IllegalStateException("유효한 문자열이 아닙니다.");
-            }
-
-            Arrays.stream(carsNames).forEach(this::verifyCarName);
-        }
-
-        private void verifyCarName(String carName) {
-            if (carName == null || carName.isEmpty() || carName.isBlank()) {
-                throw new IllegalStateException("유효한 문자열이 아닙니다.");
+            if (carsNames == null || carsNames.length == 0) {
+                throw new IllegalStateException("빈 공백일 수 없습니다.");
             }
         }
     }
