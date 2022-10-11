@@ -1,7 +1,5 @@
 package step3and4and5.game.car;
 
-import step3and4and5.client.number.Number;
-
 import java.util.Objects;
 
 public final class Car {

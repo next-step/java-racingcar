@@ -1,4 +1,4 @@
-package step3and4and5.client.number;
+package step3and4and5.game.car;
 
 @FunctionalInterface
 public interface Number {
