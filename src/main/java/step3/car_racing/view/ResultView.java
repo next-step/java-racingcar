@@ -6,9 +6,9 @@ import step3.car_racing.service.Racing;
 
 import java.util.List;
 
-import static step3.car_racing.util.WinnerUtil.findWinner;
-
 public class ResultView {
+
+    private static final String WINNER_MESSAGE = "가 최종 우승 했습니다.";
 
     private ResultView() {
         // 인스턴스화 방지
@@ -23,19 +23,15 @@ public class ResultView {
 
         Cars cars = new Cars().initCars(carNames);
 
-        Racing racing = new Racing(racingSize, cars);
+        printRacing(new Racing(racingSize, cars));
 
-        printRacing(racing, cars);
+        System.out.println(printWinner(cars.findWinner()));
     }
 
-    private static void printRacing(Racing racing, Cars cars) {
+    private static void printRacing(Racing racing) {
         for (int i = 0; i < racing.getRaceResult().size(); i++) {
             printCarNameAndDistance(racing.getRaceResult().get(i).getCarList());
         }
-
-        String winner = findWinner(cars);
-
-        System.out.println(winner);
     }
 
     private static void printCarNameAndDistance(List<Car> cars) {
@@ -43,6 +39,10 @@ public class ResultView {
             System.out.println(car.getName() + " : " + car.getDistance());
         }
         System.out.println();
+    }
+
+    private static String printWinner(List<String> winnerList) {
+        return winnerList + WINNER_MESSAGE;
     }
 
 }

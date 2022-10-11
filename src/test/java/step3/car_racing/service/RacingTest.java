@@ -3,7 +3,6 @@ package step3.car_racing.service;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step3.car_racing.model.Cars;
-import step3.car_racing.util.WinnerUtil;
 
 import java.util.List;
 
@@ -18,10 +17,9 @@ class RacingTest {
 
         // when
         Racing racing = new Racing(5, cars);
-        String winner = WinnerUtil.findWinner(cars);
 
 
         // then
-        System.out.println(winner);
+
     }
 }
