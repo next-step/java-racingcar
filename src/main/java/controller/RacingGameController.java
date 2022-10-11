@@ -1,6 +1,5 @@
 package controller;
 
-import domain.Car;
 import domain.CarName;
 import domain.MovingStrategy;
 import domain.Racing;
@@ -13,8 +12,8 @@ public class RacingGameController {
 
     private final InputView inputView;
     private final ResultView resultView;
-    private Car car;
     private static final MovingStrategy movingStrategy = new MovingStrategy();
+
     public RacingGameController(InputView inputView, ResultView resultView) {
         this.inputView = inputView;
         this.resultView = resultView;

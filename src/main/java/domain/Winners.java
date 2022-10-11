@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 public class Winners {
 
     private final List<Car> cars = new ArrayList<>();
-    private Position position;
 
     public Winners(List<CarName> carNames) {
         for (CarName carName : carNames) {
@@ -27,7 +26,11 @@ public class Winners {
         return winners.stream().map(String::toString).collect(Collectors.toList());
     }
 
-    public int getMaxPosition() {
+    private boolean isWinner(int maxPosition, Position position) {
+        return position.getPosition() == maxPosition;
+    }
+
+    private int getMaxPosition() {
         int maxPosition = 0;
 
         for (Car car : cars) {
@@ -39,10 +42,6 @@ public class Winners {
 
     private int comparePosition(int maxPosition, Position position) {
         return Math.max(maxPosition, position.getPosition());
-    }
-
-    private boolean isWinner(int maxPosition, Position position) {
-        return position.getPosition() == maxPosition;
     }
 
     public List<Car> getCars() {
