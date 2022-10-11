@@ -8,22 +8,16 @@ public class RacingGame {
     private final static int MAX_BOUND = 10;
     private final static int MOVABLE_THRESHOLD = 4;
 
-    private final List<Car> cars;
+    private final Cars cars;
     private final Random random;
 
-    public RacingGame() {
-        this.cars = new ArrayList<>();
+    public RacingGame(Cars cars) {
+        this.cars = cars;
         this.random = new Random();
     }
 
-    public void createCars(int number) {
-        for (int i = 0; i < number; i++) {
-            cars.add(new Car());
-        }
-    }
-
     public void tryGame() {
-        for (Car car : cars) {
+        for (Car car : cars.getCars()) {
             if (isMovable()) {
                 car.forward();
             }
@@ -34,7 +28,24 @@ public class RacingGame {
         return random.nextInt(MAX_BOUND) >= MOVABLE_THRESHOLD;
     }
 
+    public List<String> getWinnerNames() {
+        int maxPosition = cars.findMaxPosition();
+
+        List<String> winners = new ArrayList<>();
+        for (Car car: cars.getCars()) {
+            comparePositionAndAddWinners(winners, car, maxPosition);
+        }
+
+        return winners;
+    }
+
+    private void comparePositionAndAddWinners(List<String> winners, Car car, int maxPosition) {
+        if (car.isPosition(maxPosition)) {
+            winners.add(car.getName().getText());
+        }
+    }
+
     public List<Car> getCars() {
-        return cars;
+        return cars.getCars();
     }
 }
