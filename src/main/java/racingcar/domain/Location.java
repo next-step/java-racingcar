@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Location {
     private static final int MINIMUM_VALUE = 0;
 
-    private final int location;
+    private int location;
 
     public Location() {
         this.location = MINIMUM_VALUE;
@@ -22,8 +22,8 @@ public class Location {
         }
     }
 
-    public Location next() {
-        return new Location(location + 1);
+    public void next() {
+        location++;
     }
 
     public int getLocation() {

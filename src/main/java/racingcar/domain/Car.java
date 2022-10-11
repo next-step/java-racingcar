@@ -4,7 +4,7 @@ public class Car {
     private static final int MINIMUM_MOVE_VALUE = 4;
 
     private final Name name;
-    private Location location;
+    private final Location location;
 
     public Car(Name name) {
         this(name, new Location());
@@ -25,7 +25,7 @@ public class Car {
 
     public void move(Generator generator) {
         if (generator.nextValue() >= MINIMUM_MOVE_VALUE) {
-            location = location.next();
+            location.next();
         }
     }
 
