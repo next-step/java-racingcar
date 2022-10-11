@@ -9,12 +9,12 @@ public class Car {
 	private CarName carName;
 
 	public Car(String carName) {
-		this(carName,0);
+		this(new CarName(carName),new Location(0));
 	}
 
-	public Car(String carName,int location){
-		this.location = new Location(location);
-		this.carName = new CarName(carName);
+	public Car(CarName carName,Location location){
+		this.location = location;
+		this.carName = carName;
 	}
 
 	public Location carLocation() {
@@ -47,5 +47,13 @@ public class Car {
 	@Override
 	public int hashCode() {
 		return Objects.hash(location, carName);
+	}
+
+	public boolean isMaxLocation(Location maxLocation) {
+
+		if (location.equals(maxLocation)){
+			return true;
+		}
+		return false;
 	}
 }

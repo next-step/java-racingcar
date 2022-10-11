@@ -28,13 +28,6 @@ public class Location {
 		location += MOVE_LOCATION;
 	}
 
-	public boolean isWinner(int maxLocation) {
-		if (location == maxLocation) {
-			return true;
-		}
-		return false;
-	}
-
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) {

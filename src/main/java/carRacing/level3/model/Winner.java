@@ -18,17 +18,19 @@ public class Winner {
 
 	public Winner decideWinner(Cars cars) {
 
+		Location maxLocation = cars.maxLocation();
+
 		for (int i = 0; i < cars.totalNum(); i++) {
-			addWinner(cars, i);
+			addWinner(cars.car(i),maxLocation);
 		}
 
 		return new Winner(winnerList);
 	}
 
-	public void addWinner(Cars cars, int carNum) {
-		Location location = cars.carLocation(carNum);
-		if (location.isWinner(cars.maxCarLocation())) {
-			winnerList.add(cars.carName(carNum));
+	private void addWinner(Car car,Location maxCarLocation) {
+
+		if (car.isMaxLocation(maxCarLocation)){
+			winnerList.add(car.carName());
 		}
 	}
 
