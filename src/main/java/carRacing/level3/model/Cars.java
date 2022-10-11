@@ -21,7 +21,7 @@ public class Cars {
 		return new Cars(cars);
 	}
 
-	public static Cars addCarList(List<Car>carList){
+	public static Cars addCarList(List<Car> carList) {
 		return new Cars(carList);
 	}
 
@@ -30,25 +30,28 @@ public class Cars {
 			car.moveLocation(movingStrategy));
 	}
 
-	public int maxCarLocation() {
-		return cars.stream()
+	public Location maxLocation() {
+		int maxLocation = cars.stream()
 			.map(Car::carLocation)
 			.mapToInt(Location::getLocation)
 			.max()
-			.orElseThrow(()->new NotFoundCarsException("cars가 비어있습니다"));
+			.orElseThrow(() -> new NotFoundCarsException("자동차 리스트가 비어있습니다"));
+
+		return new Location(maxLocation);
 	}
 
-	public Location carLocation(int carNum) {
-		return cars.get(carNum).carLocation();
+	public Location carLocation(int i) {
+		return cars.get(i).carLocation();
 	}
 
-	public String carName(int carNum) {
-		return cars.get(carNum).carName();
+	public Car car(int carNum) {
+		return cars.get(carNum);
 	}
 
 	public int totalNum() {
 		return cars.size();
 	}
+
 
 }
 
