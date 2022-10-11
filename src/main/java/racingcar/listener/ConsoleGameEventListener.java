@@ -23,10 +23,7 @@ public class ConsoleGameEventListener implements GameEventListener {
 
     @Override
     public void afterGame(List<Car> cars) {
-        List<String> winnerNames = Winners.find(cars)
-                .stream()
-                .map(Car::getName)
-                .collect(Collectors.toList());
+        List<String> winnerNames = new Winners(cars).getNames();
         resultView.printWinner(winnerNames);
     }
 }
