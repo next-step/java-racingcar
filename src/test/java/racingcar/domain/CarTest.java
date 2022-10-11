@@ -12,7 +12,7 @@ public class CarTest {
     @Test
     @DisplayName("자동차의 시작 위치는 0이다")
     void initPosition() {
-        assertThat(new Car("차").getPosition()).isEqualTo(0);
+        assertThat(new Car("차")).hasFieldOrPropertyWithValue("position", 0);
     }
 
     @Test
@@ -21,7 +21,7 @@ public class CarTest {
         Car car = new Car("차", () -> true);
         car.go();
 
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car).hasFieldOrPropertyWithValue("position", 1);
     }
 
     @Test
@@ -30,7 +30,7 @@ public class CarTest {
         Car car = new Car("차", () -> false);
         car.go();
 
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car).hasFieldOrPropertyWithValue("position", 0);
     }
 
     @ParameterizedTest
@@ -42,6 +42,6 @@ public class CarTest {
             car.go();
         }
 
-        assertThat(car.getPosition()).isEqualTo(repeat);
+        assertThat(car).hasFieldOrPropertyWithValue("position", repeat);
     }
 }

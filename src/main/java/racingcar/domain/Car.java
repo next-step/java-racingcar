@@ -3,7 +3,7 @@ package racingcar.domain;
 public class Car {
     private final CarMovePredicate movePredicate;
     private final String name;
-    private int position = 0;
+    private int position;
 
     public Car(String name) {
         this(name, new DefaultCarMovePredicate());
@@ -31,6 +31,14 @@ public class Car {
 
     private void move() {
         this.position++;
+    }
+
+    public boolean hasPosition(int position) {
+        return this.position == position;
+    }
+
+    public int getMaxPosition(int max) {
+        return Math.max(position, max);
     }
 
     public String getName() {

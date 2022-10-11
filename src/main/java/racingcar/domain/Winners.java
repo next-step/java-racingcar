@@ -8,14 +8,14 @@ public class Winners {
         int position = winnerPosition(cars);
 
         return cars.stream()
-                .filter(car -> car.getPosition() == position)
+                .filter(car -> car.hasPosition(position))
                 .collect(Collectors.toList());
     }
 
     private static int winnerPosition(List<Car> cars) {
         int max = 0;
         for (Car car: cars) {
-            max = Math.max(car.getPosition(), max);
+            max = car.getMaxPosition(max);
         }
         return max;
     }
