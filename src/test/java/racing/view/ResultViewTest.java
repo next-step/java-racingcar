@@ -35,9 +35,9 @@ public class ResultViewTest {
     @Test
     @DisplayName("CarList가 주어졌을 때 정상적인 출력값 확인")
     void testPrintedTextWithCarList() {
-        Car car1 = new Car();
-        Car car2 = new Car();
-        Car car3 = new Car();
+        Car car1 = new Car("jack");
+        Car car2 = new Car("jason");
+        Car car3 = new Car("eric");
         Mover mover = new Mover();
         mover.decideMove(car1, 4);
         mover.decideMove(car2, 5);
@@ -47,7 +47,30 @@ public class ResultViewTest {
 
         resultView.printCarList(carList);
 
-        assertThat(outContent.toString()).isEqualTo("--\n---\n-\n\n");
+        assertThat(outContent.toString()).isEqualTo("jack : --\njason : ---\neric : -\n\n");
+    }
+
+    @Test
+    @DisplayName("크기가 1보다 큰 WinnerList가 주어졌을 때 정상 출력값 확인")
+    void testPrintedTextWithWinners(){
+        Car car1 = new Car("jack");
+        Car car2 = new Car("jason");
+        List<Car> winners = Arrays.asList(car1, car2);
+
+        resultView.printWinners(winners);
+
+        assertThat(outContent.toString()).isEqualTo("jack, jason가 최종 우승했습니다.");
+    }
+
+    @Test
+    @DisplayName("크기가 1인 큰 WinnerList가 주어졌을 때 정상 출력값 확인")
+    void testPrintedTextWithWinner(){
+        Car car1 = new Car("jack");
+        List<Car> winners = Arrays.asList(car1);
+
+        resultView.printWinners(winners);
+
+        assertThat(outContent.toString()).isEqualTo("jack가 최종 우승했습니다.");
     }
 
 }

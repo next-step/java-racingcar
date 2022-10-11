@@ -9,33 +9,33 @@ import java.util.List;
 
 public class RacingApp {
 
-    public static final String CARNAME_REGEX = ",";
+    public static final String CAR_NAME_REGEX = ",";
     private final InputView inputView = new InputView();
     private final ResultView resultView = new ResultView();
     private final Mover mover = new Mover();
     private final Validator validator = new Validator();
-
-    public RacingApp() {
-    }
+    private final Referee referee = new Referee();
 
     public void start() {
         ClientInput clientInput = inputView.getClientInput();
-        List<Car> carList = makeCars(clientInput.getCarNames());
+        List<Car> cars = makeCars(clientInput.getCarNames());
         try{
-            validator.validateCarNames(carList);
+            validator.validateCarNames(cars);
         }catch (RuntimeException e){
             System.out.println(e.getMessage());
             return;
         }
         resultView.printStartText();
         for (int i = 0; i < clientInput.getTryCount(); i++) {
-            moveCars(carList);
-            resultView.printCarList(carList);
+            moveCars(cars);
+            resultView.printCarList(cars);
         }
+        List<Car> winners = referee.getWinners(cars);
+        resultView.printWinners(winners);
     }
 
     private List<Car> makeCars(String carNamesFromClient) {
-        String[] carNames = carNamesFromClient.split(CARNAME_REGEX);
+        String[] carNames = carNamesFromClient.split(CAR_NAME_REGEX);
         return makeCars(carNames);
     }
 
@@ -53,6 +53,5 @@ public class RacingApp {
             mover.decideMove(car, randomNum);
         });
     }
-
 
 }

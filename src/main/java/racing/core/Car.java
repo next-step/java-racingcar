@@ -3,10 +3,7 @@ package racing.core;
 public class Car {
 
     private int distance = 1;
-    private String carName;
-
-    public Car() {
-    }
+    private final String carName;
 
     public Car(String carName) {
         this.carName = carName;
@@ -22,5 +19,10 @@ public class Car {
 
     public void stepAhead(int stepCount) {
         this.distance += stepCount;
+    }
+
+    @Override
+    public String toString() {
+        return carName;
     }
 }
