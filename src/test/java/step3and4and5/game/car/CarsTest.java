@@ -16,10 +16,10 @@ class CarsTest {
     @DisplayName("자동차들에게 턴을 사용할 있게 알람을 줄 수 있다.")
     void a() {
         Number number = new Number.Fake(4);
-        Car car = new Car.Factory(number, "").car();
+        Car car = new Car.Factory(number, "1").car();
         Cars sut = new Cars(List.of(car));
 
-        Car movedCar = new Car.Factory(number, new Position(1), "").car();
+        Car movedCar = new Car.Factory(number, new Position(1), "1").car();
         assertThat(sut.carsWithTurnUsed()).isEqualTo(new Cars(List.of(movedCar)));
     }
 
