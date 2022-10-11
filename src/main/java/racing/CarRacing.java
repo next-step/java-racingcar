@@ -1,10 +1,9 @@
 package racing;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CarRacing {
-    private List<Car> cars = new ArrayList<>();
+    private Cars cars;
 
     public static void main(String[] args) {
         CarRacing carRacing = new CarRacing();
@@ -12,41 +11,37 @@ public class CarRacing {
     }
 
     private void start() {
-        prepare();
-        int rounds = InputView.inputRounds();
-        play(rounds);
+        participateCars();
+        play();
     }
 
-    private void play(int rounds) {
+    private void play() {
+        int rounds = InputView.inputRounds();
         ResultView.printResultTitle();
         for (int i = 1; i <= rounds; i++) {
             playRound();
-            announceResult(i);
+            announceRoundResult(i);
         }
+        announceWinner();
     }
 
-    private void prepare() {
-        participateCars();
+    private void announceWinner() {
+        List<String> winnerNames = cars.findWinnerNames();
+        ResultView.printWinners(winnerNames);
     }
 
     private void playRound() {
-        for (Car car : cars) {
-            car.run();
-        }
+        cars.run();
     }
 
     private void participateCars() {
-        int carCount = InputView.inputCars();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
-        }
+        String names = InputView.inputCarNames();
+        cars = new Cars(names);
     }
 
-    private void announceResult(int round) {
+    private void announceRoundResult(int round) {
         ResultView.printRound(round);
-        for (Car car: cars) {
-            ResultView.printDistance(car.distance());
-        }
+        cars.printDistance();
         ResultView.printNewLine();
     }
 }
