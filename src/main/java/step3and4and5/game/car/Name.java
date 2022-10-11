@@ -41,9 +41,18 @@ public class Name {
         }
 
         private void verifyLengthMustNotExceedFive() {
+            verifyValidName();
+
             if (name.length() > 5) {
                 throw new IllegalStateException("이름은 5글자를 초과할 수 없다.");
             }
         }
+
+        private void verifyValidName() {
+            if (name == null || name.isEmpty() || name.isBlank()) {
+                throw new IllegalStateException("이름이 null 값이거나 공백일 수 없습니다.");
+            }
+        }
+
     }
 }
