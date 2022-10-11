@@ -11,7 +11,7 @@ class CarsTest {
 
     @Test
     void race() {
-        Cars cars = new Cars(3);
+        Cars cars = Cars.namesOf(List.of("a", "b", "c"));
 
         cars.race(0);
 

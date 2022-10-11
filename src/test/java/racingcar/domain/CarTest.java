@@ -10,7 +10,7 @@ class CarTest {
     @Test
     @DisplayName("position 값을 1 증가시킨다.")
     void moveForward_ShouldPlus1PositionValue() {
-        Car car = new Car();
+        Car car = Car.nameOf("Test");
 
         car.moveForward(0);
 
