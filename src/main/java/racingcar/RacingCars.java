@@ -13,31 +13,20 @@ public class RacingCars {
 
     private final List<Car> cars;
 
-    private RacingCars(int number) {
-        validateNumber(number);
-        this.cars = new ArrayList<>();
-        for (int i = 0; i < number; i++) {
-            cars.add(Car.from(0));
-        }
-    }
-
     private RacingCars(String[] names) {
+        validateArr(names);
         this.cars = new ArrayList<>();
         for (String name : names) {
             cars.add(Car.from(name));
         }
     }
 
-    public static RacingCars create(int number) {
-        return new RacingCars(number);
-    }
-
     public static RacingCars create(String[] names) {
         return new RacingCars(names);
     }
 
-    private static void validateNumber(int number) {
-        if (number < 0) {
+    private static void validateArr(String[] names) {
+        if (names.length == 0) {
             throw new CustomException(RacingCarErrorCode.CAR_NUMBER_BAD_REQUEST);
         }
     }

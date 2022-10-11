@@ -12,13 +12,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static racingcar.Car.MOVE_DISTANCE;
 
 public class CarTest {
-    @Test
-    @DisplayName("자동차는 한 번에 정해진 거리만큼 전진할 수 있다")
-    void moveForward() {
-        Car car = Car.from(0);
-        car.moveForward();
-        assertThat(car).isEqualTo(Car.from(MOVE_DISTANCE));
-    }
 
     @Test
     @DisplayName("자동차는 이름을 가질 수 있다")

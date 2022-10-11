@@ -34,10 +34,16 @@ public class RacingGameTest {
     void 우승자_뽑아내기() {
         final int winnerLocation = 4;
 
-        Car firstCar = Car.from(winnerLocation);
-        Car firstCar2 = Car.from(winnerLocation);
-        Car secondCar = Car.from(winnerLocation-1);
-        Car thirdCar = Car.from(winnerLocation-2);
+        Car firstCar = Car.from("test1");
+        Car firstCar2 = Car.from("test2");
+
+        for (int i = 0; i < winnerLocation; i++) {
+            firstCar.moveForward();
+            firstCar2.moveForward();
+        }
+
+        Car secondCar = Car.from("test3");
+        Car thirdCar = Car.from("test4");
 
         List<Car> cars = new ArrayList<>();
         cars.add(firstCar);

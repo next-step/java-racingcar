@@ -11,20 +11,12 @@ public class Car {
     public static final int NAME_MAXIMUM_VALUE = 5;
 
     private Integer location;
-    private String name;
-
-    private Car(int location) {
-        this.location = location;
-    }
+    private final String name;
 
     private Car(int location, String name) {
         validateName(name);
         this.location = location;
         this.name = name;
-    }
-
-    public static Car from(int location) {
-        return new Car(location);
     }
 
     public static Car from(String name) {
