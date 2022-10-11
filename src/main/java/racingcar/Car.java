@@ -8,19 +8,17 @@ import java.util.Objects;
 public class Car {
 
     public static final int MOVE_DISTANCE = 1;
-    public static final int NAME_MAXIMUM_VALUE = 5;
 
     private Integer location;
-    private final String name;
+    private final CarName name;
 
-    private Car(int location, String name) {
-        validateName(name);
+    private Car(int location, CarName name) {
         this.location = location;
         this.name = name;
     }
 
     public static Car from(String name) {
-        return new Car(0, name);
+        return new Car(0, CarName.from(name));
     }
 
     public static Car from(Car car) {
@@ -36,13 +34,7 @@ public class Car {
     }
 
     public String getName() {
-        return name;
-    }
-
-    private void validateName(String name) {
-        if (name.length() > NAME_MAXIMUM_VALUE) {
-            throw new CustomException(CarErrorCode.CAR_NAME_LENGTH_BAD_REQUEST);
-        }
+        return name.getName();
     }
 
     @Override
