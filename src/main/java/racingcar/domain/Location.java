@@ -3,7 +3,7 @@ package racingcar.domain;
 import java.util.Objects;
 
 public class Location {
-    public static final int MINIMUM_VALUE = 0;
+    private static final int MINIMUM_VALUE = 0;
 
     private final int location;
 

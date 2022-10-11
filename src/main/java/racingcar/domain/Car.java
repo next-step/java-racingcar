@@ -1,7 +1,7 @@
 package racingcar.domain;
 
 public class Car {
-    public static final int MINIMUM_MOVE_VALUE = 4;
+    private static final int MINIMUM_MOVE_VALUE = 4;
 
     private final Name name;
     private Location location;

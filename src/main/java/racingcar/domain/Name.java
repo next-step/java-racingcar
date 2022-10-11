@@ -4,7 +4,7 @@ package racingcar.domain;
 import java.util.Objects;
 
 public class Name {
-    public static final int MAXIMUM_LENGTH = 5;
+    private static final int MAXIMUM_LENGTH = 5;
 
     private final String name;
 

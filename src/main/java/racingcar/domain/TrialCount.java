@@ -3,7 +3,7 @@ package racingcar.domain;
 import java.util.Objects;
 
 public class TrialCount {
-    public static final int MIN_COUNT = 1;
+    private static final int MIN_COUNT = 1;
 
     private int count;
 
