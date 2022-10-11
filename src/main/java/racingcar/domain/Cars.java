@@ -3,6 +3,8 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
@@ -37,17 +39,15 @@ public class Cars {
     }
 
     public List<Name> findWinners() {
-        Car max = new Car("init", 0);
+        return findSameLocationCars(findMaxLocationCar());
+    }
+
+    private Car findMaxLocationCar() {
+        Car max = cars.get(0);
         for (Car car : cars) {
             max = far(max, car);
         }
-
-        List<Name> winners = new ArrayList<>();
-        for (Car car : cars) {
-            addSameLocation(winners, max, car);
-        }
-
-        return winners;
+        return max;
     }
 
     private Car far(Car max, Car target) {
@@ -57,9 +57,10 @@ public class Cars {
         return max;
     }
 
-    private void addSameLocation(List<Name> winners, Car max, Car target) {
-        if (target.isCollinear(max)) {
-            winners.add(target.getName());
-        }
+    private List<Name> findSameLocationCars(Car max) {
+        return cars.stream()
+                .map(car -> car.findCollinearName(max))
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
     }
 }

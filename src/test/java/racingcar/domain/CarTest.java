@@ -48,6 +48,6 @@ class CarTest {
     void is_same_location() {
         Car carA = new Car(new Name("A"), new Location(1));
         Car carB = new Car(new Name("B"), new Location(1));
-        assertThat(carA.isCollinear(carB)).isTrue();
+        assertThat(carA.findCollinearName(carB)).isEqualTo(new Name("A"));
     }
 }

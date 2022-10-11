@@ -10,10 +10,6 @@ public class Car {
         this(name, new Location());
     }
 
-    public Car(String name, int location) {
-        this(new Name(name), new Location(location));
-    }
-
     public Car(Name name, Location location) {
         this.name = name;
         this.location = location;
@@ -37,7 +33,10 @@ public class Car {
         return this.location.isBig(compare.location);
     }
 
-    public boolean isCollinear(Car compare) {
-        return this.location.equals(compare.location);
+    public Name findCollinearName(Car compare) {
+        if (this.location.equals(compare.location)) {
+            return name;
+        }
+        return null;
     }
 }
