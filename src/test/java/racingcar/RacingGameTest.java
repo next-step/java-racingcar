@@ -32,7 +32,7 @@ public class RacingGameTest {
     @Test
     @DisplayName("가장 먼 거리를 전진한 우승자들을 리스트로 반환한다.")
     void 우승자_뽑아내기() {
-        final int winnerLocation = 4;
+        final int winnerLocation = new WinnerNumberGenerator().generate();
 
         Car firstCar = Car.from("test1");
         Car firstCar2 = Car.from("test2");
