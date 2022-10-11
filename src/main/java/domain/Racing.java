@@ -1,28 +1,28 @@
 package domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Racing {
 
-    private List<Car> cars;
+    private Winners winners;
 
-    public Racing(List<CarName> carNames) { makeCar(carNames); }
+    public Racing(List<CarName> carNames) { winners = makeCar(carNames); }
 
-    private void makeCar(List<CarName> carNames) {
-        this.cars = new ArrayList<>();
-        for (CarName carName : carNames) {
-            cars.add(new Car(carName));
-        }
+    private Winners makeCar(List<CarName> carNames) {
+        return new Winners(carNames);
     }
 
     public void race(MovingStrategy movingStrategy) {
-        for (Car car : cars) {
+        for (Car car : winners.getCars()) {
             car.move(movingStrategy.isMovable(movingStrategy.getIntValue()));
         }
     }
 
     public List<Car> getCars() {
-        return this.cars;
+        return winners.getCars();
+    }
+
+    public List<String> getWinners() {
+        return winners.getWinners();
     }
 }

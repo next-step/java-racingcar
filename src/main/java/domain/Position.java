@@ -1,10 +1,12 @@
 package domain;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Position {
 
-    private final int position;
+    private int position;
+    private Racing racing;
 
     public Position(int position) {
         if (!isValid(position)) {

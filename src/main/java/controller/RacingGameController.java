@@ -34,5 +34,7 @@ public class RacingGameController {
             racing.race(movingStrategy);
             resultView.printPlayResult(racing.getCars());
         }
+
+        resultView.printWinners(racing.getWinners());
     }
 }
