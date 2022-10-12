@@ -15,8 +15,14 @@ public class CarTest {
             }
         });
 
-        Assertions.assertThat(movedCar.getMoveResult().getMoveCount()).isEqualTo(1);
-        Assertions.assertThat(car.getMoveResult()).isNotEqualTo(movedCar.getMoveResult());
+        org.junit.jupiter.api.Assertions.assertAll(
+                () -> {
+                    Assertions.assertThat(movedCar.getMoveResult().getMoveCount()).isEqualTo(1);
+                },
+                () -> {
+                    Assertions.assertThat(car.getMoveResult()).isNotEqualTo(movedCar.getMoveResult());
+                }
+        );
     }
 
     @Test

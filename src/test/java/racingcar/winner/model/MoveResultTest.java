@@ -1,6 +1,7 @@
 package racingcar.winner.model;
 
-import org.assertj.core.api.Assertions;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.Test;
 
 class MoveResultTest {
@@ -9,7 +10,7 @@ class MoveResultTest {
         MoveResult beforeMove = new MoveResult(0);
         MoveResult afterMove = new MoveResult(0);
 
-        Assertions.assertThat(beforeMove).isEqualTo(afterMove);
+        assertThat(beforeMove).isEqualTo(afterMove);
     }
 
     @Test
@@ -17,7 +18,7 @@ class MoveResultTest {
         MoveResult beforeMove = new MoveResult();
         MoveResult afterMove = beforeMove.move(true);
 
-        Assertions.assertThat(beforeMove).isNotEqualTo(afterMove);
+        assertThat(beforeMove).isNotEqualTo(afterMove);
     }
 
     @Test
@@ -25,6 +26,6 @@ class MoveResultTest {
         MoveResult mover = new MoveResult(6);
         MoveResult follower = new MoveResult(4);
 
-        Assertions.assertThat(mover.compareTo(follower)).isGreaterThan(0);
+        assertThat(mover.compareTo(follower)).isGreaterThan(0);
     }
 }

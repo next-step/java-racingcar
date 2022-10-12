@@ -1,8 +1,9 @@
 package racingcar.winner.model;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.util.List;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import racingcar.winner.view.CarNameInput;
@@ -13,7 +14,7 @@ public class CarsTest {
     void 주어진이름을가지는차를만든다() {
         List<Car> cars = new CarFactory(new CarNameInput("1,2,3").parse()).build();
 
-        Assertions.assertThat(new Cars(cars).getCars()).hasSize(3);
+        assertThat(new Cars(cars).getCars()).hasSize(3);
     }
 
     @Test
@@ -24,6 +25,6 @@ public class CarsTest {
 
         List<Car> testCars = List.of(loser, winnerCar1, winnerCar2);
 
-        Assertions.assertThat(new Cars(testCars).findWinner()).containsOnly(winnerCar1, winnerCar2);
+        assertThat(new Cars(testCars).findWinner()).containsOnly(winnerCar1, winnerCar2);
     }
 }
