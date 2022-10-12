@@ -1,11 +1,11 @@
 package racingcar.view;
 
 import java.util.List;
-import racingcar.output.RacingResult;
+import racingcar.domain.RacingRecord;
 
 public class OutputView {
 
-    public static void printResult(final List<RacingResult> result, final List<String> winners) {
+    public static void printResult(final List<RacingRecord> result, final List<String> winners) {
         System.out.println("실행 결과");
 
         result.forEach(r -> {
@@ -16,7 +16,7 @@ public class OutputView {
         printWinners(winners);
     }
 
-    private static void printRacingResult(final RacingResult result) {
+    private static void printRacingResult(final RacingRecord result) {
         result.getRacerResults().forEach(r -> {
             System.out.printf("%s : ", r.getCarName());
             System.out.print("-".repeat(r.getCarPosition()));

@@ -1,22 +1,20 @@
-package racingcar.output;
+package racingcar.domain;
 
-import racingcar.Car;
-
-public class RacerResult {
+public class RacerRecord {
 
     private String carName;
     private int carPosition;
 
-    private RacerResult() {
+    private RacerRecord() {
     }
 
-    public RacerResult(final String carName, final int carPosition) {
+    public RacerRecord(final String carName, final int carPosition) {
         this.carName = carName;
         this.carPosition = carPosition;
     }
 
-    public static RacerResult from(final Car car) {
-        return new RacerResult(car.getName(), car.getPosition());
+    public static RacerRecord from(final Car car) {
+        return new RacerRecord(car.getName(), car.getPosition());
     }
 
     public String getCarName() {

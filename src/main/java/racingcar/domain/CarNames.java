@@ -1,19 +1,19 @@
-package racingcar.input;
+package racingcar.domain;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public class CarNamesInput {
+public class CarNames {
 
     private static final String SEPERATOR = ",";
 
     private List<String> carNames;
 
-    private CarNamesInput() {
+    private CarNames() {
     }
 
-    public CarNamesInput(final String carNames) {
+    public CarNames(final String carNames) {
         String[] splited = carNames.split(SEPERATOR);
         validateCarNames(splited);
 

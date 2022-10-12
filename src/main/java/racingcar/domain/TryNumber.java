@@ -1,13 +1,13 @@
-package racingcar.input;
+package racingcar.domain;
 
-public class TryNumberInput {
+public class TryNumber {
 
     private int tryNumber;
 
-    private TryNumberInput() {
+    private TryNumber() {
     }
 
-    public TryNumberInput(final int tryNumber) {
+    public TryNumber(final int tryNumber) {
         validateTryNumber(tryNumber);
         this.tryNumber = tryNumber;
     }

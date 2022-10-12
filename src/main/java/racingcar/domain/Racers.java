@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,18 +17,14 @@ public class Racers {
             .collect(Collectors.toList());
     }
 
-    public Racers(final List<String> carNames, final NumberGenerateStrategy strategy) {
-        this.cars = carNames.stream()
-            .map(name -> new Car(name, strategy))
-            .collect(Collectors.toList());
-    }
-
     public List<Car> getCars() {
         return this.cars;
     }
 
-    public void moveAll() {
-        this.cars.forEach(Car::move);
+    public void moveAll(final NumberGenerateStrategy strategy) {
+        this.cars.forEach(car -> {
+            car.move(strategy);
+        });
     }
 
     public List<Integer> getPositions() {

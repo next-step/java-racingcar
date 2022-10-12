@@ -5,38 +5,36 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.strategy.NumberGenerateStrategy;
-import racingcar.strategy.RandomNumberGenerateStrategy;
+import racingcar.domain.Racers;
 
-class CarsTest {
+class RacersTest {
 
     @Test
-    @DisplayName("moveAll 메소드는 Cars가 갖고 있는 모든 자동차들을 모두 움직인다.")
+    @DisplayName("moveAll 메소드는 Racers가 갖고 있는 모든 자동차들을 모두 움직인다.")
     void moveAll_test() {
         List<String> carNames = List.of("jordy", "penda", "kero");
-        Racers cars = new Racers(carNames, new SameNumberGenerateStrategy());
-        cars.moveAll();
+        Racers cars = new Racers(carNames);
+        cars.moveAll(new SameNumberGenerateStrategy());
 
         assertThat(cars.getPositions()).containsOnly(1);
     }
 
 
     @Test
-    @DisplayName("getPositions 메소드는 Cars가 갖고 있는 모든 자동차들의 position을 담은 리스트를 반환한다.")
+    @DisplayName("getPositions 메소드는 Racers가 갖고 있는 모든 자동차들의 position을 담은 리스트를 반환한다.")
     void getPositions_test() {
         List<String> carNames = List.of("jordy", "penda", "kero");
-        NumberGenerateStrategy strategy = new RandomNumberGenerateStrategy();
-        Racers cars = new Racers(carNames, strategy);
+        Racers cars = new Racers(carNames);
 
         assertThat(cars.getPositions()).hasSize(3);
     }
 
     @Test
-    @DisplayName("getMaxPosition 메소드는 Cars가 갖고 있는 모든 자동차들의 position 중 최대 값을 반환한다.")
+    @DisplayName("getMaxPosition 메소드는 Racers가 갖고 있는 모든 자동차들의 position 중 최대 값을 반환한다.")
     void getMaxPosition_test() {
         List<String> carNames = List.of("jordy", "penda", "kero");
-        Racers cars = new Racers(carNames, new SameNumberGenerateStrategy());
-        cars.moveAll();
+        Racers cars = new Racers(carNames);
+        cars.moveAll(new SameNumberGenerateStrategy());
 
         assertThat(cars.getMaxPosition()).isEqualTo(1);
     }
@@ -45,8 +43,8 @@ class CarsTest {
     @DisplayName("findSamePositionCars 메소드는 주어진 위치와 같은 위치 값을 가진 자동차 이름 리스트를 반환한다.")
     void findSamePositionCars() {
         List<String> carNames = List.of("jordy", "penda", "kero");
-        Racers cars = new Racers(carNames, new SameNumberGenerateStrategy());
-        cars.moveAll();
+        Racers cars = new Racers(carNames);
+        cars.moveAll(new SameNumberGenerateStrategy());
 
         assertThat(cars.findSamePositionCars(1)).containsExactly("jordy", "penda", "kero");
     }

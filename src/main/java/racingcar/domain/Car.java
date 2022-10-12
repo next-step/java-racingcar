@@ -1,7 +1,6 @@
-package racingcar;
+package racingcar.domain;
 
 import racingcar.strategy.NumberGenerateStrategy;
-import racingcar.strategy.RandomNumberGenerateStrategy;
 
 public class Car {
 
@@ -9,18 +8,11 @@ public class Car {
 
     private String name;
     private int position;
-    private NumberGenerateStrategy strategy;
 
     private Car() {}
 
     public Car(final String name) {
         this.name = name;
-        this.strategy = new RandomNumberGenerateStrategy();
-    }
-
-    public Car(final String name, final NumberGenerateStrategy strategy) {
-        this.name = name;
-        this.strategy = strategy;
     }
 
     public String getName() {
@@ -31,7 +23,7 @@ public class Car {
         return this.position;
     }
 
-    public void move() {
+    public void move(final NumberGenerateStrategy strategy) {
         if (strategy.generate() >= AVAILABLE_MOVE_BOUND) {
             this.position += 1;
         }
