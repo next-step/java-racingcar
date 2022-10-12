@@ -25,7 +25,7 @@ public class RacingGameService {
         IntStream.range(FIRST_INDEX, tryCount)
             .forEach(index -> {
                 cars.move(movableStrategy);
-                cars.print(resultView);
+                resultView.printOfPosition(cars.getCars());
             });
 
         resultView.winner(cars.findWinners());

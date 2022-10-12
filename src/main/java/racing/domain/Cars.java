@@ -2,13 +2,13 @@ package racing.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import racing.ui.ResultView;
 
 public class Cars {
 
     private static final int DEFAULT_VALUE = 0;
+    private static final String DELIMITER = ", ";
 
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public Cars(List<Car> cars) {
         this.cars = cars;
@@ -18,17 +18,8 @@ public class Cars {
         return cars;
     }
 
-    public Car getCar(int index) {
-        return cars.get(index);
-    }
-
     public void move(MovableStrategy movableStrategy) {
         cars.forEach(car -> car.move(movableStrategy));
-    }
-
-    public void print(ResultView resultView) {
-        cars.forEach(resultView::print);
-        resultView.enter();
     }
 
     public String findWinners() {
@@ -40,7 +31,7 @@ public class Cars {
         return cars.stream()
             .filter(car -> car.equalsPosition(maxPostion))
             .map(Car::getName)
-            .collect(Collectors.joining(", "));
+            .collect(Collectors.joining(DELIMITER));
     }
 
 }

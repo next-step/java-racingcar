@@ -1,5 +1,6 @@
 package racing.ui;
 
+import java.util.List;
 import java.util.StringJoiner;
 import racing.domain.Car;
 
@@ -16,17 +17,17 @@ public class ResultViewImpl implements ResultView {
     }
 
     @Override
-    public void print(Car car) {
+    public void printOfPosition(List<Car> cars) {
+        cars.stream().forEach(car -> print(car));
+        System.out.println();
+    }
+
+    private void print(Car car) {
         StringJoiner stringJoiner = new StringJoiner(DELIMETER)
             .add(car.getName())
             .add(DISTANCE_DELIMETER.repeat(car.getPosition()));
 
         System.out.println(stringJoiner);
-    }
-
-    @Override
-    public void enter() {
-        System.out.println();
     }
 
     @Override
