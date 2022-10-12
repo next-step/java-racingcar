@@ -1,10 +1,12 @@
-package racingcar;
+package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.SameNumberGenerateStrategy;
+import racingcar.domain.Car;
 import racingcar.domain.Racers;
 
 class RacersTest {
@@ -40,12 +42,12 @@ class RacersTest {
     }
 
     @Test
-    @DisplayName("findSamePositionCars 메소드는 주어진 위치와 같은 위치 값을 가진 자동차 이름 리스트를 반환한다.")
+    @DisplayName("findSamePositionCars 메소드는 주어진 위치와 같은 위치 값을 가진 자동차 리스트를 반환한다.")
     void findSamePositionCars() {
         List<String> carNames = List.of("jordy", "penda", "kero");
         Racers cars = new Racers(carNames);
         cars.moveAll(new SameNumberGenerateStrategy());
 
-        assertThat(cars.findSamePositionCars(1)).containsExactly("jordy", "penda", "kero");
+        assertThat(cars.findSamePositionCars(1)).containsExactly(new Car("jordy", 1), new Car("penda", 1), new Car("kero", 1));
     }
 }

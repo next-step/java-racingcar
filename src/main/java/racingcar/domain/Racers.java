@@ -40,10 +40,9 @@ public class Racers {
             .orElseThrow(() -> new RuntimeException("최대 값을 찾는데 실패했습니다."));
     }
 
-    public List<String> findSamePositionCars(int position) {
+    public List<Car> findSamePositionCars(int position) {
         return cars.stream()
             .filter(car -> car.getPosition() == position)
-            .map(Car::getName)
             .collect(Collectors.toList());
     }
 }

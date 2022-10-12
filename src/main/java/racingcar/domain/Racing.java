@@ -35,7 +35,7 @@ public class Racing {
         }
     }
 
-    public List<String> winners() {
+    public List<Car> winners() {
         int maxPosition = racers.getMaxPosition();
         return racers.findSamePositionCars(maxPosition);
     }

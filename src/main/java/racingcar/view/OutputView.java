@@ -1,11 +1,12 @@
 package racingcar.view;
 
 import java.util.List;
+import racingcar.domain.Car;
 import racingcar.domain.RacingRecord;
 
 public class OutputView {
 
-    public static void printResult(final List<RacingRecord> result, final List<String> winners) {
+    public static void printResult(final List<RacingRecord> result, final List<Car> winners) {
         System.out.println("실행 결과");
 
         result.forEach(r -> {
@@ -24,7 +25,12 @@ public class OutputView {
         });
     }
 
-    private static void printWinners(final List<String> winners) {
-        System.out.printf("%s 가 최종 우승했습니다.", winners.toString().replaceAll("[\\[\\]]", ""));
+    private static void printWinners(final List<Car> winners) {
+        StringBuilder winnersNames = new StringBuilder();
+        winners.forEach(winner ->
+            winnersNames.append(winner.getName()).append(", ")
+        );
+        winnersNames.deleteCharAt(winnersNames.lastIndexOf(","));
+        System.out.printf("%s가 최종 우승했습니다.", winnersNames);
     }
 }
