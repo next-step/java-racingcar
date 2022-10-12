@@ -7,6 +7,12 @@ public class Car {
     private final String carName;
 
     public Car(String carName) {
+        if (carName == null || carName.equals("")) {
+            throw new IllegalArgumentException("car name cannot be empty");
+        }
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException("car name length shouldn't be longer than 5");
+        }
         this.carName = carName;
     }
 
@@ -14,7 +20,7 @@ public class Car {
         return this.distance;
     }
 
-    public String getCarName(){
+    public String getCarName() {
         return this.carName;
     }
 

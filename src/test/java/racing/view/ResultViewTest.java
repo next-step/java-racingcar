@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.core.Car;
+import racing.core.CarList;
 import racing.core.Mover;
 
 import java.io.ByteArrayOutputStream;
@@ -44,8 +45,9 @@ public class ResultViewTest {
         mover.decideMove(car2, 7);
         mover.decideMove(car3, 3);
         List<Car> carList = Arrays.asList(car1, car2, car3);
+        CarList cars = new CarList(carList);
 
-        resultView.printCarList(carList);
+        resultView.printCarList(cars);
 
         assertThat(outContent.toString()).isEqualTo("jack : --\njason : ---\neric : -\n\n");
     }
@@ -57,7 +59,7 @@ public class ResultViewTest {
         Car car2 = new Car("jason");
         List<Car> winners = Arrays.asList(car1, car2);
 
-        resultView.printWinners(winners);
+        resultView.printWinners(new CarList(winners));
 
         assertThat(outContent.toString()).isEqualTo("jack, jason가 최종 우승했습니다.");
     }
@@ -68,7 +70,7 @@ public class ResultViewTest {
         Car car1 = new Car("jack");
         List<Car> winners = Arrays.asList(car1);
 
-        resultView.printWinners(winners);
+        resultView.printWinners(new CarList(winners));
 
         assertThat(outContent.toString()).isEqualTo("jack가 최종 우승했습니다.");
     }

@@ -5,13 +5,14 @@ import java.util.stream.Collectors;
 
 public class Referee {
 
-    public List<Car> getWinners(List<Car> cars) {
-        cars.sort((o1, o2) -> o2.getDistance() - o1.getDistance());
-        Car firstWinner = cars.get(0);
+    public CarList getWinners(CarList cars) {
+        cars.sortDesc();
+        Car firstWinner = cars.getFirstCar();
         int winnerScore = firstWinner.getDistance();
-        return cars.stream()
+        List<Car> result = cars.getCarStream()
                 .filter(car -> car.getDistance() == winnerScore)
                 .collect(Collectors.toList());
+        return new CarList(result);
     }
 
 }
