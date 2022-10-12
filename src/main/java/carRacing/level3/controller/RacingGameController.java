@@ -12,7 +12,6 @@ public class RacingGameController {
 	private final static InputView INPUT_VIEW = new InputView();
 	private final static OutPutView OUT_PUT_VIEW = new OutPutView();
 
-
 	public void gameStart(MovingStrategy movingStrategy) {
 
 		List<String> carNameList = INPUT_VIEW.saveCarNames();
