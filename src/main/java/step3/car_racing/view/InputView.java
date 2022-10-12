@@ -25,10 +25,10 @@ public class InputView {
 
     public static int inputRacingSize() {
         System.out.println(RACING_SIZE_REQUEST_MESSAGE);
-        return validateSize();
+        return convertInputStringToInteger();
     }
 
-    private static int validateSize() {
+    private static int convertInputStringToInteger() {
         String input = SCANNER.next();
 
         while (!validatePositive(input)) {
