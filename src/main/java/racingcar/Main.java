@@ -12,5 +12,6 @@ public class Main {
             carRace.race();
             ResultView.printCars(carRace.getCars());
         }
+        ResultView.printWinner(carRace.getWinners());
     }
 }
