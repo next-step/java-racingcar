@@ -5,8 +5,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import racingcar.strategy.FalseMovableStrategy;
 import racingcar.strategy.MovableStrategy;
 import racingcar.strategy.RandomMovableStrategy;
+import racingcar.strategy.TrueMovableStrategy;
 
 import java.util.Random;
 
@@ -40,12 +42,7 @@ class CarTest {
     @Test
     @DisplayName("이동 한번 성공 시 position이 1이다")
     void one_move() {
-        Car car = new Car(name, new MovableStrategy() {
-            @Override
-            public boolean canMove() {
-                return true;
-            }
-        });
+        Car car = new Car(name, new TrueMovableStrategy());
         car.move();
 
         assertThat(car.getPosition()).isEqualTo(1);
@@ -54,12 +51,7 @@ class CarTest {
     @Test
     @DisplayName("이동 실패 시 position이 0이다")
     void zero_move() {
-        Car car = new Car(name, new MovableStrategy() {
-            @Override
-            public boolean canMove() {
-                return false;
-            }
-        });
+        Car car = new Car(name, new FalseMovableStrategy());
         car.move();
 
         assertThat(car.getPosition()).isEqualTo(0);
@@ -68,12 +60,7 @@ class CarTest {
     @Test
     @DisplayName("5번 이동 성공 시 position이 5이다")
     void five_move() {
-        Car car = new Car(name, new MovableStrategy() {
-            @Override
-            public boolean canMove() {
-                return true;
-            }
-        });
+        Car car = new Car(name, new TrueMovableStrategy());
         for (int i = 0; i < 5; i++) {
             car.move();
         }

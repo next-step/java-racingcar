@@ -1,6 +1,5 @@
 package racingcar;
 
-import java.util.Formatter;
 import java.util.List;
 
 public class ResultView {

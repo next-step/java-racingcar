@@ -1,7 +1,6 @@
 package racingcar;
 
 import racingcar.strategy.MovableStrategy;
-import racingcar.strategy.RandomMovableStrategy;
 
 public class Car {
 
