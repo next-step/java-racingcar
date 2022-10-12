@@ -5,14 +5,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CarFactory {
-    private final String[] splittedCarNames;
+    private final String[] splitCarNames;
 
-    public CarFactory(final String[] splittedCarNames) {
-        this.splittedCarNames = splittedCarNames;
+    public CarFactory(final String[] splitCarNames) {
+        this.splitCarNames = splitCarNames;
     }
 
     public List<Car> build() {
-        return Arrays.stream(splittedCarNames)
+        return Arrays.stream(splitCarNames)
                      .map(CarName::new)
                      .map(Car::new)
                      .collect(Collectors.toList());
