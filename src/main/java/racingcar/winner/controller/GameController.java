@@ -17,7 +17,7 @@ public class GameController {
     }
 
     public void play(CarNameInput carNameInput, GameAttemptCount gameAttemptCount) {
-        Cars cars = new Cars(new CarFactory(carNameInput).build());
+        Cars cars = new Cars(new CarFactory(carNameInput.parse()).build());
         GameAttemptCount playCount = gameAttemptCount;
 
         userOutputInterface.show("실행결과\n");

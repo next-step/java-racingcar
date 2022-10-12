@@ -11,7 +11,7 @@ public class CarsTest {
 
     @Test
     void 주어진이름을가지는차를만든다() {
-        List<Car> cars = new CarFactory(new CarNameInput("1,2,3")).build();
+        List<Car> cars = new CarFactory(new CarNameInput("1,2,3").parse()).build();
 
         Assertions.assertThat(new Cars(cars).getCars()).hasSize(3);
     }
