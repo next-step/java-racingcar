@@ -1,35 +1,24 @@
 package racing_game.core;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Collections;
 import java.util.List;
-import java.util.Spliterator;
-import java.util.function.Consumer;
+import racing_game.domain.Distances;
 
-public class SnapShot<T> implements Iterable<T> {
+public class SnapShot {
 
-    private final List<T> holder;
+    private final List<Distances> holder;
 
     public SnapShot() {
         this.holder = new ArrayList<>();
     }
 
-    public void capture(T t) {
-        holder.add(t);
+    public void capture(Distances distances) {
+        holder.add(distances);
     }
 
-    @Override
-    public Iterator<T> iterator() {
-        return holder.iterator();
+    public List<Distances> get() {
+        return Collections.unmodifiableList(holder);
     }
 
-    @Override
-    public void forEach(Consumer<? super T> action) {
-        holder.forEach(action);
-    }
-
-    @Override
-    public Spliterator<T> spliterator() {
-        return holder.spliterator();
-    }
 }

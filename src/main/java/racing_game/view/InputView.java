@@ -3,27 +3,23 @@ package racing_game.view;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import racing_game.core.Parsable;
+import racing_game.core.Positive;
 
-public class InputView<T extends Parsable<T>> {
+public class InputView {
 
     private final BufferedReader reader;
-
-    public InputView(BufferedReader reader) {
-        this.reader = reader;
-    }
 
     public InputView() {
         this.reader = new BufferedReader(new InputStreamReader(System.in));
     }
 
-    public T fromInput(String ment, T target) throws IOException {
+    public Positive getInput(String ment) throws IOException {
         String input = request(ment);
-        while (!target.canParse(input)) {
-            wrongAlert();
+        while (!Positive.canParse(input)) {
+            System.out.println("잘못된 입력입니다.");
             input = request(ment);
         }
-        return target.parse(input);
+        return Positive.of(input);
     }
 
     private String request(String ment) throws IOException {
@@ -31,7 +27,4 @@ public class InputView<T extends Parsable<T>> {
         return reader.readLine();
     }
 
-    private void wrongAlert() {
-        System.out.println("잘못된 입력입니다.");
-    }
 }

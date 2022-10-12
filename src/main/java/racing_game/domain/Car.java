@@ -4,7 +4,6 @@ import racing_game.core.Positive;
 
 public class Car {
 
-    private static final int THRESHOLD = 4;
     private final Positive distance;
 
     private Car() {
@@ -15,14 +14,10 @@ public class Car {
         return new Car();
     }
 
-    public void move(int value) {
-        if (canMove(value)) {
+    public void move(MovingStrategy movingStrategy) {
+        if (movingStrategy.canMove()) {
             distance.addOne();
         }
-    }
-
-    private boolean canMove(int value) {
-        return value >= THRESHOLD;
     }
 
     public Positive getDistance() {

@@ -22,9 +22,9 @@ public class Cars {
         return new Cars(count);
     }
 
-    public void moveAll() {
+    public void moveAll(MovingStrategy movingStrategy) {
         for (Car car : holder) {
-            car.move(randomGenerator.getRandomValue());
+            car.move(movingStrategy);
         }
     }
 

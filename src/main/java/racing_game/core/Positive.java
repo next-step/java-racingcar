@@ -3,12 +3,15 @@ package racing_game.core;
 import java.util.Objects;
 import racing_game.core.exception.PositiveFormatException;
 
-public class Positive implements Parsable<Positive> {
+public class Positive {
 
     private int holder;
 
     private Positive(String number) {
-        parse(number);
+        if(!canParse(number)) {
+            throw new PositiveFormatException("only positive available");
+        }
+        this.holder = Integer.parseInt(number);
     }
 
     public static Positive of(String number) {
@@ -30,27 +33,13 @@ public class Positive implements Parsable<Positive> {
         return Positive.of(number.toInt());
     }
 
-    @Override
-    public boolean canParse(String value) {
-        return (isNumber(value) && Integer.parseInt(value) >= 0);
-    }
-
-    @Override
-    public Positive parse(String value) {
-        if (!canParse(value)) {
-            throw new PositiveFormatException("only positive available");
-        }
-        this.holder = Integer.parseInt(value);
-        return this;
-    }
-
-    private boolean isNumber(String value) {
-        try {
-            Integer.parseInt(value);
-        } catch (NumberFormatException e) {
+    public static boolean canParse(String value) {
+        try{
+            int parsed = Integer.parseInt(value);
+            return parsed >= 0;
+        }catch(NumberFormatException e) {
             return false;
         }
-        return true;
     }
 
     public Positive add(Positive number) {
