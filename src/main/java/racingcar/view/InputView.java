@@ -54,6 +54,6 @@ public final class InputView {
     }
 
     private static String inputValue() {
-            return SCANNER.nextLine();
+        return SCANNER.nextLine();
     }
 }
