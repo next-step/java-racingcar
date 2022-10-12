@@ -15,7 +15,9 @@ public class InputView {
     public List<CarName> getSplitCarName() {
         System.out.println(INPUT_CAR_NAME);
         String carName = scanner.nextLine();
-        return Arrays.stream(carName.split(SPLIT_COMMA)).map(CarName::new).collect(Collectors.toList());
+        return Arrays.stream(carName.split(SPLIT_COMMA))
+                .map(CarName::new)
+                .collect(Collectors.toList());
     }
 
     private int getPositiveIntValue() {

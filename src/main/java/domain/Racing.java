@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Racing {
 
-    private Winners winners;
+    private final Winners winners;
 
     public Racing(List<CarName> carNames) { winners = makeCar(carNames); }
 

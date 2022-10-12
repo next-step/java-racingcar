@@ -23,7 +23,9 @@ public class Winners {
             }
         }
 
-        return winners.stream().map(String::toString).collect(Collectors.toList());
+        return winners.stream()
+                .map(String::toString)
+                .collect(Collectors.toList());
     }
 
     private boolean isWinner(int maxPosition, Position position) {

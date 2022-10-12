@@ -4,7 +4,8 @@ import java.util.Objects;
 
 public class Position {
 
-    private int position;
+    private static final int MOVING_SIZE = 1;
+    private final int position;
 
     public Position(int position) {
         if (!isValid(position)) {
@@ -19,6 +20,10 @@ public class Position {
 
     public int getPosition() {
         return position;
+    }
+
+    public Position movePosition() {
+        return new Position(this.position + 1);
     }
 
     @Override

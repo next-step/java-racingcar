@@ -2,9 +2,8 @@ package domain;
 
 public class Car {
 
+    private final CarName carName;
     private Position position;
-    private CarName carName;
-    private static final int MOVING_SIZE = 1;
 
     public Car(CarName carName) {
         this.position = new Position(0);
@@ -13,7 +12,7 @@ public class Car {
 
     public void move(boolean isMovable) {
         if (isMovable) {
-            this.position = new Position(position.getPosition() + MOVING_SIZE);
+            this.position = position.movePosition();
         }
     }
 
