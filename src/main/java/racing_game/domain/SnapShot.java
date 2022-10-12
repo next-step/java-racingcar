@@ -19,11 +19,14 @@ public class SnapShot {
 
     public void capture(Cars cars) {
         holder.add(mapToDistance(cars));
-        winner = cars.getCurrentWinners();
     }
 
     public String getWinner() {
         return winner;
+    }
+
+    public void setWinner(String winner) {
+        this.winner = winner;
     }
 
     private Map<CarName, Positive> mapToDistance(Cars cars) {

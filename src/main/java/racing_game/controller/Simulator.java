@@ -2,12 +2,12 @@ package racing_game.controller;
 
 import java.util.List;
 import racing_game.core.Positive;
-import racing_game.domain.SnapShot;
 import racing_game.domain.CarName;
 import racing_game.domain.Cars;
 import racing_game.domain.MovingStrategy;
 import racing_game.domain.RandomGenerator;
 import racing_game.domain.RandomMovingStrategy;
+import racing_game.domain.SnapShot;
 
 public class Simulator {
 
@@ -21,6 +21,7 @@ public class Simulator {
             cars.moveAll(movingStrategy);
             snapShot.capture(cars);
         }
+        snapShot.setWinner(cars.getCurrentWinners());
         return snapShot;
     }
 
