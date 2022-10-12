@@ -23,11 +23,13 @@ public class CarRace {
     }
 
     public List<Car> getWinners() {
-        return getWinners(cars);
-    }
+        CarDistance maxDistance = cars.stream()
+            .map(Car::getDistance)
+            .max(CarDistance::compareTo)
+            .orElseThrow();
 
-    static List<Car> getWinners(List<Car> cars) {
-        int maxMoves = cars.stream().mapToInt(Car::getMoves).max().orElseThrow();
-        return cars.stream().filter(car -> car.getMoves() == maxMoves).collect(Collectors.toList());
+        return cars.stream()
+                .filter(car -> car.hasDistance(maxDistance))
+                .collect(Collectors.toList());
     }
 }

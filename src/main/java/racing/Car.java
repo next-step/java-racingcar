@@ -1,22 +1,24 @@
 package racing;
 
+import java.util.Objects;
+
 public class Car {
     private final CarName name;
-    private int moves;
+    private CarDistance distance;
 
     public Car(String name) {
         this(name, 0);
     }
 
     // only for test
-    Car(String name, int moves) {
+    Car(String name, int distance) {
         this.name = new CarName(name);
-        this.moves = moves;
+        this.distance = new CarDistance(distance);
     }
 
     public void tryMove(CarMovingStrategy strategy) {
         if (strategy.shouldMove()) {
-            moves++;
+            distance = distance.add(1);
         }
     }
 
@@ -24,7 +26,11 @@ public class Car {
         return name;
     }
 
-    public int getMoves() {
-        return moves;
+    public CarDistance getDistance() {
+        return distance;
+    }
+
+    public boolean hasDistance(CarDistance other) {
+        return Objects.equals(distance, other);
     }
 }

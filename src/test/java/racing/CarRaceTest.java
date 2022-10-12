@@ -22,7 +22,7 @@ public class CarRaceTest {
         carRace.round(() -> true);
 
         for (Car car : cars) {
-            assertThat(car.getMoves()).isEqualTo(1);
+            assertThat(car.hasDistance(new CarDistance(1))).isTrue();
         }
     }
 
@@ -32,6 +32,7 @@ public class CarRaceTest {
         Car winner2 = new Car("car2", 1);
         Car loser1 = new Car("car3", 0);
         List<Car> cars = List.of(winner1, winner2, loser1);
-        assertThat(CarRace.getWinners(cars)).contains(winner1, winner2);
+        CarRace carRace = new CarRace(cars);
+        assertThat(carRace.getWinners()).contains(winner1, winner2);
     }
 }

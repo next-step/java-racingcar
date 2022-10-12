@@ -31,6 +31,10 @@ public class ResultView {
     }
 
     private static void printCar(Car car) {
-        System.out.printf(CAR_FORMAT, car, MOVE_SYMBOL.repeat(car.getMoves()));
+        System.out.printf(CAR_FORMAT, car, formatCarDistance(car.getDistance()));
+    }
+
+    private static String formatCarDistance(CarDistance carDistance) {
+        return MOVE_SYMBOL.repeat(carDistance.getDistance());
     }
 }
