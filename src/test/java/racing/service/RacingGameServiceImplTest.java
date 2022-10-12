@@ -5,8 +5,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.domain.Cars;
-import racing.ui.ResultView;
-import racing.ui.ResultViewImpl;
+import racing.view.ResultView;
+import racing.view.ResultViewImpl;
 
 class RacingGameServiceImplTest {
 
