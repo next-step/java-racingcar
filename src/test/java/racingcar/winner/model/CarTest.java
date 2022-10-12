@@ -40,10 +40,10 @@ public class CarTest {
     }
 
     @Test
-    void isInfrontOf_비교한다() {
+    void compare_자동차는_움직인결과로_비교가능하다() {
         Car mover = new Car(new CarName("car1"), new MoveResult(5));
         Car follower = new Car(new CarName("car2"), new MoveResult(2));
 
-        Assertions.assertThat(mover.isInfrontOf(follower)).isTrue();
+        Assertions.assertThat(mover.compareTo(follower)).isEqualTo(1);
     }
 }
