@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import racingcar.exception.PositionException;
+
 class PositionTest {
 
 	@Test
@@ -20,7 +22,7 @@ class PositionTest {
 	@DisplayName("위치는 0 이상이어야 한다")
 	void position_is_not_below_zero() {
 		assertThatThrownBy(() -> new Position(-1))
-			.isInstanceOf(RuntimeException.class);
+			.isInstanceOf(PositionException.class);
 	}
 
 }
