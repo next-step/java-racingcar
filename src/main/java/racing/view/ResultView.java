@@ -1,5 +1,6 @@
 package racing.view;
 
+import racing.domain.RacingCar;
 import racing.domain.RacingScore;
 import racing.domain.WinnerRacingCars;
 import racing.dto.RacingCarDto;
@@ -18,7 +19,7 @@ public class ResultView {
 
     public static void winnerPrint(final WinnerRacingCars winnerRacingCars) {
 
-        System.out.printf("%s가 최종 우승했습니다.", winnerRacingCars.pick());
+        System.out.printf("%s가 최종 우승했습니다.", pick(winnerRacingCars));
     }
 
     public static void resultPrint(final RacingScore racingScore) {
@@ -40,7 +41,7 @@ public class ResultView {
                 .forEach(racingCar -> {
                     final String stringBuilder = racingCar.getName() +
                             " : " +
-                            racingCar.getPosition();
+                            convert(racingCar.getPosition());
                     System.out.println(stringBuilder);
                 });
     }
@@ -48,5 +49,34 @@ public class ResultView {
     private static void blank() {
 
         System.out.println();
+    }
+
+    public static String convert(final int position) {
+
+        final StringBuilder result = new StringBuilder();
+        for (int i = 0; i < position; i++) {
+            result.append("-");
+        }
+        return result.toString();
+    }
+
+    public static String pick(final WinnerRacingCars winnerRacingCars) {
+
+        final StringBuilder winner = new StringBuilder();
+        int index = 1;
+        for (RacingCar racingCar : winnerRacingCars.getWinnerRacingCars()) {
+            winner.append(collect(index, racingCar, winnerRacingCars));
+            index++;
+        }
+        return winner.toString();
+    }
+
+    private static String collect(final int index, final RacingCar racingCar, final WinnerRacingCars winnerRacingCars) {
+
+        String carName = racingCar.getName().getName();
+        if(index != winnerRacingCars.getWinnerRacingCars().size()) {
+            carName += ",";
+        }
+        return carName;
     }
 }

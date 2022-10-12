@@ -29,6 +29,5 @@ class RacingScoreTest {
                 () -> assertThat(racingScore.findByIndex(0)).hasSize(2),
                 () -> assertThat(racingScore.findByIndex(0).get(0)).isEqualTo(racingCarDto)
         );
-
     }
 }

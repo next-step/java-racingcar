@@ -22,7 +22,7 @@ class CarNameTest {
 
         final CarName carName = new CarName(name);
 
-        assertThat(carName.getCarName()).isEqualTo(name);
+        assertThat(carName.getName()).isEqualTo(name);
     }
 
     @DisplayName("자동차 이름은 빈 값, null 값을 입력하며 익셉션 처리한다.")

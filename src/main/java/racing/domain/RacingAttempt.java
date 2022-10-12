@@ -4,17 +4,21 @@ public class RacingAttempt {
 
     private int attempt;
 
-    public RacingAttempt(final String attempt) {
+    private RacingAttempt(final int attempt) {
 
-        this.attempt = convert(attempt);
+        validateZero(attempt);
+        this.attempt = attempt;
     }
 
-    private int convert(final String attempt) {
+    public static RacingAttempt from(final String attempt) {
+
+        return new RacingAttempt(convert(attempt));
+    }
+
+    private static int convert(final String attempt) {
 
         try {
-            int number = Integer.parseInt(attempt);
-            validateZero(number);
-            return number;
+            return Integer.parseInt(attempt);
         } catch (NumberFormatException nfe) {
             throw new IllegalArgumentException("숫자만 입력해야 합니다.");
         }
