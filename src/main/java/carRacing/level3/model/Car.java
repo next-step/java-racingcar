@@ -9,10 +9,10 @@ public class Car {
 	private CarName carName;
 
 	public Car(String carName) {
-		this(new CarName(carName),new Location(0));
+		this(new CarName(carName), new Location(0));
 	}
 
-	public Car(CarName carName,Location location){
+	public Car(CarName carName, Location location) {
 		this.location = location;
 		this.carName = carName;
 	}
@@ -51,7 +51,7 @@ public class Car {
 
 	public boolean isMaxLocation(Location maxLocation) {
 
-		if (location.equals(maxLocation)){
+		if (location.equals(maxLocation)) {
 			return true;
 		}
 		return false;

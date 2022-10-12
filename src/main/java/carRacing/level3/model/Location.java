@@ -6,7 +6,6 @@ import java.util.Objects;
 
 public class Location {
 
-
 	private static final int MOVE_LOCATION = 1;
 	private static final int DEFAULT_LOCATION = 0;
 	private static int maxLocation;
