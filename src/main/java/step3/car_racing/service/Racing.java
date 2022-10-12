@@ -10,11 +10,12 @@ public class Racing {
 
     private final List<Cars> raceResult = new ArrayList<>();
 
-    public Racing(int racingSize, Cars cars) {
+    public Racing startRacing(int racingSize, Cars cars) {
         for (int i = 0; i < racingSize; i++) {
             List<Car> carList = cars.move();
             this.raceResult.add(new Cars().resultCars(carList));
         }
+        return this;
     }
 
     public List<Cars> getRaceResult() {
