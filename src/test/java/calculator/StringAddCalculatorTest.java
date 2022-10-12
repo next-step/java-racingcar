@@ -28,27 +28,27 @@ public class StringAddCalculatorTest {
     @NullAndEmptySource
     @DisplayName("빈 문자열이나 null 값을 입력하면 0을 반환한다.")
     void null_or_empty_return_zero(String input) {
-        assertThat(stringAddCalculator.splitAndSum(input)).isEqualTo(0);
+        assertThat(stringAddCalculator.splitAndSum(input)).isEqualTo(new Number(0));
     }
 
     @ParameterizedTest(name = "입력: {0}, 반환: {1}")
     @CsvSource(value = {"0-0", "1-1", "2-2"}, delimiter = '-')
     @DisplayName("숫자 하나를 입력하면 해당 숫자를 반환한다.")
     void sum_one_number(String input, int expected) {
-        assertThat(stringAddCalculator.splitAndSum(input)).isEqualTo(expected);
+        assertThat(stringAddCalculator.splitAndSum(input)).isEqualTo(new Number(expected));
     }
 
     @ParameterizedTest(name = "입력: {0}, 반환: {1}")
     @CsvSource(value = {"1,2-3", "1,2,3-6", "1,2:3-6"}, delimiter = '-')
     @DisplayName("여러 숫자를 구분자와 함께 입력하면 숫자의 합을 반환한다.")
     void sum_numbers_split_by_comma_and_colon(String input, int expected) {
-        assertThat(stringAddCalculator.splitAndSum(input)).isEqualTo(expected);
+        assertThat(stringAddCalculator.splitAndSum(input)).isEqualTo(new Number(expected));
     }
 
     @ParameterizedTest(name = "입력: {0}, 반환: {1}")
     @MethodSource("provideInputWithCustomDelimiter")
     @DisplayName("커스텀 구분자를 설정할 수 있다.")
     void use_custom_delimiter(String input, int expected) {
-        assertThat(stringAddCalculator.splitAndSum(input)).isEqualTo(expected);
+        assertThat(stringAddCalculator.splitAndSum(input)).isEqualTo(new Number(expected));
     }
 }

@@ -1,20 +1,24 @@
 package racingcar;
 
-import racingcar.domain.*;
-
-import java.util.List;
+import racingcar.domain.Cars;
+import racingcar.domain.Generator;
+import racingcar.domain.RandomValueGenerator;
+import racingcar.domain.TrialCount;
 
 public class Main {
     public static void main(String[] args) {
         View view = new View();
 
-        CarCount carCount = new CarCount(view.inputCarCount());
+        Cars cars = Cars.create(view.inputCarName());
         TrialCount trialCount = new TrialCount(view.inputTrialCount());
-
-        Cars cars = new Cars(carCount.create());
         Generator generator = new RandomValueGenerator();
-        List<Cars> trials = trialCount.start(cars, generator);
 
-        view.printResult(trials);
+        view.printResult();
+        while (trialCount.isRemain()) {
+            cars.move(generator);
+            view.printTrial(cars);
+            trialCount.decrease();
+        }
+        view.printWinners(cars.findWinners());
     }
 }

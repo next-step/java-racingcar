@@ -1,26 +1,42 @@
 package racingcar.domain;
 
 public class Car {
-    public static final int MINIMUM_MOVE_VALUE = 4;
+    private static final int MINIMUM_MOVE_VALUE = 4;
 
-    private final int location;
+    private final Name name;
+    private final Location location;
 
-    public Car() {
-        this.location = 0;
+    public Car(Name name) {
+        this(name, new Location());
     }
 
-    public Car(int location) {
+    public Car(Name name, Location location) {
+        this.name = name;
         this.location = location;
     }
 
-    public int getLocation() {
-        return this.location;
+    public Location getLocation() {
+        return location;
     }
 
-    public Car move(Generator generator) {
+    public void move(Generator generator) {
         if (generator.nextValue() >= MINIMUM_MOVE_VALUE) {
-            return new Car(this.location + 1);
+            location.next();
         }
-        return new Car(this.location);
+    }
+
+    public Name getName() {
+        return name;
+    }
+
+    public boolean isFar(Car compare) {
+        return this.location.isBig(compare.location);
+    }
+
+    public Name findCollinearName(Car compare) {
+        if (this.location.equals(compare.location)) {
+            return name;
+        }
+        return null;
     }
 }

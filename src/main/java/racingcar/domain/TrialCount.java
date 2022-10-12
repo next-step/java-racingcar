@@ -1,12 +1,11 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
 
 public class TrialCount {
-    public static final int MIN_COUNT = 1;
+    private static final int MIN_COUNT = 1;
 
-    private final int count;
+    private int count;
 
     public TrialCount(int count) {
         validateNumberOverMinimum(count);
@@ -19,13 +18,24 @@ public class TrialCount {
         }
     }
 
-    public List<Cars> start(Cars initializedCars, Generator generator) {
-        Cars cars = initializedCars;
-        List<Cars> trials = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
-            cars = cars.move(generator);
-            trials.add(cars);
-        }
-        return trials;
+    public boolean isRemain() {
+        return count >= MIN_COUNT;
+    }
+
+    public void decrease() {
+        count--;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TrialCount that = (TrialCount) o;
+        return count == that.count;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(count);
     }
 }
