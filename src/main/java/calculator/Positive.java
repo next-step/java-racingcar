@@ -9,7 +9,7 @@ public class Positive {
 
     public Positive(int number) {
         if (number < 0) {
-            throw new RuntimeException("음수 값이 들어올 수 없습니다.");
+            throw new IllegalArgumentException("음수 값이 들어올 수 없습니다.");
         }
         this.number = number;
     }

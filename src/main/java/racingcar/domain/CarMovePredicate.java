@@ -1,6 +1,6 @@
-package racingcar;
+package racingcar.domain;
 
 @FunctionalInterface
 public interface CarMovePredicate {
-    boolean test();
+    boolean isMovable();
 }
