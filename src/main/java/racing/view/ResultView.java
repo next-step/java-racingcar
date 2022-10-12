@@ -3,6 +3,7 @@ package racing.view;
 import racing.core.Car;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
     private static final String DISTANCE_MARKER = "-";
@@ -25,15 +26,9 @@ public class ResultView {
     }
 
     public void printWinners(List<Car> winners) {
-        System.out.print(winners.get(0));
-        if (winners.size() == 1) {
-            System.out.print(WINNER_TEXT);
-            return;
-        }
-        for (int i = 1; i < winners.size(); i++) {
-            System.out.print(WINNER_SEPARATE_TEXT);
-            System.out.print(winners.get(i));
-        }
-        System.out.print(WINNER_TEXT);
+        List<String> winnerNames = winners.stream()
+                .map(Car::getCarName)
+                .collect(Collectors.toList());
+        System.out.print(String.join(WINNER_SEPARATE_TEXT, winnerNames) + WINNER_TEXT);
     }
 }
