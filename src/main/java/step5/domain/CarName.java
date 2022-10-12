@@ -1,8 +1,8 @@
-package step4;
+package step5.domain;
 
 public class CarName {
 
-    private String name;
+    private final String name;
 
     public CarName(String carName) {
         if (carName == null || carName.isEmpty()) {
