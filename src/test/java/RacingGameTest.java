@@ -31,9 +31,7 @@ public class RacingGameTest {
 
         assertThat(winnerCars.size()).isEqualTo(1);
         assertThat(winnerCars.get(0).equals(new Car(new CarName("sunny"))));
-
     }
-
 
     @Test
     public void 자동차_경주_우승자_확인_공동우승() {

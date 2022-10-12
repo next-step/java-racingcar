@@ -38,6 +38,4 @@ public class ResultView {
         }
         return result.toString();
     }
-
-
 }
