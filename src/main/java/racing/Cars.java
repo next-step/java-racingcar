@@ -37,25 +37,17 @@ public class Cars {
     }
 
     Car findWinner() {
-        Car winner = cars.get(0);
-        for (Car car : cars) {
-            winner = car.isWinner(winner) ? car : winner;
-        }
-
-        return winner;
+        return cars.stream()
+                .reduce((car, otherCar) -> car.isWinner(otherCar) ? car : otherCar)
+                .get();
     }
 
     List<String> findWinnerNames() {
         List<Car> winners = new ArrayList<>();
         Car winner = findWinner();
 
-        for (Car car : cars) {
-            if (car.isWinner(winner)) {
-                winners.add(car);
-            }
-        }
-
         return winners.stream()
+                .filter(car -> car.isWinner(winner))
                 .map(Car::getName)
                 .collect(Collectors.toList());
     }
