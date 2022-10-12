@@ -12,12 +12,12 @@ import static org.assertj.core.api.Assertions.*;
 public class WinnersTest {
 
     @Test
-    void 우승자_구하지() {
+    void 우승자_구하기() {
         List<Car> cars = Arrays.asList(
                 new Car("pobi", 3),
-                new Car("jason", 2)
+                new Car("jason", 3)
         );
         List<Car> winners = Winners.findWinners(cars);
-        assertThat(winners).contains(new Car("pobi", 3));
+        assertThat(winners.size()).isEqualTo(2);
     }
 }
