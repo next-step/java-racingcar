@@ -8,17 +8,26 @@ public class Car {
     private static final int AVAILABLE_MOVE_BOUND = 4;
 
     private CarName name;
-    private int position;
-
-    private Car() {}
+    private Position position;
 
     public Car(final String name) {
         this.name = new CarName(name);
+        this.position = new Position(0);
     }
 
     public Car(final String name, final int position) {
         this.name = new CarName(name);
-        this.position = position;
+        this.position = new Position(position);
+    }
+
+    public void move(final NumberGenerateStrategy strategy) {
+        if (strategy.generate() >= AVAILABLE_MOVE_BOUND) {
+            this.position = this.position.increase(1);
+        }
+    }
+
+    public boolean isSamePosition(final int bound) {
+        return this.position.isSameNumber(bound);
     }
 
     public String getName() {
@@ -26,13 +35,7 @@ public class Car {
     }
 
     public int getPosition() {
-        return this.position;
-    }
-
-    public void move(final NumberGenerateStrategy strategy) {
-        if (strategy.generate() >= AVAILABLE_MOVE_BOUND) {
-            this.position += 1;
-        }
+        return this.position.getNumber();
     }
 
     @Override
@@ -51,7 +54,7 @@ public class Car {
             return false;
         }
 
-        return this.position == that.position;
+        return this.position.equals(that.position);
     }
 
     @Override

@@ -6,8 +6,6 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.SameNumberGenerateStrategy;
-import racingcar.domain.Car;
-import racingcar.domain.Racers;
 
 class RacersTest {
 
@@ -48,6 +46,6 @@ class RacersTest {
         Racers cars = new Racers(carNames);
         cars.moveAll(new SameNumberGenerateStrategy());
 
-        assertThat(cars.findSamePositionCars(1)).containsExactly(new Car("jordy", 1), new Car("penda", 1), new Car("kero", 1));
+        assertThat(cars.findSamePositionCars(1)).containsOnly(new Car("jordy", 1), new Car("penda", 1), new Car("kero", 1));
     }
 }

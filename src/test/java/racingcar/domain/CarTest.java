@@ -32,4 +32,12 @@ class CarTest {
 
         assertThat(car.getPosition()).isZero();
     }
+
+    @Test
+    @DisplayName("isSamePosition 메소드는 주어진 값과 같은 위치 값을 같고 있는지 판단한다.")
+    void isSamePosition() {
+        Car car = new Car("jordy", 1);
+
+        assertThat(car.isSamePosition(1)).isTrue();
+    }
 }

@@ -42,7 +42,7 @@ public class Racers {
 
     public List<Car> findSamePositionCars(int position) {
         return cars.stream()
-            .filter(car -> car.getPosition() == position)
+            .filter(car -> car.isSamePosition(position))
             .collect(Collectors.toList());
     }
 }
