@@ -82,4 +82,10 @@ public class Positive {
     public int hashCode() {
         return holder;
     }
+
+    // for logging
+    @Override
+    public String toString() {
+        return String.valueOf(holder);
+    }
 }

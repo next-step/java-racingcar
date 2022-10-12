@@ -24,4 +24,11 @@ public class Car {
         return Positive.copy(distance);
     }
 
+    // for logging
+    @Override
+    public String toString() {
+        return "Car{" +
+            "distance=" + distance +
+            '}';
+    }
 }
