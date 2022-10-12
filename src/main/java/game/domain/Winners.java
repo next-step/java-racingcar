@@ -1,7 +1,9 @@
 package game.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Winners {
 
@@ -15,16 +17,16 @@ public class Winners {
     private static Cars findWinners(final Cars cars, final int maxPosition) {
         List<Car> winners = new ArrayList<>();
         cars.getCarList().stream()
-                .filter(car -> car.isMaxPosition(maxPosition))
+                .filter(car -> car.hasSamePosition(maxPosition))
                 .forEach(winners::add);
         return new Cars(winners);
     }
 
     private static int getMaxPosition(final Cars cars) {
-        int maxPosition = 0;
-        for (Car car : cars.getCarList()) {
-            maxPosition = car.maxPosition(maxPosition);
-        }
-        return maxPosition;
+        List<Position> positionList = cars.getCarList().stream()
+                .map(Car::getPosition)
+                .collect(Collectors.toList());
+
+        return Collections.max(positionList).getPosition();
     }
 }

@@ -1,6 +1,6 @@
 package game.domain;
 
-public class Position {
+public class Position implements Comparable<Position> {
 
     public static final int DEFAULT_POSITION = 0;
     private final int position;
@@ -28,12 +28,9 @@ public class Position {
         return new Position(position + 1);
     }
 
-    public boolean isMaxPosition(final int maxPosition) {
-        return this.position == maxPosition;
-    }
-
-    public int maxPosition(final int position) {
-        return Math.max(this.position, position);
+    @Override
+    public int compareTo(final Position comparePosition) {
+        return this.position - comparePosition.getPosition();
     }
 
     @Override
@@ -54,4 +51,7 @@ public class Position {
     public int getPosition() {
         return position;
     }
+
+
+
 }

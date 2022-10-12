@@ -28,12 +28,8 @@ public class Car {
         }
     }
 
-    public boolean isMaxPosition(final int maxPosition) {
-        return this.position.isMaxPosition(maxPosition);
-    }
-
-    public int maxPosition(final int position) {
-        return this.position.maxPosition(position);
+    public boolean hasSamePosition(final int position) {
+        return this.position.equals(new Position(position));
     }
 
     @Override
