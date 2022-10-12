@@ -1,14 +1,13 @@
 package racing.ui;
 
+import java.util.List;
 import racing.domain.Car;
 
 public interface ResultView {
 
     void start();
 
-    void print(Car car);
-
-    void enter();
+    void printOfPosition(List<Car> cars);
 
     void winner(String winner);
 }
