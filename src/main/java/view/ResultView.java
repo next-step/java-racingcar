@@ -1,6 +1,7 @@
 package view;
 
 import domain.Car;
+import domain.CarName;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,7 +22,13 @@ public class ResultView {
     }
 
     public void printWinners(List<Car> cars) {
-        System.out.println(String.join(",", cars.stream().map(Car::getName).collect(Collectors.toList())) + "가 최종 우승했습니다.");
+        //로컬변수로 한번 받아서 처리하도록 변경
+        List<String> winnerNames = cars.stream()
+                .map(Car::getName)
+                .map(CarName::getCarName)
+                .collect(Collectors.toList());
+
+        System.out.println(String.join(",", winnerNames) + "가 최종 우승했습니다.");
     }
 
     private String distanceToVisual(Car car) {

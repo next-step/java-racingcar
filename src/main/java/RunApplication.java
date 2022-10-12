@@ -15,12 +15,13 @@ public class RunApplication {
         ResultView resultView = new ResultView();
 
         inputView.printCarCntInputText();
-        String[] carNames = inputView.getUserInputToStringArray();
+        //List형으로 변경
+        List<String> inputTexts = inputView.getUserInputToStringList();
 
         inputView.printTryCntInputText();
         int tryCnt = inputView.getUserInputToInteger();
 
-        List<Car> cars = racingGame.makeCars(carNames);
+        List<Car> cars = racingGame.makeCars(inputTexts);
 
         resultView.printResultTitle();
 

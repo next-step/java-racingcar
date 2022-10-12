@@ -1,5 +1,7 @@
 package view;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
@@ -21,7 +23,7 @@ public class InputView {
         return scanner.nextInt();
     }
 
-    public String[] getUserInputToStringArray() {
-        return scanner.nextLine().split(DELIMITER);
+    public List<String> getUserInputToStringList() {
+        return Arrays.asList(scanner.nextLine().split(DELIMITER));
     }
 }
