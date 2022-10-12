@@ -19,7 +19,7 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("랜덤값 테스트 : isForword 가 true 이면 전진")
+    @DisplayName("랜덤값 테스트 : move 가 true 이면 전진")
     void moveForward() {
         // given
         String name = "이상원";
@@ -33,7 +33,7 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("랜덤값 테스트 : isForword 가 false 이면 제자리")
+    @DisplayName("랜덤값 테스트 : move 가 false 이면 제자리")
     void moveStay() {
         // given
         String name = "이상원";
