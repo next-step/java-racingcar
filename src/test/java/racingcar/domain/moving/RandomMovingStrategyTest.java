@@ -26,16 +26,7 @@ class RandomMovingStrategyTest {
     }
 
     private static Stream<Arguments> goSet() {
-        return Stream.of(
-            Arguments.arguments(1, STOP),
-            Arguments.arguments(2, STOP),
-            Arguments.arguments(3, STOP),
-            Arguments.arguments(4, GO),
-            Arguments.arguments(5, GO),
-            Arguments.arguments(6, GO),
-            Arguments.arguments(8, GO),
-            Arguments.arguments(10, GO)
-        );
+        return Stream.of(Arguments.arguments(3, STOP), Arguments.arguments(4, GO));
     }
 }
 
