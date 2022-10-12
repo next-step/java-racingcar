@@ -18,10 +18,6 @@ public class Cars {
         for (CarName name : names) {
             holder.put(name, Car.create());
         }
-
-        // fixme debugging
-        System.out.println("cars : " + holder);
-
     }
 
     public static Cars create(List<CarName> names) {
