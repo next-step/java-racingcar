@@ -21,7 +21,7 @@ public class ResultView {
 
         System.out.println("실행결과");
 
-        Racing racing = new Racing(racingSize, new Cars().initCars(carNames));
+        Racing racing = new Racing().startRacing(racingSize, new Cars().initCars(carNames));
 
         printRacing(racing);
 

@@ -21,7 +21,7 @@ class RacingTest {
         Cars cars = new Cars().initCars(carNameList);
 
         // when
-        Racing racing = new Racing(5, cars);
+        Racing racing = new Racing().startRacing(5, cars);
         Cars finalRace = racing.getFinalRace();
 
 
