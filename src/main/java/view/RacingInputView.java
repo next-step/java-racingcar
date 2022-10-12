@@ -7,17 +7,16 @@ import java.util.Scanner;
 public class RacingInputView {
 
     public static RacingInput getInputFromUser() {
-        final int carCount = getCarCountFromUser();
+        final String carNames = getCarNamesFromUser();
         final int trialCount = getTrialCountFromUser();
 
-        return new RacingInput(carCount, trialCount);
+        return new RacingInput(carNames, trialCount);
     }
 
-    private static int getCarCountFromUser() {
-        return getPositiveIntegerInputAndRetryWhenException(
-                "자동차 대수는 몇 대인가요?",
-                "자동차 수는 양의 정수만 입력 가능합니다.\n"
-        );
+    private static String getCarNamesFromUser() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        return scanner.next();
     }
 
     private static int getTrialCountFromUser() {

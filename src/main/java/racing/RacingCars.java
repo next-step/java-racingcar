@@ -2,15 +2,17 @@ package racing;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class RacingCars {
 
+    public static final String SPLITTER = ",";
+
     private final List<RacingCar> racingCars;
 
-    private RacingCars(final int carCount) {
-        racingCars = IntStream.range(0, carCount)
-                .mapToObj(num -> RacingCar.init())
+    private RacingCars(String carNames) {
+        List<String> carNameList = List.of(carNames.split(SPLITTER));
+        racingCars = carNameList.stream()
+                .map(RacingCar::init)
                 .collect(Collectors.toList());
     }
 
@@ -22,8 +24,8 @@ public class RacingCars {
         return racingCars;
     }
 
-    public static RacingCars init(final int carCount) {
-        return new RacingCars(carCount);
+    public static RacingCars init(final String carNames) {
+        return new RacingCars(carNames);
     }
 
     public RacingCars race(RacingGameSpec racingGameSpec) {

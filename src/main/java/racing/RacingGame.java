@@ -16,10 +16,10 @@ public class RacingGame {
         this.racingLap = racingLap;
     }
 
-    public static RacingGame init(int carCount, int trialCount) {
+    public static RacingGame init(String carNames, int trialCount) {
         return new RacingGame(
                 RacingGameSpec.init(),
-                RacingCars.init(carCount),
+                RacingCars.init(carNames),
                 RacingLap.init(trialCount)
         );
     }
