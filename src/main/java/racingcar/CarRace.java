@@ -11,7 +11,7 @@ public class CarRace {
     private final List<Car> cars;
 
     public CarRace(int numberOfCars, MovableStrategy movableStrategy) {
-        this.cars = Stream.generate(() -> new Car(movableStrategy))
+        this.cars = Stream.generate(() -> new Car("",movableStrategy))
                 .limit(numberOfCars)
                 .collect(Collectors.toList());
     }
