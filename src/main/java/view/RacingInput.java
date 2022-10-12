@@ -2,16 +2,16 @@ package view;
 
 public class RacingInput {
 
-    private final int carCount;
+    private final String carNames;
     private final int trialCount;
 
-    public RacingInput(final int carCount, final int trialCount) {
-        this.carCount = carCount;
+    public RacingInput(String carNames, final int trialCount) {
+        this.carNames = carNames;
         this.trialCount = trialCount;
     }
 
-    public int getCarCount() {
-        return carCount;
+    public String getCarNames() {
+        return carNames;
     }
 
     public int getTrialCount() {
