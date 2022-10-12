@@ -18,7 +18,7 @@ public class Name {
 		this.name = name;
 	}
 
-	public void validateNameLength(String name) {
+	private void validateNameLength(String name) {
 		if (name.length() < 1) {
 			throw new NameException("이름은 1글자 이상입니다");
 		}
@@ -27,7 +27,7 @@ public class Name {
 		}
 	}
 
-	public void validateNameNotBlank(String name) {
+	private void validateNameNotBlank(String name) {
 		if (name.isBlank()) {
 			throw new NameException("이름은 공백이 될 수 없습니다");
 		}
