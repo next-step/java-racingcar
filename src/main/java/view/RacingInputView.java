@@ -7,34 +7,34 @@ import java.util.Scanner;
 public class RacingInputView {
 
     public static RacingInput getInputFromUser() {
-        final int carCount = _getCarCountFromUser();
-        final int trialCount = _getTrialCountFromUser();
+        final int carCount = getCarCountFromUser();
+        final int trialCount = getTrialCountFromUser();
 
         return new RacingInput(carCount, trialCount);
     }
 
-    private static int _getCarCountFromUser() {
-        return _getPositiveIntegerInputAndRetryWhenException(
+    private static int getCarCountFromUser() {
+        return getPositiveIntegerInputAndRetryWhenException(
                 "자동차 대수는 몇 대인가요?",
                 "자동차 수는 양의 정수만 입력 가능합니다.\n"
         );
     }
 
-    private static int _getTrialCountFromUser() {
-        return _getPositiveIntegerInputAndRetryWhenException(
+    private static int getTrialCountFromUser() {
+        return getPositiveIntegerInputAndRetryWhenException(
                 "시도할 횟수는 몇 회인가요?",
                 "시도할 횟수는 양의 정수만 입력 가능합니다.\n"
         );
     }
 
-    private static int _getPositiveIntegerInputAndRetryWhenException(String firstTryMessage, String retryMessage) {
+    private static int getPositiveIntegerInputAndRetryWhenException(String firstTryMessage, String retryMessage) {
         Scanner scanner = new Scanner(System.in);
         System.out.println(firstTryMessage);
         try {
             return getPositiveIntegerInput(scanner);
         } catch (NoSuchElementException e) {
             System.out.println(retryMessage);
-            return _getPositiveIntegerInputAndRetryWhenException(firstTryMessage, retryMessage);
+            return getPositiveIntegerInputAndRetryWhenException(firstTryMessage, retryMessage);
         }
     }
 

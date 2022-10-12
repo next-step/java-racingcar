@@ -14,14 +14,14 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;
 
-@DisplayName("양의 정수 입력 테스트")
+@DisplayName("Racing : 양의 정수 입력 테스트")
 public class RacingInputViewTest {
 
     @ParameterizedTest(name = "{index}: {2}")
     @MethodSource("validInputs_for_getPositiveIntegerInputTest")
     @DisplayName("양의 정수 데이터 입력")
     void getPositiveIntegerInput_witValidInput_test(String input, Integer output, String testName) {
-        Scanner scanner = _generateInputScanner(input);
+        Scanner scanner = generateInputScanner(input);
         assertThat(RacingInputView.getPositiveIntegerInput(scanner)).isEqualTo(output);
     }
 
@@ -29,18 +29,18 @@ public class RacingInputViewTest {
     @MethodSource("invalidInputs_for_getPositiveIntegerInputTest")
     @DisplayName("양의 정수가 아닌 데이터 입력")
     void getPositiveIntegerInput_witInvalidInput_test(String input, Class exceptionClass, String testName) {
-        Scanner scanner = _generateInputScanner(input);
+        Scanner scanner = generateInputScanner(input);
         assertThatThrownBy(() -> RacingInputView.getPositiveIntegerInput(scanner))
                 .isInstanceOf(exceptionClass);
     }
 
-    private Scanner _generateInputScanner(String input) {
-        InputStream in = _generateUserInput(input);
+    private Scanner generateInputScanner(String input) {
+        InputStream in = generateUserInput(input);
         System.setIn(in);
         return new Scanner(System.in);
     }
 
-    private InputStream _generateUserInput(String input) {
+    private InputStream generateUserInput(String input) {
         return new ByteArrayInputStream(input.getBytes());
     }
 

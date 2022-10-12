@@ -18,15 +18,20 @@ public class RacingCars {
         this.racingCars = racingCars;
     }
 
+    public List<RacingCar> getRacingCars() {
+        return racingCars;
+    }
+
     public static RacingCars init(final int carCount) {
         return new RacingCars(carCount);
     }
 
-    public static RacingCars of(List<RacingCar> racingCars) {
-        return new RacingCars(racingCars);
-    }
+    public RacingCars race(RacingGameSpec racingGameSpec) {
+        List<RacingCar> movedRacingCars = this.racingCars
+                .stream()
+                .map(car -> car.move(racingGameSpec.moveCount()))
+                .collect(Collectors.toList());
 
-    public List<RacingCar> getRacingCars() {
-        return racingCars;
+        return new RacingCars(movedRacingCars);
     }
 }
