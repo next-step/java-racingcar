@@ -3,7 +3,6 @@ package carRacing.level3;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import carRacing.level3.exception.NotFoundMaxLocationException;
 import carRacing.level3.model.Cars;
 import carRacing.level3.model.Location;
 import java.util.ArrayList;
@@ -21,8 +20,8 @@ public class CarsTest {
 		Cars cars = Cars.create(carNameList);
 		cars.moveCarLocation(new FixMovingStrategy());
 
-		assertThat(cars.carLocation(0)).isEqualTo(new Location(1));
-		assertThat(cars.carLocation(1)).isEqualTo(new Location(1));
+		assertThat(cars.car(0).carLocation()).isEqualTo(new Location(1));
+		assertThat(cars.car(1).carLocation()).isEqualTo(new Location(1));
 
 	}
 
