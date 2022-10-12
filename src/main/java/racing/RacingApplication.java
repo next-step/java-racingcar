@@ -1,8 +1,8 @@
 package racing;
 
 import racing.controller.RacingGame;
-import racing.ui.InputViewImpl;
-import racing.ui.ResultViewImpl;
+import racing.view.InputViewImpl;
+import racing.view.ResultViewImpl;
 
 public class RacingApplication {
 

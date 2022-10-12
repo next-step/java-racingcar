@@ -5,7 +5,7 @@ import java.util.stream.IntStream;
 import racing.domain.Car;
 import racing.domain.Cars;
 import racing.domain.MovableStrategy;
-import racing.ui.ResultView;
+import racing.view.ResultView;
 
 public class RacingGameService {
 

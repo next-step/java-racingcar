@@ -3,8 +3,8 @@ package racing.controller;
 import racing.domain.CarMovableStrategy;
 import racing.domain.Cars;
 import racing.service.RacingGameService;
-import racing.ui.InputView;
-import racing.ui.ResultView;
+import racing.view.InputView;
+import racing.view.ResultView;
 
 public class RacingGame {
 
