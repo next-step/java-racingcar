@@ -7,11 +7,9 @@ import racing_game.core.Positive;
 
 public class Cars {
 
-    private final RandomGenerator randomGenerator;
     private final List<Car> holder;
 
     private Cars(Positive count) {
-        randomGenerator = RandomGenerator.create();
         holder = new ArrayList<>();
         for (int i = 0; i < count.toInt(); i++) {
             holder.add(Car.create());
