@@ -1,7 +1,5 @@
 package carRacing.level3.model;
 
-
-import carRacing.level3.exception.NotFoundMaxLocationException;
 import carRacing.level3.model.strategy.MovingStrategy;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,17 +30,8 @@ public class Cars {
 	}
 
 	public Location maxLocation() {
-		int maxLocation = cars.stream()
-			.map(Car::carLocation)
-			.mapToInt(Location::getLocation)
-			.max()
-			.orElseThrow(() -> new NotFoundMaxLocationException("최대 위치 값을 찾을 수 없습니다"));
-
-		return new Location(maxLocation);
-	}
-
-	public Location carLocation(int i) {
-		return cars.get(i).carLocation();
+		Location location = new Location();
+		return location.maxLocation(cars);
 	}
 
 	public Car car(int carNum) {

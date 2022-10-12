@@ -17,14 +17,14 @@ public class WinnerTest {
 	@Test
 	void 우승자_구하기() {
 		Car car1 = new Car(new CarName("car1"), new Location(1));
-		Car car2 = new Car(new CarName("car2"), new Location(0));
+		Car car2 = new Car(new CarName("car2"), new Location(3));
 
 		List<Car> carList = Arrays.asList(car1, car2);
 		Cars cars = addCarList(carList);
 
 		Winner winner = new Winner(cars);
 		assertThat(winner.findWinner()).isEqualTo(
-			Arrays.asList(car1));
+			Arrays.asList(car2));
 
 	}
 
