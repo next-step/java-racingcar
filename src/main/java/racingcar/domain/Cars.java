@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
+import racingcar.exception.CarCountException;
 import racingcar.strategy.MoveStrategy;
 
 public class Cars {
@@ -13,6 +14,7 @@ public class Cars {
 	private final List<Car> cars;
 
 	public Cars(List<Car> cars) {
+		validateCarCount(cars);
 		this.cars = new ArrayList<>(cars);
 	}
 
@@ -41,6 +43,12 @@ public class Cars {
 		return cars.stream()
 			.max(Car::compareTo)
 			.orElseThrow(() -> new NoSuchElementException("우승자를 찾지 못했습니다"));
+	}
+
+	private void validateCarCount(List<Car> cars) {
+		if (cars.size() <= 0) {
+			throw new CarCountException("자동차는 1개 이상이어야 합니다");
+		}
 	}
 
 	public List<Integer> getPositions() {
