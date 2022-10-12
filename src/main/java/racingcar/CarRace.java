@@ -1,5 +1,8 @@
 package racingcar;
 
+import racingcar.strategy.MovableStrategy;
+import racingcar.strategy.RandomMovableStrategy;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -7,8 +10,8 @@ import java.util.stream.Stream;
 public class CarRace {
     private final List<Car> cars;
 
-    public CarRace(int numberOfCars) {
-        this.cars = Stream.generate(Car::new)
+    public CarRace(int numberOfCars, MovableStrategy movableStrategy) {
+        this.cars = Stream.generate(() -> new Car(movableStrategy))
                 .limit(numberOfCars)
                 .collect(Collectors.toList());
     }
