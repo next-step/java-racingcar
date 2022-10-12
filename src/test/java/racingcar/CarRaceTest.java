@@ -11,7 +11,8 @@ class CarRaceTest {
     @Test
     @DisplayName("car List size 확인")
     void init(){
-        CarRace carRace = new CarRace(5, new RandomMovableStrategy());
+        String[] names = {"a", "b", "c", "d", "e"};
+        CarRace carRace = new CarRace(names, new RandomMovableStrategy());
         assertThat(carRace.getCars()).hasSize(5);
     }
 }
