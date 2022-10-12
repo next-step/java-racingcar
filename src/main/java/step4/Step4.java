@@ -1,6 +1,6 @@
-package step3;
+package step4;
 
-public class Step3 {
+public class Step4 {
 
     public static void main(String[] args) {
         MovableStrategy randomStrategy = new RandomStrategy();

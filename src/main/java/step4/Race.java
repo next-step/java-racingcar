@@ -1,4 +1,7 @@
-package step3;
+package step4;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Race {
 
@@ -8,9 +11,13 @@ public class Race {
 
     private final Cars cars;
 
-    public Race(int totalRound, int numberOfCar, MovableStrategy movableStrategy) {
+    public Race(int totalRound, String[] nameOfCars, MovableStrategy movableStrategy) {
         this.totalRound = totalRound;
-        this.cars = new Cars(numberOfCar, movableStrategy);
+        List<Car> cars = new ArrayList<>();
+        for (String name : nameOfCars) {
+            cars.add(new Car(name, movableStrategy));
+        }
+        this.cars = new Cars(cars);
     }
 
     public Cars cars() {
