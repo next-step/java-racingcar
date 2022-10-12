@@ -23,7 +23,7 @@ public final class InputView {
 
     public static List<String> inputCarNames() {
         System.out.println(REQUEST + INPUT_CAR_NAMES_MESSAGE);
-        return toList(splitToArray(inputValue()));
+        return Arrays.asList(splitToArray(inputValue()));
     }
 
     private static int inputPositiveNumber() {
@@ -42,11 +42,6 @@ public final class InputView {
         } catch (Exception e) {
             throw new NumberFormatException(INPUT_POSITIVE_NUMBER_MESSAGE);
         }
-    }
-
-    private static List<String> toList(String[] carNamesArray) {
-        return Arrays.asList(carNamesArray);
-
     }
 
     private static String[] splitToArray(String carNames) {
