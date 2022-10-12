@@ -4,7 +4,7 @@ public class RandomMovingStrategy implements MovingStrategy {
 
 	private final int PIVOT = 4;
 	private final int BOUNDARY = 10;
-	RandomNum randomNum = new RandomNum();
+	private RandomNum randomNum = new RandomNum();
 
 	@Override
 	public Boolean isMovable() {

@@ -15,14 +15,16 @@ import org.junit.jupiter.api.Test;
 public class WinnerTest {
 
 	@Test
-	void 우승자_구하기(){
-		Winner winner = new Winner();
+	void 우승자_구하기() {
+		Car car1 = new Car(new CarName("car1"), new Location(1));
+		Car car2 = new Car(new CarName("car2"), new Location(0));
 
-		List<Car> carList = Arrays.asList(new Car(new CarName("car1"),new Location(1)),new Car(new CarName("car2"),new Location(0)));
+		List<Car> carList = Arrays.asList(car1, car2);
 		Cars cars = addCarList(carList);
 
-		List<String>winnerList = Arrays.asList("car1");
-		assertThat(winner.decideWinner(cars)).isEqualTo(new Winner(winnerList));
+		Winner winner = new Winner(cars);
+		assertThat(winner.findWinner()).isEqualTo(
+			Arrays.asList(car1));
 
 	}
 

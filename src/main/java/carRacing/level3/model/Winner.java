@@ -6,36 +6,34 @@ import java.util.Objects;
 
 public class Winner {
 
-	private List<String> winnerList;
+	private List<Car> winnerList;
+	private Cars cars;
 
-	public Winner() {
-		this(new ArrayList<>());
+	public Winner(Cars cars) {
+		this(new ArrayList<>(), cars);
 	}
 
-	public Winner(List<String> winnerList) {
+	public Winner(List<Car> winnerList, Cars cars) {
 		this.winnerList = winnerList;
+		this.cars = cars;
 	}
 
-	public Winner decideWinner(Cars cars) {
+	public List<Car> findWinner() {
 
 		Location maxLocation = cars.maxLocation();
 
 		for (int i = 0; i < cars.totalNum(); i++) {
-			addWinner(cars.car(i),maxLocation);
+			addWinner(cars.car(i), maxLocation);
 		}
 
-		return new Winner(winnerList);
-	}
-
-	private void addWinner(Car car,Location maxCarLocation) {
-
-		if (car.isMaxLocation(maxCarLocation)){
-			winnerList.add(car.carName());
-		}
-	}
-
-	public List<String> getWinnerList() {
 		return winnerList;
+	}
+
+	private void addWinner(Car car, Location maxCarLocation) {
+
+		if (car.isMaxLocation(maxCarLocation)) {
+			winnerList.add(car);
+		}
 	}
 
 	@Override

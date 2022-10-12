@@ -11,7 +11,7 @@ public class RacingGameController {
 
 	private final static InputView INPUT_VIEW = new InputView();
 	private final static OutPutView OUT_PUT_VIEW = new OutPutView();
-	private final static Winner WINNER = new Winner();
+
 
 	public void gameStart(MovingStrategy movingStrategy) {
 
@@ -27,8 +27,9 @@ public class RacingGameController {
 			OUT_PUT_VIEW.showRace(cars);
 		}
 
-		WINNER.decideWinner(cars);
-		OUT_PUT_VIEW.showWinner(WINNER.getWinnerList());
+		Winner winner = new Winner(cars);
+
+		OUT_PUT_VIEW.showWinner(winner.findWinner());
 
 	}
 
