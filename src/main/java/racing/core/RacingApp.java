@@ -4,9 +4,6 @@ import racing.RandomUtil;
 import racing.view.InputView;
 import racing.view.ResultView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class RacingApp {
 
     private final InputView inputView = new InputView();
@@ -17,9 +14,9 @@ public class RacingApp {
     public void start() {
         ClientInput clientInput = inputView.getClientInput();
         CarList cars;
-        try{
+        try {
             cars = CarList.makeCars(clientInput.getCarNames());
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return;
         }

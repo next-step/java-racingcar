@@ -13,8 +13,7 @@ public class InputView {
 
     public ClientInput getClientInput() {
         ClientInput result;
-        try(Scanner scanner = new Scanner(System.in))
-        {
+        try (Scanner scanner = new Scanner(System.in)) {
             System.out.println(CAR_QUESTION);
             String carNames = scanner.nextLine();
             System.out.println(TRY_QUESTION);
@@ -23,7 +22,7 @@ public class InputView {
                     .carNames(carNames)
                     .tryCount(tryCount)
                     .build();
-        }finally {
+        } finally {
             scanner.close();
         }
         return result;
