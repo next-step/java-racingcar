@@ -31,6 +31,10 @@ public class Car implements Comparable<Car> {
         return total;
     }
 
+    public boolean sameDistance(Car other) {
+        return compareTo(other) == EQUALS;
+    }
+    
     public String name() {
         return name;
     }

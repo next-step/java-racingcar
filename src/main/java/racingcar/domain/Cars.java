@@ -47,7 +47,7 @@ public class Cars implements Iterable<Car> {
     }
 
     private void addEqualsDistance(Car max, List<Car> longest, Car car) {
-        if (max.distance() == car.distance()) {
+        if (max.sameDistance(car)) {
             longest.add(car);
         }
     }
