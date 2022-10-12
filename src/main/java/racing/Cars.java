@@ -23,26 +23,26 @@ public class Cars {
         this.cars = cars;
     }
 
-    void run() {
+    public void run() {
         RandomNumMovingStrategy movingStrategy = new RandomNumMovingStrategy();
         for (Car car : cars) {
             car.run(movingStrategy);
         }
     }
 
-    void printDistance() {
+    public void printDistance() {
         for (Car car : cars) {
             car.printDistance();
         }
     }
 
-    Car findWinner() {
+    public Car findWinner() {
         return cars.stream()
                 .reduce((car, otherCar) -> car.isWinner(otherCar) ? car : otherCar)
                 .get();
     }
 
-    List<String> findWinnerNames() {
+    public List<String> findWinnerNames() {
         List<Car> winners = new ArrayList<>();
         Car winner = findWinner();
 

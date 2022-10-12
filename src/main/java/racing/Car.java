@@ -16,19 +16,19 @@ public class Car {
         this.distance = distance;
     }
 
-    void run(MovingStrategy movingStrategy) {
+    public void run(MovingStrategy movingStrategy) {
         if (movingStrategy.movable()) { distance += 1; }
     }
 
-    String getName() {
+    public String getName() {
         return name;
     }
 
-    boolean isWinner(Car other) {
+    public boolean isWinner(Car other) {
         return this.distance >= other.distance;
     }
 
-    void printDistance() {
+    public void printDistance() {
         ResultView.printDistance(name, distance);
     }
 
