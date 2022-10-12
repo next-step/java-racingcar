@@ -14,6 +14,10 @@ public class CarRace {
         this.cars = cars;
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
     public void round() {
         round(DEFAULT_STRATEGY);
     }

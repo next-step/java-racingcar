@@ -13,7 +13,7 @@ public class Main {
 
         for (int i = 0; i < numberOfTrials; i++) {
             race.round();
-            ResultView.printCars(cars);
+            ResultView.printRaceResult(race);
         }
 
         ResultView.printWinners(race.getWinners());
