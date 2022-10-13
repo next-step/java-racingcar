@@ -5,7 +5,6 @@ import step3.model.Cars;
 import step3.model.Try;
 import step3.util.numberGenerator.NumberGenerator;
 import step3.util.numberGenerator.RandomNumberGenerator;
-
 import step3.view.ResultView;
 import step3.view.ResultViewImpl;
 

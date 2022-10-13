@@ -2,14 +2,12 @@ package step4.controller;
 
 import step4.model.Car;
 import step4.model.Cars;
-import step4.strategy.MoveStrategy;
-import step4.strategy.RandomMoveStrategy;
 import step4.model.Winners;
+import step4.strategy.MoveStrategy;
 import step4.view.output.OutputView;
 import step4.view.output.OutputViewImpl;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingGameController {
