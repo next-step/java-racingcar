@@ -3,13 +3,17 @@ package racing;
 import java.util.Objects;
 
 public class CarDistance implements Comparable<CarDistance> {
+    private static final int DISTANCE_MIN = 0;
     private final int distance;
 
     public CarDistance() {
-        this(0);
+        this(DISTANCE_MIN);
     }
 
     public CarDistance(int distance) {
+        if (distance < DISTANCE_MIN) {
+            throw new IllegalArgumentException("거리는 0보다 작을 수 없습니다.");
+        }
         this.distance = distance;
     }
 

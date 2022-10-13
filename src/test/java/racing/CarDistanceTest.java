@@ -3,8 +3,14 @@ package racing;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarDistanceTest {
+    @Test
+    void test_negative_number() {
+        assertThatThrownBy(() -> new CarDistance(-1)).isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Test
     void test_add() {
         assertThat(new CarDistance().add(3)).isEqualTo(new CarDistance(3));
