@@ -15,6 +15,11 @@ public class RacingCarWinner {
         this.carMovingCount = carMovingCount;
     }
 
+    public String startGame() {
+        splitParticipantName();
+        return racingCarGame();
+    }
+
     private void splitParticipantName() {
         String[] participantNames = participantName.split(",");
         for (int i = 0; i < participantNames.length; i++) {
@@ -22,20 +27,13 @@ public class RacingCarWinner {
         }
     }
 
-    private int judgeGoStop() {
-        int randomNum = (int) (Math.random() * 10);
-        if (randomNum >= ADVANCE_MIN_VALUE) {
-            return 1;
+    private String racingCarGame() {
+        String printingStatus = "";
+        for (int i = 0; i < carMovingCount; i++) {
+            printingStatus += updateParticipantInformation();
         }
-        return 0;
-    }
-
-    private List<Integer> moveRacingCar() {
-        List<Integer> carMovement = new ArrayList<>();
-        for (int i = 0; i < cars.size(); i++) {
-            carMovement.add(i, judgeGoStop());
-        }
-        return carMovement;
+        printingStatus += determineWinner();
+        return printingStatus;
     }
 
     private String updateParticipantInformation() {
@@ -46,6 +44,22 @@ public class RacingCarWinner {
             cars.get(i).setPosition(eachNumberOfMove);
         }
         return printGameStatus();
+    }
+
+    private List<Integer> moveRacingCar() {
+        List<Integer> carMovement = new ArrayList<>();
+        for (int i = 0; i < cars.size(); i++) {
+            carMovement.add(i, judgeGoStop());
+        }
+        return carMovement;
+    }
+
+    private int judgeGoStop() {
+        int randomNum = (int) (Math.random() * 10);
+        if (randomNum >= ADVANCE_MIN_VALUE) {
+            return 1;
+        }
+        return 0;
     }
 
     private String printGameStatus() {
@@ -94,20 +108,6 @@ public class RacingCarWinner {
         maxDistanceResult.add(String.valueOf(maxResult));
         maxDistanceResult.add(winnerParticipantResult);
         return maxDistanceResult;
-    }
-
-    private String racingCarGame() {
-        String printingStatus = "";
-        for (int i = 0; i < carMovingCount; i++) {
-            printingStatus += updateParticipantInformation();
-        }
-        printingStatus += determineWinner();
-        return printingStatus;
-    }
-
-    public String startGame() {
-        splitParticipantName();
-        return racingCarGame();
     }
 
 }
