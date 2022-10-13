@@ -1,5 +1,6 @@
 package RacingCar.domain;
 
 public interface MovingStrategy {
-    int moveable(int range);
+    int RANDOM_NUMBER_RANGE = 10;
+    boolean moveable();
 }

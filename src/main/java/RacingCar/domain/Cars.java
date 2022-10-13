@@ -5,7 +5,6 @@ import java.util.stream.Collectors;
 
 public class Cars {
     private static String DELIMITER = ",";
-    private static int RANDOM_NUMBER_RANGE = 10;
 
     private List<Car> cars;
 
@@ -19,9 +18,9 @@ public class Cars {
         return cars;
     }
 
-    public void move(MovingStrategy randomNumber) {
+    public void move(MovingStrategy movingStrategy) {
         for (Car car : cars) {
-            car.move(randomNumber.moveable(RANDOM_NUMBER_RANGE));
+            car.move(movingStrategy.moveable());
         }
     }
 }

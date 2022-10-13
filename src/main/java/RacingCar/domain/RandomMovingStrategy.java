@@ -5,7 +5,10 @@ import java.util.Random;
 public class RandomMovingStrategy implements MovingStrategy {
     private static final Random random = new Random();
 
-    public int moveable(int range) {
-        return random.nextInt(range);
+    public boolean moveable() {
+        if(random.nextInt(RANDOM_NUMBER_RANGE) > 3){
+            return true;
+        }
+        return false;
     }
 }

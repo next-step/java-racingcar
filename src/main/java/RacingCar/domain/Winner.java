@@ -12,14 +12,14 @@ public class Winner {
     }
 
     public List<Car> findWinners() {
-        var car = this.cars.stream()
+        var maxPositionCar = this.cars.stream()
                 .max(Comparator.comparing(Car::getPosition))
                 .orElseThrow(() -> new IllegalArgumentException());
 
-        int max = car.getPosition();
+        int maxPosition = maxPositionCar.getPosition();
 
         return cars.stream()
-                .filter(x -> x.isSamePosition(max))
+                .filter(car -> car.isSamePosition(maxPosition))
                 .collect(Collectors.toList());
     }
 }

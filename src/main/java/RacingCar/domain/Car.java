@@ -2,6 +2,7 @@ package RacingCar.domain;
 
 public class Car {
     private static int STANDARD_TO_MOVE_NUMBER = 4;
+    private static int START_POSITION = 1;
 
     private String name;
     private int position;
@@ -14,11 +15,11 @@ public class Car {
     }
 
     public Car(String name) {
-        this(name, 1);
+        this(name, START_POSITION);
     }
 
-    public void move(int input) {
-        if (input >= STANDARD_TO_MOVE_NUMBER) {
+    public void move(boolean isMove) {
+        if (isMove) {
             position += 1;
         }
     }

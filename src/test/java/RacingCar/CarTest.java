@@ -33,8 +33,8 @@ public class CarTest {
 
     @ParameterizedTest
     @DisplayName("자동차 이동 테스트")
-    @CsvSource(value = {"3:1", "4:2"}, delimiter = ':')
-    void move(int value, int result) {
+    @CsvSource(value = {"false:1", "true:2"}, delimiter = ':')
+    void move(boolean value, int result) {
         Car car = new Car("test", 1);
         car.move(value);
         assertThat(car.isSamePosition(result)).isTrue();
