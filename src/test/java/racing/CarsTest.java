@@ -9,6 +9,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarsTest {
     @Test
+    void 차들_가져오기() {
+        List<Car> cars = Arrays.asList(new Car("jigu"), new Car("gogu"), new Car("dal"));
+        assertThat(new Cars(cars).getCars()).isEqualTo(new Cars(cars).getCars());
+    }
+
+    @Test
     void 이름_여러개_문자열로_받기() {
         List<Car> cars = Arrays.asList(new Car("jigu"), new Car("gogu"), new Car("dal"));
         assertThat((new Cars("jigu,gogu,dal"))).isEqualTo(new Cars(cars));

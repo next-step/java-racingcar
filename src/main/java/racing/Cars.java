@@ -23,39 +23,24 @@ public class Cars {
         this.cars = cars;
     }
 
-    void run() {
+    public void run() {
         RandomNumMovingStrategy movingStrategy = new RandomNumMovingStrategy();
         for (Car car : cars) {
             car.run(movingStrategy);
         }
     }
 
-    void printDistance() {
-        for (Car car : cars) {
-            car.printDistance();
-        }
+    public Car findWinner() {
+        return cars.stream()
+                .reduce((car, otherCar) -> car.isWinner(otherCar) ? car : otherCar)
+                .get();
     }
 
-    Car findWinner() {
-        Car winner = cars.get(0);
-        for (Car car : cars) {
-            winner = car.isWinner(winner) ? car : winner;
-        }
-
-        return winner;
-    }
-
-    List<String> findWinnerNames() {
-        List<Car> winners = new ArrayList<>();
+    public List<String> findWinnerNames() {
         Car winner = findWinner();
 
-        for (Car car : cars) {
-            if (car.isWinner(winner)) {
-                winners.add(car);
-            }
-        }
-
-        return winners.stream()
+        return cars.stream()
+                .filter(car -> car.isWinner(winner))
                 .map(Car::getName)
                 .collect(Collectors.toList());
     }
@@ -78,5 +63,9 @@ public class Cars {
     @Override
     public int hashCode() {
         return super.hashCode();
+    }
+
+    public List<Car> getCars() {
+        return cars.stream().collect(Collectors.toList());
     }
 }
