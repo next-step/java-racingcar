@@ -1,4 +1,4 @@
-package racing;
+package racing.msg;
 
 public enum SystemMention {
     CNT_OF_CAR("자동차 대수는 몇 대 인가요?"),

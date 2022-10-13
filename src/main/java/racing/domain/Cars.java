@@ -1,6 +1,6 @@
 package racing.domain;
 
-import racing.SystemMention;
+import racing.msg.SystemMention;
 
 import java.util.ArrayList;
 import java.util.List;

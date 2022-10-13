@@ -1,5 +1,6 @@
-package racing;
+package racing.controller;
 
+import racing.msg.SystemMention;
 import racing.domain.Cars;
 import racing.view.UserInput;
 

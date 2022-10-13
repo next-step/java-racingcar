@@ -1,6 +1,6 @@
 package racing.view;
 
-import racing.SystemMention;
+import racing.msg.SystemMention;
 
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 public class UserInput {
 
-    private static Pattern NUMBER_PATTERN = Pattern.compile("^[0-9]*$");
+    private static final Pattern NUMBER_PATTERN = Pattern.compile("^[0-9]*$");
     private static int CNT;
     private static final Scanner sc = new Scanner(System.in);
 
