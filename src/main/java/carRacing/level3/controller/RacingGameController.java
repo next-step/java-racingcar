@@ -9,26 +9,26 @@ import java.util.List;
 
 public class RacingGameController {
 
-	InputView inputView = new InputView();
-	OutPutView outPutView = new OutPutView();
-	Winner winner = new Winner();
+	private final static InputView INPUT_VIEW = new InputView();
+	private final static OutPutView OUT_PUT_VIEW = new OutPutView();
 
 	public void gameStart(MovingStrategy movingStrategy) {
 
-		List<String> carNameList = inputView.saveCarNames();
-		int gameRound = inputView.askValueRound();
+		List<String> carNameList = INPUT_VIEW.saveCarNames();
+		int gameRound = INPUT_VIEW.askValueRound();
 
 		Cars cars = Cars.create(carNameList);
 
-		outPutView.showNotice();
+		OUT_PUT_VIEW.showNotice();
 
 		for (int i = 0; i < gameRound; i++) {
 			cars.moveCarLocation(movingStrategy);
-			outPutView.showRace(cars);
+			OUT_PUT_VIEW.showRace(cars);
 		}
 
-		winner.decideWinner(cars);
-		outPutView.showWinner(winner.getWinnerList());
+		Winner winner = new Winner(cars);
+
+		OUT_PUT_VIEW.showWinner(winner.findWinner());
 
 	}
 

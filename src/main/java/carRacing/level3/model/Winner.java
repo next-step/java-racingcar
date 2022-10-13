@@ -2,39 +2,54 @@ package carRacing.level3.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Winner {
 
-	private int maxLocation;
-	private List<String> winnerList;
+	private List<Car> winnerList;
+	private Cars cars;
 
-	public Winner(){
-		this(new ArrayList<>());
+	public Winner(Cars cars) {
+		this(new ArrayList<>(), cars);
 	}
 
-	public Winner(List<String> winnerList) {
+	public Winner(List<Car> winnerList, Cars cars) {
 		this.winnerList = winnerList;
+		this.cars = cars;
 	}
 
-	public Winner decideWinner(Cars cars) {
+	public List<Car> findWinner() {
 
-		maxLocation = cars.maxCarLocation();
+		Location maxLocation = cars.maxLocation();
 
 		for (int i = 0; i < cars.totalNum(); i++) {
-			addWinner(cars.carLocation(i), cars.carName(i));
+			addWinner(cars.car(i), maxLocation);
 		}
 
-		return new Winner(winnerList);
-	}
-
-	public void addWinner(int location, String carName) {
-		if (maxLocation == location) {
-			winnerList.add(carName);
-		}
-	}
-
-	public List<String> getWinnerList(){
 		return winnerList;
 	}
 
+	private void addWinner(Car car, Location maxCarLocation) {
+
+		if (car.isMaxLocation(maxCarLocation)) {
+			winnerList.add(car);
+		}
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		Winner winner = (Winner) o;
+		return Objects.equals(winnerList, winner.winnerList);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(winnerList);
+	}
 }

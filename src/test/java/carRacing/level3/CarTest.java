@@ -1,33 +1,18 @@
 package carRacing.level3;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import carRacing.level3.infra.error.NameLengthException;
 import carRacing.level3.model.Car;
-import carRacing.level3.model.strategy.RandomMovingStrategy;
-import org.junit.jupiter.api.DisplayName;
+import carRacing.level3.model.CarName;
+import carRacing.level3.model.Location;
 import org.junit.jupiter.api.Test;
 
 public class CarTest {
 
-	public static final Integer DEFAULT_LOCATION = 0;
-
 	@Test
-	@DisplayName("이름은 5자를 초과하면 안된다")
-	void 자동차_이름(){
-		assertThatThrownBy(() -> {
-			new Car("testCar1");
-		}).isInstanceOf(NameLengthException.class);;
-	}
-
-
-	@Test
-	void 자동차_전진() {
-		Car car = new Car("test");
-		car.moveLocation(new RandomMovingStrategy());
-		assertThat(car.carLocation()).isGreaterThanOrEqualTo(DEFAULT_LOCATION);
+	void 최대값_일치(){
+		Car car = new Car(new CarName("car1"),new Location(3));
+		assertThat(car.isMaxLocation(new Location(3))).isEqualTo(true);
 	}
 
 }

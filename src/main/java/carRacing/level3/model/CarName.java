@@ -1,11 +1,11 @@
 package carRacing.level3.model;
 
-import carRacing.level3.infra.error.NameLengthException;
+import carRacing.level3.exception.NameLengthException;
 
 public class CarName {
 
+	private static final int MAX_LENGTH = 5;
 	private String carName;
-	private final int MAX_LENGTH = 5;
 
 	public CarName(String carName) {
 		if (carName.length() > MAX_LENGTH) {
