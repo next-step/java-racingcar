@@ -18,7 +18,7 @@ public class CarTest {
 		Car car = new Car();
 		car.move(moveStrategyMovable);
 
-		assertThat(car.hasPositionGreaterThan(0)).isTrue();
+		assertThat(car.hasPositionSameAs(0)).isTrue();
 	}
 
 	@Test

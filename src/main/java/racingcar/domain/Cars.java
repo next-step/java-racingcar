@@ -33,24 +33,24 @@ public class Cars {
 	public List<String> findWinnerNames() {
 		int maxPosition = getMaxPosition();
 		return cars.stream()
-			.filter(car -> !car.hasPositionGreaterThan(maxPosition))
+			.filter(car -> car.hasPositionSameAs(maxPosition))
 			.map(Car::getName)
 			.collect(Collectors.toList());
 	}
 
 	private int getMaxPosition() {
-		int maxPosition = 0;
+		Car farthestCar = new Car();
 		for (Car car : cars) {
-			maxPosition = getGreaterPosition(maxPosition, car);
+			farthestCar = getFarthestCar(farthestCar, car);
 		}
-		return maxPosition;
+		return farthestCar.getPosition();
 	}
 
-	private int getGreaterPosition(int maxPosition, Car car) {
-		if (car.hasPositionGreaterThan(maxPosition)) {
-			return car.getPosition();
+	private Car getFarthestCar(Car farthestCar, Car car) {
+		if (car.hasPositionGreaterThan(farthestCar)) {
+			return car;
 		}
-		return maxPosition;
+		return farthestCar;
 	}
 
 	private void validateCarCount(List<Car> cars) {

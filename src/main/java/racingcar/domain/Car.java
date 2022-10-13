@@ -23,9 +23,13 @@ public class Car {
 		}
 	}
 
-	public boolean hasPositionGreaterThan(int position) {
+	public boolean hasPositionSameAs(int position) {
 		Position otherPosition = new Position(position);
-		return this.position.compareTo(otherPosition) > 0;
+		return this.position.equals(otherPosition);
+	}
+
+	public boolean hasPositionGreaterThan(Car other) {
+		return this.position.compareTo(other.position) > 0;
 	}
 
 	public int getPosition() {
