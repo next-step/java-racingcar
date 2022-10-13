@@ -27,6 +27,9 @@ public class UserInput {
         if (!isNumber(input)) {
             return false;
         }
+        if (!isPositive()) {
+            return false;
+        }
         return true;
     }
 
@@ -45,6 +48,14 @@ public class UserInput {
             return true;
         }
         SystemMention.NUMBER_CHECK.printMention();
+        return false;
+    }
+
+    private boolean isPositive() {
+        if (CNT > 0) {
+            return true;
+        }
+        SystemMention.POSITIVE_CHECK.printMention();
         return false;
     }
 }

@@ -5,7 +5,8 @@ public enum SystemMention {
     CNT_OF_TRY("시도할 회수는 몇 회 인가요?"),
     RESULT("실행 결과"),
     NULL_CHECK("값을 입력해주세요"),
-    NUMBER_CHECK("숫자만 입력해주세요");
+    NUMBER_CHECK("숫자만 입력해주세요"),
+    POSITIVE_CHECK("1이상의 수를 입력해주세요");
 
     private final String mention;
 
