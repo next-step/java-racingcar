@@ -34,9 +34,9 @@ public class Race {
     }
 
     private List<Car> getWinners() {
-        int bestRecord = Collections.max(cars).getPosition();
+        Car bestRecordCar = Collections.max(cars);
         return cars.stream()
-                .filter(car->car.hasSamePosition(bestRecord))
+                .filter(car->car.hasSamePosition(bestRecordCar))
                 .collect(Collectors.toList());
     }
 
