@@ -3,6 +3,7 @@ package nextstep.javaracingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
@@ -41,11 +42,21 @@ class DistanceTest {
     public void spec04(final int value) {
         final Distance distance = new Distance(value);
         final List<Integer> counter = new ArrayList<>();
-        for (Integer index : distance) {
+        final Iterable<Integer> distanceIterable = distance.toIterable();
+        for (Integer index : distanceIterable) {
             counter.add(index);
         }
 
         assertThat(counter).hasSize(value);
+    }
+
+    @DisplayName("거리는 비교 가능하다.")
+    @ParameterizedTest
+    @CsvSource({"3, 6, -1", "9, 6, 1", "7, 7, 0"})
+    public void spec05(final int pivot, final int target, final int result) {
+        final Distance pivotDistance = new Distance(pivot);
+        final Distance targetDistance = new Distance(target);
+        assertThat(pivotDistance.compareTo(targetDistance)).isEqualTo(result);
     }
 
 }

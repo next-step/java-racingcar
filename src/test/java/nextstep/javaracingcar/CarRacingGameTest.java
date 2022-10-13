@@ -14,12 +14,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarRacingGameTest {
 
-    private final CarEngine ONE_MOVING_ENGINE = () -> Distance.ONE;
+    private final MovingStrategy ONE_MOVING_ENGINE = () -> Distance.ONE;
 
     @DisplayName("게임을 시작시 자동차수와 시도할 횟수를 입력 받는다.(0 보다 크거나 같다)")
     @Test
     public void spec01() {
-        final CarEngine DUMMY_ENGINE = () -> Distance.ZERO;
+        final MovingStrategy DUMMY_ENGINE = () -> Distance.ZERO;
         final CarRacingGame carRacingGame = new CarRacingGame(from(1), new Round(1), DUMMY_ENGINE);
         assertThat(carRacingGame).isNotNull();
     }
@@ -32,6 +32,20 @@ class CarRacingGameTest {
         assertThat(carRacingGame.result()).hasSize(carCount);
     }
 
+    @DisplayName("콤마로 연결되 자동차 이름으로 자동차를 생성한다.")
+    @Test
+    public void spec02_01() {
+        final CarRacingGame carRacingGame = new CarRacingGame("aa,bb,cc,dd", new Round(1), ONE_MOVING_ENGINE);
+        final CarRacingResult racingResult = carRacingGame.result();
+        assertThat(racingResult).hasSize(4);
+        assertThat(racingResult).containsExactly(
+                carDrivingResult("aa", Distance.ZERO),
+                carDrivingResult("bb", Distance.ZERO),
+                carDrivingResult("cc", Distance.ZERO),
+                carDrivingResult("dd", Distance.ZERO)
+        );
+    }
+
     @DisplayName("입력 받은 수 만큼 라운드를 진행한다.")
     @ParameterizedTest
     @ValueSource(ints = {1, 3, 5, 20})
@@ -39,9 +53,8 @@ class CarRacingGameTest {
         final CarRacingGame carRacingGame = new CarRacingGame(from(1), new Round(round), ONE_MOVING_ENGINE);
         int roundCounter = 0;
         while (carRacingGame.hasNextRound()) {
-            final List<CarDashboard> result = carRacingGame.runRound();
+            final CarRacingResult racingResult = carRacingGame.runRound();
             roundCounter++;
-            System.out.println(result);
         }
 
         assertThat(roundCounter).isEqualTo(round);
@@ -54,18 +67,25 @@ class CarRacingGameTest {
         final CarRacingGame carRacingGame = new CarRacingGame(from(carCount), new Round(round), ONE_MOVING_ENGINE);
         int roundCounter = 0;
         while (carRacingGame.hasNextRound()) {
-            final List<CarDashboard> result = carRacingGame.runRound();
+            final CarRacingResult racingResult = carRacingGame.runRound();
             roundCounter++;
-            assertThat(result).hasSize(carCount);
-            assertThat(result).containsAll(dashboards(carCount, new Distance(roundCounter)));
+            assertThat(racingResult).hasSize(carCount);
+            assertThat(racingResult).containsAll(drivingResults(carCount, new Distance(roundCounter)));
         }
     }
 
-    private List<CarDashboard> dashboards(final int carCount, final Distance distance) {
-        final List<CarDashboard> dashboards = new ArrayList<>();
+    /*
+     * fixture tools
+     * */
+    private List<CarDrivingResult> drivingResults(final int carCount, final Distance distance) {
+        final List<CarDrivingResult> drivingResults = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            dashboards.add(new CarDashboard(String.valueOf(i), distance));
+            drivingResults.add(new CarDrivingResult(String.valueOf(i), distance));
         }
-        return dashboards;
+        return drivingResults;
+    }
+
+    private CarDrivingResult carDrivingResult(final String name, final Distance distance) {
+        return new CarDrivingResult(new CarName(name), distance);
     }
 }

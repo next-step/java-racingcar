@@ -1,14 +1,9 @@
 package nextstep.javaracingcar;
 
-import nextstep.javaracingcar.view.InputSupplier;
 import nextstep.javaracingcar.view.InputView;
-import nextstep.javaracingcar.view.OutputConsumer;
 import nextstep.javaracingcar.view.ResultView;
 
-import java.util.List;
 import java.util.Random;
-
-import static nextstep.javaracingcar.PositiveNumber.from;
 
 public class CarRacingGameConsoleLauncher {
 
@@ -23,15 +18,17 @@ public class CarRacingGameConsoleLauncher {
     public void run() {
 
         final Random random = new Random();
-        final CarEngine goOrStopEngine = new GoOrStopEngine(() -> random.nextInt(10), 4);
+        final MovingStrategy goOrStopEngine = new RandomGoOrStop(() -> random.nextInt(10), 4);
 
         final CarRacingGameInput input = inputView.input();
-        final CarRacingGame carRacingGame = new CarRacingGame(input.carCount(), input.round(), goOrStopEngine);
+        final CarRacingGame carRacingGame = new CarRacingGame(input.getCarNames(), input.round(), goOrStopEngine);
 
-        resultView.printReusltTitle();
+        resultView.printResultTitle();
 
         while (carRacingGame.hasNextRound()) {
             resultView.printResult(carRacingGame.runRound());
         }
+
+        resultView.printWinners(carRacingGame.result());
     }
 }

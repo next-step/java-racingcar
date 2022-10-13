@@ -2,16 +2,16 @@ package nextstep.javaracingcar;
 
 public class CarRacingGameInput {
 
-    private final PositiveNumber carCount;
+    private final String carNames;
     private final Round round;
 
-    public CarRacingGameInput(int carCount, int roundCount) {
-        this.carCount = PositiveNumber.from(carCount);
+    public CarRacingGameInput(String carNames, int roundCount) {
+        this.carNames = carNames;
         this.round = new Round(roundCount);
     }
 
-    public PositiveNumber carCount() {
-        return carCount;
+    public String getCarNames() {
+        return carNames;
     }
 
     public Round round() {

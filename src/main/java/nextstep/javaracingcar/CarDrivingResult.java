@@ -3,17 +3,36 @@ package nextstep.javaracingcar;
 import java.util.Objects;
 
 
-public class CarDashboard {
-    private final String name;
+public class CarDrivingResult {
+    private final CarName name;
     private final Distance distance;
 
-    public CarDashboard(final String name, final Distance distance) {
+    public CarDrivingResult(final CarName name, final Distance distance) {
         this.name = name;
         this.distance = distance;
     }
 
+    public CarDrivingResult(final String name, final Distance distance) {
+        this.name = new CarName(name);
+        this.distance = distance;
+    }
+
+    public String name() {
+        return this.name.value();
+    }
     public Distance distance() {
         return this.distance;
+    }
+
+    public boolean isPosition(final Distance distance) {
+        return distance.equals(this.distance);
+    }
+
+    public Distance maxDistance(final Distance distance) {
+        if (this.distance.compareTo(distance) > 0) {
+            return this.distance;
+        }
+        return distance;
     }
 
     @Override
@@ -21,7 +40,7 @@ public class CarDashboard {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CarDashboard that = (CarDashboard) o;
+        CarDrivingResult that = (CarDrivingResult) o;
 
         if (!Objects.equals(name, that.name)) return false;
         return Objects.equals(distance, that.distance);
@@ -36,7 +55,7 @@ public class CarDashboard {
 
     @Override
     public String toString() {
-        return "CarDashboard{" +
+        return "CarDrivingResult{" +
                 "name='" + name + '\'' +
                 ", distance=" + distance +
                 '}';
