@@ -22,7 +22,7 @@ public class RacingCarWinner {
         }
     }
 
-    private int judgmentGoStop() {
+    private int judgeGoStop() {
         int randomNum = (int) (Math.random() * 10);
         if (randomNum >= ADVANCE_MIN_VALUE) {
             return 1;
@@ -30,16 +30,16 @@ public class RacingCarWinner {
         return 0;
     }
 
-    private List<Integer> racingCarMove() {
+    private List<Integer> moveRacingCar() {
         List<Integer> carMovement = new ArrayList<>();
         for (int i = 0; i < cars.size(); i++) {
-            carMovement.add(i, judgmentGoStop());
+            carMovement.add(i, judgeGoStop());
         }
         return carMovement;
     }
 
     private String updateParticipantInformation() {
-        List<Integer> carMovement = racingCarMove();
+        List<Integer> carMovement = moveRacingCar();
         int eachNumberOfMove = 0;
         for (int i = 0; i < cars.size(); i++) {
             eachNumberOfMove = cars.get(i).getPosition() + carMovement.get(i);
@@ -66,7 +66,7 @@ public class RacingCarWinner {
         return distanceBar;
     }
 
-    private String winner() {
+    private String determineWinner() {
         int max = cars.get(0).getPosition();
         String winnerParticipant = "";
         for (Car carInformation : cars) {
@@ -75,7 +75,7 @@ public class RacingCarWinner {
             winnerParticipant = winnerResult.get(1);
         }
         if (winnerParticipant.charAt(0) == ',') {
-            return winnerParticipant.substring(1);
+            return winnerParticipant.substring(1) + "가 최종우승했습니다.";
         }
         return winnerParticipant + "가 최종우승했습니다.";
     }
@@ -101,7 +101,7 @@ public class RacingCarWinner {
         for (int i = 0; i < carMovingCount; i++) {
             printingStatus += updateParticipantInformation();
         }
-        printingStatus += winner();
+        printingStatus += determineWinner();
         return printingStatus;
     }
 
