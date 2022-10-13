@@ -37,10 +37,9 @@ public class Cars {
     }
 
     public List<String> findWinnerNames() {
-        List<Car> winners = new ArrayList<>();
         Car winner = findWinner();
 
-        return winners.stream()
+        return cars.stream()
                 .filter(car -> car.isWinner(winner))
                 .map(Car::getName)
                 .collect(Collectors.toList());
