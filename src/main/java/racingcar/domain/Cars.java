@@ -3,7 +3,6 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 import racingcar.exception.CarCountException;
@@ -32,17 +31,26 @@ public class Cars {
 	}
 
 	public List<String> findWinnerNames() {
-		Car maxCar = getMaxCar();
+		int maxPosition = getMaxPosition();
 		return cars.stream()
-			.filter(car -> car.compareTo(maxCar) == 0)
+			.filter(car -> !car.hasPositionGreaterThan(maxPosition))
 			.map(Car::getName)
 			.collect(Collectors.toList());
 	}
 
-	private Car getMaxCar() {
-		return cars.stream()
-			.max(Car::compareTo)
-			.orElseThrow(() -> new NoSuchElementException("우승자를 찾지 못했습니다"));
+	private int getMaxPosition() {
+		int maxPosition = 0;
+		for (Car car : cars) {
+			maxPosition = getGreaterPosition(maxPosition, car);
+		}
+		return maxPosition;
+	}
+
+	private int getGreaterPosition(int maxPosition, Car car) {
+		if (car.hasPositionGreaterThan(maxPosition)) {
+			return car.getPosition();
+		}
+		return maxPosition;
 	}
 
 	private void validateCarCount(List<Car> cars) {
