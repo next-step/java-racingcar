@@ -35,7 +35,7 @@ public class ResultView {
     }
 
     private static void printCar(Car car) {
-        System.out.printf(CAR_FORMAT, car, formatCarDistance(car.getDistance()));
+        System.out.printf(CAR_FORMAT, car.getName(), formatCarDistance(car.getDistance()));
     }
 
     private static String formatCarDistance(CarDistance carDistance) {
