@@ -4,16 +4,16 @@ import java.util.List;
 
 public class GameInfo {
 
-    private final List<Car> carList;
+    private final Cars cars;
     private final int count;
 
-    public GameInfo(List<String> names, int count) {
-        this.carList = new Cars(names).getCarList();
+    public GameInfo(Cars cars, int count) {
+        this.cars = cars;
         this.count = count;
     }
 
     public List<Car> getCarList() {
-        return carList;
+        return cars.getCarList();
     }
 
     public int getCount() {

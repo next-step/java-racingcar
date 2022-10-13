@@ -1,4 +1,4 @@
-package step3.view;
+package step3.util;
 
 import step3.domain.Winner;
 

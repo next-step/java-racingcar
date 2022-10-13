@@ -1,4 +1,6 @@
-package step3.domain;
+package step3.strategy;
+
+import step3.util.RandomNumber;
 
 public class MoveStrategy implements MovableStrategy {
 

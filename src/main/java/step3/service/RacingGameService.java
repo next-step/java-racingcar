@@ -1,8 +1,12 @@
-package step3.domain;
+package step3.service;
 
+import step3.domain.Car;
+import step3.domain.GameInfo;
+import step3.domain.Winner;
+import step3.strategy.MoveStrategy;
 import step3.view.ResultView;
 
-public class Play {
+public class RacingGameService {
 
     private static final ResultView RESULT_VIEW = new ResultView();
     private static final MoveStrategy MOVE_STRATEGY = new MoveStrategy();
