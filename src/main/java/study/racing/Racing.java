@@ -4,7 +4,7 @@ import study.racing.domain.Car;
 import study.racing.domain.RandomMovingCondition;
 import study.racing.factory.CarFactory;
 import study.racing.util.RandomNumberGenerator;
-import study.racing.util.View;
+import study.racing.view.View;
 
 import java.util.List;
 import java.util.stream.Collectors;
