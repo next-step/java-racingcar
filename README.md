@@ -93,3 +93,27 @@
 - [x] 자동차 이름 받아서 split처리 inputView에서 처리하도록 로직 재구성
 - [x] Car 객체 불변성 적용
 - [x] isWinner 함수 네이밍이 의도와 맞게 isMaxPosition 으로 변경 
+- [x] 메서드 이름 수정
+  - isMaxPosition 
+  - 차이름 null과 empty(blank)의미 포함하게 함수 네이밍 변경
+  - 차이름 값 없을 때 상수 이름 의미 있게 수정
+  - finish -> findFinalWinner
+  - inputString -> inputCarName
+
+
+---
+## 자동차 경주 5단계
+###📌리팩토링 요구사항
+> 기능 요구사항
+- [x] 핵심 비지니스 로직을 가지는 객체를 domain 패키지, UI 관련한 객체를 view 패키지에 구현
+  -  MVC 패턴 기반으로 리팩토링해 view 패키지의 객체가 domain 패키지 객체에 의존할 수 있지만, domain 패키지의 객체는 view 패키지 객체에 의존하지 않도록 구현
+- [x] 테스트 가능한 부분과 테스트하기 힘든 부분을 분리해 테스트 가능한 부분에 대해서만 단위 테스트를 진행
+> 기능 목록
+- [x] winner 를 CarsRecord에 담아 로직 구성
+- [x] Controller 추가 
+
+> 😘리뷰 반영
+- [x] Cars에서 Cars 생성 여부 체크
+- [x] 의미있는 메서드 분리 적용
+- [x] 컨트롤러 역할
+- [x] 자바 리팩토링 체크

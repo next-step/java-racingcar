@@ -23,7 +23,7 @@ public final class InputView {
 
     public static List<String> inputCarNames() {
         System.out.println(REQUEST + INPUT_CAR_NAMES_MESSAGE);
-        return inputStringValue();
+        return Arrays.asList(splitToArray(inputValue()));
     }
 
     private static int inputPositiveNumber() {
@@ -44,14 +44,11 @@ public final class InputView {
         }
     }
 
-    private static List<String> inputStringValue() {
-        try {
-            String carNames = SCANNER.nextLine();
-            return Arrays.asList(carNames.trim().split(SEPARATOR));
-        } catch (Exception e) {
-            System.out.print(RETRY);
-            System.out.println(e.getMessage());
-            return inputStringValue();
-        }
+    private static String[] splitToArray(String carNames) {
+        return carNames.trim().split(SEPARATOR);
+    }
+
+    private static String inputValue() {
+        return SCANNER.nextLine();
     }
 }
