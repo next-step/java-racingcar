@@ -1,4 +1,4 @@
-package game.model;
+package game.domain;
 
 import org.junit.jupiter.api.Test;
 
@@ -23,5 +23,4 @@ class CarTest {
 
         assertThat(car.getPosition()).isEqualTo(new Position(0));
     }
-
 }

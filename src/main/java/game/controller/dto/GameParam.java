@@ -8,7 +8,7 @@ public class GameParam {
 
     private final int countOfRound;
 
-    public GameParam(List<String> carNames, int tryNum) {
+    public GameParam(final List<String> carNames, final int tryNum) {
         this.carNames = carNames;
         this.countOfRound = tryNum;
     }

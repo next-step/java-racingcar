@@ -1,23 +1,26 @@
-package game.model;
+package game.domain;
+
+import game.domain.movable.MovableStrategy;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Cars {
 
     private final List<Car> carList;
 
-    public Cars(List<String> carNames) {
-        this.carList = carNames.stream()
-                .map(Car::new)
-                .collect(Collectors.toList());
+    public Cars(final List<Car> cars) {
+        this.carList = cars;
     }
 
-    public void moveCarList(MovableStrategy movableStrategy) {
+    public void moveCarList(final MovableStrategy movableStrategy) {
         for (Car v : this.carList) {
             v.move(movableStrategy);
         }
+    }
+
+    public boolean contains(Car car) {
+        return this.carList.contains(car);
     }
 
     public List<Car> getCarList() {

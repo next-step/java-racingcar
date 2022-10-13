@@ -22,19 +22,19 @@ public class OutputView {
         System.out.println(OUTPUT_START_MESSAGE);
     }
 
-    public static void printOutputBody(CarsDto carsDto) {
+    public static void printOutputBody(final CarsDto carsDto) {
         for (CarDto carDto : carsDto.getCarList()) {
             System.out.println(getStringForOutput(carDto));
         }
         System.out.println();
     }
 
-    private static String getStringForOutput(CarDto carDto) {
+    private static String getStringForOutput(final CarDto carDto) {
         return String.format("%s : %s", carDto.getCarName(), OUTPUT_SYMBOL.repeat(carDto.getPosition()));
     }
 
-    public static void printOutputResult(CarsDto cars) {
-        List<String> winners = cars.getLocatedHighPositionCars().stream()
+    public static void printWinners(final CarsDto cars) {
+        List<String> winners = cars.getCarList().stream()
                 .map(CarDto::getCarName)
                 .collect(Collectors.toList());
         System.out.println(String.join(OUTPUT_WINNER_SEPARATOR, winners) + OUTPUT_FINAL_MESSAGE);

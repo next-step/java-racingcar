@@ -1,7 +1,7 @@
-package game.model;
+package game.domain.movable;
 
 @FunctionalInterface
 public interface MovableStrategy {
 
-    boolean isPossibleToMove();
+    boolean movable();
 }
