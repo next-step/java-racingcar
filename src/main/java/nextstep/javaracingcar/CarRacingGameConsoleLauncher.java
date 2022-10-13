@@ -23,7 +23,7 @@ public class CarRacingGameConsoleLauncher {
         final CarRacingGameInput input = inputView.input();
         final CarRacingGame carRacingGame = new CarRacingGame(input.getCarNames(), input.round(), goOrStopEngine);
 
-        resultView.printReusltTitle();
+        resultView.printResultTitle();
 
         while (carRacingGame.hasNextRound()) {
             resultView.printResult(carRacingGame.runRound());

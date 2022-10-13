@@ -17,6 +17,9 @@ public class CarDrivingResult {
         this.distance = distance;
     }
 
+    public String name() {
+        return this.name.value();
+    }
     public Distance distance() {
         return this.distance;
     }

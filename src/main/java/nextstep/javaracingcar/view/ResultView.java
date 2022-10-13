@@ -11,14 +11,14 @@ public class ResultView {
         this.outputConsumer = outputConsumer;
     }
 
-    public void printReusltTitle() {
+    public void printResultTitle() {
         printEmptyLine();
         this.outputConsumer.write("실행 결과");
     }
 
     public void printResult(final List<CarDrivingResult> racingResults) {
         for (CarDrivingResult racingResult : racingResults) {
-            final StringBuffer sb = new StringBuffer("-");
+            final StringBuffer sb = new StringBuffer(racingResult.name() + " : -");
             final Iterable<Integer> distanceIterable = racingResult.distance().toIterable();
             distanceIterable.forEach(i -> sb.append("-"));
             outputConsumer.write(sb.toString());

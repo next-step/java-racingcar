@@ -20,6 +20,10 @@ public class CarName {
         this.name = trimmedName;
     }
 
+    public String value() {
+        return name;
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;
