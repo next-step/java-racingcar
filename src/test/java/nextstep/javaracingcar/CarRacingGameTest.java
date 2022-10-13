@@ -36,9 +36,9 @@ class CarRacingGameTest {
     @Test
     public void spec02_01() {
         final CarRacingGame carRacingGame = new CarRacingGame("aa,bb,cc,dd", new Round(1), ONE_MOVING_ENGINE);
-        final List<CarDrivingResult> result = carRacingGame.result();
-        assertThat(result).hasSize(4);
-        assertThat(result).containsExactly(
+        final CarRacingResult racingResult = carRacingGame.result();
+        assertThat(racingResult).hasSize(4);
+        assertThat(racingResult).containsExactly(
                 carDrivingResult("aa", Distance.ZERO),
                 carDrivingResult("bb", Distance.ZERO),
                 carDrivingResult("cc", Distance.ZERO),
@@ -53,9 +53,8 @@ class CarRacingGameTest {
         final CarRacingGame carRacingGame = new CarRacingGame(from(1), new Round(round), ONE_MOVING_ENGINE);
         int roundCounter = 0;
         while (carRacingGame.hasNextRound()) {
-            final List<CarDrivingResult> result = carRacingGame.runRound();
+            final CarRacingResult racingResult = carRacingGame.runRound();
             roundCounter++;
-            System.out.println(result);
         }
 
         assertThat(roundCounter).isEqualTo(round);
@@ -68,10 +67,10 @@ class CarRacingGameTest {
         final CarRacingGame carRacingGame = new CarRacingGame(from(carCount), new Round(round), ONE_MOVING_ENGINE);
         int roundCounter = 0;
         while (carRacingGame.hasNextRound()) {
-            final List<CarDrivingResult> result = carRacingGame.runRound();
+            final CarRacingResult racingResult = carRacingGame.runRound();
             roundCounter++;
-            assertThat(result).hasSize(carCount);
-            assertThat(result).containsAll(drivingResults(carCount, new Distance(roundCounter)));
+            assertThat(racingResult).hasSize(carCount);
+            assertThat(racingResult).containsAll(drivingResults(carCount, new Distance(roundCounter)));
         }
     }
 

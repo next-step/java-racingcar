@@ -28,5 +28,7 @@ public class CarRacingGameConsoleLauncher {
         while (carRacingGame.hasNextRound()) {
             resultView.printResult(carRacingGame.runRound());
         }
+
+        resultView.printWinners(carRacingGame.result());
     }
 }

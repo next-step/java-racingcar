@@ -46,7 +46,7 @@ public class CarRacingGame {
         return this.round.hasNextRound();
     }
 
-    public List<CarDrivingResult> runRound() {
+    public CarRacingResult runRound() {
         for (Car car : this.cars) {
             car.move();
         }
@@ -54,7 +54,8 @@ public class CarRacingGame {
         return result();
     }
 
-    public List<CarDrivingResult> result() {
-        return cars.stream().map(Car::drivingResult).collect(Collectors.toList());
+    public CarRacingResult result() {
+        final List<CarDrivingResult> drivingResults = cars.stream().map(Car::drivingResult).collect(Collectors.toList());
+        return new CarRacingResult(drivingResults);
     }
 }

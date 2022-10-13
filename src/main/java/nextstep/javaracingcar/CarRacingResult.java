@@ -1,9 +1,10 @@
 package nextstep.javaracingcar;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public class CarRacingResult {
+public class CarRacingResult implements Iterable<CarDrivingResult> {
 
     private final List<CarDrivingResult> drivingResults;
 
@@ -25,5 +26,10 @@ public class CarRacingResult {
             }
         }
         return winners;
+    }
+
+    @Override
+    public Iterator<CarDrivingResult> iterator() {
+        return drivingResults.iterator();
     }
 }
