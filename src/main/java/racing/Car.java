@@ -1,7 +1,7 @@
 package racing;
 
 public class Car {
-    int moveCount;
+    public int moveCount;
 
     public Car () {
     }
@@ -9,12 +9,16 @@ public class Car {
     public void move () {
         int randomNumber = (int)(Math.random()*10);
         if (randomNumber >= 4) {
-            moveCount++;
+            this.moveCount++;
         }
     }
 
+    public int getMoveCount() {
+        return this.moveCount;
+    }
+
     public void printResult () {
-        for (int i = 0; i < moveCount; i++) {
+        for (int i = 0; i < this.moveCount; i++) {
             System.out.print("-");
         }
     }
