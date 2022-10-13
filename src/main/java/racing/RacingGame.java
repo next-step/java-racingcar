@@ -1,5 +1,6 @@
 package racing;
 
+import racing.domain.Cars;
 import racing.view.UserInput;
 
 public class RacingGame {
@@ -10,6 +11,9 @@ public class RacingGame {
         int cntOfCar = userInput.inputCntOfCar();
         SystemMention.CNT_OF_TRY.printMention();
         int cntOfTry = userInput.inputCntOfCar();
+
+        Cars cars = new Cars(cntOfCar, cntOfTry);
+        cars.tryMove();
     }
 
     public static void main(String[] args) {
