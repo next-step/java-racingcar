@@ -2,6 +2,8 @@ package racinggame.domain.embeded;
 
 public class CarDistance {
 
+    public static final int DEFAULT_CAR_DISTANCE = 0;
+
     private final int distance;
 
     public CarDistance(int carDistance) {
