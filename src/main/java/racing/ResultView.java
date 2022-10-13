@@ -13,8 +13,8 @@ public class ResultView {
 
     }
 
-    public static void printRaceResult(CarRace carRace) {
-        carRace.getCars().forEach(ResultView::printCar);
+    public static void printCars(Cars cars) {
+        cars.getCars().forEach(ResultView::printCar);
         System.out.println();
     }
 
