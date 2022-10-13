@@ -5,8 +5,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CarRace {
-    private final List<Car> cars;
     private static final CarMovingStrategy DEFAULT_STRATEGY = new RandomCarMovingStrategy();
+
+    private final List<Car> cars;
 
     public CarRace(String[] names) {
         this(toCars(names));

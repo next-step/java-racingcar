@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class CarDistance implements Comparable<CarDistance> {
     private static final int DISTANCE_MIN = 0;
+
     private final int distance;
 
     public CarDistance() {
