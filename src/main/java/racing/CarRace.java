@@ -1,11 +1,16 @@
 package racing;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class CarRace {
     private final List<Car> cars;
     private static final CarMovingStrategy DEFAULT_STRATEGY = new RandomCarMovingStrategy();
+
+    public CarRace(String[] names) {
+        this(toCars(names));
+    }
 
     public CarRace(List<Car> cars) {
         if (cars.isEmpty()) {
@@ -34,6 +39,12 @@ public class CarRace {
 
         return cars.stream()
                 .filter(car -> car.hasDistance(maxDistance))
+                .collect(Collectors.toList());
+    }
+
+    private static List<Car> toCars(String[] names) {
+        return Arrays.stream(names)
+                .map(Car::new)
                 .collect(Collectors.toList());
     }
 }
