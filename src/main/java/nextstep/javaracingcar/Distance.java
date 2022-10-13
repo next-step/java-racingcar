@@ -1,7 +1,5 @@
 package nextstep.javaracingcar;
 
-import java.util.Iterator;
-
 public class Distance implements Comparable<Distance> {
     public static final Distance ZERO = new Distance(0);
     public static final Distance ONE = new Distance(1);
@@ -39,5 +37,12 @@ public class Distance implements Comparable<Distance> {
     @Override
     public int compareTo(final Distance o) {
         return Integer.compare(this.value, o.value);
+    }
+
+    @Override
+    public String toString() {
+        return "Distance{" +
+                "value=" + value +
+                '}';
     }
 }

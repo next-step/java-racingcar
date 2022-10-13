@@ -21,7 +21,7 @@ public class CarRacingGameConsoleLauncher {
         final MovingStrategy goOrStopEngine = new RandomGoOrStop(() -> random.nextInt(10), 4);
 
         final CarRacingGameInput input = inputView.input();
-        final CarRacingGame carRacingGame = new CarRacingGame(input.carCount(), input.round(), goOrStopEngine);
+        final CarRacingGame carRacingGame = new CarRacingGame(input.getCarNames(), input.round(), goOrStopEngine);
 
         resultView.printReusltTitle();
 

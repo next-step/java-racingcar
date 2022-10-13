@@ -4,11 +4,16 @@ import java.util.Objects;
 
 
 public class CarDrivingResult {
-    private final String name;
+    private final CarName name;
     private final Distance distance;
 
-    public CarDrivingResult(final String name, final Distance distance) {
+    public CarDrivingResult(final CarName name, final Distance distance) {
         this.name = name;
+        this.distance = distance;
+    }
+
+    public CarDrivingResult(final String name, final Distance distance) {
+        this.name = new CarName(name);
         this.distance = distance;
     }
 
@@ -47,7 +52,7 @@ public class CarDrivingResult {
 
     @Override
     public String toString() {
-        return "CarDashboard{" +
+        return "CarDrivingResult{" +
                 "name='" + name + '\'' +
                 ", distance=" + distance +
                 '}';

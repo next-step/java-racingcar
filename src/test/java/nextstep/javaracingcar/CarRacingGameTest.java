@@ -32,6 +32,20 @@ class CarRacingGameTest {
         assertThat(carRacingGame.result()).hasSize(carCount);
     }
 
+    @DisplayName("콤마로 연결되 자동차 이름으로 자동차를 생성한다.")
+    @Test
+    public void spec02_01() {
+        final CarRacingGame carRacingGame = new CarRacingGame("aa,bb,cc,dd", new Round(1), ONE_MOVING_ENGINE);
+        final List<CarDrivingResult> result = carRacingGame.result();
+        assertThat(result).hasSize(4);
+        assertThat(result).containsExactly(
+                carDrivingResult("aa", Distance.ZERO),
+                carDrivingResult("bb", Distance.ZERO),
+                carDrivingResult("cc", Distance.ZERO),
+                carDrivingResult("dd", Distance.ZERO)
+        );
+    }
+
     @DisplayName("입력 받은 수 만큼 라운드를 진행한다.")
     @ParameterizedTest
     @ValueSource(ints = {1, 3, 5, 20})
@@ -61,11 +75,18 @@ class CarRacingGameTest {
         }
     }
 
+    /*
+     * fixture tools
+     * */
     private List<CarDrivingResult> drivingResults(final int carCount, final Distance distance) {
         final List<CarDrivingResult> drivingResults = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
             drivingResults.add(new CarDrivingResult(String.valueOf(i), distance));
         }
         return drivingResults;
+    }
+
+    private CarDrivingResult carDrivingResult(final String name, final Distance distance) {
+        return new CarDrivingResult(new CarName(name), distance);
     }
 }
