@@ -30,12 +30,6 @@ public class Cars {
         }
     }
 
-    public void printDistance() {
-        for (Car car : cars) {
-            car.printDistance();
-        }
-    }
-
     public Car findWinner() {
         return cars.stream()
                 .reduce((car, otherCar) -> car.isWinner(otherCar) ? car : otherCar)
@@ -70,5 +64,9 @@ public class Cars {
     @Override
     public int hashCode() {
         return super.hashCode();
+    }
+
+    public List<Car> getCars() {
+        return cars.stream().collect(Collectors.toList());
     }
 }

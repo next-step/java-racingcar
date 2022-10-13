@@ -24,12 +24,12 @@ public class Car {
         return name;
     }
 
-    public boolean isWinner(Car other) {
-        return this.distance >= other.distance;
+    public int getDistance() {
+        return distance;
     }
 
-    public void printDistance() {
-        ResultView.printDistance(name, distance);
+    public boolean isWinner(Car other) {
+        return this.distance >= other.distance;
     }
 
     @Override
