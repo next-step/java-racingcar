@@ -7,11 +7,11 @@ public class CarRace {
     private static final CarMovingStrategy DEFAULT_STRATEGY = new RandomCarMovingStrategy();
 
     private final Cars cars;
-    private final int numberOfTrials;
+    private final TrialNum trialNumber;
 
-    public CarRace(String[] carNames, int numberOfTrials) {
+    public CarRace(String[] carNames, int trialNumber) {
         this.cars = new Cars(carNames);
-        this.numberOfTrials = numberOfTrials;
+        this.trialNumber = new TrialNum(trialNumber);
     }
 
     public void startRace(Consumer<Cars> callback) {
@@ -19,7 +19,7 @@ public class CarRace {
     }
 
     public void startRace(CarMovingStrategy strategy, Consumer<Cars> callback) {
-        for (int i = 0; i < numberOfTrials; i++) {
+        for (int i = 0; i < trialNumber.getValue(); i++) {
             cars.move(strategy);
             callback.accept(cars);
         }

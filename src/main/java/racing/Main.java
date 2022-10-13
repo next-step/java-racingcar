@@ -11,9 +11,9 @@ public class Main {
 
     private static void doMain() {
         String[] carNames = InputView.queryCarNames();
-        int numberOfTrials = InputView.queryNumberOfTrials();
+        int trialNumber = InputView.queryTrialNumber();
 
-        CarRace race = new CarRace(carNames, numberOfTrials);
+        CarRace race = new CarRace(carNames, trialNumber);
         race.startRace(ResultView::printCars);
 
         ResultView.printWinners(race.getWinners());
