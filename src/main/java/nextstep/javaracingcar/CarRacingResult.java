@@ -1,8 +1,9 @@
 package nextstep.javaracingcar;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class CarRacingResult implements Iterable<CarDrivingResult> {
 
@@ -13,23 +14,17 @@ public class CarRacingResult implements Iterable<CarDrivingResult> {
     }
 
     public List<CarDrivingResult> winners() {
-
-        Distance maxDistance = Distance.ZERO;
-        for (CarDrivingResult drivingResult : drivingResults) {
-            maxDistance = drivingResult.maxDistance(maxDistance);
-        }
-
-        final List<CarDrivingResult> winners = new ArrayList<>();
-        for (CarDrivingResult drivingResult : drivingResults) {
-            if (drivingResult.isPosition(maxDistance)) {
-                winners.add(drivingResult);
-            }
-        }
-        return winners;
+        final Distance maxDistance = maxDistance();
+        return drivingResults.stream().filter(r -> r.isPosition(maxDistance)).collect(Collectors.toList());
     }
 
     @Override
     public Iterator<CarDrivingResult> iterator() {
         return drivingResults.iterator();
+    }
+
+    private Distance maxDistance() {
+        final Optional<Distance> max = drivingResults.stream().map(CarDrivingResult::distance).max(Distance::compareTo);
+        return max.orElseThrow(() -> new IllegalStateException("경주 중인 자동차가 없습니다."));
     }
 }

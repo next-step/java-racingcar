@@ -4,6 +4,7 @@ import nextstep.javaracingcar.CarDrivingResult;
 import nextstep.javaracingcar.CarRacingResult;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
     private final OutputConsumer outputConsumer;
@@ -33,12 +34,7 @@ public class ResultView {
 
     public void printWinners(final CarRacingResult result) {
         final List<CarDrivingResult> winners = result.winners();
-        final StringBuilder winnerNames = new StringBuilder();
-        for (int i = 0; i < winners.size(); i++) {
-            winnerNames.append(winners.get(i).name());
-            if (i != winners.size()-1)
-                winnerNames.append(", ");
-        }
+        final String winnerNames = winners.stream().map(CarDrivingResult::name).collect(Collectors.joining(", "));
         outputConsumer.write(winnerNames + "가 최종 우승했습니다.");
     }
 }
