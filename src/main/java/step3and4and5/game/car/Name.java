@@ -36,19 +36,22 @@ public class Name {
         }
 
         public Name name() {
-            verifyLengthMustNotExceedFive();
+            verifyValidName();
             return new Name(name);
         }
 
-        private void verifyLengthMustNotExceedFive() {
-            verifyValidName();
+        private void verifyValidName() {
+            verifyNameMustNotEmptyAndNotNullAndNotBlank();
+            verifyNameLengthMustNotExceedFive();
+        }
 
+        private void verifyNameLengthMustNotExceedFive() {
             if (name.length() > 5) {
                 throw new IllegalStateException("이름은 5글자를 초과할 수 없다.");
             }
         }
 
-        private void verifyValidName() {
+        private void verifyNameMustNotEmptyAndNotNullAndNotBlank() {
             if (name == null || name.isEmpty() || name.isBlank()) {
                 throw new IllegalStateException("이름이 null 값이거나 공백일 수 없습니다.");
             }
