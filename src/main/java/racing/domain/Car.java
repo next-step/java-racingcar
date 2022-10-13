@@ -9,15 +9,13 @@ public class Car {
         this.position = 0;
     }
 
-    public void move() {
-        int moveNumber = Moving.moveNumber();
+    public void move(int moveNumber) {
         position += moveNumber;
     }
 
-    public void printPosition() {
-        for (int i = 0; i < position; i++) {
-            System.out.print(MOVE_PATTERN);
-        }
-        System.out.println();
+    public String positionStatus() {
+        StringBuffer sb = new StringBuffer();
+        sb.append(MOVE_PATTERN.repeat(position));
+        return sb.toString();
     }
 }
