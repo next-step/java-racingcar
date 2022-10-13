@@ -18,7 +18,7 @@ public class CarTest {
     @Test
     @DisplayName("차 이름이 null 경우 예외 확인")
     void testNullName() {
-        assertThatThrownBy(() -> {new Car(null);})
+        assertThatThrownBy(() -> {new CarDetails(1, null);})
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("car name cannot be empty");
     }

@@ -4,18 +4,18 @@ import java.util.Objects;
 
 public class Car {
 
-    private static final int STEP_COUNT = 1;
-    private int distance = 1;
-    private final String carName;
+    private CarDetails carDetails;
 
-    public Car(String carName) {
-        if (carName == null || carName.equals("")) {
-            throw new IllegalArgumentException("car name cannot be empty");
-        }
-        if (carName.length() > 5) {
-            throw new IllegalArgumentException("car name length shouldn't be longer than 5");
-        }
-        this.carName = carName;
+    public Car(CarDetails carDetails){
+        this.carDetails = carDetails;
+    }
+
+    public Car(String carName){
+        this.carDetails = new CarDetails(1, carName);
+    }
+
+    public CarDetails getCarDetails() {
+        return carDetails;
     }
 
     @Override
@@ -23,28 +23,19 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return distance == car.distance && Objects.equals(carName, car.carName);
+        return Objects.equals(carDetails, car.carDetails);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(distance, carName);
-    }
-
-    public int getDistance() {
-        return this.distance;
-    }
-
-    public String getCarName() {
-        return this.carName;
+        return Objects.hash(carDetails);
     }
 
     public void stepAhead() {
-        this.distance += STEP_COUNT;
+        carDetails.stepAhead();
     }
 
-    @Override
-    public String toString() {
-        return carName;
+    public boolean isSameDistance(int distance){
+        return carDetails.getDistance() == distance;
     }
 }

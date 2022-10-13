@@ -4,14 +4,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.core.Car;
-import racing.core.CarList;
+import racing.core.Cars;
 import racing.core.Mover;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -45,7 +42,7 @@ public class ResultViewTest {
         mover.decideMove(car2, 7);
         mover.decideMove(car3, 3);
 
-        resultView.printCarList(CarList.makeCars(car1, car2, car3));
+        resultView.printCarList(Cars.makeCars(car1, car2, car3));
 
         assertThat(outContent.toString()).isEqualTo("jack : --\njason : ---\neric : -\n\n");
     }
@@ -56,7 +53,7 @@ public class ResultViewTest {
         Car car1 = new Car("jack");
         Car car2 = new Car("jason");
 
-        resultView.printWinners(CarList.makeCars(car1, car2));
+        resultView.printWinners(Cars.makeCars(car1, car2));
 
         assertThat(outContent.toString()).isEqualTo("jack, jason가 최종 우승했습니다.");
     }
@@ -66,7 +63,7 @@ public class ResultViewTest {
     void testPrintedTextWithWinner(){
         Car car1 = new Car("jack");
 
-        resultView.printWinners(CarList.makeCars(car1));
+        resultView.printWinners(Cars.makeCars(car1));
 
         assertThat(outContent.toString()).isEqualTo("jack가 최종 우승했습니다.");
     }

@@ -15,7 +15,8 @@ class MoverTest {
         int inputNum = 3;
         Car car = new Car("jack");
         mover.decideMove(car, inputNum);
-        assertThat(car.getDistance()).isEqualTo(1);
+        CarDetails carDetails = car.getCarDetails();
+        assertThat(carDetails.getDistance()).isEqualTo(1);
     }
 
     @Test
@@ -24,7 +25,8 @@ class MoverTest {
         int inputNum = 7;
         Car car = new Car("jack");
         mover.decideMove(car, inputNum);
-        assertThat(car.getDistance()).isEqualTo(2);
+        CarDetails carDetails = car.getCarDetails();
+        assertThat(carDetails.getDistance()).isEqualTo(2);
     }
 
 }
