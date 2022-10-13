@@ -28,14 +28,6 @@ public class Car implements Comparable<Car> {
         return carName;
     }
 
-    public boolean isInfrontOf(MoveResult moveResult) {
-        return this.moveResult.compareTo(moveResult) >= 0;
-    }
-
-    public boolean isInfrontOf(Car car) {
-        return this.moveResult.compareTo(car.moveResult) > 0;
-    }
-
     public boolean isSameResult(Car car) {
         return this.moveResult.compareTo(car.moveResult) == 0;
     }

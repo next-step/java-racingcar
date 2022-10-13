@@ -1,6 +1,7 @@
 package racingcar.winner.model;
 
-import org.assertj.core.api.Assertions;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -14,7 +15,7 @@ public class CarNameTest {
     @ParameterizedTest
     @ValueSource(strings = {"long car name", "123456"})
     void 자동차이름은_길이를_제한한다(String input) {
-        Assertions.assertThatThrownBy(() -> {
+        assertThatThrownBy(() -> {
             CarName name = new CarName(input);
         }).isInstanceOf(InvalidInputException.class);
     }
@@ -22,7 +23,7 @@ public class CarNameTest {
     @DisplayName("입력받는 자동차의 이름은 공백을 가질 수 없다")
     @Test
     void 자동차이름은_공백이존재할수없다() {
-        Assertions.assertThatThrownBy(() -> {
+        assertThatThrownBy(() -> {
             CarName name = new CarName("");
         }).isInstanceOf(InvalidInputException.class);
     }
