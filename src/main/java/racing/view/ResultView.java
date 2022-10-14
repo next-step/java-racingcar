@@ -1,8 +1,6 @@
 package racing.view;
 
-import racing.core.Car;
-import racing.core.CarDetails;
-import racing.core.Cars;
+import racing.core.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,16 +22,14 @@ public class ResultView {
     }
 
     private void printCarDistance(Car car) {
-        CarDetails carDetails = car.getCarDetails();
-        System.out.println(carDetails.getCarName() + " : " + DISTANCE_MARKER.repeat(Math.max(0, carDetails.getDistance())));
+        CarName carName = car.getCarName();
+        Distance distance = car.getDistance();
+        System.out.println(carName.getName() + " : " + DISTANCE_MARKER.repeat(Math.max(0, distance.getDistance())));
     }
 
     public void printWinners(Cars winners) {
         List<String> winnerNames = winners.getCarStream()
-                .map(car -> {
-                    CarDetails carDetails = car.getCarDetails();
-                    return carDetails.getCarName();
-                })
+                .map(car -> car.getCarName().getName())
                 .collect(Collectors.toList());
         System.out.print(String.join(WINNER_SEPARATE_TEXT, winnerNames) + WINNER_TEXT);
     }

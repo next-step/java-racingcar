@@ -18,20 +18,20 @@ public class Cars {
     }
 
     public Cars getWinners(){
-        sortDesc();
+//        sortDesc();
         Car firstWinner = getFirstCar();
-        CarDetails firstCarDetails = firstWinner.getCarDetails();
-        int winnerScore = firstCarDetails.getDistance();
+        Distance firstWinnerDistance = firstWinner.getDistance();
+        int winnerScore = firstWinnerDistance.getDistance();
         return getCarsWithSameDistance(winnerScore);
     }
 
-    public void sortDesc() {
-        cars.sort((o1, o2) -> {
-            CarDetails o2CarDetails = o2.getCarDetails();
-            CarDetails o1CarDetails = o1.getCarDetails();
-            return o2CarDetails.getDistance() - o1CarDetails.getDistance();
-        });
-    }
+//    public void sortDesc() {
+//        cars.sort((o1, o2) -> {
+//            CarDetails o2CarDetails = o2.getCarDetails();
+//            CarDetails o1CarDetails = o1.getCarDetails();
+//            return o2CarDetails.getDistance() - o1CarDetails.getDistance();
+//        });
+//    }
 
     public Car getFirstCar() {
         return cars.get(0);
@@ -56,7 +56,7 @@ public class Cars {
     public static Cars makeCars(String[] carNames) {
         List<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
-            cars.add(new Car(carName));
+            cars.add(new Car(new CarName(carName)));
         }
         return new Cars(cars);
     }

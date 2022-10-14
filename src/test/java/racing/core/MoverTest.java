@@ -13,20 +13,20 @@ class MoverTest {
     @DisplayName("4 이하의 값이 주어졌을 때 자동차를 움직이는지 확인")
     void testIfMoveWithUnder4() {
         int inputNum = 3;
-        Car car = new Car("jack");
+        Car car = new Car(new CarName("jack"));
         mover.decideMove(car, inputNum);
-        CarDetails carDetails = car.getCarDetails();
-        assertThat(carDetails.getDistance()).isEqualTo(1);
+        Distance distance = car.getDistance();
+        assertThat(distance).isEqualTo(new Distance(1));
     }
 
     @Test
     @DisplayName("4 이상의 값이 주어졌을 때 자동차가 멈춰있는지 확인")
     void testIfMoveWithOver4() {
         int inputNum = 7;
-        Car car = new Car("jack");
+        Car car = new Car(new CarName("jack"));
         mover.decideMove(car, inputNum);
-        CarDetails carDetails = car.getCarDetails();
-        assertThat(carDetails.getDistance()).isEqualTo(2);
+        Distance distance = car.getDistance();
+        assertThat(distance).isEqualTo(new Distance(2));
     }
 
 }
