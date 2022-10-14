@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.generator;
 
 public class WinnerNumberGenerator implements NumberGenerator {
     @Override

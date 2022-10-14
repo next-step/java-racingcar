@@ -5,6 +5,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.exception.RacingCarErrorCode;
+import racingcar.generator.WinnerNumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;

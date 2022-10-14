@@ -1,5 +1,8 @@
 package racingcar;
 
+import racingcar.view.RacingCarView;
+import racingcar.view.RacingGameInputView;
+
 import java.util.*;
 
 public class RacingGameApplication {

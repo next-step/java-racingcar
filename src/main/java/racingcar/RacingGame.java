@@ -2,8 +2,8 @@ package racingcar;
 
 import exception.CustomException;
 import racingcar.exception.RacingCarErrorCode;
+import racingcar.generator.RandomNumberGenerator;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Objects;
