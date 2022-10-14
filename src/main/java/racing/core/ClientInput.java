@@ -3,16 +3,16 @@ package racing.core;
 import java.util.Objects;
 
 public class ClientInput {
-    private final int carCount;
+    private final String carNames;
     private final int tryCount;
 
-    public ClientInput(int carCount, int tryCount) {
-        this.carCount = carCount;
+    public ClientInput(String carNames, int tryCount) {
+        this.carNames = carNames;
         this.tryCount = tryCount;
     }
 
-    public int getCarCount() {
-        return carCount;
+    public String getCarNames() {
+        return carNames;
     }
 
     public int getTryCount() {
@@ -24,12 +24,12 @@ public class ClientInput {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ClientInput that = (ClientInput) o;
-        return carCount == that.carCount && tryCount == that.tryCount;
+        return tryCount == that.tryCount && Objects.equals(carNames, that.carNames);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(carCount, tryCount);
+        return Objects.hash(carNames, tryCount);
     }
 
     public static ClientInput.ClientInputBuilder builder() {
@@ -37,14 +37,14 @@ public class ClientInput {
     }
 
     public static class ClientInputBuilder {
-        private int carCount;
+        private String carNames;
         private int tryCount;
 
         ClientInputBuilder() {
         }
 
-        public ClientInput.ClientInputBuilder carCount(int carCount) {
-            this.carCount = carCount;
+        public ClientInput.ClientInputBuilder carNames(String carNames) {
+            this.carNames = carNames;
             return this;
         }
 
@@ -54,7 +54,7 @@ public class ClientInput {
         }
 
         public ClientInput build() {
-            return new ClientInput(this.carCount, this.tryCount);
+            return new ClientInput(this.carNames, this.tryCount);
         }
     }
 }

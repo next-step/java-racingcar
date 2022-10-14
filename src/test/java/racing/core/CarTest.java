@@ -1,39 +1,33 @@
 package racing.core;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
 
     @Test
-    void 리스트_생성(){
-        int size = 3;
-        List<Car> carList = Car.makeCarList(size);
-
-        assertThat(carList).hasSize(size);
+    @DisplayName("차 이름 길이가 5보다 큰 경우 예외 확인")
+    void testTooLongCarName() {
+        assertThatThrownBy(() -> {new Car("jackson");})
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("car name length shouldn't be longer than 5");
     }
 
     @Test
-    void go_메소드(){
-        int distance = 10;
-        Car car = Car.builder()
-                .distance(distance)
-                .build();
-
-        String expect = "-----------";
-        assertThat(car.go()).isEqualTo(expect);
+    @DisplayName("차 이름이 null 경우 예외 확인")
+    void testNullName() {
+        assertThatThrownBy(() -> {new CarDetails(1, null);})
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("car name cannot be empty");
     }
 
     @Test
-    void roll_메소드(){
-        Car car = new Car();
-
-        int rollResult = car.roll();
-
-        Car expect = Car.builder().distance(rollResult).build();
-        assertThat(car.getDistance()).isEqualTo(expect.getDistance());
+    @DisplayName("차 이름이 공백 경우 예외 확인")
+    void testEmptyName() {
+        assertThatThrownBy(() -> {new Car("");})
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("car name cannot be empty");
     }
 }
