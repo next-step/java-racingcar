@@ -41,12 +41,12 @@ public class Cars {
 	private int getMaxPosition() {
 		Car farthestCar = new Car();
 		for (Car car : cars) {
-			farthestCar = getFarthestCar(farthestCar, car);
+			farthestCar = getFartherCar(farthestCar, car);
 		}
 		return farthestCar.getPosition();
 	}
 
-	private Car getFarthestCar(Car farthestCar, Car car) {
+	private Car getFartherCar(Car farthestCar, Car car) {
 		if (car.hasPositionGreaterThan(farthestCar)) {
 			return car;
 		}
