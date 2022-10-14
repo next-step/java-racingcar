@@ -20,7 +20,7 @@ public class Name {
 
     private String validateName(String name) {
         validateBlank(name);
-        validateOverFiveCharacters(name);
+        validateOverMaximumNameLenghCharacters(name);
 
         return name;
     }
@@ -31,7 +31,7 @@ public class Name {
         }
     }
 
-    private void validateOverFiveCharacters(String name) {
+    private void validateOverMaximumNameLenghCharacters(String name) {
         if (name.length() > MAXIMUM_NAME_LENGTH) {
             throw new IllegalArgumentException(MAXIMUM_NAME_ERROR_TEXT);
         }
