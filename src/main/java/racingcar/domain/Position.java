@@ -20,7 +20,7 @@ public class Position implements Comparable<Position> {
 		return new Position(position + INCREASE_AMOUNT);
 	}
 
-	void validatePosition(int position) {
+	private void validatePosition(int position) {
 		if (position < 0) {
 			throw new PositionException("위치는 0 이상이어야 합니다");
 		}
