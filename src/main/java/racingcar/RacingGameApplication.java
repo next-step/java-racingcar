@@ -2,7 +2,7 @@ package racingcar;
 
 import java.util.*;
 
-public class RacingGameTestDrive {
+public class RacingGameApplication {
     public static void main(String[] args) {
         String carNames;
         int moveNumber;
