@@ -1,22 +1,17 @@
-package racing.core;
+package racing.domain;
 
 import java.util.Objects;
 
-import static racing.core.Distance.DEFAULT_MIN_BOUND;
+import static racing.domain.Distance.MIN_DISTANCE_BOUND;
 
 public class Car {
 
     private final CarName carName;
     private final Distance distance;
 
-    public Car(CarName carName, Distance distance){
-        this.carName = carName;
-        this.distance = distance;
-    }
-
     public Car(CarName carName){
         this.carName = carName;
-        this.distance = new Distance(DEFAULT_MIN_BOUND);
+        this.distance = new Distance(MIN_DISTANCE_BOUND);
     }
 
     @Override

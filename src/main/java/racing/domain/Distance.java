@@ -1,16 +1,16 @@
-package racing.core;
+package racing.domain;
 
 import java.util.Objects;
 
 public class Distance {
 
     private static final int STEP_COUNT = 1;
-    public static final int DEFAULT_MIN_BOUND = 1;
+    public static final int MIN_DISTANCE_BOUND = 1;
 
     private int distance;
 
     public Distance(int distance) {
-        if(distance < DEFAULT_MIN_BOUND){
+        if (distance < MIN_DISTANCE_BOUND) {
             throw new IllegalArgumentException("car distance should be bigger than 0");
         }
         this.distance = distance;

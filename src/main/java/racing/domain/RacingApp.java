@@ -1,4 +1,4 @@
-package racing.core;
+package racing.domain;
 
 import racing.RandomUtil;
 import racing.view.InputView;

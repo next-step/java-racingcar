@@ -1,6 +1,9 @@
 package racing.view;
 
-import racing.core.*;
+import racing.domain.Car;
+import racing.domain.CarName;
+import racing.domain.Cars;
+import racing.domain.Distance;
 
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,4 +1,4 @@
-package racing.core;
+package racing.domain;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -17,24 +17,12 @@ public class Cars {
         return cars.stream();
     }
 
-    public Cars getWinners(){
-//        sortDesc();
-        Car firstWinner = getFirstCar();
-        Distance firstWinnerDistance = firstWinner.getDistance();
-        int winnerScore = firstWinnerDistance.getDistance();
+    public Cars getWinners() {
+        int winnerScore = cars.stream()
+                .map(Car::getDistance)
+                .mapToInt(Distance::getDistance)
+                .max().getAsInt();
         return getCarsWithSameDistance(winnerScore);
-    }
-
-//    public void sortDesc() {
-//        cars.sort((o1, o2) -> {
-//            CarDetails o2CarDetails = o2.getCarDetails();
-//            CarDetails o1CarDetails = o1.getCarDetails();
-//            return o2CarDetails.getDistance() - o1CarDetails.getDistance();
-//        });
-//    }
-
-    public Car getFirstCar() {
-        return cars.get(0);
     }
 
     public Cars getCarsWithSameDistance(int distance) {
