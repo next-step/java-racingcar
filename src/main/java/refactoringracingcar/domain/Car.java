@@ -2,7 +2,7 @@ package refactoringracingcar.domain;
 
 public class Car {
 
-    private String carName;
+    private final String carName;
     private int carPosition;
 
     public Car(String carName, int carPosition) {
@@ -12,10 +12,6 @@ public class Car {
 
     public String getCarName() {
         return this.carName;
-    }
-
-    public void setCarName(String carName) {
-        this.carName = carName;
     }
 
     public int getCarPosition() {
