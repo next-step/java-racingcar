@@ -15,10 +15,15 @@ public class RacingCarGame {
         this.gameNumber = gameNumber;
     }
 
-    public void RunGame() {
+    public String RunGame() {
+        String gameResult = "";
+        ResultView resultView = new ResultView(cars);
         for (int i = 0; i < gameNumber; i++) {
             RaceCarGame();
+            gameResult += resultView.printGameStatus();
         }
+        gameResult += resultView.printWinner();
+        return gameResult;
     }
 
     private List<Car> RaceCarGame() {
