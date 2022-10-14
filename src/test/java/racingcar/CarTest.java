@@ -28,4 +28,12 @@ public class CarTest {
                 .isInstanceOf(CustomException.class)
                 .hasMessage(CarErrorCode.CAR_NAME_LENGTH_BAD_REQUEST.getMessage());
     }
+
+    @Test
+    @DisplayName("자동차는 한번 움직일 때마다 정해진 거리만큼 전진한다")
+    void move() {
+        Car car = Car.from("pobi");
+        car.moveForward();
+        assertThat(car.getLocation()).isEqualTo(MOVE_DISTANCE);
+    }
 }
