@@ -13,17 +13,33 @@ public class ResultView {
 
     }
 
-    public static void printCars(List<Car> cars) {
-        cars.forEach(ResultView::printCar);
+    public static void printCars(Cars cars) {
+        cars.getCars().forEach(ResultView::printCar);
         System.out.println();
     }
 
     public static void printWinners(List<Car> cars) {
-        String names = cars.stream().map(Car::getName).collect(Collectors.joining(NAME_DELIMITER));
+        String names = cars.stream()
+                .map(Car::getName)
+                .map(CarName::toString)
+                .collect(Collectors.joining(NAME_DELIMITER));
         System.out.printf(WINNER_FORMAT, names);
     }
 
+    public static void printError(Exception exception) {
+        if (exception instanceof CarNameTooLongException) {
+            System.out.println("자동차 이름은 5자를 초과할 수 없습니다.");
+            return;
+        }
+
+        System.out.println("Unexpected error : " + exception);
+    }
+
     private static void printCar(Car car) {
-        System.out.printf(CAR_FORMAT, car.getName(), MOVE_SYMBOL.repeat(car.getMoves()));
+        System.out.printf(CAR_FORMAT, car.getName(), formatCarDistance(car.getDistance()));
+    }
+
+    private static String formatCarDistance(CarDistance carDistance) {
+        return MOVE_SYMBOL.repeat(carDistance.getDistance());
     }
 }

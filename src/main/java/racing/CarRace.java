@@ -1,24 +1,31 @@
 package racing;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.function.Consumer;
 
 public class CarRace {
-    private final List<Car> cars;
+    private static final CarMovingStrategy DEFAULT_STRATEGY = new RandomCarMovingStrategy();
 
-    public CarRace(List<Car> cars) {
-        if (cars.isEmpty()) {
-            throw new IllegalArgumentException("car is empty");
-        }
-        this.cars = cars;
+    private final Cars cars;
+    private final TrialNum trialNumber;
+
+    public CarRace(String[] carNames, int trialNumber) {
+        this.cars = new Cars(carNames);
+        this.trialNumber = new TrialNum(trialNumber);
     }
 
-    public void round() {
-        cars.forEach(Car::tryMove);
+    public void startRace(Consumer<Cars> callback) {
+        startRace(DEFAULT_STRATEGY, callback);
+    }
+
+    public void startRace(CarMovingStrategy strategy, Consumer<Cars> callback) {
+        for (int i = 0; i < trialNumber.getValue(); i++) {
+            cars.move(strategy);
+            callback.accept(cars);
+        }
     }
 
     public List<Car> getWinners() {
-        int maxMoves = cars.stream().mapToInt(Car::getMoves).max().orElseThrow();
-        return cars.stream().filter(car -> car.getMoves() == maxMoves).collect(Collectors.toList());
+        return cars.getWinners();
     }
 }
