@@ -1,7 +1,7 @@
-package step3and4.client.output;
+package step3and4and5.client.output;
 
-import step3and4.game.car.Cars;
-import step3and4.game.car.WinningCars;
+import step3and4and5.game.car.Cars;
+import step3and4and5.game.car.WinningCars;
 
 import java.util.List;
 
@@ -20,10 +20,12 @@ public class ConsoleOutputView implements OutputView {
         int numberOfWinners = winners.size();
 
         for (int i = 0; i < numberOfWinners - 1; i++) {
-            System.out.print(winners.get(i) + ", ");
+            String outputValue = winners.get(i) + ", ";
+            System.out.print(outputValue.trim());
         }
 
-        System.out.print(winners.get(numberOfWinners - 1) + "가 최종 우승했습니다.");
+        String outputValue = winners.get(numberOfWinners - 1) + "가 최종 우승했습니다.";
+        System.out.print(outputValue.trim());
     }
 
 }

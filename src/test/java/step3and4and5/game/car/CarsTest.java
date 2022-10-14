@@ -1,12 +1,8 @@
-package step3and4.game.car;
+package step3and4and5.game.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.NullAndEmptySource;
-import org.junit.jupiter.params.provider.ValueSource;
-import step3and4.client.number.Number;
-import step3and4.client.number.RandomNumber;
+import step3and4and5.client.number.RandomNumber;
 
 import java.util.List;
 
@@ -19,10 +15,10 @@ class CarsTest {
     @DisplayName("자동차들에게 턴을 사용할 있게 알람을 줄 수 있다.")
     void a() {
         Number number = new Number.Fake(4);
-        Car car = new Car.Factory(number, "").car();
+        Car car = new Car.Factory(number, "1").car();
         Cars sut = new Cars(List.of(car));
 
-        Car movedCar = new Car.Factory(number, new Position(1), "").car();
+        Car movedCar = new Car.Factory(number, new Position(1), "1").car();
         assertThat(sut.carsWithTurnUsed()).isEqualTo(new Cars(List.of(movedCar)));
     }
 
@@ -45,15 +41,12 @@ class CarsTest {
         assertThat(sut.positionsAndNames()).containsExactly(car.print());
     }
 
-    @ParameterizedTest
-    @NullAndEmptySource
+    @Test
     @DisplayName("자동차 생성시 입력값 유효성 검증")
-    @ValueSource(strings = {
-            " "
-    })
-    void d(String str) {
-        assertThatThrownBy(() -> new Cars.Factory(new String[]{str}).cars(new Number.Fake(1)))
+    void d() {
+        assertThatThrownBy(() -> new Cars.Factory(new String[]{}).cars(new Number.Fake(1)))
                 .isInstanceOf(IllegalStateException.class)
-                .hasMessage("유효한 문자열이 아닙니다.");
+                .hasMessage("빈 공백일 수 없습니다.");
     }
+
 }

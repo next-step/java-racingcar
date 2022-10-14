@@ -1,4 +1,6 @@
-package step3and4.client.number;
+package step3and4and5.client.number;
+
+import step3and4and5.game.car.Number;
 
 import java.util.concurrent.ThreadLocalRandom;
 

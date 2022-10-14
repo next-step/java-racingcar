@@ -1,10 +1,10 @@
-package step3and4.game;
+package step3and4and5.game;
 
-import step3and4.client.input.InputView;
-import step3and4.client.number.Number;
-import step3and4.client.output.OutputView;
-import step3and4.game.car.Cars;
-import step3and4.game.car.WinningCars;
+import step3and4and5.client.input.InputView;
+import step3and4and5.client.output.OutputView;
+import step3and4and5.game.car.Cars;
+import step3and4and5.game.car.Number;
+import step3and4and5.game.car.WinningCars;
 
 import java.io.IOException;
 
@@ -48,7 +48,7 @@ public class CarGame {
 
     private void verifyPositiveNumber(int numberOfGames) {
         if (numberOfGames <= 0) {
-            throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
+            throw new IllegalArgumentException("0 또는 음수는 입력할 수 없습니다.");
         }
     }
 

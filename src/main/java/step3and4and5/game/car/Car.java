@@ -1,6 +1,4 @@
-package step3and4.game.car;
-
-import step3and4.client.number.Number;
+package step3and4and5.game.car;
 
 import java.util.Objects;
 
