@@ -1,5 +1,7 @@
 package racing.view;
 
+import java.util.List;
+
 public class ResultView {
     private static final String DASH = "-";
 
@@ -7,10 +9,12 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public void result(int distance) {
-        if(distance > 0) {
-            System.out.print(DASH.repeat(distance));
-            System.out.println("");
+    public void result(List<Integer> distances) {
+        for (int dis : distances) {
+            if(dis > 0) {
+                System.out.print(DASH.repeat(dis));
+                System.out.println("");
+            }
         }
     }
 }

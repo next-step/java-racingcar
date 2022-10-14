@@ -3,6 +3,8 @@ package racing.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import static racing.util.Random.createRandomValue;
+
 public class Cars {
 
     private final List<Car> cars;
@@ -23,7 +25,17 @@ public class Cars {
         return carList;
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public void moveEvent() {
+        for (Car car : cars) {
+            car.move(createRandomValue());
+        }
+    }
+
+    public List<Integer> getDistances() {
+        List<Integer> distances = new ArrayList<>();
+        for (Car car : cars) {
+            distances.add(car.getDistance());
+        }
+        return distances;
     }
 }

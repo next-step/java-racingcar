@@ -1,32 +1,32 @@
 package racing;
 
-import racing.domain.Car;
 import racing.domain.Cars;
+import racing.domain.RacingGameInfo;
 import racing.view.ResultView;
 
-import static racing.util.Random.createRandomValue;
+import java.util.List;
 
 public class RacingGame {
     private final Cars cars;
     private static final ResultView resultView = new ResultView();
     private Integer tryCount;
 
-    RacingGame(int carCount, int tryCount) {
-        cars = new Cars(carCount);
-        this.tryCount = tryCount;
+    RacingGame(RacingGameInfo racingGameInfo) {
+        cars = new Cars(racingGameInfo.carCount);
+        this.tryCount = racingGameInfo.tryCount;
     }
 
     public void tryEvent() {
         for (int i = 0; i < tryCount; i++) {
             System.out.println("");
-            moveEvent(createRandomValue());
+            play(cars);
         }
     }
 
-    private void moveEvent(int randomValue) {
-        for (Car car : cars.getCars()) {
-            car.move(randomValue);
-            resultView.result(car.getDistance());
-        }
+    private void play(Cars cars) {
+        cars.moveEvent();
+
+        List<Integer> distances = cars.getDistances();
+        resultView.result(distances);
     }
 }
