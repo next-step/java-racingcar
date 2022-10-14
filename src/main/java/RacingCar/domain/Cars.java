@@ -1,22 +1,26 @@
 package RacingCar.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Cars {
-    public List<Car> makeCars(String input) {
-        List<Car> cars = new ArrayList<>();
+    private static String DELIMITER = ",";
 
-        String[] carArray = input.split(",");
+    private List<Car> cars;
 
-        init(carArray, cars);
+    public Cars(String input) {
+        cars = Arrays.stream(input.split(DELIMITER))
+                .map(Car::new)
+                .collect(Collectors.toList());
+    }
 
+    public List<Car> getCars() {
         return cars;
     }
 
-    private void init(String[] carArray, List<Car> carList) {
-        for (String carName : carArray) {
-            carList.add(new Car(carName, 1));
+    public void move(MovingStrategy movingStrategy) {
+        for (Car car : cars) {
+            car.move(movingStrategy.moveable());
         }
     }
 }
