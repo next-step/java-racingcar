@@ -12,7 +12,7 @@ public class RacingGameInfo {
 	private int currentRound;					// 현재 게임 라운드
 	private final MoveStrategy moveStrategy;		// 무브 전략
 
-	public RacingGameInfo(Cars participants,  int round, MoveStrategy moveStrategy) {
+	public RacingGameInfo(Cars participants, int round, MoveStrategy moveStrategy) {
 		validateRound(round);
 		this.participants = participants;
 		this.maxPosition = 0;

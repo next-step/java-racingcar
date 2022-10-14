@@ -35,12 +35,6 @@ public class Cars implements Iterable<Car>{
 		this.cars.forEach(car -> car.move(moveStrategy));
 	}
 
-	public void printName() {
-		System.out.print(this.cars.stream()
-			.map(Car::getName)
-			.collect(Collectors.joining(", ")));
-	}
-
 	@Override
 	public Iterator<Car> iterator() {
 		return cars.iterator();
@@ -49,5 +43,9 @@ public class Cars implements Iterable<Car>{
 	@Override
 	public void forEach(Consumer<? super Car> action) {
 		Iterable.super.forEach(action);
+	}
+
+	public int size() {
+		return cars.size();
 	}
 }
