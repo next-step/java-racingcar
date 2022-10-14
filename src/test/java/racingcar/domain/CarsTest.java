@@ -30,7 +30,7 @@ public class CarsTest {
 		cars.move(moveStrategyMovable);
 
 		assertThat(newCarList).allSatisfy(
-			car -> assertThat(car.hasPositionSameAs(0)).isTrue());
+			car -> assertThat(car.hasPositionSameAs(1)).isTrue());
 	}
 
 	@Test
