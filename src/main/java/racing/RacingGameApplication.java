@@ -7,8 +7,8 @@ import racing.view.ResultView;
 
 public class RacingGameApplication {
     public static void main(String[] args) {
-        RacingGameInfo rgInfo = new InputView().setInfo();
-        RacingGame racingGame = new RacingGame(rgInfo);
+        RacingGameInfo racingGameInfo = new InputView().setInfo();
+        RacingGame racingGame = new RacingGame(racingGameInfo);
 
         ResultView.init();
         racingGame.tryEvent();

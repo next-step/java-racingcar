@@ -1,5 +1,7 @@
 package racing.view;
 
+import racing.domain.Car;
+
 import java.util.List;
 
 public class ResultView {
@@ -9,12 +11,10 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public void result(List<Integer> distances) {
-        for (int dis : distances) {
-            if(dis > 0) {
-                System.out.print(DASH.repeat(dis));
-                System.out.println("");
-            }
+    public void result(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.print(car.getName() + ":" + DASH.repeat(car.getDistance()));
+            System.out.println("");
         }
     }
 }

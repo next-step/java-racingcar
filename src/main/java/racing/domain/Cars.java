@@ -13,14 +13,18 @@ public class Cars {
         this.cars = cars;
     }
 
-    public Cars(int carCount) {
-        this.cars = createCars(carCount);
+    public Cars(String[] carNames) {
+        this.cars = createCars(carNames);
     }
 
-    private List<Car> createCars(int carCount) {
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    private List<Car> createCars(String[] carNames) {
         List<Car> carList = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            carList.add(new Car());
+        for (int i = 0; i < carNames.length; i++) {
+            carList.add(new Car(carNames[i]));
         }
         return carList;
     }

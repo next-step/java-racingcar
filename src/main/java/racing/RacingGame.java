@@ -12,7 +12,7 @@ public class RacingGame {
     private Integer tryCount;
 
     RacingGame(RacingGameInfo racingGameInfo) {
-        cars = new Cars(racingGameInfo.carCount);
+        cars = new Cars(racingGameInfo.carNames);
         this.tryCount = racingGameInfo.tryCount;
     }
 
@@ -25,8 +25,6 @@ public class RacingGame {
 
     private void play(Cars cars) {
         cars.moveEvent();
-
-        List<Integer> distances = cars.getDistances();
-        resultView.result(distances);
+        resultView.result(cars.getCars());
     }
 }
