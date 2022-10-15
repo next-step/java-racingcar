@@ -20,7 +20,7 @@ public class CarsTest {
         mover.decideMove(car1, 7);
         Cars cars = Cars.makeCars(car1, car2, car3);
 
-        Cars result = cars.getCarsWithSameDistance(3);
+        Cars result = cars.getCarsWithSameDistance(new Distance(3));
 
         Cars expected = Cars.makeCars(car1, car3);
         assertThat(result).isEqualTo(expected);

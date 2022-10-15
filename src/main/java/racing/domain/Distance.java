@@ -2,7 +2,7 @@ package racing.domain;
 
 import java.util.Objects;
 
-public class Distance {
+public class Distance implements Comparable{
 
     private static final int STEP_COUNT = 1;
     public static final int MIN_DISTANCE_BOUND = 1;
@@ -35,5 +35,11 @@ public class Distance {
     @Override
     public int hashCode() {
         return Objects.hash(distance);
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        int targetDistance = ((Distance) o).getDistance();
+        return distance - targetDistance;
     }
 }

@@ -18,14 +18,14 @@ public class Cars {
     }
 
     public Cars getWinners() {
-        int winnerScore = cars.stream()
+        Distance winnerDistance = cars.stream()
                 .map(Car::getDistance)
-                .mapToInt(Distance::getDistance)
-                .max().getAsInt();
-        return getCarsWithSameDistance(winnerScore);
+                .max(Distance::compareTo)
+                .orElse(new Distance(Distance.MIN_DISTANCE_BOUND));
+        return getCarsWithSameDistance(winnerDistance);
     }
 
-    public Cars getCarsWithSameDistance(int distance) {
+    public Cars getCarsWithSameDistance(Distance distance) {
         List<Car> result = this.getCarStream()
                 .filter(car -> car.isSameDistance(distance))
                 .collect(Collectors.toList());

@@ -39,7 +39,7 @@ public class Car {
         distance.stepAhead();
     }
 
-    public boolean isSameDistance(int distance){
-        return this.distance.getDistance() == distance;
+    public boolean isSameDistance(Distance distance){
+        return this.distance.equals(distance);
     }
 }
