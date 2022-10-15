@@ -2,25 +2,42 @@ package racingcar.domain;
 
 import racingcar.strategy.MoveStrategy;
 
-public class Car implements Comparable<Car> {
+public class Car {
 
-	private static final int MOVE_AMOUNT = 1;
+	private Position position;
+	private final Name name;
 
-	private int position = 0;
+	public Car() {
+		this.name = new Name();
+		this.position = new Position();
+	}
+
+	public Car(String name) {
+		this.name = new Name(name);
+		this.position = new Position();
+	}
 
 	public void move(MoveStrategy moveStrategy) {
 		if (moveStrategy.isMovable()) {
-			position += MOVE_AMOUNT;
+			position = position.increase();
 		}
 	}
 
-	public int getPosition() {
-		return position;
+	public boolean hasPositionSameAs(int position) {
+		Position otherPosition = new Position(position);
+		return this.position.equals(otherPosition);
 	}
 
-	@Override
-	public int compareTo(Car other) {
-		return Integer.compare(position, other.position);
+	public boolean hasPositionGreaterThan(Car other) {
+		return this.position.compareTo(other.position) > 0;
+	}
+
+	public int getPosition() {
+		return position.getPosition();
+	}
+
+	public String getName() {
+		return name.getName();
 	}
 
 	@Override

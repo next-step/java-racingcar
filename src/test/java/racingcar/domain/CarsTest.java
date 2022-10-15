@@ -13,22 +13,14 @@ import racingcar.strategy.MoveStrategy;
 
 public class CarsTest {
 
-	MoveStrategy moveStrategyMovable = () -> true;
-	MoveStrategy moveStrategyNotMovable = () -> false;
+	private final MoveStrategy moveStrategyMovable = () -> true;
+	private final MoveStrategy moveStrategyNotMovable = () -> false;
 
-	List<Car> newCarList;
+	private List<Car> newCarList;
 
 	@BeforeEach
 	void setUp() {
 		this.newCarList = createCarList(5);
-	}
-
-	private List<Car> createCarList(int size) {
-		List<Car> carList = new ArrayList<>();
-		for (int i = 0; i < size; ++i) {
-			carList.add(new Car());
-		}
-		return carList;
 	}
 
 	@Test
@@ -38,7 +30,7 @@ public class CarsTest {
 		cars.move(moveStrategyMovable);
 
 		assertThat(newCarList).allSatisfy(
-			car -> assertThat(car).isGreaterThan(new Car()));
+			car -> assertThat(car.hasPositionSameAs(1)).isTrue());
 	}
 
 	@Test
@@ -48,32 +40,7 @@ public class CarsTest {
 		cars.move(moveStrategyNotMovable);
 
 		assertThat(newCarList).allSatisfy(
-			car -> assertThat(car).isEqualByComparingTo(new Car()));
-	}
-
-	@Test
-	@DisplayName("n번 움직일 수 있다")
-	void cars_can_move_n_times() {
-		List<Car> carListMovedOne = createCarList(5);
-		Cars carsMovedOne = new Cars(carListMovedOne);
-		carsMovedOne.move(moveStrategyMovable, 1);
-
-		List<Car> carListMovedTwo = createCarList(5);
-		Cars carsMovedTwo = new Cars(carListMovedTwo);
-		carsMovedTwo.move(moveStrategyMovable, 2);
-
-		assertThatListGreaterThanOther(carListMovedOne, newCarList);
-		assertThatListGreaterThanOther(carListMovedTwo, carListMovedOne);
-	}
-
-	private void assertThatListGreaterThanOther(List<Car> list, List<Car> others) {
-		assertThat(list).allSatisfy(
-			carFromList -> assertThatCarGreaterThanOthers(carFromList, others));
-	}
-
-	private void assertThatCarGreaterThanOthers(Car car, List<Car> others) {
-		assertThat(others).allSatisfy(
-			carFromOthers -> assertThat(car).isGreaterThan(carFromOthers));
+			car -> assertThat(car.getPosition()).isZero());
 	}
 
 	@Test
@@ -88,11 +55,43 @@ public class CarsTest {
 		assertThat(retrievedPositions).containsAll(positions);
 	}
 
+	@Test
+	@DisplayName("이름들로 자동차를 생성한다")
+	void construct_cars_with_names() {
+		List<String> names = List.of("이름1", "이름2", "이름3");
+		Cars cars = Cars.ofNames(names);
+		List<String> retrievedNames = cars.getNames();
+
+		assertThat(retrievedNames).containsAll(names);
+	}
+
+	@Test
+	@DisplayName("우승자들 이름을 반환한다")
+	void return_winner_names() {
+		List<Car> expectedWinners = newCarList.subList(1, 3);
+		Cars winningCars = new Cars(expectedWinners);
+		List<String> expectedNames = winningCars.getNames();
+		winningCars.move(moveStrategyMovable);
+
+		Cars cars = new Cars(newCarList);
+		List<String> winnerNames = cars.findWinnerNames();
+
+		assertThat(winnerNames).containsAll(expectedNames);
+	}
+
 	private List<Integer> getPositions(List<Car> carList) {
 		List<Integer> positions = new ArrayList<>();
 		for (Car car : carList) {
 			positions.add(car.getPosition());
 		}
 		return positions;
+	}
+
+	private List<Car> createCarList(int size) {
+		List<Car> carList = new ArrayList<>();
+		for (int i = 0; i < size; ++i) {
+			carList.add(new Car());
+		}
+		return carList;
 	}
 }

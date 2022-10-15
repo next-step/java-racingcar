@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import racingcar.domain.Cars;
+import racingcar.result.Result;
 import racingcar.strategy.MoveStrategy;
 import racingcar.strategy.NumberOverFourStrategy;
 import racingcar.strategy.NumberStrategy;
@@ -18,31 +19,28 @@ public class Game {
 	private static final int RANDOM_NUMBER_BOUND_INCLUSIVE = 9;
 
 	public static void main(String[] args) {
-		int carCount = getCarCount();
+		List<String> names = getNames();
+		Cars cars = Cars.ofNames(names);
+
 		int trialCount = getTrialCount();
 
-		Cars cars = new Cars(carCount);
-		move(cars, trialCount);
+		play(cars, trialCount);
 	}
 
-	private static void move(Cars cars, int trialCount) {
+	private static void play(Cars cars, int trialCount) {
 		List<Result> results = new ArrayList<>();
 		for (int i = 0; i < trialCount; ++i) {
-			moveOnce(cars);
-			accumulateResult(results, cars);
+			move(cars);
+			results.add(new Result(cars));
 		}
 		OUTPUT_VIEW.printResults(results);
+		OUTPUT_VIEW.printWinners(cars.findWinnerNames());
 	}
 
-	private static void moveOnce(Cars cars) {
+	private static void move(Cars cars) {
 		NumberStrategy numberStrategy = new RandomNumberStrategy(RANDOM_NUMBER_BOUND_INCLUSIVE);
 		MoveStrategy moveStrategy = new NumberOverFourStrategy(numberStrategy);
 		cars.move(moveStrategy);
-	}
-
-	private static void accumulateResult(List<Result> results, Cars cars) {
-		List<Integer> positions = cars.getPositions();
-		results.add(new Result(positions));
 	}
 
 	private static int getTrialCount() {
@@ -50,8 +48,8 @@ public class Game {
 		return INPUT_VIEW.readTrialCount();
 	}
 
-	private static int getCarCount() {
-		OUTPUT_VIEW.promptCarCount();
-		return INPUT_VIEW.readCarCount();
+	private static List<String> getNames() {
+		OUTPUT_VIEW.promptNames();
+		return INPUT_VIEW.readNames();
 	}
 }

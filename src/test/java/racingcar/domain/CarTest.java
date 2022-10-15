@@ -9,8 +9,8 @@ import racingcar.strategy.MoveStrategy;
 
 public class CarTest {
 
-	MoveStrategy moveStrategyMovable = () -> true;
-	MoveStrategy moveStrategyNotMovable = () -> false;
+	private final MoveStrategy moveStrategyMovable = () -> true;
+	private final MoveStrategy moveStrategyNotMovable = () -> false;
 
 	@Test
 	@DisplayName("차는 전진할 수 있다")
@@ -18,7 +18,7 @@ public class CarTest {
 		Car car = new Car();
 		car.move(moveStrategyMovable);
 
-		assertThat(car).isGreaterThan(new Car());
+		assertThat(car.hasPositionSameAs(1)).isTrue();
 	}
 
 	@Test
@@ -27,7 +27,7 @@ public class CarTest {
 		Car car = new Car();
 		car.move(moveStrategyNotMovable);
 
-		assertThat(car).isEqualByComparingTo(new Car());
+		assertThat(car.getPosition()).isZero();
 	}
 
 	@Test
@@ -37,5 +37,14 @@ public class CarTest {
 		car.move(moveStrategyMovable);
 
 		assertThat(car.getPosition()).isOne();
+	}
+
+	@Test
+	@DisplayName("이름을 가질 수 있다")
+	void a_car_can_have_name() {
+		String name = "이름";
+		Car car = new Car(name);
+
+		assertThat(car.getName()).isEqualTo(name);
 	}
 }
