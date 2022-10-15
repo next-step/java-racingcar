@@ -1,12 +1,14 @@
 package racing.domain;
 
-public class Car implements Comparable<Car> {
+import java.util.Comparator;
+
+public class Car {
 
 	private static final int START_POINT = 0;
 	private static final int MOVE_PIVOT = 4;
 
 	private final RandomNum randomNum;
-	private CarName name;
+	private final CarName name;
 	private int location;
 
 	public Car(String name, RandomNum randomNum) {
@@ -17,6 +19,10 @@ public class Car implements Comparable<Car> {
 		this.name = new CarName(name);
 		this.location = location;
 		this.randomNum = randomNum;
+	}
+
+	public static Comparator<Car> comparatorByLocation() {
+		return Comparator.comparingLong(Car::getLocation);
 	}
 
 	public void move() {
@@ -33,20 +39,15 @@ public class Car implements Comparable<Car> {
 		this.location += 1;
 	}
 
+	public boolean isWinner(Car otherCar) {
+		return this.location >= otherCar.location;
+	}
+
 	public int getLocation() {
 		return location;
 	}
 
 	public String getName() {
 		return name.getName();
-	}
-
-	@Override
-	public int compareTo(Car car) {
-		if (this.location > car.getLocation())
-			return 1;
-		else if (this.location < car.getLocation())
-			return -1;
-		return 0;
 	}
 }
