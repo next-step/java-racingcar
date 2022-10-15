@@ -1,6 +1,7 @@
 package racing;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import racing.MovingStrategy.RandomStrategy;
 
@@ -27,6 +28,6 @@ public class Cars {
     for (Car car : values) {
       locations.add(car.nowLocation());
     }
-    return locations;
+    return Collections.unmodifiableList(locations);
   }
 }
