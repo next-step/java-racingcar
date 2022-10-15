@@ -1,4 +1,4 @@
-package refactoringracingcar.main.controller;
+package refactoringracingcar.controller;
 
 import refactoringracingcar.domain.Car;
 import refactoringracingcar.domain.CarInformation;

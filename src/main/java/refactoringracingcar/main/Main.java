@@ -1,6 +1,6 @@
 package refactoringracingcar.main;
 
-import refactoringracingcar.main.controller.CarController;
+import refactoringracingcar.controller.CarController;
 
 public class Main {
     public static void main(String[] args) {
