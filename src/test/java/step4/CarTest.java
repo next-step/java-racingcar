@@ -11,6 +11,12 @@ import org.junit.jupiter.api.Test;
 public class CarTest {
 
     @Test
+    public void 자동차에_이름을_부여할_수_있다() {
+        Car car = new Car("test", new RandomStrategy());
+        assertThat(car.name()).isEqualTo("test");
+    }
+
+    @Test
     public void 자동차를_처음_생성하면_현재_위치는_0이다() {
         Car car = new Car("test", new RandomStrategy());
         assertThat(car.location()).isEqualTo(0);
