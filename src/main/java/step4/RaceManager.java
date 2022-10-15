@@ -1,4 +1,4 @@
-package step3;
+package step4;
 
 public class RaceManager {
 
@@ -10,12 +10,13 @@ public class RaceManager {
 
     public void startRace() {
         RaceInput raceInput = new RaceInput();
-        Race race = new Race(raceInput.numberOfTry(), raceInput.numberOfCar(), this.movableStrategy);
+        Race race = new Race(raceInput.numberOfTries(), raceInput.nameOfCars(), this.movableStrategy);
         RaceOutput raceOutput = new RaceOutput();
         while (race.isInRace()) {
             race.proceed();
-            raceOutput.print(race.cars());
+            raceOutput.printRoundResult(race.cars());
             race.nextRound();
         }
+        raceOutput.printWinners(race.cars());
     }
 }

@@ -1,4 +1,6 @@
-package step3;
+package step4;
+
+import java.util.List;
 
 public class Race {
 
@@ -8,9 +10,9 @@ public class Race {
 
     private final Cars cars;
 
-    public Race(int totalRound, int numberOfCar, MovableStrategy movableStrategy) {
+    public Race(int totalRound, List<String> nameOfCars, MovableStrategy movableStrategy) {
         this.totalRound = totalRound;
-        this.cars = new Cars(numberOfCar, movableStrategy);
+        this.cars = Cars.of(nameOfCars, movableStrategy);
     }
 
     public Cars cars() {
