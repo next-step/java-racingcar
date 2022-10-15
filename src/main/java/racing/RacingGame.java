@@ -1,5 +1,6 @@
 package racing;
 
+import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,7 +20,6 @@ public class RacingGame {
 
 	private final InputView inputView;
 	private final ResultView resultView;
-	private RacingCars racingCars;
 
 	public RacingGame(InputView inputView, ResultView resultView) {
 		this.inputView = inputView;
@@ -36,8 +36,8 @@ public class RacingGame {
 	}
 
 	private void startGame() {
+		RacingCars racingCars = new RacingCars(Collections.emptyList());
 		int carMoveCount = 0;
-
 		List<String> carNames = inputView.askCarNamesQuestion(CAR_NAME_QUESTION);
 		try {
 			racingCars = initRacingCars(carNames);
@@ -47,12 +47,12 @@ public class RacingGame {
 			quit();
 		}
 
-		startRacing(carMoveCount);
+		startRacing(racingCars, carMoveCount);
 
-		printWinners();
+		printWinners(racingCars);
 	}
 
-	private void printWinners() {
+	private void printWinners(final RacingCars racingCars) {
 		List<Car> winners = racingCars.getWinnersOfRacing();
 
 		resultView.printWinners(winners);
@@ -68,7 +68,7 @@ public class RacingGame {
 		return new RacingCars(cars);
 	}
 
-	private void startRacing(int carMoveCount) {
+	private void startRacing(RacingCars racingCars, int carMoveCount) {
 		for (int i = 0; i < carMoveCount; i++) {
 			racingCars.moveCars();
 			resultView.printCarStatuses(racingCars);
