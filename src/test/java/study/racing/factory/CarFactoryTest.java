@@ -24,9 +24,8 @@ public class CarFactoryTest {
     @DisplayName("CreateCar는 해당하는 이름을 가진 차량을 생성한다.")
     void isCreateCars_ShouldReturnCarsAccordingToName() {
         String[] names = "pobi,crong,honux".split(",");
-        int carCount = names.length;
 
-        List<Car> cars = CarFactory.createCars(carCount, names, movingCondition);
+        List<Car> cars = CarFactory.createCars(names, movingCondition);
         List<String> nameList = Arrays.asList(names);
 
         assertThat(cars.stream()
