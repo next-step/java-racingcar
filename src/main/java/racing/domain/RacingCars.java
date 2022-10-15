@@ -25,8 +25,6 @@ public class RacingCars {
 	}
 
 	public List<Car> getWinnersOfRacing() {
-		List<Car> winners;
-
 		final int maxLocation;
 		try {
 			maxLocation = getMaxLocation();
@@ -34,7 +32,7 @@ public class RacingCars {
 			return Collections.emptyList();
 		}
 
-		winners = IntStream.range(0, racingCars.size())
+		final List<Car> winners = IntStream.range(0, racingCars.size())
 			.filter(i -> racingCars.get(i).getLocation() == maxLocation)
 			.mapToObj(i -> racingCars.get(i))
 			.collect(Collectors.toList());
