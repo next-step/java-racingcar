@@ -2,7 +2,7 @@ package racing.domain;
 
 public class Car implements Comparable<Car> {
 
-	private static final int START_POINT = 1;
+	private static final int START_POINT = 0;
 	private static final int MOVE_PIVOT = 4;
 
 	private final RandomNum randomNum;
