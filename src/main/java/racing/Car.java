@@ -1,14 +1,13 @@
 package racing;
 
-import util.RandomNumberGenerator;
-
 public class Car {
 
   public static final int START_LOCATION = 1;
   public static final int DISTANCE_TO_MOVE_AT_ONCE = 1;
-  public static final int MIN_TO_ALLOW_CAR_MOVE = 4;
 
   private int location;
+
+  private MovingStrategy movingStrategy;
 
   public Car() {
     this.location = START_LOCATION;
@@ -28,7 +27,11 @@ public class Car {
     this.location += DISTANCE_TO_MOVE_AT_ONCE;
   }
 
-  public boolean isMovable() {
-    return RandomNumberGenerator.generateUnitsDigit() >= MIN_TO_ALLOW_CAR_MOVE;
+  public void setMovingStrategy(MovingStrategy movingStrategy) {
+    this.movingStrategy = movingStrategy;
+  }
+
+  private boolean isMovable() {
+    return movingStrategy.isMovable();
   }
 }

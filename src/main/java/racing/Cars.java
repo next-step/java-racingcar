@@ -2,6 +2,7 @@ package racing;
 
 import java.util.ArrayList;
 import java.util.List;
+import racing.MovingStrategy.RandomStrategy;
 
 public class Cars {
 
@@ -9,7 +10,9 @@ public class Cars {
 
   public Cars(int numberOfCar) {
     for (int i = 0; i < numberOfCar; i++) {
-      values.add(new Car());
+      Car car = new Car();
+      car.setMovingStrategy(new RandomStrategy());
+      values.add(car);
     }
   }
 
