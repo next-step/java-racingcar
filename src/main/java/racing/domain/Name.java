@@ -4,8 +4,9 @@ import java.util.Objects;
 
 public class Name {
 
-    private static final String LENGTH_ERROR_TEXT = "이름은 5자를 초과할 수 없습니다.";
-    private static final int NAME_LENGTH = 5;
+    private static final String MAXIMUM_NAME_ERROR_TEXT = "이름은 5자를 초과할 수 없습니다.";
+    private static final String MINIMUM_NAME_ERROR_TEXT = "1자 이상의 이름을 입력해주세요.";
+    private static final int MAXIMUM_NAME_LENGTH = 5;
 
     private final String name;
 
@@ -18,10 +19,22 @@ public class Name {
     }
 
     private String validateName(String name) {
-        if (name.length() > NAME_LENGTH) {
-            throw new IllegalArgumentException(LENGTH_ERROR_TEXT);
-        }
+        validateBlank(name);
+        validateOverMaximumNameLenghCharacters(name);
+
         return name;
+    }
+
+    private void validateBlank(String name) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException(MINIMUM_NAME_ERROR_TEXT);
+        }
+    }
+
+    private void validateOverMaximumNameLenghCharacters(String name) {
+        if (name.length() > MAXIMUM_NAME_LENGTH) {
+            throw new IllegalArgumentException(MAXIMUM_NAME_ERROR_TEXT);
+        }
     }
 
     @Override

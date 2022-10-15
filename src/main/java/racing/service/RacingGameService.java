@@ -5,7 +5,7 @@ import java.util.stream.IntStream;
 import racing.domain.Car;
 import racing.domain.Cars;
 import racing.domain.MovableStrategy;
-import racing.ui.ResultView;
+import racing.view.ResultView;
 
 public class RacingGameService {
 
@@ -25,7 +25,7 @@ public class RacingGameService {
         IntStream.range(FIRST_INDEX, tryCount)
             .forEach(index -> {
                 cars.move(movableStrategy);
-                cars.print(resultView);
+                resultView.printOfPosition(cars.getCars());
             });
 
         resultView.winner(cars.findWinners());
