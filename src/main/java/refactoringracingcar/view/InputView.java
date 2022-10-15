@@ -1,6 +1,5 @@
 package refactoringracingcar.view;
 
-import racingcarwinnerexception.NameIsEmptyNullException;
 import refactoringracingcar.racingexception.ExceptionCommand;
 import refactoringracingcar.racingexception.InputValueException;
 
@@ -26,7 +25,7 @@ public class InputView {
             throw new InputValueException(exceptionCommand.NULL_EXCEPTION_MESSAGE);
         }
         if (carNames.charAt(carNames.length() - 1) == ',') {
-            throw new NameIsEmptyNullException("자동차 이름은 빈값이 들어올 수 없습니다.");
+            throw new InputValueException(exceptionCommand.NULL_EXCEPTION_MESSAGE);
         }
     }
 
