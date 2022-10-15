@@ -1,5 +1,6 @@
 package step4;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -14,15 +15,29 @@ public class Cars implements Iterable<Car> {
         this.cars = cars;
     }
 
-    public Cars winners() {
-        Map<Integer, List<Car>> result = this.cars.stream().collect(Collectors.groupingBy(Car::location));
+    public Cars getWinners() {
+        Map<Integer, List<Car>> result = this.cars.stream()
+                .collect(Collectors.groupingBy(Car::location));
         Integer winnerKey = Collections.max(result.keySet());
         return new Cars(result.get(winnerKey));
 
     }
 
     @Override
+    public boolean equals(Object o) {
+        return this.cars.equals(((Cars) o).cars);
+    }
+
+    @Override
     public Iterator<Car> iterator() {
         return this.cars.iterator();
+    }
+
+    public static Cars of(List<String> nameOfCars, MovableStrategy movableStrategy) {
+        List<Car> cars = new ArrayList<>();
+        for (String name : nameOfCars) {
+            cars.add(new Car(name, movableStrategy));
+        }
+        return new Cars(cars);
     }
 }

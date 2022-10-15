@@ -1,6 +1,5 @@
 package step4;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Race {
@@ -11,13 +10,9 @@ public class Race {
 
     private final Cars cars;
 
-    public Race(int totalRound, String[] nameOfCars, MovableStrategy movableStrategy) {
+    public Race(int totalRound, List<String> nameOfCars, MovableStrategy movableStrategy) {
         this.totalRound = totalRound;
-        List<Car> cars = new ArrayList<>();
-        for (String name : nameOfCars) {
-            cars.add(new Car(name, movableStrategy));
-        }
-        this.cars = new Cars(cars);
+        this.cars = Cars.of(nameOfCars, movableStrategy);
     }
 
     public Cars cars() {

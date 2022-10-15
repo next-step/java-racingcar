@@ -4,6 +4,8 @@ public class RaceOutput {
 
     private static final String INDICATOR = "-";
 
+    private static final String SEPARATOR = ", ";
+
     public RaceOutput() {
         System.out.println("실행 결과");
     }
@@ -16,9 +18,12 @@ public class RaceOutput {
     }
 
     public void printWinners(Cars cars) {
-        for (Car car : cars.winners()) {
-            System.out.print(car.name());
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Car car : cars.getWinners()) {
+            stringBuilder.append(car.name()).append(SEPARATOR);
         }
-        System.out.println(" (이)가 최종 우승했습니다.");
+        stringBuilder.deleteCharAt(stringBuilder.lastIndexOf(SEPARATOR));
+        System.out.print(stringBuilder);
+        System.out.println("(이)가 최종 우승했습니다.");
     }
 }
