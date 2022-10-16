@@ -61,4 +61,8 @@ public class Cars implements Iterable<Car> {
 			.map(Car::getName)
 			.collect(Collectors.joining(", "));
 	}
+
+	public int size() {
+		return this.cars.size();
+	}
 }
