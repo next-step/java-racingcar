@@ -63,7 +63,7 @@ public class Cars {
                 .orElseThrow(() -> new NoSuchElementException("자동차가 존재하지 않습니다."));
 
         return cars.stream()
-                .filter(car -> car.getPosition() == winnerScore)
+                .filter(car -> car.isSamePosition(winnerScore))
                 .map(Car::getName)
                 .collect(Collectors.toList());
     }
