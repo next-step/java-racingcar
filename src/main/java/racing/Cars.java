@@ -3,7 +3,7 @@ package racing;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import racing.MovingStrategy.RandomStrategy;
+import racing.MovingStrategy.RandomMovingStrategy;
 
 public class Cars {
 
@@ -12,7 +12,7 @@ public class Cars {
   public Cars(int numberOfCar) {
     for (int i = 0; i < numberOfCar; i++) {
       Car car = new Car();
-      car.setMovingStrategy(new RandomStrategy());
+      car.setMovingStrategy(new RandomMovingStrategy());
       values.add(car);
     }
   }
