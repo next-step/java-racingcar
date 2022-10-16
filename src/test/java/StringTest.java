@@ -20,9 +20,11 @@ class StringTest {
         assertThat(testData).containsExactly("1");
     }
 
+
     @Test
     @DisplayName("substring() 정상동작 테스트")
     void substringTest() {
+
         String testData = "(1,2)".substring(1,4);
         assertThat(testData).isEqualTo("1,2");
     }
