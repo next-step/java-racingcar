@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class RacingModelTest {
 
@@ -23,11 +24,11 @@ class RacingModelTest {
 
     @ParameterizedTest
     @DisplayName("음수는 입력할 수 없다")
-    @CsvSource(value = {"-1:3", "3:-2"}, delimiter = ':')
-    void negative(int numOfCar, int tryCount) {
+    @ValueSource(ints = {-1, -2})
+    void negative(int tryCount) {
         Assertions.assertThatThrownBy(
                 () -> {
-                    RacingModel racingModel = new RacingModel(numOfCar, tryCount);
+                    RacingModel racingModel = new RacingModel(new String[]{"a","b"}, tryCount);
                 }).isInstanceOf(RuntimeException.class).hasMessageContaining("0보다 큰 수를 입력하세요");
     }
 
