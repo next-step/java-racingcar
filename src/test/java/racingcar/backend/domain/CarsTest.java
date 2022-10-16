@@ -9,11 +9,9 @@ class CarsTest {
 
     @Test
     @DisplayName("자동차 객체 생성 by names")
-    void create_Cars_by_names() {
+    void create_cars_by_names() {
         Cars cars = Cars.create(new String[]{"AA", "BB", "CC"});
         assertThat(cars.getValues()).hasSize(3)
-                .filteredOn(car -> car.getName().equals("BB"))
-                .filteredOn(car -> car.getName().equals("AA"))
-                .filteredOn(car -> car.getName().equals("CC"));
+                .extracting(Car::getName).contains(new CarName("AA"), new CarName("BB"), new CarName("CC"));
     }
 }
