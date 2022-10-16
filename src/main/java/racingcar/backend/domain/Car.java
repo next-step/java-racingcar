@@ -14,10 +14,6 @@ public class Car {
         this.position = position;
     }
 
-    public static Car create(final CarName carName) {
-        return new Car(carName, Position.create(0));
-    }
-
     public static Car create(final CarName carName, final Position position) {
         return new Car(carName, position);
     }
