@@ -10,7 +10,7 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(final List<Car> cars) {
-        this.cars = cars;
+        this.cars = new ArrayList<>(cars);
     }
 
     public static Cars create(final String[] names) {
@@ -27,6 +27,6 @@ public class Cars {
     }
 
     public List<Car> getValues() {
-        return new ArrayList<>(cars);
+        return Collections.unmodifiableList(cars);
     }
 }
