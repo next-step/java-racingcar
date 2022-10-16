@@ -5,7 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.backend.dto.CarDto;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -18,7 +17,7 @@ class GameRecordsTest {
     @BeforeEach
     void setUp() {
         gameRecords = new GameRecords();
-        gameRecord = Arrays.asList(
+        gameRecord = List.of(
                 CarDto.create(new CarName("BB"), new Position(1)),
                 CarDto.create(new CarName("CC"), new Position(3)),
                 CarDto.create(new CarName("DD"), new Position(3)));
