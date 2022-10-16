@@ -24,7 +24,7 @@ public class ResultView {
     }
 
     private static void printCarWinners(List<String> winnerNameList) {
-        winnerNameList.forEach(name -> System.out.print(name + " "));
+        System.out.print(String.join(",", winnerNameList));
         System.out.println("가 최종 우승했습니다.");
     }
 }
