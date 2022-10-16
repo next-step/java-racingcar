@@ -3,9 +3,9 @@ package study.step5.domain.car;
 import study.step5.domain.movestrategy.MoveStrategy;
 
 public class Car {
-	private static final String REPEATER = "-";		// 반복할 문자
-	private final String name;						// 자동차 이름
-	private int position;							// 자동차 현재 위치
+	private static final String REPEATER = "-";       // 반복할 문자
+	private final String name;                        // 자동차 이름
+	private int position;                            // 자동차 현재 위치
 
 	public Car(String name) {
 		this.name = name;

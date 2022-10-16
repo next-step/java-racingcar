@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 import study.step5.domain.movestrategy.MoveStrategy;
 
-public class Cars implements Iterable<Car>{
+public class Cars implements Iterable<Car> {
 	private List<Car> cars;
 
 	public Cars() {};
@@ -18,7 +18,7 @@ public class Cars implements Iterable<Car>{
 	}
 
 	public Cars createByNames(List<String> names) {
-		List<Car> carList =  names.stream()
+		List<Car> carList = names.stream()
 			.map(Car::new)
 			.collect(Collectors.toList());
 		return new Cars(carList);

@@ -8,8 +8,8 @@ import study.step5.exception.BadRequestException;
 
 public class InputView {
 	private static final Scanner SCANNER = new Scanner(System.in);
-	private static final String SEPARATOR = ",";		// 이름 구분자
-	private static final int MAX_NAME_LENGTH = 5;    // 입력할 수 있는 최대 글자수
+	private static final String SEPARATOR = ",";			// 이름 구분자
+	private static final int MAX_NAME_LENGTH = 5;		// 입력할 수 있는 최대 글자수
 
 	public List<String> getNames() {
 		System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");

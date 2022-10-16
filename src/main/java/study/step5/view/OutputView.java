@@ -3,7 +3,7 @@ package study.step5.view;
 import study.step5.domain.car.Cars;
 
 public class OutputView {
-	private static final String REPEATER = "-";		// 반복할 문자
+	private static final String REPEATER = "-";        // 반복할 문자
 
 	public void printRacingGame(Cars cars) {
 		System.out.println("실행결과");
