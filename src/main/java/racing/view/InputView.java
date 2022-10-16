@@ -1,11 +1,16 @@
 package racing.view;
 
+import java.util.Arrays;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import racing.domain.Count;
 
 public class InputView {
+
+	private static final String COMMA_DELIMETER = ",";
 
 	private final Scanner scanner;
 
@@ -28,6 +33,17 @@ public class InputView {
 		} catch (InputMismatchException exception) {
 			throw new InputMismatchException("숫자를 입력해주세요.");
 		}
+	}
+
+	public List<String> askCarNamesQuestion(String question) {
+		print(question);
+
+		String inputString = scanner.nextLine();
+
+		String[] splitedStrings = inputString.split(COMMA_DELIMETER);
+
+		return Arrays.stream(splitedStrings)
+			.collect(Collectors.toList());
 	}
 
 	public void print(String text) {
