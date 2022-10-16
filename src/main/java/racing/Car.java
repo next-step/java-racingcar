@@ -12,6 +12,7 @@ public class Car {
   private MovingStrategy movingStrategy;
 
   public Car(String name) {
+    throwIfLongName(name);
     this.name = name;
   }
 
@@ -39,5 +40,11 @@ public class Car {
 
   private boolean isMovable() {
     return movingStrategy.isMovable();
+  }
+
+  private void throwIfLongName(String name) {
+    if (name.length() > 5) {
+      throw new RuntimeException("이름은 5글자 이하로 입력해주세요.");
+    }
   }
 }

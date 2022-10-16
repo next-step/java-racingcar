@@ -1,6 +1,10 @@
 package racing;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -13,6 +17,7 @@ public class CarTest {
   public static final int START_LOCATION = 1;
   public static final int DISTANCE_TO_MOVE_AT_ONCE = 1;
   public static final String CAR_NAME = "Tonny";
+  public static final String LONG_CAR_NAME = "Lamborghini";
 
 
   private static Car car;
@@ -53,5 +58,13 @@ public class CarTest {
 
     car.moveIfMovable();
     assertThat(car.getLocation()).isEqualTo(carLastLocation);
+  }
+
+  @Test
+  @DisplayName("Exception 체크")
+  void nameMoreThanFiveChar() {
+    RuntimeException exception = assertThrows(RuntimeException.class, () -> new Car(LONG_CAR_NAME));
+
+    assertEquals("이름은 5글자 이하로 입력해주세요.", exception.getMessage());
   }
 }
