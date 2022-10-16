@@ -8,14 +8,8 @@ public class ResultView {
 
     private ResultView() {}
 
-    public static void printResult(List<Car> cars, int tryCount) {
+    public static void printResultComment() {
         System.out.println(TRY_RESULT);
-        for (int i = 0; i < tryCount; i++) {
-            for (Car car : cars) {
-                car.tryOneRound();
-            }
-            printRaceResult(cars);
-        }
     }
 
     public static void printRaceResult(List<Car> cars) {

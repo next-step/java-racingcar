@@ -22,7 +22,13 @@ public class RacingCarGame {
     }
 
     public void tryRound(List<Car> cars, int tryCount) {
-        ResultView.printResult(cars, tryCount);
+        ResultView.printResultComment();
+        for (int i = 0; i < tryCount; i++) {
+            for (Car car : cars) {
+                car.tryOneRound();
+            }
+            ResultView.printRaceResult(cars);
+        }
     }
 
     public static void main(String[] args) {
