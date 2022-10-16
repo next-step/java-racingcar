@@ -1,12 +1,14 @@
 package racingGame.domain;
 
 import racingGame.strategy.MoveStrategy;
+import racingGame.strategy.NumberGenerateStrategy;
 
 public class Car {
+
     private int moveCount;
 
-    public void move(MoveStrategy moveStrategy){
-        if(moveStrategy.moveAble()){
+    public void move(MoveStrategy moveStrategy, NumberGenerateStrategy numberGenerateStrategy){
+        if(moveStrategy.moveable(numberGenerateStrategy.NumberGenerate())){
             this.moveCount++;
         }
     };

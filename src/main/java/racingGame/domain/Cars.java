@@ -1,12 +1,13 @@
 package racingGame.domain;
 
+import racingGame.strategy.MoveStrategy;
+import racingGame.strategy.NumberGenerateStrategy;
+
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Cars {
     private static final String CARS_NULL_ERROR_MESSAGE = "자동차를 생성해주세요";
-
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
@@ -14,7 +15,7 @@ public class Cars {
         this.cars = cars;
     }
 
-    public List<Car> getList(){
+    public List<Car> getCars(){
         return this.cars;
     }
 
@@ -24,12 +25,22 @@ public class Cars {
         }
     }
 
-    public static Cars makeCarList(int count) {
+    public static Cars makeCars(int CarCount) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < count; i++){
+        for (int i = 0; i < CarCount; i++){
             cars.add(new Car());
         }
         return new Cars(cars);
     }
+
+
+    public void carTryMove(MoveStrategy moveStrategy,NumberGenerateStrategy numberGenerateStrategy){
+        for(Car car : cars) {
+            car.move(moveStrategy, numberGenerateStrategy);
+        }
+    }
+
+
+
 
 }
