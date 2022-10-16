@@ -56,10 +56,6 @@ public class Cars implements Iterable<Car>{
 		Iterable.super.forEach(action);
 	}
 
-	public int size() {
-		return cars.size();
-	}
-
 	public String getNames() {
 		return this.cars.stream()
 			.map(Car::getName)
