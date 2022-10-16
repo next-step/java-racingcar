@@ -31,9 +31,9 @@
 
 [ ] InputView로부터 입력 받은 자동차 대수를 통해, 해당 대수만큼의 자동차 개체 들을 생성 할 수 있다.
 
-- [x] 입력 받은 회수가 숫자가 아닐경우, IllegalArgumentException을 발생시켜, 프로그램을 종료한다.
+- [ ] 입력 받은 회수가 숫자가 아닐경우, IllegalArgumentException을 발생시켜, 프로그램을 종료한다.
 
-- [x] 입력 받은 회수가 0회 이하의 숫자일경우, IllegalArgumentException을 발생시켜, 프로그램을 종료한다.
+- [ ] 입력 받은 회수가 0회 이하의 숫자일경우, IllegalArgumentException을 발생시켜, 프로그램을 종료한다.
 
 - [ ] 입력 받은 자동차 대수만큼, 자동차 개체를 생성하고, 해당 개체들을 이용하여, 자동차 개체 일급 컬렉션인 Cars개체를 생성한다.
 
@@ -54,28 +54,28 @@
 
 #### Car
 
-[ ] Client는, 1대의 자동차 개체를 생성할 수 있다.
+[x] Client는, 1대의 자동차 개체를 생성할 수 있다.
 
-[ ] Client는, 다음의 조건을 통해, 1대의 자동차를 한칸 전진 또는 멈출 수 있다.
+[x] Client는, 다음의 조건을 통해, 1대의 자동차를 한칸 전진 또는 멈출 수 있다.
 
-- [ ]  자동차 전진 조건 : [0..9] 사이의 random값을 구한 후, random값이 4이상일경우 전진, 3이하의 값이면 멈춘다.
+- [x]  자동차 전진 조건 : [0..9] 사이의 random값을 구한 후, random값이 4이상일경우 전진, 3이하의 값이면 멈춘다.
 
-[ ] Client는, 원하는 전진 정책과, 전진 조건을 지정하여, 자동차 개체를 생성할 수 있다.
+[x] Client는, 원하는 전진 정책과, 전진 조건을 지정하여, 자동차 개체를 생성할 수 있다.
 
-- [ ]  주어진 전진 정책이 Null일경우, IllegalArgumentException을 발생시켜, 프로그램을 종료한다.
-- [ ]  주어진 전진 조건이 Null일경우, IllegalArgumentException을 발생시켜, 프로그램을 종료한다.
+- [x]  주어진 전진 정책이 Null일경우, IllegalArgumentException을 발생시켜, 프로그램을 종료한다.
+- [x]  주어진 전진 조건이 Null일경우, IllegalArgumentException을 발생시켜, 프로그램을 종료한다.
 
 #### Cars (1급컬렉션)
 
-[ ] Client는, 자동차 개체 목록을 이용하여, Cars 개체를 생성 할 수 있다.
+[x] Client는, 자동차 개체 목록을 이용하여, Cars 개체를 생성 할 수 있다.
 
-- [ ]  주어진 자동차 개체 목록이 Null일경우, IllegalArgumentException을 발생시켜, 프로그램을 종료한다.
-- [ ]  주어진 자동차 개체 목록이 Empty일경우, IllegalArgumentException을 발생시켜, 프로그램을 종료한다.
-- [ ]  주어진 자동차 개체 목록중, Null 개체가 존재 할 경우, IllegalArgumentException을 발생시켜, 프로그램을 종료한다.
+- [x]  주어진 자동차 개체 목록이 Null일경우, IllegalArgumentException을 발생시켜, 프로그램을 종료한다.
+- [x]  주어진 자동차 개체 목록이 Empty일경우, IllegalArgumentException을 발생시켜, 프로그램을 종료한다.
+- [x]  주어진 자동차 개체 목록중, Null 개체가 존재 할 경우, IllegalArgumentException을 발생시켜, 프로그램을 종료한다.
 
-[ ] Client는, Cars 개체에게, '소유하고 있는 자동차 개체들을 전진 또는 멈추라'라는 메시지를 전달할 수 있다.
+[x] Client는, Cars 개체에게, '소유하고 있는 자동차 개체들을 전진 또는 멈추라'라는 메시지를 전달할 수 있다.
 
-[ ] Client는, Cars 개체에게, '소유하고 있는 자동차 개체들의 전진 거리 목록'를 반환받을 수 있다.
+[x] Client는, Cars 개체에게, '소유하고 있는 자동차 개체들의 전진 거리 목록'를 반환받을 수 있다.
 
 ### View
 
