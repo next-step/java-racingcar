@@ -1,9 +1,5 @@
 package racingcar.dto;
 
-import racingcar.domain.Car;
-
-import java.util.Objects;
-
 public class CarResultDto {
     public String name;
 

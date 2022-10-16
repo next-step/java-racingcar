@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import racingcar.dto.CarResultDto;
+import racingcar.dto.GameResultDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.NoSuchElementException;
 public class RacingGame {
     private static final int MOVABLE_THRESHOLD = 4;
 
-    private final RoundResults roundResults = new RoundResults();
+    private final GameResultDto gameResultDto = new GameResultDto();
 
     private List<String> winners = new ArrayList<>();
 
@@ -17,13 +17,13 @@ public class RacingGame {
         Cars cars = Cars.namesOf(carNames);
         for (int i = 0; i < trial; i++) {
             cars.race(MOVABLE_THRESHOLD);
-            roundResults.recordResults(cars);
+            gameResultDto.recordResults(cars);
         }
         winners = cars.getWinners();
     }
 
-    public List<List<CarResultDto>> getRoundResults() {
-        return roundResults.getResults();
+    public GameResultDto getRoundResults() {
+        return gameResultDto;
     }
 
     public List<String> getWinners() {

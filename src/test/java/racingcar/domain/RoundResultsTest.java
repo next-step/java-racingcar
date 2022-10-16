@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import org.junit.jupiter.api.Test;
+import racingcar.dto.GameResultDto;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,12 +12,12 @@ class RoundResultsTest {
 
     @Test
     void add() {
-        RoundResults roundResults = new RoundResults();
+        GameResultDto gameResultDto = new GameResultDto();
         Cars cars = Cars.namesOf(List.of("a", "b", "c"));
 
-        roundResults.recordResults(cars);
+        gameResultDto.recordResults(cars);
 
-        assertThat(roundResults.getResults().stream()
+        assertThat(gameResultDto.getRoundResults().stream()
                 .map(carResultDtos -> carResultDtos.stream()
                         .map(carResultDto -> carResultDto.position)
                         .collect(Collectors.toList()))
