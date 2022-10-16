@@ -11,7 +11,7 @@ public class ResultView {
         for (RoundResultDto roundResultDto : carRaceResultDto.getRacingResult()) {
             printRoundResultDto(roundResultDto);
         }
-        printCarWinners(carRaceResultDto.getWinnerNameList());
+        printCarWinners(carRaceResultDto.getWinnerNames());
     }
 
     private static void printRoundResultDto(RoundResultDto roundResultDto) {
@@ -23,8 +23,8 @@ public class ResultView {
         System.out.println();
     }
 
-    private static void printCarWinners(List<String> winnerNameList) {
-        System.out.print(String.join(",", winnerNameList));
+    private static void printCarWinners(List<String> winnerNames) {
+        System.out.print(String.join(",", winnerNames));
         System.out.println("가 최종 우승했습니다.");
     }
 }

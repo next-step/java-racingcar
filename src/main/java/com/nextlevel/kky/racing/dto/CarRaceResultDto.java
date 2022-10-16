@@ -37,18 +37,18 @@ public class CarRaceResultDto {
     }
 
     private final List<RoundResultDto> racingResult;
-    private final List<String> winnerNameList;
+    private final List<String> winnerNames;
 
-    public CarRaceResultDto(List<RoundResultDto> racingResult, List<String> winnerNameList) {
+    public CarRaceResultDto(List<RoundResultDto> racingResult, List<String> winnerNames) {
         this.racingResult = racingResult;
-        this.winnerNameList = winnerNameList;
+        this.winnerNames = winnerNames;
     }
 
     public List<RoundResultDto> getRacingResult() {
         return racingResult;
     }
 
-    public List<String> getWinnerNameList() {
-        return winnerNameList;
+    public List<String> getWinnerNames() {
+        return winnerNames;
     }
 }
