@@ -11,23 +11,19 @@ public class Cars {
 
 	private final List<Car> cars;
 
-	public Cars(String names){
-		this.cars = initCars(names);
-	}
-
 	public Cars(final List<Car> list){
 		this.cars = list;
 	}
 
-	public List<Car> getCars() {
-		return cars;
+	public static Cars inits(String nameInput){
+		String[] names = nameInput.split(SPLIT_STANDARD);
+		return new Cars(Arrays.stream(names)
+				.map(Car::new)
+				.collect(Collectors.toList()));
 	}
 
-	List<Car> initCars(String nameInput) {
-		String[] names = nameInput.split(SPLIT_STANDARD);
-		return Arrays.stream(names)
-				.map(Car::new)
-				.collect(Collectors.toList());
+	public List<Car> getCars() {
+		return cars;
 	}
 
 	public void decideMove(MoveStrategy moveStrategy) {

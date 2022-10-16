@@ -5,19 +5,19 @@ import java.util.Objects;
 public class CarName {
 	private static final int MAX_NAME_LENGTH = 5;
 
-	private final String carName;
+	private final String name;
 
-	public CarName(final String carName) {
-		checkNameCondition(carName);
-		this.carName = carName;
+	public CarName(final String name) {
+		checkNameCondition(name);
+		this.name = name;
 	}
 
-	public String getCarName() {
-		return carName;
+	public String getName() {
+		return name;
 	}
 
-	void checkNameCondition(final String carName) {
-		if (carName.length() > MAX_NAME_LENGTH || carName.isBlank()) {
+	private void checkNameCondition(final String name) {
+		if (name.length() > MAX_NAME_LENGTH || name.isBlank()) {
 			throw new IllegalArgumentException("이름의 길이는 적어도 1자 이상 5자 이하이어야 합니다.");
 		}
 	}
@@ -27,11 +27,11 @@ public class CarName {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		CarName carName1 = (CarName) o;
-		return Objects.equals(carName, carName1.carName);
+		return Objects.equals(name, carName1.name);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(carName);
+		return Objects.hash(name);
 	}
 }

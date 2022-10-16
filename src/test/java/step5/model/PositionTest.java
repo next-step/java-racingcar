@@ -16,7 +16,8 @@ class PositionTest {
 
 	@Test
 	void 포지션증가_테스트() {
-		assertThat(position.increase(position).getPosition()).isEqualTo(4);
+		position.increase();
+		assertThat(position.getPosition()).isEqualTo(4);
 	}
 
 	@Test
@@ -27,7 +28,7 @@ class PositionTest {
 
 	@Test
 	void 포지션값_최대여부_확인테스트() {
-		assertThat(position.isMaxPosition(5)).isFalse();
-		assertThat(position.isMaxPosition(3)).isTrue();
+		assertThat(position.isSamePosition(5)).isFalse();
+		assertThat(position.isSamePosition(3)).isTrue();
 	}
 }

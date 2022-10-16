@@ -13,7 +13,7 @@ class CarsTest {
 
 	@BeforeEach
 	void beforeEach(){
-		cars = new Cars("hi,ho,hii,huu");
+		cars = Cars.inits("hi,ho,hii,huu");
 	}
 
 	@Test

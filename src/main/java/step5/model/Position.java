@@ -9,12 +9,11 @@ public class Position {
 		this.position = position;
 	}
 
-	public Position increase(final Position position) {
-		position.position++;
-		return position;
+	public void increase() {
+		this.position++;
 	}
 
-	boolean isMaxPosition(final int maxMoveCnt) {
+	boolean isSamePosition(final int maxMoveCnt) {
 		return maxMoveCnt == position;
 	}
 

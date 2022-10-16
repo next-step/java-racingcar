@@ -10,13 +10,14 @@ public class Winners {
 
 	private final List<String> winners;
 
-	public Winners() {
+	public Winners(Cars cars){
 		winners = new ArrayList<>();
+		decideWinners(cars);
 	}
 
-	public String decideWinners(final Cars cars) {
+	private void decideWinners(final Cars cars) {
 		int maxMoveCnt =0;
-		
+
 		for (Car car : cars.getCars()) {
 			maxMoveCnt = car.maxPosition(maxMoveCnt);
 		}
@@ -24,13 +25,15 @@ public class Winners {
 		for (Car car : cars.getCars()) {
 			isWinner(maxMoveCnt, car);
 		}
-
-		return winners.stream()
-				.map(String::valueOf)
-				.collect(Collectors.joining(DELIMITER));
 	}
 
 	private void isWinner(final int maxMoveCnt, final Car car) {
 		if (car.isMaxPosition(maxMoveCnt)) winners.add(car.getName());
+	}
+
+	public String getWinners(){
+		return winners.stream()
+				.map(String::valueOf)
+				.collect(Collectors.joining(DELIMITER));
 	}
 }

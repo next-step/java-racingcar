@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Car {
     private final CarName carName;
-    private Position position;
+    private final Position position;
     public Car(final String name) {
         this(name, 0);
     }
@@ -16,17 +16,9 @@ public class Car {
         this.position = new Position(position);
     }
 
-    public String getName() {
-        return carName.getCarName();
-    }
-
-    public int getPosition() {
-        return position.getPosition();
-    }
-
     public void move(final MoveStrategy moveStrategy) {
         if (moveStrategy.movable()) {
-            this.position = position.increase(position);
+            this.position.increase();
         }
     }
     public int maxPosition(int maxPosition) {
@@ -34,10 +26,18 @@ public class Car {
     }
 
     public boolean isMaxPosition(int maxPosition) {
-        return position.isMaxPosition(maxPosition);
+        return position.isSamePosition(maxPosition);
     }
 
-    @Override
+    public String getName() {
+        return carName.getName();
+    }
+
+    public int getPosition() {
+        return position.getPosition();
+    }
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
