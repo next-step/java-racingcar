@@ -33,4 +33,21 @@ public class Cars {
     }
     return Collections.unmodifiableMap(locationsByName);
   }
+
+  public List<String> findFrontCars() {
+    List<String> names = new ArrayList<>();
+    int maxLocation = Integer.MIN_VALUE;
+
+    for (Car car : values) {
+      if (car.getLocation() > maxLocation) {
+        maxLocation = car.getLocation();
+        names.clear();
+        names.add(car.getName());
+      }
+      else if (car.getLocation() == maxLocation) {
+        names.add(car.getName());
+      }
+    }
+    return Collections.unmodifiableList(names);
+  }
 }

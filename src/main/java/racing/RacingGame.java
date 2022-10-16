@@ -21,6 +21,7 @@ public class RacingGame {
     for (int i = 0; i < numberOfChance; i++) {
       playATurn(cars);
     }
+    ResultView.printWinners(cars);
   }
 
   private void playATurn(Cars cars) {
