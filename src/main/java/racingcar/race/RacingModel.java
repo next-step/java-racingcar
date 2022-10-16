@@ -1,25 +1,23 @@
 package racingcar.race;
 
-import static racingcar.util.RandomUtil.generateMovePossibleNumber;
-
 public class RacingModel {
-    private static final int MOVE_POSSIBLE = 4;
+    protected static final int MOVE_POSSIBLE = 4;
     private static final int RANDOM_RANGE = 10;
 
-    private int numberOfCar;
     private int tryCount;
-
-    public RacingModel(int numberOfCar, int tryCount) {
-        if (numberOfCar < 0 || tryCount < 0) {
+    private String[] names;
+    public RacingModel(String[] names, int tryCount) {
+        if (tryCount < 0) {
             throw new RuntimeException("0보다 큰 수를 입력하세요");
         }
-        this.numberOfCar = numberOfCar;
+        this.names = names;
         this.tryCount = tryCount;
     }
 
     public void racingStart(RacingCars racingCars) {
+        final NumberGenerator numberGenerator = new RandomNumberGenerator();
         for (Car car : racingCars.getRacingCars()) {
-            car.move(generateMovePossibleNumber());
+            car.move(numberGenerator);
         }
     }
 
@@ -30,11 +28,13 @@ public class RacingModel {
         return false;
     }
 
-    public int getNumberOfCar() {
-        return numberOfCar;
+    public String[] getNames() {
+        return names;
     }
-
     public int getTryCount() {
         return tryCount;
+    }
+    public int getNumberOfUser() {
+        return this.names.length;
     }
 }
