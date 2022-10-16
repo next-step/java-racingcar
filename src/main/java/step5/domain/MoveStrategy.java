@@ -1,4 +1,6 @@
-package step4;
+package step5.domain;
+
+import step5.domain.MovableStrategy;
 
 public class MoveStrategy implements MovableStrategy {
 
