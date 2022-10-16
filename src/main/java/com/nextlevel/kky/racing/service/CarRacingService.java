@@ -20,10 +20,6 @@ public class CarRacingService {
         this.carService = new CarService(new RandomIntegerGenerator());
     }
 
-    public CarRacingService(CarService carService) {
-        this.carService = carService;
-    }
-
     public CarRaceResultDto race(String[] carNames, int roundCount) {
         if (!CarNameValidator.checkValidation(carNames)) {
             throw new RuntimeException("유효하지 않은 이름 입니다!");
@@ -40,7 +36,7 @@ public class CarRacingService {
             roundResultDtoList.add(getCurrentStatus(carRacingExecutor));
         }
 
-        return new CarRaceResultDto(roundResultDtoList);
+        return new CarRaceResultDto(roundResultDtoList, carRacingExecutor.getCurrentWinners());
     }
 
     private RoundResultDto getCurrentStatus(CarRacingExecutor carRacingExecutor) {

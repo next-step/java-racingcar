@@ -1,9 +1,6 @@
 package com.nextlevel.kky.racing.dto;
 
-import com.nextlevel.kky.racing.core.Car;
-
 import java.util.List;
-import java.util.Map;
 
 public class CarRaceResultDto {
 
@@ -39,13 +36,19 @@ public class CarRaceResultDto {
         }
     }
 
-    private List<RoundResultDto> racingResult;
+    private final List<RoundResultDto> racingResult;
+    private final List<String> winnerNameList;
 
-    public CarRaceResultDto(List<RoundResultDto> racingResult) {
+    public CarRaceResultDto(List<RoundResultDto> racingResult, List<String> winnerNameList) {
         this.racingResult = racingResult;
+        this.winnerNameList = winnerNameList;
     }
 
     public List<RoundResultDto> getRacingResult() {
         return racingResult;
+    }
+
+    public List<String> getWinnerNameList() {
+        return winnerNameList;
     }
 }

@@ -1,23 +1,30 @@
 package com.nextlevel.kky.racing.ui;
 
-import com.nextlevel.kky.racing.core.Car;
-import com.nextlevel.kky.racing.core.CarRacingExecutor;
+import com.nextlevel.kky.racing.dto.CarRaceResultDto;
+import com.nextlevel.kky.racing.dto.CarRaceResultDto.*;
 
 import java.util.List;
 
 public class ResultView {
 
-    public static void printCarRacingResultWithName(CarRacingExecutor carRacingExecutor) {
-        for (Car car : carRacingExecutor.getCarList()) {
-            System.out.print(car.getName() + ": ");
-            System.out.print("-".repeat(car.getCurrentPosition() + 1));
+    public static void printCarRaceResultDto(CarRaceResultDto carRaceResultDto) {
+        for (RoundResultDto roundResultDto : carRaceResultDto.getRacingResult()) {
+            printRoundResultDto(roundResultDto);
+        }
+        printCarWinners(carRaceResultDto.getWinnerNameList());
+    }
+
+    private static void printRoundResultDto(RoundResultDto roundResultDto) {
+        for (CarPositionDto carPositionDto : roundResultDto.getCarPositionDtoList()) {
+            System.out.print(carPositionDto.getCarName() + ": ");
+            System.out.print("-".repeat(carPositionDto.getPosition() + 1));
             System.out.println();
         }
         System.out.println();
     }
 
-    public static void printCarWinners(List<Car> carList) {
-        carList.forEach(car -> System.out.print(car.getName() + " "));
+    private static void printCarWinners(List<String> winnerNameList) {
+        winnerNameList.forEach(name -> System.out.print(name + " "));
         System.out.println("가 최종 우승했습니다.");
     }
 }
