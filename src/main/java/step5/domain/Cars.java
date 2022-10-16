@@ -1,4 +1,4 @@
-package step4;
+package step5.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -6,12 +6,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import step5.strategy.MovableStrategy;
 
 public class Cars implements Iterable<Car> {
 
     private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
+    private Cars(List<Car> cars) {
         this.cars = cars;
     }
 

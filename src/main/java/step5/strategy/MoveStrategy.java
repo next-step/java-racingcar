@@ -1,4 +1,4 @@
-package step4;
+package step5.strategy;
 
 public class MoveStrategy implements MovableStrategy {
 

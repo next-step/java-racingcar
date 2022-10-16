@@ -1,10 +1,12 @@
-package step4;
+package step5.strategy;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
+import step5.strategy.MovableStrategy;
+import step5.strategy.StopStrategy;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class StopStrategyTest {

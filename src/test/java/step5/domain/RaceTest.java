@@ -1,4 +1,4 @@
-package step4;
+package step5.domain;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -6,6 +6,7 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
+import step5.strategy.RandomStrategy;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 public class RaceTest {

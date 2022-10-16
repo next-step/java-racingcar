@@ -1,6 +1,7 @@
-package step4;
+package step5.domain;
 
 import java.util.List;
+import step5.strategy.MovableStrategy;
 
 public class Race {
 
