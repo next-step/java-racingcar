@@ -1,15 +1,21 @@
 package racing;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import racing.MovingStrategy.RandomMovingStrategy;
 
 public class Cars {
 
   private final List<Car> values = new ArrayList<>();
 
-  public Cars(int numberOfCar) {
-    for (int i = 0; i < numberOfCar; i++) {
-      values.add(new Car());
+  public Cars(String... names) {
+    for (String name : names) {
+      Car car = new Car(name);
+      car.setMovingStrategy(new RandomMovingStrategy());
+      values.add(car);
     }
   }
 
@@ -19,11 +25,29 @@ public class Cars {
     }
   }
 
-  public List<Integer> getLocations() {
-    List<Integer> locations = new ArrayList<>();
+  public Map<String, Integer> getLocationsByName() {
+    Map<String, Integer> locationsByName = new LinkedHashMap<>();
+
     for (Car car : values) {
-      locations.add(car.nowLocation());
+      locationsByName.put(car.getName(), car.getLocation());
     }
-    return locations;
+    return Collections.unmodifiableMap(locationsByName);
+  }
+
+  public List<String> findFrontCars() {
+    List<String> names = new ArrayList<>();
+    int maxLocation = Integer.MIN_VALUE;
+
+    for (Car car : values) {
+      if (car.getLocation() > maxLocation) {
+        maxLocation = car.getLocation();
+        names.clear();
+        names.add(car.getName());
+      }
+      else if (car.getLocation() == maxLocation) {
+        names.add(car.getName());
+      }
+    }
+    return Collections.unmodifiableList(names);
   }
 }
