@@ -7,7 +7,9 @@ import java.util.function.Consumer;
 
 public class ResultView {
     private static final String RESULT_DELIMITER = "-";
+
     private static final String NAME_DELIMITER = " : ";
+
     private static final String WINNER_DELIMITER = ", ";
 
     public static void printGameResult(List<List<CarResultDto>> gameResult) {

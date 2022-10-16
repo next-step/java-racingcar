@@ -7,6 +7,7 @@ import java.util.List;
 
 public class RoundResult {
     private final List<Integer> positions;
+
     private final List<String> names;
 
     public RoundResult(Cars cars) {

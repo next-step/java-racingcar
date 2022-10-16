@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 public class Cars {
     private static final int CAR_NAME_THRESHOLD = 5;
+
     private final List<Car> cars = new ArrayList<>();
 
     private Cars(List<String> carNames) {
