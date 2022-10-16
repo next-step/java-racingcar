@@ -1,17 +1,28 @@
 package com.nextlevel.kky.racing.service;
 
+import com.nextlevel.kky.racing.core.Car;
 import com.nextlevel.kky.racing.core.CarNameValidator;
 import com.nextlevel.kky.racing.core.CarRacingExecutor;
+import com.nextlevel.kky.racing.core.RandomIntegerGenerator;
 import com.nextlevel.kky.racing.dto.CarRaceResultDto;
 import com.nextlevel.kky.racing.dto.CarRaceResultDto.CarPositionDto;
 import com.nextlevel.kky.racing.dto.CarRaceResultDto.RoundResultDto;
-import com.nextlevel.kky.racing.ui.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class CarRacingService {
+
+    private final CarService carService;
+
+    public CarRacingService() {
+        this.carService = new CarService(new RandomIntegerGenerator());
+    }
+
+    public CarRacingService(CarService carService) {
+        this.carService = carService;
+    }
 
     public CarRaceResultDto race(String[] carNames, int roundCount) {
         if (!CarNameValidator.checkValidation(carNames)) {
@@ -20,7 +31,8 @@ public class CarRacingService {
 
         List<RoundResultDto> roundResultDtoList = new ArrayList<>();
 
-        CarRacingExecutor carRacingExecutor = new CarRacingExecutor(carNames);
+        List<Car> carList = carService.createCars(carNames);
+        CarRacingExecutor carRacingExecutor = new CarRacingExecutor(carList);
         roundResultDtoList.add(getCurrentStatus(carRacingExecutor));
 
         for (; roundCount > 0; roundCount--) {
