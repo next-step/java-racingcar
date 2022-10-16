@@ -1,30 +1,37 @@
 package racing.domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
-    @Test
-    void GO_출력() {
-        Car car = new Car();
-        car.move(1);
-        assertThat(car.positionStatus()).isEqualTo("-");
+
+    private Car car;
+    @BeforeEach
+    void beforeEach() {
+        car = new Car();
     }
 
     @Test
-    void STOP_출력() {
-        Car car = new Car();
-        car.move(0);
-        assertThat(car.positionStatus()).isEqualTo("");
+    void go() {
+        car.move(1);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @Test
-    void 여러번_이동_출력() {
-        Car car = new Car();
+    void stop() {
+        car.move(0);
+        assertThat(car.getPosition()).isEqualTo(0);
+    }
+
+    @Test
+    void move() {
+        car.move(1);
         car.move(0);
         car.move(1);
         car.move(1);
-        assertThat(car.positionStatus()).isEqualTo("--");
+        car.move(0);
+        assertThat(car.getPosition()).isEqualTo(3);
     }
 }

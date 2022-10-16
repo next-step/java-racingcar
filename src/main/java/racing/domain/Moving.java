@@ -8,14 +8,14 @@ public class Moving {
     private static final int GO = 1;
     private static final int STOP = 0;
 
-    public static int moveNumber() {
+    public int moveRandomNumber() {
         if (randomNumber() < MOVE_MIN) {
             return STOP;
         }
         return GO;
     }
 
-    private static int randomNumber() {
+    protected int randomNumber() {
         Random random = new Random();
         return random.nextInt(MOVE_LIMIT);
     }

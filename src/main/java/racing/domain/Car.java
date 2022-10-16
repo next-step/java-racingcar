@@ -2,7 +2,6 @@ package racing.domain;
 
 public class Car {
 
-    private static final String MOVE_PATTERN = "-";
     private int position;
 
     public Car() {
@@ -13,9 +12,7 @@ public class Car {
         position += moveNumber;
     }
 
-    public String positionStatus() {
-        StringBuffer sb = new StringBuffer();
-        sb.append(MOVE_PATTERN.repeat(position));
-        return sb.toString();
+    public int getPosition() {
+        return position;
     }
 }

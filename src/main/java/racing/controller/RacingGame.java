@@ -13,8 +13,10 @@ public class RacingGame {
         SystemMention.CNT_OF_TRY.printMention();
         int cntOfTry = userInput.inputCntOfCar();
 
-        Cars cars = new Cars(cntOfCar, cntOfTry);
-        cars.tryMove();
+        Cars cars = new Cars(cntOfCar);
+        Racing racing = new Racing(cntOfTry);
+        SystemMention.RESULT.printMention();
+        racing.race(cars);
     }
 
     public static void main(String[] args) {

@@ -1,45 +1,30 @@
 package racing.domain;
 
-import racing.msg.SystemMention;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-
-    private final int cntOfCar;
-    private final int cntOfTry;
     private List<Car> carList;
 
-    public Cars(int cntOfCar, int cntOfTry) {
-        this.cntOfCar = cntOfCar;
-        this.cntOfTry = cntOfTry;
-        setCarList();
+    public Cars(int cntOfCar) {
+        setCarList(cntOfCar);
     }
 
-    private void setCarList() {
+    private void setCarList(int cntOfCar) {
         carList = new ArrayList<>();
-        for (int i = 0; i < this.cntOfCar; i++) {
+        for (int i = 0; i < cntOfCar; i++) {
             carList.add(new Car());
         }
     }
 
-    public void tryMove() {
-        SystemMention.RESULT.printMention();
-        for (int i = 0; i < cntOfTry; i++) {
-            moveCars();
-        }
-    }
-
-    private void moveCars() {
+    public void moveCar(Moving moving) {
         for (Car car : carList) {
-            car.move(Moving.moveNumber());
-            System.out.println(car.positionStatus());
+            car.move(moving.moveRandomNumber());
         }
-        System.out.println();
     }
 
-    public int getCarListSize() {
-        return carList.size();
+    public List<Car> getCarList() {
+        return carList;
     }
 }
