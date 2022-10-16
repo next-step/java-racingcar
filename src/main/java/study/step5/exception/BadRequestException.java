@@ -1,4 +1,4 @@
-package study.step5.domain.exception;
+package study.step5.exception;
 
 public class BadRequestException extends RuntimeException {
 

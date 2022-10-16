@@ -2,23 +2,34 @@ package study.step5.domain.car;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 import study.step5.domain.movestrategy.MoveStrategy;
 
 public class Cars implements Iterable<Car>{
-	private final List<Car> cars;
+	private List<Car> cars;
+
+	public Cars() {};
 
 	public Cars(List<Car> cars) {
 		this.cars = cars;
+	}
+
+	public Cars createByNames(List<String> names) {
+		List<Car> carList =  names.stream()
+			.map(Car::new)
+			.collect(Collectors.toList());
+		return new Cars(carList);
 	}
 
 	public Cars getAllByPosition(int position) {
 		return new Cars(
 			this.cars
 				.stream()
-				.filter(car -> car.getPosition() == position)
+				.map(car -> car.getByPosition(position))
+				.filter(Objects::nonNull)
 				.collect(Collectors.toList())
 		);
 	}
@@ -47,5 +58,11 @@ public class Cars implements Iterable<Car>{
 
 	public int size() {
 		return cars.size();
+	}
+
+	public String getNames() {
+		return this.cars.stream()
+			.map(Car::getName)
+			.collect(Collectors.joining(", "));
 	}
 }

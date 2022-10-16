@@ -10,13 +10,13 @@ import org.junit.jupiter.api.Test;
 
 import study.step5.domain.car.Cars;
 
-class StringUtilTest {
+class CarsUtilTest {
 
 	@DisplayName("name 의 개수만큼 car 를 생성한다.")
 	@Test
 	void Given_NameList_Then_ReturnCars() {
 		List<String> names = Arrays.asList("name1", "name2", "name3");
-		Cars cars = StringUtil.toCars(names);
+		Cars cars = CarsUtil.toCars(names);
 
 		assertThat(cars.size()).isEqualTo(names.size());
 	}

@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import study.step5.domain.car.Car;
 import study.step5.domain.car.Cars;
-import study.step5.domain.exception.BadRequestException;
+import study.step5.exception.BadRequestException;
 import study.step5.domain.movestrategy.MoveStrategy;
 
 class RacingGameInfoTest {
@@ -27,13 +27,13 @@ class RacingGameInfoTest {
 	@Test
 	void Given_RoundUnder0_Then_ThrowException() {
 
-		assertThatThrownBy(() ->new RacingGameInfo(cars, -1, moveStrategy)).isInstanceOf(BadRequestException.class);
+		assertThatThrownBy(() ->new RacingGame(cars, -1, moveStrategy)).isInstanceOf(BadRequestException.class);
 	}
 
 	@DisplayName("RacingGameInfo의 currentRound는 0으로 초기화된다.")
 	@Test
 	void Given_RoundUpper0_Then_ThrowException() {
-		int result = new RacingGameInfo(cars, 0, moveStrategy).getCurrentRound();
+		int result = new RacingGame(cars, 0, moveStrategy).getCurrentRound();
 
 		assertThat(result).isEqualTo(0);
 	}
