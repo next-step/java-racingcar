@@ -14,10 +14,10 @@ import java.util.stream.Collectors;
 
 public class CarRacingService {
 
-    private final CarService carService;
+    private final CarCreateService carCreateService;
 
     public CarRacingService() {
-        this.carService = new CarService(new RandomIntegerGenerator());
+        this.carCreateService = new CarCreateService(new RandomIntegerGenerator());
     }
 
     public CarRaceResultDto race(String[] carNames, int roundCount) {
@@ -27,7 +27,7 @@ public class CarRacingService {
 
         List<RoundResultDto> roundResultDtoList = new ArrayList<>();
 
-        List<Car> carList = carService.createCars(carNames);
+        List<Car> carList = carCreateService.create(carNames);
         CarRacingExecutor carRacingExecutor = new CarRacingExecutor(carList);
         roundResultDtoList.add(getCurrentStatus(carRacingExecutor));
 

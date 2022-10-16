@@ -7,15 +7,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CarService {
+public class CarCreateService {
 
     private final IntegerGenerator integerGenerator;
 
-    public CarService(IntegerGenerator integerGenerator) {
+    public CarCreateService(IntegerGenerator integerGenerator) {
         this.integerGenerator = integerGenerator;
     }
 
-    public List<Car> createCars(String[] carNames) {
+    public List<Car> create(String[] carNames) {
         return Arrays.stream(carNames)
                 .map(name -> new Car(name, integerGenerator, 0))
                 .collect(Collectors.toList());
