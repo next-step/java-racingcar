@@ -8,6 +8,7 @@ import com.nextlevel.kky.racing.dto.CarRaceResultDto;
 import com.nextlevel.kky.racing.dto.CarRaceResultDto.CarPositionDto;
 import com.nextlevel.kky.racing.dto.CarRaceResultDto.RoundResultDto;
 
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,7 +23,7 @@ public class CarRacingService {
 
     public CarRaceResultDto race(String[] carNames, int roundCount) {
         if (!CarNameValidator.checkValidation(carNames)) {
-            throw new RuntimeException("유효하지 않은 이름 입니다!");
+            throw new InvalidParameterException("유효하지 않은 이름 입니다!");
         }
 
         List<RoundResultDto> roundResultDtoList = new ArrayList<>();
