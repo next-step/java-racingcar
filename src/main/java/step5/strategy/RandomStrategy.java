@@ -1,7 +1,6 @@
-package step5.domain;
+package step5.strategy;
 
 import java.util.Random;
-import step5.domain.MovableStrategy;
 
 public class RandomStrategy implements MovableStrategy {
 

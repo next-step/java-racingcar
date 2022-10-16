@@ -1,6 +1,6 @@
 package step5.controller;
 
-import step5.domain.MovableStrategy;
+import step5.strategy.MovableStrategy;
 import step5.domain.Race;
 import step5.view.RaceInput;
 import step5.view.RaceOutput;

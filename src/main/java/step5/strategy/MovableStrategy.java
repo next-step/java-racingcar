@@ -1,5 +1,6 @@
-package step5.domain;
+package step5.strategy;
 
+@FunctionalInterface
 public interface MovableStrategy {
 
     boolean isMovable();

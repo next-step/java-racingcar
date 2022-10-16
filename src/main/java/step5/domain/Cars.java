@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import step5.strategy.MovableStrategy;
 
 public class Cars implements Iterable<Car> {
 

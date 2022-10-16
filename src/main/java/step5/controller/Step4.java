@@ -1,7 +1,7 @@
 package step5.controller;
 
-import step5.domain.MovableStrategy;
-import step5.domain.RandomStrategy;
+import step5.strategy.MovableStrategy;
+import step5.strategy.RandomStrategy;
 
 public class Step4 {
 
