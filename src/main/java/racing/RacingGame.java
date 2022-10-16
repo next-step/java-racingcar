@@ -1,18 +1,19 @@
 package racing;
 
-import java.util.List;
 import racing.view.InputView;
 import racing.view.ResultView;
 
 public class RacingGame {
 
   public void start() {
-    int numberOfCar = InputView.getNumberOfRacingCar();
+    String rawNamesOfCars = InputView.getNumberOfRacingCar();
     int numberOfChance = InputView.getNumberOfChance();
 
     ResultView.printResultTitle();
 
-    Cars cars = new Cars(numberOfCar);
+    String[] namesOfCars = rawNamesOfCars.split(",");
+
+    Cars cars = new Cars(namesOfCars);
     play(numberOfChance, cars);
   }
 
@@ -24,7 +25,6 @@ public class RacingGame {
 
   private void playATurn(Cars cars) {
     cars.move();
-    List<Integer> locations = cars.getLocations();
-    ResultView.printTurnResult(locations);
+    ResultView.printTurnResult(cars);
   }
 }

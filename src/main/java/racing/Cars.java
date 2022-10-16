@@ -2,16 +2,18 @@ package racing;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import racing.MovingStrategy.RandomMovingStrategy;
 
 public class Cars {
 
   private final List<Car> values = new ArrayList<>();
 
-  public Cars(int numberOfCar) {
-    for (int i = 0; i < numberOfCar; i++) {
-      Car car = new Car();
+  public Cars(String... names) {
+    for (String name : names) {
+      Car car = new Car(name);
       car.setMovingStrategy(new RandomMovingStrategy());
       values.add(car);
     }
@@ -23,11 +25,12 @@ public class Cars {
     }
   }
 
-  public List<Integer> getLocations() {
-    List<Integer> locations = new ArrayList<>();
+  public Map<String, Integer> getLocationsByName() {
+    Map<String, Integer> locationsByName = new LinkedHashMap<>();
+
     for (Car car : values) {
-      locations.add(car.nowLocation());
+      locationsByName.put(car.getName(), car.getLocation());
     }
-    return Collections.unmodifiableList(locations);
+    return Collections.unmodifiableMap(locationsByName);
   }
 }
