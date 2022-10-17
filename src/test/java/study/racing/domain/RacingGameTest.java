@@ -11,24 +11,23 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RacingGameTest {
 
     RacingGame racingGame;
+    int round;
 
     @BeforeEach
     void init() {
-        racingGame = new RacingGame();
+        round = 3;
+        racingGame = new RacingGame("pobi,crong,honux".split(","), round);
     }
+
     @Test
     void 레이싱게임에_차량들을_참가시킬수있다() {
-        racingGame.participate("pobi,crong,honux".split(","));
         assertThat(racingGame.getRacingCars()).hasSize(3);
     }
 
     @Test
     void 레이싱게임은_입력한_회차만큼_진행된다() {
-        int loopCount = 3;
-        racingGame.participate("pobi,crong,honux".split(","));
-        racingGame.race(3);
-
-        assertThat(racingGame.getRacingRecord().getTotalRound()).isEqualTo(loopCount);
+        racingGame.race();
+        assertThat(racingGame.getRacingRecord().getTotalRound()).isEqualTo(round);
 
     }
 }

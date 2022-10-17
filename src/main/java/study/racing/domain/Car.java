@@ -16,11 +16,6 @@ public class Car implements Comparable<Car> {
         this(RandomNameGenerator.getInstance().generate(), new DefaultMovingCondition());
     }
 
-    public Car(Integer distance) {
-        this(RandomNameGenerator.getInstance().generate(), new DefaultMovingCondition());
-        this.distance = distance;
-    }
-
     public Car(MovingCondition movingCondition) {
         this(RandomNameGenerator.getInstance().generate(), movingCondition);
     }

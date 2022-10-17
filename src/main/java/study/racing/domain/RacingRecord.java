@@ -23,22 +23,27 @@ public class RacingRecord {
         int maxDistance = getMaxDistance();
 
         List<Car> winners = new ArrayList<>();
-        Iterator<Car> carSet = records.keySet().iterator();
-        while(carSet.hasNext()) {
-            Car car = carSet.next();
-            Map<Integer, Integer> record = records.get(car);
-            if (record.get(totalRound) == maxDistance) {
-                winners.add(car);
-            }
+        Iterator<Car> carIterator = records.keySet().iterator();
+
+        while (carIterator.hasNext()) {
+            Car car = carIterator.next();
+            extractWinner(winners ,car, maxDistance);
         }
 
         return winners;
     }
 
+    private void extractWinner(List<Car> winners, Car car, int maxDistance) {
+        Map<Integer, Integer> record = records.get(car);
+        if (record.get(totalRound) == maxDistance) {
+            winners.add(car);
+        }
+    }
+
     private int getMaxDistance() {
         Iterator<Car> carSet = records.keySet().iterator();
         int maxDistance = 0;
-        while(carSet.hasNext()) {
+        while (carSet.hasNext()) {
             Map<Integer, Integer> record = records.get(carSet.next());
             maxDistance = Math.max(maxDistance, record.get(totalRound));
         }

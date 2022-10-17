@@ -9,12 +9,16 @@ import java.util.stream.Collectors;
 public class ResultView {
 
     public static void printResult(RacingRecord racingRecord) {
-        Set<Car> cars = racingRecord.getRecords().keySet();
+        Set<Car> cars = racingRecord.getRecords()
+                .keySet();
 
         for (int i = 1; i <= racingRecord.getTotalRound(); i++) {
             int round = i;
             cars.forEach(car -> {
-                int distance = racingRecord.getRecords().get(car).get(round);
+                int distance = racingRecord.getRecords()
+                        .get(car)
+                        .get(round);
+
                 View.outputView.printRepeatChar(car.getName() + " : ", '-', distance);
             });
 

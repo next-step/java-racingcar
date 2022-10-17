@@ -9,21 +9,30 @@ import java.util.List;
 public class RacingGame {
     private RacingRecord racingRecord;
     private List<Car> racingCars;
+    private int totalRound;
 
-    public void participate(String[] carNames) {
+    public RacingGame(String[] carNames, int totalRound) {
+        this.participate(carNames);
+        this.totalRound = totalRound;
+    }
+
+    private void participate(String[] carNames) {
         racingCars = CarFactory.createCars(carNames, new RandomMovingCondition());
         racingRecord = new RacingRecord(racingCars);
     }
 
-    public void race(int loopCount) {
-        for (int i = 1; i <= loopCount; i++) {
+    public void race() {
+        for (int i = 1; i <= totalRound; i++) {
             int round = i;
-
             racingCars.forEach(car -> {
-                car.move(RandomNumberGenerator.getInstance().generate());
-                racingRecord.record(car, round, car.getDistance());
+                race(car, round);
             });
         }
+    }
+
+    private void race(Car car, int round) {
+        car.move(RandomNumberGenerator.getInstance().generate());
+        racingRecord.record(car, round, car.getDistance());
     }
 
     public RacingRecord getRacingRecord() { return this.racingRecord; }
