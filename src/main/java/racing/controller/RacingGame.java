@@ -8,15 +8,24 @@ public class RacingGame {
 
     public static void runGame() {
         UserInput userInput = new UserInput();
-        SystemMention.CNT_OF_CAR.printMention();
-        int cntOfCar = userInput.inputCntOfCar();
-        SystemMention.CNT_OF_TRY.printMention();
-        int cntOfTry = userInput.inputCntOfCar();
+        String[] names = inputNames();
+        Cars cars = new Cars(names);
+        int cntOfTry = inputCntOfCar(userInput);
 
-        Cars cars = new Cars(cntOfCar);
-        Racing racing = new Racing(cntOfTry);
         SystemMention.RESULT.printMention();
-        racing.race(cars);
+        String winners = Racing.raceResult(cars, cntOfTry);
+        SystemMention.SUFFIX_WINNER.printMention(winners);
+    }
+
+    private static String[] inputNames() {
+        SystemMention.CNT_OF_CAR.printMention();
+        // TODO: 2022-10-17 유저 입력값으로 변경
+        return new String[]{"Car1", "Car2", "Car3"};
+    }
+
+    private static int inputCntOfCar(UserInput userInput) {
+        SystemMention.CNT_OF_TRY.printMention();
+        return userInput.inputCntOfCar();
     }
 
     public static void main(String[] args) {

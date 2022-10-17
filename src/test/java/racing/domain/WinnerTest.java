@@ -25,10 +25,10 @@ class WinnerTest {
         }
         String maxCarName = carList.get(carList.size()-1).getName();
         Winner winner = new Winner(cars);
-        List<Car> winners = winner.compareWinner();
+        List<String> winners = winner.compareWinner();
 
         assertThat(winners).hasSize(1);
-        assertThat(winners.get(0).getName()).isEqualTo(maxCarName);
+        assertThat(winners.get(0)).isEqualTo(maxCarName);
     }
 
     @Test
@@ -38,10 +38,10 @@ class WinnerTest {
             car.move(1);
         }
         Winner winner = new Winner(cars);
-        List<Car> winners = winner.compareWinner();
+        List<String> winners = winner.compareWinner();
 
         for (int i = 0; i < carList.size(); i++) {
-            assertThat(winners.get(i)).isEqualTo(carList.get(i));
+            assertThat(winners.get(i)).isEqualTo(carList.get(i).getName());
         }
     }
 }

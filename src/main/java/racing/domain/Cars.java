@@ -7,10 +7,6 @@ import java.util.List;
 public class Cars {
     private List<Car> carList;
 
-    public Cars(int cntOfCar) {
-        setCarList(cntOfCar);
-    }
-
     public Cars(String[] names) {
         setCarList(names);
     }
@@ -19,12 +15,6 @@ public class Cars {
         carList = new ArrayList<>();
         for (String name : names) {
             carList.add(new Car(name));
-        }
-    }
-    private void setCarList(int cntOfCar) {
-        carList = new ArrayList<>();
-        for (int i = 0; i < cntOfCar; i++) {
-            carList.add(new Car(""));
         }
     }
 

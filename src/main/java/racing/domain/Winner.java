@@ -7,14 +7,14 @@ import java.util.List;
 public class Winner {
 
     private final List<Car> cars;
-    private List<Car> winners;
+    private List<String> winnerNames;
 
     public Winner(Cars cars) {
         this.cars = cars.getCarList();
-        this.winners = new ArrayList<>();
+        this.winnerNames = new ArrayList<>();
     }
 
-    public List<Car> compareWinner() {
+    public List<String> compareWinner() {
         return maxPositionCar(compareMaxPosition());
     }
     private int compareMaxPosition() {
@@ -22,16 +22,16 @@ public class Winner {
         return cars.get(0).getPosition();
     }
 
-    private List<Car> maxPositionCar(int maxPosition) {
+    private List<String> maxPositionCar(int maxPosition) {
         for (Car car : cars) {
             addWinner(maxPosition, car);
         }
-        return winners;
+        return winnerNames;
     }
 
     private void addWinner(int maxPosition, Car car) {
         if (maxPosition == car.getPosition()) {
-            winners.add(car);
+            winnerNames.add(car.getName());
         }
     }
 }
