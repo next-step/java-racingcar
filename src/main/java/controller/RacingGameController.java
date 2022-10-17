@@ -1,25 +1,29 @@
 package controller;
 
+import domain.CarName;
 import domain.MovingStrategy;
 import domain.Racing;
 import view.InputView;
 import view.ResultView;
+
+import java.util.List;
 
 public class RacingGameController {
 
     private final InputView inputView;
     private final ResultView resultView;
     private static final MovingStrategy movingStrategy = new MovingStrategy();
+
     public RacingGameController(InputView inputView, ResultView resultView) {
         this.inputView = inputView;
         this.resultView = resultView;
     }
 
     public void run() {
-        int carCount = inputView.getCarCount();
+        List<CarName> carName = inputView.getSplitCarName();
         int playCount = inputView.getPlayCount();
 
-        play(new Racing(carCount), playCount);
+        play(new Racing(carName), playCount);
     }
 
     private void play(Racing racing, int playCount) {
@@ -29,5 +33,7 @@ public class RacingGameController {
             racing.race(movingStrategy);
             resultView.printPlayResult(racing.getCars());
         }
+
+        resultView.printWinners(racing.getWinners());
     }
 }
