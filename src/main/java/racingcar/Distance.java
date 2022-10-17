@@ -61,4 +61,5 @@ public final class Distance {
             "value=" + value +
             '}';
     }
+
 }

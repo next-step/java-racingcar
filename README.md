@@ -31,23 +31,23 @@
 
 [ ] InputView로부터 입력 받은 자동차 대수를 통해, 해당 대수만큼의 자동차 개체 들을 생성 할 수 있다.
 
-- [ ] 입력 받은 회수가 숫자가 아닐경우, IllegalArgumentException을 발생시켜, 프로그램을 종료한다.
+- [x] 입력 받은 회수가 숫자가 아닐경우, IllegalArgumentException을 발생시켜, 프로그램을 종료한다.
 
-- [ ] 입력 받은 회수가 0회 이하의 숫자일경우, IllegalArgumentException을 발생시켜, 프로그램을 종료한다.
+- [x] 입력 받은 회수가 0회 이하의 숫자일경우, IllegalArgumentException을 발생시켜, 프로그램을 종료한다.
 
-- [ ] 입력 받은 자동차 대수만큼, 자동차 개체를 생성하고, 해당 개체들을 이용하여, 자동차 개체 일급 컬렉션인 Cars개체를 생성한다.
+- [x] 입력 받은 자동차 대수만큼, 자동차 개체를 생성하고, 해당 개체들을 이용하여, 자동차 개체 일급 컬렉션인 Cars개체를 생성한다.
 
 [ ] InputView로부터 입력 받은 시도 회수를 통해, 해당 회수만큼 자동차 경주게임을 플레이 할 수 있다.
 
-- [ ] 입력 받은 회수가 숫자가 아닐경우, IllegalArgumentException을 발생시켜, 프로그램을 종료한다.
+- [x] 입력 받은 회수가 숫자가 아닐경우, IllegalArgumentException을 발생시켜, 프로그램을 종료한다.
 
-- [ ] 입력 받은 회수가 0회 이하의 숫자일경우, IllegalArgumentException을 발생시켜, 프로그램을 종료한다.
+- [x] 입력 받은 회수가 0회 이하의 숫자일경우, IllegalArgumentException을 발생시켜, 프로그램을 종료한다.
 
-- [ ] 입력 받은 회수 만큼, Cars개체에게 '소유하고 있는 자동차 개체들을 전진 또는 멈추라'라는 메시지를 전달한다.
+- [x] 입력 받은 회수 만큼, Cars개체에게 '소유하고 있는 자동차 개체들을 전진 또는 멈추라'라는 메시지를 전달한다.
 
 [ ] 매 회 플레이가 끝나면, OutputView에, 현재 자동차 개체들의 진행상태를 반환 할 수 있다.
 
-- [ ] 한 회 플레이가 끝나면, Cars개체에게, '소유하고 있는 자동차 개체들의 전진 거리 목록'를 반환하라는 메시지를 전달하여, 반환받은 리스트를 OutputView에
+- [x] 한 회 플레이가 끝나면, Cars개체에게, '소유하고 있는 자동차 개체들의 전진 거리 목록'를 반환하라는 메시지를 전달하여, 반환받은 리스트를 OutputView에
   전달한다.
 
 ### Domain Models
@@ -91,7 +91,7 @@
 
 ## Hints
 
-값을 입력 받는 API는 Scanner를 이용한다. 
+값을 입력 받는 API는 Scanner를 이용한다.
 
 랜덤 값은 자바 java.util.Random 클래스의 nextInt(10) 메소드를 활용한다.
 
@@ -113,48 +113,54 @@ git의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 �
 
 ### Q: 랜덤 값을 테스트하기위해서는 확률말고 다른 옵션은 없을까?
 
-라이브러리가 버그가 나지 않는 이상 믿고쓰라는 의견도 당연히 있겠지만, 
-프로덕션 코드에서 사용하는 랜덤값이  제대로 작동한다는 검증이 필요하지 않나?
+라이브러리가 버그가 나지 않는 이상 믿고쓰라는 의견도 당연히 있겠지만, 프로덕션 코드에서 사용하는 랜덤값이 제대로 작동한다는 검증이 필요하지 않나?
 
 ### Learned: Java8 Random vs ThreadLocalRandom
 
 #### TL;DR
-- java.util.Random instance는 ThreadSafe하나, 동시성제어가 없어, 멀티쓰레딩 환경에서 인스턴스를 동시에 이용하면, 시드업데이트시 경합이 발생하여 성능이 저하된다. 
-- 따라서, 멀티쓰레딩 환경에선 [ThreadLocalRandom](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/concurrent/ThreadLocalRandom.html#nextInt(int,int)) 이용하자.
-- 또한, 암호화로 안전하지 않기에, 암호로 안전한 난수를 생성할때는, [SecureRandom](https://docs.oracle.com/javase/8/docs/api/java/security/SecureRandom.html)을 이용하자.
+
+- java.util.Random instance는 ThreadSafe하나, 동시성제어가 없어, 멀티쓰레딩 환경에서 인스턴스를 동시에 이용하면, 시드업데이트시 경합이 발생하여
+  성능이 저하된다.
+- 따라서, 멀티쓰레딩
+  환경에선 [ThreadLocalRandom](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/concurrent/ThreadLocalRandom.html#nextInt(int,int))
+  이용하자.
+- 또한, 암호화로 안전하지 않기에, 암호로 안전한 난수를
+  생성할때는, [SecureRandom](https://docs.oracle.com/javase/8/docs/api/java/security/SecureRandom.html)을
+  이용하자.
 - 다른 주제이긴 하지만, 성능상의 이유로 매번 Random인스턴스를 생성하지 말아라. Seed업데이트만으로 충분하다.
 
 #### Detail
 
 * [ThreadLocalRandom](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/concurrent/ThreadLocalRandom.html#nextInt(int,int))
-	* 배경 :
-		* 멀티쓰레딩환경에서 랜덤값 생성 향상을 위해 JDK7에 추가.
-		* ThreadLocal와 Random 클래스를 조합하여, 난수생성을 현재 쓰레드로 격리할수 있다.
-			* ThreadLocalRandom.current().nextX(…) 형식으로 이용필요.
-		* 따라서 Random 인스턴스에 대한 동시 액세스를 피함으로써, 다중 스레드 환경에서 더 나은 성능을 달성가능.
-	* 장점: 
-		* 더 나은 성능. 다중 스레드 환경에서 RandomClass보다, 더 나은 성능 제공.
-		* 난수 스레드마다 격리 가능.한 스레드에서 얻은 난수는 다른 스레드의 영향을 받지 않는다.
-		* Singleton이기에, 인스턴스 초기화 필요 없다. RandomClass 처럼 인스턴스를 명시적으로 초기화할 필요가 없다.
-		* 따라서, This helps us to avoid mistakes of creating lots of useless instances and wasting garbage collector time.
-	* 단점:
-		* 시드를 명시적으로 설정하는 방법이 없어 재현이 어렵다. 사실 단점이 아니지만.
+    * 배경 :
+        * 멀티쓰레딩환경에서 랜덤값 생성 향상을 위해 JDK7에 추가.
+        * ThreadLocal와 Random 클래스를 조합하여, 난수생성을 현재 쓰레드로 격리할수 있다.
+            * ThreadLocalRandom.current().nextX(…) 형식으로 이용필요.
+        * 따라서 Random 인스턴스에 대한 동시 액세스를 피함으로써, 다중 스레드 환경에서 더 나은 성능을 달성가능.
+    * 장점:
+        * 더 나은 성능. 다중 스레드 환경에서 RandomClass보다, 더 나은 성능 제공.
+        * 난수 스레드마다 격리 가능.한 스레드에서 얻은 난수는 다른 스레드의 영향을 받지 않는다.
+        * Singleton이기에, 인스턴스 초기화 필요 없다. RandomClass 처럼 인스턴스를 명시적으로 초기화할 필요가 없다.
+        * 따라서, This helps us to avoid mistakes of creating lots of useless instances and wasting
+          garbage collector time.
+    * 단점:
+        * 시드를 명시적으로 설정하는 방법이 없어 재현이 어렵다. 사실 단점이 아니지만.
 * [Random](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Random.html#nextInt(int))
-	* 장점: 
-		* 시드를 명시적으로 설정하는 방법이 있어, 재현이 상대적으로 쉽다.
-	* 단점:
-		* 인스턴스를 명시적으로 초기화할 필요가 있다.
-		* 멀티쓰레딩 환경에서의, 성능 저하
-			* Why? 
-				* 모든 스레드가 동일한 시드 인스턴스 변수를 공유하기에, 
-				* 시드업데이트시 경합으로 인한 성능저하.
-			* How? 
-				* Lock이 없기에, 모든 스레드가 동시에 시드 업데이트 진행.
-				* 한 스레드는 이기고 시드를 업데이트하게 되고, 나머지 스레드는 잃는다.
-				* 잃은 스레드는  난수 생성 기회를 얻을 때 까지  재시도한다.
+    * 장점:
+        * 시드를 명시적으로 설정하는 방법이 있어, 재현이 상대적으로 쉽다.
+    * 단점:
+        * 인스턴스를 명시적으로 초기화할 필요가 있다.
+        * 멀티쓰레딩 환경에서의, 성능 저하
+            * Why?
+                * 모든 스레드가 동일한 시드 인스턴스 변수를 공유하기에,
+                * 시드업데이트시 경합으로 인한 성능저하.
+            * How?
+                * Lock이 없기에, 모든 스레드가 동시에 시드 업데이트 진행.
+                * 한 스레드는 이기고 시드를 업데이트하게 되고, 나머지 스레드는 잃는다.
+                * 잃은 스레드는 난수 생성 기회를 얻을 때 까지 재시도한다.
 * Refer
-	* https://docs.oracle.com/javase/8/docs/api/java/util/Random.html
-	* https://www.baeldung.com/java-thread-local-random
+    * https://docs.oracle.com/javase/8/docs/api/java/util/Random.html
+    * https://www.baeldung.com/java-thread-local-random
 
 ### Q: IAE는 복구가능한 예외로 구분되나? 
 
