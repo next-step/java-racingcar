@@ -15,7 +15,7 @@ class RoundResultsTest {
         GameResultDto gameResultDto = new GameResultDto();
         Cars cars = Cars.namesOf(List.of("a", "b", "c"));
 
-        gameResultDto.recordResults(cars);
+        gameResultDto.recordRoundResults(cars);
 
         assertThat(gameResultDto.getRoundResults().stream()
                 .map(carResultDtos -> carResultDtos.stream()

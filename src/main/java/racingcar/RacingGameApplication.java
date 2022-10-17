@@ -18,25 +18,16 @@ public class RacingGameApplication {
         int trial = inputTrial();
 
         RacingGame racingGame = new RacingGame();
-        GameResultDto racingGameResult = startGame(carNames, trial, racingGame);
+        GameResultDto racingGameResult = doGame(carNames, trial, racingGame);
         Objects.requireNonNull(racingGameResult);
         printGameResult(racingGameResult);
-        printWinners(getWinners(racingGame));
+        printWinners(racingGameResult.winnerNames);
     }
 
-    private static GameResultDto startGame(List<String> carNames, int trial, RacingGame racingGame) {
+    private static GameResultDto doGame(List<String> carNames, int trial, RacingGame racingGame) {
         try {
-            return racingGame.startGame(carNames, trial);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
-        return null;
-    }
-
-    private static List<String> getWinners(RacingGame racingGame) {
-        try {
-            return racingGame.getWinners();
-        } catch (NoSuchElementException e) {
+            return racingGame.doGame(carNames, trial);
+        } catch (IllegalArgumentException | NoSuchElementException e) {
             System.out.println(e.getMessage());
         }
         return null;

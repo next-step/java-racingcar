@@ -15,7 +15,7 @@ public class ResultView {
 
     public static void printGameResult(GameResultDto gameResult) {
         printResultComment();
-        gameResult.getRoundResults().forEach(ResultView::printRoundResult);
+        gameResult.roundResultDtos.forEach(ResultView::printRoundResult);
     }
 
     public static void printWinners(List<String> winners) {

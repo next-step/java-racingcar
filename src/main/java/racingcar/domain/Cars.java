@@ -45,7 +45,7 @@ public class Cars {
         return cars.stream().map(Car::getPosition).collect(Collectors.toList());
     }
 
-    public List<String> getWinners() throws NoSuchElementException {
+    public List<String> getWinnerNames() throws NoSuchElementException {
         return cars.stream()
                 .filter(car -> car.isSamePosition(getWinnerScore()))
                 .map(Car::getName)

@@ -42,7 +42,7 @@ class CarsTest {
         Cars cars = Cars.namesOf(List.of("a", "b", "c"));
         cars.race();
 
-        List<String> actual = cars.getWinners();
+        List<String> actual = cars.getWinnerNames();
 
         assertThat(actual).isEqualTo(List.of("a", "b", "c"));
     }
@@ -53,7 +53,7 @@ class CarsTest {
         Cars cars = Cars.namesOf(List.of());
         cars.race();
 
-        assertThatThrownBy(cars::getWinners)
+        assertThatThrownBy(cars::getWinnerNames)
                 .isInstanceOf(NoSuchElementException.class)
                 .hasMessageContaining("자동차가 존재하지 않습니다.");
     }

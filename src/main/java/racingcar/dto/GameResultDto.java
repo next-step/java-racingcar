@@ -6,13 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameResultDto {
-    private final List<RoundResultDto> roundResultDtos = new ArrayList<>();
+    public final List<RoundResultDto> roundResultDtos = new ArrayList<>();
 
-    public void recordResults(Cars cars) {
+    public final List<String> winnerNames = new ArrayList<>();
+
+    public void recordRoundResults(Cars cars) {
         roundResultDtos.add(new RoundResultDto(cars));
     }
 
-    public List<RoundResultDto> getRoundResults() {
-        return roundResultDtos;
+    public void recordWinnerNames(List<String> winnerNames) {
+        this.winnerNames.addAll(winnerNames);
     }
 }

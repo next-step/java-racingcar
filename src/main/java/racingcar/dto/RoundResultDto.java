@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RoundResultDto {
-    private final List<Integer> positions;
+    public final List<Integer> positions;
 
-    private final List<String> names;
+    public final List<String> names;
 
     public RoundResultDto(Cars cars) {
         this.names = cars.getCarNames();
