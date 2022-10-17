@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.model;
+
+import racingcar.ExceptionMessageUtils;
 
 public final class Car {
 

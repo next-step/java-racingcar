@@ -1,7 +1,8 @@
-package racingcar;
+package racingcar.model;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.ExceptionMessageUtils;
 
 public final class Cars {
 

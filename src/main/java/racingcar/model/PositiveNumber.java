@@ -1,6 +1,7 @@
-package racingcar;
+package racingcar.model;
 
 import java.util.Objects;
+import racingcar.ExceptionMessageUtils;
 
 public final class PositiveNumber {
 
