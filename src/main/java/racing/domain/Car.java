@@ -1,9 +1,14 @@
 package racing.domain;
 
-public class Car {
+public class Car implements Comparable<Car> {
 
     private final String name;
     private int position;
+
+    @Override
+    public int compareTo(Car o) {
+        return o.position - this.position;
+    }
 
     public Car(String name) {
         this.name = name;
