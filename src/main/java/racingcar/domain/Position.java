@@ -4,22 +4,22 @@ import java.util.Objects;
 
 public class Position {
 
-    private final int number;
+    private final int value;
 
-    public Position(final int number) {
-        this.number = number;
+    public Position(final int value) {
+        this.value = value;
     }
 
-    public Position increase(int i) {
-        return new Position(number + i);
+    public Position increase(final int i) {
+        return new Position(value + i);
     }
 
-    public boolean isSameNumber(final int bound) {
-        return number == bound;
+    public boolean isSameValue(final int bound) {
+        return value == bound;
     }
 
-    public int getNumber() {
-        return number;
+    public int getValue() {
+        return value;
     }
 
     @Override
@@ -32,11 +32,11 @@ public class Position {
             return false;
         }
 
-        return this.number == ((Position) o).number;
+        return this.value == ((Position) o).value;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(number);
+        return Objects.hashCode(value);
     }
 }

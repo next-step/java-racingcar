@@ -16,8 +16,8 @@ class PositionTest {
     }
 
     @Test
-    @DisplayName("isSameNumber 메소드는 주어진 값과 같은 값을 가지고 있는지 판단한다.")
+    @DisplayName("isSameValue 메소드는 주어진 값과 같은 값을 가지고 있는지 판단한다.")
     void isSameNumber() {
-        assertThat(new Position(10).isSameNumber(10)).isTrue();
+        assertThat(new Position(10).isSameValue(10)).isTrue();
     }
 }

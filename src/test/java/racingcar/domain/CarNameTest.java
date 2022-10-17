@@ -16,8 +16,8 @@ class CarNameTest {
     void failToCreate_withNullOrEmpty(String name) {
         assertThatThrownBy(() -> {
             new CarName(name);
-        }).isInstanceOf(RuntimeException.class)
-            .hasMessage("올바르지 않은 값입니다.");
+        }).isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("입력 값이 누락되었습니다.");
     }
 
     @Test
@@ -25,7 +25,7 @@ class CarNameTest {
     void failToCreate_withOverLengthString() {
         assertThatThrownBy(() -> {
             new CarName("ppanya");
-        }).isInstanceOf(RuntimeException.class)
-            .hasMessage("올바르지 않은 값입니다.");
+        }).isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("5자 이하의 이름만 입력 가능합니다.");
     }
 }

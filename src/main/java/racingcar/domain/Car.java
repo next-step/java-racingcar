@@ -7,7 +7,7 @@ public class Car {
 
     private static final int AVAILABLE_MOVE_BOUND = 4;
 
-    private CarName name;
+    private final CarName name;
     private Position position;
 
     public Car(final String name) {
@@ -21,13 +21,17 @@ public class Car {
     }
 
     public void move(final NumberGenerateStrategy strategy) {
+        if (strategy == null) {
+            throw new IllegalArgumentException("NumberGenerateStrategy 객체가 누락되었습니다.");
+        }
+
         if (strategy.generate() >= AVAILABLE_MOVE_BOUND) {
             this.position = this.position.increase(1);
         }
     }
 
     public boolean isSamePosition(final int bound) {
-        return this.position.isSameNumber(bound);
+        return this.position.isSameValue(bound);
     }
 
     public String getName() {
@@ -35,7 +39,7 @@ public class Car {
     }
 
     public int getPosition() {
-        return this.position.getNumber();
+        return this.position.getValue();
     }
 
     @Override

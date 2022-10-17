@@ -8,23 +8,37 @@ public class Racers {
 
     private List<Car> cars;
 
-    private Racers() {
-    }
-
     public Racers(final List<String> carNames) {
+        validateCarNames(carNames);
         this.cars = carNames.stream()
             .map(Car::new)
             .collect(Collectors.toList());
     }
 
-    public List<Car> getCars() {
-        return this.cars;
+    private void validateCarNames(final List<String> carNames) {
+        if (carNames == null || carNames.isEmpty()) {
+            throw new IllegalArgumentException("입력 값이 누락되었습니다.");
+        }
     }
 
     public void moveAll(final NumberGenerateStrategy strategy) {
+        if (strategy == null) {
+            throw new IllegalArgumentException("NumberGenerateStrategy 객체가 누락되었습니다.");
+        }
+
         this.cars.forEach(car -> {
             car.move(strategy);
         });
+    }
+
+    public List<Car> findSamePositionCars(final int position) {
+        return cars.stream()
+            .filter(car -> car.isSamePosition(position))
+            .collect(Collectors.toList());
+    }
+
+    public List<Car> getCars() {
+        return this.cars;
     }
 
     public List<Integer> getPositions() {
@@ -38,11 +52,5 @@ public class Racers {
             .mapToInt(Car::getPosition)
             .max()
             .orElseThrow(() -> new RuntimeException("최대 값을 찾는데 실패했습니다."));
-    }
-
-    public List<Car> findSamePositionCars(int position) {
-        return cars.stream()
-            .filter(car -> car.isSamePosition(position))
-            .collect(Collectors.toList());
     }
 }

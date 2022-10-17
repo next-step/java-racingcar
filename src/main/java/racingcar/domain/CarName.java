@@ -12,8 +12,12 @@ public class CarName {
     }
 
     private void validateCarName(final String input) {
-        if (Objects.isNull(input) || input.isEmpty() || input.length() > 5) {
-            throw new RuntimeException("올바르지 않은 값입니다.");
+        if (input == null || input.isEmpty()) {
+            throw new IllegalArgumentException("입력 값이 누락되었습니다.");
+        }
+
+        if (input.length() > 5) {
+            throw new IllegalArgumentException("5자 이하의 이름만 입력 가능합니다.");
         }
     }
 

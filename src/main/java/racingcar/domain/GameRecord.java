@@ -3,23 +3,23 @@ package racingcar.domain;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RacingRecord {
+public class GameRecord {
 
     private List<RacerRecord> racerRecords;
 
-    private RacingRecord() {
+    private GameRecord() {
     }
 
-    public RacingRecord(final List<RacerRecord> racerRecords) {
+    public GameRecord(final List<RacerRecord> racerRecords) {
         this.racerRecords = racerRecords;
     }
 
-    public static RacingRecord from(final Racers racers) {
+    public static GameRecord from(final Racers racers) {
         List<RacerRecord> racerRecords = racers.getCars().stream()
             .map(RacerRecord::from)
             .collect(Collectors.toList());
 
-        return new RacingRecord(racerRecords);
+        return new GameRecord(racerRecords);
     }
 
     public List<RacerRecord> getRacerResults() {

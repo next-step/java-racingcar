@@ -19,7 +19,6 @@ class RacersTest {
         assertThat(cars.getPositions()).containsOnly(1);
     }
 
-
     @Test
     @DisplayName("getPositions 메소드는 Racers가 갖고 있는 모든 자동차들의 position을 담은 리스트를 반환한다.")
     void getPositions_test() {
