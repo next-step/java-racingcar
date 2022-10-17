@@ -1,19 +1,30 @@
 package fourstep.view;
 
 import fourstep.logic.Car;
+import fourstep.logic.Race;
+import fourstep.logic.RaceRound;
 
 import java.util.ArrayList;
 import java.util.stream.IntStream;
 
 public class ResultView {
 
-    public static void printOneRace(ArrayList<Car> carList) {
+    public static void printOneRace(ArrayList<Car> carList, int round) {
         for (Car car : carList) {
             System.out.print(car.getName());
             System.out.print(" : ");
-            printCarLocation(car.getLocation());
+            printCarLocation(car.getRoundRecord(round));
         }
         System.out.println();
+    }
+
+    public static void printEntireRace(Race race) {
+        ArrayList<Car> carList = race.getCars();
+        int raceCount = race.getRaceCount();
+
+        for (int i = 0; i < raceCount; i++) {
+            printOneRace(carList, i);
+        }
     }
 
     private static void printCarLocation(int carLocation) {
