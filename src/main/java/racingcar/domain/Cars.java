@@ -46,15 +46,17 @@ public class Cars {
     }
 
     public List<String> getWinners() throws NoSuchElementException {
-        int winnerScore = cars.stream()
+        return cars.stream()
+                .filter(car -> car.isSamePosition(getWinnerScore()))
+                .map(Car::getName)
+                .collect(Collectors.toList());
+    }
+
+    private int getWinnerScore() throws NoSuchElementException {
+        return cars.stream()
                 .map(Car::getPosition)
                 .mapToInt(x -> x)
                 .max()
                 .orElseThrow(() -> new NoSuchElementException(CAR_DOES_NOT_EXIST_EXCEPTION));
-
-        return cars.stream()
-                .filter(car -> car.isSamePosition(winnerScore))
-                .map(Car::getName)
-                .collect(Collectors.toList());
     }
 }
