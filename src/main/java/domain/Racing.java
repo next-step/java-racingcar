@@ -1,28 +1,29 @@
 package domain;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Racing {
 
-    private final Winners winners;
+    private final Cars cars;
 
-    public Racing(List<CarName> carNames) { winners = makeCar(carNames); }
+    public Racing(List<CarName> carNames) { cars = makeCar(carNames); }
 
-    private Winners makeCar(List<CarName> carNames) {
-        return new Winners(carNames);
+    private Cars makeCar(List<CarName> carNames) {
+        return new Cars(carNames);
     }
 
     public void race(MovingStrategy movingStrategy) {
-        for (Car car : winners.getCars()) {
+        for (Car car : cars.getCars()) {
             car.move(movingStrategy.isMovable(movingStrategy.getIntValue()));
         }
     }
 
     public List<Car> getCars() {
-        return winners.getCars();
+        return cars.getCars();
     }
 
     public List<String> getWinners() {
-        return winners.getWinners();
+        return cars.getWinners();
     }
 }

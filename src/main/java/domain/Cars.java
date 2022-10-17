@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Winners {
+public class Cars {
 
     private final List<Car> cars = new ArrayList<>();
 
-    public Winners(List<CarName> carNames) {
+    public Cars(List<CarName> carNames) {
         for (CarName carName : carNames) {
             cars.add(new Car(carName));
         }
