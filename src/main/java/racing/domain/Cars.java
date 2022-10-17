@@ -11,10 +11,20 @@ public class Cars {
         setCarList(cntOfCar);
     }
 
+    public Cars(String[] names) {
+        setCarList(names);
+    }
+
+    private void setCarList(String[] names) {
+        carList = new ArrayList<>();
+        for (String name : names) {
+            carList.add(new Car(name));
+        }
+    }
     private void setCarList(int cntOfCar) {
         carList = new ArrayList<>();
         for (int i = 0; i < cntOfCar; i++) {
-            carList.add(new Car());
+            carList.add(new Car(""));
         }
     }
 

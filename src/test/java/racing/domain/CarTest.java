@@ -10,7 +10,12 @@ public class CarTest {
     private Car car;
     @BeforeEach
     void beforeEach() {
-        car = new Car();
+        car = new Car("자동차1");
+    }
+
+    @Test
+    void name() {
+        assertThat(car.getName()).isEqualTo("자동차1");
     }
 
     @Test
