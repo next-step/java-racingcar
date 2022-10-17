@@ -13,7 +13,7 @@ public class Cars {
     private static final String CAR_DOES_NOT_EXIST_EXCEPTION = "자동차가 존재하지 않습니다.";
 
     private Cars(List<String> carNames) {
-        carNames.forEach(carName -> cars.add(Car.nameOf(carName)));
+        carNames.stream().map(Car::nameOf).forEach(cars::add);
     }
 
     public static Cars namesOf(List<String> carNames) throws IllegalArgumentException {
