@@ -12,7 +12,7 @@ class CarTest {
     void moveForward_ShouldPlus1PositionValue() {
         Car car = Car.nameOf("Test");
 
-        car.moveForward(0);
+        car.moveForward();
 
         assertThat(car.getPosition()).isEqualTo(1);
     }

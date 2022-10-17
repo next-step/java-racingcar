@@ -31,7 +31,7 @@ class CarsTest {
     void race() {
         Cars cars = Cars.namesOf(List.of("a", "b", "c"));
 
-        cars.race(0);
+        cars.race();
 
         assertThat(cars.getPositions()).isEqualTo(List.of(1, 1, 1));
     }
@@ -40,7 +40,7 @@ class CarsTest {
     @DisplayName("a, b, c 위너 리스트를 반환해야한다.")
     void getWinners_ShouldReturnABCWinners() {
         Cars cars = Cars.namesOf(List.of("a", "b", "c"));
-        cars.race(0);
+        cars.race();
 
         List<String> actual = cars.getWinners();
 
@@ -51,7 +51,7 @@ class CarsTest {
     @DisplayName("자동차리스트가 비어있는 경우 exception을 throw한다.")
     void getWinners_ShouldThrowExceptionWhenListEmpty() {
         Cars cars = Cars.namesOf(List.of());
-        cars.race(0);
+        cars.race();
 
         assertThatThrownBy(cars::getWinners)
                 .isInstanceOf(NoSuchElementException.class)

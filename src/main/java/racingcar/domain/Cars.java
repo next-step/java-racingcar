@@ -43,8 +43,8 @@ public class Cars {
         return carName.length() > CAR_NAME_THRESHOLD;
     }
 
-    public void race(int movableThreshold) {
-        cars.forEach(car -> car.moveForward(movableThreshold));
+    public void race() {
+        cars.forEach(Car::moveForward);
     }
 
     public List<String> getCarNames() {

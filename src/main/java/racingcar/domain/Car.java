@@ -9,6 +9,8 @@ public class Car {
 
     private final String name;
 
+    private static final int MOVABLE_THRESHOLD = 4;
+
     private Car(String name) {
         this.name = name;
     }
@@ -30,14 +32,14 @@ public class Car {
         return new Car(name);
     }
 
-    public void moveForward(int movableThreshold) {
-        if (isMovable(movableThreshold)) {
+    public void moveForward() {
+        if (isMovable()) {
             position++;
         }
     }
 
-    private boolean isMovable(int movableThreshold) {
-        return isNotLessThanThreshold(movableThreshold);
+    private boolean isMovable() {
+        return isNotLessThanThreshold(Car.MOVABLE_THRESHOLD);
     }
 
     public int getPosition() {

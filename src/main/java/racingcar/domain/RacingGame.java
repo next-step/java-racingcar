@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 public class RacingGame {
-    private static final int MOVABLE_THRESHOLD = 4;
 
     private final GameResultDto gameResultDto = new GameResultDto();
 
@@ -15,7 +14,7 @@ public class RacingGame {
     public void startGame(List<String> carNames, int trial) throws IllegalArgumentException, NoSuchElementException {
         cars = Cars.namesOf(carNames);
         for (int i = 0; i < trial; i++) {
-            cars.race(MOVABLE_THRESHOLD);
+            cars.race();
             gameResultDto.recordResults(cars);
         }
     }
