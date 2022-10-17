@@ -29,9 +29,4 @@ public class RacingGameInfo {
         int number = isValidForNumber(input);
         return number;
     }
-
-    private String validationForString(String input) {
-        String name = isValidForString(input);
-        return name;
-    }
 }
