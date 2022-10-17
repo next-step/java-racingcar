@@ -7,7 +7,7 @@ public class Location {
     private final int position;
 
     public Location() {
-        this.position = 0;
+        this(0);
     }
 
     public Location(int position) {
@@ -19,6 +19,10 @@ public class Location {
             return new Location(this.position + 1);
         }
         return new Location(this.position);
+    }
+
+    public int calculateMaxLocation(int maxLocation) {
+        return Math.max(maxLocation, this.position);
     }
 
     private boolean isMovable(int randomNumber) {

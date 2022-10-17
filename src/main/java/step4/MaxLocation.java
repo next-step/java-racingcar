@@ -1,23 +1,13 @@
 package step4;
 
 public class MaxLocation {
-    private int maxLocation;
+    private int maxLocation = 0;
 
-    public MaxLocation() {
-        this(0);
+    public void checkMax(Location location) {
+        this.maxLocation = location.calculateMaxLocation(maxLocation);
     }
 
-    public MaxLocation(int maxLocation) {
-        this.maxLocation = maxLocation;
-    }
-
-    public void setMaxLocation(int location) {
-        if (this.maxLocation < location) {
-            this.maxLocation = location;
-        }
-    }
-
-    public boolean isEqualToMaxLocation(int location) {
-        return this.maxLocation == location;
+    public boolean isMaxLocation(Location location) {
+        return location.getPosition() == this.maxLocation;
     }
 }

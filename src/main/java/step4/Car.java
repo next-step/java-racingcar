@@ -18,33 +18,29 @@ public class Car {
     }
 
     public StringBuilder getResult(MaxLocation maxLocation) {
-        findMaxLocation(maxLocation);
+        moveLocation();
+        maxLocation.checkMax(location);
         return getResultStringBuilder();
     }
 
+    private void moveLocation() {
+        this.location = location.move(generateRandomNumber());
+    }
+
     public void findName(List<String> carNameList, MaxLocation maxLocation) {
-        if (isEqualToMaxLocation(maxLocation)) {
+        if (isMaxLocation(maxLocation)) {
             carNameList.add(carName);
         }
     }
 
-    private boolean isEqualToMaxLocation(MaxLocation maxLocation) {
-        return maxLocation.isEqualToMaxLocation(location.getPosition());
+    private boolean isMaxLocation(MaxLocation maxLocation) {
+        return maxLocation.isMaxLocation(location);
     }
 
     private StringBuilder getResultStringBuilder() {
         StringBuilder sb = new StringBuilder();
         sb.append(carName).append(" : ").append("-".repeat(location.getPosition())).append("\n");
         return sb;
-    }
-
-    private void findMaxLocation(MaxLocation maxLocation) {
-        location = moveLocation();
-        maxLocation.setMaxLocation(location.getPosition());
-    }
-
-    private Location moveLocation() {
-        return location.move(generateRandomNumber());
     }
 
     private boolean isOverCarNameMaxSize(String carName) {

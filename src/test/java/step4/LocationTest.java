@@ -22,10 +22,10 @@ class LocationTest {
         assertThat(location.move(3)).isEqualTo(new Location(1));
     }
 
-    @Test
-    @DisplayName("maxLocation값과 입력값을 비교한다")
-    void maxLocationTest() {
-        MaxLocation maxLocation = new MaxLocation(3);
-        assertTrue(maxLocation.isEqualToMaxLocation(3));
-    }
+//    @Test
+//    @DisplayName("maxLocation값과 입력값을 비교한다")
+//    void maxLocationTest() {
+//        MaxLocation maxLocation = new MaxLocation(3);
+//        assertTrue(maxLocation.isEqualToMaxLocation(3));
+//    }
 }
