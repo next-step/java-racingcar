@@ -1,5 +1,7 @@
 package com.nextlevel.kky.racing.core;
 
+import java.security.InvalidParameterException;
+
 public class CarMoveCondition {
 
     private static final int MAX_VALUE = 9;
@@ -15,7 +17,7 @@ public class CarMoveCondition {
     public boolean checkMoveCondition() {
         int value = integerGenerator.getValue();
         if (checkRangeValid(value)) {
-            throw new RuntimeException("not available value");
+            throw new InvalidParameterException("not available value");
         }
         return value >= MIN_VALUE_FOR_MOVE;
     }

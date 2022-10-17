@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -27,10 +26,7 @@ public class CarRacingExecutorTest {
                 )
         );
 
-        List<String> winnerNames = carRacingExecutor
-                .getCurrentWinners().stream()
-                .map(Car::getName)
-                .collect(Collectors.toList());
+        List<String> winnerNames = carRacingExecutor.getCurrentWinners();
 
         assertThat(winnerNames).isEqualTo(Arrays.asList("kky", "daddyking"));
     }

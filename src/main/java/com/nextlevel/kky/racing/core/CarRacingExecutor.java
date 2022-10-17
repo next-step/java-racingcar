@@ -1,6 +1,5 @@
 package com.nextlevel.kky.racing.core;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,14 +11,6 @@ public class CarRacingExecutor {
         return carList;
     }
 
-    public CarRacingExecutor(String[] names) {
-        carList = new ArrayList();
-
-        for (String name : names) {
-            carList.add(new Car(name));
-        }
-    }
-
     public CarRacingExecutor(List<Car> carList) {
         this.carList = carList;
     }
@@ -28,7 +19,7 @@ public class CarRacingExecutor {
         carList.forEach(Car::move);
     }
 
-    public List<Car> getCurrentWinners() {
+    public List<String> getCurrentWinners() {
         int maxPosition = carList.stream()
                 .mapToInt(Car::getCurrentPosition)
                 .max()
@@ -36,6 +27,7 @@ public class CarRacingExecutor {
 
         return carList.stream()
                 .filter(car -> car.getCurrentPosition() == maxPosition)
+                .map(Car::getName)
                 .collect(Collectors.toList());
     }
 }
