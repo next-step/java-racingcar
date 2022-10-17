@@ -26,13 +26,13 @@ public class RacingCarGame {
         return gameResult;
     }
 
-    private List<Car> raceCarGame() {
+    private void raceCarGame() {
         List<Integer> distances = new ArrayList<>();
         for (int i = 0; i < cars.size(); i++) {
             int moveDistance = new MovingStrategy().moveCarUnit();
             distances.add(moveDistance);
         }
-        return new CarInformation().updateCarStatus(distances, cars);
+        new CarInformation().updateCarStatus(distances, cars);
     }
 
 
