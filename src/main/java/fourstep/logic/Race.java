@@ -1,16 +1,18 @@
 package fourstep.logic;
 
-import fourstep.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.stream.IntStream;
 
 public class Race {
 
-    private ArrayList<Car> cars = new ArrayList<>();
     private final ArrayList<String> winners = new ArrayList<>();
 
-    public Race(String[] carNames) {
+    private ArrayList<Car> cars = new ArrayList<>();
+    private int raceCount = 0;
+
+    public Race(String[] carNames, int raceCount) {
+        this.raceCount = raceCount;
         int carCount = carNames.length;
         IntStream.range(0, carCount).forEach(i -> cars.add(new Car(carNames[i])));
     }
@@ -19,36 +21,18 @@ public class Race {
         this.cars = cars;
     }
 
-    public void play(int raceCount, RandomNumber random) {
-        ResultView.printResultLine();
-        for (int i = 0; i < raceCount; i++) {
-            carsMove(random);
-            ResultView.printOneRace(cars);
-        }
-        getWinners();
-        ResultView.printWinner(winners);
+    public ArrayList<String> play(RandomNumber random) {
+        IntStream.range(0, raceCount).mapToObj(i -> random).forEach(this::carsMove);
+        return getWinners();
     }
 
-    private void carsMove(RandomNumber random) {
+
+    public void carsMove(RandomNumber random) {
         for (Car car : cars) {
             car.move(random.getRandomNumber());
         }
     }
 
-
-    private void checkMaxCar(Car car, int maxLocation) {
-        if (car.getLocation() == maxLocation) {
-            winners.add(car.getName());
-        }
-    }
-
-    public int getMaxLocation() {
-        int maxLocation = 0;
-        for (Car car : cars) {
-            maxLocation = Integer.max(car.getLocation(), maxLocation);
-        }
-        return maxLocation;
-    }
 
     public ArrayList<String> getWinners() {
         int maxLocation = getMaxLocation();
@@ -56,5 +40,29 @@ public class Race {
             checkMaxCar(car, maxLocation);
         }
         return winners;
+    }
+
+    public int getMaxLocation() {
+        int maxLocation = 0;
+        for (Car car : cars) {
+            maxLocation = car.maxLocation(maxLocation);
+        }
+        return maxLocation;
+    }
+
+
+    private void checkMaxCar(Car car, int maxLocation) {
+        if (car.isMaxLocation(maxLocation)) {
+            winners.add(car.getName());
+        }
+    }
+
+
+    public ArrayList<Car> getCars() {
+        return cars;
+    }
+
+    public int getRaceCount() {
+        return raceCount;
     }
 }
