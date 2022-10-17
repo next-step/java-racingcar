@@ -2,7 +2,6 @@ package fourstep.view;
 
 import fourstep.logic.Car;
 import fourstep.logic.Race;
-import fourstep.logic.RaceRound;
 
 import java.util.ArrayList;
 import java.util.stream.IntStream;
