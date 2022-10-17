@@ -2,6 +2,7 @@ package com.nextlevel.kky.racing.service;
 
 import com.nextlevel.kky.racing.core.Car;
 import com.nextlevel.kky.racing.core.CarRacingExecutor;
+import com.nextlevel.kky.racing.core.IntegerGenerator;
 import com.nextlevel.kky.racing.core.RandomIntegerGenerator;
 import com.nextlevel.kky.racing.dto.CarRaceResultDto;
 import com.nextlevel.kky.racing.dto.CarRaceResultDto.CarPositionDto;
@@ -17,6 +18,10 @@ public class CarRacingService {
 
     public CarRacingService() {
         this.carCreateService = new CarCreateService(new RandomIntegerGenerator());
+    }
+
+    public CarRacingService(IntegerGenerator integerGenerator) {
+        this.carCreateService = new CarCreateService(integerGenerator);
     }
 
     public CarRaceResultDto race(String[] carNames, int roundCount) {
