@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.strategy.NumberGenerateStrategy;
+import racingcar.strategy.MovingStrategy;
 
 public class Racers {
 
@@ -17,13 +17,13 @@ public class Racers {
 
     private void validateCarNames(final List<String> carNames) {
         if (carNames == null || carNames.isEmpty()) {
-            throw new IllegalArgumentException("입력 값이 누락되었습니다.");
+            throw new IllegalArgumentException("자동차 이름이 누락되었습니다.");
         }
     }
 
-    public void moveAll(final NumberGenerateStrategy strategy) {
+    public void moveAll(final MovingStrategy strategy) {
         if (strategy == null) {
-            throw new IllegalArgumentException("NumberGenerateStrategy 객체가 누락되었습니다.");
+            throw new IllegalArgumentException("MovingStrategy 객체가 누락되었습니다.");
         }
 
         this.cars.forEach(car -> {

@@ -4,33 +4,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.SameNumberGenerateStrategy;
-import racingcar.domain.Car;
-import racingcar.strategy.NumberGenerateStrategy;
+import racingcar.AlwaysMovingStrategy;
 
 class CarTest {
 
     @Test
-    @DisplayName("주어진 숫자가 4 이상이면 자동차가 움직일 수 있는 횟수가 1 증가한다.")
+    @DisplayName("move 메소드는 MovingStrategy 에서 반환하는 값에 따라 position 값이 변화한다.")
     void move_numberOver4() {
         Car car = new Car("jordy");
-        car.move(new SameNumberGenerateStrategy());
+        car.move(new AlwaysMovingStrategy());
 
         assertThat(car.getPosition()).isEqualTo(1);
-    }
-
-    @Test
-    @DisplayName("주어진 숫자가 4 미만이면 자동차가 움직일 수 있는 횟수가 증가하지 않는다.")
-    void move_numberUnder4() {
-        Car car = new Car("jordy");
-        car.move(new NumberGenerateStrategy() {
-            @Override
-            public int generate() {
-                return 3;
-            }
-        });
-
-        assertThat(car.getPosition()).isZero();
     }
 
     @Test

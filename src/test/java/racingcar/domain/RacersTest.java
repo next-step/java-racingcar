@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.SameNumberGenerateStrategy;
+import racingcar.AlwaysMovingStrategy;
 
 class RacersTest {
 
@@ -14,7 +14,7 @@ class RacersTest {
     void moveAll_test() {
         List<String> carNames = List.of("jordy", "penda", "kero");
         Racers cars = new Racers(carNames);
-        cars.moveAll(new SameNumberGenerateStrategy());
+        cars.moveAll(new AlwaysMovingStrategy());
 
         assertThat(cars.getPositions()).containsOnly(1);
     }
@@ -33,9 +33,9 @@ class RacersTest {
     void getMaxPosition_test() {
         List<String> carNames = List.of("jordy", "penda", "kero");
         Racers cars = new Racers(carNames);
-        cars.moveAll(new SameNumberGenerateStrategy());
+        cars.moveAll(new TestMovingStrategy(carNames.size()));
 
-        assertThat(cars.getMaxPosition()).isEqualTo(1);
+        assertThat(cars.getMaxPosition()).isEqualTo(2);
     }
 
     @Test
@@ -43,8 +43,8 @@ class RacersTest {
     void findSamePositionCars() {
         List<String> carNames = List.of("jordy", "penda", "kero");
         Racers cars = new Racers(carNames);
-        cars.moveAll(new SameNumberGenerateStrategy());
+        cars.moveAll(new TestMovingStrategy(carNames.size()));
 
-        assertThat(cars.findSamePositionCars(1)).containsOnly(new Car("jordy", 1), new Car("penda", 1), new Car("kero", 1));
+        assertThat(cars.findSamePositionCars(1)).containsOnly(new Car("penda", 1));
     }
 }

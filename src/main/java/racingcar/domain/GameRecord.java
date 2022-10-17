@@ -5,13 +5,17 @@ import java.util.stream.Collectors;
 
 public class GameRecord {
 
-    private List<RacerRecord> racerRecords;
-
-    private GameRecord() {
-    }
+    private final List<RacerRecord> racerRecords;
 
     public GameRecord(final List<RacerRecord> racerRecords) {
+        validateRacerRecords(racerRecords);
         this.racerRecords = racerRecords;
+    }
+
+    private void validateRacerRecords(final List<RacerRecord> racerRecords) {
+        if (racerRecords == null || racerRecords.isEmpty()) {
+            throw new IllegalArgumentException("경주 참가자 기록이 누락되었습니다.");
+        }
     }
 
     public static GameRecord from(final Racers racers) {

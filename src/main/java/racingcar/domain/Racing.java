@@ -2,25 +2,25 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.strategy.NumberGenerateStrategy;
-import racingcar.strategy.RandomNumberGenerateStrategy;
+import racingcar.strategy.MovingStrategy;
+import racingcar.strategy.RandomMovingStrategy;
 
 public class Racing {
 
-    private final NumberGenerateStrategy DEFAULT_STRATEGY = new RandomNumberGenerateStrategy();
+    private final MovingStrategy DEFAULT_STRATEGY = new RandomMovingStrategy();
 
     private final Racers racers;
     private final List<GameRecord> result = new ArrayList<>();
-    private final NumberGenerateStrategy strategy;
+    private final MovingStrategy strategy;
 
     public Racing(final List<String> carNames) {
         this.racers = new Racers(carNames);
         this.strategy = DEFAULT_STRATEGY;
     }
 
-    public Racing(final List<String> carNames, final NumberGenerateStrategy strategy) {
+    public Racing(final List<String> carNames, final MovingStrategy strategy) {
         if (strategy == null) {
-            throw new IllegalArgumentException("NumberGenerateStrategy 객체가 누락되었습니다.");
+            throw new IllegalArgumentException("MovingStrategy 객체가 누락되었습니다.");
         }
 
         this.racers = new Racers(carNames);

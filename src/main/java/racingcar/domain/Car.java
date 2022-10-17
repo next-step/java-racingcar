@@ -1,11 +1,9 @@
 package racingcar.domain;
 
 import java.util.Objects;
-import racingcar.strategy.NumberGenerateStrategy;
+import racingcar.strategy.MovingStrategy;
 
 public class Car {
-
-    private static final int AVAILABLE_MOVE_BOUND = 4;
 
     private final CarName name;
     private Position position;
@@ -20,14 +18,12 @@ public class Car {
         this.position = new Position(position);
     }
 
-    public void move(final NumberGenerateStrategy strategy) {
+    public void move(final MovingStrategy strategy) {
         if (strategy == null) {
-            throw new IllegalArgumentException("NumberGenerateStrategy 객체가 누락되었습니다.");
+            throw new IllegalArgumentException("MovingStrategy 객체가 누락되었습니다.");
         }
 
-        if (strategy.generate() >= AVAILABLE_MOVE_BOUND) {
-            this.position = this.position.increase(1);
-        }
+        this.position = this.position.increase(strategy.move());
     }
 
     public boolean isSamePosition(final int bound) {
