@@ -1,14 +1,15 @@
 package refactoringracingcar.domain;
 
-import refactoringracingcar.racingexception.ExceptionCommand;
 import refactoringracingcar.racingexception.InputValueException;
 
 import java.util.List;
 
+import static refactoringracingcar.racingexception.ExceptionCommand.NAME_MAX_LENGTH_EXCEPTION_MESSAGE;
+import static refactoringracingcar.racingexception.ExceptionCommand.NULL_EXCEPTION_MESSAGE;
+
 public class CarInformation {
 
     private static final int CAR_DEFAULT_POSITION = 0;
-    private static ExceptionCommand exceptionCommand = new ExceptionCommand();
 
     public String[] splitCarNames(String carNames) {
         String[] carsName = carNames.split(",");
@@ -20,10 +21,10 @@ public class CarInformation {
 
     private void validateNullValue(String carName) {
         if (carName == null || carName.isBlank()) {
-            throw new InputValueException(exceptionCommand.NULL_EXCEPTION_MESSAGE);
+            throw new InputValueException(NULL_EXCEPTION_MESSAGE);
         }
         if (carName.length() > 5) {
-            throw new InputValueException(exceptionCommand.NAME_MAX_LENGTH_EXCEPTION_MESSAGE);
+            throw new InputValueException(NAME_MAX_LENGTH_EXCEPTION_MESSAGE);
         }
     }
 

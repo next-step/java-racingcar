@@ -1,9 +1,11 @@
 package refactoringracingcar.view;
 
-import refactoringracingcar.racingexception.ExceptionCommand;
 import refactoringracingcar.racingexception.InputValueException;
 
 import java.util.Scanner;
+
+import static refactoringracingcar.racingexception.ExceptionCommand.NOT_NUMBER_EXCEPTION_MESSAGE;
+import static refactoringracingcar.racingexception.ExceptionCommand.NULL_EXCEPTION_MESSAGE;
 
 public class InputView {
 
@@ -11,7 +13,6 @@ public class InputView {
     private static final String INPUT_GAME_NUMBER = "시도할 회수는 몇회인가요?";
     private static final int MIN_GAME_NUMBER = 1;
     private static Scanner sc = new Scanner(System.in);
-    private static ExceptionCommand exceptionCommand = new ExceptionCommand();
 
     public static String enterCarName() {
         System.out.println(INPUT_CAR_NAME);
@@ -22,10 +23,10 @@ public class InputView {
 
     private static void validateNullValue(String carNames) {
         if (carNames == null || carNames.isBlank()) {
-            throw new InputValueException(exceptionCommand.NULL_EXCEPTION_MESSAGE);
+            throw new InputValueException(NULL_EXCEPTION_MESSAGE);
         }
         if (carNames.charAt(carNames.length() - 1) == ',') {
-            throw new InputValueException(exceptionCommand.NULL_EXCEPTION_MESSAGE);
+            throw new InputValueException(NULL_EXCEPTION_MESSAGE);
         }
     }
 
@@ -38,7 +39,7 @@ public class InputView {
 
     private static void validateGameNumber(int gameNumber) {
         if (gameNumber < MIN_GAME_NUMBER) {
-            throw new InputValueException(exceptionCommand.NOT_NUMBER_EXCEPTION_MESSAGE);
+            throw new InputValueException(NOT_NUMBER_EXCEPTION_MESSAGE);
         }
     }
 }
