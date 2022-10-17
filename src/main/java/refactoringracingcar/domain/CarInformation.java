@@ -10,6 +10,7 @@ import static refactoringracingcar.racingexception.ExceptionCommand.NULL_EXCEPTI
 public class CarInformation {
 
     private static final int CAR_DEFAULT_POSITION = 0;
+    private static final int CAR_NAME_MAX_LENGTH = 5;
 
     public String[] splitCarNames(String carNames) {
         String[] carsName = carNames.split(",");
@@ -23,7 +24,7 @@ public class CarInformation {
         if (carName == null || carName.isBlank()) {
             throw new InputValueException(NULL_EXCEPTION_MESSAGE);
         }
-        if (carName.length() > 5) {
+        if (carName.length() > CAR_NAME_MAX_LENGTH) {
             throw new InputValueException(NAME_MAX_LENGTH_EXCEPTION_MESSAGE);
         }
     }
