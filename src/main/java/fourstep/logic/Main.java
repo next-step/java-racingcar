@@ -2,6 +2,9 @@ package fourstep.logic;
 
 
 import fourstep.view.InputView;
+import fourstep.view.ResultView;
+
+import java.util.ArrayList;
 
 
 public class Main {
@@ -13,7 +16,13 @@ public class Main {
 
         RandomNumber randomNumber = new RandomNumber();
 
-        Race race = new Race(carNames);
-        race.play(raceCount, randomNumber);
+        Race race = new Race(carNames, raceCount);
+
+        ArrayList<String> winners = race.play(randomNumber);
+
+        ResultView.printResultLine();
+        ResultView.printEntireRace(race);
+        ResultView.printWinner(winners);
     }
+
 }
