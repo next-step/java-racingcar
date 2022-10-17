@@ -9,12 +9,11 @@ import static racingGame.view.ResultView.*;
 public class RacingApplication {
 
     public static void main(String[] args) {
-        int carCount = carCount();
-        int tryCount = tryCount();
 
         RacingGame racingGame = new RacingGame(
-                new MoveAbleStrategy(),new RandomNumberGenerate(), carCount);
+                 new MoveAbleStrategy()
+                ,new RandomNumberGenerate());
 
-        racingGame.race(tryCount);
+        racingGame.race();
     }
 }

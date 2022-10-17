@@ -8,6 +8,7 @@ import java.util.List;
 
 public class Cars {
     private static final String CARS_NULL_ERROR_MESSAGE = "자동차를 생성해주세요";
+
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
@@ -32,7 +33,6 @@ public class Cars {
         }
         return new Cars(cars);
     }
-
 
     public void carTryMove(MoveStrategy moveStrategy,NumberGenerateStrategy numberGenerateStrategy){
         for(Car car : cars) {
