@@ -6,12 +6,9 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ResultView {
-    private List<Car> cars;
+import static refactoringracingcar.domain.RacingCarGame.cars;
 
-    public ResultView(List<Car> cars) {
-        this.cars = cars;
-    }
+public class ResultView {
 
     public String printGameStatus() {
         String carDistanceStatus = "";

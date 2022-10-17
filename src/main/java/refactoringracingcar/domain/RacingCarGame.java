@@ -17,7 +17,7 @@ public class RacingCarGame {
 
     public String runGame() {
         String gameResult = "";
-        ResultView resultView = new ResultView(cars);
+        ResultView resultView = new ResultView();
         for (int i = 0; i < gameNumber; i++) {
             raceCarGame();
             gameResult += resultView.printGameStatus();
