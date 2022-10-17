@@ -22,9 +22,17 @@ public class CarName {
     }
 
     private void validateName(String name) {
+        if (isBlank(name)) {
+            throw new CustomException(CarErrorCode.CAR_NAME_NOT_BLANK);
+        }
+
         if (name.length() > NAME_MAXIMUM_VALUE) {
             throw new CustomException(CarErrorCode.CAR_NAME_LENGTH_BAD_REQUEST);
         }
+    }
+
+    private boolean isBlank(String name) {
+        return name == null || name.equals("");
     }
 
     public String getName() {

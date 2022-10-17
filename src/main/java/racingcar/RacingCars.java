@@ -6,30 +6,30 @@ import racingcar.generator.NumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class RacingCars {
 
     private static final int MINIMUM_VALUE = 4;
+    private static final String REGEX = ",";
 
     private final List<Car> cars;
 
     private RacingCars(String[] names) {
-        validateArr(names);
         this.cars = new ArrayList<>();
         for (String name : names) {
             cars.add(Car.from(name));
         }
     }
 
-    public static RacingCars create(String[] names) {
-        return new RacingCars(names);
+    public static RacingCars create(String names) {
+        return new RacingCars(splitNames(names));
     }
 
-    private static void validateArr(String[] names) {
-        if (names.length == 0) {
-            throw new CustomException(RacingCarErrorCode.CAR_NUMBER_BAD_REQUEST);
-        }
+    private static String[] splitNames(String carNames) {
+        return carNames.split(REGEX);
     }
 
     public void moving(NumberGenerator numberGenerator) {
@@ -50,6 +50,20 @@ public class RacingCars {
             result.add(Car.from(car));
         }
         return result;
+    }
+
+    public List<Car> getWinners() {
+        Integer maxPosition = getMaxPosition();
+        return cars.stream()
+                .filter(car -> Objects.equals(car.getLocation(), maxPosition))
+                .collect(Collectors.toList());
+    }
+
+    private Integer getMaxPosition() {
+        return cars.stream()
+                .mapToInt(Car::getLocation)
+                .max()
+                .orElseThrow(NoSuchElementException::new);
     }
 
     @Override

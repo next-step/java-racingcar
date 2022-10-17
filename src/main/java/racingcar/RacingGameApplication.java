@@ -10,9 +10,9 @@ public class RacingGameApplication {
         String carNames = RacingGameInputView.inputCarNumber();
         int moveNumber = RacingGameInputView.inputMoveNumber();
         RacingCarView.printMessage();
-        List<Car> cars = RacingGame.race(carNames, moveNumber);
-        RacingCarView.printRacingCar(cars);
-        List<Car> winners = RacingGame.getWinners(cars);
-        RacingCarView.printWinner(winners);
+        RacingStadium racingStadium = new RacingStadium(carNames);
+        racingStadium.race(moveNumber);
+        racingStadium.matchResult();
+        racingStadium.awards();
     }
 }
