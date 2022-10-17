@@ -15,18 +15,18 @@ public class RacingCarGame {
         this.gameNumber = gameNumber;
     }
 
-    public String RunGame() {
+    public String runGame() {
         String gameResult = "";
         ResultView resultView = new ResultView(cars);
         for (int i = 0; i < gameNumber; i++) {
-            RaceCarGame();
+            raceCarGame();
             gameResult += resultView.printGameStatus();
         }
         gameResult += resultView.printWinner();
         return gameResult;
     }
 
-    private List<Car> RaceCarGame() {
+    private List<Car> raceCarGame() {
         List<Integer> distances = new ArrayList<>();
         for (int i = 0; i < cars.size(); i++) {
             int moveDistance = new MovingStrategy().moveCarUnit();

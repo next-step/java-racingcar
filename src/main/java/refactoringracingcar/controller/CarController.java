@@ -21,7 +21,7 @@ public class CarController {
         return EnterCarInformation(carNames, gameNumber);
     }
 
-    public String EnterCarInformation(String[] carNames, int gameNumber) {
+    private String EnterCarInformation(String[] carNames, int gameNumber) {
         List<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
             cars.add(carInformation.resetCarStatus(carName));
@@ -30,8 +30,8 @@ public class CarController {
         return ProgressRacingCarGame(cars, gameNumber);
     }
 
-    public String ProgressRacingCarGame(List<Car> cars, int gameNumber) {
-        return new RacingCarGame(cars, gameNumber).RunGame();
+    private String ProgressRacingCarGame(List<Car> cars, int gameNumber) {
+        return new RacingCarGame(cars, gameNumber).runGame();
     }
 
 }
