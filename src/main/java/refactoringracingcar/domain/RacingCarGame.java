@@ -2,13 +2,13 @@ package refactoringracingcar.domain;
 
 import refactoringracingcar.view.ResultView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarGame {
 
     private int gameNumber;
-    private List<Car> cars;
+    public static List<Car> cars;
+    private CarInformation carInformation = new CarInformation();
 
     public RacingCarGame(List<Car> cars, int gameNumber) {
         this.cars = cars;
@@ -27,13 +27,10 @@ public class RacingCarGame {
     }
 
     private void raceCarGame() {
-        List<Integer> distances = new ArrayList<>();
         for (int i = 0; i < cars.size(); i++) {
             int moveDistance = new MovingStrategy().moveCarUnit();
-            distances.add(moveDistance);
+            carInformation.updateCarStatus(i, moveDistance);
         }
-        new CarInformation().updateCarStatus(distances, cars);
     }
-
 
 }

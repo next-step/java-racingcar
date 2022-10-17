@@ -4,6 +4,7 @@ import refactoringracingcar.racingexception.InputValueException;
 
 import java.util.List;
 
+import static refactoringracingcar.domain.RacingCarGame.cars;
 import static refactoringracingcar.racingexception.ExceptionCommand.NAME_MAX_LENGTH_EXCEPTION_MESSAGE;
 import static refactoringracingcar.racingexception.ExceptionCommand.NULL_EXCEPTION_MESSAGE;
 
@@ -33,10 +34,8 @@ public class CarInformation {
         return new Car(carName, CAR_DEFAULT_POSITION);
     }
 
-    public List<Car> updateCarStatus(List<Integer> distances, List<Car> cars) {
-        for (int i = 0; i < cars.size(); i++) {
-            cars.get(i).setCarPosition(cars.get(i).getCarPosition() + distances.get(i));
-        }
+    public List<Car> updateCarStatus(int carNumber, int moveDistance) {
+        cars.get(carNumber).setCarPosition(cars.get(carNumber).getCarPosition() + moveDistance);
         return cars;
     }
 }
