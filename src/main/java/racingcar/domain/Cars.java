@@ -7,7 +7,6 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Cars {
-    private static final int CAR_NAME_THRESHOLD = 5;
 
     private final List<Car> cars = new ArrayList<>();
 
@@ -16,7 +15,6 @@ public class Cars {
     }
 
     public static Cars namesOf(List<String> carNames) throws IllegalArgumentException {
-        validateCarNames(carNames);
         return new Cars(carNames);
     }
 
@@ -31,16 +29,6 @@ public class Cars {
     @Override
     public int hashCode() {
         return Objects.hash(cars);
-    }
-
-    private static void validateCarNames(List<String> carNames) throws IllegalArgumentException {
-        if (carNames.stream().anyMatch(Cars::isOverThreshold)) {
-            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
-        }
-    }
-
-    private static boolean isOverThreshold(String carName) {
-        return carName.length() > CAR_NAME_THRESHOLD;
     }
 
     public void race() {

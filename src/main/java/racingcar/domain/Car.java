@@ -5,14 +5,31 @@ import java.util.Objects;
 import static racingcar.domain.RandomNumber.isNotLessThanThreshold;
 
 public class Car {
-    private int position = 0;
+    private static final int MOVABLE_THRESHOLD = 4;
 
+    private static final int CAR_NAME_THRESHOLD = 5;
+    
     private final String name;
 
-    private static final int MOVABLE_THRESHOLD = 4;
+    private int position = 0;
 
     private Car(String name) {
         this.name = name;
+    }
+
+    public static Car nameOf(String name) throws IllegalArgumentException {
+        validateCarNames(name);
+        return new Car(name);
+    }
+
+    private static void validateCarNames(String name) throws IllegalArgumentException {
+        if (isOverThreshold(name)) {
+            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+        }
+    }
+
+    private static boolean isOverThreshold(String name) {
+        return name.length() > CAR_NAME_THRESHOLD;
     }
 
     @Override
@@ -26,10 +43,6 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(getPosition(), getName());
-    }
-
-    public static Car nameOf(String name) {
-        return new Car(name);
     }
 
     public void moveForward() {
