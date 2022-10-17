@@ -8,7 +8,9 @@ public class Car {
     private static final int MOVABLE_THRESHOLD = 4;
 
     private static final int CAR_NAME_THRESHOLD = 5;
-    
+
+    private static final String CAR_NAME_LENGTH_EXCEPTION = "자동차 이름은 5자를 초과할 수 없습니다.";
+
     private final String name;
 
     private int position = 0;
@@ -24,7 +26,7 @@ public class Car {
 
     private static void validateCarNames(String name) throws IllegalArgumentException {
         if (isOverThreshold(name)) {
-            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+            throw new IllegalArgumentException(CAR_NAME_LENGTH_EXCEPTION);
         }
     }
 

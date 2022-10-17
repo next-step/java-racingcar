@@ -7,23 +7,19 @@ import java.util.NoSuchElementException;
 
 public class RacingGame {
 
-    private final GameResultDto gameResultDto = new GameResultDto();
-
     private Cars cars = null;
 
-    public void startGame(List<String> carNames, int trial) throws IllegalArgumentException, NoSuchElementException {
+    public GameResultDto startGame(List<String> carNames, int trial) throws IllegalArgumentException {
         cars = Cars.namesOf(carNames);
+        GameResultDto gameResultDto = new GameResultDto();
         for (int i = 0; i < trial; i++) {
             cars.race();
             gameResultDto.recordResults(cars);
         }
-    }
-
-    public GameResultDto getRoundResults() {
         return gameResultDto;
     }
 
-    public List<String> getWinners() {
+    public List<String> getWinners() throws NoSuchElementException {
         return cars.getWinners();
     }
 }

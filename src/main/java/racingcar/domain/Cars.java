@@ -10,6 +10,8 @@ public class Cars {
 
     private final List<Car> cars = new ArrayList<>();
 
+    private static final String CAR_DOES_NOT_EXIST_EXCEPTION = "자동차가 존재하지 않습니다.";
+
     private Cars(List<String> carNames) {
         carNames.forEach(carName -> cars.add(Car.nameOf(carName)));
     }
@@ -48,7 +50,7 @@ public class Cars {
                 .map(Car::getPosition)
                 .mapToInt(x -> x)
                 .max()
-                .orElseThrow(() -> new NoSuchElementException("자동차가 존재하지 않습니다."));
+                .orElseThrow(() -> new NoSuchElementException(CAR_DOES_NOT_EXIST_EXCEPTION));
 
         return cars.stream()
                 .filter(car -> car.isSamePosition(winnerScore))
