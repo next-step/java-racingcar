@@ -1,8 +1,9 @@
 package racingcar.backend.controller;
 
-import racingcar.backend.domain.*;
-import racingcar.backend.service.PlayService;
-import racingcar.backend.strategy.RandomMoveStrategy;
+import racingcar.backend.converter.GameRecordConverter;
+import racingcar.backend.domain.Cars;
+import racingcar.backend.domain.GameRecords;
+import racingcar.backend.strategy.MoveStrategy;
 
 public class RacingCarGameController {
 
@@ -15,11 +16,11 @@ public class RacingCarGameController {
         this.times = times;
     }
 
-    public GameRecords start() {
-        GameRecords gameRecords = GameRecords.create();
+    public GameRecords start(MoveStrategy moveStrategy) {
+        GameRecords gameRecords = new GameRecords();
         for (int i = 0; i < times; i++) {
-            Cars cars = PlayService.playCar(this.cars, new RandomMoveStrategy());
-            gameRecords.add(PlayService.getGameRecord(cars));
+            Cars cars = this.cars.move(moveStrategy);
+            gameRecords.add(GameRecordConverter.getGameRecord(cars));
         }
         return gameRecords;
     }

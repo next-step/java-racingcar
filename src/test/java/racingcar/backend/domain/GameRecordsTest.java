@@ -3,34 +3,33 @@ package racingcar.backend.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.backend.dto.CarDto;
 
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class GameRecordsTest {
 
     GameRecords gameRecords;
+    List<CarDto> gameRecord;
 
     @BeforeEach
     void setUp() {
         gameRecords = new GameRecords();
-        Map<CarName, Position> stage1 = new LinkedHashMap<>();
-        stage1.put(new CarName("AA"), new Position(0));
-        stage1.put(new CarName("BB"), new Position(0));
-        stage1.put(new CarName("CC"), new Position(0));
-        stage1.put(new CarName("DD"), new Position(0));
-        gameRecords.add(GameRecord.create(stage1));
+        gameRecord = List.of(
+                CarDto.create(new CarName("BB"), new Position(1)),
+                CarDto.create(new CarName("CC"), new Position(3)),
+                CarDto.create(new CarName("DD"), new Position(3)));
+        gameRecords.add(new GameRecord(gameRecord));
     }
 
     @Test
-    @DisplayName("위너는 BB,DD 자동차")
+    @DisplayName("위너는 CC,DD 자동차")
     void find_final_winner() {
-        List<CarName> winner = gameRecords.finalWinner();
+        List<CarDto> winner = gameRecords.getWinner();
         assertThat(winner).hasSize(2)
-                .extracting(CarName::getValue)
-                .contains("BB", "DD");
+                .extracting(CarDto::printName)
+                .contains("CC", "DD");
     }
 }

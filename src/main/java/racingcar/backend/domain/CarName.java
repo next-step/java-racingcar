@@ -1,13 +1,15 @@
 package racingcar.backend.domain;
 
+import java.util.Objects;
+
 public class CarName {
 
     private static final int NAME_MAX_LENGTH = 5;
-    private String value;
+    private final String name;
 
-    public CarName(String name) {
+    public CarName(final String name) {
         validateLength(name);
-        this.value = name;
+        this.name = name;
     }
 
     private void validateLength(String name) {
@@ -16,7 +18,20 @@ public class CarName {
         }
     }
 
-    public String getValue() {
-        return value;
+    public String gatValue() {
+        return this.name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CarName carName = (CarName) o;
+        return Objects.equals(name, carName.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }

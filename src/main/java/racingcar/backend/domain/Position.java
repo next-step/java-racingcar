@@ -1,31 +1,38 @@
 package racingcar.backend.domain;
 
-public class Position {
+import java.util.Objects;
 
-    private static final int INITIAL_POSITION = 0;
-    private int value;
+public class Position implements Comparable<Position> {
 
-    public Position() {
-        this(INITIAL_POSITION);
+    private final int position;
+
+    public Position(final int position) {
+        this.position = position;
     }
 
-    public Position(int position) {
-        this.value = position;
+    public Position forward() {
+        return new Position(position + 1);
     }
 
-    public static Position create() {
-        return new Position();
+    public int gatValue() {
+        return this.position;
     }
 
-    public static Position create(int position) {
-        return new Position(position);
+    @Override
+    public int compareTo(Position other) {
+        return this.position - other.position;
     }
 
-    public void forward() {
-        value++;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Position position1 = (Position) o;
+        return position == position1.position;
     }
 
-    public int getValue() {
-        return this.value;
+    @Override
+    public int hashCode() {
+        return Objects.hash(position);
     }
 }
