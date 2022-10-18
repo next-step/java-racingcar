@@ -3,9 +3,10 @@ package racing.view;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.core.Car;
-import racing.core.Cars;
-import racing.core.Mover;
+import racing.domain.Car;
+import racing.domain.CarName;
+import racing.domain.Cars;
+import racing.domain.Mover;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -33,9 +34,9 @@ public class ResultViewTest {
     @Test
     @DisplayName("CarList가 주어졌을 때 정상적인 출력값 확인")
     void testPrintedTextWithCarList() {
-        Car car1 = new Car("jack");
-        Car car2 = new Car("jason");
-        Car car3 = new Car("eric");
+        Car car1 = new Car(new CarName("jack"));
+        Car car2 = new Car(new CarName("jason"));
+        Car car3 = new Car(new CarName("eric"));
         Mover mover = new Mover();
         mover.decideMove(car1, 4);
         mover.decideMove(car2, 5);
@@ -49,9 +50,9 @@ public class ResultViewTest {
 
     @Test
     @DisplayName("크기가 1보다 큰 WinnerList가 주어졌을 때 정상 출력값 확인")
-    void testPrintedTextWithWinners(){
-        Car car1 = new Car("jack");
-        Car car2 = new Car("jason");
+    void testPrintedTextWithWinners() {
+        Car car1 = new Car(new CarName("jack"));
+        Car car2 = new Car(new CarName("jason"));
 
         resultView.printWinners(Cars.makeCars(car1, car2));
 
@@ -60,8 +61,8 @@ public class ResultViewTest {
 
     @Test
     @DisplayName("크기가 1인 WinnerList가 주어졌을 때 정상 출력값 확인")
-    void testPrintedTextWithWinner(){
-        Car car1 = new Car("jack");
+    void testPrintedTextWithWinner() {
+        Car car1 = new Car(new CarName("jack"));
 
         resultView.printWinners(Cars.makeCars(car1));
 

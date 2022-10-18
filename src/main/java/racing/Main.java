@@ -1,4 +1,6 @@
-package racing.core;
+package racing;
+
+import racing.domain.RacingApp;
 
 public class Main {
     public static void main(String[] args) {

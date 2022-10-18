@@ -1,4 +1,4 @@
-package racing.core;
+package racing.domain;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -17,27 +17,15 @@ public class Cars {
         return cars.stream();
     }
 
-    public Cars getWinners(){
-        sortDesc();
-        Car firstWinner = getFirstCar();
-        CarDetails firstCarDetails = firstWinner.getCarDetails();
-        int winnerScore = firstCarDetails.getDistance();
-        return getCarsWithSameDistance(winnerScore);
+    public Cars getWinners() {
+        Distance winnerDistance = cars.stream()
+                .map(Car::getDistance)
+                .max(Distance::compareTo)
+                .orElse(new Distance(Distance.MIN_DISTANCE_BOUND));
+        return getCarsWithSameDistance(winnerDistance);
     }
 
-    public void sortDesc() {
-        cars.sort((o1, o2) -> {
-            CarDetails o2CarDetails = o2.getCarDetails();
-            CarDetails o1CarDetails = o1.getCarDetails();
-            return o2CarDetails.getDistance() - o1CarDetails.getDistance();
-        });
-    }
-
-    public Car getFirstCar() {
-        return cars.get(0);
-    }
-
-    public Cars getCarsWithSameDistance(int distance) {
+    public Cars getCarsWithSameDistance(Distance distance) {
         List<Car> result = this.getCarStream()
                 .filter(car -> car.isSameDistance(distance))
                 .collect(Collectors.toList());
@@ -56,7 +44,7 @@ public class Cars {
     public static Cars makeCars(String[] carNames) {
         List<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
-            cars.add(new Car(carName));
+            cars.add(new Car(new CarName(carName)));
         }
         return new Cars(cars);
     }

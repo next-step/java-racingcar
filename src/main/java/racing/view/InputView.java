@@ -1,6 +1,6 @@
 package racing.view;
 
-import racing.core.ClientInput;
+import racing.domain.ClientInput;
 
 import java.util.Scanner;
 
