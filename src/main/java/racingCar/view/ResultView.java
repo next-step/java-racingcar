@@ -1,8 +1,12 @@
-package racingCar;
+package racingCar.view;
+
+import racingCar.model.RacingCar;
+
+import java.util.List;
 
 public class ResultView {
 
-    public void printTitle() {
+    public void printResultTitle() {
         System.out.println("실행 결과");
     }
 
@@ -17,10 +21,10 @@ public class ResultView {
         System.out.println();
     }
 
-    public void printCarsDistance(RacingCar[] racingCars) {
+    public void printCarsDistance(List<RacingCar> racingCars) {
 
-        for (int carIndex = 0; carIndex < racingCars.length; carIndex++) {
-            printCarDistance(racingCars[carIndex]);
+        for (int carIndex = 0; carIndex < racingCars.size(); carIndex++) {
+            printCarDistance(racingCars.get(carIndex));
         }
 
         System.out.println();
