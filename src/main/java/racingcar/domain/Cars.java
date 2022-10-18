@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import racingcar.condition.MoveCondition;
-import racingcar.condition.RandomMoveCondition;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,10 +10,10 @@ import java.util.List;
  * 많은 차와 관련된 객체
  */
 public class Cars {
-    private List<String> name;
+
     private int tryNum;
     private MoveCondition moveCondition;
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public Cars(List<String> name, MoveCondition moveCondition) {
         this.cars = makeCars(name, moveCondition);
@@ -46,7 +45,7 @@ public class Cars {
 
     private void moveCars() {
         for (Car car : cars) {
-            car.move(moveCondition);
+            car.move(this.moveCondition);
         }
     }
 
