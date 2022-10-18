@@ -7,8 +7,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-
-
     @DisplayName("차가 움직이면 위치가 증가한다")
     @Test
     public void move_NumberIsLessThanFour_KeepPosition() {
@@ -25,6 +23,5 @@ class CarTest {
         // Then
         assertThat(car).extracting("position").isEqualTo(2);
     }
-
 
 }
