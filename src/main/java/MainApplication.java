@@ -2,18 +2,17 @@ import static racingcar.view.InputView.inputCarNames;
 import static racingcar.view.InputView.inputTryNumber;
 import static racingcar.view.OutputView.printResult;
 
-import racingcar.Racing;
-import racingcar.input.CarNamesInput;
-import racingcar.input.TryNumberInput;
+import java.util.List;
+import racingcar.domain.Racing;
 
 public class MainApplication {
 
     public static void main(String[] args) {
-        CarNamesInput carNamesInput = new CarNamesInput(inputCarNames());
-        TryNumberInput tryNumberInput = new TryNumberInput(inputTryNumber());
+        List<String> carNames = inputCarNames();
+        int tryNumber = inputTryNumber();
 
-        Racing racing = new Racing(carNamesInput.getCarNames());
-        racing.race(tryNumberInput.getTryNumber());
+        Racing racing = new Racing(carNames);
+        racing.race(tryNumber);
 
         printResult(racing.getResult(), racing.winners());
     }

@@ -1,13 +1,10 @@
-package racingcar;
+package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.strategy.NumberGenerateStrategy;
-import racingcar.strategy.RandomNumberGenerateStrategy;
 
 class RacingTest {
 
@@ -25,9 +22,9 @@ class RacingTest {
     @DisplayName("winners 메소드는 경주 우승자 리스트를 반환한다.")
     void return_winners() {
         List<String> carNames = List.of("jordy", "penda", "kero");
-        Racing racing = new Racing(carNames, new SameNumberGenerateStrategy());
-        racing.race(5);
+        Racing racing = new Racing(carNames, new TestMovingStrategy(carNames.size()));
+        racing.race(1);
 
-        assertThat(racing.winners()).hasSize(3);
+        assertThat(racing.winners()).containsOnly(new Car("kero", 2));
     }
 }
