@@ -7,7 +7,10 @@ import racing.view.ResultView;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Map;
+import java.util.Set;
+
+import static java.util.stream.Collectors.groupingBy;
 
 public class RacingGame {
     private Cars cars;
@@ -24,12 +27,7 @@ public class RacingGame {
             System.out.println("");
             play(cars);
         }
-
-        Car winnerCar = getWinners(cars).stream()
-                .max((c1, c2) -> Integer.compare(c1.getDistance(), c2.getDistance()))
-                .get();
-
-        resultView.printWinner(winnerCar);
+        resultView.printWinner(getWinners(cars));
     }
 
     private void play(Cars cars) {
@@ -38,8 +36,12 @@ public class RacingGame {
     }
 
     private List<Car> getWinners(Cars cars) {
-        return cars.getCars().stream()
-                .sorted(Comparator.comparing(Car::getDistance).reversed())
-                .collect(Collectors.toList());
+        Set<Map.Entry<Integer, List<Car>>> groupCars = cars.getCars().stream()
+                .collect(groupingBy(Car::getDistance))
+                .entrySet();
+
+        return groupCars.stream().max(Comparator.comparing(Map.Entry::getKey))
+                .get()
+                .getValue();
     }
 }

@@ -3,6 +3,9 @@ package racing.view;
 import racing.domain.Car;
 import racing.domain.Cars;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class ResultView {
     private static final String DASH = "-";
 
@@ -17,8 +20,12 @@ public class ResultView {
         }
     }
 
-    public void printWinner(Car winnerCar) {
+    public void printWinner(List<Car> winnerCars) {
         System.out.println("");
-        System.out.println(winnerCar.getName() + "가 최종 우승했습니다.");
+        System.out.println(winnerCars
+                .stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(",")) + "가 최종 우승했습니다."
+        );
     }
 }
