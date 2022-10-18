@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 public class CarName {
     private final static int TEXT_LENGTH_LIMIT = 5;
