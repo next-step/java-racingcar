@@ -21,4 +21,10 @@ class SplitUtilTest {
         List<String> list = new ArrayList<>();
         assertThat(SplitUtil.listToStr(list)).isBlank();
     }
+
+    @Test
+    void 문자_리스트_변환() {
+        String str = "자동차1,자동차2";
+        assertThat(SplitUtil.strToList(str)).isEqualTo(Arrays.asList("자동차1", "자동차2"));
+    }
 }

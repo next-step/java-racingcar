@@ -19,7 +19,7 @@ public class Racing {
         }
     }
 
-    private static String winners(Cars cars) {
+    public static String winners(Cars cars) {
         return SplitUtil.listToStr(new Winner(cars).compareWinner());
     }
 }
