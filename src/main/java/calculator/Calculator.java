@@ -9,16 +9,21 @@ public enum Calculator {
     Calculator(Calculatable calculatable) {
         this.calculatable = calculatable;
     }
+
     public static int sum(String input) throws IllegalArgumentException {
         if (hasNoInput(input)) {
             return 0;
         }
 
+        return calculate(getCalculator(input), input);
+    }
+
+    private static Calculatable getCalculator(String input) {
         if (isCustomizedInput(input)) {
-            return calculate(CUSTOMIZED_CALCULATOR.calculatable, input);
+            return CUSTOMIZED_CALCULATOR.calculatable;
         }
 
-        return calculate(SIMPLE_CALCULATOR.calculatable, input);
+        return SIMPLE_CALCULATOR.calculatable;
     }
 
     private static boolean hasNoInput(String input) {

@@ -1,21 +1,20 @@
 package racingcar.domain;
 
+import racingcar.dto.GameResultDto;
+
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class RacingGame {
-    private static final int MOVABLE_THRESHOLD = 4;
-
-    private final RoundResults roundResults = new RoundResults();
-
-    public void startGame(int carCount, int trial) {
-        Cars cars = new Cars(carCount);
+    public GameResultDto doGame(List<String> carNames, int trial)
+            throws IllegalArgumentException, NoSuchElementException {
+        Cars cars = Cars.namesOf(carNames);
+        GameResultDto gameResultDto = new GameResultDto();
         for (int i = 0; i < trial; i++) {
-            cars.race(MOVABLE_THRESHOLD);
-            roundResults.recordResults(cars.getPositions());
+            cars.race();
+            gameResultDto.recordRoundResults(cars);
         }
-    }
-
-    public List<List<Integer>> getRoundResults() {
-        return roundResults.getResults();
+        gameResultDto.recordWinnerNames(cars.getWinnerNames());
+        return gameResultDto;
     }
 }
