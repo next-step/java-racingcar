@@ -2,6 +2,7 @@ package racingcar;
 
 public class CarName {
     private final static int TEXT_LENGTH_LIMIT = 5;
+
     private final String text;
 
     public CarName(String text) {
