@@ -1,7 +1,7 @@
-package step4.view.output;
+package step5.view.output;
 
-import step4.model.Car;
-import step4.model.Cars;
+import step5.model.Car;
+import step5.model.Cars;
 
 public class OutputViewImpl implements OutputView {
 

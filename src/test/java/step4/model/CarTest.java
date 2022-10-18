@@ -17,6 +17,7 @@ class CarTest {
     void beforeEach() {
         car = new Car("nacho", 0);
     }
+
     @Test
     @DisplayName("자동차가 제대로 움직이는가?")
     void moveCarTest() {

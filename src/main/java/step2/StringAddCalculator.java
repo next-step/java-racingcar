@@ -47,7 +47,7 @@ public class StringAddCalculator {
 
     private static int toPositive(String token) {
         int number = Integer.parseInt(token);
-        if (number < 0) throw new RuntimeException();
+        if (number < 0) throw new IllegalArgumentException("잘못된 토큰입니다.");
         return number;
     }
 }
