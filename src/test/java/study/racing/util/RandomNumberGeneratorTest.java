@@ -12,10 +12,6 @@ public class RandomNumberGeneratorTest {
     @Test
     @DisplayName("generate메서드는 0과 9사이의 숫자를 반환한다.")
     void isGenerate_ShouldReturnFromZeroToNine() {
-        //when
-        int number = RandomNumberGenerator.getInstance().generate();
-
-        //then
-        assertThat(number).isBetween(0, 9);
+        assertThat(RandomNumberGenerator.getInstance().generate()).isBetween(0, 9);
     }
 }
