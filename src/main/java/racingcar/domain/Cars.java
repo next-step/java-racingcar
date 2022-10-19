@@ -46,6 +46,10 @@ public class Cars {
     }
 
     public List<String> getWinnerNames() throws NoSuchElementException {
+        if (cars.isEmpty()) {
+            throw new NoSuchElementException(CAR_DOES_NOT_EXIST_EXCEPTION);
+        }
+
         return cars.stream()
                 .filter(car -> car.isSamePosition(getWinnerScore()))
                 .map(Car::getName)
