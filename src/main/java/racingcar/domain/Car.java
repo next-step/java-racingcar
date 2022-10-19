@@ -2,8 +2,6 @@ package racingcar.domain;
 
 import java.util.Objects;
 
-import static racingcar.domain.RandomNumber.isNotLessThanThreshold;
-
 public class Car {
     private static final int MOVABLE_THRESHOLD = 4;
 
@@ -47,14 +45,14 @@ public class Car {
         return Objects.hash(getPosition(), getName());
     }
 
-    public void moveForward() {
-        if (isMovable()) {
+    public void moveForward(NumberStrategy numberStrategy) {
+        if (isMovable(numberStrategy)) {
             position++;
         }
     }
 
-    private boolean isMovable() {
-        return isNotLessThanThreshold(Car.MOVABLE_THRESHOLD);
+    private boolean isMovable(NumberStrategy numberStrategy) {
+        return numberStrategy.isSameOrOverThreshold(Car.MOVABLE_THRESHOLD);
     }
 
     public int getPosition() {

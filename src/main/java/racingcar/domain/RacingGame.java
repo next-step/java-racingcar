@@ -11,7 +11,7 @@ public class RacingGame {
         Cars cars = Cars.namesOf(carNames);
         GameResultDto gameResultDto = new GameResultDto();
         for (int i = 0; i < trial; i++) {
-            cars.race();
+            cars.race(new RandomNumberStrategy());
             gameResultDto.recordRoundResults(cars);
         }
         gameResultDto.recordWinnerNames(cars.getWinnerNames());
