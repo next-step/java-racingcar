@@ -6,8 +6,6 @@ public class RacingGameSpec {
 
     private static final int MOVE_THRESHOLD = 4;
 
-    private RacingGameSpec() {}
-
     public static RacingGameSpec init() {
         return new RacingGameSpec();
     }

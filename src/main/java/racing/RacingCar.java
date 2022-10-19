@@ -17,7 +17,7 @@ public class RacingCar {
     }
 
     public RacingCar move(final int moveCount) {
-        return new RacingCar(position += moveCount, name);
+        return new RacingCar(position + moveCount, name);
     }
 
     public int getPosition() {

@@ -12,6 +12,6 @@ public class RacingCarTest {
     @DisplayName("자동차 이름은 5자를 초과할 수 없다.")
     public void nameTest(String carName) {
         RacingCar racingCar = RacingCar.init(carName);
-        assertThat(racingCar.getName()).hasSizeLessThan(RacingCar.MAX_NAME_SIZE);
+        assertThat(racingCar.getName()).hasSizeLessThanOrEqualTo(RacingCar.MAX_NAME_SIZE);
     }
 }

@@ -1,8 +1,7 @@
 package racing;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class RacingGame {
 
@@ -25,8 +24,14 @@ public class RacingGame {
     }
 
     public List<RacingCars> start() {
-        return IntStream.range(0, racingLap.getLap())
-                .mapToObj(num -> racingCars.race(racingGameSpec))
-                .collect(Collectors.toList());
+        List<RacingCars> result = new ArrayList<>();
+        result.add(racingCars);
+
+        for (int idx=0; idx < racingLap.getLap(); idx++) {
+            result.add(
+                    result.get(idx).race(racingGameSpec)
+            );
+        }
+        return result;
     }
 }
