@@ -23,6 +23,6 @@ public class RacingResultView {
     }
 
     private static void printCar(RacingCar racingCar) {
-        System.out.println("-".repeat(racingCar.getPosition()));
+        System.out.println(racingCar.getName() + " : " + "-".repeat(racingCar.getPosition()));
     }
 }
