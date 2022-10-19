@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +17,19 @@ public class RacingGame {
     }
 
     public void tryGame() {
-        for (Car car : cars.getCars()) {
-            if (isMovable()) {
-                car.forward();
-            }
+        int carsSize = cars.getCarsSize();
+        List<Boolean> movables = getCarMovableList(carsSize);
+        cars.moveCars(movables);
+    }
+
+    public List<Boolean> getCarMovableList(int size) {
+        List<Boolean> movables = new ArrayList<>();
+
+        for (int i = 0; i < size; i++) {
+            movables.add(isMovable());
         }
+
+        return movables;
     }
 
     protected boolean isMovable() {
@@ -31,18 +39,7 @@ public class RacingGame {
     public List<String> getWinnerNames() {
         int maxPosition = cars.findMaxPosition();
 
-        List<String> winners = new ArrayList<>();
-        for (Car car: cars.getCars()) {
-            comparePositionAndAddWinners(winners, car, maxPosition);
-        }
-
-        return winners;
-    }
-
-    private void comparePositionAndAddWinners(List<String> winners, Car car, int maxPosition) {
-        if (car.isPosition(maxPosition)) {
-            winners.add(car.getName().getText());
-        }
+        return cars.getCarNamesByPosition(maxPosition);
     }
 
     public List<Car> getCars() {

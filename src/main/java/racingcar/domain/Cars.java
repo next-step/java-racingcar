@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -31,10 +31,37 @@ public class Cars {
         return cars;
     }
 
+    public int getCarsSize() {
+        return cars.size();
+    }
+
     public int findMaxPosition() {
         return cars.stream()
             .max(Comparator.comparingInt(Car::getPosition))
             .orElseThrow()
             .getPosition();
+    }
+
+    public void moveCars(List<Boolean> movables) {
+        for (int i = 0; i < cars.size(); i++) {
+            if (movables.get(i)) {
+                cars.get(i).forward();
+            }
+        }
+    }
+
+    public List<String> getCarNamesByPosition(int position) {
+        List<String> names = new ArrayList<>();
+        for (Car car: cars) {
+            comparePositionAndAddNames(names, car, position);
+        }
+
+        return names;
+    }
+
+    private void comparePositionAndAddNames(List<String> names, Car car, int position) {
+        if (car.isPosition(position)) {
+            names.add(car.getName().getText());
+        }
     }
 }
