@@ -19,10 +19,10 @@ public class Game {
 	private static final int RANDOM_NUMBER_BOUND_INCLUSIVE = 9;
 
 	public static void main(String[] args) {
-		List<String> names = getNames();
+		List<String> names = INPUT_VIEW.readNames();
 		Cars cars = Cars.ofNames(names);
 
-		int trialCount = getTrialCount();
+		int trialCount = INPUT_VIEW.readTrialCount();
 
 		play(cars, trialCount);
 	}
@@ -41,15 +41,5 @@ public class Game {
 		NumberStrategy numberStrategy = new RandomNumberStrategy(RANDOM_NUMBER_BOUND_INCLUSIVE);
 		MoveStrategy moveStrategy = new NumberOverFourStrategy(numberStrategy);
 		cars.move(moveStrategy);
-	}
-
-	private static int getTrialCount() {
-		OUTPUT_VIEW.promptTrialCount();
-		return INPUT_VIEW.readTrialCount();
-	}
-
-	private static List<String> getNames() {
-		OUTPUT_VIEW.promptNames();
-		return INPUT_VIEW.readNames();
 	}
 }
