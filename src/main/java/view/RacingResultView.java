@@ -15,20 +15,20 @@ public class RacingResultView {
             System.out.println();
         }
 
-        printWinners(winners);
+        System.out.println(winnersResult(winners));
     }
 
     private static void printCars(RacingCars racingCars) {
         for (final RacingCar racingCar: racingCars.getRacingCars()) {
-            printCar(racingCar);
+            System.out.println(carResult(racingCar));
         }
     }
 
-    private static void printCar(RacingCar racingCar) {
-        System.out.println(racingCar.getName() + " : " + "-".repeat(racingCar.getPosition()));
+    public static String carResult(RacingCar racingCar) {
+        return racingCar.getName() + " : " + "-".repeat(racingCar.getPosition());
     }
 
-    private static void printWinners(RacingCars winners) {
-        System.out.println(winners.getNames() + "가 최종 우승했습니다.");
+    public static String winnersResult(RacingCars winners) {
+        return winners.getNames() + "가 최종 우승했습니다.";
     }
 }

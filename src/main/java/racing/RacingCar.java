@@ -16,6 +16,10 @@ public class RacingCar {
         return new RacingCar(0, name);
     }
 
+    public static RacingCar init(int position, String name) {
+        return new RacingCar(position, name);
+    }
+
     public RacingCar move(final int moveCount) {
         return new RacingCar(position += moveCount, name);
     }

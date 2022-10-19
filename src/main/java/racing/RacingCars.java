@@ -29,6 +29,10 @@ public class RacingCars {
         return new RacingCars(carNames);
     }
 
+    public static RacingCars init(final List<RacingCar> racingCars) {
+        return new RacingCars(racingCars);
+    }
+
     public RacingCars race(RacingGameSpec racingGameSpec) {
         List<RacingCar> movedRacingCars = this.racingCars
                 .stream()
