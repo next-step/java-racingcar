@@ -12,7 +12,8 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DisplayName("Racing : 양의 정수 입력 테스트")
 public class RacingInputViewTest {
