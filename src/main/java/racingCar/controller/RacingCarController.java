@@ -1,6 +1,7 @@
 package racingCar.controller;
 
 import racingCar.model.RacingCar;
+import racingCar.util.RacingCarUtil;
 import racingCar.view.InputView;
 import racingCar.view.ResultView;
 
@@ -17,9 +18,13 @@ public class RacingCarController {
         inputView = new InputView();
         resultView = new ResultView();
 
-        inputView.scan();
+        // inputView.scan();
+        inputView.scanWithNames();
 
-        racingCars = RacingCar.createMulti(inputView.carCnt());
+        // racingCars = RacingCar.createMulti(inputView.carCnt());
+        String[] carNames = RacingCarUtil.inputNameToCarNames(inputView.carNames());
+        inputView.severalCars(carNames.length);
+        racingCars = RacingCar.createMultiWithNames(carNames);
     }
 
     public RacingCarController(List<RacingCar> racingCars, InputView inputView, ResultView resultView) {
@@ -34,7 +39,8 @@ public class RacingCarController {
             racingCars.get(carIndex).race();
         }
 
-        resultView.printCarsDistance(racingCars);
+        // resultView.printCarsDistance(racingCars);
+        resultView.printCarsNameAndDistance(racingCars);
     }
 
     public void race() {
@@ -44,5 +50,7 @@ public class RacingCarController {
         for (int raceIndex = 0; raceIndex < inputView.moveCnt(); raceIndex++) {
             raceOnce();
         }
+
+        resultView.printRaceWinner(racingCars);
     }
 }

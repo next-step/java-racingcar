@@ -7,11 +7,21 @@ import java.util.List;
 
 public class RacingCar {
 
+    private String name;
     private int distance;
 
     private RacingCar() {}
 
+    private RacingCar(String name) {
+        this.name = name;
+    }
+
     private RacingCar(int distance) {
+        this.distance = distance;
+    }
+
+    private RacingCar(String name, int distance) {
+        this.name = name;
         this.distance = distance;
     }
 
@@ -29,8 +39,30 @@ public class RacingCar {
         return racingCars;
     }
 
+    public static RacingCar createWithName(String name) {
+        return new RacingCar(name);
+    }
+
+    public static List<RacingCar> createMultiWithNames(String[] carNames) {
+        List<RacingCar> racingCars = new ArrayList<>();
+
+        for (String carName : carNames) {
+            racingCars.add(createWithName(carName));
+        }
+
+        return racingCars;
+    }
+
     public static RacingCar createWithDistance(int distance) {
         return new RacingCar(distance);
+    }
+
+    public static RacingCar createWithNameAndDistance(String name, int distance) {
+        return new RacingCar(name, distance);
+    }
+
+    public String name() {
+        return name;
     }
 
     public int distance() {
