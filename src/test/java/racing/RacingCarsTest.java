@@ -12,7 +12,7 @@ class RacingCarsTest {
     void race(String carName, String location) {
         Integer locationInt = Integer.parseInt(location);
         RacingCars racingCars = RacingCars.init(carName, location);
-        assertThat(racingCars.getRacingCar(carName).getPosition()).isEqualTo(locationInt);
+        assertThat(racingCars.getRacingCar(carName).get().getPosition()).isEqualTo(locationInt);
 
         RacingCars movedRacingCars =racingCars.race(new RacingGameSpec() {
             @Override
@@ -20,6 +20,6 @@ class RacingCarsTest {
                 return 1;
             }
         });
-        assertThat(movedRacingCars.getRacingCar(carName).getPosition()).isEqualTo(locationInt + 1);
+        assertThat(movedRacingCars.getRacingCar(carName).get().getPosition()).isEqualTo(locationInt + 1);
     }
 }
