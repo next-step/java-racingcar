@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,7 +34,7 @@ public class Cars {
 		return cars.stream()
 			.filter(car -> car.hasPositionSameAs(maxPosition))
 			.map(Car::getName)
-			.collect(Collectors.toList());
+			.collect(Collectors.toUnmodifiableList());
 	}
 
 	private Position getMaxPosition() {
@@ -53,8 +52,8 @@ public class Cars {
 	}
 
 	private void validateCarCount(List<Car> cars) {
-		if (cars.size() <= 0) {
-			throw new CarCountException("자동차는 1개 이상이어야 합니다");
+		if (cars.isEmpty()) {
+			throw new CarCountException();
 		}
 	}
 
@@ -68,6 +67,6 @@ public class Cars {
 	public List<String> getNames() {
 		return cars.stream()
 			.map(Car::getName)
-			.collect(Collectors.toList());
+			.collect(Collectors.toUnmodifiableList());
 	}
 }
