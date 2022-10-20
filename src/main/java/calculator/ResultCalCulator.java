@@ -1,4 +1,5 @@
-package study;
+package calculator;
+
 
 public class ResultCalCulator {
 

@@ -1,9 +1,9 @@
-package study;
+package racingGame.domain;
 
 public class Number {
+    private static final String NEGATIVE_ERROR_MESSAGE = "음수가 들어왔습니다";
 
     private int value;
-    private static final String NEGATIVE_ERROR_MESSAGE = "음수가 들어왔습니다";
 
     public Number(int value){
         negativeChk(value);
@@ -12,11 +12,10 @@ public class Number {
 
     private void negativeChk(int value){
         if(value < 0){
-            throw new RuntimeException(NEGATIVE_ERROR_MESSAGE);
+            throw new IllegalArgumentException(NEGATIVE_ERROR_MESSAGE);
         }
     }
-
     public int getValue() {
-        return value;
+        return this.value;
     }
 }
