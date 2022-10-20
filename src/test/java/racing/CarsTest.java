@@ -13,7 +13,7 @@ public class CarsTest {
     void createCars() {
         String input = "pobi,crong,honux,car";
 
-        Cars cars = new Cars(new RacingGameInfo().split(input));
+        Cars cars = new Cars(RacingGameInfo.split(input));
 
         assertEquals(4, cars.getCars().size());
     }
