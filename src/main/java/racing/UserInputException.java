@@ -20,9 +20,14 @@ public class UserInputException extends Exception {
     }
 
     public static String isValidForString(String input) {
+        input = removeWhiteSpace(input);
         if (input.length() > 5 || input.isBlank()) {
             throw new RuntimeException(NOT_EXCEED_CARNAME_LENGTH);
         }
         return input;
+    }
+
+    private static String removeWhiteSpace(String carName) {
+        return carName.replaceAll("\\s", "");
     }
 }

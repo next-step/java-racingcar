@@ -7,7 +7,7 @@ import static racing.util.Random.createRandomValue;
 
 public class Cars {
 
-    private final List<Car> cars;
+    private List<Car> cars;
 
     public Cars(List<Car> cars) {
         this.cars = cars;

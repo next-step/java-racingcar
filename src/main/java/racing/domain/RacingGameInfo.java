@@ -18,11 +18,12 @@ public class RacingGameInfo {
         this.tryCount = isValidForNumber(InputView.inputTryCount());
     }
 
-    public String[] split(String carName) {
-        for (String name : carName.split(SPLIT_REGEX)) {
-            isValidForString(name.trim());
+    public static String[] split(String carName) {
+        String[] carNames = carName.split(SPLIT_REGEX);
+        for (int i = 0; i < carNames.length; i++) {
+            carNames[i] = isValidForString(carNames[i]);
         }
-        return carName.split(SPLIT_REGEX);
+        return carNames;
     }
 
     private int validationForNumber(String input) {

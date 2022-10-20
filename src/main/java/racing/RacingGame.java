@@ -27,7 +27,7 @@ public class RacingGame {
             System.out.println("");
             play(cars);
         }
-        resultView.printWinner(getWinners(cars));
+        resultView.printWinner(getWinners(cars.getCars()));
     }
 
     private void play(Cars cars) {
@@ -35,8 +35,8 @@ public class RacingGame {
         resultView.result(cars);
     }
 
-    private List<Car> getWinners(Cars cars) {
-        Set<Map.Entry<Integer, List<Car>>> groupCars = cars.getCars().stream()
+   public static List<Car> getWinners(List<Car> cars) {
+        Set<Map.Entry<Integer, List<Car>>> groupCars = cars.stream()
                 .collect(groupingBy(Car::getDistance))
                 .entrySet();
 
