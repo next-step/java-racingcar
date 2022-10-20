@@ -51,4 +51,11 @@ public class Position implements Comparable<Position> {
 	public int compareTo(Position o) {
 		return Integer.compare(position, o.position);
 	}
+
+	@Override
+	public String toString() {
+		return "Position{" +
+			"position=" + position +
+			'}';
+	}
 }

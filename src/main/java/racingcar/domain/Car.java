@@ -38,6 +38,7 @@ public class Car {
 	public String toString() {
 		return "Car{" +
 			"position=" + position +
+			", name=" + name +
 			'}';
 	}
 }
