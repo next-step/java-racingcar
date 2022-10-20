@@ -11,7 +11,7 @@ public class Position implements Comparable<Position> {
 		this(0);
 	}
 
-	public Position(int position) {
+	public Position(final int position) {
 		validatePosition(position);
 		this.position = position;
 	}

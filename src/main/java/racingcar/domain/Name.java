@@ -8,7 +8,7 @@ public class Name {
 
 	private final String name;
 
-	public Name(String name) {
+	public Name(final String name) {
 		validateNameLength(name);
 		validateNameNotBlank(name);
 		this.name = name;

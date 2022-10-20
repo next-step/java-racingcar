@@ -11,19 +11,19 @@ public class Cars {
 
 	private final List<Car> cars;
 
-	public Cars(List<Car> cars) {
+	public Cars(final List<Car> cars) {
 		validateCarCount(cars);
 		this.cars = new ArrayList<>(cars);
 	}
 
-	public static Cars ofNames(List<String> names) {
+	public static Cars ofNames(final List<String> names) {
 		List<Car> cars = names.stream()
 			.map(Car::new)
 			.collect(Collectors.toList());
 		return new Cars(cars);
 	}
 
-	public void move(MoveStrategy moveStrategy) {
+	public void move(final MoveStrategy moveStrategy) {
 		for (Car car : cars) {
 			car.move(moveStrategy);
 		}
