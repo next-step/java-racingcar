@@ -1,10 +1,9 @@
 package refactoringracingcar.view;
 
 import refactoringracingcar.domain.Car;
+import refactoringracingcar.domain.RacingCarGame;
 
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ResultView {
 
@@ -31,19 +30,12 @@ public class ResultView {
 
     public static void printWinner(List<Car> cars) {
         String winnerResult = "";
-        List<Car> winnerCars = determineWinner(cars);
+        RacingCarGame racingCarGame = new RacingCarGame(cars);
+        List<Car> winnerCars = racingCarGame.determineWinner();
         for (Car winnerCarName : winnerCars) {
             winnerResult += ", " + winnerCarName.getCarName();
         }
         System.out.println(winnerResult.substring(2) + "가 최종 우승했습니다.");
     }
 
-    private static List<Car> determineWinner(List<Car> cars) {
-        Car winner = cars.stream().max(Comparator.comparing(Car::getCarPosition)).get();
-        List<Car> winnerCars = cars.stream()
-                .filter(car -> car.getCarPosition() == winner.getCarPosition())
-                .collect(Collectors.toList());
-
-        return winnerCars;
-    }
 }
