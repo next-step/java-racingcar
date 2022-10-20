@@ -19,27 +19,10 @@ public class Game {
 	private static final int RANDOM_NUMBER_BOUND_INCLUSIVE = 9;
 
 	public static void main(String[] args) {
-		List<String> names = INPUT_VIEW.readNames();
-		Cars cars = Cars.ofNames(names);
-
-		int trialCount = INPUT_VIEW.readTrialCount();
-
-		play(cars, trialCount);
-	}
-
-	private static void play(Cars cars, int trialCount) {
-		List<Result> results = new ArrayList<>();
-		for (int i = 0; i < trialCount; ++i) {
-			move(cars);
-			results.add(new Result(cars));
-		}
-		OUTPUT_VIEW.printResults(results);
-		OUTPUT_VIEW.printWinners(cars.findWinnerNames());
-	}
-
-	private static void move(Cars cars) {
 		NumberStrategy numberStrategy = new RandomNumberStrategy(RANDOM_NUMBER_BOUND_INCLUSIVE);
 		MoveStrategy moveStrategy = new NumberOverFourStrategy(numberStrategy);
-		cars.move(moveStrategy);
+		GameController gameController = new GameController(INPUT_VIEW, OUTPUT_VIEW, moveStrategy);
+
+		gameController.play();
 	}
 }
