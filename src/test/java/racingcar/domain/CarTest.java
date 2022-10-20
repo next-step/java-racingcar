@@ -29,7 +29,7 @@ public class CarTest {
 		Car car = new Car(NO_NAME);
 		car.move(moveStrategyNotMovable);
 
-		assertThat(car.getPosition().value()).isZero();
+		assertThat(car.getPosition()).isEqualTo(new Position(0));
 	}
 
 	@Test
