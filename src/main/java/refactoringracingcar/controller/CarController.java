@@ -14,10 +14,8 @@ public class CarController {
     private CarInformation carInformation = new CarInformation();
 
     public void startGame() {
-        String carName = InputView.enterCarName();
+        String[] carNames = InputView.enterCarName();
         int gameNumber = InputView.enterGameNumber();
-
-        String[] carNames = carInformation.splitCarNames(carName);
 
         enterCarInformation(carNames, gameNumber);
     }

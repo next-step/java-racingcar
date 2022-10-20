@@ -4,33 +4,51 @@ import refactoringracingcar.racingexception.InputValueException;
 
 import java.util.Scanner;
 
-import static refactoringracingcar.racingexception.ExceptionCommand.NOT_NUMBER_EXCEPTION_MESSAGE;
-import static refactoringracingcar.racingexception.ExceptionCommand.NULL_EXCEPTION_MESSAGE;
+import static refactoringracingcar.racingexception.ExceptionCommand.*;
 
 public class InputView {
 
     private static final String INPUT_CAR_NAME = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     private static final String INPUT_GAME_NUMBER = "시도할 회수는 몇회인가요?";
     private static final int MIN_GAME_NUMBER = 1;
+    private static final int CAR_NAME_MAX_LENGTH = 5;
     private static final Scanner SCANNER = new Scanner(System.in);
 
     private InputView() {
 
     }
 
-    public static String enterCarName() {
+    public static String[] enterCarName() {
         System.out.println(INPUT_CAR_NAME);
         String carName = SCANNER.nextLine();
-        validateNullValue(carName);
-        return carName;
+        validateInputNullValue(carName);
+        String[] carNames = splitCarNames(carName);
+        return carNames;
     }
 
-    private static void validateNullValue(String carNames) {
+    private static void validateInputNullValue(String carNames) {
         if (carNames == null || carNames.isBlank()) {
             throw new InputValueException(NULL_EXCEPTION_MESSAGE);
         }
         if (carNames.charAt(carNames.length() - 1) == ',') {
             throw new InputValueException(NULL_EXCEPTION_MESSAGE);
+        }
+    }
+
+    private static String[] splitCarNames(String carNames) {
+        String[] carsName = carNames.split(",");
+        for (String carName : carsName) {
+            validateSplitNullValue(carName);
+        }
+        return carsName;
+    }
+
+    private static void validateSplitNullValue(String carNames) {
+        if (carNames == null || carNames.isBlank()) {
+            throw new InputValueException(NULL_EXCEPTION_MESSAGE);
+        }
+        if (carNames.length() > CAR_NAME_MAX_LENGTH) {
+            throw new InputValueException(NAME_MAX_LENGTH_EXCEPTION_MESSAGE);
         }
     }
 
