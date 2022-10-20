@@ -35,9 +35,9 @@ public class CarController {
         RacingCarGame racingCarGame = new RacingCarGame(cars);
         for (int i = 0; i < gameNumber; i++) {
             racingCarGame.raceCarGame();
-            ResultView.printGameStatus();
+            ResultView.printGameStatus(cars);
         }
-        ResultView.printWinner();
+        ResultView.printWinner(cars);
     }
 
 }

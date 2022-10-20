@@ -4,7 +4,7 @@ import java.util.List;
 
 public class RacingCarGame {
 
-    public static List<Car> cars;
+    private List<Car> cars;
     private CarInformation carInformation = new CarInformation();
 
     public RacingCarGame(List<Car> cars) {
@@ -14,7 +14,7 @@ public class RacingCarGame {
     public void raceCarGame() {
         for (int i = 0; i < cars.size(); i++) {
             int moveDistance = new MovingStrategy().moveCarUnit();
-            carInformation.updateCarStatus(i, moveDistance);
+            carInformation.updateCarStatus(i, moveDistance, cars);
         }
     }
 
