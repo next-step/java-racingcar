@@ -11,7 +11,7 @@ public class CarName {
         this.name = name;
     }
 
-    public static CarName valueOf(String name) {
+    public static CarName valueOf(String name) throws IllegalArgumentException {
         validateCarNames(name);
         return new CarName(name);
     }
@@ -24,5 +24,9 @@ public class CarName {
 
     private static boolean isOverThreshold(String name) {
         return name.length() > CAR_NAME_THRESHOLD;
+    }
+
+    public String getName() {
+        return this.name;
     }
 }
