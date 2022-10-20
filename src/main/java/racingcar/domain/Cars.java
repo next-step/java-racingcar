@@ -30,9 +30,8 @@ public class Cars {
 	}
 
 	public List<String> findWinnerNames() {
-		Position maxPosition = getMaxPosition();
 		return cars.stream()
-			.filter(car -> car.hasPositionSameAs(maxPosition))
+			.filter(car -> car.hasPositionSameAs(getMaxPosition()))
 			.map(Car::getName)
 			.collect(Collectors.toUnmodifiableList());
 	}
