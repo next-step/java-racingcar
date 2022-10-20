@@ -7,7 +7,7 @@ public class Car {
 
     private final CarName name;
 
-    private int position = 0;
+    private final Position position = new Position();
 
     private Car(CarName name) {
         this.name = name;
@@ -32,7 +32,7 @@ public class Car {
 
     public void moveForward(NumberStrategy numberStrategy) {
         if (isMovable(numberStrategy)) {
-            position++;
+            position.move();
         }
     }
 
@@ -41,11 +41,11 @@ public class Car {
     }
 
     public int getPosition() {
-        return position;
+        return position.getPosition();
     }
 
     public boolean isSamePosition(int position) {
-        return this.position == position;
+        return this.position.isSamePosition(position);
     }
 
     public String getName() {
