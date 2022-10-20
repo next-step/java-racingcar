@@ -32,13 +32,12 @@ public class CarController {
     }
 
     private void ProgressRacingCarGame(List<Car> cars, int gameNumber) {
-        ResultView resultView = new ResultView();
         RacingCarGame racingCarGame = new RacingCarGame(cars, gameNumber);
         for (int i = 0; i < gameNumber; i++) {
             racingCarGame.raceCarGame();
-            resultView.printGameStatus();
+            ResultView.printGameStatus();
         }
-        resultView.printWinner();
+        ResultView.printWinner();
     }
 
 }

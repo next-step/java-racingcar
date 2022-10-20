@@ -12,11 +12,15 @@ public class InputView {
     private static final String INPUT_CAR_NAME = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     private static final String INPUT_GAME_NUMBER = "시도할 회수는 몇회인가요?";
     private static final int MIN_GAME_NUMBER = 1;
-    private static Scanner sc = new Scanner(System.in);
+    private static final Scanner SCANNER = new Scanner(System.in);
+
+    private InputView() {
+
+    }
 
     public static String enterCarName() {
         System.out.println(INPUT_CAR_NAME);
-        String carName = sc.nextLine();
+        String carName = SCANNER.nextLine();
         validateNullValue(carName);
         return carName;
     }
@@ -32,7 +36,7 @@ public class InputView {
 
     public static int enterGameNumber() {
         System.out.println(INPUT_GAME_NUMBER);
-        int gameNumber = sc.nextInt();
+        int gameNumber = SCANNER.nextInt();
         validateGameNumber(gameNumber);
         return gameNumber;
     }

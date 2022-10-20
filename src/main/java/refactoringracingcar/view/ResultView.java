@@ -10,6 +10,10 @@ import static refactoringracingcar.domain.RacingCarGame.cars;
 
 public class ResultView {
 
+    private ResultView() {
+
+    }
+
     public static void printGameStatus() {
         String carDistanceStatus = "";
         for (int i = 0; i < cars.size(); i++) {
