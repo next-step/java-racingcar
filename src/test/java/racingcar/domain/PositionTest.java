@@ -19,8 +19,7 @@ public class PositionTest {
     @Test
     @DisplayName("position 값이 같으면 true를 반환한다.")
     void isSamePosition_ShouldReturnTrueWhenSamePosition() {
-        Position position = new Position();
-        position.move();
+        Position position = new Position(1);
 
         boolean actual = position.isSamePosition(1);
 

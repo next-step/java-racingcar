@@ -13,7 +13,7 @@ public class CarNameTest {
     void valueOf_ShouldReturnCarNameObject() {
         CarName actual = CarName.valueOf("abcde");
 
-        assertThat(actual).isInstanceOf(CarName.class);
+        assertThat(actual).isEqualTo(new CarName("abcde"));
     }
 
     @Test

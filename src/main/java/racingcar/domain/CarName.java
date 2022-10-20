@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import java.util.Objects;
+
 public class CarName {
     private final String name;
 
@@ -9,6 +11,19 @@ public class CarName {
 
     public CarName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof CarName)) return false;
+        CarName carName = (CarName) o;
+        return Objects.equals(getName(), carName.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName());
     }
 
     public static CarName valueOf(String name) throws IllegalArgumentException {
