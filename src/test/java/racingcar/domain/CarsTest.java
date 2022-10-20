@@ -35,8 +35,8 @@ public class CarsTest {
 	void n_cars_can_move() {
 		cars.move(moveStrategyMovable);
 
-		assertThat(carList).allSatisfy(
-			car -> assertThat(car.hasPositionSameAs(new Position(1))).isTrue());
+		assertThat(carList).allMatch(
+			car -> car.hasPositionSameAs(new Position(1)));
 	}
 
 	@Test
@@ -44,8 +44,8 @@ public class CarsTest {
 	void n_cars_can_stay() {
 		cars.move(moveStrategyNotMovable);
 
-		assertThat(carList).allSatisfy(
-			car -> assertThat(car.getPosition()).isEqualTo(new Position(0)));
+		assertThat(carList).allMatch(
+			car -> car.hasPositionSameAs(new Position(0)));
 	}
 
 	@Test

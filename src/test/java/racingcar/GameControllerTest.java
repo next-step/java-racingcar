@@ -69,11 +69,11 @@ class GameControllerTest {
 	}
 
 	private void assertThatHasUniformPositionOf(Result result, int position) {
-		result.getCarDtos()
-			.forEach(carDto -> assertThatHasPositionOf(carDto, position));
+		assertThat(result.getCarDtos())
+			.allMatch(carDto -> hasCarDtoPositionOf(carDto, position));
 	}
 
-	private void assertThatHasPositionOf(CarDto carDto, int position) {
-		assertThat(carDto.getPosition()).isEqualTo(position);
+	private boolean hasCarDtoPositionOf(CarDto carDto, int position) {
+		return carDto.getPosition().equals(position);
 	}
 }
