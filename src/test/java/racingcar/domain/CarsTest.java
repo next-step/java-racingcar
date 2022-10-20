@@ -26,7 +26,8 @@ class CarsTest {
     void namesOf_ShouldFailWhenANameOfNamesOver5() {
         assertThatThrownBy(() -> Cars.namesOf(List.of("abcdef", "b", "c")))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자동차 이름은 5자를 초과할 수 없습니다.");}
+                .hasMessageContaining("자동차 이름은 5자를 초과할 수 없습니다.");
+    }
 
     @Test
     @DisplayName("임계치를 넘는 경우, 레이스를 수행하면 모든 자동차의 position이 이동되어 있어야 한다.")
