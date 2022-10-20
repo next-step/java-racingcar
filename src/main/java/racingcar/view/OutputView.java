@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import racingcar.dto.CarDto;
-import racingcar.result.Result;
+import racingcar.dto.Result;
 
 public class OutputView {
 

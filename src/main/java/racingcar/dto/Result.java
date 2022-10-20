@@ -1,11 +1,10 @@
-package racingcar.result;
+package racingcar.dto;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import racingcar.domain.Cars;
-import racingcar.dto.CarDto;
 
 public class Result {
 

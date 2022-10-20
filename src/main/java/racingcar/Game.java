@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import racingcar.domain.Cars;
-import racingcar.result.Result;
+import racingcar.dto.Result;
 import racingcar.strategy.MoveStrategy;
 import racingcar.strategy.NumberOverFourStrategy;
 import racingcar.strategy.NumberStrategy;
