@@ -13,10 +13,11 @@ public class OutputViewImpl implements OutputView {
 	private static final String PROGRESS_INDICATOR = "-";
 	private static final String RESULT_MESSAGE = lineSeparator() + "실행 결과";
 	private static final String RESULT_SEPARATOR = " : ";
+	private static final String NAME_DELIMITER = ", ";
 
 	@Override
 	public void printWinners(List<String> names) {
-		String winners = String.join(", ", names);
+		String winners = String.join(NAME_DELIMITER, names);
 		System.out.println(winners + "가 최종 우승했습니다.");
 	}
 
