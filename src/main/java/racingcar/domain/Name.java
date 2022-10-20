@@ -4,15 +4,10 @@ import racingcar.exception.NameException;
 
 public class Name {
 
-	private static final String DEFAULT_NAME = "이름 없음";
 	private static final int SINGLE = 1;
 	private static final int FIVE = 5;
 
 	private final String name;
-
-	public Name() {
-		this(DEFAULT_NAME);
-	}
 
 	public Name(String name) {
 		validateNameLength(name);
