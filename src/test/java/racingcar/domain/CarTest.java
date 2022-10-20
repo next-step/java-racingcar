@@ -31,15 +31,6 @@ public class CarTest {
 	}
 
 	@Test
-	@DisplayName("차는 위치를 반환할 수 있다")
-	void car_can_return_position() {
-		Car car = new Car();
-		car.move(moveStrategyMovable);
-
-		assertThat(car.getPosition().value()).isOne();
-	}
-
-	@Test
 	@DisplayName("이름을 가질 수 있다")
 	void a_car_can_have_name() {
 		String name = "이름";
