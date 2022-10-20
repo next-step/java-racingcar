@@ -1,37 +1,52 @@
 package racing.domain;
 
+import racing.utils.SplitUtil;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Winner {
 
-    private final List<Car> cars;
-    private List<String> winnerNames;
+    private final List<Car> carList;
+    private static final int MAX_POSITION_IDX = 0;
 
-    public Winner(Cars cars) {
-        this.cars = cars.getCarList();
-        this.winnerNames = new ArrayList<>();
+    public Winner(List<Car> carList) {
+        this.carList = carList;
     }
 
-    public List<String> compareWinner() {
-        return maxPositionCar(compareMaxPosition());
-    }
-    private int compareMaxPosition() {
-        Collections.sort(cars);
-        return cars.get(0).getPosition();
+    public List<Car> findWinners() {
+        return findWinners(findMaxPosition());
     }
 
-    private List<String> maxPositionCar(int maxPosition) {
-        for (Car car : cars) {
-            addWinner(maxPosition, car);
+    private List<Car> findWinners(Position maxPosition) {
+        List<Car> winners = new ArrayList<>();
+        for (Car car : carList) {
+            if(!car.isWinner(maxPosition)) {
+                break;
+            }
+            winners.add(car);
         }
-        return winnerNames;
+        return winners;
     }
 
-    private void addWinner(int maxPosition, Car car) {
-        if (maxPosition == car.getPosition()) {
-            winnerNames.add(car.getName());
+    public String findWinnersName() {
+        return findWinnersName(findMaxPosition());
+    }
+
+    private String findWinnersName(Position maxPosition) {
+        List<String> winnersName = new ArrayList<>();
+        for (Car car : carList) {
+            if(!car.isWinner(maxPosition)) {
+                break;
+            }
+            winnersName.add(car.getName());
         }
+        return SplitUtil.listToStr(winnersName);
+    }
+
+    public Position findMaxPosition() {
+        Collections.sort(carList);
+        return carList.get(MAX_POSITION_IDX).getPosition();
     }
 }

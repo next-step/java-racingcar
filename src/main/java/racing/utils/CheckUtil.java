@@ -1,5 +1,6 @@
 package racing.utils;
 
+import org.apache.commons.lang3.StringUtils;
 import racing.msg.SystemMention;
 
 import java.util.List;
@@ -11,7 +12,7 @@ public class CheckUtil {
     private static final Pattern NUMBER_PATTERN = Pattern.compile("^[+-]?[0-9]*$");
 
     public static boolean isNull(String str) {
-        if (str == null || str.isBlank()) {
+        if (StringUtils.isBlank(str)) {
             SystemMention.NULL_CHECK.printMention();
             return true;
         }
@@ -59,7 +60,7 @@ public class CheckUtil {
     }
 
     public static boolean checkStrToArray(String input) {
-        if (CheckUtil.isNull(input)) {
+        if (isNull(input)) {
             return false;
         }
         return CheckUtil.checkStrArray(SplitUtil.strToArray(input));
@@ -75,7 +76,7 @@ public class CheckUtil {
     }
 
     public static boolean checkStrToList(String input) {
-        if (CheckUtil.isNull(input)) {
+        if (isNull(input)) {
             return false;
         }
         return CheckUtil.checkStrList(SplitUtil.strToList(input));

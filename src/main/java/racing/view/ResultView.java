@@ -2,6 +2,9 @@ package racing.view;
 
 import racing.domain.Car;
 import racing.domain.Cars;
+import racing.domain.Position;
+
+import java.util.List;
 
 public class ResultView {
 
@@ -9,23 +12,27 @@ public class ResultView {
     private static final String MOVE_PATTERN = "-";
 
     public void printRacingResult(Cars cars) {
-        for (Car car: cars.getCarList()) {
+        printRacingResult(cars.getCarList());
+    }
+
+    public void printRacingResult(List<Car> carList) {
+        for (Car car: carList) {
             System.out.println(printCarPosition(car));
         }
         System.out.println();
     }
 
-    public static String printCarPosition(Car car) {
-        StringBuffer sb = new StringBuffer();
+    public String printCarPosition(Car car) {
+        StringBuilder sb = new StringBuilder();
         sb.append(car.getName());
         sb.append(SEPARATOR);
         sb.append(positionStatus(car.getPosition()));
         return sb.toString();
     }
 
-    public static String positionStatus(int position) {
-        StringBuffer sb = new StringBuffer();
-        sb.append(MOVE_PATTERN.repeat(position));
+    public String positionStatus(Position position) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(MOVE_PATTERN.repeat(position.getPosition()));
         return sb.toString();
     }
 }

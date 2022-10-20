@@ -1,47 +1,53 @@
 package racing.domain;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+
 class WinnerTest {
 
-    Cars cars;
+    @Test
+    void findMaxPositionTest() {
+        Car car1 = new Car("자동차1", 3);
+        Car car2 = new Car("자동차2", 2);
+        Car car3 = new Car("자동차3", 5);
+        List<Car> carList = Arrays.asList(car1, car2, car3);
 
-    @BeforeEach
-    void beforeEach() {
-        String[] names = {"RedCar", "BlueCar", "BlackCar"};
-        cars = new Cars(names);
+        Winner winner = new Winner(carList);
+        assertThat(winner.findMaxPosition()).isEqualTo(new Position(5));
     }
 
     @Test
-    void 우승자_1명() {
-        List<Car> carList = cars.getCarList();
-        for (int i = 0; i < carList.size(); i++) {
-            carList.get(i).move(i);
-        }
-        String maxCarName = carList.get(carList.size()-1).getName();
-        Winner winner = new Winner(cars);
-        List<String> winners = winner.compareWinner();
+    void findWinnersTest() {
+        Car car1 = new Car("자동차1", 3);
+        Car car2 = new Car("자동차2", 3);
+        Car car3 = new Car("자동차3", 2);
+        Car car4 = new Car("자동차4", 5);
+        List<Car> listOneWinner = Arrays.asList(car1, car2, car3, car4);
+        List<Car> listWinners = Arrays.asList(car1, car2, car3);
 
-        assertThat(winners).hasSize(1);
-        assertThat(winners.get(0)).isEqualTo(maxCarName);
+        Winner oneWinner = new Winner(listOneWinner);
+        Winner winners = new Winner(listWinners);
+        assertThat(oneWinner.findWinners()).isEqualTo(Arrays.asList(car4));
+        assertThat(winners.findWinners()).isEqualTo(Arrays.asList(car1, car2));
     }
 
     @Test
-    void 우승자_3명() {
-        List<Car> carList = cars.getCarList();
-        for (Car car : cars.getCarList()) {
-            car.move(1);
-        }
-        Winner winner = new Winner(cars);
-        List<String> winners = winner.compareWinner();
+    void findWinnersNameTest() {
+        Car car1 = new Car("자동차1", 3);
+        Car car2 = new Car("자동차2", 3);
+        Car car3 = new Car("자동차3", 2);
+        Car car4 = new Car("자동차4", 5);
+        List<Car> listOneWinner = Arrays.asList(car1, car2, car3, car4);
+        List<Car> listWinners = Arrays.asList(car1, car2, car3);
 
-        for (int i = 0; i < carList.size(); i++) {
-            assertThat(winners.get(i)).isEqualTo(carList.get(i).getName());
-        }
+        Winner oneWinner = new Winner(listOneWinner);
+        Winner winners = new Winner(listWinners);
+        assertThat(oneWinner.findWinnersName()).isEqualTo("자동차4");
+        assertThat(winners.findWinnersName()).isEqualTo("자동차1,자동차2");
     }
 }

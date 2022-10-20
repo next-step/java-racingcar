@@ -1,25 +1,39 @@
 package racing.controller;
 
+import racing.domain.Car;
 import racing.domain.Cars;
-import racing.domain.Moving;
-import racing.domain.Winner;
-import racing.utils.SplitUtil;
+import racing.strategy.RandomMovingStrategy;
 import racing.view.ResultView;
 
+import java.util.List;
+
 public class Racing {
-    public static String raceResult(Cars cars, int cntOfTry) {
-        race(cars, cntOfTry);
-        return winners(cars);
-    }
-    private static void race(Cars cars, int cntOfTry) {
-        ResultView resultView = new ResultView();
-        for (int i = 0; i < cntOfTry; i++) {
-            cars.moveCar(new Moving());
-            resultView.printRacingResult(cars);
-        }
+
+    private final List<Car> carList;
+    private final int cntOfTry;
+
+    public Racing(List<Car> carList, int cntOfTry) {
+        this.carList = carList;
+        this.cntOfTry = cntOfTry;
     }
 
-    public static String winners(Cars cars) {
-        return SplitUtil.listToStr(new Winner(cars).compareWinner());
+    public String raceResultStr() {
+        Cars cars = race();
+        return cars.findWinnersName();
+    }
+
+    public List<Car> raceResultList() {
+        Cars cars = race();
+        return cars.findWinners();
+    }
+
+    private Cars race() {
+        Cars cars = new Cars(carList);
+        ResultView resultView = new ResultView();
+        for (int i = 0; i < cntOfTry; i++) {
+            cars.moveCars(new RandomMovingStrategy());
+            resultView.printRacingResult(cars);
+        }
+        return cars;
     }
 }
