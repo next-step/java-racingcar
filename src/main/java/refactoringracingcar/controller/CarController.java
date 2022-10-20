@@ -19,20 +19,20 @@ public class CarController {
 
         String[] carNames = carInformation.splitCarNames(carName);
 
-        EnterCarInformation(carNames, gameNumber);
+        enterCarInformation(carNames, gameNumber);
     }
 
-    private void EnterCarInformation(String[] carNames, int gameNumber) {
+    private void enterCarInformation(String[] carNames, int gameNumber) {
         List<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
             cars.add(carInformation.resetCarStatus(carName));
         }
 
-        ProgressRacingCarGame(cars, gameNumber);
+        progressRacingCarGame(cars, gameNumber);
     }
 
-    private void ProgressRacingCarGame(List<Car> cars, int gameNumber) {
-        RacingCarGame racingCarGame = new RacingCarGame(cars, gameNumber);
+    private void progressRacingCarGame(List<Car> cars, int gameNumber) {
+        RacingCarGame racingCarGame = new RacingCarGame(cars);
         for (int i = 0; i < gameNumber; i++) {
             racingCarGame.raceCarGame();
             ResultView.printGameStatus();

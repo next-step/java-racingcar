@@ -4,13 +4,11 @@ import java.util.List;
 
 public class RacingCarGame {
 
-    private int gameNumber;
     public static List<Car> cars;
     private CarInformation carInformation = new CarInformation();
 
-    public RacingCarGame(List<Car> cars, int gameNumber) {
+    public RacingCarGame(List<Car> cars) {
         this.cars = cars;
-        this.gameNumber = gameNumber;
     }
 
     public void raceCarGame() {
