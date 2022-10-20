@@ -23,8 +23,7 @@ public class Car {
 		}
 	}
 
-	public boolean hasPositionSameAs(int position) {
-		Position otherPosition = new Position(position);
+	public boolean hasPositionSameAs(Position otherPosition) {
 		return this.position.equals(otherPosition);
 	}
 
@@ -32,8 +31,8 @@ public class Car {
 		return this.position.compareTo(other.position) > 0;
 	}
 
-	public int getPosition() {
-		return position.getPosition();
+	public Position getPosition() {
+		return position;
 	}
 
 	public String getName() {

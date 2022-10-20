@@ -31,19 +31,18 @@ public class Cars {
 	}
 
 	public List<String> findWinnerNames() {
-		int maxPosition = getMaxPosition();
+		Position maxPosition = getMaxPosition();
 		return cars.stream()
 			.filter(car -> car.hasPositionSameAs(maxPosition))
 			.map(Car::getName)
 			.collect(Collectors.toList());
 	}
 
-	private int getMaxPosition() {
-		Car farthestCar = new Car();
-		for (Car car : cars) {
-			farthestCar = getFartherCar(farthestCar, car);
-		}
-		return farthestCar.getPosition();
+	private Position getMaxPosition() {
+		return cars.stream()
+			.reduce(this::getFartherCar)
+			.orElseThrow(CarCountException::new)
+			.getPosition();
 	}
 
 	private Car getFartherCar(Car farthestCar, Car car) {
@@ -60,11 +59,10 @@ public class Cars {
 	}
 
 	public List<Integer> getPositions() {
-		List<Integer> positions = new ArrayList<>();
-		for (Car car : cars) {
-			positions.add(car.getPosition());
-		}
-		return Collections.unmodifiableList(positions);
+		return cars.stream()
+			.map(Car::getPosition)
+			.map(Position::value)
+			.collect(Collectors.toUnmodifiableList());
 	}
 
 	public List<String> getNames() {
