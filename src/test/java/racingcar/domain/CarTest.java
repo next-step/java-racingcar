@@ -18,7 +18,7 @@ public class CarTest {
 		Car car = new Car();
 		car.move(moveStrategyMovable);
 
-		assertThat(car.hasPositionSameAs(1)).isTrue();
+		assertThat(car.hasPositionSameAs(new Position(1))).isTrue();
 	}
 
 	@Test
@@ -27,7 +27,7 @@ public class CarTest {
 		Car car = new Car();
 		car.move(moveStrategyNotMovable);
 
-		assertThat(car.getPosition()).isZero();
+		assertThat(car.getPosition().value()).isZero();
 	}
 
 	@Test
@@ -36,7 +36,7 @@ public class CarTest {
 		Car car = new Car();
 		car.move(moveStrategyMovable);
 
-		assertThat(car.getPosition()).isOne();
+		assertThat(car.getPosition().value()).isOne();
 	}
 
 	@Test

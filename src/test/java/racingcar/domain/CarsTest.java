@@ -30,7 +30,7 @@ public class CarsTest {
 		cars.move(moveStrategyMovable);
 
 		assertThat(newCarList).allSatisfy(
-			car -> assertThat(car.hasPositionSameAs(1)).isTrue());
+			car -> assertThat(car.hasPositionSameAs(new Position(1))).isTrue());
 	}
 
 	@Test
@@ -40,7 +40,7 @@ public class CarsTest {
 		cars.move(moveStrategyNotMovable);
 
 		assertThat(newCarList).allSatisfy(
-			car -> assertThat(car.getPosition()).isZero());
+			car -> assertThat(car.getPosition().value()).isZero());
 	}
 
 	@Test
@@ -82,7 +82,7 @@ public class CarsTest {
 	private List<Integer> getPositions(List<Car> carList) {
 		List<Integer> positions = new ArrayList<>();
 		for (Car car : carList) {
-			positions.add(car.getPosition());
+			positions.add(car.getPosition().value());
 		}
 		return positions;
 	}
