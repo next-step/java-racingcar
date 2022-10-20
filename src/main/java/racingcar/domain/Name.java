@@ -5,6 +5,8 @@ import racingcar.exception.NameException;
 public class Name {
 
 	private static final String DEFAULT_NAME = "이름 없음";
+	private static final int SINGLE = 1;
+	private static final int FIVE = 5;
 
 	private final String name;
 
@@ -19,10 +21,10 @@ public class Name {
 	}
 
 	private void validateNameLength(String name) {
-		if (name.length() < 1) {
+		if (name.length() < SINGLE) {
 			throw new NameException("이름은 1글자 이상입니다");
 		}
-		if (name.length() > 5) {
+		if (name.length() > FIVE) {
 			throw new NameException("이름은 5글자 이하입니다");
 		}
 	}
