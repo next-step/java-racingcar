@@ -1,19 +1,21 @@
 package carracing.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.IntStream;
 
 public class Cars{
 
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public Cars(List<Car> cars) {
-        this.cars = cars;
+        this.cars = new ArrayList<>(cars);
     }
 
     public List<Car> getCars() {
-        return cars;
+        // return Collections.unmodifiableList(cars);
+        return new ArrayList<>(cars);
     }
 
     public int getCarsSize() {
@@ -26,8 +28,8 @@ public class Cars{
         return cars;
     }
 
-    public void moveCars(RandomGenerator randomGenerator) {
-        cars.forEach(car -> car.move(randomGenerator.makeRandomValue()));
+    public void moveCars(MovingStrategy movingStrategy) {
+        cars.forEach(car -> car.move(movingStrategy));
     }
 
     private static List<Car> makeCarList(String[] Names) {

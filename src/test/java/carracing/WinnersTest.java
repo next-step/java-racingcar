@@ -1,19 +1,18 @@
 package carracing;
 
-import calculator.Positive;
 import carracing.domain.Car;
 import carracing.domain.Cars;
-import carracing.domain.WinnerChecker;
-import org.assertj.core.api.Assertions;
+import carracing.domain.Winners;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class WinnerCheckerTest {
+public class WinnersTest {
 
     @Test
     void 자동차가_한대_이상이어야_위너체크가_가능하다() {
@@ -21,7 +20,7 @@ public class WinnerCheckerTest {
         Cars cars = Cars.makeCars(str);
 
         assertThatThrownBy(() -> {
-            new WinnerChecker(cars);
+            new Winners(cars);
         }).isInstanceOf(RuntimeException.class);
     }
 
@@ -39,11 +38,21 @@ public class WinnerCheckerTest {
 
         Cars cars = new Cars(carList);
 
-        WinnerChecker winnerChecker = new WinnerChecker(cars);
+        Winners winners = new Winners(cars);
         List<Car> winnerList = new ArrayList<>();
         winnerList.add(a);
         winnerList.add(c);
 
-        assertThat(winnerChecker.findWinners()).isEqualTo(winnerList);
+        assertThat(winners.findWinners()).isEqualTo(winnerList);
+    }
+
+    @Test
+    void 우승자_구하기() {
+        List<Car> cars = Arrays.asList(
+                new Car("pobi",3),
+                new Car("jason", 2)
+        );
+        List<Car> winners = Winners.findWinners(cars);
+        assertThat(winners).contains(new Car("pobi",3));
     }
 }

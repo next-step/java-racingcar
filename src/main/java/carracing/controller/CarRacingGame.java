@@ -1,11 +1,10 @@
 package carracing.controller;
 
-import carracing.domain.Car;
-import carracing.domain.Cars;
-import carracing.domain.RandomGenerator;
-import carracing.domain.WinnerChecker;
+import carracing.domain.*;
 import carracing.view.InputView;
 import carracing.view.OutputView;
+
+import java.util.List;
 
 public class CarRacingGame {
 
@@ -24,23 +23,22 @@ public class CarRacingGame {
 
     private void startRacing(Cars cars, int tryTimes) {
 
-        RandomGenerator randomGenerator = new RandomGenerator();
-        WinnerChecker winnerChecker = new WinnerChecker(cars);
+        Winners winners = new Winners(cars);
 
         outputView.printStart();
 
         for (int i = 0; i < tryTimes; i++){
-            cars.moveCars(randomGenerator);
+            cars.moveCars(new RandomNumberMovingStrategy());
             printTrails(cars);
             outputView.printBlank();
         }
 
-        outputView.printWinner(winnerChecker.findWinners());
+        outputView.printWinner(winners.findWinners());
     }
 
     private void printTrails(Cars cars) {
         for (Car car : cars.getCars()) {
-            outputView.printTrail(car.getName(), car.getPosition());
+            outputView.printTrail(car.getName(), car.getPositionTrail());
         }
     }
 }
