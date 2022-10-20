@@ -1,4 +1,4 @@
-package racingCar.step3;
+package racingCar;
 
 public class ResultView {
     public void print(String str) {
@@ -13,6 +13,6 @@ public class ResultView {
     }
 
     private void print(RacingCar car) {
-        System.out.println(car.print());
+        System.out.println(car.toString());
     }
 }

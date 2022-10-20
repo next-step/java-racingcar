@@ -1,11 +1,14 @@
+package racingCar;
+
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingCar.step3.RacingCar;
+import racingCar.RacingCar;
 
 import static org.assertj.core.api.Assertions.*;
 
 public class RacingCarTest {
-    private RacingCar car = new RacingCar("test", System.currentTimeMillis());
+    private RacingCar car = new RacingCar("test");
 
     @ParameterizedTest(name = "{displayName} [{index}] {argumentsWithNames}")
     @ValueSource(ints = {1, 2, 3})
@@ -29,4 +32,5 @@ public class RacingCarTest {
     void 자동차_이름_5글자_초과(String name) {
         assertThatThrownBy(() -> new RacingCar(name, 1));
     }
+
 }
