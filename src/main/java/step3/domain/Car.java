@@ -29,9 +29,21 @@ public class Car {
         return this.name;
     }
 
+    public boolean isMaxPosition(Position position) {
+        return this.position.currentPosition() == position.currentPosition();
+    }
+
+    public Position maxPosition(Position position) {
+        if(position.currentPosition() < this.position.currentPosition()) {
+            return this.position;
+        }
+        return position;
+    }
+
     private boolean isAdvanced(int value) {
         return value >= ADVANCED_VALUE;
     }
+
 
     @Override
     public boolean equals(Object o) {
