@@ -1,7 +1,9 @@
 package step4;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Cars {
     private final List<Car> cars;
@@ -10,18 +12,43 @@ public class Cars {
         this.cars = cars;
     }
 
-    public void printLocations(MaxLocation maxLocation) {
+    public Map<String, Integer> storeCarNameAndLocation() {
+        Map<String, Integer> map = new HashMap<>();
         for (Car car : cars) {
-            System.out.print(car.getResult(maxLocation));
+            map.put(car.getCarName(), car.getLocation());
         }
-        System.out.println();
+        return map;
     }
 
-    public List<String> findWinnerName(MaxLocation maxLocation) {
-        List<String> carNameList = new ArrayList<>();
+    public void moveCar(RandomNumber randomNumber) {;
         for (Car car : cars) {
-            car.findName(carNameList, maxLocation);
+            car.moveLocation(randomNumber.generateRandomNumber());
         }
-        return carNameList;
+    }
+
+    public List<String> findWinner() {
+        List<String> carNames = new ArrayList<>();
+        findMaxLocation(carNames, getMaxPosition());
+        return carNames;
+    }
+
+    private int getMaxPosition() {
+        int maxPosition = 0;
+        for (Car car : cars) {
+            maxPosition = car.findMaxLocation(maxPosition);
+        }
+        return maxPosition;
+    }
+
+    private void findMaxLocation(List<String> carNames, int maxPosition) {
+        for (Car car : cars) {
+            addCarNames(carNames, maxPosition, car);
+        }
+    }
+
+    private static void addCarNames(List<String> carNames, int maxPosition, Car car) {
+        if (car.isMaxLocation(maxPosition)) {
+            carNames.add(car.getCarName());
+        }
     }
 }
