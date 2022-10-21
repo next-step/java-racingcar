@@ -16,6 +16,10 @@ public class Name {
         this.name = name;
     }
 
+    public String currentName() {
+        return this.name;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -33,8 +37,4 @@ public class Name {
         return Objects.hash(name);
     }
 
-    @Override
-    public String toString() {
-        return this.name;
-    }
 }

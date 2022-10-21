@@ -15,10 +15,11 @@ public class WinnerTest {
     @Test
     void 우승자_구하기(){
         List<Car> cars = Arrays.asList(
-                new Car(new Name("abc"), new Position(2)),
-                new Car(new Name("abcd"), new Position(0))
+                new Car(new Name("bbb"), new Position(2)),
+                new Car(new Name("vvv"), new Position(0)),
+                new Car(new Name("aaa"), new Position(3))
         );
         List<Car> winners = Winners.findWinners(cars);
-        assertThat(winners).contains(new Car(new Name("abc"), new Position(2)));
+        assertThat(winners).contains(new Car(new Name("aaa"), new Position(3)));
     }
 }

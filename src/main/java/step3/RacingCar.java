@@ -34,7 +34,7 @@ public class RacingCar {
 
     private static void finalWinner(List<Car> cars) {
         List<Car> winners = Winners.findWinners(cars);
-        resultView.winnerView(winners);
+        System.out.println(resultView.winnerView(winners));
 
     }
 }

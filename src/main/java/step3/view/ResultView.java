@@ -19,11 +19,11 @@ public class ResultView {
         System.out.println();
     }
 
-    public void winnerView(List<Car> cars) {
+    public String winnerView(List<Car> cars) {
         String[] names = new String[cars.size()];
         for(int i = 0; i < cars.size(); i ++) {
-            names[i] = cars.get(i).currentName().toString();
+            names[i] = cars.get(i).currentName().currentName();
         }
-        System.out.print(String.join(", ", names) + " 가 최종 우승했습니다.");
+        return String.join(", ", names) + " 가 최종 우승했습니다.";
     }
 }
