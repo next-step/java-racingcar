@@ -33,8 +33,8 @@ public class Cars {
         return Objects.hash(cars);
     }
 
-    public void race() {
-        cars.forEach(Car::moveForward);
+    public void race(NumberStrategy numberStrategy) {
+        cars.forEach(car -> car.moveForward(numberStrategy));
     }
 
     public List<String> getCarNames() {
@@ -46,6 +46,10 @@ public class Cars {
     }
 
     public List<String> getWinnerNames() throws NoSuchElementException {
+        if (cars.isEmpty()) {
+            throw new NoSuchElementException(CAR_DOES_NOT_EXIST_EXCEPTION);
+        }
+
         return cars.stream()
                 .filter(car -> car.isSamePosition(getWinnerScore()))
                 .map(Car::getName)
