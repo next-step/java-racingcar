@@ -1,9 +1,10 @@
-package nextstep.javaracingcar;
+package nextstep.javaracingcar.domain;
 
 import java.util.Objects;
 
 public class CarName {
 
+    private static final int MAX_NAME_LENGTH = 5;
     private final String name;
 
     public CarName(final String name) {
@@ -13,7 +14,7 @@ public class CarName {
         }
 
         final String trimmedName = name.trim();
-        if (trimmedName.length() > 5) {
+        if (trimmedName.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없다.");
         }
 

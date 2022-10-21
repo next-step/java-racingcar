@@ -1,12 +1,12 @@
 package nextstep.javaracingcar;
 
+import nextstep.javaracingcar.domain.CarName;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThatNoException;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class CarNameTest {
 
@@ -14,14 +14,14 @@ class CarNameTest {
     @ParameterizedTest
     @NullAndEmptySource
     public void spec01(final String name) {
-        assertThatThrownBy(() -> new CarName(name)).isInstanceOf(IllegalArgumentException.class);
+        assertThatIllegalArgumentException().isThrownBy(() -> new CarName(name));
     }
 
     @DisplayName("자동차 이름은 5자를 초과할 수 없다.")
     @ParameterizedTest
     @ValueSource(strings = {"123456", "12345678", "123456789000"})
     public void spec02(final String name) {
-        assertThatThrownBy(() -> new CarName(name)).isInstanceOf(IllegalArgumentException.class);
+        assertThatIllegalArgumentException().isThrownBy(() -> new CarName(name));
     }
 
     @DisplayName("자동차 이름은 5자를 이하를 가질 수 있다.")

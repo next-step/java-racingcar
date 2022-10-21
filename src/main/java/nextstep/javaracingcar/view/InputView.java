@@ -1,6 +1,6 @@
 package nextstep.javaracingcar.view;
 
-import nextstep.javaracingcar.CarRacingGameInput;
+import nextstep.javaracingcar.domain.CarRacingGameInput;
 
 public class InputView {
 

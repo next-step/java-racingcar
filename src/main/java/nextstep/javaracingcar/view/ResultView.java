@@ -1,7 +1,7 @@
 package nextstep.javaracingcar.view;
 
-import nextstep.javaracingcar.CarDrivingResult;
-import nextstep.javaracingcar.CarRacingResult;
+import nextstep.javaracingcar.domain.CarDrivingResult;
+import nextstep.javaracingcar.domain.CarRacingResult;
 
 import java.util.List;
 import java.util.stream.Collectors;
