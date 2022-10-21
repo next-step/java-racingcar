@@ -2,6 +2,7 @@ package racing.domain;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Winner {
@@ -38,5 +39,18 @@ public class Winner {
 
     public Position getMaxPosition() {
         return winner.get(0).getPosition();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Winner winner1 = (Winner) o;
+        return Objects.equals(winner, winner1.winner);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(winner);
     }
 }

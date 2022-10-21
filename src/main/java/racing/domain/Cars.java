@@ -17,14 +17,6 @@ public class Cars {
         }
     }
 
-    public List<Car> findWinners() {
-        return new Winner(carList).getWinners();
-    }
-
-    public String findWinnersName() {
-        return new Winner(carList).findWinnersName();
-    }
-
     public List<Car> getCarList() {
         return carList;
     }
