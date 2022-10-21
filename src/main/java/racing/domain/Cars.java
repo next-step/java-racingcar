@@ -18,7 +18,7 @@ public class Cars {
     }
 
     public List<Car> findWinners() {
-        return new Winner(carList).findWinners();
+        return new Winner(carList).getWinners();
     }
 
     public String findWinnersName() {
