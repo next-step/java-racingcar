@@ -15,7 +15,7 @@ public class CarRacingResult implements Iterable<CarDrivingResult> {
 
     public List<CarDrivingResult> winners() {
         final Distance maxDistance = maxDistance();
-        return drivingResults.stream().filter(r -> r.isPosition(maxDistance)).collect(Collectors.toList());
+        return drivingResults.stream().filter(r -> r.equalsDistance(maxDistance)).collect(Collectors.toList());
     }
 
     @Override

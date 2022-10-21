@@ -12,8 +12,8 @@ public class CarDrivingResultTest {
     public void spec01() {
         final Distance ten = new Distance(10);
         final CarDrivingResult carDrivingResult = new CarDrivingResult("aa", ten);
-        assertThat(carDrivingResult.isPosition(Distance.ONE)).isFalse();
-        assertThat(carDrivingResult.isPosition(ten)).isTrue();
+        assertThat(carDrivingResult.equalsDistance(Distance.ONE)).isFalse();
+        assertThat(carDrivingResult.equalsDistance(ten)).isTrue();
     }
 
     @DisplayName("내 거리와 비교해서 더 큰 거리를 반환한다.")

@@ -24,7 +24,7 @@ public class CarDrivingResult {
         return this.distance;
     }
 
-    public boolean isPosition(final Distance distance) {
+    public boolean equalsDistance(final Distance distance) {
         return distance.equals(this.distance);
     }
 
