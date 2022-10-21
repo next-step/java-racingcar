@@ -21,16 +21,6 @@ public class Position {
         return this.position;
     }
 
-    public String compare(Position previous) {
-        if(this.position > previous.currentPosition()) {
-            return "bigger";
-        }
-        if(this.position > previous.currentPosition()) {
-            return "equals";
-        }
-        return "small";
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
