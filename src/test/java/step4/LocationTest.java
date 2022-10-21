@@ -1,31 +1,38 @@
 package step4;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class LocationTest {
+
+    private Car car;
+
+    @BeforeEach
+    void setup() {
+        car = new Car("abc", new Location(3));
+    }
 
     @Test
     @DisplayName("랜덤값이 4이상이면 전진한다")
     void advanceSuccessTest() {
-        Location location = new Location(1);
-        assertThat(location.move(4)).isEqualTo(new Location(2));
+        car.moveLocation(4);
+        assertThat(car.getLocation()).isEqualTo(4);
     }
 
     @Test
     @DisplayName("랜덤값이 4미만이면 전진하지않는다")
     void advanceFailTest() {
-        Location location = new Location(1);
-        assertThat(location.move(3)).isEqualTo(new Location(1));
+        car.moveLocation(3);
+        assertThat(car.getLocation()).isEqualTo(3);
     }
 
-//    @Test
-//    @DisplayName("maxLocation값과 입력값을 비교한다")
-//    void maxLocationTest() {
-//        MaxLocation maxLocation = new MaxLocation(3);
-//        assertTrue(maxLocation.isEqualToMaxLocation(3));
-//    }
+    @Test
+    @DisplayName("최대Location 값을 반환한다")
+    void maxLocationTest() {
+        assertThat(car.findMaxLocation(2)).isEqualTo(3);
+        assertThat(car.findMaxLocation(4)).isEqualTo(4);
+    }
 }
