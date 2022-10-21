@@ -1,5 +1,6 @@
 package nextstep.javaracingcar;
 
+import nextstep.javaracingcar.domain.Distance;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

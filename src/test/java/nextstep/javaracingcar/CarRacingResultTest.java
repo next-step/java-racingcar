@@ -1,6 +1,8 @@
 package nextstep.javaracingcar;
 
-import org.junit.jupiter.api.Assertions;
+import nextstep.javaracingcar.domain.CarDrivingResult;
+import nextstep.javaracingcar.domain.CarRacingResult;
+import nextstep.javaracingcar.domain.Distance;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

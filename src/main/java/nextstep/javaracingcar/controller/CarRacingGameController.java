@@ -1,21 +1,16 @@
-package nextstep.javaracingcar;
+package nextstep.javaracingcar.controller;
 
+import nextstep.javaracingcar.domain.CarRacingGame;
+import nextstep.javaracingcar.domain.CarRacingGameInput;
+import nextstep.javaracingcar.domain.MovingStrategy;
+import nextstep.javaracingcar.domain.RandomGoOrStop;
 import nextstep.javaracingcar.view.InputView;
 import nextstep.javaracingcar.view.ResultView;
 
 import java.util.Random;
 
-public class CarRacingGameConsoleLauncher {
-
-    private final InputView inputView;
-    private final ResultView resultView;
-
-    public CarRacingGameConsoleLauncher(final InputView inputView, final ResultView resultView) {
-        this.inputView = inputView;
-        this.resultView = resultView;
-    }
-
-    public void run() {
+public class CarRacingGameController {
+    public void race(final InputView inputView, final ResultView resultView) {
 
         final Random random = new Random();
         final MovingStrategy goOrStopEngine = new RandomGoOrStop(() -> random.nextInt(10), 4);

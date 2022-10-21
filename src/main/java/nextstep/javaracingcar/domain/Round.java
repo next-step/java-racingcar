@@ -1,4 +1,4 @@
-package nextstep.javaracingcar;
+package nextstep.javaracingcar.domain;
 
 public class Round {
     private int remain;

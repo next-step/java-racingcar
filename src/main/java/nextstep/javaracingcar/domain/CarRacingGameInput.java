@@ -1,4 +1,6 @@
-package nextstep.javaracingcar;
+package nextstep.javaracingcar.domain;
+
+import nextstep.javaracingcar.domain.Round;
 
 public class CarRacingGameInput {
 

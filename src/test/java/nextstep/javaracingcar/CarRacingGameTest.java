@@ -1,5 +1,6 @@
 package nextstep.javaracingcar;
 
+import nextstep.javaracingcar.domain.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -9,7 +10,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.ArrayList;
 import java.util.List;
 
-import static nextstep.javaracingcar.PositiveNumber.from;
+import static nextstep.javaracingcar.domain.PositiveNumber.from;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarRacingGameTest {

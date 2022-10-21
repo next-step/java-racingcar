@@ -1,5 +1,6 @@
 package nextstep.javaracingcar;
 
+import nextstep.javaracingcar.controller.CarRacingGameController;
 import nextstep.javaracingcar.view.InputSupplier;
 import nextstep.javaracingcar.view.InputView;
 import nextstep.javaracingcar.view.OutputConsumer;
@@ -18,8 +19,7 @@ public class Main {
         final InputView inputView = new InputView(inputSupplier, outputConsumer);
         final ResultView resultView = new ResultView(outputConsumer);
 
-        final CarRacingGameConsoleLauncher launcher = new CarRacingGameConsoleLauncher(inputView, resultView);
-
-        launcher.run();
+        final CarRacingGameController controller = new CarRacingGameController();
+        controller.race(inputView, resultView);
     }
 }

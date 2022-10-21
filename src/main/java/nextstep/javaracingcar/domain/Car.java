@@ -1,4 +1,4 @@
-package nextstep.javaracingcar;
+package nextstep.javaracingcar.domain;
 
 public class Car {
     private final CarName name;

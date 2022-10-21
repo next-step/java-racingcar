@@ -1,5 +1,7 @@
 package nextstep.javaracingcar;
 
+import nextstep.javaracingcar.domain.Distance;
+import nextstep.javaracingcar.domain.RandomGoOrStop;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;

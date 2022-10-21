@@ -1,4 +1,4 @@
-package nextstep.javaracingcar;
+package nextstep.javaracingcar.domain;
 
 public class Distance implements Comparable<Distance> {
     public static final Distance ZERO = new Distance(0);
