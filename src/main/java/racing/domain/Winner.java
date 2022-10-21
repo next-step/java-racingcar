@@ -1,52 +1,42 @@
 package racing.domain;
 
-import racing.utils.SplitUtil;
-
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Winner {
 
-    private final List<Car> carList;
-    private static final int MAX_POSITION_IDX = 0;
+    private final List<Car> winner;
 
     public Winner(List<Car> carList) {
-        this.carList = carList;
+        this.winner = findWinners(carList);
     }
 
-    public List<Car> findWinners() {
-        return findWinners(findMaxPosition());
+    private List<Car> findWinners(List<Car> carList) {
+        return findWinners(carList, findMaxPosition(carList));
     }
 
-    private List<Car> findWinners(Position maxPosition) {
-        List<Car> winners = new ArrayList<>();
-        for (Car car : carList) {
-            if(!car.isWinner(maxPosition)) {
-                break;
-            }
-            winners.add(car);
-        }
-        return winners;
+    private List<Car> findWinners(List<Car> carList, Position maxPosition) {
+        return carList.stream()
+                .filter(p -> p.getPosition().equals(maxPosition))
+                .collect(Collectors.toList());
     }
 
     public String findWinnersName() {
-        return findWinnersName(findMaxPosition());
+        return winner.stream()
+                .map(c -> c.getName())
+                .collect(Collectors.joining(", "));
     }
 
-    private String findWinnersName(Position maxPosition) {
-        List<String> winnersName = new ArrayList<>();
-        for (Car car : carList) {
-            if(!car.isWinner(maxPosition)) {
-                break;
-            }
-            winnersName.add(car.getName());
-        }
-        return SplitUtil.listToStr(winnersName);
+    private Position findMaxPosition(List<Car> carList) {
+        return Collections.max(carList).getPosition();
     }
 
-    public Position findMaxPosition() {
-        Collections.sort(carList);
-        return carList.get(MAX_POSITION_IDX).getPosition();
+    public List<Car> getWinners() {
+        return winner;
+    }
+
+    public Position getMaxPosition() {
+        return winner.get(0).getPosition();
     }
 }

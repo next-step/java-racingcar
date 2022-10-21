@@ -18,7 +18,7 @@ class WinnerTest {
         List<Car> carList = Arrays.asList(car1, car2, car3);
 
         Winner winner = new Winner(carList);
-        assertThat(winner.findMaxPosition()).isEqualTo(new Position(5));
+        assertThat(winner.getMaxPosition()).isEqualTo(new Position(5));
     }
 
     @Test
@@ -32,8 +32,8 @@ class WinnerTest {
 
         Winner oneWinner = new Winner(listOneWinner);
         Winner winners = new Winner(listWinners);
-        assertThat(oneWinner.findWinners()).isEqualTo(Arrays.asList(car4));
-        assertThat(winners.findWinners()).isEqualTo(Arrays.asList(car1, car2));
+        assertThat(oneWinner.getWinners()).isEqualTo(Arrays.asList(car4));
+        assertThat(winners.getWinners()).isEqualTo(Arrays.asList(car1, car2));
     }
 
     @Test
@@ -48,6 +48,6 @@ class WinnerTest {
         Winner oneWinner = new Winner(listOneWinner);
         Winner winners = new Winner(listWinners);
         assertThat(oneWinner.findWinnersName()).isEqualTo("자동차4");
-        assertThat(winners.findWinnersName()).isEqualTo("자동차1,자동차2");
+        assertThat(winners.findWinnersName()).isEqualTo("자동차1, 자동차2");
     }
 }

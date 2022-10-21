@@ -37,6 +37,6 @@ public class Position implements Comparable<Position> {
 
     @Override
     public int compareTo(Position o) {
-        return this.position - o.position;
+        return o.position - this.position;
     }
 }
