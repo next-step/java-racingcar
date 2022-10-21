@@ -3,7 +3,6 @@ package racing.utils;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -64,27 +63,6 @@ class CheckUtilTest {
         void 문자열_배열_변환_체크() {
             assertThat(CheckUtil.checkStrToArray("자동차1,자동차2")).isTrue();
             assertThat(CheckUtil.checkStrToArray("자동차1,,자동차2")).isFalse();
-        }
-    }
-
-    @Nested
-    class StrToList {
-        @Test
-        void 문자열_리스트_체크() {
-            List<String> list = SplitUtil.strToList("자동차1,자동차2");
-            assertThat(CheckUtil.checkStrList(list)).isTrue();
-        }
-
-        @Test
-        void 문자열_리스트_Null_체크() {
-            List<String> list = SplitUtil.strToList("자동차1,,자동차2");
-            assertThat(CheckUtil.checkStrList(list)).isFalse();
-        }
-
-        @Test
-        void 문자열_리스트_변환_체크() {
-            assertThat(CheckUtil.checkStrToList("자동차1,자동차2")).isTrue();
-            assertThat(CheckUtil.checkStrToList("자동차1,,자동차2")).isFalse();
         }
     }
 }

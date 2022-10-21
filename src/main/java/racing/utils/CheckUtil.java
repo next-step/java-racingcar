@@ -13,7 +13,6 @@ public class CheckUtil {
 
     public static boolean isNull(String str) {
         if (StringUtils.isBlank(str)) {
-            SystemMention.NULL_CHECK.printMention();
             return true;
         }
         return false;
@@ -24,7 +23,6 @@ public class CheckUtil {
         if (matcher.find()) {
             return true;
         }
-        SystemMention.NUMBER_CHECK.printMention();
         return false;
     }
 
@@ -36,23 +34,29 @@ public class CheckUtil {
         if (number > 0) {
             return true;
         }
-        SystemMention.POSITIVE_CHECK.printMention();
         return false;
     }
 
     public static boolean checkPositive(String input) {
         if (isNull(input)) {
+            SystemMention.NULL_CHECK.printMention();
             return false;
         }
         if (!isNumber(input)) {
+            SystemMention.NUMBER_CHECK.printMention();
             return false;
         }
-        return isPositive(input);
+        if (!isPositive(input)) {
+            SystemMention.POSITIVE_CHECK.printMention();
+            return false;
+        }
+        return true;
     }
 
     public static boolean checkStrArray(String[] arr) {
         for (String str : arr) {
             if (isNull(str)) {
+                SystemMention.NULL_CHECK.printMention();
                 return false;
             }
         }
@@ -61,24 +65,9 @@ public class CheckUtil {
 
     public static boolean checkStrToArray(String input) {
         if (isNull(input)) {
+            SystemMention.NULL_CHECK.printMention();
             return false;
         }
-        return CheckUtil.checkStrArray(SplitUtil.strToArray(input));
-    }
-
-    public static boolean checkStrList(List<String> list) {
-        for (String str : list) {
-            if (isNull(str)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public static boolean checkStrToList(String input) {
-        if (isNull(input)) {
-            return false;
-        }
-        return CheckUtil.checkStrList(SplitUtil.strToList(input));
+        return checkStrArray(SplitUtil.strToArray(input));
     }
 }
