@@ -37,10 +37,6 @@ public class Car {
         return maxLocation.isMaxLocation(location);
     }
 
-    private StringBuilder getResultStringBuilder() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(carName).append(" : ").append("-".repeat(location.getPosition())).append("\n");
-        return sb;
     }
 
     private boolean isOverCarNameMaxSize(String carName) {
