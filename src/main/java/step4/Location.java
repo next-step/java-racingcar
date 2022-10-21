@@ -3,30 +3,14 @@ package step4;
 import java.util.Objects;
 
 public class Location {
-    private static final int ADVANCE_RANDOM_NUMBER = 4;
     private final int position;
-
-    public Location() {
-        this(0);
-    }
 
     public Location(int position) {
         this.position = position;
     }
 
-    public Location move(int randomNumber) {
-        if (isMovable(randomNumber)) {
-            return new Location(this.position + 1);
-        }
-        return new Location(this.position);
-    }
-
-    public int calculateMaxLocation(int maxLocation) {
-        return Math.max(maxLocation, this.position);
-    }
-
-    private boolean isMovable(int randomNumber) {
-        return randomNumber >= ADVANCE_RANDOM_NUMBER;
+    public Location increaseLocation() {
+        return new Location(this.position + 1);
     }
 
     public int getPosition() {
