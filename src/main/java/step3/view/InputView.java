@@ -1,8 +1,11 @@
-package step3;
+package step3.view;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import step3.domain.Car;
+import step3.domain.Name;
+import step3.domain.Position;
 
 public class InputView {
 

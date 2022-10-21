@@ -3,6 +3,9 @@ package step3;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
+import step3.domain.Car;
+import step3.domain.Name;
+import step3.domain.Position;
 
 public class NameTest {
 
