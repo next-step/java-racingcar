@@ -4,10 +4,10 @@ import static racingcar.race.RacingModel.MOVE_POSSIBLE;
 
 public class Car {
     private int position;
-    private String name;
 
-    public Car(int position) {
-        this.position = position;
+    private String name;
+    public Car(String name) {
+        this.name = name;
     }
     public Car(String name, int position) {
         this.name = name;

@@ -17,9 +17,11 @@ public class CalculatorIO {
         if (result != null) return result;
         return text.split(SEPARATOR);
     }
+
     public static boolean isBlank(String text) {
         return text == null || text.isBlank();
     }
+
     private static String[] splitCustomSeparator(String text) {
         Matcher matcher = compile("//(.)\n(.*)").matcher(text);
         if (matcher.find()) {

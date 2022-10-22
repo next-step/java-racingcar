@@ -28,7 +28,7 @@ class RacingModelTest {
     void negative(int tryCount) {
         Assertions.assertThatThrownBy(
                 () -> {
-                    RacingModel racingModel = new RacingModel(new String[]{"a","b"}, tryCount);
+                    RacingModel racingModel = new RacingModel(tryCount);
                 }).isInstanceOf(RuntimeException.class).hasMessageContaining("0보다 큰 수를 입력하세요");
     }
 

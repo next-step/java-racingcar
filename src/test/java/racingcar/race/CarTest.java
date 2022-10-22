@@ -10,7 +10,7 @@ class CarTest {
     @DisplayName("차가 움직이면 위치가 증가한다")
     @Test
     public void move_NumberIsLessThanFour_KeepPosition() {
-        Car car = new Car(1);
+        Car car = new Car("name",1);
 
         // When
         car.move(new NumberGenerator() {

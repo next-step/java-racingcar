@@ -2,7 +2,6 @@ package racingcar.view;
 
 import racingcar.race.Car;
 import racingcar.race.RacingCars;
-import racingcar.race.RacingModel;
 
 import java.util.List;
 
@@ -10,11 +9,9 @@ public class ResultView {
 
     private static int ONLY_ONE_WINNER = 1;
     private RacingCars racingCars;
-    private RacingModel racingModel;
 
-    public ResultView(RacingCars racingCars, RacingModel racingModel) {
+    public ResultView(RacingCars racingCars) {
         this.racingCars = racingCars;
-        this.racingModel = racingModel;
     }
 
     public void printEachRacingStep() {

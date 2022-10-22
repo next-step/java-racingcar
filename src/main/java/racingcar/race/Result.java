@@ -1,5 +1,6 @@
 package racingcar.race;
 
+import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
 import java.util.ArrayList;
@@ -9,14 +10,16 @@ import java.util.stream.Collectors;
 
 public class Result {
     private ResultView resultView;
+    private RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+
     public Result(ResultView resultView) {
         this.resultView = resultView;
     }
 
     public void racingStartAndPrint(RacingModel racingModel, RacingCars cars) {
         System.out.println("실행 결과");
-        for (int trys = 0; trys < racingModel.getTryCount(); trys++) {
-            racingModel.racingStart(cars);
+        for (int trys = 0; trys < InputView.tryCount; trys++) {
+            racingModel.racingStart(cars, randomNumberGenerator);
             resultView.printEachRacingStep();
         }
         printWinner(racingModel, cars);
