@@ -1,25 +1,39 @@
 package racing.controller;
 
-import racing.msg.SystemMention;
 import racing.domain.Cars;
+import racing.domain.Winner;
+import racing.msg.SystemMention;
+import racing.strategy.RandomMovingStrategy;
+import racing.view.ResultView;
 import racing.view.UserInput;
+import racing.domain.Car;
+
+import java.util.List;
 
 public class RacingGame {
 
-    public static void runGame() {
+    public void runGame() {
         UserInput userInput = new UserInput();
-        SystemMention.CNT_OF_CAR.printMention();
-        int cntOfCar = userInput.inputCntOfCar();
-        SystemMention.CNT_OF_TRY.printMention();
-        int cntOfTry = userInput.inputCntOfCar();
+        List<Car> carList = userInput.inputCarList();
+        int cntOfTry = userInput.inputCntOfTry();
 
-        Cars cars = new Cars(cntOfCar);
-        Racing racing = new Racing(cntOfTry);
         SystemMention.RESULT.printMention();
-        racing.race(cars);
+        Winner winner = new Winner(race(carList, cntOfTry));
+        SystemMention.SUFFIX_WINNER.printMention(winner.findWinnersName());
+    }
+
+    private List<Car> race(List<Car> carList, int cntOfTry) {
+        Cars cars = new Cars(carList);
+        ResultView resultView = new ResultView();
+        for (int i = 0; i < cntOfTry; i++) {
+            cars.moveCars(new RandomMovingStrategy());
+            resultView.printRacingResult(cars);
+        }
+        return cars.getCarList();
     }
 
     public static void main(String[] args) {
-        RacingGame.runGame();
+        RacingGame racingGame = new RacingGame();
+        racingGame.runGame();
     }
 }

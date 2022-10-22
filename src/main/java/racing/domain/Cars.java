@@ -1,26 +1,19 @@
 package racing.domain;
 
+import racing.strategy.MovingStrategy;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    private List<Car> carList;
+    private final List<Car> carList;
 
-    public Cars(int cntOfCar) {
-        setCarList(cntOfCar);
+    public Cars(List<Car> carList) {
+        this.carList = carList;
     }
 
-    private void setCarList(int cntOfCar) {
-        carList = new ArrayList<>();
-        for (int i = 0; i < cntOfCar; i++) {
-            carList.add(new Car());
-        }
-    }
-
-    public void moveCar(Moving moving) {
+    public void moveCars(MovingStrategy movingStrategy) {
         for (Car car : carList) {
-            car.move(moving.moveRandomNumber());
+            car.move(movingStrategy);
         }
     }
 

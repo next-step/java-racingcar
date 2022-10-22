@@ -8,30 +8,24 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ResultViewTest {
 
     @Test
-    void 패턴_반복() {
-        assertThat(ResultView.positionStatus(2)).isEqualTo("--");
+    void 자동차_패턴() {
+        Car car1 = new Car("자동차1");
+        Car car2 = new Car("자동차2", 1);
+        Car car3 = new Car("자동차3", 3);
+
+        assertThat(new ResultView().printCarPosition(car1)).isEqualTo("");
+        assertThat(new ResultView().printCarPosition(car2)).isEqualTo("-");
+        assertThat(new ResultView().printCarPosition(car3)).isEqualTo("---");
     }
 
     @Test
-    void GO_출력() {
-        Car car = new Car();
-        car.move(1);
-        assertThat(ResultView.positionStatus(car.getPosition())).isEqualTo("-");
-    }
+    void 자동차명_패턴() {
+        Car car1 = new Car("자동차1");
+        Car car2 = new Car("자동차2", 1);
+        Car car3 = new Car("자동차3", 3);
 
-    @Test
-    void STOP_출력() {
-        Car car = new Car();
-        car.move(0);
-        assertThat(ResultView.positionStatus(car.getPosition())).isEqualTo("");
-    }
-
-    @Test
-    void 여러번_이동_출력() {
-        Car car = new Car();
-        car.move(0);
-        car.move(1);
-        car.move(1);
-        assertThat(ResultView.positionStatus(car.getPosition())).isEqualTo("--");
+        assertThat(new ResultView().printCarPosition(car1)).isEqualTo("자동차1 : ");
+        assertThat(new ResultView().printCarPosition(car2)).isEqualTo("자동차2 : -");
+        assertThat(new ResultView().printCarPosition(car3)).isEqualTo("자동차3 : ---");
     }
 }
