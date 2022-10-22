@@ -4,7 +4,7 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-public class InputViewImpl implements InputView {
+public class StandardInputView implements InputView {
 
 	private static final String NAME_DELIMITER = ",";
 	private static final Scanner SCANNER = new Scanner(System.in);

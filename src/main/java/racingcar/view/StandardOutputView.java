@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import racingcar.dto.CarDto;
 import racingcar.dto.Result;
 
-public class OutputViewImpl implements OutputView {
+public class StandardOutputView implements OutputView {
 
 	private static final String PROGRESS_INDICATOR = "-";
 	private static final String RESULT_MESSAGE = lineSeparator() + "실행 결과";

@@ -6,14 +6,14 @@ import racingcar.strategy.NumberOverFourStrategy;
 import racingcar.strategy.NumberStrategy;
 import racingcar.strategy.RandomNumberStrategy;
 import racingcar.view.InputView;
-import racingcar.view.InputViewImpl;
+import racingcar.view.StandardInputView;
 import racingcar.view.OutputView;
-import racingcar.view.OutputViewImpl;
+import racingcar.view.StandardOutputView;
 
 public class Game {
 
-	private static final InputView INPUT_VIEW = new InputViewImpl();
-	private static final OutputView OUTPUT_VIEW = new OutputViewImpl();
+	private static final InputView INPUT_VIEW = new StandardInputView();
+	private static final OutputView OUTPUT_VIEW = new StandardOutputView();
 	private static final int RANDOM_NUMBER_BOUND_INCLUSIVE = 9;
 
 	public static void main(String[] args) {
