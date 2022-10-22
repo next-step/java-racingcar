@@ -27,14 +27,6 @@ public class Car {
         this.movable = randomNumber>MOVABLE_NUMBER;
     }
 
-    @Override
-    public String toString() {
-        return "Car{" +
-                "position=" + position +
-                ", movable=" + movable +
-                '}';
-    }
-
     public void move() {
         if(this.movable) {
             this.position++;
