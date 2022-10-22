@@ -40,23 +40,6 @@ public class Name {
 	}
 
 	@Override
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
-			return false;
-
-		Name name1 = (Name)o;
-
-		return Objects.equals(name, name1.name);
-	}
-
-	@Override
-	public int hashCode() {
-		return name != null ? name.hashCode() : 0;
-	}
-
-	@Override
 	public String toString() {
 		return "Name{" +
 			"name='" + name + '\'' +

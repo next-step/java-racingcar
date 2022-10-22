@@ -37,7 +37,8 @@ class NameTest {
 	@DisplayName("이름에서 공백이 제거된다")
 	void blank_is_trimmed_by_default() {
 		String name = "    a";
+		Name trimmedName = Name.trimmedFrom(name);
 
-		assertThat(Name.trimmedFrom(name)).isEqualTo(new Name("a"));
+		assertThat(trimmedName.getName()).isEqualTo("a");
 	}
 }
