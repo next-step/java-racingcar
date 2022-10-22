@@ -1,21 +1,21 @@
 package step4;
 
 import static step4.InputView.*;
-import static step4.Util.separateCarNames;
+import static step4.Separator.separateCarNames;
 
 public class Main {
     public static void main(String[] args) {
         String[] carNames = separateCarNames(inputCarNames());
         int tryCount = inputTryCount();
 
-        ResultView resultView = new ResultView();
-        Winner winner = new Winner(carNames);
+        RacingHandler racingHandler = new RacingHandler(carNames);
 
         while (tryCount > 0) {
-            winner.findLocationAndWinnerName();
+            ResultView.printProcess(racingHandler.getCarNameAndLocation());
+            racingHandler.moveCar();
             tryCount--;
         }
 
-        resultView.printResult(winner.findLocationAndWinnerName());
+        ResultView.printResult(racingHandler.getWinnerName());
     }
 }

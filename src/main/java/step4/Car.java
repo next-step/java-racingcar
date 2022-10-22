@@ -1,46 +1,44 @@
 package step4;
 
-import java.util.List;
-
-import static step4.Util.generateRandomNumber;
-
 public class Car {
     private static final int CAR_NAME_MAXSIZE = 5;
     private final String carName;
     private Location location;
+    private final RandomNumber randomNumber;
 
     public Car(String carName) {
+        this(carName, new Location(1));
+    }
+
+    public Car(String carName, Location location) {
         if (isOverCarNameMaxSize(carName)) {
             throw new IllegalArgumentException("자동차이름이 너무 깁니다.");
         }
         this.carName = carName;
-        this.location = new Location();
+        this.location = location;
+        this.randomNumber = new RandomNumber();
     }
 
-    public StringBuilder getResult(MaxLocation maxLocation) {
-        moveLocation();
-        maxLocation.checkMax(location);
-        return getResultStringBuilder();
+    public int findMaxLocation(int location) {
+        return Math.max(location, getLocation());
     }
 
-    private void moveLocation() {
-        this.location = location.move(generateRandomNumber());
-    }
-
-    public void findName(List<String> carNameList, MaxLocation maxLocation) {
-        if (isMaxLocation(maxLocation)) {
-            carNameList.add(carName);
+    public void moveLocation(int randomNum) {
+        if (randomNumber.movable(randomNum)) {
+            this.location = location.increaseLocation();
         }
     }
 
-    private boolean isMaxLocation(MaxLocation maxLocation) {
-        return maxLocation.isMaxLocation(location);
+    public String getCarName() {
+        return carName;
     }
 
-    private StringBuilder getResultStringBuilder() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(carName).append(" : ").append("-".repeat(location.getPosition())).append("\n");
-        return sb;
+    public int getLocation() {
+        return location.getPosition();
+    }
+
+    boolean isMaxLocation(int maxPosition) {
+        return getLocation() == maxPosition;
     }
 
     private boolean isOverCarNameMaxSize(String carName) {
