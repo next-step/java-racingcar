@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import java.util.Objects;
+
 import racingcar.exception.NameException;
 
 public class Name {
@@ -9,9 +11,13 @@ public class Name {
 	private final String name;
 
 	public Name(final String name) {
-		validateNameLength(name);
 		validateNameNotBlank(name);
+		validateNameLength(name);
 		this.name = name;
+	}
+
+	public static Name trimmedFrom(String name) {
+		return new Name(name.trim());
 	}
 
 	private void validateNameLength(String name) {
@@ -31,6 +37,23 @@ public class Name {
 
 	public String getName() {
 		return name;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+
+		Name name1 = (Name)o;
+
+		return Objects.equals(name, name1.name);
+	}
+
+	@Override
+	public int hashCode() {
+		return name != null ? name.hashCode() : 0;
 	}
 
 	@Override

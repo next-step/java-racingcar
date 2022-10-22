@@ -32,4 +32,12 @@ class NameTest {
 
 		assertThatThrownBy(() -> new Name(name)).isInstanceOf(NameException.class);
 	}
+
+	@Test
+	@DisplayName("이름에서 공백이 제거된다")
+	void blank_is_trimmed_by_default() {
+		String name = "    a";
+
+		assertThat(Name.trimmedFrom(name)).isEqualTo(new Name("a"));
+	}
 }
