@@ -5,8 +5,8 @@ import carracing.views.InputView;
 import carracing.views.ResultView;
 
 public class RacingMain {
-    private static InputView inputView = new InputView();
-    private static ResultView resultView = new ResultView();
+    private static final InputView inputView = new InputView();
+    private static final ResultView resultView = new ResultView();
 
     public static void main(String[] args) {
         int carCount = inputView.getCarCount();
@@ -15,6 +15,7 @@ public class RacingMain {
         RacingGame racingGame = new RacingGame(carCount, tryCount);
 
         while (racingGame.remainTryCount()) {
+            racingGame.setMovable();
             racingGame.racing();
             resultView.showRacingPosition(racingGame);
         }

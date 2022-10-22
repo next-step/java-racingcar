@@ -22,15 +22,4 @@ public class CarTest {
         testCar.move();
         assertThat(testCar).usingRecursiveComparison().isEqualTo(new Car(1, 2));
     }
-
-    @Test
-    @DisplayName("Position to Dash Test")
-    public void positionToDashTest() {
-        Car testCar = new Car(1);
-        testCar.move();
-        testCar.move();
-        assertThat(testCar.makePositionToDash()).isEqualTo("--");
-    }
-
-
 }

@@ -6,43 +6,37 @@ import java.util.Random;
 
 public class RacingGame {
     private static final int RANDOM_RANGE = 10;
-    private static final int MOVABLE_NUMBER = 4;
 
     private static final List<Car> carList = new ArrayList<>();
     private static int tryCount;
 
-    Random random = new Random();
+    private static final Random random = new Random();
 
-    public RacingGame(int carCount, int pTryCount) {
-        tryCount = pTryCount;
+    public RacingGame(int carCount, int tryCount) {
+        this.tryCount = tryCount;
 
         for (int i = 0; i < carCount; i++) {
-            carList.add(new Car(i + 1));
+            this.carList.add(new Car(i + 1));
         }
     }
 
     public List<Car> getCarList() {
-        return carList;
+        return this.carList;
     }
 
     public boolean remainTryCount() {
-        if (this.tryCount <= 0) {
-            return false;
+        return this.tryCount >0;
+    }
+
+    public void setMovable(){
+        for(Car car:carList){
+            car.setMovable(random.nextInt(RANDOM_RANGE));
         }
-        return true;
     }
 
     public void racing() {
-        carList.forEach(a -> {
-            if (canMove()) {
-                a.move();
-            }
-        });
+        carList.forEach(car->car.move());
         reduceTryCount();
-    }
-
-    public boolean canMove() {
-        return random.nextInt(RANDOM_RANGE) >= MOVABLE_NUMBER;
     }
 
     public void reduceTryCount() {

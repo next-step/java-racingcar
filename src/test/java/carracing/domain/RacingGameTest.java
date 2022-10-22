@@ -40,4 +40,18 @@ public class RacingGameTest {
                 .comparingOnlyFields("carList", "tryCount")
                 .isEqualTo(new RacingGame(3, 1));
     }
+
+
+    @Test
+    @DisplayName("Racing Test")
+    public void racingTest() {
+        RacingGame racingGame = new RacingGame(2, 1);
+        Car car1 = racingGame.getCarList().get(0);
+        car1.setMovable(5);
+        racingGame.racing();
+        assertThat(car1.getPosition()).isEqualTo(1);
+        car1.setMovable(4);
+        racingGame.racing();
+        assertThat(car1.getPosition()).isEqualTo(1);
+    }
 }
