@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import java.util.Objects;
-
 import racingcar.exception.NameException;
 
 public class Name {
@@ -14,10 +12,6 @@ public class Name {
 		validateNameNotBlank(name);
 		validateNameLength(name);
 		this.name = name;
-	}
-
-	public static Name trimmedFrom(String name) {
-		return new Name(name.trim());
 	}
 
 	private void validateNameLength(String name) {

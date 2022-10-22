@@ -3,7 +3,7 @@ package racingcar.view;
 import java.util.List;
 
 public interface InputView {
-	List<String> readNames();
+	List<String> readTrimmedNames();
 
 	int readTrialCount();
 }

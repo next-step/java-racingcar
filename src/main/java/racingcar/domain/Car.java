@@ -8,7 +8,7 @@ public class Car {
 	private final Name name;
 
 	public Car(final String name) {
-		this.name = Name.trimmedFrom(name);
+		this.name = new Name(name);
 		this.position = new Position(0);
 	}
 

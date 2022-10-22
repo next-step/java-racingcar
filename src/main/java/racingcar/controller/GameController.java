@@ -22,7 +22,7 @@ public class GameController {
 	}
 
 	public void play() {
-		List<String> names = inputView.readNames();
+		List<String> names = inputView.readTrimmedNames();
 		Cars cars = Cars.ofNames(names);
 
 		int trialCount = inputView.readTrialCount();
