@@ -35,7 +35,7 @@ class GameControllerTest {
 
 		inputView = new InputView() {
 			@Override
-			public List<String> readTrimmedNames() {
+			public List<String> readNames() {
 				return NAMES;
 			}
 
