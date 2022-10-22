@@ -1,10 +1,7 @@
 package racing;
 
 public class Car {
-    public int moveCount;
-
-    public Car () {
-    }
+    private int moveCount;
 
     public void move () {
         int randomNumber = (int)(Math.random()*10);

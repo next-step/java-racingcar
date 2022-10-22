@@ -12,7 +12,7 @@ public class CarTest {
     void moveCar() {
         Car car = new Car();
         car.move();
-        if (car.moveCount > 0) {
+        if (car.getMoveCount() > 0) {
             assertThat(car.getMoveCount()).isEqualTo(1);
         }
     }
@@ -22,7 +22,7 @@ public class CarTest {
     void stopCar() {
         Car car = new Car();
         car.move();
-        if (car.moveCount == 0) {
+        if (car.getMoveCount() == 0) {
             assertThat(car.getMoveCount()).isEqualTo(0);
         }
     }
