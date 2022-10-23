@@ -2,9 +2,9 @@ package step4;
 
 public class Racing {
 
-    public void racing (Cars cars, int times, OutputRacingCar outputResult) {
+    public static void racing(Cars cars, int times) {
         for (int i = 0 ; i < times ; i++) {
-            outputResult.printRound(racingRound(cars));
+            OutputRacingCar.printRound(racingRound(cars));
         }
     }
 
