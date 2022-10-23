@@ -15,13 +15,13 @@ public class App {
         Scanner scanner = new Scanner(System.in);
 
         InputView inputView = new InputView();
-
-        RacingModel racingModel = inputView.printStartScreen(scanner);
+        inputView.printStartScreen(scanner);
 
         RacingCars cars = new RacingCars(new ArrayList<>());
-        initRacingCar(racingModel, cars);
+        RacingModel racingModel = new RacingModel(InputView.tryCount);
+        initRacingCar(cars);
 
-        ResultView resultView = new ResultView(cars, racingModel);
+        ResultView resultView = new ResultView(cars);
         Result result = new Result(resultView);
 
         result.racingStartAndPrint(racingModel, cars);
@@ -29,10 +29,9 @@ public class App {
         scanner.close();
     }
 
-    private static void initRacingCar(RacingModel racingModel, RacingCars cars) {
-
-        for (int carIndex = 0; carIndex < racingModel.getNumberOfCar(); carIndex++) {
-            cars.getRacingCars().add(new Car(0));
+    private static void initRacingCar(RacingCars cars) {
+        for (int carIndex = 0; carIndex < InputView.names.length; carIndex++) {
+            cars.addCar(new Car(InputView.names[carIndex]));
         }
     }
 }

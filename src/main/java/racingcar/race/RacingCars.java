@@ -12,4 +12,8 @@ public class RacingCars {
     public List<Car> getRacingCars() {
         return racingCars;
     }
+
+    public void addCar(Car car) {
+        this.racingCars.add(car);
+    }
 }

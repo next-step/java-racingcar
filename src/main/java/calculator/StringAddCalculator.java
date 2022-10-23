@@ -21,13 +21,15 @@ public class StringAddCalculator {
         }
         return result;
     }
+
     private static int[] toInt(String[] values) {
         int[] numbers = new int[values.length];
         for (int i = 0; i < values.length; i++) {
-           new PositiveNumber(values[i]);
+            new PositiveNumber(values[i]);
         }
         return numbers;
     }
+
     private static int[] toInts(String[] values) {
         int[] numbers = new int[values.length];
         for (int i = 0; i < values.length; i++) {
