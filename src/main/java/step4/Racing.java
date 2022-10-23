@@ -8,13 +8,11 @@ public class Racing {
         }
     }
 
-    public Cars racingRound(Cars cars) {
+    public static Cars racingRound(Cars cars) {
         for (int i = 0; i < cars.getCarsSize() ; i++) {
             Car car = cars.getCar(i);
             car.moveOrStop();
         }
         return cars;
     }
-
-
 }
