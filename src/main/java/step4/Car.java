@@ -1,14 +1,13 @@
 package step4;
 
-import java.util.Random;
-
 public class Car {
     private static final int NAME_LENGTH = 5;
+    private static final int CONDITION = 4;
 
     private String name;
     private Position position;
 
-    public Car(String name) {
+    Car(final String name) {
 
         if (name.length() > NAME_LENGTH) {
             throw new IllegalArgumentException("이름은 5자를 초과할 수 없습니다.");
@@ -18,17 +17,23 @@ public class Car {
         this.position = new Position();
     }
 
-    public void moveOrStop(MoveRule rule) {
+    void moveOrStop(MoveRule rule) {
         if (rule.passCondition()) {
             position.move();
         }
     }
 
-    public String getName() {
+    void moveOrStop(int number) {
+        if (number >= CONDITION) {
+            position.move();
+        }
+    }
+
+    String getName() {
         return name;
     }
 
-    public int getPosition() {
+    int getPosition() {
         return position.getPosition();
     }
 

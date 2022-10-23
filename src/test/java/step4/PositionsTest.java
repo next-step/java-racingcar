@@ -2,9 +2,6 @@ package step4;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.Map;
-
 import static org.assertj.core.api.Assertions.*;
 
 public class PositionsTest {
@@ -17,12 +14,12 @@ public class PositionsTest {
     }
 
     @Test
-    void initPosition() {
+    void position_초기화값_확인() {
         assertThat(position.getPosition()).isEqualTo(0);
     }
 
     @Test
-    void moveTest() {
+    void move후_position값_확인() {
         position.move();
         assertThat(position.getPosition()).isEqualTo(1);
     }

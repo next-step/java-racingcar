@@ -4,9 +4,8 @@ public class RacingGame {
 
     public static void run() {
         Result result = new Result();
-        Cars cars = new Cars();
 
-        cars.addCars(InputRacingCar.inputNames());
+        Cars cars = new Cars(InputRacingCar.inputNames());
         int times = InputRacingCar.inputTimes();
 
         OutputRacingCar.printTitle();

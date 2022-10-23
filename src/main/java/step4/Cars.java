@@ -8,24 +8,25 @@ public class Cars {
 
     private List<Car> cars = new ArrayList<>();
 
-    public Cars() {
+    Cars(final String[] names) {
+        addCars(names);
     }
 
-    public void addCars(String[] names) {
+    void addCars(String[] names) {
         for (String name : names) {
             this.cars.add(new Car(name));
         }
     }
 
-    public int getCarsSize() {
+    int getCarsSize() {
         return cars.size();
     }
 
-    public Car getCar(int index) {
+    Car getCar(int index) {
         return cars.get(index);
     }
 
-    public Car findMaxValue() {
+    Car findMaxValue() {
         return cars.stream().max(Comparator.comparing(Car::getPosition)).get();
     }
 }
