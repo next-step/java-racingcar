@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,38 +11,36 @@ public class Cars {
 
 	private final List<Car> cars;
 
-	public Cars(List<Car> cars) {
+	public Cars(final List<Car> cars) {
 		validateCarCount(cars);
 		this.cars = new ArrayList<>(cars);
 	}
 
-	public static Cars ofNames(List<String> names) {
+	public static Cars ofNames(final List<String> names) {
 		List<Car> cars = names.stream()
 			.map(Car::new)
 			.collect(Collectors.toList());
 		return new Cars(cars);
 	}
 
-	public void move(MoveStrategy moveStrategy) {
+	public void move(final MoveStrategy moveStrategy) {
 		for (Car car : cars) {
 			car.move(moveStrategy);
 		}
 	}
 
 	public List<String> findWinnerNames() {
-		int maxPosition = getMaxPosition();
 		return cars.stream()
-			.filter(car -> car.hasPositionSameAs(maxPosition))
+			.filter(car -> car.hasPositionSameAs(getMaxPosition()))
 			.map(Car::getName)
-			.collect(Collectors.toList());
+			.collect(Collectors.toUnmodifiableList());
 	}
 
-	private int getMaxPosition() {
-		Car farthestCar = new Car();
-		for (Car car : cars) {
-			farthestCar = getFartherCar(farthestCar, car);
-		}
-		return farthestCar.getPosition();
+	private Position getMaxPosition() {
+		return cars.stream()
+			.reduce(this::getFartherCar)
+			.orElseThrow(CarCountException::new)
+			.getPosition();
 	}
 
 	private Car getFartherCar(Car farthestCar, Car car) {
@@ -54,22 +51,21 @@ public class Cars {
 	}
 
 	private void validateCarCount(List<Car> cars) {
-		if (cars.size() <= 0) {
-			throw new CarCountException("자동차는 1개 이상이어야 합니다");
+		if (cars.isEmpty()) {
+			throw new CarCountException();
 		}
 	}
 
 	public List<Integer> getPositions() {
-		List<Integer> positions = new ArrayList<>();
-		for (Car car : cars) {
-			positions.add(car.getPosition());
-		}
-		return Collections.unmodifiableList(positions);
+		return cars.stream()
+			.map(Car::getPosition)
+			.map(Position::value)
+			.collect(Collectors.toUnmodifiableList());
 	}
 
 	public List<String> getNames() {
 		return cars.stream()
 			.map(Car::getName)
-			.collect(Collectors.toList());
+			.collect(Collectors.toUnmodifiableList());
 	}
 }

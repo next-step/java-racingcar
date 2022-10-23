@@ -9,34 +9,27 @@ import racingcar.strategy.MoveStrategy;
 
 public class CarTest {
 
+	private static final String NO_NAME = "이름없음";
+
 	private final MoveStrategy moveStrategyMovable = () -> true;
 	private final MoveStrategy moveStrategyNotMovable = () -> false;
 
 	@Test
 	@DisplayName("차는 전진할 수 있다")
 	void car_can_move() {
-		Car car = new Car();
+		Car car = new Car(NO_NAME);
 		car.move(moveStrategyMovable);
 
-		assertThat(car.hasPositionSameAs(1)).isTrue();
+		assertThat(car.hasPositionSameAs(new Position(1))).isTrue();
 	}
 
 	@Test
 	@DisplayName("차는 멈춰있을 수 있다")
 	void car_can_stay() {
-		Car car = new Car();
+		Car car = new Car(NO_NAME);
 		car.move(moveStrategyNotMovable);
 
-		assertThat(car.getPosition()).isZero();
-	}
-
-	@Test
-	@DisplayName("차는 위치를 반환할 수 있다")
-	void car_can_return_position() {
-		Car car = new Car();
-		car.move(moveStrategyMovable);
-
-		assertThat(car.getPosition()).isOne();
+		assertThat(car.hasPositionSameAs(new Position(0))).isTrue();
 	}
 
 	@Test

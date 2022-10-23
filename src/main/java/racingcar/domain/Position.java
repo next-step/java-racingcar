@@ -11,7 +11,7 @@ public class Position implements Comparable<Position> {
 		this(0);
 	}
 
-	public Position(int position) {
+	public Position(final int position) {
 		validatePosition(position);
 		this.position = position;
 	}
@@ -26,7 +26,7 @@ public class Position implements Comparable<Position> {
 		}
 	}
 
-	public int getPosition() {
+	public int value() {
 		return position;
 	}
 
@@ -50,5 +50,12 @@ public class Position implements Comparable<Position> {
 	@Override
 	public int compareTo(Position o) {
 		return Integer.compare(position, o.position);
+	}
+
+	@Override
+	public String toString() {
+		return "Position{" +
+			"position=" + position +
+			'}';
 	}
 }
