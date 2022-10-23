@@ -46,6 +46,10 @@ public class Position {
         return trail;
     }
 
+    int getPosition() {
+        return this.position;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

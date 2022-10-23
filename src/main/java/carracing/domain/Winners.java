@@ -6,10 +6,11 @@ import java.util.List;
 public class Winners {
 
     public static final int DEFAULT_POSITION = 0;
+
     private final Cars cars;
 
     public Winners(Cars cars) {
-        if (cars.getCarsSize() < 1) {
+        if (cars.isEmpty()) {
             throw new RuntimeException("한대 이상의 자동차가 필요합니다.");
         }
 
@@ -21,9 +22,9 @@ public class Winners {
         List<Car> winnersList = new ArrayList<>();
         int maxPosition = findMaxPosition(cars.getCars());
 
-        for (Car car : cars.getCars()) {
-            checkAndPutWinner(winnersList, maxPosition, car);
-        }
+        cars.getCars().stream()
+                .forEach((Car car)->{checkAndPutWinner(winnersList,maxPosition,car);});
+
         return winnersList;
     }
 
@@ -32,6 +33,7 @@ public class Winners {
     }
 
     private static List<Car> findWinners(List<Car> cars, int maxPosition) {
+
         List<Car> winners = new ArrayList<>();
         for (Car car : cars) {
             if(car.isMaxPosition(maxPosition)){
@@ -56,6 +58,7 @@ public class Winners {
     }
 
     private int findMaxPosition(List<Car> cars) {
+
         int maxPosition = 0;
         for (Car car : cars) {
             maxPosition = car.maxPosition(maxPosition);

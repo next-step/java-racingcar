@@ -13,13 +13,6 @@ import static org.assertj.core.api.Assertions.*;
 public class CarsTest {
 
     @Test
-    void 쉼표를_통해_자동차를_생성() {
-        String[] strings = {"AA","BB"};
-        Cars cars = Cars.makeCars(strings);
-        assertThat(cars.getCarsSize()).isEqualTo(2);
-    }
-
-    @Test
     void 자동차주인이름_설정_가능(){
 
         String[] strings = {"AA","BB"};

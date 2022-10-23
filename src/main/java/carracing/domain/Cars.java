@@ -1,6 +1,7 @@
 package carracing.domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -18,8 +19,8 @@ public class Cars{
         return new ArrayList<>(cars);
     }
 
-    public int getCarsSize() {
-        return cars.size();
+    public boolean isEmpty() {
+        return cars.isEmpty();
     }
 
     public static Cars makeCars(String[] Names) {
@@ -32,12 +33,12 @@ public class Cars{
         cars.forEach(car -> car.move(movingStrategy));
     }
 
-    private static List<Car> makeCarList(String[] Names) {
+    private static List<Car> makeCarList(String[] names) {
         List<Car> carList = new ArrayList<>();
-        for (String name : Names) {
-            carList.add(new Car(name));
-        }
+        Arrays.stream(names)
+                .forEach((name) ->{carList.add(new Car(name)); });
         return carList;
     }
+
 
 }

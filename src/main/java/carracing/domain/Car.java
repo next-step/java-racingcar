@@ -5,7 +5,6 @@ import org.apache.commons.lang3.StringUtils;
 public class Car {
 
     public String name;
-
     private Position position;
 
     public Car(final String name) {
@@ -48,4 +47,9 @@ public class Car {
     public String getName() {
         return name;
     }
+
+    public int getPosition() {
+        return position.getPosition();
+    }
 }
+
