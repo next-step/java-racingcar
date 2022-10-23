@@ -1,10 +1,10 @@
 package carracing.controller;
 
+
 import carracing.domain.*;
+
 import carracing.view.InputView;
 import carracing.view.OutputView;
-
-import java.util.List;
 
 public class CarRacingGame {
 
