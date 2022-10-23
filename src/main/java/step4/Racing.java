@@ -11,8 +11,12 @@ public class Racing {
     public static Cars racingRound(Cars cars) {
         for (int i = 0; i < cars.getCarsSize() ; i++) {
             Car car = cars.getCar(i);
-            car.moveOrStop();
+            car.moveOrStop(rule());
         }
         return cars;
+    }
+
+    public static MoveRule rule() {
+        return new RandomMoveRule();
     }
 }

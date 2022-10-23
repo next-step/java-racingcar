@@ -4,9 +4,6 @@ import java.util.Random;
 
 public class Car {
     private static final int NAME_LENGTH = 5;
-    private static final int BETWEEN_ZERO_AND_NINE = 10;
-    private static final int CONDITION = 4;
-    private static final Random random = new Random();
 
     private String name;
     private Position position;
@@ -21,8 +18,8 @@ public class Car {
         this.position = new Position();
     }
 
-    public void moveOrStop() {
-        if (isSatisfiedConditionForMove(getRandomNum())) {
+    public void moveOrStop(MoveRule rule) {
+        if (rule.passCondition()) {
             position.move();
         }
     }
@@ -35,11 +32,4 @@ public class Car {
         return position.getPosition();
     }
 
-    public int getRandomNum() {
-        return random.nextInt(BETWEEN_ZERO_AND_NINE);
-    }
-
-    public boolean isSatisfiedConditionForMove(int randomNumber) {
-        return randomNumber >= CONDITION;
-    }
 }
