@@ -12,7 +12,7 @@ public class OutputRacingCar {
         System.out.println();
     }
 
-    private String printBar(int value) {
+    private static String printBar(int value) {
         String result = "";
         for (int i = 0 ; i < value ; i++) {
             result += "-";
