@@ -1,7 +1,5 @@
-package racingcar;
+package racingcar.domain;
 
-import exception.CustomException;
-import racingcar.exception.RacingCarErrorCode;
 import racingcar.generator.NumberGenerator;
 
 import java.util.ArrayList;

@@ -1,15 +1,15 @@
-package racingcar;
+package racingcar.domain;
 
 
 import exception.CustomException;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
 import racingcar.exception.CarErrorCode;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.Car.MOVE_DISTANCE;
+import static racingcar.domain.Car.MOVE_DISTANCE;
 
 public class CarTest {
 

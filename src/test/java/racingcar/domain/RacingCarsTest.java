@@ -1,11 +1,12 @@
-package racingcar;
+package racingcar.domain;
 
 import exception.CustomException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
+import racingcar.domain.RacingCars;
 import racingcar.exception.CarErrorCode;
-import racingcar.exception.RacingCarErrorCode;
 
 import java.util.List;
 

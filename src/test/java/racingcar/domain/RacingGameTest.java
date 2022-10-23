@@ -1,9 +1,10 @@
-package racingcar;
+package racingcar.domain;
 
 import exception.CustomException;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
+import racingcar.domain.RacingGame;
 import racingcar.exception.CarErrorCode;
 import racingcar.exception.RacingCarErrorCode;
 
@@ -22,13 +23,6 @@ public class RacingGameTest {
     }
 
     @Test
-    void carNames_length_bad_request_false() {
-        assertThatThrownBy(() -> new RacingGame("test1test2test3,test,test3"))
-                .isInstanceOf(CustomException.class)
-                .hasMessage(CarErrorCode.CAR_NAME_LENGTH_BAD_REQUEST.getMessage());
-    }
-
-    @Test
     @DisplayName("이동 횟수를 음수로 넘기면 테스트가 실패한다.")
     void moveNumber_negative_false() {
         RacingGame racingGame = new RacingGame("test1,test2,test3");
@@ -38,6 +32,7 @@ public class RacingGameTest {
     }
 
     @Test
+    @DisplayName("자동차 경주 참가자가 경주를 진행한다.")
     void race() {
         RacingGame racingGame = new RacingGame("test1,test2,test3");
         List<Car> cars = racingGame.race(5);

@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import exception.CustomException;
 import racingcar.exception.RacingCarErrorCode;

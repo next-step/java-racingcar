@@ -1,10 +1,10 @@
 package racingcar.view;
 
-import racingcar.Car;
+import racingcar.domain.Car;
 
 import java.util.List;
 
-public class RacingCarView {
+public class RacingGameResultView {
 
     private static final String LOCATION_PRINT_LETTER = "-";
 
