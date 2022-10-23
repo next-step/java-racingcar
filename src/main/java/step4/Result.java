@@ -5,7 +5,7 @@ import java.util.*;
 public class Result {
     private List<String> winner = new ArrayList<>();
 
-    public List<String> findWinner(Cars cars) {
+    List<String> findWinner(final Cars cars) {
         Car maxValue = cars.findMaxValue();
 
         for (int i = 0 ; i < cars.getCarsSize() ; i++) {
@@ -14,7 +14,7 @@ public class Result {
         return winner;
     }
 
-    private void addWinner(Car maxValue, Car car) {
+    void addWinner(Car maxValue, Car car) {
         if (car.getPosition() == maxValue.getPosition()) {
             winner.add(car.getName());
         }
