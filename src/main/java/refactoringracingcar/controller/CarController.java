@@ -1,7 +1,7 @@
 package refactoringracingcar.controller;
 
 import refactoringracingcar.domain.Car;
-import refactoringracingcar.domain.CarInformation;
+import refactoringracingcar.domain.Position;
 import refactoringracingcar.domain.RacingCarGame;
 import refactoringracingcar.view.InputView;
 import refactoringracingcar.view.ResultView;
@@ -11,7 +11,7 @@ import java.util.List;
 
 public class CarController {
 
-    private CarInformation carInformation = new CarInformation();
+    private Position position = new Position();
 
     public void startGame() {
         String[] carNames = InputView.enterCarName();
@@ -23,7 +23,7 @@ public class CarController {
     private void enterCarInformation(String[] carNames, int gameNumber) {
         List<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
-            cars.add(carInformation.resetCarStatus(carName));
+            cars.add(position.resetCarStatus(carName));
         }
 
         progressRacingCarGame(cars, gameNumber);
