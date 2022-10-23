@@ -1,25 +1,25 @@
-package racingcar;
+package racingcar.domain;
 
 import exception.CustomException;
 import racingcar.exception.RacingCarErrorCode;
 import racingcar.generator.RandomNumberGenerator;
-import racingcar.view.RacingCarView;
 
 import java.util.List;
 
-public class RacingStadium {
+public class RacingGame {
 
-    private RacingCars racingCars;
+    private final RacingCars racingCars;
 
-    public RacingStadium(String carNames) {
+    public RacingGame(String carNames) {
         this.racingCars = RacingCars.create(carNames);
     }
 
-    public void race(int moveNumber) {
+    public List<Car> race(int moveNumber) {
         validateMoveNumber(moveNumber);
         for (int i = 0; i < moveNumber; i++) {
             racingCars.moving(new RandomNumberGenerator());
         }
+        return racingCars.copy();
     }
 
     private void validateMoveNumber(int moveNumber) {
@@ -28,11 +28,7 @@ public class RacingStadium {
         }
     }
 
-    public void matchResult() {
-        RacingCarView.printRacingCar(racingCars.copy());
-    }
-
-    public void awards() {
-        RacingCarView.printWinner(racingCars.getWinners());
+    public List<Car> getWinner() {
+        return racingCars.getWinners();
     }
 }

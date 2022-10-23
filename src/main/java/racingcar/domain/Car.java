@@ -1,7 +1,4 @@
-package racingcar;
-
-import exception.CustomException;
-import racingcar.exception.CarErrorCode;
+package racingcar.domain;
 
 import java.util.Objects;
 

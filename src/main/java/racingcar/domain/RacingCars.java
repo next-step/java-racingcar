@@ -1,7 +1,5 @@
-package racingcar;
+package racingcar.domain;
 
-import exception.CustomException;
-import racingcar.exception.RacingCarErrorCode;
 import racingcar.generator.NumberGenerator;
 
 import java.util.ArrayList;
@@ -45,11 +43,9 @@ public class RacingCars {
     }
 
     public List<Car> copy() {
-        List<Car> result = new ArrayList<>();
-        for (Car car : cars) {
-            result.add(Car.from(car));
-        }
-        return result;
+        return cars.stream()
+                .map(Car::from)
+                .collect(Collectors.toList());
     }
 
     public List<Car> getWinners() {
