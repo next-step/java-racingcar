@@ -40,10 +40,6 @@ public class Car {
         }
     }
 
-    public String getPositionTrail() {
-        return this.position.getPositionTrail();
-    }
-
     public String getName() {
         return name;
     }
