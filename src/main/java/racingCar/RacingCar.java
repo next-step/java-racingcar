@@ -19,29 +19,35 @@ public class RacingCar {
         TRY_NUM = inputView.tryInput();
 
         ARR = initCarList(CAR_NUM);
-
+        System.out.println(Arrays.toString(ARR));
         resultView.printTitle();
         playGame();
     }
 
     public static String[] initCarList(int carNum){
-        String arr[] = new String[carNum];
-        Arrays.fill(arr, "");
-        return arr;
+        ARR = new String[carNum];
+        Arrays.fill(ARR, "");
+        return ARR;
     }
 
-    public static void move(int idx){
+    public static int getRandomNum(int maxNum){
         Random rd = new Random();
-        int random = rd.nextInt(MAX_NUM);
+        int random = rd.nextInt(maxNum);
+        return random;
+    }
+
+    public static void move(int idx, int random){
         if(random >= 4){
             ARR[idx] += "-";
         }
     }
 
     public static void playGame(){
+        int randomNum = 0;
         for(int i = 0; i<TRY_NUM; i++){
             for(int j = 0; j<CAR_NUM; j++){
-                move(j);
+                randomNum = getRandomNum(MAX_NUM);
+                move(j, randomNum);
             }
             resultView.printResult(ARR);
         }
