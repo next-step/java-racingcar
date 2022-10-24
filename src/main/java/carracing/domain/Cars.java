@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Cars{
@@ -36,7 +37,9 @@ public class Cars{
     private static List<Car> makeCarList(String[] names) {
         List<Car> carList = new ArrayList<>();
         Arrays.stream(names)
-                .forEach((name) ->{carList.add(new Car(name)); });
+                .map(name -> new Car(name))
+                .collect(Collectors.toList());
+
         return carList;
     }
 

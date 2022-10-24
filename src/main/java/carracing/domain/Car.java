@@ -23,7 +23,7 @@ public class Car {
         this.position = position;
     }
 
-    public boolean isMaxPosition(int position) {
+    public boolean hasMaxPosition(int position) {
         return this.position.isMaxPosition(position);
     }
 

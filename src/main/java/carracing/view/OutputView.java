@@ -11,8 +11,12 @@ public class OutputView {
         System.out.println("실행 결과");
     }
 
-    public void printTrail(String name , String positionTrail) {
-        System.out.println(name+" : "+ positionTrail);
+    public void printTrail(String name , int position) {
+        String result = "";
+        for (int i = 0; i < position; i++){
+            result += "-";
+        }
+        System.out.println(name + " : " + result);
     }
 
     public void printBlank() {

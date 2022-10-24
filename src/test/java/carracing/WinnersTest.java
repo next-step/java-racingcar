@@ -45,14 +45,4 @@ public class WinnersTest {
 
         assertThat(winners.findWinners()).isEqualTo(winnerList);
     }
-
-    @Test
-    void 우승자_구하기() {
-        List<Car> cars = Arrays.asList(
-                new Car("pobi",3),
-                new Car("jason", 2)
-        );
-        List<Car> winners = Winners.findWinners(cars);
-        assertThat(winners).contains(new Car("pobi",3));
-    }
 }

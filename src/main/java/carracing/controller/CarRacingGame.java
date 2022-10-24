@@ -23,22 +23,23 @@ public class CarRacingGame {
 
     private void startRacing(Cars cars, int tryTimes) {
 
-        Winners winners = new Winners(cars);
-
         outputView.printStart();
+        carsMove(cars, tryTimes);
+        Winners winners = new Winners(cars);
+        outputView.printWinner(winners.findWinners());
+    }
 
+    private void carsMove(Cars cars, int tryTimes) {
         for (int i = 0; i < tryTimes; i++){
             cars.moveCars(new RandomNumberMovingStrategy());
             printTrails(cars);
             outputView.printBlank();
         }
-
-        outputView.printWinner(winners.findWinners());
     }
 
     private void printTrails(Cars cars) {
         for (Car car : cars.getCars()) {
-            outputView.printTrail(car.getName(), car.getPositionTrail());
+            outputView.printTrail(car.getName(), car.getPosition());
         }
     }
 }

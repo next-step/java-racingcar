@@ -1,7 +1,6 @@
 package carracing;
 
 import carracing.domain.Car;
-import carracing.domain.MovingStrategy;
 import carracing.domain.Position;
 import org.junit.jupiter.api.Test;
 
@@ -18,8 +17,8 @@ public class CarTest {
     @Test
     void 최댓값_일치() {
         Car car = new Car("pobi");
-        assertThat(car.isMaxPosition(3)).isTrue();
-        assertThat(car.isMaxPosition(2)).isFalse();
+        assertThat(car.hasMaxPosition(3)).isTrue();
+        assertThat(car.hasMaxPosition(2)).isFalse();
     }
 
     @Test
