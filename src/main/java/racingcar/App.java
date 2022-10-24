@@ -26,12 +26,12 @@ public class App {
 
         result.racingStartAndPrint(racingModel, cars);
 
-        scanner.close();
+        InputView.close();
     }
 
     private static void initRacingCar(RacingCars cars) {
         for (int carIndex = 0; carIndex < InputView.names.length; carIndex++) {
-            cars.addCar(new Car(InputView.names[carIndex]));
+            cars.addCar(new Car(InputView.names[carIndex], 0));
         }
     }
 }

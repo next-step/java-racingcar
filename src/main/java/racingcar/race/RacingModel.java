@@ -2,9 +2,10 @@ package racingcar.race;
 
 public class RacingModel {
     protected static final int MOVE_POSSIBLE = 4;
+    private final int ZERO = 0;
 
     public RacingModel(int tryCount) {
-        if (tryCount < 0) {
+        if (tryCount < ZERO) {
             throw new RuntimeException("0보다 큰 수를 입력하세요");
         }
     }
@@ -21,5 +22,4 @@ public class RacingModel {
         }
         return false;
     }
-
 }

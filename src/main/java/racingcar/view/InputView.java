@@ -3,6 +3,7 @@ package racingcar.view;
 import java.util.Scanner;
 
 public class InputView {
+    private static Scanner scanner = new Scanner(System.in);
     public static String[] names;
     public static int tryCount;
 
@@ -22,6 +23,9 @@ public class InputView {
     private static void inputUsername(Scanner scanner) {
         String inputName = scanner.next();
         names = inputName.split(",");
+    }
+    public static void close() {
+        scanner.close();
     }
 }
 
