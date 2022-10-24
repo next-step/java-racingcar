@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import org.junit.jupiter.api.Test;
@@ -12,26 +13,60 @@ class CarTest {
     // TODO
     private static final String EXCEPTION_MESSAGE_PREFIX = "[ERROR]";
 
+    private static final String DEFAULT_CAR_NAME = "beth";
     private static final MovePolicy GIANT_STEP_MOVE_POLICY = () -> Distance.from(75);
     private static final MoveCondition ALWAYS_MOVE_CONDITION = () -> true;
 
     @Test
+    void nullName() {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+            .isThrownBy(() -> CarFactory.getDefaultCar(null))
+            .withMessageContaining(EXCEPTION_MESSAGE_PREFIX);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"", " "})
+    void blankName(final String carName) {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+            .isThrownBy(() -> CarFactory.getDefaultCar(carName))
+            .withMessageContaining(EXCEPTION_MESSAGE_PREFIX);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"foobar", "foobarx", "hogehoge", "123456", "1234567"})
+    void tooLongName(final String carName) {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+            .isThrownBy(() -> CarFactory.getDefaultCar(carName))
+            .withMessageContaining(EXCEPTION_MESSAGE_PREFIX);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"f", "fo", "foo", "foob", "fooba", "1", "12", "123", "1234", "12345"})
+    void validName(final String carName) {
+        assertThatCode(() -> CarFactory.getDefaultCar(carName))
+            .doesNotThrowAnyException();
+    }
+
+    @Test
     void nullMovePolicy() {
         assertThatExceptionOfType(IllegalArgumentException.class)
-            .isThrownBy(() -> CarFactory.getCar(null, CarFactory.getDefaultCarMoveCondition()))
+            .isThrownBy(() -> CarFactory.getCar(DEFAULT_CAR_NAME, null,
+                CarFactory.getDefaultCarMoveCondition()))
             .withMessageContaining(EXCEPTION_MESSAGE_PREFIX);
     }
 
     @Test
     void nullMoveCondition() {
         assertThatExceptionOfType(IllegalArgumentException.class)
-            .isThrownBy(() -> CarFactory.getCar(CarFactory.getDefaultCarMovePolicy(), null))
+            .isThrownBy(
+                () -> CarFactory.getCar(DEFAULT_CAR_NAME, CarFactory.getDefaultCarMovePolicy(),
+                    null))
             .withMessageContaining(EXCEPTION_MESSAGE_PREFIX);
     }
 
     @Test
     void move_defaultPolicy_defaultCondition() {
-        final Car car = CarFactory.getDefaultCar();
+        final Car car = CarFactory.getDefaultCar(DEFAULT_CAR_NAME);
         assertThat(car.getDistance()).isEqualTo(Distance.ZERO);
         car.move();
         assertThat(car.getDistance()).isIn(Distance.ZERO, Distance.ONE);
@@ -39,7 +74,7 @@ class CarTest {
 
     @Test
     void move_defaultPolicy_customCondition() {
-        final Car car = CarFactory.getCar(CarFactory.getDefaultCarMovePolicy(),
+        final Car car = CarFactory.getCar(DEFAULT_CAR_NAME, CarFactory.getDefaultCarMovePolicy(),
             ALWAYS_MOVE_CONDITION);
         assertThat(car.getDistance()).isEqualTo(Distance.ZERO);
         car.move();
@@ -48,7 +83,7 @@ class CarTest {
 
     @Test
     void move_customPolicy_defaultCondition() {
-        final Car car = CarFactory.getCar(GIANT_STEP_MOVE_POLICY,
+        final Car car = CarFactory.getCar(DEFAULT_CAR_NAME, GIANT_STEP_MOVE_POLICY,
             CarFactory.getDefaultCarMoveCondition());
         assertThat(car.getDistance()).isEqualTo(Distance.ZERO);
         car.move();
@@ -57,7 +92,8 @@ class CarTest {
 
     @Test
     void move_customPolicy_customCondition() {
-        final Car car = CarFactory.getCar(GIANT_STEP_MOVE_POLICY, ALWAYS_MOVE_CONDITION);
+        final Car car = CarFactory.getCar(DEFAULT_CAR_NAME, GIANT_STEP_MOVE_POLICY,
+            ALWAYS_MOVE_CONDITION);
         assertThat(car.getDistance()).isEqualTo(Distance.ZERO);
         car.move();
         assertThat(car.getDistance()).isEqualTo(GIANT_STEP_MOVE_POLICY.getSteps());
@@ -66,7 +102,8 @@ class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 5, 10})
     void move_movingForwardBasedOnPolicyAndCondition(final int count) {
-        final Car car = CarFactory.getCar(GIANT_STEP_MOVE_POLICY, ALWAYS_MOVE_CONDITION);
+        final Car car = CarFactory.getCar(DEFAULT_CAR_NAME, GIANT_STEP_MOVE_POLICY,
+            ALWAYS_MOVE_CONDITION);
 
         for (int i = 0; i < count; i++) {
             Distance prevDistance = car.getDistance();

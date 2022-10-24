@@ -20,12 +20,16 @@ public final class CarFactory {
         return DEFAULT_CAR_MOVE_CONDITION;
     }
 
-    public static Car getCar(final MovePolicy movePolicy, final MoveCondition moveCondition) {
-        return new Car(movePolicy, moveCondition);
+    public static Car getCar(
+        final String carName,
+        final MovePolicy movePolicy,
+        final MoveCondition moveCondition
+    ) {
+        return new Car(carName, movePolicy, moveCondition);
     }
 
-    public static Car getDefaultCar() {
-        return getCar(DEFAULT_CAR_MOVE_POLICY, DEFAULT_CAR_MOVE_CONDITION);
+    public static Car getDefaultCar(final String carName) {
+        return getCar(carName, DEFAULT_CAR_MOVE_POLICY, DEFAULT_CAR_MOVE_CONDITION);
     }
 
 }

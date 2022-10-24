@@ -56,11 +56,11 @@
 
 #### Car
 
-[ ] Client는, 자동차 이름을 부여하여, 1대의 자동차 개체를 생성할 수 있다.
+[x] Client는, 자동차 이름을 부여하여, 1대의 자동차 개체를 생성할 수 있다.
 
-- [ ] 자동차 이름이 Null일경우, IllegalArgumentException을 발생시켜, 프로그램을 종료한다.
-- [ ] 자동차 이름이 Empty일경우, IllegalArgumentException을 발생시켜, 프로그램을 종료한다.
-- [ ] 자동차 이름이 5자를 초과한경우, IllegalArgumentException을 발생시켜, 프로그램을 종료한다.
+- [x] 자동차 이름이 Null일경우, IllegalArgumentException을 발생시켜, 프로그램을 종료한다.
+- [x] 자동차 이름이 Empty일경우, IllegalArgumentException을 발생시켜, 프로그램을 종료한다.
+- [x] 자동차 이름이 5자를 초과한경우, IllegalArgumentException을 발생시켜, 프로그램을 종료한다.
 
 [x] Client는, 다음의 조건을 통해, 1대의 자동차를 한칸 전진 또는 멈출 수 있다.
 
