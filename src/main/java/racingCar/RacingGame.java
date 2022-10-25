@@ -1,6 +1,5 @@
 package racingCar;
 
-import java.util.Arrays;
 import java.util.Random;
 
 public class RacingGame {
@@ -15,9 +14,13 @@ public class RacingGame {
 
     public void start() {
         for (int i = 0; i < numOfRounds; i++) {
-            for (RacingCar car : cars) {
-                car.tryMove(new Random().nextInt(10));
-            }
+            race();
+        }
+    }
+
+    private void race() {
+        for (RacingCar car : cars) {
+            car.tryMove(new Random().nextInt(10));
         }
     }
 }
