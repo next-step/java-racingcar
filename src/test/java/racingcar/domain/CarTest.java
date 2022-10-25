@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    private final Car car = new Car(new Name("A"));
+    private final Car car = new Car("A");
 
     @ParameterizedTest
     @DisplayName("랜덤 값이 4이상인 경우 자동차는 전진한다.")
@@ -30,24 +30,24 @@ class CarTest {
     @Test
     @DisplayName("자동차 A의 위치가 B보다 크다.")
     void bigger_than_true() {
-        Car carA = new Car(new Name("A"), new Location(2));
-        Car carB = new Car(new Name("B"), new Location(1));
+        Car carA = new Car("A", 2);
+        Car carB = new Car("B", 1);
         assertThat(carA.isFar(carB)).isTrue();
     }
 
     @Test
     @DisplayName("자동차 B의 위치가 A보다 크다.")
     void bigger_than_false() {
-        Car carA = new Car(new Name("A"), new Location(0));
-        Car carB = new Car(new Name("B"), new Location(1));
+        Car carA = new Car("A", 0);
+        Car carB = new Car("B", 1);
         assertThat(carA.isFar(carB)).isFalse();
     }
 
     @Test
     @DisplayName("자동차 A와 B의 위치가 같으면 동일선 상에 있다.")
     void is_same_location() {
-        Car carA = new Car(new Name("A"), new Location(1));
-        Car carB = new Car(new Name("B"), new Location(1));
+        Car carA = new Car("A", 1);
+        Car carB = new Car("B", 1);
         assertThat(carA.findCollinearName(carB)).isEqualTo(new Name("A"));
     }
 }

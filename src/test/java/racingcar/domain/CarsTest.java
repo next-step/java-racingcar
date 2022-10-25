@@ -7,13 +7,11 @@ import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.*;
 
 class CarsTest {
 
-    private final Cars cars = new Cars(List.of(new Car(new Name("A")), new Car(new Name("B"))));
+    private final Cars cars = Cars.of(new Car("A"), new Car("B"));
 
     @ParameterizedTest
     @DisplayName("랜덤 값이 4이상인 경우 자동차는 전진한다.")
@@ -60,8 +58,9 @@ class CarsTest {
     @Test
     @DisplayName("자동차 경주 우승자를 구한다.")
     void find_one_winner() {
-        Cars endCars = new Cars(List.of(
-                new Car(new Name("A"), new Location(1)), new Car(new Name("B"), new Location(0)))
+        Cars endCars = Cars.of(
+                new Car("A", 1),
+                new Car("B", 0)
         );
         assertThat(endCars.findWinners()).contains(new Name("A"));
     }
@@ -69,8 +68,9 @@ class CarsTest {
     @Test
     @DisplayName("자동차 경주 우승자는 여러명일 수 있다.")
     void find_several_winner() {
-        Cars endCars = new Cars(List.of(
-                new Car(new Name("A"), new Location(1)), new Car(new Name("B"), new Location(1)))
+        Cars endCars = Cars.of(
+                new Car("A", 1),
+                new Car("B", 1)
         );
         assertThat(endCars.findWinners()).contains(new Name("A"), new Name("B"));
     }

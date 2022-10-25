@@ -13,6 +13,10 @@ public class Cars {
         this.cars = new ArrayList<>(cars);
     }
 
+    public static Cars of(Car... cars) {
+        return new Cars(List.of(cars));
+    }
+
     public void move(Generator generator) {
         for (Car car : cars) {
             car.move(generator);
@@ -27,7 +31,7 @@ public class Cars {
         validateIsNullOrEmpty(names);
         List<Car> cars = new ArrayList<>();
         for (String name : StringUtil.splitNames(names)) {
-            cars.add(new Car(new Name(name)));
+            cars.add(new Car(name));
         }
         return new Cars(cars);
     }
