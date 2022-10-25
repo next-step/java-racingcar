@@ -1,9 +1,6 @@
 package racingcar;
 
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
-import racingcar.domain.Location;
-import racingcar.domain.Name;
+import racingcar.domain.*;
 
 import java.util.List;
 import java.util.Scanner;
@@ -51,8 +48,8 @@ public class View {
         }
     }
 
-    public void printWinners(List<Name> winners) {
-        List<String> winnerNames = winners.stream()
+    public void printWinners(Winners winners) {
+        List<String> winnerNames = winners.getWinners().stream()
                 .map(Name::getName)
                 .collect(Collectors.toList());
 

@@ -2,6 +2,7 @@ package racingcar;
 
 import racingcar.domain.Cars;
 import racingcar.domain.TrialCount;
+import racingcar.domain.Winners;
 import racingcar.generator.Generator;
 import racingcar.generator.RandomValueGenerator;
 
@@ -19,6 +20,6 @@ public class Main {
             view.printTrial(cars);
             trialCount.decrease();
         }
-        view.printWinners(cars.findWinners());
+        view.printWinners(Winners.find(cars));
     }
 }
