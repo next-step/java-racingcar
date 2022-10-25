@@ -37,10 +37,6 @@ public class Winner {
         return winner;
     }
 
-    public Position getMaxPosition() {
-        return winner.get(0).getPosition();
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

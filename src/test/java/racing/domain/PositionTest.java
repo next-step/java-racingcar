@@ -1,7 +1,6 @@
 package racing.domain;
 
 import org.junit.jupiter.api.Test;
-import racingLecture.domain.Position;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
