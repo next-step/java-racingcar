@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 public class RacingCarGameApplication {
 
     public static void main(String[] args) {
-        InputView keyboardInput = new InputView();
+        InputView keyboardInput = InputView.getInputView();
         ResultView printer = new ResultView();
 
         RacingCar[] cars = initializedCars(keyboardInput.nameOfCars());
