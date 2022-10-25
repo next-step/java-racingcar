@@ -57,22 +57,15 @@ class CarsTest {
     }
 
     @Test
-    @DisplayName("자동차 경주 우승자를 구한다.")
-    void find_one_winner() {
-        Cars endCars = Cars.of(
-                new Car("A", 1),
-                new Car("B", 0)
-        );
-        assertThat(endCars.findWinners()).contains(new Name("A"));
+    @DisplayName("자동차 위치 중 가장 멀리있는 위치를 구한다.")
+    void find_max_location() {
+        Cars cars = Cars.of(new Car("A", 1), new Car("B", 2));
+        assertThat(cars.findMaxLocation()).isEqualTo(new Location(2));
     }
 
     @Test
-    @DisplayName("자동차 경주 우승자는 여러명일 수 있다.")
-    void find_several_winner() {
-        Cars endCars = Cars.of(
-                new Car("A", 1),
-                new Car("B", 1)
-        );
-        assertThat(endCars.findWinners()).contains(new Name("A"), new Name("B"));
+    @DisplayName("같은 위치에 있는 자동차 이름을 반환한다.")
+    void find_same_location_cars() {
+        assertThat(Cars.of(new Car("A", 1), new Car("B", 1)).findSameLocationCarNames(new Location(1))).contains(new Name("A"), new Name("B"));
     }
 }

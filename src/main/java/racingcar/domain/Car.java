@@ -27,15 +27,15 @@ public class Car {
         }
     }
 
-    public boolean isFar(Car compare) {
-        if (this.location.compareTo(compare.location) > 0) {
-            return true;
+    public Location findFar(Location max) {
+        if (this.location.compareTo(max) > 0) {
+            return this.location;
         }
-        return false;
+        return max;
     }
 
-    public Name findCollinearName(Car compare) {
-        if (this.location.equals(compare.location)) {
+    public Name findCollinearName(Location compare) {
+        if (this.location.equals(compare)) {
             return name;
         }
         return null;

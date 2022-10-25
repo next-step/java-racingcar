@@ -29,26 +29,16 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("자동차 A의 위치가 B보다 크다.")
-    void bigger_than_true() {
+    @DisplayName("자동차 위치와 비교해서 더 멀리 있는 위치를 반환 한다.")
+    void return_bigger_location() {
         Car carA = new Car("A", 2);
-        Car carB = new Car("B", 1);
-        assertThat(carA.isFar(carB)).isTrue();
+        assertThat(carA.findFar(new Location(1))).isEqualTo(new Location(2));
     }
 
     @Test
-    @DisplayName("자동차 B의 위치가 A보다 크다.")
-    void bigger_than_false() {
-        Car carA = new Car("A", 0);
-        Car carB = new Car("B", 1);
-        assertThat(carA.isFar(carB)).isFalse();
-    }
-
-    @Test
-    @DisplayName("자동차 A와 B의 위치가 같으면 동일선 상에 있다.")
+    @DisplayName("위치가 같으면 자동차 이름을 반환 한다.")
     void is_same_location() {
         Car carA = new Car("A", 1);
-        Car carB = new Car("B", 1);
-        assertThat(carA.findCollinearName(carB)).isEqualTo(new Name("A"));
+        assertThat(carA.findCollinearName(new Location(1))).isEqualTo(new Name("A"));
     }
 }
