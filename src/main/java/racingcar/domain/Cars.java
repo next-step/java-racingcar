@@ -1,5 +1,8 @@
 package racingcar.domain;
 
+import racingcar.strategy.Generator;
+import racingcar.util.StringUtil;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

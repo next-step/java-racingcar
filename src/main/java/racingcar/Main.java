@@ -1,9 +1,9 @@
 package racingcar;
 
 import racingcar.domain.Cars;
-import racingcar.domain.Generator;
-import racingcar.domain.RandomValueGenerator;
 import racingcar.domain.TrialCount;
+import racingcar.strategy.Generator;
+import racingcar.strategy.RandomValueGenerator;
 
 public class Main {
     public static void main(String[] args) {

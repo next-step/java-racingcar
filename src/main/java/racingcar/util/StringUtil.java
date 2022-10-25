@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.util;
 
 public class StringUtil {
     public static final String DELIMITER = ",";

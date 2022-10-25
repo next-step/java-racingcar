@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.strategy;
 
 public class ManualValueGenerator implements Generator {
 

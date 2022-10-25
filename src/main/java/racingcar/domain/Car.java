@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.strategy.Generator;
+
 public class Car {
     private static final int MINIMUM_MOVE_VALUE = 4;
 

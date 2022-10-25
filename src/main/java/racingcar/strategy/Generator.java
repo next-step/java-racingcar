@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.strategy;
 
 public interface Generator {
     int nextValue();
