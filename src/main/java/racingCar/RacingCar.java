@@ -3,7 +3,8 @@ package racingCar;
 import java.util.Objects;
 
 public class RacingCar {
-    private int numberOfMovement = 0;
+//    private int numberOfMovement = 0;
+private Position position;
 
     private String name;
 
@@ -14,10 +15,11 @@ public class RacingCar {
         this(name, 0);
     }
 
-    public RacingCar(String name, int numOfMovement) {
+    public RacingCar(String name, int position) {
         validateName(name);
+
         this.name = name;
-        this.numberOfMovement = numOfMovement;
+        this.position = new Position(position);
         this.moveStrategy = new RandomMoveStrategy();
     }
 
@@ -29,12 +31,12 @@ public class RacingCar {
 
     public void tryMove(final int randomNumber) {
         if (moveStrategy.canMove(randomNumber)) {
-            numberOfMovement++;
+            position.moveForward();
         }
     }
 
     public int getNumberOfMovement() {
-        return this.numberOfMovement;
+        return this.position.getPosition();
     }
 
     @Override
@@ -42,16 +44,16 @@ public class RacingCar {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         final RacingCar racingCar = (RacingCar) o;
-        return numberOfMovement == racingCar.numberOfMovement && name.equals(racingCar.name);
+        return position == racingCar.position && name.equals(racingCar.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(numberOfMovement, name);
+        return Objects.hash(position, name);
     }
 
     public boolean isFurtherAsMuchAs(int movements) {
-        return this.numberOfMovement == movements;
+        return this.position.equals(new Position(movements));
     }
 
 //    public boolean canMove(int randomNumber) {
@@ -68,7 +70,7 @@ public class RacingCar {
 
     private String trace() {
         String trace = "";
-        for (int i = 0; i < this.numberOfMovement; i++) {
+        for (int i = 0; i < this.position.getPosition(); i++) {
             trace += "-";
         }
 
