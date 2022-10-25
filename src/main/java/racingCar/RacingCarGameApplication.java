@@ -9,7 +9,7 @@ public class RacingCarGameApplication {
         InputView keyboardInput = InputView.getInputView();
         ResultView printer = new ResultView();
 
-        RacingCar[] cars = initializedCars(keyboardInput.nameOfCars());
+        RacingCars cars = new RacingCars(keyboardInput.nameOfCars());
         int numberOfRounds = keyboardInput.numberOfRounds();
         RacingGame game = new RacingGame(cars, numberOfRounds);
 
@@ -22,15 +22,6 @@ public class RacingCarGameApplication {
                 .stream()
                 .map(RacingCar::name)
                 .collect(Collectors.toList());
-        printer.print(String.join(", ",winners) + "가 최종 우승했습니다.");
-    }
-
-    private static RacingCar[] initializedCars(String[] carNames) {
-        RacingCar[] cars = new RacingCar[carNames.length];
-        for (int i = 0; i < carNames.length; i++) {
-            cars[i] = new RacingCar(carNames[i]);
-        }
-
-        return cars;
+        printer.print(String.join(", ", winners) + "가 최종 우승했습니다.");
     }
 }

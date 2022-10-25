@@ -5,11 +5,8 @@ public class ResultView {
         System.out.println(str);
     }
 
-    public void print(RacingCar[] result) {
-        for (RacingCar car : result) {
-            print(car);
-        }
-        System.out.print("\n");
+    public void print(RacingCars result) {
+        System.out.print(result.toString());
     }
 
     private void print(RacingCar car) {

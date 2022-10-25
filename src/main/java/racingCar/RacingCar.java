@@ -44,7 +44,7 @@ private Position position;
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         final RacingCar racingCar = (RacingCar) o;
-        return position == racingCar.position && name.equals(racingCar.name);
+        return position.equals(racingCar.position) && name.equals(racingCar.name);
     }
 
     @Override
@@ -52,8 +52,12 @@ private Position position;
         return Objects.hash(position, name);
     }
 
-    public boolean isFurtherAsMuchAs(int movements) {
-        return this.position.equals(new Position(movements));
+    public boolean isFurtherAsMuchAs(RacingCar car) {
+        return this.position.equals(car.position);
+    }
+
+    public boolean isFurtherOrEqualThan(RacingCar other) {
+        return this.position.compareTo(other.position) >= 0;
     }
 
 //    public boolean canMove(int randomNumber) {

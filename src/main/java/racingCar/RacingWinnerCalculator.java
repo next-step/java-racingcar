@@ -1,25 +1,19 @@
 package racingCar;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Objects;
 
 public class RacingWinnerCalculator {
-    private final RacingCar[] cars;
+    private final RacingCars cars;
 
-    public RacingWinnerCalculator(final RacingCar[] racingCars) {
+    public RacingWinnerCalculator(final RacingCars racingCars) {
         this.cars = racingCars;
     }
 
     public List<RacingCar> winners() {
-        final int maxMovement = Arrays.stream(cars)
-                .mapToInt(RacingCar::getNumberOfMovement)
-                .max()
-                .orElse(0);
+        final RacingCar maxPositionCar = cars.maxPositionCar();
 
-        return Arrays.stream(cars)
-                .filter(c -> c.isFurtherAsMuchAs(maxMovement))
-                .collect(Collectors.toList());
+        return cars.furtherAsMushAs(maxPositionCar);
     }
 
     @Override
@@ -27,11 +21,11 @@ public class RacingWinnerCalculator {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         final RacingWinnerCalculator that = (RacingWinnerCalculator) o;
-        return Arrays.equals(cars, that.cars);
+        return Objects.equals(cars, that.cars);
     }
 
     @Override
     public int hashCode() {
-        return Arrays.hashCode(cars);
+        return Objects.hash(cars);
     }
 }
