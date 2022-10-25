@@ -23,4 +23,22 @@ public class LocationTest {
         location.next();
         assertThat(location).isEqualTo(new Location(2));
     }
+
+    @Test
+    @DisplayName("위치 값이 더 크면 1을 반환한다.")
+    void compare_bigger_location() {
+        assertThat(new Location(3).compareTo(new Location(1))).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("위차 값이 더 작으면 -1을 반환한다.")
+    void compare_small_location() {
+        assertThat(new Location(1).compareTo(new Location(3))).isEqualTo(-1);
+    }
+
+    @Test
+    @DisplayName("위치 값이 같으면 0을 반환한다.")
+    void compare_same_location() {
+        assertThat(new Location(1).compareTo(new Location(1))).isEqualTo(0);
+    }
 }

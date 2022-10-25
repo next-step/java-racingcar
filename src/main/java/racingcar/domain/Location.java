@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import java.util.Objects;
 
-public class Location {
+public class Location implements Comparable<Location> {
     private static final int MINIMUM_VALUE = 0;
 
     private int location;
@@ -43,7 +43,15 @@ public class Location {
         return Objects.hash(location);
     }
 
-    public boolean isBig(Location compare) {
-        return location > compare.location;
+    @Override
+    public int compareTo(Location compare) {
+        int subtract = location - compare.location;
+        if (subtract > 0) {
+            return 1;
+        }
+        if (subtract < 0) {
+            return -1;
+        }
+        return 0;
     }
 }

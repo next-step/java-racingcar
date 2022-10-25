@@ -28,7 +28,10 @@ public class Car {
     }
 
     public boolean isFar(Car compare) {
-        return this.location.isBig(compare.location);
+        if (this.location.compareTo(compare.location) > 0) {
+            return true;
+        }
+        return false;
     }
 
     public Name findCollinearName(Car compare) {
