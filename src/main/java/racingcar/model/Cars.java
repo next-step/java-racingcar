@@ -32,13 +32,17 @@ public final class Cars {
         }
     }
 
+    private static CarStatus mapToStatus(final Car car) {
+        return new CarStatus(car.getName(), car.getDistance());
+    }
+
     public void move() {
         cars.forEach(Car::move);
     }
 
-    public List<Distance> getDistances() {
+    public List<CarStatus> getStatuses() {
         return cars.stream()
-            .map((Car::getDistance))
+            .map(Cars::mapToStatus)
             .collect(Collectors.toUnmodifiableList());
     }
 

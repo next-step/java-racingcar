@@ -66,5 +66,8 @@ public final class Car {
         return distance;
     }
 
+    public String getName() {
+        return name;
+    }
 }
 

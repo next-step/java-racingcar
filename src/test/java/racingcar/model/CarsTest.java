@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -23,10 +24,10 @@ public class CarsTest {
 
     @BeforeEach
     void setUp() {
-        always50MoveCar = CarFactory.getCar(() -> Distance.from(50), () -> true);
-        always10MoveCar = CarFactory.getCar(() -> Distance.from(10), () -> true);
-        alwaysNonMovableCar = CarFactory.getCar(() -> Distance.from(10), () -> false);
-        alwaysStopCar = CarFactory.getCar(() -> Distance.ZERO, () -> true);
+        always50MoveCar = CarFactory.getCar("50", () -> Distance.from(50), () -> true);
+        always10MoveCar = CarFactory.getCar("10", () -> Distance.from(10), () -> true);
+        alwaysNonMovableCar = CarFactory.getCar("0move", () -> Distance.from(10), () -> false);
+        alwaysStopCar = CarFactory.getCar("stop", () -> Distance.ZERO, () -> true);
     }
 
     @Test
@@ -50,6 +51,7 @@ public class CarsTest {
             .withMessageContaining(EXCEPTION_MESSAGE_PREFIX);
     }
 
+    @DisplayName("플레이 할때 마다, 소유하고 있는 자동차 개체들은 전진 혹은 멈추어야 한다")
     @ParameterizedTest
     @ValueSource(ints = {1, 5, 10})
     void move(final int count) {
@@ -78,9 +80,10 @@ public class CarsTest {
         }
     }
 
+    @DisplayName("플레이 후, 소유하고 있는 자동차 개체들의 이름과, 현재 전진 거리 상황을 반환할 수 있어야 한다")
     @ParameterizedTest
     @ValueSource(ints = {1, 5, 10})
-    void getDistances(final int count) {
+    void getStatuses(final int count) {
         final Cars cars = new Cars(
             List.of(always50MoveCar, always10MoveCar, alwaysNonMovableCar, alwaysStopCar));
 
@@ -88,13 +91,14 @@ public class CarsTest {
             cars.move();
         }
 
-        final List<Distance> distances = cars.getDistances();
-        assertThat(distances.size())
+        final List<CarStatus> statuses = cars.getStatuses();
+        assertThat(statuses.size())
             .isEqualTo(4);
-        assertThat(distances)
-            .containsExactly(always50MoveCar.getDistance(),
-                always10MoveCar.getDistance(),
-                alwaysNonMovableCar.getDistance(),
-                alwaysStopCar.getDistance());
+        assertThat(statuses)
+            .containsExactly(
+                new CarStatus(always50MoveCar.getName(), always50MoveCar.getDistance()),
+                new CarStatus(always10MoveCar.getName(), always10MoveCar.getDistance()),
+                new CarStatus(alwaysNonMovableCar.getName(), alwaysNonMovableCar.getDistance()),
+                new CarStatus(alwaysStopCar.getName(), alwaysStopCar.getDistance()));
     }
 }
