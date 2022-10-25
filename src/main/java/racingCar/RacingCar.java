@@ -7,6 +7,8 @@ public class RacingCar {
 
     private String name;
 
+    private MoveStrategy moveStrategy;
+
 
     public RacingCar(String name) {
         this(name, 0);
@@ -16,6 +18,7 @@ public class RacingCar {
         validateName(name);
         this.name = name;
         this.numberOfMovement = numOfMovement;
+        this.moveStrategy = new RandomMoveStrategy();
     }
 
     private static void validateName(String name) {
@@ -25,7 +28,7 @@ public class RacingCar {
     }
 
     public void tryMove(final int randomNumber) {
-        if (canMove(randomNumber)) {
+        if (moveStrategy.canMove(randomNumber)) {
             numberOfMovement++;
         }
     }
@@ -51,19 +54,21 @@ public class RacingCar {
         return this.numberOfMovement == movements;
     }
 
-    public boolean canMove(int randomNumber) {
-        return 4 <= randomNumber;
-    }
+//    public boolean canMove(int randomNumber) {
+//        return 4 <= randomNumber;
+//    }
 
     public String toString() {
         return this.name + " : " + trace();
     }
 
-    public String name() { return this.name; }
+    public String name() {
+        return this.name;
+    }
 
     private String trace() {
         String trace = "";
-        for (int i = 0; i < this.numberOfMovement ; i++) {
+        for (int i = 0; i < this.numberOfMovement; i++) {
             trace += "-";
         }
 
