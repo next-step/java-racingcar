@@ -1,6 +1,6 @@
 package step3;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
@@ -11,7 +11,7 @@ public class Main {
         CarValidator.nameValidator(carNames);
         int raceCount = inputView.inputRaceCount();
 
-        ArrayList<Car> cars = CarStorage.exit(carNames);
+        List<Car> cars = CarStorage.exit(carNames);
 
         ResultView.resultMessage();
 

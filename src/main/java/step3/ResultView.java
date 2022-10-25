@@ -1,10 +1,11 @@
 package step3;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class ResultView {
 
-    public static void displayDash(ArrayList<Car> cars) {
+    public static void displayDash(List<Car> cars) {
         for (Car car : cars) {
             int distance = car.getDistance();
             String carName = car.name;
