@@ -6,7 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.strategy.ManualValueGenerator;
+import racingcar.generator.ManualValueGenerator;
 
 import static org.assertj.core.api.Assertions.*;
 

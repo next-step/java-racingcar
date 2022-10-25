@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import racingcar.strategy.Generator;
+import racingcar.generator.Generator;
 import racingcar.util.StringUtil;
 
 import java.util.ArrayList;
