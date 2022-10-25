@@ -7,16 +7,18 @@ import racingcar.view.OutputView;
 public class Application {
 
     public static void main(final String[] args) {
-        final String carNo = InputView.getCarNo();
+        final String carNames = InputView.getCarNames();
         final String tryNo = InputView.getTryNo();
-        final Game game = new Game(carNo, tryNo);
+
+        final Game game = new Game(carNames, tryNo);
         OutputView.printDivider();
         OutputView.printGameResultTitle();
         while (!game.isGameOver()) {
             game.play();
-            OutputView.printCarDistances(game.getCarDistances());
+            OutputView.printCarStatuses(game.getCarStatuses());
             OutputView.printDivider();
         }
+        OutputView.printWinners(game.getWinners());
     }
 
 }
