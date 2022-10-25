@@ -62,6 +62,18 @@ public final class Car {
         distance = distance.plus(movePolicy.getSteps());
     }
 
+    public boolean isFartherMovedThan(final Car other) {
+        return distance.isGreaterThan(other.getDistance());
+    }
+
+    public boolean isLessMovedThan(final Car other) {
+        return distance.isLessThan(other.getDistance());
+    }
+
+    public boolean hasSameDistanceWith(final Car other) {
+        return distance.equals(other.getDistance());
+    }
+
     public Distance getDistance() {
         return distance;
     }

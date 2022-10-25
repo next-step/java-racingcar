@@ -80,25 +80,51 @@ public class CarsTest {
         }
     }
 
-    @DisplayName("플레이 후, 소유하고 있는 자동차 개체들의 이름과, 현재 전진 거리 상황을 반환할 수 있어야 한다")
     @ParameterizedTest
     @ValueSource(ints = {1, 5, 10})
-    void getStatuses(final int count) {
-        final Cars cars = new Cars(
-            List.of(always50MoveCar, always10MoveCar, alwaysNonMovableCar, alwaysStopCar));
+    void getFarthestMovedCars_singleCar_zeroDistance(final int count) {
+        final Cars cars = new Cars(Collections.singletonList(alwaysStopCar));
+        for (int i = 0; i < count; i++) {
+            cars.move();
+        }
+        assertThat(cars.getFarthestMovedCars().size()).isEqualTo(1);
+        assertThat(cars.getFarthestMovedCars()).containsOnly(alwaysStopCar);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 5, 10})
+    void getFarthestMovedCars_singleCar_nonZeroDistance(final int count) {
+        final Cars cars = new Cars(Collections.singletonList(always50MoveCar));
+        for (int i = 0; i < count; i++) {
+            cars.move();
+        }
+        assertThat(cars.getFarthestMovedCars().size()).isEqualTo(1);
+        assertThat(cars.getFarthestMovedCars()).containsOnly(always50MoveCar);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 5, 10})
+    void getFarthestMovedCars_sameDistanceCars(final int count) {
+        final Car otherAlways50MoveCar = CarFactory.getCar("fifty", () -> Distance.from(50),
+            () -> true);
+        final Cars cars = new Cars(Arrays.asList(always50MoveCar, otherAlways50MoveCar));
 
         for (int i = 0; i < count; i++) {
             cars.move();
         }
+        assertThat(cars.getFarthestMovedCars().size()).isEqualTo(2);
+        assertThat(cars.getFarthestMovedCars()).containsOnly(always50MoveCar, otherAlways50MoveCar);
+    }
 
-        final List<CarStatus> statuses = cars.getStatuses();
-        assertThat(statuses.size())
-            .isEqualTo(4);
-        assertThat(statuses)
-            .containsExactly(
-                new CarStatus(always50MoveCar.getName(), always50MoveCar.getDistance()),
-                new CarStatus(always10MoveCar.getName(), always10MoveCar.getDistance()),
-                new CarStatus(alwaysNonMovableCar.getName(), alwaysNonMovableCar.getDistance()),
-                new CarStatus(alwaysStopCar.getName(), alwaysStopCar.getDistance()));
+    @ParameterizedTest
+    @ValueSource(ints = {1, 5, 10})
+    void getFarthestMovedCars_differentDistanceCars(final int count) {
+        final Cars cars = new Cars(
+            Arrays.asList(alwaysNonMovableCar, always50MoveCar, always10MoveCar));
+        for (int i = 0; i < count; i++) {
+            cars.move();
+        }
+        assertThat(cars.getFarthestMovedCars().size()).isEqualTo(1);
+        assertThat(cars.getFarthestMovedCars()).containsOnly(always50MoveCar);
     }
 }

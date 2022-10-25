@@ -1,30 +1,37 @@
 package racingcar.model;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import racingcar.ExceptionMessageUtils;
 
 public final class Game {
 
-    private final PositiveNumber carNo;
+    private static final String CAR_NAME_DELIMITER = ",";
+
     private final PositiveNumber tryNo;
     private PositiveNumber tryCount;
     private final Cars cars;
 
-    public Game(final String carNo, final String tryNo) {
-        this.carNo = new PositiveNumber(carNo);
+    public Game(final String carNames, final String tryNo) {
+        validateCarNames(carNames);
+        this.cars = new Cars(mapToCarList(carNames.split(CAR_NAME_DELIMITER)));
         this.tryNo = new PositiveNumber(tryNo);
         this.tryCount = PositiveNumber.ONE;
-        this.cars = new Cars(mapToCarList(this.carNo));
     }
 
-    private static List<Car> mapToCarList(final PositiveNumber carNo) {
-        final List<Car> cars = new ArrayList<>();
-        for (PositiveNumber i = PositiveNumber.ONE;
-            i.isLessThanOrEquals(carNo);
-            i = i.plus(PositiveNumber.ONE)) {
-            cars.add(CarFactory.getDefaultCar());
+    private void validateCarNames(final String carNames) {
+        if (carNames == null) {
+            throw new IllegalArgumentException(
+                ExceptionMessageUtils.createdExceptionMessage(
+                    "Car names cannot be null"));
         }
-        return cars;
+        if (carNames.isBlank()) {
+            throw new IllegalArgumentException(
+                ExceptionMessageUtils.createdExceptionMessage(
+                    "Car names cannot be blank"));
+        }
     }
 
     public void play() {
@@ -43,8 +50,32 @@ public final class Game {
         return tryCount.isGreaterThan(tryNo);
     }
 
-    public List<Distance> getCarDistances() {
-        return cars.getDistances();
+    public List<CarStatus> getCarStatuses() {
+        return cars.getCars().stream()
+            .map(Game::mapToCarStatus)
+            .collect(Collectors.toUnmodifiableList());
     }
 
+    public List<Winner> getWinners() {
+        if (!isGameOver()) {
+            return Collections.emptyList();
+        }
+        return cars.getFarthestMovedCars().stream()
+            .map(Game::mapToWinner)
+            .collect(Collectors.toUnmodifiableList());
+    }
+
+    private static List<Car> mapToCarList(final String[] carNames) {
+        return Arrays.stream(carNames)
+            .map((carName) -> CarFactory.getDefaultCar(carName.strip()))
+            .collect(Collectors.toUnmodifiableList());
+    }
+
+    private static CarStatus mapToCarStatus(final Car car) {
+        return new CarStatus(car.getName(), car.getDistance());
+    }
+
+    private static Winner mapToWinner(final Car car) {
+        return new Winner(car.getName());
+    }
 }
