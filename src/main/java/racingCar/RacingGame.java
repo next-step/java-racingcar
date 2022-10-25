@@ -1,7 +1,6 @@
 package racingCar;
 
 public class RacingGame {
-    //    private final int numOfCars;
     private final RacingCars cars;
     private final int numOfRounds;
 

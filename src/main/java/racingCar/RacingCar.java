@@ -3,8 +3,7 @@ package racingCar;
 import java.util.Objects;
 
 public class RacingCar {
-//    private int numberOfMovement = 0;
-private Position position;
+    private Position position;
 
     private String name;
 
@@ -59,10 +58,6 @@ private Position position;
     public boolean isFurtherOrEqualThan(RacingCar other) {
         return this.position.compareTo(other.position) >= 0;
     }
-
-//    public boolean canMove(int randomNumber) {
-//        return 4 <= randomNumber;
-//    }
 
     public String toString() {
         return this.name + " : " + trace();
