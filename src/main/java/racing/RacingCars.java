@@ -21,8 +21,7 @@ public class RacingCars {
     }
 
     public static RacingCars init(final String carNames) {
-        List<String> carNameList = List.of(carNames.split(SPLITTER));
-        racingCars = carNameList.stream()
+        List<RacingCar> racingCars = Arrays.stream(carNames.split(SPLITTER))
                 .map(RacingCar::init)
                 .collect(Collectors.toList());
         return new RacingCars(racingCars);
