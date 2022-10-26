@@ -2,15 +2,14 @@ package view;
 
 import racing.RacingCar;
 import racing.RacingCars;
-
-import java.util.List;
+import racing.RacingGamePrize;
 
 public class RacingResultView {
 
-    public static void printResult(final List<RacingCars> result, final RacingCars winners) {
+    public static void printResult(final RacingGamePrize racingGamePrize, final RacingCars winners) {
         System.out.println("\n실행 결과");
 
-        for (final RacingCars racingCars: result) {
+        for (final RacingCars racingCars: racingGamePrize.getRacingResult()) {
             printCars(racingCars);
             System.out.println();
         }

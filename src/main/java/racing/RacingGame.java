@@ -23,7 +23,7 @@ public class RacingGame {
         );
     }
 
-    public List<RacingCars> start() {
+    public RacingGamePrize start() {
         List<RacingCars> result = new ArrayList<>();
         result.add(racingCars);
 
@@ -32,6 +32,6 @@ public class RacingGame {
                     result.get(idx).race(racingGameSpec)
             );
         }
-        return result;
+        return RacingGamePrize.init(result);
     }
 }

@@ -14,6 +14,10 @@ public class RacingGamePrize {
         return new RacingGamePrize(racingResult);
     }
 
+    public List<RacingCars> getRacingResult() {
+        return racingResult;
+    }
+
     public RacingCars getWinners() {
         RacingCars lastResult = racingResult.get(racingResult.size() - 1);
         return lastResult.getLeads();
