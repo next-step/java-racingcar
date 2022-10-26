@@ -11,7 +11,7 @@ public class RacingGame {
 
     public static final String BAR = "-";
 
-    public void play() {
+    public void play(RandomMoveStrategy randomMoveStrategy) {
         ResultView.getFirstQuestion();
         int carCount = InputView.getCarCount();
 
@@ -25,9 +25,8 @@ public class RacingGame {
 
         while (playCount > 0) {
             for (int i = 0; i < carCount; i++) {
-                Car car = cars.get(i);
-                car.move(new RandomMoveStrategy());
-                System.out.println(BAR.repeat(car.getPosition()));
+                cars.get(i).move(randomMoveStrategy);
+                System.out.println(BAR.repeat(cars.get(i).getPosition()));
             }
             ResultView.getNewLine();
             --playCount;
