@@ -19,7 +19,9 @@ public class RacingCars {
 
     public RacingCars racing() {
         RacingCars copied = new RacingCars(cars);
+
         copied.race();
+
         return copied;
     }
 
@@ -49,8 +51,12 @@ public class RacingCars {
 
     @Override
     public boolean equals(final Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         final RacingCars that = (RacingCars) o;
         return Objects.equals(cars, that.cars);
     }

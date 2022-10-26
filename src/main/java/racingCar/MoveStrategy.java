@@ -1,5 +1,7 @@
 package racingCar;
 
+
+@FunctionalInterface
 public interface MoveStrategy {
-    public boolean canMove(int number);
+    boolean canMove(int number);
 }

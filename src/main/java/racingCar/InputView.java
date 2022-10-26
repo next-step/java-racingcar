@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class InputView {
     private static InputView inputView = new InputView();
-    ;
     private final Scanner scanner = new Scanner(System.in);
     public static final String CAR_NAME_DELIMITER = ",";
 

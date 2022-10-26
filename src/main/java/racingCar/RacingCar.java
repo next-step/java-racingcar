@@ -34,23 +34,6 @@ public class RacingCar {
         }
     }
 
-    public int getNumberOfMovement() {
-        return this.position.getPosition();
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        final RacingCar racingCar = (RacingCar) o;
-        return position.equals(racingCar.position) && name.equals(racingCar.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(position, name);
-    }
-
     public boolean isFurtherAsMuchAs(RacingCar car) {
         return this.position.equals(car.position);
     }
@@ -74,5 +57,22 @@ public class RacingCar {
         }
 
         return trace;
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        final RacingCar racingCar = (RacingCar) o;
+        return position.equals(racingCar.position) && name.equals(racingCar.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(position, name);
     }
 }

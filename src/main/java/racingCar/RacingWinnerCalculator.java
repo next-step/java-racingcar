@@ -18,8 +18,12 @@ public class RacingWinnerCalculator {
 
     @Override
     public boolean equals(final Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         final RacingWinnerCalculator that = (RacingWinnerCalculator) o;
         return Objects.equals(cars, that.cars);
     }
