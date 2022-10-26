@@ -1,17 +1,15 @@
 package racing;
 
-import java.util.ArrayList;
-import java.util.List;
+import racing.domain.Cars;
+
+import static racing.view.RacingResultView.printResultMessage;
 
 public class RacingGame {
-    private static List<Car> carList;
 
-    public static List<Car> makeCarList(int carCount) {
-        carList = new ArrayList<>();
-        for (int i = 1; i <= carCount; i++) {
-            Car car = new Car();
-            carList.add(car);
+    public static void race(int gameCount, Cars cars) {
+        printResultMessage();
+        for (int i = 0; i < gameCount; i++) {
+            cars.moveCars();
         }
-        return carList;
     }
 }
