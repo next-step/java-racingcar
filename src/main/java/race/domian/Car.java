@@ -1,6 +1,6 @@
 package race.domian;
 
-import race.strategy.RandomMoveStrategy;
+import race.strategy.MoveStrategy;
 
 public class Car {
 
@@ -10,7 +10,7 @@ public class Car {
         this.position = 0;
     }
 
-    public void move(RandomMoveStrategy moveStrategy) {
+    public void move(MoveStrategy moveStrategy) {
         if (moveStrategy.movable()) {
             ++position;
         }
