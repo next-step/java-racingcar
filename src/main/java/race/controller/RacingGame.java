@@ -21,7 +21,7 @@ public class RacingGame {
         ResultView.getNewLine();
         ResultView.getResultSentence();
 
-        List<Car> cars = Cars.makeCars(carCount);
+        List<Car> cars = Cars.from(carCount);
 
         while (playCount > 0) {
             for (int i = 0; i < carCount; i++) {

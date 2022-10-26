@@ -11,7 +11,7 @@ public class Cars {
         this.cars = new ArrayList<>(cars);
     }
 
-    public static List<Car> makeCars(int num) {
+    public static List<Car> from(int num) {
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < num; i++) {
             cars.add(new Car());
