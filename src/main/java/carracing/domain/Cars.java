@@ -25,9 +25,7 @@ public class Cars{
     }
 
     public static Cars makeCars(String[] Names) {
-        List<Car> carList = makeCarList(Names);
-        Cars cars = new Cars(carList);
-        return cars;
+        return new Cars(makeCarList(Names));
     }
 
     public void moveCars(MovingStrategy movingStrategy) {
@@ -35,12 +33,11 @@ public class Cars{
     }
 
     private static List<Car> makeCarList(String[] names) {
-        List<Car> carList = new ArrayList<>();
-        Arrays.stream(names)
+
+        return Arrays.stream(names)
                 .map(name -> new Car(name))
                 .collect(Collectors.toList());
 
-        return carList;
     }
 
 
