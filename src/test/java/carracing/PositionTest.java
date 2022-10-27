@@ -17,7 +17,8 @@ public class PositionTest {
     void invalid() {
         assertThatThrownBy(()->{
             new Position(-1);
-        }).isInstanceOf(IllegalAccessException.class);
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("0이상의 값만 유효합니다.");
 
     }
 }

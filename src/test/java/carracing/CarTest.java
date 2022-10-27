@@ -16,7 +16,7 @@ public class CarTest {
 
     @Test
     void 최댓값_일치() {
-        Car car = new Car("pobi");
+        Car car = new Car("pobi", new Position(3));
         assertThat(car.hasMaxPosition(3)).isTrue();
         assertThat(car.hasMaxPosition(2)).isFalse();
     }
