@@ -7,17 +7,16 @@ import java.util.stream.Collectors;
 public class RacingCarGame {
 
     private List<Car> cars;
-    private Position position = new Position();
 
     public RacingCarGame(List<Car> cars) {
         this.cars = cars;
     }
 
     public void raceCarGame() {
-        for (int i = 0; i < cars.size(); i++) {
+        for (Car car : cars) {
             boolean discriminationMove = new MovingStrategy().discriminateMovement();
-            int moveDistance = position.moveCarUnit(discriminationMove);
-            position.updateCarStatus(i, moveDistance, cars);
+            int moveDistance = car.moveCarUnit(discriminationMove);
+            car.move(moveDistance);
         }
     }
 
