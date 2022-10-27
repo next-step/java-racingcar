@@ -19,7 +19,7 @@ public class InputView {
 	}
 
 	public InputView() {
-		this.scanner = new Scanner(System.in);
+		this(new Scanner(System.in));
 	}
 
 	public int askCountQuestion(String question) {
