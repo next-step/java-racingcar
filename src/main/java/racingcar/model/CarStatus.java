@@ -4,16 +4,15 @@ import java.util.Objects;
 
 public final class CarStatus {
 
-    private final String name;
-
+    private final CarName name;
     private final Distance distance;
 
-    public CarStatus(final String name, final Distance distance) {
+    public CarStatus(final CarName name, final Distance distance) {
         this.name = name;
         this.distance = distance;
     }
 
-    public String getName() {
+    public CarName getName() {
         return name;
     }
 
@@ -29,8 +28,8 @@ public final class CarStatus {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        final CarStatus that = (CarStatus) o;
-        return name.equals(that.name) && distance.equals(that.distance);
+        final CarStatus carStatus = (CarStatus) o;
+        return name.equals(carStatus.name) && distance.equals(carStatus.distance);
     }
 
     @Override

@@ -2,9 +2,9 @@ package racingcar.view;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.model.CarName;
 import racingcar.model.CarStatus;
 import racingcar.model.Distance;
-import racingcar.model.Winner;
 
 public final class OutputView {
 
@@ -19,8 +19,8 @@ public final class OutputView {
     private OutputView() {
     }
 
-    public static void printWinners(final List<Winner> winners) {
-        print(createWinnersMessage(winners));
+    public static void printWinners(final List<CarName> winnerCarNames) {
+        print(createWinnersMessage(winnerCarNames));
     }
 
     public static void printGameResultTitle() {
@@ -31,16 +31,16 @@ public final class OutputView {
         printEmptyLine(DIVIDER_LINE_NO);
     }
 
-    private static String createWinnersMessage(final List<Winner> winners) {
+    private static String createWinnersMessage(final List<CarName> winnerCarNames) {
         return new StringBuilder()
-            .append(createWinnersTitleMessage(winners))
+            .append(createWinnersTitleMessage(winnerCarNames))
             .append(GAME_WINNERS_SUFFIX_MESSAGE)
             .toString();
     }
 
-    private static String createWinnersTitleMessage(final List<Winner> winners) {
-        return winners.stream()
-            .map(Winner::getName)
+    private static String createWinnersTitleMessage(final List<CarName> winnerCarNames) {
+        return winnerCarNames.stream()
+            .map(CarName::getValue)
             .collect(Collectors.joining(COMMA + SPACE));
     }
 
@@ -62,7 +62,7 @@ public final class OutputView {
 
     private static String createCarStatusTitleMessage(final CarStatus carStatus) {
         return new StringBuilder()
-            .append(carStatus.getName())
+            .append(carStatus.getName().getValue())
             .append(SPACE).append(COLON).append(SPACE)
             .toString();
     }

@@ -24,10 +24,13 @@ public class CarsTest {
 
     @BeforeEach
     void setUp() {
-        always50MoveCar = CarFactory.getCar("50", () -> Distance.from(50), () -> true);
-        always10MoveCar = CarFactory.getCar("10", () -> Distance.from(10), () -> true);
-        alwaysNonMovableCar = CarFactory.getCar("0move", () -> Distance.from(10), () -> false);
-        alwaysStopCar = CarFactory.getCar("stop", () -> Distance.ZERO, () -> true);
+        always50MoveCar = CarFactory.getCar(CarName.from("50"), () -> Distance.from(50),
+            () -> true);
+        always10MoveCar = CarFactory.getCar(CarName.from("10"), () -> Distance.from(10),
+            () -> true);
+        alwaysNonMovableCar = CarFactory.getCar(CarName.from("0move"), () -> Distance.from(10),
+            () -> false);
+        alwaysStopCar = CarFactory.getCar(CarName.from("stop"), () -> Distance.ZERO, () -> true);
     }
 
     @Test
@@ -105,7 +108,8 @@ public class CarsTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 5, 10})
     void getFarthestMovedCars_sameDistanceCars(final int count) {
-        final Car otherAlways50MoveCar = CarFactory.getCar("fifty", () -> Distance.from(50),
+        final Car otherAlways50MoveCar = CarFactory.getCar(CarName.from("fifty"),
+            () -> Distance.from(50),
             () -> true);
         final Cars cars = new Cars(Arrays.asList(always50MoveCar, otherAlways50MoveCar));
 

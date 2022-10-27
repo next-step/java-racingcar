@@ -21,14 +21,14 @@ public final class CarFactory {
     }
 
     public static Car getCar(
-        final String carName,
+        final CarName carName,
         final MovePolicy movePolicy,
         final MoveCondition moveCondition
     ) {
         return new Car(carName, movePolicy, moveCondition);
     }
 
-    public static Car getDefaultCar(final String carName) {
+    public static Car getDefaultCar(final CarName carName) {
         return getCar(carName, DEFAULT_CAR_MOVE_POLICY, DEFAULT_CAR_MOVE_CONDITION);
     }
 

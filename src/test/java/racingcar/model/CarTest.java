@@ -1,7 +1,6 @@
 package racingcar.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import org.junit.jupiter.api.Test;
@@ -13,7 +12,7 @@ class CarTest {
     // TODO
     private static final String EXCEPTION_MESSAGE_PREFIX = "[ERROR]";
 
-    private static final String DEFAULT_CAR_NAME = "beth";
+    private static final CarName DEFAULT_CAR_NAME = CarName.from("beth");
     private static final MovePolicy GIANT_STEP_MOVE_POLICY = () -> Distance.from(75);
     private static final MoveCondition ALWAYS_MOVE_CONDITION = () -> true;
 
@@ -22,29 +21,6 @@ class CarTest {
         assertThatExceptionOfType(IllegalArgumentException.class)
             .isThrownBy(() -> CarFactory.getDefaultCar(null))
             .withMessageContaining(EXCEPTION_MESSAGE_PREFIX);
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"", " "})
-    void blankName(final String carName) {
-        assertThatExceptionOfType(IllegalArgumentException.class)
-            .isThrownBy(() -> CarFactory.getDefaultCar(carName))
-            .withMessageContaining(EXCEPTION_MESSAGE_PREFIX);
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"foobar", "foobarx", "hogehoge", "123456", "1234567"})
-    void tooLongName(final String carName) {
-        assertThatExceptionOfType(IllegalArgumentException.class)
-            .isThrownBy(() -> CarFactory.getDefaultCar(carName))
-            .withMessageContaining(EXCEPTION_MESSAGE_PREFIX);
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"f", "fo", "foo", "foob", "fooba", "1", "12", "123", "1234", "12345"})
-    void validName(final String carName) {
-        assertThatCode(() -> CarFactory.getDefaultCar(carName))
-            .doesNotThrowAnyException();
     }
 
     @Test
