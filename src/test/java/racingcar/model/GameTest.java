@@ -1,11 +1,11 @@
 package racingcar.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -15,71 +15,47 @@ class GameTest {
 
     // TODO
     private static final String EXCEPTION_MESSAGE_PREFIX = "[ERROR]";
+    private static PositiveNumber DEFAULT_TRY_NO;
+    private static Cars DEFAULT_CARS;
 
-    @Test
-    void newGame_nullCarNames() {
-        assertThatExceptionOfType(IllegalArgumentException.class)
-            .isThrownBy(() -> new Game(null, "5"))
-            .withMessageContaining(EXCEPTION_MESSAGE_PREFIX);
+    @BeforeEach
+    void setUp() {
+        DEFAULT_TRY_NO = new PositiveNumber("5");
+        DEFAULT_CARS = new Cars(
+            List.of(
+                CarFactory.getDefaultCar(CarName.from("with")),
+                CarFactory.getDefaultCar(CarName.from("beth")),
+                CarFactory.getDefaultCar(CarName.from("foo"))
+            )
+        );
     }
 
     @Test
-    void newGame_emptyCarNames() {
+    void newGame_nullCars_nullTryNo() {
         assertThatExceptionOfType(IllegalArgumentException.class)
-            .isThrownBy(() -> new Game("", "5"))
+            .isThrownBy(() -> new Game(null, null))
             .withMessageContaining(EXCEPTION_MESSAGE_PREFIX);
     }
 
     @Test
-    void newGame_blankCarNames() {
+    void newGame_nullCars() {
         assertThatExceptionOfType(IllegalArgumentException.class)
-            .isThrownBy(() -> new Game(" ", "5"))
+            .isThrownBy(() -> new Game(null, DEFAULT_TRY_NO))
             .withMessageContaining(EXCEPTION_MESSAGE_PREFIX);
     }
 
-    @ParameterizedTest
-    @ValueSource(strings = {"with, ", ", with", " , "})
-    void newGame_containsBlankCarName(final String carNames) {
+    @Test
+    void newGame_nullTryNo() {
         assertThatExceptionOfType(IllegalArgumentException.class)
-            .isThrownBy(() -> new Game(carNames, "5"))
+            .isThrownBy(() -> new Game(DEFAULT_CARS, null))
             .withMessageContaining(EXCEPTION_MESSAGE_PREFIX);
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"with|beth", "with:beth", "with@beth"})
-    void newGame_invalidCarNames(final String carNames) {
-        assertThatExceptionOfType(IllegalArgumentException.class)
-            .isThrownBy(() -> new Game(carNames, "5"))
-            .withMessageContaining(EXCEPTION_MESSAGE_PREFIX);
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"with", "with, beth", "with,beth"})
-    void newGame_validCarNames(final String carNames) {
-        assertThatCode(() -> new Game(carNames, "5"))
-            .doesNotThrowAnyException();
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"-5, -1, 0, O, !, @, #, $, zero, one, five, ten"})
-    void newGame_invalidTryNo(final String tryNo) {
-        assertThatExceptionOfType(IllegalArgumentException.class)
-            .isThrownBy(() -> new Game("with", tryNo))
-            .withMessageContaining(EXCEPTION_MESSAGE_PREFIX);
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"1", "5", "10"})
-    void newGame_validTryNo(final String tryNo) {
-        assertThatCode(() -> new Game("with", tryNo))
-            .doesNotThrowAnyException();
     }
 
     @DisplayName("주어진 시도 횟수만큼 플레이 후, 게임은 끝나야 한다")
     @ParameterizedTest
     @ValueSource(strings = {"1", "5", "10"})
     void isGameOver(final String tryNo) {
-        final Game game = new Game("3", tryNo);
+        final Game game = new Game(DEFAULT_CARS, new PositiveNumber(tryNo));
         for (int i = 0; i < Integer.parseInt(tryNo); i++) {
             assertThat(game.isGameOver()).isFalse();
             game.play();
@@ -91,16 +67,16 @@ class GameTest {
     @ParameterizedTest
     @ValueSource(strings = {"1", "5", "10"})
     void getCarStatuses(final String tryNo) {
-        final Game game = new Game("with, beth, foo", tryNo);
+        final Game game = new Game(DEFAULT_CARS, new PositiveNumber(tryNo));
 
         List<CarStatus> previousCarStatuses = game.getCarStatuses();
 
         // 플레이 전, 모든 자동차들의 전진거리는 0이어야 한다.
         assertThat(previousCarStatuses)
             .containsExactly(
-                new CarStatus("with", Distance.ZERO),
-                new CarStatus("beth", Distance.ZERO),
-                new CarStatus("foo", Distance.ZERO));
+                new CarStatus(CarName.from("with"), Distance.ZERO),
+                new CarStatus(CarName.from("beth"), Distance.ZERO),
+                new CarStatus(CarName.from("foo"), Distance.ZERO));
 
         for (int i = 0; i < Integer.parseInt(tryNo); i++) {
 
@@ -121,24 +97,21 @@ class GameTest {
     @ParameterizedTest
     @ValueSource(strings = {"1", "5", "10"})
     void getWinners(final String tryNo) {
-        final Game game = new Game("with, beth, foo", tryNo);
+        final Game game = new Game(DEFAULT_CARS, new PositiveNumber(tryNo));
 
         // 플레이가 끝나기 전엔, 우승한 자동차 이름목록이 비어있어야 한다.
         for (int i = 0; i < Integer.parseInt(tryNo); i++) {
-            assertThat(game.getWinners()).hasSize(0);
+            assertThat(game.getWinnerCarNames()).hasSize(0);
             game.play();
         }
 
         // 주어진 시도 회수만큼 플레이가 끝나면, 우승한 자동차 이름 목록을 반활 할 수 있어야 한다.
         assertThat(game.isGameOver())
             .isTrue();
-        assertThat(game.getWinners())
+        assertThat(game.getWinnerCarNames())
             .isNotEmpty();
-        assertThat(game.getWinners())
-            .containsAnyOf(
-                new Winner("with"),
-                new Winner("beth"),
-                new Winner("foo"));
+        assertThat(game.getWinnerCarNames())
+            .containsAnyOf(CarName.from("with"), CarName.from("beth"), CarName.from("foo"));
     }
 
     private static List<Distance> mapToDistance(final List<CarStatus> carStatuses) {
@@ -147,7 +120,7 @@ class GameTest {
             .collect(Collectors.toList());
     }
 
-    private static List<String> mapToName(final List<CarStatus> carStatuses) {
+    private static List<CarName> mapToName(final List<CarStatus> carStatuses) {
         return carStatuses.stream()
             .map(CarStatus::getName)
             .collect(Collectors.toList());
