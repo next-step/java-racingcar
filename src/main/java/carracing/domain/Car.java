@@ -1,6 +1,7 @@
 package carracing.domain;
 
-import org.apache.commons.lang3.StringUtils;
+
+import java.util.Objects;
 
 public class Car {
 
@@ -16,7 +17,7 @@ public class Car {
     }
 
     public Car(final String name, final Position position) {
-        if (StringUtils.isBlank(name)) {
+        if (name.length() == 0) {
             throw new IllegalArgumentException("자동차 이름은 값이 존재해야 합니다");
         }
         this.name = name.trim();
@@ -46,6 +47,19 @@ public class Car {
 
     public int getPosition() {
         return position.getPosition();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(name, car.name) && Objects.equals(position, car.position);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, position);
     }
 }
 
