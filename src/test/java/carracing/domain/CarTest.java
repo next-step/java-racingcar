@@ -18,8 +18,8 @@ public class CarTest {
     @DisplayName("Move Test")
     public void moveTest() {
         Car testCar = new Car(1);
-        testCar.move();
-        testCar.move();
-        assertThat(testCar).usingRecursiveComparison().isEqualTo(new Car(1, 2));
+        NumberGenerator numberGenerator = new MovableNumberGenerator();
+        testCar.move(numberGenerator);
+        assertThat(testCar).extracting("position").isEqualTo(1);
     }
 }

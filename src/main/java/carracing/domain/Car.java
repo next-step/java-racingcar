@@ -5,10 +5,8 @@ import java.util.Random;
 public class Car {
     private static final int MOVABLE_NUMBER = 4;
 
-    private static int carId;
-
+    private int carId;
     private int position;
-    private boolean movable;
 
     public Car(final int carId,int position) {
         this.carId = carId;
@@ -23,13 +21,9 @@ public class Car {
         return this.position;
     }
 
-    public void setMovable(int randomNumber){
-        this.movable = randomNumber>MOVABLE_NUMBER;
-    }
-
-    public void move() {
-        if(this.movable) {
+    public void move(NumberGenerator numberGenerator) {
+        int number= numberGenerator.generate();
+        if(number > MOVABLE_NUMBER)
             this.position++;
-        }
     }
 }

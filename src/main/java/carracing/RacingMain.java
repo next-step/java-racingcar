@@ -15,7 +15,6 @@ public class RacingMain {
         RacingGame racingGame = new RacingGame(carCount, tryCount);
 
         while (racingGame.remainTryCount()) {
-            racingGame.setMovable();
             racingGame.racing();
             resultView.showRacingPosition(racingGame);
         }
