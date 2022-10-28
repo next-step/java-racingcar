@@ -44,24 +44,18 @@ public class RacingGame {
 
 			startRacing(racingCars, carMoveCount);
 
-			printWinners(racingCars);
+			List<Car> winners = racingCars.getWinnersOfRacing();
+			resultView.printWinners(winners);
 		} catch (InputMismatchException | NegativeNumberException | InvalidCarNameLengthException exception) {
-			System.out.println(exception.getMessage());
+			resultView.printExceptionMessage(exception);
 			quit();
 		}
-	}
-
-	private void printWinners(final RacingCars racingCars) {
-		List<Car> winners = racingCars.getWinnersOfRacing();
-
-		resultView.printWinners(winners);
 	}
 
 	private void startRacing(RacingCars racingCars, Count carMoveCount) {
 		for (int i = 0; i < carMoveCount.getCount(); i++) {
 			racingCars.moveCars();
 			resultView.printCarStatuses(racingCars);
-			System.out.println();
 		}
 	}
 
