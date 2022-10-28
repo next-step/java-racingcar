@@ -14,6 +14,12 @@ public class RacingCars {
 		this.racingCars = racingCars;
 	}
 
+	public RacingCars(List<String> carNames, RandomNum randomNum) {
+		this.racingCars = carNames.stream()
+			.map(carName -> new Car(carName, randomNum))
+			.collect(Collectors.toList());
+	}
+
 	public void moveCars() {
 		IntStream.range(0, racingCars.size())
 			.forEach(i -> racingCars.get(i).move());
