@@ -5,11 +5,11 @@ public class RacingCar {
     private int position;
 
     public RacingCar() {
-        position = 0;
+        this.position = 0;
     }
 
     public RacingCar(int position) {
-        position = 0;
+        this.position = position;
     }
 
     public boolean goingAheadOrNot(RandomBounded randomBounded) {
@@ -17,6 +17,10 @@ public class RacingCar {
     }
 
     public RacingCar goAhead() {
-        return new RacingCar(position++);
+        return new RacingCar(++position);
+    }
+
+    public int position() {
+        return this.position;
     }
 }

@@ -1,20 +1,63 @@
 package step3;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class Racing {
     public static void main(String[] args) {
 
-        /* 사용자의 입력을 받는 것으로 변경 예정 */
-        int numOfCars = 3;
-        int countTrial = 5;
+        Scanner scanner = new Scanner(System.in);
 
-        for (int i = 0; i < countTrial; i++) {
-            for (int j = 0; j < numOfCars; j++) {
-                RacingCar racingCar = new RacingCar();
-                if (racingCar.goingAheadOrNot(new RandomBounded())) {
-                    racingCar = racingCar.goAhead();
-                }
-            }
+        int numberOfCars = inputNumberOfCars(scanner);
+        int countRound = inputCountRound(scanner);
+
+        RacingCarList racingCarList = new RacingCarList(numberOfCars);
+
+        for (int i = 0; i < countRound; i++) {
+            allRacingCarGoingAheadOrNotInRound(racingCarList);
+            allRacingCarPrintInRound(racingCarList);
         }
-
     }
+
+    public static void allRacingCarGoingAheadOrNotInRound(RacingCarList racingCarList) {
+        for (RacingCar racingCar : racingCarList.list()) {
+            eachRacingCarGoingAheadOrNot(racingCar);
+        }
+    }
+
+    public static void eachRacingCarGoingAheadOrNot(RacingCar racingCar) {
+        if (racingCar.goingAheadOrNot(new RandomBounded())) {
+            racingCar = racingCar.goAhead();
+        }
+    }
+
+    public static int inputNumberOfCars(Scanner scanner) {
+        System.out.println("자동차 대수는 몇 대인가요?");
+        return inputInteger(scanner);
+    }
+
+    public static int inputCountRound(Scanner scanner) {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        return inputInteger(scanner);
+    }
+
+    public static int inputInteger(Scanner scanner){
+        return scanner.nextInt();
+    }
+
+    public static void allRacingCarPrintInRound(RacingCarList racingCarList) {
+        for (RacingCar racingCar : racingCarList.list()) {
+            eachRacingCarPrint(racingCar.position());
+        }
+        System.out.println();
+    }
+
+    public static void eachRacingCarPrint(int position) {
+        for (int i = 0; i < position; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+    }
+
 }
