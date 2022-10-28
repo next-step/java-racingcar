@@ -3,7 +3,7 @@ package racingcarwinner;
 public class Car {
 
     private static final int DEFAULT_POSITION = 0;
-    private String carName;
+    private final String carName;
     private int position;
 
     public Car(String carName) {
@@ -13,10 +13,6 @@ public class Car {
 
     public String getCarName() {
         return this.carName;
-    }
-
-    public void setCarName(String carName) {
-        this.carName = carName;
     }
 
     public int getPosition() {
