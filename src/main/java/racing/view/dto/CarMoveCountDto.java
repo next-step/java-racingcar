@@ -1,4 +1,4 @@
-package racing;
+package racing.view.dto;
 
 public class CarMoveCountDto {
 	private final int carMoveCount;

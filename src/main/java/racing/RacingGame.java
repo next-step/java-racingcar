@@ -12,6 +12,8 @@ import racing.exception.InvalidCarNameLengthException;
 import racing.exception.NegativeNumberException;
 import racing.view.InputView;
 import racing.view.ResultView;
+import racing.view.dto.CarMoveCountDto;
+import racing.view.dto.CarNamesDto;
 
 public class RacingGame {
 	private final InputView inputView;

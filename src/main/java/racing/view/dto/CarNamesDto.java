@@ -1,4 +1,4 @@
-package racing;
+package racing.view.dto;
 
 import java.util.List;
 
