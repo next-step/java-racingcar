@@ -4,6 +4,7 @@ import static java.lang.System.*;
 
 import java.text.MessageFormat;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import racing.domain.Car;
 import racing.domain.RacingCars;
@@ -40,11 +41,11 @@ public class ResultView {
 			print(LINE_BREAK);
 			return;
 		}
-		CharSequence[] winnerNames = winners.stream()
+		String winnerNames = winners.stream()
 			.map(Car::getName)
-			.toArray(CharSequence[]::new);
+			.collect(Collectors.joining(COMMA_DELIMETER));
 
-		print(MessageFormat.format(WINNER_PRINT_FORMAT, String.join(COMMA_DELIMETER, winnerNames)));
+		print(MessageFormat.format(WINNER_PRINT_FORMAT, winnerNames));
 	}
 
 	public void printExceptionMessage(Exception exception) {
