@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -23,10 +24,13 @@ public class CarsTest {
 
     @BeforeEach
     void setUp() {
-        always50MoveCar = CarFactory.getCar(() -> Distance.from(50), () -> true);
-        always10MoveCar = CarFactory.getCar(() -> Distance.from(10), () -> true);
-        alwaysNonMovableCar = CarFactory.getCar(() -> Distance.from(10), () -> false);
-        alwaysStopCar = CarFactory.getCar(() -> Distance.ZERO, () -> true);
+        always50MoveCar = CarFactory.getCar(CarName.from("50"), () -> Distance.from(50),
+            () -> true);
+        always10MoveCar = CarFactory.getCar(CarName.from("10"), () -> Distance.from(10),
+            () -> true);
+        alwaysNonMovableCar = CarFactory.getCar(CarName.from("0move"), () -> Distance.from(10),
+            () -> false);
+        alwaysStopCar = CarFactory.getCar(CarName.from("stop"), () -> Distance.ZERO, () -> true);
     }
 
     @Test
@@ -50,6 +54,7 @@ public class CarsTest {
             .withMessageContaining(EXCEPTION_MESSAGE_PREFIX);
     }
 
+    @DisplayName("플레이 할때 마다, 소유하고 있는 자동차 개체들은 전진 혹은 멈추어야 한다")
     @ParameterizedTest
     @ValueSource(ints = {1, 5, 10})
     void move(final int count) {
@@ -80,21 +85,50 @@ public class CarsTest {
 
     @ParameterizedTest
     @ValueSource(ints = {1, 5, 10})
-    void getDistances(final int count) {
-        final Cars cars = new Cars(
-            List.of(always50MoveCar, always10MoveCar, alwaysNonMovableCar, alwaysStopCar));
+    void getFarthestMovedCars_singleCar_zeroDistance(final int count) {
+        final Cars cars = new Cars(Collections.singletonList(alwaysStopCar));
+        for (int i = 0; i < count; i++) {
+            cars.move();
+        }
+        assertThat(cars.getFarthestMovedCars().size()).isEqualTo(1);
+        assertThat(cars.getFarthestMovedCars()).containsOnly(alwaysStopCar);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 5, 10})
+    void getFarthestMovedCars_singleCar_nonZeroDistance(final int count) {
+        final Cars cars = new Cars(Collections.singletonList(always50MoveCar));
+        for (int i = 0; i < count; i++) {
+            cars.move();
+        }
+        assertThat(cars.getFarthestMovedCars().size()).isEqualTo(1);
+        assertThat(cars.getFarthestMovedCars()).containsOnly(always50MoveCar);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 5, 10})
+    void getFarthestMovedCars_sameDistanceCars(final int count) {
+        final Car otherAlways50MoveCar = CarFactory.getCar(CarName.from("fifty"),
+            () -> Distance.from(50),
+            () -> true);
+        final Cars cars = new Cars(Arrays.asList(always50MoveCar, otherAlways50MoveCar));
 
         for (int i = 0; i < count; i++) {
             cars.move();
         }
+        assertThat(cars.getFarthestMovedCars().size()).isEqualTo(2);
+        assertThat(cars.getFarthestMovedCars()).containsOnly(always50MoveCar, otherAlways50MoveCar);
+    }
 
-        final List<Distance> distances = cars.getDistances();
-        assertThat(distances.size())
-            .isEqualTo(4);
-        assertThat(distances)
-            .containsExactly(always50MoveCar.getDistance(),
-                always10MoveCar.getDistance(),
-                alwaysNonMovableCar.getDistance(),
-                alwaysStopCar.getDistance());
+    @ParameterizedTest
+    @ValueSource(ints = {1, 5, 10})
+    void getFarthestMovedCars_differentDistanceCars(final int count) {
+        final Cars cars = new Cars(
+            Arrays.asList(alwaysNonMovableCar, always50MoveCar, always10MoveCar));
+        for (int i = 0; i < count; i++) {
+            cars.move();
+        }
+        assertThat(cars.getFarthestMovedCars().size()).isEqualTo(1);
+        assertThat(cars.getFarthestMovedCars()).containsOnly(always50MoveCar);
     }
 }

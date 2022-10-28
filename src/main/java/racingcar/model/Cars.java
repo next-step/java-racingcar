@@ -1,6 +1,9 @@
 package racingcar.model;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import racingcar.ExceptionMessageUtils;
 
@@ -36,10 +39,42 @@ public final class Cars {
         cars.forEach(Car::move);
     }
 
-    public List<Distance> getDistances() {
+    public List<Car> getCars() {
+        return Collections.unmodifiableList(cars);
+    }
+
+    public List<Car> getFarthestMovedCars() {
+        return getFarthestMovedCar(cars)
+            .map(farthestMovedCar -> filterSameDistanceCars(cars, farthestMovedCar))
+            .orElse(Collections.emptyList());
+    }
+
+    private static List<Car> filterSameDistanceCars(final List<Car> cars, final Car car) {
+        if (cars == null || cars.isEmpty()) {
+            return Collections.emptyList();
+        }
         return cars.stream()
-            .map((Car::getDistance))
+            .filter((each -> each.hasSameDistanceWith(car)))
             .collect(Collectors.toUnmodifiableList());
+    }
+
+    private static Optional<Car> getFarthestMovedCar(final List<Car> cars) {
+        if (cars == null || cars.isEmpty()) {
+            return Optional.empty();
+        }
+        final List<Car> tmp = new ArrayList<>(cars);
+        tmp.sort(Cars::compareCarByDistance);
+        return Optional.of(tmp.get(0));
+    }
+
+    private static int compareCarByDistance(final Car car1, final Car car2) {
+        if (car1.isFartherMovedThan(car2)) {
+            return -1;
+        }
+        if (car1.isLessMovedThan(car2)) {
+            return 1;
+        }
+        return 0;
     }
 
 }
