@@ -3,7 +3,6 @@ package racing;
 import java.util.List;
 
 public class CarNamesDto {
-
 	private final List<String> carNames;
 
 	private CarNamesDto(List<String> carNames) {

@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 import java.util.List;
 
 import racing.domain.Car;
+import racing.domain.Count;
 import racing.domain.RacingCars;
 import racing.domain.RandomNum;
 import racing.domain.RandomNumber;
@@ -13,9 +14,6 @@ import racing.view.InputView;
 import racing.view.ResultView;
 
 public class RacingGame {
-
-	private static final String CAR_MOVE_COUNT_QUESTION = "시도할 횟수는 몇 회 인가요?";
-
 	private final InputView inputView;
 	private final ResultView resultView;
 
@@ -34,21 +32,21 @@ public class RacingGame {
 	}
 
 	private void startGame() {
-		CarNamesDto carNamesDTO = inputView.askCarNames();
-		RandomNum randomNum = new RandomNumber();
-		RacingCars racingCars = new RacingCars(carNamesDTO.getCarNames(), randomNum);
-
-		int carMoveCount = 0;
 		try {
-			carMoveCount = inputView.askCountQuestion(CAR_MOVE_COUNT_QUESTION);
+			CarNamesDto carNamesDTO = inputView.askCarNames();
+			RandomNum randomNum = new RandomNumber();
+			RacingCars racingCars = new RacingCars(carNamesDTO.getCarNames(), randomNum);
+
+			CarMoveCountDto carMoveCountDto = inputView.askCarMoveCount();
+			Count carMoveCount = new Count(carMoveCountDto.getCarMoveCount());
+
+			startRacing(racingCars, carMoveCount);
+
+			printWinners(racingCars);
 		} catch (InputMismatchException | NegativeNumberException | InvalidCarNameLengthException exception) {
 			System.out.println(exception.getMessage());
 			quit();
 		}
-
-		startRacing(racingCars, carMoveCount);
-
-		printWinners(racingCars);
 	}
 
 	private void printWinners(final RacingCars racingCars) {
@@ -57,8 +55,8 @@ public class RacingGame {
 		resultView.printWinners(winners);
 	}
 
-	private void startRacing(RacingCars racingCars, int carMoveCount) {
-		for (int i = 0; i < carMoveCount; i++) {
+	private void startRacing(RacingCars racingCars, Count carMoveCount) {
+		for (int i = 0; i < carMoveCount.getCount(); i++) {
 			racingCars.moveCars();
 			resultView.printCarStatuses(racingCars);
 			System.out.println();
