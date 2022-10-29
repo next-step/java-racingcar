@@ -15,11 +15,11 @@ public class Result {
 
         for (int trys = 0; trys < racingModel.getTryCount(); trys++) {
             cars.racingStart(randomNumberGenerator);
-            ResultView.printEachRacingStep();
+            ResultView.printEachRacingStep(cars);
         }
     }
 
-    public static List<Car> judgeWinner(RacingCars cars) {
+    public List<Car> judgeWinner(RacingCars cars) {
         List<Car> result = new ArrayList<>();
 
         List<Car> racingCars =

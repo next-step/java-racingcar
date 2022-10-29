@@ -8,13 +8,8 @@ import java.util.List;
 public class ResultView {
 
     private static int ONLY_ONE_WINNER = 1;
-    private static RacingCars racingCars;
 
-    public ResultView(RacingCars racingCars) {
-        this.racingCars = racingCars;
-    }
-
-    public static void printEachRacingStep() {
+    public static void printEachRacingStep(RacingCars racingCars) {
         for (Car racingCar : racingCars.getRacingCars()) {
             printCarPosition(racingCar);
         }

@@ -3,26 +3,25 @@ package racingcar;
 import racingcar.race.RacingCars;
 import racingcar.race.RacingModel;
 import racingcar.race.Result;
+import racingcar.race.TryCount;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
 public class App {
     public static void main(String[] args) {
-        InputView.printStartScreen();
 
         String names[] = InputView.receiveNames();
 
         InputView.printInputUsername();
 
-        int tryCount = InputView.receiveTryCount();
+        int tryCount = new TryCount(InputView.receiveTryCount()).getTryCount();
 
-        RacingCars cars = RacingCars.of(names);
-        RacingModel racingModel = new RacingModel(tryCount);
+        RacingModel racingModel  = new RacingModel(names, tryCount);
 
         Result result = new Result();
-        result.racingStartAndPrint(racingModel, cars);
+        result.racingStartAndPrint(racingModel, racingModel.getCars());
 
-        ResultView.printWinner(new RacingCars(Result.judgeWinner(cars)));
+        ResultView.printWinner(new RacingCars(result.judgeWinner(racingModel.getCars())));
 
         InputView.close();
     }
