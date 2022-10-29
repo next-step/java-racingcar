@@ -5,10 +5,11 @@ import carracing.domain.RacingGame;
 
 public class ResultView {
     private static final String DASH = "-";
+    private static final String COLON = " : ";
 
     public void showRacingPosition(RacingGame racingGame) {
         for (Car car : racingGame.getCarList()) {
-            System.out.println(makePositionToDash(car));
+            System.out.println(car.getName() + COLON + makePositionToDash(car));
         }
         System.out.println();
     }
