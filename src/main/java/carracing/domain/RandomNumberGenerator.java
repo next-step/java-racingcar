@@ -2,7 +2,7 @@ package carracing.domain;
 
 import java.util.Random;
 
-public class RandomNumberGenerator implements NumberGenerator{
+public class RandomNumberGenerator implements NumberGenerator {
     private final int RANDOM_RANGE = 10;
 
     @Override

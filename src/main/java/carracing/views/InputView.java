@@ -14,8 +14,8 @@ public class InputView {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String namesString = scanner.next();
         List<String> nameList = StringUtil.split(namesString);
-        nameList.forEach(name->{
-            if(!StringUtil.checkWordLength(name))
+        nameList.forEach(name -> {
+            if (!StringUtil.checkWordLength(name))
                 throw new IllegalArgumentException("이름은 5자를 넘을 수 없습니다.");
         });
         return nameList;

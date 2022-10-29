@@ -13,6 +13,6 @@ public class StringUtil {
     }
 
     public static Boolean checkWordLength(String rightWord) {
-        return rightWord.length()<=5;
+        return rightWord.length() <= WORD_LENGTH;
     }
 }

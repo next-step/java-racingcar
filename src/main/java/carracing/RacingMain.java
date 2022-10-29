@@ -1,5 +1,6 @@
 package carracing;
 
+import carracing.domain.Cars;
 import carracing.domain.RacingGame;
 import carracing.views.InputView;
 import carracing.views.ResultView;
@@ -14,12 +15,13 @@ public class RacingMain {
         List<String> nameList = inputView.getCarNames();
         int tryCount = inputView.getTryCount();
 
-        RacingGame racingGame = new RacingGame(nameList, tryCount);
+        RacingGame racingGame = new RacingGame(new Cars(nameList).getCarList(), tryCount);
 
         while (racingGame.remainTryCount()) {
             racingGame.racing();
             resultView.showRacingPosition(racingGame);
         }
-
+        racingGame.getWinners();
+        resultView.showWinners(racingGame);
     }
 }
