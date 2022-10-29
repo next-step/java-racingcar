@@ -18,4 +18,10 @@ public class CarTest {
         assertThat(testCar2.move(num).equals(new Car(4))).isEqualTo(moved);
     }
 
+    @ParameterizedTest
+    @CsvSource({"3,---", "4,----", "-1,''"})
+    public void car_toString(int pos, String posToString) {
+        assertThat(new Car(pos).toString()).isEqualTo(posToString);
+    }
+
 }

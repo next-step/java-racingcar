@@ -39,4 +39,9 @@ public class Car {
     public int hashCode() {
         return Objects.hash(position);
     }
+
+    @Override
+    public String toString() {
+        return "-".repeat(Math.max(0, this.position));
+    }
 }
