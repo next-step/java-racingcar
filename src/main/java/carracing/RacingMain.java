@@ -9,10 +9,10 @@ public class RacingMain {
     private static final ResultView resultView = new ResultView();
 
     public static void main(String[] args) {
-        int carCount = inputView.getCarCount();
+        String carCount = inputView.getCarCount();
         int tryCount = inputView.getTryCount();
 
-        RacingGame racingGame = new RacingGame(carCount, tryCount);
+        RacingGame racingGame = new RacingGame(0, tryCount);
 
         while (racingGame.remainTryCount()) {
             racingGame.racing();
