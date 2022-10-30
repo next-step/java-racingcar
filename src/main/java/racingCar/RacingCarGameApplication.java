@@ -4,7 +4,6 @@ public class RacingCarGameApplication {
 
     public static void main(String[] args) {
         InputView keyboardInput = InputView.getInputView();
-        ResultView printer = new ResultView();
 
         RacingCars cars = new RacingCars(keyboardInput.nameOfCars());
         int numberOfRounds = keyboardInput.numberOfRounds();
@@ -12,6 +11,6 @@ public class RacingCarGameApplication {
 
         game.start();
 
-        printer.printResult(game);
+        ResultView.printResult(game);
     }
 }

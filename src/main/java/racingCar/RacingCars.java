@@ -3,7 +3,6 @@ package racingCar;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 public class RacingCars {
@@ -73,5 +72,9 @@ public class RacingCars {
         }
 
         return result;
+    }
+
+    public List<RacingCar> getCars() {
+        return this.cars;
     }
 }

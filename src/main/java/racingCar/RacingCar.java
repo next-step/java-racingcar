@@ -5,9 +5,9 @@ import java.util.Objects;
 public class RacingCar {
     private Position position;
 
-    private String name;
+    private final String name;
 
-    private MoveStrategy moveStrategy;
+    private final MoveStrategy moveStrategy;
 
 
     public RacingCar(String name) {
@@ -30,7 +30,7 @@ public class RacingCar {
 
     public void tryMove() {
         if (moveStrategy.canMove()) {
-            position.moveForward();
+            position = position.moveForward();
         }
     }
 
@@ -42,21 +42,12 @@ public class RacingCar {
         return this.position.compareTo(other.position) >= 0;
     }
 
-    public String toString() {
-        return this.name + " : " + trace();
-    }
-
     public String name() {
         return this.name;
     }
 
-    private String trace() {
-        String trace = "";
-        for (int i = 0; i < this.position.getPosition(); i++) {
-            trace += "-";
-        }
-
-        return trace;
+    public RacingCarView toView() {
+        return new RacingCarView(this.name, this.position);
     }
 
     @Override
