@@ -14,4 +14,8 @@ public class RacingGame {
             cars.racing();
         }
     }
+
+    public RacingCars getCars() {
+        return this.cars;
+    }
 }
