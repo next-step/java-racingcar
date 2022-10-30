@@ -34,9 +34,7 @@ public class RacingCars {
         RacingCar max = cars.get(0);
 
         for (RacingCar car : cars) {
-            if (car.isFurtherOrEqualThan(max)) {
-                max = car;
-            }
+            max = RacingCar.furtherRacingCar(max, car);
         }
 
         return max;

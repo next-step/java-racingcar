@@ -38,8 +38,12 @@ public class RacingCar {
         return this.position.equals(car.position);
     }
 
-    public boolean isFurtherOrEqualThan(RacingCar other) {
-        return this.position.compareTo(other.position) >= 0;
+    public static RacingCar furtherRacingCar(RacingCar one, RacingCar other) {
+        if (one.position.compareTo(other.position) >= 0) {
+            return one;
+        }
+
+        return other;
     }
 
     public String name() {
