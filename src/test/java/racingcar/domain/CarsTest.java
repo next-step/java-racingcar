@@ -8,11 +8,13 @@ import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.generator.ManualValueGenerator;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 
 class CarsTest {
 
-    private final Cars cars = Cars.of(new Car("A"), new Car("B"));
+    private final Cars cars = createCars(new Car("A"), new Car("B"));
 
     @ParameterizedTest
     @DisplayName("랜덤 값이 4이상인 경우 자동차는 전진한다.")
@@ -59,13 +61,28 @@ class CarsTest {
     @Test
     @DisplayName("자동차 위치 중 가장 멀리있는 위치를 구한다.")
     void find_max_location() {
-        Cars cars = Cars.of(new Car("A", 1), new Car("B", 2));
+        Cars cars = createCars(
+                createCar("A", 1),
+                createCar("B", 2)
+        );
         assertThat(cars.findMaxLocation()).isEqualTo(new Location(2));
     }
 
     @Test
     @DisplayName("같은 위치에 있는 자동차 이름을 반환한다.")
     void find_same_location_cars() {
-        assertThat(Cars.of(new Car("A", 1), new Car("B", 1)).findSameLocationCarNames(new Location(1))).contains(new Name("A"), new Name("B"));
+        assertThat(createCars(
+                createCar("A", 1),
+                createCar("B", 1)
+        ).findSameLocationCarNames(new Location(1))).contains(new Name("A"), new Name("B"));
+    }
+
+
+    private Car createCar(String name, int location) {
+        return new Car(new Name(name), new Location(location));
+    }
+
+    private Cars createCars(Car... cars) {
+        return new Cars(List.of(cars));
     }
 }

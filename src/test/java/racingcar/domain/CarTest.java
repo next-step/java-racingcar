@@ -31,14 +31,14 @@ class CarTest {
     @Test
     @DisplayName("자동차 위치와 비교해서 더 멀리 있는 위치를 반환 한다.")
     void return_bigger_location() {
-        Car carA = new Car("A", 2);
+        Car carA = new Car(new Name("A"), new Location(2));
         assertThat(carA.findFar(new Location(1))).isEqualTo(new Location(2));
     }
 
     @Test
     @DisplayName("위치가 같으면 자동차 이름을 반환 한다.")
     void is_same_location() {
-        Car carA = new Car("A", 1);
+        Car carA = new Car(new Name("A"), new Location(1));
         assertThat(carA.findCollinearName(new Location(1))).isEqualTo(new Name("A"));
     }
 }

@@ -17,10 +17,6 @@ public class Car {
         this(new Name(name), new Location());
     }
 
-    public Car(String name, int location) {
-        this(new Name(name), new Location(location));
-    }
-
     public void move(Generator generator) {
         if (generator.nextValue() >= MINIMUM_MOVE_VALUE) {
             location.next();
