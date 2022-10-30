@@ -5,7 +5,7 @@ import java.util.Objects;
 public class RacingCar {
     private Position position;
 
-    private final String name;
+    private final RacingCarName name;
 
     private final MoveStrategy moveStrategy;
 
@@ -17,19 +17,10 @@ public class RacingCar {
     public RacingCar(String name, int position) {
         this(name, new Position(position));
     }
-
     public RacingCar(String name, Position position) {
-        validateName(name);
-
-        this.name = name;
+        this.name = new RacingCarName(name);
         this.position = position;
         this.moveStrategy = new RandomMoveStrategy();
-    }
-
-    private static void validateName(String name) {
-        if (name.length() > 5) {
-            throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
-        }
     }
 
     public void tryMove() {
@@ -50,7 +41,7 @@ public class RacingCar {
         return other;
     }
 
-    public String name() {
+    public RacingCarName name() {
         return this.name;
     }
 
@@ -77,6 +68,6 @@ public class RacingCar {
 
     @Override
     public RacingCar clone() {
-        return new RacingCar(this.name, this.position.getPosition());
+        return new RacingCar(this.name.getName(), this.position.getPosition());
     }
 }

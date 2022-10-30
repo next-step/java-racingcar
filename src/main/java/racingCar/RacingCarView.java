@@ -2,10 +2,10 @@ package racingCar;
 
 public class RacingCarView {
     public static final String TRACE_SYMBOL = "-";
-    private final String carName;
+    private final RacingCarName carName;
     private final Position carPosition;
 
-    public RacingCarView(final String carName, final Position carPosition) {
+    public RacingCarView(final RacingCarName carName, final Position carPosition) {
         this.carName = carName;
         this.carPosition = carPosition;
     }
