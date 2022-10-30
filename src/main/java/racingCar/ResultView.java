@@ -6,17 +6,17 @@ import java.util.stream.Collectors;
 public class ResultView {
     private static final String TRACE_MARK = "-";
 
-    public static void printResult(RacingGame game) {
+    public static void printResult(RacingCars cars) {
         System.out.println("실행 결과");
 
-        printCars(game.getCars());
+        printCars(cars);
 
-        printWinners(game);
+        printWinners(cars);
     }
 
-    private static void printWinners(final RacingGame game) {
+    private static void printWinners(final RacingCars cars) {
 
-        List<String> winners = new RacingWinnerCalculator(game.getCars()).winners()
+        List<String> winners = new RacingWinnerCalculator(cars).winners()
                 .stream()
                 .map(RacingCar::name)
                 .collect(Collectors.toList());

@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingCarViewTest {
-
     @Test
     void 자동차_이름과_포지션() {
         assertThat(new RacingCarView("a", new Position(3)).toString()).isEqualTo("a : ---");

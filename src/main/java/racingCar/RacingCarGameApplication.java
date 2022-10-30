@@ -7,10 +7,9 @@ public class RacingCarGameApplication {
 
         RacingCars cars = new RacingCars(keyboardInput.nameOfCars());
         int numberOfRounds = keyboardInput.numberOfRounds();
-        RacingGame game = new RacingGame(cars, numberOfRounds);
 
-        game.start();
+        RacingCars result = RacingGame.start(cars, numberOfRounds);
 
-        ResultView.printResult(game);
+        ResultView.printResult(result);
     }
 }

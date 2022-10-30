@@ -1,21 +1,13 @@
 package racingCar;
 
 public class RacingGame {
-    private final RacingCars cars;
-    private final int numOfRounds;
+    public static RacingCars start(RacingCars cars, int numOfRounds) {
+        RacingCars result = cars;
 
-    public RacingGame(RacingCars cars, int numOfRounds) {
-        this.cars = cars;
-        this.numOfRounds = numOfRounds;
-    }
-
-    public void start() {
         for (int i = 0; i < numOfRounds; i++) {
-            cars.racing();
+            result = result.racing();
         }
-    }
 
-    public RacingCars getCars() {
-        return this.cars;
+        return result;
     }
 }

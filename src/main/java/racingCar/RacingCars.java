@@ -17,17 +17,13 @@ public class RacingCars {
     }
 
     public RacingCars racing() {
-        RacingCars copied = new RacingCars(cars);
+        List<RacingCar> copied = cars.stream()
+                .map(RacingCar::clone)
+                .collect(Collectors.toList());
 
-        copied.race();
+        copied.forEach(RacingCar::tryMove);
 
-        return copied;
-    }
-
-    private void race() {
-        for (RacingCar car : cars) {
-            car.tryMove();
-        }
+        return new RacingCars(copied);
     }
 
     public RacingCar maxPositionCar() {

@@ -15,10 +15,14 @@ public class RacingCar {
     }
 
     public RacingCar(String name, int position) {
+        this(name, new Position(position));
+    }
+
+    public RacingCar(String name, Position position) {
         validateName(name);
 
         this.name = name;
-        this.position = new Position(position);
+        this.position = position;
         this.moveStrategy = new RandomMoveStrategy();
     }
 
@@ -69,5 +73,10 @@ public class RacingCar {
     @Override
     public int hashCode() {
         return Objects.hash(position, name);
+    }
+
+    @Override
+    public RacingCar clone() {
+        return new RacingCar(this.name, this.position.getPosition());
     }
 }
