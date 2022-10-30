@@ -27,7 +27,7 @@ public class RacingCars {
 
     private void race() {
         for (RacingCar car : cars) {
-            car.tryMove(new Random().nextInt(10));
+            car.tryMove();
         }
     }
 

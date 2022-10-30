@@ -28,8 +28,8 @@ public class RacingCar {
         }
     }
 
-    public void tryMove(final int randomNumber) {
-        if (moveStrategy.canMove(randomNumber)) {
+    public void tryMove() {
+        if (moveStrategy.canMove()) {
             position.moveForward();
         }
     }
