@@ -2,11 +2,24 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class LocationTest {
+
+    public static Stream<Arguments> provideLocation() {
+        return Stream.of(
+                Arguments.of(new Location(2), -1),
+                Arguments.of(new Location(1), 0),
+                Arguments.of(new Location(0), 1)
+        );
+    }
 
     @Test
     @DisplayName("위치는 0보다 작을 수 없습니다.")
@@ -24,21 +37,10 @@ public class LocationTest {
         assertThat(location).isEqualTo(new Location(2));
     }
 
-    @Test
-    @DisplayName("위치 값이 더 크면 1을 반환한다.")
-    void compare_bigger_location() {
-        assertThat(new Location(3).compareTo(new Location(1))).isEqualTo(1);
-    }
-
-    @Test
-    @DisplayName("위차 값이 더 작으면 -1을 반환한다.")
-    void compare_small_location() {
-        assertThat(new Location(1).compareTo(new Location(3))).isEqualTo(-1);
-    }
-
-    @Test
-    @DisplayName("위치 값이 같으면 0을 반환한다.")
-    void compare_same_location() {
-        assertThat(new Location(1).compareTo(new Location(1))).isEqualTo(0);
+    @ParameterizedTest
+    @DisplayName("비교값 보다 크면 1, 같으면 0, 작으면 -1을 반환 한다.")
+    @MethodSource("provideLocation")
+    void compare_small_location(Location location, int result) {
+        assertThat(new Location(1).compareTo(location)).isEqualTo(result);
     }
 }
