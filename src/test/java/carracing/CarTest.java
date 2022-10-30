@@ -1,11 +1,26 @@
 package carracing;
 
 import carracing.domain.Car;
+import carracing.domain.Position;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
 public class CarTest {
+
+    @Test
+    void 최댓값_구하기() {
+        Car car = new Car("pobi",new Position(3));
+        assertThat(car.maxPosition(4)).isEqualTo(4);
+    }
+
+    @Test
+    void 최댓값_일치() {
+        Car car = new Car("pobi", new Position(3));
+        assertThat(car.hasMaxPosition(3)).isTrue();
+        assertThat(car.hasMaxPosition(2)).isFalse();
+    }
+
     @Test
     void 자동차_처음위치는_0() {
         Car car = new Car("A");
@@ -15,14 +30,14 @@ public class CarTest {
     @Test
     void 자동차는_임계점미만이면_이동하지_않는다() {
         Car car = new Car("A");
-        car.move(4);
+        car.move(() -> false);
         assertThat(car.getPosition()).isEqualTo(0);
     }
 
     @Test
     void 자동차는_임계점이상이면_이동한다() {
         Car car = new Car("A");
-        car.move(5);
+        car.move(() -> true);
         assertThat(car.getPosition()).isEqualTo(1);
     }
 

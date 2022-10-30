@@ -1,41 +1,44 @@
 package carracing.domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Cars{
 
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public Cars(List<Car> cars) {
-        this.cars = cars;
+        this.cars = new ArrayList<>(cars);
     }
 
     public List<Car> getCars() {
-        return cars;
+        // return Collections.unmodifiableList(cars);
+        return new ArrayList<>(cars);
     }
 
-    public int getCarsSize() {
-        return cars.size();
+    public boolean isEmpty() {
+        return cars.isEmpty();
     }
 
     public static Cars makeCars(String[] Names) {
-        List<Car> carList = makeCarList(Names);
-        Cars cars = new Cars(carList);
-        return cars;
+        return new Cars(makeCarList(Names));
     }
 
-    public void moveCars(RandomGenerator randomGenerator) {
-        cars.forEach(car -> car.move(randomGenerator.makeRandomValue()));
+    public void moveCars(MovingStrategy movingStrategy) {
+        cars.forEach(car -> car.move(movingStrategy));
     }
 
-    private static List<Car> makeCarList(String[] Names) {
-        List<Car> carList = new ArrayList<>();
-        for (String name : Names) {
-            carList.add(new Car(name));
-        }
-        return carList;
+    private static List<Car> makeCarList(String[] names) {
+
+        return Arrays.stream(names)
+                .map(name -> new Car(name))
+                .collect(Collectors.toList());
+
     }
+
 
 }

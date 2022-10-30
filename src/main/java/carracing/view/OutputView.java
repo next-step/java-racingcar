@@ -1,6 +1,7 @@
 package carracing.view;
 
 import carracing.domain.Car;
+import carracing.domain.Position;
 
 import java.util.List;
 
@@ -10,12 +11,12 @@ public class OutputView {
         System.out.println("실행 결과");
     }
 
-    public void printTrail(String name ,int position) {
+    public void printTrail(String name , int position) {
         String result = "";
-        for (int i = 0; i < position; i++) {
-            result+="-";
+        for (int i = 0; i < position; i++){
+            result += "-";
         }
-        System.out.println(name+" : "+ result);
+        System.out.println(name + " : " + result);
     }
 
     public void printBlank() {
