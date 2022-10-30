@@ -1,6 +1,5 @@
 package racingcar.race;
 
-import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
 import java.util.ArrayList;
@@ -9,30 +8,18 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Result {
-    private ResultView resultView;
     private RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-
-    public Result(ResultView resultView) {
-        this.resultView = resultView;
-    }
 
     public void racingStartAndPrint(RacingModel racingModel, RacingCars cars) {
         System.out.println("실행 결과");
-        for (int trys = 0; trys < InputView.tryCount; trys++) {
-            racingModel.racingStart(cars, randomNumberGenerator);
-            resultView.printEachRacingStep();
+
+        for (int trys = 0; trys < racingModel.getTryCount(); trys++) {
+            cars.racingStart(randomNumberGenerator);
+            ResultView.printEachRacingStep(cars);
         }
-        printWinner(racingModel, cars);
     }
 
-    public void printWinner(RacingModel racingModel, RacingCars cars) {
-        List<Car> winnerCar = judgeWinner(cars);
-
-        RacingCars winner = new RacingCars(winnerCar);
-        resultView.printWinner(winner);
-    }
-
-    private List<Car> judgeWinner(RacingCars cars) {
+    public List<Car> judgeWinner(RacingCars cars) {
         List<Car> result = new ArrayList<>();
 
         List<Car> racingCars =
@@ -48,11 +35,11 @@ public class Result {
         return result;
     }
 
-    private boolean isExistSameWinner(List<Car> racingCars, Car winnerCar) {
+    private static boolean isExistSameWinner(List<Car> racingCars, Car winnerCar) {
         return racingCars.size() > 1 && (winnerCar.getPosition() == racingCars.get(1).getPosition());
     }
 
-    private void addSameWinner(List<Car> result,  List<Car> racingCars) {
+    private static void addSameWinner(List<Car> result,  List<Car> racingCars) {
         for (int carOrder = 1; carOrder < racingCars.size(); carOrder++) {
             addSameWinner(result, racingCars, carOrder);
         }

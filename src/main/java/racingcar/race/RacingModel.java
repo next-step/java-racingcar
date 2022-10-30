@@ -2,24 +2,19 @@ package racingcar.race;
 
 public class RacingModel {
     protected static final int MOVE_POSSIBLE = 4;
+    private int tryCount;
+    private RacingCars cars;
 
-    public RacingModel(int tryCount) {
-        if (tryCount < 0) {
-            throw new RuntimeException("0보다 큰 수를 입력하세요");
-        }
+    public RacingModel(String[] names, int tryCount) {
+        cars = RacingCars.of(names);
+        this.tryCount = tryCount;
     }
 
-    public void racingStart(RacingCars racingCars, NumberGenerator numberGenerator) {
-        for (Car car : racingCars.getRacingCars()) {
-            car.move(numberGenerator);
-        }
+    public int getTryCount() {
+        return tryCount;
     }
 
-    public static boolean isMovePossible(int number) {
-        if (number >= MOVE_POSSIBLE) {
-            return true;
-        }
-        return false;
+    public RacingCars getCars() {
+        return cars;
     }
-
 }
