@@ -22,31 +22,23 @@ public class Position {
         this.position = position;
     }
 
-    Position increase() {
+    public Position increase() {
         this.position = position+1;
         return this;
     }
 
-    public boolean isMaxPosition(int position) {
+    public boolean checkHasPosition(int position) {
         return this.position == position;
     }
 
-    int maxPosition(int position) {
+    public int getBiggerPosition(int position) {
         if (position < this.position) {
             return this.position;
         }
         return position;
     }
 
-    public String getPositionTrail() {
-        String trail = "";
-        for(int i =0 ; i<position ;i++){
-            trail+="-";
-        }
-        return trail;
-    }
-
-    int getPosition() {
+    public int getPosition() {
         return this.position;
     }
 
