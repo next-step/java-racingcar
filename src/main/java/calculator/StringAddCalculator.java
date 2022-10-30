@@ -35,7 +35,7 @@ public class StringAddCalculator {
         return m.find();
     }
 
-    public static List<Integer> stringArrayToIntArray (String[] numbers) {
+    public static List<Integer> stringArrayToIntArray(String[] numbers) {
         List<Integer> result = new ArrayList<>();
 
         for (String number : numbers) {
