@@ -22,17 +22,4 @@ class RacingCarsTest {
         });
         assertThat(movedRacingCars.getRacingCar(carName).getPosition()).isEqualTo(locationInt + 1);
     }
-
-    @ParameterizedTest
-    @CsvSource(value = {"ato,root,trevi;0,1,2;1;trevi", "ato,root,trevi;2,2,0;2;ato"}, delimiter = ';')
-    void getLeads(String carNames, String locations, Integer leaderSize, String leaderName) {
-        RacingCars racingCars = RacingCars.init(carNames, locations);
-        RacingCars leaders = racingCars.getLeads();
-
-        // size check
-        assertThat(leaders.getSize()).isEqualTo(leaderSize);
-
-        // name check
-        assertThat(leaders.containName(leaderName)).isEqualTo(true);
-    }
 }

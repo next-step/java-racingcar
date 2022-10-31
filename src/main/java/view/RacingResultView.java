@@ -1,15 +1,15 @@
 package view;
 
-import racing.RacingCar;
-import racing.RacingCars;
 import racing.RacingGamePrize;
+import racing.RacingRecordCar;
+import racing.RacingRecordCars;
 
 public class RacingResultView {
 
-    public static void printResult(final RacingGamePrize racingGamePrize, final RacingCars winners) {
+    public static void printResult(final RacingGamePrize racingGamePrize, final RacingRecordCars winners) {
         System.out.println("\n실행 결과");
 
-        for (final RacingCars racingCars: racingGamePrize.getRacingResult()) {
+        for (final RacingRecordCars racingCars: racingGamePrize.getRacingRecords()) {
             printCars(racingCars);
             System.out.println();
         }
@@ -17,17 +17,17 @@ public class RacingResultView {
         printWinners(winners);
     }
 
-    private static void printCars(final RacingCars racingCars) {
-        for (final RacingCar racingCar: racingCars.getRacingCars()) {
+    private static void printCars(final RacingRecordCars racingCars) {
+        for (final RacingRecordCar racingCar: racingCars.getRacingRecordCars()) {
             printCar(racingCar);
         }
     }
 
-    private static void printCar(final RacingCar racingCar) {
+    private static void printCar(final RacingRecordCar racingCar) {
         System.out.println(racingCar.getName() + " : " + "-".repeat(racingCar.getPosition()));
     }
 
-    private static void printWinners(final RacingCars winners) {
+    private static void printWinners(final RacingRecordCars winners) {
         System.out.println(winners.getNames() + "가 최종 우승했습니다.");
     }
 }

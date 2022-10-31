@@ -1,25 +1,30 @@
 package racing;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGamePrize {
 
-    private final List<RacingCars> racingResult;
+    private final List<RacingRecordCars> racingRecords;
 
-    private RacingGamePrize(final List<RacingCars> racingResult) {
-        this.racingResult = racingResult;
+    private RacingGamePrize(final List<RacingRecordCars> racingRecords) {
+        this.racingRecords = racingRecords;
     }
 
     public static RacingGamePrize init(final List<RacingCars> racingResult) {
-        return new RacingGamePrize(racingResult);
+        List<RacingRecordCars> racingRecords = new ArrayList<>();
+        for (RacingCars racingCars: racingResult) {
+            racingRecords.add(RacingRecordCars.init(racingCars));
+        }
+        return new RacingGamePrize(racingRecords);
     }
 
-    public List<RacingCars> getRacingResult() {
-        return racingResult;
+    public List<RacingRecordCars> getRacingRecords() {
+        return racingRecords;
     }
 
-    public RacingCars getWinners() {
-        RacingCars lastResult = racingResult.get(racingResult.size() - 1);
+    public RacingRecordCars getWinners() {
+        RacingRecordCars lastResult = racingRecords.get(racingRecords.size() - 1);
         return lastResult.getLeads();
     }
 }

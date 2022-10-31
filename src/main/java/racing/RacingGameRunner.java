@@ -9,7 +9,7 @@ public class RacingGameRunner {
         final RacingInput input = RacingInputView.getInputFromUser();
         final RacingGame racingGame = RacingGame.init(input.getCarNames(), input.getTrialCount());
         final RacingGamePrize racingGamePrize = racingGame.start();
-        final RacingCars winners = racingGamePrize.getWinners();
+        final RacingRecordCars winners = racingGamePrize.getWinners();
 
         RacingResultView.printResult(racingGamePrize, winners);
     }
