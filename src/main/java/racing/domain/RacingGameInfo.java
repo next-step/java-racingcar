@@ -1,33 +1,18 @@
 package racing.domain;
 
-import racing.view.InputView;
-
-import static racing.UserInputException.isValidForNumber;
-import static racing.UserInputException.isValidForString;
+import java.util.List;
 
 public class RacingGameInfo {
 
-    private static final String SPLIT_REGEX = ",";
+    private int tryCount;
+    private final Cars cars;
 
-    public int carCount;
-    public int tryCount;
-    public String[] carNames;
-
-    public RacingGameInfo() {
-        this.carNames = split(InputView.inputCarName());
-        this.tryCount = isValidForNumber(InputView.inputTryCount());
+    public RacingGameInfo(Cars cars, int tryCount) {
+        this.cars = cars;
+        this.tryCount = tryCount;
     }
 
-    public static String[] split(String carName) {
-        String[] carNames = carName.split(SPLIT_REGEX);
-        for (int i = 0; i < carNames.length; i++) {
-            carNames[i] = isValidForString(carNames[i]);
-        }
-        return carNames;
-    }
-
-    private int validationForNumber(String input) {
-        int number = isValidForNumber(input);
-        return number;
+    public List<Car> getWinners() {
+        return cars.getWinners();
     }
 }

@@ -1,25 +1,25 @@
 package racing.domain;
 
-public class Car {
-    private static final int MOVE_CONDITION = 4;
+import racing.strategy.MoveStrategy;
 
-    private String name;
+public class Car {
+    private CarName carName;
     private int distance;
 
     public Car(String name) {
-        this.name = name;
+        this.carName = new CarName(name);
     }
 
     public String getName() {
-        return name;
+        return carName.getCarName();
     }
 
     public int getDistance() {
         return distance;
     }
 
-    public void move(int randomValue) {
-        if (MOVE_CONDITION <= randomValue) {
+    public void move(final MoveStrategy moveStrategy) {
+        if (moveStrategy.isMoveable()) {
             this.distance++;
         }
     }
