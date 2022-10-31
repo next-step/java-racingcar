@@ -1,8 +1,10 @@
-package step3;
+package step3.common;
 
 import java.util.Random;
 
 public class RandomBounded {
+
+    private static final int FORWARD_STANDARD = 4;
 
     private int random;
 
@@ -15,8 +17,8 @@ public class RandomBounded {
         random = input;
     }
 
-    public boolean moreThan4() {
-        return random >= 4;
+    public boolean moreThanForwardStandard() {
+        return random >= FORWARD_STANDARD;
     }
 
 }
