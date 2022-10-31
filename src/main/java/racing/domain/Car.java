@@ -1,7 +1,5 @@
 package racing.domain;
 
-import java.util.Comparator;
-
 public class Car {
 
 	private static final int START_POINT = 0;
@@ -19,10 +17,6 @@ public class Car {
 		this.name = new CarName(name);
 		this.location = location;
 		this.randomNum = randomNum;
-	}
-
-	public static Comparator<Car> comparatorByLocation() {
-		return Comparator.comparingLong(Car::getLocation);
 	}
 
 	public void move() {

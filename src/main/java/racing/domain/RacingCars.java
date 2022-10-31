@@ -14,6 +14,12 @@ public class RacingCars {
 		this.racingCars = racingCars;
 	}
 
+	public RacingCars(List<String> carNames, RandomNum randomNum) {
+		this.racingCars = carNames.stream()
+			.map(carName -> new Car(carName, randomNum))
+			.collect(Collectors.toList());
+	}
+
 	public void moveCars() {
 		IntStream.range(0, racingCars.size())
 			.forEach(i -> racingCars.get(i).move());
@@ -24,19 +30,17 @@ public class RacingCars {
 	}
 
 	public List<Car> getWinnersOfRacing() {
+		Car anyWinner = getAnyWinner();
+
 		return IntStream.range(0, racingCars.size())
-			.filter(i -> isWinner(racingCars.get(i)))
+			.filter(i -> racingCars.get(i).isWinner(anyWinner))
 			.mapToObj(i -> racingCars.get(i))
 			.collect(Collectors.toList());
 	}
 
-	private boolean isWinner(Car car) {
-		return car.isWinner(getAnyWinner());
-	}
-
 	private Car getAnyWinner() {
 		return racingCars.stream()
-			.max(Car.comparatorByLocation())
+			.reduce((car, nextCar) -> car.isWinner(nextCar) ? car : nextCar)
 			.orElseThrow(() -> {
 				throw new NoSuchWinnerException(ErrorMessage.NO_SUCH_WINNER);
 			});
