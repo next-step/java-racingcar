@@ -17,10 +17,6 @@ public class Cars {
         this.cars = cars;
     }
 
-    public List<Car> getCars(){
-        return this.cars;
-    }
-
     private void carsNullChk(List<Car> cars){
         if(cars.isEmpty()){
             throw new NullPointerException(CARS_NULL_ERROR_MESSAGE);
@@ -55,6 +51,10 @@ public class Cars {
             maxPostion = car.maxPostion(maxPostion);
         }
         return maxPostion;
+    }
+
+    public List<Car> getCars(){
+        return this.cars;
     }
 
     @Override
