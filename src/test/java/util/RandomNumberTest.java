@@ -1,8 +1,9 @@
 package util;
 
-import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("Racing : 랜덤숫자 테스트")
 public class RandomNumberTest {
