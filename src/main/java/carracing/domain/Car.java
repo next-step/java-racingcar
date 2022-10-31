@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class Car {
 
-    public String name;
+    private String name;
     private Position position;
 
     public Car(final String name) {
@@ -24,19 +24,16 @@ public class Car {
         this.position = position;
     }
 
-    public boolean hasMaxPosition(int position) {
-        return this.position.isMaxPosition(position);
+    public boolean checkHasPosition(int position) {
+        return this.position.checkHasPosition(position);
     }
 
-    public int maxPosition(int position) {
-        return this.position.maxPosition(position);
+    public int getBiggerPosition(int position) {
+        return this.position.getBiggerPosition(position);
     }
 
     public void move(final MovingStrategy movingStrategy) {
         if (movingStrategy.movable()) {
-//            int result = position2.getPosition()+1;
-//            position2.setPosition(result);
-//            이런 짓을 하지 말자
             this.position = position.increase();
         }
     }
@@ -62,4 +59,3 @@ public class Car {
         return Objects.hash(name, position);
     }
 }
-

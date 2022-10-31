@@ -11,14 +11,14 @@ public class CarTest {
     @Test
     void 최댓값_구하기() {
         Car car = new Car("pobi",new Position(3));
-        assertThat(car.maxPosition(4)).isEqualTo(4);
+        assertThat(car.getBiggerPosition(4)).isEqualTo(4);
     }
 
     @Test
     void 최댓값_일치() {
         Car car = new Car("pobi", new Position(3));
-        assertThat(car.hasMaxPosition(3)).isTrue();
-        assertThat(car.hasMaxPosition(2)).isFalse();
+        assertThat(car.checkHasPosition(3)).isTrue();
+        assertThat(car.checkHasPosition(2)).isFalse();
     }
 
     @Test

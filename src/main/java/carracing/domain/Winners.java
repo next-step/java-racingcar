@@ -2,7 +2,6 @@ package carracing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Winners {
 
@@ -26,7 +25,7 @@ public class Winners {
     }
 
     private void checkAndPutWinner(List<Car> winners, int maxPosition, Car car) {
-        if (car.hasMaxPosition(maxPosition)) {
+        if (car.checkHasPosition(maxPosition)) {
             winners.add(car);
         }
     }
@@ -34,7 +33,7 @@ public class Winners {
     private int findMaxPosition(List<Car> cars) {
         int maxPosition = 0;
         for (Car car : cars) {
-            maxPosition = car.maxPosition(maxPosition);
+            maxPosition = car.getBiggerPosition(maxPosition);
         }
         return maxPosition;
     }
