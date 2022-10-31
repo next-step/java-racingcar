@@ -35,14 +35,6 @@ public class Car {
         }
     };
 
-    public int getMoveCount() {
-        return this.position;
-    }
-
-    public String getName() {
-        return name;
-    }
-
     public boolean isMaxPosition(int position){
         return this.position == position;
     }
@@ -52,6 +44,14 @@ public class Car {
             position = this.position;
         }
         return position;
+    }
+
+    public int getMoveCount() {
+        return this.position;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override
