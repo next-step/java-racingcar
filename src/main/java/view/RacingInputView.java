@@ -26,7 +26,7 @@ public class RacingInputView {
         );
     }
 
-    private static int getPositiveIntegerInputAndRetryWhenException(String firstTryMessage, String retryMessage) {
+    private static int getPositiveIntegerInputAndRetryWhenException(final String firstTryMessage, final String retryMessage) {
         Scanner scanner = new Scanner(System.in);
         System.out.println(firstTryMessage);
         try {
@@ -38,7 +38,7 @@ public class RacingInputView {
     }
 
     // 쓰임새만 보면 private 처리하고 싶은데, 테스트코드에서 사용해야 해서 public 처리했습니다.
-    public static int getPositiveIntegerInput(Scanner scanner) throws InputMismatchException {
+    public static int getPositiveIntegerInput(final Scanner scanner) throws InputMismatchException {
         int input = scanner.nextInt();
         if (input <= 0) {
             throw new InputMismatchException();

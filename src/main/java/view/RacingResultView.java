@@ -17,17 +17,17 @@ public class RacingResultView {
         printWinners(winners);
     }
 
-    private static void printCars(RacingCars racingCars) {
+    private static void printCars(final RacingCars racingCars) {
         for (final RacingCar racingCar: racingCars.getRacingCars()) {
             printCar(racingCar);
         }
     }
 
-    private static void printCar(RacingCar racingCar) {
+    private static void printCar(final RacingCar racingCar) {
         System.out.println(racingCar.getName() + " : " + "-".repeat(racingCar.getPosition()));
     }
 
-    private static void printWinners(RacingCars winners) {
+    private static void printWinners(final RacingCars winners) {
         System.out.println(winners.getNames() + "가 최종 우승했습니다.");
     }
 }

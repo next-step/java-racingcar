@@ -9,13 +9,13 @@ public class RacingGame {
     private final RacingCars racingCars;
     private final RacingLap racingLap;
 
-    private RacingGame(RacingGameSpec racingGameSpec, RacingCars racingCars, RacingLap racingLap) {
+    private RacingGame(final RacingGameSpec racingGameSpec, final RacingCars racingCars, final RacingLap racingLap) {
         this.racingGameSpec = racingGameSpec;
         this.racingCars = racingCars;
         this.racingLap = racingLap;
     }
 
-    public static RacingGame init(String carNames, int trialCount) {
+    public static RacingGame init(final String carNames, final int trialCount) {
         return new RacingGame(
                 RacingGameSpec.init(),
                 RacingCars.init(carNames),

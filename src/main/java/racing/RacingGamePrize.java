@@ -6,11 +6,11 @@ public class RacingGamePrize {
 
     private final List<RacingCars> racingResult;
 
-    private RacingGamePrize(List<RacingCars> racingResult) {
+    private RacingGamePrize(final List<RacingCars> racingResult) {
         this.racingResult = racingResult;
     }
 
-    public static RacingGamePrize init(List<RacingCars> racingResult) {
+    public static RacingGamePrize init(final List<RacingCars> racingResult) {
         return new RacingGamePrize(racingResult);
     }
 

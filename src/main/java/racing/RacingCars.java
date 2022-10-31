@@ -40,7 +40,7 @@ public class RacingCars {
         return new RacingCars(racingCars);
     }
 
-    public RacingCars race(RacingGameSpec racingGameSpec) {
+    public RacingCars race(final RacingGameSpec racingGameSpec) {
         List<RacingCar> movedRacingCars = this.racingCars
                 .stream()
                 .map(car -> car.move(racingGameSpec.moveCount()))
@@ -78,7 +78,7 @@ public class RacingCars {
         return this.racingCars.size();
     }
 
-    public boolean containName(String name) {
+    public boolean containName(final String name) {
         return this.racingCars
                 .stream()
                 .anyMatch(racingCar -> racingCar.getName().equals(name));
@@ -86,9 +86,7 @@ public class RacingCars {
 
     public RacingCar getRacingCar(String name) {
         for (RacingCar racingCar: this.racingCars) {
-            if (racingCar.getName().equals(name)) {
-                return racingCar;
-            }
+            if (racingCar.getName().equals(name)) return racingCar;
         }
         return null;
     }
