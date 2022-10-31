@@ -28,4 +28,14 @@ public class CarsTest {
                 .isInstanceOf(NullPointerException.class)
                 .hasMessageContaining("자동차를 생성해주세요");
     }
+
+    @Test
+    @DisplayName("우승자 찾기")
+    void carWinenr(){
+        List<Car> racingCars = Arrays.asList(new Car("car1", 5)
+                                        , new Car("car2", 6)
+                                        , new Car("car3",7));
+        Cars cars = new Cars(racingCars);
+        assertThat(cars.carWinner()).contains("car3");
+    }
 }
