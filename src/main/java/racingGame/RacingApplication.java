@@ -6,8 +6,9 @@ import racingGame.strategy.RandomNumberGenerate;
 import java.util.Arrays;
 import java.util.List;
 
-import static racingGame.view.InputView.carNames;
-import static racingGame.view.InputView.tryCount;
+import static study.InputView.carNames;
+import static study.InputView.tryCount;
+
 
 public class RacingApplication {
 

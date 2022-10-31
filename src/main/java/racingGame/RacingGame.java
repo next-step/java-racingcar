@@ -16,7 +16,6 @@ public class RacingGame {
         this.tryCount = tryCount;
     }
 
-
     public void race(){
         resultMessage();
         for(int i= 0; i < tryCount; i++){
