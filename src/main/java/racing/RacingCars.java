@@ -1,32 +1,57 @@
 package racing;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class RacingCars {
 
-    private final List<RacingCar> racingCars;
+    public static final String SPLITTER = ",";
 
-    private RacingCars(final int carCount) {
-        racingCars = IntStream.range(0, carCount)
-                .mapToObj(num -> RacingCar.init())
-                .collect(Collectors.toList());
-    }
+    private final List<RacingCar> racingCars;
 
     private RacingCars(List<RacingCar> racingCars) {
         this.racingCars = racingCars;
     }
 
-    public static RacingCars init(final int carCount) {
-        return new RacingCars(carCount);
+    public List<RacingCar> getRacingCars() {
+        return racingCars;
     }
 
-    public static RacingCars of(List<RacingCar> racingCars) {
+    public static RacingCars init(final String carNames) {
+        List<RacingCar> racingCars = Arrays.stream(carNames.split(SPLITTER))
+                .map(RacingCar::init)
+                .collect(Collectors.toList());
         return new RacingCars(racingCars);
     }
 
-    public List<RacingCar> getRacingCars() {
-        return racingCars;
+    public static RacingCars init(final String carNames, final String locations) {
+        String[] carNameList = carNames.split(SPLITTER);
+        String[] locationList = locations.split(SPLITTER);
+
+        List<RacingCar> racingCars = new ArrayList<>();
+        for (int i=0; i < carNameList.length; i++) {
+            racingCars.add(
+                    RacingCar.init(Integer.parseInt(locationList[i]), carNameList[i])
+            );
+        }
+        return new RacingCars(racingCars);
+    }
+
+    public RacingCars race(final RacingGameSpec racingGameSpec) {
+        List<RacingCar> movedRacingCars = this.racingCars
+                .stream()
+                .map(car -> car.move(racingGameSpec.moveCount()))
+                .collect(Collectors.toList());
+
+        return new RacingCars(movedRacingCars);
+    }
+
+    public RacingCar getRacingCar(String name) {
+        for (RacingCar racingCar: this.racingCars) {
+            if (racingCar.getName().equals(name)) return racingCar;
+        }
+        return null;
     }
 }

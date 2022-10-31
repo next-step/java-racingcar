@@ -1,8 +1,7 @@
 package racing;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class RacingGame {
 
@@ -10,32 +9,29 @@ public class RacingGame {
     private final RacingCars racingCars;
     private final RacingLap racingLap;
 
-    public static RacingGame init(int carCount, int trialCount) {
+    private RacingGame(final RacingGameSpec racingGameSpec, final RacingCars racingCars, final RacingLap racingLap) {
+        this.racingGameSpec = racingGameSpec;
+        this.racingCars = racingCars;
+        this.racingLap = racingLap;
+    }
+
+    public static RacingGame init(final String carNames, final int trialCount) {
         return new RacingGame(
                 RacingGameSpec.init(),
-                RacingCars.init(carCount),
+                RacingCars.init(carNames),
                 RacingLap.init(trialCount)
         );
     }
 
-    public List<RacingCars> start() {
-        return IntStream.range(0, racingLap.getLap())
-                .mapToObj(num -> race())
-                .collect(Collectors.toList());
-    }
+    public RacingGamePrize start() {
+        List<RacingCars> result = new ArrayList<>();
+        result.add(racingCars);
 
-    private RacingCars race() {
-        final List<RacingCar> newRacingCars = racingCars.getRacingCars()
-                .stream()
-                .map(car -> car.move(racingGameSpec.moveCount()))
-                .collect(Collectors.toList());
-
-        return RacingCars.of(newRacingCars);
-    }
-
-    private RacingGame(RacingGameSpec racingGameSpec, RacingCars racingCars, RacingLap racingLap) {
-        this.racingGameSpec = racingGameSpec;
-        this.racingCars = racingCars;
-        this.racingLap = racingLap;
+        for (int idx=0; idx < racingLap.getLap(); idx++) {
+            result.add(
+                    result.get(idx).race(racingGameSpec)
+            );
+        }
+        return RacingGamePrize.init(result);
     }
 }

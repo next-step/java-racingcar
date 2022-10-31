@@ -4,7 +4,7 @@ import util.RandomNumber;
 
 public class RacingGameSpec {
 
-    private final int MOVE_THRESHOLD = 4;
+    private static final int MOVE_THRESHOLD = 4;
 
     public static RacingGameSpec init() {
         return new RacingGameSpec();
@@ -14,6 +14,4 @@ public class RacingGameSpec {
         final int RANDOM = RandomNumber.generate();
         return RANDOM >= MOVE_THRESHOLD ? 1 : 0;
     }
-
-    private RacingGameSpec() {}
 }
