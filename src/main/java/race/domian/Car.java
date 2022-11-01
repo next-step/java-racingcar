@@ -1,6 +1,7 @@
 package race.domian;
 
 import race.strategy.MoveStrategy;
+import race.ui.ResultView;
 
 public class Car {
 
@@ -17,6 +18,7 @@ public class Car {
         if (moveStrategy.movable()) {
             this.position += DISTANCE_TO_MOVE_AT_ONCE;
         }
+        ResultView.printPosition(getPosition());
     }
 
     public int getPosition() {
