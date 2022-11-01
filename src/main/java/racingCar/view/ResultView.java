@@ -1,13 +1,18 @@
-package racingCar;
+package racingCar.view;
+
+import racingCar.domain.RacingCar;
+import racingCar.domain.RacingCarName;
+import racingCar.domain.RacingCars;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class ResultView {
     private static final String TRACE_MARK = "-";
+    public static final String RESULT_OUTPUT_COMMENT = "실행 결과";
 
     public static void printResult(RacingCars cars) {
-        System.out.println("실행 결과");
+        System.out.println(RESULT_OUTPUT_COMMENT);
 
         printCars(cars);
 
@@ -26,7 +31,7 @@ public class ResultView {
 
     private static void printCars(RacingCars cars) {
         for (RacingCar car : cars.getCars()) {
-            System.out.println(car.toView().toString());
+            System.out.println(new RacingCarView(car));
         }
     }
 }

@@ -1,4 +1,4 @@
-package racingCar;
+package racingCar.domain;
 
 public class RacingGame {
     public static RacingCars start(RacingCars cars, int numOfRounds) {

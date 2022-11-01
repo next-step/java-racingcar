@@ -1,13 +1,14 @@
-package racingCar;
+package racingCar.domain;
 
 import java.util.Objects;
 
 public class RacingCarName {
+    public static final String CAR_NAME_MAX_LENGTH_EXCEED_ERROR = "자동차 이름은 5자 이하여야 합니다.";
     private final String name;
 
     public RacingCarName(final String name) {
         if (name.length() > 5) {
-            throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
+            throw new IllegalArgumentException(CAR_NAME_MAX_LENGTH_EXCEED_ERROR);
         }
         this.name = name;
     }

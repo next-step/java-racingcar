@@ -1,4 +1,4 @@
-package racingCar;
+package racingCar.domain;
 
 import java.util.Objects;
 
@@ -37,10 +37,6 @@ public class RacingCar implements Comparable<RacingCar> {
         return this.name;
     }
 
-    public RacingCarView toView() {
-        return new RacingCarView(this.name, this.position);
-    }
-
     @Override
     public boolean equals(final Object o) {
         if (this == o) {
@@ -66,5 +62,9 @@ public class RacingCar implements Comparable<RacingCar> {
     @Override
     public int compareTo(final RacingCar o) {
         return this.position.compareTo(o.position);
+    }
+
+    public Position position() {
+        return this.position;
     }
 }

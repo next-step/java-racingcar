@@ -1,5 +1,5 @@
 import org.junit.jupiter.api.Test;
-import racingCar.Position;
+import racingCar.domain.Position;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
