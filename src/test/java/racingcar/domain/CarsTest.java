@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.generator.ManualValueGenerator;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ import static org.assertj.core.api.Assertions.*;
 
 class CarsTest {
 
-    private final Cars cars = new Cars(List.of(new Car(new Name("A")), new Car(new Name("B"))));
+    private final Cars cars = createCars(new Car("A"), new Car("B"));
 
     @ParameterizedTest
     @DisplayName("랜덤 값이 4이상인 경우 자동차는 전진한다.")
@@ -58,20 +59,30 @@ class CarsTest {
     }
 
     @Test
-    @DisplayName("자동차 경주 우승자를 구한다.")
-    void find_one_winner() {
-        Cars endCars = new Cars(List.of(
-                new Car(new Name("A"), new Location(1)), new Car(new Name("B"), new Location(0)))
+    @DisplayName("자동차 위치 중 가장 멀리있는 위치를 구한다.")
+    void find_max_location() {
+        Cars cars = createCars(
+                createCar("A", 1),
+                createCar("B", 2)
         );
-        assertThat(endCars.findWinners()).contains(new Name("A"));
+        assertThat(cars.findMaxLocation()).isEqualTo(new Location(2));
     }
 
     @Test
-    @DisplayName("자동차 경주 우승자는 여러명일 수 있다.")
-    void find_several_winner() {
-        Cars endCars = new Cars(List.of(
-                new Car(new Name("A"), new Location(1)), new Car(new Name("B"), new Location(1)))
-        );
-        assertThat(endCars.findWinners()).contains(new Name("A"), new Name("B"));
+    @DisplayName("같은 위치에 있는 자동차 이름을 반환한다.")
+    void find_same_location_cars() {
+        assertThat(createCars(
+                createCar("A", 1),
+                createCar("B", 1)
+        ).findSameLocationCarNames(new Location(1))).contains(new Name("A"), new Name("B"));
+    }
+
+
+    private Car createCar(String name, int location) {
+        return new Car(new Name(name), new Location(location));
+    }
+
+    private Cars createCars(Car... cars) {
+        return new Cars(List.of(cars));
     }
 }

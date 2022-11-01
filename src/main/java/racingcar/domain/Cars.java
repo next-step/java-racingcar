@@ -1,5 +1,8 @@
 package racingcar.domain;
 
+import racingcar.generator.Generator;
+import racingcar.util.StringUtil;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -27,7 +30,7 @@ public class Cars {
         validateIsNullOrEmpty(names);
         List<Car> cars = new ArrayList<>();
         for (String name : StringUtil.splitNames(names)) {
-            cars.add(new Car(new Name(name)));
+            cars.add(new Car(name));
         }
         return new Cars(cars);
     }
@@ -38,26 +41,15 @@ public class Cars {
         }
     }
 
-    public List<Name> findWinners() {
-        return findSameLocationCars(findMaxLocationCar());
-    }
-
-    private Car findMaxLocationCar() {
-        Car max = cars.get(0);
+    public Location findMaxLocation() {
+        Location max = new Location();
         for (Car car : cars) {
-            max = far(max, car);
+            max = car.findFar(max);
         }
         return max;
     }
 
-    private Car far(Car max, Car target) {
-        if (target.isFar(max)) {
-            return target;
-        }
-        return max;
-    }
-
-    private List<Name> findSameLocationCars(Car max) {
+    public List<Name> findSameLocationCarNames(Location max) {
         return cars.stream()
                 .map(car -> car.findCollinearName(max))
                 .filter(Objects::nonNull)
