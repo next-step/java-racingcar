@@ -6,9 +6,10 @@ import org.junit.jupiter.api.Test;
 import racing.domain.Car;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 public class CarTest {
-
     private Car car;
 
     @BeforeEach
@@ -17,16 +18,26 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("랜덤값이 4이상인 경우 전진(1)")
+    @DisplayName("자동차 이름은 5자를 초과할 수 없다")
+    void carNameException() {
+        assertDoesNotThrow(() -> new Car("pobi"));
+
+        assertThatThrownBy(() -> new Car("pobiss"))
+                .isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    @DisplayName("전진 가능")
     void move() {
-        car.move(4);
+        car.move(() -> true);
+
         assertThat(car.getDistance()).isEqualTo(1);
     }
 
     @Test
-    @DisplayName ("랜덤값이 3이하인 경우 멈춤(0)")
+    @DisplayName ("전진 불가능")
     void stop() {
-        car.move(3);
+        car.move(() -> false);
         assertThat(car.getDistance()).isEqualTo(0);
     }
 
@@ -35,7 +46,7 @@ public class CarTest {
     void moveForTryCount() {
         int tryCount = 2;
         for (int i = 0; i < tryCount; i++) {
-            car.move(4);
+            car.move(() -> true);
         }
 
         assertThat(car.getDistance()).isEqualTo(2);

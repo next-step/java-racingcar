@@ -27,9 +27,9 @@ public class InputView {
         return scanner.nextLine();
     }
 
-    private String[] removeWhiteSpace(String[] carNames) {
+    public String[] removeWhiteSpace(String[] carNames) {
         return Arrays.stream(carNames)
-                .map(String::trim)
+                .map(s -> s.replaceAll("\\s", ""))
                 .toArray(String[]::new);
     }
 }
