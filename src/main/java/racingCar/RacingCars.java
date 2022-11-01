@@ -36,6 +36,13 @@ public class RacingCars {
                 .collect(Collectors.toList());
     }
 
+    public List<RacingCar> winners() {
+        final RacingCar maxPositionCar = maxPositionCar();
+
+        return furtherAsMushAs(maxPositionCar);
+    }
+
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) {

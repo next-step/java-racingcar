@@ -16,7 +16,7 @@ public class ResultView {
 
     private static void printWinners(final RacingCars cars) {
 
-        List<String> winners = new RacingWinnerCalculator(cars).winners()
+        List<String> winners = cars.winners()
                 .stream()
                 .map(RacingCar::name)
                 .map(RacingCarName::toString)
