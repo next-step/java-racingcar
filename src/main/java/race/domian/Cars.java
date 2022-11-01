@@ -2,20 +2,21 @@ package race.domian;
 
 import java.util.ArrayList;
 import java.util.List;
+import race.strategy.MoveStrategy;
 
 public class Cars {
 
-    private List<Car> cars;
+    private List<Car> cars = new ArrayList<>();
 
-    public Cars(List<Car> cars) {
-        this.cars = new ArrayList<>(cars);
-    }
-
-    public static List<Car> from(int num) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < num; i++) {
+    public Cars(int numberOfCar) {
+        for (int i = 0; i < numberOfCar; i++) {
             cars.add(new Car());
         }
-        return cars;
+    }
+
+    public void move(MoveStrategy moveStrategy) {
+        for (Car car : cars) {
+            car.move(moveStrategy);
+        }
     }
 }
