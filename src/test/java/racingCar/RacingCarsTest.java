@@ -17,4 +17,14 @@ public class RacingCarsTest {
         )));
     }
 
+    @Test
+    void 제일_앞선_자동차() {
+        RacingCar a = new RacingCar("a", 0);
+        RacingCar b = new RacingCar("b", 1);
+        RacingCar c = new RacingCar("c", 2);
+
+        RacingCars cars = new RacingCars(List.of(a, b, c));
+
+        assertThat(cars.maxPositionCar()).isEqualTo(c);
+    }
 }
