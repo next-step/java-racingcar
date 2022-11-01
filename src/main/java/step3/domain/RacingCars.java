@@ -20,7 +20,7 @@ public class RacingCars {
 
     public void raceCars(RacingCars racingCars) {
         for (RacingCar racingCar : racingCars.list()) {
-            racingCars.list().set(racingCar.number(), racingCar.raceCar());
+            racingCar.raceCar();
         }
     }
 }

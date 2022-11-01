@@ -5,8 +5,8 @@ import step3.domain.RacingCars;
 
 public class ResultView {
 
-    public void printRacingCars(RacingCars racingCarList) {
-        for (RacingCar racingCar : racingCarList.list()) {
+    public void printRacingCars(RacingCars racingCars) {
+        for (RacingCar racingCar : racingCars.list()) {
             printRacingCar(racingCar.position());
         }
         System.out.println();

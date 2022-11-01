@@ -12,11 +12,6 @@ public class RandomBounded {
         random = new Random().nextInt(10);
     }
 
-    /* for test */
-    public RandomBounded(int input) {
-        random = input;
-    }
-
     public boolean moreThanForwardStandard() {
         return random >= FORWARD_STANDARD;
     }

@@ -12,6 +12,8 @@ public class Racing {
         int numberOfCars = inputView.inputNumberOfCars();
         int countRound = inputView.inputCountRound();
 
+        inputView.close();
+
         RacingCars racingCars = new RacingCars(numberOfCars);
 
         ResultView resultView = new ResultView();

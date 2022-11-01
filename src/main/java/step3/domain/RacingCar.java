@@ -1,56 +1,58 @@
 package step3.domain;
 
+import step3.common.CarNumber;
+import step3.common.Position;
+import step3.common.Positive;
 import step3.common.RandomBounded;
+import step3.strategy.MovableStrategy;
+import step3.strategy.RandomMovableStrategy;
 
 public class RacingCar {
 
     private static final int INITIAL_NUMBER = 0;
 
     private static final int INITIAL_POSITION = 0;
+    
+    private CarNumber carNumber;
 
-    private int number;
-
-    private int position;
+    private Position position;
 
     public RacingCar() {
         this(INITIAL_NUMBER);
     }
 
-    public RacingCar(int number) {
-        this(number, INITIAL_POSITION);
+    public RacingCar(int carNumber) {
+        this(carNumber, INITIAL_POSITION);
     }
 
-    public RacingCar(int number, int position) {
-        this.number = number;
-        this.position = position;
+    public RacingCar(int carNumber, int position) {
+        this.carNumber = new CarNumber(carNumber);
+        this.position = new Position(position);
     }
 
-    public boolean goingAheadOrNot(RandomBounded randomBounded) {
-        return randomBounded.moreThanForwardStandard();
+    public void move(MovableStrategy movableStrategy) {
+        if (movableStrategy.isMovable()) {
+            Positive p = position.plusOne();
+            this.position = new Position(p.positive());
+        }
     }
 
-    public RacingCar goAhead() {
-        int newPosition = this.position + 1;
-        return new RacingCar(this.number, newPosition);
+    public int carNumber() {
+        return carNumber.positive();
     }
-
-    public int number() { return this.number; }
 
     public int position() {
-        return this.position;
+        return position.positive();
     }
 
-    public RacingCar raceCar() {
-        RacingCar racingCar = this;
-        if (goingAheadOrNot(new RandomBounded())) {
-            racingCar = this.goAhead();
-        }
-        return racingCar;
+    public void raceCar() {
+        MovableStrategy movableStrategy = new RandomMovableStrategy();
+        move(movableStrategy);
     }
 
     @Override
     public boolean equals(Object o) {
-        if (o instanceof RacingCar && this.number() == ((RacingCar) o).number()) {
+        if (o instanceof RacingCar && this.carNumber() == ((RacingCar) o).carNumber()) {
             return true;
         }
         return false;
@@ -58,6 +60,6 @@ public class RacingCar {
 
     @Override
     public int hashCode() {
-        return number() * 13;
+        return carNumber() * 13;
     }
 }
