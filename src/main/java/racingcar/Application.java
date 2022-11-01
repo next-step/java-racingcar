@@ -3,12 +3,12 @@ package racingcar;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.model.Car;
-import racingcar.model.CarFactory;
-import racingcar.model.CarName;
-import racingcar.model.Cars;
-import racingcar.model.Game;
-import racingcar.model.PositiveNumber;
+import racingcar.domain.Car;
+import racingcar.domain.CarFactory;
+import racingcar.domain.CarName;
+import racingcar.domain.Cars;
+import racingcar.domain.Game;
+import racingcar.domain.PositiveNumber;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
