@@ -18,7 +18,7 @@ public class Car {
         if (moveStrategy.movable()) {
             this.position += DISTANCE_TO_MOVE_AT_ONCE;
         }
-        ResultView.printPosition(getPosition());
+        ResultView.getPosition(getPosition());
     }
 
     public int getPosition() {
