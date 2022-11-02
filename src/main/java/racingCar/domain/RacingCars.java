@@ -1,4 +1,4 @@
-package racingCar;
+package racingCar.domain;
 
 import java.util.Arrays;
 import java.util.List;
@@ -27,13 +27,7 @@ public class RacingCars {
     }
 
     public RacingCar maxPositionCar() {
-        RacingCar max = cars.get(0);
-
-        for (RacingCar car : cars) {
-            max = RacingCar.furtherRacingCar(max, car);
-        }
-
-        return max;
+        return cars.stream().max(RacingCar::compareTo).orElse(cars.get(0));
     }
 
     public List<RacingCar> furtherAsMushAs(RacingCar car) {
@@ -41,6 +35,13 @@ public class RacingCars {
                 .filter(c -> c.isFurtherAsMuchAs(car))
                 .collect(Collectors.toList());
     }
+
+    public List<RacingCar> winners() {
+        final RacingCar maxPositionCar = maxPositionCar();
+
+        return furtherAsMushAs(maxPositionCar);
+    }
+
 
     @Override
     public boolean equals(final Object o) {
@@ -51,7 +52,7 @@ public class RacingCars {
             return false;
         }
         final RacingCars that = (RacingCars) o;
-        return Objects.equals(cars, that.cars);
+        return cars.equals(that.cars);
     }
 
     @Override

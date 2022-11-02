@@ -1,9 +1,18 @@
-package racingCar;
+package racingCar.view;
+
+import racingCar.domain.Position;
+import racingCar.domain.RacingCar;
+import racingCar.domain.RacingCarName;
 
 public class RacingCarView {
     public static final String TRACE_SYMBOL = "-";
     private final RacingCarName carName;
     private final Position carPosition;
+
+    public RacingCarView(final RacingCar car) {
+        this.carName = car.name();
+        this.carPosition = car.position();
+    }
 
     public RacingCarView(final RacingCarName carName, final Position carPosition) {
         this.carName = carName;
