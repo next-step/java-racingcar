@@ -14,15 +14,4 @@ public class StringUtilTest {
         List<String> expectList = Arrays.asList("name1","name2","name3");
         assertThat(nameList).isEqualTo(expectList);
     }
-
-    @Test
-    public void 단어_길이_5이하_체크(){
-        String rightWord = "name5";
-        String wrongWord = "name10";
-
-        Boolean check = StringUtil.checkWordLength(rightWord);
-        assertThat(check).isTrue();
-        check=StringUtil.checkWordLength(wrongWord);
-        assertThat(check).isFalse();
-    }
 }

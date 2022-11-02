@@ -1,5 +1,7 @@
 package carracing.util;
 
+import carracing.domain.Car;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,7 +14,13 @@ public class StringUtil {
         return Arrays.asList(inputString.split(DELIMETER));
     }
 
-    public static Boolean checkWordLength(String rightWord) {
-        return rightWord.length() <= WORD_LENGTH;
+    public static String joinWithDelimeter(List<Car> cars) {
+        List<String>nameList = new ArrayList<>();
+        String joinString;
+        for(Car car:cars){
+            nameList.add(car.getName().toString());
+        }
+        joinString=String.join(",",nameList);
+        return joinString;
     }
 }

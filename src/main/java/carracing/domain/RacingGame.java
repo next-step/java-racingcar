@@ -1,27 +1,18 @@
 package carracing.domain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 public class RacingGame {
-    private static List<Car> carList;
-    private static final List<String> winnerList = new ArrayList<>();
-
+    private static Cars cars;
     private int tryCount;
 
-    public RacingGame(List<Car> carList, int tryCount) {
-        this.carList = carList;
+    public RacingGame(Cars cars, int tryCount) {
+        this.cars = cars;
         this.tryCount = tryCount;
     }
 
-    public List<Car> getCarList() {
-        return this.carList;
-    }
-
-    public static List<String> getWinnerList() {
-        return winnerList;
+    public List<Car> getCars(){
+        return this.cars.getCarList();
     }
 
     public boolean remainTryCount() {
@@ -29,8 +20,9 @@ public class RacingGame {
     }
 
     public void racing() {
-        final NumberGenerator numberGenerator = new RandomNumberGenerator();
-        carList.forEach(car -> car.move(numberGenerator));
+        NumberGenerator numberGenerator = new RandomNumberGenerator();
+
+        cars.racing(numberGenerator);
         reduceTryCount();
     }
 
@@ -38,19 +30,7 @@ public class RacingGame {
         tryCount--;
     }
 
-    private int getMaxPosition() {
-        return carList.stream()
-                .map(Car::getPosition)
-                .max(Integer::compareTo)
-                .orElse(0);
+    public List<Car> getWinners(){
+        return cars.getWinners();
     }
-
-    public void getWinners() {
-        int maxPosition = getMaxPosition();
-        carList.forEach(car -> {
-            if (car.getPosition() == maxPosition)
-                winnerList.add(car.getName());
-        });
-    }
-
 }
