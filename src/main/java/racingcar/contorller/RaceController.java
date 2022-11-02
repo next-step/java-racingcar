@@ -1,7 +1,7 @@
 package racingcar.contorller;
 
 import racingcar.model.Car;
-import racingcar.service.RaceViewService;
+import racingcar.view.RaceView;
 
 import java.util.List;
 import java.util.Random;
@@ -30,7 +30,7 @@ public class RaceController {
             int randomValue = random.nextInt(RANDOM_BOUND);
             car.race(randomValue);
         });
-        RaceViewService.printCars(cars);
+        RaceView.printCars(cars);
     }
 
     public void startRacing() {
