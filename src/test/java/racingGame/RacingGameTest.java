@@ -38,5 +38,19 @@ public class RacingGameTest {
                     () -> assertThat(winner.contains("car1")).isTrue()
             );
         }
+
+    @Test
+    @DisplayName("레이싱 결과 전부 전진 못했을때 무승부")
+    void racingFailMoveResultTest(){
+        Cars cars = new Cars(Arrays.asList(new Car("car1",0)
+                , new Car("car2",0)));
+
+        List<String> winner = cars.carWinner();
+
+        assertAll(
+                () -> assertThat(winner.contains("car2")).isTrue(),
+                () -> assertThat(winner.contains("car1")).isTrue()
+        );
+    }
     }
 
