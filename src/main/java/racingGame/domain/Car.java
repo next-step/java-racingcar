@@ -35,18 +35,18 @@ public class Car {
         }
     };
 
-    public boolean isMaxPosition(int position){
+    public boolean isSamePosition(int position){
         return this.position == position;
     }
 
-    int maxPostion(int position){
+    public int maxPosition(int position){
         if(position < this.position){
             position = this.position;
         }
         return position;
     }
 
-    public int getMoveCount() {
+    public int getPosition() {
         return this.position;
     }
 

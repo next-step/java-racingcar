@@ -1,9 +1,12 @@
 package racingGame;
+import racingGame.dto.CarsDto;
 import racingGame.strategy.NumberGenerateStrategy;
 import racingGame.domain.Cars;
 import java.util.List;
 
-import static racingGame.view.ResultView.*;
+import static racingGame.view.ResultView.resultMessage;
+import static racingGame.view.ResultView.racingResult;
+import static racingGame.view.ResultView.racingWinner;
 
 public class RacingGame {
     private final NumberGenerateStrategy numberGenerateStrategy;
@@ -18,10 +21,12 @@ public class RacingGame {
 
     public void race(){
         resultMessage();
+
         for(int i= 0; i < tryCount; i++){
             cars.carTryMove(numberGenerateStrategy);
-            racingResult(cars);
+            racingResult(CarsDto.makeCarsDto(cars));
         }
-        racingWinner(cars);
+
+        racingWinner(cars.carWinner());
     }
 }

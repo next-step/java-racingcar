@@ -1,11 +1,8 @@
 package racingGame.view;
+import racingGame.dto.CarDto;
+import racingGame.dto.CarsDto;
 
-import racingGame.domain.Car;
-import racingGame.domain.Cars;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ResultView {
 
@@ -23,24 +20,22 @@ public class ResultView {
         System.out.println(RESULT_MESSAGE);
     }
 
-    public static void racingWinner(Cars cars){
-        String winnerName = String.join(SEPARATOR, cars.carWinner());
+    public static void racingWinner(List<String> winners){
+        String winnerName = String.join(SEPARATOR, winners);
         System.out.println(winnerName + WINNER_MESSAGE);
     }
 
-    public static void racingResult(Cars cars){
-        for(Car car : cars.getCars()){
-            System.out.print(car.getName() + CAR_NAME_SIGN);
-            System.out.print(carMoveStatus(car.getMoveCount()));
+    public static void racingResult(CarsDto carsDto){
+        for(CarDto carDto : carsDto.getCarsDto()){
+            System.out.print(carDto.getName() + CAR_NAME_SIGN);
+            System.out.print(carMoveStatus(carDto.getPosition()));
             System.out.println();
         }
         System.out.println();
     }
 
     private static String carMoveStatus(int move) {
-        StringBuffer sb = new StringBuffer();
-        sb.append(MOVE_SIGN.repeat(move));
-        return sb.toString();
+        return MOVE_SIGN.repeat(move);
     }
 
 }

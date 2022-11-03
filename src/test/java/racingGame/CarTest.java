@@ -1,6 +1,5 @@
 package racingGame;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingGame.domain.Car;
@@ -14,7 +13,7 @@ public class CarTest {
     @DisplayName("자동차 위치 체크")
     void carPosition(){
         Car car = new Car("ab2",2);
-        assertThat(car.getMoveCount()).isEqualTo(2);
+        assertThat(car.getPosition()).isEqualTo(2);
     }
 
     @Test
@@ -31,7 +30,7 @@ public class CarTest {
         NumberGenerateStrategy MoveableNumber = new MovableNumberGenerator();
         Car car = new Car();
         car.move(MoveableNumber);
-        assertThat(car.getMoveCount()).isEqualTo(1);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @Test
@@ -40,6 +39,6 @@ public class CarTest {
         NumberGenerateStrategy nonMoveableNumber = new NonMoveableNumberGenerator();
         Car car = new Car();
         car.move(nonMoveableNumber);
-        assertThat(car.getMoveCount()).isEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 }

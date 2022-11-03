@@ -3,6 +3,7 @@ package racingGame.domain;
 import racingGame.strategy.NumberGenerateStrategy;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -39,22 +40,21 @@ public class Cars {
     }
 
     public List<String> carWinner(){
-        List<String> winner = cars.stream().filter(car -> car.isMaxPosition(getMaxPostion()))
+        List<String> winner = cars.stream().filter(car -> car.isSamePosition(getMaxPostion()))
                 .map(Car::getName)
                 .collect(Collectors.toList());
         return winner;
     }
 
     private int getMaxPostion(){
-        int maxPostion = 0;
-        for (Car car : cars){
-            maxPostion = car.maxPostion(maxPostion);
-        }
-        return maxPostion;
+       return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .getAsInt();
     }
 
     public List<Car> getCars(){
-        return this.cars;
+        return Collections.unmodifiableList(cars);
     }
 
     @Override
@@ -77,4 +77,3 @@ public class Cars {
         return Objects.hash(cars);
     }
 }
-
