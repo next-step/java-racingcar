@@ -3,7 +3,7 @@ package racingGame.domain;
 public class Number {
     private static final String NEGATIVE_ERROR_MESSAGE = "음수가 들어왔습니다";
 
-    private int value;
+    private final int value;
 
     public Number(int value){
         negativeChk(value);
