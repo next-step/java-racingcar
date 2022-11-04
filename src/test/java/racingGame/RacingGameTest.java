@@ -48,5 +48,5 @@ public class RacingGameTest {
 
     }
 
-    }
+}
 

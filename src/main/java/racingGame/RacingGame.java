@@ -42,6 +42,4 @@ public class RacingGame {
                 .max()
                 .getAsInt();
     }
-
-
 }

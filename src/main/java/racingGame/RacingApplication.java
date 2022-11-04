@@ -22,5 +22,4 @@ public class RacingApplication {
 
         racingWinner(racingGame.race());
     }
-
 }
