@@ -26,6 +26,4 @@ public class CarsDto {
     public List<CarDto> getCarsDto(){
         return Collections.unmodifiableList(carDtos);
     }
-
-
 }
