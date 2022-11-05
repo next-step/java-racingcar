@@ -9,10 +9,6 @@ public class Car {
     private String name;
     private int position;
 
-    public Car(){
-
-    }
-
     public Car(String name){
         this(name, 0);
     }
@@ -37,13 +33,6 @@ public class Car {
 
     public boolean isSamePosition(int position){
         return this.position == position;
-    }
-
-    public int maxPosition(int position){
-        if(position < this.position){
-            position = this.position;
-        }
-        return position;
     }
 
     public int getPosition() {

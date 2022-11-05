@@ -1,5 +1,6 @@
 package racingGame;
 
+import racingGame.domain.Cars;
 import racingGame.domain.Number;
 import racingGame.strategy.RandomNumberGenerate;
 
@@ -8,17 +9,17 @@ import java.util.List;
 
 import static racingGame.view.InputView.carNames;
 import static racingGame.view.InputView.tryCount;
+import static racingGame.view.ResultView.racingWinner;
 
 public class RacingApplication {
 
     public static void main(String[] args) {
-        List<String> carNames = Arrays.asList(carNames().split(","));
+        Cars cars = Cars.makeCars(Arrays.asList(carNames().split(",")));
         int tryCount = new Number(tryCount()).getValue();
 
         RacingGame racingGame = new RacingGame(
-                new RandomNumberGenerate(),carNames,tryCount);
+                new RandomNumberGenerate(),cars,tryCount);
 
-        racingGame.race();
+        racingWinner(racingGame.race());
     }
-
 }

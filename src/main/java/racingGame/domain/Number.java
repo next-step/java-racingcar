@@ -15,6 +15,7 @@ public class Number {
             throw new IllegalArgumentException(NEGATIVE_ERROR_MESSAGE);
         }
     }
+
     public int getValue() {
         return this.value;
     }

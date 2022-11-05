@@ -28,7 +28,7 @@ public class CarTest {
     @DisplayName("4이상의 숫자가 들어오면 전진")
     void carMove(){
         NumberGenerateStrategy MoveableNumber = new MovableNumberGenerator();
-        Car car = new Car();
+        Car car = new Car("car1");
         car.move(MoveableNumber);
         assertThat(car.getPosition()).isEqualTo(1);
     }
@@ -37,7 +37,7 @@ public class CarTest {
     @DisplayName("4미만의 숫자가 들어오면 정지")
     void carStop(){
         NumberGenerateStrategy nonMoveableNumber = new NonMoveableNumberGenerator();
-        Car car = new Car();
+        Car car = new Car("car2");
         car.move(nonMoveableNumber);
         assertThat(car.getPosition()).isEqualTo(0);
     }
