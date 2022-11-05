@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarsTest {
     @Test
@@ -20,6 +21,15 @@ public class CarsTest {
         NumberGenerator numberGenerator = new MovableNumberGenerator();
         cars.racing(numberGenerator);
         assertThat(cars).isEqualTo(expectedCarList);
+    }
+
+    @Test
+    public void duplicatedTest(){
+        List<Name> nameList = Arrays.asList(new Name("name1"),new Name("name1"));
+
+        assertThatThrownBy(()->new Cars(nameList))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("중복된 이름이 존재합니다.");
     }
 
     @Test

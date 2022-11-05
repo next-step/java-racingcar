@@ -8,8 +8,11 @@ public class Cars {
     private final List<Car> carList = new ArrayList<>();
 
     public Cars(List<Name> carNames) {
+        if(!duplicateNameCheck(carNames)) {
+            throw new IllegalArgumentException("중복된 이름이 존재합니다.");
+        }
         for(int i=0; i<carNames.size();i++){
-            carList.add(new Car(carNames.get(i)));
+                carList.add(new Car(carNames.get(i)));
         }
     }
 
@@ -21,6 +24,13 @@ public class Cars {
 
     public List<Car> getCarList() {
         return carList;
+    }
+
+    public boolean duplicateNameCheck(List<Name> names){
+        return  names.stream()
+                .map(Name::toString)
+                .distinct()
+                .count() == names.size();
     }
 
     public void racing(NumberGenerator numberGenerator){
@@ -44,18 +54,5 @@ public class Cars {
                 .map(Car::getPosition)
                 .max(Integer::compareTo)
                 .orElse(0);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Cars cars = (Cars) o;
-        return Objects.equals(carList, cars.carList);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(carList);
     }
 }
