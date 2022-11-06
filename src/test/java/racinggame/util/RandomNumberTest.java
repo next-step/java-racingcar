@@ -1,7 +1,7 @@
-package racing;
+package racinggame;
 
 import org.junit.jupiter.api.Test;
-import racing.util.RandomNumber;
+import racinggame.util.RandomNumber;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
