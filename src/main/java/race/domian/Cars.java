@@ -19,4 +19,14 @@ public class Cars {
             car.move(moveStrategy);
         }
     }
+
+    public int[] getPosition() {
+        int[] positions = new int[cars.size()];
+        int carNumber = 0;
+        for (Car car : cars) {
+            positions[carNumber] = car.getPosition();
+            carNumber++;
+        }
+        return positions;
+    }
 }

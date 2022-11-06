@@ -21,6 +21,7 @@ public class RacingGame {
 
         for (int i = 0; i < playCount; i++) {
             cars.move(moveStrategy);
+            ResultView.getPosition(cars.getPosition());
             ResultView.getNewLine();
         }
     }

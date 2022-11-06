@@ -25,7 +25,9 @@ public final class ResultView {
         System.out.println(RESULT_SENTENCE);
     }
 
-    public static void getPosition(int position) {
-        System.out.println(BAR.repeat(position));
+    public static void getPosition(int[] positions) {
+        for (int position : positions) {
+            System.out.println(BAR.repeat(position));
+        }
     }
 }
