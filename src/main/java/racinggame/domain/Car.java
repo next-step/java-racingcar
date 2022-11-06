@@ -1,4 +1,4 @@
-package racinggame.model;
+package racinggame.domain;
 
 import racinggame.strategy.MoveStrategy;
 import racinggame.strategy.RandomMoveStrategy;

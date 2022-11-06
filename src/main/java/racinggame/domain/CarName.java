@@ -1,11 +1,11 @@
-package racinggame.model;
+package racinggame.domain;
 
 import java.util.Objects;
 
 public final class CarName {
 
     private static final int LIMITED_NAME_LENGTH = 5;
-    String carName;
+    private String carName;
 
     CarName(String carName) {
         if (carName.length() > LIMITED_NAME_LENGTH) {

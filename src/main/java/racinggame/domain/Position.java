@@ -1,16 +1,21 @@
-package racinggame.model;
+package racinggame.domain;
 
 import java.util.Objects;
 
-public final class Position implements Comparable<Position>{
-    final int position;
+public final class Position implements Comparable<Position> {
+    private int position;
+
+    Position() {
+        this(0);
+    }
 
     Position(int position) {
         this.position = position;
     }
 
     public Position increase() {
-        return new Position(this.position + 1);
+        ++this.position;
+        return this;
     }
 
     public int getPosition() {
