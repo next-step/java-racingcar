@@ -6,7 +6,7 @@ import race.strategy.MoveStrategy;
 
 public class Cars {
 
-    private List<Car> cars = new ArrayList<>();
+    private final List<Car> cars = new ArrayList<>();
 
     public Cars(String[] name, int numberOfCar) {
         for (int i = 0; i < numberOfCar; i++) {
