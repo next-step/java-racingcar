@@ -8,9 +8,9 @@ public class Cars {
 
     private List<Car> cars = new ArrayList<>();
 
-    public Cars(int numberOfCar) {
+    public Cars(String[] name, int numberOfCar) {
         for (int i = 0; i < numberOfCar; i++) {
-            cars.add(new Car());
+            cars.add(new Car(name[i]));
         }
     }
 
@@ -28,5 +28,15 @@ public class Cars {
             carNumber++;
         }
         return positions;
+    }
+
+    public String[] getNames() {
+        String[] names = new String[cars.size()];
+        int carNumber = 0;
+        for (Car car : cars) {
+            names[carNumber] = car.getName();
+            carNumber++;
+        }
+        return names;
     }
 }
