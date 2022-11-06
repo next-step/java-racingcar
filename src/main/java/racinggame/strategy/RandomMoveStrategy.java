@@ -1,22 +1,16 @@
-package racing;
+package racinggame.strategy;
 
-import racing.util.RandomNumber;
+import racinggame.util.RandomNumber;
 
-import java.util.Random;
+public final class RandomMoveStrategy implements MoveStrategy {
+    private static final int MOVABLE_NUMBER = 4;
 
-public class BasicEngine implements Engine {
-    private int movableNumber = 4;
-
-    BasicEngine() {
-    }
-
-    BasicEngine(int movableNumber) {
-        this.movableNumber = movableNumber;
+    public RandomMoveStrategy() {
     }
 
     @Override
-    public boolean canMove() {
-        return RandomNumber.generate(0, 10) >= movableNumber;
+    public boolean movable() {
+        return RandomNumber.generate(0, 10) >= MOVABLE_NUMBER;
     }
 
 }

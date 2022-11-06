@@ -1,5 +1,6 @@
-package racing;
+package racinggame.strategy;
 
-public interface Engine {
-    boolean canMove();
+@FunctionalInterface
+public interface MoveStrategy {
+    boolean movable();
 }
