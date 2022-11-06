@@ -1,8 +1,8 @@
-package racinggame;
+package racinggame.view;
 
 import java.util.Scanner;
 
-public class InputView {
+public final class InputView {
     private static final Scanner scanner = new Scanner(System.in);
     public static final String CAR_NAME_DELIMITER = ",";
 
