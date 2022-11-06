@@ -10,7 +10,8 @@ public final class InputView {
         return SCANNER.nextInt();
     }
 
-    public static int getCarCount() {
-        return SCANNER.nextInt();
+    // TODO: 2022/11/06 6자 미만으로 입력할 수 있게 처리한다.  
+    public static String[] getCarName() {
+        return SCANNER.nextLine().split(",");
     }
 }
