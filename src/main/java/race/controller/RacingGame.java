@@ -9,7 +9,8 @@ public class RacingGame {
 
     public void play(RandomMoveStrategy moveStrategy) {
         ResultView.getFirstQuestion();
-        int carCount = InputView.getCarCount();
+        String[] carName = InputView.getCarName();
+        int carCount = carName.length;
 
         ResultView.getSecondQuestion();
         int playCount = InputView.getPlayCount();
@@ -17,11 +18,11 @@ public class RacingGame {
         ResultView.getNewLine();
         ResultView.getResultSentence();
 
-        Cars cars = new Cars(carCount);
+        Cars cars = new Cars(carName, carCount);
 
         for (int i = 0; i < playCount; i++) {
             cars.move(moveStrategy);
-            ResultView.getPosition(cars.getPosition());
+            ResultView.getResult(cars.getNames(), cars.getPosition());
             ResultView.getNewLine();
         }
     }
