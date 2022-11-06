@@ -1,8 +1,8 @@
-package racing.util;
+package racinggame.util;
 
 import java.util.Random;
 
-public class RandomNumber {
+public final class RandomNumber {
     private static final Random random = new Random();
 
     public static int generate(final int min, final int max) {
