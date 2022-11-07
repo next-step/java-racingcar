@@ -28,6 +28,7 @@ public final class ResultView {
     }
 
     public static void printRacingResult(Cars cars) {
+        stringBuilder.setLength(0);
         List<Car> carList = cars.getCars();
         printRacingResult(carList);
     }
@@ -43,12 +44,11 @@ public final class ResultView {
         stringBuilder.setLength(0);
         stringBuilder.append(car.getCarName());
         stringBuilder.append(SEPARATOR);
-        stringBuilder.append(positionStatus(car.getPosition()));
+        positionStatus(car.getPosition());
         return stringBuilder.toString();
     }
 
     private static String positionStatus(Position position) {
-        stringBuilder.setLength(0);
         stringBuilder.append(MOVE_PATTERN.repeat(position.getPosition()));
         return stringBuilder.toString();
     }

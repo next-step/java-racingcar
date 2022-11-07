@@ -26,7 +26,7 @@ public class RacingGame {
     }
 
     public boolean isFinished() {
-        return currentRep > reps;
+        return currentRep >= reps;
     }
 
 
