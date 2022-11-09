@@ -14,7 +14,7 @@ import java.util.List;
 public class RacingCar {
     private static final RaceView raceView = new RaceView();
     private static final RaceInputView raceInputView = new RaceInputView();
-    private static Race race = new Race();
+    private static final Race race = new Race();
     private static RaceInfo raceInfo;
 
     public static void main(String[] args) {

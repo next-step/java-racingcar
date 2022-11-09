@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import racingcar.domain.RaceInput;
+import racingcar.exception.CarNameDuplicateException;
 import racingcar.exception.CarNameEmptyException;
 import racingcar.exception.CarNameOverSizeException;
 
@@ -24,19 +25,17 @@ public class RaceInputView {
         try {
             raceInput = userInput();
             validateCarNames(raceInput.getCarNames());
-        } catch (CarNameEmptyException e) {
-            System.out.println("자동차는 1대 이상이어야 합니다.");
-            return generateRaceInput();
-        } catch (CarNameOverSizeException e) {
-            System.out.println("자동차 이름은 5자를 초과할 수 없다.");
+        } catch (CarNameEmptyException | CarNameOverSizeException | CarNameDuplicateException e) {
+            System.out.println(e.getMessage());
             return generateRaceInput();
         } catch (Exception e) {
+            e.printStackTrace();
             return generateRaceInput();
         }
         return raceInput;
     }
 
-    public RaceInput userInput() throws IOException {
+public RaceInput userInput() throws IOException {
         RaceInput raceInput = new RaceInput();
         raceInput.setCarNames(getCarNamesFromUser().split(","));
         raceInput.setTryCount(getTryCountsFromUser());

@@ -1,7 +1,6 @@
 package racingcar.model;
 
 import racingcar.domain.Cars;
-import racingcar.domain.RaceInfo;
 
 import java.util.Random;
 
