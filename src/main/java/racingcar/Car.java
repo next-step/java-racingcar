@@ -75,6 +75,6 @@ public class Car {
 
     @Override
     public String toString() {
-        return "-".repeat(Math.max(0, this.position));
+        return this.name + " : " + "-".repeat(Math.max(0, this.position));
     }
 }
