@@ -2,6 +2,7 @@ package rarcingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -38,6 +39,14 @@ public class CarTest {
     @Test
     public void car_생성_실패_테스트() {
         assertThatThrownBy(() -> new Car("pobibi")).isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    public void car_리스트_생성_테스트() {
+        assertAll(
+            () -> assertThat(Car.createCars("pobi,crong,honux").size()).isEqualTo(3),
+            () -> assertThat(Car.createCars("pobi,crong,honux")).contains(new Car("pobi"), new Car("crong"), new Car("honux"))
+        );
     }
 
 }

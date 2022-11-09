@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Car {
@@ -7,6 +9,8 @@ public class Car {
     final static int MOVE_NUMBER = 4;
 
     final static int NAME_LENGTH_LIMIT = 5;
+
+    final static String PREDEFINED_SEPARATOR = ",";
 
     private int position;
 
@@ -32,6 +36,15 @@ public class Car {
         this.position = position;
     }
 
+    public static List<Car> createCars(String inputName) {
+        String[] names = inputName.split(PREDEFINED_SEPARATOR);
+        ArrayList<Car> cars = new ArrayList<>();
+        for (String s : names) {
+            cars.add(new Car(s));
+        }
+        return cars;
+    }
+
     public String getName() {
         return name;
     }
@@ -52,7 +65,7 @@ public class Car {
             return false;
         }
         Car car = (Car) o;
-        return position == car.position;
+        return position == car.position && name.equals(car.name);
     }
 
     @Override
