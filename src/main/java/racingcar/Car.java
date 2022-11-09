@@ -49,6 +49,10 @@ public class Car {
         return name;
     }
 
+    public int getPosition() {
+        return position;
+    }
+
     public Car move(int num) {
         if (num >= MOVE_NUMBER) {
             return new Car(this.name, ++this.position);

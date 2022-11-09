@@ -48,4 +48,24 @@ public class RacingGameTest {
             () -> assertThat(carsMovedRandom2.get(2)).isEqualTo(new Car(3))
         );
     }
+
+    @Test
+    public void 우승자_테스트() {
+        ArrayList<Car> cars = new ArrayList<>();
+        cars.add(new Car("1", 4));
+        cars.add(new Car("2", 3));
+        cars.add(new Car("3", 2));
+
+        ArrayList<Car> cars2 = new ArrayList<>();
+        cars2.add(new Car(5));
+        cars2.add(new Car(5));
+        cars2.add(new Car(0));
+
+        assertAll(
+            () -> assertThat(RacingGame.getWinner(cars)).contains(new Car("1", 4)),
+            () -> assertThat(RacingGame.getWinner(cars2).size()).isEqualTo(2)
+        );
+
+    }
+
 }
