@@ -7,6 +7,6 @@
 
 # step4 구현 기능 목록
 
-1. Car 클래스에 carName 변수를 추가하고 생성자로 이름을 부여할 수 있도록 한다. Car(String carName), Car(String carName, int position) 생성자에서 carName의 길이를 검증한다.
+1. Car 클래스에 name 변수를 추가하고 생성자로 이름을 부여할 수 있도록 한다. Car(String name), Car(String name, int position) 생성자에서 name의 길이를 검증한다.
 2. Car.toString 함수가 차 이름도 같이 출력하도록 변경한다.
 3. RacingGame 클래스에 Car리스트를 입력받아서 우승자 리스트를 반환하는 함수를 구현한다.

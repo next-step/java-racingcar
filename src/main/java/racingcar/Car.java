@@ -6,7 +6,11 @@ public class Car {
 
     final static int MOVE_NUMBER = 4;
 
+    final static int NAME_LENGTH_LIMIT = 5;
+
     private int position;
+
+    private String name;
 
     public Car() {
         this(0);
@@ -14,6 +18,22 @@ public class Car {
 
     public Car(int position) {
         this.position = position;
+    }
+
+    public Car(String name) {
+        if (name.length() > NAME_LENGTH_LIMIT) {
+            throw new RuntimeException("자동차 이름은 5글자를 초과할 수 없습니다.");
+        }
+        this.name = name;
+    }
+
+    public Car(String name, int position) {
+        this(name);
+        this.position = position;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public Car move(int num) {

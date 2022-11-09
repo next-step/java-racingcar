@@ -1,7 +1,9 @@
 package rarcingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.Car;
@@ -24,8 +26,18 @@ public class CarTest {
 
     @ParameterizedTest
     @CsvSource({"3,---", "4,----", "-1,''"})
-    public void car_toString(int pos, String posToString) {
+    public void toStringTest(int pos, String posToString) {
         assertThat(new Car(pos).toString()).isEqualTo(posToString);
+    }
+
+    @Test
+    public void car_생성_테스트() {
+        assertThat(new Car("pobi").getName()).isEqualTo("pobi");
+    }
+
+    @Test
+    public void car_생성_실패_테스트() {
+        assertThatThrownBy(() -> new Car("pobibi")).isInstanceOf(RuntimeException.class);
     }
 
 }
