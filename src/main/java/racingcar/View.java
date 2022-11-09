@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class View {
@@ -10,7 +11,7 @@ public class View {
         Scanner scanner = new Scanner(System.in);
         String carNum = scanner.nextLine();
 
-        ArrayList<Car> cars = new ArrayList<>();
+        List<Car> cars = new ArrayList<>();
         for (int i = 0; i < Integer.parseInt(carNum); i++) {
             cars.add(new Car());
         }
@@ -20,10 +21,13 @@ public class View {
         System.out.println("실행 결과");
         final RacingGame racingGame = new RacingGame();
         for (int i = 0; i < Integer.parseInt(gameNum); i++) {
-            cars = (ArrayList<Car>) racingGame.carMoveRandom(cars);
-            cars.forEach(car -> System.out.println(car.toString()));
+            printCarsStatus(cars = racingGame.carMoveRandom(cars));
             System.out.println();
         }
+    }
+
+    private static void printCarsStatus(List<Car> cars) {
+        cars.forEach(car -> System.out.println(car.toString()));
     }
 
 }
