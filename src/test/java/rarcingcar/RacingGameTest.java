@@ -1,6 +1,7 @@
 package rarcingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,16 +32,20 @@ public class RacingGameTest {
         cars.add(new Car(5));
         cars.add(new Car(2));
 
+        ArrayList<Car> cars2 = new ArrayList<>();
+        cars2.add(new Car(3));
+        cars2.add(new Car(5));
+        cars2.add(new Car(2));
+
         final List<Car> carsMovedRandom = racingGame.carMoveRandom(cars);
-        assertThat(carsMovedRandom.get(0)).isEqualTo(new Car(3));
-        assertThat(carsMovedRandom.get(1)).isEqualTo(new Car(5));
-        assertThat(carsMovedRandom.get(2)).isEqualTo(new Car(2));
-
-        final List<Car> carsMovedRandom2 = racingGame2.carMoveRandom(cars);
-        assertThat(carsMovedRandom2.get(0)).isEqualTo(new Car(4));
-        assertThat(carsMovedRandom2.get(1)).isEqualTo(new Car(6));
-        assertThat(carsMovedRandom2.get(2)).isEqualTo(new Car(3));
-
-
+        final List<Car> carsMovedRandom2 = racingGame2.carMoveRandom(cars2);
+        assertAll(
+            () -> assertThat(carsMovedRandom.get(0)).isEqualTo(new Car(3)),
+            () -> assertThat(carsMovedRandom.get(1)).isEqualTo(new Car(5)),
+            () -> assertThat(carsMovedRandom.get(2)).isEqualTo(new Car(2)),
+            () -> assertThat(carsMovedRandom2.get(0)).isEqualTo(new Car(4)),
+            () -> assertThat(carsMovedRandom2.get(1)).isEqualTo(new Car(6)),
+            () -> assertThat(carsMovedRandom2.get(2)).isEqualTo(new Car(3))
+        );
     }
 }
