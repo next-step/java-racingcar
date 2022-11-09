@@ -1,25 +1,35 @@
 package racingcar;
 
-import racingcar.contorller.RaceController;
-import racingcar.model.Car;
-import racingcar.model.RaceInput;
+import racingcar.domain.Cars;
+import racingcar.domain.RaceInfo;
+import racingcar.model.Race;
+import racingcar.view.RaceInputView;
+import racingcar.domain.Car;
+import racingcar.domain.RaceInput;
+import racingcar.view.RaceView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCar {
+    private static final RaceView raceView = new RaceView();
+    private static final RaceInputView raceInputView = new RaceInputView();
+    private static Race race = new Race();
+    private static RaceInfo raceInfo;
+
     public static void main(String[] args) {
-        RaceInput racingInput = new RaceInput();
-        List<Car> cars = generateCars(racingInput.getNumberOfCar());
-        RaceController raceController = new RaceController(cars, racingInput.getTryCount());
-        raceController.startRacing();
+        RaceInput input = raceInputView.generateRaceInput();
+        raceInfo = new RaceInfo(input);
+        Cars cars = new Cars(input.getCarNames());
+        doRace(cars);
+        raceView.printWinners(cars);
     }
 
-    public static List<Car> generateCars(int numberOfCar) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < numberOfCar; i++) {
-            cars.add(new Car());
+    public static void doRace(Cars cars) {
+        while (raceInfo.raceAvailable()) {
+            raceInfo.addCurrentRound();
+            race.roundRace(cars);
+            raceView.printCars(cars);
         }
-        return cars;
     }
 }
