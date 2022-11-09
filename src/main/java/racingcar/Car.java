@@ -51,7 +51,7 @@ public class Car {
 
     public Car move(int num) {
         if (num >= MOVE_NUMBER) {
-            return new Car(++this.position);
+            return new Car(this.name, ++this.position);
         }
         return this;
     }
