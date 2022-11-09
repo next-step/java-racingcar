@@ -9,13 +9,17 @@ import racingcar.Car;
 public class CarTest {
 
     @ParameterizedTest
-    @CsvSource({"3,false", "4,true"})
-    public void car_이동(int num, boolean moved) {
-        Car testCar = new Car();
-        assertThat(testCar.move(num).equals(new Car(1))).isEqualTo(moved);
-
+    @CsvSource({"4,true"})
+    public void car_이동_테스트(int num, boolean moved) {
         Car testCar2 = new Car(3);
         assertThat(testCar2.move(num).equals(new Car(4))).isEqualTo(moved);
+    }
+
+    @ParameterizedTest
+    @CsvSource({"3,false"})
+    public void car_정지_테스트(int num, boolean moved) {
+        Car testCar = new Car();
+        assertThat(testCar.move(num).equals(new Car(1))).isEqualTo(moved);
     }
 
     @ParameterizedTest
