@@ -17,6 +17,11 @@ public class InputView {
         return removeWhiteSpace(carNames);
     }
 
+    public int getTryCount() {
+        String tryCount = inputTryCount();
+        return validateForNumber(tryCount);
+    }
+
     public String inputCarName() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         return scanner.nextLine();
@@ -31,5 +36,17 @@ public class InputView {
         return Arrays.stream(carNames)
                 .map(s -> s.replaceAll("\\s", ""))
                 .toArray(String[]::new);
+    }
+
+    public static int validateForNumber(String input) {
+        try {
+            int number = Integer.parseInt(input);
+            if (number < 0) {
+                throw new RuntimeException(NOT_POSITIVVE_MESSAGE);
+            }
+            return number;
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException(NOT_NUMBER_FORMAT_MESSAGE);
+        }
     }
 }

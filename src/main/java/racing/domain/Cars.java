@@ -2,14 +2,13 @@ package racing.domain;
 
 import racing.strategy.MoveStrategy;
 
-import java.util.*;
-
-import static java.util.stream.Collectors.groupingBy;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Cars {
 
     private List<Car> cars;
-    private String[] carNames;
 
     public Cars(List<Car> cars) {
         this.cars = cars;
@@ -25,25 +24,18 @@ public class Cars {
 
     private List<Car> createCars(String[] carNames) {
         List<Car> carList = new ArrayList<>();
-        for (int i = 0; i < carNames.length; i++) {
-            carList.add(new Car(carNames[i]));
-        }
+        Arrays.stream(carNames)
+                .forEach(i -> carList.add(new Car(i)));
         return carList;
     }
 
-    public void moveEvent(MoveStrategy moveStrategy) {
+    public void move(MoveStrategy moveStrategy) {
         for (Car car : cars) {
             car.move(moveStrategy);
         }
     }
 
     public List<Car> getWinners() {
-        Set<Map.Entry<Integer, List<Car>>> groupCars = cars.stream()
-                .collect(groupingBy(Car::getDistance))
-                .entrySet();
-
-        return groupCars.stream().max(Comparator.comparing(Map.Entry::getKey))
-                .get()
-                .getValue();
+        return new Winner().getWinners(cars);
     }
 }
