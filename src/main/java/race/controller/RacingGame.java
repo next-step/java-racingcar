@@ -1,5 +1,6 @@
 package race.controller;
 
+import java.util.List;
 import race.domian.Cars;
 import race.strategy.RandomMoveStrategy;
 import race.ui.InputView;
@@ -9,7 +10,7 @@ public class RacingGame {
 
     public void play(RandomMoveStrategy moveStrategy) {
         ResultView.getFirstQuestion();
-        String[] namesOfCar = InputView.getCarName();
+        List<String> namesOfCar = InputView.getCarName();
 
         ResultView.getSecondQuestion();
         int playCount = InputView.getPlayCount();

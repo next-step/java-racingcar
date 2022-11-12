@@ -1,5 +1,7 @@
 package race.ui;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public final class InputView {
@@ -10,7 +12,7 @@ public final class InputView {
         return SCANNER.nextInt();
     }
 
-    public static String[] getCarName() {
-        return SCANNER.nextLine().split(",");
+    public static List<String> getCarName() {
+        return Arrays.asList(SCANNER.nextLine().split(","));
     }
 }
