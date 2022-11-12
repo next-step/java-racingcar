@@ -1,10 +1,10 @@
-package race.ui;
+package race.view;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public final class InputView {
+public final class Input {
 
     private static final Scanner SCANNER = new Scanner(System.in);
 

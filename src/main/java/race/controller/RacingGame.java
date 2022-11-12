@@ -3,28 +3,28 @@ package race.controller;
 import java.util.List;
 import race.domian.Cars;
 import race.strategy.RandomMoveStrategy;
-import race.ui.InputView;
-import race.ui.ResultView;
+import race.view.Input;
+import race.view.Result;
 
 public class RacingGame {
 
     public void play(RandomMoveStrategy moveStrategy) {
-        ResultView.getFirstQuestion();
-        List<String> namesOfCar = InputView.getCarName();
+        Result.getFirstQuestion();
+        List<String> namesOfCar = Input.getCarName();
 
-        ResultView.getSecondQuestion();
-        int playCount = InputView.getPlayCount();
+        Result.getSecondQuestion();
+        int playCount = Input.getPlayCount();
 
-        ResultView.getNewLine();
-        ResultView.getResultSentence();
+        Result.getNewLine();
+        Result.getResultSentence();
 
         Cars cars = new Cars(namesOfCar);
 
         for (int i = 0; i < playCount; i++) {
             cars.move(moveStrategy);
-            ResultView.getResult(cars.getNames(), cars.getPosition());
-            ResultView.getNewLine();
+            Result.getResult(cars.getNames(), cars.getPosition());
+            Result.getNewLine();
         }
-        ResultView.getWinner(cars.findWinners());
+        Result.getWinner(cars.findWinners());
     }
 }
