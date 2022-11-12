@@ -2,6 +2,7 @@ package race.domian;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import race.strategy.MoveStrategy;
 
 public class Cars {
@@ -20,14 +21,8 @@ public class Cars {
         }
     }
 
-    public int[] getPosition() {
-        int[] positions = new int[cars.size()];
-        int carNumber = 0;
-        for (Car car : cars) {
-            positions[carNumber] = car.getPosition();
-            carNumber++;
-        }
-        return positions;
+    public List<Integer> getPosition() {
+        return cars.stream().map(Car::getPosition).collect(Collectors.toList());
     }
 
     public String[] getNames() {

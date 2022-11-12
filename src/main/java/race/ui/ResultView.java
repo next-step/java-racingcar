@@ -1,5 +1,7 @@
 package race.ui;
 
+import java.util.List;
+
 public final class ResultView {
 
     private static final String QUESTION_FOR_CAR_NAME = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
@@ -25,9 +27,9 @@ public final class ResultView {
         System.out.println(RESULT_SENTENCE);
     }
 
-    public static void getResult(String[] names, int[] positions) {
+    public static void getResult(String[] names, List<Integer> positions) {
         for (int i = 0; i < names.length; i++) {
-            System.out.println(names[i]+" : "+ BAR.repeat(positions[i]));
+            System.out.println(names[i]+" : "+ BAR.repeat(positions.get(i)));
         }
     }
 }
