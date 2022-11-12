@@ -8,6 +8,8 @@ import race.strategy.MoveStrategy;
 public class Cars {
 
     private final List<Car> cars = new ArrayList<>();
+    private static final int DEFAULT_VALUE = 0;
+    public static final String DELIMITER_FOR_WINNER = ", ";
 
     public Cars(List<String> names) {
         for (String name : names) {
@@ -19,6 +21,18 @@ public class Cars {
         for (Car car : cars) {
             car.move(moveStrategy);
         }
+    }
+
+    public String findWinners() {
+        int maxPosition = cars.stream()
+            .mapToInt(Car::getPosition)
+            .max()
+            .orElse(DEFAULT_VALUE);
+
+        return cars.stream()
+            .filter(car -> car.isMaxPosition(maxPosition))
+            .map(Car::getName)
+            .collect(Collectors.joining(DELIMITER_FOR_WINNER));
     }
 
     public List<Integer> getPosition() {
