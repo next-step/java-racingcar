@@ -8,9 +8,9 @@ public class Cars {
 
     private final List<Car> cars = new ArrayList<>();
 
-    public Cars(String[] name, int numberOfCar) {
-        for (int i = 0; i < numberOfCar; i++) {
-            cars.add(new Car(name[i]));
+    public Cars(String[] names) {
+        for (String name : names) {
+            cars.add(new Car(name));
         }
     }
 
