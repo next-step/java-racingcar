@@ -35,4 +35,13 @@ class CarTest {
         car.move(holdStrategy);
         assertThat(car.getPosition()).isEqualTo(START_POSITION);
     }
+
+    @Test
+    void 한번_움직이면_최대값은_1이다() {
+        ForwardStrategy forwardStrategy = new ForwardStrategy();
+        int maxPosition = 1;
+        car.isMaxPosition(maxPosition);
+        car.move(forwardStrategy);
+        assertThat(car.isMaxPosition(maxPosition)).isTrue();
+    }
 }
