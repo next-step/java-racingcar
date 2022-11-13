@@ -15,8 +15,9 @@ public class RacingGameApplication {
         Cars cars = new Cars(inputView.getCarNames());
         int tryCount = inputView.getTryCount();
 
+        RandomMoveStrategy randomMoveStrategy = new RandomMoveStrategy();
         for (int i = 0; i < tryCount; i++) {
-            cars.move(new RandomMoveStrategy());
+            cars.move(randomMoveStrategy);
             resultView.result(cars);
         }
 
