@@ -1,9 +1,13 @@
 package carracing.controller;
 
+import carracing.domain.Car;
 import carracing.domain.Cars;
 import carracing.domain.RacingGame;
 import carracing.views.InputView;
 import carracing.views.ResultView;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGameController {
     private static final InputView inputView = new InputView();
@@ -13,7 +17,10 @@ public class RacingGameController {
     }
 
     public void run(){
-            Cars cars = new Cars(inputView.getCarNames());
+            List<Car> carList = inputView.getCarNames().stream()
+                    .map(Car::new)
+                    .collect(Collectors.toList());
+            Cars cars = new Cars(carList);
             int tryCount = inputView.getTryCount();
 
             RacingGame racingGame = new RacingGame(cars, tryCount);

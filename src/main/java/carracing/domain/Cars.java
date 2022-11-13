@@ -5,20 +5,12 @@ import java.util.List;
 import java.util.Objects;
 
 public class Cars {
-    private final List<Car> carList = new ArrayList<>();
+    private final List<Car> carList;
 
-    public Cars(List<Name> carNames) {
-        if(!duplicateNameCheck(carNames)) {
+    public Cars(final List<Car>carList){
+        this.carList=carList;
+        if(!duplicateNameCheck(this.carList)){
             throw new IllegalArgumentException("중복된 이름이 존재합니다.");
-        }
-        for(int i=0; i<carNames.size();i++){
-                carList.add(new Car(carNames.get(i)));
-        }
-    }
-
-    public Cars(List<Name> carNames, int position) {
-        for(int i=0; i<carNames.size();i++){
-            carList.add(new Car(carNames.get(i),position));
         }
     }
 
@@ -26,11 +18,11 @@ public class Cars {
         return carList;
     }
 
-    public boolean duplicateNameCheck(List<Name> names){
-        return  names.stream()
-                .map(Name::toString)
+    public boolean duplicateNameCheck(List<Car> cars){
+        return  cars.stream()
+                .map(Car::getName)
                 .distinct()
-                .count() == names.size();
+                .count() == cars.size();
     }
 
     public void racing(NumberGenerator numberGenerator){

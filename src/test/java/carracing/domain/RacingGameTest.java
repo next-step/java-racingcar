@@ -7,6 +7,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,8 +16,10 @@ public class RacingGameTest {
     @Test
     @DisplayName("Remain TryCount Test")
     public void remainTryCountTest() {
-        List<Name> nameList = Arrays.asList(new Name("name1"),new Name("name2"));
-        Cars cars = new Cars(nameList);
+        List<Car> carList = Arrays.asList(new Name("name1"),new Name("name2")).stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
+        Cars cars = new Cars(carList);
 
         RacingGame racingGame = new RacingGame(cars, 2);
         assertThat(racingGame.remainTryCount()).isTrue();
@@ -27,8 +30,11 @@ public class RacingGameTest {
     @Test
     @DisplayName("Reduce TryCount Test")
     public void reduceTryCountTest() {
-        List<Name> nameList = Arrays.asList(new Name("name1"),new Name("name2"));
-        Cars cars = new Cars(nameList);
+        List<Car> carList = Arrays.asList(new Name("name1"),new Name("name2")).stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
+        Cars cars = new Cars(carList);
+
         RacingGame racingGame = new RacingGame(cars, 2);
         racingGame.reduceTryCount();
         assertThat(racingGame)
