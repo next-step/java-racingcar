@@ -37,16 +37,14 @@ public class Cars {
     }
 
     public List<Integer> getPosition() {
-        return cars.stream().map(Car::getPosition).collect(Collectors.toList());
+        return cars.stream()
+            .map(Car::getPosition)
+            .collect(Collectors.toList());
     }
 
-    public String[] getNames() {
-        String[] names = new String[cars.size()];
-        int carNumber = 0;
-        for (Car car : cars) {
-            names[carNumber] = car.getName();
-            carNumber++;
-        }
-        return names;
+    public List<String> getNames() {
+        return cars.stream()
+            .map(Car::getName)
+            .collect(Collectors.toList());
     }
 }
