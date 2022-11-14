@@ -1,5 +1,7 @@
 package race.view;
 
+import race.domian.Cars;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,9 +33,14 @@ public final class Result {
         System.out.println(RESULT_SENTENCE);
     }
 
-    public static void getResult(String[] names, List<Integer> positions) {
-        for (int i = 0; i < names.length; i++) {
-            System.out.println(names[i]+" : "+ BAR.repeat(positions.get(i)));
+    public static void getResult(Cars cars) {
+        for (int i = 0; i < cars.getPosition().size(); i++) {
+            System.out.println(
+                cars.getNames()
+                    .get(i)
+                    + COLON
+                    + BAR.repeat(cars.getPosition().get(i))
+            );
         }
     }
 
