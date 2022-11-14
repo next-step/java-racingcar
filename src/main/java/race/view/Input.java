@@ -1,10 +1,11 @@
 package race.view;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public final class Input {
+
+    public static final String DELIMITER_FOR_INPUT = ",";
 
     private static final Scanner SCANNER = new Scanner(System.in);
 
@@ -13,6 +14,6 @@ public final class Input {
     }
 
     public static List<String> getCarName() {
-        return Arrays.asList(SCANNER.nextLine().split(","));
+        return List.of(SCANNER.nextLine().split(DELIMITER_FOR_INPUT));
     }
 }
