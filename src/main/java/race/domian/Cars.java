@@ -1,15 +1,16 @@
 package race.domian;
 
+import race.strategy.MoveStrategy;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import race.strategy.MoveStrategy;
 
 public class Cars {
 
-    private final List<Car> cars = new ArrayList<>();
     private static final int DEFAULT_VALUE = 0;
-    public static final String DELIMITER_FOR_WINNER = ", ";
+
+    private final List<Car> cars = new ArrayList<>();
 
     public Cars(List<String> names) {
         for (String name : names) {
