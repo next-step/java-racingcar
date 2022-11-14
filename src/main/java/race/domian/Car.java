@@ -20,8 +20,8 @@ public class Car {
         }
     }
 
-    public boolean isMaxPosition(int maxPosition) {
-        return position.isMaxPosition(maxPosition);
+    public boolean isWinner(int maxPosition) {
+        return position.isSame(maxPosition);
     }
 
     public int getPosition() {

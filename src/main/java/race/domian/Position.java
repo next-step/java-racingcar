@@ -47,4 +47,8 @@ public class Position {
         position = position + 1;
         return this;
     }
+
+    public boolean isSame(int maxPosition) {
+        return position == maxPosition;
+    }
 }

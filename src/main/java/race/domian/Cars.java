@@ -25,15 +25,16 @@ public class Cars {
     }
 
    public List<String> findWinners() {
-        int maxPosition = cars.stream()
-            .mapToInt(Car::getPosition)
-            .max()
-            .orElse(DEFAULT_VALUE);
-
-        return cars.stream()
-            .filter(car -> car.isMaxPosition(maxPosition))
+       return cars.stream()
+            .filter(car -> car.isWinner(getMaxPosition()))
             .map(Car::getName)
             .collect(Collectors.toList());
+    }
+    private int getMaxPosition() {
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(DEFAULT_VALUE);
     }
 
     public List<Integer> getPosition() {
