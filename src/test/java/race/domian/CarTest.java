@@ -1,13 +1,13 @@
 package race.domian;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static race.domian.Car.DISTANCE_TO_MOVE_AT_ONCE;
-import static race.domian.Car.START_POSITION;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import race.strategy.ForwardStrategy;
 import race.strategy.HoldStrategy;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static race.domian.Car.DISTANCE_TO_MOVE_AT_ONCE;
+import static race.domian.Position.START_POSITION;
 
 class CarTest {
     private static Car car;
