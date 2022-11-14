@@ -1,6 +1,7 @@
 package race.view;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public final class Result {
 
@@ -9,6 +10,8 @@ public final class Result {
     public static final String QUESTION_FOR_PLAY_COUNT = "시도할 횟수는 몇 회 인가요?";
     public static final String BAR = "-";
     private static final String TEXT_FOR_WINNER = "가 최종 우승했습니다.";
+    public static final String DELIMITER_FOR_WINNER = ", ";
+    public static final String COLON = " : ";
 
     private Result() {};
 
@@ -34,7 +37,11 @@ public final class Result {
         }
     }
 
-    public static void getWinner(String winners) {
-        System.out.println(winners+TEXT_FOR_WINNER);
+    public static void getWinner(List<String> winners) {
+        System.out.println(
+            winners.stream()
+            .collect(Collectors.joining(DELIMITER_FOR_WINNER))
+            +TEXT_FOR_WINNER
+        );
     }
 }
