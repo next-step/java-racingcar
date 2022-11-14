@@ -14,7 +14,7 @@ class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car("wisdom");
+        car = new Car("jihye");
     }
 
     @Test
@@ -40,8 +40,7 @@ class CarTest {
     void 한번_움직이면_최대값은_1이다() {
         ForwardStrategy forwardStrategy = new ForwardStrategy();
         int maxPosition = 1;
-        car.isMaxPosition(maxPosition);
         car.move(forwardStrategy);
-        assertThat(car.isMaxPosition(maxPosition)).isTrue();
+        assertThat(car.isWinner(maxPosition)).isTrue();
     }
 }
