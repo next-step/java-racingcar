@@ -1,5 +1,7 @@
 package race.domian;
 
+import race.util.StringUtil;
+
 public class Name {
     private final String name;
 
@@ -7,12 +9,12 @@ public class Name {
     private static final int CHARACTER_LIMIT = 5;
 
     public Name(String name) {
-        if (name.length() > CHARACTER_LIMIT) {
-            throw new IllegalArgumentException(CHARACTER_LIMIT_ERROR);
-        }
-        if (name.isBlank()) {
+        if (StringUtil.isNullOrEmpty(name)) {
             throw new IllegalArgumentException("자동차 이름은 값이 존재해야 합니다.");
 
+        }
+        if (name.length() > CHARACTER_LIMIT) {
+            throw new IllegalArgumentException(CHARACTER_LIMIT_ERROR);
         }
         this.name = name;
     }
