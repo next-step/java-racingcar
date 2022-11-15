@@ -1,9 +1,11 @@
 package race.domian;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EmptySource;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class NameTest {
 
@@ -13,11 +15,11 @@ class NameTest {
         assertThat(name.getName()).isEqualTo("jihye");
     }
 
-    @Test
-    void 이름_공백_불가() {
-        assertThatThrownBy(() -> {
-            new Name("");
-        }).isInstanceOf(IllegalArgumentException.class);
+    @DisplayName("이름이 비어있을 경우 예외 발생")
+    @EmptySource
+    @ParameterizedTest
+    void emptyName(String name) {
+        assertThatIllegalArgumentException().isThrownBy(() -> new Name(name));
     }
 
     @Test
