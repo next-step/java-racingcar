@@ -26,6 +26,10 @@ public class Position {
         return position == maxPosition;
     }
 
+    public void move() {
+        position = position + 1;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -41,10 +45,5 @@ public class Position {
     @Override
     public int hashCode() {
         return Objects.hash(position);
-    }
-
-    public Position move() {
-        position = position + 1;
-        return this;
     }
 }
