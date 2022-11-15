@@ -6,36 +6,47 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class CarsTest {
     @Test
     public void racingTest(){
-        List<Name> nameList = Arrays.asList(new Name("name1"),new Name("name2"));
-        Cars cars = new Cars(nameList);
-
-        Cars expectedCarList = new Cars(nameList,1);
+        List<Car> carList = Arrays.asList(new Name("name1"),new Name("name2")).stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
+        Cars cars = new Cars(carList);
 
         NumberGenerator numberGenerator = new MovableNumberGenerator();
         cars.racing(numberGenerator);
-        assertThat(cars).isEqualTo(expectedCarList);
+        assertAll(
+                ()->assertThat(carList.get(0).getPosition()).isEqualTo(1),
+                ()->assertThat(carList.get(1).getPosition()).isEqualTo(1)
+        );
     }
 
     @Test
     public void duplicatedTest(){
-        List<Name> nameList = Arrays.asList(new Name("name1"),new Name("name1"));
+        List<Car> carList = Arrays.asList(new Name("name1"),new Name("name1")).stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
 
-        assertThatThrownBy(()->new Cars(nameList))
+        assertThatThrownBy(()->new Cars(carList))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("중복된 이름이 존재합니다.");
     }
 
     @Test
     public void getWinnerTest(){
-        List<Name> nameList = Arrays.asList(new Name("name1"),new Name("name2"));
-        Cars cars = new Cars(nameList);
+        List<Car> carList = Arrays.asList(new Name("name1"),new Name("name2")).stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
+        Cars cars = new Cars(carList);
+
         NumberGenerator numberGenerator = new MovableNumberGenerator();
         cars.getCarList().get(0).move(numberGenerator);
 
@@ -45,8 +56,11 @@ public class CarsTest {
 
     @Test
     public void getMaxPostionTest() throws NoSuchMethodException {
-        List<Name> nameList = Arrays.asList(new Name("name1"),new Name("name2"));
-        Cars cars = new Cars(nameList);
+        List<Car> carList = Arrays.asList(new Name("name1"),new Name("name2")).stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
+        Cars cars = new Cars(carList);
+
         NumberGenerator numberGenerator = new MovableNumberGenerator();
         cars.getCarList().get(0).move(numberGenerator);
         Method method = cars.getClass().getDeclaredMethod("getMaxPosition");
