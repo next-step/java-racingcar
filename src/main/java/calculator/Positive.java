@@ -1,27 +1,30 @@
 package calculator;
 
-public class Positive {
-    private final int number;
+import java.util.Objects;
 
-    public Positive(String target) {
+public class Positive {
+    private int number;
+
+    public static Positive from(String target) {
         try {
-            this.number = Integer.parseInt(target);
-        } catch(NumberFormatException e) {
+            return new Positive(Integer.parseInt(target));
+        } catch (NumberFormatException e) {
             throw new RuntimeException("숫자 형태의 문자만 인자로 받을 수 있습니다.");
-        }
-        if(this.number < 0) {
-            throw new RuntimeException("양수만 가능합니다.");
         }
     }
 
     public Positive(int number) {
+        this.number = validateNumber(number);
+    }
+
+    private int validateNumber(int number) {
         if(number < 0) {
             throw new RuntimeException("양수만 가능합니다.");
         }
-        this.number = number;
+        return number;
     }
 
-    public int number() {
+    public int getNumber() {
         return this.number;
     }
 
@@ -34,11 +37,17 @@ public class Positive {
         return this.number == target.number;
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.number);
+    }
+
     public int plus(int i) {
         return this.number + i;
     }
 
     public int plus(Positive positive) {
-        return this.number + positive.number;
+        this.number = getNumber() + positive.getNumber();
+        return this.getNumber();
     }
 }

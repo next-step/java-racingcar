@@ -9,36 +9,44 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import racingcar.RacingCar;
 
-public class RacingCarTest {
-    private final Random random = new Random();
+public class CarTest {
+    private final String carName = "niro";
+    private final int count = 5;
 
     @ParameterizedTest
     @ValueSource(ints = {1,3,5,10,20})
     @DisplayName("클래스 초기화 테스트")
     public void initialize(int count) {
-        RacingCar car = new RacingCar(random, count);
+        Car car = new Car(carName, count);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {-1,-10,100,200,300})
     @DisplayName("클래스 초기화 실패 케이스 테스트")
-    public void initializeFailed(int count) {
+    public void initializeFailedByCount(int count) {
         assertThatThrownBy(() -> {
-            RacingCar car = new RacingCar(random, count);
+            Car car = new Car(carName, count);
         }).isInstanceOf(RuntimeException.class)
           .hasMessageContaining("count는 1에서 99까지의 숫자만 입력가능합니다.");
+    }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"", " ", "testtestttestteststestse"})
+    public void intializeFailedByName(String name) {
+        assertThatThrownBy(() -> {
+            Car car = new Car(name, 10);
+        }).isInstanceOf(RuntimeException.class);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1,3,5,10,20})
     @DisplayName("getHistoryCount 메서드 테스트")
     public void getHistoryCount(int count) {
-        RacingCar car = new RacingCar(random, count);
+        Car car = new Car(carName, count);
         assertThat(car.getHistoryCount()).isEqualTo(count);
     }
 
@@ -46,7 +54,7 @@ public class RacingCarTest {
     @MethodSource("getHistoriesByIndexTestParamsForSameCount")
     @DisplayName("getHistoriesByIndex 메서드 호출후 history 전체 원소가 셋팅되는지 테스트")
     public void getHistoriesByIndex_전체배열_체크(int count, int index) {
-        RacingCar car = new RacingCar(random, count);
+        Car car = new Car(carName, count);
         assertThat(car.getHistoriesByIndex(index)).isIn(1, 0);
     }
 
@@ -54,7 +62,7 @@ public class RacingCarTest {
     @MethodSource("getHistoriesByIndexTestParams")
     @DisplayName("getHistoriesByIndex 메서드 테스트")
     public void getHistoriesByIndex(int count, int index) {
-        RacingCar car = new RacingCar(random, count);
+        Car car = new Car(carName, count);
         assertThat(car.getHistoriesByIndex(index)).isInstanceOfAny(Integer.class);
     }
 
@@ -63,10 +71,27 @@ public class RacingCarTest {
     @DisplayName("getHistoriesByIndex 메서드 실패 케이스 테스트")
     public void getHistoriesByIndexFailed(int count, int index) {
         assertThatThrownBy(() -> {
-            RacingCar car = new RacingCar(random, count);
+            Car car = new Car(carName, count);
             car.getHistoriesByIndex(index);
         }).isInstanceOf(RuntimeException.class)
           .hasMessageContaining("index 값이 올바르지 않습니다.");
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2, 3, 4})
+    public void run(int countIndex) {
+        Car car = new Car(carName, count);
+        car.run(countIndex);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {-1, 5, 6, 7, 10})
+    public void runFailed(int countIndex) {
+        assertThatThrownBy(() -> {
+            Car car = new Car(carName, count);
+            car.run(countIndex);
+        }).isInstanceOf(RuntimeException.class)
+          .hasMessageContaining("잘못된 count의 index값입니다.");
     }
 
     private static Stream<Arguments> getHistoriesByIndexTestParams() {

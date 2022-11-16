@@ -1,40 +1,24 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
-    private final List<RacingCar> cars;
-    private final List<StringBuilder> resultString;
-
-    public ResultView(List<RacingCar> cars) {
-        this.cars = cars;
-        this.resultString = new ArrayList<>(cars.size());
-        initResultString();
+    private ResultView() {
+        throw new RuntimeException("인스턴스화가 불가능한 클래스입니다.");
     }
 
-    public void printCars() {
-        int count = cars.get(0).getHistoryCount();
+    public static void printCars(CarGameInfo gameInfo, int count) {
         for (int i=0 ; i<count ; i++) {
-            for (int j=0 ; j<cars.size() ; j++) {
-                RacingCar car = cars.get(j);
-                System.out.println(updateDashString(car, resultString.get(j), i));
-            }
+            gameInfo.printCars(i);
             System.out.println();
         }
     }
 
-    private void initResultString() {
-        for(int i=0 ; i<cars.size() ; i++) {
-            resultString.add(new StringBuilder());
-        }
-    }
-
-    private StringBuilder updateDashString(RacingCar car, StringBuilder str, int indexOfCount) {
-        if(car.getHistoriesByIndex(indexOfCount) == 1) {
-            str.append("-");
-        }
-        return str;
+    public static void printWinners(CarGameInfo gameInfo) {
+        List<Car> winners = gameInfo.getWinnerList();
+        String winnersName = winners.stream().map(Car::getName).collect(Collectors.joining(", "));
+        System.out.println(winnersName + "가 최종 우승하였습니다.");
     }
 
 }
