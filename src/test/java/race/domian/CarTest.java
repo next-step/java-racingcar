@@ -1,20 +1,20 @@
 package race.domian;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static race.domian.Car.DISTANCE_TO_MOVE_AT_ONCE;
-import static race.domian.Car.START_POSITION;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import race.strategy.ForwardStrategy;
 import race.strategy.HoldStrategy;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static race.domian.Car.DISTANCE_TO_MOVE_AT_ONCE;
+import static race.domian.Position.START_POSITION;
 
 class CarTest {
     private static Car car;
 
     @BeforeEach
     void setUp() {
-        car = new Car("wisdom");
+        car = new Car("jihye");
     }
 
     @Test
@@ -40,8 +40,7 @@ class CarTest {
     void 한번_움직이면_최대값은_1이다() {
         ForwardStrategy forwardStrategy = new ForwardStrategy();
         int maxPosition = 1;
-        car.isMaxPosition(maxPosition);
         car.move(forwardStrategy);
-        assertThat(car.isMaxPosition(maxPosition)).isTrue();
+        assertThat(car.isWinner(maxPosition)).isTrue();
     }
 }
