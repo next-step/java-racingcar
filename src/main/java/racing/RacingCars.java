@@ -3,6 +3,7 @@ package racing;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class RacingCars {
@@ -48,10 +49,9 @@ public class RacingCars {
         return new RacingCars(movedRacingCars);
     }
 
-    public RacingCar getRacingCar(String name) {
-        for (RacingCar racingCar: this.racingCars) {
-            if (racingCar.getName().equals(name)) return racingCar;
-        }
-        return null;
+    public Optional<RacingCar> getRacingCar(String name) {
+        return racingCars.stream()
+                .filter(car -> car.getName().equals(name))
+                .findFirst();
     }
 }

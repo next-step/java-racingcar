@@ -28,6 +28,7 @@ public class RacingResultView {
     }
 
     private static void printWinners(final RacingRecordCars winners) {
-        System.out.println(winners.getNames() + "가 최종 우승했습니다.");
+        String winnersName = String.join(", ", winners.getNames());
+        System.out.println(winnersName + "가 최종 우승했습니다.");
     }
 }

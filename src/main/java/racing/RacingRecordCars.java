@@ -40,13 +40,11 @@ public class RacingRecordCars {
         return new RacingRecordCars(winners);
     }
 
-    public String getNames() {
-        List<String> names = this.racingRecordCars
+    public List<String> getNames() {
+        return this.racingRecordCars
                 .stream()
                 .map(RacingRecordCar::getName)
                 .collect(Collectors.toList());
-
-        return String.join(", ", names);
     }
 
     public int getSize() {
