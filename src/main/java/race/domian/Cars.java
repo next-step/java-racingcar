@@ -8,8 +8,6 @@ import java.util.stream.Collectors;
 
 public class Cars {
 
-    private static final int DEFAULT_VALUE = 0;
-
     private final List<Car> cars = new ArrayList<>();
 
     public Cars(List<String> names) {
@@ -25,16 +23,21 @@ public class Cars {
     }
 
    public List<String> findWinners() {
-       return cars.stream()
-            .filter(car -> car.isWinner(getMaxPosition()))
-            .map(Car::getName)
-            .collect(Collectors.toList());
+       final Car maxPositionCar = findMaxPositionCar();
+       return findSamePositionCars(maxPositionCar);
     }
-    private int getMaxPosition() {
+
+    private List<String> findSamePositionCars(Car maxPositionCar) {
         return cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElse(DEFAULT_VALUE);
+                .filter(maxPositionCar::isSamePosition)
+                .map(Car::getName)
+                .collect(Collectors.toList());
+    }
+
+    private Car findMaxPositionCar() {
+        return cars.stream()
+                .max(Car::compareTo)
+                .orElseThrow(() -> new IllegalArgumentException("차량 리스트가 비었습니다."));
     }
 
     public List<Integer> getPosition() {

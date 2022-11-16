@@ -2,7 +2,7 @@ package race.domian;
 
 import race.strategy.MoveStrategy;
 
-public class Car {
+public class Car implements Comparable<Car> {
 
     public static final int DISTANCE_TO_MOVE_AT_ONCE = 1;
 
@@ -30,5 +30,14 @@ public class Car {
 
     public String getName() {
         return name.getName();
+    }
+
+    @Override
+    public int compareTo(Car car) {
+        return position.compare(car);
+    }
+
+    public boolean isSamePosition(Car car) {
+        return position.getPosition() == car.getPosition();
     }
 }

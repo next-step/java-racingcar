@@ -46,4 +46,8 @@ public class Position {
     public int hashCode() {
         return Objects.hash(position);
     }
+
+    public int compare(Car car) {
+        return position - car.getPosition();
+    }
 }
