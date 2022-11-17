@@ -25,14 +25,14 @@ public class CarNames implements Iterable<String> {
         return new CarNames(carNames);
     }
 
+    public int carCount() {
+        return names.length;
+    }
+
     private static void checkCarName(String carName) {
         if (isInvalidCarName(carName)) {
             throw new InvalidCarNameException(MIN_CAR_NAME_LENGTH, MAX_CAR_NAME_LENGTH);
         }
-    }
-
-    public int carCount() {
-        return names.length;
     }
     
     private static String[] carNames(String names) {

@@ -13,17 +13,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import racingcar.domain.moving.Moving;
+
 class CarsTest {
-    @DisplayName("자동차들이 이동하면 자동차 목록을 리턴한다.")
-    @Test
-    void move() {
-        List<String> carNames = List.of("pobby", "luna");
-        
-        Cars cars = cars(carNames);
-
-        assertThat(equalsByName(cars.move().names(), carNames)).isTrue();
-    }
-
     @DisplayName("가장 긴 거리를 이동한 자동차들을 리턴한다.")
     @ParameterizedTest
     @MethodSource("longestSet")
@@ -38,6 +30,20 @@ class CarsTest {
         assertThat(Cars.from(names)).isEqualTo(cars);
     }
 
+    @DisplayName("자동차들의 이름을 리턴한다.")
+    @ParameterizedTest
+    @MethodSource("namesSet")
+    void names(CarNames names, List<String> expected) {
+        assertThat(Cars.from(names).names()).hasSameElementsAs(expected);
+    }
+    
+    private static Stream<Arguments> namesSet() {
+        return Stream.of(
+            Arguments.arguments(CarNames.of("pobby, luna"), List.of("pobby", "luna")),
+            Arguments.arguments(CarNames.of("pobby, luna, rein"), List.of("pobby", "luna", "rein"))
+        );
+    }
+
     private static Stream<Arguments> fromSet() {
         return Stream.of(
             Arguments.arguments(CarNames.of("pobby, luna"), cars(List.of("pobby", "luna"))),
@@ -46,10 +52,6 @@ class CarsTest {
         );
     }
     
-    private boolean equalsByName(List<String> actual, List<String> expected) {
-        return actual.containsAll(expected) && expected.containsAll(actual);
-    }
-
     private static Cars cars(List<String> carNames) {
         List<Car> cars = new ArrayList<>();
         for (String carName : carNames) {

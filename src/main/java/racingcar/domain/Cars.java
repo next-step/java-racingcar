@@ -6,6 +6,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
+import racingcar.domain.moving.MovingStrategy;
+
 public class Cars implements Iterable<Car> {
     private final List<Car> cars;
 
@@ -13,12 +15,18 @@ public class Cars implements Iterable<Car> {
         this.cars = cars;
     }
 
-    public Cars move() {
-        Cars cars = new Cars(new ArrayList(this.cars));
-        for (Car car : cars.cars) {
-            car.move(Moving.create());
+    public static Cars from(CarNames names) {
+        List<Car> cars = new ArrayList<>();
+        for (String carName : names) {
+            cars.add(new Car(carName));
         }
-        return cars;
+        return new Cars(cars);
+    }
+    
+    public void move(MovingStrategy movingStrategy) {
+        for (Car car : cars) {
+            car.move(movingStrategy.go());
+        }
     }
 
     public Cars longest() {
@@ -38,12 +46,10 @@ public class Cars implements Iterable<Car> {
         return names;
     }
 
-    public static Cars from(CarNames names) {
-        List<Car> cars = new ArrayList<>();
-        for (String carName : names) {
-            cars.add(new Car(carName));
+    private void addEqualsDistance(Car max, List<Car> longest, Car car) {
+        if (max.sameDistance(car)) {
+            longest.add(car);
         }
-        return new Cars(cars);
     }
     
     @Override
@@ -62,11 +68,5 @@ public class Cars implements Iterable<Car> {
     @Override
     public int hashCode() {
         return Objects.hash(cars);
-    }
-
-    private void addEqualsDistance(Car max, List<Car> longest, Car car) {
-        if (max.distance() == car.distance()) {
-            longest.add(car);
-        }
     }
 }
