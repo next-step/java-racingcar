@@ -10,7 +10,6 @@ public class InputView {
     private static final String SEPARATOR = ",";
 
     public static List<String> participants() {
-        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String input = sc.nextLine();
         validateSeparator(input);
 
@@ -18,8 +17,15 @@ public class InputView {
     }
 
     public static int howManyPlay() {
-        System.out.println("시도할 회수는 몇회인가요?");
-        return changeNumber(sc.nextLine());
+        int playTimes = changeNumber(sc.nextLine());
+        checkPlayTimes(playTimes);
+        return playTimes;
+    }
+
+    private static void checkPlayTimes(int playTimes) {
+        if (playTimes < 1) {
+            throw new IllegalArgumentException("시도할 횟수는 1이상 입력해주세요");
+        }
     }
 
     private static int changeNumber(String input) {

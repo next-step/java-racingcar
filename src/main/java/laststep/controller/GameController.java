@@ -1,8 +1,8 @@
 package laststep.controller;
 
-import java.util.List;
-import laststep.service.CarFactory;
 import laststep.domain.Cars;
+import laststep.service.CarFactory;
+import laststep.service.ExceptionTemplate;
 import laststep.ui.InputView;
 import laststep.ui.OutputView;
 
@@ -10,10 +10,17 @@ public class GameController {
     private final CarFactory carFactory = new CarFactory();
 
     public void start() {
-        List<String> participants = InputView.participants();
-        Cars cars = carFactory.makeCars(participants);
-        int playTimes = InputView.howManyPlay();
+        Cars cars = makeCars();
+        OutputView.playTimes();
+        ExceptionTemplate exception = InputView::howManyPlay;
+        int playTimes = (int) exception.confirm();
         playRace(playTimes, cars);
+    }
+
+    private Cars makeCars() {
+        OutputView.start();
+        ExceptionTemplate exception = () -> carFactory.makeCars(InputView.participants());
+        return (Cars) exception.confirm();
     }
 
     private void playRace(int playTimes, Cars cars) {
