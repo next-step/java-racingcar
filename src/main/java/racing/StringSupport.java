@@ -1,3 +1,5 @@
+package racing;
+
 public class StringSupport {
 
     private final String target;
