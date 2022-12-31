@@ -1,8 +1,10 @@
-package racing;
+package caculator;
 
 public class StringSupport {
 
     private final String target;
+
+    public static final String EMPTY = "";
 
     public static StringSupport of(final String target) {
         if(target == null) {

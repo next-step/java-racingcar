@@ -1,4 +1,4 @@
-package racing;
+package calculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
