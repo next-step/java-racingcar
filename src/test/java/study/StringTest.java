@@ -1,14 +1,17 @@
 package study;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
+@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 public class StringTest {
 
     @Test
-    void split1() {
+    void 문자열을_콤마_기준으로_split_한다() {
         //given
         String str = "1,2";
 
@@ -21,7 +24,7 @@ public class StringTest {
 
 
     @Test
-    public void split2() {
+    public void 특정_문자를_컴마_기준으로_split_후_해당문자열을_포함하는지_검증한다() {
         //given
         String str = "1";
 
@@ -33,8 +36,7 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("문자열의 괄호를 제거합니다.")
-    public void removeBracket() {
+    public void 문자열의_괄호를_제거한다() {
         //given
         String str = "(1,2)";
 
@@ -47,14 +49,14 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("문자열의 특정위치를 가져올때 위치 값을 벗어나면 예외가 발생한다.")
-    public void getStrPosition() {
-        //given
+    public void 특정위치의_문자열을_가져올때_위치값을_벗어나면_예외를_발생시킨다() {
+        // given
         String str = "abc";
 
-        //when
+        // when
+        // then
         assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
-                .isThrownBy(() -> "abc".charAt(4));
+                .isThrownBy(() -> "abc".charAt(3));
 
         assertThatThrownBy(() -> {
             str.charAt(3);
