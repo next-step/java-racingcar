@@ -122,7 +122,7 @@ public class StringCalcuratorTest {
         }).withMessageMatching("입력값이 null이거나 빈 공백 문자입니다.");
     }
 
-    @DisplayName("연산자는 +, -, *, / 중 입력 가능 합니다.")
+    @DisplayName("연산자는 덧셈 뺄셈 곱셉 나눗셈만 입력 가능 합니다.")
     @ParameterizedTest
     @ValueSource(strings = { "2 @ 2", "4 + 2 $ 1" })
     void invalidSignInputTest(String input) {
