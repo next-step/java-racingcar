@@ -2,6 +2,8 @@ package calculater;
 
 
 import java.util.Arrays;
+import java.util.Scanner;
+
 import org.junit.Test;
 
 
@@ -59,9 +61,13 @@ public class calculater {
     }
 
     public static void main(String[] args) {
-        String input = "2+3 *4 /2";
+        Scanner scan = new Scanner(System.in);
+        System.out.println("연산을 입력하세요.");
+        String input = scan.nextLine();
+        scan.close();
+
         parseString(input);
-        System.out.println(sumData.toString());
+        System.out.println(input + " = " + sumData.toString());
     }
 
 }
