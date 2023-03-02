@@ -1,5 +1,6 @@
 package study;
 
+import calculator.Calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -45,5 +46,12 @@ class StringTest {
                 .isThrownBy(() -> "abc".charAt(4));
     }
 
+    @Test
+    void calculator() {
 
+        Calculator calculator = new Calculator();
+
+        int result = calculator.calculatorByString();
+        assertThat(result).isEqualTo(10);
+    }
 }
