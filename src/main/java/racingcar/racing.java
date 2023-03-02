@@ -35,7 +35,7 @@ public class racing {
         scan.close();
 
         for (ii = 0; ii < carNameList.length; ii++) {
-            carList.add(new racingCar(carNameList[ii].trim(), (ii + 1) * 2));
+            carList.add(new racingCar(carNameList[ii].trim()));
         }
 
         for (ii = 0; racingEnd == false ; ii++) {

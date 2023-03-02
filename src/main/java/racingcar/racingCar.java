@@ -7,11 +7,10 @@ public class racingCar {
     private Integer distance;
     private Random engine;
 
-    public racingCar(String carName, int seed) {
+    public racingCar(String carName) {
         name = carName.toString();
         distance = 0;
         engine = new Random();
-        engine.setSeed(System.currentTimeMillis() / seed);
     }
 
     public void drive() {
