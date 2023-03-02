@@ -16,7 +16,6 @@ public class CalculatorService {
         System.out.println("★ 사칙 연산 계산기 ★");
         System.out.print("입력하시오 : ");
 
-//        String calculatorText = "13 + 44 - 55 * 24 / 12 = ";
         String calculatorText = scan.nextLine();
 
         try {
@@ -31,7 +30,6 @@ public class CalculatorService {
     }
 
     static void calculateLoop(String text, Calculator calculator) {
-//        List<String> list = List.of(calculatorText.split(" "));
         List<String> list = Stream.of(text.split(" "))
                 .map(String::trim).collect(Collectors.toList());
 
@@ -40,11 +38,21 @@ public class CalculatorService {
                 calculator.result = Long.parseLong(list.get(i));
             }
             else if(i%2==0) {
+                numberCheck(list.get(i));
                 calculate(calculator, list.get(i - 1), Long.parseLong(list.get(i)));
             }
         }
     }
 
+    // 숫자인지 체크
+    static void numberCheck(String number) {
+        Boolean isNumber = number.chars().allMatch(( Character::isDigit));
+        if(isNumber == false) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    // 사칙연산 계산
     static void calculate(Calculator calculator, String operationCode, long number) {
 
         switch (operationCode) {
