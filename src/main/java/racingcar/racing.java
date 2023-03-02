@@ -43,7 +43,7 @@ public class racing {
             racingEnd = racingStatus(carList, drivingDistance);
             System.out.println("\n");
         }
-        StringBuilder resultBuffer = new StringBuilder("최종 우승자:");
+        StringBuilder resultBuffer = new StringBuilder("최종 우승자 : ");
         for (ii = 0; ii < carList.size(); ii++) {
             racingCar valCar = carList.get(ii);
             if (valCar.getDistance().equals(drivingDistance) == false)
@@ -51,6 +51,7 @@ public class racing {
             resultBuffer.append(valCar.getName());
             resultBuffer.append(",");
         }
+        resultBuffer.delete(resultBuffer.length()-1, resultBuffer.length());
         System.out.println(resultBuffer.toString());
     }
 }
