@@ -26,6 +26,9 @@ public class racingCar {
         return distance;
     }
 
+    public String getName() {
+        return name;
+    }
     public String getStatus() {
         StringBuilder statusBuffer = new StringBuilder(name);
         statusBuffer.append(" : ");

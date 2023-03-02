@@ -22,11 +22,17 @@ public class racing {
     }
 
     public static  void main(String[] args) {
-        String carNameList[] = "abc, def, hji".split(",");
-        int    drivingDistance = 5;
+        Scanner scan = new Scanner(System.in);
         int    ii;
         boolean racingEnd = false;
+
         List<racingCar> carList = new ArrayList<racingCar>();
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        String carNames = scan.nextLine();
+        String carNameList[] = carNames.split(",");
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int    drivingDistance = scan.nextInt();
+        scan.close();
 
         for (ii = 0; ii < carNameList.length; ii++) {
             carList.add(new racingCar(carNameList[ii].trim(), (ii + 1) * 2));
@@ -37,11 +43,14 @@ public class racing {
             racingEnd = racingStatus(carList, drivingDistance);
             System.out.println("\n");
         }
-        System.out.println("\nchampion");
+        StringBuilder resultBuffer = new StringBuilder("최종 우승자:");
         for (ii = 0; ii < carList.size(); ii++) {
             racingCar valCar = carList.get(ii);
-            if (valCar.getDistance().equals(drivingDistance))
-                System.out.println(valCar.getStatus());
+            if (valCar.getDistance().equals(drivingDistance) == false)
+                continue;
+            resultBuffer.append(valCar.getName());
+            resultBuffer.append(",");
         }
+        System.out.println(resultBuffer.toString());
     }
 }
