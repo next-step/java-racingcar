@@ -37,7 +37,7 @@ public class StringTest {
 
     @DisplayName("범위를 넘어가는 index가 들어왔을때 예외처리")
     @ParameterizedTest
-    @ValueSource(ints = {1,2,3,4,5, -1})
+    @ValueSource(ints = {3,4,5, -1})
     void exam3(int index) {
 
         assertThatThrownBy(() -> "abc".charAt(index))

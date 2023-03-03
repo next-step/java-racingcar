@@ -37,7 +37,7 @@ public class SetTest {
             "구현하고 보니 다음과 같이 중복 코드가 계속해서 발생한다.\n" +
             "JUnit의 ParameterizedTest를 활용해 중복 코드를 제거해 본다.")
     @ParameterizedTest
-    @ValueSource(ints = {1,2,3,4,5})
+    @ValueSource(ints = {1,2,3})
     void test2(int value) {
         assertThat(numbers.contains(value)).isTrue();
     }
