@@ -34,8 +34,13 @@ public class RacingCarService {
                 .map( name -> new Car(name, distance))
                 .collect(Collectors.toList());
 
+
+        
         System.out.println(cars);
 
+    }
+
+    void racingStart(List<Car> cars) {
     }
 
 
