@@ -25,9 +25,7 @@ public class Car {
         System.out.println(this.name + " : " + sb.toString());
     }
 
-    void move() {
-        Random random = new Random();
-        int randomValue = random.nextInt(10);
+    public void move(int randomValue) {
         if (randomValue >= 4) {
             this.position++;
         }
@@ -42,7 +40,7 @@ public class Car {
         if (name.length() >= 5) throw new IllegalArgumentException("자동차 이름은 5자 미만만 가능 합니다. name = " + name);
     }
 
-    int getPosition() {
+    public int getPosition() {
         return position;
     }
 

@@ -1,5 +1,6 @@
 package car;
 
+import car.utils.RandomUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -10,8 +11,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-
 import static org.assertj.core.api.Assertions.*;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
@@ -22,19 +21,20 @@ class CarTest {
     @BeforeEach
     void setUp() {
         participants = new ArrayList<>();
-        participants.add(new Car("씽씽카", 5));
+        participants.add(new Car("씽씽카", 3));
         participants.add(new Car("쏘카", 1));
         participants.add(new Car("그린카", 3));
     }
 
     @ParameterizedTest
     @CsvSource(value = {"씽씽카,현대자동차"}, delimiter = ',')
-    void 이름을_기진_자동차_객체를_생성한다(String case1, String case2) {
-        //then
-        Car car = new Car(case1);
-        assertThatThrownBy(() -> new Car(case2))
+    void 이름을_기진_자동차_객체를_생성한다(String successCase, String failCase) {
+        // then
+        Car car = new Car(successCase);
+
+        assertThatThrownBy(() -> new Car(failCase))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자동차 이름은 5자 미만만 가능 합니다. name = " + case2);
+                .hasMessageContaining("자동차 이름은 5자 미만만 가능 합니다. name = " + failCase);
     }
 
     @ParameterizedTest
@@ -50,11 +50,9 @@ class CarTest {
     @Test
     @DisplayName("0과 9사이의 무작위 수를 반환한다")
     void shouldBeReturnBetweenZeroAndNineByRandom() {
-        //given
-        Random random = new Random();
 
         //when
-        int randomValue = random.nextInt(10);
+        int randomValue = RandomUtils.generateRandomValue();
 
         //then
         assertThat(randomValue).isLessThan(10);
@@ -62,10 +60,7 @@ class CarTest {
 
     @Test
     void 전진하는_자동차의_이름를_같이_출력한다() {
-        //given
-        for (Car car : participants) {
-            car.printPositionStatus();
-        }
+        participants.forEach(Car::printPositionStatus);
     }
 
     @ParameterizedTest
@@ -82,7 +77,7 @@ class CarTest {
         int actual = getMaxPosition(participants);
 
         //then
-        assertThat(actual).isEqualTo(5);
+        assertThat(actual).isEqualTo(3);
      }
 
     @Test
@@ -92,7 +87,7 @@ class CarTest {
 
         // then
         System.out.println("최종 우승자: " + winners);
-        assertThat(winners).hasSize(1);
+        assertThat(winners).hasSize(2);
     }
 
     @ParameterizedTest
@@ -108,11 +103,8 @@ class CarTest {
         }
 
         //when
-        playCarRacing(participants, count);
-        List<Car> winners = getWinners(participants);
-
-        //then
-        System.out.println("우승자: " + winners);
+        List<Car> winners = play(participants, count);
+        System.out.println("Winner: " + winners);
      }
 
     private List<Car> getWinners(List<Car> participants) {
@@ -139,16 +131,15 @@ class CarTest {
         return max;
     }
 
-    private void playCarRacing(List<Car> participants, int count) {
-        for (int i = 0; i < count; i++) {
-            movePosition(participants);
+    private List<Car> play(List<Car> participants, int moveCount) {
+        for (int i = 0; i < moveCount; i++) {
+            participants.forEach(participant -> {
+                int randomValue = RandomUtils.generateRandomValue();
+                participant.move(randomValue);
+            });
             System.out.println();
         }
-    }
 
-    private void movePosition(List<Car> participants) {
-        for (Car car : participants) {
-            car.move();
-        }
+        return getWinners(participants);
     }
 }
