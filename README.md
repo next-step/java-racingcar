@@ -7,3 +7,7 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 기능 목록
+* 자동차 클래스 생성
+* 전진 함수 추가
