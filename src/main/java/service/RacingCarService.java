@@ -3,6 +3,9 @@ package service;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
+
+import car.Car;
 
 import static java.util.Arrays.asList;
 
@@ -20,11 +23,20 @@ public class RacingCarService {
     public static void main(String[] args) {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         Scanner scan = new Scanner(System.in);
-        String inputString = scan.nextLine();
-        List<String> input = Arrays.asList(inputString.split(","));
+        String carNames = scan.nextLine();
 
-        System.out.println(input);
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        scan = new Scanner(System.in);
+        int distance = Integer.parseInt(scan.nextLine());
+
+
+        List<Car> cars = Arrays.asList(carNames.split(",")).stream()
+                .map( name -> new Car(name, distance))
+                .collect(Collectors.toList());
+
+        System.out.println(cars);
 
     }
+
 
 }
