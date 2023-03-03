@@ -1,6 +1,7 @@
 package study;
 
 import calculator.Calculator;
+import calculator.SecondCalculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -16,10 +17,18 @@ public class calTest {
         System.out.println(result);
     }
 
+
     @ParameterizedTest
     @ValueSource(strings = {"2 + 3 * 4 / 2", " 2 + 8 / 5 * 2 ", " 20 - 5 / 2 * 2 "})
     void caculator( String input) throws Exception {
         String result =  Calculator.excute(input);
+        System.out.println(result);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = { "2 + 8 / 5 * 2 ", "20 - 5 / 2 * 2 "})
+    void caculatoraa( String input) throws Exception {
+        int result =  SecondCalculator.excute(input);
         System.out.println(result);
     }
 
