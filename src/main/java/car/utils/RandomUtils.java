@@ -4,8 +4,8 @@ import java.util.Random;
 
 public class RandomUtils {
 
-    public static int generateRandomValue() {
+    public static int generateRandomValueBy(int condVal) {
         Random random = new Random();
-        return random.nextInt(10);
+        return random.nextInt(condVal);
     }
 }

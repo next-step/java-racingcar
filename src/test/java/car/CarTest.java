@@ -18,14 +18,15 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class CarTest {
 
-    List<Car> cars;
+    private List<Car> cars;
+    private final int condVal = 10;
 
     @BeforeEach
     void setUp() {
         cars = new ArrayList<>();
-        cars.add(new Car("씽씽카", 3));
-        cars.add(new Car("쏘카", 1));
-        cars.add(new Car("그린카", 5));
+        cars.add(new Car(new CarName("씽씽카"), 3));
+        cars.add(new Car(new CarName("쏘카"), 1));
+        cars.add(new Car(new CarName("그린카"), 5));
     }
 
     @ParameterizedTest
@@ -58,7 +59,7 @@ class CarTest {
     @Test
     void 전진하는_자동차의_이름을_같이_출력한다() {
         cars.forEach(car -> {
-            int randomValue = RandomUtils.generateRandomValue();
+            int randomValue = RandomUtils.generateRandomValueBy(condVal);
             car.move(randomValue);
         });
     }

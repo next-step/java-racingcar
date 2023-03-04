@@ -1,7 +1,7 @@
 package car.domain;
 
 import car.Car;
-import car.utils.RandomUtils;
+import car.CarName;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
@@ -11,7 +11,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -20,13 +19,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RacingGameTest {
 
     List<Car> participants;
+    RacingGame game;
+    int condVal = 10;
 
     @BeforeEach
     void setUp() {
+        game = new RacingGame();
         participants = new ArrayList<>();
-        participants.add(new Car("씽씽카", 5));
-        participants.add(new Car("쏘카", 3));
-        participants.add(new Car("그린카", 5));
+        participants.add(new Car(new CarName("씽씽카"), 3));
+        participants.add(new Car(new CarName("쏘카"), 1));
+        participants.add(new Car(new CarName("그린카"), 5));
     }
 
     @Test
@@ -35,23 +37,23 @@ class RacingGameTest {
         int expected = 5;
 
         //when
-        int actual = getMaxPosition(participants);
+        int actual = game.getMaxPosition(participants);
 
-        //then
+        // then
         assertThat(actual).isEqualTo(expected);
     }
 
     @Test
     void 자동차_경주_우승자를_구한다() {
         // given
-        int maxValue = 5;
+        int moveCount = 5;
 
         // when
-        List<Car> winners = getWinners(participants, maxValue);
+        List<Car> winners = game.getWinners(participants, moveCount);
 
         // then
         System.out.println("최종 우승자: " + winners);
-        assertThat(winners).hasSize(2);
+        assertThat(winners).hasSize(1);
     }
 
     @ParameterizedTest
@@ -67,49 +69,7 @@ class RacingGameTest {
         }
 
         //when
-        List<Car> winners = play(participants, moveCount);
+        List<Car> winners = game.play(participants, moveCount);
         System.out.println("Winner: " + winners);
-    }
-
-    public List<Car> play(List<Car> participants, int moveCount) {
-
-        for (int i = 0; i < moveCount; i++) {
-            startMoveRandomly(participants);
-        }
-
-        int maxPosition = getMaxPosition(participants);
-        return getWinners(participants, maxPosition);
-    }
-
-    private void startMoveRandomly(List<Car> participants) {
-        participants.forEach(participant -> {
-            int randomValue = RandomUtils.generateRandomValue();
-            participant.move(randomValue);
-        });
-        System.out.println();
-    }
-
-    private List<Car> getWinners(List<Car> participants, int maxPosition) {
-        return participants.stream().
-                filter(participant -> maxPosition == participant.getPosition())
-                .collect(Collectors.toList());
-    }
-
-    private int getMaxPosition(List<Car> participants) {
-
-        int maxPosition = 0;
-
-        for (Car car : participants) {
-            maxPosition = calcMaxPosition(maxPosition, car);
-        }
-
-        return maxPosition;
-    }
-
-    private int calcMaxPosition(int maxPosition, Car car) {
-        if (maxPosition < car.getPosition()) {
-            maxPosition = car.getPosition();
-        }
-        return maxPosition;
     }
 }

@@ -4,8 +4,8 @@ public class Car {
     private final CarName name;
     private int position = 0;
 
-    public Car(String name, int position) {
-        this.name = new CarName(name);
+    public Car(CarName name, int position) {
+        this.name = name;
         this.position = position;
     }
 
@@ -29,6 +29,14 @@ public class Car {
         printPositionStatus();
     }
 
+    public boolean isGreaterThan(int maxPosition) {
+        return this.position > maxPosition;
+    }
+
+    public boolean isEqualPosition(int maxPosition) {
+        return this.position == maxPosition;
+    }
+
     public int getPosition() {
         return position;
     }
@@ -36,23 +44,5 @@ public class Car {
     @Override
     public String toString() {
         return this.name.getName();
-    }
-
-    static class CarName {
-        private final String name;
-
-        public CarName(String name) {
-            if (name.length() >= 5) throw new IllegalArgumentException("자동차 이름은 5자 미만만 가능 합니다. name = " + name);
-            this.name = name;
-        }
-        
-        public String getName() {
-            return name;
-        }
-
-        @Override
-        public String toString() {
-            return this.getName();
-        }
     }
 }

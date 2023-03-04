@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 
 public class RacingGame {
 
+    private static final int COND_VAL = 10;
+
     public List<Car> play(List<Car> participants, int moveCount) {
 
         for (int i = 0; i < moveCount; i++) {
@@ -20,19 +22,19 @@ public class RacingGame {
 
     private void startMoveRandomly(List<Car> participants) {
         participants.forEach(participant -> {
-            int randomValue = RandomUtils.generateRandomValue();
+            int randomValue = RandomUtils.generateRandomValueBy(COND_VAL);
             participant.move(randomValue);
         });
         System.out.println();
     }
 
-    private List<Car> getWinners(List<Car> participants, int maxPosition) {
+    public List<Car> getWinners(List<Car> participants, int maxPosition) {
         return participants.stream().
-                filter(participant -> maxPosition == participant.getPosition())
+                filter(participant -> participant.isEqualPosition(maxPosition))
                 .collect(Collectors.toList());
     }
 
-    private int getMaxPosition(List<Car> participants) {
+    public int getMaxPosition(List<Car> participants) {
 
         int maxPosition = 0;
 
@@ -44,7 +46,7 @@ public class RacingGame {
     }
 
     private int calcMaxPosition(int maxPosition, Car car) {
-        if (maxPosition < car.getPosition()) {
+        if (car.isGreaterThan(maxPosition)) {
             maxPosition = car.getPosition();
         }
         return maxPosition;
