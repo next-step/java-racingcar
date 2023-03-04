@@ -19,7 +19,6 @@ public class Car implements Comparator<Car> {
         if (random.nextInt(10) >= 4) {
             location++;
         }
-        print();
     }
 
     public void print() {
