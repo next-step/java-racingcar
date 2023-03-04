@@ -32,17 +32,21 @@ public class Car {
         statusPrint();
     }
 
-    void carRun() {
+    int carRun() {
         int distance = (int) (Math.random() * 10);
 
         if(distance < 4) {
-            return;
+            return 0;
         }
 
         this.distance += distance;
+
+        return distance;
     }
 
-    void statusPrint() {
-        System.out.println(this.carName + " : " + this.distance);
+    String statusPrint() {
+        String resultText = this.carName + " : " + this.distance;
+        System.out.println(resultText);
+        return resultText;
     }
 }

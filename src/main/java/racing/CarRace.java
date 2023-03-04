@@ -45,7 +45,9 @@ public class CarRace {
         }
     }
 
-    void winnersPrint() {
-        System.out.println("최종 우승자 : " + winners.toString());
+    String winnersPrint() {
+        String winners = "최종 우승자 : " + this.winners.toString();
+        System.out.println(winners);
+        return winners;
     }
 }
