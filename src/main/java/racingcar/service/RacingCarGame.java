@@ -14,7 +14,9 @@ public class RacingCarGame {
     private int totalTry;
     private int maxPosition = 0;
 
-    private RacingCarGame(List<Car> cars , int num){
+    public RacingCarGame(){
+    }
+    public RacingCarGame(List<Car> cars , int num){
 
         this.racingCars = cars;
         this.totalTry = num;
@@ -67,6 +69,7 @@ public class RacingCarGame {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         int numTry = scanner.nextInt();
+        scanner.close();
         RacingCarGame carGame = new RacingCarGame(carNames, numTry);
         carGame.start();
     };

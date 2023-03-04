@@ -5,7 +5,7 @@ import racingcar.service.RacingCarGame;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class carTest {
+public class CarTest {
 
     @Test
     void racing(){

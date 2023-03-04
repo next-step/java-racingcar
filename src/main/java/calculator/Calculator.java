@@ -1,94 +1,88 @@
 package calculator;
 
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
+import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.Objects;
 import java.util.Queue;
 
 public  class Calculator {
-    private static Queue<String> numberQ  = new LinkedList<>();
+    private static Queue<Integer> numberQ  = new LinkedList<>();
     private static Queue<String> stringQ = new LinkedList<>();
-    private static String  tmpNumber =  "0";
-    private static final ScriptEngineManager manager = new ScriptEngineManager();
+    private static int  tmpNumber =  0;
 
     private static void init(){
         numberQ  = new LinkedList<>();
         stringQ = new LinkedList<>();
-        tmpNumber =  "0";
+        tmpNumber =  0;
     }
-    public static String excute(String strings) throws Exception  {
+    public static int excute(String strings) throws Exception  {
         init();
-        strings.chars().filter( value ->  !Character.toString(value).equals(" ") ).forEach(value -> step1((char)value ) );
-        strings.chars().filter( value ->  !Character.toString(value).equals(" ") ).forEach(value -> step2((char)value ) );
+        String[] stringLst = strings.split(" ");
+        Arrays.stream(stringLst).forEach( Calculator::step1 );
+        Arrays.stream(stringLst).forEach( Calculator::step2 );
+
         calcute();
         return tmpNumber;
     }
-    private static void  step1(char chars ){
-
-        if(Character.isDigit(chars)){
-            tmpNumber = tmpNumber.concat(Character.toString(chars));
-        }else {
-            numberQ.add(tmpNumber);
-            tmpNumber = "";
+    private static boolean isNumberic(String s) {
+        try {
+            Double.parseDouble(s);
+            return true;
+        } catch(NumberFormatException e) {
+            return false;
         }
     }
-    private static void  step2(char chars ){
-        if(!Character.isDigit(chars)){
-            stringQ.add(Character.toString(chars));
+    private static void  step1(String  chars ){
+        if(isNumberic(chars)){
+            numberQ.add(Integer.parseInt(chars));
+        }
+    }
+    private static void  step2(String chars ){
+        if(!isNumberic(chars)){
+            stringQ.add(chars);
         }
     }
 
-    private static void calcute () throws ScriptException {
-        numberQ.add(tmpNumber);
+    private static void calcute ()  {
         tmpNumber = numberQ.poll();
-        numberQ.stream().forEach(Calculator::accept);
+        numberQ.forEach(Calculator::accept);
     }
 
-    private static void eval(String number, String cal) throws ScriptException {
-        ScriptEngine engine = manager.getEngineByName("JavaScript");
-        tmpNumber =  String.valueOf(engine.eval(tmpNumber+cal+number));
-    }
-
-    private static void eval2(String number, String cal) throws ScriptException {
+    private static void eval2(int number, String cal) {
         switch (cal){
             case("+"):
-                tmpNumber = String.valueOf(add(tmpNumber,number));
+                tmpNumber = add(tmpNumber,number);
                 break;
             case("-"):
-                tmpNumber = String.valueOf(subtract(tmpNumber,number));
+                tmpNumber = subtract(tmpNumber,number);
                 break;
             case("*"):
-                tmpNumber = String.valueOf(multiply(tmpNumber,number));
+                tmpNumber = multiply(tmpNumber,number);
                 break;
             case("/"):
-                tmpNumber = String.valueOf(divide(tmpNumber,number));
+                tmpNumber = divide(tmpNumber,number);
                 break;
         }
     }
 
-    private static void accept(String value)  {
-        try {
-            eval2(value, stringQ.poll());
-        } catch (ScriptException e) {
-            throw new RuntimeException(e);
-        }
+    private static void accept(int value)  {
+        eval2(value, Objects.requireNonNull(stringQ.poll()));
     }
 
-   private static int add(String a, String b) {
-        return Integer.parseInt(a) + Integer.parseInt(b);
+   private static int add(int a, int b) {
+        return a + b;
    }
 
-   private static int subtract(String a, String b) {
-       return Integer.parseInt(a) -Integer.parseInt(b);
+   private static int subtract(int a, int b) {
+       return a -b;
    }
 
-   private static int multiply(String a, String b) {
-      return Integer.parseInt(a) *  Integer.parseInt(b);
+   private static int multiply(int a, int b) {
+      return a * b;
    }
 
-   private static int divide(String a, String b) {
-      return Integer.parseInt(a) /  Integer.parseInt(b);
+   private static int divide(int a, int b) {
+      return a /  b;
    }
 }
 
