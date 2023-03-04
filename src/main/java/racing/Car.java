@@ -3,12 +3,17 @@ package racing;
 import java.util.Comparator;
 import java.util.Random;
 
-public class Car implements Comparator<Car> {
+public class Car implements Comparable<Car> {
     public Car(String name) {
+        this(name, 0);
+    }
+
+    public Car(String name, int location) {
         if (name.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없다.");
         }
         this.name = name;
+        this.location = location;
     }
 
     private final String name;
@@ -30,9 +35,10 @@ public class Car implements Comparator<Car> {
         return car.location == this.location;
     }
 
+
     @Override
-    public int compare(Car c1, Car c2) {
-        return c1.location - c2.location;
+    public int compareTo(Car c) {
+        return this.location - c.location;
     }
 
     @Override

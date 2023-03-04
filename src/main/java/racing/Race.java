@@ -25,8 +25,8 @@ public class Race {
         }
     }
 
-    private List<Car> getRacingWinners() {
-        Optional<Car> max = participationCars.stream().max((c1, c2) -> c1.compare(c1, c2));
+    public List<Car> getRacingWinners() {
+        Optional<Car> max = participationCars.stream().max(Car::compareTo);
         Car winner = max.orElseThrow();
         return participationCars.stream().filter(c -> c.isEqualLocation(winner)).collect(Collectors.toList());
     }
