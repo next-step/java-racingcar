@@ -17,7 +17,7 @@ public class StringCalculatorTest {
 
     @DisplayName("계산식 정상 수행 테스트")
     @ParameterizedTest(name = "{displayName} [{index}]: ''{argumentsWithNames}''")
-    @CsvSource( {"'2 + 3 * 4 / 2', 10.0"})
+    @CsvSource( {"'2 + 3 * 4 / 2', 10.0", "'4 + 6 * 20', 200"})
     void calculateMathExpressionTest(String mathExpression, double expectedNumber) {
         double result = calculator.calculateMathExpression(mathExpression);
         Assertions.assertThat(result).isEqualTo(expectedNumber);
