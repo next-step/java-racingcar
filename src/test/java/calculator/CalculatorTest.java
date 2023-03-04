@@ -1,6 +1,5 @@
 package calculator;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
@@ -8,19 +7,13 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class CalculatorTest {
-
-    private Calculator calculator;
-
-    @BeforeEach
-    public void setUp() {
-        calculator = new Calculator();
-    }
 
     @Test
     void 계산기_덧셈_기능을_테스트한다() {
@@ -29,7 +22,7 @@ class CalculatorTest {
         int num2 = 20;
 
         //when
-        int actual = calculator.add(num1, num2);
+        int actual = Calculator.add(num1, num2);
 
         //then
         assertThat(actual).isEqualTo(30);
@@ -42,7 +35,7 @@ class CalculatorTest {
         int num2 = 10;
 
         //when
-        int actual = calculator.subtract(num1, num2);
+        int actual = Calculator.subtract(num1, num2);
 
         //then
         assertThat(actual).isEqualTo(10);
@@ -55,7 +48,7 @@ class CalculatorTest {
         int num2 = 20;
 
         //when
-        int actual = calculator.multiply(num1, num2);
+        int actual = Calculator.multiply(num1, num2);
 
         //then
         assertThat(actual).isEqualTo(200);
@@ -68,7 +61,7 @@ class CalculatorTest {
         int num2 = 2;
 
         //when
-        int actual = calculator.divide(num1, num2);
+        int actual = Calculator.divide(num1, num2);
 
         //then
         assertThat(actual).isEqualTo(3);
@@ -122,7 +115,7 @@ class CalculatorTest {
         assertThat(actual).isEqualTo(Integer.parseInt(input));
         assertThatExceptionOfType(NumberFormatException.class)
                 .isThrownBy(() -> toInteger("*"));
-     }
+    }
 
     private void isNullOrEmpty(String input) {
         if (input == null || input.isBlank()) {
@@ -137,14 +130,15 @@ class CalculatorTest {
     private int calculate(int number1, String operator, int number2) {
         switch (operator) {
             case "+":
-                return calculator.add(number1, number2);
+                return Calculator.add(number1, number2);
             case "-":
-                return calculator.subtract(number1, number2);
+                return Calculator.subtract(number1, number2);
             case "*":
-                return calculator.multiply(number1, number2);
+                return Calculator.multiply(number1, number2);
             case "/":
-                return calculator.divide(number1, number2);
-            default: throw new IllegalArgumentException("해당 연산자는 존재하지 않습니다 operator = " + operator);
+                return Calculator.divide(number1, number2);
+            default:
+                throw new IllegalArgumentException("해당 연산자는 존재하지 않습니다 operator = " + operator);
         }
     }
 }

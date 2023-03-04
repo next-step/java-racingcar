@@ -3,47 +3,50 @@ package car.domain;
 import car.Car;
 import car.utils.RandomUtils;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
 
     public List<Car> play(List<Car> participants, int moveCount) {
 
         for (int i = 0; i < moveCount; i++) {
-            participants.forEach(participant -> {
-                int randomValue = RandomUtils.generateRandomValue();
-                participant.move(randomValue);
-            });
-            System.out.println();
+            startMoveRandomly(participants);
         }
 
-        int max = getMaxPosition(participants);
-        return getWinners(participants, max);
+        int maxPosition = getMaxPosition(participants);
+        return getWinners(participants, maxPosition);
     }
 
-    private List<Car> getWinners(List<Car> participants, int max) {
-        List<Car> winners = new ArrayList<Car>();
+    private void startMoveRandomly(List<Car> participants) {
+        participants.forEach(participant -> {
+            int randomValue = RandomUtils.generateRandomValue();
+            participant.move(randomValue);
+        });
+        System.out.println();
+    }
 
-        for (Car car : participants) {
-            if (max == car.getPosition()) {
-                winners.add(car);
-            }
-        }
-
-        return winners;
+    private List<Car> getWinners(List<Car> participants, int maxPosition) {
+        return participants.stream().
+                filter(participant -> maxPosition == participant.getPosition())
+                .collect(Collectors.toList());
     }
 
     private int getMaxPosition(List<Car> participants) {
 
-        int max = 0;
+        int maxPosition = 0;
 
         for (Car car : participants) {
-            if (max < car.getPosition()) {
-                max = car.getPosition();
-            }
+            maxPosition = calcMaxPosition(maxPosition, car);
         }
 
-        return max;
+        return maxPosition;
+    }
+
+    private int calcMaxPosition(int maxPosition, Car car) {
+        if (maxPosition < car.getPosition()) {
+            maxPosition = car.getPosition();
+        }
+        return maxPosition;
     }
 }
