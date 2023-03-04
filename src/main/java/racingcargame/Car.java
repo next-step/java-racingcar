@@ -1,5 +1,6 @@
 package racingcargame;
 
 public class Car {
-    private String name;
+    String name;
+    int score; //현재점수
 }
