@@ -18,12 +18,12 @@ public class RacingHost {
      * @param inputName 사용자 입력 값.
      * @return
      */
-    private ArrayList<Car> initCar(String inputName) {
+    protected ArrayList<Car> initCar(String inputName) {
         String[] carNameList = inputName.split(",");
         carNameValidChk(carNameList);
         ArrayList<Car> garage = new ArrayList<>();
-        for (int i = 0; i < carNameList.length; i++) {
-            Car car = new Car(carNameList[i]);
+        for (String s : carNameList) {
+            Car car = new Car(s);
             garage.add(car);
         }
         return garage;
@@ -64,7 +64,7 @@ public class RacingHost {
      *
      * @return
      */
-    private int draw() {
+    protected int draw() {
         Random ran = new Random();
         return ran.nextInt(9);
     }
@@ -95,9 +95,9 @@ public class RacingHost {
      * @param carNameList 자동차 이름 리스트
      */
     private void carNameValidChk(String[] carNameList) {
-        for (int i = 0; i < carNameList.length; i++) {
-            if (carNameList[i].length() > 5) {
-                throw new IllegalArgumentException(carNameList[i] + " 자동차 이름은 5자를 초과할 수 없습니다. ");
+        for (String s : carNameList) {
+            if (s.length() > 5) {
+                throw new IllegalArgumentException(s + " 자동차 이름은 5자를 초과할 수 없습니다. ");
             }
         }
 
