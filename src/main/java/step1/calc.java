@@ -17,6 +17,7 @@ public class calc {
         System.out.println("["+inputData+"] 의 계산 결과는 [ "+result+" ] 입니다.");
     }
 
+    // 계산기 메인
     static int Calc(String inputData){
         int result           = 0;
         int cnt              = 0;
@@ -42,26 +43,21 @@ public class calc {
             }
         }
 
-        //System.out.println(arrOperand);
-        //System.out.println(arrOperator);
-
         for(String opt:arrOperator){
             if(result == 0) {
                 result = Integer.parseInt(arrOperand.get(cnt));
             }
 
             result = selectFomula(result, Integer.parseInt(arrOperand.get(cnt+1)), arrOperator.get(cnt));
-
             cnt++;
         }
 
         return result;
     }
 
+    // 연산자에 따른 공식 선택
     static int selectFomula(int operand1, int operand2, String Operator){
         int result =0;
-
-        //System.out.println(operand1+" / "+operand2+" / "+Operator);
 
         if(Operator.equals("+")){
             result = add(operand1, operand2);
@@ -76,6 +72,7 @@ public class calc {
         return result;
     }
 
+    // 입력 데이터 빈칸,널값 체트
     static boolean checkInputData(String inputData){
         boolean result= false;
 
@@ -86,6 +83,7 @@ public class calc {
         return result;
     }
 
+    // 입력 데이터 숫자 체크
     static boolean isNumber(String splitData){
         boolean result = false;
 
@@ -99,6 +97,7 @@ public class calc {
         return result;
     }
 
+    // 입력 데이터 연산자 구분
     static boolean isOperator(String splitData){
         String[] operator = {"+","-","*","/"};
         int cnt        =0;
@@ -119,6 +118,7 @@ public class calc {
         return result;
     }
 
+    // 덧셈
     static int add(int operand1, int operand2){
         int result = 0;
 
@@ -127,6 +127,7 @@ public class calc {
         return result;
     }
 
+    // 뺄셈
     static int sub(int operand1, int operand2){
         int result = 0;
 
@@ -135,6 +136,7 @@ public class calc {
         return result;
     }
 
+    // 곱셈
     static int multi(int operand1, int operand2){
         int result = 0;
 
@@ -143,6 +145,7 @@ public class calc {
         return result;
     }
 
+    // 나눗셈
     static int div(int operand1, int operand2){
         int result = 0;
 
