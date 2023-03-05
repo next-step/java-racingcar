@@ -3,6 +3,7 @@ package racingcargame;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Collections;
 
 public class Main {
     public static void main(String[] args) {
@@ -21,15 +22,22 @@ public class Main {
             System.out.println("carList["+i+"] : " + carList.get(i).name);
             i++;
         }
-        Racing race = new Racing();
-        race.carList = carList;
+        Racing racing = new Racing();
+        racing.carList = carList;
         System.out.println("시도할 횟수는 몇회인가요?");
-        race.tryCnt = sc.nextInt();
+        racing.tryCnt = sc.nextInt();
 
-        //레이스 수행
-        //race.run();
+        i = 0;
+        System.out.println("실행결과");
+        while (i < racing.tryCnt) {
+            //레이스 수행
+            racing.race(carList);
+            //레이스 결과 출력
+            racing.print(carList);
+            i++;
+        }
+        String winner = "";
 
-        //레이스 결과 출력
-
+        System.out.println("최종 우승자: " + racing.getWinner(carList));
     }
 }
