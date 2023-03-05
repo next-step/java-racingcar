@@ -110,7 +110,7 @@ public class calc {
             }
         }
 
-        // 연산자가 아니면, exception 발생
+        // 입력 데이터 중 연산자가 아니면, exception 발생
         if(cnt == 0){
             throw new IllegalArgumentException();
         }
