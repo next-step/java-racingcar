@@ -1,30 +1,37 @@
 package car.domain;
 
-import car.utils.RandomUtils;
+import car.domain.condition.RacingCondition;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingGame {
+    private final RacingCondition racingCondition;
 
-    private static final int COND_VAL = 10;
+    public RacingGame(RacingCondition racingCondition) {
+        this.racingCondition = racingCondition;
+    }
 
     public List<Car> play(List<Car> participants, int moveCount) {
-
         for (int i = 0; i < moveCount; i++) {
-            startMoveRandomly(participants);
+            startMove(participants);
         }
 
         int maxPosition = getMaxPosition(participants);
         return getWinners(participants, maxPosition);
     }
 
-    private void startMoveRandomly(List<Car> participants) {
-        participants.forEach(participant -> {
-            int randomValue = RandomUtils.generateRandomValueBy(COND_VAL);
-            participant.move();
-        });
+    private void startMove(List<Car> participants) {
+        participants.forEach(this::checkCondition);
         System.out.println();
+    }
+
+    private void checkCondition(Car car) {
+        if (racingCondition.isSatisfied()) {
+            car.move();
+        }
+        String status = car.printStatus();
+        System.out.println(status);
     }
 
     public List<Car> getWinners(List<Car> participants, int maxPosition) {
@@ -34,20 +41,9 @@ public class RacingGame {
     }
 
     public int getMaxPosition(List<Car> participants) {
-
-        int maxPosition = 0;
-
-        for (Car car : participants) {
-            maxPosition = calcMaxPosition(maxPosition, car);
-        }
-
-        return maxPosition;
-    }
-
-    private int calcMaxPosition(int maxPosition, Car car) {
-        if (car.isGreaterThan(maxPosition)) {
-            maxPosition = car.findPosition();
-        }
-        return maxPosition;
+        return participants.stream()
+                .mapToInt(Car::findPosition)
+                .max()
+                .getAsInt();
     }
 }

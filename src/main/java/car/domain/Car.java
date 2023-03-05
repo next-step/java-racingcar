@@ -11,8 +11,6 @@ public class Car {
 
     public void move() {
         this.position.increasePosition();
-        String positionInfo = printPositionInfo();
-        System.out.println(positionInfo);
     }
 
     public boolean isGreaterThan(int maxPosition) {
@@ -27,7 +25,7 @@ public class Car {
         return this.position.getPosition();
     }
 
-    private String printPositionInfo() {
+    public String printStatus() {
         return String.format("%s : %s", this.name.printName(), this.position.printStatus());
     }
 

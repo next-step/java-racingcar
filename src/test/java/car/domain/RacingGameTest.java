@@ -1,5 +1,6 @@
 package car.domain;
 
+import car.domain.condition.RandomConditionImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
@@ -22,7 +23,7 @@ class RacingGameTest {
 
     @BeforeEach
     void setUp() {
-        game = new RacingGame();
+        game = new RacingGame(new RandomConditionImpl());
         participants = new ArrayList<>();
         participants.add(new Car(new Name("씽씽카"), new Position(3)));
         participants.add(new Car(new Name("쏘카"), new Position(1)));
@@ -63,9 +64,7 @@ class RacingGameTest {
         List<Car> participants = new ArrayList<>();
 
         for (String carName : cars) {
-            participants.add(new Car(new Name(carName), new Position(3)));
-            participants.add(new Car(new Name(carName), new Position(1)));
-            participants.add(new Car(new Name(carName), new Position(5)));
+            participants.add(new Car(new Name(carName), new Position(0)));
         }
 
         //when
