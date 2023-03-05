@@ -21,3 +21,5 @@
 ## Racing
 * 모든 자동차 전진
 * 우승자 알려주기
+## RacingMain
+* main 함수 - input을 받아 처리하기
