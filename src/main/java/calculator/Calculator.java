@@ -41,55 +41,50 @@ public class Calculator {
         return result;
     }
 
-    public double calculate(double num1, String operator, double num2) {
+    private double calculate(double num1, String operator, double num2) {
 
-//        // 사칙연산자만 사용한건지 검증
-//        if(!isUsableOperators(operator)) {
-//            throw new IllegalArgumentException();
-//        }
-
-        switch (operator) {
-            case "+" :
-                return plus(num1,num2);
-            case "-" :
-                return minus(num1,num2);
-            case "*" :
-                return multiply(num1,num2);
-            case "/" :
-                return divide(num1,num2);
-            default:
-                throw new IllegalArgumentException();
+        if("+".equals(operator)) {
+            return plus(num1,num2);
         }
+
+        if("-".equals(operator)) {
+            return minus(num1,num2);
+        }
+
+        if("*".equals(operator)) {
+            return multiply(num1,num2);
+        }
+
+        if("/".equals(operator)) {
+            return divide(num1,num2);
+        }
+
+        throw new IllegalArgumentException();
 
     }
 
-    public double plus(double num1, double num2) {
+    private double plus(double num1, double num2) {
         return num1 + num2;
     }
 
-    public double minus(double num1, double num2) {
+    private double minus(double num1, double num2) {
         return num1 - num2;
     }
 
-    public double multiply(double num1, double num2) {
+    private double multiply(double num1, double num2) {
         return num1 * num2;
     }
 
-    public double divide(double num1, double num2) {
+    private double divide(double num1, double num2) {
         return num1 / num2;
     }
 
-    public boolean isNullOrBlank(String str) {
+    private boolean isNullOrBlank(String str) {
         boolean result = false;
         if(str==null || str.isBlank()) {
             result = true;
         }
         return result;
     }
-
-//    public boolean isUsableOperators(String str) {
-//        List<String> fourOperators = new ArrayList<>(Arrays.asList("+", "-", "*", "/"));
-//        return fourOperators.contains(str);
-//    }
 
 }

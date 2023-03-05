@@ -33,16 +33,16 @@ public class CarRacing {
 
         Car[] cars = new Car[carNames.length];
 
-        for(int i=0; i<carNames.length; i++) {
+        for(int i = 0; i < carNames.length; i++) {
             cars[i] = new Car(carNames[i], 0);
         }
 
         return cars;
     }
 
-    public Car[] racingStart(Car[] cars, int racingCount){
+    private Car[] racingStart(Car[] cars, int racingCount){
 
-        for(int i=0; i<racingCount; i++) {
+        for(int i = 0; i < racingCount; i++) {
             carRacing.randomGo(cars);
             System.out.println("");
         }
@@ -54,7 +54,7 @@ public class CarRacing {
         ArrayList<String> winnerNames = new ArrayList();
         int bestCore = 0;
 
-        for(int i=0; i<cars.length; i++) {
+        for(int i = 0; i < cars.length; i++) {
 
             if(bestCore == cars[i].getCount()) {
                 winnerNames.add(cars[i].getName());
@@ -71,7 +71,7 @@ public class CarRacing {
     }
 
     private void randomGo(Car[] cars) {
-        for(int i=0; i<cars.length; i++) {
+        for(int i = 0; i < cars.length; i++) {
             if(Math.random() * 10 >= 4) {
                 cars[i].addCount();
             }
@@ -79,8 +79,8 @@ public class CarRacing {
         }
     }
 
-    public boolean checkCarNameLength(String[] carNames) {
-        for(int i=0; i<carNames.length; i++) {
+    private boolean checkCarNameLength(String[] carNames) {
+        for(int i = 0; i < carNames.length; i++) {
             if(carNames[i].length()>5) {
                 return false;
             }
@@ -88,7 +88,7 @@ public class CarRacing {
         return true;
     }
 
-    public void printStatus(Car car) {
+    private void printStatus(Car car) {
         System.out.println(car.getName() + ":" + car.getCountPrint());
     }
 

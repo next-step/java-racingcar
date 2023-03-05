@@ -2,8 +2,12 @@ package calculator;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
@@ -38,19 +42,37 @@ public class CalculatorTest {
             ,"'/', 3, 2, 1.5"
     })
     void calculateTest(String calStr, double num1, double num2, double expected) {
-        switch (calStr) {
-            case "+" :
-                assertThat(cal.plus(num1,num2)).isEqualTo(expected);
-                break;
-            case "-" :
-                assertThat(cal.minus(num1,num2)).isEqualTo(expected);
-                break;
-            case "*" :
-                assertThat(cal.multiply(num1,num2)).isEqualTo(expected);
-                break;
-            case "/" :
-                assertThat(cal.divide(num1,num2)).isEqualTo(expected);
-                break;
+        Method method = null;
+        try {
+            method = cal.getClass().getDeclaredMethod("plus", double.class, double.class);
+            switch (calStr) {
+                case "+" :
+                    method = cal.getClass().getDeclaredMethod("plus", double.class, double.class);
+                    method.setAccessible(true);
+                    assertThat(method.invoke(cal, num1,num2)).isEqualTo(expected);
+                    break;
+                case "-" :
+                    method = cal.getClass().getDeclaredMethod("minus", double.class, double.class);
+                    method.setAccessible(true);
+                    assertThat(method.invoke(cal, num1,num2)).isEqualTo(expected);
+                    break;
+                case "*" :
+                    method = cal.getClass().getDeclaredMethod("multiply", double.class, double.class);
+                    method.setAccessible(true);
+                    assertThat(method.invoke(cal, num1,num2)).isEqualTo(expected);
+                    break;
+                case "/" :
+                    method = cal.getClass().getDeclaredMethod("divide", double.class, double.class);
+                    method.setAccessible(true);
+                    assertThat(method.invoke(cal, num1,num2)).isEqualTo(expected);
+                    break;
+            }
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException(e);
+        } catch (InvocationTargetException e) {
+            throw new RuntimeException(e);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -61,15 +83,18 @@ public class CalculatorTest {
 //    @EmptySource
     @NullAndEmptySource
     void isNullOrBlank(String input) {
-        assertTrue(cal.isNullOrBlank(input));
+        Method method = null;
+        try {
+            method = cal.getClass().getDeclaredMethod("isNullOrBlank", String.class);
+            method.setAccessible(true);
+            assertTrue((Boolean) method.invoke(cal, input));
+
+        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+            throw new RuntimeException(e);
+        }
+
+//        assertTrue(cal.isNullOrBlank(input));
     }
 
-//    @DisplayName("사칙연산기호검증 Test")
-//    @ParameterizedTest
-////    @ValueSource(strings = {"+","@","-","*","/","^","%"})
-//    @ValueSource(strings = {"+","-","*","/"})
-//    void isCalStr(String operator) {
-//        assertTrue(cal.isUsableOperators(operator));
-//    }
 
 }

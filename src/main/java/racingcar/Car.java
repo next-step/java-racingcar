@@ -2,8 +2,8 @@ package racingcar;
 
 public class Car {
 
-    String name;
-    int count;
+    private String name;
+    private int count;
 
     Car(String name) {
         this.name = name;
@@ -37,7 +37,7 @@ public class Car {
 
     public String getCountPrint() {
         String returnStr = "";
-        for(int i=0; i<this.count; i++) {
+        for(int i = 0; i < this.count; i++) {
             returnStr += "-";
         }
         return returnStr;
