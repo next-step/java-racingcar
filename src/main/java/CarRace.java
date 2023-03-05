@@ -20,10 +20,7 @@ public class CarRace {
 
         // 실행 결과
         System.out.println("result");
-        playGame(carList, rotation);
-
-        // 최종 우승자
-        List<String> winnerList = getWinnersLambda(carList);
+        List<String> winnerList = playGame(carList, rotation);
         System.out.println("final winner : " + winnerList.toString());
     }
 
@@ -36,11 +33,12 @@ public class CarRace {
         return carList;
     }
 
-    public static void playGame(List<Car> carList, int rotation) {
+    public static List<String> playGame(List<Car> carList, int rotation) {
         for (int i = 0; i < rotation; ++i) {
             playSingleLoop(carList);
             printRace(carList);
         }
+        return getWinnersLambda(carList);
     }
 
     public static void playSingleLoop(List<Car> carList) {

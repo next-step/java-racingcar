@@ -10,6 +10,11 @@ public class Car {
         this.distance = 0;
     }
 
+    Car(String name, int distance) {
+        this(name);
+        this.distance = distance;
+    }
+
     public String getName() {
         return this.name;
     }
