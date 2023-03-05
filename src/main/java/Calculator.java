@@ -49,7 +49,12 @@ public class Calculator {
     }
 
     public static boolean isNumeric(String token) {
-        return token.chars().allMatch(Character::isDigit);
+        try {
+            Double.parseDouble(token);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
     }
 
     public static boolean isBasicOp(String token) {
@@ -93,7 +98,7 @@ public class Calculator {
         return a / b;
     }
 
-    private static class ElementLists {
+    public static class ElementLists {
         public List<Double> digitList;
         public List<Character> opList;
 
