@@ -1,9 +1,11 @@
 package calculator;
 
 import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Calculator {
+    private static final Pattern operatorPattern = Pattern.compile("[(+|-|*|/)]");
 
     private Calculator() {
     }
@@ -48,8 +50,8 @@ public class Calculator {
     }
 
     private static List<Double> getNumbers(String removeBlankMathExpression) {
-        String[] split = removeBlankMathExpression.split("[(+|-|*|/)]");
-        return Arrays.stream(split).map(Double::parseDouble).collect(Collectors.toList());
+        String[] numbers = operatorPattern.split(removeBlankMathExpression);
+        return Arrays.stream(numbers).map(Double::parseDouble).collect(Collectors.toList());
     }
 
     private static Stack<Double> makeNumbersStack(List<Double> numbers) {
