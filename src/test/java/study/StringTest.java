@@ -36,21 +36,13 @@ public class StringTest {
     @Test
     void splite4() {
         final String actual = "(1,2)".substring(1, 4);
-        // and index는 +1을 해주어야 함
         assertThat(actual).isEqualTo("1,2");
     }
 
     @DisplayName("특정 위치의 문자를 가져올 때 위치 값을 벗어나면 excepton 발생")
     @Test
     void splite5() {
-        // final char actual = "abc".charAt(3);
-        // assertThat(actual).isEqualTo("c");
         assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
                 .isThrownBy(() -> "abc".charAt(4));
-    }
-
-    @Test
-    void splite6() {
-
     }
 }

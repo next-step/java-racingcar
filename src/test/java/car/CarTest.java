@@ -6,45 +6,46 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.Scanner;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class CarTest {
 
-    private Car car;
+    private CarPlay carPlay;
 
     @BeforeEach
-    void setUp() { car = new Car(); }
+    void setUp() {
+        this.carPlay = new CarPlay();
+    }
 
     @ParameterizedTest
     @ValueSource(strings = {"pobi,woni,jun"})
+    @DisplayName("자동차 레이싱 경기 검증")
     void carRacing(String strings) {
-        car.carRacingStart(strings, 5);
-    }
-
-    @Test
-    void carRacingUserTest() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        String carList = sc.nextLine();
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        int playNumber = sc.nextInt();
-        car.carRacingStart(carList, playNumber);
+        carPlay.carRacingStart(strings, 5);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"슈퍼자동차"})
-    void carNameChk(String strings) {
+    @DisplayName("5자리 자리수 검증")
+    void carNameCheck(String strings) {
         assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
-                .isThrownBy(() -> car.carNameChk(strings));
+                .isThrownBy(() -> carPlay.carNameCheck(strings));
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"pobi,woni,jun"})
-    @DisplayName("pobi,woni,jun 의 3번 레이싱 결과")
-    void carRacingPlayUserList(String strings) {
-        car.carRacingOrder(strings, 3);
+    @ValueSource(strings = {" ", ""})
+    @DisplayName("데이터 공백 검증")
+    void nullCheckTest(String strings)
+    {
+        carPlay.carNameCheck(strings);
     }
 
+    @ParameterizedTest
+    @ValueSource(ints = 10)
+    @DisplayName("랜덤 스코어 검증")
+    void randomNumberCheck(Integer ints) {
+        assertThat(carPlay.racingResult(ints));
+    }
 }

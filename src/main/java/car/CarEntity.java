@@ -2,8 +2,8 @@ package car;
 
 public class CarEntity {
 
-    String carName;
-    int number = 0;
+    private String carName;
+    private int number = 0;
 
     String getCarName(){
         return carName;

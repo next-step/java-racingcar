@@ -50,26 +50,12 @@ public class CalculatorTest {
     @NullAndEmptySource
     @ValueSource(strings = {"", " "})
     void nullCheckTest(final String strings) {
-        calculator.calculator(strings);
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"@"})
-    void wordCheckTest(String strings) {
-        assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
-                .isThrownBy(() -> calculator.calSub(strings, 0 , 0));
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"3+33^5/2-2"})
-    void wordCheckTest2(String strings) {
-        assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
-                .isThrownBy(() -> calculator.calSub(strings, 0 , 0));
+        calculator.calculate(strings);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"3+33*5/2-2"})
     void calculatorTest(final String strings) {
-        calculator.calculator(strings);
+        calculator.calculate(strings);
     }
 }
