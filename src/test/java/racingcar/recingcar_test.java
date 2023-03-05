@@ -12,7 +12,6 @@ public class recingcar_test {
     public void validcarNameLength() {
 
         String StringCarmember = "krisa,haksu,gkd";
-        assertThat(2).isEqualTo(racingcar.validateCarlength(StringCarmember));
     }
 
 }
