@@ -49,4 +49,8 @@ public class RacingCar implements Comparable{
         }
         return tempMaxiMumNumber;
     }
+
+    public String whoAmI(){
+        return name.toString();
+    }
 }
