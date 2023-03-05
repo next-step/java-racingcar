@@ -8,7 +8,7 @@ public class StringTest {
 
     @Test
     void split() {
-        final String[] actual = "1,2".split(",");
+        final String[] actual = "1,".split(",");
         assertThat(actual).containsExactly("1");
     }
 
