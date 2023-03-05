@@ -6,25 +6,25 @@ public class Car {
     private int distance;
     private String carName;
 
+    Car(String name) {
+        if(name.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5글자를 초과할 수 없습니다.");
+        }
+
+        this.carName = name;
+    }
+
+    Car(String name, int distance) {
+        this(name);
+        this.distance = distance;
+    }
+
     public int getDistance() {
         return distance;
     }
 
-    public void setDistance(int distance) {
-        this.distance = distance;
-    }
-
     public String getCarName() {
         return carName;
-    }
-
-    public void setCarName(String carName) {
-        if(carName.length() > 5) {
-            System.out.println("자동차 이름은 5글자를 초과할 수 없습니다.");
-            throw new IllegalArgumentException();
-        }
-
-        this.carName = carName;
     }
 
     void carRacing() {
@@ -32,16 +32,12 @@ public class Car {
         statusPrint();
     }
 
-    int carRun() {
-        int distance = (int) (Math.random() * 10);
-
-        if(distance < 4) {
-            return 0;
+    void carRun() {
+        if((int) (Math.random() * 10) < 4) {
+            return;
         }
 
-        this.distance += distance;
-
-        return distance;
+        ++this.distance;
     }
 
     String statusPrint() {

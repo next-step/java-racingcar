@@ -1,11 +1,9 @@
-package Practice;
+package practice;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class SplitText1Test {
     @Test

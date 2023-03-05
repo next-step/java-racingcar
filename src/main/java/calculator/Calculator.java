@@ -2,7 +2,7 @@ package calculator;
 
 public class Calculator {
 
-    static long result;
+    long result;
 
     void addition(long num) {
         result += num;
@@ -17,9 +17,7 @@ public class Calculator {
     }
 
     void division(long num) {
-        if(num == 0) {
-            result = 0;
-        }
+        if(num == 0) throw new IllegalArgumentException();
 
         result /= num;
     }

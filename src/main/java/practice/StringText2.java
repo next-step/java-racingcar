@@ -1,4 +1,4 @@
-package Practice;
+package practice;
 
 public class StringText2 {
     final String originText = "abc";

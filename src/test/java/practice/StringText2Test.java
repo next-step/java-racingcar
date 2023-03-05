@@ -1,4 +1,4 @@
-package Practice;
+package practice;
 
 
 import org.junit.jupiter.api.DisplayName;

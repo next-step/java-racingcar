@@ -9,31 +9,28 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CarTest {
 
-    Car car = new Car();
+    Car car;
     Car[] carArr = new Car[5];
 
     @Test
-    void setCarName() {
-        Assertions.assertThat("TOMMY");
+    @DisplayName("5자리 초과한 경우 정상적으로 오류체크 되는지 확인")
+    void 자동차이름자리수체크() {
+        Assertions.assertThat(new Car("Tommy"));
         Assertions.assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> car.setCarName("TOMMYBEAR"));
+                .isThrownBy(() -> new Car("TommyBear"));
     }
 
     @Test
     @DisplayName("무작위값이 0~9사이값이 나오는지 테스트")
-    void carRun() {
-        int distance = 0;
-
+    void 무작위랜던값확인() {
         for(int i=0; i < 100000; i++) {
-            distance = car.carRun();
-            Assertions.assertThat(distance).isBetween(0, 9);
+            Assertions.assertThat((int) (Math.random() * 10)).isBetween(0, 9);
         }
     }
 
     @Test
     void statusPrint() {
-        car.setDistance(8);
-        car.setCarName("Tommy");
+        car = new Car("Tommy", 8);
         String resultText = car.statusPrint();
         Assertions.assertThat(resultText).isEqualTo("Tommy : 8");
     }

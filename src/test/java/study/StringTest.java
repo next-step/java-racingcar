@@ -31,7 +31,6 @@ public class StringTest {
     public void split3() {
 //        final String actual = "(1,2)".replace("(", "").replace(")", "");
         final String actual = "(1,2)".substring(1,4);
-        System.out.println(actual);
         Assertions.assertThat(actual).isEqualTo("1,2");
     }
 
@@ -41,17 +40,9 @@ public class StringTest {
     public void split4() {
         String actual = "acb";
 
-//        Assertions.assertThat(actual.charAt(0)).isEqualTo('a');
-
         Assertions.assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
                 .isThrownBy(() -> Assertions.assertThat(actual.charAt(0)).isEqualTo('a'));
-
-
     }
-
-
-
-
 }
 
 

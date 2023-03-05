@@ -1,6 +1,4 @@
-package Practice;
-
-import java.util.Arrays;
+package practice;
 
 public class SplitText1 {
     final String originalText = "1,2";

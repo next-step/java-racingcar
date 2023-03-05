@@ -1,6 +1,7 @@
 package racing;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -10,7 +11,7 @@ public class CarRace {
     String carListText;     // 자동차 이름 리스트
     int trackCount;         // 주행할 트랙수
     static int maxDistance;
-    List<String> winners = new ArrayList<>();
+    List<String> winners;
     Scanner scan = new Scanner(System.in);
 
     List<String> getRacingJoinList() {
@@ -26,21 +27,20 @@ public class CarRace {
         this.trackCount = scan.nextInt();
     }
 
-    void runningRace(Car[] carArr) {
-        for(int i=0; i < carArr.length; i++) {
-            carArr[i].carRacing();
-            getMaxDistance(carArr[i]);
+    void runningRace(ArrayList<Car> carArrayList) {
+        for(int i=0; i < carArrayList.size(); i++) {
+            carArrayList.get(i).carRacing();
+            confirmWinners(carArrayList.get(i));
         }
     }
 
-    void getMaxDistance(Car car) {
+    void confirmWinners(Car car) {
         if(maxDistance < car.getDistance()) {
-            maxDistance = car.getDistance();
-            winners.clear();
-            winners.add(car.getCarName());
+            winners = new ArrayList<>();
         }
 
-        if(maxDistance == car.getDistance() && !winners.contains(car.getCarName())) {
+        if(maxDistance <= car.getDistance()) {
+            maxDistance = car.getDistance();
             winners.add(car.getCarName());
         }
     }

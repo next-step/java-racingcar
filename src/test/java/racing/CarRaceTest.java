@@ -4,32 +4,32 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class CarRaceTest {
 
-    Car car = new Car();
-    Car[] carArr = new Car[3];
+    Car car;
+    ArrayList<Car> carArrayList = new ArrayList<Car>();
     CarRace carRace = new CarRace();
 
     @Test
     @DisplayName("최대값 계산이 제대로 되고있는지 확인")
     void runningRace() {
-        carArr[0] = new Car();
-        carArr[0].setCarName("tommy");
-        carArr[1] = new Car();
-        carArr[1].setCarName("bear");
-        carArr[2] = new Car();
-        carArr[2].setCarName("schum");
+        carArrayList.add(new Car("tommy"));
+        carArrayList.add(new Car("bear"));
+        carArrayList.add(new Car("schum"));
+
         int maxDistance = 0;
 
-        carRace.runningRace(carArr);
+        carRace.runningRace(carArrayList);
 
-        for(int i=0; i < carArr.length; i++) {
-            if(maxDistance < carArr[i].getDistance()) {
-                maxDistance = carArr[i].getDistance();
+        for(int i = 0; i < carArrayList.size(); i++) {
+            if(maxDistance < carArrayList.get(i).getDistance()) {
+                maxDistance = carArrayList.get(i).getDistance();
             }
         }
 
@@ -38,39 +38,38 @@ class CarRaceTest {
     }
 
     @Test
-    void getMaxDistance() {
+    void getWinners() {
+        carRace.winners = new ArrayList<>();
         carRace.winners.add("Tommy");
         CarRace.maxDistance = 10;
 
-        car.setCarName("Bear");
-        car.setDistance(8);
 
-        carRace.getMaxDistance(car);
+        Car car1 = new Car("Tom", 8);
+
+        carRace.confirmWinners(car1);
         Assertions.assertThat(carRace.winners.get(0)).isEqualTo("Tommy");
         Assertions.assertThat(CarRace.maxDistance).isEqualTo(10);
 
 
-        car.setCarName("Popo");
-        car.setDistance(14);
+        Car car2 = new Car("Popo", 14);
 
-        carRace.getMaxDistance(car);
+        carRace.confirmWinners(car2);
+
         Assertions.assertThat(carRace.winners.get(0)).isEqualTo("Popo");
         Assertions.assertThat(CarRace.maxDistance).isEqualTo(14);
 
 
-        car.setCarName("Papa");
-        car.setDistance(14);
+        Car car3 = new Car("Papa", 14);
 
-        carRace.getMaxDistance(car);
+        carRace.confirmWinners(car3);
         Assertions.assertThat(carRace.winners.get(0)).isEqualTo("Popo");
         Assertions.assertThat(carRace.winners.get(1)).isEqualTo("Papa");
         Assertions.assertThat(CarRace.maxDistance).isEqualTo(14);
 
 
-        car.setCarName("Tommy");
-        car.setDistance(20);
+        car = new Car("Tommy", 20);
 
-        carRace.getMaxDistance(car);
+        carRace.confirmWinners(car);
         Assertions.assertThat(carRace.winners.get(0)).isEqualTo("Tommy");
         Assertions.assertThatExceptionOfType(IndexOutOfBoundsException.class)
                         .isThrownBy(() -> carRace.winners.get(1));

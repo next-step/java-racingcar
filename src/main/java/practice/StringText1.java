@@ -1,4 +1,4 @@
-package Practice;
+package practice;
 
 public class StringText1 {
     final String originText = "(1,2)";

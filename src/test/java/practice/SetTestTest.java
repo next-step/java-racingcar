@@ -1,4 +1,4 @@
-package Practice;
+package practice;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -7,8 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -31,10 +29,9 @@ class SetTestTest {
         Assertions.assertThat(setTest.numbers.size()).isEqualTo(3);
     }
 
-//    @Test
     @DisplayName("테스트 반복하기")
     @ParameterizedTest
-    @ValueSource(ints = {1,2,3})
+    @ValueSource(ints = {1, 2, 3})
     void containsCheck(int num) {
         Assertions.assertThat(setTest.numbers.contains(num)).isEqualTo(true);
         Assertions.assertThat(setTest.numbers.contains(num)).isTrue();

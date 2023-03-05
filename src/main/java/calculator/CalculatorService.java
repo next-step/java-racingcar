@@ -33,11 +33,11 @@ public class CalculatorService {
         List<String> list = Stream.of(text.split(" "))
                 .map(String::trim).collect(Collectors.toList());
 
-        for(int i=0; i < list.size(); i++) {
-            if(i==0) {
+        for(int i = 0; i < list.size(); i++) {
+            if(i == 0) {
                 calculator.result = Long.parseLong(list.get(i));
             }
-            else if(i%2==0) {
+            else if(i % 2 == 0) {
                 numberCheck(list.get(i));
                 calculate(calculator, list.get(i - 1), Long.parseLong(list.get(i)));
             }
