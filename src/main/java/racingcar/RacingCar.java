@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.List;
+
 public class RacingCar implements Comparable{
     private String name;
     private int runCount = 0;
@@ -38,4 +40,13 @@ public class RacingCar implements Comparable{
         }
     }
 
+    public int compareRacingCarListWithNum(List<RacingCar> racingCars){
+        int tempMaxiMumNumber = 0;
+        for(RacingCar racingCar2 : racingCars){
+            if(compareTo(racingCar2) == 1){
+                tempMaxiMumNumber++;
+            }
+        }
+        return tempMaxiMumNumber;
+    }
 }
