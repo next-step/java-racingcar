@@ -24,8 +24,7 @@ public class Car implements Comparable<Car> {
         this.location = location;
     }
 
-    public void move() {
-        Random random = new Random();
+    public void move(Random random) {
         if (random.nextInt(CHECK_MAX_RANDOM_NUMBER) >= MOVABLE_MIN_NUMBER) {
             location++;
         }

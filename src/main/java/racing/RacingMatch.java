@@ -2,6 +2,7 @@ package racing;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class RacingMatch {
@@ -15,7 +16,7 @@ public class RacingMatch {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int count = Integer.parseInt(scanner.next());
 
-        Race race = new Race(cars, count);
+        Race race = new Race(cars, count, new Random());
         race.startRace();
         race.printRacingWinners();
     }

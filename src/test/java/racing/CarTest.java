@@ -5,8 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.Random;
 
 class CarTest {
 
@@ -44,7 +43,7 @@ class CarTest {
         Car carD = new Car("carD", 5);
         List<Car> racingCars = List.of(carA, carB, carC, carD);
 
-        Race race = new Race(racingCars, 0);
+        Race race = new Race(racingCars, 0, new Random());
         List<Car> racingWinners = race.getRacingWinners();
 
         Assertions.assertThat(racingWinners).containsExactly(carC, carD);

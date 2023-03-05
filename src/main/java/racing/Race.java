@@ -3,22 +3,25 @@ package racing;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Race {
     private final List<Car> participationCars;
     private final int count;
+    private final Random random;
 
-    public Race(List<Car> participationCars, int count) {
+    public Race(List<Car> participationCars, int count, Random random) {
         this.participationCars = participationCars;
         this.count = count;
+        this.random = random;
     }
 
     public void startRace() {
         System.out.println("실행결과");
         for (int i = 0; i < count; i++) {
             participationCars.forEach(c -> {
-                c.move();
+                c.move(random);
                 c.print();
             });
             System.out.println();
