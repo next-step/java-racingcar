@@ -1,23 +1,25 @@
 package calculator;
 
+import java.math.BigInteger;
+
 public class Calculator {
 
     private Calculator() {
     }
 
-    static int add(int number1, int number2) {
-        return number1 + number2;
+    static BigInteger add(BigInteger number1, BigInteger number2) {
+        return number1.add(number2);
     }
 
-    static int subtract(int number1, int number2) {
-        return number1 - number2;
+    static BigInteger subtract(BigInteger number1, BigInteger number2) {
+        return number1.subtract(number2);
     }
 
-    static int multiply(int number1, int number2) {
-        return number1 * number2;
+    static BigInteger multiply(BigInteger number1, BigInteger number2) {
+        return number1.multiply(number2);
     }
 
-    static int divide(int number1, int number2) {
-        return number1 / number2;
+    static BigInteger divide(BigInteger number1, BigInteger number2) {
+        return number1.divide(number2);
     }
 }
