@@ -33,4 +33,28 @@ public class Car {
         System.out.println("");
     }
 
+    /**
+     * 자동차의 현재 위치가 인수의 값보다 앞인지 판단
+     * @param max 위치 값
+     * @return
+     */
+    boolean isAheadOf(int max) {
+        if (this.position > max) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 자동차의 현재 위치가 인수의 값과 같은지 판단
+     * @param max 위치 값
+     * @return
+     */
+    boolean isEqualOf(int max) {
+        if (this.position == max) {
+            return true;
+        }
+        return false;
+    }
+
 }
