@@ -1,15 +1,20 @@
 package racing;
 
-import java.util.Comparator;
 import java.util.Random;
 
 public class Car implements Comparable<Car> {
+
+    private static final int MAX_NAME_LENGTH = 5;
+    private static final int INITIAL_LOCATION = 0;
+    private static final int CHECK_MAX_RANDOM_NUMBER = 10;
+    private static final int MOVABLE_MIN_NUMBER = 4;
+
     public Car(String name) {
-        this(name, 0);
+        this(name, INITIAL_LOCATION);
     }
 
     public Car(String name, int location) {
-        if (name.length() > 5) {
+        if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없다.");
         }
         this.name = name;
@@ -21,13 +26,13 @@ public class Car implements Comparable<Car> {
 
     public void move() {
         Random random = new Random();
-        if (random.nextInt(10) >= 4) {
+        if (random.nextInt(CHECK_MAX_RANDOM_NUMBER) >= MOVABLE_MIN_NUMBER) {
             location++;
         }
     }
 
     public void print() {
-        String stringBuilder = name + " : " + "-".repeat(Math.max(0, location));
+        String stringBuilder = name + " : " + "-".repeat(Math.max(INITIAL_LOCATION, location));
         System.out.println(stringBuilder);
     }
 
