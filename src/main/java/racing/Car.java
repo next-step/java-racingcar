@@ -9,6 +9,9 @@ public class Car implements Comparable<Car> {
     private static final int CHECK_MAX_RANDOM_NUMBER = 10;
     private static final int MOVABLE_MIN_NUMBER = 4;
 
+    private final String name;
+    private int location;
+
     public Car(String name) {
         this(name, INITIAL_LOCATION);
     }
@@ -20,9 +23,6 @@ public class Car implements Comparable<Car> {
         this.name = name;
         this.location = location;
     }
-
-    private final String name;
-    private int location;
 
     public void move() {
         Random random = new Random();
