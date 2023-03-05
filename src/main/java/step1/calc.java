@@ -17,7 +17,7 @@ public class calc {
         System.out.println("["+inputData+"] 의 계산 결과는 [ "+result+" ] 입니다.");
     }
 
-    // 계산기 메인
+    // 문자열 계산기 메인
     static int Calc(String inputData){
         int result           = 0;
         int cnt              = 0;
