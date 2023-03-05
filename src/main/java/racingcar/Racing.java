@@ -17,6 +17,28 @@ public class Racing{
         }
     }
 
+    public void printFinalWinner(){
+        rankMap = new HashMap<>();
+        int maxiMumNumber = -1;
+        for(RacingCar racingCar1 : list){
+            int tempMaxiMumNumber = racingCar1.compareRacingCarListWithNum(list);
+            if(maxiMumNumber < tempMaxiMumNumber){
+                maxiMumNumber = tempMaxiMumNumber;
+            }
+            rankMap.put(racingCar1, tempMaxiMumNumber);
+        }
+        StringBuilder sb = new StringBuilder();
+        String line = "최종 우승자: ";
+        sb.append(line);
+        for(RacingCar racingCar1 : list){
+            if(rankMap.get(racingCar1).equals(maxiMumNumber)){
+                sb.append(racingCar1.whoAmI());
+                sb.append(", ");
+            }
+        }
+        System.out.println(sb.toString().substring(0, sb.toString().length() - 2));
+    }
+
     public void run(int tryCount){
         System.out.println("실행 결과");
         int tryCountStart = 0;
