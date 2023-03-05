@@ -1,7 +1,5 @@
 package car.domain;
 
-import car.Car;
-import car.CarName;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
@@ -26,9 +24,9 @@ class RacingGameTest {
     void setUp() {
         game = new RacingGame();
         participants = new ArrayList<>();
-        participants.add(new Car(new CarName("씽씽카"), 3));
-        participants.add(new Car(new CarName("쏘카"), 1));
-        participants.add(new Car(new CarName("그린카"), 5));
+        participants.add(new Car(new Name("씽씽카"), new Position(3)));
+        participants.add(new Car(new Name("쏘카"), new Position(1)));
+        participants.add(new Car(new Name("그린카"), new Position(5)));
     }
 
     @Test
@@ -65,7 +63,9 @@ class RacingGameTest {
         List<Car> participants = new ArrayList<>();
 
         for (String carName : cars) {
-            participants.add(new Car(carName));
+            participants.add(new Car(new Name(carName), new Position(3)));
+            participants.add(new Car(new Name(carName), new Position(1)));
+            participants.add(new Car(new Name(carName), new Position(5)));
         }
 
         //when

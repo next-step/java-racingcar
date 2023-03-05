@@ -1,6 +1,5 @@
 package car.domain;
 
-import car.Car;
 import car.utils.RandomUtils;
 
 import java.util.List;
@@ -23,7 +22,7 @@ public class RacingGame {
     private void startMoveRandomly(List<Car> participants) {
         participants.forEach(participant -> {
             int randomValue = RandomUtils.generateRandomValueBy(COND_VAL);
-            participant.move(randomValue);
+            participant.move();
         });
         System.out.println();
     }
@@ -47,7 +46,7 @@ public class RacingGame {
 
     private int calcMaxPosition(int maxPosition, Car car) {
         if (car.isGreaterThan(maxPosition)) {
-            maxPosition = car.getPosition();
+            maxPosition = car.findPosition();
         }
         return maxPosition;
     }

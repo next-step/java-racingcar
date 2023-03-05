@@ -1,6 +1,8 @@
 package car;
 
-import car.utils.RandomUtils;
+import car.domain.Car;
+import car.domain.Name;
+import car.domain.Position;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
@@ -24,9 +26,9 @@ class CarTest {
     @BeforeEach
     void setUp() {
         cars = new ArrayList<>();
-        cars.add(new Car(new CarName("씽씽카"), 3));
-        cars.add(new Car(new CarName("쏘카"), 1));
-        cars.add(new Car(new CarName("그린카"), 5));
+        cars.add(new Car(new Name("씽씽카"), new Position(3)));
+        cars.add(new Car(new Name("쏘카"), new Position(1)));
+        cars.add(new Car(new Name("그린카"), new Position(5)));
     }
 
     @ParameterizedTest
@@ -49,23 +51,55 @@ class CarTest {
 
     @ParameterizedTest
     @CsvSource(value = {"씽씽카,현대자동차"}, delimiter = ',')
-    void 이름을_기진_자동차_객체를_생성한다(String successCase, String failCase) {
-        Car car = new Car(successCase);
-        assertThatThrownBy(() -> new Car(failCase))
+    void 자동차_객체의_이름은_5자_미만이여야_한다(String successCase, String failCase) {
+        Name name = new Name(successCase);
+        assertThatThrownBy(() -> new Name(failCase))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차 이름은 5자 미만만 가능 합니다. name = " + failCase);
     }
 
     @Test
-    void 전진하는_자동차의_이름을_같이_출력한다() {
-        cars.forEach(car -> {
-            int randomValue = RandomUtils.generateRandomValueBy(condVal);
-            car.move(randomValue);
-        });
+    void 자동차의_위치상태를_출력한다() {
+        Position position = new Position(5);
+        String actual = position.printStatus();
+        assertThat(actual).isEqualTo("-----");
     }
 
     @Test
-    void 자동차의_상태를_출력한다() {
-        cars.forEach(Car::printPositionStatus);
+    void 자동차의_위치값을_조회한다() {
+        //given
+        Car car = new Car(new Name("쏘카"), new Position(5));
+
+        //when
+        int actual = car.findPosition();
+
+        //then
+        assertThat(actual).isEqualTo(5);
+    }
+
+    @Test
+    void 자동차의_위치값이_최대_위치값_보다_커야한다() {
+        //given
+        Car car = new Car(new Name("쏘카"), new Position(5));
+        int maxPosition = 4;
+
+        //when
+        boolean actual = car.isGreaterThan(maxPosition);
+
+        //then
+        assertThat(actual).isTrue();
+    }
+
+    @Test
+    void 자동차의_위치값이_최대_위치값과_동일해야한다() {
+        //given
+        Car car = new Car(new Name("쏘카"), new Position(3));
+        int maxPosition = 3;
+
+        //when
+        boolean actual = car.isEqualPosition(maxPosition);
+
+        //then
+        assertThat(actual).isTrue();
     }
 }
