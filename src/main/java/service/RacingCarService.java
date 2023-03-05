@@ -19,39 +19,39 @@ public class RacingCarService {
         RacingCarView.printResult(getWinnerNames(cars));
     }
 
-    private String getWinnerNames(List<Car> cars) {
+    public String getWinnerNames(List<Car> cars) {
         int maxDistance = getMaxDistance(cars);
         List<String> winners = getWinners(cars, maxDistance);
 
         return String.join(", ", winners);
     }
 
-    private int getMaxDistance(List<Car> cars) {
+    public int getMaxDistance(List<Car> cars) {
         return cars.stream()
                 .map(Car::getDistance)
                 .max(Integer::compareTo)
                 .get();
     }
 
-    private List<String> getWinners(List<Car> cars, int maxDistance) {
+    public List<String> getWinners(List<Car> cars, int maxDistance) {
         return cars.stream()
                 .filter(car -> car.getDistance() == maxDistance)
                 .map(Car::getName)
                 .collect(Collectors.toList());
     }
 
-    private void printCars(List<Car> cars) {
+    public void printCars(List<Car> cars) {
         cars.stream()
-                .forEach(car -> RacingCarView.printCar(car.getName(), car.getDistance()));
+                .forEach(car -> RacingCarView.printNameAndDistance(car.getName(), car.getDistance()));
     }
 
-    private List<Car> makeCars(List<String> carNames) {
+    public List<Car> makeCars(List<String> carNames) {
         return carNames.stream()
                 .map(Car::new)
                 .collect(Collectors.toList());
     }
 
-    private void moveCars(List<Car> cars, int targetDistance) {
+    public void moveCars(List<Car> cars, int targetDistance) {
         for (int i = 0; i < targetDistance; i++) {
             moveCars(cars);
             printCars(cars);
@@ -59,7 +59,7 @@ public class RacingCarService {
         }
     }
 
-    private void moveCars(List<Car> cars) {
+    public void moveCars(List<Car> cars) {
         cars.stream()
                 .forEach(Car::move);
     }

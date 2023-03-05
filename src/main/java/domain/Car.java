@@ -17,22 +17,22 @@ public class Car {
     }
 
     public void move() {
-        if (isMove())
+        if (isMove(getRandomNumber()))
             moveForward();
     }
 
-    private void moveForward() {
+    public void moveForward() {
         distance++;
     }
 
-    private boolean isMove() {
-        if (getRandomNumber() >= 4)
+    public boolean isMove(int randomNumber) {
+        if (randomNumber >= 4)
             return true;
 
         return false;
     }
 
-    private int getRandomNumber() {
+    public int getRandomNumber() {
         return (int) (Math.random() * 10);
     }
 

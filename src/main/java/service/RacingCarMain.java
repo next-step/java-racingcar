@@ -1,14 +1,7 @@
 package service;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
-import java.util.stream.Collectors;
-
-import domain.Car;
 import view.RacingCarView;
-
-import static java.util.Arrays.asList;
 
 public class RacingCarMain {
 

@@ -11,10 +11,10 @@ public class RacingCarView {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         Scanner scan = new Scanner(System.in);
 
-        return getCarNames(scan.nextLine());
+        return getCarObjects(scan.nextLine());
     }
 
-    public static List<String> getCarNames(String input) {
+    public static List<String> getCarObjects(String input) {
         return Arrays.asList(input.split(",")).stream()
                 .map(String::trim)
                 .collect(Collectors.toList());
@@ -35,7 +35,7 @@ public class RacingCarView {
         System.out.println("최종 우승자: " + carNames);
     }
 
-    public static void printCar(String name, int distance) {
+    public static void printNameAndDistance(String name, int distance) {
         System.out.println(name + " : " + "-".repeat(distance));
     }
 
