@@ -22,13 +22,11 @@ public class RacingCarMain {
     // 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한 명 이상일 수 있다.
 
     public static void main(String[] args) {
-
         List<String> carNames = RacingCarView.getCarNames();
         int targetDistance = RacingCarView.getTargetDistance();
 
         RacingCarService racingCarService = new RacingCarService();
         racingCarService.startRacing(carNames, targetDistance);
-
     }
 
 }
