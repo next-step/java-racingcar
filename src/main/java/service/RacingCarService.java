@@ -21,7 +21,7 @@ public class RacingCarService {
 
     public String getWinnerNames(List<Car> cars) {
         int maxDistance = getMaxDistance(cars);
-        List<String> winners = getWinners(cars, maxDistance);
+        List<String> winners = getWinnerCars(cars, maxDistance);
 
         return String.join(", ", winners);
     }
@@ -33,7 +33,7 @@ public class RacingCarService {
                 .get();
     }
 
-    public List<String> getWinners(List<Car> cars, int maxDistance) {
+    public List<String> getWinnerCars(List<Car> cars, int maxDistance) {
         return cars.stream()
                 .filter(car -> car.getDistance() == maxDistance)
                 .map(Car::getName)
