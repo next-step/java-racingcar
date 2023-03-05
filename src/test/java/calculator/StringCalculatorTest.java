@@ -8,18 +8,16 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class StringCalculatorTest {
-    public Calculator calculator;
 
     @BeforeEach
     void before() {
-        calculator = new Calculator();
     }
 
     @DisplayName("계산식 정상 수행 테스트")
     @ParameterizedTest(name = "{displayName} [{index}]: ''{argumentsWithNames}''")
     @CsvSource( {"'2 + 3 * 4 / 2', 10.0", "'4 + 6 * 20', 200"})
     void calculateMathExpressionTest(String mathExpression, double expectedNumber) {
-        double result = calculator.calculateMathExpression(mathExpression);
+        double result = Calculator.calculateMathExpression(mathExpression);
         Assertions.assertThat(result).isEqualTo(expectedNumber);
     }
 
@@ -28,7 +26,7 @@ public class StringCalculatorTest {
     @ValueSource(strings = {" ", ""})
     void calculateBlankExcept(String mathExpression) {
         Assertions.assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> calculator.calculateMathExpression(mathExpression))
+                .isThrownBy(() -> Calculator.calculateMathExpression(mathExpression))
                 .withMessageMatching("empty String");
     }
 
@@ -39,6 +37,6 @@ public class StringCalculatorTest {
                     "'/',6,2,3",
                     "'*',5,2,10"})
     void operatorTest(String operator, double numberA, double numberB, double expectedResult) {
-        Assertions.assertThat(calculator.calculate(operator, numberA, numberB)).isEqualTo(expectedResult);
+        Assertions.assertThat(Calculator.calculate(operator, numberA, numberB)).isEqualTo(expectedResult);
     }
 }
