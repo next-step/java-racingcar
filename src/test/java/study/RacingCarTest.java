@@ -11,9 +11,7 @@ import domain.Car;
 import service.RacingCarService;
 import view.RacingCarView;
 
-import java.io.*;
 import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -91,4 +89,49 @@ public class RacingCarTest {
         assertThat(car.isMove(input)).isTrue();
     }
 
+    @DisplayName("경주 우승 테스트-단독우승")
+    @ParameterizedTest
+    @ValueSource(strings = { "pobi,woni,jun" })
+    void getWinnerNamesTest1(String input) {
+        List<String> carNames = RacingCarView.getCarObjects(input);
+        List<Car> cars = racingCarService.makeCars(carNames);
+        cars.get(0).moveForward();
+        cars.get(0).moveForward();
+        cars.get(0).moveForward();
+        cars.get(1).moveForward();
+        cars.get(1).moveForward();
+        cars.get(2).moveForward();
+        assertThat(racingCarService.getWinnerNames(cars)).isEqualTo("pobi");
+    }
+
+    @DisplayName("경주 우승 테스트-공동우승")
+    @ParameterizedTest
+    @ValueSource(strings = { "pobi,woni,jun" })
+    void getWinnerNamesTest2(String input) {
+        List<String> carNames = RacingCarView.getCarObjects(input);
+        List<Car> cars = racingCarService.makeCars(carNames);
+        cars.get(0).moveForward();
+        cars.get(0).moveForward();
+        cars.get(0).moveForward();
+        cars.get(1).moveForward();
+        cars.get(1).moveForward();
+        cars.get(1).moveForward();
+        cars.get(2).moveForward();
+        assertThat(racingCarService.getWinnerNames(cars)).isEqualTo("pobi, woni");
+    }
+
+    @DisplayName("최대거리 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = { "pobi,woni,jun" })
+    void getMaxDistanceTest(String input) {
+        List<String> carNames = RacingCarView.getCarObjects(input);
+        List<Car> cars = racingCarService.makeCars(carNames);
+        cars.get(0).moveForward();
+        cars.get(0).moveForward();
+        cars.get(0).moveForward();
+        cars.get(1).moveForward();
+        cars.get(1).moveForward();
+        cars.get(2).moveForward();
+        assertThat(racingCarService.getMaxDistance(cars)).isEqualTo(3);
+    }
 }
