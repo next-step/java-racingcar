@@ -2,9 +2,9 @@ package racingcar;
 import java.util.Scanner;
 
 public class racingcar {
-    public static void main(String [] input) {
-
+    public static void main(String input) {
         String [] ArrayCarMembers;
+        int racingCount ;
         Scanner scan = new Scanner(System.in);
 
 
@@ -17,7 +17,7 @@ public class racingcar {
         }
 
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int racingCount = scan.nextInt();
+        racingCount = scan.nextInt();
 
         System.out.println("실행 결과");
 
@@ -36,16 +36,37 @@ public class racingcar {
 
     static boolean validateCarlength(String [] ArrayCarMember) {
 
-        for(int i = 0; i < ArrayCarMember.length -1; i += 1) {
+        for(int i = 0; i < ArrayCarMember.length; i += 1) {
             if(ArrayCarMember[i].length() > 5)
                 return false;
         }
         return true;
     }
 
+
+    static int RaceStart(String [] ArrayCarMembers, int racingCount) {
+        for(int k = 0; k <ArrayCarMembers.length; k +=1) {
+            int Array
+        }
+
+        for(int i = 0; i < racingCount; i +=1) {
+            for(int j = 0; j <ArrayCarMembers.length; j +=1) {
+                if( randomValue())
+                    System.out.println(ArrayCarMembers[i]+" : " );
+
+            }
+        }
+
+    }
+
+    static boolean randomValue () {
+        int randomVal = (int) (Math.random() * 10);
+        if (randomVal > 3) {
+
+            return true;
+        }
+        return false;
+    }
+
+
 }
-
-
-    static
-
-
