@@ -13,4 +13,16 @@ public class RacingCar {
             this.runCount++;
         }
     }
+
+    public void print(){
+        StringBuilder sb = new StringBuilder();
+        sb.append(name.toString());
+        sb.append(" : ");
+        int startCount = 0;
+        while( startCount < runCount){
+            sb.append('-');
+            startCount++;
+        }
+        System.out.println(sb.toString());
+    }
 }

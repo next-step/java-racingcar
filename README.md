@@ -11,6 +11,7 @@
 # 구현 목록
 ## RacingCar
 * 전진
+* 전진상태 보여주기
 * 멈춤
 * 비교
 ## RacingRandom
