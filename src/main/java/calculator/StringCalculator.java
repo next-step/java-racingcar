@@ -1,62 +1,34 @@
 package calculator;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import racingcar.service.RacingCarGame;
+
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Stream;
 
 public class StringCalculator {
 
-    private Queue<Integer> numbers;
-
-    private Queue<String> operators;
-
-    private int  sumNumber;
-
     public StringCalculator() {
-        numbers =  new LinkedList<>();
-        operators =  new LinkedList<>();
-        sumNumber = 0;
     }
-
+    private StringObject separation(String text){
+        StringObject textObj = new StringObject(text);
+        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(textObj.getText());
+        if(m.find()){
+            textObj = new StringObject(m.group(2),m.group(1));
+        }
+        return textObj;
+    }
     public  int add(String text){
-        if(text.isEmpty()){
-            return 0;
+        StringObject textObj = separation(text);
+        String[] tokens= textObj.getText().split(textObj.getSeparator());
+
+        Stream<Integer> resultStream = Arrays.stream(tokens).map(Integer::parseInt);
+
+        if(resultStream.anyMatch(integer -> integer < 0)) {  // 하나라도 -1 이하면
+            throw new RuntimeException();
         }
-
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            String[] tokens= m.group(2).split(customDelimiter);
-        }
-
-
-        int number = Integer.parseInt(text);
-
-        return 0;
+        return Arrays.stream(tokens).map(Integer::parseInt).reduce(0,Integer::sum);
     }
-
-    public int add(int a, int b) {
-        return a + b;
-    }
-
-    public int subtract(int a, int b) {
-        return a -b;
-    }
-
-    public int multiply(int a, int b) {
-        return a * b;
-    }
-
-    public int divide(int a, int b) {
-        return a /  b;
-    }
-
-
-
-
-
 
 }
