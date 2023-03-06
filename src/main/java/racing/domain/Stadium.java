@@ -52,14 +52,10 @@ public class Stadium {
         }
     }
 
-    private int moveCars(){
-        int carPosistion = 0;
-
+    public void moveCars(){
         for(Car car : cars){
-            carPosistion = Math.max(car.move(random.nextInt()), carPosistion);
+            car.move(random.nextInt());
         }
-
-        return carPosistion;
     }
 
     public int racing(){

@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import racing.domain.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -40,12 +41,21 @@ public class CarTest {
 
         int actual = car.getPosition();
 
-        assertEquals(actual, 0);
+        int defaultPosition = 0;
+
+        assertEquals(actual, defaultPosition);
     }
 
     @Test
     @DisplayName("자동차의 현재 위치를 알 수 있다.")
     void getCarPosition(){
+
+        int testPosition = 4;
+        Car car = new Car("lucas", testPosition);
+
+        int actual = car.getPosition();
+
+        assertEquals(actual, testPosition);
 
     }
 
@@ -55,32 +65,33 @@ public class CarTest {
     @ValueSource(ints = {4,5,6,7,8,9})
     void moveCar(int value){
 
+        Car car = new Car("lucas");
+
+        assertThat(car.move(value));
     }
 
     @DisplayName("4 미만이면 자동차는 정지한다.")
     @ParameterizedTest
-    @ValueSource(ints = {4,5,6,7,8,9})
+    @ValueSource(ints = {1,2,3})
     void stopCar(int value){
+        Car car = new Car("lucas");
 
-
-
+        assertThat(!car.move(value));
     }
 
     @DisplayName("moveOption에 따라 움직이는지 테스트")
     @ParameterizedTest
     @CsvSource({
-            "1, 0",
-            "2, 0",
-            "3, 0",
-            "4, 1",
-            "5, 1"
+            "1, false",
+            "2, false",
+            "3, false",
+            "4, true",
+            "5, true"
     })
-    void moveTest(final int moveOption, int expect) {
+    void moveTest(final int moveOption, boolean expect) {
         Car car = new Car("lucas");
 
-        int actaul = car.move(moveOption);
-
-        assertEquals(actaul, expect);
+        assertEquals(car.move(moveOption), expect);
     }
 
     @Test

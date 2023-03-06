@@ -1,4 +1,4 @@
-package racing;
+package racing.domain;
 
 public class Car {
 
@@ -26,12 +26,15 @@ public class Car {
         }
     }
 
-    public int move(int moveValue){
+    public boolean move(int moveValue){
+        boolean isMove = false;
+
         if(moveOption <= moveValue){
             position++;
+            isMove = true;
         }
 
-        return position;
+        return isMove;
     }
 
     public String getPositionFormat(){
