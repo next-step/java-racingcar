@@ -20,10 +20,22 @@ public class CarTest {
 
     @DisplayName("자동차 이름의 길이가 5글자를 넘으면 예외가 발생한다.")
     @Test
-    public void name() {
+    void name() {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> new Car ("어쩌구저쩌구저쩌구"));
     }
 
-    
+    @DisplayName("자동차의 초기위치는 0이다.")
+    @Test
+    void default_position() {
+        final Car car = new Car("irene");
+        assertThat(car.getPosition()).isZero();
+    }
+
+    @DisplayName("자동차의 현재 위치를 알수 있다.")
+    @Test
+    void current_position() {
+        final Car car = new Car("irene", 10);
+        assertThat(car.getPosition()).isEqualTo(10);
+    }
 }
