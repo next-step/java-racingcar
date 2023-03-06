@@ -3,13 +3,15 @@ package racingcar;
 import java.util.Random;
 
 public class Car {
-    private String name;
+    private static final int PASS_NUMBER = 4;
+    private static final int MAX_NAME_LENGTH = 5;
+    private final String name;
     private int location;
 
-    public Car(String name, int location) {
+    public Car(final String name, int location) {
 
         // 자동차 이름은 5자를 초과할 수 없다.
-        if(name.length() > 5) {
+        if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException();
         }
 
@@ -29,7 +31,7 @@ public class Car {
         Random random = new Random();
         int num = random.nextInt(10);
 
-        if (num >= 4) {
+        if (num >= PASS_NUMBER) {
             this.location++;
         }
     }
