@@ -38,4 +38,22 @@ public class CarTest {
         final Car car = new Car("irene", 10);
         assertThat(car.getPosition()).isEqualTo(10);
     }
+
+    @DisplayName("자동차가 4 이상일 때 이동(전진)한다.")
+    @ValueSource(ints = {4, 5, 6, 7})
+    @ParameterizedTest
+    void move(final int condition) {
+        final Car car = new Car("irene");
+        car.move(condition);
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    @DisplayName("자동차가 4 미만일 때 정지한다.")
+    @ValueSource(ints = {0, 1, 2, 3})
+    @ParameterizedTest
+    void stop(final int condition) {
+        final Car car = new Car("irene");
+        car.move(condition);
+        assertThat(car.getPosition()).isEqualTo(0);
+    }
 }

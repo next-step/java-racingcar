@@ -25,4 +25,10 @@ class Car {
     public int getPosition() {
         return this.position;
     }
+
+    public void move(final int condition) {
+        if (condition >= 4) {
+            position++;
+        }
+    }
 }
