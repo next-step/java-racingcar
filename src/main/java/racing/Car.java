@@ -3,27 +3,34 @@ package racing;
 public class Car {
 
     public final String name;
+
     public final int moveOption;
-    public int position;
+
+    private int position;
 
     public Car(String name){
+        this(name, 0);
+    }
+
+    public Car(String name, int position){
         vaildName(name);
 
+        this.position = position;
         this.name = name;
         this.moveOption = 4;
-        this.position = 0;
     }
 
-    void vaildName(String name){
+    private void vaildName(String name){
         if(name.length() > 5){
-            throw new IllegalArgumentException("이름이 5자를 초과했음");
+            throw new IllegalArgumentException("이름이 5자를 초과했습니다.");
         }
     }
 
-    public int move(int random){
-        if(moveOption <= random){
+    public int move(int moveValue){
+        if(moveOption <= moveValue){
             position++;
         }
+
         return position;
     }
 
@@ -31,13 +38,22 @@ public class Car {
         return name + " : " + translatePosition(this.position);
     }
 
-    String translatePosition(int position){
+    public String translatePosition(int position){
 
         StringBuilder sb = new StringBuilder();
+
         for(int i = 0; i < position; i++){
             sb.append("-");
         }
+
         return sb.toString();
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
+    }
 }

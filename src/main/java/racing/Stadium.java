@@ -1,7 +1,9 @@
 package racing;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Stadium {
     public final Car[] cars;
@@ -28,7 +30,7 @@ public class Stadium {
         System.out.println("실행 결과");
         int winnerPosition = stadium.racing();
 
-        System.out.println("최종 우승자: " + stadium.getWinner(winnerPosition));
+        System.out.println("최종 우승자: "+stadium.getWinner(winnerPosition));
     }
 
     public Car[] initCars(String names){
@@ -74,18 +76,9 @@ public class Stadium {
 
     private String getWinner(int maxPosition) {
 
-        StringBuilder sb = new StringBuilder();
-
-        for(Car car : cars){
-            if(maxPosition == car.position){
-                sb.append(car.name);
-                sb.append(" ,");
-            }
-        }
-
-        sb.delete(sb.lastIndexOf(" ,"), sb.length());
-
-        return sb.toString();
+        return Arrays.stream(cars)
+                .map(String::valueOf)
+                .collect(Collectors.joining(", "));
     }
 
 }
