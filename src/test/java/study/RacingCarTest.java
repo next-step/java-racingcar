@@ -49,7 +49,7 @@ public class RacingCarTest {
     @ValueSource(strings = { "pobi,woni, jun" })
     void getCarObjectsTest(String input) {
         List<String> carNames = RacingCarView.getCarObjects(input);
-        List<Car> cars = racingCarService.makeCars(carNames);
+        List<Car> cars = racingCarService.makeCarObjects(carNames);
         assertThat(cars.size()).isEqualTo(3);
     }
 
@@ -94,7 +94,7 @@ public class RacingCarTest {
     @ValueSource(strings = { "pobi,woni,jun" })
     void getWinnerNamesTest1(String input) {
         List<String> carNames = RacingCarView.getCarObjects(input);
-        List<Car> cars = racingCarService.makeCars(carNames);
+        List<Car> cars = racingCarService.makeCarObjects(carNames);
         cars.get(0).moveForward();
         cars.get(0).moveForward();
         cars.get(0).moveForward();
@@ -109,7 +109,7 @@ public class RacingCarTest {
     @ValueSource(strings = { "pobi,woni,jun" })
     void getWinnerNamesTest2(String input) {
         List<String> carNames = RacingCarView.getCarObjects(input);
-        List<Car> cars = racingCarService.makeCars(carNames);
+        List<Car> cars = racingCarService.makeCarObjects(carNames);
         cars.get(0).moveForward();
         cars.get(0).moveForward();
         cars.get(0).moveForward();
@@ -125,7 +125,7 @@ public class RacingCarTest {
     @ValueSource(strings = { "pobi,woni,jun" })
     void getMaxDistanceTest(String input) {
         List<String> carNames = RacingCarView.getCarObjects(input);
-        List<Car> cars = racingCarService.makeCars(carNames);
+        List<Car> cars = racingCarService.makeCarObjects(carNames);
         cars.get(0).moveForward();
         cars.get(0).moveForward();
         cars.get(0).moveForward();
