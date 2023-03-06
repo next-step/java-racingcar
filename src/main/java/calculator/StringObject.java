@@ -6,7 +6,7 @@ public class StringObject {
     private String text;
     private String separator;
 
-    private static String DEFAULT_SEPARATOR = ",|:";
+    private static final String DEFAULT_SEPARATOR = ",|:";
 
     public StringObject(String text, String separator){
         if(text.isBlank()){
