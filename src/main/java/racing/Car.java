@@ -9,11 +9,7 @@ public class Car {
     private int position;
 
     public Car(String name){
-        vaildName(name);
-
-        this.name = name;
-        this.moveOption = 4;
-        this.position = 0;
+        this(name, 0);
     }
 
     public Car(String name, int position){
@@ -24,7 +20,7 @@ public class Car {
         this.moveOption = 4;
     }
 
-    void vaildName(String name){
+    private void vaildName(String name){
         if(name.length() > 5){
             throw new IllegalArgumentException("이름이 5자를 초과했음");
         }
@@ -42,7 +38,7 @@ public class Car {
         return name + " : " + translatePosition(this.position);
     }
 
-    String translatePosition(int position){
+    public String translatePosition(int position){
 
         StringBuilder sb = new StringBuilder();
 
@@ -55,10 +51,6 @@ public class Car {
 
     public String getName() {
         return name;
-    }
-
-    public int getMoveOption() {
-        return moveOption;
     }
 
     public int getPosition() {
