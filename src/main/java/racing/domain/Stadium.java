@@ -1,80 +1,59 @@
-package racing;
+package racing.domain;
 
-import java.util.Arrays;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Stadium {
-    public final Car[] cars;
+    public final List<Car> cars;
     public final int round;
-    private Random random;
+    private final StadiumMoveOption stadiumMoveOption;
 
-    public Stadium(String names, int round){
+    // 이름리스트를 초기값으로 받는 버전
+    public Stadium(String names, int round, StadiumMoveOption stadiumMoveOption){
         this.cars = initCars(names);
         this.round = round;
-        this.random = new Random();
+        this.stadiumMoveOption = stadiumMoveOption;
     }
 
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-
-        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분");
-        String names = in.nextLine();
-
-        System.out.println("시도할 회수는 몇 회인가요?");
-        int round = Integer.parseInt(in.nextLine());
-
-        Stadium stadium = new Stadium(names, round);
-
-        System.out.println("실행 결과");
-        int winnerPosition = stadium.racing();
-
-        System.out.println("최종 우승자: "+stadium.getWinner(winnerPosition));
+    // 차 리스트를 초기로 받는 버전
+    public Stadium(List<Car> cars, int round, StadiumMoveOption stadiumMoveOption){
+        this.cars = cars;
+        this.round = round;
+        this.stadiumMoveOption = stadiumMoveOption;
     }
 
-    public Car[] initCars(String names){
+    public List<Car> initCars(String inputCarNames){
+        String[] names = inputCarNames.split(",");
 
-        String[] nameArray = names.split(",");
+        List<Car> cars = new ArrayList<>();
 
-        Car[] cars = new Car[nameArray.length];
-
-        for(int i = 0; i < nameArray.length; i++){
-            cars[i] = new Car(nameArray[i]);
+        for (int i = 0; i < names.length; i++) {
+            cars.add(new Car(names[i]));
         }
 
         return cars;
     }
 
-    void printCarPosition(){
+    public List<Car> racingCars(){
         for(Car car : cars){
-            System.out.println(car.getPositionFormat());
-        }
-    }
-
-    public void moveCars(){
-        for(Car car : cars){
-            car.move(random.nextInt());
-        }
-    }
-
-    public int racing(){
-        int maxPosition = 0;
-
-        for(int i = 0; i < round; i++){
-            maxPosition = Math.max(moveCars(), maxPosition);
-            printCarPosition();
-            System.out.println();
+            car.move(stadiumMoveOption.getValue());
         }
 
-        return maxPosition;
+        return cars;
     }
 
-    private String getWinner(int maxPosition) {
+    public List<Car> getWinner() {
+        final int max = getMaxCarPosition();
 
-        return Arrays.stream(cars)
-                .map(String::valueOf)
-                .collect(Collectors.joining(", "));
+        return cars.stream()
+                .filter(car -> car.getPosition() == max)
+                .collect(Collectors.toList());
     }
 
+    public int getMaxCarPosition() {
+        return cars.stream()
+                .mapToInt(x -> x.getPosition())
+                .max()
+                .orElseThrow(NoSuchElementException::new);
+    }
 }
