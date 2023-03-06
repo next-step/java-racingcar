@@ -38,8 +38,8 @@ public class Car {
      * @param max 위치 값
      * @return
      */
-    boolean isAheadOf(int max) {
-        if (this.position > max) {
+    boolean isAheadOf(int position) {
+        if (this.position > position) {
             return true;
         }
         return false;
@@ -50,8 +50,8 @@ public class Car {
      * @param max 위치 값
      * @return
      */
-    boolean isEqualOf(int max) {
-        if (this.position == max) {
+    boolean isEqualOf(int position) {
+        if (this.position == position) {
             return true;
         }
         return false;

@@ -6,8 +6,8 @@ import java.util.Scanner;
 
 public class RacingHost {
 
-    String inputName; // 자동차 이름 입력 값
-    int inputTryNumber; // 경주 시도 횟수 값
+    private String inputName; // 자동차 이름 입력 값
+    public int inputTryNumber; // 경주 시도 횟수 값
     ArrayList<Car> garage; // 차고
 
     int FORWARD_CONDITION = 4; // 자동차 전진 조건
@@ -20,7 +20,7 @@ public class RacingHost {
      */
     protected ArrayList<Car> initCar(String inputName) {
         String[] carNameList = inputName.split(",");
-        carNameValidChk(carNameList);
+        carNameExceptionValidateCheck(carNameList);
         ArrayList<Car> garage = new ArrayList<>();
         for (String s : carNameList) {
             Car car = new Car(s);
@@ -33,7 +33,7 @@ public class RacingHost {
      * 사용자의 입력 값을 받아 저장하는 함수
      *
      */
-    void inputString() {
+    void inputCarNameAndTryNumber() {
         Scanner sc = new Scanner(System.in);
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         inputName = sc.nextLine();
@@ -94,7 +94,7 @@ public class RacingHost {
      *
      * @param carNameList 자동차 이름 리스트
      */
-    private void carNameValidChk(String[] carNameList) {
+    private void carNameExceptionValidateCheck(String[] carNameList) {
         for (String s : carNameList) {
             if (s.length() > 5) {
                 throw new IllegalArgumentException(s + " 자동차 이름은 5자를 초과할 수 없습니다. ");

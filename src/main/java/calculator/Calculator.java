@@ -6,20 +6,9 @@ import java.util.Queue;
 
 public class Calculator {
 
-    static int cal1; // 피연산자1
-    static int cal2; // 피연산자2
-    static String calMethod; // 사칙연산 종류
-
-    private static String methodExp = "/\\*|\\+|\\-|\\//g"; // 사칙연산 정규식 패턴
-    private static String numberExp = "[0-9]+"; // 숫자 정규식 패턴
+    private static String EXP_NUMBER = "[0-9]+"; // 숫자 정규식 패턴
 
     private static Queue<String> calStack = new LinkedList<String>(); // 계산 큐 구현
-
-    static void init() {
-        cal1 = Integer.MIN_VALUE;
-        cal2 = Integer.MIN_VALUE;
-        calMethod = "";
-    }
 
     /**
      * 실제 계산 프로세스
@@ -29,24 +18,27 @@ public class Calculator {
      * @throws Exception
      */
     int calculate(String input) throws Exception {
-        // 초기화
-        init();
+        int cal1 = 0;
+        int cal2 = 0;
+        String calMethod = "";
         // 최초 입력값 체크
         inputValidateChk(input);
         // 큐에 데이터 넣기
         calStack.addAll(List.of(input.split(" ")));
+        // 계산 초기값 세팅
+        if (numberCheck(calStack.peek())) {
+            cal1 = Integer.parseInt(calStack.poll());
+        }
         // 큐의 데이터가 없을 때 까지 반복
         while (!calStack.isEmpty()) {
             // 스택 꺼낸 값 체크
-            judge(calStack.poll());
-            // 계산 가능 조건이 되는 경우, 계산하여 다시 저장
-            if (calMethod != null && cal2 != Integer.MIN_VALUE) {
-                // 실제 계산
-                cal1 = doCal(cal1, cal2);
-                // 계산 후, 사용 값 초기화. 단, 연산자 1은 계산 결과를 담고 있으므로 제외.
-                cal2 = Integer.MIN_VALUE;
-                calMethod = null;
+            if (methodCheck(calStack.peek())) {
+                calMethod = calStack.poll();
             }
+            if (numberCheck(calStack.peek())) {
+                cal2 = Integer.parseInt(calStack.poll());
+            }
+            cal1 = doCal(cal1, cal2, calMethod);
         }
         // 끝난 후, 결과값 리턴.
         return cal1;
@@ -58,29 +50,41 @@ public class Calculator {
      * @param input 입력값
      */
     static void inputValidateChk(String input) {
-        if (input.equals("") || input.equals(" ") || input == null || input.isEmpty()
-            || input.isBlank()) {
+        if (input.isBlank() || input.equals(null)) {
             throw new IllegalArgumentException("입력 값 공백 또는 빈 문자 에러");
         }
     }
 
     /**
-     * 스택에서 꺼낸 값을 숫자/연산자 판단
+     * 큐에서 꺼내온 값이 사칙연산이 맞는지 체크.
      *
-     * @param pollValue 스택에서 꺼낸 값
-     * @throws Exception
+     * @param pollValue 꺼내온 값
+     * @return
      */
-    static void judge(String pollValue) throws Exception {
+    static boolean methodCheck(String pollValue) {
         System.out.println("pollValue : " + pollValue);
-        // 숫자 체크
-        if (pollValue.matches(numberExp)) {
-            System.out.println("넘버");
-            // 체크하여 어떤 피연산자로 넣을지 결정
-            judgeInteger(Integer.parseInt(pollValue));
-            return;
+        // 숫자인지 먼저 체크 해서, 숫자면 false 리턴.
+        if (pollValue.matches(EXP_NUMBER)) {
+            return false;
         }
-        // 사칙연산 맞는지 체크
-        operationValidChk(pollValue);
+        // 숫자가 아니라 문자인 경우, 사칙연산 체크.
+        if (operationValidChk(pollValue)) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 큐에서 꺼내온 값이 숫자 값인지 체크
+     *
+     * @param pollValue 꺼내온 값
+     * @return
+     */
+    static boolean numberCheck(String pollValue) {
+        if (pollValue.matches(EXP_NUMBER)) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -89,52 +93,35 @@ public class Calculator {
      * @param a
      * @param b
      */
-    static int doCal(int a, int b) {
+    static int doCal(int a, int b, String calMethod) {
+        int result = 0;
         if (calMethod.equals("+")) {
-            return plus(a, b);
+            result = plus(a, b);
         }
         if (calMethod.equals("-")) {
-            return minus(a, b);
+            result = minus(a, b);
         }
         if (calMethod.equals("*")) {
-            return multiple(a, b);
+            result = multiple(a, b);
         }
         if (calMethod.equals("/")) {
-            return devide(a, b);
+            result = devide(a, b);
         }
-        return a;
-    }
-
-    /**
-     * 넘어온 값을 조건에 맞게 연산자에 저장한다.
-     *
-     * @param x
-     * @throws Exception
-     */
-    static void judgeInteger(int x) throws Exception {
-        if (cal1 == Integer.MIN_VALUE) {
-            cal1 = x;
-        } else if (cal2 == Integer.MIN_VALUE) {
-            cal2 = x;
-        } else {
-            // 로직 상 발생하면 안되는 케이스 이지만, 예외 처리 함.
-            throw new Exception("연산자오류");
-        }
+        return result;
     }
 
     /**
      * 사칙연산 판단 로직, 사칙연산에 해당하지 않는 값인 경우 IllegalArgumentException 오류를 리턴한다.
      *
-     * @param operation
+     * @param pollValue
      */
-    static void operationValidChk(String operation) throws IllegalArgumentException {
-        System.out.print(operation);
-        if (!(operation.equals("+") || operation.equals("-") || operation.equals("*")
-            || operation.equals(
+    static boolean operationValidChk(String pollValue) throws IllegalArgumentException {
+        if (!(pollValue.equals("+") || pollValue.equals("-") || pollValue.equals("*")
+            || pollValue.equals(
             "/"))) {
             throw new IllegalArgumentException("사칙연산 입력값 오류");
         }
-        calMethod = operation;
+        return true;
     }
 
     /**

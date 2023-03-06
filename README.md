@@ -38,5 +38,5 @@
     - 0~9 사이 값을 추첨하는 함수
   - [x] 우승자 계산 및 출력 함수(chooseWinner)
     - 현재 자동차들의 위치값을 비교하여 최대값을 계산 후, 우승자를 결정 및 출력하는 함수
-  - [x] 자동차 이름에 대한 예외처리 함수(carNameValidChk)
+  - [x] 자동차 이름에 대한 예외처리 함수(carNameExceptionValidateCheck)
 
