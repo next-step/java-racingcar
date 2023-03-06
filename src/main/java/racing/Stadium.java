@@ -6,14 +6,12 @@ import java.util.Scanner;
 public class Stadium {
     public final Car[] cars;
     public final int round;
+    private Random random;
 
-    Random random;
     public Stadium(String names, int round){
-
         this.cars = initCars(names);
         this.round = round;
         this.random = new Random();
-
     }
 
     public static void main(String[] args) {
@@ -23,11 +21,14 @@ public class Stadium {
         String names = in.nextLine();
 
         System.out.println("시도할 회수는 몇 회인가요?");
-        int round = in.nextInt();
+        int round = Integer.parseInt(in.nextLine());
 
+        Stadium stadium = new Stadium(names, round);
 
+        System.out.println("실행 결과");
+        int winnerPosition = stadium.racing();
 
-
+        System.out.println("최종 우승자: " + stadium.getWinner(winnerPosition));
     }
 
     public Car[] initCars(String names){
@@ -43,30 +44,48 @@ public class Stadium {
         return cars;
     }
 
-    String translatePosition(int position){
+    void printCarPosition(){
+        for(Car car : cars){
+            System.out.println(car.getPositionFormat());
+        }
+    }
+
+    private int moveCars(){
+        int carPosistion = 0;
+
+        for(Car car : cars){
+            carPosistion = Math.max(car.move(random.nextInt()), carPosistion);
+        }
+
+        return carPosistion;
+    }
+
+    public int racing(){
+        int maxPosition = 0;
+
+        for(int i = 0; i < round; i++){
+            maxPosition = Math.max(moveCars(), maxPosition);
+            printCarPosition();
+            System.out.println();
+        }
+
+        return maxPosition;
+    }
+
+    private String getWinner(int maxPosition) {
 
         StringBuilder sb = new StringBuilder();
 
-        for(int i = 0; i < position; i++){
-            sb.append("-");
+        for(Car car : cars){
+            if(maxPosition == car.position){
+                sb.append(car.name);
+                sb.append(" ,");
+            }
         }
+
+        sb.delete(sb.lastIndexOf(" ,"), sb.length());
 
         return sb.toString();
     }
-
-    void printCarPosition(){
-        for(Car car : cars){
-            System.out.println(car.name + " : " + translatePosition(car.position));
-        }
-    }
-
-    void getRandomValue(){
-        for(Car car : cars){
-            car.move(random.nextInt());
-        }
-    }
-
-
-
 
 }
