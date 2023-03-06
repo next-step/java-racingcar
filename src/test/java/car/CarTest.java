@@ -1,6 +1,7 @@
 package car;
 
 import car.domain.Car;
+import car.domain.Cars;
 import car.domain.Name;
 import car.domain.Position;
 import car.ui.View;
@@ -21,14 +22,15 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class CarTest {
 
-    private List<Car> cars;
+    private Cars cars;
 
     @BeforeEach
     void setUp() {
-        cars = new ArrayList<>();
-        cars.add(new Car(new Name("씽씽카"), new Position(3)));
-        cars.add(new Car(new Name("쏘카"), new Position(1)));
-        cars.add(new Car(new Name("그린카"), new Position(5)));
+        List<Car> participants = new ArrayList<>();
+        participants.add(new Car(new Name("씽씽카"), new Position(3)));
+        participants.add(new Car(new Name("쏘카"), new Position(1)));
+        participants.add(new Car(new Name("그린카"), new Position(5)));
+        cars = Cars.of(participants);
     }
 
     @ParameterizedTest

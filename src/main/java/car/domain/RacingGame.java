@@ -1,58 +1,29 @@
 package car.domain;
 
-import car.domain.condition.RacingCondition;
-import car.ui.GameRequest;
-import car.ui.View;
+import car.domain.condition.RacingGameStrategy;
+import car.ui.GameResult;
 import car.ui.Winner;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingGame {
-    private final RacingCondition racingCondition;
+    private final RacingGameStrategy racingCondition;
+    private final Cars cars;
 
-    public RacingGame(RacingCondition racingCondition) {
+    public RacingGame(RacingGameStrategy racingCondition, Cars cars) {
         this.racingCondition = racingCondition;
+        this.cars = cars;
     }
 
-    public List<Winner> play(final GameRequest request) {
-        int moveCount = request.getMoveCount();
-        List<Car> participants = request.getParticipants();
+    public GameResult<List<Winner>> play(final int moveCount) {
 
         for (int i = 0; i < moveCount; i++) {
-            startMove(participants);
+            racingCondition.apply(cars);
         }
 
-        int maxPosition = getMaxPosition(participants);
-        return getWinners(participants, maxPosition);
-    }
-
-    private void startMove(List<Car> participants) {
-        participants.forEach(this::checkCondition);
-        System.out.println();
-    }
-
-    private void checkCondition(Car car) {
-        if (racingCondition.isSatisfied()) {
-            car.move();
-        }
-
-        View view = car.toView();
-        String status = view.printStatus();
-        System.out.println(status);
-    }
-
-    public List<Winner> getWinners(List<Car> participants, int maxPosition) {
-        return participants.stream()
-                .filter(participant -> participant.isEqualPosition(maxPosition))
-                .map(Car::toWinner)
-                .collect(Collectors.toList());
-    }
-
-    public int getMaxPosition(List<Car> participants) {
-        return participants.stream()
-                .mapToInt(Car::findPosition)
-                .max()
-                .getAsInt();
+        List<Winner> winners = cars.getWinners();
+        System.out.println("최종 우승자: " + winners);
+        GameResult<List<Winner>> result = new GameResult(winners.size(), winners);
+        return result;
     }
 }

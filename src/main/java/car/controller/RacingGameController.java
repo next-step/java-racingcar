@@ -1,46 +1,23 @@
 package car.controller;
 
-import car.domain.Car;
-import car.domain.Name;
-import car.domain.Position;
-import car.domain.RacingGame;
-import car.ui.GameRequest;
+import car.service.RacingGameService;
 import car.ui.GameResult;
+import car.ui.Winner;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class RacingGameController {
 
-    private final RacingGame game;
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
-    public RacingGameController(RacingGame game) {
-        this.game = game;
-    }
+        System.out.print("경주에 참가할 자동차의 이름들을 작성하세요: ");
+        String carNames = sc.nextLine();
+        System.out.print("이동할 횟수를 입력하세요: ");
+        int moveCount = sc.nextInt();
 
-    public GameResult play(String[] cars, int moveCount) {
-        List<Car> participants = new ArrayList();
-        validateParams(participants, cars, moveCount);
-        GameRequest request = new GameRequest(participants, moveCount);
-        game.play(request);
-
-        return null;
-    }
-
-    private void validateParams(List<Car> participants, String[] cars, int moveCount) {
-        validateMoveCount(moveCount);
-        validateCarName(participants, cars);
-    }
-
-    private void validateCarName(List<Car> participants, String[] cars) {
-        for (String name: cars) {
-            participants.add(new Car(new Name(name), new Position(0)));
-        }
-    }
-
-    private void validateMoveCount(int moveCount) {
-        if (moveCount < 1) {
-            throw new IllegalArgumentException("이동횟수는 1 이상이어야 합니다. moveCount: " + moveCount);
-        }
+        RacingGameService gameService = new RacingGameService();
+        GameResult<List<Winner>> result = gameService.start(carNames, moveCount);
     }
 }

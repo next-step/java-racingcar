@@ -2,8 +2,8 @@ package car.ui;
 
 public class GameResult<T> {
 
-    private int totalCount;
-    private T data;
+    private final int totalCount;
+    private final T data;
 
     public GameResult(int totalCount, T data) {
         this.totalCount = totalCount;
