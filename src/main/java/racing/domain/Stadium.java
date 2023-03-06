@@ -4,25 +4,25 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Stadium {
-    public final List<Car> cars;
-    public final int round;
+    private final List<Car> cars;
+    private final int round;
     private final StadiumMoveOption stadiumMoveOption;
 
     // 이름리스트를 초기값으로 받는 버전
-    public Stadium(String names, int round, StadiumMoveOption stadiumMoveOption){
-        this.cars = initCars(names);
-        this.round = round;
-        this.stadiumMoveOption = stadiumMoveOption;
+    public Stadium(String names, int round){
+        this(initCars(names),
+                round,
+                new RandomStadiumMoveOptionImpl());
     }
 
     // 차 리스트를 초기로 받는 버전
     public Stadium(List<Car> cars, int round, StadiumMoveOption stadiumMoveOption){
         this.cars = cars;
         this.round = round;
-        this.stadiumMoveOption = stadiumMoveOption;
+        this.stadiumMoveOption = new RandomStadiumMoveOptionImpl();
     }
 
-    public List<Car> initCars(String inputCarNames){
+    private static List<Car> initCars(String inputCarNames){
         String[] names = inputCarNames.split(",");
 
         List<Car> cars = new ArrayList<>();
@@ -43,11 +43,9 @@ public class Stadium {
     }
 
     public List<Car> getWinner() {
-        final int max = getMaxCarPosition();
+        final int maxPosition = getMaxCarPosition();
 
-        return cars.stream()
-                .filter(car -> car.getPosition() == max)
-                .collect(Collectors.toList());
+        return getSpecificLocationCars(maxPosition);
     }
 
     public int getMaxCarPosition() {
@@ -55,5 +53,11 @@ public class Stadium {
                 .mapToInt(x -> x.getPosition())
                 .max()
                 .orElseThrow(NoSuchElementException::new);
+    }
+
+    public List<Car> getSpecificLocationCars(int position) {
+        return cars.stream()
+                .filter(car -> car.getPosition() == position)
+                .collect(Collectors.toList());
     }
 }
