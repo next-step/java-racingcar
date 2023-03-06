@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class CarTest {
-    public static final int MOVE_CONDITION= 4;
+    public static final int MOVE_CONDITION = 4;
     public static final int STOP_CONDITION = 3;
 
     @Test
