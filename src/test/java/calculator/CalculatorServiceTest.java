@@ -17,11 +17,11 @@ class CalculatorServiceTest {
         final String testText1 = "1 + 6 - 4 * 3 / 3";
         final String testText2 = "1 + -t + 6 - 4 * 3 / 3";
 
-        calculatorService.calculateLoop(testText1, calculator);
+        calculator = calculatorService.calculateLoop(testText1);
 
-        Assertions.assertThat(calculator.result).isEqualTo(3);
+        Assertions.assertThat(calculator.getResult()).isEqualTo(3);
 
         Assertions.assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> calculatorService.calculateLoop(testText2, calculator));
+                .isThrownBy(() -> calculatorService.calculateLoop(testText2));
     }
 }

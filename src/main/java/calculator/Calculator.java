@@ -2,23 +2,39 @@ package calculator;
 
 public class Calculator {
 
-    long result;
+    private static final int DEFAULT_VALUE = 0;
 
-    void addition(long num) {
-        result += num;
+    private long result;
+
+    public long getResult() {
+        return result;
     }
 
-    void subtraction(long num) {
-        result -= num;
+    Calculator() {
+        this(DEFAULT_VALUE);
     }
 
-    void multiplication(long num) {
-        result *= num;
+    Calculator(long number) {
+        result = number;
     }
 
-    void division(long num) {
-        if(num == 0) throw new IllegalArgumentException();
+    void addition(long num1, long num2) {
+        result = num1 + num2;
+    }
 
-        result /= num;
+    void subtraction(long num1, long num2) {
+        result = num1 - num2;
+    }
+
+    void multiplication(long num1, long num2) {
+        result = num1 * num2;
+    }
+
+    void division(long num1, long num2) {
+        if(num2 == 0) {
+            throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
+        }
+
+        result = num1 / num2;
     }
 }

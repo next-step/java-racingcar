@@ -3,19 +3,22 @@ package racing;
 import java.util.Random;
 
 public class Car {
+    private static final int MAX_LENGTH_NAME = 5;
+    private static final int DEFAULT_DISTANCE = 0;
+    private static final  int MIN_MOVE_VALUE = 4;
     private int distance;
     private String carName;
 
     Car(String name) {
-        if(name.length() > 5) {
-            throw new IllegalArgumentException("자동차 이름은 5글자를 초과할 수 없습니다.");
-        }
-
-        this.carName = name;
+        this(name, DEFAULT_DISTANCE);
     }
 
     Car(String name, int distance) {
-        this(name);
+        if (name.length() > MAX_LENGTH_NAME) {
+            throw new IllegalArgumentException("자동차 이름은 "+ MAX_LENGTH_NAME +"글자를 초과할 수 없습니다.");
+        }
+
+        this.carName = name;
         this.distance = distance;
     }
 
@@ -24,20 +27,13 @@ public class Car {
     }
 
     public String getCarName() {
-        return carName;
+        return this.carName;
     }
 
-    void carRacing() {
-        carRun();
-        statusPrint();
-    }
-
-    void carRun() {
-        if((int) (Math.random() * 10) < 4) {
-            return;
+    void carRun(int randomNumber) {
+        if(randomNumber >= MIN_MOVE_VALUE) {
+            ++this.distance;
         }
-
-        ++this.distance;
     }
 
     String statusPrint() {

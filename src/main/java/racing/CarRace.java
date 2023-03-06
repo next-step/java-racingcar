@@ -8,11 +8,11 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class CarRace {
-    String carListText;     // 자동차 이름 리스트
-    int trackCount;         // 주행할 트랙수
-    static int maxDistance;
+    private String carListText;     // 자동차 이름 리스트
+    private int trackCount;         // 주행할 트랙수
+    int maxDistance;
     List<String> winners;
-    Scanner scan = new Scanner(System.in);
+    private Scanner scan = new Scanner(System.in);
 
     List<String> getRacingJoinList() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)");
@@ -27,20 +27,25 @@ public class CarRace {
         this.trackCount = scan.nextInt();
     }
 
+    int getTotalTrackCount() {
+        return trackCount;
+    }
+
     void runningRace(ArrayList<Car> carArrayList) {
-        for(int i=0; i < carArrayList.size(); i++) {
-            carArrayList.get(i).carRacing();
+        for (int i = 0; i < carArrayList.size(); i++) {
+            carArrayList.get(i).carRun(getRandomNumber());
+            carArrayList.get(i).statusPrint();
             confirmWinners(carArrayList.get(i));
         }
     }
 
     void confirmWinners(Car car) {
-        if(maxDistance < car.getDistance()) {
+        if (maxDistance < car.getDistance()) {
+            maxDistance = car.getDistance();
             winners = new ArrayList<>();
         }
 
-        if(maxDistance <= car.getDistance()) {
-            maxDistance = car.getDistance();
+        if (maxDistance == car.getDistance()) {
             winners.add(car.getCarName());
         }
     }
@@ -49,5 +54,9 @@ public class CarRace {
         String winners = "최종 우승자 : " + this.winners.toString();
         System.out.println(winners);
         return winners;
+    }
+
+    int getRandomNumber() {
+        return (int) (Math.random() * 10);
     }
 }
