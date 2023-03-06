@@ -5,7 +5,8 @@ public class Car {
     public final String name;
 
     public final int moveOption;
-    public int position;
+
+    private int position;
 
     public Car(String name){
         vaildName(name);
@@ -15,14 +16,22 @@ public class Car {
         this.position = 0;
     }
 
+    public Car(String name, int position){
+        vaildName(name);
+
+        this.position = position;
+        this.name = name;
+        this.moveOption = 4;
+    }
+
     void vaildName(String name){
         if(name.length() > 5){
             throw new IllegalArgumentException("이름이 5자를 초과했음");
         }
     }
 
-    public int move(int random){
-        if(moveOption <= random){
+    public int move(int moveValue){
+        if(moveOption <= moveValue){
             position++;
         }
 
@@ -44,4 +53,15 @@ public class Car {
         return sb.toString();
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getMoveOption() {
+        return moveOption;
+    }
+
+    public int getPosition() {
+        return position;
+    }
 }

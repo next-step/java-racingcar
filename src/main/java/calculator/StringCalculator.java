@@ -38,10 +38,6 @@ public class StringCalculator {
         return splitStrings;
     }
 
-    public static void main(String[] args) {
-
-    }
-
     public int toInt(String str){
         return Integer.parseInt(str);
     }

@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Java6Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CarTest {
@@ -35,14 +36,13 @@ public class CarTest {
 
         int actaul = car.move(moveOption);
 
-        assertTrue(actaul == expect);
+        assertEquals(actaul, expect);
     }
 
     @Test
     @DisplayName("현재위치 포맷에 따라 잘 나오는지 검증")
     void getPositionFormatTest() {
-        Car car = new Car("lucas");
-        car.position = 5;
+        Car car = new Car("lucas", 5);
 
         String actaul = car.getPositionFormat();
 
