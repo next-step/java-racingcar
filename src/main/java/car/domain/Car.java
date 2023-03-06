@@ -1,5 +1,8 @@
 package car.domain;
 
+import car.ui.View;
+import car.ui.Winner;
+
 public class Car {
     private final Name name;
     private final Position position;
@@ -25,12 +28,11 @@ public class Car {
         return this.position.getPosition();
     }
 
-    public String printStatus() {
-        return String.format("%s : %s", this.name.printName(), this.position.printStatus());
+    public View toView() {
+        return new View(this.name, this.position);
     }
 
-    @Override
-    public String toString() {
-        return this.name.printName();
+    public Winner toWinner() {
+        return new Winner(this.name);
     }
 }

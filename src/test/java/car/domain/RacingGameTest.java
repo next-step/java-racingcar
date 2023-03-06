@@ -1,6 +1,8 @@
 package car.domain;
 
 import car.domain.condition.RandomConditionImpl;
+import car.ui.GameRequest;
+import car.ui.Winner;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
@@ -48,7 +50,7 @@ class RacingGameTest {
         int moveCount = 5;
 
         // when
-        List<Car> winners = game.getWinners(participants, moveCount);
+        List<Winner> winners = game.getWinners(participants, moveCount);
 
         // then
         System.out.println("최종 우승자: " + winners);
@@ -67,8 +69,11 @@ class RacingGameTest {
             participants.add(new Car(new Name(carName), new Position(0)));
         }
 
+        GameRequest request = new GameRequest(participants, moveCount);
+
         //when
-        List<Car> winners = game.play(participants, moveCount);
+
+        List<Winner> winners = game.play(request);
         System.out.println("Winner: " + winners);
     }
 }

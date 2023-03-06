@@ -1,11 +1,11 @@
 package car.ui;
 
-public class Result<T> {
+public class GameResult<T> {
 
     private int totalCount;
     private T data;
 
-    public Result(int totalCount, T data) {
+    public GameResult(int totalCount, T data) {
         this.totalCount = totalCount;
         this.data = data;
     }

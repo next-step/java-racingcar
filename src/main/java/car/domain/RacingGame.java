@@ -1,6 +1,9 @@
 package car.domain;
 
 import car.domain.condition.RacingCondition;
+import car.ui.GameRequest;
+import car.ui.View;
+import car.ui.Winner;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,7 +15,10 @@ public class RacingGame {
         this.racingCondition = racingCondition;
     }
 
-    public List<Car> play(List<Car> participants, int moveCount) {
+    public List<Winner> play(final GameRequest request) {
+        int moveCount = request.getMoveCount();
+        List<Car> participants = request.getParticipants();
+
         for (int i = 0; i < moveCount; i++) {
             startMove(participants);
         }
@@ -30,13 +36,16 @@ public class RacingGame {
         if (racingCondition.isSatisfied()) {
             car.move();
         }
-        String status = car.printStatus();
+
+        View view = car.toView();
+        String status = view.printStatus();
         System.out.println(status);
     }
 
-    public List<Car> getWinners(List<Car> participants, int maxPosition) {
-        return participants.stream().
-                filter(participant -> participant.isEqualPosition(maxPosition))
+    public List<Winner> getWinners(List<Car> participants, int maxPosition) {
+        return participants.stream()
+                .filter(participant -> participant.isEqualPosition(maxPosition))
+                .map(Car::toWinner)
                 .collect(Collectors.toList());
     }
 

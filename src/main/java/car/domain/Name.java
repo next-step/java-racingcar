@@ -13,12 +13,12 @@ public class Name {
         if (name.length() >= 5) throw new IllegalArgumentException("자동차 이름은 5자 미만만 가능 합니다. name = " + name);
     }
 
-    public String printName() {
+    public String getName() {
         return name;
     }
 
     @Override
     public String toString() {
-        return this.printName();
+        return this.getName();
     }
 }

@@ -3,6 +3,7 @@ package car;
 import car.domain.Car;
 import car.domain.Name;
 import car.domain.Position;
+import car.ui.View;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
@@ -21,7 +22,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class CarTest {
 
     private List<Car> cars;
-    private final int condVal = 10;
 
     @BeforeEach
     void setUp() {
@@ -60,9 +60,11 @@ class CarTest {
 
     @Test
     void 자동차의_위치상태를_출력한다() {
-        Position position = new Position(5);
-        String actual = position.printStatus();
-        assertThat(actual).isEqualTo("-----");
+        // given
+        Car car = new Car(new Name("씽씽카"), new Position(3));
+        View view = car.toView();
+        String actual = view.printStatus();
+        assertThat(actual).isEqualTo("씽씽카 : ---");
     }
 
     @Test

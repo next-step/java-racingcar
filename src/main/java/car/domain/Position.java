@@ -8,16 +8,6 @@ public class Position {
         this.position = position;
     }
 
-    public String printStatus() {
-        StringBuilder sb = new StringBuilder();
-
-        for (int i = 0; i < position; i++) {
-            sb.append("-");
-        }
-
-        return sb.toString();
-    }
-
     public void increasePosition() {
         this.position++;
     }
