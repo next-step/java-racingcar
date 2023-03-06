@@ -1,5 +1,7 @@
+package racingcar.v1;
+
 public class Car {
-    private String name;
+    private final String name;
     private int distance;
 
     Car(String name) {

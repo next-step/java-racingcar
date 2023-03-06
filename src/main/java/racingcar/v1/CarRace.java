@@ -1,3 +1,5 @@
+package racingcar.v1;
+
 import java.util.*;
 
 import static java.util.stream.Collectors.toList;

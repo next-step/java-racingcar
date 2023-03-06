@@ -1,3 +1,6 @@
+package racingcar.v1;
+
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -38,7 +41,7 @@ class CarRaceTest {
 
     @Test
     void playGame() {
-        assertThat(CarRace.playGame(carList, rotation))
+        Assertions.assertThat(CarRace.playGame(carList, rotation))
                 .containsAnyElementsOf(List.of("a", "b", "c", "d"));
     }
 
@@ -68,13 +71,13 @@ class CarRaceTest {
 
     @Test
     void getWinners() {
-        assertThat(CarRace.getWinners(carList))
+        Assertions.assertThat(CarRace.getWinners(carList))
                 .containsAll(List.of("c", "d"));
     }
 
     @Test
     void getWinnersLambda() {
-        assertThat(CarRace.getWinnersLambda(carList))
+        Assertions.assertThat(CarRace.getWinnersLambda(carList))
                 .containsAll(List.of("c", "d"));
     }
 }
