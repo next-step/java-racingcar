@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 public class RacingcarTest {
 
     @Test
@@ -15,9 +17,11 @@ public class RacingcarTest {
 
         Racing racing = new Racing();
 
-        String input = "a1,a2,a3,a4,a5";
-        int count = 3;
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car("apple", 10));
+        cars.add(new Car("banana", 5));
 
-        racing.startRacing(input, count);
+        var winners = racing.getChampions(cars, racing.getBestPosition(cars));
+        assertThat(winners.get(0).getName()).isEqualTo("apple");
     }
 }

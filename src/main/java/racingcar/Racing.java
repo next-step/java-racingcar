@@ -74,7 +74,7 @@ public class Racing {
         System.out.println();
     }
 
-    public int getMove() {
+    private int getMove() {
         Random random = new Random();
         return random.nextInt(9);
     }

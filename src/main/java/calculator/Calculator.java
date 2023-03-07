@@ -4,15 +4,14 @@ import java.util.Arrays;
 
 public class Calculator {
 
-    public int calculatorByString() {
-
-        String input = "2 + 3 * 4 / 2";
-
+    public int calculatorByString(final String input) {
         String [] convertInput = input.split(" ");
 
         int result = 0;
         for (int i = 0; i < convertInput.length; i++) {
-            if (i == 0) { result = Integer.parseInt(convertInput[i]); }
+            if (i == 0) {
+                result = Integer.parseInt(convertInput[i]);
+            }
 
             if (isSigned(convertInput[i])) {
                 result = getCalc(result, Integer.parseInt(convertInput[i+1]), convertInput[i]);
