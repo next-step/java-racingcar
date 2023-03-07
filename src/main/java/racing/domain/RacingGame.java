@@ -16,32 +16,16 @@ public class RacingGame {
     }
 
     public void startRace() {
-        System.out.println("실행결과");
-        for (int i = 0; i < count; i++) {
-            participationCars.forEach(c -> {
-                c.move(random);
-                c.print();
-            });
-            System.out.println();
-        }
+        participationCars.forEach(c -> c.move(random));
+    }
+
+    public List<Car> getParticipationCars() {
+        return this.participationCars;
     }
 
     public List<Car> getRacingWinners() {
         Optional<Car> max = participationCars.stream().max(Car::compareTo);
         Car winner = max.orElseThrow();
         return participationCars.stream().filter(c -> c.isEqualLocation(winner)).collect(Collectors.toList());
-    }
-
-    public void printRacingWinners() {
-        List<Car> racingWinners = getRacingWinners();
-        System.out.print("최종 우승자 : ");
-        for (int i = 0; i < racingWinners.size(); i++) {
-            Car car = racingWinners.get(i);
-            System.out.print(car);
-
-            if (i + 1 != racingWinners.size()) {
-                System.out.print(",");
-            }
-        }
     }
 }
