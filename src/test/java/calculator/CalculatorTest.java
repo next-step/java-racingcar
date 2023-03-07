@@ -20,70 +20,75 @@ class CalculatorTest {
     @Test
     void 계산기_덧셈_기능을_테스트한다() {
         //given
-        BigInteger num1 = BigInteger.TEN;
-        BigInteger num2 = new BigInteger("20");
+        Number expected = new Number(new BigInteger("30"));
+        Number number1 = new Number(BigInteger.TEN);
+        Number number2 = new Number(new BigInteger("20"));
 
         //when
-        BigInteger actual = Calculator.add(num1, num2);
+        Number actual = Calculator.add(number1, number2);
 
         //then
-        assertThat(actual).isEqualTo(30);
+        assertThat(actual).isEqualTo(expected);
     }
 
     @Test
     void 계산기_뺄셈_기능을_테스트한다() {
         //given
-        BigInteger num1 = new BigInteger("20");
-        BigInteger num2 = BigInteger.TEN;
+        Number expected = new Number(new BigInteger("10"));
+        Number number1 = new Number(new BigInteger("20"));
+        Number number2 = new Number(BigInteger.TEN);
 
         //when
-        BigInteger actual = Calculator.subtract(num1, num2);
+        Number actual = Calculator.subtract(number1, number2);
 
         //then
-        assertThat(actual).isEqualTo(10);
+        assertThat(actual).isEqualTo(expected);
     }
 
     @Test
     void 계산기_곱셈_기능을_테스트한다() {
         //given
-        BigInteger num1 = BigInteger.TEN;
-        BigInteger num2 = new BigInteger("20");
+        Number expected = new Number(new BigInteger("200"));
+        Number number1 = new Number(BigInteger.TEN);
+        Number number2 = new Number(new BigInteger("20"));
 
         //when
-        BigInteger actual = Calculator.multiply(num1, num2);
+        Number actual = Calculator.multiply(number1, number2);
 
         //then
-        assertThat(actual).isEqualTo(200);
+        assertThat(actual).isEqualTo(expected);
     }
 
     @Test
     void 계산기_나눗셈_기능을_테스트한다() {
         //given
-        BigInteger num1 = new BigInteger("6");
-        BigInteger num2 = new BigInteger("2");
+        Number expected = new Number(new BigInteger("3"));
+        Number number1 = new Number(new BigInteger("6"));
+        Number number2 = new Number(new BigInteger("2"));
 
         //when
-        BigInteger actual = Calculator.divide(num1, num2);
+        Number actual = Calculator.divide(number1, number2);
 
         //then
-        assertThat(actual).isEqualTo(3);
+        assertThat(actual).isEqualTo(expected);
     }
 
     @ParameterizedTest
     @CsvSource(value = {"2 + 3 * 4 / 2=10", "5 * 4 + 3 / 2 - 5=6"}, delimiter = '=')
-    void 사칙연산_기능을_구현한다(String input, int expected) {
+    void 사칙연산_기능을_구현한다(String input, String expected) {
         //given
         InputValidator.isNullOrEmpty(input);
         String[] inputArray = input.split(" ");
-        BigInteger result = new BigInteger(inputArray[0]);
+        Number result = new Number(new BigInteger(inputArray[0]));
+
 
         //when
         for (int i = 1; i < inputArray.length; i += 2) {
-            result = calculate(result, inputArray[i], new BigInteger(inputArray[i + 1]));
+            result = Calculator.calculate(result, inputArray[i], new Number(new BigInteger(inputArray[i + 1])));
         }
 
         //then
-        assertThat(result).isEqualTo(expected);
+        assertThat(result).isEqualTo(new Number(new BigInteger(expected)));
     }
 
     @ParameterizedTest
@@ -103,10 +108,11 @@ class CalculatorTest {
     @CsvSource(value = {"1 + 2 3", "2 - 1 1", "3 * 6 18", "6 / 3 2"}, delimiter = ' ')
     void 사칙연산_기호_타입을_검증한다(String number1, String operator, String number2, String expected) {
         // then
-        assertThat(calculate(new BigInteger(number1), operator, new BigInteger(number2)))
-                .isEqualTo(new BigInteger(expected));
+        assertThat(Calculator.calculate(new Number(new BigInteger(number1)), operator, new Number(new BigInteger(number2))))
+                .isEqualTo(new Number(new BigInteger(expected)));
+
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> calculate(BigInteger.ONE, ":", BigInteger.TWO));
+                .isThrownBy(() -> Calculator.calculate(new Number(BigInteger.ONE), ":", new Number(BigInteger.TWO)));
     }
 
     @ParameterizedTest
@@ -117,20 +123,5 @@ class CalculatorTest {
         assertThat(actual).isEqualTo(new BigInteger(input));
         assertThatExceptionOfType(NumberFormatException.class)
                 .isThrownBy(() -> new BigInteger("*"));
-    }
-
-    private BigInteger calculate(BigInteger number1, String operator, BigInteger number2) {
-        switch (operator) {
-            case "+":
-                return Calculator.add(number1, number2);
-            case "-":
-                return Calculator.subtract(number1, number2);
-            case "*":
-                return Calculator.multiply(number1, number2);
-            case "/":
-                return Calculator.divide(number1, number2);
-            default:
-                throw new IllegalArgumentException("해당 연산자는 존재하지 않습니다 operator = " + operator);
-        }
     }
 }
