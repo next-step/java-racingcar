@@ -10,7 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class StadiumTest {
@@ -95,4 +96,80 @@ public class StadiumTest {
                 .extracting(Car::getName)
                 .containsExactlyInAnyOrder("lucas", "cas");
     }
+
+    @DisplayName("경기가 종료되지 않았다면 round가 증가되면서 차들이 경주를 한다.")
+    @Test
+    public void racingCars() {
+
+        List<Car> cars = new ArrayList<>();
+
+        int defaultPosition = 0;
+        int winnerPosition = 5;
+
+        cars.add(new Car("lucas", winnerPosition));
+        cars.add(new Car("cas", winnerPosition));
+        cars.add(new Car("kai", defaultPosition));
+
+        Stadium stadium = new Stadium(cars, 5, () -> { return 1;} );
+
+
+        List<Car> actualCars = stadium.racingCars();
+        int actualRound = stadium.getRound();
+
+        assertThat(actualCars)
+                .hasSize(3)
+                .extracting(Car::getName)
+                .containsExactlyInAnyOrder("lucas", "cas", "kai");
+
+        assertThat(actualRound).isEqualTo(1);
+    }
+
+    @DisplayName("경기가 종료되었는데 경주를 한다면 예외가 발생한다.")
+    @Test
+    public void ifRacingOverTotalRound() {
+
+        List<Car> cars = new ArrayList<>();
+
+        int defaultPosition = 0;
+        int winnerPosition = 5;
+
+        cars.add(new Car("lucas", winnerPosition));
+        cars.add(new Car("cas", winnerPosition));
+        cars.add(new Car("kai", defaultPosition));
+
+        Stadium stadium = new Stadium(cars, 1, () -> { return 1;} );
+        
+        assertThatExceptionOfType(IllegalCallerException.class)
+                .isThrownBy(() -> {
+                        stadium.racingCars();
+                        stadium.racingCars();
+                    }
+                ).withMessageContaining("경기는 종료");
+
+    }
+
+    @DisplayName("경기가 종료되었는지 확인할 수 있다.")
+    @Test
+    public void isEndRacing() {
+
+        List<Car> cars = new ArrayList<>();
+
+        int defaultPosition = 0;
+        int winnerPosition = 5;
+
+        cars.add(new Car("lucas", winnerPosition));
+        cars.add(new Car("cas", winnerPosition));
+        cars.add(new Car("kai", defaultPosition));
+
+        int totalRound = 1;
+
+        Stadium stadium = new Stadium(cars, totalRound, () -> { return 1;} );
+
+        assertFalse(stadium.isRacingEnd());
+
+        stadium.racingCars();
+
+        assertTrue(stadium.isRacingEnd());
+    }
+
 }
