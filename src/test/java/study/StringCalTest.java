@@ -39,7 +39,6 @@ public class StringCalTest {
         assertThat(0).isEqualTo(calculator.divide(8,0));
     }
 
-
     @Test
     @DisplayName("문자열 나눠주기")
     void sep(){
@@ -57,4 +56,5 @@ public class StringCalTest {
         int num = 13;
         assertThat(num).isEqualTo(calculator.calculateString(result));
     }
+
 }

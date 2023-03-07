@@ -3,10 +3,7 @@ import java.util.*;
 
 public class RacingCar {
 
-    private static int maxmovecnt = 0;
-    private static String winner = "";
-
-    public static void RacingCar () {
+    public static void main(String[] args){
 
         ArrayList<Car> carlist =  new ArrayList<Car>();
 
@@ -16,11 +13,7 @@ public class RacingCar {
         String[] splitValue = inputValue.split(",");
 
         for(int i=0; i < splitValue.length; i++) {
-
-            if (splitValue[i].length() > 5)
-                throw new IllegalArgumentException("자동차의 이름은 5자 이하여야 한다.");
-
-            carlist.add(new Car(splitValue[i], 0));
+            carlist.add(new Car(splitValue[i]));
         }
 
         System.out.print("시도할 횟수는 몇 회인가요?\n");
@@ -28,24 +21,30 @@ public class RacingCar {
 
         //게임실행
         rungame(carlist, count);
-    }
+        //우승자 확인
+        getwinner(carlist);
 
+    }
 
     public static void rungame(List<Car> carlist, int count){
 
-        List<String> winner = new ArrayList<>();
-
         for(int i=0; i < count; i++) {
             for (Car cars : carlist) {
-                cars.Move();
-                print(cars.name, cars.move);
-                maxmove(cars.move);
+                cars.Move(cars.randomcnt());
+                printrace(cars.name, cars.move);
             }
             System.out.println();
         }
 
+    }
+
+    public static void getwinner(List<Car> carlist){
+
+        List<String> winner = new ArrayList<>();
+        int maxmove = getmaxmove(carlist);
+
         for (Car cars : carlist) {
-            if(cars.move == maxmovecnt){
+            if (cars.move == maxmove) {
                 winner.add(cars.name);
             }
         }
@@ -53,14 +52,21 @@ public class RacingCar {
         System.out.println(String.format("최종 우승자: " + winner.toString()));
     }
 
-    public static void print(String name, int distance){
+    public static void printrace(String name, int move){
         String print = "-";
-        System.out.println(name+" : "+print.repeat(distance));
+        System.out.println(name+" : "+print.repeat(move));
     }
 
-    public static void maxmove(int move){
-        if (move > maxmovecnt) {
-            maxmovecnt = move;
+    public static int getmaxmove(List<Car> carlist){
+
+        int maxmovecnt = 0;
+
+        for (Car cars : carlist) {
+            if (cars.move > maxmovecnt) {
+                maxmovecnt = cars.move;
+            }
         }
+
+        return maxmovecnt;
     }
 }
