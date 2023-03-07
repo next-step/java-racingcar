@@ -21,7 +21,7 @@ public class Cars {
         int maxPosition = getMaxPosition();
         return participants.stream()
                 .filter(participant -> participant.isEqualPosition(maxPosition))
-                .map(Car::toWinner)
+                .map(Winner::from)
                 .collect(Collectors.toList());
     }
 

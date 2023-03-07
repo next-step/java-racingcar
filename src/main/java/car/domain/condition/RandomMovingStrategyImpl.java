@@ -23,7 +23,7 @@ public class RandomMovingStrategyImpl implements RacingGameStrategy {
         if (isSatisfied()) {
             car.move();
         }
-        View view = car.toView();
+        View view = View.from(car);
         System.out.println(view.printStatus());
     }
 

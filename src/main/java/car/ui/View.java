@@ -1,5 +1,6 @@
 package car.ui;
 
+import car.domain.Car;
 import car.domain.Name;
 import car.domain.Position;
 
@@ -8,7 +9,7 @@ public class View {
     private final Name name;
     private final Position position;
 
-    public View(Name name, Position position) {
+    private View(Name name, Position position) {
         this.name = name;
         this.position = position;
     }
@@ -25,5 +26,9 @@ public class View {
         }
 
         return sb.toString();
+    }
+
+    public static View from(Car car) {
+        return new View(car.getName(), car.getPosition());
     }
 }

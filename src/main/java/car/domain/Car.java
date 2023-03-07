@@ -1,8 +1,5 @@
 package car.domain;
 
-import car.ui.View;
-import car.ui.Winner;
-
 public class Car {
 
     private static final int DEFAULT_POSITION = 0;
@@ -15,8 +12,7 @@ public class Car {
     }
 
     public Car(Name name) {
-        this.name = name;
-        this.position = new Position(DEFAULT_POSITION);
+        this(name, new Position(DEFAULT_POSITION));
     }
 
     public void move() {
@@ -34,12 +30,12 @@ public class Car {
     public int findPosition() {
         return this.position.getPosition();
     }
-
-    public View toView() {
-        return new View(this.name, this.position);
+    
+    public Name getName() {
+        return name;
     }
 
-    public Winner toWinner() {
-        return new Winner(this.name);
+    public Position getPosition() {
+        return position;
     }
 }

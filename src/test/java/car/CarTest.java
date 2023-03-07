@@ -53,7 +53,7 @@ class CarTest {
 
     @ParameterizedTest
     @CsvSource(value = {"씽씽카,현대자동차"}, delimiter = ',')
-    void 자동차_객체의_이름은_5자_미만이여야_한다(String successCase, String failCase) {
+    void 자동차_객체_생성_시_이름_길이를_검증한다(String successCase, String failCase) {
         Name name = new Name(successCase);
         assertThatThrownBy(() -> new Name(failCase))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -64,7 +64,7 @@ class CarTest {
     void 자동차의_위치상태를_출력한다() {
         // given
         Car car = new Car(new Name("씽씽카"), new Position(3));
-        View view = car.toView();
+        View view = View.from(car);
         String actual = view.printStatus();
         assertThat(actual).isEqualTo("씽씽카 : ---");
     }
