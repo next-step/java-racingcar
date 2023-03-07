@@ -54,13 +54,13 @@ public class Racing {
         System.out.println(result);
     }
 
-    public List<Car> getChampions(List<Car> cars, int bestPosition) {
+    private List<Car> getChampions(List<Car> cars, int bestPosition) {
         return cars.stream()
                 .filter(o -> o.getPosition() == bestPosition)
                 .collect(Collectors.toList());
     }
 
-    public int getBestPosition(List<Car> cars) {
+    private int getBestPosition(List<Car> cars) {
         return cars.stream()
                 .mapToInt(Car::getPosition)
                 .max().orElse(0);
