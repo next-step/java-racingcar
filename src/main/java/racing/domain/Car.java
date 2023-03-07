@@ -37,20 +37,9 @@ public class Car {
         return isMove;
     }
 
-    public String getPositionFormat(){
-        return name + " : " + translatePosition(this.position);
-    }
 
-    public String translatePosition(int position){
 
-        StringBuilder sb = new StringBuilder();
 
-        for(int i = 0; i < position; i++){
-            sb.append("-");
-        }
-
-        return sb.toString();
-    }
 
     public String getName() {
         return name;
