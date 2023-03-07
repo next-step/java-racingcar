@@ -1,4 +1,4 @@
-package racing;
+package racing.domain;
 
 import java.util.Random;
 
@@ -30,7 +30,7 @@ public class Car implements Comparable<Car> {
         }
     }
 
-    public void print() {
+    public void printLocation() {
         String stringBuilder = name + " : " + "-".repeat(Math.max(INITIAL_LOCATION, location));
         System.out.println(stringBuilder);
     }

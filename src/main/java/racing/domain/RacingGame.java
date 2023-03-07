@@ -1,4 +1,4 @@
-package racing;
+package racing.domain;
 
 
 import java.util.List;
@@ -6,14 +6,12 @@ import java.util.Optional;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-public class Race {
+public class RacingGame {
     private final List<Car> participationCars;
-    private final int count;
     private final Random random;
 
-    public Race(List<Car> participationCars, int count, Random random) {
+    public RacingGame(List<Car> participationCars, Random random) {
         this.participationCars = participationCars;
-        this.count = count;
         this.random = random;
     }
 
