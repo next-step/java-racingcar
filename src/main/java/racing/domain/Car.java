@@ -2,9 +2,9 @@ package racing.domain;
 
 public class Car {
 
-    public final String name;
+    private final String name;
 
-    public final int moveOption;
+    private final int moveOption;
 
     private int position;
 
@@ -36,10 +36,6 @@ public class Car {
 
         return isMove;
     }
-
-
-
-
 
     public String getName() {
         return name;

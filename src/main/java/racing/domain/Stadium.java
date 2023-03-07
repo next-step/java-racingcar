@@ -4,39 +4,27 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Stadium {
-    private final List<Car> cars;
+    private final CarCollection carCollection;
     private final int totalRound;
     private final StadiumMoveOption stadiumMoveOption;
 
     private int round;
 
     // 이름리스트를 초기값으로 받는 버전
-    public Stadium(String names, int totalRound){
-        this(initCars(names),
-                totalRound,
-                new RandomStadiumMoveOptionImpl());
+    public Stadium(CarCollection carCollection, int totalRound){
+        this(carCollection, totalRound, new RandomStadiumMoveOptionImpl());
     }
 
     // 차 리스트를 초기로 받는 버전
-    public Stadium(List<Car> cars, int totalRound, StadiumMoveOption stadiumMoveOption){
-        this.cars = cars;
+    public Stadium(CarCollection carCollection, int totalRound, StadiumMoveOption stadiumMoveOption){
+        this.carCollection = carCollection;
         this.totalRound = totalRound;
         this.stadiumMoveOption = new RandomStadiumMoveOptionImpl();
 
         this.round = 0;
     }
 
-    private static List<Car> initCars(String inputCarNames){
-        String[] names = inputCarNames.split(",");
 
-        List<Car> cars = new ArrayList<>();
-
-        for (int i = 0; i < names.length; i++) {
-            cars.add(new Car(names[i]));
-        }
-
-        return cars;
-    }
 
     public List<Car> racingCars(){
 
@@ -46,11 +34,11 @@ public class Stadium {
 
         round++;
 
-        for(Car car : cars){
+        for(Car car : carCollection.getCars()){
             car.move(stadiumMoveOption.getValue());
         }
 
-        return cars;
+        return carCollection.getCars();
     }
 
     public boolean isRacingEnd() {
@@ -64,14 +52,14 @@ public class Stadium {
     }
 
     public int getMaxCarPosition() {
-        return cars.stream()
+        return carCollection.getCars().stream()
                 .mapToInt(x -> x.getPosition())
                 .max()
                 .orElseThrow(NoSuchElementException::new);
     }
 
     public List<Car> getSpecificLocationCars(int position) {
-        return cars.stream()
+        return carCollection.getCars().stream()
                 .filter(car -> car.getPosition() == position)
                 .collect(Collectors.toList());
     }

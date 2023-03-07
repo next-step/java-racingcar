@@ -1,9 +1,9 @@
 package racing;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.domain.Car;
+import racing.domain.CarCollection;
 import racing.domain.Stadium;
 
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class StadiumTest {
         cars.add(new Car("lucas", maxPosition));
         cars.add(new Car("kai"));
 
-        Stadium stadium = new Stadium(cars, 2, () -> { return 1;});
+        Stadium stadium = new Stadium(new CarCollection(cars), 2, () -> { return 1;});
 
         assertEquals(stadium.getMaxCarPosition(), maxPosition);
     }
@@ -44,7 +44,7 @@ public class StadiumTest {
         cars.add(new Car("cas",  testPosition));
         cars.add(new Car("kai", defaultPosition));
 
-        Stadium stadium = new Stadium(cars, 2, () -> { return 1;});
+        Stadium stadium = new Stadium(new CarCollection(cars), 2, () -> { return 1;});
 
         List<Car> actaul1 = stadium.getSpecificLocationCars(0);
         List<Car> actaul2 = stadium.getSpecificLocationCars(testPosition);
@@ -65,7 +65,7 @@ public class StadiumTest {
         cars.add(new Car("cas", defaultPosition));
         cars.add(new Car("kai", defaultPosition));
 
-        Stadium stadium = new Stadium(cars, 5, () -> { return 1;} );
+        Stadium stadium = new Stadium(new CarCollection(cars), 5, () -> { return 1;} );
 
         List<Car> actual = stadium.getWinner();
 
@@ -87,7 +87,7 @@ public class StadiumTest {
         cars.add(new Car("cas", winnerPosition));
         cars.add(new Car("kai", defaultPosition));
 
-        Stadium stadium = new Stadium(cars, 5, () -> { return 1;} );
+        Stadium stadium = new Stadium(new CarCollection(cars), 5, () -> { return 1;} );
 
         List<Car> actual = stadium.getWinner();
 
@@ -110,7 +110,7 @@ public class StadiumTest {
         cars.add(new Car("cas", winnerPosition));
         cars.add(new Car("kai", defaultPosition));
 
-        Stadium stadium = new Stadium(cars, 5, () -> { return 1;} );
+        Stadium stadium = new Stadium(new CarCollection(cars), 5, () -> { return 1;} );
 
 
         List<Car> actualCars = stadium.racingCars();
@@ -137,7 +137,7 @@ public class StadiumTest {
         cars.add(new Car("cas", winnerPosition));
         cars.add(new Car("kai", defaultPosition));
 
-        Stadium stadium = new Stadium(cars, 1, () -> { return 1;} );
+        Stadium stadium = new Stadium(new CarCollection(cars), 1, () -> { return 1;} );
         
         assertThatExceptionOfType(IllegalCallerException.class)
                 .isThrownBy(() -> {
@@ -163,7 +163,7 @@ public class StadiumTest {
 
         int totalRound = 1;
 
-        Stadium stadium = new Stadium(cars, totalRound, () -> { return 1;} );
+        Stadium stadium = new Stadium(new CarCollection(cars), totalRound, () -> { return 1;} );
 
         assertFalse(stadium.isRacingEnd());
 

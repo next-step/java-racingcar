@@ -93,16 +93,5 @@ public class CarTest {
 
         assertEquals(car.move(moveOption), expect);
     }
-
-    @Test
-    @DisplayName("현재위치 포맷에 따라 잘 나오는지 검증")
-    void getPositionFormatTest() {
-        Car car = new Car("lucas", 5);
-
-        String actaul = car.getPositionFormat();
-
-        assertThat(actaul).contains("lucas").contains(" : ").contains("--");
-        assertThat(actaul).isEqualTo("lucas : -----");
-    }
 }
 

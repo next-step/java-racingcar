@@ -1,5 +1,6 @@
 package racing;
 
+import racing.domain.CarCollection;
 import racing.domain.Stadium;
 import racing.view.CarRacingConsoleView;
 
@@ -12,7 +13,7 @@ public class StadiumController {
         String carNames = view.inputCarNames();
         int round = view.inputRound();
 
-        Stadium stadium = new Stadium(carNames, round);
+        Stadium stadium = new Stadium(new CarCollection(CarCollection.initCars(carNames)), round);
 
         view.beforeRacing();
         while(!stadium.isRacingEnd()){
