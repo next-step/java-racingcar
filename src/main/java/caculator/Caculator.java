@@ -6,28 +6,38 @@ import java.util.List;
 import static java.lang.Integer.parseInt;
 
 public class Caculator {
-
+    private static final String DEFAULT_DELIMITER = " ";
     private String[] inputList ;
+    private float result;
 
     public float caculator(String input) {
-        if (input == null || input.isEmpty())
-            throw new IllegalArgumentException("입력 값이 null 이거나 비어있습니다.");
-        inputList = input.split(" ");
-        float result = 0;
+        validate(input);
+        inputList = input.split(DEFAULT_DELIMITER);
+        result = 0;
         String sign = "";
-        for(String s: inputList) {
-            int number = 0;
-            try {
-                number = parseInt(s);
-                result = innerCaclurator(number, result, sign);
-            } catch (NumberFormatException e) {
-                sign = s;
-            }
+        for(String string : inputList) {
+            sign = calculatorWithSign(string, sign);
         }
         return result;
     }
 
-    float innerCaclurator(int number, float result, String sign) {
+    private String calculatorWithSign(String input, String sign) {
+        int number = 0;
+        try {
+            number = parseInt(input);
+            result = innerCaclurator(number, result, sign);
+        } catch (NumberFormatException e) {
+            sign = input;
+        }
+        return sign;
+    }
+    private void validate(String input) {
+        if (input == null || input.isEmpty()) {
+            throw new IllegalArgumentException("입력 값이 null 이거나 비어있습니다.");
+        }
+    }
+
+    private float innerCaclurator(int number, float result, String sign) {
         if (sign.equals("+"))
             return sum(result, number);
         if (sign.equals("-"))
