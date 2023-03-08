@@ -21,11 +21,12 @@ public class RacingCar implements Comparable{
         RacingCar racingCar = (RacingCar) o;
         if(this.runCount > racingCar.runCount)//길이 비교
             return 1;
-        else if(this.runCount < racingCar.runCount)
+        if(this.runCount < racingCar.runCount)
             return -1;
-        else {
+        if(this.runCount == racingCar.runCount) {
             return 0;
         }
+        return 0;
     }
 
     public int compareRacingCarListWithNum(List<RacingCar> racingCars){
