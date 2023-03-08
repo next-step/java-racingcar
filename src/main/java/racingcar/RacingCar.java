@@ -9,6 +9,10 @@ public class RacingCar implements Comparable{
     public RacingCar(String name){
         this.name = name;
     }
+    public RacingCar(String name, int runCount){
+        this.name = name;
+        this.runCount = runCount;
+    }
 
     public void run(){
         if(RacingRandom.randomizeTenBegger() >= 4){
