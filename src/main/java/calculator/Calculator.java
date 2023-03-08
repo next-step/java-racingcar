@@ -12,8 +12,20 @@ import java.util.*;
 // 예를 들어 "2 + 3 * 4 / 2"와 같은 문자열을 입력할 경우 2 + 3 * 4 / 2 실행 결과인 10을 출력해야 한다.
 public class Calculator {
     private Stack<Character> stack;
+    private double result;
+    private DecisionType decisionType;
+    private CalculatorInputType prevCalculatorInputType;
+    private int cur;
 
-    private double process(double number, DecisionType decisionType){
+    public Calculator(){
+        this.stack = new Stack<>();
+        this.result = 0;
+        this.decisionType = DecisionType.NONE;
+        this.prevCalculatorInputType = CalculatorInputType.NONE;
+        this.cur = 0;
+    }
+
+    private double calculate(double number, DecisionType decisionType){
         OneLineSolver oneLineSolver = new OneLineSolver();
         StringBuilder sb = new StringBuilder();
         while(!stack.isEmpty()){
@@ -28,41 +40,35 @@ public class Calculator {
         if(input.length() == 0){
             throw new Exception("계산할 대상이 없습니다. input length : 0");
         }
-
-        stack = new Stack<>();
-        double result = 0;
-        DecisionType decisionType = DecisionType.NONE;
-        CalculatorInputType prevCalculatorInputType = CalculatorInputType.NONE;
         int len = input.length();
-        int cur = 0;
 
         for( char ch : input.toCharArray()){
             CalculatorInputType check = CalculatorInputTypeChecker.check(ch);
-            switch (check){
-                case EMPTY:
-                    switch(prevCalculatorInputType){
-                        case NUMBER: // "6' '+ 8-"
-                            result = process(result, decisionType);
-                            break;
-                        case CALCULATE: // "6 +' '8 -"
-                            break;
-                    }
-                    break;
-                case NUMBER:
-                    stack.push(ch);
-                    if(cur == len - 1){
-                        result = process(result, decisionType);
-                    }
-                    break;
-                case CALCULATE:
-                    decisionType = DecisionTypeChecker.check(ch);
-                    break;
-                case ERROR:
-                    break;
+            if(check.equals(CalculatorInputType.EMPTY)){
+                emptyInputSolve();
+            }
+            if(check.equals(CalculatorInputType.NUMBER)){
+                numberInputSolve(ch, len);
+            }
+            if(check.equals(CalculatorInputType.CALCULATE)){
+                decisionType = DecisionTypeChecker.check(ch);
             }
             cur++;
             prevCalculatorInputType = check;
         }
         return result;
+    }
+
+    private void emptyInputSolve() {
+        if(prevCalculatorInputType.equals(CalculatorInputType.NUMBER)){
+            result = calculate(result, decisionType);
+        }
+    }
+
+    private void numberInputSolve(char ch, int len) {
+        stack.push(ch);
+        if(cur == len - 1){
+            result =  calculate(result, decisionType);
+        }
     }
 }
