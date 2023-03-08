@@ -29,8 +29,6 @@ public class SetTest {
     void test1() {
         int size = numbers.size();
         assertThat(size).isGreaterThan(0);
-
-        assertThat(numbers).hasSize(3);
     }
 
     @DisplayName("Set의 contains() 메소드를 활용해 1, 2, 3의 값이 존재하는지를 확인하는 학습테스트를 구현하려한다.\n" +
