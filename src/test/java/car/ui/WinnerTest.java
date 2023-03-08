@@ -1,8 +1,10 @@
-package car.domain;
+package car.ui;
 
+import car.domain.Car;
+import car.domain.Cars;
+import car.domain.Name;
+import car.domain.Position;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayNameGeneration;
-import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -10,8 +12,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-class CarsTest {
+class WinnerTest {
 
     private Cars cars;
 
@@ -25,16 +26,11 @@ class CarsTest {
     }
 
     @Test
-    void 일급객체가_관리하는_자동차의_크기를_구한다() {
-        assertThat(cars.getParticipants()).hasSize(3);
-    }
-    
-    @Test
-    void 자동차_경주_최대_위치값을_구한다() {
+    void 자동차_경주_우승자를_구한다() {
         // when
-        int maxPosition = cars.getMaxPosition();
+        List<Winner> winners = cars.getWinners();
 
         // then
-        assertThat(maxPosition).isEqualTo(5);
+        assertThat(winners).hasSize(2);
     }
 }

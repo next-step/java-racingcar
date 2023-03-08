@@ -4,7 +4,7 @@ import car.domain.Car;
 import car.domain.Cars;
 import car.domain.Name;
 import car.domain.RacingGame;
-import car.domain.condition.RandomMovingStrategyImpl;
+import car.domain.condition.RandomRacingGameStrategyImpl;
 import car.ui.GameResult;
 import car.ui.Winner;
 
@@ -17,7 +17,7 @@ public class RacingGameService {
         validateMoveCount(moveCount);
         List<Car> participants = validateCarNames(carNames);
         Cars cars = Cars.of(participants);
-        RacingGame racingGame = new RacingGame(new RandomMovingStrategyImpl(), cars);
+        RacingGame racingGame = new RacingGame(new RandomRacingGameStrategyImpl(), cars);
         return racingGame.play(moveCount);
     }
 

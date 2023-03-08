@@ -1,6 +1,6 @@
 package car.domain;
 
-import car.domain.condition.RandomMovingStrategyImpl;
+import car.domain.condition.RandomRacingGameStrategyImpl;
 import car.ui.GameResult;
 import car.ui.Winner;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
@@ -25,7 +27,7 @@ class RacingGameTest {
         participants.add(new Car(new Name("쏘카")));
         participants.add(new Car(new Name("그린카")));
         cars = Cars.of(participants);
-        game = new RacingGame(new RandomMovingStrategyImpl(), cars);
+        game = new RacingGame(new RandomRacingGameStrategyImpl(), cars);
     }
 
     @Test
@@ -33,6 +35,10 @@ class RacingGameTest {
         // given
         int moveCount = 5;
 
+        // when
         GameResult<List<Winner>> result = game.play(moveCount);
+
+        // then
+        assertThat(result.getWinners()).hasSizeGreaterThan(0);
     }
 }

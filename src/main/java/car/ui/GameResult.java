@@ -9,4 +9,8 @@ public class GameResult<T> {
         this.totalCount = totalCount;
         this.data = data;
     }
+
+    public T getWinners() {
+        return data;
+    }
 }

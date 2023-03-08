@@ -30,12 +30,16 @@ public class Car {
     public int findPosition() {
         return this.position.getPosition();
     }
-    
+
     public Name getName() {
         return name;
     }
 
     public Position getPosition() {
         return position;
+    }
+
+    public int getCurrentPosition() {
+        return this.position.getPosition();
     }
 }

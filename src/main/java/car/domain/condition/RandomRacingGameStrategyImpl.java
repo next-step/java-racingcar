@@ -7,7 +7,7 @@ import car.utils.RandomUtils;
 
 import java.util.List;
 
-public class RandomMovingStrategyImpl implements RacingGameStrategy {
+public class RandomRacingGameStrategyImpl implements RacingGameStrategy {
 
     private static final int BOUNDARY_VALUE = 10;
     private static final int SATISFIED_VAL = 4;
