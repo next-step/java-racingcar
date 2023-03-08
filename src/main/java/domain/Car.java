@@ -3,7 +3,6 @@ package domain;
 public class Car {
     String name;
     int distance;
-    final int RANDOM_POVOT_NUMBER = 4;
 
     public Car(String name) {
         this.name = name;
@@ -27,7 +26,7 @@ public class Car {
     }
 
     public boolean isMove(int randomNumber) {
-        if (randomNumber >= RANDOM_POVOT_NUMBER)
+        if (randomNumber >= 4)
             return true;
 
         return false;
