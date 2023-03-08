@@ -76,7 +76,6 @@ public class RacingCarTest {
     @ValueSource(ints = { 0, 1, 2, 3 })
     void isMoveFalseTest(int input) {
         Car car = new Car("pobi");
-        car.isMove(input);
         assertThat(car.isMove(input)).isFalse();
     }
 
