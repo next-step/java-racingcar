@@ -45,7 +45,7 @@ public class Racing{
         while(tryCountStart < tryCount){
             for(RacingCar racingCar : list){
                 racingCar.run();
-                racingCar.print();
+                RacingCarPrinter.printNameAndRunCount(racingCar);
             }
             tryCountStart++;
             System.out.println();

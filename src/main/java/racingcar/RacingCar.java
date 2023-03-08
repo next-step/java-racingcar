@@ -16,18 +16,6 @@ public class RacingCar implements Comparable{
         }
     }
 
-    public void print(){
-        StringBuilder sb = new StringBuilder();
-        sb.append(name.toString());
-        sb.append(" : ");
-        int startCount = 0;
-        while( startCount < runCount){
-            sb.append('-');
-            startCount++;
-        }
-        System.out.println(sb.toString());
-    }
-
     @Override
     public int compareTo(Object o){
         RacingCar racingCar = (RacingCar) o;
@@ -52,5 +40,8 @@ public class RacingCar implements Comparable{
 
     public String whoAmI(){
         return name.toString();
+    }
+    public int getRunCount(){
+        return runCount;
     }
 }
