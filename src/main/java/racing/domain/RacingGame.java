@@ -19,13 +19,13 @@ public class RacingGame {
         participationCars.forEach(c -> c.move(random));
     }
 
-    public List<Car> getParticipationCars() {
-        return this.participationCars;
-    }
-
     public List<Car> getRacingWinners() {
         Optional<Car> max = participationCars.stream().max(Car::compareTo);
         Car winner = max.orElseThrow();
         return participationCars.stream().filter(c -> c.isEqualLocation(winner)).collect(Collectors.toList());
+    }
+
+    public String toStringForPrintLocation() {
+        return participationCars.stream().map(Car::printLocation).collect(Collectors.joining("\n"));
     }
 }

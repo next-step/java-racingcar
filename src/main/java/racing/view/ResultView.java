@@ -9,8 +9,7 @@ import java.util.stream.Collectors;
 public class ResultView {
 
     public static void printCarsLocation(final RacingGame racingGame) {
-        racingGame.getParticipationCars().forEach(Car::printLocation);
-        System.out.println();
+        System.out.println(racingGame.toStringForPrintLocation() + "\n");
     }
 
     public static void printRacingWinners(List<Car> racingWinners) {
