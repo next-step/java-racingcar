@@ -1,12 +1,10 @@
-package racing;
+package racing.domain;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-
-import java.util.List;
 import java.util.Random;
 
 class CarTest {
@@ -34,21 +32,6 @@ class CarTest {
         Car carB = new Car("carB", 1);
 
         Assertions.assertThat(carA.isEqualLocation(carB)).isTrue();
-    }
-
-    @Test
-    @DisplayName("위치가 가장 높은 차가 우승자가 된다.")
-    void getRacingWinners() {
-        Car carA = new Car("carA", 1);
-        Car carB = new Car("carB", 2);
-        Car carC = new Car("carC", 5);
-        Car carD = new Car("carD", 5);
-        List<Car> racingCars = List.of(carA, carB, carC, carD);
-
-        Race race = new Race(racingCars, 0, new Random());
-        List<Car> racingWinners = race.getRacingWinners();
-
-        Assertions.assertThat(racingWinners).containsExactly(carC, carD);
     }
 
     @DisplayName("랜덤값이 4이상일때 움직인다.")
