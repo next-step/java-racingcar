@@ -22,10 +22,14 @@ public class StringCalcurator {
             throw new IllegalArgumentException("입력값이 null이거나 빈 공백 문자입니다.");
     }
 
+    private List<String> getListString(String input) {
+        return Arrays.asList(input.split(" "));
+    }
+
     public int calc(String strInput) {
         validateInput(strInput);
 
-        List<String> input = Arrays.asList(strInput.split(" "));
+        List<String> input = getListString(strInput);
 
         validateNumberAndSign(input);
 
