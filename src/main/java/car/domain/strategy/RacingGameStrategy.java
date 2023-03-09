@@ -1,4 +1,4 @@
-package car.domain.condition;
+package car.domain.strategy;
 
 import car.domain.Cars;
 

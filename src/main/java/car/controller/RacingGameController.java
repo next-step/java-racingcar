@@ -1,10 +1,7 @@
 package car.controller;
 
 import car.service.RacingGameService;
-import car.ui.GameResult;
-import car.ui.Winner;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class RacingGameController {
@@ -18,6 +15,6 @@ public class RacingGameController {
         int moveCount = sc.nextInt();
 
         RacingGameService gameService = new RacingGameService();
-        GameResult<List<Winner>> result = gameService.start(carNames, moveCount);
+        gameService.start(carNames, moveCount);
     }
 }

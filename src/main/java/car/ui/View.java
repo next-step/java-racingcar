@@ -14,8 +14,9 @@ public class View {
         this.position = position;
     }
 
-    public String printStatus() {
-        return String.format("%s : %s", this.name.getName(), getPosition());
+    public void printStatus() {
+        String status = String.format("%s : %s", this.name.getName(), getPosition());
+        System.out.println(status);
     }
 
     private String getPosition() {

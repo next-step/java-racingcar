@@ -2,6 +2,11 @@ package calculator;
 
 public class Calculator {
 
+    private static final String PLUS = "+";
+    private static final String MINUS = "-";
+    private static final String MULTIPLY = "*";
+    private static final String DIVIDE = "/";
+
     private Calculator() {
     }
 
@@ -22,17 +27,23 @@ public class Calculator {
     }
 
     static Number calculate(Number number1, String operator, Number number2) {
-        switch (operator) {
-            case "+":
-                return Calculator.add(number1, number2);
-            case "-":
-                return Calculator.subtract(number1, number2);
-            case "*":
-                return Calculator.multiply(number1, number2);
-            case "/":
-                return Calculator.divide(number1, number2);
-            default:
-                throw new IllegalArgumentException("해당 연산자는 존재하지 않습니다 operator = " + operator);
+
+        if (PLUS.equals(operator)) {
+            return Calculator.add(number1, number2);
         }
+
+        if (MINUS.equals(operator)) {
+            return Calculator.subtract(number1, number2);
+        }
+
+        if (MULTIPLY.equals(operator)) {
+            return Calculator.multiply(number1, number2);
+        }
+
+        if (DIVIDE.equals(operator)) {
+            return Calculator.divide(number1, number2);
+        }
+        
+        throw new IllegalArgumentException("해당 연산자는 존재하지 않습니다 operator = " + operator);
     }
 }

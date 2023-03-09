@@ -12,9 +12,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -25,11 +22,8 @@ class CarTest {
 
     @BeforeEach
     void setUp() {
-        List<Car> participants = new ArrayList<>();
-        participants.add(new Car(new Name("씽씽카"), new Position(3)));
-        participants.add(new Car(new Name("쏘카"), new Position(1)));
-        participants.add(new Car(new Name("그린카"), new Position(5)));
-        cars = Cars.of(participants);
+        String carNames = "씽씽카,쏘카,그린카";
+        cars = Cars.of(carNames);
     }
 
     @ParameterizedTest
@@ -101,12 +95,12 @@ class CarTest {
     void 자동차_위치값을_증가시킨다() {
 
         //given
-        Car car1 = new Car(new Name("쏘카"));
+        Car car = new Car(new Name("쏘카"));
 
         //when
-        car1.move();
+        car.move();
 
         //then
-        assertThat(car1.getCurrentPosition()).isEqualTo(1);
+        assertThat(car.getCurrentPosition()).isEqualTo(1);
     }
 }
