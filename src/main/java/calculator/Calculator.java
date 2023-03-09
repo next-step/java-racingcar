@@ -9,23 +9,6 @@ import java.util.stream.IntStream;
 public class Calculator {
     final static String DELIMITER = " ";
 
-    public enum Operation {
-        ADD("+"){public int operate(int x,int y){return x+y;}},
-        SUB("-"){public int operate(int x,int y){return x-y;}},
-        MULTIPLY("*"){public int operate(int x,int y){return x*y;}},
-        DIVIDE("/"){public int operate(int x,int y){return x/y;}};
-        private final String opertaion;
-
-        Operation(String operation){
-            this.opertaion = operation;
-        }
-
-        public String getOpertaion() {
-            return opertaion;
-        }
-
-        abstract int operate(int x, int y);
-    }
     public void start() {
         //입력값
         Scanner scanner = new Scanner(System.in);
@@ -39,23 +22,23 @@ public class Calculator {
         Arrays.stream(actuals).forEach(actual -> {actualValidate(actual);});
 
         List<Integer> numsList = splitNumber(actuals);
-        List<String> oprnList = splitOperation(actuals);
+        List<String> operationList = splitOperation(actuals);
 
-        var result = numsList.get(0);
-        for(var i = 1; i<numsList.size(); i++){
-            result = calculator(result, numsList.get(i), oprnList.get(i - 1));
+        if(numsList.size()-1 != operationList.size()){
+            throw new IllegalArgumentException("연산기호와 숫자의 갯수가 맞지않습니다.");
         }
 
+        int result = getResult(numsList, operationList);
         System.out.println("연산결과:"+result);
     }
 
-    private void inputValidate(String input) {
-        if(input.isEmpty() || input == null){
+    public void inputValidate(String input) {
+        if(input.isEmpty() || input.isBlank()){
             throw new IllegalArgumentException("입력값이 없습니다.");
         }
     }
 
-    private void actualValidate(String actual) {
+    public void actualValidate(String actual) {
         if(!actual.matches("\\d*") && !actual.matches("[+\\-*/]")){
             throw new IllegalArgumentException("사칙연산 기호가 아닌 값이 입력되었습니다.");
         }
@@ -69,12 +52,38 @@ public class Calculator {
         return Arrays.stream(actuals).filter(operation-> operation.matches("[+\\-*/]")).collect(Collectors.toList());
     }
 
-    public int calculator(int num1, int num2, String oprn) {
-        var result = 0;
-        for(Operation op : Operation.values()){
-            if(oprn.equals(op.getOpertaion())) result = op.operate(num1,num2);
+    public int calculate(int num1, int num2, String operation) {
+        switch (operation){
+            case "-": return sub(num1,num2);
+            case "+": return add(num1,num2);
+            case "*": return multiply(num1,num2);
+            case "/": return divide(num1,num2);
+            default:
+                return 0;
         }
-        System.out.println("reslut"+result);
+    }
+
+    public int getResult(List<Integer> numsList, List<String> operationList) {
+        var result = numsList.get(0);
+        for(var i = 1; i< numsList.size(); i++){
+            result = calculate(result, numsList.get(i), operationList.get(i - 1));
+        }
         return result;
+    }
+
+    private int sub(int num1, int num2) {
+        return num1-num2;
+    }
+
+    private int add(int num1, int num2) {
+        return num1+num2;
+    }
+
+    private int multiply(int num1, int num2) {
+        return num1*num2;
+    }
+
+    private int divide(int num1, int num2) {
+        return num1/num2;
     }
 }

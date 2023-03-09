@@ -22,19 +22,13 @@ public class RacingCar {
         }
 
         System.out.print("\n최종 우승자 : ");
-        System.out.println(getWinners(carList,count));
+        System.out.println(getWinners(carList));
     }
     public List<Car> makeCarList(String carNames) {
-        List<String> carNameList = makeCarNameList(carNames);
-
-        List<Car> carList = carNameList.stream().map(carName -> new Car(carName, 0)).collect(Collectors.toList());
+        String[] carNameArr = carNames.trim().split(DELIMITER);
+        List<Car> carList = Arrays.stream(carNameArr).map(carName -> new Car(carName, 0)).collect(Collectors.toList());
 
         return carList;
-    }
-
-    public List<String> makeCarNameList(String carNames) {
-        String[] carNameArr = carNames.trim().split(DELIMITER);
-        return Arrays.stream(carNameArr).collect(Collectors.toList());
     }
 
     public void excuteCarRacing(List<Car> carList) {
@@ -53,7 +47,7 @@ public class RacingCar {
         }
     }
 
-    public String getWinners(List<Car> carList, int count) {
+    public String getWinners(List<Car> carList) {
         List<String> winnerList = new ArrayList<>();
         OptionalInt maxValue = carList.stream().mapToInt(Car::getPosition).max();
         carList.stream().filter(car->(car.getPosition() == maxValue.getAsInt())).forEach( car -> winnerList.add(car.getName()));
