@@ -1,5 +1,6 @@
 package racingCar;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -11,6 +12,12 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class RacingCarTest {
     RacingCar racingCar;
 
+    @DisplayName("자동차는 이름을 가진다.")
+    @Test
+    void Name(){
+        var car = new Car("jason",0);
+        assertThat(car.getName()).isEqualTo("jason");
+    }
     @Test
     void makeCarListTest(){
         //given

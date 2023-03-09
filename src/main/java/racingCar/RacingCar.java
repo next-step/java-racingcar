@@ -1,16 +1,12 @@
 package racingCar;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class RacingCar {
+    final static String DELIMITER = ",";
 
-    final static int nameLength = 5;
-    public static void main(String[] args) {
-
+    public void startGame(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String carNames = scanner.nextLine();
@@ -27,47 +23,42 @@ public class RacingCar {
 
         System.out.print("\n최종 우승자 : ");
         System.out.println(getWinners(carList,count));
-
     }
-    public static List<Car> makeCarList(String carNames) {
+    public List<Car> makeCarList(String carNames) {
         List<String> carNameList = makeCarNameList(carNames);
+
         List<Car> carList = carNameList.stream().map(carName -> new Car(carName, 0)).collect(Collectors.toList());
 
         return carList;
     }
 
-    public static List<String> makeCarNameList(String carNames) {
-        String[] carNameArr = carNames.split(",");
-        Arrays.<String>stream(carNameArr).filter(carName -> (carName.length()>nameLength)).forEach(carName -> {
-            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
-        });
-
+    public List<String> makeCarNameList(String carNames) {
+        String[] carNameArr = carNames.trim().split(DELIMITER);
         return Arrays.stream(carNameArr).collect(Collectors.toList());
     }
 
-    public static void excuteCarRacing(List<Car> carList) {
+    public void excuteCarRacing(List<Car> carList) {
         carList.forEach(car -> {
-            int cnt = (int)(Math.random() * 9);
-            if(cnt>=4) car.location += 1;
-
-            System.out.print("\n"+car.name+" : ");
-            printLocation(car.location);
+            car.move();
+            System.out.print("\n"+car.getName()+" : ");
+            printLocation(car.getPosition());
         });
 
         System.out.println("");
     }
 
-    private static void printLocation(int location) {
+    private void printLocation(int location) {
         for(int i=0;i<location;i++){
             System.out.print("-");
         }
     }
 
-    public static String getWinners(List<Car> carList, int count) {
+    public String getWinners(List<Car> carList, int count) {
         List<String> winnerList = new ArrayList<>();
-        carList.stream().filter(car->(car.location==count)).forEach(car -> winnerList.add(car.name));
+        OptionalInt maxValue = carList.stream().mapToInt(Car::getPosition).max();
+        carList.stream().filter(car->(car.getPosition() == maxValue.getAsInt())).forEach( car -> winnerList.add(car.getName()));
 
         return String.join(",",winnerList);
     }
-}
+};
 
