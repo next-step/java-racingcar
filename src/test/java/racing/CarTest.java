@@ -1,36 +1,48 @@
 package racing;
 
 import org.assertj.core.api.Assertions;
-import org.assertj.core.api.NumberAssert;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.junit.jupiter.api.Assertions.*;
+public class CarTest {
 
-class CarTest {
-
-    Car car;
-
-    @Test
-    @DisplayName("5자리 초과한 경우 정상적으로 오류체크 되는지 확인")
-    void 자동차이름자리수체크() {
-        Assertions.assertThat(new Car("Tommy"));
-        Assertions.assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new Car("TommyBear"));
+    @ParameterizedTest
+    @ValueSource(strings = {"Tommy", "tommy", "bear"})
+    @DisplayName("자동차 이름을 가진다")
+    void setCarName(String name) {
+        final Car car = new Car(name);
+        Assertions.assertThat(car.getName()).isEqualTo(name);
     }
 
-    @Test
-    @DisplayName("무작위값이 0~9사이값이 나오는지 테스트")
-    void 무작위랜던값확인() {
-        for (int i = 0; i < 100000; i++) {
-            Assertions.assertThat((int) (Math.random() * 10)).isBetween(0, 9);
-        }
+    @ParameterizedTest
+    @ValueSource(strings = {"TommyBear", "tommybear", "bear.tommy"})
+    @DisplayName(("자동차 이름은 5글자를 초과할 수 없다"))
+    void impossibleCarName(String name) {
+        Assertions.assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
+            Car car = new Car(name);
+        });
     }
 
-    @Test
-    void statusPrint() {
-        car = new Car("Tommy", 8);
-        String resultText = car.statusPrint();
-        Assertions.assertThat(resultText).isEqualTo("Tommy : 8");
+    @ParameterizedTest
+    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
+    @DisplayName("자동차가 전진하는지 확인")
+    void moveCar(int number) {
+        final Car car = new Car("tommy");
+        Assertions.assertThat(car.getPosition()).isZero();
+
+        car.move(number);
+        Assertions.assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    @DisplayName("자동차가 전진하지 않는지 확인")
+    void notMoveCar(int number) {
+        final Car car = new Car("tommy");
+        Assertions.assertThat(car.getPosition()).isZero();
+
+        car.move(number);
+        Assertions.assertThat(car.getPosition()).isEqualTo(0);
     }
 }
