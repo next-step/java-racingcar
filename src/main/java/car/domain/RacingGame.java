@@ -1,54 +1,39 @@
 package car.domain;
 
-import car.Car;
-import car.utils.RandomUtils;
+import car.domain.strategy.RacingGameStrategy;
+import car.ui.GameResult;
+import car.ui.Winner;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingGame {
+    private final RacingGameStrategy racingGameStrategy;
+    private final Cars cars;
 
-    private static final int COND_VAL = 10;
+    public RacingGame(RacingGameStrategy racingGameStrategy, Cars cars) {
+        this.racingGameStrategy = racingGameStrategy;
+        this.cars = cars;
+    }
 
-    public List<Car> play(List<Car> participants, int moveCount) {
+    public GameResult<List<Winner>> play(final int moveCount) {
+
+        validateMoveCount(moveCount);
 
         for (int i = 0; i < moveCount; i++) {
-            startMoveRandomly(participants);
+            racingGameStrategy.apply(cars);
         }
 
-        int maxPosition = getMaxPosition(participants);
-        return getWinners(participants, maxPosition);
+        cars.printPositionInfo();
+
+        List<Winner> winners = cars.getWinners();
+        System.out.println("최종 우승자: " + winners);
+        return new GameResult(winners.size(), winners);
     }
 
-    private void startMoveRandomly(List<Car> participants) {
-        participants.forEach(participant -> {
-            int randomValue = RandomUtils.generateRandomValueBy(COND_VAL);
-            participant.move(randomValue);
-        });
-        System.out.println();
-    }
 
-    public List<Car> getWinners(List<Car> participants, int maxPosition) {
-        return participants.stream().
-                filter(participant -> participant.isEqualPosition(maxPosition))
-                .collect(Collectors.toList());
-    }
-
-    public int getMaxPosition(List<Car> participants) {
-
-        int maxPosition = 0;
-
-        for (Car car : participants) {
-            maxPosition = calcMaxPosition(maxPosition, car);
+    private void validateMoveCount(int moveCount) {
+        if (moveCount < 1) {
+            throw new IllegalArgumentException("이동횟수는 1 이상이어야 합니다. moveCount: " + moveCount);
         }
-
-        return maxPosition;
-    }
-
-    private int calcMaxPosition(int maxPosition, Car car) {
-        if (car.isGreaterThan(maxPosition)) {
-            maxPosition = car.getPosition();
-        }
-        return maxPosition;
     }
 }

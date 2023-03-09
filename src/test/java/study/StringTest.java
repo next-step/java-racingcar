@@ -1,18 +1,18 @@
 package study;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 public class StringTest {
 
     @Test
     void 문자열을_콤마_기준으로_split_한다() {
-        //given
         String str = "1,2";
 
         //when
@@ -57,6 +57,7 @@ public class StringTest {
         // then
         assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
                 .isThrownBy(() -> "abc".charAt(3));
+
 
         assertThatThrownBy(() -> {
             str.charAt(3);
