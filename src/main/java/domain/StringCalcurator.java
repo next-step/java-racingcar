@@ -28,11 +28,13 @@ public class StringCalcurator {
 
     public int calc(String strInput) {
         validateInput(strInput);
-
         List<String> input = getListString(strInput);
-
         validateNumberAndSign(input);
 
+        return calc(input);
+    }
+
+    private int calc(List<String> input) {
         List<Integer> numbers = getNumbers(input);
         List<String> signs = getSigns(input);
 
