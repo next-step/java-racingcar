@@ -39,7 +39,7 @@ public class RacingGame {
         System.out.println("");
     }
 
-    public static void showWinner(List<Car> carList){
+    public static String showWinner(List<Car> carList){
 
         //Collections.sort(list, Collections.reverseOrder());
         Collections.sort(carList, new Comparator<Car>() {
@@ -64,5 +64,8 @@ public class RacingGame {
         }
 
         System.out.println("final winner : " + winnerList.toString());
+
+        return winnerList.toString();
     }
+
 }
