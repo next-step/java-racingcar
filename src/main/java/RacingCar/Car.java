@@ -8,36 +8,44 @@ public class Car {
     private static final int DEFAULT_POSITION = 0;
 
     public String name;
-    public int move;
+    public int position;
 
 
     public Car(String name){
         this(name, DEFAULT_POSITION);
-        validatename(name);
     }
 
-    public Car(String name, int move) {
+    public Car(String name, int position) {
 
-        validatename(name);
+        validateName(name);
         this.name = name;
-        this.move = move;
+        this.position = position;
 
     }
 
-    public void Move(int movecnt) {
-        if(movecnt > 4)
-            move ++;
+    public void updatePosition(int randomcnt) {
+        if(randomcnt > 4)
+            position ++;
     }
 
-    public int randomcnt() {
+    public int getPosition() {
+        return position;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getRandomValue() {
         Random random = new Random();
         return random.nextInt(10);
     }
 
-    public static void validatename(String name)
+    public void validateName(String name)
     {
-        if (name.length() > 5)
+        if (name.length() > 5) {
             throw new IllegalArgumentException("자동차의 이름은 5자 이하여야 한다.");
+        }
 
         if (name.isEmpty()) {
             throw new IllegalArgumentException();

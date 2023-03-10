@@ -26,8 +26,4 @@ public class SetTest {
         assertThat(numbers).hasSize(3);
     }
 
-    @Test
-    void contains(){
-    }
-
 }
