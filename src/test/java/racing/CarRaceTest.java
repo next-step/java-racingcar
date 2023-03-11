@@ -11,8 +11,7 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.*;
 
 public class CarRaceTest {
-    private final List<Car> cars = new ArrayList<Car>();
-    private final CarRace carRace = new CarRace();
+    private final List<Car> cars = new ArrayList<>();
 
     private final Car car1 = new Car("Tommy", 8);
     private final Car car2 = new Car("Tammy", 14);

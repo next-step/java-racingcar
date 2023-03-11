@@ -8,19 +8,12 @@ import java.util.stream.Stream;
 
 public class CarInputInfo {
     private Scanner scan = new Scanner(System.in);
-    private CarRace carRace = new CarRace();
 
-    CarRace getCarEntry() {
+    Cars getCarEntry() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)");
         String entry = scan.next();
 
-        List<String> carEntry = Stream.of(entry.split(",")).collect(Collectors.toList());
-
-        for (int i = 0; i < carEntry.size(); i++) {
-            carRace.getCars().add(new Car(carEntry.get(i)));
-        }
-
-        return carRace;
+        return new Cars(Stream.of(entry.split(",")).collect(Collectors.toList()));
     }
 
     int getTrackCount() {
@@ -36,10 +29,10 @@ public class CarInputInfo {
         System.out.println();
     }
 
-    void racing(List<Car> cars) {
-        for (int i = 0; i < cars.size(); i++) {
-            cars.get(i).move(getRandomNumber());
-            display(cars.get(i));
+    void racing(Cars cars) {
+        for (int i = 0; i < cars.getCars().size(); i++) {
+            cars.getCars().get(i).move(getRandomNumber());
+            display(cars.getCars().get(i));
         }
         System.out.println();
     }
@@ -49,9 +42,9 @@ public class CarInputInfo {
         return random.nextInt(9);
     }
 
-    void winnersDisplay(List<Car> winners) {
+    void winnersDisplay(Winners winners) {
         System.out.print("최종 우승자 : ");
-        winners.stream()
+        winners.getWinners().stream()
                 .forEach(name -> System.out.print(name.getName() + ", "));
     }
 }

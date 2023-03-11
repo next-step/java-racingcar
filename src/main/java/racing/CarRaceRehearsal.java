@@ -1,21 +1,20 @@
 package racing;
 
-import java.util.List;
-
 public class CarRaceRehearsal {
     public static void main(String[] args) {
-        CarRace carRace;
+        Cars cars;
+        Winners winners;
+        CarRace carRace = new CarRace();
         CarInputInfo carInputInfo = new CarInputInfo();
-        List<Car> winners;
 
-        carRace = carInputInfo.getCarEntry();
+        cars = carInputInfo.getCarEntry();
         int trackCount = carInputInfo.getTrackCount();
 
         for (int i = 0; i < trackCount; i++) {
-            carInputInfo.racing(carRace.getCars());
+            carInputInfo.racing(cars);
         }
 
-        winners = carRace.getWinners();
+        winners = carRace.getWinners(cars);
         carInputInfo.winnersDisplay(winners);
     }
 }

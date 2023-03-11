@@ -6,7 +6,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class CarTest {
-
     @ParameterizedTest
     @ValueSource(strings = {"Tommy", "tommy", "bear"})
     @DisplayName("자동차 이름을 가진다")
