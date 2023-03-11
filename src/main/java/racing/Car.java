@@ -1,6 +1,6 @@
 package racing;
 
-public class Car {
+public class Car implements Comparable<Car> {
     private static final int LIMIT_NAME_LENGTH = 5;     // 자동차 이름 최대 글자수 제한값
     private static final int DEFAULT_POSITION = 0;      // 디폴트값
     private static final int MIN_MOVE_NUMBER = 4;       // 전진하기 위한 최소 허들 숫자
@@ -23,6 +23,11 @@ public class Car {
         if (number >= MIN_MOVE_NUMBER) {
             position++;
         }
+    }
+
+    @Override
+    public int compareTo(Car car) {
+        return (this.getPosition() - car.getPosition()) * -1;
     }
 
     String getName() {

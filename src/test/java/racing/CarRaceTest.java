@@ -1,24 +1,23 @@
 package racing;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class CarRaceTest {
-    final private List<Car> cars = new ArrayList<Car>();
-    final private CarRace carRace = new CarRace();
+import static org.assertj.core.api.Assertions.*;
 
-    final private Car car1 = new Car("Tommy", 8);
-    final private Car car2 = new Car("Tammy", 14);
-    final private Car car3 = new Car("Bear", 4);
-    final private Car car4 = new Car("Tonny", 14);
+public class CarRaceTest {
+    private final List<Car> cars = new ArrayList<Car>();
+    private final CarRace carRace = new CarRace();
+
+    private final Car car1 = new Car("Tommy", 8);
+    private final Car car2 = new Car("Tammy", 14);
+    private final Car car3 = new Car("Bear", 4);
+    private final Car car4 = new Car("Tonny", 14);
 
     @BeforeEach
     void init() {
@@ -29,18 +28,18 @@ public class CarRaceTest {
     }
 
     @Test
-    @DisplayName("자동차 이름을 입력 받는다.")
+    @DisplayName("입력 받은 자동차 이름을 쉼표(,)로 구분한다.")
     void enterCarName() {
         String entry = "Tommy,bear,Bear,tommy,ToMmy";
 
         List<String> carEntry = Stream.of(entry.split(",")).collect(Collectors.toList());
 
-        Assertions.assertThat(carEntry.get(0)).isEqualTo("Tommy");
-        Assertions.assertThat(carEntry.get(1)).isEqualTo("bear");
-        Assertions.assertThat(carEntry.get(2)).isEqualTo("Bear");
-        Assertions.assertThat(carEntry.get(3)).isEqualTo("tommy");
-        Assertions.assertThat(carEntry.get(4)).isEqualTo("ToMmy");
-        Assertions.assertThatExceptionOfType(IndexOutOfBoundsException.class)
+        assertThat(carEntry.get(0)).isEqualTo("Tommy");
+        assertThat(carEntry.get(1)).isEqualTo("bear");
+        assertThat(carEntry.get(2)).isEqualTo("Bear");
+        assertThat(carEntry.get(3)).isEqualTo("tommy");
+        assertThat(carEntry.get(4)).isEqualTo("ToMmy");
+        assertThatExceptionOfType(IndexOutOfBoundsException.class)
                 .isThrownBy(() -> {
                     carEntry.get(5);
                 });
@@ -52,42 +51,31 @@ public class CarRaceTest {
         Random random = new Random();
 
         for (int i = 0; i < 100000; i++) {
-            Assertions.assertThat(random.nextInt(9)).isBetween(0, 9);
+            assertThat(random.nextInt(9)).isBetween(0, 9);
         }
-    }
-
-    @Test
-    @DisplayName("전진하고 전진한만큼 출력이 잘 되는지 확인한다.")
-    void racing() {
-        carRace.racing();
     }
 
     @Test
     @DisplayName("우승자의 전진한 거리를 구한다.")
     void getWinnerMaxPosition() {
-        cars.add(car1);
-        cars.add(car2);
-        cars.add(car3);
-        cars.add(car4);
+        int maxPosition;
 
         Comparator<Car> comparatorByPosition = Comparator.comparingInt(Car::getPosition);
-        Assertions.assertThat(cars.stream().max(comparatorByPosition).orElseThrow().getPosition()).isEqualTo(14);
+
+        maxPosition = cars.stream().max(comparatorByPosition).orElseThrow().getPosition();
+
+        assertThat(maxPosition).isEqualTo(14);
     }
 
     @Test
-    @DisplayName("우승자를 정한다.")
+    @DisplayName("가장 많이 전진한 자동차가 우승자이다.")
     void getWinners() {
-        cars.add(car1);
-        cars.add(car2);
-        cars.add(car3);
-        cars.add(car4);
-
-        Assertions.assertThat(
+        assertThat(
                 cars.stream()
                         .filter(p -> p.getPosition() == 14)
                         .collect(Collectors.toList()).get(0).getName()).isEqualTo("Tammy");
 
-        Assertions.assertThat(
+        assertThat(
                 cars.stream()
                         .filter(p -> p.getPosition() == 14)
                         .collect(Collectors.toList()).get(1).getName()).isEqualTo("Tonny");

@@ -27,4 +27,31 @@ public class CarInputInfo {
         System.out.println("시도할 횟수는 몇 회인가요?");
         return scan.nextInt();
     }
+
+    private void display(final Car car) {
+        System.out.print(car.getName() + ':');
+        for (int i = 0; i < car.getPosition(); i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+    }
+
+    void racing(List<Car> cars) {
+        for (int i = 0; i < cars.size(); i++) {
+            cars.get(i).move(getRandomNumber());
+            display(cars.get(i));
+        }
+        System.out.println();
+    }
+
+    private int getRandomNumber() {
+        Random random = new Random();
+        return random.nextInt(9);
+    }
+
+    void winnersDisplay(List<Car> winners) {
+        System.out.print("최종 우승자 : ");
+        winners.stream()
+                .forEach(name -> System.out.print(name.getName() + ", "));
+    }
 }
