@@ -2,31 +2,31 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Calculator3 {
+public class Calculator {
     public static void main(String[] args) {
         String expression = "2 + 3 * 4 / 2";
         double result = calculate(expression);
         System.out.println("Result: " + result);
     }
 
-    public static double calculate(String expression){
-        if(expression == null || expression.isEmpty()) {
+    public static double calculate(String expression) {
+        if (expression == null || expression.isEmpty()) {
             throw new IllegalArgumentException();
         }
-        //선언
+
         String[] tokens = expression.split(" "); // 공백을 기준으로 문자열 나누기
         List<Double> digitList = new ArrayList<>();// 2 3 4 2
         List<Character> opList = new ArrayList<>();// + * /
         List<Character> FourOpList = Arrays.asList(ADD, SUBTRACT, MULTIPLY, DIVIDE);
 
 
-        for(String token : tokens) {
+        for (String token : tokens) {
             //token.trim();
             boolean isNumeric = token.chars().allMatch(Character::isDigit);
-            if (isNumeric){ //숫자
+            if (isNumeric) { //숫자
                 digitList.add(Double.parseDouble(token));
-            }else{
-                if(token.length()>1 || !FourOpList.contains(token.charAt(0))){
+            } else {
+                if (token.length() > 1 || !FourOpList.contains(token.charAt(0))) {
                     throw new IllegalArgumentException();
                 }
                 opList.add(token.charAt(0));
@@ -43,13 +43,13 @@ public class Calculator3 {
     // 연산 함수
     public static double applyOp(char op, double a, double b) {
         switch (op) {
-            case ADD :
+            case ADD:
                 return add(a, b);
-            case SUBTRACT :
+            case SUBTRACT:
                 return subtract(a, b);
             case MULTIPLY:
                 return multiply(a, b);
-            case DIVIDE :
+            case DIVIDE:
                 return divide(a, b);
         }
         return -1;
