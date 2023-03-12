@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.List;
 
@@ -18,6 +18,10 @@ public class RacingCar implements Comparable{
         if(RacingRandom.randomizeTenBegger() >= 4){
             this.runCount++;
         }
+    }
+
+    public void runWithNoCondition(){
+        this.runCount++;
     }
 
     @Override
