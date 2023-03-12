@@ -77,7 +77,6 @@ public class TheGame {
     }
 
     private String getWinner(int maxPosition) {
-        /*흠.. 이부분 구현 추가 필요*/
         System.out.println("maxPosition 최종 : " + maxPosition);
         String winnerName = "";
         int winnerCnt = 0;
