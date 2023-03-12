@@ -7,16 +7,19 @@ import java.util.stream.Stream;
 
 public class CarInputInfo {
     private Scanner scan = new Scanner(System.in);
+    private static final String CAR_ENTRY_ENTER_TEXT = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)";
+    private static final String TRACK_COUNT_ENTER_TEXT = "시도할 횟수는 몇 회인가요?";
+    private static final String FINAL_WINNER_TEXT = "최종 우승자 : ";
 
     Cars getCarEntry() {
-        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)");
+        System.out.println(CAR_ENTRY_ENTER_TEXT);
         String entry = scan.next();
 
         return new Cars(Stream.of(entry.split(",")).collect(Collectors.toList()));
     }
 
     int getTrackCount() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        System.out.println(TRACK_COUNT_ENTER_TEXT);
         return scan.nextInt();
     }
 
@@ -42,7 +45,7 @@ public class CarInputInfo {
     }
 
     void winnersDisplay(Winners winners) {
-        System.out.print("최종 우승자 : ");
+        System.out.print(FINAL_WINNER_TEXT);
         winners.getWinners().stream()
                 .forEach(name -> System.out.print(name.getName() + ", "));
     }
