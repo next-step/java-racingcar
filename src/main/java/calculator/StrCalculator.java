@@ -4,6 +4,19 @@ import java.util.regex.Pattern;
 
 public class StrCalculator {
 
+    public int calculator(String str) {
+        String[] inputString = seperate(str);
+        int result = toInt(inputString[0]);
+
+        for(int i=0; i < inputString.length -2; i+=2) {
+
+            result = strcalculate(result, inputString[i+1], toInt(inputString[i+2]));
+        }
+
+        return result;
+    }
+
+
     //start of 사칙연산 함수 구현
     public int add(int a, int b) {
         return a + b;
@@ -45,7 +58,7 @@ public class StrCalculator {
         return Integer.parseInt(str);
     }
 
-    public int strcalculate(int a, String operator, int b){
+    private int strcalculate(int a, String operator, int b){
         int result = 0;
 
         switch (operator) {
@@ -66,17 +79,5 @@ public class StrCalculator {
         return result;
 
     }
-    public int calculator(String str) {
-        String[] inputString = seperate(str);
-        int result = toInt(inputString[0]);
-
-        for(int i=0; i < inputString.length -2; i+=2) {
-
-            result = strcalculate(result, inputString[i+1], toInt(inputString[i+2]));
-        }
-
-        return result;
-    }
-
 }
 

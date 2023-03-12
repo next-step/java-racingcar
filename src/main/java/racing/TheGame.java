@@ -1,13 +1,12 @@
 package racing;
 
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class TheGame {
-    public final Car[] cars;
-    public final int round;
+
+    private final Car[] cars;
+    private final int round;
     private Random random;
 
     public TheGame(String names, int round){
@@ -21,6 +20,7 @@ public class TheGame {
 
         System.out.println("자동차 이름을 입력하세요(쉼표(,)구분");
         String names = in.nextLine();
+
 
         System.out.println("시도할 회수를 입력하세요!");
         int round = Integer.parseInt(in.nextLine());
@@ -59,6 +59,8 @@ public class TheGame {
             carPosistion = Math.max(car.move(random.nextInt()), carPosistion);
         }
 
+
+
         return carPosistion;
     }
 
@@ -76,9 +78,22 @@ public class TheGame {
 
     private String getWinner(int maxPosition) {
         /*흠.. 이부분 구현 추가 필요*/
-        return Arrays.stream(cars)
-                .map(String::valueOf)
-                .collect(Collectors.joining(", "));
-    }
+        System.out.println("maxPosition 최종 : " + maxPosition);
+        String winnerName = "";
+        int winnerCnt = 0;
 
+        for (int i = 0; i < cars.length; i++) {
+
+            if (cars[i].getPosition() == maxPosition) {
+                winnerCnt ++;
+                System.out.println("==>" + cars[i].getName());
+                if(winnerCnt >= 2) {
+                    winnerName += ", ";
+                }
+                winnerName += cars[i].getName();
+            }
+        }
+
+        return winnerName;
+    }
 }

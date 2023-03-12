@@ -13,14 +13,14 @@ public class Car {
     }
 
     public Car(String name, int position){
-        NameChk(name);
+        checkName(name);
 
         this.position = position;
         this.name = name;
         this.moveOption = 4;
     }
 
-    private void NameChk(String name){
+    private void checkName(String name){
         if(name.length() > 5){
             throw new IllegalArgumentException("차이름은 5글자 미만이여야 합니다.");
         }

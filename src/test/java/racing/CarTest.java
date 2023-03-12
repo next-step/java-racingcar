@@ -22,7 +22,7 @@ public class CarTest {
 
     @Test
     @DisplayName("자동차 이름의 길이가 5글자를 넘으면 예외가 발생한다.")
-    void NameChkTest() {
+    void checkNameTest() {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
                             Car car = new Car("BMW155");
