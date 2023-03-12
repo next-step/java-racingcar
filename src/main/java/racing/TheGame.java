@@ -71,14 +71,12 @@ public class TheGame {
         for(int i = 0; i < round; i++){
             maxPosition = Math.max(moveCars(), maxPosition);
             printCarPosition();
-            System.out.println("maxPosition : "+maxPosition);
         }
 
         return maxPosition;
     }
 
     private String getWinner(int maxPosition) {
-        System.out.println("maxPosition 최종 : " + maxPosition);
         String winnerName = "";
         int winnerCnt = 0;
 
@@ -86,7 +84,6 @@ public class TheGame {
 
             if (cars[i].getPosition() == maxPosition) {
                 winnerCnt ++;
-                System.out.println("==>" + cars[i].getName());
                 if(winnerCnt >= 2) {
                     winnerName += ", ";
                 }
