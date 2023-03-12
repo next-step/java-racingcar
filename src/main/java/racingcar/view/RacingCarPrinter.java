@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.view;
+
+import racingcar.domain.RacingCar;
 
 public class RacingCarPrinter {
     public static void printNameAndRunCount(RacingCar racingCar){
