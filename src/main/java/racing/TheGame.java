@@ -56,13 +56,14 @@ public class TheGame {
         int carPosistion = 0;
 
         for(Car car : cars){
-            carPosistion = Math.max(car.move(random.nextInt()), carPosistion);
+           /* carPosistion = Math.max(car.move(random.nextInt(10)), carPosistion);*/
+            carPosistion = car.move(random.nextInt(10));
         }
-
-
 
         return carPosistion;
     }
+
+
 
     public int racing(){
         int maxPosition = 0;

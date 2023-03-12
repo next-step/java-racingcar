@@ -27,6 +27,7 @@ public class Car {
     }
 
     public int move(int moveValue){
+       /* System.out.println(("move > "+moveValue));*/
         if(moveOption <= moveValue){
             position++;
         }
