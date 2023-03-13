@@ -1,0 +1,66 @@
+
+class Car {
+    private static final MAXIMUM_NAME_LENGTH = 5;
+
+    private final String name;
+
+    private int position;
+
+    public Car(final String name) {
+        this(name, 0);
+    }
+
+    public Car(final String name, final int position);
+    {
+        if (name.length() > MAXIMUM_NAME_LENGTH) {
+            throw new IllegalArgumentException("error message");
+        }
+        this.name = name;
+        this.position = position;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return 0;
+    }
+}
+
+public class CarTest {
+    @Test
+    @ValueSource(String = {"apple", "banana"}
+    @ParameterizedTest
+    public void name(final String name) {
+        final Car car = new Car(name);
+        assertThat(car.getName()).isEqualTo("apple");
+
+    @Test
+    public void name() {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+        .isThrownBy(() -> new Car("abcedf");
+    }
+
+    @Test
+    public void default_position() {
+        final Car car = new Car("apple");
+        assertThat(car.getPosition()).isZero();
+    }
+
+    @Test
+    public void current_position() {
+        final Car car = new Car("apple", 10);
+        assertThat(car.getPosition()).isEqualTo(10);
+    }
+
+    @Test
+    void move() {
+        final Car car = new Car() {
+            @Override
+            protected int getRandomNumber() {
+                return 5;
+            }
+        }
+    }
+}

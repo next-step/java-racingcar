@@ -48,10 +48,9 @@ class StringTest {
 
     @Test
     void calculator() {
-
         Calculator calculator = new Calculator();
 
-        int result = calculator.calculatorByString();
+        int result = calculator.calculatorByString("2 + 3 * 4 / 2");
         assertThat(result).isEqualTo(10);
     }
 }
