@@ -3,6 +3,8 @@ package racingcar;
 import java.util.*;
 
 public class RacingGame {
+    final static int CAR_MOVE_CONDITION = 4;
+
     public static void race(List<Car> carList, int rotation) {
 
         System.out.println("result : ");
@@ -20,14 +22,10 @@ public class RacingGame {
 
     }
 
-    final static int CAR_MOVE_CONDITION = 4;
     public static int pickRandom() {
         Random random = new Random();
         int next = random.nextInt(10);
-        if (next >= CAR_MOVE_CONDITION) {
-            return 1;
-        }
-        return 0;
+        return next;
     }
 
     public static void printRace(List<Car> carList) {
@@ -39,21 +37,18 @@ public class RacingGame {
         System.out.println("");
     }
 
-    public static String showWinner(List<Car> carList){
+    public static void showWinner(List<Car> carList) {
 
-        //Collections.sort(list, Collections.reverseOrder());
-        Collections.sort(carList, new Comparator<Car>() {
-            @Override
-            public int compare(Car o1, Car o2) {
-                return o2.getPosition() - o1.getPosition(); // desc
-            }
-        });
+        //carList를 sorting한다.
+        carSort(carList);
 
-        //order desc
-        for (Car car : carList) {
-            System.out.println(" carList : " + car.getName() + ", " + car.getPosition());
-        }
+        List<String> winnerList = getWinnerList(carList);
+        System.out.println("final winner : " + winnerList.toString());
 
+       // return winnerList.toString();
+    }
+
+    public static List<String> getWinnerList(List<Car> carList) {
         List<String> winnerList = new ArrayList<>();
         int maxDistance = carList.get(0).getPosition();
         for (Car car : carList) {
@@ -62,10 +57,16 @@ public class RacingGame {
             }
             winnerList.add(car.getName());
         }
+        return  winnerList;
+    }
 
-        System.out.println("final winner : " + winnerList.toString());
-
-        return winnerList.toString();
+    private static void carSort(List<Car> carList) {
+        Collections.sort(carList, new Comparator<Car>() {
+            @Override
+            public int compare(Car o1, Car o2) {
+                return o2.getPosition() - o1.getPosition(); // desc
+            }
+        });
     }
 
 }

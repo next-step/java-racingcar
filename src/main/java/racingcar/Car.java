@@ -3,10 +3,12 @@ package racingcar;
 import java.util.Random;
 
 public class Car {
-    private String name;
-    private int position;
     private static final int MAXIMUN_NAME_LENGTH = 5;
     private static final int DEFAULT_POSITION = 0;
+    private static final int MOVE_MINIMUM_POSITION = 4;
+    private String name;
+    private int position;
+
 
     public Car(final String name) {
         this(name, DEFAULT_POSITION);
@@ -32,19 +34,11 @@ public class Car {
         return position;
     }
 
-    public void move() {
-        final int randomNumber = getRandomNumber();
-        move(randomNumber);
-    }
 
     public void move(final int condition) {
-        if (condition == 1) {
+        if (condition >= MOVE_MINIMUM_POSITION) {
             position++;
         }
-    }
-
-    protected int getRandomNumber() {
-        return new Random().nextInt(10);
     }
 
 }

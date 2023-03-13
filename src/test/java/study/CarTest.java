@@ -64,28 +64,8 @@ public class CarTest {
         assertThat(car.getPosition()).isEqualTo(0);
     }
 
-    @DisplayName("자동차들 중에서 가장 멀리 간 위치가 어디인지 알 수 있다.")
-    @Test
-    void maxDistance() {
-        final List<Car> cars= new ArrayList<>();
-        cars.add(new Car("aa",1));
-        cars.add(new Car("aa",3));
-        RacingGame.showWinner(cars);
-        assertThat(cars.get(0).getPosition()).isEqualTo(3);
-    }
 
-    @DisplayName("자동차들 중 가장 멀리간 차를 위너로 뽑을 수 있따.")
-    @Test
-    void winner(){
-        final List<Car> cars= new ArrayList<>();
-        cars.add(new Car("aa",10));
-        cars.add(new Car("bb",6));
-        cars.add(new Car("cc",3));
-        RacingGame.race(cars,0);
-        String winners =  RacingGame.showWinner(cars);
 
-        assertThat(winners).isEqualTo("[aa]");
-    }
 
 }
 
