@@ -1,29 +1,42 @@
 package racingcar;
 
+import java.util.Random;
+
 public class Car {
 
-    private String name;
+    private static final int MOVE_CONDITION = 4;
+
+    private Name name;
 
     private int position;
 
-    public Car(String name, int position) {
+    private Car(Name name, int position) {
         this.name = name;
         this.position = position;
     }
 
-    public String getName() {
-        return name;
+    public static Car of(Name name, int position) {
+        return new Car(name, position);
     }
+
+    public String getName() { return name.toString(); }
 
     public int getPosition() {
         return position;
     }
 
-    public void addMove(int move) {
-        position += move;
+    public void move() {
+        if (getMoveCondition() > MOVE_CONDITION) {
+            position++;
+        }
+    }
+
+    private int getMoveCondition() {
+        Random random = new Random();
+        return random.nextInt(9);
     }
 
     public String toString() {
-        return name + " : " + position;
+        return name.toString() + " : " + position;
     }
 }
