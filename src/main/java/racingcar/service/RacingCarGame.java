@@ -2,10 +2,10 @@ package racingcar.service;
 
 import racingcar.domain.Car;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RacingCarGame {
@@ -14,18 +14,8 @@ public class RacingCarGame {
     private int totalTry;
     private int maxPosition = 0;
 
-    public RacingCarGame(){
-    }
-    public RacingCarGame(List<Car> cars , int num){
-
-        this.racingCars = cars;
-        this.totalTry = num;
-    }
     public RacingCarGame(String[] carNames, int num){
-        List<Car> cars = new ArrayList<>();
-        Arrays.stream(carNames).forEach( s -> cars.add(new Car(s)) );
-
-        this.racingCars = cars;
+        this.racingCars = Arrays.stream(carNames).map(Car::new).collect(Collectors.toList());
         this.totalTry = num;
     }
 
@@ -48,17 +38,10 @@ public class RacingCarGame {
         });
         System.out.println();
     }
+
     private List<String> printWinner(){
-        List<String> winners = new ArrayList<>();
-        racingCars.forEach( car -> {
-            if (car.getPosition() > this.maxPosition) {
-                this.maxPosition = car.getPosition();
-                winners.add(car.getName());
-            } else if (car.getPosition() == this.maxPosition){
-                winners.add(car.getName());
-            }
-        });
-        return winners;
+        racingCars.stream().map(Car::getPosition).filter(position->position > maxPosition ).forEach(position-> maxPosition = position); //  최고 맥스값 선정
+        return racingCars.stream().filter(car->car.getPosition() == maxPosition).map(Car::getName).collect(Collectors.toList());
     }
 
     public static  void main (String[] args){
