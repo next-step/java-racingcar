@@ -13,8 +13,6 @@ public class CalculatorTest {
         final String actual = "2+3*2";
         Stack<Double> actual2 = new Stack<>();
 
-
         assertThat(actual).isEqualTo("1,2");
     }
-
 }

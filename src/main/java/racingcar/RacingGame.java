@@ -38,14 +38,10 @@ public class RacingGame {
     }
 
     public static void showWinner(List<Car> carList) {
-
-        //carList를 sorting한다.
         carSort(carList);
 
         List<String> winnerList = getWinnerList(carList);
         System.out.println("final winner : " + winnerList.toString());
-
-       // return winnerList.toString();
     }
 
     public static List<String> getWinnerList(List<Car> carList) {
@@ -57,7 +53,7 @@ public class RacingGame {
             }
             winnerList.add(car.getName());
         }
-        return  winnerList;
+        return winnerList;
     }
 
     private static void carSort(List<Car> carList) {

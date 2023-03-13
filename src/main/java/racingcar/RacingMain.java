@@ -23,6 +23,6 @@ public class RacingMain {
             carList.add(new Car(carName[i]));
         }
 
-        RacingGame.race(carList,rotation);
+        RacingGame.race(carList, rotation);
     }
 }

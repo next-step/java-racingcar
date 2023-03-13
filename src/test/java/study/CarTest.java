@@ -5,16 +5,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
 import racingcar.Car;
-import racingcar.RacingGame;
 
 public class CarTest {
     @DisplayName("자동차는 이름을 입력받아 갖는다.")
@@ -63,8 +57,6 @@ public class CarTest {
         car.move(condition);
         assertThat(car.getPosition()).isEqualTo(0);
     }
-
-
 
 
 }
