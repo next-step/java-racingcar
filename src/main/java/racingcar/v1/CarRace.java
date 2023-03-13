@@ -40,7 +40,7 @@ public class CarRace {
             playSingleLoop(carList);
             printRace(carList);
         }
-        return getWinnersLambda(carList);
+        return getWinners(carList);
     }
 
     public static void playSingleLoop(List<Car> carList) {
@@ -66,22 +66,6 @@ public class CarRace {
     }
 
     public static List<String> getWinners(List<Car> carList) {
-        carList.sort((o1, o2) -> {
-            return o2.getDistance() - o1.getDistance(); // desc
-        });
-
-        List<String> winnerList = new ArrayList<>();
-        int maxDistance = carList.get(0).getDistance();
-        for (Car car : carList) {
-            if (car.getDistance() < maxDistance) {
-                break;
-            }
-            winnerList.add(car.getName());
-        }
-        return winnerList;
-    }
-
-    public static List<String> getWinnersLambda(List<Car> carList) {
 
         int maxDistance = carList.stream()
                 .mapToInt(Car::getDistance)

@@ -74,10 +74,4 @@ class CarRaceTest {
         Assertions.assertThat(CarRace.getWinners(carList))
                 .containsAll(List.of("c", "d"));
     }
-
-    @Test
-    void getWinnersLambda() {
-        Assertions.assertThat(CarRace.getWinnersLambda(carList))
-                .containsAll(List.of("c", "d"));
-    }
 }

@@ -39,13 +39,15 @@ public class Calculator {
         List<Character> opList = new ArrayList<>();
 
         for (String token : tokens) {
-            if (isNumeric(token)) { //숫자
+            if (isNumeric(token)) {
                 digitList.add(Double.parseDouble(token));
-            } else if (isBasicOp(token)) { // 사칙연산기호
-                opList.add(token.charAt(0));
-            } else {
-                throw new IllegalArgumentException();
+                continue;
             }
+            if (isBasicOp(token)) {
+                opList.add(token.charAt(0));
+                continue;
+            }
+            throw new IllegalArgumentException();
         }
         return new ElementLists(digitList, opList);
     }
@@ -64,7 +66,6 @@ public class Calculator {
         return token.length() == 1 && basicOps.contains(token.charAt(0));
     }
 
-    // 연산 함수
     public static double compute(char op, double a, double b) {
         switch (op) {
             case ADD:
@@ -79,24 +80,22 @@ public class Calculator {
         return -1;
     }
 
-    // 덧셈 연산 함수
     public static double add(double a, double b) {
         return a + b;
     }
 
-    // 뺄셈 연산 함수
     public static double subtract(double a, double b) {
         return a - b;
     }
 
-    // 곱셈 연산 함수
     public static double multiply(double a, double b) {
         return a * b;
     }
 
-    // 나눗셈 연산 함수
     public static double divide(double a, double b) {
-        if (b == 0) throw new ArithmeticException("division by zero");
+        if (b == 0) {
+            throw new ArithmeticException("division by zero");
+        }
         return a / b;
     }
 
