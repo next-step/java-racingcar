@@ -3,10 +3,7 @@ package calculator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Predicate;
-import java.util.regex.Pattern;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
+import java.util.stream.Collectors;
 
 public class Calculator {
 
@@ -35,20 +32,22 @@ public class Calculator {
     public int calculator(String input) {
         inputIsNumllOrEmptyCheck(input);
 
+        operandValidCheck(input);
+
         List<String> inputString = getStrings(input);
 
         return stringCalculator(inputString);
     }
 
-    private int stringCalculator(List<String> inputString) {
-        a = Integer.parseInt(inputString.get(0));
-        inputString.remove(0);
-        while (!inputString.isEmpty()) {
-            operand = operandValidCheck(inputString.get(0));
-            inputString.remove(0);
-            b = Integer.parseInt(inputString.get(0));
+    private int stringCalculator(List<String> input) {
+        a = Integer.parseInt(input.get(0));
+        input.remove(0);
+        while (!input.isEmpty()) {
+            operand = input.get(0);
+            input.remove(0);
+            b = Integer.parseInt(input.get(0));
             a = excuteCalulator(a, b, operand);
-            inputString.remove(0);
+            input.remove(0);
         }
         return a;
     }
@@ -56,31 +55,24 @@ public class Calculator {
     private List<String> getStrings(String input) {
         List<String> inputString = new ArrayList<>();
         inputString.addAll(List.of(input.split(" ")));
-        return inputString;
-    }
 
-    private String operandValidCheck(String operand) {
-        if (!(operand.equals("+") || operand.equals("-") || operand.equals("*") || operand.equals(
-            "/"))) {
-            throw new IllegalArgumentException("사칙연산 기호가 아닌 기호가 포함되어있습니다. (" + operand + ")");
-        }
-        return operand;
+        return inputString;
     }
 
     private int excuteCalulator(int a, int b, String operand) {
         if (operand.equals("+")) {
-            return add(a, b);
+            return a + b;
         }
         if (operand.equals("-")) {
-            return substract(a, b);
+            return a - b;
         }
         if (operand.equals("*")) {
-            return multiply(a, b);
+            return a * b;
         }
         if (operand.equals("/")) {
-            return divide(a, b);
+            return a / b;
         }
-        return 0;
+        throw new IllegalArgumentException("사칙연산의 연산자가 아닌 문자가 입력되었습니다.");
     }
 
     private void inputIsNumllOrEmptyCheck(String input) {
@@ -89,4 +81,23 @@ public class Calculator {
         }
     }
 
+    public List<String> operandValidCheck(String input) {
+        List<String> inputString = new ArrayList<>();
+        inputString.addAll(List.of(input.split(" ")));
+
+        List<String> stringStream = inputString.stream().filter((item)
+            ->
+             item.compareTo("+") != 0
+                 && item.compareTo("-") != 0
+                 && item.compareTo("*") != 0
+                 && item.compareTo("/") != 0
+                 && !(item.matches("[0-9]+"))
+        ).collect(Collectors.toList());
+
+        if(!stringStream.isEmpty()) {
+            throw new IllegalArgumentException("사칙연산 기호가 아닌 기호가 포함되어있습니다.");
+        }
+
+        return inputString;
+    }
 }
