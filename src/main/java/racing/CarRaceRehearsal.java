@@ -6,15 +6,20 @@ public class CarRaceRehearsal {
         Winners winners;
         CarRace carRace = new CarRace();
         CarInputInfo carInputInfo = new CarInputInfo();
+        CarOutputInfo carOutputInfo = new CarOutputInfo();
 
         cars = carInputInfo.getCarEntry();
         int trackCount = carInputInfo.getTrackCount();
 
         for (int i = 0; i < trackCount; i++) {
-            carInputInfo.racing(cars);
+            carRace.racing(cars);
+            carOutputInfo.display(cars);
+            System.out.println();
         }
 
         winners = carRace.getWinners(cars);
-        carInputInfo.winnersDisplay(winners);
+        carOutputInfo.winnersDisplay(winners);
     }
+
+
 }

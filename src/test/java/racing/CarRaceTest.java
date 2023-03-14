@@ -13,10 +13,10 @@ import static org.assertj.core.api.Assertions.*;
 public class CarRaceTest {
     private final List<Car> cars = new ArrayList<>();
 
-    private final Car car1 = new Car("Tommy", 8);
-    private final Car car2 = new Car("Tammy", 14);
-    private final Car car3 = new Car("Bear", 4);
-    private final Car car4 = new Car("Tonny", 14);
+    private final Car car1 = new Car("Tommy", new Position(8));
+    private final Car car2 = new Car("Tammy", new Position(14));
+    private final Car car3 = new Car("Bear", new Position(4));
+    private final Car car4 = new Car("Tonny", new Position(14));
 
     @BeforeEach
     void init() {
@@ -78,5 +78,7 @@ public class CarRaceTest {
                 cars.stream()
                         .filter(p -> p.getPosition() == 14)
                         .collect(Collectors.toList()).get(1).getName()).isEqualTo("Tonny");
+
+
     }
 }
