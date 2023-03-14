@@ -70,6 +70,9 @@ public class Calculator {
             return a * b;
         }
         if (operand.equals("/")) {
+            if (b == 0) {
+                throw new ArithmeticException("0으로 나눌 수 없습니다.");
+            }
             return a / b;
         }
         throw new IllegalArgumentException("사칙연산의 연산자가 아닌 문자가 입력되었습니다.");
