@@ -10,7 +10,8 @@ public class CalculatorTest {
     @ParameterizedTest
     @ValueSource(strings = { "2 + 8 / 5 * 2 ", "20 - 5 / 2 * 2 "})
     void caculator( String input) throws Exception {
-        int result =  Calculator.excute(input);
+        Calculator  ca = new Calculator();
+        int result =  ca.excute(input);
         System.out.println(result);
     }
 

@@ -1,88 +1,71 @@
 package calculator;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Objects;
-import java.util.Queue;
+import org.apache.commons.lang3.StringUtils;
 
-public  class Calculator {
-    private static Queue<Integer> numberQ  = new LinkedList<>();
-    private static Queue<String> stringQ = new LinkedList<>();
-    private static int  tmpNumber =  0;
+import java.util.*;
+import java.util.stream.Collectors;
 
-    private static void init(){
-        numberQ  = new LinkedList<>();
-        stringQ = new LinkedList<>();
-        tmpNumber =  0;
+public class Calculator {
+
+
+    private int tmpNumber;
+
+
+    public Calculator() {
+        tmpNumber = 0;
     }
-    public static int excute(String strings) throws Exception  {
-        init();
-        String[] stringLst = strings.split(" ");
-        Arrays.stream(stringLst).forEach( Calculator::step1 );
-        Arrays.stream(stringLst).forEach( Calculator::step2 );
 
-        calcute();
+    public int excute(String strings) {
+        String[] stringLst = strings.split(" ");
+        Queue<Integer> numbers = Arrays.stream(stringLst).filter(StringUtils::isNumeric).map(Integer::parseInt).collect(Collectors.toCollection(LinkedList::new));
+        Queue<String> separators = Arrays.stream(stringLst).filter(i -> !StringUtils.isNumeric(i)).collect(Collectors.toCollection(LinkedList::new));
+
+        return   calcute(numbers, separators);
+    }
+
+
+    private int calcute(Queue<Integer> numbers, Queue<String> separators) {
+        tmpNumber = numbers.poll();
+        separators.forEach(separator -> process(numbers.poll(), separator));
+
         return tmpNumber;
     }
-    private static boolean isNumberic(String s) {
-        try {
-            Double.parseDouble(s);
-            return true;
-        } catch(NumberFormatException e) {
-            return false;
-        }
-    }
-    private static void  step1(String  chars ){
-        if(isNumberic(chars)){
-            numberQ.add(Integer.parseInt(chars));
-        }
-    }
-    private static void  step2(String chars ){
-        if(!isNumberic(chars)){
-            stringQ.add(chars);
-        }
-    }
 
-    private static void calcute ()  {
-        tmpNumber = numberQ.poll();
-        numberQ.forEach(Calculator::accept);
-    }
-
-    private static void eval2(int number, String cal) {
-        switch (cal){
-            case("+"):
-                tmpNumber = add(tmpNumber,number);
+    private void eval(int number, String cal) {
+        switch (cal) {
+            case ("+"):
+                tmpNumber = add(tmpNumber, number);
                 break;
-            case("-"):
-                tmpNumber = subtract(tmpNumber,number);
+            case ("-"):
+                tmpNumber = subtract(tmpNumber, number);
                 break;
-            case("*"):
-                tmpNumber = multiply(tmpNumber,number);
+            case ("*"):
+                tmpNumber = multiply(tmpNumber, number);
                 break;
-            case("/"):
-                tmpNumber = divide(tmpNumber,number);
+            case ("/"):
+                tmpNumber = divide(tmpNumber, number);
                 break;
         }
     }
 
-    private static void accept(int value)  {
-        eval2(value, Objects.requireNonNull(stringQ.poll()));
+    private void process(int value, String separator) {
+        eval(value, separator);
     }
 
-   private static int add(int a, int b) {
+    private static int add(int a, int b) {
         return a + b;
-   }
+    }
 
-   private static int subtract(int a, int b) {
-       return a -b;
-   }
+    private static int subtract(int a, int b) {
+        return a - b;
+    }
 
-   private static int multiply(int a, int b) {
-      return a * b;
-   }
+    private static int multiply(int a, int b) {
+        return a * b;
+    }
 
-   private static int divide(int a, int b) {
-      return a /  b;
-   }
+    private static int divide(int a, int b) {
+        return a / b;
+    }
 }
 
