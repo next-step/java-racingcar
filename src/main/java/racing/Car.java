@@ -1,44 +1,40 @@
 package racing;
 
-import java.util.Random;
+public class Car implements Comparable<Car> {
+    private static final int LIMIT_NAME_LENGTH = 5;     // 자동차 이름 최대 글자수 제한값
+    private static final int MIN_MOVE_NUMBER = 4;       // 전진하기 위한 최소 허들 숫자
+    private static final String LIMIT_NUMBER_OF_CHARACTERS = "자동차 이름은 5글자를 초과할 수 없습니다.";
+    private final String name;
+    private final Position position;
 
-public class Car {
-    private static final int MAX_LENGTH_NAME = 5;
-    private static final int DEFAULT_DISTANCE = 0;
-    private static final  int MIN_MOVE_VALUE = 4;
-    private int distance;
-    private String carName;
-
-    Car(String name) {
-        this(name, DEFAULT_DISTANCE);
+    Car(final String name) {
+        this(name, new Position());
     }
 
-    Car(String name, int distance) {
-        if (name.length() > MAX_LENGTH_NAME) {
-            throw new IllegalArgumentException("자동차 이름은 "+ MAX_LENGTH_NAME +"글자를 초과할 수 없습니다.");
+    Car(final String name, final Position position) {
+        if (name.length() > LIMIT_NAME_LENGTH) {
+            throw new IllegalArgumentException(LIMIT_NUMBER_OF_CHARACTERS);
         }
-
-        this.carName = name;
-        this.distance = distance;
+        this.name = name;
+        this.position = position;
     }
 
-    public int getDistance() {
-        return distance;
-    }
-
-    public String getCarName() {
-        return this.carName;
-    }
-
-    void carRun(int randomNumber) {
-        if(randomNumber >= MIN_MOVE_VALUE) {
-            ++this.distance;
+    void move(int number) {
+        if (number >= MIN_MOVE_NUMBER) {
+            position.moveForward();
         }
     }
 
-    String statusPrint() {
-        String resultText = this.carName + " : " + this.distance;
-        System.out.println(resultText);
-        return resultText;
+    @Override
+    public int compareTo(Car car) {
+        return position.compareTo(car.position) * -1;
+    }
+
+    String getName() {
+        return name;
+    }
+
+    int getPosition() {
+        return position.getPosition();
     }
 }
