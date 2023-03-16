@@ -1,6 +1,6 @@
 package racing;
 
-public class Position {
+public class Position implements Comparable<Position> {
     private static final int DEFAULT_POSITION = 0;      // 디폴트값
     private int position;
 
@@ -8,7 +8,7 @@ public class Position {
         this(DEFAULT_POSITION);
     }
 
-    public Position(int position) {
+    public Position(final int position) {
         this.position = position;
     }
 
@@ -16,8 +16,9 @@ public class Position {
         this.position++;
     }
 
-    public int positionOrder(Position thisPosition, Position objectPosition) {
-        return thisPosition.position - objectPosition.position;
+    @Override
+    public int compareTo(Position position) {
+        return this.position - position.position;
     }
 
     public int getPosition() {

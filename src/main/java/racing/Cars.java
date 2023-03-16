@@ -26,14 +26,9 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public void racingCars() {
-        for (int i = 0; i < this.cars.size(); i++) {
-            cars.get(i).move(getRandomNumber());
-        }
+    public void racingCars(int i, int number) {
+        cars.get(i).move(number);
     }
 
-    private int getRandomNumber() {
-        Random random = new Random();
-        return random.nextInt(9);
-    }
+
 }

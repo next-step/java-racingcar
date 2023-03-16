@@ -12,6 +12,7 @@ public class CarOutputInfo {
             }
             System.out.println();
         }
+        System.out.println();
     }
 
     void winnersDisplay(Winners winners) {

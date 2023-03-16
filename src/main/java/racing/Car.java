@@ -11,7 +11,7 @@ public class Car implements Comparable<Car> {
         this(name, new Position());
     }
 
-    Car(final String name, Position position) {
+    Car(final String name, final Position position) {
         if (name.length() > LIMIT_NAME_LENGTH) {
             throw new IllegalArgumentException(LIMIT_NUMBER_OF_CHARACTERS);
         }
@@ -27,7 +27,7 @@ public class Car implements Comparable<Car> {
 
     @Override
     public int compareTo(Car car) {
-        return position.positionOrder(this.position, car.position) * -1;
+        return position.compareTo(car.position) * -1;
     }
 
     String getName() {
