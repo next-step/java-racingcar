@@ -6,24 +6,36 @@ public class Car {
 
     private final int MOVABLE_MIN_NUMBER = 4;
     private final int DRAW_RANGE = 9;
+    private static final int CAR_NAME_MAX_LENGTH = 5;
+    private static final int INIT_POSITION = 0;
     private final String name;
     private int position;
 
-    Car(String name) {
-        this.name = name;
-        this.position = 0;
+    public Car(final String name) {
+        this(name, INIT_POSITION);
     }
 
-    public void move() {
-        int i = draw();
-        if(i >= MOVABLE_MIN_NUMBER) {
-            this.position++;
+    public Car(final String name, final int position) {
+        if (name.length() > CAR_NAME_MAX_LENGTH) {
+            throw new IllegalArgumentException("자동차 이름은" + CAR_NAME_MAX_LENGTH + "자를 초과할 수 없습니다.");
+        }
+        this.name = name;
+        this.position = position;
+    }
+
+    public void move(int number) {
+        if (number >= MOVABLE_MIN_NUMBER) {
+            position++;
         }
     }
 
+    public void move() {
+        final int draw_number = draw();
+        move(draw_number);
+    }
+
     private int draw() {
-        Random ran = new Random();
-        return ran.nextInt(DRAW_RANGE);
+        return new Random().nextInt(DRAW_RANGE);
     }
 
     public int getPosition() {
@@ -34,12 +46,12 @@ public class Car {
         return name;
     }
 
-
-    public void showPosition() {
-        System.out.print(this.name + " : ");
-        for (int i = 0; i < this.position; i++) {
-            System.out.print("-");
+    public void showPosition(final String name, final int position) {
+        StringBuilder sb = new StringBuilder();
+        System.out.print(name + " : ");
+        for (int i = 0; i < position; i++) {
+            sb.append("-");
         }
-        System.out.println("");
+        System.out.println(sb.toString());
     }
 }
