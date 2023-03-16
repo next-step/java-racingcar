@@ -12,23 +12,6 @@ public class Calculator {
 
     private String operand = "";
 
-    private int add(int a, int b) {
-        return a + b;
-    }
-
-    private int substract(int a, int b) {
-        return a - b;
-    }
-
-    private int multiply(int a, int b) {
-        return a * b;
-    }
-
-    private int divide(int a, int b) {
-        return a / b;
-    }
-
-
     public int calculator(String input) {
         inputIsNumllOrEmptyCheck(input);
 
@@ -90,14 +73,14 @@ public class Calculator {
 
         List<String> stringStream = inputString.stream().filter((item)
             ->
-             item.compareTo("+") != 0
-                 && item.compareTo("-") != 0
-                 && item.compareTo("*") != 0
-                 && item.compareTo("/") != 0
-                 && !(item.matches("[0-9]+"))
+            item.compareTo("+") != 0
+                && item.compareTo("-") != 0
+                && item.compareTo("*") != 0
+                && item.compareTo("/") != 0
+                && !(item.matches("[0-9]+"))
         ).collect(Collectors.toList());
 
-        if(!stringStream.isEmpty()) {
+        if (!stringStream.isEmpty()) {
             throw new IllegalArgumentException("사칙연산 기호가 아닌 기호가 포함되어있습니다.");
         }
 
