@@ -23,7 +23,7 @@ public class SetTest {
     }
 
     @Test
-    void step1(){
+    void step1() {
 
         assertThat(numbers).hasSize(3);
 
@@ -31,11 +31,10 @@ public class SetTest {
 
 
     @ParameterizedTest
-    @ValueSource( ints = {1,2,3})
+    @ValueSource(ints = {1, 2, 3})
     void contains(final int number) {
         assertThat(numbers.contains(number)).isTrue();
     }
-
 
 
     // Test Case 구현
