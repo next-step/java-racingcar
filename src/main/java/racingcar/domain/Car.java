@@ -7,8 +7,12 @@ public class Car {
     private int position;
 
     public Car(String name) {
+        this(name, 0);
+    }
+
+    public Car(String name, int position) {
         this.name = name;
-        this.position = 0;
+        this.position = position;
     }
 
     public String getName() {
@@ -21,9 +25,18 @@ public class Car {
 
     public void move() {
         Random random = new Random();
-        int randomNumber = random.nextInt(10);
-        if (randomNumber >= 4) {
+        final int randomNumber = getRandom();
+        move(randomNumber);
+    }
+
+    protected int getRandom() {
+        return new Random().nextInt(10);
+    }
+
+    public void move(final int randomnumber) {
+        if (randomnumber > 4) {
             position++;
         }
     }
+
 }
