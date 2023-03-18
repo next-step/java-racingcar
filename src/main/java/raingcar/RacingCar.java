@@ -20,4 +20,8 @@ public class RacingCar {
         moveDistance++;
         return true;
     }
+
+    public int getMoveDistance() {
+        return moveDistance;
+    }
 }

@@ -38,14 +38,15 @@ public class RacingTest {
     @DisplayName("자동차 이름은 쉼표(,)를 기준으로 구분한다.")
     @Test
     void racingGameTest () {
-        RacingGame game = new RacingGame("RED, BLUE, GREEN", 5);
+        RacingGame game = new RacingGame("RED, BLUE, GREEN");
         assertThat(game.getCars().size()).isEqualTo(3);
     }
 
     @DisplayName("주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.")
     @Test
     void racingGameTest2 () {
-        RacingGame game = new RacingGame("RED, BLUE, GREEN", 5);
-        assertThat(game.play()).isEqualTo(5);
+        RacingGame game = new RacingGame("RED, BLUE, GREEN");
+        assertThat(game.play(5)).isEqualTo(5);
     }
+
 }
