@@ -3,7 +3,7 @@ package racingcargame;
 public class Car {
     private final String name;
     private int score; //현재점수
-    String printScore; //출력스코어
+    private String printScore; //출력스코어
 
     public Car(final String name) {
         this.name = name;
@@ -25,5 +25,9 @@ public class Car {
 
     public String getName() {
         return this.name;
+    }
+
+    public String getPrintScore() {
+        return printScore;
     }
 }
