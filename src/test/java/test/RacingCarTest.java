@@ -6,14 +6,15 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import java.io.ByteArrayInputStream;
 import java.util.Arrays;
 import java.util.List;
-import org.assertj.core.api.AssertionsForClassTypes;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingCar.Car;
+import racingCar.PrintCarNames;
 import racingCar.RacingGame;
+import racingCar.Winner;
 
-public class racingCarTest {
+public class RacingCarTest {
 
     private RacingGame racingGame;
 
@@ -97,7 +98,8 @@ public class racingCarTest {
             new Car("honux", 1)
         );
 
-        List<Car> winner = RacingGame.getWinner(3, cars);
+        List<String> winner = new Winner().getWinner(3, cars);
+        assertThat(new PrintCarNames().toString(winner)).isEqualTo("crong");
     }
 
     @DisplayName("자동차 여러대가 우승한 경우")
@@ -109,6 +111,7 @@ public class racingCarTest {
             new Car("honux", 1)
         );
 
-        List<Car> winners = RacingGame.getWinner(3, cars);
+        List<String> winners = new Winner().getWinner(3, cars);
+        assertThat(new PrintCarNames().toString(winners)).isEqualTo("pobi, crong");
     }
 }

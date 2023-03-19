@@ -29,14 +29,16 @@ public class RacingGame {
         }
 
         int maxPosition = findMaxPosition();
-        List<Car> winners = new ArrayList<>();
-        winners = getWinner(maxPosition, garage);
+        List<String> winners = new ArrayList<>();
+        winners = new Winner().getWinner(maxPosition, garage);
+        new PrintCarNames().printWinners(winners);
     }
 
     private void racing() {
         for (Car car : garage) {
-            car.move();
-            car.showPosition(car.getName(), car.getPosition());
+            final int drawNumber = car.draw();
+            car.move(drawNumber);
+            new PrintCarNames().showPosition(car.getName(), car.getPosition());
         }
         System.out.println("");
     }
@@ -48,22 +50,6 @@ public class RacingGame {
         }
         return maxPosition;
     }
-
-    public static List<Car> getWinner(final int maxPosition, List<Car> garage) {
-        List<String> winners = new ArrayList<>();
-        for (Car car : garage) {
-            setWinners(maxPosition, winners, car);
-        }
-        System.out.println("최종 우승자: " + String.join(",", winners));
-        return garage;
-    }
-
-    private static void setWinners(int maxPosition, List<String> winners, Car car) {
-        if (car.getPosition() == maxPosition) {
-            winners.add(car.getName());
-        }
-    }
-
 
     private void inputStringAndInitCar() {
         Scanner sc = new Scanner(System.in);

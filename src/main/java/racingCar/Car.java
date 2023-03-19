@@ -6,13 +6,12 @@ public class Car {
 
     private final int MOVABLE_MIN_NUMBER = 4;
     private final int DRAW_RANGE = 9;
-    private static final int CAR_NAME_MAX_LENGTH = 5;
-    private static final int INIT_POSITION = 0;
+    private final int CAR_NAME_MAX_LENGTH = 5;
     private final String name;
     private int position;
 
     public Car(final String name) {
-        this(name, INIT_POSITION);
+        this(name, 0);
     }
 
     public Car(final String name, final int position) {
@@ -29,12 +28,7 @@ public class Car {
         }
     }
 
-    public void move() {
-        final int draw_number = draw();
-        move(draw_number);
-    }
-
-    private int draw() {
+    public int draw() {
         return new Random().nextInt(DRAW_RANGE);
     }
 
@@ -44,14 +38,5 @@ public class Car {
 
     public String getName() {
         return name;
-    }
-
-    public void showPosition(final String name, final int position) {
-        StringBuilder sb = new StringBuilder();
-        System.out.print(name + " : ");
-        for (int i = 0; i < position; i++) {
-            sb.append("-");
-        }
-        System.out.println(sb.toString());
     }
 }

@@ -7,12 +7,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import calculator.Calculator;
 import org.assertj.core.api.AssertionsForClassTypes;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-public class calculatorTest {
+public class CalculatorTest {
 
     @DisplayName("입력값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw")
     @ParameterizedTest
