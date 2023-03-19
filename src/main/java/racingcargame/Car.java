@@ -3,25 +3,27 @@ package racingcargame;
 public class Car {
     private final String name;
     private int score; //현재점수
+    String printScore; //출력스코어
 
-    public Car(final String name, final int score) {
+    public Car(final String name) {
         this.name = name;
-        this.score = score;
+        this.printScore = "";
     }
 
-    int getScore() {
+    public int getScore() {
         return this.score;
     }
 
-    void setScore(final int score) {
+    public void setScore(int score) {
         this.score = score;
     }
 
-    void addScore() {
+    public void addScore() {
         this.score++;
+        printScore += "-";
     }
 
-    String getName() {
+    public String getName() {
         return this.name;
     }
 }
