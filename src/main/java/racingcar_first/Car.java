@@ -1,21 +1,25 @@
-package racingcar;
+package racingcar_first;
 
 import java.util.Random;
 
-public class car {
+public class Car {
 
     private int move=0;
-    private String name;
-    Random rand = new Random();
+    private final int DEFAULT_POSITON=5;
+    private final int NAME_MAX_LENGTH_EXCLUSIVE = 10;
+    private final int GO_CONDITION_NUMBER = 4;
 
-    public car(String name){
-        if(name.length()>5)
+    private String name;
+    private Random rand = new Random();
+
+    public Car(String name){
+        if(name.length()>DEFAULT_POSITON)
             throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없다.");
         this.name = name;
     }
 
     public void go(){
-        if(rand.nextInt(10)>=4)
+        if(rand.nextInt(NAME_MAX_LENGTH_EXCLUSIVE)>=GO_CONDITION_NUMBER)
             this.move+=1;
     }
 

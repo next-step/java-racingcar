@@ -36,8 +36,6 @@ public class StringTest {
         assertThat(acutal1).contains("1,2");
 
         //assertThat(actual).contains("1,2");
-
-
     }
 
     @DisplayName("특정 위치의 문자를 가져올 때 위치 값을 벗어나면 StringOutOfBoundsException이 발생한다.")
