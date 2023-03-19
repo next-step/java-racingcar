@@ -4,10 +4,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
-import racingCar.Car;
-import racingCar.RacingCar;
-import racingCar.RacingCarConfiguration;
+import racingCar.domain.Car;
+import racingCar.domain.RacingCar;
+import racingCar.view.InputView;
+import racingCar.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.StringTokenizer;
@@ -34,14 +34,12 @@ public class RacingCarTest {
         cars.get(1).step(6);
         cars.get(2).step(5);
 
-        cars.get(0).printPosition();
-        cars.get(1).printPosition();
-        cars.get(2).printPosition();
+        ResultView.printCars(cars);
 
         RacingCar racingCar = new RacingCar(trial, 5);
 
         racingCar.setWinner(cars);
-        System.out.println(racingCar.showWinner());
-        assertThat(racingCar.showWinner()).isEqualTo(new String("최종 우승자: woni\n"));
+        ResultView.showWinner(cars);
+        assertThat(ResultView.showWinner(cars)).isEqualTo(new String("최종 우승자 : [woni]"));
     }
 }

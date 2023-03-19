@@ -1,4 +1,4 @@
-package racingCar;
+package configuration;
 
 public enum RacingCarConfiguration {
     MAX_RANDOM_VALUE(10),
