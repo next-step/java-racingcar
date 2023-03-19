@@ -1,9 +1,6 @@
 package car.domain;
 
-import car.CarPlay;
 import car.view.CarPlayMessage;
-
-import java.util.List;
 
 public class CarRacing {
 
