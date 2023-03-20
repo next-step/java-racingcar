@@ -8,8 +8,9 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import domain.Car;
+import domain.CarRandom;
 import service.RacingCarService;
-import view.RacingCarView;
+import view.RacingInputCarView;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -31,7 +32,7 @@ public class RacingCarTest {
     @ParameterizedTest
     @MethodSource("provideCarNamesAndTargetDistance")
     void startRacing(String input, int targetDistance) {
-        List<String> carNames = RacingCarView.getCarObjects(input);
+        List<String> carNames = RacingInputCarView.getCarObjects(input);
 
         racingCarService = new RacingCarService();
         racingCarService.startRacing(carNames, targetDistance);
@@ -41,14 +42,14 @@ public class RacingCarTest {
     @ParameterizedTest
     @ValueSource(strings = { "pobi,woni, jun" })
     void getCarNamesTest(String input) {
-        assertThat(RacingCarView.getCarObjects(input)).isEqualTo(List.of("pobi", "woni", "jun"));
+        assertThat(RacingInputCarView.getCarObjects(input)).isEqualTo(List.of("pobi", "woni", "jun"));
     }
 
     @DisplayName("Car 객체 생성 테스트")
     @ParameterizedTest
     @ValueSource(strings = { "pobi,woni, jun" })
     void getCarObjectsTest(String input) {
-        List<String> carNames = RacingCarView.getCarObjects(input);
+        List<String> carNames = RacingInputCarView.getCarObjects(input);
         List<Car> cars = racingCarService.makeCars(carNames);
         assertThat(cars.size()).isEqualTo(3);
     }
@@ -57,8 +58,7 @@ public class RacingCarTest {
     @ParameterizedTest
     @ValueSource(ints = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 })
     void getRandomNumberTest(int input) {
-        Car car = new Car("pobi");
-        assertThat(car.getRandomNumber()).isBetween(0, 9);
+        assertThat(CarRandom.getRandomNumber()).isBetween(0, 9);
     }
 
     @DisplayName("자동차 이동거리 확인 테스트")
@@ -92,7 +92,7 @@ public class RacingCarTest {
     @ParameterizedTest
     @ValueSource(strings = { "pobi,woni,jun" })
     void getWinnerNamesTest1(String input) {
-        List<String> carNames = RacingCarView.getCarObjects(input);
+        List<String> carNames = RacingInputCarView.getCarObjects(input);
         List<Car> cars = racingCarService.makeCars(carNames);
         cars.get(0).moveForward();
         cars.get(0).moveForward();
@@ -107,7 +107,7 @@ public class RacingCarTest {
     @ParameterizedTest
     @ValueSource(strings = { "pobi,woni,jun" })
     void getWinnerNamesTest2(String input) {
-        List<String> carNames = RacingCarView.getCarObjects(input);
+        List<String> carNames = RacingInputCarView.getCarObjects(input);
         List<Car> cars = racingCarService.makeCars(carNames);
         cars.get(0).moveForward();
         cars.get(0).moveForward();
@@ -123,7 +123,7 @@ public class RacingCarTest {
     @ParameterizedTest
     @ValueSource(strings = { "pobi,woni,jun" })
     void getMaxDistanceTest(String input) {
-        List<String> carNames = RacingCarView.getCarObjects(input);
+        List<String> carNames = RacingInputCarView.getCarObjects(input);
         List<Car> cars = racingCarService.makeCars(carNames);
         cars.get(0).moveForward();
         cars.get(0).moveForward();

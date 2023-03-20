@@ -18,7 +18,7 @@ public class Car {
     }
 
     public void move() {
-        if (isMove(getRandomNumber()))
+        if (isMove(CarRandom.getRandomNumber()))
             moveForward();
     }
 
@@ -31,10 +31,6 @@ public class Car {
             return true;
 
         return false;
-    }
-
-    public int getRandomNumber() {
-        return (int) (Math.random() * 10);
     }
 
 }
