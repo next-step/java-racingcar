@@ -2,19 +2,21 @@ package domain;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class StringCalcurator {
     public List<Integer> getNumbers(List<String> input) {
         return input.stream()
                 .filter(number -> number.matches("[0-9]"))
                 .map(number -> Integer.parseInt(number))
-                .toList();
+                .collect(Collectors.toList());
     }
 
     public List<String> getSigns(List<String> input) {
         return input.stream()
                 .filter(number -> number.matches("[+\\-/*%]"))
-                .toList();
+                .collect(Collectors.toList());
     }
 
     public void validateInput(String input) {

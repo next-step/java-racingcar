@@ -4,7 +4,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import domain.Car;
-import view.RacingCarView;
+import view.RacingInputCarView;
+import view.RacingResultView;
 
 public class RacingCarService {
     public void startRacing(List<String> carNames, int targetDistance) {
@@ -12,11 +13,11 @@ public class RacingCarService {
         List<Car> cars = makeCars(carNames);
 
         // move cars
-        RacingCarView.printStartRacing();
+        RacingResultView.printStartRacing();
         moveCars(cars, targetDistance);
 
         // print winner
-        RacingCarView.printResult(getWinnerNames(cars));
+        RacingResultView.printResult(getWinnerNames(cars));
     }
 
     public String getWinnerNames(List<Car> cars) {
@@ -42,7 +43,7 @@ public class RacingCarService {
 
     public void printCars(List<Car> cars) {
         cars.stream()
-                .forEach(car -> RacingCarView.printNameAndDistance(car.getName(), car.getDistance()));
+                .forEach(car -> RacingResultView.printNameAndDistance(car.getName(), car.getDistance()));
     }
 
     public List<Car> makeCars(List<String> carNames) {
@@ -55,7 +56,8 @@ public class RacingCarService {
         for (int i = 0; i < targetDistance; i++) {
             moveCars(cars);
             printCars(cars);
-            RacingCarView.printNewLine();
+            RacingResultView.printNewLine();
+
         }
     }
 
