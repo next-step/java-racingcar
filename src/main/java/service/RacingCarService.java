@@ -57,6 +57,7 @@ public class RacingCarService {
             moveCars(cars);
             printCars(cars);
             RacingResultView.printNewLine();
+
         }
     }
 
