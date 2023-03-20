@@ -10,6 +10,7 @@ public class CarController {
         CarNameRequest carNameRequest = CarNameRequest.carListRequest();
         PlayNumberRequest playNumberRequest = PlayNumberRequest.playNumberRequest();
         CarRacing carRacing = new CarRacing(carNameRequest.getCarNameList(), playNumberRequest.getNumber());
-        new CarResult(carRacing.getCarList());
+        CarResult carResult = new CarResult(carRacing.getCarList());
+        carResult.carRacingResult();
     }
 }

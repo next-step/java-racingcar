@@ -11,7 +11,6 @@ public class CarResult {
 
     public CarResult(CarList carList) {
         this.carList = carList;
-        carRacingResult();
     }
 
     public void carRacingResult() {

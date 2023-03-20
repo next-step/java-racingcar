@@ -4,6 +4,8 @@ public class Car {
 
     private static final int DEFAULT_POSITION = 0;
     private static final int MAX_NAME_LENGTH = 5;
+    private static final int RANDOM_MAX = 10;
+    private static final int MIN_NUMBER = 3;
     private String name;
     private int position;
 
@@ -27,12 +29,18 @@ public class Car {
     }
 
     private void carAvailableCheck() {
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+
         if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("이름초과");
         }
+    }
 
-        if (name == null || name.isEmpty()) {
-            throw new IllegalArgumentException();
+    public void move(){
+        if(RandomNumber.getRandomNumber(RANDOM_MAX) > MIN_NUMBER) {
+            position++;
         }
     }
 }

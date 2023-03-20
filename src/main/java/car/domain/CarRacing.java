@@ -4,33 +4,28 @@ import car.view.PrintPlayMessage;
 
 public class CarRacing {
 
-    private static final int RANDOM_MAX = 10;
-    private static final int MIN_NUMBER = 3;
     private final CarList carList;
     private final int playNumber;
 
     public CarRacing(CarList carList, int playNumber){
         this.carList = carList;
         this.playNumber = playNumber;
-        carAllPlay();
+        playAll();
     }
 
-    public void carAllPlay(){
-        PrintPlayMessage.printPlayMessage("실행결과");
+    public void playAll(){
+        PrintPlayMessage.printResultStartMessage();
         for(int i = 0; i < playNumber; i++) {
-            carPlay();
-            PrintPlayMessage.printPlayMessage("");
+            playAllCars();
         }
     }
 
-    private void carPlay(){
+    private void playAllCars(){
         for(int i = 0; i < carList.getCarNameList().size(); i++){
-            int number = carList.getCarNameList().get(i).getPosition();
-            if(RandomNumber.getRandomNumber(RANDOM_MAX) > MIN_NUMBER) {
-                number++;
-            }
-            carList.getCarNameList().set(i, new Car(carList.getCarNameList().get(i).getName(), number));
-            PrintPlayMessage.printScoreMessage(carList.getCarNameList().get(i).getName(), number);
+            Car car = new Car(carList.getCarNameList().get(i).getName(), carList.getCarNameList().get(i).getPosition());
+            car.move();
+            carList.getCarNameList().set(i, car);
+            PrintPlayMessage.printScoreMessage(car);
         }
     }
 
