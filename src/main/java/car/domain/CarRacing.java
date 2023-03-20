@@ -10,7 +10,6 @@ public class CarRacing {
     public CarRacing(CarList carList, int playNumber){
         this.carList = carList;
         this.playNumber = playNumber;
-        playAll();
     }
 
     public void playAll(){

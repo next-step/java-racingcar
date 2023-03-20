@@ -25,7 +25,7 @@ public class CarResult {
         PrintPlayMessage.printResultMessage(winnerList);
     }
 
-    public int maxScoreCalculate() {
+    private int maxScoreCalculate() {
         int maxValue = 0;
 
         for (int i = 0; i < carList.getCarNameList().size(); i++) {
