@@ -17,9 +17,9 @@ class CarTest {
 
 
     @ParameterizedTest
-    @ValueSource(strings = {"abcd"})
+    @ValueSource(strings = {"abcdef"})
     void 자동차_이름은_5자리를_초과하지않음(String strings) {
-        assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
+        assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> new Car(strings));
     }
 

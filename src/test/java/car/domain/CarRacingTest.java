@@ -3,6 +3,7 @@ package car.domain;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,12 +12,28 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CarRacingTest {
 
-    @Test
-    void 자동차_전진에_따라_이름_및_전진수를_출력한다() {
-        CarList carList = new CarList(Arrays.asList(new Car("woo")
-                , new Car("na"), new Car("boo")));
-        int playNumber = 3;
-        assertThat(new CarRacing(carList, playNumber));
+    private int carRacingCheck(CarList carList, int playNumber){
+        CarRacing carRacing = new CarRacing(carList, playNumber);
+        carRacing.playAll();
+        int maxPosition = 0;
 
+        for(int i = 0; i < carRacing.getCarList().getCarNameList().size(); i++){
+            if (maxPosition < carRacing.getCarList().getCarNameList().get(i).getPosition()) {
+                maxPosition = carRacing.getCarList().getCarNameList().get(i).getPosition();
+            }
+        }
+
+        return maxPosition;
+    }
+    @Test
+    void 자동차_전진은_플레이_수보다_더_많을_수_없다() {
+        CarList carList = new CarList(Arrays.asList(new Car("woo")));
+        int playNumber = 3;
+        Boolean playCheck = true;
+        if(playNumber < carRacingCheck(carList, playNumber))
+        {
+            playCheck = false;
+        }
+        assertThat(playCheck).isTrue();
     }
 }
