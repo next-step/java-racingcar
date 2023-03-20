@@ -15,7 +15,7 @@ public class RacingCarTest {
     @ValueSource(strings = {"apple"})
     void name(final String name) {
         final Name carName = Name.of(name);
-        final Car car = Car.of(carName, 0);
+        final Car car = new Car(carName);
         assertThat(car.getName()).isEqualTo("apple");
     }
 }

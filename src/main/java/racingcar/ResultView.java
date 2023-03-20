@@ -13,9 +13,7 @@ public class ResultView {
     }
 
     public void printWinners(List<Car> winners) {
-        System.out.println("최종 우승 : " + String.join(
-                ", ",
-                winners.stream().map(Car::getName).collect(Collectors.toList()))
-        );
+        System.out.println("최종 우승 : "
+                + winners.stream().map(Car::getName).collect(Collectors.joining(", ")));
     }
 }

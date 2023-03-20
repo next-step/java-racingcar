@@ -10,13 +10,9 @@ public class Car {
 
     private int position;
 
-    private Car(Name name, int position) {
+    public Car(Name name) {
         this.name = name;
-        this.position = position;
-    }
-
-    public static Car of(Name name, int position) {
-        return new Car(name, position);
+        this.position = 0;
     }
 
     public String getName() { return name.toString(); }
@@ -27,6 +23,12 @@ public class Car {
 
     public void move() {
         if (getMoveCondition() > MOVE_CONDITION) {
+            position++;
+        }
+    }
+
+    public void move(int number) {
+        if (number > MOVE_CONDITION) {
             position++;
         }
     }

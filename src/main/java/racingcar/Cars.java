@@ -20,9 +20,7 @@ public class Cars {
     }
 
     public void run() {
-        for (Car car : cars) {
-            car.move();
-        }
+        cars.stream().forEach(Car::move);
     }
 
     public List<Car> getWinners() {

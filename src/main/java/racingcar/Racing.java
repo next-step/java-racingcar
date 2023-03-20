@@ -16,7 +16,7 @@ public class Racing {
 
         List<Car> values = new ArrayList<>();
         for (String carName : carNames) {
-            values.add(Car.of(Name.of(carName), 0));
+            values.add(new Car(Name.of(carName)));
         }
 
         this.cars = Cars.of(values);
