@@ -1,6 +1,6 @@
 package car.domain;
 
-import car.view.CarPlayMessage;
+import car.view.PrintPlayMessage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ public class CarResult {
                 winnerList.add(car.getName());
             }
         }
-        CarPlayMessage.playResultMessage(winnerList);
+        PrintPlayMessage.printResultMessage(winnerList);
     }
 
     public int maxScoreCalculate() {

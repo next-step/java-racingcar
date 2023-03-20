@@ -2,9 +2,9 @@ package car.view;
 
 import java.util.List;
 
-public class CarPlayMessage {
+public class PrintPlayMessage {
 
-    public static void playScoreMessage(String name, int score) {
+    public static void printScoreMessage(String name, int score) {
         StringBuilder carRacingScore = new StringBuilder();
         for (int j = 0; j < score; j++) {
             carRacingScore.append("-");
@@ -12,11 +12,11 @@ public class CarPlayMessage {
         System.out.println(name + " : " + carRacingScore);
     }
 
-    public static void carPlayMessage(String message) {
+    public static void printPlayMessage(String message) {
         System.out.println(message);
     }
 
-    public static void playResultMessage(List<String> message) {
+    public static void printResultMessage(List<String> message) {
         System.out.println("최중 우승자 : " + message);
     }
 }

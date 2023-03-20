@@ -1,6 +1,6 @@
 package car.domain;
 
-import car.view.CarPlayMessage;
+import car.view.PrintPlayMessage;
 
 public class CarRacing {
 
@@ -16,10 +16,10 @@ public class CarRacing {
     }
 
     public void carAllPlay(){
-        CarPlayMessage.carPlayMessage("실행결과");
+        PrintPlayMessage.printPlayMessage("실행결과");
         for(int i = 0; i < playNumber; i++) {
             carPlay();
-            CarPlayMessage.carPlayMessage("");
+            PrintPlayMessage.printPlayMessage("");
         }
     }
 
@@ -30,7 +30,7 @@ public class CarRacing {
                 number++;
             }
             carList.getCarNameList().set(i, new Car(carList.getCarNameList().get(i).getName(), number));
-            CarPlayMessage.playScoreMessage(carList.getCarNameList().get(i).getName(), number);
+            PrintPlayMessage.printScoreMessage(carList.getCarNameList().get(i).getName(), number);
         }
     }
 

@@ -16,9 +16,9 @@ public class PlayNumberRequest {
     }
 
     private static int numberRequest() {
-        Scanner sc = new Scanner(System.in);
+        InputView inputView = new InputView();
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return sc.nextInt();
+        return inputView.getScInt();
     }
 
     public int getNumber() {
