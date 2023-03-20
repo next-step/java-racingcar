@@ -10,11 +10,21 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RacingCarTest {
+    private static final int MAXIMUM_NAME_LENGTH = 5;
+
     @DisplayName("자동차는 이름을 가진다.")
     @Test
     void Name(){
         var car = new Car("jason",0);
         assertThat(car.getName()).isEqualTo("jason");
+    }
+
+    @DisplayName("자동차 이름이 5자초과시 오류")
+    @Test
+    void ValidateName(){
+        assertThatThrownBy(()-> new Car("jasondd",0))
+                .isInstanceOf(IllegalArgumentException.class);
+
     }
     @DisplayName("자동차경주 참여자 리스트를 만든다")
     @Test
@@ -41,7 +51,7 @@ class RacingCarTest {
 
     @DisplayName("자동차가 이동한다")
     @Test
-    void excuteCarRacingTest(){
+    void carMoveTest(){
         //given
         RacingCar racingCar = new RacingCar();
         List<Car> carList = new ArrayList<>();
@@ -49,8 +59,24 @@ class RacingCarTest {
         carList.add(new Car("pobi",0));
         carList.add(new Car("woni",0));
         carList.add(new Car("jun",0));
+        carList.get(0).move(5);
 
-        racingCar.excuteCarRacing(carList);
+        assertThat(carList.get(0).getPosition()).isEqualTo(1);
+    }
+
+    @DisplayName("자동차가 이동하지않는다")
+    @Test
+    void carNotMoveTest(){
+        //given
+        RacingCar racingCar = new RacingCar();
+        List<Car> carList = new ArrayList<>();
+
+        carList.add(new Car("pobi",0));
+        carList.add(new Car("woni",0));
+        carList.add(new Car("jun",0));
+        carList.get(0).move(1);
+
+        assertThat(carList.get(0).getPosition()).isEqualTo(0);
     }
     @DisplayName("자동차 경주 우승자 찾기")
     @Test

@@ -8,6 +8,8 @@ import java.util.stream.IntStream;
 
 public class Calculator {
     final static String DELIMITER = " ";
+    final static String NUMERIC = "\\d*";
+    final static String OPERATOR = "[+\\-*/]";
 
     public void start() {
         //입력값
@@ -39,17 +41,22 @@ public class Calculator {
     }
 
     public void actualValidate(String actual) {
-        if(!actual.matches("\\d*") && !actual.matches("[+\\-*/]")){
+        if(!actual.matches(NUMERIC) && !actual.matches(OPERATOR)){
             throw new IllegalArgumentException("사칙연산 기호가 아닌 값이 입력되었습니다.");
         }
     }
 
     private List<Integer> splitNumber(String[] actuals) {
-        return Arrays.stream(actuals).filter(number-> number.matches("\\d*")).map(number -> Integer.parseInt(number)).collect(Collectors.toList());
+        return Arrays.stream(actuals)
+                .filter(number-> number.matches(NUMERIC))
+                .map(number -> Integer.parseInt(number))
+                .collect(Collectors.toList());
     }
 
     private List<String> splitOperation(String[] actuals) {
-        return Arrays.stream(actuals).filter(operation-> operation.matches("[+\\-*/]")).collect(Collectors.toList());
+        return Arrays.stream(actuals)
+                .filter(operation-> operation.matches(OPERATOR))
+                .collect(Collectors.toList());
     }
 
     public int calculate(int num1, int num2, String operation) {

@@ -33,7 +33,8 @@ public class RacingCar {
 
     public void excuteCarRacing(List<Car> carList) {
         carList.forEach(car -> {
-            car.move();
+            int randonNumber = new Random().nextInt(10);
+            car.move(randonNumber);
             System.out.print("\n"+car.getName()+" : ");
             printLocation(car.getPosition());
         });

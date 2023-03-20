@@ -31,14 +31,9 @@ public class Car {
         return this.position;
     }
 
-    public void move(){
-        final int randomNumber = getRandomNumber();
+    public void move(int randomNumber){
         if(randomNumber>=4){
             this.position++;
         }
-    }
-
-    protected int getRandomNumber() {
-        return new Random().nextInt(10);
     }
 }
