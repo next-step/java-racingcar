@@ -18,14 +18,15 @@ public class CarResult {
         int maxScore = maxScoreCalculate();
 
         for (Car car : carList.getCars()) {
-            if (maxScore == car.getPosition()) {
+            if(car.isAtPosition(maxScore))
+            {
                 winnerList.add(car.getName());
             }
         }
         PrintPlayMessage.printResultMessage(winnerList);
     }
 
-    private int maxScoreCalculate() {
+    public int maxScoreCalculate() {
         int maxValue = 0;
 
         for (int i = 0; i < carList.getCars().size(); i++) {

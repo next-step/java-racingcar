@@ -42,4 +42,11 @@ public class Car {
             position++;
         }
     }
+
+    public Boolean isAtPosition(int maxScore){
+        if(position == maxScore){
+            return true;
+        }
+        return false;
+    }
 }
