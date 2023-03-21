@@ -2,6 +2,8 @@ package car.domain;
 
 import car.view.PrintPlayMessage;
 
+import java.util.Random;
+
 public class CarRacing {
 
     private final CarList carList;
@@ -20,8 +22,9 @@ public class CarRacing {
     }
 
     private void playAllCars() {
+        NumberGenerator numberGenerator = new RandomNumberGenerator();
         for (int i = 0; i < carList.getCars().size(); i++) {
-            carList.getCars().get(i).move();
+            carList.getCars().get(i).move(numberGenerator);
             PrintPlayMessage.printScoreMessage(carList.getCars().get(i));
         }
     }

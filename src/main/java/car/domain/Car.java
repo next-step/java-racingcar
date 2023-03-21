@@ -1,10 +1,11 @@
 package car.domain;
 
+import java.util.Random;
+
 public class Car {
 
     private static final int DEFAULT_POSITION = 0;
     private static final int MAX_NAME_LENGTH = 5;
-    private static final int RANDOM_MAX = 10;
     private static final int MIN_NUMBER = 3;
     private String name;
     private int position;
@@ -37,8 +38,10 @@ public class Car {
         }
     }
 
-    public void move() {
-        if (RandomNumber.getRandomNumber(RANDOM_MAX) > MIN_NUMBER) {
+    public void move(NumberGenerator numberGenerator) {
+        int randomNumber = numberGenerator.generate();
+
+        if (randomNumber > MIN_NUMBER) {
             position++;
         }
     }

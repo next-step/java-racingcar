@@ -26,7 +26,16 @@ class CarTest {
     @Test
     void 랜덤_수에_따라_이동이_나눠진다() {
         Car car = new Car("sean");
-        car.move();
+        NumberGenerator numberGenerator = new RandomNumberGenerator();
+        car.move(numberGenerator);
         assertThat(Arrays.asList(0, 1).contains(car.getPosition()));
+    }
+
+    @Test
+    void 자동차는_한칸씩_이동을_한다() {
+        Car car = new Car("sean");
+        NumberGenerator numberGenerator = new TestNumberGenerator();
+        car.move(numberGenerator);
+        assertThat(1).isEqualTo(car.getPosition());
     }
 }
