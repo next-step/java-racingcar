@@ -11,7 +11,6 @@ public class Car {
 
     public Car(final String name) {
         this(name, DEFAULT_POSITION);
-        carAvailableCheck();
     }
 
     public Car(final String name, final int position) {

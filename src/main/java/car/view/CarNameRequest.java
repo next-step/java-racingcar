@@ -14,14 +14,14 @@ public class CarNameRequest {
     }
 
     public static CarNameRequest carListRequest() {
-        List<Car> carNameList = new ArrayList<>();
+        List<Car> cars = new ArrayList<>();
         String carNames = nameRequest();
 
         for (String carName : carNames.split(",")) {
-            carNameList.add(new Car(carName));
+            cars.add(new Car(carName));
         }
 
-        return new CarNameRequest(new CarList(carNameList));
+        return new CarNameRequest(new CarList(cars));
     }
 
     private static String nameRequest() {

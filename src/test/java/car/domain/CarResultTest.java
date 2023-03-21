@@ -27,7 +27,7 @@ class CarResultTest {
     void 최대_전진에_대해_결과를_출력한다() {
         CarList carList = new CarList(Arrays.asList(new Car("woo", 1)
                 , new Car("na", 2), new Car("boo",3)));
-        String maxScoreName = maxScoreCalculate(carList.getCarNameList());
+        String maxScoreName = maxScoreCalculate(carList.getCars());
         Boolean winnerCheck = maxScoreName.contains("boo");
         assertThat(winnerCheck).isTrue();
     }

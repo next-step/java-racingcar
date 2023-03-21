@@ -20,11 +20,9 @@ public class CarRacing {
     }
 
     private void playAllCars(){
-        for(int i = 0; i < carList.getCarNameList().size(); i++){
-            Car car = new Car(carList.getCarNameList().get(i).getName(), carList.getCarNameList().get(i).getPosition());
-            car.move();
-            carList.getCarNameList().set(i, car);
-            PrintPlayMessage.printScoreMessage(car);
+        for(int i = 0; i < carList.getCars().size(); i++){
+            carList.getCars().get(i).move();
+            PrintPlayMessage.printScoreMessage(carList.getCars().get(i));
         }
     }
 

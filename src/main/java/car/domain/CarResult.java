@@ -17,7 +17,7 @@ public class CarResult {
         List<String> winnerList = new ArrayList<>();
         int maxScore = maxScoreCalculate();
 
-        for (Car car : carList.getCarNameList()) {
+        for (Car car : carList.getCars()) {
             if (maxScore == car.getPosition()) {
                 winnerList.add(car.getName());
             }
@@ -28,9 +28,9 @@ public class CarResult {
     private int maxScoreCalculate() {
         int maxValue = 0;
 
-        for (int i = 0; i < carList.getCarNameList().size(); i++) {
-            if (maxValue < carList.getCarNameList().get(i).getPosition()) {
-                maxValue = carList.getCarNameList().get(i).getPosition();
+        for (int i = 0; i < carList.getCars().size(); i++) {
+            if (maxValue < carList.getCars().get(i).getPosition()) {
+                maxValue = carList.getCars().get(i).getPosition();
             }
         }
         return maxValue;

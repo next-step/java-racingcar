@@ -17,9 +17,9 @@ class CarRacingTest {
         carRacing.playAll();
         int maxPosition = 0;
 
-        for(int i = 0; i < carRacing.getCarList().getCarNameList().size(); i++){
-            if (maxPosition < carRacing.getCarList().getCarNameList().get(i).getPosition()) {
-                maxPosition = carRacing.getCarList().getCarNameList().get(i).getPosition();
+        for(int i = 0; i < carRacing.getCarList().getCars().size(); i++){
+            if (maxPosition < carRacing.getCarList().getCars().get(i).getPosition()) {
+                maxPosition = carRacing.getCarList().getCars().get(i).getPosition();
             }
         }
 

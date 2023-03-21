@@ -4,13 +4,13 @@ import java.util.List;
 
 public class CarList {
 
-    private final List<Car> carNameList;
+    private final List<Car> cars;
 
-    public CarList(List<Car> carNameList) {
-        this.carNameList = carNameList;
+    public CarList(List<Car> cars) {
+        this.cars = cars;
     }
 
-    public List<Car> getCarNameList() {
-        return carNameList;
+    public List<Car> getCars() {
+        return cars;
     }
 }
