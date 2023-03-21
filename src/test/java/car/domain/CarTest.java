@@ -23,11 +23,10 @@ class CarTest {
                 .isThrownBy(() -> new Car(strings));
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = 10)
-    void 원하는_수_사이의_랜덤_수를_생성한다(Integer ints) {
-        List<Integer> number = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
-        Boolean numberCheck = number.contains(RandomNumber.getRandomNumber(ints));
-        assertThat(numberCheck).isTrue();
+    @Test
+    void 랜덤_수에_따라_이동이_나눠진다() {
+        Car car = new Car("sean");
+        car.move();
+        assertThat(Arrays.asList(0, 1).contains(car.getPosition()));
     }
 }

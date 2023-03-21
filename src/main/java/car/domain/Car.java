@@ -37,14 +37,14 @@ public class Car {
         }
     }
 
-    public void move(){
-        if(RandomNumber.getRandomNumber(RANDOM_MAX) > MIN_NUMBER) {
+    public void move() {
+        if (RandomNumber.getRandomNumber(RANDOM_MAX) > MIN_NUMBER) {
             position++;
         }
     }
 
-    public Boolean isAtPosition(int maxScore){
-        if(position == maxScore){
+    public Boolean isAtPosition(int maxScore) {
+        if (position == maxScore) {
             return true;
         }
         return false;

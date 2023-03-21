@@ -6,7 +6,7 @@ import car.view.CarNameRequest;
 import car.view.PlayNumberRequest;
 
 public class CarController {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         CarNameRequest carNameRequest = CarNameRequest.carListRequest();
         PlayNumberRequest playNumberRequest = PlayNumberRequest.playNumberRequest();
         CarRacing carRacing = new CarRacing(carNameRequest.getCarNameList(), playNumberRequest.getNumber());

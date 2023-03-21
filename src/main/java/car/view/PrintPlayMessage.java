@@ -22,7 +22,7 @@ public class PrintPlayMessage {
         System.out.println("최중 우승자 : " + message);
     }
 
-    public static void printResultStartMessage(){
+    public static void printResultStartMessage() {
         System.out.println("실행결과");
     }
 }

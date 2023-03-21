@@ -18,8 +18,7 @@ public class CarResult {
         int maxScore = maxScoreCalculate();
 
         for (Car car : carList.getCars()) {
-            if(car.isAtPosition(maxScore))
-            {
+            if (car.isAtPosition(maxScore)) {
                 winnerList.add(car.getName());
             }
         }
