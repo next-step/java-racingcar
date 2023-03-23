@@ -1,12 +1,12 @@
-package racingCar;
+package racingCar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Winner {
-    public List<String> getWinner(final int maxPosition, List<Car> garage) {
+    public List<String> getWinner(List<Car> cars, int maxPosition) {
         List<String> winners = new ArrayList<>();
-        for (Car car : garage) {
+        for (Car car : cars) {
             setWinners(maxPosition, winners, car);
         }
         return winners;
