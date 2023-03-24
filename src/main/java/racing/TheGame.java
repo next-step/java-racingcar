@@ -5,6 +5,7 @@ import racing.view.OutputView;
 
 import java.util.Random;
 
+
 public class TheGame {
 
     public static int round;
@@ -36,51 +37,6 @@ public class TheGame {
 
     }
 
-    public static int racing() {
-        int maxPosition = 0;
-
-        for (int i = 0; i < round; i++) {
-            maxPosition = Math.max(moveCars(), maxPosition);
-            printCarPosition();
-        }
-
-        return maxPosition;
-    }
-
-    public static String getWinner(int maxPosition) {
-        String winnerName = "";
-        int winnerCnt = 0;
-
-        for (int i = 0; i < cars.length; i++) {
-
-            if (cars[i].getPosition() == maxPosition) {
-                winnerCnt++;
-                if (winnerCnt >= 2) {
-                    winnerName += ", ";
-                }
-                winnerName += cars[i].getName();
-            }
-        }
-
-        return winnerName;
-    }
-
-    static void printCarPosition() {
-        for (Car car : cars) {
-            System.out.println(car.getPositionFormat());
-        }
-    }
-
-    private static int moveCars() {
-        int carPosistion = 0;
-
-        for (Car car : cars) {
-            /* carPosistion = Math.max(car.move(random.nextInt(10)), carPosistion);*/
-            carPosistion = car.move(random.nextInt(10));
-        }
-
-        return carPosistion;
-    }
 
     public Car[] initCars(String names) {
         String[] nameArray = names.split(",");
@@ -92,4 +48,6 @@ public class TheGame {
 
         return cars;
     }
+
+
 }

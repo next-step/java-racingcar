@@ -1,15 +1,16 @@
 package racing.view;
 
-import racing.TheGame;
+import racing.domain.GetWinner;
+import racing.domain.Racing;
 
 public class OutputView {
 
     public String winnerCar() {
 
         System.out.println("실행결과");
-        int winnerPosition = TheGame.racing();
+        int winnerPosition = Racing.racing();
 
-        String winner = TheGame.getWinner(winnerPosition);
+        String winner = GetWinner.getWinner(winnerPosition);
         return winner;
     }
 }
