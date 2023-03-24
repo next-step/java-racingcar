@@ -1,7 +1,8 @@
 package racing;
 
+import racing.view.InputView;
+
 import java.util.Random;
-import java.util.Scanner;
 
 public class TheGame {
 
@@ -16,13 +17,12 @@ public class TheGame {
     }
 
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
 
-        System.out.println("자동차 이름을 입력하세요(쉼표(,)구분");
-        String names = in.nextLine();
+        InputView inputView = new InputView();
 
-        System.out.println("시도할 회수를 입력하세요!");
-        int round = Integer.parseInt(in.nextLine());
+        String names = inputView.inputCarname();
+        int round = inputView.inputRound();
+
 
         TheGame TheGame = new TheGame(names, round);
 
