@@ -17,6 +17,10 @@
  - [x] 자동차가 한 대가 우승한 경우 - Winner
  - [x] 자동차 여러 대가 우승한 경우 - Winner
 
+## 온라인 코드 리뷰 과정
+* [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+  (https://github.com/next-step/nextstep-docs/tree/master/codereview)
+* 
 ## Step2 (2단계 - 자동차 경주 리팩터링)
 * 프로그래밍 요구 사항
 * 핵심 비즈니스 로직을 가지는 객체를 domain 패키지, UI 관련한 객체를 view 패키지에 구현한다.
