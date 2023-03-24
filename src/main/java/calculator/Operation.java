@@ -5,10 +5,10 @@ import java.util.function.BiFunction;
 
 public enum Operation {
 
-    ADD("+", (x, y) -> x+y),
-    MIN("-", (x, y) -> x-y),
-    MUL("*", (x, y) -> x*y),
-    DIV("/", (x, y) -> x/y);
+    ADD("+", (x, y) -> x + y),
+    MIN("-", (x, y) -> x - y),
+    MUL("*", (x, y) -> x * y),
+    DIV("/", (x, y) -> x / y);
 
     private final String symbol;
     private final BiFunction<Double, Double, Double> function;

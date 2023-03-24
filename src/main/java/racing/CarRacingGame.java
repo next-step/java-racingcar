@@ -1,6 +1,7 @@
 package racing;
 
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class CarRacingGame {
 
@@ -14,7 +15,10 @@ public class CarRacingGame {
         RaceControll raceControll = new RaceControll(drivers);
         race(round, raceControll);
 
-        System.out.println(String.format("최종 우승자 : %s", raceControll.getWinners()));
+        String winners = raceControll.getWinners()
+                        .stream().map(Driver::getName)
+                        .collect(Collectors.joining(", "));
+        System.out.println(String.format("최종 우승자 : %s", winners));
     }
 
     private static String getDriversName() {
@@ -33,7 +37,7 @@ public class CarRacingGame {
             raceControll.raceSingleRound();
             raceControll.getCars()
                     .stream()
-                        .map(RacingCar::toString)
+                        .map(RacingCar::printPosition)
                             .forEach(System.out::println);
             System.out.println();
         }

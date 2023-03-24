@@ -18,7 +18,7 @@ class RacingCarTest {
             racingCar.attack(true);
         }
 
-        assertThat(racingCar.getPosition()).isEqualTo(attackCount);
+        assertThat(racingCar.getPosition().getPoistion()).isEqualTo(attackCount);
     }
 
     @DisplayName("위치에 따른 정보 출력 확인")
@@ -29,7 +29,7 @@ class RacingCarTest {
         racingCar.attack(false);
         racingCar.attack(true);
 
-        String actual = racingCar.toString();
+        String actual = racingCar.printPosition();
 
         assertThat(actual).isEqualTo("LEC : --");
     }

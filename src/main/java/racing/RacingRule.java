@@ -14,7 +14,7 @@ public class RacingRule {
         return attackNumber >= ATTACKABLE_STANDARD;
     }
 
-    public int attack() {
+    private int attack() {
         Random random = new Random();
         return random.nextInt(9);
     }

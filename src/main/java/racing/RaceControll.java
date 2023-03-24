@@ -11,18 +11,16 @@ public class RaceControll {
         this.registrationCars(names);
     }
 
-    public String getWinners() {
+    public List<Driver> getWinners() {
+        int winningPosition = this.cars.stream()
+                .map(RacingCar::getPosition)
+                .mapToInt(Position::getPoistion)
+                .max()
+                .getAsInt();
+
         return this.cars.stream()
-                .collect(Collectors.groupingBy(RacingCar::getPosition))
-                    .entrySet()
-                        .stream()
-                            .max(Comparator.comparing(Map.Entry::getKey))
-                                .get()
-                                    .getValue()
-                .stream()
-                    .map(RacingCar::getDriver)
-                        .map(Driver::getName)
-                            .collect(Collectors.joining(", "));
+                .filter(car -> car.getPosition().getPoistion() == winningPosition)
+                .map(RacingCar::getDriver).collect(Collectors.toList());
     }
 
     private void registrationCars(String names) {
@@ -33,11 +31,10 @@ public class RaceControll {
 
     public void raceSingleRound() {
         RacingRule rule = new RacingRule();
-        this.cars.stream()
-                .forEach(car -> {
-                    boolean isAttackable = rule.isAttackable();
-                    car.attack(isAttackable);
-                });
+        for(RacingCar car : this.cars) {
+            boolean isAttackable = rule.isAttackable();
+            car.attack(isAttackable);
+        }
     }
 
     public List<RacingCar> getCars() {

@@ -4,24 +4,24 @@ public class RacingCar {
 
     private final Driver driver;
 
-    private int position;
+    private final Position position;
 
     public RacingCar(String name) {
         this.driver = new Driver(name);
+        this.position = new Position();
     }
 
     public void attack(boolean isAttackable) {
         if(isAttackable) {
-            position += 1;
+            this.position.attack();
         }
     }
 
-    @Override
-    public String toString() {
+    public String printPosition() {
         StringBuilder builder = new StringBuilder(driver.getName())
                 .append(" : ");
 
-        for(int i = 0; i < position; i++) {
+        for(int i = 0; i < this.position.getPoistion(); i++) {
             builder.append("-");
         }
 
@@ -32,7 +32,7 @@ public class RacingCar {
         return this.driver;
     }
 
-    public int getPosition() {
+    public Position getPosition() {
         return this.position;
     }
 }

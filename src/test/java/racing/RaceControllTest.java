@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -31,7 +32,7 @@ class RaceControllTest {
                     car.attack(true);
                 });
 
-        String actual = raceControll.getWinners();
+        String actual = raceControll.getWinners().stream().map(Driver::getName).collect(Collectors.joining(", "));
 
         assertThat(actual).isEqualTo("LEC");
     }
@@ -47,7 +48,7 @@ class RaceControllTest {
                     car.attack(true);
                 });
 
-        String actual = raceControll.getWinners();
+        String actual = raceControll.getWinners().stream().map(Driver::getName).collect(Collectors.joining(", "));
 
         assertThat(actual).isEqualTo("LEC, SAI");
     }
