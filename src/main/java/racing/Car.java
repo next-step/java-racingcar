@@ -1,12 +1,10 @@
 package racing;
 
 public class Car {
-
+    private static final int FORWARD_NUMBER = 4; //4이상일때 이동
     public final String name;
-
-    public final int moveOption;
-
     private int position;
+
 
     public Car(String name) {
         this(name, 0);
@@ -17,7 +15,6 @@ public class Car {
 
         this.position = position;
         this.name = name;
-        this.moveOption = 4;
     }
 
     private void checkName(String name) {
@@ -27,7 +24,7 @@ public class Car {
     }
 
     public int move(int moveValue) {
-        if (moveOption <= moveValue) {
+        if (FORWARD_NUMBER <= moveValue) {
             position++;
         }
 
