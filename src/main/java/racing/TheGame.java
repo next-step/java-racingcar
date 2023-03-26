@@ -7,7 +7,6 @@ import java.util.Random;
 
 
 public class TheGame {
-
     public static int round;
     public static Car[] cars;
     public static Random random;
@@ -26,15 +25,12 @@ public class TheGame {
         String names = inputView.inputCarname();
         int round = inputView.inputRound();
 
-
         TheGame TheGame = new TheGame(names, round);
 
         //모델분리 OutputView
         OutputView outputView = new OutputView();
         String winner = outputView.winnerCar();
         System.out.println("우승자: " + winner);
-
-
     }
 
 
@@ -45,9 +41,6 @@ public class TheGame {
         for (int i = 0; i < nameArray.length; i++) {
             cars[i] = new Car(nameArray[i]);
         }
-
         return cars;
     }
-
-
 }

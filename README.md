@@ -8,4 +8,3 @@
 - [x] domain 패키지는 view 패키지 객체에 의존하지 않도록 구성하기
 - [x] 상수값화 하기 constant
 - [x] 분리후 성능검토 및 더 리팩토링 할수있는 부분 찾기
-  next-step/nextstep-docs/tree/master/codereview)
