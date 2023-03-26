@@ -1,21 +1,20 @@
 package racing.domain;
 
-import static racing.TheGame.round;
+import racing.Car;
+
 import static racing.domain.MoveCars.moveCars;
 
 public class Racing {
 
-    public static int racing() {
+    public static int racing(int rd, Car[] cs) {
         int maxPosition = 0;
+        int round = rd;
+        Car[] cars = cs;
 
         for (int i = 0; i < round; i++) {
-            maxPosition = Math.max(moveCars(), maxPosition);
-            printCarPosition();
+            maxPosition = Math.max(moveCars(cars), maxPosition);
         }
 
         return maxPosition;
-    }
-
-    private static void printCarPosition() {
     }
 }

@@ -1,10 +1,10 @@
 package racing.domain;
 
-import static racing.TheGame.cars;
+import racing.Car;
 
 public class GetWinner {
 
-    public static String getWinner(int maxPosition) {
+    public static String getWinner(int maxPosition, Car[] cars) {
         String winnerName = "";
         int winnerCnt = 0;
 

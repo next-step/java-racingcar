@@ -2,12 +2,12 @@ package racing.domain;
 
 import racing.Car;
 
-import static racing.TheGame.cars;
 import static racing.TheGame.random;
 
 public class MoveCars {
 
-    static int moveCars() {
+
+    static int moveCars(Car[] cars) {
         int carPosistion = 0;
 
         for (Car car : cars) {
@@ -17,5 +17,6 @@ public class MoveCars {
 
         return carPosistion;
     }
+
 
 }
