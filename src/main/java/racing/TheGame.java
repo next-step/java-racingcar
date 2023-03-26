@@ -7,7 +7,6 @@ import java.util.Random;
 
 
 public class TheGame {
-
     public static Random random;
     public Car[] cars;
     public int round;
