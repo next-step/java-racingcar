@@ -11,12 +11,11 @@ public class RacingTest {
 
     @BeforeEach
     void setUp(){
-        racing = new Racing(new String[]{"race1", "race2"});
+        racing = new Racing(new String[]{"race1", "race2"}, new int[]{1, 0});
     }
 
     @Test
     void chooseFinalWinners(){
-        racing.runWithNoConditionAndSequence(1);
         assertThat(racing.chooseFinalWinners().size()).isEqualTo(1);
         assertThat(racing.chooseFinalWinners().get(0).whoAmI()).isEqualTo("race2");
     }
