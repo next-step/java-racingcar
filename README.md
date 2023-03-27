@@ -9,15 +9,17 @@
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
 # 구현 목록
+## InputView
+* 자동차 이름 반환하기
+* 시도횟수 반환하기
 ## RacingPrinter
-* 우승자들 선택하기
+* 달리는 상태 출력하기
 * 우승자 출력하기
 ## RacingCarPrinter
 * 경주 자동차 달리는 상태 표시
 ## RacingCar
 * 전진
 * 전진상태 보여주기
-* 멈춤
 * 비교
 * 제친 자동차 수 보여주기
 * 이름 알려주기
@@ -25,5 +27,7 @@
 * 10배수 랜덤 함수
 ## Racing
 * 모든 자동차 전진
+* 특정번호 자동차만 전진
+* 우승자 선택하기
 ## RacingMain
 * main 함수 - input을 받아 처리하기
