@@ -37,14 +37,18 @@ public class RacingCar implements Comparable{
         return 0;
     }
 
-    public int compareRacingCarListWithNum(List<RacingCar> racingCars){
-        int tempMaxiMumNumber = 0;
-        for(RacingCar racingCar2 : racingCars){
-            if(compareTo(racingCar2) == 1){
-                tempMaxiMumNumber++;
-            }
+    public int compareRacingCarListWithNum(List<RacingCar> racingCars, int tempMaxiMumNumber){
+        for(RacingCar compareTargetRacingCar : racingCars){
+            tempMaxiMumNumber = compareAndPlusNumber(compareTargetRacingCar, tempMaxiMumNumber);
         }
         return tempMaxiMumNumber;
+    }
+
+    private int compareAndPlusNumber(RacingCar compareTargetRacingCar, int tempMaxiMumNum){
+        if(compareTo(compareTargetRacingCar) == 1){
+            return tempMaxiMumNum + 1;
+        }
+        return tempMaxiMumNum;
     }
 
     public String whoAmI(){
