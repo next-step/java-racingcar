@@ -2,8 +2,8 @@ package study;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import StringCal.StringCal;
-import StringCal.CalculateFunc;
+import stringcal.StringCal;
+import stringcal.CalculateFunc;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

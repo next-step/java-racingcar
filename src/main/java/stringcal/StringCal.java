@@ -1,4 +1,4 @@
-package StringCal;
+package stringcal;
 
 public class StringCal {
 
