@@ -1,4 +1,5 @@
 package racing;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -43,7 +44,7 @@ public class CarTest {
 
     @Test
     @DisplayName("자동차의 현재 위치를 알 수 있다.")
-    void getCarPosition(){
+    void getCarPosition() {
         Car car = new Car("BMW");
         int actual = car.getPosition();
         assertEquals(actual, 0);
@@ -52,8 +53,8 @@ public class CarTest {
 
     @DisplayName("4 이상이면 자동차가 이동한다.")
     @ParameterizedTest
-    @ValueSource(ints = {4,5,6,7,8,9})
-    void moveTest(int value){
+    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
+    void moveTest(int value) {
         Car car = new Car("BMW");
         int actual = car.move(5);
         assertEquals(actual, 1);
@@ -61,8 +62,8 @@ public class CarTest {
 
     @DisplayName("4 미만이면 자동차는 정지한다.")
     @ParameterizedTest
-    @ValueSource(ints = {4,5,6,7,8,9})
-    void stopCar(int value){
+    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
+    void stopCar(int value) {
         Car car = new Car("BMW");
         int actual = car.move(3);
         assertEquals(actual, 0);
