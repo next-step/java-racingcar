@@ -1,15 +1,14 @@
 package study;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racingCar.domain.Car;
-import racingCar.domain.RacingCar;
-import racingCar.view.InputView;
-import racingCar.view.ResultView;
+import racingcar.domain.Car;
+import racingcar.domain.RacingCar;
+import racingcar.view.ResultView;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -36,10 +35,10 @@ public class RacingCarTest {
 
         ResultView.printCars(cars);
 
-        RacingCar racingCar = new RacingCar(trial, 5);
+        RacingCar racingCar = new RacingCar(cars, trial);
 
-        racingCar.setWinner(cars);
+        List<Car> winners = racingCar.getWinner();
         ResultView.showWinner(cars);
-        assertThat(ResultView.showWinner(cars)).isEqualTo(new String("최종 우승자 : [woni]"));
+        assertThat(winners.get(0).getName()).isEqualTo("woni");
     }
 }
