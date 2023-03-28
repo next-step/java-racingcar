@@ -48,8 +48,8 @@ public class Calculator {
     }
 
     private int stringCalculator(List<String> input) {
-        int a = Integer.MIN_VALUE;
-        int b = Integer.MIN_VALUE;
+        int a = 0;
+        int b = 0;
         String operator = "";
 
         a = Integer.parseInt(input.get(0));
