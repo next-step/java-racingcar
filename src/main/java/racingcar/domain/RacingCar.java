@@ -56,7 +56,3 @@ public class RacingCar {
     }
 
 }
-
-
-
-
