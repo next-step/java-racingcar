@@ -33,7 +33,7 @@ public class RacingCarTest {
 
     }
 
-    @DisplayName("자동차들 중에서 가장 멀리 간 위치가 어디인지 알 수 있다.")
+    @DisplayName("자동차들 중에서 가장 멀리 간 차를 알 수 있다.")
     @Test
     void far() {
         List<Car> cars = new ArrayList<>();
@@ -52,6 +52,6 @@ public class RacingCarTest {
         racingGame.getCars().get(2).move(MOVABLE_NUMBER);
         racingGame.getCars().get(2).move(MOVABLE_NUMBER);
 
-        assertThat(racingGame.findMaxPosition(racingGame.getCars())).isEqualTo(3);
+        assertThat(racingGame.getWinners(racingGame.getCars()).toString()).isEqualTo("[woni, jun]");
     }
 }

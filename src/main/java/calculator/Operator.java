@@ -36,10 +36,14 @@ public enum Operator {
     Operator(String operator) {
         this.operator = operator;
     }
+
     abstract int excute(int num1, int num2);
+
     public static int calculate(int num1, int num2, String operator) {
-        return Arrays.stream(values()).filter(operators -> operators.operator.equals(operator))
-            .findAny().map(operators -> operators.excute(num1, num2))
+        return Arrays.stream(values())
+            .filter(operators -> operators.operator.equals(operator))
+            .findAny()
+            .map(operators -> operators.excute(num1, num2))
             .orElseThrow(IllegalArgumentException::new);
     }
 }
