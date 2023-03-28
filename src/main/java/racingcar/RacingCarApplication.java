@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.domain.Car;
+import racingcar.domain.Cars;
 import racingcar.domain.RacingCar;
 
 import java.util.ArrayList;
@@ -24,12 +25,12 @@ public class RacingCarApplication {
             cars.add(new Car(stringTokenizer.nextToken()));
         }
 
-        RacingCar racingCar = new RacingCar(cars, trial);
+        RacingCar racingCar = new RacingCar(new Cars(cars), trial);
         while (!racingCar.isEnd()) {
             racingCar.run();
-            printCars(cars);
+            printCars(racingCar.getCars());
         }
-        List<Car> winners = racingCar.getWinner();
+        Cars winners = racingCar.getWinner();
         showWinner(winners);
     }
 }

@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.domain.Car;
+import racingcar.domain.Cars;
 import racingcar.domain.RacingCar;
 import racingcar.view.ResultView;
 
@@ -18,27 +19,28 @@ public class RacingCarTest {
     @ParameterizedTest
     @CsvSource(value = "pobi,woni,jun | 5", delimiter = '|')
     void racingCar(String participant, Integer trial) {
-        ArrayList<Car> cars = new ArrayList<>();
+        List<Car> carsList = new ArrayList<>();
         StringTokenizer stringTokenizer = new StringTokenizer(participant, ",");
         while (stringTokenizer.hasMoreTokens()) {
-            cars.add(new Car(stringTokenizer.nextToken()));
+            carsList.add(new Car(stringTokenizer.nextToken()));
         }
 
-        cars.get(0).step(2);
-        cars.get(1).step(6);
-        cars.get(1).step(6);
-        cars.get(1).step(6);
-        cars.get(1).step(6);
-        cars.get(1).step(6);
-        cars.get(1).step(6);
-        cars.get(2).step(5);
+        carsList.get(0).step(2);
+        carsList.get(1).step(6);
+        carsList.get(1).step(6);
+        carsList.get(1).step(6);
+        carsList.get(1).step(6);
+        carsList.get(1).step(6);
+        carsList.get(1).step(6);
+        carsList.get(2).step(5);
 
+        Cars cars = new Cars(carsList);
         ResultView.printCars(cars);
 
         RacingCar racingCar = new RacingCar(cars, trial);
 
-        List<Car> winners = racingCar.getWinner();
+        Cars winners = racingCar.getWinner();
         ResultView.showWinner(cars);
-        assertThat(winners.get(0).getName()).isEqualTo("woni");
+        assertThat(winners.getCars().get(0).getName()).isEqualTo("woni");
     }
 }

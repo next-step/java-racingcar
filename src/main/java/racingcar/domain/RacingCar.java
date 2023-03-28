@@ -6,12 +6,12 @@ import java.util.Random;
 
 public class RacingCar {
     private static final int RANDOM_BOUND = 10;
-    private final List<Car> cars;
+    private final Cars cars;
     private int trial;
     public int maxPosition = 0;
     private final Random random = new Random();
 
-    public RacingCar(List<Car> cars, int trial) {
+    public RacingCar(Cars cars, int trial) {
         this.cars = cars;
         this.trial = trial;
     }
@@ -20,7 +20,7 @@ public class RacingCar {
         if (this.trial-- < 0) {
             trial = 0;
         }
-        for (Car car : this.cars) {
+        for (Car car : this.cars.getCars()) {
             car.step(getRandomNumber());
         }
     }
@@ -33,12 +33,16 @@ public class RacingCar {
         return random.nextInt(RANDOM_BOUND);
     }
 
-    public List<Car> getWinner() {
+    public Cars getCars() {
+        return cars;
+    }
+
+    public Cars getWinner() {
         List<Car> winners = new ArrayList<>();
-        for (Car car : this.cars) {
+        for (Car car : this.cars.getCars()) {
             setWinner(car, winners);
         }
-        return winners;
+        return new Cars(winners);
     }
 
     private void setWinner(Car car, List<Car> winners) {
