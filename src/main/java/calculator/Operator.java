@@ -1,49 +1,38 @@
 package calculator;
 
 import java.util.Arrays;
+import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
 
 public enum Operator {
-    ADD("+") {
+    ADD("+", (num1, num2) -> num1 + num2),
+    SUBSTRACT("-", (num1, num2) -> num1 - num2),
+    MULTIPLY("*", (num1, num2) -> num1 * num2),
+    DIVIDE("/", new BiFunction<Integer, Integer, Integer>() {
         @Override
-        int excute(int num1, int num2) {
-            return num1 + num2;
-        }
-    },
-    SUBSTRACT("-") {
-        @Override
-        int excute(int num1, int num2) {
-            return num1 - num2;
-        }
-    },
-    MULTIPLY("*") {
-        @Override
-        int excute(int num1, int num2) {
-            return num1 * num2;
-        }
-    },
-    DIVIDE("/") {
-        @Override
-        int excute(int num1, int num2) {
+        public Integer apply(Integer num1, Integer num2) {
             if (num2 == 0) {
                 throw new ArithmeticException("0으로 나눌 수 없습니다.");
             }
             return num1 / num2;
         }
-    };
+    });
 
-    private final String operator;
+    private String operator;
+    private BiFunction<Integer, Integer, Integer> expression;
 
-    Operator(String operator) {
+    Operator(String operator, BiFunction<Integer, Integer, Integer> expression) {
         this.operator = operator;
+        this.expression = expression;
     }
 
-    abstract int excute(int num1, int num2);
-
     public static int calculate(int num1, int num2, String operator) {
+        return getOperator(operator).expression.apply(num1, num2);
+    }
+    private static Operator getOperator(String operator) {
         return Arrays.stream(values())
             .filter(operators -> operators.operator.equals(operator))
-            .findAny()
-            .map(operators -> operators.excute(num1, num2))
+            .findFirst()
             .orElseThrow(IllegalArgumentException::new);
     }
 }
