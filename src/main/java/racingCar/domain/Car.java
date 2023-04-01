@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Car {
 
-    private final int MOVABLE_MIN_NUMBER = 4;
+    private static final int MOVABLE_MIN_NUMBER = 4;
     private final Name name;
     private int position;
 

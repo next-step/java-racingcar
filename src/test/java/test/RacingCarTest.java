@@ -4,6 +4,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -11,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import racingCar.domain.Car;
 import racingCar.domain.RacingGame;
 import racingCar.view.InputView;
+import racingCar.view.ResultView;
 
 public class RacingCarTest {
 
@@ -33,7 +35,7 @@ public class RacingCarTest {
 
     }
 
-    @DisplayName("자동차들 중에서 가장 멀리 간 위치가 어디인지 알 수 있다.")
+    @DisplayName("자동차들 중에서 가장 멀리 간 차를 알 수 있다.")
     @Test
     void far() {
         List<Car> cars = new ArrayList<>();
@@ -52,6 +54,32 @@ public class RacingCarTest {
         racingGame.getCars().get(2).move(MOVABLE_NUMBER);
         racingGame.getCars().get(2).move(MOVABLE_NUMBER);
 
-        assertThat(racingGame.findMaxPosition(racingGame.getCars())).isEqualTo(3);
+        assertThat(racingGame.getWinners(racingGame.getCars()).toString()).isEqualTo("[woni, jun]");
+    }
+    @DisplayName("자동차 한 대가 우승한 경우")
+    @Test
+    void winner() {
+        RacingGame racingGame = new RacingGame("pobi,woni,jun");
+        List<Car> cars = Arrays.asList(
+            new Car("pobi", 2),
+            new Car("crong", 3),
+            new Car("honux", 1)
+        );
+        List<String> winner = racingGame.getWinner(cars, 3);
+        assertThat(new ResultView().toString(winner)).isEqualTo("crong");
+    }
+
+    @DisplayName("자동차 여러대가 우승한 경우")
+    @Test
+    void winners() {
+        RacingGame racingGame = new RacingGame("pobi,woni,jun");
+        List<Car> cars = Arrays.asList(
+            new Car("pobi", 3),
+            new Car("crong", 3),
+            new Car("honux", 1)
+        );
+
+        List<String> winners = racingGame.getWinner(cars, 3);
+        assertThat(new ResultView().toString(winners)).isEqualTo("pobi, crong");
     }
 }

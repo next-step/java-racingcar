@@ -8,10 +8,10 @@ import java.util.Random;
 
 public class RacingGame {
 
-    private final int DRAW_RANGE = 9;
+    private static final int DRAW_RANGE = 9;
     private String carNames;
     private int tryNumber;
-    int raceTryCount;
+    private int raceTryCount;
 
     private List<Car> cars;
     private List<String> winners;
@@ -42,7 +42,7 @@ public class RacingGame {
             car.move(drawNumber);
         }
         int maxPosition = findMaxPosition(cars);
-        winners = new Winner().getWinner(cars, maxPosition);
+        winners = getWinner(cars, maxPosition);
 
         raceTryCount++;
 
@@ -66,21 +66,42 @@ public class RacingGame {
     }
 
     public List<String> getWinners() {
+        return getWinners(this.cars);
+    }
+
+    public List<String> getWinners(List<Car> cars) {
+        List<String> winners;
         int maxPosition = findMaxPosition(cars);
-        winners = new Winner().getWinner(cars, maxPosition);
+        winners = getWinner(cars, maxPosition);
         return winners;
     }
 
-    public int findMaxPosition(List<Car> cars) {
+    public List<String> getWinner(List<Car> cars, int maxPosition) {
+        List<String> winners = new ArrayList<>();
+        for (Car car : cars) {
+            setWinners(maxPosition, winners, car);
+        }
+        return winners;
+    }
+
+    private void setWinners(int maxPosition, List<String> winners, Car car) {
+        if (car.getPosition() == maxPosition) {
+            winners.add(car.getName());
+        }
+    }
+
+    private int findMaxPosition(List<Car> cars) {
         int maxPosition = Integer.MIN_VALUE;
         for (Car car : cars) {
             maxPosition = Math.max(maxPosition, car.getPosition());
         }
         return maxPosition;
     }
+
     private int draw() {
         return new Random().nextInt(DRAW_RANGE);
     }
+
     public List<Car> getCars() {
         return cars;
     }
