@@ -42,7 +42,7 @@ public class RacingGame {
             car.move(drawNumber);
         }
         int maxPosition = findMaxPosition(cars);
-        winners = new Winner().getWinner(cars, maxPosition);
+        winners = getWinner(cars, maxPosition);
 
         raceTryCount++;
 
@@ -68,11 +68,26 @@ public class RacingGame {
     public List<String> getWinners() {
         return getWinners(this.cars);
     }
+
     public List<String> getWinners(List<Car> cars) {
         List<String> winners;
         int maxPosition = findMaxPosition(cars);
-        winners = new Winner().getWinner(cars, maxPosition);
+        winners = getWinner(cars, maxPosition);
         return winners;
+    }
+
+    public List<String> getWinner(List<Car> cars, int maxPosition) {
+        List<String> winners = new ArrayList<>();
+        for (Car car : cars) {
+            setWinners(maxPosition, winners, car);
+        }
+        return winners;
+    }
+
+    private void setWinners(int maxPosition, List<String> winners, Car car) {
+        if (car.getPosition() == maxPosition) {
+            winners.add(car.getName());
+        }
     }
 
     private int findMaxPosition(List<Car> cars) {
