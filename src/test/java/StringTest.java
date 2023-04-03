@@ -24,4 +24,13 @@ public class StringTest {
         assertThat(actual).containsExactly("1");
     }
 
+    @Test
+    void String의_substring_메서드로_소괄호를_제거한다() {
+        final var word = "(1,2)";
+
+        final var actual = word.substring(1, word.length() - 1);
+
+        assertThat(actual).isEqualTo("1,2");
+    }
+
 }
