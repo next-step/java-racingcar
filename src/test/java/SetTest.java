@@ -26,9 +26,7 @@ public class SetTest {
     @Test
     @DisplayName("Set의 크기를 확인할 수 있어야 한다.")
     void testGetSizeOfSet() {
-        Integer result = numbers.size();
-
-        assertEquals(3, result);
+        assertEquals(3, numbers.size());
     }
 
     @ParameterizedTest
