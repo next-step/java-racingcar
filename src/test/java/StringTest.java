@@ -19,4 +19,14 @@ public class StringTest {
 		String result = "(1,2)".substring(1, 4);
 		assertThat(result).isEqualTo("1,2");
 	}
+
+	@DisplayName("요구사항 3")
+	@Test
+	void charAt(){
+		assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
+			.isThrownBy(() -> {
+				"abc".charAt(3);
+			}).withMessageMatching("String index out of range: 3");
+
+	}
 }
