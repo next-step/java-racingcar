@@ -26,6 +26,7 @@ public class StringTest {
     @DisplayName("인덱스를 넘어가면 Exception 이 발생한다.")
     void indexOutOfBoundsException() {
         String data = "abc";
+        assertThat(data.charAt(0)).isEqualTo('a');
         assertThatThrownBy(() -> data.charAt(3)).isInstanceOf(IndexOutOfBoundsException.class);
     }
 }
