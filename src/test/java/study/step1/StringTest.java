@@ -8,7 +8,7 @@ public class StringTest {
 
     @Test
     public void 요구사항1() {
-        String input1  = "1,2";
+        String input1 = "1,2";
         String input2 = "1";
 
         assertThat(input1.split(",")).containsExactly("1", "2");
@@ -41,9 +41,7 @@ public class StringTest {
     }
 
     private String removeParenthesis(String someString) {
-        if (hasParenthesis(someString))
-            return someString.substring(1, someString.length() - 1);
-        return someString;
+        return (hasParenthesis(someString)) ? someString.substring(1, someString.length() - 1) : someString;
     }
 
     private boolean hasParenthesis(String someString) {
