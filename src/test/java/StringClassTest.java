@@ -33,4 +33,17 @@ public class StringClassTest {
         assertThat(result).containsExactly("1");
         assertEquals(1, result.length);
     }
+
+    @Test
+    @DisplayName("substring()을 통한 () 제거")
+    void substring() {
+        //given
+        String word = "(1,2)";
+
+        //when
+        String result = word.substring(1, word.length() - 1);
+
+        //then
+        assertEquals("1,2", result);
+    }
 }
