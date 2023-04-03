@@ -11,4 +11,11 @@ public class StringTest {
         String[] actual1 = "1".split(",");
         Assertions.assertThat(actual1).containsExactly("1");
     }
+
+    @Test
+    void subStringTest() {
+        String target = "(1,2)";
+        String actual = target.substring(target.indexOf("(") + 1, target.indexOf(")"));
+        Assertions.assertThat(actual).isEqualTo("1,2");
+    }
 }
