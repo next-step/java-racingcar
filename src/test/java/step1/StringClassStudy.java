@@ -77,7 +77,46 @@ public class StringClassStudy {
                 );
             }
         }
-
     }
 
+    @Nested
+    @DisplayName("[요구사항3] 문자열")
+    class Describe_String {
+
+        @Nested
+        @DisplayName("abc가 주어진다면")
+        class Context_with_String_abc {
+
+            private final static String GIVEN_STRING = "abc";
+            private final static int LOOK_UP_INDEX = 2;
+            private final static char SHOULD_RETURN_CHAR = 'c';
+
+            @Test
+            @DisplayName("문자 'c'의 위치를 반환한다")
+            void returnCharCIndex() {
+
+                int result = GIVEN_STRING.charAt(LOOK_UP_INDEX);
+
+                assertThat(result).isEqualTo(SHOULD_RETURN_CHAR);
+            }
+        }
+
+        @Nested
+        @DisplayName("abcd가 주어졌을때")
+        class Context_with_String_abcd {
+
+            private final static String GIVEN_STRING = "abcd";
+            private final static char LOOK_UP_INDEX = 10;
+
+            @Test
+            @DisplayName("문자열의 범위를 넘어간다면 예외를 반환한다")
+            void shouldThrowException() {
+
+                Assertions.assertThrows(
+                        IndexOutOfBoundsException.class
+                        , () -> GIVEN_STRING.charAt(LOOK_UP_INDEX)
+                );
+            }
+        }
+    }
 }
