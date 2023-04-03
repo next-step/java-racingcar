@@ -21,4 +21,15 @@ class StringTest {
         String[] split = str.split(",");
         assertThat(split).containsOnly("1");
     }
+
+    @DisplayName("\"(1,2)\" 값이 주어졌을 때 String의 substring() 메소드를 활용해 ()을 제거하고 \"1,2\"를 반환하도록 구현한다.")
+    @Test
+    void test3() throws Exception {
+        String str = "(1,2)";
+        String substring = str.substring(1, str.length() - 1);
+
+        assertThat(substring).isEqualTo("1,2");
+    }
+
+
 }
