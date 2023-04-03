@@ -12,7 +12,12 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+<<<<<<< HEAD
 >>>>>>> 5511fe6 (test - size 테스트)
+=======
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+>>>>>>> 831740c (test - contains 테스트)
 
 import java.util.HashSet;
 import java.util.Set;
@@ -43,16 +48,24 @@ public class SetStudyTest {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     @ParameterizedTest
     @ValueSource(ints = {1, 3, 4})
     @DisplayName("contains 테스트")
     void containsTest(int input) {
+=======
+    @ParameterizedTest
+    @ValueSource(ints = {1, 3, 4})
+    @DisplayName("contains 테스트")
+    void containsTest(Integer input) {
+>>>>>>> 831740c (test - contains 테스트)
         assertThat(numbers).contains(input);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 3, 4})
     @DisplayName("contains 테스트")
+<<<<<<< HEAD
     void setContainsTest(int input) {
         assertThat(numbers.contains(input)).isTrue();
     }
@@ -66,4 +79,10 @@ public class SetStudyTest {
 
 =======
 >>>>>>> 5511fe6 (test - size 테스트)
+=======
+    void setContainsTest(Integer input) {
+        assertThat(numbers.contains(input)).isTrue();
+    }
+
+>>>>>>> 831740c (test - contains 테스트)
 }
