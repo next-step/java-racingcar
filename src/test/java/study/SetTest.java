@@ -37,13 +37,13 @@ public class SetTest {
 
     @ParameterizedTest(name = "contains() 메소드를 통해 {index} 값은 존재하는 것을 확인할 수 있다.")
     @ValueSource(ints = {1, 2, 3})
-    void contains1(int input) {
+    void containsWithInput(int input) {
         assertThat(numbers.contains(input)).isTrue();
     }
 
     @ParameterizedTest(name = "contains() 메소드를 통해 {0} 값에 대한 결과는 {1} 인 것을 확인할 수 있다.")
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-    void contains2(int number, boolean expected) {
+    void containsWithInputAndExpected(int number, boolean expected) {
         assertThat(numbers.contains(number)).isEqualTo(expected);
     }
 }
