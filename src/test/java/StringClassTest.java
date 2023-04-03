@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @DisplayName("String 클래스에 대한 학습 테스트")
 public class StringClassTest {
@@ -45,5 +46,32 @@ public class StringClassTest {
 
         //then
         assertEquals("1,2", result);
+    }
+
+    @Test
+    @DisplayName("charAt()을 통해 특정 위치 문자를 가져올 수 있다.")
+    void charAt_success() {
+        //given
+        String word = "abc";
+
+        //when
+        char a = word.charAt(0);
+        char b = word.charAt(1);
+        char c = word.charAt(2);
+
+        //then
+        assertEquals('a', a);
+        assertEquals('b', b);
+        assertEquals('c', c);
+    }
+
+    @Test
+    @DisplayName("charAt()가 인덱스를 벗어나면 예외를 던진다.")
+    void charAt_fail() {
+        //given
+        String word = "abc";
+
+        //then
+        assertThrows(StringIndexOutOfBoundsException.class, () -> word.charAt(4));
     }
 }
