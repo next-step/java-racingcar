@@ -3,7 +3,8 @@ package step1;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import static org.assertj.core.api.Assertions.*;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class StringClassStudy {
 
@@ -13,10 +14,10 @@ public class StringClassStudy {
 
         private final static String DELIMITER = ",";
 
-
         @Nested
         @DisplayName("1,2이 주어진다면")
         class Context_with_ONE_DELIMITER_TWO_String {
+
             private final static String GIVEN_STRING = "1,2";
             private final String[] SHOULD_RETURN_ARRAY = {"1", "2"};
 
@@ -33,6 +34,7 @@ public class StringClassStudy {
         @Nested
         @DisplayName("1,이 주어진다면")
         class Context_with_ONE_DELIMITER_String {
+
             private final static String GIVEN_STRING = "1,";
             private final String[] SHOULD_RETURN_ARRAY = {"1"};
 
@@ -45,6 +47,6 @@ public class StringClassStudy {
                 assertThat(result).containsExactly(SHOULD_RETURN_ARRAY);
             }
         }
-
     }
+
 }
