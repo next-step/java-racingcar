@@ -25,7 +25,7 @@ public class StringTest {
 
 
     @Test
-    @DisplayName("substring() 을 이용해 `()` 를 제거한다.ㄴ")
+    @DisplayName("substring() 을 이용해 `()` 를 제거한다.")
     void mission2(){
         String substringValue = "(1,2)".substring(1, 4);
         assertThat(substringValue).isEqualTo("1,2");
