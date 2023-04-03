@@ -36,7 +36,7 @@ public class SetTest {
 
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-    void 요구사항3(int input, boolean expected) {
+    public void 요구사항3(int input, boolean expected) {
         assertThat(numbers.contains(input)).isEqualTo(expected);
     }
 
