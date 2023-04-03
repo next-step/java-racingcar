@@ -2,6 +2,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DisplayName("String 클래스 학습 테스트")
 public class StringTest {
@@ -31,6 +32,26 @@ public class StringTest {
         final var actual = word.substring(1, word.length() - 1);
 
         assertThat(actual).isEqualTo("1,2");
+    }
+
+    @Test
+    @DisplayName("String의 charAt() 메서드는 특정 위치의 문자를 가져온다.")
+    void String의_charAt_메서드는_특정_위치의_문자를_반환한다() {
+        final var word = "abc";
+
+        final var actual = word.charAt(1);
+
+        assertThat(actual).isEqualTo('b');
+    }
+
+    @Test
+    @DisplayName("String의 charAt() 메서드에서 문자열의 위치값을 벗어나면 StringIndexOutOfBoundsException 예외가 발생한다.")
+    void String의_charAt_메서드에서_특정_위치값을_벗어나면_예외가_발생한다() {
+        final var word = "abc";
+
+        assertThatThrownBy(
+                () -> word.charAt(10)
+        ).isInstanceOf(StringIndexOutOfBoundsException.class);
     }
 
 }
