@@ -40,7 +40,7 @@ public class SetTest {
     }
 
     @ParameterizedTest
-    @DisplayName("Set 안에 포함된 요소들 확인하기 : @ParameterizedTest ")
+    @DisplayName("Set 안에 포함된 요소들 확인하기 : @ViewSource ")
     @ValueSource(ints = {1, 2, 3})
     void containsV2(int input) {
         assertThat(numbers.contains(input)).isTrue();
@@ -53,5 +53,18 @@ public class SetTest {
         assertThat(numbers.contains(input)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @DisplayName("Set 안에 포함된 요소들 확인하기 : @CsvSource(true, false 둘 다 사용해보기)")
+    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
+    void containsV4(int input, boolean expected) {
+        assertThat(numbers.contains(input)).isEqualTo(expected);
+    }
 
+    @ParameterizedTest
+    @DisplayName("Set 안에 포함된 요소들 확인하기(예제) : @CsvSource(true, false 둘 다 사용해보기)")
+    @CsvSource(value = {"test:test", "tEst:test", "Java:java"}, delimiter = ':')
+    void containsV4_1(String input, String expected) {
+        String actual = input.toLowerCase();
+        assertThat(actual).isEqualTo(expected);
+    }
 }
