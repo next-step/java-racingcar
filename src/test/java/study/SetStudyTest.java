@@ -1,6 +1,5 @@
 package study;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,7 +10,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class SetStudyTest {
 
@@ -35,14 +34,14 @@ public class SetStudyTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 3, 4})
     @DisplayName("contains 테스트")
-    void containsTest(Integer input) {
+    void containsTest(int input) {
         assertThat(numbers).contains(input);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 3, 4})
     @DisplayName("contains 테스트")
-    void setContainsTest(Integer input) {
+    void setContainsTest(int input) {
         assertThat(numbers.contains(input)).isTrue();
     }
 
