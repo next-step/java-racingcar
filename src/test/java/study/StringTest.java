@@ -4,13 +4,15 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.*;
+
 public class StringTest {
 
     @Test
     @DisplayName("String을 split 했을시 배열 검증")
     void split() {
         String[] result = "1,2".split(",");
-        Assertions.assertThat(result).containsExactly("1", "2");
+        assertThat(result).containsExactly("1", "2");
     }
 
     @Test
@@ -20,7 +22,7 @@ public class StringTest {
         int openBracket = problem.indexOf('(');
         int closeBracket = problem.indexOf(')');
         String resultStr = problem.substring(openBracket + 1, closeBracket);
-        Assertions.assertThat(resultStr).isEqualTo("1, 2");
+        assertThat(resultStr).isEqualTo("1, 2");
     }
 
     @Test
@@ -29,12 +31,12 @@ public class StringTest {
         String problem = "abc";
 
         // #1
-        Assertions.assertThatThrownBy(() -> problem.charAt(problem.length()))
+        assertThatThrownBy(() -> problem.charAt(problem.length()))
                 .isInstanceOf(StringIndexOutOfBoundsException.class)
                 .hasMessageContaining("String index out of range: 3");
 
         // #2
-        Assertions.assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
+        assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
                 .isThrownBy(() -> problem.charAt(problem.length()))
                 .withMessageMatching("String index out of range: \\d");
     }
