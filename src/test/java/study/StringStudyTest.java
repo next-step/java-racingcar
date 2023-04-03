@@ -30,6 +30,7 @@ class StringStudyTest {
 
         assertThat(result).isEqualTo("1,2");
     }
+<<<<<<< HEAD
 
     @Test
     @DisplayName("특정 위치의 문자 확인 테스트")
@@ -53,4 +54,6 @@ class StringStudyTest {
         assertThrows(StringIndexOutOfBoundsException.class,
                 () -> testString.charAt(testString.length()));
     }
+=======
+>>>>>>> 33bd5ad (test - substring으로 () 제거 테스트)
 }
