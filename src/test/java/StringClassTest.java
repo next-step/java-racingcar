@@ -1,12 +1,15 @@
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+@DisplayName("String 클래스에 대한 학습 테스트")
 public class StringClassTest {
 
     @Test
-    public void 구분자로_분리되어야_한다() {
+    @DisplayName("\"1,2\" 문자열은 `,`구분자로 분리되어야 한다")
+    public void commaSplitTest1() {
         //given
         String test = "1,2";
 
@@ -18,7 +21,8 @@ public class StringClassTest {
     }
 
     @Test
-    public void 구분자가_없으면_분리되지_않는다() {
+    @DisplayName("\"1\" 문자열은 `,`구분자로 분리되지 않는다")
+    public void commaSplitTest2() {
         //given
         String test = "1";
 
@@ -30,7 +34,8 @@ public class StringClassTest {
     }
 
     @Test
-    public void substring_으로_괄호가_제거되어야_한다() {
+    @DisplayName("substring 메소드로 `()`는 제거되어야 한다")
+    public void substringTest() {
         //given
         String test = "(1,2)";
         
@@ -42,7 +47,8 @@ public class StringClassTest {
     }
     
     @Test
-    public void chatAt으로_특정_위치의_문자를_가져와야_한다() {
+    @DisplayName("charAt 메서드로 문자열의 문자를 가져올 수 있다")
+    public void charAtTest() {
         //given
         String test = "abc";
 
@@ -58,7 +64,8 @@ public class StringClassTest {
     }
     
     @Test
-    public void charAt의_범위가_벗어나면_인덱스_예외가_나야_한다() {
+    @DisplayName("charAt으로 벗어난 위치의 문자열을 가져오면 인덱스 예외가 난다")
+    public void charAtIndexOutOfExceptionTest() {
         //given
         String test = "abc";
         int outOfRange = test.length();
