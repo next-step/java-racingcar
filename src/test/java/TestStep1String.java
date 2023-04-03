@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 @DisplayName("step1")
-public class TestStep1 {
+public class TestStep1String {
 
     @Test
     @DisplayName("req1_1")
@@ -14,9 +14,9 @@ public class TestStep1 {
 
         final String[] expected = {"1","2"};
 
-        final String[] got = inputData.split(",");
+        final String[] actual = inputData.split(",");
 
-        Assertions.assertArrayEquals(expected,got);
+        Assertions.assertArrayEquals(expected,actual);
     }
 
     @Test
@@ -27,9 +27,9 @@ public class TestStep1 {
 
         final String[] expected = {"1"};
 
-        final String[] got = inputData.split(",");
+        final String[] actual = inputData.split(",");
 
-        Assertions.assertArrayEquals(expected,got);
+        Assertions.assertArrayEquals(expected,actual);
     }
 
     @Test
@@ -40,9 +40,9 @@ public class TestStep1 {
 
         final String[] expected = {"1","2"};
 
-        final String[] got = inputData.substring(1, inputData.length()-1).split(",");
+        final String[] actual = inputData.substring(1, inputData.length()-1).split(",");
 
-        Assertions.assertArrayEquals(expected,got);
+        Assertions.assertArrayEquals(expected,actual);
     }
 
     @Test
@@ -53,9 +53,9 @@ public class TestStep1 {
 
         final String expected = "c";
 
-        final char got = inputData.charAt(2);
+        final char actual = inputData.charAt(2);
 
-        Assertions.assertEquals(expected.charAt(0),got);
+        Assertions.assertEquals(expected.charAt(0),actual);
     }
 
     @Test
@@ -66,9 +66,9 @@ public class TestStep1 {
 
         final String expected = "c";
 
-        final char got = inputData.charAt(2);
+        final char actual = inputData.charAt(2);
 
-        Assertions.assertEquals(expected.charAt(0), got);
+        Assertions.assertEquals(expected.charAt(0), actual);
     }
 
     @Test
