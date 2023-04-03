@@ -10,7 +10,7 @@ public class StringTest {
 
     @Test
     @DisplayName(" \"1,2\" 를 , 로 split() 해주었을 때, 1과 2로 잘 분리된다. ")
-    void mission1_1() {
+    void splitTest() {
         String[] result = "1,2".split(",");
         assertThat(result).contains("2","1"); // 순서를 보장하지 않고 포함되어있는 것만 확인한다.
         assertThat(result).containsExactly("1", "2"); // 순서를 보장한다.
@@ -18,7 +18,7 @@ public class StringTest {
 
     @Test
     @DisplayName("1 만을 , 로 스플릿했을 때, 1만 포함하는 배열이 반환된다.")
-    void mission1_2() {
+    void splitTest2() {
         String[] result = "1".split(",");
         assertThat(result).containsExactly("1");
     }
@@ -26,16 +26,18 @@ public class StringTest {
 
     @Test
     @DisplayName("substring() 을 이용해 `()` 를 제거한다.")
-    void mission2(){
+    void substringTest(){
         String substringValue = "(1,2)".substring(1, 4);
         assertThat(substringValue).isEqualTo("1,2");
     }
 
     @Test
     @DisplayName("String 의 범위를 벗어난 문자를 가져온다.")
-    void mission3(){
+    void charAtTestWithOutOfIndex(){
         assertThatThrownBy(()->{
                 "abc".charAt(3);
-        }).isInstanceOf(IndexOutOfBoundsException.class);
+        }).isInstanceOf(IndexOutOfBoundsException.class)
+                .hasMessageContaining("String index out of range: 3")
+        ;
     }
 }
