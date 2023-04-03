@@ -2,6 +2,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
@@ -35,5 +36,12 @@ public class SetTest {
     @ValueSource(ints = {1, 2, 3})
     void testFindValueInSet(int input) {
         assertTrue(numbers.contains(input));
+    }
+
+    @ParameterizedTest
+    @DisplayName("Set 안에 특정 값이 존재하는지 안 하는지 확인할 수 있어야 한다.")
+    @CsvSource(value = {"1:TRUE", "3:TRUE", "5:FALSE"}, delimiter=':')
+    void testFindValueInSet(int input, boolean expected) {
+        assertEquals(expected, numbers.contains(input));
     }
 }
