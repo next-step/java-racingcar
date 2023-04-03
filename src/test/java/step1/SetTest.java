@@ -27,13 +27,13 @@ class SetTest {
     @DisplayName("set size 측정")
     @Test
     void test1() throws Exception {
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     void test2(int input) throws Exception {
-        assertThat(numbers.contains(input)).isTrue();
+        assertThat(numbers).contains(input);
     }
 
     @ParameterizedTest
@@ -41,6 +41,4 @@ class SetTest {
     void test3(int value, boolean expected) throws Exception {
         assertThat(numbers.contains(value)).isEqualTo(expected);
     }
-
-
 }
