@@ -68,11 +68,11 @@ public class StringClassStudy {
             @Test
             @DisplayName("1,2을 반환한다")
             void returnStringArray() {
-                String resultWithReg = GIVEN_STRING.replaceAll(SHOULD_REMOVE_SPECIAL_CHARACTERS, EMPTY_STRING);
+                String resultWithRegex = GIVEN_STRING.replaceAll(SHOULD_REMOVE_SPECIAL_CHARACTERS, EMPTY_STRING);
                 String resultWithSubString = GIVEN_STRING.substring(1, 4);
 
                 Assertions.assertAll(
-                        () -> assertThat(resultWithReg).isEqualTo(SHOULD_RETURN_STRING),
+                        () -> assertThat(resultWithRegex).isEqualTo(SHOULD_RETURN_STRING),
                         () -> assertThat(resultWithSubString).isEqualTo(SHOULD_RETURN_STRING)
                 );
             }
