@@ -1,32 +1,16 @@
 package study;
 
-<<<<<<< HEAD
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-=======
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-<<<<<<< HEAD
->>>>>>> 5511fe6 (test - size 테스트)
-=======
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
->>>>>>> 831740c (test - contains 테스트)
 
 import java.util.HashSet;
 import java.util.Set;
 
-<<<<<<< HEAD
 import static org.assertj.core.api.Assertions.assertThat;
-=======
-import static org.assertj.core.api.Assertions.*;
->>>>>>> 5511fe6 (test - size 테스트)
 
 public class SetStudyTest {
 
@@ -47,25 +31,16 @@ public class SetStudyTest {
         assertThat(numbers.size()).isEqualTo(3);
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
     @ParameterizedTest
     @ValueSource(ints = {1, 3, 4})
     @DisplayName("contains 테스트")
     void containsTest(int input) {
-=======
-    @ParameterizedTest
-    @ValueSource(ints = {1, 3, 4})
-    @DisplayName("contains 테스트")
-    void containsTest(Integer input) {
->>>>>>> 831740c (test - contains 테스트)
         assertThat(numbers).contains(input);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 3, 4})
     @DisplayName("contains 테스트")
-<<<<<<< HEAD
     void setContainsTest(int input) {
         assertThat(numbers.contains(input)).isTrue();
     }
@@ -77,12 +52,4 @@ public class SetStudyTest {
         assertThat(numbers.contains(input)).isEqualTo(expected);
     }
 
-=======
->>>>>>> 5511fe6 (test - size 테스트)
-=======
-    void setContainsTest(Integer input) {
-        assertThat(numbers.contains(input)).isTrue();
-    }
-
->>>>>>> 831740c (test - contains 테스트)
 }
