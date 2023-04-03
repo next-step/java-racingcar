@@ -10,6 +10,7 @@ public class StringTest {
         //GIVEN
         String src = "1,2";
 
+
         //WHEN
         String[] result = src.split(",");
 
@@ -27,5 +28,17 @@ public class StringTest {
 
         //THEN
         assertThat(result).containsExactly("1");
+    }
+
+    @Test
+    void substringParentheses() {
+        //GIVEN
+        String src = "(1,2)";
+
+        //WHEN
+        String result = src.substring(1, src.length() - 1);
+
+        //THEN
+        assertThat(result).isEqualTo("1,2");
     }
 }
