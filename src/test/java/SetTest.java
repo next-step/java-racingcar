@@ -24,7 +24,7 @@ public class SetTest {
 
     // Test Case 구현
     @Test
-    void sizeTest() {
+    void size() {
         assertThat(numbers.size()).isEqualTo(3);
     }
 
