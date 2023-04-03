@@ -20,4 +20,13 @@ class StringStudyTest {
         assertThat(result[1]).isEqualTo("2");
     }
 
+    @Test
+    void substringTest() {
+        int position = 1;
+        String parentheses = "(1,2)";
+
+        String result = parentheses.substring(position, parentheses.length()-position);
+
+        assertThat(result).isEqualTo("1,2");
+    }
 }
