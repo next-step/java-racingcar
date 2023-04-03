@@ -38,7 +38,7 @@ class CollectionTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
+    @CsvSource(value = {"1,true", "2,true", "3,true", "4,false", "5,false"})
     void containsTest2(int input, boolean expected) {
         assertThat(numbers.contains(input)).isEqualTo(expected);
     }
