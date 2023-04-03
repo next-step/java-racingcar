@@ -1,10 +1,13 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SetCollectionTest {
 
@@ -22,6 +25,12 @@ public class SetCollectionTest {
     @Test
     void Set의_size_메서드는_크기를_반환한다() {
         assertThat(numbers).hasSize(3);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    void Set의_contains_메서드는_값이_존재하는지_확인한다(int number) {
+        assertTrue(numbers.contains(number));
     }
 
 }
