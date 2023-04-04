@@ -1,9 +1,11 @@
 package study;
 
+import org.assertj.core.api.ThrowableAssert.ThrowingCallable;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringTest {
 
@@ -46,5 +48,36 @@ public class StringTest {
 
         // then
         assertThat(bracketRemovedString).isEqualTo("1,2");
+    }
+
+    @Test
+    @DisplayName("특정 위치의 문자를 가져오는지 확인")
+    void charAtTest() {
+        // given
+        final String givenString = "abc";
+
+        // when
+        char index0FromGivenString = givenString.charAt(0);
+        char index1FromGivenString = givenString.charAt(1);
+        char index2FromGivenString = givenString.charAt(2);
+
+        // then
+        assertThat(index0FromGivenString).isEqualTo('a');
+        assertThat(index1FromGivenString).isEqualTo('b');
+        assertThat(index2FromGivenString).isEqualTo('c');
+    }
+
+    @Test
+    @DisplayName("위치값이 벗어났을 경우 IndexOutOfBoundsException 예외 발생")
+    void stringIndexOutOfBoundsExceptionTest() {
+        // given
+        String givenString = "abc";
+
+        // when
+        ThrowingCallable thrown = () -> givenString.charAt(givenString.length());
+
+        // then
+        assertThatThrownBy(thrown)
+                .isInstanceOf(IndexOutOfBoundsException.class);
     }
 }
