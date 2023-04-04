@@ -3,6 +3,10 @@ package study;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static study.constant.StringCalcConstant.CUSTOM_DELIMITER_REGEX;
+import static study.constant.StringCalcConstant.DEFAULT_DELIMITER_REGEX;
+import static study.constant.StringCalcConstant.NEGATIVE_NUMBER_ERROR_MESSAGE;
+
 public class StringAddCalculator {
 
     private String[] numbers;
