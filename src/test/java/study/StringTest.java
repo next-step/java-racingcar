@@ -32,14 +32,13 @@ public class StringTest {
         String given = "(1,2)";
 
         // when
-        String result = given.substring(1, given.length()-1);
+        String result = given.substring(1, given.length() - 1);
 
         // then
         assertThat(result).isEqualTo("1,2");
     }
 
-    @ParameterizedTest
-    @DisplayName("문자열에 특정 인덱스로 charAt을 하면 해당하는 문자가 반환된다")
+    @ParameterizedTest(name = "문자열에 {0}로 charAt을 하면 {1} 또는 {2}가 반환된다") // displayName 대체
     @MethodSource("charAtTestParameter")
     void requirement3(int index, Character expected, Class<Exception> exception) {
         String given = "abc";
