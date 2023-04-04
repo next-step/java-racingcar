@@ -54,5 +54,20 @@ public class StringTest {
         }
     }
 
+    @Nested
+    @DisplayName("chatAt 메소드를 사용하여 ")
+    class CharAtTest {
 
+        private final String givenString = "abc";
+
+        @Test
+        @DisplayName("존재하지 않는 index 를 인수로 호출 할 경우 예외가 발생한다")
+        void givenInvalidIndex_whenCharAt_thenThrowException() {
+            int invalidIdx = -1;
+
+            Assertions.assertThatExceptionOfType(IndexOutOfBoundsException.class)
+                .isThrownBy(() -> givenString.charAt(invalidIdx))
+                .withMessageMatching("String index out of range: -?\\d+");
+        }
+    }
 }
