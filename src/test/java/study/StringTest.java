@@ -15,4 +15,11 @@ public class StringTest {
     assertThat(result).contains("1");
   }
 
+  @Test
+  void requirement2() {
+    String result = "(1,2)".substring(1, 4);
+
+    assertThat(result).isEqualTo("1,2");
+  }
+
 }
