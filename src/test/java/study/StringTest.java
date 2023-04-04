@@ -25,4 +25,16 @@ public class StringTest {
         assertThat(result2).containsExactly("1");
     }
 
+    /**
+     * 요구사항 2
+     * "(1,2)" 값이 주어졌을 때 String.substring() 메소드를 이용하여 "1,2" 반환
+     */
+    @Test
+    @DisplayName("String.subString() test")
+    void subString() {
+        String result = "(1,2)".substring(1, 4);
+        assertThat(result).isEqualTo("1,2");
+    }
+
+
 }
