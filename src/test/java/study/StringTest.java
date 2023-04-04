@@ -19,6 +19,16 @@ public class StringTest {
   }
 
   @Test
+  @DisplayName("1을 ,로 split할 때 1만 포함되는 배열이 반환되는지 테스트")
+  void splitOne() {
+    String [] result = "1".split(",");
+
+    assertThat(result)
+            .contains("1")
+            .hasSize(1);
+  }
+
+  @Test
   @DisplayName("(1,2)에서 () 제거 테스트")
   void substring() {
     String result = "(1,2)".substring(1, 4);
