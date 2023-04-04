@@ -1,6 +1,8 @@
 package learningTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.in;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -46,4 +48,29 @@ public class StringTest {
     assertThat(substringInput).isEqualTo("1,2");
   }
 
+  @Test
+  @DisplayName("charAt 메서드로 특정 위치의 문자를 가져올 수 있다")
+  void charAtTest() {
+    // given
+    String input = "abc";
+
+    // when
+    char extractedInput = input.charAt(0);
+
+    // then
+    assertThat(extractedInput).isEqualTo('a');
+  }
+
+  @Test
+  @DisplayName("charAt 메서드는 위치 값을 벗어난 위치를 요청하면 StringIndexOutOfBoundsException 예외를 발생시킨다")
+  void charAtStringIndexOutOfBoundsExceptionTest() {
+    // given
+    String input = "abc";
+    int index = 5;
+
+    // when & then
+    assertThatThrownBy(() -> input.charAt(index))
+        .isInstanceOf(StringIndexOutOfBoundsException.class)
+        .hasMessage(String.format("String index out of range: %d", index));
+  }
 }
