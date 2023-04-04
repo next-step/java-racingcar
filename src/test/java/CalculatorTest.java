@@ -68,4 +68,16 @@ public class CalculatorTest {
         //then
         assertThat(result).isEqualTo(Integer.parseInt(expected));
     }
+
+
+    @Test
+    @DisplayName("커스텀 구분자를 지정할 때")
+    public void 커스텀_구분자_사용(){
+        //given
+        int result = Calculator.splitAndSum("//;\n1;2;3");
+        //when
+
+        //then
+        assertThat(result).isEqualTo(6);
+    }
 }
