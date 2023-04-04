@@ -33,5 +33,17 @@ public class StringTest {
     assertThat(splitInput).containsExactlyInAnyOrder("1");
   }
 
+  @Test
+  @DisplayName("문자열 `(1,2)`에 대해 substring 메서드로 괄호를 제거할 수 있다")
+  void substringTest() {
+    // given
+    String input = "(1,2)";
+
+    // when
+    String substringInput = input.substring(1, 4);
+
+    // then
+    assertThat(substringInput).isEqualTo("1,2");
+  }
 
 }
