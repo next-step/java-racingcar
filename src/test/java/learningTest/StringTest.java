@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 public class StringTest {
 
   @Test
-  @DisplayName("문자열 `1,2`를 `,`로 split하면 `1`과 `2`를 포함하는 배열을 반환한다")
+  @DisplayName("split 메서드는 구분자로 문자열을 분리할 수 있다")
   void splitTest() {
     // given
     String input = "1,2";
@@ -23,7 +23,7 @@ public class StringTest {
   }
   
   @Test
-  @DisplayName("문자열 `1`을 `,`로 split했을 때 `1`만을 가지는 배열을 반환한다")
+  @DisplayName("대상 문자열에 구분자가 포함되지 않을 경우 split 메서드는 원문을 반환한다")
   void splitNotContainsSeparatorFromOriginTest() {
     // given
     String input = "1";
@@ -36,7 +36,7 @@ public class StringTest {
   }
 
   @Test
-  @DisplayName("문자열 `(1,2)`에 대해 substring 메서드로 괄호를 제거할 수 있다")
+  @DisplayName("substring 메서드로 문자열을 일부만 추출할 수 있다")
   void substringTest() {
     // given
     String input = "(1,2)";
