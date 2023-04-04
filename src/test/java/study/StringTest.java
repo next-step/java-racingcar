@@ -43,6 +43,7 @@ public class StringTest {
 hasNoCause() : thrown 여부 확인
 hasMessageEndingWith() : 에러 메시지가 특정 문자로 끝나는지 확인
 hasMessageContaining("exception") : 에러 메시지에 특정 문자열이 포함되는지 확인
+git 버전확인하기
  */
 
     }
