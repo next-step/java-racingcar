@@ -13,10 +13,10 @@ public class StringTest {
     @DisplayName("\"1,2\"을 ,로 split 했을 때 1과 2로 잘 분리 되는지 테스트")
     void comma_separated_string_with_two_inputs() {
         // given
-        String givenString = "1,2";
+        final String givenString = "1,2";
 
         // when
-        String[] splitString = givenString.split(",");
+        final String[] splitString = givenString.split(",");
 
         // then
         assertThat(splitString).contains("1", "2");
@@ -27,10 +27,10 @@ public class StringTest {
     @DisplayName("\"1\"을 ,로 split 했을 때 1만을 포함하는 배열이 반환 되는지 테스트")
     void comma_separated_string_with_one_input() {
         // given
-        String givenString = "1";
+        final String givenString = "1";
 
         // when
-        String[] splitString = givenString.split(",");
+        final String[] splitString = givenString.split(",");
 
         // then
         assertThat(splitString).contains("1");
@@ -41,10 +41,10 @@ public class StringTest {
     @DisplayName("\"(1,2)\" 값이 주어졌을 때 1,2 반환하는지 테스트")
     void remove_brackets_in_string() {
         // given
-        String givenString = "(1,2)";
+        final String givenString = "(1,2)";
 
         // when
-        String bracketRemovedString = givenString.substring(1, givenString.length() - 1);
+        final String bracketRemovedString = givenString.substring(1, givenString.length() - 1);
 
         // then
         assertThat(bracketRemovedString).isEqualTo("1,2");
@@ -71,7 +71,7 @@ public class StringTest {
     @DisplayName("위치값이 벗어났을 경우 IndexOutOfBoundsException 예외 발생 테스트")
     void string_index_out_of_bounds_exception_test() {
         // given
-        String givenString = "abc";
+        final String givenString = "abc";
 
         // when
         ThrowingCallable thrown = () -> givenString.charAt(givenString.length());
