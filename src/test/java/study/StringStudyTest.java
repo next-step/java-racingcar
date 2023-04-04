@@ -1,11 +1,10 @@
 package study;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class StringStudyTest {
 
@@ -30,10 +29,6 @@ class StringStudyTest {
 
         assertThat(result).isEqualTo("1,2");
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 634b660 (test - charAt 활용 테스트)
 
     @Test
     @DisplayName("특정 위치의 문자 확인 테스트")
@@ -57,9 +52,4 @@ class StringStudyTest {
         assertThrows(StringIndexOutOfBoundsException.class,
                 () -> testString.charAt(testString.length()));
     }
-<<<<<<< HEAD
-=======
->>>>>>> 33bd5ad (test - substring으로 () 제거 테스트)
-=======
->>>>>>> 634b660 (test - charAt 활용 테스트)
 }
