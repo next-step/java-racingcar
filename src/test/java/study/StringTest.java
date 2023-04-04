@@ -9,7 +9,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 public class StringTest {
 
     @Test
-    @DisplayName("split() 메소드가 반환하는 문자 배열을 확인한다.")
+    @DisplayName("split()를 통해, 반환하는 문자 배열을 확인한다.")
     void split() {
         String[] strings = "1,2".split(",");
         assertThat(strings).containsExactly("1", "2");

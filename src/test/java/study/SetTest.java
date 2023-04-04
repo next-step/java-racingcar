@@ -25,7 +25,7 @@ public class SetTest {
     }
 
     @Test
-    @DisplayName("size() 메소드는 중복 원소가 제외된 길이를 반환한다")
+    @DisplayName("size()는 중복 원소가 제외된 길이를 반환한다")
     void size() {
         assertThat(numbers.size()).isEqualTo(3);
     }
