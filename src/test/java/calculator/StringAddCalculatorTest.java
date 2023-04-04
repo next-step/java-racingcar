@@ -8,7 +8,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class StringAddCalculatorTest {
 
-
     @DisplayName("빈 문자열 값을 입력 할 경우 0을 반환한다")
     @Test
     void givenEmptyStringWhenInputReturnZero() {
