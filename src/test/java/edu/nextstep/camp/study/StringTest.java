@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 public class StringTest {
     
     @Test
+    @DisplayName("String 의 split 기능 테스트")
     public void splitTest(){
         String numbersStr = "1,2";
         String[] numbersArr = numbersStr.split(",");
@@ -17,6 +18,7 @@ public class StringTest {
     }
 
     @Test
+    @DisplayName("String 의 substring 기능 테스트")
     public void substringTest(){
         String numbers = "(1,2)";
         int numbersLen = numbers.length();

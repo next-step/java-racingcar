@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.HashSet;
 import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -23,6 +24,7 @@ public class SetTest {
     }
 
     @Test
+    @DisplayName("Set 의 size 기능 테스트")
     public void setSizeTest(){
         int setSize = numbers.size();
 
@@ -32,6 +34,7 @@ public class SetTest {
 
     @ParameterizedTest
     @ValueSource( ints = {1,2,3})
+    @DisplayName("Set 의 contains 기능 포함 여부 테스트")
     public void setContainsTrueTest(int number) {
         assertThat( numbers.contains(number) )
             .isTrue();
@@ -39,6 +42,7 @@ public class SetTest {
 
     @ParameterizedTest
     @CsvSource(value = {"1:true","2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
+    @DisplayName("Set 의 contains 기능 포함, 미포함 여부 테스트")
     public void setContainsTrueOrFalseTest(int number, boolean isContain) {
         assertThat( numbers.contains(number) )
             .isEqualTo(isContain);
