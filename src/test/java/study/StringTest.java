@@ -3,7 +3,7 @@ package study;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class StringTest {
 
@@ -36,5 +36,34 @@ public class StringTest {
         assertThat(result).isEqualTo("1,2");
     }
 
+    /**
+     * 요구사항 3
+     * "abc" 값이 주어졌을때 String.charAt() 메소드를 활용해 특정 위치 문자 가져오기
+     */
+    @Test
+    @DisplayName("String.charAt() test")
+    void charAt() {
+        String result = "abc";
+        char charResult = result.charAt(1);
 
+        assertThat(charResult).isEqualTo('b');
+    }
+
+    @Test
+    @DisplayName("charAt()에서 assertThatThrownBy()을 사용하여 Exception처리")
+    void assertThatThrownByTest() {
+        String result = "abc";
+        assertThatThrownBy(() -> {
+            result.charAt(3);
+        }).isInstanceOf(IndexOutOfBoundsException.class).hasMessageContaining("String index out of range: 3");
+    }
+
+    @Test
+    @DisplayName("charAt()에서 assertThatExceptionOfType()을 사용하여 Exception처리")
+    void assertThatExceptionOfTypeTest() {
+        String result = "abc";
+        assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> {result.charAt(3);})
+                .withMessageContaining("index out of")
+                .withNoCause();
+    }
 }
