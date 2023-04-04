@@ -4,8 +4,6 @@ import java.util.List;
 
 public class StringAddCalculator {
 
-    private String number;
-
     public static Integer splitAndSum(String text) {
         if (text == null || text.isEmpty()) {
             return 0;
