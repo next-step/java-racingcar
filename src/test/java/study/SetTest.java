@@ -46,7 +46,7 @@ public class SetTest {
 
     @DisplayName("값이 set에 존재하는지 테스트")
     @ParameterizedTest(name = "값: {0}")
-    @CsvSource(value = {"1,true", "2,true", "3,true", "4,false", "5,false"}, delimiter = ',')
+    @CsvSource(value = {"1,true", "2,true", "3,true", "4,false", "5,false"})
     void contains(int number, boolean expected) {
         assertThat(numbers.contains(number)).isEqualTo(expected);
     }
