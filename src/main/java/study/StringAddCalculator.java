@@ -1,34 +1,30 @@
 package study;
 
-import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static study.constant.StringCalcConstant.CUSTOM_DELIMITER_REGEX;
+import static study.constant.StringCalcConstant.DEFAULT_DELIMITER_REGEX;
+import static study.constant.StringCalcConstant.NEGATIVE_NUMBER_ERROR_MESSAGE;
 
 public class StringAddCalculator {
 
     private String[] numbers;
 
-    private static final String regx = "//(.)\n(.*)";
-
-    public StringAddCalculator(String numberString) {
-        numbers = splitString(numberString);
+    public StringAddCalculator(String input) {
+        numbers = splitInput(input);
     }
 
-    private String[] splitString(String inputStr) {
-
-        String[] split = null;
-
-        if (inputStr == null || inputStr.isEmpty()) {
+    private String[] splitInput(String input) {
+        if (input == null || input.isEmpty()) {
             return new String[0];
         }
-
-        Matcher m = Pattern.compile(regx).matcher(inputStr);
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            split = m.group(2).split(customDelimiter);
-            return split;
+        Matcher customDelimiterMatcher = Pattern.compile(CUSTOM_DELIMITER_REGEX).matcher(input);
+        if (customDelimiterMatcher.find()) {
+            String customDelimiter = customDelimiterMatcher.group(1);
+            return customDelimiterMatcher.group(2).split(Pattern.quote(customDelimiter));
         }
-        return inputStr.split("[,:;\\n]+");
+        return input.split(DEFAULT_DELIMITER_REGEX);
     }
 
     private int toInt(String number) {
@@ -38,18 +34,12 @@ public class StringAddCalculator {
     public int add() {
         int result = 0;
         for (String number : numbers) {
-            if (toInt(number) < 0) {
-                throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
+            int intValue = toInt(number);
+            if (intValue < 0) {
+                throw new RuntimeException(String.format(NEGATIVE_NUMBER_ERROR_MESSAGE, intValue));
             }
-            result += toInt(number);
+            result += intValue;
         }
         return result;
-    }
-
-    @Override
-    public String toString() {
-        return "StringAddCalculator{" +
-                "numbers=" + Arrays.toString(numbers) +
-                '}';
     }
 }
