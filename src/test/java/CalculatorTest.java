@@ -9,7 +9,9 @@
 // 음수를 전달할 경우 RuntimeException 예외가 발생
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -27,6 +29,18 @@ public class CalculatorTest {
         int result = Calculator.splitAndSum(input);
         //when
         int expected = 0;
+        //then
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @DisplayName("숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환한다.")
+    @ValueSource(strings = {"1","2","10"})
+    public void whenInputisSingleNumber(String input){
+        //given
+        int result = Calculator.splitAndSum(input);
+        //when
+        int expected = Integer.parseInt(input);
         //then
         assertThat(result).isEqualTo(expected);
     }
