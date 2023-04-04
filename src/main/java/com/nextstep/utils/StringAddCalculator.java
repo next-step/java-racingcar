@@ -12,7 +12,11 @@ public class StringAddCalculator {
 
     public static int splitAndSum(String text) {
         if(isEmptyText(text)) return 0;
+
         int [] integers = convertStringIntoArray(text);
+
+        if(containsNegative(integers)) throw new RuntimeException("It has Negative Value");
+
         return Arrays.stream(integers).sum();
     }
 
@@ -22,6 +26,7 @@ public class StringAddCalculator {
 
     private static int[] convertStringIntoArray(String text) {
         Matcher m = Pattern.compile(CUSTOM_SEPARATOR_REGEX).matcher(text);
+
         if(m.find()) {
             return Arrays
                     .stream(m.group(2)
@@ -35,4 +40,7 @@ public class StringAddCalculator {
                 .toArray();
     }
 
+    private static boolean containsNegative(int [] integers) {
+        return Arrays.stream(integers).anyMatch(n -> n < 0);
+    }
 }
