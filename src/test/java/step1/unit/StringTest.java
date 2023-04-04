@@ -6,6 +6,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class StringTest {
 
@@ -34,4 +35,24 @@ public class StringTest {
         assertThat(list).containsExactly(split);
     }
 
+    @ParameterizedTest(name = "chatAt Test - 0번째 문자 가져오기 (input: ''{0}'')")
+    @ValueSource(strings = {"ab", "bcd", "fegw"})
+    void test_chatAt(String input) {
+        int index = 0;
+
+        char result = input.charAt(index);
+        char[] chars = input.toCharArray();
+
+        assertThat(result).isEqualTo(chars[index]);
+    }
+
+    @ParameterizedTest(name = "chatAt Test - 인덱스 벗어난 경우 (input: ''{0}'')")
+    @ValueSource(strings = {"ab", "bcd", "fegw"})
+    void test_chatAt_IndexOutOfBoundsException(String input) {
+        int index = 10;
+
+        assertThatThrownBy(() -> input.charAt(index))
+                .isInstanceOf(IndexOutOfBoundsException.class)
+                .hasMessageContaining("String index out of range: " + index);
+    }
 }
