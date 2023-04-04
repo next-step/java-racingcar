@@ -40,7 +40,7 @@ public class SetTest {
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
     @DisplayName("set의 Contains 메소드를 활용하여 존재하는 값(1,2,3) 존재하지 않는 값(4,5) 에 대한 테스트")
-    void toLowerCase_ShouldGenerateTheExpectedLowercaseValue(int input, boolean expected) {
+    void contains(int input, boolean expected) {
         assertThat(numbers.contains(input)).isEqualTo(expected);
     }
 }
