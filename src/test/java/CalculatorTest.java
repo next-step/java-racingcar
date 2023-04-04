@@ -25,7 +25,7 @@ public class CalculatorTest {
     @DisplayName("빈 문자열 또는 null 값을 입력할 경우 0을 반환해야 한다.")
     @NullSource
     @ValueSource(strings = {"", " "})
-    public void blackCheck(String input){
+    public void blackCheck(String input) throws Exception {
         //given
         int result = Calculator.splitAndSum(input);
         //when
@@ -37,7 +37,7 @@ public class CalculatorTest {
     @ParameterizedTest
     @DisplayName("숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환한다.")
     @ValueSource(strings = {"1","2","10"})
-    public void whenInputisSingleNumber(String input){
+    public void whenInputisSingleNumber(String input) throws Exception {
         //given
         int result = Calculator.splitAndSum(input);
         //when
@@ -49,46 +49,31 @@ public class CalculatorTest {
     @ParameterizedTest
     @DisplayName("숫자 두개를 컴마(,) 구분자로 입력할 경우 두 숫자의 합을 반환한다.")
     @CsvSource(value = {"1,2:3","2,3:5","10,11:21"}, delimiter = ':')
-    public void whenInputisTwoNumbers(String input, String expected){
-        //given
+    public void whenInputisTwoNumbers(String input, String expected) throws Exception {
         int result = Calculator.splitAndSum(input);
-        //when
-
-        //then
         assertThat(result).isEqualTo(Integer.parseInt(expected));
     }
 
     @ParameterizedTest
     @DisplayName("구분자로 콜론도 사용할 때")
     @CsvSource(value = {"1:2,3;6","2,3:5;10"}, delimiter = ';')
-    public void 구분자로_콜론도_사용(String input, String expected){
-        //given
+    public void 구분자로_콜론도_사용(String input, String expected) throws Exception {
         int result = Calculator.splitAndSum(input);
-        //when
-
-        //then
         assertThat(result).isEqualTo(Integer.parseInt(expected));
     }
 
 
     @Test
     @DisplayName("커스텀 구분자를 지정할 때")
-    public void 커스텀_구분자_사용(){
-        //given
+    public void 커스텀_구분자_사용() throws Exception {
         int result = Calculator.splitAndSum("//;\n1;2;3");
-        //when
-
-        //then
         assertThat(result).isEqualTo(6);
     }
 
-    @Test
+    @ParameterizedTest
     @DisplayName("음수_예외_처리")
-    public void 음수_예외_처리(){
-        //given
-        assertThatThrownBy(() -> Calculator.splitAndSum("-1,2,3")).isInstanceOf(RuntimeException.class);
-        //when
-
-        //then
+    @ValueSource(strings = {"-1,2,3", "1,2,-10"})
+    public void 음수_예외_처리(String input) throws Exception {
+        assertThatThrownBy(() -> Calculator.splitAndSum(input)).isInstanceOf(RuntimeException.class);
     }
 }
