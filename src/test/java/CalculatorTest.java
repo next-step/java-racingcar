@@ -44,4 +44,16 @@ public class CalculatorTest {
         //then
         assertThat(result).isEqualTo(expected);
     }
+
+    @ParameterizedTest
+    @DisplayName("숫자 두개를 컴마(,) 구분자로 입력할 경우 두 숫자의 합을 반환한다.")
+    @CsvSource(value = {"1,2:3","2,3:5","10,11:21"}, delimiter = ':')
+    public void whenInputisTwoNumbers(String input, String expected){
+        //given
+        int result = Calculator.splitAndSum(input);
+        //when
+
+        //then
+        assertThat(result).isEqualTo(Integer.parseInt(expected));
+    }
 }

@@ -1,8 +1,15 @@
 public class Calculator {
     public static int splitAndSum(String input) {
+        int sum = 0;
         if(input == null || input.isBlank()){
-            return 0;
+            return sum;
         }
-        return Integer.parseInt(input);
+
+        String[] numbers = input.split(",");
+        for (String number : numbers) {
+            sum += Integer.parseInt(number);
+        }
+
+        return sum;
     }
 }
