@@ -4,13 +4,18 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 public class SetTest {
     private Set<Integer> numbers;
@@ -38,10 +43,27 @@ public class SetTest {
         assertThat(numbers.contains(number)).isTrue();
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "test Set contains() with CsvSource")
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-    @DisplayName("test Set contains() with CsvSource")
     void setContainsWithCsvSource(int number, boolean expected){
         assertThat(numbers.contains(number)).isEqualTo(expected);
+    }
+
+    //******** code review
+
+    @ParameterizedTest
+    @MethodSource("invalidParameterReview")
+    void setContains(int number, boolean expected){
+        assertEquals(expected, numbers.contains(number));
+    }
+
+    static Stream<Arguments> invalidParameterReview() {
+        return Stream.of(
+                arguments(1, true),
+                arguments(2, true),
+                arguments(3, true),
+                arguments(4, false),
+                arguments(5, false)
+        );
     }
 }
