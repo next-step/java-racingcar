@@ -15,11 +15,17 @@ public class Calculator {
             numbers = m.group(2).split(customDelimiter);
 
             for (String number : numbers) {
+                if(Integer.parseInt(number) < 0){
+                    throw new RuntimeException();
+                }
                 sum += Integer.parseInt(number);
             }
         } else {
             numbers = input.split(",|:");
             for (String number : numbers) {
+                if(Integer.parseInt(number) < 0){
+                    throw new RuntimeException();
+                }
                 sum += Integer.parseInt(number);
             }
         }

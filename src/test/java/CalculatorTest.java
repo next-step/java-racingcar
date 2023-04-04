@@ -16,6 +16,7 @@ import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CalculatorTest {
 
@@ -79,5 +80,15 @@ public class CalculatorTest {
 
         //then
         assertThat(result).isEqualTo(6);
+    }
+
+    @Test
+    @DisplayName("음수_예외_처리")
+    public void 음수_예외_처리(){
+        //given
+        assertThatThrownBy(() -> Calculator.splitAndSum("-1,2,3")).isInstanceOf(RuntimeException.class);
+        //when
+
+        //then
     }
 }
