@@ -10,8 +10,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class StringTest {
 
     @Test
-    @DisplayName("\"1,2\"을 ,로 split 했을 때 1과 2로 잘 분리 되는지 확인")
-    void commaSeparatedStringWithTwoInputs() {
+    @DisplayName("\"1,2\"을 ,로 split 했을 때 1과 2로 잘 분리 되는지 테스트")
+    void comma_separated_string_with_two_inputs() {
         // given
         String givenString = "1,2";
 
@@ -24,8 +24,8 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("\"1\"을 ,로 split 했을 때 1만을 포함하는 배열이 반환 되는지 확인")
-    void commaSeparatedStringWithOneInput() {
+    @DisplayName("\"1\"을 ,로 split 했을 때 1만을 포함하는 배열이 반환 되는지 테스트")
+    void comma_separated_string_with_one_input() {
         // given
         String givenString = "1";
 
@@ -38,8 +38,8 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("\"(1,2)\" 값이 주어졌을 때 1,2 반환하는지 확인")
-    void removeBracketsInString() {
+    @DisplayName("\"(1,2)\" 값이 주어졌을 때 1,2 반환하는지 테스트")
+    void remove_brackets_in_string() {
         // given
         String givenString = "(1,2)";
 
@@ -51,8 +51,8 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("특정 위치의 문자를 가져오는지 확인")
-    void charAtTest() {
+    @DisplayName("특정 위치의 문자를 가져오는지 테스트")
+    void charat_test() {
         // given
         final String givenString = "abc";
 
@@ -68,8 +68,8 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("위치값이 벗어났을 경우 IndexOutOfBoundsException 예외 발생")
-    void stringIndexOutOfBoundsExceptionTest() {
+    @DisplayName("위치값이 벗어났을 경우 IndexOutOfBoundsException 예외 발생 테스트")
+    void string_index_out_of_bounds_exception_test() {
         // given
         String givenString = "abc";
 
