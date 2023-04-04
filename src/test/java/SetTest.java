@@ -34,14 +34,8 @@ public class SetTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {4, 5})
-    void 요구사항3(int input) {
-        assertThat(numbers.contains(input)).isFalse();
-    }
-
-    @ParameterizedTest
-    @CsvSource(value = {"4", "5"})
-    void name(int value) {
-        assertThat(numbers.contains(value)).isFalse();
+    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
+    void 요구사항3(int input, boolean expected) {
+        assertThat(numbers.contains(input)).isEqualTo(expected);
     }
 }
