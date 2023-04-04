@@ -56,4 +56,16 @@ public class CalculatorTest {
         //then
         assertThat(result).isEqualTo(Integer.parseInt(expected));
     }
+
+    @ParameterizedTest
+    @DisplayName("구분자로 콜론도 사용할 때")
+    @CsvSource(value = {"1:2,3;6","2,3:5;10"}, delimiter = ';')
+    public void 구분자로_콜론도_사용(String input, String expected){
+        //given
+        int result = Calculator.splitAndSum(input);
+        //when
+
+        //then
+        assertThat(result).isEqualTo(Integer.parseInt(expected));
+    }
 }
