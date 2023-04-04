@@ -36,5 +36,23 @@ public class StringTest {
         }
     }
 
+    @Nested
+    @DisplayName("substring 메소드를 사용할 때 ")
+    class SubStringTest {
+
+        @Test
+        @DisplayName("시작 index 와 끝 index 가 주어질 경우, 시작 index 를 포함하고 끝 index 를 제외한 범위의 문자열 일부를 추출한다")
+        void givenString_whenSubString_thenExtractPartOfString() {
+            String originString = "(1,2)";
+
+            int beforeStartIdx = originString.indexOf('(');
+            int afterEndIdx = originString.indexOf(')');
+
+            String partOfString = originString.substring(beforeStartIdx + 1, afterEndIdx);
+
+            Assertions.assertThat(partOfString).isEqualTo("1,2");
+        }
+    }
+
 
 }
