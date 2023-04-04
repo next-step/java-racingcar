@@ -34,4 +34,17 @@ public class StringTest {
         assertThat(splitString).contains("1");
         assertThat(splitString).containsExactly("1");
     }
+
+    @Test
+    @DisplayName("\"(1,2)\" 값이 주어졌을 때 1,2 반환하는지 확인")
+    void removeBracketsInString() {
+        // given
+        String givenString = "(1,2)";
+
+        // when
+        String bracketRemovedString = givenString.substring(1, givenString.length() - 1);
+
+        // then
+        assertThat(bracketRemovedString).isEqualTo("1,2");
+    }
 }
