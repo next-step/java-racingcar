@@ -25,7 +25,7 @@ public class SetCollectionTest {
     @Test
     @DisplayName("Set의 size() 메소드를 활용해 Set의 크기를 확인한다.")
     void testSize() {
-        //arrange
+        //assert
         assertThat(numbers.size()).isEqualTo(3);
     }
 }
