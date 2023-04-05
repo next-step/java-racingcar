@@ -1,11 +1,12 @@
 package study;
 
-import org.junit.jupiter.api.Test;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import org.junit.jupiter.api.Test;
+
 public class StringAddCalculatorTest {
+
   @Test
   public void splitAndSum_null_또는_빈문자() {
     int result = StringAddCalculator.splitAndSum(null);
@@ -43,6 +44,6 @@ public class StringAddCalculatorTest {
   public void splitAndSum_negative() throws Exception {
     assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
         .isInstanceOf(RuntimeException.class)
-        .hasMessageContaining("음수가 전달되었습니다.: "+-1);
+        .hasMessageContaining("음수가 전달되었습니다.: " + -1);
   }
 }
