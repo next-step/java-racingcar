@@ -72,7 +72,7 @@ public class SetCollectionTest {
       "4:false",
       "5:false"
   }, delimiter = ':')
-  @DisplayName("ParameterizedTest 를 통해서 테스트 중복 코드 제거, 실패 케이스도 포함 (CSVSource 사용)")
+  @DisplayName("ParameterizedTest 를 통해서 테스트 중복 코드 제거, 실패 케이스도 포함 (CSVSource 사용).")
   void contains(int number, boolean expectedResult) {
     // given
     boolean expected = expectedResult;
