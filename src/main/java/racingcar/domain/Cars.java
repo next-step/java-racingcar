@@ -1,19 +1,25 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
 
-    private List<Car> cars;
+    private static List<Car> cars;
 
-    public Cars(List<Car> cars) {
-        this.cars = cars;
+    public Cars(String userInput) {
+        cars = createCars(Integer.parseInt(userInput));
     }
 
-    public void racingStart() {
-        for (Car car : cars) {
-            car.move();
+    public List<Car> createCars(int carCount) {
+        cars = new ArrayList<>();
+        for (int i = 0; i < carCount; i++) {
+            cars.add(new Car());
         }
+        return cars;
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
 }
