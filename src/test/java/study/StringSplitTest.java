@@ -76,7 +76,7 @@ public class StringSplitTest {
   }
 
   @Test
-  @DisplayName("index 위치를 벗어나는 경우, exception 발생 - assertThatThrownBy")
+  @DisplayName("index 위치를 벗어나는 경우, exception 발생 - assertThatThrownBy.")
   void charAtException2() {
     // given
     String input = "abc";
