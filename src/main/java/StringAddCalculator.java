@@ -1,9 +1,11 @@
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
-    private static final String DEFAULT_SEPARATOR = ",|:";
+    private static final String DEFAULT_SEPARATOR = "[,|:]";
     private static final String CUSTOM_SEPARATOR = "//(.)\n(.*)";
 
     public static int splitAndSum(String text) {
@@ -11,15 +13,14 @@ public class StringAddCalculator {
             return 0;
         }
 
-        if (isContainsNegativeNumber(text)) {
-            throw new RuntimeException("Contains a negative number.");
-        }
+        validateContainsNegativeNumberAndThrow(text);
 
         if (isSingleNumeric(text)) {
             return Integer.parseInt(text);
         }
 
-        return sum(text);
+        String[] numbers = splitNumberBySeparator(text);
+        return sum(numbers);
     }
 
     private static boolean isBlank(String text) {
@@ -30,22 +31,24 @@ public class StringAddCalculator {
         return text.matches("\\d+");
     }
 
-    private static boolean isContainsNegativeNumber(String text) {
-        return text.contains("-");
+    private static void validateContainsNegativeNumberAndThrow(String text) {
+        if (text.contains("-")) {
+            throw new IllegalArgumentException("Contains a negative number.");
+        }
     }
 
-    private static int sum(String text) {
+    private static String[] splitNumberBySeparator(String text) {
         Matcher customMatcher = Pattern.compile(CUSTOM_SEPARATOR).matcher(text);
         if (customMatcher.find()) {
-            return Arrays.stream(customMatcher.group(2).split(customMatcher.group(1)))
-                    .mapToInt(Integer::parseInt)
-                    .sum();
+            return customMatcher.group(2).split(customMatcher.group(1));
         }
 
-        String[] numbers = text.split(DEFAULT_SEPARATOR);
+        return text.split(DEFAULT_SEPARATOR);
+    }
+
+    private static int sum(String[] numbers) {
         return Arrays.stream(numbers)
                 .mapToInt(Integer::parseInt)
                 .sum();
     }
-
 }
