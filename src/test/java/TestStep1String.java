@@ -9,9 +9,7 @@ public class TestStep1String {
     @Test
     @DisplayName("req1_1")
     void splitByComma() {
-        /* 요구 1 */
         final String inputData = "1,2";
-
         final String[] expected = {"1","2"};
 
         final String[] actual = inputData.split(",");
@@ -22,9 +20,7 @@ public class TestStep1String {
     @Test
     @DisplayName("req1_2")
     void splitOne() {
-        /* 요구 1 */
         final String inputData = "1";
-
         final String[] expected = {"1"};
 
         final String[] actual = inputData.split(",");
@@ -35,9 +31,7 @@ public class TestStep1String {
     @Test
     @DisplayName("req2")
     void splitBetweenBracket() {
-        /* 요구 2 */
         final String inputData = "(1,2)";
-
         final String[] expected = {"1","2"};
 
         final String[] actual = inputData.substring(1, inputData.length()-1).split(",");
@@ -48,9 +42,7 @@ public class TestStep1String {
     @Test
     @DisplayName("req3_1")
     void extractChar() {
-        /* 요구 3 */
         final String inputData = "abc";
-
         final String expected = "c";
 
         final char actual = inputData.charAt(2);
@@ -61,7 +53,6 @@ public class TestStep1String {
     @Test
     @DisplayName("abc 문자열이 있을때 index 10 번째 위치의 문자를 가져오면 IndexOutOfBoundsException 발생")
     void handelIndexOutOfBoundsException() {
-        /* 요구 3 */
         assertThatExceptionOfType(IndexOutOfBoundsException.class)
                 .isThrownBy(() -> {
                     char result = "abc".charAt(9);

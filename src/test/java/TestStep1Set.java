@@ -26,7 +26,6 @@ public class TestStep1Set {
     @Test
     @DisplayName("req1")
     void checkSetSize() {
-        /* 요구 1 */
         Assertions.assertEquals(numbers.size(),3);
     }
 
@@ -34,16 +33,14 @@ public class TestStep1Set {
     @ValueSource(ints = {1, 2, 3})
     @DisplayName("req2")
     void checkContainAll(int inputNumber) {
-        /* 요구 2 */
         Assertions.assertTrue(numbers.contains(inputNumber));
     }
 
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true","3:true","4:false","5:false"}, delimiter = ':')
     @DisplayName("req3")
-    void checkIfContain(int inputNumber, boolean IsContain) {
-        /* 요구 3 */
-        Assertions.assertEquals(numbers.contains(inputNumber), IsContain);
+    void checkIfContain(int inputNumber, boolean ifContain) {
+        Assertions.assertEquals(numbers.contains(inputNumber), ifContain);
     }
 
 
