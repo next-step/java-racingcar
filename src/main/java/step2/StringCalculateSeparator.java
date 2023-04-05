@@ -29,17 +29,13 @@ public class StringCalculateSeparator {
             return Collections.emptyList();
         }
 
-        if (input.isBlank()) {
-            return Collections.emptyList();
-        }
-        
         return   Arrays.stream(input.split(concatSeparator(input)))
                 .filter(Predicate.not(String::isEmpty))
                 .collect(Collectors.toList());
     }
 
     boolean isEmpty(String input) {
-        return input == null || input.length() == 0;
+        return input == null || input.strip().length() == 0;
     }
 
     private String concatSeparator(String input) {
