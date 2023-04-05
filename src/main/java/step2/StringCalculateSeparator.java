@@ -14,11 +14,12 @@ import java.util.stream.Collectors;
 public class StringCalculateSeparator {
 
     private static final Pattern CUSTOM_SEPARATE_PATTERN = Pattern.compile(Separator.CUSTOM_SEPARATOR.getRegexp());
-    private static final int CUSTOM_SEPARATE_GROUP_INDEX = 1;
+    private static final int CUSTOM_SEPARATOR_INDEX = 1;
     private static final String EMPTY_STRING = "";
     private static final String SEPARATOR_CONCAT_DELIMITER = "|";
 
     private static class SeparatorInstanceLazyHolder {
+
         private static final StringCalculateSeparator INSTANCE = new StringCalculateSeparator();
     }
 
@@ -38,10 +39,12 @@ public class StringCalculateSeparator {
     }
 
     boolean isEmpty(String input) {
+
         return input == null || input.strip().length() == 0;
     }
 
     private String concatSeparator(String input) {
+
         StringJoiner stringJoiner = new StringJoiner(SEPARATOR_CONCAT_DELIMITER)
                 .add(Separator.REGULAR_SEPARATOR.getRegexp())
                 .add(Separator.CUSTOM_SEPARATOR.getRegexp());
@@ -60,7 +63,7 @@ public class StringCalculateSeparator {
         Matcher matcher = CUSTOM_SEPARATE_PATTERN.matcher(input);
 
         if (matcher.find()) {
-            return matcher.group(CUSTOM_SEPARATE_GROUP_INDEX);
+            return matcher.group(CUSTOM_SEPARATOR_INDEX);
         }
 
         return EMPTY_STRING;

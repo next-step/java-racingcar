@@ -5,10 +5,12 @@ import java.util.List;
 public class StringCalculateCalculator {
 
     private static class CalculatorInstanceLazyHolder {
+
         private static final StringCalculateCalculator INSTANCE = new StringCalculateCalculator();
     }
 
     public static StringCalculateCalculator getInstance() {
+
         return CalculatorInstanceLazyHolder.INSTANCE;
     }
 

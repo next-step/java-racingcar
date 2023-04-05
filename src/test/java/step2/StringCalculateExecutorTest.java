@@ -15,6 +15,7 @@ class StringCalculateExecutorTest {
 
     @BeforeEach
     public void injectInstance() {
+
         stringCalculateExecutor = StringCalculateExecutor.getInstance();
     }
 
@@ -125,7 +126,6 @@ class StringCalculateExecutorTest {
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining(CommonExceptionMessage.EXIST_NON_NUMERIC.getUserGuideMessage())
         );
-
     }
 
 }
