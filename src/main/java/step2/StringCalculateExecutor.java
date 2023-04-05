@@ -14,6 +14,10 @@ public class StringCalculateExecutor {
         return CalculatorInstanceLazyHolder.INSTANCE;
     }
 
+    private StringCalculateExecutor(){
+
+    }
+
     public int execute(String input) {
 
         List<String> inputToInputList = StringCalculateSeparator.getInstance().executeSeparator(input);

@@ -27,6 +27,10 @@ public class StringCalculateSeparator {
         return SeparatorInstanceLazyHolder.INSTANCE;
     }
 
+    private StringCalculateSeparator(){
+
+    }
+
     public List<String> executeSeparator(String input) {
 
         if (isEmpty(input)) {

@@ -14,6 +14,10 @@ public class StringCalculateCalculator {
         return CalculatorInstanceLazyHolder.INSTANCE;
     }
 
+    private StringCalculateCalculator(){
+
+    }
+
     public int executeCalculator(List<String> inputList) {
 
         if (inputList.size() == 0) {

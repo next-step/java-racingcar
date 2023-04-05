@@ -21,6 +21,10 @@ public class StringCalculateValidator {
         return ValidatorInstanceLazyHolder.INSTANCE;
     }
 
+    private StringCalculateValidator(){
+
+    }
+
     public void executeValidator(List<String> inputList) {
 
         validateNonNumeric(inputList);
