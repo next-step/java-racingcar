@@ -25,7 +25,9 @@ public class StringCalculateSeparator {
 
     public List<String> executeSeparator(String input) {
 
-        input = trim(input);
+        if (isEmpty(input)) {
+            return Collections.emptyList();
+        }
 
         if (input.isBlank()) {
             return Collections.emptyList();
@@ -34,8 +36,8 @@ public class StringCalculateSeparator {
         return List.of(input.split(concatSeparator(input)));
     }
 
-    private String trim(String input) {
-        return input.strip();
+    boolean isEmpty(String input) {
+        return input == null || input.length() == 0;
     }
 
     private String concatSeparator(String input) {
