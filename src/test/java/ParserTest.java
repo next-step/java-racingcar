@@ -49,4 +49,14 @@ class ParserTest {
         List<String> actual = parser.parse(given);
         assertThat(actual).isEmpty();
     }
+
+    @Test
+    @DisplayName("[4] 기본 구분자(쉼표, 콜론)외에 커스텀 구분자를 지정할 수 있음 (“//”와 “\\n” 사이에 위치)")
+    public void parseTest5() {
+        String given = "//;\\n1;2;3";
+        List<String> actual = parser.parse(given);
+        assertThat(actual).contains("1");
+        assertThat(actual).contains("2");
+        assertThat(actual).contains("3");
+    }
 }
