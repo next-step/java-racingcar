@@ -22,7 +22,7 @@ public class StringCalculateExecutor {
 
         List<String> inputToInputList = StringCalculateSeparator.getInstance().executeSeparator(input);
 
-        StringCalculateValidator.getInstance().executeValidator(inputToInputList);
+        StringCalculateValidateExecutor.getInstance().executeValidator(inputToInputList);
 
         return StringCalculateCalculator.getInstance().executeCalculator(inputToInputList);
     }
