@@ -20,6 +20,4 @@ public class StringCalculateExecutor {
 
         return StringCalculateCalculator.getInstance().executeCalculator(inputToInputList);
     }
-
-
 }
