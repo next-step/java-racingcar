@@ -16,8 +16,8 @@ public class StringCalculator {
             return DEFAULT_VALUE;
         }
         String delimiter = extractCustomDelimiterOrDefault(text);
-        validateStrangeValue(text, delimiter);
         text = removeCustomDelimiter(text, delimiter);
+        validateStrangeValue(text, delimiter);
         String[] splitTexts = getSplitTexts(text, delimiter);
         return calculate(splitTexts);
     }

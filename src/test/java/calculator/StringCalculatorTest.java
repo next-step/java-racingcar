@@ -26,6 +26,7 @@ class StringCalculatorTest {
     private static Stream<Arguments> provideArgumentsForSuccessTest() {
         return Stream.of(Arguments.of(null, 0),
                          Arguments.of("", 0),
+                         Arguments.of("5", 5),
                          Arguments.of("1,2", 3),
                          Arguments.of("1,2,3", 6),
                          Arguments.of("1,2:3", 6),
