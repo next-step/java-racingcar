@@ -23,13 +23,9 @@ public class StringAddCalculator {
 
         //  3. 숫자 두개를 컴마(,) 구분자로 입력할 경우 두 숫자의 합을 반환한다.
         //  4. 구분자를 컴마(,) 이외에 콜론(:)을 사용할 수 있다.
-        if (inputText.contains(",") || inputText.contains(":")) {
-            return splitTextAndSum(inputText);
-        }
-
         //  5. “//”와 “\n” 문자 사이에 커스텀 구분자를 지정할 수 있다.
         //  6. 음수를 전달할 경우 RuntimeException 예외가 발생해야 한다.
-        return patternCheckAndSum(inputText);
+        return sumNumbers(splitText(inputText));
     }
 
     private boolean checkEmpty(String text) {
@@ -47,26 +43,27 @@ public class StringAddCalculator {
         return Integer.parseInt(text);
     }
 
-    private int splitTextAndSum(String text) {
+    private String[] splitText(String text) {
+        if (isMatchCustomPattern(text)) {
+            return splitCustomPattern(text);
+        }
 
-        String[] numbers = text.split(",|:");
-
-        return sumNumbers(numbers);
+        return text.split(",|:");
     }
 
-    private int patternCheckAndSum(String text) {
+    private boolean isMatchCustomPattern(String text) {
+        return CUSTOM_PATTERN.matcher(text).find();
+    }
+
+    private String[] splitCustomPattern(String text) {
         Matcher matcher = CUSTOM_PATTERN.matcher(text);
 
         if (matcher.find()) {
-            String customDelimiter = matcher.group(1);
-            String[] tokens= matcher.group(2).split(customDelimiter);
-            // 덧셈 구현
-
-            return sumNumbers(tokens);
+            return matcher.group(2).split(matcher.group(1));
         }
 
-        //  matcher 에 안 걸리는 경우...?
-        return 0;
+        //  matcher 에 안 걸리는 경우는...?
+        return null;
     }
 
     private int sumNumbers(String[] numbers) {
