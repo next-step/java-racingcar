@@ -27,7 +27,7 @@ public class SetCollectionTest {
 
     @DisplayName("Set Collection에 대한 학습 테스트 - 요구사항1")
     @Test
-    void set_size() {
+    void setSize() {
         assertThat(numbers.size()).isEqualTo(3);    //  성공
         //assertThat(numbers.size()).isEqualTo(4);    //  실패(set 은 중복 안됌)
     }
@@ -35,7 +35,7 @@ public class SetCollectionTest {
     @DisplayName("Set Collection에 대한 학습 테스트 - 요구사항2")
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
-    void set_contains(int input) {
+    void setContains(int input) {
 
         assertThat(numbers.contains(input)).isTrue();
 
@@ -44,7 +44,7 @@ public class SetCollectionTest {
     @DisplayName("Set Collection에 대한 학습 테스트 - 요구사항3")
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-    void set_contains2(int input, boolean expected) {
+    void setContains(int input, boolean expected) {
 
         assertThat(numbers.contains(input)).isEqualTo(expected);
 
