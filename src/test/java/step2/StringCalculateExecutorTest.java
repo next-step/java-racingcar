@@ -10,7 +10,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class StringCalculateExecutorTest {
 
-
     private StringCalculateExecutor stringCalculateExecutor;
 
     @BeforeEach
