@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class SetTest {
     private Set<Integer> numbers;
@@ -32,9 +32,9 @@ public class SetTest {
     @Test
     @DisplayName("[요구사항 2] contains 메서드로 set에 값이 존재하는지 확인할 수 있다.")
     public void containsTest1() {
-        assertThat(numbers.contains(1)).isTrue();
-        assertThat(numbers.contains(2)).isTrue();
-        assertThat(numbers.contains(3)).isTrue();
+        assertThat(numbers).contains(1);
+        assertThat(numbers).contains(2);
+        assertThat(numbers).contains(3);
     }
 
     @ParameterizedTest
@@ -47,9 +47,7 @@ public class SetTest {
     @ParameterizedTest
     @DisplayName("[요구사항 3] contains 메서드로 set에 값이 존재하는지 확인할 수 있다.")
     @CsvSource(value = {"1:true", "2:true", "3:true", "-1:false", "999:false"}, delimiter = ':')
-    public void containsTest3(String input, String input2) {
-        int given = Integer.parseInt(input);
-        boolean expected = Boolean.parseBoolean(input2);
+    public void containsTest3(int given, boolean expected) {
         assertThat(numbers.contains(given)).isEqualTo(expected);
     }
 }
