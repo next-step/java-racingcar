@@ -10,6 +10,6 @@ public class StringAdditionCalculator {
     }
 
     private static boolean isNullOrEmpty(String input) {
-        return input == null || input.isBlank();
+        return input == null || input.isEmpty();
     }
 }
