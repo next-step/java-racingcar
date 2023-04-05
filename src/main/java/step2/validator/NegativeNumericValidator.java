@@ -2,8 +2,7 @@ package step2.validator;
 
 import step2.common.Separator;
 import step2.common.exception.CommonExceptionMessage;
-
-import java.util.List;
+import step2.model.Input;
 
 public class NegativeNumericValidator implements Validator {
 
@@ -19,15 +18,16 @@ public class NegativeNumericValidator implements Validator {
         return NegativeNumericInstanceLazyHolder.INSTANCE;
     }
 
-    private NegativeNumericValidator(){
+    private NegativeNumericValidator() {
 
     }
 
     @Override
-    public void validate(List<String> inputList) {
+    public void validate(Input input) {
 
-        inputList.stream()
-                .filter(input -> input.matches(NEGATIVE_NUMBER_REGEXP))
+        input.getInputList()
+                .stream()
+                .filter(verifier -> verifier.matches(NEGATIVE_NUMBER_REGEXP))
                 .findFirst()
                 .ifPresent(nonNumeric -> {
                     throw new IllegalArgumentException(CommonExceptionMessage.EXIST_NEGATIVE_NUMBER.getUserGuideMessage());

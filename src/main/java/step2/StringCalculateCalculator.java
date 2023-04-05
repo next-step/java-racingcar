@@ -1,5 +1,7 @@
 package step2;
 
+import step2.model.Input;
+
 import java.util.List;
 
 public class StringCalculateCalculator {
@@ -14,11 +16,12 @@ public class StringCalculateCalculator {
         return CalculatorInstanceLazyHolder.INSTANCE;
     }
 
-    private StringCalculateCalculator(){
+    private StringCalculateCalculator() {
 
     }
 
-    public int executeCalculator(List<String> inputList) {
+    public int executeCalculator(Input input) {
+        List<String> inputList = input.getInputList();
 
         if (inputList.size() == 0) {
             return 0;

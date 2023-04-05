@@ -1,6 +1,7 @@
 package step2;
 
 import step2.common.Separator;
+import step2.model.Input;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -27,19 +28,21 @@ public class StringCalculateSeparator {
         return SeparatorInstanceLazyHolder.INSTANCE;
     }
 
-    private StringCalculateSeparator(){
+    private StringCalculateSeparator() {
 
     }
 
-    public List<String> executeSeparator(String input) {
+    public Input executeSeparator(String input) {
 
         if (isEmpty(input)) {
-            return Collections.emptyList();
+            return new Input(input, Collections.emptyList());
         }
 
-        return Arrays.stream(input.split(concatSeparator(input)))
+        List<String> inputList = Arrays.stream(input.split(concatSeparator(input)))
                 .filter(Predicate.not(String::isEmpty))
                 .collect(Collectors.toList());
+
+        return new Input(input, inputList);
     }
 
     private boolean isEmpty(String input) {

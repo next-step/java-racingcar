@@ -1,6 +1,6 @@
 package step2;
 
-import java.util.List;
+import step2.model.Input;
 
 public class StringCalculateExecutor {
 
@@ -14,16 +14,16 @@ public class StringCalculateExecutor {
         return CalculatorInstanceLazyHolder.INSTANCE;
     }
 
-    private StringCalculateExecutor(){
+    private StringCalculateExecutor() {
 
     }
 
-    public int execute(String input) {
+    public int execute(String inputString) {
 
-        List<String> inputToInputList = StringCalculateSeparator.getInstance().executeSeparator(input);
+        Input input = StringCalculateSeparator.getInstance().executeSeparator(inputString);
 
-        StringCalculateValidateExecutor.getInstance().executeValidator(inputToInputList);
+        StringCalculateValidateExecutor.getInstance().executeValidator(input);
 
-        return StringCalculateCalculator.getInstance().executeCalculator(inputToInputList);
+        return StringCalculateCalculator.getInstance().executeCalculator(input);
     }
 }

@@ -1,7 +1,7 @@
 package step2.validator;
 
-import java.util.List;
+import step2.model.Input;
 
 public interface Validator {
-    void validate(List<String> input);
+    void validate(Input input);
 }

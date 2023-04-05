@@ -1,5 +1,6 @@
 package step2;
 
+import step2.model.Input;
 import step2.validator.NegativeNumericValidator;
 import step2.validator.NonNumericValidator;
 
@@ -22,10 +23,10 @@ public class StringCalculateValidateExecutor {
 
     }
 
-    public void executeValidator(List<String> inputList) {
+    public void executeValidator(Input input) {
 
-        NonNumericValidator.getInstance().validate(inputList);
-        NegativeNumericValidator.getInstance().validate(inputList);
+        NonNumericValidator.getInstance().validate(input);
+        NegativeNumericValidator.getInstance().validate(input);
     }
 
 }
