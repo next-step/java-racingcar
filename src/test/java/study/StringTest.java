@@ -25,13 +25,11 @@ public class StringTest {
     void exception_o() throws Exception{
         String text = "abc";
         int number = 3;
-        if(number > text.length()-1){
-            assertThatThrownBy(() -> {
-                text.charAt(number);
+        assertThatThrownBy(() -> {
+            text.charAt(number);
 
-            }).isInstanceOf(IndexOutOfBoundsException.class)
-                    .hasMessageContaining("String index out of range: %d", number);
-        }
+        }).isInstanceOf(IndexOutOfBoundsException.class)
+                .hasMessageContaining("String index out of range: %d", number);
 
     }
 
