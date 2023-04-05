@@ -2,7 +2,10 @@ package step2;
 
 import step2.common.Separator;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.StringJoiner;
 import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -29,7 +32,7 @@ public class StringCalculateSeparator {
             return Collections.emptyList();
         }
 
-        return   Arrays.stream(input.split(concatSeparator(input)))
+        return Arrays.stream(input.split(concatSeparator(input)))
                 .filter(Predicate.not(String::isEmpty))
                 .collect(Collectors.toList());
     }
@@ -45,7 +48,7 @@ public class StringCalculateSeparator {
 
         String extractCustomSeparator = extractCustomSeparator(input);
 
-        if(!extractCustomSeparator.isEmpty()){
+        if (!extractCustomSeparator.isEmpty()) {
             stringJoiner.add(extractCustomSeparator);
         }
 
