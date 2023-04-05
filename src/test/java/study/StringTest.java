@@ -8,9 +8,9 @@ import org.junit.jupiter.api.Test;
 
 public class StringTest {
 
-  @DisplayName("split을 사용하여 문자열을 나눈다.")
+  @DisplayName("String의 split을 사용하여 문자열을 나눈다.")
   @Test
-  void requirement1() {
+  void split_StringArray() {
     String[] result = "1,2".split(",");
     assertThat(result).containsExactly("1", "2");
 
@@ -18,17 +18,17 @@ public class StringTest {
     assertThat(result).contains("1");
   }
 
-  @DisplayName("substring을 사용하여 특정 문자열을 잘라낸다.")
+  @DisplayName("String의 substring을 사용하여 특정 문자열을 잘라낸다.")
   @Test
-  void requirement2() {
+  void substring_String_IfIndexInBounds() {
     String result = "(1,2)".substring(1, 4);
 
     assertThat(result).isEqualTo("1,2");
   }
 
-  @DisplayName("charAt을 사용하여 문자열 길이 범위 내 인덱스를 인자로 전달하여 특정 위치 문자를 가져온다.")
+  @DisplayName("String의 charAt을 사용하여 문자열 길이 범위 내 인덱스를 인자로 전달하여 특정 위치 문자를 가져온다.")
   @Test
-  void requirement3_1() {
+  void charAt_Char_IfIndexInBounds() {
     String result = "abc";
 
     assertThat(result.charAt(0)).isEqualTo('a');
@@ -36,9 +36,9 @@ public class StringTest {
     assertThat(result.charAt(2)).isEqualTo('c');
   }
 
-  @DisplayName("charAt 사용시 문자열 길이 범위를 넘는 인덱스를 인자로 전달하면 StringIndexOutOfBoundsException이 발생한다.")
+  @DisplayName("String의 charAt 사용시 문자열 길이 범위를 넘는 인덱스를 인자로 전달하면 StringIndexOutOfBoundsException이 발생한다.")
   @Test
-  void requirement3_2() {
+  void charAt_ThrowsException_IfIndexOutOfBounds() {
     String result = "abc";
 
     assertThatThrownBy(() -> {
