@@ -12,6 +12,10 @@ public class StringAddCalculator {
 
     private static final String DEFAULT_DELIMITER = "[,:]";
 
+    private static final int DELIMITER_EXTRACT_NUMBER = 1;
+
+    private static final int INPUT_EXTRACT_NUMBER = 2;
+
     public static int splitAndSum(String input) {
         if (isNullOrEmpty(input)) {
             return NULL_EMPTY_RETURN_VALUE;
@@ -37,8 +41,8 @@ public class StringAddCalculator {
     }
 
     private static String[] extractSplitInput(Matcher matchedValue) {
-        String customDelimiter = matchedValue.group(1);
-        return matchedValue.group(2).split(customDelimiter);
+        String customDelimiter = matchedValue.group(DELIMITER_EXTRACT_NUMBER);
+        return matchedValue.group(INPUT_EXTRACT_NUMBER).split(customDelimiter);
     }
 
     private static int addSplitInput(String[] splitNumbers) {
