@@ -3,8 +3,7 @@ package step1;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 public class StringClassTest {
 
@@ -37,7 +36,7 @@ public class StringClassTest {
         assertThatThrownBy(() -> {
             "abc".charAt(Integer.MAX_VALUE);
         }).isInstanceOf(StringIndexOutOfBoundsException.class)
-                .hasMessageContaining("string index out of range");
+                .hasMessageContaining("String index out of range");
 
     }
 
