@@ -19,19 +19,6 @@ public class StringCalculateSeparator {
     private static final String EMPTY_STRING = "";
     private static final String SEPARATOR_CONCAT_DELIMITER = "|";
 
-    private static class SeparatorInstanceLazyHolder {
-
-        private static final StringCalculateSeparator INSTANCE = new StringCalculateSeparator();
-    }
-
-    public static StringCalculateSeparator getInstance() {
-        return SeparatorInstanceLazyHolder.INSTANCE;
-    }
-
-    private StringCalculateSeparator() {
-
-    }
-
     public Input executeSeparator(String input) {
 
         if (isEmpty(input)) {

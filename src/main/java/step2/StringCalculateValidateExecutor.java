@@ -1,32 +1,27 @@
 package step2;
 
 import step2.model.Input;
-import step2.validator.NegativeNumericValidator;
-import step2.validator.NonNumericValidator;
+import step2.validator.Validator;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class StringCalculateValidateExecutor {
 
+    private List<Validator> validatorList = new ArrayList<>();
 
-    private static class ValidateExecutorInstanceLazyHolder {
-
-        private static final StringCalculateValidateExecutor INSTANCE = new StringCalculateValidateExecutor();
-    }
-
-    public static StringCalculateValidateExecutor getInstance() {
-
-        return ValidateExecutorInstanceLazyHolder.INSTANCE;
-    }
-
-    private StringCalculateValidateExecutor() {
-
+    public StringCalculateValidateExecutor(
+            Validator... validator
+    ) {
+        validatorList = Arrays.asList(validator);
     }
 
     public void executeValidator(Input input) {
 
-        NonNumericValidator.getInstance().validate(input);
-        NegativeNumericValidator.getInstance().validate(input);
+        for (Validator validator : validatorList) {
+            validator.validate(input);
+        }
     }
 
 }

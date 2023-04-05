@@ -7,20 +7,6 @@ public class NonNumericValidator implements Validator {
 
     private static final String NON_NUMERIC_REGEXP = "[^0-9]+";
 
-    private static class NonNumericValidatorInstanceLazyHolder {
-
-        private static final NonNumericValidator INSTANCE = new NonNumericValidator();
-    }
-
-    public static NonNumericValidator getInstance() {
-
-        return NonNumericValidatorInstanceLazyHolder.INSTANCE;
-    }
-
-    private NonNumericValidator() {
-
-    }
-
     @Override
     public void validate(Input input) {
 

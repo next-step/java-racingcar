@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step2.common.exception.CommonExceptionMessage;
+import step2.validator.NegativeNumericValidator;
+import step2.validator.NonNumericValidator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchIllegalArgumentException;
@@ -15,7 +17,26 @@ class StringCalculateExecutorTest {
     @BeforeEach
     public void injectInstance() {
 
-        stringCalculateExecutor = StringCalculateExecutor.getInstance();
+        stringCalculateExecutor = new StringCalculateExecutor(
+                injectStringCalculateSeparator(),
+                injectStringCalculateValidateExecutor(),
+                injectStringCalculateCalculator()
+        );
+    }
+
+    private StringCalculateValidateExecutor injectStringCalculateValidateExecutor() {
+        return new StringCalculateValidateExecutor(
+                new NonNumericValidator(),
+                new NegativeNumericValidator()
+        );
+    }
+
+    private StringCalculateCalculator injectStringCalculateCalculator(){
+        return new StringCalculateCalculator();
+    }
+
+    private StringCalculateSeparator injectStringCalculateSeparator(){
+        return new StringCalculateSeparator();
     }
 
     @Test

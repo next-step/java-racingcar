@@ -4,26 +4,28 @@ import step2.model.Input;
 
 public class StringCalculateExecutor {
 
-    private static class CalculatorInstanceLazyHolder {
+    private final StringCalculateSeparator stringCalculateSeparator;
+    private final StringCalculateValidateExecutor stringCalculateValidateExecutor;
+    private final StringCalculateCalculator stringCalculateCalculator;
 
-        private static final StringCalculateExecutor INSTANCE = new StringCalculateExecutor();
-    }
-
-    public static StringCalculateExecutor getInstance() {
-
-        return CalculatorInstanceLazyHolder.INSTANCE;
-    }
-
-    private StringCalculateExecutor() {
-
+    public StringCalculateExecutor(
+            StringCalculateSeparator stringCalculateSeparator,
+            StringCalculateValidateExecutor stringCalculateValidateExecutor,
+            StringCalculateCalculator stringCalculateCalculator
+    ) {
+        this.stringCalculateSeparator = stringCalculateSeparator;
+        this.stringCalculateValidateExecutor = stringCalculateValidateExecutor;
+        this.stringCalculateCalculator = stringCalculateCalculator;
     }
 
     public int execute(String inputString) {
 
-        Input input = StringCalculateSeparator.getInstance().executeSeparator(inputString);
+        Input input = stringCalculateSeparator.executeSeparator(inputString);
 
-        StringCalculateValidateExecutor.getInstance().executeValidator(input);
+        stringCalculateValidateExecutor.executeValidator(input);
 
-        return StringCalculateCalculator.getInstance().executeCalculator(input);
+        return stringCalculateCalculator.executeCalculator(input);
     }
+
+
 }
