@@ -3,7 +3,7 @@ package study;
 import java.util.Arrays;
 
 public class StringAdditionCalculator {
-    private static final String SPLIT_REGEX = ",";
+    private static final String SPLIT_REGEX = "[,:]";
 
     public static int splitAndSum(String input) {
         if(isNullOrEmpty(input)) {
