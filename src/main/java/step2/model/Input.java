@@ -1,11 +1,10 @@
 package step2.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Input {
-    private String inputSnapshot;
-    private List<String> inputList = new ArrayList<>();
+    private final String inputSnapshot;
+    private final List<String> inputList;
 
     public Input(String input, List<String> inputList) {
         this.inputSnapshot = input;
