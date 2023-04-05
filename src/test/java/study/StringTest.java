@@ -1,11 +1,11 @@
 package study;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 @DisplayName("String 클래에 대한 학습 테스트")
 class StringTest {
@@ -16,8 +16,8 @@ class StringTest {
         String[] result1 = "1,2".split(",");
         String[] result2 = "1".split(",");
         assertAll(
-                () -> assertThat(result1).containsExactly("1", "2"),
-                () -> assertThat(result2).containsExactly("1")
+            () -> assertThat(result1).containsExactly("1", "2"),
+            () -> assertThat(result2).containsExactly("1")
         );
     }
 
@@ -39,7 +39,7 @@ class StringTest {
     @DisplayName("String의 charAt 메소드 사용시 문자의 위치값을 벗어나면 StringIndexOutOfBoundsException이 발생합니다.")
     void StringIndexOutOfBoundsExceptionOfCharAt() {
         assertThatThrownBy(() -> "abc".charAt(5)).isInstanceOf(IndexOutOfBoundsException.class)
-                .hasMessageMatching("String index out of range: \\d+");
+                                                 .hasMessageMatching("String index out of range: \\d+");
 
     }
 }
