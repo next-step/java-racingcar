@@ -4,12 +4,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SetTest {
@@ -54,5 +56,17 @@ public class SetTest {
     @ValueSource(ints = {1, 2, 3})
     void parameterizedTest(int num) {
         assertTrue(numbers.contains(num));
+    }
+
+    /**
+     * 요구사항 3
+     * 입력 값에 따라 결과 값이 다른 경우에 대한 테스트도 가능하도록 구현
+     */
+    @DisplayName("@CsvSource 를 이용하여 입력 값에 따라 결과 값이 다른 경우에 대한 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
+    void csvSource(int num, boolean expected) {
+        assertThat(numbers.contains(num)).isEqualTo(expected);
+        assertEquals(numbers.contains(num), expected);
     }
 }
