@@ -27,29 +27,27 @@ public class StringCalculateSeparator {
 
         input = trim(input);
 
-
         if (input.isBlank()) {
             return Collections.emptyList();
         }
 
-        return List.of(input.split(concatSeparate(input)));
-
+        return List.of(input.split(concatSeparator(input)));
     }
 
     private String trim(String input) {
         return input.strip();
     }
 
-    private String concatSeparate(String input) {
+    private String concatSeparator(String input) {
         StringJoiner stringJoiner = new StringJoiner(SEPARATOR_CONCAT_DELIMITER);
 
         return stringJoiner.add(Separator.REGULAR_SEPARATOR.getRegexp())
                 .add(Separator.CUSTOM_SEPARATOR.getRegexp())
-                .add(extractCustomSeparate(input))
+                .add(extractCustomSeparator(input))
                 .toString();
     }
 
-    private String extractCustomSeparate(String input) {
+    private String extractCustomSeparator(String input) {
 
         Matcher matcher = CUSTOM_SEPARATE_PATTERN.matcher(input);
 
