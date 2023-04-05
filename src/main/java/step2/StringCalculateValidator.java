@@ -37,7 +37,7 @@ public class StringCalculateValidator {
     }
 
     private void validateNegativeNumeric(List<String> inputList) {
-        findIncorrectInput(inputList, NEGATIVE_NUMBER_REGEXP).ifPresent(nonNumeric -> {
+        findIncorrectInput(inputList, NEGATIVE_NUMBER_REGEXP).ifPresent(negativeNumeric -> {
             throw new IllegalArgumentException(CommonExceptionMessage.EXIST_NEGATIVE_NUMBER.getUserGuideMessage());
         });
     }
