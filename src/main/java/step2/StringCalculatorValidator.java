@@ -1,4 +1,4 @@
-package step2.validator;
+package step2;
 
 public class StringCalculatorValidator {
 
