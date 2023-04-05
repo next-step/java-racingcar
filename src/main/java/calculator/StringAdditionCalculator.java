@@ -4,6 +4,16 @@ import java.util.Arrays;
 
 public class StringAdditionCalculator {
 
+  public static StringAdditionCalculator getInstance() {
+    return StringAdditionCalculatorHolder.INSTANCE;
+  }
+
+  private StringAdditionCalculator() {}
+
+  private static class StringAdditionCalculatorHolder {
+    private static final StringAdditionCalculator INSTANCE = new StringAdditionCalculator();
+  }
+
   public Integer sum(final AdditionalString input) {
     return Arrays.stream(input.split())
         .map(this::parsePositiveInteger)

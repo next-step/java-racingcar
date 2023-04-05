@@ -11,7 +11,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 public class StringAdditionCalculatorTest {
 
-  StringAdditionCalculator calculator = new StringAdditionCalculator();
+  StringAdditionCalculator calculator = StringAdditionCalculator.getInstance();
 
   @ParameterizedTest
   @CsvSource(value = {"|0", "1,2|3", "1,2,3|6", "1,2:3|6"}, delimiter = '|')
