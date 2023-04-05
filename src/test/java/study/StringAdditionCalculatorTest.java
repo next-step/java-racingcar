@@ -28,4 +28,15 @@ class StringAdditionCalculatorTest {
         // then
         assertThat(result).isEqualTo(expected);
     }
+
+    @ParameterizedTest(name = "[{index}/2] {displayName}")
+    @CsvSource(value = {"1,10:11", "1,2,3:6"}, delimiter = ':')
+    @DisplayName("컴마로 구분된 숫자들을 입력할 경우 해당 숫자들의 합 반환")
+    void 컴마_구분자_숫자(String input, int expected) {
+        // given, when
+        int result = StringAdditionCalculator.splitAndSum(input);
+
+        // then
+        assertThat(result).isEqualTo(expected);
+    }
 }
