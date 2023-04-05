@@ -4,7 +4,7 @@ public enum Separator {
 
     REGULAR_SEPARATOR(",|;"),
     CUSTOM_SEPARATOR("\\/\\/(.)(.*)\\n"),
-    NEGATIVE_NUMERIC_SEPARATOR("-");
+    NEGATIVE_NUMERIC_SEPARATOR("(-[0-9])");
 
     private final String regexp;
 
