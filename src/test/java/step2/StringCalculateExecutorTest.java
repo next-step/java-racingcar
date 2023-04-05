@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import step2.common.exception.CommonExceptionMessage;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class StringCalculateExecutorTest {
 
@@ -118,12 +119,10 @@ class StringCalculateExecutorTest {
 
         // when & then
         org.junit.jupiter.api.Assertions.assertAll(
-                ()-> Assertions.assertThatThrownBy(() -> stringCalculateExecutor.execute(negativeNumeric))
-                        .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(CommonExceptionMessage.EXIST_NEGATIVE_NUMBER.getUserGuideMessage()),
-                ()-> Assertions.assertThatThrownBy(() -> stringCalculateExecutor.execute(nonNumeric))
-                        .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(CommonExceptionMessage.EXIST_NON_NUMERIC.getUserGuideMessage())
+                () -> Assertions.catchIllegalArgumentException(() -> stringCalculateExecutor.execute(negativeNumeric)),
+                () -> assertThatThrownBy(()->stringCalculateExecutor.execute(negativeNumeric)).hasMessageContaining(CommonExceptionMessage.EXIST_NEGATIVE_NUMBER.getUserGuideMessage()),
+                () -> Assertions.catchIllegalArgumentException(() -> stringCalculateExecutor.execute(nonNumeric)),
+                () -> assertThatThrownBy(()->stringCalculateExecutor.execute(nonNumeric)).hasMessageContaining(CommonExceptionMessage.EXIST_NON_NUMERIC.getUserGuideMessage())
         );
     }
 
