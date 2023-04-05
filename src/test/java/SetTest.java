@@ -25,7 +25,7 @@ public class SetTest {
     @DisplayName("Set은 중복된 데이터를 허용하지 않는다.")
     @Test
     void Set_does_not_allow_duplicate_data() {
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @DisplayName("Set의 contains() 메서드는 인자로 Set에 포함된 데이터가 들어오면 true를 반환한다.")

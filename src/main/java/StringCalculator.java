@@ -3,29 +3,28 @@ import java.util.regex.Pattern;
 
 public class StringCalculator {
 
-    public int calculate(String str) {
-        String[] splitStr = split(str);
-        int[] numbers = parseToInt(splitStr);
-        return sum(numbers);
-    }
-
-    private String[] split(String str) {
-        String pattern = "//(.)\n(.+)";
-        Pattern compiledPattern = Pattern.compile(pattern);
-        Matcher matcher = compiledPattern.matcher(str);
-        if (matcher.find()) {
-            String customDelimiter = matcher.group(1);
-            String expression = matcher.group(2);
-            if (customDelimiter.matches("[.,\\\\+*?\\[^\\]$(){}=!<>|:-]")) {
-                customDelimiter = String.format("\\%s", customDelimiter);
-            }
-            return expression.split(customDelimiter);
-        } else {
-           return str.split(",|;");
+    public static int splitAndSum(String text) {
+        if (text == null) {
+            return 0;
         }
+        if (text.isEmpty()) {
+            return 0;
+        }
+
+        try {
+            int number = Integer.parseInt(text);
+            if (number < 0) {
+                throw new RuntimeException();
+            }
+            return number;
+        } catch (NumberFormatException ignored) {}
+
+        String[] splitStrings = StringSplitPolicy.splitByPolicy(text);
+        int[] ints = parseStringArrayToInts(splitStrings);
+        return sumIntArray(ints);
     }
 
-    private int[] parseToInt(String[] strings) {
+    private static int[] parseStringArrayToInts(String[] strings) {
         int[] parsedNumbers = new int[strings.length];
         try {
             for (int i = 0; i < strings.length; i++) {
@@ -41,7 +40,7 @@ public class StringCalculator {
         return parsedNumbers;
     }
 
-    private int sum(int[] numbers) {
+    private static int sumIntArray(int[] numbers) {
         int sum = 0;
         for (int i = 0; i < numbers.length; i++) {
             sum += numbers[i];
