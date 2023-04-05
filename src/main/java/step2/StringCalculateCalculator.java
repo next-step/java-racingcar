@@ -20,7 +20,7 @@ public class StringCalculateCalculator {
 
         return inputList.stream()
                 .mapToInt(input -> {
-                    if(input.isEmpty()){
+                    if (input.isEmpty()) {
                         return 0;
                     }
                     return Integer.parseInt(input);
