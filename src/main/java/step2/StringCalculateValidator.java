@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public class StringCalculateValidator {
 
-    private static final String NON_NUMERIC_REGEXP = "[^0-9]";
+    private static final String NON_NUMERIC_REGEXP = "[^0-9]+";
     private static final String NEGATIVE_NUMBER_REGEXP = Separator.NEGATIVE_NUMERIC_SEPARATOR.getRegexp();
 
     private static class ValidatorInstanceLazyHolder {
@@ -20,8 +20,8 @@ public class StringCalculateValidator {
     }
 
     public void executeValidator(List<String> inputList) {
-        validateNegativeNumeric(inputList);
         validateNonNumeric(inputList);
+        validateNegativeNumeric(inputList);
     }
 
     private Optional<String> findIncorrectInput(List<String> inputList, String regexp) {
