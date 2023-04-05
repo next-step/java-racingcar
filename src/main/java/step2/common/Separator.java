@@ -2,7 +2,7 @@ package step2.common;
 
 public enum Separator {
 
-    REGULAR_SEPARATOR(",|;"),
+    REGULAR_SEPARATOR(",|:"),
     CUSTOM_SEPARATOR("\\/\\/(.)(.*)\\n"),
     NEGATIVE_NUMERIC_SEPARATOR("(-[0-9])");
 
