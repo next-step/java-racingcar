@@ -38,7 +38,7 @@ public class StringCalculateSeparator {
                 .collect(Collectors.toList());
     }
 
-    boolean isEmpty(String input) {
+    private boolean isEmpty(String input) {
 
         return input == null || input.strip().length() == 0;
     }
