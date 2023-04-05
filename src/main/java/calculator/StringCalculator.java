@@ -12,10 +12,10 @@ public class StringCalculator {
             return DEFAULT_VALUE;
         }
         String[] splitTexts = getSplitTexts(text);
-        return calcualate(splitTexts);
+        return calculate(splitTexts);
     }
 
-    private int calcualate(String[] splitTexts) {
+    private int calculate(String[] splitTexts) {
         int result = 0;
         for (String splitText : splitTexts) {
             int parsedValue = Integer.parseInt(splitText);
