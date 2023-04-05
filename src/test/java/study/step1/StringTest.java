@@ -10,7 +10,7 @@ public class StringTest {
 
 
     @Test
-    @DisplayName("문자열 분리 테스트 - 성공")
+    @DisplayName("두개 문자 반환 테스트 - 성공")
     void splitTwoStringTest() {
         String[] result = "1,2".split(",");
         assertThat(result.length).isEqualTo(2);
@@ -18,7 +18,7 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("문자열 분리 테스트 - 성공 ")
+    @DisplayName("한개 문자 반환 테스트 - 성공 ")
     void splitOneStringTest() {
         String[] result = "1".split(",");
         assertThat(result.length).isEqualTo(1);
@@ -32,10 +32,15 @@ public class StringTest {
         String result = txt.substring(1, txt.length() -1);
         assertThat(result).isEqualTo("1,2");
     }
+    @Test
+    @DisplayName("문자열의 문자를 하나 조회하는 테스트 ")
+    void chartAtTest() {
+        assertThat("abc".charAt(1)).isEqualTo('b');
+    }
 
     @Test
-    @DisplayName("문자열의 문자를 하나 조회하는 테스트 - 실패 ")
-    void chartAtTest() {
+    @DisplayName("문자열의 길이를 벗어난 문자를 조회 테스트 ")
+    void indexOutOfBoundChartAtTest() {
         assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
                 .isThrownBy(() -> {
                     char result = "abc".charAt(4);
