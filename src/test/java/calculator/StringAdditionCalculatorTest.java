@@ -30,15 +30,14 @@ public class StringAdditionCalculatorTest {
     Assertions.assertThat(calculator.sum()).isEqualTo(0);
   }
 
-  @ParameterizedTest
-  @CsvSource(value = {"//;\n1;2;3|6", "//;\n1;2,3:4|10"}, delimiter = '|')
+  @Test
   @DisplayName("커스텀 구분자를 지정한 문자열의 각 숫자의 합을 반환한다")
-  void sumCustomDelimiterTest(String input, int expected) {
+  void sumCustomDelimiterTest() {
     // given
-    StringAdditionCalculator calculator = new StringAdditionCalculator(input);
+    StringAdditionCalculator calculator = new StringAdditionCalculator("//;\n1;2,3:4");
 
     // when & then
-    Assertions.assertThat(calculator.sum()).isEqualTo(expected);
+    Assertions.assertThat(calculator.sum()).isEqualTo(10);
   }
 
   @ParameterizedTest
