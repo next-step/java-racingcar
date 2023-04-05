@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 
 public class StringCalculateSeparator {
 
-    private static final Pattern CUSTOM_SEPARATE_PATTERN = Pattern.compile(Separator.CUSTOM_SEPARATE.getRegexp());
+    private static final Pattern CUSTOM_SEPARATE_PATTERN = Pattern.compile(Separator.CUSTOM_SEPARATOR.getRegexp());
     private static final int CUSTOM_SEPARATE_GROUP_INDEX = 1;
     private static final String EMPTY_STRING = "";
     private static final String SEPARATOR_CONCAT_DELIMITER = "|";
@@ -23,7 +23,7 @@ public class StringCalculateSeparator {
         return SeparatorInstanceLazyHolder.INSTANCE;
     }
 
-    public List<String> separate(String input) {
+    public List<String> executeSeparator(String input) {
 
         input = trim(input);
 
@@ -43,8 +43,8 @@ public class StringCalculateSeparator {
     private String concatSeparate(String input) {
         StringJoiner stringJoiner = new StringJoiner(SEPARATOR_CONCAT_DELIMITER);
 
-        return stringJoiner.add(Separator.REGULAR_SEPARATE.getRegexp())
-                .add(Separator.CUSTOM_SEPARATE.getRegexp())
+        return stringJoiner.add(Separator.REGULAR_SEPARATOR.getRegexp())
+                .add(Separator.CUSTOM_SEPARATOR.getRegexp())
                 .add(extractCustomSeparate(input))
                 .toString();
     }
