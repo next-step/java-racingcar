@@ -1,6 +1,8 @@
 package calculator;
 
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StringCalculator {
 
@@ -14,6 +16,7 @@ public class StringCalculator {
             return DEFAULT_VALUE;
         }
         String delimiter = extractCustomDelimiterOrDefault(text);
+        validateStrangeValue(text, delimiter);
         text = removeCustomDelimiter(text, delimiter);
         String[] splitTexts = getSplitTexts(text, delimiter);
         return calculate(splitTexts);
@@ -24,6 +27,15 @@ public class StringCalculator {
             return true;
         }
         return text.isEmpty();
+    }
+
+    private void validateStrangeValue(String text, String delimiter) {
+        String regex = String.format("[^0-9%s]", delimiter);
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(text);
+        if (matcher.find()) {
+            throw new RuntimeException("유효하지 않은 문자열이 포함되어 있습니다.");
+        }
     }
 
     private String extractCustomDelimiterOrDefault(String text) {
@@ -53,6 +65,9 @@ public class StringCalculator {
         int result = 0;
         for (String splitText : splitTexts) {
             int parsedValue = Integer.parseInt(splitText);
+            if (parsedValue < 0) {
+                throw new RuntimeException("음수는 연산에 해당되지 않습니다.");
+            }
             result += parsedValue;
         }
         return result;
