@@ -119,10 +119,10 @@ class StringCalculateExecutorTest {
         // when & then
         org.junit.jupiter.api.Assertions.assertAll(
                 ()-> Assertions.assertThatThrownBy(() -> stringCalculateExecutor.execute(negativeNumeric))
-                        .isInstanceOf(RuntimeException.class)
+                        .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining(CommonExceptionMessage.EXIST_NEGATIVE_NUMBER.getUserGuideMessage()),
                 ()-> Assertions.assertThatThrownBy(() -> stringCalculateExecutor.execute(nonNumeric))
-                        .isInstanceOf(RuntimeException.class)
+                        .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining(CommonExceptionMessage.EXIST_NON_NUMERIC.getUserGuideMessage())
         );
 
