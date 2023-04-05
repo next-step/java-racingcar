@@ -2,11 +2,11 @@ package step2;
 
 import step2.common.Separator;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.StringJoiner;
+import java.util.*;
+import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class StringCalculateSeparator {
 
@@ -32,8 +32,10 @@ public class StringCalculateSeparator {
         if (input.isBlank()) {
             return Collections.emptyList();
         }
-
-        return List.of(input.split(concatSeparator(input)));
+        
+        return   Arrays.stream(input.split(concatSeparator(input)))
+                .filter(Predicate.not(String::isEmpty))
+                .collect(Collectors.toList());
     }
 
     boolean isEmpty(String input) {
