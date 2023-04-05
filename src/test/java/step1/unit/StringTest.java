@@ -37,7 +37,7 @@ public class StringTest {
 
     @ParameterizedTest(name = "chatAt Test - 0번째 문자 가져오기 (input: ''{0}'')")
     @ValueSource(strings = {"ab", "bcd", "fegw"})
-    void test_chatAt(String input) {
+    void chatAt(String input) {
         int index = 0;
 
         char result = input.charAt(index);
@@ -48,7 +48,7 @@ public class StringTest {
 
     @ParameterizedTest(name = "chatAt Test - 인덱스 벗어난 경우 (input: ''{0}'')")
     @ValueSource(strings = {"ab", "bcd", "fegw"})
-    void test_chatAt_IndexOutOfBoundsException(String input) {
+    void chatAt_IndexOutOfBoundsException(String input) {
         int index = 10;
 
         assertThatThrownBy(() -> input.charAt(index))
