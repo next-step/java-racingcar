@@ -103,4 +103,6 @@ public class StringTest {
             assertThatExceptionOfType(StringIndexOutOfBoundsException.class).isThrownBy(() -> input.charAt(-5));
         }
     }
+
+
 }
