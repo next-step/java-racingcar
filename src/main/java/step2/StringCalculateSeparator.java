@@ -41,12 +41,17 @@ public class StringCalculateSeparator {
     }
 
     private String concatSeparator(String input) {
-        StringJoiner stringJoiner = new StringJoiner(SEPARATOR_CONCAT_DELIMITER);
+        StringJoiner stringJoiner = new StringJoiner(SEPARATOR_CONCAT_DELIMITER)
+                .add(Separator.REGULAR_SEPARATOR.getRegexp())
+                .add(Separator.CUSTOM_SEPARATOR.getRegexp());
 
-        return stringJoiner.add(Separator.REGULAR_SEPARATOR.getRegexp())
-                .add(Separator.CUSTOM_SEPARATOR.getRegexp())
-                .add(extractCustomSeparator(input))
-                .toString();
+        String extractCustomSeparator = extractCustomSeparator(input);
+
+        if(!extractCustomSeparator.isEmpty()){
+            stringJoiner.add(extractCustomSeparator(input));
+        }
+
+        return stringJoiner.toString();
     }
 
     private String extractCustomSeparator(String input) {
@@ -54,7 +59,6 @@ public class StringCalculateSeparator {
         Matcher matcher = CUSTOM_SEPARATE_PATTERN.matcher(input);
 
         if (matcher.find()) {
-
             return matcher.group(CUSTOM_SEPARATE_GROUP_INDEX);
         }
 
