@@ -48,7 +48,7 @@ public class StringCalculateSeparator {
         String extractCustomSeparator = extractCustomSeparator(input);
 
         if(!extractCustomSeparator.isEmpty()){
-            stringJoiner.add(extractCustomSeparator(input));
+            stringJoiner.add(extractCustomSeparator);
         }
 
         return stringJoiner.toString();
