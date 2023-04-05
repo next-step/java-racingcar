@@ -22,7 +22,7 @@ public class Car {
         return this.position;
     }
 
-    protected int getRandomNumber() {
+    public int getRandomNumber() {
         Random random = new Random();
         return random.nextInt(MAX_BOUND);
     }

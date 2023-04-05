@@ -27,11 +27,11 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("자동차 는 random 값이 4이상일 경우 전진한다.")
+    @DisplayName("자동차 는 random 값이 4 이상일 경우 전진한다.")
     void car_move_true_test() {
         Car car = new Car() {
             @Override
-            protected int getRandomNumber() {
+            public int getRandomNumber() {
                 return 4;
             }
         };
@@ -45,7 +45,7 @@ class CarTest {
     void car_move_false_test() {
         Car car = new Car() {
             @Override
-            protected int getRandomNumber() {
+            public int getRandomNumber() {
                 return 3;
             }
         };
