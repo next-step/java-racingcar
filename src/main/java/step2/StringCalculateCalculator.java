@@ -8,11 +8,15 @@ public class StringCalculateCalculator {
         private static final StringCalculateCalculator INSTANCE = new StringCalculateCalculator();
     }
 
-    public static CalculatorInstanceLazyHolder getInstance() {
-        return StringCalculateCalculator.getInstance();
+    public static StringCalculateCalculator getInstance() {
+        return CalculatorInstanceLazyHolder.INSTANCE;
     }
 
     public int executeCalculator(List<String> inputList) {
+
+        if (inputList.size() == 0) {
+            return 0;
+        }
 
         return inputList.stream()
                 .mapToInt(Integer::valueOf)
