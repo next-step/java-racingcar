@@ -10,4 +10,8 @@ public class Calculator {
         }
         return sum;
     }
+
+    public int split(String input) {
+        return 0;
+    }
 }
