@@ -1,5 +1,6 @@
 package calculator;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,9 +26,11 @@ public class Calculator {
     }
 
     private static List<Integer> getIntegerList(String input) {
-        List<Integer> list = Arrays.stream(split(input))
-                .mapToInt(Integer::parseInt)
-                .boxed().collect(Collectors.toList());
+        String[] splitInputs = split(input);
+        List<Integer> list = new ArrayList<>();
+        for (String splitInput : splitInputs) {
+            list.add(Integer.parseInt(splitInput));
+        }
         return list;
     }
 
