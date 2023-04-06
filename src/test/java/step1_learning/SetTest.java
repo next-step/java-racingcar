@@ -1,4 +1,6 @@
-import static org.assertj.core.api.Assertions.assertThat;
+package step1_learning;
+
+import static org.assertj.core.api.Assertions.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -32,7 +34,7 @@ public class SetTest {
 	@ParameterizedTest
 	@ValueSource(ints = {1, 2, 3})
 	void contains(int input) {
-		assertThat(numbers).contains(1,2,3);
+		assertThat(numbers).contains(1, 2, 3);
 	}
 
 	@DisplayName("요구사항 3")
