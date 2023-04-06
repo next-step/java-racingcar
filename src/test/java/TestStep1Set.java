@@ -24,26 +24,23 @@ public class TestStep1Set {
     // Test Case 구현
 
     @Test
-    @DisplayName("req1")
+    @DisplayName("Set의 size() 메소드를 활용해 Set의 크기를 확인")
     void checkSetSize() {
-        /* 요구 1 */
         Assertions.assertEquals(numbers.size(),3);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
-    @DisplayName("req2")
+    @DisplayName("Set의 contains() 메소드를 활용해 1, 2, 3의 값이 존재하는지를 확인")
     void checkContainAll(int inputNumber) {
-        /* 요구 2 */
         Assertions.assertTrue(numbers.contains(inputNumber));
     }
 
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true","3:true","4:false","5:false"}, delimiter = ':')
-    @DisplayName("req3")
-    void checkIfContain(int inputNumber, boolean IsContain) {
-        /* 요구 3 */
-        Assertions.assertEquals(numbers.contains(inputNumber), IsContain);
+    @DisplayName("입력 값에 따라 결과 값이 다른 경우에 대한 테스트도 가능하도록 구현")
+    void checkIfContain(int inputNumber, boolean ifContain) {
+        Assertions.assertEquals(numbers.contains(inputNumber), ifContain);
     }
 
 
