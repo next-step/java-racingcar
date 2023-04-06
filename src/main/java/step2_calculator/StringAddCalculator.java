@@ -4,8 +4,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
-	private static final String DEFAULT_REGEX = "[,:]";
-	private static final String CUSTOM_REGEX = "//(.)\n(.*)";
+	public static final int ZERO = 0;
+	private static final String DEFAULT_REGEX = ",|:";
+	private static final String CUSTOM_REGEX_PATTERN = "//(.)\n(.*)";
+	private static final String NEGATIVE_ERROR_MSG = "음수 값 발견";
+	private static final String PARSEINT_ERROR_MSG = "NumberFormat 변환 중 오류 발생";
 
 	private static StringAddCalculator stringAddCalculator;
 
@@ -20,25 +23,62 @@ public class StringAddCalculator {
 		return stringAddCalculator;
 	}
 
-	public int splitAndSum(String input) {
-		int output = 0;
+	public int splitAndSum(String text) {
+		int sum = ZERO;
 
-		if (input != null || input.isEmpty()) {
-			return 0;
+		if (isBlank(text)) {
+			return ZERO;
 		}
 
-		String verifyRegex = DEFAULT_REGEX;
-		String inputWithoutDelimiter = input;
+		String regex = DEFAULT_REGEX;
+		Matcher matcher = Pattern.compile(CUSTOM_REGEX_PATTERN).matcher(text);
 
-		if (hasCustomPattern(input)) {
-
+		if (matcher.find()) {
+			regex += '|' + matcher.group(1);
+			String customText = matcher.group(2);
+			return sum(toPostives(split(customText, regex)));
 		}
 
-		return output;
+		return sum(toPostives(split(text, DEFAULT_REGEX)));
 	}
 
-	private boolean hasCustomPattern(String input) {
-		Matcher matcher = Pattern.compile(CUSTOM_REGEX).matcher(input);
-		return matcher.find();
+	private boolean isBlank(String text) {
+		return text == null || text.isBlank();
 	}
+
+	private String[] split(String text, String regex) {
+		return text.split(regex);
+	}
+
+	private int sum(int[] numbers) {
+		int sum = ZERO;
+
+		for (int number : numbers) {
+			sum += number;
+		}
+		return sum;
+	}
+
+	private int[] toPostives(String[] values) {
+		int[] numbers = new int[values.length];
+		for (int i = 0; i < values.length; i++) {
+			int number = toPositive(values[i]);
+			numbers[i] = number;
+		}
+		return numbers;
+	}
+
+	private int toPositive(String value) {
+		try {
+			int number = Integer.parseInt(value);
+
+			if (number < 0) {
+				throw new RuntimeException(NEGATIVE_ERROR_MSG);
+			}
+			return number;
+		} catch (NumberFormatException e) {
+			throw new RuntimeException(PARSEINT_ERROR_MSG);
+		}
+	}
+
 }
