@@ -11,22 +11,21 @@ public class NumberParser {
     }
 
     public String[] parseNumbers() {
-        if (isCustomDelimiter()) {
-            return parseCustomDelimiterNumbers();
+        String[] numbers = getCustomDelimiterNumbers();
+        if(numbers == null){
+            numbers = parseDefaultDelimiterNumbers();
         }
-        return parseDefaultDelimiterNumbers();
+        return numbers;
     }
 
-    private boolean isCustomDelimiter() {
-        return input.startsWith("//");
-    }
-
-    private String[] parseCustomDelimiterNumbers() {
-        Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(input);
-        matcher.matches();
-        String customDelimiter = matcher.group(1);
-        String inputNumbers = matcher.group(2);
-        return inputNumbers.split(customDelimiter);
+    private String[] getCustomDelimiterNumbers() {
+        Matcher m = CUSTOM_DELIMITER_PATTERN.matcher(input);
+        if (m.find()) {
+            String customDelimiter = m.group(1);
+            String inputNumberText = m.group(2);
+            return inputNumberText.split(customDelimiter);
+        }
+        return null;
     }
 
     private String[] parseDefaultDelimiterNumbers() {
