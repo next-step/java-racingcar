@@ -6,13 +6,14 @@ import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 public class StringAddCalculator {
-    private int calcStringWithDel(String text, String del) {
-        Stream<String> stream = Arrays.stream(text.split(del));
-        int result = stream
+    public static final String DELIMITER = ",|:";
+
+    private int calcStringWithDel(String text, String delimiter) {
+        Stream<String> stream = Arrays.stream(text.split(delimiter));
+        return stream
                 .mapToInt(Integer::parseInt)
                 .peek(this::checkNegativeNum)
                 .sum();
-        return result;
     }
 
     private void checkNegativeNum(int num) {
@@ -25,14 +26,14 @@ public class StringAddCalculator {
         if (text == null || text.isEmpty()) {
             return 0;
         }
-        String del = ",|:";
+        String delimiter = DELIMITER;
         String data = text;
         Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
         if (m.find()) {
-            del = m.group(1);
+            delimiter = m.group(1);
             data = m.group(2);
         }
-        return calcStringWithDel(data, del);
+        return calcStringWithDel(data, delimiter);
     }
 
 }
