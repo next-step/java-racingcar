@@ -79,4 +79,19 @@ public class CalculatorTest {
         }).isInstanceOf(RuntimeException.class)
                 .hasMessageContaining("숫자 이외의 값이 포함되어 있습니다.");
     }
+
+    @DisplayName("음수를 전달할 경우 예외 발생")
+    @Test
+    void negativeNumberException() {
+        //given
+        String nonNumericData = "-1";
+        Calculator calculator = new Calculator();
+
+        //when
+        //then
+        assertThatThrownBy(() -> {
+            calculator.splitAndSum(nonNumericData);
+        }).isInstanceOf(RuntimeException.class)
+                .hasMessageContaining("음수가 포함되어 있습니다.");
+    }
 }
