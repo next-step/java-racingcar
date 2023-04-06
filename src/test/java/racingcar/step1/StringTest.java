@@ -1,4 +1,4 @@
-package study;
+package racingcar.step1;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,15 +11,15 @@ public class StringTest {
     @Test
     @DisplayName("\"1,2\"을 ,로 split 했을 때 1과 2 를 분리한다")
     void splitTestStep1() {
-        final String [] result = "1,2".split(",");
-        assertThat(result).contains("1","2");
-        assertThat(result).containsExactly("1","2");
+        final String[] result = "1,2".split(",");
+        assertThat(result).contains("1", "2");
+        assertThat(result).containsExactly("1", "2");
     }
 
     @Test
     @DisplayName("\"1\"을 ,로 split 1만을 포함하는 배열을 반환한다")
     void splitTestStep2() {
-        final String [] result = "1".split(",");
+        final String[] result = "1".split(",");
         assertThat(result).contains("1");
     }
 
