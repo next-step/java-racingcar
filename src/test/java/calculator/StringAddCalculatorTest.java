@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class StringAddCalculatorTest {
+    private static final Logger log = Logger.getLogger("StringAddCalculatorTest");
     private StringAddCalculator stringAddCalculator;
     @BeforeEach
     public void beforeEach() {
