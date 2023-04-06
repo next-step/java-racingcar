@@ -26,7 +26,7 @@ public class CalculatorTest {
 
     @DisplayName("splitAndSum 메서드 - 빈 값의 경우 0 반환")
     @Test
-    void split1() {
+    void splitAndSum() {
         //given
         Calculator calculator = new Calculator();
 
@@ -39,16 +39,15 @@ public class CalculatorTest {
         assertThat(result2).isEqualTo(0);
     }
 
-    @DisplayName("splitAndSum 메서드 - 값 1개 이상인 경우 , 또는 : 기준으로 값 분리")
-    @Test
-    void split2() {
+    @DisplayName("splitAndSum 메서드 - 값 1개 이상인 경우")
+    @ParameterizedTest
+    @CsvSource(value = {"1=1","1,2=3","1:2=3","1,2,3=6","1,2:3=6"}, delimiter = '=')
+    void splitAndSum2(String input, int result) {
         //given
         Calculator calculator = new Calculator();
 
         //when
-        int result1 = calculator.splitAndSum("1");
-
         //then
-        assertThat(result1).isEqualTo(1);
+        assertThat(calculator.splitAndSum(input)).isEqualTo(result);
     }
 }
