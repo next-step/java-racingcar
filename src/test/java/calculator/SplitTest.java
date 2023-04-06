@@ -8,10 +8,17 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 public class SplitTest {
 
-    @DisplayName(", 또는 : 를 구분자로 가지는 경우 구분자를 기준으로 분리")
+    @DisplayName("split 학습테스트 - 숫자 2개 이상")
     @ParameterizedTest
     @ValueSource(strings = {"1,2", "1:2", "1,2:3"})
     void split(String input) {
         assertThat(input.split(",|:")).contains("1", "2");
+    }
+
+    @DisplayName("split 학습테스트 - 숫자 1개")
+    @ParameterizedTest
+    @ValueSource(strings = {"1"})
+    void split2(String input) {
+        assertThat(input.split(",|:")).containsExactly("1");
     }
 }
