@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.logging.Logger;
+
 public class StringAddCalculatorTest {
     private static final Logger log = Logger.getLogger("StringAddCalculatorTest");
     private StringAddCalculator stringAddCalculator;
@@ -16,9 +18,10 @@ public class StringAddCalculatorTest {
     투두리스트 목록
      */
 
-    @DisplayName("")
+    @DisplayName("빈 문자열 입력시 0을 반환해야 한다")
     @Test
-    public void run() {
+    public void emptyStringInput() {
+        log.info("예시 : null >> 0");
         //given
         //when
         //then
