@@ -20,7 +20,7 @@ public final class StringCalculator {
     }
 
     private static boolean isEmpty(String text) {
-        return Objects.isNull(text) || text.isEmpty();
+        return Objects.isNull(text) || text.isBlank();
     }
 
     private static int sum(int[] numbers) {

@@ -7,6 +7,7 @@ public class StringToken {
 
     private static final String DEFAULT_DELIMITER = ",|:";
     private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
+    public static final Pattern NOT_NUMERIC_PATTERN = Pattern.compile("\\D");
     private final String delimiter;
     private final String text;
 
@@ -35,19 +36,28 @@ public class StringToken {
     private int[] toInts(String[] values) {
         int[] numbers = new int[values.length];
         for (int i = 0; i < values.length; i++) {
-            numbers[i] = throwIfNegative(toInt(values[i]));
+            numbers[i] = toPositiveInt(values[i]);
         }
         return numbers;
     }
 
-    private int toInt(String values) {
-        return Integer.parseInt(values);
+    private int toPositiveInt(String value) {
+        throwIfNotNumeric(value);
+        int toInt = Integer.parseInt(value);
+        throwIfNegative(toInt);
+        return toInt;
     }
 
-    private int throwIfNegative(int number) {
+    private void throwIfNotNumeric(String value) {
+        Matcher matcher = NOT_NUMERIC_PATTERN.matcher(value);
+        if (matcher.find()) {
+            throw new RuntimeException("숫자 이외에 값은 입력할 수 없습니다.");
+        }
+    }
+
+    private void throwIfNegative(int number) {
         if (number < 0) {
             throw new RuntimeException("음수는 입력할 수 없습니다.");
         }
-        return number;
     }
 }
