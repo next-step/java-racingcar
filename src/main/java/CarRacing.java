@@ -5,6 +5,7 @@ import java.util.Random;
 public class CarRacing {
 
     private static final Random random = new Random();
+    private static final int FORWARD_CONDITION = 4;
 
     public static void main(String[] args) {
 
@@ -13,9 +14,10 @@ public class CarRacing {
 
         List<Car> cars = cars(numberOfCar);
 
-        for (int i = 0; i < numberOfCar; i++) {
-            Car car = cars.get(i);
-            car.go(random.nextInt(10));
+        PrintView.printTitle();
+
+        for (int i = 0; i < trial; i++) {
+            moveAndPrintCar(cars);
         }
     }
 
@@ -26,5 +28,19 @@ public class CarRacing {
         }
 
         return cars;
+    }
+
+    private static void moveAndPrintCar(List<Car> cars) {
+        for (int j = 0; j < cars.size(); j++) {
+            Car car = cars.get(j);
+            car.go(canMove());
+            PrintView.printCar(car.distance());
+        }
+
+        System.out.println();
+    }
+
+    private static boolean canMove() {
+        return random.nextInt(10) >= FORWARD_CONDITION;
     }
 }

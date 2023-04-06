@@ -2,8 +2,8 @@ public class Car {
 
     private int distance;
 
-    public void go(int forwardCondition) {
-        if (forwardCondition >= 4) {
+    public void go(boolean condition) {
+        if (condition) {
             this.distance++;
         }
     }
