@@ -1,7 +1,6 @@
 package stringcalculator;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -59,5 +58,14 @@ class StringCalculatorTest {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new StringCalculator(text))
                 .withMessage("음수를 입력할 수 없습니다.");
+    }
+
+    @DisplayName("null 이나 빈문자의 계산값은 0 이다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"  ", ""})
+    void nullOrEmptyStringIsZero(String text) {
+        int expectedSum = 0;
+
+        assertThat(new StringCalculator(text).sum()).isEqualTo(expectedSum);
     }
 }

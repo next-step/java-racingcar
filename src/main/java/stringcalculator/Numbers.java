@@ -1,5 +1,6 @@
 package stringcalculator;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -7,8 +8,15 @@ public class Numbers {
     private static final String NUMBER_REGEX = "^-?\\d+";
     private final List<Integer> numbers;
 
-    public static Numbers of(String text, Delimiters delimiters) {
-        return new Numbers(text, delimiters);
+    public static Numbers of(String text) {
+        if (text == null || text.isBlank()) {
+            return new Numbers();
+        }
+        return new Numbers(text, Delimiters.of(text));
+    }
+
+    private Numbers() {
+        this.numbers = new ArrayList<>();
     }
 
     private Numbers(String text, Delimiters delimiters) {
