@@ -39,13 +39,15 @@ public class Expression {
 
     private int[] splitExpressionUseSeparatorList() {
         return Arrays.stream(this.expressionStr.split(this.separatorList.makeSeparatorRegex()))
-                .mapToInt(strNum -> {
-                    if(!isNumeric(strNum)) {
-                        throw new RuntimeException();
-                    }
-                    return Integer.parseInt(strNum);
-                })
+                .mapToInt(strNum -> parseInt(strNum))
                 .toArray();
+    }
+
+    private int parseInt(String strNum) {
+        if(!isNumeric(strNum)) {
+            throw new RuntimeException();
+        }
+        return Integer.parseInt(strNum);
     }
 
     private void removeCustomSeparator(String customSeparator) {
@@ -66,6 +68,5 @@ public class Expression {
             return null;
         }
         return this.expressionStr.substring(prefixIdx + 1, suffix);
-
     }
 }
