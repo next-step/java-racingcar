@@ -24,20 +24,20 @@ public class SetTest {
     numbers.add(3);
   }
 
-  @DisplayName("assertj의 hasSize를 사용하여 Set의 크기를 확인한다.")
+  @DisplayName("Set의 크기를 확인한다.")
   @Test
   void hasSize_True_IfInputSetSize() {
     assertThat(numbers).hasSize(3);
   }
 
-  @DisplayName("assertj의 contains를 사용하여 해당 값의 존재를 확인한다. (ValueSource 활용 테스트)")
+  @DisplayName("Set의 특정 값 존재를 확인한다. (ValueSource 활용 테스트)")
   @ParameterizedTest
   @ValueSource(ints = {1, 2, 3})
   void contains_True_IfExistingValue(int input) {
     assertThat(numbers).contains(input);
   }
 
-  @DisplayName("Set의 contains를 사용하여 해당 값의 존재를 확인한다. (CsvSource 활용 테스트)")
+  @DisplayName("Set에 특정 값 존재를 확인한다. (CsvSource 활용 테스트)")
   @ParameterizedTest
   @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
   void contains_TrueOrFalse_IfExistingOrNonExistingValue(int input, boolean expected) {
