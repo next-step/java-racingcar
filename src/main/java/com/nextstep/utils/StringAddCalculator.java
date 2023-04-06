@@ -40,10 +40,15 @@ public class StringAddCalculator {
     private static int[] convertStringIntoArray(String text) {
         Matcher m = CUSTOM_SEPARATOR_PATTERN.matcher(text);
         if (m.find()) {
-            return convertStringArrayIntoIntArray(m.group(BODY_INDEX)
-                    .split(m.group(DELIMITER_INDEX)));
+            return convertStringArrayIntoIntArray(
+                    splitTextByDelimiter(m.group(BODY_INDEX),m.group(DELIMITER_INDEX)));
         }
-        return convertStringArrayIntoIntArray(text.split(TEXT_SEPARATOR));
+        return convertStringArrayIntoIntArray(
+                splitTextByDelimiter(text,TEXT_SEPARATOR));
+    }
+
+    private static String[] splitTextByDelimiter(String text, String regex) {
+        return text.split(regex);
     }
 
     private static int[] convertStringArrayIntoIntArray(String[] texts) {
