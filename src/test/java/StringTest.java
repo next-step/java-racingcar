@@ -1,3 +1,4 @@
+import static org.assertj.core.api.Assertions.assertThat;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -19,9 +20,7 @@ public class StringTest {
 
             String[] parts = strWithComma.split(delimiterComma);
 
-            Assertions.assertThat(parts).hasSize(2);
-            Assertions.assertThat(parts[0]).isEqualTo("1");
-            Assertions.assertThat(parts[1]).isEqualTo("2");
+            assertThat(parts).containsExactly("1", "2");
         }
 
         @Test
@@ -31,8 +30,7 @@ public class StringTest {
 
             String[] parts = strWithoutComma.split(delimiterComma);
 
-            Assertions.assertThat(parts).hasSize(1);
-            Assertions.assertThat(parts[0]).isEqualTo("1");
+            assertThat(parts).containsExactly("1");
         }
     }
 

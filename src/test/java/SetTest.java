@@ -25,26 +25,22 @@ public class SetTest {
     @Test
     @DisplayName("size 메소드는 자료구조에 실제로 들어있는 유니크한 원소의 개수를 리턴한다")
     void size() {
-        int size = numbers.size();
-
-        assertThat(size).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest()
     @DisplayName("contains 메소드는 해당 원소가 자료구조에 들어있을 경우 true 를 리턴한다")
     @ValueSource(ints = {1, 2, 3})
     void given_containingValues_whenCallingContains_thenAlwaysTrue(int inputData) {
-        assertThat(numbers.contains(inputData))
-            .isTrue();
+        assertThat(numbers).contains(inputData);
     }
 
     @ParameterizedTest
     @DisplayName("contains 메서드는 해당 원소가 자료구조에 들어있지 않을 경우 false 를 리턴한다")
     @NullSource
     @ValueSource(ints = {4, 5})
-    void given_notContainingValues_whenCallingContains_thenAlwaysTrue(Integer inputData) {
-        assertThat(numbers.contains(inputData))
-            .isFalse();
+    void given_notContainingValues_whenCallingContains_thenAlwaysFalse(Integer inputData) {
+        assertThat(numbers).doesNotContain(inputData);
     }
 
     @ParameterizedTest
