@@ -16,24 +16,16 @@ public class TextSpliter {
 
   public String[] split() {
     String delimiters = getDelimiters();
-    return getText().split(delimiters);
+    return this.text.split(delimiters);
   }
 
   private String getDelimiters() {
-    Matcher matcher = DEFAULT_PATTERN.matcher(getText());
+    Matcher matcher = DEFAULT_PATTERN.matcher(this.text);
     if (matcher.find()) {
-      setText(matcher.group(2));
+      this.text = matcher.group(2);
       return DEFAULT_DELIMITERS + "|" + matcher.group(1);
     } else {
       return DEFAULT_DELIMITERS;
     }
-  }
-
-  private String getText() {
-    return this.text;
-  }
-
-  private void setText(String text) {
-    this.text = text;
   }
 }
