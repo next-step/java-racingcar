@@ -1,47 +1,45 @@
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class StringAddCalculatorTest {
+public class StringAddCalculatorTest {
 
-    @Test
-    public void splitAndSum_null_또는_빈문자() {
-        int result = StringAddCalculator.splitAndSum(null);
-        assertThat(result).isEqualTo(0);
-
-        result = StringAddCalculator.splitAndSum("");
-        assertThat(result).isEqualTo(0);
+    @ParameterizedTest
+    @NullAndEmptySource
+    void null_Empty(String input) {
+        assertThat(StringAddCalculator.calculate(input)).isEqualTo(0);
     }
 
     @Test
-    public void splitAndSum_숫자하나() throws Exception {
-        int result = StringAddCalculator.splitAndSum("1");
-        assertThat(result).isEqualTo(1);
+    void 숫자하나() {
+        assertThat(StringAddCalculator.calculate("3")).isEqualTo(3);
     }
 
     @Test
-    public void splitAndSum_쉼표구분자() throws Exception {
-        int result = StringAddCalculator.splitAndSum("1,2");
-        assertThat(result).isEqualTo(3);
+    void 쉼표_콜론_구분자() {
+        assertThat(StringAddCalculator.calculate("1,2:3")).isEqualTo(6);
     }
 
     @Test
-    public void splitAndSum_쉼표_또는_콜론_구분자() throws Exception {
-        int result = StringAddCalculator.splitAndSum("1,2:3");
-        assertThat(result).isEqualTo(6);
+    void 커스텀_구분자() {
+        assertThat(StringAddCalculator.calculate("//;\n1;2;3;4")).isEqualTo(10);
     }
 
     @Test
-    public void splitAndSum_custom_구분자() throws Exception {
-        int result = StringAddCalculator.splitAndSum("//;\n1;2;3");
-        assertThat(result).isEqualTo(6);
+    void 음수() {
+        assertThatThrownBy(() -> StringAddCalculator.calculate("1,-2,3"))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("Negative Value");
     }
 
     @Test
-    public void splitAndSum_negative() throws Exception {
-        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
-                .isInstanceOf(RuntimeException.class);
+    void 숫자이외의값() {
+        assertThatThrownBy(() -> StringAddCalculator.calculate("!,2,3"))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("Non-Numeric Value");
     }
 
 }
