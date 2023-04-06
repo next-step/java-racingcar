@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -21,7 +22,7 @@ public class StringTest {
   @Test
   @DisplayName("1을 ,로 split할 때 1만 포함되는 배열이 반환되는지 테스트")
   void splitOne() {
-    String [] result = "1".split(",");
+    String[] result = "1".split(",");
 
     assertThat(result)
             .contains("1")
@@ -32,7 +33,10 @@ public class StringTest {
   @DisplayName("(1,2)에서 () 제거 테스트")
   void substring() {
     String result = "(1,2)".substring(1, 4);
-    assertThat(result).isEqualTo("1,2");
+
+    assertThat(result)
+            .isEqualTo("1,2")
+            .doesNotContain("(", ")");
   }
 
   @ParameterizedTest
@@ -45,13 +49,14 @@ public class StringTest {
     assertThat(charOfIndex).isEqualTo(expected);
   }
 
-  @Test
+  @ParameterizedTest
+  @ValueSource(ints = {4, 6, Integer.MAX_VALUE})
   @DisplayName("문자열 abc에서 위치값을 벗어나는 경우 StringIndexOutOfBoundsException 발생 테스트")
-  void charAtRaiseStringIndexOutOfBoundsException() {
+  void charAtRaiseStringIndexOutOfBoundsException(int index) {
     String abc = "abc";
 
-    assertThatThrownBy(() -> abc.charAt(abc.length()))
+    assertThatThrownBy(() -> abc.charAt(index))
             .isInstanceOf(IndexOutOfBoundsException.class)
-            .hasMessageContaining("String index out of range: " + abc.length());
+            .hasMessageContaining("String index out of range: " + index);
   }
 }
