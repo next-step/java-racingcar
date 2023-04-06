@@ -21,9 +21,13 @@ public class Calculator {
     }
 
     private static List<Integer> getIntegerList(String input) {
-        List<Integer> list = Arrays.stream(input.split(",|:"))
+        List<Integer> list = Arrays.stream(split(input))
                 .mapToInt(Integer::parseInt)
                 .boxed().collect(Collectors.toList());
         return list;
+    }
+
+    private static String[] split(String input) {
+        return input.split(",|:");
     }
 }
