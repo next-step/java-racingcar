@@ -30,11 +30,16 @@ public class StringClassTest {
 
     @DisplayName("요구사항1 - \"1\"을 ,로 split 했을 때 1만을 포함하는 배열이 반환되는지에 대한 학습 테스트를 구현한다.")
     @Test
-    public void run2() {
+    public void splitTest2() {
         //given
         String preset = "1";
+
         //when
+        String[] split = preset.split(",");
+
         //then
+        assertEquals(split.length,1);
+        assertEquals(split[0], "1");
     }
 
     @DisplayName("요구사항2 - \"(1,2)\" 값이 주어졌을 때 String의 substring() 메소드를 활용해 ()을 제거하고 \"1,2\"를 반환하도록 구현한다.")
