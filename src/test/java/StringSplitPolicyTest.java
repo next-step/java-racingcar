@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +10,8 @@ class StringSplitPolicyTest {
     @Test
     void StringSplitPolicy_semicolon() {
         String input = "1;-2;3";
-        assertThat(StringSplitPolicy.splitByPolicy(input))
+        StringSplitPolicy stringSplitPolicy = new StringSplitPolicy(input);
+        assertThat(stringSplitPolicy.splitByPolicy())
             .containsExactly("1", "-2", "3");
     }
 
@@ -17,7 +19,8 @@ class StringSplitPolicyTest {
     @Test
     void StringSplitPolicy_comma() {
         String input = "1,-2,3";
-        assertThat(StringSplitPolicy.splitByPolicy(input))
+        StringSplitPolicy stringSplitPolicy = new StringSplitPolicy(input);
+        assertThat(stringSplitPolicy.splitByPolicy())
             .containsExactly("1", "-2", "3");
     }
 
@@ -25,7 +28,8 @@ class StringSplitPolicyTest {
     @Test
     void StringSplitPolicy_comma_and_semicolon() {
         String input = "1,-2;3";
-        assertThat(StringSplitPolicy.splitByPolicy(input))
+        StringSplitPolicy stringSplitPolicy = new StringSplitPolicy(input);
+        assertThat(stringSplitPolicy.splitByPolicy())
             .containsExactly("1", "-2", "3");
     }
 
@@ -33,7 +37,8 @@ class StringSplitPolicyTest {
     @Test
     void StringSplitPolicy_custom() {
         String input = "//~\n1~-2~3";
-        String[] splitStrings = StringSplitPolicy.splitByPolicy(input);
-        assertThat(splitStrings).containsExactly("1", "-2", "3");
+        StringSplitPolicy stringSplitPolicy = new StringSplitPolicy(input);
+        assertThat(stringSplitPolicy.splitByPolicy())
+            .containsExactly("1", "-2", "3");
     }
 }

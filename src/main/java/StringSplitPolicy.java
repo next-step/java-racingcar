@@ -3,23 +3,47 @@ import java.util.regex.Pattern;
 
 public class StringSplitPolicy {
 
-    public static final String[] splitByPolicy(String str) {
-        String pattern = "//(.)\n(.+)";
-        Pattern compiledPattern = Pattern.compile(pattern);
-        Matcher matcher = compiledPattern.matcher(str);
-        if (!matcher.find()) {
-            return str.split(",|;");
-        }
+    private static final Pattern customDelimiterPattern = Pattern.compile("//(.)\n(.+)");
+    private static final int CUSTOM_DELIMITER = 1;
+    private static final int EXPRESSION = 2;
+    private final String str;
+    private final Matcher customDelimiterMatcher;
 
-        String customDelimiter = matcher.group(1);
-        String expression = matcher.group(2);
-        if (isMetaCharacter(customDelimiter)) {
-            customDelimiter = String.format("\\%s", customDelimiter);
-        }
-        return expression.split(customDelimiter);
+    public StringSplitPolicy(String str) {
+        this.str = str;
+        this.customDelimiterMatcher = str != null
+                                      ? customDelimiterPattern.matcher(str)
+                                      : null;
     }
 
-    private static boolean isMetaCharacter(String str) {
-        return str.matches("[.,\\\\+*?\\[^\\]$(){}=!<>|:-]");
+    public String[] splitByPolicy() {
+        if (isMatched()) {
+            String customDelimiter = getCustomDelimiter();
+            String expression = getExpression();
+
+            return expression.split(customDelimiter);
+        }
+
+        return str.split(",|;");
+    }
+
+    private boolean isMatched() {
+        return customDelimiterMatcher.find();
+    }
+
+    private String getCustomDelimiter() {
+        String customDelimiter = customDelimiterMatcher.group(CUSTOM_DELIMITER);
+        if (isMetaCharacter(customDelimiter)) {
+            return String.format("\\%s", customDelimiter);
+        }
+        return customDelimiter;
+    }
+
+    private boolean isMetaCharacter(String customDelimiter) {
+        return customDelimiter.matches("[.,\\\\+*?\\[^\\]$(){}=!<>|:-]");
+    }
+
+    private String getExpression() {
+        return customDelimiterMatcher.group(EXPRESSION);
     }
 }
