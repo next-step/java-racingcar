@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class StringClassTest {
     private static final Logger log = Logger.getLogger("StringClassTest");
 
-    @DisplayName("요구사항1 - \"1,2\"을 ,로 split 했을 때 1과 2로 잘 분리되는지 확인하는 학습 테스트를 구현한다.")
+    @DisplayName("요구사항 1 - \"1,2\"을 ,로 split 했을 때 1과 2로 잘 분리되는지 확인하는 학습 테스트를 구현한다.")
     @Test
     public void splitTest1() {
         //given
@@ -29,7 +29,7 @@ public class StringClassTest {
         assertEquals(split[1],"2");
     }
 
-    @DisplayName("요구사항1 - \"1\"을 ,로 split 했을 때 1만을 포함하는 배열이 반환되는지에 대한 학습 테스트를 구현한다.")
+    @DisplayName("요구사항 1 - \"1\"을 ,로 split 했을 때 1만을 포함하는 배열이 반환되는지에 대한 학습 테스트를 구현한다.")
     @Test
     public void splitTest2() {
         //given
@@ -43,7 +43,7 @@ public class StringClassTest {
         assertEquals(split[0], "1");
     }
 
-    @DisplayName("요구사항2 - \"(1,2)\" 값이 주어졌을 때 String의 substring() 메소드를 활용해 ()을 제거하고 \"1,2\"를 반환하도록 구현한다.")
+    @DisplayName("요구사항 2 - \"(1,2)\" 값이 주어졌을 때 String의 substring() 메소드를 활용해 ()을 제거하고 \"1,2\"를 반환하도록 구현한다.")
     @Test
     public void useSubString() {
         //given
