@@ -21,4 +21,19 @@ public class CalculatorTest {
         //then
         assertThat(result).isEqualTo(6);
     }
+
+    @DisplayName("빈 값의 경우 0 반환")
+    @Test
+    void split1() {
+        //given
+        Calculator calculator = new Calculator();
+
+        //when
+        int result1 = calculator.split("");
+        int result2 = calculator.split(null);
+
+        //then
+        assertThat(result1).isEqualTo(0);
+        assertThat(result2).isEqualTo(0);
+    }
 }
