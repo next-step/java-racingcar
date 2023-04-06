@@ -26,7 +26,7 @@ public class StringAddCalculator {
 
     private String[] splitText(String text) {
         if (isMatchCustomPattern(text)) {
-            return splitCustomPattern(text);
+            return splitUsingCustomPattern(text);
         }
 
         return text.split("[,|:]");
@@ -36,7 +36,7 @@ public class StringAddCalculator {
         return CUSTOM_PATTERN.matcher(text).find();
     }
 
-    private String[] splitCustomPattern(String text) {
+    private String[] splitUsingCustomPattern(String text) {
         Matcher matcher = CUSTOM_PATTERN.matcher(text);
 
         if (matcher.find()) {
