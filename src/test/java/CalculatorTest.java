@@ -74,6 +74,6 @@ public class CalculatorTest {
     @DisplayName("음수_예외_처리")
     @ValueSource(strings = {"-1,2,3", "1,2,-10"})
     public void 음수_예외_처리(String input) throws Exception {
-        assertThatThrownBy(() -> Calculator.splitAndSum(input)).isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> Calculator.splitAndSum(input)).isInstanceOf(IllegalArgumentException.class);
     }
 }

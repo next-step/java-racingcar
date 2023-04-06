@@ -1,8 +1,13 @@
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Calculator {
-    public static int splitAndSum(String input) throws Exception {
+
+    private static final String DELIMITER_REGEX = ",|:";
+    private static final int CUSTOM_DELIMITER = 1;
+    private static final int INPUT_STRING = 2;
+    public static int splitAndSum(String input) {
         if (isNullOrBlank(input)) {
             return 0;
         }
@@ -12,12 +17,12 @@ public class Calculator {
 
         Matcher m = Pattern.compile(regex).matcher(input);
         if (m.find()) {
-            String customDelimiter = m.group(1);
-            splitedNumbers = m.group(2).split(customDelimiter);
+            String delimiter = m.group(CUSTOM_DELIMITER);
+            splitedNumbers = m.group(INPUT_STRING).split(delimiter);
             return sumNumbers(splitedNumbers);
         }
 
-        splitedNumbers = input.split(",|:");
+        splitedNumbers = input.split(DELIMITER_REGEX);
         return sumNumbers(splitedNumbers);
     }
 
@@ -25,14 +30,18 @@ public class Calculator {
         return input == null || input.isBlank();
     }
     private static int sumNumbers(String[] numbers) {
-        int sum = 0;
-        for (String number : numbers) {
-            int num = Integer.parseInt(number);
-            if(num < 0){
-                throw new RuntimeException();
-            }
-            sum += num;
-        }
-        return sum;
+        return Arrays.stream(numbers)
+                .mapToInt(number -> {
+                    try {
+                        int num = Integer.parseInt(number);
+                        if (num < 0) {
+                            throw new IllegalArgumentException("Negative number found: " + num);
+                        }
+                        return num;
+                    } catch (NumberFormatException ex) {
+                        throw new IllegalArgumentException("Invalid number found: " + number);
+                    }
+                })
+                .sum();
     }
 }
