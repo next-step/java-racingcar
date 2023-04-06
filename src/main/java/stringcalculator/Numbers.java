@@ -8,13 +8,6 @@ public class Numbers {
     private static final String NUMBER_REGEX = "^-?\\d+";
     private final List<Integer> numbers;
 
-    public static Numbers of(String text) {
-        if (text == null || text.isBlank()) {
-            return new Numbers();
-        }
-        return new Numbers(text, Delimiters.of(text));
-    }
-
     private Numbers() {
         this.numbers = new ArrayList<>();
     }
@@ -24,6 +17,13 @@ public class Numbers {
         this.numbers = stringNumbers.stream().map(Integer::parseInt).collect(Collectors.toList());
         validateNegativeNumbers();
         validateNumberSize(delimiters);
+    }
+
+    public static Numbers of(String text) {
+        if (text == null || text.isBlank()) {
+            return new Numbers();
+        }
+        return new Numbers(text, Delimiters.of(text));
     }
 
     private void validateNumberSize(Delimiters delimiters) {
