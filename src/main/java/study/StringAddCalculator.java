@@ -19,14 +19,6 @@ public class StringAddCalculator {
     return new TextSpliter(text).split();
   }
 
-  private static int sum(int[] numbers) {
-    int sum = 0;
-    for (int number : numbers) {
-      sum += number;
-    }
-    return sum;
-  }
-
   private static int[] toNumbers(String[] values) {
     int[] numbers = new int[values.length];
     for (int i = 0; i < values.length; i++) {
@@ -42,5 +34,13 @@ public class StringAddCalculator {
       throw new RuntimeException("음수가 전달되었습니다.: " + number);
     }
     return number;
+  }
+
+  private static int sum(int[] numbers) {
+    int sum = 0;
+    for (int number : numbers) {
+      sum += number;
+    }
+    return sum;
   }
 }
