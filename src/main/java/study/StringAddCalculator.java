@@ -15,10 +15,6 @@ public class StringAddCalculator {
             return 0;
         }
 
-        if (inputText.length() == 1) {
-            return parseFormat(inputText);
-        }
-
         return sumNumbers(splitText(inputText));
     }
 
@@ -26,15 +22,6 @@ public class StringAddCalculator {
 
         //  나중에는 StringUtils.hasText() 사용하면 될 것 같다고 생각이 든다.
         return text == null || text.isEmpty();
-    }
-
-    private int parseFormat(String text) {
-
-        if (!ONLY_NUMBER.matcher(text).find()) {
-            throw new NumberFormatException();
-        }
-
-        return Integer.parseInt(text);
     }
 
     private String[] splitText(String text) {
