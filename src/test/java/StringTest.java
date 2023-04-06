@@ -10,7 +10,7 @@ public class StringTest {
     @Test
     @DisplayName("String class split test")
     void splitTest() {
-        String[] actual = "1,2".split(",");
+        final String[] actual = "1,2".split(",");
         assertThat(actual).containsExactly("1", "2");
 
         String[] actual1 = "1".split(",");
@@ -29,7 +29,7 @@ public class StringTest {
     @DisplayName("String class charAt method test")
     void charAtTest() {
         String target = "abc";
-        char actual = target.charAt(0);
+        char actual = "abc".charAt(0);
 
         assertThat(actual).isEqualTo('a');
 
