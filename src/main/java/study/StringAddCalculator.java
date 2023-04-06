@@ -64,13 +64,13 @@ public class StringAddCalculator {
         try {
             return Integer.parseInt(number);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(e);
+            throw new IllegalArgumentException("잘못된 형식으로 입력했습니다.");
         }
     }
 
     private static void checkIfIsNegative(int number) {
         if (number < 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
         }
     }
 }
