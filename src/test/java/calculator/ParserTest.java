@@ -1,6 +1,11 @@
+package calculator;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
@@ -34,10 +39,11 @@ class ParserTest {
         assertThat(actual).contains("1");
     }
 
-    @Test
+    @ParameterizedTest
+    @NullSource
+    @ValueSource(strings = {""})
     @DisplayName("[1] 빈 문자열을 전달하면 빈 리스트 반환")
-    public void parseTest3() {
-        String given = "";
+    public void parseTest3(String given) {
         List<String> actual = parser.parse(given);
         assertThat(actual).isEmpty();
     }
