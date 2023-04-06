@@ -29,7 +29,7 @@ public class StringAddCalculator {
             return splitCustomPattern(text);
         }
 
-        return text.split(",|:");
+        return text.split("[,|:]");
     }
 
     private boolean isMatchCustomPattern(String text) {
