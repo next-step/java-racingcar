@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.Arrays;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 public class CalculatorTest {
@@ -62,5 +63,20 @@ public class CalculatorTest {
 
         //then
         assertThat(result).isEqualTo(6);
+    }
+
+    @DisplayName("숫자 이외의 값을 전달할 경우 예외 발생")
+    @Test
+    void nonNumericDataException() {
+        //given
+        String nonNumericData = "a";
+        Calculator calculator = new Calculator();
+
+        //when
+        //then
+        assertThatThrownBy(() -> {
+            calculator.splitAndSum(nonNumericData);
+        }).isInstanceOf(RuntimeException.class)
+                .hasMessageContaining("숫자 이외의 값이 포함되어 있습니다.");
     }
 }

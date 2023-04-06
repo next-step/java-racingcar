@@ -47,11 +47,4 @@ public class StringTest {
                 .hasMessageContaining("String index out of range: " + outOfBoundIndex);
     }
 
-    @DisplayName("숫자 이외의 값을 전달할 경우 예외 발생")
-    @Test
-    void nonNumericDataException() {
-        //given
-        Calculator calculator = new Calculator();
-
-    }
 }
