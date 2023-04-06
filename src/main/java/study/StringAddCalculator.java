@@ -10,7 +10,7 @@ public class StringAddCalculator {
     public static int splitAndSum(String text) {
         try {
             return calculatedResult(text);
-        } catch (Exception e) {
+        } catch (IllegalArgumentException e) {
             throw new RuntimeException(e);
         }
     }
@@ -20,18 +20,13 @@ public class StringAddCalculator {
             return 0;
         }
         text = validatedText(text);
+
+        System.out.println("text = " + text);
         return sumUsingDelimiter(text);
     }
 
-    private static int sumUsingDelimiter(String text) {
-        int sum = 0;
-        String[] split = text.split(REGEX.toString());
-        for (String s : split) {
-            int num = Integer.parseInt(s);
-            checkIfIsNegative(num);
-            sum += num;
-        }
-        return sum;
+    private static boolean isNullOrBlank(String text) {
+        return text == null || text.isBlank();
     }
 
     private static String validatedText(String text) {
@@ -43,13 +38,36 @@ public class StringAddCalculator {
     }
 
     private static String textUpdate(Matcher matcher) {
-        char customDelimiter = matcher.group(1).charAt(0);
+        final int DELIMITER_INDEX = 1;
+        final int NUM_LIST_INDEX = 2;
+
+        char customDelimiter = matcher.group(DELIMITER_INDEX).charAt(0);
+        System.out.println("customDelimiter = " + customDelimiter);
         addDelimiter(customDelimiter);
-        return matcher.group(2);
+        return matcher.group(NUM_LIST_INDEX);
     }
 
     private static void addDelimiter(char customDelimiter) {
         REGEX.insert(3, customDelimiter);
+    }
+
+    private static int sumUsingDelimiter(String text) {
+        int sum = 0;
+        String[] splitNum = text.split(REGEX.toString());
+        for (String stringNumber : splitNum) {
+            int convertedNum = convertedNum(stringNumber);
+            checkIfIsNegative(convertedNum);
+            sum += convertedNum;
+        }
+        return sum;
+    }
+
+    private static int convertedNum(String number) {
+        try {
+            return Integer.parseInt(number);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(e);
+        }
     }
 
     private static void checkIfIsNegative(int number) {
@@ -58,7 +76,8 @@ public class StringAddCalculator {
         }
     }
 
-    private static boolean isNullOrBlank(String text) {
-        return text == null || text.isBlank();
+    public static void main(String[] args) {
+        int i = splitAndSum("//ab\n1:2,3");
+        System.out.println(i);
     }
 }
