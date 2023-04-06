@@ -3,23 +3,23 @@ package study;
 import java.util.Arrays;
 
 public class StringAdditionCalculator {
-    private static final String SPLIT_REGEX = "[,:]";
+    private static final String DEFAULT_DELIMITER_REGEX = "[,:]";
 
     public static int splitAndSum(String input) {
         if(isNullOrEmpty(input)) {
             return 0;
         }
 
-        String[] split = split(input);
-        return sumOf(split);
+        String[] operands = operandsOf(input);
+        return sumOf(operands);
     }
 
-    private static String[] split(String input) {
-        return input.split(SPLIT_REGEX);
+    private static String[] operandsOf(String input) {
+        return input.split(DEFAULT_DELIMITER_REGEX);
     }
 
-    private static int sumOf(String[] split) {
-        return Arrays.stream(split)
+    private static int sumOf(String[] operands) {
+        return Arrays.stream(operands)
                 .mapToInt(Integer::parseInt)
                 .sum();
     }
