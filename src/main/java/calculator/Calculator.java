@@ -12,6 +12,9 @@ public class Calculator {
     }
 
     public int split(String input) {
+        if(input == null || input.isBlank()) {
+            return 0;
+        }
         return 0;
     }
 }
