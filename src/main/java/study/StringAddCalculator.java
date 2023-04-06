@@ -1,20 +1,16 @@
 package study;
 
 import java.util.Arrays;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 
 public class StringAddCalculator {
-
-  private static final String DELIMITERS = ",|:";
-  private static final String PATTERN = "//(.)\n(.*)";
 
   public static int splitAndSum(String text) {
     if (checkEmptyOrNull(text)) {
       return 0;
     }
-    return createTextSpliter(text).sumTokens();
+
+    return sum(split(text));
   }
 
   private static boolean checkEmptyOrNull(String text) {
@@ -24,32 +20,11 @@ public class StringAddCalculator {
     return false;
   }
 
-  private static Matcher createMatcher(String text) {
-    return Pattern.compile(PATTERN).matcher(text);
+  private static String[] split(String text) {
+    return new TextSpliter(text).split();
   }
 
-  private static TextSpliter createTextSpliter(String text) {
-    Matcher m = createMatcher(text);
-    if (m.find()) {
-      return new TextSpliter(m.group(2), DELIMITERS + "|" + m.group(1));
-    }
-    return new TextSpliter(text, DELIMITERS);
-  }
-}
-
-class TextSpliter {
-
-  private String text;
-  private String delimeters;
-  private String[] tokens;
-
-  public TextSpliter(String text, String delimeters) {
-    this.text = text;
-    this.delimeters = delimeters;
-    this.tokens = text.split(delimeters);
-  }
-
-  public int sumTokens() {
+  private static int sum(String[] tokens) {
     return Arrays.stream(tokens).mapToInt(token -> {
       int number = Integer.parseInt(token);
       if (number < 0) {
@@ -59,3 +34,4 @@ class TextSpliter {
     }).sum();
   }
 }
+
