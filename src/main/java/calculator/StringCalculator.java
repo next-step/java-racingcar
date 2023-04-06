@@ -6,75 +6,64 @@ import java.util.regex.Pattern;
 
 public final class StringCalculator {
 
-    private static final int DEFAULT_VALUE = 0;
-
     private StringCalculator() {
-        throw new IllegalCallerException("객체 생성이 불필요한 객체입니다.");
+        throw new IllegalCallerException("객체 생성이 불필요합니다.");
     }
 
-    private static final String DEFAULT_SPLIT_REGEX = "[,:]";
-    private static final String CUSTOM_DELIMITER_PREFIX = "//";
-    private static final String CUSTOM_DELIMITER_SUFFIX = "\n";
+    private static final int DEFAULT_VALUE = 0;
+    private static final String DEFAULT_DELIMITER = ",|:";
+    private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
 
     public static int calculate(String text) {
         if (isEmpty(text)) {
             return DEFAULT_VALUE;
         }
-        String delimiter = extractCustomDelimiterOrDefault(text);
-        text = removeCustomDelimiter(text, delimiter);
-        validateStrangeValue(text, delimiter);
-        String[] splitTexts = getSplitTexts(text, delimiter);
-        return calculate(splitTexts);
+        int[] numbers = tokenizeAsInt(text);
+        return sum(numbers);
     }
 
     private static boolean isEmpty(String text) {
-        if (Objects.isNull(text)) {
-            return true;
-        }
-        return text.isEmpty();
+        return Objects.isNull(text) || text.isEmpty();
     }
 
-    private static void validateStrangeValue(String text, String delimiter) {
-        String regex = String.format("[^0-9%s]", delimiter);
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(text);
+    private static int[] tokenizeAsInt(String text) {
+        Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(text);
         if (matcher.find()) {
-            throw new RuntimeException("유효하지 않은 문자열이 포함되어 있습니다.");
+            String customDelimiter = matcher.group(1);
+            String textWithoutPattern = matcher.group(2);
+            return toInts(split(textWithoutPattern, customDelimiter));
         }
+        return toInts(split(text, DEFAULT_DELIMITER));
     }
 
-    private static String extractCustomDelimiterOrDefault(String text) {
-        if (!existCustomDelimiter(text)) {
-            return DEFAULT_SPLIT_REGEX;
-        }
-        return text.substring(text.indexOf(CUSTOM_DELIMITER_PREFIX) + CUSTOM_DELIMITER_PREFIX.length(),
-                              text.indexOf(CUSTOM_DELIMITER_SUFFIX));
-    }
-
-    private static boolean existCustomDelimiter(String text) {
-        return text.startsWith(CUSTOM_DELIMITER_PREFIX) && text.contains(CUSTOM_DELIMITER_SUFFIX);
-    }
-
-    private static String removeCustomDelimiter(String text, String delimiter) {
-        if (DEFAULT_SPLIT_REGEX.equals(delimiter)) {
-            return text;
-        }
-        return text.split(CUSTOM_DELIMITER_SUFFIX)[1];
-    }
-
-    private static String[] getSplitTexts(String text, String delimiter) {
+    private static String[] split(String text, String delimiter) {
         return text.split(delimiter);
     }
 
-    private static int calculate(String[] splitTexts) {
-        int result = 0;
-        for (String splitText : splitTexts) {
-            int parsedValue = Integer.parseInt(splitText);
-            if (parsedValue < 0) {
-                throw new RuntimeException("음수는 연산에 해당되지 않습니다.");
-            }
-            result += parsedValue;
+    private static int[] toInts(String[] values) {
+        int[] numbers = new int[values.length];
+        for (int i = 0; i < values.length; i++) {
+            numbers[i] = throwIfNegative(toInt(values[i]));
         }
-        return result;
+        return numbers;
+    }
+
+    private static int toInt(String values) {
+        return Integer.parseInt(values);
+    }
+
+    private static int throwIfNegative(int number) {
+        if (number < 0) {
+            throw new RuntimeException("음수는 입력할 수 없습니다.");
+        }
+        return number;
+    }
+
+    private static int sum(int[] numbers) {
+        int sum = 0;
+        for (int number : numbers) {
+            sum += number;
+        }
+        return sum;
     }
 }
