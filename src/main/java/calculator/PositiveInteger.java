@@ -1,13 +1,13 @@
 package calculator;
 
 public class PositiveInteger {
-    private final int positiveInteger;
+    private final int number;
 
     public PositiveInteger(String input) {
-        this.positiveInteger = Integer.parseInt(input);
+        this.number = Integer.parseInt(input);
     }
 
-    public int getPositiveInteger() {
-        return positiveInteger;
+    public int getNumber() {
+        return number;
     }
 }

@@ -27,7 +27,7 @@ public class Calculator {
         String[] splitInputs = split(input);
         List<Integer> list = new ArrayList<>();
         for (String splitInput : splitInputs) {
-            list.add(new PositiveInteger(splitInput).getPositiveInteger());
+            list.add(new PositiveInteger(splitInput).getNumber());
         }
         return list;
     }
