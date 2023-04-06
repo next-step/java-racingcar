@@ -4,14 +4,19 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class StringCalculator {
+public final class StringCalculator {
 
     private static final int DEFAULT_VALUE = 0;
+
+    private StringCalculator() {
+        throw new IllegalCallerException("객체 생성이 불필요한 객체입니다.");
+    }
+
     private static final String DEFAULT_SPLIT_REGEX = "[,:]";
     private static final String CUSTOM_DELIMITER_PREFIX = "//";
     private static final String CUSTOM_DELIMITER_SUFFIX = "\n";
 
-    public int calculate(String text) {
+    public static int calculate(String text) {
         if (isEmpty(text)) {
             return DEFAULT_VALUE;
         }
@@ -22,14 +27,14 @@ public class StringCalculator {
         return calculate(splitTexts);
     }
 
-    private boolean isEmpty(String text) {
+    private static boolean isEmpty(String text) {
         if (Objects.isNull(text)) {
             return true;
         }
         return text.isEmpty();
     }
 
-    private void validateStrangeValue(String text, String delimiter) {
+    private static void validateStrangeValue(String text, String delimiter) {
         String regex = String.format("[^0-9%s]", delimiter);
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(text);
@@ -38,7 +43,7 @@ public class StringCalculator {
         }
     }
 
-    private String extractCustomDelimiterOrDefault(String text) {
+    private static String extractCustomDelimiterOrDefault(String text) {
         if (!existCustomDelimiter(text)) {
             return DEFAULT_SPLIT_REGEX;
         }
@@ -46,22 +51,22 @@ public class StringCalculator {
                               text.indexOf(CUSTOM_DELIMITER_SUFFIX));
     }
 
-    private boolean existCustomDelimiter(String text) {
+    private static boolean existCustomDelimiter(String text) {
         return text.startsWith(CUSTOM_DELIMITER_PREFIX) && text.contains(CUSTOM_DELIMITER_SUFFIX);
     }
 
-    private String removeCustomDelimiter(String text, String delimiter) {
+    private static String removeCustomDelimiter(String text, String delimiter) {
         if (DEFAULT_SPLIT_REGEX.equals(delimiter)) {
             return text;
         }
         return text.split(CUSTOM_DELIMITER_SUFFIX)[1];
     }
 
-    private String[] getSplitTexts(String text, String delimiter) {
+    private static String[] getSplitTexts(String text, String delimiter) {
         return text.split(delimiter);
     }
 
-    private int calculate(String[] splitTexts) {
+    private static int calculate(String[] splitTexts) {
         int result = 0;
         for (String splitText : splitTexts) {
             int parsedValue = Integer.parseInt(splitText);

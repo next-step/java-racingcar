@@ -1,5 +1,6 @@
 package calculator;
 
+import static calculator.StringCalculator.calculate;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -42,14 +43,7 @@ class StringCalculatorTest {
     @MethodSource("provideArgumentsForSuccessTest")
     @DisplayName("특정 구분자를 가지는 문자열을 전달하는 경우 구분자를 기준으로 분리한 각 숫자의 합을 반환합니다.")
     void success_test(String text, int expected) {
-        // given
-        StringCalculator stringCalculator = new StringCalculator();
-
-        // when
-        int result = stringCalculator.calculate(text);
-
-        // then
-        assertThat(result).isSameAs(expected);
+        assertThat(calculate(text)).isSameAs(expected);
     }
 
     @ParameterizedTest(name = "input={0}")
@@ -58,10 +52,6 @@ class StringCalculatorTest {
                             "adsf"})
     @DisplayName("문자열 계산기에 숫자 이외의 값 또는 음수를 전달하는 경우 RuntimeException 예외를 throw 합니다.")
     void failed_test(String text) {
-        // given
-        StringCalculator stringCalculator = new StringCalculator();
-
-        // when & then
-        assertThatThrownBy(() -> stringCalculator.calculate(text)).isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> calculate(text)).isInstanceOf(RuntimeException.class);
     }
 }
