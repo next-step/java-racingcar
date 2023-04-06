@@ -15,17 +15,20 @@ public class TextSpliter {
   }
 
   public String[] split() {
-    String delimiters = getDelimiters();
-    return this.text.split(delimiters);
+    return this.text.split(getDelimiters());
   }
 
   private String getDelimiters() {
-    Matcher matcher = DEFAULT_PATTERN.matcher(this.text);
+    Matcher matcher = getMatcher();
     if (matcher.find()) {
       this.text = matcher.group(2);
       return DEFAULT_DELIMITERS + "|" + matcher.group(1);
     } else {
       return DEFAULT_DELIMITERS;
     }
+  }
+
+  private Matcher getMatcher() {
+    return DEFAULT_PATTERN.matcher(this.text);
   }
 }
