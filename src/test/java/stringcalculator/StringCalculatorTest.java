@@ -4,8 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThatCode;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.*;
 
 class StringCalculatorTest {
 
@@ -31,5 +30,24 @@ class StringCalculatorTest {
     void createStringCalculatorWithInvalidText(String text) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new StringCalculator(text)).withMessage("구분자가 포함되어 있지 않습니다.");
+    }
+
+    @DisplayName("구분자를 제외하고 숫자가 아닌 문자는 입력할 수 없습니다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"1,2A,3", "AA12:2:3", "//A\n1A22:3BB"})
+    void createStringCalculatorWithInvalidText2(String text) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new StringCalculator(text))
+                .withMessage("구분자를 제외하고 숫자가 아닌 문자는 입력할 수 없습니다.");
+    }
+
+    @DisplayName("입력한 문자열의 합을 구할 수 있다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"1,2,3", "1:2:3", "//+\n1+2+3", "//{\n1{2,3", "//}\n1}2:3", "//(\n1(2:3", "//)\n1)2:3", "//[\n1[2:3", "//]\n1]2:3", "//A\n1A2:3"})
+    void sumTest(String text) {
+        int expectedSum = 6;
+        final StringCalculator stringCalculator = new StringCalculator(text);
+
+        assertThat(stringCalculator.sum()).isEqualTo(expectedSum);
     }
 }
