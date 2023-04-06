@@ -22,10 +22,24 @@ public class Numbers {
     private Numbers(String text, Delimiters delimiters) {
         final List<String> stringNumbers = parseNumbers(text, delimiters);
         this.numbers = stringNumbers.stream().map(Integer::parseInt).collect(Collectors.toList());
-        validateNumbers();
+        validateNegativeNumbers();
+        validateNumberSize(delimiters);
     }
 
-    private void validateNumbers() {
+    private void validateNumberSize(Delimiters delimiters) {
+        if (delimiters.containsDelimiters()) {
+            return;
+        }
+        if (isNotOnlyOneNumber()) {
+            throw new IllegalArgumentException("연산자가 존재하지 않습니다");
+        }
+    }
+
+    private boolean isNotOnlyOneNumber() {
+        return numbers.size() != 1;
+    }
+
+    private void validateNegativeNumbers() {
         if (numbers.stream().anyMatch(number -> number < 0)) {
             throw new IllegalArgumentException("음수를 입력할 수 없습니다.");
         }

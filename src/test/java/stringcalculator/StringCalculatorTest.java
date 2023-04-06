@@ -29,7 +29,7 @@ class StringCalculatorTest {
     @ValueSource(strings = {"/+\n1+2+3", "ABC+\n22"})
     void createStringCalculatorWithInvalidText(String text) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new StringCalculator(text)).withMessage("구분자가 포함되어 있지 않습니다.");
+                .isThrownBy(() -> new StringCalculator(text)).withMessage("구분자를 제외하고 숫자가 아닌 문자는 입력할 수 없습니다.");
     }
 
     @DisplayName("구분자를 제외하고 숫자가 아닌 문자는 입력할 수 없습니다.")
@@ -65,6 +65,15 @@ class StringCalculatorTest {
     @ValueSource(strings = {"  ", ""})
     void nullOrEmptyStringIsZero(String text) {
         int expectedSum = 0;
+
+        assertThat(new StringCalculator(text).sum()).isEqualTo(expectedSum);
+    }
+
+    @DisplayName("구분자 없이 숫자인 하나의 문자만 입력된다면 계산값은 입력한 값이다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"1", "20"})
+    void onlyOneStringWithoutOperator(String text) {
+        int expectedSum = Integer.parseInt(text);
 
         assertThat(new StringCalculator(text).sum()).isEqualTo(expectedSum);
     }

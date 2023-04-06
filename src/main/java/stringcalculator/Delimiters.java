@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 public class Delimiters {
     private static final Map<String, String> REGEX_ESCAPE = new HashMap<>();
+    public static final int FIRST_CHARACTER = 0;
 
     static {
         REGEX_ESCAPE.put("+", "\\+");
@@ -49,18 +50,14 @@ public class Delimiters {
             final String customDelimiter = String.valueOf(text.charAt(2));
             delimiters.add(customDelimiter);
         }
-        if (containsNotAnyDelimiters(text)) {
-            throw new IllegalArgumentException("구분자가 포함되어 있지 않습니다.");
-        }
     }
 
     private boolean containsCustomDelimiter(String text) {
         return text.contains(CUSTOM_END_STRING) && text.startsWith(DOUBLE_SLASH);
     }
 
-    private boolean containsNotAnyDelimiters(String text) {
-        return delimiters.stream()
-                .noneMatch(text::contains);
+    public boolean containsDelimiters() {
+        return !delimiters.isEmpty();
     }
 
     private void initializeDelimiters() {
