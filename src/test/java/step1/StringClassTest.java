@@ -3,7 +3,11 @@ package step1;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -55,11 +59,17 @@ public class StringClassTest {
 
     @DisplayName("요구사항 3 - \"abc\" 값이 주어졌을 때 String의 charAt() 메소드를 활용해 특정 위치의 문자를 가져오는 학습 테스트를 구현한다.")
     @Test
-    public void run2342() {
+    public void learnCharAt() {
         //given
-        String preset = "";
+        String preset = "abc";
+
         //when
+        Map<Integer, Character> charIndexMap = Map.of(0, preset.charAt(0), 1, preset.charAt(1), 2, preset.charAt(2));
+
         //then
+        assertEquals(charIndexMap.get(0), 'a');
+        assertEquals(charIndexMap.get(1), 'b');
+        assertEquals(charIndexMap.get(2), 'c');
     }
 
 
