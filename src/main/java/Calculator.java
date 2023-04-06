@@ -10,12 +10,9 @@ public class Calculator {
             return 0;
         }
 
-        List<String> parsedData = splitText(inputData);
+        List<String> elements = splitText(inputData);
 
-        String delimiter = parsedData.get(0);
-        String realText = parsedData.get(1);
-
-        return sumAll(delimiter, realText);
+        return sumAll(elements);
     }
 
     private static boolean checkIfEmpty(String text) {
@@ -25,7 +22,7 @@ public class Calculator {
     private static List<String> splitText (String inputData){
         String delimiter, realText;
 
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(inputData);
+        final Matcher m = Pattern.compile("//(.)\n(.*)").matcher(inputData);
         if (m.find()) {
             delimiter = m.group(1);
             realText = m.group(2);
@@ -34,19 +31,19 @@ public class Calculator {
             realText = inputData;
         }
 
-        return Arrays.asList(delimiter, realText);
+        return Arrays.asList(realText.split(delimiter));
     }
 
-    private static int sumAll (String delimiter, String text) {
-        return convertStringArrayToIntArray(text.split(delimiter)).stream().mapToInt(Integer::intValue).sum();
+    private static int sumAll (List<String> strings) {
+        return convertStringArrayToIntArray(strings).stream().mapToInt(Integer::intValue).sum();
     }
 
-    private static List<Integer> convertStringArrayToIntArray(String[] inputString) {
+    private static List<Integer> convertStringArrayToIntArray(List<String> inputString) {
         List<Integer> output = new ArrayList<>();
         for (String el : inputString) {
             int number = Integer.parseInt(el);
             if (number < 0) {
-                throw new RuntimeException();
+                throw new IllegalArgumentException("입력값은 양수로 입력해야 합니다.");
             }
             output.add(number);
         }

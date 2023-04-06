@@ -10,7 +10,6 @@ public class TestCalculator {
 
     @ParameterizedTest
     @NullAndEmptySource
-    @ValueSource(strings = {""})
     public void splitAndSum_null_또는_빈문자(String inputData) {
         int result = Calculator.splitAndSum(inputData);
         assertThat(result).isEqualTo(0);
