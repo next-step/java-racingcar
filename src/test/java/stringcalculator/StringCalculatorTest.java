@@ -10,7 +10,7 @@ class StringCalculatorTest {
 
     @DisplayName("문자열을 입력해서 문자열계산기를 생성할 수 있다.")
     @ParameterizedTest
-    @ValueSource(strings = {"1:2", "1,2", "1:2,3", "1,2,3", "1:2:3", "//+\n1+2+3"})
+    @ValueSource(strings = {"1:2", "1,2", "1:2,3", "1,2,3", "1:2:3", "//+\\n1+2+3"})
     void createStringCalculator(String text) {
         assertThatCode(() -> new StringCalculator(text))
                 .doesNotThrowAnyException();
@@ -18,7 +18,7 @@ class StringCalculatorTest {
 
     @DisplayName("커스텀 구분자를 포함한 문자열을 입력해서 문자열계산기를 생성할 수 있다.")
     @ParameterizedTest
-    @ValueSource(strings = {"//+\n1+2+3", "//-\n1-2-3", "//;\n1;2;3"})
+    @ValueSource(strings = {"//+\\n1+2+3", "//-\\n1-2-3", "//;\\n1;2;3", "//;\\n1;2;3"})
     void createStringCalculatorWithCustomDelimiter(String text) {
         assertThatCode(() -> new StringCalculator(text))
                 .doesNotThrowAnyException();
@@ -43,7 +43,7 @@ class StringCalculatorTest {
 
     @DisplayName("입력한 문자열의 합을 구할 수 있다.")
     @ParameterizedTest
-    @ValueSource(strings = {"1,2,3", "1:2:3", "//+\n1+2+3", "//{\n1{2,3", "//}\n1}2:3", "//(\n1(2:3", "//)\n1)2:3", "//[\n1[2:3", "//]\n1]2:3", "//A\n1A2:3"})
+    @ValueSource(strings = {"1,2,3", "1:2:3", "//+\\n1+2+3", "//{\\n1{2,3", "//}\\n1}2:3", "//(\\n1(2:3", "//)\\n1)2:3", "//[\\n1[2:3", "//]\\n1]2:3", "//A\\n1A2:3"})
     void sumTest(String text) {
         int expectedSum = 6;
         final StringCalculator stringCalculator = new StringCalculator(text);
