@@ -31,11 +31,10 @@ public class CarRacing {
     }
 
     private static void moveAndPrintCar(List<Car> cars) {
-        for (int j = 0; j < cars.size(); j++) {
-            Car car = cars.get(j);
+        cars.forEach(car -> {
             car.go(canMove());
             PrintView.printCar(car.distance());
-        }
+        });
 
         System.out.println();
     }
