@@ -8,8 +8,8 @@ import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 /**
  * 기능 요구사항
@@ -29,29 +29,29 @@ import org.junit.jupiter.params.provider.ValueSource;
 class StringCalculatorTest {
 
     private static Stream<Arguments> provideArgumentsForSuccessTest() {
-        return Stream.of(Arguments.of(null, 0),
-                         Arguments.of("", 0),
-                         Arguments.of("5", 5),
-                         Arguments.of("1,2", 3),
-                         Arguments.of("1,2,3", 6),
-                         Arguments.of("1,2:3", 6),
-                         Arguments.of("//;\n1;2", 3),
-                         Arguments.of("//;\n1;2;3", 6));
+        return Stream.of(Arguments.of(null, 0, "null은 0을 리턴"),
+                         Arguments.of("", 0, "빈값은 0을 리턴"),
+                         Arguments.of("5", 5, "숫자가 하나라면 해당숫자 그대로 리턴"),
+                         Arguments.of("1,2", 3, "콤마구분자"),
+                         Arguments.of("1,2,3", 6, "콤마구분자"),
+                         Arguments.of("1,2:3", 6, "콜론구분자포함"),
+                         Arguments.of("//;\n1;2", 3, "커스텀 딜리미터 더하기"),
+                         Arguments.of("//;\n1;2;3", 6, "커스텀 딜리미터 더하기"));
     }
 
-    @ParameterizedTest(name = "input={0} / expected={1}")
+    @ParameterizedTest(name = "input={0} / expected={1} ({2})")
     @MethodSource("provideArgumentsForSuccessTest")
     @DisplayName("특정 구분자를 가지는 문자열을 전달하는 경우 구분자를 기준으로 분리한 각 숫자의 합을 반환합니다.")
-    void success_test(String text, int expected) {
+    void success_test(String text, int expected, String desc) {
         assertThat(calculate(text)).isSameAs(expected);
     }
 
-    @ParameterizedTest(name = "input={0}")
-    @ValueSource(strings = {"a,1",
-                            "2,-1",
-                            "adsf"})
+    @ParameterizedTest(name = "input={0} ({1})")
+    @CsvSource(value = {"a,1:영문자포함 예외발생",
+                        "2,-1:음수포함",
+                        "adsf:숫자없음 예외발생"}, delimiter = ':')
     @DisplayName("문자열 계산기에 숫자 이외의 값 또는 음수를 전달하는 경우 RuntimeException 예외를 throw 합니다.")
-    void failed_test(String text) {
+    void failed_test(String text, String desc) {
         assertThatThrownBy(() -> calculate(text)).isInstanceOf(RuntimeException.class);
     }
 }
