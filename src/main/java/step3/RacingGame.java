@@ -55,7 +55,7 @@ public class RacingGame {
         switchFlag(FINISH_FLAG);
     }
 
-    public void isContinue(Repetitions repetitions) {
+    private void isContinue(Repetitions repetitions) {
         if (repetitions.isLastReps(inputView.getNumberOfReps())) {
             stop();
         }
