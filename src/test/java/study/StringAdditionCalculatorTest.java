@@ -1,11 +1,10 @@
 package study;
 
-import org.assertj.core.api.Assertions;
-import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.SoftAssertions.*;
@@ -42,5 +41,13 @@ class StringAdditionCalculatorTest {
             softly.assertThat(splitAndSum("//;\n1;2;3")).isEqualTo(6);
             softly.assertThat(splitAndSum("//#\n1#10")).isEqualTo(11);
         });
+    }
+
+    @ParameterizedTest(name = "[{index}/2] {displayName}")
+    @ValueSource(strings = {"1,2,-3", "1,2,a"})
+    @DisplayName("숫자 이외의 값이나 음수를 전달하는 경우 RuntimeException throw")
+    void 숫자_이외의_값이나_음수(String input) {
+        assertThatThrownBy(() -> splitAndSum(input))
+                .isInstanceOf(RuntimeException.class);
     }
 }

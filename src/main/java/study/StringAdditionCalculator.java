@@ -7,30 +7,33 @@ import java.util.regex.Pattern;
 public class StringAdditionCalculator {
     private static final String DEFAULT_DELIMITER_REGEX = "[,:]";
     private static final String CUSTOM_DELIMITER_INPUT_PATTERN_REGEX = "//(.)\n(.*)";
+    private static final int CUSTOM_DELIMITER_BEGIN_INDEX = 2;
+    private static final int CUSTOM_DELIMITER_END_INDEX = 3;
+    private static final int CUSTOM_DELIMITER_SEPARATED_OPERANDS_BEGIN_INDEX = 4;
 
     public static int splitAndSum(String input) {
         if(isNullOrEmpty(input)) {
             return 0;
         }
 
-        String[] operands = operandsOf(input);
-        return sumOf(operands);
+        int[] positiveOperands = separatedOperandsOf(input).getPositiveOperands();
+        return sumOf(positiveOperands);
     }
 
-    private static String[] operandsOf(String input) {
+    private static SeparatedOperands separatedOperandsOf(String input) {
         if(isCustomDelimiterInput(input)) {
-            return splitByCustomDelimiter(input);
+            return new SeparatedOperands(customDelimiterOf(input), customSeparatedStringOf(input));
         }
 
-        return input.split(DEFAULT_DELIMITER_REGEX);
+        return new SeparatedOperands(DEFAULT_DELIMITER_REGEX, input);
     }
 
-    private static String[] splitByCustomDelimiter(String input) {
-        Matcher matcher = matcherOf(input);
-        matcher.find();
+    private static String customSeparatedStringOf(String input) {
+        return input.substring(CUSTOM_DELIMITER_SEPARATED_OPERANDS_BEGIN_INDEX);
+    }
 
-        String customDelimiter = matcher.group(1);
-        return matcher.group(2).split(customDelimiter);
+    private static String customDelimiterOf(String input) {
+        return input.substring(CUSTOM_DELIMITER_BEGIN_INDEX, CUSTOM_DELIMITER_END_INDEX);
     }
 
     private static boolean isCustomDelimiterInput(String input) {
@@ -41,10 +44,8 @@ public class StringAdditionCalculator {
         return Pattern.compile(CUSTOM_DELIMITER_INPUT_PATTERN_REGEX).matcher(input);
     }
 
-    private static int sumOf(String[] operands) {
-        return Arrays.stream(operands)
-                .mapToInt(Integer::parseInt)
-                .sum();
+    private static int sumOf(int[] operands) {
+        return Arrays.stream(operands).sum();
     }
 
     private static boolean isNullOrEmpty(String input) {
