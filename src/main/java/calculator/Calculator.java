@@ -28,6 +28,11 @@ public class Calculator {
     }
 
     private static String[] split(String input) {
+        if(input.length() >= 4 && input.charAt(0) == '/' && input.charAt(1) == '/'
+        && input.charAt(3) == '\n') {
+            String separator = String.valueOf(input.charAt(2));
+            return input.substring(4).split(separator);
+        }
         return input.split(",|:");
     }
 }
