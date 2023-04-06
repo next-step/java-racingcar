@@ -11,7 +11,7 @@ public class Calculator {
         return sum;
     }
 
-    public int split(String input) {
+    public int splitAndSum(String input) {
         if(input == null || input.isBlank()) {
             return 0;
         }
