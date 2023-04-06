@@ -17,10 +17,13 @@ public class Calculator {
         if(input == null || input.isBlank()) {
             return 0;
         }
+        return sum(getIntegerList(input));
+    }
+
+    private static List<Integer> getIntegerList(String input) {
         List<Integer> list = Arrays.stream(input.split(",|:"))
                 .mapToInt(Integer::parseInt)
                 .boxed().collect(Collectors.toList());
-
-        return sum(list);
+        return list;
     }
 }
