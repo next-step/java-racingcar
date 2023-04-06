@@ -15,7 +15,8 @@ public class TextSpliter {
   }
 
   public String[] split() {
-    return this.text.split(getDelimiters());
+    String delimiters = getDelimiters();
+    return this.text.split(delimiters);
   }
 
   private String getDelimiters() {
