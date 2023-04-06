@@ -15,6 +15,6 @@ public class Calculator {
         if(input == null || input.isBlank()) {
             return 0;
         }
-        return 0;
+        return 1;
     }
 }

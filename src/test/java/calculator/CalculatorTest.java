@@ -36,4 +36,17 @@ public class CalculatorTest {
         assertThat(result1).isEqualTo(0);
         assertThat(result2).isEqualTo(0);
     }
+
+    @DisplayName("1의 경우 1반환")
+    @Test
+    void split2() {
+        //given
+        Calculator calculator = new Calculator();
+
+        //when
+        int result = calculator.split("1");
+
+        //then
+        assertThat(result).isEqualTo(1);
+    }
 }
