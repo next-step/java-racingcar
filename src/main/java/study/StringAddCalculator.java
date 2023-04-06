@@ -21,7 +21,6 @@ public class StringAddCalculator {
         }
         text = validatedText(text);
 
-        System.out.println("text = " + text);
         return sumUsingDelimiter(text);
     }
 
@@ -42,7 +41,6 @@ public class StringAddCalculator {
         final int NUM_LIST_INDEX = 2;
 
         char customDelimiter = matcher.group(DELIMITER_INDEX).charAt(0);
-        System.out.println("customDelimiter = " + customDelimiter);
         addDelimiter(customDelimiter);
         return matcher.group(NUM_LIST_INDEX);
     }
