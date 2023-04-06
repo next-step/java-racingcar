@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class StringStudyTest {
 
@@ -34,5 +34,22 @@ public class StringStudyTest {
         final String result = numbersWithParentheses.substring(1, numbersWithParentheses.length() - 1);
 
         assertThat(result).isEqualTo(numbersWithoutParentheses);
+    }
+
+    @DisplayName("'abc' 값이 주어졌을 때 String 의 charAt() 메소드를 활용해 특정 위치의 문자를 가져올 수 있다, " +
+            "범위를 벗어나면 StringIndexOutOfBoundsException 이 발생한다")
+    @Test
+    void charAtTest() {
+        String fiveCharactersWord = "12345";
+        int inBoundIndex = 4;
+        int outBoundIndex = 5;
+
+        assertThatCode(() -> fiveCharactersWord.charAt(inBoundIndex))
+                .doesNotThrowAnyException();
+
+        assertThatExceptionOfType(IndexOutOfBoundsException.class)
+                .isThrownBy(() -> fiveCharactersWord.charAt(outBoundIndex))
+                .withMessageMatching("String index out of range: \\d+");
+
     }
 }
