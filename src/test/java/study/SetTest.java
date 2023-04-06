@@ -34,9 +34,10 @@ public class SetTest {
     @Test
     @DisplayName("Set 안에 포함된 요소들 확인하기 : 단순")
     void containsV1() {
-        assertThat(numbers.contains(1)).isTrue();
-        assertThat(numbers.contains(2)).isTrue();
-        assertThat(numbers.contains(3)).isTrue();
+//        assertThat(numbers.contains(1)).isTrue();
+//        assertThat(numbers.contains(2)).isTrue();
+//        assertThat(numbers.contains(3)).isTrue();
+        assertThat(numbers).contains(1, 2, 3);
     }
 
     @ParameterizedTest
