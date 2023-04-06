@@ -1,11 +1,11 @@
 public class StringCalculator {
 
-    public static int splitAndSum(String str) {
-        Text text = new Text(str);
-        if (text.isBlank()) {
+    public static int splitAndSum(String text) {
+        CalculatorInputText calculatorInputText = new CalculatorInputText(text);
+        if (calculatorInputText.isBlank()) {
             return 0;
         }
-        String[] splitStrings = text.splitByPolicy();
+        String[] splitStrings = calculatorInputText.splitByPolicy();
         return toPositiveInts(splitStrings).sum();
     }
 

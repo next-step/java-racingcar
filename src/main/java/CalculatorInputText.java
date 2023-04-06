@@ -1,9 +1,9 @@
-public class Text {
+public class CalculatorInputText {
 
     private final String str;
     private StringSplitPolicy stringSplitPolicy;
 
-    public Text(String str) {
+    public CalculatorInputText(String str) {
         this.str = str;
         this.stringSplitPolicy = new StringSplitPolicy(str);
     }
