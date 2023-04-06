@@ -29,14 +29,16 @@ import org.junit.jupiter.params.provider.MethodSource;
 class StringCalculatorTest {
 
     private static Stream<Arguments> provideArgumentsForSuccessTest() {
-        return Stream.of(Arguments.of(null, 0, "null은 0을 리턴"),
-                         Arguments.of("", 0, "빈값은 0을 리턴"),
-                         Arguments.of("5", 5, "숫자가 하나라면 해당숫자 그대로 리턴"),
-                         Arguments.of("1,2", 3, "콤마구분자"),
-                         Arguments.of("1,2,3", 6, "콤마구분자"),
-                         Arguments.of("1,2:3", 6, "콜론구분자포함"),
-                         Arguments.of("//;\n1;2", 3, "커스텀 딜리미터 더하기"),
-                         Arguments.of("//;\n1;2;3", 6, "커스텀 딜리미터 더하기"));
+        return Stream.of(
+            Arguments.of(null, 0, "null은 0을 리턴"),
+            Arguments.of("", 0, "빈값은 0을 리턴"),
+            Arguments.of("5", 5, "숫자가 하나라면 해당숫자 그대로 리턴"),
+            Arguments.of("1,2", 3, "콤마구분자"),
+            Arguments.of("1,2,3", 6, "콤마구분자"),
+            Arguments.of("1,2:3", 6, "콜론구분자포함"),
+            Arguments.of("//;\n1;2", 3, "커스텀 딜리미터 더하기"),
+            Arguments.of("//;\n1;2;3", 6, "커스텀 딜리미터 더하기")
+        );
     }
 
     @ParameterizedTest(name = "input={0} / expected={1} ({2})")
@@ -52,6 +54,7 @@ class StringCalculatorTest {
                         "adsf:숫자없음 예외발생"}, delimiter = ':')
     @DisplayName("문자열 계산기에 숫자 이외의 값 또는 음수를 전달하는 경우 RuntimeException 예외를 throw 합니다.")
     void failed_test(String text, String desc) {
-        assertThatThrownBy(() -> calculate(text)).isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> calculate(text))
+            .isInstanceOf(RuntimeException.class);
     }
 }
