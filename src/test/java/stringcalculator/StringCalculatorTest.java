@@ -1,6 +1,7 @@
 package stringcalculator;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -49,5 +50,14 @@ class StringCalculatorTest {
         final StringCalculator stringCalculator = new StringCalculator(text);
 
         assertThat(stringCalculator.sum()).isEqualTo(expectedSum);
+    }
+
+    @DisplayName("음수를 입력할 수 없다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"1:-2", "-1,2", "//+\\n1+-2+3"})
+    void negativeNumbersNotAvailable(String text) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new StringCalculator(text))
+                .withMessage("음수를 입력할 수 없습니다.");
     }
 }
