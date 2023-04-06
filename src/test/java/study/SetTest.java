@@ -10,7 +10,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 public class SetTest {
 	private Set<Integer> numbers;
@@ -18,6 +17,7 @@ public class SetTest {
 	@BeforeEach
 	void setUp() {
 		numbers = new HashSet<>();
+
 		numbers.add(1);
 		numbers.add(1);
 		numbers.add(2);
@@ -25,21 +25,14 @@ public class SetTest {
 	}
 
 	@Test
-	@DisplayName("Set의 size 메서드를 테스트")
+	@DisplayName("Set 의 size 메서드를 테스트")
 	void size() {
-		assertThat(numbers.size()).isEqualTo(3);
+		assertThat(numbers).hasSize(3);
 	}
 
-	@ParameterizedTest
-	@ValueSource(ints = {1, 2, 3})
-	@DisplayName("Set의 contains 메서드를 테스트")
-	void contains(int key) {
-		assertThat(numbers.contains(key)).isTrue();
-	}
-
-	@ParameterizedTest
+	@ParameterizedTest(name = "key 가 {index} 일 때, Set 의 contains 메서드를 테스트")
 	@CsvSource({ "1,true", "-1,false", "0,false" })
-	void toLowerCase_ShouldGenerateTheExpectedLowercaseValue(int key, boolean expected) {
+	void contains(int key, boolean expected) {
 		assertThat(numbers.contains(key)).isEqualTo(expected);
 	}
 }
