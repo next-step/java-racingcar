@@ -2,7 +2,6 @@ package learningTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.assertj.core.api.Assertions.in;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -33,6 +32,19 @@ public class StringTest {
     
     // then
     assertThat(splitInput).containsExactlyInAnyOrder("1");
+  }
+
+  @Test
+  @DisplayName("split 메서드에 구분자는 여러 개를 넣을 수 있다")
+  void splitMultiDelimiterTest() {
+    // given
+    String input = "1:2,3_4";
+
+    // when
+    String[] splitInput = input.split(",|:|_");
+
+    // then
+    assertThat(splitInput).containsExactlyInAnyOrder("1", "2", "3", "4");
   }
 
   @Test
