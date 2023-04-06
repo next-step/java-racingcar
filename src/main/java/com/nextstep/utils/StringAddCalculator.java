@@ -14,7 +14,7 @@ public class StringAddCalculator {
 
     private static final String CONTAINS_INVALID_INTEGER = "It contains invalid character";
 
-    private static final int SEPARATOR_INDEX = 1;
+    private static final int DELIMITER_INDEX = 1;
     private static final int BODY_INDEX = 2;
 
     private static final Pattern CUSTOM_SEPARATOR_PATTERN = Pattern.compile(CUSTOM_SEPARATOR_REGEX);
@@ -41,7 +41,7 @@ public class StringAddCalculator {
         Matcher m = CUSTOM_SEPARATOR_PATTERN.matcher(text);
         if (m.find()) {
             return convertStringArrayIntoIntArray(m.group(BODY_INDEX)
-                    .split(m.group(SEPARATOR_INDEX)));
+                    .split(m.group(DELIMITER_INDEX)));
         }
         return convertStringArrayIntoIntArray(text.split(TEXT_SEPARATOR));
     }

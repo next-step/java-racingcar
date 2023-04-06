@@ -61,7 +61,6 @@ class StringAddCalculatorTest {
     public void splitAndSum_with_character() {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> splitAndSum("//;\n1;😀;3"))
-                .withMessage("It contains invalid character")
-        ;
+                .withMessage("It contains invalid character");
     }
 }
