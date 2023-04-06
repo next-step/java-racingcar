@@ -38,4 +38,16 @@ public class SetStudyTest {
     void containsTest(int number) {
         assertThat(numbers.contains(number)).isTrue();
     }
+
+    @DisplayName("Set의 contains() 메소드를 활용해 1, 2, 3의 값이 존재하는지를 확인, " +
+            "값이 존재하면 true, 존재하지 않으면 false를 반환한다")
+    @ParameterizedTest
+    @ValueSource(strings = {"1:true", "2:true", "3:true", "4:false", "5:false"})
+    void containsTrueFalseTest(String token) {
+        final String[] tokens = token.split(":");
+        final int number = Integer.parseInt(tokens[0]);
+        final boolean containResult = Boolean.parseBoolean(tokens[1]);
+
+        assertThat(numbers.contains(number)).isEqualTo(containResult);
+    }
 }
