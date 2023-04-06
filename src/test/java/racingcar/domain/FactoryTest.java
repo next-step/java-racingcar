@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CarsTest {
+class FactoryTest {
 
 
     @Test
@@ -14,9 +14,9 @@ class CarsTest {
         // Given
         String userInput = "5";
         // When
-        Cars cars = new Cars(userInput);
+        Factory factory = new Factory(userInput);
         // Then
-        assertEquals(5, cars.getCars().size());
+        assertEquals(5, factory.getCars().size());
     }
 
 }

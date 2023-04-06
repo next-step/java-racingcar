@@ -3,11 +3,11 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cars {
+public class Factory {
 
-    private static List<Car> cars;
+    private List<Car> cars;
 
-    public Cars(String userInput) {
+    public Factory(String userInput) {
         cars = createCars(Integer.parseInt(userInput));
     }
 
