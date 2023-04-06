@@ -75,9 +75,4 @@ public class StringAddCalculator {
             throw new IllegalArgumentException();
         }
     }
-
-    public static void main(String[] args) {
-        int i = splitAndSum("//ab\n1:2,3");
-        System.out.println(i);
-    }
 }
