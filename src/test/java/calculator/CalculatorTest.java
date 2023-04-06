@@ -50,4 +50,17 @@ public class CalculatorTest {
         //then
         assertThat(calculator.splitAndSum(input)).isEqualTo(result);
     }
+
+    @DisplayName("splitAndSum 메서드 - \"//\"와 \"\\n\" 사이에 위치하는 문자를 커스텀 구분자로 사용한 경우")
+    @Test
+    void splitAndSum3() {
+        //given
+        Calculator calculator = new Calculator();
+
+        //when
+        int result = calculator.splitAndSum("//;\n1;2;3");
+
+        //then
+        assertThat(result).isEqualTo(6);
+    }
 }
