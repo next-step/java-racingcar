@@ -44,11 +44,13 @@ public class StringClassTest {
 
     @DisplayName("요구사항2 - \"(1,2)\" 값이 주어졌을 때 String의 substring() 메소드를 활용해 ()을 제거하고 \"1,2\"를 반환하도록 구현한다.")
     @Test
-    public void run3() {
+    public void useSubString() {
         //given
-        String preset = "1";
+        String preset = "(1,2)";
         //when
+        String subString = preset.substring(1, 4);
         //then
+        assertEquals(subString,"1,2");
     }
 
     @DisplayName("요구사항 3 - \"abc\" 값이 주어졌을 때 String의 charAt() 메소드를 활용해 특정 위치의 문자를 가져오는 학습 테스트를 구현한다.")
