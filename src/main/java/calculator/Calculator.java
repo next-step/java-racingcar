@@ -1,9 +1,7 @@
 package calculator;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Calculator {
 
@@ -29,7 +27,7 @@ public class Calculator {
         String[] splitInputs = split(input);
         List<Integer> list = new ArrayList<>();
         for (String splitInput : splitInputs) {
-            list.add(Integer.parseInt(splitInput));
+            list.add(new PositiveInteger(splitInput).getPositiveInteger());
         }
         return list;
     }
