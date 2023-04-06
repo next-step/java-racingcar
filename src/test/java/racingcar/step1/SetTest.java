@@ -17,7 +17,7 @@ public class SetTest {
     private Set<Integer> numbers;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         numbers = new HashSet<>();
         numbers.add(1);
         numbers.add(1);
@@ -27,7 +27,7 @@ public class SetTest {
 
     @Test
     @DisplayName("Set 중복값이 제거된 사이즈를 반환 한다")
-    void setSize(){
+    void setSize() {
         assertThat(numbers.size()).isEqualTo(3);
     }
 
@@ -40,7 +40,7 @@ public class SetTest {
     }
 
     @ParameterizedTest(name = "[{index}] {0} 는 Set 함수에 포함한다")
-    @ValueSource(ints = {1,2,3})
+    @ValueSource(ints = {1, 2, 3})
     void containsTestWithTrueCases(int valueSource) {
         assertThat(numbers.contains(valueSource)).isTrue();
     }
