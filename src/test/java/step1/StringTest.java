@@ -7,15 +7,15 @@ import static org.assertj.core.api.AssertionsForClassTypes.*;
 
 public class StringTest {
     @Test
-    @DisplayName("요구사항1")
+    @DisplayName("'1,2'을 ,로 split 했을 때 1과 2로 잘 분리되는지 확인")
     void split() {
         String[] data = "1,2".split(",");
         assertThat(data).contains("1");
-        assertThat(data).contains("1", "2");
+        assertThat(data).containsExactly("1", "2");
     }
 
     @Test
-    @DisplayName("요구사항2")
+    @DisplayName("'(1,2)' 값이 주어졌을 때 String의 substring() 메소드를 활용해 ()을 제거하고 '1,2'를 반환 확인")
     void subString() {
         String data = "(1,2)";
         String result = data.substring(1, data.length() -1);
@@ -23,7 +23,7 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("요구사항3")
+    @DisplayName("'abc' 값이 주어졌을 때 String의 charAt() 메소드를 활용해 특정 위치의 문자를 가져오는지 확인")
     void stringCharAt() {
         String data = "abc";
 

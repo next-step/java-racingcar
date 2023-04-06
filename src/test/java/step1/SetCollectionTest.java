@@ -26,13 +26,13 @@ public class SetCollectionTest {
     }
 
     @Test
-    @DisplayName("요구사항1")
+    @DisplayName("Set의 size() 메소드를 활용해 Set의 크기를 확인")
     void setSize() {
         assertThat(numbers.size()).isEqualTo(3);
     }
 
     @ParameterizedTest
-    @DisplayName("요구사항2")
+    @DisplayName("Set의 contains() 메소드를 활용해 1, 2, 3의 값이 존재하는지를 확인")
     @ValueSource(ints = {1, 2, 3})
     void setContains(int input) {
         assertThat(numbers.contains(input)).isTrue();
@@ -40,7 +40,7 @@ public class SetCollectionTest {
 
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-    @DisplayName("요구사항3")
+    @DisplayName("1, 2, 3 값은 contains 메소드 실행결과 true, 4, 5 값을 넣으면 false 가 반환 확인")
     void setCsvSource(String num, String expected) {
         assertThat(numbers.contains(Integer.parseInt(num))).isEqualTo(Boolean.parseBoolean(expected));
     }
