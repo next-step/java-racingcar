@@ -1,16 +1,21 @@
 package step3.view;
 
-import step3.domain.Car;
-
-import java.util.List;
+import step3.domain.Repetitions;
 
 public class PrintView {
 
-    private final static String PRINT_STRING = "-";
+    private final static String MOVE_PRINT_STRING = "-";
 
-    private void print(List<Car> car) {
-
+    public void print(Repetitions repetitions) {
+        System.out.println(repetitions.getRepetitions() + "번째 reps");
+        repetitions.getCarList().forEach(car -> printRacingCar(car.getPosition().getPosition()));
     }
 
-    //private String
+    public void printRacingCar(int position) {
+
+        for (int index = 0; index < position; index++) {
+            System.out.print(MOVE_PRINT_STRING);
+        }
+        System.out.println();
+    }
 }
