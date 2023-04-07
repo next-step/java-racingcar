@@ -65,7 +65,7 @@ public class StringAddCalculator {
     }
 
     // 음수값이면 예외 발생
-    void throwExceptionIfNegative(int input) {
+    private void throwExceptionIfNegative(int input) {
         if (input < 0) {
             throw new RuntimeException("음수가 입력되었습니다. 입력숫자를 확인해주세요.");
         }
