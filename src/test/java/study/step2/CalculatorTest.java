@@ -24,7 +24,7 @@ public class CalculatorTest {
     @NullAndEmptySource
     public void nullOrEmptyExpressionSumTest(String expressionStr) {
         Expression expression = new Expression(expressionStr);
-        assertThat(this.calculator.sum(expression)).isEqualTo(0);
+        assertThat(this.calculator.sum(expression)).isZero();
     }
 
     @DisplayName("숫자 한개만 있는 수식 경우 합 테스트")
