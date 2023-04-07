@@ -1,7 +1,7 @@
-package racingcar.step2;
+package racingcar.calculator;
 
-import static com.nextstep.utils.StringAddCalculator.splitAndSum;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static com.nextstep.calculator.StringAddCalculator.splitAndSum;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
 import org.junit.jupiter.api.DisplayName;
