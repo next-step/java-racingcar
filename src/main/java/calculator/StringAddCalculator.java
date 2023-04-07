@@ -26,15 +26,15 @@ public class StringAddCalculator {
         return inputString.split(toRegexString(DELIMITERS));
     }
 
-    private static String trimCustomDelemeterString(String inputString) {
+    private String trimCustomDelemeterString(String inputString) {
         return inputString.substring(4);
     }
 
-    private static String getCustomDelimeter(String inputString) {
+    private String getCustomDelimeter(String inputString) {
         return Character.toString(inputString.charAt(2));
     }
 
-    private static boolean isUseCustomDelimeter(String inputString) {
+    private boolean isUseCustomDelimeter(String inputString) {
         return inputString.charAt(0) == '/' && inputString.charAt(1) == '/' && inputString.charAt(3) == '\n';
     }
 
@@ -49,7 +49,7 @@ public class StringAddCalculator {
         return stringBuilder.toString();
     }
 
-    private static int getSum(int[] ints) {
+    private int getSum(int[] ints) {
         int sum = 0;
         for (int temp : ints) {
             sum += temp;
@@ -57,7 +57,7 @@ public class StringAddCalculator {
         return sum;
     }
 
-    private static int[] toInts(String[] split) {
+    private int[] toInts(String[] split) {
         int[] ints = new int[split.length];
 
         for(int i = 0; i< split.length ; i++ ) {
