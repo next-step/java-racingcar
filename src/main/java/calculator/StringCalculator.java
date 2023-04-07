@@ -4,11 +4,11 @@ import java.util.Objects;
 
 public final class StringCalculator {
 
+    private static final int DEFAULT_VALUE = 0;
+
     private StringCalculator() {
         throw new IllegalCallerException("객체 생성이 불필요합니다.");
     }
-
-    private static final int DEFAULT_VALUE = 0;
 
     public static int calculate(String text) {
         if (isEmpty(text)) {
