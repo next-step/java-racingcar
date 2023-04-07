@@ -8,6 +8,16 @@ import static org.assertj.core.api.Assertions.*;
 public class StringTest {
 
     @Test
+    @DisplayName("String class matches test")
+    void matchesTest() {
+        boolean actual = "//@\n1,3".matches("//(.*)\n(.*)");
+        assertThat(actual).isEqualTo(true);
+
+        actual = "1,3".matches("//(.*)\n(.*)");
+        assertThat(actual).isEqualTo(false);
+    }
+
+    @Test
     @DisplayName("String class split test")
     void splitTest() {
         final String[] actual = "1,2".split(",");
