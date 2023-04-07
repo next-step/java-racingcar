@@ -55,12 +55,5 @@ public class StringTest {
 		assertThatThrownBy(() -> source.charAt(3))
 			.isInstanceOf(expect)
 			.hasMessageContaining(expectedMsg);
-
-		/*
-		assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
-			.isThrownBy(() -> {
-				"abc".charAt(3);
-			}).withMessageMatching("String index out of range: 3");
-		 */
 	}
 }
