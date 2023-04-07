@@ -43,11 +43,11 @@ public class StringSumCalculatorTest {
     @DisplayName("정수 외 예외처리 테스트")
     void splitAndSum_negativeString() {
         assertThatThrownBy(() ->
-            StringSumCalculator.splitAndSumThrows("//;\n1;2;3")
+            StringSumCalculator.onlyNumberSplitAndSum("//;\n1;2;3")
         ).isInstanceOf(RuntimeException.class).hasMessage("Matcher spacial character number");
 
         assertThatThrownBy(() ->
-                StringSumCalculator.splitAndSumThrows("-1,2,3")
+                StringSumCalculator.onlyNumberSplitAndSum("-1,2,3")
         ).isInstanceOf(RuntimeException.class).hasMessage("Contains negative");
     }
 }
