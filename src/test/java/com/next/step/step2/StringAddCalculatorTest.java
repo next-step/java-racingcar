@@ -59,13 +59,15 @@ public class StringAddCalculatorTest {
     @ValueSource(strings = {"-1,2,3", "-1:2:3", "-100,-200,-300"})
     public void splitAndSum_negative_input(String input) {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum(input))
-                .isInstanceOf(RuntimeException.class);
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("입력에 음수 값이 포함되면 안됩니다.");
     }
 
     @ParameterizedTest(name = "입력에 숫자이외의 값이 포함된 경우")
-    @ValueSource(strings = {"-a,2,3", "-1:b:3", "-100,-200,-c"})
+    @ValueSource(strings = {"a,2,3", "1:b:3", "1,2,%"})
     public void splitAndSum_not_number_input(String input) {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum(input))
-                .isInstanceOf(RuntimeException.class);
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("숫자 이외의 값이 입력돼 수정이 필요합니다.");
     }
 }
