@@ -3,7 +3,10 @@ import java.util.regex.Pattern;
 
 public class StringSplitPolicy {
 
-    private static final Pattern customDelimiterPattern = Pattern.compile("//(.)\n(.+)");
+    private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.+)");
+    private static final String NORMAL_DELIMITER_REGEX = ",|;";
+    private static final String META_CHARACTER_REGEX = "[.,\\\\+*?\\[^\\]$(){}=!<>|:-]";
+    private static final String META_CHARACTER_TO_NORMAL_CHARACTER_FORMAT = "\\%s";
     private static final int CUSTOM_DELIMITER = 1;
     private static final int EXPRESSION = 2;
     private final String str;
@@ -12,7 +15,7 @@ public class StringSplitPolicy {
     public StringSplitPolicy(String str) {
         this.str = str;
         this.customDelimiterMatcher = str != null
-                                      ? customDelimiterPattern.matcher(str)
+                                      ? CUSTOM_DELIMITER_PATTERN.matcher(str)
                                       : null;
     }
 
@@ -24,7 +27,7 @@ public class StringSplitPolicy {
             return expression.split(customDelimiter);
         }
 
-        return str.split(",|;");
+        return str.split(NORMAL_DELIMITER_REGEX);
     }
 
     private boolean isMatched() {
@@ -34,13 +37,13 @@ public class StringSplitPolicy {
     private String getCustomDelimiter() {
         String customDelimiter = customDelimiterMatcher.group(CUSTOM_DELIMITER);
         if (isMetaCharacter(customDelimiter)) {
-            return String.format("\\%s", customDelimiter);
+            return String.format(META_CHARACTER_TO_NORMAL_CHARACTER_FORMAT, customDelimiter);
         }
         return customDelimiter;
     }
 
     private boolean isMetaCharacter(String customDelimiter) {
-        return customDelimiter.matches("[.,\\\\+*?\\[^\\]$(){}=!<>|:-]");
+        return customDelimiter.matches(META_CHARACTER_REGEX);
     }
 
     private String getExpression() {
