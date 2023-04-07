@@ -2,13 +2,27 @@ package calculator;
 
 public class StringAddCalculator {
 
-    public void doCalculate() {
+    private static final int ZERO = 0;
+
+    private void sum() {
 
     }
 
-    public int splitAndSum(String text) {
+    private void isBlank() {
+
+    }
+
+    private int[] toIntArray() {
+
+    }
+
+
+
+    public static int splitAndSum(String text) {
         int sum = 0;
 
         return sum;
     }
+
+
 }
