@@ -27,7 +27,7 @@ public class StringAddCalculator {
             return NULL_EMPTY_RETURN_VALUE;
         }
 
-        return addSplitInput(splitInput(input));
+        return sumSplitNumbers(splitInput(input));
     }
 
     private static boolean isNullOrEmpty(String input) {
@@ -35,23 +35,15 @@ public class StringAddCalculator {
     }
 
     private static String[] splitInput(String input) {
-        Matcher matchedValue = CUSTOM_PATTERN.matcher(input);
-        if (isMatched(matchedValue)) {
-            return extractSplitInput(matchedValue);
+        Matcher customPatternMatcher = CUSTOM_PATTERN.matcher(input);
+        if (customPatternMatcher.find()) {
+            String customDelimiter = customPatternMatcher.group(DELIMITER_EXTRACT_NUMBER);
+            return customPatternMatcher.group(INPUT_EXTRACT_NUMBER).split(customDelimiter);
         }
         return input.split(DEFAULT_DELIMITER);
     }
 
-    private static boolean isMatched(Matcher matchedValue) {
-        return matchedValue.find();
-    }
-
-    private static String[] extractSplitInput(Matcher matchedValue) {
-        String customDelimiter = matchedValue.group(DELIMITER_EXTRACT_NUMBER);
-        return matchedValue.group(INPUT_EXTRACT_NUMBER).split(customDelimiter);
-    }
-
-    private static int addSplitInput(String[] splitNumbers) {
+    private static int sumSplitNumbers(String[] splitNumbers) {
         return Arrays.stream(splitNumbers)
                 .peek(StringAddCalculator::validateNumber)
                 .mapToInt(Integer::parseInt)
@@ -69,6 +61,5 @@ public class StringAddCalculator {
         if (!splitNumber.matches(IS_NUMBER_REGEX)) {
             throw new RuntimeException(NOT_NUMBER_INPUT);
         }
-
     }
 }
