@@ -20,7 +20,7 @@ public class StringAddCalculator {
                      .peek(
                         i -> {
                             if (i < 0) {
-                                throw new NumberFormatException();
+                                throw new RuntimeException("음수는 계산할 수 없습니다.");
                             }
                         }
                     )
