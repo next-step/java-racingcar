@@ -14,6 +14,7 @@ public class StringAddCalculator {
             return ZERO;
         }
         if (isUseCustomDelimeter(inputString)) {
+            DELIMITERS.add(getCustomDelimeter(inputString));
             inputString = trimCustomDelemeterString(inputString);
         }
         String[] split = split(inputString);
@@ -26,7 +27,6 @@ public class StringAddCalculator {
     }
 
     private static String trimCustomDelemeterString(String inputString) {
-        DELIMITERS.add(getCustomDelimeter(inputString));
         return inputString.substring(4);
     }
 
