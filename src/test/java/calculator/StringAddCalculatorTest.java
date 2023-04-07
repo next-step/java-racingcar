@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class StringAddCalculatorTest {
     private static final Logger log = Logger.getLogger("StringAddCalculatorTest");
@@ -166,11 +166,12 @@ public class StringAddCalculatorTest {
     @Test
     public void 음수예외() {
         //given
-         String input = "-1,2,3";
+        String input = "-1,2,3";
         //when
-        int output = stringAddCalculator.splitAndSum(input);
         //then
-        fail();
+        assertThatThrownBy(() -> {
+            stringAddCalculator.splitAndSum(input);
+        }).isInstanceOf(RuntimeException.class);
     }
 
 }
