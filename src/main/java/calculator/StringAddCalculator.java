@@ -17,7 +17,7 @@ public class StringAddCalculator {
             inputString = trimCustomDelemeterString(inputString);
         }
         String[] split = inputString.split(toRegexString(DELIMITERS));
-        return getSum(getInts(split));
+        return getSum(toInts(split));
 
     }
 
@@ -51,7 +51,7 @@ public class StringAddCalculator {
         return sum;
     }
 
-    private static int[] getInts(String[] split) {
+    private static int[] toInts(String[] split) {
         int[] ints = new int[split.length];
 
         for(int i = 0; i< split.length ; i++ ) {
