@@ -1,5 +1,6 @@
 package study;
 
+import calculator.Calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -45,4 +46,5 @@ public class StringTest {
         }).isInstanceOf(StringIndexOutOfBoundsException.class)
                 .hasMessageContaining("String index out of range: " + outOfBoundIndex);
     }
+
 }
