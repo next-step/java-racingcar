@@ -4,12 +4,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class StringAddCalculatorTest {
     private static final Logger log = Logger.getLogger("StringAddCalculatorTest");
@@ -28,10 +27,11 @@ public class StringAddCalculatorTest {
     public void emptyStringInput() {
         //given
         String input = "";
+        int answer = 0;
         //when
         int output = stringAddCalculator.splitAndSum(input);
         //then
-        assertThat(output).isEqualTo(0);
+        assertThat(output).isEqualTo(answer);
     }
 
     @DisplayName("null 값 입력시 0을 반환해야 한다")
@@ -39,20 +39,23 @@ public class StringAddCalculatorTest {
     public void nullStringInput() {
         //given
         String input = null;
+        int answer = 0;
         //when
         int output = stringAddCalculator.splitAndSum(input);
         //then
-        assertThat(output).isEqualTo(0);
+        assertThat(output).isEqualTo(answer);
     }
 
     @DisplayName("숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환한다")
     @Test
     public void 숫자_하나() {
-        log.info("예시 : 1 >> 1");
         //given
         String input = "1";
+        int answer = 1;
         //when
+        int output = stringAddCalculator.splitAndSum(input);
         //then
+        assertThat(output).isEqualTo(answer);
     }
 
     @DisplayName("10 이상의 숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환한다")
@@ -61,8 +64,11 @@ public class StringAddCalculatorTest {
         log.info("예시 : 10 >> 10");
         //given
         String input = "10";
+        int answer = 10;
         //when
+        int output = stringAddCalculator.splitAndSum(input);
         //then
+        assertThat(output).isEqualTo(answer);
     }
 
     @DisplayName("자릿수가 긴 숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환한다")
@@ -70,9 +76,19 @@ public class StringAddCalculatorTest {
     public void 숫자_큰걸로_하나() {
         log.info("예시 : 100 >> 100");
         //given
-        List<String> inputList = Arrays.asList("100", "737", "787", "350", "380", "142857");
+        Map<String, Integer> caseInputAndOutputMapper = Map.of(
+                "100", 100,
+                "737", 737,
+                "787", 787,
+                "350", 350,
+                "380", 380,
+                "142857", 142857
+        );
         //when
         //then
+        caseInputAndOutputMapper.keySet().forEach(input -> {
+            assertThat(caseInputAndOutputMapper.get(input)).isEqualTo(stringAddCalculator.splitAndSum(input));
+        });
     }
 
 
@@ -91,6 +107,9 @@ public class StringAddCalculatorTest {
         );
         //when
         //then
+        caseInputAndOutputMapper.keySet().forEach(input -> {
+            assertThat(caseInputAndOutputMapper.get(input)).isEqualTo(stringAddCalculator.splitAndSum(input));
+        });
     }
 
     @DisplayName("구분자를 컴마(,) 이외에 콜론(:)을 사용할 수 있다")
@@ -107,6 +126,9 @@ public class StringAddCalculatorTest {
         );
         //when
         //then
+        caseInputAndOutputMapper.keySet().forEach(input -> {
+            assertThat(caseInputAndOutputMapper.get(input)).isEqualTo(stringAddCalculator.splitAndSum(input));
+        });
     }
 
     @DisplayName("구분자를 컴마(,) 와 콜론(:)을 함께 사용할 수 있다")
@@ -123,6 +145,9 @@ public class StringAddCalculatorTest {
         );
         //when
         //then
+        caseInputAndOutputMapper.keySet().forEach(input -> {
+            assertThat(caseInputAndOutputMapper.get(input)).isEqualTo(stringAddCalculator.splitAndSum(input));
+        });
     }
 
     @DisplayName("“//”와 “\\n” 문자 사이에 커스텀 구분자를 지정할 수 있다. (예 : ")
@@ -132,7 +157,9 @@ public class StringAddCalculatorTest {
         String input = "//;\n1;2;3";
         int answer = 6;
         //when
+        int output = stringAddCalculator.splitAndSum(input);
         //then
+        assertThat(output).isEqualTo(answer);
     }
 
     @DisplayName("음수를 전달할 경우 RuntimeException 예외가 발생해야 한다")
@@ -140,9 +167,10 @@ public class StringAddCalculatorTest {
     public void 음수예외() {
         //given
          String input = "-1,2,3";
-
         //when
+        int output = stringAddCalculator.splitAndSum(input);
         //then
+        fail();
     }
 
 }
