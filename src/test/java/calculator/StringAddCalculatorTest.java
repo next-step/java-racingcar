@@ -4,7 +4,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class StringAddCalculatorTest {
     private static final Logger log = Logger.getLogger("StringAddCalculatorTest");
@@ -21,19 +26,23 @@ public class StringAddCalculatorTest {
     @DisplayName("빈 문자열 입력시 0을 반환해야 한다")
     @Test
     public void emptyStringInput() {
-        log.info("예시 : null >> 0");
         //given
+        String input = "";
         //when
+        int output = stringAddCalculator.splitAndSum(input);
         //then
+        assertThat(output).isEqualTo(0);
     }
 
     @DisplayName("null 값 입력시 0을 반환해야 한다")
     @Test
     public void nullStringInput() {
-        log.info("예시 : null >> 0");
         //given
+        String input = null;
         //when
+        int output = stringAddCalculator.splitAndSum(input);
         //then
+        assertThat(output).isEqualTo(0);
     }
 
     @DisplayName("숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환한다")
@@ -41,6 +50,7 @@ public class StringAddCalculatorTest {
     public void 숫자_하나() {
         log.info("예시 : 1 >> 1");
         //given
+        String input = "1";
         //when
         //then
     }
@@ -50,6 +60,7 @@ public class StringAddCalculatorTest {
     public void 숫자_10이상_하나() {
         log.info("예시 : 10 >> 10");
         //given
+        String input = "10";
         //when
         //then
     }
@@ -59,6 +70,7 @@ public class StringAddCalculatorTest {
     public void 숫자_큰걸로_하나() {
         log.info("예시 : 100 >> 100");
         //given
+        List<String> inputList = Arrays.asList("100", "737", "787", "350", "380", "142857");
         //when
         //then
     }
@@ -69,6 +81,14 @@ public class StringAddCalculatorTest {
     @Test
     public void 컴마구분자() {
         //given
+        Map<String, Integer> caseInputAndOutputMapper = Map.of(
+                "1,2,3", 6,
+                "7,7,7", 21,
+                "21,22,23", 66,
+                "100,1,10,2000", 2111,
+                "4444,333,22,1", 4780,
+                "111111,11111,1111,111,11,1", 123456
+        );
         //when
         //then
     }
@@ -77,6 +97,14 @@ public class StringAddCalculatorTest {
     @Test
     public void 콜론구분자() {
         //given
+        Map<String, Integer> caseInputAndOutputMapper = Map.of(
+                "1:2:3", 6,
+                "7:7:7", 21,
+                "21:22:23", 66,
+                "100:1:10:2000", 2111,
+                "4444:333:22:1", 4780,
+                "111111:11111:1111:111:11:1", 123456
+        );
         //when
         //then
     }
@@ -85,6 +113,14 @@ public class StringAddCalculatorTest {
     @Test
     public void 콜론과_컴마구분자() {
         //given
+        Map<String, Integer> caseInputAndOutputMapper = Map.of(
+                "1,2:3", 6,
+                "7,7:7", 21,
+                "21:22,23", 66,
+                "100:1:10,2000", 2111,
+                "4444:333,22:1", 4780,
+                "111111:11111,1111:111:11:1", 123456
+        );
         //when
         //then
     }
@@ -93,7 +129,7 @@ public class StringAddCalculatorTest {
     @Test
     public void 커스텀구분자() {
         //given
-        String dataset = "//;\n1;2;3";
+        String input = "//;\n1;2;3";
         int answer = 6;
         //when
         //then
@@ -103,17 +139,10 @@ public class StringAddCalculatorTest {
     @Test
     public void 음수예외() {
         //given
-         String dataset = "-1,2,3";
+         String input = "-1,2,3";
 
         //when
         //then
     }
 
-    @DisplayName("")
-    @Test
-    public void run() {
-        //given
-        //when
-        //then
-    }
 }
