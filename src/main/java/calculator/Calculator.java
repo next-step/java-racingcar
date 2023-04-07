@@ -31,10 +31,10 @@ public class Calculator {
     }
 
     private void extractCustomDelimiter(String text) {
-        Matcher m = Pattern.compile(CUSTOM_DELIMITER_INPUT_FORMAT).matcher(text);
-        if (m.find()) {
-            this.delimiter = m.group(1);
-            this.inputNumberString = m.group(2);
+        Matcher matcher = Pattern.compile(CUSTOM_DELIMITER_INPUT_FORMAT).matcher(text);
+        if (matcher.find()) {
+            this.delimiter = matcher.group(1);
+            this.inputNumberString = matcher.group(2);
             return;
         }
         this.inputNumberString = text;
