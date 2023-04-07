@@ -14,10 +14,6 @@ public class StringAddCalculator {
             return 0;
         }
 
-        if (isOnlyNumber(text)) {
-            return Integer.parseInt(text);
-        }
-
         String[] tokens = split(text);
 
         return sum(tokens);
@@ -56,15 +52,6 @@ public class StringAddCalculator {
         }
 
         return text.split(delimiter);
-    }
-
-    private static boolean isOnlyNumber(String text) {
-        for (int i = 0; i < text.length(); i++) {
-            if (!Character.isDigit(text.charAt(i))) {
-                return false;
-            }
-        }
-        return true;
     }
 
     private static boolean isNullOrEmpty(String text) {
