@@ -3,11 +3,11 @@ package calculator;
 public class StringAddCalculator {
 
     private static final int ZERO = 0;
-
+    private static final String DELIMETERS=",|:";
 
 
     public int splitAndSum(String inputString) {
-        String[] split = inputString.split(",");
+        String[] split = inputString.split(DELIMETERS);
         int[] ints = new int[split.length];
 
         for(int i=0 ; i<split.length ; i++ ) {
