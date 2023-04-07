@@ -13,18 +13,23 @@ public class StringAddCalculator {
         if (isInvalidInput(inputString)) {
             return ZERO;
         }
-
-        if (inputString.charAt(0) == '/' && inputString.charAt(1) == '/' && inputString.charAt(3) == '\n') {
-            String s = Character.toString(inputString.charAt(2));
-
-            DELIMITERS.add(s);
-            inputString = inputString.substring(4);
+        if (isUseCustomDelimeter(inputString)) {
+            inputString = trimCustomDelemeterString(inputString);
         }
-
-        String RegexString = toRegexString(DELIMITERS);
-        String[] split = inputString.split(RegexString);
+        String[] split = inputString.split(toRegexString(DELIMITERS));
         return getSum(getInts(split));
 
+    }
+
+    private static String trimCustomDelemeterString(String inputString) {
+        String s = Character.toString(inputString.charAt(2));
+        DELIMITERS.add(s);
+        inputString = inputString.substring(4);
+        return inputString;
+    }
+
+    private static boolean isUseCustomDelimeter(String inputString) {
+        return inputString.charAt(0) == '/' && inputString.charAt(1) == '/' && inputString.charAt(3) == '\n';
     }
 
     private String toRegexString(Set<String> delimeters) {
