@@ -2,8 +2,10 @@ package calculator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CalculatorTest {
 
@@ -26,5 +28,13 @@ public class CalculatorTest {
         int result = Calculator.splitAndSum("1");
 
         assertThat(result).isEqualTo(1);
+    }
+
+    @ParameterizedTest(name = "숫자 두개와 구분자(, :)가 입력될 경우 두 숫자의 합을 반환한다.")
+    @ValueSource(strings = {"1,2", "1:2"})
+    void test03(String input) {
+        int result = Calculator.splitAndSum(input);
+
+        assertThat(result).isEqualTo(3);
     }
 }
