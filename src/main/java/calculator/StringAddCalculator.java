@@ -6,10 +6,9 @@ public class StringAddCalculator {
 
 
 
-    public int splitAndSum(String text) {
+    public int splitAndSum(String inputString) {
         int sum = 0;
-
-        return sum;
+        return -1;
     }
 
 
