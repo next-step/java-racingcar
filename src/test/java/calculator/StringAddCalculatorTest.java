@@ -159,6 +159,18 @@ public class StringAddCalculatorTest {
         assertThat(output).isEqualTo(answer);
     }
 
+    @DisplayName("커스텀 구분자 사용시 큰 자리수 테스트")
+    @Test
+    public void 커스텀구분자복잡() {
+        //given
+        String input = "//;\n111111;222222;333333";
+        int answer = 666666;
+        //when
+        int output = stringAddCalculator.splitAndSum(input);
+        //then
+        assertThat(output).isEqualTo(answer);
+    }
+
     @DisplayName("음수를 전달할 경우 RuntimeException 예외가 발생해야 한다")
     @Test
     public void 음수예외() {
