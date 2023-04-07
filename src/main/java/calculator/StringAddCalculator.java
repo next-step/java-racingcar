@@ -26,10 +26,12 @@ public class StringAddCalculator {
     }
 
     private static String trimCustomDelemeterString(String inputString) {
-        String s = Character.toString(inputString.charAt(2));
-        DELIMITERS.add(s);
-        inputString = inputString.substring(4);
-        return inputString;
+        DELIMITERS.add(getCustomDelimeter(inputString));
+        return inputString.substring(4);
+    }
+
+    private static String getCustomDelimeter(String inputString) {
+        return Character.toString(inputString.charAt(2));
     }
 
     private static boolean isUseCustomDelimeter(String inputString) {
