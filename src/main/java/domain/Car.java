@@ -7,11 +7,11 @@ import java.util.stream.IntStream;
 public class Car {
 
     private int id;
-    private int move;
+    private Move move;
 
     public Car(int id) {
         this.id = id;
-        move = 0;
+        move = new Move();
     }
 
     public static List<Car> createCarList(int numberOfCars) {
@@ -22,4 +22,11 @@ public class Car {
                         .toList());
     }
 
+    void attemptMove(int attemptCount) {
+        move.attemptMove(attemptCount);
+    }
+
+    public int getMoveCount() {
+        return move.getMove();
+    }
 }
