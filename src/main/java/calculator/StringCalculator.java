@@ -1,7 +1,5 @@
 package calculator;
 
-import java.util.Objects;
-
 public final class StringCalculator {
 
     private static final int DEFAULT_VALUE = 0;
@@ -20,7 +18,7 @@ public final class StringCalculator {
     }
 
     private static boolean isEmpty(String text) {
-        return Objects.isNull(text) || text.isBlank();
+        return text == null || text.isBlank();
     }
 
     private static int sum(int[] numbers) {
