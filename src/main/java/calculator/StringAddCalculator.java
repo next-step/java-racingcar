@@ -16,9 +16,13 @@ public class StringAddCalculator {
         if (isUseCustomDelimeter(inputString)) {
             inputString = trimCustomDelemeterString(inputString);
         }
-        String[] split = inputString.split(toRegexString(DELIMITERS));
+        String[] split = split(inputString);
         return getSum(toInts(split));
 
+    }
+
+    private String[] split(String inputString) {
+        return inputString.split(toRegexString(DELIMITERS));
     }
 
     private static String trimCustomDelemeterString(String inputString) {
