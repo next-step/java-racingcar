@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
 public class StringCalculatorTest {
-
     @Test
     @DisplayName("빈문자열 또는 null 값 체크")
     void empty_and_null_check() {
