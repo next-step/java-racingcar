@@ -33,17 +33,25 @@ public class CalculatorTest {
     }
 
     @ParameterizedTest(name = "숫자와 구분자(, :)가 입력될 경우 숫자의 합을 반환한다.")
-    @CsvSource(value = {"1,2|3", "1:2|3", "1,2,3|6"}, delimiter = '|')
+    @CsvSource(value = {"1,2|3", "1:2|3", "1,2,3|6", "1,2:3|6"}, delimiter = '|')
     void test03(String input, int expected) {
         int result = Calculator.splitAndSum(input);
 
         assertThat(result).isEqualTo(expected);
     }
 
+    @DisplayName("커스텀 구분자는 문자열 앞부분의 “//”와 “\\n” 사이에 위치하는 문자를 커스텀 구분자로 사용한다.")
+    @Test
+    void test04() {
+        int result = Calculator.splitAndSum("//;\n1;2;3");
+
+        assertThat(result).isEqualTo(6);
+    }
+
     @DisplayName("숫자 이외의 값을 전달하는 경우 RuntimeException 에러 발생한다.")
     @ParameterizedTest(name = "양의 숫자 이외의 값을 전달하는 경우 RuntimeException 에러 발생한다.")
     @ValueSource(strings = {"-1", "A", "-1,5"})
-    void test04(String input) {
+    void test05(String input) {
         assertThatThrownBy(() -> Calculator.splitAndSum(input))
                 .isExactlyInstanceOf(RuntimeException.class).hasMessageContaining("는 양수가 아닙니다.");
     }

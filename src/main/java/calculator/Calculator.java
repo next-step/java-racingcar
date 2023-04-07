@@ -1,10 +1,14 @@
 package calculator;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Calculator {
 
     public static final int ZERO = 0;
     public static final String DEFAULT_DELIMITER = "[,:]";
     public static final String POSITIVE_NUMBER = "[0-9]";
+    public static final Pattern CUSTOM_DELIMITER = Pattern.compile("//(.)\n(.*)");
 
     public static int splitAndSum(String input) {
         if (isEmpty(input)) {
@@ -19,6 +23,11 @@ public class Calculator {
     }
 
     private static String[] split(String input) {
+        Matcher matcher = CUSTOM_DELIMITER.matcher(input);
+        if (matcher.find()) {
+            return matcher.group(2).split(matcher.group(1));
+        }
+
         return input.split(DEFAULT_DELIMITER);
     }
 
