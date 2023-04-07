@@ -15,10 +15,8 @@ public class StringAddCalculator {
 
         //}
 
-        String[] split = inputString.split(DELIMETERS);
-        int[] ints = getInts(split);
-        int sum = getSum(ints);
-        return sum;
+        return getSum(getInts(inputString.split(DELIMETERS)));
+
     }
 
     private static int getSum(int[] ints) {
