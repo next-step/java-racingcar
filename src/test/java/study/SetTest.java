@@ -24,23 +24,23 @@ public class SetTest {
     numbers.add(3);
   }
 
-  @DisplayName("size를 사용하여 Set의 크기를 확인한다.")
+  @DisplayName("Set의 크기를 확인한다.")
   @Test
-  void requirement1(){
-    assertThat(numbers.size()).isEqualTo(3);
+  void hasSize_True_InputSetSize() {
+    assertThat(numbers).hasSize(3);
   }
 
-  @DisplayName("contains를 사용하여 해당 값의 존재를 확인한다. (ValueSource 활용 테스트)")
+  @DisplayName("Set의 특정 값 존재를 확인한다. (ValueSource 활용 테스트)")
   @ParameterizedTest
-  @ValueSource(ints = {1,2,3})
-  void requirement2(int input){
-    assertThat(numbers.contains(input)).isTrue();
+  @ValueSource(ints = {1, 2, 3})
+  void contains_True_ExistingValue(int input) {
+    assertThat(numbers).contains(input);
   }
 
-  @DisplayName("contains를 사용하여 해당 값의 존재를 확인한다. (CsvSource 활용 테스트)")
+  @DisplayName("Set의 특정 값 존재를 확인한다. (CsvSource 활용 테스트)")
   @ParameterizedTest
   @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-  void requirement3(int input, boolean expected){
+  void contains_TrueOrFalse_ExistingOrNonExistingValue(int input, boolean expected) {
     assertThat(numbers.contains(input)).isEqualTo(expected);
   }
 }
