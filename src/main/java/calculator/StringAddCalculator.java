@@ -16,7 +16,12 @@ public class StringAddCalculator {
         //}
 
         String[] split = inputString.split(DELIMETERS);
-        int[] ints = toIntArray(split);
+        int[] ints = getInts(split);
+        int sum = getSum(ints);
+        return sum;
+    }
+
+    private static int getSum(int[] ints) {
         int sum = 0;
         for(int temp : ints) {
             sum += temp;
@@ -24,7 +29,7 @@ public class StringAddCalculator {
         return sum;
     }
 
-    private static int[] toIntArray(String[] split) {
+    private static int[] getInts(String[] split) {
         int[] ints = new int[split.length];
 
         for(int i = 0; i< split.length ; i++ ) {
