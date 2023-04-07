@@ -59,13 +59,8 @@ public class StringAddCalculator {
 
     private int[] toInts(String[] split) {
         int[] ints = new int[split.length];
-
         for(int i = 0; i< split.length ; i++ ) {
-            int i1 = Integer.parseInt(split[i]);
-            if(i1 < 0) {
-                throw new RuntimeException();
-            }
-            ints[i] = i1;
+            ints[i] = new CalculatorElement(split[i]).toInt();
         }
         return ints;
     }
