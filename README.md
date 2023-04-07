@@ -7,3 +7,9 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## Step3 구현할 기능 목록
+* 입력 기능 -> 자동차 수, 이동할 횟수
+* n개의 자동차 만들기 -> Car 클래스 n개 생성
+* random 값 구하기 -> 4 이상일 경우 전진
+* 출력 기능 -> 자동차 출력
