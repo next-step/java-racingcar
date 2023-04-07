@@ -5,9 +5,10 @@ import java.util.regex.Pattern;
 
 public class StringToken {
 
+    private static final String DEFAULT_VALUE = "0";
     private static final String DEFAULT_DELIMITER = ",|:";
     private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
-    public static final Pattern NOT_NUMERIC_PATTERN = Pattern.compile("\\D");
+    private static final Pattern NOT_NUMERIC_PATTERN = Pattern.compile("\\D");
     private final String delimiter;
     private final String text;
 
@@ -18,6 +19,21 @@ public class StringToken {
 
 
     public static StringToken from(String text) {
+        return createStringToken(getDefaultIfEmpty(text));
+    }
+
+    private static String getDefaultIfEmpty(String text) {
+        if (isEmpty(text)) {
+            return DEFAULT_VALUE;
+        }
+        return text;
+    }
+
+    private static boolean isEmpty(String text) {
+        return text == null || text.isBlank();
+    }
+
+    private static StringToken createStringToken(String text) {
         Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(text);
         if (matcher.find()) {
             return new StringToken(matcher.group(1), matcher.group(2));
