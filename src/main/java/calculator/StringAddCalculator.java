@@ -10,6 +10,11 @@ public class StringAddCalculator {
         if(inputString == null || inputString.isBlank()) {
             return ZERO;
         }
+
+        //if(inputString.charAt(0)) { 커스텀 델리미터 사용은 나중에..
+
+        //}
+
         String[] split = inputString.split(DELIMETERS);
         int[] ints = new int[split.length];
 
