@@ -37,7 +37,7 @@ public class StringClassTest {
         assertThatThrownBy(() -> {
             "abc".charAt(Integer.MAX_VALUE);
         }).isInstanceOf(StringIndexOutOfBoundsException.class)
-                .hasMessageContaining("string index out of range");
+                .hasMessageContaining("String index out of range");
 
     }
 
