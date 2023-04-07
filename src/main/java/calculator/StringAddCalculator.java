@@ -20,7 +20,9 @@ public class StringAddCalculator {
             DELIMITERS.add(s);
         }
 
-        return getSum(getInts(inputString.split(toRegexString(DELIMITERS))));
+        String RegexString = toRegexString(DELIMITERS);
+        String[] split = inputString.split(RegexString);
+        return getSum(getInts(split));
 
     }
 
