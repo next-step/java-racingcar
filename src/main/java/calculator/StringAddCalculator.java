@@ -7,7 +7,7 @@ public class StringAddCalculator {
 
 
     public int splitAndSum(String inputString) {
-        if(inputString == null || inputString.isBlank()) {
+        if(isInvalidInput(inputString)) {
             return ZERO;
         }
 
@@ -31,6 +31,12 @@ public class StringAddCalculator {
         }
         return sum;
     }
+
+    private boolean isInvalidInput(String inputString) {
+        return inputString == null || inputString.isBlank();
+    }
+
+    //private
 
 
 }
