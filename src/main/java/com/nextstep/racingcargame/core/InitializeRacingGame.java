@@ -1,4 +1,4 @@
-package com.nextstep.racingcargame;
+package com.nextstep.racingcargame.core;
 
 public class InitializeRacingGame {
 
