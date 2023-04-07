@@ -12,7 +12,6 @@ class StringTest {
     void splitContainTest() {
         assertThat("1,2".split(",")).contains("1","2");
     }
-
     @Test
     void splitContainExactlyTest() {
         assertThat("1".split(",")).containsExactly("1");
