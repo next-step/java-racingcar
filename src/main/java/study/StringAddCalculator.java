@@ -6,73 +6,73 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
-    private String regex = ",|:";
-    private String StringInput;
-    private Matcher matcher;
+    private static final String DELIMITER = ",|:";
+    private static final String CUSTOM_DELIMITER = "//(.)\n(.*)";
+    private static final int ZERO = 0;
+    private static final int FIRST = 1;
+    private static final int SECOND = 2;
 
     public int splitAndSum(String input) {
-        StringInput = input;
-        setMatch(StringInput);
-
-        if (isPatternMatch(matcher)) {
-            changeRegex(matcher);
-            changeStringInput(matcher);
+        if (isNotValidValue(input)) {
+            return ZERO;
         }
-
-        String[] strings = splitSentences(StringInput);
-        int[] arr = changeStringArrToIntArr(strings);
-        return sumIntArr(arr);
+        return sumIntArr(convertToNumberArray(splitString(input)));
     }
 
-    // Match 셋팅
-    private void setMatch(String input) {
-        if (Objects.isNull(input)) {
-            return;
+    private boolean isNotValidValue(String input) {
+        if (Objects.isNull(input) || "".equals(input)) {
+            return true;
         }
-        matcher = Pattern.compile("//(.)\n(.*)").matcher(input);
+        return false;
+    }
+
+    // 문장 나누기 하기
+    private String[] splitString(String input) {
+        String delimiter = DELIMITER;
+        Matcher matcher = Pattern.compile(CUSTOM_DELIMITER).matcher(input);
+
+        if (isPatternMatch(matcher)) {
+            delimiter = changeDelimiter(matcher);
+            input = changeInput(matcher);
+        }
+
+        return input.split(delimiter);
     }
 
     // 패턴 맞는지 확인하기
     private boolean isPatternMatch(Matcher matcher) {
-        if (Objects.isNull(matcher)) {
-            return false;
-        }
-        return matcher.find() == true ? true : false;
+        return matcher.find();
     }
 
     // 패턴값 변경하기.
-    private void changeRegex(Matcher matcher) {
-        regex = matcher.group(1);
+    private String changeDelimiter(Matcher matcher) {
+        return matcher.group(FIRST);
     }
 
     // 입력값 변경하기
-    private void changeStringInput(Matcher matcher) {
-        StringInput = matcher.group(2);
+    private String changeInput(Matcher matcher) {
+        return matcher.group(SECOND);
     }
 
-    // 문장 나누기 하기
-    private String[] splitSentences(String input) {
-        if (!Objects.isNull(input)) {
-            return new String[0];
-        }
-        return input.split(regex);
-    }
-
-    // 문장배열 숫자 배열로 변경하기.
-    private int[] changeStringArrToIntArr(String[] strings) {
+    // 문장배열 숫자 배열로 변경하기
+    private int[] convertToNumberArray(String[] strings) {
         int [] arr = new int[strings.length];
         for (int i = 0; i < strings.length; i++) {
             arr[i] = Integer.parseInt(strings[i]);
-            if (arr[i] < 0) {
-                throw new RuntimeException("음수가 입력되었습니다. 입력숫자를 확인해주세요.");
-            }
+            throwExceptionIfNegative(arr[i]);
         }
         return arr;
+    }
+
+    // 음수값이면 예외 발생
+    void throwExceptionIfNegative(int input) {
+        if (input < 0) {
+            throw new RuntimeException("음수가 입력되었습니다. 입력숫자를 확인해주세요.");
+        }
     }
 
     // 숫자배열 합치기.
     private int sumIntArr(int[] arr) {
         return Arrays.stream(arr).sum();
     }
-
 }

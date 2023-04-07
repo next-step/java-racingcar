@@ -4,6 +4,8 @@ package study;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
@@ -16,13 +18,14 @@ class StringAddCalculatorTest {
         stringAddCalculator = new StringAddCalculator();
     }
 
-    @Test
+    @ParameterizedTest
     @DisplayName("null 또는 빈 문자열 입력시 splitAndSum 체크")
-    public void splitAndSum_null_또는_빈문자() {
-        int result = stringAddCalculator.splitAndSum(null);
+    @NullAndEmptySource
+    public void splitAndSum_null_또는_빈문자(String text) {
+        int result = stringAddCalculator.splitAndSum(text);
         assertThat(result).isEqualTo(0);
 
-        result = stringAddCalculator.splitAndSum("");
+        result = stringAddCalculator.splitAndSum(text);
         assertThat(result).isEqualTo(0);
     }
 
