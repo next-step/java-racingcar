@@ -5,10 +5,7 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-/**
- * String 클래스에 대한 학습 테스트
- */
-
+@DisplayName("String 클래스에 대한 학습 테스트")
 public class StringTest {
 
 	@DisplayName("String의 split() 메서드 동작 확인")
@@ -42,5 +39,12 @@ public class StringTest {
 		assertThatThrownBy(() -> "abc".charAt(outOfIndex))
 			.isInstanceOf(StringIndexOutOfBoundsException.class)
 			.hasMessageContaining("String index out of range: " + outOfIndex);
+	}
+
+	@DisplayName("String의 isBlank() 메서드 동작 확인")
+	@Test
+	void isBlank() {
+		assertThat("".isBlank()).isTrue();
+		assertThat("123".isBlank()).isFalse();
 	}
 }
