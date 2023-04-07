@@ -10,21 +10,33 @@ public class Calculator {
             return ZERO;
         }
 
-        if (input.length() == 1) {
-            return Integer.parseInt(input);
-        }
+        return sum(parse(split(input)));
+    }
 
-        int result = ZERO;
-        String[] numbers = input.split(DEFAULT_DELIMITER);
+    private static boolean isEmpty(String input) {
+        return input == null || input.isEmpty();
+    }
 
-        for (String number : numbers) {
-            result += Integer.parseInt(number);
+    private static String[] split(String input) {
+        return input.split(DEFAULT_DELIMITER);
+    }
+
+    private static int[] parse(String[] numbers) {
+        int[] result = new int[numbers.length];
+
+        for (int i = 0; i < numbers.length; i++) {
+            result[i] = Integer.parseInt(numbers[i]);
         }
 
         return result;
     }
 
-    private static boolean isEmpty(String input) {
-        return input == null || input.isEmpty();
+    private static int sum(int[] numbers) {
+        int result = 0;
+
+        for (int number : numbers) {
+            result += number;
+        }
+        return result;
     }
 }
