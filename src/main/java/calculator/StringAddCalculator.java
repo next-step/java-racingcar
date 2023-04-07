@@ -1,27 +1,43 @@
 package calculator;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 public class StringAddCalculator {
 
     private static final int ZERO = 0;
-    private static final String DELIMETERS=",|:";
-
+    private static final Set<String> DELIMITERS = new HashSet<>(Arrays.asList(",", ":"));
 
     public int splitAndSum(String inputString) {
-        if(isInvalidInput(inputString)) {
+        if (isInvalidInput(inputString)) {
             return ZERO;
         }
 
-        //if(inputString.charAt(0)) { 커스텀 델리미터 사용은 나중에..
+        if (inputString.charAt(0) == '/' && inputString.charAt(1) == '/' && inputString.charAt(3) == '\n') {
+            String s = Character.toString(inputString.charAt(2));
 
-        //}
+            DELIMITERS.add(s);
+        }
 
-        return getSum(getInts(inputString.split(DELIMETERS)));
+        return getSum(getInts(inputString.split(toRegexString(DELIMITERS))));
 
+    }
+
+    private String toRegexString(Set<String> delimeters) {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (String delimeter : delimeters) {
+            stringBuilder.append(delimeter);
+            stringBuilder.append("|");
+        }
+        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        return stringBuilder.toString();
     }
 
     private static int getSum(int[] ints) {
         int sum = 0;
-        for(int temp : ints) {
+        for (int temp : ints) {
             sum += temp;
         }
         return sum;
