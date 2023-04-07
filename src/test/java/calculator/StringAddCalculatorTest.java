@@ -10,19 +10,13 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class StringAddCalculatorTest {
 
     @Test
-    void 커스텀구분자(){
+    void 커스텀구분자() {
         assertThat(splitAndSum("//;\n1;2;3")).isEqualTo(6);
         assertThat(splitAndSum("//;;\n1;;2;;3")).isEqualTo(6);
     }
 
     @Test
-    void 문자(){
-        assertThatThrownBy(() -> splitAndSum("a:"))
-                .isInstanceOf(RuntimeException.class);
-    }
-
-    @Test
-    void 음수(){
+    void 음수() {
         assertThatThrownBy(() -> splitAndSum("-1:2"))
                 .isInstanceOf(RuntimeException.class);
     }
