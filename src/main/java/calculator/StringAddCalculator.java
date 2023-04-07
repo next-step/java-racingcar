@@ -7,8 +7,17 @@ public class StringAddCalculator {
 
 
     public int splitAndSum(String inputString) {
+        String[] split = inputString.split(",");
+        int[] ints = new int[split.length];
+
+        for(int i=0 ; i<split.length ; i++ ) {
+            ints[i] = Integer.parseInt(split[i]);
+        }
         int sum = 0;
-        return -1;
+        for(int temp : ints) {
+            sum += temp;
+        }
+        return sum;
     }
 
 
