@@ -15,6 +15,8 @@ public class Calculator {
         return sumAll(elements);
     }
 
+    private static final Pattern PATTERN = Pattern.compile("//(.)\n(.*)");
+
     private static boolean checkIfEmpty(String text) {
         return  text == null || text.isEmpty();
     }
@@ -22,10 +24,14 @@ public class Calculator {
     private static List<String> splitText (String inputData){
         String delimiter, realText;
 
-        final Matcher m = Pattern.compile("//(.)\n(.*)").matcher(inputData);
+        final int DELIMITER_INDEX = 1;
+        final int TEXT_INDEX = 2;
+
+        final Matcher m = PATTERN.matcher(inputData);
+
         if (m.find()) {
-            delimiter = m.group(1);
-            realText = m.group(2);
+            delimiter = m.group(DELIMITER_INDEX);
+            realText = m.group(TEXT_INDEX);
         } else {
             delimiter = ",|:";
             realText = inputData;
@@ -35,10 +41,10 @@ public class Calculator {
     }
 
     private static int sumAll (List<String> strings) {
-        return convertStringArrayToIntArray(strings).stream().mapToInt(Integer::intValue).sum();
+        return convertStringsToNumbers(strings).stream().mapToInt(Integer::intValue).sum();
     }
 
-    private static List<Integer> convertStringArrayToIntArray(List<String> inputString) {
+    private static List<Integer> convertStringsToNumbers(List<String> inputString) {
         List<Integer> output = new ArrayList<>();
         for (String el : inputString) {
             int number = Integer.parseInt(el);
@@ -52,3 +58,5 @@ public class Calculator {
     }
 
 }
+
+
