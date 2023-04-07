@@ -9,6 +9,7 @@ public class StringToken {
     private static final String DEFAULT_DELIMITER = ",|:";
     private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
     private static final Pattern NOT_NUMERIC_PATTERN = Pattern.compile("\\D");
+    
     private final String delimiter;
     private final String text;
 
