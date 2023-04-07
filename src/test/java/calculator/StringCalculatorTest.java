@@ -28,23 +28,48 @@ import org.junit.jupiter.params.provider.MethodSource;
 @DisplayName("문자열 덧셈 계산기를 통한 TDD/리팩토링 실습")
 class StringCalculatorTest {
 
-    private static Stream<Arguments> provideArgumentsForSuccessTest() {
+    private static Stream<Arguments> provideArgumentsForEmptyTextTest() {
         return Stream.of(
             Arguments.of(null, 0, "null은 0을 리턴"),
             Arguments.of("", 0, "빈값은 0을 리턴"),
+            Arguments.of(" ", 0, "빈값은 0을 리턴")
+        );
+    }
+
+    @ParameterizedTest(name = "input={0} / expected={1} ({2})")
+    @MethodSource("provideArgumentsForEmptyTextTest")
+    @DisplayName("null 또는 빈값을 입력하는 경우 기본값인 0을 반환합니다.")
+    void empty_text_test(String text, int expected, String desc) {
+        assertThat(calculate(text)).isSameAs(expected);
+    }
+
+    private static Stream<Arguments> provideArgumentsForDefaultDelimiterTest() {
+        return Stream.of(
             Arguments.of("5", 5, "숫자가 하나라면 해당숫자 그대로 리턴"),
             Arguments.of("1,2", 3, "콤마구분자"),
             Arguments.of("1,2,3", 6, "콤마구분자"),
-            Arguments.of("1,2:3", 6, "콜론구분자포함"),
+            Arguments.of("1,2:3", 6, "콜론구분자포함")
+        );
+    }
+
+    @ParameterizedTest(name = "input={0} / expected={1} ({2})")
+    @MethodSource("provideArgumentsForDefaultDelimiterTest")
+    @DisplayName("특정 구분자를 가지는 문자열을 전달하는 경우 기본 구분자를 기준으로 분리한 각 숫자의 합을 반환합니다.")
+    void default_delimiter_test(String text, int expected, String desc) {
+        assertThat(calculate(text)).isSameAs(expected);
+    }
+
+    private static Stream<Arguments> provideArgumentsForCustomDelimiterTest() {
+        return Stream.of(
             Arguments.of("//;\n1;2", 3, "커스텀 딜리미터 더하기"),
             Arguments.of("//;\n1;2;3", 6, "커스텀 딜리미터 더하기")
         );
     }
 
     @ParameterizedTest(name = "input={0} / expected={1} ({2})")
-    @MethodSource("provideArgumentsForSuccessTest")
-    @DisplayName("특정 구분자를 가지는 문자열을 전달하는 경우 구분자를 기준으로 분리한 각 숫자의 합을 반환합니다.")
-    void success_test(String text, int expected, String desc) {
+    @MethodSource("provideArgumentsForCustomDelimiterTest")
+    @DisplayName("특정 패턴과 구분자를 가지는 문자열을 전달하는 경우 사용자 구분자를 기준으로 분리한 각 숫자의 합을 반환합니다.")
+    void custom_delimiter_test(String text, int expected, String desc) {
         assertThat(calculate(text)).isSameAs(expected);
     }
 
