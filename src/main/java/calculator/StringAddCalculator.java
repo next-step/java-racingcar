@@ -18,6 +18,7 @@ public class StringAddCalculator {
             String s = Character.toString(inputString.charAt(2));
 
             DELIMITERS.add(s);
+            inputString = inputString.substring(4);
         }
 
         String RegexString = toRegexString(DELIMITERS);
