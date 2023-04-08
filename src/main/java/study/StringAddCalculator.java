@@ -10,7 +10,6 @@ public class StringAddCalculator {
     private static final Pattern CUSTOM_PATTERN = Pattern.compile("//(.)\n(.*)");
     private static final int DELIMITER_PATTERN_NUMBER = 1;
     private static final int INPUT_PATTERN_NUMBER = 2;
-
     public int splitAndSum(String inputText) {
 
         if (checkEmpty(inputText)) {
