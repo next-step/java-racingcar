@@ -50,7 +50,7 @@ public class AutomobileFederation {
     }
 
     public List<String> lapSituations(Round round) {
-        throw new RuntimeException();
-        //return null;
+        Record record = this.scoreboard.get(round);
+        return record.toList();
     }
 }

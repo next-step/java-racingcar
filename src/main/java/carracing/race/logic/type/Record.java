@@ -8,4 +8,8 @@ public class Record {
     public Record(List<String> record) {
         this.record = record;
     }
+
+    public List<String> toList() {
+        return record;
+    }
 }
