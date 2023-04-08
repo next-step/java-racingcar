@@ -1,4 +1,4 @@
-package study;
+package study.carrace.step2;
 
 public class SeparatedOperands {
     private final String[] operands;

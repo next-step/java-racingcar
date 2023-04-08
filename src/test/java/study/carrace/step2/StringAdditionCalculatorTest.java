@@ -1,4 +1,4 @@
-package study;
+package study.carrace.step2;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.SoftAssertions.*;
-import static study.StringAdditionCalculator.*;
+import static study.carrace.step2.StringAdditionCalculator.*;
 
 class StringAdditionCalculatorTest {
     @ParameterizedTest(name = "[{index}/2] {displayName}")
