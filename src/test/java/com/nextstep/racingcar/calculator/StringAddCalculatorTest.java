@@ -1,4 +1,4 @@
-package racingcar.calculator;
+package com.nextstep.racingcar.calculator;
 
 import static com.nextstep.calculator.StringAddCalculator.splitAndSum;
 import static org.assertj.core.api.Assertions.assertThat;
