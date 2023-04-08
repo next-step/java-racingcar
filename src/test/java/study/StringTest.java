@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class StringTest {
     @DisplayName("String 클래스에 대한 학습 테스트 - 요구사항1")
     @Test
-    void string_split() {
+    void stringSplit() {
         String[] result = "1,2".split(",");
 
         assertThat(result).contains("1");
@@ -21,7 +21,7 @@ public class StringTest {
 
     @DisplayName("String 클래스에 대한 학습 테스트 - 요구사항2")
     @Test
-    void string_substring() {
+    void stringSubstring() {
         String text = "(1,2)";
         String textSubstring = text.substring(1, text.length() -1);
 
@@ -30,7 +30,7 @@ public class StringTest {
 
     @DisplayName("String 클래스에 대한 학습 테스트 - 요구사항3")
     @Test
-    void string_chatAt() {
+    void stringCharAt() {
 
         assertThatThrownBy(() -> {
             "abc".charAt(4);
