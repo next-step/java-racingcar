@@ -25,8 +25,11 @@ public class AutomobileFederation {
 
         for (Round round : this.getRounds()) {
             List<String> recordThisRound = new ArrayList<>();
-            for (Score scoreCurrentCar : raceResults.get(round)) {
-                recordThisRound.add(getPreviousProgress() + scoreCurrentCar.toProgress());
+
+            for(int carIndex=0 ; carIndex<raceResults.get(round).size() ; carIndex++) {
+            //for (Score scoreCurrentCar : raceResults.get(round)) {
+                Score scoreCurrentCar = raceResults.get(round).get(carIndex);
+                recordThisRound.add(getPreviousProgress(round,carIndex,recordMap) + scoreCurrentCar.toProgress());
             }
             Record record = new Record(recordThisRound);
             recordMap.put(round, record);
@@ -34,8 +37,13 @@ public class AutomobileFederation {
         return recordMap;
     }
 
-    private String getPreviousProgress() {
-        throw new RuntimeException();
+    private String getPreviousProgress(Round round,int carIndex,Map<Round, Record>  curRecordMap) {
+        if(round.toInt()==1 ) {
+            return "";
+        }
+        Round previousRound     = round.getPrevious();
+        Record record = curRecordMap.get(previousRound);
+        return record.toList().get(carIndex);
     }
 
 //    public Map<Round, Record> getScoreboard() {

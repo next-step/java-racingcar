@@ -22,9 +22,9 @@ public class ResultViewTest {
     @Test
     public void iteration() {
         //given
-        int
+        //int
         //when
-        resultview
+        //resultview
         //then
     }
 

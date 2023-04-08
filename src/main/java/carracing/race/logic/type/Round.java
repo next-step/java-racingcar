@@ -1,8 +1,13 @@
 package carracing.race.logic.type;
 
+import java.util.Objects;
+
 public class Round implements Comparable<Round> {
     private final int value;
     public Round(int value) {
+        if(value<0) {
+            throw new RuntimeException();
+        }
         this.value = value;
     }
     public int toInt() {
@@ -11,5 +16,25 @@ public class Round implements Comparable<Round> {
     @Override
     public int compareTo(Round other) {
         return Integer.compare(this.toInt(), other.toInt());
+    }
+
+    public Round getPrevious() {
+        if(this.value <= 1) {
+            return this;
+        }
+        return new Round(value - 1);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Round round = (Round) o;
+        return value == round.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 }
