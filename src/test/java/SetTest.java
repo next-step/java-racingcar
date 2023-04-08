@@ -25,14 +25,14 @@ public class SetTest {
     @Test
     @DisplayName("Set 내 중복없이 데이터 사이즈가 계산되는지 테스트")
     void sizeTest() {
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     @DisplayName("Set 내 파라마티러 받은 값이 모두 포함되어있는지 테스트")
     void containsTestWithValueSource(int input) {
-        assertThat(numbers.contains(input)).isTrue();
+        assertThat(numbers).contains(input);
     }
 
     @ParameterizedTest
