@@ -42,6 +42,7 @@ public class StringCalculatorTest {
     void positive_number_check(){
         assertThatThrownBy(()->{
             StringCalculator.calculator("-1,2,3");
-        }).isInstanceOf(RuntimeException.class);
+        }).isInstanceOf(RuntimeException.class)
+          .hasMessage("음수는 입력이 불가합니다. 양수를 입력하세요.");
     }
 }
