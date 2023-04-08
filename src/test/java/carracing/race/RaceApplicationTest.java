@@ -1,5 +1,8 @@
 package carracing.race;
 
+import carracing.race.ui.InputView;
+import carracing.race.ui.ResultView;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -13,10 +16,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.fail;
 
 
-class RaceApplicationTest {
+public class RaceApplicationTest {
     private static final Logger log = Logger.getLogger("RaceApplicationTest");
 
     private RaceApplication raceApplication;
+
+    @BeforeEach
+    public void beforeEach() {
+        raceApplication = new RaceApplication(new InputView(System.in,System.out),new ResultView(System.in,System.out));
+    }
 
     @DisplayName("경기횟수, 참가차량수가 주어지면 경기결과를 리턴한다")
     @Test
