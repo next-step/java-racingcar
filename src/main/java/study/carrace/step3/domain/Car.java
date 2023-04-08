@@ -19,7 +19,7 @@ public class Car {
         moveStatus.add(isMovable());
     }
 
-    public List getMoveStatus() {
+    public List<Boolean> getMoveStatus() {
         return moveStatus;
     }
 
