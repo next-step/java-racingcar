@@ -10,7 +10,7 @@ public class InputView {
         return SCANNER.nextInt();
     }
 
-    public static int inputTryNumber() {
+    public static int inputTryCount() {
         System.out.println("시도할 횟수는 몇 회 인가요?");
         return SCANNER.nextInt();
     }
