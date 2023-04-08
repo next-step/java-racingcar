@@ -1,8 +1,5 @@
 package step3.strategy.move;
 
-import step3.view.PrintView;
-
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomMoveStrategy implements MoveStrategy {
@@ -11,13 +8,14 @@ public class RandomMoveStrategy implements MoveStrategy {
     private final static int RANDOM_BOUND = 10;
     private final static int THRESHOLD = 4;
 
-    private RandomMoveStrategy(){}
+    private RandomMoveStrategy() {
+    }
 
     private static class RandomMoveStrategyInstanceHolder {
         private static final RandomMoveStrategy INSTANCE = new RandomMoveStrategy();
     }
 
-    private RandomMoveStrategy getInstance() {
+    public static RandomMoveStrategy getInstance() {
         return RandomMoveStrategyInstanceHolder.INSTANCE;
     }
 
