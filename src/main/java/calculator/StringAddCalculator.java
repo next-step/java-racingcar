@@ -1,9 +1,13 @@
-package step2;
+package calculator;
 
 public class StringAddCalculator {
 
     public static final int ZERO = 0;
     public static final String DELIMITER = ",|:";
+
+    public StringAddCalculator(String[] splitText) {
+
+    }
 
     public static int splitAndSum(String text) {
         if(isBoolean(text)) return ZERO;
