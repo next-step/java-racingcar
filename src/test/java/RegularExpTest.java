@@ -1,49 +1,53 @@
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;
 
 public class RegularExpTest {
 
 
-    @Test
-    void specialSymbolTest() {
-        assertThat("!!!]]".matches(".*[\\. \\[ \\] \\ \\{ \\} \\* \\+ \\? \\^ \\$ \\( \\) \\|]*.*$")).isTrue();
-        assertThat("^$&^#".matches(".*[\\. \\[ \\] \\ \\{ \\} \\* \\+ \\? \\^ \\$ \\( \\) \\|]*.*")).isTrue();
-    }
-    @Test
-    void matcherGroupTest() {
-        Pattern pattern = Pattern.compile("//(.*)\n");
-        Matcher matcher = pattern.matcher("//@\n123123");
-        assertThat(matcher.find()).isEqualTo(true);
-        assertThat(matcher.group(1)).isEqualTo("@");
-
-        pattern = Pattern.compile("//(.*)\n(1-9+)");
-        matcher = pattern.matcher("123123");
-        assertThat(matcher.find()).isEqualTo(false);
-
-        pattern = Pattern.compile("//(.*)\n(.*)");
-        matcher = pattern.matcher("//;\n1:2:4");
-        assertThat(matcher.find()).isEqualTo(true);
-        assertThat(matcher.group(1)).isEqualTo(";");
-        assertThat(matcher.group(2)).isEqualTo("1:2:4");
+    @ParameterizedTest
+    @ValueSource(strings = {"!!!]]", "^$&^#"})
+    void specialSymbolTest(String input) {
+        assertThat(input.matches(".*[\\. \\[ \\] \\ \\{ \\} \\* \\+ \\? \\^ \\$ \\( \\) \\|]*.*$")).isTrue();
     }
 
-    @Test
-    void matchesWithRegularExpTest() {
-        boolean actual = "\n".matches("\n");
-        assertThat(actual).isEqualTo(true);
+    @ParameterizedTest
+    @MethodSource(value = "generatePatternMatcherResult")
+    void matcherGroupTest(Pattern pattern, String input, boolean expected1, int expected2) {
 
-        actual = "123\n".matches(".+\n");
-        assertThat(actual).isEqualTo(true);
+        Matcher matcher = pattern.matcher(input);
+        assertThat(matcher.find()).isEqualTo(expected1);
+        assertThat(matcher.groupCount()).isEqualTo(expected2);
+    }
 
-        actual = "123\n123123".matches(".+\n.+");
-        assertThat(actual).isEqualTo(true);
+    private static Stream<Arguments> generatePatternMatcherResult() {
+        return Stream.of(
+                Arguments.of(Pattern.compile("//(.*)\n"), "//@\n123123", true, 1),
+                Arguments.of(Pattern.compile("//(.*)\n(.*)"), "//;\n1:2:4", true, 2)
+        );
+    }
+    @ParameterizedTest
+    @MethodSource(value = "generateInputAndRegex")
+    void matchesWithRegularExpTest(String input, String regex) {
+        assertThat(input.matches(regex)).isTrue();
+    }
 
-        actual = "//@\n123123".matches("//.+\n.+");
-        assertThat(actual).isEqualTo(true);
+    private static Stream<Arguments> generateInputAndRegex() {
+        return Stream.of(
+                Arguments.of("\n", "\n"),
+                Arguments.of("//@\n123123", "//.+\n.+"),
+                Arguments.of("123\n123123", ".+\n.+"),
+                Arguments.of("123\n", ".+\\n")
+        );
     }
 
     @Test
