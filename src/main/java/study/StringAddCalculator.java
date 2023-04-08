@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 class StringAddCalculator {
-  private static final int CUSTOM_DELIMER = 1;
+  private static final int CUSTOM_DELIMITER = 1;
   private static final int OPERANDS = 2;
   private static final String RUNTIME_EXCEPTION_MESSAGE = "문자열 계산기에 숫자 이외의 값 또는 음수를 전달하는 경우 RuntimeException 예외를 throw한다.";
 
@@ -29,7 +29,7 @@ class StringAddCalculator {
     Matcher matcher = CUSTOM_DELIMITER_FORMAT.matcher(text);
 
     if (matcher.find()) {
-      String customDelimiter = matcher.group(CUSTOM_DELIMER);
+      String customDelimiter = matcher.group(CUSTOM_DELIMITER);
 
       return matcher.group(OPERANDS).split(customDelimiter);
     }
