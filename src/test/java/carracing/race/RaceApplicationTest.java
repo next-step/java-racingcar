@@ -23,7 +23,7 @@ public class RaceApplicationTest {
 
     @BeforeEach
     public void beforeEach() {
-        raceApplication = new RaceApplication(new InputView(System.in,System.out),new ResultView(System.in,System.out));
+        raceApplication = new RaceApplication(new InputView(System.in,System.out),new ResultView(System.out));
     }
 
     @DisplayName("경기횟수, 참가차량수가 주어지면 경기결과를 리턴한다")

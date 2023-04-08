@@ -6,8 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 public class ResultView {
-    public ResultView(InputStream in, PrintStream out) {
-
+    private final PrintStream printStream;
+    public ResultView(PrintStream printStream) {
+        this.printStream = printStream;
     }
 
     public void resultview(Map<Integer, List<Integer>> raceResults) {

@@ -6,7 +6,7 @@ import carracing.race.ui.ResultView;
 
 public class Launcher {
     public static void main(String[] args) {
-        RaceApplication raceApplication = new RaceApplication(new InputView(System.in,System.out),new ResultView(System.in,System.out));
+        RaceApplication raceApplication = new RaceApplication(new InputView(System.in,System.out),new ResultView(System.out));
         raceApplication.run();
     }
 }
