@@ -14,7 +14,7 @@ public class RacingGameTest {
 
     @Test
     @DisplayName("자동차 대수를 입력한다")
-    void input_car_number(){
+    void input_car_number() {
         mockInputStream("3");
 
         RacingGame car = new RacingGame();
@@ -24,7 +24,7 @@ public class RacingGameTest {
 
     @Test
     @DisplayName("자동차 이동 횟수를 입력한다")
-    void input_car_move_times(){
+    void input_car_move_times() {
         mockInputStream("3");
 
         RacingGame car = new RacingGame();
@@ -35,9 +35,9 @@ public class RacingGameTest {
     @ParameterizedTest
     @CsvSource(value = {"1:false", "2:false", "3:false", "4:true", "5:true"}, delimiter = ':')
     @DisplayName("조건 값에 따른 True, False 반환 확인")
-    void check_go_or_stop_when_condition_is_four(int randomNumber, boolean expected){
+    void check_go_or_stop_when_condition_is_four(int randomNumber, boolean expected) {
         RacingGame car = new RacingGame();
-        assertThat(car.goOrStop(4,randomNumber)).isEqualTo(expected);
+        assertThat(car.goOrStop(4, randomNumber)).isEqualTo(expected);
     }
 
 
