@@ -21,7 +21,7 @@ class InputControlTest {
         System.setIn(in);
 
         InputControl inputControl = new CarInputControl();
-        assertThatThrownBy(inputControl::integer)
+        assertThatThrownBy(inputControl::receiveInt)
                 .isInstanceOf(InputMismatchException.class)
                 .hasMessage("input must be integer");
 
@@ -37,7 +37,7 @@ class InputControlTest {
         System.setIn(in);
 
         InputControl inputControl = new TrialInputControl();
-        assertThatThrownBy(inputControl::integer)
+        assertThatThrownBy(inputControl::receiveInt)
                 .isInstanceOf(InputMismatchException.class)
                 .hasMessage("input must be integer");
 

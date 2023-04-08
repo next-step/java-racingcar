@@ -10,8 +10,8 @@ public class Program {
         InputControl carControl = new CarInputControl();
         InputControl trialControl = new TrialInputControl();
 
-        int cars = carControl.integer();
-        int trials = trialControl.integer();
+        int cars = carControl.receiveInt();
+        int trials = trialControl.receiveInt();
 
         RaceControl raceControl = new RaceControl(cars, trials);
         raceControl.start();

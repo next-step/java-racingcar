@@ -10,7 +10,7 @@ public abstract class InputControl {
 
     abstract protected View view();
 
-    public int integer() {
+    public int receiveInt() {
         this.view().render();
         try {
             return scanner.nextInt();
