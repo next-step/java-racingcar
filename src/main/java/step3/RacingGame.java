@@ -8,9 +8,7 @@ import step3.view.InputView;
 import step3.view.PrintView;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.IntStream;
 
 public class RacingGame {
@@ -50,7 +48,7 @@ public class RacingGame {
         IntStream.range(ZERO, racingInformation.getNumberOfReps())
                 .forEach(reps -> {
                     racingCarList.forEach(RacingCar::move);
-                    repetitionsList.add(Repetitions.recordOf(reps, Collections.unmodifiableList(racingCarList)));
+                    repetitionsList.add(Repetitions.recordOf(reps, racingCarList));
                 });
 
         return repetitionsList;
@@ -60,7 +58,7 @@ public class RacingGame {
         throw new RuntimeException(FORCED_TERMINATION_USER_GUIDE);
     }
 
-    private List<RacingCar> makeRacingCarList(RacingInformation racingInformation) {
+    public List<RacingCar> makeRacingCarList(RacingInformation racingInformation) {
         List<RacingCar> racingCarList = new ArrayList<>();
 
         for (int racingCarIndex = ZERO; racingCarIndex < racingInformation.getNumberOfCars(); racingCarIndex++) {
