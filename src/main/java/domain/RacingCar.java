@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 public class RacingCar {
     private int position;
 
-    private RacingCar() {
+    public RacingCar() {
         this.position = 0;
     }
 
