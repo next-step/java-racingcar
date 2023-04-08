@@ -10,6 +10,17 @@ public class InputView {
     private final static String REQUEST_NUMBER_OF_CAR_GUIDE = "자동차 대수는 몇 대 인가요?";
     private final static String REQUEST_NUMBER_OF_TRY = "시도할 회수는 몇 회 인가요?";
 
+    private InputView() {
+    }
+
+    private static class InputViewInstanceHolder {
+        private static final InputView INSTANCE = new InputView();
+    }
+
+    private InputView getInstance() {
+        return InputViewInstanceHolder.INSTANCE;
+    }
+
     public int requestNumberOfCar() {
         return showPrompt(REQUEST_NUMBER_OF_CAR_GUIDE);
     }

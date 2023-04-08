@@ -6,6 +6,17 @@ public class PrintView {
 
     private final static String MOVE_PRINT_STRING = "-";
 
+    private PrintView() {
+    }
+
+    private static class PrintViewInstanceHolder {
+        private static final PrintView INSTANCE = new PrintView();
+    }
+
+    private PrintView getInstance() {
+        return PrintViewInstanceHolder.INSTANCE;
+    }
+
     public void print(Repetitions repetitions) {
         System.out.println(repetitions.getRepetitions() + "번째 reps");
         repetitions.getCarList().forEach(car -> printRacingCar(car.getPosition().getPosition()));
