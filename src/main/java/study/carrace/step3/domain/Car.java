@@ -6,13 +6,13 @@ import java.util.List;
 
 public class Car {
     private final RandomIntegerGenerator randomIntegerGenerator;
-    private final int movableNumber;
+    private final int movableThreshold;
     private final List<Boolean> moveStatus;
 
-    public Car(RandomIntegerGenerator randomIntegerGenerator, int movableNumber) {
+    public Car(RandomIntegerGenerator randomIntegerGenerator, int movableThreshold) {
         this.randomIntegerGenerator = randomIntegerGenerator;
-        this.movableNumber = movableNumber;
-        this.moveStatus = new ArrayList();
+        this.movableThreshold = movableThreshold;
+        this.moveStatus = new ArrayList<>();
     }
 
     public void moveOrStop() {
@@ -24,6 +24,6 @@ public class Car {
     }
 
     private boolean isMovable() {
-        return randomIntegerGenerator.generate() >= movableNumber;
+        return randomIntegerGenerator.generate() >= movableThreshold;
     }
 }
