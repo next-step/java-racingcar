@@ -11,6 +11,16 @@ public class UnderscoreDrawStrategy implements DrawStrategy {
 
     private final StringBuffer stringBuffer = new StringBuffer();
 
+    private UnderscoreDrawStrategy(){}
+
+    private static class UnderscoreDrawStrategyInstanceHolder{
+        private static final UnderscoreDrawStrategy INSTANCE = new UnderscoreDrawStrategy();
+    }
+
+    public UnderscoreDrawStrategy getInstance(){
+        return UnderscoreDrawStrategyInstanceHolder.INSTANCE;
+    }
+
     @Override
     public String draw(Position position) {
         clear();
