@@ -10,4 +10,8 @@ public class Racecourse {
         tracks.add(track);
         tracks.sort(Track::compareTo);
     }
+
+    public List<Track> tracks() {
+        return tracks;
+    }
 }

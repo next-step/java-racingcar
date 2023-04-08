@@ -5,6 +5,7 @@ import step3.domain.RacingCar;
 import step3.domain.Track;
 import step3.util.RacingCreateHelper;
 import step3.view.InputView;
+import step3.view.ResultView;
 
 import java.util.List;
 import java.util.Scanner;
@@ -31,8 +32,10 @@ public class RacingCarApplication {
             racecourse.addTrack(track);
         }
 
+        ResultView.printResultTitle();
         for (int i = 0; i < tryNumbers; i++) {
             racingCars.forEach(RacingCar::steeringToForward);
+            ResultView.printCarPosition(racecourse);
         }
     }
 

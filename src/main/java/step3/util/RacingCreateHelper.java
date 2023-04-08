@@ -12,13 +12,13 @@ public class RacingCreateHelper {
     }
 
     public static List<RacingCar> createRacingCars(int amount) {
-        return IntStream.of(amount)
+        return IntStream.range(0, amount)
                 .mapToObj(i -> new RacingCar())
                 .collect(Collectors.toList());
     }
 
     public static List<Track> createTracks(int amount) {
-        return IntStream.of(amount)
+        return IntStream.range(0, amount)
                 .mapToObj(Track::new)
                 .collect(Collectors.toList());
     }
