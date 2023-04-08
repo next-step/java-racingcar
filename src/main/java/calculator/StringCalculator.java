@@ -1,7 +1,10 @@
 package calculator;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class StringCalculator {
 
@@ -10,20 +13,18 @@ public class StringCalculator {
     public static final String CUSTOM_DELIMITER_FIND_REGEX = "//(.*)\n(.*)";
 
     public static int splitAndSum(String text) {
-        int sum = ZERO;
         if (isBlank(text)) {
-            return sum;
+            return ZERO;
         }
 
-        sum = sum(getNumbers(split(text)));
-        return sum;
+        return sum(toPositiveNumbers(split(text)));
     }
 
     private static boolean isBlank(String text) {
         return text == null || text.isBlank();
     }
 
-    private static int sum(int[] numbers) {
+    private static int sum(List<Integer> numbers) {
         int sum = ZERO;
         for (int number : numbers) {
             sum += number;
@@ -31,16 +32,19 @@ public class StringCalculator {
         return sum;
     }
 
-    private static int[] getNumbers(String[] stringNumbers) {
-        int[] numbers = new int[stringNumbers.length];
-        for (int i = 0; i < stringNumbers.length; i++) {
-            numbers[i] = getPositiveNumber(new PositiveNumber(stringNumbers[i]));
-        }
-        return numbers;
-    }
+//    private static int[] toPositiveNumbers(String[] stringNumbers) {
+//        int[] numbers = new int[stringNumbers.length];
+//        for (int i = 0; i < stringNumbers.length; i++) {
+//            numbers[i] = new PositiveNumber(stringNumbers[i]).valueOf();
+//        }
+//        return numbers;
+//    }
 
-    private static int getPositiveNumber(PositiveNumber positiveNumber) {
-        return positiveNumber.valueOf();
+    private static List<Integer> toPositiveNumbers(String[] stringNumbers) {
+        return Arrays.stream(stringNumbers)
+                .map((stringNumber) -> {
+                    return new PositiveNumber(stringNumber).valueOf();
+                }).collect(Collectors.toList());
     }
 
     private static String[] split(String text) {
