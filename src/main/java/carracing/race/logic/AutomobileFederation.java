@@ -5,6 +5,7 @@ import carracing.race.logic.type.Round;
 import carracing.race.logic.type.Score;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -13,22 +14,28 @@ public class AutomobileFederation {
 
     private final Map<Round, List<Score>> scoreListResultMap;
     private final Map<Round, Record> recordBoards;
-            //scoreboard
 
     public AutomobileFederation(Map<Round, List<Score>> scoreListResultMap) {
         this.scoreListResultMap = scoreListResultMap;
-        this.recordBoards = scoreboardCalculation(scoreListResultMap);
-
+        this.recordBoards = recordBoardCalculation(scoreListResultMap);
     }
 
-    private Map<Round, Record> scoreboardCalculation(Map<Round, List<Score>> raceResults) {
+    private Map<Round, Record> recordBoardCalculation(Map<Round, List<Score>> raceResults) {
+        Map<Round, Record> recordMap = new HashMap<>();
 
-        for (Round round : getRounds()) {
+        for (Round round : this.getRounds()) {
+            List<String> recordThisRound = new ArrayList<>();
             for (Score scoreCurrentCar : raceResults.get(round)) {
-
+                recordThisRound.add(getPreviousProgress() + scoreCurrentCar.toProgress());
             }
+            Record record = new Record(recordThisRound);
+            recordMap.put(round, record);
         }
-        return null;
+        return recordMap;
+    }
+
+    private String getPreviousProgress() {
+        throw new RuntimeException();
     }
 
 //    public Map<Round, Record> getScoreboard() {

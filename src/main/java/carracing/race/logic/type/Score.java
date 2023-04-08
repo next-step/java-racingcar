@@ -10,4 +10,8 @@ public class Score {
     public int toInt() {
         return value;
     }
+
+    public String toProgress() {
+        return value > 4 ? "-" : "";
+    }
 }
