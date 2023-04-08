@@ -8,7 +8,6 @@ public class StringToken {
     private static final String DEFAULT_VALUE = "0";
     private static final String DEFAULT_DELIMITER = ",|:";
     private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
-    private static final Pattern NOT_NUMERIC_PATTERN = Pattern.compile("\\D");
 
     private final String delimiter;
     private final String text;
@@ -59,16 +58,12 @@ public class StringToken {
     }
 
     private int toPositiveInt(String value) {
-        throwIfNotNumeric(value);
-        int toInt = Integer.parseInt(value);
-        throwIfNegative(toInt);
-        return toInt;
-    }
-
-    private void throwIfNotNumeric(String value) {
-        Matcher matcher = NOT_NUMERIC_PATTERN.matcher(value);
-        if (matcher.find()) {
-            throw new RuntimeException("숫자 이외에 값은 입력할 수 없습니다.");
+        try {
+            int valueAsInt = Integer.parseInt(value);
+            throwIfNegative(valueAsInt);
+            return valueAsInt;
+        } catch (NumberFormatException e) {
+            throw new RuntimeException("토크닝 대상에 숫자가 아닌 값이 포함되어 있습니다.");
         }
     }
 
