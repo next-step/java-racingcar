@@ -2,7 +2,7 @@ package step3.view;
 
 import java.util.Scanner;
 
-import static step3.component.NumberValidator.validateInputNumber;
+import static step3.component.NumberValidator.validateCarAmount;
 import static step3.component.NumberValidator.validateTryNumber;
 
 public class InputView {
@@ -11,7 +11,7 @@ public class InputView {
 
     public static int inputCarNumbers(Scanner scanner) {
         System.out.println(inputCarNumberMessage);
-        return validateInputNumber(scanner.nextInt());
+        return validateCarAmount(scanner.nextInt());
     }
 
     public static int inputTryNumbers(Scanner scanner) {

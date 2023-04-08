@@ -17,24 +17,23 @@ public class RacingCarApplication {
     private static final Scanner scanner = new Scanner(System.in);
 
     private static void run() {
+        // 입력값 받기
         final int carNumbers = InputView.inputCarNumbers(scanner);
         final int tryNumbers = InputView.inputTryNumbers(scanner);
 
+        // 경기장 세팅
         final List<RacingCar> racingCars = createRacingCars(carNumbers);
         final List<Track> tracks = createTracks(carNumbers);
         final Racecourse racecourse = new Racecourse();
-
-        for (int i = 0; i < tracks.size(); i++) {
-            tracks.get(i).entrance(racingCars.get(i));
+        racecourse.addTracks(tracks);
+        for (RacingCar racingCar : racingCars) {
+            racecourse.entrance(racingCar);
         }
 
-        for (Track track : tracks) {
-            racecourse.addTrack(track);
-        }
-
+        // 경기 시작 및 결과 출력
         ResultView.printResultTitle();
         for (int i = 0; i < tryNumbers; i++) {
-            racingCars.forEach(RacingCar::steeringToForward);
+            racecourse.signalToForward();
             ResultView.printCarPosition(racecourse);
         }
     }

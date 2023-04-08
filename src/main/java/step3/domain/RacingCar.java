@@ -9,11 +9,15 @@ public class RacingCar {
 
     private int position = defaultPosition;
 
-    public int position() {
+    protected int position() {
         return position;
     }
 
-    public void steeringToForward() {
+    protected void resetPosition() {
+        position = defaultPosition;
+    }
+
+    protected void steeringToForward() {
         if (RandomNumberUtils.generate() > moveCondition) {
             position += defaultDistance;
         }
