@@ -7,11 +7,17 @@ public class NumberValidator {
         return number >= positiveMinimum;
     }
 
-    public static int throwIfNotPositive(int number) {
+    public static int validateInputNumber(int number) {
         if (!isPositive(number)) {
             throw new IllegalArgumentException("양수만 입력 가능합니다.");
         }
+        return number;
+    }
 
+    public static int validateTryNumber(int number) {
+        if (!isPositive(number)) {
+            throw new IllegalArgumentException("0 이상만 입력이 가능합니다");
+        }
         return number;
     }
 }
