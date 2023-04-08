@@ -1,10 +1,9 @@
 package domain;
 
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import util.RandomNumberGenerator;
 
 public class RacingCar {
+    private static final int STANDARD_MOVE_COUNT = 4;
     private int position;
 
     public RacingCar() {
@@ -16,12 +15,9 @@ public class RacingCar {
     }
 
     public void moveForward() {
-        this.position++;
-    }
-
-    public static List<RacingCar> createCarsByCount(int count) {
-        return Stream.generate(RacingCar::new)
-                .limit(count)
-                .collect(Collectors.toList());
+        int moveCount = RandomNumberGenerator.generateRandomNumber();
+        if (moveCount >= STANDARD_MOVE_COUNT) {
+            this.position++;
+        }
     }
 }
