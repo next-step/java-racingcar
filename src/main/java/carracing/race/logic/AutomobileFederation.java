@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public class AutomobileFederation {
 
     private final Map<Round, List<Integer>> raceResults;
-    private final Map<Integer, List<String>> scoreboard;
+    private final Map<Round, List<String>> scoreboard;
             //scoreboard
 
     public AutomobileFederation(Map<Round, List<Integer>> raceResults) {
@@ -20,7 +20,7 @@ public class AutomobileFederation {
 
     }
 
-    private Map<Integer, List<String>> scoreboardCalculation(Map<Round, List<Integer>> raceResults) {
+    private Map<Round, List<String>> scoreboardCalculation(Map<Round, List<Integer>> raceResults) {
 
         for (Round round : getRounds()) {
             for (int recordCurrentCar : raceResults.get(round)) {
@@ -30,7 +30,7 @@ public class AutomobileFederation {
         return null;
     }
 
-    public Map<Integer, List<String>> getScoreboard() {
+    public Map<Round, List<String>> getScoreboard() {
         return scoreboard;
     }
 
