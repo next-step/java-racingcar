@@ -32,6 +32,7 @@ public class StringTest {
         assertThat(data.charAt(0)).isEqualTo('a');
         assertThat(data.charAt(1)).isEqualTo('b');
         assertThat(data.charAt(2)).isEqualTo('c');
+
         assertThatExceptionOfType(IndexOutOfBoundsException.class)
                 .isThrownBy(() -> {
                     data.charAt(3);
