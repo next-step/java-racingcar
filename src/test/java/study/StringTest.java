@@ -40,4 +40,35 @@ public class StringTest {
             request.charAt(index);
         }).withMessage("string index out of range: %s", index);
     }
+
+    //****** code review
+
+    @Test
+    @DisplayName("test numbers split")
+    void splitNumbers() {
+        //given
+        String numbersString = "1,2";
+
+        //when
+        String[] numbersArray = numbersString.split(",");
+
+        //then
+        assertThat(numbersArray).contains("1");
+        assertThat(numbersArray).containsExactly("1","2");
+    }
+
+    @Test
+    @DisplayName("test number split")
+    void splitNumber() {
+        //given
+        String numberString = "1";
+
+        //when
+        String[] numberArray = numberString.split(",");
+
+        //then
+        for (String number : numberArray) {
+            assertThat(number).contains("1");
+        }
+    }
 }
