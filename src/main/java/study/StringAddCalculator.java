@@ -21,20 +21,16 @@ class StringAddCalculator {
     return text == null || text.isEmpty();
   }
 
-  private static String[] toStrings(String text) {
-    return text.split(DEFAULT_DELIMITER);
-  }
-
   private static String[] customToStrings(String text) {
-    Matcher m = CUSTOM_DELIMITER.matcher(text);
+    Matcher matcher = CUSTOM_DELIMITER.matcher(text);
 
-    if (m.find()) {
-      String customDelimiter = m.group(1);
+    if (matcher.find()) {
+      String customDelimiter = matcher.group(1);
 
-      return m.group(2).split(customDelimiter);
+      return matcher.group(2).split(customDelimiter);
     }
 
-    return toStrings(text);
+    return text.split(DEFAULT_DELIMITER);
   }
 
   private static int validatedNumber(String text) {
