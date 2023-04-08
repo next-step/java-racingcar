@@ -1,8 +1,5 @@
 package study;
 
-import static org.assertj.core.api.Assertions.*;
-
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -10,9 +7,12 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 public class StringTest {
     @Test
-    void requirement1() {
+    void split_검증() {
         // given
         String given1 = "1,2";
         String given2 = "1";
@@ -27,7 +27,7 @@ public class StringTest {
     }
 
     @Test
-    void requirement2() {
+    void substring_후_split() {
         // given
         String given = "(1,2)";
 
@@ -38,26 +38,35 @@ public class StringTest {
         assertThat(result).isEqualTo("1,2");
     }
 
-    @ParameterizedTest(name = "문자열에 {0}로 charAt을 하면 {1} 또는 {2}가 반환된다") // displayName 대체
+    @ParameterizedTest(name = "문자열에 {0}로 charAt을 하면 {1}가 반환된다") // displayName 대체
     @MethodSource("charAtTestParameter")
-    void requirement3(int index, Character expected, Class<Exception> exception) {
+    void charAt_검증(int index, Character expected) {
         String given = "abc";
 
-        if (exception != null) {
-            assertThatThrownBy(() -> given.charAt(index))
-                    .isInstanceOf(exception)
-                    .hasMessageContaining("index out of range: " + index);
-        } else {
-            assertThat(given.charAt(index))
-                    .isEqualTo(expected);
-        }
+        assertThat(given.charAt(index))
+                .isEqualTo(expected);
     }
 
     static Stream<Arguments> charAtTestParameter() {
         return Stream.of(
-                Arguments.of(0, 'a', null),
-                Arguments.of(2, 'c', null),
-                Arguments.of(-1, null, IndexOutOfBoundsException.class)
+                Arguments.of(0, 'a'),
+                Arguments.of(2, 'c')
+        );
+    }
+
+    @ParameterizedTest(name = "문자열에 {0}로 charAt을 하면 {1}가 반환된다") // displayName 대체
+    @MethodSource("charAtExceptionTestParameter")
+    void charAt_execption(int index, Class<Exception> exception) {
+        String given = "abc";
+
+        assertThatThrownBy(() -> given.charAt(index))
+                .isInstanceOf(exception)
+                .hasMessageContaining("index out of range: " + index);
+    }
+
+    static Stream<Arguments> charAtExceptionTestParameter() {
+        return Stream.of(
+                Arguments.of(-1, IndexOutOfBoundsException.class)
         );
     }
 

@@ -4,7 +4,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringCalculator {
-
     public static final String DEFAULT_SEPARATORS = ",:";
     public static final String CUSTOM_SEPARATOR_REGEX = "//(.*)\\\\n";
 

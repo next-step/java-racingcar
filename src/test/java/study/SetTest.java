@@ -26,27 +26,29 @@ public class SetTest {
     }
 
     @Test
-    void requirement1() {
+    void size_검증() {
         // when
         int size = numbers.size();
 
         // then
         assertThat(size).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "contains 검증")
     @ValueSource(ints = {1, 2, 3})
-    void requirement2(int number) {
+    void contains_검증(int number) {
         // when
         boolean hasValue = numbers.contains(number);
 
         // then
         assertThat(hasValue).isTrue();
+        assertThat(numbers).contains(number);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "contains 결과에 따라 true 혹은 false를 반환한다")
     @MethodSource("containsTestParameter")
-    void requirement3(int number, boolean expected) {
+    void contains_true_false_검증(int number, boolean expected) {
         // when
         boolean result = numbers.contains(number);
 
