@@ -20,7 +20,8 @@ public class RaceApplication {
     public void run() {
         int participate = inputView.participate();
         int iterations = inputView.iterations();
-        this.racingStart(participate,iterations);
+        Map<Integer, List<Integer>> raceResults = this.racingStart(participate, iterations);
+        resultView.resultview(raceResults);
 
     }
 
