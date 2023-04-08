@@ -5,8 +5,10 @@ import carracing.race.ui.ResultView;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class RaceApplication {
+    private static final Random random = new Random();
 
     private final InputView inputView;
     private final ResultView resultView;
@@ -27,7 +29,7 @@ public class RaceApplication {
     }
 
     public int getRandom() {
-        return -1;
+        return random.nextInt(9);
     }
 
     //public
