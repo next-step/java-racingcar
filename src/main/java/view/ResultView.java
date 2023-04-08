@@ -10,10 +10,10 @@ public class ResultView {
 
 
     public static void createResultView(List<Car> carList) {
-        System.out.println(BLANK);
         carList.stream()
                 .map(Car::getMove)
                 .forEach(ResultView::drawDistance);
+        System.out.println(BLANK);
     }
 
     private static void drawDistance(Move move) {
