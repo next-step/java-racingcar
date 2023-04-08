@@ -7,7 +7,7 @@ public class StringAddCalculator {
     private static final String NOT_NUMBER = "\\D+";
     private static final String CUSTOM_SPLIT_DELIMITER = "//|\n";
 
-    public static int splitAndSum(String input) {
+    public static int calculate(String input) {
         if (input == null || input.isEmpty()) {
             return 0;
         }
