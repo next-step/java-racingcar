@@ -1,22 +1,22 @@
 package step3.domain;
 
-public class RacingCar implements Comparable<RacingCar> {
-    private final int track;
+import step3.util.RandomNumberUtils;
 
-    public RacingCar(int track) {
-        this.track = track;
+public class RacingCar {
+    private static final int moveCondition = 4;
+    private static final int defaultPosition = 0;
+    private static final int defaultDistance = 1;
+
+    private int position = defaultPosition;
+
+    public int position() {
+        return position;
     }
 
-    public int getTrack() {
-        return track;
-    }
-
-    public void move() {
-        //TODO: move
-    }
-
-    @Override
-    public int compareTo(RacingCar target) {
-        return Integer.compare(track, target.getTrack());
+    public void steeringToForward() {
+        if (RandomNumberUtils.generate() > moveCondition) {
+            position += defaultDistance;
+        }
     }
 }
+
