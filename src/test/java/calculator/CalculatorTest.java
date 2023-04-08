@@ -1,15 +1,17 @@
 package calculator;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CalculatorTest {
-    @Test
-    public void sum_NullOrEmpty() {
-        assertThat(new Calculator(null).sum()).isEqualTo(0);
-        assertThat(new Calculator("").sum()).isEqualTo(0);
+    @ParameterizedTest
+    @NullAndEmptySource
+    public void sum_NullOrEmpty(String text) {
+        assertThat(new Calculator(text).sum()).isZero();
     }
 
     @Test
