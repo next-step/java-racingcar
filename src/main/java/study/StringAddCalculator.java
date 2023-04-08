@@ -51,7 +51,9 @@ public class StringAddCalculator {
     private int sumNumbers(String[] numbers) {
 
         if(isNegativeNumber(numbers)) {
-            return Arrays.stream(numbers).mapToInt(Integer::parseInt).sum();
+            return Arrays.stream(numbers)
+                    .mapToInt(Integer::parseInt)
+                    .sum();
         }
 
         throw new RuntimeException();
@@ -59,10 +61,7 @@ public class StringAddCalculator {
 
     private boolean isNegativeNumber(String[] numbers) {
 
-        if(Arrays.stream(numbers).allMatch(number -> Integer.parseInt(number) > 0)) {
-            return true;
-        }
-
-        return false;
+        return (Arrays.stream(numbers)
+                .allMatch(number -> Integer.parseInt(number) > 0));
     }
 }
