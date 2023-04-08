@@ -1,20 +1,23 @@
 package domain;
 
-import java.util.Random;
+import static core.Random.generateRandom;
+
 import java.util.stream.IntStream;
 
 public class Move {
 
+    public static final int MINIMUM_MOVABLE_VALUE = 4;
+    public static final int OUT_OF_TEN = 10;
     private int move;
+
 
     public int getMove() {
         return move;
     }
 
     static boolean isMoved() {
-        Random random = new Random();
-        int movingToken = random.nextInt(10);
-        return movingToken > 4;
+        int movingToken = generateRandom(OUT_OF_TEN);
+        return movingToken > MINIMUM_MOVABLE_VALUE;
     }
 
     void attemptMove(int attemptCount) {
