@@ -4,6 +4,7 @@ import racing.carRacing.Cars;
 import racing.carRacing.Count;
 import racing.carRacing.Stages;
 import racing.carRacing.view.InputView;
+import racing.carRacing.view.OutputView;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,6 +14,7 @@ public class Main {
         Cars cars = new Cars(numberOfCar);
         Stages stages = new Stages(numberOfStage);
 
+        OutputView.printResultMention();
         stages.startGame(cars);
 
     }

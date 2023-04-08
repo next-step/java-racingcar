@@ -8,11 +8,9 @@ public class Stages {
     }
 
     public void startGame(Cars cars) {
-        System.out.println("실행 결과");
         while (numberOfStages.isOverZero()) {
             numberOfStages.countDown();
             cars.run();
-            System.out.println();
         }
     }
 }

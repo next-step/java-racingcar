@@ -1,5 +1,7 @@
 package racing.carRacing;
 
+import racing.carRacing.view.OutputView;
+
 public class Car {
     public static String movement = "-";
 
@@ -13,6 +15,6 @@ public class Car {
         if (strategy.movement() >= 4) {
             step += movement;
         }
-        System.out.println(step);
+        OutputView.printCarStatus(step);
     }
 }
