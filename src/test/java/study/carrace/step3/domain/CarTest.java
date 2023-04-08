@@ -11,8 +11,8 @@ class CarTest {
     void 자동차_전진_성공() {
         // given
         int generatedRandomInteger = 1;
-        int movableNumber = 0;
-        Car car = new Car(createMockRandomIntegerGenerator(generatedRandomInteger), movableNumber);
+        int movableThreshold = 0;
+        Car car = new Car(createMockRandomIntegerGenerator(generatedRandomInteger), movableThreshold);
 
         // when
         car.moveOrStop();
@@ -25,8 +25,8 @@ class CarTest {
     void 자동차_멈춤() {
         // given
         int generatedRandomInteger = 0;
-        int movableNumber = 1;
-        Car car = new Car(createMockRandomIntegerGenerator(generatedRandomInteger), movableNumber);
+        int movableThreshold = 1;
+        Car car = new Car(createMockRandomIntegerGenerator(generatedRandomInteger), movableThreshold);
 
         // when
         car.moveOrStop();
