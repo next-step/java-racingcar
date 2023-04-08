@@ -1,15 +1,20 @@
 package carracing.race;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
+import org.junit.platform.commons.logging.LoggerFactory;
 
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.fail;
 
 
 class RaceApplicationTest {
+    private static final Logger log = Logger.getLogger("RaceApplicationTest");
 
     private RaceApplication raceApplication;
 
@@ -38,6 +43,8 @@ class RaceApplicationTest {
         //given
         //when
         //then
+        log.info("테스트를 작성할 수 없는 애매함");
+        fail();
     }
 
     @DisplayName("몇대의 자동차로 이동할수 있는지 지정할 수 있다")
@@ -46,6 +53,8 @@ class RaceApplicationTest {
         //given
         //when
         //then
+        log.info("테스트를 작성할 수 없는 애매함");
+        fail();
     }
 
     @DisplayName("몇번을 이동할것인지 입력할 수 있다")
@@ -54,14 +63,19 @@ class RaceApplicationTest {
         //given
         //when
         //then
+        log.info("테스트를 작성할 수 없는 애매함");
+        fail();
     }
 
     @DisplayName("0에서 9사이에서 random값을 구한다")
+    @RepeatedTest(20)
     @Test
     public void getRandomFrom0To9() {
         //given
         //when
+        int random = raceApplication.getRandom();
         //then
+        assertThat(random).isBetween(0, 9);
     }
 
     @DisplayName("3 초과(=4이상) 일 경우 전진한다")
@@ -70,6 +84,8 @@ class RaceApplicationTest {
         //given
         //when
         //then
+        log.info("테스트를 작성할 수 없는 애매함");
+        fail();
     }
 
     @DisplayName("4 미만(=3이하) 일 경우 정지한다")
@@ -78,5 +94,7 @@ class RaceApplicationTest {
         //given
         //when
         //then
+        log.info("테스트를 작성할 수 없는 애매함");
+        fail();
     }
 }
