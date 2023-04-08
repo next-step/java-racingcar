@@ -9,9 +9,6 @@ public class Car {
 
     private int position = 0;
 
-    public Car() {
-    }
-
     public void move() {
         if (getRandomNumber() >= FORWARD_NUM) {
             this.position += 1;
@@ -25,12 +22,5 @@ public class Car {
     public int getRandomNumber() {
         Random random = new Random();
         return random.nextInt(MAX_BOUND);
-    }
-
-    @Override
-    public String toString() {
-        return "Car{" +
-                "position=" + position +
-                '}';
     }
 }
