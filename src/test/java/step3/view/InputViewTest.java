@@ -12,7 +12,7 @@ class InputViewTest {
 
     @Test
     @DisplayName("1보다 작은수를 입력하면 예외를 던진다")
-    public void allowMoveTest() {
+    public void 입력테스트() {
         InputView inputView = InputView.getInstance();
 
         assertThatIllegalArgumentException()
