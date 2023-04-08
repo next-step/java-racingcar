@@ -1,6 +1,7 @@
 package carracing.race.ui;
 
 import carracing.race.logic.AutomobileFederation;
+import carracing.race.logic.type.Round;
 
 import java.io.PrintStream;
 
@@ -11,7 +12,7 @@ public class ResultView {
     }
 
     public void printResult(AutomobileFederation federation) {
-        for (int round : federation.getRounds()) {
+        for (Round round : federation.getRounds()) {
             for(String s :  federation.lapSituations(round)) {
                 printStream.println(s);
             }

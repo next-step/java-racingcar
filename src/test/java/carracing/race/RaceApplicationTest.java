@@ -1,5 +1,6 @@
 package carracing.race;
 
+import carracing.race.logic.type.Round;
 import carracing.race.ui.InputView;
 import carracing.race.ui.ResultView;
 import org.junit.jupiter.api.BeforeEach;
@@ -34,7 +35,7 @@ public class RaceApplicationTest {
         int iter = 0;
 
         //when
-        Map<Integer, List<Integer>> raceResults = raceApplication.racingStart(parti, iter);
+        Map<Round, List<Integer>> raceResults = raceApplication.racingStart(parti, iter);
 
         //then
         assertThat(raceResults.keySet()).hasSize(parti); // 경기 참가자수 검증

@@ -1,6 +1,7 @@
 package carracing.race;
 
 import carracing.race.logic.AutomobileFederation;
+import carracing.race.logic.type.Round;
 import carracing.race.ui.InputView;
 import carracing.race.ui.ResultView;
 
@@ -23,14 +24,14 @@ public class RaceApplication {
     public void run() {
         int participate = inputView.participate();
         int iterations = inputView.iterations();
-        Map<Integer, List<Integer>> raceResults = this.racingStart(participate, iterations);
+        Map<Round, List<Integer>> raceResults = this.racingStart(participate, iterations);
         resultView.printResult(new AutomobileFederation(raceResults));
 
     }
 
-    public Map<Integer, List<Integer>> racingStart(int participate, int iterations) {
+    public Map<Round, List<Integer>> racingStart(int participate, int iterations) {
 
-        Map<Integer, List<Integer>> resultMap = new HashMap<>();
+        Map<Round, List<Integer>> resultMap = new HashMap<>();
 
         for (int stage = 1; stage <= iterations; stage++) {
             //todo : 로직이 이중포문에 더티하게 섞여있어서 매우 복잡하다 리팩토링 필요
@@ -39,7 +40,7 @@ public class RaceApplication {
 
                 raceRecode.add(getRandom());
             }
-            resultMap.put(stage, raceRecode);
+            resultMap.put( new Round(stage), raceRecode);
         }
         return resultMap;
     }
