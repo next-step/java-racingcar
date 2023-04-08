@@ -1,26 +1,24 @@
 package racingcar.model;
 
-import static racingcar.model.CarStatus.RUN;
+import static racingcar.model.CarStatus.GO;
 import static racingcar.model.CarStatus.STOP;
 
 public class Car {
-    private final Probability probability;
-
+    private final ForwardDecider forwardDecider;
     private int distance = 0;
 
     public Car() {
-        this.probability = new Probability();
+        this.forwardDecider = new ForwardDecider();
     }
 
     public Car(long seed) {
-        this.probability = new Probability(seed);
+        this.forwardDecider = new ForwardDecider(seed);
     }
 
-
     public CarStatus move() {
-        if (probability.success()) {
+        if (forwardDecider.decide()) {
             this.distance++;
-            return RUN;
+            return GO;
         }
         return STOP;
     }

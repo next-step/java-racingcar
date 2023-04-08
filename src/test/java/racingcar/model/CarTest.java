@@ -30,7 +30,7 @@ class CarTest {
         CarStatus status = car.move();
 
         if (expected >= 4) {
-            assertThat(status).isEqualTo(CarStatus.RUN);
+            assertThat(status).isEqualTo(CarStatus.GO);
         }
     }
 
@@ -53,7 +53,7 @@ class CarTest {
         int prevDistance = car.distance();
         CarStatus status = car.move();
 
-        if (status == CarStatus.RUN) {
+        if (status == CarStatus.GO) {
             int distance = car.distance();
             assertThat(distance).isEqualTo(prevDistance + 1);
         }
