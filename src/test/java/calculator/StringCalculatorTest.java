@@ -3,11 +3,26 @@ package calculator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.stream.Stream;
 
 import static calculator.StringCalculator.*;
 import static org.assertj.core.api.Assertions.*;
 
 public class StringCalculatorTest {
+
+    @ParameterizedTest
+    @DisplayName("숫자 이외의 값을 입력할 경우 예외발생")
+    @ValueSource(strings = {"a,2,3", "$,1", "ㅁ,3", "a"})
+    void notNumber_exception_test(String input) {
+        assertThatThrownBy(() -> splitAndSum(input))
+                .isInstanceOf(RuntimeException.class);
+    }
 
     @Test
     @DisplayName("음수를 입력할 경우 예외발생")
