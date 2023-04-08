@@ -43,4 +43,8 @@ public class StringTest {
 
     }
 
+    @Test
+    void splitNewLine() {
+        assertThat("//;\n1;2;3".split("\\n|;|//")).containsExactly("1","2","3");
+    }
 }
