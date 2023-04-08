@@ -8,11 +8,13 @@ import java.util.stream.Collectors;
 
 class StringAddCalculator {
   private static final int ZERO = 0;
+  private static final int CUSTOM_DELIMER = 1;
+  private static final int OPERANDS = 2;
   private static final String RUNTIME_EXCEPTION_MESSAGE = "문자열 계산기에 숫자 이외의 값 또는 음수를 전달하는 경우 RuntimeException 예외를 throw한다.";
 
   private static final String NUMBER_REGEX = "^[0-9]*$";
-  private static final String DEFAULT_DELIMITER = "[,:]";
-  private static final Pattern CUSTOM_DELIMITER = Pattern.compile("//(.)\n(.*)");
+  private static final String DEFAULT_DELIMITER_FORMAT = "[,:]";
+  private static final Pattern CUSTOM_DELIMITER_FORMAT = Pattern.compile("//(.)\n(.*)");
 
   static int splitAndSum(String text) {
     if (isNullOrEmpty(text)) return 0;
@@ -25,15 +27,15 @@ class StringAddCalculator {
   }
 
   private static String[] customToStrings(String text) {
-    Matcher matcher = CUSTOM_DELIMITER.matcher(text);
+    Matcher matcher = CUSTOM_DELIMITER_FORMAT.matcher(text);
 
     if (matcher.find()) {
-      String customDelimiter = matcher.group(1);
+      String customDelimiter = matcher.group(CUSTOM_DELIMER);
 
-      return matcher.group(2).split(customDelimiter);
+      return matcher.group(OPERANDS).split(customDelimiter);
     }
 
-    return text.split(DEFAULT_DELIMITER);
+    return text.split(DEFAULT_DELIMITER_FORMAT);
   }
 
   private static void validate(String text) {
