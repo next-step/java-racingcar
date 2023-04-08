@@ -6,77 +6,80 @@ import java.util.Random;
 
 public class Racing {
 
-    public static final int MOVABLE_CRITERIA = 4;
-    public static final int POSITION_BOUND = 9;
+    public static final int POWER_BOUND = 9;
 
-    static List<Integer> positions;
-    static int raceCount;
-    static List<List<Integer>> raceResults;
-
-    private static Random random = new Random();
+    private static final Random random = new Random();
+    private static List<Car> cars;
+    private static int raceCount;
+    private static List<List<Car>> raceResults;
 
     public static void main(String[] args) {
-        Racing.setRace(InputView.askCarCount(), InputView.askRaceCount());
+        Racing.setRace(InputView.askCarCount(null), InputView.askRaceCount(null));
         Racing.startRace();
         OutputView.endRace();
     }
 
-    public static void setRace(int carCountText, int raceCountText) {
-        setPositions(carCountText);
-        setRaceCount(raceCountText);
+    public static void setRace(int carCount, int raceCount) {
+        setCars(carCount);
+        setRaceCount(raceCount);
+        setRaceResults();
+    }
+
+    private static void setRaceResults() {
+        raceResults = new ArrayList<>();
     }
 
     private static void setRaceCount(int raceCount) {
         Racing.raceCount = raceCount;
     }
 
-    private static void setPositions(int carCount) {
-        positions = new ArrayList<>();
+    private static void setCars(int carCount) {
+        cars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            positions.add(0);
+            cars.add(new Car());
         }
     }
 
     public static void startRace() {
-        raceResults = new ArrayList<>();
         for (int r = 0; r < raceCount; r++) {
-            moveCars();
+            raceCars();
             saveRaceResult();
         }
     }
 
-    private static void moveCars() {
-        int size = positions.size();
+    private static void raceCars() {
+        int size = cars.size();
         for (int i = 0; i < size; i++) {
-            moveCar(i, getNextInt());
+            raceCar(cars.get(i), getNextInt());
         }
     }
 
     private static void saveRaceResult() {
-        List<Integer> result = new ArrayList<>();
-        for (int position : positions) {
-            result.add(position);
+        List<Car> result = new ArrayList<>();
+        for (Car car : cars) {
+            result.add(car.clone());
         }
         raceResults.add(result);
     }
 
-    private static void moveCar(int carNumber, int criteria) {
-        if (!isMovable(criteria)) {
-            return;
-        }
-        move(carNumber);
+    private static void raceCar(Car car, int power) {
+        car.move(power);
     }
 
     private static int getNextInt() {
-        return random.nextInt(POSITION_BOUND + 1);
+        return random.nextInt(POWER_BOUND + 1);
     }
 
-    private static boolean isMovable(int criteria) {
-        return criteria >= MOVABLE_CRITERIA;
+    public static List<Car> getCars() {
+        return cars;
     }
 
-    private static void move(int i) {
-        positions.set(i, positions.get(i) + 1);
+    public static int getRaceCount() {
+        return raceCount;
+    }
+
+    public static List<List<Car>> getRaceResults() {
+        return raceResults;
     }
 
 }

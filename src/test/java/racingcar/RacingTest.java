@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -24,8 +25,18 @@ public class RacingTest {
     @Test
     void 레이스_시작() {
         Racing.startRace();
-        for (int i = 0; i < Racing.positions.size(); i++) {
-            assertThat(Racing.positions.get(i)).isBetween(0, 9);
+        List<Car> cars = Racing.getCars();
+        for (int i = 0; i < cars.size(); i++) {
+            assertThat(cars.get(i).getPosition()).isBetween(0, 9);
         }
     }
+
+    @Test
+    void 레이스_세팅() {
+        Racing.setRace(3, 10);
+        assertThat(Racing.getCars()).hasSize(3);
+        assertThat(Racing.getRaceCount()).isEqualTo(10);
+        assertThat(Racing.getRaceResults()).isNotNull();
+    }
+
 }
