@@ -4,8 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import util.RandomNumberGenerator;
 
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DisplayName("자동차 경주 테스트")
@@ -25,13 +23,13 @@ public class RacingCarTest {
     @Test
     @DisplayName("전진 후에는 자동차의 위치가 1 증가되어야 한다.")
     void carMoveTest() {
-        List<RacingCar> cars = RacingCar.createCarsByCount(1);
-        RacingCar car = cars.get(0);
-        int beforePosition = cars.get(0).getPosition();
+        RacingCar racingCar = new RacingCar();
+        int beforePosition = racingCar.getPosition();
 
-        car.moveForward();
+        racingCar.moveForward();
 
-        int afterPosition = car.getPosition();
+        int afterPosition = racingCar.getPosition();
         Assertions.assertThat(afterPosition).isEqualTo(beforePosition + 1);
     }
+
 }
