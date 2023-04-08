@@ -17,15 +17,15 @@ class StringAddCalculator {
     return sum(toInts(customToStrings(text)));
   }
 
-  static boolean isNullOrEmpty(String text) {
+  private static boolean isNullOrEmpty(String text) {
     return text == null || text.isEmpty();
   }
 
-  static String[] toStrings(String text) {
+  private static String[] toStrings(String text) {
     return text.split(DEFAULT_DELIMITER);
   }
 
-  static String[] customToStrings(String text) {
+  private static String[] customToStrings(String text) {
     Matcher m = CUSTOM_DELIMITER.matcher(text);
 
     if (m.find()) {
@@ -37,7 +37,7 @@ class StringAddCalculator {
     return toStrings(text);
   }
 
-  static int validatedNumber(String text) {
+  private static int validatedNumber(String text) {
     if (!text.matches(ZERO_TO_NONE_REGEX)) {
       throw new RuntimeException(RUNTIME_EXCEPTION_MESSAGE);
     }
@@ -45,7 +45,7 @@ class StringAddCalculator {
     return Integer.parseInt(text);
   }
 
-  static int[] toInts(String[] strings) {
+  private static int[] toInts(String[] strings) {
     int[] numbers = new int[strings.length];
     for (int i = 0; i < numbers.length; i++) {
       numbers[i] = validatedNumber(strings[i]);
@@ -54,7 +54,7 @@ class StringAddCalculator {
     return numbers;
   }
 
-  static int sum(int[] numbers) {
+  private static int sum(int[] numbers) {
     int total = ZERO;
     for (int number : numbers) {
       total += number;

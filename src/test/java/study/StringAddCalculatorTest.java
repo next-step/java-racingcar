@@ -51,7 +51,7 @@ public class StringAddCalculatorTest {
   @ParameterizedTest
   @ValueSource(strings = {"-1,2,3", "a:2,3", "1:k:3"})
   @DisplayName("숫자 이외의 값 또는 음수를 전달하는 경우 RuntimeException 예외 throw 테스트")
-  public void splitAndSum_negative(String input) throws Exception {
+  public void splitAndSum_negative(String input) {
     assertThatThrownBy(() -> StringAddCalculator.splitAndSum(input))
             .isInstanceOf(RuntimeException.class)
             .hasMessage("문자열 계산기에 숫자 이외의 값 또는 음수를 전달하는 경우 RuntimeException 예외를 throw한다.");
