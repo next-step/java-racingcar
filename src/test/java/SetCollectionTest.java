@@ -35,7 +35,7 @@ public class SetCollectionTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
+    @CsvSource(value = {"1,true", "2,true", "3,true", "4,false", "5,false"})
     @DisplayName("Set의 contains() 메소드를 활용해 값이 존재하면 true 없으면 false를 반환한다")
     void contains(int input, boolean expected) {
         assertThat(numbers.contains(input)).isEqualTo(expected);
