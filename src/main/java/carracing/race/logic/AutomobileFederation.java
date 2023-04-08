@@ -1,6 +1,7 @@
 package carracing.race.logic;
 
 import carracing.race.logic.type.Round;
+import carracing.race.logic.type.Score;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -10,20 +11,20 @@ import java.util.stream.Collectors;
 
 public class AutomobileFederation {
 
-    private final Map<Round, List<Integer>> raceResults;
+    private final Map<Round, List<Score>> raceResults;
     private final Map<Round, List<String>> scoreboard;
             //scoreboard
 
-    public AutomobileFederation(Map<Round, List<Integer>> raceResults) {
+    public AutomobileFederation(Map<Round, List<Score>> raceResults) {
         this.raceResults = raceResults;
         this.scoreboard = scoreboardCalculation(raceResults);
 
     }
 
-    private Map<Round, List<String>> scoreboardCalculation(Map<Round, List<Integer>> raceResults) {
+    private Map<Round, List<String>> scoreboardCalculation(Map<Round, List<Score>> raceResults) {
 
         for (Round round : getRounds()) {
-            for (int recordCurrentCar : raceResults.get(round)) {
+            for (Score scoreCurrentCar : raceResults.get(round)) {
 
             }
         }

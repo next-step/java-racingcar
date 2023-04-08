@@ -2,6 +2,7 @@ package carracing.race;
 
 import carracing.race.logic.AutomobileFederation;
 import carracing.race.logic.type.Round;
+import carracing.race.logic.type.Score;
 import carracing.race.ui.InputView;
 import carracing.race.ui.ResultView;
 
@@ -24,23 +25,24 @@ public class RaceApplication {
     public void run() {
         int participate = inputView.participate();
         int iterations = inputView.iterations();
-        Map<Round, List<Integer>> raceResults = this.racingStart(participate, iterations);
+        Map<Round, List<Score>> raceResults = this.racingStart(participate, iterations);
         resultView.printResult(new AutomobileFederation(raceResults));
 
     }
 
-    public Map<Round, List<Integer>> racingStart(int participate, int iterations) {
+    public Map<Round, List<Score>> racingStart(int participate, int iterations) {
 
-        Map<Round, List<Integer>> resultMap = new HashMap<>();
+        Map<Round, List<Score>> resultMap = new HashMap<>();
 
         for (int stage = 1; stage <= iterations; stage++) {
             //todo : 로직이 이중포문에 더티하게 섞여있어서 매우 복잡하다 리팩토링 필요
-            List<Integer> raceRecode = new ArrayList<>();
+            List<Score> raceRecode = new ArrayList<>();
             for (int i = 0; i < participate; i++) {
 
-                raceRecode.add(getRandom());
+                raceRecode.add(new Score(getRandom()));
             }
-            resultMap.put( new Round(stage), raceRecode);
+            resultMap.put(new Round(stage), raceRecode);
+
         }
         return resultMap;
     }
