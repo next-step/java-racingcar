@@ -6,6 +6,9 @@ import racing.carRacing.view.InputView;
 public class Main {
     public static void main(String[] args) {
         Count numberOfCar = Count.createCount(InputView.askNumberOfCar());
-        System.out.println("numberOfCar = " + numberOfCar);
+        Count numberOfStage = Count.createCount(InputView.askNumberOfStage());
+
+
+
     }
 }
