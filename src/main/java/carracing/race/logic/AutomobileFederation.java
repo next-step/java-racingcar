@@ -5,7 +5,6 @@ import carracing.race.logic.type.Round;
 import carracing.race.logic.type.Score;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -13,12 +12,12 @@ import java.util.stream.Collectors;
 public class AutomobileFederation {
 
     private final Map<Round, List<Score>> scoreListResultMap;
-    private final Map<Round, Record> scoreboard;
+    private final Map<Round, Record> recordBoards;
             //scoreboard
 
     public AutomobileFederation(Map<Round, List<Score>> scoreListResultMap) {
         this.scoreListResultMap = scoreListResultMap;
-        this.scoreboard = scoreboardCalculation(scoreListResultMap);
+        this.recordBoards = scoreboardCalculation(scoreListResultMap);
 
     }
 
@@ -50,7 +49,7 @@ public class AutomobileFederation {
     }
 
     public List<String> lapSituations(Round round) {
-        Record record = this.scoreboard.get(round);
+        Record record = this.recordBoards.get(round);
         return record.toList();
     }
 }
