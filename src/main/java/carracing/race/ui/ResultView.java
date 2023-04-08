@@ -3,9 +3,6 @@ package carracing.race.ui;
 import carracing.race.logic.AutomobileFederation;
 
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 public class ResultView {
     private final PrintStream printStream;
@@ -14,22 +11,13 @@ public class ResultView {
     }
 
     public void printResult(AutomobileFederation federation) {
-        Map<Integer, List<Integer>> raceResults = federation.getResult();
-
-        ArrayList<Integer> race = new ArrayList<>(raceResults.keySet());
-        for (int lap : race) {
-            List<Integer> raceResultThisLap = raceResults.get(lap);
-            for (int recordCurrentCar : raceResultThisLap) {
-                // printStream.print(resultEachCar);
-                printStream.print(isForward(recordCurrentCar));
-                printStream.print(" ");
-
+        for (int lap : federation.allLap()) {
+            for(String s :  federation.lapSituations(lap)) {
+                printStream.println(s);
             }
             printStream.println("");
         }
-        printStream.println();
     }
-
 
     public static boolean isForward(int recode) {
         return recode >= 4;
