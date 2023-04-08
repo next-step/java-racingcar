@@ -1,29 +1,24 @@
 package domain;
 
-import static core.Random.generateRandom;
-
-import java.util.stream.IntStream;
+import static core.RandomMoveFactory.isMoved;
 
 public class Move {
 
-    public static final int MINIMUM_MOVABLE_VALUE = 4;
-    public static final int OUT_OF_TEN = 10;
-    private int move;
 
+    private String distance = "";
+    private final static String DISTANCE_BLOCK = "-";
 
-    public int getMove() {
-        return move;
+    public String getCarCurrentDistance() {
+        return distance;
     }
 
-    static boolean isMoved() {
-        int movingToken = generateRandom(OUT_OF_TEN);
-        return movingToken > MINIMUM_MOVABLE_VALUE;
+    static boolean movingCheck() {
+        return isMoved();
     }
 
-    void attemptMove(int attemptCount) {
-        IntStream.range(0, attemptCount)
-                .filter(attempt -> isMoved())
-                .forEach(success -> move++);
+    void attemptMove() {
+        if (movingCheck()) {
+            distance += DISTANCE_BLOCK;
+        }
     }
-
 }

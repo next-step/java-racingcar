@@ -9,6 +9,10 @@ public class Car {
     private int id;
     private Move move;
 
+    public Move getMove() {
+        return move;
+    }
+
     public Car(int id) {
         this.id = id;
         move = new Move();
@@ -22,11 +26,11 @@ public class Car {
                         .toList());
     }
 
-    void attemptMove(int attemptCount) {
-        move.attemptMove(attemptCount);
+    public void attemptMove() {
+        move.attemptMove();
     }
 
-    public int getMoveCount() {
-        return move.getMove();
+    public String getCurrentDistance() {
+        return move.getCarCurrentDistance();
     }
 }
