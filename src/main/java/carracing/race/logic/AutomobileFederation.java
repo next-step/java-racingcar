@@ -32,18 +32,18 @@ public class AutomobileFederation {
         return null;
     }
 
-    public Map<Round, Record> getScoreboard() {
-        return scoreboard;
-    }
+//    public Map<Round, Record> getScoreboard() {
+//        return scoreboard;
+//    }
 
-    public List<Integer> getIntRounds() {
-        return scoreListResultMap
-                .keySet()
-                .stream()
-                .map(Round::toInt)
-                .sorted(Comparator.naturalOrder())
-                .collect(Collectors.toList());
-    }
+//    public List<Integer> getIntRounds() {
+//        return scoreListResultMap
+//                .keySet()
+//                .stream()
+//                .map(Round::toInt)
+//                .sorted(Comparator.naturalOrder())
+//                .collect(Collectors.toList());
+//    }
 
     public List<Round> getRounds() {
         return new ArrayList<>(scoreListResultMap.keySet()).stream().sorted().collect(Collectors.toList());
