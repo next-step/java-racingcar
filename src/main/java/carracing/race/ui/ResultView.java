@@ -11,8 +11,8 @@ public class ResultView {
     }
 
     public void printResult(AutomobileFederation federation) {
-        for (int lap : federation.allLap()) {
-            for(String s :  federation.lapSituations(lap)) {
+        for (int round : federation.getRounds()) {
+            for(String s :  federation.lapSituations(round)) {
                 printStream.println(s);
             }
             printStream.println("");

@@ -43,7 +43,7 @@ public class AutomobileFederation {
         return scoreboard;
     }
 
-    public List<Integer> allLap() {
+    public List<Integer> getRounds() {
         ArrayList<Integer> integers = new ArrayList<>(raceResults.keySet());
         integers.sort(Comparator.naturalOrder());
         return integers;
