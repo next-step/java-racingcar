@@ -25,12 +25,7 @@ public class ClientInput {
     }
 
     public Cars createCarsByUserCarNumberInput() {
-        List<Car> cars = new ArrayList<>();
-
-        for (int index = 0; index < this.numberOfCars; index++) {
-            cars.add(new Car());
-        }
-        return new Cars(cars);
+        return new Cars(this.numberOfCars);
     }
 
     public int getNumberOfTries() {
