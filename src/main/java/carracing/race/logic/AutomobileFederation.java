@@ -1,55 +1,54 @@
 package carracing.race.logic;
 
+import carracing.race.logic.type.Round;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class AutomobileFederation {
 
-    private final Map<Integer, List<Integer>> raceResults;
+    private final Map<Round, List<Integer>> raceResults;
     private final Map<Integer, List<String>> scoreboard;
             //scoreboard
 
-    public AutomobileFederation(Map<Integer, List<Integer>> raceResults) {
+    public AutomobileFederation(Map<Round, List<Integer>> raceResults) {
         this.raceResults = raceResults;
         this.scoreboard = scoreboardCalculation(raceResults);
 
     }
 
-    private Map<Integer, List<String>> scoreboardCalculation(Map<Integer, List<Integer>> raceResults) {
-        //Map<Integer, List<Integer>> raceResults = federation.getResult();
+    private Map<Integer, List<String>> scoreboardCalculation(Map<Round, List<Integer>> raceResults) {
 
-        ArrayList<Integer> race = new ArrayList<>(raceResults.keySet());
-        for (int lap : race) {
-            List<Integer> raceResultThisLap = raceResults.get(lap);
-            for (int recordCurrentCar : raceResultThisLap) {
-                // printStream.print(resultEachCar);
-          //      printStream.print(isForward(recordCurrentCar));
-            //    printStream.print(" ");
+        for (Round round : getRounds()) {
+            for (int recordCurrentCar : raceResults.get(round)) {
 
             }
-            //printStream.println("");
         }
-        //printStream.println();
         return null;
-    }
-
-    public Map<Integer, List<Integer>> getResult() {
-        return this.raceResults;
     }
 
     public Map<Integer, List<String>> getScoreboard() {
         return scoreboard;
     }
 
-    public List<Integer> getRounds() {
-        ArrayList<Integer> integers = new ArrayList<>(raceResults.keySet());
-        integers.sort(Comparator.naturalOrder());
-        return integers;
+    public List<Integer> getIntRounds() {
+        return raceResults
+                .keySet()
+                .stream()
+                .map(Round::toInt)
+                .sorted(Comparator.naturalOrder())
+                .collect(Collectors.toList());
     }
 
-    public List<String> lapSituations(int lap) {
-        return null;
+    public List<Round> getRounds() {
+        return new ArrayList<>(raceResults.keySet()).stream().sorted().collect(Collectors.toList());
+    }
+
+    public List<String> lapSituations(Round round) {
+        throw new RuntimeException();
+        //return null;
     }
 }
