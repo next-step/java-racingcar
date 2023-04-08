@@ -7,6 +7,12 @@ import static org.assertj.core.api.Assertions.*;
 
 public class RegularExpTest {
 
+
+    @Test
+    void specialSymbolTest() {
+        assertThat("!!!]]".matches(".*[\\. \\[ \\] \\ \\{ \\} \\* \\+ \\? \\^ \\$ \\( \\) \\|]*.*$")).isTrue();
+        assertThat("^$&^#".matches(".*[\\. \\[ \\] \\ \\{ \\} \\* \\+ \\? \\^ \\$ \\( \\) \\|]*.*")).isTrue();
+    }
     @Test
     void matcherGroupTest() {
         Pattern pattern = Pattern.compile("//(.*)\n");

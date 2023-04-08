@@ -31,15 +31,28 @@ public class StringCalculatorTest {
             .isInstanceOf(RuntimeException.class);
     }
 
-    @Test
+    @ParameterizedTest
     @DisplayName("커스텀 구분자를 입력할 경우 입력된 숫자들의 합을 반환")
-    void splitAndSum_customDelimiter_test() {
-        int actual = splitAndSum("//;\n1:2:4");
-        assertThat(actual).isEqualTo(7);
-
-        actual = splitAndSum("//@\n2@3:4,1");
-        assertThat(actual).isEqualTo(10);
+    @MethodSource(value = "generateInputAndExpected")
+    void splitAndSum_customDelimiter_test(String input, int expected) {
+        System.out.println("input = " + input);
+        System.out.println("expected = " + expected);
+        assertThat(splitAndSum(input)).isEqualTo(expected);
     }
+
+    private static Stream<Arguments> generateInputAndExpected() {
+        return Stream.of(
+                Arguments.of("//;\n1:2;4", 7),
+                Arguments.of("//@\n2@3:4,1", 10),
+                Arguments.of("//#\n23#4,1", 28),
+                Arguments.of("//$\n23$4,1", 28),
+                Arguments.of("//^\n23^4,1", 28),
+                Arguments.of("//!#\n23!#4,1", 28),
+                Arguments.of("//^%$\n23^%$4,1", 28),
+                Arguments.of("// \n1 3 4 1", 9)
+        );
+    }
+
 
     @Test
     @DisplayName("콜론(:)를 구분자로 입력할 경우 입력된 숫자들의 합을 반환")

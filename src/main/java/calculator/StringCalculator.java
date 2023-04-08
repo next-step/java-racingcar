@@ -57,11 +57,12 @@ public class StringCalculator {
     private static String[] customDelimiterSplit(String text) {
         Matcher matcher = Pattern.compile(CUSTOM_DELIMITER_FIND_REGEX).matcher(text);
         if (matcher.find()) {
-            String customDelimiter = matcher.group(1);
-            String targetText = matcher.group(2);
-            String delimiter = DEFAULT_DELIMITER + "|" + customDelimiter;
+            Delimiter delimiter= new Delimiter(matcher.group(1));
 
-            return targetText.split(delimiter);
+            String targetText = matcher.group(2);
+            String delimiterForRegex = DEFAULT_DELIMITER + "|" + delimiter.valueOfRegex();
+
+            return targetText.split(delimiterForRegex);
         }
         throw new RuntimeException("Wrong custom delimiter");
     }
