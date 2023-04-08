@@ -1,6 +1,9 @@
 package calculator;
 
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class StringAddCalculator {
 
     public static final int ZERO = 0;
@@ -14,9 +17,11 @@ public class StringAddCalculator {
     }
 
     private static String[] split(String text) {
-        if(text.charAt(0) == '\\' && text.charAt(2) == '\n') {
-            String splitChar = text.substring(0, 2);
-            return text.split(splitChar);
+        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        if (m.find()) {
+            String customDelimiter = m.group(1);
+            return m.group(2).split(customDelimiter);
+            // 덧셈 구현
         }
         return text.split(DELIMITER);
     }
