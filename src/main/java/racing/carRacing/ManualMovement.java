@@ -2,7 +2,7 @@ package racing.carRacing;
 
 public class ManualMovement implements MovementStrategy{
 
-    private int manualNumber;
+    private final int manualNumber;
 
     public ManualMovement(int manualNumber) {
         this.manualNumber = manualNumber;

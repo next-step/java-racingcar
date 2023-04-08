@@ -16,6 +16,5 @@ public class Main {
 
         OutputView.printResultMention();
         stages.startGame(cars);
-
     }
 }

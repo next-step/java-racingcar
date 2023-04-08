@@ -3,6 +3,9 @@ package racing.carRacing;
 import java.util.List;
 
 public class Count {
+    public static final int ZERO = 0;
+    public static final long COUNT_DOWN = 1;
+
     private Long count;
 
     Count(Long count) {
@@ -17,22 +20,22 @@ public class Count {
     }
 
     private boolean isNegativeNumberOrZero(Long count) {
-        return count <= 0;
+        return count <= ZERO;
     }
 
     public List<Car> initCars(List<Car> cars) {
-        for (int i = 0; i < count; i++) {
+        for (int i = ZERO; i < count; i++) {
             cars.add(new Car(""));
         }
         return cars;
     }
 
     public boolean isOverZero() {
-        return count > 0;
+        return count > ZERO;
     }
 
     public void countDown() {
-        count -= 1L;
+        count -= COUNT_DOWN;
     }
 
     @Override
