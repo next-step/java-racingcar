@@ -17,7 +17,7 @@ public class InputView {
         private static final InputView INSTANCE = new InputView();
     }
 
-    private InputView getInstance() {
+    public static InputView getInstance() {
         return InputViewInstanceHolder.INSTANCE;
     }
 
