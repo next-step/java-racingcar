@@ -11,13 +11,13 @@ import java.util.stream.Collectors;
 
 public class AutomobileFederation {
 
-    private final Map<Round, List<Score>> raceResults;
+    private final Map<Round, List<Score>> scoreListResultMap;
     private final Map<Round, List<String>> scoreboard;
             //scoreboard
 
-    public AutomobileFederation(Map<Round, List<Score>> raceResults) {
-        this.raceResults = raceResults;
-        this.scoreboard = scoreboardCalculation(raceResults);
+    public AutomobileFederation(Map<Round, List<Score>> scoreListResultMap) {
+        this.scoreListResultMap = scoreListResultMap;
+        this.scoreboard = scoreboardCalculation(scoreListResultMap);
 
     }
 
@@ -36,7 +36,7 @@ public class AutomobileFederation {
     }
 
     public List<Integer> getIntRounds() {
-        return raceResults
+        return scoreListResultMap
                 .keySet()
                 .stream()
                 .map(Round::toInt)
@@ -45,7 +45,7 @@ public class AutomobileFederation {
     }
 
     public List<Round> getRounds() {
-        return new ArrayList<>(raceResults.keySet()).stream().sorted().collect(Collectors.toList());
+        return new ArrayList<>(scoreListResultMap.keySet()).stream().sorted().collect(Collectors.toList());
     }
 
     public List<String> lapSituations(Round round) {
