@@ -4,16 +4,39 @@ import carracing.race.logic.AutomobileFederation;
 import carracing.race.logic.type.Round;
 
 import java.io.PrintStream;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ResultView {
+    private static final Boolean DISPLAY_CAR_INDEX = Boolean.TRUE;
     private final PrintStream printStream;
+
     public ResultView(PrintStream printStream) {
         this.printStream = printStream;
     }
 
     public void printResult(AutomobileFederation federation) {
+        if (!DISPLAY_CAR_INDEX) {
+            displayWithoutCarIndex(federation);
+            return;
+        }
+        displayWithCarIndex(federation);
+    }
+
+    private void displayWithoutCarIndex(AutomobileFederation federation) {
         for (Round round : federation.getRounds()) {
-            for(String s :  federation.lapSituations(round)) {
+            for (String s : federation.lapSituations(round)) {
+                printStream.println(s);
+            }
+            printStream.println("");
+        }
+    }
+
+    private void displayWithCarIndex(AutomobileFederation federation) {
+        for (Round round : federation.getRounds()) {
+            AtomicInteger indexHolder = new AtomicInteger();
+            for (String s : federation.lapSituations(round)) {
+                printStream.print(indexHolder.getAndIncrement()+1);
+                printStream.print(" : ");
                 printStream.println(s);
             }
             printStream.println("");
