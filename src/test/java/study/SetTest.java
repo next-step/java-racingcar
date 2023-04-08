@@ -27,7 +27,7 @@ class SetTest {
     @Test
     @DisplayName("Set의 size() 메소드는 Set의 크기를 반환합니다.")
     void size() {
-        assertThat(numbers.size()).isSameAs(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest(name = "Set의 contains() 메소드는 포함여부를 반환합니다.({0}포함? {1})")
