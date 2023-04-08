@@ -7,32 +7,25 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
-    private static final String DELIMITER = ",|:";
+    private static final String DEFAULT_DELIMITER = ",|:";
+    private static final Pattern CUSTOM_DELIMITER = Pattern.compile("//(.)\n(.*)");
 
     public static int splitAndSum(String text) {
         if (isNullOrEmpty(text)) {
             return 0;
         }
 
-        String[] tokens = split(text);
-
-        return sum(tokens);
+        return sum(split(text));
     }
 
     private static int sum(String[] tokens) {
         return Arrays.stream(tokens)
-                .mapToInt(e -> parsePositiveInt(e))
+                .mapToInt(StringAddCalculator::parsePositiveInt)
                 .sum();
     }
 
     private static int parsePositiveInt(String token) {
-        int number;
-
-        try {
-            number = Integer.parseInt(token);
-        } catch (NumberFormatException e) {
-            throw new RuntimeException(e);
-        }
+        int number = parseInt(token);
 
         if (number < 0) {
             throw new RuntimeException("음수는 입력할 수 없습니다.");
@@ -41,9 +34,21 @@ public class StringAddCalculator {
         return number;
     }
 
+    private static int parseInt(String token) {
+        int number;
+
+        try {
+            number = Integer.parseInt(token);
+        } catch (NumberFormatException e) {
+            throw new RuntimeException("숫자 포멧을 확인해 주세요.");
+        }
+
+        return number;
+    }
+
     private static String[] split(String text) {
-        Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(text);
-        String delimiter = DELIMITER;
+        Matcher matcher = CUSTOM_DELIMITER.matcher(text);
+        String delimiter = DEFAULT_DELIMITER;
 
         if (matcher.find()) {
             String customDelimiter = matcher.group(1);
