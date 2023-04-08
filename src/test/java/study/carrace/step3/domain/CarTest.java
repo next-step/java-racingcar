@@ -1,13 +1,7 @@
 package study.carrace.step3.domain;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -16,7 +10,9 @@ class CarTest {
     @Test
     void 자동차_전진_성공() {
         // given
-        Car car = new Car(createMockRandomIntegerGenerator(1), 0);
+        int generatedRandomInteger = 1;
+        int movableNumber = 0;
+        Car car = new Car(createMockRandomIntegerGenerator(generatedRandomInteger), movableNumber);
 
         // when
         car.moveOrStop();
@@ -28,7 +24,9 @@ class CarTest {
     @Test
     void 자동차_멈춤() {
         // given
-        Car car = new Car(createMockRandomIntegerGenerator(0), 1);
+        int generatedRandomInteger = 0;
+        int movableNumber = 1;
+        Car car = new Car(createMockRandomIntegerGenerator(generatedRandomInteger), movableNumber);
 
         // when
         car.moveOrStop();
@@ -37,7 +35,7 @@ class CarTest {
         assertThat(car.getMoveStatus()).containsExactly(false);
     }
 
-    private RandomIntegerGenerator createMockRandomIntegerGenerator(int expected) {
-        return () -> expected;
+    private RandomIntegerGenerator createMockRandomIntegerGenerator(int generated) {
+        return () -> generated;
     }
 }
