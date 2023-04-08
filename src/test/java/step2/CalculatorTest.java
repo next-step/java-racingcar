@@ -42,6 +42,8 @@ public class CalculatorTest {
     @Test
     public void splitAndSum_negative() throws Exception {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
-                .isInstanceOf(RuntimeException.class);
+                .isInstanceOf(RuntimeException.class)
+                .message()
+                .isEqualTo("음수는 입력할 수 없습니다.");
     }
 }
