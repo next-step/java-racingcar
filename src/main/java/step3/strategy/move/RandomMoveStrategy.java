@@ -1,4 +1,4 @@
-package step3.strategy;
+package step3.strategy.move;
 
 import java.util.Random;
 
