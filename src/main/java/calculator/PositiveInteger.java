@@ -1,6 +1,7 @@
 package calculator;
 
 public class PositiveInteger {
+    public static final int ZERO = 0;
     private final int number;
 
     public PositiveInteger(String input) {
@@ -9,7 +10,7 @@ public class PositiveInteger {
         }
 
         int number = Integer.parseInt(input);
-        if(number < 0) {
+        if(number < ZERO) {
             throw new RuntimeException("음수가 포함되어 있습니다.");
         }
         this.number = number;
