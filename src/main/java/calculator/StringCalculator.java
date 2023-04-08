@@ -1,7 +1,10 @@
+/*
 package calculator;
+*/
 /**
  * calculator 패키지 안 파일들은 줌 강의를 보고 학습용으로 작성한 내용입니다.
- */
+ *//*
+
 public class StringCalculator {
 
     public static final int ZERO = 0;
@@ -10,7 +13,8 @@ public class StringCalculator {
     public static int splitAndSum(String text) {
 
         // 객체지향에서는 test.equals("")로 짜면 안좋다.
-        /**
+        */
+/**
          * 메시지를 보내야 한다. text에게 메세지를 보내라. isBlank() 같이.
          *
          * elses 키워드를 사용하지 않으려면 early return을 사용하면 된다.
@@ -57,7 +61,8 @@ public class StringCalculator {
          * 클래스 분리는 문자열, 등을 포장해라 (생활원칙 참고)
          * 클래스 분리는 메서드 분리에 비해 훨씬 어렵다.
          *
-         */
+         *//*
+
         if (isBlank(text)) {
             return ZERO;
         }
@@ -73,9 +78,11 @@ public class StringCalculator {
     }
 
     private static int sum(int[] numbers) {
-        /**
+        */
+/**
          * 추상화 한단계 한것. (구현 숨긴것)
-         */
+         *//*
+
         int sum = ZERO;
         for (int number : numbers) {
             sum += number;
@@ -99,3 +106,4 @@ public class StringCalculator {
         return number;
     }
 }
+*/
