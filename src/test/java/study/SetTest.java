@@ -12,10 +12,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-/**
- * Set Collection에 대한 학습 테스트
- */
-
+@DisplayName("Set Collection에 대한 학습 테스트")
 public class SetTest {
 	private Set<Integer> numbers;
 
