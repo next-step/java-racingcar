@@ -12,7 +12,7 @@ class FactoryTest {
     @DisplayName("사용자가 입력한 값에 따라 자동차의 대수가 생성된다.")
     void create_test() {
         // Given
-        String userInput = "5";
+        int userInput = 5;
         // When
         Factory factory = new Factory(userInput);
         // Then

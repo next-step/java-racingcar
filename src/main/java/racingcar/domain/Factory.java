@@ -7,8 +7,8 @@ public class Factory {
 
     private List<Car> cars;
 
-    public Factory(String userInput) {
-        cars = createCars(Integer.parseInt(userInput));
+    public Factory(int userInput) {
+        cars = createCars(userInput);
     }
 
     public List<Car> createCars(int carCount) {
