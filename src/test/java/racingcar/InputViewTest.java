@@ -6,19 +6,23 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class InputViewTest {
 
     private ByteArrayOutputStream outputStream;
-    private ByteArrayInputStream inputStream;
 
     @BeforeEach
     void 시스템_아웃_세팅() {
         outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
-        inputStream = new ByteArrayInputStream("2 3".getBytes(StandardCharsets.UTF_8));
+    }
+
+    @AfterEach
+    void 스캐너_초기화() {
+        InputView.setScanner(null);
     }
 
     @Test
@@ -34,7 +38,7 @@ public class InputViewTest {
 
     @Test
     void 자동차_대수_입력() {
-        assertThat(InputView.askCarCount(new ByteArrayInputStream("3 ".getBytes(StandardCharsets.UTF_8)))).isEqualTo(3);
+        assertThat(InputView.askCarCount(new ByteArrayInputStream("3".getBytes(StandardCharsets.UTF_8)))).isEqualTo(3);
     }
 
     @Test

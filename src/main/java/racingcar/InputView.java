@@ -41,4 +41,8 @@ public class InputView {
         return scanner == null;
     }
 
+    public static void setScanner(Scanner scanner) {
+        InputView.scanner = scanner;
+    }
+
 }
