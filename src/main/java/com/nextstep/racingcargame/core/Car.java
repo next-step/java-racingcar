@@ -1,7 +1,5 @@
 package com.nextstep.racingcargame.core;
 
-import static com.nextstep.racingcargame.view.TravelDistanceView.CAR_DISTANCE_DISPLAY_UNIT;
-
 public class Car {
 
     private int distance;
@@ -10,11 +8,17 @@ public class Car {
     private static final int MAX_RANDOM_VALUE = 9;
     private static final int MAX_STOP_VALUE = 4;
 
+    private static final String CAR_DISTANCE_DISPLAY_UNIT = "-";
+
+    private static final int CAR_START_POSITION_NUMBER = 0;
+
+    private static final String CAR_START_POSITION_DISPLAY_STRING = "";
+
     private static final int MOVE_STEP = 1;
 
     protected Car() {
-        this.distance = 0;
-        this.travelDistance = "";
+        this.distance = CAR_START_POSITION_NUMBER;
+        this.travelDistance = CAR_START_POSITION_DISPLAY_STRING;
     }
 
     public void printTravelDistance() {
