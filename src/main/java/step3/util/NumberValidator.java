@@ -1,7 +1,9 @@
-package step3.component;
+package step3.util;
 
 public class NumberValidator {
     private static final int positiveMinimum = 1;
+
+    private NumberValidator() {}
 
     public static boolean isPositive(int number) {
         return number >= positiveMinimum;

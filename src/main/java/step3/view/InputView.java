@@ -2,8 +2,8 @@ package step3.view;
 
 import java.util.Scanner;
 
-import static step3.component.NumberValidator.validateCarAmount;
-import static step3.component.NumberValidator.validateTryNumber;
+import static step3.util.NumberValidator.validateCarAmount;
+import static step3.util.NumberValidator.validateTryNumber;
 
 public class InputView {
     private static final String inputCarNumberMessage = "자동차 대수는 몇 대 인가요?";

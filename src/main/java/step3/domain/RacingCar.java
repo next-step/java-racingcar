@@ -1,11 +1,15 @@
 package step3.domain;
 
-import step3.util.RandomNumberUtils;
+import step3.move.MoveStrategy;
+import step3.move.RandomMoveStrategy;
 
 public class RacingCar {
-    private static final int moveCondition = 4;
     private static final int defaultPosition = 0;
-    private static final int defaultDistance = 1;
+    private final MoveStrategy moveStrategyStrategy;
+
+    public RacingCar() {
+        moveStrategyStrategy = new RandomMoveStrategy();
+    }
 
     private int position = defaultPosition;
 
@@ -18,9 +22,7 @@ public class RacingCar {
     }
 
     protected void steeringToForward() {
-        if (RandomNumberUtils.generate() > moveCondition) {
-            position += defaultDistance;
-        }
+        position += moveStrategyStrategy.moveAmount();
     }
 }
 
