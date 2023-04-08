@@ -2,22 +2,22 @@ package step3.strategy.draw;
 
 import java.util.stream.IntStream;
 
-public class UnderscoreDrawStrategy implements DrawStrategy {
+public class DashDrawStrategy implements DrawStrategy {
 
     private static final String MOVE_PRINT_STRING = "-";
     private static final int INITIAL_INDEX = 0;
 
     private final StringBuffer stringBuffer = new StringBuffer();
 
-    private UnderscoreDrawStrategy() {
+    private DashDrawStrategy() {
     }
 
-    private static class UnderscoreDrawStrategyInstanceHolder {
-        private static final UnderscoreDrawStrategy INSTANCE = new UnderscoreDrawStrategy();
+    private static class DashDrawStrategyInstanceHolder {
+        private static final DashDrawStrategy INSTANCE = new DashDrawStrategy();
     }
 
-    public static UnderscoreDrawStrategy getInstance() {
-        return UnderscoreDrawStrategyInstanceHolder.INSTANCE;
+    public static DashDrawStrategy getInstance() {
+        return DashDrawStrategyInstanceHolder.INSTANCE;
     }
 
     @Override
