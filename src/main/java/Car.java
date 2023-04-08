@@ -1,23 +1,26 @@
 import java.util.Random;
 
 public class Car {
-    private int move;
+
+    private static final Random RANDOM_DICE = new Random();
+    private static final int LEAST_RANDOM_VALUE = 4;
+    private CarPosition position;
 
     public Car() {
-        this.move = 0;
+        this.position = new CarPosition(0);
     }
 
-    public void moveCar(int m) {
-        if (m >= 4)
-            this.move++;
+    public void moveCar(int randomNumber) {
+        if (randomNumber >= LEAST_RANDOM_VALUE){
+            this.position = position.move();
+        }
     }
 
-    public int getMove() {
-        return move;
+    public int getPositionValue() {
+        return position.getPositionValue();
     }
 
     public int moveOrNot() {
-        Random random = new Random();
-        return random.nextInt(10);
+        return RANDOM_DICE.nextInt(10);
     }
 }

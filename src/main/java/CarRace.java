@@ -1,60 +1,51 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 
 public class CarRace {
-    private List<Car> carList;
-    private final int countOfMove;
+    private RacingCars racingCars;
+    private final RaceRound round;
 
     //외부에서 생성자 호출 막기
-    private CarRace(List<Car> carList, int countOfMove){
-        this.carList = carList;
-        this.countOfMove = countOfMove;
+    private CarRace(RacingCars racingCars, RaceRound round){
+        this.racingCars = racingCars;
+        this.round = round;
     }
 
-    public static CarRace initRace(int numberOfCar, int countOfMove) {
-        List<Car> carList = IntStream.range(0, numberOfCar)
-                .mapToObj(i -> new Car())
-                .collect(Collectors.toList());
-
-        return new CarRace(carList, countOfMove);
+    public static CarRace initRace(int numberOfCar, int round) {
+        return new CarRace(RacingCars.of(numberOfCar), RaceRound.of(round));
     }
 
-    public static CarRace input(){
-        Scanner scanner = new Scanner(System.in);
-        int a = scanner.nextInt();
-        int b = scanner.nextInt();
-        return initRace(a,b);
+    public int getRoundValue() {
+        return round.getValue();
     }
 
-    public int getCountOfMove() {
-        return countOfMove;
-    }
-
-    public List<Car> getCarList() {
-        return carList;
+    public RacingCars getRacingCars() {
+        return racingCars;
     }
     public void race() {
-        for(int i=0; i<countOfMove; i++) {
-            carList.stream().forEach(car -> car.moveCar(car.moveOrNot()));
-            racePrint(i+1);
+        for(int i=1; i<=round.getValue(); i++) {
+            racing();
+            recordRace(round.getValue());
         }
     }
 
-    public void racePrint(int count){
+    private void racing(){
+        racingCars.getCars()
+                .forEach(car -> car.moveCar(car.moveOrNot()));
+    }
+
+    private void recordRace(int count){
         System.out.println(count + "회차");
-        for(int i=0; i<carList.size(); i++){
-            int move = carList.get(i).getMove();
-            for(int j=0; j<move; j++){
-                System.out.print("-");
-            }
-            System.out.println();
+        for(int i = 0; i< racingCars.getCars().size(); i++){
+            int record = racingCars.getCars().get(i).getPositionValue();
+            printRecord(record);
         }
-
     }
 
-
+    private void printRecord(int record){
+        for(int j=0; j<record; j++){
+            System.out.print("-");
+        }
+        System.out.println();
+    }
 }

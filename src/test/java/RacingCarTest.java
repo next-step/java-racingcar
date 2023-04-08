@@ -1,9 +1,7 @@
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,8 +16,8 @@ public class RacingCarTest {
     public void initRacing(int num, int count) {
         CarRace carRace = CarRace.initRace(num, count);
 
-        assertThat(num).isEqualTo(carRace.getCarList().size());
-        assertThat(count).isEqualTo(carRace.getCountOfMove());
+        assertThat(num).isEqualTo(carRace.getRacingCars().getCars().size());
+        assertThat(count).isEqualTo(carRace.getRoundValue());
     }
 
     @ParameterizedTest
@@ -31,7 +29,7 @@ public class RacingCarTest {
         //when
         car.moveCar(move);
         //then
-        assertThat(car.getMove()).isEqualTo(expected);
+        assertThat(car.getPositionValue()).isEqualTo(expected);
     }
 
     @Test
@@ -51,8 +49,8 @@ public class RacingCarTest {
         CarRace carRace = CarRace.initRace(3, 5);
         carRace.race();
         //when
-        List<Integer> moveList = carRace.getCarList().stream()
-                .map(car -> car.getMove())
+        List<Integer> moveList = carRace.getRacingCars().getCars().stream()
+                .map(car -> car.getPositionValue())
                 .collect(Collectors.toList());
 
         assertThat(moveList).containsAnyOf(0,1,2,3,4,5);
