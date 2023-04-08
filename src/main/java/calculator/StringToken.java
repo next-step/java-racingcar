@@ -1,7 +1,10 @@
 package calculator;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class StringToken {
 
@@ -41,27 +44,25 @@ public class StringToken {
         return new StringToken(DEFAULT_DELIMITER, text);
     }
 
-    public int[] toIntArray() {
+    public List<Integer> toIntArray() {
         return toInts(split(text, delimiter));
     }
 
-    private String[] split(String text, String delimiter) {
-        return text.split(delimiter);
+    private List<String> split(String text, String delimiter) {
+        return Arrays.asList(text.split(delimiter));
     }
 
-    private int[] toInts(String[] values) {
-        int[] numbers = new int[values.length];
-        for (int i = 0; i < values.length; i++) {
-            numbers[i] = toPositiveInt(values[i]);
-        }
-        return numbers;
+    private List<Integer> toInts(List<String> numbers) {
+        return numbers.stream()
+                      .map(this::toPositiveInt)
+                      .collect(Collectors.toUnmodifiableList());
     }
 
-    private int toPositiveInt(String value) {
+    private int toPositiveInt(String number) {
         try {
-            int valueAsInt = Integer.parseInt(value);
-            throwIfNegative(valueAsInt);
-            return valueAsInt;
+            int numberAsInt = Integer.parseInt(number);
+            throwIfNegative(numberAsInt);
+            return numberAsInt;
         } catch (NumberFormatException e) {
             throw new RuntimeException("토크닝 대상에 숫자가 아닌 값이 포함되어 있습니다.");
         }
