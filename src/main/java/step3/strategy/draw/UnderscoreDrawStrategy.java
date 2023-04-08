@@ -1,7 +1,5 @@
 package step3.strategy.draw;
 
-import step3.domain.Position;
-
 import java.util.stream.IntStream;
 
 public class UnderscoreDrawStrategy implements DrawStrategy {
@@ -11,21 +9,22 @@ public class UnderscoreDrawStrategy implements DrawStrategy {
 
     private final StringBuffer stringBuffer = new StringBuffer();
 
-    private UnderscoreDrawStrategy(){}
+    private UnderscoreDrawStrategy() {
+    }
 
-    private static class UnderscoreDrawStrategyInstanceHolder{
+    private static class UnderscoreDrawStrategyInstanceHolder {
         private static final UnderscoreDrawStrategy INSTANCE = new UnderscoreDrawStrategy();
     }
 
-    public UnderscoreDrawStrategy getInstance(){
+    public static UnderscoreDrawStrategy getInstance() {
         return UnderscoreDrawStrategyInstanceHolder.INSTANCE;
     }
 
     @Override
-    public String draw(Position position) {
+    public String draw(int currentLocation) {
         clear();
 
-        IntStream.range(INITIAL_INDEX, position.getPosition())
+        IntStream.range(INITIAL_INDEX, currentLocation)
                 .mapToObj(carPosition -> MOVE_PRINT_STRING)
                 .forEach(stringBuffer::append);
 
