@@ -1,27 +1,24 @@
 package racingcar.model;
 
-import java.util.Random;
-
 import static racingcar.model.CarStatus.RUN;
 import static racingcar.model.CarStatus.STOP;
 
 public class Car {
-    private final Random random;
+    private final Probability probability;
 
     private int distance = 0;
 
     public Car() {
-        this.random = new Random();
+        this.probability = new Probability();
     }
 
     public Car(long seed) {
-        this.random = new Random(seed);
+        this.probability = new Probability(seed);
     }
 
+
     public CarStatus move() {
-        int num = random.nextInt(10);
-        
-        if (num >= 4) {
+        if (probability.success()) {
             this.distance++;
             return RUN;
         }
