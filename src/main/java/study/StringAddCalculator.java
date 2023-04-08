@@ -50,14 +50,14 @@ public class StringAddCalculator {
 
     private int sumNumbers(String[] numbers) {
 
-        if(checkNegativeNumber(numbers)) {
+        if(isNegativeNumber(numbers)) {
             return Arrays.stream(numbers).mapToInt(Integer::parseInt).sum();
         }
 
         throw new RuntimeException();
     }
 
-    private boolean checkNegativeNumber(String[] numbers) {
+    private boolean isNegativeNumber(String[] numbers) {
 
         if(Arrays.stream(numbers).allMatch(number -> Integer.parseInt(number) > 0)) {
             return true;
