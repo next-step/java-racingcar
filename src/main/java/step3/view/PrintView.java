@@ -1,32 +1,28 @@
 package step3.view;
 
 import step3.domain.Repetitions;
+import step3.strategy.draw.DrawStrategy;
+
+import java.util.List;
 
 public class PrintView {
+    private final DrawStrategy drawStrategy;
 
-    private final static String MOVE_PRINT_STRING = "-";
-
-    private PrintView() {
+    private PrintView(DrawStrategy drawStrategy) {
+        this.drawStrategy = drawStrategy;
     }
 
-    private static class PrintViewInstanceHolder {
-        private static final PrintView INSTANCE = new PrintView();
+    public static PrintView of(DrawStrategy drawStrategy) {
+        return new PrintView(drawStrategy);
     }
 
-    private PrintView getInstance() {
-        return PrintViewInstanceHolder.INSTANCE;
-    }
-
-    public void print(Repetitions repetitions) {
+    private void print(Repetitions repetitions) {
         System.out.println(repetitions.getRepetitions() + "번째 reps");
-        repetitions.getCarList().forEach(car -> printRacingCar(car.getPosition().getPosition()));
+        repetitions.getCarList().forEach(racingCar -> System.out.println(drawStrategy.draw(racingCar.getCurrentLocation())));
+        System.out.println("========================================");
     }
 
-    public void printRacingCar(int position) {
-
-        for (int index = 0; index < position; index++) {
-            System.out.print(MOVE_PRINT_STRING);
-        }
-        System.out.println();
+    public void printAll(List<Repetitions> repetitionsList) {
+        repetitionsList.forEach(this::print);
     }
 }
