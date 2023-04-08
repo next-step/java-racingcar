@@ -1,4 +1,4 @@
-package exception;
+package calculator.exception;
 
 public class NegativeNumberException extends IllegalStringAddFormatException {
     public NegativeNumberException(String s) {
