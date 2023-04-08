@@ -6,6 +6,9 @@ import java.util.regex.Pattern;
 public class StringAddCalculator {
     
     public static final StringBuilder REGEX = new StringBuilder("[:,]");
+    public static final int ZERO= 0;
+    public static final String CUSTOM_DELIMITER_PATTERN = "//(.)\n(.*)";
+    public static final int REGEX_INSERT_INDEX = 3;
 
     public static int splitAndSum(String text) {
         try {
@@ -17,7 +20,7 @@ public class StringAddCalculator {
 
     private static int calculatedResult(String text) {
         if (isNullOrBlank(text)) {
-            return 0;
+            return ZERO;
         }
         text = validatedText(text);
 
@@ -29,7 +32,7 @@ public class StringAddCalculator {
     }
 
     private static String validatedText(String text) {
-        Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(text);
+        Matcher matcher = Pattern.compile(CUSTOM_DELIMITER_PATTERN).matcher(text);
         if (matcher.find()) {
             text = textUpdate(matcher);
         }
@@ -46,7 +49,7 @@ public class StringAddCalculator {
     }
 
     private static void addDelimiter(char customDelimiter) {
-        REGEX.insert(3, customDelimiter);
+        REGEX.insert(REGEX_INSERT_INDEX, customDelimiter);
     }
 
     private static int sumUsingDelimiter(String text) {
