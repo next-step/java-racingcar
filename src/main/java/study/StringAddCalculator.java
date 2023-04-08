@@ -4,11 +4,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
-    
+
     public static final StringBuilder REGEX = new StringBuilder("[:,]");
-    public static final int ZERO= 0;
-    public static final String CUSTOM_DELIMITER_PATTERN = "//(.)\n(.*)";
+    public static final int ZERO = 0;
     public static final int REGEX_INSERT_INDEX = 3;
+    public static final String CUSTOM_DELIMITER_PATTERN = "//(.)\n(.*)";
+    public static final Pattern PATTERN = Pattern.compile(CUSTOM_DELIMITER_PATTERN);
+    public static Matcher matcher;
 
     public static int splitAndSum(String text) {
         try {
@@ -32,7 +34,7 @@ public class StringAddCalculator {
     }
 
     private static String validatedText(String text) {
-        Matcher matcher = Pattern.compile(CUSTOM_DELIMITER_PATTERN).matcher(text);
+        matcher = PATTERN.matcher(text);
         if (matcher.find()) {
             text = textUpdate(matcher);
         }
