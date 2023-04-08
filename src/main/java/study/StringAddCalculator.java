@@ -45,8 +45,7 @@ public class StringAddCalculator {
             return matcher.group(INPUT_PATTERN_NUMBER).split(matcher.group(DELIMITER_PATTERN_NUMBER));
         }
 
-        //  matcher 에 안 걸리는 경우는...?
-        return null;
+        return new String[0];
     }
 
     private int sumNumbers(String[] numbers) {
