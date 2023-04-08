@@ -16,6 +16,7 @@ public class AutomobileFederation {
     }
 
     private Map<Integer, List<String>> scoreboardCalculation(Map<Integer, List<Integer>> raceResults) {
+        return null;
     }
 
     public Map<Integer, List<Integer>> getResult() {
