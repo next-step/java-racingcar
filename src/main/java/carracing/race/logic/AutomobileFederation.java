@@ -1,5 +1,6 @@
 package carracing.race.logic;
 
+import carracing.race.logic.type.Record;
 import carracing.race.logic.type.Round;
 import carracing.race.logic.type.Score;
 
@@ -12,7 +13,7 @@ import java.util.stream.Collectors;
 public class AutomobileFederation {
 
     private final Map<Round, List<Score>> scoreListResultMap;
-    private final Map<Round, List<String>> scoreboard;
+    private final Map<Round, Record> scoreboard;
             //scoreboard
 
     public AutomobileFederation(Map<Round, List<Score>> scoreListResultMap) {
@@ -21,7 +22,7 @@ public class AutomobileFederation {
 
     }
 
-    private Map<Round, List<String>> scoreboardCalculation(Map<Round, List<Score>> raceResults) {
+    private Map<Round, Record> scoreboardCalculation(Map<Round, List<Score>> raceResults) {
 
         for (Round round : getRounds()) {
             for (Score scoreCurrentCar : raceResults.get(round)) {
@@ -31,7 +32,7 @@ public class AutomobileFederation {
         return null;
     }
 
-    public Map<Round, List<String>> getScoreboard() {
+    public Map<Round, Record> getScoreboard() {
         return scoreboard;
     }
 
