@@ -5,54 +5,60 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
-    public int splitAndSum(String value)throws Exception{
-        int result = checkNull_Empty(value);
-        String[] values;
+    Pattern pattern = Pattern.compile("//(.)\n(.*)");
 
-        if(result == 0){
-            return result;
-        }else{
-            values = checkSeparator(value);
-            int calcul = 0;
-            for(String val : values){
-                calcul += checkNegative(Integer.valueOf(val));
-            }
-            result = calcul;
+    public int splitAndSum(String value) {
+
+        if (checkNull_Empty(value) == 0) {
+            return 0;
         }
-        return result;
+        return sum(stringSeparation(checkSeparator(value)));
     }
 
-    public int checkNull_Empty(String value)throws Exception{
-        int result = -1;
-
-        if(value == null){
-            result = 0;
-        }else if(value.isEmpty()){
-            result = 0;
+    public int checkNull_Empty(String value) {
+        if (value == null || value.isEmpty()) {
+            return 0;
         }
-        return result;
+
+        return -1;
     }
 
-    public String[] checkSeparator(String value) throws Exception{
+    public String[] checkSeparator(String value) {
 
         String[] number;
 
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(value);
+        Matcher m = pattern.matcher(value);
 
-        if(m.find()){
+        if (m.find()) {
             String customDelimiter = m.group(1);
             number = m.group(2).split(customDelimiter);
-        }else{
-            number = value.split(",|:");
         }
+        number = value.split(",|:");
+
         return number;
     }
 
-    public int checkNegative(int value) throws Exception{
-            if(0 > value){
-                throw new RuntimeException();
-            }
-            return value;
+    public int checkNegative(int value) {
+        if (0 > value) {
+            throw new RuntimeException();
+        }
+        return value;
     }
 
+    public int[] stringSeparation(String[] values) {
+        int[] ints = new int[values.length];
+        for (int i = 0; i < values.length; i++) {
+            ints[i] = checkNegative(Integer.valueOf(values[i]));
+        }
+        return ints;
+    }
+
+    public int sum(int[] ints) {
+        int sum = 0;
+        for (int temp : ints) {
+            sum += temp;
+        }
+        return sum;
+    }
 }
+
