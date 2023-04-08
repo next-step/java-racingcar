@@ -6,8 +6,8 @@ import java.util.regex.Pattern;
 public class StringAddCalculator {
     private static final int ZERO = 0;
     private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
-    private static final int DELIMITER_INDEX = 1;
     private static final int NUM_STRING_INDEX = 2;
+    private static final int DELIMITER_INDEX = 1;
     private static final String GIVEN_DELIMITER = ",|:";
     private static final Pattern GIVEN_DELIMITER_PATTERN = Pattern.compile(GIVEN_DELIMITER);
 
@@ -37,7 +37,7 @@ public class StringAddCalculator {
     }
 
     private static int getTotal(String[] numbers) {
-        int total = 0;
+        int total = ZERO;
         for (String number : numbers) {
             int parsedNumber = toInteger(number);
             total += parsedNumber;

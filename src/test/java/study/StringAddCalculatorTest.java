@@ -45,6 +45,12 @@ public class StringAddCalculatorTest {
         int result = StringAddCalculator.splitAndSum("//;\n1;2;3");
         assertThat(result).isEqualTo(6);
     }
+    @Test
+    @DisplayName("5. “//”와 “\n” 문자 사이에 커스텀 구분자를 지정할 수 있다. 테스트")
+    public void splitAndSum_custom_구분자2() {
+        int result = StringAddCalculator.splitAndSum("//a\n4a6a1");
+        assertThat(result).isEqualTo(11);
+    }
 
     @Test
     @DisplayName("6. 음수를 전달할 경우 RuntimeException 예외가 발생해야 한다. 테스트")
