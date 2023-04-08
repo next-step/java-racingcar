@@ -31,7 +31,11 @@ public class StringAddCalculatorTest {
     public void splitAndSum_숫자하나() throws Exception {
         int result = stringAddCalculator.splitAndSum("1");
         assertThat(result).isEqualTo(1);
+    }
 
+    @DisplayName("숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환한다.")
+    @Test
+    public void splitAndSum_문자하나() throws Exception {
         assertThatThrownBy(() -> stringAddCalculator.splitAndSum("D"))
                 .isInstanceOf(NumberFormatException.class);
     }

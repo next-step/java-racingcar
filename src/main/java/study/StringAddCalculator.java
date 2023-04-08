@@ -6,13 +6,15 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
-    private static final Pattern ONLY_NUMBER = Pattern.compile("^[0-9]*$");
+    private static final int ZERO = 0;
     private static final Pattern CUSTOM_PATTERN = Pattern.compile("//(.)\n(.*)");
+    private static final int DELIMITER_PATTERN_NUMBER = 1;
+    private static final int INPUT_PATTERN_NUMBER = 2;
 
     public int splitAndSum(String inputText) {
 
         if (checkEmpty(inputText)) {
-            return 0;
+            return ZERO;
         }
 
         return sumNumbers(splitText(inputText));
@@ -40,7 +42,7 @@ public class StringAddCalculator {
         Matcher matcher = CUSTOM_PATTERN.matcher(text);
 
         if (matcher.find()) {
-            return matcher.group(2).split(matcher.group(1));
+            return matcher.group(INPUT_PATTERN_NUMBER).split(matcher.group(DELIMITER_PATTERN_NUMBER));
         }
 
         //  matcher 에 안 걸리는 경우는...?
