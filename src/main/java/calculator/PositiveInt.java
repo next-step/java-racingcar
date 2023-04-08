@@ -1,3 +1,5 @@
+package calculator;
+
 public class PositiveInt {
     private final int value;
 

@@ -1,3 +1,5 @@
+package calculator;
+
 public class CalculatorInputText {
 
     private final String str;

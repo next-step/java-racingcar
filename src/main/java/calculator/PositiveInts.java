@@ -1,3 +1,5 @@
+package calculator;
+
 public class PositiveInts {
     private final PositiveInt[] positiveInts;
 
