@@ -1,12 +1,13 @@
 package step3.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Racecourse {
-    private final List<Track> tracks;
+    private List<Track> tracks = new ArrayList<>();
 
-    public Racecourse(List<Track> tracks) {
-        this.tracks = tracks;
+    public void addTrack(Track track) {
+        tracks.add(track);
+        tracks.sort(Track::compareTo);
     }
-
 }

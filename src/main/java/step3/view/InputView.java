@@ -2,17 +2,19 @@ package step3.view;
 
 import java.util.Scanner;
 
+import static step3.component.NumberValidator.throwIfNotPositive;
+
 public class InputView {
     private static final String inputCarNumberMessage = "자동차 대수는 몇 대 인가요?";
     private static final String inputTryNumberMessage = "시도할 회수는 몇 회 인가요?";
 
-    public static String inputCarNumbers(Scanner scanner) {
+    public static int inputCarNumbers(Scanner scanner) {
         System.out.println(inputCarNumberMessage);
-        return scanner.nextLine();
+        return throwIfNotPositive(scanner.nextInt());
     }
 
-    public static String inputTryNumbers(Scanner scanner) {
+    public static int inputTryNumbers(Scanner scanner) {
         System.out.println(inputTryNumberMessage);
-        return scanner.nextLine();
+        return throwIfNotPositive(scanner.nextInt());
     }
 }
