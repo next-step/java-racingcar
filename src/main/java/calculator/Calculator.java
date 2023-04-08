@@ -33,16 +33,22 @@ public class Calculator {
     }
 
     private static String[] split(String input) {
-        SplitInfo splitInfo = getSplitInfo(input);
-        return splitInfo.getInput().split(splitInfo.getSeparator());
+        String separator = getSeparator(input);
+        return getValueToSplit(input).split(separator);
     }
 
-    private static SplitInfo getSplitInfo(String input) {
-        if (isCustomSeparator(input)) {
-            String customSeparator = String.valueOf(input.charAt(2));
-            return new SplitInfo(input.substring(CUSTOM_SEPARATOR_INPUT_BEGIN_INDEX), customSeparator);
+    private static String getSeparator(String input) {
+        if(isCustomSeparator(input)) {
+            return String.valueOf(input.charAt(2));
         }
-        return new SplitInfo(input, SEPARATOR);
+        return SEPARATOR;
+    }
+
+    private static String getValueToSplit(String input) {
+        if(isCustomSeparator(input)) {
+            return input.substring(CUSTOM_SEPARATOR_INPUT_BEGIN_INDEX);
+        }
+        return input;
     }
 
     private static boolean isCustomSeparator(String input) {
