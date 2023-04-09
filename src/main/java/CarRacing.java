@@ -9,7 +9,7 @@ public class CarRacing {
 
     public static void main(String[] args) {
 
-        int numberOfCar = InputView.numberOfCar();
+        String[] nameOfCars = InputView.splitNameOfCars();
         int trial = InputView.trial();
 
         List<Car> cars = cars(numberOfCar);
@@ -21,10 +21,10 @@ public class CarRacing {
         }
     }
 
-    private static List<Car> cars(int number) {
+    private static List<Car> cars(String[] nameOfCars) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < number; i++) {
-            cars.add(new Car());
+        for (String nameOfCar : nameOfCars) {
+            cars.add(new Car(nameOfCar, 0));
         }
 
         return cars;
