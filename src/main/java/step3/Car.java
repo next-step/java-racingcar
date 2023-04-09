@@ -8,6 +8,10 @@ public class Car {
         this.distance = 0;
     }
 
+    public int getCarDistance() {
+        return this.distance;
+    }
+
     public void forwardCar() {
         this.distance++;
     }
