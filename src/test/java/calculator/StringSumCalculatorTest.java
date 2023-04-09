@@ -44,10 +44,10 @@ public class StringSumCalculatorTest {
     void splitAndSum_negativeString() {
         assertThatThrownBy(() ->
             StringSumCalculator.onlyNumberSplitAndSum("//;\n1;2;3")
-        ).isInstanceOf(RuntimeException.class).hasMessage("Matcher spacial character number");
+        ).isInstanceOf(RuntimeException.class).hasMessage("특수문자를 입력할 수 없습니다.");
 
         assertThatThrownBy(() ->
                 StringSumCalculator.onlyNumberSplitAndSum("-1,2,3")
-        ).isInstanceOf(RuntimeException.class).hasMessage("Contains negative");
+        ).isInstanceOf(RuntimeException.class).hasMessage("음수는 입력할 수 없습니다.");
     }
 }
