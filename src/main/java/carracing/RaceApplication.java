@@ -1,10 +1,10 @@
-package carracing.race;
+package carracing;
 
-import carracing.race.logic.AutomobileFederation;
-import carracing.race.logic.type.Round;
-import carracing.race.logic.type.Score;
-import carracing.race.ui.InputView;
-import carracing.race.ui.ResultView;
+import carracing.logic.AutomobileFederation;
+import carracing.logic.type.Round;
+import carracing.logic.type.Score;
+import carracing.ui.InputView;
+import carracing.ui.ResultView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,7 +26,7 @@ public class RaceApplication {
         RaceApplication raceApplication = new RaceApplication(new InputView(System.in,System.out),new ResultView(System.out));
         raceApplication.run();
     }
-    
+
     public void run() {
         int participate = inputView.participate();
         int iterations = inputView.iterations();

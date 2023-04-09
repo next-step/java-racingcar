@@ -1,14 +1,13 @@
-package carracing.race;
+package carracing;
 
-import carracing.race.logic.type.Round;
-import carracing.race.logic.type.Score;
-import carracing.race.ui.InputView;
-import carracing.race.ui.ResultView;
+import carracing.logic.type.Round;
+import carracing.logic.type.Score;
+import carracing.ui.InputView;
+import carracing.ui.ResultView;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.commons.logging.LoggerFactory;
 
 import java.util.List;
 import java.util.Map;

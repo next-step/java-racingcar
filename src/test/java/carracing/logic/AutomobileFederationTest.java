@@ -1,7 +1,7 @@
-package carracing.race.logic;
+package carracing.logic;
 
-import carracing.race.logic.type.Round;
-import carracing.race.logic.type.Score;
+import carracing.logic.type.Round;
+import carracing.logic.type.Score;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,8 +10,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class AutomobileFederationTest {
     private static final Logger log = Logger.getLogger("AutomobileFederationTest");

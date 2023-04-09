@@ -1,4 +1,4 @@
-package carracing.race.ui;
+package carracing.ui;
 
 import java.io.InputStream;
 import java.io.PrintStream;

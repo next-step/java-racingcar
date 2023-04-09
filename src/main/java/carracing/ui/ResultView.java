@@ -1,7 +1,7 @@
-package carracing.race.ui;
+package carracing.ui;
 
-import carracing.race.logic.AutomobileFederation;
-import carracing.race.logic.type.Round;
+import carracing.logic.AutomobileFederation;
+import carracing.logic.type.Round;
 
 import java.io.PrintStream;
 import java.util.concurrent.atomic.AtomicInteger;

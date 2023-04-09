@@ -1,4 +1,4 @@
-package carracing.race.logic.type;
+package carracing.logic.type;
 
 import java.util.Objects;
 
