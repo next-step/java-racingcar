@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class AutomobileFederation {
-
+    private static final String INITIAL_RACING_RECODE = "";
     private final Map<Round, List<Score>> roundToScoreListMap;
     private final Map<Round, Record> roundToRecordMap;
 
@@ -20,7 +20,7 @@ public class AutomobileFederation {
         this.roundToRecordMap = recordBoardCalculation(roundToScoreListMap);
     }
 
-    private Map<Round, Record> recordBoardCalculation(Map<Round, List<Score>> raceResults) {
+    public Map<Round, Record> recordBoardCalculation(Map<Round, List<Score>> raceResults) {
         Map<Round, Record> recordMap = new HashMap<>();
 
         for (Round round : this.getRounds()) {
@@ -37,13 +37,17 @@ public class AutomobileFederation {
         return recordMap;
     }
 
+    //todo : need Refac here
     private String getPreviousProgress(Round round, int carIndex, Map<Round, Record> curRecordMap) {
-        if (round.toInt() == 1) {
-            return "";
+        if (isFirstRound(round)) {
+            return INITIAL_RACING_RECODE;
         }
-        Round previousRound = round.getPrevious();
-        Record record = curRecordMap.get(previousRound);
-        return record.toList().get(carIndex);
+        Record previousRecord = curRecordMap.get(round.getPrevious());
+        return previousRecord.toList().get(carIndex);
+    }
+
+    private static boolean isFirstRound(Round round) {
+        return round.toInt() == 1;
     }
 
     public List<Round> getRounds() {
