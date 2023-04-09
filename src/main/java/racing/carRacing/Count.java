@@ -1,7 +1,5 @@
 package racing.carRacing;
 
-import java.util.List;
-
 public class Count {
     public static final int ZERO = 0;
     public static final long COUNT_DOWN = 1;
@@ -21,13 +19,6 @@ public class Count {
 
     private boolean isNegativeNumberOrZero(int count) {
         return count <= ZERO;
-    }
-
-    public List<Car> initCars(List<Car> cars) {
-        for (int i = ZERO; i < count; i++) {
-            cars.add(new Car(""));
-        }
-        return cars;
     }
 
     public boolean isOverZero() {

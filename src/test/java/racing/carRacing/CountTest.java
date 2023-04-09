@@ -5,9 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -31,17 +28,6 @@ class CountTest {
         assertThatThrownBy(
                 () -> Count.createCount(input))
                 .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    @DisplayName("List car 초기화 테스트")
-    void initCarListTest() {
-        Count numberOfCar = new Count(5);
-        List<Car> cars = new ArrayList<>();
-
-        List<Car> result = numberOfCar.initCars(cars);
-
-        assertThat(result).hasSize(5);
     }
 
     @Test
