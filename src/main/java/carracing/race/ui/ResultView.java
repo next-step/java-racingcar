@@ -16,13 +16,13 @@ public class ResultView {
 
     public void printResult(AutomobileFederation federation) {
         if (!DISPLAY_CAR_INDEX) {
-            displayWithoutCarIndex(federation);
+            printResultWithoutCarIndex(federation);
             return;
         }
-        displayWithCarIndex(federation);
+        printResultWithCarIndex(federation);
     }
 
-    private void displayWithoutCarIndex(AutomobileFederation federation) {
+    public void printResultWithoutCarIndex(AutomobileFederation federation) {
         for (Round round : federation.getRounds()) {
             for (String s : federation.lapSituations(round)) {
                 printStream.println(s);
@@ -31,7 +31,7 @@ public class ResultView {
         }
     }
 
-    private void displayWithCarIndex(AutomobileFederation federation) {
+    public void printResultWithCarIndex(AutomobileFederation federation) {
         for (Round round : federation.getRounds()) {
             AtomicInteger indexHolder = new AtomicInteger();
             for (String s : federation.lapSituations(round)) {
