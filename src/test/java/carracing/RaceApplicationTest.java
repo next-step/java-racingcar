@@ -142,26 +142,4 @@ public class RaceApplicationTest {
         //then
         assertThat(random).isBetween(0, 9);
     }
-
-    @Disabled("해당 클래스에서 테스트진행하는 범위의 기능이 아님")
-    @DisplayName("3 초과(=4이상) 일 경우 전진한다")
-    @Test
-    public void forwardOver4() {
-        //given
-        //when
-        //then
-        log.info("테스트를 작성할 수 없는 애매함");
-        fail();
-    }
-
-    @Disabled("해당 클래스에서 테스트진행하는 범위의 기능이 아님")
-    @DisplayName("4 미만(=3이하) 일 경우 정지한다")
-    @Test
-    public void stopUnder4() {
-        //given
-        //when
-        //then
-        log.info("테스트를 작성할 수 없는 애매함");
-        fail();
-    }
 }

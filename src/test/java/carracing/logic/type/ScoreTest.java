@@ -1,10 +1,13 @@
 package carracing.logic.type;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class ScoreTest {
 
@@ -64,4 +67,47 @@ public class ScoreTest {
         }).isInstanceOf(RuntimeException.class);
     }
 
+    @DisplayName("전진한다 4인경우")
+    @Test
+    public void forwardOver4() {
+        //given
+        int input = 4;
+        //when
+        Score score = new Score(input);
+        //then
+        assertEquals( "-",score.toProgress());
+    }
+
+    @DisplayName("전진한다 5인경우")
+    @Test
+    public void forwardAt5() {
+        //given
+        int input = 5;
+        //when
+        Score score = new Score(input);
+        //then
+        assertEquals( "-",score.toProgress());
+    }
+
+    @DisplayName("정지한다 3인경우")
+    @Test
+    public void stop3() {
+        //given
+        int input = 4;
+        //when
+        Score score = new Score(input);
+        //then
+        assertEquals( "",score.toProgress());
+    }
+
+    @DisplayName("정지한다 3인경우")
+    @Test
+    public void stop2() {
+        //given
+        int input = 4;
+        //when
+        Score score = new Score(input);
+        //then
+        assertEquals( "",score.toProgress());
+    }
 }
