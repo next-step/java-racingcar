@@ -26,10 +26,10 @@ public class AutomobileFederation {
         for (Round round : this.getRounds()) {
             List<String> recordThisRound = new ArrayList<>();
 
-            for(int carIndex=0 ; carIndex<raceResults.get(round).size() ; carIndex++) {
-            //for (Score scoreCurrentCar : raceResults.get(round)) {
+            for (int carIndex = 0; carIndex < raceResults.get(round).size(); carIndex++) {
+                //for (Score scoreCurrentCar : raceResults.get(round)) {
                 Score scoreCurrentCar = raceResults.get(round).get(carIndex);
-                recordThisRound.add(getPreviousProgress(round,carIndex,recordMap) + scoreCurrentCar.toProgress());
+                recordThisRound.add(getPreviousProgress(round, carIndex, recordMap) + scoreCurrentCar.toProgress());
             }
             Record record = new Record(recordThisRound);
             recordMap.put(round, record);
@@ -37,27 +37,14 @@ public class AutomobileFederation {
         return recordMap;
     }
 
-    private String getPreviousProgress(Round round,int carIndex,Map<Round, Record>  curRecordMap) {
-        if(round.toInt()==1 ) {
+    private String getPreviousProgress(Round round, int carIndex, Map<Round, Record> curRecordMap) {
+        if (round.toInt() == 1) {
             return "";
         }
-        Round previousRound     = round.getPrevious();
+        Round previousRound = round.getPrevious();
         Record record = curRecordMap.get(previousRound);
         return record.toList().get(carIndex);
     }
-
-//    public Map<Round, Record> getScoreboard() {
-//        return scoreboard;
-//    }
-
-//    public List<Integer> getIntRounds() {
-//        return scoreListResultMap
-//                .keySet()
-//                .stream()
-//                .map(Round::toInt)
-//                .sorted(Comparator.naturalOrder())
-//                .collect(Collectors.toList());
-//    }
 
     public List<Round> getRounds() {
         return new ArrayList<>(roundToScoreListMap.keySet()).stream().sorted().collect(Collectors.toList());
