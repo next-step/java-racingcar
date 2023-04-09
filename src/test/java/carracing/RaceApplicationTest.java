@@ -39,21 +39,21 @@ public class RaceApplicationTest {
 
     @DisplayName("경기횟수, 참가차량수가 주어지면 경기결과를 리턴한다")
     @Test
-    public void run() {
+    public void participatesAndIterations() {
         //given
-        int parti = 0;
-        int iter = 0;
+        int participates = 9;
+        int iterations = 4;
 
         //when
-        Map<Round, List<Score>> raceResults = raceApplication.racingStart(parti, iter);
+        log.info("자동차 경주의 정보 > 참가자수=[{}명], 자동차 경주의 Round 횟수=[{}판]");
+        Map<Round, List<Score>> raceResults = raceApplication.racingStart(participates, iterations);
 
         //then
-        assertThat(raceResults.keySet()).hasSize(parti); // 경기 참가자수 검증
-        assertThat(raceResults.values()).hasSize(parti);
-        //횟수검증
-        raceResults.values().stream().forEach(s -> {
-            assertThat(s).hasSize(iter);
-        });
+        assertAll(
+                () -> assertThat(raceResults.keySet()).as("경기 반복횟수 검증").hasSize(iterations),
+                () -> assertThat(raceResults.get(new Round(1))).as("경기 참가자수 검증 - 1번경가").hasSize(participates),
+                () -> raceResults.values().forEach(s -> assertThat(s).as("경기 참가자수 검증 - 모든경가").hasSize(participates))
+        );
     }
 
     @DisplayName("n대의 자동차는 전진 또는 멈출 수 있다")
