@@ -10,10 +10,7 @@ public class Score {
     }
 
     private int vaild(int value) {
-        if(value>=0 && value<=9) {
-            return value;
-        }
-        throw new RuntimeException("Score 는 0이상 9이하의 값을 가질 수 있습니다");
+        return  (0<= value && value<=9) ? value : () -> throw new RuntimeException("Score 는 0이상 9이하의 값을 가질 수 있습니다");
     }
 
     public int toInt() {
