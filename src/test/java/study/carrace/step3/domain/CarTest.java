@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.*;
 
 class CarTest {
     @Test
-    void 자동차_전진_성공() {
+    void 자동차_전진() {
         // given
         int generatedRandomInteger = 1;
         int movableThreshold = 0;
