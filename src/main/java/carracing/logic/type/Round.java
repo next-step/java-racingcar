@@ -21,7 +21,7 @@ public class Round implements Comparable<Round> {
         return Integer.compare(this.toInt(), other.toInt());
     }
 
-    public Round getPrevious() {
+    public Round previousRound() {
         if (this.value <= 1) {
             return this;
         }

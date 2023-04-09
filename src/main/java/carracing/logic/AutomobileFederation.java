@@ -46,7 +46,7 @@ public class AutomobileFederation {
         if (isFirstRound(round)) {
             return INITIAL_RACING_RECODE;
         }
-        Record previousRecord = curRecordMap.get(round.getPrevious());
+        Record previousRecord = curRecordMap.get(round.previousRound());
         return previousRecord.toList().get(carIndex);
     }
 
