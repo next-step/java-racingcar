@@ -46,17 +46,5 @@ public class ResultView {
             printStream.println();
         }
     }
-    /*
-    도메인 정리
-    Map<Integer, List<Integer>> raceResults
-    키 > Lap
-
-    1랩 >> 각 차 남바별로 성적이 출력
-
-    recode >> 각 차량이 경기당 성적 , 0~9 범위값
-
-
-     */
-
 
 }
