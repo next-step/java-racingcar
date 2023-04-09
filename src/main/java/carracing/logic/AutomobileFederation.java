@@ -41,13 +41,11 @@ public class AutomobileFederation {
         return recordMap;
     }
 
-    //todo : need Refac here
     private String getPreviousProgress(Round round, int carIndex, Map<Round, Record> curRecordMap) {
         if (isFirstRound(round)) {
             return INITIAL_RACING_RECODE;
         }
-        Record previousRecord = curRecordMap.get(round.previousRound());
-        return previousRecord.toList().get(carIndex);
+        return curRecordMap.get(round.previousRound()).toList().get(carIndex);
     }
 
     public List<Round> getRounds() {
