@@ -40,11 +40,11 @@ public class RaceApplication {
     }
 
     public Map<Round, List<Score>> racingStart(int participate, int iterations) {
-        Map<Round, List<Score>> resultMap = new HashMap<>();
-        for (int round = 1; round <= iterations; round++) {
-            resultMap.put(new Round(round), simulateSingleRoundScores(participate));
-        }
-        return resultMap;
+        return IntStream.rangeClosed(1,iterations)
+                .boxed()
+                .collect(
+                        Collectors.toMap(Round::new, round -> simulateSingleRoundScores(participate))
+                );
     }
 
     private List<Score> simulateSingleRoundScores(int participate) {
