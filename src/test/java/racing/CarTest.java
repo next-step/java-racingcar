@@ -10,9 +10,6 @@ import static org.assertj.core.api.Assertions.*;
 
 public class CarTest {
 
-
-
-
     @ParameterizedTest
     @DisplayName("Car move() method test")
     @CsvSource(value = {"1,1", "10,10"})

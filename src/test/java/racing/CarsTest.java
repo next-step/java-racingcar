@@ -23,11 +23,4 @@ public class CarsTest {
         Cars cars = Cars.createCars(input);
         Assertions.assertThat(cars.valueOf()).hasSize(expected);
     }
-
-    @ParameterizedTest
-    @DisplayName("cars generate test")
-    @CsvSource(value = {"1,1","10,10"})
-    void race(int input, int expected) {
-    }
-
 }
