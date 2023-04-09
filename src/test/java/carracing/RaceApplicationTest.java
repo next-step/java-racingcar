@@ -9,11 +9,17 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.fail;
 
 
@@ -37,6 +43,10 @@ public class RaceApplicationTest {
         this.raceApplication = new RaceApplication(this.inputView, this.resultView);
     }
 
+    private void inAndOutTestHelper(String inputString) {
+        this.inputViewInputStream = new ByteArrayInputStream(inputString.getBytes());
+    }
+
     @DisplayName("경기횟수, 참가차량수가 주어지면 경기결과를 리턴한다")
     @Test
     public void participatesAndIterations() {
@@ -56,7 +66,7 @@ public class RaceApplicationTest {
         );
     }
 
-    @DisplayName("n대의 자동차는 전진 또는 멈출 수 있다")
+    @DisplayName("n대의 자동차는 전진 또는 멈출 수 있다 라는 문구가 출력된다")
     @Test
     public void carCanMoveOrStop() {
         //given
@@ -70,10 +80,17 @@ public class RaceApplicationTest {
     @Test
     public void countOfMovingCar() {
         //given
+        int participate = 55;
+        int iterations = 33;
+
         //when
+        Map<Round, List<Score>> roundListMap = raceApplication.racingStart(participate, iterations);
+
         //then
-        log.info("테스트를 작성할 수 없는 애매함");
-        fail();
+        assertAll(
+                () -> assertThat(roundListMap.keySet()).as("몇번 이동하는지 검증").hasSize(iterations),
+                () -> assertThat(roundListMap.get(new Round(1))).as("몇대가 움직이는지 검증").hasSize(participate)
+        );
     }
 
     @DisplayName("몇번을 이동할것인지 입력할 수 있다")
