@@ -19,7 +19,7 @@ public class RacingCarGame {
 
     public List<RacingCar> playAndReturnCars() {
         for (RacingCar car : cars) {
-            car.moveForward();
+            car.moveForward(RandomNumberGenerator.generateRandomNumber());
         }
         return cars;
     }
