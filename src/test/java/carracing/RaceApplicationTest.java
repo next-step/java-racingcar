@@ -80,10 +80,17 @@ public class RaceApplicationTest {
     @Test
     public void movingIteration() {
         //given
+        int participate = 11;
+        int iterations = 22;
+
         //when
+        Map<Round, List<Score>> roundListMap = raceApplication.racingStart(participate, iterations);
+
         //then
-        log.info("테스트를 작성할 수 없는 애매함");
-        fail();
+        assertAll(
+                () -> assertThat(roundListMap.keySet()).as("몇번 이동하는지 검증").hasSize(iterations),
+                () -> assertThat(roundListMap.get(new Round(1))).as("몇대가 움직이는지 검증").hasSize(participate)
+        );
     }
 
     @DisplayName("0에서 9사이에서 random값을 구한다")
