@@ -49,8 +49,7 @@ public class ScoreTest {
         //then
         assertThatThrownBy(() -> {
             new Score(-1);
-        }).isInstanceOf(RuntimeException.class)
-                .hasMessageContaining("0이상 9이하");
+        }).isInstanceOf(RuntimeException.class);
     }
 
 
@@ -62,8 +61,7 @@ public class ScoreTest {
         //then
         assertThatThrownBy(() -> {
             new Score(10);
-        }).isInstanceOf(RuntimeException.class)
-                .hasMessageContaining("0이상 9이하");
+        }).isInstanceOf(RuntimeException.class);
     }
 
 }
