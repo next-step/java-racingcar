@@ -87,7 +87,7 @@ public class RaceApplicationTest {
 
     @DisplayName("문구 출력 검증 : [자동차 대수는 몇 대 인가요?] 출력된다")
     @Test
-    public void carCanMoveOrStop() {
+    public void participates() {
         //given
         String answer = "자동차 대수는 몇 대 인가요?";
         inAndOutTestHelper("5\r\n5");
@@ -101,7 +101,7 @@ public class RaceApplicationTest {
 
     @DisplayName("문구 출력 검증 : [시도할 회수는 몇 회 인가요?] 출력된다")
     @Test
-    public void run() {
+    public void iterations() {
         //given
         String answer = "시도할 회수는 몇 회 인가요?";
         inAndOutTestHelper("5\r\n5");
