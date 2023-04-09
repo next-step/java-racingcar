@@ -11,6 +11,7 @@ public class InputView {
     private final Scanner scanner = new Scanner(System.in);
 
     public int readNumberOfCars() {
+        System.out.println("자동차 대수는 몇 대 인가요?");
         String input = scanner.nextLine();
         int number = parseInput(input);
         checkNumberOfCars(number);
@@ -18,6 +19,7 @@ public class InputView {
     }
 
     public int readNumberOfCycles() {
+        System.out.println("시도할 회수는 몇 회 인가요?");
         String input = scanner.nextLine();
         int number = parseInput(input);
         checkNumberOfCycles(number);
@@ -25,14 +27,17 @@ public class InputView {
     }
 
     private static void checkNumberOfCars(int number) {
-        if (number > MAX_NUMBER_CARS || number < MIN_NUMBER_CARS) {
-            throw new IllegalArgumentException("자동차 수는 " + MIN_NUMBER_CARS + "~" + MAX_NUMBER_CARS + " 사이의 값을 입력해야 합니다. " + number);
-        }
+        checkRangeOfInput(number, MIN_NUMBER_CARS, MAX_NUMBER_CARS, "자동차 수");
     }
 
     private static void checkNumberOfCycles(int number) {
-        if (number > MAX_NUMBER_CYCLES || number < MIN_NUMBER_CYCLES) {
-            throw new IllegalArgumentException("사이클 수는 " + MIN_NUMBER_CYCLES + "~" + MAX_NUMBER_CYCLES + " 사이의 값을 입력해야 합니다. " + number);
+        checkRangeOfInput(number, MIN_NUMBER_CYCLES, MAX_NUMBER_CYCLES, "사이클 수");
+    }
+
+    private static void checkRangeOfInput(int input, int min, int max, String targetName) {
+        if (input > max || input < min) {
+            throw new IllegalArgumentException(
+                    targetName + "는 " + min + "~" + max + " 사이의 값을 입력해야 합니다. " + input);
         }
     }
 
@@ -43,5 +48,4 @@ public class InputView {
             throw new NumberFormatException("Input은 정수만 입력 가능합니다. " + input);
         }
     }
-
 }
