@@ -64,5 +64,13 @@ public class RacingCarTest {
         assertThat(winners).containsOnly(appleCar);
     }
 
+    @Test
+    @DisplayName("자동차의 이름은 5자를 초과할 수 없다.")
+    void validateCarNameTest() {
+        String[] carNames = {"apple", "iphone"};
+
+        assertThatThrownBy(() -> InputView.validateCarName(carNames))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
 
