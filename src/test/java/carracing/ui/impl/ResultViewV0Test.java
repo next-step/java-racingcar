@@ -52,15 +52,15 @@ public class ResultViewV0Test {
                 "-\n" +
                 "\n" +
                 "---\n" +
-                "\n" +
+                "-\n" +
                 "--\n" +
                 "\n" +
                 "----\n" +
-                "-\n" +
+                "--\n" +
                 "---\n" +
                 "\n" +
                 "----\n" +
-                "-\n" +
+                "---\n" +
                 "----\n" +
                 "\n";
 
@@ -70,7 +70,7 @@ public class ResultViewV0Test {
 
         //then
         assertAll(
-                () -> assertEquals(outputStream.toString(), output),
+                () -> assertEquals(output,outputStream.toString()),
                 () -> assertThat(automobileFederation.getRounds()).hasSize(inputRoundToScoreListMap.size())
         );
     }
