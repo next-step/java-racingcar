@@ -1,13 +1,14 @@
-package carracing.ui;
+package carracing.ui.impl;
 
 import carracing.logic.AutomobileFederation;
+import carracing.ui.ResultView;
 
 import java.io.PrintStream;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 import java.util.logging.Logger;
 
-public class ResultViewV2 implements ResultView{
+public class ResultViewV2 implements ResultView {
 
     private static final Logger log = Logger.getLogger("ResultViewV1");
     private static final Boolean DISPLAY_CAR_INDEX = Boolean.TRUE;

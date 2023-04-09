@@ -4,7 +4,7 @@ import carracing.logic.type.Round;
 import carracing.logic.type.Score;
 import carracing.ui.InputView;
 import carracing.ui.ResultView;
-import carracing.ui.ResultViewV1;
+import carracing.ui.impl.ResultViewV1;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;

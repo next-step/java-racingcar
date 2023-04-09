@@ -1,11 +1,12 @@
-package carracing.ui;
+package carracing.ui.impl;
 
 import carracing.logic.AutomobileFederation;
+import carracing.ui.ResultView;
 
 import java.io.PrintStream;
 import java.util.logging.Logger;
 
-public class ResultViewV0 implements ResultView{
+public class ResultViewV0 implements ResultView {
 
     private static final Logger log = Logger.getLogger("ResultViewV0");
 

@@ -1,6 +1,7 @@
-package carracing.ui;
+package carracing.ui.impl;
 
 import carracing.logic.AutomobileFederation;
+import carracing.ui.ResultView;
 
 import java.io.PrintStream;
 import java.util.concurrent.atomic.AtomicInteger;

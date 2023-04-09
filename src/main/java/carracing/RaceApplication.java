@@ -5,8 +5,7 @@ import carracing.logic.type.Round;
 import carracing.logic.type.Score;
 import carracing.ui.InputView;
 import carracing.ui.ResultView;
-import carracing.ui.ResultViewV0;
-import carracing.ui.ResultViewV1;
+import carracing.ui.impl.ResultViewV0;
 
 import java.util.List;
 import java.util.Map;
