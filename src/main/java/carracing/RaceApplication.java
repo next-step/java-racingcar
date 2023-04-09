@@ -6,11 +6,12 @@ import carracing.logic.type.Score;
 import carracing.ui.InputView;
 import carracing.ui.ResultView;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class RaceApplication {
     private static final Random random = new Random();
@@ -41,17 +42,17 @@ public class RaceApplication {
     public Map<Round, List<Score>> racingStart(int participate, int iterations) {
         Map<Round, List<Score>> resultMap = new HashMap<>();
         for (int round = 1; round <= iterations; round++) {
-            resultMap.put(new Round(round), simulateScores(participate));
+            resultMap.put(new Round(round), simulateSingleRoundScores(participate));
         }
         return resultMap;
     }
 
-    private List<Score> simulateScores(int participate) {
-        List<Score> raceRecode = new ArrayList<>();
-        for (int i = 0; i < participate; i++) {
-            raceRecode.add(new Score(randomScore()));
-        }
-        return raceRecode;
+    private List<Score> simulateSingleRoundScores(int participate) {
+        return IntStream.generate(this::randomScore)
+                .limit(participate)
+                .boxed()
+                .map(Score::new)
+                .collect(Collectors.toList());
     }
 
     public int randomScore() {
