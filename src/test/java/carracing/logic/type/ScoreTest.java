@@ -89,11 +89,11 @@ public class ScoreTest {
         assertEquals( "-",score.toProgress());
     }
 
-    @DisplayName("정지한다 3인경우")
+    @DisplayName("정지한다 2인경우")
     @Test
     public void stop3() {
         //given
-        int input = 4;
+        int input = 2;
         //when
         Score score = new Score(input);
         //then
@@ -104,7 +104,7 @@ public class ScoreTest {
     @Test
     public void stop2() {
         //given
-        int input = 4;
+        int input = 3;
         //when
         Score score = new Score(input);
         //then
