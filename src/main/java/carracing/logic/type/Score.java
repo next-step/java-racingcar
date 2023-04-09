@@ -20,7 +20,7 @@ public class Score {
     }
 
     public String toProgress() {
-        return value > THRESHOLD ? PROGRESS : STOP;
+        return value >= THRESHOLD ? PROGRESS : STOP;
     }
 
     @Override
