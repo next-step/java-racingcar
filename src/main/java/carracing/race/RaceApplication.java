@@ -22,6 +22,11 @@ public class RaceApplication {
         this.resultView = resultView;
     }
 
+    public static void main(String[] args) {
+        RaceApplication raceApplication = new RaceApplication(new InputView(System.in,System.out),new ResultView(System.out));
+        raceApplication.run();
+    }
+    
     public void run() {
         int participate = inputView.participate();
         int iterations = inputView.iterations();
