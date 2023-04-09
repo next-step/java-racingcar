@@ -1,5 +1,9 @@
 package com.next.step.step3.view;
 
+import com.next.step.step3.domain.Car;
+
+import java.util.List;
+
 public class ResultView {
 
     private static final String RESULT_TITLE = "실행 결과";
