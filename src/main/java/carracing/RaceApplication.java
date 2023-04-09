@@ -26,34 +26,34 @@ public class RaceApplication {
 
     public static void main(String[] args) {
         RaceApplication raceApplication = new RaceApplication(
-                new InputView(System.in, System.out),
-                new ResultViewV0(System.out)
+            new InputView(System.in, System.out),
+            new ResultViewV0(System.out)
         );
         raceApplication.run();
     }
 
     public void run() {
         resultView.printResult(
-                new AutomobileFederation(
-                        this.racingStart(inputView.participates(), inputView.iterations())
-                )
+            new AutomobileFederation(
+                this.racingStart(inputView.participates(), inputView.iterations())
+            )
         );
     }
 
     public Map<Round, List<Score>> racingStart(int participate, int iterations) {
         return IntStream.rangeClosed(1, iterations)
-                .boxed()
-                .collect(
-                        Collectors.toMap(Round::new, round -> simulateSingleRoundScores(participate))
-                );
+            .boxed()
+            .collect(
+                Collectors.toMap(Round::new, round -> simulateSingleRoundScores(participate))
+            );
     }
 
     private List<Score> simulateSingleRoundScores(int participate) {
         return IntStream.generate(this::randomScore)
-                .limit(participate)
-                .boxed()
-                .map(Score::new)
-                .collect(Collectors.toList());
+            .limit(participate)
+            .boxed()
+            .map(Score::new)
+            .collect(Collectors.toList());
     }
 
     public int randomScore() {

@@ -33,8 +33,8 @@ public class ResultViewV2 implements ResultView {
         AtomicInteger indexHolder = new AtomicInteger();
 
         Consumer<String> printer = DISPLAY_CAR_INDEX ?
-                s -> printStream.println(indexHolder.getAndIncrement() + 1 + " : " + s) :
-                printStream::println;
+            s -> printStream.println(indexHolder.getAndIncrement() + 1 + " : " + s) :
+            printStream::println;
 
         federation.getRounds().forEach(round -> {
             federation.lapSituations(round).forEach(printer);

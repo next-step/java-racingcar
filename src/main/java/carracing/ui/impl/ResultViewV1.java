@@ -27,8 +27,8 @@ public class ResultViewV1 implements ResultView {
     @Override
     public void printResult(AutomobileFederation federation) {
         Consumer<AutomobileFederation> printer = DISPLAY_CAR_INDEX ?
-                this::printResultWithCarIndex :
-                this::printResultWithoutCarIndex;
+            this::printResultWithCarIndex :
+            this::printResultWithoutCarIndex;
 
         printer.accept(federation);
     }
