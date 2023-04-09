@@ -57,7 +57,6 @@ public class RacingCarTest {
         RacingCar lemonCar = new RacingCar("lemon");
         List<RacingCar> cars = List.of(appleCar, bananaCar, lemonCar);
 
-
         appleCar.moveForward(5);
 
         List<RacingCar> winners = RacingCarGame.getWinners(cars);
