@@ -3,11 +3,12 @@ package carracing.logic.type;
 import java.util.Objects;
 
 public class Round implements Comparable<Round> {
+    private static final int FIRST_ROUND_VALUE = 1;
     private final int value;
 
     public Round(int value) {
-        if (value <= 0) {
-            throw new RuntimeException("라운드는 1부터 시작하며, 항상 1 이상입니다");
+        if (value < FIRST_ROUND_VALUE) {
+            throw new RuntimeException("라운드는 1부터 시작하므로 항상 1 이상입니다");
         }
         this.value = value;
     }
@@ -16,16 +17,20 @@ public class Round implements Comparable<Round> {
         return value;
     }
 
-    @Override
-    public int compareTo(Round other) {
-        return Integer.compare(this.toInt(), other.toInt());
-    }
-
     public Round previousRound() {
-        if (this.value <= 1) {
+        if (isFirstRound(this.value)) {
             return this;
         }
         return new Round(value - 1);
+    }
+
+    private boolean isFirstRound(int value) {
+        return value == FIRST_ROUND_VALUE;
+    }
+
+    @Override
+    public int compareTo(Round other) {
+        return Integer.compare(this.toInt(), other.toInt());
     }
 
     @Override
