@@ -6,9 +6,11 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static util.Constants.*;
 import static util.StringAddCalculator.*;
 
 public class StringAddCalculatorTest {
+
     @DisplayName("빈문자열 또는 null 값 체크")
     @Test
     void splitAndSum_빈문자열_null() {
@@ -40,6 +42,21 @@ public class StringAddCalculatorTest {
     @Test
     void splitAndSum_구분자_커스텀() {
         assertThat(splitAndSum("//;\n1;2;3")).isEqualTo(6);
+    }
+
+    @Test
+    void splitAndSum_정수체크() {
+        assertThatThrownBy(() -> splitAndSum("가"))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessageContaining(ERROR_MESSAGE_INPUT_NOT_INTEGER);
+
+        assertThatThrownBy(() -> splitAndSum("1.1"))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessageContaining(ERROR_MESSAGE_INPUT_NOT_INTEGER);
+
+        assertThatThrownBy(() -> splitAndSum("1+"))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessageContaining(ERROR_MESSAGE_INPUT_NOT_INTEGER);
     }
 }
 

@@ -34,5 +34,4 @@ public class SetTest {
         assertThat(numbers.contains(number)).isTrue();
     }
 
-
 }
