@@ -40,11 +40,8 @@ public class TestSet {
     @ParameterizedTest
     @CsvSource({"1, true", "2, true", "3, true", "4, false", "5, false"})
     @DisplayName("Set 객체의 contains 테스트")
-    public void test_contains_fail(String input, String expected) {
-        int inputNum = Integer.parseInt(input);
-        boolean result = Boolean.parseBoolean(expected);
-
-        assertThat(numbers.contains(inputNum)).isEqualTo(result);
+    public void test_contains_fail(int input, Boolean expected) {
+        assertThat(numbers.contains(input)).isEqualTo(expected);
     }
 
 }

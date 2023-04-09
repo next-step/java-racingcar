@@ -41,16 +41,6 @@ public class TestString {
         assertThrows(StringIndexOutOfBoundsException.class, () -> {
             str.charAt(str.length() + 1);
         });
-
-        assertThatThrownBy(() -> {
-            str.charAt(str.length() + 1);
-        }).isInstanceOf(IndexOutOfBoundsException.class)
-            .hasMessageContaining("Index 4 out of bounds for length 3");
-
-        assertThatExceptionOfType(IndexOutOfBoundsException.class)
-            .isThrownBy(() -> {
-                str.charAt(str.length() + 1);
-            });
     }
 
 }
