@@ -21,10 +21,20 @@ public class RaceApplicationTest {
     private static final Logger log = Logger.getLogger("RaceApplicationTest");
 
     private RaceApplication raceApplication;
+    private OutputStream resultViewOutputStream;
+    private PrintStream resultViewPrintStream;
+    private ResultView resultView;
+    private InputView inputView;
+    private InputStream inputViewInputStream;
 
     @BeforeEach
     public void beforeEach() {
-        raceApplication = new RaceApplication(new InputView(System.in,System.out),new ResultView(System.out));
+        this.resultViewOutputStream = new ByteArrayOutputStream();
+        this.resultViewPrintStream = new PrintStream(new PrintStream(this.resultViewOutputStream));
+        this.resultView = new ResultView(this.resultViewPrintStream);
+        this.inputViewInputStream = new ByteArrayInputStream("SampleInput".getBytes());
+        this.inputView = new InputView(inputViewInputStream, resultViewPrintStream);
+        this.raceApplication = new RaceApplication(this.inputView, this.resultView);
     }
 
     @DisplayName("경기횟수, 참가차량수가 주어지면 경기결과를 리턴한다")
