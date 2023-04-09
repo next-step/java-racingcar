@@ -4,7 +4,6 @@ import carracing.logic.AutomobileFederation;
 import carracing.logic.type.Round;
 import carracing.logic.type.Score;
 import carracing.ui.ResultView;
-import carracing.ui.impl.ResultViewV2;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
@@ -19,7 +18,8 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ResultViewV2Test {
     private static final Logger log = Logger.getLogger("ResultViewV2Test");

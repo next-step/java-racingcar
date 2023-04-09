@@ -41,7 +41,7 @@ public class RaceApplication {
     }
 
     public Map<Round, List<Score>> racingStart(int participate, int iterations) {
-        return IntStream.rangeClosed(1,iterations)
+        return IntStream.rangeClosed(1, iterations)
                 .boxed()
                 .collect(
                         Collectors.toMap(Round::new, round -> simulateSingleRoundScores(participate))

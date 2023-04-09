@@ -20,19 +20,20 @@ public class ResultViewV2 implements ResultView {
         log.info("ResultViewV2 에서는 DISPLAY_CAR_INDEX, DISPLAY_ROUND_INFORMATION 두가지에 대한 표시여부를 결정할 수 있습니다");
         this.printStream = printStream;
     }
-/*
-consumer<AutomobileFederation> printer = DISPLAY_CAR_INDEX ?
-                this::printResultWithCarIndex :
-                this::printResultWithoutCarIndex;
 
-        printer.accept(federation);
- */
+    /*
+    consumer<AutomobileFederation> printer = DISPLAY_CAR_INDEX ?
+                    this::printResultWithCarIndex :
+                    this::printResultWithoutCarIndex;
+
+            printer.accept(federation);
+     */
     @Override
     public void printResult(AutomobileFederation federation) {
         AtomicInteger indexHolder = new AtomicInteger();
 
         Consumer<String> printer = DISPLAY_CAR_INDEX ?
-                s -> printStream.println(Integer.toString(indexHolder.getAndIncrement() + 1) + " : " + s) :
+                s -> printStream.println(indexHolder.getAndIncrement() + 1 + " : " + s) :
                 printStream::println;
 
         federation.getRounds().forEach(round -> {

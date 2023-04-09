@@ -3,7 +3,6 @@ package carracing.ui.impl;
 import carracing.logic.AutomobileFederation;
 import carracing.logic.type.Round;
 import carracing.logic.type.Score;
-import carracing.ui.impl.ResultViewV1;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

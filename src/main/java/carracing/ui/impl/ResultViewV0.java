@@ -16,6 +16,7 @@ public class ResultViewV0 implements ResultView {
         //log.info("ResultViewV0 에서는 기본 출력만을 제공한다");
         this.printStream = printStream;
     }
+
     @Override
     public void printResult(AutomobileFederation federation) {
         federation.getRounds().forEach(round -> {
