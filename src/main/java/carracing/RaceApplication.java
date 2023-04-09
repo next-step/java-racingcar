@@ -23,7 +23,10 @@ public class RaceApplication {
     }
 
     public static void main(String[] args) {
-        RaceApplication raceApplication = new RaceApplication(new InputView(System.in,System.out),new ResultView(System.out));
+        RaceApplication raceApplication = new RaceApplication(
+                new InputView(System.in,System.out),
+                new ResultView(System.out)
+        );
         raceApplication.run();
     }
 
@@ -32,7 +35,6 @@ public class RaceApplication {
         int iterations = inputView.iterations();
         Map<Round, List<Score>> raceResults = this.racingStart(participate, iterations);
         resultView.printResult(new AutomobileFederation(raceResults));
-
     }
 
     public Map<Round, List<Score>> racingStart(int participate, int iterations) {
@@ -40,10 +42,8 @@ public class RaceApplication {
         Map<Round, List<Score>> resultMap = new HashMap<>();
 
         for (int roound = 1; roound <= iterations; roound++) {
-            //todo : 로직이 이중포문에 더티하게 섞여있어서 매우 복잡하다 리팩토링 필요
             List<Score> raceCurrentScore = simulateScores(participate);
             resultMap.put(new Round(roound), raceCurrentScore);
-
         }
         return resultMap;
     }
