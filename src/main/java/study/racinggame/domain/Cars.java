@@ -13,6 +13,7 @@ public class Cars {
   public void forwardCars(List<Car> cars) {
     for (Car car : cars) {
       car.forward(new RacingGameStrategy());
+      car.printDistance();
     }
   }
 }

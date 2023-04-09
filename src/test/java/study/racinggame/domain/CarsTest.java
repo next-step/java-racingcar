@@ -40,7 +40,7 @@ public class CarsTest {
     assertThat(cars).hasSize(3);
   }
 
-  @ParameterizedTest
+  @ParameterizedTest(name = "Cars 전진 테스트")
   @MethodSource("provideGameStrategyForForwardCars")
   public void forwardCars(GameStrategy gameStrategy, int expected) {
     for (Car car : cars) {
