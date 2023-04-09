@@ -51,15 +51,12 @@ public class RaceApplication {
     private List<Score> simulateScores(int participate) {
         List<Score> raceRecode = new ArrayList<>();
         for (int i = 0; i < participate; i++) {
-
-            raceRecode.add(new Score(getRandom()));
+            raceRecode.add(new Score(randomScore()));
         }
         return raceRecode;
     }
 
-    public int getRandom() {
+    public int randomScore() {
         return random.nextInt(9);
     }
-
-    //public
 }

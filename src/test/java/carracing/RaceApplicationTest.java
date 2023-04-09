@@ -134,7 +134,7 @@ public class RaceApplicationTest {
     public void getRandomFrom0To9() {
         //given
         //when
-        int random = raceApplication.getRandom();
+        int random = raceApplication.randomScore();
         //then
         assertThat(random).isBetween(0, 9);
     }
