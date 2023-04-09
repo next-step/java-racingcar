@@ -19,7 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ResultViewV2Test {
-    private static final Logger log = Logger.getLogger("ResultViewTest");
+    private static final Logger log = Logger.getLogger("ResultViewV2Test");
     private ResultView resultView;
     private OutputStream outputStream;
 
@@ -75,5 +75,4 @@ public class ResultViewV2Test {
                 () -> log.warning("UI 컴포넌트인 ResultView 만을 순수하게 테스트할수 있도록 구조를 개선해야한다")
         );
     }
-
 }

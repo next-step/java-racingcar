@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ResultViewV1Test {
-    private static final Logger log = Logger.getLogger("ResultViewTest");
+    private static final Logger log = Logger.getLogger("ResultViewV1Test");
     private ResultViewV1 resultViewV1;
     private OutputStream outputStream;
 
