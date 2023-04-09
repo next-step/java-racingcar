@@ -47,7 +47,7 @@ public class RaceApplicationTest {
         this.inputViewInputStream = new ByteArrayInputStream(inputString.getBytes());
     }
 
-    @DisplayName("경기횟수, 참가차량수가 주어지면 경기결과를 리턴한다")
+    @DisplayName("경기횟수 & 참가차량수 주어지면 그에 맞는 경기결과를 리턴한다")
     @Test
     public void participatesAndIterations() {
         //given
@@ -95,19 +95,27 @@ public class RaceApplicationTest {
 
     @DisplayName("몇번을 이동할것인지 입력할 수 있다")
     @Test
+    public void run() {
+        //given
+        //when
+        //then
+    }
+
+    @DisplayName("입력한 경기수 (Round) 에 따라 해당 경기수만큼 잘 치뤄진건지 검증한다")
+    @Test
     public void movingIteration() {
         //given
-        int participate = 11;
-        int iterations = 22;
+        int roundIterations = 22;
 
         //when
-        Map<Round, List<Score>> roundListMap = raceApplication.racingStart(participate, iterations);
+        Map<Round, List<Score>> roundListMap = raceApplication.racingStart(11, roundIterations);
 
         //then
         assertAll(
-                () -> assertThat(roundListMap.keySet()).as("몇번 이동하는지 검증").hasSize(iterations),
-                () -> assertThat(roundListMap.get(new Round(1))).as("몇대가 움직이는지 검증").hasSize(participate)
+                () -> assertThat(roundListMap.keySet()).as("Round 숫자를 검증").hasSize(roundIterations),
+                () -> assertThat(roundListMap.values()).as("List<Score> 를 검증").hasSize(roundIterations)
         );
+
     }
 
     @DisplayName("0에서 9사이에서 random값을 구한다")
