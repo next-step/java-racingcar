@@ -7,14 +7,14 @@ public class InputView {
     public static final String ASK_NUMBER_OF_CAR = "자동차 대수는 몇 대 인가요?";
     public static final String ASK_NUMBER_OF_STAGE = "시도할 회수는 몇 회 인가요?";
 
-    public static String askNumberOfCar() {
+    public static int askNumberOfCar() {
         System.out.println(ASK_NUMBER_OF_CAR);
-        return SCANNER.nextLine();
+        return SCANNER.nextInt();
     }
 
-    public static String askNumberOfStage() {
+    public static int askNumberOfStage() {
         System.out.println(ASK_NUMBER_OF_STAGE);
-        return SCANNER.nextLine();
+        return SCANNER.nextInt();
     }
 
 }

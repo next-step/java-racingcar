@@ -6,20 +6,20 @@ public class Count {
     public static final int ZERO = 0;
     public static final long COUNT_DOWN = 1;
 
-    private Long count;
+    private int count;
 
-    Count(Long count) {
+    Count(int count) {
         if (isNegativeNumberOrZero(count)) {
             throw new IllegalArgumentException("0보다 큰 수를 입력해주세요.");
         }
         this.count = count;
     }
 
-    public static Count createCount(String inputNumber) {
-        return new Count(Long.parseLong(inputNumber));
+    public static Count createCount(int inputNumber) {
+        return new Count(inputNumber);
     }
 
-    private boolean isNegativeNumberOrZero(Long count) {
+    private boolean isNegativeNumberOrZero(int count) {
         return count <= ZERO;
     }
 
