@@ -45,6 +45,8 @@ public class RaceApplicationTest {
 
     private void inAndOutTestHelper(String inputString) {
         this.inputViewInputStream = new ByteArrayInputStream(inputString.getBytes());
+        this.inputView = new InputView(inputViewInputStream, resultViewPrintStream);
+        this.raceApplication = new RaceApplication(this.inputView, this.resultView);
     }
 
     @DisplayName("경기횟수 & 참가차량수 주어지면 그에 맞는 경기결과를 리턴한다")
@@ -88,10 +90,13 @@ public class RaceApplicationTest {
     public void carCanMoveOrStop() {
         //given
         String answer = "자동차 대수는 몇 대 인가요?";
+        inAndOutTestHelper("5\r\n5");
+
         //when
+        raceApplication.run();
+
         //then
-        log.info("테스트를 작성할 수 없는 애매함");
-        fail();
+        assertThat(resultViewOutputStream.toString()).contains(answer);
     }
 
     @DisplayName("문구 출력 검증 : [시도할 회수는 몇 회 인가요?] 출력된다")
@@ -99,8 +104,13 @@ public class RaceApplicationTest {
     public void run() {
         //given
         String answer = "시도할 회수는 몇 회 인가요?";
+        inAndOutTestHelper("5\r\n5");
+
         //when
+        raceApplication.run();
+
         //then
+        assertThat(resultViewOutputStream.toString()).contains(answer);
     }
 
     @DisplayName("입력한 경기수 (Round) 에 따라 해당 경기수만큼 잘 치뤄진건지 검증한다")
