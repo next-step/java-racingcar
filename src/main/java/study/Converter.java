@@ -2,7 +2,7 @@ package study;
 
 public class Converter {
 
-  public int[] convert(String[] chars) {
+  public PositiveNumber convert(String[] chars) {
     int length = chars.length;
 
     int[] nums = new int[length];
@@ -10,7 +10,7 @@ public class Converter {
       nums[i] = toInt(chars[i]);
       validateNonNegative(nums, i);
     }
-    return nums;
+    return new PositiveNumber(nums);
   }
 
   private int toInt(String chars) {
