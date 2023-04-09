@@ -15,7 +15,6 @@ public class StringAddCalculatorTest {
         assertThat(result).isEqualTo(0);
     }
 
-    @Test
     @DisplayName("숫자 하나가 입력된 경우")
     public void splitAndSum_숫자하나() throws Exception {
         int result = StringAddCalculator.splitAndSum("1");
@@ -43,9 +42,9 @@ public class StringAddCalculatorTest {
         assertThat(result).isEqualTo(6);
     }
 
-//    @Test
-//    public void splitAndSum_negative() throws Exception {
-//        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
-//                .isInstanceOf(RuntimeException.class);
-//    }
+    @Test
+    public void splitAndSum_negative() throws Exception {
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
+                .isInstanceOf(RuntimeException.class);
+    }
 }
