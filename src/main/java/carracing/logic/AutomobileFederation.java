@@ -28,12 +28,16 @@ public class AutomobileFederation {
 
             for (int carIndex = 0; carIndex < raceResults.get(round).size(); carIndex++) {
                 Score scoreCurrentCar = raceResults.get(round).get(carIndex);
-                recordThisRound.add(getPreviousProgress(round, carIndex, recordMap) + scoreCurrentCar.toProgress());
+                recordThisRound.add(calculateCurrentRecode(recordMap, round, carIndex, scoreCurrentCar));
             }
             Record record = new Record(recordThisRound);
             recordMap.put(round, record);
         }
         return recordMap;
+    }
+
+    private String calculateCurrentRecode(Map<Round, Record> recordMap, Round round, int carIndex, Score scoreCurrentCar) {
+        return getPreviousProgress(round, carIndex, recordMap) + scoreCurrentCar.toProgress();
     }
 
     //todo : 입력이 3개인 메서드는 리팩토링 대상이다
