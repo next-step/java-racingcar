@@ -11,7 +11,8 @@ import java.util.regex.Pattern;
 public class Separator {
 
   private final String DEFAULT_DELIMITER = ",|:";
-  private final String CUSTOM_DELIMITER = "//(.)\n(.*)";
+  private final static String CUSTOM_DELIMITER = "//(.)\n(.*)";
+  private static final Pattern CUSTOM_PATTERN = Pattern.compile(CUSTOM_DELIMITER);
 
   public String[] split(String text) {
 
@@ -33,7 +34,7 @@ public class Separator {
   }
 
   private Matcher getMatcher(String text) {
-    return Pattern.compile(CUSTOM_DELIMITER).matcher(text);
+    return CUSTOM_PATTERN.matcher(text);
   }
 
   private String[] findValue(Matcher m, String customDelimiter) {
