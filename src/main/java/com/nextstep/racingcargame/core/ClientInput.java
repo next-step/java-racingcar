@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class ClientInput {
 
-    public static final String HAS_NEGATIVE_MSG = "음수값으론 경기를 진행할 수 없습니다.";
+    private static final String HAS_NEGATIVE_MSG = "음수값으론 경기를 진행할 수 없습니다.";
     private static final String CAR_QUESTION = "자동차 대수는 몇 대 인가요?";
     private static final String TRY_QUESTION = "시도할 횟수는 몇 회 인가요?";
     private final int numberOfCars;

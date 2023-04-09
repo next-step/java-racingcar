@@ -1,9 +1,7 @@
 package com.nextstep.racingcargame.core;
 
-import static com.nextstep.racingcargame.core.ClientInput.HAS_NEGATIVE_MSG;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -25,6 +23,6 @@ public class ClientInputTest {
         assertThatThrownBy(() -> {
             new ClientInput(numberOfCars,numberOfTries);
         }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(HAS_NEGATIVE_MSG);
+                .hasMessage("음수값으론 경기를 진행할 수 없습니다.");
     }
 }
