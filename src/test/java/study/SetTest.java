@@ -28,7 +28,7 @@ public class SetTest {
     @DisplayName("Set 사이즈확인")
     void getSize() {
         int numSize = numbers.size();
-        assertThat(numSize).as("사이즈 확인 : %s", numSize).isEqualTo(4);
+        assertThat(numSize).as("사이즈 확인 : %s", numSize).isEqualTo(3);
     }
 
     @ParameterizedTest
@@ -44,4 +44,5 @@ public class SetTest {
     void multiContains_csv(int number, boolean expected) {
         assertThat(numbers.contains(number)).isEqualTo(expected);
     }
+
 }
