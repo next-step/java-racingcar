@@ -3,10 +3,10 @@ package racing;
 import java.util.Random;
 
 public class RacingCar {
-    private final int MAX_RANDOM_VALUE = 9;
-    private final int THRESHOLD_ONGOING = 4;
+    private static final int MAX_RANDOM_VALUE = 9;
+    private static final int THRESHOLD_ONGOING = 4;
+    private static final Random rnd = new Random();
 
-    private final Random rnd = new Random();
     private int numberOfOngoing;
 
     public int getNumberOfOngoing() {
@@ -18,11 +18,11 @@ public class RacingCar {
     }
 
     private int random() {
-        return rnd.nextInt(this.MAX_RANDOM_VALUE + 1);
+        return rnd.nextInt(MAX_RANDOM_VALUE + 1);
     }
 
     private boolean isOngoing() {
-        return random() >= this.THRESHOLD_ONGOING;
+        return random() >= THRESHOLD_ONGOING;
     }
 
     public void ongoing() {
