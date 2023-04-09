@@ -4,11 +4,11 @@ import java.util.Random;
 
 public class RandomNumberGenerator {
 
-    private static final int OBJECT_DEFAULT_NUMBER = 10;
+    private static final int RANDOM_BOUND = 10;
     private static final Random RANDOM = new Random();
 
     public static int getRandomZeroToNine() {
-        return RANDOM.nextInt(OBJECT_DEFAULT_NUMBER);
+        return RANDOM.nextInt(RANDOM_BOUND);
     }
 
 }
