@@ -1,4 +1,4 @@
-package study;
+package study.carrace.step2;
 
 import java.util.Arrays;
 import java.util.regex.Matcher;
