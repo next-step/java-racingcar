@@ -6,7 +6,6 @@ import carracing.ui.InputView;
 import carracing.ui.ResultView;
 import carracing.ui.impl.ResultViewV1;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -22,7 +21,6 @@ import java.util.logging.Logger;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.fail;
 
 
 public class RaceApplicationTest {
@@ -114,7 +112,7 @@ public class RaceApplicationTest {
         raceApplication.run();
 
         //then
-        assertThat(resultViewOutputStream.toString().toString().trim()).contains(answer);
+        assertThat(resultViewOutputStream.toString().trim()).contains(answer);
     }
 
     @DisplayName("입력한 경기수 (Round) 에 따라 해당 경기수만큼 잘 치뤄진건지 검증한다")

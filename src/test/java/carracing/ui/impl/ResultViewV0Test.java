@@ -70,7 +70,7 @@ public class ResultViewV0Test {
 
         //then
         assertAll(
-                () -> assertEquals(output,outputStream.toString()),
+                () -> assertEquals(output, outputStream.toString()),
                 () -> assertThat(automobileFederation.getRounds()).hasSize(inputRoundToScoreListMap.size())
         );
     }

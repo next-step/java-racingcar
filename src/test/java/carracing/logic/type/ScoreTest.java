@@ -1,13 +1,11 @@
 package carracing.logic.type;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
 
 public class ScoreTest {
 
@@ -75,7 +73,7 @@ public class ScoreTest {
         //when
         Score score = new Score(input);
         //then
-        assertEquals( "-",score.toProgress());
+        assertEquals("-", score.toProgress());
     }
 
     @DisplayName("전진한다 5인경우")
@@ -86,7 +84,7 @@ public class ScoreTest {
         //when
         Score score = new Score(input);
         //then
-        assertEquals( "-",score.toProgress());
+        assertEquals("-", score.toProgress());
     }
 
     @DisplayName("정지한다 2인경우")
@@ -97,7 +95,7 @@ public class ScoreTest {
         //when
         Score score = new Score(input);
         //then
-        assertEquals( "",score.toProgress());
+        assertEquals("", score.toProgress());
     }
 
     @DisplayName("정지한다 3인경우")
@@ -108,6 +106,6 @@ public class ScoreTest {
         //when
         Score score = new Score(input);
         //then
-        assertEquals( "",score.toProgress());
+        assertEquals("", score.toProgress());
     }
 }

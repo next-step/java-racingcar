@@ -69,7 +69,7 @@ public class ResultViewV1Test {
 
         //then
         assertAll(
-                () -> assertEquals(output,outputStream.toString()),
+                () -> assertEquals(output, outputStream.toString()),
                 () -> assertThat(automobileFederation.getRounds()).hasSize(inputRoundToScoreListMap.size()),
                 () -> log.warning("ResultView 를 테스트해야하는데, AutomobileFederation 가 실패하면 해당 테스도 실패한다"),
                 () -> log.warning("UI 컴포넌트인 ResultView 만을 순수하게 테스트할수 있도록 구조를 개선해야한다")
@@ -107,7 +107,7 @@ public class ResultViewV1Test {
                 "\n" +
                 "----\n" +
                 "---\n" +
-                "----\n"+
+                "----\n" +
                 "\n";
 
         //when
@@ -116,7 +116,7 @@ public class ResultViewV1Test {
 
         //then
         assertAll(
-                () -> assertEquals( output,outputStream.toString()),
+                () -> assertEquals(output, outputStream.toString()),
                 () -> assertThat(automobileFederation.getRounds()).hasSize(inputRoundToScoreListMap.size())
         );
     }
