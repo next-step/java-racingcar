@@ -22,10 +22,6 @@ public class Cars {
     }
 
     public void makeCarsMove() {
-        moveAttempt(cars);
-    }
-
-    private void moveAttempt(List<Car> cars) {
         cars.forEach(Car::attemptMove);
     }
 
