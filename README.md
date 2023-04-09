@@ -23,5 +23,5 @@
 - [X] 전략이 boolean 을 반환
 - [X] SCANNER.nextInt() 사용 검토
 - [ ] 자동차가 현재 위치를 정수로 갖도록 수정
-- [ ] Cars 에서 Count 를 받아 Cars 생성 검토
+- [X] Cars 에서 Count 를 받아 Cars 생성 검토
 - [ ] 도메인로직(핵심 로직)과 ui 를 분리
