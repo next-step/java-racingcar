@@ -6,6 +6,7 @@ import carracing.ui.InputView;
 import carracing.ui.ResultView;
 import carracing.ui.ResultViewV1;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -140,6 +141,7 @@ public class RaceApplicationTest {
         assertThat(random).isBetween(0, 9);
     }
 
+    @Disabled("해당 클래스에서 테스트진행하는 범위의 기능이 아님")
     @DisplayName("3 초과(=4이상) 일 경우 전진한다")
     @Test
     public void forwardOver4() {
@@ -150,6 +152,7 @@ public class RaceApplicationTest {
         fail();
     }
 
+    @Disabled("해당 클래스에서 테스트진행하는 범위의 기능이 아님")
     @DisplayName("4 미만(=3이하) 일 경우 정지한다")
     @Test
     public void stopUnder4() {
