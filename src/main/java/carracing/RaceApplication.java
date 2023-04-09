@@ -5,6 +5,7 @@ import carracing.logic.type.Round;
 import carracing.logic.type.Score;
 import carracing.ui.InputView;
 import carracing.ui.ResultView;
+import carracing.ui.ResultViewV0;
 import carracing.ui.ResultViewV1;
 
 import java.util.List;
@@ -27,7 +28,7 @@ public class RaceApplication {
     public static void main(String[] args) {
         RaceApplication raceApplication = new RaceApplication(
                 new InputView(System.in, System.out),
-                new ResultViewV1(System.out)
+                new ResultViewV0(System.out)
         );
         raceApplication.run();
     }
