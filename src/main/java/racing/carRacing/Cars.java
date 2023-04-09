@@ -10,10 +10,7 @@ public class Cars {
         cars = initCars(numberOfCars);
     }
 
-    public Cars() {
-    }
-
-    List<Car> initCars(Count numberOfCar) {
+    private List<Car> initCars(Count numberOfCar) {
         cars = new ArrayList<>();
         while (numberOfCar.isOverZero()) {
             numberOfCar.countDown();
@@ -25,4 +22,13 @@ public class Cars {
     public void run() {
         cars.forEach(car -> car.run(new RandomMovement()));
     }
+
+    public Car getCurrentCar(int index) {
+        return cars.get(index);
+    }
+
+    public int getCarsSize() {
+        return cars.size();
+    }
+
 }

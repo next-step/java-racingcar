@@ -11,10 +11,13 @@ public class Car {
         this.position = position;
     }
 
-    public int run(MovementStrategy strategy) {
+    public void run(MovementStrategy strategy) {
         if (strategy.movement()) {
             position++;
         }
+    }
+
+    public int getCurrentPosition() {
         return position;
     }
 }

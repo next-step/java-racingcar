@@ -15,6 +15,10 @@ public class Main {
         Stages stages = new Stages(numberOfStage);
 
         OutputView.printResultMention();
-        stages.startGame(cars);
+        while (stages.isFinished()) {
+            OutputView.printRemainStage(stages.currentStage());
+            stages.startGame(cars);
+            OutputView.printCarsStatus(cars);
+        }
     }
 }

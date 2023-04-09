@@ -1,7 +1,5 @@
 package racing.carRacing;
 
-import racing.carRacing.view.OutputView;
-
 public class Stages {
     private final Count numberOfStages;
 
@@ -10,11 +8,15 @@ public class Stages {
     }
 
     public void startGame(Cars cars) {
-        OutputView.printTotalStage(numberOfStages);
-        while (numberOfStages.isOverZero()) {
-            OutputView.printRemainStage(numberOfStages);
-            numberOfStages.countDown();
-            cars.run();
-        }
+        numberOfStages.countDown();
+        cars.run();
+    }
+
+    public Count currentStage() {
+        return numberOfStages;
+    }
+
+    public boolean isFinished() {
+        return numberOfStages.isOverZero();
     }
 }

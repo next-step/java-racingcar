@@ -16,9 +16,9 @@ class CarTest {
         Car car = new Car(input);
         MovementStrategy strategy = new ManualMovement(input, condition);
 
-        int result = car.run(strategy);
+        car.run(strategy);
 
-        assertThat(result).isEqualTo(input + 1);
+        assertThat(car.getCurrentPosition()).isEqualTo(input + 1);
     }
 
     @ParameterizedTest
@@ -29,9 +29,9 @@ class CarTest {
         Car car = new Car(input);
         MovementStrategy strategy = new ManualMovement(input, condition);
 
-        int result = car.run(strategy);
+        car.run(strategy);
 
-        assertThat(result).isEqualTo(result);
+        assertThat(car.getCurrentPosition()).isEqualTo(input);
     }
 
 }
