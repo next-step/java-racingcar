@@ -4,8 +4,6 @@ import exception.NegativeNumberException;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class StringAddCalculator {
@@ -20,8 +18,8 @@ public class StringAddCalculator {
     }
 
     private static String[] split(String text) {
-        StringParser parser = new StringParser(text);
-        return parser.parse();
+        StringSplitter splitter = new StringSplitter(text);
+        return splitter.split();
     }
 
     private static List<PositiveNumber> toNumber(String[] numbers) throws NegativeNumberException {
