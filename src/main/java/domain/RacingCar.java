@@ -1,17 +1,25 @@
 package domain;
 
-import util.RandomNumberGenerator;
-
 public class RacingCar {
     private static final int STANDARD_MOVE_COUNT = 4;
     private int position;
+    private String name;
 
     public RacingCar() {
         this.position = 0;
     }
 
+    public RacingCar(String name) {
+        this.position = 0;
+        this.name = name;
+    }
+
     public int getPosition() {
-        return position;
+        return this.position;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     public void moveForward(int moveCount) {
