@@ -9,7 +9,7 @@ class NumberRangeTest {
     @Test
     void getOne_메서드는_정수만_리턴한다() {
         for (int i = 0; i < 100; i++) {
-            assertThat(NumberRange.getOne())
+            assertThat(NumberRange.getOne(new DefaultStrategy()))
                 .isInstanceOf(Integer.class);
         }
     }
@@ -17,7 +17,7 @@ class NumberRangeTest {
     @Test
     void getOne_메서드는_0부터9까지의_숫자만_리턴한다() {
         for (int i = 0; i < 100; i++) {
-            assertThat(NumberRange.getOne())
+            assertThat(NumberRange.getOne(new DefaultStrategy()))
                 .isNotNegative()
                 .isLessThanOrEqualTo(9);
         }
