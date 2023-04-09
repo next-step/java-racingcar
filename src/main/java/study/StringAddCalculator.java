@@ -1,6 +1,7 @@
 package study;
 
 
+
 /**
  * 문자를 구분하라.
  *     => 쉼포, 콜론을 통해서 구분할 수 있다.
@@ -24,16 +25,12 @@ public class StringAddCalculator {
   public static int splitAndSum(String text) {
     String[] chars = separator.split(text);
 
-    int[] nums = converter.convert(chars);
+    PositiveNumber numbers = converter.convert(chars);
 
-    return sum(nums);
+    return sum(numbers);
   }
 
-  private static int sum(int[] nums) {
-    int sum = 0;
-    for (int num : nums) {
-      sum += num;
-    }
-    return sum;
+  private static int sum(PositiveNumber numbers) {
+    return numbers.sum();
   }
 }
