@@ -1,12 +1,11 @@
 package racing;
 
 public class Car {
-    private static final String DASH = "-";
     private static final int MOVEMENT_THRESHOLD = 4;
-    private int position = 1;
+    private int position = 0;
 
-    public String positionInfoString() {
-        return DASH.repeat(position);
+    public int getPosition() {
+        return position;
     }
 
     public void goForward(int value) {

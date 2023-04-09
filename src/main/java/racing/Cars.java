@@ -28,7 +28,7 @@ public class Cars {
     }
 
     public void showPositionsOfCars() {
-        cars.forEach(car -> System.out.println(car.positionInfoString()));
+        cars.forEach(car -> System.out.println(car.getPosition()));
         System.out.println();
     }
 }
