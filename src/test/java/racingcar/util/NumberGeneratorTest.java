@@ -10,6 +10,7 @@ class NumberGeneratorTest {
     @DisplayName("0-9 까지 생성한다.")
     @RepeatedTest(1000)
     void test01() {
-        assertThat(NumberGenerator.generator()).isBetween(0, 9);
+        NumberGenerator numberGenerator = new DefaultNumberGenerator();
+        assertThat(numberGenerator.generator()).isBetween(0, 9);
     }
 }
