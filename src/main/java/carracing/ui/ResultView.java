@@ -14,6 +14,10 @@ public class ResultView {
         this.printStream = printStream;
     }
 
+    public static boolean isForward(int recode) {
+        return recode >= 4;
+    }
+
     public void printResult(AutomobileFederation federation) {
         if (!DISPLAY_CAR_INDEX) {
             printResultWithoutCarIndex(federation);
@@ -27,7 +31,7 @@ public class ResultView {
             for (String s : federation.lapSituations(round)) {
                 printStream.println(s);
             }
-            printStream.println("");
+            printStream.println();
         }
     }
 
@@ -35,16 +39,12 @@ public class ResultView {
         for (Round round : federation.getRounds()) {
             AtomicInteger indexHolder = new AtomicInteger();
             for (String s : federation.lapSituations(round)) {
-                printStream.print(indexHolder.getAndIncrement()+1);
+                printStream.print(indexHolder.getAndIncrement() + 1);
                 printStream.print(" : ");
                 printStream.println(s);
             }
-            printStream.println("");
+            printStream.println();
         }
-    }
-
-    public static boolean isForward(int recode) {
-        return recode >= 4;
     }
     /*
     도메인 정리

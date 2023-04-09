@@ -17,6 +17,7 @@ public class RaceApplication {
 
     private final InputView inputView;
     private final ResultView resultView;
+
     public RaceApplication(InputView inputView, ResultView resultView) {
         this.inputView = inputView;
         this.resultView = resultView;
@@ -24,7 +25,7 @@ public class RaceApplication {
 
     public static void main(String[] args) {
         RaceApplication raceApplication = new RaceApplication(
-                new InputView(System.in,System.out),
+                new InputView(System.in, System.out),
                 new ResultView(System.out)
         );
         raceApplication.run();

@@ -13,6 +13,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 public class StringAddCalculatorTest {
     private static final Logger log = Logger.getLogger("StringAddCalculatorTest");
     private StringAddCalculator stringAddCalculator;
+
     @BeforeEach
     public void beforeEach() {
         stringAddCalculator = new StringAddCalculator();
@@ -88,7 +89,6 @@ public class StringAddCalculatorTest {
             assertThat(caseInputAndOutputMapper.get(input)).isEqualTo(stringAddCalculator.splitAndSum(input));
         });
     }
-
 
 
     @DisplayName("숫자 두개를 컴마(,) 구분자로 입력할 경우 두 숫자의 합을 반환한다")

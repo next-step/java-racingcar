@@ -6,12 +6,10 @@ import java.util.Scanner;
 
 public class InputView {
 
+    public static final String PARTICIPAT = "자동차 대수는 몇 대 인가요?";
+    public static final String ITERATIONS = "시도할 회수는 몇 회 인가요?";
     private final Scanner scanner;
     private final PrintStream printStream;
-
-    public static final String PARTICIPAT = "자동차 대수는 몇 대 인가요?";
-
-    public static final String ITERATIONS = "시도할 회수는 몇 회 인가요?";
 
     public InputView(InputStream inputStream, PrintStream printStream) {
         this.scanner = new Scanner(inputStream);

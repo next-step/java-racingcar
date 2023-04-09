@@ -59,7 +59,7 @@ public class StringAddCalculator {
 
     private int[] toInts(String[] split) {
         int[] ints = new int[split.length];
-        for(int i = 0; i< split.length ; i++ ) {
+        for (int i = 0; i < split.length; i++) {
             ints[i] = new CalculatorElement(split[i]).toInt();
         }
         return ints;

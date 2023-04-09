@@ -20,6 +20,10 @@ public class AutomobileFederation {
         this.roundToRecordMap = recordBoardCalculation(roundToScoreListMap);
     }
 
+    private static boolean isFirstRound(Round round) {
+        return round.toInt() == 1;
+    }
+
     public Map<Round, Record> recordBoardCalculation(Map<Round, List<Score>> raceResults) {
         Map<Round, Record> recordMap = new HashMap<>();
 
@@ -44,10 +48,6 @@ public class AutomobileFederation {
         }
         Record previousRecord = curRecordMap.get(round.getPrevious());
         return previousRecord.toList().get(carIndex);
-    }
-
-    private static boolean isFirstRound(Round round) {
-        return round.toInt() == 1;
     }
 
     public List<Round> getRounds() {
