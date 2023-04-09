@@ -31,7 +31,6 @@ public class AutomobileFederation {
             List<String> recordThisRound = new ArrayList<>();
 
             for (int carIndex = 0; carIndex < raceResults.get(round).size(); carIndex++) {
-                //for (Score scoreCurrentCar : raceResults.get(round)) {
                 Score scoreCurrentCar = raceResults.get(round).get(carIndex);
                 recordThisRound.add(getPreviousProgress(round, carIndex, recordMap) + scoreCurrentCar.toProgress());
             }
