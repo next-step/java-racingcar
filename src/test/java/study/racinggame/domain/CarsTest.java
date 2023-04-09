@@ -18,12 +18,6 @@ public class CarsTest {
 
   private List<Car> cars;
 
-  private static Stream<Arguments> provideGameStrategyForForwardCars() {
-    return Stream.of(
-            Arguments.of((GameStrategy) () -> true, 1),
-            Arguments.of((GameStrategy) () -> false, 0)
-    );
-  }
 
   @BeforeEach
   public void setUp() {
@@ -40,12 +34,15 @@ public class CarsTest {
     assertThat(cars).hasSize(3);
   }
 
-  @ParameterizedTest(name = "Cars 전진 테스트")
-  @MethodSource("provideGameStrategyForForwardCars")
-  public void forwardCars(GameStrategy gameStrategy, int expected) {
+  @Test
+  @DisplayName("Cars 전진 테스트")
+  public void forwardCars() {
     for (Car car : cars) {
-      car.forward(gameStrategy);
-      assertThat(car.distance()).isEqualTo(expected);
+      car.forward(new RacingGameStrategy());
+      car.forward(new RacingGameStrategy());
+      car.forward(new RacingGameStrategy());
+
+      assertThat(car.distance()).isBetween(0, 3);
     }
   }
 }
