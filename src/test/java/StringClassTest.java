@@ -24,9 +24,9 @@ public class StringClassTest {
 	@Test
 	void charAtTest() {
 		String a = "abc";
-		assertThat(a.charAt(1)).isEqualTo("a");
-		assertThat(a.charAt(2)).isEqualTo("b");
-		assertThat(a.charAt(3)).isEqualTo("c");
+		assertThat(a.charAt(0)).isEqualTo('a');
+		assertThat(a.charAt(1)).isEqualTo('b');
+		assertThat(a.charAt(2)).isEqualTo('c');
 	}
 
 	@DisplayName("charAT 테스트 - 실패 케이스")
