@@ -16,7 +16,7 @@ public class InputView {
         this.printStream = printStream;
     }
 
-    public int participate() {
+    public int participates() {
         printStream.println(PARTICIPAT);
         return scanner.nextInt();
     }

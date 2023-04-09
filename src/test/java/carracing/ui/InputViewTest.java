@@ -27,7 +27,7 @@ class InputViewTest {
 
         //when
         inAndOutTestHelper(input);
-        int result = inputView.participate();
+        int result = inputView.participates();
 
         //then
         assertEquals(result, answer);
@@ -42,7 +42,7 @@ class InputViewTest {
 
         //when
         inAndOutTestHelper(input);
-        int result = inputView.participate();
+        int result = inputView.participates();
 
         //then
         assertEquals(result, answer);

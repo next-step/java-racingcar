@@ -6,7 +6,6 @@ import carracing.logic.type.Score;
 import carracing.ui.InputView;
 import carracing.ui.ResultView;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -35,7 +34,7 @@ public class RaceApplication {
     public void run() {
         resultView.printResult(
                 new AutomobileFederation(
-                        this.racingStart(inputView.participate(), inputView.iterations())
+                        this.racingStart(inputView.participates(), inputView.iterations())
                 )
         );
     }
