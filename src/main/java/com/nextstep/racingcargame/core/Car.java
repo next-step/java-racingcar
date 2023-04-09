@@ -5,8 +5,7 @@ public class Car {
     private int distance;
     private String travelDistance;
 
-    private static final int MAX_RANDOM_VALUE = 9;
-    private static final int MAX_STOP_VALUE = 4;
+    private static final int MINIMUM_CAR_MOVE_NUMBER = 4;
 
     private static final String CAR_DISTANCE_DISPLAY_UNIT = "-";
 
@@ -37,6 +36,6 @@ public class Car {
     }
 
     private boolean isGoForwardNumber(int randomNumber) {
-        return randomNumber > MAX_STOP_VALUE;
+        return randomNumber >= MINIMUM_CAR_MOVE_NUMBER;
     }
 }
