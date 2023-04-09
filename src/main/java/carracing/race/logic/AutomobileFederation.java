@@ -12,12 +12,12 @@ import java.util.stream.Collectors;
 
 public class AutomobileFederation {
 
-    private final Map<Round, List<Score>> scoreListResultMap;
-    private final Map<Round, Record> recordBoards;
+    private final Map<Round, List<Score>> roundToScoreListMap;
+    private final Map<Round, Record> roundToRecordMap;
 
-    public AutomobileFederation(Map<Round, List<Score>> scoreListResultMap) {
-        this.scoreListResultMap = scoreListResultMap;
-        this.recordBoards = recordBoardCalculation(scoreListResultMap);
+    public AutomobileFederation(Map<Round, List<Score>> roundToScoreListMap) {
+        this.roundToScoreListMap = roundToScoreListMap;
+        this.roundToRecordMap = recordBoardCalculation(roundToScoreListMap);
     }
 
     private Map<Round, Record> recordBoardCalculation(Map<Round, List<Score>> raceResults) {
@@ -60,11 +60,11 @@ public class AutomobileFederation {
 //    }
 
     public List<Round> getRounds() {
-        return new ArrayList<>(scoreListResultMap.keySet()).stream().sorted().collect(Collectors.toList());
+        return new ArrayList<>(roundToScoreListMap.keySet()).stream().sorted().collect(Collectors.toList());
     }
 
     public List<String> lapSituations(Round round) {
-        Record record = this.recordBoards.get(round);
+        Record record = this.roundToRecordMap.get(round);
         return record.toList();
     }
 }
