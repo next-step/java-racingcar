@@ -10,12 +10,12 @@ public class InputView {
     private static final String TEXT_INPUT_MOVE = "시도할 회수는 몇 회 인가요?";
 
     public int inputCountOfCar() {
-        System.out.println(TEXT_INPUT_CAR);
+        System.out.print(TEXT_INPUT_CAR);
         return inputInt();
     }
 
     public int inputCountOfMove() {
-        System.out.println(TEXT_INPUT_MOVE);
+        System.out.print(TEXT_INPUT_MOVE);
         return inputInt();
     }
 
