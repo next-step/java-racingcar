@@ -23,9 +23,8 @@ public class Cars {
     }
 
     public void moveCars() {
-        for (int carIndex = 0; carIndex < carSize(); carIndex++) {
-            CarMover carMover = new CarMover(getRandomZeroToNine());
-            carMover.moveCar(cars.get(carIndex));
+        for (Car car : cars) {
+            car.moveForwardByNumber(getRandomZeroToNine());
         }
     }
 
