@@ -12,10 +12,10 @@ class ConverterTest {
   void 숫자를_문자열로_변환() {
     String[] input = {"1", "2", "3"};
 
-    int[] nums = converter.convert(input);
+    PositiveNumber numbers = converter.convert(input);
 
-    assertThat(nums).hasSize(3);
-    assertThat(nums).containsExactly(1, 2, 3);
+    assertThat(numbers.size()).isEqualTo(3);
+    assertThat(numbers.values()).containsExactly(1, 2, 3);
   }
 
   @Test
