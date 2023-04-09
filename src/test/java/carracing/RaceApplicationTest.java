@@ -101,11 +101,12 @@ public class RaceApplicationTest {
         assertThat(resultViewOutputStream.toString()).contains(answer);
     }
 
-    @DisplayName("문구 출력 검증 : [시도할 회수는 몇 회 인가요?] 출력된다")
+    @DisplayName("문구 출력 검증 : [시도할 횟수는 몇 회 인가요?] 출력된다")
     @Test
     public void iterations() {
+        //todo >> 두번째 입력값인 시도할 횟수 << 문구가 잘 출력되는지 검증할 방법이 없다...
         //given
-        String answer = "시도할 회수는 몇 회 인가요?";
+        String answer = "시도할 횟수는 몇 회 인가요?";
         inAndOutTestHelper("5\r\n5");
 
         //when
