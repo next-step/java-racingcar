@@ -22,11 +22,23 @@ public class RacingCarTest {
 
     @Test
     @DisplayName("전진 후에는 자동차의 위치가 1 증가되어야 한다.")
-    void carMoveTest() {
+    void carMoveSuccessTest() {
         RacingCar racingCar = new RacingCar();
         int beforePosition = racingCar.getPosition();
 
-        racingCar.moveForward();
+        racingCar.moveForward(5);
+
+        int afterPosition = racingCar.getPosition();
+        assertThat(afterPosition).isEqualTo(beforePosition + 1);
+    }
+
+    @Test
+    @DisplayName("전진 조건이 4미만일 경우 자동차는 이동하지 않는다.")
+    void carMoveFailTest() {
+        RacingCar racingCar = new RacingCar();
+        int beforePosition = racingCar.getPosition();
+
+        racingCar.moveForward(0);
 
         int afterPosition = racingCar.getPosition();
         Assertions.assertThat(afterPosition).isEqualTo(beforePosition + 1);
