@@ -41,6 +41,7 @@ public class AutomobileFederation {
         return recordMap;
     }
 
+    //todo : 입력이 3개인 메서드는 리팩토링 대상이다
     private String getPreviousProgress(Round round, int carIndex, Map<Round, Record> curRecordMap) {
         if (isFirstRound(round)) {
             return INITIAL_RACING_RECODE;
