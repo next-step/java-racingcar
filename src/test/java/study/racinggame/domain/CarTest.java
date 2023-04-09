@@ -15,6 +15,13 @@ public class CarTest {
 
   private Car car;
 
+  private static Stream<Arguments> provideGameStrategyForForward() {
+    return Stream.of(
+            Arguments.of((GameStrategy) () -> true, 1),
+            Arguments.of((GameStrategy) () -> false, 0)
+    );
+  }
+
   @BeforeEach
   public void setUp() {
     car = new Car();
@@ -27,16 +34,9 @@ public class CarTest {
   }
 
   @ParameterizedTest(name = "Car 객체 전진 테스트")
-  @MethodSource("provideBooleanForForward")
+  @MethodSource("provideGameStrategyForForward")
   public void forward(GameStrategy racingStrategy, int expected) {
     car.forward(racingStrategy);
     assertThat(car.distance()).isEqualTo(expected);
-  }
-
-  private static Stream<Arguments> provideBooleanForForward() {
-    return Stream.of(
-            Arguments.of((GameStrategy) () -> true, 1),
-            Arguments.of((GameStrategy) () -> false, 0)
-    );
   }
 }
