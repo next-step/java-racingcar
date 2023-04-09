@@ -23,11 +23,22 @@ public class ScoreTest {
     @Test
     public void equivalence2() {
         //given
-        Score oneA = new Score(777);
-        Score oneB = new Score(777);
+        Score oneA = new Score(7);
+        Score oneB = new Score(7);
         //when
         //then
         assertThat(oneA).isEqualTo(oneB);
+    }
+
+    @DisplayName("다른 Value 를 가진 Score 가 동등성 비교에서 다름을 리턴한다")
+    @Test
+    public void notEquivalence() {
+        //given
+        Score oneA = new Score(3);
+        Score oneB = new Score(5);
+        //when
+        //then
+        assertThat(oneA).isNotEqualTo(oneB);
     }
 
     @DisplayName("범위를 초과하는 Score 의 Value 입력시 RuntimeException 을 throw 한다 : -1")
@@ -38,8 +49,8 @@ public class ScoreTest {
         //then
         assertThatThrownBy(() -> {
             new Score(-1);
-        }).isInstanceOf(RuntimeException.class);
-        //.hasMessageContaining(
+        }).isInstanceOf(RuntimeException.class)
+                .hasMessageContaining("0이상 9이하");
     }
 
 
@@ -51,8 +62,8 @@ public class ScoreTest {
         //then
         assertThatThrownBy(() -> {
             new Score(10);
-        }).isInstanceOf(RuntimeException.class);
-        //.hasMessageContaining(
+        }).isInstanceOf(RuntimeException.class)
+                .hasMessageContaining("0이상 9이하");
     }
 
 }
