@@ -51,7 +51,10 @@ public class AutomobileFederation {
     }
 
     public List<Round> getRounds() {
-        return new ArrayList<>(roundToScoreListMap.keySet()).stream().sorted().collect(Collectors.toList());
+        return new ArrayList<>(roundToScoreListMap.keySet())
+                .stream()
+                .sorted()
+                .collect(Collectors.toList());
     }
 
     public List<String> lapSituations(Round round) {
