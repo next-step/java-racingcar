@@ -12,7 +12,7 @@ public class ResultViewV0 implements ResultView{
     private final PrintStream printStream;
 
     public ResultViewV0(PrintStream printStream) {
-        log.info("ResultViewV0 에서는 기본 출력만을 제공한다");
+        //log.info("ResultViewV0 에서는 기본 출력만을 제공한다");
         this.printStream = printStream;
     }
     @Override
