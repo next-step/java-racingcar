@@ -9,7 +9,11 @@ public class RandomMoveStrategy implements MoveStrategy {
 
     @Override
     public int moveAmount() {
-        return isMove() ? successDistance : failDistance;
+        if (isMove()) {
+            return successDistance;
+        }
+
+        return failDistance;
     }
 
     private boolean isMove() {

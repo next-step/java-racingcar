@@ -8,7 +8,7 @@ public class Track implements Comparable<Track> {
         this.trackNumber = trackNumber;
     }
 
-    protected void entrance(RacingCar racingCar) {
+    protected void enter(RacingCar racingCar) {
         this.racingCar = racingCar;
         racingCar.resetPosition();
     }

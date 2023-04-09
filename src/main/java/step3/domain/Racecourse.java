@@ -7,12 +7,7 @@ import java.util.Optional;
 public class Racecourse {
     private final List<Track> tracks = new ArrayList<>();
 
-    public void addTrack(Track track) {
-        tracks.add(track);
-        sortTracks();
-    }
-
-    public void addTracks(List<Track> tracks) {
+    public Racecourse(List<Track> tracks) {
         this.tracks.addAll(tracks);
         sortTracks();
     }
@@ -21,9 +16,9 @@ public class Racecourse {
         tracks.forEach(Track::signalToForward);
     }
 
-    public void entrance(RacingCar racingCar) {
+    public void enter(RacingCar racingCar) {
         findEmptyTrack()
-                .ifPresentOrElse(track -> track.entrance(racingCar), () -> {
+                .ifPresentOrElse(track -> track.enter(racingCar), () -> {
                             throw new IllegalArgumentException("빈 track이 존재하지 않습니다.");
                         }
                 );
