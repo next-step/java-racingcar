@@ -42,9 +42,9 @@ public class RaceApplication {
 
         Map<Round, List<Score>> resultMap = new HashMap<>();
 
-        for (int roound = 1; roound <= iterations; roound++) {
+        for (int round = 1; round <= iterations; round++) {
             List<Score> raceCurrentScore = simulateScores(participate);
-            resultMap.put(new Round(roound), raceCurrentScore);
+            resultMap.put(new Round(round), raceCurrentScore);
         }
         return resultMap;
     }
