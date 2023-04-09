@@ -14,6 +14,15 @@ public class Cars {
         }
     }
 
+    public static List<Car> makeCars(String[] nameOfCars) {
+        List<Car> cars = new ArrayList<>();
+        for (String nameOfCar : nameOfCars) {
+            cars.add(new Car(nameOfCar, 0));
+        }
+
+        return cars;
+    }
+
     public Map<Car, List<Integer>> distancesOfCar() {
         return distancesOfCar;
     }

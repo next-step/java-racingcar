@@ -3,6 +3,8 @@ import java.util.Map;
 
 public class PrintView {
 
+    private PrintView() {}
+
     public static void printTitle() {
         System.out.println("실행 결과");
     }
