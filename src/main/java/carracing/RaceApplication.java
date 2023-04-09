@@ -33,10 +33,11 @@ public class RaceApplication {
     }
 
     public void run() {
-        int participate = inputView.participate();
-        int iterations = inputView.iterations();
-        Map<Round, List<Score>> raceResults = this.racingStart(participate, iterations);
-        resultView.printResult(new AutomobileFederation(raceResults));
+        resultView.printResult(
+                new AutomobileFederation(
+                        this.racingStart(inputView.participate(), inputView.iterations())
+                )
+        );
     }
 
     public Map<Round, List<Score>> racingStart(int participate, int iterations) {
