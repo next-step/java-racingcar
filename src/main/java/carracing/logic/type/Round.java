@@ -18,14 +18,14 @@ public class Round implements Comparable<Round> {
     }
 
     public Round previousRound() {
-        if (isFirstRound(this.value)) {
+        if (isFirstRound()) {
             return this;
         }
         return new Round(value - 1);
     }
 
-    private boolean isFirstRound(int value) {
-        return value == FIRST_ROUND_VALUE;
+    public boolean isFirstRound() {
+        return this.value == FIRST_ROUND_VALUE;
     }
 
     @Override

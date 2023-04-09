@@ -20,10 +20,6 @@ public class AutomobileFederation {
         this.roundToRecordMap = recordBoardCalculation(roundToScoreListMap);
     }
 
-    private static boolean isFirstRound(Round round) {
-        return round.toInt() == 1;
-    }
-
     public Map<Round, Record> recordBoardCalculation(Map<Round, List<Score>> raceResults) {
         Map<Round, Record> recordMap = new HashMap<>();
 
@@ -42,7 +38,7 @@ public class AutomobileFederation {
 
     //todo : 입력이 3개인 메서드는 리팩토링 대상이다
     private String getPreviousProgress(Round round, int carIndex, Map<Round, Record> curRecordMap) {
-        if (isFirstRound(round)) {
+        if (round.isFirstRound()) {
             return INITIAL_RACING_RECODE;
         }
         return curRecordMap.get(round.previousRound()).toList().get(carIndex);
