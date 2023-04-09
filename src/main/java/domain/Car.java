@@ -1,36 +1,25 @@
 package domain;
 
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import static domain.RandomNumber.isOverFour;
 
 public class Car {
 
-    private int id;
-    private Move move;
+    private int distance;
 
-    public Move getMove() {
-        return move;
+    public Car() {
     }
 
-    public Car(int id) {
-        this.id = id;
-        move = new Move();
+    public int getCarCurrentDistance() {
+        return distance;
     }
 
-    public static List<Car> createCarList(int numberOfCars) {
-        return IntStream
-                .range(0, numberOfCars)
-                .mapToObj(Car::new)
-                .collect(Collectors
-                        .toList());
+    static boolean movingCheck() {
+        return isOverFour();
     }
 
-    public void attemptMove() {
-        move.attemptMove();
-    }
-
-    public String getCurrentDistance() {
-        return move.getCarCurrentDistance();
+    void attemptMove() {
+        if (movingCheck()) {
+            distance++;
+        }
     }
 }
