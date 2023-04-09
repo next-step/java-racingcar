@@ -8,6 +8,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class ResultView {
     private static final Boolean DISPLAY_CAR_INDEX = Boolean.TRUE;
+    private static final Boolean DISPLAY_ROUND_INFORMATION = Boolean.TRUE;
+
     private final PrintStream printStream;
 
     public ResultView(PrintStream printStream) {
