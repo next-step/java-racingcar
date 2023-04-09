@@ -20,4 +20,8 @@ public class CarPosition {
     public CarActionRecord carActionRecord() {
         return carActionRecord;
     }
+
+    public int carActionRecordCount() {
+        return carActionRecord.size();
+    }
 }

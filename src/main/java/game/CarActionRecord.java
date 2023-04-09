@@ -18,4 +18,8 @@ public class CarActionRecord {
     public void addStop() {
         actions.add(CarAction.STOP);
     }
+
+    public int size() {
+        return actions.size();
+    }
 }
