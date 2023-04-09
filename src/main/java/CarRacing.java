@@ -17,6 +17,8 @@ public class CarRacing {
         for (int i = 0; i < trial; i++) {
             PrintView.printCar(cars, i);
         }
+
+        PrintView.printWinners(winners);
     }
 
     private static List<Car> cars(String[] nameOfCars) {

@@ -25,4 +25,12 @@ public class PrintView {
 
         System.out.println();
     }
+
+    public static void printWinners(List<Car> winners) {
+        for (Car winner : winners) {
+            System.out.print(winner.name() + ",");
+        }
+
+        System.out.println("가 최종 우승하셨습니다.");
+    }
 }
