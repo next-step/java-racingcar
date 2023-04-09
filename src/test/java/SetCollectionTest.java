@@ -9,6 +9,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.HashSet;
 import java.util.Set;
 
+import static org.assertj.core.api.Assertions.*;
+
 public class SetCollectionTest {
     private Set<Integer> numbers;
 
@@ -24,19 +26,19 @@ public class SetCollectionTest {
     @Test
     @DisplayName("SetCollection size method test")
     void sizeTest() {
-        Assertions.assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     void containsTest(int number){
-        Assertions.assertThat(numbers.contains(number)).isTrue();
+        assertThat(numbers.contains(number)).isTrue();
     }
 
     @ParameterizedTest
     @CsvSource(value = {"1,true", "2,true", "3,true", "4,false", "5,false"})
     void containsTestUsedCsvSource(int number, boolean expected){
-        Assertions.assertThat(numbers.contains(number)).isEqualTo(expected);
+        assertThat(numbers.contains(number)).isEqualTo(expected);
     }
 
 }

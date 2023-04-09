@@ -8,9 +8,19 @@ import static org.assertj.core.api.Assertions.*;
 public class StringTest {
 
     @Test
+    @DisplayName("String class matches test")
+    void matchesTest() {
+        boolean actual = "//@\n1,3".matches("//(.*)\n(.*)");
+        assertThat(actual).isEqualTo(true);
+
+        actual = "1,3".matches("//(.*)\n(.*)");
+        assertThat(actual).isEqualTo(false);
+    }
+
+    @Test
     @DisplayName("String class split test")
     void splitTest() {
-        String[] actual = "1,2".split(",");
+        final String[] actual = "1,2".split(",");
         assertThat(actual).containsExactly("1", "2");
 
         String[] actual1 = "1".split(",");
@@ -29,7 +39,7 @@ public class StringTest {
     @DisplayName("String class charAt method test")
     void charAtTest() {
         String target = "abc";
-        char actual = target.charAt(0);
+        char actual = "abc".charAt(0);
 
         assertThat(actual).isEqualTo('a');
 
