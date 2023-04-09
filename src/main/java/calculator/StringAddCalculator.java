@@ -1,11 +1,10 @@
 package calculator;
 
-import java.util.Arrays;
-import java.util.stream.Stream;
+import java.util.List;
 
 public class StringAddCalculator {
-    private static final CustomSpliter CUSTOM_SPLITER = new CustomSpliter();
-    private static final DefaultSpliter DEFAULT_SPLITER = new DefaultSpliter();
+    private static final List<Spliter> SPLITERS =
+            List.of(new CustomSpliter(), new DefaultSpliter());
 
     public static int splitAndSum(String text) {
         if (isNotValid(text)) {
@@ -16,10 +15,11 @@ public class StringAddCalculator {
     }
 
     private static String[] split(String text) {
-        return Stream.concat(
-                        Arrays.stream(DEFAULT_SPLITER.split(text)),
-                        Arrays.stream(CUSTOM_SPLITER.split(text)))
-                .toArray(String[]::new);
+        return SPLITERS.stream()
+                .filter(spliter -> spliter.isSupport(text))
+                .findFirst()
+                .map(spliter -> spliter.split(text))
+                .orElse(new String[0]);
     }
 
     private static boolean isNotValid(String text) {
