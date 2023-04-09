@@ -12,7 +12,6 @@ class StringTest {
     void splitContainTest() {
         assertThat("1,2".split(",")).contains("1","2");
     }
-
     @Test
     void splitContainExactlyTest() {
         assertThat("1".split(",")).containsExactly("1");
@@ -35,5 +34,14 @@ class StringTest {
         assertThatThrownBy(() -> "abc".charAt(3))
                 .isInstanceOf(IndexOutOfBoundsException.class)
                 .hasMessageContaining("String index out of range: 3");
+    }
+
+    @Test
+    void stringToChar_and_정수여부판단() {
+        assertThat("1".chars().allMatch(Character::isDigit)).isTrue();
+        assertThat("1.1".chars().allMatch(Character::isDigit)).isFalse();
+        assertThat("-1".chars().allMatch(Character::isDigit)).isFalse();
+        assertThat("가".chars().allMatch(Character::isDigit)).isFalse();
+        assertThat("-".chars().allMatch(Character::isDigit)).isFalse();
     }
 }
