@@ -16,14 +16,15 @@ public class StringCalculatorTest {
 
     @Test
     void 숫자가_아닌_값() {
-        assertThatThrownBy(() -> splitAndSum("-1,2:a"))
-                .isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> splitAndSum("1,2:a"))
+                .isInstanceOf(NumberFormatException.class);
     }
 
     @Test
     void 음수() {
         assertThatThrownBy(() -> splitAndSum("-1,2:3"))
-                .isInstanceOf(RuntimeException.class);
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("음수는 입력할 수 없습니다.");
     }
 
     @Test
