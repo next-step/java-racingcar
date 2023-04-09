@@ -1,5 +1,6 @@
-import static core.RacingGameFactory.makeARace;
+import static view.ResultView.createResultView;
 
+import domain.Cars;
 import domain.UserInput;
 import view.InputView;
 
@@ -10,7 +11,8 @@ public class CarRacingApplication {
     }
 
     private static void run(UserInput userInput) {
-        makeARace(userInput);
+        int attemptCount = userInput.getAttemptCount();
+        createResultView(new Cars(userInput), attemptCount);
     }
 
     private static UserInput getInput() {
