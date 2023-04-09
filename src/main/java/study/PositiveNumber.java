@@ -10,6 +10,7 @@ public class PositiveNumber {
   private final int[] numbers;
 
   public PositiveNumber(int[] numbers) {
+    validateNonNegative(numbers);
     this.numbers = numbers;
   }
 
@@ -23,5 +24,17 @@ public class PositiveNumber {
 
   public int[] values() {
     return numbers;
+  }
+
+  private void validateNonNegative(int[] numbers) {
+    for (int number : numbers) {
+      validate(number);
+    }
+  }
+
+  private static void validate(int number) {
+    if (number < 0) {
+      throw new RuntimeException();
+    }
   }
 }
