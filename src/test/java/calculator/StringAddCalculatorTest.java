@@ -11,6 +11,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class StringAddCalculatorTest {
+    private static final Logger log = Logger.getLogger("StringAddCalculatorTest");
     private StringAddCalculator stringAddCalculator;
     @BeforeEach
     public void beforeEach() {
