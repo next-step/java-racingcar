@@ -9,14 +9,12 @@ public class OutputView {
         System.out.println("\n" + TEXT_RESULT);
     }
 
-    public void outputPositionOfCar(int position) {
-        for (int i = 0; i < position; i++) {
-            System.out.print(OUTPUT_TEXT);
+    public void outputPositionOfCar(int[] positionOfCars) {
+        for (int i = 0; i < positionOfCars.length; i++) {
+            for (int j = 0; j < positionOfCars[i]; j++) {
+                System.out.print(OUTPUT_TEXT);
+            }
+            System.out.println();
         }
-        System.out.println();
-    }
-
-    public void outputNextLine() {
-        System.out.println();
     }
 }
