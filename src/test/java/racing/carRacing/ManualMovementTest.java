@@ -12,11 +12,30 @@ class ManualMovementTest {
     @ValueSource(ints = {1, 3, 5})
     @DisplayName("메뉴얼 값 지정 테스트")
     void manualTest(int input) {
-        ManualMovement manualMovement = new ManualMovement(input);
+        int condition = 4;
+        ManualMovement manualMovement = new ManualMovement(input, condition);
 
-        int result = manualMovement.movement();
+        assertThat(manualMovement.getManualNumber()).isEqualTo(input);
+    }
 
-        assertThat(result).isEqualTo(input);
+    @ParameterizedTest
+    @ValueSource(ints = {4, 5})
+    @DisplayName("조건 숫자에 미달할 경우 true")
+    void conditionTrue(int input) {
+        int condition = 4;
+        ManualMovement manualMovement = new ManualMovement(input, condition);
+
+        assertThat(manualMovement.movement()).isTrue();
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {2, 3})
+    @DisplayName("조건 숫자에 미달할 경우 false")
+    void conditionFalse(int input) {
+        int condition = 4;
+        ManualMovement manualMovement = new ManualMovement(input, condition);
+
+        assertThat(manualMovement.movement()).isFalse();
     }
 
 }

@@ -13,7 +13,8 @@ class CarTest {
     @DisplayName("이동 테스트")
     void runMoveTest(int input) {
         Car car = new Car("");
-        MovementStrategy strategy = new ManualMovement(input);
+        int condition = 4;
+        MovementStrategy strategy = new ManualMovement(input, condition);
 
         car.run(strategy);
 
@@ -26,7 +27,8 @@ class CarTest {
     @DisplayName("중지 테스트")
     void runStopTest(int input) {
         Car car = new Car("");
-        MovementStrategy strategy = new ManualMovement(input);
+        int condition = 4;
+        MovementStrategy strategy = new ManualMovement(input, condition);
 
         car.run(strategy);
 

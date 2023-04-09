@@ -4,7 +4,6 @@ import racing.carRacing.view.OutputView;
 
 public class Car {
     public static final String movement = "-";
-    public static final int CONDITION = 4;
 
     private String step;
 
@@ -13,7 +12,7 @@ public class Car {
     }
 
     public void run(MovementStrategy strategy) {
-        if (strategy.movement() >= CONDITION) {
+        if (strategy.movement()) {
             step += movement;
         }
         OutputView.printCarStatus(step);
