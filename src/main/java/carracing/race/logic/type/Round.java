@@ -5,8 +5,8 @@ import java.util.Objects;
 public class Round implements Comparable<Round> {
     private final int value;
     public Round(int value) {
-        if(value<0) {
-            throw new RuntimeException();
+        if (value <= 0) {
+            throw new RuntimeException("라운드는 1부터 시작하며, 항상 1 이상입니다");
         }
         this.value = value;
     }
