@@ -1,5 +1,7 @@
 package com.nextstep.racingcargame.core;
 
+import static com.nextstep.racingcargame.view.ClientView.printSource;
+
 public class Car {
 
     private int distance;
@@ -21,7 +23,7 @@ public class Car {
     }
 
     public void printTravelDistance() {
-        System.out.println(travelDistance);
+        printSource(travelDistance);
     }
 
     public int getDistance() {

@@ -1,7 +1,8 @@
 package com.nextstep.racingcargame.core;
 
-import static com.nextstep.racingcargame.view.ClientInputView.getClientInputByCarAndTryCounts;
-import static com.nextstep.racingcargame.view.DefaultClientView.createNewLine;
+import static com.nextstep.racingcargame.core.ClientInput.getClientInputByCarAndTryCounts;
+import static com.nextstep.racingcargame.view.ClientView.createNewLine;
+import static com.nextstep.racingcargame.view.ClientView.printSource;
 
 public class InitializeRacingGame {
 
@@ -23,7 +24,7 @@ public class InitializeRacingGame {
 
     private static void startGame(ClientInput clientInput, Cars cars) {
 
-        System.out.println(RESULT_MSG);
+        printSource(RESULT_MSG);
 
         for (int turn = 0; turn < clientInput.getNumberOfTries(); turn++) {
             cars.moveCars();
