@@ -19,15 +19,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ResultViewTest {
+public class ResultViewV1Test {
     private static final Logger log = Logger.getLogger("ResultViewTest");
-    private ResultView resultView;
+    private ResultViewV1 resultViewV1;
     private OutputStream outputStream;
 
     @BeforeEach
     public void beforeEach() {
         outputStream = new ByteArrayOutputStream();
-        this.resultView = new ResultView(new PrintStream(new PrintStream(outputStream)));
+        this.resultViewV1 = new ResultViewV1(new PrintStream(new PrintStream(outputStream)));
     }
 
     @DisplayName("경기결과가 CarIndex 와 함께 출력된다")
@@ -65,7 +65,7 @@ public class ResultViewTest {
 
         //when
         AutomobileFederation automobileFederation = new AutomobileFederation(inputRoundToScoreListMap);
-        resultView.printResultWithCarIndex(automobileFederation);
+        resultViewV1.printResultWithCarIndex(automobileFederation);
 
         //then
         assertAll(
@@ -112,7 +112,7 @@ public class ResultViewTest {
 
         //when
         AutomobileFederation automobileFederation = new AutomobileFederation(inputRoundToScoreListMap);
-        resultView.printResultWithoutCarIndex(automobileFederation);
+        resultViewV1.printResultWithoutCarIndex(automobileFederation);
 
         //then
         assertAll(

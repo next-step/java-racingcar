@@ -4,6 +4,7 @@ import carracing.logic.type.Round;
 import carracing.logic.type.Score;
 import carracing.ui.InputView;
 import carracing.ui.ResultView;
+import carracing.ui.ResultViewV1;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
@@ -37,7 +38,7 @@ public class RaceApplicationTest {
     public void beforeEach() {
         this.resultViewOutputStream = new ByteArrayOutputStream();
         this.resultViewPrintStream = new PrintStream(new PrintStream(this.resultViewOutputStream));
-        this.resultView = new ResultView(this.resultViewPrintStream);
+        this.resultView = new ResultViewV1(this.resultViewPrintStream);
         this.inputViewInputStream = new ByteArrayInputStream("SampleInput".getBytes());
         this.inputView = new InputView(inputViewInputStream, resultViewPrintStream);
         this.raceApplication = new RaceApplication(this.inputView, this.resultView);
