@@ -105,15 +105,16 @@ public class RaceApplicationTest {
     @Test
     public void iterations() {
         //todo >> 두번째 입력값인 시도할 횟수 << 문구가 잘 출력되는지 검증할 방법이 없다...
+
         //given
         String answer = "시도할 횟수는 몇 회 인가요?";
-        inAndOutTestHelper("5\r\n5");
+        inAndOutTestHelper("4\r6\r8");
 
         //when
         raceApplication.run();
 
         //then
-        assertThat(resultViewOutputStream.toString()).contains(answer);
+        assertThat(resultViewOutputStream.toString().toString().trim()).contains(answer);
     }
 
     @DisplayName("입력한 경기수 (Round) 에 따라 해당 경기수만큼 잘 치뤄진건지 검증한다")
