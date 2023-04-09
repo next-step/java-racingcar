@@ -14,8 +14,7 @@ public class RacingCar {
         return position;
     }
 
-    public void moveForward() {
-        int moveCount = RandomNumberGenerator.generateRandomNumber();
+    public void moveForward(int moveCount) {
         if (moveCount >= STANDARD_MOVE_COUNT) {
             this.position++;
         }
