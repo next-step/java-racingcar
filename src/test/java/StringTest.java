@@ -24,4 +24,43 @@ public class StringTest {
         }).isInstanceOf(IndexOutOfBoundsException.class)
                 .hasMessageContaining("String index out of range: 4");
     }
+
+    @Test
+    @DisplayName("패턴에 해당하는 값 조회")
+    void startsWith() {
+        String input = "//;\n1,2,3";
+        String customDelemiter = "";
+
+        if (input.startsWith("//")) {
+            customDelemiter = input.substring(2, input.indexOf("\n"));
+            System.out.println("Custom Delemiter : " + customDelemiter);
+
+            input = input.substring(2);
+        }
+
+        System.out.println(input + " Custom Delemiter : " + customDelemiter);
+
+    }
+
+    @Test
+    @DisplayName("정규표현식")
+    void regex() {
+        String input = "//;\n1;2,3";
+        String customDelemiter = "";
+
+        if (input.startsWith("//")) {
+            customDelemiter = input.substring(2, input.indexOf("\n"));
+            System.out.println("Custom Delemiter : " + customDelemiter);
+
+            input = input.substring(input.indexOf("\n")+1);
+        }
+
+        String[] result = input.split("([,:]|" + customDelemiter + ")");
+
+        for (int i=0; i < result.length; i++) {
+            System.out.println("result(" + i +") : " + result[i]);
+        }
+
+
+    }
 }
