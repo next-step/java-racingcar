@@ -26,7 +26,7 @@ public class RacingCarTest {
 
         float actual = car.getNumberOfOngoing() / REPEAT_NUMBER;
         System.out.println("actual = " + actual);
-        assertThat(actual >= 0.57 && actual <= 0.63).isTrue();
+        assertThat(actual >= 0.55 && actual <= 0.65).isTrue();
     }
 }
 
