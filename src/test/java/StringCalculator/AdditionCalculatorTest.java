@@ -5,15 +5,17 @@ import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 @DisplayName("문자열 덧셈 계산기 테스트")
 public class AdditionCalculatorTest {
 
 	@DisplayName("빈문자열 또는 null 입력 시, 0 반환")
-	@Test
-	void test1() {
-		assertThat(AdditionCalculator.calculate("")).isEqualTo(ZERO);
-		assertThat(AdditionCalculator.calculate(null)).isEqualTo(ZERO);
+	@NullAndEmptySource
+	@ParameterizedTest
+	void test1(String input) {
+		assertThat(AdditionCalculator.calculate(input)).isEqualTo(ZERO);
 	}
 
 	@DisplayName(",를 구분자로 가지는 문자열 입력 시 각 숫자의 합 반환")
