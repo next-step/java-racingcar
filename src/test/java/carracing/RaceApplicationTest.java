@@ -66,16 +66,6 @@ public class RaceApplicationTest {
         );
     }
 
-    @DisplayName("n대의 자동차는 전진 또는 멈출 수 있다 라는 문구가 출력된다")
-    @Test
-    public void carCanMoveOrStop() {
-        //given
-        //when
-        //then
-        log.info("테스트를 작성할 수 없는 애매함");
-        fail();
-    }
-
     @DisplayName("몇대의 자동차로 이동할수 있는지 지정할 수 있다")
     @Test
     public void countOfMovingCar() {
@@ -93,10 +83,22 @@ public class RaceApplicationTest {
         );
     }
 
-    @DisplayName("몇번을 이동할것인지 입력할 수 있다")
+    @DisplayName("문구 출력 검증 : [자동차 대수는 몇 대 인가요?] 출력된다")
+    @Test
+    public void carCanMoveOrStop() {
+        //given
+        String answer = "자동차 대수는 몇 대 인가요?";
+        //when
+        //then
+        log.info("테스트를 작성할 수 없는 애매함");
+        fail();
+    }
+
+    @DisplayName("문구 출력 검증 : [시도할 회수는 몇 회 인가요?] 출력된다")
     @Test
     public void run() {
         //given
+        String answer = "시도할 회수는 몇 회 인가요?";
         //when
         //then
     }
@@ -115,12 +117,10 @@ public class RaceApplicationTest {
                 () -> assertThat(roundListMap.keySet()).as("Round 숫자를 검증").hasSize(roundIterations),
                 () -> assertThat(roundListMap.values()).as("List<Score> 를 검증").hasSize(roundIterations)
         );
-
     }
 
     @DisplayName("0에서 9사이에서 random값을 구한다")
-    @RepeatedTest(20)
-    @Test
+    @RepeatedTest(100)
     public void getRandomFrom0To9() {
         //given
         //when
