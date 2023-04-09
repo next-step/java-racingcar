@@ -1,20 +1,20 @@
 package racing.carRacing;
 
-import racing.carRacing.view.OutputView;
-
 public class Car {
-    public static final String movement = "-";
+    private int position;
 
-    private String step;
-
-    public Car(String step) {
-        this.step = step;
+    public Car() {
+        position = 0;
     }
 
-    public void run(MovementStrategy strategy) {
+    public Car(int position) {
+        this.position = position;
+    }
+
+    public int run(MovementStrategy strategy) {
         if (strategy.movement()) {
-            step += movement;
+            position++;
         }
-        OutputView.printCarStatus(step);
+        return position;
     }
 }

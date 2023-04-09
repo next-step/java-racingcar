@@ -12,28 +12,26 @@ class CarTest {
     @ValueSource(ints = {4, 5, 8, 9})
     @DisplayName("이동 테스트")
     void runMoveTest(int input) {
-        Car car = new Car("");
         int condition = 4;
+        Car car = new Car(input);
         MovementStrategy strategy = new ManualMovement(input, condition);
 
-        car.run(strategy);
+        int result = car.run(strategy);
 
-        assertThat(car).usingRecursiveComparison()
-                .isEqualTo(new Car("-"));
+        assertThat(result).isEqualTo(input + 1);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3})
     @DisplayName("중지 테스트")
     void runStopTest(int input) {
-        Car car = new Car("");
         int condition = 4;
+        Car car = new Car(input);
         MovementStrategy strategy = new ManualMovement(input, condition);
 
-        car.run(strategy);
+        int result = car.run(strategy);
 
-        assertThat(car).usingRecursiveComparison()
-                .isEqualTo(new Car(""));
+        assertThat(result).isEqualTo(result);
     }
 
 }

@@ -17,7 +17,7 @@ public class Cars {
         cars = new ArrayList<>();
         while (numberOfCar.isOverZero()) {
             numberOfCar.countDown();
-            cars.add(new Car(""));
+            cars.add(new Car());
         }
         return cars;
     }
