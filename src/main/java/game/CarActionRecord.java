@@ -11,6 +11,10 @@ public class CarActionRecord {
         return actions;
     }
 
+    public CarAction action(int index) {
+        return actions.get(index);
+    }
+
     public void addMove() {
         actions.add(CarAction.MOVE);
     }

@@ -17,20 +17,20 @@ class CarPositionTest {
     @Test
     @DisplayName("기록하는 값이 4보다 작은 경우 전진하지 않습니다.")
     void test01() {
-        CarActionRecord record = makeCarActionRecord(1);
-        assertThat(record.actions().get(0)).isEqualTo(CarAction.STOP);
+        CarPosition position = makeCarPosition(1);
+        assertThat(position.carActionRecordByRep(0)).isEqualTo(CarAction.STOP);
     }
 
-    private CarActionRecord makeCarActionRecord(int number) {
+    private CarPosition makeCarPosition(int number) {
         CarPosition position = new CarPosition();
         position.addRecord(number);
-        return position.carActionRecord();
+        return position;
     }
 
     @Test
     @DisplayName("기록하는 값이 4이상일 경우 전진합니다.")
     void test02() {
-        CarActionRecord record = makeCarActionRecord(4);
-        assertThat(record.actions().get(0)).isEqualTo(CarAction.MOVE);
+        CarPosition position = makeCarPosition(4);
+        assertThat(position.carActionRecordByRep(0)).isEqualTo(CarAction.MOVE);
     }
 }

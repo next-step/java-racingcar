@@ -33,4 +33,9 @@ public class Cars {
     public int racingCount() {
         return generatedCars.get(0).moveCount();
     }
+
+    public CarAction racingResult(int carNumber, int rep) {
+        Car currentCar = generatedCars.get(carNumber);
+        return currentCar.positionOfRep(rep);
+    }
 }

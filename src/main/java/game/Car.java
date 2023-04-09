@@ -7,8 +7,8 @@ public class Car {
         position.addRecord(CarEngine.turn());
     }
 
-    public CarPosition position() {
-        return position;
+    public CarAction positionOfRep(int rep) {
+        return position.carActionRecordByRep(rep);
     }
 
     public int moveCount() {

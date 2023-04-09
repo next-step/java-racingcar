@@ -17,8 +17,8 @@ public class CarPosition {
         return number >= MOVE_CRITERIA;
     }
 
-    public CarActionRecord carActionRecord() {
-        return carActionRecord;
+    public CarAction carActionRecordByRep(int rep) {
+        return carActionRecord.action(rep);
     }
 
     public int carActionRecordCount() {
