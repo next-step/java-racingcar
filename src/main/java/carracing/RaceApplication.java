@@ -39,17 +39,22 @@ public class RaceApplication {
 
         Map<Round, List<Score>> resultMap = new HashMap<>();
 
-        for (int stage = 1; stage <= iterations; stage++) {
+        for (int roound = 1; roound <= iterations; roound++) {
             //todo : 로직이 이중포문에 더티하게 섞여있어서 매우 복잡하다 리팩토링 필요
-            List<Score> raceRecode = new ArrayList<>();
-            for (int i = 0; i < participate; i++) {
-
-                raceRecode.add(new Score(getRandom()));
-            }
-            resultMap.put(new Round(stage), raceRecode);
+            List<Score> raceCurrentScore = simulateScores(participate);
+            resultMap.put(new Round(roound), raceCurrentScore);
 
         }
         return resultMap;
+    }
+
+    private List<Score> simulateScores(int participate) {
+        List<Score> raceRecode = new ArrayList<>();
+        for (int i = 0; i < participate; i++) {
+
+            raceRecode.add(new Score(getRandom()));
+        }
+        return raceRecode;
     }
 
     public int getRandom() {
