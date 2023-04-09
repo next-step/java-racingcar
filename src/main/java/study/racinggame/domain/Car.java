@@ -12,8 +12,8 @@ public class Car {
     return distance;
   }
 
-  public void forward(boolean movable) {
-    if (movable) {
+  public void forward(GameStrategy racingStrategy) {
+    if (racingStrategy.movable()) {
       distance++;
     }
   }
