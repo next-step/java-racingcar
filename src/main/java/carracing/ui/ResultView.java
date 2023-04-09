@@ -5,6 +5,7 @@ import carracing.logic.type.Round;
 
 import java.io.PrintStream;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Consumer;
 
 public class ResultView {
     private static final Boolean DISPLAY_CAR_INDEX = Boolean.TRUE;
@@ -21,32 +22,29 @@ public class ResultView {
     }
 
     public void printResult(AutomobileFederation federation) {
-        if (!DISPLAY_CAR_INDEX) {
-            printResultWithoutCarIndex(federation);
-            return;
-        }
-        printResultWithCarIndex(federation);
+        Consumer<AutomobileFederation> printer = DISPLAY_CAR_INDEX ?
+                this::printResultWithCarIndex :
+                this::printResultWithoutCarIndex;
+
+        printer.accept(federation);
     }
 
     public void printResultWithoutCarIndex(AutomobileFederation federation) {
-        for (Round round : federation.getRounds()) {
-            for (String s : federation.lapSituations(round)) {
-                printStream.println(s);
-            }
+        federation.getRounds().forEach(round -> {
+            federation.lapSituations(round).forEach(printStream::println);
             printStream.println();
-        }
+        });
     }
 
     public void printResultWithCarIndex(AutomobileFederation federation) {
-        for (Round round : federation.getRounds()) {
+        federation.getRounds().forEach(round -> {
             AtomicInteger indexHolder = new AtomicInteger();
-            for (String s : federation.lapSituations(round)) {
+            federation.lapSituations(round).forEach(s -> {
                 printStream.print(indexHolder.getAndIncrement() + 1);
                 printStream.print(" : ");
                 printStream.println(s);
-            }
+            });
             printStream.println();
-        }
+        });
     }
-
 }
