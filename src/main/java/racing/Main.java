@@ -11,7 +11,7 @@ public class Main {
         Count numberOfCar = Count.createCount(InputView.askNumberOfCar());
         Count numberOfStage = Count.createCount(InputView.askNumberOfStage());
 
-        Cars cars = new Cars(numberOfCar);
+        Cars cars = Cars.initCars(numberOfCar);
         Stages stages = new Stages(numberOfStage);
 
         OutputView.printResultMention();

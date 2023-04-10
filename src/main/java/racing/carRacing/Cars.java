@@ -4,19 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    private List<Car> cars;
+    private final List<Car> cars;
 
-    public Cars(Count numberOfCars) {
-        cars = initCars(numberOfCars);
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
-    private List<Car> initCars(Count numberOfCar) {
-        cars = new ArrayList<>();
+    public static Cars initCars(Count numberOfCar) {
+        List<Car> cars = new ArrayList<>();
         while (numberOfCar.isOverZero()) {
             numberOfCar.countDown();
             cars.add(new Car());
         }
-        return cars;
+        return new Cars(cars);
     }
 
     public void run() {

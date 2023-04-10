@@ -12,7 +12,7 @@ class CarsTest {
     void carsInitTest() {
         Count count = new Count(5);
 
-        Cars cars = new Cars(count);
+        Cars cars = Cars.initCars(count);
 
         assertThat(cars.getCarsSize()).isEqualTo(5);
     }
