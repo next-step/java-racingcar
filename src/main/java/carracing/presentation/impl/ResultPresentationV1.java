@@ -38,12 +38,12 @@ public class ResultPresentationV1 implements ResultPresentation {
 //        printer.accept(federation);
 //    }
 
-    public void printResultWithoutCarIndex(RacingService federation) {
-        federation.getRounds().forEach(round -> {
-            federation.lapSituations(round).forEach(printStream::println);
-            printStream.println();
-        });
-    }
+//    public void printResultWithoutCarIndex(RacingService federation) {
+//        federation.getRounds().forEach(round -> {
+//            federation.lapSituations(round).forEach(printStream::println);
+//            printStream.println();
+//        });
+//    }
 
     public void printResultWithCarIndex(List<String> resultList) {
 //        federation.getRounds().forEach(round -> {
