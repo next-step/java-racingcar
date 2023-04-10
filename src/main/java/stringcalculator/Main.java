@@ -15,8 +15,11 @@ public class Main {
         System.out.println("문자열을 입력해주세요: ex) 1:2,3");
         final String text = scanner.next();
 
-        final StringCalculator stringCalculator = new StringCalculator(text);
-        System.out.println("정답: " + stringCalculator.sum());
+        final Delimiters delimiters = Delimiters.of(text);
+        final NumberParser numberParser = new NumberParser();
+        final Numbers numbers = numberParser.parse(text, delimiters);
+
+        System.out.println("정답: " + numbers.sum());
     }
 
 }
