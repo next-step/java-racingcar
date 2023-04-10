@@ -5,14 +5,17 @@ import java.util.List;
 public class ResultView {
 
     private static final String DISTANCE_GRAPH = "-";
+    private static final String ENTER = "\n";
 
-    public static void printResult(List<Car> cars) {
-
-        System.out.println("실행 결과");
+    public static void printCarDistance(List<Car> cars) {
         for (Car car : cars) {
             System.out.println(repeatString(DISTANCE_GRAPH, car.getPosition()));
         }
+        System.out.print(ENTER);
+    }
 
+    public static void printResult() {
+        System.out.println("실행 결과");
     }
 
     private static String repeatString(String str, long num) {

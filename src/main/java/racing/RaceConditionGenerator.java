@@ -11,7 +11,6 @@ public class RaceConditionGenerator {
     // 0 <= generated value < limit
     public static Integer randPositiveOrZero(int limit) {
         Integer num;
-        
         try {
             SecureRandom instanceStrong = SecureRandom.getInstanceStrong();
             num = instanceStrong.nextInt(limit);
