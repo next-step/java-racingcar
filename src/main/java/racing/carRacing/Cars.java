@@ -1,5 +1,6 @@
 package racing.carRacing;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -33,4 +34,29 @@ public class Cars {
         return cars.size();
     }
 
+    public String getWinner() {
+        CarComparable carComparable = new CarComparable();
+        cars.sort(carComparable);
+        int maxPosition = getMaxPosition();
+        List<String> winner = cars.stream()
+                .filter(car -> car.getCurrentPosition() == maxPosition)
+                .map(Car::getCurrentCar)
+                .collect(Collectors.toList());
+
+        return String.join(", ", winner);
+    }
+
+    private int getMaxPosition() {
+        return cars.get(0).getCurrentPosition();
+    }
+}
+
+class CarComparable implements Comparator<Car> {
+    @Override
+    public int compare(Car first, Car second) {
+        int firstPosition = first.getCurrentPosition();
+        int secondPosition = second.getCurrentPosition();
+
+        return Integer.compare(secondPosition, firstPosition);
+    }
 }

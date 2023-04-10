@@ -21,5 +21,6 @@ public class Main {
             stages.startGame(cars);
             OutputView.printCarsStatus(cars);
         }
+        OutputView.printWinner(cars.getWinner());
     }
 }

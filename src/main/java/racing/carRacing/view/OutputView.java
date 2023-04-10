@@ -31,4 +31,8 @@ public class OutputView {
         System.out.println("남은 회수 :" + count);
     }
 
+    public static void printWinner(String winner) {
+        System.out.println();
+        System.out.println(winner + "가 최종 우승했습니다!");
+    }
 }
