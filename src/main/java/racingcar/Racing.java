@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.*;
+import java.util.Random;
 
 public class Racing {
 
@@ -26,12 +27,20 @@ public class Racing {
         return this.cars;
     }
 
-    public void start(){
+    public void race() {
         for (int i = 0; i < gameCount; i++) {
             game();
         }
     }
 
     private void game() {
+        for (Car car : cars) {
+            car.move(random());
+        }
+    }
+
+    private int random() {
+        Random random = new Random();
+        return random.nextInt(10);
     }
 }
