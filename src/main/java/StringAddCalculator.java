@@ -18,9 +18,8 @@ public class StringAddCalculator {
         List<String> targetAndSeparators = getTargetAndSeparators(text);
         String target = targetAndSeparators.get(0);
         List<String> separators = targetAndSeparators.subList(1, targetAndSeparators.size());
-        System.out.println(Arrays.toString(target.split(String.join("|", separators))));
         return Arrays.stream(target.split(String.join("|", separators)))
-                .map(string -> Integer.parseInt(string))
+                .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
 
@@ -62,7 +61,7 @@ public class StringAddCalculator {
 
     private static int sum(List<Integer> numbers) {
         return numbers.stream()
-                .reduce((total, number) -> total + number)
+                .reduce(Integer::sum)
                 .get();
     }
 }
