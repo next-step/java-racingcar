@@ -10,7 +10,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-public class Step2SetTest {
+public class Step1SetTest {
 
   private Set<Integer> numbers;
 
