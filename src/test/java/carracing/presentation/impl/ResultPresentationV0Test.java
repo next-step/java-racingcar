@@ -1,10 +1,10 @@
 package carracing.presentation.impl;
 
-import carracing.repository.RoundRepository;
-import carracing.service.RacingService;
 import carracing.domain.Round;
 import carracing.domain.Score;
 import carracing.presentation.ResultPresentation;
+import carracing.repository.RoundRepository;
+import carracing.service.RacingService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -39,33 +39,33 @@ public class ResultPresentationV0Test {
     public void withCarIndex() {
         //given
         Map<Round, List<Score>> inputRoundToScoreListMap = Map.of(
-                new Round(5), Arrays.asList(new Score(1), new Score(4), new Score(5)),
-                new Round(1), Arrays.asList(new Score(7), new Score(3), new Score(9)),
-                new Round(2), Arrays.asList(new Score(5), new Score(2), new Score(1)),
-                new Round(3), Arrays.asList(new Score(9), new Score(4), new Score(5)),
-                new Round(4), Arrays.asList(new Score(8), new Score(8), new Score(8))
+            new Round(5), Arrays.asList(new Score(1), new Score(4), new Score(5)),
+            new Round(1), Arrays.asList(new Score(7), new Score(3), new Score(9)),
+            new Round(2), Arrays.asList(new Score(5), new Score(2), new Score(1)),
+            new Round(3), Arrays.asList(new Score(9), new Score(4), new Score(5)),
+            new Round(4), Arrays.asList(new Score(8), new Score(8), new Score(8))
         );
         String output = "" +
-                "-\n" +
-                "\n" +
-                "-\n" +
-                "\n" +
-                "--\n" +
-                "\n" +
-                "-\n" +
-                "\n" +
-                "---\n" +
-                "-\n" +
-                "--\n" +
-                "\n" +
-                "----\n" +
-                "--\n" +
-                "---\n" +
-                "\n" +
-                "----\n" +
-                "---\n" +
-                "----\n" +
-                "\n";
+            "-\n" +
+            "\n" +
+            "-\n" +
+            "\n" +
+            "--\n" +
+            "\n" +
+            "-\n" +
+            "\n" +
+            "---\n" +
+            "-\n" +
+            "--\n" +
+            "\n" +
+            "----\n" +
+            "--\n" +
+            "---\n" +
+            "\n" +
+            "----\n" +
+            "---\n" +
+            "----\n" +
+            "\n";
 
         //when
         //RacingService racingService = new RacingService(inputRoundToScoreListMap);
@@ -73,8 +73,8 @@ public class ResultPresentationV0Test {
 
         //then
         assertAll(
-                () -> assertEquals(output, outputStream.toString()),
-                () -> assertThat(racingService.getRounds()).hasSize(inputRoundToScoreListMap.size())
+            () -> assertEquals(output, outputStream.toString()),
+            () -> assertThat(racingService.getRounds()).hasSize(inputRoundToScoreListMap.size())
         );
     }
 }

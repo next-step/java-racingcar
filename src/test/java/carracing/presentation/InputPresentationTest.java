@@ -13,8 +13,8 @@ class InputPresentationTest {
 
     public void inAndOutTestHelper(String inputString) {
         inputPresentation = new InputPresentation(
-                new BufferedInputStream(new ByteArrayInputStream(inputString.getBytes())),
-                System.out
+            new BufferedInputStream(new ByteArrayInputStream(inputString.getBytes())),
+            System.out
         );
     }
 

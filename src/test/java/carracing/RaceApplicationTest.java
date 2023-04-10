@@ -63,9 +63,9 @@ public class RaceApplicationTest {
 
         //then
         assertAll(
-                () -> assertThat(raceResults.keySet()).as("경기 반복횟수 검증").hasSize(iterations),
-                () -> assertThat(raceResults.get(new Round(1))).as("경기 참가자수 검증 - 1번경가").hasSize(participates),
-                () -> raceResults.values().forEach(s -> assertThat(s).as("경기 참가자수 검증 - 모든경가").hasSize(participates))
+            () -> assertThat(raceResults.keySet()).as("경기 반복횟수 검증").hasSize(iterations),
+            () -> assertThat(raceResults.get(new Round(1))).as("경기 참가자수 검증 - 1번경가").hasSize(participates),
+            () -> raceResults.values().forEach(s -> assertThat(s).as("경기 참가자수 검증 - 모든경가").hasSize(participates))
         );
     }
 
@@ -81,8 +81,8 @@ public class RaceApplicationTest {
 
         //then
         assertAll(
-                () -> assertThat(roundListMap.keySet()).as("몇번 이동하는지 검증").hasSize(iterations),
-                () -> assertThat(roundListMap.get(new Round(1))).as("몇대가 움직이는지 검증").hasSize(participate)
+            () -> assertThat(roundListMap.keySet()).as("몇번 이동하는지 검증").hasSize(iterations),
+            () -> assertThat(roundListMap.get(new Round(1))).as("몇대가 움직이는지 검증").hasSize(participate)
         );
     }
 
@@ -128,8 +128,8 @@ public class RaceApplicationTest {
 
         //then
         assertAll(
-                () -> assertThat(roundListMap.keySet()).as("Round 숫자를 검증").hasSize(roundIterations),
-                () -> assertThat(roundListMap.values()).as("List<Score> 를 검증").hasSize(roundIterations)
+            () -> assertThat(roundListMap.keySet()).as("Round 숫자를 검증").hasSize(roundIterations),
+            () -> assertThat(roundListMap.values()).as("List<Score> 를 검증").hasSize(roundIterations)
         );
     }
 

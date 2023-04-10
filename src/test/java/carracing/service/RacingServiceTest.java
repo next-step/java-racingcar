@@ -1,9 +1,8 @@
 package carracing.service;
 
-import carracing.repository.RoundRepository;
-import carracing.service.RacingService;
 import carracing.domain.Round;
 import carracing.domain.Score;
+import carracing.repository.RoundRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,11 +15,11 @@ import java.util.logging.Logger;
 public class RacingServiceTest {
     private static final Logger log = Logger.getLogger("AutomobileFederationTest");
     private static final Map<Round, List<Score>> inputRoundToScoreListMap = Map.of(
-            new Round(5), Arrays.asList(new Score(1), new Score(4), new Score(5)),
-            new Round(1), Arrays.asList(new Score(7), new Score(3), new Score(9)),
-            new Round(2), Arrays.asList(new Score(5), new Score(2), new Score(1)),
-            new Round(3), Arrays.asList(new Score(9), new Score(4), new Score(5)),
-            new Round(4), Arrays.asList(new Score(8), new Score(8), new Score(8))
+        new Round(5), Arrays.asList(new Score(1), new Score(4), new Score(5)),
+        new Round(1), Arrays.asList(new Score(7), new Score(3), new Score(9)),
+        new Round(2), Arrays.asList(new Score(5), new Score(2), new Score(1)),
+        new Round(3), Arrays.asList(new Score(9), new Score(4), new Score(5)),
+        new Round(4), Arrays.asList(new Score(8), new Score(8), new Score(8))
     );
 
     RacingService federation;

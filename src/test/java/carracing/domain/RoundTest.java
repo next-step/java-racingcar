@@ -1,6 +1,5 @@
 package carracing.domain;
 
-import carracing.domain.Round;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +15,7 @@ public class RoundTest {
         assertThatThrownBy(() -> {
             new Round(0);
         }).isInstanceOf(RuntimeException.class)
-                .hasMessageContaining("라운드는 1부터 시작하므로 항상 1 이상입니다");
+            .hasMessageContaining("라운드는 1부터 시작하므로 항상 1 이상입니다");
     }
 
     @DisplayName("Round 가 1 이상의 수부터 생성할수있다")

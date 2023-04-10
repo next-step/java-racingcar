@@ -1,6 +1,5 @@
 package carracing.domain;
 
-import carracing.domain.Score;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
