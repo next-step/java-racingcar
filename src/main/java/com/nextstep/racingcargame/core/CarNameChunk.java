@@ -15,10 +15,10 @@ public class CarNameChunk {
     private final String carNameChunk;
 
     public CarNameChunk(String carNameChunk) {
-        if(isCarNameEmpty(carNameChunk)) {
+        if (isCarNameEmpty(carNameChunk)) {
             throw new IllegalArgumentException(CAR_EMPTY_VALUE_MSG);
         }
-        if(hasCarNameMoreThanFiveCharacter(carNameChunk)) {
+        if (hasCarNameMoreThanFiveCharacter(carNameChunk)) {
             throw new IllegalArgumentException(CAR_NAME_MORE_THAN_FIVE_CHARACTER);
         }
         this.carNameChunk = carNameChunk;

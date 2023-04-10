@@ -49,15 +49,15 @@ public class Cars {
         return number > 0;
     }
 
-    public List<String> getWinnerNamesAsList() {
+    public List<String> winnerNames() {
         return this.cars.stream()
                 .filter(car -> car.getDistance() == getFurthestDistance())
                 .map(Car::getCarName)
                 .collect(Collectors.toList());
     }
 
-    public String joinWinnerNames() {
-        return String.join(WINNER_JOIN_DELIMITER, getWinnerNamesAsList());
+    public String joinedWinnerNames() {
+        return String.join(WINNER_JOIN_DELIMITER, winnerNames());
     }
 
     public Car findFirstFurthestTraveledCar() {

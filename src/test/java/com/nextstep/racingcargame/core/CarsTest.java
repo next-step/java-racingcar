@@ -82,7 +82,7 @@ class CarsTest {
         ethanCar.moveForwardByNumber(CAR_FORCE_MOVE_NUMBER);
 
         Cars cars = new Cars(Arrays.asList(patCar, rickCar, ethanCar));
-        assertThat(cars.joinWinnerNames()).isEqualTo("rick,ethan");
+        assertThat(cars.joinedWinnerNames()).isEqualTo("rick,ethan");
     }
 
     @Test

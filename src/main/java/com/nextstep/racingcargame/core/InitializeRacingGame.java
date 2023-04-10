@@ -34,7 +34,7 @@ public class InitializeRacingGame {
             createNewLine();
         }
 
-        printSource(cars.joinWinnerNames()+ADDITIONAL_WINNER_MSG);
+        printSource(cars.joinedWinnerNames() + ADDITIONAL_WINNER_MSG);
     }
 
     public static void main(String[] args) {
