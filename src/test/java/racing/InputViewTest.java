@@ -1,5 +1,6 @@
 package racing;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -7,23 +8,31 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.Scanner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racing.view.InputView.readNumberOfCars;
+import static racing.view.InputView.readNumberOfCycles;
 
 public class InputViewTest {
     private static final int MIN_NUMBER_CARS = 1;
     private static final int MAX_NUMBER_CARS = 10;
     private static final int MIN_NUMBER_CYCLES = 1;
     private static final int MAX_NUMBER_CYCLES = 20;
+    private Scanner scanner;
+
+    @AfterEach
+    void tearDown() {
+        scanner.close();
+    }
 
     @Test
     @DisplayName("자동차 입력을 1~10으로 입력한 경우 (정상)")
     void inputCar1() {
         mockInput("3");
 
-        InputView iv = new InputView();
-        int actual = iv.readNumberOfCars();
+        int actual = readNumberOfCars(scanner);
         assertThat(actual).isEqualTo(3);
     }
 
@@ -33,10 +42,9 @@ public class InputViewTest {
     void inputCar2(String input) {
         mockInput(input);
 
-        InputView iv = new InputView();
-        assertThatThrownBy(() -> iv.readNumberOfCars())
+        assertThatThrownBy(() -> readNumberOfCars(scanner))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차 수는 " + MIN_NUMBER_CARS + "~" + MAX_NUMBER_CARS + " 사이의 값을 입력해야 합니다. " + input);
+                .hasMessage("자동차 수는 " + MIN_NUMBER_CARS + "~" + MAX_NUMBER_CARS + " 사이의 값을 입력해야 합니다.");
     }
 
     @ParameterizedTest(name = "{displayName} - 값: {0}")
@@ -45,8 +53,7 @@ public class InputViewTest {
     void inputCar3(String input) {
         mockInput(input);
 
-        InputView iv = new InputView();
-        assertThatThrownBy(() -> iv.readNumberOfCars())
+        assertThatThrownBy(() -> readNumberOfCars(scanner))
                 .isInstanceOf(NumberFormatException.class)
                 .hasMessage("Input은 정수만 입력 가능합니다. " + input);
     }
@@ -56,8 +63,7 @@ public class InputViewTest {
     void inputCycle1() {
         mockInput("19");
 
-        InputView iv = new InputView();
-        int actual = iv.readNumberOfCycles();
+        int actual = readNumberOfCycles(scanner);
         assertThat(actual).isEqualTo(19);
     }
 
@@ -67,10 +73,9 @@ public class InputViewTest {
     void inputCycle2(String input) {
         mockInput(input);
 
-        InputView iv = new InputView();
-        assertThatThrownBy(() -> iv.readNumberOfCycles())
+        assertThatThrownBy(() -> readNumberOfCycles(scanner))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("사이클 수는 " + MIN_NUMBER_CYCLES + "~" + MAX_NUMBER_CYCLES + " 사이의 값을 입력해야 합니다. " + input);
+                .hasMessage("사이클 수는 " + MIN_NUMBER_CYCLES + "~" + MAX_NUMBER_CYCLES + " 사이의 값을 입력해야 합니다.");
     }
 
     @ParameterizedTest(name = "{displayName} - 값: {0}")
@@ -79,14 +84,14 @@ public class InputViewTest {
     void inputCycle3(String input) {
         mockInput(input);
 
-        InputView iv = new InputView();
-        assertThatThrownBy(() -> iv.readNumberOfCycles())
+        assertThatThrownBy(() -> readNumberOfCycles(scanner))
                 .isInstanceOf(NumberFormatException.class)
                 .hasMessage("Input은 정수만 입력 가능합니다. " + input);
     }
 
-    private static void mockInput(String input) {
-        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+    void mockInput(String input) {
+        InputStream inputStream = new ByteArrayInputStream((input + "\n").getBytes());
         System.setIn(inputStream);
+        scanner = new Scanner(System.in);
     }
 }
