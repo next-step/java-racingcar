@@ -10,7 +10,7 @@ class RandomMoveStrategyTest {
 
     @Test
     @DisplayName("전진 전략 테스트")
-    void test() {
+    void testIsMovable() {
         MoveStrategy randomMoveStrategy = new RandomMoveStrategy(new RandomNumberGenerator()) {
             @Override
             public boolean isMovable() {
@@ -22,7 +22,7 @@ class RandomMoveStrategyTest {
 
     @Test
     @DisplayName("정지 전략 테스트")
-    void test2() {
+    void testIsNotMovable() {
         MoveStrategy randomMoveStrategy = new RandomMoveStrategy(new RandomNumberGenerator()) {
             @Override
             public boolean isMovable() {
