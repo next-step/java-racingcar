@@ -15,21 +15,19 @@ public class Car {
 
 	private int location;
 
-	public static List<Car> cars() {
-		return new ArrayList<>();
+	private final List<Car> CARS = new ArrayList<>();
+
+	public void addCar() {
+		this.CARS.add(new Car());
 	}
 
-	public static void addCar(List<Car> cars) {
-		cars.add(new Car());
-	}
-
-	public static void moveCars(List<Car> cars) {
-		for (Car car : cars) {
+	public void moveCars() {
+		for (Car car : this.CARS) {
 			car.move(randomInt());
 		}
 	}
 
-	public static int randomInt() {
+	public int randomInt() {
 		return RANDOM.nextInt(MAXIMUM_RANDOM_VALUE + 1);
 	}
 
@@ -41,5 +39,9 @@ public class Car {
 
 	public int currentLocation() {
 		return this.location;
+	}
+
+	public List<Car> getCars() {
+		return this.CARS;
 	}
 }

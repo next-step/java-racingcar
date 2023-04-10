@@ -1,24 +1,23 @@
 package car;
 
-import java.util.List;
-
 import car.ui.InputView;
 import car.ui.ResultView;
 
 public class CarMain {
 
 	public static void main(String[] args) {
-		InputView.input();
+		InputView inputView = new InputView();
+		inputView.input();
 
-		List<Car> cars = Car.cars();
-		for (int i = 0; i < InputView.carCount; i++) {
-			Car.addCar(cars);
+		Car car = new Car();
+		for (int i = 0; i < inputView.carCount; i++) {
+			car.addCar();
 		}
 
 		ResultView.initPrint();
-		for (int i = 0; i < InputView.tryCount; i++) {
-			Car.moveCars(cars);
-			ResultView.printCars(cars);
+		for (int i = 0; i < inputView.tryCount; i++) {
+			car.moveCars();
+			ResultView.printCars(car.getCars());
 		}
 	}
 }

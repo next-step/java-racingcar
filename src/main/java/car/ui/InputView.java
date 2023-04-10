@@ -9,10 +9,10 @@ public class InputView {
 	private static final String TRY_COUNT_TEXT = "시도할 회수는 몇 회 인가요?";
 	private static final Scanner SCANNER = new Scanner(System.in);
 
-	public static int carCount;
-	public static int tryCount;
+	public int carCount;
+	public int tryCount;
 
-	public static void input() {
+	public void input() {
 		try {
 			System.out.println(CAR_COUNT_TEXT);
 			carCount = SCANNER.nextInt();
