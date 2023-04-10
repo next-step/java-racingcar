@@ -1,4 +1,6 @@
-package car_racing;
+package ui;
+
+import car_racing.Car;
 
 import java.util.List;
 

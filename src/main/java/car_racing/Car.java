@@ -9,7 +9,7 @@ public class Car {
     public static final int RANDOM_MAX_BOUND = 9;
     public static final int CAR_MOVE_BOUND = 4;
 
-    int moveCount = INITIAL_COUNT;
+    public int moveCount = INITIAL_COUNT;
 
     void moveOrStop() {
         int randomInt = getRandomInt();

@@ -1,8 +1,6 @@
 package ui;
 
 import car_racing.CarRacing;
-import car_racing.InputView;
-import car_racing.ResultView;
 
 public class Application {
     public static void main(String[] args) {
