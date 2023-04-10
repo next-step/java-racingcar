@@ -27,11 +27,9 @@ public class StringAddCalculator {
         List<String> targetAndSeparators;
         Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
         if (m.find()) {
-            targetAndSeparators = getTargetAndSeparatorsWithCustomSeparator(m);
-        } else {
-            targetAndSeparators = getTargetAndSeparatorsWithDefaultSeparator(text);
+            return getTargetAndSeparatorsWithCustomSeparator(m);
         }
-        return targetAndSeparators;
+        return getTargetAndSeparatorsWithDefaultSeparator(text);
     }
 
     private static List<String> getTargetAndSeparatorsWithCustomSeparator(Matcher m) {
