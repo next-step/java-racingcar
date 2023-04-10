@@ -6,8 +6,8 @@ public class Car {
     private int distance = 0;
 
     public void move(int random) {
-        if(isMovePossible(random)){
-            this.distance +=1;
+        if (isMovePossible(random)) {
+            this.distance += 1;
         }
     }
 
