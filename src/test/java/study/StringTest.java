@@ -35,7 +35,7 @@ public class StringTest {
 
   @Test
   @DisplayName("chartAt() 요청한 인덱스가 타겟의 위치값을 벗어나면 StringIndexOutOfBoundsException 발생")
-  void StringIndexOutOfBoundsExceptionIfDataMaxIndexLessThenIndex() {
+  void checkCharAt_OutOfIndexException() {
     String data = "abc";
 
     assertThatThrownBy(() -> {
