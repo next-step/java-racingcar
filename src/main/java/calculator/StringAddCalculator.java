@@ -32,7 +32,7 @@ public class StringAddCalculator {
   private int toInt(String number) {
     int intNumber = Integer.parseInt(number);
     if (intNumber < 0) {
-      throw new RuntimeException();
+      throw new RuntimeException("음수는 계산 지원하지 않습니다");
     }
 
     return intNumber;

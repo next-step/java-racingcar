@@ -57,7 +57,8 @@ class StringAddCalculatorTest {
   @Test
   @DisplayName("음수를 전달할 경우 RuntimeException 예외가 발생한다")
   void minorNumberGetException() {
-    assertThrows(RuntimeException.class , () -> stringAddCalculator.calculate("-1,2,3"));
+    assertThrows(RuntimeException.class,
+            () -> stringAddCalculator.calculate("-1,2,3"), "음수는 계산 지원하지 않습니다");
   }
 
   @Test
