@@ -44,6 +44,7 @@ public class StringAddCalculatorTest {
     }
 
     @Test
+    @DisplayName("음수가 들어온 경우")
     public void splitAndSum_negative() throws Exception {
         assertThatThrownBy (() -> StringAddCalculator.splitAndSum("-1,2,3"))
                 .isInstanceOf(RuntimeException.class);
