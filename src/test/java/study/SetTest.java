@@ -26,20 +26,18 @@ public class SetTest {
     // Test Case 구현
     @Test
     void size() {
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     void paramTest(int input){
-        assertThat(numbers.contains(input)).isTrue();
+        assertThat(numbers).contains(input);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "입력값: {0}, 결과: {1}")
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
     void csvTest(int input, boolean expected){
-        System.out.println(input);
-        System.out.println(expected);
         boolean actual = numbers.contains(input);
         assertThat(actual).isEqualTo(expected);
     }
