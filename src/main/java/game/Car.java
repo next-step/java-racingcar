@@ -13,7 +13,7 @@ public class Car {
         addRecord(numberGenerator.generate());
     }
 
-    public void addRecord(int number) {
+    private void addRecord(int number) {
         if (isMove(number)) {
             carActions.addMove();
             return;
