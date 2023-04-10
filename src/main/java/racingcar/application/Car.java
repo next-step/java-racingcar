@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.application;
 
 public class Car {
 
@@ -9,7 +9,7 @@ public class Car {
     this.accelerator = accelerator;
   }
 
-  void go() {
+  public void go() {
     int value = this.accelerator.accelerate();
 
     if (value > 3) {

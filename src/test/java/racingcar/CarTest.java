@@ -1,8 +1,10 @@
 package racingcar;
 
-import org.assertj.core.api.Assertions;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.application.Car;
 
 public class CarTest {
 
@@ -17,7 +19,7 @@ public class CarTest {
     car.go();
 
     // then
-    Assertions.assertThat(beforeLocation + 1).isEqualTo(car.location());
+    assertThat(beforeLocation + 1).isEqualTo(car.location());
   }
 
   @Test
@@ -31,6 +33,6 @@ public class CarTest {
     car.go();
 
     // then
-    Assertions.assertThat(beforeLocation).isEqualTo(car.location());
+    assertThat(beforeLocation).isEqualTo(car.location());
   }
 }
