@@ -24,7 +24,6 @@ public class StringAddCalculator {
     }
 
     private static List<String> getTargetAndSeparators(String text) {
-        List<String> targetAndSeparators;
         Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
         if (m.find()) {
             return getTargetAndSeparatorsWithCustomSeparator(m);
