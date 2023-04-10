@@ -57,6 +57,14 @@ public class StringAddCalculatorTest {
                 .withMessageMatching("음수값은 입력할 수 없습니다.");
     }
 
+    @DisplayName("숫자가 아닌 값을 입력할 경우 RuntimeException 예외가 발생한다")
+    @Test
+    void numberFormatException() {
+        assertThatExceptionOfType(RuntimeException.class)
+                .isThrownBy(() -> StringAddCalculator.splitAndSum("1,@,3"))
+                .withMessageMatching("숫자로 변환될 수 없는 입력값입니다.");
+    }
+
     private static Stream<Arguments> provideCustomDelimiter() {
         return Stream.of(
                 Arguments.of("//;\n1;2;3", 6),

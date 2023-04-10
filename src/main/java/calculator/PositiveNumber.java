@@ -2,21 +2,33 @@ package calculator;
 
 import exception.NegativeNumberException;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class PositiveNumber {
+    private static final Pattern pattern = Pattern.compile("-?[0-9]+");
+
     private final int number;
 
     public PositiveNumber(String input) {
-        int number = Integer.parseInt(input);
-        validateNumber(number);
-        this.number = number;
+        validateInput(input);
+        validateNegative(input);
+        this.number = Integer.parseInt(input);
     }
 
      public int number() {
         return this.number;
      }
 
-    private void validateNumber(int number) {
-        if(number < 0) {
+    private void validateInput(String input) {
+        Matcher matcher = pattern.matcher(input);
+        if(!matcher.find()) {
+            throw new RuntimeException("숫자로 변환될 수 없는 입력값입니다.");
+        }
+    }
+
+    private void validateNegative(String input) {
+        if(Integer.parseInt(input) < 0) {
             throw new NegativeNumberException("음수값은 입력할 수 없습니다.");
         }
     }
