@@ -10,4 +10,10 @@ public class RaceConditionGenerator {
 
         return random.nextInt(limit);
     }
+
+    public static Boolean isGreaterThanEqualToBase(Integer base, Integer value) {
+        int result = value.compareTo(base);
+        return result >= 0;
+    }
+
 }
