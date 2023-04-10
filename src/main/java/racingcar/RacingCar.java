@@ -1,12 +1,17 @@
 package racingcar;
 
+import racingcar.strategy.MoveStrategy;
+
 public class RacingCar {
-    private int position = 0;
-    public void goOrStop(int input) {
-        if (input < 0 || input > 9) {
-            throw new IllegalArgumentException("잘못된 입력입니다.");
-        }
-        if (input >= 4) {
+    private       int          position = 0;
+    private final MoveStrategy moveStrategy;
+
+    public RacingCar(MoveStrategy moveStrategy) {
+        this.moveStrategy = moveStrategy;
+    }
+
+    public void goOrStop() {
+        if (moveStrategy.shouldMove()) {
             position++;
         }
     }
