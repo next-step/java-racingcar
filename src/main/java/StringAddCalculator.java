@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class StringAddCalculator {
+    static Pattern p = Pattern.compile("//(.)\n(.*)");
     public static int splitAndSum(String text) {
         if (text == null || text.isEmpty())
             return 0;
@@ -24,7 +25,7 @@ public class StringAddCalculator {
     }
 
     private static List<String> getTargetAndSeparators(String text) {
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        Matcher m = p.matcher(text);
         if (m.find()) {
             return getTargetAndSeparatorsWithCustomSeparator(m);
         }
