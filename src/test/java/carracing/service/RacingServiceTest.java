@@ -27,11 +27,12 @@ public class RacingServiceTest {
     );
 
     private RacingService racingService;
-
+    private RoundRepository roundRepository;
 
     @BeforeEach
     public void beforeEach() {
-        racingService = new RacingService(new RoundRepository());
+        this.roundRepository = new RoundRepository();
+        this.racingService = new RacingService(roundRepository);
     }
 
 //    @DisplayName("입력 결기경과의 수 대로 ")
@@ -54,14 +55,15 @@ public class RacingServiceTest {
         int roundIterations = 22;
 
         //when
+        racingService.racingStart(11, roundIterations);
         //Map<Round, List<Score>> roundListMap = racingService.racingStart(11, roundIterations);
 
         //then
-        fail();
-//        assertAll(
-//            () -> assertThat(roundListMap.keySet()).as("Round 숫자를 검증").hasSize(roundIterations),
-//            () -> assertThat(roundListMap.values()).as("List<Score> 를 검증").hasSize(roundIterations)
-//        );
+
+        assertAll(
+            () -> assertThat(racingService.getAllRounds()).as("Round 숫자를 검증").hasSize(roundIterations)
+            //() -> assertThat(racingService.simulateSingleRoundScores(roundIterations)).as("List<Score> 를 검증").
+        );
     }
 
 

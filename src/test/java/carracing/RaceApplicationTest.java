@@ -5,6 +5,8 @@ import carracing.domain.Score;
 import carracing.presentation.InputPresentation;
 import carracing.presentation.ResultPresentation;
 import carracing.presentation.impl.ResultPresentationV1;
+import carracing.repository.RoundRepository;
+import carracing.service.RacingService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
@@ -42,7 +44,7 @@ public class RaceApplicationTest {
         this.resultPresentation = new ResultPresentationV1(this.resultViewPrintStream);
         this.inputViewInputStream = new ByteArrayInputStream("SampleInput".getBytes());
         this.inputPresentation = new InputPresentation(inputViewInputStream, resultViewPrintStream);
-        this.raceApplication = new RaceApplication(this.inputPresentation, this.resultPresentation);
+        this.raceApplication = new RaceApplication(this.inputPresentation, this.resultPresentation, new RacingService(new RoundRepository()));
     }
 
     private void inAndOutTestHelper(String inputString) {
