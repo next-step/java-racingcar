@@ -1,6 +1,11 @@
 package stringcalculator;
 
+import java.util.regex.Pattern;
+
 public class StringAddCalculator {
+
+    private StringAddCalculator() {
+    }
 
     private static final String DELIMITER = ",|:";
     private static final String MINUS = "-\\d+";
@@ -29,7 +34,7 @@ public class StringAddCalculator {
     }
 
     private static boolean isCustomDelimiterSplit(String input) {
-        return input.startsWith("//");
+        return Pattern.compile("//(.)\n(.*)").matcher(input).find();
     }
 
     private static int[] toInts(String[] split) {
