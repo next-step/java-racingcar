@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
-import study.domain.Calculator;
-import study.domain.Expression;
+import study.domain.calculator.Calculator;
+import study.domain.calculator.Expression;
 
 import static org.assertj.core.api.Assertions.*;
 

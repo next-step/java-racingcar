@@ -1,4 +1,4 @@
-package study.domain;
+package study.domain.calculator;
 
 import java.util.HashSet;
 import java.util.Set;
