@@ -30,8 +30,9 @@ public class CarRace {
     }
 
     private void racing(){
+        final NumberGenerator numberGenerator = new RandomNumberGenerator();
         racingCars.getCars()
-                .forEach(car -> car.moveCar(car.moveOrNot()));
+                .forEach(car -> car.moveCar(numberGenerator));
     }
 
     private void recordRace(int count){

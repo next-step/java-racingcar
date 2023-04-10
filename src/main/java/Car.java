@@ -10,8 +10,9 @@ public class Car {
         this.position = new CarPosition(0);
     }
 
-    public void moveCar(int randomNumber) {
-        if (randomNumber >= LEAST_RANDOM_VALUE){
+    public void moveCar(NumberGenerator numberGenerator) {
+        final int number = numberGenerator.generate();
+        if (number >= LEAST_RANDOM_VALUE){
             this.position = position.move();
         }
     }

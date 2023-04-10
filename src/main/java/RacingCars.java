@@ -7,9 +7,7 @@ public class RacingCars {
     private List<Car> cars;
 
     public static RacingCars of(int numberOfCar) {
-        if(numberOfCar < 0){
-            throw new IllegalArgumentException();
-        }
+        validateNumberOfCar(numberOfCar);
 
         List<Car> cars = IntStream.range(0, numberOfCar)
                 .mapToObj(i -> new Car())
@@ -18,13 +16,17 @@ public class RacingCars {
         return new RacingCars(cars);
     }
 
+    private static void validateNumberOfCar(int numberOfCar) {
+        if (numberOfCar < 0) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     private RacingCars(List<Car> racingCars) {
         this.cars = racingCars;
     }
 
-    public List<Car> getCars(){
+    public List<Car> getCars() {
         return cars;
     }
-
-
 }

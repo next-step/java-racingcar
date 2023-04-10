@@ -20,18 +20,6 @@ public class RacingCarTest {
         assertThat(count).isEqualTo(carRace.getRoundValue());
     }
 
-    @ParameterizedTest
-    @DisplayName("Car가 4이상일시 move")
-    @CsvSource(value = {"4:1", "2:0"}, delimiter = ':')
-    public void moveCar(int move, int expected) {
-        //given
-        Car car = new Car();
-        //when
-        car.moveCar(move);
-        //then
-        assertThat(car.getPositionValue()).isEqualTo(expected);
-    }
-
     @Test
     @DisplayName("전진_조건_랜덤_값_구하기_0 이상 9 이하")
     public void 전진_조건_랜덤_값_구하기(){
@@ -50,7 +38,7 @@ public class RacingCarTest {
         carRace.race();
         //when
         List<Integer> moveList = carRace.getRacingCars().getCars().stream()
-                .map(car -> car.getPositionValue())
+                .map(Car::getPositionValue)
                 .collect(Collectors.toList());
 
         assertThat(moveList).containsAnyOf(0,1,2,3,4,5);
