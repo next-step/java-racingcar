@@ -1,44 +1,46 @@
 package study;
 
-import org.w3c.dom.Text;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Calculator {
-    public static int SplitSum(String text) {
+    public static int splitSum(String text) {
 
-        text = GetNotNull(text);
-        String[] textSplit = text.split(",|:|;|//|\\n");
-        int sum = GetSum(textSplit);
-
-        return sum;
-    }
-
-    private static String GetNotNull(String text) {
         if(text == null || text.isEmpty()){
-            return "0";
+            return 0;
         }
-        return text;
+
+        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        if (m.find()) {
+            String customDelimiter = m.group(1);
+            String[] tokens= m.group(2).split(customDelimiter);
+            return getSum(tokens);
+        }
+
+        String[] numbers = text.split(",|:");
+
+        return getSum(numbers);
     }
 
-    private static int GetSum(String[] textSplit) {
-        int sum=0;
-        for(int i = 0; i< textSplit.length; i++){
-
-            String notNull = GetNotNull(textSplit[i]);
-            String positive = GetPositive(notNull);
-            sum += GetNumbers(positive);
+    private static int getSum(String[] numbers) {
+        int sum = 0;
+        for(int i = 0; i< numbers.length; i++){
+            int number = getNumber(numbers[i]);
+            minusException(number);
+            sum += number;
         }
         return sum;
     }
 
-    private static String GetPositive(String textSplit) {
-        if(GetNumbers(textSplit)<0){
-            return "RuntimeException";
+    private static void minusException(int number) {
+        if(number <0){
+            throw new RuntimeException("");
         }
-        return textSplit;
     }
 
-    private static int GetNumbers(String textSplit) {
-        int numbers = Integer.parseInt(textSplit);
-        return numbers;
+    private static int getNumber(String numbers) {
+        int number = Integer.parseInt(numbers);
+        return number;
     }
+
 }
