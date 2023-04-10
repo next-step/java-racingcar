@@ -1,13 +1,14 @@
 package study.racingcar;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.List;
 
 public class SettingGame {
 
+    private static String CAR_START_POSITION = "";
     private static int ZERO = 0;
-
-    public static boolean isCheckSetGame(int numberOfCars, int countOfGames) {
+    public static boolean isReadyToGame(int numberOfCars, int countOfGames) {
 
         return isNegativeNumberAndZero(numberOfCars, countOfGames);
     }
@@ -19,5 +20,15 @@ public class SettingGame {
         }
 
         return true;
+    }
+
+    public static List<Car> createCars(int cars) {
+        List<Car> carList = new ArrayList<>();
+
+        for (int i = 0; i < cars; i++) {
+            carList.add(new Car(CAR_START_POSITION));
+        }
+
+        return carList;
     }
 }

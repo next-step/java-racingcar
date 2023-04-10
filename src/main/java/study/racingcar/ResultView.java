@@ -6,4 +6,8 @@ public class ResultView {
     public static void resultGame(String position) {
         System.out.println(RESULT_MESSAGE + position);
     }
+
+    public static void emptyLine() {
+        System.out.println();
+    }
 }

@@ -1,27 +1,18 @@
 package study.racingcar;
 
 import java.util.List;
-import java.util.Random;
 
 public class RacingCar {
 
-    public static void main(String[] args){
-        game();
-    }
-
     public static void game() {
 
-        InputView inputView = new InputView();
+        int numberOfCars = InputView.setCars();
+        int numberOfGames = InputView.setGames();
 
-        int numberOfCars = inputView.setCars();
-        int countOfGames = inputView.setGames();
+        if(SettingGame.isReadyToGame(numberOfCars, numberOfGames)){
+            List<Car> cars = SettingGame.createCars(numberOfCars);
 
-        SettingGame settingGame = new SettingGame();
-
-        settingGame.isCheckSetGame(numberOfCars, countOfGames);
-
-        RacingGame racingGame = new RacingGame();
-
-        racingGame.gameStart(numberOfCars, countOfGames);
+            RacingGame.gameStart(cars, numberOfGames);
+        }
     }
 }
