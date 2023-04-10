@@ -1,5 +1,7 @@
 package view;
 
+import domain.Car;
+import domain.GameResult;
 import domain.RaceResult;
 
 public class RaceResultView implements ResultView {
@@ -10,6 +12,14 @@ public class RaceResultView implements ResultView {
     @Override
     public void print() {
         System.out.println("실행 결과");
-        System.out.println(raceResult);
+        for (GameResult gameResult : raceResult.getGames()) {
+            for (Car car : gameResult.getCars()) {
+                for (int i = 0; i < car.getLocation(); i++) {
+                    System.out.print("-");
+                }
+                System.out.println();
+            }
+            System.out.println();
+        }
     }
 }

@@ -1,6 +1,8 @@
 import domain.*;
 import view.*;
 
+import java.util.List;
+
 public class RaceScenario {
     public static void main(String[] args) {
         InputView<CarNumber> carNumberInputView = new CarNumberInputView();
