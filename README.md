@@ -7,3 +7,11 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+
+## 구현할 기능 목록
+- 게임 초기 차 셋팅 기능 
+- 게임 시작 진행 기능
+- 차의 위치를 get/set 하는 기능
+- 차가 이동할 수 있는지 판별 기능
+- 차가 이동하는 기능 
