@@ -13,7 +13,7 @@ public class InputView {
     }
 
     public static int trial() {
-        System.out.println("시도할 쇳수는 몇 회인가요?");
+        System.out.println("시도할 횟수는 몇 회인가요?");
         return scanner.nextInt();
     }
 }
