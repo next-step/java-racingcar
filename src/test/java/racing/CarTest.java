@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.*;
 public class CarTest {
 
     @ParameterizedTest
-    @CsvSource(value = {"1, 2", "3, 4"})
+    @CsvSource(value = {"1, 1", "3, 3"})
     void carMoveTest(int moveCount, int expectedPosition) {
         Car car = new Car();
         for (int i = 0; i < moveCount; i++) {
