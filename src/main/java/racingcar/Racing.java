@@ -7,12 +7,14 @@ public class Racing {
 
     private final int carsNum;
     private final int gameCount;
-    private List<Car> cars;
+    private final List<Car> cars;
+    private final List<List<Integer>> raceRecord;
 
     public Racing(int carsNum, int gameCount) {
         this.carsNum = carsNum;
         this.gameCount = gameCount;
         this.cars = createCars(carsNum);
+        this.raceRecord = new ArrayList<>();
     }
 
     private List<Car> createCars(int carsNum) {
@@ -30,7 +32,16 @@ public class Racing {
     public void race() {
         for (int i = 0; i < gameCount; i++) {
             game();
+            record();
         }
+    }
+
+    private void record() {
+        List<Integer> result = new ArrayList<>();
+        for (Car car : cars) {
+            result.add(car.getDistance());
+        }
+        raceRecord.add(result);
     }
 
     private void game() {
@@ -42,5 +53,9 @@ public class Racing {
     private int random() {
         Random random = new Random();
         return random.nextInt(10);
+    }
+
+    public List<List<Integer>> getRaceRecord() {
+        return raceRecord;
     }
 }

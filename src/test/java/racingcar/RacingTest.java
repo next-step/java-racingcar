@@ -15,4 +15,16 @@ public class RacingTest {
         List<Car> cars = racing.getCars();
         Assertions.assertThat(cars.size()).isEqualTo(3);
     }
+
+    @DisplayName("요청된 게임수만큼 게임기록 생성 확인")
+    @Test
+    void 게임기록_저장() {
+        Racing racing = new Racing(3, 5);
+        racing.race();
+        List<List<Integer>> raceRecord = racing.getRaceRecord();
+        Assertions.assertThat(raceRecord.size()).isEqualTo(5);
+    }
+
+
+
 }
