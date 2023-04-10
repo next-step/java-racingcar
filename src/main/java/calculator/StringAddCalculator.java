@@ -7,6 +7,7 @@ public class StringAddCalculator {
 
   private static final String SPLIT_REGEX = ",|:";
   private static final String ESCAPE_LETTERS = "?*[+{}()^$";
+  private static final Pattern CUSTOM_SPLIT_LETTER = Pattern.compile("//(.)\n(.*)");
 
   public int calculate(String inputText) {
     if (isBlank(inputText)) {
@@ -39,7 +40,7 @@ public class StringAddCalculator {
   }
 
   private String[] splitNumbers(String inputText) {
-    Matcher m = Pattern.compile("//(.)\n(.*)").matcher(inputText);
+    Matcher m = CUSTOM_SPLIT_LETTER.matcher(inputText);
     if (m.find()) {
       return m.group(2).split(customDelimiter(m));
     }
