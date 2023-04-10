@@ -11,7 +11,7 @@ public class RacingGame {
 
     private static final int DEFAULT_MIN = 0;
     private static final int DEFAULT_MAX = 9;
-    List<Car> carList;
+    private List<Car> carList;
 
     public void readyGame(int carCount) {
         carList = new ArrayList<>();
@@ -24,10 +24,14 @@ public class RacingGame {
         resultMsg();
         for (int i = 0; i < tryCount; i++) {
             for (Car car : carList) {
-                if (car.canMove(DEFAULT_MIN,DEFAULT_MAX)) car.move();
+                if (car.canMove(DEFAULT_MIN, DEFAULT_MAX)) car.move();
                 moveResult(car.getPosition());
             }
             endingRoundMsg(i + 1);
         }
+    }
+
+    public List<Car> getCarList() {
+        return carList;
     }
 }
