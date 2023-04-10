@@ -19,14 +19,11 @@ public class OutputView {
     }
 
     private static void printCarStatus(Car car) {
+        System.out.print(car.getCurrentCar() + " : ");
         for (int i = 0; i < car.getCurrentPosition(); i++) {
             System.out.print(MOVEMENT);
         }
         System.out.println();
-    }
-
-    public static void printTotalStage(Count count) {
-        System.out.println("총 회수 :" + count);
     }
 
     public static void printRemainStage(Count count) {
