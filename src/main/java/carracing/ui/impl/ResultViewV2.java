@@ -1,12 +1,9 @@
 package carracing.ui.impl;
 
-import carracing.logic.service.RacingService;
 import carracing.ui.ResultView;
 
 import java.io.PrintStream;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.Consumer;
 import java.util.logging.Logger;
 
 public class ResultViewV2 implements ResultView {

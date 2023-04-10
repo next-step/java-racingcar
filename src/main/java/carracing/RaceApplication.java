@@ -1,9 +1,9 @@
 package carracing;
 
-import carracing.logic.repository.RoundRepository;
-import carracing.logic.service.RacingService;
-import carracing.logic.domain.Round;
-import carracing.logic.domain.Score;
+import carracing.repository.RoundRepository;
+import carracing.service.RacingService;
+import carracing.domain.Round;
+import carracing.domain.Score;
 import carracing.ui.InputView;
 import carracing.ui.ResultView;
 import carracing.ui.impl.ResultViewV0;

@@ -1,15 +1,14 @@
-package carracing.logic.service;
+package carracing.service;
 
-import carracing.logic.domain.Record;
-import carracing.logic.domain.Round;
-import carracing.logic.domain.Score;
-import carracing.logic.repository.RoundRepository;
+import carracing.domain.Record;
+import carracing.domain.Round;
+import carracing.domain.Score;
+import carracing.repository.RoundRepository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class RacingService {
     private static final String INITIAL_RACING_RECODE = "";

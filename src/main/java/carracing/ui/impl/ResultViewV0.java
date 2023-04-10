@@ -1,6 +1,5 @@
 package carracing.ui.impl;
 
-import carracing.logic.service.RacingService;
 import carracing.ui.ResultView;
 
 import java.io.PrintStream;

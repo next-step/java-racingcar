@@ -1,7 +1,7 @@
 package carracing;
 
-import carracing.logic.domain.Round;
-import carracing.logic.domain.Score;
+import carracing.domain.Round;
+import carracing.domain.Score;
 import carracing.ui.InputView;
 import carracing.ui.ResultView;
 import carracing.ui.impl.ResultViewV1;

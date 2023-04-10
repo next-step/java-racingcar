@@ -1,4 +1,4 @@
-package carracing.logic.domain;
+package carracing.domain;
 
 import java.util.Objects;
 

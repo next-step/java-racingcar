@@ -1,6 +1,6 @@
 package carracing.logic.type;
 
-import carracing.logic.domain.Round;
+import carracing.domain.Round;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
