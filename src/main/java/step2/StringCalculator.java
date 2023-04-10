@@ -11,7 +11,7 @@ public class StringCalculator {
             return 0;
         }
 
-        return Arrays.stream(expression.split(","))
+        return Arrays.stream(expression.split("[,|:]"))
                 .mapToInt(Integer::parseInt)
                 .sum();
     }
