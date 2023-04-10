@@ -30,6 +30,4 @@ public class RacingCarTest {
             assertThat(carInfo.getDistance()).isEqualTo(1);
         }
     }
-
-
 }

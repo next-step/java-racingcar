@@ -18,11 +18,18 @@ public class RacingService {
 
     public void moveFoward(int numToTry, ArrayList<CarInfo> carInfos) {
         for (int i = 0; i < numToTry; i++) {
-            for (CarInfo carInfo : carInfos) {
-                int rand = new Random().nextInt(10);
-                if (rand > 4) carInfo.moveFoward();
-                carInfo.setResultOfRand(rand);
-            }
+            carInfos.stream()
+                    .map(carInfo -> {
+                        carInfo.setResultOfRand(getRand(10));
+                        return carInfo;
+                    })
+                    .filter(carInfo -> carInfo.getResultOfRand() > 4)
+                    .forEach(CarInfo::moveFoward);
         }
+    }
+
+    private int getRand(int bound) {
+        int rand = new Random().nextInt(bound);
+        return rand;
     }
 }
