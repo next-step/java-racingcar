@@ -1,4 +1,4 @@
-package step3;
+package step3.view;
 
 import java.util.Scanner;
 
@@ -9,7 +9,7 @@ public class InputView {
     private InputView() {
     }
 
-    public static int inputCar() {
+    public static int inputCarCount() {
         System.out.println("자동차 대수는 몇 대 인가요?");
 
         return SCANNER.nextInt();
@@ -20,6 +20,5 @@ public class InputView {
 
         return SCANNER.nextInt();
     }
-
 
 }
