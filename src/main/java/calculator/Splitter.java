@@ -1,18 +1,33 @@
 package calculator;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class Splitter {
-    private String text;
-    private String delimiter;
 
-    public Splitter(String text, String delimiter) {
+    private String text;
+
+    public Splitter(String text) {
         this.text = text;
-        this.delimiter = delimiter;
     }
 
-    public String[] split() {
-        return text.split(delimiter);
+    public int[] split() {
+        String delimiter = Parser.findDelimiter(text);
+        text = Parser.findText(text);
+
+        return toInts(text.split(delimiter));
+    }
+
+    private static int[] toInts(String[] texts) {
+        int[] numbers = new int[texts.length];
+        for(int i = 0; i < texts.length; i++) {
+            numbers[i] = toInt(texts[i]);
+        }
+        return numbers;
+    }
+
+    private static int toInt(String text) {
+        int number = Integer.parseInt(text);
+        if (number < 0) {
+            throw new NegativeNumberException("문자열 중 음수가 포함되었습니다.");
+        }
+        return number;
     }
 }

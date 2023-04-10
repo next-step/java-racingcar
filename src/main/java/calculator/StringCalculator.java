@@ -2,40 +2,21 @@ package calculator;
 
 public class StringCalculator {
 
-    public static int splitAndSum(String text) {
+    private String text;
+
+    public StringCalculator(String text) {
+        this.text = text;
+    }
+
+    public int splitAndSum() {
         if (text == null || text.isBlank())
             return 0;
 
-        Parser parser = new Parser(text);
-        Splitter splitter = new Splitter(parser.findText(), parser.findDelimiter());
+        Splitter splitter = new Splitter(text);
+        int[] numbers = splitter.split();
 
-        String[] numbers = splitter.split();
-        int sum = sum(toInts(numbers));
+        Calculator calculator = new Calculator(numbers);
+        int sum = calculator.sum();
         return sum;
     }
-
-    public static int sum(int[] numbers) {
-        int sum = 0;
-        for(int number: numbers) {
-            sum += number;
-        }
-        return sum;
-    }
-
-    public static int[] toInts(String[] texts) {
-        int[] numbers = new int[texts.length];
-        for(int i = 0; i < texts.length; i++) {
-            numbers[i] = toInt(texts[i]);
-        }
-        return numbers;
-    }
-
-    public static int toInt(String text) {
-        int number = Integer.parseInt(text);
-        if (number < 0) {
-            throw new RuntimeException();
-        }
-        return number;
-    }
-
 }
