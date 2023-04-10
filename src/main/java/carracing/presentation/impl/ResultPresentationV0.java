@@ -26,7 +26,7 @@ public class ResultPresentationV0 implements ResultPresentation {
 //    }
 
     @Override
-    public void printResult(List<String> resultList) {
-
+    public void printResult() {
+        printStream.print("hello");
     }
 }

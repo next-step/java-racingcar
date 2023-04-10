@@ -28,8 +28,8 @@ public class ResultPresentationV2 implements ResultPresentation {
      */
 
     @Override
-    public void printResult(List<String> resultList) {
-
+    public void printResult() {
+        throw new RuntimeException();
     }
     //    @Override
 //    public void printResult(RacingService federation) {

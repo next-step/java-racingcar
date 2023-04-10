@@ -67,7 +67,7 @@ public class RacingService {
     }
 
     public void racingStart(int participate, int iterations) {
-        return IntStream.rangeClosed(1, iterations)
+         IntStream.rangeClosed(1, iterations)
             .boxed()
             .collect(
                 Collectors.toMap(Round::new, round -> simulateSingleRoundScores(participate))

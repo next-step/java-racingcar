@@ -69,7 +69,7 @@ public class ResultPresentationV0Test {
 
         //when
         //RacingService racingService = new RacingService(inputRoundToScoreListMap);
-        resultPresentation.printResult(racingService.getData());
+        resultPresentation.printResult();
 
         //then
         assertAll(

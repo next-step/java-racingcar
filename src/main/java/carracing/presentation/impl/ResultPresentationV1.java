@@ -24,8 +24,8 @@ public class ResultPresentationV1 implements ResultPresentation {
     }
 
     @Override
-    public void printResult(List<String> resultList) {
-
+    public void printResult() {
+        throw new RuntimeException();
     }
 
 
