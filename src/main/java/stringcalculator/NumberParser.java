@@ -9,6 +9,7 @@ import static stringcalculator.Delimiter.BLANK_STRING;
 import static stringcalculator.Delimiter.REGEX_ESCAPE;
 
 public class NumberParser {
+    private static final int AFTER_CUSTOM_DELIMITER_INDEX = 1;
     private static final String NUMBER_REGEX = "^-?\\d+";
 
     public Numbers parse(String text, Delimiters delimiters) {
@@ -27,7 +28,7 @@ public class NumberParser {
 
     private String removeCustomExpression(String result) {
         if (Delimiter.containsCustomDelimiter(result)) {
-            result = result.split(Delimiter.CUSTOM_END_SPLIT.getValue())[1];
+            result = result.split(Delimiter.CUSTOM_END_SPLIT.getValue())[AFTER_CUSTOM_DELIMITER_INDEX];
         }
         return result;
     }

@@ -6,6 +6,7 @@ import java.util.Set;
 import static stringcalculator.Delimiter.*;
 
 public class Delimiters {
+    private static final int CUSTOM_DELIMITER_INDEX = 2;
     private final Set<String> delimiters = new HashSet<>();
 
     private Delimiters(String text) {
@@ -19,7 +20,7 @@ public class Delimiters {
 
     private void addCustomDelimiter(String text) {
         if (containsCustomDelimiter(text)) {
-            final String customDelimiter = String.valueOf(text.charAt(2));
+            final String customDelimiter = String.valueOf(text.charAt(CUSTOM_DELIMITER_INDEX));
             delimiters.add(customDelimiter);
         }
     }
