@@ -1,5 +1,7 @@
 package com.next.step.step3.view;
 
+import com.next.step.step3.validate.InputValidation;
+
 import java.util.Scanner;
 
 public class InputView {
@@ -10,17 +12,26 @@ public class InputView {
 
     private final Scanner scanner;
 
-    public InputView() {
+    private final InputValidation inputValidation;
+
+    public InputView(InputValidation inputValidation) {
+        this.inputValidation = inputValidation;
         this.scanner = new Scanner(System.in);
     }
 
     public int numOfCars() {
         System.out.println(NUM_OF_CARS_MESSAGE);
-        return scanner.nextInt();
+        int numOfCars = scanner.nextInt();
+        inputValidation.validateNotNegative(numOfCars);
+        inputValidation.validateNumOfCars(numOfCars);
+        return numOfCars;
     }
 
     public int numOfAttempts() {
         System.out.println(NUM_OF_ATTEMPTS_MESSAGE);
-        return scanner.nextInt();
+        int numOfAttempts = scanner.nextInt();
+        inputValidation.validateNotNegative(numOfAttempts);
+        inputValidation.validateNumOfAttempts(numOfAttempts);
+        return numOfAttempts;
     }
 }
