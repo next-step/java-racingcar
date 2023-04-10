@@ -1,5 +1,6 @@
 package carracing;
 
+import carracing.logic.repository.RoundRepository;
 import carracing.logic.service.RacingService;
 import carracing.logic.domain.Round;
 import carracing.logic.domain.Score;
@@ -18,10 +19,13 @@ public class RaceApplication {
 
     private final InputView inputView;
     private final ResultView resultView;
+    //private final RoundRepository roundRepository;
+    private final RacingService racingService;
 
     public RaceApplication(InputView inputView, ResultView resultView) {
         this.inputView = inputView;
         this.resultView = resultView;
+        this.racingService = new RacingService(new RoundRepository());
     }
 
     public static void main(String[] args) {
@@ -33,11 +37,11 @@ public class RaceApplication {
     }
 
     public void run() {
-        resultView.printResult(
-            new RacingService(
-                this.racingStart(inputView.participates(), inputView.iterations())
-            )
-        );
+//        resultView.printResult(
+//            new RacingService(
+//                this.racingStart(inputView.participates(), inputView.iterations())
+//            )
+//        );
     }
 
     public Map<Round, List<Score>> racingStart(int participate, int iterations) {

@@ -1,5 +1,6 @@
 package carracing.ui.impl;
 
+import carracing.logic.repository.RoundRepository;
 import carracing.logic.service.RacingService;
 import carracing.logic.domain.Round;
 import carracing.logic.domain.Score;
@@ -25,11 +26,13 @@ public class ResultViewV2Test {
     private static final Logger log = Logger.getLogger("ResultViewV2Test");
     private ResultView resultView;
     private OutputStream outputStream;
+    private RacingService racingService;
 
     @BeforeEach
     public void beforeEach() {
-        outputStream = new ByteArrayOutputStream();
+        this.outputStream = new ByteArrayOutputStream();
         this.resultView = new ResultViewV2(new PrintStream(new PrintStream(outputStream)));
+        this.racingService = new RacingService(new RoundRepository());
     }
 
     @Disabled("V2버전은 아직 개발이 완료되지 않았습니다")
@@ -67,8 +70,8 @@ public class ResultViewV2Test {
                 "\n";
 
         //when
-        RacingService racingService = new RacingService(inputRoundToScoreListMap);
-        resultView.printResult(racingService);
+        //RacingService racingService = new RacingService(inputRoundToScoreListMap);
+        //resultView.printResult(racingService);
 
         //then
         assertAll(

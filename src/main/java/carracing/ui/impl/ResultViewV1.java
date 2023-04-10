@@ -4,6 +4,7 @@ import carracing.logic.service.RacingService;
 import carracing.ui.ResultView;
 
 import java.io.PrintStream;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 import java.util.logging.Logger;
@@ -25,13 +26,19 @@ public class ResultViewV1 implements ResultView {
     }
 
     @Override
-    public void printResult(RacingService federation) {
-        Consumer<RacingService> printer = DISPLAY_CAR_INDEX ?
-            this::printResultWithCarIndex :
-            this::printResultWithoutCarIndex;
+    public void printResult(List<String> resultList) {
 
-        printer.accept(federation);
     }
+
+
+    //    @Override
+//    public void printResult(RacingService federation) {
+//        Consumer<RacingService> printer = DISPLAY_CAR_INDEX ?
+//            this::printResultWithCarIndex :
+//            this::printResultWithoutCarIndex;
+//
+//        printer.accept(federation);
+//    }
 
     public void printResultWithoutCarIndex(RacingService federation) {
         federation.getRounds().forEach(round -> {
@@ -40,15 +47,15 @@ public class ResultViewV1 implements ResultView {
         });
     }
 
-    public void printResultWithCarIndex(RacingService federation) {
-        federation.getRounds().forEach(round -> {
-            AtomicInteger indexHolder = new AtomicInteger();
-            federation.lapSituations(round).forEach(s -> {
-                printStream.print(indexHolder.getAndIncrement() + 1);
-                printStream.print(" : ");
-                printStream.println(s);
-            });
-            printStream.println();
-        });
+    public void printResultWithCarIndex(List<String> resultList) {
+//        federation.getRounds().forEach(round -> {
+//            AtomicInteger indexHolder = new AtomicInteger();
+//            federation.lapSituations(round).forEach(s -> {
+//                printStream.print(indexHolder.getAndIncrement() + 1);
+//                printStream.print(" : ");
+//                printStream.println(s);
+//            });
+//            printStream.println();
+//        });
     }
 }

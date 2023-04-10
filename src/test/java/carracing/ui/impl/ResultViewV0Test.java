@@ -1,5 +1,6 @@
 package carracing.ui.impl;
 
+import carracing.logic.repository.RoundRepository;
 import carracing.logic.service.RacingService;
 import carracing.logic.domain.Round;
 import carracing.logic.domain.Score;
@@ -24,11 +25,13 @@ public class ResultViewV0Test {
     private static final Logger log = Logger.getLogger("ResultViewV0Test");
     private ResultView resultView;
     private OutputStream outputStream;
+    private RacingService racingService;
 
     @BeforeEach
     public void beforeEach() {
         this.outputStream = new ByteArrayOutputStream();
         this.resultView = new ResultViewV0(new PrintStream(new PrintStream(outputStream)));
+        this.racingService = new RacingService(new RoundRepository());
     }
 
     @DisplayName("경기결과가 CarIndex 와 함께 출력된다")
@@ -65,8 +68,8 @@ public class ResultViewV0Test {
                 "\n";
 
         //when
-        RacingService racingService = new RacingService(inputRoundToScoreListMap);
-        resultView.printResult(racingService);
+        //RacingService racingService = new RacingService(inputRoundToScoreListMap);
+        resultView.printResult(racingService.getData());
 
         //then
         assertAll(

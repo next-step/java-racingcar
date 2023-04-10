@@ -1,5 +1,6 @@
 package carracing.ui.impl;
 
+import carracing.logic.repository.RoundRepository;
 import carracing.logic.service.RacingService;
 import carracing.logic.domain.Round;
 import carracing.logic.domain.Score;
@@ -23,10 +24,12 @@ public class ResultViewV1Test {
     private static final Logger log = Logger.getLogger("ResultViewV1Test");
     private ResultViewV1 resultViewV1;
     private OutputStream outputStream;
+    private RacingService racingService;
 
     @BeforeEach
     public void beforeEach() {
-        outputStream = new ByteArrayOutputStream();
+        this.racingService = new RacingService(new RoundRepository());
+        this.outputStream = new ByteArrayOutputStream();
         this.resultViewV1 = new ResultViewV1(new PrintStream(new PrintStream(outputStream)));
     }
 
@@ -64,8 +67,7 @@ public class ResultViewV1Test {
                 "\n";
 
         //when
-        RacingService racingService = new RacingService(inputRoundToScoreListMap);
-        resultViewV1.printResultWithCarIndex(racingService);
+        resultViewV1.printResultWithCarIndex( this.racingService.getData());
 
         //then
         assertAll(
@@ -111,7 +113,6 @@ public class ResultViewV1Test {
                 "\n";
 
         //when
-        RacingService racingService = new RacingService(inputRoundToScoreListMap);
         resultViewV1.printResultWithoutCarIndex(racingService);
 
         //then

@@ -3,6 +3,7 @@ package carracing.logic.service;
 import carracing.logic.domain.Record;
 import carracing.logic.domain.Round;
 import carracing.logic.domain.Score;
+import carracing.logic.repository.RoundRepository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,12 +13,10 @@ import java.util.stream.Collectors;
 
 public class RacingService {
     private static final String INITIAL_RACING_RECODE = "";
-    private final Map<Round, List<Score>> roundToScoreListMap;
-    private final Map<Round, Record> roundToRecordMap;
+    private final RoundRepository roundRepository;
 
-    public RacingService(Map<Round, List<Score>> roundToScoreListMap) {
-        this.roundToScoreListMap = roundToScoreListMap;
-        this.roundToRecordMap = recordBoardCalculation(roundToScoreListMap);
+    public RacingService(RoundRepository roundRepository) {
+        this.roundRepository = new RoundRepository();
     }
 
     public Map<Round, Record> recordBoardCalculation(Map<Round, List<Score>> raceResults) {
@@ -49,14 +48,17 @@ public class RacingService {
     }
 
     public List<Round> getRounds() {
-        return new ArrayList<>(roundToScoreListMap.keySet())
-            .stream()
-            .sorted()
-            .collect(Collectors.toList());
+        return roundRepository.findAll();
     }
 
+
+
     public List<String> lapSituations(Round round) {
-        Record record = this.roundToRecordMap.get(round);
+        Record record = this.roundRepository.roundToRecordMap().get(round);
         return record.toList();
+    }
+
+    public List<String> getData() {
+        return null;
     }
 }

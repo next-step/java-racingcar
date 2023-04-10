@@ -4,6 +4,7 @@ import carracing.logic.service.RacingService;
 import carracing.ui.ResultView;
 
 import java.io.PrintStream;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 import java.util.logging.Logger;
@@ -28,19 +29,24 @@ public class ResultViewV2 implements ResultView {
 
             printer.accept(federation);
      */
+
     @Override
-    public void printResult(RacingService federation) {
-        AtomicInteger indexHolder = new AtomicInteger();
+    public void printResult(List<String> resultList) {
 
-        Consumer<String> printer = DISPLAY_CAR_INDEX ?
-            s -> printStream.println(indexHolder.getAndIncrement() + 1 + " : " + s) :
-            printStream::println;
-
-        federation.getRounds().forEach(round -> {
-            federation.lapSituations(round).forEach(printer);
-            printStream.println();
-        });
     }
+    //    @Override
+//    public void printResult(RacingService federation) {
+//        AtomicInteger indexHolder = new AtomicInteger();
+//
+//        Consumer<String> printer = DISPLAY_CAR_INDEX ?
+//            s -> printStream.println(indexHolder.getAndIncrement() + 1 + " : " + s) :
+//            printStream::println;
+//
+//        federation.getRounds().forEach(round -> {
+//            federation.lapSituations(round).forEach(printer);
+//            printStream.println();
+//        });
+//    }
 }
 //        federation.getRounds().forEach(round -> {
 //            federation.lapSituations(round).forEach(printStream::println);

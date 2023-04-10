@@ -1,5 +1,6 @@
 package carracing.logic;
 
+import carracing.logic.repository.RoundRepository;
 import carracing.logic.service.RacingService;
 import carracing.logic.domain.Round;
 import carracing.logic.domain.Score;
@@ -26,7 +27,7 @@ public class RacingServiceTest {
 
     @BeforeEach
     public void beforeEach() {
-        federation = new RacingService(inputRoundToScoreListMap);
+        federation = new RacingService(new RoundRepository());
     }
 
     @DisplayName("입력 결기경과의 수 대로 ")

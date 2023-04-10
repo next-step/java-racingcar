@@ -4,6 +4,7 @@ import carracing.logic.service.RacingService;
 import carracing.ui.ResultView;
 
 import java.io.PrintStream;
+import java.util.List;
 import java.util.logging.Logger;
 
 public class ResultViewV0 implements ResultView {
@@ -17,11 +18,16 @@ public class ResultViewV0 implements ResultView {
         this.printStream = printStream;
     }
 
+//    @Override
+//    public void printResult(List<String> resultList) {
+//        resultList.forEach(round -> {
+//            federation.lapSituations(round).forEach(printStream::println);
+//            printStream.println();
+//        });
+//    }
+
     @Override
-    public void printResult(RacingService federation) {
-        federation.getRounds().forEach(round -> {
-            federation.lapSituations(round).forEach(printStream::println);
-            printStream.println();
-        });
+    public void printResult(List<String> resultList) {
+
     }
 }
