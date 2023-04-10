@@ -60,7 +60,7 @@ public class StringCalculatorTest {
     void testTwoStringWithCustomDelimeter() {
         StringCalculator stringCalculator = new StringCalculator();
 
-        int result = stringCalculator.calculate("//;\n1;2,3");
+        int result = stringCalculator.calculate("//;\n1;2;3");
 
         assertThat(result).isEqualTo(6);
     }

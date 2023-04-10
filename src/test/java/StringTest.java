@@ -1,6 +1,9 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class StringTest {
@@ -60,7 +63,30 @@ public class StringTest {
         for (int i=0; i < result.length; i++) {
             System.out.println("result(" + i +") : " + result[i]);
         }
+    }
 
+    @Test
+    @DisplayName("정규표현식 & Patten과 Matcher")
+    void patternAndMatcher() {
+        String input = "//;\n1;2;3";
+        String regex = "//.*\n";
+
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(input);
+
+        String customDelemiter = "";
+        String text = "";
+
+        if (matcher.find()) {
+            customDelemiter = matcher.group().substring(2, matcher.end() -1);
+            text = matcher.replaceAll("");
+
+            System.out.println("cd : " + customDelemiter);
+            System.out.println("text : " + text);
+        }
+
+        assertThat(customDelemiter).isEqualTo(";");
+        assertThat(text).isEqualTo("1;2;3");
 
     }
 }
