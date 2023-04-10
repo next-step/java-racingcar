@@ -1,12 +1,3 @@
-
-//    초간단 자동차 경주 게임을 구현한다.
-//    주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다. => 자동차 대수 숫자로 입력받기(숫자 아니면 에러)
-//    사용자는 몇 대의 자동차로 몇 번의 이동을 할 것인지를 입력할 수 있어야 한다. => 이동횟수 숫자로 입력받기(숫자 아니면 에러)
-//    전진하는 조건은 0에서 9 사이에서 random 값을 구한 후 random 값이 4이상일 경우이다. => random() (4가 아닐 때 전진하는지 확인)
-//    자동차의 상태를 화면에 출력한다. 어느 시점에 출력할 것인지에 대한 제약은 없다. => 이동할때마다 표시하기(print)
-
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 import java.util.Random;
 
@@ -16,7 +7,6 @@ public class CarRacing {
 
     private static final int CONDITION_NUMBER = 4;
     private static final int DISTANCE_PER_TRY = 1;
-    private static final int ERROR_STAUTS = 1;
 
     static void racing(int numberOfCar, int numberOfTry) {
         if (numberOfCar == 0) {

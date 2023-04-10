@@ -46,8 +46,8 @@ public class Calculator {
 
     private static List<Integer> convertStringsToNumbers(List<String> inputString) {
         List<Integer> output = new ArrayList<>();
-        for (String el : inputString) {
-            int number = Integer.parseInt(el);
+        for (String numberStr : inputString) {
+            int number = Integer.parseInt(numberStr);
             if (number < 0) {
                 throw new IllegalArgumentException("입력값은 양수로 입력해야 합니다.");
             }
