@@ -3,7 +3,7 @@ package racingcar;
 import java.util.Random;
 
 public class RandomBool {
-    private static final Random RANDOM = new Random;
+    private static final Random RANDOM = new Random();
 
     public static boolean next() {
         return toBool(RANDOM.nextInt(10));
