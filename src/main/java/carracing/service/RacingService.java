@@ -51,7 +51,7 @@ public class RacingService {
         return curRecordMap.get(round.previousRound()).toList().get(carIndex);
     }
 
-    public List<Round> getRounds() {
+    public List<Round> getAllRounds() {
         return roundRepository.findAll();
     }
 

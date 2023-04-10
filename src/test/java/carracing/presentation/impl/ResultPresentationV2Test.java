@@ -76,7 +76,7 @@ public class ResultPresentationV2Test {
         //then
         assertAll(
             () -> assertEquals(outputStream.toString(), output),
-            () -> assertThat(racingService.getRounds()).hasSize(inputRoundToScoreListMap.size()),
+            () -> assertThat(racingService.getAllRounds()).hasSize(inputRoundToScoreListMap.size()),
             () -> log.warning("ResultView 를 테스트해야하는데, AutomobileFederation 가 실패하면 해당 테스도 실패한다"),
             () -> log.warning("UI 컴포넌트인 ResultView 만을 순수하게 테스트할수 있도록 구조를 개선해야한다")
         );

@@ -74,7 +74,7 @@ public class ResultPresentationV0Test {
         //then
         assertAll(
             () -> assertEquals(output, outputStream.toString()),
-            () -> assertThat(racingService.getRounds()).hasSize(inputRoundToScoreListMap.size())
+            () -> assertThat(racingService.getAllRounds()).hasSize(inputRoundToScoreListMap.size())
         );
     }
 }

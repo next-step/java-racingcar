@@ -19,6 +19,7 @@ import java.util.logging.Logger;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class ResultPresentationV1Test {
     private static final Logger log = Logger.getLogger("ResultViewV1Test");
@@ -72,7 +73,7 @@ public class ResultPresentationV1Test {
         //then
         assertAll(
             () -> assertEquals(output, outputStream.toString()),
-            () -> assertThat(racingService.getRounds()).hasSize(inputRoundToScoreListMap.size()),
+            () -> assertThat(racingService.getAllRounds()).hasSize(inputRoundToScoreListMap.size()),
             () -> log.warning("ResultView 를 테스트해야하는데, AutomobileFederation 가 실패하면 해당 테스도 실패한다"),
             () -> log.warning("UI 컴포넌트인 ResultView 만을 순수하게 테스트할수 있도록 구조를 개선해야한다")
         );
@@ -113,12 +114,12 @@ public class ResultPresentationV1Test {
             "\n";
 
         //when
-        resultViewV1.printResultWithoutCarIndex(racingService);
-
+        //resultViewV1.printResultWithoutCarIndex(racingService);
+        fail();
         //then
         assertAll(
             () -> assertEquals(output, outputStream.toString()),
-            () -> assertThat(racingService.getRounds()).hasSize(inputRoundToScoreListMap.size())
+            () -> assertThat(racingService.getAllRounds()).hasSize(inputRoundToScoreListMap.size())
         );
     }
 }
