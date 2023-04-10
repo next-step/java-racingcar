@@ -3,7 +3,7 @@ package racingcar.control.input;
 import racingcar.view.InputView;
 import racingcar.view.View;
 
-public class TrialInputControl extends InputControl {
+public class TrialInput extends StandardInput {
 
     @Override
     protected View view() {

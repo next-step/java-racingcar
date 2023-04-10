@@ -15,11 +15,11 @@ import java.util.stream.Stream;
 
 public class Program {
     public static void main(String[] args) {
-        InputControl carControl = new CarInputControl();
-        InputControl trialControl = new TrialInputControl();
+        StandardInput carInput = new CarInput();
+        StandardInput trialInput = new TrialInput();
 
-        int cars = carControl.receiveInt();
-        int trials = trialControl.receiveInt();
+        int carCount = carInput.getInt();
+        int trials = trialInput.getInt();
 
         List<Car> cars = Stream
                 .generate(() -> new Car(new RandomMovingStrategy()))

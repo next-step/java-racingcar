@@ -1,8 +1,11 @@
-package racingcar.control.input;
+package racingcar.control;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.control.input.CarInput;
+import racingcar.control.input.StandardInput;
+import racingcar.control.input.TrialInput;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -11,17 +14,17 @@ import java.util.InputMismatchException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DisplayName("사용자 입력 컨트롤러 테스트")
-class InputControlTest {
+class InputTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"\"", ".", "10/2", "a"})
     @DisplayName("자동차 대수로 정수가 아닌 값을 받으면 예외가 나야 한다")
-    public void carInput(String input) {
-        InputStream in = new ByteArrayInputStream(input.getBytes());
+    public void carInput(String value) {
+        InputStream in = new ByteArrayInputStream(value.getBytes());
         System.setIn(in);
 
-        InputControl inputControl = new CarInputControl();
-        assertThatThrownBy(inputControl::receiveInt)
+        StandardInput input = new CarInput();
+        assertThatThrownBy(input::getInt)
                 .isInstanceOf(InputMismatchException.class)
                 .hasMessage("input must be integer");
 
@@ -32,12 +35,12 @@ class InputControlTest {
     @ParameterizedTest
     @ValueSource(strings = {"\"", ".", "10/2", "a"})
     @DisplayName("실행 횟수로 정수가 아닌 값을 받으면 예외가 나야 한다")
-    public void trailsInput(String input) {
-        InputStream in = new ByteArrayInputStream(input.getBytes());
+    public void trailsInput(String value) {
+        InputStream in = new ByteArrayInputStream(value.getBytes());
         System.setIn(in);
 
-        InputControl inputControl = new TrialInputControl();
-        assertThatThrownBy(inputControl::receiveInt)
+        StandardInput input = new TrialInput();
+        assertThatThrownBy(input::getInt)
                 .isInstanceOf(InputMismatchException.class)
                 .hasMessage("input must be integer");
 
