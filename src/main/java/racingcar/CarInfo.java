@@ -4,14 +4,24 @@ import lombok.Data;
 
 @Data
 public class CarInfo {
-    private int distance;
+    private int prevDistance;
+    private int currentDistance;
     private int resultOfRand;
 
     public CarInfo() {
-        this.distance = 1;
+        this.currentDistance = 0;
     }
 
     public void moveFoward() {
-        distance++;
+        prevDistance = currentDistance;
+        currentDistance = prevDistance + 1;
+    }
+
+    public boolean isMoved() {
+        return currentDistance - prevDistance > 0;
+    }
+
+    public boolean isRandGreaterThan4() {
+        return resultOfRand > 4;
     }
 }
