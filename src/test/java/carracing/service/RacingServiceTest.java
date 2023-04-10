@@ -34,17 +34,17 @@ public class RacingServiceTest {
         racingService = new RacingService(new RoundRepository());
     }
 
-    @DisplayName("입력 결기경과의 수 대로 ")
-    @Test
-    public void run() {
-        //given
-        //federation.
-
-
-        //when
-        //then
-        log.warning("테스트코드가 요구사항에 의존적이지 않고 구현에 의존적이다. 이렇게 되면 구현이 변경될때 테스트코드도 변경될 여지가 있다");
-    }
+//    @DisplayName("입력 결기경과의 수 대로 ")
+//    @Test
+//    public void run() {
+//        //given
+//        //federation.
+//
+//
+//        //when
+//        //then
+//        log.warning("테스트코드가 요구사항에 의존적이지 않고 구현에 의존적이다. 이렇게 되면 구현이 변경될때 테스트코드도 변경될 여지가 있다");
+//    }
 
 
     @DisplayName("입력한 경기수 (Round) 에 따라 해당 경기수만큼 잘 치뤄진건지 검증한다")
@@ -100,7 +100,7 @@ public class RacingServiceTest {
 //            () -> assertThat(roundListMap.keySet()).as("몇번 이동하는지 검증").hasSize(iterations),
 //            () -> assertThat(roundListMap.get(new Round(1))).as("몇대가 움직이는지 검증").hasSize(participate)
 //        );fail();
-        fail();커
+        fail();
 
     }
 
