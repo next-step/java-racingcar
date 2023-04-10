@@ -7,6 +7,8 @@ public class Car {
     private int distance;
     private String travelDistance;
 
+    private String carName;
+
     private static final int MINIMUM_CAR_MOVE_NUMBER = 4;
 
     private static final String CAR_DISTANCE_DISPLAY_UNIT = "-";
@@ -17,7 +19,8 @@ public class Car {
 
     private static final int MOVE_STEP = 1;
 
-    protected Car() {
+    protected Car(String carName) {
+        this.carName = carName;
         this.distance = CAR_START_POSITION_NUMBER;
         this.travelDistance = CAR_START_POSITION_DISPLAY_STRING;
     }

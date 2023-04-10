@@ -3,26 +3,41 @@ package com.nextstep.racingcargame.core;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class ClientInputTest {
 
-    @Test
-    @DisplayName("2개의 파라미터 전부 1 이상의 정수값이 입력된경우 정상적으로 객체가 생성된다.")
-    void objectCreateSuccessTest() {
-        ClientInput clientInput = new ClientInput(3,5);
+    @ParameterizedTest(name = "[{index}] (,)구분자를 기준 차량 1대 이상 입력시 객체를 정상적으로 생성한다.")
+    @ValueSource(strings = {"rick,jack,ethan","ethan","jack,ethan"})
+    void objectCreateSuccessTest(String carNameChunk) {
+        ClientInput clientInput = new ClientInput(carNameChunk,5);
         assertThat(clientInput).isInstanceOf(ClientInput.class);
     }
 
-    @ParameterizedTest(name = "[{index}]0 이하의 음수 값이 입력 되 었을 경우 예외를 발생한다 case [{0}, {1}]")
-    @CsvSource(value = {"-1:1", "0:3", "-3:-3"},delimiter = ':')
-    void objectCreateFailTest(int numberOfCars, int numberOfTries) {
-        assertThatThrownBy(() -> {
-            new ClientInput(numberOfCars,numberOfTries);
-        }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("음수값으론 경기를 진행할 수 없습니다.");
+    @ParameterizedTest(name = "차 이름이 아무것도 입력되지 않은경우 예외를 발생시킨다. value = [{0}]")
+    @NullAndEmptySource
+    void objectCreate_with_empty_car(String carNameChunk) {
+        assertThatThrownBy(() -> new ClientInput(carNameChunk,5))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("차 이름이 임력되지 않았습니다.");
+    }
+
+    @ParameterizedTest(name = "[{index}] 시도 횟수가 0 이하일 경우 객체 생성시 예외를 발생시킨다. try : {1}")
+    @CsvSource(value = {"rick,jack,ethan:-1","ethan:0","jack,ethan:-2"}, delimiter = ':')
+    void objectCreateFailTest(String carNameChunk, int numberOfTries) {
+        assertThatThrownBy(() -> new ClientInput(carNameChunk,numberOfTries))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("시도 횟수는 1 이상의 숫자만 가능합니다.");
+    }
+
+    @ParameterizedTest(name = "[{index}] 자동차 이름이 5자를 초과할 경우 예외를 발생시킨다. carInput = {0}")
+    @ValueSource(strings = {"patrick,jackson,ethan","jackson","patrick"})
+    void objectCreate_with_more_than_five_character(String carNameChunk) {
+        assertThatThrownBy(() -> new ClientInput(carNameChunk,5))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차 이름은 5자를 초과할 수 없습니다.");
     }
 }

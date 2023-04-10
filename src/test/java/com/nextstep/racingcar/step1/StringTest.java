@@ -24,6 +24,13 @@ public class StringTest {
     }
 
     @Test
+    @DisplayName(" \",\" 를 split 할경우 빈 배열을 리턴한다 ")
+    void splitTestStep3() {
+        final String[] result = ",".split(",");
+        assertThat(result.length).isEqualTo(0);
+    }
+
+    @Test
     @DisplayName("\"(1,2)\" 값 ()을 제거하고 \"1,2\"를 반환 한다")
     void substringTest() {
         final String result = "(1,2)".substring(1, 4);
