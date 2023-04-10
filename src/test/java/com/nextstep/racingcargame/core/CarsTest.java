@@ -67,6 +67,25 @@ class CarsTest {
     }
 
     @Test
+    @DisplayName("Cars 객체에서 가장 멀리간 자동차가 2대를 , 기준으로 합하여 결과를 반환한다.")
+    void joinWinnerNamesTest() {
+        Car patCar = new Car("pat");
+
+        Car rickCar = new Car("rick");
+
+        rickCar.moveForwardByNumber(CAR_FORCE_MOVE_NUMBER);
+        rickCar.moveForwardByNumber(CAR_FORCE_MOVE_NUMBER);
+
+        Car ethanCar = new Car("ethan");
+
+        ethanCar.moveForwardByNumber(CAR_FORCE_MOVE_NUMBER);
+        ethanCar.moveForwardByNumber(CAR_FORCE_MOVE_NUMBER);
+
+        Cars cars = new Cars(Arrays.asList(patCar, rickCar, ethanCar));
+        assertThat(cars.joinWinnerNames()).isEqualTo("rick,ethan");
+    }
+
+    @Test
     @DisplayName("Cars 객체에서 가장 멀리간 자동차의 거리를 반환한다.")
     void getFurthestTraveledCarDistanceTest() {
         Car patCar = new Car("pat");
