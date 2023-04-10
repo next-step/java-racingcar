@@ -32,5 +32,14 @@ class StringCalculatorTest {
         assertThat(result).isEqualTo(expected);
     }
 
+    @DisplayName("숫자 두개를 ,로 구분하여 넘긴 경우 두 수의 합을 반환한다")
+    @ParameterizedTest
+    @CsvSource(value = {"1,2,3:6", "3,4,5:12", "111,111,222:444"}, delimiter = ':')
+    public void test3(String expression, int expected){
+        int result = stringCalculator.calculate(expression);
+
+        assertThat(result).isEqualTo(expected);
+    }
+
 
 }

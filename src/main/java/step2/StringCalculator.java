@@ -1,5 +1,8 @@
 package step2;
 
+import java.util.Arrays;
+import java.util.stream.Stream;
+
 public class StringCalculator {
 
 
@@ -7,7 +10,10 @@ public class StringCalculator {
         if(expression == null || expression.isEmpty()){
             return 0;
         }
-        return Integer.parseInt(expression);
+
+        return Arrays.stream(expression.split(","))
+                .mapToInt(Integer::parseInt)
+                .sum();
     }
 
 }
