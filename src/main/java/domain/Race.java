@@ -3,6 +3,9 @@ package domain;
 import java.util.Random;
 
 public class Race {
+    private static final int RANDOM_RANGE = 10;
+    private static final int RANDOM_DIVIDING_POINT = 4;
+
     private final CarNumber carNumber;
     private final RaceNumber raceNumber;
 
@@ -28,10 +31,14 @@ public class Race {
     private GameResult calculateNextGameResult(GameResult gameResult) {
         GameResult nextGameResult = new GameResult(gameResult);
         for (int j = 0; j < carNumber.getCarNumber(); j++) {
-            Random ran = new Random();
-            nextGameResult.getCar(j).move(ran.nextInt(10) >= 4 ? 1 : 0);
+            nextGameResult.getCar(j).move(calculateMove() ? Location.ONE.getLocation() : Location.ZERO.getLocation());
         }
 
         return nextGameResult;
+    }
+
+    private boolean calculateMove() {
+        Random ran = new Random();
+        return ran.nextInt(RANDOM_RANGE) >= RANDOM_DIVIDING_POINT;
     }
 }
