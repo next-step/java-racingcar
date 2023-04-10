@@ -27,8 +27,10 @@ public class Game {
     }
 
     public void start() {
+        OutputView.printExecutionResult();
         for (int i = 0; i < tryAmount; i++) {
             play();
+            OutputView.printCarPosition(cars);
         }
     }
 
