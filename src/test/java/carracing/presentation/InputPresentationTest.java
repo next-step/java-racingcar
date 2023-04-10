@@ -1,4 +1,4 @@
-package carracing.ui;
+package carracing.presentation;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -8,11 +8,11 @@ import java.io.ByteArrayInputStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class InputViewTest {
-    private InputView inputView;
+class InputPresentationTest {
+    private InputPresentation inputPresentation;
 
     public void inAndOutTestHelper(String inputString) {
-        inputView = new InputView(
+        inputPresentation = new InputPresentation(
                 new BufferedInputStream(new ByteArrayInputStream(inputString.getBytes())),
                 System.out
         );
@@ -27,7 +27,7 @@ class InputViewTest {
 
         //when
         inAndOutTestHelper(input);
-        int result = inputView.participates();
+        int result = inputPresentation.participates();
 
         //then
         assertEquals(result, answer);
@@ -42,7 +42,7 @@ class InputViewTest {
 
         //when
         inAndOutTestHelper(input);
-        int result = inputView.participates();
+        int result = inputPresentation.participates();
 
         //then
         assertEquals(result, answer);

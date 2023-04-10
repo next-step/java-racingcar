@@ -2,9 +2,9 @@ package carracing;
 
 import carracing.domain.Round;
 import carracing.domain.Score;
-import carracing.ui.InputView;
-import carracing.ui.ResultView;
-import carracing.ui.impl.ResultViewV1;
+import carracing.presentation.InputPresentation;
+import carracing.presentation.ResultPresentation;
+import carracing.presentation.impl.ResultPresentationV1;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
@@ -30,24 +30,24 @@ public class RaceApplicationTest {
     private RaceApplication raceApplication;
     private OutputStream resultViewOutputStream;
     private PrintStream resultViewPrintStream;
-    private ResultView resultView;
-    private InputView inputView;
+    private ResultPresentation resultPresentation;
+    private InputPresentation inputPresentation;
     private InputStream inputViewInputStream;
 
     @BeforeEach
     public void beforeEach() {
         this.resultViewOutputStream = new ByteArrayOutputStream();
         this.resultViewPrintStream = new PrintStream(new PrintStream(this.resultViewOutputStream));
-        this.resultView = new ResultViewV1(this.resultViewPrintStream);
+        this.resultPresentation = new ResultPresentationV1(this.resultViewPrintStream);
         this.inputViewInputStream = new ByteArrayInputStream("SampleInput".getBytes());
-        this.inputView = new InputView(inputViewInputStream, resultViewPrintStream);
-        this.raceApplication = new RaceApplication(this.inputView, this.resultView);
+        this.inputPresentation = new InputPresentation(inputViewInputStream, resultViewPrintStream);
+        this.raceApplication = new RaceApplication(this.inputPresentation, this.resultPresentation);
     }
 
     private void inAndOutTestHelper(String inputString) {
         this.inputViewInputStream = new ByteArrayInputStream(inputString.getBytes());
-        this.inputView = new InputView(inputViewInputStream, resultViewPrintStream);
-        this.raceApplication = new RaceApplication(this.inputView, this.resultView);
+        this.inputPresentation = new InputPresentation(inputViewInputStream, resultViewPrintStream);
+        this.raceApplication = new RaceApplication(this.inputPresentation, this.resultPresentation);
     }
 
     @DisplayName("경기횟수 & 참가차량수 주어지면 그에 맞는 경기결과를 리턴한다")

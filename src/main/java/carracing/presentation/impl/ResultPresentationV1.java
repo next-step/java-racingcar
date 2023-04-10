@@ -1,20 +1,20 @@
-package carracing.ui.impl;
+package carracing.presentation.impl;
 
 import carracing.service.RacingService;
-import carracing.ui.ResultView;
+import carracing.presentation.ResultPresentation;
 
 import java.io.PrintStream;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class ResultViewV1 implements ResultView {
+public class ResultPresentationV1 implements ResultPresentation {
     private static final Logger log = Logger.getLogger("ResultViewV1");
     private static final Boolean DISPLAY_CAR_INDEX = Boolean.TRUE;
     private static final Boolean DISPLAY_ROUND_INFORMATION = Boolean.TRUE;
 
     private final PrintStream printStream;
 
-    public ResultViewV1(PrintStream printStream) {
+    public ResultPresentationV1(PrintStream printStream) {
         log.info("ResultViewV1 에서는 DISPLAY_CAR_INDEX 만 표시여부를 결정할 수 있습니다");
         this.printStream = printStream;
     }

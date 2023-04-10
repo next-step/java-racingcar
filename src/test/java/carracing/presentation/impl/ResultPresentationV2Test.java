@@ -1,10 +1,10 @@
-package carracing.ui.impl;
+package carracing.presentation.impl;
 
 import carracing.repository.RoundRepository;
 import carracing.service.RacingService;
 import carracing.domain.Round;
 import carracing.domain.Score;
-import carracing.ui.ResultView;
+import carracing.presentation.ResultPresentation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
@@ -22,16 +22,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ResultViewV2Test {
+public class ResultPresentationV2Test {
     private static final Logger log = Logger.getLogger("ResultViewV2Test");
-    private ResultView resultView;
+    private ResultPresentation resultPresentation;
     private OutputStream outputStream;
     private RacingService racingService;
 
     @BeforeEach
     public void beforeEach() {
         this.outputStream = new ByteArrayOutputStream();
-        this.resultView = new ResultViewV2(new PrintStream(new PrintStream(outputStream)));
+        this.resultPresentation = new ResultPresentationV2(new PrintStream(new PrintStream(outputStream)));
         this.racingService = new RacingService(new RoundRepository());
     }
 
