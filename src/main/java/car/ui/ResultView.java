@@ -13,7 +13,7 @@ public class ResultView {
 		System.out.println(INIT_PRINT_TEXT);
 	}
 
-	public static void printCars(List<Car> cars) {
+	public static void printCarsLocation(List<Car> cars) {
 		for (Car car : cars) {
 			print(car.currentLocation());
 		}

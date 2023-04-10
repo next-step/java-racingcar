@@ -1,5 +1,7 @@
 package car;
 
+import java.util.List;
+
 import car.ui.InputView;
 import car.ui.ResultView;
 
@@ -9,15 +11,16 @@ public class CarMain {
 		InputView inputView = new InputView();
 		inputView.input();
 
-		Car car = new Car();
+		CarFactory carFactory = new CarFactory();
+		List<Car> cars = carFactory.createCars();
 		for (int i = 0; i < inputView.carCount; i++) {
-			car.addCar();
+			carFactory.addCar(cars);
 		}
 
 		ResultView.initPrint();
 		for (int i = 0; i < inputView.tryCount; i++) {
-			car.moveCars();
-			ResultView.printCars(car.getCars());
+			carFactory.moveCars(cars);
+			ResultView.printCarsLocation(cars);
 		}
 	}
 }
