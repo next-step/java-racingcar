@@ -1,4 +1,4 @@
-package carracing.logic;
+package carracing.service;
 
 import carracing.repository.RoundRepository;
 import carracing.service.RacingService;

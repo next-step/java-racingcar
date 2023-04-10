@@ -1,4 +1,4 @@
-package carracing.logic.type;
+package carracing.domain;
 
 import carracing.domain.Score;
 import org.junit.jupiter.api.DisplayName;
