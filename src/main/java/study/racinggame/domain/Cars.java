@@ -1,6 +1,6 @@
 package study.racinggame.domain;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Cars {
@@ -10,10 +10,7 @@ public class Cars {
     this.cars = cars;
   }
 
-  public void forwardCars() {
-    for (Car car : cars) {
-      car.forward(new RacingGameStrategy());
-      car.printDistance();
-    }
+  public List<Car> unmodifiableCars() {
+    return Collections.unmodifiableList(cars);
   }
 }

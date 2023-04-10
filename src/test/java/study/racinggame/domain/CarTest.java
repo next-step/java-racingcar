@@ -46,7 +46,7 @@ public class CarTest {
     car.forward(() -> true);
     car.forward(() -> true);
 
-    car.printDistance();
+    System.out.println("-".repeat(car.distance()));
     assertEquals("---", outputStreamCaptor.toString().trim());
   }
 

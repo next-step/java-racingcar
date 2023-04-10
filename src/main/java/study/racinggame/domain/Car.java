@@ -17,14 +17,4 @@ public class Car {
       distance++;
     }
   }
-
-  public void printDistance() {
-    String printedDistance = "";
-
-    for (int i = 0; i < distance; i++) {
-      printedDistance += "-";
-    }
-
-    System.out.println(printedDistance);
-  }
 }
