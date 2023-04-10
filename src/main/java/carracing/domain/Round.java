@@ -1,36 +1,42 @@
 package carracing.domain;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.function.IntUnaryOperator;
 
 public class Round implements Comparable<Round> {
     private static final int FIRST_ROUND_VALUE = 1;
-    private final int value;
-
-    public Round(int value) {
+    private static final IntUnaryOperator validate = value -> {
         if (value < FIRST_ROUND_VALUE) {
-            throw new RuntimeException("라운드는 1부터 시작하므로 항상 1 이상입니다");
+            return value;
         }
-        this.value = value;
-    }
+        throw new RuntimeException("라운드는 1부터 시작하므로 항상 1 이상입니다");
+    };
+    private int id;
+    private List<Score> scoreList;
+    private List<String> record;
 
-    public int toInt() {
-        return value;
+    public Round(int id) {
+        this.id = validate.applyAsInt(id);
     }
 
     public Round previousRound() {
         if (isFirstRound()) {
             return this;
         }
-        return new Round(value - 1);
+        return new Round(id - 1);
     }
 
     public boolean isFirstRound() {
-        return this.value == FIRST_ROUND_VALUE;
+        return this.id == FIRST_ROUND_VALUE;
     }
+
+
+
 
     @Override
     public int compareTo(Round other) {
-        return Integer.compare(this.toInt(), other.toInt());
+        return Integer.compare(this.getId(), other.getId());
     }
 
     @Override
@@ -38,11 +44,19 @@ public class Round implements Comparable<Round> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Round round = (Round) o;
-        return value == round.value;
+        return id == round.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(value);
+        return Objects.hash(id);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

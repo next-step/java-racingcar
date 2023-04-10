@@ -1,7 +1,6 @@
 package carracing.repository;
 
 import carracing.domain.Record;
-import carracing.domain.Score;
 import carracing.domain.Round;
 
 import java.util.ArrayList;
@@ -11,23 +10,28 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class RoundRepository {
-    private final Map<Round, List<Score>> roundToScoreListMap;
-    private final Map<Round, Record> roundToRecordMap;
+    private final Map<Integer, Round> roundDatabase;
+    private static int AUTOINCREMENT_INDEX = 1;
 
     public RoundRepository() {
-        //Map<Round, List<Score>> roundToScoreListMap, Map<Round, Record> roundToRecordMap
-        this.roundToScoreListMap = new HashMap<>();
-        this.roundToRecordMap = new HashMap<>();
+        this.roundDatabase = new HashMap<>();
     }
 
     public List<Round> findAll() {
-        return new ArrayList<>(roundToScoreListMap.keySet())
+        return new ArrayList<>(roundDatabase.values())
             .stream()
             .sorted()
             .collect(Collectors.toList());
     }
 
-    public Map<Round, Record> roundToRecordMap() {
-        return null;
+    public Round findById(Integer roundId) {
+        return roundDatabase.computeIfAbsent(roundId, (key) -> {
+            throw new RuntimeException("Round " + key + " not found in Database");
+        });
+    }
+
+    public Round save(Round round) {
+        round.setId(AUTOINCREMENT_INDEX++);
+        return roundDatabase.put(AUTOINCREMENT_INDEX, round);
     }
 }

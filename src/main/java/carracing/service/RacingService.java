@@ -26,7 +26,7 @@ public class RacingService {
     public Map<Round, Record> recordBoardCalculation(Map<Round, List<Score>> raceResults) {
         Map<Round, Record> recordMap = new HashMap<>();
 
-        for (Round round : this.getRounds()) {
+        for (Round round : this.getAllRounds()) {
             List<String> recordThisRound = new ArrayList<>();
 
             for (int carIndex = 0; carIndex < raceResults.get(round).size(); carIndex++) {
@@ -58,7 +58,7 @@ public class RacingService {
 
 
     public List<String> lapSituations(Round round) {
-        Record record = this.roundRepository.roundToRecordMap().get(round);
+        Record record = this.roundRepository.(round);
         return record.toList();
     }
 
@@ -74,7 +74,7 @@ public class RacingService {
             );
     }
 
-    private List<Score> simulateSingleRoundScores(int participate) {
+    public List<Score> simulateSingleRoundScores(int participate) {
         return IntStream.generate(this::randomScore)
             .limit(participate)
             .boxed()
