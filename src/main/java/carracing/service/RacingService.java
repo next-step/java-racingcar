@@ -9,8 +9,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class RacingService {
+    private static final Random random = new Random();
+
     private static final String INITIAL_RACING_RECODE = "";
     private final RoundRepository roundRepository;
 
@@ -59,5 +64,25 @@ public class RacingService {
 
     public List<String> getData() {
         return null;
+    }
+
+    public Map<Round, List<Score>> racingStart(int participate, int iterations) {
+        return IntStream.rangeClosed(1, iterations)
+            .boxed()
+            .collect(
+                Collectors.toMap(Round::new, round -> simulateSingleRoundScores(participate))
+            );
+    }
+
+    private List<Score> simulateSingleRoundScores(int participate) {
+        return IntStream.generate(this::randomScore)
+            .limit(participate)
+            .boxed()
+            .map(Score::new)
+            .collect(Collectors.toList());
+    }
+
+    public int randomScore() {
+        return random.nextInt(9);
     }
 }

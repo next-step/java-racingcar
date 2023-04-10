@@ -15,7 +15,6 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RaceApplication {
-    private static final Random random = new Random();
 
     private final InputPresentation inputPresentation;
     private final ResultPresentation resultPresentation;
@@ -37,6 +36,11 @@ public class RaceApplication {
     }
 
     public void run() {
+        int participates = inputPresentation.participates();
+        int iterations = inputPresentation.iterations();
+
+        racingService.racingStart(participates, iterations);
+
 //        resultView.printResult(
 //            new RacingService(
 //                this.racingStart(inputView.participates(), inputView.iterations())
@@ -44,23 +48,6 @@ public class RaceApplication {
 //        );
     }
 
-    public Map<Round, List<Score>> racingStart(int participate, int iterations) {
-        return IntStream.rangeClosed(1, iterations)
-            .boxed()
-            .collect(
-                Collectors.toMap(Round::new, round -> simulateSingleRoundScores(participate))
-            );
-    }
 
-    private List<Score> simulateSingleRoundScores(int participate) {
-        return IntStream.generate(this::randomScore)
-            .limit(participate)
-            .boxed()
-            .map(Score::new)
-            .collect(Collectors.toList());
-    }
 
-    public int randomScore() {
-        return random.nextInt(9);
-    }
 }
