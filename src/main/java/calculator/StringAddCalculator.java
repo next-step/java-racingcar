@@ -8,21 +8,21 @@ import java.util.stream.Collectors;
 
 public class StringAddCalculator {
 
-    private static final int ZERO = 0;
+    private static final int DEFAULT_VALUE = 0;
 
     public static int splitAndSum(String text) {
         if(isEmpty(text)) {
-            return ZERO;
+            return DEFAULT_VALUE;
         }
-        return sum(toNumber(split(text)));
+        List<PositiveNumber> numbers = toNumber(split(text));
+        return sum(numbers);
     }
 
     private static String[] split(String text) {
-        StringSplitter splitter = new StringSplitter(text);
-        return splitter.split();
+        return StringSplitter.split(text);
     }
 
-    private static List<PositiveNumber> toNumber(String[] numbers) throws NegativeNumberException {
+    private static List<PositiveNumber> toNumber(String[] numbers) {
         return Arrays.stream(numbers)
                 .map(PositiveNumber::new)
                 .collect(Collectors.toList());
