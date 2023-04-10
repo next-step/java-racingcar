@@ -3,7 +3,7 @@ package racingcar;
 public class Car {
 
     public static final int MOVE_LIMIT = 4;
-    private int distance = 0;
+    private int distance = 1;
 
     public void move(int random) {
         if (isMovePossible(random)) {

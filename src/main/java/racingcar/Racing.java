@@ -58,4 +58,30 @@ public class Racing {
     public List<List<Integer>> getRaceRecord() {
         return raceRecord;
     }
+
+    public void printRaceResult(){
+        System.out.println("실행결과");
+        if(raceRecord.size() == 0){
+            return;
+        }
+        for (List<Integer> results : raceRecord) {
+            printGame(results);
+        }
+
+
+    }
+
+    private void printGame(List<Integer> results) {
+        for (Integer result : results) {
+            printDistance(result);
+        }
+        System.out.println();
+    }
+
+    private void printDistance(Integer result) {
+        for (int i = 0; i < result; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+    }
 }

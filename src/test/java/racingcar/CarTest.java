@@ -14,7 +14,7 @@ public class CarTest {
     void move() {
         Car car = new Car();
         car.move(4);
-        assertThat(car.getDistance()).isEqualTo(1);
+        assertThat(car.getDistance()).isEqualTo(2);
     }
 
     @DisplayName("4미만일 경우 값 그대로")
@@ -22,12 +22,12 @@ public class CarTest {
     void stop() {
         Car car = new Car();
         car.move(3);
-        assertThat(car.getDistance()).isEqualTo(0);
+        assertThat(car.getDistance()).isEqualTo(1);
     }
 
     @Test
     void 생성시_distace() {
         Car car = new Car();
-        assertThat(car.getDistance()).isEqualTo(0);
+        assertThat(car.getDistance()).isEqualTo(1);
     }
 }
