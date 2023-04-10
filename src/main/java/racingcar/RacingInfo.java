@@ -8,5 +8,5 @@ import java.util.ArrayList;
 public class RacingInfo {
     private int numOfCars;
     private int numOfTries;
-    private ArrayList<Car> cars;
+    private ArrayList<CarInfo> carInfos;
 }
