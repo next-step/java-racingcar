@@ -3,7 +3,6 @@ package racingcar.strategy;
 import java.util.Random;
 
 public class RandomMoveStrategy implements MoveStrategy {
-
     private final RandomStrategy randomStrategy;
     private final Random random;
     private final int threshold;

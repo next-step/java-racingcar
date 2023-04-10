@@ -1,9 +1,7 @@
 package racingcar;
 
 import org.junit.jupiter.api.Test;
-import racingcar.strategy.AlwaysMoveStrategy;
-import racingcar.strategy.AlwaysStopStrategy;
-import racingcar.strategy.MoveStrategy;
+import racingcar.strategy.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -11,19 +9,19 @@ class RacingCarTest {
 
     @Test
     void 레이싱카가_움직이면_position이_1증가한다() {
-        MoveStrategy moveStrategy = new AlwaysMoveStrategy();
-        RacingCar racingCar = new RacingCar(moveStrategy);
+        TestAlwaysMoveStrategy testAlwaysMoveStrategy = new TestAlwaysMoveStrategy();
+        RacingCar racingCar = new RacingCar("pobi", testAlwaysMoveStrategy);
         racingCar.goOrStop();
-        assertThat(racingCar.getPosition())
+        assertThat(testAlwaysMoveStrategy.getPosition())
             .isEqualTo(1);
     }
 
     @Test
     void 레이싱카가_멈추면_position이_증가하지않는다() {
-        MoveStrategy moveStrategy = new AlwaysStopStrategy();
-        RacingCar racingCar = new RacingCar(moveStrategy);
+        TestAlwaysStopStrategy testAlwaysStopStrategy = new TestAlwaysStopStrategy();
+        RacingCar racingCar = new RacingCar("pobi", testAlwaysStopStrategy);
         racingCar.goOrStop();
-        assertThat(racingCar.getPosition())
+        assertThat(testAlwaysStopStrategy.getPosition())
             .isZero();
     }
 }
