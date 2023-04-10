@@ -32,10 +32,11 @@ public class RaceApplication {
     }
 
     private static RaceApplication initialize() {
+        RacingService racingServiceLocal = new RacingService(new RoundRepository());
         return new RaceApplication(
             new InputPresentation(System.in, System.out),
-            new ResultPresentationV0(System.out),
-            new RacingService(new RoundRepository())
+            new ResultPresentationV0(System.out, racingServiceLocal),
+            racingServiceLocal
         );
     }
 
