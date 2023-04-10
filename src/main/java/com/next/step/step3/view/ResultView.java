@@ -1,8 +1,7 @@
 package com.next.step.step3.view;
 
 import com.next.step.step3.domain.Car;
-
-import java.util.List;
+import com.next.step.step3.domain.Cars;
 
 public class ResultView {
 
@@ -14,8 +13,8 @@ public class ResultView {
         System.out.println(RESULT_TITLE);
     }
 
-    public void showResultContents(List<Car> cars) {
-        for (Car car : cars) {
+    public void showResultContents(Cars cars) {
+        for (Car car : cars.carElements()) {
             System.out.println(car.position());
         }
         System.out.println(RESULT_DELIMITER);

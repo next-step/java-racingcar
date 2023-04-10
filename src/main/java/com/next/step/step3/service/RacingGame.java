@@ -1,17 +1,20 @@
 package com.next.step.step3.service;
 
-import com.next.step.step3.domain.Car;
+import com.next.step.step3.domain.Cars;
 import com.next.step.step3.dto.InputDto;
 import com.next.step.step3.util.CarsFactory;
-
-import java.util.List;
+import com.next.step.step3.view.ResultView;
 
 public class RacingGame {
 
     public void executeRace(InputDto inputDto) {
-        GameExecutor gameExecutor = new GameExecutor();
+        Cars cars = new Cars(CarsFactory.createCars(inputDto));
+        ResultView resultView = new ResultView();
 
-        List<Car> cars = CarsFactory.createCars(inputDto);
-        gameExecutor.executeGame(cars, inputDto);
+        resultView.showResultTitle();
+        for (int attempt = 0; attempt < inputDto.numOfAttempts(); attempt++) {
+            cars.moveCars();
+            resultView.showResultContents(cars);
+        }
     }
 }
