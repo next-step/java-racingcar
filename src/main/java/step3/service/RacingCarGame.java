@@ -1,4 +1,9 @@
-package step3;
+package step3.service;
+
+import step3.domain.Car;
+import step3.domain.InputCar;
+import step3.view.InputView;
+import step3.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,20 +19,18 @@ public class RacingCarGame implements GameStrategy {
     }
 
     @Override
-    public int inputCar() {
-        return InputView.inputCarCount();
+    public InputCar input() {
+        final int carCount = InputView.inputCarCount();
+        final int retry = InputView.inputRetryCount();
+
+        return new InputCar(carCount, retry);
     }
 
     @Override
-    public int inputRetry() {
-        return InputView.inputRetryCount();
-    }
+    public void playGame(InputCar inputCar) {
+        initCarStatus(inputCar.getCount());
 
-    @Override
-    public void playGame(int carCount, int retry) {
-        initCarStatus(carCount);
-
-        for (int i = 0; i < retry; i++) {
+        for (int i = 0; i < inputCar.getRetry(); i++) {
             playRacingCar();
             printCarStatus();
         }
