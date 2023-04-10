@@ -7,13 +7,7 @@ public class Parser {
     private static final String COMMA = ",|:";
     private static final String CUSTOM_COMMA = "//(.)\n(.*)";
 
-    private String text;
-
-    public Parser(String text) {
-        this.text = text;
-    }
-
-    public String findDelimiter() {
+    public static String findDelimiter(String text) {
         Pattern pattern = Pattern.compile(CUSTOM_COMMA);
         Matcher matcher = pattern.matcher(text);
 
@@ -23,7 +17,7 @@ public class Parser {
         return COMMA;
     }
 
-    public String findText() {
+    public static String findText(String text) {
         Pattern pattern = Pattern.compile(CUSTOM_COMMA);
         Matcher matcher = pattern.matcher(text);
 
