@@ -2,24 +2,32 @@ package study;
 
 import java.util.List;
 
-import static java.lang.System.out;
-
 public class ResultView {
-    public static void raceStart() {
-        out.println("실행 결과");
+
+    // 우승한 자동차를 출력
+    public static String displayWinningCars(List<Car> winningCars) {
+        return displayCarsNames(winningCars) + "가 최중 우승했습니다.";
     }
 
-    public static void displayCarLocation(Car car) {
-        for (int j = 0; j < car.getCurrentLocation(); j++) {
-            out.print("-");
+    // 자동차 이름을 출력
+    public static String displayCarsNames(List<Car> cars) {
+        if(cars.isEmpty()){
+            return "";
         }
-        out.println();
-    }
 
-    public static void displayCars(List<Car> cars) {
+        String result = "";
         for (Car car : cars) {
-            ResultView.displayCarLocation(car);
+            result += car.getName() + ", ";
         }
-        out.println();
+        return result.substring(0, result.length()-2);
+    }
+
+    // 경기중인 자동차를 출력
+    public static String displayRacingCars(List<Car> racingCars) {
+        String result = "";
+        for (Car racingCar : racingCars) {
+            result += racingCar.displayCurrentStatus();
+        }
+        return result;
     }
 }

@@ -33,4 +33,25 @@ public class CarTest {
         assertThat(car.getCurrentLocation()).isEqualTo(2);
     }
 
+
+    @Test
+    void 이름_부여_테스트() {
+        Car testCar = new Car(1, "test");
+        assertThat(testCar.getName()).isEqualTo("test");
+    }
+
+    @Test
+    void 이름의_글자수는_5자제한이다() {
+        assertThatThrownBy(() -> {
+            new Car(1, "abcdef");
+        }).isInstanceOf(RuntimeException.class)
+                .hasMessageContaining("이름은 5글자를 초과할 수 없습니다.");
+
+    }
+
+    @Test
+    void 현재_자동차_상태() {
+        Car car = new Car(3, "name");
+        assertThat(car.displayCurrentStatus()).isEqualTo("name : ---\n");
+    }
 }
