@@ -10,12 +10,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class AutomobileFederation {
+public class RacingService {
     private static final String INITIAL_RACING_RECODE = "";
     private final Map<Round, List<Score>> roundToScoreListMap;
     private final Map<Round, Record> roundToRecordMap;
 
-    public AutomobileFederation(Map<Round, List<Score>> roundToScoreListMap) {
+    public RacingService(Map<Round, List<Score>> roundToScoreListMap) {
         this.roundToScoreListMap = roundToScoreListMap;
         this.roundToRecordMap = recordBoardCalculation(roundToScoreListMap);
     }

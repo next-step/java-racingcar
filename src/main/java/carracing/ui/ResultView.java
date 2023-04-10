@@ -1,7 +1,7 @@
 package carracing.ui;
 
-import carracing.logic.AutomobileFederation;
+import carracing.logic.RacingService;
 
 public interface ResultView {
-    void printResult(AutomobileFederation federation);
+    void printResult(RacingService federation);
 }

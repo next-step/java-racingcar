@@ -1,6 +1,6 @@
 package carracing;
 
-import carracing.logic.AutomobileFederation;
+import carracing.logic.RacingService;
 import carracing.logic.type.Round;
 import carracing.logic.type.Score;
 import carracing.ui.InputView;
@@ -34,7 +34,7 @@ public class RaceApplication {
 
     public void run() {
         resultView.printResult(
-            new AutomobileFederation(
+            new RacingService(
                 this.racingStart(inputView.participates(), inputView.iterations())
             )
         );

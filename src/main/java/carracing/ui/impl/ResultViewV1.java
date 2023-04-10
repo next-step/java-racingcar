@@ -1,6 +1,6 @@
 package carracing.ui.impl;
 
-import carracing.logic.AutomobileFederation;
+import carracing.logic.RacingService;
 import carracing.ui.ResultView;
 
 import java.io.PrintStream;
@@ -25,22 +25,22 @@ public class ResultViewV1 implements ResultView {
     }
 
     @Override
-    public void printResult(AutomobileFederation federation) {
-        Consumer<AutomobileFederation> printer = DISPLAY_CAR_INDEX ?
+    public void printResult(RacingService federation) {
+        Consumer<RacingService> printer = DISPLAY_CAR_INDEX ?
             this::printResultWithCarIndex :
             this::printResultWithoutCarIndex;
 
         printer.accept(federation);
     }
 
-    public void printResultWithoutCarIndex(AutomobileFederation federation) {
+    public void printResultWithoutCarIndex(RacingService federation) {
         federation.getRounds().forEach(round -> {
             federation.lapSituations(round).forEach(printStream::println);
             printStream.println();
         });
     }
 
-    public void printResultWithCarIndex(AutomobileFederation federation) {
+    public void printResultWithCarIndex(RacingService federation) {
         federation.getRounds().forEach(round -> {
             AtomicInteger indexHolder = new AtomicInteger();
             federation.lapSituations(round).forEach(s -> {

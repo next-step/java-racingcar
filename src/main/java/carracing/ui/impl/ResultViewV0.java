@@ -1,6 +1,6 @@
 package carracing.ui.impl;
 
-import carracing.logic.AutomobileFederation;
+import carracing.logic.RacingService;
 import carracing.ui.ResultView;
 
 import java.io.PrintStream;
@@ -18,7 +18,7 @@ public class ResultViewV0 implements ResultView {
     }
 
     @Override
-    public void printResult(AutomobileFederation federation) {
+    public void printResult(RacingService federation) {
         federation.getRounds().forEach(round -> {
             federation.lapSituations(round).forEach(printStream::println);
             printStream.println();

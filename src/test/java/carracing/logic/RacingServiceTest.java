@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-public class AutomobileFederationTest {
+public class RacingServiceTest {
     private static final Logger log = Logger.getLogger("AutomobileFederationTest");
     private static final Map<Round, List<Score>> inputRoundToScoreListMap = Map.of(
             new Round(5), Arrays.asList(new Score(1), new Score(4), new Score(5)),
@@ -21,11 +21,11 @@ public class AutomobileFederationTest {
             new Round(4), Arrays.asList(new Score(8), new Score(8), new Score(8))
     );
 
-    AutomobileFederation federation;
+    RacingService federation;
 
     @BeforeEach
     public void beforeEach() {
-        federation = new AutomobileFederation(inputRoundToScoreListMap);
+        federation = new RacingService(inputRoundToScoreListMap);
     }
 
     @DisplayName("입력 결기경과의 수 대로 ")

@@ -1,6 +1,6 @@
 package carracing.ui.impl;
 
-import carracing.logic.AutomobileFederation;
+import carracing.logic.RacingService;
 import carracing.logic.type.Round;
 import carracing.logic.type.Score;
 import carracing.ui.ResultView;
@@ -65,13 +65,13 @@ public class ResultViewV0Test {
                 "\n";
 
         //when
-        AutomobileFederation automobileFederation = new AutomobileFederation(inputRoundToScoreListMap);
-        resultView.printResult(automobileFederation);
+        RacingService racingService = new RacingService(inputRoundToScoreListMap);
+        resultView.printResult(racingService);
 
         //then
         assertAll(
                 () -> assertEquals(output, outputStream.toString()),
-                () -> assertThat(automobileFederation.getRounds()).hasSize(inputRoundToScoreListMap.size())
+                () -> assertThat(racingService.getRounds()).hasSize(inputRoundToScoreListMap.size())
         );
     }
 }

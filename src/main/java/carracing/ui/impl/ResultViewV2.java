@@ -1,6 +1,6 @@
 package carracing.ui.impl;
 
-import carracing.logic.AutomobileFederation;
+import carracing.logic.RacingService;
 import carracing.ui.ResultView;
 
 import java.io.PrintStream;
@@ -29,7 +29,7 @@ public class ResultViewV2 implements ResultView {
             printer.accept(federation);
      */
     @Override
-    public void printResult(AutomobileFederation federation) {
+    public void printResult(RacingService federation) {
         AtomicInteger indexHolder = new AtomicInteger();
 
         Consumer<String> printer = DISPLAY_CAR_INDEX ?
