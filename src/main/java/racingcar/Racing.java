@@ -25,4 +25,13 @@ public class Racing {
     public List<Car> getCars() {
         return this.cars;
     }
+
+    public void start(){
+        for (int i = 0; i < gameCount; i++) {
+            game();
+        }
+    }
+
+    private void game() {
+    }
 }
