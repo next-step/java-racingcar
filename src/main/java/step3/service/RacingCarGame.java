@@ -2,6 +2,7 @@ package step3.service;
 
 import step3.domain.Car;
 import step3.domain.InputCar;
+import step3.util.RandomValue;
 import step3.view.InputView;
 import step3.view.OutputView;
 
@@ -9,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarGame implements GameStrategy {
+
+    private static final int RANDOM_BOUND = 10;
 
     private final GameMatcher matcher;
     private List<Car> cars;
@@ -49,7 +52,9 @@ public class RacingCarGame implements GameStrategy {
     }
 
     private void checkForward(Car car) {
-        if (matcher.matcher()) {
+        final int random = RandomValue.nextInt(RANDOM_BOUND);
+
+        if (matcher.match(random)) {
             car.forwardCar();
         }
     }
