@@ -1,28 +1,31 @@
 package racing;
 
-import static racing.Car.randomNumber;
+import java.util.Random;
 
 public class ResultView {
 
+    public static final String DASH = "-";
+    public static final int FORWARD_COUNT = 5;
+
     public static void resultCars(int carCount, int racingCount){
-        String dash = "-";
+
         String[] count = new String[carCount];
         for (int i = 0; i < racingCount; i++) {
-            for (int j = 0; j < carCount; j++) {
-                if(i==0){
-                    System.out.println(dash);
-                    count[j] = dash;
-                }
-
-                if(i!=0){
-                    int randomNumber = randomNumber();
-                    if(randomNumber>5){
-                        count[j] += dash;
-                    }
-                    System.out.println(count[j]);
-                }
-            }
-            System.out.println("");
+            resultCarCount(carCount, count);
         }
+    }
+
+    private static void resultCarCount(int carCount, String[] count) {
+        for (int i = 0; i < carCount; i++) {
+            extracted(count, i);
+        }
+    }
+
+    private static void extracted(String[] count, int i) {
+        Random random = new Random();
+        if(random.nextInt(10) > FORWARD_COUNT){
+            count[i] += DASH; //비즈니스 로직이므로 빼야함
+        }
+        System.out.println(count[i]);
     }
 }
