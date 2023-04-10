@@ -2,7 +2,7 @@ package racing;
 
 import java.util.Scanner;
 
-public class InputValue {
+public class ConsoleScanner {
     private static final Scanner SCANNER = new Scanner(System.in);
 
     public static Integer inputInt() {
@@ -12,7 +12,7 @@ public class InputValue {
         } catch (Exception ex) {
             throw new RuntimeException("숫자를 입력받지못했습니다.");
         }
-        
+
         if (isPositive(number)) return number;
         throw new RuntimeException("음수를 입력했습니다.");
     }

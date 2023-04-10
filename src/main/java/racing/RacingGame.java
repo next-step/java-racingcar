@@ -14,7 +14,7 @@ public class RacingGame {
     }
 
     private static void playGame(Integer numberOfAttempts, List<Car> cars) {
-        ResultView.printResult();
+        ResultView.printHeader();
         for (int i = 0; i < numberOfAttempts; i++) {
             round(cars);
         }
@@ -29,13 +29,13 @@ public class RacingGame {
 
     private static Integer initNumberOfAttempts() {
         InputView.printNumberOfAttempts();
-        Integer numberOfAttempts = InputValue.inputInt();
+        Integer numberOfAttempts = ConsoleScanner.inputInt();
         return numberOfAttempts;
     }
 
     private static Integer initNumberOfCars() {
         InputView.printNumberOfCars();
-        Integer numberOfCars = InputValue.inputInt();
+        Integer numberOfCars = ConsoleScanner.inputInt();
         return numberOfCars;
     }
 

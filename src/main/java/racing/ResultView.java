@@ -14,7 +14,7 @@ public class ResultView {
         System.out.print(ENTER);
     }
 
-    public static void printResult() {
+    public static void printHeader() {
         System.out.println("실행 결과");
     }
 
