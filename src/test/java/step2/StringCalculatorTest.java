@@ -1,6 +1,7 @@
 package step2;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullSource;
@@ -47,6 +48,19 @@ class StringCalculatorTest {
     public void test4(String expression, int expected){
         int result = stringCalculator.calculate(expression);
 
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @DisplayName("커스텀 구분자를 지정할 수 있다")
+    @Test
+    public void test5(){
+        // given
+        // when
+        int result = stringCalculator.calculate("//;\n1;2;3");
+        int expected = 6;
+
+
+        //then
         assertThat(result).isEqualTo(expected);
     }
 
