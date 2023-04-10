@@ -4,6 +4,7 @@ public class Game {
 
     private final int carAmount;
     private final int tryAmount;
+    private final Car[] cars;
 
     public Game(final int carAmount, final int tryAmount) {
         if (carAmount < 1) {
@@ -14,6 +15,7 @@ public class Game {
         }
         this.carAmount = carAmount;
         this.tryAmount = tryAmount;
+        this.cars = createCars();
     }
 
     public int getCarAmount() {
@@ -22,5 +24,25 @@ public class Game {
 
     public int getTryAmount() {
         return tryAmount;
+    }
+
+    public void start() {
+        for (int i = 0; i < tryAmount; i++) {
+            play();
+        }
+    }
+
+    private void play() {
+        for (int j = 0; j < carAmount; j++) {
+            cars[j].push(RandomNumber.getNumber());
+        }
+    }
+
+    private Car[] createCars() {
+        Car[] cars = new Car[carAmount];
+        for (int i = 0; i < carAmount; i++) {
+            cars[i] = new Car();
+        }
+        return cars;
     }
 }

@@ -7,5 +7,6 @@ public class RacingCar {
         inputView.inputTryAmount();
 
         Game game = new Game(inputView.getCarAmount(), inputView.getTryAmount());
+        game.start();
     }
 }
