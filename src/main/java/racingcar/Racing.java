@@ -59,9 +59,9 @@ public class Racing {
         return raceRecord;
     }
 
-    public void printRaceResult(){
+    public void printRaceResult() {
         System.out.println("실행결과");
-        if(raceRecord.size() == 0){
+        if (raceRecord.size() == 0) {
             return;
         }
         for (List<Integer> results : raceRecord) {
