@@ -10,14 +10,14 @@ public class Delimiters {
 
     private Delimiters(String text) {
         initializeDelimiters();
-        validateDelimiter(text);
+        addCustomDelimiter(text);
     }
 
     public static Delimiters of(String text) {
         return new Delimiters(text);
     }
 
-    private void validateDelimiter(String text) {
+    private void addCustomDelimiter(String text) {
         if (containsCustomDelimiter(text)) {
             final String customDelimiter = String.valueOf(text.charAt(2));
             delimiters.add(customDelimiter);
