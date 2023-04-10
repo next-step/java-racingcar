@@ -49,7 +49,7 @@ public class Cars {
         return number > 0;
     }
 
-    public List<String> getWinnerNames() {
+    public List<String> getWinnerNamesAsList() {
         return this.cars.stream()
                 .filter(car -> car.getDistance() == getFurthestDistance())
                 .map(Car::getCarName)
@@ -57,7 +57,7 @@ public class Cars {
     }
 
     public String joinWinnerNames() {
-        return String.join(WINNER_JOIN_DELIMITER,getWinnerNames());
+        return String.join(WINNER_JOIN_DELIMITER, getWinnerNamesAsList());
     }
 
     public Car findFirstFurthestTraveledCar() {
