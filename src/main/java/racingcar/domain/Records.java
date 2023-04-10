@@ -5,10 +5,10 @@ import java.util.List;
 
 public class Records {
 
-    private List<Record> records;
+    private final List<Record> records;
 
-    public Records(int tryRound) {
-        records = new ArrayList<>(tryRound);
+    public Records() {
+        records = new ArrayList<>();
     }
 
     public void addRecord(Record record) {

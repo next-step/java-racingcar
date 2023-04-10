@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.domain.strategy.MoveStrategy;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,32 +15,29 @@ public class Game {
         roundCount = inputData.getRoundCount();
     }
 
-    public List<Records> playGame() {
-        Factory factory = new Factory(carCount);
-        return simulateRounds(factory);
+    public List<Records> playGame(final MoveStrategy randomMoveStrategy) {
+        CarFactory carFactory = new CarFactory(carCount);
+        return simulateRounds(carFactory, randomMoveStrategy);
     }
 
-    private List<Records> simulateRounds(final Factory factory) {
+    private List<Records> simulateRounds(final CarFactory carFactory, final MoveStrategy randomMoveStrategy) {
         List<Records> allRecords = new ArrayList<>();
 
         for (int i = 0; i < roundCount; i++) {
-            Records roundRecords = new Records(roundCount);
-            race(factory, roundRecords);
+            Records roundRecords = race(carFactory, randomMoveStrategy);
             allRecords.add(roundRecords);
         }
 
         return allRecords;
     }
 
-    private void race(final Factory factory, final Records records) {
-        for (Car car : factory.getCars()) {
-            car.move();
-            addRecord(records, car.getPosition());
+    private Records race(final CarFactory carFactory, final MoveStrategy randomMoveStrategy) {
+        Records roundRecords = new Records();
+
+        for (Car car : carFactory.getCars()) {
+            car.move(randomMoveStrategy);
+            roundRecords.addRecord(new Record(car.getPosition()));
         }
+        return roundRecords;
     }
-
-    private void addRecord(final Records records, final int position) {
-        records.addRecord(new Record(position));
-    }
-
 }

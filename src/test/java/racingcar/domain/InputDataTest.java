@@ -7,19 +7,20 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class InputDataTest {
 
-        @Test
-        @DisplayName("입력받은 자동차 대수와 시도 횟수를 저장한다.")
-        void inputData_test() {
-            // Given
-            int carCount = 5;
-            int roundCount = 10;
+    private static final int CAR_COUNT = 5;
+    private static final int ROUND_COUNT = 10;
 
-            // When
-            InputData inputData = new InputData(carCount, roundCount);
+    @Test
+    @DisplayName("입력받은 자동차 대수와 시도 횟수를 저장한다.")
+    void inputData_test() {
+        // Given & When
+        InputData inputData = new InputData(CAR_COUNT, ROUND_COUNT);
 
-            // Then
-            assertEquals(5, inputData.getCarCount());
-            assertEquals(10, inputData.getRoundCount());
-        }
+        // Then
+        assertAll(
+                () -> assertEquals(CAR_COUNT, inputData.getCarCount()),
+                () -> assertEquals(ROUND_COUNT, inputData.getRoundCount())
+        );
+    }
 
 }

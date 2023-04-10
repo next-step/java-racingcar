@@ -3,16 +3,16 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Factory {
+public class CarFactory {
 
-    private List<Car> cars;
+    private final List<Car> cars;
 
-    public Factory(int userInput) {
-        cars = createCars(userInput);
+    public CarFactory(int userInput) {
+        cars = new ArrayList<>();
+        createCars(userInput);
     }
 
     public List<Car> createCars(int carCount) {
-        cars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
             cars.add(new Car());
         }
