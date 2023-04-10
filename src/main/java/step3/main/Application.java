@@ -1,4 +1,8 @@
-package step3;
+package step3.main;
+
+import step3.service.GameStrategy;
+import step3.service.RacingCarForwardMatcher;
+import step3.service.RacingCarGame;
 
 public class Application {
 
