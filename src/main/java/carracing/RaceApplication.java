@@ -38,16 +38,7 @@ public class RaceApplication {
     public void run() {
         int participates = inputPresentation.participates();
         int iterations = inputPresentation.iterations();
-
         racingService.racingStart(participates, iterations);
-
-//        resultView.printResult(
-//            new RacingService(
-//                this.racingStart(inputView.participates(), inputView.iterations())
-//            )
-//        );
+        resultPresentation.printResult();
     }
-
-
-
 }
