@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 
 public class StringAddCalculator {
     static Pattern p = Pattern.compile("//(.)\n(.*)");
+    private static final Integer ZERO = 0;
+
     public static int splitAndSum(String text) {
         if (text == null || text.isEmpty())
             return 0;
@@ -51,7 +53,7 @@ public class StringAddCalculator {
 
     private static void hasNegative(List<Integer> numbers) {
         numbers.stream()
-            .filter(number -> number < 0)
+            .filter(number -> number < ZERO)
             .findAny().ifPresent(number -> {
                 throw new RuntimeException("Has negative number");
             });
