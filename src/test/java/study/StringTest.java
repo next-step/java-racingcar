@@ -32,9 +32,7 @@ public class StringTest {
         String result = "abc";
         int len = result.length();
             assertThatThrownBy(() -> {
-              for(int i =0; i <= len; i++){
-                  result.charAt(i);
-                }
+                result.charAt(len);
             }).isInstanceOf(IndexOutOfBoundsException.class)
                     .hasMessageContaining(String.valueOf(len))
                     .hasMessageEndingWith(String.valueOf(len));
@@ -47,9 +45,4 @@ git 버전확인하기
  */
 
     }
-
-
-
-
-
 }
