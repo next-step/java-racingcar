@@ -5,6 +5,6 @@ import org.junit.jupiter.api.Test;
 
 class CarTest {
     @Test
-    void name() {
+    void test1() {
     }
 }
