@@ -1,26 +1,18 @@
 package racingcar.model;
 
-import static racingcar.model.CarStatus.GO;
-import static racingcar.model.CarStatus.STOP;
+import racingcar.strategy.MovingStrategy;
 
 public class Car {
-    private final ForwardDecider forwardDecider;
+    private final MovingStrategy movingStrategy;
     private int distance = 0;
 
-    public Car() {
-        this.forwardDecider = new ForwardDecider();
+    public Car(MovingStrategy movingStrategy) {
+        this.movingStrategy = movingStrategy;
     }
 
-    public Car(long seed) {
-        this.forwardDecider = new ForwardDecider(seed);
-    }
-
-    public CarStatus move() {
-        if (forwardDecider.decide()) {
-            this.distance++;
-            return GO;
-        }
-        return STOP;
+    public void move() {
+        int movement = movingStrategy.movement();
+        this.distance += movement;
     }
 
     public int distance() {
