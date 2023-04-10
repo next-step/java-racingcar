@@ -20,7 +20,7 @@ public class Cars {
     }
 
     public void run() {
-        cars.forEach(car -> car.run(new RandomMovement()));
+        cars.forEach(car -> car.run(new RandomMovementStrategy()));
     }
 
     public Car getCurrentCar(int index) {

@@ -12,11 +12,9 @@ class CarTest {
     @ValueSource(ints = {4, 5, 8, 9})
     @DisplayName("이동 테스트")
     void runMoveTest(int input) {
-        int condition = 4;
         Car car = new Car(input);
-        MovementStrategy strategy = new ManualMovement(input, condition);
 
-        car.run(strategy);
+        car.run(() -> true);
 
         assertThat(car.getCurrentPosition()).isEqualTo(input + 1);
     }
@@ -27,9 +25,8 @@ class CarTest {
     void runStopTest(int input) {
         int condition = 4;
         Car car = new Car(input);
-        MovementStrategy strategy = new ManualMovement(input, condition);
 
-        car.run(strategy);
+        car.run(() -> false);
 
         assertThat(car.getCurrentPosition()).isEqualTo(input);
     }
