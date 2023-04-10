@@ -22,12 +22,4 @@ public class CarRacing {
     public void end() {
         resultView.show();
     }
-
-    public int carCount() {
-        return cars.count();
-    }
-
-    public int racingCount() {
-        return cars.racingCount();
-    }
 }

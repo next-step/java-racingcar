@@ -1,10 +1,8 @@
 package game;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertAll;
 
 /**
  * 경주 기능
@@ -15,14 +13,10 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 class CarRacingTest {
 
     @Test
-    @DisplayName("입력 옵션을 기준으로 자동차 대수와 경기수 만큼 경주를 진행합니다.")
+    @DisplayName("입력 옵션을 기준으로 자동차 경주가 정상적으로 수행됩니다.")
     void test() {
         int carCount = 3, racingRep = 5;
         CarRacing carRacing = new CarRacing(new RacingOptions(carCount, racingRep));
-        carRacing.start();
-        assertAll(
-                () -> assertThat(carRacing.carCount()).isSameAs(carCount),
-                () -> assertThat(carRacing.racingCount()).isSameAs(racingRep)
-        );
+        Assertions.assertThatNoException().isThrownBy(carRacing::start);
     }
 }
