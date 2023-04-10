@@ -23,7 +23,6 @@ class CarTest {
     @ValueSource(ints = {0, 1, 2, 3})
     @DisplayName("중지 테스트")
     void runStopTest(int input) {
-        int condition = 4;
         Car car = new Car(input);
 
         car.run(() -> false);

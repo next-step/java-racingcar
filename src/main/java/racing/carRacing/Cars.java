@@ -1,21 +1,23 @@
 package racing.carRacing;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Cars {
+    public static final int ZERO = 0;
+
     private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
+    private Cars(List<Car> cars) {
         this.cars = cars;
     }
 
-    public static Cars initCars(Count numberOfCar) {
-        List<Car> cars = new ArrayList<>();
-        while (numberOfCar.isOverZero()) {
-            numberOfCar.countDown();
-            cars.add(new Car());
-        }
+    public static Cars initCars(CarNames carNames) {
+        List<Car> cars = IntStream.range(ZERO, carNames.numberOfCars())
+                .mapToObj(carNames::matchCarName)
+                .collect(Collectors.toList());
+
         return new Cars(cars);
     }
 
