@@ -1,17 +1,35 @@
 package game;
 
 public class Car {
-    private final CarPosition position = new CarPosition();
+    private static final int MOVE_CRITERIA = 4;
+    private final CarActions carActions = new CarActions();
+    private final NumberGenerator numberGenerator;
+
+    public Car(NumberGenerator numberGenerator) {
+        this.numberGenerator = numberGenerator;
+    }
 
     public void drive() {
-        position.addRecord(CarEngine.turn());
+        addRecord(numberGenerator.generate());
+    }
+
+    public void addRecord(int number) {
+        if (isMove(number)) {
+            carActions.addMove();
+            return;
+        }
+        carActions.addStop();
+    }
+
+    private boolean isMove(int number) {
+        return number >= MOVE_CRITERIA;
     }
 
     public CarAction positionOfRep(int rep) {
-        return position.carActionRecordByRep(rep);
+        return carActions.action(rep);
     }
 
     public int moveCount() {
-        return position.carActionRecordCount();
+        return carActions.size();
     }
 }

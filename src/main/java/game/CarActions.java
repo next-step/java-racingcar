@@ -3,13 +3,9 @@ package game;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarActionRecord {
+public class CarActions {
 
     private final List<CarAction> actions = new ArrayList<>();
-
-    public List<CarAction> actions() {
-        return actions;
-    }
 
     public CarAction action(int index) {
         return actions.get(index);

@@ -19,7 +19,7 @@ class CarTest {
     @DisplayName("자동차는 주행 수 만큼 위치정보를 가지고 있다.")
     void test1() {
         int driveCount = 5;
-        Car car = new Car();
+        Car car = new Car(new RandomNumberGenerator());
         for (int i = 0; i < driveCount; i++) {
             car.drive();
         }
