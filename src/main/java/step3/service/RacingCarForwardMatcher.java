@@ -1,4 +1,4 @@
-package step3;
+package step3.service;
 
 import java.util.concurrent.ThreadLocalRandom;
 
