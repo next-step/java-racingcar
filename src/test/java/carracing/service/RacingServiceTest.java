@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class RacingServiceTest {
     private static final Logger log = Logger.getLogger("AutomobileFederationTest");
@@ -53,13 +54,14 @@ public class RacingServiceTest {
         int roundIterations = 22;
 
         //when
-        Map<Round, List<Score>> roundListMap = racingService.racingStart(11, roundIterations);
+        //Map<Round, List<Score>> roundListMap = racingService.racingStart(11, roundIterations);
 
         //then
-        assertAll(
-            () -> assertThat(roundListMap.keySet()).as("Round 숫자를 검증").hasSize(roundIterations),
-            () -> assertThat(roundListMap.values()).as("List<Score> 를 검증").hasSize(roundIterations)
-        );
+        fail();
+//        assertAll(
+//            () -> assertThat(roundListMap.keySet()).as("Round 숫자를 검증").hasSize(roundIterations),
+//            () -> assertThat(roundListMap.values()).as("List<Score> 를 검증").hasSize(roundIterations)
+//        );
     }
 
 
@@ -72,14 +74,15 @@ public class RacingServiceTest {
 
         //when
         log.info("자동차 경주의 정보 > 참가자수=[{}명], 자동차 경주의 Round 횟수=[{}판]");
-        Map<Round, List<Score>> raceResults = racingService.racingStart(participates, iterations);
-
-        //then
-        assertAll(
-            () -> assertThat(raceResults.keySet()).as("경기 반복횟수 검증").hasSize(iterations),
-            () -> assertThat(raceResults.get(new Round(1))).as("경기 참가자수 검증 - 1번경가").hasSize(participates),
-            () -> raceResults.values().forEach(s -> assertThat(s).as("경기 참가자수 검증 - 모든경가").hasSize(participates))
-        );
+        fail();
+//        Map<Round, List<Score>> raceResults = racingService.racingStart(participates, iterations);
+//
+//        //then
+//        assertAll(
+//            () -> assertThat(raceResults.keySet()).as("경기 반복횟수 검증").hasSize(iterations),
+//            () -> assertThat(raceResults.get(new Round(1))).as("경기 참가자수 검증 - 1번경가").hasSize(participates),
+//            () -> raceResults.values().forEach(s -> assertThat(s).as("경기 참가자수 검증 - 모든경가").hasSize(participates))
+//        );
     }
 
     @DisplayName("몇대의 자동차로 이동할수 있는지 지정할 수 있다")
@@ -90,13 +93,15 @@ public class RacingServiceTest {
         int iterations = 33;
 
         //when
-        Map<Round, List<Score>> roundListMap = racingService.racingStart(participate, iterations);
+//        Map<Round, List<Score>> roundListMap = racingService.racingStart(participate, iterations);
+//
+//        //then
+//        assertAll(
+//            () -> assertThat(roundListMap.keySet()).as("몇번 이동하는지 검증").hasSize(iterations),
+//            () -> assertThat(roundListMap.get(new Round(1))).as("몇대가 움직이는지 검증").hasSize(participate)
+//        );fail();
+        fail();커
 
-        //then
-        assertAll(
-            () -> assertThat(roundListMap.keySet()).as("몇번 이동하는지 검증").hasSize(iterations),
-            () -> assertThat(roundListMap.get(new Round(1))).as("몇대가 움직이는지 검증").hasSize(participate)
-        );
     }
 
 
