@@ -1,16 +1,21 @@
 package racingcar.domain;
 
 public class Car {
-    public static final int MOVE_NUMBER = 4;
-    private int position;
+    private final Position position;
 
-    public void move(int number) {
-        if (number >= MOVE_NUMBER) {
-            position++;
-        }
+    private Car(Position position) {
+        this.position = position;
     }
 
-    public int position() {
+    public static Car create() {
+         return new Car(Position.init());
+    }
+
+    public void move(int number) {
+        this.position.move(number);
+    }
+
+    public Position position() {
         return this.position;
     }
 }

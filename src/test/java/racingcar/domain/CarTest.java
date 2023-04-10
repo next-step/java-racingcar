@@ -10,28 +10,30 @@ public class CarTest {
     @DisplayName("자동차를 생산한다.")
     @Test
     void test01() {
-        Car car = new Car();
+        Car car = Car.create();
 
-        assertThat(car.position()).isEqualTo(0);
+        assertThat(car.position()).isEqualTo(Position.init());
     }
 
     @DisplayName("4 이상일 경우 전진한다.")
     @Test
     void test02() {
-        Car car = new Car();
+        Car car = Car.create();
 
-        car.move(4);
+        car.move(Position.MOVE_POSITION_CONDITION);
 
-        assertThat(car.position()).isEqualTo(1);
+        Position position = car.position();
+        assertThat(position.position()).isEqualTo(1);
     }
 
     @DisplayName("4 미만일 경우 움직이지 않는다.")
     @Test
     void test03() {
-        Car car = new Car();
+        Car car = Car.create();
 
-        car.move(3);
+        car.move(Position.MOVE_POSITION_CONDITION - 1);
 
-        assertThat(car.position()).isEqualTo(0);
+        Position position = car.position();
+        assertThat(position.position()).isEqualTo(0);
     }
 }

@@ -10,7 +10,7 @@ public class Cars {
 
     public Cars(int users) {
         for (int i = 0; i < users; i++) {
-            this.cars.add(new Car());
+            this.cars.add(Car.create());
         }
     }
 
@@ -21,8 +21,9 @@ public class Cars {
         }
     }
 
-    public List<Integer> position() {
-        List<Integer> positions = new ArrayList<>();
+    public List<Position> positions() {
+        List<Position> positions = new ArrayList<>();
+
         for (Car car : cars) {
             positions.add(car.position());
         }
