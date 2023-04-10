@@ -4,17 +4,15 @@ public class Car {
 
     private static final int MOVE_CONDITION = 4;
 
-    private static final char MOVE_MARK = '-';
-
-    private String position;
+    private Position position;
 
     public Car(String position) {
-        this.position = position;
+        this.position = new Position(position);
     }
 
     public void moveCar(int randomNum) {
         if (isMove(randomNum)) {
-            this.position += MOVE_MARK;
+            this.position.movePosition();
         }
     }
 
@@ -23,6 +21,6 @@ public class Car {
     }
 
     public String position() {
-        return this.position;
+        return this.position.position();
     }
 }
