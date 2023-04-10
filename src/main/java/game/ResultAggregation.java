@@ -4,10 +4,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class AggregationResults {
+public class ResultAggregation {
     private final List<StringBuilder> results;
 
-    public AggregationResults(int count) {
+    public ResultAggregation(int count) {
         this.results = initResult(count);
     }
 

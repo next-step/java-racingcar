@@ -10,10 +10,10 @@ public class Car {
     }
 
     public void drive() {
-        addRecord(numberGenerator.generate());
+        addAction(numberGenerator.generate());
     }
 
-    private void addRecord(int number) {
+    private void addAction(int number) {
         if (isMove(number)) {
             carActions.addMove();
             return;

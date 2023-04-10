@@ -4,11 +4,11 @@ import java.util.stream.IntStream;
 
 public class ResultView {
     private final Cars cars;
-    private final AggregationResults results;
+    private final ResultAggregation aggregation;
 
     public ResultView(Cars cars) {
         this.cars = cars;
-        this.results = new AggregationResults(cars.count());
+        this.aggregation = new ResultAggregation(cars.count());
     }
 
 
@@ -21,8 +21,8 @@ public class ResultView {
     private void aggregateResultAndShow(int rep) {
         for (int carNumber = 0; carNumber < cars.count(); carNumber++) {
             CarAction currentCarAction = cars.racingResult(carNumber, rep);
-            results.aggregate(carNumber, currentCarAction);
+            aggregation.aggregate(carNumber, currentCarAction);
         }
-        results.showResult();
+        aggregation.showResult();
     }
 }
