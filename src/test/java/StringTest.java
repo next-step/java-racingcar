@@ -1,9 +1,10 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 public class StringTest {
 
@@ -29,10 +30,12 @@ public class StringTest {
 
     @Test
     @DisplayName("문자열의 특정 위치를 입력받아 그 위치에 해당하는 문자를 반환해야 한다.")
-    void testGetCharacterAtIndex(){
+    void testGetCharacterAtIndex() {
         String input = "abc";
 
         assertEquals('c', input.charAt(2));
-        assertThrows(StringIndexOutOfBoundsException.class, ()-> input.charAt(-1));
+        assertThatThrownBy(() -> input.charAt(-1))
+                .isInstanceOf(IndexOutOfBoundsException.class)
+                .hasMessageContaining("String index out of range: -1");
     }
 }
