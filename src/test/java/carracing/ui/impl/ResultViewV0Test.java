@@ -1,8 +1,8 @@
 package carracing.ui.impl;
 
-import carracing.logic.RacingService;
-import carracing.logic.type.Round;
-import carracing.logic.type.Score;
+import carracing.logic.service.RacingService;
+import carracing.logic.domain.Round;
+import carracing.logic.domain.Score;
 import carracing.ui.ResultView;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

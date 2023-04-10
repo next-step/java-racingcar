@@ -1,5 +1,6 @@
 package carracing.logic.type;
 
+import carracing.logic.domain.Score;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

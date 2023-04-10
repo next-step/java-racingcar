@@ -1,8 +1,8 @@
-package carracing.logic;
+package carracing.logic.service;
 
-import carracing.logic.type.Record;
-import carracing.logic.type.Round;
-import carracing.logic.type.Score;
+import carracing.logic.domain.Record;
+import carracing.logic.domain.Round;
+import carracing.logic.domain.Score;
 
 import java.util.ArrayList;
 import java.util.HashMap;
