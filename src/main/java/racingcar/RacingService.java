@@ -4,25 +4,19 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class RacingService {
-    public ArrayList<CarInfo> makeCarList(int numOfCars) {
-        return new ArrayList<>(numOfCars);
+    public ArrayList<CarInfo> getCarInfos(RacingInfo racingInfo) {
+        return racingInfo.getCarInfos();
     }
 
-    public RacingInfo makeRacingInfo(UserInput userInput) {
-        RacingInfo racingInfo = new RacingInfo();
-        racingInfo.setNumOfCars(Integer.parseInt(userInput.getNumOfCars()));
-        racingInfo.setNumOfTries(Integer.parseInt(userInput.getNumOfTries()));
-        racingInfo.setCarInfos(makeCarList(Integer.parseInt(userInput.getNumOfCars())));
-        return racingInfo;
-    }
-
-    public void tryToMoveByNumOfTries(RacingInfo racingInfo) {
+    public void moveByNumOfTriesAndShowResult(RacingInfo racingInfo) {
+        ResultView resultView = new ResultView();
         for (int i = 0; i < racingInfo.getNumOfTries(); i++) {
             move(racingInfo);
+            resultView.showCurrentState(getCarInfos(racingInfo));
         }
     }
 
-    private void move(RacingInfo racingInfo) {
+    public void move(RacingInfo racingInfo) {
         racingInfo.getCarInfos().stream()
                 .map(carInfo -> {
                     carInfo.setResultOfRand(getRand(10));

@@ -4,13 +4,9 @@ import lombok.Data;
 
 @Data
 public class CarInfo {
-    private int prevDistance;
-    private int currentDistance;
+    private int prevDistance = 0;
+    private int currentDistance = 0;
     private int resultOfRand;
-
-    public CarInfo() {
-        this.currentDistance = 0;
-    }
 
     public void moveFoward() {
         prevDistance = currentDistance;
