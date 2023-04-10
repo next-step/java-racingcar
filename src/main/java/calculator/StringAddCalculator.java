@@ -14,7 +14,6 @@ import util.RegExUtils;
 import util.StringUtils;
 
 public class StringAddCalculator {
-
   private static final List<SplitArgumentValidator> splitValidatorList;
 
   static {
@@ -42,14 +41,12 @@ public class StringAddCalculator {
   }
 
   private static SplitAndSumParameter parseAndGetParameterInfo(String input) {
-    final String customSeparator = RegExUtils.extractGroup(input, CUSTOM_SEPARATOR_PATTERN,
-        CUSTOM_SEPARATOR_GROUP);
+    final String customSeparator = RegExUtils.extractGroup(input, CUSTOM_SEPARATOR_PATTERN, CUSTOM_SEPARATOR_GROUP);
 
     final boolean hasCustomSeparator = StringUtils.isNotBlank(customSeparator);
     if (hasCustomSeparator) {
       String replacedInput = replaceArgumentChunk(input, customSeparator);
-      return new SplitAndSumParameter(replacedInput, ImmutableListUtils.appendOneWith(DEFAULT_SEPARATOR_LIST, customSeparator)
-      );
+      return new SplitAndSumParameter(replacedInput, ImmutableListUtils.appendOneWith(DEFAULT_SEPARATOR_LIST, customSeparator));
     }
     return new SplitAndSumParameter(input, DEFAULT_SEPARATOR_LIST);
   }
