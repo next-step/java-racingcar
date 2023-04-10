@@ -6,20 +6,15 @@ public class StringAddCalculator {
         if(inText == null || inText.isEmpty())
             return 0;
 
+        String inTextCheckedSeparator = checkSeparator(inText);
 
-        String inTextExcluSeparator = inText;
-
-        if(inText.substring(0,2).equals("//") && inText.substring(3,4).equals("\n"))
-            inTextExcluSeparator = inText.substring(4,inText.length());
-
-
-        String [] splitInText = inTextExcluSeparator.split("[: , ;]+");
+        String [] splitInText = inTextCheckedSeparator.split("[: , ;]+");
 
         int splitAndSumResult = 0;
 
         for(String stringNum : splitInText){
 
-            int integerNum = Integer.parseInt(stringNum);
+            int integerNum = convertInteger(stringNum);
 
             splitAndSumResult += integerNum;
 
@@ -27,5 +22,21 @@ public class StringAddCalculator {
 
         return splitAndSumResult;
 
+    }
+
+    private static int convertInteger(String stringNum) {
+        int integerNum = Integer.parseInt(stringNum);
+
+        if(integerNum<0)
+            throw new RuntimeException("음수가 입력되었습니다.");
+
+        return integerNum;
+    }
+
+    private static String checkSeparator(String inText) {
+        if(inText.substring(0,2).equals("//") && inText.substring(3,4).equals("\n"))
+            return inText.substring(4, inText.length());
+
+        return inText;
     }
 }
