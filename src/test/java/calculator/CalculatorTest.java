@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import java.util.Arrays;
 
@@ -26,18 +27,17 @@ public class CalculatorTest {
     }
 
     @DisplayName("splitAndSum 메서드 - 빈 값의 경우 0 반환")
-    @Test
-    void splitAndSum() {
+    @ParameterizedTest
+    @NullAndEmptySource
+    void splitAndSum(String input) {
         //given
         Calculator calculator = new Calculator();
 
         //when
-        int result1 = calculator.splitAndSum("");
-        int result2 = calculator.splitAndSum(null);
+        int result = calculator.splitAndSum(input);
 
         //then
-        assertThat(result1).isEqualTo(0);
-        assertThat(result2).isEqualTo(0);
+        assertThat(result).isEqualTo(0);
     }
 
     @DisplayName("splitAndSum 메서드 - 값 1개 이상인 경우")
