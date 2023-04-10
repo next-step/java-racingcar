@@ -66,7 +66,7 @@ public class RacingService {
         return null;
     }
 
-    public Map<Round, List<Score>> racingStart(int participate, int iterations) {
+    public void racingStart(int participate, int iterations) {
         return IntStream.rangeClosed(1, iterations)
             .boxed()
             .collect(
