@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class StringCalculatorTest {
 
@@ -64,5 +65,11 @@ class StringCalculatorTest {
         assertThat(result).isEqualTo(expected);
     }
 
+    @DisplayName("음를 전달할 경우 RuntimeException을 발생키신다")
+    @ParameterizedTest
+    @ValueSource(strings = {"1,-2:3", "-3:4,5", "111,111:-222"})
+    public void test6(String expression){
+        assertThatThrownBy(() -> stringCalculator.calculate(expression)).isInstanceOf(RuntimeException.class);
+    }
 
 }

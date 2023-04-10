@@ -24,7 +24,8 @@ public class StringCalculator {
 
     private int calculate(String expression, String delimiter){
         return Arrays.stream(expression.split(delimiter))
-                .mapToInt(Integer::parseInt)
+                .map(PositiveInteger::from)
+                .mapToInt(PositiveInteger::getValue)
                 .sum();
     }
 
