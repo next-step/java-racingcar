@@ -10,17 +10,30 @@ import java.util.stream.Collectors;
 
 public class Calculator {
     private static final String DEFAULT_DELIMITER = "[,:]";
-    private static final String CUSTOM_DELIMITER_INPUT_FORMAT = "//(?<delimiter>.)\\n(?<numberString>.*)";
+    private static final String DELIMITER = "delimiter";
+    private static final String NUMBER_STRING = "numberString";
+    private static final String CUSTOM_DELIMITER_INPUT_REX = "//(?<" + DELIMITER + ">.)\\n(?<" + NUMBER_STRING + ">.*)";
+    private static final String NEGATIVE_VALUE_EXCEPTION_MESSAGE = "Negative values not allowed";
+    private static final Pattern CUSTOM_DELIMITER_INPUT_PATTERN = Pattern.compile(CUSTOM_DELIMITER_INPUT_REX);
 
-    private String delimiter = DEFAULT_DELIMITER;
-    private String numberString;
     private List<Integer> numbers = Collections.emptyList();
 
     public Calculator(String text) {
-        if (isNotBlank(text)) {
-            extractCustomDelimiterAndNumberString(text);
-            extractNumbersFromNumberString();
+        if (isNullOrBlank(text)) {
+            return;
         }
+
+        String delimiter = DEFAULT_DELIMITER;
+        String numberString = text;
+
+        Matcher CustomDelimiterMatcher = CUSTOM_DELIMITER_INPUT_PATTERN.matcher(text);
+
+        if(CustomDelimiterMatcher.find()) {
+            delimiter = extractDelimiter(CustomDelimiterMatcher);
+            numberString = extractNumberString(CustomDelimiterMatcher);
+        }
+
+        extractNumbersFromNumberString(numberString, delimiter);
     }
 
     public Integer sum() {
@@ -32,17 +45,15 @@ public class Calculator {
                 .sum();
     }
 
-    private void extractCustomDelimiterAndNumberString(String text) {
-        Matcher matcher = Pattern.compile(CUSTOM_DELIMITER_INPUT_FORMAT).matcher(text);
-        if (matcher.find()) {
-            this.delimiter = matcher.group("delimiter");
-            this.numberString = matcher.group("numberString");
-            return;
-        }
-        this.numberString = text;
+    private String extractDelimiter(Matcher matcher) {
+        return matcher.group(DELIMITER);
     }
 
-    private void extractNumbersFromNumberString() {
+    private String extractNumberString(Matcher matcher) {
+        return matcher.group(NUMBER_STRING);
+    }
+
+    private void extractNumbersFromNumberString(String numberString, String delimiter) {
         this.numbers = parseInt(split(numberString, delimiter));
     }
 
@@ -60,11 +71,11 @@ public class Calculator {
 
     private static Consumer<Integer> rejectNegativeValues() {
         return integer -> {
-            if (integer < 0) throw new RuntimeException("Negative values not allowed");
+            if (integer < 0) throw new RuntimeException(NEGATIVE_VALUE_EXCEPTION_MESSAGE);
         };
     }
 
-    private static boolean isNotBlank(String text) {
-        return text != null && !text.isBlank();
+    private static boolean isNullOrBlank(String text) {
+        return text == null || text.isBlank();
     }
 }
