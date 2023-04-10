@@ -11,6 +11,10 @@ public class OutputView {
     private OutputView() {
     }
 
+    public static void printResultConsole() {
+        System.out.println("\n실행 결과");
+    }
+
     public static void printAllCar(List<Car> cars) {
         cars.forEach(OutputView::printCarDistance);
 

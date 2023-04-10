@@ -33,6 +33,8 @@ public class RacingCarGame implements GameStrategy {
     public void playGame(InputCar inputCar) {
         initCarStatus(inputCar.getCount());
 
+        OutputView.printResultConsole();
+
         for (int i = 0; i < inputCar.getRetry(); i++) {
             playRacingCar();
             printCarStatus();
