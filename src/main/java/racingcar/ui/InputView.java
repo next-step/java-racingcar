@@ -5,14 +5,10 @@ public class InputView {
   private static final String ASK_TRIAL_NUMBERS = "자동차 대수는 몇 대 인가요?";
 
   public void askCarNumbers() {
-    print(ASK_CAR_NUMBERS);
+    Printer.print(ASK_CAR_NUMBERS);
   }
 
   public void askTrialNumbers() {
-    print(ASK_TRIAL_NUMBERS);
-  }
-
-  private void print(String input) {
-    System.out.println(input);
+    Printer.print(ASK_TRIAL_NUMBERS);
   }
 }
