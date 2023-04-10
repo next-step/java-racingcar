@@ -5,6 +5,7 @@ import java.util.Objects;
 public class Position {
     public static final int MOVE_POSITION_CONDITION = 4;
     public static final int ZERO = 0;
+    public static final String POSITION_VIEW = "-";
 
     private int position;
 
@@ -27,7 +28,7 @@ public class Position {
     }
 
     public String viewPosition() {
-        return "-".repeat(Math.max(0, position));
+        return POSITION_VIEW.repeat(Math.max(0, position));
     }
 
     public int position() {

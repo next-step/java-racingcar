@@ -13,6 +13,6 @@ public class OutputView {
         for (Position position : positions) {
             System.out.println(position.viewPosition());
         }
-        System.out.println("공백");
+        System.out.println();
     }
 }
