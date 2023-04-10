@@ -1,20 +1,30 @@
 package domain;
 
-public class Car {
-    private static final int RANDOM_CONDITION = 4;
-    private int distance = 0;
+import util.RandomGenerator;
 
-    public void move(int random) {
-        if (isCanMove(random)) {
+public class Car {
+    private int distance = 0;
+    private final int maxDistance;
+    private final int bound;
+    private final int condition;
+
+    public Car(int maxDistance, int bound, int condition) {
+        this.maxDistance = maxDistance;
+        this.bound = bound;
+        this.condition = condition;
+    }
+
+    public void move() {
+        if (isCanMove()) {
             distance += 1;
         }
     }
 
-    private boolean isCanMove(int random) {
-        return random >= RANDOM_CONDITION;
+    private boolean isCanMove() {
+        return distance < maxDistance &&
+                RandomGenerator.getCarRandomInt(bound) >= condition;
     }
-
-    public int getDistance() {
-        return distance;
+    public String distanceToString() {
+        return "-".repeat(Math.max(0, distance));
     }
 }
