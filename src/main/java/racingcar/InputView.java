@@ -21,4 +21,12 @@ public class InputView {
         System.out.println("시도할 회수는 몇 회 인가요?");
         this.tryAmount = scanner.nextInt();
     }
+
+    public int getCarAmount() {
+        return carAmount;
+    }
+
+    public int getTryAmount() {
+        return tryAmount;
+    }
 }

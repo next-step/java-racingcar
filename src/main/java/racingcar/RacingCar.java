@@ -5,5 +5,7 @@ public class RacingCar {
         InputView inputView = new InputView();
         inputView.inputCarAmount();
         inputView.inputTryAmount();
+
+        Game game = new Game(inputView.getCarAmount(), inputView.getTryAmount());
     }
 }
