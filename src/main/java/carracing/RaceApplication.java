@@ -18,21 +18,25 @@ public class RaceApplication {
 
     private final InputPresentation inputPresentation;
     private final ResultPresentation resultPresentation;
-    //private final RoundRepository roundRepository;
     private final RacingService racingService;
 
-    public RaceApplication(InputPresentation inputPresentation, ResultPresentation resultPresentation) {
+    public RaceApplication(InputPresentation inputPresentation, ResultPresentation resultPresentation, RacingService racingService) {
         this.inputPresentation = inputPresentation;
         this.resultPresentation = resultPresentation;
-        this.racingService = new RacingService(new RoundRepository());
+        this.racingService = racingService;
     }
 
     public static void main(String[] args) {
-        RaceApplication raceApplication = new RaceApplication(
-            new InputPresentation(System.in, System.out),
-            new ResultPresentationV0(System.out)
-        );
+        RaceApplication raceApplication = initialize();
         raceApplication.run();
+    }
+
+    private static RaceApplication initialize() {
+        return new RaceApplication(
+            new InputPresentation(System.in, System.out),
+            new ResultPresentationV0(System.out),
+            new RacingService(new RoundRepository())
+        );
     }
 
     public void run() {
