@@ -26,12 +26,11 @@ public class RacingCarTest {
     @Test
     @DisplayName("random 값이 4 이상인 경우 전진")
     void moveFowardIfRandIsGreaterThan4() {
-        // 초기 세팅
         RacingService racingService = new RacingService();
+        // 시도 횟수 1회로 세팅
         RacingInfo racingInfo = racingService.makeRacingInfo(new UserInput("5", "1"));
-
-        // 1회 전진 시도
-        racingService.moveFoward(1, racingInfo.getCarInfos());
+        // 전진 시도
+        racingService.tryToMoveByNumOfTries(racingInfo);
 
         // assert
         for (CarInfo carInfo : racingInfo.getCarInfos()) {

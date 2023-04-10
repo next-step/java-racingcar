@@ -16,16 +16,20 @@ public class RacingService {
         return racingInfo;
     }
 
-    public void moveFoward(int numToTry, ArrayList<CarInfo> carInfos) {
-        for (int i = 0; i < numToTry; i++) {
-            carInfos.stream()
-                    .map(carInfo -> {
-                        carInfo.setResultOfRand(getRand(10));
-                        return carInfo;
-                    })
-                    .filter(carInfo -> carInfo.getResultOfRand() > 4)
-                    .forEach(CarInfo::moveFoward);
+    public void tryToMoveByNumOfTries(RacingInfo racingInfo) {
+        for (int i = 0; i < racingInfo.getNumOfTries(); i++) {
+            move(racingInfo);
         }
+    }
+
+    private void move(RacingInfo racingInfo) {
+        racingInfo.getCarInfos().stream()
+                .map(carInfo -> {
+                    carInfo.setResultOfRand(getRand(10));
+                    return carInfo;
+                })
+                .filter(carInfo -> carInfo.getResultOfRand() > 4)
+                .forEach(CarInfo::moveFoward);
     }
 
     private int getRand(int bound) {
