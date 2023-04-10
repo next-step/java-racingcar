@@ -7,14 +7,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class StringAddCalculator {
-
     private static final int DEFAULT_VALUE = 0;
 
     public static int splitAndSum(String text) {
         if(isEmpty(text)) {
             return DEFAULT_VALUE;
         }
-        List<PositiveNumber> numbers = toNumber(split(text));
+        List<PositiveNumber> numbers = toNumbers(split(text));
         return sum(numbers);
     }
 
@@ -22,7 +21,7 @@ public class StringAddCalculator {
         return StringSplitter.split(text);
     }
 
-    private static List<PositiveNumber> toNumber(String[] numbers) {
+    private static List<PositiveNumber> toNumbers(String[] numbers) {
         return Arrays.stream(numbers)
                 .map(PositiveNumber::new)
                 .collect(Collectors.toList());
@@ -30,8 +29,8 @@ public class StringAddCalculator {
 
     private static int sum(List<PositiveNumber> numbers) {
         return numbers.stream()
-                .mapToInt(PositiveNumber::number)
-                .sum();
+                .reduce(new PositiveNumber("0"), PositiveNumber::add)
+                .convertToInt();
     }
 
     private static boolean isEmpty(String text) {

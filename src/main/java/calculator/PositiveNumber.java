@@ -16,9 +16,17 @@ public class PositiveNumber {
         this.number = Integer.parseInt(input);
     }
 
-     public int number() {
+    private PositiveNumber(int number) {
+        this.number = number;
+    }
+
+    public PositiveNumber add(PositiveNumber number) {
+        return new PositiveNumber(this.number + number.number);
+    }
+
+    public int convertToInt() {
         return this.number;
-     }
+    }
 
     private void validateInput(String input) {
         Matcher matcher = pattern.matcher(input);
