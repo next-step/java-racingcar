@@ -24,10 +24,6 @@ public class CarNameChunk {
         this.carNameChunk = carNameChunk;
     }
 
-    public int clientInputNumberOfCars() {
-        return carNames().length;
-    }
-
     public String[] carNames() {
         return this.carNameChunk.split(CAR_NAME_SEPARATOR);
     }

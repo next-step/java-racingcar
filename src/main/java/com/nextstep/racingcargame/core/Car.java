@@ -17,6 +17,8 @@ public class Car {
 
     private static final String CAR_START_POSITION_DISPLAY_STRING = "";
 
+    private static final String CAR_NAME_AND_DISTANCE_DELIMITER = " : ";
+
     private static final int MOVE_STEP = 1;
 
     protected Car(String carName) {
@@ -25,8 +27,16 @@ public class Car {
         this.travelDistance = CAR_START_POSITION_DISPLAY_STRING;
     }
 
-    public void printTravelDistance() {
-        printSource(travelDistance);
+    public void printTravelDistanceWithCarName() {
+        printSource(getDistanceAsPrintForm());
+    }
+
+    public String getDistanceAsPrintForm() {
+        return this.carName + CAR_NAME_AND_DISTANCE_DELIMITER + this.travelDistance;
+    }
+
+    public String getCarName() {
+        return this.carName;
     }
 
     public int getDistance() {

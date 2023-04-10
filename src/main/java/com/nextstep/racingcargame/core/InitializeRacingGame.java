@@ -17,13 +17,13 @@ public class InitializeRacingGame {
         startGame(clientInput, cars);
     }
 
-
     private static ClientInput addressQuestion() {
         return getClientInputByCarAndTryCounts();
     }
 
     private static void startGame(ClientInput clientInput, Cars cars) {
 
+        createNewLine();
         printSource(RESULT_MSG);
 
         for (int turn = 0; turn < clientInput.getNumberOfTries(); turn++) {
