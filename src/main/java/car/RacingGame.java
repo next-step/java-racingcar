@@ -1,5 +1,7 @@
 package car;
 
+import view.ResultView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,8 +18,11 @@ public class RacingGame {
     public void progress() {
         Cars cars = new Cars(createCars());
 
+        ResultView.printResultTitle();
+
         for(int i = 0; i < stageCount; i++) {
             cars.move();
+            ResultView.printCars(cars);
         }
     }
 

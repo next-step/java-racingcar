@@ -1,5 +1,6 @@
 package car;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -16,5 +17,9 @@ public class Cars {
             int randomNumber = random.nextInt(10);
             car.move(randomNumber);
         }
+    }
+
+    public List<Car> getCars() {
+        return Collections.unmodifiableList(cars);
     }
 }
