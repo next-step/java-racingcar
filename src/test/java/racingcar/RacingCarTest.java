@@ -13,10 +13,10 @@ public class RacingCarTest {
     @Test
     void getRandomNumber() {
         //given
-        RacingCar racingCar = new RacingCar();
+        RandomGenerator randomGenerator = new RandomGenerator();
 
         //when
-        int randomNumber = racingCar.getRandomNumber();
+        int randomNumber = randomGenerator.getRandomNumber();
 
         //then
         assertThat(randomNumber).isBetween(0, 9);
