@@ -74,7 +74,7 @@ car.run(() -> true);
 ---
 ### 2차 피드백 내용
 - [X] 이전 구현 내용 docs 추가
-- [ ] Cars 클래스 run 메소드 객체 주입 방식 변경
+- [X] Cars 클래스 run 메소드 객체 주입 방식 변경
   - RandomMovementStrategy 객체를 매번 생성하는 방식이 아닌 방식으로 수정
 - [ ] CarNames 위치 변경
 - [ ] 자동차 이름은 5자를 초과 검증은 Car 클래스에서 검증
