@@ -6,7 +6,7 @@ public class Main {
         final int numberOfCars = InputView.HOW_MANY_CARS.getAnswer();
         final int numberOfLabs = InputView.HOW_MANY_LABS.getAnswer();
 
-        Cars cars = new Cars(numberOfCars);
+        Cars cars = new Cars(numberOfCars, new RandomMovable());
         final CarRace carRace = new CarRace(cars, numberOfLabs);
         carRace.start();
 

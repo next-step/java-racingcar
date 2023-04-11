@@ -6,16 +6,18 @@ import java.util.stream.IntStream;
 
 public class Cars {
     private final List<Car> cars;
+    private final Movable movable;
 
-    public Cars(int numberOfCars) {
+    public Cars(int numberOfCars, Movable movable) {
         this.cars = IntStream.range(0, numberOfCars)
                 .mapToObj(e -> new Car())
                 .collect(Collectors.toList());
+        this.movable = movable;
     }
 
     public void move() {
         for (Car car : cars) {
-            car.move();
+            car.move(movable.isMovable());
         }
     }
 
