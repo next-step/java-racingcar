@@ -22,10 +22,10 @@ public class CarTest {
         int randomValue = 5;
 
         //when
-        int distance = car.moveOrStop(randomValue);
+        car.moveForward(randomValue);
 
         //then
-        assertThat(distance).isEqualTo(randomValue);
+        assertThat(car.getPosition()).isEqualTo(Car.GO);
     }
 
     @Test
@@ -34,9 +34,9 @@ public class CarTest {
         int randomValue = 3;
 
         //when
-        int distance = car.moveOrStop(randomValue);
+        car.moveForward(randomValue);
 
         //then
-        assertThat(distance).isEqualTo(STOP);
+        assertThat(car.getPosition()).isEqualTo(STOP);
     }
 }
