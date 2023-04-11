@@ -14,33 +14,17 @@ public class RacingService {
     private final RoundRepository roundRepository;
 
     public RacingService(RoundRepository roundRepository) {
-        this.roundRepository = new RoundRepository();
+        this.roundRepository = roundRepository;
     }
-
-//    public void racingStart(int participate, int iterations) {
-//         IntStream.rangeClosed(1, iterations)
-//            .boxed()
-//            .collect(
-//                Collectors.toMap(Round::new, round -> simulateSingleRoundScores(participate))
-//            );
-//    }
-//
-//    public List<Score> simulateSingleRoundScores(int participate) {
-//        return IntStream.generate(this::randomScore)
-//            .limit(participate)
-//            .boxed()
-//            .map(Score::new)
-//            .collect(Collectors.toList());
-//    }
 
     private int randomScore() {
         return random.nextInt(9);
     }
 
     public void racingStart(int participates, int iterations) {
-        IntStream.rangeClosed(1, iterations)
+         IntStream.rangeClosed(1, participates)
             .boxed()
-            .forEach(integer -> roundStart(participates));
+            .forEach(integer -> roundStart(iterations));
     }
 
     public List<Round> racingResults() {
@@ -48,14 +32,12 @@ public class RacingService {
     }
 
     private void roundStart(int participates) {
-        roundRepository.save(
-            new Round(
-                IntStream.rangeClosed(1, participates)
-                    .boxed()
-                    .map(s -> randomScore())
-                    .map(Score::new)
-                    .collect(Collectors.toList())
-            )
-        );
+        Round round = new Round(
+            IntStream.rangeClosed(1, participates)
+                .boxed()
+                .map(s -> randomScore())
+                .map(Score::new)
+                .collect(Collectors.toList()));
+        roundRepository.save(round);
     }
 }
