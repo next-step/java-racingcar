@@ -2,11 +2,10 @@ package racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.domain.RacingCar;
 import racing.domain.RacingGame;
 import racing.strategy.MoveStrategy;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -14,17 +13,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RacingGameTest {
 
     @Test
-    @DisplayName("경기 정보 받는 테스트")
+    @DisplayName("경기 생성 테스트")
     void racingGameInfo() {
-        PrintStream originalOut = System.out;
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
         int car = 5;
         int cycle = 10;
-        RacingGame game = new RacingGame(car, cycle);
-        game.info();
-        assertThat(outContent.toString().trim()).isEqualTo("자동차 수: " + car + ", 사이클 수: " + cycle);
-        System.setOut(originalOut);
+        RacingGame game = new RacingGame(car);
+        assertThat(game).isNotNull();
+
+        List<RacingCar> carList = game.getGameCars();
+        assertThat(carList.size()).isEqualTo(car);
+        for (RacingCar racingCar : carList) {
+            assertThat(racingCar).isNotNull();
+            assertThat(racingCar.getPosition()).isEqualTo(0);
+        }
     }
 
     @Test
@@ -32,11 +33,13 @@ class RacingGameTest {
     void racingGameStart() {
         int car = 5;
         int cycle = 3;
-        RacingGame game = new RacingGame(car, cycle);
+        RacingGame game = new RacingGame(car);
         MoveStrategy moveStrategy = new FixedRandomForwardStrategy(5);
         game.setMoveStrategyOfCars(moveStrategy);
 
-        game.start();
+        for (int i = 0; i < cycle; i++) {
+            game.progressCycle();
+        }
         List<Integer> result = game.result();
         for (Integer integer : result) {
             assertThat(integer).isEqualTo(cycle);
