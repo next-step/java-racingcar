@@ -1,21 +1,17 @@
 package carracing;
 
-import carracing.repository.RoundRepository;
-import carracing.service.RacingService;
-import carracing.domain.Round;
-import carracing.domain.Score;
 import carracing.presentation.InputPresentation;
 import carracing.presentation.ResultPresentation;
 import carracing.presentation.impl.ResultPresentationV0;
+import carracing.repository.RoundRepository;
+import carracing.service.RacingService;
 
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class RaceApplication {
 
+    public static final Map<Class<?>, Object> ioc = new HashMap<>();
     private final InputPresentation inputPresentation;
     private final ResultPresentation resultPresentation;
     private final RacingService racingService;
@@ -32,11 +28,14 @@ public class RaceApplication {
     }
 
     private static RaceApplication initialize() {
-        RacingService racingServiceLocal = new RacingService(new RoundRepository());
+        ioc.put(RoundRepository.class, new RoundRepository());
+        ioc.put(RacingService.class, new RacingService((RoundRepository) ioc.get(RoundRepository.class)));
+        ioc.put(ResultPresentationV0.class, new ResultPresentationV0(System.out, (RacingService) ioc.get(RacingService.class)));
+        ioc.put(InputPresentation.class, new InputPresentation(System.in, System.out));
         return new RaceApplication(
-            new InputPresentation(System.in, System.out),
-            new ResultPresentationV0(System.out, racingServiceLocal),
-            racingServiceLocal
+            (InputPresentation) ioc.get(InputPresentation.class),
+            (ResultPresentationV0) ioc.get(ResultPresentationV0.class),
+            (RacingService) ioc.get(RacingService.class)
         );
     }
 
