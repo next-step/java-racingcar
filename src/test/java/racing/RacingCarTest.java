@@ -3,6 +3,10 @@ package racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import racing.domain.RacingCar;
+import racing.strategy.MoveStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,18 +19,21 @@ public class RacingCarTest {
         assertThat(actual).isNotNull();
     }
 
-    @Test
+    @ParameterizedTest(name = "{displayName} - 값: {0}")
+    @ValueSource(ints = {0, 3, 4, 9})
     @DisplayName(("자동차 전진 테스트"))
-    void ongoing() {
+    void ongoing(int randomValue) {
         RacingCar car = new RacingCar();
-        float REPEAT_NUMBER = 10000;
-        for (int i = 0; i < REPEAT_NUMBER; i++) {
-            car.ongoing();
-        }
+        MoveStrategy moveStrategy = new FixedRandomForwardStrategy(randomValue);
+        car.setMoveStrategy(moveStrategy);
+        car.move();
 
-        float actual = car.getNumberOfOngoing() / REPEAT_NUMBER;
-        System.out.println("actual = " + actual);
-        assertThat(actual >= 0.55 && actual <= 0.65).isTrue();
+        int actual = car.getPosition();
+        if (randomValue >= 4) {
+            assertThat(actual).isEqualTo(1);
+        } else {
+            assertThat(actual).isEqualTo(0);
+        }
     }
 }
 
