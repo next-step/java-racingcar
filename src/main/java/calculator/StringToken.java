@@ -1,14 +1,16 @@
 package calculator;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class StringToken {
 
     private static final String DEFAULT_VALUE = "0";
     private static final String DEFAULT_DELIMITER = ",|:";
     private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
-    private static final Pattern NOT_NUMERIC_PATTERN = Pattern.compile("\\D");
 
     private final String delimiter;
     private final String text;
@@ -42,33 +44,27 @@ public class StringToken {
         return new StringToken(DEFAULT_DELIMITER, text);
     }
 
-    public int[] toIntArray() {
+    public List<Integer> toIntArray() {
         return toInts(split(text, delimiter));
     }
 
-    private String[] split(String text, String delimiter) {
-        return text.split(delimiter);
+    private List<String> split(String text, String delimiter) {
+        return Arrays.asList(text.split(delimiter));
     }
 
-    private int[] toInts(String[] values) {
-        int[] numbers = new int[values.length];
-        for (int i = 0; i < values.length; i++) {
-            numbers[i] = toPositiveInt(values[i]);
-        }
-        return numbers;
+    private List<Integer> toInts(List<String> numbers) {
+        return numbers.stream()
+                      .map(this::toPositiveInt)
+                      .collect(Collectors.toUnmodifiableList());
     }
 
-    private int toPositiveInt(String value) {
-        throwIfNotNumeric(value);
-        int toInt = Integer.parseInt(value);
-        throwIfNegative(toInt);
-        return toInt;
-    }
-
-    private void throwIfNotNumeric(String value) {
-        Matcher matcher = NOT_NUMERIC_PATTERN.matcher(value);
-        if (matcher.find()) {
-            throw new RuntimeException("숫자 이외에 값은 입력할 수 없습니다.");
+    private int toPositiveInt(String number) {
+        try {
+            int numberAsInt = Integer.parseInt(number);
+            throwIfNegative(numberAsInt);
+            return numberAsInt;
+        } catch (NumberFormatException e) {
+            throw new RuntimeException("토크닝 대상에 숫자가 아닌 값이 포함되어 있습니다.");
         }
     }
 

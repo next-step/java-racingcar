@@ -1,5 +1,7 @@
 package calculator;
 
+import java.util.List;
+
 public final class StringCalculator {
 
     private StringCalculator() {
@@ -7,16 +9,12 @@ public final class StringCalculator {
     }
 
     public static int calculate(String text) {
-        int[] numbers = StringToken.from(text)
-                                   .toIntArray();
+        List<Integer> numbers = StringToken.from(text)
+                                           .toIntArray();
         return sum(numbers);
     }
 
-    private static int sum(int[] numbers) {
-        int sum = 0;
-        for (int number : numbers) {
-            sum += number;
-        }
-        return sum;
+    private static int sum(List<Integer> numbers) {
+        return numbers.stream().reduce(0, Integer::sum);
     }
 }
