@@ -9,6 +9,7 @@ public class Split {
     private static final String ZERO = "0";
     private static final String DELIMITER = ",|:";
     public static final String CUSTOM_DELIMITER = "//(.)\n(.*)";
+    public static final Pattern PATTERN = Pattern.compile(CUSTOM_DELIMITER);
 
     public Split(String text) {
         if (isBlank(text)) {
@@ -23,7 +24,7 @@ public class Split {
     }
 
     private String[] splitToStringArray() {
-        Matcher matcher = Pattern.compile(CUSTOM_DELIMITER).matcher(this.text);
+        Matcher matcher = PATTERN.matcher(this.text);
         if (matcher.find()) {
             String delimiter = matcher.group(1);
             return matcher.group(2).split(delimiter);
