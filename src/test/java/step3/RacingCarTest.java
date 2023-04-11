@@ -10,6 +10,8 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import static org.assertj.core.api.Assertions.*;
+
 public class RacingCarTest {
 
     @ParameterizedTest
@@ -22,7 +24,18 @@ public class RacingCarTest {
 
         Map<Integer, AtomicInteger> cars = Car.generateCars(i);
 
-        Assertions.assertThat(cars.size()).isEqualTo(i);
+        assertThat(cars.size()).isEqualTo(i);
+    }
+
+    @Test
+    void 랜덤_생성_숫자가_4보다_큰지_작은지() {
+        int randomNumber = Car.generateRandomNumber();
+        boolean isOverFour = randomNumber >= Car.RANDOM_NUMBER_LIMIT;
+        if (isOverFour) {
+            assertThat(randomNumber).isGreaterThanOrEqualTo(Car.RANDOM_NUMBER_LIMIT);
+        } else {
+            assertThat(randomNumber).isLessThanOrEqualTo(Car.RANDOM_NUMBER_LIMIT);
+        }
     }
 
 }

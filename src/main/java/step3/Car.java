@@ -16,8 +16,9 @@ public class Car {
         return cars;
     }
 
-    public int generateRandomNumber() {
+    public static int generateRandomNumber() {
         Random random = new Random();
         return random.nextInt(10);
     }
+    
 }
