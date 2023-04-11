@@ -2,8 +2,12 @@ package calculator;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.stream.Stream;
 
 import static calculator.StringCalculator.splitAndSum;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -17,9 +21,18 @@ public class StringCalculatorTest {
                 .isInstanceOf(RuntimeException.class);
     }
 
-    @Test
-    void 커스텀_구분자를_지정할_수_있다() {
-        assertThat(splitAndSum("//;\n1;2;3")).isEqualTo(6);
+    @ParameterizedTest(name = "{0}에 정의된 구분자로 구분된 숫자들을 더하면 {1}이다")
+    @MethodSource("getCustomDelimiterStubs")
+    void 커스텀_구분자를_지정할_수_있다(String input, int expected) {
+        assertThat(splitAndSum(input)).isEqualTo(expected);
+    }
+
+    static Stream<Arguments> getCustomDelimiterStubs() {
+        return Stream.of(
+            Arguments.arguments("//;\n1;2;3", 6),
+            Arguments.arguments("//@\n2@3@4", 9),
+            Arguments.arguments("//~\n3~4~5", 12)
+        );
     }
 
     @ParameterizedTest(name = "컴마와 콜론이 포함된 {0}의 숫자들을 더하면 {1}이다")
