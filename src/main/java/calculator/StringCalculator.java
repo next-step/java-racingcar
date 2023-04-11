@@ -7,7 +7,6 @@ public class StringCalculator {
     public static final int DEFAULT_RESULT = 0;
     public static final String DEFAULT_DELIMITER = ",|:";
     public static final String CUSTOM_DELIMITER_REGEX_PREFIX = "//(.)\n(.*)";
-
     public static final Pattern DEFAULT_PATTERN = Pattern.compile(CUSTOM_DELIMITER_REGEX_PREFIX);
 
     public static int splitAndSum(String text) {
@@ -21,15 +20,31 @@ public class StringCalculator {
     }
 
     private static String[] split(String text) {
+        StringCalculatorInput stringCalculatorInput = makeStringCalculatorInput(text);
+        String delimiter = stringCalculatorInput.delimiter;
+        String content = stringCalculatorInput.content;
+
+        return content.split(delimiter);
+    }
+
+    private static StringCalculatorInput makeStringCalculatorInput(String text) {
         Matcher matcher = DEFAULT_PATTERN.matcher(text);
 
         if (matcher.find()) {
-            String customDelimiter = matcher.group(1);
-            return matcher.group(2)
-                    .split(customDelimiter);
+            return new StringCalculatorInput(matcher.group(1), matcher.group(2));
         }
 
-        return text.split(DEFAULT_DELIMITER);
+        return new StringCalculatorInput(DEFAULT_DELIMITER, text);
+    }
+
+    private static class StringCalculatorInput {
+        private final String delimiter;
+        private final String content;
+
+        public StringCalculatorInput(String delimiter, String content) {
+            this.delimiter = delimiter;
+            this.content = content;
+        }
     }
 
     private static int[] toPositives(String[] values) {

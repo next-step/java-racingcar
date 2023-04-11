@@ -29,9 +29,9 @@ public class StringCalculatorTest {
 
     static Stream<Arguments> getCustomDelimiterStubs() {
         return Stream.of(
-            Arguments.arguments("//;\n1;2;3", 6),
-            Arguments.arguments("//@\n2@3@4", 9),
-            Arguments.arguments("//~\n3~4~5", 12)
+                Arguments.arguments("//;\n1;2;3", 6),
+                Arguments.arguments("//@\n2@3@4", 9),
+                Arguments.arguments("//~\n3~4~5", 12)
         );
     }
 
