@@ -10,16 +10,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CarTest {
 
     private static final int DEFAULT_CAR_POSITION = 0;
-    private static final int RANDOM_NUMBER_TO_MOVE = 5;
-
-    @DisplayName("이동한 후 자동차의 위치가 1 증가한다")
-    @Test
-    void carMoveTest() {
-        Car car = new Car(DEFAULT_CAR_POSITION);
-
-        car.move(RANDOM_NUMBER_TO_MOVE);
-        assertThat(car.getPosition()).isEqualTo(DEFAULT_CAR_POSITION + 1);
-    }
 
     @DisplayName("랜덤값이 4 이상일 경우 자동차가 이동한다")
     @ParameterizedTest
@@ -27,7 +17,8 @@ public class CarTest {
     void carRandomMoveTest(int input) {
         Car car = new Car(DEFAULT_CAR_POSITION);
 
-        car.move(input);
+        MoveStrategy moveStrategy = () -> true;
+        car.move(moveStrategy);
         assertThat(car.getPosition()).isEqualTo(DEFAULT_CAR_POSITION + 1);
     }
 
@@ -37,7 +28,9 @@ public class CarTest {
     void carRandomNotMoveTest(int input) {
         Car car = new Car(DEFAULT_CAR_POSITION);
 
-        car.move(input);
+        MoveStrategy moveStrategy = () -> false;
+        car.move(moveStrategy);
         assertThat(car.getPosition()).isEqualTo(DEFAULT_CAR_POSITION);
     }
+
 }

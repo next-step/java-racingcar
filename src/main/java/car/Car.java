@@ -1,8 +1,6 @@
 package car;
 
 public class Car {
-    private static final int DEFAULT_MOVABLE_VALUE = 4;
-
     private int position;
 
     public Car(int position) {
@@ -13,14 +11,9 @@ public class Car {
         return this.position;
     }
 
-    public void move(int randomNumber) {
-        if(movable(randomNumber)) {
+    public void move(MoveStrategy moveStrategy) {
+        if(moveStrategy.movable()) {
             position++;
         }
     }
-
-    private boolean movable(int randomNumber) {
-        return randomNumber >= DEFAULT_MOVABLE_VALUE;
-    }
-
 }

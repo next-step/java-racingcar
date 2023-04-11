@@ -12,10 +12,8 @@ public class Cars {
     }
 
     public void move() {
-        Random random = new Random();
         for(Car car: cars) {
-            int randomNumber = random.nextInt(10);
-            car.move(randomNumber);
+            car.move(new RandomMoveStrategy());
         }
     }
 
