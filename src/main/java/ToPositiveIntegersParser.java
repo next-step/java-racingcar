@@ -18,16 +18,14 @@ public class ToPositiveIntegersParser implements StringParser<Integer> {
 
     private String[] split(String originalInput) {
         String delimiter = findDelimiter(originalInput);
-
         String expressionWithoutPrefix = extractExpressionPart(originalInput);
 
         return expressionWithoutPrefix.split(delimiter);
-
     }
 
     private Integer[] convertToNumbs(String[] numbers) {
         return Arrays.stream(numbers)
-            .map(this::convertToNumb)
+            .map(this::convertToPositiveNumb)
             .toArray(Integer[]::new);
     }
 
@@ -51,21 +49,12 @@ public class ToPositiveIntegersParser implements StringParser<Integer> {
         return originalExpression;
     }
 
-    private Integer convertToNumb(String str) {
-        checkValidNumber(str);
+    private Integer convertToPositiveNumb(String str) {
+        int numb = Integer.parseInt(str);
 
-        return Integer.parseInt(str);
-    }
-
-    private void checkValidNumber(String number) {
-        for (int idx = 0; idx < number.length(); idx++) {
-            checkIsNumber(number.charAt(idx));
+        if (numb < 0) {
+            throw new RuntimeException(String.format("%d : 0 이상의 정수가 아닙니다", numb));
         }
-    }
-
-    private void checkIsNumber(char curChar) {
-        if (curChar < '0' || curChar > '9') {
-            throw new RuntimeException(String.format("%c : 0 이상의 정수가 아닙니다", curChar));
-        }
+        return numb;
     }
 }
