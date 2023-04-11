@@ -10,14 +10,13 @@ public class Car {
     public void addCar(List<Car> carList) {
         carList.add(new Car());
     }
-    public void move() {
-        this.location += 1;
+    public void move(int randomNumber) {
+        if(randomNumber >= 4){
+            this.location += 1;
+        }
     }
-    public int returnLocation() {
-        return this.location;
-    }
-    public void print(int printCount){
-        for (int i = 0; i < printCount; i++) {
+    public void printLocation() {
+        for (int i = 0; i < this.location; i++) {
             System.out.print("-");
         }
         System.out.println();

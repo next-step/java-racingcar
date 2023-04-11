@@ -10,10 +10,8 @@ public class ResultView {
     public static void resultCars(List<Car> carList){
 
         for (Car car : carList) {
-            if(randomNumber() > 4){
-                car.move();
-            }
-            car.print(car.returnLocation());
+            car.move(randomNumber());
+            car.printLocation();
         }
     }
 
