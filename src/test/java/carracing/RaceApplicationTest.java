@@ -1,10 +1,8 @@
 package carracing;
 
-import carracing.domain.Round;
-import carracing.domain.Score;
 import carracing.presentation.InputPresentation;
 import carracing.presentation.ResultPresentation;
-import carracing.presentation.impl.ResultPresentationV1;
+import carracing.presentation.impl.ResultPresentationV0;
 import carracing.repository.RoundRepository;
 import carracing.service.RacingService;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,12 +16,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
-import java.util.List;
-import java.util.Map;
 import java.util.logging.Logger;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.fail;
 
 
@@ -41,7 +36,7 @@ public class RaceApplicationTest {
     public void beforeEach() {
         this.resultViewOutputStream = new ByteArrayOutputStream();
         this.resultViewPrintStream = new PrintStream(new PrintStream(this.resultViewOutputStream));
-        this.resultPresentation = new ResultPresentationV1(this.resultViewPrintStream);
+        this.resultPresentation = new ResultPresentationV0(this.resultViewPrintStream, new RacingService(new RoundRepository()));
         this.inputViewInputStream = new ByteArrayInputStream("SampleInput".getBytes());
         this.inputPresentation = new InputPresentation(inputViewInputStream, resultViewPrintStream);
         this.raceApplication = new RaceApplication(this.inputPresentation, this.resultPresentation, new RacingService(new RoundRepository()));
@@ -50,7 +45,7 @@ public class RaceApplicationTest {
     private void inAndOutTestHelper(String inputString) {
         this.inputViewInputStream = new ByteArrayInputStream(inputString.getBytes());
         this.inputPresentation = new InputPresentation(inputViewInputStream, resultViewPrintStream);
-        this.raceApplication = new RaceApplication(this.inputPresentation, this.resultPresentation);
+        this.raceApplication = new RaceApplication(this.inputPresentation, this.resultPresentation, new RacingService(new RoundRepository()));
     }
     @DisplayName("문구 출력 검증 : [자동차 대수는 몇 대 인가요?] 출력된다")
     @Test

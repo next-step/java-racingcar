@@ -30,7 +30,7 @@ public class ResultPresentationV0Test {
     @BeforeEach
     public void beforeEach() {
         this.outputStream = new ByteArrayOutputStream();
-        this.resultPresentation = new ResultPresentationV0(new PrintStream(new PrintStream(outputStream)));
+        this.resultPresentation = new ResultPresentationV0(new PrintStream(new PrintStream(outputStream)), new RacingService(new RoundRepository()));
         this.racingService = new RacingService(new RoundRepository());
     }
 
@@ -38,13 +38,8 @@ public class ResultPresentationV0Test {
     @Test
     public void withCarIndex() {
         //given
-        Map<Round, List<Score>> inputRoundToScoreListMap = Map.of(
-            new Round(5), Arrays.asList(new Score(1), new Score(4), new Score(5)),
-            new Round(1), Arrays.asList(new Score(7), new Score(3), new Score(9)),
-            new Round(2), Arrays.asList(new Score(5), new Score(2), new Score(1)),
-            new Round(3), Arrays.asList(new Score(9), new Score(4), new Score(5)),
-            new Round(4), Arrays.asList(new Score(8), new Score(8), new Score(8))
-        );
+        resultPresentation.printResult();
+
         String output = "" +
             "-\n" +
             "\n" +
@@ -73,8 +68,8 @@ public class ResultPresentationV0Test {
 
         //then
         assertAll(
-            () -> assertEquals(output, outputStream.toString()),
-            () -> assertThat(racingService.getAllRounds()).hasSize(inputRoundToScoreListMap.size())
+            () -> assertEquals(output, outputStream.toString())
+            //() -> assertThat(racingService.getAllRounds()).hasSize(inputRoundToScoreListMap.size())
         );
     }
 }

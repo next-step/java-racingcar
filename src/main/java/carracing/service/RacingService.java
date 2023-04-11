@@ -40,4 +40,8 @@ public class RacingService {
                 .collect(Collectors.toList()))
         );
     }
+
+    public List<Round> findAll() {
+        return roundRepository.findAll();
+    }
 }
