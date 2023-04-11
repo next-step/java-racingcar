@@ -1,6 +1,9 @@
 package racing;
 
-import static racing.ResultView.resultCars;
+import java.util.ArrayList;
+import java.util.List;
+
+import static racing.ResultView.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -8,6 +11,14 @@ public class Main {
         InputView inputView = new InputView();
         inputView.userInput();
 
-        resultCars(inputView.inputCarCount, inputView.tryCarCount);
+        Car car = new Car();
+        List<Car> carList = new ArrayList<>();
+        for (int i = 0; i < inputView.inputCarCount; i++) {
+            car.addCar(carList);
+        }
+
+        for (int i = 0; i < inputView.tryCarCount; i++) {
+            resultCars(carList);
+        }
     }
 }
