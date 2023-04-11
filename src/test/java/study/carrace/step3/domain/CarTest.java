@@ -8,11 +8,9 @@ import static org.assertj.core.api.Assertions.*;
 
 class CarTest {
     @Test
-    void 자동차_전진() {
+    void move() {
         // given
-        int generatedRandomInteger = 1;
-        int movableThreshold = 0;
-        Car car = new Car(createMockRandomIntegerGenerator(generatedRandomInteger), movableThreshold);
+        Car car = new Car(mockMoveStrategy(true));
 
         // when
         car.moveOrStop();
@@ -22,11 +20,9 @@ class CarTest {
     }
 
     @Test
-    void 자동차_멈춤() {
+    void stop() {
         // given
-        int generatedRandomInteger = 0;
-        int movableThreshold = 1;
-        Car car = new Car(createMockRandomIntegerGenerator(generatedRandomInteger), movableThreshold);
+        Car car = new Car(mockMoveStrategy(false));
 
         // when
         car.moveOrStop();
@@ -35,7 +31,7 @@ class CarTest {
         assertThat(car.getMoveStatus()).containsExactly(false);
     }
 
-    private RandomIntegerGenerator createMockRandomIntegerGenerator(int generated) {
-        return () -> generated;
+    private MoveStrategy mockMoveStrategy(boolean movable) {
+        return () -> movable;
     }
 }
