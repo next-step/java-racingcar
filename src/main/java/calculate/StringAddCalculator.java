@@ -7,8 +7,9 @@ import java.util.stream.Stream;
 import static java.lang.Integer.parseInt;
 
 public class StringAddCalculator {
-    private static final String COMMA = ",";
-    private static final String COLONS = ":";
+
+    private static final int CUSTOM_DELIMITER_START = 2;
+    private static final int CUSTOM_DELIMITER_END = 3;
     private static final String CUSTOM_DELIMITER_PATTERN = "₩₩(.)\n(.*)";
     private static final String DEFAULT_DELIMITER_PATTERN = ",|:";
     private static final int LEAST_LENGTH_OF_CUSTOM_DELIMITER = 4;
@@ -17,7 +18,7 @@ public class StringAddCalculator {
         if (DEFAULT_DELIMITER_PATTERN.contains(delimiter)) {
             return input;
         }
-        return input.substring(4);
+        return input.substring(LEAST_LENGTH_OF_CUSTOM_DELIMITER);
     }
 
     static Operand extractDelimiter(Operand operand) {
@@ -32,7 +33,7 @@ public class StringAddCalculator {
     }
 
     static String extractCustomDelimiter(String input) {
-        return input.substring(2, 3);
+        return input.substring(CUSTOM_DELIMITER_START, CUSTOM_DELIMITER_END);
     }
 
     static Operand extractNumbers(Operand operand) {
@@ -49,7 +50,6 @@ public class StringAddCalculator {
     }
 
     static boolean hasOnlyPositive(Operand operand) { // 음수 또는 숫자 이외의 값을 포함하는지
-
         for (String number : operand.stringNumbers) {
             isNegative(number);
         }
