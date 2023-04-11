@@ -8,7 +8,7 @@ import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.IntUnaryOperator;
 
-import static carracing.RaceApplication.ioc;
+import static carracing.RaceApplication.getIoc;
 
 public class Round implements Comparable<Round> {
     private static final int FIRST_ROUND_VALUE = 1;
@@ -47,7 +47,7 @@ public class Round implements Comparable<Round> {
     }
 
     private String prevScoreProgress(int index) {
-        RoundRepository roundRepository = (RoundRepository) ioc.get(RoundRepository.class);
+        RoundRepository roundRepository = (RoundRepository) getIoc().get(RoundRepository.class);
         Round byId = roundRepository.findById(this.getRoundId()-  1);
         return byId.getRecords().get(index).getRecord();
     }
