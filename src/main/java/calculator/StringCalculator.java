@@ -8,17 +8,20 @@ public class StringCalculator {
     public static final String DEFAULT_DELIMITER = ",|:";
     public static final String CUSTOM_DELIMITER_REGEX_PREFIX = "//(.)\n(.*)";
 
+    public static final Pattern DEFAULT_PATTERN = Pattern.compile(CUSTOM_DELIMITER_REGEX_PREFIX);
+
     public static int splitAndSum(String text) {
         if (isBlank(text)) {
             return DEFAULT_RESULT;
         }
 
-        return sum(toPositives(split(text)));
+        String[] split = split(text);
+        int[] positives = toPositives(split);
+        return sum(positives);
     }
 
     private static String[] split(String text) {
-        Matcher matcher = Pattern.compile(CUSTOM_DELIMITER_REGEX_PREFIX)
-                .matcher(text);
+        Matcher matcher = DEFAULT_PATTERN.matcher(text);
 
         if (matcher.find()) {
             String customDelimiter = matcher.group(1);
