@@ -12,15 +12,17 @@ public class Racing {
     int numOfCars = InputView.startInput(QUESTION_NUM_OF_CARS);
     int numOfRaces = InputView.startInput(QUESTION_NUM_OF_ROUNDS);
 
-    playRacing(numOfCars, numOfRaces);
+    playRacing(numOfRaces, createCars(numOfCars));
   }
 
-  private static void playRacing(int numOfCars, int numOfRaces) {
-    Car[] cars = CarManager.createCars(numOfCars);
+  private static Car[] createCars(int numOfCars) {
+    return CarManager.createCars(numOfCars);
+  }
 
-    for (int i = 0; i < numOfRaces; i++) {
+  private static void playRacing(int numOfRaces, Car[] cars) {
+    for (int raceNum = 0; raceNum < numOfRaces; raceNum++) {
       CarManager.moveCars(cars);
-      ResultView.printResult(i + 1, cars);
+      ResultView.printResult(raceNum, cars);
     }
   }
 }

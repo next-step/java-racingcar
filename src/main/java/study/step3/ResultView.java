@@ -6,8 +6,12 @@ public class ResultView {
   }
 
   static void printResult(int raceNum, Car[] cars) {
-    System.out.printf("\nRace%d\n", raceNum);
+    printRaceNum(raceNum);
     printCars(cars);
+  }
+
+  private static void printRaceNum(int raceNum) {
+    System.out.printf("\nRace%d\n", raceNum+1);
   }
 
   private static void printCars(Car[] cars) {
