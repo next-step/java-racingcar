@@ -11,9 +11,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarNamesExtractorTest {
 
-    @ParameterizedTest(name = "String으로 입력이 주어질 때 쉼표기준으로 분리하여 List를 만들어주는지 확인하는 테스트")
+    @ParameterizedTest(name = "입력이 주어질 때 쉼표기준으로 자동차 이름들을 생성해주는지 확인하는 테스트")
     @MethodSource("provideCarNames")
-    void extractCarNames_쉼표_기준으로_자동차이름_분리하는_테스트(String carNames, List<String> expected) {
+    void extractCarNames_쉼표_기준으로_자동차이름_생성하는_테스트(String carNames, List<String> expected) {
         List<String> result = CarNamesExtractor.extractCarNames(carNames);
         assertThat(result).containsExactlyElementsOf(expected);
     }
