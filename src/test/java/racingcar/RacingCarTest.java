@@ -36,4 +36,18 @@ public class RacingCarTest {
         //then
         assertThat(moveYn).isEqualTo(result);
     }
+
+    @DisplayName("자동차의 상태 만들기(1회 전진마다 -추가")
+    @ParameterizedTest
+    @CsvSource(value = {"0:","1:-","2:--","3:---","4:----","5:-----"}, delimiter = ':')
+    void makeLine(int moveCount, String result) {
+        //given
+        RacingCar racingCar = new RacingCar();
+
+        //when
+        String line = racingCar.makeLine(moveCount);
+
+        //then
+        assertThat(line).isEqualTo(result);
+    }
 }
