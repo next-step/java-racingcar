@@ -43,9 +43,9 @@ public class StringAddCalculatorTest {
     }
     
     @Test
-    void throwRunTimeException_whenPassExceptNumberOrNegativeNumber(){
+    void throwRunTimeException_whenPassNegativeNumber(){
         //given
-        String exampleExceptNumbersOrNegativeNums = "1,2,-1,d";
+        String exampleExceptNumbersOrNegativeNums = "1,2,-1";
         //when & then
         assertThatThrownBy(() -> {
             int answer = StringAddCalculator.splitAndSum(exampleExceptNumbersOrNegativeNums);
@@ -53,9 +53,9 @@ public class StringAddCalculatorTest {
     }
 
     @Test
-    void throwRunTimeException_whenPassNegativeNumber() throws Exception {
+    void throwRunTimeException_whenPassExceptNumber(){
         //given
-        String exampleExceptNumbersOrNegativeNums = "1,2,-1";
+        String exampleExceptNumbersOrNegativeNums = "1,2,d";
         //when & then
         assertThatThrownBy(() -> {
             int answer = StringAddCalculator.splitAndSum(exampleExceptNumbersOrNegativeNums);
