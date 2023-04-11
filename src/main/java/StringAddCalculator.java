@@ -1,7 +1,7 @@
 public class StringAddCalculator {
 
     public static int splitAndSum(String val) {
-        int result = 0;
+        int result = Integer.parseInt(val);
         if (val == null || val.isBlank()) {
             return result;
         }
