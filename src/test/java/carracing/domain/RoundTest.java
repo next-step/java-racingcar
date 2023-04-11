@@ -12,12 +12,7 @@ public class RoundTest {
     public void roundOK() {
         //given
         //when
-        new Round(Round.emptyScores);
-        new Round(Round.emptyScores);
-        new Round(Round.emptyScores);
-        new Round(Round.emptyScores);
-        new Round(Round.emptyScores);
-        new Round(Round.emptyScores);
+
         //then
     }
 

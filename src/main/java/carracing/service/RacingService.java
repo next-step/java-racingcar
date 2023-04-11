@@ -25,9 +25,9 @@ public class RacingService {
     }
 
     public void racingStart(int participates, int iterations) {
-         IntStream.rangeClosed(1, participates)
+         IntStream.rangeClosed(1, iterations)
             .boxed()
-            .forEach(integer -> roundStart(iterations));
+            .forEach(integer -> roundStart(participates));
     }
 
     public List<Round> racingResults() {

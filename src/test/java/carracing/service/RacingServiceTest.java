@@ -1,14 +1,18 @@
 package carracing.service;
 
+import carracing.domain.Score;
 import carracing.repository.RoundRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
+
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.offset;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -24,19 +28,6 @@ public class RacingServiceTest {
         this.racingService = new RacingService(roundRepository);
     }
 
-    @DisplayName("입력 결기경과의 수 대로 ")
-    @Test
-    public void run() {
-        //given
-        //federation.
-
-
-        //when
-        //then
-        log.warning("테스트코드가 요구사항에 의존적이지 않고 구현에 의존적이다. 이렇게 되면 구현이 변경될때 테스트코드도 변경될 여지가 있다");
-        fail();
-    }
-
 
     @DisplayName("입력한 경기수 (Round) 에 따라 해당 경기수만큼 잘 치뤄진건지 검증한다")
     @Test
@@ -48,7 +39,7 @@ public class RacingServiceTest {
         racingService.racingStart(11, roundIterations);
 
         //then
-        assertThat(racingService.racingResults()).as("Round 숫자를 검증").hasSize(roundIterations);
+        assertThat(racingService.findAll()).as("Round 숫자를 검증").hasSize(roundIterations);
     }
 
 
@@ -67,6 +58,23 @@ public class RacingServiceTest {
         assertAll(
             () -> assertThat(racingService.racingResults()).as("경기 반복횟수 검증").hasSize(iterations),
             () -> assertThat(racingService.findAll()).as("경기 참가자수 검증 - 1번경가").hasSize(participates),
+            () -> racingService.findAll().forEach(s -> assertThat(s.getRecords()).as("경기 참가자수 검증 - 모든경가").hasSize(participates))
+        );
+    }
+
+    @DisplayName("참가차량수 주어지면 그에 맞는 경기결과를 리턴한다")
+    @Test
+    public void participatesAndIteratsions() {
+        //given
+        int participates = 9;
+
+        //when
+        log.info("자동차 경주의 정보 > 참가자수=[{}명], 자동차 경주의 Round 횟수=[{}판]");
+        racingService.roundStart(participates);
+
+        //then
+        assertAll(
+            () -> assertThat(racingService.racingResults().as("경기 참가자수 검증 - 1번경가").hasSize(participates),
             () -> racingService.findAll().forEach(s -> assertThat(s.getRecords()).as("경기 참가자수 검증 - 모든경가").hasSize(participates))
         );
     }
@@ -91,5 +99,21 @@ public class RacingServiceTest {
     }
 
 
+    @DisplayName("0에서 9사이에서 random값을 구한다")
+    @Test
+    public void getRandomFrom0To9() {
+        //given
+        racingService.racingStart(10, 10);
+
+        //when
+        List<List<Score>> allScores = roundRepository.findAll().stream().map(round -> round.getScores()).collect(Collectors.toList());
+
+        //then
+        allScores.stream()
+            .flatMap(scores -> scores.stream())
+            .forEach(score -> assertThat(score.getValue()).isBetween(0, 9));
+
+
+    }
 
 }

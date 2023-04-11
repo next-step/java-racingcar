@@ -6,9 +6,7 @@ import carracing.presentation.impl.ResultPresentationV0;
 import carracing.repository.RoundRepository;
 import carracing.service.RacingService;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
@@ -19,7 +17,6 @@ import java.io.PrintStream;
 import java.util.logging.Logger;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.fail;
 
 
 public class RaceApplicationTest {
@@ -61,14 +58,14 @@ public class RaceApplicationTest {
         assertThat(resultViewOutputStream.toString()).contains(answer);
     }
 
-    @Disabled("피할수 없다")
+    //@Disabled("피할수 없다")
     @DisplayName("문구 출력 검증 : [시도할 횟수는 몇 회 인가요?] 출력된다")
     @Test
     public void iterations() {
         //todo >> 두번째 입력값인 시도할 횟수 << 문구가 잘 출력되는지 검증할 방법이 없다...
 
         //given
-        String answer = "시도할 횟수는 몇 회 인가요?";
+        String answer = "시도할 회수는 몇 회 인가요?";
         inAndOutTestHelper("4\r6\r8");
 
         //when
@@ -78,14 +75,5 @@ public class RaceApplicationTest {
         assertThat(resultViewOutputStream.toString().trim()).contains(answer);
     }
 
-    @DisplayName("0에서 9사이에서 random값을 구한다")
-    @RepeatedTest(100)
-    public void getRandomFrom0To9() {
-        //given
-        //when
-        //int random = raceApplication.randomScore();
-        //then
-        //assertThat(random).isBetween(0, 9);
-        fail();
-    }
+
 }

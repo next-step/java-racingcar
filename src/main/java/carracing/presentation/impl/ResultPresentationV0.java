@@ -21,8 +21,12 @@ public class ResultPresentationV0 implements ResultPresentation {
     @Override
     public void printResult() {
         racingService.racingResults().forEach(round -> {
-            round.getRecords().forEach(record -> printStream.println(record.getRecord()));
+            round.getRecords().forEach(record -> {
+                printStream.print("car");
+                printStream.println(record.getRecord());
+            });
+            printStream.print("\n------\n");
         });
-        printStream.print("hello");
+
     }
 }
