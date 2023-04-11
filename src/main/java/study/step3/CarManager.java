@@ -12,8 +12,8 @@ public class CarManager {
 
   public static Car[] createCars(int numOfCars) {
     Car[] cars = new Car[numOfCars];
-    for (int carNum = 0; carNum < numOfCars; carNum++) {
-      cars[carNum] = new Car(carNum);
+    for (int i = 0; i < numOfCars; i++) {
+      cars[i] = new Car();
     }
     return cars;
   }

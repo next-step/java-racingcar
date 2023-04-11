@@ -20,9 +20,9 @@ public class Racing {
   }
 
   private static void playRacing(int numOfRaces, Car[] cars) {
-    for (int raceNum = 0; raceNum < numOfRaces; raceNum++) {
+    for (int i = 0; i < numOfRaces; i++) {
       CarManager.moveCars(cars);
-      ResultView.printResult(raceNum, cars);
+      ResultView.printResult(i, cars);
     }
   }
 }
