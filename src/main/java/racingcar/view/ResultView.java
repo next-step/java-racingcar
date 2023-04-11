@@ -1,47 +1,27 @@
 package racingcar.view;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import racingcar.service.RacingCar;
 
-import static racingcar.service.RacingCar.go;
+import java.util.List;
 
 public class ResultView {
-    private final Random random = new Random();
-    
-    public void view(List<Integer> input) {
-        Map<Integer, Integer> carState = new HashMap<>();
-        initCarState(carState, input.get(0));
-        
+
+    public static void view(List<RacingCar> racingCars) {
         System.out.println();
         System.out.println("실행 결과");
-        race(input, carState);
-    }
 
-    private void race(List<Integer> input, Map<Integer, Integer> carState) {
-        for (int race = 0; race < input.get(1); race++) {
-            carStateCheck(input, carState);
+        if (racingCars.size() == 0 || racingCars.get(0).getState().size() == 0) {
+            System.out.println("레이스가 실행되지 않았습니다.");
+            return;
+        }
+
+        int races = racingCars.get(0).getState().size();
+        for (int race = 0; race < races; race++) {
+            for (int car = 0; car < racingCars.size(); car++) {
+                System.out.println("-".repeat(racingCars.get(car).getState().get(race)));
+            }
             System.out.println();
         }
     }
 
-    private void carStateCheck(List<Integer> input, Map<Integer, Integer> carState) {
-        for(int car = 0; car < input.get(0); car++){
-            makeCarState(carState, car);
-            System.out.println("-".repeat(carState.get(car)));
-        }
-    }
-
-    private void makeCarState(Map<Integer, Integer> carState, int car) {
-        if(go(random.nextInt(10))) {
-            carState.put(car, carState.get(car) + 1);
-        }
-    }
-
-    public void initCarState(Map<Integer, Integer> carState, int carNumber){
-        for(int i = 0; i < carNumber; i++){
-            carState.put(i, 0);
-        }
-    }
 }
