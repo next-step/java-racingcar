@@ -1,23 +1,23 @@
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 public class StringAddCalculatorTest {
 
-    @Test
-    void shouldReturnZero_whenInputEmptyStringOrNull() {
+    @DisplayName("빈 문자열 혹은 null을 입력받으면 0을 리턴한다.")
+    @ParameterizedTest
+    @NullAndEmptySource
+    void shouldReturnZero_whenInputEmptyStringOrNull(String input) {
         //given
-        String emptyString = "";
         int expectedResult = 0;
         //when
-        int answer1 = StringAddCalculator.splitAndSum(emptyString);
-        int answer2 = StringAddCalculator.splitAndSum(null);
-        
+        int answer = StringAddCalculator.splitAndSum(input);
         //then
-        assertThat(answer1).isEqualTo(expectedResult);
-        assertThat(answer2).isEqualTo(expectedResult);
+        assertThat(answer).isEqualTo(expectedResult);
     }
 
     @Test
