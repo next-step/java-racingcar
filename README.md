@@ -224,7 +224,7 @@ public class StringAddCalculatorTest {
 - [ ] UI InputView 출력
 - [ ] UI ResultView 출력
 - [x] 랜덤 난수 생성 기능 : 0~9
-- [ ] 랜덤 난수 생성 결과 판단 기능
+- [x] 랜덤 난수 생성 결과 판단 기능
   - 0~3 : false 멈춤
   - 4~9 : ture 전진
 - [ ] 자동차 이동 기능 : 랜덤 난수 생성 결과 true 리턴할 경우
