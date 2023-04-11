@@ -99,12 +99,8 @@ public class StringAddCalculatorTest { // Operand
     @Test
     @DisplayName("음수 포함한다면 RuntimeException")
     void hasNegative() {
-
-        String input = "1,-2,3";
-        String delimiter = ",";
-        String[] stringPart = input.split(delimiter);
-
-        assertThatThrownBy(() -> StringAddCalculator.hasOnlyPositive(stringPart))
+        Operand operand = new Operand("1,-2,3");
+        assertThatThrownBy(() -> StringAddCalculator.hasOnlyPositive(operand))
                 .isInstanceOf(RuntimeException.class);
     }
 
@@ -112,11 +108,8 @@ public class StringAddCalculatorTest { // Operand
     @DisplayName("알파벳 포함한다면 RuntimeException")
     void hasChar() {
 
-        String input = "1,2,3,A,5";
-        String delimiter = ",";
-        String[] stringPart = input.split(delimiter);
-
-        assertThatThrownBy(() -> StringAddCalculator.hasOnlyPositive(stringPart))
+        Operand operand = new Operand("1,2,3,A,5");
+        assertThatThrownBy(() -> StringAddCalculator.hasOnlyPositive(operand))
                 .isInstanceOf(RuntimeException.class);
     }
 }

@@ -40,6 +40,8 @@ public class StringAddCalculator {
 
     static Operand extractNumbers(Operand operand) {
 
+        hasOnlyPositive(operand);
+
         String stringPart = extractNumberString(operand.input, operand.delimiter);
         operand.stringNumbers = stringPart.split(operand.delimiter);
 
@@ -50,16 +52,16 @@ public class StringAddCalculator {
         return operand;
     }
 
-    static boolean hasOnlyPositive(String[] input) { // 음수 또는 숫자 이외의 값을 포함하는지
+    static boolean hasOnlyPositive(Operand operand) { // 음수 또는 숫자 이외의 값을 포함하는지
 
-        for (String s : input) {
-            isNegative(s);
+        for (String number : operand.stringNumbers) {
+            isNegative(number);
         }
         return true;
     }
 
-    static void isNegative(String s) throws RuntimeException {
-        if (parseInt(s) < 0) {
+    static void isNegative(String input) throws RuntimeException {
+        if (parseInt(input) < 0) {
             throw new RuntimeException();
         }
     }
