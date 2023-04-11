@@ -20,8 +20,8 @@ class StringAddCalculatorTest {
     @DisplayName("빈 문자열 또는 null 값을 입력할 경우 0을 반환해야 한다.")
     @Test
     void test1() {
-        int result1 = stringAddCalculator.splitAndSum(null);
-        int result2 = stringAddCalculator.splitAndSum("");
+        int result1 = stringAddCalculator.addNumber(null);
+        int result2 = stringAddCalculator.addNumber("");
 
         assertSoftly(softly -> {
             softly.assertThat(result1).isZero();
@@ -32,7 +32,7 @@ class StringAddCalculatorTest {
     @DisplayName("숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환한다.")
     @Test
     void test2() {
-        int result = stringAddCalculator.splitAndSum("1");
+        int result = stringAddCalculator.addNumber("1");
 
         assertThat(result).isEqualTo(1);
     }
@@ -40,7 +40,7 @@ class StringAddCalculatorTest {
     @DisplayName("숫자 두개를 컴마(,) 구분자로 입력할 경우 두 숫자의 합을 반환한다.")
     @Test
     void test3() {
-        int result = stringAddCalculator.splitAndSum("1,2");
+        int result = stringAddCalculator.addNumber("1,2");
 
         assertThat(result).isEqualTo(3);
     }
@@ -48,7 +48,7 @@ class StringAddCalculatorTest {
     @DisplayName("구분자를 컴마(,) 이외에 콜론(:)을 사용할 수 있다.")
     @Test
     void test4() {
-        int result = stringAddCalculator.splitAndSum("1,2:3");
+        int result = stringAddCalculator.addNumber("1,2:3");
 
         assertThat(result).isEqualTo(6);
     }
@@ -56,7 +56,7 @@ class StringAddCalculatorTest {
     @DisplayName("\"//\"와 \"\\n\" 문자 사이에 커스텀 구분자를 지정할 수 있다.")
     @Test
     void test5() {
-        int result = stringAddCalculator.splitAndSum("//;\n1;2;3");
+        int result = stringAddCalculator.addNumber("//;\n1;2;3");
 
         assertThat(result).isEqualTo(6);
     }
@@ -64,7 +64,7 @@ class StringAddCalculatorTest {
     @DisplayName("음수를 전달할 경우 예외가 발생한다.")
     @Test
     void test6() {
-        assertThatThrownBy(() -> stringAddCalculator.splitAndSum("-1,2,3"))
+        assertThatThrownBy(() -> stringAddCalculator.addNumber("-1,2,3"))
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("숫자는 양수여야 합니다.");
     }
