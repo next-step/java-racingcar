@@ -11,16 +11,11 @@ public class GameMachine {
   private final InputView inputView = new InputView();
   private final ResultView resultView = new ResultView();
 
-  public static void main(String[] args) {
-    GameMachine gameMachine = new GameMachine();
-    gameMachine.play();
-  }
-
   public void play() {
     int carNumber = inputView.askCarNumbers().carNumber();
     int trialNumber = inputView.askTrialNumbers().trialNumber();
 
-    Cars cars = new Cars(new RandomMoveStrategy(new RandomAccelerator()), carNumber);
+    Cars cars = Cars.readyForRace(new RandomMoveStrategy(new RandomAccelerator()), carNumber);
 
     resultView.printResultAlert();
 

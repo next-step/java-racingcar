@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class RandomAccelerator implements Accelerator {
 
-  private final Random random = new Random();
+  private static final Random random = new Random();
 
   @Override
   public int accelerate() {

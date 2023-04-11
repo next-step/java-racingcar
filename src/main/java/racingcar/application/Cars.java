@@ -15,6 +15,10 @@ public class Cars {
     this.cars = init(count);
   }
 
+  public static Cars readyForRace(MoveStrategy moveStrategy, int count) {
+    return new Cars(moveStrategy, count);
+  }
+
   public void go() {
     cars.forEach(car -> car.go(moveStrategy));
   }
