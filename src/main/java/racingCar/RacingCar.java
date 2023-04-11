@@ -1,7 +1,5 @@
 package racingCar;
 
-import java.util.Scanner;
-
 import racingCar.domain.Car;
 import racingCar.domain.Track;
 
@@ -13,7 +11,7 @@ public class RacingCar {
 	private final Track track;
 
 	public RacingCar() {
-		track = Track.of();
+		track = Track.create();
 	}
 
 	public void start() {
@@ -33,13 +31,9 @@ public class RacingCar {
 	}
 
 	private void ready() {
-		Scanner sc = new Scanner(System.in);
+		count = RacingCarUI.uiForCountInput();
 
-		RacingCarUI.printReadyStep1();
-		count = Integer.parseInt(sc.nextLine());
-
-		RacingCarUI.printReadyStep2();
-		round = Integer.parseInt(sc.nextLine());
+		round = RacingCarUI.uiForRoundInput();
 	}
 
 	private void terminate() {
