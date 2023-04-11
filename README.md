@@ -223,7 +223,7 @@ public class StringAddCalculatorTest {
 - [ ] 이동 횟수 입력 기능
 - [ ] UI InputView 출력
 - [ ] UI ResultView 출력
-- [ ] 랜덤 난수 생성 기능 : 0~9
+- [x] 랜덤 난수 생성 기능 : 0~9
 - [ ] 랜덤 난수 생성 결과 판단 기능
   - 0~3 : false 멈춤
   - 4~9 : ture 전진
