@@ -1,18 +1,11 @@
 package study.racingcar;
 
-import java.util.List;
-
 public class RacingCar {
 
-    public static void game() {
+    public static void racingCar () {
 
-        int numberOfCars = InputView.setCars();
-        int numberOfGames = InputView.setGames();
+        Game game= new Game();
 
-        if(SettingGame.isReadyToGame(numberOfCars, numberOfGames)){
-            List<Car> cars = SettingGame.createCars(numberOfCars);
-
-            RacingGame.gameStart(cars, numberOfGames);
-        }
+        RacingGame.gameStart(game);
     }
 }
