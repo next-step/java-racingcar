@@ -12,8 +12,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static carracing.RaceApplication.getIoc;
-
 public class RacingService {
     private static final Random random = new Random();
     private final RoundRepository roundRepository;
