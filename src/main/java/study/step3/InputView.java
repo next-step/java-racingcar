@@ -3,25 +3,16 @@ package study.step3;
 import java.util.Scanner;
 
 public class InputView {
-    private static final Scanner scanner = new Scanner(System.in);
-    private int carCount;
-    private int attemptCount;
 
-    public void inputNumberOfCars() {
+    public static Scanner createScanner() {
+        return new Scanner(System.in);
+    }
+
+    public static void askCarCount() {
         System.out.println("자동차 대수는 몇 대 인가요?\n");
-        carCount = scanner.nextInt();
     }
 
-    public void inputNumberOfAttempts() {
-        System.out.println("시도할 회수는 몇 회 인가요?\n");
-        attemptCount = scanner.nextInt();
-    }
-
-    public int getCarCount() {
-        return carCount;
-    }
-
-    public int getAttemptCount() {
-        return attemptCount;
+    public static void aksFinishCount() {
+        System.out.println("마지막 바퀴는 몇바퀴 인가요?\n");
     }
 }

@@ -6,40 +6,26 @@ import java.util.List;
 
 public class Track {
     private List<Car> cars = new ArrayList<>();
-    private int attemptCount;
-    private ResultView resultView;
 
-    Track( int attemptCount, ResultView resultView) {
-        this.attemptCount = attemptCount;
-        this.resultView = resultView;
-    }
-
-    public void setCar(int count) {
-        for (int i = 0; i < count; i++) {
-            cars.add(new Car());
+    Track(int carCount, int finish) {
+        for (int i = 0; i < carCount; i++) {
+            cars.add(new Car(finish));
         }
-    };
+    }
 
     public void startRacing() {
-        for (int i = 0; i < attemptCount; i++) {
-            startCar(cars);
-            resultView.outPut(cars);
+        for (Car car : cars) {
+            car.move();
         }
     }
 
-    public void startCar(List<Car> cars) {
-        for(int i = 0; i < cars.size(); i++) {
-            cars.get(i).calcMove();
-            cars.get(i).getMoveValue();
-        }
+    public Boolean isRaceEnd() {
+        int lastCarNumber = cars.size() - 1;
+        return cars.get(lastCarNumber).isFinish();
     }
 
-    public int getCarsCount() {
-        return cars.size();
-    }
-
-    public int getAttemptCount() {
-        return attemptCount;
+    public List<Car> getCars() {
+        return cars;
     }
 
 }
