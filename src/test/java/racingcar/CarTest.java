@@ -2,9 +2,11 @@ package racingcar;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.Car;
+import racingcar.domain.InputData;
 
 @DisplayName("자동차 객체 테스트")
 public class CarTest {
@@ -12,10 +14,9 @@ public class CarTest {
     @DisplayName("자동차 대수는 양수만 입력가능하다")
     @ParameterizedTest
     @ValueSource(ints = {0, -4})
-    void validateCarParticipationNumber(int number) {
-        Car car = new Car();
+    void validateCarParticipationNumber(Integer number) {
         Assertions.assertThatThrownBy(() -> {
-            boolean result = car.initParticipationNumber(number);
+            new InputData(number, 3);
         })
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("자동차 대수는 양수만 입력가능합니다");
@@ -25,9 +26,8 @@ public class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {0, -9})
     void validateCarRepetitionCount(int count) {
-        Car car = new Car();
         Assertions.assertThatThrownBy(() -> {
-            boolean result = car.initRepetitionCount(count);
+            new InputData(4, count);
         })
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("자동차 시도 횟수는 양수만 입력 가능합니다");
