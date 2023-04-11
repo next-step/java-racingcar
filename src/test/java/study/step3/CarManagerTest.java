@@ -26,7 +26,7 @@ public class CarManagerTest {
     CarManager.moveCars(cars);
 
     for (Car car : cars) {
-      assertThat(car.toString()).containsAnyOf("", "-");
+      assertThat(car.getDistance()).isLessThanOrEqualTo(1);
     }
   }
 }
