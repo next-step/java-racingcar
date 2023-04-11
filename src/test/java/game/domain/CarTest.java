@@ -1,5 +1,7 @@
-package game;
+package game.domain;
 
+import game.util.NumberGenerator;
+import game.util.RandomNumberGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

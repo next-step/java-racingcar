@@ -1,4 +1,7 @@
-package game;
+package game.domain;
+
+import game.util.NumberGenerator;
+import game.util.RandomNumberGenerator;
 
 import java.util.List;
 import java.util.stream.Collectors;

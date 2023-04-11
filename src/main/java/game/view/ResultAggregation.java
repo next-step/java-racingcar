@@ -1,4 +1,6 @@
-package game;
+package game.view;
+
+import game.domain.CarAction;
 
 import java.util.List;
 import java.util.stream.Collectors;

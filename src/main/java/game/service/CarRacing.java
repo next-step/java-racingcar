@@ -1,4 +1,7 @@
-package game;
+package game.service;
+
+import game.domain.Cars;
+import game.view.ResultView;
 
 import java.util.stream.IntStream;
 

@@ -1,4 +1,6 @@
-package game;
+package game.domain;
+
+import game.util.NumberGenerator;
 
 public class Car {
     private static final int MOVE_CRITERIA = 4;

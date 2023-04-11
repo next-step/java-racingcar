@@ -1,4 +1,4 @@
-package game;
+package game.service;
 
 public class RacingOptions {
     private final int carCount;

@@ -1,4 +1,6 @@
-package game;
+package game.view;
+
+import game.service.RacingOptions;
 
 import java.util.Scanner;
 
