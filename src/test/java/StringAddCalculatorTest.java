@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 public class StringAddCalculatorTest {
 
     private final StringAddCalculator calculator =
-        new StringAddCalculator(Integer::sum);
+        new StringAddCalculator(Integer::sum, new ToIntegersParser());
 
     @Test
     public void splitAndSum_null_또는_빈문자() {
