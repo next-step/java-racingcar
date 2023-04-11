@@ -9,21 +9,23 @@ public class Cars {
     public static final int ZERO = 0;
 
     private final List<Car> cars;
+    private final MovementStrategy movementStrategy;
 
-    private Cars(List<Car> cars) {
+    private Cars(List<Car> cars, MovementStrategy movementStrategy) {
         this.cars = cars;
+        this.movementStrategy = movementStrategy;
     }
 
-    public static Cars initCars(CarNames carNames) {
+    public static Cars initCars(CarNames carNames, MovementStrategy movementStrategy) {
         List<Car> cars = IntStream.range(ZERO, carNames.numberOfCars())
                 .mapToObj(carNames::matchCarName)
                 .collect(Collectors.toList());
 
-        return new Cars(cars);
+        return new Cars(cars, movementStrategy);
     }
 
     public void run() {
-        cars.forEach(car -> car.run(new RandomMovementStrategy()));
+        cars.forEach(car -> car.run(movementStrategy));
     }
 
     public Car getCurrentCar(int index) {

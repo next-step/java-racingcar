@@ -11,7 +11,7 @@ class CarsTest {
     @DisplayName("cars 초기화 테스트")
     void carsInitTest() {
         CarNames carNames = CarNames.createCarNames("test1,test2");
-        Cars cars = Cars.initCars(carNames);
+        Cars cars = Cars.initCars(carNames, () -> true);
 
         assertThat(cars.getCarsSize()).isEqualTo(2);
     }
@@ -20,7 +20,7 @@ class CarsTest {
     @DisplayName("cars 단독 우승자 구하기")
     void getWinnerTest() {
         CarNames carNames = CarNames.createCarNames("test1,test2,test3");
-        Cars cars = Cars.initCars(carNames);
+        Cars cars = Cars.initCars(carNames, () -> true);
 
         cars.getCurrentCar(0).run(() -> true);
         cars.getCurrentCar(0).run(() -> true);
@@ -37,7 +37,7 @@ class CarsTest {
     @DisplayName("cars 복수 우승자 구하기")
     void getMultipleWinnerTest() {
         CarNames carNames = CarNames.createCarNames("test1,test2,test3");
-        Cars cars = Cars.initCars(carNames);
+        Cars cars = Cars.initCars(carNames, () -> true);
 
         cars.getCurrentCar(0).run(() -> true);
         cars.getCurrentCar(0).run(() -> true);
