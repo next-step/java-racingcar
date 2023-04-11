@@ -2,12 +2,13 @@ package racing.carRacing;
 
 public class Car {
     public static final int CONDITION = 5;
+    public static final int FIRST_POSITION = 0;
 
     private int position;
     private String name;
 
     public Car(String name) {
-        position = 0;
+        position = FIRST_POSITION;
         checkWrongString(name);
         this.name = name;
     }
