@@ -7,7 +7,11 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
-    private static final String ZERO_TO_NINE_FORMAT = "^[0-9]*$";
+
+    private static final int DELIMITER_INDEX = 1;
+    private static final int NUMBER_VALUE_INDEX = 2;
+    private static final String ONE_TO_NINE_FORMAT = "^[1-9]*$";
+    private static final String DEFAULT_DELIMITER_FORMAT = "[,:]";
     private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
 
 
@@ -38,7 +42,7 @@ public class StringAddCalculator {
      * @return
      */
     private static boolean isOnlyOneNumber(String text) {
-        return text.matches(ZERO_TO_NINE_FORMAT) && text.length() == 1;
+        return text.matches(ONE_TO_NINE_FORMAT) && text.length() == 1;
     }
 
     /**
@@ -50,7 +54,7 @@ public class StringAddCalculator {
      */
     private static String[] split(String text) {
         if (isMatchCustomDelimiter(text)) return splitUsingCustomDelimiter(text);
-        return text.split("[,:]");
+        return text.split(DEFAULT_DELIMITER_FORMAT);
     }
 
     /**
@@ -60,12 +64,13 @@ public class StringAddCalculator {
      * @return
      */
     private static String[] splitUsingCustomDelimiter(String text) {
-        Matcher m = CUSTOM_DELIMITER_PATTERN.matcher(text);
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            return m.group(2).split(customDelimiter);
+        String[] result = new String[]{};
+        Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(text);
+        if (matcher.find()) {
+            String customDelimiter = matcher.group(DELIMITER_INDEX);
+            result = matcher.group(NUMBER_VALUE_INDEX).split(customDelimiter);
         }
-        return null;
+        return result;
     }
 
     /**
@@ -74,8 +79,8 @@ public class StringAddCalculator {
      * @param number
      * @return
      */
-    private static boolean isPositiveInteger(int number) {
-        return number > -1;
+    private static boolean isNotPositiveInteger(int number) {
+        return 1 > number;
     }
 
     /**
@@ -84,8 +89,8 @@ public class StringAddCalculator {
      * @param number
      * @return
      */
-    private static boolean isPositiveInteger(String number) {
-        return number.matches(ZERO_TO_NINE_FORMAT);
+    private static boolean isNotPositiveInteger(String number) {
+        return !number.matches(ONE_TO_NINE_FORMAT);
     }
 
     /**
@@ -113,7 +118,7 @@ public class StringAddCalculator {
     }
 
     private static int toInt(String number) {
-        if (!isPositiveInteger(number))
+        if (isNotPositiveInteger(number))
             throw new NotPositiveIntegerException("문자열 계산기에 숫자 이외의 값 또는 음수를 전달하는 경우 RuntimeException 예외를 throw한다.");
         return Integer.parseInt(number);
     }
