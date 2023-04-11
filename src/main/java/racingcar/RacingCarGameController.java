@@ -32,8 +32,7 @@ public class RacingCarGameController {
             racingCars.add(new RacingCar(carNames[i], moveStrategy));
         }
         PrintStrategy printStrategy = new PositionPrintStrategy();
-        RacingCarGame racingCarGame = new RacingCarGame(racingCars, printStrategy);
-        return racingCarGame;
+        return new RacingCarGame(racingCars, printStrategy);
     }
 
     private static String[] getCarNames() {
