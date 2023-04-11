@@ -1,19 +1,28 @@
 package game.service;
 
-import game.domain.Cars;
+import game.domain.Car;
+import game.util.NumberGenerator;
+import game.util.RandomNumberGenerator;
 import game.view.ResultView;
 
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class CarRacing {
+
+    private final List<Car> cars;
     private final int racingRep;
-    private final Cars cars;
 
     public CarRacing(int carCount, int racingRep) {
+        validateOptions(carCount, racingRep);
+        this.cars = initialCars(carCount);
+        this.racingRep = racingRep;
+    }
+
+    private void validateOptions(int carCount, int racingRep) {
         throwIfNegativeNumber(carCount);
         throwIfNegativeNumber(racingRep);
-        this.racingRep = racingRep;
-        this.cars = Cars.generate(carCount);
     }
 
     private void throwIfNegativeNumber(int number) {
@@ -22,12 +31,22 @@ public class CarRacing {
         }
     }
 
+    private List<Car> initialCars(int carCount) {
+        NumberGenerator generator = new RandomNumberGenerator();
+        return IntStream.range(0, carCount)
+                .mapToObj(n -> new Car(generator))
+                .collect(Collectors.toUnmodifiableList());
+    }
+
     public void start() {
         ResultView.displayExecuteResultMessage();
-        IntStream.range(0, racingRep)
-                .forEach(rep -> {
-                    cars.drive();
-                    ResultView.displayGameResult(cars.carPositions());
-                });
+        startRacing();
+    }
+
+    private void startRacing() {
+        for (int rep = 0; rep < racingRep; rep++) {
+            cars.forEach(Car::drive);
+            ResultView.displayGameResult(cars);
+        }
     }
 }

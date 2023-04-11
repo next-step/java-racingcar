@@ -1,5 +1,7 @@
 package game.view;
 
+import game.domain.Car;
+
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -15,13 +17,17 @@ public final class ResultView {
         System.out.println("실행 결과");
     }
 
-    public static void displayGameResult(List<Integer> carPositions) {
-        for (int carPosition : carPositions) {
-            IntStream.range(0, carPosition)
-                    .forEach(n -> System.out.print(POSITION_SYMBOL));
+    public static void displayGameResult(List<Car> cars) {
+        for (Car car : cars) {
+            displayPosition(car);
             displayNewLine();
         }
         displayNewLine();
+    }
+
+    private static void displayPosition(Car car) {
+        IntStream.range(0, car.position())
+                .forEach(n -> System.out.print(POSITION_SYMBOL));
     }
 
     private static void displayNewLine() {
