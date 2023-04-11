@@ -16,14 +16,14 @@ public class TrackTest {
 
 	@BeforeEach
 	void setUp() {
-		track = Track.of();
+		track = Track.create();
 	}
 
 	@Test
 	@DisplayName("자동차가 세 대 들어간 하나의 경주 트랙이 주어지고,"
 		+ "경기 중이 아닐 때 모든 자동차는 멈춰있어야 한다")
 	void stop_all_car() {
-		track.putRaceCar(Car.of(), Car.of(), Car.of());
+		track.putRaceCar(Car.create(), Car.create(), Car.create());
 
 		List<Car> carList = track.getCarList();
 
@@ -38,7 +38,7 @@ public class TrackTest {
 	void drive_all_car_positive_mile() {
 		Random random = new Random();
 
-		List<Car> givenCarList = new ArrayList<>(Arrays.asList(Car.of(), Car.of(), Car.of()));
+		List<Car> givenCarList = new ArrayList<>(Arrays.asList(Car.create(), Car.create(), Car.create()));
 
 		for (Car car : givenCarList) {
 			car.accelerate(random.nextInt(Car.MAX_SPEED) + 1);
