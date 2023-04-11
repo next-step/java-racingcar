@@ -3,11 +3,12 @@ package racingcar;
 import java.util.Random;
 
 public class RacingCar {
+    public static final int BOUND = 10;
     public static final int CAR_MOVE_STANDARD = 4;
     public static final char CAR_MOVE_STATE = '-';
 
     public int getRandomNumber() {
-        return new Random().nextInt(10);
+        return new Random().nextInt(BOUND);
     }
 
     public boolean moveYn(int randomNumber) {
