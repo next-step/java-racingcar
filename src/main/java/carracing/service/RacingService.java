@@ -32,12 +32,12 @@ public class RacingService {
     }
 
     private void roundStart(int participates) {
-        Round round = new Round(
+        roundRepository.save(new Round(
             IntStream.rangeClosed(1, participates)
                 .boxed()
                 .map(s -> randomScore())
                 .map(Score::new)
-                .collect(Collectors.toList()));
-        roundRepository.save(round);
+                .collect(Collectors.toList()))
+        );
     }
 }
