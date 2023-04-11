@@ -19,6 +19,10 @@ public class Score {
         this.value = validate.applyAsInt(value);
     }
 
+    public int getValue() {
+        return value;
+    }
+
     public String toProgress() {
         return value >= THRESHOLD ? PROGRESS : STOP;
     }

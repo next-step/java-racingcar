@@ -24,33 +24,12 @@ public class Round implements Comparable<Round> {
     private List<Score> scores;
     private List<Record> records;
 
-    public Round(List<Score> scoreList) {
+    public Round(List<Score> scores, List<Record> records) {
         this.roundId = INDEX.getAndIncrement();
-        this.scores = scoreList;
-        this.records = scoreToRecord(scoreList);
+        this.scores = scores;
+        this.records = records;
     }
 
-    private List<Record> scoreToRecord(List<Score> scoreList) {
-        AtomicInteger integer = new AtomicInteger(0);
-        List<Record> recordList = new ArrayList<>();
-        for(Score score : scoreList) {
-            recordList.add(new Record(calRecord(integer, score)));
-        }
-        return recordList;
-    }
-
-    private String calRecord(AtomicInteger integer, Score score) {
-        if(isFirstRound() ) {
-            return score.toProgress();
-        }
-        return score.toProgress() + prevScoreProgress(integer.getAndIncrement());
-    }
-
-    private String prevScoreProgress(int index) {
-        RoundRepository roundRepository = (RoundRepository) getIoc().get(RoundRepository.class);
-        Round byId = roundRepository.findById(this.getRoundId()-  1);
-        return byId.getRecords().get(index).getRecord();
-    }
 
     public boolean isFirstRound() {
         return this.roundId <= FIRST_ROUND_VALUE;
@@ -87,7 +66,4 @@ public class Round implements Comparable<Round> {
         return records;
     }
 
-    public void setRoundId(int i) {
-        this.roundId = i;
-    }
 }

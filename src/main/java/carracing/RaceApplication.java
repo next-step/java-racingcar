@@ -27,10 +27,6 @@ public class RaceApplication {
         raceApplication.run();
     }
 
-    public static Map<Class<?>, Object> getIoc() {
-        return ioc;
-    }
-
     private static RaceApplication initialize() {
         ioc.put(RoundRepository.class, new RoundRepository());
         ioc.put(RacingService.class, new RacingService((RoundRepository) ioc.get(RoundRepository.class)));

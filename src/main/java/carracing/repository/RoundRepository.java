@@ -32,4 +32,8 @@ public class RoundRepository {
     public void save(Round round) {
         roundDatabase.put(round.getRoundId(), round);
     }
+
+    public int count() {
+        return roundDatabase.size();
+    }
 }
