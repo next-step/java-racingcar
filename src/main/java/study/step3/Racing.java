@@ -8,14 +8,14 @@ public class Racing {
   private Racing() {
   }
 
-  static void start(){
+  static void start() {
     int numOfCars = InputView.startInput(QUESTION_NUM_OF_CARS);
     int numOfRaces = InputView.startInput(QUESTION_NUM_OF_ROUNDS);
 
     playRacing(numOfCars, numOfRaces);
   }
 
-  private static void playRacing(int numOfCars, int numOfRaces){
+  private static void playRacing(int numOfCars, int numOfRaces) {
     Car[] cars = CarManager.createCars(numOfCars);
 
     for (int i = 0; i < numOfRaces; i++) {

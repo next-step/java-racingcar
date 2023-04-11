@@ -10,21 +10,21 @@ public class CarManager {
   private CarManager() {
   }
 
-  public static Car[] createCars(int numOfCars){
+  public static Car[] createCars(int numOfCars) {
     Car[] cars = new Car[numOfCars];
-    for(int i = 0; i < numOfCars; i++){
+    for (int i = 0; i < numOfCars; i++) {
       cars[i] = new Car(i + 1);
     }
     return cars;
   }
 
-  public static void moveCars(Car[] cars){
+  public static void moveCars(Car[] cars) {
     for (Car car : cars) {
       car.move(generateRandomInt());
     }
   }
 
-  private static int generateRandomInt(){
+  private static int generateRandomInt() {
     return RANDOM_INSTANCE.nextInt(DEFAULT_BOUND);
   }
 }
