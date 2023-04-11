@@ -1,43 +1,40 @@
 package basicgame;
 
+import calculator.Positive;
+import util.RandomUtil;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class RacingCar {
-
-    public static final String INPUT_ERROR_MESSAGE = "0이나 음수값은 입력하실 수 없습니다.";
-
-    private static int carCount = 0;
-    private static int tryCount = 0;
+public class CarGroup {
 
     private static List<Car> cars;
+    public static final String INPUT_ERROR_MESSAGE = "0이나 음수값은 입력하실 수 없습니다.";
+    public static Count triedCount;
+    private final static int MAX_RANDOM = 10;
+    public final static int ZERO = 0;
 
-    public static void startGame() {
-        input();
+
+    public static void startGame(int carCount, int tryCount) {
+        triedCount = new Count(ZERO);
+        if (carCount <= 0 || tryCount <= 0) {
+            throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
+        }
+
         initCar(carCount);
 
         ResultView.printResultTitle();
         for (int i = 0; i < tryCount; i++) {
             activeCar();
             ResultView.printResultList(cars);
+            triedCount.autoIncrement();
         }
     }
 
-    public static void input() {
-        InputView.printCarInput();
-        carCount = UserInput.input();
-
-        InputView.printTryInput();
-        tryCount = UserInput.input();
-
-        if (carCount <= 0 || tryCount <= 0) {
-            throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
-        }
-    }
 
     private static void activeCar() {
         for (Car car : cars) {
-            car.go();
+            car.go(RandomUtil.getRandomValue(MAX_RANDOM));
         }
     }
 
@@ -48,11 +45,7 @@ public class RacingCar {
         }
     }
 
-    public static int getCarCount() {
-        return carCount;
-    }
-
-    public static int getTryCount() {
-        return tryCount;
+    public static int carsSize() {
+        return cars.size();
     }
 }

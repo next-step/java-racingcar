@@ -6,14 +6,13 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import java.util.stream.Stream;
 
+import static basicgame.CarGroup.INPUT_ERROR_MESSAGE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class basicGameTest {
+public class BasicGameTest {
 
     @DisplayName("전진 가능 여부 테스트")
     @MethodSource("isEnoughToGoTestArguments")
@@ -49,29 +48,24 @@ public class basicGameTest {
     @Test
     @DisplayName("자동차 대수, 시도 횟수 입력 테스트 Success")
     void inputUiTestSuccess() {
-        String input = "3\n5\n"; // 입력할 값
+        var expectedCarCount = 3;
+        var expectedTryCount = 5;
 
-        int expectedCarCount = 3;
-        int expectedTryCount = 5;
+        var actualCarCount = 3;
+        var actualTryCount = 5;
+        CarGroup.startGame(actualCarCount, actualTryCount);
 
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-
-        RacingCar.input();
-
-        assertThat(RacingCar.getCarCount()).isEqualTo(expectedCarCount);
-        assertThat(RacingCar.getTryCount()).isEqualTo(expectedTryCount);
+        assertThat(CarGroup.carsSize()).isEqualTo(expectedCarCount);
+        assertThat(CarGroup.triedCount.getValue()).isEqualTo(expectedTryCount);
     }
 
     @Test
     @DisplayName("자동차 대수, 시도 횟수 입력 테스트 Fail")
     void inputUiTestFailure() {
-        String input = "-1\n5\n"; // 입력할 값
+        var carCount = -1;
+        var tryCount = 5;
 
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-
-        assertThatThrownBy(() -> RacingCar.input()).isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(RacingCar.INPUT_ERROR_MESSAGE);
+        assertThatThrownBy(() -> CarGroup.startGame(carCount, tryCount)).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(INPUT_ERROR_MESSAGE);
     }
 }
