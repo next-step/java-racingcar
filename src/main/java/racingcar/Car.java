@@ -2,6 +2,7 @@ package racingcar;
 
 public class Car {
 
+    private static final int MOVABLE_COUNT = 4;
     private int position;
 
     public void move(int number) {
@@ -11,7 +12,7 @@ public class Car {
     }
 
     private boolean movable(int number) {
-        return number >= 4;
+        return number >= MOVABLE_COUNT;
     }
 
     public int getPosition() {
