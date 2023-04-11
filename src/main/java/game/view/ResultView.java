@@ -1,31 +1,30 @@
 package game.view;
 
-import game.domain.CarAction;
-import game.domain.Cars;
-
+import java.util.List;
 import java.util.stream.IntStream;
 
-public class ResultView {
-    private final Cars cars;
-    private final ResultAggregation aggregation;
+public final class ResultView {
 
-    public ResultView(Cars cars) {
-        this.cars = cars;
-        this.aggregation = new ResultAggregation(cars.count());
+    public static final String POSITION_SYMBOL = "-";
+
+    private ResultView() {
+        throw new IllegalCallerException("잘못된 객체 생성입니다.");
     }
 
-
-    public void show() {
+    public static void displayExecuteResultMessage() {
         System.out.println("실행 결과");
-        IntStream.range(0, cars.racingCount())
-                .forEach(this::aggregateResultAndShow);
     }
 
-    private void aggregateResultAndShow(int rep) {
-        for (int carNumber = 0; carNumber < cars.count(); carNumber++) {
-            CarAction currentCarAction = cars.racingResult(carNumber, rep);
-            aggregation.aggregate(carNumber, currentCarAction);
+    public static void displayGameResult(List<Integer> carPositions) {
+        for (int carPosition : carPositions) {
+            IntStream.range(0, carPosition)
+                    .forEach(n -> System.out.print(POSITION_SYMBOL));
+            displayNewLine();
         }
-        aggregation.showResult();
+        displayNewLine();
+    }
+
+    private static void displayNewLine() {
+        System.out.println();
     }
 }

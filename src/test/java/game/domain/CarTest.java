@@ -1,7 +1,6 @@
 package game.domain;
 
 import game.util.NumberGenerator;
-import game.util.RandomNumberGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -18,30 +17,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CarTest {
 
     @Test
-    @DisplayName("자동차는 주행 수 만큼 위치정보를 가지고 있다.")
-    void test1() {
-        int driveCount = 5;
-        Car car = new Car(new RandomNumberGenerator());
-        for (int i = 0; i < driveCount; i++) {
-            car.drive();
-        }
-        assertThat(car.moveCount()).isSameAs(driveCount);
-    }
-
-    @Test
-    @DisplayName("자동차는 NumberGenerator 가 4 이상을 반환하면 움직인다.")
+    @DisplayName("자동차는 NumberGenerator 가 4 이상을 반환하면 position 이 증가한다.")
     void test2() {
         Car car = new Car(new MovableNumberGenerator());
         car.drive();
-        assertThat(car.positionOfRep(0)).isEqualTo(CarAction.MOVE);
+        assertThat(car.position()).isSameAs(1);
     }
 
     @Test
-    @DisplayName("자동차는 NumberGenerator 가 3 이하를 반환하면 움직이지 않는다.")
+    @DisplayName("자동차는 NumberGenerator 가 3 이하를 반환하면 position 이 증가하지 않는다.")
     void test3() {
         Car car = new Car(new NonMovableNumberGenerator());
         car.drive();
-        assertThat(car.positionOfRep(0)).isEqualTo(CarAction.STOP);
+        assertThat(car.position()).isZero();
     }
 
 

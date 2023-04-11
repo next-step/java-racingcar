@@ -20,6 +20,5 @@ public class CarRacingApplication {
         RacingOptions racingOptions = InputView.showAndGetOptions();
         CarRacing carRacing = new CarRacing(racingOptions);
         carRacing.start();
-        carRacing.end();
     }
 }

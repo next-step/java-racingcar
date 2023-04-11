@@ -29,16 +29,9 @@ public class Cars {
         generatedCars.forEach(Car::drive);
     }
 
-    public int count() {
-        return generatedCars.size();
-    }
-
-    public int racingCount() {
-        return generatedCars.get(0).moveCount();
-    }
-
-    public CarAction racingResult(int carNumber, int rep) {
-        Car currentCar = generatedCars.get(carNumber);
-        return currentCar.positionOfRep(rep);
+    public List<Integer> carPositions() {
+        return generatedCars.stream()
+                .map(Car::position)
+                .collect(Collectors.toUnmodifiableList());
     }
 }
