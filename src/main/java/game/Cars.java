@@ -23,8 +23,7 @@ public class Cars {
     }
 
     public void drive() {
-        generatedCars.parallelStream()
-                .forEach(Car::drive);
+        generatedCars.forEach(Car::drive);
     }
 
     public int count() {
