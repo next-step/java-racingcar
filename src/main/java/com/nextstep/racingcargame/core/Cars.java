@@ -17,7 +17,7 @@ public class Cars {
 
     // root ctor
     public Cars(List<Car> cars) {
-        if (!isMoreThanOneCar(cars.size())) {
+        if (!isMoreThanOneCar(cars)) {
             throw new IllegalArgumentException(HAS_NEGATIVE_CAR_CREATE_REQUEST);
         }
         this.cars = cars;
@@ -45,8 +45,8 @@ public class Cars {
         }
     }
 
-    public boolean isMoreThanOneCar(int number) {
-        return number > 0;
+    private boolean isMoreThanOneCar(List<Car> cars) {
+        return !cars.isEmpty();
     }
 
     public List<String> winnerNames() {

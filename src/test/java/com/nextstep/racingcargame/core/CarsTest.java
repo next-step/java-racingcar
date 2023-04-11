@@ -1,10 +1,10 @@
 package com.nextstep.racingcargame.core;
 
+import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,11 +19,24 @@ class CarsTest {
 
     private static final int SINGLE_OBJECT_SIZE = 1;
 
+    private static final int TRIPLE_OBJECT_SIZE = 3;
+
     @ParameterizedTest(name = "[{index}] Cars 객체에 (,) 구분자를 기준으로 이름만큼 자동차를 생성한다.")
     @CsvSource(value = {"rick,jack,ethan:3", "ethan:1", "jack,ethan:2"}, delimiter = ':')
     void createCarsSuccessTest(String valueSource, int expectedCarSize) {
         Cars cars = new Cars(new CarNameChunk(valueSource));
         assertThat(cars.carSize()).isEqualTo(expectedCarSize);
+    }
+
+    @Test
+    @DisplayName("객체 사이즈가 1 이상일 경우 정상 Cars 객체를 반환한다.")
+    public void isMoreThanOneCarTest() {
+        Car patCar = new Car("pat");
+        Car rickCar = new Car("rick");
+        Car ethanCar = new Car("ethan");
+
+        Cars cars = new Cars(asList(patCar, rickCar, ethanCar));
+        assertThat(cars.carSize()).isEqualTo(TRIPLE_OBJECT_SIZE);
     }
 
     @ParameterizedTest(name = "[{index}] Cars 1급 객체 0 이하의 숫자 생성자에 유입된 경우 익셉션을 발생 시킨다.")
@@ -64,7 +77,7 @@ class CarsTest {
 
         Car ethanCar = new Car("ethan");
 
-        Cars cars = new Cars(Arrays.asList(patCar, rickCar, ethanCar));
+        Cars cars = new Cars(asList(patCar, rickCar, ethanCar));
         assertThat(cars.findFirstFurthestTraveledCar().getCarName()).isEqualTo("pat");
     }
 
@@ -83,7 +96,7 @@ class CarsTest {
         ethanCar.moveForwardByNumber(CAR_FORCE_MOVE_NUMBER);
         ethanCar.moveForwardByNumber(CAR_FORCE_MOVE_NUMBER);
 
-        Cars cars = new Cars(Arrays.asList(patCar, rickCar, ethanCar));
+        Cars cars = new Cars(asList(patCar, rickCar, ethanCar));
         assertThat(cars.findFirstFurthestTraveledCar().getCarName()).isEqualTo("rick");
     }
 
@@ -102,7 +115,7 @@ class CarsTest {
         ethanCar.moveForwardByNumber(CAR_FORCE_MOVE_NUMBER);
         ethanCar.moveForwardByNumber(CAR_FORCE_MOVE_NUMBER);
 
-        Cars cars = new Cars(Arrays.asList(patCar, rickCar, ethanCar));
+        Cars cars = new Cars(asList(patCar, rickCar, ethanCar));
         assertThat(cars.joinedWinnerNames()).isEqualTo("rick,ethan");
     }
 
@@ -122,8 +135,8 @@ class CarsTest {
 
         Car ethanCar = new Car("ethan");
 
-        Cars cars = new Cars(Arrays.asList(patCar, rickCar, ethanCar));
-        Car f = cars.findFirstFurthestTraveledCar();
+        Cars cars = new Cars(asList(patCar, rickCar, ethanCar));
         assertThat(cars.getFurthestDistance()).isEqualTo(3);
     }
+
 }
