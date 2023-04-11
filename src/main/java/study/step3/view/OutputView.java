@@ -1,5 +1,7 @@
 package study.step3.view;
 
+import java.util.List;
+
 public class OutputView {
 
     private static final String TEXT_RESULT = "실행 결과";
@@ -9,12 +11,13 @@ public class OutputView {
         System.out.println("\n" + TEXT_RESULT);
     }
 
-    public void outputPositionOfCar(int[] positionOfCars) {
-        for (int i = 0; i < positionOfCars.length; i++) {
-            for (int j = 0; j < positionOfCars[i]; j++) {
+    public void outputPositionOfCar(List<Integer> positionOfCars) {
+        for (int position : positionOfCars) {
+            for (int i = 0; i < position; i++) {
                 System.out.print(OUTPUT_TEXT);
             }
             System.out.println();
         }
+        System.out.println();
     }
 }
