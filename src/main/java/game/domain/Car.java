@@ -4,6 +4,7 @@ import game.util.NumberGenerator;
 
 public class Car {
     private static final int MOVE_CRITERIA = 4;
+    
     private final CarActions carActions = new CarActions();
     private final NumberGenerator numberGenerator;
 
