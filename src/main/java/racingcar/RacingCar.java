@@ -1,7 +1,5 @@
 package racingcar;
 
-import java.util.Random;
-
 public class RacingCar {
     public static final int CAR_MOVE_STANDARD = 4;
     public static final char CAR_MOVE_STATE = '-';
