@@ -1,12 +1,13 @@
 package racing.carRacing;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
+    public static final int ZERO = 0;
     public static final String DELIMITER = ",";
+    public static final String COMBINER = ", ";
 
     private final List<Car> cars;
     private final MovementStrategy movementStrategy;
@@ -33,7 +34,7 @@ public class Cars {
     }
 
     private static void hasCarName(int carNumber) {
-        if (carNumber == 0) {
+        if (carNumber == ZERO) {
             throw new IllegalArgumentException("자동차 이름을 입력해주세요");
         }
     }
@@ -51,28 +52,28 @@ public class Cars {
     }
 
     public String getWinner() {
-        CarComparable carComparable = new CarComparable();
-        cars.sort(carComparable);
+        int maxPosition = getMaxPosition();
 
-        List<String> winner = cars.stream()
-                .filter(car -> car.getCurrentPosition() == getMaxPosition())
+        List<String> winner = findWinner(maxPosition);
+
+        return makeWinnerString(winner);
+    }
+
+    private String makeWinnerString(List<String> winner) {
+        return String.join(COMBINER, winner);
+    }
+
+    private List<String> findWinner(int maxPosition) {
+        return cars.stream()
+                .filter(car -> car.getMaxPosition(maxPosition))
                 .map(Car::getCurrentCar)
                 .collect(Collectors.toList());
-
-        return String.join(", ", winner);
     }
 
     private int getMaxPosition() {
-        return cars.get(0).getCurrentPosition();
-    }
-}
-
-class CarComparable implements Comparator<Car> {
-    @Override
-    public int compare(Car first, Car second) {
-        int firstPosition = first.getCurrentPosition();
-        int secondPosition = second.getCurrentPosition();
-
-        return Integer.compare(secondPosition, firstPosition);
+        return cars.stream()
+                .mapToInt(Car::getCurrentPosition)
+                .max()
+                .orElse(ZERO);
     }
 }

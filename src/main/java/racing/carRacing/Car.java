@@ -23,7 +23,7 @@ public class Car {
 
     private void isNullOrEmpty(String name) {
         if (isNull(name) || isEmpty(name)) {
-            throw new IllegalArgumentException("문자열을 입력해주세요");
+            throw new IllegalArgumentException("자동차 이름을 입력해주세요");
         }
     }
 
@@ -53,5 +53,9 @@ public class Car {
 
     public String getCurrentCar() {
         return name;
+    }
+
+    public boolean getMaxPosition(int maxPosition) {
+        return position == maxPosition;
     }
 }

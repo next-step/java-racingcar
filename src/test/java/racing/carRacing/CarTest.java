@@ -25,7 +25,8 @@ class CarTest {
     @DisplayName("이름이 5글자 이상일 경우 에러 반환 테스트")
     void overCarLengthTest() {
         assertThatThrownBy(() -> new Car("abcdef"))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차 이름은 5글자 이상 초과할 수 없습니다.");
     }
 
     @ParameterizedTest
@@ -33,7 +34,8 @@ class CarTest {
     @DisplayName("null 또는 빈칸일때 에러 반환 테스트")
     void nullOrEmptyTest(String input) {
         assertThatThrownBy(() -> new Car(input))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차 이름을 입력해주세요");;
     }
 
     @ParameterizedTest
@@ -56,6 +58,26 @@ class CarTest {
         car.run(() -> false);
 
         assertThat(car.getCurrentPosition()).isEqualTo(input);
+    }
+
+    @Test
+    @DisplayName("우승자인 차 확인 테스트")
+    void winnerCarTest() {
+        int maxPosition = 3;
+
+        Car car = new Car(3);
+
+        assertThat(car.getMaxPosition(maxPosition)).isTrue();
+    }
+
+    @Test
+    @DisplayName("우승자가 아닌 차 확인 테스트")
+    void loserCarTest() {
+        int maxPosition = 3;
+
+        Car car = new Car(2);
+
+        assertThat(car.getMaxPosition(maxPosition)).isFalse();
     }
 
 }
