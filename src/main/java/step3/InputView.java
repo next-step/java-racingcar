@@ -8,7 +8,7 @@ public class InputView {
     private static final String ASK_MESSAGE_FOR_A_NUMBER_OF_CAR = "자동차 대수는 몇 대 인가요?";
     private static final String ASK_MESSAGE_FOR_COUNT = "시도할 회수는 몇 회 인가요?";
 
-    public int getNumberOfCar() {
+    public int getNumberOfCars() {
         System.out.println(ASK_MESSAGE_FOR_A_NUMBER_OF_CAR);
         int numberOfCars = scanner.nextInt();
         if (numberOfCars <= 0) {
