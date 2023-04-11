@@ -1,40 +1,37 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class CarTest {
     @Test
-    @DisplayName("각 자동차에 이름을 부여할 수 있다")
-    public void race_ValidCarName() {
-        Car car = new Car("pobi", new GreaterEqualThanStrategy());
-        assertThat(car.toDto().getName()).isEqualTo("pobi");
+    @DisplayName("초기 위치는 0이다")
+    public void carInitialPosition_Zero() {
+        Car car = new Car();
+        assertThat(car.position).isZero();
     }
 
     @Test
-    @DisplayName("자동차 이름은 5자를 초과할 수 없다")
-    public void race_InvalidCarName() {
-        assertThatThrownBy(() -> new Car("longPobi", new GreaterEqualThanStrategy()))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("Invalid Car Name: longPobi");
+    @DisplayName("1씩 이동한다")
+    public void carMoveAtOnce_One() {
+        Car car = new Car();
+        Integer BeforePosition = car.position;
+        car.move();
+        Integer AfterPosition = car.position;
+        assertThat(AfterPosition - BeforePosition).isOne();
     }
 
     @Test
-    @DisplayName("4 이상일 때 이동한다")
+    @DisplayName("MINIMUM_NUMBER_TO_MOVE 이상일 때 이동한다")
     public void carMove_WhenNumberMoreThanEqualMinimumNumberToMove() {
-        Car car = new Car("pobi", new GreaterEqualThanStrategy());
-        car.move(4);
-        assertThat(car.toDto().getPosition()).isOne();
+        assertThat(Car.isMovable(Car.MINIMUM_NUMBER_TO_MOVE)).isTrue();
     }
 
     @Test
-    @DisplayName("3 미만일 때 이동하지 않는다")
+    @DisplayName("MINIMUM_NUMBER_TO_MOVE 미만일 때 이동하지 않는다")
     public void carMove_WhenNumberLessThanMinimumNumberToMove() {
-        Car car = new Car("pobi", new GreaterEqualThanStrategy());
-        car.move(3);
-        assertThat(car.toDto().getPosition()).isZero();
+        assertThat(Car.isMovable(Car.MINIMUM_NUMBER_TO_MOVE - 1)).isFalse();
     }
 }

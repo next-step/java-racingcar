@@ -1,32 +1,35 @@
 package racingcar;
 
-public class Car extends MoveContext {
-    private final String name;
-    private Integer position = 0;
+import java.util.Random;
 
-    public Car(String name, MoveStrategy moveStrategy) {
-        super(moveStrategy);
-        validateCarName(name);
-        this.name = name;
-    }
+public class Car {
+    private static final Integer MAX_NUMBER = 10;
+    public static final Integer MINIMUM_NUMBER_TO_MOVE = 6;
+    private static final String ONE_POSITION_MARK = "-";
+    private static final Random RANDOM = new Random();
 
-    public void move(Integer number) {
-        if (moveStrategy.isMovable(number)) {
-            this.position++;
+    public Integer position = 0;
+
+    public void moveAndPrint() {
+        if (isMovable(randomNumber())) {
+            move();
         }
+        printPosition();
     }
 
-    public CarDto toDto() {
-        return new CarDto(this.name, this.position);
+    public void move() {
+        this.position++;
     }
 
-    private void validateCarName(String name) {
-        if (name.length() > 5) {
-            throw new IllegalArgumentException("Invalid Car Name: " + name);
-        }
+    public static boolean isMovable(Integer number) {
+        return number >= MINIMUM_NUMBER_TO_MOVE;
     }
 
-    public boolean isPositionEqual(Integer position) {
-        return this.position.equals(position);
+    private static Integer randomNumber() {
+        return RANDOM.nextInt(MAX_NUMBER);
+    }
+
+    private void printPosition() {
+        System.out.println(ONE_POSITION_MARK.repeat(this.position));
     }
 }
