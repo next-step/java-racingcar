@@ -15,7 +15,7 @@ public class MovingTest {
     void 전진하지_않는_조건_테스트(int input, boolean expected) {
         Moving moving = new Moving();
 
-        boolean result = moving.move(input);
+        boolean result = moving.isMovable(input);
 
         Assertions.assertThat(result).isEqualTo(expected);
     }
@@ -26,7 +26,7 @@ public class MovingTest {
     void 전진하는_조건_테스트(int input, boolean expected) {
         Moving moving = new Moving();
 
-        boolean result = moving.move(input);
+        boolean result = moving.isMovable(input);
 
         Assertions.assertThat(result).isEqualTo(expected);
     }
