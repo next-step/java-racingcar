@@ -6,7 +6,7 @@ public class StringAddCalculator {
     static final int CUSTOM_INPUT_BEGIN_INDEX = 4;
 
     public static int splitAndSum(String input) {
-        if (isNullOrBlank(input)) return ZERO;
+        if (isNotEmpty(input)) return ZERO;
         String[] strNumbers = getStrNumbers(input);
         return calculate(strNumbers);
     }
@@ -40,7 +40,7 @@ public class StringAddCalculator {
         return input.contains("//");
     }
 
-    public static boolean isNullOrBlank(String input) {
+    public static boolean isNotEmpty(String input) {
         return input == null || input.isBlank();
     }
 }
