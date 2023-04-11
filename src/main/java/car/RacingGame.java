@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-
     private final int carCount;
     private final int stageCount;
 
@@ -19,7 +18,6 @@ public class RacingGame {
         Cars cars = new Cars(createCars());
 
         ResultView.printResultTitle();
-
         for(int i = 0; i < stageCount; i++) {
             cars.move();
             ResultView.printCars(cars);

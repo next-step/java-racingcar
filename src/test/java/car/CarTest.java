@@ -8,7 +8,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
-
     private static final int DEFAULT_CAR_POSITION = 0;
 
     @DisplayName("랜덤값이 4 이상일 경우 자동차가 이동한다")
@@ -32,5 +31,4 @@ public class CarTest {
         car.move(moveStrategy);
         assertThat(car.getPosition()).isEqualTo(DEFAULT_CAR_POSITION);
     }
-
 }
