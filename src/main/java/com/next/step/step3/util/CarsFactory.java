@@ -8,15 +8,13 @@ import java.util.List;
 
 public class CarsFactory {
 
-    private static final String CAR_START_POSITION = "";
-
     private CarsFactory() {
     }
 
     public static List<Car> createCars(InputDto inputDto) {
         List<Car> cars = new ArrayList<>();
         for (int creationCount = 0; creationCount < inputDto.numOfCars(); creationCount++) {
-            cars.add(new Car(CAR_START_POSITION));
+            cars.add(new Car());
         }
         return cars;
     }

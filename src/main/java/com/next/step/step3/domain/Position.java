@@ -2,19 +2,17 @@ package com.next.step.step3.domain;
 
 public class Position {
 
-    private static final char MOVE_MARK = '-';
+    private int position;
 
-    private String position;
-
-    public Position(String position) {
+    public Position(int position) {
         this.position = position;
     }
 
     public void movePosition() {
-        this.position += MOVE_MARK;
+        this.position++;
     }
 
-    public String position() {
+    public int position() {
         return position;
     }
 }

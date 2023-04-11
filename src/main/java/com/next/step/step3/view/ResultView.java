@@ -9,13 +9,27 @@ public class ResultView {
 
     private static final String RESULT_DELIMITER = "";
 
+    private static final char MOVE_MARK = '-';
+
     public void showResultTitle() {
         System.out.println(RESULT_TITLE);
     }
 
     public void showResultContents(Cars cars) {
         for (Car car : cars.carElements()) {
-            System.out.println(car.position());
+            markMoveTrace(car);
+        }
+        System.out.println(RESULT_DELIMITER);
+    }
+
+    private void markMoveTrace(Car car) {
+        if (car.isMoved()) {
+            System.out.println();
+            return;
+        }
+
+        for (int moveCount = 0; moveCount < car.position(); moveCount++) {
+            System.out.print(MOVE_MARK);
         }
         System.out.println(RESULT_DELIMITER);
     }
