@@ -3,7 +3,14 @@ package racingcar;
 import java.util.Scanner;
 
 public class InputView {
+
+    private final Scanner scanner = new Scanner(System.in);
+
     public int getInput() {
-        return new Scanner(System.in).nextInt();
+        return scanner.nextInt();
+    }
+
+    public void finishInput() {
+        scanner.close();
     }
 }
