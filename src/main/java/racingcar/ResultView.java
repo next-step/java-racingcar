@@ -1,19 +1,19 @@
 package racingcar;
 
 public class ResultView {
-    public void questionCarCount() {
+    public void questionCarCountMessage() {
         System.out.println("자동차 대수는 몇 대 인가요?");
     }
 
-    public void questionTryCount() {
+    public void questionTryCountMessage() {
         System.out.println("시도할 회수는 몇 회 인가요?");
     }
 
-    public void executeResult() {
+    public void executeResultMessage() {
         System.out.println("실행 결과");
     }
 
-    public void printCarMoveStateLine(String line) {
+    public void printMoveStateLine(String line) {
         System.out.println(line);
     }
 
