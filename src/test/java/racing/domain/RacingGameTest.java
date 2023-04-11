@@ -1,9 +1,8 @@
-package racing;
+package racing.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.domain.RacingCar;
-import racing.domain.RacingGame;
+import racing.FixedRandomForwardStrategy;
 import racing.strategy.MoveStrategy;
 
 import java.util.List;
@@ -16,7 +15,6 @@ class RacingGameTest {
     @DisplayName("경기 생성 테스트")
     void racingGameInfo() {
         int car = 5;
-        int cycle = 10;
         RacingGame game = new RacingGame(car);
         assertThat(game).isNotNull();
 

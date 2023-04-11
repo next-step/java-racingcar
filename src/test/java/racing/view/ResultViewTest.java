@@ -1,13 +1,13 @@
-package racing;
+package racing.view;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.FixedRandomForwardStrategy;
 import racing.domain.RacingCar;
 import racing.domain.RacingGame;
 import racing.strategy.MoveStrategy;
-import racing.view.ResultView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
