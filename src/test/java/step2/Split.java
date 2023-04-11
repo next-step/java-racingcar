@@ -8,8 +8,8 @@ public class Split {
     private final String text;
     private static final String ZERO = "0";
     private static final String DELIMITER = ",|:";
-    public static final String CUSTOM_DELIMITER = "//(.)\n(.*)";
-    public static final Pattern PATTERN = Pattern.compile(CUSTOM_DELIMITER);
+    private static final String CUSTOM_DELIMITER = "//(.)\n(.*)";
+    private static final Pattern PATTERN = Pattern.compile(CUSTOM_DELIMITER);
 
     public Split(String text) {
         if (isBlank(text)) {
