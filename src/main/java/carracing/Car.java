@@ -1,30 +1,21 @@
 package carracing;
 
 public class Car {
-    private int carNumber;
 
-    private Integer distance;
+    private int distance;
 
-    public Car(int carNumber) {
-        this.carNumber = carNumber;
-    }
+    private String movedState;
 
     public Car() {
-
+        this.movedState = "";
     }
-
-    public static void movingCondition(int nextInt) {
-
-    }
-
-
 
     public void assignRandomDistance(int randomNumber) {
         this.distance = randomNumber;
     }
 
     public Integer getDistance() {
-       return this.distance;
+        return this.distance;
     }
 
     public Boolean isMovable() {
@@ -32,5 +23,20 @@ public class Car {
             return false;
         }
         return true;
+    }
+
+    public void move() {
+        if (isMovable()) {
+            this.movedState += "-";
+        }
+    }
+
+    public void printMovedState() {
+        InputView.input(this.movedState);
+        OutputView.print();
+    }
+
+    public String getMovedState() {
+        return this.movedState;
     }
 }

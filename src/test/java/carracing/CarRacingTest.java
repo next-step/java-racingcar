@@ -1,13 +1,9 @@
 package carracing;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-import java.util.List;
 import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -50,9 +46,14 @@ public class CarRacingTest {
     }
 
     @Test
-    void 자동차_이동가능여부() {
-
+    @DisplayName("3대의 자동차가 5번 움직였을 경우 실행결과")
+    void racing_start() {
+        carRacing = new CarRacing(3, 5);
+        carRacing.ready();
+        carRacing.start();
     }
+
+
 
 
 }

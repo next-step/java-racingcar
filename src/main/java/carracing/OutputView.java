@@ -6,6 +6,8 @@ public class OutputView {
 
     public static void print() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println(scanner.nextLine());
+        while (scanner.hasNextLine()) {
+            System.out.println(scanner.nextLine());
+        }
     }
 }
