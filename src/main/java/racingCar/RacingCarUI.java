@@ -30,7 +30,7 @@ public class RacingCarUI {
 
 	public static void printResult(List<Car> carList) {
 		for (Car car : carList) {
-			System.out.println(car.getMileageView());
+			System.out.println(car.getDistanceView());
 		}
 	}
 }

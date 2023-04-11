@@ -2,36 +2,35 @@ package racingCar.domain;
 
 import static org.assertj.core.api.Assertions.*;
 
-import org.junit.jupiter.api.BeforeEach;
+import java.util.List;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class CarTest {
-	private Car car;
-
-	@BeforeEach
-	void setUp() {
-		car = Car.create();
-	}
-
-	@ParameterizedTest(name = "속력이 {arguments} 일 때 {arguments} 마일 만큼 이동한다")
-	@ValueSource(ints = { 1, 2, 3, 4, 5 })
-	void drive_arguments_mile(int speed) {
-		car.accelerate(speed);
-		car.drive();
-
-		assertThat(car.getDistanceList()).hasSize(speed);
-	}
-
 	@Test
-	@DisplayName("자동차가 달리다가 멈췄다면 속도는 0이어야 한다")
-	void car_should_stop() {
-		car.accelerate();
-		car.drive();
-		car.stop();
+	@DisplayName("자동차는 파워가 기준 미만일 때는 이동하지 않아야 한다.")
+	void drive_only_over_4_power() {
+		Car car = Car.of(Car.POWER_THRESHOLD - 1);
+		List<Distance> given = car.getDistanceList();
 
-		assertThat(car.getSpeed()).isEqualTo(Car.ZERO);
+		car.accelerate();
+
+		assertThat(car.getDistanceList()).isEqualTo(given);
+	}
+
+	@ParameterizedTest(name = "파워가 이동 가능한 만큼 충분한 자동차는 "
+		+ "{arguments}회 엑셀을 밟으면 {arguments} 만큼 이동한다")
+	@ValueSource(ints = { 1, 2, 3, 4, 5 })
+	void drive_arguments_mile(int count) {
+		Car car = Car.of(Car.POWER_THRESHOLD);
+
+		for (int i = 0; i < count; i++) {
+			car.accelerate();
+		}
+
+		assertThat(car.getDistanceList()).hasSize(count);
 	}
 }

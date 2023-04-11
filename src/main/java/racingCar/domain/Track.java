@@ -24,19 +24,11 @@ public class Track {
 
 	public void run(int round) {
 		for (int i = 0; i < round; i++) {
-			prepareRace();
-
-			raceOnce();
+			raceAround();
 		}
 	}
 
-	private void prepareRace() {
-		for (Car car : carList) {
-			car.accelerate();
-		}
-	}
-
-	public void raceOnce() {
+	public void raceAround() {
 		for (Car car : carList) {
 			car.drive();
 		}

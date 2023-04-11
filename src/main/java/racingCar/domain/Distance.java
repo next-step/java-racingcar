@@ -1,7 +1,5 @@
 package racingCar.domain;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public enum Distance {
@@ -14,10 +12,8 @@ public enum Distance {
 		this.view = view;
 	}
 
-	public static List<Distance> from(int speed) {
-		List<Distance> distanceList = new ArrayList<>(Collections.nCopies(speed, Kilometer));
-
-		return distanceList;
+	public static Distance create() {
+		return Kilometer;
 	}
 
 	public static String convertDistanceToView(List<Distance> distanceList) {

@@ -7,56 +7,58 @@ import java.util.Random;
 public class Car {
 	public static final int ZERO = 0;
 
-	public static final int MAX_SPEED = 10;
+	public static final int MAX_POWER = 10;
+
+	public static final int POWER_THRESHOLD = 4;
 
 	private final Random random;
 
 	private final List<Distance> distanceList;
 
-	private int speed;
+	private int power;
 
-	public Car(int speed, Random random, List<Distance> distanceList) {
-		this.speed = speed;
+	public Car(Random random, List<Distance> distanceList, int power) {
 		this.random = random;
 		this.distanceList = distanceList;
+		this.power = power;
+	}
+
+	public static Car of(int power) {
+		Random random = new Random();
+		List<Distance> distanceList = new ArrayList<>();
+
+		return new Car(random, distanceList, power);
 	}
 
 	public static Car create() {
 		Random random = new Random();
-		List<Distance> mileageList = new ArrayList<>();
+		List<Distance> distanceList = new ArrayList<>();
 
-		return new Car(ZERO, random, mileageList);
-	}
-
-	public void stop() {
-		speed = ZERO;
-	}
-
-	public void drive() {
-		// 일정 시간 주행했다고 가정한다
-		distanceList.addAll(Distance.from(speed));
+		return new Car(random, distanceList, ZERO);
 	}
 
 	public List<Distance> getDistanceList() {
 		return distanceList;
 	}
 
-	public int getSpeed() {
-		return speed;
-	}
-
-	public String getMileageView() {
+	public String getDistanceView() {
 		return Distance.convertDistanceToView(distanceList);
 	}
 
-	public void accelerate(int speed) {
-		this.speed = speed;
+	public void drive() {
+		startEngine();
+		accelerate();
 	}
 
 	public void accelerate() {
-		// 자동차의 속력은 밟을 때마다 랜덤이다
-		int speed = random.nextInt(MAX_SPEED);
+		if (power < POWER_THRESHOLD) {
+			return;
+		}
 
-		this.speed = speed;
+		distanceList.add(Distance.create());
+	}
+
+	public void startEngine() {
+		power = random.nextInt(MAX_POWER);
 	}
 }
