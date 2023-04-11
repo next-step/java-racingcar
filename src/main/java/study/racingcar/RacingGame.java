@@ -5,9 +5,11 @@ import java.util.Random;
 
 public class RacingGame {
 
+    private static final Random RANDOM = new Random();
+    private static final int BOUND_NUMBER = 10;
     public static void gameStart(List<Car> carList, int countOfGames) {
 
-        System.out.println("실행 결과");
+        ResultView.startGame();
 
         for(int i = 0; i < countOfGames; i++) {
             moveCar(carList);
@@ -16,18 +18,16 @@ public class RacingGame {
 
     private static void moveCar(List<Car> cars) {
 
-        ResultView resultView = new ResultView();
-
         for(Car car : cars) {
             car.moveCar(generateRandomNumber());
 
-            resultView.resultGame(car.getPosition());
+            ResultView.resultGame(car.getPosition());
         }
 
-        resultView.emptyLine();
+        ResultView.emptyLine();
     }
 
     public static int generateRandomNumber() {
-        return new Random().nextInt(10);
+        return RANDOM.nextInt(BOUND_NUMBER);
     }
 }
