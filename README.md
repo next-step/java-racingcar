@@ -221,7 +221,7 @@ public class StringAddCalculatorTest {
 
 ### 기능 요구사항 정리 List
 - [ ] 이동 횟수 입력 기능
-- [ ] UI InputView 출력
+- [x] UI InputView 출력
 - [ ] UI ResultView 출력
 - [x] 랜덤 난수 생성 기능 : 0~9
 - [x] 랜덤 난수 생성 결과 판단 기능
