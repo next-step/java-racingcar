@@ -2,13 +2,13 @@ package study.step3.domain;
 
 public class Car {
 
-    private static final int STOP = 0;
+    public static final int GO = 1;
     private int position;
-    public int moveOrStop(int randomValue) {
-        if (randomValue < 4) {
-            return STOP;
+
+    public void moveForward(int randomValue) {
+        if (randomValue >= 4) {
+            position += GO;
         }
-        return position += randomValue;
     }
 
     public int getPosition() {
