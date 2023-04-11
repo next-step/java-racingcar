@@ -50,11 +50,28 @@ public class ToPositiveIntegersParser implements StringParser<Integer> {
     }
 
     private Integer convertToPositiveNumb(String str) {
-        int numb = Integer.parseInt(str);
+        int numb = convertToNumb(str);
 
         if (numb < 0) {
-            throw new RuntimeException(String.format("%d : 0 이상의 정수가 아닙니다", numb));
+            throw new MyNumberFormatException(String.format("%d : 0 이상의 정수가 아닙니다", numb));
         }
         return numb;
     }
+
+    private Integer convertToNumb(String str) {
+        try {
+            return Integer.parseInt(str);
+        } catch (NumberFormatException ex) {
+            throw new MyNumberFormatException(String.format("%s : 정수형태가 아닌 입력이 주어졌습니다", str));
+        }
+    }
+
+    private static class MyNumberFormatException extends RuntimeException {
+
+        public MyNumberFormatException(String message) {
+            super(message);
+        }
+
+    }
 }
+
