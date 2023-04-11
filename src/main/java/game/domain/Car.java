@@ -1,5 +1,7 @@
 package game.domain;
 
+import game.domain.policy.CarMovePolicy;
+import game.domain.policy.StandardCarMovePolicy;
 import game.util.NumberGenerator;
 
 public class Car {

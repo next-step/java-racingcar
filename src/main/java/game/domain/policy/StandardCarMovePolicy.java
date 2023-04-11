@@ -1,4 +1,4 @@
-package game.domain;
+package game.domain.policy;
 
 public class StandardCarMovePolicy implements CarMovePolicy {
     @Override
