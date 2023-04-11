@@ -1,13 +1,12 @@
 package game.view;
 
-import game.service.RacingOptions;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 /**
  * 사용자로부터 입력받는 기능
@@ -21,13 +20,14 @@ class InputViewTest {
     @Test
     @DisplayName("사용자로부터 입력을 받아 해당 값을 옵션정보로 저장하여 반환합니다.")
     void test1() {
-        int carCount = 3, repCount = 5;
-        System.setIn(new ByteArrayInputStream(String.format("%s %s", carCount, repCount)
+        int carCount = 3, racingRep = 5;
+        System.setIn(new ByteArrayInputStream(String.format("%s %s", carCount, racingRep)
                 .getBytes()));
-        RacingOptions racingOptions = InputView.showAndGetOptions();
-        Assertions.assertAll(
-                () -> assertThat(racingOptions.carCount()).isSameAs(carCount),
-                () -> assertThat(racingOptions.racingRep()).isSameAs(repCount)
+        int actualCarCount = InputView.showAndGetCarCount();
+        int actualRacingRep = InputView.showAndGetRacingRep();
+        assertAll(
+                () -> assertThat(actualCarCount).isSameAs(carCount),
+                () -> assertThat(actualRacingRep).isSameAs(racingRep)
         );
     }
 }

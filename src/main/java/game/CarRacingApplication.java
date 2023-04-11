@@ -1,7 +1,6 @@
 package game;
 
 import game.service.CarRacing;
-import game.service.RacingOptions;
 import game.view.InputView;
 
 /**
@@ -17,8 +16,9 @@ import game.view.InputView;
 public class CarRacingApplication {
 
     public static void main(String[] args) {
-        RacingOptions racingOptions = InputView.showAndGetOptions();
-        CarRacing carRacing = new CarRacing(racingOptions);
+        int carCount = InputView.showAndGetCarCount();
+        int racingRep = InputView.showAndGetRacingRep();
+        CarRacing carRacing = new CarRacing(carCount, racingRep);
         carRacing.start();
     }
 }

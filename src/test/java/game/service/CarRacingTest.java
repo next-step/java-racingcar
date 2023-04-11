@@ -1,8 +1,10 @@
 package game.service;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThatNoException;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
  * 경주 기능
@@ -13,10 +15,18 @@ import org.junit.jupiter.api.Test;
 class CarRacingTest {
 
     @Test
-    @DisplayName("입력 옵션을 기준으로 자동차 경주가 정상적으로 수행됩니다.")
-    void test() {
+    @DisplayName("입력 옵션을 정상적(양수)으로 입력하면 자동차 경주가 정상적으로 수행됩니다.")
+    void test1() {
         int carCount = 3, racingRep = 5;
-        CarRacing carRacing = new CarRacing(new RacingOptions(carCount, racingRep));
-        Assertions.assertThatNoException().isThrownBy(carRacing::start);
+        CarRacing carRacing = new CarRacing(carCount, racingRep);
+        assertThatNoException().isThrownBy(carRacing::start);
+    }
+
+    @Test
+    @DisplayName("입력 옵션을 바정상적(음수 또는 0)으로 입력하면 자동차 경주가 수행되지 않습니다.")
+    void test2() {
+        int carCount = 0, racingRep = -1;
+        assertThatThrownBy(() -> new CarRacing(carCount, racingRep))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
