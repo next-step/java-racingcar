@@ -73,7 +73,7 @@ public class RacingCarTest {
     public void generateRandomNum_범위내에_있는지_테스트(int randomNum, int length) {
 
         Car car = new Car("");
-        car.moveCar(randomNum);
+        car.move(randomNum);
 
         assertThat(car.getPosition().length()).isEqualTo(length);
     }

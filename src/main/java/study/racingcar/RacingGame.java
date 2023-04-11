@@ -19,7 +19,7 @@ public class RacingGame {
     private static void moveCar(List<Car> cars) {
 
         for(Car car : cars) {
-            car.moveCar(generateRandomNumber());
+            car.move(generateRandomNumber());
 
             ResultView.resultGame(car.getPosition());
         }

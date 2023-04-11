@@ -12,7 +12,7 @@ public class Car {
         this.position = position;
     }
 
-    public void moveCar(int randomNum) {
+    public void move(int randomNum) {
         if (isMove(randomNum)) {
             this.position += MOVE_MARK;
         }
