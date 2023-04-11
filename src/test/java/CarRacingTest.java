@@ -45,12 +45,14 @@ class CarRacingTest {
         Car loser = new Car("alex", 1);
         Car winner = new Car("jack", 2);
 
-        List<Car> cars = Arrays.asList(loser, winner);
+        List<Car> carList = Arrays.asList(loser, winner);
 
-        Cars carCollection = new Cars(cars);
+        Cars cars = new Cars(carList);
+        Records records = new Records();
 
         // when
-        List<Car> result = carCollection.winners();
+        records.addWinners(cars);
+        List<Car> result = records.winners();
 
         // then
         assertThat(result).hasSize(1);
@@ -64,12 +66,14 @@ class CarRacingTest {
         Car firstWinner = new Car("alex", 2);
         Car secondWinner = new Car("jack", 2);
 
-        List<Car> cars = Arrays.asList(firstWinner, secondWinner);
+        List<Car> carList = Arrays.asList(firstWinner, secondWinner);
 
-        Cars carCollection = new Cars(cars);
+        Cars cars = new Cars(carList);
+        Records records = new Records();
 
         // when
-        List<Car> result = carCollection.winners();
+        records.addWinners(cars);
+        List<Car> result = records.winners();
 
         // then
         assertThat(result).hasSize(2);

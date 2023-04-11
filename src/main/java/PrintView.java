@@ -1,23 +1,26 @@
 import java.util.List;
-import java.util.Map;
 
 public class PrintView {
 
     private PrintView() {}
 
+    public static void printResult(Records records) {
+        PrintView.printTitle();
+        PrintView.printCar(records);
+        PrintView.printWinners(records.winners());
+    }
+
     public static void printTitle() {
         System.out.println("실행 결과");
     }
 
-    public static void printCar(Cars cars, int round) {
-        Map<Car, List<Integer>> distancesOfCar = cars.distancesOfCar();
+    public static void printCar(Records records) {
+        List<CarRecord> gameRecord = records.gameRecord();
 
-        distancesOfCar.forEach((key, value) -> {
-            System.out.print(key.name() + " : ");
-            printDistance(value.get(round));
-        });
-
-        System.out.println();
+        for (CarRecord record : gameRecord) {
+            System.out.print(record.name() + " : ");
+            printDistance(record.distance());
+        }
     }
 
     private static void printDistance(int distance) {

@@ -1,6 +1,3 @@
-import java.util.List;
-import java.util.stream.IntStream;
-
 public class CarRacing {
 
     public static void main(String[] args) {
@@ -8,15 +5,9 @@ public class CarRacing {
         String[] nameOfCars = InputView.splitNameOfCars();
         int trial = InputView.trial();
 
-        Cars cars = new Cars(Cars.makeCars(nameOfCars));
-        cars.race(trial);
-        List<Car> winners = cars.winners();
+        RacingGame game = new RacingGame(nameOfCars);
+        Records records = game.start(trial);
 
-        PrintView.printTitle();
-
-        IntStream.range(0, trial).
-                forEach(round -> PrintView.printCar(cars, round));
-
-        PrintView.printWinners(winners);
+        PrintView.printResult(records);
     }
 }
