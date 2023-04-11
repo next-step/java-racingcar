@@ -25,10 +25,12 @@ public class StringTest {
     @Test
     @DisplayName("charAt OutOfBound Exception test")
     void charAt() {
-        assertThatThrownBy(() ->{
-            char result ="abc".charAt(5);
-        }).isInstanceOf(IndexOutOfBoundsException.class)
-                .hasMessageContaining("문자열 길이 초과");
-
+        String testData = "abc";
+        int stringLength = 5;
+        assertThatThrownBy(() -> {
+            testData.charAt(stringLength);
+        })
+                .isInstanceOf(IndexOutOfBoundsException.class)
+                .hasMessageContaining("String index out of range: "+ stringLength);
     }
 }
