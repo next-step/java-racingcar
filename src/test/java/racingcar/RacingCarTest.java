@@ -24,8 +24,8 @@ public class RacingCarTest {
 
     @DisplayName("random 값이 4이상이면 전진한다.")
     @ParameterizedTest
-    @CsvSource(value = {"0:false","1:false","2:false","3:false",
-                        "4:true","5:true","6:true","7:true","8:true","9:true"}, delimiter = ':')
+    @CsvSource(value = {"0:false", "1:false", "2:false", "3:false",
+            "4:true", "5:true", "6:true", "7:true", "8:true", "9:true"}, delimiter = ':')
     void move(int randomNumber, boolean result) {
         //given
         RacingCar racingCar = new RacingCar();
@@ -39,7 +39,7 @@ public class RacingCarTest {
 
     @DisplayName("자동차의 상태 만들기(1회 전진마다 -추가")
     @ParameterizedTest
-    @CsvSource(value = {"0:''","1:'-'","2:'--'","3:'---'","4:'----'","5:'-----'"}, delimiter = ':')
+    @CsvSource(value = {"0:''", "1:'-'", "2:'--'", "3:'---'", "4:'----'", "5:'-----'"}, delimiter = ':')
     void makeCarMoveStateLine(int moveCount, String result) {
         //given
         RacingCar racingCar = new RacingCar();

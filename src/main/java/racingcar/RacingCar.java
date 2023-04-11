@@ -10,7 +10,7 @@ public class RacingCar {
 
     public String makeCarMoveStateLine(int moveCount) {
         StringBuilder sb = new StringBuilder();
-        for(int i = 0; i < moveCount; i++) {
+        for (int i = 0; i < moveCount; i++) {
             sb.append(CAR_MOVE_STATE);
         }
         return sb.toString();

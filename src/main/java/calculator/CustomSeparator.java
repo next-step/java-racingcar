@@ -8,6 +8,7 @@ enum CustomSeparator {
     INPUT_BEGIN_INDEX(4);
 
     private final int value;
+
     CustomSeparator(int value) {
         this.value = value;
     }

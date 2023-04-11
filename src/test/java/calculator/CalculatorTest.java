@@ -42,7 +42,7 @@ public class CalculatorTest {
 
     @DisplayName("splitAndSum 메서드 - 값 1개 이상인 경우")
     @ParameterizedTest
-    @CsvSource(value = {"1=1","1,2=3","1:2=3","1,2,3=6","1,2:3=6"}, delimiter = '=')
+    @CsvSource(value = {"1=1", "1,2=3", "1:2=3", "1,2,3=6", "1,2:3=6"}, delimiter = '=')
     void splitAndSum2(String input, int result) {
         //given
         Calculator calculator = new Calculator();

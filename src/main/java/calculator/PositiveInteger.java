@@ -6,12 +6,12 @@ public class PositiveInteger {
     private final int number;
 
     public PositiveInteger(String input) {
-        if(!isNumber(input)) {
+        if (!isNumber(input)) {
             throw new RuntimeException("숫자 이외의 값이 포함되어 있습니다.");
         }
 
         int number = Integer.parseInt(input);
-        if(number < ZERO) {
+        if (number < ZERO) {
             throw new RuntimeException("음수가 포함되어 있습니다.");
         }
         this.number = number;

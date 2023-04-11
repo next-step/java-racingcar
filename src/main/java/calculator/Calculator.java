@@ -40,14 +40,14 @@ public class Calculator {
     }
 
     private static String getSeparator(String input) {
-        if(isCustomSeparator(input)) {
+        if (isCustomSeparator(input)) {
             return String.valueOf(input.charAt(SEPARATOR_INDEX.getValue()));
         }
         return SEPARATOR;
     }
 
     private static String getValueToSplit(String input) {
-        if(isCustomSeparator(input)) {
+        if (isCustomSeparator(input)) {
             return input.substring(INPUT_BEGIN_INDEX.getValue());
         }
         return input;

@@ -78,7 +78,7 @@ public class Main {
     }
 
     private static void initMoveCounts() {
-        for(int j = BEGIN_INDEX; j < carCount; j++) {
+        for (int j = BEGIN_INDEX; j < carCount; j++) {
             initMoveCount();
         }
     }
