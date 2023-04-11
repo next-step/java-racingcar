@@ -36,9 +36,8 @@ public class StringCalculatorTest {
     }
 
     @Test
-    public void splitAndSum_custom_구분자() throws Exception {
+    public void splitAndSum_custom_구분자() {
         int result = StringCalculator.splitAndSum("//;\n1;2;3");
         assertThat(result).isEqualTo(6);
     }
-
 }
