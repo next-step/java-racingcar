@@ -1,0 +1,6 @@
+package racing;
+
+class ResultViewTest {
+
+
+}
