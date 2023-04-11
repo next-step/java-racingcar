@@ -17,7 +17,7 @@ class CarsTest {
         List<Car> carList = new ArrayList<>();
 
         for (int i = 0; i < 3; i++) {
-            carList.add(new Car());
+            carList.add(new Car(new LessThanMoveCondition(4)));
         }
 
         cars = new Cars(carList);

@@ -37,7 +37,7 @@ public class CarRacing {
     private Cars createCars(int countOfCar) {
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < countOfCar; i++) {
-            cars.add(new Car());
+            cars.add(new Car(new LessThanMoveCondition(4)));
         }
         return new Cars(cars);
     }

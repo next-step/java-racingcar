@@ -4,9 +4,15 @@ public class Car {
 
     public static final int GO = 1;
     private int position;
+    private MoveConditionStrategy moveConditionStrategy;
 
-    public void moveForward(int randomValue) {
-        if (randomValue >= 4) {
+    public Car(MoveConditionStrategy moveConditionStrategy) {
+        this.position = 0;
+        this.moveConditionStrategy = moveConditionStrategy;
+    }
+
+    public void moveForward(int distance) {
+        if (moveConditionStrategy.isPossible(distance)) {
             position += GO;
         }
     }
