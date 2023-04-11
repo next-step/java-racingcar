@@ -27,7 +27,7 @@ public class InputView {
   }
 
   private static boolean isPositiveNumber(String number) {
-    return number.matches("[0-9]+") && Integer.parseInt(number) > 0;
+    return number.matches("^[0-9]+$") && Integer.parseInt(number) > 0;
   }
 
 }

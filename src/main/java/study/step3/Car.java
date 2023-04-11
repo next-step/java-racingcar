@@ -4,11 +4,11 @@ public class Car {
 
   static final private int MINIMUM_MOVE_VALUE = 4;
 
-  private int carNum;
+  private int carNumber;
   private String footPrint;
 
-  public Car(int carNum) {
-    this.carNum = carNum;
+  public Car(int carNumber) {
+    this.carNumber = carNumber;
     this.footPrint = "";
   }
 
@@ -28,6 +28,6 @@ public class Car {
 
   @Override
   public String toString() {
-    return "Car" + carNum + " " + footPrint;
+    return "Car" + carNumber + " " + footPrint;
   }
 }
