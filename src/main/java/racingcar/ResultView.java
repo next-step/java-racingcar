@@ -16,4 +16,8 @@ public class ResultView {
     public void printCarMoveStateLine(String line) {
         System.out.println(line);
     }
+
+    public void printNewLine() {
+        System.out.println();
+    }
 }
