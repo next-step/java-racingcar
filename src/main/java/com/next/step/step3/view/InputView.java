@@ -1,12 +1,14 @@
 package com.next.step.step3.view;
 
+import com.next.step.step3.util.CarNamesExtractor;
 import com.next.step.step3.validate.InputValidation;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
 
-    private static final String NUM_OF_CARS_MESSAGE = "자동차 대수 몇 대 인가요?";
+    private static final String CARS_NAME_MESSAGE = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
 
     private static final String NUM_OF_ATTEMPTS_MESSAGE = "시도할 회수는 몇 회 인가요?";
 
@@ -19,12 +21,16 @@ public class InputView {
         this.scanner = new Scanner(System.in);
     }
 
-    public int numOfCars() {
-        System.out.println(NUM_OF_CARS_MESSAGE);
-        int numOfCars = scanner.nextInt();
-        inputValidation.validateNotNegative(numOfCars);
-        inputValidation.validateNumOfCars(numOfCars);
-        return numOfCars;
+    public List<String> carsName() {
+        System.out.println(CARS_NAME_MESSAGE);
+
+        String carNames = scanner.next();
+        inputValidation.validateExistName(carNames);
+
+        List<String> parsedCarNames = CarNamesExtractor.extractCarNames(carNames);
+        inputValidation.validateCarNameLength(parsedCarNames);
+
+        return parsedCarNames;
     }
 
     public int numOfAttempts() {
