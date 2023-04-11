@@ -5,12 +5,15 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
-    public static final int ZERO = 0;
-    public static final String DEFAULT_DELIMITER = ",|:";
-    public static final String CUSTOM_DELIMITER_REGEX = "//(.)\n(.*)";
+    private static final int DEFAULT_VALUE = 0;
+    private static final String DEFAULT_DELIMITER = ",|:";
+    private static final String CUSTOM_DELIMITER_REGEX = "//(.)\n(.*)";
+    private static final Pattern pattern = Pattern.compile(CUSTOM_DELIMITER_REGEX);
 
     public static Integer splitAndSum(String text) {
-        if (isEmpty(text)) return ZERO;
+        if (isEmpty(text)) {
+            return DEFAULT_VALUE;
+        }
         String[] numbers = splitNumbers(text);
         return sum(numbers);
     }
@@ -19,16 +22,7 @@ public class StringAddCalculator {
         return text == null || text.isEmpty();
     }
 
-    private static Integer parseInt(String text) {
-        int number = Integer.parseInt(text);
-        if (number < 0) {
-            throw new RuntimeException("음수는 사용할 수 없습니다.");
-        }
-        return number;
-    }
-
     private static String[] splitNumbers(String text) {
-        Pattern pattern = Pattern.compile(CUSTOM_DELIMITER_REGEX);
         Matcher matcher = pattern.matcher(text);
         if (matcher.find()) {
             String delimiter = matcher.group(1);
@@ -44,4 +38,13 @@ public class StringAddCalculator {
         }
         return sum;
     }
+
+    private static Integer parseInt(String text) {
+        int number = Integer.parseInt(text);
+        if (number < 0) {
+            throw new RuntimeException("음수는 사용할 수 없습니다.");
+        }
+        return number;
+    }
+
 }
