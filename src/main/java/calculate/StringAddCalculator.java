@@ -20,31 +20,27 @@ public class StringAddCalculator {
         return input.substring(4);
     }
 
-    static String extractDelimiter(String input) {
+    static Operand extractDelimiter(Operand operand) {
 
-        if (input.length() < LEAST_LENGTH_OF_CUSTOM_DELIMITER)
-            return DEFAULT_DELIMITER_PATTERN;
+        if (operand.input.length() < LEAST_LENGTH_OF_CUSTOM_DELIMITER)
+            operand.delimiter = DEFAULT_DELIMITER_PATTERN;
 
-        Matcher m = Pattern.compile(CUSTOM_DELIMITER_PATTERN).matcher(input);
+        Matcher m = Pattern.compile(CUSTOM_DELIMITER_PATTERN).matcher(operand.input);
+        operand.delimiter = m.find() ? extractCustomDelimiter(operand.input) : DEFAULT_DELIMITER_PATTERN;
 
-        return m.find() ? extractCustomDelimiter(input) : extractGeneralDelimiter(input);
+        return operand;
     }
 
     static String extractCustomDelimiter(String input) {
         return input.substring(2, 3);
     }
 
-    static String extractGeneralDelimiter(String input) {
-        return input.contains(COMMA) ? COMMA : COLONS;
-    }
-
     static Operand extractNumbers(Operand operand) {
 
-        hasOnlyPositive(operand);
 
         String stringPart = extractNumberString(operand.input, operand.delimiter);
         operand.stringNumbers = stringPart.split(operand.delimiter);
-
+        hasOnlyPositive(operand);
         operand.numbers = Stream.of(operand.stringNumbers)
                 .mapToInt(Integer::parseInt)
                 .toArray();

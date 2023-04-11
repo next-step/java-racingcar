@@ -10,6 +10,5 @@ public class Operand {
 
     public Operand(String input) {
         this.input = input;
-        this.delimiter = StringAddCalculator.extractDelimiter(input);
     }
 }
