@@ -7,55 +7,57 @@ import java.util.stream.Stream;
 import static java.lang.Integer.parseInt;
 
 public class Calculator {
+    private static final String COMMA = ",";
+    private static final String COLONS = ":";
+    private static final String CUSTOM_DELIMITER_PATTERN = "₩₩(.)\n(.*)";
+    private static final int LEAST_LENGTH_OF_CUSTOM_DELIMITER = 4;
 
-    static String COMMA = ",";
-    static String COLONS = ":";
-    boolean hasCustomDelimiter(String input) {
+    static boolean hasCustomDelimiter(String input) {
 
-        if (input.length() < 3) return false;
-        Matcher m = Pattern.compile("₩₩(.)\n(.*)").matcher(input);
+        if (input.length() < LEAST_LENGTH_OF_CUSTOM_DELIMITER) return false;
+        Matcher m = Pattern.compile(CUSTOM_DELIMITER_PATTERN).matcher(input);
         return m.find();
     }
 
-    String getCustomDelimiter(String input) {
-        return input.substring(2,3);
+    static String extractCustomDelimiter(String input) {
+        return input.substring(2, 3);
     }
 
-    String getGeneralDelimiter(String input) {
-        return input.contains(COMMA) ? COMMA: COLONS;
+    static String extractGeneralDelimiter(String input) {
+        return input.contains(COMMA) ? COMMA : COLONS;
     }
 
-    int[] getNumbers(String input, String delimiter) {
-
+    static int[] extractNumbers(String input, String delimiter) {
         String[] stringPart = input.split(delimiter);
-        return Stream.of(stringPart).mapToInt(Integer::parseInt).toArray();
+        return Stream.of(stringPart)
+                .mapToInt(Integer::parseInt)
+                .toArray();
     }
 
-    boolean hasOnlyNumber(String[] input){ // 음수 또는 숫자 이외의 값을 포함하는지
+    static boolean hasOnlyPositive(String[] input) { // 음수 또는 숫자 이외의 값을 포함하는지
 
         for (String s : input) {
-            if (!isInteger(s) || (parseInt(s) < 0)) {
-                return false;
-            }
+            isNegative(s);
         }
         return true;
     }
 
-    boolean isInteger(String s) {
-        try {
-            parseInt(s);
-            return true;
-        } catch (NumberFormatException e){
-            return false;
+    static void isNegative(String s) throws RuntimeException {
+        if (parseInt(s) < 0) {
+            throw new RuntimeException();
         }
     }
 
-    int getSum(int[] input) { // 합
-        return 0;
+    static int sumOfNumbers(int[] input) { // 합
+
+        int sum = 0;
+        for (int i = 0; i < input.length; i++) {
+            sum += input[i];
+        }
+        return sum;
     }
 
-    boolean isNullOrEmpty(String input) { // null 이나 빈문자열이라면 0 리턴
+    static boolean isNullOrEmpty(String input) { // null 이나 빈문자열이라면 0 리턴
         return (input == null) || (input.isBlank());
     }
-
 }
