@@ -40,7 +40,7 @@ public class Game {
 
     private void play() {
         for (int j = 0; j < carAmount; j++) {
-            cars[j].push(RandomNumber.getNumber());
+            cars[j].move(RandomNumber.getNumber());
         }
     }
 

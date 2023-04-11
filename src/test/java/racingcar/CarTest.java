@@ -13,7 +13,7 @@ public class CarTest {
     @DisplayName("자동차가 정지한다.")
     void test1(int number) {
         Car car = new Car();
-        car.push(number);
+        car.move(number);
         assertThat(car.getPosition()).isEqualTo(0);
     }
 
@@ -22,7 +22,7 @@ public class CarTest {
     @DisplayName("자동차가 전진한다.")
     void test2(int number) {
         Car car = new Car();
-        car.push(number);
+        car.move(number);
         assertThat(car.getPosition()).isEqualTo(1);
     }
 }
