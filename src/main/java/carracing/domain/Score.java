@@ -35,8 +35,4 @@ public class Score {
     public int hashCode() {
         return Objects.hash(value);
     }
-
-    public String prevScoreProgress() {
-        return "??";
-    }
 }
