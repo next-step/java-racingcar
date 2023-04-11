@@ -21,7 +21,7 @@ public class Car {
 		this.distanceList = distanceList;
 	}
 
-	public static Car of() {
+	public static Car create() {
 		Random random = new Random();
 		List<Distance> mileageList = new ArrayList<>();
 

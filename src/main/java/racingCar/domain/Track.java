@@ -10,7 +10,7 @@ public class Track {
 		this.carList = carList;
 	}
 
-	public static Track of() {
+	public static Track create() {
 		List<Car> carList = new ArrayList<>();
 
 		return new Track(carList);

@@ -24,7 +24,7 @@ public class RacingCar {
 
 	public void run(int count, int round) {
 		for (int i = 0; i < count; i++) {
-			track.putRaceCar(Car.of());
+			track.putRaceCar(Car.create());
 		}
 
 		track.run(round);

@@ -8,14 +8,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import racingCar.domain.Car;
-
 public class CarTest {
 	private Car car;
 
 	@BeforeEach
 	void setUp() {
-		car = Car.of();
+		car = Car.create();
 	}
 
 	@ParameterizedTest(name = "속력이 {arguments} 일 때 {arguments} 마일 만큼 이동한다")
