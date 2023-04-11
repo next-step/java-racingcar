@@ -1,9 +1,13 @@
 package carracing.domain;
 
-import java.util.List;
-
 public class Record {
-    private final  recordStringList;
+    private final String record;
 
+    public Record(String record) {
+        this.record = record;
+    }
 
+    public String getRecord() {
+        return record;
+    }
 }

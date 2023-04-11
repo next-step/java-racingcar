@@ -1,11 +1,13 @@
 package carracing.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.IntUnaryOperator;
 
 public class Round implements Comparable<Round> {
     private static final int FIRST_ROUND_VALUE = 1;
+    public static final List<Score> emptyScores = new ArrayList<>();
     private static final IntUnaryOperator validate = value -> {
         if (value < FIRST_ROUND_VALUE) {
             return value;
@@ -13,25 +15,25 @@ public class Round implements Comparable<Round> {
         throw new RuntimeException("라운드는 1부터 시작하므로 항상 1 이상입니다");
     };
     private int id;
-    private List<Score> scoreList;
-    private List<String> record;
+    private List<Score> scores;
+    private List<Record> records;
 
-    public Round(int id) {
-        this.id = validate.applyAsInt(id);
+    public Round(List<Score> scoreList) {
+        this.scores = scoreList;
+        this.records = scoreToRecord(scoreList);
     }
 
-    public Round previousRound() {
-        if (isFirstRound()) {
-            return this;
+    private List<Record> scoreToRecord(List<Score> scoreList) {
+        List<Record> recordList = new ArrayList<>();
+        for(Score score : scoreList) {
+            recordList.add(new Record(score.toProgress() + score.prevScoreProgress()));
         }
-        return new Round(id - 1);
+        return recordList;
     }
 
     public boolean isFirstRound() {
         return this.id == FIRST_ROUND_VALUE;
     }
-
-
 
 
     @Override
@@ -56,7 +58,15 @@ public class Round implements Comparable<Round> {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public List<Score> getScores() {
+        return scores;
+    }
+
+    public List<Record> getRecords() {
+        return records;
+    }
+
+    public void setId(int i) {
+        this.id = i;
     }
 }
