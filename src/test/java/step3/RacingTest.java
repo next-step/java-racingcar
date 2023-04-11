@@ -25,7 +25,7 @@ class RacingTest {
     @Test
     void test4() throws Exception {
         int count = 3;
-        Car racingCar = new Car(count);
+        RacingCar racingCar = new RacingCar(count);
 
         assertThat(racingCar.getList()).hasSize(count);
     }
@@ -58,7 +58,7 @@ class RacingTest {
     @DisplayName("5번 시도 중 3번 이상 4이상이 나오면 car가 움직인 거리는 3이다.")
     @Test
     void test10() throws Exception {
-        int[] ints = {0,3,4,5,9};
+        int[] ints = {0, 3, 4, 5, 9};
         testCarMoving(ints);
 
         assertThat(car.getDistance()).hasSize(3);
