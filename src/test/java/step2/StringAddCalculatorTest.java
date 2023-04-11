@@ -35,6 +35,7 @@ public class StringAddCalculatorTest {
     @NullAndEmptySource
     public void splitAndSum_null_또는_빈문자(String input) {
         int result = StringAddCalculator.splitAndSum(input);
+
         assertThat(result).isEqualTo(0);
     }
 
