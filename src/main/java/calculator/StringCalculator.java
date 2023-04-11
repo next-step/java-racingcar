@@ -3,6 +3,8 @@ package calculator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static java.lang.Character.isDigit;
+
 public class StringCalculator {
     public static final int DEFAULT_RESULT = 0;
     public static final String DEFAULT_DELIMITER = ",|:";
@@ -56,11 +58,23 @@ public class StringCalculator {
     }
 
     private static int toPositive(String value) {
+        if (!isNumber(value)) {
+            throw new RuntimeException("Not number!");
+        }
+
         int num = Integer.parseInt(value);
         if (num < 0) {
             throw new RuntimeException("Negative number!");
         }
         return num;
+    }
+
+    private static boolean isNumber(String value) {
+        boolean result = true;
+        for (int i = 0; i < value.length(); i++) {
+            result &= isDigit(value.charAt(i));
+        }
+        return result;
     }
 
     private static int sum(int[] numbers) {

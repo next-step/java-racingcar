@@ -21,6 +21,13 @@ public class StringCalculatorTest {
                 .isInstanceOf(RuntimeException.class);
     }
 
+    @ParameterizedTest(name = "{0}에 문자가 있으므로 RuntimeException이 발생한다")
+    @ValueSource(strings = {"a,2:3", "1,a:3", "1,2:a"})
+    void 문자를_전달할_경우_RuntimeException이_발생한다(String input) {
+        assertThatThrownBy(() -> splitAndSum(input))
+                .isInstanceOf(RuntimeException.class);
+    }
+
     @ParameterizedTest(name = "{0}에 정의된 구분자로 구분된 숫자들을 더하면 {1}이다")
     @MethodSource("getCustomDelimiterStubs")
     void 커스텀_구분자를_지정할_수_있다(String input, int expected) {
