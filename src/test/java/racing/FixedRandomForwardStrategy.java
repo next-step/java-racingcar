@@ -4,9 +4,9 @@ import racing.strategy.MoveStrategy;
 
 
 public class FixedRandomForwardStrategy implements MoveStrategy {
-    private static final int MAX_RANDOM_VALUE = 9;
+    //    private static final int MAX_RANDOM_VALUE = 9;
     private static final int THRESHOLD_ONGOING = 4;
-    private int randomValue;
+    private final int randomValue;
 
     public FixedRandomForwardStrategy(int randomValue) {
         this.randomValue = randomValue;
