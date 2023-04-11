@@ -21,7 +21,7 @@ public class main {
             currentCar[i] = new StringBuffer("-");
 
 
-        for(int i=0; i<count; i++){
+        for (int i=0; i<count; i++){
             carMove(carNumber, currentCar);
 
             resultView.printSpace();
