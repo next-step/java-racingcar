@@ -9,24 +9,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class OperandTest {
 
     @Test
-    @DisplayName("일반 구분자 가진 입력에서 구분자 구하기")
-    void extractGeneralDelimiter() {
-        Operand operand = new Operand("1:2:3");
-        assertThat(StringAddCalculator.isNullOrEmpty(operand)).isFalse();
-        assertThat(operand.delimiter).isEqualTo(":");
-    }
-
-    @Test
-    @DisplayName("커스텀 구분자 가진 입력에서 구분자 구하기")
-    void extractCustomDelimiter() {
-        Operand operand = new Operand("₩₩:\n1:2:3");
-        assertThat(StringAddCalculator.isNullOrEmpty(operand)).isFalse();
-        assertThat(operand.delimiter).isEqualTo(":");
-    }
-
-    @Test
-    @DisplayName("숫자 배열 추출하기")
-    void extractNumbersList() {
+    @DisplayName("숫자 배열 추출하고 합 구하기")
+    void customSum() {
 
         Operand operand = new Operand("₩₩;\n1;2;3");
         StringAddCalculator.extractNumbers(operand);
@@ -36,13 +20,25 @@ public class OperandTest {
     }
 
     @Test
-    @DisplayName("숫자 배열 넘겨서 합 구하기")
-    void calculate() {
+    @DisplayName("일반 구분자와 숫자 입력 시, 합 구하기")
+    void generalSum() {
 
-        String delimiter = ",|:";
-        String input = "1:2:3";
-        String[] numbers = input.split(delimiter);
+        Operand operand = new Operand("1,2,3");
+        StringAddCalculator.extractNumbers(operand);
+        assertThat(operand.stringNumbers).isEqualTo(new String[]{"1", "2", "3"});
+        assertThat(operand.numbers).isEqualTo(new int[]{1, 2, 3});
+        assertThat(StringAddCalculator.isNullOrEmpty(operand)).isFalse();
+        assertThat(StringAddCalculator.sumOfNumbers(operand).sum).isEqualTo(6);
+    }
 
-        assertThat(numbers).isEqualTo(new String[]{"1", "2", "3"});
+    @Test
+    @DisplayName("숫자 입력이 없는 경우 런타임에러")
+    void testOnlyDelimiter() {
+
+        Operand operand = new Operand("₩₩;\n");
+        assertThat(StringAddCalculator.isNullOrEmpty(operand)).isFalse();
+
+        assertThatThrownBy(() -> StringAddCalculator.extractNumbers(operand))
+                .isInstanceOf(RuntimeException.class);
     }
 }

@@ -40,9 +40,7 @@ public class StringAddCalculator {
 
     static Operand extractNumbers(Operand operand) {
 
-        System.out.println("operand.input" + operand.input +  "operand.delimiter = "+ operand.delimiter);
         String stringPart = extractNumberString(operand.input, operand.delimiter);
-
         operand.stringNumbers = stringPart.split(operand.delimiter);
 
         operand.numbers = Stream.of(operand.stringNumbers)
