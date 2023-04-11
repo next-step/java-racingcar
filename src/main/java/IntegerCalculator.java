@@ -1,13 +1,13 @@
 import java.util.Arrays;
 import java.util.function.BinaryOperator;
 
-public class StringAddCalculator {
+public class IntegerCalculator implements StringCalculator<Integer> {
 
     private final BinaryOperator<Integer> supportedOperation;
 
     private final StringParser<Integer> stringParser;
 
-    public StringAddCalculator(
+    public IntegerCalculator(
         BinaryOperator<Integer> supportedOperation,
         StringParser<Integer> stringParser) {
 
@@ -15,7 +15,8 @@ public class StringAddCalculator {
         this.stringParser = stringParser;
     }
 
-    public int splitAndSum(String input) {
+    @Override
+    public Integer splitAndSum(String input) {
         if (isBlank(input)) {
             return 0;
         }

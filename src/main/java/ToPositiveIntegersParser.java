@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ToIntegersParser implements StringParser<Integer> {
+public class ToPositiveIntegersParser implements StringParser<Integer> {
 
     private static final Pattern PATTERN_INCLUDING_CUSTOM_DELIMITER =
         Pattern.compile("//(.)\\n(.*)");
