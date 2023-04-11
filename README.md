@@ -7,3 +7,8 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 구현 기능
+- 사용자로부터 입력값 받기
+- 주어진 조건에 따라 자동차 전진/후진
+- 출력
