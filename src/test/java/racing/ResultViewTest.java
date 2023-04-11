@@ -4,6 +4,10 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.domain.RacingCar;
+import racing.domain.RacingGame;
+import racing.strategy.MoveStrategy;
+import racing.view.ResultView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -25,13 +29,34 @@ class ResultViewTest {
     }
 
     @Test
-    @DisplayName("자동차 한 사이클 진행 테스트")
+    @DisplayName("자동차 사이클 진행 테스트")
     void printCycle() {
         RacingCar car = new RacingCar();
-        ResultView rv = new ResultView();
-        car.ongoing();
-        rv.printCarStatus(car);
-        assertThat(outContent.toString().trim())
-                .containsAnyOf("-", "");
+        int cycle = 3;
+        MoveStrategy moveStrategy = new FixedRandomForwardStrategy(5);
+        car.setMoveStrategy(moveStrategy);
+        for (int i = 0; i < cycle; i++) {
+            car.move();
+        }
+        ResultView.printCarStatus(car);
+        assertThat(outContent.toString().trim()).isEqualTo("---");
+
+    }
+
+    @Test
+    @DisplayName("자동차 경기 결과 테스트")
+    void printResult() {
+        int car = 3;
+        int cycle = 3;
+        RacingGame game = new RacingGame(car);
+        MoveStrategy moveStrategy = new FixedRandomForwardStrategy(5);
+        game.setMoveStrategyOfCars(moveStrategy);
+
+        for (int i = 0; i < cycle; i++) {
+            game.progressCycle();
+        }
+
+        ResultView.printGameStatus(game);
+        assertThat(outContent.toString().trim()).isEqualTo("---\n---\n---");
     }
 }
