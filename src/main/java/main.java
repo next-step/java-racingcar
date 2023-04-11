@@ -40,7 +40,7 @@ public class main {
     }
 
     private static String appendCurrentCarOver(int standardNum, int randomNumber) {
-        if (standardNum >= 4 )
+        if (randomNumber >= standardNum )
            return "-";
 
         return "";
