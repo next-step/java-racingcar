@@ -1,6 +1,5 @@
 package step2;
 
-import java.util.Arrays;
 import java.util.Objects;
 
 public class StringCalculator {
@@ -10,8 +9,7 @@ public class StringCalculator {
     public static int splitAndSum(String text) {
         if (!isValidText(text)) return DEFAULT_RESULT_VALUE;
         String[] split = TextSeparator.separate(text);
-        PositiveNumberList positiveNumberList = new PositiveNumberList(split);
-        return positiveNumberList.toIntegerList()
+        return new PositiveNumbers(split).toIntegerList()
                 .stream()
                 .mapToInt(Integer::intValue)
                 .sum();

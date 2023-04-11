@@ -4,18 +4,18 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class PositiveNumberList {
-    private List<PositiveNumber> list;
+public class PositiveNumbers {
+    private List<PositiveNumber> values;
 
-    public PositiveNumberList(String[] strings) {
-        list = Arrays.stream(strings)
+    public PositiveNumbers(String[] strings) {
+        values = Arrays.stream(strings)
                 .mapToInt(Integer::parseInt)
                 .mapToObj(PositiveNumber::new)
                 .collect(Collectors.toList());
     }
 
     public List<Integer> toIntegerList() {
-        return list.stream()
+        return values.stream()
                 .map(PositiveNumber::intValue)
                 .collect(Collectors.toList());
     }
