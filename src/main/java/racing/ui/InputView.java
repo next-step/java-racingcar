@@ -1,4 +1,4 @@
-package racing;
+package racing.ui;
 
 import java.util.Scanner;
 
@@ -18,10 +18,6 @@ public class InputView {
         System.out.println("시도할 회수는 몇 회 인가요?");
         int input_try_count = scanner.nextInt();
         return new InputView(input_car_count,input_try_count);
-    }
-
-    private boolean isNegative(int input_car_count, int input_try_count) {
-        return input_car_count < 0 || input_try_count < 0;
     }
 
 }

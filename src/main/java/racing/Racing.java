@@ -1,10 +1,16 @@
 package racing;
 
-public class Racing {
-    public int car_count;
-    public int try_count;
+import racing.ui.InputView;
+import racing.ui.ResultView;
 
-    public static Racing start() {
+import java.util.ArrayList;
+import java.util.Random;
+
+public class Racing {
+    public int try_count;
+    public ArrayList<Car> cars;
+
+    public static Racing input() {
         InputView inputView = InputView.create();
         return new Racing(inputView.car_count,inputView.try_count);
     }
@@ -13,7 +19,7 @@ public class Racing {
         if(isNegative(inputCarCount,inputTryCount)){
             throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
         }
-        this.car_count = inputCarCount;
+        makeCars(inputCarCount);
         this.try_count = inputTryCount;
     }
 
@@ -21,5 +27,25 @@ public class Racing {
         return inputCarCount < 0 || inputTryCount < 0;
     }
 
+    public void raceAndShowResult() {
+        ResultView.start();
+        for (int i = 0; i < try_count; i++) {
+            race();
+            ResultView.showRace(cars);
+        }
+    }
 
+    private void makeCars(int inputCarCount) {
+        cars = new ArrayList<>();
+        for (int i = 0; i < inputCarCount; i++) {
+            cars.add(new Car());
+        }
+    }
+
+    private void race() {
+        Random random = new Random();
+        for (Car car : cars) {
+            car.status += RacingRule.goOrStop(random.nextInt(10));
+        }
+    }
 }

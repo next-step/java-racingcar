@@ -1,6 +1,7 @@
 package racing;
 
 import org.junit.jupiter.api.Test;
+import racing.ui.InputView;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
