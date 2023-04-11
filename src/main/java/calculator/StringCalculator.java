@@ -4,13 +4,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringCalculator {
-    public static final int ZERO = 0;
+    public static final int DEFAULT_RESULT = 0;
     public static final String DEFAULT_DELIMITER = ",|:";
     public static final String CUSTOM_DELIMITER_REGEX_PREFIX = "//(.)\n(.*)";
 
     public static int splitAndSum(String text) {
         if (isBlank(text)) {
-            return ZERO;
+            return DEFAULT_RESULT;
         }
 
         return sum(toPositives(split(text)));
