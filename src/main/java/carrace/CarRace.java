@@ -1,7 +1,5 @@
 package carrace;
 
-import java.util.List;
-
 public class CarRace {
 
     private final Cars cars;
@@ -13,12 +11,10 @@ public class CarRace {
     }
 
     public void start() {
+        ResultView.prePrint();
         for (int i = 0; i < numberOfLaps; i++) {
             cars.move();
+            ResultView.print(cars);
         }
-    }
-
-    public List<Integer> getCarsPosition() {
-        return cars.getPositions();
     }
 }
