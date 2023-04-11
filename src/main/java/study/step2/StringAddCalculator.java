@@ -3,9 +3,11 @@ package study.step2;
 
 public class StringAddCalculator {
 
+  private static final int ZERO = 0;
+
   public static int splitAndSum(String text) {
     if (isNullOrEmpty(text)) {
-      return 0;
+      return ZERO;
     }
 
     return sum(toNumbers(split(text)));
@@ -16,7 +18,7 @@ public class StringAddCalculator {
   }
 
   private static String[] split(String text) {
-    return new TextSpliter(text).split();
+    return TextSpliter.split(text);
   }
 
   private static int[] toNumbers(String[] values) {

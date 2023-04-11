@@ -7,29 +7,23 @@ public class TextSpliter {
 
   private static final String DEFAULT_DELIMITERS = ",|:";
   private static final Pattern DEFAULT_PATTERN = Pattern.compile("//(.)\n(.*)");
+  private static final int TEXT_IDX = 0;
+  private static final int DELIMITERS_IDX = 1;
 
-  private String text;
-
-  public TextSpliter(String text) {
-    this.text = text;
+  public static String[] split(String text) {
+    String[] textAnddelimiters = getDelimiters(text);
+    return textAnddelimiters[TEXT_IDX].split(textAnddelimiters[DELIMITERS_IDX]);
   }
 
-  public String[] split() {
-    String delimiters = getDelimiters();
-    return this.text.split(delimiters);
-  }
-
-  private String getDelimiters() {
-    Matcher matcher = getMatcher();
+  private static String[] getDelimiters(String text) {
+    Matcher matcher = getMatcher(text);
     if (matcher.find()) {
-      this.text = matcher.group(2);
-      return DEFAULT_DELIMITERS + "|" + matcher.group(1);
-    } else {
-      return DEFAULT_DELIMITERS;
+      return new String[]{matcher.group(2), DEFAULT_DELIMITERS + "|" + matcher.group(1)};
     }
+    return new String[]{text, DEFAULT_DELIMITERS};
   }
 
-  private Matcher getMatcher() {
-    return DEFAULT_PATTERN.matcher(this.text);
+  private static Matcher getMatcher(String text) {
+    return DEFAULT_PATTERN.matcher(text);
   }
 }
