@@ -31,7 +31,7 @@ public class RacingCarTest {
         RacingCar racingCar = new RacingCar();
 
         //when
-        boolean moveYn = racingCar.move(randomNumber);
+        boolean moveYn = racingCar.moveYn(randomNumber);
 
         //then
         assertThat(moveYn).isEqualTo(result);

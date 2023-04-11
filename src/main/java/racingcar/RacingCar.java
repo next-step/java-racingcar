@@ -10,7 +10,7 @@ public class RacingCar {
         return new Random().nextInt(10);
     }
 
-    public boolean move(int randomNumber) {
+    public boolean moveYn(int randomNumber) {
         return randomNumber >= CAR_MOVE_STANDARD;
     }
 
