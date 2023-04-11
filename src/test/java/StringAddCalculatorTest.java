@@ -34,7 +34,7 @@ public class StringAddCalculatorTest {
     @Test
     void shouldReturnTen_whenUsingSemicolonAndBracketsAsSeparators() {
         //given
-        String example = "//;}\n1;2;3}4";
+        String example = "//}\n1}2:3}4";
         int expectedResult = 10;
         //when
         int answer = StringAddCalculator.splitAndSum(example);
