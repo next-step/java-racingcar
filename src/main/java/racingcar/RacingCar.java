@@ -3,6 +3,7 @@ package racingcar;
 import java.util.Random;
 
 public class RacingCar {
+    public static final int CAR_MOVE_STANDARD = 4;
     public static final char CAR_MOVE_STATE = '-';
 
     public int getRandomNumber() {
@@ -10,7 +11,7 @@ public class RacingCar {
     }
 
     public boolean move(int randomNumber) {
-        return randomNumber >= 4;
+        return randomNumber >= CAR_MOVE_STANDARD;
     }
 
     public String makeLine(int moveCount) {
