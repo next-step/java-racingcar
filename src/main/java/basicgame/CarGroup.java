@@ -1,6 +1,5 @@
 package basicgame;
 
-import calculator.Positive;
 import util.RandomUtil;
 
 import java.util.ArrayList;
@@ -10,13 +9,13 @@ public class CarGroup {
 
     private static List<Car> cars;
     public static final String INPUT_ERROR_MESSAGE = "0이나 음수값은 입력하실 수 없습니다.";
-    public static Count triedCount;
+    public static Counter triedCount;
     private final static int MAX_RANDOM = 10;
     public final static int ZERO = 0;
 
 
     public static void startGame(int carCount, int tryCount) {
-        triedCount = new Count(ZERO);
+        triedCount = new Counter(ZERO);
         if (carCount <= 0 || tryCount <= 0) {
             throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
         }

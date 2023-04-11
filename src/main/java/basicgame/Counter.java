@@ -1,10 +1,10 @@
 package basicgame;
 
-public class Count {
+public class Counter {
 
     private int value;
 
-    public Count(int count) {
+    public Counter(int count) {
         this.value = count;
     }
 
