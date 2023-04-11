@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class RaceApplication {
 
-    public static final Map<Class<?>, Object> ioc = new HashMap<>();
+    private static final Map<Class<?>, Object> ioc = new HashMap<>();
     private final InputPresentation inputPresentation;
     private final ResultPresentation resultPresentation;
     private final RacingService racingService;
@@ -25,6 +25,10 @@ public class RaceApplication {
     public static void main(String[] args) {
         RaceApplication raceApplication = initialize();
         raceApplication.run();
+    }
+
+    public static Map<Class<?>, Object> getIoc() {
+        return ioc;
     }
 
     private static RaceApplication initialize() {
