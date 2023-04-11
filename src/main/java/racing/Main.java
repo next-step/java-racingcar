@@ -6,10 +6,10 @@ import racing.carRacing.view.OutputView;
 
 public class Main {
     public static void main(String[] args) {
-        CarNames carNames = CarNames.createCarNames(InputView.askCarsName());
-        Count numberOfStage = Count.createCount(InputView.askNumberOfStage());
+        String carNameString = InputView.askCarsName();
+        Cars cars = Cars.initCars(carNameString, new RandomMovementStrategy());
 
-        Cars cars = Cars.initCars(carNames, new RandomMovementStrategy());
+        Count numberOfStage = Count.createCount(InputView.askNumberOfStage());
         Stages stages = new Stages(numberOfStage);
 
         OutputView.printResultMention();

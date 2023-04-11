@@ -76,8 +76,9 @@ car.run(() -> true);
 - [X] 이전 구현 내용 docs 추가
 - [X] Cars 클래스 run 메소드 객체 주입 방식 변경
   - RandomMovementStrategy 객체를 매번 생성하는 방식이 아닌 방식으로 수정
-- [ ] CarNames 위치 변경
-- [ ] 자동차 이름은 5자를 초과 검증은 Car 클래스에서 검증
+- [X] CarNames 클래스 삭제 및 관련 구현 내용 수정
+  - [X] String 타입으로 input 받아서 Car 클래스에서 name 관련 유효성 검사 실행
+  - [X] 자동차 이름은 5자를 초과 검증은 Car 클래스에서 검증
 - [ ] 우승자 선정 방식 변경
   - [ ] Car 클래스가 Comparable 을 구현
   - [ ] max position 선정 방식 수정

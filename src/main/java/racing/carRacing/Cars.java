@@ -1,12 +1,12 @@
 package racing.carRacing;
 
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Cars {
-    public static final int ZERO = 0;
+    public static final String DELIMITER = ",";
 
     private final List<Car> cars;
     private final MovementStrategy movementStrategy;
@@ -16,12 +16,26 @@ public class Cars {
         this.movementStrategy = movementStrategy;
     }
 
-    public static Cars initCars(CarNames carNames, MovementStrategy movementStrategy) {
-        List<Car> cars = IntStream.range(ZERO, carNames.numberOfCars())
-                .mapToObj(carNames::matchCarName)
-                .collect(Collectors.toList());
+    public static Cars initCars(String carNameString, MovementStrategy movementStrategy) {
+        String[] splitName = carNameString.split(DELIMITER);
+
+        hasCarName(splitName.length);
+
+        List<Car> cars = initCarList(splitName);
 
         return new Cars(cars, movementStrategy);
+    }
+
+    private static List<Car> initCarList(String[] splitName) {
+        return Arrays.stream(splitName)
+                .map(Car::new)
+                .collect(Collectors.toList());
+    }
+
+    private static void hasCarName(int carNumber) {
+        if (carNumber == 0) {
+            throw new IllegalArgumentException("자동차 이름을 입력해주세요");
+        }
     }
 
     public void run() {
