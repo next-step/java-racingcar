@@ -10,7 +10,7 @@ public class InputView {
         return scanner.nextInt();
     }
 
-    public void finishInput() {
+    public void closeScanner() {
         scanner.close();
     }
 }
