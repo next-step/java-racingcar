@@ -20,7 +20,7 @@ public class Car {
     }
 
     private boolean movable(int randomNumber) {
-        return randomNumber > DEFAULT_MOVABLE_VALUE;
+        return randomNumber >= DEFAULT_MOVABLE_VALUE;
     }
 
 }
