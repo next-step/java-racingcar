@@ -27,24 +27,21 @@ public class SetTest {
     @Test
     @DisplayName("size 메서드를 통해 Set 크기 확인")
     void sizeTest() {
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
     @DisplayName("@ParameterizedTest를 통한 contains 메서드 테스트")
     @ValueSource(ints = {1, 2, 3})
     void containsTest(int input) {
-        assertThat(numbers.contains(input)).isTrue();
+        assertThat(numbers).contains(input);
     }
 
     @ParameterizedTest
     @DisplayName("@CsvSource를 통한 contains 메서드 동적 테스트")
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-    void dynamicContainsTest(String input, String expected) {
-        int inputInt = Integer.parseInt(input);
-        boolean expectedBool = Boolean.parseBoolean(expected);
-
-        assertThat(numbers.contains(inputInt)).isEqualTo(expectedBool);
+    void dynamicContainsTest(Integer input, Boolean expected) {
+        assertThat(numbers.contains(input)).isEqualTo(expected);
     }
 
 }
