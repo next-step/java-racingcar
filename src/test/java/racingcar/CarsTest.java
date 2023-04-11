@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.application.Cars;
+import racingcar.application.RandomMoveStrategy;
 
 public class CarsTest {
 
@@ -28,7 +29,7 @@ public class CarsTest {
     final int CAR_NUMBER = 3;
     final int PROGRESS_NUMBER = 4;
 
-    Cars cars = new Cars(() -> PROGRESS_NUMBER, CAR_NUMBER);
+    Cars cars = new Cars(new RandomMoveStrategy(() -> PROGRESS_NUMBER), CAR_NUMBER);
     assertThat(cars.locationValues()).containsExactly(1, 1, 1);
 
     // when

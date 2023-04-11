@@ -7,16 +7,16 @@ import java.util.stream.IntStream;
 
 public class Cars {
 
-  private final Accelerator accelerator;
+  private final MoveStrategy moveStrategy;
   private final List<Car> cars;
 
-  public Cars(Accelerator accelerator, int count) {
-    this.accelerator = accelerator;
+  public Cars(MoveStrategy moveStrategy, int count) {
+    this.moveStrategy = moveStrategy;
     this.cars = init(count);
   }
 
   public void go() {
-    cars.forEach(car -> car.go());
+    cars.forEach(car -> car.go(moveStrategy));
   }
 
   public List<Integer> locationValues() {
@@ -27,7 +27,7 @@ public class Cars {
   private List<Car> init(int count) {
     List<Car> cars = new ArrayList<>();
     IntStream.rangeClosed(1, count)
-        .forEach(number -> cars.add(new Car(accelerator)));
+        .forEach(number -> cars.add(new Car()));
 
     return cars;
   }

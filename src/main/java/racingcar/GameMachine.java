@@ -3,6 +3,7 @@ package racingcar;
 import java.util.stream.IntStream;
 import racingcar.application.Cars;
 import racingcar.application.RandomAccelerator;
+import racingcar.application.RandomMoveStrategy;
 import racingcar.ui.InputView;
 import racingcar.ui.ResultView;
 
@@ -19,7 +20,7 @@ public class GameMachine {
     int carNumber = inputView.askCarNumbers().carNumber();
     int trialNumber = inputView.askTrialNumbers().trialNumber();
 
-    Cars cars = new Cars(new RandomAccelerator(), carNumber);
+    Cars cars = new Cars(new RandomMoveStrategy(new RandomAccelerator()), carNumber);
 
     resultView.printResultAlert();
 
