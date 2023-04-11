@@ -1,4 +1,4 @@
-package study;
+package study.learningtest;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -50,7 +50,7 @@ public class StringTest {
   }
 
   @ParameterizedTest
-  @ValueSource(ints = {4, 6, Integer.MAX_VALUE})
+  @ValueSource(ints = {-1, 4, 6, Integer.MAX_VALUE})
   @DisplayName("문자열 abc에서 위치값을 벗어나는 경우 StringIndexOutOfBoundsException 발생 테스트")
   void charAtRaiseStringIndexOutOfBoundsException(int index) {
     String abc = "abc";
