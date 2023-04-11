@@ -11,6 +11,8 @@ public class Car {
 
     private static final int MINIMUM_CAR_MOVE_NUMBER = 4;
 
+    private static final int CAR_NAME_MAX_LENGTH = 5;
+
     private static final String CAR_DISTANCE_DISPLAY_UNIT = "-";
 
     private static final int CAR_START_POSITION_NUMBER = 0;
@@ -19,16 +21,17 @@ public class Car {
 
     private static final String CAR_NAME_AND_DISTANCE_DELIMITER = " : ";
 
+    private static final String CAR_NAME_MORE_THAN_FIVE_CHARACTER = "자동차 이름은 5자를 초과할 수 없습니다.";
+
     private static final int MOVE_STEP = 1;
 
     public Car(String carName) {
-        this(carName,CAR_START_POSITION_NUMBER,CAR_START_POSITION_DISPLAY_STRING);
-    }
-
-    public Car(String carName, int distance, String travelDistance) {
+        if (hasCarNameMoreThanFiveCharacter(carName)) {
+            throw new IllegalArgumentException(CAR_NAME_MORE_THAN_FIVE_CHARACTER);
+        }
         this.carName = carName;
-        this.distance = distance;
-        this.travelDistance = travelDistance;
+        this.distance = CAR_START_POSITION_NUMBER;
+        this.travelDistance = CAR_START_POSITION_DISPLAY_STRING;
     }
 
     public void printTravelDistanceWithCarName() {
@@ -56,5 +59,9 @@ public class Car {
 
     private boolean isGoForwardNumber(int randomNumber) {
         return randomNumber >= MINIMUM_CAR_MOVE_NUMBER;
+    }
+
+    private boolean hasCarNameMoreThanFiveCharacter(String carName) {
+        return carName.length() > CAR_NAME_MAX_LENGTH;
     }
 }

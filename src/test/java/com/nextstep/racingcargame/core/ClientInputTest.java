@@ -33,11 +33,4 @@ public class ClientInputTest {
                 .hasMessage("시도 횟수는 1 이상의 숫자만 가능합니다.");
     }
 
-    @ParameterizedTest(name = "[{index}] 자동차 이름이 5자를 초과할 경우 예외를 발생시킨다. carInput = {0}")
-    @ValueSource(strings = {"patrick,jackson,ethan","jackson","patrick"})
-    void objectCreate_with_more_than_five_character(String carNameChunk) {
-        assertThatThrownBy(() -> new ClientInput(carNameChunk,5))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차 이름은 5자를 초과할 수 없습니다.");
-    }
 }
