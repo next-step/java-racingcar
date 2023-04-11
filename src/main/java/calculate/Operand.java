@@ -2,8 +2,14 @@ package calculate;
 
 public class Operand {
 
-    private String input;
-    private String delimiter;
-    private int[] numbers;
-    private int answer;
+    public String input;
+    public String delimiter;
+    public String[] stringNumbers;
+    public int[] numbers;
+    public int sum;
+
+    public Operand(String input) {
+        this.input = input;
+        this.delimiter = StringAddCalculator.extractDelimiter(input);
+    }
 }

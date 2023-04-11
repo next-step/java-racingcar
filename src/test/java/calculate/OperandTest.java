@@ -9,25 +9,30 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class OperandTest {
 
     @Test
-    @DisplayName("구분자 구하기")
-    void extractDelimiter() {
+    @DisplayName("일반 구분자 가진 입력에서 구분자 구하기")
+    void extractGeneralDelimiter() {
+        Operand operand = new Operand("1:2:3");
+        assertThat(StringAddCalculator.isNullOrEmpty(operand)).isFalse();
+        assertThat(operand.delimiter).isEqualTo(":");
+    }
 
-        String delimiter = ",|:";
-        String input = "1:2:3";
-        String[] numbers = input.split(delimiter);
-
-        assertThat(numbers).isEqualTo(new String[]{"1", "2", "3"});
+    @Test
+    @DisplayName("커스텀 구분자 가진 입력에서 구분자 구하기")
+    void extractCustomDelimiter() {
+        Operand operand = new Operand("₩₩:\n1:2:3");
+        assertThat(StringAddCalculator.isNullOrEmpty(operand)).isFalse();
+        assertThat(operand.delimiter).isEqualTo(":");
     }
 
     @Test
     @DisplayName("숫자 배열 추출하기")
     void extractNumbersList() {
 
-        String delimiter = ",|:";
-        String input = "1:2:3";
-        String[] numbers = input.split(delimiter);
-
-        assertThat(numbers).isEqualTo(new String[]{"1", "2", "3"});
+        Operand operand = new Operand("₩₩;\n1;2;3");
+        StringAddCalculator.extractNumbers(operand);
+        assertThat(operand.stringNumbers).isEqualTo(new String[]{"1", "2", "3"});
+        assertThat(operand.numbers).isEqualTo(new int[]{1, 2, 3});
+        assertThat(StringAddCalculator.sumOfNumbers(operand).sum).isEqualTo(6);
     }
 
     @Test
