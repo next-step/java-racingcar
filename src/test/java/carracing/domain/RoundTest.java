@@ -13,7 +13,7 @@ public class RoundTest {
         //when
         //then
         assertThatThrownBy(() -> {
-            new Round(0);
+            new Round(0,Round.emptyScores);
         }).isInstanceOf(RuntimeException.class)
             .hasMessageContaining("라운드는 1부터 시작하므로 항상 1 이상입니다");
     }
@@ -23,12 +23,12 @@ public class RoundTest {
     public void roundOK() {
         //given
         //when
-        new Round(1);
-        new Round(11);
-        new Round(111);
-        new Round(1111);
-        new Round(11111);
-        new Round(787);
+        new Round(1,Round.emptyScores);
+        new Round(11,Round.emptyScores);
+        new Round(111,Round.emptyScores);
+        new Round(1111,Round.emptyScores);
+        new Round(11111,Round.emptyScores);
+        new Round(787,Round.emptyScores);
         //then
     }
 
