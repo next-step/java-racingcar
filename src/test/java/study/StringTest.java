@@ -2,6 +2,9 @@ package study;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -13,6 +16,7 @@ public class StringTest {
 	void split() {
 		assertThat("1,2".split(",")).contains("1", "2");
 		assertThat("1".split(",")).containsExactly("1");
+		assertThat("1,2,3,".split(",")).contains("1", "2", "3");
 	}
 
 	@DisplayName("String의 substring() 메서드 동작 확인")
@@ -46,5 +50,16 @@ public class StringTest {
 	void isBlank() {
 		assertThat("".isBlank()).isTrue();
 		assertThat("123".isBlank()).isFalse();
+	}
+
+	@DisplayName("String의 join() 메서드 동작 확인")
+	@Test
+	void join() {
+		List<String> strings = new ArrayList<>();
+		strings.add("pobi");
+		strings.add("crong");
+		strings.add("honux");
+
+		assertThat(String.join(", ", strings)).isEqualTo("pobi, crong, honux");
 	}
 }
