@@ -10,11 +10,11 @@ public class RacingCar {
 
         InputView.printCarInputGuideMessage();
         int carAmount = scanner.nextInt();
-        InputView.validateCarAmount(carAmount);
+        Validator.validateCarAmount(carAmount);
 
         InputView.printTryInputGuideMessage();
         int tryAmount = scanner.nextInt();
-        InputView.validateTryAmount(tryAmount);
+        Validator.validateTryAmount(tryAmount);
 
         List<Car> cars = createCar(carAmount);
 
@@ -22,7 +22,7 @@ public class RacingCar {
         OutputView.printExecutionResult();
         for (int i = 0; i < tryAmount; i++) {
             game.play();
-            OutputView.printCarPosition(game.getCars());
+            OutputView.printCarPosition(cars);
         }
     }
 

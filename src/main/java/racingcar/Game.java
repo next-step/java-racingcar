@@ -14,8 +14,4 @@ public class Game {
             car.move(RandomNumber.getNumber());
         }
     }
-
-    public List<Car> getCars() {
-        return cars;
-    }
 }
