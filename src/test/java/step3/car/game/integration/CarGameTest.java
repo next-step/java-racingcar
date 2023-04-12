@@ -1,4 +1,4 @@
-package step3.integration;
+package step3.car.game.integration;
 
 import org.junit.jupiter.api.Test;
 import step3.car.game.CarGame;
