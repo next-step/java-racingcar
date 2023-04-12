@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class Round implements Comparable<Round> {
-    private static final int FIRST_ROUND_VALUE = 1;
-
     private Integer roundId;
     private final List<Score> scores;
     private final List<Record> records;
@@ -13,6 +11,22 @@ public class Round implements Comparable<Round> {
     public Round(List<Score> scores, List<Record> records) {
         this.scores = scores;
         this.records = records;
+    }
+
+    public int getRoundId() {
+        return roundId;
+    }
+
+    public void setRoundId(Integer roundId) {
+        this.roundId = roundId;
+    }
+
+    public List<Score> getScores() {
+        return scores;
+    }
+
+    public List<Record> getRecords() {
+        return records;
     }
 
     @Override
@@ -33,19 +47,4 @@ public class Round implements Comparable<Round> {
         return Objects.hash(roundId);
     }
 
-    public int getRoundId() {
-        return roundId;
-    }
-
-    public void setRoundId(Integer roundId) {
-        this.roundId = roundId;
-    }
-
-    public List<Score> getScores() {
-        return scores;
-    }
-
-    public List<Record> getRecords() {
-        return records;
-    }
 }
