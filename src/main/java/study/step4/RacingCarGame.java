@@ -1,4 +1,4 @@
-package study.step3;
+package study.step4;
 
 public class RacingCarGame {
 
@@ -8,8 +8,8 @@ public class RacingCarGame {
         inputView.startMsg();
 
         RacingGame racingGame = new RacingGame();
-        racingGame.readyGame(inputView.getCarCount());
+        racingGame.readyGame(inputView.getCarList());
         racingGame.startGame(inputView.getTryCount());
-
+        racingGame.getWinner();
     }
 }

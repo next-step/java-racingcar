@@ -1,4 +1,4 @@
-package study.step3;
+package study.step4;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,11 +13,12 @@ class RacingGameTest {
     @BeforeEach
     void setUp() {
         racingGame = new RacingGame();
-        racingGame.readyGame(3);
+        racingGame.readyGame("pobi,crong,honux");
     }
 
     @Test
     void 게임준비_모든차_위치_0_테스트() {
+
 
         racingGame.getCarList().forEach(
                 car -> assertThat(car.getPosition())
@@ -35,4 +36,6 @@ class RacingGameTest {
                         .isLessThan(4)
         );
     }
+
+
 }
