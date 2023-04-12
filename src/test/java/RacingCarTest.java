@@ -1,4 +1,6 @@
 import org.junit.jupiter.api.Test;
+import step3.RacingCarClass;
+import step3.ResultView;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 

@@ -1,5 +1,6 @@
+package step3;
+
 import java.util.Random;
-import java.util.Scanner;
 
 public class RacingCarClass {
 	public static void main(String arg[]) {
