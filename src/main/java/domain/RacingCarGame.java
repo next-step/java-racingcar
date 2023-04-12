@@ -35,14 +35,18 @@ public class RacingCarGame {
     }
 
     public List<RacingCar> playAndReturnCars() {
-        for (RacingCar car : cars) {
-            car.moveForward(RandomNumberGenerator.generateRandomNumber());
-        }
+        moveCars();
         return cars;
     }
 
-    public static List<RacingCar> getWinners(List<RacingCar> cars) {
-        return findWinningCars(cars);
+    public void moveCars() {
+        for (RacingCar car : cars) {
+            car.moveForward(RandomNumberGenerator.generateRandomNumber());
+        }
+    }
+
+    public List<RacingCar> getWinners() {
+        return findWinningCars(this.getCars());
     }
 
     private List<RacingCar> findWinningCars(List<RacingCar> cars) {
