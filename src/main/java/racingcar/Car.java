@@ -1,35 +1,28 @@
 package racingcar;
 
-import java.util.Random;
-
 public class Car {
-    private static final Integer MAX_NUMBER = 10;
-    public static final Integer MINIMUM_NUMBER_TO_MOVE = 6;
-    private static final Random RANDOM = new Random();
+    private static final Integer MINIMUM_NUMBER_TO_MOVE = 4;
+
     private final Output output;
 
     public Car(Output output) {
         this.output = output;
     }
 
-    public Integer position = 0;
+    private Integer position = 0;
 
-    public void moveAndPrint() {
-        if (isMovable(randomNumber())) {
-            move();
-        }
+    public void moveAndPrint(Integer integer) {
+        move(integer);
         this.output.printPosition(this.position);
     }
 
-    public void move() {
-        this.position++;
+    private void move(Integer number) {
+        if (isMovable(number)) {
+            this.position++;
+        }
     }
 
-    public static boolean isMovable(Integer number) {
+    private static boolean isMovable(Integer number) {
         return number >= MINIMUM_NUMBER_TO_MOVE;
-    }
-
-    private static Integer randomNumber() {
-        return RANDOM.nextInt(MAX_NUMBER);
     }
 }

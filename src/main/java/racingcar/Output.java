@@ -2,9 +2,9 @@ package racingcar;
 
 public interface Output {
 
-    public void printPosition(Integer position);
+    void printPosition(Integer position);
 
-    public void printExecutionHeader();
+    void printExecutionHeader();
 
-    public void printBlankLine();
+    void printBlankLine();
 }
