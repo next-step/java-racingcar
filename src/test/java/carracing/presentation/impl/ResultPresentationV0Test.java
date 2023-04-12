@@ -1,7 +1,5 @@
 package carracing.presentation.impl;
 
-import carracing.domain.Round;
-import carracing.domain.Score;
 import carracing.presentation.ResultPresentation;
 import carracing.repository.RoundRepository;
 import carracing.service.RacingService;
@@ -12,14 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
 import java.util.logging.Logger;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ResultPresentationV0Test {
     private static final Logger log = Logger.getLogger("ResultViewV0Test");
@@ -61,7 +52,7 @@ public class ResultPresentationV0Test {
             "\n";
 
         //when
-        racingService.racingStart(3,4);
+        racingService.racingStart(3, 4);
         resultPresentation.printResult();
 
         log.info(outputStream.toString());

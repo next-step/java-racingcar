@@ -12,6 +12,7 @@ public class ResultPresentationV0 implements ResultPresentation {
 
     private final PrintStream printStream;
     private final RacingService racingService;
+
     public ResultPresentationV0(PrintStream printStream, RacingService racingService) {
         this.racingService = racingService;
         this.printStream = printStream;

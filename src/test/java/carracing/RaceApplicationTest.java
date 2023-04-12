@@ -45,6 +45,7 @@ public class RaceApplicationTest {
         this.inputPresentation = new InputPresentation(inputViewInputStream, resultViewPrintStream);
         this.raceApplication = new RaceApplication(this.inputPresentation, this.resultPresentation, new RacingService(new RoundRepository()));
     }
+
     @DisplayName("문구 출력 검증 : [자동차 대수는 몇 대 인가요?] 출력된다")
     @Test
     public void participates() {

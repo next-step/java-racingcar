@@ -25,7 +25,7 @@ public class RacingService {
     }
 
     public void racingStart(int participates, int iterations) {
-         IntStream.rangeClosed(1, iterations)
+        IntStream.rangeClosed(1, iterations)
             .boxed()
             .forEach(integer -> roundStart(participates));
     }
@@ -48,14 +48,14 @@ public class RacingService {
     private List<Record> scoreToRecord(List<Score> scoreList) {
         AtomicInteger integer = new AtomicInteger(0);
         List<Record> recordList = new ArrayList<>();
-        for(Score score : scoreList) {
+        for (Score score : scoreList) {
             recordList.add(new Record(calRecord(integer, score)));
         }
         return recordList;
     }
 
     private String calRecord(AtomicInteger integer, Score score) {
-        if(isFirstRound() ) {
+        if (isFirstRound()) {
             return score.toProgress();
         }
         return score.toProgress() + prevScoreProgress(integer.getAndIncrement());
@@ -69,9 +69,11 @@ public class RacingService {
         Round byId = roundRepository.findById(roundRepository.count());
         return byId.getRecords().get(index).getRecord();
     }
+
     public List<Round> findAllRounds() {
         return roundRepository.findAll();
     }
+
     public List<List<Score>> findAllScores() {
         return roundRepository.findAll().stream().map(round -> round.getScores()).collect(Collectors.toList());
     }

@@ -2,14 +2,13 @@ package carracing.domain;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class Round implements Comparable<Round> {
     private static final int FIRST_ROUND_VALUE = 1;
 
     private Integer roundId;
-    private List<Score> scores;
-    private List<Record> records;
+    private final List<Score> scores;
+    private final List<Record> records;
 
     public Round(List<Score> scores, List<Record> records) {
         this.scores = scores;
@@ -38,15 +37,15 @@ public class Round implements Comparable<Round> {
         return roundId;
     }
 
+    public void setRoundId(Integer roundId) {
+        this.roundId = roundId;
+    }
+
     public List<Score> getScores() {
         return scores;
     }
 
     public List<Record> getRecords() {
         return records;
-    }
-
-    public void setRoundId(Integer roundId) {
-        this.roundId = roundId;
     }
 }
