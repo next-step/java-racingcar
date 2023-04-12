@@ -2,8 +2,11 @@ package racingcar;
 
 public class RacingCarGame {
     public static void main(String[] args) {
-        UserInput userInput = ConsoleInput.getUserInput();
+        Input input = new ConsoleInput();
+        Output output = new ConsoleOutput();
+
+        UserInput userInput = input.getUserInput();
         Race race = userInput.readyForRace();
-        race.start();
+        race.start(output);
     }
 }

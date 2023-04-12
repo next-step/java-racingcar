@@ -13,26 +13,22 @@ public class Race {
         this.totalMoveCount = totalMoveCount;
     }
 
-    public void start() {
-        List<Car> cars = createCars();
-        printExecutionHeader();
+    public void start(Output output) {
+        List<Car> cars = createCars(output);
+        output.printExecutionHeader();
         for (int i = 0; i < this.totalMoveCount; i++) {
-            moveCarsAndPrint(cars);
+            moveCarsAndPrint(output, cars);
         }
     }
 
-    private List<Car> createCars() {
+    private List<Car> createCars(Output output) {
         return IntStream.range(0, totalCarCount)
-                .mapToObj(i -> new Car())
+                .mapToObj(i -> new Car(output))
                 .collect(Collectors.toList());
     }
 
-    private void moveCarsAndPrint(List<Car> cars) {
+    private void moveCarsAndPrint(Output output, List<Car> cars) {
         cars.forEach(Car::moveAndPrint);
-        System.out.println();
-    }
-
-    private void printExecutionHeader() {
-        System.out.println("\n실행 결과");
+        output.printBlankLine();
     }
 }

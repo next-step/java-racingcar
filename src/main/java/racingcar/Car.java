@@ -5,8 +5,12 @@ import java.util.Random;
 public class Car {
     private static final Integer MAX_NUMBER = 10;
     public static final Integer MINIMUM_NUMBER_TO_MOVE = 6;
-    private static final String ONE_POSITION_MARK = "-";
     private static final Random RANDOM = new Random();
+    private final Output output;
+
+    public Car(Output output) {
+        this.output = output;
+    }
 
     public Integer position = 0;
 
@@ -14,7 +18,7 @@ public class Car {
         if (isMovable(randomNumber())) {
             move();
         }
-        printPosition();
+        this.output.printPosition(this.position);
     }
 
     public void move() {
@@ -27,9 +31,5 @@ public class Car {
 
     private static Integer randomNumber() {
         return RANDOM.nextInt(MAX_NUMBER);
-    }
-
-    private void printPosition() {
-        System.out.println(ONE_POSITION_MARK.repeat(this.position));
     }
 }
