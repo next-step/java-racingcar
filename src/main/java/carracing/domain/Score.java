@@ -4,8 +4,8 @@ import java.util.Objects;
 import java.util.function.IntUnaryOperator;
 
 import static carracing.common.ScoreSupport.FORWARD_MARK;
-import static carracing.common.ScoreSupport.STOP_MARK;
 import static carracing.common.ScoreSupport.SCORE_THRESHOLD;
+import static carracing.common.ScoreSupport.STOP_MARK;
 
 public class Score {
     private static final IntUnaryOperator validate = value -> {

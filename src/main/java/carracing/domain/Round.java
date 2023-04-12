@@ -5,9 +5,9 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Round implements Comparable<Round> {
-    private Integer roundId;
     private final List<Score> scores;
     private final List<Record> records;
+    private Integer roundId;
 
     public Round(List<Score> scores, List<Record> records) {
         this.scores = scores;
