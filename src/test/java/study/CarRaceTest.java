@@ -27,28 +27,9 @@ public class CarRaceTest {
 
     }
 
-
-    @Test
-    void 전진_테스트() {
-        List<Car> cars = CarRace.readyCars(INITIAL_CAR_NUMBER);
-        List<Car> movedCars = CarRace.moveCars(cars);
-
-        assertThat(movedCars).hasSize(INITIAL_CAR_NUMBER);
-        for (int i = 0; i < movedCars.size(); i++) {
-            Car before = cars.get(i);
-            Car after = movedCars.get(i);
-            assertThat(after.getCurrentLocation()).isGreaterThanOrEqualTo(before.getCurrentLocation());
-
-            if (after.getCurrentLocation() > before.getCurrentLocation()) {
-                assertThat(after.getCurrentLocation()).isEqualTo(before.getCurrentLocation() + 1);
-            }
-        }
-    }
-
     @Test
     void 전진_가능_로직_테스트() {
-        Car before = new Car(1);
-
+        Car before = new Car(1, "car");
         Car after = CarRace.moveOrStop(before);
 
         assertThat(after.getCurrentLocation()).isGreaterThanOrEqualTo(before.getCurrentLocation());

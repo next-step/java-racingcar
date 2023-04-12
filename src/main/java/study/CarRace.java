@@ -9,14 +9,6 @@ import static java.lang.System.*;
 public class CarRace {
     private static final Random random = new Random();
 
-    public static List<Car> readyCars(int carNumber) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carNumber; i++) {
-            cars.add(new Car(1));
-        }
-        return cars;
-    }
-
     public static List<Car> moveCars(List<Car> cars) {
         for (Car car : cars) {
             moveOrStop(car);
@@ -65,11 +57,11 @@ public class CarRace {
         out.println("실행 결과");
 
         for (int i = 0; i < trialNumber; i++) {
-            out.println(ResultView.displayRacingCars(cars));
+            out.println(ResultView.getStatusCars(cars));
             moveCars(cars);
         }
 
-        out.println(ResultView.displayRacingCars(cars));
+        out.println(ResultView.getStatusCars(cars));
         List<Car> winningCars = getWinningCars(cars);
         out.println(ResultView.displayWinningCars(winningCars));
     }

@@ -23,11 +23,21 @@ public class ResultView {
     }
 
     // 경기중인 자동차를 출력
-    public static String displayRacingCars(List<Car> racingCars) {
-        String result = "";
+    public static String getStatusCars(List<Car> racingCars) {
+        String status = "";
         for (Car racingCar : racingCars) {
-            result += racingCar.displayCurrentStatus();
+            status += getStatus(racingCar);
         }
-        return result;
+        return status;
+    }
+
+    public static String getStatus(Car car) {
+        String status = "";
+        status += car.getName() + " : ";
+        for (int i = 0; i < car.getCurrentLocation(); i++) {
+            status += "-";
+        }
+        status += "\n";
+        return status;
     }
 }

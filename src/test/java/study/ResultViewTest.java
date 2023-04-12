@@ -33,7 +33,7 @@ public class ResultViewTest {
 
     @Test
     void 경기_중인_자동차들_출력() {
-        String result = ResultView.displayRacingCars(racingCars);
+        String result = ResultView.getStatusCars(racingCars);
         assertThat(result).contains(RACING_RESULT);
     }
 
@@ -49,6 +49,12 @@ public class ResultViewTest {
     void 빈_자동차들_목록에서_이름을_출력() {
         String result = ResultView.displayCarsNames(new ArrayList<Car>());
         assertThat(result).isEqualTo("");
+    }
+
+    @Test
+    void 현재_자동차_상태_출력() {
+        String status = ResultView.getStatus(racingCars.get(0));
+        assertThat(status).contains("car1 : -");
     }
 
     @Test
