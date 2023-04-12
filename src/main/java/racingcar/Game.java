@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Game {
 
+    public static final int LOW_LIMIT_NUMBER = 1;
     private final int carAmount;
     private final int tryAmount;
     private final List<Car> cars;
@@ -17,11 +18,11 @@ public class Game {
     }
 
     private void validate(int carAmount, int tryAmount) {
-        if (carAmount < 1) {
-            throw new IllegalArgumentException("자동차 대수는 1 이상이어야 합니다.");
+        if (carAmount < LOW_LIMIT_NUMBER) {
+            throw new IllegalArgumentException("자동차 대수는 "+LOW_LIMIT_NUMBER+" 이상이어야 합니다.");
         }
-        if (tryAmount < 1) {
-            throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
+        if (tryAmount < LOW_LIMIT_NUMBER) {
+            throw new IllegalArgumentException("시도 횟수는 "+LOW_LIMIT_NUMBER+" 이상이어야 합니다.");
         }
     }
 
