@@ -3,8 +3,8 @@ package com.next.step.step3.util;
 import com.next.step.step3.domain.Car;
 import com.next.step.step3.dto.InputDto;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarsFactory {
 
@@ -12,10 +12,8 @@ public class CarsFactory {
     }
 
     public static List<Car> createCars(InputDto inputDto) {
-        List<Car> cars = new ArrayList<>();
-        for (int creationCount = 0; creationCount < inputDto.numOfCars(); creationCount++) {
-            cars.add(new Car());
-        }
-        return cars;
+        return inputDto.carNames().stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 }

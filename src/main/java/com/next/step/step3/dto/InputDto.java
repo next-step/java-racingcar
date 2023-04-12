@@ -20,4 +20,8 @@ public class InputDto {
     public int numOfAttempts() {
         return numOfAttempts;
     }
+
+    public List<String> carNames() {
+        return carNames;
+    }
 }

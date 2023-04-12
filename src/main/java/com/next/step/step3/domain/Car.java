@@ -8,8 +8,11 @@ public class Car {
 
     private Position position;
 
-    public Car() {
+    private CarName carName;
+
+    public Car(String carName) {
         this.position = new Position(INIT_POSITION);
+        this.carName = new CarName(carName);
     }
 
     public void moveCar(int randomNum) {
