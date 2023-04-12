@@ -17,25 +17,22 @@ public class ResultView {
 
         int labs = cars.get(0).getState().size();
         for (int lab = 0; lab < labs; lab++) {
-            for (int car = 0; car < cars.size(); car++) {
-                System.out.println(cars.get(car).getName() + " : "+"-".repeat(cars.get(car).getState().get(lab)));
-            }
+            viewCarsInLab(cars, lab);
             System.out.println();
         }
     }
 
-    public static void viewWinners(List<Car> winners) {
-        if(winners.size() == 0){
+    private static void viewCarsInLab(List<Car> cars, int lab) {
+        for (int car = 0; car < cars.size(); car++) {
+            System.out.println(cars.get(car).getName() + " : " + "-".repeat(cars.get(car).getState().get(lab)));
+        }
+    }
+
+    public static void viewWinners(String winnerNames) {
+        if (winnerNames.length() == 0) {
             return;
         }
 
-        for(int car=0; car < winners.size(); car++){
-            System.out.print(winners.get(car).getName());
-            if(car != winners.size() -1) {
-                System.out.print(", ");
-            }
-        }
-
-        System.out.print("가 최종 우승했습니다.");
+        System.out.print(winnerNames + "가 최종 우승했습니다.");
     }
 }

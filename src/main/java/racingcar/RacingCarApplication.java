@@ -21,31 +21,51 @@ public class RacingCarApplication {
         int labs = (int) input.get(1);
 
         List<Car> racingCars = new ArrayList<>();
-        for(int car=0; car < carNames.length; car++){
+        for (int car = 0; car < carNames.length; car++) {
             racingCars.add(new Car(carNames[car], race(labs)));
         }
 
         view(racingCars);
-        viewWinners(getWinners(racingCars));
+        viewWinners(getWinnerNames(racingCars));
     }
 
-    public static List<Car> getWinners(List<Car> racingCars){
+    public static String getWinnerNames(List<Car> racingCars) {
+        int winnerScore = getWinnerScore(racingCars);
+
+        StringBuilder winnerNames = new StringBuilder();
+        for (Car car : racingCars) {
+            winnerNames = hasWinnerScore(winnerScore, car) ? appendWinnerName(winnerNames, car) : winnerNames;
+        }
+
+        return winnerNames.toString();
+    }
+
+    private static boolean hasWinnerScore(int winnerScore, Car car) {
+        return winnerScore == car.getState().get(car.getState().size() - 1);
+    }
+
+    private static StringBuilder appendWinnerName(StringBuilder winnerNames, Car car) {
+        if(winnerNames.length() != 0){
+            winnerNames.append(", ");
+        }
+        winnerNames.append(car.getName());
+
+        return winnerNames;
+    }
+
+    private static int getWinnerScore(List<Car> racingCars) {
         int winnerScore = 0;
-        for(Car car : racingCars){
-            int lastState = car.getState().get(car.getState().size() - 1);
-            if(winnerScore < lastState){
-                winnerScore = lastState;
-            }
+        for (Car car : racingCars) {
+            winnerScore = checkWinnerScore(winnerScore, car);
         }
+        return winnerScore;
+    }
 
-        List<Car> winners = new ArrayList<>();
-        for(Car car : racingCars){
-            int lastState = car.getState().get(car.getState().size() - 1);
-            if(winnerScore == lastState){
-                winners.add(car);
-            }
+    private static int checkWinnerScore(int winnerScore, Car car) {
+        int lastState = car.getState().get(car.getState().size() - 1);
+        if (winnerScore < lastState) {
+            winnerScore = lastState;
         }
-
-        return winners;
+        return winnerScore;
     }
 }

@@ -1,6 +1,7 @@
 package racingcar.service;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import static racingcar.RacingCarApplication.random;
 
@@ -35,9 +36,7 @@ public class Car {
 
         int currentState = 0;
         for (int lab = 0; lab < labs; lab++) {
-            if (lab != 0) {
-                currentState = carState.get(lab - 1);
-            }
+            currentState = (lab != 0) ? carState.get(lab - 1) : currentState;
             carState.add(moveOrStop(currentState));
         }
 

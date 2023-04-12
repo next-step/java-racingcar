@@ -4,13 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
-import static racingcar.service.Car.moveIfOver4;
-import static racingcar.service.Car.race;
-import static racingcar.service.Car.move;
-import static racingcar.service.Car.stop;
+import static racingcar.service.Car.*;
 
 public class CarTest {
     @ParameterizedTest

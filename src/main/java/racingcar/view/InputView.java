@@ -28,12 +28,12 @@ public class InputView {
         String nameInput = scanner.next();
         String[] names = nameInput.split(",");
         for (String name : names) {
-            validateName(name);
+            validateNameSize(name);
         }
         return names;
     }
 
-    private static void validateName(String name) {
+    private static void validateNameSize(String name) {
         if (name.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5자를 초과할수 없습니다. " + name + " 이름을 확인해주세요.");
         }
@@ -46,7 +46,7 @@ public class InputView {
 
     private static int getPositiveInput() {
         int input = scanner.nextInt();
-        if(input < 0){
+        if (input < 0) {
             throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
         }
         return input;
