@@ -1,13 +1,15 @@
 package step3.domain;
 
 public class Car {
-    private static final int MOVE_CONDITION = 4;
-    private String distance = "";
+    private int distance = 0;
 
-    public String tryMove(int randomValue) {
-        if (randomValue < MOVE_CONDITION) {
-            return distance;
+    public void tryMove(MoveStrategy moveStrategy) {
+        if (moveStrategy.isMovable()) {
+            this.distance += 1;
         }
-        return distance += "-";
+    }
+
+    public int getDistance() {
+        return this.distance;
     }
 }

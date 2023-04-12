@@ -1,13 +1,32 @@
 package step3;
 
 import step3.domain.Car;
-import step3.domain.CarRacing;
-import step3.view.InputView;
+import step3.domain.MoveStrategy;
 
 public class Fixture {
     public static Car car;
-    public static CarRacing carRacing;
-    public static InputView inputView = new InputView();
-    public static String distance = "-";
-    public static String stopped = "";
+
+    public static MoveStrategy fakeCanNotMoveStrategy = new MoveStrategy() {
+        @Override
+        public boolean isMovable() {
+            return randomGenerator() >= 4;
+        }
+
+        @Override
+        public int randomGenerator() {
+            return 2;
+        }
+    };
+
+    public static MoveStrategy fakeCanMoveStrategy = new MoveStrategy() {
+        @Override
+        public boolean isMovable() {
+            return randomGenerator() >= 4;
+        }
+
+        @Override
+        public int randomGenerator() {
+            return 4;
+        }
+    };
 }

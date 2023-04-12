@@ -45,7 +45,7 @@ class StringAddCalculatorTest {
     }
 
     @Test
-    @DisplayName("음수값 전달시 예외 발생")
+    @DisplayName("음수값 전달시 예외 throw")
     void negativeCase() {
         String text = "-1,2:3";
         assertThatThrownBy(() -> s.splitAndSum(text)).isInstanceOf(RuntimeException.class);

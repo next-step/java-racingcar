@@ -1,38 +1,46 @@
 package step3.domain;
 
-import step3.view.InputView;
-import step3.view.ResultView;
+import step3.model.InputData;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class CarRacing {
-    private static final int NUM_RANDOM = 10;
-    private static final Random rand = new Random();
-    public static final InputView inputView = new InputView();
-    public static final ResultView resultView = new ResultView();
-    public ArrayList<Car> carList = new ArrayList<>();
+    private ArrayList<Car> carList;
+    private final int numCar;
+    private final int numTry;
 
-    public void start() {
-        int numCar = inputView.getNumCar();
-        int numTry = inputView.getNumTry();
-        resultView.ResultText();
-        carRacing(createCarList(numCar), numTry);
+    public CarRacing(InputData inputData) {
+        this.numCar = inputData.getNumCar();
+        this.numTry = inputData.getNumTry();
     }
 
-    public ArrayList<Car> createCarList(int numCar) {
+    public ArrayList<ArrayList<DistanceStatus>> start(MoveStrategy randomMoveStrategy) {
+        return carRacing(createCarList(), randomMoveStrategy);
+    }
+
+    private ArrayList<Car> createCarList() {
+        carList = new ArrayList<>();
         for (int i = 0; i < numCar; i++) {
             carList.add(new Car());
         }
         return carList;
     }
 
-    public void carRacing(ArrayList<Car> carList, int numTry) {
+    public ArrayList<ArrayList<DistanceStatus>> carRacing(ArrayList<Car> carList, MoveStrategy randomMoveStrategy) {
+        ArrayList<ArrayList<DistanceStatus>> results = new ArrayList<>();
         for (int i = 0; i < numTry; i++) {
-            for (Car car : carList) {
-                resultView.showCarDistance(car.tryMove(rand.nextInt(NUM_RANDOM)));
-            }
-            System.out.println();
+            ArrayList<DistanceStatus> distanceStatus = race(carList, randomMoveStrategy);
+            results.add(distanceStatus);
         }
+        return results;
+    }
+
+    private ArrayList<DistanceStatus> race(ArrayList<Car> carList, MoveStrategy randomMoveStrategy) {
+        ArrayList<DistanceStatus> distanceStatus = new ArrayList<>();
+        for (Car car : carList) {
+            car.tryMove(randomMoveStrategy);
+            distanceStatus.add(new DistanceStatus(car.getDistance()));
+        }
+        return distanceStatus;
     }
 }

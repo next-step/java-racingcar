@@ -29,10 +29,10 @@ public class StringAddCalculator {
         }
         String delimiter = DELIMITER;
         String data = text;
-        Matcher m = CUSTOM_PATTERN.matcher(text);
-        if (m.find()) {
-            delimiter = m.group(1);
-            data = m.group(2);
+        Matcher matcher = CUSTOM_PATTERN.matcher(text);
+        if (matcher.find()) {
+            delimiter = matcher.group(1);
+            data = matcher.group(2);
         }
         return calcStringWithDel(data, delimiter);
     }

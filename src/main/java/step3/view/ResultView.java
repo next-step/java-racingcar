@@ -1,13 +1,31 @@
 package step3.view;
 
-public class ResultView {
-    public static final String RESULT = "실행 결과";
+import step3.domain.DistanceStatus;
 
-    public void showCarDistance(String distance) {
-        System.out.println(distance);
+import java.util.ArrayList;
+
+public class ResultView {
+    private static final String RESULT = "실행 결과";
+    private static final String DISTANCE = "-";
+
+    public void printCarsDistance(ArrayList<ArrayList<DistanceStatus>> carsDistanceStatus) {
+        System.out.println(RESULT);
+        for (ArrayList<DistanceStatus> carTotalDistanceStatus : carsDistanceStatus) {
+            printCarDistance(carTotalDistanceStatus);
+            System.out.println();
+        }
     }
 
-    public void ResultText() {
-        System.out.println(RESULT);
+    private void printCarDistance(ArrayList<DistanceStatus> carTotalDistanceStatus) {
+        for (DistanceStatus distanceStatus : carTotalDistanceStatus) {
+            printDistance(distanceStatus);
+            System.out.println();
+        }
+    }
+
+    private void printDistance(DistanceStatus distanceStatus) {
+        for (int i = 0; i < distanceStatus.getDistanceStatus(); i++) {
+            System.out.print(DISTANCE);
+        }
     }
 }
