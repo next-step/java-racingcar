@@ -3,10 +3,11 @@ package carracing.domain;
 import java.util.Objects;
 import java.util.function.IntUnaryOperator;
 
+import static carracing.common.ScoreSupport.PROGRESS;
+import static carracing.common.ScoreSupport.STOP;
+import static carracing.common.ScoreSupport.THRESHOLD;
+
 public class Score {
-    private static final String PROGRESS = "-";
-    private static final String STOP = "";
-    private static final int THRESHOLD = 4;
     private static final IntUnaryOperator validate = value -> {
         if (0 <= value && value <= 9) {
             return value;
