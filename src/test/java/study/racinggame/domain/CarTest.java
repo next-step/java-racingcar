@@ -20,13 +20,14 @@ public class CarTest {
   @BeforeEach
   public void setUp() {
     System.setOut(new PrintStream(outputStreamCaptor));
-    car = new Car();
+    car = new Car("oneny");
   }
 
   @Test
   @DisplayName("Car 객체 생성 테스트")
   public void car() {
     assertThat(car.distance()).isEqualTo(0);
+    assertThat(car.name()).isEqualTo("oneny");
   }
 
   @Test
@@ -47,7 +48,7 @@ public class CarTest {
     car.forward(() -> true);
 
     System.out.println(car.printedDistance());
-    assertEquals("---", outputStreamCaptor.toString().trim());
+    assertEquals("oneny : ---", outputStreamCaptor.toString().trim());
   }
 
   @AfterEach

@@ -8,7 +8,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
@@ -41,7 +40,7 @@ public class NameValidatorTest {
   }
 
   @ParameterizedTest(name = "carName 빈 문자열이 들어간 경우 IllegalArgumentException 발생 테스트")
-  @ValueSource(strings = { ",oneny,twony", "oneny,,twony", ",,oneny"})
+  @ValueSource(strings = {",oneny,twony", "oneny,,twony", ",,oneny"})
   public void validatedCarNames_carName_빈문자열(String input) {
     assertThatThrownBy(() -> NameValidator.validatedCarNames(input))
             .isInstanceOf(IllegalArgumentException.class)

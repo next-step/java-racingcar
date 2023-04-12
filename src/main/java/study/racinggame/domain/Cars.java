@@ -26,6 +26,6 @@ public class Cars {
   }
 
   private static Car copyCar(Car car) {
-    return new Car(car.distance());
+    return new Car(car.name(), car.distance());
   }
 }

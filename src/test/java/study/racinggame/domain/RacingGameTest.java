@@ -17,9 +17,9 @@ public class RacingGameTest {
   public void setUp() {
     List<Car> carList = new ArrayList<>();
 
-    carList.add(new Car());
-    carList.add(new Car());
-    carList.add(new Car());
+    carList.add(new Car("toby"));
+    carList.add(new Car("oneny"));
+    carList.add(new Car("gary"));
 
     cars = new Cars(carList);
   }

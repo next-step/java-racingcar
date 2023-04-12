@@ -3,7 +3,7 @@ package study.racinggame.domain;
 public class Car {
 
   private static final String PRINTED_DISTANCE = "-";
-  private String name;
+  private final String name;
   private int distance;
 
   public Car(String name) {

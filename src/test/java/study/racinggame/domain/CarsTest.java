@@ -23,9 +23,9 @@ public class CarsTest {
   @Test
   @DisplayName("Cars 객체 크기 확인 테스트")
   public void cars() {
-    cars.add(new Car());
-    cars.add(new Car());
-    cars.add(new Car());
+    cars.add(new Car("toby"));
+    cars.add(new Car("oneny"));
+    cars.add(new Car("twony"));
 
     assertThat(cars).hasSize(3);
   }

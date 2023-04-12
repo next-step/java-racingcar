@@ -6,8 +6,8 @@ import java.util.List;
 public class RacingGame {
   private final Cars cars;
 
-  public RacingGame(int carNumber) {
-    this.cars = initialCars(carNumber);
+  public RacingGame(List<String> carNames) {
+    this.cars = initialCars(carNames);
   }
 
   public GameResult play(int tryNumber) {
@@ -21,11 +21,11 @@ public class RacingGame {
     return result;
   }
 
-  private static Cars initialCars(int carNumber) {
+  private static Cars initialCars(List<String> carNames) {
     List<Car> cars = new ArrayList<>();
 
-    for (int i = 0; i < carNumber; i++) {
-      cars.add(new Car());
+    for (String carName : carNames) {
+      cars.add(new Car(carName));
     }
 
     return new Cars(cars);

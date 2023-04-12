@@ -1,6 +1,5 @@
 package study.racinggame.util;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,10 +8,11 @@ public class NameValidator {
 
   private static final int NAME_MAXIMUM_LENGTH = 5;
 
-  private NameValidator() {}
+  private NameValidator() {
+  }
 
   public static List<String> validatedCarNames(String carNames) {
-    validateCarNamesEmpty(carNames);
+    validateCarNamesNullOrEmpty(carNames);
 
     return Arrays.stream(carNames.split(","))
             .peek(NameValidator::validateCarNameEmpty)
@@ -22,7 +22,7 @@ public class NameValidator {
 
   private static void validateNameLength(String carName) {
     if (!isValidLength(carName)) {
-      throw new IllegalArgumentException("5자 초과된 이름이 입력되었습니다. 입력된 이름: "+ carName);
+      throw new IllegalArgumentException("5자 초과된 이름이 입력되었습니다. 입력된 이름: " + carName);
     }
   }
 
@@ -40,7 +40,7 @@ public class NameValidator {
     return carName.isEmpty();
   }
 
-  private static void validateCarNamesEmpty(String carNames) {
+  private static void validateCarNamesNullOrEmpty(String carNames) {
     if (isNullOrEmptyCarNames(carNames)) {
       throw new IllegalArgumentException("등록할 레이싱카 이름들을 입력해주세요.");
     }
