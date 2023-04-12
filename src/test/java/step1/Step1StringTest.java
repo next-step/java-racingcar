@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class Step1StringTest {
 
-  public static final String SEPARATOR = ",";
+  private static final String SEPARATOR = ",";
 
   @Test
   @DisplayName("[단계 1 String 요구사항 1.1] '1,2'를 split 했을 때 1과 2로 분리된다.")
@@ -50,7 +50,7 @@ public class Step1StringTest {
     final String input = "(1,2)";
 
     // when
-    final String 결과 = StringUtils.removalParentheses(input);
+    final String 결과 = StringUtils.removeParentheses(input);
 
     // then
     Assertions.assertEquals(예상결과, 결과);
