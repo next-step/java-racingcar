@@ -5,19 +5,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Car {
-    private final MoveStrategy moveStrategy;
-    private final List<Boolean> moveStatus;
+    private static final char POSITION_CURSOR = '-';
 
-    public Car(MoveStrategy moveStrategy) {
+    private final String name;
+    private final MoveStrategy moveStrategy;
+    private final List<Boolean> moveStatuses;
+
+    public Car(String name, MoveStrategy moveStrategy) {
+        this.name = name;
         this.moveStrategy = moveStrategy;
-        this.moveStatus = new ArrayList<>();
+        this.moveStatuses = new ArrayList<>();
     }
 
     public void moveOrStop() {
-        moveStatus.add(moveStrategy.moveOrStop());
+        moveStatuses.add(moveStrategy.moveOrStop());
     }
 
-    public List<Boolean> getMoveStatus() {
-        return moveStatus;
+    public String currentPosition() {
+        StringBuilder currentPosition = new StringBuilder()
+                .append(name)
+                .append(" : ");
+
+        moveStatuses.stream()
+                .filter(moveStatus -> moveStatus)
+                .forEach(moveStatus -> currentPosition.append(POSITION_CURSOR));
+
+        return currentPosition.toString();
     }
 }

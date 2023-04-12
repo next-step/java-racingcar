@@ -10,25 +10,25 @@ class CarTest {
     @Test
     void move() {
         // given
-        Car car = new Car(mockMoveStrategy(true));
+        Car car = new Car("test", mockMoveStrategy(true));
 
         // when
         car.moveOrStop();
 
         // then
-        assertThat(car.getMoveStatus()).containsExactly(true);
+        assertThat(car.currentPosition()).isEqualTo("test : -");
     }
 
     @Test
     void stop() {
         // given
-        Car car = new Car(mockMoveStrategy(false));
+        Car car = new Car("test", mockMoveStrategy(false));
 
         // when
         car.moveOrStop();
 
         // then
-        assertThat(car.getMoveStatus()).containsExactly(false);
+        assertThat(car.currentPosition()).isEqualTo("test : ");
     }
 
     private MoveStrategy mockMoveStrategy(boolean movable) {
