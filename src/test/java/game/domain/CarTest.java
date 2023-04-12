@@ -1,5 +1,6 @@
 package game.domain;
 
+import game.domain.policy.CarMovePolicy;
 import game.util.NumberGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -40,6 +41,21 @@ class CarTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    @DisplayName("자동차는 CarMovePolicy 에 작성된 로직에 따라 자동차의 움직임을 결정합니다.")
+    void test4() {
+        Car car = new Car("test", new TestCarMovePolicy(), new NonMovableNumberGenerator());
+        car.drive();
+        assertThat(car.position()).isSameAs(1);
+    }
+
+    static class TestCarMovePolicy implements CarMovePolicy {
+
+        @Override
+        public boolean isMovable(int input) {
+            return input >= 3;
+        }
+    }
 
     static class MovableNumberGenerator implements NumberGenerator {
         @Override
