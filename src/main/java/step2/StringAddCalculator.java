@@ -7,6 +7,7 @@ import java.util.stream.Stream;
 
 public class StringAddCalculator {
     public static final String DELIMITER = ",|:";
+    public static final Pattern CUSTOM_PATTERN = Pattern.compile("//(.)\n(.*)");
 
     private int calcStringWithDel(String text, String delimiter) {
         Stream<String> stream = Arrays.stream(text.split(delimiter));
@@ -18,7 +19,7 @@ public class StringAddCalculator {
 
     private void checkNegativeNum(int num) {
         if (num < 0) {
-            throw new RuntimeException("음수값은 처리할 수 없습니다.");
+            throw new IllegalArgumentException("음수값은 처리할 수 없습니다.");
         }
     }
 
@@ -28,10 +29,10 @@ public class StringAddCalculator {
         }
         String delimiter = DELIMITER;
         String data = text;
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
-        if (m.find()) {
-            delimiter = m.group(1);
-            data = m.group(2);
+        Matcher matcher = CUSTOM_PATTERN.matcher(text);
+        if (matcher.find()) {
+            delimiter = matcher.group(1);
+            data = matcher.group(2);
         }
         return calcStringWithDel(data, delimiter);
     }

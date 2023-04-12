@@ -10,16 +10,10 @@ class StringAddCalculatorTest {
     StringAddCalculator s = new StringAddCalculator();
 
     @Test
-    @DisplayName("빈 문자열인 경우 0을 반환")
-    void emptyCase() {
-        String text = "";
-        assertThat(s.splitAndSum(text)).isEqualTo(0);
-    }
-
-    @Test
-    @DisplayName("null인 경우 0을 반환")
-    void nullCase() {
+    @DisplayName("빈 문자열이거나 null인 경우 0을 반환")
+    void emptyOrNullCase() {
         assertThat(s.splitAndSum(null)).isEqualTo(0);
+        assertThat(s.splitAndSum("")).isEqualTo(0);
     }
 
     @Test
@@ -51,7 +45,7 @@ class StringAddCalculatorTest {
     }
 
     @Test
-    @DisplayName("음수값 전달시 예외 반환")
+    @DisplayName("음수값 전달시 예외 throw")
     void negativeCase() {
         String text = "-1,2:3";
         assertThatThrownBy(() -> s.splitAndSum(text)).isInstanceOf(RuntimeException.class);

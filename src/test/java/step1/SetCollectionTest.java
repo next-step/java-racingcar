@@ -40,7 +40,7 @@ public class SetCollectionTest {
 
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-    @DisplayName("1, 2, 3 값은 contains 메소드 실행결과 true, 4, 5 값을 넣으면 false 가 반환 확인")
+    @DisplayName("contains 메소드는 자료구조에 존재하는 원소를 전달하면 true 반환 확인")
     void setCsvSource(String num, String expected) {
         assertThat(numbers.contains(Integer.parseInt(num))).isEqualTo(Boolean.parseBoolean(expected));
     }
