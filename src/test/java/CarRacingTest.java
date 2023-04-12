@@ -16,7 +16,7 @@ class CarRacingTest {
     void 전진조건이_참이면_차가_전진한다(boolean condition, int result) {
 
         // given
-        Car car = new Car("car", 0);
+        Car car = new Car("car");
 
         // when
         car.go(condition);
@@ -33,7 +33,7 @@ class CarRacingTest {
         String testName = "abcdef";
 
         // then
-        assertThatThrownBy(() -> new Car(testName, 0))
+        assertThatThrownBy(() -> new Car(testName))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("이름이 5자 이상이 될 수 없습니다! : " + testName);
     }
@@ -42,13 +42,15 @@ class CarRacingTest {
     void 주행_거리가_긴_자동차가_우승한다() {
 
         // given
-        Car loser = new Car("alex", 1);
-        Car winner = new Car("jack", 2);
+        Car loser = new Car("alex");
+        Car winner = new Car("jack");
 
         List<Car> carList = Arrays.asList(loser, winner);
 
         Cars cars = new Cars(carList);
         Records records = new Records();
+
+        winner.go(true);
 
         // when
         records.addWinners(cars);
@@ -63,8 +65,8 @@ class CarRacingTest {
     void 우승자는_한명_이상일_수_있다() {
 
         // given
-        Car firstWinner = new Car("alex", 2);
-        Car secondWinner = new Car("jack", 2);
+        Car firstWinner = new Car("alex");
+        Car secondWinner = new Car("jack");
 
         List<Car> carList = Arrays.asList(firstWinner, secondWinner);
 
