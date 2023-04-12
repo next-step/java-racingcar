@@ -18,7 +18,7 @@ public class GameConsole {
   public int inputInt() {
     int input = 0;
     try {
-      input =scaner.nextInt();
+      input = scaner.nextInt();
     } catch (InputMismatchException e) {
       throw new RuntimeException("숫자만 입력해주세요");
     }

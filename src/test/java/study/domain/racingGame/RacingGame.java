@@ -27,6 +27,7 @@ public class RacingGame {
   public boolean isFinish() {
     return carMoveCnt <= 0 && cars.findTotalCarsCount() > 0;
   }
+
   public void start() {
     if (!isReady()) {
       throw new RuntimeException("게임 준비가 되지 않았습니다.");
@@ -44,7 +45,7 @@ public class RacingGame {
 
   private void printCarsDistance() {
     cars.forEach(car ->
-      console.print(convertCarDistanceToDash(car.findTotalDistance())));
+        console.print(convertCarDistanceToDash(car.findTotalDistance())));
   }
 
   private String convertCarDistanceToDash(int carDistance) {

@@ -3,7 +3,8 @@ package study.domain.racingGame;
 import java.util.Random;
 
 public class CarCondition {
-  
+  private final int MIN_NUM = 4;
+  private final int MAX_NUM = 9;
   private Random random;
   
   public CarCondition() {
@@ -11,10 +12,9 @@ public class CarCondition {
   }
   
   public boolean isMove(int num) {
-    return num >= 4 && num < 10;
+    return num >= MIN_NUM && num <= MAX_NUM;
   }
   public boolean isMove() {
-    random.setSeed(System.currentTimeMillis() + this.hashCode());
     return isMove(random.nextInt(9));
   }
 

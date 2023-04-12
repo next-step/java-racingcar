@@ -15,7 +15,6 @@ public class CarCondition {
     return num >= MIN_NUM && num <= MAX_NUM;
   }
   public boolean isMove() {
-    random.setSeed(System.currentTimeMillis() + this.hashCode());
     return isMove(random.nextInt(9));
   }
 
