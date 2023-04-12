@@ -1,4 +1,6 @@
-package racing;
+package racing.domain;
+
+import racing.util.RandomNumberGenerator;
 
 /**
  * 1. 자동차 (Car)
@@ -11,13 +13,18 @@ package racing;
 public class Car {
 
   private int position;
+  private final CarMoveCondition carMoveCondition;
 
   public Car() {
     this.position = 0;
+    this.carMoveCondition = new CarMoveCondition();
   }
 
   public void move() {
-    this.position++;
+    int randomNum = RandomNumberGenerator.generate();
+    if (carMoveCondition.isMove(randomNum)) {
+      position++;
+    }
   }
 
 
