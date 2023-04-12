@@ -14,7 +14,7 @@ public class CarTest {
 	@Test
 	void test1() {
 		for (int i = 0; i < 1000; i++) {
-			assertThat(new Car().randomInt()).isBetween(Car.MINIMUM_RANDOM_VALUE, Car.MAXIMUM_RANDOM_VALUE);
+			assertThat(new Car("pobi", 0).randomInt()).isBetween(Car.MINIMUM_RANDOM_VALUE, Car.MAXIMUM_RANDOM_VALUE);
 		}
 	}
 
@@ -22,7 +22,7 @@ public class CarTest {
 	@ValueSource(ints = { 4, 5, 6, 7, 8, 9 })
 	@ParameterizedTest
 	void test2(int randomValue) {
-		Car car = new Car();
+		Car car = new Car("pobi", 0);
 		assertThat(car.currentLocation()).isEqualTo(0);
 		car.move(randomValue);
 
@@ -33,7 +33,7 @@ public class CarTest {
 	@ValueSource(ints = { 0, 1, 2, 3 })
 	@ParameterizedTest
 	void test3(int randomValue) {
-		Car car = new Car();
+		Car car = new Car("pobi", 0);
 		assertThat(car.currentLocation()).isEqualTo(0);
 		car.move(randomValue);
 

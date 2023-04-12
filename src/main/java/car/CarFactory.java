@@ -9,13 +9,7 @@ public class CarFactory {
 		return new ArrayList<>();
 	}
 
-	public void addCar(List<Car> cars) {
-		cars.add(new Car());
-	}
-
-	public void moveCars(List<Car> cars) {
-		for (Car car : cars) {
-			car.move(car.randomInt());
-		}
+	public void addCar(List<Car> cars, String carName) {
+		cars.add(new Car(carName, 0));
 	}
 }
