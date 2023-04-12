@@ -5,8 +5,7 @@ public class RacingCarGame {
         Input input = new ConsoleInput();
         Output output = new ConsoleOutput();
 
-        UserInput userInput = input.getUserInput();
-        Race race = userInput.readyForRace();
+        Race race = input.getUserInput().readyForRace();
         race.start(output);
     }
 }
