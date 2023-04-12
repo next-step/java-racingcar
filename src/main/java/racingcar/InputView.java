@@ -16,6 +16,9 @@ public class InputView {
     public void inputCarAmount() {
         System.out.println("자동차 대수는 몇 대 인가요?");
         this.carAmount = scanner.nextInt();
+        if (carAmount < LOW_LIMIT_COUNT) {
+            throw new IllegalArgumentException("자동차 대수는 1 이상이어야 합니다.");
+        }
     }
 
     public void inputTryAmount() {
