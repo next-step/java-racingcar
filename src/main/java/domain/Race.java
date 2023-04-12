@@ -1,5 +1,7 @@
 package domain;
 
+import dto.RaceInfo;
+
 import java.util.Random;
 
 public class Race {
@@ -16,7 +18,7 @@ public class Race {
 
     public RaceResult calculate() {
         RaceResult raceResult = new RaceResult();
-        GameResult gameResult = new GameResult(carNumber);
+        GameResult gameResult = GameResult.createInitialGameResult(carNumber);
 
         raceResult.add(gameResult);
         for (int i = 0; i < raceNumber.getRaceNumber(); i++) {
@@ -29,9 +31,9 @@ public class Race {
     }
 
     private GameResult calculateNextGameResult(GameResult gameResult) {
-        GameResult nextGameResult = new GameResult(gameResult);
+        GameResult nextGameResult = GameResult.createCopy(gameResult);
         for (int j = 0; j < carNumber.getCarNumber(); j++) {
-            nextGameResult.getCar(j).move(calculateMove() ? Location.ONE.getLocation() : Location.ZERO.getLocation());
+            nextGameResult.getCar(j).move(calculateMove() ? Position.ONE.getPosition() : Position.ZERO.getPosition());
         }
 
         return nextGameResult;

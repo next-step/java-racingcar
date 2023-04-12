@@ -6,21 +6,27 @@ import java.util.Objects;
 
 public class GameResult {
     List<Car> cars;
-    GameResult(CarNumber carNumber) {
-        cars = new ArrayList<>();
+    public static GameResult createInitialGameResult(CarNumber carNumber) {
+        List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carNumber.getCarNumber(); i++) {
-            cars.add(new Car());
+            cars.add(new Car(Position.ONE.getPosition()));
         }
+        return new GameResult(cars);
     }
 
-    GameResult(GameResult gameResult) {
-        cars = new ArrayList<>();
+    public static GameResult createCopy(GameResult gameResult) {
+        List<Car> cars = new ArrayList<>();
         for (Car car : gameResult.cars) {
             cars.add(new Car(car));
         }
+        return new GameResult(cars);
     }
 
-    GameResult(List<Car> cars) {
+    public static GameResult create(List<Car> cars) {
+        return new GameResult(cars);
+    }
+
+    private GameResult(List<Car> cars) {
         this.cars = cars;
     }
 

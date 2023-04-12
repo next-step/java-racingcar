@@ -1,26 +1,22 @@
 package domain;
 
 public class Car {
-    int location;
+    int position;
 
-    Car() {
-        location = 1;
-    }
-
-    Car(int location) {
-        this.location = location;
+    Car(int position) {
+        this.position = position;
     }
 
     Car(Car car) {
-        this.location = car.location;
+        this.position = car.position;
     }
 
     public void move(int nextInt) {
-        location += nextInt;
+        position += nextInt;
     }
 
-    public int getLocation() {
-        return location;
+    public int getPosition() {
+        return position;
     }
 
     @Override
@@ -28,11 +24,11 @@ public class Car {
         if (!(obj instanceof Car))
             return false;
         Car car = (Car) obj;
-        return this.location == car.location;
+        return this.position == car.position;
     }
 
     @Override
     public String toString() {
-        return String.format("{location : %d}", location);
+        return String.format("{location : %d}", position);
     }
 }

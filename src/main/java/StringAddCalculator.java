@@ -6,8 +6,8 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class StringAddCalculator {
-    static Pattern p = Pattern.compile("//(.)\n(.*)");
-    private static final Integer ZERO = 0;
+    static Pattern specialSeperatorPattern = Pattern.compile("//(.)\n(.*)");
+    private static final Integer MIN_VALUE = 0;
 
     public static int splitAndSum(String text) {
         if (text == null || text.isEmpty())
@@ -27,7 +27,7 @@ public class StringAddCalculator {
     }
 
     private static List<String> getTargetAndSeparators(String text) {
-        Matcher m = p.matcher(text);
+        Matcher m = specialSeperatorPattern.matcher(text);
         if (m.find()) {
             return getTargetAndSeparatorsWithCustomSeparator(m);
         }
@@ -53,7 +53,7 @@ public class StringAddCalculator {
 
     private static void hasNegative(List<Integer> numbers) {
         numbers.stream()
-            .filter(number -> number < ZERO)
+            .filter(number -> number < MIN_VALUE)
             .findAny().ifPresent(number -> {
                 throw new RuntimeException("Has negative number");
             });

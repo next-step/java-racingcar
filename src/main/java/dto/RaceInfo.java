@@ -1,4 +1,7 @@
-package domain;
+package dto;
+
+import domain.CarNumber;
+import domain.RaceNumber;
 
 public class RaceInfo {
     private final CarNumber carNumber;

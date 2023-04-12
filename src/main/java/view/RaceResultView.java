@@ -34,7 +34,7 @@ public class RaceResultView implements ResultView {
     }
 
     private void printCar(Car car) {
-        for (int i = 0; i < car.getLocation(); i++) {
+        for (int i = 0; i < car.getPosition(); i++) {
             System.out.print("-");
         }
     }

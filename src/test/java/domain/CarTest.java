@@ -16,11 +16,11 @@ class CarTest {
     @Test
     void move() {
         car.move(2);
-        assertEquals(new Car(5).getLocation(), car.getLocation());
+        assertEquals(new Car(5).getPosition(), car.getPosition());
     }
 
     @Test
     void getLocation() {
-        assertEquals(new Car(3).getLocation(), car.getLocation());
+        assertEquals(new Car(3).getPosition(), car.getPosition());
     }
 }

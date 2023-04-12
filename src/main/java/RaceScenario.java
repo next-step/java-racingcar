@@ -1,7 +1,6 @@
 import domain.*;
+import dto.RaceInfo;
 import view.*;
-
-import java.util.List;
 
 public class RaceScenario {
     public static void main(String[] args) {
