@@ -15,7 +15,7 @@ public class Cars {
     public static Cars of(int numberOfCars) {
         Engine engine = new Engine(new RandomNumberGenerator());
         List<Car> cars = IntStream.range(0, numberOfCars)
-                .mapToObj(x -> new Car(engine))
+                .mapToObj(x -> Car.of(engine))
                 .collect(Collectors.toList());
         return new Cars(cars);
     }
