@@ -1,20 +1,20 @@
 package racingcar.view;
 
-import racingcar.model.Car;
+import racingcar.model.dto.CarDto;
 
 import java.util.List;
 
 public class ResultView implements View {
     private static final String CAR_PATH_EXPRESSION = "-";
-    private final List<Car> cars;
+    private final List<CarDto> cars;
 
-    public ResultView(List<Car> cars) {
+    public ResultView(List<CarDto> cars) {
         this.cars = cars;
     }
 
     @Override
     public void render() {
-        for (Car car : this.cars) {
+        for (CarDto car : this.cars) {
             int distance = car.distance();
             System.out.println(CAR_PATH_EXPRESSION.repeat(distance));
         }

@@ -1,11 +1,11 @@
 package racingcar.view;
 
-import racingcar.model.Car;
+import racingcar.model.dto.CarDto;
 
 import java.util.List;
 
 public class FirstResultView extends ResultView {
-    public FirstResultView(List<Car> cars) {
+    public FirstResultView(List<CarDto> cars) {
         super(cars);
     }
 

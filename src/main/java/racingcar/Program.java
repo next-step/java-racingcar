@@ -3,10 +3,13 @@ package racingcar;
 import racingcar.control.input.CarInput;
 import racingcar.control.input.StandardInput;
 import racingcar.control.input.TrialInput;
-import racingcar.control.output.ConsoleOutput;
+import racingcar.control.input.validator.NumberValidator;
+import racingcar.control.input.validator.PositiveValidator;
+import racingcar.control.output.Printable;
 import racingcar.control.output.RacingOutput;
 import racingcar.model.Car;
 import racingcar.model.Racing;
+import racingcar.model.dto.RacingDto;
 import racingcar.strategy.RandomMovingStrategy;
 
 import java.util.List;
@@ -21,17 +24,23 @@ public class Program {
         int carCount = carInput.getInt();
         int trials = trialInput.getInt();
 
-        List<Car> cars = Stream
+        List<Car> cars = createCars(carCount);
+        Racing racing = new Racing(trials, cars);
+
+        while (!racing.isOver()) {
+            racing.step();
+
+            RacingDto dto = RacingDto.from(racing);
+            Printable racingOutput = new RacingOutput(dto);
+            
+            racingOutput.print();
+        }
+    }
+
+    private static List<Car> createCars(int carCount) {
+        return Stream
                 .generate(() -> new Car(new RandomMovingStrategy()))
                 .limit(carCount)
                 .collect(Collectors.toList());
-
-        Racing racing = new Racing(trials, cars);
-
-        ConsoleOutput racingOutput = new RacingOutput(racing);
-        while (!racing.isOver()) {
-            racing.step();
-            racingOutput.print();
-        }
     }
 }

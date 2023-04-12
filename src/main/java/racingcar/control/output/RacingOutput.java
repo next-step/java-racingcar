@@ -1,17 +1,17 @@
 package racingcar.control.output;
 
-import racingcar.model.Car;
-import racingcar.model.Racing;
+import racingcar.model.dto.CarDto;
+import racingcar.model.dto.RacingDto;
 import racingcar.view.FirstResultView;
 import racingcar.view.ResultView;
 import racingcar.view.View;
 
 import java.util.List;
 
-public class RacingOutput extends ConsoleOutput {
-    private final Racing racing;
+public class RacingOutput implements Printable {
+    private final RacingDto racing;
 
-    public RacingOutput(Racing racing) {
+    public RacingOutput(RacingDto racing) {
         this.racing = racing;
     }
 
@@ -22,7 +22,7 @@ public class RacingOutput extends ConsoleOutput {
 
     private View view() {
         int currentRound = this.racing.currentRound();
-        List<Car> cars = this.racing.cars();
+        List<CarDto> cars = this.racing.cars();
 
         return currentRound == 1 ?
                 new FirstResultView(cars) :
