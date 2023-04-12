@@ -11,7 +11,7 @@ public class ResultView {
 
     // 자동차 이름을 출력
     public static String displayCarsNames(List<Car> cars) {
-        if(cars.isEmpty()){
+        if (cars.isEmpty()) {
             return "";
         }
 
@@ -19,7 +19,7 @@ public class ResultView {
         for (Car car : cars) {
             result += car.getName() + ", ";
         }
-        return result.substring(0, result.length()-2);
+        return result.substring(0, result.length() - 2);
     }
 
     // 경기중인 자동차를 출력

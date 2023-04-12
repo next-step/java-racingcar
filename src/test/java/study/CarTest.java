@@ -13,7 +13,6 @@ public class CarTest {
     @CsvSource(value = {"1,false", "2,false", "3,false", "4,true"})
     void 랜덤_결과가_4이상이면_전진(int randomValue, boolean canMove) {
         Car car = new Car(1, "car");
-
         assertThat(car.canMove(randomValue)).isEqualTo(canMove);
     }
 
@@ -32,7 +31,6 @@ public class CarTest {
         car.moveForward();
         assertThat(car.getCurrentLocation()).isEqualTo(2);
     }
-
 
     @Test
     void 이름_부여_테스트() {
