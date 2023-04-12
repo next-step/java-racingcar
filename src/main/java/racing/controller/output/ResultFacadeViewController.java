@@ -4,6 +4,7 @@ import java.util.List;
 import racing.controller.input.UserInput;
 import racing.domain.Car;
 import racing.domain.CarFactory;
+import racing.util.RandomNumberGenerator;
 
 public class ResultFacadeViewController {
 
@@ -32,7 +33,7 @@ public class ResultFacadeViewController {
 
   private void move(List<Car> cars) {
     for (Car car : cars) {
-      car.move();
+      car.move(RandomNumberGenerator.generate());
       resultView.printCarPosition(car);
     }
   }
