@@ -1,6 +1,7 @@
 package step3;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -13,6 +14,11 @@ public class RacingGameTest {
     public void makeCarTest(int numberOfCars) {
         RacingGame.makeCars(numberOfCars);
         Assertions.assertThat(RacingGame.carList).hasSize(numberOfCars);
+    }
+
+    @AfterEach
+    void afterEach() {
+        RacingGame.carList.clear();
     }
 
 }
