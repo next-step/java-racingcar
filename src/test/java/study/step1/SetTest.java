@@ -35,7 +35,7 @@ public class SetTest {
         assertThat(numbers).contains(input);
     }
 
-    @ParameterizedTest(name = "입력값: {0}, 결과: {1}")
+    @ParameterizedTest(name = "Set에 {0}값이 포함되어 있는가? => 결과: {1}")
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
     void csvTest(int input, boolean expected){
         boolean actual = numbers.contains(input);

@@ -5,21 +5,39 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
+    private static final int DELIMITER_INDEX = 1;
+    private static final int TOKENS_INDEX = 2;
+
+
     static int splitAndSum(String text) {
 
-        if (text == null) return 0;
-        if (text.isEmpty()) return 0;
+
+        if (isNullOrEmpty(text)) {
+            return 0;
+        }
 
         // java.util.regex 패키지의 Matcher, Pattern import
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            String[] tokens = m.group(2).split(customDelimiter);
+        Pattern pattern = Pattern.compile("//(.)\n(.*)");
+
+        Matcher matcher = pattern.matcher(text);
+
+        if (matcher.find()) {
+            String customDelimiter = matcher.group(DELIMITER_INDEX);
+            String[] tokens = matcher.group(TOKENS_INDEX).split(customDelimiter);
 
             return sum(tokens);
-        } else {
-            return sum(split(text));
         }
+        return sum(split(text));
+    }
+
+    static boolean isNullOrEmpty(String text) {
+        if (text == null) {
+            return true;
+        }
+        if (text.isEmpty()) {
+            return true;
+        }
+        return false;
 
     }
 
@@ -31,24 +49,27 @@ public class StringAddCalculator {
     static int sum(String[] tokens) {
 
         int sum = 0;
-        int element;
         for (String token : tokens) {
-            try {
-                element = Integer.parseInt(token);
-                if (!isZeroOrPositive(element)) {
-                    throw new RuntimeException();
-                }
-                sum += element;
-            } catch (NumberFormatException e) {
-                throw new RuntimeException();
-            }
+            sum += getPositiveNumber(token);
         }
         return sum;
+    }
+
+    private static int getPositiveNumber(String token) {
+        int element;
+        try {
+            element = Integer.parseInt(token);
+            if (!isZeroOrPositive(element)) {
+                throw new RuntimeException("cannot add negative number");
+            }
+        } catch (NumberFormatException e) {
+            throw e;
+        }
+        return element;
     }
 
     static boolean isZeroOrPositive(int num) {
         return num >= 0;
     }
-
 
 }

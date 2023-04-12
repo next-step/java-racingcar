@@ -10,12 +10,14 @@ public class StringTest {
     @Test
     void splitMulti(){
         String[] result = "1,2".split(",");
+
         assertThat(result).containsExactly("1", "2");
     }
 
     @Test
     void splitSingle(){
         String[] result = "1".split(",");
+
         assertThat(result).containsExactly("1");
     }
 
@@ -23,6 +25,7 @@ public class StringTest {
     void substring(){
         String input = "(1,2)";
         String result = input.substring(1, input.length() - 1);
+
         assertThat(result).isEqualTo("1,2");
     }
 
@@ -39,7 +42,6 @@ public class StringTest {
     @DisplayName("invalid index charAt() test")
     void invalidIndexTest(){
         String input = "abc";
-        int invalidIndex = 4;
-        assertThatThrownBy(() -> input.charAt(invalidIndex)).isInstanceOf(StringIndexOutOfBoundsException.class);
+        assertThatThrownBy(() -> input.charAt(4)).isInstanceOf(StringIndexOutOfBoundsException.class);
     }
 }
