@@ -15,4 +15,17 @@ public class RandomNumberGeneratorTest {
         int result = randomNumberGenerator.generate();
         Assertions.assertThat(result).isBetween(0, 9);
     }
+
+    @DisplayName("랜덤 숫자 중 0부터 3까지는 false 반환하고 4이상은 ture 를 반환한다")
+    @Test
+    void 전진하는_조건_테스트() {
+        RandomNumberGenerator numberGenerator = new RandomNumberGenerator();
+        int generateNumber = numberGenerator.generate();
+        boolean result = numberGenerator.isMovable();
+        if (generateNumber < 3) {
+            Assertions.assertThat(result).isFalse();
+        }
+        Assertions.assertThat(result).isTrue();
+    }
+
 }
