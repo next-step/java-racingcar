@@ -7,6 +7,8 @@ public class StringAddCalculator {
 
     public static final int ZERO = 0;
 
+    public static Pattern pattern = Pattern.compile("//(.)\n(.*)");
+
     public static final String DELIMITER = ",|:";
 
     public static int splitAndSum(String text) {
@@ -17,7 +19,7 @@ public class StringAddCalculator {
     }
 
     private static String[] split(String text) {
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        Matcher m = pattern.matcher(text);
 
         if (m.find()) {
             String customDelimiter = m.group(1);
@@ -42,17 +44,9 @@ public class StringAddCalculator {
     private static int[] toInts(String[] values) {
         int[] numbers = new int[values.length];
         for (int i = 0; i < values.length; i++) {
-            int number = toInt(values[i]);
+            int number = new Positive(values[i]).getNumber();
             numbers[i] = number;
         }
         return numbers;
-    }
-
-    private static int toInt(String value) {
-        int number = Integer.parseInt(value);
-        if (number < 0) {
-            throw new RuntimeException("음수는 입력할 수 없습니다.");
-        }
-        return number;
     }
 }

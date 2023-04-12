@@ -34,7 +34,7 @@ public class SetTest {
     }
 
     @DisplayName("요구사항2 - Set의 contains() 메소드를 활용해 1, 2, 3의 값이 존재하는지를 확인")
-    @ValueSource(ints = {1, 2, 3} )
+    @ValueSource(ints = {1, 2, 3})
     @ParameterizedTest
     void testSetContainsSuccess(int number) {
         var expected = true;
