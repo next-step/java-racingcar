@@ -17,10 +17,7 @@ public class WinnerElection {
         List<Car> carElements = cars.carElements();
         int maxPosition = findMaxPosition(carElements);
 
-        return carElements.stream()
-                .filter(car -> car.position() == maxPosition)
-                .map(Car::name)
-                .collect(Collectors.toList());
+        return equalMaxPositionCars(carElements, maxPosition);
     }
 
     private static int findMaxPosition(List<Car> carElements) {
@@ -28,5 +25,12 @@ public class WinnerElection {
                 .mapToInt(Car::position)
                 .max()
                 .orElse(NOT_FOUND_MAX_POSITION);
+    }
+
+    private static List<String> equalMaxPositionCars(List<Car> carElements, int maxPosition) {
+        return carElements.stream()
+                .filter(car -> car.position() == maxPosition)
+                .map(Car::name)
+                .collect(Collectors.toList());
     }
 }
