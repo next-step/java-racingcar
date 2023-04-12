@@ -2,7 +2,7 @@ package calculator;
 
 public class PositiveInteger {
     public static final String NUMBER_CHECK_REGEX = "[-+]?\\d*\\.?\\d+";
-    public static final int ZERO = 0;
+    public static final int MIN = 0;
     private final int number;
 
     public PositiveInteger(String input) {
@@ -11,7 +11,7 @@ public class PositiveInteger {
         }
 
         int number = Integer.parseInt(input);
-        if (number < ZERO) {
+        if (number < MIN) {
             throw new RuntimeException("음수가 포함되어 있습니다.");
         }
         this.number = number;
