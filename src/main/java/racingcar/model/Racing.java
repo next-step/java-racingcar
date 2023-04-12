@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Racing {
     private final List<Car> cars;
@@ -8,8 +9,13 @@ public class Racing {
     private int currentRound;
 
     public Racing(int totalRound, List<Car> cars) {
-        if (totalRound < 0) {
-            throw new IllegalArgumentException("input must be not negative: " + totalRound);
+        Objects.requireNonNull(cars, "cars should not be null");
+
+        if (totalRound <= 0) {
+            throw new IllegalArgumentException("Total round must be positive: " + totalRound);
+        }
+        if (cars.isEmpty()) {
+            throw new IllegalArgumentException("At least one car must be present");
         }
 
         this.totalRound = totalRound;
