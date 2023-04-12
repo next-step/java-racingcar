@@ -12,15 +12,22 @@ public class RacingCar {
 
     public static void inputView() {
         Scanner scanner = new Scanner(System.in);
-        
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        String carCount = scanner.nextLine();
 
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        String trialCount = scanner.nextLine();
+        Integer carCount = getCarCount(scanner);
+        Integer trialCount = getTrialCount(scanner);
 
         System.out.println("carCount = " + carCount);
         System.out.println("trialCount = " + trialCount);
+    }
+
+    private static Integer getCarCount(Scanner scanner) {
+        System.out.println("자동차 대수는 몇 대 인가요?");
+        return Integer.parseInt(scanner.nextLine());
+    }
+
+    private static Integer getTrialCount(Scanner scanner) {
+        System.out.println("시도할 회수는 몇 회 인가요?");
+        return Integer.parseInt(scanner.nextLine());
     }
 
     public static int proceed(int number) {
@@ -29,16 +36,5 @@ public class RacingCar {
 
     public static int getRandomNumber() {
         return random.nextInt(BOUND);
-    }
-
-
-    public static void printCar(int[][] car) {
-        for (int[] row : car) {
-            for (int length : row) {
-                System.out.print("-".repeat(length));
-                System.out.println();
-            }
-            System.out.println();
-        }
     }
 }

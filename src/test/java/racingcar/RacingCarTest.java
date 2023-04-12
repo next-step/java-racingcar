@@ -43,10 +43,10 @@ public class RacingCarTest {
     @Test
     void 자동차_출력하기() {
         // Given
-        int [][] car = {{1, 1, 1}, {2, 1, 2}, {2, 1, 3}};
+        int [][] car = {{1, 1, 1}, {2, 1, 2}, {3, 2, 3}, {4, 3, 4}, {4, 4, 5}};
 
         // When
-        RacingCar.printCar(car);
+        new RacingResult(car);
 
         // Then
     }
