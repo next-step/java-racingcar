@@ -9,14 +9,14 @@ public class CarTest {
     @Test
     @DisplayName("초기 위치는 0이다")
     public void carInitialPosition_Zero() {
-        Car car = new Car();
+        Car car = new Car(new ConsoleOutput());
         assertThat(car.position).isZero();
     }
 
     @Test
     @DisplayName("1씩 이동한다")
     public void carMoveAtOnce_One() {
-        Car car = new Car();
+        Car car = new Car(new ConsoleOutput());
         Integer BeforePosition = car.position;
         car.move();
         Integer AfterPosition = car.position;
