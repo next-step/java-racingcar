@@ -10,7 +10,7 @@ public class RacingCarTest {
 
     @Test
     @DisplayName("입력한 숫자로 레이싱 정보 세팅 되는가")
-    void makeRacingInfo() {
+    void makeRacing() {
         // user가 "5", "3" 입력했다고 가정
         UserInput userInput = new UserInput("5", "3");
         Racing racing = new Racing(userInput);
@@ -19,6 +19,24 @@ public class RacingCarTest {
         assertThat(racing.getNumOfCars()).isEqualTo(Integer.parseInt(userInput.getNumOfCars()));
         assertThat(racing.getNumOfTries()).isEqualTo(Integer.parseInt(userInput.getNumOfTries()));
         assertThat(racing.getCars().size()).isEqualTo(racing.getNumOfCars());
+    }
+
+    @Test
+    @DisplayName("Car 클래스의 기능 테스트")
+    void CarTest() {
+        Car car = new Car();
+        // 1회 이동
+        car.moveFoward();
+
+        // 현재 위치와 이전 위치 차이
+        assertThat(car.diffBetweenCurrentDistAndPrevDist()).isEqualTo(1);
+        // 움직였는지 판별
+        assertThat(car.isMoved(car.diffBetweenCurrentDistAndPrevDist())).isTrue();
+        // Rand 값이 THRESHOLD(현재 4로 설정되어있음) 보다 큰지 판별
+        car.setResultOfRand(5);
+        assertThat(car.isRandGreaterThan(4)).isTrue();
+        car.setResultOfRand(3);
+        assertThat(car.isRandGreaterThan(4)).isFalse();
     }
 
     @Test
