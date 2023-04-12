@@ -44,4 +44,11 @@ class PositionTest {
         assertThatThrownBy(() -> position.move(999)).isExactlyInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("위치 비교")
+    @Test
+    void test05() {
+        Position position = new Position(5);
+
+        assertThat(position.compareTo(new Position(3))).isGreaterThan(0);
+    }
 }
