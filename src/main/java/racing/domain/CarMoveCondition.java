@@ -6,10 +6,13 @@ package racing.domain;
  */
 public class CarMoveCondition {
 
-  private final int MOVE_CONDITION = 4;
+  private static final int MOVE_CONDITION = 4;
 
-  public boolean isMove(int randomNumber) {
+  public static boolean isMove(int randomNumber) {
     return randomNumber >= MOVE_CONDITION;
+  }
+
+  private CarMoveCondition() {
   }
 
 }
