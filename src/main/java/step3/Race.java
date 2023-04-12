@@ -35,6 +35,7 @@ public class Race {
     public void race(){
         for(int i = 0; i < raceCount; i++){
             raceCar();
+            print();
         }
     }
 
@@ -50,6 +51,12 @@ public class Race {
             return false;
         }
         return true;
+    }
+
+    private void print(){
+        cars.stream()
+                .map(Car::getState)
+                .forEach(Printer::print);
     }
 
 }
