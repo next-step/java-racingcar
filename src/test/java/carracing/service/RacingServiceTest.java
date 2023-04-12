@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Collection;
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -62,7 +63,7 @@ public class RacingServiceTest {
 
         //when
         racingService.racingStart(participate, iterations);
-        List<List<Score>> scores = racingService.findAllScores();
+        List<List<Score>> scores = racingService.findAllRounds().stream().map(round -> round.getScores()).collect(Collectors.toList());
 
         //then
         assertAll(
@@ -79,7 +80,7 @@ public class RacingServiceTest {
         racingService.racingStart(1, 1);
 
         //when
-        List<List<Score>> scores = racingService.findAllScores();
+        List<List<Score>> scores = racingService.findAllRounds().stream().map(round -> round.getScores()).collect(Collectors.toList());
 
         //then
         scores.stream()

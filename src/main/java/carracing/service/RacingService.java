@@ -74,7 +74,4 @@ public class RacingService {
         return roundRepository.findAll();
     }
 
-    public List<List<Score>> findAllScores() {
-        return roundRepository.findAll().stream().map(round -> round.getScores()).collect(Collectors.toList());
-    }
 }
