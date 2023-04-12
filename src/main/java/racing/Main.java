@@ -1,17 +1,15 @@
 package racing;
 
-import racing.carRacing.Cars;
-import racing.carRacing.Count;
-import racing.carRacing.Stages;
+import racing.carRacing.*;
 import racing.carRacing.view.InputView;
 import racing.carRacing.view.OutputView;
 
 public class Main {
     public static void main(String[] args) {
-        Count numberOfCar = Count.createCount(InputView.askNumberOfCar());
-        Count numberOfStage = Count.createCount(InputView.askNumberOfStage());
+        String carNameString = InputView.askCarsName();
+        Cars cars = Cars.initCars(carNameString, new RandomMovementStrategy());
 
-        Cars cars = new Cars(numberOfCar);
+        Count numberOfStage = Count.createCount(InputView.askNumberOfStage());
         Stages stages = new Stages(numberOfStage);
 
         OutputView.printResultMention();
@@ -20,5 +18,6 @@ public class Main {
             stages.startGame(cars);
             OutputView.printCarsStatus(cars);
         }
+        OutputView.printWinner(cars.getWinner());
     }
 }

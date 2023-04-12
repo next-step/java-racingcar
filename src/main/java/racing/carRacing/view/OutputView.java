@@ -19,14 +19,11 @@ public class OutputView {
     }
 
     private static void printCarStatus(Car car) {
+        System.out.print(car.getCurrentCar() + " : ");
         for (int i = 0; i < car.getCurrentPosition(); i++) {
             System.out.print(MOVEMENT);
         }
         System.out.println();
-    }
-
-    public static void printTotalStage(Count count) {
-        System.out.println("총 회수 :" + count);
     }
 
     public static void printRemainStage(Count count) {
@@ -34,4 +31,8 @@ public class OutputView {
         System.out.println("남은 회수 :" + count);
     }
 
+    public static void printWinner(String winner) {
+        System.out.println();
+        System.out.println(winner + "가 최종 우승했습니다!");
+    }
 }
