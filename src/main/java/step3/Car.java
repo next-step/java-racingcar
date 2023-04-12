@@ -45,6 +45,12 @@ public class Car {
         return cars;
     }
 
+    public static void validatePositive(int count) {
+        if (count < 0) {
+            throw new RuntimeException("음수는 입력할 수 없습니다.");
+        }
+    }
+
     private static void doForward(Map.Entry<Integer, AtomicInteger> entry) {
         if (isRandomNumberOverFour()) {
             entry.getValue().getAndIncrement();

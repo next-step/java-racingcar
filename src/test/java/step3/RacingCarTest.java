@@ -47,4 +47,16 @@ public class RacingCarTest {
         assertThat(cars.size()).isEqualTo(round);
     }
 
+    @Test
+    void 음수입력시_예외처리() {
+        String negative = "-1";
+        InputStream in = new ByteArrayInputStream(negative.getBytes());
+        System.setIn(in);
+        Scanner scanner = new Scanner(System.in);
+        int i = scanner.nextInt();
+
+        assertThatThrownBy(() -> Car.validatePositive(i)).isInstanceOf(RuntimeException.class).hasMessage("음수는 입력할 수 없습니다.");
+
+    }
+
 }
