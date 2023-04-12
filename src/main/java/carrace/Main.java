@@ -9,5 +9,7 @@ public class Main {
         Cars cars = new Cars(numberOfCars, new RandomMovable());
         final CarRace carRace = new CarRace(cars, numberOfLabs);
         carRace.start();
+
+        ResultView.print(carRace);
     }
 }
