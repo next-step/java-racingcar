@@ -6,8 +6,6 @@ import java.util.stream.Collectors;
 
 public class Cars {
     public static final int ZERO = 0;
-    public static final String DELIMITER = ",";
-    public static final String COMBINER = ", ";
 
     private final List<Car> cars;
 
@@ -15,12 +13,10 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars initCars(String carNameString) {
-        String[] splitName = carNameString.split(DELIMITER);
+    public static Cars initCars(String[] carNames) {
+        hasCarName(carNames.length);
 
-        hasCarName(splitName.length);
-
-        List<Car> cars = initCarList(splitName);
+        List<Car> cars = initCarList(carNames);
 
         return new Cars(cars);
     }
@@ -49,16 +45,8 @@ public class Cars {
         return cars.size();
     }
 
-    public String getWinner() {
-        int maxPosition = getMaxPosition();
-
-        List<String> winner = findWinners(maxPosition);
-
-        return makeWinnerString(winner);
-    }
-
-    private String makeWinnerString(List<String> winner) {
-        return String.join(COMBINER, winner);
+    public List<String> getWinners() {
+        return findWinners(getMaxPosition());
     }
 
     private List<String> findWinners(int maxPosition) {

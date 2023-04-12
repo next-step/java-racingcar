@@ -22,7 +22,7 @@ class StagesTest {
     void startGameTest() {
         Stages stages = new Stages(Count.createCount(5));
 
-        stages.startGame(Cars.initCars("test"), () -> true);
+        stages.startGame(Cars.initCars(new String[]{"test"}), () -> true);
 
         assertThat(stages.currentStage())
                 .usingRecursiveComparison()
@@ -41,7 +41,7 @@ class StagesTest {
     @DisplayName("Stage 종료 조건 테스트 - 종료")
     void finishTest() {
         Stages stages = new Stages(Count.createCount(1));
-        stages.startGame(Cars.initCars("test"), () -> true);
+        stages.startGame(Cars.initCars(new String[]{"test"}), () -> true);
 
         assertThat(stages.isRunning()).isFalse();
     }

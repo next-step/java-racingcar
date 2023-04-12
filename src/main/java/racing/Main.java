@@ -6,8 +6,8 @@ import racing.carRacing.view.OutputView;
 
 public class Main {
     public static void main(String[] args) {
-        String carNameString = InputView.askCarsName();
-        Cars cars = Cars.initCars(carNameString);
+        String[] carNames = InputView.askCarsName();
+        Cars cars = Cars.initCars(carNames);
 
         Count numberOfStage = Count.createCount(InputView.askNumberOfStage());
         Stages stages = new Stages(numberOfStage);
@@ -18,6 +18,6 @@ public class Main {
             stages.startGame(cars, new RandomMovementStrategy());
             OutputView.printCarsStatus(cars);
         }
-        OutputView.printWinner(cars.getWinner());
+        OutputView.printWinner(cars.getWinners());
     }
 }
