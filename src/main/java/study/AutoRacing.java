@@ -15,6 +15,8 @@ public class AutoRacing {
 
         AutoRacingParticipant autoRacingParticipant = new AutoRacingParticipant();
         autoRacingParticipant.participateGame(createCar(numberOfCar));
+
+        autoRacingParticipant.doGame(numberOfGame);
     }
 
     private static List<RacingCar> createCar(int numberOfCar) {
