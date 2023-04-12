@@ -1,10 +1,16 @@
+import car.Car;
+import car.Cars;
+import record.Records;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import strategy.MovingStrategy;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -12,15 +18,16 @@ import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 class CarRacingTest {
 
-    @ParameterizedTest(name = "전진 조건이 {0}이면 차의 주행거리가 {1} 증가한다.")
-    @CsvSource(value = {"true,1", "false,0"})
-    void 전진조건이_참이면_차가_전진한다(boolean condition, int result) {
+    @ParameterizedTest(name = "전진 전략이 {0}이면 차의 주행거리가 {1} 증가한다.")
+    @MethodSource("provideStrategy")
+    void 전진조건이_참이면_차가_전진한다(MovingStrategy strategy, int result) {
 
         // given
         Car car = new Car("car");
+        MovingStrategy movingStrategy = strategy;
 
         // when
-        car.go(condition);
+        car.go(movingStrategy);
 
         // then
         assertThat(car.distance()).isEqualTo(result);
@@ -51,7 +58,7 @@ class CarRacingTest {
         Cars cars = new Cars(carList);
         Records records = new Records();
 
-        winner.go(true);
+        winner.go(new MovableStrategy());
 
         // when
         records.addWinners(cars);
@@ -85,5 +92,12 @@ class CarRacingTest {
             softAssertions.assertThat(result).hasSize(2);
             softAssertions.assertThat(result).contains(firstWinner, secondWinner);
         });
+    }
+
+    private static Stream<Arguments> provideStrategy() {
+        return Stream.of(
+                Arguments.of(new MovableStrategy(), 1),
+                Arguments.of(new NotMovableStrategy(), 0)
+        );
     }
 }

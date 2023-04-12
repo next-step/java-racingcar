@@ -20,8 +20,8 @@ public class Car {
         }
     }
 
-    public void go(boolean condition) {
-        if (condition) {
+    public void go(MovingStrategy strategy) {
+        if (strategy.movable()) {
             this.distance++;
         }
     }
