@@ -2,45 +2,27 @@ package racingcar;
 
 import java.util.Scanner;
 
-public class ConsoleInput implements Input {
-    private static final String QUESTION_FOR_CAR_NAMES = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
-    private static final String QUESTION_FOR_TOTAL_TRY_COUNT = "시도할 회수는 몇 회 인가요?";
+public class ConsoleInput {
+    private static final String QUESTION_FOR_TOTAL_CAR_COUNT = "자동차 대수는 몇 대 인가요?";
+    private static final String QUESTION_FOR_TOTAL_MOVE_COUNT = "시도할 회수는 몇 회 인가요?";
 
-    @Override
-    public Race setRaceAndRetryIfInvalid() {
-        Race race = null;
-        while (race == null) {
-            race = setRaceOrNullIfInvalid();
-        }
-        return race;
-    }
-
-    private Race setRaceOrNullIfInvalid() {
-        try {
-            return this.setRace();
-        } catch (IllegalArgumentException exception) {
-            System.out.println(exception.getMessage());
-        }
-        return null;
-    }
-
-    private Race setRace() {
+    public static UserInput getUserInput() {
         Scanner scanner = new Scanner(System.in);
 
         askTotalCarCount();
-        String carNamesString = scanner.nextLine();
+        int totalCarCount = scanner.nextInt();
 
-        askTotalTryCount();
-        Integer totalTryCount = scanner.nextInt();
+        askTotalMoveCount();
+        int totalMoveCount = scanner.nextInt();
 
-        return new Race(carNamesString, totalTryCount);
+        return new UserInput(totalCarCount, totalMoveCount);
     }
 
-    private static void askTotalTryCount() {
-        System.out.println(QUESTION_FOR_TOTAL_TRY_COUNT);
+    private static void askTotalMoveCount() {
+        System.out.println(QUESTION_FOR_TOTAL_MOVE_COUNT);
     }
 
     private static void askTotalCarCount() {
-        System.out.println(QUESTION_FOR_CAR_NAMES);
+        System.out.println(QUESTION_FOR_TOTAL_CAR_COUNT);
     }
 }
