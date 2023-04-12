@@ -1,5 +1,7 @@
 package step3.domain;
 
+import step3.view.RaceView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,8 +20,10 @@ public class Race {
     }
 
     public void start() {
+        RaceView.displayDiscription();
         for (int round = 0; round < raceRound; round++) {
             moveCars();
+            RaceView.displayRaceSituation(cars);
         }
     }
 
