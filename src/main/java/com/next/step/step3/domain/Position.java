@@ -8,8 +8,8 @@ public class Position {
         this.position = position;
     }
 
-    public void movePosition() {
-        this.position++;
+    public Position movePosition() {
+        return new Position(++this.position);
     }
 
     public int position() {
