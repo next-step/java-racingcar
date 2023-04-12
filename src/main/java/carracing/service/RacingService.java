@@ -69,7 +69,10 @@ public class RacingService {
         Round byId = roundRepository.findById(roundRepository.count());
         return byId.getRecords().get(index).getRecord();
     }
-    public List<Round> findAll() {
+    public List<Round> findAllRounds() {
         return roundRepository.findAll();
+    }
+    public List<List<Score>> findAllScores() {
+        return roundRepository.findAll().stream().map(round -> round.getScores()).collect(Collectors.toList());
     }
 }
