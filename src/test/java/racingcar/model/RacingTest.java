@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DisplayName("자동차 경주 테스트")
 class RacingTest {
-    private final List<Car> testCar = List.of(new Car(() -> 0));
+    private final List<Car> testCar = List.of(new Car("test", () -> 0));
 
     @Test
     @DisplayName("차가 null 이면 예외 발생")

@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingDto {
-    List<CarDto> cars;
-    int currentRound;
+    private final int currentRound;
+    private final List<CarDto> cars;
 
     private RacingDto(List<CarDto> cars, int currentRound) {
         this.cars = cars;
