@@ -2,14 +2,18 @@ package step2;
 
 public class StringAddCalculator {
 
-    public static int splitAndSum(String textInput) {
+    private TypeOperator typeOperator;
+    private SplitStringToken splitStringToken;
+
+    public int splitAndSum(String textInput) {
         int answer = 0;
-        if (SplitStringToken.isTextNotNullOrEmpty(textInput))
+        if (splitStringToken.isTextNotNullOrEmpty(textInput)) {
             return 0;
-        String[] tokens = SplitStringToken.customDelimiterSplit(textInput);
+        }
+        String[] tokens = splitStringToken.customDelimiterSplit(textInput);
         for (String token : tokens) {
-            TypeOperator.isPositive(answer);
-            answer += TypeOperator.getParseInt(token);
+            typeOperator.isPositive(answer);
+            answer += typeOperator.getParseInt(token);
         }
         return answer;
     }

@@ -4,10 +4,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SplitStringToken {
-    private static String DEFAULT_PATTERN = ",|:";
-    private static Pattern CUSTOM_PATTERN = Pattern.compile("//(.)\n(.*)");
+    private static final String DEFAULT_PATTERN = ",|:";
+    private static final Pattern CUSTOM_PATTERN = Pattern.compile("//(.)\n(.*)");
 
-    static String[] customDelimiterSplit(String token) {
+    String[] customDelimiterSplit(String token) {
         Matcher m = CUSTOM_PATTERN.matcher(token);
         if (m.find()) {
             String customDelimiter = m.group(1);
@@ -16,7 +16,7 @@ public class SplitStringToken {
         return token.split(DEFAULT_PATTERN);
     }
 
-    static boolean isTextNotNullOrEmpty(String textInput) {
+    boolean isTextNotNullOrEmpty(String textInput) {
         return textInput == null || textInput.isEmpty();
     }
 }
