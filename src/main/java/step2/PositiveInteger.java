@@ -10,6 +10,7 @@ public class PositiveInteger {
     public static PositiveInteger from(String value){
         validate(value);
         PositiveInteger ps = new PositiveInteger(Integer.parseInt(value));
+
         return ps;
     }
 
