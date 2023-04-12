@@ -41,7 +41,7 @@ public class CarRacing {
     private void startRacing() {
         for (int rep = 0; rep < racingRep; rep++) {
             cars.forEach(Car::drive);
-            ResultView.displayGameResult(cars);
+            ResultView.displayCarPositions(cars);
         }
     }
 }

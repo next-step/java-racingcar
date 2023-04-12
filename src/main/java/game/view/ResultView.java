@@ -18,7 +18,7 @@ public final class ResultView {
         System.out.println("실행 결과");
     }
 
-    public static void displayGameResult(List<Car> cars) {
+    public static void displayCarPositions(List<Car> cars) {
         for (Car car : cars) {
             displayName(car.name());
             displayPosition(car);
