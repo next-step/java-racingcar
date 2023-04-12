@@ -3,6 +3,7 @@ package step3;
 import java.util.Random;
 
 public class RandomGenerator {
+    private final int RANDOM_BOUND_NUM = 10;
 
     private final Random random;
     public RandomGenerator() {
@@ -10,6 +11,6 @@ public class RandomGenerator {
     }
 
     public int getValue() {
-        return random.nextInt(10);
+        return random.nextInt(RANDOM_BOUND_NUM);
     }
 }
