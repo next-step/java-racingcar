@@ -3,34 +3,17 @@ package racingcar;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.Car;
-import racingcar.domain.InputData;
+import racingcar.domain.RandomNumberGenerator;
 
-@DisplayName("자동차 객체 테스트")
+@DisplayName("자동차의 전진과 멈춤을 역할을 담당하는 Car 객체 테스트")
 public class CarTest {
 
-    @DisplayName("자동차 대수는 양수만 입력가능하다")
-    @ParameterizedTest
-    @ValueSource(ints = {0, -4})
-    void validateCarParticipationNumber(Integer number) {
-        Assertions.assertThatThrownBy(() -> {
-            new InputData(number, 3);
-        })
-            .isInstanceOf(IllegalArgumentException.class)
-            .hasMessageContaining("자동차 대수는 양수만 입력가능합니다");
+    @DisplayName("랜덤값을 구한 후 전진 또는 멈출수 있다")
+    @Test
+    void carTest() {
+        Car car = new Car();
+        car.move(new RandomNumberGenerator());
+        Assertions.assertThat(car.getPoint()).isBetween(0, 1);
     }
-
-    @DisplayName("자동차 경주 시도 횟수는 양수만 입력 할 수 있다")
-    @ParameterizedTest
-    @ValueSource(ints = {0, -9})
-    void validateCarRepetitionCount(int count) {
-        Assertions.assertThatThrownBy(() -> {
-            new InputData(4, count);
-        })
-            .isInstanceOf(IllegalArgumentException.class)
-            .hasMessageContaining("자동차 시도 횟수는 양수만 입력 가능합니다");
-    }
-
 }
