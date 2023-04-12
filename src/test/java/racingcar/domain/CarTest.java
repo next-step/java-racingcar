@@ -10,16 +10,23 @@ public class CarTest {
     @DisplayName("자동차를 생산한다.")
     @Test
     void test01() {
-        Car car = Car.create("saerang");
+        Car car = Car.create("rang");
 
-        assertThat(car.name()).isEqualTo("saerang");
+        assertThat(car.name()).isEqualTo("rang");
         assertThat(car.position()).isEqualTo(Position.init());
+    }
+
+    @DisplayName("자동차의 이름은 5글자를 넘길 수 없다.")
+    @Test
+    void test02() {
+        assertThatThrownBy(() -> Car.create("saerang"))
+                .isExactlyInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("4 이상일 경우 전진한다.")
     @Test
-    void test02() {
-        Car car = Car.create("saerang");
+    void test03() {
+        Car car = Car.create("rang");
 
         car.move(Position.MOVE_POSITION_CONDITION);
 
@@ -29,8 +36,8 @@ public class CarTest {
 
     @DisplayName("4 미만일 경우 움직이지 않는다.")
     @Test
-    void test03() {
-        Car car = Car.create("saerang");
+    void test04() {
+        Car car = Car.create("rang");
 
         car.move(Position.MOVE_POSITION_CONDITION - 1);
 

@@ -4,7 +4,11 @@ public class Car {
     private final String name;
     private final Position position;
 
-    public Car(String name, Position position) {
+    private Car(String name, Position position) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("자동차의 이름은 5글자를 초과할 수 없습니다. 입력된 이름:" + name);
+        }
+
         this.position = position;
         this.name = name;
     }
@@ -19,6 +23,10 @@ public class Car {
 
     public String name() {
         return this.name;
+    }
+
+    public int positionNumber() {
+        return this.position.position();
     }
 
     public Position position() {
