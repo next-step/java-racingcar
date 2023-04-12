@@ -33,9 +33,9 @@
 - 자동차 이동 조건 경계값에 대한 테스트 
 
   ### feadback todo list
-  - View 모델 작성
-    - carCount 입력
-    - opportunity 입력
+  - ~~View 모델 작성~~
+    - ~~carCount 입력~~
+    - ~~opportunity 입력~~
   - RacingGame 모델을 만들어 main 로직 추상화
   - RacingSupporter클래스 삭제
     - 유틸 클래스 메서드를 알맞은 모델로 이동
