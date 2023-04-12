@@ -7,6 +7,8 @@ import java.util.Random;
 public class RacingGame {
     List<Car> cars = new ArrayList<>();
 
+    private static final int RANDOM_MAX_RANGE = 10;
+
     RacingGame(int carNumber) {
         for (int i = 0; i < carNumber; i++) {
             cars.add(new Car());
@@ -22,7 +24,7 @@ public class RacingGame {
 
     private void singleStepRacing() {
         for (Car car : cars) {
-            car.isCarMove(Utils.getRandomNumber(10));
+            car.isCarMove(Utils.getRandomNumber(RANDOM_MAX_RANGE));
         }
     }
 
