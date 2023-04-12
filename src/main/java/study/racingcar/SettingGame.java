@@ -9,13 +9,6 @@ public class SettingGame {
     private static String CAR_START_POSITION = "";
     private static int ZERO = 0;
 
-    private static void isNegativeNumberAndZero(int number) {
-
-        if(number <= ZERO) {
-            throw new InputMismatchException("게임 시작을 위한 세팅이 실패 하였습니다.");
-        }
-    }
-
     public static List<Car> createCars(int cars) {
 
         isNegativeNumberAndZero(cars);
@@ -27,5 +20,12 @@ public class SettingGame {
         }
 
         return carList;
+    }
+
+    private static void isNegativeNumberAndZero(int number) {
+
+        if(number <= ZERO) {
+            throw new InputMismatchException("게임 시작을 위한 세팅이 실패 하였습니다.");
+        }
     }
 }

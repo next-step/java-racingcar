@@ -2,10 +2,12 @@ package study.racingcar;
 
 public class RacingCar {
 
+    public static void main(String[] args) {
+        racingCar();
+    }
+
     public static void racingCar () {
 
-        Game game= new Game();
-
-        RacingGame.gameStart(game);
+        RacingGame.gameStart(new Game());
     }
 }

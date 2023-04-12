@@ -1,7 +1,6 @@
 package study.racingcar;
 
 import java.util.List;
-import java.util.Random;
 
 public class RacingGame {
 
@@ -20,7 +19,9 @@ public class RacingGame {
     private static void moveCar(List<Car> cars) {
 
         for(Car car : cars) {
-            move(GenerateNumber.random(), car);
+            if (isMove(GenerateNumber.random())) {
+                move(car);
+            }
 
             ResultView.resultGame(car.getPosition());
         }
@@ -28,10 +29,8 @@ public class RacingGame {
         ResultView.emptyLine();
     }
 
-    public static void move(int randomNum, Car car) {
-        if (isMove(randomNum)) {
-            car.setPosition(car.getPosition() + MOVE_MARK);
-        }
+    public static void move(Car car) {
+        car.setPosition(car.getPosition() + MOVE_MARK);
     }
 
     private static boolean isMove(int randomNum) {
