@@ -11,7 +11,7 @@ public class Main {
     private static RacingCar racingCar;
 
     public static void main(String[] args) {
-        initObjects();
+        makeObjects();
 
         resultView.questionCarCountMessage();
         carCount = inputView.getInput();
@@ -32,13 +32,13 @@ public class Main {
         inputView.closeScanner();
     }
 
-    private static void initObjects() {
+    private static void makeObjects() {
         resultView = new ResultView();
         inputView = new InputView();
-        racingCar = new RacingCar(initMoveCounts());
+        racingCar = new RacingCar(getMoveCounts());
     }
 
-    private static List<Integer> initMoveCounts() {
+    private static List<Integer> getMoveCounts() {
         return new ArrayList<>();
     }
 }
