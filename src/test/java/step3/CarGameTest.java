@@ -34,13 +34,4 @@ public class CarGameTest {
             assertThat(randomNumber).isLessThanOrEqualTo(9);
         }
     }
-
-    @Test
-    void 이동횟수만큼_자동차를_이동() {
-        int numberOfCars = 3;
-        int numberOfMoves = 5;
-        CarGame carGame = new CarGame(numberOfCars, numberOfMoves);
-
-        carGame.start();
-    }
 }

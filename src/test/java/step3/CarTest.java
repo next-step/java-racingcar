@@ -1,10 +1,10 @@
 package step3;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 
 public class CarTest {
@@ -34,5 +34,13 @@ public class CarTest {
 
         assertThatThrownBy(() -> car.move(input))
                 .isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    void 모든_자동차를_이동() {
+        Cars cars = new Cars(5);
+
+        assertThatCode(() -> cars.move())
+                .doesNotThrowAnyException();
     }
 }
