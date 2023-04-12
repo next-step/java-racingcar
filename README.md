@@ -8,6 +8,11 @@
 ## 구현 목록
 * 자동차 경주 게임 어플리케이션 구현
 * 입력값을 받을 수 있는 InputView 구현
+* 경주에 참가하는 자동차 Class 구현
+* 자동차 객체들을 관리하는 Class 구현
+* Random 확률 계산하는 메서드 구현
+* 경주를 진행하는 Class 구현
+* 경주 결과를 출력하는 ResultView 구현
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
