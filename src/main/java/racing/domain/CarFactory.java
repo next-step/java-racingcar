@@ -9,7 +9,10 @@ import java.util.stream.IntStream;
  */
 public class CarFactory {
 
-  public List<Car> createCars(int numberOfCars) {
+  private CarFactory() {
+  }
+
+  public static List<Car> createCars(int numberOfCars) {
     return IntStream.range(0, numberOfCars)
         .mapToObj(i -> new Car())
         .collect(Collectors.toList());

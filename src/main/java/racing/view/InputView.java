@@ -1,4 +1,4 @@
-package racing.controller.input;
+package racing.view;
 
 import java.util.Scanner;
 
@@ -10,25 +10,19 @@ import java.util.Scanner;
  */
 public class InputView {
 
-  private final Scanner scanner;
+  private static final Scanner scanner = new Scanner(System.in);
 
-  public InputView () {
-    scanner = new Scanner(System.in);
+  private InputView() {
   }
 
-  public int scanNumberOfCars() {
+  public static int scanCarCounts() {
     System.out.println("자동차 대수는 몇 대 인가요?");
     return scanner.nextInt();
   }
 
-  public int scanNumberOfMovements() {
+
+  public static int scanNumberOfMovements() {
     System.out.println("시도할 회수는 몇 회 인가요?");
     return scanner.nextInt();
-  }
-
-  public UserInput scanUserInput() {
-    int numberOfCars = scanNumberOfCars();
-    int numberOfMovements = scanNumberOfMovements();
-    return new UserInput(numberOfCars, numberOfMovements);
   }
 }

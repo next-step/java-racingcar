@@ -1,40 +1,27 @@
 package racing.controller;
 
 
-import racing.controller.input.InputFacadeViewController;
-import racing.controller.input.InputView;
-import racing.controller.output.ResultView;
-import racing.controller.input.UserInput;
-import racing.controller.output.ResultFacadeViewController;
-import racing.domain.CarFactory;
+import java.util.List;
+import racing.view.InputView;
+import racing.view.ResultView;
+import racing.domain.Car;
+import racing.domain.RacingGame;
 
 public class RacingCarGameController {
-  
-  private static CarFactory carFactory;
-  private static InputView inputView;
-  private static ResultView resultView;
-  private static InputFacadeViewController inputFacadeViewController;
-  private static ResultFacadeViewController resultFacadeViewController;
-  
-  
-  public static void setUp() {
-
-    resultView = new ResultView();
-    inputView = new InputView();
-    inputFacadeViewController = new InputFacadeViewController(inputView, resultView);
-
-    carFactory = new CarFactory();
-    resultFacadeViewController = new ResultFacadeViewController(resultView, carFactory);
-  }
 
   public static void main(String[] args) {
-    setUp();
+    int carCount = InputView.scanCarCounts();
+    int numberOfMovements = InputView.scanNumberOfMovements();
 
-    // 입력 받는 Section 에 대한 제어를 InputFacadeViewController 에게 위임
-    UserInput userInput = inputFacadeViewController.scanUserInput();
+    RacingGame game = new RacingGame(carCount);
 
-    // 출력 Section 에 대한 제어를 ResultFacadeViewController 에게 위임
-    resultFacadeViewController.startGame(userInput);
+    ResultView.printEmptyLine();
+    ResultView.println("실행 결과");
+    for(int i = 0; i < numberOfMovements; i++) {
+      List<Car> cars = game.play();
+      ResultView.printCarPosition(cars);
+      ResultView.printEmptyLine();
+    }
   }
 
 }
