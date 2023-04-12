@@ -2,6 +2,7 @@ package carracing.domain;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Round implements Comparable<Round> {
     private Integer roundId;
@@ -22,11 +23,15 @@ public class Round implements Comparable<Round> {
     }
 
     public List<Score> getScores() {
-        return scores;
+        return scores.stream()
+            .map(score -> new Score(score.getValue()))
+            .collect(Collectors.toList());
     }
 
     public List<Record> getRecords() {
-        return records;
+        return records.stream()
+            .map(record -> new Record(record.getRecord()))
+            .collect(Collectors.toList());
     }
 
     @Override
