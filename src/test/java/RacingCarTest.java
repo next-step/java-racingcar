@@ -52,15 +52,19 @@ public class RacingCarTest {
     @Test
     @DisplayName("우승자를 찾을 수 있다.")
     void getWinnersTest() {
-        RacingCar appleCar = new RacingCar("apple");
-        RacingCar bananaCar = new RacingCar("banana");
-        RacingCar lemonCar = new RacingCar("lemon");
-        List<RacingCar> cars = List.of(appleCar, bananaCar, lemonCar);
+        String[] names = {"apple", "banana", "lemon"};
+        RacingCarGame racingCarGame = new RacingCarGame(names);
+        String findCarName = "apple";
 
-        appleCar.moveForward(5);
+        RacingCar racingCar = racingCarGame.getCars()
+                .stream()
+                .filter(car -> car.getName().equals(findCarName))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("해당 이름의 자동차를 찾을 수 없습니다."));
+        racingCar.moveForward(5);
 
-        List<RacingCar> winners = RacingCarGame.getWinners(cars);
-        assertThat(winners).containsOnly(appleCar);
+        List<RacingCar> winners = racingCarGame.getWinners();
+        assertThat(winners).containsOnly(racingCar);
     }
 
     @Test
