@@ -4,26 +4,26 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class RacingService {
-    public ArrayList<CarInfo> getCarInfos(RacingInfo racingInfo) {
-        return racingInfo.getCarInfos();
+    public ArrayList<Car> getCarInfos(Racing racing) {
+        return racing.getCars();
     }
 
-    public void moveByNumOfTriesAndShowResult(RacingInfo racingInfo) {
+    public void moveByNumOfTriesAndShowResult(Racing racing) {
         ResultView resultView = new ResultView();
-        for (int i = 0; i < racingInfo.getNumOfTries(); i++) {
-            move(racingInfo);
-            resultView.showCurrentState(getCarInfos(racingInfo));
+        for (int i = 0; i < racing.getNumOfTries(); i++) {
+            move(racing);
+            resultView.showCurrentState(getCarInfos(racing));
         }
     }
 
-    public void move(RacingInfo racingInfo) {
-        racingInfo.getCarInfos().stream()
-                .map(carInfo -> {
-                    carInfo.setResultOfRand(getRand(10));
-                    return carInfo;
+    public void move(Racing racing) {
+        racing.getCars().stream()
+                .map(car -> {
+                    car.setResultOfRand(getRand(10));
+                    return car;
                 })
-                .filter(carInfo -> carInfo.getResultOfRand() > 4)
-                .forEach(CarInfo::moveFoward);
+                .filter(car -> car.getResultOfRand() > 4)
+                .forEach(Car::moveFoward);
     }
 
     private int getRand(int bound) {

@@ -3,7 +3,7 @@ package racingcar;
 import lombok.Data;
 
 @Data
-public class CarInfo {
+public class Car {
     private int prevDistance = 0;
     private int currentDistance = 0;
     private int resultOfRand;
@@ -13,11 +13,15 @@ public class CarInfo {
         currentDistance = prevDistance + 1;
     }
 
-    public boolean isMoved() {
-        return currentDistance - prevDistance > 0;
+    public boolean isMoved(int diff) {
+        return diff > 0;
     }
 
-    public boolean isRandGreaterThan4() {
-        return resultOfRand > 4;
+    public int diffBetweenCurrentDistAndPrevDist() {
+        return currentDistance - prevDistance;
+    }
+
+    public boolean isRandGreaterThan(int threshold) {
+        return resultOfRand > threshold;
     }
 }
