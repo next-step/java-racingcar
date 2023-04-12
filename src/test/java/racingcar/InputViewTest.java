@@ -27,7 +27,8 @@ public class InputViewTest {
 
     @Test
     void 레이스_회수_입력() {
-        assertThat(InputView.askRaceCount(new ByteArrayInputStream("2".getBytes(StandardCharsets.UTF_8)))).isEqualTo(2);
+        assertThat(InputView.askRaceCount(
+            new ByteArrayInputStream("2".getBytes(StandardCharsets.UTF_8)))).isEqualTo(2);
     }
 
     @Test
@@ -38,7 +39,8 @@ public class InputViewTest {
 
     @Test
     void 자동차_대수_입력() {
-        assertThat(InputView.askCarCount(new ByteArrayInputStream("3".getBytes(StandardCharsets.UTF_8)))).isEqualTo(3);
+        assertThat(InputView.askCarCount(
+            new ByteArrayInputStream("3".getBytes(StandardCharsets.UTF_8)))).isEqualTo(3);
     }
 
     @Test

@@ -1,84 +1,47 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import racingcar.RacingRule.RacingRandom;
 
 public class Racing {
 
-    public static final int POWER_BOUND = 9;
+    private final Cars cars;
+    private final Integer lapCount;
+    private final RaceResults raceResults;
 
-    private static final Random random = new Random();
-    private static List<Car> cars;
-    private static int raceCount;
-    private static List<List<Car>> raceResults;
-
-    public static void main(String[] args) {
-        Racing.setRace(InputView.askCarCount(null), InputView.askRaceCount(null));
-        Racing.startRace();
-        OutputView.endRace();
+    public Racing(Cars cars, int lapCount, RaceResults raceResults) {
+        this.cars = cars;
+        this.lapCount = lapCount;
+        this.raceResults = raceResults;
     }
 
-    public static void setRace(int carCount, int raceCount) {
-        setCars(carCount);
-        setRaceCount(raceCount);
-        setRaceResults();
-    }
-
-    private static void setRaceResults() {
-        raceResults = new ArrayList<>();
-    }
-
-    private static void setRaceCount(int raceCount) {
-        Racing.raceCount = raceCount;
-    }
-
-    private static void setCars(int carCount) {
-        cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+    public void playFullRace() {
+        for (int l = 0; l < lapCount; l++) {
+            playLap();
         }
     }
 
-    public static void startRace() {
-        for (int r = 0; r < raceCount; r++) {
-            raceCars();
-            saveRaceResult();
-        }
+    private void playLap() {
+        raceLap();
+        recordLapResult();
     }
 
-    private static void raceCars() {
-        int size = cars.size();
-        for (int i = 0; i < size; i++) {
-            raceCar(cars.get(i), getNextInt());
-        }
+    private void raceLap() {
+        cars.raceLap(RacingRule.movableList(RacingRandom.randomNumbers(cars.cars().size())));
     }
 
-    private static void saveRaceResult() {
-        List<Car> result = new ArrayList<>();
-        for (Car car : cars) {
-            result.add(car.clone());
-        }
-        raceResults.add(result);
+    private void recordLapResult() {
+        raceResults.recordLapResult(new LapResult(cars.clone().cars()));
     }
 
-    private static void raceCar(Car car, int power) {
-        car.move(power);
-    }
-
-    private static int getNextInt() {
-        return random.nextInt(POWER_BOUND + 1);
-    }
-
-    public static List<Car> getCars() {
+    public Cars cars() {
         return cars;
     }
 
-    public static int getRaceCount() {
-        return raceCount;
+    public Integer raceCount() {
+        return lapCount;
     }
 
-    public static List<List<Car>> getRaceResults() {
+    public RaceResults raceResults() {
         return raceResults;
     }
 

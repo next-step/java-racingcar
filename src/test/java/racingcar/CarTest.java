@@ -1,32 +1,35 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 public class CarTest {
 
-    @ParameterizedTest
-    @ValueSource(ints = {4,5,6,7,8,9})
-    void 자동차_이동기준값이상입력(int number) {
+    @Test
+    void 자동차_클론() {
         Car car = new Car();
-        car.move(number);
-        assertThat(car.getPosition()).isEqualTo(Car.SET_POSITION + 1);
+
+        car.move();
+        Car clone = car.clone();
+
+        assertAll(
+            () -> assertThat(clone).isNotSameAs(car),
+            () -> assertThat(clone.position()).isEqualTo(car.position())
+        );
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {1,2,3})
-    void 자동차_이동기준값미만입력(int number) {
+    @Test
+    void 자동차_움직임() {
         Car car = new Car();
-        car.move(number);
-        assertThat(car.getPosition()).isEqualTo(Car.SET_POSITION);
+        car.move();
+        assertThat(car.position()).isEqualTo(Car.SET_POSITION + 1);
     }
 
     @Test
     void 자동차_초기화() {
-        assertThat(new Car().getPosition()).isEqualTo(Car.SET_POSITION);
+        assertThat(new Car().position()).isEqualTo(Car.SET_POSITION);
     }
 
 }

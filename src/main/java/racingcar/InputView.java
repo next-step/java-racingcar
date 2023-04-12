@@ -12,6 +12,14 @@ public class InputView {
 
     private static Scanner scanner;
 
+    public static int askRaceCount() {
+        return askRaceCount(DEFAULT_INPUT_STREAM);
+    }
+
+    public static int askCarCount() {
+        return askCarCount(DEFAULT_INPUT_STREAM);
+    }
+
     public static int askRaceCount(InputStream inputStream) {
         askQuestion(RACE_COUNT_QUESTION);
         return toInt(scanInput(Optional.ofNullable(inputStream)));
@@ -31,13 +39,13 @@ public class InputView {
     }
 
     private static String scanInput(Optional<InputStream> inputStream) {
-        if (isScannerEmpty()) {
+        if (isEmptyScanner()) {
             scanner = new Scanner(inputStream.orElse(DEFAULT_INPUT_STREAM));
         }
         return scanner.next();
     }
 
-    private static boolean isScannerEmpty() {
+    private static boolean isEmptyScanner() {
         return scanner == null;
     }
 

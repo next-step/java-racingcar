@@ -1,9 +1,11 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -14,29 +16,37 @@ import org.junit.jupiter.api.Test;
 public class RacingTest {
 
     private ByteArrayOutputStream outputStream;
+    private Racing racing;
 
     @BeforeEach
-    void 시스템_아웃_세팅() {
+    void 시스템_아웃_레이싱_초기화_세팅() {
         outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
-        Racing.setRace(3, 2);
+
+        List<Car> cars = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            cars.add(new Car());
+        }
+        List<LapResult> lapResults = new ArrayList<>();
+        racing = new Racing(new Cars(cars), 10, new RaceResults(lapResults));
     }
 
     @Test
     void 레이스_시작() {
-        Racing.startRace();
-        List<Car> cars = Racing.getCars();
-        for (int i = 0; i < cars.size(); i++) {
-            assertThat(cars.get(i).getPosition()).isBetween(0, 9);
+        racing.playFullRace();
+        List<Car> cars = racing.cars().cars();
+        for (Car car : cars) {
+            assertThat(car.position()).isBetween(Car.SET_POSITION, Car.SET_POSITION + 10);
         }
     }
 
     @Test
     void 레이스_세팅() {
-        Racing.setRace(3, 10);
-        assertThat(Racing.getCars()).hasSize(3);
-        assertThat(Racing.getRaceCount()).isEqualTo(10);
-        assertThat(Racing.getRaceResults()).isNotNull();
+        assertAll(
+            () -> assertThat(racing.cars().cars()).hasSize(3),
+            () -> assertThat(racing.raceCount()).isEqualTo(10),
+            () -> assertThat(racing.raceResults()).isNotNull()
+        );
     }
 
 }
