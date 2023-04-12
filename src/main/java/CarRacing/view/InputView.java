@@ -2,6 +2,8 @@ package CarRacing.view;
 
 import java.util.Scanner;
 
+import exception.NegativeInputException;
+
 public class InputView {
 
     private static final Scanner SCANNER = new Scanner(System.in);
@@ -13,11 +15,15 @@ public class InputView {
         }
 
         if (!isNumeric(numberStr)) {
-            requestReTypeNumber();
-            throw new IllegalArgumentException("check number of car");
+            throw new IllegalArgumentException("차량 대수는 숫자로만 입력해주세요!");
         }
 
-        return Integer.parseInt(numberStr);
+        int numberOfCar = Integer.parseInt(numberStr);
+        if (numberOfCar < 0 ) {
+            throw new NegativeInputException("차량 대수는 양의 숫자만 입력해주세요!");
+        }
+
+        return numberOfCar;
     }
 
     public int getNumberOfTry(String numberStr) {
@@ -27,16 +33,20 @@ public class InputView {
         }
 
         if (!isNumeric(numberStr)) {
-            requestReTypeNumber();
-            throw new IllegalArgumentException("check number of try");
+            throw new IllegalArgumentException("시도 횟수는 숫자로만 입력해주세요!");
         }
 
-        return Integer.parseInt(numberStr);
+        int numberOfTry = Integer.parseInt(numberStr);
+        if (numberOfTry < 0 ) {
+            throw new NegativeInputException("시도 횟수는 양의 숫자만 입력해주세요!");
+        }
+
+        return numberOfTry;
     }
 
     public boolean isNumeric(String str) {
         try {
-            Double.parseDouble(str);
+            Integer.parseInt(str);
             return true;
         } catch(NumberFormatException e){
             return false;
@@ -46,9 +56,4 @@ public class InputView {
     private static boolean emptyText(String inputText) {
         return (inputText == null) || inputText.isEmpty() || inputText.isBlank();
     }
-
-    private static void requestReTypeNumber() {
-        System.out.println("숫자로만 입력해주세요!");
-    }
-
 }

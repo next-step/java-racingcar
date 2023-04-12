@@ -85,21 +85,21 @@ public class TestCarRacing {
     @Test
     @DisplayName("racing 함수에 차량 대수가 음수로 입력되었을 시 최종적으로 RuntimeException 발생 확인")
     public void racing_number_of_car_is_negative() {
-        assertThatThrownBy(() -> racing.racing(-1, 1))
+        assertThatThrownBy(() -> racing.Competition("-1", "1"))
                 .isInstanceOf(RuntimeException.class);
     }
 
     @Test
     @DisplayName("racing 함수에 시도 횟수가 음수로 입력되었을 시 최종적으로 RuntimeException 발생 확인")
     public void racing_number_of_try_is_negative() {
-        assertThatThrownBy(() -> racing.racing(3, -2))
+        assertThatThrownBy(() -> racing.Competition("3", "-2"))
                 .isInstanceOf(RuntimeException.class);
     }
 
     @Test
     @DisplayName("racing 함수에 차량 대수와 시도 횟수 모두 양수로 입력 시 정상 수행 확인")
     public void racing_run_normally() {
-        racing.racing(3, 5);
+        racing.Competition("3", "5");
     }
 
 }

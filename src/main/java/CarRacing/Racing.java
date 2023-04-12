@@ -15,21 +15,12 @@ public class Racing {
     private static final int CONDITION_NUMBER = 4;
     private static final int DISTANCE_PER_TRY = 1;
 
-    public void racing(int numberOfCar, int numberOfTry) {
-        if (numberOfCar == 0) {
-            numberOfCar = inputView.getNumberOfCar(null);
-        }
+    public void Competition(String inputCarNumber, String inputTryNumber) {
 
-        if (numberOfTry == 0) {
-            numberOfTry = inputView.getNumberOfTry(null);
-        }
+        int numberOfCar = inputView.getNumberOfCar(inputCarNumber);
+        int numberOfTry = inputView.getNumberOfTry(inputTryNumber);
 
-        if ( numberOfCar < 0 || numberOfTry < 0 ) {
-            requestReTypePositiveNumber();
-            throw new IllegalArgumentException("negative number is not supported");
-        }
-
-        List<Car> cars = new ArrayList<Car>(numberOfCar);
+        List<Car> cars = new ArrayList<>(numberOfCar);
         for (int idxCar=0; idxCar < numberOfCar; idxCar++) {
             cars.add(new Car());
         }
@@ -51,9 +42,5 @@ public class Racing {
 
         return 0;
     }
-
-    private static void requestReTypePositiveNumber() {
-        System.out.println("양의 숫자만 입력해주세요!");
-    }
-
 }
+

@@ -1,7 +1,7 @@
 package CarRacing;
 
 public class Car {
-    private final static int INITIAL_POSITION=1;
+    private static final int INITIAL_POSITION=1;
 
     private int position;
 
