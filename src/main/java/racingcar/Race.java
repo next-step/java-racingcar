@@ -1,12 +1,16 @@
 package racingcar;
 
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Race {
-    public Integer totalCarCount;
-    public Integer totalMoveCount;
+    private static final Integer MAX_NUMBER = 10;
+    private static final Random RANDOM = new Random();
+
+    private final Integer totalCarCount;
+    private final Integer totalMoveCount;
 
     public Race(Integer totalCarCount, Integer totalMoveCount) {
         this.totalCarCount = totalCarCount;
@@ -28,7 +32,11 @@ public class Race {
     }
 
     private void moveCarsAndPrint(Output output, List<Car> cars) {
-        cars.forEach(Car::moveAndPrint);
+        cars.forEach(car -> car.moveAndPrint(randomNumber()));
         output.printBlankLine();
+    }
+
+    private Integer randomNumber() {
+        return RANDOM.nextInt(MAX_NUMBER);
     }
 }
