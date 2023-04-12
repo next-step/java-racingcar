@@ -1,24 +1,35 @@
 package step3;
 
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 public class RacingGameTest {
 
-    @DisplayName("입력 받은 값 만큼 차를 생성하는지 테스트")
-    @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3, 4, 10})
-    public void makeCarTest(int numberOfCars) {
-        RacingGame.makeCars(numberOfCars);
-        Assertions.assertThat(RacingGame.carList).hasSize(numberOfCars);
+    @Test
+    @DisplayName("자동차 이름은 5자를 초과할 수 없다.")
+    public void nameCheckTest() {
+        assertThatThrownBy(() -> {
+            String given = "테스트용자동차이름";
+            RacingGame racingGame = new RacingGame();
+            racingGame.preparingGame(given, 1);
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("자동차 이름은 5자를 초과할 수 없습니다.");
     }
 
-    @AfterEach
-    void afterEach() {
-        RacingGame.carList.clear();
+    @DisplayName("시도 횟수는 양수여야 한다.")
+    @ParameterizedTest
+    @ValueSource(ints = {0, -1})
+    public void nameCheckTest(int count) {
+        assertThatThrownBy(() -> {
+            String given = "자동차이름";
+            RacingGame racingGame = new RacingGame();
+            racingGame.preparingGame(given, count);
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("시도할 횟수는 양수여야 합니다.");
     }
 
 }

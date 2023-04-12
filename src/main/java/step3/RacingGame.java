@@ -1,46 +1,41 @@
 package step3;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class RacingGame {
-    private static final InputView inputView = new InputView();
-    private static final ResultView resultView = new ResultView();
-    public static final List<Car> carList = new ArrayList<>();
 
-    public static void main(String[] args) {
-        int numberOfCars = inputView.getNumberOfCars();
-        int count = inputView.getCount();
-        resultView.printResultMessage();
+    private static final String NAME_DELIMITER = ",";
+    private static final int NAME_LENGTH_LIMIT = 5;
+    private static final String ERROR_MESSAGE_FOR_NAME_LENGTH_LIMIT = "자동차 이름은 5자를 초과할 수 없습니다.";
+    private static final String ERROR_MESSAGE_FOR_MINUS_COUNT = "시도할 횟수는 양수여야 합니다.";
 
-        makeCars(numberOfCars);
-        for (int i = 0; i < count; i++) {
-            race();
+    private final List<Car> carList = new ArrayList<>();
+
+    public void preparingGame(String namesOfCars, int count) {
+        checkIfCountPositive(count);
+
+        List<String> namesList = getNames(namesOfCars);
+        for (String name : namesList) {
+            checkLengthOfName(name);
         }
     }
 
-    public static void race() {
-        raceEachTurn(carList);
-        printResultOfThisTurn(carList);
-    }
-
-    public static void makeCars(int numberOfCars) {
-        for (int i = 0; i < numberOfCars; i++) {
-            carList.add(new Car());
+    private void checkIfCountPositive(int count) {
+        if (count <= 0) {
+            throw new IllegalArgumentException(ERROR_MESSAGE_FOR_MINUS_COUNT);
         }
     }
 
-    private static void raceEachTurn(List<Car> carList) {
-        for (Car car : carList) {
-            car.goOrStop();
-        }
+    private List<String> getNames(String namesOfCars) {
+        return Arrays.asList(namesOfCars.split(NAME_DELIMITER));
     }
 
-    private static void printResultOfThisTurn(List<Car> carList) {
-        for (Car car : carList) {
-            resultView.printTraceEachCar(car.getTrace());
+    private void checkLengthOfName(String name) {
+        if (name.length() > NAME_LENGTH_LIMIT) {
+            throw new IllegalArgumentException(ERROR_MESSAGE_FOR_NAME_LENGTH_LIMIT);
         }
-        resultView.newLine();
     }
 
 }

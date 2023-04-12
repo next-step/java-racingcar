@@ -4,7 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
@@ -12,7 +12,8 @@ public class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 10})
     public void plusTraceTest(int count) {
-        Car car = new Car();
+        String name = "TEST";
+        Car car = new Car(name);
         StringBuilder expected = new StringBuilder("-");
 
         for (int i = 0; i < count; i++) {
@@ -20,7 +21,7 @@ public class CarTest {
             expected.append("-");
         }
 
-        assertThat(car.getTrace()).isEqualTo(expected.toString());
+        assertThat(car.getNowRacingResult()).isEqualTo(name + " : " + expected);
     }
 
 }

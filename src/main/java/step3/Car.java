@@ -6,7 +6,13 @@ public class Car {
     private static final int RANDOM_BOUND = 10;
     private static final int THRESHOLD = 4;
     private static final String MARK = "-";
+    private static final String DELIMITER_FOR_RESULT = " : ";
     private String trace = MARK;
+    private final String name;
+
+    public Car(String name) {
+        this.name = name;
+    }
 
     public void goOrStop() {
         goOrStop(null);
@@ -29,8 +35,8 @@ public class Car {
         this.trace += MARK;
     }
 
-    public String getTrace() {
-        return this.trace;
+    public String getNowRacingResult() {
+        return name + DELIMITER_FOR_RESULT + trace;
     }
 
 }
