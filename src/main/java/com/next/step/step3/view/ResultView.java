@@ -9,7 +9,9 @@ public class ResultView {
 
     private static final String RESULT_DELIMITER = "";
 
-    private static final char MOVE_MARK = '-';
+    private static final String MOVE_MARK = "-";
+
+    private static final String NAME_RESULT_DELIMITER = " : ";
 
     public void showResultTitle() {
         System.out.println(RESULT_TITLE);
@@ -23,11 +25,8 @@ public class ResultView {
     }
 
     private void markMoveTrace(Car car) {
-        if (car.isMoved()) {
-            System.out.println();
-            return;
-        }
-
+        System.out.print(car.name());
+        System.out.println(NAME_RESULT_DELIMITER);
         for (int moveCount = 0; moveCount < car.position(); moveCount++) {
             System.out.print(MOVE_MARK);
         }

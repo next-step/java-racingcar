@@ -29,7 +29,7 @@ public class Car {
         return this.position.position();
     }
 
-    public boolean isMoved() {
-        return position.position() == INIT_POSITION;
+    public String name() {
+        return carName.carName();
     }
 }
