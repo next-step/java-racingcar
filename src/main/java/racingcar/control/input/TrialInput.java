@@ -1,9 +1,17 @@
 package racingcar.control.input;
 
+import racingcar.control.input.validator.NumberValidator;
 import racingcar.view.InputView;
 import racingcar.view.View;
 
 public class TrialInput extends StandardInput {
+    public TrialInput() {
+        super();
+    }
+
+    public TrialInput(NumberValidator validator) {
+        super(validator);
+    }
 
     @Override
     protected View view() {

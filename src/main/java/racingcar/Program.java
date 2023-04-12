@@ -18,8 +18,10 @@ import java.util.stream.Stream;
 
 public class Program {
     public static void main(String[] args) {
-        StandardInput carInput = new CarInput();
-        StandardInput trialInput = new TrialInput();
+        NumberValidator validator = new PositiveValidator();
+
+        StandardInput carInput = new CarInput(validator);
+        StandardInput trialInput = new TrialInput(validator);
 
         int carCount = carInput.getInt();
         int trials = trialInput.getInt();
