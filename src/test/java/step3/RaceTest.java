@@ -25,8 +25,23 @@ public class RaceTest {
     void testMoveCar() {
         Car car = new Car();
         int originalPosition = car.getPosition();
+
         car.move();
 
         assertEquals(originalPosition + 1, car.getPosition());
+    }
+
+    @Test
+    @DisplayName("경주가 끝난 자동차의 위치는 round 수 초과이거나 음수일 수 없다")
+    void testCarCanNotMoveBeyondRound() {
+        int raceRound = 5;
+        Race race = new Race(1, raceRound);
+
+        race.start();
+
+        for (Car car : race.getCars()) {
+            assertThat(car.getPosition()).isLessThanOrEqualTo(raceRound);
+            assertThat(car.getPosition()).isNotNegative();
+        }
     }
 }
