@@ -10,10 +10,14 @@ public class RacingCar {
     private final MoveStrategy moveStrategyStrategy;
     private final String name;
 
-    public RacingCar(final String name) {
-        moveStrategyStrategy = new RandomMoveStrategy();
+    public RacingCar(final String name, MoveStrategy strategy) {
+        this.moveStrategyStrategy = strategy;
         this.name = name;
         this.validate();
+    }
+
+    public RacingCar(final String name) {
+        this(name, new RandomMoveStrategy());
     }
 
     public String getName() {
@@ -36,7 +40,7 @@ public class RacingCar {
 
     private void validate() {
         if (this.name == null) {
-            throw new NullPointerException("이름은 null일 수 없습니다");
+            throw new RacingCarValidationException("이름은 null일 수 없습니다");
         }
 
         if (this.name.length() > maxNameLength) {

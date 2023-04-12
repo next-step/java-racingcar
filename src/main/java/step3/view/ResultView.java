@@ -28,7 +28,7 @@ public class ResultView {
         final String topRankingRacingCars = racecourse.findTopRank().stream()
                 .map(RacingCar::getName)
                 .collect(Collectors.joining(", "));
-        System.out.printf("%s가 최종 우했습니다.%n", topRankingRacingCars);
+        System.out.printf("%s가 최종 우승했습니다.%n", topRankingRacingCars);
     }
 
     private static String writeCarPosition(final Track track) {
