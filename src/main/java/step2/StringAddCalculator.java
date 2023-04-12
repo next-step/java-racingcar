@@ -8,7 +8,7 @@ public class StringAddCalculator {
             return 0;
         String[] tokens = SplitStringToken.customDelimiterSplit(textInput);
         for (String token : tokens) {
-            TypeOperator.isPositive(answer); //sum
+            TypeOperator.isPositive(answer);
             answer += TypeOperator.getParseInt(token);
         }
         return answer;
