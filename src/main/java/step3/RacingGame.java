@@ -4,9 +4,13 @@ package step3;
 public class RacingGame {
 
     Cars cars;
+    InputView inputView;
+    ResultView resultView;
 
     public RacingGame() {
         cars = new Cars();
+        inputView = new InputView();
+        resultView = new ResultView();
     }
 
     public void initCars(int numberOfCars) {
@@ -23,5 +27,13 @@ public class RacingGame {
 
     public Cars getCars() {
         return cars;
+    }
+
+    public void start() {
+        int numberOfCars = inputView.enterNumberOfCars();
+        int numberOfTry = inputView.enterNumberOfTry();
+        initCars(numberOfCars);
+        move(numberOfTry);
+        resultView.printResult(cars);
     }
 }
