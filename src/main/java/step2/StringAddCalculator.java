@@ -2,7 +2,7 @@ package step2;
 
 public class StringAddCalculator {
 
-    private TypeOperator typeOperator;
+    private PositiveInt positiveInt;
     private SplitStringToken splitStringToken;
 
     public int splitAndSum(String textInput) {
@@ -12,8 +12,8 @@ public class StringAddCalculator {
         }
         String[] tokens = splitStringToken.customDelimiterSplit(textInput);
         for (String token : tokens) {
-            typeOperator.isPositive(answer);
-            answer += typeOperator.getParseInt(token);
+            positiveInt.isPositive(answer);
+            answer += positiveInt.getParseInt(token);
         }
         return answer;
     }

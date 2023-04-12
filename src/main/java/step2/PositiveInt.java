@@ -1,6 +1,6 @@
 package step2;
 
-public class TypeOperator {
+public class PositiveInt {
 
     void isPositive(int answer) {
         if (answer >= 0) return;
