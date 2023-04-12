@@ -23,9 +23,14 @@ public class Car {
 
     private static final String CAR_NAME_MORE_THAN_FIVE_CHARACTER = "자동차 이름은 5자를 초과할 수 없습니다.";
 
+    private static final String CAR_EMPTY_VALUE_MSG = "차 이름이 임력되지 않았습니다.";
+
     private static final int MOVE_STEP = 1;
 
     public Car(String carName) {
+        if(carNameEmpty(carName)) {
+            throw new IllegalArgumentException(CAR_EMPTY_VALUE_MSG);
+        }
         if (hasCarNameMoreThanFiveCharacter(carName)) {
             throw new IllegalArgumentException(CAR_NAME_MORE_THAN_FIVE_CHARACTER);
         }
@@ -59,6 +64,10 @@ public class Car {
 
     private boolean isGoForwardNumber(int randomNumber) {
         return randomNumber >= MINIMUM_CAR_MOVE_NUMBER;
+    }
+
+    private boolean carNameEmpty(String carName) {
+        return carName == null || carName.isEmpty();
     }
 
     private boolean hasCarNameMoreThanFiveCharacter(String carName) {
