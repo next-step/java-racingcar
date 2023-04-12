@@ -1,16 +1,13 @@
 package step3.domain;
 
+import java.util.Optional;
+
 public class Track implements Comparable<Track> {
     private final int trackNumber;
     private RacingCar racingCar;
 
     public Track(int trackNumber) {
         this.trackNumber = trackNumber;
-    }
-
-    protected void enter(RacingCar racingCar) {
-        this.racingCar = racingCar;
-        racingCar.resetPosition();
     }
 
     public RacingCar exit() {
@@ -31,6 +28,10 @@ public class Track implements Comparable<Track> {
         return racingCar == null;
     }
 
+    public Optional<RacingCar> getRacingCar() {
+        return Optional.ofNullable(racingCar);
+    }
+
     @Override
     public int compareTo(Track o) {
         return Integer.compare(trackNumber, o.trackNumber);
@@ -42,5 +43,10 @@ public class Track implements Comparable<Track> {
         }
 
         this.racingCar.steeringToForward();
+    }
+
+    protected void enter(RacingCar racingCar) {
+        this.racingCar = racingCar;
+        racingCar.resetPosition();
     }
 }

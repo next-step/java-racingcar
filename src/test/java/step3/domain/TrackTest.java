@@ -15,7 +15,7 @@ class TrackTest {
         Track track = new Track(0);
 
         // when
-        track.enter(new RacingCar());
+        track.enter(new RacingCar("mycar"));
 
         // then
         assertThat(track.isEmpty()).isFalse();
@@ -26,7 +26,7 @@ class TrackTest {
     void exitTest() {
         // given
         Track track = new Track(0);
-        RacingCar racingCar = new RacingCar();
+        RacingCar racingCar = new RacingCar("mycar");
         track.enter(racingCar);
 
         // when
@@ -53,7 +53,7 @@ class TrackTest {
     void notEmptyTrackPositionTest() {
         // given
         Track track = new Track(0);
-        RacingCar racingCar = new RacingCar();
+        RacingCar racingCar = new RacingCar("mycar");
         track.enter(racingCar);
 
         // when & then
