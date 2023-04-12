@@ -14,4 +14,14 @@ public class ResultView {
     public List<Car> getCars() {
         return cars;
     }
+
+    public void printAll() {
+        for (Car car : cars) {
+            System.out.println(printCarDistance(car));
+        }
+    }
+
+    public static String printCarDistance(Car car) {
+        return "-".repeat(Math.max(0, car.getDistance()));
+    }
 }
