@@ -14,19 +14,6 @@ public class RacingCar {
     public static final int INIT_VALUE = 0;
     public static final int PLUS_VALUE = 1;
 
-
-    public boolean moveYn(int randomNumber) {
-        return randomNumber >= CAR_MOVE_STANDARD;
-    }
-
-    public List<Integer> getMoveCounts(int carCount) {
-        for (int i = BEGIN_INDEX; i < carCount; i++) {
-            createMoveCount(i);
-        }
-
-        return moveCounts;
-    }
-
     public void initMoveCounts(int carCount) {
         for (int i = BEGIN_INDEX; i < carCount; i++) {
             initMoveCount();
@@ -37,7 +24,14 @@ public class RacingCar {
         return moveCounts.add(INIT_VALUE);
     }
 
-    private void createMoveCount(int idx) {
+    public List<Integer> getMoveCounts(int carCount) {
+        for (int i = BEGIN_INDEX; i < carCount; i++) {
+            makeMoveCount(i);
+        }
+        return moveCounts;
+    }
+
+    private void makeMoveCount(int idx) {
         if (moveYn()) {
             plusMoveCount(idx);
         }
@@ -45,6 +39,10 @@ public class RacingCar {
 
     private boolean moveYn() {
         return moveYn(getRandomNumber());
+    }
+
+    public boolean moveYn(int randomNumber) {
+        return randomNumber >= CAR_MOVE_STANDARD;
     }
 
     private int plusMoveCount(int idx) {
