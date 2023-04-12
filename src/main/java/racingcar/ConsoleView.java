@@ -3,7 +3,7 @@ package racingcar;
 
 import java.util.Scanner;
 
-public class RacingGame implements InputView, OutputView {
+public class ConsoleView implements InputView, OutputView {
 
     @Override
     public int getIntegerInput() {
