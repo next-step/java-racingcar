@@ -7,15 +7,15 @@ import racingcar.view.OutputView;
 
 public class CarGame {
     public static void main(String[] args) {
-        int count = InputView.carCount();
+        String names = InputView.carName();
         int round = InputView.round();
 
-        Cars cars = new Cars(count);
+        Cars cars = new Cars(names);
 
         OutputView.endMessage();
         for (int i = 0; i < round; i++) {
             cars.race(new DefaultNumberGenerator());
-            OutputView.gameResult(cars.positions());
+            OutputView.gameResult(cars);
         }
     }
 }

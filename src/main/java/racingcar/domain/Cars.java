@@ -26,6 +26,10 @@ public class Cars {
         }
     }
 
+    public List<Car> cars() {
+        return this.cars;
+    }
+
     public List<Position> positions() {
         List<Position> positions = new ArrayList<>();
 
