@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.List;
+
 public class ResultView {
     public static final int BEGIN_INDEX = 0;
     public static final char CAR_MOVE_STATE_LINE = '-';
@@ -16,10 +18,6 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public void printMoveStateLine(int moveCount) {
-        System.out.println(getCarMoveStateLine(moveCount));
-    }
-
     public void printNewLine() {
         System.out.println();
     }
@@ -30,5 +28,15 @@ public class ResultView {
             sb.append(CAR_MOVE_STATE_LINE);
         }
         return sb.toString();
+    }
+
+    public void printMoveStateLines(List<Integer> moveCounts, int carCount) {
+        for (int i = BEGIN_INDEX; i < carCount; i++) {
+            printMoveStateLine(moveCounts, i);
+        }
+    }
+
+    private void printMoveStateLine(List<Integer> moveCounts, int idx) {
+        System.out.println(getCarMoveStateLine(moveCounts.get(idx)));
     }
 }
