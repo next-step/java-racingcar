@@ -1,3 +1,7 @@
+package car;
+
+import strategy.MovingStrategy;
+
 public class Car {
 
     private final int MAX_LENGTH_OF_NAME = 5;

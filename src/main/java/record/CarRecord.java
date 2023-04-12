@@ -1,3 +1,5 @@
+package record;
+
 public class CarRecord {
 
     private String name;

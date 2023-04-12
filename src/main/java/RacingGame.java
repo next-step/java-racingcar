@@ -1,3 +1,6 @@
+import car.Cars;
+import record.Records;
+
 public class RacingGame {
 
     private Cars cars;

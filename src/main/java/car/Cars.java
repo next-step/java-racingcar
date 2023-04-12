@@ -1,3 +1,7 @@
+package car;
+
+import strategy.RandomStrategy;
+
 import java.util.*;
 
 public class Cars {
@@ -22,9 +26,9 @@ public class Cars {
     }
 
     public void move() {
-        boolean condition = new RandomStrategy().movable();
+        RandomStrategy randomStrategy = new RandomStrategy();
         for (Car car : cars) {
-            car.go(condition);
+            car.go(randomStrategy);
         }
     }
 }

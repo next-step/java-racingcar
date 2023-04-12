@@ -1,3 +1,5 @@
+package strategy;
+
 import java.util.Random;
 
 public class RandomStrategy implements MovingStrategy {
