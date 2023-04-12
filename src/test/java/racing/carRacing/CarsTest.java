@@ -17,7 +17,7 @@ class CarsTest {
     @Test
     @DisplayName("cars 초기화 테스트")
     void carsInitTest() {
-        Cars cars = Cars.initCars("test1,test2", () -> true);
+        Cars cars = Cars.initCars("test1,test2");
 
         assertThat(cars.getCarsSize()).isEqualTo(2);
     }
@@ -26,7 +26,7 @@ class CarsTest {
     @ValueSource(strings = {",", ",,"})
     @DisplayName("input으로 콤마(,)만 있을 때 에러 반환")
     void onlyCommaErrorTest(String input) {
-        assertThatThrownBy(() -> Cars.initCars(input, () -> true))
+        assertThatThrownBy(() -> Cars.initCars(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름을 입력해주세요");
     }
@@ -34,7 +34,7 @@ class CarsTest {
     @Test
     @DisplayName("cars 단독 우승자 구하기")
     void getWinnerTest() {
-        Cars cars = Cars.initCars("test1,test2,test3", () -> true);
+        Cars cars = Cars.initCars("test1,test2,test3");
 
         cars.getCurrentCar(0).run(() -> true);
         cars.getCurrentCar(0).run(() -> true);
@@ -50,7 +50,7 @@ class CarsTest {
     @Test
     @DisplayName("cars 복수 우승자 구하기")
     void getMultipleWinnerTest() {
-        Cars cars = Cars.initCars("test1,test2,test3", () -> true);
+        Cars cars = Cars.initCars("test1,test2,test3");
 
         cars.getCurrentCar(0).run(() -> true);
         cars.getCurrentCar(0).run(() -> true);

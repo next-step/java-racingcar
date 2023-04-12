@@ -10,21 +10,19 @@ public class Cars {
     public static final String COMBINER = ", ";
 
     private final List<Car> cars;
-    private final MovementStrategy movementStrategy;
 
-    private Cars(List<Car> cars, MovementStrategy movementStrategy) {
+    private Cars(List<Car> cars) {
         this.cars = cars;
-        this.movementStrategy = movementStrategy;
     }
 
-    public static Cars initCars(String carNameString, MovementStrategy movementStrategy) {
+    public static Cars initCars(String carNameString) {
         String[] splitName = carNameString.split(DELIMITER);
 
         hasCarName(splitName.length);
 
         List<Car> cars = initCarList(splitName);
 
-        return new Cars(cars, movementStrategy);
+        return new Cars(cars);
     }
 
     private static List<Car> initCarList(String[] splitName) {
@@ -39,7 +37,7 @@ public class Cars {
         }
     }
 
-    public void run() {
+    public void run(MovementStrategy movementStrategy) {
         cars.forEach(car -> car.run(movementStrategy));
     }
 
