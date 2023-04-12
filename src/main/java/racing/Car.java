@@ -23,7 +23,7 @@ public class Car {
 
     public void printLocation() {
         for (int i = 0; i < this.location; i++) {
-            toString();
+            System.out.print(this);
         }
         System.out.println();
     }

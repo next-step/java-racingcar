@@ -9,15 +9,16 @@ public class Main {
     public static void main(String[] args) {
 
         InputView inputView = new InputView();
-        inputView.userInput();
+        int carCount = inputView.inputCarCount();
+        int tryCount = inputView.inputTryCount();
 
         Car car = new Car();
         List<Car> carList = new ArrayList<>();
-        for (int i = 0; i < inputView.inputCarCount; i++) {
+        for (int i = 0; i < carCount; i++) {
             carList.add(car.addCar());
         }
 
-        for (int i = 0; i < inputView.tryCarCount; i++) {
+        for (int i = 0; i < tryCount; i++) {
             resultCars(carList);
         }
     }
