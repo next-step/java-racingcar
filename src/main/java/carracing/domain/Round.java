@@ -6,14 +6,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Round implements Comparable<Round> {
     private static final int FIRST_ROUND_VALUE = 1;
-    private static final AtomicInteger INDEX = new AtomicInteger(FIRST_ROUND_VALUE);
 
     private Integer roundId;
     private List<Score> scores;
     private List<Record> records;
 
     public Round(List<Score> scores, List<Record> records) {
-        this.roundId = INDEX.getAndIncrement();
         this.scores = scores;
         this.records = records;
     }
@@ -48,4 +46,7 @@ public class Round implements Comparable<Round> {
         return records;
     }
 
+    public void setRoundId(Integer roundId) {
+        this.roundId = roundId;
+    }
 }
