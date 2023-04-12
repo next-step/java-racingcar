@@ -3,6 +3,8 @@ package racingcar.model;
 import java.util.List;
 import java.util.Objects;
 
+import static java.util.stream.Collectors.toList;
+
 public class Racing {
     private final List<Car> cars;
     private final int totalRound;
@@ -41,4 +43,20 @@ public class Racing {
         cars.forEach(Car::move);
         currentRound++;
     }
+
+    public List<Car> winners() {
+        if (!isOver()) {
+            throw new IllegalStateException("race is not over");
+        }
+
+        int maxDistance = cars.stream()
+                .mapToInt(Car::distance)
+                .max()
+                .orElse(0);
+
+        return cars.stream()
+                .filter(car -> car.distance() == maxDistance)
+                .collect(toList());
+    }
+
 }

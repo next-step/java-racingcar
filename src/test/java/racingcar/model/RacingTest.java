@@ -1,6 +1,5 @@
 package racingcar.model;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -14,9 +13,47 @@ class RacingTest {
     private final List<Car> testCar = List.of(new Car("test", () -> 0));
 
     @Test
+    @DisplayName("우승자를 확인할 수 있다")
+    public void winner() {
+        Car car1 = new Car("first", () -> 1);
+        Car car2 = new Car("second", () -> 0);
+
+        Racing racing = new Racing(1, List.of(car1, car2));
+        racing.step();
+
+        assertThat(racing.winners()).containsExactly(car1);
+    }
+
+    @Test
+    @DisplayName("공동 우승자를 확인할 수 있다")
+    public void winners() {
+        Car car1 = new Car("first", () -> 1);
+        Car car2 = new Car("second", () -> 1);
+
+        Racing racing = new Racing(1, List.of(car1, car2));
+        racing.step();
+
+        assertThat(racing.winners()).containsExactly(car1, car2);
+    }
+
+    @Test
+    @DisplayName("게임이 끝나기 전엔 우승자를 알 수 없다")
+    public void winnersAfterEnd() {
+        Car car1 = new Car("first", () -> 1);
+        Car car2 = new Car("second", () -> 1);
+
+        Racing racing = new Racing(10, List.of(car1, car2));
+        racing.step();
+
+        assertThatThrownBy(racing::winners)
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessage("race is not over");
+    }
+
+    @Test
     @DisplayName("차가 null 이면 예외 발생")
     public void nullCars() {
-        Assertions.assertThatThrownBy(() -> new Racing(1, null))
+        assertThatThrownBy(() -> new Racing(1, null))
                 .isInstanceOf(NullPointerException.class)
                 .hasMessage("cars should not be null");
     }
@@ -24,7 +61,7 @@ class RacingTest {
     @Test
     @DisplayName("차가 없으면 예외 발생")
     public void emptyCars() {
-        Assertions.assertThatThrownBy(() -> new Racing(1, List.of()))
+        assertThatThrownBy(() -> new Racing(1, List.of()))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("At least one car must be present");
     }

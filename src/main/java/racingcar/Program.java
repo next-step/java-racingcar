@@ -7,14 +7,14 @@ import racingcar.control.input.validator.NamesValidator;
 import racingcar.control.input.validator.PositiveValidator;
 import racingcar.control.output.Printable;
 import racingcar.control.output.RacingOutput;
+import racingcar.control.output.RacingWinnersOutput;
 import racingcar.model.Car;
 import racingcar.model.Racing;
+import racingcar.model.dto.CarDto;
 import racingcar.model.dto.RacingDto;
 import racingcar.strategy.RandomMovingStrategy;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
 
@@ -26,7 +26,7 @@ public class Program {
         List<String> names = namesInput.getValue();
         int trials = trialInput.getValue();
 
-        List<Car> cars = createCars(carCount);
+        List<Car> cars = createCars(names);
         Racing racing = new Racing(trials, cars);
 
         while (!racing.isOver()) {
@@ -37,12 +37,19 @@ public class Program {
             
             racingOutput.print();
         }
+
+        List<CarDto> winners = racing.winners()
+                .stream()
+                .map(CarDto::from)
+                .collect(toList());
+
+        Printable result = new RacingWinnersOutput(winners);
+        result.print();
     }
 
-    private static List<Car> createCars(int carCount) {
-        return Stream
-                .generate(() -> new Car(new RandomMovingStrategy()))
-                .limit(carCount)
-                .collect(Collectors.toList());
+    private static List<Car> createCars(List<String> names) {
+        return names.stream()
+                .map((name) -> new Car(name, new RandomMovingStrategy()))
+                .collect(toList());
     }
 }
