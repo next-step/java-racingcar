@@ -20,7 +20,7 @@ public class CarRacingApplication {
     public static void main(String[] args) {
         List<String> carNames = InputView.showAndGetCarNames();
         int racingRep = InputView.showAndGetRacingRep();
-        CarRacing carRacing = new CarRacing(carNames.size(), racingRep);
+        CarRacing carRacing = new CarRacing(carNames, racingRep);
         carRacing.start();
     }
 }

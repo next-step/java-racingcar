@@ -6,23 +6,18 @@ import game.util.RandomNumberGenerator;
 import game.view.ResultView;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+
+import static java.util.stream.Collectors.toUnmodifiableList;
 
 public class CarRacing {
 
     private final List<Car> cars;
     private final int racingRep;
 
-    public CarRacing(int carCount, int racingRep) {
-        validateOptions(carCount, racingRep);
-        this.cars = initialCars(carCount);
-        this.racingRep = racingRep;
-    }
-
-    private void validateOptions(int carCount, int racingRep) {
-        throwIfNegativeNumber(carCount);
+    public CarRacing(List<String> carNames, int racingRep) {
         throwIfNegativeNumber(racingRep);
+        this.cars = initialCars(carNames);
+        this.racingRep = racingRep;
     }
 
     private void throwIfNegativeNumber(int number) {
@@ -31,11 +26,11 @@ public class CarRacing {
         }
     }
 
-    private List<Car> initialCars(int carCount) {
+    private List<Car> initialCars(List<String> carNames) {
         NumberGenerator generator = new RandomNumberGenerator();
-        return IntStream.range(0, carCount)
-                .mapToObj(n -> new Car(generator))
-                .collect(Collectors.toUnmodifiableList());
+        return carNames.stream()
+                .map(name -> new Car(name, generator))
+                .collect(toUnmodifiableList());
     }
 
     public void start() {
