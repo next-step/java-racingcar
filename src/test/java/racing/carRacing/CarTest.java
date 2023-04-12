@@ -67,7 +67,7 @@ class CarTest {
 
         Car car = new Car(3);
 
-        assertThat(car.getMaxPosition(maxPosition)).isTrue();
+        assertThat(car.equalsMaxPosition(maxPosition)).isTrue();
     }
 
     @Test
@@ -77,7 +77,7 @@ class CarTest {
 
         Car car = new Car(2);
 
-        assertThat(car.getMaxPosition(maxPosition)).isFalse();
+        assertThat(car.equalsMaxPosition(maxPosition)).isFalse();
     }
 
 }

@@ -80,7 +80,7 @@ class CarsTest {
         cars.add(car3);
 
         List<String> resultList = cars.stream()
-                .filter(car -> car.getMaxPosition(maxPosition))
+                .filter(car -> car.equalsMaxPosition(maxPosition))
                 .map(Car::getCurrentCar)
                 .collect(Collectors.toList());
 

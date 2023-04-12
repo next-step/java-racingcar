@@ -54,7 +54,7 @@ public class Cars {
     public String getWinner() {
         int maxPosition = getMaxPosition();
 
-        List<String> winner = findWinner(maxPosition);
+        List<String> winner = findWinners(maxPosition);
 
         return makeWinnerString(winner);
     }
@@ -63,9 +63,9 @@ public class Cars {
         return String.join(COMBINER, winner);
     }
 
-    private List<String> findWinner(int maxPosition) {
+    private List<String> findWinners(int maxPosition) {
         return cars.stream()
-                .filter(car -> car.getMaxPosition(maxPosition))
+                .filter(car -> car.equalsMaxPosition(maxPosition))
                 .map(Car::getCurrentCar)
                 .collect(Collectors.toList());
     }

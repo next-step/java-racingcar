@@ -1,7 +1,7 @@
 package racing.carRacing;
 
 public class Car {
-    public static final int CONDITION = 5;
+    public static final int MAX_SIZE_OF_NAME = 5;
     public static final int FIRST_POSITION = 0;
 
     private int position;
@@ -37,7 +37,7 @@ public class Car {
     }
 
     private void isWrongLength(String name) {
-        if (name.length() > CONDITION) {
+        if (name.length() > MAX_SIZE_OF_NAME) {
             throw new IllegalArgumentException("자동차 이름은 5글자 이상 초과할 수 없습니다.");
         }
     }
@@ -56,7 +56,7 @@ public class Car {
         return name;
     }
 
-    public boolean getMaxPosition(int maxPosition) {
+    public boolean equalsMaxPosition(int maxPosition) {
         return position == maxPosition;
     }
 }
