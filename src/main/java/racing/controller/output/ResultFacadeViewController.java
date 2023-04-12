@@ -1,19 +1,24 @@
-package racing;
+package racing.controller.output;
 
 import java.util.List;
+import racing.controller.input.UserInput;
+import racing.domain.Car;
+import racing.domain.CarFactory;
 
-public class ResultFacadeView {
+public class ResultFacadeViewController {
 
   private final ResultView resultView;
   private final CarFactory carFactory;
-  private final CarMoveController carMoveController;
-
-  public ResultFacadeView(ResultView resultView, CarFactory carFactory, CarMoveController carMoveController) {
+  public ResultFacadeViewController(ResultView resultView, CarFactory carFactory) {
     this.resultView = resultView;
     this.carFactory = carFactory;
-    this.carMoveController = carMoveController;
   }
 
+  /**
+   * 책임
+   *  - 게임에 참가할 자동차 객체를 생성
+   *  - 결과 view 를 제어하기 위한 책임을 갖는다.
+   */
   public void startGame(UserInput userInput) {
     List<Car> cars = carFactory.createCars(userInput.numberOfCars());
 
@@ -27,7 +32,7 @@ public class ResultFacadeView {
 
   private void move(List<Car> cars) {
     for (Car car : cars) {
-      carMoveController.move(car);
+      car.move();
       resultView.printCarPosition(car);
     }
   }

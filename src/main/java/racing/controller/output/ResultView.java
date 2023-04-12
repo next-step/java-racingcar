@@ -1,6 +1,7 @@
-package racing;
+package racing.controller.output;
 
 import java.util.stream.IntStream;
+import racing.domain.Car;
 
 public class ResultView {
 
