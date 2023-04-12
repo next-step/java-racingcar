@@ -5,6 +5,7 @@ import java.util.stream.IntStream;
 public class CarGame {
     private final Cars cars;
     private final int moves;
+    private final CarsView view;
 
     public CarGame(int numberOfCars, int numberOfMoves) {
         if (numberOfCars <= 0 || numberOfMoves <= 0) {
@@ -12,10 +13,14 @@ public class CarGame {
         }
         cars = new Cars(numberOfCars);
         moves = numberOfMoves;
+        view = new CarsView();
     }
 
     public void start() {
         IntStream.range(0, moves)
-                .forEach(countOfMoves -> cars.move());
+                .forEach(countOfMoves -> {
+                    cars.move();
+                    view.print(cars);
+                });
     }
 }

@@ -1,19 +1,23 @@
 package step3;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class Cars {
     private final static Random random = new Random();
     private static final int RANDOM_NUMBER_BOUND = 10;
-    private final List<Car> values;
+    final List<Car> values;
 
     public Cars(int numberOfCars) {
-        values = Collections.nCopies(numberOfCars, new Car());
+        values = new ArrayList<>();
+        for (int i = 0; i < numberOfCars; i++) {
+            values.add(new Car());
+        }
     }
 
     public void move() {
+        System.out.println("이동");
         values.stream()
                 .forEach(car ->
                         car.move(randomNumber())

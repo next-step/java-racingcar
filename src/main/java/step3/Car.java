@@ -1,6 +1,9 @@
 package step3;
 
-public class Car {
+import java.io.Serializable;
+import java.util.Objects;
+
+public class Car implements Serializable {
     private static final int MOVE_NUMBER = 4;
     private static final int MIN_NUMBER = 0;
     private static final int MAX_NUMBER = 9;
@@ -25,5 +28,18 @@ public class Car {
 
     public int location() {
         return location;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return location == car.location;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(location);
     }
 }
