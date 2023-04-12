@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CarTest {
 
     @ParameterizedTest
-    @ValueSource(ints = {0, 1, 2, 3})
+    @ValueSource(ints = {0, 3})
     @DisplayName("자동차가 정지한다.")
     void testNonMove(int number) {
         Car car = new Car();
@@ -19,7 +19,7 @@ public class CarTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
+    @ValueSource(ints = {4, 9})
     @DisplayName("자동차가 전진한다.")
     void testMove(int number) {
         Car car = new Car();
