@@ -4,18 +4,24 @@ public class PositiveInteger {
 
     private final int value;
 
-    private PositiveInteger(String value){
-        this.value = Integer.parseInt(value);
+    private PositiveInteger(int value){
+        this.value = value;
     }
     public static PositiveInteger from(String value){
-        PositiveInteger ps = new PositiveInteger(value);
-        if(ps.value < 0){
-            throw new RuntimeException();
-        }
+        validate(value);
+        PositiveInteger ps = new PositiveInteger(Integer.parseInt(value));
         return ps;
     }
 
     public int getValue(){
         return value;
+    }
+
+    private static void validate(String value){
+        try{
+            Integer.parseInt(value);
+        }catch (NumberFormatException e){
+            throw new RuntimeException(e);
+        }
     }
 }
