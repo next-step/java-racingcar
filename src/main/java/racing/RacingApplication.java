@@ -5,27 +5,27 @@ import racing.strategy.MoveStrategy;
 import racing.strategy.impl.RandomForwardStrategy;
 import racing.view.ResultView;
 
+import java.util.List;
 import java.util.Scanner;
 
-import static racing.view.InputView.readNumberOfCars;
+import static racing.utils.GameCreateUtil.createGameWithStrategy;
+import static racing.view.InputView.readNameOfCars;
 import static racing.view.InputView.readNumberOfCycles;
 
 public class RacingApplication {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        int numOfCars = readNumberOfCars(scanner);
+        List<String> nameOfCars = readNameOfCars(scanner);
         int numOfCycles = readNumberOfCycles(scanner);
 
-        RacingGame game = setGame(numOfCars);
+        RacingGame game = setGame(nameOfCars);
         startGame(numOfCycles, game);
     }
 
-    private static RacingGame setGame(int numOfCars) {
-        RacingGame game = new RacingGame(numOfCars);
+    private static RacingGame setGame(List<String> nameOfCars) {
         MoveStrategy moveStrategy = new RandomForwardStrategy();
-        game.setMoveStrategyOfCars(moveStrategy);
-        return game;
+        return createGameWithStrategy(nameOfCars, moveStrategy);
     }
 
     private static void startGame(int numOfCycles, RacingGame game) {
@@ -34,7 +34,6 @@ public class RacingApplication {
             game.progressCycle();
             ResultView.printGameStatus(game);
         }
+        ResultView.printWinner(game);
     }
-
-
 }
