@@ -15,13 +15,16 @@ public class ResultView {
         return cars;
     }
 
-    public void printAll() {
+    public String getGameAsString() {
+        StringBuilder stringBuilder = new StringBuilder();
         for (Car car : cars) {
-            System.out.println(printCarDistance(car));
+            stringBuilder.append(getCarAsString(car));
+            stringBuilder.append("\n");
         }
+        return stringBuilder.toString();
     }
 
-    public static String printCarDistance(Car car) {
-        return "-".repeat(Math.max(0, car.getDistance()));
+    public static String getCarAsString(Car car) {
+        return car.getOwner() + " : " + "-".repeat(Math.max(0, car.getDistance()));
     }
 }

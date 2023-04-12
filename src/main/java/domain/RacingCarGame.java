@@ -1,35 +1,40 @@
 package domain;
 
-import io.ConsoleWriter;
 import io.InputView;
 import io.ResultView;
-import util.RandomGenerator;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingCarGame {
     private final InputView inputView;
     private final ResultView resultView;
-    public RacingCarGame(InputView inputView) {
+    public RacingCarGame(InputView inputView, List<Car> cars) {
         this.inputView = inputView;
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < inputView.getCarCount(); i++) {
-            cars.add(new Car());
-        }
         this.resultView = new ResultView(cars);
     }
-
-    public void startGame() {
-        ConsoleWriter.writeHeader();
-        for (int i = 0; i < inputView.getTryCount(); i++) {
-            move();
-            ConsoleWriter.write(resultView);
-        }
-    }
-    private void move() {
+    public ResultView move() {
         for (Car car : resultView.getCars()) {
-            car.move(RandomGenerator.getCarRandomInt(10));
+            car.move();
         }
+        return resultView;
+    }
+
+    public List<String> findWinner() {
+        int maxScore = findMaxScore();
+        return resultView.getCars()
+                .stream().filter(
+                        car -> car.getDistance() == maxScore
+                )
+                .map(Car::getOwner)
+                .collect(Collectors.toList());
+    }
+
+    private int findMaxScore() {
+        return resultView.getCars().stream().mapToInt(Car::getDistance).max().orElse(0);
+    }
+
+    public InputView getInputView() {
+        return inputView;
     }
 }

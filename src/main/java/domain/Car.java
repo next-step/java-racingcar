@@ -1,20 +1,26 @@
 package domain;
 
 public class Car {
-    private static final int RANDOM_CONDITION = 4;
     private int distance = 0;
+    private final MoveStrategy moveStrategy;
+    private final String owner;
 
-    public void move(int random) {
-        if (isCanMove(random)) {
+    public Car(String owner, MoveStrategy moveStrategy) {
+        this.owner = owner;
+        this.moveStrategy = moveStrategy;
+    }
+
+    public void move() {
+        if (moveStrategy.isCanMove()) {
             distance += 1;
         }
     }
 
-    private boolean isCanMove(int random) {
-        return random >= RANDOM_CONDITION;
-    }
-
     public int getDistance() {
         return distance;
+    }
+
+    public String getOwner() {
+        return owner;
     }
 }
