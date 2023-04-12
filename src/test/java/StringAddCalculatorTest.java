@@ -1,3 +1,4 @@
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -17,9 +18,8 @@ class StringAddCalculatorTest {
     @DisplayName("숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환한다.")
     @Test
     public void returnIntegerFromStringFormatInteger() {
-        String input = String.valueOf(new Random().nextInt());
-        Integer output = Integer.parseInt(input);
-        assertThat(StringAddCalculator.splitAndSum(input)).isEqualTo(output);
+        String input = "1";
+        assertThat(StringAddCalculator.splitAndSum(input)).isEqualTo(1);
     }
 
     @DisplayName("숫자 두개를 컴마(,) 구분자로 입력할 경우 두 숫자의 합을 반환한다.")
@@ -36,5 +36,19 @@ class StringAddCalculatorTest {
         assertThat(StringAddCalculator.splitAndSum(input)).isEqualTo(6);
     }
 
+    @DisplayName("문자 사이에 커스텀 문자열을 지정할 수 있다.")
+    @Test
+    public void splitByCustomDelimiter() {
+        String input = "//;\n1;2;3";
+        assertThat(StringAddCalculator.splitAndSum(input)).isEqualTo(6);
+    }
+
+    @DisplayName("음수가 하나라도 포함되어 있다면 RunTimeException 예외가 발생해야 한다.")
+    @Test
+    public void causeRunTimeException_whenContainNegative() {
+        String input = "-1,2,3";
+        Assertions.assertThatThrownBy(() -> StringAddCalculator.splitAndSum(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
 }
