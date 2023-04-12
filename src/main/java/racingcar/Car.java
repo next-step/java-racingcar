@@ -2,7 +2,9 @@ package racingcar;
 
 public class Car {
 
-    private final int location;
+    private final static int MOVE_CRITERIA = 4;
+
+    private int location;
 
     public Car() {
         location = 0;
@@ -10,5 +12,11 @@ public class Car {
 
     public int location() {
         return this.location;
+    }
+
+    public void move(int inputValue) {
+        if (inputValue >= MOVE_CRITERIA) {
+            location++;
+        }
     }
 }
