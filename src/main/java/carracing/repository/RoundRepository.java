@@ -10,12 +10,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 public class RoundRepository {
-    private final AtomicInteger PRIMARY_KEY;
+    private final AtomicInteger primaryKeyGenerator;
 
     private final Map<Integer, Round> roundDatabase;
 
     public RoundRepository() {
-        this.PRIMARY_KEY = new AtomicInteger(1);
+        this.primaryKeyGenerator = new AtomicInteger(1);
         this.roundDatabase = new HashMap<>();
     }
 
@@ -31,7 +31,7 @@ public class RoundRepository {
     }
 
     public void save(Round round) {
-        round.setRoundId(PRIMARY_KEY.getAndIncrement());
+        round.setRoundId(primaryKeyGenerator.getAndIncrement());
         roundDatabase.put(round.getRoundId(), round);
     }
 
