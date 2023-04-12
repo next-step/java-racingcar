@@ -30,10 +30,7 @@ public class PrintView {
     }
 
     private static void printDistance(int distance) {
-        for (int i = 0; i < distance; i++) {
-            System.out.print("-");
-        }
-
+        System.out.print("-".repeat(distance));
         System.out.println();
     }
 
