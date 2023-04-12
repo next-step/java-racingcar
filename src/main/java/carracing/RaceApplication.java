@@ -16,12 +16,6 @@ public class RaceApplication {
     private final ResultPresentation resultPresentation;
     private final RacingService racingService;
 
-    public RaceApplication(InputPresentation inputPresentation, ResultPresentation resultPresentation, RacingService racingService) {
-        this.inputPresentation = inputPresentation;
-        this.resultPresentation = resultPresentation;
-        this.racingService = racingService;
-    }
-
     public static void main(String[] args) {
         RaceApplication raceApplication = initialize();
         raceApplication.run();
@@ -37,6 +31,12 @@ public class RaceApplication {
             (ResultPresentationV0) ioc.get(ResultPresentationV0.class),
             (RacingService) ioc.get(RacingService.class)
         );
+    }
+
+    public RaceApplication(InputPresentation inputPresentation, ResultPresentation resultPresentation, RacingService racingService) {
+        this.inputPresentation = inputPresentation;
+        this.resultPresentation = resultPresentation;
+        this.racingService = racingService;
     }
 
     public void run() {
