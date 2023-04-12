@@ -11,9 +11,11 @@ public class NameValidator {
 
   private NameValidator() {}
 
-  public static List<String> validateCarNames(String carNames) {
+  public static List<String> validatedCarNames(String carNames) {
+    validateCarNamesEmpty(carNames);
+
     return Arrays.stream(carNames.split(","))
-            .peek(NameValidator::isEmpty)
+            .peek(NameValidator::validateCarNameEmpty)
             .peek(NameValidator::validateNameLength)
             .collect(Collectors.toList());
   }
@@ -28,13 +30,23 @@ public class NameValidator {
     return carName.length() <= NAME_MAXIMUM_LENGTH;
   }
 
-  private static void isEmpty(String carName) {
-    if (isNullOrEmpty(carName)) {
+  private static void validateCarNameEmpty(String carName) {
+    if (isEmptyCarName(carName)) {
       throw new IllegalArgumentException("레이싱카 이름을 입력하시지 않았습니다.");
     }
   }
 
-  private static boolean isNullOrEmpty(String carName) {
-    return carName == null || carName.isEmpty();
+  private static boolean isEmptyCarName(String carName) {
+    return carName.isEmpty();
+  }
+
+  private static void validateCarNamesEmpty(String carNames) {
+    if (isNullOrEmptyCarNames(carNames)) {
+      throw new IllegalArgumentException("등록할 레이싱카 이름들을 입력해주세요.");
+    }
+  }
+
+  private static boolean isNullOrEmptyCarNames(String carNames) {
+    return carNames == null || carNames.isEmpty();
   }
 }
