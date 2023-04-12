@@ -22,7 +22,7 @@ public class RacingGame {
         return instance;
     }
 
-    public RacingGame() {
+    private RacingGame() {
         random = new Random();
         inputView = InputView.getInstance();
         resultView = ResultView.getInstance();

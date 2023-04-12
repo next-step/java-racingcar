@@ -50,4 +50,7 @@ public class ResultView {
         }
         return instance;
     }
+
+    private ResultView() {
+    }
 }
