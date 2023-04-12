@@ -4,12 +4,12 @@ import java.util.Arrays;
 
 public class UserInput {
 
-    private final int numbersOfCar;
+    private final String[] namesForCars;
     private final int attemptCount;
 
-    public UserInput(int numbersOfCar, int attemptCount) {
-        isOverOne(numbersOfCar, attemptCount);
-        this.numbersOfCar = numbersOfCar;
+    public UserInput(String inputNames, int attemptCount) {
+        isOverOne(attemptCount);
+        this.namesForCars = inputNames.split(",");
         this.attemptCount = attemptCount;
     }
 
@@ -20,12 +20,17 @@ public class UserInput {
         }
     }
 
+
     private static void notOverOne() {
         throw new IllegalArgumentException("0 이상의 정수만 입력 가능합니다.");
     }
 
     public int getNumbersOfCar() {
-        return numbersOfCar;
+        return namesForCars.length;
+    }
+
+    public String[] getNamesForCars() {
+        return namesForCars;
     }
 
     public int getAttemptCount() {
