@@ -1,10 +1,13 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Game {
 
     private final int carAmount;
     private final int tryAmount;
-    private final Car[] cars;
+    private final List<Car> cars;
 
     public Game(final int carAmount, final int tryAmount) {
         validate(carAmount, tryAmount);
@@ -39,15 +42,15 @@ public class Game {
     }
 
     private void play() {
-        for (int j = 0; j < carAmount; j++) {
-            cars[j].move(RandomNumber.getNumber());
+        for (int i = 0; i < carAmount; i++) {
+            cars.get(i).move(RandomNumber.getNumber());
         }
     }
 
-    private Car[] createCars() {
-        Car[] cars = new Car[carAmount];
+    private List<Car> createCars() {
+        List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carAmount; i++) {
-            cars[i] = new Car();
+            cars.add(new Car());
         }
         return cars;
     }
