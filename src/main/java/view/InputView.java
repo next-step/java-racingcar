@@ -17,11 +17,11 @@ public class InputView {
     }
 
     public static int trial() {
-        String trial;
-        do {
-            System.out.println("시도할 횟수는 몇 회인가요?");
-            trial = scanner.next();
-        } while (isInvalidValue(trial));
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String trial = scanner.next();
+        if (isInvalidValue(trial)) {
+            return trial();
+        }
 
         return parseInt(trial);
     }
