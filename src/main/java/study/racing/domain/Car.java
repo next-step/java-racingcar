@@ -1,4 +1,4 @@
-package study;
+package study.racing.domain;
 
 public class Car {
     public int currentLocation;

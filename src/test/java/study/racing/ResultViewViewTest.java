@@ -1,14 +1,16 @@
-package study;
+package study.racing;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import study.racing.domain.Car;
+import study.racing.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class ResultViewTest {
+public class ResultViewViewTest {
     private List<Car> racingCars;
     private String RACING_RESULT;
     private List<Car> winningCars;

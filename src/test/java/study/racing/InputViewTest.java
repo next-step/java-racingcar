@@ -1,6 +1,8 @@
-package study;
+package study.racing;
 
 import org.junit.jupiter.api.Test;
+import study.racing.domain.Car;
+import study.racing.view.InputView;
 
 import java.util.List;
 

@@ -1,4 +1,6 @@
-package study;
+package study.racing.view;
+
+import study.racing.domain.Car;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +10,7 @@ import static java.lang.System.in;
 import static java.lang.System.out;
 
 public class InputView {
+    private static InputView instance = null;
     private static final Scanner scanner = new Scanner(in);
 
     public static int readTrialNumber() {
@@ -32,5 +35,16 @@ public class InputView {
             cars.add(new Car(1, name));
         }
         return cars;
+    }
+
+    public static InputView getInstance() {
+        if (instance == null) {
+            instance = new InputView();
+        }
+
+        return instance;
+    }
+
+    private InputView() {
     }
 }

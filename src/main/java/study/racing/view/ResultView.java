@@ -1,8 +1,11 @@
-package study;
+package study.racing.view;
+
+import study.racing.domain.Car;
 
 import java.util.List;
 
 public class ResultView {
+    private static ResultView instance = null;
 
     // 우승한 자동차를 출력
     public static String displayWinningCars(List<Car> winningCars) {
@@ -39,5 +42,12 @@ public class ResultView {
         }
         status += "\n";
         return status;
+    }
+
+    public static ResultView getInstance() {
+        if (instance == null) {
+            instance = new ResultView();
+        }
+        return instance;
     }
 }
