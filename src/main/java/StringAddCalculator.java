@@ -4,8 +4,10 @@ public class StringAddCalculator {
         if (isInvalidValue(val)) {
             return 0;
         }
-        int result = Integer.parseInt(val);
-        return result;
+        if (isContainDelimiter(val)) {
+            return splitByDelimiterAndSum(val);
+        }
+        return Integer.parseInt(val);
     }
 
     private static boolean isInvalidValue(String val) {
@@ -15,6 +17,18 @@ public class StringAddCalculator {
         return false;
     }
 
+    private static boolean isContainDelimiter(String val) {
+        return val.contains(",") || val.contains(";");
+    }
+
+    private static int splitByDelimiterAndSum(String val) {
+        int result = 0;
+        String[] split = val.split(",|:");
+        for (String string : split) {
+            result += Integer.parseInt(string);
+        }
+        return result;
+    }
 
 
 
