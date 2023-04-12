@@ -27,9 +27,6 @@ public class SetCollectionTest {
     @DisplayName("1단계_SetCollectionTest_요구사항1 - size() 했을 때 Set 의 크기인 3이 반환되는지 확인")
     @Test
     void size() {
-        //given
-
-        //when, then
         assertThat(numbers.size()).isEqualTo(3);
     }
 
@@ -37,19 +34,13 @@ public class SetCollectionTest {
     @ParameterizedTest(name = "testValue : {0}")
     @ValueSource(ints = {1, 2, 3})
     void contains_only_true_case(int number) {
-        //given
-
-        //when, then
-        assertThat(numbers.contains(number)).isTrue();
+        assertThat(numbers).contains(number);
     }
 
     @DisplayName("1단계_SetCollectionTest_요구사항3 - contains() 했을 때 1, 2, 3의 값은 존재하고, 4, 5의 값은 존재하지 않음을 확인")
     @ParameterizedTest(name = "testValue : {0}, 포함여부 : {1}")
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
     void contains_true_and_false_case(int number, boolean expected) {
-        //given
-
-        //when, then
         assertThat(numbers.contains(number)).isEqualTo(expected);
     }
 }
