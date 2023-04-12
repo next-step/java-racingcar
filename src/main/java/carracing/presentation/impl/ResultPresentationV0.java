@@ -7,7 +7,6 @@ import java.io.PrintStream;
 import java.util.logging.Logger;
 
 public class ResultPresentationV0 implements ResultPresentation {
-
     private static final Logger log = Logger.getLogger("ResultViewV0");
 
     private final PrintStream printStream;
@@ -28,6 +27,5 @@ public class ResultPresentationV0 implements ResultPresentation {
             });
             printStream.print("\n------\n");
         });
-
     }
 }

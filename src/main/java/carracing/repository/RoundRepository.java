@@ -10,7 +10,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 public class RoundRepository {
-
     private final AtomicInteger PRIMARY_KEY;
 
     private final Map<Integer, Round> roundDatabase;
@@ -29,9 +28,6 @@ public class RoundRepository {
 
     public Round findById(Integer roundId) {
         return roundDatabase.get(roundId);
-//        return roundDatabase.computeIfAbsent(roundId, (key) -> {
-//            throw new RuntimeException("Round " + key + " not found in Database");
-//        });
     }
 
     public void save(Round round) {
