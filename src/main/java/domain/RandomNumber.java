@@ -12,7 +12,7 @@ public class RandomNumber {
         return RANDOM.nextInt(OUT_OF_TEN);
     }
 
-    public static boolean isOverFour() {
+    public static boolean isOverFourOutOfTen() {
         return generateRandomOutOfTen() >= MINIMUM_MOVABLE_VALUE;
     }
 }

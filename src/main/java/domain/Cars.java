@@ -1,5 +1,7 @@
 package domain;
 
+import static domain.RandomNumber.isOverFourOutOfTen;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,9 +10,7 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(UserInput userInput) {
-        int numbersOfCar = userInput.getNumbersOfCar();
-        List<Car> cars = createCars(numbersOfCar);
-        this.cars = cars;
+        this.cars = createCars(userInput.getNumbersOfCar());
     }
 
     private static List<Car> createCars(int numbersOfCar) {
@@ -22,14 +22,21 @@ public class Cars {
     }
 
     public void makeCarsMove() {
-        cars.forEach(Car::attemptMove);
+        for (int i = 0; i < cars.size(); i++) {
+            cars.get(i).attemptMove(isMoved());
+        }
     }
 
-    public int getSizeOfCars() {
+    private boolean isMoved() {
+        return isOverFourOutOfTen();
+    }
+
+    public int countCars() {
         return cars.size();
     }
 
-    public int getDistance(int i) {
-        return cars.get(i).getCarCurrentDistance();
+    public int getDistance(int carIndex) {
+        return cars.get(carIndex)
+                .getCarCurrentDistance();
     }
 }

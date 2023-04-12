@@ -12,11 +12,9 @@ class CarTest {
     void distanceTest() {
         Car car = new Car();
 
-        for (int i = 0; i < 10; i++) {
-            car.attemptMove();
-        }
+        car.attemptMove(true);
 
-        assertThat(car.getCarCurrentDistance()).isGreaterThan(0);
+        assertThat(car.getCarCurrentDistance()).isEqualTo(1);
     }
 
 }

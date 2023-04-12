@@ -20,7 +20,7 @@ public class ResultView {
     }
 
     private static void drawDistanceBlock(Cars cars) {
-        for (int i = 0; i < cars.getSizeOfCars(); i++) {
+        for (int i = 0; i < cars.countCars(); i++) {
             int distance = cars.getDistance(i);
             drawConsole(distance);
         }

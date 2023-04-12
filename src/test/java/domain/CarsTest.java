@@ -15,7 +15,7 @@ class CarsTest {
         UserInput userInput = new UserInput(numberOfCars, attemptCount);
         Cars cars = new Cars(userInput);
 
-        assertThat(cars.getSizeOfCars()).isEqualTo(3);
+        assertThat(cars.countCars()).isEqualTo(3);
     }
 
     @Test
