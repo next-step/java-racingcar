@@ -25,7 +25,7 @@ class CarTest {
     @DisplayName("car의 처음 moveCount 초기값은 0이여야 한다.")
     void car_초기화() {
         // then
-        assertThat(carSpy.moveCount).isEqualTo(0);
+        assertThat(carSpy.getMoveCount()).isEqualTo(0);
     }
 
     @Test
@@ -38,7 +38,7 @@ class CarTest {
         carSpy.moveOrStop();
 
         // then
-        assertThat(carSpy.moveCount).isEqualTo(0);
+        assertThat(carSpy.getMoveCount()).isEqualTo(0);
     }
 
     @Test
@@ -51,7 +51,7 @@ class CarTest {
         carSpy.moveOrStop();
 
         //then
-        assertThat(carSpy.moveCount).isEqualTo(1);
+        assertThat(carSpy.getMoveCount()).isEqualTo(1);
     }
 
 
