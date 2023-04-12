@@ -1,9 +1,9 @@
 package racingcar;
 
-import racingcar.control.input.CarInput;
+import racingcar.control.input.CarNamesInput;
 import racingcar.control.input.StandardInput;
 import racingcar.control.input.TrialInput;
-import racingcar.control.input.validator.NumberValidator;
+import racingcar.control.input.validator.NamesValidator;
 import racingcar.control.input.validator.PositiveValidator;
 import racingcar.control.output.Printable;
 import racingcar.control.output.RacingOutput;
@@ -16,15 +16,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static java.util.stream.Collectors.toList;
+
 public class Program {
     public static void main(String[] args) {
-        NumberValidator validator = new PositiveValidator();
+        StandardInput<List<String>> namesInput = new CarNamesInput(new NamesValidator());
+        StandardInput<Integer> trialInput = new TrialInput(new PositiveValidator());
 
-        StandardInput carInput = new CarInput(validator);
-        StandardInput trialInput = new TrialInput(validator);
-
-        int carCount = carInput.getInt();
-        int trials = trialInput.getInt();
+        List<String> names = namesInput.getValue();
+        int trials = trialInput.getValue();
 
         List<Car> cars = createCars(carCount);
         Racing racing = new Racing(trials, cars);

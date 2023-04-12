@@ -3,7 +3,7 @@ package racingcar.control;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.control.input.CarInput;
+import racingcar.control.input.CarCountInput;
 import racingcar.control.input.StandardInput;
 import racingcar.control.input.TrialInput;
 
@@ -23,8 +23,8 @@ class InputTest {
         InputStream in = new ByteArrayInputStream(value.getBytes());
         System.setIn(in);
 
-        StandardInput input = new CarInput();
-        assertThatThrownBy(input::getInt)
+        StandardInput<Integer> input = new CarCountInput();
+        assertThatThrownBy(input::getValue)
                 .isInstanceOf(InputMismatchException.class)
                 .hasMessage("input must be integer");
 
@@ -39,8 +39,8 @@ class InputTest {
         InputStream in = new ByteArrayInputStream(value.getBytes());
         System.setIn(in);
 
-        StandardInput input = new TrialInput();
-        assertThatThrownBy(input::getInt)
+        StandardInput<Integer> input = new TrialInput();
+        assertThatThrownBy(input::getValue)
                 .isInstanceOf(InputMismatchException.class)
                 .hasMessage("input must be integer");
 
