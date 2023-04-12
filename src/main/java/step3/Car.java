@@ -3,23 +3,29 @@ package step3;
 import java.util.Random;
 
 public class Car {
-    public static int RANDOM_BOUND = 10;
-    public static int THRESHOLD = 4;
+    private static final int RANDOM_BOUND = 10;
+    private static final int THRESHOLD = 4;
     private static final String MARK = "-";
     private String trace = MARK;
 
     public void goOrStop() {
-        boolean go = testGoOrStop();
+        goOrStop(null);
+    }
+
+    void goOrStop(Boolean go) {
+        if (go == null) {
+            go = decideGoOrStop();
+        }
         if (go) {
             plusTrace();
         }
     }
 
-    public boolean testGoOrStop() {
+    private boolean decideGoOrStop() {
         return new Random().nextInt(RANDOM_BOUND) >= THRESHOLD;
     }
 
-    public void plusTrace() {
+    private void plusTrace() {
         this.trace += MARK;
     }
 
