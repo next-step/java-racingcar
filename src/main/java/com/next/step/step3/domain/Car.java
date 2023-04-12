@@ -2,16 +2,14 @@ package com.next.step.step3.domain;
 
 public class Car {
 
-    private static final int INIT_POSITION = 0;
-
     private static final int MOVE_CONDITION = 4;
 
     private Position position;
 
     private CarName carName;
 
-    public Car(String carName) {
-        this.position = new Position(INIT_POSITION);
+    public Car(int position, String carName) {
+        this.position = new Position(position);
         this.carName = new CarName(carName);
     }
 
