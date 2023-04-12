@@ -13,7 +13,7 @@ public class Main {
         Stages stages = new Stages(numberOfStage);
 
         OutputView.printResultMention();
-        while (stages.isFinished()) {
+        while (stages.isRunning()) {
             OutputView.printRemainStage(stages.currentStage());
             stages.startGame(cars, new RandomMovementStrategy());
             OutputView.printCarsStatus(cars);

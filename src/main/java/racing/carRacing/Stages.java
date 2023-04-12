@@ -16,7 +16,7 @@ public class Stages {
         return numberOfStages;
     }
 
-    public boolean isFinished() {
+    public boolean isRunning() {
         return numberOfStages.isOverZero();
     }
 }
