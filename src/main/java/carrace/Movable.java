@@ -1,7 +1,6 @@
 package carrace;
 
+@FunctionalInterface
 public interface Movable {
-    default boolean isMovable() {
-        return false;
-    }
+    boolean isMovable();
 }

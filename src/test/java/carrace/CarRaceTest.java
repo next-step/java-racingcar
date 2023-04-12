@@ -10,7 +10,7 @@ class CarRaceTest {
     void carTest() {
         final int numberOfLaps = 5;
         final int numberOfCars = 5;
-        final Cars cars = new Cars(numberOfCars, new RandomMovable());
+        final Cars cars = new Cars(numberOfCars, () -> true);
         final CarRace carRace = new CarRace(cars, numberOfLaps);
         carRace.start();
     }
