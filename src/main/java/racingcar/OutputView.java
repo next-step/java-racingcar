@@ -4,6 +4,9 @@ import java.util.List;
 
 public class OutputView {
 
+    private OutputView() {
+    }
+
     public static void printExecutionResult() {
         System.out.println("\n실행 결과");
     }

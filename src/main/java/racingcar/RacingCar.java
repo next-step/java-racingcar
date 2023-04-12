@@ -2,26 +2,33 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class RacingCar {
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        inputView.inputCarAmount();
-        inputView.inputTryAmount();
+        Scanner scanner = new Scanner(System.in);
 
-        List<Car> cars = getCars(inputView);
+        InputView.printCarInputGuideMessage();
+        int carAmount = scanner.nextInt();
+        InputView.validateCarAmount(carAmount);
+
+        InputView.printTryInputGuideMessage();
+        int tryAmount = scanner.nextInt();
+        InputView.validateTryAmount(tryAmount);
+
+        List<Car> cars = createCar(carAmount);
 
         Game game = new Game(cars);
         OutputView.printExecutionResult();
-        for (int i = 0; i < inputView.getTryAmount(); i++) {
+        for (int i = 0; i < tryAmount; i++) {
             game.play();
             OutputView.printCarPosition(game.getCars());
         }
     }
 
-    private static List<Car> getCars(InputView inputView) {
+    private static List<Car> createCar(int carAmount) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < inputView.getCarAmount(); i++) {
+        for (int i = 0; i < carAmount; i++) {
             cars.add(new Car());
         }
         return cars;
