@@ -42,12 +42,12 @@ public class RacingCarTest {
     @CsvSource(value = {"0:''", "1:'-'", "2:'--'", "3:'---'", "4:'----'", "5:'-----'"}, delimiter = ':')
     void makeCarMoveStateLine(int moveCount, String result) {
         //given
-        RacingCar racingCar = new RacingCar();
+        ResultView resultView = new ResultView();
 
         //when
-        String line = racingCar.makeCarMoveStateLine(moveCount);
+        String carMoveStateLine = resultView.getCarMoveStateLine(moveCount);
 
         //then
-        assertThat(line).isEqualTo(result);
+        assertThat(carMoveStateLine).isEqualTo(result);
     }
 }

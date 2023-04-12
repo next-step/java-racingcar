@@ -49,8 +49,7 @@ public class Main {
     }
 
     private static void printMoveStateLine(int j) {
-        String moveStateLine = racingCar.makeCarMoveStateLine(moveCounts.get(j));
-        resultView.printMoveStateLine(moveStateLine);
+        resultView.printMoveStateLine(moveCounts.get(j));
     }
 
     private static void createMoveCounts() {
