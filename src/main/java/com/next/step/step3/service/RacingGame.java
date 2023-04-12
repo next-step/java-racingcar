@@ -5,6 +5,8 @@ import com.next.step.step3.dto.InputDto;
 import com.next.step.step3.util.CarsFactory;
 import com.next.step.step3.view.ResultView;
 
+import java.util.List;
+
 public class RacingGame {
 
     public void executeRace(InputDto inputDto) {
@@ -16,5 +18,7 @@ public class RacingGame {
             cars.moveCars();
             resultView.showResultContents(cars);
         }
+        List<String> winnerNames = WinnerElection.electionWinners(cars);
+        resultView.showWinnerNames(winnerNames);
     }
 }
