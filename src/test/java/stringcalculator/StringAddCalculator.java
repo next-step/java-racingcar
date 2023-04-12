@@ -4,13 +4,12 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
-    private StringAddCalculator() {
-    }
-
     private static final String DELIMITER = ",|:";
     private static final String MINUS = "-\\d+";
     private static final String NOT_NUMBER = "\\D+";
     private static final String CUSTOM_SPLIT_DELIMITER = "//|\n";
+    private StringAddCalculator() {
+    }
 
     public static int calculate(String input) {
         if (input == null || input.isEmpty()) {

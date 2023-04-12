@@ -10,6 +10,7 @@ public class OutputView {
     public static void printExecutionResult() {
         System.out.println("\n실행 결과");
     }
+
     public static void printCarPosition(List<Car> cars) {
         for (Car car : cars) {
             printPosition(car.getPosition());

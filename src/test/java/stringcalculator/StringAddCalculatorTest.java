@@ -16,7 +16,7 @@ public class StringAddCalculatorTest {
         assertThat(result).isEqualTo(0);
     }
 
-     @Test
+    @Test
     public void splitAndSum_숫자하나() {
         int result = StringAddCalculator.calculate("1");
         assertThat(result).isEqualTo(1);

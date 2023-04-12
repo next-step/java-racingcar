@@ -33,7 +33,7 @@ public class SetCollectionTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1,2,3})
+    @ValueSource(ints = {1, 2, 3})
     @DisplayName("Set의 contains() 메소드를 활용해 1, 2, 3의 값이 존재하는지를 확인한다.")
     void testSetContains(int number) {
         //act
