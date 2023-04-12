@@ -1,5 +1,6 @@
 package carracing.service;
 
+import carracing.domain.Round;
 import carracing.domain.Score;
 import carracing.repository.RoundRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -72,7 +73,6 @@ public class RacingServiceTest {
         );
     }
 
-
     @DisplayName("score 는 0에서 9사이에서 random값을 갖는다")
     @Test
     public void getRandomFrom0To9() {
@@ -80,12 +80,15 @@ public class RacingServiceTest {
         racingService.racingStart(1, 1);
 
         //when
-        List<List<Score>> scores = racingService.findAllRounds().stream().map(round -> round.getScores()).collect(Collectors.toList());
+        List<List<Score>> scores = racingService
+            .findAllRounds()
+            .stream()
+            .map(Round::getScores)
+            .collect(Collectors.toList());
 
         //then
         scores.stream()
             .flatMap(Collection::stream)
             .forEach(score -> assertThat(score.getValue()).isBetween(0, 9));
     }
-
 }
