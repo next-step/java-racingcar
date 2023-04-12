@@ -13,10 +13,6 @@ public class InputDto {
         this.numOfAttempts = numOfAttempts;
     }
 
-    public int numOfCars() {
-        return this.carNames.size();
-    }
-
     public int numOfAttempts() {
         return numOfAttempts;
     }

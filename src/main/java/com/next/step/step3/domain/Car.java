@@ -1,5 +1,8 @@
 package com.next.step.step3.domain;
 
+import com.next.step.step3.domain.vo.CarName;
+import com.next.step.step3.domain.vo.Position;
+
 public class Car {
 
     private static final int MOVE_CONDITION = 4;

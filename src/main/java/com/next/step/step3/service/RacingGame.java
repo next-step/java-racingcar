@@ -18,6 +18,10 @@ public class RacingGame {
             cars.moveCars();
             resultView.showResultContents(cars);
         }
+        winnerElection(cars, resultView);
+    }
+
+    private void winnerElection(Cars cars, ResultView resultView) {
         List<String> winnerNames = WinnerElection.electionWinners(cars);
         resultView.showWinnerNames(winnerNames);
     }

@@ -10,6 +10,9 @@ public class WinnerElection {
 
     private static final int NOT_FOUND_MAX_POSITION = 0;
 
+    private WinnerElection() {
+    }
+
     public static List<String> electionWinners(Cars cars) {
         List<Car> carElements = cars.carElements();
         int maxPosition = findMaxPosition(carElements);
