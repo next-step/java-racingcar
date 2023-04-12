@@ -3,6 +3,8 @@ package game;
 import game.service.CarRacing;
 import game.view.InputView;
 
+import java.util.List;
+
 /**
  * 기능 요구사항
  * <pre>
@@ -16,9 +18,9 @@ import game.view.InputView;
 public class CarRacingApplication {
 
     public static void main(String[] args) {
-        int carCount = InputView.showAndGetCarCount();
+        List<String> carNames = InputView.showAndGetCarNames();
         int racingRep = InputView.showAndGetRacingRep();
-        CarRacing carRacing = new CarRacing(carCount, racingRep);
+        CarRacing carRacing = new CarRacing(carNames.size(), racingRep);
         carRacing.start();
     }
 }
