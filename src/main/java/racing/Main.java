@@ -1,26 +1,24 @@
 package racing;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        int numberOfCars = takeParameterFromUser("자동차 대수는 몇 대 인가요?");
-        int numberOfRound = takeParameterFromUser("시도할 회수는 몇 회 인가요?");
+        InputView.showCarCountInputMessage();
+        int numberOfCars = Integer.parseInt(scanner.nextLine());
+        InputView.showRoundInputMessage();
+        int numberOfRound = Integer.parseInt(scanner.nextLine());
 
         Cars cars = Cars.init(numberOfCars);
         System.out.println("실행 결과");
-        cars.showPositionsOfCars();
 
-        for (int i = 1; i < numberOfRound; i++) {
-            cars.tryToMoveAllCars();
-            cars.showPositionsOfCars();
+        for (int i = 0; i < numberOfRound; i++) {
+            cars.move();
+            List<Integer> positions = cars.getCarsPositions();
+            ResultView.showRepeatedDashWithCount(positions);
         }
-    }
-
-    private static int takeParameterFromUser(String guideMessage) {
-        System.out.println(guideMessage);
-        return Integer.parseInt(scanner.nextLine());
     }
 }
