@@ -5,6 +5,8 @@ import game.domain.Car;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import static java.util.stream.Collectors.joining;
+
 public final class ResultView {
 
     public static final String POSITION_SYMBOL = "-";
@@ -38,5 +40,12 @@ public final class ResultView {
 
     private static void displayNewLine() {
         System.out.println();
+    }
+
+    public static void displayCarWinners(List<Car> winners) {
+        String winnersAsString = winners.stream()
+                .map(Car::name)
+                .collect(joining(", "));
+        System.out.println(String.format("%s가 최종 우승했습니다.", winnersAsString));
     }
 }

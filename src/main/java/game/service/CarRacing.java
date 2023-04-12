@@ -36,6 +36,7 @@ public class CarRacing {
     public void start() {
         ResultView.displayExecuteResultMessage();
         startRacing();
+        ResultView.displayCarWinners(findWinners());
     }
 
     private void startRacing() {
@@ -43,5 +44,15 @@ public class CarRacing {
             cars.forEach(Car::drive);
             ResultView.displayCarPositions(cars);
         }
+    }
+
+    private List<Car> findWinners() {
+        int max = cars.stream()
+                .mapToInt(Car::position)
+                .max()
+                .orElseThrow(IllegalStateException::new);
+        return cars.stream()
+                .filter(car -> car.position() == max)
+                .collect(toUnmodifiableList());
     }
 }
