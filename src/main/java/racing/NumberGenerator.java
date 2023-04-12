@@ -6,11 +6,11 @@ import java.util.Random;
 
 public class NumberGenerator {
 
-    private final static Random random = new Random();
+    private static final Random RANDOM = new Random();
     public static List<Integer> generateRandomList(int carCount) {
         List<Integer> randomList = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            randomList.add(random.nextInt(10));
+            randomList.add(RANDOM.nextInt(10));
         }
         return randomList;
     }
