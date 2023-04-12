@@ -10,15 +10,16 @@ public class CarTest {
     @DisplayName("자동차를 생산한다.")
     @Test
     void test01() {
-        Car car = Car.create();
+        Car car = Car.create("saerang");
 
+        assertThat(car.name()).isEqualTo("saerang");
         assertThat(car.position()).isEqualTo(Position.init());
     }
 
     @DisplayName("4 이상일 경우 전진한다.")
     @Test
     void test02() {
-        Car car = Car.create();
+        Car car = Car.create("saerang");
 
         car.move(Position.MOVE_POSITION_CONDITION);
 
@@ -29,7 +30,7 @@ public class CarTest {
     @DisplayName("4 미만일 경우 움직이지 않는다.")
     @Test
     void test03() {
-        Car car = Car.create();
+        Car car = Car.create("saerang");
 
         car.move(Position.MOVE_POSITION_CONDITION - 1);
 
