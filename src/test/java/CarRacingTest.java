@@ -8,6 +8,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 class CarRacingTest {
 
@@ -57,8 +58,10 @@ class CarRacingTest {
         List<Car> result = records.winners();
 
         // then
-        assertThat(result).hasSize(1);
-        assertThat(result).contains(winner);
+        assertSoftly(softAssertions -> {
+            softAssertions.assertThat(result).hasSize(1);
+            softAssertions.assertThat(result).contains(winner);
+        });
     }
 
     @Test
@@ -78,7 +81,9 @@ class CarRacingTest {
         List<Car> result = records.winners();
 
         // then
-        assertThat(result).hasSize(2);
-        assertThat(result).contains(firstWinner, secondWinner);
+        assertSoftly(softAssertions -> {
+            softAssertions.assertThat(result).hasSize(2);
+            softAssertions.assertThat(result).contains(firstWinner, secondWinner);
+        });
     }
 }
