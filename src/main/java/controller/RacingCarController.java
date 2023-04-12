@@ -21,7 +21,6 @@ public class RacingCarController {
             OutputView.printCarsNameAndPositionStatus(racingCars);
         }
 
-        List<RacingCar> cars = racingCarGame.getCars();
-        OutputView.printWinners(RacingCarGame.getWinners(cars));
+        OutputView.printWinners(racingCarGame.getWinners());
     }
 }

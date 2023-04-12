@@ -45,7 +45,7 @@ public class RacingCarGame {
         return findWinningCars(cars);
     }
 
-    private static List<RacingCar> findWinningCars(List<RacingCar> cars) {
+    private List<RacingCar> findWinningCars(List<RacingCar> cars) {
         int maxPosition = cars.stream()
                 .mapToInt(RacingCar::getPosition)
                 .max()
