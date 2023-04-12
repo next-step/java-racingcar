@@ -11,9 +11,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("랜덤 움직임 전략 테스트")
 class RandomMovingStrategyTest {
 
-    @DisplayName("랜덤 값의 결과가 4미만 이라면 움직여선 안된다")
+    @DisplayName("랜덤 값의 결과가 0이상 4미만 이라면 움직여선 안된다")
     @ParameterizedTest
-    @ValueSource(ints = {0, 1, 2, 3})
+    @ValueSource(ints = {0, 3})
     void moveByZero(int randInt) {
         Random mock = new MockRandom(randInt);
         MovingStrategy strategy = new RandomMovingStrategy(mock);
@@ -24,7 +24,7 @@ class RandomMovingStrategyTest {
 
     @DisplayName("랜덤 값의 결과가 4이상 9이하라면 1만큼 움직여야 한다")
     @ParameterizedTest
-    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
+    @ValueSource(ints = {4, 9})
     void moveByOne(int randInt) {
         Random mock = new MockRandom(randInt);
         MovingStrategy strategy = new RandomMovingStrategy(mock);
