@@ -5,8 +5,8 @@ import study.step3.domain.Car;
 
 public class ResultView {
 
-  static final private int START_RACE_NUM = 0;
-  static final private String FOOTPRINT = "-";
+  private static final int START_RACE_NUM = 0;
+  private static final String FOOTPRINT = "-";
 
   private ResultView() {
   }

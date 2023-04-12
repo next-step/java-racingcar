@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 public class InputView {
 
-  static final private Scanner SCANNER = new Scanner(System.in);
-  static final private String QUESTION_NUM_OF_CARS = "자동차 대수는 몇 대 인가요?";
-  static final private String QUESTION_NUM_OF_ROUNDS = "시도할 회수는 몇 회 인가요?";
+  private static final Scanner SCANNER = new Scanner(System.in);
+  private static final String QUESTION_NUM_OF_CARS = "자동차 대수는 몇 대 인가요?";
+  private static final String QUESTION_NUM_OF_ROUNDS = "시도할 회수는 몇 회 인가요?";
 
   private InputView() {
   }
