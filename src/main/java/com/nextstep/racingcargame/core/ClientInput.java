@@ -1,23 +1,23 @@
 package com.nextstep.racingcargame.core;
 
 import static com.nextstep.racingcargame.view.ClientView.printSource;
-import static java.util.Arrays.stream;
 
 import java.util.Scanner;
 
 public class ClientInput {
 
-    private static final String HAS_NEGATIVE_MSG = "음수값으론 경기를 진행할 수 없습니다.";
-    private static final String CAR_QUESTION = "자동차 대수는 몇 대 인가요?";
+    private static final String HAS_NEGATIVE_MSG = "시도 횟수는 1 이상의 숫자만 가능합니다.";
+    private static final String CAR_QUESTION = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     private static final String TRY_QUESTION = "시도할 횟수는 몇 회 인가요?";
-    private final int numberOfCars;
     private final int numberOfTries;
 
-    public ClientInput(int numberOfCars, int numberOfTries) {
-        if (hasNegative(numberOfCars, numberOfTries)) {
+    private final CarNameChunk carNameChunk;
+
+    public ClientInput(String carNameClientInput, int numberOfTries) {
+        if (!isPositive(numberOfTries)) {
             throw new IllegalArgumentException(HAS_NEGATIVE_MSG);
         }
-        this.numberOfCars = numberOfCars;
+        this.carNameChunk = new CarNameChunk(carNameClientInput);
         this.numberOfTries = numberOfTries;
     }
 
@@ -25,32 +25,24 @@ public class ClientInput {
         Scanner scanner = new Scanner(System.in);
 
         printSource(CAR_QUESTION);
-        int carCount = scanner.nextInt();
+        String carNameClientInput = scanner.next();
 
         printSource(TRY_QUESTION);
         int tryCount = scanner.nextInt();
 
-        return new ClientInput(carCount, tryCount);
+        return new ClientInput(carNameClientInput, tryCount);
     }
 
-    private boolean hasNegative(int... clientInputs) {
-        return stream(clientInputs)
-                .anyMatch(clientInput -> clientInput < 1);
+    private boolean isPositive(int clientInput) {
+        return clientInput > 0;
     }
 
     public Cars createCarsByUserCarNumberInput() {
-        return new Cars(this.numberOfCars);
+        return new Cars(this.carNameChunk);
     }
 
     public int getNumberOfTries() {
         return this.numberOfTries;
     }
 
-    @Override
-    public String toString() {
-        return "ClientInput{" +
-                "numberOfCars=" + numberOfCars +
-                ", numberOfTries=" + numberOfTries +
-                '}';
-    }
 }
