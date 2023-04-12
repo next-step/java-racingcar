@@ -40,9 +40,7 @@ public class RaceApplication {
     }
 
     public void run() {
-        int participates = inputPresentation.participates();
-        int iterations = inputPresentation.iterations();
-        racingService.racingStart(participates, iterations);
+        racingService.racingStart(inputPresentation.participates(), inputPresentation.iterations());
         resultPresentation.printResult();
     }
 }
