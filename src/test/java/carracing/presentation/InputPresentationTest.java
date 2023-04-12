@@ -42,7 +42,7 @@ class InputPresentationTest {
 
         //when
         inAndOutTestHelper(input);
-        int result = inputPresentation.participates();
+        int result = inputPresentation.iterations();
 
         //then
         assertEquals(result, answer);
