@@ -3,9 +3,9 @@ package carracing.domain;
 import java.util.Objects;
 import java.util.function.IntUnaryOperator;
 
-import static carracing.common.ScoreSupport.PROGRESS;
-import static carracing.common.ScoreSupport.STOP;
-import static carracing.common.ScoreSupport.THRESHOLD;
+import static carracing.common.ScoreSupport.FORWARD_MARK;
+import static carracing.common.ScoreSupport.STOP_MARK;
+import static carracing.common.ScoreSupport.SCORE_THRESHOLD;
 
 public class Score {
     private static final IntUnaryOperator validate = value -> {
@@ -25,7 +25,7 @@ public class Score {
     }
 
     public String render() {
-        return value >= THRESHOLD ? PROGRESS : STOP;
+        return value >= SCORE_THRESHOLD ? FORWARD_MARK : STOP_MARK;
     }
 
     @Override
