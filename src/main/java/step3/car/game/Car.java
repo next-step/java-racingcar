@@ -1,4 +1,4 @@
-package step3.entity;
+package step3.car.game;
 
 import java.io.Serializable;
 import java.util.Objects;

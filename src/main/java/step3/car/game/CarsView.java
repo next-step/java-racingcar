@@ -1,11 +1,8 @@
-package step3.view;
-
-import step3.entity.Car;
-import step3.entity.Cars;
+package step3.car.game;
 
 import java.util.stream.IntStream;
 
-public class ResultView {
+public class CarsView {
 
     public void print(Cars cars) {
         cars.cars()

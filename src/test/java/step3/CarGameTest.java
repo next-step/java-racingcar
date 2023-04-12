@@ -1,7 +1,7 @@
 package step3;
 
 import org.junit.jupiter.api.Test;
-import step3.game.CarGame;
+import step3.car.game.CarGame;
 
 import java.util.Random;
 
