@@ -9,13 +9,8 @@ public class RacingApplication {
         int carCount = inputView.inputCarCount();
         int opportunity = inputView.inputOpportunity();
 
-        Cars cars = new Cars(RacingSupporter.generateCarList(carCount));
+        RacingGame racingGame = new RacingGame(carCount);
+        racingGame.start(opportunity);
 
-        for (int i = 0; i < opportunity; i++) {
-            List<Integer> randomList = NumberGenerator.generateRandomList(carCount);
-            RacingSupporter.raceCars(cars, randomList);
-
-            RacingPrinter.drawPositions(cars.valueOfCarsPosition());
-        }
     }
 }
