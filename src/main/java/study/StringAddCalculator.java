@@ -7,26 +7,19 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
+    private static String REGULAR_DELIMITER = ",|:";
+    private static Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
 
-    public static int splitAndSum(String exp) {
+    public static int sumWithStringNumbers(String exp) {
 
         if (isBlankOrNull(exp)) {
             return 0;
         }
 
         String[] stringNumbers = stringSplitWithRegex(exp);
-        List<Integer> numbers = parseStringToNumber(stringNumbers);
+        List<Integer> numbers = toInts(stringNumbers);
 
-        return getSum(numbers);
-    }
-
-    private static int getSum(List<Integer> numbers) {
-        int sum = 0;
-
-        for (Integer num : numbers) {
-            sum += num;
-        }
-        return sum;
+        return sum(numbers);
     }
 
     private static boolean isBlankOrNull(String exp) {
@@ -34,7 +27,27 @@ public class StringAddCalculator {
         return false;
     }
 
-    private static List<Integer> parseStringToNumber(String[] stringNumbers) throws RuntimeException {
+    private static String[] stringSplitWithRegex(String exp) {
+
+        exp = exp.trim();
+
+        Matcher m = CUSTOM_DELIMITER_PATTERN.matcher(exp);
+        if (m.find()) {
+            return customDelimiter(m.group(1), m.group(2));
+        }
+        return regularDelimiter(exp);
+    }
+
+    private static String[] customDelimiter(String customDelimiter, String exp) {
+        return exp.split(customDelimiter);
+    }
+
+    private static String[] regularDelimiter(String exp) {
+        String[] stringNumbers = exp.split(REGULAR_DELIMITER);
+        return stringNumbers;
+    }
+
+    private static List<Integer> toInts(String[] stringNumbers) throws RuntimeException {
         List<Integer> numbers = new ArrayList<>();
 
         for (String s : stringNumbers) {
@@ -51,28 +64,14 @@ public class StringAddCalculator {
         return numbers;
     }
 
-    private static String[] stringSplitWithRegex(String exp) {
+    private static int sum(List<Integer> numbers) {
+        int sum = 0;
 
-        exp = exp.trim();
-
-        if (Pattern.matches("//(.)\n(.*)", exp)) {
-            return customDelimiter(exp);
+        for (Integer num : numbers) {
+            sum += num;
         }
-        return regularDelimiter(exp);
-    }
-
-    private static String[] customDelimiter(String exp) {
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(exp);
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            return m.group(2).split(customDelimiter);
-        }
-        return null;
-    }
-
-    private static String[] regularDelimiter(String exp) {
-        String[] stringNumbers = exp.split(",|:");
-        return stringNumbers;
+        return sum;
     }
 
 }
+
