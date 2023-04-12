@@ -46,8 +46,8 @@ public class InputView {
 
     private static int getPositiveInput() {
         int input = scanner.nextInt();
-        while (input < 0) {
-            input = scanner.nextInt();
+        if(input < 0){
+            throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
         }
         return input;
     }
