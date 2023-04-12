@@ -20,8 +20,6 @@ public class RacingCar {
     }
 
     public List<Integer> getMoveCounts(int carCount) {
-        initMoveCounts(carCount);
-
         for (int i = BEGIN_INDEX; i < carCount; i++) {
             createMoveCount(i);
         }
@@ -29,7 +27,7 @@ public class RacingCar {
         return moveCounts;
     }
 
-    private void initMoveCounts(int carCount) {
+    public void initMoveCounts(int carCount) {
         for (int i = BEGIN_INDEX; i < carCount; i++) {
             initMoveCount();
         }

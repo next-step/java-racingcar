@@ -22,6 +22,8 @@ public class Main {
         resultView.printNewLine();
         resultView.executeResultMessage();
 
+        racingCar.initMoveCounts(carCount);
+
         for (int i = BEGIN_INDEX; i < tryCount; i++) {
             List<Integer> moveCounts = racingCar.getMoveCounts(carCount);
             resultView.printMoveStateLines(moveCounts, carCount);
