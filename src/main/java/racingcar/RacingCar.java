@@ -30,4 +30,15 @@ public class RacingCar {
     public static int getRandomNumber() {
         return random.nextInt(BOUND);
     }
+
+
+    public static void printCar(int[][] car) {
+        for (int[] row : car) {
+            for (int length : row) {
+                System.out.print("-".repeat(length));
+                System.out.println();
+            }
+            System.out.println();
+        }
+    }
 }

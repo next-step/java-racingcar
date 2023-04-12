@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.*;
 public class RacingCarTest {
 
     @Test
-    public void 문자_입력_받기() {
+    void 문자_입력_받기() {
         // Given
         String testInput = "3\n5\n";
         ByteArrayInputStream in = new ByteArrayInputStream(testInput.getBytes());
@@ -22,7 +22,7 @@ public class RacingCarTest {
     }
 
     @Test
-    public void 랜덤하게_전진() {
+    void 랜덤하게_전진() {
         // Given
         int iterations = 100;
 
@@ -38,5 +38,16 @@ public class RacingCarTest {
             if(randomNumber < RacingCar.PROCEEDING_NUM)
                 assertThat(proceed).isZero();
         }
+    }
+
+    @Test
+    void 자동차_출력하기() {
+        // Given
+        int [][] car = {{1, 1, 1}, {2, 1, 2}, {2, 1, 3}};
+
+        // When
+        RacingCar.printCar(car);
+
+        // Then
     }
 }
