@@ -19,14 +19,14 @@ public class StringCalculator {
         Matcher matcher = pattern.matcher(input);
 
         if (matcher.find()) {
-            delemiter = matcher.group().substring(2, matcher.end() -1);
+            delemiter = matcher.group().substring(2, matcher.end() - 1);
             input = matcher.replaceAll("");
         }
 
         String[] split = input.split(delemiter);
 
         int result = 0;
-        for (int i=0; i < split.length; i++) {
+        for (int i = 0; i < split.length; i++) {
             int tmp = Integer.parseInt(split[i]);
 
             validatePositive(tmp);
