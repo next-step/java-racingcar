@@ -3,11 +3,9 @@ package step3;
 
 public class RacingGame {
 
-    private final RandomGenerator randomGenerator;
     Cars cars;
 
     public RacingGame() {
-        randomGenerator = new RandomGenerator();
         cars = new Cars();
     }
 
@@ -17,8 +15,10 @@ public class RacingGame {
         }
     }
 
-    public Integer getRandomValue() {
-        return randomGenerator.getValue();
+    public void move(int numberOfTry) {
+        for (int i = 0; i < numberOfTry; i++) {
+            cars.move();
+        }
     }
 
     public Cars getCars() {

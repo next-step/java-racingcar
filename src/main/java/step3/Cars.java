@@ -18,4 +18,12 @@ public class Cars {
     public int size() {
         return cars.size();
     }
+
+    public void move() {
+        cars.forEach(Car::move);
+    }
+
+    public Car getCar(int i) {
+        return cars.get(i);
+    }
 }

@@ -2,11 +2,9 @@ package step3;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -27,15 +25,16 @@ public class RacingGameTest {
         assertThat(racingGame.getCars().size()).isEqualTo(numberOfCar);
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {3, 4, 6})
-    @DisplayName("입력받은 횟수만큼 랜덤수가 생성되는지 테스트")
-    public void initRandomTest(int numberOfTry) {
-        List<Integer> randoms = new ArrayList<>();
-        for (int i = 0; i < numberOfTry; i++) {
-            randoms.add(racingGame.getRandomValue());
+    @Test
+    @DisplayName("입력받은 횟수만큼 차가 움직이는지 테스트")
+    public void carMoveTest() {
+        int numberOfCars = 5;
+        int numberOfTry = 3;
+        racingGame.initCars(numberOfCars);
+        racingGame.move(numberOfTry);
+        Cars cars = racingGame.getCars();
+        for (int i = 0; i < cars.size(); i++) {
+            assertThat(cars.getCar(i).getPosition()).isBetween(0, 3);
         }
-        assertThat(randoms.size()).isEqualTo(numberOfTry);
     }
-
 }
