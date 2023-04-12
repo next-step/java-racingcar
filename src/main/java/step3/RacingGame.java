@@ -3,6 +3,7 @@ package step3;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
 
@@ -44,6 +45,23 @@ public class RacingGame {
             resultList.add(car.getNowRacingResult());
         }
         return resultList;
+    }
+
+    public List<String> getWinner() {
+        return getWinner(carList);
+    }
+
+    public List<String> getWinner(List<Car> carList) {
+        int maxLength = carList
+                .stream()
+                .mapToInt(car -> car.getTrace().length())
+                .max()
+                .orElseThrow();
+        return carList
+                .stream()
+                .filter(car -> car.getTrace().length() == maxLength)
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 
 }

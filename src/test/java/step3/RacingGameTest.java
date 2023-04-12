@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -53,6 +54,47 @@ public class RacingGameTest {
         for (int i = 0; i < result.size(); i++) {
             assertThat(result.get(i)).contains(names.get(i) + " : -");
         }
+    }
+
+    @Test
+    @DisplayName("가장 많이 움직인 사람이 우승한다. : 우승자가 유일한 경우")
+    public void getWinnerTestWithSingleWinner() {
+        RacingGame racingGame = new RacingGame();
+        List<Car> carList = this.getCarList();
+
+        carList.get(0).goOrStop(true);
+
+        List<String> winnerList = racingGame.getWinner(carList);
+        assertThat(winnerList).hasSize(1);
+        assertThat(winnerList).containsExactlyElementsOf(List.of("racer1"));
+    }
+
+    @DisplayName("가장 많이 움직인 사람이 우승한다. : 우승자가 2명인 경우")
+    @Test
+    public void getWinnerTestWithManyWinners() {
+        RacingGame racingGame = new RacingGame();
+        List<Car> carList = this.getCarList();
+
+        carList.get(1).goOrStop(true);
+        carList.get(2).goOrStop(true);
+
+        List<String> winnerList = racingGame.getWinner(carList);
+        assertThat(winnerList).hasSize(2);
+        assertThat(winnerList).containsExactlyElementsOf(List.of("racer2", "racer3"));
+    }
+
+    private List<Car> getCarList() {
+        List<Car> carList = new ArrayList<>();
+
+        Car racer1 = new Car("racer1");
+        Car racer2 = new Car("racer2");
+        Car racer3 = new Car("racer3");
+
+        carList.add(racer1);
+        carList.add(racer2);
+        carList.add(racer3);
+
+        return carList;
     }
 
 }

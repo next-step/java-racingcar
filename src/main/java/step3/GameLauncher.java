@@ -13,6 +13,7 @@ public class GameLauncher {
         for (int i = 0; i < count; i++) {
             ResultView.printEachResult(racingGame.race());
         }
+        ResultView.printWinner(racingGame.getWinner());
     }
 
 }

@@ -39,4 +39,12 @@ public class Car {
         return name + DELIMITER_FOR_RESULT + trace;
     }
 
+    public String getTrace() {
+        return this.trace;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
 }
