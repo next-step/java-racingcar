@@ -2,6 +2,7 @@ package step3;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -22,11 +23,10 @@ public class CarTest {
         assertThat(car.isOver(randomValue)).isEqualTo(result);
     }
 
-    @ParameterizedTest
-    @CsvSource(value = {"4,1", "3,0"})
+    @Test
     @DisplayName("move 메소드 확인")
-    public void moveTest(int randomValue, int position) {
-        car.move(randomValue);
-        assertThat(car.getPosition()).isEqualTo(position);
+    public void moveTest() {
+        car.move();
+        assertThat(car.getPosition()).isBetween(0, 1);
     }
 }
