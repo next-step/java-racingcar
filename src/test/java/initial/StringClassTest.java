@@ -1,3 +1,5 @@
+package initial;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +19,7 @@ public class StringClassTest {
         String[] result = test.split(",");
 
         //then
-        assertThat(result).containsExactly("1","2");
+        assertThat(result).containsExactly("1", "2");
     }
 
     @Test
@@ -38,14 +40,14 @@ public class StringClassTest {
     public void substringTest() {
         //given
         String test = "(1,2)";
-        
+
         //when
-        String result = test.substring(1, test.length()-1);
+        String result = test.substring(1, test.length() - 1);
 
         //then
         assertThat(result).isEqualTo("1,2");
     }
-    
+
     @Test
     @DisplayName("charAt 메서드로 문자열의 문자를 가져올 수 있다")
     public void charAtTest() {
@@ -62,7 +64,7 @@ public class StringClassTest {
         assertThat(b).isEqualTo('b');
         assertThat(c).isEqualTo('c');
     }
-    
+
     @Test
     @DisplayName("charAt으로 벗어난 위치의 문자열을 가져오면 인덱스 예외가 난다")
     public void charAtIndexOutOfExceptionTest() {

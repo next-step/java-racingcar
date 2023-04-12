@@ -1,5 +1,7 @@
-import exception.IllegalStringAddFormatException;
-import exception.NegativeNumberException;
+package calculator;
+
+import calculator.exception.IllegalStringAddFormatException;
+import calculator.exception.NegativeNumberException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;

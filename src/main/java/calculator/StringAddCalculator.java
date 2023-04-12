@@ -1,5 +1,7 @@
-import exception.IllegalStringAddFormatException;
-import exception.NegativeNumberException;
+package calculator;
+
+import calculator.exception.IllegalStringAddFormatException;
+import calculator.exception.NegativeNumberException;
 
 public class StringAddCalculator {
     private StringAddCalculator() {
@@ -13,15 +15,15 @@ public class StringAddCalculator {
      * <p>
      * 예시는 다음과 같습니다.
      * <pre>
-     *    int five = StringAddCalculator.sum("1,3;1")
-     *    int six = StringAddCalculator.sum("//_\n1_2_3")
+     *    int five = calculator.StringAddCalculator.sum("1,3;1")
+     *    int six = calculator.StringAddCalculator.sum("//_\n1_2_3")
      * </pre>
      *
      * @param text 계산할 문자열
      * @return 양수 정수의 합
      * @throws IllegalStringAddFormatException 문자열의 형식이 올바르지 않거나 음수 값이 있을 경우 예외 발생
      */
-    public static int sum(String text) throws IllegalStringAddFormatException {
+    public static int sum(String text) {
         if (isNullOrEmpty(text)) {
             return 0;
         }
