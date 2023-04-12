@@ -1,8 +1,10 @@
-import static view.ResultView.createResultView;
+import static domain.Cars.getEachCarMovedDistance;
+import static view.InputView.getInput;
+import static view.ResultView.drawDistanceBlock;
+import static view.ResultView.drawResultView;
 
 import domain.Cars;
 import domain.UserInput;
-import view.InputView;
 
 public class CarRacingApplication {
 
@@ -12,11 +14,14 @@ public class CarRacingApplication {
 
     private static void run(UserInput userInput) {
         int attemptCount = userInput.getAttemptCount();
-        createResultView(new Cars(userInput), attemptCount);
+        createResult(new Cars(userInput), attemptCount);
     }
 
-    private static UserInput getInput() {
-        return new InputView()
-                .getUserInputForRace();
+    private static void createResult(Cars cars, int attemptCount) {
+        drawResultView();
+        for (int i = 0; i < attemptCount; i++) {
+            cars.makeCarsMove();
+            drawDistanceBlock(getEachCarMovedDistance(cars));
+        }
     }
 }

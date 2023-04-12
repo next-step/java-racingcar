@@ -4,6 +4,7 @@ import static domain.RandomNumber.isOverFourOutOfTen;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Cars {
 
@@ -33,6 +34,13 @@ public class Cars {
 
     public int countCars() {
         return cars.size();
+    }
+
+    public static int[] getEachCarMovedDistance(Cars cars) {
+        return IntStream
+                .range(0, cars.countCars())
+                .map(cars::getDistance)
+                .toArray();
     }
 
     public int getDistance(int carIndex) {
