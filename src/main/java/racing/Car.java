@@ -7,17 +7,23 @@ public class Car {
     public Car() {
 
     }
-    public void addCar(List<Car> carList) {
-        carList.add(new Car());
+    public Car addCar(){
+        return new Car();
     }
     public void move(int randomNumber) {
         if(randomNumber >= 4){
             this.location += 1;
         }
     }
+
+    @Override
+    public String toString() {
+        return "-";
+    }
+
     public void printLocation() {
         for (int i = 0; i < this.location; i++) {
-            System.out.print("-");
+            toString();
         }
         System.out.println();
     }

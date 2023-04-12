@@ -14,7 +14,7 @@ public class Main {
         Car car = new Car();
         List<Car> carList = new ArrayList<>();
         for (int i = 0; i < inputView.inputCarCount; i++) {
-            car.addCar(carList);
+            carList.add(car.addCar());
         }
 
         for (int i = 0; i < inputView.tryCarCount; i++) {
