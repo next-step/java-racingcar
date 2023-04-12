@@ -2,8 +2,10 @@ package racing;
 
 import static org.assertj.core.api.Assertions.*;
 
-import java.util.stream.IntStream;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import racing.domain.Car;
 
 class CarTest {
 
@@ -13,18 +15,21 @@ class CarTest {
     assertThat(car.position()).isEqualTo(0);
   }
 
-  @Test
-  void 움직일_수_있다() {
+  @ParameterizedTest
+  @ValueSource(ints = {4, 5})
+  void 자동차_움직임(int number) {
     Car car = new Car();
-    car.move();
+    car.move(number);
     assertThat(car.position()).isEqualTo(1);
   }
 
-  @Test
-  void 현재_자동차_위치_반환() {
+  @ParameterizedTest
+  @ValueSource(ints = {0, 1, 2, 3})
+  void 자동차_정지(int number) {
     Car car = new Car();
-    IntStream.range(0, 5)
-        .forEach(i -> car.move());
-    assertThat(car.position()).isEqualTo(5);
+    car.move(number);
+    assertThat(car.position()).isEqualTo(0);
   }
+
+
 }
