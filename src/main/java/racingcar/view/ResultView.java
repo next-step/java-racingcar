@@ -15,13 +15,27 @@ public class ResultView {
             return;
         }
 
-        int races = cars.get(0).getState().size();
-        for (int race = 0; race < races; race++) {
+        int labs = cars.get(0).getState().size();
+        for (int lab = 0; lab < labs; lab++) {
             for (int car = 0; car < cars.size(); car++) {
-                System.out.println("-".repeat(cars.get(car).getState().get(race)));
+                System.out.println(cars.get(car).getName() + " : "+"-".repeat(cars.get(car).getState().get(lab)));
             }
             System.out.println();
         }
     }
 
+    public static void viewWinners(List<Car> winners) {
+        if(winners.size() == 0){
+            return;
+        }
+
+        for(int car=0; car < winners.size(); car++){
+            System.out.print(winners.get(car).getName());
+            if(car != winners.size() -1) {
+                System.out.print(", ");
+            }
+        }
+
+        System.out.print("가 최종 우승했습니다.");
+    }
 }

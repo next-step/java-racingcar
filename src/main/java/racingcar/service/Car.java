@@ -5,15 +5,30 @@ import java.util.*;
 import static racingcar.RacingCarApplication.random;
 
 public class Car {
-    private final List<Integer> state;
+    private String name;
+    private List<Integer> state;
+
+    public Car(String name) {
+        this.name = name;
+    }
 
     public Car(List<Integer> state) {
+        this.state = state;
+    }
+
+    public Car(String name, List<Integer> state) {
+        this.name = name;
         this.state = state;
     }
 
     public List<Integer> getState() {
         return this.state;
     }
+
+    public String getName() {
+        return this.name;
+    }
+
 
     public static List<Integer> race(int labs) {
         List<Integer> carState = new ArrayList<>();
@@ -30,11 +45,7 @@ public class Car {
     }
 
     private static int moveOrStop(int currentState) {
-        if (moveIfOver4(random.nextInt(10))) {
-            return move(currentState);
-        }
-
-        return stop(currentState);
+        return moveIfOver4(random.nextInt(10)) ? move(currentState) : stop(currentState);
     }
 
     public static int move(int currentState) {
@@ -46,9 +57,6 @@ public class Car {
     }
 
     public static boolean moveIfOver4(int number) {
-        if (number < 4) {
-            return false;
-        }
-        return true;
+        return number >= 4 ? true : false;
     }
 }

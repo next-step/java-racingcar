@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static racingcar.service.Car.moveIfOver4;
 import static racingcar.service.Car.race;
@@ -31,4 +33,14 @@ public class CarTest {
     void 멈춘다() {
         assertThat(stop(3)).isEqualTo(3);
     }
+
+    @Test
+    void 이름() {
+        Car test = new Car("테스트", race(3));
+        assertThat(test.getName()).isEqualTo("테스트");
+
+        Car test2 = new Car("테스트2");
+        assertThat(test2.getName()).isEqualTo("테스트2");
+    }
+
 }
