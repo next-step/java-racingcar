@@ -10,6 +10,9 @@ public class GameLauncher {
         ResultView.printResultMessage();
 
         racingGame.preparingGame(namesOfCars, count);
+        for (int i = 0; i < count; i++) {
+            ResultView.printEachResult(racingGame.race());
+        }
     }
 
 }

@@ -15,10 +15,9 @@ public class RacingGame {
 
     public void preparingGame(String namesOfCars, int count) {
         checkIfCountPositive(count);
-
-        List<String> namesList = getNames(namesOfCars);
-        for (String name : namesList) {
+        for (String name : getNames(namesOfCars)) {
             checkLengthOfName(name);
+            carList.add(new Car(name));
         }
     }
 
@@ -36,6 +35,15 @@ public class RacingGame {
         if (name.length() > NAME_LENGTH_LIMIT) {
             throw new IllegalArgumentException(ERROR_MESSAGE_FOR_NAME_LENGTH_LIMIT);
         }
+    }
+
+    public List<String> race() {
+        List<String> resultList = new ArrayList<>();
+        for (Car car : carList) {
+            car.goOrStop();
+            resultList.add(car.getNowRacingResult());
+        }
+        return resultList;
     }
 
 }
