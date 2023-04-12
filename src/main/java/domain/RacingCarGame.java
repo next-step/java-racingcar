@@ -36,7 +36,7 @@ public class RacingCarGame {
 
     public List<RacingCar> playAndReturnCars() {
         moveCars();
-        return cars;
+        return this.cars;
     }
 
     public void moveCars() {
@@ -46,7 +46,7 @@ public class RacingCarGame {
     }
 
     public List<RacingCar> getWinners() {
-        return findWinningCars(this.getCars());
+        return findWinningCars(this.cars);
     }
 
     private List<RacingCar> findWinningCars(List<RacingCar> cars) {
