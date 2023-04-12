@@ -6,7 +6,7 @@ public class Car {
 
     private Car(String name, Position position) {
         if (name.length() > 5) {
-            throw new IllegalArgumentException("자동차의 이름은 5글자를 초과할 수 없습니다. 입력된 이름:" + name);
+            throw new IllegalArgumentException("자동차의 이름은 5글자를 초과할 수 없습니다. 입력된 이름 : " + name);
         }
 
         this.position = position;
