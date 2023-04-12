@@ -2,9 +2,16 @@ package util;
 
 import java.util.Arrays;
 import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import static util.Constants.*;
 
 public class StringAddCalculator {
+    public static final int ZERO = 0;
+    public static final String DELIMITER_REGEX_BASIC = ",|:";
+    public static final Pattern PATTERN_DELIMITER_CUSTOM = Pattern.compile("//(.)\n(.*)");
+    public static final int IDX_CUSTOM_DELIMITER = 1;
+    public static final int IDX_INPUT_STRING = 2;
 
     public static int splitAndSum(String input) {
         if (input == null || input.isBlank()) {
