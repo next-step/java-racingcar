@@ -5,12 +5,12 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racingcar.service.RacingCar.moveIfOver4;
-import static racingcar.service.RacingCar.race;
-import static racingcar.service.RacingCar.move;
-import static racingcar.service.RacingCar.stop;
+import static racingcar.service.Car.moveIfOver4;
+import static racingcar.service.Car.race;
+import static racingcar.service.Car.move;
+import static racingcar.service.Car.stop;
 
-public class RacingCarTest {
+public class CarTest {
     @ParameterizedTest
     @CsvSource(value = {"0,false", "1,false", "2,false", "3,false", "4,true", "5,true", "6,true", "7,true", "8,true", "9,true"})
     void 숫자4이상이_나오면_전진(int number, boolean expected) {

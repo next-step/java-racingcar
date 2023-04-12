@@ -4,10 +4,10 @@ import java.util.*;
 
 import static racingcar.RacingCarApplication.random;
 
-public class RacingCar {
+public class Car {
     private final List<Integer> state;
 
-    public RacingCar(List<Integer> state) {
+    public Car(List<Integer> state) {
         this.state = state;
     }
 
@@ -15,13 +15,13 @@ public class RacingCar {
         return this.state;
     }
 
-    public static List<Integer> race(int raceTry) {
+    public static List<Integer> race(int labs) {
         List<Integer> carState = new ArrayList<>();
 
         int currentState = 0;
-        for (int race = 0; race < raceTry; race++) {
-            if (race != 0) {
-                currentState = carState.get(race - 1);
+        for (int lab = 0; lab < labs; lab++) {
+            if (lab != 0) {
+                currentState = carState.get(lab - 1);
             }
             carState.add(moveOrStop(currentState));
         }
