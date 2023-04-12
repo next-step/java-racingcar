@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.view.ConsoleView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,12 +53,4 @@ public class RacingGame {
             view.printCarLocation(car.location());
         }
     }
-
-    public static void main(String[] args) {
-        RacingGame racingGame =
-                new RacingGame(new ConsoleView(), new RandomGenerator(0, 9));
-        
-        racingGame.run();
-    }
-
 }
