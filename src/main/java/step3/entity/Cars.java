@@ -1,4 +1,4 @@
-package step3;
+package step3.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,6 @@ public class Cars {
     }
 
     public void move() {
-        System.out.println("이동");
         values.stream()
                 .forEach(car ->
                         car.move(randomNumber())
@@ -26,5 +25,9 @@ public class Cars {
 
     private int randomNumber() {
         return random.nextInt(RANDOM_NUMBER_BOUND);
+    }
+
+    public List<Car> cars() {
+        return values;
     }
 }

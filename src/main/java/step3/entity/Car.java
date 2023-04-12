@@ -1,4 +1,4 @@
-package step3;
+package step3.entity;
 
 import java.io.Serializable;
 import java.util.Objects;

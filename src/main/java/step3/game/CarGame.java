@@ -1,11 +1,14 @@
-package step3;
+package step3.game;
+
+import step3.entity.Cars;
+import step3.view.ResultView;
 
 import java.util.stream.IntStream;
 
 public class CarGame {
     private final Cars cars;
     private final int moves;
-    private final CarsView view;
+    private final ResultView view;
 
     public CarGame(int numberOfCars, int numberOfMoves) {
         if (numberOfCars <= 0 || numberOfMoves <= 0) {
@@ -13,7 +16,7 @@ public class CarGame {
         }
         cars = new Cars(numberOfCars);
         moves = numberOfMoves;
-        view = new CarsView();
+        view = new ResultView();
     }
 
     public void start() {
