@@ -1,4 +1,4 @@
-package racing;
+package racing.controller.input;
 
 public class UserInput {
 
