@@ -29,4 +29,9 @@ public class ConsoleView implements InputView, OutputView {
         }
         System.out.println();
     }
+
+    @Override
+    public void printResultStatement() {
+        System.out.println("실행 결과");
+    }
 }

@@ -7,4 +7,6 @@ public interface OutputView {
     void printQuestionAboutTheNumberOfTrial();
 
     void printCarLocation(int location);
+
+    void printResultStatement();
 }
