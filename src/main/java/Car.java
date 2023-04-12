@@ -1,5 +1,7 @@
 public class Car {
 
+    private final int MAX_LENGTH_OF_NAME = 5;
+
     private String name;
     private int distance;
 
@@ -9,8 +11,8 @@ public class Car {
     }
 
     private void checkLengthOfName(String name) {
-        if (name.length() > 5) {
-            throw new IllegalArgumentException("이름이 5자 이상이 될 수 없습니다! : " + name);
+        if (name.length() > MAX_LENGTH_OF_NAME) {
+            throw new IllegalArgumentException("이름을 " +  MAX_LENGTH_OF_NAME + " 자 이하로 입력해주세요. : " + name);
         }
     }
 
