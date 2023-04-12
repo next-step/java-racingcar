@@ -43,8 +43,8 @@ public class RacingCarTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 3, 5})
     void 입력_숫자만큼_라운드를_반복함(int round) {
-        Map<Integer, AtomicInteger> cars = iteratePeriod(round, generateCars(round));
-        assertThat(cars.size()).isEqualTo(round);
+        int i = iteratePeriod(round, generateCars(round));
+        assertThat(i).isEqualTo(round);
     }
 
     @Test

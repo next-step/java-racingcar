@@ -22,14 +22,13 @@ public class Car {
         return random.nextInt(10);
     }
 
-    public static Map<Integer, AtomicInteger> iteratePeriod(int period, Map<Integer, AtomicInteger> cars) {
-        System.out.println("실행결과");
-        for (int i = 0; i < period; i++) {
-            Map<Integer, AtomicInteger> periods = tryPeriod(cars);
+    public static int iteratePeriod(int period, Map<Integer, AtomicInteger> cars) {
+        int i;
+        for (i = 0; i < period; i++) {
+            tryPeriod(cars);
         }
 
-
-        return cars;
+        return i;
     }
 
     public static boolean isRandomNumberOverFour() {

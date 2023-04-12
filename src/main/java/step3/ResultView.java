@@ -14,6 +14,10 @@ public class ResultView {
 
     }
 
+    public static void startUI() {
+        System.out.println("실행결과");
+    }
+
     private static void drawDash(int count) {
         for (int i = 0; i <= count; i++) {
             System.out.print(DASH);
