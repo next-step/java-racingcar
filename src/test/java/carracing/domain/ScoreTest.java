@@ -73,7 +73,7 @@ public class ScoreTest {
         //when
         Score score = new Score(input);
         //then
-        assertEquals("-", score.toProgress());
+        assertEquals("-", score.render());
     }
 
     @DisplayName("전진한다 5인경우")
@@ -84,7 +84,7 @@ public class ScoreTest {
         //when
         Score score = new Score(input);
         //then
-        assertEquals("-", score.toProgress());
+        assertEquals("-", score.render());
     }
 
     @DisplayName("정지한다 2인경우")
@@ -95,7 +95,7 @@ public class ScoreTest {
         //when
         Score score = new Score(input);
         //then
-        assertEquals("", score.toProgress());
+        assertEquals("", score.render());
     }
 
     @DisplayName("정지한다 3인경우")
@@ -106,6 +106,6 @@ public class ScoreTest {
         //when
         Score score = new Score(input);
         //then
-        assertEquals("", score.toProgress());
+        assertEquals("", score.render());
     }
 }

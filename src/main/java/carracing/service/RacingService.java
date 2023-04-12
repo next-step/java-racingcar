@@ -56,9 +56,9 @@ public class RacingService {
 
     private String calRecord(AtomicInteger integer, Score score) {
         if (isFirstRound()) {
-            return score.toProgress();
+            return score.render();
         }
-        return score.toProgress() + prevScoreProgress(integer.getAndIncrement());
+        return score.render() + prevScoreProgress(integer.getAndIncrement());
     }
 
     private boolean isFirstRound() {

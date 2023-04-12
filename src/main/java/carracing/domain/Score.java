@@ -23,7 +23,7 @@ public class Score {
         return value;
     }
 
-    public String toProgress() {
+    public String render() {
         return value >= THRESHOLD ? PROGRESS : STOP;
     }
 
