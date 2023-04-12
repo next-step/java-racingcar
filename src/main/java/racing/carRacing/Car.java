@@ -7,17 +7,17 @@ public class Car {
     private int position;
     private String name;
 
-    public Car(String name) {
-        position = FIRST_POSITION;
-        checkWrongString(name);
+    public Car(int position, String name) {
+        checkNameValidation(name);
+        this.position = position;
         this.name = name;
     }
 
-    public Car(int position) {
-        this.position = position;
+    public Car(String name) {
+        this(FIRST_POSITION, name);
     }
 
-    private void checkWrongString(String name) {
+    private void checkNameValidation(String name) {
         isNullOrEmpty(name);
         isWrongLength(name);
     }

@@ -42,7 +42,7 @@ class CarTest {
     @ValueSource(ints = {4, 5, 8, 9})
     @DisplayName("이동 테스트")
     void runMoveTest(int input) {
-        Car car = new Car(input);
+        Car car = new Car(input, "test");
 
         car.run(() -> true);
 
@@ -53,7 +53,7 @@ class CarTest {
     @ValueSource(ints = {0, 1, 2, 3})
     @DisplayName("중지 테스트")
     void runStopTest(int input) {
-        Car car = new Car(input);
+        Car car = new Car(input, "test");
 
         car.run(() -> false);
 
@@ -65,7 +65,7 @@ class CarTest {
     void winnerCarTest() {
         int maxPosition = 3;
 
-        Car car = new Car(3);
+        Car car = new Car(3, "test");
 
         assertThat(car.equalsMaxPosition(maxPosition)).isTrue();
     }
@@ -75,7 +75,7 @@ class CarTest {
     void loserCarTest() {
         int maxPosition = 3;
 
-        Car car = new Car(2);
+        Car car = new Car(2, "test");
 
         assertThat(car.equalsMaxPosition(maxPosition)).isFalse();
     }
