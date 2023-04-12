@@ -9,7 +9,6 @@ public class Main {
     private static ResultView resultView;
     private static InputView inputView;
     private static RacingCar racingCar;
-    private static List<Integer> moveCounts;
 
     public static void main(String[] args) {
         initObjects();
@@ -24,9 +23,8 @@ public class Main {
         resultView.executeResultMessage();
 
         for (int i = BEGIN_INDEX; i < tryCount; i++) {
-            racingCar.createMoveCounts(moveCounts, carCount);
+            List<Integer> moveCounts = racingCar.getMoveCounts(carCount);
             resultView.printMoveStateLines(moveCounts, carCount);
-            resultView.printNewLine();
         }
 
         inputView.closeScanner();
@@ -35,7 +33,10 @@ public class Main {
     private static void initObjects() {
         resultView = new ResultView();
         inputView = new InputView();
-        racingCar = new RacingCar();
-        moveCounts = new ArrayList<>();
+        racingCar = new RacingCar(initMoveCounts());
+    }
+
+    private static List<Integer> initMoveCounts() {
+        return new ArrayList<>();
     }
 }

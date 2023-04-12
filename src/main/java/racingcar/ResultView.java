@@ -22,21 +22,22 @@ public class ResultView {
         System.out.println();
     }
 
+    public void printMoveStateLines(List<Integer> moveCounts, int carCount) {
+        for (int i = BEGIN_INDEX; i < carCount; i++) {
+            printMoveStateLine(moveCounts, i);
+        }
+        printNewLine();
+    }
+
+    private void printMoveStateLine(List<Integer> moveCounts, int idx) {
+        System.out.println(getCarMoveStateLine(moveCounts.get(idx)));
+    }
+
     public String getCarMoveStateLine(int moveCount) {
         StringBuilder sb = new StringBuilder();
         for (int i = BEGIN_INDEX; i < moveCount; i++) {
             sb.append(CAR_MOVE_STATE_LINE);
         }
         return sb.toString();
-    }
-
-    public void printMoveStateLines(List<Integer> moveCounts, int carCount) {
-        for (int i = BEGIN_INDEX; i < carCount; i++) {
-            printMoveStateLine(moveCounts, i);
-        }
-    }
-
-    private void printMoveStateLine(List<Integer> moveCounts, int idx) {
-        System.out.println(getCarMoveStateLine(moveCounts.get(idx)));
     }
 }
