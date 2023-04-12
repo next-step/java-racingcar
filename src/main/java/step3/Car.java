@@ -16,7 +16,7 @@ public class Car {
         }
     }
 
-    private static boolean isMovable(int input) {
+    private boolean isMovable(int input) {
         if (input < MIN_NUMBER || input > MAX_NUMBER) {
             throw new RuntimeException("유효하지 않은 숫자입니다.");
         }
