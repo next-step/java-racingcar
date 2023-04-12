@@ -25,7 +25,7 @@ class CarTest {
             Car car = new Car();
             int beforeLocation = car.location();
 
-            car.move(4);
+            car.moveDependingOn(4);
             int afterLocation = car.location();
 
             Assertions.assertThat(afterLocation).isEqualTo((beforeLocation + 1));
@@ -36,7 +36,7 @@ class CarTest {
             Car car = new Car();
             int beforeLocation = car.location();
 
-            car.move(3);
+            car.moveDependingOn(3);
             int afterLocation = car.location();
 
             Assertions.assertThat(afterLocation).isEqualTo(beforeLocation);

@@ -14,7 +14,7 @@ public class Car {
         return this.location;
     }
 
-    public void move(int inputValue) {
+    public void moveDependingOn(int inputValue) {
         if (inputValue >= MOVE_CRITERIA) {
             location++;
         }
