@@ -41,4 +41,7 @@ public class Car {
         return position;
     }
 
+    public String name() {
+        return carName;
+    }
 }

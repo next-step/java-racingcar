@@ -14,15 +14,21 @@ public final class ResultView {
     }
 
     public static void displayExecuteResultMessage() {
+        displayNewLine();
         System.out.println("실행 결과");
     }
 
     public static void displayGameResult(List<Car> cars) {
         for (Car car : cars) {
+            displayName(car.name());
             displayPosition(car);
             displayNewLine();
         }
         displayNewLine();
+    }
+
+    private static void displayName(String name) {
+        System.out.print(name + " : ");
     }
 
     private static void displayPosition(Car car) {
