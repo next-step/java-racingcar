@@ -1,11 +1,12 @@
 package racingcar.domain;
 
 public class Car {
+    public static final int MAX_NAME_LENGTH = 5;
     private final String name;
     private final Position position;
 
     private Car(String name, Position position) {
-        if (name.length() > 5) {
+        if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("자동차의 이름은 5글자를 초과할 수 없습니다. 입력된 이름 : " + name);
         }
 
