@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import racingcar.strategy.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RacingCarTest {
 
@@ -23,5 +24,13 @@ class RacingCarTest {
         racingCar.goOrStop();
         assertThat(testAlwaysStopStrategy.getPosition())
             .isZero();
+    }
+
+    @Test
+    void 자동차_이름은_5자를_초과할_수_없다() {
+        TestAlwaysMoveStrategy testAlwaysMoveStrategy = new TestAlwaysMoveStrategy();
+        assertThatThrownBy(() -> new RacingCar("pobipobi", testAlwaysMoveStrategy))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("자동차 이름은 5자를 초과할 수 없습니다.");
     }
 }

@@ -1,8 +1,9 @@
 package racingcar;
 
-import racingcar.strategy.PrintStrategy;
+import racingcar.strategy.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RacingCarGame {
@@ -17,28 +18,31 @@ public class RacingCarGame {
         this.printStrategy = printStrategy;
     }
 
+    public static RacingCarGame setUpGame(String[] carNames) {
+        List<RacingCar> racingCars = new ArrayList<>();
+        MoveStrategy moveStrategy = new RandomMoveStrategy(new DefaultRandomStrategy(), 4);
+        for (int i = 0; i < carNames.length; i++) {
+            racingCars.add(new RacingCar(carNames[i], moveStrategy));
+        }
+        PrintStrategy printStrategy = new PositionPrintStrategy();
+        return new RacingCarGame(racingCars, printStrategy);
+    }
+
     public void play() {
         for (RacingCar racingCar : racingCars) {
             racingCar.goOrStop();
         }
     }
 
+    public List<RacingCar> getRacingCars() {
+        return Collections.unmodifiableList(racingCars);
+    }
+
     public void printPosition() {
         printStrategy.print(racingCars);
     }
 
-    public void printWinners() {
-        List<RacingCar> winners = getWinners();
-        for (RacingCar winner : winners) {
-            System.out.print(winner.getName());
-            if (winners.indexOf(winner) != winners.size() - 1) {
-                System.out.print(", ");
-            }
-        }
-        System.out.println("가 최종 우승했습니다.");
-    }
-
-    private List<RacingCar> getWinners() {
+    public List<RacingCar> getWinners() {
         RacingCar maxPositionRacingCar = racingCars.get(0);
         List<RacingCar> winners = new ArrayList<>();
         for (RacingCar racingCar : racingCars) {
