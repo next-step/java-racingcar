@@ -8,6 +8,7 @@ import java.util.stream.IntStream;
 
 public class Racer {
     private static final Random random = new Random();
+    private static final int MOVE_FORWARD_THRESHOLD = 4;
     private final List<Integer> scores;
     private final List<String> results;
 
@@ -29,16 +30,16 @@ public class Racer {
 
     private String calculateResult(int roundCount, List<Integer> scoreList) {
         int position = 0;
-        for (int j = 0; j <= roundCount; j++) {
-            if (isMoveForward(scoreList.get(j))) {
+        for (int roundIndex = 0; roundIndex <= roundCount; roundIndex++) {
+            if (moveForward(scoreList.get(roundIndex))) {
                 position++;
             }
         }
         return lengthToString(position);
     }
 
-    private boolean isMoveForward(int score) {
-        return score > 4;
+    private boolean moveForward(int score) {
+        return score > MOVE_FORWARD_THRESHOLD;
     }
 
     private String lengthToString(int length) {
