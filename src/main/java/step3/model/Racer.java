@@ -43,7 +43,7 @@ public class Racer {
     }
 
     private boolean moveForward(int score) {
-        return score > MOVE_FORWARD_THRESHOLD;
+        return score >= MOVE_FORWARD_THRESHOLD;
     }
 
     private String lengthToString(int length) {
