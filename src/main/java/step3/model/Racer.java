@@ -16,18 +16,18 @@ public class Racer {
         this.results = resultCalculate();
     }
 
-    private List<String> resultCalculate() {
+    public List<String> resultCalculate() {
         List<String> result = new ArrayList<>();
         for (int i = 0; i < this.scores.size(); i++) {
-            String currnetRet = getCurRet(i);
+            String currnetRet = resultCalculate(i);
             result.add(currnetRet);
         }
         return result;
     }
 
-    private String getCurRet(int curPos) {
+    private String resultCalculate(int roundCount) {
         int length = 0;
-        for (int j = 0; j < curPos; j++) {
+        for (int j = 0; j < roundCount; j++) {
             if (scores.get(j) > 4) {
                 length++;
             }
