@@ -17,12 +17,12 @@ public class Car {
     }
 
     public Car(String carName, CarMovePolicy carMovePolicy) {
-        throwIfLengthIsGreaterThanMax(carName);
+        validateCarName(carName);
         this.carName = carName;
         this.carMovePolicy = carMovePolicy;
     }
 
-    private void throwIfLengthIsGreaterThanMax(String carName) {
+    private void validateCarName(String carName) {
         if (carName.length() > MAX_LENGTH_OF_CAR_NAME) {
             throw new IllegalArgumentException(String.format("자동차 이름은 5자를 초과할 수 없습니다.(%s)", carName));
         }
