@@ -1,4 +1,3 @@
-import CarRacing.Car;
 import CarRacing.view.*;
 import exception.NegativeInputException;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class TestCarRacingView {
+public class TestCarRacingInputView {
 
     InputView inputView;
 

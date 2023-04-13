@@ -10,7 +10,7 @@ public class TestCar {
     Car car;
     @BeforeEach
     public void setUp() {
-        car = new Car();
+        car = new Car("pobi");
     }
 
     @Test
@@ -30,6 +30,15 @@ public class TestCar {
 
         car.move(input);
         int actual = car.current();
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("차량 생성 시 이름을 입력받는다")
+    public void car_name() {
+        String expected = "pobi";
+
+        String actual = car.getName();
         assertThat(actual).isEqualTo(expected);
     }
 }

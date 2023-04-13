@@ -8,15 +8,15 @@ public class InputView {
 
     private static final Scanner SCANNER = new Scanner(System.in);
 
-    public int getNumberOfCar() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
+    public String[] getCars() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String numberStr = SCANNER.nextLine();
 
         try {
-            return getNumber(numberStr);
+            return getNameOfCars(numberStr);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            return getNumberOfCar();
+            return getCars();
         }
     }
 
@@ -28,7 +28,7 @@ public class InputView {
             return getNumber(numberStr);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            return getNumberOfCar();
+            return getNumberOfTry();
         }
     }
 
@@ -54,7 +54,7 @@ public class InputView {
         return numberOfCar;
     }
 
-    private static boolean emptyText(String inputText) {
-        return (inputText == null) || inputText.isEmpty() || inputText.isBlank();
+    private String[] getNameOfCars(String numberStr) {
+        return numberStr.split(",");
     }
 }

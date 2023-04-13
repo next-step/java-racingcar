@@ -4,9 +4,11 @@ public class Car {
     private static final int INITIAL_POSITION=1;
 
     private int position;
+    private String name;
 
-    public Car() {
+    public Car(String name) {
         this.position = INITIAL_POSITION;
+        this.name = name;
     }
 
     public void move(int number) {
@@ -17,4 +19,7 @@ public class Car {
         return this.position;
     }
 
+    public String getName() {
+        return this.name;
+    }
 }

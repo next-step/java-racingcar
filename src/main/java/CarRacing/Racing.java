@@ -18,12 +18,13 @@ public class Racing {
 
     public void competition() {
 
-        int numberOfCar = inputView.getNumberOfCar();
+        String[] nameOfCars = inputView.getCars();
+        int numberOfCar = nameOfCars.length;
         int numberOfTry = inputView.getNumberOfTry();
 
         List<Car> cars = new ArrayList<>(numberOfCar);
         for (int idxCar=0; idxCar < numberOfCar; idxCar++) {
-            cars.add(new Car());
+            cars.add(new Car(nameOfCars[idxCar]));
         }
 
         for (int idxTry=0; idxTry < numberOfTry; idxTry++) {
@@ -33,6 +34,8 @@ public class Racing {
 
             resultView.printCurrentDistance(cars);
         }
+
+        resultView.getWinners(cars);
     }
 
     public int drive(int number) {
