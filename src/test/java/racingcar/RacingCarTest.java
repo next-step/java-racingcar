@@ -4,9 +4,9 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 
-import static org.assertj.core.api.Assertions.*;
-
 public class RacingCarTest {
+
+    public RacingResult racingResult = new RacingResult();
 
     @Test
     void 문자_입력_받기() {
@@ -24,30 +24,24 @@ public class RacingCarTest {
     @Test
     void 랜덤하게_전진() {
         // Given
-        int iterations = 100;
+        int[][] car = new int[3][5];
 
-        for(int i = 0; i < iterations; i ++) {
-            // When
-            int randomNumber = RacingCar.getRandomNumber();
-            int proceed = RacingCar.proceed(randomNumber);
+        // When
+        RacingCar.race(car);
 
-            // Then
-            if(randomNumber > RacingCar.PROCEEDING_NUM)
-                assertThat(proceed).isOne();
-
-            if(randomNumber < RacingCar.PROCEEDING_NUM)
-                assertThat(proceed).isZero();
-        }
+        // Then
+        racingResult.print(car);
     }
 
     @Test
     void 자동차_출력하기() {
         // Given
-        int [][] car = {{1, 1, 1}, {2, 1, 2}, {3, 2, 3}, {4, 3, 4}, {4, 4, 5}};
+        int[][] car = {{1, 2, 3, 4, 4}
+                     , {1, 1, 2, 3, 4}
+                     , {1, 2, 3, 4, 5}};
 
         // When
-        new RacingResult(car);
-
         // Then
+        racingResult.print(car);
     }
 }

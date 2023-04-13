@@ -30,11 +30,17 @@ public class RacingCar {
         return Integer.parseInt(scanner.nextLine());
     }
 
-    public static int proceed(int number) {
+    public static int proceed() {
+        int number = random.nextInt(BOUND);
         return number >= PROCEEDING_NUM ? 1 : 0;
     }
 
-    public static int getRandomNumber() {
-        return random.nextInt(BOUND);
+    public static void race(int[][] car) {
+        for(int[] row : car) {
+            row[0] = 1;
+            for(int j=1; j < row.length; j++) {
+                row[j] += row[j-1] + proceed();
+            }
+        }
     }
 }
