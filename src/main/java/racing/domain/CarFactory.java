@@ -12,10 +12,15 @@ public class CarFactory {
   private CarFactory() {
   }
 
-  public static List<Car> createCars(int numberOfCars) {
-    return IntStream.range(0, numberOfCars)
-        .mapToObj(i -> new Car())
+  public static List<Car> createCars(String carsName) {
+    String[] names = splitCarsName(carsName);
+    return IntStream.range(0, names.length)
+        .mapToObj(i -> new Car(names[i]))
         .collect(Collectors.toList());
+  }
+
+  private static String[] splitCarsName(String carsName) {
+    return carsName.split(",");
   }
 
 }

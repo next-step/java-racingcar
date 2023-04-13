@@ -10,10 +10,10 @@ import racing.domain.RacingGame;
 public class RacingCarGameController {
 
   public static void main(String[] args) {
-    int carCount = InputView.scanCarCounts();
+    String carsName = InputView.scanCarsName();
     int numberOfMovements = InputView.scanNumberOfMovements();
 
-    RacingGame game = new RacingGame(carCount);
+    RacingGame game = new RacingGame(carsName);
 
     ResultView.printEmptyLine();
     ResultView.println("실행 결과");
@@ -22,6 +22,8 @@ public class RacingCarGameController {
       ResultView.printCarPosition(cars);
       ResultView.printEmptyLine();
     }
+
+    ResultView.printWinners(game.findWinners());
   }
 
 }

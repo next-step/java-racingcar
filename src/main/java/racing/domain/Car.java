@@ -11,10 +11,21 @@ package racing.domain;
  */
 public class Car {
 
+  private String name;
   private int position;
 
-  public Car() {
+  private final int MAX_NAME_LENGTH = 5;
+
+  public Car(String name) {
+    this.name = validateNameLength(name);
     this.position = 0;
+  }
+
+  private String validateNameLength(String name) {
+    if (name.length() > MAX_NAME_LENGTH) {
+      throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+    }
+    return name;
   }
 
   public void move(int randomNumber) {
@@ -26,5 +37,9 @@ public class Car {
 
   public int position() {
     return position;
+  }
+
+  public String name() {
+    return name;
   }
 }

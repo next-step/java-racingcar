@@ -7,8 +7,8 @@ public class RacingGame {
 
   private final List<Car> cars;
 
-  public RacingGame(int numberOfCars) {
-    cars = CarFactory.createCars(numberOfCars);
+  public RacingGame(String carsName) {
+    cars = CarFactory.createCars(carsName);
   }
 
   /**
@@ -21,4 +21,19 @@ public class RacingGame {
     return cars;
   }
 
+  public String[] findWinners() {
+    int maxPosition = findMaxPosition();
+    return cars.stream()
+        .filter(car -> car.position() == maxPosition)
+        .map(Car::name)
+        .toArray(String[]::new);
+
+  }
+
+  private int findMaxPosition() {
+    return cars.stream()
+        .mapToInt(Car::position)
+        .max()
+        .orElse(0);
+  }
 }
