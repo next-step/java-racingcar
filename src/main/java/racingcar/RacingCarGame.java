@@ -8,14 +8,9 @@ import java.util.List;
 
 public class RacingCarGame {
     private final List<RacingCar> racingCars;
-    private final PrintStrategy printStrategy;
 
-    public RacingCarGame(
-        List<RacingCar> racingCars,
-        PrintStrategy printStrategy
-    ) {
+    public RacingCarGame(List<RacingCar> racingCars) {
         this.racingCars = racingCars;
-        this.printStrategy = printStrategy;
     }
 
     public static RacingCarGame setUpGame(String[] carNames) {
@@ -24,8 +19,7 @@ public class RacingCarGame {
         for (int i = 0; i < carNames.length; i++) {
             racingCars.add(new RacingCar(carNames[i], moveStrategy));
         }
-        PrintStrategy printStrategy = new PositionPrintStrategy();
-        return new RacingCarGame(racingCars, printStrategy);
+        return new RacingCarGame(racingCars);
     }
 
     public void play() {
@@ -36,10 +30,6 @@ public class RacingCarGame {
 
     public List<RacingCar> getRacingCars() {
         return Collections.unmodifiableList(racingCars);
-    }
-
-    public void printPosition() {
-        printStrategy.print(racingCars);
     }
 
     public List<RacingCar> getWinners() {

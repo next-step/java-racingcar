@@ -17,8 +17,7 @@ class RacingCarGameTest {
         for (int i = 0; i < 10; i++) {
             racingCars.add(new RacingCar("pobi" + i, testAlwaysMoveStrategy));
         }
-        PrintStrategy printStrategy = new PositionPrintStrategy();
-        RacingCarGame racingCarGame = new RacingCarGame(racingCars, printStrategy);
+        RacingCarGame racingCarGame = new RacingCarGame(racingCars);
         racingCarGame.play();
         assertThat(testAlwaysMoveStrategy.getPosition())
             .isEqualTo(10);
@@ -31,8 +30,7 @@ class RacingCarGameTest {
         for (int i = 0; i < 10; i++) {
             racingCars.add(new RacingCar("pobi" + i, testAlwaysStopStrategy));
         }
-        PrintStrategy printStrategy = new PositionPrintStrategy();
-        RacingCarGame racingCarGame = new RacingCarGame(racingCars, printStrategy);
+        RacingCarGame racingCarGame = new RacingCarGame(racingCars);
         racingCarGame.play();
         for (RacingCar racingCar : racingCars) {
             assertThat(testAlwaysStopStrategy.getPosition())

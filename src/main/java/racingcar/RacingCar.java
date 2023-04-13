@@ -1,9 +1,8 @@
 package racingcar;
 
 import racingcar.strategy.MoveStrategy;
-import racingcar.strategy.Printable;
 
-public class RacingCar implements Printable, Comparable<RacingCar> {
+public class RacingCar implements Comparable<RacingCar> {
     private int position = 0;
     private String name;
     private final MoveStrategy moveStrategy;
@@ -28,17 +27,6 @@ public class RacingCar implements Printable, Comparable<RacingCar> {
 
     public int getPosition() {
         return position;
-    }
-
-    @Override
-    public String getPrintData() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(name);
-        sb.append(" : ");
-        for (int i = 0; i < position; i++) {
-            sb.append("-");
-        }
-        return sb.toString();
     }
 
     @Override
