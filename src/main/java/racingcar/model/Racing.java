@@ -65,7 +65,7 @@ public class Racing {
                 .orElse(0);
 
         return cars.stream()
-                .filter(car -> car.distance() == maxDistance)
+                .filter(car -> car.isReached(maxDistance))
                 .collect(toList());
     }
 

@@ -33,4 +33,8 @@ public class Car {
     public int distance() {
         return this.distance;
     }
+
+    public boolean isReached(int distance) {
+        return this.distance == distance;
+    }
 }
