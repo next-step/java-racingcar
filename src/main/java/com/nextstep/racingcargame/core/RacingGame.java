@@ -1,10 +1,10 @@
 package com.nextstep.racingcargame.core;
 
-import static com.nextstep.racingcargame.core.ClientInput.getClientInputByCarAndTryCounts;
 import static com.nextstep.racingcargame.view.ClientView.createNewLine;
 import static com.nextstep.racingcargame.view.ClientView.printSource;
+import static com.nextstep.racingcargame.view.QuestionView.clientQuestion;
 
-public class InitializeRacingGame {
+public class RacingGame {
 
     private static final String RESULT_MSG = "실행 결과";
 
@@ -12,23 +12,20 @@ public class InitializeRacingGame {
 
     public static void progressRacing() {
 
-        ClientInput clientInput = addressQuestion();
+        ClientResponse clientResponse = clientQuestion();
 
-        Cars cars = clientInput.createCarsByUserCarNumberInput();
+        Cars cars = clientResponse.createCarsByUserCarNumberInput();
 
-        startGame(clientInput, cars);
+        startGame(clientResponse, cars);
     }
 
-    private static ClientInput addressQuestion() {
-        return getClientInputByCarAndTryCounts();
-    }
 
-    private static void startGame(ClientInput clientInput, Cars cars) {
+    private static void startGame(ClientResponse clientResponse, Cars cars) {
 
         createNewLine();
         printSource(RESULT_MSG);
 
-        for (int turn = 0; turn < clientInput.getNumberOfTries(); turn++) {
+        for (int turn = 0; turn < clientResponse.getNumberOfTries(); turn++) {
             cars.moveCars();
             cars.disPlayCarsTravelDistance();
             createNewLine();
