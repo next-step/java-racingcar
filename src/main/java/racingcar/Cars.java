@@ -5,6 +5,8 @@ import java.util.List;
 
 public class Cars {
 
+    private static final int MIN_NUMBER = 1;
+
     private List<Car> cars = new ArrayList<>();
 
     public Cars(final int count) {
@@ -13,7 +15,7 @@ public class Cars {
     }
 
     private void validate(final int count) {
-        if (count < 1) {
+        if (count < MIN_NUMBER) {
             throw new IllegalArgumentException("자동차는 1개 이상이여야 합니다.");
         }
     }
