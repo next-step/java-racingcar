@@ -1,7 +1,6 @@
 package game.domain;
 
 import game.domain.policy.CarMovePolicy;
-import game.util.NumberGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -19,17 +18,17 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class CarTest {
 
     @Test
-    @DisplayName("자동차는 NumberGenerator 가 4 이상을 반환하면 position 이 증가합니다.")
+    @DisplayName("자동차는 CarMovePolicy 따라 position 이 증가합니다.")
     void test1() {
-        Car car = new Car("test", new MovableNumberGenerator());
+        Car car = new Car("test", new MovableCarMovePolicy());
         car.drive();
         assertThat(car.position()).isSameAs(1);
     }
 
     @Test
-    @DisplayName("자동차는 NumberGenerator 가 3 이하를 반환하면 position 이 증가하지 않습니다.")
+    @DisplayName("자동차는 CarMovePolicy 따라 position 이 증가하지 않습니다.")
     void test2() {
-        Car car = new Car("test", new NonMovableNumberGenerator());
+        Car car = new Car("test", new NonMovableCarMovePolicy());
         car.drive();
         assertThat(car.position()).isZero();
     }
@@ -37,37 +36,21 @@ class CarTest {
     @Test
     @DisplayName("자동차는 5글자를 초과하는 이름을 가질 수 없습니다.")
     void test3() {
-        assertThatThrownBy(() -> new Car("testCar", new NonMovableNumberGenerator()))
+        assertThatThrownBy(() -> new Car("testCar"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test
-    @DisplayName("자동차는 CarMovePolicy 에 작성된 로직에 따라 자동차의 움직임을 결정합니다.")
-    void test4() {
-        Car car = new Car("test", new TestCarMovePolicy(), new NonMovableNumberGenerator());
-        car.drive();
-        assertThat(car.position()).isSameAs(1);
-    }
-
-    static class TestCarMovePolicy implements CarMovePolicy {
-
+    static class MovableCarMovePolicy implements CarMovePolicy {
         @Override
-        public boolean isMovable(int input) {
-            return input >= 3;
+        public boolean isMovable() {
+            return true;
         }
     }
 
-    static class MovableNumberGenerator implements NumberGenerator {
+    static class NonMovableCarMovePolicy implements CarMovePolicy {
         @Override
-        public int generate() {
-            return 5;
-        }
-    }
-
-    static class NonMovableNumberGenerator implements NumberGenerator {
-        @Override
-        public int generate() {
-            return 3;
+        public boolean isMovable() {
+            return false;
         }
     }
 }

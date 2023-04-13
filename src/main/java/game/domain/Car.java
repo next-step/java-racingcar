@@ -2,7 +2,6 @@ package game.domain;
 
 import game.domain.policy.CarMovePolicy;
 import game.domain.policy.StandardCarMovePolicy;
-import game.util.NumberGenerator;
 
 public class Car {
 
@@ -10,19 +9,17 @@ public class Car {
 
     private final String carName;
     private final CarMovePolicy carMovePolicy;
-    private final NumberGenerator numberGenerator;
 
     private int position = 0;
 
-    public Car(String carName, NumberGenerator numberGenerator) {
-        this(carName, new StandardCarMovePolicy(), numberGenerator);
+    public Car(String carName) {
+        this(carName, new StandardCarMovePolicy());
     }
 
-    public Car(String carName, CarMovePolicy carMovePolicy, NumberGenerator numberGenerator) {
+    public Car(String carName, CarMovePolicy carMovePolicy) {
         throwIfLengthIsGreaterThanMax(carName);
         this.carName = carName;
         this.carMovePolicy = carMovePolicy;
-        this.numberGenerator = numberGenerator;
     }
 
     private void throwIfLengthIsGreaterThanMax(String carName) {
@@ -32,7 +29,7 @@ public class Car {
     }
 
     public void drive() {
-        if (carMovePolicy.isMovable(numberGenerator.generate())) {
+        if (carMovePolicy.isMovable()) {
             position++;
         }
     }

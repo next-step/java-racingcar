@@ -1,8 +1,6 @@
 package game.service;
 
 import game.domain.Car;
-import game.util.NumberGenerator;
-import game.util.RandomNumberGenerator;
 import game.view.ResultView;
 
 import java.util.List;
@@ -27,9 +25,8 @@ public class CarRacing {
     }
 
     private List<Car> initialCars(List<String> carNames) {
-        NumberGenerator generator = new RandomNumberGenerator();
         return carNames.stream()
-                .map(name -> new Car(name, generator))
+                .map(Car::new)
                 .collect(toUnmodifiableList());
     }
 
