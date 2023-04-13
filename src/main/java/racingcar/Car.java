@@ -12,15 +12,15 @@ public class Car {
         }
     }
 
-    private int randomNumber() {
-        return new Random().nextInt(SEED);
+    public String distanceDriven() {
+        return distance;
     }
 
     public boolean isMoveForward(int number) {
         return number >= 4;
     }
 
-    public String distanceDriven() {
-        return distance;
+    private int randomNumber() {
+        return new Random().nextInt(SEED);
     }
 }

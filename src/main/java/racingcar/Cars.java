@@ -12,6 +12,19 @@ public class Cars {
         addCar(number);
     }
 
+    public void moveAll() {
+        cars.forEach(Car::move);
+    }
+
+    public String distanceDriven() {
+        StringBuilder result = new StringBuilder();
+        for (Car car : cars) {
+            result.append(car.distanceDriven());
+            result.append("\n");
+        }
+        return result.toString();
+    }
+
     public int size() {
         return cars.size();
     }
