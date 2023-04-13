@@ -10,12 +10,15 @@ public class Car {
         position = 0;
     }
 
+    public int getPosition() {
+        return position;
+    }
+
     public boolean move() {
         if (isExceedStandard(getRandomInt())) {
             position++;
             return true;
         }
-
         return false;
     }
 

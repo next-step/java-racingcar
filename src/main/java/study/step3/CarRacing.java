@@ -1,5 +1,6 @@
 package study.step3;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -14,7 +15,7 @@ public class CarRacing {
 
     public void startRacing() {
         initGame();
-
+        playGame();
     }
 
     public void initGame() {
@@ -22,8 +23,44 @@ public class CarRacing {
         round = readInputNum("시도할 횟수는 몇 회 인가요?");
 
         System.out.println("자동차 " + carCount + "대, " + round + " 라운드 레이싱 시작");
-        cars = new Car[carCount];
+        initCarObject();
     }
+
+    private void initCarObject() {
+        cars = new Car[carCount];
+        for (int i = 0; i < carCount; i++) {
+            cars[i] = new Car();
+        }
+    }
+
+    private void playGame() {
+        for (int i = 0; i < round; i++) {
+            moveCars();
+            printStateBoard();
+        }
+    }
+
+    private void moveCars() {
+        for (Car car : cars) {
+            car.move();
+        }
+    }
+
+    private void printStateBoard() {
+        for (Car car : cars) {
+            System.out.println(printCarState(car.getPosition()));
+        }
+        System.out.println();
+    }
+
+    public String printCarState(int position) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < position; i++) {
+            stringBuilder.append("-");
+        }
+        return stringBuilder.toString();
+    }
+
 
     private int readInputNum(String message) {
         System.out.println(message);
