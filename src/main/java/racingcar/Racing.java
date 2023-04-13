@@ -1,6 +1,8 @@
 package racingcar;
 
-import racingcar.RandomRacingRule.RacingRandom;
+import static racingcar.RandomRacingRule.RacingRandom.randomNumbers;
+
+import java.util.List;
 
 public class Racing {
 
@@ -28,7 +30,15 @@ public class Racing {
     }
 
     private void raceLap() {
-        cars.raceLap(racingRule.movableList(RacingRandom.randomNumbers(cars.cars().size())));
+        cars.raceLap(movableList());
+    }
+
+    private List<Boolean> movableList() {
+        return racingRule.movableList(randomNumbers(carSize()));
+    }
+
+    private int carSize() {
+        return cars.cars().size();
     }
 
     private void recordLapResult() {
