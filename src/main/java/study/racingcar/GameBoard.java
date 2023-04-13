@@ -3,25 +3,35 @@ package study.racingcar;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 
 public class GameBoard {
-    public void run() {
 
-        Scanner sc = new Scanner(System.in);
+    private InputView inputView;
+    private OutputView outputView;
+
+    public GameBoard() {
+        this.inputView = new InputView();
+        this.outputView = new OutputView();
+    }
+
+    public void run() {
         Random random = new Random();
 
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        int carNum = sc.nextInt();
+        outputView.printCarNumber();
+
+        final int carNum = inputView.getCarNumber();
+
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carNum; i++) {
             cars.add(new Car());
         }
 
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        int tryCount = sc.nextInt();
+        outputView.printTryCountSign();
+        final int tryCount = inputView.getTryCount();
 
-        System.out.println("실행 결과");
+
+        outputView.printResultSign();
+
 
         for (int i = 0; i < tryCount; i++) {
             for (Car car : cars) {
