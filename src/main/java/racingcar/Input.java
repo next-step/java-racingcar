@@ -1,5 +1,5 @@
 package racingcar;
 
 public interface Input {
-    UserInput getUserInput();
+    Race setRace();
 }

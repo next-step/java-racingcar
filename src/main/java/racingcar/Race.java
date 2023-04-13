@@ -11,29 +11,35 @@ public class Race {
 
     private final Integer totalCarCount;
     private final Integer totalMoveCount;
+    private Integer currentMoveCount = 0;
+    private List<Car> cars;
 
     public Race(Integer totalCarCount, Integer totalMoveCount) {
         this.totalCarCount = totalCarCount;
         this.totalMoveCount = totalMoveCount;
     }
 
-    public void start(Output output) {
-        List<Car> cars = createCars(output);
-        output.printExecutionHeader();
-        for (int i = 0; i < this.totalMoveCount; i++) {
-            moveCarsAndPrint(output, cars);
-        }
+    public void continueRace() {
+        moveCars();
+        currentMoveCount++;
     }
 
-    private List<Car> createCars(Output output) {
-        return IntStream.range(0, totalCarCount)
-                .mapToObj(i -> new Car(output))
+    public void createCars() {
+        this.cars = IntStream.range(0, totalCarCount)
+                .mapToObj(i -> new Car())
                 .collect(Collectors.toList());
     }
 
-    private void moveCarsAndPrint(Output output, List<Car> cars) {
-        cars.forEach(car -> car.moveAndPrint(randomNumber()));
-        output.printBlankLine();
+    public List<Integer> getCarsPositions() {
+        return this.cars.stream().map(Car::getPosition).collect(Collectors.toList());
+    }
+
+    public boolean isNotFinished() {
+        return currentMoveCount < totalMoveCount;
+    }
+
+    private void moveCars() {
+        this.cars.forEach(car -> car.move(randomNumber()));
     }
 
     private Integer randomNumber() {

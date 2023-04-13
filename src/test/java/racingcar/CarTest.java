@@ -20,16 +20,16 @@ public class CarTest {
     @Test
     @DisplayName("4 이상일 때 이동한다")
     public void carMove_WhenNumberMoreThanEqualMinimumNumberToMove() {
-        Car car = new Car(new ConsoleOutput());
-        car.moveAndPrint(4);
-        assertThat(outputStreamCaptor.toString()).isEqualTo("-\n");
+        Car car = new Car();
+        car.move(4);
+        assertThat(car.getPosition()).isOne();
     }
 
     @Test
     @DisplayName("3 미만일 때 이동하지 않는다")
     public void carMove_WhenNumberLessThanMinimumNumberToMove() {
-        Car car = new Car(new ConsoleOutput());
-        car.moveAndPrint(3);
-        assertThat(outputStreamCaptor.toString()).isEqualTo("\n");
+        Car car = new Car();
+        car.move(3);
+        assertThat(car.getPosition()).isZero();
     }
 }

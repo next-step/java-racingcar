@@ -5,7 +5,13 @@ public class RacingCarGame {
         Input input = new ConsoleInput();
         Output output = new ConsoleOutput();
 
-        Race race = input.getUserInput().readyForRace();
-        race.start(output);
+        Race race = input.setRace();
+        race.createCars();
+
+        output.printExecutionHeader();
+        while (race.isNotFinished()) {
+            race.continueRace();
+            output.printPositions(race);
+        }
     }
 }
