@@ -39,15 +39,15 @@ public class RacerTest {
         //given
         Racer racer = new Racer(2);
         //when
-        List<String> results = racer.calculateResults(List.of(7, 7, 7, 7, 7));
+        List<String> results = racer.calculateResults(List.of(7, 1, 7, 1, 7));
         //then
         assertAll(
                 () -> assertThat(results).hasSize(5),
                 () -> assertThat(results.get(0)).isEqualTo("-"),
-                () -> assertThat(results.get(1)).isEqualTo("--"),
-                () -> assertThat(results.get(2)).isEqualTo("---"),
-                () -> assertThat(results.get(3)).isEqualTo("----"),
-                () -> assertThat(results.get(4)).isEqualTo("-----")
+                () -> assertThat(results.get(1)).isEqualTo("-"),
+                () -> assertThat(results.get(2)).isEqualTo("--"),
+                () -> assertThat(results.get(3)).isEqualTo("--"),
+                () -> assertThat(results.get(4)).isEqualTo("---")
         );
     }
 

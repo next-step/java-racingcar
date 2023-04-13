@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class MatchTest {
     @DisplayName("참가차랑수, 반복횟수에 맞게 결과를 생성한다")
     @Test
-    public void run() {
+    public void matchTest() {
         //given
         int part = 5;
         int iter = 7;
