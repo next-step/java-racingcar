@@ -35,8 +35,8 @@ public class CarRacing {
                 .max()
                 .orElseThrow(IllegalStateException::new);
         return cars.stream()
-                .filter(car -> car.position() == max)
+                .filter(car -> car.isSamePosition(max))
                 .collect(toUnmodifiableList());
     }
-    
+
 }
