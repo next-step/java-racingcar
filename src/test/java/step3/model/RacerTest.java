@@ -49,6 +49,26 @@ public class RacerTest {
                 () -> assertThat(results.get(3)).isEqualTo("----"),
                 () -> assertThat(results.get(4)).isEqualTo("-----")
         );
+    }
+
+    @DisplayName("경기결과가 4 이하면 전진하지 않는다")
+    @Test
+    public void 전진하지않는다() {
+        //given
+        Racer racer = new Racer(2);
+        List<Integer> scores = List.of(4, 4, 4, 4, 4, 4, 4, 4, 4, 4);
+        //when
+        List<String> results = racer.calculateResults(scores);
+        //then
+        assertAll(
+                () -> assertThat(results).hasSize(scores.size()),
+                () -> assertThat(results.get(0)).isEqualTo(""),
+                () -> assertThat(results.get(1)).isEqualTo(""),
+                () -> assertThat(results.get(2)).isEqualTo(""),
+                () -> assertThat(results.get(3)).isEqualTo(""),
+                () -> assertThat(results.get(4)).isEqualTo(""),
+                () -> assertThat(results.get(4)).isEqualTo("")
+        );
 
     }
 
