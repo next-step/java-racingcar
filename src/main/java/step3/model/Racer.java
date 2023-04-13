@@ -12,22 +12,25 @@ public class Racer {
     private final List<String> results;
 
     public Racer(int iterations) {
-        this.scores = IntStream.rangeClosed(1, iterations).boxed().map(integer -> randomScore()).collect(Collectors.toList());
-        this.results = resultCalculate();
-    }
-
-    public List<String> resultCalculate() {
-        List<String> result = new ArrayList<>();
-        for (int i = 0; i < this.scores.size(); i++) {
-            result.add(resultCalculate(i));
+        if(iterations < 0) {
+            throw new RuntimeException("iterations 는 1 이상이어야 합니다");
         }
-        return result;
+        this.scores = IntStream.rangeClosed(1, iterations).boxed().map(integer -> randomScore()).collect(Collectors.toList());
+        this.results = makeResultCalculate(scores);
     }
 
-    private String resultCalculate(int roundCount) {
+    public List<String> makeResultCalculate(List<Integer> scoreList) {
+        List<String> temp = new ArrayList<>();
+        for (int i = 0; i < scoreList.size(); i++) {
+            temp.add(stringCurentProgress(i, scoreList));
+        }
+        return temp;
+    }
+
+    private String stringCurentProgress(int roundCount,List<Integer> scoreList) {
         int length = 0;
         for (int j = 0; j < roundCount; j++) {
-            if (scores.get(j) > 4) {
+            if (scoreList.get(j) > 4) {
                 length++;
             }
         }
