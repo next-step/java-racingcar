@@ -5,6 +5,7 @@ import static domain.RandomNumber.isOverFourOutOfTen;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -38,5 +39,33 @@ public class Cars {
 
     public Car getEachCar(int carIndex) {
         return cars.get(carIndex);
+    }
+
+
+    public String[] getWinnerNames() {
+        List<Car> winners = checkCarWithFarthestDistance(this.cars);
+        return winners.stream()
+                .map(Car::getCarName)
+                .toArray(String[]::new);
+    }
+
+    private static List<Car> checkCarWithFarthestDistance(List<Car> cars) {
+        int farthestDistance = getFarthestDistance(cars);
+        return getCarsWithFarthestDistance(farthestDistance, cars);
+    }
+
+    private static int getFarthestDistance(List<Car> cars) {
+        int farthestDistance = 0;
+        for (Car car : cars) {
+            farthestDistance = Math.max(farthestDistance, car.getCarCurrentDistance());
+        }
+        return farthestDistance;
+    }
+
+    private static List<Car> getCarsWithFarthestDistance(int farthestDistance, List<Car> cars) {
+        return
+                cars.stream()
+                        .filter(car -> car.getCarCurrentDistance() == farthestDistance)
+                        .collect(Collectors.toList());
     }
 }

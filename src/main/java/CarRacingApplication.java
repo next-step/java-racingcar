@@ -1,5 +1,6 @@
 import static view.InputView.getInput;
 import static view.ResultView.drawDistanceBlockWithName;
+import static view.ResultView.drawFirstPlace;
 import static view.ResultView.drawResultView;
 
 import domain.Cars;
@@ -22,6 +23,6 @@ public class CarRacingApplication {
             cars.makeCarsMove();
             drawDistanceBlockWithName(cars);
         }
-//        drawFirstPlace(cars);
+        drawFirstPlace(cars);
     }
 }
