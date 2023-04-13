@@ -1,6 +1,5 @@
-import static domain.Cars.getEachCarMovedDistance;
 import static view.InputView.getInput;
-import static view.ResultView.drawDistanceBlock;
+import static view.ResultView.drawDistanceBlockWithName;
 import static view.ResultView.drawResultView;
 
 import domain.Cars;
@@ -21,7 +20,8 @@ public class CarRacingApplication {
         drawResultView();
         for (int i = 0; i < attemptCount; i++) {
             cars.makeCarsMove();
-            drawDistanceBlock(getEachCarMovedDistance(cars));
+            drawDistanceBlockWithName(cars);
         }
+//        drawFirstPlace(cars);
     }
 }

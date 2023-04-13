@@ -1,29 +1,37 @@
 package view;
 
-import java.util.Arrays;
+import domain.Car;
+import domain.Cars;
 
 public class ResultView {
 
     private final static String BLANK = "";
     private final static String RESULT_MESSAGE = "실행 결과";
-    public final static String DISTANCE_BLOCK = "-";
+    private final static String DISTANCE_BLOCK = "-";
+    private final static String COLONS = " : ";
 
     public static void drawResultView() {
         System.out.println(RESULT_MESSAGE);
         System.out.println(BLANK);
     }
 
-    public static void drawDistanceBlock(int[] eachCarMovedDistance) {
-        Arrays.stream(eachCarMovedDistance)
-                .forEach(ResultView::drawConsole);
+    public static void drawDistanceBlockWithName(Cars cars) {
+        for (int i = 0; i < cars.countCars(); i++) {
+            drawConsole(cars.getEachCar(i));
+        }
         System.out.println(BLANK);
     }
 
-    public static void drawConsole(int distance) {
-        String currentCarDistance = "";
-        for (int i = 0; i < distance; i++) {
-            currentCarDistance += DISTANCE_BLOCK;
+    public static void drawConsole(Car car) {
+
+        String currentCarDistanceWithName = car.getCarName() + COLONS;
+        for (int i = 0; i < car.getCarCurrentDistance(); i++) {
+            currentCarDistanceWithName += DISTANCE_BLOCK;
         }
-        System.out.println(currentCarDistance);
+        System.out.println(currentCarDistanceWithName);
+    }
+
+    public static void drawFirstPlace(Cars cars) {
+
     }
 }
