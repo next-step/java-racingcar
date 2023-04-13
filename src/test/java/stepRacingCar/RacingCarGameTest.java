@@ -31,7 +31,7 @@ public class RacingCarGameTest {
     RacingCarGame racingCarGame = new RacingCarGame(racingCarCnt);
 
     // when
-    racingCarGame.play(RandomUtils.getRandomInt());
+    racingCarGame.play(RandomUtils.getRandomSinglePositiveDigit());
 
     // then
     Assertions.assertThat(racingCarGame)

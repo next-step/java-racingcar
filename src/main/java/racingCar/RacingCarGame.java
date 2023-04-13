@@ -34,6 +34,6 @@ public class RacingCarGame {
   }
 
   private void moveAllRacingCars(List<RacingCar> racingCarList) {
-    racingCarList.forEach(car -> car.moveIfPossible(RandomUtils.getRandomInt()));
+    racingCarList.forEach(car -> car.moveIfPossible(RandomUtils.getRandomSinglePositiveDigit()));
   }
 }
