@@ -63,9 +63,8 @@ public class Cars {
     }
 
     private static List<Car> getCarsWithFarthestDistance(int farthestDistance, List<Car> cars) {
-        return
-                cars.stream()
-                        .filter(car -> car.getCarCurrentDistance() == farthestDistance)
-                        .collect(Collectors.toList());
+        return cars.stream()
+                .filter(car -> car.getCarCurrentDistance() == farthestDistance)
+                .collect(Collectors.toList());
     }
 }
