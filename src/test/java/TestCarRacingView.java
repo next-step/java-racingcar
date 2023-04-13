@@ -1,4 +1,7 @@
+import CarRacing.Car;
 import CarRacing.view.*;
+import exception.NegativeInputException;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -7,7 +10,12 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class TestCarRacingView {
 
-    InputView inputView = new InputView();
+    InputView inputView;
+
+    @BeforeEach
+    public void setUp() {
+        inputView = new InputView();
+    }
 
     @Test
     @DisplayName("숫자체크 함수에서 숫자가 아닌 문자가 입력되었을 때 return false")
@@ -31,17 +39,17 @@ public class TestCarRacingView {
     }
 
     @Test
-    @DisplayName("문자가 들어왔을 때 RuntimeException")
+    @DisplayName("문자가 들어왔을 때 IllegalArgumentException")
     public void getNumberOfCar_input_string() {
         assertThatThrownBy(() -> inputView.getNumber("a"))
-                .isInstanceOf(RuntimeException.class);
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
-    @DisplayName("음수가 들어왔을 때 RuntimeException")
+    @DisplayName("음수가 들어왔을 때 NegativeInputException")
     public void getNumberOfCar_negative() {
         assertThatThrownBy(() -> inputView.getNumber("-5"))
-                .isInstanceOf(RuntimeException.class);
+                .isInstanceOf(NegativeInputException.class);
     }
 
     @Test

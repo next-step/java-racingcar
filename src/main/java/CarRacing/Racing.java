@@ -16,7 +16,7 @@ public class Racing {
     private static final Random random = new Random();
 
 
-    public void Competition() {
+    public void competition() {
 
         int numberOfCar = inputView.getNumberOfCar();
         int numberOfTry = inputView.getNumberOfTry();

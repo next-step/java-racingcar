@@ -1,4 +1,6 @@
 import CarRacing.*;
+import CarRacing.view.InputView;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -8,7 +10,12 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class TestCarRacing {
 
-    Racing racing = new Racing();
+    Racing racing;
+
+    @BeforeEach
+    public void setUp() {
+        racing = new Racing();
+    }
 
     @Test
     @DisplayName("4보다 적은 수 입력 시 차량 이동 없음")

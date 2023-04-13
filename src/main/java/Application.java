@@ -10,7 +10,7 @@ public class Application {
         Racing racing = new Racing();
 
         try {
-            racing.Competition();
+            racing.competition();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
