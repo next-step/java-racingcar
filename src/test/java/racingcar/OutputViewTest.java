@@ -31,7 +31,7 @@ public class OutputViewTest {
     @Test
     void 레이스_결과() {
         OutputView.announceRaceResults(racing.raceResults());
-        assertThat(outputStream.toString()).containsPattern("(-{1,2}\n){3}\n((-{1,11}\n){3}\n){9}");
+        assertThat(outputStream.toString()).containsPattern("(.{1,5} : -{1,2}\n){3}\n((.{1,5} : -{1,11}\n){3}\n){9}");
     }
 
 }

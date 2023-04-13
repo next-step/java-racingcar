@@ -26,9 +26,9 @@
     * [x] 스페이스 불가 : "     " -> not ok
     * [x] null 불가
   * 실행결과에 이름 출력 => LapResult
-    * ".{5} : " + PATTERN
+    * [x] ".{1,5} : " + PATTERN
   * 자동차 이름 입력 : , 기준 => InputView 자동차 대수 입력 수정
-    * [ ] 문자열 분리 기능 => new Class
+    * [x] 문자열 분리 기능 => new Class
     * [x] 참가자 이름 단체 등록 => Cars
   * 자동차 경주 완료 후 우승자 발표 : 여러명 가능
     * [ ] 우승자 추출 기능 => new Class
