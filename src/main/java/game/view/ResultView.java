@@ -1,6 +1,7 @@
 package game.view;
 
 import game.domain.Car;
+import game.domain.Cars;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -20,8 +21,8 @@ public final class ResultView {
         System.out.println("실행 결과");
     }
 
-    public static void displayCarPositions(List<Car> cars) {
-        for (Car car : cars) {
+    public static void displayCarPositions(Cars cars) {
+        for (Car car : cars.getCarList()) {
             displayName(car.name());
             displayPosition(car);
             displayNewLine();

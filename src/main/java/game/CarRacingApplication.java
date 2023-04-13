@@ -29,7 +29,7 @@ public class CarRacingApplication {
             carRacing.start();
             ResultView.displayCarPositions(carRacing.getCars());
         }
-        ResultView.displayCarWinners(carRacing.findWinners());
+        ResultView.displayCarWinners(carRacing.getWinners());
     }
 
     private static void throwIfNegativeNumber(int number) {

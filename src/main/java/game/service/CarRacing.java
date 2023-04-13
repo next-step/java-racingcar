@@ -1,42 +1,29 @@
 package game.service;
 
 import game.domain.Car;
+import game.domain.Cars;
 
 import java.util.List;
 
-import static java.util.stream.Collectors.toUnmodifiableList;
-
 public class CarRacing {
 
-    private final List<Car> cars;
+    private final Cars cars;
 
     public CarRacing(List<String> carNames) {
-        this.cars = initialCars(carNames);
-    }
-
-    private List<Car> initialCars(List<String> carNames) {
-        return carNames.stream()
-                .map(Car::new)
-                .collect(toUnmodifiableList());
+        this.cars = new Cars(carNames);
     }
 
     public void start() {
-        cars.forEach(Car::drive);
+        cars.drive();
 
     }
 
-    public List<Car> getCars() {
+    public Cars getCars() {
         return cars;
     }
 
-    public List<Car> findWinners() {
-        int max = cars.stream()
-                .mapToInt(Car::position)
-                .max()
-                .orElseThrow(IllegalStateException::new);
-        return cars.stream()
-                .filter(car -> car.isSamePosition(max))
-                .collect(toUnmodifiableList());
+    public List<Car> getWinners() {
+        return cars.findWinners();
     }
 
 }
