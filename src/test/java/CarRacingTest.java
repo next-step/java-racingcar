@@ -17,6 +17,9 @@ import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 class CarRacingTest {
 
+    private final int TRIAL = 5;
+    private final int TOTAL_RECORD = 10;
+
     @ParameterizedTest(name = "전진 전략이 {0}이면 차의 주행거리가 {1} 증가한다.")
     @CsvSource(value = {"true,1", "false,0"})
     void 전진조건이_참이면_차가_전진한다(boolean condition, int result) {
@@ -123,9 +126,9 @@ class CarRacingTest {
         RacingGame game = new RacingGame(nameOfCars);
 
         // when
-        Records records = game.start(5);
+        Records records = game.start(TRIAL);
 
         // then
-        assertThat(records.gameRecord()).hasSize(10);
+        assertThat(records.gameRecord()).hasSize(TOTAL_RECORD);
     }
 }
