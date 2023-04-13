@@ -39,11 +39,6 @@ public class Cars {
         }
     }
 
-    public void disPlayCarsTravelDistance() {
-        for (int carIndex = 0; carIndex < carSize(); carIndex++) {
-            cars.get(carIndex).printTravelDistanceWithCarName();
-        }
-    }
 
     private boolean isMoreThanOneCar(List<Car> cars) {
         return !cars.isEmpty();
@@ -62,6 +57,12 @@ public class Cars {
 
     public Car findFirstFurthestTraveledCar() {
         return max(this.cars, Comparator.comparingInt(Car::getDistance));
+    }
+
+    public List<String> getAllCarCurrentDistance(String separator, String distancePrintStandard) {
+        return this.cars.stream()
+                .map(car -> car.getDistanceAsPrintForm(separator,distancePrintStandard))
+                .collect(Collectors.toList());
     }
 
     public int getFurthestDistance() {

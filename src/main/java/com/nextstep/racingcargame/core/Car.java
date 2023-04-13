@@ -1,25 +1,16 @@
 package com.nextstep.racingcargame.core;
 
-import static com.nextstep.racingcargame.view.ClientView.printSource;
 
 public class Car {
 
     private int distance;
-    private String travelDistance;
-
     private final String carName;
 
     private static final int MINIMUM_CAR_MOVE_NUMBER = 4;
 
     private static final int CAR_NAME_MAX_LENGTH = 5;
 
-    private static final String CAR_DISTANCE_DISPLAY_UNIT = "-";
-
     private static final int CAR_START_POSITION_NUMBER = 0;
-
-    private static final String CAR_START_POSITION_DISPLAY_STRING = "";
-
-    private static final String CAR_NAME_AND_DISTANCE_DELIMITER = " : ";
 
     private static final String CAR_NAME_MORE_THAN_FIVE_CHARACTER = "자동차 이름은 5자를 초과할 수 없습니다.";
 
@@ -36,15 +27,14 @@ public class Car {
         }
         this.carName = carName;
         this.distance = CAR_START_POSITION_NUMBER;
-        this.travelDistance = CAR_START_POSITION_DISPLAY_STRING;
     }
 
-    public void printTravelDistanceWithCarName() {
-        printSource(getDistanceAsPrintForm());
+    public String getDistanceAsPrintForm(String separator, String distancePrintStandard) {
+        return this.carName + separator + distanceForm(distancePrintStandard);
     }
 
-    public String getDistanceAsPrintForm() {
-        return this.carName + CAR_NAME_AND_DISTANCE_DELIMITER + this.travelDistance;
+    private String distanceForm(String distancePrintStandard) {
+        return distancePrintStandard.repeat(this.distance);
     }
 
     public String getCarName() {
@@ -58,7 +48,6 @@ public class Car {
     public void moveForwardByNumber(int randomNumber) {
         if (isGoForwardNumber(randomNumber)) {
             this.distance += MOVE_STEP;
-            this.travelDistance += CAR_DISTANCE_DISPLAY_UNIT;
         }
     }
 
@@ -73,4 +62,5 @@ public class Car {
     private boolean hasCarNameMoreThanFiveCharacter(String carName) {
         return carName.length() > CAR_NAME_MAX_LENGTH;
     }
+
 }

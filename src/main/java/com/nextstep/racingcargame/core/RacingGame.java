@@ -1,14 +1,13 @@
 package com.nextstep.racingcargame.core;
 
-import static com.nextstep.racingcargame.view.ClientView.createNewLine;
-import static com.nextstep.racingcargame.view.ClientView.printSource;
 import static com.nextstep.racingcargame.view.QuestionView.clientQuestion;
+import static com.nextstep.racingcargame.view.ResultView.createNewLine;
+import static com.nextstep.racingcargame.view.ResultView.printAllCarCurrentDistance;
+import static com.nextstep.racingcargame.view.ResultView.printResultMsg;
+import static com.nextstep.racingcargame.view.ResultView.printSource;
+import static com.nextstep.racingcargame.view.ResultView.printWinners;
 
 public class RacingGame {
-
-    private static final String RESULT_MSG = "실행 결과";
-
-    private static final String ADDITIONAL_WINNER_MSG = "가 최종 우승했습니다.";
 
     public static void progressRacing() {
 
@@ -23,15 +22,15 @@ public class RacingGame {
     private static void startGame(ClientResponse clientResponse, Cars cars) {
 
         createNewLine();
-        printSource(RESULT_MSG);
+        printResultMsg();
 
         for (int turn = 0; turn < clientResponse.getNumberOfTries(); turn++) {
             cars.moveCars();
-            cars.disPlayCarsTravelDistance();
+            printAllCarCurrentDistance(cars);
             createNewLine();
         }
 
-        printSource(cars.joinedWinnerNames() + ADDITIONAL_WINNER_MSG);
+        printWinners(cars);
     }
 
     public static void main(String[] args) {

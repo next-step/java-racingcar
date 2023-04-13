@@ -16,7 +16,7 @@
 
 ## Step 5 코드 개선사항
 
-- [ ] Car 클래스와 Cars 클래스에서 UI 를 의존하는 부분을 끊음
+- [x] Car 클래스와 Cars 클래스에서 UI 를 의존하는 부분을 끊음
 ```java
     // 해당 코드 삭제후 리펙터링 진행
     public void printTravelDistanceWithCarName() {
