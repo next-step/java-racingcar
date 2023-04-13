@@ -23,7 +23,7 @@ public class RacingCarTest {
     // then
     Assertions.assertThat(racingCar)
         .extracting("position")
-        .isEqualTo(1L);
+        .isEqualTo(1);
   }
 
   @DisplayName("[RacingCar.class] 레이싱카는 4 미만의 숫자에서는 전진하지 않는다")
