@@ -37,7 +37,7 @@ public class Racer {
         return lengthToString(position);
     }
 
-    private static boolean isMoveForward(int score) {
+    private boolean isMoveForward(int score) {
         return score > 4;
     }
 
