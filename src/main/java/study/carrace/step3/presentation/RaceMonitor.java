@@ -1,22 +1,18 @@
 package study.carrace.step3.presentation;
 
-import study.carrace.step3.domain.Car;
-
-import java.util.List;
-import java.util.stream.Collectors;
+import study.carrace.step3.application.RaceManager;
 
 import static study.carrace.step3.presentation.PromptMessage.*;
 
 public class RaceMonitor {
-    private final List<Car> cars;
+    private final RaceManager raceManager;
 
-    public RaceMonitor(List<Car> cars) {
-        this.cars = cars;
+    public RaceMonitor(RaceManager raceManager) {
+        this.raceManager = raceManager;
     }
 
     public void showCarsPosition() {
-        cars.forEach(this::showPositionOf);
-        System.out.println("");
+        System.out.println(raceManager.carsPosition());
     }
 
     public void announceRaceResult() {
@@ -24,25 +20,6 @@ public class RaceMonitor {
     }
 
     public void announceWinners() {
-        System.out.println(winners(maxNumberOfMove()) + WINNER_ANNOUNCE_MESSAGE.getMessage());
-    }
-
-    private List<String> winners(long maxNumberOfMove) {
-        return cars.stream()
-                .filter(car -> car.numberOfMove() == maxNumberOfMove)
-                .map(car -> car.name())
-                .collect(Collectors.toList());
-    }
-
-    private long maxNumberOfMove() {
-        return cars.stream()
-                .map(Car::numberOfMove)
-                .mapToLong(l -> l)
-                .max()
-                .getAsLong();
-    }
-
-    private void showPositionOf(Car car) {
-        System.out.println(car.currentPosition());
+        System.out.println(raceManager.winners() + WINNER_ANNOUNCE_MESSAGE.getMessage());
     }
 }
