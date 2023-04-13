@@ -1,7 +1,6 @@
 package study.race;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -28,9 +27,12 @@ public class TestCarRaceSimple {
 
     @ParameterizedTest
     @CsvSource({"2, 4", "4, 5", "3, 6"})
-    @DisplayName("CarRace Car 개수 및 시도 횟수 테스트")
+    @DisplayName("CarRace Car 개수 입력 테스트")
     public void test_carrace_carNum_tryNum_input(int carNum, int tryNum) {
-        assertDoesNotThrow(() -> new CarRace(carNum, tryNum));
+        CarRace race = new CarRace(carNum, tryNum);
+
+        assertThat(race.getCars().size()).isEqualTo(carNum);
     }
+
     
 }
