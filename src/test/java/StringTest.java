@@ -5,8 +5,26 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class StringTest {
+
+    @ParameterizedTest
+    @ValueSource(strings = {",,,a,,", ",a,,a,,", "a,,,a", "a,,,a,,"})
+    void split_구분자_유효값_구분자(String input) {
+        assertThat(input.split(",")).hasSize(4);
+    }
+
+    @Test
+    void split_유효값_구분자() {
+        assertThat("a,,,,,".split(",")).hasSize(1);
+    }
+
+    @Test
+    void split_구분자만존재() {
+        assertThat(",,,,,".split(",")).hasSize(0);
+    }
 
     @Test
     void 한글_length() {

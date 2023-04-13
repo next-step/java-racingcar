@@ -5,20 +5,29 @@ import java.util.List;
 
 public class RaceWinner {
 
+    private static List<String> raceWinner = new ArrayList<>();
+
     public static List<String> raceWinner(RaceResults raceResults) {
-        List<String> result = new ArrayList<>();
-        int maxPosition = Car.SET_POSITION;
-        for (Car car : raceResults.finalResult().cars()) {
-            if (car.position() < maxPosition) {
-                continue;
-            }
-            if (car.position() > maxPosition) {
-                result = new ArrayList<>();
-                maxPosition = car.position();
-            }
-            result.add(car.name());
+        int winningPosition = Car.SET_POSITION;
+        for (Car car : finalCars(raceResults)) {
+            winningPosition = winningPosition(car, winningPosition);
         }
-        return result;
+        return raceWinner;
+    }
+
+    private static List<Car> finalCars(RaceResults raceResults) {
+        return raceResults.finalResult().cars();
+    }
+
+    private static int winningPosition(Car car, int maxPosition) {
+        if (car.position() < maxPosition) {
+            return maxPosition;
+        }
+        if (car.position() > maxPosition) {
+            raceWinner = new ArrayList<>();
+        }
+        raceWinner.add(car.name());
+        return car.position();
     }
 
 }

@@ -1,7 +1,7 @@
 package racingcar;
 
 import static java.util.Optional.ofNullable;
-import static racingcar.InputView.SplitString.stringList;
+import static racingcar.InputView.SplitString.splitStringList;
 
 import java.io.InputStream;
 import java.util.Arrays;
@@ -15,7 +15,7 @@ public class InputView {
 
         public static final String DELIMITER = ",";
 
-        protected static List<String> stringList(String input) {
+        protected static List<String> splitStringList(String input) {
             return Arrays.asList(splitStrings(input));
         }
 
@@ -46,7 +46,7 @@ public class InputView {
 
     public static List<String> askCarNames(InputStream inputStream) {
         askQuestion(CARS_NAME_QUESTION);
-        return stringList(scanInput(ofNullable(inputStream)));
+        return splitStringList(scanInput(ofNullable(inputStream)));
     }
 
     public static int askRaceCount(InputStream inputStream) {
