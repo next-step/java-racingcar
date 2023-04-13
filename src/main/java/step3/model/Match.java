@@ -9,10 +9,15 @@ public class Match {
     private final List<Racer> collect;
 
     public Match(int participates, int iterations) {
-        this.collect = IntStream.rangeClosed(1, participates).boxed().map(integer -> new Racer(iterations)).collect(Collectors.toList());
+        this.collect = IntStream.rangeClosed(1, participates)
+                .boxed()
+                .map(integer -> new Racer(iterations))
+                .collect(Collectors.toList());
     }
 
     public List<List<String>> display() {
-        return collect.stream().map(racer -> racer.getRaceResults()).collect(Collectors.toList());
+        return collect.stream()
+                .map(Racer::getResults)
+                .collect(Collectors.toList());
     }
 }
