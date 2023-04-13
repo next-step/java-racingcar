@@ -15,15 +15,15 @@ public class Racing {
     }
 
     public Racing(int inputCarCount, int inputTryCount) {
-        if(isNegative(inputCarCount,inputTryCount)){
-            throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
-        }
+        validatePositve(inputCarCount,inputTryCount);
         makeCars(inputCarCount);
         this.try_count = inputTryCount;
     }
 
-    private boolean isNegative(int inputCarCount, int inputTryCount) {
-        return inputCarCount < 0 || inputTryCount < 0;
+    private void validatePositve(int inputCarCount, int inputTryCount) {
+        if(inputCarCount < 0 || inputTryCount < 0){
+            throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
+        }
     }
 
     public void raceAndShowResult() {
