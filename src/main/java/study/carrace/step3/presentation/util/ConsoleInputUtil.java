@@ -16,17 +16,17 @@ public class ConsoleInputUtil {
     }
 
     @Deprecated
-    public static int askCarQuantity() {
+    public static long askCarQuantity() {
         System.out.print(CAR_QUANTITY_QUESTION_MESSAGE.getMessage());
-        int carQuantity = getIntFromConsole();
+        long carQuantity = getLongFromConsole();
         validateCarQuantity(carQuantity);
 
         return carQuantity;
     }
 
-    public static int askIterationCount() {
+    public static long askIterationCount() {
         System.out.print(ITERATION_COUNT_QUESTION_MESSAGE.getMessage());
-        int iterationCount = getIntFromConsole();
+        long iterationCount = getLongFromConsole();
         validateIterationCount(iterationCount);
 
         return iterationCount;
@@ -45,17 +45,17 @@ public class ConsoleInputUtil {
         return new Scanner(System.in).nextLine();
     }
 
-    private static int getIntFromConsole() {
-        return new Scanner(System.in).nextInt();
+    private static long getLongFromConsole() {
+        return new Scanner(System.in).nextLong();
     }
 
-    private static void validateIterationCount(int iterationCount) {
+    private static void validateIterationCount(long iterationCount) {
         if (iterationCount <= 0) {
             throw new IllegalIterationCountException(iterationCount);
         }
     }
 
-    private static void validateCarQuantity(int carQuantity) {
+    private static void validateCarQuantity(long carQuantity) {
         if (carQuantity <= 0) {
             throw new IllegalCarQuantityException(carQuantity);
         }
