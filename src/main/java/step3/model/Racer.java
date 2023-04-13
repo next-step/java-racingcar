@@ -1,6 +1,5 @@
 package step3.model;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -16,12 +15,18 @@ public class Racer {
         if(iterations < 0) {
             throw new RuntimeException("iterations 는 1 이상이어야 합니다");
         }
-        this.scores = IntStream.rangeClosed(1, iterations).boxed().map(integer -> randomScore()).collect(Collectors.toList());
+        this.scores = doRace(iterations);
         this.results = calculateResults(scores);
     }
 
+    private List<Integer> doRace(int iterations) {
+        return IntStream.range(0, iterations)
+                .boxed().map(integer -> randomScore())
+                .collect(Collectors.toList());
+    }
+
     public List<String> calculateResults(List<Integer> scoreList) {
-        return IntStream.rangeClosed(0,scoreList.size()-1)
+        return IntStream.range(0,scoreList.size())
                 .boxed()
                 .map(integer -> calculateResult(integer,scoreList))
                 .collect(Collectors.toList());
