@@ -6,17 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    private final int carCount;
     private final int stageCount;
+    private final Cars cars;
 
     public RacingGame(int carCount, int stageCount) {
-        this.carCount = carCount;
         this.stageCount = stageCount;
+        this.cars = new Cars(createCars(carCount));
     }
 
     public void progress() {
-        Cars cars = new Cars(createCars());
-
         ResultView.printResultTitle();
         for(int i = 0; i < stageCount; i++) {
             cars.move();
@@ -24,7 +22,7 @@ public class RacingGame {
         }
     }
 
-    private List<Car> createCars() {
+    private List<Car> createCars(int carCount) {
         List<Car> cars = new ArrayList<>();
         for(int i = 0; i < carCount; i++) {
             cars.add(new Car());
