@@ -16,25 +16,25 @@ public class Racer {
             throw new RuntimeException("iterations 는 1 이상이어야 합니다");
         }
         this.scores = IntStream.rangeClosed(1, iterations).boxed().map(integer -> randomScore()).collect(Collectors.toList());
-        this.results = makeResultCalculate(scores);
+        this.results = calculateResults(scores);
     }
 
-    public List<String> makeResultCalculate(List<Integer> scoreList) {
+    public List<String> calculateResults(List<Integer> scoreList) {
         List<String> temp = new ArrayList<>();
         for (int i = 0; i < scoreList.size(); i++) {
-            temp.add(stringCurentProgress(i, scoreList));
+            temp.add(calculateResult(i, scoreList));
         }
         return temp;
     }
 
-    private String stringCurentProgress(int roundCount,List<Integer> scoreList) {
-        int length = 0;
-        for (int j = 0; j < roundCount; j++) {
+    private String calculateResult(int roundCount, List<Integer> scoreList) {
+        int position = 0;
+        for (int j = 0; j <= roundCount; j++) {
             if (scoreList.get(j) > 4) {
-                length++;
+                position++;
             }
         }
-        return lengthToString(length);
+        return lengthToString(position);
     }
 
     private String lengthToString(int length) {
