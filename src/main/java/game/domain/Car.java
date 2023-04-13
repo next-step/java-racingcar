@@ -5,9 +5,7 @@ import game.domain.policy.StandardCarMovePolicy;
 
 public class Car {
 
-    public static final int MAX_LENGTH_OF_CAR_NAME = 5;
-
-    private final String carName;
+    private final CarName carName;
     private final CarMovePolicy carMovePolicy;
 
     private int position = 0;
@@ -17,15 +15,8 @@ public class Car {
     }
 
     public Car(String carName, CarMovePolicy carMovePolicy) {
-        validateCarName(carName);
-        this.carName = carName;
+        this.carName = new CarName(carName);
         this.carMovePolicy = carMovePolicy;
-    }
-
-    private void validateCarName(String carName) {
-        if (carName.length() > MAX_LENGTH_OF_CAR_NAME) {
-            throw new IllegalArgumentException(String.format("자동차 이름은 5자를 초과할 수 없습니다.(%s)", carName));
-        }
     }
 
     public void drive() {
@@ -43,6 +34,6 @@ public class Car {
     }
 
     public String name() {
-        return carName;
+        return carName.getName();
     }
 }
