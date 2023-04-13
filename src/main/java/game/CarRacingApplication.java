@@ -2,6 +2,7 @@ package game;
 
 import game.service.CarRacing;
 import game.view.InputView;
+import game.view.ResultView;
 
 import java.util.List;
 
@@ -20,7 +21,20 @@ public class CarRacingApplication {
     public static void main(String[] args) {
         List<String> carNames = InputView.showAndGetCarNames();
         int racingRep = InputView.showAndGetRacingRep();
-        CarRacing carRacing = new CarRacing(carNames, racingRep);
-        carRacing.start();
+        throwIfNegativeNumber(racingRep);
+
+        CarRacing carRacing = new CarRacing(carNames);
+        ResultView.displayExecuteResultMessage();
+        for (int i = 0; i < racingRep; i++) {
+            carRacing.start();
+            ResultView.displayCarPositions(carRacing.getCars());
+        }
+        ResultView.displayCarWinners(carRacing.findWinners());
+    }
+
+    private static void throwIfNegativeNumber(int number) {
+        if (number <= 0) {
+            throw new IllegalArgumentException("입력은 0 보다 큰 양수만 가능합니다.");
+        }
     }
 }
