@@ -67,7 +67,8 @@ class CarRacingTest {
         assertSoftly(softAssertions -> {
             softAssertions.assertThat(result).hasSize(1);
             softAssertions.assertThat(result.get(0).name()).isEqualTo("jack");
-            softAssertions.assertThat(result.get(0).distance()).isEqualTo(1);
+            softAssertions.assertThat(result.get(0).distance())
+                    .isGreaterThan(loser.distance());
         });
     }
 
@@ -95,6 +96,8 @@ class CarRacingTest {
             softAssertions.assertThat(result).hasSize(2);
             softAssertions.assertThat(result.get(0).name()).isEqualTo("alex");
             softAssertions.assertThat(result.get(1).name()).isEqualTo("jack");
+            softAssertions.assertThat(result.get(0).distance())
+                    .isEqualTo(result.get(1).distance());
         });
     }
 

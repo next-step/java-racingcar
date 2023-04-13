@@ -1,6 +1,5 @@
 package view;
 
-import car.Car;
 import record.CarRecord;
 import record.Records;
 
