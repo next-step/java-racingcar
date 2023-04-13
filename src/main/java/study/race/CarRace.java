@@ -2,11 +2,13 @@ package study.race;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class CarRace {
 
-    private List<Car> cars;
+    private Random random;
 
+    private List<Car> cars;
     private int tryNum;
 
     public CarRace(int carNum, int tryNum) {
@@ -23,12 +25,24 @@ public class CarRace {
         return readyCars;
     }
     
+    public void run() {
+        for (int i = 0; i < tryNum; i++) {
+            for (Car car : cars) {
+                int randomNum = getRandomNumber();
+                car.move(randomNum);
+            }
+        }
+    }
+
     public List<Car> getCars() {
         return cars;
     }
 
-    public void run() {
-
+    private int getRandomNumber() {
+        if (random == null) {
+            random = new Random();
+        }
+        return random.nextInt(10);
     }
 
 }

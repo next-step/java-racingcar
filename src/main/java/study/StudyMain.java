@@ -1,6 +1,8 @@
 package study;
 
+import study.race.CarRace;
 import study.race.io.RaceInputView;
+import study.race.io.RaceResultView;
 
 public class StudyMain {
     
@@ -9,8 +11,11 @@ public class StudyMain {
         RaceInputView inputView = new RaceInputView();
         inputView.input();
 
-        System.out.println("carNum: " + inputView.getCarNum());
-        System.out.println("tryNum: " + inputView.getTryNum());
+        CarRace carRace = new CarRace(inputView.getCarNum(), inputView.getTryNum());
+        carRace.run();
+
+        RaceResultView resultView = new RaceResultView(carRace.getCars());
+        System.out.println(resultView.getPrint());
     }
 
 }
