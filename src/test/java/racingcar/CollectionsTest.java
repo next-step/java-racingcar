@@ -1,6 +1,7 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,8 +16,13 @@ public class CollectionsTest {
         carList.add(new Car());
 
         List<Car> unmodifiable = Collections.unmodifiableList(carList);
-        assertThatExceptionOfType(UnsupportedOperationException.class)
-            .isThrownBy(() -> unmodifiable.add(new Car()));
+
+        assertAll(
+            () -> assertThatExceptionOfType(UnsupportedOperationException.class)
+            .isThrownBy(() -> unmodifiable.add(new Car())),
+            () -> assertThatExceptionOfType(UnsupportedOperationException.class)
+            .isThrownBy(() -> unmodifiable.remove(0))
+        );
 
         unmodifiable.get(0).move(); //
     }

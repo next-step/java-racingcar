@@ -34,7 +34,15 @@ public class Cars {
     }
 
     public List<Car> cars() {
-        return Collections.unmodifiableList(cars);
+        return Collections.unmodifiableList(cloneList());
+    }
+
+    private List<Car> cloneList() {
+        List<Car> result = new ArrayList<>();
+        for (Car car : cars) {
+            result.add(new Car(car.position()));
+        }
+        return result;
     }
 
     public Cars clone() {

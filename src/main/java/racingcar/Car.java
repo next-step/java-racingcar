@@ -10,7 +10,7 @@ public class Car {
         this.position = SET_POSITION;
     }
 
-    private Car(int position) {
+    protected Car(int position) {
         this.position = position;
     }
 

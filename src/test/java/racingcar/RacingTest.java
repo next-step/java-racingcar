@@ -28,7 +28,7 @@ public class RacingTest {
             cars.add(new Car());
         }
         List<LapResult> lapResults = new ArrayList<>();
-        racing = new Racing(new Cars(cars), 10, new RaceResults(lapResults));
+        racing = new Racing(new Cars(cars), 10, new RaceResults(lapResults), new RandomRacingRule());
     }
 
     @Test

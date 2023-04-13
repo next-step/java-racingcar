@@ -24,7 +24,7 @@ public class OutputViewTest {
             cars.add(new Car());
         }
         List<LapResult> lapResults = new ArrayList<>();
-        racing = new Racing(new Cars(cars), 10, new RaceResults(lapResults));
+        racing = new Racing(new Cars(cars), 10, new RaceResults(lapResults), new RandomRacingRule());
         racing.playFullRace();
     }
 
