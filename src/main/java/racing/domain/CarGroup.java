@@ -10,8 +10,8 @@ public class CarGroup {
     cars = CarFactory.createCars(carsName);
   }
 
-  public void moveCars(int randomNumber) {
-    cars.forEach(car -> car.move(randomNumber));
+  public void moveCars(MoveStrategy moveStrategy) {
+    cars.forEach(car -> car.move(moveStrategy));
   }
 
   public List<Car> getCars() {

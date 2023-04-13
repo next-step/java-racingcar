@@ -1,11 +1,9 @@
 package racing.controller;
 
 
-import java.util.List;
 import racing.domain.CarGroup;
 import racing.view.InputView;
 import racing.view.ResultView;
-import racing.domain.Car;
 import racing.domain.RacingGame;
 
 public class RacingCarGameController {

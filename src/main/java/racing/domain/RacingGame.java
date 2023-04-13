@@ -13,8 +13,8 @@ public class RacingGame {
   /**
    * 게임을 한번 실행 한 경우를 의미한다.
    */
-  public CarGroup play() {
-    carGroup.moveCars(RandomNumberGenerator.generate());
+  public CarGroup play(MoveStrategy moveStrategy) {
+    carGroup.moveCars(moveStrategy);
     return carGroup;
   }
 

@@ -1,5 +1,6 @@
 package racing.domain;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -14,8 +15,7 @@ public class CarFactory {
 
   public static List<Car> createCars(String carsName) {
     String[] names = splitCarsName(carsName);
-    return IntStream.range(0, names.length)
-        .mapToObj(i -> new Car(names[i]))
+    return Arrays.stream(names).map(Car::new)
         .collect(Collectors.toList());
   }
 

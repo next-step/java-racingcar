@@ -1,6 +1,5 @@
 package racing.view;
 
-import java.util.List;
 import java.util.stream.IntStream;
 import racing.domain.Car;
 import racing.domain.CarGroup;

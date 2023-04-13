@@ -28,8 +28,8 @@ public class Car {
     return name;
   }
 
-  public void move(int randomNumber) {
-    if (CarMoveCondition.isMove(randomNumber)) {
+  public void move(MoveStrategy moveStrategy) {
+    if (moveStrategy.isMovable()) {
       position++;
     }
   }
