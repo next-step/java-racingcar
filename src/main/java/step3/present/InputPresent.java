@@ -7,6 +7,7 @@ public class InputPresent {
     public static final String ITERATIONS = "시도할 회수는 몇 회 인가요?";
 
     private final Scanner scanner;
+
     public InputPresent() {
         this.scanner = new Scanner(System.in);
     }

@@ -18,7 +18,7 @@ public class Racer {
 
     private List<String> resultCalculate() {
         List<String> result = new ArrayList<>();
-        for(int i=0 ; i<this.scores.size() ; i++) {
+        for (int i = 0; i < this.scores.size(); i++) {
             String currnetRet = getCurRet(i);
             result.add(currnetRet);
         }
@@ -27,8 +27,8 @@ public class Racer {
 
     private String getCurRet(int curPos) {
         int length = 0;
-        for(int j= 0 ; j<curPos ; j++) {
-            if(scores.get(j) > 4) {
+        for (int j = 0; j < curPos; j++) {
+            if (scores.get(j) > 4) {
                 length++;
             }
         }
@@ -37,7 +37,7 @@ public class Racer {
 
     private String lengthToString(int length) {
         String start = "";
-        for(int i=0 ; i<length ; i++) {
+        for (int i = 0; i < length; i++) {
             start += "-";
         }
         return start;

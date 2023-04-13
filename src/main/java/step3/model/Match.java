@@ -7,6 +7,7 @@ import java.util.stream.IntStream;
 public class Match {
 
     private final List<Racer> collect;
+
     public Match(int participates, int iterations) {
         this.collect = IntStream.rangeClosed(1, participates).boxed().map(integer -> new Racer(iterations)).collect(Collectors.toList());
     }
