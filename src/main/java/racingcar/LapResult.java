@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LapResult {
@@ -31,6 +32,10 @@ public class LapResult {
         }
         result += OutputView.NEW_LINE;
         return result;
+    }
+
+    public List<Car> cars() {
+        return new ArrayList<>(lapResult);
     }
 
 }

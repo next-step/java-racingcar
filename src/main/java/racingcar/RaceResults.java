@@ -22,4 +22,20 @@ public class RaceResults {
         return result;
     }
 
+    public LapResult finalResult() {
+        return new LapResult(finalCarPositions());
+    }
+
+    private List<Car> finalCarPositions() {
+        return finalLapResult().cars();
+    }
+
+    private LapResult finalLapResult() {
+        return lapResults.get(finalIndex());
+    }
+
+    private int finalIndex() {
+        return lapResults.size() - 1;
+    }
+
 }

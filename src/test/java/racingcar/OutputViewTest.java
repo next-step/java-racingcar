@@ -1,6 +1,7 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -31,7 +32,10 @@ public class OutputViewTest {
     @Test
     void 레이스_결과() {
         OutputView.announceRaceResults(racing.raceResults());
-        assertThat(outputStream.toString()).containsPattern("(.{1,5} : -{1,2}\n){3}\n((.{1,5} : -{1,11}\n){3}\n){9}");
+        assertAll(
+            () -> assertThat(outputStream.toString()).containsPattern("(.{1,5} : -{1,2}\n){3}\n((.{1,5} : -{1,11}\n){3}\n){9}"),
+            () -> assertThat(outputStream.toString()).containsPattern("((.{1,5}),?){1,3}가 최종 우승했습니다.")
+        );
     }
 
 }
