@@ -10,10 +10,10 @@ public class Winner {
 
     public List<String> get(List<Car> racingCars) {
         List<Car> sortedCars = getSortedCars(racingCars);
-        return getWinners(sortedCars);
+        return getWinnersList(sortedCars);
     }
 
-    private List<String> getWinners(List<Car> sortedCars) {
+    private List<String> getWinnersList(List<Car> sortedCars) {
         int maxDistance = sortedCars.get(0).getMovingDistance();
         sortedCars.stream()
             .filter(car -> car.getMovingDistance() == maxDistance)

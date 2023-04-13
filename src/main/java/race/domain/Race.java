@@ -7,6 +7,7 @@ public class Race {
 
     private final RacingCars racingCars;
     private final int trial;
+
     private static final Random RANDOM = new Random();
     private static final int BOUND = 10;
 

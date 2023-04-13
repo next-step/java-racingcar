@@ -21,8 +21,7 @@ public class RaceRunner {
         resultView.printResultComment();
 
         Split split = new Split(carName);
-        String[] names = split.getResult();
-        Race race = new Race(names, countOfTrial);
+        Race race = new Race(split.getNames(), countOfTrial);
         race.start();
 
         Winner winner = new Winner();

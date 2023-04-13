@@ -10,7 +10,7 @@ public class Split {
         this.text = text;
     }
 
-    public String[] getResult() {
+    public String[] getNames() {
         return this.text.split(DELIMITER);
     }
 }
