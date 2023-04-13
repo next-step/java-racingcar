@@ -20,17 +20,17 @@ class CarTest {
     @Test
     @DisplayName("자동차는 CarMovePolicy 따라 position 이 증가합니다.")
     void test1() {
-        Car car = new Car("test", new MovableCarMovePolicy());
+        Car car = new Car("test", new MovableCarMovePolicy(), new Position(0));
         car.drive();
-        assertThat(car.position()).isSameAs(1);
+        assertThat(car.getPosition().getValue()).isSameAs(1);
     }
 
     @Test
     @DisplayName("자동차는 CarMovePolicy 따라 position 이 증가하지 않습니다.")
     void test2() {
-        Car car = new Car("test", new NonMovableCarMovePolicy());
+        Car car = new Car("test", new NonMovableCarMovePolicy(), new Position(0));
         car.drive();
-        assertThat(car.position()).isZero();
+        assertThat(car.getPosition().getValue()).isZero();
     }
 
     @Test

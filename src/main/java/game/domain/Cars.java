@@ -2,6 +2,7 @@ package game.domain;
 
 import java.util.List;
 
+import static java.util.Comparator.naturalOrder;
 import static java.util.stream.Collectors.toUnmodifiableList;
 
 public class Cars {
@@ -28,14 +29,14 @@ public class Cars {
 
     public List<Car> findWinners() {
         return carList.stream()
-                .filter(car -> car.isSamePosition(getMaxPosition()))
+                .filter(car -> car.isWinner(getMaxPosition()))
                 .collect(toUnmodifiableList());
     }
 
-    private int getMaxPosition() {
+    private Position getMaxPosition() {
         return carList.stream()
-                .mapToInt(Car::position)
-                .max()
+                .map(Car::getPosition)
+                .max(naturalOrder())
                 .orElseThrow(IllegalStateException::new);
     }
 

@@ -7,33 +7,33 @@ public class Car {
 
     private final CarName carName;
     private final CarMovePolicy carMovePolicy;
-
-    private int position = 0;
+    private final Position position;
 
     public Car(String carName) {
-        this(carName, new StandardCarMovePolicy());
+        this(carName, new StandardCarMovePolicy(), new Position(0));
     }
 
-    public Car(String carName, CarMovePolicy carMovePolicy) {
+    public Car(String carName, CarMovePolicy carMovePolicy, Position position) {
         this.carName = new CarName(carName);
         this.carMovePolicy = carMovePolicy;
+        this.position = position;
     }
 
     public void drive() {
         if (carMovePolicy.isMovable()) {
-            position++;
+            position.forward();
         }
     }
 
-    public int position() {
+    public Position getPosition() {
         return position;
     }
 
-    public boolean isSamePosition(int position) {
-        return this.position == position;
+    public boolean isWinner(Position position) {
+        return this.position.isSame(position);
     }
 
-    public String name() {
+    public String getName() {
         return carName.getName();
     }
 }

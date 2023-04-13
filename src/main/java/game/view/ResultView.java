@@ -23,7 +23,7 @@ public final class ResultView {
 
     public static void displayCarPositions(Cars cars) {
         for (Car car : cars.getCarList()) {
-            displayName(car.name());
+            displayName(car.getName());
             displayPosition(car);
             displayNewLine();
         }
@@ -35,7 +35,7 @@ public final class ResultView {
     }
 
     private static void displayPosition(Car car) {
-        IntStream.range(0, car.position())
+        IntStream.range(0, car.getPosition().getValue())
                 .forEach(n -> System.out.print(POSITION_SYMBOL));
     }
 
@@ -45,7 +45,7 @@ public final class ResultView {
 
     public static void displayCarWinners(List<Car> winners) {
         String winnersAsString = winners.stream()
-                .map(Car::name)
+                .map(Car::getName)
                 .collect(joining(", "));
         System.out.println(String.format("%s가 최종 우승했습니다.", winnersAsString));
     }
