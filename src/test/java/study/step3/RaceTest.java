@@ -10,12 +10,10 @@ import study.step3.factory.CarFactory;
 
 public class RaceTest {
 
-  CarFactory carFactory = new CarFactory();
-
   @DisplayName("경기 한번 당 모든 자동차들은 랜덤하게 1칸 전진하거나 전진하지 않는다.")
   @Test
   public void play_forwardOrStop_carList() {
-    Race race = new Race(carFactory.createCars(5));
+    Race race = new Race(CarFactory.createCars(5));
 
     race.play();
 

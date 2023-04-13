@@ -24,10 +24,7 @@ public class Racing {
   }
 
   private Race createRace() {
-    return new Race(createCarFactory().createCars(this.numOfCars));
+    return new Race(CarFactory.createCars(this.numOfCars));
   }
 
-  private CarFactory createCarFactory() {
-    return new CarFactory();
-  }
 }

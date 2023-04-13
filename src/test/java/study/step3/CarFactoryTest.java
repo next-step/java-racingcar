@@ -13,8 +13,7 @@ public class CarFactoryTest {
   @ParameterizedTest
   @ValueSource(ints = {1, 2, 3, 4, 5})
   public void create_carArr_numberOfCars(int input) {
-    CarFactory carFactory = new CarFactory();
 
-    assertThat(carFactory.createCars(input).size()).isEqualTo(input);
+    assertThat(CarFactory.createCars(input).size()).isEqualTo(input);
   }
 }
