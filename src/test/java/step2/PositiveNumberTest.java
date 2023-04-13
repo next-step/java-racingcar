@@ -25,7 +25,7 @@ public class PositiveNumberTest {
 
     @Test
     public void 숫자가_아닌_문자열_입력시_예외발생() {
-        assertThatThrownBy(() -> new PositiveNumberList(
+        assertThatThrownBy(() -> new PositiveNumbers(
                 new String[]{
                         "a",
                         "b",
@@ -36,7 +36,7 @@ public class PositiveNumberTest {
 
     @Test
     public void 숫자가로_변환가능한_문자_입력시() {
-        assertThatCode(() -> new PositiveNumberList(
+        assertThatCode(() -> new PositiveNumbers(
                 new String[]{
                         "1",
                         "2",
