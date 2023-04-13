@@ -3,7 +3,7 @@ package com.nextstep.racingcargame.core;
 
 public class Car {
 
-    private final Distance distance;
+    private Distance distance;
     private final String carName;
 
     private static final int CAR_NAME_MAX_LENGTH = 5;
@@ -42,8 +42,12 @@ public class Car {
         return this.distance;
     }
 
+    public boolean isLongerThan(Distance distance) {
+        return this.distance.isLongerThan(distance);
+    }
+
     public void moveForwardByNumber(int randomNumber) {
-        this.distance.moveForward(randomNumber);
+        this.distance = this.distance.moveForward(randomNumber);
     }
 
     private boolean carNameEmpty(String carName) {

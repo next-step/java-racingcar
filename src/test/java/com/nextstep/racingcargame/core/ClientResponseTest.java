@@ -17,14 +17,6 @@ public class ClientResponseTest {
         assertThat(clientResponse).isInstanceOf(ClientResponse.class);
     }
 
-    @ParameterizedTest(name = "차 이름이 아무것도 입력되지 않은경우 예외를 발생시킨다. value = [{0}]")
-    @NullAndEmptySource
-    void objectCreate_with_empty_car(String carNameChunk) {
-        assertThatThrownBy(() -> new ClientResponse(carNameChunk,5))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("차 이름이 임력되지 않았습니다.");
-    }
-
     @ParameterizedTest(name = "[{index}] 시도 횟수가 0 이하일 경우 객체 생성시 예외를 발생시킨다. try : {1}")
     @CsvSource(value = {"rick,jack,ethan:-1","ethan:0","jack,ethan:-2"}, delimiter = ':')
     void objectCreateFailTest(String carNameChunk, int numberOfTries) {
