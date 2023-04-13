@@ -3,6 +3,7 @@ package car_racing;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import util.TestNumberGenerator;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,23 +13,17 @@ import static org.mockito.Mockito.*;
 
 class CarRacingTest {
 
-    private CarRacing carRacing = null;
-
-    @BeforeEach
-    void setup() {
-        carRacing = new CarRacing();
-    }
-
     @BeforeEach
     void tear() {
         clearAllCaches();
     }
 
     @Test
-    @DisplayName("입력 사이즈에 따라 car가 생성되어야 한다.")
+    @DisplayName("car 사이즈에 따라 car가 생성되어야 한다.")
     void initCars() {
         // when
-        carRacing.initCars(3);
+        TestNumberGenerator testNumberGenerator = new TestNumberGenerator(0);
+        CarRacing carRacing = new CarRacing(Car.generateCars(3, testNumberGenerator));
 
         // then
         assertThat(carRacing.getCars()).hasSize(3);
@@ -39,7 +34,7 @@ class CarRacingTest {
     void moveCars() {
         // given
         List<Car> carMocks = Arrays.asList(mock(Car.class), mock(Car.class), mock(Car.class));
-        CarRacing carRacing = new CarRacing();
+        CarRacing carRacing = new CarRacing(carMocks);
         carRacing.setCars(carMocks);
 
         // when

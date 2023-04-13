@@ -8,11 +8,22 @@
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
+## pr : step3 리뷰 반영
 
-## pr : step3 리뷰  반영
-* 리뷰 코멘트 일부 반영 
+* 리뷰 코멘트 일부 반영
+
 1. public private로 변경
-2. static 함수로 변경 
+2. static 함수로 변경
 3. repeat 사용
 
 * 리드미 작성
+
+## pr : step4 구현
+
+* feat: step3 리뷰 코멘트 추가 반영
+
+1. random mocking 삭제 후 실제 테스트 클래스 구현
+2. setter 방식을 생성자 주입방식으로 변경
+3. inputView에 출력로직과 입력로직을 통합
+4. dto 클래스 구현
+5. 리드미 작성

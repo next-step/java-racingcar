@@ -1,15 +1,15 @@
 package ui;
 
+import car_racing.Car;
 import car_racing.CarRacing;
+import dto.InputDto;
+import util.RandomNumberGenerator;
 
 public class Application {
     public static void main(String[] args) {
-        CarRacing carRacing = new CarRacing();
-        InputView.askForCarSize();
-        carRacing.initCars(InputView.getCarSize());
-        InputView.askForTrySize();
-        int trySize = InputView.getTrySize();
-        run(carRacing,trySize);
+        InputDto inputDto = InputView.getInputDto();
+        CarRacing carRacing = new CarRacing(Car.generateCars(inputDto.carSize, new RandomNumberGenerator()));
+        run(carRacing, inputDto.trySize);
     }
 
     private static void run(CarRacing carRacing, int trySize) {
