@@ -1,6 +1,9 @@
 package racingcar;
 
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -9,8 +12,14 @@ public class InputView {
     public static final String CAR_COUNT_QUESTION = "자동차 대수는 몇 대 인가요?";
     public static final String RACE_COUNT_QUESTION = "시도할 회수는 몇 회 인가요?";
     public static final InputStream DEFAULT_INPUT_STREAM = System.in;
+    public static final String CARS_NAME_QUESTION = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
+    public static final String DELIMITER = ",";
 
     private static Scanner scanner;
+
+    public static List<String> askCarNames() {
+        return askCarNames(DEFAULT_INPUT_STREAM);
+    }
 
     public static int askRaceCount() {
         return askRaceCount(DEFAULT_INPUT_STREAM);
@@ -18,6 +27,19 @@ public class InputView {
 
     public static int askCarCount() {
         return askCarCount(DEFAULT_INPUT_STREAM);
+    }
+
+    public static List<String> askCarNames(InputStream inputStream) {
+        askQuestion(CARS_NAME_QUESTION);
+        return stringList(splitStrings(scanInput(Optional.ofNullable(inputStream))));
+    }
+
+    private static List<String> stringList(String[] splitStrings) {
+        return Arrays.asList(splitStrings);
+    }
+
+    private static String[] splitStrings(String input) {
+        return input.split(DELIMITER);
     }
 
     public static int askRaceCount(InputStream inputStream) {

@@ -7,11 +7,23 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class CarsTest {
+
+    @Test
+    void 자동차_참가자목록_반환() {
+        List<Car> cars = Cars.registerCars(Arrays.asList("1","2","3","4","5"));
+        List<String> names = cars.stream().map(Car::name).collect(Collectors.toList());
+        assertAll(
+            () -> assertThat(cars).hasSize(5),
+            () -> assertThat(cars).doesNotContainNull(),
+            () -> assertThat(names).doesNotContain(Car.DEFAULT_NAME)
+        );
+    }
 
     @Test
     void 자동차_멤버변수_값_변경불가() {

@@ -20,15 +20,16 @@
 ## 4단계 - 자동차 경주(우승자)
 * 기능 목록
   * 자동차에 이름 부여 : 제한사항 5글자 초과 불가 => Car
-    * 한글 가능? -> 한글 한글자는 몇 글자로 인식?
-    * pobi -> ok / daniel -> not ok
-    * 빈 이름 불가 : "" -> not ok
-    * 스페이스 불가 : "     " -> not ok
-    * null 불가
+    * [x] 한글 가능? -> 한글 한글자는 몇 글자로 인식?
+    * [x] pobi -> ok / daniel -> not ok
+    * [x] 빈 이름 불가 : "" -> not ok
+    * [x] 스페이스 불가 : "     " -> not ok
+    * [x] null 불가
   * 실행결과에 이름 출력 => LapResult
     * ".{5} : " + PATTERN
-  * 자동차 이름 입력 : , 기준 => InputView
-    * 문자열 분리 기능 => new Class
+  * 자동차 이름 입력 : , 기준 => InputView 자동차 대수 입력 수정
+    * [ ] 문자열 분리 기능 => new Class
+    * [x] 참가자 이름 단체 등록 => Cars
   * 자동차 경주 완료 후 우승자 발표 : 여러명 가능
-    * 우승자 추출 기능 => new Class
-    * 우승자 발표 기능 => new Class + OutputView
+    * [ ] 우승자 추출 기능 => new Class
+    * [ ] 우승자 발표 기능 => new Class + OutputView
