@@ -5,8 +5,9 @@ import study.carrace.step3.domain.Car;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static study.carrace.step3.presentation.PromptMessage.*;
+
 public class RaceMonitor {
-    private final String WINNER_ANNOUNCE_MESSAGE = "가 최종 우승했습니다.";
     private final List<Car> cars;
 
     public RaceMonitor(List<Car> cars) {
@@ -14,12 +15,16 @@ public class RaceMonitor {
     }
 
     public void showCarsPosition() {
-        cars.forEach(car -> showPositionOf(car));
+        cars.forEach(this::showPositionOf);
         System.out.println("");
     }
 
+    public void announceRaceResult() {
+        System.out.println(RACE_RESULT_ANNOUNCE_MESSAGE.getMessage());
+    }
+
     public void announceWinners() {
-        System.out.println(winners(maxNumberOfMove()) + WINNER_ANNOUNCE_MESSAGE);
+        System.out.println(winners(maxNumberOfMove()) + WINNER_ANNOUNCE_MESSAGE.getMessage());
     }
 
     private List<String> winners(long maxNumberOfMove) {

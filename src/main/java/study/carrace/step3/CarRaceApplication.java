@@ -25,7 +25,7 @@ public class CarRaceApplication {
     }
 
     private static void startRace(RaceMonitor raceMonitor, List<Car> cars, long iterationCount) {
-        System.out.println("실행 결과");
+        raceMonitor.announceRaceResult();
         for (int i = 0; i < iterationCount; i++) {
             moveCars(cars);
             raceMonitor.showCarsPosition();
