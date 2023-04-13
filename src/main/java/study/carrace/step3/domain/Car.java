@@ -1,11 +1,14 @@
 package study.carrace.step3.domain;
 
 
+import study.carrace.step3.domain.exception.IllegalCarNameException;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Car {
     private static final char POSITION_CURSOR = '-';
+    private static final int CAR_NAME_LENGTH_THRESHOLD = 5;
 
     private final String name;
     private final MoveStrategy moveStrategy;
@@ -15,6 +18,14 @@ public class Car {
         this.name = name;
         this.moveStrategy = moveStrategy;
         this.moveStatuses = new ArrayList<>();
+
+        validateNameLength(name);
+    }
+
+    private void validateNameLength(String name) {
+        if(name.length() > CAR_NAME_LENGTH_THRESHOLD) {
+            throw new IllegalCarNameException(name);
+        }
     }
 
     public void moveOrStop() {

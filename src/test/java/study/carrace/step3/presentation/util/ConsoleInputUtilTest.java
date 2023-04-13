@@ -1,7 +1,6 @@
 package study.carrace.step3.presentation.util;
 
 import org.junit.jupiter.api.Test;
-import study.carrace.step3.presentation.exception.IllegalCarNameException;
 import study.carrace.step3.presentation.exception.IllegalCarQuantityException;
 import study.carrace.step3.presentation.exception.IllegalIterationCountException;
 
@@ -43,14 +42,6 @@ class ConsoleInputUtilTest {
     void car_names() {
         systemSetIn("pobi,crong,honux");
         assertThat(askCarNames()).containsExactly("pobi", "crong", "honux");
-    }
-
-    @Test
-    void invalid_car_names() {
-        systemSetIn("pobi,crong,honux,abcdef");
-        assertThatThrownBy(() -> askCarNames())
-                .isInstanceOf(IllegalCarNameException.class)
-                .hasMessage("자동차 이름은 5자를 초과할 수 없습니다: abcdef");
     }
 
     private void systemSetIn(String input) {
