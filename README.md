@@ -8,7 +8,7 @@
 - [X] Cars 클래스의 진정한 일급컬렉션 구현
 - [X] Stages 클래스 테스트 케이스 추가
 - [X] Cars 객체 내 View 관련 상수값 분리
-- [ ] Car 클래스에서 max position 값 찾아서 가져오기
+- [X] Car 클래스에서 max position 값 찾아서 가져오기 및 우승자 선정 방식 수정
 
 ## step4 - 자동차 경주(우승자)
 

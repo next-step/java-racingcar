@@ -1,7 +1,6 @@
 package racing.carRacing;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -27,8 +26,8 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    private static void hasCarName(int carNumber) {
-        if (carNumber == ZERO) {
+    private static void hasCarName(int numberOfCar) {
+        if (numberOfCar == ZERO) {
             throw new IllegalArgumentException("자동차 이름을 입력해주세요");
         }
     }
@@ -46,20 +45,17 @@ public class Cars {
     }
 
     public List<String> getWinners() {
-        return findWinners(getMaxPosition());
-    }
-
-    private List<String> findWinners(int maxPosition) {
+        int maxPosition = getMaxPosition();
         return cars.stream()
-                .filter(car -> car.equalsMaxPosition(maxPosition))
+                .filter(car -> car.equalsPosition(maxPosition))
                 .map(Car::getCurrentCar)
                 .collect(Collectors.toList());
     }
 
-    private int getMaxPosition() {
+    public int getMaxPosition() {
         return cars.stream()
-                .mapToInt(Car::getCurrentPosition)
-                .max()
-                .orElse(ZERO);
+                .max(Car::compareTo)
+                .map(Car::getCurrentPosition)
+                .get();
     }
 }

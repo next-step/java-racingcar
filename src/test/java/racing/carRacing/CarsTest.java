@@ -33,6 +33,17 @@ class CarsTest {
     }
 
     @Test
+    @DisplayName("우승 자동차 위치 구하기")
+    void maxPositionTest() {
+        Cars cars = Cars.initCars(new String[]{"test1","test2","test3"});
+
+        cars.getCurrentCar(0).run(() -> true);
+        cars.getCurrentCar(0).run(() -> true);
+
+        assertThat(cars.getMaxPosition()).isEqualTo(2);
+    }
+
+    @Test
     @DisplayName("cars 단독 우승자 구하기")
     void getWinnerTest() {
         Cars cars = Cars.initCars(new String[]{"test1","test2","test3"});
@@ -64,31 +75,6 @@ class CarsTest {
     }
 
     @Test
-    @DisplayName("우승자 로직 테스트")
-    void winnerLogicTest() {
-        int maxPosition = 2;
-
-        List<Car> cars = new ArrayList<>();
-        Car car1 = new Car("a");
-        Car car2 = new Car("b");
-        Car car3 = new Car("c");
-
-        car1.run(() -> true);
-        car1.run(() -> true);
-
-        cars.add(car1);
-        cars.add(car2);
-        cars.add(car3);
-
-        List<String> resultList = cars.stream()
-                .filter(car -> car.equalsMaxPosition(maxPosition))
-                .map(Car::getCurrentCar)
-                .collect(Collectors.toList());
-
-        assertThat(resultList).containsExactly("a");
-    }
-
-    @Test
     @DisplayName("우승 자동차 위치 로직 테스트")
     void maxPositionLogicTest() {
         List<Car> cars = new ArrayList<>();
@@ -108,6 +94,15 @@ class CarsTest {
                 .orElse(0);
 
         assertThat(resultPosition).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("stream max 테스트")
+    void streamMaxTest() {
+        List<Integer> numbers = List.of(4, 0, 5, 2, 7, 1, 8, 6, 9, 3);
+        int max = numbers.stream()
+                .max(Integer::compareTo)
+                .orElse(-1);
     }
 
 }
