@@ -31,12 +31,12 @@ public class RacingTest {
     @ParameterizedTest
     @ValueSource(ints = {4,5,6,7,8,9})
     void 값이4이상일때전진(int randomNumber) {
-        assertThat(RacingRule.goOrStop(randomNumber)).isEqualTo(RacingRule.go());
+        assertThat(RacingRule.moveOrStop(randomNumber)).isEqualTo(RacingRule.move());
     }
 
     @ParameterizedTest
     @ValueSource(ints = {0,1,2,3})
     void 값이4미만일때정지(int number) {
-        assertThat(RacingRule.goOrStop(number)).isEqualTo(RacingRule.stop());
+        assertThat(RacingRule.moveOrStop(number)).isEqualTo(RacingRule.stop());
     }
 }

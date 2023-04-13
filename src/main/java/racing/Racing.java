@@ -45,7 +45,7 @@ public class Racing {
         Random random = new Random();
         for (int i = 0; i < cars.count(); i++) {
             Car car = cars.find(i);
-            car.move(RacingRule.goOrStop(random.nextInt(10)));
+            car.move(RacingRule.moveOrStop(random.nextInt(10)));
         }
 
     }

@@ -9,14 +9,14 @@ public class RacingRule {
         throw new AssertionError();
     }
 
-    public static int goOrStop(int number) {
+    public static int moveOrStop(int number) {
         if(number >= BASE_NUMBER){
-            return go();
+            return move();
         }
         return stop();
     }
 
-    public static int go() {
+    public static int move() {
         return 1;
     }
 
