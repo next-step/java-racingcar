@@ -33,10 +33,9 @@ public class Cars {
 
     public void moveCars() {
         for (Car car : cars) {
-            car.moveForwardByNumber(getRandomZeroToNine());
+            car = car.moveForwardByNumber(getRandomZeroToNine());
         }
     }
-
 
     private boolean isMoreThanOneCar(List<Car> cars) {
         return !cars.isEmpty();

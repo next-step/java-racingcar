@@ -10,11 +10,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 class CarsTest {
 
-    private static final int CAR_FORCE_MOVE_NUMBER = 9;
     private static final String APPROPRIATE_TEST_CAR_NAME = "test";
 
     private static final int SINGLE_OBJECT_SIZE = 1;
@@ -22,6 +20,10 @@ class CarsTest {
     private static final int TRIPLE_OBJECT_SIZE = 3;
 
     private static final String WINNER_JOIN_DELIMITER = ",";
+
+    private static final String CAR_DISTANCE_DISPLAY_UNIT = "-";
+
+    private static final String CAR_NAME_AND_DISTANCE_DELIMITER = " : ";
 
     @ParameterizedTest(name = "[{index}] Cars 객체에 (,) 구분자를 기준으로 이름만큼 자동차를 생성한다.")
     @CsvSource(value = {"rick,jack,ethan:3", "ethan:1", "jack,ethan:2"}, delimiter = ':')
@@ -60,11 +62,9 @@ class CarsTest {
     @Test
     @DisplayName("Cars 객체에서 가장 멀리간 자동차의 거리(Distance) 객체를 반환한다.")
     void getFurthestTraveledCarTest() {
-        Car patCar = new Car("pat",3);
-
-        Car rickCar = new Car("rick",2);
-
-        Car ethanCar = new Car("ethan",1);
+        Car patCar = new Car("pat", 3);
+        Car rickCar = new Car("rick", 2);
+        Car ethanCar = new Car("ethan", 1);
 
         Cars cars = new Cars(asList(patCar, rickCar, ethanCar));
         assertThat(cars.longestDistance()).isEqualTo(new Distance(3));
@@ -74,10 +74,8 @@ class CarsTest {
     @DisplayName("Cars 객체에서 가장 멀리간 자동차가 2대를 , 기준으로 합하여 결과를 반환한다.")
     void joinWinnerNamesTest() {
         Car patCar = new Car("pat");
-
-        Car rickCar = new Car("rick",2);
-
-        Car ethanCar = new Car("ethan",2);
+        Car rickCar = new Car("rick", 2);
+        Car ethanCar = new Car("ethan", 2);
 
         Cars cars = new Cars(asList(patCar, rickCar, ethanCar));
         assertThat(cars.joinedWinnerNames(WINNER_JOIN_DELIMITER)).isEqualTo("rick,ethan");
@@ -86,14 +84,36 @@ class CarsTest {
     @Test
     @DisplayName("Cars 객체에서 가장 멀리간 자동차의 거리를 반환한다.")
     void getFurthestTraveledCarDistanceTest() {
-        Car patCar = new Car("pat",2);
-
-        Car rickCar = new Car("rick",3);
-
+        Car patCar = new Car("pat", 2);
+        Car rickCar = new Car("rick", 3);
         Car ethanCar = new Car("ethan");
 
         Cars cars = new Cars(asList(patCar, rickCar, ethanCar));
         assertThat(cars.longestDistance()).isEqualTo(new Distance(3));
     }
 
+    @Test
+    @DisplayName("각 자동차별 현재 거리와 이름 배열을 콘솔 포멧이 맞게 리턴한다.")
+    void getAllCarCurrentDistanceTest() {
+        int moveTwoSteps = 2;
+        int moveThreeSteps = 3;
+
+        Car patCar = new Car("pat", moveTwoSteps);
+        Car rickCar = new Car("rick", moveThreeSteps);
+
+        String expectedPatCarFormat = patCar.getCarName()
+                + CAR_NAME_AND_DISTANCE_DELIMITER
+                + CAR_DISTANCE_DISPLAY_UNIT.repeat(moveTwoSteps);
+
+        String expectedRickCarFormat = rickCar.getCarName()
+                + CAR_NAME_AND_DISTANCE_DELIMITER
+                + CAR_DISTANCE_DISPLAY_UNIT.repeat(moveThreeSteps);
+
+        Cars cars = new Cars(asList(patCar, rickCar));
+        List<String> carCurrentDistances = cars.getAllCarCurrentDistance(
+                CAR_NAME_AND_DISTANCE_DELIMITER, CAR_DISTANCE_DISPLAY_UNIT);
+
+        assertThat(carCurrentDistances)
+                .contains(expectedPatCarFormat, expectedRickCarFormat);
+    }
 }
