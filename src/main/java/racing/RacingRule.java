@@ -4,6 +4,11 @@ public class RacingRule {
 
     private static int BASE_NUMBER = 4;
 
+    // 인스턴스화 방지
+    private RacingRule() {
+        throw new AssertionError();
+    }
+
     public static int goOrStop(int number) {
         if(number >= BASE_NUMBER){
             return go();
