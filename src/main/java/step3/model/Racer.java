@@ -9,11 +9,11 @@ import java.util.stream.IntStream;
 public class Racer {
     private static final Random random = new Random();
     private final List<Integer> scores;
-    private final List<String> raceResults;
+    private final List<String> results;
 
-    public Racer(int roundCount) {
-        this.scores = IntStream.rangeClosed(1, roundCount).boxed().map(integer -> randomScore()).collect(Collectors.toList());
-        this.raceResults = resultCalculate();
+    public Racer(int iterations) {
+        this.scores = IntStream.rangeClosed(1, iterations).boxed().map(integer -> randomScore()).collect(Collectors.toList());
+        this.results = resultCalculate();
     }
 
     private List<String> resultCalculate() {
@@ -43,8 +43,8 @@ public class Racer {
         return start;
     }
 
-    public List<String> getRaceResults() {
-        return raceResults;
+    public List<String> getResults() {
+        return results;
     }
 
     private Integer randomScore() {
