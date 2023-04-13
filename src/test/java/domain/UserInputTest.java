@@ -1,5 +1,8 @@
 package domain;
 
+import static domain.UserInput.EMPTY_NAME_ERROR_MESSAGE;
+import static domain.UserInput.LESS_THAN_ONE_ERROR_MESSAGE;
+import static domain.UserInput.MORE_THAN_FIVE_WORD_ERROR_MESSAGE;
 import static domain.UserInput.isOverOne;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -15,7 +18,7 @@ class UserInputTest {
     void isNotOverOne(int element) {
         assertThatThrownBy(() -> isOverOne(element))
                 .isExactlyInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("0 보다 큰 정수만 입력 가능합니다.");
+                .hasMessageContaining(LESS_THAN_ONE_ERROR_MESSAGE);
 
     }
 
@@ -32,11 +35,18 @@ class UserInputTest {
 
     @ParameterizedTest(name = "차 이름이 비어있을 경우, 오류를 발생시킨다.")
     @ValueSource(strings = {"", "\t", "\n"})
-    void nameSettingFail(String name) {
+    void emptyNameSettingFail(String name) {
         assertThatThrownBy(() -> new UserInput(name, 1))
                 .isExactlyInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("빈 값을 입력하시면 안됩니다.");
+                .hasMessageContaining(EMPTY_NAME_ERROR_MESSAGE);
     }
 
+    @ParameterizedTest(name = "차 이름이 5글자보다 길 경우 경우, 오류를 발생시킨다.")
+    @ValueSource(strings = {"jackson", "patrick", "ethanKim"})
+    void longNameSettingFail(String name) {
+        assertThatThrownBy(() -> new UserInput(name, 1))
+                .isExactlyInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(MORE_THAN_FIVE_WORD_ERROR_MESSAGE);
+    }
 
 }
