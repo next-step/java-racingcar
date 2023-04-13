@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.offset;
-import static org.junit.jupiter.api.Assertions.*;
 
 public class MatchTest {
     @DisplayName("참가차랑수, 반복횟수에 맞게 결과를 생성한다")

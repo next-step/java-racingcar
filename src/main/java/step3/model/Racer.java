@@ -12,7 +12,7 @@ public class Racer {
     private final List<String> results;
 
     public Racer(int iterations) {
-        if(iterations < 0) {
+        if (iterations < 0) {
             throw new RuntimeException("iterations 는 1 이상이어야 합니다");
         }
         this.scores = doRace(iterations);
@@ -26,9 +26,9 @@ public class Racer {
     }
 
     public List<String> calculateResults(List<Integer> scoreList) {
-        return IntStream.range(0,scoreList.size())
+        return IntStream.range(0, scoreList.size())
                 .boxed()
-                .map(integer -> calculateResult(integer,scoreList))
+                .map(integer -> calculateResult(integer, scoreList))
                 .collect(Collectors.toList());
     }
 
