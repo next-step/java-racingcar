@@ -8,17 +8,18 @@ import java.util.*;
 
 public class Racing {
 
-    static InputView inputView = new InputView();
-    static ResultView resultView = new ResultView();
-    private final Random random = new Random();
-
     private static final int CONDITION_NUMBER = 4;
     private static final int DISTANCE_PER_TRY = 1;
 
-    public void Competition(String inputCarNumber, String inputTryNumber) {
+    private static final InputView inputView = new InputView();
+    private static final ResultView resultView = new ResultView();
+    private static final Random random = new Random();
 
-        int numberOfCar = inputView.getNumberOfCar(inputCarNumber);
-        int numberOfTry = inputView.getNumberOfTry(inputTryNumber);
+
+    public void Competition() {
+
+        int numberOfCar = inputView.getNumberOfCar();
+        int numberOfTry = inputView.getNumberOfTry();
 
         List<Car> cars = new ArrayList<>(numberOfCar);
         for (int idxCar=0; idxCar < numberOfCar; idxCar++) {
@@ -28,11 +29,10 @@ public class Racing {
         for (int idxTry=0; idxTry < numberOfTry; idxTry++) {
             for(int idxCar=0; idxCar < numberOfCar; idxCar++) {
                 cars.get(idxCar).move(drive(random.nextInt(10)));
-                resultView.printCurrentDistance(cars.get(idxCar));
             }
-            System.out.println();
-        }
 
+            resultView.printCurrentDistance(cars);
+        }
     }
 
     public int drive(int number) {

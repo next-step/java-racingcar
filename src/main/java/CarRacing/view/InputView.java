@@ -8,40 +8,28 @@ public class InputView {
 
     private static final Scanner SCANNER = new Scanner(System.in);
 
-    public int getNumberOfCar(String numberStr) {
-        if (emptyText(numberStr)) {
-            System.out.println("자동차 대수는 몇 대 인가요?");
-            numberStr = SCANNER.nextLine();
-        }
+    public int getNumberOfCar() {
+        System.out.println("자동차 대수는 몇 대 인가요?");
+        String numberStr = SCANNER.nextLine();
 
-        if (!isNumeric(numberStr)) {
-            throw new IllegalArgumentException("차량 대수는 숫자로만 입력해주세요!");
+        try {
+            return getNumber(numberStr);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return getNumberOfCar();
         }
-
-        int numberOfCar = Integer.parseInt(numberStr);
-        if (numberOfCar < 0 ) {
-            throw new NegativeInputException("차량 대수는 양의 숫자만 입력해주세요!");
-        }
-
-        return numberOfCar;
     }
 
-    public int getNumberOfTry(String numberStr) {
-        if (emptyText(numberStr)) {
-            System.out.println("시도할 횟수는 몇 회 인가요?");
-            numberStr = SCANNER.nextLine();
-        }
+    public int getNumberOfTry() {
+        System.out.println("시도할 횟수는 몇 회 인가요?");
+        String numberStr = SCANNER.nextLine();
 
-        if (!isNumeric(numberStr)) {
-            throw new IllegalArgumentException("시도 횟수는 숫자로만 입력해주세요!");
+        try {
+            return getNumber(numberStr);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return getNumberOfCar();
         }
-
-        int numberOfTry = Integer.parseInt(numberStr);
-        if (numberOfTry < 0 ) {
-            throw new NegativeInputException("시도 횟수는 양의 숫자만 입력해주세요!");
-        }
-
-        return numberOfTry;
     }
 
     public boolean isNumeric(String str) {
@@ -51,6 +39,19 @@ public class InputView {
         } catch(NumberFormatException e){
             return false;
         }
+    }
+
+    public int getNumber(String numberStr) {
+        if (!isNumeric(numberStr)) {
+            throw new IllegalArgumentException("숫자로만 입력해주세요!");
+        }
+
+        int numberOfCar = Integer.parseInt(numberStr);
+        if (numberOfCar < 0 ) {
+            throw new NegativeInputException("양의 숫자만 입력해주세요!");
+        }
+
+        return numberOfCar;
     }
 
     private static boolean emptyText(String inputText) {
