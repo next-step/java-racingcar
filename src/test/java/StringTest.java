@@ -1,10 +1,20 @@
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
+import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class StringTest {
+
+    @Test
+    void 한글_length() {
+        assertAll(
+            () -> assertThat("세글자".length()).isEqualTo(3),
+            () -> assertThat("세글자".getBytes(StandardCharsets.UTF_8).length).isEqualTo(3 * 3)
+        );
+    }
 
     @Test
     @DisplayName("2개 이상 요소 split 정상 테스트")
@@ -39,7 +49,7 @@ public class StringTest {
         String input = "(1,2)";
 
         // when
-        String output = input.substring(1, input.length()-1);
+        String output = input.substring(1, input.length() - 1);
 
         // then
         assertThat(output).isEqualTo("1,2");
@@ -67,6 +77,6 @@ public class StringTest {
         // then
         assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
             .isThrownBy(() -> input.charAt(input.length())
-        ).withMessageMatching("String index out of range: \\d+");
+            ).withMessageMatching("String index out of range: \\d+");
     }
 }

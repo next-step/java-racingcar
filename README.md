@@ -24,6 +24,7 @@
     * pobi -> ok / daniel -> not ok
     * 빈 이름 불가 : "" -> not ok
     * 스페이스 불가 : "     " -> not ok
+    * null 불가
   * 실행결과에 이름 출력 => LapResult
     * ".{5} : " + PATTERN
   * 자동차 이름 입력 : , 기준 => InputView
