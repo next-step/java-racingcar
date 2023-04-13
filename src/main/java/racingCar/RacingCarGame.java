@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import racingCar.car.RacingCar;
+import util.RandomUtils;
 
 public class RacingCarGame {
 
@@ -24,6 +25,12 @@ public class RacingCarGame {
   }
 
   public void play () {
+    for (int i = 0; i < moveTryCnt ; i++) {
+      moveAllRacingCars(racingCarList);
+    }
+  }
 
+  private void moveAllRacingCars(List<RacingCar> racingCarList) {
+    racingCarList.forEach(car -> car.moveIfPossible(RandomUtils.getRandomInt()));
   }
 }
