@@ -36,6 +36,7 @@ public class RacingGame {
     }
 
     private void playGame() {
+        screen.print("실행 결과");
         for (int i = 0; i < gameCount; i++) {
             cars.moveAll();
             screen.print(cars.distanceDriven());
