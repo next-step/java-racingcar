@@ -7,3 +7,12 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+
+## pr : step3 리뷰  반영
+* 리뷰 코멘트 일부 반영 
+1. public private로 변경
+2. static 함수로 변경 
+3. repeat 사용
+
+* 리드미 작성

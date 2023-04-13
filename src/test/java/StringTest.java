@@ -47,7 +47,8 @@ public class StringTest {
         String str = "abc";
         assertThatThrownBy(() -> {
             str.charAt(5);
-        }).isInstanceOf(IndexOutOfBoundsException.class).hasMessageContaining("String size is " + str.length());
+        }).isInstanceOf(StringIndexOutOfBoundsException.class).hasMessageContaining("String index out of range: " + 5);
     }
 
 }
+

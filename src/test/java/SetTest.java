@@ -46,3 +46,4 @@ public class SetTest {
         assertThat(isContainNumber).isEqualTo(expected);
     }
 }
+
