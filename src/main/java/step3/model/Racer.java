@@ -30,11 +30,15 @@ public class Racer {
     private String calculateResult(int roundCount, List<Integer> scoreList) {
         int position = 0;
         for (int j = 0; j <= roundCount; j++) {
-            if (scoreList.get(j) > 4) {
+            if (isMoveForward(scoreList.get(j))) {
                 position++;
             }
         }
         return lengthToString(position);
+    }
+
+    private static boolean isMoveForward(int score) {
+        return score > 4;
     }
 
     private String lengthToString(int length) {
