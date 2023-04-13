@@ -1,18 +1,24 @@
 package study.racingcar;
 
+import java.util.Random;
+
 public class Car {
+    /**
+     * 차량을 담당한다.
+     */
+    public static final String CAR_SHAPE = "-";
+    private final Random random = new Random();
+    private int moveCount = 0;
 
-     public int moveCount;
-
-    public void setMoveCount(int moveCount) {
-        this.moveCount = moveCount;
+    public void move() {
+        int randomValue = random.nextInt(10);
+        if (randomValue >= 4) {
+            moveCount++;
+        }
     }
 
-    public int getMoveCount() {
-        return moveCount;
-    }
-
-    Car() {
-        moveCount = 0;
+    @Override
+    public String toString() {
+        return CAR_SHAPE.repeat(moveCount);
     }
 }

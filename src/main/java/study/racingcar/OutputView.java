@@ -1,7 +1,10 @@
 package study.racingcar;
 
 public class OutputView {
-    public void printCarNumber() {
+    /**
+     * 출력을 담당한다.
+     */
+    public void printCarNumberSign() {
         System.out.println("자동차 대수는 몇 대 인가요?");
     }
 
@@ -11,5 +14,13 @@ public class OutputView {
 
     public void printResultSign() {
         System.out.println("실행 결과");
+    }
+
+    public void printBlankLine() {
+        System.out.println();
+    }
+
+    public void printCarStatus(Car car) {
+        System.out.println(car.toString());
     }
 }

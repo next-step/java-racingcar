@@ -1,13 +1,11 @@
 package study.racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 public class GameBoard {
-
-    private InputView inputView;
-    private OutputView outputView;
+    /**
+     * 게임을 진행을 담당한다.
+     */
+    private final InputView inputView;
+    private final OutputView outputView;
 
     public GameBoard() {
         this.inputView = new InputView();
@@ -15,34 +13,26 @@ public class GameBoard {
     }
 
     public void run() {
-        Random random = new Random();
-
-        outputView.printCarNumber();
-
-        final int carNum = inputView.getCarNumber();
-
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carNum; i++) {
-            cars.add(new Car());
-        }
+        outputView.printCarNumberSign();
+        final int numOfCar = inputView.getCarNumber();
 
         outputView.printTryCountSign();
-        final int tryCount = inputView.getTryCount();
-
+        final int playCount = inputView.getTryCount();
 
         outputView.printResultSign();
 
+        final GameCars cars = new GameCars(numOfCar);
 
-        for (int i = 0; i < tryCount; i++) {
-            for (Car car : cars) {
-                int randomValue = random.nextInt(10);
-                if (randomValue >= 4) {
-                    car.setMoveCount(car.getMoveCount() + 1);
-                }
-                System.out.println("-".repeat(car.getMoveCount()));
-            }
-            System.out.println();
+        for (int i = 0; i < playCount; i++) {
+            playTheGame(cars);
         }
+    }
 
+    private void playTheGame(GameCars cars) {
+        for (Car car : cars) {
+            car.move();
+            outputView.printCarStatus(car);
+        }
+        outputView.printBlankLine();
     }
 }
