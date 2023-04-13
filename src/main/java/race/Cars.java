@@ -12,13 +12,13 @@ public class Cars {
         this.powerGenerator = powerGenerator;
     }
 
-    public List<Boolean> orderMove() {
-        List<Boolean> result = new ArrayList<>();
+    public MoveResults orderMove() {
+        List<MoveResult> result = new ArrayList<>();
         for (int i = 0; i < numOfCars; i++) {
             result.add(
                     Car.move(powerGenerator.generate())
             );
         }
-        return result;
+        return new MoveResults(result);
     }
 }

@@ -4,19 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Race {
-    private final int lap;
+    private final int laps;
     private final Cars cars;
 
-    public Race(int lap, Cars cars) {
-        this.lap = lap;
+    public Race(int laps, Cars cars) {
+        this.laps = laps;
         this.cars = cars;
     }
 
-    public List<List<Boolean>> start() {
-        List<List<Boolean>> result = new ArrayList<>();
-        for (int i = 0; i < lap; i++) {
+    public RaceResult start() {
+        List<MoveResults> result = new ArrayList<>();
+        for (int i = 0; i < laps; i++) {
             result.add(cars.orderMove());
         }
-        return result;
+        return new RaceResult(result);
     }
 }
