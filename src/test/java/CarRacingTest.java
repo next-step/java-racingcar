@@ -97,4 +97,32 @@ class CarRacingTest {
             softAssertions.assertThat(result.get(1).name()).isEqualTo("jack");
         });
     }
+
+    @Test
+    void 콤마로_구분된_이름만큼_차가_생성된다() {
+
+        // given
+        String[] nameOfCars = {"alex", "jake"};
+
+        // when
+        Cars result = Cars.make(nameOfCars);
+
+        // then
+        assertThat(result.cars()).hasSize(2);
+    }
+
+
+    @Test
+    void 주행_거리는_차의_개수와_시도_횟수를_곱한_만큼_기록된다() {
+
+        // given
+        String[] nameOfCars = {"alex", "jake"};
+        RacingGame game = new RacingGame(nameOfCars);
+
+        // when
+        Records records = game.start(5);
+
+        // then
+        assertThat(records.gameRecord()).hasSize(10);
+    }
 }
