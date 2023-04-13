@@ -13,8 +13,8 @@ public class RacingCarGameApplication {
     final long carCnt = RacingCarGameInputView.getCarCnt(reader);
     final long moveTryCnt = RacingCarGameInputView.getMoveTryCnt(reader);
 
-    RacingCarGame racingCarGame = new RacingCarGame(carCnt, moveTryCnt);
-    racingCarGame.play();
+    RacingCarGame racingCarGame = new RacingCarGame(carCnt);
+    racingCarGame.play(moveTryCnt);
     reader.close();
   }
 }

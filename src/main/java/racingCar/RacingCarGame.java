@@ -10,11 +10,9 @@ import util.RandomUtils;
 public class RacingCarGame {
 
   private final List<RacingCar> racingCarList;
-  private final long moveTryCnt;
 
-  public RacingCarGame(long carCnt, long moveTryCnt) {
+  public RacingCarGame(long carCnt) {
     this.racingCarList = generateRacingCars(carCnt);
-    this.moveTryCnt = moveTryCnt;
   }
 
   private List<RacingCar> generateRacingCars(long carCnt) {
@@ -25,7 +23,7 @@ public class RacingCarGame {
     return Collections.unmodifiableList(carList);
   }
 
-  public void play () {
+  public void play (long moveTryCnt) {
     RacingCarGameResultView resultView = new RacingCarGameResultView((int) moveTryCnt);
     for (long moveCnt = 0; moveCnt < moveTryCnt ; moveCnt++) {
       moveAllRacingCars(racingCarList);
