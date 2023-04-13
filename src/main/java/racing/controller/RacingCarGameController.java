@@ -2,6 +2,7 @@ package racing.controller;
 
 
 import racing.domain.CarGroup;
+import racing.domain.RandomMoveStrategy;
 import racing.view.InputView;
 import racing.view.ResultView;
 import racing.domain.RacingGame;
@@ -12,7 +13,7 @@ public class RacingCarGameController {
     String carsName = InputView.scanCarsName();
     int numberOfMovements = InputView.scanNumberOfMovements();
 
-    RacingGame game = new RacingGame(carsName);
+    RacingGame game = new RacingGame(carsName, new RandomMoveStrategy());
 
     ResultView.printEmptyLine();
     ResultView.println("실행 결과");
