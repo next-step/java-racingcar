@@ -51,12 +51,36 @@ public class RacerTest {
         );
     }
 
-    @DisplayName("경기결과가 4 이하면 전진하지 않는다")
+    @DisplayName("경기결과가 4면 전진한다")
     @Test
-    public void 전진하지않는다() {
+    public void 전진하는4이상() {
         //given
         Racer racer = new Racer(2);
         List<Integer> scores = List.of(4, 4, 4, 4, 4, 4, 4, 4, 4, 4);
+        //when
+        List<String> results = racer.calculateResults(scores);
+        //then
+        assertAll(
+                () -> assertThat(results).hasSize(scores.size()),
+                () -> assertThat(results.get(0)).isEqualTo("-"),
+                () -> assertThat(results.get(1)).isEqualTo("--"),
+                () -> assertThat(results.get(2)).isEqualTo("---"),
+                () -> assertThat(results.get(3)).isEqualTo("----"),
+                () -> assertThat(results.get(4)).isEqualTo("-----"),
+                () -> assertThat(results.get(5)).isEqualTo("------"),
+                () -> assertThat(results.get(6)).isEqualTo("-------"),
+                () -> assertThat(results.get(7)).isEqualTo("--------"),
+                () -> assertThat(results.get(8)).isEqualTo("---------"),
+                () -> assertThat(results.get(9)).isEqualTo("----------")
+        );
+    }
+
+    @DisplayName("경기결과가 3이면 전진하지 않는다")
+    @Test
+    public void 전진하지않는3이하다() {
+        //given
+        Racer racer = new Racer(2);
+        List<Integer> scores = List.of(3, 3, 3, 3, 3, 3, 3, 3, 3, 3);
         //when
         List<String> results = racer.calculateResults(scores);
         //then
@@ -69,7 +93,6 @@ public class RacerTest {
                 () -> assertThat(results.get(4)).isEqualTo(""),
                 () -> assertThat(results.get(4)).isEqualTo("")
         );
-
     }
 
 }
