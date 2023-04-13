@@ -17,4 +17,10 @@ public class RacingCar {
         }
         return distance;
     }
+
+    public int getDistance()
+    {
+        return distance;
+    }
+
 }
