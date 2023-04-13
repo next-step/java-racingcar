@@ -15,5 +15,4 @@ class GameUtilsTest {
         // when, then
         Assertions.assertThat(randomNumber).isBetween(0, 9);
     }
-
 }

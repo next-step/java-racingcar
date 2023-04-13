@@ -30,7 +30,8 @@ public class GameBoard {
 
     private void playTheGame(GameCars cars) {
         for (Car car : cars) {
-            car.move();
+            int randomValue = GameUtils.randomNumber();
+            car.move(randomValue);
             outputView.printCarStatus(car);
         }
         outputView.printBlankLine();
