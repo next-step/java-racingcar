@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import racingcar.strategy.RandomMovingStrategy;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -22,6 +24,14 @@ public class Racing {
 
         this.totalRound = totalRound;
         this.cars = cars;
+    }
+
+    public static Racing init(int totalRound, List<String> names) {
+        List<Car> cars = names.stream()
+                .map((name) -> new Car(name, new RandomMovingStrategy()))
+                .collect(toList());
+
+        return new Racing(totalRound, cars);
     }
 
     public List<Car> cars() {

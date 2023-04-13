@@ -26,8 +26,7 @@ public class Program {
         List<String> names = namesInput.getValue();
         int trials = trialInput.getValue();
 
-        List<Car> cars = createCars(names);
-        Racing racing = new Racing(trials, cars);
+        Racing racing = Racing.init(trials, names);
 
         while (!racing.isOver()) {
             racing.step();
@@ -47,9 +46,4 @@ public class Program {
         result.print();
     }
 
-    private static List<Car> createCars(List<String> names) {
-        return names.stream()
-                .map((name) -> new Car(name, new RandomMovingStrategy()))
-                .collect(toList());
-    }
 }
