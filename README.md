@@ -63,10 +63,10 @@
 - [x] 시도할 회수 만큼 각 Car에 대해서 위 Random 함수를 호출해 결과를 출력한다.
 
 ## 프로그래밍 요구사항
-- [ ] 모든 로직에 단위테스트 구현한다.
+- [x] 모든 로직에 단위테스트 구현한다.
     - [x] 핵심 로직을 구현하는 코드와 UI를 담당하는 로직을 구분한다.
     - [x] UI 로직을 InputView, ResultView와 같은 클래스를 추가해 분리한다.
-- [] 자바 코드 컨벤션을 지킨다.
+- [x] 자바 코드 컨벤션을 지킨다.
 - [x] else 예약어를 쓰지 않는다.
 - [x] 기능 목록 작성하기
 - [x] 기능 목록 단위로 commit 하며 commit message를 angularJS commit message convention을 따른다.
