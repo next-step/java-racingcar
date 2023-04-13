@@ -2,7 +2,7 @@ package racingcar;
 
 public class Car {
 
-    private final int MOVED_NUMBER = 4;
+    private static final int MOVED_NUMBER = 4;
 
     private final RandomNumberGenerator randomNumberGenerator;
     private int position = 0;

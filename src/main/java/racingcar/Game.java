@@ -2,26 +2,29 @@ package racingcar;
 
 public class Game {
 
-    private final WatingCars watingCars;
+    private final Cars cars;
     private final Round round;
 
-    public Game(int count, int number) {
-        this.watingCars = new WatingCars(count);
+    public Game(final int count, final int number) {
+        this.cars = new Cars(count);
         this.round = new Round(number);
     }
 
-    public void play() {
-        Billboard.notice();
+    public GameResult play() {
+        GameResult gameResult = new GameResult();
         for (int i = 0; i < round.getNumber(); i++) {
-            round();
+            gameResult.input(round());
         }
+        return gameResult;
     }
 
-    private void round() {
-        for (Car car : this.watingCars.getCars()) {
+    private RoundResult round() {
+        RoundResult roundResult = new RoundResult();
+        for (final Car car : this.cars.getCars()) {
             car.racing();
+            roundResult.input(car.getPosition());
         }
-        Billboard.result(this.watingCars);
+        return roundResult;
     }
 
 }
