@@ -4,20 +4,24 @@ package racingcar;
 import java.util.Random;
 
 public class Car {
-    private static final RandomBool RANDOM_BOOL = new RandomBool();
-    private int position = 0;
+    private MoveStrategy moveStrategy = new FourOverTenMoveStrategy();
+    private Integer position = 0;
 
-    public void tryMove() {
-        move(RANDOM_BOOL.next());
+    public Car(MoveStrategy moveStrategy) {
+        this.moveStrategy = moveStrategy;
     }
 
-    public void move(boolean movable) {
-        if(movable){
+    public void tryMove() {
+        move(moveStrategy.isMovable());
+    }
+
+    private void move(boolean isMovable) {
+        if (isMovable) {
             increasePosition();
         }
     }
 
-    public int getPosition() {
+    public Integer getPosition() {
         return this.position;
     }
 
