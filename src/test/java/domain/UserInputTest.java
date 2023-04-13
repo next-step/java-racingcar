@@ -15,7 +15,7 @@ class UserInputTest {
     void isNotOverOne(int element) {
         assertThatThrownBy(() -> isOverOne(element))
                 .isExactlyInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("0 이상의 정수만 입력 가능합니다.");
+                .hasMessageContaining("0 보다 큰 정수만 입력 가능합니다.");
 
     }
 
@@ -37,6 +37,6 @@ class UserInputTest {
                 .isExactlyInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("빈 값을 입력하시면 안됩니다.");
     }
-    
+
 
 }

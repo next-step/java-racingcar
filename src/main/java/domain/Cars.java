@@ -1,5 +1,6 @@
 package domain;
 
+import static domain.RandomNumber.generateRandomOutOfTen;
 import static domain.RandomNumber.isOverFourOutOfTen;
 
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class Cars {
     }
 
     private boolean isMoved() {
-        return isOverFourOutOfTen();
+        return isOverFourOutOfTen(generateRandomOutOfTen());
     }
 
     public int countCars() {
