@@ -4,16 +4,13 @@ import java.util.Random;
 
 public class Car {
 
-    private int round;
     private int position;
 
     public Car() {
-        round = 0;
         position = 0;
     }
 
     public boolean move() {
-        round++;
         if (isExceedStandard(getRandomInt())) {
             position++;
             return true;
