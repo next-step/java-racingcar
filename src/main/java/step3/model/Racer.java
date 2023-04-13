@@ -42,11 +42,7 @@ public class Racer {
     }
 
     private String lengthToString(int length) {
-        String start = "";
-        for (int i = 0; i < length; i++) {
-            start += "-";
-        }
-        return start;
+        return "-".repeat(length);
     }
 
     public List<String> getResults() {
