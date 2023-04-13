@@ -7,8 +7,14 @@ import util.RandomNumberGenerator;
 
 public class Application {
     public static void main(String[] args) {
-        InputDto inputDto = InputView.getInputDto();
-        CarRacing carRacing = new CarRacing(Car.generateCars(inputDto.carSize, new RandomNumberGenerator()));
+        InputDto inputDto;
+        try {
+            inputDto = InputView.getInputDto();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
+        CarRacing carRacing = new CarRacing(Car.generateCars(inputDto.carNames.size(), new RandomNumberGenerator()));
         run(carRacing, inputDto.trySize);
     }
 

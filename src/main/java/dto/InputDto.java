@@ -1,11 +1,13 @@
 package dto;
 
+import java.util.List;
+
 public class InputDto {
-    public int carSize = 0;
+    public List<String> carNames;
     public int trySize = 0;
 
-    public InputDto(int carSize, int trySize) {
-        this.carSize = carSize;
+    public InputDto(List<String> carNames, int trySize) {
+        this.carNames = carNames;
         this.trySize = trySize;
     }
 }
