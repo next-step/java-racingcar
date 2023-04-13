@@ -5,26 +5,13 @@ import java.util.List;
 
 public class Winner {
     private final Cars cars;
+
     public Winner(Cars cars) {
         this.cars = cars;
     }
 
     private Position winnerPosition() {
-        Position position = Position.init();
-
-        for (Car car : cars.cars()) {
-            position = this.highPosition(position, car.position());
-        }
-
-        return position;
-    }
-
-    private Position highPosition(Position winnerPosition, Position position) {
-        if (position.compareTo(winnerPosition) > 0) {
-            return position;
-        }
-
-        return winnerPosition;
+        return cars.highPosition();
     }
 
     public List<Car> winnerCars() {
