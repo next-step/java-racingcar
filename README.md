@@ -14,3 +14,29 @@
     - 사용자는 몇대의 자동차로 이동할 것인지 입력할 수 있다. (음수 또는 그 이외의 값을 입력할 경우 예외를 발생시킨다)
 3. 0~9 사이의 정수를 발생시키는 random 함수 발생 객체 개발
 
+## Step 5 코드 개선사항
+
+- [ ] Car 클래스와 Cars 클래스에서 UI 를 의존하는 부분을 끊음
+```java
+    // 해당 코드 삭제후 리펙터링 진행
+    public void printTravelDistanceWithCarName() {
+        printSource(getDistanceAsPrintForm());
+    }
+```
+- [ ] Car 와 ClientInput 에 대해 Getter 메서드를 삭제함
+- [ ] Car 객체에 명시되어있는 UI 소스들을 View 단으로 이관함.
+
+```java
+    /* View 단에 존재 해야할 상수 */    
+
+    private static final String CAR_DISTANCE_DISPLAY_UNIT = "-";
+
+    private static final String CAR_START_POSITION_DISPLAY_STRING = "";
+
+    private static final String CAR_NAME_AND_DISTANCE_DELIMITER = " : ";
+```
+
+- [ ] 코드내에 산제되어있는 public 상수를 전체 삭제 처리함 
+
+- [ ] Domain 로직은 View 단과 절대 소통하지 않으며 View 단만 도메인 로직에 의존하도록 수정한다.
+
