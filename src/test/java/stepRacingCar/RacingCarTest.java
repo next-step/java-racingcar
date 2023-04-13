@@ -39,6 +39,6 @@ public class RacingCarTest {
     // then
     Assertions.assertThat(racingCar)
         .extracting("position")
-        .isEqualTo(0L);
+        .isEqualTo(0);
   }
 }

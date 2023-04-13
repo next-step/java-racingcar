@@ -3,7 +3,7 @@ package racingCar.car;
 public class RacingCar {
 
   private final long carId;
-  private long position;
+  private int position;
 
   private static final int MIN_MOVE_ALLOWED_TRY = 4;
 
@@ -22,7 +22,7 @@ public class RacingCar {
     return moveAck >= MIN_MOVE_ALLOWED_TRY;
   }
 
-  public long getPosition() {
+  public int getPosition() {
     return position;
   }
 }
