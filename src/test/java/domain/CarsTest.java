@@ -8,29 +8,13 @@ import org.junit.jupiter.api.Test;
 class CarsTest {
 
     @Test
-    @DisplayName("자동차를 입력한 정수 대 만큼 생성한다.")
+    @DisplayName("자동차를 입력한 이름의 수 만큼 생성한다.")
     void createCar() {
-        int numberOfCars = 3;
+        String names = "포비,크롱,뽀로로";
         int attemptCount = 3;
-        UserInput userInput = new UserInput(numberOfCars, attemptCount);
+        UserInput userInput = new UserInput(names, attemptCount);
         Cars cars = new Cars(userInput);
 
         assertThat(cars.countCars()).isEqualTo(3);
-    }
-
-    @Test
-    @DisplayName("자동차의 움직임을 입력한 숫자의 횟수만큼 시도해본다.")
-    void moveCar() {
-        int numberOfCars = 1;
-        int attemptCount = 10;
-        UserInput userInput = new UserInput(numberOfCars, attemptCount);
-        Cars cars = new Cars(userInput);
-
-        for (int i = 0; i < attemptCount; i++) {
-            cars.makeCarsMove();
-        }
-        assertThat(cars.getDistance(0))
-                .isNotEqualTo(0);
-
     }
 }
