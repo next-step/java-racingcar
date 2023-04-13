@@ -3,6 +3,7 @@ package racing.view;
 import java.util.List;
 import java.util.stream.IntStream;
 import racing.domain.Car;
+import racing.domain.CarGroup;
 
 public class ResultView {
 
@@ -17,8 +18,8 @@ public class ResultView {
     System.out.println("");
   }
 
-  public static void printCarPosition(List<Car> cars) {
-    for (Car car : cars) {
+  public static void printCarPosition(CarGroup carGroup) {
+    for (Car car : carGroup.getCars()) {
       printCarPosition(car);
       printEmptyLine();
     }

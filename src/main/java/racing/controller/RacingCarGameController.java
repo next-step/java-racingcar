@@ -2,6 +2,7 @@ package racing.controller;
 
 
 import java.util.List;
+import racing.domain.CarGroup;
 import racing.view.InputView;
 import racing.view.ResultView;
 import racing.domain.Car;
@@ -18,7 +19,7 @@ public class RacingCarGameController {
     ResultView.printEmptyLine();
     ResultView.println("실행 결과");
     for(int i = 0; i < numberOfMovements; i++) {
-      List<Car> cars = game.play();
+      CarGroup cars = game.play();
       ResultView.printCarPosition(cars);
       ResultView.printEmptyLine();
     }
