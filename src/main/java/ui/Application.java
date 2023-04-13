@@ -14,7 +14,7 @@ public class Application {
             System.out.println(e.getMessage());
             return;
         }
-        CarRacing carRacing = new CarRacing(Car.generateCars(inputDto.carNames.size(), new RandomNumberGenerator()));
+        CarRacing carRacing = new CarRacing(Car.generateCars(inputDto.carNames, new RandomNumberGenerator()));
         run(carRacing, inputDto.trySize);
     }
 

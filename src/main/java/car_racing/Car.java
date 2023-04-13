@@ -9,16 +9,22 @@ public class Car {
     private static final int INITIAL_COUNT = 0;
     private static final int CAR_MOVE_BOUND = 4;
 
+    private final String name;
     private int moveCount = INITIAL_COUNT;
 
     private final NumberGenerator numberGenerator;
 
-    public int getMoveCount() {
-        return moveCount;
+    public Car(String name, NumberGenerator numberGenerator) {
+        this.name = name;
+        this.numberGenerator = numberGenerator;
     }
 
-    public Car(NumberGenerator numberGenerator) {
-        this.numberGenerator = numberGenerator;
+    public String getName() {
+        return name;
+    }
+
+    public int getMoveCount() {
+        return moveCount;
     }
 
     void moveOrStop() {
@@ -28,10 +34,10 @@ public class Car {
         }
     }
 
-    public static List<Car> generateCars(int carSize, NumberGenerator numberGenerator) {
+    public static List<Car> generateCars(List<String> carNames, NumberGenerator numberGenerator) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carSize; i++) {
-            cars.add(new Car(numberGenerator));
+        for (String carName : carNames) {
+            cars.add(new Car(carName, numberGenerator));
         }
         return cars;
     }
