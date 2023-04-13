@@ -20,4 +20,30 @@ public class StringAddCalculatorTest {
     void stringSingleNumber() {
         assertThat(StringAddCalculator.splitAndSum("1")).isOne();
     }
+
+    @Test
+    @DisplayName("Test with a delimiter comma")
+    void sumStringNumbersWithComma() {
+        assertThat(StringAddCalculator.splitAndSum("1,2")).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("Test with delimiter comma and colon")
+    void sumStringNumbersWithCommaAndColon() {
+        assertThat(StringAddCalculator.splitAndSum("1,2:3")).isEqualTo(6);
+    }
+
+    @Test
+    @DisplayName("Test with a custom delimiter")
+    void sumStringNumbersWithCustomDelimiter() {
+        assertThat(StringAddCalculator.splitAndSum("//;\n1;2;3;")).isEqualTo(6);
+    }
+
+    @Test
+    @DisplayName("Test for exception on negative input")
+    void runtimeExceptionWithNegativeNumber() {
+        assertThatThrownBy(() -> {
+            StringAddCalculator.splitAndSum("-1,2,3");
+        }).isExactlyInstanceOf(RuntimeException.class).hasMessageContaining("It is not positive number");
+    }
 }
