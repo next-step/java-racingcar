@@ -1,40 +1,33 @@
 package racingcar.control.input;
 
-import racingcar.control.input.validator.NumberValidator;
+import racingcar.control.input.validator.DummyValidator;
+import racingcar.control.input.validator.Validator;
 import racingcar.view.View;
 
-import java.util.InputMismatchException;
-import java.util.Objects;
 import java.util.Scanner;
 
-public abstract class StandardInput {
-    private static final Scanner scanner = new Scanner(System.in);
-    private NumberValidator validator;
+public abstract class StandardInput<T> {
+    protected static final Scanner scanner = new Scanner(System.in);
+    private Validator<T> validator = new DummyValidator<>();
 
     public StandardInput() {
     }
 
-    public StandardInput(NumberValidator validator) {
+    public StandardInput(Validator<T> validator) {
         this.validator = validator;
     }
 
     abstract protected View view();
 
-    public int getInt() {
-        this.view().render();
+    abstract protected T input();
 
-        int result = input();
-        if (Objects.nonNull(validator)) {
-            validator.verify(result);
-        }
+
+    final public T getValue() {
+        view().render();
+
+        T result = input();
+        validator.verify(result);
+
         return result;
-    }
-
-    private int input() {
-        try {
-            return scanner.nextInt();
-        } catch (InputMismatchException e) {
-            throw new InputMismatchException("input must be integer");
-        }
     }
 }

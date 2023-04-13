@@ -4,18 +4,18 @@ import racingcar.control.input.validator.Validator;
 import racingcar.view.InputView;
 import racingcar.view.View;
 
-public class TrialInput extends StandardInput<Integer> {
-    public TrialInput() {
+public class CarCountInput extends StandardInput<Integer> {
+    public CarCountInput() {
         super();
     }
 
-    public TrialInput(Validator<Integer> validator) {
+    public CarCountInput(Validator<Integer> validator) {
         super(validator);
     }
 
     @Override
     protected View view() {
-        return new InputView("시도할 회수는 몇 회 인가요?");
+        return new InputView("자동차 대수는 몇 대 인가요?");
     }
 
     @Override

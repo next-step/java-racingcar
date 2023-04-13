@@ -16,7 +16,8 @@ public class ResultView implements View {
     public void render() {
         for (CarDto car : this.cars) {
             int distance = car.distance();
-            System.out.println(CAR_PATH_EXPRESSION.repeat(distance));
+            String format = String.format("%s : %s", car.name(), CAR_PATH_EXPRESSION.repeat(distance));
+            System.out.println(format);
         }
         System.out.println();
     }

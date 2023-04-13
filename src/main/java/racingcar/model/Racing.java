@@ -1,7 +1,11 @@
 package racingcar.model;
 
+import racingcar.strategy.RandomMovingStrategy;
+
 import java.util.List;
 import java.util.Objects;
+
+import static java.util.stream.Collectors.toList;
 
 public class Racing {
     private final List<Car> cars;
@@ -20,6 +24,14 @@ public class Racing {
 
         this.totalRound = totalRound;
         this.cars = cars;
+    }
+
+    public static Racing init(int totalRound, List<String> names) {
+        List<Car> cars = names.stream()
+                .map((name) -> new Car(name, new RandomMovingStrategy()))
+                .collect(toList());
+
+        return new Racing(totalRound, cars);
     }
 
     public List<Car> cars() {
@@ -41,4 +53,20 @@ public class Racing {
         cars.forEach(Car::move);
         currentRound++;
     }
+
+    public List<Car> winners() {
+        if (!isOver()) {
+            throw new IllegalStateException("race is not over");
+        }
+
+        int maxDistance = cars.stream()
+                .mapToInt(Car::distance)
+                .max()
+                .orElse(0);
+
+        return cars.stream()
+                .filter(car -> car.isReached(maxDistance))
+                .collect(toList());
+    }
+
 }

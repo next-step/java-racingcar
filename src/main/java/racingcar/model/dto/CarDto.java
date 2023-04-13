@@ -4,13 +4,19 @@ import racingcar.model.Car;
 
 public class CarDto {
     private final int distance;
+    private final String name;
 
-    private CarDto(int distance) {
+    private CarDto(String name, int distance) {
+        this.name = name;
         this.distance = distance;
     }
 
     public static CarDto from(Car car) {
-        return new CarDto(car.distance());
+        return new CarDto(car.name(), car.distance());
+    }
+
+    public String name() {
+        return name;
     }
 
     public int distance() {

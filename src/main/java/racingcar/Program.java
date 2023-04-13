@@ -1,33 +1,30 @@
 package racingcar;
 
-import racingcar.control.input.CarInput;
+import racingcar.control.input.CarNamesInput;
 import racingcar.control.input.StandardInput;
 import racingcar.control.input.TrialInput;
-import racingcar.control.input.validator.NumberValidator;
 import racingcar.control.input.validator.PositiveValidator;
 import racingcar.control.output.Printable;
 import racingcar.control.output.RacingOutput;
-import racingcar.model.Car;
+import racingcar.control.output.RacingWinnersOutput;
 import racingcar.model.Racing;
+import racingcar.model.dto.CarDto;
 import racingcar.model.dto.RacingDto;
-import racingcar.strategy.RandomMovingStrategy;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.toList;
+
 
 public class Program {
     public static void main(String[] args) {
-        NumberValidator validator = new PositiveValidator();
+        StandardInput<List<String>> namesInput = new CarNamesInput();
+        StandardInput<Integer> trialInput = new TrialInput(new PositiveValidator());
 
-        StandardInput carInput = new CarInput(validator);
-        StandardInput trialInput = new TrialInput(validator);
+        List<String> names = namesInput.getValue();
+        int trials = trialInput.getValue();
 
-        int carCount = carInput.getInt();
-        int trials = trialInput.getInt();
-
-        List<Car> cars = createCars(carCount);
-        Racing racing = new Racing(trials, cars);
+        Racing racing = Racing.init(trials, names);
 
         while (!racing.isOver()) {
             racing.step();
@@ -37,12 +34,14 @@ public class Program {
             
             racingOutput.print();
         }
+
+        List<CarDto> winners = racing.winners()
+                .stream()
+                .map(CarDto::from)
+                .collect(toList());
+
+        Printable result = new RacingWinnersOutput(winners);
+        result.print();
     }
 
-    private static List<Car> createCars(int carCount) {
-        return Stream
-                .generate(() -> new Car(new RandomMovingStrategy()))
-                .limit(carCount)
-                .collect(Collectors.toList());
-    }
 }
