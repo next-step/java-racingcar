@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import racingCar.car.RacingCar;
+import racingCar.view.RacingCarGameResultView;
 import util.RandomUtils;
 
 public class RacingCarGame {
@@ -25,9 +26,13 @@ public class RacingCarGame {
   }
 
   public void play () {
-    for (int i = 0; i < moveTryCnt ; i++) {
+    RacingCarGameResultView resultView = new RacingCarGameResultView((int) moveTryCnt);
+    for (long moveCnt = 0; moveCnt < moveTryCnt ; moveCnt++) {
       moveAllRacingCars(racingCarList);
+      resultView.storeSnapShotOfMoveCnt(racingCarList);
     }
+
+    resultView.printAllSnapShot();
   }
 
   private void moveAllRacingCars(List<RacingCar> racingCarList) {
