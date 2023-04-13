@@ -17,7 +17,7 @@ public class TestCar {
         Car car = new Car();
         car.move(successNum);
 
-        assertThat(car.showHistory().length()).isEqualTo(1);
+        assertThat(car.getScore().length()).isEqualTo(1);
     }
 
 
@@ -29,7 +29,7 @@ public class TestCar {
         Car car = new Car();
         car.move(failNum);
 
-        assertThat(car.showHistory().length()).isEqualTo(0);
+        assertThat(car.getScore().length()).isEqualTo(0);
     }
 
 
@@ -37,14 +37,14 @@ public class TestCar {
     @ValueSource(ints = {1, 2, 3})
     @DisplayName("Car 객체의 전진 기록 테스트")
     public void test_car_move_history(int moveNum) {
-        int randomNum = 4;
+        int successNum = 4;
 
         Car car = new Car();
         for (int i = 0; i < moveNum; i++) {
-            car.move(randomNum);
+            car.move(successNum);
         }
 
-        assertThat(car.showHistory().length()).isEqualTo(moveNum);
+        assertThat(car.getScore().length()).isEqualTo(moveNum);
     }
 
 }
