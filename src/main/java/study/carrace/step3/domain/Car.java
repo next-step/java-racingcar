@@ -40,8 +40,12 @@ public class Car {
 
     public long numberOfMove() {
         return moveStatuses.stream()
-                .filter(moveStatus -> moveStatus)
+                .filter(b -> b)
                 .count();
+    }
+
+    public String name() {
+        return name;
     }
 
     private void validateNameLength(String name) {

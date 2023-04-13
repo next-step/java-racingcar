@@ -1,11 +1,10 @@
 package study.carrace.step3;
 
-import study.carrace.step3.domain.Car;
-import study.carrace.step3.domain.RandomZeroAndPositiveIntegerGenerator;
+import study.carrace.step3.domain.*;
 import study.carrace.step3.presentation.RaceMonitor;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static study.carrace.step3.presentation.util.ConsoleInputUtil.*;
 
@@ -14,18 +13,22 @@ public class CarRaceApplication {
     private static final int MAX_RANDOM_INTEGER = 9;
 
     public static void main(String[] args) {
-        List<Car> cars = createCars(askCarQuantity());
+        List<Car> cars = cars(askCarNames());
         RaceMonitor raceMonitor = new RaceMonitor(cars);
 
         startRace(raceMonitor, cars, askIterationCount());
+        announceWinners(raceMonitor);
     }
 
-    private static void startRace(RaceMonitor raceMonitor, List<Car> cars, int iterationCount) {
+    private static void announceWinners(RaceMonitor raceMonitor) {
+        raceMonitor.announceWinners();
+    }
+
+    private static void startRace(RaceMonitor raceMonitor, List<Car> cars, long iterationCount) {
         System.out.println("실행 결과");
         for (int i = 0; i < iterationCount; i++) {
             moveCars(cars);
             raceMonitor.showCarsPosition();
-            System.out.println("");
         }
     }
 
@@ -33,16 +36,17 @@ public class CarRaceApplication {
         cars.forEach(car -> car.moveOrStop());
     }
 
-    private static List<Car> createCars(int carQuantity) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carQuantity; i++) {
-            cars.add(createCar());
-        }
-
-        return cars;
+    private static List<Car> cars(List<String> carNames) {
+        return carNames.stream()
+                .map(carName -> new Car(carName, randomMoveStrategy()))
+                .collect(Collectors.toList());
     }
 
-    private static Car createCar() {
-        return new Car(new RandomZeroAndPositiveIntegerGenerator(MAX_RANDOM_INTEGER), MOVABLE_THRESHOLD);
+    private static MoveStrategy randomMoveStrategy() {
+        return new RandomMoveStrategy(randomIntegerGenerator(), MOVABLE_THRESHOLD);
+    }
+
+    private static RandomIntegerGenerator randomIntegerGenerator() {
+        return new RandomZeroAndPositiveIntegerGenerator(MAX_RANDOM_INTEGER);
     }
 }
