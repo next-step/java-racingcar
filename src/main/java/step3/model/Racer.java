@@ -21,11 +21,10 @@ public class Racer {
     }
 
     public List<String> calculateResults(List<Integer> scoreList) {
-        List<String> temp = new ArrayList<>();
-        for (int i = 0; i < scoreList.size(); i++) {
-            temp.add(calculateResult(i, scoreList));
-        }
-        return temp;
+        return IntStream.rangeClosed(0,scoreList.size()-1)
+                .boxed()
+                .map(integer -> calculateResult(integer,scoreList))
+                .collect(Collectors.toList());
     }
 
     private String calculateResult(int roundCount, List<Integer> scoreList) {
