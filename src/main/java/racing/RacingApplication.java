@@ -10,7 +10,7 @@ public class RacingApplication {
         int opportunity = inputView.inputOpportunity();
 
         RacingGame racingGame = new RacingGame(carCount);
-        racingGame.start(opportunity);
-
+        GameResult result = racingGame.start(opportunity);
+        RacingPrinter.drawPositions(result);
     }
 }

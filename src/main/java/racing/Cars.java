@@ -1,11 +1,7 @@
 package racing;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Spliterator;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> carList;
@@ -25,5 +21,21 @@ public class Cars {
         return currentPositions;
 //        return carList.stream().map(Car::valueOfCurrentPosition)
 //                .collect(Collectors.toList());
+    }
+
+    public RoundResult race(List<Integer> randomNumberList) {
+        List<Integer> result = new ArrayList<>();
+        for (int i = 0; i < carList.size(); i++) {
+            result.add(findCarByIndex(i).race(randomNumberList.get(i)));
+        }
+        return new RoundResult(result);
+    }
+
+    private Car findCarByIndex(int i) {
+        return carList.get(i);
+    }
+
+    public int countTotalCar() {
+        return carList.size();
     }
 }

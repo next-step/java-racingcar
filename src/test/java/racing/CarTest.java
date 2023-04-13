@@ -10,12 +10,10 @@ import static org.assertj.core.api.Assertions.*;
 public class CarTest {
 
     @ParameterizedTest
-    @CsvSource(value = {"1, 1", "3, 3"})
-    void carMoveTest(int moveCount, int expectedPosition) {
+    @CsvSource(value = {"1, 0", "3, 0", "4, 1", "9, 1"})
+    void carRaceTest(int randomNumber, int expectedPosition) {
         Car car = new Car();
-        for (int i = 0; i < moveCount; i++) {
-            car.move();
-        }
+        car.race(randomNumber);
         assertThat(car.valueOfCurrentPosition()).isEqualTo(expectedPosition);
     }
 }

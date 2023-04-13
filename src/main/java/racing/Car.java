@@ -11,11 +11,14 @@ public class Car {
         this.position = initPosition;
     }
 
-    public void move() {
-        position++;
+    public int valueOfCurrentPosition() {
+        return position;
     }
 
-    public int valueOfCurrentPosition() {
+    public int race(int randomNumber) {
+        if(randomNumber > 3) {
+            position++;
+        }
         return position;
     }
 }

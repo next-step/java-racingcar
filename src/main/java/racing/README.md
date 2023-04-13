@@ -37,8 +37,8 @@
     - ~~carCount 입력~~
     - ~~opportunity 입력~~
   - ~~RacingGame 모델을 만들어 main 로직 추상화~~
-  - RacingSupporter클래스 삭제
-    - 유틸 클래스 메서드를 알맞은 모델로 이동
-  - NumberGenerator 고민...
+  - ~~RacingSupporter클래스 삭제~~
+    - ~~유틸 클래스 메서드를 알맞은 모델로 이동~~
+  - ~~NumberGenerator 고민...~~`
     - 기본생성자를 Private로 만들어 외부로부터 보호
-  - 상수 컨벤션 적용
+  - ~~상수 컨벤션 적용~~
