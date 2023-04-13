@@ -15,7 +15,7 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static List<Car> createCars(String[] namesForCars, int numbersOfCar) {
+    public List<Car> createCars(String[] namesForCars, int numbersOfCar) {
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < numbersOfCar; i++) {
             cars.add(new Car(namesForCars[i]));
@@ -43,26 +43,26 @@ public class Cars {
 
 
     public String[] getWinnerNames() {
-        List<Car> winners = checkCarWithFarthestDistance(this.cars);
+        List<Car> winners = checkCarWithFarthestDistance();
         return winners.stream()
                 .map(Car::getCarName)
                 .toArray(String[]::new);
     }
 
-    private static List<Car> checkCarWithFarthestDistance(List<Car> cars) {
-        int farthestDistance = getFarthestDistance(cars);
-        return getCarsWithFarthestDistance(farthestDistance, cars);
+    private List<Car> checkCarWithFarthestDistance() {
+        int farthestDistance = getFarthestDistance();
+        return getCarsWithFarthestDistance(farthestDistance);
     }
 
-    private static int getFarthestDistance(List<Car> cars) {
+    private int getFarthestDistance() {
         int farthestDistance = 0;
-        for (Car car : cars) {
+        for (Car car : this.cars) {
             farthestDistance = Math.max(farthestDistance, car.getCarCurrentDistance());
         }
         return farthestDistance;
     }
 
-    private static List<Car> getCarsWithFarthestDistance(int farthestDistance, List<Car> cars) {
+    private List<Car> getCarsWithFarthestDistance(int farthestDistance) {
         return cars.stream()
                 .filter(car -> car.getCarCurrentDistance() == farthestDistance)
                 .collect(Collectors.toList());
