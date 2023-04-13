@@ -5,6 +5,8 @@ import car_racing.CarRacing;
 import dto.InputDto;
 import util.RandomNumberGenerator;
 
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
         InputDto inputDto;
@@ -16,6 +18,7 @@ public class Application {
         }
         CarRacing carRacing = new CarRacing(Car.generateCars(inputDto.carNames, new RandomNumberGenerator()));
         run(carRacing, inputDto.trySize);
+        List<Car> winCars = carRacing.getWinner();
     }
 
     private static void run(CarRacing carRacing, int trySize) {
