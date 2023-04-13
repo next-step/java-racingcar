@@ -1,10 +1,12 @@
 package racingcar;
 
-public interface Output {
+interface Output {
 
     void printPosition(Integer position);
 
     void printExecutionHeader();
 
     void printBlankLine();
+
+    void printPositions(Race race);
 }

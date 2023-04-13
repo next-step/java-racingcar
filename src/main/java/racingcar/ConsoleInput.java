@@ -6,7 +6,8 @@ public class ConsoleInput implements Input {
     private static final String QUESTION_FOR_TOTAL_CAR_COUNT = "자동차 대수는 몇 대 인가요?";
     private static final String QUESTION_FOR_TOTAL_MOVE_COUNT = "시도할 회수는 몇 회 인가요?";
 
-    public UserInput getUserInput() {
+    @Override
+    public Race setRace() {
         Scanner scanner = new Scanner(System.in);
 
         askTotalCarCount();
@@ -15,7 +16,7 @@ public class ConsoleInput implements Input {
         askTotalMoveCount();
         int totalMoveCount = scanner.nextInt();
 
-        return new UserInput(totalCarCount, totalMoveCount);
+        return new Race(totalCarCount, totalMoveCount);
     }
 
     private static void askTotalMoveCount() {
