@@ -29,4 +29,14 @@ class UserInputTest {
         assertThat(namesForCars[2]).isEqualTo("뽀로로");
         assertThat(userInput.getNumbersOfCar()).isEqualTo(3);
     }
+
+    @ParameterizedTest(name = "차 이름이 비어있을 경우, 오류를 발생시킨다.")
+    @ValueSource(strings = {"", "\t", "\n"})
+    void nameSettingFail(String name) {
+        assertThatThrownBy(() -> new UserInput(name, 1))
+                .isExactlyInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("빈 값을 입력하시면 안됩니다.");
+    }
+    
+
 }
