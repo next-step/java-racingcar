@@ -29,7 +29,9 @@ public class GameBoard {
                 if (randomValue >= 4) {
                     car.setMoveCount(car.getMoveCount() + 1);
                 }
+                System.out.println("-".repeat(car.getMoveCount()));
             }
+            System.out.println();
         }
 
     }
