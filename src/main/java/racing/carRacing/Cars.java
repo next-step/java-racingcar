@@ -14,6 +14,7 @@ public class Cars {
 
     public static Cars initCars(String[] carNames) {
         hasCarName(carNames.length);
+        hasSameName(carNames);
 
         List<Car> cars = initCarList(carNames);
 
@@ -29,6 +30,13 @@ public class Cars {
     private static void hasCarName(int numberOfCar) {
         if (numberOfCar == ZERO) {
             throw new IllegalArgumentException("자동차 이름을 입력해주세요");
+        }
+    }
+
+    private static void hasSameName(String[] carNames) {
+        Set<String> carSet = new HashSet<>(Arrays.asList(carNames));
+        if (carSet.size() != carNames.length) {
+            throw new IllegalArgumentException("같은 이름이 있습니다.");
         }
     }
 

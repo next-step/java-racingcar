@@ -7,7 +7,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -30,6 +29,16 @@ class CarsTest {
         assertThatThrownBy(() -> Cars.initCars(splitString))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름을 입력해주세요");
+    }
+
+    @Test
+    @DisplayName("같은 이름이 있을 때 에러 반환")
+    void hasSameNameTest() {
+        String[] carNames = {"test1", "test2", "test1"};
+
+        assertThatThrownBy(() -> Cars.initCars(carNames))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("같은 이름이 있습니다.");
     }
 
     @Test
