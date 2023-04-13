@@ -14,6 +14,9 @@ public class AutoRacing {
         int numberOfGame = SCANNER.nextInt();
 
         AutoRacingParticipant autoRacingParticipant = new AutoRacingParticipant();
+
+        ResultView.printBeforeGameStart();
+
         autoRacingParticipant.participateGame(createCar(numberOfCar));
 
         autoRacingParticipant.doGame(numberOfGame);

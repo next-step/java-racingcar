@@ -11,14 +11,19 @@ public class AutoRacingParticipant {
     }
 
     public void doGame(int numberOfGame) {
-        for (int i = 0; i < numberOfGame; i++){
+        for (int i = 0; i < numberOfGame; i++) {
             gameEachRound();
+            ResultView.lineChangeEachRoundFinish();
         }
     }
 
     private void gameEachRound() {
-        for (RacingCar autoRacingMember : autoRacingMembers) {
 
+        for (RacingCar racingCar : autoRacingMembers) {
+            int randomNumber = RandomNumberGenerator.generateRandomNumber();
+            racingCar.moveOrStop(randomNumber);
+            ResultView.printResultEachRound(racingCar.getMoveCount());
         }
+
     }
 }
