@@ -15,13 +15,14 @@ public class ResultView {
 
     private static final String BLANK_STRING_FOR_NEW_LINE = "";
 
+    private static final String WINNER_JOIN_DELIMITER = ",";
 
     public static void createNewLine() {
         printSource(BLANK_STRING_FOR_NEW_LINE);
     }
 
     public static void printWinners(Cars cars) {
-        printSource(cars.joinedWinnerNames() + ADDITIONAL_WINNER_MSG);
+        printSource(cars.joinedWinnerNames(WINNER_JOIN_DELIMITER) + ADDITIONAL_WINNER_MSG);
     }
 
     public static void printSource(String source) {

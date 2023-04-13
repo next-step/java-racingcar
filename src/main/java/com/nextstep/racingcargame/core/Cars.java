@@ -12,7 +12,6 @@ public class Cars {
 
     private static final String HAS_NEGATIVE_CAR_CREATE_REQUEST = "1 보다 작은 수의 차량은 생성될 수 없습니다.";
 
-    private static final String WINNER_JOIN_DELIMITER = ",";
     private final List<Car> cars;
 
     // root ctor
@@ -46,17 +45,24 @@ public class Cars {
 
     public List<String> winnerNames() {
         return this.cars.stream()
-                .filter(car -> car.getDistance() == getFurthestDistance())
+                .filter(car -> car.getDistance() == longestDistance())
                 .map(Car::getCarName)
                 .collect(Collectors.toList());
     }
 
-    public String joinedWinnerNames() {
-        return String.join(WINNER_JOIN_DELIMITER, winnerNames());
+    public String joinedWinnerNames(String joinDelimiter) {
+        return String.join(joinDelimiter, winnerNames());
     }
 
-    public Car findFirstFurthestTraveledCar() {
-        return max(this.cars, Comparator.comparingInt(Car::getDistance));
+    public Distance longestDistance() {
+        Distance maxDistance = new Distance(0);
+
+        for(Car car : this.cars) {
+            if(car.getDistance().isGreaterThan(maxDistance)) {
+                maxDistance = car.getDistance();
+            }
+        }
+        return maxDistance;
     }
 
     public List<String> getAllCarCurrentDistance(String separator, String distancePrintStandard) {
@@ -65,7 +71,4 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public int getFurthestDistance() {
-        return findFirstFurthestTraveledCar().getDistance();
-    }
 }

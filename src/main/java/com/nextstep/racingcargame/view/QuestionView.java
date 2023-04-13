@@ -11,16 +11,16 @@ public class QuestionView {
     public static ClientResponse clientQuestion() {
         Scanner scanner = new Scanner(System.in);
 
-        printText(CAR_QUESTION);
+        printSource(CAR_QUESTION);
         String carNameClientInput = scanner.next();
 
-        printText(TRY_QUESTION);
+        printSource(TRY_QUESTION);
         int tryCount = scanner.nextInt();
 
         return new ClientResponse(carNameClientInput, tryCount);
     }
 
-    private static void printText(String printValue) {
+    private static void printSource(String printValue) {
         System.out.println(printValue);
     }
 
