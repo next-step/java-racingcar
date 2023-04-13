@@ -19,8 +19,7 @@ public class Racer {
     public List<String> resultCalculate() {
         List<String> result = new ArrayList<>();
         for (int i = 0; i < this.scores.size(); i++) {
-            String currnetRet = resultCalculate(i);
-            result.add(currnetRet);
+            result.add(resultCalculate(i));
         }
         return result;
     }
