@@ -13,7 +13,6 @@ public class GameCars implements Iterable<Car> {
     public GameCars(int carNum) {
         this.cars = new ArrayList<>();
         generateCars(carNum);
-
     }
 
     private void generateCars(int carNum) {
