@@ -11,11 +11,11 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(UserInput userInput) {
-        this.cars = createCars(userInput.getNamesForCars(), userInput.getNumbersOfCar());
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
-    private static List<Car> createCars(String[] namesForCars, int numbersOfCar) {
+    public static List<Car> createCars(String[] namesForCars, int numbersOfCar) {
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < numbersOfCar; i++) {
             cars.add(new Car(namesForCars[i]));

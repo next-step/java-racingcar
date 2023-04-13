@@ -3,8 +3,10 @@ import static view.ResultView.drawDistanceBlockWithName;
 import static view.ResultView.drawFirstPlace;
 import static view.ResultView.drawResultView;
 
+import domain.Car;
 import domain.Cars;
 import domain.UserInput;
+import java.util.List;
 
 public class CarRacingApplication {
 
@@ -14,7 +16,8 @@ public class CarRacingApplication {
 
     private static void run(UserInput userInput) {
         int attemptCount = userInput.getAttemptCount();
-        createResult(new Cars(userInput), attemptCount);
+        List<Car> cars = Cars.createCars(userInput.getNamesForCars(), userInput.getNumbersOfCar());
+        createResult(new Cars(cars), attemptCount);
     }
 
     private static void createResult(Cars cars, int attemptCount) {
