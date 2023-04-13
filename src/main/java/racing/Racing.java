@@ -3,12 +3,11 @@ package racing;
 import racing.ui.InputView;
 import racing.ui.ResultView;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public class Racing {
     public int try_count;
-    public ArrayList<Car> cars;
+    public Cars cars;
 
     public static Racing input() {
         InputView inputView = InputView.create();
@@ -36,16 +35,18 @@ public class Racing {
     }
 
     private void makeCars(int inputCarCount) {
-        cars = new ArrayList<>();
+        cars = new Cars();
         for (int i = 0; i < inputCarCount; i++) {
-            cars.add(new Car());
+            cars.add();
         }
     }
 
     private void race() {
         Random random = new Random();
-        for (Car car : cars) {
-            car.status += RacingRule.goOrStop(random.nextInt(10));
+        for (int i = 0; i < cars.count(); i++) {
+            Car car = cars.find(i);
+            car.move(RacingRule.goOrStop(random.nextInt(10)));
         }
+
     }
 }

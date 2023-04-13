@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.Random;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -17,7 +15,7 @@ public class RacingTest {
         int input_try_count = 7;
         Racing racing = new Racing(input_car_count,input_try_count);
         assertAll(
-                () -> assertThat(racing.cars.size()).isEqualTo(3),
+                () -> assertThat(racing.cars.count()).isEqualTo(3),
                 () -> assertThat(racing.try_count).isEqualTo(7)
         );
     }

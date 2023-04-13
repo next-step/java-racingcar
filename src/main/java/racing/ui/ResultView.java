@@ -1,19 +1,18 @@
 package racing.ui;
 
 import racing.Car;
-
-import java.util.ArrayList;
+import racing.Cars;
 
 public class ResultView {
-    public static void showRace(ArrayList<Car> cars) {
-        for (Car car : cars) {
-            showRaceOneCar(car);
+    public static void showRace(Cars cars) {
+        for (int i = 0; i < cars.count(); i++) {
+            showOneCarMoveStatus(cars.find(i));
         }
         System.out.println();
     }
 
-    private static void showRaceOneCar(Car car) {
-        for (int j = 0; j < car.status; j++) {
+    private static void showOneCarMoveStatus(Car car) {
+        for (int j = 0; j < car.moveStatus; j++) {
             System.out.print("-");
         }
         System.out.println();
