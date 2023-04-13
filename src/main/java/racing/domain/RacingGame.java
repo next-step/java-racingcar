@@ -1,6 +1,5 @@
 package racing.domain;
 
-import racing.util.RandomNumberGenerator;
 
 public class RacingGame {
 
