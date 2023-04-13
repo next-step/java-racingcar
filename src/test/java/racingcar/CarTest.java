@@ -13,20 +13,13 @@ public class CarTest {
     @Test
     void move() {
         Car car = new Car();
-        car.move(4);
+        car.move();
         assertThat(car.getDistance()).isEqualTo(2);
     }
 
-    @DisplayName("4미만일 경우 값 그대로")
-    @Test
-    void stop() {
-        Car car = new Car();
-        car.move(3);
-        assertThat(car.getDistance()).isEqualTo(1);
-    }
 
     @Test
-    void 생성시_distace() {
+    void 생성시_distance() {
         Car car = new Car();
         assertThat(car.getDistance()).isEqualTo(1);
     }

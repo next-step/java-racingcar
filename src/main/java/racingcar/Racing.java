@@ -1,17 +1,15 @@
 package racingcar;
 
 import java.util.*;
-import java.util.Random;
 
 public class Racing {
 
-    private final int carsNum;
     private final int gameCount;
     private final List<Car> cars;
     private final List<List<Integer>> raceRecord;
+    private final RacingRandom racingRandom = RacingRandom.getInstance();
 
     public Racing(int carsNum, int gameCount) {
-        this.carsNum = carsNum;
         this.gameCount = gameCount;
         this.cars = createCars(carsNum);
         this.raceRecord = new ArrayList<>();
@@ -46,42 +44,18 @@ public class Racing {
 
     private void game() {
         for (Car car : cars) {
-            car.move(random());
+            move(car);
         }
     }
 
-    private int random() {
-        Random random = new Random();
-        return random.nextInt(10);
+    private void move(Car car) {
+        if (racingRandom.getNumber() >= 4) {
+            car.move();
+        }
     }
+
 
     public List<List<Integer>> getRaceRecord() {
         return raceRecord;
-    }
-
-    public void printRaceResult() {
-        System.out.println("실행결과");
-        if (raceRecord.size() == 0) {
-            return;
-        }
-        for (List<Integer> results : raceRecord) {
-            printGame(results);
-        }
-
-
-    }
-
-    private void printGame(List<Integer> results) {
-        for (Integer result : results) {
-            printDistance(result);
-        }
-        System.out.println();
-    }
-
-    private void printDistance(Integer result) {
-        for (int i = 0; i < result; i++) {
-            System.out.print("-");
-        }
-        System.out.println();
     }
 }
