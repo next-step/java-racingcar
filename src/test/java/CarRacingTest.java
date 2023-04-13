@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import record.CarRecord;
 import record.Records;
+import strategy.RandomStrategy;
 
 import java.util.Arrays;
 import java.util.List;
@@ -49,14 +50,14 @@ class CarRacingTest {
         // given
         Car loser = new Car("alex");
         Car winner = new Car("jack");
+        loser.go(() -> false);
+        winner.go(() -> true);
 
         List<Car> carList = Arrays.asList(loser, winner);
-        Cars cars = new Cars(carList);
+        Cars cars = new Cars(carList, new RandomStrategy());
         Records records = new Records();
 
         // when
-        loser.go(() -> false);
-        winner.go(() -> true);
         records.add(cars);
         records.addWinners();
 
@@ -76,14 +77,14 @@ class CarRacingTest {
         // given
         Car firstWinner = new Car("alex");
         Car secondWinner = new Car("jack");
+        firstWinner.go(() -> true);
+        secondWinner.go(() -> true);
 
         List<Car> carList = Arrays.asList(firstWinner, secondWinner);
-        Cars cars = new Cars(carList);
+        Cars cars = new Cars(carList, new RandomStrategy());
         Records records = new Records();
 
         // when
-        firstWinner.go(() -> true);
-        secondWinner.go(() -> true);
         records.add(cars);
         records.addWinners();
 

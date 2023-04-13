@@ -1,15 +1,18 @@
 package car;
 
+import strategy.MovingStrategy;
 import strategy.RandomStrategy;
 
 import java.util.*;
 
 public class Cars {
 
-    private List<Car> cars;
+    private final MovingStrategy strategy;
+    private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
+    public Cars(List<Car> cars, MovingStrategy strategy) {
         this.cars = cars;
+        this.strategy = strategy;
     }
 
     public static Cars make(String[] nameOfCars) {
@@ -18,7 +21,7 @@ public class Cars {
             cars.add(new Car(nameOfCar));
         }
 
-        return new Cars(cars);
+        return new Cars(cars, new RandomStrategy());
     }
 
     public List<Car> cars() {
@@ -26,9 +29,8 @@ public class Cars {
     }
 
     public void move() {
-        RandomStrategy randomStrategy = new RandomStrategy();
         for (Car car : cars) {
-            car.go(randomStrategy);
+            car.go(strategy);
         }
     }
 }
