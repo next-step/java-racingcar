@@ -1,6 +1,6 @@
 package racingcar.control.input;
 
-import racingcar.validator.Validator;
+import racingcar.control.input.validator.Validator;
 import racingcar.view.InputView;
 import racingcar.view.View;
 

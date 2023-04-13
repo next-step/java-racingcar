@@ -15,8 +15,8 @@ class RacingTest {
     @Test
     @DisplayName("우승자를 확인할 수 있다")
     public void winner() {
-        Car car1 = new Car("first", () -> 1);
-        Car car2 = new Car("second", () -> 0);
+        Car car1 = new Car("car1", () -> 1);
+        Car car2 = new Car("car2", () -> 0);
 
         Racing racing = new Racing(1, List.of(car1, car2));
         racing.step();
@@ -27,8 +27,8 @@ class RacingTest {
     @Test
     @DisplayName("공동 우승자를 확인할 수 있다")
     public void winners() {
-        Car car1 = new Car("first", () -> 1);
-        Car car2 = new Car("second", () -> 1);
+        Car car1 = new Car("car1", () -> 1);
+        Car car2 = new Car("car2", () -> 1);
 
         Racing racing = new Racing(1, List.of(car1, car2));
         racing.step();
@@ -39,8 +39,8 @@ class RacingTest {
     @Test
     @DisplayName("게임이 끝나기 전엔 우승자를 알 수 없다")
     public void winnersAfterEnd() {
-        Car car1 = new Car("first", () -> 1);
-        Car car2 = new Car("second", () -> 1);
+        Car car1 = new Car("car1", () -> 1);
+        Car car2 = new Car("car2", () -> 1);
 
         Racing racing = new Racing(10, List.of(car1, car2));
         racing.step();

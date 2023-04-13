@@ -1,7 +1,7 @@
 package racingcar.control.input;
 
 import racingcar.control.input.validator.DummyValidator;
-import racingcar.validator.Validator;
+import racingcar.control.input.validator.Validator;
 import racingcar.view.View;
 
 import java.util.Scanner;

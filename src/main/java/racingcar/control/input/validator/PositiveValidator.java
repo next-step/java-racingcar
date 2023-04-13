@@ -1,7 +1,5 @@
 package racingcar.control.input.validator;
 
-import racingcar.validator.Validator;
-
 public class PositiveValidator implements Validator<Integer> {
     @Override
     public void verify(Integer value) {
