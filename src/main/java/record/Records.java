@@ -4,11 +4,12 @@ import car.Car;
 import car.Cars;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Records {
 
     private final List<CarRecord> gameRecord = new ArrayList<>();
-    private final List<Car> winners = new ArrayList<>();
+    private final List<CarRecord> winners = new ArrayList<>();
 
     public void add(Cars cars) {
         for (Car car : cars.cars()) {
@@ -16,25 +17,32 @@ public class Records {
         }
     }
 
-    public void addWinners(Cars cars) {
-        int maxDistance = maxDistance(cars);
+    public void addWinners() {
+        List<CarRecord> recordList = removeDuplicateRecord();
+        int maxDistance = maxDistance(recordList);
 
-        for (Car car : cars.cars()) {
+        for (CarRecord car : recordList) {
             findWinner(car, maxDistance);
         }
     }
 
-    private int maxDistance(Cars cars) {
+    private List<CarRecord> removeDuplicateRecord() {
+        return gameRecord.stream()
+                .distinct()
+                .collect(Collectors.toList());
+    }
+
+    private int maxDistance(List<CarRecord> records) {
         int maxDistance = 0;
 
-        for (Car car : cars.cars()) {
+        for (CarRecord car : records) {
             maxDistance = Math.max(maxDistance, car.distance());
         }
 
         return maxDistance;
     }
 
-    private void findWinner(Car car, int maxDistance) {
+    private void findWinner(CarRecord car, int maxDistance) {
         if (car.distance() == maxDistance) {
             winners.add(car);
         }
@@ -44,7 +52,7 @@ public class Records {
         return gameRecord;
     }
 
-    public List<Car> winners() {
+    public List<CarRecord> winners() {
         return winners;
     }
 

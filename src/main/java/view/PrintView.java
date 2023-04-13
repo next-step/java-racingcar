@@ -34,8 +34,8 @@ public class PrintView {
         System.out.println();
     }
 
-    public static void printWinners(List<Car> winners) {
-        for (Car winner : winners) {
+    public static void printWinners(List<CarRecord> winners) {
+        for (CarRecord winner : winners) {
             System.out.print(winner.name() + ",");
         }
 
