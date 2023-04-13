@@ -4,17 +4,28 @@ public class Car {
 
     public static final int SET_POSITION = 1;
     public static final int NAME_MAX_LENGTH = 5;
+    public static final String DEFAULT_NAME = "익명";
 
     private Integer position;
     private String name;
 
     public Car() {
         this(SET_POSITION);
+        this.name = DEFAULT_NAME;
     }
 
     public Car(String name) {
         this(SET_POSITION);
         this.name = ValidatedName(name);
+    }
+
+    private Car(int position) {
+        this.position = position;
+    }
+
+    protected Car(int position, String name) {
+        this.position = position;
+        this.name = name;
     }
 
     private String ValidatedName(String name) {
@@ -35,10 +46,6 @@ public class Car {
         return name == null || name.isBlank();
     }
 
-    protected Car(int position) {
-        this.position = position;
-    }
-
     public String name() {
         return this.name;
     }
@@ -52,7 +59,7 @@ public class Car {
     }
 
     public Car clone() {
-        return new Car(this.position);
+        return new Car(this.position, this.name);
     }
 
 }

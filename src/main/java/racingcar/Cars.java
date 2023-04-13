@@ -40,7 +40,7 @@ public class Cars {
     private List<Car> cloneList() {
         List<Car> result = new ArrayList<>();
         for (Car car : cars) {
-            result.add(new Car(car.position()));
+            result.add(new Car(car.position(), car.name()));
         }
         return result;
     }

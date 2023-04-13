@@ -33,7 +33,7 @@ public class CarTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"pobi", "한글이름ㅇ", "12345", "ㅇㅇㅇㅇㅇ", "_____", "$$$$$", "1ㄱ$ ㅠ", " 1234"})
+    @ValueSource(strings = {"pobi","한글이름ㅇ", "12345", "ㅇㅇㅇㅇㅇ", "_____", "$$$$$", "1ㄱ$ ㅠ", " 1234"})
     void 자동차_이름_5글자이하(String name) {
         assertAll(
             () -> assertThat(new Car(name).name()).isEqualTo(name),
@@ -43,14 +43,15 @@ public class CarTest {
 
     @Test
     void 자동차_클론() {
-        Car car = new Car();
+        Car car = new Car("이름");
 
         car.move();
         Car clone = car.clone();
 
         assertAll(
             () -> assertThat(clone).isNotSameAs(car),
-            () -> assertThat(clone.position()).isEqualTo(car.position())
+            () -> assertThat(clone.position()).isEqualTo(car.position()),
+            () -> assertThat(clone.name()).isEqualTo(car.name())
         );
     }
 
@@ -63,7 +64,10 @@ public class CarTest {
 
     @Test
     void 자동차_초기화() {
-        assertThat(new Car().position()).isEqualTo(Car.SET_POSITION);
+        assertAll(
+            () -> assertThat(new Car().position()).isEqualTo(Car.SET_POSITION),
+            () -> assertThat(new Car().name()).isNotBlank()
+        );
     }
 
 }
