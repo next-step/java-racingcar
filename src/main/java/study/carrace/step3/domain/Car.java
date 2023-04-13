@@ -22,12 +22,6 @@ public class Car {
         validateNameLength(name);
     }
 
-    private void validateNameLength(String name) {
-        if(name.length() > CAR_NAME_LENGTH_THRESHOLD) {
-            throw new IllegalCarNameException(name);
-        }
-    }
-
     public void moveOrStop() {
         moveStatuses.add(moveStrategy.moveOrStop());
     }
@@ -42,5 +36,17 @@ public class Car {
                 .forEach(moveStatus -> currentPosition.append(POSITION_CURSOR));
 
         return currentPosition.toString();
+    }
+
+    public long numberOfMove() {
+        return moveStatuses.stream()
+                .filter(moveStatus -> moveStatus)
+                .count();
+    }
+
+    private void validateNameLength(String name) {
+        if(name.length() > CAR_NAME_LENGTH_THRESHOLD) {
+            throw new IllegalCarNameException(name);
+        }
     }
 }
