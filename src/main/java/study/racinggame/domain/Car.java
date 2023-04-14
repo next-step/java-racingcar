@@ -1,9 +1,10 @@
 package study.racinggame.domain;
 
-public class Car {
+import study.racinggame.util.NameValidator;
+
+public class Car implements Comparable<Car> {
 
   public static final int DEFAULT_DISTANCE = 0;
-  private static final String PRINTED_DISTANCE = "-";
   private final String name;
   private int distance;
 
@@ -12,7 +13,7 @@ public class Car {
   }
 
   public Car(String name, int distance) {
-    this.name = name;
+    this.name = NameValidator.validatedCarName(name);
     this.distance = distance;
   }
 
@@ -30,12 +31,12 @@ public class Car {
     }
   }
 
-  public boolean isEqualToDistance(int longestDistance) {
-    return distance == longestDistance;
+  public boolean isSameDistance(int distance) {
+    return this.distance == distance;
   }
 
-  public String printedDistance() {
-    return name + " : " + PRINTED_DISTANCE.repeat(distance);
+  @Override
+  public int compareTo(Car otherCar) {
+    return Integer.compare(otherCar.distance(), distance);
   }
-
 }

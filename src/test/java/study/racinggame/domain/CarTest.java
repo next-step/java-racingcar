@@ -47,8 +47,7 @@ public class CarTest {
     car.forward(() -> true);
     car.forward(() -> true);
 
-    System.out.println(car.printedDistance());
-    assertEquals("oneny : ---", outputStreamCaptor.toString().trim());
+    assertThat(car.distance()).isEqualTo(3);
   }
 
   @AfterEach

@@ -1,9 +1,6 @@
 package study.racinggame.domain;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.OptionalInt;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class GameResult {
@@ -21,18 +18,16 @@ public class GameResult {
     record.add(cars);
   }
 
-  public String winners() {
-    return lastRecord().cars().stream()
-            .filter(v -> v.isEqualToDistance(longestDistance()))
-            .map(Car::name)
-            .collect(Collectors.joining(","));
+  public List<String> winners() {
+    return lastRecord().carNamesAtSameDistance(longestDistance());
   }
 
   private int longestDistance() {
     return lastRecord().cars().stream()
-            .mapToInt(Car::distance)
-            .max()
-            .orElse(Car.DEFAULT_DISTANCE);
+            .sorted()
+            .collect(Collectors.toList())
+            .get(0)
+            .distance();
   }
 
   private Cars lastRecord() {
