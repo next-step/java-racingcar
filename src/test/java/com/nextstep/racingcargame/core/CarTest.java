@@ -70,7 +70,7 @@ class CarTest {
                 new CarForceMoveNumber()));
     }
 
-    public static class CarForceMoveNumber implements RandomNumber {
+    private static class CarForceMoveNumber implements RandomNumber {
 
         @Override
         public int randomNumber() {
@@ -78,7 +78,7 @@ class CarTest {
         }
     }
 
-    public static class CarStopNumber implements RandomNumber {
+    private static class CarStopNumber implements RandomNumber {
 
         @Override
         public int randomNumber() {
