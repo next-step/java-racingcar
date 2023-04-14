@@ -44,4 +44,13 @@ public class Competition {
         }
     }
 
+    public List<Car> entry(String[] names) {
+        List<Car> cars = new ArrayList<>();
+        for (String name : names) {
+            cars.add(new Car(name));
+        }
+
+        return cars;
+    }
+
 }
