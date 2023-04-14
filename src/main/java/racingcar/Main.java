@@ -1,6 +1,5 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -11,7 +10,7 @@ public class Main {
     private static RacingCar racingCar;
 
     public static void main(String[] args) {
-        makeObjects();
+        createUI();
 
         resultView.questionCarCountMessage();
         carCount = inputView.getInput();
@@ -22,7 +21,7 @@ public class Main {
         resultView.printNewLine();
         resultView.executeResultMessage();
 
-        racingCar.initMoveCounts(carCount);
+        createRacingCar();
 
         for (int i = BEGIN_INDEX; i < tryCount; i++) {
             List<Integer> moveCounts = racingCar.makeMoveCounts(carCount);
@@ -32,13 +31,12 @@ public class Main {
         inputView.closeScanner();
     }
 
-    private static void makeObjects() {
-        resultView = new ResultView();
-        inputView = new InputView();
-        racingCar = new RacingCar(getMoveCounts());
+    private static void createRacingCar() {
+        racingCar = new RacingCar(carCount);
     }
 
-    private static List<Integer> getMoveCounts() {
-        return new ArrayList<>();
+    private static void createUI() {
+        resultView = new ResultView();
+        inputView = new InputView();
     }
 }

@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCar {
@@ -10,18 +11,13 @@ public class RacingCar {
 
     private List<Integer> moveCounts;
 
-    public RacingCar(List<Integer> moveCounts) {
-        this.moveCounts = moveCounts;
-    }
-
-    public void initMoveCounts(int carCount) {
+    public RacingCar(int carCount) {
+        List<Integer> moveCounts = new ArrayList<>();
         for (int i = BEGIN_INDEX; i < carCount; i++) {
-            initMoveCount();
+            moveCounts.add(INIT_VALUE);
         }
-    }
 
-    private boolean initMoveCount() {
-        return moveCounts.add(INIT_VALUE);
+        this.moveCounts = moveCounts;
     }
 
     public List<Integer> makeMoveCounts(int carCount) {
@@ -32,24 +28,20 @@ public class RacingCar {
     }
 
     private void makeMoveCount(int idx) {
-        if (moveYn()) {
+        if (moveYn(getRandomNumber())) {
             plusMoveCount(idx);
         }
-    }
-
-    private boolean moveYn() {
-        return moveYn(getRandomNumber());
     }
 
     public boolean moveYn(int randomNumber) {
         return randomNumber >= CAR_MOVE_STANDARD;
     }
 
-    private int plusMoveCount(int idx) {
-        return moveCounts.set(idx, moveCounts.get(idx) + PLUS_VALUE);
-    }
-
     private int getRandomNumber() {
         return new RandomGenerator().getRandomNumber();
+    }
+
+    private int plusMoveCount(int idx) {
+        return moveCounts.set(idx, moveCounts.get(idx) + PLUS_VALUE);
     }
 }

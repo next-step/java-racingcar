@@ -5,9 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class RacingCarTest {
@@ -31,8 +28,7 @@ public class RacingCarTest {
             "4:true", "5:true", "6:true", "7:true", "8:true", "9:true"}, delimiter = ':')
     void move(int randomNumber, boolean result) {
         //given
-        List<Integer> moveCounts = new ArrayList<>();
-        RacingCar racingCar = new RacingCar(moveCounts);
+        RacingCar racingCar = new RacingCar(3);
 
         //when
         boolean moveYn = racingCar.moveYn(randomNumber);
