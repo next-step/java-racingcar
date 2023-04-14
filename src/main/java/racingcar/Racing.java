@@ -1,8 +1,12 @@
 package racingcar;
 
-import static racingcar.RandomRacingRule.RacingRandom.randomNumbers;
+import static racingcar.domain.RandomRacingRule.RacingRandom.randomNumbers;
 
 import java.util.List;
+import racingcar.domain.Cars;
+import racingcar.domain.LapResult;
+import racingcar.domain.RaceResults;
+import racingcar.domain.RacingRule;
 
 public class Racing {
 

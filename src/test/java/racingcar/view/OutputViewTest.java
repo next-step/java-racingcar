@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.view;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -9,6 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
+import racingcar.domain.LapResult;
+import racingcar.domain.RaceResults;
+import racingcar.Racing;
+import racingcar.domain.RandomRacingRule;
 
 public class OutputViewTest {
 
