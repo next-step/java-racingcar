@@ -1,28 +1,21 @@
 package step3_racingcar.view;
 
-import java.util.Map;
-import java.util.Random;
-import java.util.Set;
+import java.util.List;
+
+import step3_racingcar.domain.Car;
 
 public class ResultView {
-	private static final Random random = new Random();
-	private static ResultView resultView;
 
-	private ResultView() {
-	}
-
-	public static ResultView getInstance() {
-		if (resultView == null) {
-			resultView = new ResultView();
+	private static void printCarStatus(List<Car> cars) {
+		System.out.println();
+		for (Car car : cars) {
+			System.out.println(car.getStatus());
 		}
-		return resultView;
 	}
 
-	public void printResult()
-	{
-
+	public void printResult(List<List<Car>> results) {
+		for (List<Car> roundResult : results) {
+			printCarStatus(roundResult);
+		}
 	}
-
-
-
 }

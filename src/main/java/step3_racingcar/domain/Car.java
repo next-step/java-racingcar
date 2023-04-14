@@ -1,33 +1,31 @@
 package step3_racingcar.domain;
 
+import step3_racingcar.GameRule;
+
 public class Car {
 
-	carStatusListener listener;
+	private int position = 0;
 
-	public void setCarStatusListener(carStatusListener listener)
-	{
-		this.listener = listener;
+	public void tryMove() {
+		if (GameRule.isCarMoving()) {
+			move();
+		} else {
+			stop();
+		}
 	}
 
-	public void move()
-	{
-		listener.move();
+	private void move() {
+		position++;
 	}
 
-	public void stop()
-	{
-		listener.stop();
+	private void stop() {
 	}
 
-	public void status()
-	{
-		listener.status();
-	}
-
-	interface carStatusListener
-	{
-		void move();
-		void stop();
-		void status();
+	public String getStatus() {
+		StringBuilder status = new StringBuilder();
+		for (int i = 0; i < position; i++) {
+			status.append("-");
+		}
+		return status.toString();
 	}
 }
