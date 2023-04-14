@@ -33,7 +33,7 @@ public class SetCollectionTest {
     // Test Case 구현
     @Test
     void test1() {
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
@@ -44,9 +44,9 @@ public class SetCollectionTest {
 
     @ParameterizedTest
     @CsvSource({"1", "2", "3", "4", "5"})
-    void test3(String testValue) {
-        boolean isTrue = numbers.contains(Integer.getInteger(testValue));
-        assertThat(numbers.contains(Integer.getInteger(testValue))).isEqualTo(isTrue);
+    void test3(int number) {
+        boolean isTrue = numbers.contains(number);
+        assertThat(numbers.contains(number)).isEqualTo(isTrue);
 
     }
 }
