@@ -11,8 +11,8 @@ public class RacingCarApplication {
         InputView inputView = new InputView();
 
         // 사용자에게 입력값 받기
-        int numberOfCars = inputView.carCount();
-        int numberOfTrials = inputView.trialCount();
+        int numberOfCars = inputView.askCarCount();
+        int numberOfTrials = inputView.askTrialCount();
 
         // 전체 자동차 객체 만들기
         RacingCars racingCars = new RacingCars(numberOfCars);
