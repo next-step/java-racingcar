@@ -1,6 +1,9 @@
 package car;
 
 import view.InputView;
+import view.ResultView;
+
+import java.util.List;
 
 public class RacingGameApplication {
     public static void main(String[] args) {
@@ -9,5 +12,10 @@ public class RacingGameApplication {
 
         RacingGame racingGame = new RacingGame(carInput, stageInput);
         racingGame.progress();
+
+        List<List<Integer>> gameResult = racingGame.getResults();
+
+        ResultView.printResultTitle();
+        ResultView.printResult(gameResult);
     }
 }

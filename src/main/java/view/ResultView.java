@@ -3,25 +3,30 @@ package view;
 import car.Car;
 import car.Cars;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class ResultView {
     private static final String RESULT_TITLE = "실행 결과";
-    private static final char CAR_LOCATION_INDICATOR = '-';
+    private static final String CAR_LOCATION_INDICATOR = "-";
 
     public static void printResultTitle() {
         System.out.println(RESULT_TITLE);
     }
 
-    public static void printCars(Cars cars) {
-        for(Car car: cars.getCars()) {
-            printCarPosition(car.getPosition());
-        }
-        System.out.println();
+    public static void printResult(List<List<Integer>> result) {
+        result.stream()
+                .map(ResultView::printCarsPosition)
+                .forEach(s -> System.out.println(s + "\n"));
     }
 
-    private static void printCarPosition(int position) {
-        for(int i = 0; i < position; i++) {
-            System.out.print(CAR_LOCATION_INDICATOR);
-        }
-        System.out.println();
+    private static String printCarsPosition(List<Integer> carPositions) {
+        return carPositions.stream()
+            .map(ResultView::carPositionToIndicator)
+            .collect(Collectors.joining("\n"));
+    }
+
+    private static String carPositionToIndicator(int position) {
+        return CAR_LOCATION_INDICATOR.repeat(position);
     }
 }
