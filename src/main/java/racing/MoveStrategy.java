@@ -2,7 +2,6 @@ package racing;
 
 public interface MoveStrategy {
 
-    Integer move();
-
+    Boolean isMove();
 
 }

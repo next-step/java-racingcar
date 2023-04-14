@@ -6,11 +6,12 @@ import java.util.stream.Collectors;
 
 public class Cars {
 
-    private final static MoveStrategy randomMove = new RandomMove();
-
     private final List<Car> cars;
 
     public Cars(Integer numberOfCar) {
+        if (isZeroOrLess(numberOfCar)) {
+            throw new RuntimeException("Never allows the number of cars to be zero or less");
+        }
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < numberOfCar; i++) {
             cars.add(new Car());
@@ -18,14 +19,18 @@ public class Cars {
         this.cars = cars;
     }
 
-    public void move() {
-        cars.forEach(car -> car.move(randomMove));
+    public void move(MoveStrategy moveStrategy) {
+        cars.forEach(car -> car.move(moveStrategy));
     }
 
-    public List<Integer> getMoves() {
+    public List<CarDTO> getCarDTOs() {
         return cars.stream()
-            .map(Car::getMove)
+            .map(Car::getCarDTO)
             .collect(Collectors.toList());
     }
-    
+
+    private static boolean isZeroOrLess(Integer numberOfCar) {
+        return numberOfCar <= 0;
+    }
+
 }

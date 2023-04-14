@@ -7,20 +7,24 @@ import org.junit.jupiter.api.Test;
 class CarTest {
 
     MoveStrategy nonMove = new NonMove();
-    MoveStrategy move = new Move();
+    MoveStrategy moveOneSpace = new MoveOneSpace();
 
     @Test
     void move() {
         Car car = new Car();
-        car.move(move);
-        assertThat(car.getMove()).isEqualTo(2);
+        car.move(moveOneSpace);
+        assertThat(car.getCarDTO()
+            .getPosition())
+            .isEqualTo(1);
     }
 
     @Test
     void nonMove() {
         Car car = new Car();
         car.move(nonMove);
-        assertThat(car.getMove()).isEqualTo(1);
+        assertThat(car.getCarDTO()
+            .getPosition())
+            .isEqualTo(0);
     }
 
 }

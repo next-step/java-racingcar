@@ -2,20 +2,27 @@ package racing;
 
 import java.util.Random;
 
-public class RandomMove implements MoveStrategy{
+public class RandomMove implements MoveStrategy {
 
-    public static final int NON_MOVE = 0;
-    public static final int MOVE = 1;
-    public static final int BOUNDARY = 4;
+    private static final int BOUNDARY = 4;
+    private static final int RANDOM_NUMBER = 10;
 
-    Random random = new Random();
+    private final Random random;
+
+    public RandomMove() {
+        this.random = new Random();
+    }
+
+    public RandomMove(Random random) {
+        this.random = random;
+    }
 
     @Override
-    public Integer move() {
-        if (BOUNDARY <= random.nextInt(10)) {
-            return MOVE;
+    public Boolean isMove() {
+        if (BOUNDARY <= random.nextInt(RANDOM_NUMBER)) {
+            return Boolean.TRUE;
         }
-        return NON_MOVE;
+        return Boolean.FALSE;
     }
 
 }
