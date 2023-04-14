@@ -10,5 +10,6 @@ public class CarRacing {
         OutputPresent outputPresent = new OutputPresent();
         Match match = new Match(inputPresent.participates(), inputPresent.iterations());
         outputPresent.printResult(match.display());
+        outputPresent.printWinner(match.winnerDisplay());
     }
 }
