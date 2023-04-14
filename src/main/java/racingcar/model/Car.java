@@ -2,39 +2,34 @@ package racingcar.model;
 
 import racingcar.strategy.MovingStrategy;
 
+import java.util.Objects;
+
 public class Car {
-    private static final int MAX_NAME_LENGTH = 5;
-    private final String name;
+    private final Name name;
     private final MovingStrategy movingStrategy;
-    private int distance = 0;
+    private final Distance distance;
 
     public Car(String name, MovingStrategy movingStrategy) {
-        if (name == null || name.isEmpty()) {
-            throw new IllegalArgumentException("Car name cannot be null or empty:" + name);
-        }
-        if (name.length() > MAX_NAME_LENGTH) {
-            String message = String.format("Car name cannot exceed %s character: %s", MAX_NAME_LENGTH, name);
-            throw new IllegalArgumentException(message);
-        }
-
-        this.name = name;
+        Objects.requireNonNull(movingStrategy, "strategy should not be null");
+        this.name = new Name(name);
         this.movingStrategy = movingStrategy;
+        this.distance = new Distance();
     }
 
     public void move() {
         int movement = movingStrategy.movement();
-        this.distance += movement;
+        this.distance.move(movement);
     }
 
     public String name() {
-        return this.name;
+        return this.name.value();
     }
 
     public int distance() {
-        return this.distance;
+        return this.distance.value();
     }
 
     public boolean isReached(int distance) {
-        return this.distance == distance;
+        return this.distance.isSame(distance);
     }
 }

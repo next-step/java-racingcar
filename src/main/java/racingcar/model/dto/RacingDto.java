@@ -16,6 +16,7 @@ public class RacingDto {
 
     public static RacingDto from(Racing racing) {
         List<CarDto> cars = racing.cars()
+                .all()
                 .stream()
                 .map(CarDto::from)
                 .collect(Collectors.toList());
