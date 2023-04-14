@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.repository.CarInterface;
+
 public class RacingCar implements CarInterface {
     private int position;       // 차가 이동한 위치
 

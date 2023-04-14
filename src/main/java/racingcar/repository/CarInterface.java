@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.repository;
 
 public interface CarInterface {
     public final int CAR_MOVEMENT_STANDARD_POINT = 4;   // random 값이 4이상인 경우 전진
