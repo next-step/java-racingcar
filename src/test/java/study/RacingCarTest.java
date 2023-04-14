@@ -19,7 +19,7 @@ public class RacingCarTest {
 
     @ParameterizedTest
     @CsvSource(value = {"1:0", "4:1"}, delimiter = ':')
-    @DisplayName("이동하는값(1), 이동하지 않는 값(4) 에 대한 테스트")
+    @DisplayName("이동하지 않는값(1), 이동하는 값(4) 에 대한 테스트")
     void moveTest(int input, int excepted) {
         racingCar.moveOrStop(input);
         assertThat(racingCar.getMoveCount()).isEqualTo(excepted);
