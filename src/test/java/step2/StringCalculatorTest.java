@@ -42,7 +42,8 @@ public class StringCalculatorTest {
     @Test
     @DisplayName("//와 \\n 문자 사이에 커스텀 구분자를 지정할 수 있다.")
     void customDelimiter() {
-
+        // given & when & then
+        assertThat(calculate("//;\n1;2;3")).isEqualTo(6);
     }
 
     @Test
