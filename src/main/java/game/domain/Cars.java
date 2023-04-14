@@ -9,14 +9,15 @@ public class Cars {
 
     private final List<Car> carList;
 
-    public Cars(List<String> carNames) {
-        this.carList = initialCars(carNames);
+    public Cars(List<Car> carList) {
+        this.carList = carList;
     }
 
-    private List<Car> initialCars(List<String> carNames) {
-        return carNames.stream()
+    public static Cars of(List<String> carNames) {
+        List<Car> cars = carNames.stream()
                 .map(Car::new)
                 .collect(toUnmodifiableList());
+        return new Cars(cars);
     }
 
     public void drive() {

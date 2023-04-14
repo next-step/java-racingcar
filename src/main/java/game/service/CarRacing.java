@@ -10,7 +10,7 @@ public class CarRacing {
     private final Cars cars;
 
     public CarRacing(List<String> carNames) {
-        this.cars = new Cars(carNames);
+        this.cars = Cars.of(carNames);
     }
 
     public void start() {
