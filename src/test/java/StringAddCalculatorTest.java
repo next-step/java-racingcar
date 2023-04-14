@@ -45,7 +45,7 @@ class StringAddCalculatorTest {
 
     @DisplayName("음수가 하나라도 포함되어 있다면 RunTimeException 예외가 발생해야 한다.")
     @Test
-    public void causeRunTimeException_whenContainNegative() {ㅣ
+    public void causeRunTimeException_whenContainNegative() {
         String input = "-1,2,3";
         Assertions.assertThatThrownBy(() -> StringAddCalculator.splitAndSum(input))
                 .isInstanceOf(IllegalArgumentException.class);
