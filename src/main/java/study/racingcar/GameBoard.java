@@ -4,12 +4,11 @@ public class GameBoard {
     /**
      * 게임을 진행을 담당한다.
      */
-    private final InputView inputView;
     private final OutputView outputView;
-
-    public GameBoard() {
-        this.inputView = new InputView();
-        this.outputView = new OutputView();
+    private final InputView inputView;
+    public GameBoard(InputView inputView, OutputView outputView) {
+        this.inputView = inputView;
+        this.outputView = outputView;
     }
 
     public void run() {
