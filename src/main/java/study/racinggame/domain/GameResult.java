@@ -4,6 +4,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class GameResult {
+
+  private static final int FIRST_ELEMENT = 0;
+  private static final int LAST_ELEMENT = 1;
   private final List<Cars> record;
 
   public GameResult() {
@@ -26,11 +29,11 @@ public class GameResult {
     return lastRecord().cars().stream()
             .sorted()
             .collect(Collectors.toList())
-            .get(0)
+            .get(FIRST_ELEMENT)
             .distance();
   }
 
   private Cars lastRecord() {
-    return record.get(record.size() - 1);
+    return record.get(record.size() - LAST_ELEMENT);
   }
 }
