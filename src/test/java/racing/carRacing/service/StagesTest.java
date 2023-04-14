@@ -4,9 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.carRacing.model.Cars;
 import racing.carRacing.model.Count;
-import racing.carRacing.service.Stages;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class StagesTest {
 
