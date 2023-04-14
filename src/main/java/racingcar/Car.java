@@ -1,3 +1,5 @@
+package racingcar;
+
 import java.util.Random;
 
 public class Car {
