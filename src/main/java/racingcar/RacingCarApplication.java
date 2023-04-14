@@ -1,7 +1,7 @@
 package racingcar;
 
-import racingcar.domain.CarFactory;
-import racingcar.domain.RacingCar;
+import racingcar.domain.Racing;
+import racingcar.domain.RacingCars;
 import racingcar.view.InputView;
 
 import java.util.List;
@@ -11,19 +11,16 @@ public class RacingCarApplication {
         InputView inputView = new InputView();
 
         // 사용자에게 입력값 받기
-        List<Integer> inputValues = inputView.input();
-        int numberOfCars = inputValues.get(0); // 자동차 수
-        int numberOfTrials = inputValues.get(1); // 이동 시도 횟수
+        int numberOfCars = inputView.carCount();
+        int numberOfTrials = inputView.trialCount();
 
-//        // 전체 자동차 객체 만들기
-//        RacingCars racingCars = new RacingCars(numberOfCars);
-//
+        // 전체 자동차 객체 만들기
+        RacingCars racingCars = new RacingCars(numberOfCars);
+
 //        // 이동 시도 횟수에 따른 racing 진행
-//        Racing racing = new Racing(racingCars, numberOfTrials);
-//        racing.startRacing();
+        Racing racing = new Racing(racingCars, numberOfTrials);
+        racing.startRacing();
 //        RacingCars racingResult = racing.getRacing();
-
-        List<RacingCar> racingCars = CarFactory.makeCars(numberOfCars);
 
 
     }
