@@ -3,16 +3,16 @@ package racingcar;
 import java.util.List;
 
 public class RacingCar {
+    public static final int CAR_MOVE_STANDARD = 4;
+    public static final int BEGIN_INDEX = 0;
+    public static final int INIT_VALUE = 0;
+    public static final int PLUS_VALUE = 1;
+
     private List<Integer> moveCounts;
 
     public RacingCar(List<Integer> moveCounts) {
         this.moveCounts = moveCounts;
     }
-
-    public static final int CAR_MOVE_STANDARD = 4;
-    public static final int BEGIN_INDEX = 0;
-    public static final int INIT_VALUE = 0;
-    public static final int PLUS_VALUE = 1;
 
     public void initMoveCounts(int carCount) {
         for (int i = BEGIN_INDEX; i < carCount; i++) {
