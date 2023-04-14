@@ -28,7 +28,7 @@ public class Car {
         }
     }
 
-    public String printDistance() {
+    public String getTracing() {
         return String.valueOf(tracing);
     }
 
