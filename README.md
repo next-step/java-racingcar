@@ -4,7 +4,7 @@
 ### step5 피드백 내용
 - [X] .gitkeep 파일 삭제
 - [X] List.of 사용
-- [ ] Integer.compare 사용
+- [X] Integer.compare 사용
 - [ ] 메서드명 변경
   - Stages 클래스 내 isRunning 메서드 -> hasMoreStages 메서드
 - [ ] 패키지 구조 분리
@@ -127,3 +127,14 @@ car.run(() -> true);
   - https://kim-jong-hyun.tistory.com/31
   - https://jaehoney.tistory.com/144
   - https://inpa.tistory.com/entry/JAVA-%E2%98%95-ArraysasList-%EC%99%80-Listof-%EC%B0%A8%EC%9D%B4-%ED%95%9C%EB%B0%A9-%EC%A0%95%EB%A6%AC
+
+### Integer.compare()
+```java
+public static int compare(int x, int y) {
+        return (x < y) ? -1 : ((x == y) ? 0 : 1);
+```
+- 정수값 비교 메서드로 x값이 y값보다 크면 1, 같으면 0, 작으면 -1을 반환
+- 아래 코드와 위 코드는 동일
+```java
+Integer.valueOf(x).compareTo(Integer.valueOf(y))
+```
