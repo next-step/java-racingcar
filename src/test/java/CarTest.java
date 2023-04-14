@@ -8,6 +8,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 class CarTest {
     @Test
     void moveCar() {
+
         Car moveCar = new Car("move");
         Car notMoveCar = new Car("nomove");
 
