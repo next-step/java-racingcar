@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.model.car;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.model.car.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -20,8 +19,8 @@ class CarTest {
         Car car = new Car("test", () -> movement);
         car.move();
 
-        int distance = car.distance();
-        assertThat(distance).isEqualTo(movement);
+        Distance distance = car.distance();
+        assertThat(distance).isEqualTo(new Distance(movement));
     }
 
     @Test
