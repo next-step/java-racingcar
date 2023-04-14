@@ -47,8 +47,6 @@ public class RacingCarTest {
     @Test
     void makeMoveCounts() {
         //given
-        RacingCar racingCar = new RacingCar(5);
-
         List<Integer> unmovableNumbers = Arrays.asList(1, 2);
         List<Integer> movableNumbers = Arrays.asList(4, 5, 6);
         List<Integer> numbers = new ArrayList<>();
@@ -56,7 +54,7 @@ public class RacingCarTest {
         numbers.addAll(movableNumbers);
 
         //when
-        List<Integer> list = racingCar.makeMoveCounts(numbers);
+        List<Integer> list = new RacingCar(numbers.size()).makeMoveCounts(numbers);
 
         //then
         assertThat(unmovableNumbers.size()).isEqualTo(Collections.frequency(list, 0));
