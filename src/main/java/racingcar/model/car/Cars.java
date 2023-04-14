@@ -14,6 +14,10 @@ public class Cars {
         this.cars = cars;
     }
 
+    public static Cars of(Car... cars) {
+        return new Cars(List.of(cars));
+    }
+
     public List<Car> all() {
         return this.cars;
     }
@@ -22,15 +26,15 @@ public class Cars {
         cars.forEach(Car::move);
     }
 
-    public int leaderDistance() {
+    public Distance leaderDistance() {
         return cars.stream()
-                .mapToInt(Car::distance)
-                .max()
-                .orElse(0);
+                .map(Car::distance)
+                .max(Distance::compareTo)
+                .orElse(Distance.ZERO);
     }
 
     public List<Car> leaders() {
-        int leaderDistance = leaderDistance();
+        Distance leaderDistance = leaderDistance();
 
         return cars.stream()
                 .filter(car -> car.isReached(leaderDistance))

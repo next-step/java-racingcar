@@ -1,7 +1,8 @@
 package racingcar.model.car;
 
-public class Distance {
+public class Distance implements Comparable<Distance> {
     private static final int DEFAULT_DISTANCE = 0;
+    public static Distance ZERO = new Distance(0);
     private int distance;
 
     public Distance() {
@@ -16,11 +17,27 @@ public class Distance {
         this.distance += amount;
     }
 
-    public int value() {
+    public int intValue() {
         return this.distance;
     }
 
-    public boolean isSame(int distance) {
-        return this.distance == distance;
+    @Override
+    public int compareTo(Distance o) {
+        return Integer.compare(this.distance, o.distance);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o instanceof Distance) {
+            Distance distance = (Distance) o;
+            return this.distance == distance.distance;
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return distance;
     }
 }

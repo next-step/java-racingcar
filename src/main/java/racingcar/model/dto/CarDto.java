@@ -12,7 +12,7 @@ public class CarDto {
     }
 
     public static CarDto from(Car car) {
-        return new CarDto(car.name(), car.distance());
+        return new CarDto(car.name(), car.distance().intValue());
     }
 
     public String name() {

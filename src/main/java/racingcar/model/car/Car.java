@@ -22,14 +22,14 @@ public class Car {
     }
 
     public String name() {
-        return this.name.value();
+        return this.name.toString();
     }
 
-    public int distance() {
-        return this.distance.value();
+    public Distance distance() {
+        return this.distance;
     }
 
-    public boolean isReached(int distance) {
-        return this.distance.isSame(distance);
+    public boolean isReached(Distance distance) {
+        return this.distance.equals(distance);
     }
 }

@@ -1,6 +1,8 @@
 package racingcar.model.car;
 
-public class Name {
+import java.util.Objects;
+
+public class Name implements Comparable<Name> {
     private static final int MAX_NAME_LENGTH = 5;
     private final String name;
 
@@ -15,7 +17,28 @@ public class Name {
         this.name = name;
     }
 
-    public String value() {
-        return name;
+    @Override
+    public String toString() {
+        return this.name;
+    }
+
+    @Override
+    public int compareTo(Name o) {
+        return this.name.compareTo(o.name);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o instanceof Name) {
+            Name name = (Name) o;
+            return Objects.equals(this.name, name.name);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.name.hashCode();
     }
 }
