@@ -4,9 +4,11 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class StandardCarMovePolicy implements CarMovePolicy {
 
+    private static final int MOVABLE_THRESHOLD_NUMBER = 4;
+
     @Override
     public boolean isMovable() {
-        return generateRandomNumber() >= 4;
+        return generateRandomNumber() >= MOVABLE_THRESHOLD_NUMBER;
     }
 
     private int generateRandomNumber() {
@@ -14,5 +16,5 @@ public class StandardCarMovePolicy implements CarMovePolicy {
                 .current()
                 .nextInt(0, 10 + 1);
     }
-    
+
 }
