@@ -1,10 +1,10 @@
-package study.step3;
+package study.racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import study.step3.domain.Car;
-import study.step3.domain.Race;
-import study.step3.factory.RaceFactory;
+import study.racingcar.domain.Car;
+import study.racingcar.domain.Race;
+import study.racingcar.factory.RaceFactory;
 
 import java.util.List;
 

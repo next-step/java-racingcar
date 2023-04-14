@@ -1,6 +1,6 @@
-package study.step3.factory;
+package study.racingcar.factory;
 
-import study.step3.domain.Race;
+import study.racingcar.domain.Race;
 
 public class RaceFactory {
 

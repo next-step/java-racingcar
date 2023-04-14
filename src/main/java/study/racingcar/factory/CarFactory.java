@@ -1,12 +1,12 @@
-package study.step3.factory;
+package study.racingcar.factory;
 
 import java.util.ArrayList;
 import java.util.List;
-import study.step3.domain.Car;
+import study.racingcar.domain.Car;
 
 public class CarFactory {
 
-  private CarFactory(){
+  private CarFactory() {
   }
 
   public static List<Car> createCars(String[] nameOfCars) {
@@ -17,7 +17,7 @@ public class CarFactory {
     return cars;
   }
 
-  public static Car createCar(String name){
+  public static Car createCar(String name) {
     return new Car(name);
   }
 }

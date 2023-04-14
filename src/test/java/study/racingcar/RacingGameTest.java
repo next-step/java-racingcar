@@ -1,10 +1,8 @@
-package study.step3;
+package study.racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import study.step3.logic.RacingGame;
+import study.racingcar.logic.RacingGame;
 
 public class RacingGameTest {
 

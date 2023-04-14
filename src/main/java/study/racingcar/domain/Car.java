@@ -1,6 +1,6 @@
-package study.step3.domain;
+package study.racingcar.domain;
 
-import study.step3.util.RandomInt;
+import study.racingcar.util.RandomInt;
 
 public class Car {
 
@@ -9,7 +9,7 @@ public class Car {
   private String name;
   private int distance;
 
-  public Car(String name){
+  public Car(String name) {
     this.name = name;
   }
 

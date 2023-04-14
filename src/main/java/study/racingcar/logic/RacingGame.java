@@ -1,8 +1,8 @@
-package study.step3.logic;
+package study.racingcar.logic;
 
-import study.step3.domain.Race;
-import study.step3.factory.RaceFactory;
-import study.step3.view.ResultView;
+import study.racingcar.domain.Race;
+import study.racingcar.factory.RaceFactory;
+import study.racingcar.view.ResultView;
 
 public class RacingGame {
 

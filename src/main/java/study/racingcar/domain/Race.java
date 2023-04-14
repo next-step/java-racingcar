@@ -1,4 +1,4 @@
-package study.step3.domain;
+package study.racingcar.domain;
 
 import java.util.List;
 

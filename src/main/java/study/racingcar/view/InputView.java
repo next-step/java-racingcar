@@ -1,8 +1,7 @@
-package study.step3.view;
-
-import study.step3.error.InvalidNameException;
+package study.racingcar.view;
 
 import java.util.Scanner;
+import study.racingcar.error.InvalidNameException;
 
 public class InputView {
 
@@ -40,7 +39,7 @@ public class InputView {
     }
   }
 
-  private static String[] inputNames(){
+  private static String[] inputNames() {
     String[] names = SCANNER.nextLine().split(",");
 
     for (String name : names) {
@@ -50,12 +49,12 @@ public class InputView {
   }
 
   private static void validateNameLength(String name) {
-    if(name.isEmpty()){
+    if (name.isEmpty()) {
       throw new InvalidNameException("이름을 1자 이상 입력해주세요.: ");
     }
 
-    if(name.length() > 5){
-      throw new InvalidNameException("이름은 5자를 초과할 수 없습니다.: "+ name);
+    if (name.length() > 5) {
+      throw new InvalidNameException("이름은 5자를 초과할 수 없습니다.: " + name);
     }
   }
 }

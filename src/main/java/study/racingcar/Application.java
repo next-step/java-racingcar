@@ -1,7 +1,7 @@
-package study.step3;
+package study.racingcar;
 
-import study.step3.logic.RacingGame;
-import study.step3.view.InputView;
+import study.racingcar.logic.RacingGame;
+import study.racingcar.view.InputView;
 
 public class Application {
 
