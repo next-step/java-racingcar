@@ -14,6 +14,7 @@ public class StringAddCalculator {
         }
 
         String[] tokens = getArrayDividedByDelimiter(input);
+        checkNonNumericVal(tokens);
         checkNegative(tokens);
 
         return sum(tokens);
@@ -48,6 +49,19 @@ public class StringAddCalculator {
     private static void checkNegative(String[] tokens) {
         if (isContainNegative(tokens)) {
             throw new IllegalArgumentException("음수가 포함되어 있습니다.");
+        }
+    }
+
+    private static void checkNonNumericVal(String[] tokens) {
+        Arrays.stream(tokens)
+                .forEach(token -> checkEachValueWhetherNumberFormat(token));
+    }
+
+    private static void checkEachValueWhetherNumberFormat(String eachString) {
+        try {
+            Integer.parseInt(eachString);
+        } catch (NumberFormatException ex){
+            throw new NumberFormatException("숫자 형태의 값이 들어있습니다.");
         }
     }
 

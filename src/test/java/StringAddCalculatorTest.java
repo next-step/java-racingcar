@@ -51,4 +51,12 @@ class StringAddCalculatorTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("숫자 이외의 값이 들어가게 되더라도 RuntimeException 예외가 발생해야 한다.")
+    @Test
+    public void causeRunTimeException_whenNonNumbericValue() {
+        String input = "=,-,@";
+        Assertions.assertThatThrownBy(() -> StringAddCalculator.splitAndSum(input))
+                .isInstanceOf(NumberFormatException.class);
+    }
+
 }
