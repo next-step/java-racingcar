@@ -63,7 +63,7 @@ class CarTest {
     void carStopTest() {
         Car car = new Car(TEST_CAR_NAME, new Distance(CAR_START_POSITION_NUMBER),
                 new CarStopNumber());
-        car = car.moveForwardByNumber();
+        car = car.move();
         assertThat(car).isEqualTo(new Car(TEST_CAR_NAME, new Distance(CAR_START_POSITION_NUMBER),
                 new CarStopNumber()));
     }
@@ -73,7 +73,7 @@ class CarTest {
     void moveTest() {
         Car car = new Car(TEST_CAR_NAME, new Distance(CAR_START_POSITION_NUMBER),
                 new CarForceMoveNumber());
-        car = car.moveForwardByNumber();
+        car = car.move();
         assertThat(car).isEqualTo(new Car(TEST_CAR_NAME, new Distance(MOVE_STEP),
                 new CarForceMoveNumber()));
     }

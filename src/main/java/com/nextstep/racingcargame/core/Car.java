@@ -51,7 +51,7 @@ public class Car {
         return this.distance.isLongerThan(distance);
     }
 
-    public Car moveForwardByNumber() {
+    public Car move() {
         return new Car(this.carName.getCarName(),
                 this.distance.moveForward(randomNumber.randomNumber()),
                 this.randomNumber);
