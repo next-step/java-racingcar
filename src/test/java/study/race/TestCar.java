@@ -24,7 +24,7 @@ public class TestCar {
         int successNum = 4;
         car.move(successNum);
 
-        assertThat(car.getScore().length()).isEqualTo(1);
+        assertThat(car.getScore()).isEqualTo(1);
     }
 
 
@@ -34,7 +34,7 @@ public class TestCar {
         int failNum = 3;
         car.move(failNum);
 
-        assertThat(car.getScore().length()).isEqualTo(0);
+        assertThat(car.getScore()).isEqualTo(0);
     }
 
 
@@ -47,7 +47,7 @@ public class TestCar {
             car.move(successNum);
         }
 
-        assertThat(car.getScore().length()).isEqualTo(moveNum);
+        assertThat(car.getScore()).isEqualTo(moveNum);
     }
 
 }

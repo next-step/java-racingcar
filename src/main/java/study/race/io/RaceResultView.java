@@ -6,7 +6,7 @@ import study.race.Car;
 
 public class RaceResultView {
 
-    private String initMessage = "실행 결과";
+    private String initMessage = "실행 결과\n";
     private StringBuilder result;
 
     public RaceResultView(List<Car> cars) {
