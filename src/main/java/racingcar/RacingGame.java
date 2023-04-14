@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.Random;
+
 public class RacingGame {
 
     private final int numberOfRounds;
@@ -24,8 +26,10 @@ public class RacingGame {
     }
 
     public void runSingleRound() {
+        Random random = new Random();
+
         for (Car car : cars) {
-            car.moveForwardOrStop(car.getRandomNumber());
+            car.moveForwardOrStop(random.nextInt(10));
         }
 
         currentRoundCount++;
