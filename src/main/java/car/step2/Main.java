@@ -6,8 +6,7 @@ public class Main {
         InputView inputView = new InputView();
         ResultView resultView = new ResultView();
         String inputString = inputView.inputString();
-        if(inputString.isBlank()) {
-            resultView.outputNumber(0);
-        }
+        int result = StringAddCalculator.splitAndSum(inputString);
+        resultView.outputNumber(result);
     }
 }
