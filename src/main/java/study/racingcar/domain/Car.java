@@ -1,6 +1,6 @@
 package study.racingcar.domain;
 
-import study.racingcar.util.RandomInt;
+import study.racingcar.util.RandomIntGenerator;
 
 public class Car {
 
@@ -20,7 +20,7 @@ public class Car {
   }
 
   private int getRandomInt() {
-    return RandomInt.makeRandomInt(DEFAULT_BOUND);
+    return RandomIntGenerator.generateMaxBound(DEFAULT_BOUND);
   }
 
   private boolean isMoving(int moveValue) {
