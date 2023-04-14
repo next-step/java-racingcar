@@ -13,12 +13,12 @@ public class CarTest {
     @ValueSource(ints = {0,2,5,7})
     public void racingGame_move(int randomNum) {
 
-        Car car = new Car("");
+        Car car = new Car(0);
 
         for(int i = 0; i < randomNum; i++) {
             RacingGame.move(car);
         }
 
-        assertThat(car.getPosition().length()).isEqualTo(randomNum);
+        assertThat(car.currentPosition()).isEqualTo(randomNum);
     }
 }

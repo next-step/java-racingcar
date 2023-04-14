@@ -5,7 +5,6 @@ import java.util.List;
 public class RacingGame {
 
     private static final int MOVE_CONDITION = 4;
-    private static final String MOVE_MARK = "-";
 
     public static void gameStart(Game game) {
 
@@ -23,14 +22,15 @@ public class RacingGame {
                 move(car);
             }
 
-            ResultView.resultGame(car.getPosition());
+            ResultView.resultGame(car.currentPosition());
         }
 
         ResultView.emptyLine();
     }
 
     public static void move(Car car) {
-        car.setPosition(car.getPosition() + MOVE_MARK);
+
+        car.setPosition(car.currentPosition() + 1);
     }
 
     private static boolean isMove(int randomNum) {

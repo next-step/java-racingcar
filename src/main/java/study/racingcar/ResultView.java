@@ -2,8 +2,11 @@ package study.racingcar;
 
 public class ResultView {
 
-    public static void resultGame(String position) {
-        System.out.println(position);
+    private static final String MOVE_MARK = "-";
+    public static void resultGame(int carPosition) {
+        for (int i = 0; i < carPosition; i++) {
+            System.out.println(MOVE_MARK);
+        }
     }
 
     public static void emptyLine() {

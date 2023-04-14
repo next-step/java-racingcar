@@ -2,17 +2,17 @@ package study.racingcar;
 
 public class Car {
 
-    private String position;
+    private int position;
 
-    public Car(String position) {
+    public Car(int position) {
         this.position = position;
     }
 
-    public String getPosition() {
+    public int currentPosition() {
         return this.position;
     }
 
-    public void setPosition(String position) {
+    public void setPosition(int position) {
         this.position = position;
     }
 }

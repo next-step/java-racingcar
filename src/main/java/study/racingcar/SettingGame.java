@@ -5,8 +5,6 @@ import java.util.InputMismatchException;
 import java.util.List;
 
 public class SettingGame {
-
-    private static String CAR_START_POSITION = "";
     private static int ZERO = 0;
 
     public static List<Car> createCars(int cars) {
@@ -16,7 +14,7 @@ public class SettingGame {
         List<Car> carList = new ArrayList<>();
 
         for (int i = 0; i < cars; i++) {
-            carList.add(new Car(CAR_START_POSITION));
+            carList.add(new Car(ZERO));
         }
 
         return carList;
