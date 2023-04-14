@@ -13,6 +13,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 public class StringAddCalculatorTest {
     private static final Logger log = Logger.getLogger("StringAddCalculatorTest");
     private StringAddCalculator stringAddCalculator;
+
     @BeforeEach
     public void beforeEach() {
         stringAddCalculator = new StringAddCalculator();
@@ -61,7 +62,6 @@ public class StringAddCalculatorTest {
     @DisplayName("10 이상의 숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환한다")
     @Test
     public void 숫자_10이상_하나() {
-        log.info("예시 : 10 >> 10");
         //given
         String input = "10";
         int answer = 10;
@@ -74,7 +74,6 @@ public class StringAddCalculatorTest {
     @DisplayName("자릿수가 긴 숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환한다")
     @Test
     public void 숫자_큰걸로_하나() {
-        log.info("예시 : 100 >> 100");
         //given
         Map<String, Integer> caseInputAndOutputMapper = Map.of(
                 "100", 100,
@@ -90,7 +89,6 @@ public class StringAddCalculatorTest {
             assertThat(caseInputAndOutputMapper.get(input)).isEqualTo(stringAddCalculator.splitAndSum(input));
         });
     }
-
 
 
     @DisplayName("숫자 두개를 컴마(,) 구분자로 입력할 경우 두 숫자의 합을 반환한다")
@@ -156,6 +154,18 @@ public class StringAddCalculatorTest {
         //given
         String input = "//;\n1;2;3";
         int answer = 6;
+        //when
+        int output = stringAddCalculator.splitAndSum(input);
+        //then
+        assertThat(output).isEqualTo(answer);
+    }
+
+    @DisplayName("커스텀 구분자 사용시 큰 자리수 테스트")
+    @Test
+    public void 커스텀구분자복잡() {
+        //given
+        String input = "//;\n111111;222222;333333";
+        int answer = 666666;
         //when
         int output = stringAddCalculator.splitAndSum(input);
         //then
