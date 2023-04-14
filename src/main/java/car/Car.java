@@ -10,10 +10,6 @@ public class Car {
         this.position = DEFAULT_POSITION;
     }
 
-    public Car(int position) {
-        this.position = position;
-    }
-
     public int getPosition() {
         return this.position;
     }
