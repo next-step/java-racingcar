@@ -21,5 +21,7 @@ public class RacingGame {
       race.play();
       ResultView.printResult(i, race.getCars());
     }
+
+    ResultView.printWinners(race.getCars());
   }
 }
