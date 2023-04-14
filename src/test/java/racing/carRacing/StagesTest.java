@@ -34,7 +34,7 @@ class StagesTest {
     void runningTest() {
         Stages stages = new Stages(Count.createCount(5));
 
-        assertThat(stages.isRunning()).isTrue();
+        assertThat(stages.hasMoreStages()).isTrue();
     }
 
     @Test
@@ -43,7 +43,7 @@ class StagesTest {
         Stages stages = new Stages(Count.createCount(1));
         stages.startGame(Cars.initCars(new String[]{"test"}), () -> true);
 
-        assertThat(stages.isRunning()).isFalse();
+        assertThat(stages.hasMoreStages()).isFalse();
     }
 
 }

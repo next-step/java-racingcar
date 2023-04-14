@@ -5,7 +5,7 @@
 - [X] .gitkeep 파일 삭제
 - [X] List.of 사용
 - [X] Integer.compare 사용
-- [ ] 메서드명 변경
+- [X] 메서드명 변경
   - Stages 클래스 내 isRunning 메서드 -> hasMoreStages 메서드
 - [ ] 패키지 구조 분리
 
