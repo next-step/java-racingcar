@@ -14,9 +14,7 @@ public class StringAddCalculator {
         }
 
         String[] tokens = getArrayDividedByDelimiter(input);
-        if (isContainNegative(tokens)) {
-            throw new IllegalArgumentException("음수가 포함되어 있습니다.");
-        }
+        checkNegative(tokens);
 
         return sum(tokens);
     }
@@ -45,6 +43,12 @@ public class StringAddCalculator {
         return Arrays.stream(tokens)
                 .mapToInt(Integer::parseInt)
                 .sum();
+    }
+
+    private static void checkNegative(String[] tokens) {
+        if (isContainNegative(tokens)) {
+            throw new IllegalArgumentException("음수가 포함되어 있습니다.");
+        }
     }
 
 }
