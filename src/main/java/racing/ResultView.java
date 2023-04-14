@@ -1,6 +1,6 @@
 package racing;
 
-public class View {
+public class ResultView {
 
     private static final String MARK = "-";
 
