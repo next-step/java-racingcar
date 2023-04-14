@@ -10,6 +10,8 @@ public class Competition {
     private static final int DISTANCE_PER_TRY = 1;
     private static final Random random = new Random();
 
+    private final List<Car> cars = new ArrayList<>();
+
     public int drive(int number) {
         if (number >= CONDITION_NUMBER) {
             return DISTANCE_PER_TRY;
@@ -18,13 +20,14 @@ public class Competition {
         return 0;
     }
 
-    public void moveCars(List<Car> cars) {
+    public List<Car> moveCars() {
         for (Car car : cars) {
             car.move(drive(random.nextInt(10)));
         }
+        return cars;
     }
 
-    public List<String> winners(List<Car> cars) {
+    public List<String> winners() {
         int max = 0;
         for (Car car: cars) {
             max = Math.max(max, car.currentPosition());
@@ -44,13 +47,10 @@ public class Competition {
         }
     }
 
-    public List<Car> entry(String[] names) {
-        List<Car> cars = new ArrayList<>();
+    public void entry(String[] names) {
         for (String name : names) {
             cars.add(new Car(name));
         }
-
-        return cars;
     }
 
 }

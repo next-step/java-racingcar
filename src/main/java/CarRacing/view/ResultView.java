@@ -2,7 +2,6 @@ package CarRacing.view;
 
 import CarRacing.Car;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ResultView {
