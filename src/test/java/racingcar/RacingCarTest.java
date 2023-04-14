@@ -14,6 +14,9 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class RacingCarTest {
 
+    public static final int UNMOVABLE_COUNT = 0;
+    public static final int MOVABLE_COUNT = 1;
+
     @DisplayName("random 값이 4이상이면 전진한다.")
     @ParameterizedTest
     @CsvSource(value = {"0:false", "1:false", "2:false", "3:false",
@@ -54,10 +57,10 @@ public class RacingCarTest {
         numbers.addAll(movableNumbers);
 
         //when
-        List<Integer> list = new RacingCar(numbers.size()).makeMoveCounts(numbers);
+        List<Integer> moveCounts = new RacingCar(numbers.size()).makeMoveCounts(numbers);
 
         //then
-        assertThat(unmovableNumbers.size()).isEqualTo(Collections.frequency(list, 0));
-        assertThat(movableNumbers.size()).isEqualTo(Collections.frequency(list, 1));
+        assertThat(unmovableNumbers.size()).isEqualTo(Collections.frequency(moveCounts, UNMOVABLE_COUNT));
+        assertThat(movableNumbers.size()).isEqualTo(Collections.frequency(moveCounts, MOVABLE_COUNT));
     }
 }
