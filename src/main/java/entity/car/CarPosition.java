@@ -1,6 +1,8 @@
+package entity.car;
+
 public class CarPosition {
 
-    private int position;
+    private final int position;
 
     public CarPosition(int position) {
         validatePosition(position);
