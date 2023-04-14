@@ -6,6 +6,8 @@ import racingcar.domain.Cars;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
+import java.util.Arrays;
+
 public class RacingGame {
 
     Cars cars;
@@ -22,6 +24,12 @@ public class RacingGame {
         for (int i = 0; i < numberOfCars; i++) {
             cars.add(new Car());
         }
+    }
+
+    public void initCars(String names) {
+        Arrays.stream(names.split(",")).forEach((name) -> {
+            cars.add(new Car(name));
+        });
     }
 
     public void move(int numberOfTry) {

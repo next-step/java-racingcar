@@ -12,7 +12,12 @@ public class Cars {
     }
 
     public void add(Car car) {
+        if(isDuplicate(car)) throw new IllegalArgumentException("중복된 이름을 가진 자동차가 있습니다.");
         cars.add(car);
+    }
+
+    private boolean isDuplicate(Car car) {
+        return cars.stream().filter(item -> item.getName().equals(car.getName())).count() > 0;
     }
 
     public int size() {
