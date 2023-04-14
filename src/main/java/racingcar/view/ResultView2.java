@@ -2,21 +2,30 @@ package racingcar.view;
 
 import racingcar.domain.RacingCar;
 
-public class ResultView {
-    private int maxPosition;
+import java.util.HashMap;
 
-    public ResultView(int maxPosition) {
-        this.maxPosition = maxPosition;
+public class ResultView2 {
+    private int maxPosition;
+    private HashMap<Integer, RacingCar[]> racingResults = new HashMap<>();
+
+    public ResultView2(HashMap<Integer, RacingCar[]> racingResults) {
+        this.maxPosition = racingResults.size();
+        this.racingResults = racingResults;
     }
 
     // racing 결과 출력
-    public void printByRacingResult() {
+    public void printRacingResult() {
         System.out.println();
         System.out.println("실행 결과");
+
+        for(int i=0; i<this.racingResults.size(); i++){
+            printRacingResultByTrial(this.racingResults.get(i), i);
+        }
+
     }
 
     // racing에서 trial 마다 출력
-    public void printByRacingTrials(RacingCar[] racingCars, int nowTrial) {
+    public void printRacingResultByTrial(RacingCar[] racingCars, int nowTrial) {
         for(RacingCar racingCar : racingCars) {
             String carMoveDistance = "-".repeat(racingCar.getPosition());   // 자동차별 position 값 만큼 이동거리 표기
 

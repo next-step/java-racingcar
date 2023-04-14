@@ -55,12 +55,7 @@ public class StringAddCalculator2 {
 
     // 구분한 문자열 배열 숫자로 변환
     private static int convertStringToInt(String text) {
-        try {
-            return Integer.parseInt(text);
-        } catch (RuntimeException e) {
-            e.printStackTrace();    //예외정보 출력
-            throw e;  //예외 던지기
-        }
+        return Integer.parseInt(text);
     }
 
     // 구분한 문자열 배열 숫자로 변환 후 합산

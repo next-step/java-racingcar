@@ -1,4 +1,4 @@
-package racingcar.service;
+package racingcar.domain;
 
 public class RacingCars {
     private RacingCar[] racingCars;

@@ -1,7 +1,6 @@
-package racingcar.service;
+package racingcar.domain;
 
 import racingcar.view.ResultView;
-import javax.xml.transform.Result;
 
 public class Racing {
     private RacingCars racing;
