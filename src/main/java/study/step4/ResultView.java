@@ -3,6 +3,9 @@ package study.step4;
 import java.util.List;
 
 public class ResultView {
+    public static final String POSITION_CHARTER = "-";
+    public static final String NAME_DELIMITER = ", ";
+    public static final String COLON = " : ";
 
     private ResultView() {
         // 생성자 내부 호출 -> 명시적 Exception
@@ -35,18 +38,18 @@ public class ResultView {
     private static void addComma(StringBuilder stringBuilder, int lastIndex, int count) {
         if (lastIndex == count) return;
         if (lastIndex > 0) {
-            stringBuilder.append(", ");
+            stringBuilder.append(NAME_DELIMITER);
         }
     }
 
     private static void changeCarMoveToString(StringBuilder stringBuilder, Car car) {
         for (int i = 0; i < car.getPosition(); i++) {
-            stringBuilder.append("-");
+            stringBuilder.append(POSITION_CHARTER);
         }
     }
 
     private static void addCarName(StringBuilder stringBuilder, Car car) {
         stringBuilder.append(car.getCarName());
-        stringBuilder.append(" : ");
+        stringBuilder.append(COLON);
     }
 }
