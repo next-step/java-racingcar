@@ -1,6 +1,9 @@
 package racing;
 
-import racing.carRacing.*;
+import racing.carRacing.model.Cars;
+import racing.carRacing.model.Count;
+import racing.carRacing.service.Stages;
+import racing.carRacing.service.RandomMovementStrategy;
 import racing.carRacing.view.InputView;
 import racing.carRacing.view.OutputView;
 

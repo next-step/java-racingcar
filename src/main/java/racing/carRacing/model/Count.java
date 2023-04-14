@@ -1,4 +1,4 @@
-package racing.carRacing;
+package racing.carRacing.model;
 
 public class Count {
     public static final int ZERO = 0;

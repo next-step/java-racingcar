@@ -1,4 +1,7 @@
-package racing.carRacing;
+package racing.carRacing.service;
+
+import racing.carRacing.model.Cars;
+import racing.carRacing.model.Count;
 
 public class Stages {
     private final Count numberOfStages;

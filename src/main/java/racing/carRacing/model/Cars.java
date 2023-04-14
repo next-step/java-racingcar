@@ -1,4 +1,6 @@
-package racing.carRacing;
+package racing.carRacing.model;
+
+import racing.carRacing.service.MovementStrategy;
 
 import java.util.*;
 import java.util.stream.Collectors;

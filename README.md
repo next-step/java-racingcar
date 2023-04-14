@@ -7,7 +7,7 @@
 - [X] Integer.compare 사용
 - [X] 메서드명 변경
   - Stages 클래스 내 isRunning 메서드 -> hasMoreStages 메서드
-- [ ] 패키지 구조 분리
+- [X] 패키지 구조 분리
 
 ---
 ### step4 피드백 내용

@@ -1,8 +1,8 @@
 package racing.carRacing.view;
 
-import racing.carRacing.Car;
-import racing.carRacing.Cars;
-import racing.carRacing.Count;
+import racing.carRacing.model.Car;
+import racing.carRacing.model.Cars;
+import racing.carRacing.model.Count;
 
 import java.util.List;
 
