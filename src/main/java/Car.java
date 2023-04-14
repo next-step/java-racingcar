@@ -1,7 +1,7 @@
 import java.util.Random;
 
 public class Car {
-    public static final int MOVEABLE_NUMBER = 4;
+    public static final int MOVEABLE_POWER = 4;
     private int moveCount = 0;
 
     int getRandomNumber() {
@@ -10,22 +10,13 @@ public class Car {
         return random.nextInt(10);
     }
 
-    public boolean canMove(int number) {
-        if (number >= MOVEABLE_NUMBER) {
-            return true;
-        }
-        
-        return false;
-    }
-
-
-    public void moveOrStop() {
-        if (canMove(getRandomNumber())) {
+    public void moveForwardOrStop(int inputPower) {
+        if (inputPower >= MOVEABLE_POWER) {
             moveCount++;
         }
     }
 
     public int getMoveCount() {
-        return ++moveCount;
+        return moveCount;
     }
 }
