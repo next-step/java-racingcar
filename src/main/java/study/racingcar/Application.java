@@ -1,7 +1,9 @@
 package study.racingcar;
 
-import study.racingcar.logic.RacingGame;
+import study.racingcar.domain.Race;
+import study.racingcar.factory.RaceFactory;
 import study.racingcar.view.InputView;
+import study.racingcar.view.ResultView;
 
 public class Application {
 
@@ -9,7 +11,12 @@ public class Application {
     String[] nameOfCars = InputView.inputNameOfCars();
     int numOfRaces = InputView.inputNumOfRaces();
 
-    RacingGame racing = new RacingGame(nameOfCars, numOfRaces);
-    racing.start();
+    Race race = RaceFactory.createRace(nameOfCars);
+    for (int i = 0; i < numOfRaces; i++) {
+      race.play();
+      ResultView.printResult(i, race.getCars());
+    }
+
+    ResultView.printWinners(race.getCars());
   }
 }
