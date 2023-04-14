@@ -4,7 +4,7 @@ public class Car {
 
     private String name;
     private int movingDistance;
-    private StringBuilder sb;
+    private StringBuilder tracing;
 
 
     public Car() {
@@ -13,7 +13,7 @@ public class Car {
     public Car(String name) {
         validateName(name);
         this.name = name;
-        this.sb = new StringBuilder().append(this.name).append(" : ");
+        this.tracing = new StringBuilder().append(name).append(" : ");
     }
 
     public Car(String name, int movingDistance) {
@@ -22,15 +22,14 @@ public class Car {
     }
 
     public void move(int input) {
-        if (isLessThanThree(input)) {
-            return;
+        if (isOverThanThree(input)) {
+            this.movingDistance++;
+            this.tracing.append("-");
         }
-        this.sb.append("-");
-        this.movingDistance++;
     }
 
     public String printDistance() {
-        return String.valueOf(sb);
+        return String.valueOf(tracing);
     }
 
     public int getMovingDistance() {
@@ -59,7 +58,7 @@ public class Car {
         return text == null || text.isEmpty();
     }
 
-    private boolean isLessThanThree(int input) {
-        return input <= 3;
+    private boolean isOverThanThree(int input) {
+        return input > 3;
     }
 }
