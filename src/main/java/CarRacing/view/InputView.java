@@ -54,7 +54,23 @@ public class InputView {
         return numberOfCar;
     }
 
-    private static String[] getNameOfCars(String numberStr) {
-        return numberStr.split(",");
+    public static String[] getNameOfCars(String numberStr) {
+        if (numberStr.isEmpty()) {
+            throw new IllegalArgumentException("공백은 입력할 수 없습니다!");
+        }
+
+        String[] names = numberStr.split(",");
+
+        for (String name : names) {
+            checkNameLength(name);
+        }
+
+        return names;
+    }
+
+    private static void checkNameLength(String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("이름은 5자 이하만 가능합니다!");
+        }
     }
 }
