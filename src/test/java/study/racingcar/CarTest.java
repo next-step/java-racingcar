@@ -7,36 +7,81 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    @DisplayName("숫자가 4보다 작으면 움직이지 않는다.")
+    @DisplayName("숫자가 4보다 작으면 false를 반환한다")
     @Test
-    void keep_position_when_number_is_less_than_four() {
+    void when_number_is_less_than_four() {
         // given
-        final Car car = new Car();
+        int number = 3;
+
         // when
-        car.move(3);
+        boolean actualResult = Car.isMovable(number);
+
+        // then
+        assertThat(actualResult).isFalse();
+    }
+
+    @DisplayName("숫자가 4이면 true를 반환한다")
+    @Test
+    void when_number_is_four() {
+        // given
+        int number = 4;
+
+        // when
+        boolean actualResult = Car.isMovable(number);
+
+        // then
+        assertThat(actualResult).isTrue();
+    }
+
+    @DisplayName("숫자가 4보다 크면 true를 반환한다")
+    @Test
+    void when_number_is_greater_than_four() {
+        // given
+        int number = 5;
+
+        // when
+        boolean actualResult = Car.isMovable(number);
+
+        // then
+        assertThat(actualResult).isTrue();
+    }
+
+    @DisplayName("움직이지 않으면 모양이 없다")
+    @Test
+    void blank_when_car_does_not_move() {
+        // given
+        Car car = new Car();
+
+        // when
+
         // then
         assertThat(car.toString()).isEqualTo("");
     }
 
-    @DisplayName("숫자가 4와 같으면 한칸 움직인다.")
+    @DisplayName("한번 움직이면 -이 출력된다")
     @Test
-    void keep_position_when_number_is_four() {
+    void shape_once_when_car_move_once() {
         // given
-        final Car car = new Car();
+        Car car = new Car();
+
         // when
-        car.move(4);
+        car.move();
+
         // then
         assertThat(car.toString()).isEqualTo("-");
     }
 
-    @DisplayName("숫자가 4보다 크면 한칸 움직인다.")
+    @DisplayName("두번 움직이면 --이 출력된다.")
     @Test
-    void keep_position_when_number_is_greater_than_four() {
+    void shape_twice_when_car_move_twice() {
         // given
-        final Car car = new Car();
+        Car car = new Car();
+
         // when
-        car.move(5);
+        car.move();
+        car.move();
+
         // then
-        assertThat(car.toString()).isEqualTo("-");
+        assertThat(car.toString()).isEqualTo("--");
     }
 }
