@@ -1,68 +1,46 @@
 package StringAdder;
 
-import java.util.List;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StringAdder {
-
     public static final int ZERO = 0;
+    public static final Pattern CUSTOM_PATTERN = Pattern.compile("//(.)\n(.*)");
+    public static final String BASIC_PATTERN = "[:,]";
 
     public int splitAndSum(String input) {
         if (isBlank(input)) {
             return ZERO;
         };
 
-        String delimiter = findDelimiter(input);
-
-        return sumAll(splitString(input, delimiter));
+        return sumAll(toArrayList(splitString(input)));
     }
 
     public boolean isBlank(String input) {
         return input == null || input.isBlank();
     }
 
-    public int toInt(String str) {
-        return Integer.parseInt(str);
-    }
-
-    public String[] splitString(String str, String delimiter) {
-        return str.split(delimiter);
-    }
-
-    public boolean isPositive(String input) {
-        if (toInt(input) < 0)
-            throw new IllegalArgumentException("input must be a non-negative integer");
-        return true;
-    }
-
-    public int sumAll(String[] numbers) {
-        int sum = 0;
-        for (String number : numbers) {
-            if (number.contains("//")) {
-                continue;
-            }
-
-            if (number.contains("\\n")) {
-                number = number.split("n")[1];
-            }
-
-            if (isPositive(number)) {
-                sum += toInt(number);
-            }
+    public String[] splitString(String str) {
+        Matcher m = CUSTOM_PATTERN.matcher(str);
+        if (m.find()) {
+            String delimiter = m.group(1);
+            return m.group(2).split(delimiter);
         }
-        return sum;
+        return str.split(BASIC_PATTERN);
     }
 
-    public String findDelimiter(String str) {
-        if (str.contains(":")) {
-            return ":";
-        }
+    public ArrayList<String> toArrayList(String[] strArray) {
+        return new ArrayList<>(Arrays.asList(strArray));
+    }
 
-        if (str.contains("//") && str.contains("\\n")) {
-            int start = str.indexOf("//") + "//".length();
-            int end = str.indexOf("\\n");
-            return str.substring(start,end);
-        }
-
-        return ",";
+    public int sumAll(ArrayList<String> strArr) {
+        return strArr.stream()
+                    .mapToInt(Integer::parseInt)
+                    .mapToObj(n -> new PositiveNumber(n))
+                    .mapToInt(PositiveNumber::getNumber)
+                    .sum();
     }
 }
