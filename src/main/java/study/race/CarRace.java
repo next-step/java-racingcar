@@ -7,34 +7,35 @@ import study.util.RandomNumber;
 
 public class CarRace {
 
-    private List<Car> cars;
-    private int tryNum;
+    private List<CarEntry> entrys;
+    private int raceNum;
 
-    public CarRace(int carNum, int tryNum) {
-        cars = initCars(carNum);
-        this.tryNum = tryNum;
+    public CarRace(int entryNum, int raceNum) {
+        entrys = ready(entryNum);
+        this.raceNum = raceNum;
     }
 
-    private List<Car> initCars(int carNum) {
-        List<Car> readyCars = new ArrayList<>();
-        for (int i = 0; i < carNum; i++) {
-            readyCars.add(new Car());
+    private List<CarEntry> ready(int entryNum) {
+        List<CarEntry> readyEntrys = new ArrayList<>();
+        for (int i = 0; i < entryNum; i++) {
+            Car car = new Car();
+            readyEntrys.add(new CarEntry(car));
         }
 
-        return readyCars;
+        return readyEntrys;
     }
     
     public void run() {
-        for (int i = 0; i < tryNum; i++) {
-            for (Car car : cars) {
+        for (int i = 0; i < raceNum; i++) {
+            for (CarEntry entry : entrys) {
                 int randomNum = RandomNumber.getRandomNumber();
-                car.move(randomNum);
+                entry.move(randomNum);
             }
         }
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public List<CarEntry> getRaceResult() {
+        return entrys;
     }
 
 }

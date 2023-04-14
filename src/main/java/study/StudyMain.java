@@ -14,7 +14,7 @@ public class StudyMain {
         CarRace carRace = new CarRace(inputView.getCarNum(), inputView.getTryNum());
         carRace.run();
 
-        RaceResultView resultView = new RaceResultView(carRace.getCars());
+        RaceResultView resultView = new RaceResultView(carRace.getRaceResult());
         System.out.println(resultView.getPrint());
     }
 

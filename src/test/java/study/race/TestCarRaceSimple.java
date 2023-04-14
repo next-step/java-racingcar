@@ -13,24 +13,26 @@ public class TestCarRaceSimple {
 
     @ParameterizedTest
     @CsvSource({"2, 4", "4, 5", "3, 6"})
-    @DisplayName("CarRace 입력 Car 개수 입력 테스트")
-    public void test_carrace_carNum_tryNum_input(int carNum, int tryNum) {
-        CarRace race = new CarRace(carNum, tryNum);
+    @DisplayName("CarRace 입력 CarEntry 개수 입력 테스트")
+    public void test_carrace_carNum_tryNum_input(int entryNum, int raceNum) {
+        CarRace race = new CarRace(entryNum, raceNum);
 
-        assertThat(race.getCars().size()).isEqualTo(carNum);
+        assertThat(race.getRaceResult().size()).isEqualTo(entryNum);
     }
 
 
     @ParameterizedTest
     @CsvSource({"2, 4", "4, 5", "3, 6"})
     @DisplayName("CarRace 실행 테스트")
-    public void test_carrace_run(int carNum, int tryNum) {
-        CarRace race = new CarRace(carNum, tryNum);
+    public void test_carrace_run(int entryNum, int raceNum) {
+        CarRace race = new CarRace(entryNum, raceNum);
         race.run();
 
-        List<Car> cars = race.getCars();
-        for (Car car : cars) {
-            assertThat(car.getMoveHistory().size()).isEqualTo(tryNum);
+        List<CarEntry> entrys = race.getRaceResult();
+        assertThat(entrys.size()).isEqualTo(entryNum);
+
+        for (CarEntry entry : entrys) {
+            assertThat(entry.getMoveRecord().size()).isEqualTo(raceNum);
         }
     }
 
