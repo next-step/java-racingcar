@@ -15,8 +15,8 @@ public class Main {
         List<String> carNames = inputView.carsName();
         int numOfAttempts = inputView.numOfAttempts();
 
-        RacingGame racingGame = new RacingGame();
-        List<String> winnerNames = racingGame.executeRace(new InputDto(carNames, numOfAttempts));
+        RacingGame racingGame = new RacingGame(new InputDto(carNames, numOfAttempts));
+        List<String> winnerNames = racingGame.executeRace(numOfAttempts);
 
         ResultView resultView = new ResultView();
         resultView.showWinnerNames(winnerNames);
