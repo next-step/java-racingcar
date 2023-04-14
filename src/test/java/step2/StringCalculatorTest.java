@@ -61,7 +61,7 @@ public class StringCalculatorTest {
         // given & when & then
         assertThatThrownBy(() -> calculate("a,b,c"))
                 .isInstanceOf(RuntimeException.class)
-                .hasMessageContaining("숫자가 아니거나 Long 범위를 초과한 수가 입력되었습니다.");
+                .hasMessageContaining("숫자가 아닌 값이 입력되었습니다.");
     }
 
     @Test
@@ -73,11 +73,11 @@ public class StringCalculatorTest {
     }
 
     @Test
-    @DisplayName("Long 타입의 최대값을 초과하는 경우 RuntimeException 예외가 발생해야 한다.")
+    @DisplayName("int 타입의 최대값을 초과하는 경우 RuntimeException 예외가 발생해야 한다.")
     void overMaxLong() {
         // given & when & then
-        assertThatThrownBy(() -> calculate("9223372036854775808"))
+        assertThatThrownBy(() -> calculate("2147483647,1"))
                 .isInstanceOf(RuntimeException.class)
-                .hasMessageContaining("숫자가 아니거나 Long 범위를 초과한 수가 입력되었습니다.");
+                .hasMessageContaining("합이 int 범위를 초과한 수가 입력되었습니다.");
     }
 }

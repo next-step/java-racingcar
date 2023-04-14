@@ -33,7 +33,7 @@ public class StringCalculator {
                 }
             }
         } catch (NumberFormatException e) {
-            throw new RuntimeException("숫자가 아니거나 Long 범위를 초과한 수가 입력되었습니다.");
+            throw new RuntimeException("숫자가 아닌 값이 입력되었습니다.");
         }
         return newNumbers;
     }
@@ -41,6 +41,9 @@ public class StringCalculator {
         long sum = 0;
         for (long number : numbers) {
             sum += number;
+        }
+        if (sum > Integer.MAX_VALUE) {
+            throw new RuntimeException("합이 int 범위를 초과한 수가 입력되었습니다.");
         }
         return sum;
     }
