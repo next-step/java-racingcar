@@ -1,6 +1,6 @@
 package racingcar.model.dto;
 
-import racingcar.model.Car;
+import racingcar.model.car.Car;
 
 public class CarDto {
     private final int distance;
@@ -12,7 +12,7 @@ public class CarDto {
     }
 
     public static CarDto from(Car car) {
-        return new CarDto(car.name(), car.distance());
+        return new CarDto(car.name(), car.distance().intValue());
     }
 
     public String name() {

@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.model.car;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -19,8 +19,8 @@ class CarTest {
         Car car = new Car("test", () -> movement);
         car.move();
 
-        int distance = car.distance();
-        assertThat(distance).isEqualTo(movement);
+        Distance distance = car.distance();
+        assertThat(distance).isEqualTo(new Distance(movement));
     }
 
     @Test

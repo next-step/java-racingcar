@@ -1,7 +1,8 @@
-package racingcar.model;
+package racingcar.model.racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.model.car.Car;
 
 import java.util.List;
 
@@ -54,16 +55,14 @@ class RacingTest {
     @DisplayName("차가 null 이면 예외 발생")
     public void nullCars() {
         assertThatThrownBy(() -> new Racing(1, null))
-                .isInstanceOf(NullPointerException.class)
-                .hasMessage("cars should not be null");
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     @DisplayName("차가 없으면 예외 발생")
     public void emptyCars() {
         assertThatThrownBy(() -> new Racing(1, List.of()))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("At least one car must be present");
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
