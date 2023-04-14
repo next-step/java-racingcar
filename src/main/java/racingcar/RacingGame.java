@@ -1,6 +1,5 @@
 package racingcar;
 
-
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.view.InputView;
@@ -43,9 +42,9 @@ public class RacingGame {
     }
 
     public void start() {
-        int numberOfCars = inputView.enterNumberOfCars();
+        String nameOfCars = inputView.enterNameOfCars();
         int numberOfTry = inputView.enterNumberOfTry();
-        initCars(numberOfCars);
+        initCars(nameOfCars);
         move(numberOfTry);
         resultView.printResult(cars);
     }
