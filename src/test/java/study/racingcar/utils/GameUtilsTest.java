@@ -1,9 +1,10 @@
-package study.racingcar;
+package study.racingcar.utils;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import study.racingcar.utils.GameUtils;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class GameUtilsTest {
 
@@ -14,6 +15,6 @@ class GameUtilsTest {
         int randomNumber = GameUtils.randomNumber();
 
         // when, then
-        Assertions.assertThat(randomNumber).isBetween(0, 9);
+        assertThat(randomNumber).isBetween(0, 9);
     }
 }
