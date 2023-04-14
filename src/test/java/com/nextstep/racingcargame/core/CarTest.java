@@ -51,6 +51,14 @@ class CarTest {
     }
 
     @Test
+    @DisplayName("차량 이동거리가 같은 Distance 객체 비교시 참을 리턴한다.")
+    void isSameTest() {
+        Car car = new Car(TEST_CAR_NAME, new Distance(CAR_START_POSITION_NUMBER),
+                new RandomNumberZeroToNine());
+        assertThat(car.sameDistance(new Distance(CAR_START_POSITION_NUMBER))).isTrue();
+    }
+
+    @Test
     @DisplayName("랜덤으로 발생한 숫자가 3 이하일경우 차량은 정지상태를 유지한다")
     void carStopTest() {
         Car car = new Car(TEST_CAR_NAME, new Distance(CAR_START_POSITION_NUMBER),

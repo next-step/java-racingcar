@@ -57,6 +57,10 @@ public class Car {
                 this.randomNumber);
     }
 
+    public boolean sameDistance(Distance distance) {
+        return this.distance.isSame(distance);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

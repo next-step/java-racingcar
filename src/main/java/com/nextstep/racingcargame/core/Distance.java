@@ -56,4 +56,7 @@ public class Distance implements Comparator<Distance> {
         return compare(this, other) > 0;
     }
 
+    public boolean isSame(Distance distance) {
+        return this.equals(distance);
+    }
 }

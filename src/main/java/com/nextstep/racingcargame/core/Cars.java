@@ -42,7 +42,7 @@ public class Cars {
 
     public List<String> winnerNames() {
         return this.cars.stream()
-                .filter(car -> car.getDistance().equals(longestDistance()))
+                .filter(car -> car.sameDistance(longestDistance()))
                 .map(Car::getCarName)
                 .collect(Collectors.toList());
     }
