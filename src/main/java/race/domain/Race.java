@@ -1,15 +1,11 @@
 package race.domain;
 
 import java.util.List;
-import java.util.Random;
 
 public class Race {
 
     private final RacingCars racingCars;
     private final int trial;
-
-    private static final Random RANDOM = new Random();
-    private static final int BOUND = 10;
 
     public Race(String[] names, int trial) {
         validate(names.length, trial);
@@ -19,7 +15,7 @@ public class Race {
 
     public void start() {
         for (int i = 0; i < this.trial; i++) {
-            printRacingResult();
+            racingCars.race();
             System.out.println();
         }
     }
@@ -44,18 +40,6 @@ public class Race {
 
     private boolean isNoNames(int length) {
         return length == 0;
-    }
-
-    private void printRacingResult() {
-        this.racingCars.getList().forEach(racingCar -> {
-                racingCar.move(getRandomNumber());
-                System.out.println(racingCar.printDistance());
-            }
-        );
-    }
-
-    private int getRandomNumber() {
-        return RANDOM.nextInt(BOUND);
     }
 
     private boolean isLessThanZero(int trial) {
