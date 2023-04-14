@@ -4,8 +4,11 @@ import step3.util.RandomNumberUtils;
 
 public class RandomMoveStrategy implements MoveStrategy {
     private static final int MOVE_BOUND = 4;
+
     private static final int successDistance = 1;
+
     private static final int failDistance = 0;
+
 
     @Override
     public int moveAmount() {

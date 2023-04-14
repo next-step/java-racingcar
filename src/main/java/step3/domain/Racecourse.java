@@ -1,7 +1,6 @@
 package step3.domain;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -32,16 +31,7 @@ public class Racecourse {
 
     public List<RacingCar> findTopRank() {
         final int mostAdvancedRacingCarPosition = findMostAdvancedRacingCarPosition();
-        return findMostAdvancedRacingCars(mostAdvancedRacingCarPosition);
-    }
-
-    private List<RacingCar> findMostAdvancedRacingCars(int mostAdvancedRacingCarPosition) {
-        return this.tracks.stream()
-                .map(Track::getRacingCar)
-                .filter(Optional::isPresent)
-                .map(Optional::get)
-                .filter(racingCar -> racingCar.position() == mostAdvancedRacingCarPosition)
-                .collect(Collectors.toList());
+        return findRacingCarsByPosition(mostAdvancedRacingCarPosition);
     }
 
     private Integer findMostAdvancedRacingCarPosition() {
@@ -50,6 +40,15 @@ public class Racecourse {
                 .map(Track::carPosition)
                 .max(Integer::compareTo)
                 .orElse(RacingCar.defaultPosition);
+    }
+
+    private List<RacingCar> findRacingCarsByPosition(int position) {
+        return this.tracks.stream()
+                .map(Track::getRacingCar)
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .filter(racingCar -> racingCar.isAtPosition(position))
+                .collect(Collectors.toList());
     }
 
     private Optional<Track> findEmptyTrack() {

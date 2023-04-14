@@ -6,9 +6,13 @@ import step3.move.RandomMoveStrategy;
 
 public class RacingCar {
     protected static final int defaultPosition = 0;
+
     private static final int maxNameLength = 5;
+
     private final MoveStrategy moveStrategyStrategy;
+
     private final String name;
+
 
     public RacingCar(final String name, MoveStrategy strategy) {
         this.moveStrategyStrategy = strategy;
@@ -22,6 +26,10 @@ public class RacingCar {
 
     public String getName() {
         return name;
+    }
+
+    public boolean isAtPosition(int position) {
+        return this.position == position;
     }
 
     private int position = defaultPosition;

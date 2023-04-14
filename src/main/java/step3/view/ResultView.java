@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class ResultView {
     private static final String resultMessage = "실행 결과";
     private static final String carPositionIcon = "-";
-    private static final String carDelimiter = ", ";
+
 
     public static void printResultTitle() {
         System.out.println();
@@ -32,18 +32,6 @@ public class ResultView {
     }
 
     private static String writeCarPosition(final Track track) {
-        final StringBuilder stringBuilder = new StringBuilder();
-
-        stringBuilder.append(String.format("%s : ", getCarName(track.getRacingCar())));
-        stringBuilder.append(carPositionIcon.repeat(Math.max(0, track.carPosition())));
-        return stringBuilder.toString();
-    }
-
-    private static String getCarName(Optional<RacingCar> racingCarOptional) {
-        if (racingCarOptional.isEmpty()) {
-            return "<empty track>";
-        }
-
-        return racingCarOptional.get().getName();
+        return String.format("%s : ", track.carName()) + carPositionIcon.repeat(Math.max(0, track.carPosition()));
     }
 }

@@ -24,6 +24,14 @@ public class Track implements Comparable<Track> {
         return racingCar.position();
     }
 
+    public String carName() {
+        if (isEmpty()) {
+            throw new IllegalStateException("해당 track에는 car가 존재하지 않습니다.");
+        }
+
+        return racingCar.getName();
+    }
+
     public boolean isEmpty() {
         return racingCar == null;
     }
