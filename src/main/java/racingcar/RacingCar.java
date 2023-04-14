@@ -24,7 +24,7 @@ public class RacingCar {
         return moveCounts.add(INIT_VALUE);
     }
 
-    public List<Integer> getMoveCounts(int carCount) {
+    public List<Integer> makeMoveCounts(int carCount) {
         for (int i = BEGIN_INDEX; i < carCount; i++) {
             makeMoveCount(i);
         }
