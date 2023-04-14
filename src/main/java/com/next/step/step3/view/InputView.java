@@ -27,10 +27,7 @@ public class InputView {
         String carNames = scanner.next();
         inputValidation.validateExistName(carNames);
 
-        List<String> parsedCarNames = CarNamesExtractor.extractCarNames(carNames);
-        inputValidation.validateCarNameLength(parsedCarNames);
-
-        return parsedCarNames;
+        return CarNamesExtractor.extractCarNames(carNames);
     }
 
     public int numOfAttempts() {
