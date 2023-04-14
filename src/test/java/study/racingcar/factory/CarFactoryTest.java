@@ -9,7 +9,7 @@ import study.racingcar.domain.Car;
 
 public class CarFactoryTest {
 
-  @DisplayName("입력받은 이름배열 순서에 맞게 이름을 갖는 자동차를 생성한다.")
+  @DisplayName("이름배열 순서에 맞게 이름을 갖는 자동차를 생성한다.")
   @Test
   public void create_carArr_nameOfCars() {
     String[] names = new String[]{"a", "b", "c"};
