@@ -3,6 +3,7 @@ package racingcar;
 import java.util.List;
 
 public class ResultView {
+
     public static final int BEGIN_INDEX = 0;
     public static final char CAR_MOVE_STATE_LINE = '-';
 
@@ -22,8 +23,8 @@ public class ResultView {
         System.out.println();
     }
 
-    public void printMoveStateLines(List<Integer> moveCounts, int carCount) {
-        for (int i = BEGIN_INDEX; i < carCount; i++) {
+    public void printMoveStateLines(List<Integer> moveCounts) {
+        for (int i = BEGIN_INDEX; i < moveCounts.size(); i++) {
             printMoveStateLine(moveCounts, i);
         }
         printNewLine();

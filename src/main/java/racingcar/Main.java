@@ -3,40 +3,46 @@ package racingcar;
 import java.util.List;
 
 public class Main {
+
     public static final int BEGIN_INDEX = 0;
-    private static int carCount, tryCount;
-    private static ResultView resultView;
-    private static InputView inputView;
-    private static RacingCar racingCar;
 
     public static void main(String[] args) {
-        createUI();
+        ResultView resultView = createResultView();
+        InputView inputView = createInputView();
 
         resultView.questionCarCountMessage();
-        carCount = inputView.getInput();
+        int carCount = inputView.getInput();
 
         resultView.questionTryCountMessage();
-        tryCount = inputView.getInput();
+        int tryCount = inputView.getInput();
 
         resultView.printNewLine();
         resultView.executeResultMessage();
 
-        createRacingCar();
+        RacingCar racingCar = createRacingCar(carCount);
 
         for (int i = BEGIN_INDEX; i < tryCount; i++) {
-            List<Integer> moveCounts = racingCar.makeMoveCounts(carCount);
-            resultView.printMoveStateLines(moveCounts, carCount);
+            resultView.printMoveStateLines(
+                    racingCar.makeMoveCounts(generateRandomNumbers(carCount))
+            );
         }
 
         inputView.closeScanner();
     }
 
-    private static void createRacingCar() {
-        racingCar = new RacingCar(carCount);
+    private static ResultView createResultView() {
+        return new ResultView();
     }
 
-    private static void createUI() {
-        resultView = new ResultView();
-        inputView = new InputView();
+    private static InputView createInputView() {
+        return new InputView();
+    }
+
+    private static RacingCar createRacingCar(int carCount) {
+        return new RacingCar(carCount);
+    }
+
+    private static List<Integer> generateRandomNumbers(int carCount) {
+        return new RandomNumber().generateNumbers(carCount);
     }
 }
