@@ -20,6 +20,15 @@ public class RacingCarTest {
     }
 
     @Test
+    @DisplayName("자동차 객체 생성 후 position = 0인지 확인")
+    public void createRacingCar() {
+        RacingCar racingCar = new RacingCar();
+        int result = racingCar.position();
+
+        assertThat(result).isEqualTo(0);
+    }
+
+    @Test
     @DisplayName("자동차 이동")
     public void checkRacingCarMove_ReturnNumber() {
         RacingCar racingCar = new RacingCar();
@@ -27,7 +36,7 @@ public class RacingCarTest {
 //        racingCar.moveForward(RandomNumber.calculateRandomNumber());
 //        racingCar.moveForward(RandomNumber.calculateRandomNumber());
 //        racingCar.moveForward(RandomNumber.calculateRandomNumber());
-        int result = racingCar.getPosition();
+        int result = racingCar.position();
 
         assertThat(result).isGreaterThanOrEqualTo(0);
     }
@@ -48,7 +57,7 @@ public class RacingCarTest {
         RacingCars resultRacing = racing.getRacing();
 
         assertThat(resultRacing.getRacingCars()).hasSize(5);
-        assertThat(resultRacing.getRacingCar(1).getPosition())
+        assertThat(resultRacing.getRacingCar(1).position())
                 .isGreaterThanOrEqualTo(0)
                 .isLessThanOrEqualTo(4);
 

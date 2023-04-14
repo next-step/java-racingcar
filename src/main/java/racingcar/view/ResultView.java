@@ -18,7 +18,7 @@ public class ResultView {
     // racing에서 trial 마다 출력
     public void printByRacingTrials(RacingCar[] racingCars, int nowTrial) {
         for(RacingCar racingCar : racingCars) {
-            String carMoveDistance = "-".repeat(racingCar.getPosition());   // 자동차별 position 값 만큼 이동거리 표기
+            String carMoveDistance = "-".repeat(racingCar.position());   // 자동차별 position 값 만큼 이동거리 표기
 
             System.out.println(carMoveDistance);
         }
