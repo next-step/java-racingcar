@@ -3,7 +3,7 @@
 ---
 ### step5 피드백 내용
 - [X] .gitkeep 파일 삭제
-- [ ] List.of 사용
+- [X] List.of 사용
 - [ ] Integer.compare 사용
 - [ ] 메서드명 변경
   - Stages 클래스 내 isRunning 메서드 -> hasMoreStages 메서드
@@ -95,9 +95,9 @@
 
 ---
 ### 정적 팩토리 메소드 정리
-* 직접적으로 생성자를 통해 객체를 생성하는 것이 아닌 메서드를 통해서 객체를 생성하는 것
-* 정적 팩토리 메서드를 사용하면 메서드 이름에 객체의 생성 목적을 담아 낼 수 있음
-* 객체 생성을 캡슐화 할 수 있음
+- 직접적으로 생성자를 통해 객체를 생성하는 것이 아닌 메서드를 통해서 객체를 생성하는 것
+- 정적 팩토리 메서드를 사용하면 메서드 이름에 객체의 생성 목적을 담아 낼 수 있음
+- 객체 생성을 캡슐화 할 수 있음
 ---
 
 ### 람다 함수 사용
@@ -114,3 +114,16 @@ public boolean movement() {
 car.run(() -> true);
 ```
 이렇게 바꿀 수 있는 이유는 인터페이스가 단 하나의 추상 메서드만을 갖고있기 때문!
+
+### Arrays.asList()와 List.of()의 차이
+- Arrays.asList()의 리턴값은 java.util.ArrayList이 아닌 Arrays 클래스의 내부클래스 ArrayList
+- ArrayList는 삽입, 삭제로 이뤄지는 구조적인 변경을 허용하지 않고 내부 원소들의 값을 변경하는건 허용
+- Java 9 버전 부터는  List.of(array)라는 새로운 팩토리 메소드를 도입
+- List.of() 메서드의 리턴되값은 List는 불변객체이고 내부 원소값 수정 불가
+- Array.asList()는 null을 허용하지만 List.of()는 null을 허용하지 않음
+- Arrays.asList()는 List.of()보다 힙에 더 많은 개체를 생성하기 때문에 더 많은 오버헤드 공간을 차지
+
+- 참고자료
+  - https://kim-jong-hyun.tistory.com/31
+  - https://jaehoney.tistory.com/144
+  - https://inpa.tistory.com/entry/JAVA-%E2%98%95-ArraysasList-%EC%99%80-Listof-%EC%B0%A8%EC%9D%B4-%ED%95%9C%EB%B0%A9-%EC%A0%95%EB%A6%AC

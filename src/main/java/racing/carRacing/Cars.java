@@ -34,7 +34,7 @@ public class Cars {
     }
 
     private static void hasSameName(String[] carNames) {
-        Set<String> carSet = new HashSet<>(Arrays.asList(carNames));
+        Set<String> carSet = new HashSet<>(List.of(carNames));
         if (carSet.size() != carNames.length) {
             throw new IllegalArgumentException("같은 이름이 있습니다.");
         }
