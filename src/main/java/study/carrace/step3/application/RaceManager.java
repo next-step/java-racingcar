@@ -6,17 +6,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RaceManager {
-    private static final int MOVABLE_THRESHOLD = 4;
-    private static final int MAX_RANDOM_INTEGER = 9;
     private static final String LINE_BREAK = "\n";
     private final List<Car> cars;
 
-    public RaceManager(List<String> carNames) {
-        this.cars = cars(carNames);
+    public RaceManager(List<String> carNames, MoveStrategy moveStrategy) {
+        this.cars = cars(carNames, moveStrategy);
     }
 
     public void moveOrStopCars() {
-        cars.forEach(car -> car.moveOrStop());
+        cars.forEach(Car::moveOrStop);
     }
 
     public String carsPosition() {
@@ -45,17 +43,9 @@ public class RaceManager {
                 .getAsLong();
     }
 
-    private static List<Car> cars(List<String> carNames) {
+    private static List<Car> cars(List<String> carNames, MoveStrategy moveStrategy) {
         return carNames.stream()
-                .map(carName -> new Car(carName, randomMoveStrategy()))
+                .map(carName -> new Car(carName, moveStrategy))
                 .collect(Collectors.toList());
-    }
-
-    private static MoveStrategy randomMoveStrategy() {
-        return new RandomMoveStrategy(randomIntegerGenerator(), MOVABLE_THRESHOLD);
-    }
-
-    private static RandomIntegerGenerator randomIntegerGenerator() {
-        return new RandomZeroAndPositiveIntegerGenerator(MAX_RANDOM_INTEGER);
     }
 }

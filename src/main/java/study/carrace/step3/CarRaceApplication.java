@@ -3,11 +3,12 @@ package study.carrace.step3;
 import study.carrace.step3.application.RaceManager;
 import study.carrace.step3.presentation.RaceMonitor;
 
+import static study.carrace.step3.application.util.MoveStrategyGenerator.*;
 import static study.carrace.step3.presentation.util.ConsoleInputUtil.*;
 
 public class CarRaceApplication {
     public static void main(String[] args) {
-        RaceManager raceManager = new RaceManager(askCarNames());
+        RaceManager raceManager = new RaceManager(askCarNames(), randomMoveStrategy());
         RaceMonitor raceMonitor = new RaceMonitor(raceManager);
 
         startRace(raceMonitor, raceManager, askIterationCount());
