@@ -1,24 +1,26 @@
 package racing.domain;
 
-import java.util.List;
-import racing.util.RandomNumberGenerator;
 
 public class RacingGame {
 
-  private final List<Car> cars;
+  private final CarGroup carGroup;
+  private final MoveStrategy moveStrategy;
 
-  public RacingGame(int numberOfCars) {
-    cars = CarFactory.createCars(numberOfCars);
+  public RacingGame(String carsName, MoveStrategy moveStrategy) {
+    this.carGroup = new CarGroup(carsName);
+    this.moveStrategy = moveStrategy;
   }
 
   /**
    * 게임을 한번 실행 한 경우를 의미한다.
    */
-  public List<Car> play() {
-    for (Car car : cars) {
-      car.move(RandomNumberGenerator.generate());
-    }
-    return cars;
+  public CarGroup play() {
+    carGroup.moveCars(moveStrategy);
+    return carGroup;
+  }
+
+  public String[] findWinners() {
+    return carGroup.findWinners();
   }
 
 }

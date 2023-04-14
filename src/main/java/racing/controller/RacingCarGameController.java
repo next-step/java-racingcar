@@ -1,27 +1,29 @@
 package racing.controller;
 
 
-import java.util.List;
+import racing.domain.CarGroup;
+import racing.domain.RandomMoveStrategy;
 import racing.view.InputView;
 import racing.view.ResultView;
-import racing.domain.Car;
 import racing.domain.RacingGame;
 
 public class RacingCarGameController {
 
   public static void main(String[] args) {
-    int carCount = InputView.scanCarCounts();
+    String carsName = InputView.scanCarsName();
     int numberOfMovements = InputView.scanNumberOfMovements();
 
-    RacingGame game = new RacingGame(carCount);
+    RacingGame game = new RacingGame(carsName, new RandomMoveStrategy());
 
     ResultView.printEmptyLine();
     ResultView.println("실행 결과");
     for(int i = 0; i < numberOfMovements; i++) {
-      List<Car> cars = game.play();
+      CarGroup cars = game.play();
       ResultView.printCarPosition(cars);
       ResultView.printEmptyLine();
     }
+
+    ResultView.printWinners(game.findWinners());
   }
 
 }
