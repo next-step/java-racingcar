@@ -25,7 +25,7 @@ class RacingTest {
     void test1(int input) throws Exception {
         car.move(input);
 
-        assertThat(car.printDistance()).hasSize(1);
+        assertThat(car.getTracing()).hasSize(1);
     }
 
     @ParameterizedTest(name = "3 이하가 나올 경우 car는 움직이지 않는다.")
@@ -33,7 +33,7 @@ class RacingTest {
     void test2(int input) throws Exception {
         car.move(input);
 
-        assertThat(car.printDistance()).isEmpty();
+        assertThat(car.getTracing()).isEmpty();
     }
 
     @DisplayName("5번 시도 중 3번 이상 4이상이 나오면 car가 움직인 거리는 3이다.")
@@ -42,7 +42,7 @@ class RacingTest {
         int[] ints = {0, 3, 4, 5, 9};
         testCarMoving(ints);
 
-        assertThat(car.printDistance()).hasSize(3);
+        assertThat(car.getTracing()).hasSize(3);
     }
 
     private void testCarMoving(int[] ints) {
