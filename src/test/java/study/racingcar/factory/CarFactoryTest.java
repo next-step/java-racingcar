@@ -1,20 +1,18 @@
-package study.racingcar;
+package study.racingcar.factory;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import study.racingcar.domain.Car;
-import study.racingcar.factory.CarFactory;
-
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarFactoryTest {
 
   @DisplayName("입력받은 이름배열 순서에 맞게 이름을 갖는 자동차를 생성한다.")
   @Test
   public void create_carArr_nameOfCars() {
-    String[] names = new String[]{"a","b","c"};
+    String[] names = new String[]{"a", "b", "c"};
 
     List<Car> cars = CarFactory.createCars(names);
 
