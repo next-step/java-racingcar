@@ -12,14 +12,14 @@ public class StringAddCalculator {
     private static final int INPUT_PATTERN_NUMBER = 2;
     public static int splitAndSum(String inputText) {
 
-        if (checkEmpty(inputText)) {
+        if (isEmpty(inputText)) {
             return ZERO;
         }
 
         return sumNumbers(splitText(inputText));
     }
 
-    private static boolean checkEmpty(String text) {
+    private static boolean isEmpty(String text) {
 
         //  나중에는 StringUtils.hasText() 사용하면 될 것 같다고 생각이 든다.
         return text == null || text.isEmpty();
@@ -60,7 +60,7 @@ public class StringAddCalculator {
 
     private static boolean isNegativeNumber(String[] numbers) {
 
-        return (Arrays.stream(numbers)
-                .allMatch(number -> Integer.parseInt(number) > 0));
+        return Arrays.stream(numbers)
+                .allMatch(number -> Integer.parseInt(number) > 0);
     }
 }

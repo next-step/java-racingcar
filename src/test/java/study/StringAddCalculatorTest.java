@@ -14,7 +14,7 @@ public class StringAddCalculatorTest {
     @ParameterizedTest
     @NullAndEmptySource
     public void splitAndSum_null_또는_빈문자(String input) {
-        assertThat(StringAddCalculator.splitAndSum(input)).isEqualTo(0);
+        assertThat(StringAddCalculator.splitAndSum(input)).isZero();
     }
 
     @DisplayName("숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환한다.")
@@ -24,7 +24,7 @@ public class StringAddCalculatorTest {
         assertThat(result).isEqualTo(1);
     }
 
-    @DisplayName("숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환한다.")
+    @DisplayName("숫자가 아닌 문자를 입력할 경우 예외를 반환한다.")
     @Test
     public void splitAndSum_문자하나() throws Exception {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum("D"))
