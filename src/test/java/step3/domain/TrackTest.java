@@ -60,4 +60,27 @@ class TrackTest {
         assertThat(track.carPosition()).isEqualTo(racingCar.position());
     }
 
+    @Test
+    @DisplayName("track에 racingCar가 없으면 예외를 던진다.")
+    void emptyTrackNameTest() {
+        // given
+        Track track = new Track(0);
+
+        // when & then
+        Assertions.assertThatThrownBy(track::carName)
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessage("해당 track에는 car가 존재하지 않습니다.");
+    }
+
+    @Test
+    @DisplayName("track에 racingCar가 있으면 이름을 확인할 수 있다.")
+    void notEmptyTrackNameTest() {
+        // given
+        Track track = new Track(0);
+        RacingCar racingCar = new RacingCar("mycar");
+        track.enter(racingCar);
+
+        // when & then
+        assertThat(track.carName()).isEqualTo(racingCar.getName());
+    }
 }
