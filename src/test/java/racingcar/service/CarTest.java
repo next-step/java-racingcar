@@ -5,13 +5,14 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static racingcar.service.Car.*;
 
 public class CarTest {
     @ParameterizedTest
     @CsvSource(value = {"0,false", "1,false", "2,false", "3,false", "4,true", "5,true", "6,true", "7,true", "8,true", "9,true"})
     void 숫자4이상이_나오면_전진(int number, boolean expected) {
-        assertThat(moveIfOver4(number)).isEqualTo(expected);
+        assertThat(checkMovingCondition(number)).isEqualTo(expected);
     }
 
     @Test
@@ -31,11 +32,16 @@ public class CarTest {
 
     @Test
     void 이름() {
-        Car test = new Car("테스트", race(3));
-        assertThat(test.getName()).isEqualTo("테스트");
-
-        Car test2 = new Car("테스트2");
-        assertThat(test2.getName()).isEqualTo("테스트2");
+        assertAll(
+                () -> {
+                    Car test = new Car("테스트", race(3));
+                    assertThat(test.getName()).isEqualTo("테스트");
+                },
+                () -> {
+                    Car test = new Car("테스트2");
+                    assertThat(test.getName()).isEqualTo("테스트2");
+                }
+        );
     }
 
 }

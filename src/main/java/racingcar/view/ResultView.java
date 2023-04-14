@@ -6,6 +6,10 @@ import java.util.List;
 
 public class ResultView {
 
+    private ResultView(){
+        throw new AssertionError();
+    }
+
     public static void view(List<Car> cars) {
         System.out.println();
         System.out.println("실행 결과");
@@ -16,6 +20,7 @@ public class ResultView {
         }
 
         int labs = cars.get(0).getState().size();
+
         for (int lab = 0; lab < labs; lab++) {
             viewCarsInLab(cars, lab);
             System.out.println();

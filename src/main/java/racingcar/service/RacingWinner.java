@@ -9,7 +9,7 @@ public class RacingWinner {
 
         StringBuilder winnerNames = new StringBuilder();
         for (Car car : racingCars) {
-            winnerNames = hasWinnerScore(winnerScore, car) ? appendWinnerName(winnerNames, car) : winnerNames;
+            winnerNames = appendWinnerName(winnerScore, winnerNames, car);
         }
 
         return winnerNames.toString();
@@ -19,7 +19,11 @@ public class RacingWinner {
         return winnerScore == car.getState().get(car.getState().size() - 1);
     }
 
-    private static StringBuilder appendWinnerName(StringBuilder winnerNames, Car car) {
+    private static StringBuilder appendWinnerName(int winnerScore, StringBuilder winnerNames, Car car) {
+        if(!hasWinnerScore(winnerScore, car)){
+            return winnerNames;
+        }
+
         if(winnerNames.length() != 0){
             winnerNames.append(", ");
         }

@@ -4,6 +4,7 @@ package racingcar;
 import racingcar.service.Car;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -18,12 +19,12 @@ public class RacingCarApplication {
 
     public static void main(String[] args) {
         final var input = input();
-        String[] carNames = (String[]) input.get(0);
+        List<String> carNames = Arrays.asList((String[]) input.get(0));
         int labs = (int) input.get(1);
 
         List<Car> racingCars = new ArrayList<>();
-        for (int car = 0; car < carNames.length; car++) {
-            racingCars.add(new Car(carNames[car], race(labs)));
+        for (int car = 0; car < carNames.size(); car++) {
+            racingCars.add(new Car(carNames.get(car), race(labs)));
         }
 
         view(racingCars);

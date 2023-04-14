@@ -6,6 +6,8 @@ import java.util.List;
 import static racingcar.RacingCarApplication.random;
 
 public class Car {
+    private static final int MOVING_CONDITION = 4;
+    private static final int MAX_NUMBER = 10;
     private String name;
     private List<Integer> state;
 
@@ -34,17 +36,25 @@ public class Car {
     public static List<Integer> race(int labs) {
         List<Integer> carState = new ArrayList<>();
 
-        int currentState = 0;
         for (int lab = 0; lab < labs; lab++) {
-            currentState = (lab != 0) ? carState.get(lab - 1) : currentState;
-            carState.add(moveOrStop(currentState));
+            moveOrStop(carState, lab);
         }
 
         return carState;
     }
 
-    private static int moveOrStop(int currentState) {
-        return moveIfOver4(random.nextInt(10)) ? move(currentState) : stop(currentState);
+    private static void moveOrStop(List<Integer> carState, int lab) {
+        int currentState = 0;
+        if(lab != 0){
+            currentState = carState.get(lab - 1);
+        }
+
+        if(checkMovingCondition(random.nextInt(MAX_NUMBER))){
+            carState.add(move(currentState));
+            return;
+        }
+
+        carState.add(stop(currentState));
     }
 
     public static int move(int currentState) {
@@ -55,7 +65,11 @@ public class Car {
         return currentState;
     }
 
-    public static boolean moveIfOver4(int number) {
-        return number >= 4 ? true : false;
+    public static boolean checkMovingCondition(int number) {
+        if(number >= MOVING_CONDITION){
+            return true;
+        }
+
+        return false;
     }
 }
