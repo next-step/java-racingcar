@@ -13,9 +13,9 @@ class CarNameTest {
     @DisplayName("자동차 이름이 null,빈값, 빈공백 일 경우 오류가 발생합니다.")
     void test01() {
         assertAll(
-                () -> assertThatThrownBy(() -> new CarName(null)),
-                () -> assertThatThrownBy(() -> new CarName("")),
-                () -> assertThatThrownBy(() -> new CarName(" "))
+                () -> assertThatThrownBy(() -> new CarName(null)).isInstanceOf(IllegalArgumentException.class),
+                () -> assertThatThrownBy(() -> new CarName("")).isInstanceOf(IllegalArgumentException.class),
+                () -> assertThatThrownBy(() -> new CarName(" ")).isInstanceOf(IllegalArgumentException.class)
         );
     }
 

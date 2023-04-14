@@ -12,7 +12,7 @@ public class CarName {
     }
 
     private void validateCarName(String carName) {
-        if (carName.isBlank()) {
+        if (carName == null || carName.isBlank()) {
             throw new IllegalArgumentException("자동차 이름은 필수 입니다.");
         }
         if (carName.length() > MAX_LENGTH_OF_CAR_NAME) {
