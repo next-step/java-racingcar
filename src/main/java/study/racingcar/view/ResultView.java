@@ -10,7 +10,7 @@ public class ResultView {
   private static final int START_RACE_NUM = 0;
   private static final int FIRST_INDEX = 0;
   private static final String DEFAULT_FOOTPRINT = "-";
-  private static final String DEFAULT_DELIMETER = ",";
+  private static final String DEFAULT_DELIMITER = ",";
   private static final String NEXT_LINE = "\n";
 
   private ResultView() {
@@ -66,6 +66,6 @@ public class ResultView {
   }
 
   private static void printWinnerNames(List<String> winners) {
-    System.out.println(NEXT_LINE + String.join(DEFAULT_DELIMETER, winners) + "가 최종 우승했습니다.");
+    System.out.println(NEXT_LINE + String.join(DEFAULT_DELIMITER, winners) + "가 최종 우승했습니다.");
   }
 }

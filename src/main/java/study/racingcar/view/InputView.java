@@ -8,7 +8,7 @@ public class InputView {
   private static final Scanner SCANNER = new Scanner(System.in);
   private static final String QUESTION_NAME_OF_CARS = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
   private static final String QUESTION_NUM_OF_ROUNDS = "시도할 회수는 몇 회 인가요?";
-  private static final String DEFAULT_DELIMETER = ",";
+  private static final String DEFAULT_DELIMITER = ",";
 
   private InputView() {
   }
@@ -23,7 +23,7 @@ public class InputView {
   }
 
   private static String[] inputNames() {
-    String[] names = SCANNER.nextLine().split(DEFAULT_DELIMETER);
+    String[] names = SCANNER.nextLine().split(DEFAULT_DELIMITER);
 
     for (String name : names) {
       validateCarName(name);
