@@ -2,7 +2,7 @@
 
 ---
 ### step5 피드백 내용
-- [ ] .gitkeep 파일 삭제
+- [X] .gitkeep 파일 삭제
 - [ ] List.of 사용
 - [ ] Integer.compare 사용
 - [ ] 메서드명 변경
