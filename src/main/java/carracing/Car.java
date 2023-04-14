@@ -2,41 +2,25 @@ package carracing;
 
 public class Car {
 
-    private int distance;
+    private MovementCondition movementCondition;
 
-    private String movedState;
+    private Distance distance;
 
     public Car() {
-        this.movedState = "";
-    }
-
-    public void assignRandomDistance(int randomNumber) {
-        this.distance = randomNumber;
-    }
-
-    public Integer getDistance() {
-        return this.distance;
-    }
-
-    public Boolean isMovable() {
-        if (distance < 4) {
-            return false;
-        }
-        return true;
+        this.distance = new Distance();
     }
 
     public void move() {
-        if (isMovable()) {
-            this.movedState += "-";
+        if (movementCondition.isMovable()) {
+            this.distance.plus();
         }
     }
 
-    public void printMovedState() {
-        InputView.input(this.movedState);
-        OutputView.print();
+    public void assignMovementCondition(int condition) {
+        this.movementCondition = new MovementCondition(condition);
     }
 
-    public String getMovedState() {
-        return this.movedState;
+    public String distanceToDash() {
+        return this.distance.toDash();
     }
 }

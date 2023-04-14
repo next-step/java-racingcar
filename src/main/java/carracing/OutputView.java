@@ -10,4 +10,9 @@ public class OutputView {
             System.out.println(scanner.nextLine());
         }
     }
+
+    public static void printNewLine() {
+        InputView.input("\n");
+        OutputView.print();
+    }
 }
