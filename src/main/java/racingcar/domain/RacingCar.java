@@ -4,7 +4,7 @@ public class RacingCar implements CarInterface {
     private int position;       // 차가 이동한 위치
 
     public RacingCar() {
-        this.position = DEFAULT_POSITION;
+        this.position = POSITION;
     }
 
     @Override
@@ -12,7 +12,7 @@ public class RacingCar implements CarInterface {
         RandomNumber randomNumber = new RandomNumber();
 
         if(randomNumber.calculateRandomNumber() >= CAR_MOVEMENT_STANDARD_POINT) {
-            this.position += DEFAULT_MOVEMENT_DISTANCE;
+            this.position += MOVEMENT_DISTANCE;
         }
     }
 
