@@ -10,6 +10,8 @@ public class Racing {
 
     public static void start() {
 
+        Competition competition = new Competition();
+
         String[] nameOfCars = InputView.getCars();
         int numberOfCar = nameOfCars.length;
         int numberOfTry = InputView.getNumberOfTry();
@@ -20,11 +22,11 @@ public class Racing {
         }
 
         for (int idxTry=0; idxTry < numberOfTry; idxTry++) {
-            Competition.moveCars(cars);
+            competition.moveCars(cars);
             ResultView.printCurrentDistance(cars);
         }
 
-        ResultView.printWinners(Competition.winners(cars));
+        ResultView.printWinners(competition.winners(cars));
     }
 
 

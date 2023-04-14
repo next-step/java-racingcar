@@ -1,14 +1,25 @@
-import CarRacing.Racing;
 import CarRacing.view.ResultView;
 import CarRacing.Car;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import static org.assertj.core.api.Assertions.assertThat;
 
+import java.io.PrintStream;
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class TestCarRacingResultView {
+
+    private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+
+    @BeforeEach
+    public void setUp() {
+        System.setOut(new PrintStream(outputStreamCaptor));
+    }
 
     @Test
     @DisplayName("Distance 출력 정상인지 확인")
@@ -27,8 +38,9 @@ public class TestCarRacingResultView {
     public void printWinners_manyWinners() {
         List<String> winners = Arrays.asList("pobi", "crong", "honux");
 
-        System.out.println("== expected > pobi, crong, honux가 최종 우승했습니다.");
-        System.out.print(  "== actual   > ");
+        String expected = "pobi, crong, honux가 최종 우승했습니다.";
         ResultView.printWinners(winners);
+
+        assertThat(outputStreamCaptor.toString().trim()).isEqualTo(expected);
     }
 }
