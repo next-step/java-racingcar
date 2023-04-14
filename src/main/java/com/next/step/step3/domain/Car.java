@@ -18,7 +18,7 @@ public class Car {
 
     public void moveCar(int randomNum) {
         if (canMove(randomNum)) {
-            this.position = position.movePosition();
+            this.position = position.move();
         }
     }
 

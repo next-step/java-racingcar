@@ -12,7 +12,7 @@ public class CarNameTest {
     @NullAndEmptySource
     void validateCarNameLength_자동차_이름_빈_문자열인_경우(String carName) {
         assertThatThrownBy(() -> new CarName(carName))
-                .isInstanceOf(RuntimeException.class)
+                .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름의 최소 길이는 1글자입니다.");
     }
 
@@ -20,7 +20,7 @@ public class CarNameTest {
     @ValueSource(strings = {"abcdef", "ghkdwlgns", "next-step"})
     void validateCarNameLength_자동차_이름_5글자_이상의_문자열인_경우(String carName) {
         assertThatThrownBy(() -> new CarName(carName))
-                .isInstanceOf(RuntimeException.class)
+                .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름의 최대 길이는 5글자입니다.");
     }
 }

@@ -12,7 +12,7 @@ public class Position {
         this.position = position;
     }
 
-    public Position movePosition() {
+    public Position move() {
         return new Position(this.position + MOVE_PER_ONCE);
     }
 

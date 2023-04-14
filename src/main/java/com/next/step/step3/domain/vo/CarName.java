@@ -21,10 +21,10 @@ public class CarName {
 
     public void validateCarNameLength(String carName) {
         if (carName == null || carName.length() < MIN_CAR_NAME_LENGTH) {
-            throw new RuntimeException("자동차 이름의 최소 길이는 1글자입니다.");
+            throw new IllegalArgumentException("자동차 이름의 최소 길이는 1글자입니다.");
         }
         if (carName.length() > MAX_CAR_NAME_LENGTH) {
-            throw new RuntimeException("자동차 이름의 최대 길이는 5글자입니다.");
+            throw new IllegalArgumentException("자동차 이름의 최대 길이는 5글자입니다.");
         }
     }
 
