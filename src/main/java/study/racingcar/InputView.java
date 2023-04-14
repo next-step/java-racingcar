@@ -7,27 +7,27 @@ public class InputView {
     /**
      * 입력을 담당한다. (입력에 대한 검증 책임 있음)
      */
-    private final Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
-    public int getCarNumber() {
+    public static int getCarNumber() {
         int carNum = getNumber();
         validateIfIsGreaterThanZero(carNum);
         return carNum;
     }
 
-    public int getTryCount() {
+    public static int getTryCount() {
         int tryCount = getNumber();
         validateIfIsGreaterThanZero(tryCount);
         return tryCount;
     }
 
-    private void validateIfIsGreaterThanZero(int carNum) {
+    private static void validateIfIsGreaterThanZero(int carNum) {
         if (carNum <= 0) {
             throw new IllegalArgumentException("1보다 큰 수를 입력하세요");
         }
     }
 
-    private int getNumber() {
+    private static int getNumber() {
         try {
             return scanner.nextInt();
         } catch (InputMismatchException e) {
