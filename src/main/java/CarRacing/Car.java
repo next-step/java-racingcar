@@ -15,7 +15,7 @@ public class Car {
         this.position += number;
     }
 
-    public int current() {
+    public int currentPosition() {
         return this.position;
     }
 

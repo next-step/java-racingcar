@@ -10,40 +10,60 @@ public class Racing {
 
     private static final int CONDITION_NUMBER = 4;
     private static final int DISTANCE_PER_TRY = 1;
-
-    private static final InputView inputView = new InputView();
-    private static final ResultView resultView = new ResultView();
     private static final Random random = new Random();
 
 
-    public void competition() {
+    public static void competition() {
 
-        String[] nameOfCars = inputView.getCars();
+        String[] nameOfCars = InputView.getCars();
         int numberOfCar = nameOfCars.length;
-        int numberOfTry = inputView.getNumberOfTry();
+        int numberOfTry = InputView.getNumberOfTry();
 
         List<Car> cars = new ArrayList<>(numberOfCar);
-        for (int idxCar=0; idxCar < numberOfCar; idxCar++) {
-            cars.add(new Car(nameOfCars[idxCar]));
+        for (String nameOfCar : nameOfCars) {
+            cars.add(new Car(nameOfCar));
         }
 
-        for (int idxTry=0; idxTry < numberOfTry; idxTry++) {
-            for(int idxCar=0; idxCar < numberOfCar; idxCar++) {
-                cars.get(idxCar).move(drive(random.nextInt(10)));
-            }
-
-            resultView.printCurrentDistance(cars);
+        for (int i : new int[numberOfTry]) {
+            moveCars(cars);
+            ResultView.printCurrentDistance(cars);
         }
 
-        resultView.getWinners(cars);
+        ResultView.printWinners(getWinners(cars));
     }
 
-    public int drive(int number) {
+    public static int drive(int number) {
         if (number >= CONDITION_NUMBER) {
             return DISTANCE_PER_TRY;
         }
 
         return 0;
+    }
+
+    private static void moveCars(List<Car> cars) {
+        for (Car car : cars) {
+            car.move(drive(random.nextInt(10)));
+        }
+    }
+
+    public static List<String> getWinners(List<Car> cars) {
+        int max = 0;
+        for (Car car: cars) {
+            max = Math.max(max, car.currentPosition());
+        }
+
+        List<String> winners = new ArrayList<>();
+        for (Car car : cars) {
+            checkIfWinner(winners, car, max);
+        }
+
+        return winners;
+    }
+
+    private static void checkIfWinner(List<String> winners, Car car, int max) {
+        if (max == car.currentPosition()) {
+            winners.add(car.getName());
+        }
     }
 }
 

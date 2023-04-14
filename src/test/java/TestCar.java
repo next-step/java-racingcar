@@ -8,6 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class TestCar {
 
     Car car;
+
     @BeforeEach
     public void setUp() {
         car = new Car("pobi");
@@ -18,7 +19,7 @@ public class TestCar {
     public void car_initial_position() {
         int expected = 1;
 
-        int actual = car.current();
+        int actual = car.currentPosition();
         assertThat(actual).isEqualTo(expected);
     }
 
@@ -29,7 +30,7 @@ public class TestCar {
         int expected = 4;
 
         car.move(input);
-        int actual = car.current();
+        int actual = car.currentPosition();
         assertThat(actual).isEqualTo(expected);
     }
 

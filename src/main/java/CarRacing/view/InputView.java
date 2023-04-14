@@ -8,7 +8,7 @@ public class InputView {
 
     private static final Scanner SCANNER = new Scanner(System.in);
 
-    public String[] getCars() {
+    public static String[] getCars() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String numberStr = SCANNER.nextLine();
 
@@ -20,7 +20,7 @@ public class InputView {
         }
     }
 
-    public int getNumberOfTry() {
+    public static int getNumberOfTry() {
         System.out.println("시도할 횟수는 몇 회 인가요?");
         String numberStr = SCANNER.nextLine();
 
@@ -32,7 +32,7 @@ public class InputView {
         }
     }
 
-    public boolean isNumeric(String str) {
+    public static boolean isNumeric(String str) {
         try {
             Integer.parseInt(str);
             return true;
@@ -41,7 +41,7 @@ public class InputView {
         }
     }
 
-    public int getNumber(String numberStr) {
+    public static int getNumber(String numberStr) {
         if (!isNumeric(numberStr)) {
             throw new IllegalArgumentException("숫자로만 입력해주세요!");
         }
@@ -54,7 +54,7 @@ public class InputView {
         return numberOfCar;
     }
 
-    private String[] getNameOfCars(String numberStr) {
+    private static String[] getNameOfCars(String numberStr) {
         return numberStr.split(",");
     }
 }
