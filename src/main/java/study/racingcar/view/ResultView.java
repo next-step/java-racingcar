@@ -8,7 +8,10 @@ import study.racingcar.domain.Car;
 public class ResultView {
 
   private static final int START_RACE_NUM = 0;
-  private static final String FOOTPRINT = "-";
+  private static final int FIRST_INDEX = 0;
+  private static final String DEFAULT_FOOTPRINT = "-";
+  private static final String DEFAULT_DELIMETER = ",";
+  private static final String NEXT_LINE = "\n";
 
   private ResultView() {
   }
@@ -20,9 +23,9 @@ public class ResultView {
 
   private static void printRaceNum(int raceNum) {
     if (isStartLine(raceNum)) {
-      System.out.print("\n실행 결과");
+      System.out.print(NEXT_LINE + "실행 결과");
     }
-    System.out.println("\nRACE " + (raceNum + 1));
+    System.out.println(NEXT_LINE + "RACE " + (raceNum + 1));
   }
 
   private static boolean isStartLine(int raceNum) {
@@ -31,7 +34,7 @@ public class ResultView {
 
   private static void printCars(List<Car> cars) {
     for (Car car : cars) {
-      System.out.println(car.getName() + " : " + FOOTPRINT.repeat(car.getDistance()));
+      System.out.println(car.getName() + " : " + DEFAULT_FOOTPRINT.repeat(car.getDistance()));
     }
   }
 
@@ -47,7 +50,7 @@ public class ResultView {
   }
 
   private static List<String> getWinnerNames(List<Car> cars) {
-    int maxDistance = cars.get(0).getDistance();
+    int maxDistance = cars.get(FIRST_INDEX).getDistance();
     List<String> winnerNames = new ArrayList<>();
     for (Car car : cars) {
       if (!isWinner(maxDistance, car)) {
@@ -63,6 +66,6 @@ public class ResultView {
   }
 
   private static void printWinnerNames(List<String> winners) {
-    System.out.println("\n" + String.join(",", winners) + "가 최종 우승했습니다.");
+    System.out.println(NEXT_LINE + String.join(DEFAULT_DELIMETER, winners) + "가 최종 우승했습니다.");
   }
 }

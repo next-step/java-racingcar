@@ -27,11 +27,11 @@ public class Car {
     return moveValue >= MINIMUM_MOVE_VALUE;
   }
 
-  public int getDistance() {
-    return distance;
-  }
-
   public String getName() {
     return name;
+  }
+  
+  public int getDistance() {
+    return distance;
   }
 }
