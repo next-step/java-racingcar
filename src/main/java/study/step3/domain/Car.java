@@ -6,9 +6,14 @@ public class Car {
 
   private static final int DEFAULT_BOUND = 10;
   private static final int MINIMUM_MOVE_VALUE = 4;
+  private String name;
   private int distance;
 
-  public void randomMove() {
+  public Car(String name){
+    this.name = name;
+  }
+
+  public void move() {
     if (isMoving(getRandomInt())) {
       distance++;
     }
@@ -24,5 +29,9 @@ public class Car {
 
   public int getDistance() {
     return distance;
+  }
+
+  public String getName() {
+    return name;
   }
 }

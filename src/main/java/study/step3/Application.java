@@ -1,5 +1,6 @@
 package study.step3;
 
+import study.step3.logic.RacingGame;
 import study.step3.view.InputView;
 
 public class Application {
@@ -8,7 +9,7 @@ public class Application {
     String[] nameOfCars = InputView.inputNameOfCars();
     int numOfRaces = InputView.inputNumOfRaces();
 
-    //RacingGame racing = new RacingGame(nameOfCars, numOfRaces);
-    //racing.start();
+    RacingGame racing = new RacingGame(nameOfCars, numOfRaces);
+    racing.start();
   }
 }

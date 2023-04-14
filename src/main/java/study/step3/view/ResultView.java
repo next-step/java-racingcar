@@ -29,7 +29,7 @@ public class ResultView {
 
   private static void printCars(List<Car> cars) {
     for (Car car : cars) {
-      System.out.println(FOOTPRINT.repeat(car.getDistance()));
+      System.out.println(car.getName()+" : "+FOOTPRINT.repeat(car.getDistance()));
     }
   }
 }

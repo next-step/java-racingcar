@@ -9,15 +9,15 @@ public class CarFactory {
   private CarFactory(){
   }
 
-  public static List<Car> createCars(int numOfCars) {
-    List<Car> carList = new ArrayList<>();
-    for (int i = 0; i < numOfCars; i++) {
-      carList.add(createCar());
+  public static List<Car> createCars(String[] nameOfCars) {
+    List<Car> cars = new ArrayList<>();
+    for (int i = 0; i < nameOfCars.length; i++) {
+      cars.add(createCar(nameOfCars[i]));
     }
-    return carList;
+    return cars;
   }
 
-  public static Car createCar(){
-    return new Car();
+  public static Car createCar(String name){
+    return new Car(name);
   }
 }

@@ -4,19 +4,19 @@ import java.util.List;
 
 public class Race {
 
-  private List<Car> carList;
+  private List<Car> cars;
 
-  public Race(List<Car> carList) {
-    this.carList = carList;
+  public Race(List<Car> cars) {
+    this.cars = cars;
   }
 
   public void play() {
-    for (Car car : carList) {
-      car.randomMove();
+    for (Car car : cars) {
+      car.move();
     }
   }
 
-  public List<Car> getCarList() {
-    return carList;
+  public List<Car> getCars() {
+    return cars;
   }
 }

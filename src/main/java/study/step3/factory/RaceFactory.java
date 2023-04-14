@@ -7,7 +7,7 @@ public class RaceFactory {
   private RaceFactory() {
   }
 
-  public static Race createRace(int numOfCars) {
-    return new Race(CarFactory.createCars(numOfCars));
+  public static Race createRace(String[] nameOfCars) {
+    return new Race(CarFactory.createCars(nameOfCars));
   }
 }
