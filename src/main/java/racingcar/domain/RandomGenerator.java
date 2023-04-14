@@ -3,14 +3,12 @@ package racingcar.domain;
 import java.util.Random;
 
 public class RandomGenerator {
-    private final int RANDOM_BOUND_NUM = 10;
 
-    private final Random random;
-    public RandomGenerator() {
-        random = new Random();
-    }
+    private static final int RANDOM_BOUND_NUM = 10;
 
-    public int getValue() {
+    private static final Random random = new Random();
+
+    public static int getValue() {
         return random.nextInt(RANDOM_BOUND_NUM);
     }
 }

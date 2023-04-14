@@ -4,22 +4,19 @@ public class Car {
 
     private int position;
     private String name;
-    private final int CAR_MOVE_CRITERIA = 4;
     private final int CAR_NAME_LENGTH_LIMIT = 5;
-    private final RandomGenerator randomGenerator;
+    private final int CAR_MOVE_CRITERIA = 4;
 
     public Car() {
         this.position = 0;
-        randomGenerator = new RandomGenerator();
     }
 
     public Car(String name) {
-        this.name = vlidateName(name);
+        this.name = validateName(name);
         this.position = 0;
-        randomGenerator = new RandomGenerator();
     }
 
-    private String vlidateName(String name) {
+    private String validateName(String name) {
         if (name.length() > CAR_NAME_LENGTH_LIMIT) {
             throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
         }
@@ -31,7 +28,7 @@ public class Car {
     }
 
     public void move() {
-        int randomValue = randomGenerator.getValue();
+        int randomValue = RandomGenerator.getValue();
         if (isOver(randomValue)) {
             position++;
         }
