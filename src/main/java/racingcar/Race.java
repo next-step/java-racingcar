@@ -20,9 +20,9 @@ public class Race {
         this.createCars();
     }
 
-    public void continueRace() {
-        moveCars();
-        currentTryCount++;
+    public void continueRace(List<Integer> numbers) {
+        moveCars(numbers);
+        this.currentTryCount++;
     }
 
     public List<Integer> getCarsPositions() {
@@ -36,14 +36,22 @@ public class Race {
         return currentTryCount < totalTryCount;
     }
 
+    public List<Integer> randomNumbers() {
+        return IntStream.range(0, this.totalCarCount)
+                .map(i -> this.randomNumber())
+                .boxed()
+                .collect(Collectors.toList());
+    }
+
     private void createCars() {
-        this.cars = IntStream.range(0, totalCarCount)
+        this.cars = IntStream.range(0, this.totalCarCount)
                 .mapToObj(i -> new Car())
                 .collect(Collectors.toList());
     }
 
-    private void moveCars() {
-        this.cars.forEach(car -> car.move(randomNumber()));
+    private void moveCars(List<Integer> numbers) {
+        IntStream.range(0, this.totalCarCount)
+                .forEach(i -> this.cars.get(i).move(numbers.get(i)));
     }
 
     private Integer randomNumber() {

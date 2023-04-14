@@ -9,7 +9,7 @@ public class RacingCarGame {
 
         output.printExecutionHeader();
         while (race.isNotFinished()) {
-            race.continueRace();
+            race.continueRace(race.randomNumbers());
             output.printPositions(race);
         }
     }
