@@ -5,14 +5,12 @@ import java.util.List;
 
 public class Cars {
 
-    private static final int DEFAULT_POSITION = 0;
-
     private final List<Car> cars;
 
     public Cars(int carCount, int moveCount) {
         List<Car> cars = new ArrayList<>(); // 밖에서 변경 불가능하게 함
         for (int i = 0; i < carCount; i++) {
-            cars.add(new Car(DEFAULT_POSITION, moveCount));
+            cars.add(new Car(moveCount));
         }
         this.cars = cars;
     }

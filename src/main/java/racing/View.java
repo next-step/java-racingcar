@@ -2,7 +2,7 @@ package racing;
 
 public class View {
 
-    private static final String MARK = "=3";
+    private static final String MARK = "-";
 
     public static void print(Cars cars) {
         for (int index = 0; index < cars.values().size(); index++) {
