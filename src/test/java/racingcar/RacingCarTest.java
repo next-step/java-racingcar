@@ -20,8 +20,8 @@ public class RacingCarTest {
 
         // Then
         RacingCar car = inputView.init();
-        car.race();
-        car.showResult();
+        car.startRace();
+        car.displayResults();
     }
 
     @Test
@@ -41,20 +41,20 @@ public class RacingCarTest {
         RacingCar car = new RacingCar(3, 5);
 
         // When
-        car.race();
+        car.startRace();
 
         // Then
-        car.showResult();
+        car.displayResults();
     }
 
     @Test
     void 자동차_출력하기() {
         // Given
-        int[][] car = {{1, 2, 3, 4, 4}
+        int[][] carPositions = {{1, 2, 3, 4, 4}
                      , {1, 1, 2, 3, 4}
                      , {1, 2, 3, 4, 5}};
 
         // Then
-        resultView.showResult(car);
+        resultView.displayResults(carPositions);
     }
 }

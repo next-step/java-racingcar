@@ -4,35 +4,50 @@ import java.util.Random;
 
 public class RacingCar {
 
-    private static final int BOUND = 10;
-    private static final int PROCEEDING_NUM = 4;
-
-    private static final int INIT_VALUE_ONE = 1;
+    private static final int RANDOM_BOUND = 10;
+    private static final int CAR_PROCEED_THRESHOLD = 4;
+    private static final int INIT_POSITION_ONE = 1;
 
     private final Random random = new Random();
     private final ResultView resultView = new ResultView();
 
-    private final int[][] car;
+    private final int[][] carPositions;
 
     RacingCar(int carCount, int trialCount) {
-        car = new int[carCount][trialCount];
+        carPositions = new int[carCount][trialCount];
     }
 
-    public int proceed() {
-        int number = random.nextInt(BOUND);
-        return number >= PROCEEDING_NUM ? 1 : 0;
+    public void startRace() {
+        initializePositions();
+        updatePositions();
     }
 
-    public void race() {
-        for(int[] row : car) {
-            row[0] = INIT_VALUE_ONE; // 출발점이 1인 것 같아서 1로 초기화했다.
-            for(int j=1; j < row.length; j++) {
-                row[j] += row[j-1] + proceed();
+    public void initializePositions() {
+        for(int[] row : carPositions) {
+            row[0] = INIT_POSITION_ONE; // 출발점이 1인 것 같아서 1로 초기화했다.
+        }
+    }
+
+    public void updatePositions() {
+        for(int[] positions : carPositions) {
+            for(int i = 1; i < positions.length; i++) {
+                positions[i] += positions[i - 1] + proceedOrStop();
             }
         }
     }
 
-    public void showResult() {
-        resultView.showResult(car);
+    public int proceedOrStop() {
+        int randomValue = random.nextInt(RANDOM_BOUND);
+        return randomValue >= CAR_PROCEED_THRESHOLD ? 1 : 0;
+    }
+
+
+    public void displayResults() {
+        resultView.displayResults(carPositions);
+    }
+
+    // Getter for testing purposes only
+    int[][] getCarPositions() {
+        return carPositions;
     }
 }
