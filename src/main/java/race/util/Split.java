@@ -2,15 +2,11 @@ package race.util;
 
 public class Split {
 
-    private final String text;
-
     private static final String DELIMITER = ",";
 
-    public Split(String text) {
-        this.text = text;
-    }
+    private Split(){}
 
-    public String[] getNames() {
-        return this.text.split(DELIMITER);
+    public static String[] getNames(String text) {
+        return text.split(DELIMITER);
     }
 }
