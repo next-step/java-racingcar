@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -9,22 +10,17 @@ public class InputView {
     private static final String QUESTION_LABS = "시도할 회수는 몇 회 인가요?";
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static List input() {
-        List inputValues = new ArrayList<>();
-
-        getCarNamesInput(inputValues);
-        getLabsInput(inputValues);
-
-        scanner.close();
-        return inputValues;
+    public static List<String> askQuestionCarNames(){
+        return Arrays.asList(getCarNamesInput());
     }
 
-    private static void getCarNamesInput(List inputValues) {
+    public static int askQuestionLabs(){
+        return getLabsInput();
+    }
+
+    private static String[] getCarNamesInput() {
         System.out.println(QUESTION_CAR_NAMES);
-        inputValues.add(getValidatedCarNames());
-    }
 
-    private static String[] getValidatedCarNames() {
         String nameInput = scanner.next();
         String[] names = nameInput.split(",");
         for (String name : names) {
@@ -39,12 +35,9 @@ public class InputView {
         }
     }
 
-    private static void getLabsInput(List inputValues) {
+    private static int getLabsInput() {
         System.out.println(QUESTION_LABS);
-        inputValues.add(getPositiveInput());
-    }
 
-    private static int getPositiveInput() {
         int input = scanner.nextInt();
         if (input < 0) {
             throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
