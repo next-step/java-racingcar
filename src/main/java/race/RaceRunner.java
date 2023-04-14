@@ -20,8 +20,7 @@ public class RaceRunner {
 
         resultView.printResultComment();
 
-        Split split = new Split(carName);
-        Race race = new Race(split.getNames(), countOfTrial);
+        Race race = new Race(Split.getNames(carName), countOfTrial);
         race.start();
 
         Winner winner = new Winner();
