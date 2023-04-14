@@ -8,19 +8,19 @@ public class InputView {
 
     private static final Scanner SCANNER = new Scanner(System.in);
 
-    public int getNumberOfCar() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
+    public static String[] getCars() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String numberStr = SCANNER.nextLine();
 
         try {
-            return getNumber(numberStr);
+            return getNameOfCars(numberStr);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            return getNumberOfCar();
+            return getCars();
         }
     }
 
-    public int getNumberOfTry() {
+    public static int getNumberOfTry() {
         System.out.println("시도할 횟수는 몇 회 인가요?");
         String numberStr = SCANNER.nextLine();
 
@@ -28,11 +28,11 @@ public class InputView {
             return getNumber(numberStr);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            return getNumberOfCar();
+            return getNumberOfTry();
         }
     }
 
-    public boolean isNumeric(String str) {
+    public static boolean isNumeric(String str) {
         try {
             Integer.parseInt(str);
             return true;
@@ -41,7 +41,7 @@ public class InputView {
         }
     }
 
-    public int getNumber(String numberStr) {
+    public static int getNumber(String numberStr) {
         if (!isNumeric(numberStr)) {
             throw new IllegalArgumentException("숫자로만 입력해주세요!");
         }
@@ -54,7 +54,23 @@ public class InputView {
         return numberOfCar;
     }
 
-    private static boolean emptyText(String inputText) {
-        return (inputText == null) || inputText.isEmpty() || inputText.isBlank();
+    public static String[] getNameOfCars(String numberStr) {
+        if (numberStr.isEmpty()) {
+            throw new IllegalArgumentException("공백은 입력할 수 없습니다!");
+        }
+
+        String[] names = numberStr.split(",");
+
+        for (String name : names) {
+            checkNameLength(name);
+        }
+
+        return names;
+    }
+
+    private static void checkNameLength(String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("이름은 5자 이하만 가능합니다!");
+        }
     }
 }
