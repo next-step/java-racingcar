@@ -1,8 +1,8 @@
 package step3_racingcar.domain;
 
-import step3_racingcar.GameRule;
+import step3_racingcar.service.GameRule;
 
-public class Car {
+public class Car implements Cloneable {
 
 	private int position = 0;
 
@@ -27,5 +27,14 @@ public class Car {
 			status.append("-");
 		}
 		return status.toString();
+	}
+
+	@Override
+	public Car clone() {
+		try {
+			return (Car)super.clone();
+		} catch (CloneNotSupportedException e) {
+			throw new AssertionError();
+		}
 	}
 }

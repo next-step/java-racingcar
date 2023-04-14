@@ -1,11 +1,8 @@
 package step3_racingcar.view;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
 import java.util.Scanner;
 
-import step3_racingcar.GameRule;
+import step3_racingcar.service.GameRule;
 
 public class InputView {
 	private final static String inputCar = "자동차 대수는 몇 대 인가요?";
