@@ -15,7 +15,7 @@ public class CarsFactoryTest {
 
     @ParameterizedTest(name = "입력에 따라 자동차들을 생성하는지 테스트")
     @MethodSource("provideCreateCarsInputDto")
-    void createCars_입력받은_자동차_대수만큼_생성하는지_테스트(InputDto inputDto, int expected) {
+    void createCars_자동차_생성(InputDto inputDto, int expected) {
         List<Car> cars = CarsFactory.createCars(inputDto);
         assertThat(cars.size()).isEqualTo(expected);
     }
