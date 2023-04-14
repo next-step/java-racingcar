@@ -10,7 +10,7 @@ public class Car {
     private final Position position;
 
     public Car(String carName) {
-        this(carName, new StandardCarMovePolicy(), new Position(0));
+        this(carName, new StandardCarMovePolicy(), new Position());
     }
 
     public Car(String carName, CarMovePolicy carMovePolicy, Position position) {

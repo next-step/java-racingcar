@@ -4,7 +4,13 @@ import java.util.Objects;
 
 public class Position implements Comparable<Position> {
 
+    private static final int DEFAULT = 0;
+
     private int value;
+
+    public Position() {
+        this(DEFAULT);
+    }
 
     public Position(int value) {
         validatePosition(value);
