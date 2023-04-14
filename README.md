@@ -23,8 +23,8 @@
         printSource(getDistanceAsPrintForm());
     }
 ```
-- [ ] Car 와 ClientInput 에 대해 Getter 메서드를 삭제함
-- [ ] Car 객체에 명시되어있는 UI 소스들을 View 단으로 이관함.
+- [x] Car 객체 에 대해 Getter 메서드를 삭제함
+- [x] Car 객체에 명시되어있는 UI 소스들을 View 단으로 이관함.
 
 ```java
     /* View 단에 존재 해야할 상수 */    
@@ -36,7 +36,6 @@
     private static final String CAR_NAME_AND_DISTANCE_DELIMITER = " : ";
 ```
 
-- [ ] 코드내에 산제되어있는 public 상수를 전체 삭제 처리함 
+- [x] Domain 로직은 View 단과 절대 소통하지 않으며 View 단만 도메인 로직에 의존하도록 수정한다.
 
-- [ ] Domain 로직은 View 단과 절대 소통하지 않으며 View 단만 도메인 로직에 의존하도록 수정한다.
-
+- [x] 코드에 산재되어있는 public static 함수를 전체 걷어낸다.

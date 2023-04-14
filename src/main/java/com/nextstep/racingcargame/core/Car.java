@@ -1,6 +1,8 @@
 package com.nextstep.racingcargame.core;
 
 
+import com.nextstep.racingcargame.util.RandomNumber;
+import com.nextstep.racingcargame.util.RandomNumberZeroToNine;
 import java.util.Objects;
 
 public class Car {
@@ -8,19 +10,27 @@ public class Car {
     private final Distance distance;
     private final CarName carName;
 
+    private final RandomNumber randomNumber;
+
     private static final int CAR_START_POSITION_NUMBER = 0;
+
+    private static final String MOVING_STRATEGY_EMPTY = "자동차 이동 전략은 필수 값입니다.";
 
     public Car(String carName) {
         this(carName, CAR_START_POSITION_NUMBER);
     }
 
     public Car(String carName, int distance) {
-        this(carName, new Distance(distance));
+        this(carName, new Distance(distance), new RandomNumberZeroToNine());
     }
 
-    public Car(String carName, Distance distance) {
+    public Car(String carName, Distance distance, RandomNumber randomNumber) {
+        if (randomNumber == null) {
+            throw new IllegalArgumentException(MOVING_STRATEGY_EMPTY);
+        }
         this.carName = new CarName(carName);
         this.distance = distance;
+        this.randomNumber = randomNumber;
     }
 
     public String getDistanceAsPrintForm(String separator, String distancePrintStandard) {
@@ -41,8 +51,10 @@ public class Car {
         return this.distance.isLongerThan(distance);
     }
 
-    public Car moveForwardByNumber(int randomNumber) {
-        return new Car(this.carName.getCarName(), this.distance.moveForward(randomNumber));
+    public Car moveForwardByNumber() {
+        return new Car(this.carName.getCarName(),
+                this.distance.moveForward(randomNumber.randomNumber()),
+                this.randomNumber);
     }
 
     @Override

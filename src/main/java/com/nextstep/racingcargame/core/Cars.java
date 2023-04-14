@@ -1,6 +1,5 @@
 package com.nextstep.racingcargame.core;
 
-import static com.nextstep.racingcargame.core.RandomNumberGenerator.getRandomZeroToNine;
 import static java.util.Arrays.stream;
 
 import java.util.List;
@@ -33,7 +32,7 @@ public class Cars {
 
     public void moveCars() {
         for (Car car : cars) {
-            car = car.moveForwardByNumber(getRandomZeroToNine());
+            car = car.moveForwardByNumber();
         }
     }
 
