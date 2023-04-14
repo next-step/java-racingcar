@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.model.car;
 
 public class Distance {
     private static final int DEFAULT_DISTANCE = 0;

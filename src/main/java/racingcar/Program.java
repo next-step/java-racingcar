@@ -7,9 +7,9 @@ import racingcar.control.input.validator.PositiveValidator;
 import racingcar.control.output.Printable;
 import racingcar.control.output.RacingOutput;
 import racingcar.control.output.RacingWinnersOutput;
-import racingcar.model.Racing;
 import racingcar.model.dto.CarDto;
 import racingcar.model.dto.RacingDto;
+import racingcar.model.racing.Racing;
 
 import java.util.List;
 
@@ -31,7 +31,7 @@ public class Program {
 
             RacingDto dto = RacingDto.from(racing);
             Printable racingOutput = new RacingOutput(dto);
-            
+
             racingOutput.print();
         }
 

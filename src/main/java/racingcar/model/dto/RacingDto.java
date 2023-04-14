@@ -1,6 +1,6 @@
 package racingcar.model.dto;
 
-import racingcar.model.Racing;
+import racingcar.model.racing.Racing;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,7 +20,7 @@ public class RacingDto {
                 .stream()
                 .map(CarDto::from)
                 .collect(Collectors.toList());
-        
+
         return new RacingDto(cars, racing.currentRound());
     }
 

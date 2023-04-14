@@ -1,5 +1,7 @@
-package racingcar.model;
+package racingcar.model.racing;
 
+import racingcar.model.car.Car;
+import racingcar.model.car.Cars;
 import racingcar.strategy.RandomMovingStrategy;
 
 import java.util.List;

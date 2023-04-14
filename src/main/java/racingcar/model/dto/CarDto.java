@@ -1,6 +1,6 @@
 package racingcar.model.dto;
 
-import racingcar.model.Car;
+import racingcar.model.car.Car;
 
 public class CarDto {
     private final int distance;

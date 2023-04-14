@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.model.car;
 
 public class Name {
     private static final int MAX_NAME_LENGTH = 5;

@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.model.racing;
 
 public class Round {
     private final int total;
