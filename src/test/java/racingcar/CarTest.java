@@ -22,7 +22,7 @@ public class CarTest {
     public void carMove_WhenNumberMoreThanEqualMinimumNumberToMove() {
         Car car = new Car();
         car.move(4);
-        assertThat(car.getPosition()).isOne();
+        assertThat(car.toDto().getPosition()).isOne();
     }
 
     @Test
@@ -30,6 +30,6 @@ public class CarTest {
     public void carMove_WhenNumberLessThanMinimumNumberToMove() {
         Car car = new Car();
         car.move(3);
-        assertThat(car.getPosition()).isZero();
+        assertThat(car.toDto().getPosition()).isZero();
     }
 }
