@@ -1,24 +1,31 @@
 package step3;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class ResultView {
 
-    public static void printGameResult(RacingGameResult racingGameResult) {
-        List<Integer> positions = racingGameResult.getCarPositions();
-        System.out.println("실행 결과");
-        positions.forEach(ResultView::printPosition);
+    public static void printGameResult(int round, RacingGameResult racingGameResult) {
+        printRoundMessage(round);
+        List<CarStatus> carStatuses = racingGameResult.getCarStatuses();
+        carStatuses.forEach(ResultView::printCarStatus);
     }
 
-    public static void printPosition(int position) {
-        for (int i = 0; i < position; i++) {
-            System.out.print("-");
-        }
+    private static void printRoundMessage(int round) {
         System.out.println();
+        if (round == 0) System.out.println("실행 결과");
     }
 
-    public static void printError(String message) {
+    private static void printCarStatus(CarStatus carStatus) {
+        String position = IntStream.range(0, carStatus.getPosition())
+                .mapToObj(x -> "-")
+                .collect(Collectors.joining());
+        System.out.println(position);
+    }
+
+    public static void printError(String errorMessage) {
         System.out.println("## Error 발생 ##");
-        System.out.println("## " + message + " ##");
+        System.out.println("## " + errorMessage + " ##");
     }
 }

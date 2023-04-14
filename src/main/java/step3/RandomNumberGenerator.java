@@ -7,9 +7,15 @@ public class RandomNumberGenerator implements NumberGenerator {
     private static final int MAX = 10;
 
     private final Random random;
+    private final int maxNumber;
 
-    public RandomNumberGenerator() {
+    private RandomNumberGenerator(Random random, int maxNumber) {
         this.random = new Random();
+        this.maxNumber = maxNumber;
+    }
+
+    public static RandomNumberGenerator of(int maxNumber) {
+        return new RandomNumberGenerator(new Random(), maxNumber);
     }
 
     @Override

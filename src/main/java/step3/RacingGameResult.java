@@ -1,20 +1,24 @@
 package step3;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGameResult {
 
-    private final Cars cars;
+    private final List<CarStatus> carStatuses;
 
-    public RacingGameResult(Cars cars) {
-        this.cars = cars;
+    private RacingGameResult(List<CarStatus> carStatuses) {
+        this.carStatuses = carStatuses;
     }
 
     public static RacingGameResult makeResult(Cars cars) {
-        return new RacingGameResult(cars);
+        return new RacingGameResult(cars.getCars().stream()
+                .map(CarStatus::of)
+                .collect(Collectors.toList()));
     }
 
-    public List<Integer> getCarPositions() {
-        return cars.getPositions();
+    public List<CarStatus> getCarStatuses() {
+        return Collections.unmodifiableList(carStatuses);
     }
 }

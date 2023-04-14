@@ -13,7 +13,7 @@ class EngineTest {
     @ValueSource(ints = {0, 1, 3})
     void isNotOkWhenEngineConditionIsLessThan4(int value) {
         Engine engine = new Engine(() -> value);
-        assertThat(engine.isOk())
+        assertThat(engine.canStart())
                 .isFalse();
     }
 
@@ -22,7 +22,7 @@ class EngineTest {
     @ValueSource(ints = {4, 6, 9})
     void isOkWhenEngineConditionIsGraterThanOrEqual4(int value) {
         Engine engine = new Engine(() -> value);
-        assertThat(engine.isOk())
+        assertThat(engine.canStart())
                 .isTrue();
     }
 }

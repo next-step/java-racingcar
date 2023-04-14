@@ -3,12 +3,13 @@ package step3;
 public class RacingGame {
 
     public void run() {
-        RacingOption racingOption = InputView.getRacingOption();
+        UserInput userInput = InputView.getRacingOption();
+        RacingOption racingOption = RacingOption.from(userInput);
         RacingTrack racingTrack = RacingTrack.of(racingOption);
 
-        racingTrack.start();
-        Cars cars = racingTrack.getCars();
-        RacingGameResult result = RacingGameResult.makeResult(cars);
-        ResultView.printGameResult(result);
+        for (int round = 0; round < racingOption.getNumberOfRounds(); round++) {
+            RacingGameResult gameResult = racingTrack.start();
+            ResultView.printGameResult(round, gameResult);
+        }
     }
 }

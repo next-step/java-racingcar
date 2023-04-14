@@ -15,20 +15,23 @@ class RacingOptionTest {
     @DisplayName("레이싱 게임에 필요한 최소 차량 수, 라운드 횟수 테스트")
     @Test
     void racingOptionNotThrowsWhenNumberOfCarAndNumberOfRoundMeetMinimumRequire() {
-        assertThatNoException().isThrownBy(() -> new RacingOption(MIN_NUMBER, MIN_NUMBER));
+        UserInput userInput = new UserInput(MIN_NUMBER, MIN_NUMBER);
+        assertThatNoException().isThrownBy(() -> RacingOption.from(userInput));
     }
 
     @DisplayName("레이싱 게임에 필요한 최소 차량 수에 미달하는 조건 테스트")
     @ParameterizedTest
     @ValueSource(ints = {-3, 0})
     void racingOptionThrowExceptionWhenNumberOfCarLessThanOne(int numberOfCars) {
-        assertThatThrownBy(() -> new RacingOption(numberOfCars, MIN_NUMBER));
+        UserInput userInput = new UserInput(numberOfCars, MIN_NUMBER);
+        assertThatThrownBy(() -> RacingOption.from(userInput));
     }
 
     @DisplayName("레이싱 게임에 필요한 최소 라운드 수에 미달하는 조건 테스트")
     @ParameterizedTest
     @ValueSource(ints = {-3, 0})
     void racingOptionThrowExceptionWhenNumberOfRoundLessThanOne(int numberOfRounds) {
-        assertThatThrownBy(() -> new RacingOption(MIN_NUMBER, numberOfRounds));
+        UserInput userInput = new UserInput(MIN_NUMBER, numberOfRounds);
+        assertThatThrownBy(() -> RacingOption.from(userInput));
     }
 }

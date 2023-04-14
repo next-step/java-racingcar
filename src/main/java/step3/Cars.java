@@ -1,5 +1,6 @@
 package step3;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -12,8 +13,8 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars of(int numberOfCars) {
-        Engine engine = new Engine(new RandomNumberGenerator());
+    public static Cars of(NumberGenerator numberGenerator, int numberOfCars) {
+        Engine engine = new Engine(numberGenerator);
         List<Car> cars = IntStream.range(0, numberOfCars)
                 .mapToObj(x -> Car.of(engine))
                 .collect(Collectors.toList());
@@ -24,9 +25,7 @@ public class Cars {
         cars.forEach(Car::move);
     }
 
-    public List<Integer> getPositions() {
-        return cars.stream()
-                .map(Car::getPosition)
-                .collect(Collectors.toList());
+    public List<Car> getCars() {
+        return Collections.unmodifiableList(cars);
     }
 }

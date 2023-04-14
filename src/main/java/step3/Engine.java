@@ -8,7 +8,7 @@ public class Engine {
         this.numberGenerator = numberGenerator;
     }
 
-    public boolean isOk() {
+    public boolean canStart() {
         int condition = numberGenerator.generateNumber();
         return condition >= 4;
     }

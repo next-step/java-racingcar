@@ -2,13 +2,21 @@ package step3;
 
 public class RacingOption {
 
+    private static final NumberGenerator DEFAULT_NUMBER_GENERATOR = RandomNumberGenerator.of(9);
+
     private final int numberOfCars;
     private final int numberOfRounds;
+    private final NumberGenerator numberGenerator;
 
-    public RacingOption(int numberOfCars, int numberOfRounds) {
+    private RacingOption(int numberOfCars, int numberOfRounds, NumberGenerator numberGenerator) {
         this.numberOfCars = numberOfCars;
         this.numberOfRounds = numberOfRounds;
+        this.numberGenerator = numberGenerator;
         validCheck();
+    }
+
+    public static RacingOption from(UserInput userInput) {
+        return new RacingOption(userInput.getNumberOfCars(), userInput.getNumberOfRounds(), DEFAULT_NUMBER_GENERATOR);
     }
 
     private void validCheck() {
@@ -28,5 +36,9 @@ public class RacingOption {
 
     public int getNumberOfRounds() {
         return numberOfRounds;
+    }
+
+    public NumberGenerator getNumberGenerator() {
+        return numberGenerator;
     }
 }
