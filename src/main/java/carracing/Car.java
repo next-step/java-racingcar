@@ -1,25 +1,19 @@
 package carracing;
 
 public class Car {
-    int speed;
-    String bracket;
+    private static final int MINIMUM_SPEED = 4;
+    private int speed;
+    private int step;
 
-
-    public static String straight(int speed) {
-        String result = "";
-        StringBuilder builder = new StringBuilder();
-
-        if (speed < 4) {
-            return stop();
+    public int move(int speed) {
+        if (speed < MINIMUM_SPEED) {
+            stop();
+            return this.step;
         }
-
-        for (int i = 0; i < speed; i++) {
-            result = builder.append("-").toString();
-        }
-        return result;
+        return ++this.step;
     }
 
-    public static String stop() {
-        return "";
+    public int stop() {
+        return 0;
     }
 }
