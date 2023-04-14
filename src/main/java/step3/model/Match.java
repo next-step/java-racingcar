@@ -8,8 +8,8 @@ public class Match {
 
     private final List<Racer> collect;
 
-    public Match(int participates, int iterations) {
-        this.collect = IntStream.rangeClosed(1, participates)
+    public Match(List<Car> participates, int iterations) {
+        this.collect = IntStream.rangeClosed(1, participates.size())
                 .boxed()
                 .map(integer -> new Racer(iterations))
                 .collect(Collectors.toList());
@@ -19,5 +19,9 @@ public class Match {
         return collect.stream()
                 .map(Racer::getResults)
                 .collect(Collectors.toList());
+    }
+
+    public List<String> winnerDisplay() {
+        throw new RuntimeException();
     }
 }
