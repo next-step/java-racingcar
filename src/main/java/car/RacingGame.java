@@ -16,15 +16,15 @@ public class RacingGame {
         this.result = new ArrayList<>();
     }
 
+    public List<List<Integer>> getResults() {
+        return result;
+    }
+
     public void progress() {
         for(int i = 0; i < stageCount; i++) {
             cars.move();
             result.add(cars.getPositions());
         }
-    }
-
-    public List<List<Integer>> getResults() {
-        return result;
     }
 
     private List<Car> createCars(int carCount) {
