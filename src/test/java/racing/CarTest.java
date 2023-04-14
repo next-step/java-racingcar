@@ -11,7 +11,7 @@ public class CarTest {
     @ParameterizedTest(name = "랜덤값이 {0}일 때 자동차는 정지한다")
     @ValueSource(ints = {0, 1, 2, 3})
     void 자동차_정지(int randomNumber) {
-        Car car = new Car(5);
+        Car car = new Car();
 
         car.move(randomNumber);
         assertThat(car.position()).isZero();
@@ -20,7 +20,7 @@ public class CarTest {
     @ParameterizedTest(name = "랜덤값이 {0}일 때 자동차는 이동한다")
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     void 자동차_이동(int randomNumber) {
-        Car car = new Car(5);
+        Car car = new Car();
 
         car.move(randomNumber);
         assertThat(car.position()).isEqualTo(1);
@@ -29,7 +29,7 @@ public class CarTest {
     @ParameterizedTest(name = "랜덤값이 경계를 벗어날때 에러를 던진다")
     @ValueSource(ints = {-1, 10})
     void 자동차_이동_에러(int randomNumber) {
-        Car car = new Car(5);
+        Car car = new Car();
 
         assertThatThrownBy(() -> car.move(randomNumber))
                 .isInstanceOf(RuntimeException.class)

@@ -10,17 +10,17 @@ public class InputView {
     private static int moveCount;
 
     public static void input() {
-        System.out.println("자동차 수를 입력하세요: ");
+        System.out.println("자동차 대수는 몇 대 인가요?");
         carCount = scanner.nextInt();
-        System.out.println("이동 횟수를 입력하세요: ");
+        System.out.println("시도할 회수는 몇 회 인가요?");
         moveCount = scanner.nextInt();
     }
 
-    public static int getCarCount() {
+    public static int carCount() {
         return carCount;
     }
 
-    public static int getMoveCount() {
+    public static int moveCount() {
         return moveCount;
     }
 

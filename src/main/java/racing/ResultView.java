@@ -1,17 +1,21 @@
 package racing;
 
+import java.util.List;
+
 public class ResultView {
 
-    private static final String MARK = "-";
+    public static final String MARK = "-";
+    private static final int INITIAL_ROUND = 0;
 
-    public static void print(Cars cars) {
-        for (int index = 0; index < cars.values().size(); index++) {
-            System.out.println("Car " + getCarNumber(index) + " : " + convertPoisitonToMark(cars.values().get(index).position()));
+    public static void print(Cars cars, int round) {
+        if (round == INITIAL_ROUND) {
+            System.out.println("실행 결과");
         }
-    }
-
-    private static int getCarNumber(int index) {
-        return index + 1;
+        List<Car> carList = cars.values();
+        for (Car car : carList) {
+            System.out.println(convertPoisitonToMark(car.position()));
+        }
+        System.out.println();
     }
 
     private static String convertPoisitonToMark(int position) {

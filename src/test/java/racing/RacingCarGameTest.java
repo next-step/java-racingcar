@@ -20,9 +20,7 @@ public class RacingCarGameTest {
 
         Cars movedCars = RacingCarGame.start();
         assertThat(movedCars.values()).hasSize(carCount);
-        movedCars.values().forEach(
-                car -> assertThat(car.moveCount()).isEqualTo(moveCount)
-        );
+        assertThat(movedCars.moveCount()).isEqualTo(moveCount);
 
         System.setIn(System.in);
     }
