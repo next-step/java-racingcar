@@ -4,10 +4,17 @@ import java.util.Objects;
 
 public class Position implements Comparable<Position> {
 
-    private int value = 0;
+    private int value;
 
     public Position(int value) {
+        validatePosition(value);
         this.value = value;
+    }
+
+    private void validatePosition(int value) {
+        if (value < 0) {
+            throw new IllegalArgumentException("Position 의 경우 0 이상의 수만 초기값 사용이 가능합니다.");
+        }
     }
 
     public void forward() {
