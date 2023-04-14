@@ -7,6 +7,7 @@ public class Car implements Comparable<Car> {
     private static final Random random = new Random();
     private static final int STARTING_CONDITION = 4;
     private static final int RANDOM_RANGE = 10;
+    private static final int NAME_MAX_LENGTH = 5;
     private int attemptCount = 0;
     private String name;
 
@@ -16,7 +17,7 @@ public class Car implements Comparable<Car> {
     }
 
     public void checkName(String name) {
-        if (name.length() > 5) {
+        if (name.length() > NAME_MAX_LENGTH) {
             throw new IllegalArgumentException("이름이 다섯자 이상입니다.");
         }
     }
