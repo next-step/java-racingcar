@@ -8,14 +8,12 @@ public class Car {
     public static final int MOVABLE_LOWER_BOUND = 4;
     private int moveCount = 0;
 
-    public void move(int randomValue) {
-        if (isMovable(randomValue)) {
-            moveCount++;
-        }
+    public static boolean isMovable(int randomValue) {
+        return randomValue >= MOVABLE_LOWER_BOUND;
     }
 
-    private boolean isMovable(int randomValue) {
-        return randomValue >= MOVABLE_LOWER_BOUND;
+    public void move() {
+        moveCount++;
     }
 
     @Override

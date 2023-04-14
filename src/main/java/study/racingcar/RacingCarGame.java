@@ -1,35 +1,39 @@
 package study.racingcar;
 
+import study.racingcar.utils.GameUtils;
+
 public class RacingCarGame {
     /**
      * 게임을 진행을 담당한다.
      */
-    public RacingCarGame() {
+    private final GameCars cars;
+    private final Round round;
 
+    public RacingCarGame(int numOfCar, int roundToPlay) {
+        this.cars = new GameCars(numOfCar);
+        this.round = new Round(roundToPlay);
     }
 
     public void run() {
-        OutputView.printCarNumberSign();
-        final int numOfCar = InputView.getCarNumber();
-
-        OutputView.printTryCountSign();
-        final int playCount = InputView.getTryCount();
-
         OutputView.printResultSign();
-
-        final GameCars cars = new GameCars(numOfCar);
-
-        for (int i = 0; i < playCount; i++) {
+        for (int i = 0; i < round.getTotalRounds(); i++) {
             playTheGame(cars);
         }
     }
 
     private void playTheGame(GameCars cars) {
         for (Car car : cars) {
-            int randomValue = GameUtils.randomNumber();
-            car.move(randomValue);
-            OutputView.printCarStatus(car);
+            execute(car);
         }
         OutputView.printBlankLine();
+    }
+
+    private void execute(Car car) {
+        int randomValue = GameUtils.randomNumber();
+
+        if (Car.isMovable(randomValue)) {
+            car.move();
+        }
+        OutputView.printCarStatus(car);
     }
 }

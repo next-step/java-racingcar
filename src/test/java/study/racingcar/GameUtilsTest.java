@@ -3,6 +3,7 @@ package study.racingcar;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
+import study.racingcar.utils.GameUtils;
 
 class GameUtilsTest {
 

@@ -1,5 +1,7 @@
 package study.racingcar;
 
+import study.racingcar.utils.NumberUtils;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -11,8 +13,15 @@ public class GameCars implements Iterable<Car> {
     private final List<Car> cars;
 
     public GameCars(int carNum) {
+        validateTotalCarNum(carNum);
         this.cars = new ArrayList<>();
         generateCars(carNum);
+    }
+
+    private void validateTotalCarNum(int carNum) {
+        if (NumberUtils.isNotPositive(carNum)) {
+            throw new IllegalArgumentException("1보다 큰 수를 입력하세요");
+        }
     }
 
     private void generateCars(int carNum) {

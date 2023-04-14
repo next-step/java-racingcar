@@ -10,21 +10,11 @@ public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static int getCarNumber() {
-        int carNum = getNumber();
-        validateIfIsGreaterThanZero(carNum);
-        return carNum;
+        return getNumber();
     }
 
     public static int getTryCount() {
-        int tryCount = getNumber();
-        validateIfIsGreaterThanZero(tryCount);
-        return tryCount;
-    }
-
-    private static void validateIfIsGreaterThanZero(int carNum) {
-        if (carNum <= 0) {
-            throw new IllegalArgumentException("1보다 큰 수를 입력하세요");
-        }
+        return getNumber();
     }
 
     private static int getNumber() {
