@@ -6,6 +6,7 @@ public class GameBoard {
      */
     private final OutputView outputView;
     private final InputView inputView;
+
     public GameBoard(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
