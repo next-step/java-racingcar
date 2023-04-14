@@ -4,18 +4,34 @@ import java.util.List;
 
 public class RacingGame {
 
+    private final List<Car> carList;
+    private final int numberOfGames;
     private static final int MOVE_CONDITION = 4;
 
-    public static void gameStart(Game game) {
+    public RacingGame() {
+        this.carList = SettingGame.createCars(InputView.setCars());
+        this.numberOfGames = InputView.setGames();
+    }
+
+    public void gameStart() {
 
         ResultView.startGame();
 
-        for(int i = 0; i < game.getNumberOfGames(); i++) {
-            moveCar(game.getCarList());
+        int lastLapCheck = 0;
+
+        while(!isOver(numberOfGames, lastLapCheck)){
+            moveCar(carList);
+
+            lastLapCheck++;
         }
     }
 
-    private static void moveCar(List<Car> cars) {
+    private boolean isOver(int numberOfGames, int lastLapCheck) {
+
+        return numberOfGames <= lastLapCheck;
+    }
+
+    private void moveCar(List<Car> cars) {
 
         for(Car car : cars) {
             if (isMove(GenerateNumber.random())) {
@@ -28,12 +44,12 @@ public class RacingGame {
         ResultView.emptyLine();
     }
 
-    public static void move(Car car) {
+    public void move(Car car) {
 
         car.setPosition(car.currentPosition() + 1);
     }
 
-    private static boolean isMove(int randomNum) {
+    private boolean isMove(int randomNum) {
         return randomNum >= MOVE_CONDITION;
     }
 }

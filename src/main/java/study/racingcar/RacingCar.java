@@ -8,6 +8,6 @@ public class RacingCar {
 
     public static void racingCar () {
 
-        RacingGame.gameStart(new Game());
+        new RacingGame().gameStart();
     }
 }

@@ -16,7 +16,7 @@ public class CarTest {
         Car car = new Car(0);
 
         for(int i = 0; i < randomNum; i++) {
-            RacingGame.move(car);
+            new RacingGame().move(car);
         }
 
         assertThat(car.currentPosition()).isEqualTo(randomNum);

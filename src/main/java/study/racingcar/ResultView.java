@@ -5,8 +5,9 @@ public class ResultView {
     private static final String MOVE_MARK = "-";
     public static void resultGame(int carPosition) {
         for (int i = 0; i < carPosition; i++) {
-            System.out.println(MOVE_MARK);
+            System.out.print(MOVE_MARK);
         }
+        emptyLine();
     }
 
     public static void emptyLine() {
