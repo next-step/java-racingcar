@@ -7,7 +7,7 @@ public class RacingCars {
         this.racingCars = new RacingCar[numberOfCars];
 
         for(int i=0; i<numberOfCars; i++) {
-            this.racingCars[i] = new RacingCar(String.valueOf(i));
+            this.racingCars[i] = new RacingCar();
         }
     }
 

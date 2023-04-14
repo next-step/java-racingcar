@@ -3,11 +3,13 @@ package racingcar.domain;
 import java.util.Random;
 
 public class RandomNumber {
-    // random 확률 계산기
-    public static int calculateRandomNumber() {
-        Random random = new Random();
-        int probability = random.nextInt(10);
+    private Random random;
 
-        return probability;
+    public RandomNumber() {
+         this.random = new Random();
+    }
+
+    public int calculateRandomNumber() {
+        return this.random.nextInt(10);
     }
 }

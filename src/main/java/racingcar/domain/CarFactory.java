@@ -12,7 +12,7 @@ public class CarFactory {
         List<RacingCar> racingCars = new ArrayList<>();
 
         for(int i=0; i<numberOfCars; i++) {
-            racingCars.add(new RacingCar(String.valueOf(i)));
+            racingCars.add(new RacingCar());
         }
 
         return racingCars;
