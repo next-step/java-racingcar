@@ -19,7 +19,7 @@ public class Cars {
             cars.add(new Car());
         }
         this.moveCount = moveCount;
-        this.cars = Collections.unmodifiableList(cars); // 밖에서 변경 불가능하게 함
+        this.cars = Collections.unmodifiableList(cars); // 원본 리스트 대신 수정 불가능 리스트 세팅 -> 외부에서 변경 불가능
     }
 
     public Cars move() {
