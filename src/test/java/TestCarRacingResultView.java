@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class TestCarRacingResultView {
@@ -24,10 +25,7 @@ public class TestCarRacingResultView {
     @Test
     @DisplayName("Winner 여러 명 출력 확인")
     public void printWinners_manyWinners() {
-        List<String> winners = new ArrayList<>();
-        winners.add("pobi");
-        winners.add("crong");
-        winners.add("honux");
+        List<String> winners = Arrays.asList("pobi", "crong", "honux");
 
         System.out.println("== expected > pobi, crong, honux가 최종 우승했습니다.");
         System.out.print(  "== actual   > ");
