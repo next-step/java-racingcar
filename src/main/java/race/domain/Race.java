@@ -1,11 +1,13 @@
 package race.domain;
 
 import java.util.List;
+import race.view.TraceView;
 
 public class Race {
 
     private final RacingCars racingCars;
     private final int trial;
+    private TraceView traceView = new TraceView();
 
     public Race(String[] names, int trial) {
         validate(names.length, trial);
@@ -16,6 +18,7 @@ public class Race {
     public void start() {
         for (int i = 0; i < this.trial; i++) {
             racingCars.race();
+            traceView.printMoveResult(racingCars);
             System.out.println();
         }
     }
