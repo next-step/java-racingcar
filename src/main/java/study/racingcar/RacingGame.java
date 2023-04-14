@@ -5,7 +5,7 @@ import study.racingcar.factory.RaceFactory;
 import study.racingcar.view.InputView;
 import study.racingcar.view.ResultView;
 
-public class Application {
+public class RacingGame {
 
   public static void main(String[] args) {
     String[] nameOfCars = InputView.inputNameOfCars();
