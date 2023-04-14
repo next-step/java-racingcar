@@ -1,17 +1,21 @@
 package racingcar;
 
-import racingcar.RacingRule.RacingRandom;
+import static racingcar.RandomRacingRule.RacingRandom.randomNumbers;
+
+import java.util.List;
 
 public class Racing {
 
     private final Cars cars;
     private final Integer lapCount;
     private final RaceResults raceResults;
+    private final RacingRule racingRule;
 
-    public Racing(Cars cars, int lapCount, RaceResults raceResults) {
+    public Racing(Cars cars, int lapCount, RaceResults raceResults, RacingRule racingRule) {
         this.cars = cars;
         this.lapCount = lapCount;
         this.raceResults = raceResults;
+        this.racingRule = racingRule;
     }
 
     public void playFullRace() {
@@ -26,7 +30,15 @@ public class Racing {
     }
 
     private void raceLap() {
-        cars.raceLap(RacingRule.movableList(RacingRandom.randomNumbers(cars.cars().size())));
+        cars.raceLap(movableList());
+    }
+
+    private List<Boolean> movableList() {
+        return racingRule.movableList(randomNumbers(carSize()));
+    }
+
+    private int carSize() {
+        return cars.cars().size();
     }
 
     private void recordLapResult() {
@@ -34,7 +46,7 @@ public class Racing {
     }
 
     public Cars cars() {
-        return cars;
+        return cars.clone();
     }
 
     public Integer raceCount() {

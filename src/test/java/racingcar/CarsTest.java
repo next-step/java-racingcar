@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -14,17 +15,30 @@ import org.junit.jupiter.params.provider.ValueSource;
 public class CarsTest {
 
     @Test
+    void 자동차_참가자목록_반환() {
+        List<Car> cars = Cars.registerCars(Arrays.asList("1","2","3","4","5"));
+        List<String> names = cars.stream().map(Car::name).collect(Collectors.toList());
+        assertAll(
+            () -> assertThat(cars).hasSize(5),
+            () -> assertThat(cars).doesNotContainNull(),
+            () -> assertThat(names).doesNotContain(Car.DEFAULT_NAME)
+        );
+    }
+
+    @Test
     void 자동차_멤버변수_값_변경불가() {
+        Car origin = new Car();
         List<Car> carList = new ArrayList<>();
-        carList.add(new Car());
+        carList.add(origin);
         Cars cars = new Cars(carList);
 
         List<Car> result = cars.cars();
+        result.get(0).move();
         assertAll(
             () -> assertThatExceptionOfType(UnsupportedOperationException.class)
                 .isThrownBy(() -> result.add(new Car())),
-            () -> assertThatExceptionOfType(UnsupportedOperationException.class)
-                .isThrownBy(() -> result.get(0).move())
+            () -> assertThat(origin.position()).isEqualTo(Car.SET_POSITION),
+            () -> assertThat(result.get(0)).isNotSameAs(origin)
         );
     }
 
@@ -48,7 +62,7 @@ public class CarsTest {
         carList.add(new Car());
         Cars cars = new Cars(carList);
 
-        cars.raceLap(RacingRule.movableList(Arrays.asList(number)));
+        cars.raceLap(new RandomRacingRule().movableList(Arrays.asList(number)));
         assertThat(cars.cars().get(0).position()).isEqualTo(Car.SET_POSITION + 1);
     }
 
@@ -59,7 +73,7 @@ public class CarsTest {
         carList.add(new Car());
         Cars cars = new Cars(carList);
 
-        cars.raceLap(RacingRule.movableList(Arrays.asList(number)));
+        cars.raceLap(new RandomRacingRule().movableList(Arrays.asList(number)));
         assertThat(cars.cars().get(0).position()).isEqualTo(Car.SET_POSITION);
     }
 

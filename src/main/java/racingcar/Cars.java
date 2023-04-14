@@ -12,10 +12,10 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static List<Car> registerCars(int size) {
+    public static List<Car> registerCars(List<String> names) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < size; i++) {
-            cars.add(new Car());
+        for (int i = 0; i < names.size(); i++) {
+            cars.add(new Car(names.get(i)));
         }
         return cars;
     }
@@ -34,7 +34,15 @@ public class Cars {
     }
 
     public List<Car> cars() {
-        return Collections.unmodifiableList(cars);
+        return Collections.unmodifiableList(cloneList());
+    }
+
+    private List<Car> cloneList() {
+        List<Car> result = new ArrayList<>();
+        for (Car car : cars) {
+            result.add(new Car(car.position(), car.name()));
+        }
+        return result;
     }
 
     public Cars clone() {

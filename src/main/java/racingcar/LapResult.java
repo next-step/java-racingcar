@@ -1,9 +1,11 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LapResult {
 
+    public static final String NAME_POSITION_DELIMITER = " : ";
     private final List<Car> lapResult;
 
     public LapResult(List<Car> lapResult) {
@@ -13,10 +15,14 @@ public class LapResult {
     public String lapResultString() {
         String result = "";
         for (Car car : lapResult) {
-            result += carPositionIndicator(car);
+            result += carPosition(car);
         }
         result += OutputView.NEW_LINE;
         return result;
+    }
+
+    private String carPosition(Car car) {
+        return car.name() + NAME_POSITION_DELIMITER + carPositionIndicator(car);
     }
 
     private String carPositionIndicator(Car car) {
@@ -26,6 +32,10 @@ public class LapResult {
         }
         result += OutputView.NEW_LINE;
         return result;
+    }
+
+    public List<Car> cars() {
+        return new ArrayList<>(lapResult);
     }
 
 }

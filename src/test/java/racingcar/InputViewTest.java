@@ -26,6 +26,13 @@ public class InputViewTest {
     }
 
     @Test
+    void 레이스_참가_자동차_이름_입력_질문() {
+        assertThat(InputView.askCarNames(
+            new ByteArrayInputStream("pobi,crong,honux".getBytes(StandardCharsets.UTF_8))
+        )).contains("pobi", "crong", "honux");
+    }
+
+    @Test
     void 레이스_회수_입력() {
         assertThat(InputView.askRaceCount(
             new ByteArrayInputStream("2".getBytes(StandardCharsets.UTF_8)))).isEqualTo(2);
