@@ -11,8 +11,8 @@ public class Car {
         }
     }
 
-    public Integer getPosition() {
-        return position;
+    public CarDto toDto() {
+        return new CarDto(this.position);
     }
 
     private static boolean isMovable(Integer number) {

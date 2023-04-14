@@ -6,7 +6,6 @@ public class RacingCarGame {
         Output output = new ConsoleOutput();
 
         Race race = input.setRace();
-        race.createCars();
 
         output.printExecutionHeader();
         while (race.isNotFinished()) {

@@ -1,19 +1,13 @@
 package racingcar;
 
 public class CarDto {
-    private final String name;
     private final Integer position;
 
-    public CarDto(String name, Integer position) {
-        this.name = name;
+    public CarDto(Integer position) {
         this.position = position;
     }
 
-    public String getName() {
-        return this.name;
-    }
-
     public Integer getPosition() {
-        return this.position;
+        return position;
     }
 }
