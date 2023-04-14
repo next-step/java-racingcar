@@ -1,5 +1,10 @@
-package step3;
+package racingcar;
 
+
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 public class RacingGame {
 

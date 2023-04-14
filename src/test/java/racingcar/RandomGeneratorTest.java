@@ -1,7 +1,8 @@
-package step3;
+package racingcar;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.RandomGenerator;
 
 import static org.assertj.core.api.Assertions.*;
 public class RandomGeneratorTest {
