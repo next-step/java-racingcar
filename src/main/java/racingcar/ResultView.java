@@ -1,8 +1,8 @@
 package racingcar;
 
-public class RacingResult {
+public class ResultView {
 
-    public void print(int[][] car) {
+    public void showResult(int[][] car) {
         for (int i = 0; i < car[0].length; i++) {
             printColumn(car, i);
             System.out.println();

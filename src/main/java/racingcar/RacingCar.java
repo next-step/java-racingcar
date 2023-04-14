@@ -1,46 +1,38 @@
 package racingcar;
 
 import java.util.Random;
-import java.util.Scanner;
 
 public class RacingCar {
 
-    public static final int BOUND = 10;
-    public static final int PROCEEDING_NUM = 4;
+    private static final int BOUND = 10;
+    private static final int PROCEEDING_NUM = 4;
 
-    public static final Random random = new Random();
+    private static final int INIT_VALUE_ONE = 1;
 
-    public static void inputView() {
-        Scanner scanner = new Scanner(System.in);
+    private final Random random = new Random();
+    private final ResultView resultView = new ResultView();
 
-        Integer carCount = getCarCount(scanner);
-        Integer trialCount = getTrialCount(scanner);
+    private final int[][] car;
 
-        System.out.println("carCount = " + carCount);
-        System.out.println("trialCount = " + trialCount);
+    RacingCar(int carCount, int trialCount) {
+        car = new int[carCount][trialCount];
     }
 
-    private static Integer getCarCount(Scanner scanner) {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        return Integer.parseInt(scanner.nextLine());
-    }
-
-    private static Integer getTrialCount(Scanner scanner) {
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        return Integer.parseInt(scanner.nextLine());
-    }
-
-    public static int proceed() {
+    public int proceed() {
         int number = random.nextInt(BOUND);
         return number >= PROCEEDING_NUM ? 1 : 0;
     }
 
-    public static void race(int[][] car) {
+    public void race() {
         for(int[] row : car) {
-            row[0] = 1;
+            row[0] = INIT_VALUE_ONE; // 출발점이 1인 것 같아서 1로 초기화했다.
             for(int j=1; j < row.length; j++) {
                 row[j] += row[j-1] + proceed();
             }
         }
+    }
+
+    public void showResult() {
+        resultView.showResult(car);
     }
 }

@@ -6,7 +6,23 @@ import java.io.ByteArrayInputStream;
 
 public class RacingCarTest {
 
-    public RacingResult racingResult = new RacingResult();
+    public InputView inputView = new InputView();
+    public ResultView resultView = new ResultView();
+
+
+
+    @Test
+    void 전부_합친_테스트() {
+        // Given
+        String testInput = "3\n5\n";
+        ByteArrayInputStream in = new ByteArrayInputStream(testInput.getBytes());
+        System.setIn(in);
+
+        // Then
+        RacingCar car = inputView.init();
+        car.race();
+        car.showResult();
+    }
 
     @Test
     void 문자_입력_받기() {
@@ -15,22 +31,20 @@ public class RacingCarTest {
         ByteArrayInputStream in = new ByteArrayInputStream(testInput.getBytes());
         System.setIn(in);
 
-        // When
-        RacingCar.inputView();
-
         // Then
+        inputView.init();
     }
 
     @Test
     void 랜덤하게_전진() {
         // Given
-        int[][] car = new int[3][5];
+        RacingCar car = new RacingCar(3, 5);
 
         // When
-        RacingCar.race(car);
+        car.race();
 
         // Then
-        racingResult.print(car);
+        car.showResult();
     }
 
     @Test
@@ -40,8 +54,7 @@ public class RacingCarTest {
                      , {1, 1, 2, 3, 4}
                      , {1, 2, 3, 4, 5}};
 
-        // When
         // Then
-        racingResult.print(car);
+        resultView.showResult(car);
     }
 }
