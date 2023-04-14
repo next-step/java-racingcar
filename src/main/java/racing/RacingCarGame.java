@@ -9,12 +9,16 @@ public class RacingCarGame {
         progress(new Cars(InputView.carCount(), InputView.moveCount()));
     }
 
-    private static void progress(Cars cars) {
+    public static void progress(Cars cars) {
         for (int i = 0; i < cars.moveCount(); i++) {
             cars = cars.move();
-            ResultView.print(cars, round);
+            ResultView.print(cars);
             round += 1;
         }
+    }
+
+    public static int getRound() {
+        return round;
     }
 
 }

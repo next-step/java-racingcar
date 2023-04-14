@@ -7,8 +7,8 @@ public class ResultView {
     public static final String MARK = "-";
     private static final int INITIAL_ROUND = 0;
 
-    public static void print(Cars cars, int round) {
-        if (round == INITIAL_ROUND) {
+    public static void print(Cars cars) {
+        if (RacingCarGame.getRound() == INITIAL_ROUND) {
             System.out.println("실행 결과");
         }
         List<Car> carList = cars.values();
