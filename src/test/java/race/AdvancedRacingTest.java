@@ -32,7 +32,7 @@ class AdvancedRacingTest {
 
         crong.move(4);
 
-        assertThat(crong.printDistance()).contains(name);
+        assertThat(crong.getTracing()).contains(name);
     }
 
     @DisplayName("car가 움직인 거리를 알 수 있다.")
@@ -48,14 +48,7 @@ class AdvancedRacingTest {
     @DisplayName("우승자를 출력할 수 있다.")
     @Test
     void test9() throws Exception {
-        Car crong = new Car("crong", 3);
-        Car choizz = new Car("choizz", 5);
-        Car beck = new Car("beck", 5);
-
-        List<Car> cars = new ArrayList<>();
-        cars.add(crong);
-        cars.add(choizz);
-        cars.add(beck);
+        List<Car> cars = getCarList();
 
         Winner winner = new Winner();
         List<String> strings = winner.get(cars);
@@ -103,5 +96,18 @@ class AdvancedRacingTest {
         })
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("이름을 입력해주세요.");
+    }
+
+    private List<Car> getCarList() {
+        Car crong = new Car("crong", 3);
+        Car choizz = new Car("choizz", 5);
+        Car beck = new Car("beck", 5);
+
+        List<Car> cars = new ArrayList<>();
+        cars.add(crong);
+        cars.add(choizz);
+        cars.add(beck);
+
+        return cars;
     }
 }
