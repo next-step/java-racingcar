@@ -1,8 +1,12 @@
 package racing;
 
+import racing.domain.Car;
+import racing.domain.Cars;
+import racing.domain.GameResult;
+import racing.domain.RoundResult;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RacingGame {
 

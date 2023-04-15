@@ -1,5 +1,8 @@
 package racing;
 
+import racing.domain.GameResult;
+import racing.domain.RoundResult;
+
 public class RacingPrinter {
 
     public static final String POSITION_SYMBOL = "-";

@@ -1,6 +1,7 @@
 package racing;
 
-import java.util.List;
+import racing.domain.GameResult;
+
 import java.util.Scanner;
 
 public class RacingApplication {
