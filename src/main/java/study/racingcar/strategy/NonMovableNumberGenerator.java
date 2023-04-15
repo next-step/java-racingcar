@@ -1,3 +1,4 @@
+/*
 package study.racingcar.strategy;
 
 public class NonMovableNumberGenerator implements NumberGenerator{
@@ -8,3 +9,4 @@ public class NonMovableNumberGenerator implements NumberGenerator{
     }
 }
 
+*/

@@ -1,3 +1,4 @@
+/*
 package study.racingcar.strategy;
 
 public class MoveableNumberGenerator implements NumberGenerator{
@@ -7,3 +8,4 @@ public class MoveableNumberGenerator implements NumberGenerator{
         return MOVABLE_LOWER_BOUND;
     }
 }
+*/
