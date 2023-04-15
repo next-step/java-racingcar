@@ -2,7 +2,6 @@ package race;
 
 import java.util.List;
 import java.util.Scanner;
-import race.domain.Race;
 import race.domain.Winner;
 import race.util.Split;
 import race.view.InputView;

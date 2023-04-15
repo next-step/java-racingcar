@@ -1,13 +1,15 @@
-package race.domain;
+package race;
 
 import java.util.List;
+import race.domain.Car;
+import race.domain.RacingCars;
 import race.view.TraceView;
 
 public class Race {
 
     private final RacingCars racingCars;
     private final int trial;
-    private TraceView traceView = new TraceView();
+    private final TraceView traceView = new TraceView();
 
     public Race(String[] names, int trial) {
         validate(names.length, trial);
