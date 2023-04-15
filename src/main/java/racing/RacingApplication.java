@@ -1,8 +1,8 @@
 package racing;
 
 import racing.domain.RacingGame;
-import racing.strategy.MoveStrategy;
-import racing.strategy.impl.RandomForwardStrategy;
+import racing.domain.move.MoveStrategy;
+import racing.domain.move.impl.RandomForwardStrategy;
 import racing.view.ResultView;
 
 import java.util.List;

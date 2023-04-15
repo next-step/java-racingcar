@@ -1,6 +1,6 @@
-package racing.strategy.impl;
+package racing.domain.move.impl;
 
-import racing.strategy.MoveStrategy;
+import racing.domain.move.MoveStrategy;
 
 import java.util.Random;
 

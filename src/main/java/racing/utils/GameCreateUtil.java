@@ -2,7 +2,7 @@ package racing.utils;
 
 import racing.domain.RacingCar;
 import racing.domain.RacingGame;
-import racing.strategy.MoveStrategy;
+import racing.domain.move.MoveStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
