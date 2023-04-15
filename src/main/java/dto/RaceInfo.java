@@ -1,21 +1,21 @@
 package dto;
 
-import domain.CarNumber;
-import domain.RaceNumber;
+import domain.NumberOfCars;
+import domain.NumberOfRaces;
 
 public class RaceInfo {
-    private final CarNumber carNumber;
-    private final RaceNumber raceNumber;
-    public RaceInfo(CarNumber carNumber, RaceNumber raceNumber) {
-        this.carNumber = carNumber;
-        this.raceNumber = raceNumber;
+    private final NumberOfCars numberOfCars;
+    private final NumberOfRaces numberOfRaces;
+    public RaceInfo(NumberOfCars numberOfCars, NumberOfRaces numberOfRaces) {
+        this.numberOfCars = numberOfCars;
+        this.numberOfRaces = numberOfRaces;
     }
 
-    public CarNumber getCarNumber() {
-        return carNumber;
+    public NumberOfCars getCarNumber() {
+        return numberOfCars;
     }
 
-    public RaceNumber getRaceNumber() {
-        return raceNumber;
+    public NumberOfRaces getRaceNumber() {
+        return numberOfRaces;
     }
 }

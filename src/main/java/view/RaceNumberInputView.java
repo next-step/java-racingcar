@@ -1,21 +1,20 @@
 package view;
 
-import domain.CarNumber;
-import domain.RaceNumber;
+import domain.NumberOfRaces;
 
 import java.util.Scanner;
 
-public class RaceNumberInputView implements InputView<RaceNumber> {
+public class RaceNumberInputView implements InputView<NumberOfRaces> {
     @Override
-    public RaceNumber receive() {
+    public NumberOfRaces receive() {
         printQuestion();
         return receiveInput();
     }
 
-    private RaceNumber receiveInput() {
+    private NumberOfRaces receiveInput() {
         Scanner scanner = new Scanner(System.in);
         int number = scanner.nextInt();
-        return new RaceNumber(number);
+        return new NumberOfRaces(number);
     }
 
     private void printQuestion() {

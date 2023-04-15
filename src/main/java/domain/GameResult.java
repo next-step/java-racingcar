@@ -6,9 +6,9 @@ import java.util.Objects;
 
 public class GameResult {
     List<Car> cars;
-    public static GameResult createInitialGameResult(CarNumber carNumber) {
+    public static GameResult createInitialGameResult(NumberOfCars numberOfCars) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carNumber.getCarNumber(); i++) {
+        for (int i = 0; i < numberOfCars.getNumber(); i++) {
             cars.add(new Car(Position.ONE.getPosition()));
         }
         return new GameResult(cars);

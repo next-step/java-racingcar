@@ -14,6 +14,11 @@ class CarTest {
     }
 
     @Test
+    void constructor() {
+        assertDoesNotThrow(() -> new Car(3));
+    }
+
+    @Test
     void move() {
         car.move(2);
         assertEquals(new Car(5).getPosition(), car.getPosition());

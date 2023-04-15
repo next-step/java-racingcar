@@ -15,7 +15,7 @@ class RaceResultTest {
     @BeforeEach
     void setUp() {
         raceResult = new RaceResult();
-        raceResult.add(GameResult.createInitialGameResult(new CarNumber(3)));
+        raceResult.add(GameResult.createInitialGameResult(new NumberOfCars(3)));
     }
 
     @Test
@@ -28,7 +28,7 @@ class RaceResultTest {
 
     @Test
     void add() {
-        raceResult.add(GameResult.createInitialGameResult(new CarNumber(3)));
+        raceResult.add(GameResult.createInitialGameResult(new NumberOfCars(3)));
 
         ArrayList<GameResult> gameResults = new ArrayList<>(Arrays.asList(
             GameResult.create(new ArrayList<>(Arrays.asList(new Car(1), new Car(1), new Car(1)))),
