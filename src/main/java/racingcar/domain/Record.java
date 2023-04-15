@@ -10,7 +10,7 @@ public class Record {
             this.name = name.getName();
         }
 
-        public int getPosition() {
+        public int getDistance() {
             return position;
         }
 

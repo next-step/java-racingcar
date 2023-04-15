@@ -44,7 +44,7 @@ public class ResultView {
     }
 
     private static void printDistance(final Record record) {
-        for (int i = 0; i < record.getPosition(); i++) {
+        for (int i = 0; i < record.getDistance(); i++) {
             System.out.print(DASH);
         }
     }
