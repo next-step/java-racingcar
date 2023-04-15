@@ -11,6 +11,10 @@ public class CarRacing {
 		this.cars = cars;
 	}
 
+	public void addCar(Car car) {
+		this.cars.add(car);
+	}
+
 	public List<Car> createWinners() {
 		int bestLocation = this.extractBestLocation();
 
