@@ -2,7 +2,6 @@ package racing.domain;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingGame {
     private final List<RacingCar> gameCars;
@@ -22,10 +21,7 @@ public class RacingGame {
         }
     }
 
-    public List<RacingCar> findWinner() {
-        int maxPosition = Collections.max(gameCars).getPosition();
-        return gameCars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
-                .collect(Collectors.toList());
+    public Winners findWinner() {
+        return new Winners(gameCars);
     }
 }

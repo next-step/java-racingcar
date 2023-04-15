@@ -3,7 +3,7 @@ package racing.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.FixedRandomForwardStrategy;
-import racing.strategy.MoveStrategy;
+import racing.domain.move.MoveStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,10 +43,10 @@ class RacingGameTest {
             game.progressCycle();
         }
 
-        List<RacingCar> winnerList = game.findWinner();
-        assertThat(winnerList.size()).isEqualTo(1);
-        assertThat(winnerList.get(0).getName()).isEqualTo("pobi");
-        assertThat(winnerList.get(0).getPosition()).isEqualTo(3);
+        Winners winners = game.findWinner();
+        assertThat(winners.getWinnerCount()).isEqualTo(1);
+        assertThat(winners.getWinnerNames()).containsExactly("pobi");
+        assertThat(winners.getWinnerPosition()).isEqualTo(3);
     }
 
     @Test
@@ -63,8 +63,8 @@ class RacingGameTest {
             game.progressCycle();
         }
 
-        List<RacingCar> winnerList = game.findWinner();
-        assertThat(winnerList.size()).isEqualTo(2);
-        assertThat(List.of(winnerList.get(0).getName(), winnerList.get(1).getName())).containsExactly("pobi", "crong");
+        Winners winners = game.findWinner();
+        assertThat(winners.getWinnerCount()).isEqualTo(2);
+        assertThat(winners.getWinnerNames()).containsExactly("pobi", "crong");
     }
 }

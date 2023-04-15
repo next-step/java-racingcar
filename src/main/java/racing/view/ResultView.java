@@ -2,9 +2,7 @@ package racing.view;
 
 import racing.domain.RacingCar;
 import racing.domain.RacingGame;
-
-import java.util.ArrayList;
-import java.util.List;
+import racing.domain.Winners;
 
 public class ResultView {
     private static final char PRINT_POSITION_CHAR = '-';
@@ -37,16 +35,8 @@ public class ResultView {
     }
 
     public static void printWinner(RacingGame game) {
-        List<RacingCar> winners = game.findWinner();
-        System.out.print(String.join(", ", findWinnerNames(winners)));
+        Winners winners = game.findWinner();
+        System.out.print(String.join(", ", winners.getWinnerNames()));
         System.out.println("가 최종 우승했습니다.");
-    }
-
-    private static List<String> findWinnerNames(List<RacingCar> winners) {
-        List<String> winnerNames = new ArrayList<>();
-        for (RacingCar winner : winners) {
-            winnerNames.add(winner.getName());
-        }
-        return winnerNames;
     }
 }
