@@ -9,20 +9,33 @@ public class Car {
 	private static final int MOVE_CONDITION_MINIMUM = 4;
 
 	private final Location location;
+	private final String name;
 
-	public Car(Location location) {
+	public Car(String name, Location location) {
+		this.name = name;
 		this.location = location;
 	}
 
 	public void move(int randomValue) {
 		if (this.movable(randomValue)) {
-			location.plus();
+			this.location.plus();
 		}
 	}
 
 	private boolean movable(int randomValue) {
 		MoveStrategy moveStrategy = () -> randomValue >= MOVE_CONDITION_MINIMUM;
 		return moveStrategy.movable();
+	}
+
+	public int greaterLocation(int bestLocation) {
+		if (this.location.isGreater(bestLocation)) {
+			bestLocation = this.location.getLocation();
+		}
+		return bestLocation;
+	}
+
+	public boolean isBestLocation(int bestLocation) {
+		return this.location.isEqual(bestLocation);
 	}
 
 	@Override

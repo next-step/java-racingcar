@@ -10,8 +10,9 @@ public class CarTest {
 	@DisplayName("전진한다.")
 	@Test
 	void test1() {
-		Car car = new Car(new Location(0));
+		Car car = new Car("pobi", new Location(0));
 		car.move(4);
-		assertThat(car).isEqualTo(new Car(new Location(1)));
+
+		assertThat(car).isEqualTo(new Car("pobi", new Location(1)));
 	}
 }
