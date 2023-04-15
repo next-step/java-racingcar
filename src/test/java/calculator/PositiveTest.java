@@ -13,11 +13,15 @@ public class PositiveTest {
 
     @Test
     void 음수_입력() {
-        assertThatThrownBy(() -> new Positive("-3")).isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> new Positive("-3"))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("음수는 입력할 수 없습니다.");
     }
 
     @Test
     void 문자_입력() {
-        assertThatThrownBy(() -> new Positive("string")).isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> new Positive("string"))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("숫자로 변환할 수 없는 입력값입니다.");
     }
 }
