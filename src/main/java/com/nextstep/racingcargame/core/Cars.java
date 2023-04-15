@@ -4,6 +4,7 @@ import static java.util.Arrays.stream;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Cars {
 
@@ -19,6 +20,10 @@ public class Cars {
         this.cars = cars;
     }
 
+    public Stream<Car> carStream() {
+        return this.cars.stream();
+    }
+
     public Cars(CarNameChunk carNameChunk) {
         this(stream(carNameChunk.carNames())
                 .map(Car::new)
@@ -29,9 +34,9 @@ public class Cars {
         return cars.size();
     }
 
-    public void moveCars() {
-        for (int index = 0; index<carSize(); index ++) {
-            this.cars.set(index, this.cars.get(index).move());
+    public void moveCars(MovingStrategy movingStrategy) {
+        for (int index = 0; index < carSize(); index++) {
+            this.cars.set(index, this.cars.get(index).move(movingStrategy));
         }
     }
 
@@ -53,23 +58,17 @@ public class Cars {
     public Distance longestDistance() {
         Distance maxDistance = new Distance(START_POSITION);
 
-        for(Car car : this.cars) {
-            maxDistance = updateMaxDistance(car,maxDistance);
+        for (Car car : this.cars) {
+            maxDistance = updateMaxDistance(car, maxDistance);
         }
         return maxDistance;
     }
 
     private Distance updateMaxDistance(Car car, Distance maxDistance) {
-        if(car.isLongerThan(maxDistance)) {
+        if (car.isLongerThan(maxDistance)) {
             return car.getDistance();
         }
         return maxDistance;
-    }
-
-    public List<String> getAllCarCurrentDistance(String separator, String distancePrintStandard) {
-        return this.cars.stream()
-                .map(car -> car.getDistanceAsPrintForm(separator,distancePrintStandard))
-                .collect(Collectors.toList());
     }
 
 }

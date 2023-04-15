@@ -1,8 +1,6 @@
 package com.nextstep.racingcargame.core;
 
 
-import com.nextstep.racingcargame.util.RandomNumber;
-import com.nextstep.racingcargame.util.RandomNumberZeroToNine;
 import java.util.Objects;
 
 public class Car {
@@ -10,37 +8,27 @@ public class Car {
     private final Distance distance;
     private final Name name;
 
-    private final RandomNumber randomNumber;
-
     private static final int CAR_START_POSITION_NUMBER = 0;
-
-    private static final String MOVING_STRATEGY_EMPTY = "자동차 이동 전략은 필수 값입니다.";
 
     public Car(String carName) {
         this(carName, CAR_START_POSITION_NUMBER);
     }
 
     public Car(String carName, int distance) {
-        this(carName, new Distance(distance), new RandomNumberZeroToNine());
+        this(carName, new Distance(distance));
     }
 
-    public Car(String carName, Distance distance, RandomNumber randomNumber) {
-        if (randomNumber == null) {
-            throw new IllegalArgumentException(MOVING_STRATEGY_EMPTY);
-        }
+    public Car(String carName, Distance distance) {
         this.name = new Name(carName);
         this.distance = distance;
-        this.randomNumber = randomNumber;
-    }
-
-    public String getDistanceAsPrintForm(String separator, String distancePrintStandard) {
-        return this.name.getCarName()
-                + separator
-                + this.distance.distanceForm(distancePrintStandard);
     }
 
     public String getCarName() {
         return this.name.getCarName();
+    }
+
+    public String getDisplayableDistanceForm(String distancePrintStandard) {
+        return this.distance.distanceForm(distancePrintStandard);
     }
 
     public Distance getDistance() {
@@ -51,10 +39,9 @@ public class Car {
         return this.distance.isLongerThan(distance);
     }
 
-    public Car move() {
+    public Car move(MovingStrategy movingStrategy) {
         return new Car(this.name.getCarName(),
-                this.distance.moveForward(randomNumber.randomNumber()),
-                this.randomNumber);
+                this.distance.moveForward(movingStrategy.randomNumber()));
     }
 
     public boolean sameDistance(Distance distance) {

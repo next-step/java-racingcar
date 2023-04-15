@@ -1,7 +1,9 @@
 package com.nextstep.racingcargame.view;
 
+import com.nextstep.racingcargame.core.Car;
 import com.nextstep.racingcargame.core.Cars;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
 
@@ -34,10 +36,10 @@ public class ResultView {
     }
 
     public static void printAllCarCurrentDistance(Cars cars) {
-        List<String> carCurrentDistances =
-                cars.getAllCarCurrentDistance(
-                        CAR_NAME_AND_DISTANCE_DELIMITER,
-                        CAR_DISTANCE_DISPLAY_UNIT);
+        List<String> carCurrentDistances = cars.carStream()
+                .map(car -> car.getCarName() + CAR_NAME_AND_DISTANCE_DELIMITER
+                        + car.getDisplayableDistanceForm(CAR_DISTANCE_DISPLAY_UNIT))
+                .collect(Collectors.toList());
 
         carCurrentDistances.forEach(ResultView::printSource);
     }

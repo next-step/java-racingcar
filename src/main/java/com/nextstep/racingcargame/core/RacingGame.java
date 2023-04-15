@@ -23,7 +23,7 @@ public class RacingGame {
         printResultMsg();
 
         for (int turn = 0; turn < clientResponse.getNumberOfTries(); turn++) {
-            cars.moveCars();
+            cars.moveCars(new RandomNumberZeroToNine());
             printAllCarCurrentDistance(cars);
             createNewLine();
         }

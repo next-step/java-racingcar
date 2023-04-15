@@ -1,8 +1,8 @@
-package com.nextstep.racingcargame.util;
+package com.nextstep.racingcargame.core;
 
 import java.util.Random;
 
-public class RandomNumberZeroToNine implements RandomNumber{
+public class RandomNumberZeroToNine implements MovingStrategy {
 
     private static final int RANDOM_BOUND = 10;
     private static final Random RANDOM = new Random();
