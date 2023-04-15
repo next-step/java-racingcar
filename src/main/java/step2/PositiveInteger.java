@@ -22,7 +22,7 @@ public class PositiveInteger {
         try{
             Integer.parseInt(value);
         }catch (NumberFormatException e){
-            throw new RuntimeException(e);
+            throw new RuntimeException("입력은 숫자만 가능합니다! "+value, e);
         }
     }
 }
