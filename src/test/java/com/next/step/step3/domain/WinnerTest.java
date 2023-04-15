@@ -1,8 +1,5 @@
-package com.next.step.step3.service;
+package com.next.step.step3.domain;
 
-import com.next.step.step3.WinnerCarsFixture;
-import com.next.step.step3.domain.Cars;
-import com.next.step.step3.domain.Winner;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;

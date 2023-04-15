@@ -1,12 +1,11 @@
 package com.next.step.step3;
 
+import com.next.step.step3.domain.MoveResults;
 import com.next.step.step3.dto.InputDto;
 import com.next.step.step3.service.RacingGame;
 import com.next.step.step3.validate.InputValidation;
 import com.next.step.step3.view.InputView;
 import com.next.step.step3.view.ResultView;
-
-import java.util.List;
 
 public class Main {
 
@@ -16,9 +15,9 @@ public class Main {
         int numOfAttempts = inputView.numOfAttempts();
 
         RacingGame racingGame = new RacingGame(new InputDto(carNames, numOfAttempts));
-        List<String> winnerNames = racingGame.executeRace();
+        MoveResults moveResults = racingGame.executeRace();
 
-        ResultView resultView = new ResultView();
-        resultView.showWinnerNames(winnerNames);
+        ResultView resultView = new ResultView(moveResults);
+        resultView.showResult();
     }
 }

@@ -1,6 +1,4 @@
-package com.next.step.step3;
-
-import com.next.step.step3.domain.Car;
+package com.next.step.step3.domain;
 
 import java.util.List;
 

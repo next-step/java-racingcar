@@ -1,11 +1,12 @@
 package com.next.step.step3.service;
 
 import com.next.step.step3.domain.Cars;
-import com.next.step.step3.domain.Winner;
+import com.next.step.step3.domain.MoveResult;
+import com.next.step.step3.domain.MoveResults;
 import com.next.step.step3.dto.InputDto;
 import com.next.step.step3.util.CarsFactory;
-import com.next.step.step3.view.ResultView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
@@ -19,16 +20,13 @@ public class RacingGame {
         this.numOfAttempts = inputDto.numOfAttempts();
     }
 
-    public List<String> executeRace() {
-        ResultView resultView = new ResultView();
-
-        resultView.showResultTitle();
+    public MoveResults executeRace() {
+        List<MoveResult> moveResults = new ArrayList<>();
         for (int attempt = 0; attempt < numOfAttempts; attempt++) {
             cars.moveCars();
-            resultView.showResultContents(cars);
+            moveResults.add(new MoveResult(cars.carElements()));
         }
 
-        Winner winner = new Winner(cars);
-        return winner.getWinnerNames();
+        return new MoveResults(moveResults, cars);
     }
 }

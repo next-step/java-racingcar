@@ -1,7 +1,8 @@
 package com.next.step.step3.view;
 
 import com.next.step.step3.domain.Car;
-import com.next.step.step3.domain.Cars;
+import com.next.step.step3.domain.MoveResult;
+import com.next.step.step3.domain.MoveResults;
 
 import java.util.List;
 
@@ -19,27 +20,38 @@ public class ResultView {
 
     private static final String NAME_DELIMITER = ", ";
 
-    public void showResultTitle() {
-        System.out.println(RESULT_TITLE);
+    private final MoveResults moveResults;
+
+    public ResultView(MoveResults moveResults) {
+        this.moveResults = moveResults;
     }
 
-    public void showResultContents(Cars cars) {
-        for (Car car : cars.carElements()) {
-            markMoveTrace(car);
+    public void showResult() {
+        System.out.println(RESULT_TITLE);
+
+        moveResults.getMoveResults()
+                .forEach(this::showCarContents);
+
+        showWinnerNames(moveResults.getWinnerNames());
+    }
+
+    private void showCarContents(MoveResult moveResult) {
+        for (Car car : moveResult.getCarElement()) {
+            System.out.print(car.name());
+            System.out.print(NAME_RESULT_DELIMITER);
+            showMarkTrace(car);
+            System.out.println(RESULT_DELIMITER);
         }
         System.out.println(RESULT_DELIMITER);
     }
 
-    private void markMoveTrace(Car car) {
-        System.out.print(car.name());
-        System.out.print(NAME_RESULT_DELIMITER);
-        for (int moveCount = 0; moveCount < car.position(); moveCount++) {
+    private void showMarkTrace(Car car) {
+        for (int trace = 0; trace < car.position(); trace++) {
             System.out.print(MOVE_MARK);
         }
-        System.out.println(RESULT_DELIMITER);
     }
 
-    public void showWinnerNames(List<String> winnerNames) {
+    private void showWinnerNames(List<String> winnerNames) {
         String joinNameByDelimiter = String.join(NAME_DELIMITER, winnerNames);
         System.out.print(joinNameByDelimiter);
         System.out.println(WINNER_SUFFIX);
