@@ -25,9 +25,7 @@ public class Match {
     }
 
     public List<String> winnerDisplay() {
-        int maxPosition = getMaxPosition();
-        List<String> winnerList = getWinnerList(maxPosition);
-        return winnerList;
+        return getWinnerList(getMaxPosition());
     }
 
     private List<String> getWinnerList(int maxPosition) {
