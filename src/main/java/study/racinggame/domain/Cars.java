@@ -6,25 +6,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
+
+  private static final int FIRST_ELEMENT = 0;
   private final List<Car> cars;
 
   public Cars(List<Car> cars) {
     this.cars = cars;
-  }
-
-  public void forwardCars() {
-    cars.forEach(car -> car.forward(new RacingGameStrategy()));
-  }
-
-  public List<Car> cars() {
-    return Collections.unmodifiableList(cars);
-  }
-
-  public List<String> carNamesAtSameDistance(int distance) {
-    return cars().stream()
-            .filter(car -> car.isSameDistance(distance))
-            .map(Car::name)
-            .collect(Collectors.toList());
   }
 
   public static Cars newInstance(List<String> carNames) {
@@ -45,5 +32,26 @@ public class Cars {
 
   private static Car copyCar(Car car) {
     return new Car(car.name(), car.distance());
+  }
+
+  public void forwardCars() {
+    cars.forEach(car -> car.forward(new RacingGameStrategy()));
+  }
+
+  public List<Car> cars() {
+    return Collections.unmodifiableList(cars);
+  }
+
+  public List<String> carNamesAtLongestDistance() {
+    return cars().stream()
+            .filter(car -> car.isSameDistance(winnerCar()))
+            .map(Car::name)
+            .collect(Collectors.toList());
+  }
+
+  private Car winnerCar() {
+    return cars().stream()
+            .max(Car::compareTo)
+            .orElse(Car.ANONYMOUS_CAR);
   }
 }

@@ -1,16 +1,20 @@
 package study.racinggame.domain;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class GameResult {
 
-  private static final int FIRST_ELEMENT = 0;
   private static final int LAST_ELEMENT = 1;
   private final List<Cars> record;
 
   public GameResult() {
     record = new ArrayList<>();
+  }
+
+  public GameResult(Cars cars) {
+    record = new ArrayList<>(List.of(cars));
   }
 
   public List<Cars> record() {
@@ -22,15 +26,7 @@ public class GameResult {
   }
 
   public List<String> winners() {
-    return lastRecord().carNamesAtSameDistance(longestDistance());
-  }
-
-  private int longestDistance() {
-    return lastRecord().cars().stream()
-            .sorted()
-            .collect(Collectors.toList())
-            .get(FIRST_ELEMENT)
-            .distance();
+    return lastRecord().carNamesAtLongestDistance();
   }
 
   private Cars lastRecord() {

@@ -1,19 +1,20 @@
 package study.racinggame.domain;
 
-import study.racinggame.util.NameValidator;
+import static study.racinggame.util.NameValidator.validatedCarName;
 
 public class Car implements Comparable<Car> {
 
-  public static final int DEFAULT_DISTANCE = 0;
+  public static final Car ANONYMOUS_CAR = new Car("anony");
+  private static final int DEFAULT_DISTANCE = 0;
   private final String name;
   private int distance;
 
-  public Car(String name) {
-    this(name,DEFAULT_DISTANCE);
+  public Car(final String name) {
+    this(name, DEFAULT_DISTANCE);
   }
 
-  public Car(String name, int distance) {
-    this.name = NameValidator.validatedCarName(name);
+  public Car(final String name, int distance) {
+    this.name = validatedCarName(name);
     this.distance = distance;
   }
 
@@ -31,12 +32,27 @@ public class Car implements Comparable<Car> {
     }
   }
 
-  public boolean isSameDistance(int distance) {
-    return this.distance == distance;
+  public boolean isSameDistance(Car car) {
+    return equals(car);
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    Car car = (Car) o;
+
+    return distance == car.distance;
+  }
+
+  @Override
+  public int hashCode() {
+    return distance;
   }
 
   @Override
   public int compareTo(Car otherCar) {
-    return Integer.compare(otherCar.distance(), distance);
+    return Integer.compare(distance, otherCar.distance());
   }
 }
