@@ -1,5 +1,6 @@
-package car;
+package game;
 
+import car.Cars;
 import view.ResultView;
 
 import java.util.ArrayList;

@@ -1,5 +1,4 @@
-package car;
-
+import game.RacingGame;
 import view.InputView;
 import view.ResultView;
 
