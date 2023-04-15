@@ -65,7 +65,11 @@ public class Racer {
     }
 
     public Integer getFinalPosition() {
-        return results.getPositionList().get(results.getPositionList().size() - 1).length();
+        return finalRecord().length();
+    }
+
+    private String finalRecord() {
+        return results.getPositionList().get(results.getPositionList().size() - 1);
     }
 
     public Car getCar() {
