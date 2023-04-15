@@ -28,15 +28,21 @@ public class Match {
     }
 
     public List<String> winnerDisplay() {
-        return new ArrayList<>(winnerList).stream().map(racer -> racer.getCar().getName()).collect(Collectors.toList());
+        return new ArrayList<>(winnerList).stream()
+            .map(racer -> racer.getCar().getName())
+            .collect(Collectors.toList());
     }
 
     private List<Racer> getWinnerList(List<Racer> racerList, int maxPosition) {
-        return racerList.stream().filter(racer -> racer.isSamePosition(maxPosition)).collect(Collectors.toList());
+        return racerList.stream()
+            .filter(racer -> racer.isSamePosition(maxPosition))
+            .collect(Collectors.toList());
     }
 
     private int getMaxPosition() {
-        return racerList.stream().mapToInt(Racer::getFinalPosition).max().orElseThrow(() -> new RuntimeException("최대값을 구할 수 없습니다"));
+        return racerList.stream()
+            .mapToInt(Racer::getFinalPosition)
+            .max()
+            .orElseThrow(() -> new RuntimeException("최대값을 구할 수 없습니다"));
     }
-
 }
