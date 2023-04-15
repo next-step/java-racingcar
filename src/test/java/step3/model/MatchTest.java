@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class MatchTest {
     @DisplayName("참가차랑수, 반복횟수에 맞게 결과를 생성한다")
@@ -22,7 +23,9 @@ public class MatchTest {
         //when
         List<DisplayRaceVO> display = new Match(participates, iterations).display();
         //then
-        assertThat(display).hasSize(participates.size());
-        assertThat(display.get(0).getResult().getPositionList()).hasSize(iterations);
+        assertAll(
+            () -> assertThat(display).hasSize(participates.size()),
+            () -> assertThat(display.get(0).getResult().getPositionList()).hasSize(iterations)
+        );
     }
 }
