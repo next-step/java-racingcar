@@ -13,7 +13,8 @@ public class OutputPresent {
         }
     }
 
-    public void printWinner(List<String> winnerDisplay) {
+    public void printWinner(List<String> winnerList) {
+        System.out.printf("%s 가 최종 우승하였습니다", String.join(",", winnerList));
 
     }
 }
