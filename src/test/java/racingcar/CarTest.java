@@ -1,6 +1,5 @@
 package racingcar;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -10,7 +9,6 @@ import java.util.List;
 import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.in;
 
 class CarTest {
 
@@ -44,6 +42,25 @@ class CarTest {
         car.move(5);
 
         assertThat(car.nowPosition()).isEqualTo(2);
+    }
+
+    @DisplayName("랜덤 숫자 생성기를 통해 얻은 값으로 실제 이동하기")
+    @Test
+    public void move_getRandomValue_togo() {
+        int totalMoveInstance = 0;
+        RandomValue randomValue = new RandomValue();
+        Car car = new Car();
+
+        for (int i = 0; i < 10; i++) {
+            int degree = randomValue.getValue();
+            if (car.judgeForth(degree)) {
+                totalMoveInstance++;
+                car.move(degree);
+            }
+        }
+
+        assertThat(car.nowPosition()).isEqualTo(totalMoveInstance);
+
     }
 
 }
