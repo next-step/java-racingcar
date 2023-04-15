@@ -20,10 +20,10 @@ public class GameResultTest {
 
   @BeforeEach
   public void setUp() {
-    pobiCar = new Car("pobi");
-    onenyCar = new Car("oneny");
-    twonyCar = new Car("twony");
-    crongCar = new Car("crong");
+    pobiCar = new Car("pobi", 3);
+    onenyCar = new Car("oneny", 1);
+    twonyCar = new Car("twony", 2);
+    crongCar = new Car("crong", 3);
   }
 
   @Test
@@ -31,9 +31,6 @@ public class GameResultTest {
   public void winners_승자_pobi() {
     String expected1 = pobiCar.name();
     String expected2 = crongCar.name();
-
-    pobiCar.forward(() -> true);
-    crongCar.forward(() -> true);
 
     gameResult = new GameResult(new Cars(Arrays.asList(pobiCar, onenyCar, twonyCar, crongCar)));
     assertThat(gameResult.winners()).contains(expected1, expected2);
