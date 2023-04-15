@@ -8,7 +8,6 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import race.domain.Car;
-import race.domain.Race;
 import race.domain.Winner;
 
 class AdvancedRacingTest {

@@ -3,21 +3,19 @@ package race;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import race.domain.Car;
 
-@Disabled
 class RacingTest {
 
     private Car car;
 
     @BeforeEach
     void setUp() {
-        car = new Car();
+        car = new Car("name");
     }
 
     @ParameterizedTest(name = "4 이상이 나올 경우 car가 움직인다.")
@@ -25,7 +23,7 @@ class RacingTest {
     void test1(int input) throws Exception {
         car.move(input);
 
-        assertThat(car.getTracing()).hasSize(1);
+        assertThat(car.getTracing()).containsOnlyOnce("-");
     }
 
     @ParameterizedTest(name = "3 이하가 나올 경우 car는 움직이지 않는다.")
@@ -33,7 +31,7 @@ class RacingTest {
     void test2(int input) throws Exception {
         car.move(input);
 
-        assertThat(car.getTracing()).isEmpty();
+        assertThat(car.getTracing()).doesNotContain("-");
     }
 
     @DisplayName("5번 시도 중 3번 이상 4이상이 나오면 car가 움직인 거리는 3이다.")
@@ -42,7 +40,7 @@ class RacingTest {
         int[] ints = {0, 3, 4, 5, 9};
         testCarMoving(ints);
 
-        assertThat(car.getTracing()).hasSize(3);
+        assertThat(car.getTracing()).containsOnlyOnce("---");
     }
 
     private void testCarMoving(int[] ints) {
