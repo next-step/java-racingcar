@@ -42,20 +42,7 @@ public class RacingCarTest {
   }
 
   @Test
-  @DisplayName("자동차 이동")
-  public void checkRacingCarMove_ReturnNumber() {
-    RacingCar racingCar = new RacingCar();
-//        racingCar.moveForward(RandomNumber.calculateRandomNumber());
-//        racingCar.moveForward(RandomNumber.calculateRandomNumber());
-//        racingCar.moveForward(RandomNumber.calculateRandomNumber());
-//        racingCar.moveForward(RandomNumber.calculateRandomNumber());
-    int result = racingCar.position();
-
-    assertThat(result).isGreaterThanOrEqualTo(0);
-  }
-
-  @Test
-  @DisplayName("자동차 객체 여러개 생성 후 자동차객체 carNumber비교")
+  @DisplayName("자동차 객체 여러개 생성 되는지 확인")
   public void checkRacingCarsObject() {
     RacingCars racingCars = new RacingCars(5);
 
