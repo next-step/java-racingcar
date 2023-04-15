@@ -1,7 +1,5 @@
 package com.next.step.step3.dto;
 
-import java.util.List;
-
 public class InputDto {
 
     private final String carNames;
