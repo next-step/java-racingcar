@@ -1,26 +1,36 @@
 package com.next.step.step3.domain;
 
+import com.next.step.step3.domain.vo.CarName;
+import com.next.step.step3.domain.vo.Position;
+
 public class Car {
 
     private static final int MOVE_CONDITION = 4;
 
     private Position position;
 
-    public Car(String position) {
+    private CarName carName;
+
+    public Car(int position, String carName) {
         this.position = new Position(position);
+        this.carName = new CarName(carName);
     }
 
     public void moveCar(int randomNum) {
-        if (isMove(randomNum)) {
-            this.position.movePosition();
+        if (canMove(randomNum)) {
+            this.position = position.move();
         }
     }
 
-    private boolean isMove(int randomNum) {
+    private boolean canMove(int randomNum) {
         return randomNum >= MOVE_CONDITION;
     }
 
-    public String position() {
+    public int position() {
         return this.position.position();
+    }
+
+    public String name() {
+        return carName.carName();
     }
 }
