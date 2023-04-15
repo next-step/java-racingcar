@@ -2,9 +2,6 @@ package study.racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import study.racingcar.strategy.MoveableNumberGenerator;
-import study.racingcar.strategy.NonMovableNumberGenerator;
-import study.racingcar.strategy.NumberGenerator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,9 +11,10 @@ class CarTest {
     @Test
     void when_number_nonMoveable() {
         // given
-        final NumberGenerator numberGenerator = new NonMovableNumberGenerator();
+//        final NumberGenerator numberGenerator = new NonMovableNumberGenerator();
+        final int nonMovableUppserBound = 3;
         // when
-        boolean actualResult = Car.isMovable(numberGenerator);
+        boolean actualResult = Car.isMovable(() -> nonMovableUppserBound);
 
         // then
         assertThat(actualResult).isFalse();
@@ -26,10 +24,24 @@ class CarTest {
     @Test
     void when_number_is_moveable() {
         // given
-        final NumberGenerator numberGenerator = new MoveableNumberGenerator();
+//        final NumberGenerator numberGenerator = new MoveableNumberGenerator();
+        final int movableLowerBound = 4;
 
         // when
-        boolean actualResult = Car.isMovable(numberGenerator);
+        boolean actualResult = Car.isMovable(() -> movableLowerBound);
+
+        // then
+        assertThat(actualResult).isTrue();
+    }
+
+    @DisplayName("5이상의 값일 경우 true를 반환한다")
+    @Test
+    void when_number_is_five() {
+        // given
+        final int number = 5;
+
+        // when
+        boolean actualResult = Car.isMovable(() -> number);
 
         // then
         assertThat(actualResult).isTrue();
