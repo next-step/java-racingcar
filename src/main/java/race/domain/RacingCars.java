@@ -22,8 +22,6 @@ public class RacingCars {
     }
 
     private void addCars(String[] names) {
-        Arrays.stream(names).forEach(name ->
-            cars.add(new Car(name))
-        );
+        Arrays.stream(names).forEach(name -> cars.add(new Car(name)));
     }
 }
