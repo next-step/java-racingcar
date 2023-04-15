@@ -11,8 +11,10 @@ public class ResultView {
 
         for (Car car : carList) {
             car.move(randomNumber());
-            car.printLocation();
+            System.out.println(car.toString());
         }
+        System.out.println();
+
     }
 
     private static int randomNumber(){

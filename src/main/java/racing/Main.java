@@ -9,17 +9,24 @@ public class Main {
     public static void main(String[] args) {
 
         InputView inputView = new InputView();
-        int carCount = inputView.inputCarCount();
-        int tryCount = inputView.inputTryCount();
+
+
+        String[] carsName = (inputView.inputCarName()).split(",");
+        int carCount = carsName.length;
+
 
         Car car = new Car();
         List<Car> carList = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            carList.add(car.addCar());
+            car.addCar(carList);
         }
+
+        car.naming(carsName, carList);
+        int tryCount = inputView.inputTryCount();
 
         for (int i = 0; i < tryCount; i++) {
             resultCars(carList);
         }
+
     }
 }
