@@ -15,11 +15,11 @@ public class Car {
     }
 
     public Car(String carName, int distance) {
-        this(carName, new Distance(distance));
+        this(new Name(carName), new Distance(distance));
     }
 
-    public Car(String carName, Distance distance) {
-        this.name = new Name(carName);
+    public Car(Name name, Distance distance) {
+        this.name = name;
         this.distance = distance;
     }
 

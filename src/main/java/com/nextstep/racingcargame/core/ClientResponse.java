@@ -3,6 +3,7 @@ package com.nextstep.racingcargame.core;
 public class ClientResponse {
 
     private static final String HAS_NEGATIVE_MSG = "시도 횟수는 1 이상의 숫자만 가능합니다.";
+
     private final int numberOfTries;
 
     private final CarNameChunk carNameChunk;
