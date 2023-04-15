@@ -1,4 +1,7 @@
-package racingcar;
+package racingcar.domain;
+
+import racingcar.controller.CarController;
+import racingcar.generator.NumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,16 +16,21 @@ public class Racing {
         this.numberOfRaces = numberOfRaces;
     }
 
-    public void excute() {
+    public void excute(NumberGenerator numberGenerator) {
+        List<Car> cars = getCars();
+
+        IntStream.range(0, numberOfRaces).forEach(i -> {
+            IntStream.range(0, numberOfCars)
+                    .forEach(j -> CarController.move(cars.get(j), numberGenerator));
+            System.out.println("");
+        });
+    }
+
+    private List<Car> getCars() {
         List<Car> cars = new ArrayList<>();
 
         IntStream.range(0, numberOfCars)
                 .forEach(i -> cars.add(new Car()));
-
-        IntStream.range(0, numberOfRaces).forEach(i -> {
-            IntStream.range(0, numberOfCars)
-                    .forEach(j -> cars.get(j).move());
-            System.out.println("");
-        });
+        return cars;
     }
 }
