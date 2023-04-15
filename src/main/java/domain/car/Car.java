@@ -6,7 +6,7 @@ import static constant.Constant.MAX_LENGTH_OF_NAME;
 
 public class Car {
 
-    private String name;
+    private final String name;
     private int distance;
 
     public Car(String name) {

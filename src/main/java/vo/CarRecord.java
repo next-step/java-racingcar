@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class CarRecord {
 
-    private String name;
-    private int distance;
+    private final String name;
+    private final int distance;
 
     public CarRecord(String name, int distance) {
         this.name = name;

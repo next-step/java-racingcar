@@ -32,14 +32,14 @@ public class PrintView {
         }
     }
 
+    private static void printDistance(int distance) {
+        System.out.println("-".repeat(distance));
+    }
+
     private static void nextRound(int carCount, int round) {
         if (round % carCount == 0) {
             System.out.println();
         }
-    }
-
-    private static void printDistance(int distance) {
-        System.out.println("-".repeat(distance));
     }
 
     public static void printWinners(List<CarRecord> winners) {
