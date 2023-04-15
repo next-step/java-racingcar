@@ -1,4 +1,5 @@
-import record.Records;
+import domain.game.RacingGame;
+import domain.record.Records;
 import view.InputView;
 import view.PrintView;
 

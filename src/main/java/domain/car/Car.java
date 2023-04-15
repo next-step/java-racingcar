@@ -1,6 +1,6 @@
-package car;
+package domain.car;
 
-import strategy.MovingStrategy;
+import domain.strategy.MovingStrategy;
 
 import static constant.Constant.MAX_LENGTH_OF_NAME;
 

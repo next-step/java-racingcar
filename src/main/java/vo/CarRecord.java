@@ -1,4 +1,4 @@
-package record;
+package vo;
 
 import java.util.Objects;
 

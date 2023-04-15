@@ -1,5 +1,7 @@
-import car.Cars;
-import record.Records;
+package domain.game;
+
+import domain.car.Cars;
+import domain.record.Records;
 
 public class RacingGame {
 

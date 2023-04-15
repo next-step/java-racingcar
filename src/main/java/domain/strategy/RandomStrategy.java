@@ -1,4 +1,4 @@
-package strategy;
+package domain.strategy;
 
 import java.util.Random;
 
