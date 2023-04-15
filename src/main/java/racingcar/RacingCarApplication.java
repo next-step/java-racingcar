@@ -3,6 +3,7 @@ package racingcar;
 import racingcar.domain.Racing;
 import racingcar.domain.RacingCars;
 import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 import java.util.List;
 
@@ -19,13 +20,11 @@ public class RacingCarApplication {
 
     // 이동 시도 횟수에 따른 racing 진행
     Racing racing = new Racing(racingCars);
-    while (numberOfTrials > 0) {
+    ResultView resultView = new ResultView();
+
+    for(int i = 0; i<numberOfTrials; i++) {
       racing.startRacingRound();
-      numberOfTrials --;
+      resultView.printRacingRound(racing.statusOfRacing(), i);
     }
-
-//        RacingCars racingResult = racing.getRacing();
-
-
   }
 }

@@ -35,7 +35,9 @@ public class RacingCarTest {
   public void moveRacingCar_ReturnPositionValueOne() {
     RacingCar racingCar = new RacingCar();
     MoveStrategy normalMoveStrategy = new NormalMoveStrategy();
+
     racingCar.tryToMove(normalMoveStrategy);
+
     int result = racingCar.position();
 
     assertThat(result).isEqualTo(1);
@@ -54,9 +56,10 @@ public class RacingCarTest {
   public void checkRacingClass() {
     Racing racing = new Racing(new RacingCars(5));
     int numberOfTrials = 4;
+
     while (numberOfTrials > 0) {
       racing.startRacingRound();
-      numberOfTrials --;
+      numberOfTrials--;
     }
 
     assertThat(racing.statusOfRacing()).hasSize(5);
