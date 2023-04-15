@@ -1,20 +1,20 @@
 package racingCar.view;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingCar.car.RacingCar;
 
 public final class RacingCarGameResultView {
 
-  private final List<String> snapShotList;
+  private final List<String> snapShots;
 
-  public RacingCarGameResultView (int moveTrySize) {
-    snapShotList = new ArrayList<>(moveTrySize);
+  public RacingCarGameResultView () {
+    snapShots = new LinkedList<>();
   }
 
   public void printAllSnapShot() {
-    final String allSnapShot = String.join("\n\n", snapShotList);
+    final String allSnapShot = String.join("\n\n", snapShots);
     System.out.println("\n실행 결과");
     System.out.print(allSnapShot);
   }
@@ -33,6 +33,6 @@ public final class RacingCarGameResultView {
         .map(this::getVisualRacingCarDistance)
         .collect(Collectors.joining("\n"));
 
-    snapShotList.add(snapShot);
+    snapShots.add(snapShot);
   }
 }

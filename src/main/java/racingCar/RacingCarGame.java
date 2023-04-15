@@ -1,33 +1,38 @@
 package racingCar;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 import racingCar.car.RacingCar;
+import racingCar.car.move.RacingCarMoveDirectionStrategy;
+import racingCar.car.move.RacingCarMoveServiceLocator;
 import racingCar.view.RacingCarGameResultView;
 import util.RandomUtils;
 
-public class RacingCarGame {
+public final class RacingCarGame {
 
-  private final List<RacingCar> racingCarList;
+  private final List<RacingCar> racingCars;
+  private final RacingCarGameResultView resultView;
 
-  public RacingCarGame(long carCnt) {
-    this.racingCarList = generateRacingCars(carCnt);
+  private final RacingCarMoveServiceLocator racingCarMoveServiceLocator;
+
+  public RacingCarGame(int carCnt, RacingCarGameResultView resultView, List<RacingCarMoveDirectionStrategy> inGameSupportCarMoveDirections) {
+    this.racingCarMoveServiceLocator = new RacingCarMoveServiceLocator(inGameSupportCarMoveDirections);
+    this.racingCars = generateRacingCars(carCnt);
+    this.resultView = resultView;
   }
 
-  private List<RacingCar> generateRacingCars(long carCnt) {
-    List<RacingCar> carList = new ArrayList<>((int) carCnt);
-    for (long i = 1; i <= carCnt; i++) {
-      carList.add(new RacingCar(i));
-    }
-    return Collections.unmodifiableList(carList);
+  private List<RacingCar> generateRacingCars(int carCnt) {
+    return IntStream.rangeClosed(1, carCnt)
+            .mapToObj(carId -> new RacingCar(carId, racingCarMoveServiceLocator))
+            .collect(Collectors.toUnmodifiableList());
   }
 
-  public void play (long moveTryCnt) {
-    RacingCarGameResultView resultView = new RacingCarGameResultView((int) moveTryCnt);
+  public void play (int moveTryCnt) {
     for (long moveCnt = 0; moveCnt < moveTryCnt ; moveCnt++) {
-      moveAllRacingCars(racingCarList);
-      resultView.storeSnapShotOfMoveCnt(racingCarList);
+      moveAllRacingCars(racingCars);
+      resultView.storeSnapShotOfMoveCnt(racingCars);
     }
 
     resultView.printAllSnapShot();

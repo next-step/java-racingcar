@@ -1,28 +1,32 @@
 package racingCar.car;
 
+import racingCar.car.move.RacingCarMoveDirectionStrategy;
+import racingCar.car.move.RacingCarMoveServiceLocator;
+
 public class RacingCar {
 
   private final long carId;
+  private final RacingCarMoveServiceLocator moveServiceLocator;
   private int position;
 
-  private static final int MIN_MOVE_ALLOWED_TRY = 4;
-
-  public RacingCar (long carId) {
+  public RacingCar (long carId, RacingCarMoveServiceLocator moveServiceLocator) {
     this.carId = carId;
     this.position = 0;
+    this.moveServiceLocator = moveServiceLocator;
   }
 
   public void moveIfPossible(int moveAck) {
-    if (isMoveTrySuccess(moveAck)) {
-      position++;
+    RacingCarMoveDirectionStrategy moveStrategy = moveServiceLocator.getRacingCarMoveStrategy(moveAck);
+    if (moveStrategy != null) {
+      moveStrategy.moveAndSetPosition(this);
     }
-  }
-
-  private boolean isMoveTrySuccess(int moveAck) {
-    return moveAck >= MIN_MOVE_ALLOWED_TRY;
   }
 
   public int getPosition() {
     return position;
+  }
+
+  public void moveForward() {
+    this.position++;
   }
 }
