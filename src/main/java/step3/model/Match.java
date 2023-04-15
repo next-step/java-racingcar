@@ -25,28 +25,20 @@ public class Match {
     }
 
     public List<String> winnerDisplay() {
-        //전체 점수를 가져온데
-        List<Integer> positions = new ArrayList<>();
-        for(Racer racer : racerList) {
-            positions.add(racer.getFinalPosition());
-        }
 
         //최고득점을 가져온다
         int maxPosition = -1;
-        for(Integer position : positions) {
-            maxPosition = Math.max(maxPosition, position);
+        for(Racer racer : racerList) {
+            maxPosition = Math.max(maxPosition, racer.getFinalPosition());
         }
-        final int maxPos = maxPosition;
-
 
         //최고득점인 사람을 찾는다
         List<String> winnerList = new ArrayList<>();
         for(Racer racer : racerList) {
-            if(racer.getFinalPosition()== maxPos) {
+            if(racer.getFinalPosition()== maxPosition) {
                 winnerList.add(racer.getCar().getName());
             }
         }
-
 
         return winnerList;
     }
