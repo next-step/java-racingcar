@@ -5,8 +5,25 @@ import org.junit.jupiter.api.Test;
 
 import static calculator.StringCalculator.splitAndSum;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringCalculatorTest {
+
+    @Test
+    void 음수() {
+        assertThatThrownBy(() -> splitAndSum("-1,2:3"))
+                .isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    void 콜론구분자() {
+        assertThat(splitAndSum("1,2:3")).isEqualTo(6);
+    }
+
+    @Test
+    void 컴마구분자() {
+        assertThat(splitAndSum("1,2")).isEqualTo(3);
+    }
 
     @Test
     void 숫자_하나() {
