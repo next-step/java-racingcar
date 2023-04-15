@@ -1,5 +1,7 @@
 package step3.model;
 
+import step3.present.DisplayRaceVO;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -15,10 +17,10 @@ public class Match {
                 .collect(Collectors.toList());
     }
 
-    public List<List<String>> display() {
+    public List<DisplayRaceVO> display() {
         return collect.stream()
-                .map(Racer::getResults)
-                .collect(Collectors.toList());
+            .map(racer -> new DisplayRaceVO(new Result(racer.getResults()), racer.getCar()))
+            .collect(Collectors.toList());
     }
 
     public List<String> winnerDisplay() {
