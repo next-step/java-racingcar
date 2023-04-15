@@ -6,18 +6,22 @@ public class Car {
      */
     public static final String CAR_SHAPE = "-";
     public static final int MOVABLE_LOWER_BOUND = 4;
-    private int moveCount = 0;
+    private final Position position;
+
+    public Car() {
+        this.position = new Position();
+    }
 
     public static boolean isMovable(int randomValue) {
         return randomValue >= MOVABLE_LOWER_BOUND;
     }
 
     public void move() {
-        moveCount++;
+        position.increase();
     }
 
     @Override
     public String toString() {
-        return CAR_SHAPE.repeat(moveCount);
+        return CAR_SHAPE.repeat(position.getPosition());
     }
 }
