@@ -7,6 +7,10 @@ public class Car {
         this.distance = distance;
     }
 
+    public int getDistance() {
+        return distance;
+    }
+
     public void increaseDistance() {
         distance++;
     }

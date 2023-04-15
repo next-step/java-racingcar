@@ -11,16 +11,30 @@ public class Cars {
         this.cars = cars;
     }
 
-    public void goForward(int period) {
-        for (int i = 0; i <= period; i++) {
-            for (Car car : cars) {
-                Random random = new Random();
-                int randomValue = random.nextInt();
+    public void goForward() {
+        checkForwardCondition();
 
-                if (randomValue >= RANDOM_NUMBER_LIMIT) {
-                    car.increaseDistance();
-                }
+    }
+
+    public List<Car> getCars() {
+        return this.cars;
+    }
+
+
+    private void checkForwardCondition() {
+        for (Car car : cars) {
+            if (isOverLimit(generateRandomNumber())) {
+                car.increaseDistance();
             }
         }
+    }
+
+    private boolean isOverLimit(int randomValue) {
+        return randomValue >= RANDOM_NUMBER_LIMIT;
+    }
+
+    private int generateRandomNumber() {
+        Random random = new Random();
+        return random.nextInt();
     }
 }
