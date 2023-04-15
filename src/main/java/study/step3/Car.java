@@ -4,9 +4,8 @@ import java.security.InvalidParameterException;
 import java.util.Random;
 
 public class Car {
-
-    private int position;
     private String name;
+    private int position;
 
     public Car() {
         position = 0;
@@ -18,6 +17,11 @@ public class Car {
         }
         this.name = name;
         position = 0;
+    }
+
+    public Car(String name, int position) {
+        this.name = name;
+        this.position = position;
     }
 
     public int getPosition() {
@@ -44,7 +48,12 @@ public class Car {
         return random.nextInt(10);
     }
 
-    public void printPosition() {
-        System.out.println(name + " : " + "-".repeat(position));
+    public String printPosition() {
+        return name + " : " + "-".repeat(position);
+    }
+
+    public void updateInfo(String name, int position) {
+        this.name = name;
+        this.position = position;
     }
 }
