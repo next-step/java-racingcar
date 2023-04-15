@@ -21,8 +21,20 @@ public class ResultView {
 
     private static void printRecord(final Records records) {
         for (Record record : records.getRecords()) {
-            printDistance(record);
+            mergePrint(record);
             System.out.println();
+        }
+    }
+
+    private static void mergePrint(Record record) {
+        printName(record);
+        System.out.print(" ");
+        printDistance(record);
+    }
+
+    private static void printName(final Record record) {
+        for (int i = 0; i < record.getName().length(); i++) {
+            System.out.print(record.getName() + " :");
         }
     }
 

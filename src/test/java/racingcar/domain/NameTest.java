@@ -20,7 +20,7 @@ class NameTest {
         // Given & When
         Name name = new Name(CAR_NAME);
 
-        final String names = name.getNames();
+        final String names = name.getName();
 
         // Then
         assertThat(names).contains(CAR_NAME);

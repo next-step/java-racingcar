@@ -36,7 +36,7 @@ public class Game {
 
         for (Car car : carFactory.getCars()) {
             car.move(randomMoveStrategy);
-            roundRecords.addRecord(new Record(car.getPosition()));
+            roundRecords.addRecord(new Record(car.getPosition(), car.getName()));
         }
         return roundRecords;
     }

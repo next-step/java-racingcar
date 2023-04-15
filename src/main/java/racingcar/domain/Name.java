@@ -2,13 +2,13 @@ package racingcar.domain;
 
 public class Name {
 
-    private String names;
+    private String name;
 
     private static final int MAX_NAME_LENGTH = 5;
 
-    public Name(final String names) {
-        validate(names);
-        this.names = names;
+    public Name(final String name) {
+        validate(name);
+        this.name = name;
     }
 
     private void validate(String names) {
@@ -21,7 +21,7 @@ public class Name {
         }
     }
 
-    public String getNames() {
-        return names;
+    public String getName() {
+        return name;
     }
 }
