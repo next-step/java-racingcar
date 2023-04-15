@@ -1,4 +1,4 @@
-package racing.carRacing;
+package racing.carRacing.model;
 
 public interface MovementStrategy {
     boolean movement();

@@ -1,4 +1,4 @@
-package racing.carRacing;
+package racing.carRacing.model;
 
 public class Stages {
     private final Count numberOfStages;
@@ -7,16 +7,16 @@ public class Stages {
         this.numberOfStages = numberOfStages;
     }
 
-    public void startGame(Cars cars) {
+    public void startGame(Cars cars, MovementStrategy movementStrategy) {
         numberOfStages.countDown();
-        cars.run();
+        cars.run(movementStrategy);
     }
 
     public Count currentStage() {
         return numberOfStages;
     }
 
-    public boolean isFinished() {
+    public boolean hasMoreStages() {
         return numberOfStages.isOverZero();
     }
 }

@@ -1,4 +1,4 @@
-package racing.carRacing;
+package racing.carRacing.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -42,7 +42,7 @@ class CarTest {
     @ValueSource(ints = {4, 5, 8, 9})
     @DisplayName("이동 테스트")
     void runMoveTest(int input) {
-        Car car = new Car(input);
+        Car car = new Car(input, "test");
 
         car.run(() -> true);
 
@@ -53,7 +53,7 @@ class CarTest {
     @ValueSource(ints = {0, 1, 2, 3})
     @DisplayName("중지 테스트")
     void runStopTest(int input) {
-        Car car = new Car(input);
+        Car car = new Car(input, "test");
 
         car.run(() -> false);
 
@@ -61,23 +61,46 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("우승자인 차 확인 테스트")
+    @DisplayName("위치가 같은 차 - true")
     void winnerCarTest() {
-        int maxPosition = 3;
+        Car car = new Car(3, "test");
 
-        Car car = new Car(3);
-
-        assertThat(car.getMaxPosition(maxPosition)).isTrue();
+        assertThat(car.equalsPosition(3)).isTrue();
     }
 
     @Test
-    @DisplayName("우승자가 아닌 차 확인 테스트")
+    @DisplayName("위치가 같은 차 - false")
     void loserCarTest() {
-        int maxPosition = 3;
+        Car car = new Car(2, "test");
 
-        Car car = new Car(2);
+        assertThat(car.equalsPosition(3)).isFalse();
+    }
 
-        assertThat(car.getMaxPosition(maxPosition)).isFalse();
+    @Test
+    @DisplayName("차 위치 비교 테스트 - 포지션 위치 값이 작음")
+    void compareToLoser() {
+        Car car1 = new Car(2, "test");
+        Car car2 = new Car(3, "test2");
+
+        assertThat(car1.compareTo(car2)).isEqualTo(-1);
+    }
+
+    @Test
+    @DisplayName("차 위치 비교 테스트 - 포지션 위치 값이 같음")
+    void compareToEqual() {
+        Car car1 = new Car(3, "test");
+        Car car2 = new Car(3, "test2");
+
+        assertThat(car1.compareTo(car2)).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("차 위치 비교 테스트 - 포지션 위치 값이 큼")
+    void compareToGreater() {
+        Car car1 = new Car(4, "test");
+        Car car2 = new Car(3, "test2");
+
+        assertThat(car1.compareTo(car2)).isEqualTo(1);
     }
 
 }

@@ -1,23 +1,23 @@
-package racing.carRacing;
+package racing.carRacing.model;
 
-public class Car {
-    public static final int CONDITION = 5;
+public class Car implements Comparable<Car> {
+    public static final int MAX_SIZE_OF_NAME = 5;
     public static final int FIRST_POSITION = 0;
 
     private int position;
     private String name;
 
-    public Car(String name) {
-        position = FIRST_POSITION;
-        checkWrongString(name);
+    public Car(int position, String name) {
+        checkNameValidation(name);
+        this.position = position;
         this.name = name;
     }
 
-    public Car(int position) {
-        this.position = position;
+    public Car(String name) {
+        this(FIRST_POSITION, name);
     }
 
-    private void checkWrongString(String name) {
+    private void checkNameValidation(String name) {
         isNullOrEmpty(name);
         isWrongLength(name);
     }
@@ -37,7 +37,7 @@ public class Car {
     }
 
     private void isWrongLength(String name) {
-        if (name.length() > CONDITION) {
+        if (name.length() > MAX_SIZE_OF_NAME) {
             throw new IllegalArgumentException("자동차 이름은 5글자 이상 초과할 수 없습니다.");
         }
     }
@@ -56,7 +56,12 @@ public class Car {
         return name;
     }
 
-    public boolean getMaxPosition(int maxPosition) {
-        return position == maxPosition;
+    public boolean equalsPosition(int position) {
+        return this.position == position;
+    }
+
+    @Override
+    public int compareTo(Car car) {
+        return Integer.compare(position, car.getCurrentPosition());
     }
 }
