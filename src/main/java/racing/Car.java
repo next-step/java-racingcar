@@ -6,9 +6,11 @@ public class Car {
     private static final Integer MOVE_CRITERIA = 4;
     private static final Integer MAX_RANDOM = 9;
 
+    private final String name;
     private int position;
 
-    public Car() {
+    public Car(String name) {
+        this.name = name;
         this.position = DEFAULT_POSITION;
     }
 
@@ -23,5 +25,9 @@ public class Car {
 
     public int position() {
         return position;
+    }
+
+    public String name() {
+        return name;
     }
 }

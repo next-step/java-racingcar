@@ -14,13 +14,13 @@ public class UnmodifiableListTest {
         int carCount = 3;
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+            cars.add(new Car("june"));
         }
 
         List<Car> unmodifiableCars = Collections.unmodifiableList(cars);
-        assertThatThrownBy(() -> unmodifiableCars.set(0, new Car()))
+        assertThatThrownBy(() -> unmodifiableCars.set(0, new Car("june")))
                 .isInstanceOf(UnsupportedOperationException.class);
-        assertThatNoException().isThrownBy(() -> cars.set(0, new Car()));
+        assertThatNoException().isThrownBy(() -> cars.set(0, new Car("june")));
     }
 
     @Test

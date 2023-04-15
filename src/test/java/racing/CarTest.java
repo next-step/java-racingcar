@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -11,7 +13,7 @@ public class CarTest {
     @ParameterizedTest(name = "랜덤값이 {0}일 때 자동차는 정지한다")
     @ValueSource(ints = {0, 1, 2, 3})
     void 자동차_정지(int randomNumber) {
-        Car car = new Car();
+        Car car = new Car("june");
 
         car.move(randomNumber);
         assertThat(car.position()).isZero();
@@ -20,7 +22,7 @@ public class CarTest {
     @ParameterizedTest(name = "랜덤값이 {0}일 때 자동차는 이동한다")
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     void 자동차_이동(int randomNumber) {
-        Car car = new Car();
+        Car car = new Car("june");
 
         car.move(randomNumber);
         assertThat(car.position()).isEqualTo(1);
@@ -29,7 +31,7 @@ public class CarTest {
     @ParameterizedTest(name = "랜덤값이 경계를 벗어날때 에러를 던진다")
     @ValueSource(ints = {-1, 10})
     void 자동차_이동_에러(int randomNumber) {
-        Car car = new Car();
+        Car car = new Car("june");
 
         assertThatThrownBy(() -> car.move(randomNumber))
                 .isInstanceOf(RuntimeException.class)
@@ -38,10 +40,21 @@ public class CarTest {
 
     @Test
     void 모든_자동차들은_이동횟수만큼_이동한다() {
-        Cars movedCars = new Cars(3, 3).move();
+        Cars movedCars = new Cars(List.of("a", "b", "c"), 3).move();
         movedCars.values()
                 .forEach(car -> {
                     assertThat(car.position()).isBetween(0, 3);
                 });
+    }
+
+    @Test
+    void 자동차에_이름을_부여() {
+        List<String> names = List.of("pobi", "crong", "honux");
+        int moveCount = 5;
+
+        Cars cars = new Cars(names, moveCount);
+        for (int i = 0; i < 3; i++) {
+            assertThat(cars.values().get(i).name()).isEqualTo(names.get(i));
+        }
     }
 }
