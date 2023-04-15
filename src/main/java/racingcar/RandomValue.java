@@ -6,7 +6,7 @@ public class RandomValue {
 
     private int value = 0;
 
-    public int getValue() {
+    public static int getValue() {
         return new Random().nextInt(10);
     }
 }

@@ -1,15 +1,11 @@
 package racingcar;
 
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 public class Car {
 
     private int position = 0;
 
-    public void move(int instance) {
-        if (judgeForth(instance)) position++;
+    public void move(int distance) {
+        if (judgeForth(distance)) position++;
     }
 
     public boolean judgeForth(int degree) {
