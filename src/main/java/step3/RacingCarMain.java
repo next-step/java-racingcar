@@ -1,6 +1,5 @@
 package step3;
 
-import step3.model.Cars;
 import step3.view.InputView;
 
 public class RacingCarMain {
@@ -12,13 +11,5 @@ public class RacingCarMain {
         RacingProcess racingProcess = new RacingProcess(carCount, periodCount);
         racingProcess.racingStart();
 
-
-//        InputView inputView = new InputView();
-//        Map<String, Integer> inputMap = inputView.inputValue();
-//
-//        RacingProcess racing = new RacingProcess();
-//
-//        ResultView.startUI();
-//        car.iteratePeriod();
     }
 }
