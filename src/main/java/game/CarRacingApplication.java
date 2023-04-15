@@ -1,5 +1,11 @@
 package game;
 
+import game.service.CarRacing;
+import game.view.InputView;
+import game.view.ResultView;
+
+import java.util.List;
+
 /**
  * 기능 요구사항
  * <pre>
@@ -13,9 +19,22 @@ package game;
 public class CarRacingApplication {
 
     public static void main(String[] args) {
-        RacingOptions racingOptions = InputView.showAndGetOptions();
-        CarRacing carRacing = new CarRacing(racingOptions);
-        carRacing.start();
-        carRacing.end();
+        List<String> carNames = InputView.showAndGetCarNames();
+        int racingRep = InputView.showAndGetRacingRep();
+        throwIfNegativeNumber(racingRep);
+
+        CarRacing carRacing = new CarRacing(carNames);
+        ResultView.displayExecuteResultMessage();
+        for (int i = 0; i < racingRep; i++) {
+            carRacing.start();
+            ResultView.displayCarPositions(carRacing.getCars());
+        }
+        ResultView.displayCarWinners(carRacing.getWinners());
+    }
+
+    private static void throwIfNegativeNumber(int number) {
+        if (number <= 0) {
+            throw new IllegalArgumentException("입력은 0 보다 큰 양수만 가능합니다.");
+        }
     }
 }
