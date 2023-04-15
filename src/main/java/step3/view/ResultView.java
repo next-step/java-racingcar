@@ -1,4 +1,4 @@
-package step3;
+package step3.view;
 
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
