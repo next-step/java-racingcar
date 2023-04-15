@@ -13,9 +13,9 @@ public class CarRacingTest {
 	@DisplayName("우승자를 만든다.")
 	@Test
 	void test1() {
-		Car pobi = new Car("pobi", new Location(5));
-		Car crong = new Car("crong", new Location(5));
-		Car honux = new Car("honux", new Location(3));
+		Car pobi = new Car(new Name("pobi"), new Location(5));
+		Car crong = new Car(new Name("crong"), new Location(5));
+		Car honux = new Car(new Name("honux"), new Location(3));
 
 		List<Car> cars = new ArrayList<>();
 		cars.add(pobi);

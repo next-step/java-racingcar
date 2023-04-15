@@ -8,10 +8,10 @@ public class Car {
 
 	private static final int MOVE_CONDITION_MINIMUM = 4;
 
+	private final Name name;
 	private final Location location;
-	private final String name;
 
-	public Car(String name, Location location) {
+	public Car(Name name, Location location) {
 		this.name = name;
 		this.location = location;
 	}
