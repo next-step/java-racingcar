@@ -38,10 +38,10 @@ public class Racer {
         );
     }
 
-    private String calculateResult(int roundCount, List<Integer> scoreList) {
+    private String calculateResult(int roundCount) {
         int position = 0;
         for (int roundIndex = 0; roundIndex <= roundCount; roundIndex++) {
-            if (moveForward(scoreList.get(roundIndex))) {
+            if (moveForward(scores.getScoreList().get(roundIndex))) {
                 position++;
             }
         }
