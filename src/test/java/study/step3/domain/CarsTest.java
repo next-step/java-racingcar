@@ -17,10 +17,10 @@ class CarsTest {
         List<Car> carList = new ArrayList<>();
 
         for (int i = 0; i < 3; i++) {
-            carList.add(new Car(new LessThanMoveCondition(4)));
+            carList.add(new Car(new LessThanMoveCondition(4, new RandomMove())));
         }
 
-        cars = new Cars(carList);
+        cars = new Cars(3);
     }
 
     @Test

@@ -12,7 +12,7 @@ class LessThanMoveConditionTest {
 
     @BeforeEach
     void init() {
-        lessThanMoveCondition = new LessThanMoveCondition(4);
+        lessThanMoveCondition = new LessThanMoveCondition(4, new RandomMove());
     }
 
     @ParameterizedTest(name = "[{index}] {0}라는 숫자가 4이하 인지 : {1}")
@@ -21,7 +21,7 @@ class LessThanMoveConditionTest {
         //given
 
         //when
-        boolean condition = lessThanMoveCondition.isPossible(distance);
+        boolean condition = lessThanMoveCondition.isPossible();
 
         //then
         assertThat(condition).isEqualTo(expected);

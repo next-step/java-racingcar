@@ -11,8 +11,8 @@ public class Car {
         this.moveConditionStrategy = moveConditionStrategy;
     }
 
-    public void moveForward(int distance) {
-        if (moveConditionStrategy.isPossible(distance)) {
+    public void moveForward() {
+        if (moveConditionStrategy.isPossible()) {
             position += GO;
         }
     }

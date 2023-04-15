@@ -2,15 +2,17 @@ package study.step3.domain;
 
 public class LessThanMoveCondition implements MoveConditionStrategy {
 
-    private final int criteria;
+    private int criteria;
+    private MoveStrategy moveStrategy;
 
-    public LessThanMoveCondition(int criteria) {
+    public LessThanMoveCondition(int criteria, MoveStrategy moveStrategy) {
         this.criteria = criteria;
+        this.moveStrategy = moveStrategy;
     }
 
     @Override
-    public boolean isPossible(int distance) {
-        if (distance >= criteria) {
+    public boolean isPossible() {
+        if (moveStrategy.createMove() >= criteria) {
             return true;
         }
         return false;
