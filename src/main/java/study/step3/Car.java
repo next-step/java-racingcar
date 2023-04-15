@@ -43,4 +43,8 @@ public class Car {
         Random random = new Random();
         return random.nextInt(10);
     }
+
+    public void printPosition() {
+        System.out.println(name + " : " + "-".repeat(position));
+    }
 }

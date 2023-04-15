@@ -40,17 +40,9 @@ public class CarRacing {
 
     private void printStateBoard() {
         for (Car car : cars) {
-            System.out.println(printCarState(car.getPosition()));
+            car.printPosition();
         }
         System.out.println();
-    }
-
-    String printCarState(int position) {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < position; i++) {
-            stringBuilder.append("-");
-        }
-        return stringBuilder.toString();
     }
 
     public static void main(String[] args) {
