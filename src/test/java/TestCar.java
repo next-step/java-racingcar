@@ -44,4 +44,11 @@ public class TestCar {
         String actual = car.getName();
         assertThat(actual).isEqualTo(expected);
     }
+
+    @Test
+    @DisplayName("차량 이름 길이가 5자 초과하면 IlligalArgumentException 발생")
+    public void car_name_above_5() {
+        assertThatThrownBy(() -> new Car("bbbbbbbb"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }

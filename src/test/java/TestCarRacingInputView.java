@@ -49,11 +49,4 @@ public class TestCarRacingInputView {
         int actual = InputView.getNumber("5");
         assertThat(actual).isEqualTo(5);
     }
-
-    @Test
-    @DisplayName("차량 이름 길이가 5자 초과하면 IlligalArgumentException 발생")
-    public void car_name_above_5() {
-        assertThatThrownBy(() -> InputView.getNameOfCars("aaa,bbbbbb,cccc,dddd,eeee,ffff"))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
 }

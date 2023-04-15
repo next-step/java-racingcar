@@ -1,3 +1,5 @@
+import CarRacing.Competition;
+import CarRacing.view.InputView;
 import CarRacing.view.ResultView;
 import CarRacing.Car;
 
@@ -25,8 +27,9 @@ public class TestCarRacingResultView {
     @DisplayName("Distance 출력 정상인지 확인")
     public void printCurrentDistance() {
         List<Car> cars = new ArrayList<>();
-        cars.add(new Car("pobi"));
-        cars.get(0).move(5);
+        Car car = new Car("pobi");
+        car.move(5);
+        cars.add(car);
 
         System.out.println("== expected > pobi : ------");
         System.out.print(  "== actual   > ");
@@ -36,10 +39,15 @@ public class TestCarRacingResultView {
     @Test
     @DisplayName("Winner 여러 명 출력 확인")
     public void printWinners_manyWinners() {
+        List<Car> cars = new ArrayList<>();
         List<String> winners = Arrays.asList("pobi", "crong", "honux");
 
+        for (String winner: winners) {
+            cars.add(new Car(winner));
+        }
+
         String expected = "pobi, crong, honux가 최종 우승했습니다.";
-        ResultView.printWinners(winners);
+        ResultView.printWinners(cars);
 
         assertThat(outputStreamCaptor.toString().trim()).isEqualTo(expected);
     }
