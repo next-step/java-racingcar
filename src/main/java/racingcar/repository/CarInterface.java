@@ -1,7 +1,7 @@
 package racingcar.repository;
 
 public interface CarInterface {
-  public void tryToMove(MoveStrategy moveStrategy);
+  void tryToMove(MoveStrategy moveStrategy);
 
-  public int position();
+  int position();
 }

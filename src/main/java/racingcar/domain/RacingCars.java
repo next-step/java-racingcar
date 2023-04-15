@@ -1,8 +1,5 @@
 package racingcar.domain;
 
-import racingcar.repository.MoveStrategy;
-import racingcar.repository.NormalMoveStrategy;
-
 public class RacingCars {
   private RacingCar[] racingCars;
 

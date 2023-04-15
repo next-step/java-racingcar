@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import racingcar.repository.NormalMoveStrategy;
 import racingcar.repository.MoveStrategy;
-import racingcar.view.ResultView;
 
 public class Racing {
   private RacingCars racing;

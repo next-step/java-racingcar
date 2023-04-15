@@ -1,6 +1,8 @@
 package racingcar.repository;
 
 import racingcar.domain.RandomNumber;
+import static racingcar.repository.ConstantMoveFactors.DEFAULT_CAR_MOVEMENT_STANDARD;
+import static racingcar.repository.ConstantMoveFactors.DEFAULT_MOVEMENT_DISTANCE;
 
 public class NormalMoveStrategy implements MoveStrategy {
 
