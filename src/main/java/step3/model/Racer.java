@@ -9,27 +9,31 @@ public class Racer {
     private static final Random random = new Random();
     private static final int MOVE_FORWARD_THRESHOLD = 4;
     private final List<Integer> scores;
-    private final List<String> results;
+    private final Result results;
+    private final Car car;
 
-    public Racer(int iterations) {
+    public Racer(int iterations, Car car) {
         if (iterations < 0) {
             throw new RuntimeException("iterations 는 1 이상이어야 합니다");
         }
         this.scores = doRace(iterations);
         this.results = calculateResults(scores);
+        this.car = car;
     }
 
     private List<Integer> doRace(int iterations) {
         return IntStream.range(0, iterations)
-                .boxed().map(integer -> randomScore())
-                .collect(Collectors.toList());
+            .boxed().map(integer -> randomScore())
+            .collect(Collectors.toList());
     }
 
-    public List<String> calculateResults(List<Integer> scoreList) {
-        return IntStream.range(0, scoreList.size())
+    public Result calculateResults(List<Integer> scoreList) {
+        return new Result(
+            IntStream.range(0, scoreList.size())
                 .boxed()
                 .map(integer -> calculateResult(integer, scoreList))
-                .collect(Collectors.toList());
+                .collect(Collectors.toList())
+        );
     }
 
     private String calculateResult(int roundCount, List<Integer> scoreList) {
@@ -51,10 +55,18 @@ public class Racer {
     }
 
     public List<String> getResults() {
-        return results;
+        return results.getPositionList();
     }
 
     private Integer randomScore() {
         return random.nextInt(9);
+    }
+
+    public Integer getFinalPosition() {
+        return results.getPositionList().get(results.getPositionList().size() - 1).length();
+    }
+
+    public Car getCar() {
+        return this.car;
     }
 }
