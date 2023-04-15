@@ -3,7 +3,6 @@ package step3.model;
 import step3.present.DisplayRaceVO;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -14,11 +13,15 @@ public class Match {
     private final List<Racer> winnerList;
 
     public Match(List<Car> participates, int iterations) {
-        this.racerList = IntStream.range(0, participates.size())
+        this.racerList = makeRacers(participates, iterations);
+        this.winnerList = getWinnerList();
+    }
+
+    private static List<Racer> makeRacers(List<Car> participates, int iterations) {
+        return IntStream.range(0, participates.size())
             .boxed()
             .map(integer -> new Racer(iterations, participates.get(integer)))
             .collect(Collectors.toList());
-        this.winnerList = getWinnerList();
     }
 
     public List<DisplayRaceVO> display() {
