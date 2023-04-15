@@ -18,7 +18,8 @@ public class CarTest {
         //then
         assertThatThrownBy(() -> {
             new Car(input);
-        }).isInstanceOf(IllegalArgumentException.class);
+        }).isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining("자동차 이름은 5자를 초과할수 없다");
     }
 
     @DisplayName("자동차에 이름을 부여할 수 있다")
