@@ -1,29 +1,56 @@
 package study.carrace.step3.domain;
 
 
+import study.carrace.step3.domain.exception.IllegalCarNameException;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Car {
-    private final RandomIntegerGenerator randomIntegerGenerator;
-    private final int movableThreshold;
-    private final List<Boolean> moveStatus;
+    private static final char POSITION_CURSOR = '-';
+    private static final int CAR_NAME_LENGTH_THRESHOLD = 5;
 
-    public Car(RandomIntegerGenerator randomIntegerGenerator, int movableThreshold) {
-        this.randomIntegerGenerator = randomIntegerGenerator;
-        this.movableThreshold = movableThreshold;
-        this.moveStatus = new ArrayList<>();
+    private final String name;
+    private final MoveStrategy moveStrategy;
+    private final List<Boolean> moveStatuses;
+
+    public Car(String name, MoveStrategy moveStrategy) {
+        this.name = name;
+        this.moveStrategy = moveStrategy;
+        this.moveStatuses = new ArrayList<>();
+
+        validateNameLength(name);
     }
 
     public void moveOrStop() {
-        moveStatus.add(isMovable());
+        moveStatuses.add(moveStrategy.moveOrStop());
     }
 
-    public List<Boolean> getMoveStatus() {
-        return moveStatus;
+    public String currentPosition() {
+        StringBuilder currentPosition = new StringBuilder()
+                .append(name)
+                .append(" : ");
+
+        moveStatuses.stream()
+                .filter(moveStatus -> moveStatus)
+                .forEach(moveStatus -> currentPosition.append(POSITION_CURSOR));
+
+        return currentPosition.toString();
     }
 
-    private boolean isMovable() {
-        return randomIntegerGenerator.generate() >= movableThreshold;
+    public long numberOfMove() {
+        return moveStatuses.stream()
+                .filter(b -> b)
+                .count();
+    }
+
+    public String name() {
+        return name;
+    }
+
+    private void validateNameLength(String name) {
+        if(name.length() > CAR_NAME_LENGTH_THRESHOLD) {
+            throw new IllegalCarNameException(name);
+        }
     }
 }

@@ -1,31 +1,25 @@
 package study.carrace.step3.presentation;
 
-import study.carrace.step3.domain.Car;
+import study.carrace.step3.application.RaceManager;
 
-import java.util.List;
+import static study.carrace.step3.presentation.PromptMessage.*;
 
 public class RaceMonitor {
-    private final char POSITION_CURSOR = '-';
-    private final List<Car> cars;
+    private final RaceManager raceManager;
 
-    public RaceMonitor(List<Car> cars) {
-        this.cars = cars;
+    public RaceMonitor(RaceManager raceManager) {
+        this.raceManager = raceManager;
     }
 
     public void showCarsPosition() {
-        cars.forEach(car -> showPositionOf(car));
+        System.out.println(raceManager.carsPosition());
     }
 
-    private void showPositionOf(Car car) {
-        System.out.println("🚙" + positionOf(car));
+    public void announceRaceResult() {
+        System.out.println(RACE_RESULT_ANNOUNCE_MESSAGE.getMessage());
     }
 
-    private String positionOf(Car car) {
-        StringBuilder carPosition = new StringBuilder();
-        car.getMoveStatus().stream()
-                .filter(moveStatus -> moveStatus)
-                .forEach(moveStatus -> carPosition.append(POSITION_CURSOR));
-
-        return carPosition.toString();
+    public void announceWinners() {
+        System.out.println(raceManager.winners() + WINNER_ANNOUNCE_MESSAGE.getMessage());
     }
 }
