@@ -9,7 +9,7 @@ public class Expression {
         this.expression = expression;
         this.delimiter = delimiter;
     }
-    
+
     public String[] split() {
         return expression.split(delimiter);
     }
