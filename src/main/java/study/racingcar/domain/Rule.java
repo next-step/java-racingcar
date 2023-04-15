@@ -4,6 +4,9 @@ import study.racingcar.strategy.NumberGenerator;
 import study.racingcar.strategy.RandomNumberGenerator;
 
 public class Rule {
+    /**
+     * 게임에 대한 모든 수정 가능한 rule을 관리
+     */
 
     private static final NumberGenerator numberGenerator = new RandomNumberGenerator();
 
