@@ -17,7 +17,7 @@ public class RacerTest {
         //given
         int iterations = 5;
         //when
-        Racer racer = new Racer(iterations, new Car("hello"));
+        Racer racer = new Racer(iterations);
         //then
         assertThat(racer.getResults()).hasSize(iterations);
     }
@@ -29,7 +29,7 @@ public class RacerTest {
         //when
         //then
         assertThatThrownBy(() -> {
-            Racer racer = new Racer(iterations, new Car("hello"));
+            Racer racer = new Racer(iterations);
         }).isInstanceOf(RuntimeException.class);
     }
 
@@ -37,17 +37,17 @@ public class RacerTest {
     @Test
     public void 결과계산() {
         //given
-        Racer racer = new Racer(2, new Car("hello"));
+        Racer racer = new Racer(2);
         //when
-        List<String> results = racer.calculateResults(List.of(7, 1, 7, 1, 7)).getPositionList();
+        List<String> results = racer.calculateResults(List.of(7, 1, 7, 1, 7));
         //then
         assertAll(
-            () -> assertThat(results).hasSize(5),
-            () -> assertThat(results.get(0)).isEqualTo("-"),
-            () -> assertThat(results.get(1)).isEqualTo("-"),
-            () -> assertThat(results.get(2)).isEqualTo("--"),
-            () -> assertThat(results.get(3)).isEqualTo("--"),
-            () -> assertThat(results.get(4)).isEqualTo("---")
+                () -> assertThat(results).hasSize(5),
+                () -> assertThat(results.get(0)).isEqualTo("-"),
+                () -> assertThat(results.get(1)).isEqualTo("-"),
+                () -> assertThat(results.get(2)).isEqualTo("--"),
+                () -> assertThat(results.get(3)).isEqualTo("--"),
+                () -> assertThat(results.get(4)).isEqualTo("---")
         );
     }
 
@@ -55,23 +55,23 @@ public class RacerTest {
     @Test
     public void 전진하는4이상() {
         //given
-        Racer racer = new Racer(2, new Car("hello"));
+        Racer racer = new Racer(2);
         List<Integer> scores = List.of(4, 4, 4, 4, 4, 4, 4, 4, 4, 4);
         //when
-        List<String> results = racer.calculateResults(scores).getPositionList();
+        List<String> results = racer.calculateResults(scores);
         //then
         assertAll(
-            () -> assertThat(results).hasSize(scores.size()),
-            () -> assertThat(results.get(0)).isEqualTo("-"),
-            () -> assertThat(results.get(1)).isEqualTo("--"),
-            () -> assertThat(results.get(2)).isEqualTo("---"),
-            () -> assertThat(results.get(3)).isEqualTo("----"),
-            () -> assertThat(results.get(4)).isEqualTo("-----"),
-            () -> assertThat(results.get(5)).isEqualTo("------"),
-            () -> assertThat(results.get(6)).isEqualTo("-------"),
-            () -> assertThat(results.get(7)).isEqualTo("--------"),
-            () -> assertThat(results.get(8)).isEqualTo("---------"),
-            () -> assertThat(results.get(9)).isEqualTo("----------")
+                () -> assertThat(results).hasSize(scores.size()),
+                () -> assertThat(results.get(0)).isEqualTo("-"),
+                () -> assertThat(results.get(1)).isEqualTo("--"),
+                () -> assertThat(results.get(2)).isEqualTo("---"),
+                () -> assertThat(results.get(3)).isEqualTo("----"),
+                () -> assertThat(results.get(4)).isEqualTo("-----"),
+                () -> assertThat(results.get(5)).isEqualTo("------"),
+                () -> assertThat(results.get(6)).isEqualTo("-------"),
+                () -> assertThat(results.get(7)).isEqualTo("--------"),
+                () -> assertThat(results.get(8)).isEqualTo("---------"),
+                () -> assertThat(results.get(9)).isEqualTo("----------")
         );
     }
 
@@ -79,19 +79,19 @@ public class RacerTest {
     @Test
     public void 전진하지않는3이하다() {
         //given
-        Racer racer = new Racer(2, new Car("hello"));
+        Racer racer = new Racer(2);
         List<Integer> scores = List.of(3, 3, 3, 3, 3, 3, 3, 3, 3, 3);
         //when
-        List<String> results = racer.calculateResults(scores).getPositionList();
+        List<String> results = racer.calculateResults(scores);
         //then
         assertAll(
-            () -> assertThat(results).hasSize(scores.size()),
-            () -> assertThat(results.get(0)).isEqualTo(""),
-            () -> assertThat(results.get(1)).isEqualTo(""),
-            () -> assertThat(results.get(2)).isEqualTo(""),
-            () -> assertThat(results.get(3)).isEqualTo(""),
-            () -> assertThat(results.get(4)).isEqualTo(""),
-            () -> assertThat(results.get(4)).isEqualTo("")
+                () -> assertThat(results).hasSize(scores.size()),
+                () -> assertThat(results.get(0)).isEqualTo(""),
+                () -> assertThat(results.get(1)).isEqualTo(""),
+                () -> assertThat(results.get(2)).isEqualTo(""),
+                () -> assertThat(results.get(3)).isEqualTo(""),
+                () -> assertThat(results.get(4)).isEqualTo(""),
+                () -> assertThat(results.get(4)).isEqualTo("")
         );
     }
 
