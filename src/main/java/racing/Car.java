@@ -36,6 +36,18 @@ public class Car {
     }
 
 
+    public String winningCar(List<Car> carList){
+        String winningCarName = "";
+        Integer temp = 0;
+        for (Car car : carList) {
+            if(car.movingCar >= temp){
+                winningCarName += (car.carName + ",");
+                temp = car.movingCar;
+            }
+        }
+        return winningCarName.substring(-0, winningCarName.length() - 1);
+    }
+
     @Override
     public String toString() {
         return carName + " : " + dash;

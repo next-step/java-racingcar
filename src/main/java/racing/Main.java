@@ -28,5 +28,9 @@ public class Main {
             resultCars(carList);
         }
 
+        String strings = car.winningCar(carList);
+        System.out.println(strings + " 가 최종 우승했습니다.");
+
+
     }
 }
