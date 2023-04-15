@@ -12,7 +12,7 @@ public class RacingGame {
 
     public RacingGame(int carCount, int stageCount) {
         this.stageCount = stageCount;
-        this.cars = new Cars(createCars(carCount));
+        this.cars = Cars.of(carCount);
         this.result = new ArrayList<>();
     }
 
@@ -25,13 +25,5 @@ public class RacingGame {
             cars.move();
             result.add(cars.getPositions());
         }
-    }
-
-    private List<Car> createCars(int carCount) {
-        List<Car> cars = new ArrayList<>();
-        for(int i = 0; i < carCount; i++) {
-            cars.add(new Car());
-        }
-        return cars;
     }
 }
