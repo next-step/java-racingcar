@@ -25,10 +25,10 @@ public class Race {
         this.currentTryCount++;
     }
 
-    public List<Integer> getCarsPositions() {
+    public List<CarDto> toCarDtoList() {
         return this.cars
                 .stream()
-                .map(car -> car.toDto().getPosition())
+                .map(Car::toDto)
                 .collect(Collectors.toList());
     }
 
