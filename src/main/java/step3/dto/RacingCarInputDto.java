@@ -1,18 +1,17 @@
 package step3.dto;
 
 public class RacingCarInputDto {
-    private final int carNumbers;
+    private final String carNames;
     private final int tryNumbers;
 
-    public RacingCarInputDto(int carNumbers, int tryNumbers) {
-        this.carNumbers = carNumbers;
+    public RacingCarInputDto(String carNames, int tryNumbers) {
+        this.carNames = carNames;
         this.tryNumbers = tryNumbers;
     }
 
-    public int getCarNumbers() {
-        return carNumbers;
+    public String getCarNames(){
+        return carNames;
     }
-
     public int getTryNumbers() {
         return tryNumbers;
     }

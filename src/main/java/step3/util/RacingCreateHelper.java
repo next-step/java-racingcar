@@ -11,9 +11,9 @@ public class RacingCreateHelper {
     private RacingCreateHelper() {
     }
 
-    public static List<RacingCar> createRacingCars(int amount) {
-        return IntStream.range(0, amount)
-                .mapToObj(i -> new RacingCar())
+    public static List<RacingCar> createRacingCars(List<String> carNames) {
+        return carNames.stream()
+                .map(RacingCar::new)
                 .collect(Collectors.toList());
     }
 
