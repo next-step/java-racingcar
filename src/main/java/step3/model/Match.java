@@ -32,13 +32,7 @@ public class Match {
     }
 
     private List<Racer> getWinnerList(List<Racer> racerList, int maxPosition) {
-        List<Racer> list = new ArrayList<>();
-        for(Racer racer : racerList) {
-            if (racer.isSamePosition(maxPosition)) {
-                list.add(racer);
-            }
-        }
-        return list;
+        return racerList.stream().filter(racer -> racer.isSamePosition(maxPosition)).collect(Collectors.toList());
     }
 
     private int getMaxPosition() {
