@@ -42,9 +42,7 @@ public class Match {
     }
 
     private int getMaxPosition() {
-        List<Racer> copy = new ArrayList<>(racerList);
-        copy.sort(Comparator.comparingInt(Racer::getFinalPosition));
-        return copy.get(copy.size() - 1).getFinalPosition();
+        return racerList.stream().mapToInt(Racer::getFinalPosition).max().orElseThrow(() -> new RuntimeException("최대값을 구할 수 없습니다"));
     }
 
 }
