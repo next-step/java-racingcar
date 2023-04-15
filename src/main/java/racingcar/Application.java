@@ -14,16 +14,16 @@ import java.util.List;
 public class Application {
 
     public static void main(String[] args) {
+        final MoveStrategy strategy = new RandomMoveStrategy(new RandomNumberGenerator());
         final InputData inputData = InputView.getUserInput();
         final Game game = new Game(inputData);
 
-        run(game);
+        run(game, strategy);
     }
 
-    private static void run(final Game game) {
-        MoveStrategy randomMoveStrategy = new RandomMoveStrategy(new RandomNumberGenerator());
-
-        final List<Records> records = game.playGame(randomMoveStrategy);
+    private static void run(final Game game, final MoveStrategy strategy) {
+        final List<Records> records = game.playGame(strategy);
         ResultView.print(records);
+
     }
 }
