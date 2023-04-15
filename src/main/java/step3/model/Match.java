@@ -36,11 +36,19 @@ public class Match {
         for(Integer position : positions) {
             maxPosition = Math.max(maxPosition, position);
         }
-
         final int maxPos = maxPosition;
+
+
         //최고득점인 사람을 찾는다
-        List<String> collect1 = racerList.stream().filter(racer -> racer.getFinalPosition() == maxPos).map(racer -> racer.getCar().getName()).collect(Collectors.toList());
-        return collect1;
+        List<String> winnerList = new ArrayList<>();
+        for(Racer racer : racerList) {
+            if(racer.getFinalPosition()== maxPos) {
+                winnerList.add(racer.getCar().getName());
+            }
+        }
+
+
+        return winnerList;
     }
 
 }
