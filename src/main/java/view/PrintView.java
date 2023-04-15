@@ -1,7 +1,7 @@
 package view;
 
-import vo.CarRecord;
 import domain.record.Records;
+import vo.CarRecord;
 
 import java.util.List;
 
@@ -9,9 +9,9 @@ public class PrintView {
 
     private PrintView() {}
 
-    public static void printResult(Records records) {
+    public static void printResult(Records records, int trial) {
         PrintView.printTitle();
-        PrintView.printCar(records);
+        PrintView.printCar(records, trial);
         PrintView.printWinners(records.winners());
     }
 
@@ -19,18 +19,27 @@ public class PrintView {
         System.out.println("실행 결과");
     }
 
-    public static void printCar(Records records) {
+    public static void printCar(Records records, int trial) {
         List<CarRecord> gameRecord = records.gameRecord();
+        int carCount = gameRecord.size() / trial;
+        int recordCount = 0;
 
         for (CarRecord record : gameRecord) {
+            recordCount++;
             System.out.print(record.name() + " : ");
             printDistance(record.distance());
+            nextRound(carCount, recordCount);
+        }
+    }
+
+    private static void nextRound(int carCount, int round) {
+        if (round % carCount == 0) {
+            System.out.println();
         }
     }
 
     private static void printDistance(int distance) {
-        System.out.print("-".repeat(distance));
-        System.out.println();
+        System.out.println("-".repeat(distance));
     }
 
     public static void printWinners(List<CarRecord> winners) {

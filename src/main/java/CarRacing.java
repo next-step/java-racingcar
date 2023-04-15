@@ -13,6 +13,6 @@ public class CarRacing {
         RacingGame game = new RacingGame(nameOfCars);
         Records records = game.start(trial);
 
-        PrintView.printResult(records);
+        PrintView.printResult(records, trial);
     }
 }
