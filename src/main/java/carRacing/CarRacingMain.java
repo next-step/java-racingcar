@@ -19,5 +19,7 @@ public class CarRacingMain {
 		for (String carName : carNames) {
 			carRacing.addCar(new Car(new Name(carName), new Location(0)));
 		}
+
+		int tryCount = inputView.inputTryCount();
 	}
 }
