@@ -1,4 +1,8 @@
-package study.racingcar;
+package study.racingcar.controller;
+
+import study.racingcar.view.InputView;
+import study.racingcar.view.OutputView;
+import study.racingcar.domain.RacingCarGame;
 
 public class GameController {
     /**

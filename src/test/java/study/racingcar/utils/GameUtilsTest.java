@@ -1,3 +1,4 @@
+/*
 package study.racingcar.utils;
 
 import org.junit.jupiter.api.DisplayName;
@@ -17,4 +18,4 @@ class GameUtilsTest {
         // when, then
         assertThat(randomNumber).isBetween(0, 9);
     }
-}
+}*/

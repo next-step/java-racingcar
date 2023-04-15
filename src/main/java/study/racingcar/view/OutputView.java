@@ -1,4 +1,6 @@
-package study.racingcar;
+package study.racingcar.view;
+
+import study.racingcar.domain.Car;
 
 public class OutputView {
     /**

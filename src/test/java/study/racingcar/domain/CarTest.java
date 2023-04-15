@@ -1,46 +1,35 @@
-package study.racingcar;
+package study.racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import study.racingcar.strategy.MoveableNumberGenerator;
+import study.racingcar.strategy.NonMovableNumberGenerator;
+import study.racingcar.strategy.NumberGenerator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    @DisplayName("숫자가 4보다 작으면 false를 반환한다")
+    @DisplayName("NonMoveable할 경우 false를 반환한다")
     @Test
-    void when_number_is_less_than_four() {
+    void when_number_nonMoveable() {
         // given
-        int number = 3;
-
+        final NumberGenerator numberGenerator = new NonMovableNumberGenerator();
         // when
-        boolean actualResult = Car.isMovable(number);
+        boolean actualResult = Car.isMovable(numberGenerator);
 
         // then
         assertThat(actualResult).isFalse();
     }
 
-    @DisplayName("숫자가 4이면 true를 반환한다")
+    @DisplayName("Moveable할 경우 true를 반환한다")
     @Test
-    void when_number_is_four() {
+    void when_number_is_moveable() {
         // given
-        int number = 4;
+        final NumberGenerator numberGenerator = new MoveableNumberGenerator();
 
         // when
-        boolean actualResult = Car.isMovable(number);
-
-        // then
-        assertThat(actualResult).isTrue();
-    }
-
-    @DisplayName("숫자가 4보다 크면 true를 반환한다")
-    @Test
-    void when_number_is_greater_than_four() {
-        // given
-        int number = 5;
-
-        // when
-        boolean actualResult = Car.isMovable(number);
+        boolean actualResult = Car.isMovable(numberGenerator);
 
         // then
         assertThat(actualResult).isTrue();

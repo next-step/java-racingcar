@@ -1,6 +1,6 @@
-package study.racingcar;
+package study.racingcar.domain;
 
-import study.racingcar.utils.GameUtils;
+import study.racingcar.view.OutputView;
 
 public class RacingCarGame {
     /**
@@ -29,9 +29,7 @@ public class RacingCarGame {
     }
 
     private void execute(Car car) {
-        int randomValue = GameUtils.randomNumber();
-
-        if (Car.isMovable(randomValue)) {
+        if (Car.isMovable(Rule.numberGenerator())) {
             car.move();
         }
         OutputView.printCarStatus(car);
