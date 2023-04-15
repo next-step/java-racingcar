@@ -7,11 +7,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racing.race.Cars;
 import racing.race.Racing;
-import racing.util.RandomUtil;
+import racing.strategy.MoveNumberStrategy;
+import racing.strategy.RandomNumberStrategy;
+import racing.strategy.StopNumberStrategy;
 
 public class RacingCarTest {
 
-  private static Cars cars;
+  Cars cars;
   Racing racing = new Racing();
 
   @BeforeEach
@@ -19,11 +21,24 @@ public class RacingCarTest {
     cars = new Cars();
   }
 
-  // TODO 전략패턴..
+  @Test
+  void 멈춤() {
+    cars.ready(3);
+
+    StopNumberStrategy stopNumberStrategy = new StopNumberStrategy();
+    cars.getGameCar().get(1).move(stopNumberStrategy);
+
+    assertThat(cars.getGameCar().get(1).moveDistance()).isEqualTo(0);
+  }
+
   @Test
   void 전진() {
     cars.ready(3);
-    cars.getGameCar().get(1).move();
+
+    MoveNumberStrategy moveNumberStrategy = new MoveNumberStrategy();
+    cars.getGameCar().get(1).move(moveNumberStrategy);
+
+    assertThat(cars.getGameCar().get(1).moveDistance()).isEqualTo(1);
   }
 
   @Test
@@ -33,7 +48,10 @@ public class RacingCarTest {
 
   @Test
   void 랜덤값입력() {
-    int result = RandomUtil.getRandomValue();
+    RandomNumberStrategy randomNumberStrategy = new RandomNumberStrategy();
+
+    int result = randomNumberStrategy.getNumber();
+
     assertThat(result).isBetween(0, 9);
   }
 
@@ -52,7 +70,9 @@ public class RacingCarTest {
   @Test
   void 자동차갯수입력() {
     int size = 3;
+
     cars.ready(size);
+
     assertThat(cars.getGameCar().size()).isEqualTo(3);
   }
 

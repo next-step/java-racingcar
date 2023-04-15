@@ -1,13 +1,13 @@
 package racing.race;
 
-import racing.util.RandomUtil;
+import racing.strategy.NumberGeneratorStrategy;
 
 public class Car {
 
   private int moveDistance;
 
-  public void move() {
-    int random = RandomUtil.getRandomValue();
+  public void move(NumberGeneratorStrategy numberGeneratorStrategy) {
+    int random = numberGeneratorStrategy.getNumber();
     if (random >= 4) {
       moveDistance++;
     }

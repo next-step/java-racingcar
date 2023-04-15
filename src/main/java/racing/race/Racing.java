@@ -1,6 +1,7 @@
 package racing.race;
 
 import java.util.List;
+import racing.strategy.RandomNumberStrategy;
 import racing.view.OutputView;
 
 public class Racing {
@@ -15,9 +16,10 @@ public class Racing {
     }
   }
 
-  private static void tryMove(List<Car> cars) {
+  private void tryMove(List<Car> cars) {
+    RandomNumberStrategy randomNumberStrategy = new RandomNumberStrategy();
     for (Car car : cars) {
-      car.move();
+      car.move(randomNumberStrategy);
       OutputView.printNumberToDash(car.moveDistance());
     }
   }

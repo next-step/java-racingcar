@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Cars {
 
-  private List<Car> cars = new LinkedList<>();
+  private final List<Car> cars = new LinkedList<>();
 
   public void ready(int carsNumber) {
     if (carsNumber < 0) {
