@@ -4,7 +4,6 @@ import java.util.List;
 
 public class InputView {
     private final List<String> owners;
-    private final int carCount;
     private final int tryCount;
 
     public InputView(String owners, int tryCount) {
@@ -12,8 +11,6 @@ public class InputView {
         for (String owner : this.owners) {
             validateOwnerLength(owner);
         }
-
-        this.carCount = this.owners.size();
         this.tryCount = tryCount;
     }
 
@@ -26,11 +23,6 @@ public class InputView {
     public int getTryCount() {
         return tryCount;
     }
-
-    public int getCarCount() {
-        return carCount;
-    }
-
     public List<String> getOwners() {
         return owners;
     }

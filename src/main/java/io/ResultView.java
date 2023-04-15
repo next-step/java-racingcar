@@ -5,17 +5,7 @@ import domain.Car;
 import java.util.List;
 
 public class ResultView {
-    private final List<Car> cars;
-
-    public ResultView(List<Car> cars) {
-        this.cars = cars;
-    }
-
-    public List<Car> getCars() {
-        return cars;
-    }
-
-    public String getGameAsString() {
+    public static String getGameAsString(List<Car> cars) {
         StringBuilder stringBuilder = new StringBuilder();
         for (Car car : cars) {
             stringBuilder.append(getCarAsString(car));

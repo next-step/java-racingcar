@@ -1,5 +1,7 @@
 package io;
 
+import domain.Car;
+
 import java.util.List;
 
 public class ConsoleWriter {
@@ -7,8 +9,8 @@ public class ConsoleWriter {
         System.out.println("실행 결과");
     }
 
-    public static void writeGameInformation(ResultView resultView) {
-        System.out.println(resultView.getGameAsString());
+    public static void writeGameInformation(List<Car> cars) {
+        System.out.println(ResultView.getGameAsString(cars));
     }
 
     public static void writeWinner(List<String> winner) {

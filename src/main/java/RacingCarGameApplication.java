@@ -8,19 +8,21 @@ import io.InputView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Application {
+public class RacingCarGameApplication {
 
     public static void main(String[] args) {
-        InputView input = ConsoleScanner.input();
+        InputView inputView = ConsoleScanner.input();
         List<Car> cars = new ArrayList<>();
-        for (String owner : input.getOwners()) {
+        for (String owner : inputView.getOwners()) {
             cars.add(new Car(owner, new RandomMoveStrategy()));
         }
 
-        RacingCarGame racingCarGame = new RacingCarGame(ConsoleScanner.input(), cars);
+        RacingCarGame racingCarGame = new RacingCarGame(cars);
+
         ConsoleWriter.writeHeader();
-        for (int i = 1; i <= racingCarGame.getInputView().getTryCount(); i++) {
-            ConsoleWriter.writeGameInformation(racingCarGame.move());
+        for (int i = 1; i <= inputView.getTryCount(); i++) {
+            racingCarGame.move();
+            ConsoleWriter.writeGameInformation(cars);
         }
         ConsoleWriter.writeWinner(racingCarGame.findWinner());
     }

@@ -1,28 +1,23 @@
 package domain;
 
-import io.InputView;
-import io.ResultView;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingCarGame {
-    private final InputView inputView;
-    private final ResultView resultView;
-    public RacingCarGame(InputView inputView, List<Car> cars) {
-        this.inputView = inputView;
-        this.resultView = new ResultView(cars);
+
+    private final List<Car> cars;
+    public RacingCarGame(List<Car> cars) {
+        this.cars = cars;
     }
-    public ResultView move() {
-        for (Car car : resultView.getCars()) {
+    public void move() {
+        for (Car car : cars) {
             car.move();
         }
-        return resultView;
     }
 
     public List<String> findWinner() {
         int maxScore = findMaxScore();
-        return resultView.getCars()
+        return cars
                 .stream().filter(
                         car -> car.getDistance() == maxScore
                 )
@@ -31,10 +26,6 @@ public class RacingCarGame {
     }
 
     private int findMaxScore() {
-        return resultView.getCars().stream().mapToInt(Car::getDistance).max().orElse(0);
-    }
-
-    public InputView getInputView() {
-        return inputView;
+        return cars.stream().mapToInt(Car::getDistance).max().orElse(0);
     }
 }

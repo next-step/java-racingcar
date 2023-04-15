@@ -31,7 +31,7 @@ public class RacingCarGameTest {
         cars.add(new Car(input.getOwners().get(0), getStrategy(strategy1)));
         cars.add(new Car(input.getOwners().get(1), getStrategy(strategy2)));
         cars.add(new Car(input.getOwners().get(2), getStrategy(strategy3)));
-        RacingCarGame racingCarGame = new RacingCarGame(input, cars);
+        RacingCarGame racingCarGame = new RacingCarGame(cars);
         racingCarGame.move();
 
         assertThat(racingCarGame.findWinner().size()).isEqualTo(Integer.parseInt(winnerCount));
@@ -55,7 +55,7 @@ public class RacingCarGameTest {
         cars.add(new Car(input.getOwners().get(0), getStrategy(strategy1)));
         cars.add(new Car(input.getOwners().get(1), getStrategy(strategy2)));
         cars.add(new Car(input.getOwners().get(2), getStrategy(strategy3)));
-        RacingCarGame racingCarGame = new RacingCarGame(input, cars);
+        RacingCarGame racingCarGame = new RacingCarGame(cars);
         racingCarGame.move();
 
         assertThat(racingCarGame.findWinner().size()).isEqualTo(1);
