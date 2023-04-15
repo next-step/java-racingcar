@@ -19,26 +19,22 @@ public class RacingGame {
     }
 
     static RacingGame initGame() {
-//        int countOfCar = 3;
-//        int turn = 5;
         int countOfCar = InputView.InputCountOfUnit();
         int turn = InputView.InputCountOfTurn();
         return new RacingGame(countOfCar, turn);
     }
 
     public void playGame() {
-        System.out.println("자동차 대수 = " + this.cars.size());
-        System.out.println("게임 횟수 = " + turns);
         
         for (int i = 0; i < this.turns; i++) {
             onceTurn();
         }
+        ResultView.printCarsLocation(this.cars);
     }
 
     private void onceTurn() {
         for (int i = 0; i < this.cars.size(); i++) {
             Car movedCar = this.cars.get(i).move();
-            System.out.println("movedCar.getLocation() = " + movedCar.getLocation());
             this.cars.set(i, movedCar);
         }
     }
