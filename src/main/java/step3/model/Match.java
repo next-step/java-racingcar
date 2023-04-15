@@ -25,22 +25,27 @@ public class Match {
     }
 
     public List<String> winnerDisplay() {
+        int maxPosition = getMaxPosition();
+        List<String> winnerList = getWinnerList(maxPosition);
+        return winnerList;
+    }
 
-        //최고득점을 가져온다
-        int maxPosition = -1;
-        for(Racer racer : racerList) {
-            maxPosition = Math.max(maxPosition, racer.getFinalPosition());
-        }
-
-        //최고득점인 사람을 찾는다
-        List<String> winnerList = new ArrayList<>();
+    private List<String> getWinnerList(int maxPosition) {
+        List<String> list = new ArrayList<>();
         for(Racer racer : racerList) {
             if(racer.getFinalPosition()== maxPosition) {
-                winnerList.add(racer.getCar().getName());
+                list.add(racer.getCar().getName());
             }
         }
+        return list;
+    }
 
-        return winnerList;
+    private int getMaxPosition() {
+        int max = -1;
+        for(Racer racer : racerList) {
+            max = Math.max(max, racer.getFinalPosition());
+        }
+        return max;
     }
 
 }
