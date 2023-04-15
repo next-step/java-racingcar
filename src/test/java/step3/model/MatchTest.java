@@ -28,4 +28,20 @@ public class MatchTest {
             () -> assertThat(display.get(0).getResult().getPositionList()).hasSize(iterations)
         );
     }
+
+    @DisplayName("우승자의 이름이 출력된다")
+    @Test
+    public void winnerDisplayTest() {
+        //given
+        String input = "pobi";
+        int iterations = 3;
+        //when
+        List<String> strings = new Match(
+            Stream.of(input)
+                .map(Car::new)
+                .collect(Collectors.toList()),
+            iterations).winnerDisplay();
+        //then
+        assertThat(String.join(",", strings)).contains(input);
+    }
 }
