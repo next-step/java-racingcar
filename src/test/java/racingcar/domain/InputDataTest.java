@@ -7,12 +7,12 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import static racingcar.domain.fixture.CarFixture.CAR_NAMES;
-import static racingcar.domain.fixture.CarFixture.CAR_NAME_ERROR_MESSAGE;
-import static racingcar.domain.fixture.CarFixture.ROUND_COUNT;
-import static racingcar.domain.fixture.CarFixture.TRY_COUNT_ERROR_MESSAGE;
-import static racingcar.domain.fixture.CarFixture.WEIRD_CAR_NAME_1;
-import static racingcar.domain.fixture.CarFixture.WEIRD_CAR_NAME_2;
+import static racingcar.domain.fixture.ConstantsFixture.CAR_NAMES;
+import static racingcar.domain.fixture.ConstantsFixture.CAR_NAME_ERROR_MESSAGE;
+import static racingcar.domain.fixture.ConstantsFixture.ROUND_COUNT;
+import static racingcar.domain.fixture.ConstantsFixture.TRY_COUNT_ERROR_MESSAGE;
+import static racingcar.domain.fixture.ConstantsFixture.WEIRD_CAR_NAME_1;
+import static racingcar.domain.fixture.ConstantsFixture.WEIRD_CAR_NAME_2;
 
 class InputDataTest {
 
