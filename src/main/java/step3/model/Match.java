@@ -32,7 +32,12 @@ public class Match {
         }
 
         //최고득점을 가져온다
-        int maxPos = positions.stream().mapToInt(pos -> pos.intValue()).max().getAsInt();
+        int maxPosition = -1;
+        for(Integer position : positions) {
+            maxPosition = Math.max(maxPosition, position);
+        }
+
+        final int maxPos = maxPosition;
         //최고득점인 사람을 찾는다
         List<String> collect1 = racerList.stream().filter(racer -> racer.getFinalPosition() == maxPos).map(racer -> racer.getCar().getName()).collect(Collectors.toList());
         return collect1;
