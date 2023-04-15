@@ -1,27 +1,28 @@
 package step3.view;
 
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
+import step3.model.Car;
+
+import java.util.List;
 
 public class ResultView {
 
     public static final String DASH = "-";
-    public static void generateUI(Map<Integer, AtomicInteger> cars) {
-        for (Map.Entry<Integer, AtomicInteger> entry :cars.entrySet()) {
-            drawDash(entry.getValue().intValue());
-        }
-        System.out.print("\n");
 
+    public void drawing(List<Car> cars) {
+        for (Car car : cars) {
+            drawDash(car.getDistance());
+        }
+        System.out.println();
     }
 
-    public static void startUI() {
+    public void startUI() {
         System.out.println("실행결과");
     }
 
-    private static void drawDash(int count) {
-        for (int i = 0; i <= count; i++) {
+    private void drawDash(int distance) {
+        for (int i = 0; i <= distance; i++) {
             System.out.print(DASH);
         }
-        System.out.print("\n");
+        System.out.println();
     }
 }
