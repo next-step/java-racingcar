@@ -57,4 +57,16 @@ public class CarTest {
             assertThat(cars.values().get(i).name()).isEqualTo(names.get(i));
         }
     }
+
+    @Test
+    void 이름이_5자_초과시_에러() {
+        List<String> names = List.of("pobiaaaaa", "crong", "honux");
+        int moveCount = 5;
+
+        for (int i = 0; i < 3; i++) {
+            assertThatThrownBy(() -> new Cars(names, moveCount))
+                    .isInstanceOf(RuntimeException.class)
+                    .hasMessage("이름은 5자를 초과할 수 없습니다.");
+        }
+    }
 }
