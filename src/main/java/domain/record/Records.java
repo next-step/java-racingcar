@@ -34,13 +34,10 @@ public class Records {
     }
 
     private int maxDistance(List<CarRecord> records) {
-        int maxDistance = 0;
-
-        for (CarRecord car : records) {
-            maxDistance = Math.max(maxDistance, car.distance());
-        }
-
-        return maxDistance;
+        return records.stream()
+                .mapToInt(CarRecord::distance)
+                .max()
+                .orElse(0);
     }
 
     private void findWinner(CarRecord car, int maxDistance) {
