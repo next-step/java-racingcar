@@ -17,8 +17,8 @@
 *     - tryToMove()에 전략적패턴 구현
 *   차가 이동한 결과값을 반환하는 메서드 구현
 * moveStrategy 인터페이스 구현
-*   - default 이동 기준점 저장
-*   - default 이동 거리 저장
+*   - default 이동 기준점 저장 x -> constant Class 만듬
+*   - default 이동 거리 저장 x -> constant Class 만듬
 *   - 이동 판단 메서드 선언
 *   - 이동 메서드 선언
 * normalMoveStragegy Class 구현
