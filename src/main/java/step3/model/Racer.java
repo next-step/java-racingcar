@@ -43,7 +43,9 @@ public class Racer {
     }
 
     private int getPos(int roundCount, List<Integer> scoreList) {
-        return (int) scoreList.stream().limit(roundCount+1).filter(this::moveForward).count();
+        return (int) scoreList.stream()
+            .limit(roundCount + 1)
+            .filter(this::moveForward).count();
     }
 
     private boolean moveForward(int score) {
@@ -67,7 +69,8 @@ public class Racer {
     }
 
     private String finalRecord() {
-        return results.getPositionList().get(results.getPositionList().size() - 1);
+        return results.getPositionList()
+            .get(results.getPositionList().size() - 1);
     }
 
     public Car getCar() {
