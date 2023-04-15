@@ -38,6 +38,14 @@ public class Car {
 		return this.location.isEqual(bestLocation);
 	}
 
+	public Name getName() {
+		return this.name;
+	}
+
+	public Location getLocation() {
+		return this.location;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)
