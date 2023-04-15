@@ -25,9 +25,12 @@ public class CarRacingMain {
 
 		int tryCount = inputView.inputTryCount();
 		ResultView resultView = new ResultView();
+		System.out.println("\n실행 결과");
 		while (tryCount-- > 0) {
 			carRacing.moveCars();
 			resultView.printStatus(cars);
 		}
+
+		resultView.printWinners(carRacing.createWinners());
 	}
 }
