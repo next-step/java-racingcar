@@ -4,7 +4,6 @@
 - ConsoleWriter : 출력
 - ConsoleScanner : 입력 처리
 - InputView : 입력 데이터 홀더 클래스
-- ResultView : 출력 데이터 홀더 클래스
 
 ### 레이싱게임
 - RacingGame

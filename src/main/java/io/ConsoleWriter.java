@@ -10,7 +10,12 @@ public class ConsoleWriter {
     }
 
     public static void writeGameInformation(List<Car> cars) {
-        System.out.println(ResultView.getGameAsString(cars));
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Car car : cars) {
+            stringBuilder.append(getCarAsString(car));
+            stringBuilder.append("\n");
+        }
+        System.out.println(stringBuilder);
     }
 
     public static void writeWinner(List<String> winner) {
@@ -18,5 +23,8 @@ public class ConsoleWriter {
     }
 
     private ConsoleWriter() {
+    }
+    private static String getCarAsString(Car car) {
+        return car.getOwner() + " : " + "-".repeat(Math.max(0, car.getDistance()));
     }
 }
