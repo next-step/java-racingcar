@@ -14,7 +14,6 @@ import static org.assertj.core.api.Assertions.in;
 
 class CarTest {
 
-
     @Test
     @DisplayName("N대의 자동차를 생성할 수 있다.")
     public void makeCars_requiredNumbers_makeSuccess() {
@@ -46,4 +45,5 @@ class CarTest {
 
         assertThat(car.nowPosition()).isEqualTo(2);
     }
+
 }

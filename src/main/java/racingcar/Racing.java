@@ -12,5 +12,4 @@ public class Racing {
                 .collect(Collectors.toList());
     }
 
-
 }
