@@ -1,9 +1,10 @@
-package racing.carRacing.service;
+package racing.carRacing.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.carRacing.model.Cars;
 import racing.carRacing.model.Count;
+import racing.carRacing.model.Stages;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

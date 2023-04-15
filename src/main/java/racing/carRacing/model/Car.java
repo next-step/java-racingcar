@@ -1,7 +1,5 @@
 package racing.carRacing.model;
 
-import racing.carRacing.service.MovementStrategy;
-
 public class Car implements Comparable<Car> {
     public static final int MAX_SIZE_OF_NAME = 5;
     public static final int FIRST_POSITION = 0;

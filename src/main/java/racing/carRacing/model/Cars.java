@@ -1,7 +1,5 @@
 package racing.carRacing.model;
 
-import racing.carRacing.service.MovementStrategy;
-
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
