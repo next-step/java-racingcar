@@ -14,7 +14,7 @@ public class Car {
         return position;
     }
 
-    public boolean move() {
+    boolean move() {
         if (isExceedStandard(getRandomInt())) {
             position++;
             return true;
@@ -22,7 +22,7 @@ public class Car {
         return false;
     }
 
-    public boolean isExceedStandard(int num) {
+    boolean isExceedStandard(int num) {
         return num > 3;
     }
 

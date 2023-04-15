@@ -10,8 +10,7 @@ public class CarRacing {
     private int round;
     private int carCount;
     private Car[] cars;
-
-    Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
 
     public void startRacing() {
         initGame();
@@ -22,7 +21,7 @@ public class CarRacing {
         carCount = readInputNum("자동차 대수는 몇 대 인가요?");
         round = readInputNum("시도할 횟수는 몇 회 인가요?");
 
-        System.out.println("자동차 " + carCount + "대, " + round + " 라운드 레이싱 시작");
+        System.out.println("실행 결과");
         initCarObject();
     }
 
@@ -53,7 +52,7 @@ public class CarRacing {
         System.out.println();
     }
 
-    public String printCarState(int position) {
+    String printCarState(int position) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < position; i++) {
             stringBuilder.append("-");
