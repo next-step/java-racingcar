@@ -1,6 +1,6 @@
 package racing.domain;
 
-import racing.strategy.MoveStrategy;
+import racing.domain.move.MoveStrategy;
 
 public class RacingCar implements Comparable<RacingCar> {
     private static final int START_POSITION = 0;
