@@ -10,6 +10,11 @@ public class ResultView {
     private static final String DASH = "-";
     private static final String RESULT = "실행 결과";
 
+    /**
+     * 게임 진행 결과를 출력한다.
+     *
+     * @param records
+     */
     public static void print(List<Records> records) {
         System.out.println(RESULT);
 
