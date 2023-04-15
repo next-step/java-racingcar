@@ -1,6 +1,6 @@
 package racing;
 
-import racing.strategy.MoveStrategy;
+import racing.domain.move.MoveStrategy;
 
 
 public class FixedRandomForwardStrategy implements MoveStrategy {

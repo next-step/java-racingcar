@@ -8,11 +8,13 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racing.view.InputView.readNumberOfCars;
+import static racing.view.InputView.readNameOfCars;
 import static racing.view.InputView.readNumberOfCycles;
 
 public class InputViewTest {
@@ -28,34 +30,12 @@ public class InputViewTest {
     }
 
     @Test
-    @DisplayName("자동차 입력을 1~10으로 입력한 경우 (정상)")
+    @DisplayName("자동차 이름 입력받기 (정상)")
     void inputCar1() {
-        mockInput("3");
+        mockInput("pobi,crong,honux");
 
-        int actual = readNumberOfCars(scanner);
-        assertThat(actual).isEqualTo(3);
-    }
-
-    @ParameterizedTest(name = "{displayName} - 값: {0}")
-    @ValueSource(strings = {"-1", "0", "11"})
-    @DisplayName("자동차 입력을 1~10이 아닌 정수를 입력한 경우 (예외)")
-    void inputCar2(String input) {
-        mockInput(input);
-
-        assertThatThrownBy(() -> readNumberOfCars(scanner))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차 수는 " + MIN_NUMBER_CARS + "~" + MAX_NUMBER_CARS + " 사이의 값을 입력해야 합니다.");
-    }
-
-    @ParameterizedTest(name = "{displayName} - 값: {0}")
-    @ValueSource(strings = {"1.1", "-5.5", "11개"})
-    @DisplayName("자동차 입력을 실수 등 정수가 아닌 값을 입력한 경우 (예외)")
-    void inputCar3(String input) {
-        mockInput(input);
-
-        assertThatThrownBy(() -> readNumberOfCars(scanner))
-                .isInstanceOf(NumberFormatException.class)
-                .hasMessage("Input은 정수만 입력 가능합니다. " + input);
+        List<String> actual = readNameOfCars(scanner);
+        assertThat(actual).isEqualTo(Arrays.asList("pobi", "crong", "honux"));
     }
 
     @Test
