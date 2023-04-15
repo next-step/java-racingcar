@@ -10,6 +10,7 @@ public class Car {
         throw new IllegalArgumentException("자동차 이름은 5자를 초과할수 없다");
     };
     private final String name;
+
     public Car(String name) {
         this.name = validateName.apply(name);
     }

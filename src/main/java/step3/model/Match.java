@@ -12,9 +12,9 @@ public class Match {
 
     public Match(List<Car> participates, int iterations) {
         this.collect = IntStream.range(0, participates.size())
-                .boxed()
-                .map(integer -> new Racer(iterations,participates.get(integer)))
-                .collect(Collectors.toList());
+            .boxed()
+            .map(integer -> new Racer(iterations, participates.get(integer)))
+            .collect(Collectors.toList());
     }
 
     public List<DisplayRaceVO> display() {

@@ -5,10 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 public class CarTest {
-
 
 
     @DisplayName("자동차 이름 AB-TEST : 5자를 초과할수 없다")
