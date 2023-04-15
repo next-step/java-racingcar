@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    private final int stageCount;
+    private final Stage stage;
     private final Cars cars;
     private final List<List<Integer>> result;
 
     public RacingGame(int carCount, int stageCount) {
-        this.stageCount = stageCount;
+        this.stage = Stage.from(stageCount);
         this.cars = Cars.from(carCount);
         this.result = new ArrayList<>();
     }
@@ -22,8 +22,9 @@ public class RacingGame {
     }
 
     public void progress() {
-        for(int i = 0; i < stageCount; i++) {
+        while(stage.hasNext()) {
             cars.move();
+            stage.next();
             result.add(cars.getPositions());
         }
     }
