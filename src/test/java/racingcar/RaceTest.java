@@ -12,7 +12,9 @@ public class RaceTest {
     @DisplayName("경주를 생성하면 입력받은 대수만큼의 차가 초기 위치에 생성된다")
     public void race_Initial() {
         Race race = new Race(3, 2);
-        assertThat(race.getCarsPositions()).isEqualTo(List.of(0, 0, 0));
+        assertThat(race.toCarDtoList().get(0).getPosition()).isZero();
+        assertThat(race.toCarDtoList().get(1).getPosition()).isZero();
+        assertThat(race.toCarDtoList().get(2).getPosition()).isZero();
     }
 
     @Test
@@ -20,7 +22,9 @@ public class RaceTest {
     public void race_OneTry() {
         Race race = new Race(3, 2);
         race.continueRace(List.of(3, 4, 5));
-        assertThat(race.getCarsPositions()).isEqualTo(List.of(0, 1, 1));
+        assertThat(race.toCarDtoList().get(0).getPosition()).isZero();
+        assertThat(race.toCarDtoList().get(1).getPosition()).isOne();
+        assertThat(race.toCarDtoList().get(2).getPosition()).isOne();
     }
 
     @Test

@@ -2,7 +2,7 @@ package racingcar;
 
 interface Output {
 
-    void printPosition(Integer position);
+    void printPosition(CarDto carDto);
 
     void printExecutionHeader();
 

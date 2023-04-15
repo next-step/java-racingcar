@@ -6,7 +6,7 @@ public class ConsoleOutput implements Output {
 
     @Override
     public void printPositions(Race race) {
-        race.getCarsPositions().forEach(this::printPosition);
+        race.toCarDtoList().forEach(this::printPosition);
         printBlankLine();
     }
 
@@ -16,8 +16,8 @@ public class ConsoleOutput implements Output {
     }
 
     @Override
-    public void printPosition(Integer position) {
-        System.out.println(ONE_POSITION_MARK.repeat(position));
+    public void printPosition(CarDto carDto) {
+        System.out.println(ONE_POSITION_MARK.repeat(carDto.getPosition()));
     }
 
     @Override
