@@ -11,7 +11,6 @@ public class Cars {
     private static final String HAS_NEGATIVE_CAR_CREATE_REQUEST = "1 보다 작은 수의 차량은 생성될 수 없습니다.";
     private static final int START_POSITION = 0;
 
-
     // root ctor
     public Cars(List<Car> cars) {
         if (!isMoreThanOneCar(cars)) {
@@ -31,8 +30,8 @@ public class Cars {
     }
 
     public void moveCars() {
-        for (Car car : cars) {
-            car = car.move();
+        for (int index = 0; index<carSize(); index ++) {
+            this.cars.set(index, this.cars.get(index).move());
         }
     }
 

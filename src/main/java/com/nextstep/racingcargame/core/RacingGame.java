@@ -4,7 +4,6 @@ import static com.nextstep.racingcargame.view.QuestionView.clientQuestion;
 import static com.nextstep.racingcargame.view.ResultView.createNewLine;
 import static com.nextstep.racingcargame.view.ResultView.printAllCarCurrentDistance;
 import static com.nextstep.racingcargame.view.ResultView.printResultMsg;
-import static com.nextstep.racingcargame.view.ResultView.printSource;
 import static com.nextstep.racingcargame.view.ResultView.printWinners;
 
 public class RacingGame {
@@ -17,7 +16,6 @@ public class RacingGame {
 
         startGame(clientResponse, cars);
     }
-
 
     private static void startGame(ClientResponse clientResponse, Cars cars) {
 
