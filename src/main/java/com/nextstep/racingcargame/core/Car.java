@@ -39,9 +39,8 @@ public class Car {
         return this.distance.isLongerThan(distance);
     }
 
-    public Car move(MovingStrategy movingStrategy) {
-        return new Car(this.name.getCarName(),
-                this.distance.moveForward(movingStrategy.randomNumber()));
+    public void move(MovingStrategy movingStrategy) {
+        this.distance.moveForward(movingStrategy.randomNumber());
     }
 
     public boolean sameDistance(Distance distance) {

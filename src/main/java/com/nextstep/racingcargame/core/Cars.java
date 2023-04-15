@@ -35,9 +35,7 @@ public class Cars {
     }
 
     public void moveCars(MovingStrategy movingStrategy) {
-        for (int index = 0; index < carSize(); index++) {
-            this.cars.set(index, this.cars.get(index).move(movingStrategy));
-        }
+        this.cars.forEach(car -> car.move(movingStrategy));
     }
 
     private boolean isMoreThanOneCar(List<Car> cars) {

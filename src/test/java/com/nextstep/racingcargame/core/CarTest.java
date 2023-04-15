@@ -9,10 +9,6 @@ class CarTest {
 
     private static final String TEST_CAR_NAME = "test";
 
-    private static final String CAR_DISTANCE_DISPLAY_UNIT = "-";
-
-    private static final String CAR_NAME_AND_DISTANCE_DELIMITER = " : ";
-
     private static final int STOP_NUMBER = 3;
 
     private static final int MOVE_NUMBER = 4;
@@ -40,7 +36,7 @@ class CarTest {
     @DisplayName("랜덤으로 발생한 숫자가 3 이하일경우 차량은 정지상태를 유지한다")
     void carStopTest() {
         Car car = new Car(TEST_CAR_NAME, new Distance(CAR_START_POSITION_NUMBER));
-        car = car.move(new Stop());
+        car.move(new Stop());
         assertThat(car).isEqualTo(new Car(TEST_CAR_NAME, new Distance(CAR_START_POSITION_NUMBER)));
     }
 
@@ -48,7 +44,7 @@ class CarTest {
     @DisplayName("랜덤으로 발생한 숫자가 4 이상일 경우 차량은 한칸 앞으로 움직인다.")
     void moveTest() {
         Car car = new Car(TEST_CAR_NAME, new Distance(CAR_START_POSITION_NUMBER));
-        car = car.move(new ForceMove());
+        car.move(new ForceMove());
         assertThat(car).isEqualTo(new Car(TEST_CAR_NAME, new Distance(MOVE_STEP)));
     }
 

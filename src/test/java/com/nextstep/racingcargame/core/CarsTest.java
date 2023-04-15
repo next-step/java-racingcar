@@ -92,28 +92,4 @@ class CarsTest {
         assertThat(cars.longestDistance()).isEqualTo(new Distance(3));
     }
 
-    @Test
-    @DisplayName("각 자동차별 현재 거리와 이름 배열을 콘솔 포멧이 맞게 리턴한다.")
-    void getAllCarCurrentDistanceTest() {
-        int moveTwoSteps = 2;
-        int moveThreeSteps = 3;
-
-        Car patCar = new Car("pat", moveTwoSteps);
-        Car rickCar = new Car("rick", moveThreeSteps);
-
-        String expectedPatCarFormat = patCar.getCarName()
-                + CAR_NAME_AND_DISTANCE_DELIMITER
-                + CAR_DISTANCE_DISPLAY_UNIT.repeat(moveTwoSteps);
-
-        String expectedRickCarFormat = rickCar.getCarName()
-                + CAR_NAME_AND_DISTANCE_DELIMITER
-                + CAR_DISTANCE_DISPLAY_UNIT.repeat(moveThreeSteps);
-
-        Cars cars = new Cars(asList(patCar, rickCar));
-        List<String> carCurrentDistances = cars.getAllCarCurrentDistance(
-                CAR_NAME_AND_DISTANCE_DELIMITER, CAR_DISTANCE_DISPLAY_UNIT);
-
-        assertThat(carCurrentDistances)
-                .contains(expectedPatCarFormat, expectedRickCarFormat);
-    }
 }

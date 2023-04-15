@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class Distance implements Comparator<Distance> {
 
-    private final int distance;
+    private int distance;
 
     private static final int MINIMUM_CAR_MOVE_NUMBER = 4;
 
@@ -15,11 +15,10 @@ public class Distance implements Comparator<Distance> {
         this.distance = distance;
     }
 
-    public Distance moveForward(int randomNumber) {
+    public void moveForward(int randomNumber) {
         if (isGoForwardNumber(randomNumber)) {
-            return new Distance(this.distance + MOVE_STEP);
+            this.distance += MOVE_STEP;
         }
-        return this;
     }
 
     public String distanceForm(String distancePrintStandard) {
@@ -28,6 +27,19 @@ public class Distance implements Comparator<Distance> {
 
     private boolean isGoForwardNumber(int randomNumber) {
         return randomNumber >= MINIMUM_CAR_MOVE_NUMBER;
+    }
+
+    @Override
+    public int compare(Distance d1, Distance d2) {
+        return Integer.compare(d1.distance, d2.distance);
+    }
+
+    public boolean isLongerThan(Distance other) {
+        return compare(this, other) > 0;
+    }
+
+    public boolean isSame(Distance distance) {
+        return this.equals(distance);
     }
 
     @Override
@@ -47,16 +59,4 @@ public class Distance implements Comparator<Distance> {
         return Objects.hash(distance);
     }
 
-    @Override
-    public int compare(Distance d1, Distance d2) {
-        return Integer.compare(d1.distance, d2.distance);
-    }
-
-    public boolean isLongerThan(Distance other) {
-        return compare(this, other) > 0;
-    }
-
-    public boolean isSame(Distance distance) {
-        return this.equals(distance);
-    }
 }

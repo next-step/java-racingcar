@@ -1,6 +1,5 @@
 package com.nextstep.racingcargame.view;
 
-import com.nextstep.racingcargame.core.Car;
 import com.nextstep.racingcargame.core.Cars;
 import java.util.List;
 import java.util.stream.Collectors;
