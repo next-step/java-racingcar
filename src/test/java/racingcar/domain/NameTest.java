@@ -7,37 +7,36 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
+import static racingcar.domain.fixture.CarFixture.CAR_NAME;
+import static racingcar.domain.fixture.CarFixture.WEIRD_CAR_NAME_1;
+import static racingcar.domain.fixture.CarFixture.WEIRD_CAR_NAME_2;
+
 @DisplayName("자동자 이름 테스트")
 class NameTest {
 
     @Test
-    @DisplayName("자동차 이름을 입력받아")
+    @DisplayName("자동차 이름 저장 테스트")
     void testName() {
         // Given & When
-        String userInputNames = "pobi,crong,honux";
-        Name name = new Name(userInputNames);
+        Name name = new Name(CAR_NAME);
 
-        final String[] names = name.getNames();
+        final String names = name.getNames();
 
         // Then
-        assertThat(names).contains("pobi", "crong", "honux");
+        assertThat(names).contains(CAR_NAME);
     }
 
     @Test
-    @DisplayName("자동차 이름을 입력받을 때 null, '' 입력시 예외처리")
+    @DisplayName("자동차 이름 예외 테스트")
     void testNameException() {
-        // Given
-        String userInputNames1 = null;
-        String userInputNames2 = "";
-        
         // Then & When
         assertAll(
-                () -> assertThatThrownBy(() -> new Name(userInputNames1))
+                () -> assertThatThrownBy(() -> new Name(WEIRD_CAR_NAME_1))
                         .isInstanceOf(IllegalArgumentException.class),
-                () -> assertThatThrownBy(() -> new Name(userInputNames2))
+
+                () -> assertThatThrownBy(() -> new Name(WEIRD_CAR_NAME_2))
                         .isInstanceOf(IllegalArgumentException.class)
         );
-
     }
 
 }

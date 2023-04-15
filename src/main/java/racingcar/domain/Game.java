@@ -7,16 +7,16 @@ import java.util.List;
 
 public class Game {
 
-    private final int carCount;
+    private final String names;
     private final int roundCount;
 
     public Game(final InputData inputData) {
-        carCount = inputData.getCarCount();
+        names = inputData.getRawString();
         roundCount = inputData.getRoundCount();
     }
 
     public List<Records> playGame(final MoveStrategy randomMoveStrategy) {
-        CarFactory carFactory = new CarFactory(carCount);
+        CarFactory carFactory = new CarFactory(names);
         return simulateRounds(carFactory, randomMoveStrategy);
     }
 
