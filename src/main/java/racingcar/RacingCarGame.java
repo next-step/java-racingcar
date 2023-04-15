@@ -6,65 +6,97 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class RacingCarGame {
-    private final List<Car> cars = new ArrayList<>();
-    private final Random random = new Random();
-    private final Scanner scanner;
+    private static final int MOVE_THRESHOLD = 4;
+    private static final int RANDOM_RANGE = 10;
+    public static final String MESSAGE_NEGATIVE_NUMBER_INPUT = "음수는 입력할 수 없습니다. input: %d";
+    private List<Car> cars;
+    private List<String> winners = new ArrayList<>();
+    private int maxPosition;
 
-    public RacingCarGame(Scanner scanner) {
-        this.scanner = scanner;
+    public RacingCarGame() {
+        this.maxPosition = 0;
     }
 
     public void start() {
-        InputView.printCarsCountInputMessage();
-        int carsCount = inputCount();
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+        InputView.printCarsNamesInputMessage();
+        String names = inputNames(scanner);
         InputView.printTryCountInputMessage();
-        int tryCount = inputCount();
-        createCars(carsCount);
+        int tryCount = inputCount(scanner);
+
+        cars = CarFactory.create(names);
+        play(tryCount, random);
+        findMaxPosition();
+        determineWinners();
+
         ResultView.printResultHeader();
-        play(tryCount);
+        ResultView.printCarsResult(cars);
+        ResultView.printWinners(winners);
     }
 
-    public int inputCount() {
-        String countString = scanner.nextLine();
-        int count = Integer.parseInt(countString);
-        isPositive(count);
+    private void determineWinners() {
+        for (Car car : cars) {
+            determine(car);
+        }
+    }
+
+    private void determine(Car car) {
+        if (isWinner(car.position())) {
+            winners.add(car.name());
+        }
+    }
+
+    private boolean isWinner(int carPosition) {
+        return maxPosition == carPosition;
+    }
+
+    private void findMaxPosition() {
+        maxPosition = 0;
+        for (Car car : cars) {
+            maxPosition = Math.max(maxPosition, car.position());
+        }
+    }
+
+    private String inputNames(Scanner scanner) {
+        return scanner.nextLine();
+    }
+
+    public int inputCount(Scanner scanner) {
+        int count = Integer.parseInt(scanner.nextLine());
+        if (count < 0) {
+            throw new IllegalArgumentException(String.format(MESSAGE_NEGATIVE_NUMBER_INPUT, count));
+        }
         return count;
     }
 
-    private void isPositive(int count) {
-        if (count < 0) {
-            throw new IllegalArgumentException(String.format("음수는 입력할 수 없습니다. input: %d", count));
-        }
-    }
-
-    private void play(int tryCount) {
+    private void play(int tryCount, Random random) {
         for (int i = 0; i < tryCount; i++) {
-            move();
-            view();
+            moveCars(random);
         }
     }
 
-    private void view() {
+    private void moveCars(Random random) {
         for (Car car : cars) {
-            car.view();
+            move(car, random);
         }
-        System.out.println();
     }
 
-    private void move() {
-        for (Car car : cars) {
+    private void move(Car car, Random random) {
+        if (isMovable(random)) {
             car.move();
         }
     }
 
-    public void createCars(int carsCount) {
-        for (int i = 0; i < carsCount; i++) {
-            cars.add(new Car(random));
-        }
+    private boolean isMovable(Random random) {
+        return random.nextInt(RANDOM_RANGE) >= MOVE_THRESHOLD;
     }
 
-    // 해당 메소드도 테스트 코드만을 위해서 만들었습니다!
-    public boolean hasCars(int expected) {
-        return cars.size() == expected;
+    public List<Car> getCars() {
+        return this.cars;
+    }
+
+    public List<String> getWinners() {
+        return winners;
     }
 }
