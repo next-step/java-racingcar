@@ -18,7 +18,7 @@ public class Match {
             .boxed()
             .map(integer -> new Racer(iterations, participates.get(integer)))
             .collect(Collectors.toList());
-        this.winnerList = getWinnerList(this.racerList,getMaxPosition());
+        this.winnerList = getWinnerList();
     }
 
     public List<DisplayRaceVO> display() {
@@ -33,9 +33,9 @@ public class Match {
             .collect(Collectors.toList());
     }
 
-    private List<Racer> getWinnerList(List<Racer> racerList, int maxPosition) {
+    private List<Racer> getWinnerList( ) {
         return racerList.stream()
-            .filter(racer -> racer.isSamePosition(maxPosition))
+            .filter(racer -> racer.isSamePosition(getMaxPosition()))
             .collect(Collectors.toList());
     }
 
@@ -43,6 +43,6 @@ public class Match {
         return racerList.stream()
             .mapToInt(Racer::getFinalPosition)
             .max()
-            .orElseThrow(() -> new RuntimeException("최대값을 구할 수 없습니다"));
+            .orElseThrow(() -> new RuntimeException("최대값을 구할 수 없습니팅"));
     }
 }
