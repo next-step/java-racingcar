@@ -7,10 +7,10 @@ import java.util.List;
 
 public class RacingGameApplication {
     public static void main(String[] args) {
-        int carInput = InputView.carInput();
+        List<String> carNames = InputView.carNameInput();
         int stageInput = InputView.stageInput();
 
-        RacingGame racingGame = new RacingGame(carInput, stageInput);
+        RacingGame racingGame = new RacingGame(stageInput, carNames);
         racingGame.progress();
 
         List<GameResult> gameResult = racingGame.getResults();

@@ -1,9 +1,6 @@
 package car;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -13,11 +10,10 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars from(int count) {
-        List<Car> cars = new ArrayList<>();
-        for(int i = 0; i < count; i++) {
-            cars.add(new Car());
-        }
+    public static Cars from(List<String> names) {
+        List<Car> cars = names.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
         return new Cars(cars);
     }
 

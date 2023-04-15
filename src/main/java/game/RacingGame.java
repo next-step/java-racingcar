@@ -1,7 +1,6 @@
 package game;
 
 import car.Cars;
-import view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,9 +10,9 @@ public class RacingGame {
     private final Cars cars;
     private final List<GameResult> result;
 
-    public RacingGame(int carCount, int stageCount) {
+    public RacingGame(int stageCount, List<String> carNames) {
         this.stage = Stage.from(stageCount);
-        this.cars = Cars.from(carCount);
+        this.cars = Cars.from(carNames);
         this.result = new ArrayList<>();
     }
 
