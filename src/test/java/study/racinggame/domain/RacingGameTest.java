@@ -1,12 +1,15 @@
 package study.racinggame.domain;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 
 public class RacingGameTest {
@@ -15,13 +18,10 @@ public class RacingGameTest {
 
   @BeforeEach
   public void setUp() {
-    List<Car> carList = new ArrayList<>();
-
-    carList.add(new Car("toby"));
-    carList.add(new Car("oneny"));
-    carList.add(new Car("gary"));
-
-    cars = new Cars(carList);
+    cars = new Cars(new ArrayList<>(Arrays.asList(
+            new Car("tobi"),
+            new Car("oneny"),
+            new Car("twony"))));
   }
 
   @Test
@@ -30,6 +30,10 @@ public class RacingGameTest {
     cars.forwardCars();
     cars.forwardCars();
 
-    assertThat(cars.cars().get(0).distance()).isBetween(0, 3);
+    assertAll(
+            () -> assertThat(cars.cars().get(0).distance()).isBetween(0, 3),
+            () -> assertThat(cars.cars().get(1).distance()).isBetween(0, 3),
+            () -> assertThat(cars.cars().get(2).distance()).isBetween(0, 3)
+    );
   }
 }
