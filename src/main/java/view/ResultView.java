@@ -15,14 +15,14 @@ public class ResultView {
         System.out.println(RESULT_TITLE);
     }
 
-    public static void printResult(GameResult result) {
-        result.getResults().stream()
+    public static void printResult(List<GameResult> result) {
+        result.stream()
                 .map(ResultView::printCarsPosition)
                 .forEach(s -> System.out.println(s + "\n"));
     }
 
-    private static String printCarsPosition(List<Integer> carPositions) {
-        return carPositions.stream()
+    private static String printCarsPosition(GameResult carPositions) {
+        return carPositions.getResult().stream()
             .map(ResultView::carPositionToIndicator)
             .collect(Collectors.joining("\n"));
     }

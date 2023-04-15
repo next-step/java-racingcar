@@ -13,7 +13,7 @@ public class RacingGameApplication {
         RacingGame racingGame = new RacingGame(carInput, stageInput);
         racingGame.progress();
 
-        GameResult gameResult = racingGame.getResults();
+        List<GameResult> gameResult = racingGame.getResults();
 
         ResultView.printResultTitle();
         ResultView.printResult(gameResult);

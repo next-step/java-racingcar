@@ -5,17 +5,13 @@ import java.util.Collections;
 import java.util.List;
 
 public class GameResult {
-    private final List<List<Integer>> results;
+    private final List<Integer> result;
 
-    public GameResult() {
-        this.results = new ArrayList<>();
+    public GameResult(List<Integer> result) {
+        this.result = result;
     }
 
-    public void add(List<Integer> result) {
-        results.add(result);
-    }
-
-    public List<List<Integer>> getResults() {
-        return Collections.unmodifiableList(results);
+    public List<Integer> getResult() {
+        return Collections.unmodifiableList(result);
     }
 }

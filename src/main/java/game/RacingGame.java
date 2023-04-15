@@ -9,15 +9,15 @@ import java.util.List;
 public class RacingGame {
     private final Stage stage;
     private final Cars cars;
-    private final GameResult result;
+    private final List<GameResult> result;
 
     public RacingGame(int carCount, int stageCount) {
         this.stage = Stage.from(stageCount);
         this.cars = Cars.from(carCount);
-        this.result = new GameResult();
+        this.result = new ArrayList<>();
     }
 
-    public GameResult getResults() {
+    public List<GameResult> getResults() {
         return result;
     }
 
@@ -25,7 +25,12 @@ public class RacingGame {
         while(stage.hasNext()) {
             cars.move();
             stage.next();
-            result.add(cars.getPositions());
+            saveResult(cars);
         }
+    }
+
+    private void saveResult(Cars cars) {
+        List<Integer> positions = cars.getPositions();
+        result.add(new GameResult(positions));
     }
 }
