@@ -16,7 +16,7 @@ public class Racing {
   // 전체 자동차에서 각각의 자동차들의 전진 시도
   public void tryToMoveCars() {
     for (RacingCar racingCar : this.racing.getRacingCars()) {
-        racingCar.move(defaultRacingMoveStrategy());
+        racingCar.tryToMove(defaultRacingMoveStrategy());
     }
 
   }

@@ -35,7 +35,7 @@ public class RacingCarTest {
   public void moveRacingCar_ReturnPositionValueOne() {
     RacingCar racingCar = new RacingCar();
     MoveStrategy normalMoveStrategy = new NormalMoveStrategy();
-    racingCar.move(normalMoveStrategy);
+    racingCar.tryToMove(normalMoveStrategy);
     int result = racingCar.position();
 
     assertThat(result).isEqualTo(1);

@@ -11,7 +11,7 @@ public class RacingCar implements CarInterface {
   }
 
   @Override
-  public void move(MoveStrategy moveStrategy) {
+  public void tryToMove(MoveStrategy moveStrategy) {
     if(moveStrategy.decideMoveOrHold()) {
       this.position += moveStrategy.moveForward();
     }
