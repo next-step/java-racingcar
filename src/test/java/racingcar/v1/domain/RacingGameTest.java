@@ -1,8 +1,10 @@
-package racingcar.v1;
+package racingcar.v1.domain;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.v1.domain.Car;
+import racingcar.v1.domain.RacingGame;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,13 +12,15 @@ import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class CarRaceTest {
+class RacingGameTest {
 
+    private RacingGame racingGame;
     private List<Car> carList;
     private int rotation;
 
     @BeforeEach
     void setUp() {
+        racingGame = new RacingGame("", 20);
         carList = new ArrayList<>();
         carList.add(new Car("a", 3));
         carList.add(new Car("b", 2));
@@ -27,7 +31,7 @@ class CarRaceTest {
 
     @Test
     void getCarList() {
-        List<Car> actualCarList = CarRace.getCarList("a,b,c,d");
+        List<Car> actualCarList = racingGame.getCarList("a,b,c,d");
 
         assertThat(actualCarList.stream()
                 .map(Car::getName)
@@ -40,18 +44,12 @@ class CarRaceTest {
     }
 
     @Test
-    void playGame() {
-        Assertions.assertThat(CarRace.playGame(carList, rotation))
-                .containsAnyElementsOf(List.of("a", "b", "c", "d"));
-    }
-
-    @Test
     void playSingleLoop() {
         int sumBeforeRace = carList.stream()
                 .mapToInt(Car::getDistance)
                 .reduce(0, Integer::sum);
 
-        CarRace.playSingleLoop(carList);
+        racingGame.playSingleLoop();
 
         int sumAfterRace = carList.stream()
                 .mapToInt(Car::getDistance)
@@ -64,14 +62,14 @@ class CarRaceTest {
     void moveForwardRandom() {
         int moved = 0;
         for (int i = 0; i < rotation; ++i) {
-            moved += CarRace.moveForwardRandom();
+            moved += racingGame.moveForwardRandom();
         }
         assertThat(moved).isLessThan(rotation);
     }
 
     @Test
     void getWinners() {
-        Assertions.assertThat(CarRace.getWinners(carList))
+        Assertions.assertThat(racingGame.getWinners())
                 .containsAll(List.of("c", "d"));
     }
 }
