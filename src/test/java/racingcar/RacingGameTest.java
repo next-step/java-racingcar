@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racingcar.service.RacingGame;
 
 import java.io.*;
 
@@ -31,15 +32,6 @@ public class RacingGameTest {
         car.setMoveTimes();
         assertThat(car.getMoveTimes()).isEqualTo(3);
     }
-
-    @ParameterizedTest
-    @CsvSource(value = {"1:false", "2:false", "3:false", "4:true", "5:true"}, delimiter = ':')
-    @DisplayName("조건 값에 따른 True, False 반환 확인")
-    void check_go_or_stop_when_condition_is_four(int randomNumber, boolean expected) {
-        RacingGame car = new RacingGame();
-        assertThat(car.goOrStop(4, randomNumber)).isEqualTo(expected);
-    }
-
 
     private void mockInputStream(String input) {
         OutputStream out = new ByteArrayOutputStream();
