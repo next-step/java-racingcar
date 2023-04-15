@@ -13,7 +13,7 @@ public class ResultView {
         }
         List<Car> carList = cars.values();
         for (Car car : carList) {
-            System.out.println(convertPoisitonToMark(car.position()));
+            System.out.println(car.name() + " : " + convertPoisitonToMark(car.position()));
         }
         System.out.println();
     }
