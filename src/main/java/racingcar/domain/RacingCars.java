@@ -10,10 +10,10 @@ public class RacingCars {
       this.racingCars[i] = new RacingCar();
     }
   }
+
   // 자동차들 객체 가져오기
   public RacingCar[] statusOfRacingCars() {
     return racingCars;
   }
-
 
 }

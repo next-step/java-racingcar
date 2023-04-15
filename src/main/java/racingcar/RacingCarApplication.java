@@ -22,7 +22,7 @@ public class RacingCarApplication {
     Racing racing = new Racing(racingCars);
     ResultView resultView = new ResultView();
 
-    for(int i = 0; i<numberOfTrials; i++) {
+    for (int i = 0; i < numberOfTrials; i++) {
       racing.startRacingRound();
       resultView.printRacingRound(racing.statusOfRacing(), i);
     }
