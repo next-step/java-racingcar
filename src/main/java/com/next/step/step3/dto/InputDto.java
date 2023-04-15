@@ -4,11 +4,11 @@ import java.util.List;
 
 public class InputDto {
 
-    private final List<String> carNames;
+    private final String carNames;
 
     private final int numOfAttempts;
 
-    public InputDto(List<String> carNames, int numOfAttempts) {
+    public InputDto(String carNames, int numOfAttempts) {
         this.carNames = carNames;
         this.numOfAttempts = numOfAttempts;
     }
@@ -17,7 +17,7 @@ public class InputDto {
         return numOfAttempts;
     }
 
-    public List<String> carNames() {
+    public String carNames() {
         return carNames;
     }
 }

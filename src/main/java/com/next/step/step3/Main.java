@@ -12,11 +12,11 @@ public class Main {
 
     public static void main(String[] args) {
         InputView inputView = new InputView(new InputValidation());
-        List<String> carNames = inputView.carsName();
+        String carNames = inputView.carsName();
         int numOfAttempts = inputView.numOfAttempts();
 
         RacingGame racingGame = new RacingGame(new InputDto(carNames, numOfAttempts));
-        List<String> winnerNames = racingGame.executeRace(numOfAttempts);
+        List<String> winnerNames = racingGame.executeRace();
 
         ResultView resultView = new ResultView();
         resultView.showWinnerNames(winnerNames);

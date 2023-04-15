@@ -22,9 +22,9 @@ public class CarsFactoryTest {
 
     static Stream<Arguments> provideCreateCarsInputDto() {
         return Stream.of(
-                Arguments.of(new InputDto(List.of("a", "b"), 2), 2),
-                Arguments.of(new InputDto(List.of("a", "b", "c"), 3), 3),
-                Arguments.of(new InputDto(List.of("a", "b", "c", "d"), 4), 4)
+                Arguments.of(new InputDto("a,b", 2), 2),
+                Arguments.of(new InputDto("a,b,c", 3), 3),
+                Arguments.of(new InputDto("a,b,c,d", 4), 4)
         );
     }
 }

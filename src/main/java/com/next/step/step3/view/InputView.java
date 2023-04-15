@@ -1,9 +1,7 @@
 package com.next.step.step3.view;
 
-import com.next.step.step3.util.CarNamesExtractor;
 import com.next.step.step3.validate.InputValidation;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
@@ -21,13 +19,13 @@ public class InputView {
         this.scanner = new Scanner(System.in);
     }
 
-    public List<String> carsName() {
+    public String carsName() {
         System.out.println(CARS_NAME_MESSAGE);
 
         String carNames = scanner.next();
         inputValidation.validateExistName(carNames);
 
-        return CarNamesExtractor.extractCarNames(carNames);
+        return carNames;
     }
 
     public int numOfAttempts() {

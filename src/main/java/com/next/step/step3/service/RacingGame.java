@@ -12,11 +12,14 @@ public class RacingGame {
 
     private Cars cars;
 
+    private int numOfAttempts;
+
     public RacingGame(InputDto inputDto) {
         this.cars = new Cars(CarsFactory.createCars(inputDto));
+        this.numOfAttempts = inputDto.numOfAttempts();
     }
 
-    public List<String> executeRace(int numOfAttempts) {
+    public List<String> executeRace() {
         ResultView resultView = new ResultView();
 
         resultView.showResultTitle();
