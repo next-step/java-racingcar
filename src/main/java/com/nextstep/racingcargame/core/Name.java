@@ -2,7 +2,7 @@ package com.nextstep.racingcargame.core;
 
 import java.util.Objects;
 
-public class CarName {
+public class Name {
 
     private final String carName;
     private static final int CAR_NAME_MAX_LENGTH = 5;
@@ -11,7 +11,7 @@ public class CarName {
 
     private static final String CAR_EMPTY_VALUE_MSG = "차 이름이 임력되지 않았습니다.";
 
-    public CarName(String carName) {
+    public Name(String carName) {
         if (carNameEmpty(carName)) {
             throw new IllegalArgumentException(CAR_EMPTY_VALUE_MSG);
         }
@@ -41,8 +41,8 @@ public class CarName {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CarName carName1 = (CarName) o;
-        return Objects.equals(carName, carName1.carName);
+        Name name1 = (Name) o;
+        return Objects.equals(carName, name1.carName);
     }
 
     @Override

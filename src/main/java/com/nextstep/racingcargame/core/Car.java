@@ -8,7 +8,7 @@ import java.util.Objects;
 public class Car {
 
     private final Distance distance;
-    private final CarName carName;
+    private final Name name;
 
     private final RandomNumber randomNumber;
 
@@ -28,19 +28,19 @@ public class Car {
         if (randomNumber == null) {
             throw new IllegalArgumentException(MOVING_STRATEGY_EMPTY);
         }
-        this.carName = new CarName(carName);
+        this.name = new Name(carName);
         this.distance = distance;
         this.randomNumber = randomNumber;
     }
 
     public String getDistanceAsPrintForm(String separator, String distancePrintStandard) {
-        return this.carName.getCarName()
+        return this.name.getCarName()
                 + separator
                 + this.distance.distanceForm(distancePrintStandard);
     }
 
     public String getCarName() {
-        return this.carName.getCarName();
+        return this.name.getCarName();
     }
 
     public Distance getDistance() {
@@ -52,7 +52,7 @@ public class Car {
     }
 
     public Car move() {
-        return new Car(this.carName.getCarName(),
+        return new Car(this.name.getCarName(),
                 this.distance.moveForward(randomNumber.randomNumber()),
                 this.randomNumber);
     }
@@ -70,12 +70,12 @@ public class Car {
             return false;
         }
         Car car = (Car) o;
-        return Objects.equals(distance, car.distance) && Objects.equals(carName,
-                car.carName);
+        return Objects.equals(distance, car.distance) && Objects.equals(name,
+                car.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(distance, carName);
+        return Objects.hash(distance, name);
     }
 }
