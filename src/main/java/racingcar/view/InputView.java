@@ -1,7 +1,7 @@
-package racingcar;
+package racingcar.view;
 
 import static java.util.Optional.ofNullable;
-import static racingcar.InputView.SplitString.splitStringList;
+import static racingcar.view.InputView.SplitString.splitStringList;
 
 import java.io.InputStream;
 import java.util.Arrays;

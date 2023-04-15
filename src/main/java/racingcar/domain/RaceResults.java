@@ -1,5 +1,6 @@
-package racingcar;
+package racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RaceResults {
@@ -14,12 +15,8 @@ public class RaceResults {
         lapResults.add(lapResult);
     }
 
-    public String raceResultsString() {
-        String result = "";
-        for (LapResult lapResult : lapResults) {
-            result += lapResult.lapResultString();
-        }
-        return result;
+    public List<LapResult> lapResults() {
+        return new ArrayList<>(lapResults);
     }
 
     public LapResult finalResult() {

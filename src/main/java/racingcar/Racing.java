@@ -1,13 +1,17 @@
 package racingcar;
 
-import static racingcar.RandomRacingRule.RacingRandom.randomNumbers;
+import static racingcar.domain.RandomRacingRule.RacingRandom.randomNumbers;
 
 import java.util.List;
+import racingcar.domain.Cars;
+import racingcar.domain.LapResult;
+import racingcar.domain.RaceResults;
+import racingcar.domain.RacingRule;
 
 public class Racing {
 
     private final Cars cars;
-    private final Integer lapCount;
+    private final int lapCount;
     private final RaceResults raceResults;
     private final RacingRule racingRule;
 
@@ -49,7 +53,7 @@ public class Racing {
         return cars.clone();
     }
 
-    public Integer raceCount() {
+    public int raceCount() {
         return lapCount;
     }
 

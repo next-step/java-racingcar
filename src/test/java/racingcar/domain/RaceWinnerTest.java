@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -6,6 +6,10 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
+import racingcar.domain.LapResult;
+import racingcar.domain.RaceResults;
+import racingcar.domain.RaceWinner;
 
 public class RaceWinnerTest {
 

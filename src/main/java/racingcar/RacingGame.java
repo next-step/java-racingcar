@@ -1,6 +1,11 @@
 package racingcar;
 
 import java.util.ArrayList;
+import racingcar.domain.Cars;
+import racingcar.domain.RaceResults;
+import racingcar.domain.RandomRacingRule;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RacingGame {
 
