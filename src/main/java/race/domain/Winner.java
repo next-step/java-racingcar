@@ -6,14 +6,14 @@ import java.util.stream.Collectors;
 
 public class Winner {
 
-    private final List<String> winners = new ArrayList<>();
-
     public List<String> get(List<Car> racingCars) {
         List<Car> sortedCars = getSortedCars(racingCars);
         return getWinnersList(sortedCars);
     }
 
     private List<String> getWinnersList(List<Car> sortedCars) {
+        List<String> winners = new ArrayList<>();
+
         int maxDistance = sortedCars.get(0).getMovingDistance();
         sortedCars.stream()
             .filter(car -> car.getMovingDistance() == maxDistance)
