@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 public class Racer {
     private static final Random random = new Random();
     private static final int MOVE_FORWARD_THRESHOLD = 4;
-    private final List<Integer> scores;
+    private final Score scores;
     private final Result results;
     private final Car car;
 
@@ -17,14 +17,16 @@ public class Racer {
             throw new RuntimeException("iterations 는 1 이상이어야 합니다");
         }
         this.scores = doRace(iterations);
-        this.results = calculateResults(scores);
+        this.results = calculateResults(scores.getScoreList());
         this.car = car;
     }
 
-    private List<Integer> doRace(int iterations) {
-        return IntStream.range(0, iterations)
-            .boxed().map(integer -> randomScore())
-            .collect(Collectors.toList());
+    private Score doRace(int iterations) {
+        return new Score(
+            IntStream.range(0, iterations)
+                .boxed().map(integer -> randomScore())
+                .collect(Collectors.toList())
+        );
     }
 
     public Result calculateResults(List<Integer> scoreList) {
