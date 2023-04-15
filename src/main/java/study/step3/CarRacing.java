@@ -1,38 +1,31 @@
 package study.step3;
 
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
 public class CarRacing {
 
     private int round;
-    private int carCount;
     private Car[] cars;
-    private Scanner scanner = new Scanner(System.in);
 
     public void startRacing() {
-        initGame();
+        initGameInput();
         playGame();
     }
 
-    public void initGame() {
-        carCount = readInputNum("자동차 대수는 몇 대 인가요?");
-        round = readInputNum("시도할 횟수는 몇 회 인가요?");
+    public void initGameInput() {
+        InputView inputView = new InputView();
 
-        System.out.println("실행 결과");
-        initCarObject();
+        initCarObject(inputView.readCarName());
+        round = inputView.readGameRound();
     }
 
-    private void initCarObject() {
-        cars = new Car[carCount];
-        for (int i = 0; i < carCount; i++) {
-            cars[i] = new Car();
+    private void initCarObject(String[] carNames) {
+        cars = new Car[carNames.length];
+        for (int i = 0; i < carNames.length; i++) {
+            cars[i] = new Car(carNames[i]);
         }
     }
 
     private void playGame() {
+        System.out.println("실행 결과");
         for (int i = 0; i < round; i++) {
             moveCars();
             printStateBoard();
@@ -58,16 +51,6 @@ public class CarRacing {
             stringBuilder.append("-");
         }
         return stringBuilder.toString();
-    }
-
-
-    private int readInputNum(String message) {
-        System.out.println(message);
-        return toInt(scanner.nextLine());
-    }
-
-    private int toInt(String str) {
-        return Integer.valueOf(str);
     }
 
     public static void main(String[] args) {
