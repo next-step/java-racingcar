@@ -12,7 +12,7 @@ public class RacingGame {
 
     public RacingGame(int carCount, int stageCount) {
         this.stageCount = stageCount;
-        this.cars = Cars.of(carCount);
+        this.cars = Cars.from(carCount);
         this.result = new ArrayList<>();
     }
 

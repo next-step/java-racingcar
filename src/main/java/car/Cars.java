@@ -13,7 +13,7 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars of(int count) {
+    public static Cars from(int count) {
         List<Car> cars = new ArrayList<>();
         for(int i = 0; i < count; i++) {
             cars.add(new Car());
