@@ -1,9 +1,9 @@
-import domain.Car;
-import domain.RacingCarGame;
-import domain.RandomMoveStrategy;
-import io.ConsoleScanner;
-import io.ConsoleWriter;
-import io.InputView;
+import racingCarGame.domain.Car;
+import racingCarGame.domain.RacingCarGame;
+import racingCarGame.domain.RandomMoveStrategy;
+import racingCarGame.view.ConsoleScanner;
+import racingCarGame.view.ConsoleWriter;
+import racingCarGame.view.InputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ public class RacingCarGameApplication {
 
         ConsoleWriter.writeHeader();
         for (int i = 1; i <= inputView.getTryCount(); i++) {
-            racingCarGame.move();
+            racingCarGame.race();
             ConsoleWriter.writeGameInformation(cars);
         }
         ConsoleWriter.writeWinner(racingCarGame.findWinner());

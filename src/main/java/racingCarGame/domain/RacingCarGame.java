@@ -1,4 +1,4 @@
-package domain;
+package racingCarGame.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,7 +9,7 @@ public class RacingCarGame {
     public RacingCarGame(List<Car> cars) {
         this.cars = cars;
     }
-    public void move() {
+    public void race() {
         for (Car car : cars) {
             car.move();
         }

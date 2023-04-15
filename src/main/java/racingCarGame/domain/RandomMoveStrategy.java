@@ -1,6 +1,6 @@
-package domain;
+package racingCarGame.domain;
 
-import util.RandomGenerator;
+import racingCarGame.util.RandomGenerator;
 
 public  class RandomMoveStrategy implements MoveStrategy{
     @Override

@@ -1,4 +1,4 @@
-package domain;
+package racingCarGame.domain;
 
 public interface MoveStrategy {
     boolean isCanMove();

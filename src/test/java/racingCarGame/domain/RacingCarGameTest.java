@@ -1,6 +1,6 @@
-package domain;
+package racingCarGame.domain;
 
-import io.InputView;
+import racingCarGame.view.InputView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -32,7 +32,7 @@ public class RacingCarGameTest {
         cars.add(new Car(input.getOwners().get(1), getStrategy(strategy2)));
         cars.add(new Car(input.getOwners().get(2), getStrategy(strategy3)));
         RacingCarGame racingCarGame = new RacingCarGame(cars);
-        racingCarGame.move();
+        racingCarGame.race();
 
         assertThat(racingCarGame.findWinner().size()).isEqualTo(Integer.parseInt(winnerCount));
     }
@@ -56,7 +56,7 @@ public class RacingCarGameTest {
         cars.add(new Car(input.getOwners().get(1), getStrategy(strategy2)));
         cars.add(new Car(input.getOwners().get(2), getStrategy(strategy3)));
         RacingCarGame racingCarGame = new RacingCarGame(cars);
-        racingCarGame.move();
+        racingCarGame.race();
 
         assertThat(racingCarGame.findWinner().size()).isEqualTo(1);
         assertThat(racingCarGame.findWinner().get(0)).isEqualTo(winner);

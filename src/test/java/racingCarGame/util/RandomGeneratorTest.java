@@ -1,7 +1,9 @@
-package util;
+package racingCarGame.util;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingCarGame.util.RandomGenerator;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RandomGeneratorTest {

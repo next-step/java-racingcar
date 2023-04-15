@@ -1,4 +1,6 @@
-package domain;
+package racingCarGame.domain;
+
+import racingCarGame.domain.MoveStrategy;
 
 public class NotMoveStrategy implements MoveStrategy {
     @Override
