@@ -2,13 +2,9 @@ package race.domain;
 
 public class Car {
 
-    private String name;
+    private final String name;
     private int movingDistance;
     private StringBuilder tracing;
-
-
-    public Car() {
-    }
 
     public Car(String name) {
         validateName(name);
@@ -41,12 +37,12 @@ public class Car {
     }
 
     private void validateName(String name) {
-        if (isOverThanFive(name)) {
-            throw new IllegalArgumentException("이름은 5글자를 초과할 수 없습니다.");
-        }
-
         if (isBlank(name)) {
             throw new IllegalArgumentException("이름은 공백일 수 없습니다.");
+        }
+
+        if (isOverThanFive(name)) {
+            throw new IllegalArgumentException("이름은 5글자를 초과할 수 없습니다.");
         }
     }
 
