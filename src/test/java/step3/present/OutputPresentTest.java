@@ -3,6 +3,8 @@ package step3.present;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step3.model.Car;
+import step3.model.Result;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -26,36 +28,36 @@ public class OutputPresentTest {
     @Test
     public void printResult() {
         //given
-        List<List<String>> input = List.of(
-            List.of("-", "--", "--", "---", "----", "----"),
-            List.of("-", "--", "--", "---", "----", "----"),
-            List.of("-", "--", "--", "---", "----", "----")
+        List<DisplayRaceVO> input = List.of(
+            new DisplayRaceVO(new Result(List.of("-", "--", "--", "---", "----", "----")), new Car("hello")),
+            new DisplayRaceVO(new Result(List.of("-", "--", "--", "---", "----", "----")), new Car("groot")),
+            new DisplayRaceVO(new Result(List.of("-", "--", "--", "---", "----", "----")), new Car("java"))
         );
         String answer = "실행 결과\n" +
             "\n" +
-            "-\n" +
-            "-\n" +
-            "-\n" +
+            "hello : -\n" +
+            "groot : -\n" +
+            "java : -\n" +
             "\n" +
-            "--\n" +
-            "--\n" +
-            "--\n" +
+            "hello : --\n" +
+            "groot : --\n" +
+            "java : --\n" +
             "\n" +
-            "--\n" +
-            "--\n" +
-            "--\n" +
+            "hello : --\n" +
+            "groot : --\n" +
+            "java : --\n" +
             "\n" +
-            "---\n" +
-            "---\n" +
-            "---\n" +
+            "hello : ---\n" +
+            "groot : ---\n" +
+            "java : ---\n" +
             "\n" +
-            "----\n" +
-            "----\n" +
-            "----\n" +
+            "hello : ----\n" +
+            "groot : ----\n" +
+            "java : ----\n" +
             "\n" +
-            "----\n" +
-            "----\n" +
-            "----";
+            "hello : ----\n" +
+            "groot : ----\n" +
+            "java : ----";
         //when
         outputPresent.printResult(input);
         //then

@@ -2,6 +2,7 @@ package step3.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step3.present.DisplayRaceVO;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,9 +20,9 @@ public class MatchTest {
             .collect(Collectors.toList());
         int iterations = 7;
         //when
-        List<List<String>> display = new Match(participates, iterations).display();
+        List<DisplayRaceVO> display = new Match(participates, iterations).display();
         //then
         assertThat(display).hasSize(participates.size());
-        assertThat(display.get(0)).hasSize(iterations);
+        assertThat(display.get(0).getResult().getPositionList()).hasSize(iterations);
     }
 }
