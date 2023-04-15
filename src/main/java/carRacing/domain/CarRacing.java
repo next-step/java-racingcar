@@ -3,6 +3,8 @@ package carRacing.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import carRacing.utils.RandomUtils;
+
 public class CarRacing {
 
 	private final List<Car> cars;
@@ -13,6 +15,12 @@ public class CarRacing {
 
 	public void addCar(Car car) {
 		this.cars.add(car);
+	}
+
+	public void moveCars() {
+		for (Car car : this.cars) {
+			car.move(RandomUtils.getRandomValue());
+		}
 	}
 
 	public List<Car> createWinners() {

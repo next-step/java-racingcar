@@ -21,5 +21,8 @@ public class CarRacingMain {
 		}
 
 		int tryCount = inputView.inputTryCount();
+		while (tryCount-- > 0) {
+			carRacing.moveCars();
+		}
 	}
 }
