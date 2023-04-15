@@ -17,9 +17,13 @@ public class RacingCarApplication {
     // 전체 자동차 객체 만들기
     RacingCars racingCars = new RacingCars(numberOfCars);
 
-//        // 이동 시도 횟수에 따른 racing 진행
-    Racing racing = new Racing(racingCars, numberOfTrials);
-    racing.startRacing();
+    // 이동 시도 횟수에 따른 racing 진행
+    Racing racing = new Racing(racingCars);
+    while (numberOfTrials > 0) {
+      racing.startRacingRound();
+      numberOfTrials --;
+    }
+
 //        RacingCars racingResult = racing.getRacing();
 
 

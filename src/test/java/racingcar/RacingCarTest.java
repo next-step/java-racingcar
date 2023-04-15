@@ -46,17 +46,22 @@ public class RacingCarTest {
   public void checkRacingCarsObject() {
     RacingCars racingCars = new RacingCars(5);
 
-    assertThat(racingCars.getRacingCars()).hasSize(5);
+    assertThat(racingCars.statusOfRacingCars()).hasSize(5);
   }
 
   @Test
   @DisplayName("5대 자동차, 4번 움직임 시도(postion max값 == 4)인 racing 확인")
   public void checkRacingClass() {
-    Racing racing = new Racing(new RacingCars(5), 4);
-    racing.startRacing();
-    RacingCars resultRacing = racing.getRacing();
+    Racing racing = new Racing(new RacingCars(5));
+    int numberOfTrials = 4;
+    while (numberOfTrials > 0) {
+      racing.startRacingRound();
+      numberOfTrials --;
+    }
 
-    assertThat(resultRacing.getRacingCars()).hasSize(5);
+    assertThat(racing.statusOfRacing()).hasSize(5);
+    assertThat(racing.statusOfRacing()[0].position())
+        .isLessThanOrEqualTo(4);
 
 //        System.out.println("carNumber: " + resultRacing.getRacingCar(0).getNumber() + " position: " + resultRacing.getRacingCar(0).getPosition());
 //        System.out.println("carNumber: " + resultRacing.getRacingCar(1).getNumber() + " position: " + resultRacing.getRacingCar(1).getPosition());
