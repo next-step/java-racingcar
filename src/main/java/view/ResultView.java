@@ -2,6 +2,7 @@ package view;
 
 import car.Car;
 import car.Cars;
+import game.GameResult;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,8 +15,8 @@ public class ResultView {
         System.out.println(RESULT_TITLE);
     }
 
-    public static void printResult(List<List<Integer>> result) {
-        result.stream()
+    public static void printResult(GameResult result) {
+        result.getResults().stream()
                 .map(ResultView::printCarsPosition)
                 .forEach(s -> System.out.println(s + "\n"));
     }
