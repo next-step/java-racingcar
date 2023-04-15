@@ -71,4 +71,8 @@ public class Racer {
     public Car getCar() {
         return this.car;
     }
+
+    public boolean isSamePosition(int position) {
+        return position == getFinalPosition();
+    }
 }

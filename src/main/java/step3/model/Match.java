@@ -3,6 +3,7 @@ package step3.model;
 import step3.present.DisplayRaceVO;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -10,12 +11,14 @@ import java.util.stream.IntStream;
 public class Match {
 
     private final List<Racer> racerList;
+    private final List<Racer> winnerList;
 
     public Match(List<Car> participates, int iterations) {
         this.racerList = IntStream.range(0, participates.size())
             .boxed()
             .map(integer -> new Racer(iterations, participates.get(integer)))
             .collect(Collectors.toList());
+        this.winnerList = getWinnerList(this.racerList,getMaxPosition());
     }
 
     public List<DisplayRaceVO> display() {
@@ -25,25 +28,23 @@ public class Match {
     }
 
     public List<String> winnerDisplay() {
-        return getWinnerList(getMaxPosition());
+        return new ArrayList<>(winnerList).stream().map(racer -> racer.getCar().getName()).collect(Collectors.toList());
     }
 
-    private List<String> getWinnerList(int maxPosition) {
-        List<String> list = new ArrayList<>();
+    private List<Racer> getWinnerList(List<Racer> racerList, int maxPosition) {
+        List<Racer> list = new ArrayList<>();
         for(Racer racer : racerList) {
-            if(racer.getFinalPosition()== maxPosition) {
-                list.add(racer.getCar().getName());
+            if (racer.isSamePosition(maxPosition)) {
+                list.add(racer);
             }
         }
         return list;
     }
 
     private int getMaxPosition() {
-        int max = -1;
-        for(Racer racer : racerList) {
-            max = Math.max(max, racer.getFinalPosition());
-        }
-        return max;
+        List<Racer> copy = new ArrayList<>(racerList);
+        copy.sort(Comparator.comparingInt(Racer::getFinalPosition));
+        return copy.get(copy.size() - 1).getFinalPosition();
     }
 
 }
