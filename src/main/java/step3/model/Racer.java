@@ -39,13 +39,11 @@ public class Racer {
     }
 
     private String calculateResult(int roundCount, List<Integer> scoreList) {
-        int position = 0;
-        for (int roundIndex = 0; roundIndex <= roundCount; roundIndex++) {
-            if (moveForward(scoreList.get(roundIndex))) {
-                position++;
-            }
-        }
-        return lengthToString(position);
+        return  "-".repeat( getPos(roundCount, scoreList));
+    }
+
+    private int getPos(int roundCount, List<Integer> scoreList) {
+        return (int) scoreList.stream().limit(roundCount+1).filter(this::moveForward).count();
     }
 
     private boolean moveForward(int score) {
