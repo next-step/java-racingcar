@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 public class Cars {
     private final List<Car> cars;
 
-    private Cars(List<Car> cars) {
+    public Cars(List<Car> cars) {
         this.cars = cars;
     }
 
