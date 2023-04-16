@@ -13,7 +13,7 @@ public class CarTest {
     @ValueSource(ints = {0, 3})
     @DisplayName("자동차가 정지한다.")
     void testNonMove(int number) {
-        Car car = new Car();
+        Car car = new Car("test");
         car.move(number);
         assertThat(car.getPosition()).isEqualTo(0);
     }
@@ -22,7 +22,7 @@ public class CarTest {
     @ValueSource(ints = {4, 9})
     @DisplayName("자동차가 전진한다.")
     void testMove(int number) {
-        Car car = new Car();
+        Car car = new Car("test");
         car.move(number);
         assertThat(car.getPosition()).isEqualTo(1);
     }
@@ -31,7 +31,7 @@ public class CarTest {
     @CsvSource(value = {"3:0", "4:1"}, delimiter = ':')
     @DisplayName("자동차의 위치를 가져온다.")
     void testGetPosition(int number, int expected) {
-        Car car = new Car();
+        Car car = new Car("test");
         car.move(number);
         assertThat(car.getPosition()).isEqualTo(expected);
     }
