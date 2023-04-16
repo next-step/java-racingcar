@@ -3,7 +3,7 @@ package step3;
 import java.util.List;
 
 public class Car {
-
+    private static final int RANDOM_LIMIT = 4;
     private int progress = 0;
 
     public void move(int random) {
@@ -13,7 +13,7 @@ public class Car {
     }
 
     public static boolean moveAvailable(int random) {
-        return random >= 4;
+        return random >= RANDOM_LIMIT;
     }
 
     public int getProgress() {
