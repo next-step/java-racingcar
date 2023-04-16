@@ -26,7 +26,7 @@ public class GameWinner {
     public List<String> findGameWinner() {
 
         return cars.stream()
-                .filter(car -> car.currentPosition() == maxPosition)
+                .filter(car -> car.isPosition(maxPosition))
                 .map(Car::getName)
                 .collect(Collectors.toList());
     }
