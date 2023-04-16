@@ -22,8 +22,12 @@ public class RacingCar {
         return this.name;
     }
 
-    public void moveForward(int moveCount) {
-        if (moveCount >= STANDARD_MOVE_COUNT) {
+    public static int getStandardMoveCount() {
+        return STANDARD_MOVE_COUNT;
+    }
+
+    public void moveForward(MoveStrategy moveStrategy) {
+        if (moveStrategy.isMovable()) {
             this.position++;
         }
     }
