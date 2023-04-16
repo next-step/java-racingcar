@@ -9,7 +9,7 @@ public class ResultView {
 
     public static void printCarDistance(List<Car> cars) {
         for (Car car : cars) {
-            System.out.println(repeatString(DISTANCE_GRAPH, car.getPosition()));
+            System.out.println(car.getName() + " : " + repeatString(DISTANCE_GRAPH, car.getPosition()));
         }
         System.out.print(ENTER);
     }
