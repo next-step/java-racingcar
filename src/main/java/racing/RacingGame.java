@@ -3,6 +3,8 @@ package racing;
 import java.util.ArrayList;
 import java.util.List;
 
+import static racing.ResultView.printWinner;
+
 public class RacingGame {
 
     public static void main(String[] args) {
@@ -11,8 +13,8 @@ public class RacingGame {
 
         List<Car> cars = initCars(carNames);
 
-        List<Car> cars1 = playGame(numberOfAttempts, cars);
-        
+        List<Car> winners = playGame(numberOfAttempts, cars);
+        printWinner(winners);
     }
 
     private static List<Car> playGame(Integer numberOfAttempts, List<Car> cars) {
@@ -20,7 +22,7 @@ public class RacingGame {
         for (int i = 0; i < numberOfAttempts; i++) {
             round(cars);
         }
-        return cars;
+        return WinnerSelector.selectWinner(cars);
     }
 
     private static void round(List<Car> cars) {
