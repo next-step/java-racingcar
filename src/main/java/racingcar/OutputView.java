@@ -21,4 +21,10 @@ public class OutputView {
     private static void printPosition(Car car) {
         System.out.println(car.getName()+" : "+"-".repeat(car.getPosition()));
     }
+
+    public static void printWinner(List<Car> cars) {
+        System.out.println(String.join(", ", cars.stream()
+                .map(Car::getName)
+                .toArray(String[]::new)) + "가 최종 우승했습니다.");
+    }
 }

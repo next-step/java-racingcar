@@ -15,6 +15,7 @@ public class RacingCar {
             game.play();
             OutputView.printCarPosition(cars);
         }
+        OutputView.printWinner(game.getWinner());
     }
 
     private static List<Car> createCar(String[] carNames) {
