@@ -5,12 +5,11 @@ import java.util.List;
 public final class RacingCarMoveServiceLocator {
 
     private static final int MIN_MOVE_ALLOWED_TRY = 4;
+    private final List<RacingCarMoveDirectionStrategy> strategies;
 
     public RacingCarMoveServiceLocator(List<RacingCarMoveDirectionStrategy> strategies) {
         this.strategies = strategies;
     }
-
-    private final List<RacingCarMoveDirectionStrategy> strategies;
 
     public RacingCarMoveDirectionStrategy getRacingCarMoveStrategy (int moveAck) {
         RacingCarMoveDirection direction = getDirectionFromMoveAck(moveAck);
