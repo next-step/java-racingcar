@@ -1,14 +1,12 @@
 package step3;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 public class Racing {
-    private final List<Car> racingCars;
+    private final RacingCars racingCars;
     private final int matchCount;
-    private final List<List<Integer>> scoreBoard = new ArrayList<>();
     private static final Random random = new Random();
 
     public Racing(int carCount, int matchCount) {
@@ -16,40 +14,31 @@ public class Racing {
         this.matchCount = matchCount;
     }
 
-    private List<Car> racingCarRegistration(int carCount) {
-        final Car[] racingCars = new Car[carCount];
+    private RacingCars racingCarRegistration(int carCount) {
+        final List<Car> racingCars = new ArrayList<>();
 
         for (int i = 0; i < carCount; i++) {
-            racingCars[i] = new Car();
+            racingCars.add(new Car());
         }
 
-        return Arrays.asList(racingCars);
+        return new RacingCars(racingCars);
     }
 
-    public void raceStart() {
+    /**
+     * 스코어보드라는 상태를 가지지않고 바로 반환하게 구현했습니다.
+     */
+    public List<List<Integer>> race() {
+        final List<List<Integer>> scoreBoard = new ArrayList<>();
+
         for (int i = 0; i < this.matchCount; i++) {
             this.carMove();
-            this.insertScore();
+            scoreBoard.add(this.racingCars.carScore());
         }
+
+        return scoreBoard;
     }
 
     private void carMove() {
-        for (Car car : this.racingCars) {
-            car.move(random.nextInt(10));
-        }
-    }
-
-    private void insertScore() {
-        final List<Integer> currentScore = new ArrayList<>();
-
-        for (Car car : this.racingCars) {
-            currentScore.add(car.currentLocation());
-        }
-
-        this.scoreBoard.add(currentScore);
-    }
-
-    public List<List<Integer>> scoreBoard() {
-        return this.scoreBoard;
+        this.racingCars.carMove(random);
     }
 }

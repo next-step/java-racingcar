@@ -2,9 +2,7 @@ package step3;
 
 public class Car {
     private int location = 0;
-
-    public Car() {
-    }
+    private static final int MOVE_CONDITION = 4;
 
     public void move(int condition) {
         if (this.isMove(condition)) {
@@ -13,10 +11,10 @@ public class Car {
     }
 
     private boolean isMove(int condition) {
-        return condition >= 4;
+        return condition >= MOVE_CONDITION;
     }
 
-    public int currentLocation() {
+    public int getCurrentLocation() {
         return this.location;
     }
 }

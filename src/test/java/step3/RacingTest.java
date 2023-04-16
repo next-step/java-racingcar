@@ -25,6 +25,7 @@ public class RacingTest {
 
         assertThat(racing)
                 .extracting("racingCars")
+                .extracting("racingCars")
                 .asList()
                 .hasSize(carCount);
     }
@@ -32,8 +33,7 @@ public class RacingTest {
     @Test
     @DisplayName("레이스 정보의 매치 횟수와 자동차 갯수 확인")
     void race() {
-        racing.raceStart();
-        final List<List<Integer>> carLocations = racing.scoreBoard();
+        final List<List<Integer>> carLocations = racing.race();
 
         assertThat(carLocations)
                 .hasSize(matchCount)
