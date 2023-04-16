@@ -3,8 +3,6 @@ package racingcar.v1.domain;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.v1.domain.Car;
-import racingcar.v1.domain.RacingGame;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,23 +13,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RacingGameTest {
 
     private RacingGame racingGame;
-    private List<Car> carList;
-    private int rotation;
 
     @BeforeEach
     void setUp() {
-        racingGame = new RacingGame("", 20);
-        carList = new ArrayList<>();
-        carList.add(new Car("a", 3));
-        carList.add(new Car("b", 2));
-        carList.add(new Car("c", 5));
-        carList.add(new Car("d", 5));
-        rotation = 20;
+        racingGame = new RacingGame("q, w, e, r, t", 20);
+        racingGame.getCarList().get(0).addDistance(3);
+        racingGame.getCarList().get(1).addDistance(2);
+        racingGame.getCarList().get(2).addDistance(5);
+        racingGame.getCarList().get(3).addDistance(5);
+        racingGame.getCarList().get(4).addDistance(10);
     }
 
     @Test
-    void getCarList() {
-        List<Car> actualCarList = racingGame.getCarList("a,b,c,d");
+    void parseCarListFromString() {
+        List<Car> actualCarList = racingGame.parseCarListFromString("a,b,c,d");
 
         assertThat(actualCarList.stream()
                 .map(Car::getName)
@@ -44,14 +39,30 @@ class RacingGameTest {
     }
 
     @Test
+    void getCarList() {
+        assertThat(racingGame.getCarList().stream()
+                .map(Car::getName)
+                .collect(Collectors.toList())
+                .containsAll(List.of("q", "w", "e", "r", "t"))).isTrue();
+    }
+
+    @Test
+    void isEnd() {
+        RacingGame finishedGame = new RacingGame("a, b", 0);
+
+        assertThat(racingGame.isEnd()).isFalse();
+        assertThat(finishedGame.isEnd()).isTrue();
+    }
+
+    @Test
     void playSingleLoop() {
-        int sumBeforeRace = carList.stream()
+        int sumBeforeRace = racingGame.getCarList().stream()
                 .mapToInt(Car::getDistance)
                 .reduce(0, Integer::sum);
 
         racingGame.playSingleLoop();
 
-        int sumAfterRace = carList.stream()
+        int sumAfterRace = racingGame.getCarList().stream()
                 .mapToInt(Car::getDistance)
                 .reduce(0, Integer::sum);
 
@@ -61,15 +72,35 @@ class RacingGameTest {
     @Test
     void moveForwardRandom() {
         int moved = 0;
-        for (int i = 0; i < rotation; ++i) {
+        for (int i = 0; i < 10; ++i) {
             moved += racingGame.moveForwardRandom();
         }
-        assertThat(moved).isLessThan(rotation);
+        assertThat(moved).isLessThan(10);
+    }
+
+    @Test
+    void getMaxDistance() {
+        assertThat(racingGame.getMaxDistance(racingGame.getCarList())).isEqualTo(10);
+
+        racingGame.getCarList().remove(4);
+
+        assertThat(racingGame.getMaxDistance(racingGame.getCarList())).isEqualTo(5);
+    }
+
+    @Test
+    void getNamesAbove() {
+        assertThat(racingGame.getNamesAbove(racingGame.getCarList(), 5)).containsAll(List.of("e", "r", "t"));
+        assertThat(racingGame.getNamesAbove(racingGame.getCarList(), 9)).containsAll(List.of("t"));
     }
 
     @Test
     void getWinners() {
         Assertions.assertThat(racingGame.getWinners())
-                .containsAll(List.of("c", "d"));
+                .containsAll(List.of("t"));
+
+        racingGame.getCarList().remove(4);
+
+        Assertions.assertThat(racingGame.getWinners())
+                .containsAll(List.of("e", "r"));
     }
 }
