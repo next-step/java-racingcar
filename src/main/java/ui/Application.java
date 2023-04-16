@@ -19,6 +19,8 @@ public class Application {
         CarRacing carRacing = new CarRacing(Car.generateCars(inputDto.carNames, new RandomNumberGenerator()));
         run(carRacing, inputDto.trySize);
         List<Car> winCars = carRacing.getWinner();
+        ResultView.printWinCar(winCars);
+
     }
 
     private static void run(CarRacing carRacing, int trySize) {

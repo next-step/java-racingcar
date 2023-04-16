@@ -12,4 +12,11 @@ public class ResultView {
             System.out.println("-".repeat(car.getMoveCount()));
         }
     }
+
+    public static void printWinCar(List<Car> cars){
+        for (Car car : cars) {
+            System.out.print(car.getName() + ",");
+        }
+        System.out.println("가 최종 우승했습니다.");
+    }
 }
