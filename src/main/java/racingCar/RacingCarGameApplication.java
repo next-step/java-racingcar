@@ -15,12 +15,12 @@ public class RacingCarGameApplication {
   public static void main(String[] args) throws IOException {
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-    final int carCnt = RacingCarGameInputView.getCarCnt(reader);
+    final List<String> carNames = RacingCarGameInputView.getCarNames(reader);
     final int moveTryCnt = RacingCarGameInputView.getMoveTryCnt(reader);
     final RacingCarGameResultView resultView = new RacingCarGameResultView();
     final List<RacingCarMoveDirectionStrategy> allowedMoveStrategies = List.of(new RacingCarMoveForward());
 
-    RacingCarGame racingCarGame = new RacingCarGame(carCnt, resultView, allowedMoveStrategies);
+    RacingCarGame racingCarGame = new RacingCarGame(carNames, resultView, allowedMoveStrategies);
     racingCarGame.play(moveTryCnt);
     reader.close();
   }
