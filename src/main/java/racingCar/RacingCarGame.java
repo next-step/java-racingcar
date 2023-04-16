@@ -40,9 +40,24 @@ public final class RacingCarGame {
     }
 
     resultView.printAllSnapShot();
+    resultView.printWinners(getWinners());
   }
 
   private void moveAllRacingCars(List<RacingCar> racingCarList) {
     racingCarList.forEach(car -> car.moveIfPossible(RandomUtils.getRandomSinglePositiveDigit()));
+  }
+
+  private List<RacingCar> getWinners() {
+    final int maxPosition = getMaxPositionOfGame();
+    return racingCars.stream()
+        .filter(racingCar -> racingCar.getPosition() == maxPosition)
+        .collect(Collectors.toList());
+  }
+
+  private int getMaxPositionOfGame() {
+    return racingCars.stream()
+        .mapToInt(RacingCar::getPosition)
+        .max()
+        .orElseThrow(RuntimeException::new);
   }
 }
