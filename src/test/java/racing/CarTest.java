@@ -15,4 +15,13 @@ public class CarTest {
 
         assertThat(car.getPosition()).isEqualTo(expected);
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"pobi:true", "invalidName:false"}, delimiter = ':')
+    void 이름_validation_check_test(String carName, boolean expected) {
+        boolean isValid = Car.isValidNameLength(carName);
+
+        assertThat(isValid).isEqualTo(expected);
+    }
 }
+
