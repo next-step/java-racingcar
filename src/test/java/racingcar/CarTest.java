@@ -19,6 +19,7 @@ public class CarTest {
         // 전진 테스트
         car.moveForwardOrStop(4);
         Assertions.assertThat(car.getMoveCount()).isEqualTo(1);
+
     }
 
 }
