@@ -12,6 +12,7 @@ public class CarControlTest {
     {
         CarControl control = new CarControl();
         boolean result = control.goOrStop();
+
         assertThat(result).satisfiesAnyOf(
                 actual -> assertThat(result).isTrue(),
                 actual -> assertThat(result).isFalse()

@@ -3,6 +3,7 @@ package racingcar.service;
 import java.util.ArrayList;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class RacingCar {
 
@@ -16,9 +17,8 @@ public class RacingCar {
 
     private List<Car> registerCar(int numberOfCar) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < numberOfCar; i++) {
-            cars.add(new Car());
-        }
+
+        IntStream.range(0, numberOfCar).forEach(index -> cars.add(new Car()));
 
         return cars;
     }
