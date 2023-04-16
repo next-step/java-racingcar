@@ -28,6 +28,12 @@ public class UsingRacingCarStage {
         return this;
     }
 
+    public Reps getReps() {
+        return reps;
+    }
 
+    public List<UsingNameRacingCar> getUsingNameRacingCarList() {
+        return usingNameRacingCarList;
+    }
 }
 
