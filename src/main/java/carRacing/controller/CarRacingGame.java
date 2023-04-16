@@ -6,6 +6,8 @@ import carRacing.view.InputView;
 
 import java.util.List;
 
+import static carRacing.domain.Race.moveCars;
+
 public class CarRacingGame {
     public static void main(String[] args) {
         //자동차 대수 및 이동 횟수 입력
@@ -17,5 +19,9 @@ public class CarRacingGame {
         CarCompany carCompany = new CarCompany();
         List<Car> cars = carCompany.createCar(carNum);
 
+        for (int i = 0; i < moveNum; i++) {
+            //자동차 이동
+            cars = moveCars(cars);
+        }
     }
 }
