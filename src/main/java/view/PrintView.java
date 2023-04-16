@@ -5,6 +5,8 @@ import vo.CarRecord;
 
 import java.util.List;
 
+import static java.util.stream.Collectors.toList;
+
 public class PrintView {
 
     private PrintView() {}
@@ -43,10 +45,10 @@ public class PrintView {
     }
 
     public static void printWinners(List<CarRecord> winners) {
-        for (CarRecord winner : winners) {
-            System.out.print(winner.name() + ",");
-        }
+        List<String> nameOfWinner = winners.stream()
+                .map(CarRecord::name)
+                .collect(toList());
 
-        System.out.println("가 최종 우승하셨습니다.");
+        System.out.println(String.join(", ", nameOfWinner) + "(이)가 최종 우승하셨습니다.");
     }
 }
