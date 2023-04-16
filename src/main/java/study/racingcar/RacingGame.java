@@ -4,13 +4,15 @@ import java.util.List;
 
 public class RacingGame {
 
-    private final List<Car> carList;
-    private final int numberOfGames;
+    private List<Car> carList;
+    private int numberOfGames;
     private static final int MOVE_CONDITION = 4;
 
-    public RacingGame() {
-        this.carList = SettingGame.createCars(InputView.setCars());
-        this.numberOfGames = InputView.setGames();
+    public RacingGame() {}
+
+    public RacingGame(InputValue inputValue) {
+        this.carList = SettingGame.createCars(inputValue);
+        this.numberOfGames = inputValue.getNumberOfGames();
     }
 
     public void gameStart() {

@@ -8,6 +8,9 @@ public class RacingCar {
 
     public static void racingCar () {
 
-        new RacingGame().gameStart();
+        String carNamesStr = InputView.setCarNames();
+        int numberOfGames = InputView.setGames();
+
+        new RacingGame(new InputValue(numberOfGames, carNamesStr)).gameStart();
     }
 }
