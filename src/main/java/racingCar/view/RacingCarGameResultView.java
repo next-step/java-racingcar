@@ -16,12 +16,22 @@ public final class RacingCarGameResultView {
   public void printAllSnapShot() {
     final String allSnapShot = String.join("\n\n", snapShots);
     System.out.println("\n실행 결과");
-    System.out.print(allSnapShot);
+    System.out.println(allSnapShot);
+  }
+
+  public void printWinners(List<RacingCar> winners) {
+    final String joinedWinners = winners.stream()
+            .map(RacingCar::getCarName)
+            .collect(Collectors.joining(", "));
+    System.out.printf("%s가 최종 우승했습니다.\n", joinedWinners);
   }
 
   private String getVisualRacingCarDistance(RacingCar racingCar) {
     int racingCarPosition = racingCar.getPosition();
     StringBuilder sb = new StringBuilder();
+    sb.append(racingCar.getCarName());
+    sb.append(" : ");
+
     for (long i = 0; i < racingCarPosition; i++) {
       sb.append('-');
     }
