@@ -2,7 +2,7 @@ package view;
 
 import car.Car;
 import car.Name;
-import game.GameResult;
+import game.GameResultDto;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,7 +15,7 @@ public class ResultView {
         System.out.println(RESULT_TITLE);
     }
 
-    public static void printResult(List<GameResult> result) {
+    public static void printResult(List<GameResultDto> result) {
         result.stream()
                 .map(ResultView::printCarsPosition)
                 .forEach(s -> System.out.println(s + "\n"));
@@ -26,7 +26,7 @@ public class ResultView {
         System.out.println(String.join(",", winnerNames) + "가 최종 우승했습니다.");
     }
 
-    private static String printCarsPosition(GameResult carPositions) {
+    private static String printCarsPosition(GameResultDto carPositions) {
         return carPositions.getResult().stream()
             .map(ResultView::carPositionToIndicator)
             .collect(Collectors.joining("\n"));

@@ -1,5 +1,5 @@
 import car.Car;
-import game.GameResult;
+import game.GameResultDto;
 import game.RacingGame;
 import view.InputView;
 import view.ResultView;
@@ -14,7 +14,7 @@ public class RacingGameApplication {
         RacingGame racingGame = new RacingGame(stageInput, carNames);
         racingGame.progress();
 
-        List<GameResult> gameResult = racingGame.getResults();
+        List<GameResultDto> gameResult = racingGame.getResults();
         List<Car> winners = racingGame.winner();
 
         ResultView.printResultTitle();

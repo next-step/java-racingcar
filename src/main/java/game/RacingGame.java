@@ -9,7 +9,7 @@ import java.util.List;
 public class RacingGame {
     private final Stage stage;
     private final Cars cars;
-    private final List<GameResult> result;
+    private final List<GameResultDto> result;
 
     public RacingGame(int stageCount, List<String> carNames) {
         this.stage = Stage.from(stageCount);
@@ -17,7 +17,7 @@ public class RacingGame {
         this.result = new ArrayList<>();
     }
 
-    public List<GameResult> getResults() {
+    public List<GameResultDto> getResults() {
         return result;
     }
 
@@ -35,6 +35,6 @@ public class RacingGame {
 
     private void saveResult(Cars cars) {
         List<Integer> positions = cars.getPositions();
-        result.add(new GameResult(positions));
+        result.add(new GameResultDto(positions));
     }
 }
