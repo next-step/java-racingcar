@@ -23,6 +23,6 @@ public class Position implements Comparable<Position> {
 
     @Override
     public int compareTo(Position o) {
-        return o.intValue() - position;
+        return position - o.intValue();
     }
 }
