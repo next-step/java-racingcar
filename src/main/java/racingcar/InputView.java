@@ -10,7 +10,7 @@ public class InputView {
     }
 
     public static void printCarInputGuideMessage() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
     }
 
     public static void printTryInputGuideMessage() {
@@ -24,10 +24,11 @@ public class InputView {
         return tryAmount;
     }
 
-    public static int getCarAmount() {
+    public static String[] getCarNames() {
         InputView.printCarInputGuideMessage();
-        int carAmount = scanner.nextInt();
-        Validator.validateCarAmount(carAmount);
-        return carAmount;
+        String carNames = scanner.nextLine();
+        String[] carNamesArray = carNames.split(",");
+        Validator.validateCarAmount(carNamesArray.length);
+        return carNamesArray;
     }
 }

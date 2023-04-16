@@ -5,9 +5,9 @@ import java.util.List;
 
 public class RacingCar {
     public static void main(String[] args) {
-        int carAmount = InputView.getCarAmount();
+        String[] carNames = InputView.getCarNames();
         int tryAmount = InputView.getTryAmount();
-        List<Car> cars = createCar(carAmount);
+        List<Car> cars = createCar(carNames);
 
         Game game = new Game(cars);
         OutputView.printExecutionResult();
@@ -17,10 +17,10 @@ public class RacingCar {
         }
     }
 
-    private static List<Car> createCar(int carAmount) {
+    private static List<Car> createCar(String[] carNames) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carAmount; i++) {
-            cars.add(new Car());
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
         }
         return cars;
     }
