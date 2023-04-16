@@ -10,6 +10,7 @@ public class Race {
     private static final boolean MOVE_FAIL = false;
     private static final int MOVE_DISTANCE = 1;
 
+
     public static List<Car> moveCars(List<Car> cars) {
         for (Car car : cars) {
             int randomNumber = getRandomNumber();
