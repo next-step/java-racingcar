@@ -11,14 +11,16 @@ public class RacingGame {
 
         List<Car> cars = initCars(carNames);
 
-        playGame(numberOfAttempts, cars);
+        List<Car> cars1 = playGame(numberOfAttempts, cars);
+        
     }
 
-    private static void playGame(Integer numberOfAttempts, List<Car> cars) {
+    private static List<Car> playGame(Integer numberOfAttempts, List<Car> cars) {
         ResultView.printHeader();
         for (int i = 0; i < numberOfAttempts; i++) {
             round(cars);
         }
+        return cars;
     }
 
     private static void round(List<Car> cars) {
