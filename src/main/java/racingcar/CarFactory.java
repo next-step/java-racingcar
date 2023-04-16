@@ -1,13 +1,10 @@
 package racingcar;
 
+import java.util.stream.Stream;
+
 public class CarFactory {
 
     static public Car[] createCars(int numberOfCars) {
-        Car[] cars = new Car[numberOfCars];
-        for (int i = 0; i < numberOfCars; i++) {
-            cars[i] = new Car();
-        }
-
-        return cars;
+        return Stream.generate(Car::new).limit(numberOfCars).toArray(Car[]::new);
     }
 }
