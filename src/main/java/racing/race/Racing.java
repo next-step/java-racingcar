@@ -12,7 +12,7 @@ public class Racing {
     }
     for (int i = 0; i < tryNumber; i++) {
       tryMove(cars);
-      OutputView.print();
+      System.out.println();
     }
   }
 
