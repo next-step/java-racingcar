@@ -1,5 +1,7 @@
 package racing.domain;
 
+import racing.rule.RacingRule;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,16 +25,12 @@ public class Cars {
 //                .collect(Collectors.toList());
     }
 
-    public RoundResult race(List<Integer> randomNumberList) {
+    public RoundResult race(RacingRule racingRule) {
         List<Integer> result = new ArrayList<>();
-        for (int i = 0; i < carList.size(); i++) {
-            result.add(findCarByIndex(i).race(randomNumberList.get(i)));
+        for (Car car : carList) {
+            result.add(car.race(racingRule.generateNumber()));
         }
         return new RoundResult(result);
-    }
-
-    private Car findCarByIndex(int i) {
-        return carList.get(i);
     }
 
     public int countTotalCar() {
