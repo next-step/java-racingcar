@@ -16,6 +16,7 @@ public class CarsTest {
         Car car3 = new Car("TEST3", () -> false);
 
         Cars cars = new Cars(List.of(car1, car2, car3));
+        cars.move();
         List<Car> winners = cars.winners();
 
         assertThat(winners.get(0)).isEqualTo(car1);
