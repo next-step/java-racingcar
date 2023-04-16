@@ -1,5 +1,6 @@
 package step3;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -16,6 +17,25 @@ public class RacingCarTest {
     int car = 3;
     int count = 5;
     String[][] race = new String[car][count];
+
+    @Test
+    void racingTest() {
+        rc.racingCar(race);
+        rc.printRaceStep(race);
+    }
+
+    @ParameterizedTest(name = "{0} : add {1}")
+    @MethodSource("parameter_hyphen")
+    void 입력값에_따른_하이픈_리턴(boolean input, String result) {
+        assertThat(rc.hyphenOrNot(input)).isEqualTo(result);
+    }
+
+    static Stream<Arguments> parameter_hyphen(){
+        return Stream.of(
+                arguments(true, "-")
+                ,arguments(false, "")
+        );
+    }
 
     @ParameterizedTest(name = "{0} is more than 4 : {1}")
     @MethodSource("parameter")
