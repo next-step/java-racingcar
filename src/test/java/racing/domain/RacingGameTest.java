@@ -24,9 +24,21 @@ class RacingGameTest {
         List<RacingCar> carList = game.getGameCars();
         assertThat(carList.size()).isEqualTo(carNames.size());
         for (int i = 0; i < carNames.size(); i++) {
-            assertThat(carList.get(i).getName()).isEqualTo(carNames.get(i));
-            assertThat(carList.get(i).getPosition()).isEqualTo(0);
+            assertThat(carList.get(i).name()).isEqualTo(new Name(carNames.get(i)));
+            assertThat(carList.get(i).position()).isEqualTo(new Position(0));
         }
+    }
+
+    @Test
+    @DisplayName("경기 자동차 변경 테스트")
+    void changeCarTry() {
+        List<String> carNames = List.of("pobi", "crong", "honux");
+        MoveStrategy moveStrategy = new FixedRandomForwardStrategy(5);
+        RacingGame game = createGameWithStrategy(carNames, moveStrategy);
+
+        RacingCar car = game.getGameCars().get(0);
+        car.move();
+        assertThat(car.position()).isEqualTo(game.getGameCars().get(0).position());
     }
 
     @Test
@@ -43,10 +55,7 @@ class RacingGameTest {
             game.progressCycle();
         }
 
-        Winners winners = game.findWinner();
-        assertThat(winners.getWinnerCount()).isEqualTo(1);
-        assertThat(winners.getWinnerNames()).containsExactly("pobi");
-        assertThat(winners.getWinnerPosition()).isEqualTo(3);
+        assertThat(game.getWinnerNames()).containsExactly(new Name("pobi"));
     }
 
     @Test
@@ -62,9 +71,7 @@ class RacingGameTest {
         for (int i = 0; i < cycle; i++) {
             game.progressCycle();
         }
-
-        Winners winners = game.findWinner();
-        assertThat(winners.getWinnerCount()).isEqualTo(2);
-        assertThat(winners.getWinnerNames()).containsExactly("pobi", "crong");
+        System.out.println("game.getWinnerNames() = " + game.getWinnerNames());
+        assertThat(game.getWinnerNames()).containsExactly(new Name("pobi"), new Name("crong"));
     }
 }

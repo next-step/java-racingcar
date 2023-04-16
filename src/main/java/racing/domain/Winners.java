@@ -3,45 +3,43 @@ package racing.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Winners {
     private final List<RacingCar> winners;
 
     public Winners(List<RacingCar> cars) {
         this.winners = new ArrayList<>();
-        int maxPosition = getMaxPosition(cars);
+        Position maxPosition = getMaxPosition(cars);
         findWinners(cars, maxPosition);
     }
 
-    private static int getMaxPosition(List<RacingCar> cars) {
-        return Collections.max(cars).getPosition();
+    private static Position getMaxPosition(List<RacingCar> cars) {
+        List<Position> positions = cars.stream()
+                .map(RacingCar::position)
+                .collect(Collectors.toList());
+
+        return Collections.max(positions);
     }
 
-    private void findWinners(List<RacingCar> cars, int maxPosition) {
+    private void findWinners(List<RacingCar> cars, Position maxPosition) {
         for (RacingCar car : cars) {
             addWinner(maxPosition, car);
         }
     }
 
-    private void addWinner(int maxPosition, RacingCar winner) {
-        if (winner.getPosition() == maxPosition) {
-            winners.add(winner);
+    private void addWinner(Position maxPosition, RacingCar car) {
+        if (Objects.equals(car.position(), maxPosition)) {
+            winners.add(car);
         }
     }
 
-    public List<String> getWinnerNames() {
-        List<String> winnerNames = new ArrayList<>();
-        for (RacingCar winner : winners) {
-            winnerNames.add(winner.getName());
-        }
-        return winnerNames;
-    }
-
-    public int getWinnerCount() {
+    public int size() {
         return winners.size();
     }
 
-    public int getWinnerPosition() {
-        return getMaxPosition(winners);
+    public RacingCar get(int index) {
+        return winners.get(index);
     }
 }

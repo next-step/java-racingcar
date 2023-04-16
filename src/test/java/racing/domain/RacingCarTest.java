@@ -28,7 +28,7 @@ public class RacingCarTest {
         MoveStrategy moveStrategy = new FixedRandomForwardStrategy(5);
         String name = "test";
         RacingCar car = new RacingCar(name, moveStrategy);
-        assertThat(car.getName()).isEqualTo("test");
+        assertThat(car.name()).isEqualTo(new Name("test"));
     }
 
     @Test
@@ -50,8 +50,8 @@ public class RacingCarTest {
         RacingCar car = new RacingCar(name, moveStrategy);
         car.move();
 
-        int actual = car.getPosition();
-        assertThat(actual).isEqualTo(0);
+        Position actual = car.position();
+        assertThat(actual).isEqualTo(new Position(0));
     }
 
     @ParameterizedTest(name = "{displayName} - 값: {0}")
@@ -63,8 +63,8 @@ public class RacingCarTest {
         RacingCar car = new RacingCar(name, moveStrategy);
         car.move();
 
-        int actual = car.getPosition();
-        assertThat(actual).isEqualTo(1);
+        Position actual = car.position();
+        assertThat(actual).isEqualTo(new Position(1));
     }
 }
 

@@ -1,8 +1,12 @@
 package racing.view;
 
+import racing.domain.Name;
+import racing.domain.Position;
 import racing.domain.RacingCar;
 import racing.domain.RacingGame;
-import racing.domain.Winners;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
     private static final char PRINT_POSITION_CHAR = '-';
@@ -19,24 +23,28 @@ public class ResultView {
     }
 
     public static void printCarStatus(RacingCar car) {
-        printCarName(car);
-        printOngoingStatus(car.getPosition());
+        printName(car.name());
+        printOngoingStatus(car.position());
         System.out.println();
     }
 
-    private static void printOngoingStatus(int count) {
-        for (int i = 0; i < count; i++) {
+    private static void printOngoingStatus(Position position) {
+        for (int i = 0; i < position.getPosition(); i++) {
             System.out.print(PRINT_POSITION_CHAR);
         }
     }
 
-    private static void printCarName(RacingCar car) {
-        System.out.print(car.getName() + " : ");
+    private static void printName(Name name) {
+        System.out.print(name + " : ");
     }
 
     public static void printWinner(RacingGame game) {
-        Winners winners = game.findWinner();
-        System.out.print(String.join(", ", winners.getWinnerNames()));
+        List<String> winnerNames = game.getWinnerNames()
+                .stream()
+                .map(Name::toString)
+                .collect(Collectors.toList());
+
+        System.out.print(String.join(", ", winnerNames));
         System.out.println("가 최종 우승했습니다.");
     }
 }

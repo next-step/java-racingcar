@@ -11,7 +11,7 @@ public class InputView {
     private static final int MAX_NUMBER_CYCLES = 20;
 
     public static List<String> readNameOfCars(Scanner scanner) {
-        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분.");
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         List<String> names = parseStringToCarNames(scanner.nextLine());
         return validateNumberOfCar(names);
     }
@@ -22,16 +22,22 @@ public class InputView {
         return validateNumberOfCycle(number);
     }
 
+    private static List<String> validateNumberOfCar(List<String> names) {
+        if (isOverRange(names.size(), MIN_NUMBER_CARS, MAX_NUMBER_CARS)) {
+            throw new IllegalArgumentException("자동차는 " + MIN_NUMBER_CARS + "~" + MAX_NUMBER_CARS + "만 가능합니다.");
+        }
+        return names;
+    }
+
     private static int validateNumberOfCycle(int number) {
-        if (!isRange(number, MIN_NUMBER_CYCLES, MAX_NUMBER_CYCLES)) {
-            throw new IllegalArgumentException(
-                    "사이클 수는 " + MIN_NUMBER_CYCLES + "~" + MAX_NUMBER_CYCLES + " 사이의 값을 입력해야 합니다.");
+        if (isOverRange(number, MIN_NUMBER_CYCLES, MAX_NUMBER_CYCLES)) {
+            throw new IllegalArgumentException("사이클 수는 " + MIN_NUMBER_CYCLES + "~" + MAX_NUMBER_CYCLES + "만 가능합니다.");
         }
         return number;
     }
 
-    private static boolean isRange(int input, int min, int max) {
-        return (input >= min && input <= max);
+    private static boolean isOverRange(int input, int min, int max) {
+        return (input < min || input > max);
     }
 
     private static int parseInt(String input) {
@@ -45,12 +51,5 @@ public class InputView {
     private static List<String> parseStringToCarNames(String input) {
         String[] names = input.split(",");
         return Arrays.asList(names);
-    }
-
-    private static List<String> validateNumberOfCar(List<String> names) {
-        if (names.size() < MIN_NUMBER_CARS || names.size() > MAX_NUMBER_CARS) {
-            throw new IllegalArgumentException("자동차는 " + MIN_NUMBER_CARS + "~" + MAX_NUMBER_CARS + "대만 가능합니다.");
-        }
-        return names;
     }
 }
