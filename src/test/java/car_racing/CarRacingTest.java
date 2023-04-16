@@ -20,8 +20,8 @@ class CarRacingTest {
     }
 
     @Test
-    @DisplayName("car 사이즈에 따라 car가 생성되어야 한다.")
-    void initCars() {
+    @DisplayName("cars를 전달받아 carRacing이 생성되어야 한다.")
+    void carRacing_초기화() {
         // when
         TestNumberGenerator testNumberGenerator = new TestNumberGenerator(0);
         CarRacing carRacing = new CarRacing(Car.generateCars(new ArrayList<>(Arrays.asList("pobi", "crong", "honux")), testNumberGenerator));
@@ -32,7 +32,7 @@ class CarRacingTest {
 
     @Test
     @DisplayName("cars 사이즈에 따라 car를 움직여야한다.")
-    void moveCars() {
+    void cars_움직임() {
         // given
         List<Car> carMocks = Arrays.asList(mock(Car.class), mock(Car.class), mock(Car.class));
         CarRacing carRacing = new CarRacing(carMocks);
@@ -50,8 +50,8 @@ class CarRacingTest {
 
 
     @Test
-    @DisplayName("우승하 차들을 출력한다")
-    void getWinner() {
+    @DisplayName("우승한 차들을 출력한다")
+    void carRacing_우승_로직() {
         // Given
         List<Car> cars = new ArrayList<>(
                 Arrays.asList(
