@@ -1,5 +1,6 @@
 package racingcar.main;
 
+import racingcar.WinningRacingCar;
 import racingcar.ui.InputView;
 import racingcar.ui.ResultView;
 
@@ -10,7 +11,7 @@ public class Step4Main {
         InputView inputView = createInputView();
 
         resultView.printInputCarNameMessage();
-        String carNames = inputView.getStringInput();
+        String carNameInput = inputView.getStringInput();
 
         resultView.printQuestionTryCountMessage();
         int tryCount = inputView.getIntegerInput();
@@ -18,7 +19,13 @@ public class Step4Main {
         resultView.printNewLine();
         resultView.printExecuteResultMessage();
 
+        WinningRacingCar racingCarWinner = createWinningRacingCar(carNameInput);
+
         inputView.closeScanner();
+    }
+
+    private static WinningRacingCar createWinningRacingCar(String carNameInput) {
+        return new WinningRacingCar(carNameInput);
     }
 
     private static ResultView createResultView() {
