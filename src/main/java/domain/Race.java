@@ -2,6 +2,7 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Race {
 
@@ -43,5 +44,40 @@ public class Race {
         if (!RacingCar.isNameValid(name)){
             throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
         }
+    }
+
+    public static List<String> getWinnerList() {
+        List<String> winnerList = new ArrayList<>();
+        int[] matchResult = getMatchResult();
+        int maxDistance = getMaxDistance(matchResult);
+        for (RacingCar racingCar : racingCarList) {
+            checkWinner(winnerList, maxDistance, racingCar);
+        }
+        return winnerList;
+    }
+
+    private static void checkWinner(List<String> winnerList, int maxDistance, RacingCar racingCar) {
+        if (Objects.equals(maxDistance, racingCar.getDistance())) {
+            winnerList.add(racingCar.getName());
+        }
+    }
+
+    public static int getMaxDistance(int[] matchResult) {
+
+        int maxDistance = matchResult[0];
+        for (int distance : matchResult) {
+            if (distance > maxDistance) {
+                maxDistance = distance;
+            }
+        }
+        return maxDistance;
+    }
+
+    private static int[] getMatchResult() {
+        int[] matchResult = new int[racingCarList.size()];
+        for (int i = 0; i < racingCarList.size(); i++) {
+            matchResult[i] = racingCarList.get(i).getDistance();
+        }
+        return matchResult;
     }
 }

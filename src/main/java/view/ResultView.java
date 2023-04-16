@@ -16,4 +16,17 @@ public class ResultView {
             System.out.println(s);
         }
     }
+
+    public static void printWinner(List<String> winnerList) {
+        for (int i=0; i < winnerList.size(); i++) {
+            System.out.print(winnerList.get(i));
+            if (i < winnerList.size() - 1) {
+                System.out.print(", ");
+            }
+
+        }
+        System.out.print("가 최종 우승했습니다.");
+    }
+
+
 }

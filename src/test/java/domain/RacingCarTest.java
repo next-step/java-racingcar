@@ -52,5 +52,7 @@ public class RacingCarTest {
         //then
         assertThat(car.getName()).isEqualTo(name);
     }
+
+
 }
 

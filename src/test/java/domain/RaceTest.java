@@ -48,4 +48,24 @@ public class RaceTest {
             assertThat(result.split(" ")[0]).isIn(nameList);
         }
     }
+
+    @DisplayName("자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한명 이상일 수 있다.")
+    @Test
+    public void shouldNoticeWinner_whenRaceIsFinished() throws Exception {
+        //given
+        String[] nameList = { "Tom", "Jerry", "Pinch" };
+        int round = 3;
+        int winnerCountLowerBound = 1;
+        //when
+        Race.createCars(nameList);
+        Race.playRace(round);
+        List<String> winnerList = Race.getWinnerList();
+        //then
+        for (String winnerName : winnerList) {
+            assertThat(winnerName).isIn(nameList);
+        }
+        assertThat(winnerList.size()).isGreaterThanOrEqualTo(winnerCountLowerBound);
+
+    }
+
 }

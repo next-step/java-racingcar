@@ -10,5 +10,6 @@ public class main {
         Race.createCars(carName);
         int numberOfRounds = InputView.inputNumberOfRounds();
         ResultView.outputView(Race.playRace(numberOfRounds));
+        ResultView.printWinner(Race.getWinnerList());
     }
 }
