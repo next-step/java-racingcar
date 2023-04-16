@@ -22,7 +22,7 @@ public class Cars {
 
     private void generate(final int count) {
         for (int i = 0; i < count; i++) {
-            cars.add(new Car(new RandomNumberGenerator()));
+            cars.add(new Car("", new RandomNumberGenerator()));
         }
     }
 
