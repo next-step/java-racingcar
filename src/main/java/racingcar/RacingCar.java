@@ -37,7 +37,7 @@ public class RacingCar {
         return number >= CAR_MOVE_STANDARD;
     }
 
-    private int plusMoveCount(int idx) {
-        return moveCounts.set(idx, moveCounts.get(idx) + PLUS_VALUE);
+    private void plusMoveCount(int idx) {
+        moveCounts.set(idx, moveCounts.get(idx) + PLUS_VALUE);
     }
 }

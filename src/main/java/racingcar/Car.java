@@ -21,4 +21,8 @@ public class Car {
     public int getMoveCount() {
         return moveCount;
     }
+
+    public void plusMoveCount() {
+        moveCount++;
+    }
 }

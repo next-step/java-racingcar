@@ -1,10 +1,15 @@
 package racingcar.main;
 
+import racingcar.RandomNumber;
 import racingcar.WinningRacingCar;
 import racingcar.ui.InputView;
 import racingcar.ui.ResultView;
 
+import java.util.List;
+
 public class Step4Main {
+
+    public static final int BEGIN_INDEX = 0;
 
     public static void main(String[] args) {
         ResultView resultView = createResultView();
@@ -19,13 +24,16 @@ public class Step4Main {
         resultView.printNewLine();
         resultView.printExecuteResultMessage();
 
-        WinningRacingCar racingCarWinner = createWinningRacingCar(carNameInput);
+        WinningRacingCar winningRacingCar = createWinningRacingCar(carNameInput);
+
+        for (int i = BEGIN_INDEX; i < tryCount; i++) {
+            resultView.printCarNameAndMoveStateLines(
+                    winningRacingCar.makeCars(
+                            generateRandomNumbers(winningRacingCar.getCarsSize()))
+            );
+        }
 
         inputView.closeScanner();
-    }
-
-    private static WinningRacingCar createWinningRacingCar(String carNameInput) {
-        return new WinningRacingCar(carNameInput);
     }
 
     private static ResultView createResultView() {
@@ -34,5 +42,13 @@ public class Step4Main {
 
     private static InputView createInputView() {
         return new InputView();
+    }
+
+    private static WinningRacingCar createWinningRacingCar(String carNameInput) {
+        return new WinningRacingCar(carNameInput);
+    }
+
+    private static List<Integer> generateRandomNumbers(int carCount) {
+        return new RandomNumber().generateNumbers(carCount);
     }
 }
