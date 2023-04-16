@@ -20,9 +20,15 @@ public class CarRacingGame {
         CarCompany carCompany = new CarCompany();
         List<Car> cars = carCompany.createCar(carNum);
 
+        ResultView resultView = new ResultView();
+        //실행결과 텍스트 출력
+        resultView.resultStart();
+
         for (int i = 0; i < moveNum; i++) {
             //자동차 이동
             cars = moveCars(cars);
+            //출력
+            resultView.outputResult(cars);
         }
     }
 }
