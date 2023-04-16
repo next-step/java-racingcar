@@ -40,7 +40,7 @@ public class RacingGame {
                 move(car);
             }
 
-            ResultView.resultGame(car.currentPosition());
+            ResultView.resultGame(car);
         }
 
         ResultView.emptyLine();

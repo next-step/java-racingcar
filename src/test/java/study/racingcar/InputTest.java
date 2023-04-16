@@ -3,6 +3,7 @@ package study.racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import study.StringAddCalculator;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -43,6 +44,25 @@ public class InputTest {
         System.setIn(in);
 
         assertThat(InputView.setCarNames()).isEqualTo(input);
+    }
+
+    @DisplayName("자동차 이름 문자열을 입력하면 ','를 기준으로 자동차 이름이 나뉘어야 한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"pobi,crong,honux"})
+    public void inputValue_splitCarNameString(String input) {
+
+        InputValue inputValue = new InputValue(5, input);
+
+        assertThat(inputValue.getNameOfCars()).hasSize(3);
+    }
+
+    @DisplayName("자동차 이름 문자열을 입력하고, ','를 기준으로 자동차 이름을 나누고 5글자 이상의 이름이 있으면 에외가 발생한다")
+    @ParameterizedTest
+    @ValueSource(strings = {"pobi,bbororo,honux"})
+    public void inputValue_splitCarNameString_실패(String input) {
+
+        assertThatThrownBy(() -> new InputValue(5, input))
+                .isInstanceOf(InputMismatchException.class);
     }
 
     @DisplayName("0이하의 수는 예외가 발생한다.")
