@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class DelimiterTest {
     final String basicDelimiter = ":|,";
@@ -17,14 +18,15 @@ public class DelimiterTest {
 
         final Delimiter delimiter = Delimiter.of(text);
 
-        assertThat(delimiter)
-                .extracting("custom")
-                .isEqualTo(customDelimiter);
-        assertThat(delimiter.isCustomDelimiter())
-                .isTrue();
-        assertThat(delimiter.delimiterExpression())
-                .isEqualTo(basicDelimiter + "|" + customDelimiter);
-
+        assertAll(
+                () -> assertThat(delimiter)
+                        .extracting("custom")
+                        .isEqualTo(customDelimiter),
+                () -> assertThat(delimiter.isCustomDelimiter())
+                        .isTrue(),
+                () -> assertThat(delimiter.delimiterExpression())
+                        .isEqualTo(basicDelimiter + "|" + customDelimiter)
+        );
     }
 
     @Test
@@ -33,13 +35,14 @@ public class DelimiterTest {
         final String text = "1:2,3";
 
         final Delimiter delimiter = Delimiter.of(text);
-
-        assertThat(delimiter)
-                .extracting("custom")
-                .isEqualTo("");
-        assertThat(delimiter.isCustomDelimiter())
-                .isFalse();
-        assertThat(delimiter.delimiterExpression())
-                .isEqualTo(basicDelimiter);
+        assertAll(
+                () -> assertThat(delimiter)
+                        .extracting("custom")
+                        .isEqualTo(""),
+                () -> assertThat(delimiter.isCustomDelimiter())
+                        .isFalse(),
+                () -> assertThat(delimiter.delimiterExpression())
+                        .isEqualTo(basicDelimiter)
+        );
     }
 }

@@ -44,6 +44,6 @@ public class PositiveTest {
     void 음수가_있는_문자열_배열의_합() {
         final int[] numbers = new int[]{1, -2, 3};
         assertThatThrownBy(() -> positive.sumPositiveNumbers(numbers))
-                .isInstanceOf(RuntimeException.class);
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
