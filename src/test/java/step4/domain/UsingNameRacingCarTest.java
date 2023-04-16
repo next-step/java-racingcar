@@ -1,9 +1,10 @@
-package step3.domain;
+package step4.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.stream.Stream;
 
@@ -28,6 +29,15 @@ class UsingNameRacingCarTest {
 
         assertThatIllegalArgumentException().isThrownBy(() -> UsingNameRacingCar.of(carName))
                 .withMessage("자동차 이름을 입력해주세요");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"getRacingCarName"})
+    @DisplayName("5자리 초과할 경우 예외를 던진다")
+    void _5자리_초과할_경우_예외를_던진다(String carName) {
+
+        assertThatIllegalArgumentException().isThrownBy(() -> UsingNameRacingCar.of(carName))
+                .withMessage("5자를 초과할수 없습니다");
     }
 
     @ParameterizedTest
