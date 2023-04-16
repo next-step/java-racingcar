@@ -1,31 +1,40 @@
 package step3;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Cars {
     List<Car> cars;
+
+
+    public static Cars of(int carCount) {
+        List<Car> carList = new ArrayList<>();
+        for (int i = 0; i < carCount; i++) {
+            carList.add(new Car());
+        }
+        return new Cars(carList);
+    }
 
     public Cars(List<Car> cars) {
         this.cars = cars;
     }
 
-    public void moveCars() {
+    public void moveCars(Dice dice) {
         for (Car car : cars) {
-            int randomNum = getRandomNumber();
+            int randomNum = dice.getRandomNum();
             car.move(randomNum);
         }
     }
 
-    public int getRandomNumber() {
-        Random random = new Random();
-        return random.nextInt(10);
+
+    public void printCarsScore(ResultView outputView) {
+        for (Car car : cars) {
+            car.printProgress(outputView);
+        }
+        outputView.print("");
     }
 
-    public void printCarsScore() {
-        for (Car car : cars) {
-            car.printProgress();
-        }
-        System.out.println("");
+    public List<Car> getCars() {
+        return cars;
     }
 }

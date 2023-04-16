@@ -18,8 +18,8 @@ public class Car {
         return this.progress;
     }
 
-    public void printProgress() {
-        System.out.println("-".repeat(this.progress));
+    public void printProgress(ResultView outputView) {
+        outputView.print("-".repeat(this.progress));
     }
 
 
