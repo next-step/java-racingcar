@@ -5,6 +5,16 @@ import java.util.Scanner;
 public class ConsoleScanner {
     private static final Scanner SCANNER = new Scanner(System.in);
 
+    public static String inputString() {
+        String input = SCANNER.nextLine();
+        if (isBlank(input)) throw new RuntimeException("공백을 입력했습니다.");
+        return input;
+    }
+
+    private static boolean isBlank(String input) {
+        return input == null || input.isBlank();
+    }
+
     public static Integer inputInt() {
         Integer number;
         try {
