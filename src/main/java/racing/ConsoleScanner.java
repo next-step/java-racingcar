@@ -2,6 +2,8 @@ package racing;
 
 import java.util.Scanner;
 
+import static racing.StringValidator.isBlank;
+
 public class ConsoleScanner {
     private static final Scanner SCANNER = new Scanner(System.in);
 
@@ -11,9 +13,6 @@ public class ConsoleScanner {
         return input;
     }
 
-    private static boolean isBlank(String input) {
-        return input == null || input.isBlank();
-    }
 
     public static Integer inputInt() {
         Integer number;
