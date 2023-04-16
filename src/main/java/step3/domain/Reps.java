@@ -29,6 +29,10 @@ public class Reps {
         reps--;
     }
 
+    public int getReps() {
+        return reps;
+    }
+
     @Override
     public String toString() {
         return String.valueOf(reps);
