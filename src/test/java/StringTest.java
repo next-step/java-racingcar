@@ -1,8 +1,10 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -24,8 +26,7 @@ public class StringTest {
     void charAt() {
         assertThatThrownBy(() -> {
             char result = "abc".charAt(4);
-        }).isInstanceOf(IndexOutOfBoundsException.class)
-                .hasMessageContaining("String index out of range: 4");
+        }).isInstanceOf(IndexOutOfBoundsException.class).hasMessageContaining("String index out of range: 4");
     }
 
     @Test
@@ -55,13 +56,13 @@ public class StringTest {
             customDelemiter = input.substring(2, input.indexOf("\n"));
             System.out.println("Custom Delemiter : " + customDelemiter);
 
-            input = input.substring(input.indexOf("\n")+1);
+            input = input.substring(input.indexOf("\n") + 1);
         }
 
         String[] result = input.split("([,:]|" + customDelemiter + ")");
 
-        for (int i=0; i < result.length; i++) {
-            System.out.println("result(" + i +") : " + result[i]);
+        for (int i = 0; i < result.length; i++) {
+            System.out.println("result(" + i + ") : " + result[i]);
         }
     }
 
@@ -78,7 +79,7 @@ public class StringTest {
         String text = "";
 
         if (matcher.find()) {
-            customDelemiter = matcher.group().substring(2, matcher.end() -1);
+            customDelemiter = matcher.group().substring(2, matcher.end() - 1);
             text = matcher.replaceAll("");
 
             System.out.println("cd : " + customDelemiter);
@@ -87,6 +88,24 @@ public class StringTest {
 
         assertThat(customDelemiter).isEqualTo(";");
         assertThat(text).isEqualTo("1;2;3");
+    }
 
+    @Test
+    void randomTest() {
+        Random a = new Random();
+        for (int i=0;i<100000;i++) {
+            int b = a.nextInt(10);
+            if (b >= 10) System.out.println("random : " + b);
+        }
+    }
+
+    @Test
+    void StreamTest() {
+        String[] test = Stream.generate(String::new).limit(5).toArray(String[]::new);
+
+        int i = 0;
+        for (String a : test) {
+            System.out.println(i++);
+        }
     }
 }
