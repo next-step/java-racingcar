@@ -16,15 +16,15 @@ public class RacingCarTest {
   Cars cars;
   Racing racing = new Racing();
 
+  private static final int CAR_NUMBER = 3;
+
   @BeforeEach
   public void init() {
-    cars = new Cars();
+    cars = new Cars(CAR_NUMBER);
   }
 
   @Test
   void 멈춤() {
-    cars.ready(3);
-
     StopNumberStrategy stopNumberStrategy = new StopNumberStrategy();
     cars.getGameCar().get(1).move(stopNumberStrategy);
 
@@ -33,8 +33,6 @@ public class RacingCarTest {
 
   @Test
   void 전진() {
-    cars.ready(3);
-
     MoveNumberStrategy moveNumberStrategy = new MoveNumberStrategy();
     cars.getGameCar().get(1).move(moveNumberStrategy);
 
@@ -64,16 +62,12 @@ public class RacingCarTest {
   @Test
   void 자동차갯수음수입력() {
     assertThatExceptionOfType(NumberFormatException.class)
-        .isThrownBy(() -> cars.ready(-1));
+        .isThrownBy(() -> new Cars(-1));
   }
 
   @Test
   void 자동차갯수입력() {
-    int size = 3;
-
-    cars.ready(size);
-
-    assertThat(cars.getGameCar().size()).isEqualTo(3);
+    assertThat(cars.getGameCar().size()).isEqualTo(CAR_NUMBER);
   }
 
 }

@@ -9,8 +9,7 @@ public class Main {
 
   public static void main(String[] args) {
     int carNumber = InputView.getValue("자동차 대수는 몇 대 인가요?");
-    Cars cars = new Cars();
-    cars.ready(carNumber);
+    Cars cars = new Cars(carNumber);
 
     int tryNumber = InputView.getValue("시도할 회수는 몇 회 인가요?");
 

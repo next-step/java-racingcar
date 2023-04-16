@@ -7,7 +7,11 @@ public class Cars {
 
   private final List<Car> cars = new LinkedList<>();
 
-  public void ready(int carsNumber) {
+  public Cars(int carsNumber) {
+    ready(carsNumber);
+  }
+
+  private void ready(int carsNumber) {
     if (carsNumber < 0) {
       throw new NumberFormatException();
     }
