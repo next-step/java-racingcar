@@ -5,24 +5,30 @@ import java.util.List;
 
 public class Cars {
 
+    private static final String MIN_LENGTH_FORNAT = "자동차는 %s개 이상이여야 합니다.";
+    private static final String DELIMITER = ",";
     private static final int MIN_NUMBER = 1;
 
     private List<Car> cars = new ArrayList<>();
 
-    public Cars(final int count) {
-        validate(count);
-        generate(count);
+    public Cars(final String carNames) {
+        generate(split(carNames));
     }
 
-    private void validate(final int count) {
-        if (count < MIN_NUMBER) {
-            throw new IllegalArgumentException("자동차는 1개 이상이여야 합니다.");
+    private String[] split(final String carNames) {
+        return carNames.split(DELIMITER);
+    }
+
+    private void generate(final String[] carNames) {
+        validate(carNames);
+        for (String carName : carNames) {
+            cars.add(new Car(carName, new RandomNumberGenerator()));
         }
     }
 
-    private void generate(final int count) {
-        for (int i = 0; i < count; i++) {
-            cars.add(new Car("", new RandomNumberGenerator()));
+    private void validate(final String[] carNames) {
+        if (carNames.length < MIN_NUMBER) {
+            throw new IllegalArgumentException(String.format(MIN_LENGTH_FORNAT, MIN_NUMBER));
         }
     }
 

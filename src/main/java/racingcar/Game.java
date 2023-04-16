@@ -5,8 +5,8 @@ public class Game {
     private final Cars cars;
     private final Round round;
 
-    public Game(final int count, final int number) {
-        this.cars = new Cars(count);
+    public Game(final String carNames, final int number) {
+        this.cars = new Cars(carNames);
         this.round = new Round(number);
     }
 
