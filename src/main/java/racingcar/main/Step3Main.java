@@ -7,7 +7,7 @@ import racingcar.ui.ResultView;
 
 import java.util.List;
 
-public class Main {
+public class Step3Main {
 
     public static final int BEGIN_INDEX = 0;
 
