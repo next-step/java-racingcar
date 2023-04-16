@@ -22,7 +22,7 @@ public class RecordsTest {
     void init() {
         firstCar = new Car("alex");
         secondCar = new Car("jack");
-        records = new Records();
+        records = new Records("alex", "jack");
 
         firstCar.go(() -> true);
         secondCar.go(() -> true);

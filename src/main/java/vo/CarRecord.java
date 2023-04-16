@@ -2,7 +2,7 @@ package vo;
 
 import java.util.Objects;
 
-public class CarRecord {
+public class CarRecord implements Comparable<CarRecord>{
 
     private final String name;
     private final int distance;
@@ -31,5 +31,10 @@ public class CarRecord {
     @Override
     public int hashCode() {
         return Objects.hash(name, distance);
+    }
+
+    @Override
+    public int compareTo(CarRecord o) {
+        return this.distance - o.distance;
     }
 }

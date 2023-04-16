@@ -10,7 +10,7 @@ public class RacingGame {
 
     public RacingGame(String... nameOfCars) {
         this.cars = Cars.make(nameOfCars);
-        this.records = new Records();
+        this.records = new Records(nameOfCars);
     }
 
     public Records start(int trial) {
