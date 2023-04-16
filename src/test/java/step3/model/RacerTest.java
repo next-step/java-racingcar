@@ -40,15 +40,15 @@ public class RacerTest {
         //given
         Racer racer = new Racer(2, new Car("hello"));
         //when
-        List<String> results = racer.calculateResults(List.of(7, 1, 7, 1, 7)).getPositionList();
+        List<Integer> results = racer.calculateResults(List.of(7, 1, 7, 1, 7)).getPositionList();
         //then
         assertAll(
             () -> assertThat(results).hasSize(5),
-            () -> assertThat(results.get(0)).isEqualTo("-"),
-            () -> assertThat(results.get(1)).isEqualTo("-"),
-            () -> assertThat(results.get(2)).isEqualTo("--"),
-            () -> assertThat(results.get(3)).isEqualTo("--"),
-            () -> assertThat(results.get(4)).isEqualTo("---")
+            () -> assertThat(results.get(0)).isEqualTo(1),
+            () -> assertThat(results.get(1)).isEqualTo(1),
+            () -> assertThat(results.get(2)).isEqualTo(2),
+            () -> assertThat(results.get(3)).isEqualTo(2),
+            () -> assertThat(results.get(4)).isEqualTo(3)
         );
     }
 
@@ -59,20 +59,20 @@ public class RacerTest {
         Racer racer = new Racer(2, new Car("hello"));
         List<Integer> scores = List.of(4, 4, 4, 4, 4, 4, 4, 4, 4, 4);
         //when
-        List<String> results = racer.calculateResults(scores).getPositionList();
+        List<Integer> results = racer.calculateResults(scores).getPositionList();
         //then
         assertAll(
             () -> assertThat(results).hasSize(scores.size()),
-            () -> assertThat(results.get(0)).isEqualTo("-"),
-            () -> assertThat(results.get(1)).isEqualTo("--"),
-            () -> assertThat(results.get(2)).isEqualTo("---"),
-            () -> assertThat(results.get(3)).isEqualTo("----"),
-            () -> assertThat(results.get(4)).isEqualTo("-----"),
-            () -> assertThat(results.get(5)).isEqualTo("------"),
-            () -> assertThat(results.get(6)).isEqualTo("-------"),
-            () -> assertThat(results.get(7)).isEqualTo("--------"),
-            () -> assertThat(results.get(8)).isEqualTo("---------"),
-            () -> assertThat(results.get(9)).isEqualTo("----------")
+            () -> assertThat(results.get(0)).isEqualTo("-".length()),
+            () -> assertThat(results.get(1)).isEqualTo("--".length()),
+            () -> assertThat(results.get(2)).isEqualTo("---".length()),
+            () -> assertThat(results.get(3)).isEqualTo("----".length()),
+            () -> assertThat(results.get(4)).isEqualTo("-----".length()),
+            () -> assertThat(results.get(5)).isEqualTo("------".length()),
+            () -> assertThat(results.get(6)).isEqualTo("-------".length()),
+            () -> assertThat(results.get(7)).isEqualTo("--------".length()),
+            () -> assertThat(results.get(8)).isEqualTo("---------".length()),
+            () -> assertThat(results.get(9)).isEqualTo("----------".length())
         );
     }
 
@@ -83,16 +83,16 @@ public class RacerTest {
         Racer racer = new Racer(2, new Car("hello"));
         List<Integer> scores = List.of(3, 3, 3, 3, 3, 3, 3, 3, 3, 3);
         //when
-        List<String> results = racer.calculateResults(scores).getPositionList();
+        List<Integer> results = racer.calculateResults(scores).getPositionList();
         //then
         assertAll(
             () -> assertThat(results).hasSize(scores.size()),
-            () -> assertThat(results.get(0)).isEqualTo(""),
-            () -> assertThat(results.get(1)).isEqualTo(""),
-            () -> assertThat(results.get(2)).isEqualTo(""),
-            () -> assertThat(results.get(3)).isEqualTo(""),
-            () -> assertThat(results.get(4)).isEqualTo(""),
-            () -> assertThat(results.get(4)).isEqualTo("")
+            () -> assertThat(results.get(0)).isEqualTo(0),
+            () -> assertThat(results.get(1)).isEqualTo(0),
+            () -> assertThat(results.get(2)).isEqualTo(0),
+            () -> assertThat(results.get(3)).isEqualTo(0),
+            () -> assertThat(results.get(4)).isEqualTo(0),
+            () -> assertThat(results.get(4)).isEqualTo(0)
         );
     }
 

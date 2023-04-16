@@ -29,10 +29,15 @@ public class OutputPresentTest {
     public void printResult() {
         //given
         List<DisplayRaceVO> input = List.of(
-            new DisplayRaceVO(new Result(List.of("-", "--", "--", "---", "----", "----")), new Car("hello")),
-            new DisplayRaceVO(new Result(List.of("-", "--", "--", "---", "----", "----")), new Car("groot")),
-            new DisplayRaceVO(new Result(List.of("-", "--", "--", "---", "----", "----")), new Car("java"))
+            new DisplayRaceVO(new Result(List.of(1,2,2,3,4,4)), new Car("hello")),
+            new DisplayRaceVO(new Result(List.of(1,2,2,3,4,4)), new Car("groot")),
+            new DisplayRaceVO(new Result(List.of(1,2,2,3,4,4)), new Car("java"))
         );
+//        List<DisplayRaceVO> input = List.of(
+//            new DisplayRaceVO(new Result(List.of("-", "--", "--", "---", "----", "----")), new Car("hello")),
+//            new DisplayRaceVO(new Result(List.of("-", "--", "--", "---", "----", "----")), new Car("groot")),
+//            new DisplayRaceVO(new Result(List.of("-", "--", "--", "---", "----", "----")), new Car("java"))
+//        );
         String answer = "실행 결과\n" +
             "\n" +
             "hello : -\n" +
