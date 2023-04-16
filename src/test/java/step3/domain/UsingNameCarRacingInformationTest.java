@@ -88,4 +88,25 @@ class UsingNameCarRacingInformationTest {
     }
 
 
+    @Test
+    @DisplayName("레이싱_진행중_테스트")
+    void 레이싱_진행중_테스트() {
+        String given = "안녕하세요,반갑습니다,포포로로";
+
+        UsingNameCarRacingInformation usingNameCarRacingInformation = UsingNameCarRacingInformation.of(given, 5);
+
+
+        assertThat(usingNameCarRacingInformation.isContinue()).isTrue();
+    }
+
+    @Test
+    @DisplayName("레이싱_종료_테스트")
+    void 레이싱_종료_테스트() {
+        String given = "안녕하세요,반갑습니다,포포로로";
+
+        UsingNameCarRacingInformation usingNameCarRacingInformation = UsingNameCarRacingInformation.of(given, 0);
+
+
+        assertThat(usingNameCarRacingInformation.isContinue()).isFalse();
+    }
 }
