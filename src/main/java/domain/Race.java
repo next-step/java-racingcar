@@ -10,7 +10,7 @@ public class Race {
     public static void createCars(String[] nameList) {
         for (String name : nameList) {
             isNameValid(name);
-            RacingCar car = new RacingCar();
+            RacingCar car = new RacingCar(name);
             racingCarList.add(car);
         }
     }
@@ -25,16 +25,13 @@ public class Race {
     public static String[] getEachResult() {
         String[] result = new String[racingCarList.size()];
         for (int i = 0; i < racingCarList.size(); i++) {
-            result[i] = "-".repeat(racingCarList.get(i).getDistance());
+            result[i] = racingCarList.get(i).getName() + " : "  + "-".repeat(racingCarList.get(i).getDistance());
         }
         return result;
     }
 
-    public static List<String[]> playRace(int[] input) {
-        int carCount = input[0];
-        int round = input[1];
+    public static List<String[]> playRace(int round) {
         List<String[]> totalResult = new ArrayList<>();
-        Race.createCar(carCount);
         for (int i = 0; i < round; i++) {
             Race.race();
             totalResult.add(getEachResult());

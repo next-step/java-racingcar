@@ -14,7 +14,7 @@ public class RaceTest {
     @Test
     public void shouldNameAndCreateCars() throws Exception {
         //given
-        String[] nameList = {"Tom", "Jerry", "Pinch"};
+        String[] nameList = { "Tom", "Jerry", "Pinch" };
         //when
         Race.createCars(nameList);
         //then
@@ -27,10 +27,25 @@ public class RaceTest {
     @Test
     public void shouldTerminateGame_whenExceed() throws Exception {
         //given
-        String[] nameList = {"Tomass", "Jerry", "Pinch"};
+        String[] nameList = { "Tomass", "Jerry", "Pinch" };
         //when & then
         assertThatThrownBy(() -> {
             Race.createCars(nameList);
         }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.")
+    @Test
+    public void shouldPrintCarName_whenPrintResult() throws Exception {
+        //given
+        String[] nameList = { "Tom", "Jerry", "Pinch" };
+        int round = 1;
+        //when
+        Race.createCars(nameList);
+
+        //then
+        for (String result : Race.getEachResult()) {
+            assertThat(result.split(" ")[0]).isIn(nameList);
+        }
     }
 }
