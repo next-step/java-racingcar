@@ -49,7 +49,7 @@ public class Racing {
     }
 
     private void move(Car car) {
-        if (racingRandom.getNumber() >= 4) {
+        if (car.moveable(racingRandom.getNumber())) {
             car.move();
         }
     }

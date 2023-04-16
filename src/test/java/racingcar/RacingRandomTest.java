@@ -15,6 +15,6 @@ public class RacingRandomTest {
     }
 
     private boolean isActual(int number) {
-        return number <= 10 && number >= 0;
+        return number <= LIMIT && number >= 0;
     }
 }

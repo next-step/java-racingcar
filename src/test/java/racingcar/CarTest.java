@@ -23,4 +23,10 @@ public class CarTest {
         Car car = new Car();
         assertThat(car.getDistance()).isEqualTo(1);
     }
+
+    @Test
+    void moveable(){
+        Car car = new Car();
+        assertThat(car.moveable(5)).isTrue();
+    }
 }
