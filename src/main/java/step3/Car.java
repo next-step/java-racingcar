@@ -1,5 +1,7 @@
 package step3;
 
+import java.util.List;
+
 public class Car {
 
     private int progress = 0;
@@ -18,8 +20,8 @@ public class Car {
         return this.progress;
     }
 
-    public void printProgress(ResultView outputView) {
-        outputView.print("-".repeat(this.progress));
+    public void addScore(List<Integer> scoreList) {
+        scoreList.add(this.progress);
     }
 
 

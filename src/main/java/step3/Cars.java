@@ -27,11 +27,10 @@ public class Cars {
     }
 
 
-    public void printCarsScore(ResultView outputView) {
+    public void addCarsScore(List<Integer> scoreList) {
         for (Car car : cars) {
-            car.printProgress(outputView);
+            car.addScore(scoreList);
         }
-        outputView.print("");
     }
 
     public List<Car> getCars() {

@@ -7,7 +7,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
-
     @Test
     public void 전진테스트() {
         Car car = new Car();

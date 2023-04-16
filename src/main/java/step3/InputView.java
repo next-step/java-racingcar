@@ -15,6 +15,10 @@ public class InputView {
 
     }
 
+    public int getCarCount() {
+        return this.carCount;
+    }
+
     public void setCarCount() {
         this.carCount = scanner.nextInt();
     }

@@ -1,5 +1,7 @@
 package step3;
 
+import java.util.List;
+
 public class RacingGame {
     int carCount, tryCount;
     Cars cars;
@@ -10,11 +12,12 @@ public class RacingGame {
         cars = Cars.of(carCount);
     }
 
-    public void race(Dice dice, ResultView outputView) {
+    public List race(Dice dice, List<Integer> racingResult) {
         for (int i = 0; i < tryCount; i++) {
             cars.moveCars(dice);
-            cars.printCarsScore(outputView);
+            cars.addCarsScore(racingResult);
         }
+        return racingResult;
     }
 
 
