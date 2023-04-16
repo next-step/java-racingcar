@@ -9,7 +9,6 @@ public class WinningRacingCar {
     public static final int INIT_VALUE = 0;
     public static final int CAR_MOVE_STANDARD = 4;
     public static final String CAR_NAME_SEPARATOR = ",";
-    public static final int MAX_MOVE_COUNT_INIT = 0;
 
     private List<Car> cars;
 
@@ -46,7 +45,7 @@ public class WinningRacingCar {
     }
 
     private int getMaxMoveCount() {
-        int maxMoveCount = MAX_MOVE_COUNT_INIT;
+        int maxMoveCount = INIT_VALUE;
         for (Car car : cars) {
             maxMoveCount = getMaxMoveCount(maxMoveCount, car);
         }
