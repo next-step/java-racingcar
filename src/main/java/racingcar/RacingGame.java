@@ -15,18 +15,18 @@ public class RacingGame {
     }
 
     public void run() {
-        // TODO : 예외처리
-        view.printQuestionAboutTheNumberOfCar();
-        int theNumberOfCar = view.getIntegerInput();
+        getInputsFromUser();
 
-        view.printQuestionAboutTheNumberOfTrial();
-        int theNumberOfTrial = view.getIntegerInput();
+        List<Car> cars = makeCarsOf(view.numbOfCar());
 
-        view.printResultStatement();
-        List<Car> cars = makeCarsOf(theNumberOfCar);
-
-        runWithCarsNTimes(theNumberOfTrial, cars);
+        runWithCarsNTimes(view.numbOfTrial(), cars);
     }
+
+    private void getInputsFromUser() {
+        view.questionAboutNumberOfTrial();
+        view.questionAboutNumberOfCars();
+    }
+
 
     private List<Car> makeCarsOf(int numb) {
         List<Car> cars = new ArrayList<>();
