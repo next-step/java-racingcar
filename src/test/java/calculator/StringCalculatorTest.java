@@ -7,15 +7,6 @@ import static calculator.StringCalculator.splitAndSum;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
-/* 기능 요구사항 분리
-* 1. 빈 문자열을 입력하는 경우 0을 반환 (ex : "" = 0)
-* 2. null 값을 입력하는 경우 0을 반환 (ex : null = 0)
-* 3. 숫자 하나만 입력하는 경우 해당 숫자를 반환 (ex : "1" = 1)
-* 4. 두개 이상의 숫자를 콤마(",") 구분자를 가진 채 입력하는 경우 각 숫자들의 합을 반환 (ex : "1,2" = 3)
-* 5. 구분자는 콤마(",") 외에 콜론(":")도 사용가능 (ex : “1,2:3” = 6)
-* 6. “//”와 “\n” 사이에 위치하는 문자를 커스텀 구분자로 지정할 수 있음 (ex : “//;\n1;2;3” = 6)
-* 7. 음수를 입력하는 경우 RuntimeException 예외가 발생 (ex : “-1,2,3”)
-* */
 public class StringCalculatorTest {
     @DisplayName("2단계_문자열 덧셈 계산기_요구사항1 - 빈 문자열을 입력하는 경우 0을 반환하는지를 확인")
     @Test
