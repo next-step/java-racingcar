@@ -10,7 +10,7 @@ public class ResultView {
         return result;
     }
 
-    public void print(int step) {
+    public void print(Integer step) {
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < step; i++) {
             this.result = builder.append(MOVE_MARK).toString();

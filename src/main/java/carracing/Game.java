@@ -13,7 +13,11 @@ public class Game {
         List<Car> raceCars = participate(inputView.getAmount());
 
         for (int i = 0; i < inputView.getTrack(); i++) {
-            race(raceCars);
+            ResultView resultView = new ResultView();
+            List<Integer> steps = race(raceCars);
+            for (Integer step : steps) {
+                resultView.print(step);
+            }
             System.out.println();
         }
     }
@@ -23,7 +27,7 @@ public class Game {
         return random.nextInt(10);
     }
 
-    private static List<Car> participate(int amount) {
+    public static List<Car> participate(int amount) {
         List<Car> raceCars = new ArrayList<>();
         for (int i = 0; i < amount; i++) {
             Car car = new Car();
@@ -33,11 +37,11 @@ public class Game {
         return raceCars;
     }
 
-    private static void race(List<Car> raceCars) {
-        ResultView resultView = new ResultView();
-
+    public static List<Integer> race(List<Car> raceCars) {
+        List<Integer> steps = new ArrayList<>();
         for (Car car : raceCars) {
-            resultView.print(car.move(randomSpeed()));
+           steps.add(car.move(randomSpeed()));
         }
+        return steps;
     }
 }
