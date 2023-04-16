@@ -1,7 +1,7 @@
 package domain.car;
 
 import domain.strategy.MovingStrategy;
-import domain.strategy.RandomStrategy;
+import strategy.RandomStrategy;
 
 import java.util.*;
 

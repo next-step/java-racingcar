@@ -1,4 +1,6 @@
-package domain.strategy;
+package strategy;
+
+import domain.strategy.MovingStrategy;
 
 import java.util.Random;
 

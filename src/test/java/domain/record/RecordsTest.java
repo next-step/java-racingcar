@@ -2,7 +2,7 @@ package domain.record;
 
 import domain.car.Car;
 import domain.car.Cars;
-import domain.strategy.RandomStrategy;
+import strategy.RandomStrategy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import vo.CarRecord;
