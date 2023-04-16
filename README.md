@@ -12,7 +12,6 @@
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
 ## 프로그래밍 요구사항
-
 ### 기능 요구사항
 
 - 초간단 자동차 경주 게임을 구현한다.
