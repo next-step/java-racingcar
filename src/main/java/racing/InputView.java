@@ -3,15 +3,25 @@ package racing;
 import java.util.Scanner;
 
 public class InputView {
+    private static InputView instance;
+
+    private InputView() {}
 
     private static final Scanner SCANNER = new Scanner(System.in);
 
-    public int inputCarCount(){
+    private static class InputViewInstanceHolder{
+        private static final InputView INSTANCE = new InputView();
+    }
+    public static InputView getInstance(){
+        return InputViewInstanceHolder.INSTANCE;
+    }
+
+    public static int inputCarCount(){
         System.out.println("자동차 대수는 몇대인가요?");
         return inputCount();
     }
 
-    public int inputTryCount(){
+    public static int inputTryCount(){
         System.out.println("시도할 회수는 몇 회 인가요?");
         return inputCount();
     }

@@ -3,9 +3,9 @@ package racing;
 
 import java.util.List;
 public class Car {
-    private String carName;
-    private String dash = "";
-    public Integer movingCar = 0;
+    private static String carName = "";
+    private static String movingPositionCursor = "";
+    private static Integer movingCar = 0;
 
     public Car() {
 
@@ -16,13 +16,13 @@ public class Car {
     public void naming(String[] carsName, List<Car> carList) {
         int index = 0;
         for (Car car : carList) {
-            car.carName = carsName[index];
+            carName = carsName[index];
             index++;
             exceptionCarNameCount(car);
         }
     }
 
-    private void exceptionCarNameCount(Car car) {
+    public void exceptionCarNameCount(Car car) {
         if(car.carName.length() > 5){
             throw new IllegalArgumentException("차의 이름은 5자리를 넘을 수 없습니다.");
         }
@@ -30,7 +30,7 @@ public class Car {
 
     public void move(int randomNumber) {
         if(randomNumber >= 4){
-            this.dash += "-";
+            this.movingPositionCursor += "-";
             this.movingCar += 1;
         }
     }
@@ -50,7 +50,7 @@ public class Car {
 
     @Override
     public String toString() {
-        return carName + " : " + dash;
+        return carName + " : " + movingPositionCursor;
     }
 
 }

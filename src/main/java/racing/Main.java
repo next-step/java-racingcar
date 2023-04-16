@@ -8,7 +8,7 @@ import static racing.ResultView.*;
 public class Main {
     public static void main(String[] args) {
 
-        InputView inputView = new InputView();
+        InputView inputView = InputView.getInstance();
 
 
         String[] carsName = (inputView.inputCarName()).split(",");
