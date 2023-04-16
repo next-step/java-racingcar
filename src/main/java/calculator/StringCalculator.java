@@ -5,9 +5,10 @@ import java.util.regex.Pattern;
 
 public class StringCalculator {
 
-    public static final int ZERO = 0;
-    public static final String DEFAULT_DELIMITER = "[,:]";
-    public static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\\\\n(.*)");
+    private static final int ZERO = 0;
+    private static final String DEFAULT_DELIMITER = "[,:]";
+    private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\\\\n(.*)");
+    private static final Pattern NUMERIC_REGEX_PATTERN = Pattern.compile("-?[0-9]+");
 
     public static int splitAndSum(String textInput) {
         if (isBlank(textInput)) {
@@ -55,6 +56,8 @@ public class StringCalculator {
     }
 
     private static int toInt(String value) {
+        if (!NUMERIC_REGEX_PATTERN.matcher(value).matches()) throw new RuntimeException("숫자 이외의 값은 입력할 수 없습니다.");
+
         int number = Integer.parseInt(value);
         if (number < 0) throw new RuntimeException("음수는 입력할 수 없습니다.");
         return number;

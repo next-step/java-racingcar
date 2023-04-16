@@ -29,7 +29,7 @@ public class StringCalculatorTest {
     @DisplayName("2단계_문자열 덧셈 계산기_요구사항4 - 두개 이상의 숫자를 콤마 구분자를 기준으로 분리하여 각 숫자들의 합을 반환하는지 확인")
     @Test
     void split_and_sum_by_comma() {
-        assertThat(splitAndSum("1,2")).isEqualTo(Integer.parseInt("3"));
+        assertThat(splitAndSum("1,2")).isEqualTo(3);
     }
 
     @DisplayName("2단계_문자열 덧셈 계산기_요구사항5 - 두개 이상의 숫자를 콤마 구분자 뿐만 아니라 콜론 구분자도 포함해서 분리하여 각 숫자들의 합을 반환하는지 확인")
@@ -47,7 +47,16 @@ public class StringCalculatorTest {
     @DisplayName("2단계_문자열 덧셈 계산기_요구사항7 - 음수를 입력하는 경우 RuntimeException 예외가 발생되는지 확인")
     @Test
     void pass_negative_value_runtime_exception() {
-        assertThatThrownBy(() -> splitAndSum("-1,2:3"))
-                .isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> splitAndSum("-1:2:3"))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessageContaining("음수는 입력할 수 없습니다.");
+    }
+
+    @DisplayName("2단계_문자열 덧셈 계산기_요구사항8 - 숫자 이외의 값을 입력하는 경우 RuntimeException 예외가 발생되는지 확인")
+    @Test
+    void pass_non_numeric_value_runtime_exception() {
+        assertThatThrownBy(() -> splitAndSum("a:2:3"))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessageContaining("숫자 이외의 값은 입력할 수 없습니다.");
     }
 }
