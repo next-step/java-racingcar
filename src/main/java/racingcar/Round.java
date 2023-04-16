@@ -2,6 +2,7 @@ package racingcar;
 
 public class Round {
 
+    private static String MIN_NUMBER_FORAMT = "라운드 횟수는 %s번 이상이여야 합니다.";
     private static int MIN_NUMBER = 1;
 
     private final int number;
@@ -13,7 +14,7 @@ public class Round {
 
     private void validate(final int number) {
         if (number < MIN_NUMBER) {
-            throw new IllegalArgumentException("라운드 횟수는 " + MIN_NUMBER + "번 이상이여야 합니다.");
+            throw new IllegalArgumentException(String.format(MIN_NUMBER_FORAMT, MIN_NUMBER));
         }
     }
 
