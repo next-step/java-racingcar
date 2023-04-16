@@ -5,7 +5,6 @@ import java.util.stream.Collectors;
 
 public class UsingNameCarRacingInformation {
 
-    private static final int NOT_FOUND_INDEX = -1;
     private final List<UsingNameRacingCar> racingCarList;
     private final Reps reps;
 
@@ -22,6 +21,7 @@ public class UsingNameCarRacingInformation {
         hasCarName(inputCarName);
         List<String> carNameList = getCarNameList(inputCarName);
         hasSameName(carNameList);
+        hasLength(carNameList);
 
         return carNameList.stream()
                 .map(UsingNameRacingCar::of)
@@ -32,7 +32,18 @@ public class UsingNameCarRacingInformation {
         return Arrays.asList(inputCarName.split(Separator.SPLIT_CAR_NAME_SEPARATOR.getSeparator()));
     }
 
+    private static void hasLength(List<String> carNameList){
+        if(carNameList.isEmpty()){
+            throw new IllegalArgumentException("자동차 이름을 입력해주세요");
+        }
+    }
+
     private static void hasCarName(String inputCarName) {
+
+        if(inputCarName == null){
+            throw new IllegalArgumentException("자동차 이름을 입력해주세요");
+        }
+
         if (inputCarName.isBlank()) {
             throw new IllegalArgumentException("자동차 이름을 입력해주세요");
         }
