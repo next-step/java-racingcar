@@ -4,8 +4,8 @@ public class Car implements Comparable<Car> {
 
     private static final int MOVABLE_COUNT = 4;
 
-    private int position;
     private final String name;
+    private int position;
 
     public Car(String name) {
         this.name = name;

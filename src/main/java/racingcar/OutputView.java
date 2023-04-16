@@ -19,7 +19,7 @@ public class OutputView {
     }
 
     private static void printPosition(Car car) {
-        System.out.println(car.getName()+" : "+"-".repeat(car.getPosition()));
+        System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
     }
 
     public static void printWinner(List<Car> cars) {
