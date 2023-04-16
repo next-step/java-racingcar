@@ -6,12 +6,16 @@ import racingcar.util.DefaultNumberGenerator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
+import java.util.List;
+
 public class CarGame {
+    public static final String DEFAULT_DELIMITER = ",";
+
     public static void main(String[] args) {
         String names = InputView.carName();
         int round = InputView.round();
 
-        Cars cars = new Cars(names);
+        Cars cars = new Cars(List.of(names.split(DEFAULT_DELIMITER)));
 
         OutputView.endMessage();
         for (int i = 0; i < round; i++) {
