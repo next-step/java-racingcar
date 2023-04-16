@@ -16,6 +16,13 @@ public class Cars {
         }
     }
 
+    public Cars(String[] carNames) {
+        values = new ArrayList<>();
+        for (String carName : carNames) {
+            values.add(new Car(carName));
+        }
+    }
+
     public void move() {
         values.stream()
                 .forEach(car ->
