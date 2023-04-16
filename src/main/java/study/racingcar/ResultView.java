@@ -1,5 +1,7 @@
 package study.racingcar;
 
+import java.util.List;
+
 public class ResultView {
 
     private static final String MOVE_MARK = "-";
@@ -24,5 +26,9 @@ public class ResultView {
 
     private static void printCarName(String name) {
         System.out.print(name + NAME_CLONE);
+    }
+
+    public static void winner(List<String> winner) {
+        System.out.println(String.join(", ", winner) + "가 최종 우승했습니다.");
     }
 }

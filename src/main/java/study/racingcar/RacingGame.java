@@ -26,6 +26,8 @@ public class RacingGame {
 
             lastLapCheck++;
         }
+
+        ResultView.winner(new GameWinner(carList).findGameWinner());
     }
 
     private boolean isOver(int numberOfGames, int lastLapCheck) {
@@ -54,4 +56,5 @@ public class RacingGame {
     private boolean isMove(int randomNum) {
         return randomNum >= MOVE_CONDITION;
     }
+
 }
