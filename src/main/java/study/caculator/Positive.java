@@ -1,4 +1,4 @@
-package study.step2;
+package study.caculator;
 
 public class Positive {
   public static int parseIntAndCheckPositive(String stringValue) {

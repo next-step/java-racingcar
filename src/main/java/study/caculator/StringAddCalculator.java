@@ -1,4 +1,4 @@
-package study.step2;
+package study.caculator;
 
 public class StringAddCalculator {
 

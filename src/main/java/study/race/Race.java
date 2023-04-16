@@ -1,4 +1,4 @@
-package study.step3.race;
+package study.race;
 
 import java.util.ArrayList;
 import java.util.List;

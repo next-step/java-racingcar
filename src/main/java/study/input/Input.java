@@ -1,4 +1,4 @@
-package study.step3;
+package study.input;
 
 public interface Input {
   public int getInput(String answer);

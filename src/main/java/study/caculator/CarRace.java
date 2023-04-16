@@ -1,4 +1,4 @@
-package study.step3;
+package study.caculator;
 
 public interface CarRace {
   public String run();

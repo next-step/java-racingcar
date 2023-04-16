@@ -1,8 +1,9 @@
-package study.step3;
+package study.caculator;
 
-import study.step3.race.Race;
-import study.step3.race.RaceGame;
-import study.step3.race.RaceGameImpl;
+import study.input.Input;
+import study.race.Race;
+import study.race.RaceGame;
+import study.race.RaceGameImpl;
 
 public class CarRaceImpl implements CarRace {
 

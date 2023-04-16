@@ -2,6 +2,10 @@ package study.step3;
 
 import java.util.Random;
 import org.junit.jupiter.api.Test;
+import study.caculator.CarRace;
+import study.caculator.CarRaceImpl;
+import study.input.Input;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
