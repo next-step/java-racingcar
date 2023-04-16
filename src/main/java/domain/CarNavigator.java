@@ -10,6 +10,7 @@ public class CarNavigator {
     public static int getRandomNumber() {
         return random.nextInt(10);
     }
+
     public static boolean flipCoin(int coin) {
         return coin >= HEADS_OR_TAILS;
     }
