@@ -35,7 +35,7 @@ public class Racing {
 
     private void carMove() {
         for (Car car : this.racingCars) {
-            car.move(random.nextInt());
+            car.move(random.nextInt(10));
         }
     }
 
