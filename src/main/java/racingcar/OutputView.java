@@ -13,12 +13,12 @@ public class OutputView {
 
     public static void printCarPosition(List<Car> cars) {
         for (Car car : cars) {
-            printPosition(car.getPosition());
+            printPosition(car);
         }
         System.out.println();
     }
 
-    private static void printPosition(int position) {
-        System.out.println("-".repeat(position));
+    private static void printPosition(Car car) {
+        System.out.println(car.getName()+" : "+"-".repeat(car.getPosition()));
     }
 }
