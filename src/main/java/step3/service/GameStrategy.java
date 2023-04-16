@@ -1,12 +1,12 @@
 package step3.service;
 
-import step3.domain.InputCar;
+import step3.domain.UserInput;
 
 public interface GameStrategy {
 
-    InputCar input();
+    UserInput input();
 
-    void playGame(InputCar inputCar);
+    void playGame(UserInput userInput);
 
     void printCarStatus();
 

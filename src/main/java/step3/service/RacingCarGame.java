@@ -1,7 +1,7 @@
 package step3.service;
 
 import step3.domain.Car;
-import step3.domain.InputCar;
+import step3.domain.UserInput;
 import step3.util.RandomValue;
 import step3.view.InputView;
 import step3.view.OutputView;
@@ -22,20 +22,20 @@ public class RacingCarGame implements GameStrategy {
     }
 
     @Override
-    public InputCar input() {
+    public UserInput input() {
         final int carCount = InputView.inputCarCount();
         final int retry = InputView.inputRetryCount();
 
-        return new InputCar(carCount, retry);
+        return new UserInput(carCount, retry);
     }
 
     @Override
-    public void playGame(InputCar inputCar) {
-        initCarStatus(inputCar.getCount());
+    public void playGame(UserInput userInput) {
+        initCarStatus(userInput.getCount());
 
         OutputView.printResultConsole();
 
-        for (int i = 0; i < inputCar.getRetry(); i++) {
+        for (int i = 0; i < userInput.getRetry(); i++) {
             playRacingCar();
             printCarStatus();
         }

@@ -1,12 +1,12 @@
 package step3.domain;
 
-public class InputCar {
+public class UserInput {
 
     private final int count;
 
     private final int retry;
 
-    public InputCar(int count, int retry) {
+    public UserInput(int count, int retry) {
         validate(count, retry);
         
         this.count = count;
