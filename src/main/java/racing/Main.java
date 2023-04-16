@@ -1,8 +1,8 @@
 package racing;
 
 import racing.domain.Cars;
-import racing.domain.RacingGame;
-import racing.view.InputDto;
+import racing.dto.GameResult;
+import racing.service.RacingGame;
 import racing.view.InputView;
 import racing.view.ResultView;
 
@@ -12,13 +12,13 @@ public class Main {
     public static void main(String[] args) {
 
         InputView inputView = new InputView();
-        InputDto inputDto = inputView.InputCountOfUnit();
+        int countOfCar = inputView.InputCountOfUnit();
+        int turns = inputView.InputCountOfTurn();
 
-        RacingGame game = new RacingGame(inputDto.input(), inputDto.count());
-        List<Cars> results = game.playGame();
-        List<String> winners = game.winners();
+        RacingGame game = new RacingGame(countOfCar, turns);
+
+        List<GameResult>results = game.playGame();
 
         ResultView.printCarsLocations(results);
-        ResultView.printWinners(winners);
     }
 }
