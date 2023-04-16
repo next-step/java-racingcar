@@ -13,12 +13,20 @@ public class UsingNameRacingCar {
 
     public static UsingNameRacingCar of(String name) {
         hasCarName(name);
+        hasLessThen5Name(name);
         return new UsingNameRacingCar(name);
     }
 
     private static void hasCarName(String name) {
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("자동차 이름을 입력해주세요");
+        }
+    }
+
+    private static void hasLessThen5Name(String name){
+        if(name.length() > 5){
+            throw new IllegalArgumentException("5자를 초과할수 없습니다");
+
         }
     }
 
