@@ -1,34 +1,26 @@
 package race.view;
 
-import race.MoveResult;
-import race.RaceResult;
+import race.Position;
+import race.Positions;
 
 public class ResultView {
-    private final RaceResult raceResult;
+    private static final char POSITION_CHARACTER = '-';
 
-    public ResultView(RaceResult raceResult) {
-        this.raceResult = raceResult;
-    }
-
-    public void showResult() {
+    public static void showResultComment() {
         System.out.println("실행 결과");
-        for (int i = 0; i < raceResult.getLaps(); i++) {
-            showResultLap(i);
-            System.out.println();
-        }
     }
 
-    private void showResultLap(int lap) {
-        for (int i = 0; i < raceResult.getNumOfCars(); i++) {
-            showResultCarAtLap(i, lap);
-            System.out.println();
+    public static void showPositions(Positions positions) {
+        for (Position position : positions.getPositions()) {
+            showPosition(position);
         }
+        System.out.println();
     }
 
-    private void showResultCarAtLap(int carNo, int lap) {
-        for (int i = 0; i <= lap; i++) {
-            MoveResult moveResult = raceResult.getMoveResultOfCarAtLap(carNo, i);
-            System.out.print(moveResult == MoveResult.MOVED ? "-" : "");
+    private static void showPosition(Position position) {
+        for (int i = 0; i < position.get(); i++) {
+            System.out.print(POSITION_CHARACTER);
         }
+        System.out.println();
     }
 }

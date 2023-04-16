@@ -1,9 +1,21 @@
 package race;
 
 public class Car {
-    private static final int MOVE_MINIMUM_POWER = 4;
+    private final Position position;
+    private final MoveStrategy moveStrategy;
 
-    public static MoveResult move(int power) {
-        return MoveResult.of(power >= MOVE_MINIMUM_POWER);
+    public Car(MoveStrategy moveStrategy) {
+        this.position = new Position();
+        this.moveStrategy = moveStrategy;
+    }
+
+    public void move() {
+        if (moveStrategy.canMove()) {
+            position.add();
+        }
+    }
+
+    public Position getPosition() {
+        return position;
     }
 }

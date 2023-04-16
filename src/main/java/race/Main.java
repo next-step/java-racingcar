@@ -7,12 +7,13 @@ public class Main {
     public static void main(String[] args) {
         int numOfCars = InputView.getCarNums();
         int laps = InputView.getLaps();
-        PowerGenerator powerGenerator = new RandomPowerGenerator();
-        Cars cars = new Cars(numOfCars, powerGenerator);
-        Race race = new Race(laps, cars);
+        RandomMoveStrategy randomMoveStrategy = new RandomMoveStrategy(4, 10);
+        Cars cars = new Cars(numOfCars, randomMoveStrategy);
+        Race race = new Race(cars);
 
-        RaceResult result = race.start();
-        ResultView resultView = new ResultView(result);
-        resultView.showResult();
+        ResultView.showResultComment();
+        for (int i = 0; i < laps; i++) {
+            ResultView.showPositions(race.startLap());
+        }
     }
 }

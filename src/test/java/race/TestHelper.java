@@ -1,17 +1,17 @@
 package race;
 
 public class TestHelper {
-    public static class BigPowerGenerator implements PowerGenerator {
+    public static class AlwaysMoveStrategy implements MoveStrategy {
         @Override
-        public int generate() {
-            return 4;
+        public boolean canMove() {
+            return true;
         }
     }
 
-    public static class SmallPowerGenerator implements PowerGenerator {
+    public static class NeverMoveStrategy implements MoveStrategy {
         @Override
-        public int generate() {
-            return 3;
+        public boolean canMove() {
+            return false;
         }
     }
 }
