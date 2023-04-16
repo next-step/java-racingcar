@@ -7,10 +7,11 @@ import vo.CarRecord;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static java.util.Comparator.comparingInt;
+
 public class Records {
 
     private final List<CarRecord> gameRecord = new ArrayList<>();
-    private final List<CarRecord> winners = new ArrayList<>();
 
     public void add(Cars cars) {
         for (Car car : cars.cars()) {
@@ -18,13 +19,11 @@ public class Records {
         }
     }
 
-    public void addWinners() {
+    public List<CarRecord> winners() {
         List<CarRecord> recordList = removeDuplicateRecord();
         int maxDistance = maxDistance(recordList);
 
-        for (CarRecord car : recordList) {
-            findWinner(car, maxDistance);
-        }
+        return findWinners(recordList, maxDistance);
     }
 
     private List<CarRecord> removeDuplicateRecord() {
@@ -35,23 +34,18 @@ public class Records {
 
     private int maxDistance(List<CarRecord> records) {
         return records.stream()
-                .mapToInt(CarRecord::distance)
-                .max()
-                .orElse(0);
+                .max(comparingInt(CarRecord::distance))
+                .get()
+                .distance();
     }
 
-    private void findWinner(CarRecord car, int maxDistance) {
-        if (car.distance() == maxDistance) {
-            winners.add(car);
-        }
+    private List<CarRecord> findWinners(List<CarRecord> recordList, int maxDistance) {
+        return recordList.stream()
+                .filter(record -> record.distance() == maxDistance)
+                .collect(Collectors.toList());
     }
 
     public List<CarRecord> gameRecord() {
         return gameRecord;
     }
-
-    public List<CarRecord> winners() {
-        return winners;
-    }
-
 }

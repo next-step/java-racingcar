@@ -19,8 +19,6 @@ public class RacingGame {
             records.add(cars);
         }
 
-        records.addWinners();
-
         return records;
     }
 }

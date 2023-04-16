@@ -39,7 +39,6 @@ public class RecordsTest {
 
         // when
         records.add(cars);
-        records.addWinners();
 
         List<CarRecord> result = records.winners();
 
@@ -61,7 +60,6 @@ public class RecordsTest {
 
         // when
         records.add(cars);
-        records.addWinners();
 
         List<CarRecord> result = records.winners();
 
