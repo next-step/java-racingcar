@@ -2,14 +2,11 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class RacingCar {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        int carAmount = getCarAmount(scanner);
-        int tryAmount = getTryAmount(scanner);
+        int carAmount = InputView.getCarAmount();
+        int tryAmount = InputView.getTryAmount();
         List<Car> cars = createCar(carAmount);
 
         Game game = new Game(cars);
@@ -18,20 +15,6 @@ public class RacingCar {
             game.play();
             OutputView.printCarPosition(cars);
         }
-    }
-
-    private static int getTryAmount(Scanner scanner) {
-        InputView.printTryInputGuideMessage();
-        int tryAmount = scanner.nextInt();
-        Validator.validateTryAmount(tryAmount);
-        return tryAmount;
-    }
-
-    private static int getCarAmount(Scanner scanner) {
-        InputView.printCarInputGuideMessage();
-        int carAmount = scanner.nextInt();
-        Validator.validateCarAmount(carAmount);
-        return carAmount;
     }
 
     private static List<Car> createCar(int carAmount) {
