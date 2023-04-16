@@ -5,7 +5,7 @@ import java.util.List;
 
 public class SettingGame {
 
-    private static int ZERO = 0;
+    private static final int ZERO = 0;
     public static List<Car> createCars(RacingGameInputs racingGameInputs) {
 
         List<Car> carList = new ArrayList<>();
