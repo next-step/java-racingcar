@@ -11,6 +11,7 @@ public class Racer {
     private final Score scores;
     private final Result results;
     private final Car car;
+    private Boolean isWinner = null;
 
     public Racer(int iterations, Car car) {
         validateIterations(iterations);
@@ -81,7 +82,18 @@ public class Racer {
         return this.car;
     }
 
-    public boolean isSamePosition(int position) {
-        return position == getFinalPosition();
+    public void amiWinner(int winnerPosition) {
+        if(winnerPosition == getFinalPosition()) {
+            this.isWinner = Boolean.TRUE;
+            return;
+        }
+        this.isWinner = Boolean.FALSE;
+    }
+
+    public boolean isWinner() {
+        if(this.isWinner == null) {
+            throw new RuntimeException("Winner 가 아직 결정되지 않았습니다");
+        }
+        return this.isWinner;
     }
 }

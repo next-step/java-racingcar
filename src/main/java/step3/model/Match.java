@@ -10,11 +10,14 @@ import java.util.stream.IntStream;
 public class Match {
 
     private final List<Racer> racerList;
-    private final List<Racer> winnerList;
 
     public Match(List<Car> participates, int iterations) {
         this.racerList = makeRacers(participates, iterations);
-        this.winnerList = getWinnerList();
+        winnerCheck(racerList);
+    }
+
+    private void winnerCheck(List<Racer> racerList) {
+        racerList.stream().forEach(racer -> racer.amiWinner(getMaxPosition()));
     }
 
     private static List<Racer> makeRacers(List<Car> participates, int iterations) {
@@ -31,14 +34,9 @@ public class Match {
     }
 
     public List<String> winnerDisplay() {
-        return new ArrayList<>(winnerList).stream()
-            .map(racer -> racer.getCar().getName())
-            .collect(Collectors.toList());
-    }
-
-    private List<Racer> getWinnerList( ) {
         return racerList.stream()
-            .filter(racer -> racer.isSamePosition(getMaxPosition()))
+            .filter(Racer::isWinner)
+            .map(racer -> racer.getCar().getName())
             .collect(Collectors.toList());
     }
 
