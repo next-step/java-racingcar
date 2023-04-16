@@ -5,13 +5,22 @@ import java.util.List;
 
 public class GameResult {
 
-    private List<RoundResult> result = new ArrayList<>();
+    private List<RaceResult> raceResults = new ArrayList<>();
+    private List<CarResult> winners;
 
-    public void input(final RoundResult roundResult) {
-        result.add(roundResult);
+    public void addRoundResult(final RaceResult raceResult) {
+        raceResults.add(raceResult);
     }
 
-    public List<RoundResult> getResult() {
-        return result;
+    public void addWinner(final List<CarResult> winners) {
+        this.winners = winners;
+    }
+
+    public List<RaceResult> getRaceResults() {
+        return raceResults;
+    }
+
+    public List<CarResult> getWinners() {
+        return winners;
     }
 }

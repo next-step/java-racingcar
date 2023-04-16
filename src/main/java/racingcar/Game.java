@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.List;
+
 public class Game {
 
     private final Cars cars;
@@ -13,18 +15,18 @@ public class Game {
     public GameResult play() {
         GameResult gameResult = new GameResult();
         for (int i = 0; i < round.getNumber(); i++) {
-            gameResult.input(round());
+            gameResult.addRoundResult(round());
         }
+        gameResult.addWinner(winner());
         return gameResult;
     }
 
-    private RoundResult round() {
-        RoundResult roundResult = new RoundResult();
-        for (final Car car : this.cars.getCars()) {
-            car.racing();
-            roundResult.input(car.getPosition());
-        }
-        return roundResult;
+    private RaceResult round() {
+        return new RaceResult(cars.race());
+    }
+
+    private List<CarResult> winner() {
+        return cars.winner();
     }
 
 }
