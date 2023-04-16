@@ -1,50 +1,32 @@
 package carRacing.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import carRacing.utils.RandomUtils;
 
 public class CarRacing {
 
-	private final List<Car> cars;
+	private final Cars cars;
 
-	public CarRacing(List<Car> cars) {
-		this.cars = cars;
+	public CarRacing() {
+		this.cars = new Cars();
 	}
 
-	public void addCar(Car car) {
-		this.cars.add(car);
+	public CarRacing(String carNames) {
+		this.cars = new Cars(carNames);
 	}
 
-	public void moveCars() {
-		for (Car car : this.cars) {
+	public void race() {
+		for (Car car : this.cars.getCars()) {
 			car.move(RandomUtils.getRandomValue());
 		}
 	}
 
-	public List<Car> createWinners() {
-		int bestLocation = this.extractBestLocation();
-
-		List<Car> winners = new ArrayList<>();
-		for (Car car : this.cars) {
-			this.addWinner(bestLocation, winners, car);
-		}
-
-		return winners;
+	public List<Car> findWinners() {
+		return this.cars.findWinners();
 	}
 
-	private void addWinner(int bestLocation, List<Car> winners, Car car) {
-		if (car.isBestLocation(bestLocation)) {
-			winners.add(car);
-		}
-	}
-
-	private int extractBestLocation() {
-		int bestLocation = 0;
-		for (Car car : this.cars) {
-			bestLocation = car.greaterLocation(bestLocation);
-		}
-		return bestLocation;
+	public Cars getCars() {
+		return this.cars;
 	}
 }

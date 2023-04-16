@@ -14,16 +14,12 @@ public class Location {
 		this.location++;
 	}
 
+	public boolean isGreater(Location location) {
+		return this.location > location.getLocation();
+	}
+
 	public int getLocation() {
 		return this.location;
-	}
-
-	public boolean isEqual(int location) {
-		return this.location == location;
-	}
-
-	public boolean isGreater(int location) {
-		return this.location > location;
 	}
 
 	@Override

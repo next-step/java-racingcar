@@ -10,18 +10,18 @@ public class CarTest {
 	@DisplayName("전진한다.")
 	@Test
 	void test1() {
-		Car car = new Car(new Name("pobi"), new Location(0));
+		Car car = new Car("pobi", 0);
 		car.move(4);
 
-		assertThat(car).isEqualTo(new Car(new Name("pobi"), new Location(1)));
+		assertThat(car).isEqualTo(new Car("pobi", 1));
 	}
 
 	@DisplayName("멈춘다.")
 	@Test
 	void test2() {
-		Car car = new Car(new Name("pobi"), new Location(0));
+		Car car = new Car("pobi", 0);
 		car.move(3);
 
-		assertThat(car).isEqualTo(new Car(new Name("pobi"), new Location(0)));
+		assertThat(car).isEqualTo(new Car("pobi", 0));
 	}
 }

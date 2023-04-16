@@ -11,9 +11,9 @@ public class Car {
 	private final Name name;
 	private final Location location;
 
-	public Car(Name name, Location location) {
-		this.name = name;
-		this.location = location;
+	public Car(String name, int location) {
+		this.name = new Name(name);
+		this.location = new Location(location);
 	}
 
 	public void move(int randomValue) {
@@ -27,23 +27,23 @@ public class Car {
 		return moveStrategy.movable();
 	}
 
-	public int greaterLocation(int bestLocation) {
+	public Location greaterLocation(Location bestLocation) {
 		if (this.location.isGreater(bestLocation)) {
-			bestLocation = this.location.getLocation();
+			bestLocation = this.location;
 		}
 		return bestLocation;
 	}
 
-	public boolean isBestLocation(int bestLocation) {
-		return this.location.isEqual(bestLocation);
+	public boolean isWinner(Location bestLocation) {
+		return this.location.equals(bestLocation);
 	}
 
-	public Name getName() {
-		return this.name;
+	public String getName() {
+		return this.name.getName();
 	}
 
-	public Location getLocation() {
-		return this.location;
+	public int getLocation() {
+		return this.location.getLocation();
 	}
 
 	@Override
