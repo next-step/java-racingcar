@@ -1,6 +1,10 @@
 package carRacing.controller;
 
+import carRacing.domain.Car;
+import carRacing.domain.CarCompany;
 import carRacing.view.InputView;
+
+import java.util.List;
 
 public class CarRacingGame {
     public static void main(String[] args) {
@@ -8,5 +12,10 @@ public class CarRacingGame {
         InputView inputView = new InputView();
         int carNum = inputView.inputCarNum();
         int moveNum = inputView.inputMoveNum();
+
+        //입력 대수만큼 자동차 객체 생성
+        CarCompany carCompany = new CarCompany();
+        List<Car> cars = carCompany.createCar(carNum);
+
     }
 }
