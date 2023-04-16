@@ -15,7 +15,7 @@ public class UsingNameCarRacingInformation {
     }
 
     public static UsingNameCarRacingInformation of(String inputCarName, int numberOfReps) {
-        return new UsingNameCarRacingInformation(makeRacingCarList(inputCarName), Reps.Of(numberOfReps));
+        return new UsingNameCarRacingInformation(makeRacingCarList(inputCarName), Reps.of(numberOfReps));
     }
 
     private static List<UsingNameRacingCar> makeRacingCarList(String inputCarName) {

@@ -13,7 +13,7 @@ public class Reps {
         this.reps = inputReps;
     }
 
-    public static Reps Of(int inputReps) {
+    public static Reps of(int inputReps) {
         return new Reps(inputReps);
     }
 
