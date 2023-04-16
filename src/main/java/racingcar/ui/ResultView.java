@@ -8,8 +8,9 @@ public class ResultView {
 
     public static final int BEGIN_INDEX = 0;
     public static final char CAR_MOVE_STATE_LINE = '-';
-    public static final String SEPARATOR = ", ";
     public static final int REMOVE_LAST_SEPARATOR_MIN = 2;
+    public static final String WINNERS_SEPARATOR = ", ";
+    public static final String NAME_LINE_SEPARATOR = " : ";
 
     public void printInputCarNameMessage() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
@@ -50,7 +51,15 @@ public class ResultView {
     }
 
     private void printCarNameAndMoveStateLine(List<Car> cars, int idx) {
-        System.out.println(makeCarMoveStateLine(cars.get(idx).getMoveCount()));
+        System.out.println(getCarName(cars, idx) + NAME_LINE_SEPARATOR + getCarMoveStateLine(cars, idx));
+    }
+
+    private String getCarName(List<Car> cars, int idx) {
+        return cars.get(idx).getName();
+    }
+
+    private String getCarMoveStateLine(List<Car> cars, int idx) {
+        return makeCarMoveStateLine(cars.get(idx).getMoveCount());
     }
 
     private void printMoveStateLine(List<Integer> moveCounts, int idx) {
@@ -65,11 +74,10 @@ public class ResultView {
         return sb.toString();
     }
 
-
     private String makeWinners(List<String> carNames) {
         StringBuilder sb = new StringBuilder();
         for (String carName : carNames) {
-            sb.append(carName).append(SEPARATOR);
+            sb.append(carName).append(WINNERS_SEPARATOR);
         }
 
         if(carNames.size() >= REMOVE_LAST_SEPARATOR_MIN) {
@@ -79,6 +87,6 @@ public class ResultView {
     }
 
     private void removeLastSeparator(StringBuilder sb) {
-        sb.setLength(sb.length() - SEPARATOR.length());
+        sb.setLength(sb.length() - WINNERS_SEPARATOR.length());
     }
 }
