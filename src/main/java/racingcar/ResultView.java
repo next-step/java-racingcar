@@ -9,7 +9,7 @@ public class ResultView {
     public static final String SEPARATOR = ", ";
     public static final int REMOVE_LAST_SEPARATOR_MIN = 2;
 
-    public void inputCarNameMessage() {
+    public void printInputCarNameMessage() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
     }
 
@@ -17,15 +17,15 @@ public class ResultView {
         System.out.println(makeWinners(carNames) + "가 최종 우승했습니다.");
     }
 
-    public void questionCarCountMessage() {
+    public void printQuestionCarCountMessage() {
         System.out.println("자동차 대수는 몇 대 인가요?");
     }
 
-    public void questionTryCountMessage() {
+    public void printQuestionTryCountMessage() {
         System.out.println("시도할 회수는 몇 회 인가요?");
     }
 
-    public void executeResultMessage() {
+    public void printExecuteResultMessage() {
         System.out.println("실행 결과");
     }
 
@@ -41,10 +41,10 @@ public class ResultView {
     }
 
     private void printMoveStateLine(List<Integer> moveCounts, int idx) {
-        System.out.println(getCarMoveStateLine(moveCounts.get(idx)));
+        System.out.println(makeCarMoveStateLine(moveCounts.get(idx)));
     }
 
-    public String getCarMoveStateLine(int moveCount) {
+    public String makeCarMoveStateLine(int moveCount) {
         StringBuilder sb = new StringBuilder();
         for (int i = BEGIN_INDEX; i < moveCount; i++) {
             sb.append(CAR_MOVE_STATE_LINE);

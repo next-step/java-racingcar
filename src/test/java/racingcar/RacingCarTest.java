@@ -35,7 +35,7 @@ public class RacingCarTest {
         ResultView resultView = new ResultView();
 
         //when
-        String carMoveStateLine = resultView.getCarMoveStateLine(moveCount);
+        String carMoveStateLine = resultView.makeCarMoveStateLine(moveCount);
 
         //then
         assertThat(carMoveStateLine).isEqualTo(result);

@@ -10,14 +10,14 @@ public class Main {
         ResultView resultView = createResultView();
         InputView inputView = createInputView();
 
-        resultView.questionCarCountMessage();
+        resultView.printQuestionCarCountMessage();
         int carCount = inputView.getInput();
 
-        resultView.questionTryCountMessage();
+        resultView.printQuestionTryCountMessage();
         int tryCount = inputView.getInput();
 
         resultView.printNewLine();
-        resultView.executeResultMessage();
+        resultView.printExecuteResultMessage();
 
         RacingCar racingCar = createRacingCar(carCount);
 
