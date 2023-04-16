@@ -1,11 +1,19 @@
 package racing.domain;
 
+<<<<<<< HEAD
+=======
+import racing.domain.Car;
+import racing.dto.GameResult;
+import racing.util.RandomInt;
+
+>>>>>>> e356fab2c (refactor Car 클래스를 필드로 가지는 일급컬렉션 추가)
 import java.util.ArrayList;
 import java.util.List;
 
 public class Cars { // 일급컬렉션
     private List<Car> cars;
 
+<<<<<<< HEAD
     public Cars(List<Car> cars) {
         this.cars = cars;
     }
@@ -61,5 +69,23 @@ public class Cars { // 일급컬렉션
             maxLocation = this.cars.get(i).bigger(maxLocation);
         }
         return maxLocation;
+=======
+    public Cars(List<Car> cars){
+        this.cars = cars;
+    }
+
+    public List<Car> getCars(){
+        return this.cars;
+    }
+
+    public GameResult playOnceTurn() {
+        List<Integer> onceResult = new ArrayList<>();
+
+        for(int i = 0; i < cars.size(); i++) {
+            this.cars.get(i).move(RandomInt.makeRandomInt());
+            onceResult.add(this.cars.get(i).getLocation());
+        }
+        return new GameResult(onceResult);
+>>>>>>> e356fab2c (refactor Car 클래스를 필드로 가지는 일급컬렉션 추가)
     }
 }

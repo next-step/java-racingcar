@@ -2,14 +2,18 @@ package racing.domain;
 
 public class Car {
     private int location;
+<<<<<<< HEAD
     private String name;
 
     private static final int NAME_MAX_LENGTH = 5;
+=======
+>>>>>>> e356fab2c (refactor Car 클래스를 필드로 가지는 일급컬렉션 추가)
 
     public Car(int location) {
         this.location = location;
     }
 
+<<<<<<< HEAD
     public Car(int location, String name) {
         this.location = location;
         this.name = nameValidation(name);
@@ -44,4 +48,14 @@ public class Car {
     public String name() {
         return this.name;
     }
+=======
+    public Car move(int distance) {
+        this.location += distance;
+        return new Car(this.location);
+    }
+
+    public int getLocation() {
+        return this.location;
+    }
+>>>>>>> e356fab2c (refactor Car 클래스를 필드로 가지는 일급컬렉션 추가)
 }
