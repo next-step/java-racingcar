@@ -16,13 +16,11 @@ public class GameWinner {
     }
 
     public int getMaxPosition(List<Car> carList) {
-        List<Integer> positionList = new ArrayList<>();
 
-        for(Car car : carList) {
-            positionList.add(car.currentPosition());
-        }
-
-        return Collections.max(positionList);
+        return carList.stream()
+                .map(Car::currentPosition)
+                .max(Integer::compareTo)
+                .orElse(0);
     }
 
     public List<String> findGameWinner() {
