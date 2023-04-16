@@ -1,5 +1,6 @@
 import domain.RacingCar;
 import domain.RacingCarGame;
+import domain.RacingCarList;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import util.RandomNumberGenerator;
@@ -53,10 +54,11 @@ public class RacingCarTest {
     @DisplayName("우승자를 찾을 수 있다.")
     void getWinnersTest() {
         String[] names = {"apple", "banana", "lemon"};
-        RacingCarGame racingCarGame = new RacingCarGame(names);
+        RacingCarGame racingCarGame = new RacingCarGame(new RacingCarList(names));
         String findCarName = "apple";
 
-        RacingCar racingCar = racingCarGame.getCars()
+        RacingCarList racingCarList = racingCarGame.getRacingCarList();
+        RacingCar racingCar = racingCarList.getCars()
                 .stream()
                 .filter(car -> car.getName().equals(findCarName))
                 .findFirst()
