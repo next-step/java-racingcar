@@ -8,11 +8,11 @@ import java.util.stream.Collectors;
 public class GameWinner {
 
     private int maxPosition;
-    private List<Car> carList;
+    private List<Car> cars;
 
-    public GameWinner(List<Car> carList) {
-        this.maxPosition = getMaxPosition(carList);
-        this.carList = carList;
+    public GameWinner(List<Car> cars) {
+        this.maxPosition = getMaxPosition(cars);
+        this.cars = cars;
     }
 
     public int getMaxPosition(List<Car> carList) {
@@ -27,7 +27,7 @@ public class GameWinner {
 
     public List<String> findGameWinner() {
 
-        return carList.stream()
+        return cars.stream()
                 .filter(car -> car.currentPosition() == maxPosition)
                 .map(Car::getName)
                 .collect(Collectors.toList());
