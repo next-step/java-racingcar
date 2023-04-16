@@ -1,6 +1,7 @@
 package stepRacingCar;
 
 import java.util.Collections;
+import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -8,14 +9,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingCar.RacingCarGame;
-import racingCar.car.RacingCar;
 import racingCar.car.move.RacingCarMoveDirectionStrategy;
 import racingCar.car.move.RacingCarMoveForward;
-import racingCar.exception.InvalidRacingCarNameException;
 import racingCar.exception.NotAllowedGameSettingException;
 import racingCar.view.RacingCarGameResultView;
-
-import java.util.List;
 
 public class RacingCarGameTest {
   List<RacingCarMoveDirectionStrategy> allowedMoveStrategies;

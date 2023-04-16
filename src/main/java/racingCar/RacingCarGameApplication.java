@@ -5,7 +5,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
-
 import racingCar.car.move.RacingCarMoveDirectionStrategy;
 import racingCar.car.move.RacingCarMoveForward;
 import racingCar.view.RacingCarGameInputView;

@@ -1,5 +1,6 @@
 package stepRacingCar;
 
+import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -10,8 +11,6 @@ import racingCar.car.RacingCar;
 import racingCar.car.move.RacingCarMoveDirectionStrategy;
 import racingCar.car.move.RacingCarMoveForward;
 import racingCar.car.move.RacingCarMoveServiceLocator;
-
-import java.util.List;
 import racingCar.exception.InvalidRacingCarNameException;
 
 public class RacingCarTest {
