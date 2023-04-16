@@ -4,7 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static racingcar.domain.fixture.ConstantsFixture.CAR_NAMES;
+import static racingcar.domain.fixture.CarConstantsFixture.CAR_NAMES;
 
 class CarFactoryTest {
 

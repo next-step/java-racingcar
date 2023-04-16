@@ -1,6 +1,6 @@
 package racingcar.domain.fixture;
 
-public class ConstantsFixture {
+public class CarConstantsFixture {
 
     public static final String CAR_NAMES = "pobi,crong,honux";
 

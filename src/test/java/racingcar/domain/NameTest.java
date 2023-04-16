@@ -7,9 +7,9 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
-import static racingcar.domain.fixture.ConstantsFixture.CAR_NAME;
-import static racingcar.domain.fixture.ConstantsFixture.WEIRD_CAR_NAME_1;
-import static racingcar.domain.fixture.ConstantsFixture.WEIRD_CAR_NAME_2;
+import static racingcar.domain.fixture.CarConstantsFixture.CAR_NAME;
+import static racingcar.domain.fixture.CarConstantsFixture.WEIRD_CAR_NAME_1;
+import static racingcar.domain.fixture.CarConstantsFixture.WEIRD_CAR_NAME_2;
 
 @DisplayName("자동자 이름 테스트")
 class NameTest {
