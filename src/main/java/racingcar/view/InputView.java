@@ -1,9 +1,9 @@
-package racingcar;
+package racingcar.view;
 
 import java.util.Scanner;
 
 public class InputView {
-    public static int registerNumberOfCars()
+    public static int inputNumberOfCars()
     {
         Scanner scanner = new Scanner(System.in);
         int numberOfCars = scanner.nextInt();
@@ -11,7 +11,7 @@ public class InputView {
         return numberOfCars;
     }
 
-    public static int registerNumberOfMovements()
+    public static int inputNumberOfMovements()
     {
         Scanner scanner = new Scanner(System.in);
         int numberOfMovements = scanner.nextInt();

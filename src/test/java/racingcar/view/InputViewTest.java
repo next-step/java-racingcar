@@ -1,7 +1,8 @@
-package racingcar;
+package racingcar.view;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.view.InputView;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -17,7 +18,7 @@ public class InputViewTest {
         InputStream in = new ByteArrayInputStream(numberOfCars.getBytes());
         System.setIn(in);
 
-        assertThat(InputView.registerNumberOfCars()).isEqualTo(Integer.parseInt(numberOfCars));
+        assertThat(InputView.inputNumberOfCars()).isEqualTo(Integer.parseInt(numberOfCars));
     }
 
     @Test
@@ -28,6 +29,6 @@ public class InputViewTest {
         InputStream in = new ByteArrayInputStream(numberOfCars.getBytes());
         System.setIn(in);
 
-        assertThat(InputView.registerNumberOfMovements()).isEqualTo(Integer.parseInt(numberOfCars));
+        assertThat(InputView.inputNumberOfMovements()).isEqualTo(Integer.parseInt(numberOfCars));
     }
 }

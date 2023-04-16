@@ -1,22 +1,24 @@
 package racingcar;
 
+import racingcar.service.RacingCar;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
+
 public class Main {
 
     public static void main(String[] args) {
-        RacingCarSystem racingCarSystem = new RacingCarSystem();
+        ResultView.printNumberOfCars();
+        int cars = InputView.inputNumberOfCars();
 
-        ResultView.registerNumberOfCars();
-        int cars = InputView.registerNumberOfCars();
-        racingCarSystem.registerCar(cars);
+        ResultView.printNumberOfMovements();
+        int movements = InputView.inputNumberOfMovements();
 
-        ResultView.registerNumberOfMovements();
-        int movements = InputView.registerNumberOfMovements();
-        racingCarSystem.registerMovements(movements);
+        RacingCar racingCar = new RacingCar(cars);
 
-        ResultView.getRacingResult();
+        ResultView.printRacingResult();
         for (int i = 0; i < movements; i++) {
-            racingCarSystem.goOrStop();
-            ResultView.getStatusOfCars(racingCarSystem.getStatusOfCars());
+            racingCar.start();
+            ResultView.printStatusOfCars(racingCar.getStatusOfCars());
         }
     }
 }

@@ -1,8 +1,9 @@
-package racingcar;
+package racingcar.view;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.view.ResultView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
@@ -25,7 +26,7 @@ public class ResultViewTest {
     void numberOfCars() {
         String request = "자동차 대수는 몇 대 인가요?\n";
 
-        ResultView.registerNumberOfCars();
+        ResultView.printNumberOfCars();
 
         assertThat(out.toString()).isEqualTo(request);
     }
@@ -35,7 +36,7 @@ public class ResultViewTest {
     void numberOfMovement() {
         String request = "시도할 회수는 몇 회 인가요?\n";
 
-        ResultView.registerNumberOfMovements();
+        ResultView.printNumberOfMovements();
 
         assertThat(out.toString()).isEqualTo(request);
     }
@@ -45,7 +46,7 @@ public class ResultViewTest {
     void result() {
         String request = "실행 결과\n";
 
-        ResultView.getRacingResult();
+        ResultView.printRacingResult();
 
         assertThat(out.toString()).isEqualTo(request);
     }
@@ -54,9 +55,9 @@ public class ResultViewTest {
     @DisplayName("다수 자동차 이동 현황")
     void statusOfCars() {
         int[] distances = {1, 2, 3};
-        String expected = "-\n--\n---\n";
+        String expected = "-\n--\n---\n\n";
 
-        ResultView.getStatusOfCars(distances);
+        ResultView.printStatusOfCars(distances);
 
         assertThat(out.toString()).isEqualTo(expected);
     }
