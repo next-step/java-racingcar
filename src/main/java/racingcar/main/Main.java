@@ -1,4 +1,9 @@
-package racingcar;
+package racingcar.main;
+
+import racingcar.ui.InputView;
+import racingcar.RacingCar;
+import racingcar.RandomNumber;
+import racingcar.ui.ResultView;
 
 import java.util.List;
 
@@ -11,10 +16,10 @@ public class Main {
         InputView inputView = createInputView();
 
         resultView.printQuestionCarCountMessage();
-        int carCount = inputView.getInput();
+        int carCount = inputView.getIntegerInput();
 
         resultView.printQuestionTryCountMessage();
-        int tryCount = inputView.getInput();
+        int tryCount = inputView.getIntegerInput();
 
         resultView.printNewLine();
         resultView.printExecuteResultMessage();
