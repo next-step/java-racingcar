@@ -10,32 +10,32 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 
 public class StringAddCalculatorTest {
-    // null, 빈문자열 테스트 하는 법
+//    // null, 빈문자열 테스트 하는 법
+//    @ParameterizedTest
+//    @ValueSource(strings = {""})
+//    @NullAndEmptySource
+//    @DisplayName(" 빈 문자열 또는 null 값을 입력할 경우 True 반환")
+//    void checkNullOrEmpty_ReturnTrue (String input) {
+//        boolean result = StringAddCalculator.checkNullOrEmpty(input);
+//        assertThat(result).isTrue();
+//    }
+//    @ParameterizedTest
+//    @ValueSource(strings = {"11", "ee"})
+//    @DisplayName(" 숫자 문자열 숫자로 반환")
+//    void checkConvertString_ReturnTypeInteger(String input) {
+//
+//        assertThatThrownBy(() -> {
+//            int result = StringAddCalculator.convertStringToInteger(input);
+//        }).isInstanceOf(NumberFormatException.class)
+//                .hasMessageContaining("%s: Input string is not number", String.valueOf(input));
+//    }
+
     @ParameterizedTest
     @ValueSource(strings = {""})
     @NullAndEmptySource
-    @DisplayName(" 빈 문자열 또는 null 값을 입력할 경우 True 반환")
-    void checkNullOrEmpty_ReturnTrue (String input) {
-        boolean result = StringAddCalculator.checkNullOrEmpty(input);
-        assertThat(result).isTrue();
-    }
-    @ParameterizedTest
-    @ValueSource(strings = {"11", "ee"})
-    @DisplayName(" 숫자 문자열 숫자로 반환")
-    void checkConvertString_ReturnTypeInteger(String input) {
+    public void splitAndSum_null_또는_빈문자(String input) {
+        int result = StringAddCalculator.splitAndSum(input);
 
-        assertThatThrownBy(() -> {
-            int result = StringAddCalculator.convertStringToInteger(input);
-        }).isInstanceOf(NumberFormatException.class)
-            .hasMessageContaining("%s: Input string is not number", String.valueOf(input));
-    }
-
-    @Test
-    public void splitAndSum_null_또는_빈문자() {
-        int result = StringAddCalculator.splitAndSum(null);
-        assertThat(result).isEqualTo(0);
-
-        result = StringAddCalculator.splitAndSum("");
         assertThat(result).isEqualTo(0);
     }
 
@@ -66,6 +66,6 @@ public class StringAddCalculatorTest {
     @Test
     public void splitAndSum_negative() throws Exception {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
-            .isInstanceOf(RuntimeException.class);
+                .isInstanceOf(RuntimeException.class);
     }
 }

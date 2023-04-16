@@ -1,12 +1,13 @@
 package step2;
 
-import java.util.ListIterator;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import static java.lang.Integer.parseInt;
+        import java.util.regex.Matcher;
+        import java.util.regex.Pattern;
 
 public class StringAddCalculator {
+    // 매직리터럴 선언
+    private static final String DEFAULT_SEPARATOR_STRING = ",|:";                               // default 구분자
+    private static final String CUSTOM_SEPARATOR_STRING = "//(.)\n(.*)";                        // 사용자 입력 구분자
+    private static final Pattern PATTERN_COMPILE = Pattern.compile(CUSTOM_SEPARATOR_STRING);    // pattern 객체를 매번 생성하는 것을 막기위해
 
     public static int splitAndSum(String input) {
         //빈 문자열 or null일 경우 0값 return
@@ -14,56 +15,63 @@ public class StringAddCalculator {
             return 0;
         }
 
-        // 숫자문자열 특정 문자로 분리 후 합산
-        return sumText(input);
+        //숫자문자열 특정 문자로 분리
+        String[] tokens = splitText(input);
 
+        // 숫자문자열 특정 문자로 분리 후 합산
+        return sumText(tokens);
     }
+
     // 빈 문자열 또는 null 값 확인
-    public static boolean checkNullOrEmpty(String text) {
-        if(text == null || text.isEmpty()) {
-            return true;
-        }
-        return false;
+    private static boolean checkNullOrEmpty(String text) {
+        return text == null || text.isEmpty();
     }
 
     // 문자열 숫자 반환
-    public static int convertStringToInteger(String text) {
+    private static int convertStringToInteger(String text) {
         try {
             int number = Integer.parseInt(text);
+
+            // 변환한 값 음수인지 판독
+            checkNegativeNumber(number);
+
             return number;
-        } catch (NumberFormatException e) {
-            throw new RuntimeException("정수가 아닙니다.");
+        } catch (RuntimeException e) {
+            e.printStackTrace();    //예외정보 출력
+            throw e;  //예외 던지기
         }
 
     }
 
     //숫자문자열 특정 문자로 분리
-    public static String[] splitText(String text) {
+    private static String[] splitText(String text) {
         // 지정한 character로 문자열 나누기
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        Matcher m = PATTERN_COMPILE.matcher(text);
         if (m.find()) {
             String customDelimiter = m.group(1);
             return m.group(2).split(customDelimiter);
         }
 
         // default 문자열로 분리
-        return text.split(",|:");
+        return text.split(DEFAULT_SEPARATOR_STRING);
     }
 
     // 숫자문자열 특정 문자로 분리 후 합산
-    public static int sumText(String input) {
+    private static int sumText(String[] tokens) {
         int result = 0;
-        //숫자문자열 특정 문자로 분리
-        String[] tokens = splitText(input);
 
         // 문자열 배열마다 integer 타입으로 형변환 및 합산
         for(String text : tokens) {
-            if(convertStringToInteger(text) < 0) {
-                throw new RuntimeException("음수가 포함되어 있습니다.");
-            }
             result += convertStringToInteger(text);
         }
 
         return result;
+    }
+
+    // 변환한 값 음수인지 판독
+    private static void checkNegativeNumber(int number) {
+        if (number < 0) {
+            throw new RuntimeException("정수가 아닙니다.");
+        }
     }
 }
