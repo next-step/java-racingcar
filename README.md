@@ -7,3 +7,10 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 기능정의 
+
+1. 전진-멈춤 상태
+2. 참가 자동차 입력
+3. 자동차 이동 수 입력
+4. 참가 자동차 이동 상태 출력 
