@@ -3,6 +3,7 @@ package racingcar.service;
 import java.util.ArrayList;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RacingCar {
@@ -16,15 +17,11 @@ public class RacingCar {
     }
 
     private List<Car> registerCar(int numberOfCar) {
-        List<Car> cars = new ArrayList<>();
-
-        IntStream.range(0, numberOfCar).forEach(index -> cars.add(new Car()));
-
-        return cars;
+        return IntStream.range(0, numberOfCar).mapToObj(i -> new Car()).collect(Collectors.toList());
     }
 
     public void start() {
-        cars.stream().forEach(car -> goOrStop(car));
+        cars.forEach(car -> goOrStop(car));
     }
 
     private void goOrStop(Car car) {
@@ -34,6 +31,6 @@ public class RacingCar {
     }
 
     public int[] getStatusOfCars() {
-        return cars.stream().mapToInt(i -> i.getDistance()).toArray();
+        return cars.stream().mapToInt(Car::getDistance).toArray();
     }
 }
