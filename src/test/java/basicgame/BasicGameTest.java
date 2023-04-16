@@ -58,7 +58,7 @@ public class BasicGameTest {
         BasicGame basicGame = new BasicGame(cars);
         basicGame.startGame(actualCarCount, actualTryCount);
 
-        assertThat(cars.carsSize()).isEqualTo(expectedCarCount);
+        assertThat(cars.getCars().size()).isEqualTo(expectedCarCount);
         assertThat(basicGame.triedCount.getValue()).isEqualTo(expectedTryCount);
     }
 
