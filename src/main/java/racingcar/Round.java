@@ -13,7 +13,7 @@ public class Round {
 
     private void validate(final int number) {
         if (number < MIN_NUMBER) {
-            throw new IllegalArgumentException("라운드 횟수는 1번 이상이여야 합니다.");
+            throw new IllegalArgumentException("라운드 횟수는 " + MIN_NUMBER + "번 이상이여야 합니다.");
         }
     }
 

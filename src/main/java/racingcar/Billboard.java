@@ -2,8 +2,8 @@ package racingcar;
 
 public class Billboard {
 
-    private final static String SEPARATOR = "-";
-    private final static String NOTICE_MENT = "실행 결과";
+    private static final String SEPARATOR = "-";
+    private static final String NOTICE_MENT = "실행 결과";
 
     private Billboard() {
     }

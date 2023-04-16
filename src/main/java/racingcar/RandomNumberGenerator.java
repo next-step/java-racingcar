@@ -10,8 +10,8 @@ public class RandomNumberGenerator {
 
     private final Random random = new Random();
 
-    private int minNumber = 0;
-    private int maxNumber = 10;
+    private int minNumber = MIN_NUMBER;
+    private int maxNumber = MAX_NUMBER;
 
     public RandomNumberGenerator() {}
 
