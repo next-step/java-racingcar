@@ -10,11 +10,11 @@ import static step2.StringAddCalculator.getStrNumbers;
 public class StringAddCalculatorTest {
     @Test
     public void splitAndSum_null_또는_빈문자() {
-        int result = StringAddCalculator.splitAndSum(null);
-        assertThat(result).isEqualTo(0);
+        int resultNull = StringAddCalculator.splitAndSum(null);
+        assertThat(resultNull).isEqualTo(0);
 
-        result = StringAddCalculator.splitAndSum("");
-        assertThat(result).isEqualTo(0);
+        int resultEmpty = StringAddCalculator.splitAndSum("");
+        assertThat(resultEmpty).isEqualTo(0);
     }
 
     @Test
