@@ -12,7 +12,14 @@ public class UsingNameRacingCar {
     }
 
     public static UsingNameRacingCar of(String name) {
+        hasCarName(name);
         return new UsingNameRacingCar(name);
+    }
+
+    private static void hasCarName(String name) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("자동차 이름을 입력해주세요");
+        }
     }
 
     public void move(MoveStrategy moveStrategy) {
