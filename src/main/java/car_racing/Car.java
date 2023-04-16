@@ -1,30 +1,44 @@
 package car_racing;
 
-import com.google.common.annotations.VisibleForTesting;
+import util.NumberGenerator;
 
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Car {
     private static final int INITIAL_COUNT = 0;
-    private static final int RANDOM_MAX_BOUND = 9;
     private static final int CAR_MOVE_BOUND = 4;
 
+    private final String name;
     private int moveCount = INITIAL_COUNT;
+
+    private final NumberGenerator numberGenerator;
+
+    public Car(String name, NumberGenerator numberGenerator) {
+        this.name = name;
+        this.numberGenerator = numberGenerator;
+    }
+
+    public String getName() {
+        return name;
+    }
 
     public int getMoveCount() {
         return moveCount;
     }
 
     void moveOrStop() {
-        int randomInt = getRandomInt();
+        int randomInt = numberGenerator.getRandomNumber();
         if (randomInt > CAR_MOVE_BOUND) {
             moveCount++;
         }
     }
 
-    @VisibleForTesting
-    public int getRandomInt() {
-        Random random = new Random();
-        return random.nextInt(RANDOM_MAX_BOUND);
+    public static List<Car> generateCars(List<String> carNames, NumberGenerator numberGenerator) {
+        List<Car> cars = new ArrayList<>();
+        for (String carName : carNames) {
+            cars.add(new Car(carName, numberGenerator));
+        }
+        return cars;
     }
 }
