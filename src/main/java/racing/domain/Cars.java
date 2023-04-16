@@ -10,18 +10,18 @@ import java.util.List;
 public class Cars { // 일급컬렉션
     private List<Car> cars;
 
-    public Cars(List<Car> cars){
+    public Cars(List<Car> cars) {
         this.cars = cars;
     }
 
-    public List<Car> getCars(){
+    public List<Car> getCars() {
         return this.cars;
     }
 
     public GameResult playOnceTurn() {
         List<Integer> onceResult = new ArrayList<>();
 
-        for(int i = 0; i < cars.size(); i++) {
+        for (int i = 0; i < cars.size(); i++) {
             this.cars.get(i).move(RandomInt.makeRandomInt());
             onceResult.add(this.cars.get(i).getLocation());
         }
