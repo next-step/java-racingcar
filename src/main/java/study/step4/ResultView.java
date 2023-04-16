@@ -1,23 +1,21 @@
 package study.step4;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
     public static final String POSITION_CHARTER = "-";
-    public static final String NAME_DELIMITER = ", ";
-    public static final String COLON = " : ";
 
     private ResultView() {
         // 생성자 내부 호출 -> 명시적 Exception
         throw new AssertionError();
     }
+
     public static void outPut(Track track) {
         StringBuilder stringBuilder = new StringBuilder();
         List<Car> cars = track.getCars();
         for (Car car : cars) {
-            addCarName(stringBuilder, car);
-            changeCarMoveToString(stringBuilder, car);
-            stringBuilder.append("\n");
+            stringBuilder.append(String.format("%s : %s%n", car.getName(), changeCarMoveToString(car)));
         }
         System.out.println(stringBuilder);
     }
@@ -25,31 +23,19 @@ public class ResultView {
     public static void outPutWinner(Track track) {
         StringBuilder stringBuilder = new StringBuilder();
         List<Car> winners = track.getWinnerCars();
-        int lastCarIndex = winners.size()-1;
 
-        for (int i = 0; i <= lastCarIndex; i++) {
-            stringBuilder.append(winners.get(i).getCarName());
-            addComma(stringBuilder, lastCarIndex, i);
-        }
-        stringBuilder.append("가 최종 우승했습니다.");
+        String victoryMessage = winners.stream().map(n -> String.valueOf(n.getName()))
+                .collect(Collectors.joining(", "));
+        stringBuilder.append(victoryMessage).append("가 최종 우승했습니다.");
+
         System.out.println(stringBuilder);
     }
 
-    private static void addComma(StringBuilder stringBuilder, int lastIndex, int count) {
-        if (lastIndex == count) return;
-        if (lastIndex > 0) {
-            stringBuilder.append(NAME_DELIMITER);
-        }
-    }
-
-    private static void changeCarMoveToString(StringBuilder stringBuilder, Car car) {
+    private static StringBuilder changeCarMoveToString(Car car) {
+        StringBuilder move = new StringBuilder();
         for (int i = 0; i < car.getPosition(); i++) {
-            stringBuilder.append(POSITION_CHARTER);
+            move.append(POSITION_CHARTER);
         }
-    }
-
-    private static void addCarName(StringBuilder stringBuilder, Car car) {
-        stringBuilder.append(car.getCarName());
-        stringBuilder.append(COLON);
+        return move;
     }
 }

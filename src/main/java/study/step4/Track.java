@@ -2,60 +2,46 @@ package study.step4;
 
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Track {
     private static final String DELIMITER = ",|:";
-    private int finish;
-    private List<Car> cars = new ArrayList<>();
-    private List<Car> winnerCars = new ArrayList<>();
+
+    private int attemptCount;
+    private Cars cars;
 
     public Track(String carNames, int finish) {
-        this.finish = finish;
+        this.attemptCount = finish;
         createCars(carNames);
     }
 
     private void createCars(String carNames) {
+        List<Car> cars = new ArrayList<>();
         for (String carName : carNames.split(DELIMITER)) {
             cars.add(new Car(carName));
         }
+        this.cars = new Cars(cars);
     }
 
     public void startRacing() {
-        for (Car car : cars) {
-            car.move();
-        }
+        cars.startRacing();
+        attemptCount--;
     }
 
     public Boolean isRaceEnd() {
-        int lastCarNumber = cars.size() - 1;
-        return isFinish(cars.get(lastCarNumber).getAttemptCount());
-    }
-
-    private boolean isFinish(int carAttemptCount) {
-        return finish == carAttemptCount;
+        return attemptCount == 0;
     }
 
     public List<Car> getCars() {
-        return cars;
+        return cars.getCars();
     }
 
-    public void determineWinner() {
-        for (Car car : cars) {
-            isWinner(car, getWinnerPosition());
-        }
-    }
 
-    public int getWinnerPosition() {
-        return Collections.max(cars).getPosition();
-    }
-    private void isWinner(Car car, int winnerPosition) {
-        if (car.getPosition() == winnerPosition) {
-            winnerCars.add(car);
-        }
-    }
     public List<Car> getWinnerCars() {
-        return winnerCars;
+        return cars.getWinners();
+    }
+
+    public int winnerPosition() {
+        return cars.getWinnerPosition();
     }
 }

@@ -18,7 +18,7 @@ class TrackTest {
     @Test
     void 레이싱_시작_테스트() {
         track.startRacing();
-        List<Car> cars = track.getCars();
+        List<Car> cars = track.getWinnerCars();
         for (Car car : cars) {
             assertThat(car.getAttemptCount()).isEqualTo(1);
         }
@@ -35,9 +35,9 @@ class TrackTest {
     @Test
     void 경기우승자() {
         track.startRacing();
-        track.determineWinner();
-        int winnerPosition = track.getWinnerPosition();
-        List<Car> winnerCars = track.getWinnerCars();
+        track.getWinnerCars();
+        int winnerPosition = track.winnerPosition();
+        List<Car> winnerCars = track.getCars();
         for (Car winnerCar : winnerCars) {
             assertThat(winnerCar.getPosition()).isEqualTo(winnerPosition);
         }

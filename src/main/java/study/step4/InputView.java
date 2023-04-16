@@ -3,7 +3,7 @@ package study.step4;
 import java.util.Scanner;
 
 public class InputView {
-    public static Scanner scanner = new Scanner(System.in);
+    public static final Scanner scanner = new Scanner(System.in);
 
     private InputView() {
         // 생성자 내부 호출 -> 명시적 Exception

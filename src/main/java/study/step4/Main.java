@@ -13,7 +13,6 @@ public class Main {
             track.startRacing();
             ResultView.outPut(track);
         }
-        track.determineWinner();
 
         //레이싱 우승자 출력
         ResultView.outPutWinner(track);

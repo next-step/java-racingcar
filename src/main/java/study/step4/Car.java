@@ -3,27 +3,21 @@ package study.step4;
 import java.util.Random;
 
 public class Car implements Comparable<Car> {
-    private int position = 0;
-    private static final Random random = new Random();
     private static final int STARTING_CONDITION = 4;
     private static final int RANDOM_RANGE = 10;
-    private static final int NAME_MAX_LENGTH = 5;
+    private static final Random RANDOM = new Random();
+
     private int attemptCount = 0;
-    private String name;
+    private Position position;
+    private Name name;
 
     public Car(String name) {
-        checkName(name);
-        this.name = name;
-    }
-
-    public void checkName(String name) {
-        if (name.length() > NAME_MAX_LENGTH) {
-            throw new IllegalArgumentException("이름이 다섯자 이상입니다.");
-        }
+        this.name = new Name(name);
+        this.position = new Position();
     }
 
     public void move() {
-        moveCar(isMove(random.nextInt(RANDOM_RANGE)));
+        moveCar(isMove(RANDOM.nextInt(RANDOM_RANGE)));
         attemptCount++;
     }
 
@@ -31,26 +25,26 @@ public class Car implements Comparable<Car> {
         return input >= STARTING_CONDITION;
     }
 
-    public void moveCar(boolean moveResult) {
+    private void moveCar(boolean moveResult) {
         if (moveResult) {
-            position++;
+            position.increase();
         }
     }
 
     public int getPosition() {
-        return position;
+        return position.getPosition();
     }
 
     public int getAttemptCount() {
         return attemptCount;
     }
 
-    public String getCarName() {
-        return name;
+    public String getName() {
+        return name.getName();
     }
 
     @Override
     public int compareTo(Car car) {
-        return (this.position > car.position) ? 1 : -1;
+        return (this.position.getPosition() > car.position.getPosition()) ? 1 : -1;
     }
 }

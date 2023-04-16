@@ -16,14 +16,14 @@ class CarTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {0, 1, 2, 3})
+    @ValueSource(ints = {0, 1, 2, 3, 4})
     public void 자동차테스트_멈춤(int count) {
         //given
         assertThat(car.isMove(count)).isEqualTo(false);
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {4, 5, 6, 7, 8, 9, 10})
+    @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
     public void 자동차테스트_이동(int count) {
         //given
         assertThat(car.isMove(count)).isEqualTo(true);
@@ -35,7 +35,7 @@ class CarTest {
         //given
 
         assertThatThrownBy(() -> {
-            car.checkName(inputName);
+            new Car(inputName);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("이름이 다섯자 이상입니다.");
     }
