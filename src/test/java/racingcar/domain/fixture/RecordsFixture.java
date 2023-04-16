@@ -9,7 +9,7 @@ import java.util.List;
 
 public class RecordsFixture {
 
-    public static List<Records> 자동차_기록_목록 = new ArrayList<>();
+    public static List<Records> 자동차_경주_기록_목록 = new ArrayList<>();
     public static final Records 첫번째_라운드_기록 = new Records();
     public static final Records 두번째_라운드_기록 = new Records();
     public static final Records 세번째_라운드_기록 = new Records();
@@ -29,8 +29,8 @@ public class RecordsFixture {
         세번째_라운드_기록.addRecord(new Record(1, new Name("crong")));
         세번째_라운드_기록.addRecord(new Record(2, new Name("honux")));
 
-        자동차_기록_목록.add(첫번째_라운드_기록);
-        자동차_기록_목록.add(두번째_라운드_기록);
-        자동차_기록_목록.add(세번째_라운드_기록);
+        자동차_경주_기록_목록.add(첫번째_라운드_기록);
+        자동차_경주_기록_목록.add(두번째_라운드_기록);
+        자동차_경주_기록_목록.add(세번째_라운드_기록);
     }
 }
