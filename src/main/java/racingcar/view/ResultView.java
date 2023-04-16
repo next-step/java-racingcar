@@ -2,19 +2,17 @@ package racingcar.view;
 
 import racingcar.domain.Record;
 import racingcar.domain.Records;
+import racingcar.domain.Winner;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class ResultView {
 
     private static final String DASH = "-";
     private static final String RESULT = "실행 결과";
 
-    /**
-     * 게임 진행 결과를 출력한다.
-     *
-     * @param records
-     */
     public static void print(List<Records> records) {
         System.out.println(RESULT);
 
@@ -24,28 +22,32 @@ public class ResultView {
         }
     }
 
-    private static void printRecord(final Records records) {
+    /**
+     * 라운드별 결과 출력
+     * @param records
+     */
+    private static void printRecord(Records records) {
         for (Record record : records.getRecords()) {
-            mergePrint(record);
-            System.out.println();
+            System.out.printf("%s : %s%n", record.getName(), printDistance(record.getDistance()));
         }
     }
 
-    private static void mergePrint(Record record) {
-        printName(record);
-        System.out.print(" ");
-        printDistance(record);
+    /**
+     * 거리만큼 "-"를 출력
+     * @param distance
+     * @return
+     */
+    private static String printDistance(int distance) {
+        return IntStream.range(0, distance)
+                .mapToObj(i -> DASH)
+                .collect(Collectors.joining());
     }
 
-    private static void printName(final Record record) {
-        for (int i = 0; i < record.getName().length(); i++) {
-            System.out.print(record.getName() + " :");
-        }
-    }
-
-    private static void printDistance(final Record record) {
-        for (int i = 0; i < record.getDistance(); i++) {
-            System.out.print(DASH);
-        }
+    /**
+     * 우승자 출력
+     * @param winner
+     */
+    public static void printWinner(Winner winner) {
+        System.out.println(String.join(", ", winner.getWinners()) + "가 우승했습니다.");
     }
 }
