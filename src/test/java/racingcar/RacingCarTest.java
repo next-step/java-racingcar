@@ -21,7 +21,7 @@ public class RacingCarTest {
         RacingCar racingCar = new RacingCar(3);
 
         //when
-        boolean moveYn = racingCar.moveYn(randomNumber);
+        boolean moveYn = racingCar.isCarMovable(randomNumber);
 
         //then
         assertThat(moveYn).isEqualTo(result);
