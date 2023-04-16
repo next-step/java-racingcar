@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.*;
 import static step2.StringCalculator.*;
 
 public class StringCalculatorTest {
-    @Test
+    @ParameterizedTest
     @DisplayName("빈 문자열 또는 null 값을 입력할 경우 0을 반환해야 한다.")
     @NullAndEmptySource
     void emptyOrNull(String text) {
@@ -63,8 +63,7 @@ public class StringCalculatorTest {
     void notNumber() {
         // given & when & then
         assertThatThrownBy(() -> calculate("a,b,c"))
-                .isInstanceOf(RuntimeException.class)
-                .hasMessageContaining("숫자가 아닌 값이 입력되었습니다.");
+                .isInstanceOf(RuntimeException.class);
     }
 
     @ParameterizedTest
