@@ -1,5 +1,7 @@
 package racingcar.ui;
 
+import racingcar.Car;
+
 import java.util.List;
 
 public class ResultView {
@@ -33,11 +35,22 @@ public class ResultView {
         System.out.println();
     }
 
+    public void printCarNameAndMoveStateLines(List<Car> cars) {
+    for (int i = BEGIN_INDEX; i < cars.size(); i++) {
+            printCarNameAndMoveStateLine(cars, i);
+        }
+        printNewLine();
+    }
+
     public void printMoveStateLines(List<Integer> moveCounts) {
         for (int i = BEGIN_INDEX; i < moveCounts.size(); i++) {
             printMoveStateLine(moveCounts, i);
         }
         printNewLine();
+    }
+
+    private void printCarNameAndMoveStateLine(List<Car> cars, int idx) {
+        System.out.println(makeCarMoveStateLine(cars.get(idx).getMoveCount()));
     }
 
     private void printMoveStateLine(List<Integer> moveCounts, int idx) {
