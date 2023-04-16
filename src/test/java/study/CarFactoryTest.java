@@ -3,13 +3,11 @@ package study;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class CarFactoryTest {
 
@@ -21,11 +19,20 @@ class CarFactoryTest {
     }
 
 
-    @ParameterizedTest
-    @CsvSource(value = {"1:1", "4:4", "7:7"}, delimiter = ':')
-    @DisplayName("입력값 만큼 RacingCar 가 담겨있는 List 를 생성하는지에 대한 테스트 ")
-    void createCar(int input, int excepted) {
-        List<RacingCar> racingCarList = carFactory.createCar(input);
-        assertThat(racingCarList.size()).isEqualTo(excepted);
+    @Test
+    @DisplayName("이름이 담긴 List 를 통하여 이름이 담긴 자동차를 list의 개수 만큼 생성한다. ")
+    void createCar() {
+        //given
+        List<String> nameList = new ArrayList<>() {{
+            add("최태훈");
+            add("조아영");
+            add("김정환");
+        }};
+        List<RacingCar> racingCarList = carFactory.createCar(nameList);
+
+        assertThat(racingCarList.size()).isEqualTo(3);
+        assertThat(racingCarList.get(0)).isEqualTo(new RacingCar("최태훈"));
+        assertThat(racingCarList.get(1)).isEqualTo(new RacingCar("조아영"));
+        assertThat(racingCarList.get(2)).isEqualTo(new RacingCar("김정환"));
     }
 }

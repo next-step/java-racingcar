@@ -1,0 +1,6 @@
+package study;
+
+
+class AutoRacingParticipantTest {
+
+}
