@@ -12,23 +12,23 @@ public class CarTest {
     @DisplayName("자동차가 이동할 수 있는 경우 위치가 1 증가한다")
     @Test
     void move() {
-        Car car = new Car("TEST");
-        Position position = car.getPosition();
-
         MoveStrategy moveStrategy = () -> true;
-        car.move(moveStrategy);
-        assertThat(car.getPosition().intValue()).isEqualTo(position.intValue() + 1);
+        Car car = new Car("TEST", moveStrategy);
+        int position = car.getPosition().intValue();
+
+        car.move();
+        assertThat(car.getPosition().intValue()).isEqualTo(position + 1);
     }
 
     @DisplayName("자동차가 이동할 수 없는 경우 위치가 증가하지 않는다")
     @Test
     void notMove() {
-        Car car = new Car("TEST");
-        Position position = car.getPosition();
-
         MoveStrategy moveStrategy = () -> false;
-        car.move(moveStrategy);
-        assertThat(car.getPosition().intValue()).isEqualTo(position.intValue());
+        Car car = new Car("TEST", moveStrategy);
+        int position = car.getPosition().intValue();
+
+        car.move();
+        assertThat(car.getPosition().intValue()).isEqualTo(position);
     }
 
     @DisplayName("자동차 이름이 null 또는 빈문자열인 경우 예외가 발생한다")
@@ -36,7 +36,7 @@ public class CarTest {
     @NullAndEmptySource
     void nullOrEmptyName(String input) {
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new Car(input))
+                .isThrownBy(() -> new Car(input, () -> true))
                 .withMessageMatching("유효하지 않은 이름입니다.");
     }
 
@@ -44,7 +44,7 @@ public class CarTest {
     @Test
     void carCreateFail() {
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new Car("carNameTest"))
+                .isThrownBy(() -> new Car("carNameTest", () -> true))
                 .withMessageMatching("자동차 이름은 5자를 초과할 수 없습니다.");
     }
 }

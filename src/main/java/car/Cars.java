@@ -12,14 +12,15 @@ public class Cars {
 
     public static Cars from(List<String> names) {
         List<Car> cars = names.stream()
-                .map(Car::new)
+                .map(name -> new Car(name, new RandomMoveStrategy()))
                 .collect(Collectors.toList());
+
         return new Cars(cars);
     }
 
     public void move() {
         for(Car car: cars) {
-            car.move(new RandomMoveStrategy());
+            car.move();
         }
     }
 

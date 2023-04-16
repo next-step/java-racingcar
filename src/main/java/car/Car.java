@@ -6,10 +6,12 @@ public class Car {
 
     private final Name name;
     private final Position position;
+    private final MoveStrategy moveStrategy;
 
-    public Car(String name) {
+    public Car(String name, MoveStrategy moveStrategy) {
         this.position = new Position(DEFAULT_POSITION);
         this.name = new Name(name);
+        this.moveStrategy = moveStrategy;
     }
 
     public Name getName() {
@@ -20,7 +22,7 @@ public class Car {
         return this.position;
     }
 
-    public void move(MoveStrategy moveStrategy) {
+    public void move() {
         if(moveStrategy.movable()) {
             position.move();
         }
