@@ -52,4 +52,14 @@ class CarTest {
         final Car car = new Car(name);
         assertThat(car.getName()).isEqualTo(expected);
     }
+
+    @DisplayName("자동차는 복사할 수 있다.")
+    @Test
+    void copy() {
+        final Car car = new Car();
+        final Car copy = car.copy();
+
+        assertThat(copy).isEqualTo(car);
+        assertThat(car == copy).isFalse();
+    }
 }

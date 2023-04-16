@@ -1,5 +1,7 @@
 package carrace;
 
+import java.util.Objects;
+
 public class Car {
     private static final int START_POSITION = 0;
     private static final int ZERO_INDEX = 0;
@@ -15,6 +17,11 @@ public class Car {
         this.position = START_POSITION;
     }
 
+    Car() {
+        this.name = DEFAULT_DRIVER_NAME + ZERO_INDEX;
+        this.position = START_POSITION;
+    }
+
     Car(String name) {
         name = getNameOrDefault(name, ZERO_INDEX);
         validateName(name);
@@ -23,7 +30,12 @@ public class Car {
     }
 
     Car(int position) {
-        this.name = DEFAULT_DRIVER_NAME;
+        this.name = DEFAULT_DRIVER_NAME + ZERO_INDEX;
+        this.position = position;
+    }
+
+    Car(String name, int position) {
+        this.name = name;
         this.position = position;
     }
 
@@ -53,5 +65,27 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    public Car copy() {
+        return new Car(name, position);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Car car = (Car) o;
+
+        if (position != car.position) return false;
+        return Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + position;
+        return result;
     }
 }
