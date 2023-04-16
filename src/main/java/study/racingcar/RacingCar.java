@@ -11,6 +11,6 @@ public class RacingCar {
         String carNamesStr = InputView.setCarNames();
         int numberOfGames = InputView.setGames();
 
-        new RacingGame(new InputValue(numberOfGames, carNamesStr)).gameStart();
+        new RacingGame(new RacingGameInputs(numberOfGames, carNamesStr)).gameStart();
     }
 }

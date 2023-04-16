@@ -2,7 +2,7 @@ package study.racingcar;
 
 import java.util.InputMismatchException;
 
-public class InputValue {
+public class RacingGameInputs {
     private static final int ZERO = 0;
     private static final int FIVE = 5;
     private static final String SPLIT_PATTERN = "[,]";
@@ -11,9 +11,9 @@ public class InputValue {
     private String[] carNameArray;
     private int numberOfCar;
 
-    public InputValue() {}
+    public RacingGameInputs() {}
 
-    public InputValue(int numberOfGames, String carNamesStr) {
+    public RacingGameInputs(int numberOfGames, String carNamesStr) {
         isNegativeNumberAndZero(numberOfGames);
 
         this.numberOfGames = numberOfGames;

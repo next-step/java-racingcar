@@ -50,9 +50,9 @@ public class InputTest {
     @ValueSource(strings = {"pobi,crong,honux"})
     public void inputValue_splitCarNameString(String input) {
 
-        InputValue inputValue = new InputValue(5, input);
+        RacingGameInputs racingGameInputs = new RacingGameInputs(5, input);
 
-        assertThat(inputValue.getNameOfCars()).hasSize(3);
+        assertThat(racingGameInputs.getNameOfCars()).hasSize(3);
     }
 
     @DisplayName("자동차 이름 문자열을 입력하고, ','를 기준으로 자동차 이름을 나누고 5글자 이상의 이름이 있으면 에외가 발생한다")
@@ -60,7 +60,7 @@ public class InputTest {
     @ValueSource(strings = {"pobi,bbororo,honux"})
     public void inputValue_splitCarNameString_실패(String input) {
 
-        assertThatThrownBy(() -> new InputValue(5, input))
+        assertThatThrownBy(() -> new RacingGameInputs(5, input))
                 .isInstanceOf(InputMismatchException.class);
     }
 
@@ -69,7 +69,7 @@ public class InputTest {
     @ValueSource(strings = {"pobi:bbororo:honux"})
     public void inputValue_splitCarNameString_분리실패(String input) {
 
-        assertThatThrownBy(() -> new InputValue(5, input))
+        assertThatThrownBy(() -> new RacingGameInputs(5, input))
                 .isInstanceOf(InputMismatchException.class);
     }
 
@@ -78,13 +78,13 @@ public class InputTest {
     @ValueSource(ints = {0, -3, -1})
     public void inputValue_isNegativeNumberAndZero(int input) throws Exception {
 
-        InputValue inputValue = new InputValue();
+        RacingGameInputs racingGameInputs = new RacingGameInputs();
 
-        Method method = InputValue.class.getDeclaredMethod("isNegativeNumberAndZero", int.class);
+        Method method = RacingGameInputs.class.getDeclaredMethod("isNegativeNumberAndZero", int.class);
         method.setAccessible(true);
 
         try{
-            method.invoke(inputValue, input);
+            method.invoke(racingGameInputs, input);
         } catch (InvocationTargetException e) {
             assertEquals(InputMismatchException.class, e.getTargetException().getClass());
         }
@@ -96,13 +96,13 @@ public class InputTest {
     @ValueSource(strings = {"bbororo","jaewon","tester"})
     public void inputValue_isMoreThanFiveLength(String input) throws Exception {
 
-        InputValue inputValue = new InputValue();
+        RacingGameInputs racingGameInputs = new RacingGameInputs();
 
-        Method method = InputValue.class.getDeclaredMethod("isMoreThanFiveLength", String.class);
+        Method method = RacingGameInputs.class.getDeclaredMethod("isMoreThanFiveLength", String.class);
         method.setAccessible(true);
 
         try{
-            method.invoke(inputValue, input);
+            method.invoke(racingGameInputs, input);
         } catch (InvocationTargetException e) {
             assertEquals(InputMismatchException.class, e.getTargetException().getClass());
         }

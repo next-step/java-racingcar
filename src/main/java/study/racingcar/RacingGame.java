@@ -10,9 +10,9 @@ public class RacingGame {
 
     public RacingGame() {}
 
-    public RacingGame(InputValue inputValue) {
-        this.carList = SettingGame.createCars(inputValue);
-        this.numberOfGames = inputValue.getNumberOfGames();
+    public RacingGame(RacingGameInputs racingGameInputs) {
+        this.carList = SettingGame.createCars(racingGameInputs);
+        this.numberOfGames = racingGameInputs.getNumberOfGames();
     }
 
     public void gameStart() {
