@@ -1,18 +1,12 @@
 package basicgame;
 
-public class Car {
-    private final StringBuffer distance;
+public class Car implements Vehicle {
     private final static int CONDITION_VALUE = 4;
-
-    private final static String PROCESS_INDICATOR = "-";
-
-    public Car(StringBuffer distance) {
-        this.distance = distance;
-    }
+    private int distance = 0;
 
     public void go(int value) {
         if (isEnoughValue(value)) {
-            distance.append(PROCESS_INDICATOR);
+            distance++;
         }
     }
 
@@ -21,7 +15,11 @@ public class Car {
     }
 
     @Override
-    public String toString() {
-        return distance.toString();
+    public String printDistance(String mark) {
+        StringBuilder stringBuffer = new StringBuilder();
+        for(int i =0; i<distance; i++) {
+            stringBuffer.append(mark);
+        }
+        return stringBuffer.toString();
     }
 }

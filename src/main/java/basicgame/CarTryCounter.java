@@ -1,10 +1,10 @@
 package basicgame;
 
-public class Counter {
+public class CarTryCounter {
 
     private int value;
 
-    public Counter(int count) {
+    public CarTryCounter(int count) {
         this.value = count;
     }
 

@@ -1,6 +1,10 @@
 package basicgame;
 
+import java.util.Scanner;
+
 public class InputView {
+
+    static Scanner scanner = new Scanner(System.in);
 
     public static void printCarInput() {
         System.out.println("자동차 대수는 몇 대 인가요?");
@@ -11,6 +15,6 @@ public class InputView {
     }
 
     public static int countInput() {
-        return UserInput.input();
+        return scanner.nextInt();
     }
 }

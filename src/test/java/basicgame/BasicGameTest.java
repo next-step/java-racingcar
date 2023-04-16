@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-import static basicgame.CarGroup.INPUT_ERROR_MESSAGE;
+import static basicgame.BasicGame.INPUT_ERROR_MESSAGE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -18,7 +18,7 @@ public class BasicGameTest {
     @MethodSource("isEnoughToGoTestArguments")
     @ParameterizedTest
     void isEnoughToGoTest(int value, boolean expected) {
-        Car car = new Car(new StringBuffer());
+        Car car = new Car();
 
         boolean actual = car.isEnoughValue(value);
 
@@ -53,10 +53,13 @@ public class BasicGameTest {
 
         var actualCarCount = 3;
         var actualTryCount = 5;
-        CarGroup.startGame(actualCarCount, actualTryCount);
 
-        assertThat(CarGroup.carsSize()).isEqualTo(expectedCarCount);
-        assertThat(CarGroup.triedCount.getValue()).isEqualTo(expectedTryCount);
+        Cars cars = new Cars();
+        BasicGame basicGame = new BasicGame(cars);
+        basicGame.startGame(actualCarCount, actualTryCount);
+
+        assertThat(cars.carsSize()).isEqualTo(expectedCarCount);
+        assertThat(basicGame.triedCount.getValue()).isEqualTo(expectedTryCount);
     }
 
     @Test
@@ -65,7 +68,10 @@ public class BasicGameTest {
         var carCount = -1;
         var tryCount = 5;
 
-        assertThatThrownBy(() -> CarGroup.startGame(carCount, tryCount)).isInstanceOf(IllegalArgumentException.class)
+        Cars cars = new Cars();
+        BasicGame basicGame = new BasicGame(cars);
+
+        assertThatThrownBy(() -> basicGame.startGame(carCount, tryCount)).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(INPUT_ERROR_MESSAGE);
     }
 }
