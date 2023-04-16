@@ -42,8 +42,8 @@ public class Racer {
         );
     }
 
-    private String calculateResult(int roundCount, List<Integer> scoreList) {
-        return  "-".repeat( getPos(roundCount, scoreList));
+    private Integer calculateResult(int roundCount, List<Integer> scoreList) {
+        return  getPos(roundCount, scoreList);
     }
 
     private int getPos(int roundCount, List<Integer> scoreList) {
@@ -60,7 +60,7 @@ public class Racer {
         return "-".repeat(length);
     }
 
-    public List<String> getResults() {
+    public List<Integer> getResults() {
         return results.getPositionList();
     }
 
@@ -69,10 +69,10 @@ public class Racer {
     }
 
     public Integer getFinalPosition() {
-        return finalRecord().length();
+        return finalRecord();
     }
 
-    private String finalRecord() {
+    private Integer finalRecord() {
         return results.getPositionList()
             .get(results.getPositionList().size() - 1);
     }

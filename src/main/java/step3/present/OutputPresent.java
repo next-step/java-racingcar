@@ -8,7 +8,7 @@ public class OutputPresent {
         for (int i = 0; i < collect.get(0).getResult().getPositionList().size(); i++) {
             System.out.println();
             for (DisplayRaceVO displayRaceVO : collect) {
-                System.out.printf("%s : %s\n", displayRaceVO.getCar().getName(), displayRaceVO.getResult().getPositionList().get(i));
+                System.out.printf("%s : %s\n", displayRaceVO.getCar().getName(), displayRaceVO.getResult().getDisplayList().get(i));
             }
         }
     }
