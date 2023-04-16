@@ -6,11 +6,10 @@ import java.util.List;
 public class RacingGame {
 
     public static void main(String[] args) {
-        Integer numberOfCars = initNumberOfCars();
+        String[] carNames = initNameOfCars();
         Integer numberOfAttempts = initNumberOfAttempts();
-        String[] carNames = ConsoleScanner.inputString().split(",");
-        List<Car> cars = initCars(numberOfCars, carNames);
 
+        List<Car> cars = initCars(carNames);
 
         playGame(numberOfAttempts, cars);
     }
@@ -31,20 +30,18 @@ public class RacingGame {
 
     private static Integer initNumberOfAttempts() {
         InputView.printNumberOfAttempts();
-        Integer numberOfAttempts = ConsoleScanner.inputInt();
-        return numberOfAttempts;
+        return ConsoleScanner.inputInt();
     }
 
-    private static Integer initNumberOfCars() {
-        InputView.printNumberOfCars();
-        Integer numberOfCars = ConsoleScanner.inputInt();
-        return numberOfCars;
+    private static String[] initNameOfCars() {
+        InputView.printNameOfCars();
+        return ConsoleScanner.inputString().split(",");
     }
 
-    private static List<Car> initCars(Integer numberOfCars, String[] carNames) {
+    private static List<Car> initCars(String[] carNames) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car(carNames[i]));
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
         }
         return cars;
     }
