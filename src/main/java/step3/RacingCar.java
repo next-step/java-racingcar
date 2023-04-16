@@ -14,18 +14,6 @@ public class RacingCar {
         }
     }
 
-    public void printRaceStep(String[][] races){
-        for (int k=0; k< races[0].length; k++) {
-            for (int i = 0; i< races.length; i++) {
-                for (int j = 0; j<= k; j++) {
-                    System.out.print(races[i][j]);
-                }
-                System.out.println();
-            }
-            System.out.println();
-        }
-    }
-
     private void oneCarRace(String[] car) {
         for (int i = 0; i< car.length; i++){
             car[i] = hyphenOrNot(isValueMoreThan(randomValue()));

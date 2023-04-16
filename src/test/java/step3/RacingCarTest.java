@@ -10,6 +10,7 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
+import static step3.ResultView.printRaceStep;
 
 public class RacingCarTest {
     RacingCar rc = new RacingCar();
@@ -21,7 +22,7 @@ public class RacingCarTest {
     @Test
     void racingTest() {
         rc.racingCar(race);
-        rc.printRaceStep(race);
+        printRaceStep(race);
     }
 
     @ParameterizedTest(name = "{0} : add {1}")
