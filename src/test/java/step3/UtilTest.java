@@ -10,10 +10,12 @@ public class UtilTest {
     @Test
     @DisplayName("숫자가 0~9 사이에서 랜덤하게 생성되는지 확인")
     public void checkNumberGenerator() {
-        int randomNumber = NumberGenerator.makeRandomly();
-        Assertions.assertThat(randomNumber)
-                .isGreaterThanOrEqualTo(1)
-                .isLessThan(10);
+        for(int i = 0; i < 1000; i++) {
+            int randomNumber = NumberGenerator.makeRandomly();
+            Assertions.assertThat(randomNumber)
+                    .isGreaterThanOrEqualTo(0)
+                    .isLessThan(10);
+        }
     }
 }
 
