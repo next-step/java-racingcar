@@ -1,3 +1,5 @@
+package RacingCar.Output;
+
 public class ResultView {
 
     void resultMessage(){
