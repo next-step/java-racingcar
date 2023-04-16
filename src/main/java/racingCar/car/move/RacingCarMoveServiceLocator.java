@@ -14,7 +14,7 @@ public final class RacingCarMoveServiceLocator {
 
     public RacingCarMoveDirectionStrategy getRacingCarMoveStrategy (int moveAck) {
         RacingCarMoveDirection direction = getDirectionFromMoveAck(moveAck);
-        if (direction == RacingCarMoveDirection.HOLD) {
+        if (direction == null) {
             return null;
         }
 
@@ -29,6 +29,6 @@ public final class RacingCarMoveServiceLocator {
             return RacingCarMoveDirection.FORWARD;
         }
 
-        return RacingCarMoveDirection.HOLD;
+        return null;
     }
 }
