@@ -1,8 +1,10 @@
 package study.racingcar;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import study.StringAddCalculator;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -78,34 +80,20 @@ public class InputTest {
     @ValueSource(ints = {0, -3, -1})
     public void inputValue_isNegativeNumberAndZero(int input) throws Exception {
 
-        RacingGameInputs racingGameInputs = new RacingGameInputs();
+        String carNameStr = "pobbi,crong,hounx";
 
-        Method method = RacingGameInputs.class.getDeclaredMethod("isNegativeNumberAndZero", int.class);
-        method.setAccessible(true);
-
-        try{
-            method.invoke(racingGameInputs, input);
-        } catch (InvocationTargetException e) {
-            assertEquals(InputMismatchException.class, e.getTargetException().getClass());
-        }
-
+        assertThatThrownBy(() -> new RacingGameInputs(input, carNameStr))
+                .isInstanceOf(InputMismatchException.class);
     }
 
     @DisplayName("자동차 이름은 5글자를 넘을 수 없다.")
-    @ParameterizedTest
-    @ValueSource(strings = {"bbororo","jaewon","tester"})
-    public void inputValue_isMoreThanFiveLength(String input) throws Exception {
+    @Test
+    public void inputValue_isMoreThanFiveLength() {
 
-        RacingGameInputs racingGameInputs = new RacingGameInputs();
+        String carNameStr = "bbororo,jaewon,tester";
+        int numberOfGames = 5;
 
-        Method method = RacingGameInputs.class.getDeclaredMethod("isMoreThanFiveLength", String.class);
-        method.setAccessible(true);
-
-        try{
-            method.invoke(racingGameInputs, input);
-        } catch (InvocationTargetException e) {
-            assertEquals(InputMismatchException.class, e.getTargetException().getClass());
-        }
-
+        assertThatThrownBy(() -> new RacingGameInputs(numberOfGames, carNameStr))
+                .isInstanceOf(InputMismatchException.class);
     }
 }
