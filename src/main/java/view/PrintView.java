@@ -1,7 +1,7 @@
 package view;
 
 import domain.record.Records;
-import vo.CarRecord;
+import domain.vo.CarRecord;
 
 import java.util.List;
 

@@ -2,9 +2,9 @@ package domain.car;
 
 import domain.strategy.MovingStrategy;
 
-import static constant.Constant.MAX_LENGTH_OF_NAME;
-
 public class Car {
+
+    public static final int MAX_LENGTH_OF_NAME = 5;
 
     private final String name;
     private int distance;

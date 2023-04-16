@@ -5,7 +5,7 @@ import domain.car.Cars;
 import strategy.RandomStrategy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import vo.CarRecord;
+import domain.vo.CarRecord;
 
 import java.util.Arrays;
 import java.util.List;

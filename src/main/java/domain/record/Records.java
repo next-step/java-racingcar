@@ -2,7 +2,7 @@ package domain.record;
 
 import domain.car.Car;
 import domain.car.Cars;
-import vo.CarRecord;
+import domain.vo.CarRecord;
 
 import java.util.*;
 import java.util.stream.Collectors;
