@@ -1,8 +1,6 @@
 package racingcar.view;
 
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
-import racingcar.domain.Winner;
+import racingcar.domain.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,14 +20,14 @@ public class OutputView {
     }
 
     private static String viewResult(Car car) {
-        return car.name() + " : "+ viewPosition(car.positionNumber());
+        return car.name() + " : "+ viewPosition(car.position());
     }
 
-    private static String viewPosition(int position) {
-        return POSITION_VIEW.repeat(Math.max(0, position));
+    private static String viewPosition(Position position) {
+        return POSITION_VIEW.repeat(Math.max(0, position.position()));
     }
 
-    public static void gameWinner(Winner winner) {
+    public static void viewWinner(Winner winner) {
         List<Car> winnerCars = winner.winnerCars();
         String winnerNames = winnerCars.stream().map(Car::name).collect(Collectors.joining(","));
         System.out.println(winnerNames + "가 최종 우승했습니다.");

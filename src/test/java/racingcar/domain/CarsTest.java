@@ -13,7 +13,7 @@ class CarsTest {
     @DisplayName("자동차들 생성")
     @Test
     void test01() {
-        Cars cars = new Cars("car1,car2,car3");
+        Cars cars = new Cars(List.of("car1", "car2", "car3"));
 
         assertThat(cars).isNotNull();
     }
@@ -21,7 +21,7 @@ class CarsTest {
     @DisplayName("자동차 경주 시작 시 전진한다.")
     @Test
     void test02() {
-        Cars cars = new Cars("car1,car2,car3");
+        Cars cars = new Cars(List.of("car1", "car2", "car3"));
 
         cars.race(new TestNumberGenerator(4));
 
@@ -31,7 +31,7 @@ class CarsTest {
     @DisplayName("자동차 경주 시작 시 멈춰 있는다.")
     @Test
     void test03() {
-        Cars cars = new Cars("car1,car2,car3");
+        Cars cars = new Cars(List.of("car1", "car2", "car3"));
 
         cars.race(new TestNumberGenerator(3));
 
@@ -56,7 +56,7 @@ class CarsTest {
     }
 
     private static Car getCar(String name, int position) {
-        return new Car(name, new Position(position));
+        return new Car(new Name(name), new Position(position));
     }
 
     private List<Position> getPositions(int position) {
