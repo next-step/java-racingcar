@@ -32,6 +32,7 @@ public class Step4Main {
                             generateRandomNumbers(winningRacingCar.getCarsSize()))
             );
         }
+        resultView.printWinners(winningRacingCar.getWinnerNames());
 
         inputView.closeScanner();
     }

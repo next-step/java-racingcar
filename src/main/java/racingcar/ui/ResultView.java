@@ -8,7 +8,6 @@ public class ResultView {
 
     public static final int BEGIN_INDEX = 0;
     public static final char CAR_MOVE_STATE_LINE = '-';
-    public static final int REMOVE_LAST_SEPARATOR_MIN = 2;
     public static final String WINNERS_SEPARATOR = ", ";
     public static final String NAME_LINE_SEPARATOR = " : ";
 
@@ -79,10 +78,8 @@ public class ResultView {
         for (String carName : carNames) {
             sb.append(carName).append(WINNERS_SEPARATOR);
         }
+        removeLastSeparator(sb);
 
-        if(carNames.size() >= REMOVE_LAST_SEPARATOR_MIN) {
-            removeLastSeparator(sb);
-        }
         return sb.toString();
     }
 
