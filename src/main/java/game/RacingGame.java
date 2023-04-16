@@ -34,7 +34,7 @@ public class RacingGame {
     }
 
     private void saveResult(Cars cars) {
-        List<Integer> positions = cars.getPositions();
+        List<CarDto> positions = cars.getCurrentResult();
         result.add(new GameResultDto(positions));
     }
 }

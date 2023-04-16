@@ -1,5 +1,7 @@
 package car;
 
+import game.CarDto;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -39,9 +41,9 @@ public class Cars {
                 .orElse(new Position());
     }
 
-    public List<Integer> getPositions() {
+    public List<CarDto> getCurrentResult() {
         return cars.stream()
-                .map(car -> car.getPosition().intValue())
+                .map(CarDto::from)
                 .collect(Collectors.toList());
     }
 }
