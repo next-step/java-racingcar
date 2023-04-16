@@ -1,7 +1,7 @@
 package view;
 
 import car.Car;
-import car.Cars;
+import car.Name;
 import game.GameResult;
 
 import java.util.List;
@@ -21,10 +21,22 @@ public class ResultView {
                 .forEach(s -> System.out.println(s + "\n"));
     }
 
+    public static void printWinners(List<Car> winners) {
+        List<String> winnerNames = getWinnerNames(winners);
+        System.out.println(String.join(",", winnerNames) + "가 최종 우승했습니다.");
+    }
+
     private static String printCarsPosition(GameResult carPositions) {
         return carPositions.getResult().stream()
             .map(ResultView::carPositionToIndicator)
             .collect(Collectors.joining("\n"));
+    }
+
+    private static List<String> getWinnerNames(List<Car> winners) {
+        return winners.stream()
+                .map(Car::getName)
+                .map(Name::toString)
+                .collect(Collectors.toList());
     }
 
     private static String carPositionToIndicator(int position) {

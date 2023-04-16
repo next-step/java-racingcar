@@ -13,22 +13,22 @@ public class CarTest {
     @Test
     void move() {
         Car car = new Car("TEST");
-        int position = car.getPosition();
+        Position position = car.getPosition();
 
         MoveStrategy moveStrategy = () -> true;
         car.move(moveStrategy);
-        assertThat(car.getPosition()).isEqualTo(position + 1);
+        assertThat(car.getPosition().intValue()).isEqualTo(position.intValue() + 1);
     }
 
     @DisplayName("자동차가 이동할 수 없는 경우 위치가 증가하지 않는다")
     @Test
     void notMove() {
         Car car = new Car("TEST");
-        int position = car.getPosition();
+        Position position = car.getPosition();
 
         MoveStrategy moveStrategy = () -> false;
         car.move(moveStrategy);
-        assertThat(car.getPosition()).isEqualTo(position);
+        assertThat(car.getPosition().intValue()).isEqualTo(position.intValue());
     }
 
     @DisplayName("자동차 이름이 null 또는 빈문자열인 경우 예외가 발생한다")

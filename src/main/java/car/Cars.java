@@ -23,9 +23,24 @@ public class Cars {
         }
     }
 
-    public List<Integer> getPositions() {
+    public List<Car> winners() {
+        Position maxPosition = maxPosition();
+
+        return cars.stream()
+                .filter(car -> car.isWinner(maxPosition))
+                .collect(Collectors.toList());
+    }
+
+    private Position maxPosition() {
         return cars.stream()
                 .map(Car::getPosition)
+                .max(Position::compareTo)
+                .orElse(new Position());
+    }
+
+    public List<Integer> getPositions() {
+        return cars.stream()
+                .map(car -> car.getPosition().intValue())
                 .collect(Collectors.toList());
     }
 }

@@ -1,5 +1,6 @@
 package game;
 
+import car.Car;
 import car.Cars;
 
 import java.util.ArrayList;
@@ -26,6 +27,10 @@ public class RacingGame {
             stage.next();
             saveResult(cars);
         }
+    }
+
+    public List<Car> winner() {
+        return cars.winners();
     }
 
     private void saveResult(Cars cars) {
