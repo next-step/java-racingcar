@@ -32,10 +32,6 @@ public class InputView {
     }
 
     public static int inputCount() {
-        int number = SCANNER.nextInt();
-        if(number < 0 ){
-            throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
-        }
-        return number;
+        return SCANNER.nextInt();
     }
 }
