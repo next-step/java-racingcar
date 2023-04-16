@@ -3,28 +3,24 @@ package racingcar.domain;
 import java.util.Objects;
 
 public class Car {
-    public static final int MAX_NAME_LENGTH = 5;
-    private final String name;
+
+    private final Name name;
     private final Position position;
 
-    public Car(String name, Position position) {
-        if (name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차의 이름은 5글자를 초과할 수 없습니다. 입력된 이름 : " + name);
-        }
-
+    public Car(Name name, Position position) {
         this.position = position;
         this.name = name;
     }
 
     public static Car create(String name) {
-         return new Car(name, Position.init());
+         return new Car(new Name(name), Position.init());
     }
 
     public void move(int number) {
         this.position.move(number);
     }
 
-    public String name() {
+    public Name name() {
         return this.name;
     }
 

@@ -56,7 +56,7 @@ class CarsTest {
     }
 
     private static Car getCar(String name, int position) {
-        return new Car(name, new Position(position));
+        return new Car(new Name(name), new Position(position));
     }
 
     private List<Position> getPositions(int position) {
