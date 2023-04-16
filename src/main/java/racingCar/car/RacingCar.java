@@ -3,6 +3,7 @@ package racingCar.car;
 import racingCar.car.move.RacingCarMoveDirectionStrategy;
 import racingCar.car.move.RacingCarMoveServiceLocator;
 import racingCar.exception.InvalidRacingCarNameException;
+import util.RandomUtils;
 import util.StringUtils;
 
 public class RacingCar {
@@ -19,8 +20,9 @@ public class RacingCar {
     this.moveServiceLocator = moveServiceLocator;
   }
 
-  public void moveIfPossible(int moveAck) {
-    RacingCarMoveDirectionStrategy moveStrategy = moveServiceLocator.getRacingCarMoveStrategy(moveAck);
+  public void moveIfPossible() {
+    final int randomMoveAck = getRandomMoveAck();
+    RacingCarMoveDirectionStrategy moveStrategy = moveServiceLocator.getRacingCarMoveStrategy(randomMoveAck);
     if (moveStrategy != null) {
       moveStrategy.moveAndSetPosition(this);
     }
@@ -36,6 +38,10 @@ public class RacingCar {
 
   public void moveForward() {
     this.position++;
+  }
+
+  protected int getRandomMoveAck () {
+    return RandomUtils.getRandomSinglePositiveDigit();
   }
 
   private void throwErrorIfCarNameExceed(String carName) {

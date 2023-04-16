@@ -30,10 +30,15 @@ public class RacingCarTest {
   @ValueSource(ints = {4, 5, 6, 7, 8, 9})
   public void 레이싱카는_4_이상에서_전진한다(int moveAck) {
     // given
-    RacingCar racingCar = new RacingCar(racingCarName, racingCarMoveServiceLocator);
+    RacingCar racingCar = new RacingCar(racingCarName, racingCarMoveServiceLocator) {
+      @Override
+      protected int getRandomMoveAck() {
+        return moveAck;
+      }
+    };
 
     // when
-    racingCar.moveIfPossible(moveAck);
+    racingCar.moveIfPossible();
 
     // then
     Assertions.assertThat(racingCar)
@@ -46,10 +51,15 @@ public class RacingCarTest {
   @ValueSource(ints = {0, 1, 2, 3})
   public void 레이싱카는_4_미만의_수에서는_전진안한다(int moveAck) {
     // given
-    RacingCar racingCar = new RacingCar(racingCarName, racingCarMoveServiceLocator);
+    RacingCar racingCar = new RacingCar(racingCarName, racingCarMoveServiceLocator) {
+      @Override
+      protected int getRandomMoveAck() {
+        return moveAck;
+      }
+    };
 
     // when
-    racingCar.moveIfPossible(moveAck);
+    racingCar.moveIfPossible();
 
     // then
     Assertions.assertThat(racingCar)
