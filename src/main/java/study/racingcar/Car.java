@@ -12,7 +12,7 @@ public class Car {
         return this.position;
     }
 
-    public void setPosition(int position) {
-        this.position = position;
+    public void move(int position) {
+        this.position = position + 1;
     }
 }

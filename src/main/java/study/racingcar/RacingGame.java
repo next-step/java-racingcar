@@ -46,7 +46,7 @@ public class RacingGame {
 
     public void move(Car car) {
 
-        car.setPosition(car.currentPosition() + 1);
+        car.move(car.currentPosition());
     }
 
     private boolean isMove(int randomNum) {
