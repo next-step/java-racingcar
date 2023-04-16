@@ -3,7 +3,6 @@ package study.racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import study.StringAddCalculator;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -60,6 +59,15 @@ public class InputTest {
     @ParameterizedTest
     @ValueSource(strings = {"pobi,bbororo,honux"})
     public void inputValue_splitCarNameString_실패(String input) {
+
+        assertThatThrownBy(() -> new InputValue(5, input))
+                .isInstanceOf(InputMismatchException.class);
+    }
+
+    @DisplayName("자동차 이름 문자열을 입력하고, 구분자가 ','가 아니면 분리하지 못하고 예외가 발생한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"pobi:bbororo:honux"})
+    public void inputValue_splitCarNameString_분리실패(String input) {
 
         assertThatThrownBy(() -> new InputValue(5, input))
                 .isInstanceOf(InputMismatchException.class);
