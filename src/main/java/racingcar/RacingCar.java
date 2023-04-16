@@ -28,12 +28,12 @@ public class RacingCar {
     }
 
     private void makeMoveCount(int idx, int number) {
-        if (moveYn(number)) {
+        if (isCarMovable(number)) {
             plusMoveCount(idx);
         }
     }
 
-    public boolean moveYn(int number) {
+    public boolean isCarMovable(int number) {
         return number >= CAR_MOVE_STANDARD;
     }
 
