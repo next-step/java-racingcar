@@ -13,7 +13,6 @@ public class ConsoleScanner {
         return input;
     }
 
-
     public static Integer inputInt() {
         Integer number;
         try {

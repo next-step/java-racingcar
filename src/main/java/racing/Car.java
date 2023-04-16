@@ -20,7 +20,7 @@ public class Car {
     }
 
     private void validateCarName(String carName) {
-        if (StringValidator.isBlank(carName) || StringValidator.isLessThanEqualLen(carName, CAR_NAME_LENGTH)) {
+        if (StringValidator.isBlank(carName) || !StringValidator.isLessThanEqualLen(carName, CAR_NAME_LENGTH)) {
             throw new RuntimeException("이름이 유효하지 않습니다.");
         }
     }

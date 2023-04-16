@@ -8,7 +8,9 @@ public class RacingGame {
     public static void main(String[] args) {
         Integer numberOfCars = initNumberOfCars();
         Integer numberOfAttempts = initNumberOfAttempts();
-        List<Car> cars = initCars(numberOfCars);
+        String[] carNames = ConsoleScanner.inputString().split(",");
+        List<Car> cars = initCars(numberOfCars, carNames);
+
 
         playGame(numberOfAttempts, cars);
     }
@@ -39,10 +41,10 @@ public class RacingGame {
         return numberOfCars;
     }
 
-    private static List<Car> initCars(Integer numberOfCars) {
+    private static List<Car> initCars(Integer numberOfCars, String[] carNames) {
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car());
+            cars.add(new Car(carNames[i]));
         }
         return cars;
     }
