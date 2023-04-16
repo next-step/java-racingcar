@@ -6,7 +6,6 @@ public class RacingGame {
 
     private List<Car> carList;
     private int numberOfGames;
-    private static final int MOVE_CONDITION = 4;
 
     public RacingGame() {}
 
@@ -38,23 +37,12 @@ public class RacingGame {
     private void moveCar(List<Car> cars) {
 
         for(Car car : cars) {
-            if (isMove(GenerateNumber.random())) {
-                move(car);
-            }
+
+            car.move(GenerateNumber.random());
 
             ResultView.resultGame(car);
         }
 
         ResultView.emptyLine();
     }
-
-    public void move(Car car) {
-
-        car.move();
-    }
-
-    private boolean isMove(int randomNum) {
-        return randomNum >= MOVE_CONDITION;
-    }
-
 }

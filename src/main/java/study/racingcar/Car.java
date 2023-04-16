@@ -1,6 +1,7 @@
 package study.racingcar;
 
-public class Car {
+public class Car implements MoveStrategy{
+    private static final int MOVE_CONDITION = 4;
 
     private String name;
     private int position;
@@ -14,8 +15,11 @@ public class Car {
         return this.position;
     }
 
-    public void move() {
-        this.position = position + 1;
+    public void move(int number) {
+
+        if (isMove(number)) {
+            this.position = position + 1;
+        }
     }
 
     public String getName() {
@@ -25,5 +29,10 @@ public class Car {
     public boolean isPosition(int maxPosition) {
 
         return this.position == maxPosition;
+    }
+
+    @Override
+    public boolean isMove(int number) {
+        return number >= MOVE_CONDITION;
     }
 }
