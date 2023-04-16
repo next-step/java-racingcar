@@ -20,12 +20,8 @@ public class Car {
         this.position.move(number);
     }
 
-    public Name name() {
-        return this.name;
-    }
-
-    public int positionNumber() {
-        return this.position.position();
+    public String name() {
+        return this.name.name();
     }
 
     public Position position() {

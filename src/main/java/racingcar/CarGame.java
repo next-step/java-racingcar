@@ -24,6 +24,6 @@ public class CarGame {
         }
 
         Winner winner = new Winner(cars);
-        OutputView.gameWinner(winner);
+        OutputView.viewWinner(winner);
     }
 }
