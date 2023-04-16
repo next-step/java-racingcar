@@ -1,6 +1,8 @@
+import domain.MoveStrategy;
 import domain.RacingCar;
 import domain.RacingCarGame;
 import domain.RacingCarList;
+import domain.strategy.RandomMoveStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import util.RandomNumberGenerator;
@@ -31,20 +33,22 @@ public class RacingCarTest {
     void carMoveSuccessTest() {
         RacingCar racingCar = new RacingCar();
         int beforePosition = racingCar.getPosition();
+        MoveStrategy goMoveStrategy = () -> true;
 
-        racingCar.moveForward(5);
+        racingCar.moveForward(goMoveStrategy);
 
         int afterPosition = racingCar.getPosition();
         assertThat(afterPosition).isEqualTo(beforePosition + 1);
     }
 
     @Test
-    @DisplayName("전진 조건이 4미만일 경우 자동차는 이동하지 않는다.")
+    @DisplayName("전략에 따라 자동차는 이동하지 않는다.")
     void carMoveFailTest() {
         RacingCar racingCar = new RacingCar();
         int beforePosition = racingCar.getPosition();
+        MoveStrategy noMoveStrategy = () -> false;
 
-        racingCar.moveForward(0);
+        racingCar.moveForward(noMoveStrategy);
 
         int afterPosition = racingCar.getPosition();
         assertThat(afterPosition).isEqualTo(beforePosition);
@@ -54,19 +58,20 @@ public class RacingCarTest {
     @DisplayName("우승자를 찾을 수 있다.")
     void getWinnersTest() {
         String[] names = {"apple", "banana", "lemon"};
-        RacingCarGame racingCarGame = new RacingCarGame(new RacingCarList(names));
-        String findCarName = "apple";
+        RacingCarGame racingCarGame = new RacingCarGame(new RacingCarList(names, new RandomMoveStrategy()));
+        String findWinnerCarName = "apple";
+        MoveStrategy goMoveStrategy = () -> true;
 
         RacingCarList racingCarList = racingCarGame.getRacingCarList();
-        RacingCar racingCar = racingCarList.getCars()
+        RacingCar winnerCar = racingCarList.getCars()
                 .stream()
-                .filter(car -> car.getName().equals(findCarName))
+                .filter(car -> car.getName().equals(findWinnerCarName))
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("해당 이름의 자동차를 찾을 수 없습니다."));
-        racingCar.moveForward(5);
+        winnerCar.moveForward(goMoveStrategy);
 
         List<RacingCar> winners = racingCarGame.getWinners();
-        assertThat(winners).containsOnly(racingCar);
+        assertThat(winners).containsOnly(winnerCar);
     }
 
     @Test
