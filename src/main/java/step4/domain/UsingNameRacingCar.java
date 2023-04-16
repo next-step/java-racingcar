@@ -1,6 +1,6 @@
-package step3.domain;
+package step4.domain;
 
-import step3.strategy.move.MoveStrategy;
+import step4.strategy.move.MoveStrategy;
 
 public class UsingNameRacingCar {
 

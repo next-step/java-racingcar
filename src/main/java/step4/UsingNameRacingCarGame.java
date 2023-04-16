@@ -1,10 +1,10 @@
-package step3;
+package step4;
 
-import step3.domain.UsingNameCarRacingInformation;
-import step3.domain.UsingRacingCarStage;
-import step3.strategy.move.MoveStrategy;
-import step3.view.InputView;
-import step3.view.UsingNameCarPrintView;
+import step4.domain.UsingNameCarRacingInformation;
+import step4.domain.UsingRacingCarStage;
+import step4.strategy.move.MoveStrategy;
+import step4.view.InputView;
+import step4.view.UsingNameCarPrintView;
 
 public class UsingNameRacingCarGame extends AbstractRacingCarGame<UsingNameCarRacingInformation> {
 

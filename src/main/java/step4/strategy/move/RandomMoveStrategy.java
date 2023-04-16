@@ -1,4 +1,4 @@
-package step3.strategy.move;
+package step4.strategy.move;
 
 import java.util.concurrent.ThreadLocalRandom;
 

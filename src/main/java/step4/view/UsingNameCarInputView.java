@@ -1,7 +1,7 @@
-package step3.view;
+package step4.view;
 
-import step3.domain.Separator;
-import step3.domain.UsingNameCarRacingInformation;
+import step4.domain.Separator;
+import step4.domain.UsingNameCarRacingInformation;
 
 import java.util.Scanner;
 

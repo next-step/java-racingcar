@@ -1,8 +1,8 @@
-package step3.view;
+package step4.view;
 
-import step3.domain.Separator;
-import step3.domain.UsingNameRacingCar;
-import step3.domain.UsingRacingCarStage;
+import step4.domain.Separator;
+import step4.domain.UsingNameRacingCar;
+import step4.domain.UsingRacingCarStage;
 
 import java.util.List;
 

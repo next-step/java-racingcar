@@ -1,8 +1,8 @@
-package step3;
+package step4;
 
-import step3.domain.CarRacingType;
-import step3.strategy.move.MoveStrategy;
-import step3.view.InputView;
+import step4.domain.CarRacingType;
+import step4.strategy.move.MoveStrategy;
+import step4.view.InputView;
 
 public abstract class AbstractRacingCarGame<T> {
 
