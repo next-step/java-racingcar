@@ -1,8 +1,8 @@
-package carRacing.controller;
+package racingcar.controller;
 
-import carRacing.view.InputView;
+import racingcar.view.InputView;
 
-public class CarRacingController {
+public class RacingCarController {
 
     public static void main(String[] args) {
         InputView inputView = new InputView();
