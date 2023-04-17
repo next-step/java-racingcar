@@ -16,8 +16,6 @@ class DistanceTest {
 
     private static final int MOVE_NUMBER = 4;
 
-    private static final int MOVE_STEP = 1;
-
     private static final String TEST_CAR_NAME = "test";
 
 

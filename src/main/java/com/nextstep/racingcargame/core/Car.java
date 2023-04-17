@@ -5,10 +5,12 @@ import java.util.Objects;
 
 public class Car {
 
-    private final Distance distance;
+    private Distance distance;
     private final Name name;
 
     private static final int CAR_START_POSITION_NUMBER = 0;
+
+    private static final int MINIMUM_CAR_MOVE_NUMBER = 4;
 
     public Car(String carName) {
         this(carName, CAR_START_POSITION_NUMBER);
@@ -40,7 +42,13 @@ public class Car {
     }
 
     public void move(MovingStrategy movingStrategy) {
-        this.distance.moveForward(movingStrategy.randomNumber());
+        if (isGoForwardNumber(movingStrategy.randomNumber())) {
+            this.distance = this.distance.moveForward(movingStrategy.randomNumber());
+        }
+    }
+
+    private boolean isGoForwardNumber(int randomNumber) {
+        return randomNumber >= MINIMUM_CAR_MOVE_NUMBER;
     }
 
     public boolean sameDistance(Distance distance) {
