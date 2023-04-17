@@ -1,8 +1,10 @@
+package calculator;
+
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ToIntegersParser implements StringParser<Integer> {
+public class ToPositiveIntegersParser implements StringParser<Integer> {
 
     private static final Pattern PATTERN_INCLUDING_CUSTOM_DELIMITER =
         Pattern.compile("//(.)\\n(.*)");
@@ -18,16 +20,14 @@ public class ToIntegersParser implements StringParser<Integer> {
 
     private String[] split(String originalInput) {
         String delimiter = findDelimiter(originalInput);
-
         String expressionWithoutPrefix = extractExpressionPart(originalInput);
 
         return expressionWithoutPrefix.split(delimiter);
-
     }
 
     private Integer[] convertToNumbs(String[] numbers) {
         return Arrays.stream(numbers)
-            .map(this::convertToNumb)
+            .map(this::convertToPositiveNumb)
             .toArray(Integer[]::new);
     }
 
@@ -51,21 +51,29 @@ public class ToIntegersParser implements StringParser<Integer> {
         return originalExpression;
     }
 
+    private Integer convertToPositiveNumb(String str) {
+        int numb = convertToNumb(str);
+
+        if (numb < 0) {
+            throw new MyNumberFormatException(String.format("%d : 0 이상의 정수가 아닙니다", numb));
+        }
+        return numb;
+    }
+
     private Integer convertToNumb(String str) {
-        checkValidNumber(str);
-
-        return Integer.parseInt(str);
-    }
-
-    private void checkValidNumber(String number) {
-        for (int idx = 0; idx < number.length(); idx++) {
-            checkIsNumber(number.charAt(idx));
+        try {
+            return Integer.parseInt(str);
+        } catch (NumberFormatException ex) {
+            throw new MyNumberFormatException(String.format("%s : 정수형태가 아닌 입력이 주어졌습니다", str));
         }
     }
 
-    private void checkIsNumber(char curChar) {
-        if (curChar < '0' || curChar > '9') {
-            throw new RuntimeException(String.format("%c : 0 이상의 정수가 아닙니다", curChar));
+    private static class MyNumberFormatException extends RuntimeException {
+
+        public MyNumberFormatException(String message) {
+            super(message);
         }
+
     }
 }
+

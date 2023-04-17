@@ -1,11 +1,13 @@
+package calculator;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.Test;
 
 public class StringAddCalculatorTest {
 
-    private final StringAddCalculator calculator =
-        new StringAddCalculator(Integer::sum, new ToIntegersParser());
+    private final StringCalculator<Integer> calculator =
+        new IntegerCalculator(Integer::sum, new ToPositiveIntegersParser());
 
     @Test
     public void splitAndSum_null_또는_빈문자() {
@@ -43,6 +45,12 @@ public class StringAddCalculatorTest {
     @Test
     public void splitAndSum_negative() throws Exception {
         assertThatThrownBy(() -> calculator.splitAndSum("-1,2,3"))
+            .isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    public void splitAndSum_nonNumber() {
+        assertThatThrownBy(() -> calculator.splitAndSum("1,a2,3"))
             .isInstanceOf(RuntimeException.class);
     }
 }
