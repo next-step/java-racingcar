@@ -27,10 +27,6 @@ public class Race {
         return new Race(raceCount, cars, numberGenerator);
     }
 
-    public int getRaceCount() {
-        return raceCount;
-    }
-
     public List<Car> getCars() {
         return cars;
     }
