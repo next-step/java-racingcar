@@ -23,7 +23,7 @@ public class Car {
 		this.power = power;
 	}
 
-	public static Car of(int power) {
+	public static Car create(int power) {
 		Random random = new Random();
 		List<Distance> distanceList = new ArrayList<>();
 
