@@ -4,19 +4,17 @@ import java.util.List;
 import java.util.Random;
 
 public class HandleCar {
-    public List<Car> iteratorCar(List<Car> carList) {
-
-        for (Car car : carList) {
-            car = isOverFour(car);
+    Random random = new Random();
+    public List<Car> iteratorCar(List<Car> cars) {
+        for (Car car : cars) {
+            goCar(car);
         }
-        return carList;
+        return cars;
     }
 
-    public Car isOverFour(Car car) {
-        Random random = new Random();
+    public void goCar(Car car) {
         if(random.nextInt(10) >= 4) {
             car.go();
         }
-        return car;
     }
 }

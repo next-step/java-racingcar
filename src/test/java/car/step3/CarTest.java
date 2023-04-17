@@ -1,14 +1,11 @@
 package car.step3;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class CarTest {
 
@@ -23,8 +20,8 @@ class CarTest {
     @Test
     public void 랜덤값이_4이상일때_전지하는지_테스트() {
         Car car = new Car();
-        Car goCar = handleCar.isOverFour(car);
-        assertThat(goCar.location()).isGreaterThanOrEqualTo(car.location());
+        handleCar.goCar(car);
+        assertThat(car.location()).isGreaterThanOrEqualTo(0);
     }
 
     @Test

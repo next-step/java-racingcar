@@ -8,11 +8,7 @@ public class StringAddCalculator {
 
     private static final String COMMA_AND_COLON_REGEX = ",|:";
     private static final String INPUT_REGEX = "//(.)\n(.*)";
-<<<<<<< HEAD
     private static final Pattern PATTERN_REGEX = Pattern.compile(INPUT_REGEX);
-
-=======
->>>>>>> ce454e412 (Step2 (#4477))
     public static int splitAndSum(String text) {
         if(text == null) {
             return 0;
