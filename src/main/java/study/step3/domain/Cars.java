@@ -9,8 +9,8 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(int countOfCar) {
-        this.cars = createCars(countOfCar);
+    public Cars(int countOfCar, MoveConditionStrategy moveConditionStrategy) {
+        this.cars = createCars(countOfCar, moveConditionStrategy);
     }
 
     public void moveForward() {
@@ -24,10 +24,11 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    private List<Car> createCars(int countOfCar) {
+    private List<Car> createCars(int countOfCar,
+                                 MoveConditionStrategy moveConditionStrategy) {
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < countOfCar; i++) {
-            cars.add(new Car(new LessThanMoveCondition(4, new RandomMove())));
+            cars.add(new Car(moveConditionStrategy));
         }
         return cars;
     }

@@ -14,13 +14,8 @@ class CarsTest {
 
     @BeforeEach
     void init() {
-        List<Car> carList = new ArrayList<>();
-
-        for (int i = 0; i < 3; i++) {
-            carList.add(new Car(new LessThanMoveCondition(4, new RandomMove())));
-        }
-
-        cars = new Cars(3);
+        cars = new Cars(3,
+                new LessThanMoveCondition(4, new RandomMove()));
     }
 
     @Test
