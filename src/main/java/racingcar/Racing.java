@@ -18,7 +18,7 @@ public class Racing {
     private List<Car> createCars(int carsNum) {
         List<Car> result = new ArrayList<>();
         for (int i = 0; i < carsNum; i++) {
-            result.add(new Car());
+            result.add(new Car("test"));
         }
         return result;
     }
