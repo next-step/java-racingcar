@@ -22,6 +22,10 @@ public class RacingCar {
         this.cars = cars;
     }
 
+    private String[] splitCarNameInput(String carNameInput) {
+        return carNameInput.split(CAR_NAME_SEPARATOR);
+    }
+
     public int getCarsSize() {
         return cars.size();
     }
@@ -57,10 +61,6 @@ public class RacingCar {
             maxMoveCount = car.getMoveCount();
         }
         return maxMoveCount;
-    }
-
-    private String[] splitCarNameInput(String carNameInput) {
-        return carNameInput.split(CAR_NAME_SEPARATOR);
     }
 
     public List<Car> makeMoveCounts(List<Integer> numbers) {
