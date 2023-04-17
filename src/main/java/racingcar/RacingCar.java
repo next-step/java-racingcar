@@ -10,7 +10,7 @@ public class RacingCar {
     public static final int CAR_MOVE_STANDARD = 4;
     public static final String CAR_NAME_SEPARATOR = ",";
 
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public RacingCar(String carNameInput) {
         String[] carNames = splitCarNameInput(carNameInput);
@@ -26,15 +26,15 @@ public class RacingCar {
         return carNameInput.split(CAR_NAME_SEPARATOR);
     }
 
-    public int getCarsSize() {
+    public int carsSize() {
         return cars.size();
     }
 
-    public List<String> getWinnerNames() {
-        return getWinnerNames(getMaxMoveCount());
+    public List<String> winningCars() {
+        return makeWinningCars(maxMoveCount());
     }
 
-    private List<String> getWinnerNames(int maxMoveCount) {
+    private List<String> makeWinningCars(int maxMoveCount) {
         List<String> winnerNames = new ArrayList<>();
         for (Car car : cars) {
             addWinnerNames(maxMoveCount, winnerNames, car);
@@ -43,22 +43,22 @@ public class RacingCar {
     }
 
     private void addWinnerNames(int maxMoveCount, List<String> winnerNames, Car car) {
-        if(car.getMoveCount() == maxMoveCount) {
-            winnerNames.add(car.getName());
+        if(car.moveCount() == maxMoveCount) {
+            winnerNames.add(car.name());
         }
     }
 
-    private int getMaxMoveCount() {
+    private int maxMoveCount() {
         int maxMoveCount = INIT_VALUE;
         for (Car car : cars) {
-            maxMoveCount = getMaxMoveCount(maxMoveCount, car);
+            maxMoveCount = makeMaxMoveCount(maxMoveCount, car);
         }
         return maxMoveCount;
     }
 
-    private int getMaxMoveCount(int maxMoveCount, Car car) {
+    private int makeMaxMoveCount(int maxMoveCount, Car car) {
         if(car.moveCountIsGreaterThan(maxMoveCount)) {
-            maxMoveCount = car.getMoveCount();
+            maxMoveCount = car.moveCount();
         }
         return maxMoveCount;
     }

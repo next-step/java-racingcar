@@ -54,11 +54,11 @@ public class ResultView {
     }
 
     private String getCarName(List<Car> cars, int idx) {
-        return cars.get(idx).getName();
+        return cars.get(idx).name();
     }
 
     private String getCarMoveStateLine(List<Car> cars, int idx) {
-        return makeCarMoveStateLine(cars.get(idx).getMoveCount());
+        return makeCarMoveStateLine(cars.get(idx).moveCount());
     }
 
     private void printMoveStateLine(List<Integer> moveCounts, int idx) {

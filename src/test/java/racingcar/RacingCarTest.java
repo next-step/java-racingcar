@@ -40,7 +40,7 @@ public class RacingCarTest {
         List<Car> cars = new RacingCar(carNameInput).makeMoveCounts(numbers);
         List<Integer> moveCounts = new ArrayList<>();
         for (Car car : cars) {
-            moveCounts.add(car.getMoveCount());
+            moveCounts.add(car.moveCount());
         }
 
         //then
@@ -64,7 +64,7 @@ public class RacingCarTest {
 
         //when
         racingCar.makeMoveCounts(Arrays.asList(1, 4, 5));
-        List<String> winnerNames = racingCar.getWinnerNames();
+        List<String> winnerNames = racingCar.winningCars();
 
         //then
         assertThat(winnerNames).containsExactly("crong", "honux");

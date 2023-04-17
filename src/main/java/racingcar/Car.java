@@ -3,7 +3,7 @@ package racingcar;
 public class Car {
 
     public static final int NAME_MAX_LENGTH = 5;
-    private String name;
+    private final String name;
     private int moveCount;
 
     public Car(String name, int moveCount) {
@@ -18,11 +18,11 @@ public class Car {
         return moveCount > maxMoveCount;
     }
 
-    public String getName() {
+    public String name() {
         return name;
     }
 
-    public int getMoveCount() {
+    public int moveCount() {
         return moveCount;
     }
 

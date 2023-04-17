@@ -27,10 +27,10 @@ public class Main {
         for (int i = BEGIN_INDEX; i < tryCount; i++) {
             resultView.printCarNameAndMoveStateLines(
                     racingCar.makeMoveCounts(
-                            generateRandomNumbers(racingCar.getCarsSize()))
+                            generateRandomNumbers(racingCar.carsSize()))
             );
         }
-        resultView.printWinners(racingCar.getWinnerNames());
+        resultView.printWinners(racingCar.winningCars());
 
         inputView.closeScanner();
     }
