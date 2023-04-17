@@ -25,15 +25,15 @@ class WinnerSelectorTest {
         Car car2 = new Car("car2");
         Car car3 = new Car("car3");
 
-        car1.forward(true);
+        car1.forward(() -> true);
 
         Car car4 = new Car("car4");
         Car car5 = new Car("car5");
         Car car6 = new Car("car6");
 
-        car4.forward(true);
-        car5.forward(true);
-        car6.forward(true);
+        car4.forward(() -> true);
+        car5.forward(() -> true);
+        car6.forward(() -> true);
         return Stream.of(
                 Arguments.of(List.of(car1, car2, car3), List.of(car1)),
                 Arguments.of(List.of(car4, car5, car6), List.of(car4, car5, car6))

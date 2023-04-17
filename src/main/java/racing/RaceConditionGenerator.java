@@ -3,7 +3,7 @@ package racing;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
-public class RaceConditionGenerator {
+public class RaceConditionGenerator implements MovingStrategy {
 
     private static final Integer RACE_CONDITION_NUM_LIMIT = 10;
     private static final Integer BASE_VALUE = 4;
@@ -27,7 +27,8 @@ public class RaceConditionGenerator {
         return result >= 0;
     }
 
-    public static Boolean isForwardable() {
+    @Override
+    public boolean isMovable() {
         return isGreaterThanEqualToBase(BASE_VALUE, randPositiveOrZero(RACE_CONDITION_NUM_LIMIT));
     }
 

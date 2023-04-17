@@ -12,7 +12,7 @@ public class CarTest {
     @CsvSource(value = {"true:1 ", "false:0"}, delimiter = ':')
     void 전진_기능_테스트(boolean condition, Long expected) {
         Car car = new Car("test");
-        car.forward(condition);
+        car.forward(() -> condition);
 
         assertThat(car.getPosition()).isEqualTo(expected);
     }

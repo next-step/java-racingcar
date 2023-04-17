@@ -1,6 +1,7 @@
 package racing;
 
 import org.assertj.core.util.Lists;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -14,11 +15,12 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 public class RaceConditionGeneratorTest {
 
     @Test
-    void isForwardableTest() {
+    @DisplayName("랜덤한 값이 정상적으로 나오는지 테스트")
+    void raceConditionGenerator_test() {
         List<Boolean> results = Lists.newArrayList();
-
+        RaceConditionGenerator raceConditionGenerator = new RaceConditionGenerator();
         for (int i = 0; i < 10; i++) {
-            results.add(RaceConditionGenerator.isForwardable());
+            results.add(raceConditionGenerator.isMovable());
         }
 
         assertAll(

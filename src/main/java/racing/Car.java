@@ -5,7 +5,7 @@ public class Car {
     private Long position;
     private String name;
 
-    Car(String name) {
+    public Car(String name) {
         this.position = 0L;
         validateCarName(name);
         this.name = name;
@@ -14,9 +14,9 @@ public class Car {
     public String getName() {
         return name;
     }
-    
-    public void forward(boolean condition) {
-        if (condition) this.position++;
+
+    public void forward(MovingStrategy strategy) {
+        if (strategy.isMovable()) this.position++;
     }
 
     public Long getPosition() {

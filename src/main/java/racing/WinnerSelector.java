@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WinnerSelector {
-    
+
     public static List<Car> selectWinner(List<Car> cars) {
         Long maxPosition = getMaxPosition(cars);
         return getWinners(cars, maxPosition);
