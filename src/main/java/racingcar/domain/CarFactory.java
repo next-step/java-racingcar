@@ -7,14 +7,20 @@ public class CarFactory {
 
     private final List<Car> cars;
 
-    public CarFactory(int userInput) {
+    private static final String DELIMITER = ",";
+
+    public CarFactory(String names) {
         cars = new ArrayList<>();
-        createCars(userInput);
+        createCars(parseNames(names));
     }
 
-    public List<Car> createCars(int carCount) {
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+    private static String[] parseNames(String names) {
+        return names.split(DELIMITER);
+    }
+
+    public List<Car> createCars(String[] names) {
+        for (int i = 0; i < names.length; i++) {
+            cars.add(new Car(names[i]));
         }
         return cars;
     }

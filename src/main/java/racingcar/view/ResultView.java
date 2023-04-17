@@ -2,8 +2,11 @@ package racingcar.view;
 
 import racingcar.domain.Record;
 import racingcar.domain.Records;
+import racingcar.domain.Winner;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class ResultView {
 
@@ -19,16 +22,32 @@ public class ResultView {
         }
     }
 
-    private static void printRecord(final Records records) {
+    /**
+     * 라운드별 결과 출력
+     * @param records
+     */
+    private static void printRecord(Records records) {
         for (Record record : records.getRecords()) {
-            printDistance(record);
-            System.out.println();
+            System.out.printf("%s : %s%n", record.getName(), printDistance(record.getDistance()));
         }
     }
 
-    private static void printDistance(final Record record) {
-        for (int i = 0; i < record.getPosition(); i++) {
-            System.out.print(DASH);
-        }
+    /**
+     * 거리만큼 "-"를 출력
+     * @param distance
+     * @return
+     */
+    private static String printDistance(int distance) {
+        return IntStream.range(0, distance)
+                .mapToObj(i -> DASH)
+                .collect(Collectors.joining());
+    }
+
+    /**
+     * 우승자 출력
+     * @param winner
+     */
+    public static void printWinner(Winner winner) {
+        System.out.println(String.join(", ", winner.getWinners()) + "가 우승했습니다.");
     }
 }
