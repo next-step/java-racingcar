@@ -1,9 +1,9 @@
 package racingcar;
 
+import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -13,24 +13,14 @@ class GameTest {
     @Test
     @DisplayName("우승자가 1명이면 우승자를 1명 반환한다.")
     void getWinnerOne() {
-        //arranger
-        Car car1 = new Car("car1");
-        car1.move(4);
-        car1.move(4);
-
-        Car car2 = new Car("car2");
-        car2.move(4);
-
-        Car car3 = new Car("car3");
-        car3.move(4);
-
-        List<Car> cars = new ArrayList<>();
-        cars.add(car1);
-        cars.add(car2);
-        cars.add(car3);
+        //arrange
+        Car car1 = createEndCar("car1",2);
+        Car car2 = createEndCar("car2",1);
+        Car car3 = createEndCar("car3",1);
+        List<Car> endRaceCarList = Lists.newArrayList(car1, car2, car3);
 
         //act
-        Game game = new Game(cars);
+        Game game = new Game(endRaceCarList);
         List<Car> winner = game.getWinner();
 
         //assert
@@ -41,25 +31,14 @@ class GameTest {
     @Test
     @DisplayName("우승자가 2명이면 우승자를 2명 반환한다.")
     void getWinnerTwo() {
-        //arranger
-        Car car1 = new Car("car1");
-        car1.move(4);
-        car1.move(4);
-
-        Car car2 = new Car("car2");
-        car2.move(4);
-        car2.move(4);
-
-        Car car3 = new Car("car3");
-        car3.move(4);
-
-        List<Car> cars = new ArrayList<>();
-        cars.add(car1);
-        cars.add(car2);
-        cars.add(car3);
+        //arrange
+        Car car1 = createEndCar("car1",2);
+        Car car2 = createEndCar("car2",2);
+        Car car3 = createEndCar("car3",1);
+        List<Car> endRaceCarList = Lists.newArrayList(car1, car2, car3);
 
         //act
-        Game game = new Game(cars);
+        Game game = new Game(endRaceCarList);
         List<Car> winner = game.getWinner();
 
         //assert
@@ -67,5 +46,13 @@ class GameTest {
         assertThat(winner.get(0).getName()).isEqualTo("car1");
         assertThat(winner.get(1).getName()).isEqualTo("car2");
 
+    }
+
+    private static Car createEndCar(String name, int position) {
+        Car car1 = new Car(name);
+        for (int i = 0; i < position; i++) {
+            car1.move(4);
+        }
+        return car1;
     }
 }
