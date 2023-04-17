@@ -13,4 +13,12 @@ public class CarTest {
         assertThat(car.getPosition()).isEqualTo(0);
     }
 
+    @DisplayName("3단계 - 자동차 경주 - 자동차 전진 이동 테스트")
+    @Test
+    void go_car() {
+        Car car = new Car();
+        car.go();
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
+
 }

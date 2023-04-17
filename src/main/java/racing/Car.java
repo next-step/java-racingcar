@@ -12,4 +12,8 @@ public class Car {
         return position;
     }
 
+    public void go() {
+        this.position++;
+    }
+
 }
