@@ -33,4 +33,12 @@ class SimpleRacingCarTest {
         List<Car> createCarList = SimpleRacingCar.createCar(1,inputRepeatCnt);
         assertThat(createCarList.get(0).carSpeed.length).isEqualTo(inputRepeatCnt);
     }
+
+    @Test
+    @DisplayName("생성된 자동차는 마지막 시도까지 최소 1회 이상 전진")
+    void racingGoStopStatusCheck() {
+        int repeatCnt = 5;
+        Car car = new Car(0, repeatCnt);
+        assertThat(ResultView.racingStatus(car, repeatCnt-1).length()).isGreaterThan(1);
+    }
 }
