@@ -15,6 +15,9 @@ public class Car {
             distance += 1;
         }
     }
+    public boolean isEqualDistance(int maxScore) {
+        return this.distance == maxScore;
+    }
 
     public int getDistance() {
         return distance;
