@@ -18,11 +18,12 @@ public class Race {
     }
 
     public void start() {
-        RaceView.displayDiscription();
+        RaceView.displayDescription();
         for (int round = 0; round < raceRound; round++) {
             moveCars();
             RaceView.displayRaceSituation(getCars());
         }
+        RaceView.displayWinners(cars.getWinner());
     }
 
     private void moveCars() {
