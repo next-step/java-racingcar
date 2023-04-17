@@ -1,6 +1,8 @@
 package study;
 
 import study.race.CarRace;
+import study.race.condition.RaceConditionNumber;
+import study.race.condition.impl.RaceRandomNumber;
 import study.race.io.RaceInputView;
 import study.race.io.RaceResultView;
 
@@ -11,7 +13,9 @@ public class StudyMain {
         RaceInputView inputView = new RaceInputView();
         inputView.input();
 
-        CarRace carRace = new CarRace(inputView.getCarNum(), inputView.getTryNum());
+        RaceConditionNumber conditionNumber = new RaceRandomNumber();
+        CarRace carRace = new CarRace(conditionNumber);
+        carRace.ready(inputView.getEntryNum(), inputView.getRaceNum());
         carRace.run();
 
         RaceResultView resultView = new RaceResultView(carRace.getRaceResult());
