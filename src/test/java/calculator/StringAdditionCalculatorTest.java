@@ -23,14 +23,15 @@ public class StringAdditionCalculatorTest {
         assertThat(stringAdditionCalculator.splitAndSum("1:2,3")).isEqualTo(6);
     }
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(strings = {"//;\n1;2;3", "//$\n1$2$3"})
     @DisplayName("'//'와 '\\n' 사이에 위치하는 문자를 구분자로 가지는 문자열에서 숫자 합하기 테스트")
-    void splitAndSum_customDelimiter_test() throws Exception {
-        assertThat(stringAdditionCalculator.splitAndSum("//;\n1;2;3")).isEqualTo(6);
+    void splitAndSum_customDelimiter_test(String str) throws Exception {
+        assertThat(stringAdditionCalculator.splitAndSum(str)).isEqualTo(6);
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"-1:2", "3:w"})
+    @ValueSource(strings = {"-1:2", "3:w", "1:$:3"})
     @DisplayName("숫자 이외의 값 또는 음수가 전달되면 RuntimeException 발생")
     void splitAndSum_exception_test(String str) throws Exception {
         assertThatExceptionOfType(Exception.class)
