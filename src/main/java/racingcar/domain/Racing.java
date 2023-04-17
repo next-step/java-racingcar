@@ -6,25 +6,17 @@ import racingcar.strategy.MoveStrategy;
 import java.util.List;
 
 public class Racing {
-  private RacingCars racing;
+  private RacingCars cars;
 
   public Racing(RacingCars racingCars) {
-    this.racing = racingCars;
+    this.cars = racingCars;
   }
 
-  // racing 진행
-  public void startRacingRound() {
-    for (RacingCar racingCar : this.racing.statusOfRacingCars()) {
-      racingCar.tryToMove(defaultRacingMoveStrategy());
-    }
-  }
-
-  // move 전략패턴
-  public static MoveStrategy defaultRacingMoveStrategy() {
-    return new NormalMoveStrategy();
+  public void startRacingRound(MoveStrategy moveStrategy) {
+    this.cars.tryToRacingRound(moveStrategy);
   }
 
   public List<RacingCar> statusOfRacing() {
-    return this.racing.statusOfRacingCars();
+    return this.cars.statusOfRacingCars();
   }
 }

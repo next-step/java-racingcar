@@ -2,6 +2,8 @@ package racingcar;
 
 import racingcar.domain.Racing;
 import racingcar.domain.RacingCars;
+import racingcar.strategy.MoveStrategy;
+import racingcar.strategy.NormalMoveStrategy;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
@@ -21,9 +23,10 @@ public class RacingCarApplication {
     // 이동 시도 횟수에 따른 racing 진행
     Racing racing = new Racing(racingCars);
     ResultView resultView = new ResultView();
+    MoveStrategy normalMoveStrategy = new NormalMoveStrategy();
 
     for (int i = 0; i < numberOfTrials; i++) {
-      racing.startRacingRound();
+      racing.startRacingRound(normalMoveStrategy);
       resultView.printRacingRound(racing.statusOfRacing(), i);
     }
   }

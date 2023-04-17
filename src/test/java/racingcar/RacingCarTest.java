@@ -55,10 +55,11 @@ public class RacingCarTest {
   @DisplayName("5대 자동차, 4번 움직임 시도(postion max값 == 4)인 racing 확인")
   public void checkRacingClass() {
     Racing racing = new Racing(new RacingCars(5));
+    MoveStrategy normalMoveStrategy = new NormalMoveStrategy();
     int numberOfTrials = 4;
 
     while (numberOfTrials > 0) {
-      racing.startRacingRound();
+      racing.startRacingRound(normalMoveStrategy);
       numberOfTrials--;
     }
 
