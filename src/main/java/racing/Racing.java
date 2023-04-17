@@ -9,16 +9,16 @@ public class Racing {
     private final int matchCount;
     private static final Random random = new Random();
 
-    public Racing(int carCount, int matchCount) {
-        this.racingCars = this.racingCarRegistration(carCount);
+    public Racing(int matchCount, List<String> carNames) {
+        this.racingCars = this.racingCarRegistration(carNames);
         this.matchCount = matchCount;
     }
 
-    private RacingCars racingCarRegistration(int carCount) {
+    private RacingCars racingCarRegistration(List<String> carNames) {
         final List<Car> racingCars = new ArrayList<>();
 
-        for (int i = 0; i < carCount; i++) {
-            racingCars.add(new Car());
+        for (String carName : carNames) {
+            racingCars.add(new Car(new CarName(carName)));
         }
 
         return new RacingCars(racingCars);
