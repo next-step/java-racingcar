@@ -7,7 +7,6 @@ public class RacingCar {
 
     public static final int BEGIN_INDEX = 0;
     public static final int INIT_VALUE = 0;
-    public static final int CAR_MOVE_STANDARD = 4;
     public static final String CAR_NAME_SEPARATOR = ",";
 
     private final List<Car> cars;
@@ -65,22 +64,9 @@ public class RacingCar {
 
     public List<Car> makeMoveCounts(List<Integer> numbers) {
         for (int i = BEGIN_INDEX; i < numbers.size(); i++) {
-            makeMoveCount(i, numbers.get(i));
+            cars.get(i).makeMoveCount(numbers.get(i));
         }
         return cars;
     }
 
-    private void makeMoveCount(int idx, int number) {
-        if (isCarMovable(number)) {
-            plusMoveCount(idx);
-        }
-    }
-
-    private boolean isCarMovable(int number) {
-        return number >= CAR_MOVE_STANDARD;
-    }
-
-    private void plusMoveCount(int idx) {
-        cars.get(idx).plusMoveCount();
-    }
 }

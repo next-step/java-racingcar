@@ -3,6 +3,7 @@ package racingcar;
 public class Car {
 
     public static final int NAME_MAX_LENGTH = 5;
+    public static final int MOVE_STANDARD = 4;
     private final String name;
     private int moveCount;
 
@@ -30,7 +31,13 @@ public class Car {
         return moveCount;
     }
 
-    public void plusMoveCount() {
-        moveCount++;
+    public void makeMoveCount(int number) {
+        if(isCarMovable(number)) {
+            moveCount++;
+        }
+    }
+
+    private boolean isCarMovable(int number) {
+        return number >= MOVE_STANDARD;
     }
 }
