@@ -12,6 +12,7 @@ public class RaceView {
 
     public static void displayRaceSituation(List<Car> cars) {
         for (Car car : cars) {
+            System.out.print(car.getName() + " : ");
             printCarPosition(car);
         }
         System.out.println("");
