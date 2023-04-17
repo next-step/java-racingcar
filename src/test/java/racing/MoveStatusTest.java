@@ -13,4 +13,11 @@ public class MoveStatusTest {
         assertThat(MoveStatus.findByNumber(randomNumber)).isEqualTo(MoveStatus.GO);
     }
 
+    @DisplayName("3단계 - 자동차 경주 - 자동차 멈춤 조건 테스트")
+    @Test
+    void stay_condition() {
+        int randomNumber = 3;
+        assertThat(MoveStatus.findByNumber(randomNumber)).isEqualTo(MoveStatus.STAY);
+    }
+
 }
