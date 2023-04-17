@@ -19,12 +19,6 @@ public class RacingGame {
         resultView = new ResultView();
     }
 
-    public void initCars(int numberOfCars) {
-        for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car());
-        }
-    }
-
     public void initCars(String names) {
         Arrays.stream(names.split(",")).forEach((name) -> {
             cars.add(new Car(name));

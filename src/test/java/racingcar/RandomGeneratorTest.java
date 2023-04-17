@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.RandomGenerator;
 
 import static org.assertj.core.api.Assertions.*;
+
 public class RandomGeneratorTest {
 
     @Test

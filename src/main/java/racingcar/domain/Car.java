@@ -6,6 +6,7 @@ public class Car {
     private String name;
     private final int CAR_NAME_LENGTH_LIMIT = 5;
     private final int CAR_MOVE_CRITERIA = 4;
+    private final String CAR_NAME_LENGTH_OVER = "자동차 이름은 5자를 초과할 수 없습니다.";
 
     public Car() {
         this.position = 0;
@@ -18,7 +19,7 @@ public class Car {
 
     private String validateName(String name) {
         if (name.length() > CAR_NAME_LENGTH_LIMIT) {
-            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+            throw new IllegalArgumentException(CAR_NAME_LENGTH_OVER);
         }
         return name;
     }

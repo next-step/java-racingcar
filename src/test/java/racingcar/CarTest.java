@@ -12,6 +12,7 @@ import static org.assertj.core.api.Assertions.*;
 public class CarTest {
 
     private Car car;
+
     @BeforeEach
     public void beforeEach() {
         car = new Car();
