@@ -57,7 +57,7 @@ public class RacingCar {
     }
 
     private int getMaxMoveCount(int maxMoveCount, Car car) {
-        if(car.getMoveCount() > maxMoveCount) {
+        if(car.moveCountIsGreaterThan(maxMoveCount)) {
             maxMoveCount = car.getMoveCount();
         }
         return maxMoveCount;

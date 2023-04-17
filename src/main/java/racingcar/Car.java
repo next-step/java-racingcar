@@ -14,6 +14,10 @@ public class Car {
         this.moveCount = moveCount;
     }
 
+    public boolean moveCountIsGreaterThan(int maxMoveCount) {
+        return moveCount > maxMoveCount;
+    }
+
     public String getName() {
         return name;
     }
