@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-
     public static int MAX_LOCATION = 0;
+    public static List<String> winners = new ArrayList<>();
     public static void main(String[] args) {
         InputView inputView = new InputView();
         HandleCar handleCar = new HandleCar();
@@ -16,6 +16,7 @@ public class Main {
         //시도할 횟수
         int number = inputView.scannerCarNumber();
         // 시도할 횟수만큼 시도한다. 랜덤 값이 4 이상이면 전진한다.
+        System.out.println("실행 결과");
         for (int i = 0; i < number; i++) {
             cars = handleCar.iteratorCar(cars);
             resultView.result(cars);

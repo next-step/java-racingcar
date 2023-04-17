@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static car.step3.Main.MAX_LOCATION;
+import static car.step3.Main.winners;
 
 public class ResultView {
     private final String DASH = "-";
@@ -18,16 +19,20 @@ public class ResultView {
             String printCarLocation = DASH.repeat(car.location());
             System.out.println(car.name() + " : " + printCarLocation);
         }
+        System.out.println();
     }
 
     public void winnerResult(List<Car> cars) {
-        List<String> winner = new ArrayList<>();
         for (Car car : cars) {
-            if(car.location() == MAX_LOCATION) {
-                winner.add(car.name());
-            }
+             addWinner(car);
         }
-        String winnerResult = String.join(",", winner);
+        String winnerResult = String.join(",", winners);
         System.out.println(winnerResult + "가 최종 우승했습니다.");
+    }
+
+    private void addWinner(Car car) {
+        if(car.location() == MAX_LOCATION) {
+            winners.add(car.name());
+        }
     }
 }
