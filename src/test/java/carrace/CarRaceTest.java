@@ -21,8 +21,8 @@ class CarRaceTest {
     @Test
     @DisplayName("자동차 경주 게임의 우승자를 구할 수 있다.")
     void getWinnerTest() {
-        final Car a = new Car("a", 0);
-        final Car b = new Car("b", 3);
+        final Car a = new Car("a", 0, 0);
+        final Car b = new Car("b", 3, 1);
         final Cars cars = new Cars(a, b);
         final CarRace carRace = new CarRace(cars, "1", () -> true);
 
@@ -33,8 +33,8 @@ class CarRaceTest {
     @Test
     @DisplayName("자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한명 이상일 수 있다.")
     void getAllWinnerTest() {
-        final Car a = new Car("a", 0);
-        final Car b = new Car("b", 0);
+        final Car a = new Car("a", 0, 0);
+        final Car b = new Car("b", 0, 1);
         final Cars cars = new Cars(a, b);
         final CarRace carRace = new CarRace(cars, "1", () -> true);
 

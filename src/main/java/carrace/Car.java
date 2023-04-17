@@ -7,34 +7,31 @@ public class Car {
     private static final int ZERO_INDEX = 0;
     private static final int LIMIT_NAME_LENGTH = 5;
     private static final String DEFAULT_DRIVER_NAME = "CAR_";
-    private String name;
+
+    private final int index;
+    private final String name;
     private int position;
 
     public Car(int index, String name) {
-        name = getNameOrDefault(name, index);
-        validateName(name);
-        this.name = name;
-        this.position = START_POSITION;
+        this(name, START_POSITION, index);
     }
 
     Car() {
-        this.name = DEFAULT_DRIVER_NAME + ZERO_INDEX;
-        this.position = START_POSITION;
+        this(DEFAULT_DRIVER_NAME, START_POSITION, ZERO_INDEX);
     }
 
     Car(String name) {
-        name = getNameOrDefault(name, ZERO_INDEX);
-        validateName(name);
-        this.name = name;
-        this.position = START_POSITION;
+        this(name, START_POSITION, ZERO_INDEX);
     }
 
     Car(int position) {
-        this.name = DEFAULT_DRIVER_NAME + ZERO_INDEX;
-        this.position = position;
+        this(DEFAULT_DRIVER_NAME, position, ZERO_INDEX);
     }
 
-    Car(String name, int position) {
+    Car(String name, int position, int index) {
+        name = getNameOrDefault(name, index);
+        validateName(name);
+        this.index = index;
         this.name = name;
         this.position = position;
     }
@@ -68,7 +65,7 @@ public class Car {
     }
 
     public Car copy() {
-        return new Car(name, position);
+        return new Car(name, position, index);
     }
 
     @Override
