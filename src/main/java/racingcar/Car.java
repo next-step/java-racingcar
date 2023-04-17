@@ -1,27 +1,39 @@
 package racingcar;
 
-import lombok.Data;
-
-@Data
 public class Car {
-    private int prevDistance = 0;
-    private int currentDistance = 0;
-    private int resultOfRand;
+    private final int prevDistance;
+    private final int currentDistance;
+    private final int rand;
 
-    public void moveFoward() {
-        prevDistance = currentDistance;
-        currentDistance = prevDistance + 1;
+    public Car() {
+        this.prevDistance = 0;
+        this.currentDistance = 0;
+        this.rand = 0;
     }
 
-    public boolean isMoved(int diff) {
-        return diff > 0;
+    public Car(int prevDistance, int currentDistance, int rand) {
+        this.prevDistance = prevDistance;
+        this.currentDistance = currentDistance;
+        this.rand = rand;
+    }
+
+    public Car moveFoward(int rand) {
+        return new Car(currentDistance, currentDistance + 1, rand);
+    }
+
+    public boolean isMoved(int value) {
+        return value > 0;
+    }
+
+    public boolean isRandGreaterThan(int threshold) {
+        return rand > threshold;
     }
 
     public int diffBetweenCurrentDistAndPrevDist() {
         return currentDistance - prevDistance;
     }
 
-    public boolean isRandGreaterThan(int threshold) {
-        return resultOfRand > threshold;
+    public int currentPosition() {
+        return currentDistance;
     }
 }

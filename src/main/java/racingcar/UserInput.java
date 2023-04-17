@@ -1,22 +1,19 @@
 package racingcar;
 
-import lombok.Data;
-
-@Data
 public class UserInput {
-    private String numOfCars;
-    private String numOfTries;
+    private final String numOfCars;
+    private final String numOfTries;
 
     public UserInput(String numOfCars, String numOfTries) {
         this.numOfCars = numOfCars;
         this.numOfTries = numOfTries;
     }
 
-    public int getNumOfTriesByInt() {
+    public int numOfTriesByInt() {
         return Integer.parseInt(numOfTries);
     }
 
-    public int getNumOfCarsByInt() {
+    public int numOfCarsByInt() {
         return Integer.parseInt(numOfCars);
     }
 }
