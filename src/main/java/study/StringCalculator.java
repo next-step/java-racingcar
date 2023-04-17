@@ -8,6 +8,8 @@ public class StringCalculator {
     public static final int ZERO = 0;
     public static final String DELIMITER = ",|:";
 
+    public static final Pattern pattern = Pattern.compile("//(.)\n(.*)");
+
     public static int numberStringSum(String numberString) {
         if (isaBlank(numberString)) {
             return ZERO;
@@ -16,7 +18,7 @@ public class StringCalculator {
     }
 
     private static String[] split(String numberString) {
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(numberString);
+        Matcher m = pattern.matcher(numberString);
         if (m.find()) {
             String customDelimiter = m.group(1);
             return m.group(2).split(DELIMITER + "|" + customDelimiter);
