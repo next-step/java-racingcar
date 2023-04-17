@@ -15,5 +15,6 @@
 
 ## 기능 목록
 * 자동차는 숫자 0에서 9 사이 random 값이 4이상일 경우 전진
+* 자동차 수, 이동횟수 입력 기능
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
