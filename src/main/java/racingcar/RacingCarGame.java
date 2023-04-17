@@ -12,5 +12,6 @@ public class RacingCarGame {
             race.continueRace(race.randomNumbers());
             output.printPositions(race);
         }
+        output.printWinner(race);
     }
 }
