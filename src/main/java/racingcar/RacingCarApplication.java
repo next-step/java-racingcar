@@ -11,10 +11,10 @@ public class RacingCarApplication {
   public static void main(String[] args) {
     InputView inputView = new InputView();
 
-    int numberOfCars = inputView.askCarCount();
+    String[] carNames = inputView.askCarNames();
     int numberOfTrials = inputView.askTrialCount();
 
-    RacingCars racingCars = new RacingCars(numberOfCars);
+    RacingCars racingCars = new RacingCars(carNames);
 
     Racing racing = new Racing(racingCars);
     MoveStrategy normalMoveStrategy = new NormalMoveStrategy();

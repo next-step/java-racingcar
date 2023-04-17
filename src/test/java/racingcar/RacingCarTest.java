@@ -14,7 +14,7 @@ public class RacingCarTest {
   @Test
   @DisplayName("CarInterface 상속으로 RacingCar 객체 생성 후 position = 0인지 확인")
   public void createRacingCar_ReturnPositionValueZero() {
-    RacingCar racingCar = new RacingCar();
+    RacingCar racingCar = new RacingCar("test");
     int result = racingCar.position();
 
     assertThat(result).isEqualTo(0);
@@ -23,7 +23,7 @@ public class RacingCarTest {
   @Test
   @DisplayName("전략패턴을 통한 RacingCar move 실행후 position = 1인지 확인")
   public void moveRacingCar_ReturnPositionValueOne() {
-    RacingCar racingCar = new RacingCar();
+    RacingCar racingCar = new RacingCar("test");
     MoveStrategy normalMoveStrategy = new NormalMoveStrategy();
 
     racingCar.tryToMove(normalMoveStrategy);

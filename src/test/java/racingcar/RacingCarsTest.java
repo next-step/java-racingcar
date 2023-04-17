@@ -12,7 +12,8 @@ public class RacingCarsTest {
     @Test
     @DisplayName("자동차 객체 여러개 생성 되는지 확인")
     public void checkRacingCarsObject() {
-        RacingCars racingCars = new RacingCars(5);
+        String[] test =  new String[] {"pobi","next","step","fight","test"};
+        RacingCars racingCars = new RacingCars(test);
 
         assertThat(racingCars.statusOfRacingCars()).hasSize(5);
     }
@@ -20,7 +21,8 @@ public class RacingCarsTest {
     @Test
     @DisplayName("runRacingRound를 통해 자동차 5대를 움직여 position =1 1이하 값인지 확인")
     public void runRacingRoundTest() {
-        RacingCars racingCars = new RacingCars(5);
+        String[] test =  new String[] {"pobi","next","step","fight","test"};
+        RacingCars racingCars = new RacingCars(test);
         MoveStrategy normalMoveStrategy = new NormalMoveStrategy();
 
         racingCars.runRacingRound(normalMoveStrategy);

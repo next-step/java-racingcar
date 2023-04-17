@@ -13,7 +13,8 @@ public class RacingTest {
     @Test
     @DisplayName("5대 자동차, 4번 움직임 시도(postion max값 == 4)인 racing 확인")
     public void checkRacingClass() {
-        Racing racing = new Racing(new RacingCars(5));
+        String[] test =  new String[] {"pobi","next","step","fight","test"};
+        Racing racing = new Racing(new RacingCars(test));
         MoveStrategy normalMoveStrategy = new NormalMoveStrategy();
         int numberOfTrials = 4;
 
