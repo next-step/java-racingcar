@@ -2,6 +2,8 @@ package study;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -9,13 +11,13 @@ public class StringCalculatorTest {
 
     private StringCalculator stringCalculator = new StringCalculator();
 
-    @Test
-    @DisplayName("빈 문자열 또는 null 값일 경우 0 반환")
-    public void checkNull() {
-        int result = stringCalculator.numberStringSum("");
+    @ParameterizedTest
+    @NullAndEmptySource
+    public void checkNull(String checkStr) {
+        int result = stringCalculator.numberStringSum(checkStr);
         assertThat(result).isEqualTo(0);
 
-        result = stringCalculator.numberStringSum(null);
+        result = stringCalculator.numberStringSum(checkStr);
         assertThat(result).isEqualTo(0);
     }
 
