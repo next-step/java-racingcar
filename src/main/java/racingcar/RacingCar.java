@@ -2,15 +2,12 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class RacingCar {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        int carAmount = getCarAmount(scanner);
-        int tryAmount = getTryAmount(scanner);
-        List<Car> cars = createCar(carAmount);
+        String[] carNames = InputView.getCarNames();
+        int tryAmount = InputView.getTryAmount();
+        List<Car> cars = createCar(carNames);
 
         Game game = new Game(cars);
         OutputView.printExecutionResult();
