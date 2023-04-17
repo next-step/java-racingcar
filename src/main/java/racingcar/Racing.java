@@ -6,7 +6,7 @@ public class Racing {
 
     private final int gameCount;
     private final List<Car> cars;
-    private final List<List<Integer>> raceRecord;
+    private final List<RaceResult> raceRecord;
     private final RacingRandom racingRandom = RacingRandom.getInstance();
 
     public Racing(int carsNum, int gameCount) {
@@ -18,7 +18,7 @@ public class Racing {
     private List<Car> createCars(int carsNum) {
         List<Car> result = new ArrayList<>();
         for (int i = 0; i < carsNum; i++) {
-            result.add(new Car("test"));
+            result.add(new Car("test" + i));
         }
         return result;
     }
@@ -35,11 +35,7 @@ public class Racing {
     }
 
     private void record() {
-        List<Integer> result = new ArrayList<>();
-        for (Car car : cars) {
-            result.add(car.getDistance());
-        }
-        raceRecord.add(result);
+        raceRecord.add(new RaceResult(cars));
     }
 
     private void game() {
@@ -54,8 +50,7 @@ public class Racing {
         }
     }
 
-
-    public List<List<Integer>> getRaceRecord() {
+    public List<RaceResult> getRaceRecord() {
         return raceRecord;
     }
 }

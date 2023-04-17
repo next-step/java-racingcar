@@ -21,7 +21,7 @@ public class RacingTest {
     void 게임기록_저장() {
         Racing racing = new Racing(3, 5);
         racing.race();
-        List<List<Integer>> raceRecord = racing.getRaceRecord();
+        List<RaceResult> raceRecord = racing.getRaceRecord();
         Assertions.assertThat(raceRecord.size()).isEqualTo(5);
     }
 
