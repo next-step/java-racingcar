@@ -31,7 +31,7 @@ public class CarRace {
 
     public List<String> getWinners() {
         final int maxPosition = getMaxPosition();
-        return IntStream.range(0, cars.size())
+        return IntStream.range(0, cars.getNumberOfCar())
                 .filter(index -> cars.getPosition(index) == maxPosition)
                 .mapToObj(cars::getCarName)
                 .collect(Collectors.toList());

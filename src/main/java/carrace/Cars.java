@@ -36,7 +36,7 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public int size() {
+    public int getNumberOfCar() {
         return cars.size();
     }
 
