@@ -1,6 +1,6 @@
-package StringCalculator;
+package Stringcalculator;
 
-import static StringCalculator.CalculatorUtils.*;
+import static Stringcalculator.CalculatorUtils.*;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

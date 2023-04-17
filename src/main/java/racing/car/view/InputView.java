@@ -1,8 +1,8 @@
-package carRacing.view;
+package racing.car.view;
 
 import java.util.Scanner;
 
-import carRacing.exception.TryCountException;
+import racing.car.exception.TryCountException;
 
 public class InputView {
 

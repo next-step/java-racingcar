@@ -1,6 +1,6 @@
-package carRacing.domain;
+package racing.car.domain;
 
-import carRacing.exception.CarNameException;
+import racing.car.exception.CarNameException;
 
 public class Name {
 	private final String name;

@@ -1,8 +1,8 @@
-package carRacing.domain;
+package racing.car.domain;
 
 import java.util.List;
 
-import carRacing.utils.RandomUtils;
+import racing.car.utils.RandomUtils;
 
 public class CarRacing {
 

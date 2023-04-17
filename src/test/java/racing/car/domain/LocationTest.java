@@ -1,4 +1,4 @@
-package carRacing.domain;
+package racing.car.domain;
 
 import static org.assertj.core.api.Assertions.*;
 

@@ -1,8 +1,8 @@
-package carRacing;
+package racing.car;
 
-import carRacing.domain.CarRacing;
-import carRacing.view.InputView;
-import carRacing.view.ResultView;
+import racing.car.domain.CarRacing;
+import racing.car.view.InputView;
+import racing.car.view.ResultView;
 
 public class CarRacingMain {
 

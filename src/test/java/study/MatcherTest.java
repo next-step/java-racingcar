@@ -1,6 +1,6 @@
 package study;
 
-import static StringCalculator.CalculatorUtils.*;
+import static Stringcalculator.CalculatorUtils.*;
 import static org.assertj.core.api.Assertions.*;
 
 import java.util.regex.Matcher;

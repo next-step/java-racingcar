@@ -1,8 +1,8 @@
-package carRacing.domain;
+package racing.car.domain;
 
 import java.util.Objects;
 
-import carRacing.strategy.MoveStrategy;
+import racing.car.strategy.MoveStrategy;
 
 public class Car {
 
