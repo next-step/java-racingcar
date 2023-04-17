@@ -8,6 +8,7 @@ public class StringAddCalculator {
     private static final String MINUS = "-\\d+";
     private static final String NOT_NUMBER = "\\D+";
     private static final String CUSTOM_SPLIT_DELIMITER = "//|\n";
+
     private StringAddCalculator() {
     }
 

@@ -14,9 +14,9 @@ class GameTest {
     @DisplayName("우승자가 1명이면 우승자를 1명 반환한다.")
     void getWinnerOne() {
         //arrange
-        Car car1 = createEndCar("car1",2);
-        Car car2 = createEndCar("car2",1);
-        Car car3 = createEndCar("car3",1);
+        Car car1 = createEndCar("car1", 2);
+        Car car2 = createEndCar("car2", 1);
+        Car car3 = createEndCar("car3", 1);
         List<Car> endRaceCarList = Lists.newArrayList(car1, car2, car3);
 
         //act
@@ -32,9 +32,9 @@ class GameTest {
     @DisplayName("우승자가 2명이면 우승자를 2명 반환한다.")
     void getWinnerTwo() {
         //arrange
-        Car car1 = createEndCar("car1",2);
-        Car car2 = createEndCar("car2",2);
-        Car car3 = createEndCar("car3",1);
+        Car car1 = createEndCar("car1", 2);
+        Car car2 = createEndCar("car2", 2);
+        Car car3 = createEndCar("car3", 1);
         List<Car> endRaceCarList = Lists.newArrayList(car1, car2, car3);
 
         //act
@@ -48,7 +48,7 @@ class GameTest {
 
     }
 
-    private static Car createEndCar(String name, int position) {
+    private Car createEndCar(String name, int position) {
         Car car1 = new Car(name);
         for (int i = 0; i < position; i++) {
             car1.move(4);
