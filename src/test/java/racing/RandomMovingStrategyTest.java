@@ -8,6 +8,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
+import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -18,7 +19,7 @@ public class RandomMovingStrategyTest {
     @DisplayName("랜덤한 값이 정상적으로 나오는지 테스트")
     void raceConditionGenerator_test() {
         List<Boolean> results = Lists.newArrayList();
-        RandomMovingStrategy randomMovingStrategy = new RandomMovingStrategy();
+        RandomMovingStrategy randomMovingStrategy = new RandomMovingStrategy(new Random());
         for (int i = 0; i < 10; i++) {
             results.add(randomMovingStrategy.isMovable());
         }
@@ -40,7 +41,8 @@ public class RandomMovingStrategyTest {
     @RepeatedTest(value = 10, name = "0~10 사이 난수 생성 테스트")
     void 난수_생성_테스트() {
         int limit = 10;
-        int randNum = RandomMovingStrategy.randPositiveOrZero(limit);
+        RandomMovingStrategy randomMovingStrategy = new RandomMovingStrategy(new Random());
+        int randNum = randomMovingStrategy.randPositiveOrZero(limit);
 
         assertThat(randNum).isBetween(0, 9);
     }

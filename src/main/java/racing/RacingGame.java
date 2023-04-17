@@ -11,25 +11,22 @@ public class RacingGame {
         String[] carNames = initNameOfCars();
         Integer numberOfAttempts = initNumberOfAttempts();
 
-        List<Car> cars = initCars(carNames);
+        Cars cars = new Cars(initCars(carNames));
 
         List<Car> winners = playGame(numberOfAttempts, cars);
         printWinner(winners);
     }
 
-    private static List<Car> playGame(Integer numberOfAttempts, List<Car> cars) {
+    private static List<Car> playGame(Integer numberOfAttempts, Cars cars) {
         ResultView.printHeader();
         for (int i = 0; i < numberOfAttempts; i++) {
             round(cars);
         }
-        return WinnerSelector.selectWinner(cars);
+        return cars.findWinner();
     }
 
-    private static void round(List<Car> cars) {
-        for (Car car : cars) {
-            car.forward(new RandomMovingStrategy());
-        }
-        ResultView.printCarDistance(cars);
+    private static void round(Cars cars) {
+        ResultView.printCarDistance(cars.forward());
     }
 
     private static Integer initNumberOfAttempts() {

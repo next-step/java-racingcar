@@ -15,7 +15,8 @@ class WinnerSelectorTest {
     @MethodSource("getCars")
     void selectWinnerTest(List<Car> cars, List<Car> expected) {
 
-        List<Car> winners = WinnerSelector.selectWinner(cars);
+        Cars cars1 = new Cars(cars);
+        List<Car> winners = cars1.findWinner();
         assertThat(winners).containsAll(expected);
     }
 
