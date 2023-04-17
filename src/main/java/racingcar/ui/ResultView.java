@@ -19,10 +19,6 @@ public class ResultView {
         System.out.println(makeWinners(carNames) + "가 최종 우승했습니다.");
     }
 
-    public void printQuestionCarCountMessage() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-    }
-
     public void printQuestionTryCountMessage() {
         System.out.println("시도할 회수는 몇 회 인가요?");
     }
@@ -42,13 +38,6 @@ public class ResultView {
         printNewLine();
     }
 
-    public void printMoveStateLines(List<Integer> moveCounts) {
-        for (int i = BEGIN_INDEX; i < moveCounts.size(); i++) {
-            printMoveStateLine(moveCounts, i);
-        }
-        printNewLine();
-    }
-
     private void printCarNameAndMoveStateLine(List<Car> cars, int idx) {
         System.out.println(getCarName(cars, idx) + NAME_LINE_SEPARATOR + getCarMoveStateLine(cars, idx));
     }
@@ -59,10 +48,6 @@ public class ResultView {
 
     private String getCarMoveStateLine(List<Car> cars, int idx) {
         return makeCarMoveStateLine(cars.get(idx).moveCount());
-    }
-
-    private void printMoveStateLine(List<Integer> moveCounts, int idx) {
-        System.out.println(makeCarMoveStateLine(moveCounts.get(idx)));
     }
 
     public String makeCarMoveStateLine(int moveCount) {
