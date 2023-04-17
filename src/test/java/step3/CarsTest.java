@@ -28,20 +28,6 @@ public class CarsTest {
     }
 
     @Test
-    void 모든_자동차에_이동_action_전달() {
-        cars.actionAll(car -> car.move(5));
-        int actual = cars.deepCopyList().get(0).location();
-        assertThat(actual).isEqualTo(5);
-    }
-
-    @Test
-    void 모든_자동차에_멈춤_action_전달() {
-        cars.actionAll(Car::stop);
-        int actual = cars.deepCopyList().get(0).location();
-        assertThat(actual).isEqualTo(0);
-    }
-
-    @Test
     void deepCopyList_요소_변경시_원본_요소_변경없음() {
         List<Car> copy1 = cars.deepCopyList();
         copy1.get(0).move(5);

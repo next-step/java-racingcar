@@ -1,8 +1,8 @@
 package step3;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 /**
@@ -20,15 +20,15 @@ public class Cars {
         this.carList.add(car);
     }
 
-    public void actionAll(Consumer<Car> action) {
-        this.carList.parallelStream().forEach(action);
-    }
-
-    public int count() {
-        return this.carList.size();
+    public List<Car> unmodifiableList() {
+        return Collections.unmodifiableList(carList);
     }
 
     public List<Car> deepCopyList() {
         return carList.stream().map(Car::clone).collect(Collectors.toList());
+    }
+
+    public int count() {
+        return this.carList.size();
     }
 }

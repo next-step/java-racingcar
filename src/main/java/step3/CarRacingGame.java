@@ -2,7 +2,6 @@ package step3;
 
 
 import java.util.List;
-import java.util.function.Consumer;
 
 /**
  * @author : 0giri
@@ -27,7 +26,7 @@ public class CarRacingGame {
     private Cars makeCars(int carsCount) {
         Cars cars = new Cars();
         for (int i = 0; i < carsCount; i++) {
-            this.cars.addCar(new Car());
+            cars.addCar(new Car());
         }
         return cars;
     }
@@ -45,7 +44,7 @@ public class CarRacingGame {
         }
     }
 
-    private static void validEnoughRounds(int roundsCount) {
+    private void validEnoughRounds(int roundsCount) {
         if (roundsCount < 1) {
             throw new IllegalArgumentException("라운드는 1회 이상이어야 합니다.");
         }
@@ -58,9 +57,11 @@ public class CarRacingGame {
     }
 
     private void doRound() {
-        int random = RandomGenerator.generate(0, 9);
-        Consumer<Car> action = CarActionDecider.action(random);
-        this.cars.actionAll(action);
+        List<Car> carList = this.cars.unmodifiableList();
+        carList.parallelStream().forEach(car -> {
+            int random = RandomGenerator.generate(0, 9);
+            CarActionDecider.action(random).accept(car);
+        });
     }
 
     private void recordResult() {
