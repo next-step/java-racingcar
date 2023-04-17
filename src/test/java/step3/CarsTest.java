@@ -26,14 +26,14 @@ public class CarsTest {
     }
 
     @Test
-    void 모든_car에_이동_action_전달() {
+    void 모든_자동차에_이동_action_전달() {
         cars.actionAll(car -> car.move(5));
         int actual = cars.unmodifiableList().get(0).location();
         assertThat(actual).isEqualTo(5);
     }
 
     @Test
-    void 모든_car에_멈추는_action_전달() {
+    void 모든_자동차에_멈춤_action_전달() {
         cars.actionAll(Car::stop);
         int actual = cars.unmodifiableList().get(0).location();
         assertThat(actual).isEqualTo(0);
