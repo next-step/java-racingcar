@@ -1,16 +1,14 @@
 package step3_racingcar.domain;
 
-import step3_racingcar.service.GameRule;
+import step3_racingcar.dto.CarDTO;
 
-public class Car implements Cloneable {
+public class Car {
 
 	private int position = 0;
 
-	public void tryMove() {
-		if (GameRule.isCarMoving()) {
+	public void tryMove(boolean isMovable) {
+		if (isMovable) {
 			move();
-		} else {
-			stop();
 		}
 	}
 
@@ -18,23 +16,11 @@ public class Car implements Cloneable {
 		position++;
 	}
 
-	private void stop() {
+	public int getPosition() {
+		return position;
 	}
 
-	public String getStatus() {
-		StringBuilder status = new StringBuilder();
-		for (int i = 0; i < position; i++) {
-			status.append("-");
-		}
-		return status.toString();
-	}
-
-	@Override
-	public Car clone() {
-		try {
-			return (Car)super.clone();
-		} catch (CloneNotSupportedException e) {
-			throw new AssertionError();
-		}
+	public CarDTO toDTO() {
+		return new CarDTO(position);
 	}
 }

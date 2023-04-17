@@ -1,22 +1,42 @@
 package step3_racingcar;
 
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import step3_racingcar.domain.Car;
-import step3_racingcar.domain.Cars;
 
 public class CarTest {
+
+	@DisplayName("자동차 생성")
 	@Test
-	void testMove() {
+	public void moveTest() {
 		Car car = new Car();
-		car.tryMove();
-		String status = car.getStatus();
-		assertTrue(status.length() <= 1);
 	}
+
+	@DisplayName("자동차 전진")
+	@Test
+	void movableIsTrue() {
+		Car car = new Car();
+		int initialStatus = car.getPosition();
+
+		car.tryMove(true);
+		int movedStatus = car.getPosition();
+
+		assertNotEquals(initialStatus, movedStatus);
+	}
+
+	@DisplayName("자동차 정지")
+	@Test
+	void movableIsFalse() {
+		Car car = new Car();
+		int initialStatus = car.getPosition();
+
+		car.tryMove(false);
+		int notMovedStatus = car.getPosition();
+
+		assertEquals(initialStatus, notMovedStatus);
+	}
+
 }
-
-
-
