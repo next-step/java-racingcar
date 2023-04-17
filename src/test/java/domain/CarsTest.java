@@ -1,5 +1,6 @@
 package domain;
 
+import static domain.Cars.createCars;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
@@ -14,7 +15,7 @@ class CarsTest {
         String names = "포비,크롱,뽀로로";
         int attemptCount = 3;
         UserInput userInput = new UserInput(names, attemptCount);
-        List<Car> inpurCars = Cars.createCars(userInput.getNamesForCars(),
+        List<Car> inpurCars = createCars(userInput.getNamesForCars(),
                 userInput.getNumbersOfCar());
         Cars cars = new Cars(inpurCars);
 
@@ -27,7 +28,7 @@ class CarsTest {
         String names = "포비,크롱,뽀로로";
         int attemptCount = 3;
         UserInput userInput = new UserInput(names, attemptCount);
-        List<Car> inpurCars = Cars.createCars(userInput.getNamesForCars(),
+        List<Car> inpurCars = createCars(userInput.getNamesForCars(),
                 userInput.getNumbersOfCar());
         Cars cars = new Cars(inpurCars);
 

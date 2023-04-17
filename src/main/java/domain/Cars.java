@@ -6,6 +6,7 @@ import static domain.RandomNumber.isOverFourOutOfTen;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Cars {
 
@@ -15,18 +16,15 @@ public class Cars {
         this.cars = cars;
     }
 
-    public List<Car> createCars(String[] namesForCars, int numbersOfCar) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < numbersOfCar; i++) {
-            cars.add(new Car(namesForCars[i]));
-        }
-        return cars;
+    public static List<Car> createCars(String[] namesForCars, int numbersOfCar) {
+        return IntStream.range(0, numbersOfCar)
+                .mapToObj(i -> new Car(namesForCars[i]))
+                .collect(Collectors.toList());
     }
 
     public void makeCarsMove() {
-        for (int i = 0; i < cars.size(); i++) {
-            cars.get(i).attemptMove(isMoved());
-        }
+        cars.stream()
+                .forEach(car -> car.attemptMove(isMoved()));
     }
 
     private boolean isMoved() {
@@ -55,11 +53,10 @@ public class Cars {
     }
 
     private int getFarthestDistance() {
-        int farthestDistance = 0;
-        for (Car car : this.cars) {
-            farthestDistance = Math.max(farthestDistance, car.getCarCurrentDistance());
-        }
-        return farthestDistance;
+        return cars.stream()
+                .mapToInt(Car::getCarCurrentDistance)
+                .max()
+                .orElse(0);
     }
 
     private List<Car> getCarsWithFarthestDistance(int farthestDistance) {

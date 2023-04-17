@@ -1,3 +1,4 @@
+import static domain.Cars.createCars;
 import static view.InputView.getInput;
 import static view.ResultView.drawDistanceBlockWithName;
 import static view.ResultView.drawFirstPlace;
@@ -16,7 +17,7 @@ public class CarRacingApplication {
 
     private static void run(UserInput userInput) {
         int attemptCount = userInput.getAttemptCount();
-        List<Car> cars = Cars.createCars(userInput.getNamesForCars(), userInput.getNumbersOfCar());
+        List<Car> cars = createCars(userInput.getNamesForCars(), userInput.getNumbersOfCar());
         createResult(new Cars(cars), attemptCount);
     }
 
