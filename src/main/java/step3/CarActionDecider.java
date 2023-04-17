@@ -9,17 +9,17 @@ import java.util.function.Consumer;
 public class CarActionDecider {
 
     public static Consumer<Car> action(int number) {
-        if (isNegative(number)) {
-            throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
-        }
+        validIsNotNegative(number);
         if (passMoveRule(number)) {
             return moveAction(number);
         }
         return stopAction();
     }
 
-    private static boolean isNegative(int number) {
-        return number < 0;
+    private static void validIsNotNegative(int number) {
+        if (number < 0) {
+            throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
+        }
     }
 
     private static boolean passMoveRule(int number) {
