@@ -3,6 +3,9 @@ package util;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 import static org.assertj.core.api.Assertions.*;
 
 
@@ -43,5 +46,11 @@ class StringTest {
         assertThat("-1".chars().allMatch(Character::isDigit)).isFalse();
         assertThat("가".chars().allMatch(Character::isDigit)).isFalse();
         assertThat("-".chars().allMatch(Character::isDigit)).isFalse();
+    }
+
+    @Test
+    void stringJoinTest() {
+        assertThat(IntStream.range(0, 3).mapToObj(i -> "-")
+                .collect(Collectors.joining())).isEqualTo("---");
     }
 }
