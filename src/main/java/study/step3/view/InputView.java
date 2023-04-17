@@ -1,5 +1,6 @@
 package study.step3.view;
 
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -44,7 +45,20 @@ public class InputView {
     }
 
     private String[] splitString() {
-        return inputString().split(DELIMINATOR);
+        String[] names = inputString().split(DELIMINATOR);
+        validateNameLength(names);
+
+        return names;
+    }
+
+    private void validateNameLength(String[] tokens) {
+        for (String name : tokens) {
+            int length = name.length();
+
+            if (length >= 5) {
+                throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+            }
+        }
     }
 
     private String inputString() {
