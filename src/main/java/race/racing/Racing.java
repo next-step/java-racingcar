@@ -1,4 +1,9 @@
-package step3;
+package race.racing;
+
+import race.car.RacingCars;
+import race.car.Car;
+import race.car.Name;
+import race.car.dto.CarInfoDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,16 +14,16 @@ public class Racing {
     private final int matchCount;
     private static final Random random = new Random();
 
-    public Racing(int carCount, int matchCount) {
-        this.racingCars = this.racingCarRegistration(carCount);
+    public Racing(int matchCount, List<String> carNames) {
+        this.racingCars = this.racingCarRegistration(carNames);
         this.matchCount = matchCount;
     }
 
-    private RacingCars racingCarRegistration(int carCount) {
+    private RacingCars racingCarRegistration(List<String> carNames) {
         final List<Car> racingCars = new ArrayList<>();
 
-        for (int i = 0; i < carCount; i++) {
-            racingCars.add(new Car());
+        for (String carName : carNames) {
+            racingCars.add(new Car(new Name(carName)));
         }
 
         return new RacingCars(racingCars);
@@ -27,8 +32,8 @@ public class Racing {
     /**
      * 스코어보드라는 상태를 가지지않고 바로 반환하게 구현했습니다.
      */
-    public List<List<Integer>> race() {
-        final List<List<Integer>> scoreBoard = new ArrayList<>();
+    public List<List<CarInfoDto>> race() {
+        final List<List<CarInfoDto>> scoreBoard = new ArrayList<>();
 
         for (int i = 0; i < this.matchCount; i++) {
             this.carMove();

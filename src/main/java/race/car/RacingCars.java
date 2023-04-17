@@ -1,4 +1,6 @@
-package step3;
+package race.car;
+
+import race.car.dto.CarInfoDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,13 +22,13 @@ public class RacingCars {
         }
     }
 
-    public List<Integer> carScore(){
-        final List<Integer> currentScore = new ArrayList<>();
+    public List<CarInfoDto> carScore(){
+        final List<CarInfoDto> carInfoDtos = new ArrayList<>();
 
         for (Car car : this.racingCars) {
-            currentScore.add(car.getCurrentLocation());
+            carInfoDtos.add(car.currentCarInfo());
         }
 
-        return currentScore;
+        return carInfoDtos;
     }
 }
