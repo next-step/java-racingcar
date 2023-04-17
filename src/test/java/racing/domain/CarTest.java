@@ -11,14 +11,14 @@ import racing.domain.move.MoveStrategy;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class RacingCarTest {
+public class CarTest {
 
     @Test
     @DisplayName("자동차 생성")
     void create() {
         MoveStrategy moveStrategy = new FixedRandomForwardStrategy(5);
         String name = "test";
-        RacingCar actual = new RacingCar(name, moveStrategy);
+        Car actual = new Car(name, moveStrategy);
         assertThat(actual).isNotNull();
     }
 
@@ -27,8 +27,8 @@ public class RacingCarTest {
     void nameOk() {
         MoveStrategy moveStrategy = new FixedRandomForwardStrategy(5);
         String name = "test";
-        RacingCar car = new RacingCar(name, moveStrategy);
-        assertThat(car.name()).isEqualTo(new Name("test"));
+        Car car = new Car(name, moveStrategy);
+        assertThat(car.getName()).isEqualTo(new Name("test"));
     }
 
     @Test
@@ -36,7 +36,7 @@ public class RacingCarTest {
     void nameNot() {
         MoveStrategy moveStrategy = new FixedRandomForwardStrategy(5);
         String name = "test123";
-        assertThatThrownBy(() -> new RacingCar(name, moveStrategy))
+        assertThatThrownBy(() -> new Car(name, moveStrategy))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차 이름은 5자 이하만 가능합니다.");
     }
@@ -47,10 +47,10 @@ public class RacingCarTest {
     void ongoingNot(int randomValue) {
         MoveStrategy moveStrategy = new FixedRandomForwardStrategy(randomValue);
         String name = "test";
-        RacingCar car = new RacingCar(name, moveStrategy);
+        Car car = new Car(name, moveStrategy);
         car.move();
 
-        Position actual = car.position();
+        Position actual = car.getPosition();
         assertThat(actual).isEqualTo(new Position(0));
     }
 
@@ -60,10 +60,10 @@ public class RacingCarTest {
     void ongoingOk(int randomValue) {
         MoveStrategy moveStrategy = new FixedRandomForwardStrategy(randomValue);
         String name = "test";
-        RacingCar car = new RacingCar(name, moveStrategy);
+        Car car = new Car(name, moveStrategy);
         car.move();
 
-        Position actual = car.position();
+        Position actual = car.getPosition();
         assertThat(actual).isEqualTo(new Position(1));
     }
 }
