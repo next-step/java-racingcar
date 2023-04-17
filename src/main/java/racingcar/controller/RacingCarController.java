@@ -3,6 +3,7 @@ package racingcar.controller;
 import racingcar.model.Car;
 import racingcar.model.CarList;
 import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 import java.util.List;
 
@@ -18,8 +19,12 @@ public class RacingCarController {
         CarList carList = new CarList();
         List<Car> cars = carList.addCar(carNum);
 
-        for(int i = 0; i < cars.size(); i++){
+        ResultView resultView = new ResultView();
+        resultView.showResultMessage();
+
+        for(int i = 0; i < tryNum; i++){
             cars = moveCar(cars);
+            resultView.Result(cars);
         }
     }
 
