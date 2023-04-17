@@ -1,13 +1,22 @@
 package racingcar.view;
 
+import calculator.StringParser;
 import racingcar.PositiveNumberException;
 
+import java.util.Arrays;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 public class ConsoleView {
     private static final int INVALID_INPUT_LIMIT = 3;
+    private final StringParser<String> nameParser;
+
+    public ConsoleView(StringParser<String> nameParser) {
+        this.nameParser = nameParser;
+    }
 
     public void printCarLocation(int location) {
         for (int i = 0; i < location; i++) {
@@ -17,15 +26,15 @@ public class ConsoleView {
         System.out.println();
     }
 
-    public int numbOfCar() {
-        return tryPrintAndGet(this::printAndGetNumbOfCar);
+    public List<String> namesOfCar() {
+        return tryPrintAndGet(this::printAndGetNamesOfCar);
     }
 
     public int numbOfTrial() {
         return tryPrintAndGet(this::printAndGetNumbOfTrial);
     }
 
-    private int tryPrintAndGet(Supplier<Integer> printAndGetInput) {
+    private <T> T tryPrintAndGet(Supplier<T> printAndGetInput) {
         int numbOfInput = 0;
 
         while (numbOfInput < INVALID_INPUT_LIMIT) {
@@ -41,14 +50,21 @@ public class ConsoleView {
         throw new RuntimeException("유효하지 않은 입력 횟수 를 초과했습니다");
     }
 
-    private int printAndGetNumbOfTrial() {
-        System.out.println("시도할 회수는 몇 회 인가요?");
+    private List<String> printAndGetNamesOfCar() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
 
-        return tryGetInteger();
+        return Arrays.stream(nameParser.parse(getString()))
+                .collect(Collectors.toList());
     }
 
-    private int printAndGetNumbOfCar() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
+    private String getString() {
+        Scanner scanner = new Scanner(System.in);
+
+        return scanner.nextLine();
+    }
+
+    private int printAndGetNumbOfTrial() {
+        System.out.println("시도할 회수는 몇 회 인가요?");
 
         return tryGetInteger();
     }

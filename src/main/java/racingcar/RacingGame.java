@@ -15,15 +15,17 @@ public class RacingGame {
     }
 
     public void run() {
-        List<Car> cars = makeCarsOf(view.numbOfCar());
+        List<String> names = view.namesOfCar();
+
+        List<Car> cars = makeCarsOf(names);
 
         runWithCarsNTimes(view.numbOfTrial(), cars);
     }
 
-    private List<Car> makeCarsOf(int numb) {
+    private List<Car> makeCarsOf(List<String> names) {
         List<Car> cars = new ArrayList<>();
 
-        for (int i = 0; i < numb; i++) {
+        for (int i = 0; i < names.size(); i++) {
             cars.add(new Car());
         }
 
