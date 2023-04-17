@@ -7,39 +7,42 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Winners {
-    private final List<RacingCar> winners;
+    private final List<Car> winners;
 
-    public Winners(List<RacingCar> cars) {
+    public Winners(List<Car> cars) {
+        if (cars.isEmpty()) {
+            throw new IllegalArgumentException("Input이 null입니다.");
+        }
         this.winners = new ArrayList<>();
         Position maxPosition = getMaxPosition(cars);
         findWinners(cars, maxPosition);
     }
 
-    private static Position getMaxPosition(List<RacingCar> cars) {
+    private static Position getMaxPosition(List<Car> cars) {
         List<Position> positions = cars.stream()
-                .map(RacingCar::position)
+                .map(Car::getPosition)
                 .collect(Collectors.toList());
 
         return Collections.max(positions);
     }
 
-    private void findWinners(List<RacingCar> cars, Position maxPosition) {
-        for (RacingCar car : cars) {
+    private void findWinners(List<Car> cars, Position maxPosition) {
+        for (Car car : cars) {
             addWinner(maxPosition, car);
         }
     }
 
-    private void addWinner(Position maxPosition, RacingCar car) {
-        if (Objects.equals(car.position(), maxPosition)) {
+    private void addWinner(Position maxPosition, Car car) {
+        if (Objects.equals(car.getPosition(), maxPosition)) {
             winners.add(car);
         }
     }
 
-    public int size() {
-        return winners.size();
-    }
-
-    public RacingCar get(int index) {
-        return winners.get(index);
+    public List<Name> toNames() {
+        List<Name> names = new ArrayList<>();
+        for (Car winner : winners) {
+            names.add(winner.getName());
+        }
+        return names;
     }
 }
