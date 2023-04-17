@@ -63,7 +63,7 @@ public class RacingCarTest {
     }
 
     assertThat(racing.statusOfRacing()).hasSize(5);
-    assertThat(racing.statusOfRacing()[0].position())
+    assertThat(racing.statusOfRacing().get(0).position())
         .isLessThanOrEqualTo(4);
 
 //        System.out.println("carNumber: " + resultRacing.getRacingCar(0).getNumber() + " position: " + resultRacing.getRacingCar(0).getPosition());

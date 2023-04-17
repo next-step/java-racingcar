@@ -3,6 +3,8 @@ package racingcar.domain;
 import racingcar.strategy.NormalMoveStrategy;
 import racingcar.strategy.MoveStrategy;
 
+import java.util.List;
+
 public class Racing {
   private RacingCars racing;
 
@@ -22,7 +24,7 @@ public class Racing {
     return new NormalMoveStrategy();
   }
 
-  public RacingCar[] statusOfRacing() {
+  public List<RacingCar> statusOfRacing() {
     return this.racing.statusOfRacingCars();
   }
 }

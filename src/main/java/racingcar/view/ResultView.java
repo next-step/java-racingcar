@@ -2,13 +2,15 @@ package racingcar.view;
 
 import racingcar.domain.RacingCar;
 
+import java.util.List;
+
 public class ResultView {
 
   public ResultView() {
 
   }
 
-  public void printRacingRound(RacingCar[] racingCars, int numberOfTrials) {
+  public void printRacingRound(List<RacingCar> racingCars, int numberOfTrials) {
     if(numberOfTrials == 0 ) System.out.println("\n실행 결과");
 
     for (RacingCar racingCar : racingCars) {
