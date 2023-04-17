@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class RacingCarTest {
 
@@ -53,5 +54,28 @@ public class RacingCarTest {
 
         //then
         assertThat(moveCounts).containsExactly(0, 0, 1, 1, 1);
+    }
+
+    @DisplayName("자동차 이름 5자 초과시 예외 처리")
+    @Test
+    void carNameLengthException() {
+        assertThatThrownBy(() -> {
+            new RacingCar("hoyeon");
+        }).isInstanceOf(RuntimeException.class)
+                .hasMessageContaining("자동차 이름은 5자를 초과할 수 없습니다.");
+    }
+
+    @DisplayName("우승자 판별")
+    @Test
+    void getWinnersNames() {
+        //given
+        RacingCar racingCar = new RacingCar("pobi,crong,honux");
+
+        //when
+        racingCar.makeMoveCounts(Arrays.asList(1, 4, 5));
+        List<String> winnerNames = racingCar.getWinnerNames();
+
+        //then
+        assertThat(winnerNames).containsExactly("crong", "honux");
     }
 }
