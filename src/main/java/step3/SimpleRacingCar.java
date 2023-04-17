@@ -16,6 +16,9 @@ public class SimpleRacingCar {
 
         //입력받은 대수의 자동차 생성 및 각 자동차의 랜덤값 발생시키기
         List<Car> racingCarList = createCar(carCnt, repeatCnt);
+
+        //전진 조건 체크 및 자동차의 상태 이동 회수만큼 화면 출력하기
+        ResultView.printResult(racingCarList, repeatCnt);
     }
 
     public static List<Car> createCar(int carCnt, int repeatCnt) {
