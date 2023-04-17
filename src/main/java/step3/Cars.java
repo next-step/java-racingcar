@@ -10,25 +10,25 @@ import java.util.stream.Collectors;
  * @since : 2023/04/16
  */
 public class Cars {
-    private final List<Car> cars;
+    private final List<Car> carList;
 
     public Cars() {
-        this.cars = new ArrayList<>();
+        this.carList = new ArrayList<>();
     }
 
     public void addCar(Car car) {
-        this.cars.add(car);
+        this.carList.add(car);
     }
 
     public void actionAll(Consumer<Car> action) {
-        this.cars.parallelStream().forEach(action);
+        this.carList.parallelStream().forEach(action);
     }
 
     public int count() {
-        return this.cars.size();
+        return this.carList.size();
     }
 
     public List<Car> deepCopyList() {
-        return cars.stream().map(Car::clone).collect(Collectors.toList());
+        return carList.stream().map(Car::clone).collect(Collectors.toList());
     }
 }
