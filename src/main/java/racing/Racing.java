@@ -21,7 +21,7 @@ public class Racing {
     }
 
     private void validatePositve(int inputTryCount) {
-        if(inputTryCount < 0){
+        if (inputTryCount < 0) {
             throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
         }
     }

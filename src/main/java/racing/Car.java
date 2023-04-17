@@ -12,7 +12,7 @@ public class Car {
     }
 
     private void validateNameLength(String name) {
-        if(name.length() > NAME_MAX_LENGTH){
+        if (name.length() > NAME_MAX_LENGTH) {
             throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
         }
     }

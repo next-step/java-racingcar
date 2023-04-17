@@ -10,7 +10,7 @@ public class RacingRule {
     }
 
     public static int moveOrStop(int number) {
-        if(number >= MOVABLE_NUMBER){
+        if (number >= MOVABLE_NUMBER) {
             return move();
         }
         return stop();
