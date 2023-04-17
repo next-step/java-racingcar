@@ -32,6 +32,8 @@ public class Racing {
             race();
             ResultView.showRace(cars);
         }
+        Winner winner = new Winner(cars);
+        ResultView.showWinner(winner.name);
     }
 
     private void makeCars(String inputCarNames) {
