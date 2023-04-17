@@ -23,8 +23,8 @@ public class Racing {
 
     private void runCarsForOneTurn(List<Car> carList) {
         carList.stream().forEach(car -> {
-            car.move(RandomValue.getValue());
-            OutputView.printCarTraceUntilNow(car.nowPosition());
+            car.move(new RandomValue());
+            OutputView.printCarTraceUntilNow(car.showNowPosition());
             System.out.println();
         });
     }

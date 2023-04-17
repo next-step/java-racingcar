@@ -23,30 +23,31 @@ class CarTest {
     public void move_distance_togo() {
         Car car = new Car();
 
-        car.move(0);
-        car.move(4);
-        car.move(5);
+        car.move(new MovableRandomValueGenerator());
+        car.move(new MovableRandomValueGenerator());
+        car.move(new NonMovableRandomValueGenerator());
 
-        assertThat(car.nowPosition()).isEqualTo(2);
+        assertThat(car.showNowPosition()).isEqualTo(2);
     }
 
-    @DisplayName("랜덤 숫자 생성기를 통해 얻은 값으로 실제 이동하기")
+    @DisplayName("숫자가 4보다 크먄 위치를 1칸 이동")
     @Test
-    public void move_getRandomValue_togo() {
-        int totalMoveDistance = 0;
-        RandomValue randomValue = new RandomValue();
+    public void move_NumberIsEqualOrGreaterThanFour_GoPositionForOne() {
+        RandomValueGenerator randomValue = new MovableRandomValueGenerator();
         Car car = new Car();
 
-        for (int i = 0; i < 10; i++) {
-            int degree = randomValue.getValue();
-            if (car.judgeForth(degree)) {
-                totalMoveDistance++;
-                car.move(degree);
-            }
-        }
+        car.move(randomValue);
+        assertThat(car.showNowPosition()).isEqualTo(1);
+    }
 
-        assertThat(car.nowPosition()).isEqualTo(totalMoveDistance);
+    @DisplayName("숫자가 4보다 작으면 위치를 그대로 유지")
+    @Test
+    public void move_NumberisLessThanFour_KeepPosition() {
+        RandomValueGenerator randomValue = new NonMovableRandomValueGenerator();
+        Car car = new Car();
 
+        car.move(randomValue);
+        assertThat(car.showNowPosition()).isEqualTo(0);
     }
 
 }

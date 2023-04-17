@@ -2,20 +2,22 @@ package racingcar;
 
 public class Car {
 
-    private int position = 0;
+    private static final Integer MOVE_MINIMUM_CONDITION = 4;
+    private static final Integer MOVE_MAXIMUM_CONDITION = 9;
 
-    public void move(int distance) {
-        if (judgeForth(distance)) position++;
+    private Integer position = 0;
+
+    public void move(RandomValueGenerator randomValueGenerator) {
+        if (judgeForth(randomValueGenerator.generate())) {
+            position++;
+        }
     }
 
     public boolean judgeForth(int degree) {
-        if (degree >= 4 && degree <= 9) {
-            return true;
-        }
-        return false;
+        return (degree >= MOVE_MINIMUM_CONDITION) && (degree <= MOVE_MAXIMUM_CONDITION);
     }
 
-    public int nowPosition() {
+    public int showNowPosition() {
         return position;
     }
 
