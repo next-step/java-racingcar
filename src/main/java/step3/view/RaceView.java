@@ -18,9 +18,6 @@ public class RaceView {
     }
 
     private static void printCarPosition(Car car) {
-        for (int position = 0; position < car.getPosition(); position++) {
-            System.out.print("-");
-        }
-        System.out.println("");
+        System.out.println("-".repeat(car.getPosition()));
     }
 }
