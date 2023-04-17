@@ -2,6 +2,7 @@ package racing.car.domain;
 
 import java.util.Objects;
 
+import racing.car.strategy.GenerateNumberStrategy;
 import racing.car.strategy.MoveStrategy;
 
 public class Car {
@@ -16,14 +17,14 @@ public class Car {
 		this.location = new Location(location);
 	}
 
-	public void move(int randomValue) {
-		if (this.movable(randomValue)) {
+	public void move(GenerateNumberStrategy randomNumberStrategy) {
+		if (this.movable(randomNumberStrategy.number())) {
 			this.location.plus();
 		}
 	}
 
-	private boolean movable(int randomValue) {
-		MoveStrategy moveStrategy = () -> randomValue >= MOVE_CONDITION_MINIMUM;
+	private boolean movable(int number) {
+		MoveStrategy moveStrategy = () -> number >= MOVE_CONDITION_MINIMUM;
 		return moveStrategy.movable();
 	}
 

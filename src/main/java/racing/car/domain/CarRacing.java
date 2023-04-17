@@ -18,7 +18,7 @@ public class CarRacing {
 
 	public void race() {
 		for (Car car : this.cars.getCars()) {
-			car.move(RandomUtils.getRandomValue());
+			car.move(RandomUtils::getRandomValue);
 		}
 	}
 

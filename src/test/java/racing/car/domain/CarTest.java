@@ -11,7 +11,7 @@ public class CarTest {
 	@Test
 	void test1() {
 		Car car = new Car("pobi", 0);
-		car.move(4);
+		car.move(() -> 4);
 
 		assertThat(car).isEqualTo(new Car("pobi", 1));
 	}
@@ -20,7 +20,7 @@ public class CarTest {
 	@Test
 	void test2() {
 		Car car = new Car("pobi", 0);
-		car.move(3);
+		car.move(() -> 3);
 
 		assertThat(car).isEqualTo(new Car("pobi", 0));
 	}
