@@ -1,7 +1,7 @@
 package racingcar.domain;
 
-import racingcar.repository.NormalMoveStrategy;
-import racingcar.repository.MoveStrategy;
+import racingcar.strategy.NormalMoveStrategy;
+import racingcar.strategy.MoveStrategy;
 
 public class Racing {
   private RacingCars racing;

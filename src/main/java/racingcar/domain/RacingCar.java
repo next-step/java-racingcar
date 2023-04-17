@@ -1,7 +1,7 @@
 package racingcar.domain;
 
-import racingcar.repository.CarInterface;
-import racingcar.repository.MoveStrategy;
+import racingcar.strategy.CarInterface;
+import racingcar.strategy.MoveStrategy;
 
 public class RacingCar implements CarInterface {
   private int position = 0;       // 차가 이동한 위치

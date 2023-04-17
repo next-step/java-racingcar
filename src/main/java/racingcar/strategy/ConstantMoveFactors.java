@@ -1,4 +1,4 @@
-package racingcar.repository;
+package racingcar.strategy;
 
 public final class ConstantMoveFactors {
   private ConstantMoveFactors() {

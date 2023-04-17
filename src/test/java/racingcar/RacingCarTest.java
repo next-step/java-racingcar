@@ -3,8 +3,8 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.*;
-import racingcar.repository.MoveStrategy;
-import racingcar.repository.NormalMoveStrategy;
+import racingcar.strategy.MoveStrategy;
+import racingcar.strategy.NormalMoveStrategy;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
