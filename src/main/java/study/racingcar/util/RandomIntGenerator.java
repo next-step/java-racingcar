@@ -1,12 +1,12 @@
-package study.step3.util;
+package study.racingcar.util;
 
 import java.util.Random;
 
-public class RandomInt {
+public class RandomIntGenerator {
 
   private static final Random RANDOM_INSTANCE = new Random();
 
-  public static int makeRandomInt(int bound) {
+  public static int generate(int bound) {
     return RANDOM_INSTANCE.nextInt(bound);
   }
 }
