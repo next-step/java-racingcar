@@ -1,6 +1,6 @@
-package Stringcalculator;
+package stringcalculator;
 
-import static Stringcalculator.CalculatorUtils.*;
+import static stringcalculator.CalculatorUtils.*;
 import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
