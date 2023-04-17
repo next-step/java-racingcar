@@ -8,16 +8,21 @@ import static org.assertj.core.api.Assertions.*;
 public class StringTest {
 
     @Test
-    @DisplayName("split test")
-    void split() {
+    @DisplayName("한개 이상의 텍스트 분리")
+    void splitOneMoreText() {
         String[] values = "1,2".split(",");
         assertThat(values).containsExactly("1", "2");
-        values = "1".split(",");
+    }
+
+    @Test
+    @DisplayName("한개의 텍스트 분리")
+    void splitOneText() {
+        String[] values = "1".split(",");
         assertThat(values).contains("1");
     }
 
     @Test
-    @DisplayName("substring test")
+    @DisplayName("괄호제거 후 값 반환")
     void substring() {
         String input = "(1,2)";
         String result = input.substring(1, input.length()-1);
@@ -25,7 +30,7 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("특정위치 문자 가져오기1")
+    @DisplayName("특정위치의 문자를 가져올 때 범위를 벗어나는 경우 예외 발생1")
     void charAt() {
         String text = "abc";
         assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
@@ -35,12 +40,12 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("특정위치 문자 가져오기2")
+    @DisplayName("특정위치의 문자를 가져올 때 범위를 벗어나는 경우 예외 발생2")
     void charAt2() {
         String text = "abc";
         assertThatThrownBy(() ->{
             text.charAt(3);
         }).isInstanceOf(IndexOutOfBoundsException.class)
-          .hasMessageContaining("String index out of range: 3");
+                .hasMessageContaining("String index out of range: 3");
     }
 }
