@@ -31,8 +31,12 @@ public class Car {
   public String getName() {
     return name;
   }
-  
+
   public int getDistance() {
     return distance;
+  }
+
+  public boolean isWinner(Car competitor) {
+    return this.getDistance() >= competitor.getDistance();
   }
 }

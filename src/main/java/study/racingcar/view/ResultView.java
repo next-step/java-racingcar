@@ -1,14 +1,11 @@
 package study.racingcar.view;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import study.racingcar.domain.Car;
 
 public class ResultView {
 
   private static final int START_RACE_NUMBER = 0;
-  private static final int FIRST_INDEX = 0;
   private static final String DEFAULT_FOOTPRINT = "-";
   private static final String DEFAULT_DELIMITER = ",";
   private static final String NEXT_LINE = "\n";
@@ -38,34 +35,7 @@ public class ResultView {
     }
   }
 
-  public static void printWinners(List<Car> cars) {
-    printWinnerNames(getWinnerNames(sortCars(cars)));
-  }
-
-  private static List<Car> sortCars(List<Car> cars) {
-    Collections.sort(cars, (car1, car2) -> {
-      return car2.getDistance() - car1.getDistance();
-    });
-    return cars;
-  }
-
-  private static List<String> getWinnerNames(List<Car> cars) {
-    int maxDistance = cars.get(FIRST_INDEX).getDistance();
-    List<String> winnerNames = new ArrayList<>();
-    for (Car car : cars) {
-      if (!isWinner(maxDistance, car)) {
-        break;
-      }
-      winnerNames.add(car.getName());
-    }
-    return winnerNames;
-  }
-
-  private static boolean isWinner(int maxDistance, Car car) {
-    return car.getDistance() == maxDistance;
-  }
-
-  private static void printWinnerNames(List<String> winners) {
+  public static void printWinners(List<String> winners) {
     System.out.println(NEXT_LINE + String.join(DEFAULT_DELIMITER, winners) + "가 최종 우승했습니다.");
   }
 }
