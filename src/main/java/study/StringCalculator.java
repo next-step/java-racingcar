@@ -15,7 +15,7 @@ public class StringCalculator {
     public final Pattern pattern = Pattern.compile("//(.)\n(.*)");
 
     public int numberStringSum(String numberString) {
-        if (isaBlank(numberString)) {
+        if (isBlank(numberString)) {
             return ZERO;
         }
         return sum(toInts(split(numberString)));
@@ -30,7 +30,7 @@ public class StringCalculator {
         return numberString.split(DELIMITER);
     }
 
-    private boolean isaBlank(String numberString) {
+    private boolean isBlank(String numberString) {
         return numberString == null || numberString.isBlank();
     }
 
