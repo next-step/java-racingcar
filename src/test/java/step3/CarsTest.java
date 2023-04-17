@@ -2,6 +2,8 @@ package step3;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import step3.racing.Car;
+import step3.racing.Cars;
 
 import java.util.List;
 

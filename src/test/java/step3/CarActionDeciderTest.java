@@ -1,6 +1,8 @@
 package step3;
 
 import org.junit.jupiter.api.Test;
+import step3.racing.Car;
+import step3.racing.CarActionDecider;
 
 import java.util.function.Consumer;
 

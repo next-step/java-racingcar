@@ -1,5 +1,7 @@
-package step3;
+package step3.racing;
 
+
+import step3.util.RandomGenerator;
 
 import java.util.List;
 
