@@ -5,16 +5,17 @@ import java.util.List;
 
 public class MoveResult {
 
-    private final List<Car> carElement;
+    private final Cars cars;
 
     public MoveResult(List<Car> cars) {
-        this.carElement = new ArrayList<>();
+        List<Car> copyCars = new ArrayList<>();
         for (Car car : cars) {
-            this.carElement.add(new Car(car.position(), car.name()));
+            copyCars.add(new Car(car.position(), car.name()));
         }
+        this.cars = new Cars(copyCars);
     }
 
     public List<Car> getCarElement() {
-        return carElement;
+        return cars.carElements();
     }
 }
