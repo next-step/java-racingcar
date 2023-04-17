@@ -31,5 +31,6 @@ public class CarGame {
                     cars.move();
                     view.print(cars);
                 });
+        view.winner(cars);
     }
 }

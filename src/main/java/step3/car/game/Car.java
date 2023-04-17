@@ -53,20 +53,11 @@ public class Car implements Serializable {
         return location;
     }
 
+    public boolean sameScore(int highScore) {
+        return location == highScore;
+    }
+
     public String name() {
         return carName;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Car car = (Car) o;
-        return location == car.location && Objects.equals(carName, car.carName);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(location, carName);
     }
 }
