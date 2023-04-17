@@ -10,7 +10,7 @@ public class RacingCarTest {
     @Test
     @DisplayName("자동차 경주 3대 1회")
     void racing() {
-        int cars = 3;
+        String cars = "pobi,crong,honux";
 
         RacingCar racingCar = new RacingCar(cars);
 

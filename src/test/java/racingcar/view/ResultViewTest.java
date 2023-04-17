@@ -22,11 +22,11 @@ public class ResultViewTest {
     }
 
     @Test
-    @DisplayName("자동차 대수 질문 출력")
-    void numberOfCars() {
-        String request = "자동차 대수는 몇 대 인가요?\n";
+    @DisplayName("자동차 이름 질문 출력")
+    void nameOfCars() {
+        String request = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).\n";
 
-        ResultView.printNumberOfCars();
+        ResultView.printNameOfCars();
 
         assertThat(out.toString()).isEqualTo(request);
     }

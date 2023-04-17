@@ -11,13 +11,14 @@ public class RacingCar {
     private final List<Car> cars;
     private CarControl carControl;
 
-    public RacingCar(int numberOfCars) {
+    public RacingCar(String numberOfCars) {
         this.cars = registerCar(numberOfCars);
         this.carControl = new CarControl();
     }
 
-    private List<Car> registerCar(int numberOfCar) {
-        return IntStream.range(0, numberOfCar).mapToObj(i -> new Car()).collect(Collectors.toList());
+    private List<Car> registerCar(String numberOfCar) {
+        return null;
+//        return IntStream.range(0, numberOfCar).mapToObj(i -> new Car()).collect(Collectors.toList());
     }
 
     public void start() {

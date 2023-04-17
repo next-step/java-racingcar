@@ -7,8 +7,8 @@ import racingcar.view.ResultView;
 public class Main {
 
     public static void main(String[] args) {
-        ResultView.printNumberOfCars();
-        int cars = InputView.inputNumberOfCars();
+        ResultView.printNameOfCars();
+        String cars = InputView.inputNameOfCars();
 
         ResultView.printNumberOfMovements();
         int movements = InputView.inputNumberOfMovements();
