@@ -11,7 +11,7 @@ public class RaceTest {
     @Test
     @DisplayName("경주를 생성하면 입력받은 대수만큼의 차가 초기 위치에 생성된다")
     public void race_Initial() {
-        Race race = new Race(3, 2);
+        Race race = new Race("pobi,crong,honux", 2);
         assertThat(race.toCarDtoList().get(0).getPosition()).isZero();
         assertThat(race.toCarDtoList().get(1).getPosition()).isZero();
         assertThat(race.toCarDtoList().get(2).getPosition()).isZero();
@@ -20,7 +20,7 @@ public class RaceTest {
     @Test
     @DisplayName("경주를 1회 진행하면 조건에 따라 차들이 이동한다")
     public void race_OneTry() {
-        Race race = new Race(3, 2);
+        Race race = new Race("pobi,crong,honux", 2);
         race.continueRace(List.of(3, 4, 5));
         assertThat(race.toCarDtoList().get(0).getPosition()).isZero();
         assertThat(race.toCarDtoList().get(1).getPosition()).isOne();
@@ -30,7 +30,7 @@ public class RaceTest {
     @Test
     @DisplayName("현재까지 시도 회수가 입력받은 총 시도 회수보다 작으면 경주를 마치지 않는다.")
     public void race_NotFinished() {
-        Race race = new Race(3, 2);
+        Race race = new Race("pobi,crong,honux", 2);
         race.continueRace(List.of(3, 4, 5));
         assertThat(race.isNotFinished()).isTrue();
     }
@@ -38,9 +38,18 @@ public class RaceTest {
     @Test
     @DisplayName("현재까지 시도 회수가 입력받은 총 시도 회수와 같으면 경주를 마친다.")
     public void race_Finished() {
-        Race race = new Race(3, 2);
+        Race race = new Race("pobi,crong,honux", 2);
         race.continueRace(List.of(3, 4, 5));
         race.continueRace(List.of(3, 4, 5));
         assertThat(race.isNotFinished()).isFalse();
+    }
+
+    @Test
+    @DisplayName("자동차 이름은 쉼표(,)를 기준으로 구분한다")
+    public void race_SplitCarNameString() {
+        Race race = new Race("pobi,crong,honux", 2);
+        assertThat(race.toCarDtoList().get(0).getName()).isEqualTo("pobi");
+        assertThat(race.toCarDtoList().get(1).getName()).isEqualTo("crong");
+        assertThat(race.toCarDtoList().get(2).getName()).isEqualTo("honux");
     }
 }
