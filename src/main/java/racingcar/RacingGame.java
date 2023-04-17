@@ -20,14 +20,14 @@ public class RacingGame {
     }
 
     public void initCars(String names) {
-        Arrays.stream(names.split(",")).forEach((name) -> {
-            cars.add(new Car(name));
-        });
+        Arrays.stream(names.split(",")).forEach(name -> cars.add(new Car(name)));
     }
 
     public void move(int numberOfTry) {
+        resultView.printExecuteResult();
         for (int i = 0; i < numberOfTry; i++) {
             cars.move();
+            resultView.printRaceStep(cars);
         }
     }
 
@@ -36,10 +36,8 @@ public class RacingGame {
     }
 
     public void start() {
-        String nameOfCars = inputView.enterNameOfCars();
-        int numberOfTry = inputView.enterNumberOfTry();
-        initCars(nameOfCars);
-        move(numberOfTry);
-        resultView.printResult(cars);
+        initCars(inputView.enterNameOfCars());
+        move(inputView.enterNumberOfTry());
+        resultView.printWinner(cars);
     }
 }
