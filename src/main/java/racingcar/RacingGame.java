@@ -8,12 +8,17 @@ import java.util.List;
 public class RacingGame {
     private final ConsoleView view;
     private final RandomGenerator randomGenerator;
-    private final List<Car> winners;
+    private final WinnerDecisionStrategy winnerDecisionStrategy;
     private final List<Car> cars;
+    private List<Car> winners;
 
-    public RacingGame(ConsoleView view, RandomGenerator randomGenerator) {
+    public RacingGame(ConsoleView view,
+                      RandomGenerator randomGenerator,
+                      WinnerDecisionStrategy winnerDecisionStrategy) {
+
         this.view = view;
         this.randomGenerator = randomGenerator;
+        this.winnerDecisionStrategy = winnerDecisionStrategy;
         this.winners = new ArrayList<>();
         this.cars = new ArrayList<>();
     }
@@ -25,7 +30,7 @@ public class RacingGame {
 
         runWithCarsNTimes(view.numbOfTrial());
 
-        saveWinner();
+        pickWinners();
 
         view.printWinners(winners);
     }
@@ -42,15 +47,8 @@ public class RacingGame {
         }
     }
 
-    private void saveWinner() {
-        this.cars.sort((car1, car2) -> car2.location() - car1.location());
-
-        int maxLocation = this.cars.get(0).location();
-        for(Car car : this.cars) {
-            if(car.location() == maxLocation) {
-                winners.add(car);
-            }
-        }
+    private void pickWinners() {
+        this.winners = winnerDecisionStrategy.decideWinners(this.cars);
     }
 
     private void moveAndPrint() {

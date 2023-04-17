@@ -1,5 +1,4 @@
 package racingcar;
-
 import racingcar.view.ConsoleView;
 import racingcar.view.ToStringsParser;
 
@@ -8,8 +7,10 @@ public class App {
         RacingGame racingGame =
                 new RacingGame(
                         new ConsoleView(new ToStringsParser()),
-                        new RandomGenerator(0, 9));
+                        new RandomGenerator(0, 9),
+                        new WinnerDecisionByBigLocations());
 
         racingGame.run();
     }
 }
+
