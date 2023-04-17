@@ -1,6 +1,6 @@
-package car;
+package domain.car;
 
-import strategy.MovingStrategy;
+import domain.strategy.MovingStrategy;
 import strategy.RandomStrategy;
 
 import java.util.*;
@@ -15,7 +15,7 @@ public class Cars {
         this.strategy = strategy;
     }
 
-    public static Cars make(String[] nameOfCars) {
+    public static Cars make(String... nameOfCars) {
         List<Car> cars = new ArrayList<>();
         for (String nameOfCar : nameOfCars) {
             cars.add(new Car(nameOfCar));

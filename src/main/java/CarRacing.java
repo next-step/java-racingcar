@@ -1,4 +1,5 @@
-import record.Records;
+import domain.game.RacingGame;
+import domain.record.Records;
 import view.InputView;
 import view.PrintView;
 
@@ -12,6 +13,6 @@ public class CarRacing {
         RacingGame game = new RacingGame(nameOfCars);
         Records records = game.start(trial);
 
-        PrintView.printResult(records);
+        PrintView.printResult(records, trial);
     }
 }

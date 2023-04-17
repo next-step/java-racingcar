@@ -1,5 +1,7 @@
 package strategy;
 
+import domain.strategy.MovingStrategy;
+
 import java.util.Random;
 
 public class RandomStrategy implements MovingStrategy {

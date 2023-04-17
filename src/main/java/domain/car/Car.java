@@ -1,12 +1,12 @@
-package car;
+package domain.car;
 
-import strategy.MovingStrategy;
-
-import static constant.Constant.MAX_LENGTH_OF_NAME;
+import domain.strategy.MovingStrategy;
 
 public class Car {
 
-    private String name;
+    public static final int MAX_LENGTH_OF_NAME = 5;
+
+    private final String name;
     private int distance;
 
     public Car(String name) {

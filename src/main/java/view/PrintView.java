@@ -1,17 +1,19 @@
 package view;
 
-import record.CarRecord;
-import record.Records;
+import domain.record.Records;
+import domain.vo.CarRecord;
 
 import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 
 public class PrintView {
 
     private PrintView() {}
 
-    public static void printResult(Records records) {
+    public static void printResult(Records records, int trial) {
         PrintView.printTitle();
-        PrintView.printCar(records);
+        PrintView.printCar(records, trial);
         PrintView.printWinners(records.winners());
     }
 
@@ -19,25 +21,34 @@ public class PrintView {
         System.out.println("실행 결과");
     }
 
-    public static void printCar(Records records) {
+    public static void printCar(Records records, int trial) {
         List<CarRecord> gameRecord = records.gameRecord();
+        int carCount = gameRecord.size() / trial;
+        int recordCount = 0;
 
         for (CarRecord record : gameRecord) {
+            recordCount++;
             System.out.print(record.name() + " : ");
             printDistance(record.distance());
+            nextRound(carCount, recordCount);
         }
     }
 
     private static void printDistance(int distance) {
-        System.out.print("-".repeat(distance));
-        System.out.println();
+        System.out.println("-".repeat(distance));
+    }
+
+    private static void nextRound(int carCount, int round) {
+        if (round % carCount == 0) {
+            System.out.println();
+        }
     }
 
     public static void printWinners(List<CarRecord> winners) {
-        for (CarRecord winner : winners) {
-            System.out.print(winner.name() + ",");
-        }
+        List<String> nameOfWinner = winners.stream()
+                .map(CarRecord::name)
+                .collect(toList());
 
-        System.out.println("가 최종 우승하셨습니다.");
+        System.out.println(String.join(", ", nameOfWinner) + "(이)가 최종 우승하셨습니다.");
     }
 }

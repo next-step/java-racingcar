@@ -1,11 +1,11 @@
-package record;
+package domain.vo;
 
 import java.util.Objects;
 
-public class CarRecord {
+public class CarRecord implements Comparable<CarRecord>{
 
-    private String name;
-    private int distance;
+    private final String name;
+    private final int distance;
 
     public CarRecord(String name, int distance) {
         this.name = name;
@@ -31,5 +31,10 @@ public class CarRecord {
     @Override
     public int hashCode() {
         return Objects.hash(name, distance);
+    }
+
+    @Override
+    public int compareTo(CarRecord o) {
+        return this.distance - o.distance;
     }
 }
