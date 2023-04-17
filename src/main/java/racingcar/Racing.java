@@ -6,7 +6,7 @@ public class Racing {
 
     private final int gameCount;
     private final List<Car> cars;
-    private final List<RaceResult> raceRecord;
+    private final List<RaceRecord> raceRecord;
     private final RacingRandom racingRandom = RacingRandom.getInstance();
 
     public Racing(List<String> carNames, int gameCount) {
@@ -35,7 +35,7 @@ public class Racing {
     }
 
     private void record() {
-        raceRecord.add(new RaceResult(cars));
+        raceRecord.add(new RaceRecord(cars));
     }
 
     private void game() {
@@ -50,7 +50,28 @@ public class Racing {
         }
     }
 
-    public List<RaceResult> getRaceRecord() {
+    public List<RaceRecord> getRaceRecord() {
         return raceRecord;
+    }
+
+    public List<Car> getWinner(){
+        List<Car> winners = new ArrayList<>();
+        int max = getHighDistance();
+        for (Car car : cars) {
+            if(car.getDistance() == max){
+                winners.add(car);
+            }
+        }
+        return winners;
+    }
+
+    private int getHighDistance() {
+        int max = 1;
+        for (Car car : cars) {
+            if (car.getDistance() > max) {
+                max = car.getDistance();
+            }
+        }
+        return max;
     }
 }

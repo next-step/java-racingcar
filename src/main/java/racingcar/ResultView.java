@@ -5,19 +5,28 @@ import java.util.*;
 public class ResultView {
 
     public void printResult(Racing racing) {
-        System.out.println("실행결과");
-        List<RaceResult> results = racing.getRaceRecord();
+        printInit();
+        printGames(racing);
+        printWinner(racing);
+    }
 
-        if (results.size() == 0) {
+    private void printInit() {
+        System.out.println("실행결과");
+    }
+
+    private void printGames(Racing racing) {
+        List<RaceRecord> records = racing.getRaceRecord();
+
+        if (records.size() == 0) {
             return;
         }
-        for (RaceResult result : results) {
-            printGame(result);
+        for (RaceRecord record : records) {
+            printGame(record);
         }
     }
 
-    private void printGame(RaceResult result) {
-        for (Map.Entry<String, Integer> entry : result.getResult().entrySet()) {
+    private void printGame(RaceRecord record) {
+        for (Map.Entry<String, Integer> entry : record.getResult().entrySet()) {
             System.out.print(entry.getKey() + " : ");
             printDistance(entry.getValue());
         }
@@ -30,4 +39,23 @@ public class ResultView {
         }
         System.out.println();
     }
+
+    private void printWinner(Racing racing) {
+        List<Car> winners = racing.getWinner();
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < winners.size(); i++) {
+            if (i > 0) {
+                sb.append(", ");
+            }
+            sb.append(winners.get(i).getName());
+        }
+        String names = sb.toString();
+        System.out.println(names + "가 최종 우승했습니다.");
+
+    }
+
+
+
+
 }

@@ -17,7 +17,7 @@ public class RaceResultTest {
         carList.add(test1);
         carList.add(test2);
 
-        RaceResult raceResult = new RaceResult(carList);
+        RaceRecord raceResult = new RaceRecord(carList);
         Map<String,Integer> result = raceResult.getResult();
         Assertions.assertThat(result.get("test1")).isEqualTo(2);
         Assertions.assertThat(result.get("test2")).isEqualTo(1);
