@@ -14,7 +14,7 @@ public class Car implements Serializable {
     private String carName;
 
     public Car() {
-        this(RandomStringUtils.random(5));
+        this(RandomStringUtils.randomAlphabetic(5));
     }
 
     public Car(String carName) {
@@ -51,6 +51,10 @@ public class Car implements Serializable {
 
     public int location() {
         return location;
+    }
+
+    public String name() {
+        return carName;
     }
 
     @Override

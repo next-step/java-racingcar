@@ -12,6 +12,7 @@ public class CarsView {
     }
 
     private void print(Car car) {
+        System.out.print(car.name() + " : ");
         IntStream.range(0, car.location())
                 .forEach(value -> System.out.print("-"));
         System.out.println("");
