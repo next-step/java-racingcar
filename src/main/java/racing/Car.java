@@ -8,8 +8,15 @@ public class Car {
     private int position;
 
     public Car(String name){
+        validateNameUnderFive(name);
         this.position = ZERO;
         this.name = name;
+    }
+
+    private void validateNameUnderFive(String name) {
+        if(name.length() > 5){
+            throw new IllegalArgumentException("자동차 이름은 다섯자리 이하만 가능합니다");
+        }
     }
 
     public void move(){

@@ -34,11 +34,11 @@ public class Cars {
 
     public List<Car> findWinners(List<Car> cars){
         int maxCarCount = cars.stream()
-                .mapToInt(x -> x.getPosition())
+                .mapToInt(car -> car.getPosition())
                 .max()
                 .orElseThrow();
         return cars.stream()
-                .filter(x -> x.getPosition() == maxCarCount)
+                .filter(car -> car.getPosition() == maxCarCount)
                 .collect(Collectors.toList());
 
     }
