@@ -12,8 +12,8 @@ public class Racing {
         this.cars = racingCars;
     }
 
-    public void runRacingRound(MoveStrategy moveStrategy) {
-        this.cars.tryToRacingRound(moveStrategy);
+    public void startRacingRound(MoveStrategy moveStrategy) {
+        this.cars.runRacingRound(moveStrategy);
     }
 
     public List<RacingCar> statusOfRacing() {

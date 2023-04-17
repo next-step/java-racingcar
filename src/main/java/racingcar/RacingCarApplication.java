@@ -25,7 +25,7 @@ public class RacingCarApplication {
     resultView.printResultTitle();
 
     for (int i = 0; i < numberOfTrials; i++) {
-      racing.runRacingRound(normalMoveStrategy);
+      racing.startRacingRound(normalMoveStrategy);
       resultView.printRacingRound(racing.statusOfRacing());
     }
   }

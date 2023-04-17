@@ -16,7 +16,7 @@ public class RacingCars {
         }
     }
 
-    public void tryToRacingRound(MoveStrategy moveStrategy) {
+    public void runRacingRound(MoveStrategy moveStrategy) {
         for (RacingCar racingCar : this.racingCars) {
             racingCar.tryToMove(moveStrategy);
         }
@@ -24,7 +24,7 @@ public class RacingCars {
 
     // 자동차들 객체 가져오기
     public List<RacingCar> statusOfRacingCars() {
-        return racingCars;
+        return this.racingCars;
     }
 
 }
