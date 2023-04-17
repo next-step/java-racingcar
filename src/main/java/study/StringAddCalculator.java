@@ -1,58 +1,67 @@
 package study;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
-    static final String DEFAULT = "0";
+    public static final String DEFAULT = "0";
 
-    static String emptyAndNullChk(String text) {
-        if (text == null) {
-            return DEFAULT;
+    public static int splitAndSum(String text) {
+        int[] numbers = {};
+        String number = emptyAndNullChk(text);
+        nagativeChk(number);
+
+        if (number.contains("//")) {
+            return sum(customSepate(number));
         }
-        if (text.isEmpty()) {
+        numbers = separate(number);
+        return sum(numbers);
+    }
+
+    private static String emptyAndNullChk(String text) {
+        if (text == null || text.isEmpty()) {
             return DEFAULT;
         }
         return text;
     }
 
-    static int numberToInteger(String text) {
-        return Integer.parseInt(text);
+    private static void nagativeChk(String text) {
+        if (text.contains("-")) {
+            throw new RuntimeException();
+        }
     }
 
-    static String[] separate (String text) {
+    private static int[] separate(String text) {
         String[] numbers = text.split(",|:");
-        return numbers;
+        return numberToInteger(numbers);
     }
 
-    static int sum (String[] numbers) {
-        int result = 0;
-        for (String num: numbers) {
-            result += numberToInteger(num);
+    private static int[] customSepate(String text) {
+        int[] result = {};
+        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        if (m.find()) {
+            String customDelimiter = m.group(1);
+            String[] tokens= m.group(2).split(customDelimiter);
+            result = numberToInteger(tokens);
         }
         return result;
     }
 
-
-    static int splitAndSum(String text) {
-        String number = emptyAndNullChk(text);
-
-        if (number.contains("-")) {
-            throw new RuntimeException();
+    private static int[] numberToInteger(String[] numbers) {
+        int[] result = new int[numbers.length];
+        for (int i = 0; i < numbers.length; i++) {
+            result[i] = Integer.parseInt(numbers[i]);
         }
+        return result;
+    }
 
-        String[] numbers = separate(number);
-
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(number);
-
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            String[] tokens= m.group(2).split(customDelimiter);
-            // 덧셈 구현
-            return sum(tokens);
+    private static int sum(int[] numbers) {
+        int result = 0;
+        for (int num: numbers) {
+            result += num;
         }
-
-        return sum(numbers);
+        return result;
     }
 }
