@@ -42,6 +42,12 @@ public class Race {
                 .collect(Collectors.toList());
     }
 
+    public List<Car> getFirstPlace() {
+        return Arrays.stream(this.cars)
+                .filter(car -> car.toDto().getPosition().equals(getMaxPosition()))
+                .collect(Collectors.toList());
+    }
+
     private void createCars(String[] carNamesArray) {
         this.cars = Arrays.stream(carNamesArray)
                 .map(Car::new)
@@ -57,13 +63,10 @@ public class Race {
         return RANDOM.nextInt(MAX_NUMBER);
     }
 
-    public List<Car> getFirstPlace() {
-        Integer maxPosition = Arrays.stream(this.cars)
+    private Integer getMaxPosition() {
+        return Arrays.stream(this.cars)
                 .mapToInt(car -> car.toDto().getPosition())
                 .max()
                 .orElseThrow(NoSuchElementException::new);
-        return Arrays.stream(this.cars)
-                .filter(car -> car.toDto().getPosition().equals(maxPosition))
-                .collect(Collectors.toList());
     }
 }
