@@ -9,7 +9,9 @@ public class RacingCarGame {
     public static void start() {
         InputView.input();
         List<String> names = stringToNameList();
-        progress(new Cars(names, InputView.moveCount()));
+        Cars cars = new Cars(names, InputView.moveCount());
+        progress(cars);
+        ResultView.showWinner(cars);
     }
 
     private static List<String> stringToNameList() {

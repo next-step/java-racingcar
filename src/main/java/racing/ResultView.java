@@ -13,13 +13,16 @@ public class ResultView {
         }
         List<Car> carList = cars.values();
         for (Car car : carList) {
-            System.out.println(car.name() + " : " + convertPoisitonToMark(car.position()));
+            System.out.println(car.name() + " : " + convertPositionToMark(car.position()));
         }
         System.out.println();
     }
 
-    private static String convertPoisitonToMark(int position) {
+    private static String convertPositionToMark(int position) {
         return MARK.repeat(position);
     }
 
+    public static void showWinner(Cars cars) {
+        System.out.println(cars.winnerNames() + "가 최종 우승했습니다.");
+    }
 }

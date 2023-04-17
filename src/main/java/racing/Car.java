@@ -18,6 +18,15 @@ public class Car {
         this.position = DEFAULT_POSITION;
     }
 
+    public Car(String name, int position) {
+        if (name.length() > NAME_LENGTH_CRITERIA) {
+            throw new RuntimeException("이름은 5자를 초과할 수 없습니다.");
+        }
+        this.name = name;
+        this.position = position;
+    }
+
+
     public void move(int randomNumber) {
         if (randomNumber < 0 || randomNumber > MAX_RANDOM) {
             throw new RuntimeException("랜덤값 경계를 벗어났습니다.");

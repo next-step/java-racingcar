@@ -63,10 +63,24 @@ public class CarTest {
         List<String> names = List.of("pobiaaaaa", "crong", "honux");
         int moveCount = 5;
 
-        for (int i = 0; i < 3; i++) {
-            assertThatThrownBy(() -> new Cars(names, moveCount))
-                    .isInstanceOf(RuntimeException.class)
-                    .hasMessage("이름은 5자를 초과할 수 없습니다.");
-        }
+        assertThatThrownBy(() -> new Cars(names, moveCount))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("이름은 5자를 초과할 수 없습니다.");
+    }
+
+    @Test
+    void 이동이_끝나면_우승자_선출() {
+        List<String> names = List.of("pobiaaaaa", "crong", "honux");
+
+        Cars cars = new Cars(5, List.of(new Car("pobi", 5), new Car("crong", 2), new Car("honux", 3)));
+        assertThat(cars.winnerNames()).isEqualTo("pobi");
+    }
+
+    @Test
+    void 이동이_끝나면_우승자_목록_선출() {
+        List<String> names = List.of("pobiaaaaa", "crong", "honux");
+
+        Cars cars = new Cars(5, List.of(new Car("pobi", 5), new Car("crong", 5), new Car("honux", 3)));
+        assertThat(cars.winnerNames()).isEqualTo("pobi, crong");
     }
 }
