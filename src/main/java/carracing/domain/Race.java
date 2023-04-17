@@ -1,15 +1,13 @@
-package carRacing.domain;
+package carracing.domain;
 
 import java.util.List;
 
-import static carRacing.domain.RandomNumberGenerator.getRandomNumber;
+import static carracing.domain.RandomNumberGenerator.getRandomNumber;
 
 public class Race {
     private static final int MOVE_CONDITION = 4;
     private static final boolean MOVE_SUCCESS = true;
     private static final boolean MOVE_FAIL = false;
-    private static final int MOVE_DISTANCE = 1;
-
 
     public static List<Car> moveCars(List<Car> cars) {
         for (Car car : cars) {
@@ -17,15 +15,13 @@ public class Race {
             if (moveStatus(randomNumber)) {
                 moveCar(car);
             }
-            int currentLocation = car.getLocation();
 
         }
         return cars;
     }
 
     public static void moveCar(Car car) {
-        int currentLocation = car.getLocation();
-        car.setLocation(currentLocation + MOVE_DISTANCE);
+        car.move();
     }
 
     public static boolean moveStatus(int number) {

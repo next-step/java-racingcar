@@ -1,4 +1,4 @@
-package carRacing.domain;
+package carracing.domain;
 
 public class Car {
     private int location;
@@ -7,11 +7,11 @@ public class Car {
         this.location = 0;
     }
 
-    public void setLocation(int location) {
-        this.location = location;
-    }
-
     public int getLocation() {
         return location;
+    }
+
+    public void move() {
+        location++;
     }
 }

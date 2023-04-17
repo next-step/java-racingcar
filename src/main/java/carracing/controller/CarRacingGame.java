@@ -1,13 +1,13 @@
-package carRacing.controller;
+package carracing.controller;
 
-import carRacing.domain.Car;
-import carRacing.domain.CarCompany;
-import carRacing.view.InputView;
-import carRacing.view.ResultView;
+import carracing.domain.Car;
+import carracing.domain.CarCompany;
+import carracing.view.InputView;
+import carracing.view.ResultView;
 
 import java.util.List;
 
-import static carRacing.domain.Race.moveCars;
+import static carracing.domain.Race.moveCars;
 
 public class CarRacingGame {
     public static void main(String[] args) {

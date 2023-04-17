@@ -1,13 +1,13 @@
-package carRacing.view;
+package carracing.view;
 
-import carRacing.domain.Car;
+import carracing.domain.Car;
 
 import java.util.List;
 
 
 public class ResultView {
 
-    public void outputResult(List<Car> cars){
+    public void outputResult(List<Car> cars) {
         int carNumber = 0;
         for (Car car : cars) {
             carNumber += 1;
@@ -21,7 +21,7 @@ public class ResultView {
         System.out.println();
     }
 
-    public void resultStart(){
+    public void resultStart() {
         System.out.println("\n실행결과");
     }
 }
