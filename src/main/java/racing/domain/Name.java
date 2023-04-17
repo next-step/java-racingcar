@@ -16,17 +16,16 @@ public class Name {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
     private static boolean isNameBlank(String name) {
         return name.isBlank();
     }
 
     private static boolean isNameOverLimit(String name) {
         return name.length() > MAX_NAME_LENGTH;
-    }
-
-    @Override
-    public String toString() {
-        return name;
     }
 
     @Override
