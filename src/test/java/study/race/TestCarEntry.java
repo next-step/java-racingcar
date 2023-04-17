@@ -4,7 +4,8 @@ import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class TestCarEntry {
 
@@ -16,26 +17,14 @@ public class TestCarEntry {
         carEntry = new CarEntry(car);
     }
 
-
-    @Test
-    @DisplayName("CarEntry 객체의 전진 조건 테스트 - 성공")
-    public void test_carentry_move_condition_success() {
-        int successNum = 4;
-        carEntry.move(successNum);
-
-        Integer score = carEntry.getMoveRecord().get(0);
-        assertThat(score).isEqualTo(1);
-    }
-
-
-    @Test
-    @DisplayName("CarEntry 객체의 전진 조건 테스트 - 실패")
-    public void test_carentry_move_condition_fail() {
-        int failNum = 3;
-        carEntry.move(failNum);
+    @ParameterizedTest
+    @CsvSource({"4, 1", "2, 0"})
+    @DisplayName("CarEntry 객체의 전진 조건 테스트")
+    public void test_carentry_move_for_condition(int conditionNum, int moveNum) {
+        carEntry.move(conditionNum);
 
         Integer score = carEntry.getMoveRecord().get(0);
-        assertThat(score).isEqualTo(0);
+        assertThat(score).isEqualTo(moveNum);
     }
 
 }
