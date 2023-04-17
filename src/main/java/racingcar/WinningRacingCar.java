@@ -52,7 +52,7 @@ public class WinningRacingCar {
         return maxMoveCount;
     }
 
-    private static int getMaxMoveCount(int maxMoveCount, Car car) {
+    private int getMaxMoveCount(int maxMoveCount, Car car) {
         if(car.getMoveCount() > maxMoveCount) {
             maxMoveCount = car.getMoveCount();
         }
@@ -63,14 +63,14 @@ public class WinningRacingCar {
         return carNameInput.split(CAR_NAME_SEPARATOR);
     }
 
-    public List<Car> makeCars(List<Integer> numbers) {
+    public List<Car> makeMoveCounts(List<Integer> numbers) {
         for (int i = BEGIN_INDEX; i < numbers.size(); i++) {
-            makeCars(i, numbers.get(i));
+            makeMoveCount(i, numbers.get(i));
         }
         return cars;
     }
 
-    private void makeCars(int idx, int number) {
+    private void makeMoveCount(int idx, int number) {
         if (isCarMovable(number)) {
             plusMoveCount(idx);
         }

@@ -27,7 +27,7 @@ class WinningRacingCarTest {
         WinningRacingCar winningRacingCar = new WinningRacingCar("pobi,crong,honux");
 
         //when
-        winningRacingCar.makeCars(Arrays.asList(1, 4, 5));
+        winningRacingCar.makeMoveCounts(Arrays.asList(1, 4, 5));
         List<String> winnerNames = winningRacingCar.getWinnerNames();
 
         //then

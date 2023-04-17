@@ -28,7 +28,7 @@ public class Step4Main {
 
         for (int i = BEGIN_INDEX; i < tryCount; i++) {
             resultView.printCarNameAndMoveStateLines(
-                    winningRacingCar.makeCars(
+                    winningRacingCar.makeMoveCounts(
                             generateRandomNumbers(winningRacingCar.getCarsSize()))
             );
         }
