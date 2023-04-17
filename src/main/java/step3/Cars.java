@@ -3,6 +3,7 @@ package step3;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * @author : 0giri
@@ -17,6 +18,10 @@ public class Cars {
 
     public void addCar(Car car) {
         this.cars.add(car);
+    }
+
+    public void actionAll(Consumer<Car> action) {
+        this.cars.parallelStream().forEach(action);
     }
 
     public int count() {
