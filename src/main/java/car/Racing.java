@@ -18,6 +18,7 @@ public class Racing {
 
         for (int i = 0; i < frequency; i++) {
             cars = move.moveState(cars);
+            System.out.println();
         }
 
     }
