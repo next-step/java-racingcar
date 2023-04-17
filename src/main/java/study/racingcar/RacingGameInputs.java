@@ -9,9 +9,6 @@ public class RacingGameInputs {
 
     private int numberOfGames;
     private String[] carNameArray;
-    private int numberOfCar;
-
-    public RacingGameInputs() {}
 
     public RacingGameInputs(int numberOfGames, String carNamesStr) {
         isNegativeNumberAndZero(numberOfGames);

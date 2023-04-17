@@ -18,7 +18,7 @@ public class CarTest {
     @CsvSource(value = {"0:false", "6:true", "3:false"}, delimiterString = ":")
     public void Car_isMove(int randomNum, boolean result) {
 
-        Car car = new Car(0, "pobbi");
+        Car car = new Car(0, "pobbi", new CarMoveStrategy());
 
         assertThat(car.isMove(randomNum)).isEqualTo(result);
     }
@@ -28,7 +28,7 @@ public class CarTest {
     @CsvSource(value = {"0:0", "6:1", "3:0"}, delimiterString = ":")
     public void Car_move(int randomNum, int position) {
 
-        Car car = new Car(0, "pobbi");
+        Car car = new Car(0, "pobbi", new CarMoveStrategy());
 
         car.move(randomNum);
 
@@ -39,7 +39,7 @@ public class CarTest {
     @Test
     public void Car_move_여러_움직임_테스트() {
 
-        Car car = new Car(0, "pobbi");
+        Car car = new Car(0, "pobbi", new CarMoveStrategy());
         List<Integer> moveList = new ArrayList<>();
         moveList.add(0);
         moveList.add(7);

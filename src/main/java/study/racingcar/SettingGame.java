@@ -11,7 +11,7 @@ public class SettingGame {
         List<Car> carList = new ArrayList<>();
 
         for (int i = 0; i < racingGameInputs.getNameOfCars().length; i++) {
-            carList.add(new Car(ZERO, racingGameInputs.getNameOfCars()[i]));
+            carList.add(new Car(ZERO, racingGameInputs.getNameOfCars()[i], new CarMoveStrategy()));
         }
 
         return carList;

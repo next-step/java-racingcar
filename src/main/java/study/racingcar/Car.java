@@ -1,14 +1,14 @@
 package study.racingcar;
 
-public class Car implements MoveStrategy{
-    private static final int MOVE_CONDITION = 4;
-
+public class Car extends Moving {
     private String name;
     private int position;
 
-    public Car(int position, String name) {
+    public Car(int position, String name, MoveStrategy moveStrategy) {
         this.position = position;
         this.name = name;
+
+        setMoveStrategy(moveStrategy);
     }
 
     public int currentPosition() {
@@ -31,8 +31,4 @@ public class Car implements MoveStrategy{
         return this.position == maxPosition;
     }
 
-    @Override
-    public boolean isMove(int number) {
-        return number >= MOVE_CONDITION;
-    }
 }

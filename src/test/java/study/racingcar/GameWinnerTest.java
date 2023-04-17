@@ -16,9 +16,9 @@ public class GameWinnerTest {
 
         List<Car> carList = new ArrayList<>();
 
-        Car car1 = new Car(3, "pobbi");
-        Car car2 = new Car(5, "crong");
-        Car car3 = new Car(4, "honux");
+        Car car1 = new Car(3, "pobbi", new CarMoveStrategy());
+        Car car2 = new Car(5, "crong", new CarMoveStrategy());
+        Car car3 = new Car(4, "honux", new CarMoveStrategy());
 
         carList.add(car1);
         carList.add(car2);
@@ -36,9 +36,9 @@ public class GameWinnerTest {
 
         List<Car> carList = new ArrayList<>();
 
-        Car car1 = new Car(3, "pobbi");
-        Car car2 = new Car(5, "crong");
-        Car car3 = new Car(8, "honux");
+        Car car1 = new Car(3, "pobbi", new CarMoveStrategy());
+        Car car2 = new Car(5, "crong", new CarMoveStrategy());
+        Car car3 = new Car(8, "honux", new CarMoveStrategy());
 
         carList.add(car1);
         carList.add(car2);
@@ -56,9 +56,9 @@ public class GameWinnerTest {
 
         List<Car> carList = new ArrayList<>();
 
-        Car car1 = new Car(3, "pobbi");
-        Car car2 = new Car(5, "crong");
-        Car car3 = new Car(5, "honux");
+        Car car1 = new Car(3, "pobbi", new CarMoveStrategy());
+        Car car2 = new Car(5, "crong", new CarMoveStrategy());
+        Car car3 = new Car(5, "honux", new CarMoveStrategy());
 
         carList.add(car1);
         carList.add(car2);
