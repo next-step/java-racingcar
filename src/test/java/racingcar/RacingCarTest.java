@@ -59,7 +59,7 @@ public class RacingCarTest {
     int numberOfTrials = 4;
 
     while (numberOfTrials > 0) {
-      racing.startRacingRound(normalMoveStrategy);
+      racing.runRacingRound(normalMoveStrategy);
       numberOfTrials--;
     }
 

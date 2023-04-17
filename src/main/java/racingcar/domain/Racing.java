@@ -12,7 +12,7 @@ public class Racing {
     this.cars = racingCars;
   }
 
-  public void startRacingRound(MoveStrategy moveStrategy) {
+  public void runRacingRound(MoveStrategy moveStrategy) {
     this.cars.tryToRacingRound(moveStrategy);
   }
 

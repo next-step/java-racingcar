@@ -26,7 +26,7 @@ public class RacingCarApplication {
     MoveStrategy normalMoveStrategy = new NormalMoveStrategy();
 
     for (int i = 0; i < numberOfTrials; i++) {
-      racing.startRacingRound(normalMoveStrategy);
+      racing.runRacingRound(normalMoveStrategy);
       resultView.printRacingRound(racing.statusOfRacing(), i);
     }
   }
