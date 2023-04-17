@@ -56,7 +56,7 @@ class StringAddCalculatorTest {
     public void causeRunTimeException_whenNonNumbericValue() {
         String input = "=,-,@";
         Assertions.assertThatThrownBy(() -> StringAddCalculator.splitAndSum(input))
-                .isInstanceOf(NumberFormatException.class);
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
 }

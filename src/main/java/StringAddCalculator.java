@@ -40,7 +40,9 @@ public class StringAddCalculator {
     }
 
     private static int sum(String[] tokens) {
-        return Arrays.stream(tokens).mapToInt(Integer::parseInt).sum();
+        return Arrays.stream(tokens)
+                .mapToInt(Integer::parseInt)
+                .sum();
     }
 
     private static void checkNegative(String[] tokens) {
@@ -50,14 +52,14 @@ public class StringAddCalculator {
     }
 
     private static void checkNonNumericVal(String[] tokens) {
-        Arrays.stream(tokens).forEach(token -> checkEachValueWhetherNumberFormat(token));
+        Arrays.stream(tokens)
+                .forEach(token -> checkEachValueWhetherNumberFormat(token));
     }
 
     private static void checkEachValueWhetherNumberFormat(String eachString) {
-        try {
-            Integer.parseInt(eachString);
-        } catch (NumberFormatException ex) {
-            throw new NumberFormatException("숫자 형태의 값이 들어있습니다.");
+        if (!eachString.chars()
+                .allMatch(Character::isDigit)) {
+            throw new IllegalArgumentException("숫자 이외의 형태 값이 들어있습니다.");
         }
     }
 
