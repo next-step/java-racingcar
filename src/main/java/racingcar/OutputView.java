@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class OutputView {
 
@@ -23,8 +24,8 @@ public class OutputView {
     }
 
     public static void printWinner(List<Car> cars) {
-        System.out.println(String.join(", ", cars.stream()
+        System.out.println(cars.stream()
                 .map(Car::getName)
-                .toArray(String[]::new)) + "가 최종 우승했습니다.");
+                .collect(Collectors.joining(", ")) + "가 최종 우승했습니다.");
     }
 }
