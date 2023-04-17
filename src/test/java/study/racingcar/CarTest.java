@@ -13,16 +13,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
-    @DisplayName("숫자를 전달하여 움직이는 조건에 대한 테스트(4이상이면 true, 미만은 false)")
-    @ParameterizedTest
-    @CsvSource(value = {"0:false", "6:true", "3:false"}, delimiterString = ":")
-    public void Car_isMove(int randomNum, boolean result) {
-
-        Car car = new Car(0, "pobbi", new CarMoveStrategy());
-
-        assertThat(car.isMove(randomNum)).isEqualTo(result);
-    }
-
     @DisplayName("숫자를 전달하여 자동차가 정상적으로 움직였는지 테스트")
     @ParameterizedTest
     @CsvSource(value = {"0:0", "6:1", "3:0"}, delimiterString = ":")
