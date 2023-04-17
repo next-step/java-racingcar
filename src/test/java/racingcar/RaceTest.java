@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -51,5 +52,29 @@ public class RaceTest {
         assertThat(race.toCarDtoList().get(0).getName()).isEqualTo("pobi");
         assertThat(race.toCarDtoList().get(1).getName()).isEqualTo("crong");
         assertThat(race.toCarDtoList().get(2).getName()).isEqualTo("honux");
+    }
+
+    @Test
+    @DisplayName("자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다")
+    public void race_Winner() {
+        Race race = new Race("pobi,crong,honux", 2);
+        race.continueRace(List.of(3, 3, 5));
+        List<String> winnerCars = race.getFirstPlace()
+                .stream()
+                .map(car -> car.toDto().getName())
+                .collect(Collectors.toList());
+        assertThat(winnerCars).containsExactlyInAnyOrder("honux");
+    }
+
+    @Test
+    @DisplayName("우승자는 한명 이상일 수 있다")
+    public void race_CoWinner() {
+        Race race = new Race("pobi,crong,honux", 2);
+        race.continueRace(List.of(3, 4, 5));
+        List<String> winnerCars = race.getFirstPlace()
+                .stream()
+                .map(car -> car.toDto().getName())
+                .collect(Collectors.toList());
+        assertThat(winnerCars).containsExactlyInAnyOrder("crong", "honux");
     }
 }

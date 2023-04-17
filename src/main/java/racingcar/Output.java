@@ -9,4 +9,6 @@ interface Output {
     void printBlankLine();
 
     void printPositions(Race race);
+
+    void printWinner(Race race);
 }
