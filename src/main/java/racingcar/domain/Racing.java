@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import racingcar.strategy.NormalMoveStrategy;
 import racingcar.strategy.MoveStrategy;
 
 import java.util.List;

@@ -7,8 +7,6 @@ import racingcar.strategy.NormalMoveStrategy;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
-import java.util.List;
-
 public class RacingCarApplication {
   public static void main(String[] args) {
     InputView inputView = new InputView();
