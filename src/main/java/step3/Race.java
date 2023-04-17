@@ -1,5 +1,7 @@
 package step3;
 
+import step3.numbergenerator.NumberGenerator;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -8,20 +10,21 @@ public class Race {
 
     private final int raceCount;
     private final List<Car> cars;
-    private final static Random random = new Random();
+    private final NumberGenerator numberGenerator;
 
-    private Race(int raceCount, List<Car> cars) {
+    private Race(int raceCount, List<Car> cars, NumberGenerator numberGenerator) {
         this.raceCount = raceCount;
         this.cars = cars;
+        this.numberGenerator = numberGenerator;
     }
 
-    public static Race from(int raceCount, int carCount){
+    public static Race from(int raceCount, int carCount, NumberGenerator numberGenerator){
         List<Car> cars = new ArrayList<>(carCount);
         for(int i = 0; i < carCount; i++){
             cars.add(new Car());
         }
 
-        return new Race(raceCount, cars);
+        return new Race(raceCount, cars, numberGenerator);
     }
 
     public int getRaceCount() {
@@ -39,16 +42,6 @@ public class Race {
     }
 
     private void raceCar(){
-        cars.stream()
-                .filter(car -> success())
-                .forEach(Car::move);
-    }
-
-    private boolean success(){
-        int randomNumber = random.nextInt(10);
-        if(randomNumber < 4) {
-            return false;
-        }
-        return true;
+        cars.forEach(car -> car.move(numberGenerator));
     }
 }
