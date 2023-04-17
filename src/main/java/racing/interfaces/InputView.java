@@ -1,4 +1,4 @@
-package racing;
+package racing.interfaces;
 
 import java.util.Scanner;
 

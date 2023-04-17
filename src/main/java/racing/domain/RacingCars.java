@@ -1,4 +1,7 @@
-package racing;
+package racing.domain;
+
+import racing.domain.enums.MoveStatus;
+import racing.util.NumberUtil;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,7 @@
-package racing;
+package racing.interfaces;
+
+import racing.domain.Car;
+import racing.domain.RacingCars;
 
 public class ResultView {
 

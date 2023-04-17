@@ -1,4 +1,4 @@
-package racing;
+package racing.domain.enums;
 
 import java.util.Arrays;
 

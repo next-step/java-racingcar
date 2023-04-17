@@ -1,4 +1,8 @@
-package racing;
+package racing.interfaces;
+
+import racing.domain.Car;
+import racing.domain.Garage;
+import racing.domain.Racing;
 
 import java.util.List;
 

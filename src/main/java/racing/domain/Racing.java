@@ -1,5 +1,5 @@
 
-package racing;
+package racing.domain;
 
 import java.util.List;
 
