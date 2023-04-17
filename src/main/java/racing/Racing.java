@@ -28,4 +28,7 @@ public class Racing {
         this.leftMatchCounts--;
     }
 
+    public int getLeftMatchCounts() {
+        return leftMatchCounts;
+    }
 }
