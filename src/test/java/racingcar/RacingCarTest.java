@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.ui.ResultView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,21 +14,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class RacingCarTest {
-
-    @DisplayName("random 값이 4이상이면 전진한다.")
-    @ParameterizedTest
-    @CsvSource(value = {"0:false", "1:false", "2:false", "3:false",
-            "4:true", "5:true", "6:true", "7:true", "8:true", "9:true"}, delimiter = ':')
-    void move(int randomNumber, boolean result) {
-        //given
-        RacingCar racingCar = new RacingCar(3);
-
-        //when
-        boolean moveYn = racingCar.isCarMovable(randomNumber);
-
-        //then
-        assertThat(moveYn).isEqualTo(result);
-    }
 
     @DisplayName("자동차의 출력 상태값 만들기(1회 전진마다 -추가")
     @ParameterizedTest
@@ -47,13 +33,18 @@ public class RacingCarTest {
     @Test
     void makeMoveCounts() {
         //given
-        List<Integer> numbers = Arrays.asList(1, 2, 4, 5, 6);
+        String carNameInput = "pobi,crong,honux,choi";
+        List<Integer> numbers = Arrays.asList(1, 2, 4, 5);
 
         //when
-        List<Integer> moveCounts = new RacingCar(numbers.size()).makeMoveCounts(numbers);
+        List<Car> cars = new RacingCar(carNameInput).makeMoveCounts(numbers);
+        List<Integer> moveCounts = new ArrayList<>();
+        for (Car car : cars) {
+            moveCounts.add(car.getMoveCount());
+        }
 
         //then
-        assertThat(moveCounts).containsExactly(0, 0, 1, 1, 1);
+        assertThat(moveCounts).containsExactly(0, 0, 1, 1);
     }
 
     @DisplayName("자동차 이름 5자 초과시 예외 처리")

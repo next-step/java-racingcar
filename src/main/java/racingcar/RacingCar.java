@@ -76,7 +76,7 @@ public class RacingCar {
         }
     }
 
-    public boolean isCarMovable(int number) {
+    private boolean isCarMovable(int number) {
         return number >= CAR_MOVE_STANDARD;
     }
 
