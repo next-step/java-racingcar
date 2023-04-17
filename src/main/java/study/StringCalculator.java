@@ -44,7 +44,7 @@ public class StringCalculator {
     private int toInt(String splitNumberString) {
         int number = Integer.parseInt(splitNumberString);
         if (number < 0) {
-            throw new RuntimeException("음수는 입력할 수 없습니다.");
+            throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
         }
         return number;
     }
