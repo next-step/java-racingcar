@@ -1,9 +1,9 @@
 package step3;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 /**
  * @author : 0giri
@@ -28,7 +28,7 @@ public class Cars {
         return this.cars.size();
     }
 
-    public List<Car> unmodifiableList() {
-        return Collections.unmodifiableList(cars);
+    public List<Car> deepCopyList() {
+        return cars.stream().map(Car::clone).collect(Collectors.toList());
     }
 }
