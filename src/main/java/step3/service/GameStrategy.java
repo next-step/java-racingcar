@@ -1,17 +1,11 @@
 package step3.service;
 
-import step3.domain.UserInput;
+import step3.domain.Car;
+
+import java.util.List;
 
 public interface GameStrategy {
 
-    UserInput input();
-
-    void playGame(UserInput userInput);
-
-    void printCarStatus();
-
-    default void start() {
-        playGame(input());
-    }
+    List<Car> playGame();
 
 }
