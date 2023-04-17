@@ -14,15 +14,27 @@ public class PositiveInteger {
         return ps;
     }
 
+    public static PositiveInteger from(int value){
+        validate(value);
+        PositiveInteger ps = new PositiveInteger(value);
+        return ps;
+    }
+
     public int getValue(){
         return value;
     }
 
     private static void validate(String value){
         try{
-            Integer.parseInt(value);
+            validate(Integer.parseInt(value));
         }catch (NumberFormatException e){
             throw new RuntimeException("입력은 숫자만 가능합니다! "+value, e);
+        }
+    }
+
+    private static void validate(int value){
+        if(value < 1){
+            throw new RuntimeException("입력은 양수만 가능합니다! "+value);
         }
     }
 }
