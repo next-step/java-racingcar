@@ -3,46 +3,46 @@ package racing;
 import java.util.ArrayList;
 import java.util.List;
 
+import static racing.ResultView.printWinner;
+
 public class RacingGame {
 
     public static void main(String[] args) {
-        Integer numberOfCars = initNumberOfCars();
+        String[] carNames = initNameOfCars();
         Integer numberOfAttempts = initNumberOfAttempts();
-        List<Car> cars = initCars(numberOfCars);
 
-        playGame(numberOfAttempts, cars);
+        Cars cars = new Cars(initCars(carNames));
+
+        List<Car> winners = playGame(numberOfAttempts, cars);
+        printWinner(winners);
     }
 
-    private static void playGame(Integer numberOfAttempts, List<Car> cars) {
+    private static List<Car> playGame(Integer numberOfAttempts, Cars cars) {
         ResultView.printHeader();
         for (int i = 0; i < numberOfAttempts; i++) {
             round(cars);
         }
+        return cars.findWinner();
     }
 
-    private static void round(List<Car> cars) {
-        for (Car car : cars) {
-            car.forward(RaceConditionGenerator.isForwardable());
-        }
-        ResultView.printCarDistance(cars);
+    private static void round(Cars cars) {
+        ResultView.printCarDistance(cars.forward());
     }
 
     private static Integer initNumberOfAttempts() {
         InputView.printNumberOfAttempts();
-        Integer numberOfAttempts = ConsoleScanner.inputInt();
-        return numberOfAttempts;
+        return ConsoleScanner.inputInt();
     }
 
-    private static Integer initNumberOfCars() {
-        InputView.printNumberOfCars();
-        Integer numberOfCars = ConsoleScanner.inputInt();
-        return numberOfCars;
+    private static String[] initNameOfCars() {
+        InputView.printNameOfCars();
+        return ConsoleScanner.inputString().split(",");
     }
 
-    private static List<Car> initCars(Integer numberOfCars) {
+    private static List<Car> initCars(String[] carNames) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car());
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
         }
         return cars;
     }
