@@ -1,5 +1,7 @@
 package study;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -30,11 +32,11 @@ public class StringCalculator {
         return numberString == null || numberString.isBlank();
     }
 
-    private int[] toInts(String[] splitNumberString) {
-        int[] numbers = new int[splitNumberString.length];
+    private List<Integer> toInts(String[] splitNumberString) {
+        List<Integer> numbers = new ArrayList<>();
         for (int i = 0; i < splitNumberString.length; i++) {
             int number = toInt(splitNumberString[i]);
-            numbers[i] = number;
+            numbers.add(number);
         }
         return numbers;
     }
@@ -47,7 +49,7 @@ public class StringCalculator {
         return number;
     }
 
-    private int sum(int[] numbers) {
+    private int sum(List<Integer> numbers) {
         int result = ZERO;
         for (int i : numbers) {
             result += i;
