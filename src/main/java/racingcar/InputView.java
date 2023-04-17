@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class InputView {
 
-    private static final Scanner scanner = new Scanner(System.in);
+    private static final Scanner SCANNER = new Scanner(System.in);
 
     private InputView() {
     }
@@ -19,14 +19,14 @@ public class InputView {
 
     public static int getTryAmount() {
         InputView.printTryInputGuideMessage();
-        int tryAmount = scanner.nextInt();
+        int tryAmount = SCANNER.nextInt();
         Validator.validateTryAmount(tryAmount);
         return tryAmount;
     }
 
     public static String[] getCarNames() {
         InputView.printCarInputGuideMessage();
-        String carNames = scanner.nextLine();
+        String carNames = SCANNER.nextLine();
         String[] carNamesArray = carNames.split(",");
         Validator.validateCarAmount(carNamesArray.length);
         return carNamesArray;
