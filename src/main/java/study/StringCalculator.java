@@ -1,9 +1,11 @@
 package study;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class StringCalculator {
 
@@ -34,11 +36,7 @@ public class StringCalculator {
 
     private List<Integer> toInts(String[] splitNumberString) {
         List<Integer> numbers = new ArrayList<>();
-        for (int i = 0; i < splitNumberString.length; i++) {
-            int number = toInt(splitNumberString[i]);
-            numbers.add(number);
-        }
-        return numbers;
+        return Arrays.stream(splitNumberString).map(strNum -> toInt(strNum)).collect(Collectors.toList());
     }
 
     private int toInt(String splitNumberString) {
@@ -50,10 +48,6 @@ public class StringCalculator {
     }
 
     private int sum(List<Integer> numbers) {
-        int result = ZERO;
-        for (int i : numbers) {
-            result += i;
-        }
-        return result;
+        return numbers.stream().reduce(0,Integer::sum);
     }
 }
