@@ -1,5 +1,6 @@
 package racingCarGame.domain;
 
+import org.junit.jupiter.api.Test;
 import racingCarGame.view.InputView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -60,6 +61,19 @@ public class RacingCarGameTest {
 
         assertThat(racingCarGame.findWinner().size()).isEqualTo(1);
         assertThat(racingCarGame.findWinner().get(0)).isEqualTo(winner);
+    }
+
+    @Test
+    public void raceTest() {
+        InputView input = new InputView("pobi,yong,kei", 3);
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car(input.getOwners().get(0), new AlwaysMoveStrategy()));
+        cars.add(new Car(input.getOwners().get(1), new AlwaysMoveStrategy()));
+        cars.add(new Car(input.getOwners().get(2), new AlwaysMoveStrategy()));
+        RacingCarGame racingCarGame = new RacingCarGame(cars);
+        racingCarGame.race();
+
+        racingCarGame.getCars().forEach(car -> assertThat(car.getDistance()).isEqualTo(1));
     }
 
     private MoveStrategy getStrategy(String strategy) {
