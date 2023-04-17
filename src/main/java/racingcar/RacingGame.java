@@ -8,59 +8,57 @@ import java.util.List;
 public class RacingGame {
     private final ConsoleView view;
     private final RandomGenerator randomGenerator;
-    private final List<Car> winners = new ArrayList<>();
+    private final List<Car> winners;
+    private final List<Car> cars;
 
     public RacingGame(ConsoleView view, RandomGenerator randomGenerator) {
         this.view = view;
         this.randomGenerator = randomGenerator;
+        this.winners = new ArrayList<>();
+        this.cars = new ArrayList<>();
     }
 
     public void run() {
         List<String> names = view.namesOfCar();
 
-        List<Car> cars = makeCarsOf(names);
+        addCarsOf(names);
 
-        runWithCarsNTimes(view.numbOfTrial(), cars);
+        runWithCarsNTimes(view.numbOfTrial());
 
-        saveWinner(cars);
+        saveWinner();
 
         view.printWinners(winners);
     }
 
-    private List<Car> makeCarsOf(List<String> names) {
-        List<Car> cars = new ArrayList<>();
-
+    private void addCarsOf(List<String> names) {
         for (String name : names) {
             cars.add(Car.of(name));
         }
-
-        return cars;
     }
 
-    private void runWithCarsNTimes(int trials, List<Car> cars) {
+    private void runWithCarsNTimes(int trials) {
         for (int i = 0; i < trials; i++) {
-            moveAndPrint(cars);
+            moveAndPrint();
         }
     }
 
-    private void saveWinner(List<Car> cars) {
-        cars.sort((car1, car2) -> car2.location() - car1.location());
+    private void saveWinner() {
+        this.cars.sort((car1, car2) -> car2.location() - car1.location());
 
-        int maxLocation = cars.get(0).location();
-        for(Car car : cars) {
+        int maxLocation = this.cars.get(0).location();
+        for(Car car : this.cars) {
             if(car.location() == maxLocation) {
                 winners.add(car);
             }
         }
     }
 
-    private void moveAndPrint(List<Car> cars) {
-
-        for (Car car : cars) {
+    private void moveAndPrint() {
+        for (Car car : this.cars) {
             int rand = randomGenerator.generate();
             car.moveDependingOn(rand);
         }
 
-        view.printCarsLocation(cars);
+        view.printCarsLocation(this.cars);
     }
 }
