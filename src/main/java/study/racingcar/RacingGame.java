@@ -9,10 +9,10 @@ public class RacingGame {
 
   public static void main(String[] args) {
     String[] nameOfCars = InputView.inputNameOfCars();
-    int numOfRaces = InputView.inputNumOfRaces();
+    int numberOfRaces = InputView.inputNumberOfRaces();
 
     Race race = RaceFactory.createRace(nameOfCars);
-    for (int i = 0; i < numOfRaces; i++) {
+    for (int i = 0; i < numberOfRaces; i++) {
       race.play();
       ResultView.printResult(i, race.getCars());
     }

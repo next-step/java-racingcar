@@ -7,7 +7,7 @@ import study.racingcar.domain.Car;
 
 public class ResultView {
 
-  private static final int START_RACE_NUM = 0;
+  private static final int START_RACE_NUMBER = 0;
   private static final int FIRST_INDEX = 0;
   private static final String DEFAULT_FOOTPRINT = "-";
   private static final String DEFAULT_DELIMITER = ",";
@@ -16,20 +16,20 @@ public class ResultView {
   private ResultView() {
   }
 
-  public static void printResult(int raceNum, List<Car> cars) {
-    printRaceNum(raceNum);
+  public static void printResult(int raceNumber, List<Car> cars) {
+    printRaceNumber(raceNumber);
     printCars(cars);
   }
 
-  private static void printRaceNum(int raceNum) {
-    if (isStartLine(raceNum)) {
+  private static void printRaceNumber(int raceNumber) {
+    if (isStartLine(raceNumber)) {
       System.out.print(NEXT_LINE + "실행 결과");
     }
-    System.out.println(NEXT_LINE + "RACE " + (raceNum + 1));
+    System.out.println(NEXT_LINE + "RACE " + (raceNumber + 1));
   }
 
-  private static boolean isStartLine(int raceNum) {
-    return raceNum == START_RACE_NUM;
+  private static boolean isStartLine(int raceNumber) {
+    return raceNumber == START_RACE_NUMBER;
   }
 
   private static void printCars(List<Car> cars) {
