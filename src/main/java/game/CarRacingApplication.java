@@ -1,6 +1,7 @@
 package game;
 
 import game.domain.Cars;
+import game.domain.GameCount;
 import game.view.InputView;
 import game.view.ResultView;
 
@@ -20,21 +21,14 @@ public class CarRacingApplication {
 
     public static void main(String[] args) {
         List<String> carNames = InputView.showAndGetCarNames();
-        int racingRep = InputView.showAndGetRacingRep();
-        throwIfNegativeNumber(racingRep);
+        GameCount gameCount = new GameCount(InputView.showGameCountConsole());
 
         Cars cars = Cars.of(carNames);
         ResultView.displayExecuteResultMessage();
-        for (int i = 0; i < racingRep; i++) {
+        for (int i = 0; i < gameCount.getCount(); i++) {
             cars.drive();
             ResultView.displayCarPositions(cars);
         }
         ResultView.displayCarWinners(cars.findWinners());
-    }
-
-    private static void throwIfNegativeNumber(int number) {
-        if (number <= 0) {
-            throw new IllegalArgumentException("입력은 0 보다 큰 양수만 가능합니다.");
-        }
     }
 }
