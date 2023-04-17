@@ -1,0 +1,38 @@
+package step4.domain.entity;
+
+import step4.exception.NameExceedException;
+
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
+public class Name {
+
+    private static final int MAX_NAME_LENGTH = 5;
+
+    private final String name;
+
+    public Name(String name) {
+        validate(name);
+
+        this.name = name;
+    }
+
+    private void validate(String name) {
+        Objects.requireNonNull(name, "name must not be null");
+
+        if (name.length() > MAX_NAME_LENGTH) {
+            throw new NameExceedException("자동차 이름은 5글자를 초과할 수 없습니다. name: " + name);
+        }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public static String parseWinnerNames(List<Name> names) {
+        return names.stream()
+                .map(Name::getName)
+                .collect(Collectors.joining(","));
+    }
+}
