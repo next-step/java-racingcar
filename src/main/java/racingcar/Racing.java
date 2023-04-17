@@ -9,16 +9,16 @@ public class Racing {
     private final List<RaceResult> raceRecord;
     private final RacingRandom racingRandom = RacingRandom.getInstance();
 
-    public Racing(int carsNum, int gameCount) {
+    public Racing(List<String> carNames, int gameCount) {
         this.gameCount = gameCount;
-        this.cars = createCars(carsNum);
+        this.cars = createCars(carNames);
         this.raceRecord = new ArrayList<>();
     }
 
-    private List<Car> createCars(int carsNum) {
+    private List<Car> createCars(List<String> carNames) {
         List<Car> result = new ArrayList<>();
-        for (int i = 0; i < carsNum; i++) {
-            result.add(new Car("test" + i));
+        for (String carName : carNames) {
+            result.add(new Car(carName));
         }
         return result;
     }
