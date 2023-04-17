@@ -43,8 +43,8 @@ public class RacingGame {
         for (Car car : cars) {
             int rand = randomGenerator.generate();
             car.moveDependingOn(rand);
-
-            view.printCarLocation(car.location());
         }
+
+        view.printCarsLocation(cars);
     }
 }

@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import calculator.StringParser;
+import racingcar.Car;
 import racingcar.PositiveNumberException;
 
 import java.util.Arrays;
@@ -18,11 +19,10 @@ public class ConsoleView {
         this.nameParser = nameParser;
     }
 
-    public void printCarLocation(int location) {
-        for (int i = 0; i < location; i++) {
-            System.out.print("-");
+    public void printCarsLocation(List<Car> cars) {
+        for (Car car : cars) {
+            printCarsLocation(car);
         }
-
         System.out.println();
     }
 
@@ -32,6 +32,16 @@ public class ConsoleView {
 
     public int numbOfTrial() {
         return tryPrintAndGet(this::printAndGetNumbOfTrial);
+    }
+
+    private void printCarsLocation(Car car) {
+        System.out.print(car.name() + " : ");
+
+        for (int i = 0; i < car.location(); i++) {
+            System.out.print("-");
+        }
+
+        System.out.println();
     }
 
     private <T> T tryPrintAndGet(Supplier<T> printAndGetInput) {
