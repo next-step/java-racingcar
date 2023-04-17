@@ -17,4 +17,15 @@ public class CarTest {
 
     assertThat(car.getDistance()).isLessThanOrEqualTo(1);
   }
+
+  @DisplayName("경쟁 자동차와 거리를 비교하여 승자를 판단한다.")
+  @Test
+  public void isWinner_True_CompetitorCar(){
+    Car car = CarFactory.createCar("test");
+    Car competitor = CarFactory.createCar("competitor");
+
+    car.move();
+
+    assertThat(car.isWinner(competitor)).isTrue();
+  }
 }
