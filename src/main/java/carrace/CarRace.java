@@ -11,9 +11,9 @@ public class CarRace {
     private final List<Cars> results;
     private final Movable movable;
 
-    public CarRace(Cars cars, String numberOfLaps, Movable movable) {
+    public CarRace(Cars cars, int numberOfLaps, Movable movable) {
         this.cars = cars;
-        this.numberOfLaps = Integer.parseInt(numberOfLaps);
+        this.numberOfLaps = numberOfLaps;
         this.movable = movable;
         this.results = new ArrayList<>();
     }

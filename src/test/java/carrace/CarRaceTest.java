@@ -3,6 +3,8 @@ package carrace;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarRaceTest {
@@ -10,8 +12,8 @@ class CarRaceTest {
     @Test
     @DisplayName("자동차 경주 게임을 시작할 수 있다.")
     void carTest() {
-        final String numberOfLaps = "5";
-        final String carNames = "a,b,c";
+        final int numberOfLaps = 5;
+        final List<String> carNames = List.of("a","b","c");
         final Cars cars = new Cars(carNames);
         final CarRace carRace = new CarRace(cars, numberOfLaps, new RandomMovable());
 
@@ -24,7 +26,7 @@ class CarRaceTest {
         final Car a = new Car("a", 0, 0);
         final Car b = new Car("b", 3, 1);
         final Cars cars = new Cars(a, b);
-        final CarRace carRace = new CarRace(cars, "1", () -> true);
+        final CarRace carRace = new CarRace(cars, 1, () -> true);
 
         final String winners = String.join(", ", carRace.getWinners());
         assertThat(winners).isEqualTo("b");
@@ -36,7 +38,7 @@ class CarRaceTest {
         final Car a = new Car("a", 0, 0);
         final Car b = new Car("b", 0, 1);
         final Cars cars = new Cars(a, b);
-        final CarRace carRace = new CarRace(cars, "1", () -> true);
+        final CarRace carRace = new CarRace(cars, 1, () -> true);
 
         final String winners = String.join(", ", carRace.getWinners());
         assertThat(winners).isEqualTo("a, b");

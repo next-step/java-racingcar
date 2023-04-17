@@ -8,14 +8,11 @@ import java.util.stream.IntStream;
 
 public class Cars {
     private static final int ZERO = 0;
-    private static final int ONE = 1;
-    private static final String COMMA = ",";
     private final List<Car> cars;
 
-    public Cars(String participants) {
-        List<String> names = new ArrayList<>(Arrays.asList(participants.split(COMMA)));
-        this.cars = IntStream.range(ZERO, names.size())
-                .mapToObj(index -> new Car(index + ONE, names.get(index)))
+    public Cars(List<String> players) {
+        this.cars = IntStream.range(ZERO, players.size())
+                .mapToObj(index -> new Car(players.get(index), index))
                 .collect(Collectors.toList());
     }
 
