@@ -1,8 +1,7 @@
 package com.nextstep.racingcargame.core;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -19,6 +18,7 @@ class DistanceTest {
     private static final String TEST_CAR_NAME = "test";
 
 
+
     @Test
     @DisplayName("차량의 이동거리만큼의 길이를 문자열로 정상 출력한다")
     void distanceFormTest() {
@@ -32,7 +32,15 @@ class DistanceTest {
     void isLongerThanTest() {
         Car fourMovedCar = new Car(TEST_CAR_NAME, MOVE_NUMBER);
         Distance moveThreeStep = new Distance(STOP_NUMBER);
-        Assertions.assertThat(fourMovedCar.isLongerThan(moveThreeStep)).isTrue();
+        assertThat(fourMovedCar.isLongerThan(moveThreeStep)).isTrue();
+    }
+
+    @Test
+    @DisplayName("차량 이동거리가 같은 Distance 객체 비교시 참을 리턴한다.")
+    void isSameTest() {
+        Distance distance_one = new Distance(MOVE_FIVE_STEP);
+        Distance distance_two = new Distance(MOVE_FIVE_STEP);
+        assertThat(distance_one).isEqualTo(distance_two);
     }
 
 }
