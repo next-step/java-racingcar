@@ -7,6 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 
 public class RacingCarTest {
@@ -14,7 +15,7 @@ public class RacingCarTest {
 
     @BeforeEach
     void setUp() {
-        racingCar = new RacingCar();
+        racingCar = new RacingCar("최태훈");
     }
 
     @ParameterizedTest
@@ -23,5 +24,16 @@ public class RacingCarTest {
     void moveTest(int input, int excepted) {
         racingCar.moveOrStop(input);
         assertThat(racingCar.getMoveCount()).isEqualTo(excepted);
+    }
+
+
+    @Test
+    @DisplayName("자동차의 이름이 5글자 이상일 경우 IllegalArgumenetException을 던진다")
+    void maxLengthTest() {
+        String name = "최태훈김정환";
+
+        assertThatThrownBy(() -> new RacingCar(name))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("사용자의 이름의 길이는 5이상으로 작성할수 없습니다.");
     }
 }

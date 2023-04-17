@@ -14,10 +14,14 @@ public class AutoRacing {
 
         CarFactory carFactory = CarFactory.getInstance();
 
-        List<RacingCar> racingCarList = carFactory.createCar(gameInfo.getNumberOfCar());
+        List<RacingCar> racingCarList = carFactory.createCar(gameInfo.getNameList());
 
         autoRacingParticipant.participateGame(racingCarList);
 
         autoRacingParticipant.doGame(gameInfo.getNumberOfGame());
+    }
+
+    public static void main(String[] args) {
+        startRacing();
     }
 }

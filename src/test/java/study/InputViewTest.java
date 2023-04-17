@@ -2,13 +2,10 @@ package study;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
 import java.io.ByteArrayInputStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class InputViewTest {
 
@@ -16,18 +13,21 @@ class InputViewTest {
     @DisplayName("입력을 통하여, 차의 개수와 게임 횟수가 제대로 출력되는지에 대한 테스트 ")
     void prepareGame() {
         // given
-        int inputNumberOfCar = 13;
+        String nameListInput = "최태훈,조아영,김정환";
         int inputNumberOfGame = 3;
-        String userInput = String.format("%d%s%d",
-                inputNumberOfCar, System.lineSeparator(), inputNumberOfGame);
+        String userInput = String.format("%s%s%d",
+                nameListInput, System.lineSeparator(), inputNumberOfGame);
 
-        ByteArrayInputStream bais = new ByteArrayInputStream(userInput.getBytes());
-        System.setIn(bais);
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(byteArrayInputStream);
 
         GameInfo gameInfo = InputView.prepareGame();
 
+        assertThat(gameInfo.getNameList().size()).isEqualTo(3);
+        assertThat(gameInfo.getNameList().get(0)).isEqualTo("최태훈");
+        assertThat(gameInfo.getNameList().get(1)).isEqualTo("조아영");
+        assertThat(gameInfo.getNameList().get(2)).isEqualTo("김정환");
 
-        assertThat(gameInfo.getNumberOfCar()).isEqualTo(inputNumberOfCar);
         assertThat(gameInfo.getNumberOfGame()).isEqualTo(inputNumberOfGame);
     }
 }

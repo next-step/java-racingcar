@@ -1,16 +1,19 @@
 package study;
 
+import java.util.List;
+
 public class GameInfo {
-    private int numberOfCar;
+    private List<String> nameList;
     private int numberOfGame;
 
-    public GameInfo(int numberOfCar, int numberOfGame) {
-        this.numberOfCar = numberOfCar;
+    public GameInfo(List<String> nameList, int numberOfGame) {
+        this.nameList = nameList;
         this.numberOfGame = numberOfGame;
     }
 
-    public int getNumberOfCar() {
-        return numberOfCar;
+
+    public List<String> getNameList() {
+        return this.nameList;
     }
 
     public int getNumberOfGame() {

@@ -18,10 +18,10 @@ public class CarFactory {
         return carFactory;
     }
 
-    public List<RacingCar> createCar(int numberOfCar) {
+    public List<RacingCar> createCar(List<String> nameList) {
         List<RacingCar> racingCarList = new ArrayList<>();
-        for (int i = 0; i < numberOfCar; i++) {
-            RacingCar racingCar = new RacingCar();
+        for (String name : nameList) {
+            RacingCar racingCar = new RacingCar(name);
             racingCarList.add(racingCar);
         }
         return racingCarList;
