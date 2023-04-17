@@ -14,6 +14,8 @@
 ## 구현 기능 목록
 * 이름을 입력받는다. (input names)
 * 자동차 클래스에 이름 변수를 추가한다. (add car name)
+* 이름을 관리하는 클래스를 만든다. (make class)
+* 이름을 나눈다. (split name)
 * 입력받은 이름을 검사한다 (5자를 초과하는지) (validate car name)
 * 입력받은 이름이 5자를 초과했으면 예외를 출력한다. (name exception)
 * 기존에 이동 상황 출력했던 것에 이름 부분을 추가한다. (add car name in racingCar status)
