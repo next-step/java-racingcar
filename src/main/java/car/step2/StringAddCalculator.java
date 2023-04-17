@@ -8,6 +8,8 @@ public class StringAddCalculator {
 
     private static final String COMMA_AND_COLON_REGEX = ",|:";
     private static final String INPUT_REGEX = "//(.)\n(.*)";
+    private static final Pattern PATTERN_REGEX = Pattern.compile(INPUT_REGEX);
+
     public static int splitAndSum(String text) {
         if(text == null) {
             return 0;
@@ -42,7 +44,8 @@ public class StringAddCalculator {
     }
 
     private static String[] splitRegex(String text) {
-        Matcher m = Pattern.compile(INPUT_REGEX).matcher(text);
+        Matcher m = PATTERN_REGEX.matcher(text);
+
         if (m.find()) {
             String customDelimiter = m.group(1);
             return m.group(2).split(customDelimiter);
@@ -55,14 +58,15 @@ public class StringAddCalculator {
         for (String text : textList) {
             int number = Integer.parseInt(text);
             isNegative(number);
-            startNumber += number;
+            startNumber += Integer.parseInt(text);
+
         }
         return startNumber;
     }
 
     private static void isNegative(int number) {
         if(number < 0) {
-            throw new RuntimeException();
+            throw new RuntimeException("숫자가 양수가 아닌 음수입니다.");
         }
     }
 }
