@@ -1,24 +1,25 @@
 package domain;
 
-import static domain.RandomNumber.isOverFour;
-
 public class Car {
 
+    private final String name;
     private int distance;
 
-    public Car() {
+    public Car(String name) {
+        this.name = name;
+        this.distance = 0;
+    }
+
+    public String getCarName() {
+        return this.name;
     }
 
     public int getCarCurrentDistance() {
         return distance;
     }
 
-    static boolean movingCheck() {
-        return isOverFour();
-    }
-
-    void attemptMove() {
-        if (movingCheck()) {
+    protected void attemptMove(boolean isMoved) {
+        if (isMoved) {
             distance++;
         }
     }

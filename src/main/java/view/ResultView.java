@@ -1,5 +1,6 @@
 package view;
 
+import domain.Car;
 import domain.Cars;
 
 public class ResultView {
@@ -7,30 +8,33 @@ public class ResultView {
     private final static String BLANK = "";
     private final static String RESULT_MESSAGE = "실행 결과";
     private final static String DISTANCE_BLOCK = "-";
+    private final static String COLONS = " : ";
+    private final static String WINNER_MESSAGE = "가 최종 우승했습니다.";
+    private final static String WINNER_DELIMITER = ", ";
 
-    public static void createResultView(Cars cars, int attemptCount) {
+    public static void drawResultView() {
         System.out.println(RESULT_MESSAGE);
         System.out.println(BLANK);
-
-        for (int i = 0; i < attemptCount; i++) {
-            cars.makeCarsMove();
-            drawDistanceBlock(cars);
-            System.out.println(BLANK);
-        }
     }
 
-    private static void drawDistanceBlock(Cars cars) {
-        for (int i = 0; i < cars.getSizeOfCars(); i++) {
-            int distance = cars.getDistance(i);
-            drawConsole(distance);
+    public static void drawDistanceBlockWithName(Cars cars) {
+        for (int i = 0; i < cars.countCars(); i++) {
+            drawConsole(cars.getEachCar(i));
         }
+        System.out.println(BLANK);
     }
 
-    private static void drawConsole(int distance) {
-        String currentCarDistance = "";
-        for (int i = 0; i < distance; i++) {
-            currentCarDistance += DISTANCE_BLOCK;
+    public static void drawConsole(Car car) {
+
+        String currentCarDistanceWithName = car.getCarName() + COLONS;
+        for (int i = 0; i < car.getCarCurrentDistance(); i++) {
+            currentCarDistanceWithName += DISTANCE_BLOCK;
         }
-        System.out.println(currentCarDistance);
+        System.out.println(currentCarDistanceWithName);
+    }
+
+    public static void drawFirstPlace(Cars cars) {
+        String winners = String.join(WINNER_DELIMITER, cars.getWinnerNames());
+        System.out.println(winners + WINNER_MESSAGE);
     }
 }

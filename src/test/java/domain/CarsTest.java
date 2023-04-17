@@ -1,36 +1,55 @@
 package domain;
 
+import static domain.Cars.createCars;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CarsTest {
 
     @Test
-    @DisplayName("자동차를 입력한 정수 대 만큼 생성한다.")
+    @DisplayName("자동차를 입력한 이름의 수 만큼 생성한다.")
     void createCar() {
-        int numberOfCars = 3;
+        String names = "포비,크롱,뽀로로";
         int attemptCount = 3;
-        UserInput userInput = new UserInput(numberOfCars, attemptCount);
-        Cars cars = new Cars(userInput);
+        UserInput userInput = new UserInput(names, attemptCount);
+        List<Car> inpurCars = createCars(userInput.getNamesForCars(),
+                userInput.getNumbersOfCar());
+        Cars cars = new Cars(inpurCars);
 
-        assertThat(cars.getSizeOfCars()).isEqualTo(3);
+        assertThat(cars.countCars()).isEqualTo(3);
     }
 
     @Test
-    @DisplayName("자동차의 움직임을 입력한 숫자의 횟수만큼 시도해본다.")
-    void moveCar() {
-        int numberOfCars = 1;
-        int attemptCount = 10;
-        UserInput userInput = new UserInput(numberOfCars, attemptCount);
-        Cars cars = new Cars(userInput);
+    @DisplayName("원하는 순서의 자동차를 가져올 수 있다.")
+    void getCar() {
+        String names = "포비,크롱,뽀로로";
+        int attemptCount = 3;
+        UserInput userInput = new UserInput(names, attemptCount);
+        List<Car> inpurCars = createCars(userInput.getNamesForCars(),
+                userInput.getNumbersOfCar());
+        Cars cars = new Cars(inpurCars);
 
-        for (int i = 0; i < attemptCount; i++) {
-            cars.makeCarsMove();
-        }
-        assertThat(cars.getDistance(0))
-                .isNotEqualTo(0);
+        Car eachCar = cars.getEachCar(1);
+        assertThat(eachCar.getCarName()).isEqualTo("크롱");
+    }
 
+    @Test
+    @DisplayName("우승자의 이름 리스트를 가지고 온다.")
+    void getFarthestDistance() {
+        Car ethanCar = new Car("ethan");
+        ethanCar.attemptMove(true);
+        ethanCar.attemptMove(true);
+        ethanCar.attemptMove(true);
+        Car rickCar = new Car("rick");
+        rickCar.attemptMove(true);
+        rickCar.attemptMove(true);
+
+        Cars cars = new Cars(List.of(ethanCar, rickCar));
+
+        String[] winnerNames = cars.getWinnerNames();
+        assertThat(winnerNames[0]).isEqualTo("ethan");
     }
 }
