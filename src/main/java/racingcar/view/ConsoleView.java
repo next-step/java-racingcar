@@ -34,6 +34,14 @@ public class ConsoleView {
         return tryPrintAndGet(this::printAndGetNumbOfTrial);
     }
 
+    public void printWinners(List<Car> winners) {
+        String winnerNames = winners.stream()
+                .map(Car::name)
+                .collect(Collectors.joining(", "));
+
+        System.out.println(winnerNames + "가 최종 우승했습니다.");
+    }
+
     private void printCarsLocation(Car car) {
         System.out.print(car.name() + " : ");
 
