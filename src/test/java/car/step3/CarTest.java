@@ -18,7 +18,7 @@ class CarTest {
     }
 
     @Test
-    public void 랜덤값이_4이상일때_전지하는지_테스트() {
+    public void 전지하는지_확인하는_테스트() {
         Car car = new Car("lim");
         handleCar.goCar(car);
         assertThat(car.location()).isGreaterThanOrEqualTo(0);

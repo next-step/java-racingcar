@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
+
+    public static int MAX_LOCATION = 0;
     public static void main(String[] args) {
         InputView inputView = new InputView();
         HandleCar handleCar = new HandleCar();
@@ -18,6 +20,8 @@ public class Main {
             cars = handleCar.iteratorCar(cars);
             resultView.result(cars);
         }
+        resultView.winnerResult(cars);
+
     }
 
     private static List<Car> makeCar(String carNames) {
