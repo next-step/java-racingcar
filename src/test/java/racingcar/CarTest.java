@@ -45,14 +45,14 @@ public class CarTest {
     @Test
     void 정지() {
         stopCar.racing();
-        assertThat(stopCar.getPosition()).isEqualTo(0);
+        assertThat(stopCar.positionValue()).isEqualTo(0);
     }
 
     @DisplayName("자동차는 랜덤값이 4이상일경우 1칸 이동한다.")
     @Test
     void 전진() {
         moveCar.racing();
-        assertThat(moveCar.getPosition()).isEqualTo(1);
+        assertThat(moveCar.positionValue()).isEqualTo(1);
     }
 
     @DisplayName("자동차는 랜덤값이 4이상이 3번 나올경우 3번 전진한다.")
@@ -61,15 +61,15 @@ public class CarTest {
         assertAll(
                 () -> {
                     moveCar.racing();
-                    assertThat(moveCar.getPosition()).isEqualTo(1);
+                    assertThat(moveCar.positionValue()).isEqualTo(1);
                 },
                 () -> {
                     moveCar.racing();
-                    assertThat(moveCar.getPosition()).isEqualTo(2);
+                    assertThat(moveCar.positionValue()).isEqualTo(2);
                 },
                 () -> {
                     moveCar.racing();
-                    assertThat(moveCar.getPosition()).isEqualTo(3);
+                    assertThat(moveCar.positionValue()).isEqualTo(3);
                 }
         );
     }
@@ -80,15 +80,15 @@ public class CarTest {
         assertAll(
                 () -> {
                     stopCar.racing();
-                    assertThat(stopCar.getPosition()).isEqualTo(0);
+                    assertThat(stopCar.positionValue()).isEqualTo(0);
                 },
                 () -> {
                     stopCar.racing();
-                    assertThat(stopCar.getPosition()).isEqualTo(0);
+                    assertThat(stopCar.positionValue()).isEqualTo(0);
                 },
                 () -> {
                     stopCar.racing();
-                    assertThat(stopCar.getPosition()).isEqualTo(0);
+                    assertThat(stopCar.positionValue()).isEqualTo(0);
                 }
         );
     }

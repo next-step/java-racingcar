@@ -4,9 +4,9 @@ import java.util.Random;
 
 public class RandomNumberGenerator {
 
-    private final String MIN_NUMBER_FORMAT = "최소값은 %s보다 작을 수 없습니다.";
-    private final String MIN_MAX_NUMBER_FORMAT = "최대값은 %s작거나 %s보다 클수 없습니다.";
-    private final String MIN_MAX_SUM_FORMAT = "최대값과 최소값에 합은 %s보다 작아야합니다.";
+    private static final String MIN_NUMBER_FORMAT = "최소값은 %s보다 작을 수 없습니다.";
+    private static final String MIN_MAX_NUMBER_FORMAT = "최대값은 %s작거나 %s보다 클수 없습니다.";
+    private static final String MIN_MAX_SUM_FORMAT = "최대값과 최소값에 합은 %s보다 작아야합니다.";
 
     private final int MIN_NUMBER = 0;
     private final int MAX_NUMBER = 10;

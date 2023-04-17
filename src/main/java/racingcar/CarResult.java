@@ -6,16 +6,16 @@ public class CarResult {
     private int position;
 
     public CarResult(Car car) {
-        this.name = car.getName();
-        this.position = car.getPosition();
+        this.name = car.nameValue();
+        this.position = car.positionValue();
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public int getPosition() {
-        return position;
+        return this.position;
     }
 
 }

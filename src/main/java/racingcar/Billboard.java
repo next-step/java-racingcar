@@ -18,26 +18,21 @@ public class Billboard {
 
     public static void printGameResult(final GameResult gameResult) {
         notice();
-        for (final RaceResult raceResult : gameResult.getRaceResults()) {
-            printRoundResult(raceResult);
+        for (final RoundResult roundResult : gameResult.getRoundResults()) {
+            printRoundResult(roundResult);
             lineBreak();
         }
         printWinners(gameResult.getWinners());
     }
 
-    private static void printRoundResult(final RaceResult raceResult) {
-        for(final CarResult carResult : raceResult.getResult()) {
+    private static void printRoundResult(final RoundResult roundResult) {
+        for(final CarResult carResult : roundResult.getResult()) {
             printPosition(carResult);
-            lineBreak();
         }
     }
 
     private static void printPosition(final CarResult carResult) {
-        StringBuilder positionSeparator = new StringBuilder();
-        for (int i = 0; i < carResult.getPosition(); i++) {
-            positionSeparator.append(POSITION_SEPARATOR);
-        }
-        System.out.print(carResult.getName() + RESULT_SEPARATOR + positionSeparator);
+        System.out.println(carResult.getName() + RESULT_SEPARATOR + POSITION_SEPARATOR.repeat(carResult.getPosition()));
     }
 
     private static void printWinners(final List<CarResult> winners) {

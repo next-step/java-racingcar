@@ -1,9 +1,7 @@
 package racingcar;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -15,18 +13,18 @@ public class Cars {
 
     private List<Car> cars = new ArrayList<>();
 
-    public Cars(final String carNames) {
-        generate(split(carNames));
+    public Cars(final String carNames, final RandomNumberGenerator randomNumberGenerator) {
+        generate(split(carNames), randomNumberGenerator);
     }
 
     private String[] split(final String carNames) {
         return carNames.split(DELIMITER);
     }
 
-    private void generate(final String[] carNames) {
+    private void generate(final String[] carNames, final RandomNumberGenerator randomNumberGenerator) {
         validate(carNames);
         for (String carName : carNames) {
-            cars.add(new Car(carName, new RandomNumberGenerator()));
+            cars.add(new Car(carName, randomNumberGenerator));
         }
     }
 
@@ -45,19 +43,19 @@ public class Cars {
         return carResults;
     }
 
-    public List<CarResult> winner() {
+    public List<CarResult> winners() {
+        Car winner = findWinner();
         return this.cars
                 .stream()
-                .filter(car -> car.getPosition() == maxPosition())
+                .filter(car -> car.isWinner(winner))
                 .map(CarResult::new)
                 .collect(Collectors.toList());
     }
 
-    private int maxPosition() {
+    private Car findWinner() {
         return this.cars
                 .stream()
-                .map(Car::getPosition)
-                .max(Integer::compareTo)
+                .max(Car::comparePosition)
                 .orElseThrow(() -> new IllegalStateException(NOT_FOUND_POSITION));
     }
 

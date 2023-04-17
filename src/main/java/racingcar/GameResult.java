@@ -5,19 +5,19 @@ import java.util.List;
 
 public class GameResult {
 
-    private List<RaceResult> raceResults = new ArrayList<>();
+    private List<RoundResult> roundResults = new ArrayList<>();
     private List<CarResult> winners;
 
-    public void addRoundResult(final RaceResult raceResult) {
-        raceResults.add(raceResult);
+    public void addRoundResult(final RoundResult roundResult) {
+        roundResults.add(roundResult);
     }
 
     public void addWinner(final List<CarResult> winners) {
         this.winners = winners;
     }
 
-    public List<RaceResult> getRaceResults() {
-        return raceResults;
+    public List<RoundResult> getRoundResults() {
+        return roundResults;
     }
 
     public List<CarResult> getWinners() {

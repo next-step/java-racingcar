@@ -7,8 +7,8 @@ public class Game {
     private final Cars cars;
     private final Round round;
 
-    public Game(final String carNames, final int number) {
-        this.cars = new Cars(carNames);
+    public Game(final String carNames, final int number, final RandomNumberGenerator randomNumberGenerator) {
+        this.cars = new Cars(carNames, randomNumberGenerator);
         this.round = new Round(number);
     }
 
@@ -21,12 +21,12 @@ public class Game {
         return gameResult;
     }
 
-    private RaceResult round() {
-        return new RaceResult(cars.race());
+    private RoundResult round() {
+        return new RoundResult(cars.race());
     }
 
     private List<CarResult> winner() {
-        return cars.winner();
+        return cars.winners();
     }
 
 }
