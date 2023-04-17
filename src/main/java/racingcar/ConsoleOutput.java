@@ -17,7 +17,7 @@ public class ConsoleOutput implements Output {
 
     @Override
     public void printPosition(CarDto carDto) {
-        System.out.println(ONE_POSITION_MARK.repeat(carDto.getPosition()));
+        System.out.println(carDto.getName() + " : " + ONE_POSITION_MARK.repeat(carDto.getPosition()));
     }
 
     @Override
