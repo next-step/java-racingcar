@@ -8,8 +8,11 @@ public class StringAddCalculator {
 
     private static final String COMMA_AND_COLON_REGEX = ",|:";
     private static final String INPUT_REGEX = "//(.)\n(.*)";
+<<<<<<< HEAD
     private static final Pattern PATTERN_REGEX = Pattern.compile(INPUT_REGEX);
 
+=======
+>>>>>>> ce454e412 (Step2 (#4477))
     public static int splitAndSum(String text) {
         if(text == null) {
             return 0;
@@ -44,8 +47,8 @@ public class StringAddCalculator {
     }
 
     private static String[] splitRegex(String text) {
-        Matcher m = PATTERN_REGEX.matcher(text);
 
+        Matcher m = PATTERN_REGEX.matcher(text);
         if (m.find()) {
             String customDelimiter = m.group(1);
             return m.group(2).split(customDelimiter);
@@ -59,7 +62,6 @@ public class StringAddCalculator {
             int number = Integer.parseInt(text);
             isNegative(number);
             startNumber += Integer.parseInt(text);
-
         }
         return startNumber;
     }
