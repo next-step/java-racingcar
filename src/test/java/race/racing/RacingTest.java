@@ -1,8 +1,9 @@
-package racing;
+package race.racing;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import race.car.dto.CarInfoDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +42,7 @@ public class RacingTest {
     @Test
     @DisplayName("레이스 정보의 매치 횟수와 자동차 갯수 확인")
     void race() {
-        final List<List<Integer>> carLocations = racing.race();
+        final List<List<CarInfoDto>> carLocations = racing.race();
 
         assertThat(carLocations)
                 .hasSize(matchCount)
