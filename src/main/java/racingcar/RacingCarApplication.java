@@ -22,9 +22,11 @@ public class RacingCarApplication {
     MoveStrategy normalMoveStrategy = new NormalMoveStrategy();
     ResultView resultView = new ResultView();
 
+    resultView.printResultTitle();
+
     for (int i = 0; i < numberOfTrials; i++) {
       racing.runRacingRound(normalMoveStrategy);
-      resultView.printRacingRound(racing.statusOfRacing(), i);
+      resultView.printRacingRound(racing.statusOfRacing());
     }
   }
 }
