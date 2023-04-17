@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import racingcar.domain.OperatingRacingCarSystem;
+import racingcar.domain.CarNamesLimit;
 
 import java.util.*;
 
@@ -23,13 +23,8 @@ public class InputView {
 
         String [] carNames = scanner.nextLine().split(",");
 
-        OperatingRacingCarSystem operatingRacingCarSystem = new OperatingRacingCarSystem();
-
-        for(String carName : carNames) {
-            if(operatingRacingCarSystem.decideSystemExitByLengthCheck(carName)) {
-                System.exit(0);
-            }
-        }
+        CarNamesLimit carNamesLimit = new CarNamesLimit();
+        carNamesLimit.checkLength(carNames);
 
         return carNames;
     }
