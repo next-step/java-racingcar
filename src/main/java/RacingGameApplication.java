@@ -15,7 +15,7 @@ public class RacingGameApplication {
         racingGame.progress();
 
         List<GameResultDto> gameResult = racingGame.getResults();
-        List<Car> winners = racingGame.winner();
+        List<Car> winners = racingGame.winners();
 
         ResultView.printResultTitle();
         ResultView.printResult(gameResult);

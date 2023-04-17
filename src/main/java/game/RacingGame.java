@@ -29,8 +29,8 @@ public class RacingGame {
         }
     }
 
-    public List<Car> winner() {
-        return cars.winners();
+    public List<Car> winners() {
+        return cars.findWinners();
     }
 
     private void saveResult(Cars cars) {

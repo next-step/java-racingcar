@@ -17,7 +17,7 @@ public class CarsTest {
 
         Cars cars = new Cars(List.of(car1, car2, car3));
         cars.move();
-        List<Car> winners = cars.winners();
+        List<Car> winners = cars.findWinners();
 
         assertThat(winners.get(0)).isEqualTo(car1);
     }
@@ -31,7 +31,7 @@ public class CarsTest {
 
         Cars cars = new Cars(List.of(car1, car2, car3));
         cars.move();
-        List<Car> winners = cars.winners();
+        List<Car> winners = cars.findWinners();
 
         assertThat(winners).containsExactly(car1, car2);
     }

@@ -17,7 +17,7 @@ public class Car {
         }
     }
 
-    public boolean isWinner(Position position) {
+    public boolean matchesPosition(Position position) {
         return this.position.intValue() == position.intValue();
     }
 

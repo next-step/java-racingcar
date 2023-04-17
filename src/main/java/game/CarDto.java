@@ -12,7 +12,7 @@ public class CarDto {
     }
 
     public static CarDto from(Car car) {
-        return new CarDto(car.getName().toString(), car.getPosition().intValue());
+        return new CarDto(car.getName().getName(), car.getPosition().intValue());
     }
 
     public String getName() {
