@@ -4,13 +4,11 @@ import java.util.Random;
 
 public class RandomNumberGenerator implements NumberGenerator {
 
-    private static final int MAX = 10;
-
     private final Random random;
     private final int maxNumber;
 
     private RandomNumberGenerator(Random random, int maxNumber) {
-        this.random = new Random();
+        this.random = random;
         this.maxNumber = maxNumber;
     }
 
@@ -20,6 +18,6 @@ public class RandomNumberGenerator implements NumberGenerator {
 
     @Override
     public int generateNumber() {
-        return random.nextInt(MAX);
+        return random.nextInt(maxNumber);
     }
 }
