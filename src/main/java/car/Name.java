@@ -2,6 +2,7 @@ package car;
 
 public class Name {
     private static final int MAX_LENGTH = 5;
+
     private final String name;
 
     public Name(String name) {

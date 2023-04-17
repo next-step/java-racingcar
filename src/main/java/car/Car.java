@@ -11,14 +11,6 @@ public class Car {
         this.moveStrategy = moveStrategy;
     }
 
-    public Name getName() {
-        return this.name;
-    }
-
-    public Position getPosition() {
-        return this.position;
-    }
-
     public void move() {
         if(moveStrategy.movable()) {
             position.move();
@@ -27,5 +19,13 @@ public class Car {
 
     public boolean isWinner(Position position) {
         return this.position.intValue() == position.intValue();
+    }
+
+    public Name getName() {
+        return this.name;
+    }
+
+    public Position getPosition() {
+        return this.position;
     }
 }
