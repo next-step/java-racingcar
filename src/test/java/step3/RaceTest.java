@@ -26,6 +26,6 @@ public class RaceTest {
     }
 
     private RacingCars getMockRacingCars() {
-        return new RacingCars(List.of("car1", "car2", "car3"));
+        return RacingCars.create(List.of("car1", "car2", "car3"));
     }
 }

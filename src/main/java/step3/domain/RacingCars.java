@@ -3,15 +3,20 @@ package step3.domain;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingCars {
     private List<Car> cars;
 
-    public RacingCars(List<String> carNames) {
-        this.cars = new ArrayList<>();
-        for (String carName : carNames) {
-            this.cars.add(new Car(carName));
-        }
+    public RacingCars(List<Car> cars) {
+        this.cars = cars;
+    }
+
+    public static RacingCars create(List<String> carNames) {
+        List<Car> cars = carNames.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
+        return new RacingCars(cars);
     }
 
     public List<Car> getWinner() {

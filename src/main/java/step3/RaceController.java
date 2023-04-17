@@ -11,7 +11,7 @@ public class RaceController {
     public static void main(String[] args) {
         List<String> carNames = RaceConditionInputView.readCarNames();
         int raceRound = RaceConditionInputView.readRaceRound();
-        Race race = new Race(new RacingCars(carNames), raceRound);
+        Race race = new Race(RacingCars.create(carNames), raceRound);
         race.start();
     }
 }
