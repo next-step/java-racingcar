@@ -27,7 +27,7 @@ public class RacingGame {
 
     private static void round(List<Car> cars) {
         for (Car car : cars) {
-            car.forward(new RaceConditionGenerator());
+            car.forward(new RandomMovingStrategy());
         }
         ResultView.printCarDistance(cars);
     }

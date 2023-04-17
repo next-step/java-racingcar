@@ -1,9 +1,10 @@
 package racing;
 
 public class Car {
-    private static final int CAR_NAME_LENGTH = 5;
     private Long position;
     private String name;
+    
+    private static final int CAR_NAME_LENGTH = 5;
 
     public Car(String name) {
         this.position = 0L;

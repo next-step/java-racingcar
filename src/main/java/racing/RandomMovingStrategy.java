@@ -3,7 +3,7 @@ package racing;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
-public class RaceConditionGenerator implements MovingStrategy {
+public class RandomMovingStrategy implements MovingStrategy {
 
     private static final Integer RACE_CONDITION_NUM_LIMIT = 10;
     private static final Integer BASE_VALUE = 4;
