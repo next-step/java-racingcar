@@ -8,6 +8,8 @@ import static com.nextstep.racingcargame.view.ResultView.printWinners;
 
 public class RacingGame {
 
+    private static final MovingStrategy movingStrategy = new RandomNumberZeroToNine();
+
     public static void progressRacing() {
 
         ClientResponse clientResponse = clientQuestion();
@@ -23,7 +25,7 @@ public class RacingGame {
         printResultMsg();
 
         for (int turn = 0; turn < clientResponse.getNumberOfTries(); turn++) {
-            cars.moveCars(new RandomNumberZeroToNine());
+            cars.moveCars(movingStrategy);
             printAllCarCurrentDistance(cars);
             createNewLine();
         }
