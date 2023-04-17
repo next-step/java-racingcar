@@ -12,6 +12,7 @@ public class ResultView {
     }
 
     private static void showOneCarMoveStatus(Car car) {
+        System.out.print(car.name+" : ");
         for (int j = 0; j < car.moveStatus; j++) {
             System.out.print("-");
         }

@@ -26,7 +26,7 @@ public class Racing {
         }
     }
 
-    public void raceAndShowResult() {
+    public void raceAndShow() {
         ResultView.start();
         for (int i = 0; i < try_count; i++) {
             race();
