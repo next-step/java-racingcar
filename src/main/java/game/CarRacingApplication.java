@@ -1,6 +1,6 @@
 package game;
 
-import game.service.CarRacing;
+import game.domain.Cars;
 import game.view.InputView;
 import game.view.ResultView;
 
@@ -23,13 +23,13 @@ public class CarRacingApplication {
         int racingRep = InputView.showAndGetRacingRep();
         throwIfNegativeNumber(racingRep);
 
-        CarRacing carRacing = new CarRacing(carNames);
+        Cars cars = Cars.of(carNames);
         ResultView.displayExecuteResultMessage();
         for (int i = 0; i < racingRep; i++) {
-            carRacing.start();
-            ResultView.displayCarPositions(carRacing.getCars());
+            cars.drive();
+            ResultView.displayCarPositions(cars);
         }
-        ResultView.displayCarWinners(carRacing.getWinners());
+        ResultView.displayCarWinners(cars.findWinners());
     }
 
     private static void throwIfNegativeNumber(int number) {
