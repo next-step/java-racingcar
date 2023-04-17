@@ -21,7 +21,7 @@ public class Race {
         GameResult gameResult = GameResult.createInitialGameResult(numberOfCars);
 
         raceResult.add(gameResult);
-        for (int i = 0; i < numberOfRaces.getNumber(); i++) {
+        for (int i = 0; i < numberOfRaces.getValue(); i++) {
             GameResult nextGameResult = calculateNextGameResult(gameResult);
             raceResult.add(nextGameResult);
             gameResult = nextGameResult;
@@ -32,7 +32,7 @@ public class Race {
 
     private GameResult calculateNextGameResult(GameResult gameResult) {
         GameResult nextGameResult = GameResult.createCopy(gameResult);
-        for (int j = 0; j < numberOfCars.getNumber(); j++) {
+        for (int j = 0; j < numberOfCars.getValue(); j++) {
             nextGameResult.getCar(j).move(calculateMove() ? Position.ONE.getPosition() : Position.ZERO.getPosition());
         }
 

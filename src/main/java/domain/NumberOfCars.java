@@ -1,14 +1,16 @@
 package domain;
 
 public class NumberOfCars {
-    private final int number;
-    public NumberOfCars(int number) {
-        if (number < 0)
+    private final int value;
+    private final static int MIN_VALUE = 0;
+    public NumberOfCars(int value) {
+        if (value < MIN_VALUE) {
             throw new RuntimeException("NumberOfCars can not be negative");
-        this.number = number;
+        }
+        this.value = value;
     }
 
-    public int getNumber() {
-        return number;
+    public int getValue() {
+        return value;
     }
 }

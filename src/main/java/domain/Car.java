@@ -3,11 +3,11 @@ package domain;
 public class Car {
     int position;
 
-    Car(int position) {
+    public Car(int position) {
         this.position = position;
     }
 
-    Car(Car car) {
+    public Car(Car car) {
         this.position = car.position;
     }
 
