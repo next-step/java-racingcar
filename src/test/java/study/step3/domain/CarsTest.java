@@ -14,25 +14,51 @@ class CarsTest {
 
     @BeforeEach
     void init() {
-        cars = new Cars(3,
+        String[] carNames = new String[]{"avante", "sonata", "grandeur"};
+
+        cars = new Cars(carNames,
                 new LessThanMoveCondition(4, new RandomMove()));
     }
 
     @Test
     void toPositionOfCars() {
         //given
-        List<Car> carList = cars.getCars();
-        Car avante = carList.get(0);
-        Car sonata = carList.get(1);
-        Car grandeur = carList.get(2);
 
         //when
         List<Integer> positionOfCars = cars.toPositionOfCars();
 
         //then
         assertThat(positionOfCars).containsExactly(
-                avante.getPosition(),
-                sonata.getPosition(),
-                grandeur.getPosition());
+                cars.getCars().get(0).getPosition(),
+                cars.getCars().get(1).getPosition(),
+                cars.getCars().get(2).getPosition());
     }
+
+    @Test
+    void toCarNames() {
+        //given
+
+        //when
+        List<String> positionOfCars = cars.toCarNames();
+
+        //then
+        assertThat(positionOfCars).containsExactly(
+                cars.getCars().get(0).getName(),
+                cars.getCars().get(1).getName(),
+                cars.getCars().get(2).getName());
+    }
+
+    @Test
+    void findWinner() {
+        //given
+
+        //when
+        cars.moveForward();
+        List<String> positionOfCars = cars.findWinner();
+
+        //then
+        assertThat(positionOfCars)
+                .containsAnyOf("avante", "sonata", "grandeur");
+    }
+
 }
