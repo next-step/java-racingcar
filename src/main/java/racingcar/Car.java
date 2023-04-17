@@ -1,11 +1,8 @@
 package racingcar;
 
-
-import java.util.Random;
-
 public class Car {
     private MoveStrategy moveStrategy = new FourOverTenMoveStrategy();
-    private Integer position = 0;
+    private int position = 0;
 
     public Car(MoveStrategy moveStrategy) {
         this.moveStrategy = moveStrategy;

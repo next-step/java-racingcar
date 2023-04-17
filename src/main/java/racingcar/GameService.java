@@ -1,5 +1,8 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class GameService {
     private int carNumber;
     private int trialNumber;
@@ -10,16 +13,20 @@ public class GameService {
         this.trialNumber = trialNumber;
     }
 
-    public void play(){
+    public List<Result> play(){
         CarCollection cars = new CarCollection(this.carNumber, moveStrategy);
-        tryMoves(cars, this.trialNumber);
+        List<Result> results = tryMoves(cars, this.trialNumber);
+        return results;
     }
 
-    private void tryMoves(CarCollection cars, int trialNumber) {
+    private List<Result> tryMoves(CarCollection cars, int trialNumber) {
+        List<Result> results = new ArrayList<>();
 
         for (int i = 0; i< trialNumber; i++) {
             cars.tryMove();
-            //resultView.printResult(cars.getPositionList());
+            results.add(new Result(cars.getPositionList()));
         }
+
+        return results;
     }
 }

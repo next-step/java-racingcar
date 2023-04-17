@@ -1,9 +1,9 @@
 package racingcar;
 
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class FourOverTenMoveStrategy implements MoveStrategy {
-    private static final Random RANDOM = new Random();
+    private static final ThreadLocalRandom RANDOM = ThreadLocalRandom.current();
     private static final int RATIO_OVER_TEN = 4;
 
     public boolean isMovable() {

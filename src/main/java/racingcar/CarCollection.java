@@ -2,9 +2,10 @@ package racingcar;
 
 import java.sql.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CarCollection {
-    private ArrayList<Car> carList;
+    private List<Car> carList;
 
     public CarCollection(int number, MoveStrategy moveStrategy) {
         this.carList = new ArrayList<>();
@@ -19,8 +20,8 @@ public class CarCollection {
         }
     }
 
-    public ArrayList<Integer> getPositionList() {
-        ArrayList<Integer> positionList = new ArrayList<>();
+    public List<Integer> getPositionList() {
+        List<Integer> positionList = new ArrayList<>();
         for (Car car: this.carList){
             positionList.add(car.getPosition());
         }

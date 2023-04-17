@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.List;
+
 public class GameController {
     private InputView inputView;
     private ResultView resultView;
@@ -14,6 +16,9 @@ public class GameController {
         int trialNumber = inputView.readTrialNumber();
 
         GameService gameService = new GameService(carNumber, trialNumber);
-        gameService.play();
+        this.resultView.printResult(gameService.play());
+
+
+
     }
 }
