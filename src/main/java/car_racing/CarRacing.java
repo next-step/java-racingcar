@@ -30,21 +30,22 @@ public class CarRacing {
 
     public List<Car> getWinner() {
         List<Integer> carMoveCounts = getCarMoveCounts();
-        int maxIndex = Collections.max(carMoveCounts);
-        return getWinCars(maxIndex);
+        int maxCount = Collections.max(carMoveCounts);
+        return getWinCars(maxCount);
     }
 
     private List<Integer> getCarMoveCounts() {
         List<Integer> carMoveCounts = new ArrayList<>();
-        for (Car car : cars)
+        for (Car car : cars) {
             carMoveCounts.add(car.getMoveCount());
+        }
         return carMoveCounts;
     }
 
-    private List<Car> getWinCars(int maxIndex) {
+    private List<Car> getWinCars(int maxCount) {
         List<Car> winCars = new ArrayList<>();
         for (Car car : cars) {
-            if (car.getMoveCount() == maxIndex) {
+            if (car.getMoveCount() == maxCount) {
                 winCars.add(car);
             }
         }

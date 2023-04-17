@@ -8,7 +8,7 @@ import java.util.List;
 public class Car {
     private static final int INITIAL_COUNT = 0;
     private static final int CAR_MOVE_BOUND = 4;
-
+    private static final int MAX_CAR_NAME = 5;
     private final String name;
     private int moveCount = INITIAL_COUNT;
 
@@ -40,5 +40,9 @@ public class Car {
             cars.add(new Car(carName, numberGenerator));
         }
         return cars;
+    }
+
+    public static Boolean isExceed5Characters(String carName) {
+        return carName.length() > MAX_CAR_NAME;
     }
 }

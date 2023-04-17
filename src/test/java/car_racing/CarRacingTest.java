@@ -3,7 +3,7 @@ package car_racing;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import util.TestNumberGenerator;
+import test_util.NumberGeneratorByInputNumber;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,7 +23,7 @@ class CarRacingTest {
     @DisplayName("cars를 전달받아 carRacing이 생성되어야 한다.")
     void carRacing_초기화() {
         // when
-        TestNumberGenerator testNumberGenerator = new TestNumberGenerator(0);
+        NumberGeneratorByInputNumber testNumberGenerator = new NumberGeneratorByInputNumber(0);
         CarRacing carRacing = new CarRacing(Car.generateCars(new ArrayList<>(Arrays.asList("pobi", "crong", "honux")), testNumberGenerator));
 
         // then
@@ -55,9 +55,9 @@ class CarRacingTest {
         // Given
         List<Car> cars = new ArrayList<>(
                 Arrays.asList(
-                        new Car("pobi", new TestNumberGenerator(3)),
-                        new Car("crong", new TestNumberGenerator(5)),
-                        new Car("honux", new TestNumberGenerator(6))
+                        new Car("pobi", new NumberGeneratorByInputNumber(3)),
+                        new Car("crong", new NumberGeneratorByInputNumber(5)),
+                        new Car("honux", new NumberGeneratorByInputNumber(6))
                 )
         );
         CarRacing carRacing = new CarRacing(cars);

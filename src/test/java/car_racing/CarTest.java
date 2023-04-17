@@ -2,7 +2,7 @@ package car_racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import util.TestNumberGenerator;
+import test_util.NumberGeneratorByInputNumber;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -12,7 +12,7 @@ class CarTest {
     @DisplayName("car의 처음 moveCount 초기값은 0이여야 한다.")
     void car_초기화() {
         // when
-        Car car = new Car("", new TestNumberGenerator(0));
+        Car car = new Car("", new NumberGeneratorByInputNumber(0));
         // then
         assertThat(car.getMoveCount()).isEqualTo(0);
     }
@@ -21,7 +21,7 @@ class CarTest {
     @DisplayName("랜덤 값이 4이하일 경우 car는 움직이지 않는다.")
     void car_멈춤() {
         // when
-        Car car = new Car("", new TestNumberGenerator(3));
+        Car car = new Car("", new NumberGeneratorByInputNumber(3));
         car.moveOrStop();
 
         // then
@@ -32,7 +32,7 @@ class CarTest {
     @DisplayName("랜덤 값이 4초과일 경우 car는 움직인다.")
     void car_움직임() {
         //when
-        Car car = new Car("", new TestNumberGenerator(5));
+        Car car = new Car("", new NumberGeneratorByInputNumber(5));
         car.moveOrStop();
 
         //then

@@ -16,8 +16,8 @@ public class Application {
             System.out.println(e.getMessage());
             return;
         }
-        CarRacing carRacing = new CarRacing(Car.generateCars(inputDto.carNames, new RandomNumberGenerator()));
-        run(carRacing, inputDto.trySize);
+        CarRacing carRacing = new CarRacing(Car.generateCars(inputDto.getCarNames(), new RandomNumberGenerator()));
+        run(carRacing, inputDto.getTrySize());
         List<Car> winCars = carRacing.getWinner();
         ResultView.printWinCar(winCars);
 
