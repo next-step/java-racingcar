@@ -15,23 +15,15 @@ public class RacingGame {
     }
 
     public void run() {
-        getInputsFromUser();
-
         List<Car> cars = makeCarsOf(view.numbOfCar());
 
         runWithCarsNTimes(view.numbOfTrial(), cars);
     }
 
-    private void getInputsFromUser() {
-        view.questionAboutNumberOfTrial();
-        view.questionAboutNumberOfCars();
-    }
-
-
     private List<Car> makeCarsOf(int numb) {
         List<Car> cars = new ArrayList<>();
 
-        for(int i = 0; i < numb; i++) {
+        for (int i = 0; i < numb; i++) {
             cars.add(new Car());
         }
 
@@ -46,7 +38,7 @@ public class RacingGame {
 
     private void moveAndPrint(List<Car> cars) {
 
-        for (Car car: cars) {
+        for (Car car : cars) {
             int rand = randomGenerator.generate();
             car.moveDependingOn(rand);
 
