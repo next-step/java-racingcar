@@ -13,12 +13,12 @@ public class Distance implements Comparator<Distance> {
         this.distance = distance;
     }
 
-    public Distance moveForward(int randomNumber) {
+    public Distance moveForward() {
         return new Distance(this.distance + MOVE_STEP);
     }
 
-    public String distanceForm(String distancePrintStandard) {
-        return distancePrintStandard.repeat(this.distance);
+    public int distanceIntType() {
+        return this.distance;
     }
 
     @Override

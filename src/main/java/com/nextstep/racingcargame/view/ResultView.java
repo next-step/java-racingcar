@@ -37,7 +37,7 @@ public class ResultView {
     public static void printAllCarCurrentDistance(Cars cars) {
         List<String> carCurrentDistances = cars.carStream()
                 .map(car -> car.getCarName() + CAR_NAME_AND_DISTANCE_DELIMITER
-                        + car.getDisplayableDistanceForm(CAR_DISTANCE_DISPLAY_UNIT))
+                        + CAR_DISTANCE_DISPLAY_UNIT.repeat(car.getDistance().distanceIntType()))
                 .collect(Collectors.toList());
 
         carCurrentDistances.forEach(ResultView::printSource);

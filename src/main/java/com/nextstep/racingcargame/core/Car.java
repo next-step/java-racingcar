@@ -29,10 +29,6 @@ public class Car {
         return this.name.getCarName();
     }
 
-    public String getDisplayableDistanceForm(String distancePrintStandard) {
-        return this.distance.distanceForm(distancePrintStandard);
-    }
-
     public Distance getDistance() {
         return this.distance;
     }
@@ -43,7 +39,7 @@ public class Car {
 
     public void move(MovingStrategy movingStrategy) {
         if (isGoForwardNumber(movingStrategy.randomNumber())) {
-            this.distance = this.distance.moveForward(movingStrategy.randomNumber());
+            this.distance = this.distance.moveForward();
         }
     }
 
