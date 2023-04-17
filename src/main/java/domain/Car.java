@@ -2,7 +2,7 @@ package domain;
 
 public class Car {
 
-    private String name;
+    private final String name;
     private int distance;
 
     public Car(String name) {
