@@ -7,8 +7,6 @@ public class RacingGame {
     private List<Car> carList;
     private int numberOfGames;
 
-    public RacingGame() {}
-
     public RacingGame(RacingGameInputs racingGameInputs) {
         this.carList = SettingGame.createCars(racingGameInputs);
         this.numberOfGames = racingGameInputs.getNumberOfGames();

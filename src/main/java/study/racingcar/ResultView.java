@@ -6,6 +6,7 @@ public class ResultView {
 
     private static final String MOVE_MARK = "-";
     private static final String NAME_CLONE = " : ";
+    private static final String END_GAME_MESSAGE = "게임이 종료되었습니다.";
     public static void resultGame(Car car) {
         printCarName(car.getName());
 
@@ -30,5 +31,9 @@ public class ResultView {
 
     public static void winner(List<String> winner) {
         System.out.println(String.join(", ", winner) + "가 최종 우승했습니다.");
+    }
+
+    public static void endGame() {
+        System.out.println(END_GAME_MESSAGE);
     }
 }
