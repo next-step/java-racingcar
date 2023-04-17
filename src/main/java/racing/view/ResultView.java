@@ -1,11 +1,11 @@
 package racing.view;
 
+import racing.domain.Game;
+import racing.domain.GameStatus;
 import racing.domain.Name;
-import racing.domain.Position;
-import racing.domain.RacingCar;
-import racing.domain.RacingGame;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class ResultView {
@@ -15,33 +15,35 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public static void printGameStatus(RacingGame game) {
-        for (RacingCar racingCar : game.getGameCars()) {
-            printCarStatus(racingCar);
+    public static void printGameStatus(Game game) {
+        GameStatus status = game.getStatus();
+        Set<String> participants = status.getParticipants();
+        for (String participant : participants) {
+            printCarStatus(participant, status.getPositionByName(participant));
         }
         System.out.println();
     }
 
-    public static void printCarStatus(RacingCar car) {
-        printName(car.name());
-        printOngoingStatus(car.position());
+    public static void printCarStatus(String name, int position) {
+        printName(name);
+        printOngoingStatus(position);
         System.out.println();
     }
 
-    private static void printOngoingStatus(Position position) {
-        for (int i = 0; i < position.getPosition(); i++) {
+    private static void printOngoingStatus(int position) {
+        for (int i = 0; i < position; i++) {
             System.out.print(PRINT_POSITION_CHAR);
         }
     }
 
-    private static void printName(Name name) {
+    private static void printName(String name) {
         System.out.print(name + " : ");
     }
 
-    public static void printWinner(RacingGame game) {
+    public static void printWinner(Game game) {
         List<String> winnerNames = game.getWinnerNames()
                 .stream()
-                .map(Name::toString)
+                .map(Name::getName)
                 .collect(Collectors.toList());
 
         System.out.print(String.join(", ", winnerNames));
