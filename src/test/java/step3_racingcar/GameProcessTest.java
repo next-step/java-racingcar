@@ -20,7 +20,7 @@ public class GameProcessTest {
 		int tryCount = 6;
 		Cars cars = new Cars(carCount);
 		GameProcess gameProcess = new GameProcess();
-		List<List<CarDTO>> results = gameProcess.play(tryCount, cars.getCars());
+		List<List<CarDTO>> results = gameProcess.play(tryCount, cars);
 		assertEquals(tryCount, results.size());
 	}
 }

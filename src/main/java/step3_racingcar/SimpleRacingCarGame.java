@@ -14,6 +14,6 @@ public class SimpleRacingCarGame {
 		Cars cars = new Cars(carCount);
 		GameProcess gameProcess = new GameProcess();
 		ResultView resultView= new ResultView();
-		resultView.printResult(gameProcess.play(tryCount,cars.getCars()));
+		resultView.printResult(gameProcess.play(tryCount,cars));
 	}
 }

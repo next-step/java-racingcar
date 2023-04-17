@@ -10,13 +10,12 @@ import step3_racingcar.dto.CarDTO;
 
 public class GameProcess {
 
-	public List<List<CarDTO>> play(int tryCount, List<Car> cars) {
+	public List<List<CarDTO>> play(int tryCount, Cars cars) {
 		List<List<CarDTO>> results = new ArrayList<>();
-		Cars carsInstance = new Cars(cars);
 
 		for (int i = 0; i < tryCount; i++) {
-			carsInstance.playRound();
-			results.add(CarsToDTO(carsInstance));
+			cars.playRound();
+			results.add(CarsToDTO(cars));
 		}
 
 		return results;
@@ -24,7 +23,7 @@ public class GameProcess {
 
 	private List<CarDTO> CarsToDTO(Cars cars) {
 		return cars.getCars().stream()
-			.map(Car::toDTO)
+			.map(car -> new CarDTO(car))
 			.collect(Collectors.toList());
 	}
 }

@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import step3_racingcar.domain.Car;
 import step3_racingcar.dto.CarDTO;
 
 public class CarDTOTest {
@@ -13,7 +14,13 @@ public class CarDTOTest {
 	@Test
 	void carDTOConstructorAndGetPosition() {
 		int position = 5;
-		CarDTO carDTO = new CarDTO(position);
+		Car car = new Car();
+
+		for (int i = 0; i < position; i++) {
+			car.tryMove(true);
+		}
+
+		CarDTO carDTO = new CarDTO(car);
 		assertEquals(position, carDTO.getPosition());
 	}
 

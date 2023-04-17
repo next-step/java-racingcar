@@ -20,7 +20,4 @@ public class Car {
 		return position;
 	}
 
-	public CarDTO toDTO() {
-		return new CarDTO(position);
-	}
 }
