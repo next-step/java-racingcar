@@ -10,4 +10,13 @@ public class Garage {
         return this.cars.size();
     }
 
+    public List<Car> createCars(int number) {
+        for (int i = 0; i < number; i++) {
+            Car car = new Car();
+            cars.add(car);
+        }
+
+        return this.cars;
+    }
+
 }
