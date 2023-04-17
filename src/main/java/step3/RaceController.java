@@ -1,14 +1,17 @@
 package step3;
 
 import step3.domain.Race;
-import step3.domain.RaceCondition;
+import step3.domain.RacingCars;
 import step3.view.RaceConditionInputView;
+
+import java.util.List;
 
 public class RaceController {
 
     public static void main(String[] args) {
-        RaceCondition raceCondition = RaceConditionInputView.readRaceCondition();
-        Race race = new Race(raceCondition.getCarCount(), raceCondition.getRaceRound());
+        List<String> carNames = RaceConditionInputView.readCarNames();
+        int raceRound = RaceConditionInputView.readRaceRound();
+        Race race = new Race(new RacingCars(carNames), raceRound);
         race.start();
     }
 }

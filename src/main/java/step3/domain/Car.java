@@ -1,7 +1,17 @@
 package step3.domain;
 
 public class Car {
-    private int position = 0;
+    private final String name;
+    private int position;
+
+    public Car(String name) {
+        this.name = name;
+        this.position = 0;
+    }
+
+    public String getName(){
+        return name;
+    }
 
     public int getPosition() {
         return position;

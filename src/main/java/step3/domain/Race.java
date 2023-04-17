@@ -2,35 +2,31 @@ package step3.domain;
 
 import step3.view.RaceView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Race {
-    private final List<Car> cars;
+    private final RacingCars cars;
     private final int raceRound;
 
-    public Race(int carCount, int raceRound) {
-        this.cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            this.cars.add(new Car());
-        }
+    public Race(RacingCars cars, int raceRound) {
+        this.cars = cars;
         this.raceRound = raceRound;
     }
 
     public List<Car> getCars() {
-        return cars;
+        return cars.getAll();
     }
 
     public void start() {
         RaceView.displayDiscription();
         for (int round = 0; round < raceRound; round++) {
             moveCars();
-            RaceView.displayRaceSituation(cars);
+            RaceView.displayRaceSituation(getCars());
         }
     }
 
     private void moveCars() {
-        for (Car car : cars) {
+        for (Car car : getCars()) {
             if (CarRandomMovement.canMove()) {
                 car.move();
             }
