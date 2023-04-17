@@ -10,7 +10,7 @@ public class CarTest {
     @Test
     @DisplayName("전진또는스톱")
     void 전진또는스톱() {
-        Car car = new Car();
+        Car car = new Car("test");
 
         // 스톱 테스트
         car.moveForwardOrStop(3);
@@ -22,4 +22,11 @@ public class CarTest {
 
     }
 
+    @Test
+    @DisplayName("자동차이름조회")
+    void 자동차이름조회() {
+        Car car = new Car("BMW");
+
+        Assertions.assertThat(car.getName()).isEqualTo("BMW");
+    }
 }
