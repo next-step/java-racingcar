@@ -54,4 +54,12 @@ public class RacingTest {
         );
     }
 
+    @Test
+    void 자동차이름길이초과() {
+        assertAll(
+                () -> assertThatThrownBy(() -> new Racing("pobi,tooLongName,honux",5)).isInstanceOf(IllegalArgumentException.class).hasMessage("자동차 이름은 5자를 초과할 수 없습니다."),
+                () -> assertThatThrownBy(() -> new Car("tooLongName")).isInstanceOf(IllegalArgumentException.class).hasMessage("자동차 이름은 5자를 초과할 수 없습니다.")
+        );
+    }
+
 }
