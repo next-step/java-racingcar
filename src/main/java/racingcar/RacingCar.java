@@ -30,21 +30,21 @@ public class RacingCar {
         return cars.size();
     }
 
-    public List<String> winningCars() {
+    public List<Car> winningCars() {
         return makeWinningCars(maxMoveCount());
     }
 
-    private List<String> makeWinningCars(int maxMoveCount) {
-        List<String> winnerNames = new ArrayList<>();
+    private List<Car> makeWinningCars(int maxMoveCount) {
+        List<Car> winningCars = new ArrayList<>();
         for (Car car : cars) {
-            addWinnerNames(maxMoveCount, winnerNames, car);
+            addWinningCar(maxMoveCount, winningCars, car);
         }
-        return winnerNames;
+        return winningCars;
     }
 
-    private void addWinnerNames(int maxMoveCount, List<String> winnerNames, Car car) {
-        if(car.moveCount() == maxMoveCount) {
-            winnerNames.add(car.name());
+    private void addWinningCar(int maxMoveCount, List<Car> winningCars, Car car) {
+        if(car.moveCountIsEqualTo(maxMoveCount)) {
+            winningCars.add(car);
         }
     }
 

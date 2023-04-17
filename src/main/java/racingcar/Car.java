@@ -18,6 +18,10 @@ public class Car {
         return moveCount > maxMoveCount;
     }
 
+    public boolean moveCountIsEqualTo(int maxMoveCount) {
+        return moveCount == maxMoveCount;
+    }
+
     public String name() {
         return name;
     }

@@ -15,8 +15,8 @@ public class ResultView {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
     }
 
-    public void printWinners(List<String> carNames) {
-        System.out.println(makeWinners(carNames) + "가 최종 우승했습니다.");
+    public void printWinners(List<Car> cars) {
+        System.out.println(makeWinners(cars) + "가 최종 우승했습니다.");
     }
 
     public void printQuestionTryCountMessage() {
@@ -58,10 +58,10 @@ public class ResultView {
         return sb.toString();
     }
 
-    private String makeWinners(List<String> carNames) {
+    private String makeWinners(List<Car> cars) {
         StringBuilder sb = new StringBuilder();
-        for (String carName : carNames) {
-            sb.append(carName).append(WINNERS_SEPARATOR);
+        for (Car car : cars) {
+            sb.append(car.name()).append(WINNERS_SEPARATOR);
         }
         removeLastSeparator(sb);
 

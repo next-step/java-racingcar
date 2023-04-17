@@ -64,9 +64,13 @@ public class RacingCarTest {
 
         //when
         racingCar.makeMoveCounts(Arrays.asList(1, 4, 5));
-        List<String> winnerNames = racingCar.winningCars();
+        List<Car> winningCars = racingCar.winningCars();
+        List<String> winningCarNames = new ArrayList<>();
+        for (Car winningCar : winningCars) {
+            winningCarNames.add(winningCar.name());
+        }
 
         //then
-        assertThat(winnerNames).containsExactly("crong", "honux");
+        assertThat(winningCarNames).containsExactly("crong", "honux");
     }
 }
