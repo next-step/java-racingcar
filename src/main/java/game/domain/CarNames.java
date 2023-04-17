@@ -13,7 +13,14 @@ public class CarNames {
     }
 
     public static CarNames of(String input) {
+        validateCarNames(input);
         return new CarNames(List.of(input.split(DELIMITER)));
+    }
+
+    private static void validateCarNames(String input) {
+        if (input == null || input.isBlank()) {
+            throw new IllegalArgumentException("자동차 이름 입력이 누락되었습니다.");
+        }
     }
 
     public List<String> getNames() {
