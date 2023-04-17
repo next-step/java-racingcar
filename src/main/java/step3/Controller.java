@@ -1,5 +1,8 @@
 package step3;
 
+import step3.printer.Printer;
+import step3.printer.PrinterImpl;
+
 public class Controller {
 
 
@@ -9,7 +12,10 @@ public class Controller {
         int raceCount = input.inputRaceCount();
         int carCount = input.inputCarCount();
 
-        System.out.println("실행결과");
-        Race.from(raceCount, carCount).race();
+        Printer printer = new PrinterImpl();
+        Race race = Race.from(raceCount, carCount);
+
+        race.race();
+        printer.print(race);
     }
 }

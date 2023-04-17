@@ -35,7 +35,6 @@ public class Race {
     public void race(){
         for(int i = 0; i < raceCount; i++){
             raceCar();
-            Printer.print(cars);
         }
     }
 
