@@ -1,11 +1,10 @@
 package game;
 
+import game.domain.CarNames;
 import game.domain.Cars;
 import game.domain.GameCount;
 import game.view.InputView;
 import game.view.ResultView;
-
-import java.util.List;
 
 /**
  * 기능 요구사항
@@ -20,10 +19,11 @@ import java.util.List;
 public class CarRacingApplication {
 
     public static void main(String[] args) {
-        List<String> carNames = InputView.showAndGetCarNames();
+        CarNames carNames = CarNames.of(InputView.showCarNamesConsole());
         GameCount gameCount = new GameCount(InputView.showGameCountConsole());
 
-        Cars cars = Cars.of(carNames);
+        Cars cars = Cars.of(carNames.getNames());
+        
         ResultView.displayExecuteResultMessage();
         for (int i = 0; i < gameCount.getCount(); i++) {
             cars.drive();

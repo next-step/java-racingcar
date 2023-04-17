@@ -4,7 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -28,12 +27,12 @@ class InputViewTest {
 
         // when
         System.setIn(new ByteArrayInputStream(inputs.getBytes()));
-        List<String> carNames = InputView.showAndGetCarNames();
+        String carNames = InputView.showCarNamesConsole();
         int racingRep = InputView.showGameCountConsole();
 
         // then
         assertAll(
-                () -> assertThat(carNames).isEqualTo(List.of(inputCarNames.split(","))),
+                () -> assertThat(carNames).isEqualTo(inputCarNames),
                 () -> assertThat(racingRep).isSameAs(Integer.parseInt(inputRep))
         );
     }
