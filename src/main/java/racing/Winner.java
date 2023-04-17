@@ -17,11 +17,13 @@ public class Winner {
     }
 
     private void checkWinner(Cars cars, int i) {
+        if (this.moveStatus == cars.find(i).moveStatus) {
+            this.name = this.name + ", " + cars.find(i).name;
+            return;
+        }
         if (this.moveStatus < cars.find(i).moveStatus) {
             this.name = cars.find(i).name;
             this.moveStatus = cars.find(i).moveStatus;
-        } else if (this.moveStatus == cars.find(i).moveStatus) {
-            this.name = this.name + ", " + cars.find(i).name;
         }
     }
 }
