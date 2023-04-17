@@ -17,8 +17,8 @@ public class CarRacingApplication {
 
     private static void run(UserInput userInput) {
         int attemptCount = userInput.getAttemptCount();
-        List<Car> cars = createCars(userInput.getNamesForCars(), userInput.getNumbersOfCar());
-        createResult(new Cars(cars), attemptCount);
+        Cars cars =createCars(userInput.getNamesForCars());
+        createResult(cars, attemptCount);
     }
 
     private static void createResult(Cars cars, int attemptCount) {

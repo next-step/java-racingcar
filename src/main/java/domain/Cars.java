@@ -4,6 +4,7 @@ import static domain.RandomNumber.generateRandomOutOfTen;
 import static domain.RandomNumber.isOverFourOutOfTen;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -16,10 +17,10 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static List<Car> createCars(String[] namesForCars, int numbersOfCar) {
-        return IntStream.range(0, numbersOfCar)
-                .mapToObj(i -> new Car(namesForCars[i]))
-                .collect(Collectors.toList());
+    public static Cars createCars(String[] namesForCars) {
+        return new Cars(Arrays.stream(namesForCars)
+                        .map(Car::new)
+                        .collect(Collectors.toList()));
     }
 
     public void makeCarsMove() {

@@ -15,9 +15,7 @@ class CarsTest {
         String names = "포비,크롱,뽀로로";
         int attemptCount = 3;
         UserInput userInput = new UserInput(names, attemptCount);
-        List<Car> inpurCars = createCars(userInput.getNamesForCars(),
-                userInput.getNumbersOfCar());
-        Cars cars = new Cars(inpurCars);
+        Cars cars =createCars(userInput.getNamesForCars());
 
         assertThat(cars.countCars()).isEqualTo(3);
     }
@@ -28,9 +26,7 @@ class CarsTest {
         String names = "포비,크롱,뽀로로";
         int attemptCount = 3;
         UserInput userInput = new UserInput(names, attemptCount);
-        List<Car> inpurCars = createCars(userInput.getNamesForCars(),
-                userInput.getNumbersOfCar());
-        Cars cars = new Cars(inpurCars);
+        Cars cars =createCars(userInput.getNamesForCars());
 
         Car eachCar = cars.getEachCar(1);
         assertThat(eachCar.getCarName()).isEqualTo("크롱");
