@@ -1,5 +1,6 @@
 package step3;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -10,11 +11,17 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class CarsTest {
 
+    private Cars cars;
+
+    @BeforeEach
+    void setUp() {
+        cars = new Cars();
+        cars.addCar(new Car());
+        cars.addCar(new Car());
+    }
+
     @Test
-    void 자동차_추가() {
-        Cars cars = new Cars();
-        cars.addCar(new Car());
-        cars.addCar(new Car());
+    void 자동차_수_확인() {
         assertThat(cars.count()).isEqualTo(2);
     }
 }
