@@ -9,7 +9,7 @@ public class StringCalculator {
     public static final String DELIMITER = ",|:";
 
     public static int numberStringSum(String numberString) {
-        if(isaBlank(numberString)) {
+        if (isaBlank(numberString)) {
             return ZERO;
         }
         return sum(toInts(split(numberString)));
@@ -19,7 +19,7 @@ public class StringCalculator {
         Matcher m = Pattern.compile("//(.)\n(.*)").matcher(numberString);
         if (m.find()) {
             String customDelimiter = m.group(1);
-            return m.group(2).split(DELIMITER+"|"+customDelimiter);
+            return m.group(2).split(DELIMITER + "|" + customDelimiter);
         }
         return numberString.split(DELIMITER);
     }
