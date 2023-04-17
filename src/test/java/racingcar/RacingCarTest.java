@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RacingCarTest {
 
   @Test
-  @DisplayName("CarInterface 상속으로 RacingCar 객체 생성 후 position = 0인지 확인")
+  @DisplayName("RacingCar 객체 생성 후 position = 0인지 확인")
   public void createRacingCar_ReturnPositionValueZero() {
     RacingCar racingCar = new RacingCar("test");
     int result = racingCar.position();
@@ -31,5 +31,14 @@ public class RacingCarTest {
     int result = racingCar.position();
 
     assertThat(result).isEqualTo(1);
+  }
+
+  @Test
+  @DisplayName("RacingCar 객체 생성 후 name = test 인지 확인")
+  public void createRacingCar_ReturnNameTest() {
+    RacingCar racingCar = new RacingCar("test");
+    String result = racingCar.name();
+
+    assertThat(result).isEqualTo("test");
   }
 }

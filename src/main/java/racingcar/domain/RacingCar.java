@@ -20,4 +20,8 @@ public class RacingCar {
     public int position() {
         return this.position;
     }
+
+    public String name() {
+        return this.carName;
+    }
 }
