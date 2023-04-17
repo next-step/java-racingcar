@@ -43,7 +43,7 @@ public class AutoRacingParticipant {
     public List<String> getAllMaxMoveCountName() {
         return autoRacingMembers.stream()
                 .filter(racingCar -> racingCar
-                        .getMoveCount() == getMaxCountValue())
+                        .isSameMoveCount(getMaxCountValue()))
                 .map(RacingCar::getName)
                 .collect(Collectors
                         .toList());

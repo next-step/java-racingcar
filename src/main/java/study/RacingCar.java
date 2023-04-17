@@ -42,7 +42,13 @@ public class RacingCar {
         return this.moveCount;
     }
 
+    public boolean isSameMoveCount(int maxCountValue) {
+        return maxCountValue == this.moveCount;
+    }
+
     private void moveForward() {
         this.moveCount++;
     }
+
+
 }
