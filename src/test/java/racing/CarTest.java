@@ -70,16 +70,12 @@ public class CarTest {
 
     @Test
     void 이동이_끝나면_우승자_선출() {
-        List<String> names = List.of("pobiaaaaa", "crong", "honux");
-
         Cars cars = new Cars(5, List.of(new Car("pobi", 5), new Car("crong", 2), new Car("honux", 3)));
         assertThat(cars.winnerNames()).isEqualTo("pobi");
     }
 
     @Test
     void 이동이_끝나면_우승자_목록_선출() {
-        List<String> names = List.of("pobiaaaaa", "crong", "honux");
-
         Cars cars = new Cars(5, List.of(new Car("pobi", 5), new Car("crong", 5), new Car("honux", 3)));
         assertThat(cars.winnerNames()).isEqualTo("pobi, crong");
     }

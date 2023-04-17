@@ -11,21 +11,22 @@ public class Car {
     private int position;
 
     public Car(String name) {
-        if (name.length() > NAME_LENGTH_CRITERIA) {
-            throw new RuntimeException("이름은 5자를 초과할 수 없습니다.");
-        }
+        validateName(name);
         this.name = name;
         this.position = DEFAULT_POSITION;
     }
 
     public Car(String name, int position) {
-        if (name.length() > NAME_LENGTH_CRITERIA) {
-            throw new RuntimeException("이름은 5자를 초과할 수 없습니다.");
-        }
+        validateName(name);
         this.name = name;
         this.position = position;
     }
 
+    private static void validateName(String name) {
+        if (name.length() > NAME_LENGTH_CRITERIA) {
+            throw new RuntimeException("이름은 5자를 초과할 수 없습니다.");
+        }
+    }
 
     public void move(int randomNumber) {
         if (randomNumber < 0 || randomNumber > MAX_RANDOM) {

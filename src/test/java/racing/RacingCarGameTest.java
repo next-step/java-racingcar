@@ -16,7 +16,6 @@ public class RacingCarGameTest {
         RacingCarGame.progress(cars);
 
         // 실제로 모든 차가 주어진 횟수만큼 이동했느지 판단할 수 있는 방법....?
-        assertThat(RacingCarGame.getRound()).isEqualTo(moveCount);
         assertThat(cars.values().size()).isEqualTo(carCount);
         cars.values().forEach(car -> {
             assertThat(car.position()).isBetween(0, moveCount);

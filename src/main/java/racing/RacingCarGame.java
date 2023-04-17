@@ -4,12 +4,12 @@ import java.util.List;
 
 public class RacingCarGame {
 
-    private static int round = 0;
-
     public static void start() {
         InputView.input();
         List<String> names = stringToNameList();
         Cars cars = new Cars(names, InputView.moveCount());
+
+        ResultView.printTitle();
         progress(cars);
         ResultView.showWinner(cars);
     }
@@ -21,13 +21,8 @@ public class RacingCarGame {
     public static void progress(Cars cars) {
         for (int i = 0; i < cars.moveCount(); i++) {
             cars = cars.move();
-            ResultView.print(cars);
-            round += 1;
+            ResultView.printRace(cars);
         }
-    }
-
-    public static int getRound() {
-        return round;
     }
 
 }
