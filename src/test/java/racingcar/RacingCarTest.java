@@ -5,6 +5,9 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.Car;
+import racingcar.model.CarRace;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RacingCarTest {
 
@@ -16,25 +19,11 @@ public class RacingCarTest {
         Assertions.assertThat(location).isZero();
     }
 
-    @DisplayName("random 값이 4이상일 경우 자동차 전진 Test")
+
+    @DisplayName("random 값이 4 이상일 경우 true 반환 Test")
     @Test
-    void carMoveByMoveDistance() {
-        Car car = new Car();
-        int firstLocation = car.carLocation();
-        car.moveToFront(4);
-
-        int afterLocation = car.carLocation();
-        Assertions.assertThat(afterLocation).isEqualTo(firstLocation+1);
-    }
-
-    @DisplayName("random 값이 4미만일 경우 자동차 전진 X Test")
-    @Test
-    void carDontMoveByMoveDistance() {
-        Car car = new Car();
-        int firstLocation = car.carLocation();
-        car.moveToFront(3);
-
-        int afterLocation = car.carLocation();
-        Assertions.assertThat(afterLocation).isEqualTo(firstLocation);
+    void carMoveWithCondition() {
+        CarRace carRace = new CarRace();
+        assertTrue(carRace.isCanMove(4));
     }
 }
