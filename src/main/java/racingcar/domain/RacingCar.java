@@ -3,15 +3,16 @@ package racingcar.domain;
 import racingcar.strategy.MoveStrategy;
 
 public class RacingCar {
-  private int position = 0;       // 차가 이동한 위치
+    private static final int MOVEMENT_DISTANCE = 1;     // 자동차 이동 시 1만큼 전진
+    private int position = 0;       // 차가 이동한 위치
 
-  public void tryToMove(MoveStrategy moveStrategy) {
-    if (moveStrategy.decideMoveOrHold()) {
-      this.position += moveStrategy.moveForward();
+    public void tryToMove(MoveStrategy moveStrategy) {
+        if (moveStrategy.decideMoveOrHold()) {
+            this.position += MOVEMENT_DISTANCE;
+        }
     }
-  }
 
-  public int position() {
-    return this.position;
-  }
+    public int position() {
+        return this.position;
+    }
 }
