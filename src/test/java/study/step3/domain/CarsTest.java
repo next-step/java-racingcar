@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -17,7 +18,21 @@ class CarsTest {
         String[] carNames = new String[]{"avante", "sonata", "grandeur"};
 
         cars = new Cars(carNames,
-                new LessThanMoveCondition(4, new RandomMove()));
+                new LessThanMoveCondition(4, new StaticMove(5)));
+    }
+
+    @Test
+    void moveForward() throws Exception {
+        //given
+
+        //when
+        cars.moveForward();
+
+        //then
+        assertThat(cars.getCars()
+                .stream()
+                .map(Car::getPosition)
+                .collect(Collectors.toList())).containsExactly(Car.GO, Car.GO, Car.GO);
     }
 
     @Test
@@ -60,5 +75,4 @@ class CarsTest {
         assertThat(positionOfCars)
                 .containsAnyOf("avante", "sonata", "grandeur");
     }
-
 }
