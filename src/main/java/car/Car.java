@@ -1,15 +1,12 @@
 package car;
 
 public class Car {
-
-    private static final int DEFAULT_POSITION = 0;
-
     private final Name name;
     private final Position position;
     private final MoveStrategy moveStrategy;
 
     public Car(String name, MoveStrategy moveStrategy) {
-        this.position = new Position(DEFAULT_POSITION);
+        this.position = new Position();
         this.name = new Name(name);
         this.moveStrategy = moveStrategy;
     }
