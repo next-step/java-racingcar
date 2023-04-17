@@ -11,7 +11,12 @@ public class ResultView {
 	private static final char LOCATION_REPRESENTATION_SYMBOL = '-';
 	private static final String NAME_LOCATION_DELIMITER = " : ";
 	private static final String WINNER_NAMES_DELIMITER = ", ";
+	private static final String START_LINE_TEXT = "\n실행 결과";
 	private static final String WINNER_TEXT_POSTFIX = "가 최종 우승했습니다.";
+
+	public void printStartLineText() {
+		System.out.println(START_LINE_TEXT);
+	}
 
 	public void printStatus(Cars cars) {
 		for (Car car : cars.getCars()) {

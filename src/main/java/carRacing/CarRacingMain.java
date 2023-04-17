@@ -14,7 +14,7 @@ public class CarRacingMain {
 
 		int tryCount = inputView.inputTryCount();
 		ResultView resultView = new ResultView();
-		System.out.println("\n실행 결과");
+		resultView.printStartLineText();
 		while (tryCount-- > 0) {
 			carRacing.race();
 			resultView.printStatus(carRacing.getCars());
