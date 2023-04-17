@@ -1,5 +1,9 @@
 package racingcar.view;
 
+import racingcar.service.Car;
+
+import java.util.List;
+
 public class ResultView {
     private static String DISTANCE = "-";
 
@@ -25,10 +29,25 @@ public class ResultView {
         System.out.println(sb);
     }
 
-    public static void printStatusOfCars(int[] distances) {
-        for(int distance: distances) {
-            printDistanceOfCar(distance);
+    private static void printNameOfCar(String name) {
+        System.out.print(name +":");
+    }
+
+    public static void printStatusOfCars(List<Car> cars) {
+        for(Car car: cars) {
+            printNameOfCar(car.getName());
+            printDistanceOfCar(car.getDistance());
         }
         System.out.println();
+    }
+
+    public static void printWinners(List<String> winners) {
+        printWinner(winners);
+        System.out.println("가 최종 우승했습니다.");
+    }
+
+    private static void printWinner(List<String> winners) {
+        String winnerStr = String.join(",", winners);
+        System.out.print(winnerStr);
     }
 }

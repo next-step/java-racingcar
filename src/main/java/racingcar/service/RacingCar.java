@@ -1,37 +1,40 @@
 package racingcar.service;
 
-import java.util.ArrayList;
-
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class RacingCar {
-
     private final List<Car> cars;
-    private CarControl carControl;
 
-    public RacingCar(String numberOfCars) {
-        this.cars = registerCar(numberOfCars);
-        this.carControl = new CarControl();
+    private Move move;
+
+    public RacingCar(String[] nameOfCars, Move move) {
+        this.cars = registerCar(nameOfCars);
+        this.move = move;
     }
 
-    private List<Car> registerCar(String numberOfCar) {
-        return null;
-//        return IntStream.range(0, numberOfCar).mapToObj(i -> new Car()).collect(Collectors.toList());
+    private List<Car> registerCar(String[] nameOfCars) {
+        return Arrays.stream(nameOfCars).map(Car::new).collect(Collectors.toList());
     }
 
-    public void start() {
-        cars.forEach(car -> goOrStop(car));
+    public void start(List<Integer> randomList) {
+        for(int i = 0; i < cars.size(); i++) {
+            this.move(cars.get(i), randomList.get(i));
+        }
     }
 
-    private void goOrStop(Car car) {
-        if (carControl.goOrStop()) {
+    private void move(Car car, int number) {
+        if (move.goOrStop(number)) {
             car.drive();
         }
     }
 
-    public int[] getStatusOfCars() {
-        return cars.stream().mapToInt(Car::getDistance).toArray();
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public List<String> getWinner() {
+        int max = cars.stream().max(Comparator.comparing(Car::getDistance)).get().getDistance();
+        return cars.stream().filter(car -> car.getDistance() == max).map(Car::getName).collect(Collectors.toList());
     }
 }

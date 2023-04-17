@@ -11,7 +11,9 @@ public class CarTest {
     @DisplayName("자동차 움직임 테스트")
     public void move()
     {
-        Car car = new Car();
+        String name = "pobi";
+
+        Car car = new Car(name);
         assertThat(car.drive()).isEqualTo(1);
     }
 }

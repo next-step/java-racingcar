@@ -2,9 +2,11 @@ package racingcar.service;
 
 public class Car {
     private int distance;
+    private String name;
     private static int START = 0;
 
-    public Car() {
+    public Car(String name) {
+        this.name = name;
         this.distance = START;
     }
 
@@ -18,4 +20,7 @@ public class Car {
         return distance;
     }
 
+    public String getName() {
+        return name;
+    }
 }

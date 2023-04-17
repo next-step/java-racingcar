@@ -26,9 +26,14 @@ public class CarNameManagementTest {
                     .isInstanceOf(RuntimeException.class).hasMessageContaining("player zero");
         }
 
+    }
+
+    @Nested
+    @DisplayName("이름 검증")
+    class validate {
         @Test
         @DisplayName("자동차 이름이 5글자 초과 시")
-        void splitExceptionWithNameLengthOver5() {
+        void validateWithNameLengthOver5() {
             assertThatThrownBy(()-> { CarNameManagement management = new CarNameManagement("pobi,crongo"); })
                     .isInstanceOf(RuntimeException.class).hasMessageContaining("over 5 length");
         }
