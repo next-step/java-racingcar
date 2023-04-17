@@ -27,4 +27,7 @@ public class RacingCars {
         return MoveStatus.GO == MoveStatus.findByNumber(NumberUtil.generateRandomNumberFromZeroToInputNumber(MAX_MOVABLE_RANGE));
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
 }
