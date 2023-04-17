@@ -30,4 +30,8 @@ public class Car {
     private static boolean isMovable(Integer number) {
         return number >= MINIMUM_NUMBER_TO_MOVE;
     }
+
+    public boolean isPositionEqual(Integer position) {
+        return this.position.equals(position);
+    }
 }

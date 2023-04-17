@@ -44,7 +44,7 @@ public class Race {
 
     public List<Car> getFirstPlace() {
         return Arrays.stream(this.cars)
-                .filter(car -> car.toDto().getPosition().equals(getMaxPosition()))
+                .filter(car -> car.isPositionEqual(getMaxPosition()))
                 .collect(Collectors.toList());
     }
 
