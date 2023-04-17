@@ -26,7 +26,7 @@ class CarRaceTest {
         final Cars cars = new Cars(a, b);
         final CarRace carRace = new CarRace(cars, "1", () -> true);
 
-        final String winners = carRace.getWinners();
+        final String winners = String.join(", ", carRace.getWinners());
         assertThat(winners).isEqualTo("b");
     }
 
@@ -38,7 +38,7 @@ class CarRaceTest {
         final Cars cars = new Cars(a, b);
         final CarRace carRace = new CarRace(cars, "1", () -> true);
 
-        final String winners = carRace.getWinners();
+        final String winners = String.join(", ", carRace.getWinners());
         assertThat(winners).isEqualTo("a, b");
     }
 

@@ -29,12 +29,12 @@ public class CarRace {
         return new ArrayList<>(results);
     }
 
-    public String getWinners() {
+    public List<String> getWinners() {
         final int maxPosition = getMaxPosition();
         return IntStream.range(0, cars.size())
                 .filter(index -> cars.getPosition(index) == maxPosition)
                 .mapToObj(cars::getCarName)
-                .collect(Collectors.joining(", "));
+                .collect(Collectors.toList());
     }
 
     private int getMaxPosition() {

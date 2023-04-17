@@ -13,7 +13,7 @@ public class ResultView {
                 .map(ResultView::carsPositionToDistanceWithName)
                 .collect(Collectors.joining(LINE_BREAK.repeat(2)));
         System.out.println(result);
-        System.out.printf("\n %s가 최종 우승했습니다.", carRace.getWinners());
+        System.out.printf("\n %s가 최종 우승했습니다.", String.join(", ", carRace.getWinners()));
     }
 
     private static String carsPositionToDistanceWithName(Cars cars) {
