@@ -20,7 +20,7 @@ public class Car {
   }
 
   private int getRandomInt() {
-    return RandomIntGenerator.generateMaxBound(DEFAULT_BOUND);
+    return RandomIntGenerator.generate(DEFAULT_BOUND);
   }
 
   private boolean isMoving(int moveValue) {
