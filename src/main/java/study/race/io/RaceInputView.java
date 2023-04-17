@@ -4,27 +4,27 @@ import java.util.Scanner;
 
 public class RaceInputView {
     
-    private int carNum;
-    private int tryNum;
+    private int entryNum;
+    private int raceNum;
 
     public void input() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("자동차 대수는 몇 대 인가요?");
-        carNum = scanner.nextInt();
+        this.entryNum = scanner.nextInt();
     
         System.out.println("시도할 회수는 몇 회 인가요?");
-        tryNum = scanner.nextInt();
+        this.raceNum = scanner.nextInt();
 
         scanner.close();
     }
 
-    public int getCarNum() {
-        return carNum;
+    public int getEntryNum() {
+        return this.entryNum;
     }
 
-    public int getTryNum() {
-        return tryNum;
+    public int getRaceNum() {
+        return this.raceNum;
     }
 
 }
