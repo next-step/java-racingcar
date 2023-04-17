@@ -25,8 +25,8 @@ public class RacingGame {
     private List<Car> makeCarsOf(List<String> names) {
         List<Car> cars = new ArrayList<>();
 
-        for (int i = 0; i < names.size(); i++) {
-            cars.add(new Car());
+        for (String name : names) {
+            cars.add(Car.of(name));
         }
 
         return cars;
