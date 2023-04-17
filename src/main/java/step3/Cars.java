@@ -1,6 +1,7 @@
 package step3;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -20,5 +21,9 @@ public class Cars {
 
     public int count() {
         return this.cars.size();
+    }
+
+    public List<Car> unmodifiableList() {
+        return Collections.unmodifiableList(cars);
     }
 }
