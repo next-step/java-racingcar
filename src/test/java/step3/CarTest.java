@@ -10,7 +10,7 @@ public class CarTest {
     @Test
     @DisplayName("자동차를 한 칸 앞으로 이동시킬 수 있다.")
     void testMoveCar() {
-        Car car = new Car();
+        Car car = new Car("car name");
         int originalPosition = car.getPosition();
 
         car.move();
