@@ -2,6 +2,7 @@ package step3.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import step3.service.RacingCarForwardMatcher;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -11,7 +12,7 @@ class CarTest {
 
     @BeforeEach
     void initCar() {
-        car = new Car();
+        car = new Car(new RacingCarForwardMatcher());
     }
 
     @Test
@@ -20,10 +21,21 @@ class CarTest {
     }
 
     @Test
-    void 자동차를_정상적으로_전진한다() {
-        car.forwardCar();
+    void 랜덤값이_4이상일경우_자동차가_전진한다() {
+        final int random = 5;
+
+        car.forward(random);
 
         assertThat(car.getCarDistance()).isEqualTo(1);
+    }
+
+    @Test
+    void 랜덤값이_4미만일경우_자동차는_멈춰있다() {
+        final int random = 3;
+
+        car.forward(random);
+
+        assertThat(car.getCarDistance()).isEqualTo(0);
     }
 
 }
