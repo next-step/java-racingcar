@@ -1,7 +1,7 @@
 package carrace;
 
-import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class ResultView {
     private static final String DISTANCE = "-";
@@ -10,19 +10,20 @@ public class ResultView {
         prePrint();
         final String result = carRace.getResults()
                 .stream()
-                .map(ResultView::carsPositionToDistance)
+                .map(ResultView::carsPositionToDistanceWithName)
                 .collect(Collectors.joining(LINE_BREAK.repeat(2)));
         System.out.println(result);
+        System.out.printf("\n %s가 최종 우승했습니다.", String.join(", ", carRace.getWinners()));
     }
 
-    private static String carsPositionToDistance(List<Integer> carsPosition) {
-        return carsPosition.stream()
-                .map(ResultView::getDistance)
+    private static String carsPositionToDistanceWithName(Cars cars) {
+        return IntStream.range(0, cars.size())
+                .mapToObj(index -> getDistanceWithName(cars.getCarName(index), cars.getPosition(index)))
                 .collect(Collectors.joining(LINE_BREAK));
     }
 
-    private static String getDistance(Integer integer) {
-        return DISTANCE.repeat(integer);
+    private static String getDistanceWithName(String name, Integer integer) {
+        return name + " : " + DISTANCE.repeat(integer);
     }
 
     private static void prePrint() {
