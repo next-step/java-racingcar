@@ -46,4 +46,14 @@ public class CarTest {
         car.move(1);
         assertThat(car.location()).isEqualTo(1);
     }
+
+    @Test
+    void clone_복제본_변경시_원본_유지() {
+        Car car = new Car();
+        car.move(10);
+        Car clone = car.clone();
+        clone.move(5);
+        assertThat(car.location()).isEqualTo(10);
+        assertThat(clone.location()).isEqualTo(15);
+    }
 }

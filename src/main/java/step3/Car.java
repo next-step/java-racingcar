@@ -4,7 +4,7 @@ package step3;
  * @author : 0giri
  * @since : 2023/04/15
  */
-public class Car {
+public class Car implements Cloneable{
 
     private int location;
 
@@ -22,5 +22,14 @@ public class Car {
 
     public void stop() {
 
+    }
+
+    @Override
+    public Car clone() {
+        try {
+            return (Car) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }
