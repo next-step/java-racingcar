@@ -6,6 +6,8 @@ import racingcar.view.InputView;
 
 import java.util.List;
 
+import static racingcar.model.CarRace.moveCar;
+
 public class RacingCarController {
 
     public static void main(String[] args) {
@@ -15,6 +17,10 @@ public class RacingCarController {
 
         CarList carList = new CarList();
         List<Car> cars = carList.addCar(carNum);
+
+        for(int i = 0; i < cars.size(); i++){
+            cars = moveCar(cars);
+        }
     }
 
 }

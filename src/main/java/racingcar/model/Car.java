@@ -13,10 +13,8 @@ public class Car {
         return this.carLocation;
     }
 
-    public void moveToFront(int inputValue){
-        if(inputValue >= MOVE_DISTANCE){
-            carLocation++;
-        }
+    public void move(){
+        carLocation++;
     }
 
 }
