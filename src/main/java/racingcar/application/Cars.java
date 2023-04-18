@@ -2,15 +2,17 @@ package racingcar.application;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import racingcar.dto.CarNames;
 
 public class Cars {
 
   private final MoveStrategy moveStrategy;
   private final List<Car> cars;
+  private final Comparator<Car> comparatorByLocation = Comparator.comparingInt(Car::location);
+
 
   public Cars(MoveStrategy moveStrategy, CarNames carNames) {
     this.moveStrategy = moveStrategy;
@@ -26,7 +28,20 @@ public class Cars {
   }
 
   public List<String> locationValues() {
-    return cars.stream().map(car -> car.location())
+    return cars.stream()
+        .map(car -> car.progress())
+        .collect(Collectors.toList());
+  }
+
+  public List<String> winnerName() {
+    int max = cars.stream()
+        .max(comparatorByLocation)
+        .orElseThrow(IllegalArgumentException::new)
+        .location();
+
+    return cars.stream()
+        .filter(car -> car.location() == max)
+        .map(car -> car.carName())
         .collect(Collectors.toList());
   }
 

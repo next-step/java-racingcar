@@ -22,4 +22,11 @@ public class ResultView {
 
     Printer.println(sb.toString());
   }
+
+  public void printWinner(List<String> winnerName) {
+    String nameBundle = winnerName.stream()
+        .collect(Collectors.joining(", "));
+
+    Printer.println(nameBundle + "가 최종 우승했습니다.");
+  }
 }

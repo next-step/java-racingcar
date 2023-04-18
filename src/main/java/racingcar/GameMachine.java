@@ -25,5 +25,7 @@ public class GameMachine {
           cars.go();
           resultView.printLocations(cars.locationValues());
         });
+
+    resultView.printWinner(cars.winnerName());
   }
 }

@@ -2,7 +2,6 @@ package racingcar.application;
 
 import java.util.stream.IntStream;
 import racingcar.dto.CarName;
-import racingcar.dto.CarNames;
 
 public class Car {
   private int location = 1;
@@ -16,11 +15,19 @@ public class Car {
     location += moveStrategy.move();
   }
 
-  public String location() {
-    return this.name.toString() + " : " + progress();
+  public String progress() {
+    return this.name.toString() + " : " + calculateProgress();
   }
 
-  private String progress() {
+  public int location() {
+    return location;
+  }
+
+  public String carName() {
+    return name.toString();
+  }
+
+  private String calculateProgress() {
     StringBuilder stringBuilder = new StringBuilder();
     IntStream.rangeClosed(1, location)
         .forEach(num -> stringBuilder.append("-"));
