@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import racingcar.strategy.MoveStrategy;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +30,9 @@ public class Racing {
 
         for (RacingCar racingCar : this.racingCars) {
             gameWinner.add(findGameWinner(racingCar));
+        }
+
+        while (gameWinner.remove("")) {
         }
 
         return gameWinner;

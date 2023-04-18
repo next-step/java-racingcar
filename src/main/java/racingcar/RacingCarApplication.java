@@ -2,12 +2,10 @@ package racingcar;
 
 import racingcar.domain.Racing;
 import racingcar.domain.RacingCars;
-import racingcar.strategy.MoveStrategy;
 import racingcar.strategy.RandomMoveStrategy;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
-import java.util.List;
 
 public class RacingCarApplication {
     public static void main(String[] args) {

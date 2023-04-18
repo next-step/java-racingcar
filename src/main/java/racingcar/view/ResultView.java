@@ -23,10 +23,6 @@ public class ResultView {
     }
 
     public void printGameWinner(List<String> winners) {
-
-        while (winners.remove("")) {
-        }
-
         System.out.println(String.join(", ", winners).concat("가 최종 우승했습니다."));
     }
 

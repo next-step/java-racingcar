@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import racingcar.strategy.MoveStrategy;
-
 import java.util.ArrayList;
 import java.util.List;
 
