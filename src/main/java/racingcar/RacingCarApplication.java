@@ -2,14 +2,14 @@ package racingcar;
 
 import racingcar.domain.PositiveNumber;
 import racingcar.domain.RacingGame;
-import racingcar.domain.RandomNumberGenerator;
+import racingcar.strategy.RandomNumberGeneratorStrategy;
 import racingcar.domain.Scores;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
 import java.util.List;
 
-public class Application {
+public class RacingCarApplication {
 
     public static void main(String[] args) {
         final PositiveNumber positiveNumber = InputView.getUserInput();
@@ -18,8 +18,8 @@ public class Application {
     }
 
     private static void run(final RacingGame racingGame) {
-        RandomNumberGenerator numberGenerator = new RandomNumberGenerator();
-        final List<Scores> records = racingGame.startGame(numberGenerator);
+        RandomNumberGeneratorStrategy randomNumberGeneratorStrategy = new RandomNumberGeneratorStrategy();
+        final List<Scores> records = racingGame.startGame(randomNumberGeneratorStrategy);
         ResultView.printResult(records);
     }
 }
