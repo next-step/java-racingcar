@@ -23,4 +23,8 @@ public class ResultView {
     public void resultStart() {
         System.out.println("\n실행결과");
     }
+
+    public void outputWinnersName(String winners) {
+        System.out.println(winners + "(이)가 최종 우승했습니다.");
+    }
 }

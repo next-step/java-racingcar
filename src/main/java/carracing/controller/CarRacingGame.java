@@ -37,5 +37,8 @@ public class CarRacingGame {
         //시상식
         Award award = new Award();
         String winners = award.getWinner(cars);
+
+        //우승자 출력
+        resultView.outputWinnersName(winners);
     }
 }
