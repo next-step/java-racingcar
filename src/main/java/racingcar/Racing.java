@@ -6,19 +6,19 @@ public class Racing {
 
     private final int gameCount;
     private final List<Car> cars;
-    private final List<List<Integer>> raceRecord;
+    private final List<RaceRecord> raceRecord;
     private final RacingRandom racingRandom = RacingRandom.getInstance();
 
-    public Racing(int carsNum, int gameCount) {
+    public Racing(List<String> carNames, int gameCount) {
         this.gameCount = gameCount;
-        this.cars = createCars(carsNum);
+        this.cars = createCars(carNames);
         this.raceRecord = new ArrayList<>();
     }
 
-    private List<Car> createCars(int carsNum) {
+    private List<Car> createCars(List<String> carNames) {
         List<Car> result = new ArrayList<>();
-        for (int i = 0; i < carsNum; i++) {
-            result.add(new Car());
+        for (String carName : carNames) {
+            result.add(new Car(carName));
         }
         return result;
     }
@@ -35,11 +35,7 @@ public class Racing {
     }
 
     private void record() {
-        List<Integer> result = new ArrayList<>();
-        for (Car car : cars) {
-            result.add(car.getDistance());
-        }
-        raceRecord.add(result);
+        raceRecord.add(new RaceRecord(cars));
     }
 
     private void game() {
@@ -54,8 +50,28 @@ public class Racing {
         }
     }
 
-
-    public List<List<Integer>> getRaceRecord() {
+    public List<RaceRecord> getRaceRecord() {
         return raceRecord;
+    }
+
+    public List<Car> getWinner(){
+        List<Car> winners = new ArrayList<>();
+        int max = getHighDistance();
+        for (Car car : cars) {
+            if(car.getDistance() == max){
+                winners.add(car);
+            }
+        }
+        return winners;
+    }
+
+    private int getHighDistance() {
+        int max = 1;
+        for (Car car : cars) {
+            if (car.getDistance() > max) {
+                max = car.getDistance();
+            }
+        }
+        return max;
     }
 }
