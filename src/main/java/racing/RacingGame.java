@@ -1,6 +1,8 @@
 package racing;
 
-import racing.view.OutputView;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
 
@@ -13,11 +15,26 @@ public class RacingGame {
         this.cars = cars;
     }
 
-    public void startGame(MoveStrategy moveStrategy) {
+    public List<List<CarDTO>> startGame(MoveStrategy moveStrategy) {
+        List<List<CarDTO>> gameResult = new ArrayList<>();
         for (int i = 0; i < numberOfTry; i++) {
             cars.move(moveStrategy);
-            OutputView.outputProgress(cars);
+            gameResult.add(cars.getCarDTOs());
         }
+        return gameResult;
+    }
+
+    public List<CarDTO> getWinner() {
+        Integer longDistance = cars.getCarDTOs()
+            .stream()
+            .mapToInt(CarDTO::getPosition)
+            .max()
+            .orElseThrow(IllegalAccessError::new);
+
+        return cars.getCarDTOs()
+            .stream()
+            .filter(carDTO -> carDTO.getPosition().equals(longDistance))
+            .collect(Collectors.toList());
     }
 
 }

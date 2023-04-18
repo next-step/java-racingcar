@@ -6,11 +6,11 @@ import racing.view.OutputView;
 public class CarRacingApplication {
 
     public static void main(String[] args) {
-        int numberOfCar = InputView.inputCarCount();
-        Cars cars = new Cars(numberOfCar);
+        Cars cars = new Cars(InputView.inputCarCount());
         RacingGame racingGame = new RacingGame(InputView.inputTryCount(), cars);
         OutputView.basicOutput();
-        racingGame.startGame(new RandomMove());
+        OutputView.outputProgress(racingGame.startGame(new RandomMove()));
+        OutputView.outputWinner(racingGame.getWinner());
     }
 
 }

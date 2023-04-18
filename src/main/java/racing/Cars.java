@@ -1,22 +1,28 @@
 package racing;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Cars {
 
+    public static final Pattern COMMA_REGEX = Pattern.compile(",");
+    public static final int MAX_LENGTH = 5;
     private final List<Car> cars;
 
-    public Cars(Integer numberOfCar) {
-        if (isZeroOrLess(numberOfCar)) {
-            throw new RuntimeException("Never allows the number of cars to be zero or less");
+    public Cars(String input) {
+        if (input == null || input.isEmpty()) {
+            throw new RuntimeException("Never allows empty input");
         }
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < numberOfCar; i++) {
-            cars.add(new Car());
-        }
-        this.cars = cars;
+
+        Arrays.stream(COMMA_REGEX.split(input))
+            .forEach(validLength());
+
+        this.cars = Arrays.stream(COMMA_REGEX.split(input))
+            .map(Car::new)
+            .collect(Collectors.toList());
     }
 
     public void move(MoveStrategy moveStrategy) {
@@ -29,8 +35,12 @@ public class Cars {
             .collect(Collectors.toList());
     }
 
-    private static boolean isZeroOrLess(Integer numberOfCar) {
-        return numberOfCar <= 0;
+    private static Consumer<String> validLength() {
+        return carName -> {
+            if (MAX_LENGTH < carName.length()) {
+                throw new RuntimeException("Car names cannot be more than 5 characters long.");
+            }
+        };
     }
 
 }

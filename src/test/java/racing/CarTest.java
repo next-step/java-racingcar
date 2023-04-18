@@ -11,7 +11,7 @@ class CarTest {
 
     @Test
     void move() {
-        Car car = new Car();
+        Car car = new Car("daeuk");
         car.move(moveOneSpace);
         assertThat(car.getCarDTO()
             .getPosition())
@@ -20,7 +20,7 @@ class CarTest {
 
     @Test
     void nonMove() {
-        Car car = new Car();
+        Car car = new Car("daeuk");
         car.move(nonMove);
         assertThat(car.getCarDTO()
             .getPosition())
