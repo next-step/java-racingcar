@@ -2,13 +2,12 @@ package step3;
 
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
     @Test
-    void negative_carNumber() {
-        assertThatThrownBy(() -> new Car(-5)).isInstanceOf(RuntimeException.class)
-                .hasMessageContaining("차 번호가 자연수가 아닙니다.");
+    void car_init_location() {
+        assertThat(new Car().getLocation()).isEqualTo(0);
     }
 }

@@ -4,16 +4,12 @@ import java.util.Random;
 
 public class Car {
 
-    private static final int MAX_MOVE = 10;
+    private static final int MAX_RANDOM_NUMBER = 10;
+    private static final int MIN_MOVE_CONDITION = 4;
     private static final Random RANDOM = new Random();
-    private final int carNumber;
     private int location;
 
-    public Car(int carNumber) {
-        if (carNumber < 1) {
-            throw new RuntimeException("차 번호가 자연수가 아닙니다.");
-        }
-        this.carNumber = carNumber;
+    public Car() {
         this.location = 0;
     }
 
@@ -21,13 +17,9 @@ public class Car {
         return location;
     }
 
-    public int getCarNumber() {
-        return carNumber;
-    }
-
-    public void goRandomDistance() {
-        int distance = RANDOM.nextInt(MAX_MOVE);
-        if (distance >= 4) {
+    public void go() {
+        int distance = RANDOM.nextInt(MAX_RANDOM_NUMBER);
+        if (distance >= MIN_MOVE_CONDITION) {
             location += distance;
         }
     }
