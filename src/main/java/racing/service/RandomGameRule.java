@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class RandomInt {
 
-    private static final int RANDOM_INT_MAX = 8;
+    private static final int RANDOM_INT_MAX = 10;
     private static final int POSSIBLE_INT = 4;
 
     private static int makeRandomInt() {
@@ -12,9 +12,6 @@ public class RandomInt {
         return random.nextInt(RANDOM_INT_MAX);
     }
     public static int getPossibleInt() {
-        int randomInt = makeRandomInt();
-        if (randomInt < POSSIBLE_INT)
-            randomInt = 0;
-        return randomInt;
+        return (POSSIBLE_INT <= makeRandomInt()) ? 1 : 0;
     }
 }
