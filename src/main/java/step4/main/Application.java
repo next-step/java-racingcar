@@ -1,7 +1,7 @@
 package step4.main;
 
 import step4.service.RacingCarGame;
-import step4.domain.entity.UserInput;
+import step4.domain.UserInput;
 import step4.view.InputView;
 
 import static step4.view.OutputView.printCars;

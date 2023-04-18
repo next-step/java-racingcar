@@ -1,8 +1,8 @@
 package step4.view;
 
 import step4.service.RacingCarGame;
-import step4.domain.entity.Name;
-import step4.domain.entity.Position;
+import step4.domain.Name;
+import step4.domain.Position;
 
 import java.util.List;
 

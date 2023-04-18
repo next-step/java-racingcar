@@ -1,9 +1,9 @@
 package step4.service;
 
 import step3.util.RandomValue;
-import step4.domain.entity.Car;
-import step4.domain.entity.Name;
-import step4.domain.entity.Position;
+import step4.domain.Car;
+import step4.domain.Name;
+import step4.domain.Position;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
 package step4.view;
 
-import step4.domain.entity.UserInput;
+import step4.domain.UserInput;
 
 import java.util.Scanner;
 

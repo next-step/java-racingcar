@@ -1,4 +1,4 @@
-package step4.domain.entity;
+package step4.domain;
 
 public class Car {
 

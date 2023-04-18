@@ -1,4 +1,4 @@
-package step4.domain.entity;
+package step4.domain;
 
 import java.util.List;
 import java.util.Objects;
