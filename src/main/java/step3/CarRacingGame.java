@@ -35,7 +35,6 @@ public class CarRacingGame {
             sb.append("-".repeat(car.getLocation()));
             sb.append("\n");
         }
-        sb.append("\n");
         System.out.println(sb);
     }
 
