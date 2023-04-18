@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Racing {
     private int leftMatchCounts;
-
     private RacingCars racingCars;
 
     public Racing(int matchCounts, List<Car> cars) {

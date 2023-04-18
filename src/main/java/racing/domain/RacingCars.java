@@ -8,6 +8,7 @@ import java.util.List;
 
 public class RacingCars {
     private static final int MAX_MOVABLE_RANGE = 9;
+
     private final List<Car> cars = new ArrayList<>();
 
     public static RacingCars create(List<Car> cars) {
@@ -23,7 +24,9 @@ public class RacingCars {
     }
 
     private void moveCar(Car car) {
-        if (isMovable()) car.go();
+        if (isMovable()) {
+            car.go();
+        }
     }
 
     private boolean isMovable() {
