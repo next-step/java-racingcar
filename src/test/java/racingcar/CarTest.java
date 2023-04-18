@@ -10,15 +10,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
-    Car car;
+    private Car car;
 
     @BeforeEach
     void setUp() {
         car = new Car();
     }
 
-    @ParameterizedTest
-    @DisplayName("랜덤값 0 ~ 9을 받아서 4이상의 값일 때 true, 아닐때 false")
+    @ParameterizedTest(name = "랜덤값 0 ~ 9을 받아서 4이상의 값일 때 true, 아닐때 false")
     @ValueSource(ints = {1, 4, 5, 9})
     void isMoveForward_checkMoveForward(int number) {
         if (number >= 4) {
