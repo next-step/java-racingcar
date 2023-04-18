@@ -14,4 +14,11 @@ public class Game {
             car.move(RandomNumber.getNumber());
         }
     }
+
+    public List<Car> getWinner() {
+        cars.stream()
+                .max(Car::compareTo)
+                .ifPresent(max -> cars.removeIf(car -> car.compareTo(max) < 0));
+        return cars;
+    }
 }
