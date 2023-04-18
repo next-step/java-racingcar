@@ -2,6 +2,7 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Racing;
 import racingcar.domain.RacingCars;
 import racingcar.strategy.MoveStrategy;
 import racingcar.strategy.RandomMoveStrategy;
@@ -12,7 +13,7 @@ public class RacingCarsTest {
     @Test
     @DisplayName("자동차 객체 여러개 생성 되는지 확인")
     public void checkRacingCarsObject() {
-        String[] test =  new String[] {"pobi","next","step","fight","test"};
+        String[] test = new String[]{"pobi", "next", "step", "fight", "test"};
         RacingCars racingCars = new RacingCars(test);
 
         assertThat(racingCars.statusOfRacingCars()).hasSize(5);
@@ -20,12 +21,13 @@ public class RacingCarsTest {
 
     @Test
     @DisplayName("runRacingRound를 통해 자동차 5대를 움직여 position =1 1이하 값인지 확인")
-    public void runRacingRoundTest() {
-        String[] test =  new String[] {"pobi","next","step","fight","test"};
+    public void runRacingRound_ReturnPositionOne() {
+        String[] test = new String[]{"pobi", "next", "step", "fight", "test"};
         RacingCars racingCars = new RacingCars(test);
+        Racing racing = new Racing(racingCars.statusOfRacingCars());
         MoveStrategy randomMoveStrategy = new RandomMoveStrategy();
 
-        racingCars.runRacingRound(randomMoveStrategy);
+        racing.runRacingRound(randomMoveStrategy);
 
         assertThat(racingCars.statusOfRacingCars().get(0).position())
                 .isLessThanOrEqualTo(1);
@@ -41,14 +43,15 @@ public class RacingCarsTest {
 
     @Test
     @DisplayName("5대 자동차, 4번 움직임 시도(postion max값 == 4)인 racing 확인")
-    public void checkRacingClass() {
-        String[] test =  new String[] {"pobi","next","step","fight","test"};
+    public void runRacingRound_ReturnPositionUnderFour() {
+        String[] test = new String[]{"pobi", "next", "step", "fight", "test"};
         RacingCars racingCars = new RacingCars(test);
         MoveStrategy randomMoveStrategy = new RandomMoveStrategy();
+        Racing racing = new Racing(racingCars.statusOfRacingCars());
         int numberOfTrials = 4;
 
         while (numberOfTrials > 0) {
-            racingCars.runRacingRound(randomMoveStrategy);
+            racing.runRacingRound(randomMoveStrategy);
             numberOfTrials--;
         }
 

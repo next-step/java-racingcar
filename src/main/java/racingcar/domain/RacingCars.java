@@ -16,15 +16,7 @@ public class RacingCars {
         }
     }
 
-    public void runRacingRound(MoveStrategy moveStrategy) {
-        for (RacingCar racingCar : this.racingCars) {
-            racingCar.tryToMove(moveStrategy);
-        }
-    }
-
-    // 자동차들 객체 가져오기
     public List<RacingCar> statusOfRacingCars() {
         return this.racingCars;
     }
-
 }

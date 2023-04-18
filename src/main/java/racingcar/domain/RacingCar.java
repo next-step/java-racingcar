@@ -13,6 +13,11 @@ public class RacingCar {
         this.carName = carName;
     }
 
+    public RacingCar(String carName, int position) {
+        this.carName = carName;
+        this.position = position;
+    }
+
     public void checkCarName(String carName) {
         if(carName.length() > CAR_NAME_LIMIT) {
             throw new IllegalArgumentException("자동차 이름이 5글자를 초과합니다.");
