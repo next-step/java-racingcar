@@ -27,8 +27,9 @@ public class RacingGame {
         );
     }
 
-    public void play() {
+    public List<RacingCar> play() {
         racingCars.moveAllCars();
+        return racingCars.getRacingCars();
     }
 
     public List<RacingCar> getRacingCars() {

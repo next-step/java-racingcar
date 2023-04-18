@@ -18,8 +18,7 @@ public class RacingGameApplication {
         );
 
         for (int i = 0; i < numberOfTries; i++) {
-            racingGame.play();
-            OutputView.printPositions(racingGame.getRacingCars());
+            OutputView.printPositions(racingGame.play());
         }
         OutputView.printWinners(racingGame.getWinners());
     }
