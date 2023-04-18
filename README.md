@@ -30,6 +30,17 @@
 * Random 확률 계산하는 객체 구현
 * 경주를 진행하는 Racing Class 구현
 * 경주 결과를 출력하는 ResultView 구현
+* -----4단계-----
+* inputView에 자동차 이름을 입력 받기
+*   String인 자동차 이름을 쉼표로 구문하는 메서드
+*   기존 자동차 수 입력받는 메서드 삭제
+*   자동차 이름 길이 5이하인지 확인하는 메서드
+*   5 초과일 경우 시스템 종료 OR 재질문하는 메서드
+* 자동차 객체에 이름을 부여
+*   name 변수 추가
+*   name 값을 가져올 수 있는 메서드 추가
+* resultView에서 자동차 이름을 가져오는 메서드 구현
+* Racing에서 우승자를 판별하는 메서드 구현  
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
