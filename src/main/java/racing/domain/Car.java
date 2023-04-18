@@ -54,7 +54,7 @@ public class Car {
         return new Car(this.location);
     }
 
-    public int getLocation() {
+    public int location() {
         return this.location;
     }
 >>>>>>> e356fab2c (refactor Car 클래스를 필드로 가지는 일급컬렉션 추가)
