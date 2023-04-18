@@ -1,18 +1,18 @@
 package racing.utils;
 
-import racing.domain.RacingCar;
-import racing.domain.RacingGame;
+import racing.domain.Car;
+import racing.domain.Game;
 import racing.domain.move.MoveStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameCreateUtil {
-    public static RacingGame createGameWithStrategy(List<String> nameOfCars, MoveStrategy moveStrategy) {
-        List<RacingCar> racingCars = new ArrayList<>();
+    public static Game createGameWithStrategy(List<String> nameOfCars, MoveStrategy moveStrategy) {
+        List<Car> cars = new ArrayList<>();
         for (String name : nameOfCars) {
-            racingCars.add(new RacingCar(name, moveStrategy));
+            cars.add(new Car(name, moveStrategy));
         }
-        return new RacingGame(racingCars);
+        return new Game(cars);
     }
 }

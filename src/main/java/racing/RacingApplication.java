@@ -1,39 +1,14 @@
 package racing;
 
-import racing.domain.RacingGame;
-import racing.domain.move.MoveStrategy;
-import racing.domain.move.impl.RandomForwardStrategy;
-import racing.view.ResultView;
+import racing.controller.GameController;
 
-import java.util.List;
 import java.util.Scanner;
-
-import static racing.utils.GameCreateUtil.createGameWithStrategy;
-import static racing.view.InputView.readNameOfCars;
-import static racing.view.InputView.readNumberOfCycles;
 
 public class RacingApplication {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        List<String> nameOfCars = readNameOfCars(scanner);
-        int numOfCycles = readNumberOfCycles(scanner);
-
-        RacingGame game = setGame(nameOfCars);
-        startGame(numOfCycles, game);
-    }
-
-    private static RacingGame setGame(List<String> nameOfCars) {
-        MoveStrategy moveStrategy = new RandomForwardStrategy();
-        return createGameWithStrategy(nameOfCars, moveStrategy);
-    }
-
-    private static void startGame(int numOfCycles, RacingGame game) {
-        ResultView.printStartMessage();
-        for (int i = 0; i < numOfCycles; i++) {
-            game.progressCycle();
-            ResultView.printGameStatus(game);
-        }
-        ResultView.printWinner(game);
+        GameController gameController = new GameController(scanner);
+        gameController.run();
     }
 }

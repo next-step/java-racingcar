@@ -18,8 +18,6 @@ import static racing.view.InputView.readNameOfCars;
 import static racing.view.InputView.readNumberOfCycles;
 
 public class InputViewTest {
-    private static final int MIN_NUMBER_CARS = 1;
-    private static final int MAX_NUMBER_CARS = 10;
     private static final int MIN_NUMBER_CYCLES = 1;
     private static final int MAX_NUMBER_CYCLES = 20;
     private Scanner scanner;
@@ -55,7 +53,7 @@ public class InputViewTest {
 
         assertThatThrownBy(() -> readNumberOfCycles(scanner))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("사이클 수는 " + MIN_NUMBER_CYCLES + "~" + MAX_NUMBER_CYCLES + " 사이의 값을 입력해야 합니다.");
+                .hasMessage("사이클 수는 " + MIN_NUMBER_CYCLES + "~" + MAX_NUMBER_CYCLES + "만 가능합니다.");
     }
 
     @ParameterizedTest(name = "{displayName} - 값: {0}")

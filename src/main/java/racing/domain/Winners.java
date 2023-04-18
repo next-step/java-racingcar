@@ -3,45 +3,46 @@ package racing.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Winners {
-    private final List<RacingCar> winners;
+    private final List<Car> winners;
 
-    public Winners(List<RacingCar> cars) {
+    public Winners(List<Car> cars) {
+        if (cars.isEmpty()) {
+            throw new IllegalArgumentException("Input이 null입니다.");
+        }
         this.winners = new ArrayList<>();
-        int maxPosition = getMaxPosition(cars);
+        Position maxPosition = getMaxPosition(cars);
         findWinners(cars, maxPosition);
     }
 
-    private static int getMaxPosition(List<RacingCar> cars) {
-        return Collections.max(cars).getPosition();
+    private static Position getMaxPosition(List<Car> cars) {
+        List<Position> positions = cars.stream()
+                .map(Car::getPosition)
+                .collect(Collectors.toList());
+
+        return Collections.max(positions);
     }
 
-    private void findWinners(List<RacingCar> cars, int maxPosition) {
-        for (RacingCar car : cars) {
+    private void findWinners(List<Car> cars, Position maxPosition) {
+        for (Car car : cars) {
             addWinner(maxPosition, car);
         }
     }
 
-    private void addWinner(int maxPosition, RacingCar winner) {
-        if (winner.getPosition() == maxPosition) {
-            winners.add(winner);
+    private void addWinner(Position maxPosition, Car car) {
+        if (Objects.equals(car.getPosition(), maxPosition)) {
+            winners.add(car);
         }
     }
 
-    public List<String> getWinnerNames() {
-        List<String> winnerNames = new ArrayList<>();
-        for (RacingCar winner : winners) {
-            winnerNames.add(winner.getName());
+    public List<Name> toNames() {
+        List<Name> names = new ArrayList<>();
+        for (Car winner : winners) {
+            names.add(winner.getName());
         }
-        return winnerNames;
-    }
-
-    public int getWinnerCount() {
-        return winners.size();
-    }
-
-    public int getWinnerPosition() {
-        return getMaxPosition(winners);
+        return names;
     }
 }

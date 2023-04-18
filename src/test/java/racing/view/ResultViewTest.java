@@ -5,8 +5,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.FixedRandomForwardStrategy;
-import racing.domain.RacingCar;
-import racing.domain.RacingGame;
+import racing.domain.Car;
+import racing.domain.Game;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -18,19 +18,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ResultViewTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
-    private RacingCar car;
-    private RacingGame game;
+    private Car car;
+    private Game game;
 
     @BeforeEach
     void setUp() {
         System.setOut(new PrintStream(outContent));
 
-        car = new RacingCar("test", new FixedRandomForwardStrategy(5));
-        List<RacingCar> carList = new ArrayList<>();
-        carList.add(new RacingCar("pobi", new FixedRandomForwardStrategy(5)));
-        carList.add(new RacingCar("crong", new FixedRandomForwardStrategy(0)));
-        carList.add(new RacingCar("honux", new FixedRandomForwardStrategy(5)));
-        game = new RacingGame(carList);
+        car = new Car("test", new FixedRandomForwardStrategy(5));
+        List<Car> carList = new ArrayList<>();
+        carList.add(new Car("pobi", new FixedRandomForwardStrategy(5)));
+        carList.add(new Car("crong", new FixedRandomForwardStrategy(0)));
+        carList.add(new Car("honux", new FixedRandomForwardStrategy(5)));
+        game = new Game(carList);
     }
 
     @AfterEach
@@ -45,7 +45,7 @@ class ResultViewTest {
         for (int i = 0; i < cycle; i++) {
             car.move();
         }
-        ResultView.printCarStatus(car);
+        ResultView.printCarStatus(car.getNameString(), car.getPositionInt());
         assertThat(outContent.toString().trim()).isEqualTo("test : ---");
 
     }
