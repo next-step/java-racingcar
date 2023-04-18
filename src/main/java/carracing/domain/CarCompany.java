@@ -10,6 +10,9 @@ public class CarCompany {
         for (int i = 0; i < arrCarNames.length; i++) {
             //이름 길이 5글자로 제한
             checkNameNumber(arrCarNames[i]);
+            //자동차객체 생성
+            Car car = new Car(arrCarNames[i]);
+            cars.add(car);
         }
         return cars;
     }
