@@ -4,52 +4,37 @@ import java.util.List;
 
 public class RacingGame {
 
-    private final List<Car> carList;
-    private final int numberOfGames;
-    private static final int MOVE_CONDITION = 4;
+    private List<Car> cars;
+    private int numberOfGames;
+    private int lastLapCheck;
 
-    public RacingGame() {
-        this.carList = SettingGame.createCars(InputView.setCars());
-        this.numberOfGames = InputView.setGames();
+    public RacingGame(RacingGameInputs racingGameInputs) {
+        this.cars = SettingGame.createCars(racingGameInputs);
+        this.numberOfGames = racingGameInputs.getNumberOfGames();
+        this.lastLapCheck = 0;
     }
 
-    public void gameStart() {
-
-        ResultView.startGame();
-
-        int lastLapCheck = 0;
-
-        while(!isOver(numberOfGames, lastLapCheck)){
-            moveCar(carList);
-
-            lastLapCheck++;
-        }
+    public List<Car> getCars() {
+        return this.cars;
     }
 
-    private boolean isOver(int numberOfGames, int lastLapCheck) {
+    public void nextLap() {
+        this.lastLapCheck++;
+    }
+    public boolean isOver() {
 
-        return numberOfGames <= lastLapCheck;
+        return this.numberOfGames <= this.lastLapCheck;
     }
 
-    private void moveCar(List<Car> cars) {
+    public void moveCar() {
 
-        for(Car car : cars) {
-            if (isMove(GenerateNumber.random())) {
-                move(car);
-            }
+        for(Car car : this.cars) {
 
-            ResultView.resultGame(car.currentPosition());
+            car.move();
+
+            ResultView.resultGame(car);
         }
 
         ResultView.emptyLine();
-    }
-
-    public void move(Car car) {
-
-        car.setPosition(car.currentPosition() + 1);
-    }
-
-    private boolean isMove(int randomNum) {
-        return randomNum >= MOVE_CONDITION;
     }
 }

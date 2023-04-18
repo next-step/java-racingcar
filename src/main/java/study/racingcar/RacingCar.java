@@ -8,6 +8,22 @@ public class RacingCar {
 
     public static void racingCar () {
 
-        new RacingGame().gameStart();
+        do {
+            String carNamesStr = InputView.setCarNames();
+            int numberOfGames = InputView.setGames();
+
+            RacingGame game = new RacingGame(new RacingGameInputs(numberOfGames, carNamesStr));
+
+            ResultView.startGame();
+
+            while (!game.isOver()) {
+                game.moveCar();
+                game.nextLap();
+            }
+
+            ResultView.winner(new GameWinner(game.getCars()).findGameWinner());
+        } while (InputView.reset());
+
+        ResultView.endGame();
     }
 }
