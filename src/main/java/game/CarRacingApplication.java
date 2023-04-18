@@ -2,7 +2,7 @@ package game;
 
 import game.domain.CarNames;
 import game.domain.Cars;
-import game.domain.GameCount;
+import game.domain.GameRound;
 import game.view.InputView;
 import game.view.ResultView;
 
@@ -20,14 +20,15 @@ public class CarRacingApplication {
 
     public static void main(String[] args) {
         CarNames carNames = CarNames.of(InputView.showCarNamesConsole());
-        GameCount gameCount = new GameCount(InputView.showGameCountConsole());
+        GameRound gameRound = new GameRound(InputView.showGameCountConsole());
 
         Cars cars = Cars.of(carNames.getNames());
-        
+
         ResultView.displayExecuteResultMessage();
-        for (int i = 0; i < gameCount.getCount(); i++) {
+        while (!gameRound.isDone()) {
             cars.drive();
             ResultView.displayCarPositions(cars);
+            gameRound.nextRound();
         }
         ResultView.displayCarWinners(cars.findWinners());
     }
