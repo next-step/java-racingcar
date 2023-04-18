@@ -2,8 +2,6 @@ package racing.service;
 
 import racing.domain.Car;
 import racing.domain.Cars;
-import racing.dto.GameResult;
-import racing.view.InputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,9 +22,9 @@ public class RacingGame {
         this.cars = new Cars(list);
     }
 
-    public List<GameResult> playGame() {
+    public List<Cars> playGame() {
 
-        List<GameResult> results = new ArrayList<>();
+        List<Cars> results = new ArrayList<>();
         for (int i = 0; i < turns; i++) {
             results.add(this.cars.playOnceTurn());
         }
