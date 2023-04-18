@@ -12,4 +12,8 @@ public class Car {
     public int getPoint() {
         return this.point;
     }
+
+    public int findCarPoint() {
+        return point;
+    }
 }

@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Scores {
@@ -11,11 +12,12 @@ public class Scores {
         scores = new ArrayList<>();
     }
 
-    public void addScore(Score score) {
+    public void addScore(Car car) {
+        Score score = new Score(car.findCarPoint());
         scores.add(score);
     }
 
-    public List<Score> getScores() {
-        return scores;
+    public List<Score> findAllScores() {
+        return Collections.unmodifiableList(scores);
     }
 }

@@ -27,9 +27,9 @@ public class RacingGame {
 
     private Scores race(Cars cars, RandomNumberGenerator numberGenerator) {
         Scores roundScores = new Scores();
-        for (Car car : cars.getCars()) {
+        for (Car car : cars.findAllCars()) {
             car.move(numberGenerator);
-            roundScores.addScore(new Score(car.getPoint()));
+            roundScores.addScore(car);
         }
         return roundScores;
     }

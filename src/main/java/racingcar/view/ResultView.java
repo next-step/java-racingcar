@@ -19,10 +19,10 @@ public class ResultView {
     }
 
     private static void printScore(Scores scores) {
-        scores.getScores().forEach(score -> {
+        for (Score score : scores.findAllScores()) {
             printDistance(score);
             System.out.println();
-        });
+        }
     }
 
     private static void printDistance(Score score) {

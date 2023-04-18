@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -12,6 +13,10 @@ public class Cars {
         createCars(carCount);
     }
 
+    public List<Car> findAllCars() {
+        return Collections.unmodifiableList(cars);
+    }
+
     private List<Car> createCars(int carCount) {
         IntStream.range(0, carCount)
                 .mapToObj(i -> new Car())
@@ -19,7 +24,4 @@ public class Cars {
         return cars;
     }
 
-    public List<Car> getCars() {
-        return cars;
-    }
 }
