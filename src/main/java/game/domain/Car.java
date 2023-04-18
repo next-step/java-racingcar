@@ -10,11 +10,11 @@ public class Car {
     private final Position position;
 
     public Car(String carName) {
-        this(carName, new StandardCarMovePolicy(), new Position());
+        this(new CarName(carName), new StandardCarMovePolicy(), new Position());
     }
 
-    public Car(String carName, CarMovePolicy carMovePolicy, Position position) {
-        this.carName = new CarName(carName);
+    public Car(CarName carName, CarMovePolicy carMovePolicy, Position position) {
+        this.carName = carName;
         this.carMovePolicy = carMovePolicy;
         this.position = position;
     }
