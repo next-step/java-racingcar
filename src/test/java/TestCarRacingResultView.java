@@ -1,7 +1,5 @@
-import CarRacing.Competition;
-import CarRacing.view.InputView;
 import CarRacing.view.ResultView;
-import CarRacing.Car;
+import CarRacing.domain.Car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,5 +1,4 @@
-import CarRacing.Car;
-import CarRacing.view.InputView;
+import CarRacing.domain.Car;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;

@@ -1,5 +1,6 @@
 package CarRacing;
 
+import CarRacing.domain.Competition;
 import CarRacing.view.InputView;
 import CarRacing.view.ResultView;
 
