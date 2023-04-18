@@ -1,9 +1,7 @@
-package step2;
+package step3;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static step3.RandomNumberGenerator.randomNumber;
@@ -16,4 +14,5 @@ public class RandomNumberGeneratorTest {
         assertThat(randomNumber()).isGreaterThanOrEqualTo(0);
         assertThat(randomNumber()).isLessThanOrEqualTo(9);
     }
+
 }

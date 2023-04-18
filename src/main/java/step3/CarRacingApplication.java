@@ -7,4 +7,5 @@ public class CarRacingApplication {
         inputView.tryCount();
         System.out.println("\n");
     }
+
 }
