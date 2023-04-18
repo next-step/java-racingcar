@@ -1,6 +1,6 @@
-package study;
+package study.race;
 
-public class resultView {
+public class ResultView {
     public static void resultView(int[] carNumber) {
 
         for(int i=0; i< carNumber.length; i++){
