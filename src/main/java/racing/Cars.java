@@ -12,6 +12,8 @@ public class Cars {
         this.cars = addCars(carsName);
     }
 
+    public Cars(List<Car> carList) {this.cars = carList;}
+
     public List<Car> getCars(){
         return cars;
     }

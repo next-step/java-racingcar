@@ -13,6 +13,11 @@ public class Car {
         this.name = name;
     }
 
+    public Car(String name, Integer position){
+        this.position = position;
+        this.name = name;
+    }
+
     private void validateNameUnderFive(String name) {
         if(name.length() > 5){
             throw new IllegalArgumentException("자동차 이름은 다섯자리 이하만 가능합니다");
