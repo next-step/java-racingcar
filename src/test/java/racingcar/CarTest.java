@@ -13,7 +13,7 @@ public class CarTest {
   @DisplayName("4 이상의 값이 들어오면 전진한다")
   void goTest() {
     // given
-    Car car = new Car();
+    Car car = new Car("Soko");
     int beforeLocation = car.location();
 
     // when
@@ -27,7 +27,7 @@ public class CarTest {
   @DisplayName("3 이하의 값이 들어오면 정지한다")
   void goFailTest() {
     // given
-    Car car = new Car();
+    Car car = new Car("Soko");
     int beforeLocation = car.location();
 
     // when

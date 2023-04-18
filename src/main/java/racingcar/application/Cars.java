@@ -1,22 +1,24 @@
 package racingcar.application;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import racingcar.dto.CarNames;
 
 public class Cars {
 
   private final MoveStrategy moveStrategy;
   private final List<Car> cars;
 
-  public Cars(MoveStrategy moveStrategy, int count) {
+  public Cars(MoveStrategy moveStrategy, CarNames carNames) {
     this.moveStrategy = moveStrategy;
-    this.cars = init(count);
+    this.cars = init(carNames);
   }
 
-  public static Cars readyForRace(MoveStrategy moveStrategy, int count) {
-    return new Cars(moveStrategy, count);
+  public static Cars readyForRace(MoveStrategy moveStrategy, CarNames carNames) {
+    return new Cars(moveStrategy, carNames);
   }
 
   public void go() {
@@ -28,11 +30,12 @@ public class Cars {
         .collect(Collectors.toList());
   }
 
-  private List<Car> init(int count) {
+  private List<Car> init(CarNames carNames) {
     List<Car> cars = new ArrayList<>();
-    IntStream.rangeClosed(1, count)
-        .forEach(number -> cars.add(new Car()));
 
-    return cars;
+    carNames.carNames()
+            .forEach((name) -> cars.add(new Car(name)));
+
+    return Collections.unmodifiableList(cars);
   }
 }
