@@ -10,11 +10,7 @@ public class Car {
 	private static final int RULE_MAX_RANGE = 9;
 	private RandomUtil randomUtil;
 	private final String name;
-	private int position = 0;
-
-	public Car(String name) {
-		this.name = isNameLengthAcceptable(name);
-	}
+	private int position;
 
 	public Car(String name, int position, RandomUtil randomUtil) {
 		this.name = isNameLengthAcceptable(name);

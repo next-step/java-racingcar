@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import step4_racingcar_winner.domain.Car;
+import step4_racingcar_winner.service.RandomNumber;
 
 public class CarTest {
 	private static final String carName = "test";
@@ -17,7 +18,7 @@ public class CarTest {
 		String errorCarName = "exceptionCarName";
 		Class expect = RuntimeException.class;
 
-		assertThatThrownBy(() -> new Car(errorCarName))
+		assertThatThrownBy(() -> new Car(errorCarName, 0 , new RandomNumber()))
 			.isInstanceOf(expect);
 	}
 
