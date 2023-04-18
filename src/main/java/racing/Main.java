@@ -16,8 +16,7 @@ public class Main {
         int turns = inputView.InputCountOfTurn();
 
         RacingGame game = new RacingGame(countOfCar, turns);
-
-        List<GameResult>results = game.playGame();
+        List<GameResult> results = game.playGame();
 
         ResultView.printCarsLocations(results);
     }

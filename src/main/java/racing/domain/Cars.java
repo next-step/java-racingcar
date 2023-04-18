@@ -14,15 +14,11 @@ public class Cars { // 일급컬렉션
         this.cars = cars;
     }
 
-    public List<Car> getCars() {
-        return this.cars;
-    }
-
     public GameResult playOnceTurn() {
         List<Integer> onceResult = new ArrayList<>();
 
         for (int i = 0; i < cars.size(); i++) {
-            this.cars.get(i).move(RandomInt.makeRandomInt());
+            this.cars.get(i).move(RandomInt.getPossibleInt());
             onceResult.add(this.cars.get(i).getLocation());
         }
         return new GameResult(onceResult);
