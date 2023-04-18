@@ -9,6 +9,7 @@ import racingCar.random.RandomMoveAckGenerator;
 public class RacingCar {
 
   private static final int MIN_MOVE_ALLOWED_TRY = 4;
+
   private final RacingCarName carName;
   private final RacingCarPosition position;
   private final RandomMoveAckGenerator randomMoveAckGenerator;
