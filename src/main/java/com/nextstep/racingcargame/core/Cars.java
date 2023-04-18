@@ -1,19 +1,16 @@
 package com.nextstep.racingcargame.core;
 
-import static com.nextstep.racingcargame.core.RandomNumberGenerator.getRandomZeroToNine;
 import static java.util.Arrays.stream;
-import static java.util.Collections.max;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Cars {
 
-    private static final String HAS_NEGATIVE_CAR_CREATE_REQUEST = "1 보다 작은 수의 차량은 생성될 수 없습니다.";
-
-    private static final String WINNER_JOIN_DELIMITER = ",";
     private final List<Car> cars;
+    private static final String HAS_NEGATIVE_CAR_CREATE_REQUEST = "1 보다 작은 수의 차량은 생성될 수 없습니다.";
+    private static final int START_POSITION = 0;
 
     // root ctor
     public Cars(List<Car> cars) {
@@ -21,6 +18,10 @@ public class Cars {
             throw new IllegalArgumentException(HAS_NEGATIVE_CAR_CREATE_REQUEST);
         }
         this.cars = cars;
+    }
+
+    public Stream<Car> carStream() {
+        return this.cars.stream();
     }
 
     public Cars(CarNameChunk carNameChunk) {
@@ -33,16 +34,8 @@ public class Cars {
         return cars.size();
     }
 
-    public void moveCars() {
-        for (Car car : cars) {
-            car.moveForwardByNumber(getRandomZeroToNine());
-        }
-    }
-
-    public void disPlayCarsTravelDistance() {
-        for (int carIndex = 0; carIndex < carSize(); carIndex++) {
-            cars.get(carIndex).printTravelDistanceWithCarName();
-        }
+    public void moveCars(MovingStrategy movingStrategy) {
+        this.cars.forEach(car -> car.move(movingStrategy));
     }
 
     private boolean isMoreThanOneCar(List<Car> cars) {
@@ -51,20 +44,29 @@ public class Cars {
 
     public List<String> winnerNames() {
         return this.cars.stream()
-                .filter(car -> car.getDistance() == getFurthestDistance())
+                .filter(car -> car.sameDistance(longestDistance()))
                 .map(Car::getCarName)
                 .collect(Collectors.toList());
     }
 
-    public String joinedWinnerNames() {
-        return String.join(WINNER_JOIN_DELIMITER, winnerNames());
+    public String joinedWinnerNames(String joinDelimiter) {
+        return String.join(joinDelimiter, winnerNames());
     }
 
-    public Car findFirstFurthestTraveledCar() {
-        return max(this.cars, Comparator.comparingInt(Car::getDistance));
+    public Distance longestDistance() {
+        Distance maxDistance = new Distance(START_POSITION);
+
+        for (Car car : this.cars) {
+            maxDistance = updateMaxDistance(car, maxDistance);
+        }
+        return maxDistance;
     }
 
-    public int getFurthestDistance() {
-        return findFirstFurthestTraveledCar().getDistance();
+    private Distance updateMaxDistance(Car car, Distance maxDistance) {
+        if (car.isLongerThan(maxDistance)) {
+            return car.getDistance();
+        }
+        return maxDistance;
     }
+
 }

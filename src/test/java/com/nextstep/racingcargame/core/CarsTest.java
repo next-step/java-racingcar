@@ -10,16 +10,20 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 class CarsTest {
 
-    private static final int CAR_FORCE_MOVE_NUMBER = 9;
     private static final String APPROPRIATE_TEST_CAR_NAME = "test";
 
     private static final int SINGLE_OBJECT_SIZE = 1;
 
     private static final int TRIPLE_OBJECT_SIZE = 3;
+
+    private static final String WINNER_JOIN_DELIMITER = ",";
+
+    private static final String CAR_DISTANCE_DISPLAY_UNIT = "-";
+
+    private static final String CAR_NAME_AND_DISTANCE_DELIMITER = " : ";
 
     @ParameterizedTest(name = "[{index}] Cars 객체에 (,) 구분자를 기준으로 이름만큼 자동차를 생성한다.")
     @CsvSource(value = {"rick,jack,ethan:3", "ethan:1", "jack,ethan:2"}, delimiter = ':')
@@ -39,15 +43,6 @@ class CarsTest {
         assertThat(cars.carSize()).isEqualTo(TRIPLE_OBJECT_SIZE);
     }
 
-    @ParameterizedTest(name = "[{index}] Cars 1급 객체 0 이하의 숫자 생성자에 유입된 경우 익셉션을 발생 시킨다.")
-    @NullAndEmptySource
-    void createCarsFailTest(String valueSource) {
-        assertThatThrownBy(() -> {
-            new Cars(new CarNameChunk(valueSource));
-        }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("차 이름이 임력되지 않았습니다.");
-    }
-
     @DisplayName("주 생성자에 정상 자동차 객체 주입시 객채가 정상 생성된다.")
     @Test
     void createCarsSuccessTestWithRootCtor() {
@@ -65,78 +60,36 @@ class CarsTest {
     }
 
     @Test
-    @DisplayName("Cars 객체에서 가장 멀리간 자동차를 찾아낸다.")
+    @DisplayName("Cars 객체에서 가장 멀리간 자동차의 거리(Distance) 객체를 반환한다.")
     void getFurthestTraveledCarTest() {
-        Car patCar = new Car("pat");
-
-        // move 2 steps forward
-        patCar.moveForwardByNumber(CAR_FORCE_MOVE_NUMBER);
-        patCar.moveForwardByNumber(CAR_FORCE_MOVE_NUMBER);
-
-        Car rickCar = new Car("rick");
-
-        Car ethanCar = new Car("ethan");
+        Car patCar = new Car("pat", 3);
+        Car rickCar = new Car("rick", 2);
+        Car ethanCar = new Car("ethan", 1);
 
         Cars cars = new Cars(asList(patCar, rickCar, ethanCar));
-        assertThat(cars.findFirstFurthestTraveledCar().getCarName()).isEqualTo("pat");
-    }
-
-    @Test
-    @DisplayName("Cars 객체에서 가장 멀리간 자동차가 2개 이상일 경우 첫번째 자동차가 선택된다.")
-    void findFirstFurthestTraveledCarTest() {
-        Car patCar = new Car("pat");
-
-        Car rickCar = new Car("rick");
-
-        rickCar.moveForwardByNumber(CAR_FORCE_MOVE_NUMBER);
-        rickCar.moveForwardByNumber(CAR_FORCE_MOVE_NUMBER);
-
-        Car ethanCar = new Car("ethan");
-
-        ethanCar.moveForwardByNumber(CAR_FORCE_MOVE_NUMBER);
-        ethanCar.moveForwardByNumber(CAR_FORCE_MOVE_NUMBER);
-
-        Cars cars = new Cars(asList(patCar, rickCar, ethanCar));
-        assertThat(cars.findFirstFurthestTraveledCar().getCarName()).isEqualTo("rick");
+        assertThat(cars.longestDistance()).isEqualTo(new Distance(3));
     }
 
     @Test
     @DisplayName("Cars 객체에서 가장 멀리간 자동차가 2대를 , 기준으로 합하여 결과를 반환한다.")
     void joinWinnerNamesTest() {
         Car patCar = new Car("pat");
-
-        Car rickCar = new Car("rick");
-
-        rickCar.moveForwardByNumber(CAR_FORCE_MOVE_NUMBER);
-        rickCar.moveForwardByNumber(CAR_FORCE_MOVE_NUMBER);
-
-        Car ethanCar = new Car("ethan");
-
-        ethanCar.moveForwardByNumber(CAR_FORCE_MOVE_NUMBER);
-        ethanCar.moveForwardByNumber(CAR_FORCE_MOVE_NUMBER);
+        Car rickCar = new Car("rick", 2);
+        Car ethanCar = new Car("ethan", 2);
 
         Cars cars = new Cars(asList(patCar, rickCar, ethanCar));
-        assertThat(cars.joinedWinnerNames()).isEqualTo("rick,ethan");
+        assertThat(cars.joinedWinnerNames(WINNER_JOIN_DELIMITER)).isEqualTo("rick,ethan");
     }
 
     @Test
     @DisplayName("Cars 객체에서 가장 멀리간 자동차의 거리를 반환한다.")
     void getFurthestTraveledCarDistanceTest() {
-        Car patCar = new Car("pat");
-
-        patCar.moveForwardByNumber(CAR_FORCE_MOVE_NUMBER);
-        patCar.moveForwardByNumber(CAR_FORCE_MOVE_NUMBER);
-
-        Car rickCar = new Car("rick");
-
-        rickCar.moveForwardByNumber(CAR_FORCE_MOVE_NUMBER);
-        rickCar.moveForwardByNumber(CAR_FORCE_MOVE_NUMBER);
-        rickCar.moveForwardByNumber(CAR_FORCE_MOVE_NUMBER);
-
+        Car patCar = new Car("pat", 2);
+        Car rickCar = new Car("rick", 3);
         Car ethanCar = new Car("ethan");
 
         Cars cars = new Cars(asList(patCar, rickCar, ethanCar));
-        assertThat(cars.getFurthestDistance()).isEqualTo(3);
+        assertThat(cars.longestDistance()).isEqualTo(new Distance(3));
     }
 
 }
