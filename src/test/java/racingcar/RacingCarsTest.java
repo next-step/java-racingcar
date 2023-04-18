@@ -38,4 +38,22 @@ public class RacingCarsTest {
         assertThat(racingCars.statusOfRacingCars().get(4).position())
                 .isLessThanOrEqualTo(1);
     }
+
+    @Test
+    @DisplayName("5대 자동차, 4번 움직임 시도(postion max값 == 4)인 racing 확인")
+    public void checkRacingClass() {
+        String[] test =  new String[] {"pobi","next","step","fight","test"};
+        RacingCars racingCars = new RacingCars(test);
+        MoveStrategy randomMoveStrategy = new RandomMoveStrategy();
+        int numberOfTrials = 4;
+
+        while (numberOfTrials > 0) {
+            racingCars.runRacingRound(randomMoveStrategy);
+            numberOfTrials--;
+        }
+
+        assertThat(racingCars.statusOfRacingCars()).hasSize(5);
+        assertThat(racingCars.statusOfRacingCars().get(0).position())
+                .isLessThanOrEqualTo(4);
+    }
 }
