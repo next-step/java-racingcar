@@ -2,16 +2,18 @@
 
 ## step3 요구사항 
 
-1. Car class 
-랜덤값 생성 
+1. Car class
 이동
 현재위치 반환  
 2. RacingGame class
 InputView를 통해 게임에 필요한 파라미터를 받아서 게임을 초기화한다
 -> car 개수 , turn 
 게임 실행
-3. InputView
-4. ResultView 
+3. RandomInt 
+0~9 사이의 랜덤 값 생성 
+랜덤 값이 4 이상인 경우에만 1칸 이동
+4. InputView
+5. ResultView 
 
 
 ## 진행 방법
