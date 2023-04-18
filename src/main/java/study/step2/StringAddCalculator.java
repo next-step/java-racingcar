@@ -15,38 +15,26 @@ public class StringAddCalculator {
         if (isNullOrEmpty(text)) {
             return 0;
         }
+        return sum(split(text));
+    }
 
-        // java.util.regex 패키지의 Matcher, Pattern import
-        Pattern pattern = Pattern.compile("//(.)\n(.*)");
+    private static String[] split(String text) {
+        final Pattern pattern = Pattern.compile("//(.)\n(.*)");
 
         Matcher matcher = pattern.matcher(text);
 
         if (matcher.find()) {
             String customDelimiter = matcher.group(DELIMITER_INDEX);
-            String[] tokens = matcher.group(TOKENS_INDEX).split(customDelimiter);
-
-            return sum(tokens);
+            return matcher.group(TOKENS_INDEX).split(customDelimiter);
         }
-        return sum(split(text));
-    }
-
-    static boolean isNullOrEmpty(String text) {
-        if (text == null) {
-            return true;
-        }
-        if (text.isEmpty()) {
-            return true;
-        }
-        return false;
-
-    }
-
-    static String[] split(String text) {
-
         return text.split(",|:");
     }
 
-    static int sum(String[] tokens) {
+    private static boolean isNullOrEmpty(String text) {
+        return text == null || text.isEmpty();
+    }
+
+    private static int sum(String[] tokens) {
 
         int sum = 0;
         for (String token : tokens) {
@@ -55,21 +43,22 @@ public class StringAddCalculator {
         return sum;
     }
 
-    private static int getPositiveNumber(String token) {
-        int element;
+    private static int toNumber(String token) {
         try {
-            element = Integer.parseInt(token);
-            if (!isZeroOrPositive(element)) {
-                throw new RuntimeException("cannot add negative number");
-            }
+            return Integer.parseInt(token);
         } catch (NumberFormatException e) {
             throw e;
         }
-        return element;
     }
 
-    static boolean isZeroOrPositive(int num) {
-        return num >= 0;
+    private static int getPositiveNumber(String token) {
+
+        int num = toNumber(token);
+        if (num < 0) {
+            throw new NumberFormatException("cannot add negative number");
+        }
+
+        return num;
     }
 
 }
