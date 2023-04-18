@@ -42,7 +42,7 @@ public class SetTest {
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
     @DisplayName("결과값이 다른 경우 확인")
     void containsAllCase(int input, String expected) {
-        String result = String.valueOf(numbers.contains(input));
-        assertThat(result).isEqualTo(expected);
+        String actual = String.valueOf(numbers.contains(input));
+        assertThat(actual).isEqualTo(expected);
     }
 }
