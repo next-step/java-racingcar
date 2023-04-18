@@ -9,9 +9,9 @@ public class RacingGame {
     private final int carNumber;
     private final int gameRound;
 
-    public RacingGame(InputData inputData) {
-        carNumber = inputData.getCarNumber();
-        gameRound = inputData.getGameRound();
+    public RacingGame(PositiveNumber positiveNumber) {
+        carNumber = positiveNumber.getCarNumber();
+        gameRound = positiveNumber.getGameRound();
     }
 
     public List<Scores> startGame(RandomNumberGenerator numberGenerator) {
@@ -27,10 +27,10 @@ public class RacingGame {
 
     private Scores race(Cars cars, RandomNumberGenerator numberGenerator) {
         Scores roundScores = new Scores();
-        cars.getCars().forEach(car -> {
+        for (Car car : cars.getCars()) {
             car.move(numberGenerator);
             roundScores.addScore(new Score(car.getPoint()));
-        });
+        }
         return roundScores;
     }
 }

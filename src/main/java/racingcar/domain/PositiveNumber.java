@@ -1,10 +1,10 @@
 package racingcar.domain;
 
-public class InputData {
+public class PositiveNumber {
     private final Integer carNumber;
     private final Integer gameRound;
 
-    public InputData(Integer carNumber, Integer gameRound) {
+    public PositiveNumber(Integer carNumber, Integer gameRound) {
         validateNegativeNumber(carNumber, gameRound);
         this.carNumber = carNumber;
         this.gameRound = gameRound;
