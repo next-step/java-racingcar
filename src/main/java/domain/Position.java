@@ -1,8 +1,9 @@
 package domain;
 
 public enum Position {
-    ZERO(0),
-    ONE(1);
+    START(1),
+    STOP(0),
+    MOVE(1);
 
     final int position;
     Position(int position) {

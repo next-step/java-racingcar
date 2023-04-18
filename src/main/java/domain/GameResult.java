@@ -13,7 +13,7 @@ public class GameResult {
     public static GameResult createInitialGameResult(NumberOfCars numberOfCars) {
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < numberOfCars.getValue(); i++) {
-            cars.add(new Car(Position.ONE.getPosition()));
+            cars.add(new Car(Position.MOVE.getPosition()));
         }
         return new GameResult(cars);
     }
@@ -27,11 +27,11 @@ public class GameResult {
     }
 
     public static GameResult create(List<Car> cars) {
-        return new GameResult(cars);
-    }
-
-    public Car getCar(int j) {
-        return cars.get(j);
+        List<Car> newCars = new ArrayList<>();
+        for (Car car : cars) {
+            newCars.add(new Car(car));
+        }
+        return new GameResult(newCars);
     }
 
     public List<Car> getCars() {
@@ -40,8 +40,9 @@ public class GameResult {
 
     @Override
     public boolean equals(Object obj) {
-        if (!(obj instanceof GameResult))
+        if (!(obj instanceof GameResult)) {
             return false;
+        }
         return Objects.equals(this.cars, ((GameResult) obj).cars);
     }
 

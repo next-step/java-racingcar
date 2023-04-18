@@ -7,11 +7,11 @@ import java.util.Objects;
 public class RaceResult {
     List<GameResult> gameResults;
 
-    RaceResult() {
+    public RaceResult() {
         gameResults = new ArrayList<>();
     }
 
-    RaceResult(List<GameResult> gameResults) {
+    public RaceResult(List<GameResult> gameResults) {
         this.gameResults = gameResults;
     }
 
@@ -25,8 +25,9 @@ public class RaceResult {
 
     @Override
     public boolean equals(Object obj) {
-        if (!(obj instanceof RaceResult))
+        if (!(obj instanceof RaceResult)) {
             return false;
+        }
         return Objects.equals(this.gameResults, ((RaceResult) obj).gameResults);
     }
 

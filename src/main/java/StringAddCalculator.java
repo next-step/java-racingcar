@@ -10,8 +10,9 @@ public class StringAddCalculator {
     private static final Integer MIN_VALUE = 0;
 
     public static int splitAndSum(String text) {
-        if (text == null || text.isEmpty())
+        if (text == null || text.isEmpty()) {
             return 0;
+        }
         List<Integer> numbers = split(text);
         hasNegative(numbers);
         return sum(numbers);

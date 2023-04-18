@@ -2,45 +2,31 @@ package domain;
 
 import dto.RaceInfo;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Race {
-    private static final int RANDOM_RANGE = 10;
-    private static final int RANDOM_DIVIDING_POINT = 4;
-
-    private final NumberOfCars numberOfCars;
     private final NumberOfRaces numberOfRaces;
+    private final List<Car> cars = new ArrayList<>();
 
     public Race(RaceInfo raceInfo) {
-        this.numberOfCars = raceInfo.getCarNumber();
+        NumberOfCars numberOfCars = raceInfo.getCarNumber();
         this.numberOfRaces = raceInfo.getRaceNumber();
+        for (int i = 0; i < numberOfCars.getValue(); i++) {
+            cars.add(new Car(Position.START.getPosition()));
+        }
     }
 
     public RaceResult calculate() {
         RaceResult raceResult = new RaceResult();
-        GameResult gameResult = GameResult.createInitialGameResult(numberOfCars);
 
-        raceResult.add(gameResult);
+        raceResult.add(GameResult.create(cars));
         for (int i = 0; i < numberOfRaces.getValue(); i++) {
-            GameResult nextGameResult = calculateNextGameResult(gameResult);
-            raceResult.add(nextGameResult);
-            gameResult = nextGameResult;
+            cars.forEach(Car::randomMove);
+            raceResult.add(GameResult.create(cars));
         }
 
         return raceResult;
-    }
-
-    private GameResult calculateNextGameResult(GameResult gameResult) {
-        GameResult nextGameResult = GameResult.createCopy(gameResult);
-        for (int j = 0; j < numberOfCars.getValue(); j++) {
-            nextGameResult.getCar(j).move(calculateMove() ? Position.ONE.getPosition() : Position.ZERO.getPosition());
-        }
-
-        return nextGameResult;
-    }
-
-    private boolean calculateMove() {
-        Random ran = new Random();
-        return ran.nextInt(RANDOM_RANGE) >= RANDOM_DIVIDING_POINT;
     }
 }
