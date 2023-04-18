@@ -34,7 +34,7 @@ public class Cars {
     List<Car> cars = new ArrayList<>();
 
     carNames.carNames()
-            .forEach((name) -> cars.add(new Car(name)));
+            .forEach((name) -> cars.add(new Car(name.toString())));
 
     return Collections.unmodifiableList(cars);
   }
