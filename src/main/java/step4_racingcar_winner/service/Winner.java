@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class Winner {
-	private Set<String> winnerNames = new LinkedHashSet<>();
+	private Set<String> names = new LinkedHashSet<>();
 	private int maxValue = 0;
 
 	public void selectWinner(Map<String, Integer> roundResult)
@@ -18,28 +18,26 @@ public class Winner {
 	public void validateWinner(String name, int position) {
 
 		if (position > this.maxValue) {
-			winnerNames.clear();
+			names.clear();
 			this.maxValue = position;
-			winnerNames.add(name);
+			names.add(name);
 			return;
 		}
 
 		if (position == this.maxValue) {
 			this.maxValue = position;
-			winnerNames.add(name);
+			names.add(name);
 			return;
 		}
 
-		if (winnerNames.contains(name)) {
-			winnerNames.remove(name);
+		if (names.contains(name)) {
+			names.remove(name);
 			return;
 		}
 	}
 
-	public String getWinner()
-	{
-		String winners = String.join(", ", winnerNames);
-
-		return winners;
+	public Set<String> getNames() {
+		return names;
 	}
+
 }

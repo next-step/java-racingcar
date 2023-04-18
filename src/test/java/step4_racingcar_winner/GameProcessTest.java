@@ -14,8 +14,7 @@ import step4_racingcar_winner.service.GameProcess;
 public class GameProcessTest {
 	private static final String[] carNames = "f1,suv,sport,super,jeep".split(",");
 
-
-	@DisplayName("테스트 횟수 일치 여부 확인")
+	@DisplayName("try 횟수와 플레이 횟수 일치 확인")
 	@Test
 	void testPlay() {
 		int tryCount = 6;

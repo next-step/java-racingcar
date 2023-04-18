@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import step4_racingcar_winner.service.GameRule;
+import step4_racingcar_winner.service.RandomNumber;
 
 public class Cars {
 	private final List<Car> cars;
@@ -11,7 +12,7 @@ public class Cars {
 	public Cars(String[] carNames) {
 		cars = new ArrayList<>();
 		for (String carName : carNames) {
-			cars.add(new Car(carName));
+			cars.add(new Car(carName, 0 , new RandomNumber()));
 		}
 	}
 
@@ -25,7 +26,7 @@ public class Cars {
 
 	public void playRound() {
 		for (Car car : cars) {
-			car.tryMove(GameRule.isCarMoving(GameRule.randomValue()));
+			car.tryMove();
 		}
 	}
 }

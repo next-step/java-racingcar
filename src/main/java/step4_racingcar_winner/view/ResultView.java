@@ -20,14 +20,14 @@ public class ResultView {
 		System.out.println(printWinner(winner));
 	}
 
-	private static void printCarStatus(List<CarDTO> carDTOs) {
+	private void printCarStatus(List<CarDTO> carDTOs) {
 		System.out.println();
 		for (CarDTO carDTO : carDTOs) {
 			System.out.println(formatStatus(carDTO));
 		}
 	}
 
-	public static String formatStatus(CarDTO carDTO) {
+	public String formatStatus(CarDTO carDTO) {
 		StringBuilder status = new StringBuilder();
 		status.append(carDTO.getName() + " : ");
 		for (int i = 0; i < carDTO.getPosition(); i++) {
@@ -36,10 +36,10 @@ public class ResultView {
 		return status.toString();
 	}
 
-	public String printWinner(Winner winner) {
+	private String printWinner(Winner winner) {
 		System.out.println();
 		StringBuilder winnerBanner = new StringBuilder();
-		winnerBanner.append(winner.getWinner() + lastWinnerBanner);
+		winnerBanner.append(printWinnerNames(winner) + lastWinnerBanner);
 		return winnerBanner.toString();
 	}
 
@@ -51,4 +51,10 @@ public class ResultView {
 		return resultMap;
 	}
 
+	public String printWinnerNames(Winner winner)
+	{
+		String winners = String.join(", ", winner.getNames());
+
+		return winners;
+	}
 }

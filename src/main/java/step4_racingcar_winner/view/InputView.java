@@ -11,11 +11,11 @@ public class InputView {
 
 	public static String[] getCarName() {
 		System.out.println(inputCarNames);
-		return GameRule.isAcceptableName(scanner.nextLine());
+		return GameRule.parseNames(scanner.nextLine());
 	}
 
 	public static int getTryCount() {
 		System.out.println(inputAttempt);
-		return  GameRule.isAcceptableValue(scanner.nextLine());
+		return  GameRule.isAcceptableTryValue(scanner.nextLine());
 	}
 }

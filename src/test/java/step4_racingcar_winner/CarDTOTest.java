@@ -13,12 +13,12 @@ public class CarDTOTest {
 	@DisplayName("CarDTO 생성 테스트")
 	@Test
 	void carDTOConstructorAndGetPosition() {
-		String carName = "testCar";
+		String carName = "test";
 		int position = 5;
-		Car car = new Car(carName);
+		Car car = new Car(carName , 0 , bound -> 6);
 
 		for (int i = 0; i < position; i++) {
-			car.tryMove(true);
+			car.tryMove();
 		}
 
 		CarDTO carDTO = new CarDTO(car);
