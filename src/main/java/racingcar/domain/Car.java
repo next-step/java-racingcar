@@ -29,4 +29,8 @@ public class Car {
     public String findCarName() {
         return name;
     }
+
+    public int findCarPoint() {
+        return point;
+    }
 }
