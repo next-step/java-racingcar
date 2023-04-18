@@ -36,4 +36,11 @@ public class RacingCars {
     public List<Car> getCars() {
         return cars;
     }
+
+    public int getFarthestPosition() {
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+    }
 }
