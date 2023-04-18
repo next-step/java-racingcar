@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import study.util.Randomizer;
+import study.util.RandomizerImpl;
 
 public class Race {
 
@@ -11,10 +13,10 @@ public class Race {
   private static final int GO = 1;
   private static final int STOP = 0;
   private List<Distance> distances = new ArrayList<>();
-  Random random = new Random();
+  Randomizer randomizer = new RandomizerImpl();
 
   public void progress() {
-    int randomNumber = random.nextInt(10);
+    int randomNumber = randomizer.getRandomValue(10);
 
     if (randomNumber < BOUNDED_VALUE) {
       this.go();
