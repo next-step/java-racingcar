@@ -6,15 +6,18 @@ import racing.view.ResultView;
 
 import java.util.List;
 
-public class RaceController {
+public class RaceGame {
 
     public void startRacing(int carNum, int attempts) {
         Cars cars = new Cars(carNum);
 
-        ResultView.printRacingResult(moving(cars.getCars()));
+        for (int i = 0; i < attempts; i++) {
+            ResultView.printRoundResult(movingCars(cars.getCars()));
+        }
+
     }
 
-    private List<Car> moving(List<Car> cars) {
+    private List<Car> movingCars(List<Car> cars) {
         for (Car car : cars) {
             car.move();
         }
