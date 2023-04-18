@@ -3,22 +3,25 @@ package study.carrace;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 import study.util.Randomizer;
 import study.util.RandomizerImpl;
 
 public class Race {
 
-  private static final int BOUNDED_VALUE = 5;
+  private static final int BOUNDED_VALUE = 4;
   private static final int GO = 1;
   private static final int STOP = 0;
   private List<Distance> distances = new ArrayList<>();
-  Randomizer randomizer = new RandomizerImpl();
+  private final Randomizer randomizer;
+
+  public Race(Randomizer randomizer) {
+    this.randomizer = randomizer;
+  }
 
   public void progress() {
     int randomNumber = randomizer.getRandomValue(10);
 
-    if (randomNumber < BOUNDED_VALUE) {
+    if (randomNumber >= BOUNDED_VALUE) {
       this.go();
       return;
     }

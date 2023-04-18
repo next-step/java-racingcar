@@ -1,6 +1,8 @@
 package study.carrace;
 
 
+import study.util.RandomizerImpl;
+
 public class RaceGameImpl implements RaceGame {
 
   private final int numberOfCar;
@@ -16,7 +18,7 @@ public class RaceGameImpl implements RaceGame {
     Race[] races = new Race[this.numberOfCar];
 
     for (int i = 0; i < this.numberOfCar; i++) {
-      Race race = new Race();
+      Race race = new Race(new RandomizerImpl());
       for (int j = 0; j < tryCount; j++) {
         race.progress();
       }
