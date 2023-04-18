@@ -28,9 +28,8 @@ public class CarTest {
 		int initialStatus = car.getPosition();
 
 		car.tryMove();
-		int movedStatus = car.getPosition();
 
-		assertNotEquals(initialStatus, movedStatus);
+		assertThat(car.getPosition()).isEqualTo(initialStatus + 1);
 	}
 
 	@DisplayName("자동차 정지")
@@ -40,9 +39,8 @@ public class CarTest {
 		int initialStatus = car.getPosition();
 
 		car.tryMove();
-		int notMovedStatus = car.getPosition();
 
-		assertEquals(initialStatus, notMovedStatus);
+		assertThat(car.getPosition()).isEqualTo(initialStatus);
 	}
 
 }
