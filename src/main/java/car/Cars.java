@@ -27,14 +27,14 @@ public class Cars {
     }
 
     public List<Car> findWinners() {
-        Position winningposition = findWinningposition();
+        Position winningPosition = findWinningPosition();
 
         return cars.stream()
-                .filter(car -> car.matchesPosition(winningposition))
+                .filter(car -> car.matchesPosition(winningPosition))
                 .collect(Collectors.toList());
     }
 
-    private Position findWinningposition() {
+    private Position findWinningPosition() {
         return cars.stream()
                 .map(Car::getPosition)
                 .max(Position::compareTo)
