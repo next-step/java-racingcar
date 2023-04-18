@@ -1,23 +1,23 @@
 package study.racingcar;
 
-public class Car extends Moving {
+public class Car {
     private String name;
     private int position;
+    private MoveStrategy moveStrategy;
 
     public Car(int position, String name, MoveStrategy moveStrategy) {
         this.position = position;
         this.name = name;
-
-        setMoveStrategy(moveStrategy);
+        this.moveStrategy = moveStrategy;
     }
 
     public int currentPosition() {
         return this.position;
     }
 
-    public void move(int number) {
+    public void move() {
 
-        if (isMove(number)) {
+        if (moveStrategy.isMove()) {
             this.position = position + 1;
         }
     }

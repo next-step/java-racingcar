@@ -28,7 +28,7 @@ public class RacingGame {
 
         for(Car car : this.cars) {
 
-            car.move(GenerateNumber.random());
+            car.move();
 
             ResultView.resultGame(car);
         }
