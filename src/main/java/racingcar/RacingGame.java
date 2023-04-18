@@ -2,14 +2,14 @@ package racingcar;
 
 public class RacingGame {
     private final Screen screen = new Screen();
-    private final Console console = new Console();
+    private final InputView inputView = new InputView();
 
     private Cars cars;
-    private int gameCount;
+    private int playCount;
 
     public void start() {
-        participantApplication();
-        playCount();
+        addCar();
+        initPlayCount();
         playGame();
     }
 
@@ -17,27 +17,21 @@ public class RacingGame {
         return cars.size();
     }
 
-    public int gameCount() {
-        return gameCount;
+    public int playCount() {
+        return playCount;
     }
 
-    private void participantApplication() {
-        screen.print("자동차 대수는 몇 대 인가요?");
-        addCar(console.inputInt());
+    private void addCar() {
+        cars = new Cars(inputView.participantApplication());
     }
 
-    private void playCount() {
-        screen.print("시도할 회수는 몇 회 인가요?");
-        gameCount = console.inputInt();
-    }
-
-    private void addCar(int number) {
-        cars = new Cars(number);
+    private void initPlayCount() {
+        playCount = inputView.playCount();
     }
 
     private void playGame() {
         screen.print("실행 결과");
-        for (int i = 0; i < gameCount; i++) {
+        for (int i = 0; i < playCount; i++) {
             cars.moveAll();
             screen.print(cars.distanceDriven());
         }
