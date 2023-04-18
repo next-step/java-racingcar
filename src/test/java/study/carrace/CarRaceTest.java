@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import study.input.Input;
 import study.util.Randomizer;
+import study.util.RandomizerImpl;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -15,7 +16,8 @@ public class CarRaceTest {
   public void 인풋_테스트() throws Exception {
     // given
     Input input = new InputTestImpl();
-    CarRace carRace = new CarRaceImpl(input);
+    Randomizer randomizer = new RandomizerImpl();
+    CarRace carRace = new CarRaceImpl(input, randomizer);
 
     // when
     String result = carRace.run();

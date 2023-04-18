@@ -1,13 +1,16 @@
 package study.carrace;
 
 import study.input.Input;
+import study.util.Randomizer;
 
 public class CarRaceImpl implements CarRace {
 
   private final Input input;
+  private final Randomizer randomizer;
 
-  public CarRaceImpl(Input input) {
+  public CarRaceImpl(Input input, Randomizer randomizer) {
     this.input = input;
+    this.randomizer = randomizer;
   }
 
   @Override
@@ -15,7 +18,7 @@ public class CarRaceImpl implements CarRace {
     int numberOfCars = input.getInput("자동차 대수는 몇 대 인가요?");
     int tryCount = input.getInput("시도할 회수는 몇 회 인가요?");
 
-    RaceGame raceGame = new RaceGameImpl(numberOfCars, tryCount);
+    RaceGame raceGame = new RaceGameImpl(numberOfCars, tryCount, randomizer);
     Race[] races = raceGame.process();
 
     StringBuffer sb = new StringBuffer();
