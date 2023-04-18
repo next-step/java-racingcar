@@ -1,8 +1,6 @@
 package racing.interfaces;
 
-import racing.domain.Car;
-import racing.domain.Garage;
-import racing.domain.Racing;
+import racing.domain.*;
 
 import java.util.List;
 
@@ -18,10 +16,14 @@ public class RacingGameController {
         Racing racing = new Racing(numberOfMatchInput, cars);
 
         ResultView resultView = new ResultView();
+        RacingCars racingCars = new RacingCars();
 
         while (racing.getLeftMatchCounts() > 0) {
-            resultView.printResult(racing.race());
+            racingCars = racing.race();
+            resultView.printMatchResult(racingCars);
         }
+
+        resultView.printWinnerResult(Winner.award(racingCars));
 
     }
 }
