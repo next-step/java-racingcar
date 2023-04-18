@@ -12,7 +12,16 @@ public class RacingCar {
             String carNamesStr = InputView.setCarNames();
             int numberOfGames = InputView.setGames();
 
-            new RacingGame(new RacingGameInputs(numberOfGames, carNamesStr)).gameStart();
+            RacingGame game = new RacingGame(new RacingGameInputs(numberOfGames, carNamesStr));
+
+            ResultView.startGame();
+
+            while (!game.isOver(numberOfGames)) {
+                game.moveCar();
+                game.nextLap();
+            }
+
+            ResultView.winner(new GameWinner(game.getCars()).findGameWinner());
         } while (InputView.reset());
 
         ResultView.endGame();

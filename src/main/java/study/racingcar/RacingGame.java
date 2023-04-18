@@ -4,37 +4,29 @@ import java.util.List;
 
 public class RacingGame {
 
-    private List<Car> carList;
-    private int numberOfGames;
+    private List<Car> cars;
+    private int lastLapCheck;
 
     public RacingGame(RacingGameInputs racingGameInputs) {
-        this.carList = SettingGame.createCars(racingGameInputs);
-        this.numberOfGames = racingGameInputs.getNumberOfGames();
+        this.cars = SettingGame.createCars(racingGameInputs);
+        this.lastLapCheck = 0;
     }
 
-    public void gameStart() {
-
-        ResultView.startGame();
-
-        int lastLapCheck = 0;
-
-        while(!isOver(numberOfGames, lastLapCheck)){
-            moveCar(carList);
-
-            lastLapCheck++;
-        }
-
-        ResultView.winner(new GameWinner(carList).findGameWinner());
+    public List<Car> getCars() {
+        return this.cars;
     }
 
-    private boolean isOver(int numberOfGames, int lastLapCheck) {
+    public void nextLap() {
+        this.lastLapCheck++;
+    }
+    public boolean isOver(int numberOfGames) {
 
-        return numberOfGames <= lastLapCheck;
+        return numberOfGames <= this.lastLapCheck;
     }
 
-    private void moveCar(List<Car> cars) {
+    public void moveCar() {
 
-        for(Car car : cars) {
+        for(Car car : this.cars) {
 
             car.move(GenerateNumber.random());
 

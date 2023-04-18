@@ -1,29 +1,39 @@
 package study.racingcar;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.InputMismatchException;
-
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
 
-    @DisplayName("정상적인 값을 입력 받으면 RacingGame 이 정상적을 수행된다.")
-    @Test
-    public void RacingGame_gameStart_정상_테스트() {
+    @DisplayName("게임 횟수만큼 움직였다면 게임은 종료된다.(False 반환)")
+    @ParameterizedTest
+    @CsvSource(value = {"5:6", "3:4", "1:2"}, delimiter = ':')
+    public void RacingGame_isOver_종료테스트(int games, int laps) {
 
-        RacingGame racingGame = new RacingGame(new RacingGameInputs(5, "pobbi,crong,honux"));
+        RacingGame racingGame = new RacingGame(new RacingGameInputs(games, "pobbi,crong,honux"));
 
-        racingGame.gameStart();
+        for(int i = 0; i < games; i++){
+            racingGame.nextLap();
+        }
+
+        assertThat(racingGame.isOver(laps)).isFalse();
     }
 
-    @DisplayName("비정상적인 값을 입력 받으면 RacingGame 이 수행되지 못한다.")
-    @Test
-    public void RacingGame_gameStart_비정상_테스트() {
+    @DisplayName("게임 횟수만큼 이전 값이면 게임은 종료되지 않는다.(True 반환)")
+    @ParameterizedTest
+    @CsvSource(value = {"5:3", "3:1", "1:0"}, delimiter = ':')
+    public void RacingGame_isOver_지속테스트(int games, int laps) {
 
-        assertThatThrownBy(() ->
-                new RacingGame(new RacingGameInputs(5, "pobbi,tester,honux")).gameStart())
-                .isInstanceOf(InputMismatchException.class);
+        RacingGame racingGame = new RacingGame(new RacingGameInputs(games, "pobbi,crong,honux"));
+
+        for(int i = 0; i < games; i++){
+            racingGame.nextLap();
+        }
+
+        assertThat(racingGame.isOver(laps)).isTrue();
     }
 }
