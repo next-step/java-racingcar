@@ -5,9 +5,12 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.*;
 import racingcar.strategy.MoveStrategy;
 import racingcar.strategy.RandomMoveStrategy;
+import step2.study.StringAddCalculator2;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThatCode;
 
 public class RacingCarTest {
 
@@ -40,5 +43,13 @@ public class RacingCarTest {
     String result = racingCar.name();
 
     assertThat(result).isEqualTo("test");
+  }
+
+  @Test
+  @DisplayName("RacingCar 객체 생성 후 name > 5 IllegalArgumentException 발생")
+  public void carNameOverTheFive_ThrowException() {
+    assertThatCode(() -> {
+              RacingCar racingCar = new RacingCar("test23");
+    }).isInstanceOf(IllegalArgumentException.class);
   }
 }
