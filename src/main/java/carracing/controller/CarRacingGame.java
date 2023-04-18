@@ -1,5 +1,6 @@
 package carracing.controller;
 
+import carracing.domain.Award;
 import carracing.domain.Car;
 import carracing.domain.CarCompany;
 import carracing.view.InputView;
@@ -32,5 +33,9 @@ public class CarRacingGame {
             //출력
             resultView.outputResult(cars);
         }
+
+        //시상식
+        Award award = new Award();
+        String winners = award.getWinner(cars);
     }
 }
