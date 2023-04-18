@@ -21,7 +21,7 @@ public class RacingCarTest {
         // Then
         RacingCar car = inputView.init();
         car.startRace();
-        car.displayResults();
+        resultView.displayResults(car.getCarPositions());
     }
 
     @Test
@@ -44,7 +44,7 @@ public class RacingCarTest {
         car.startRace();
 
         // Then
-        car.displayResults();
+        resultView.displayResults(car.getCarPositions());
     }
 
     @Test

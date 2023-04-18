@@ -9,7 +9,6 @@ public class RacingCar {
     private static final int INIT_POSITION_ONE = 1;
 
     private final Random random = new Random();
-    private final ResultView resultView = new ResultView();
 
     private final int[][] carPositions;
 
@@ -41,12 +40,6 @@ public class RacingCar {
         return randomValue >= CAR_PROCEED_THRESHOLD ? 1 : 0;
     }
 
-
-    public void displayResults() {
-        resultView.displayResults(carPositions);
-    }
-
-    // Getter for testing purposes only
     int[][] getCarPositions() {
         return carPositions;
     }
