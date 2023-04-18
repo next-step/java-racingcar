@@ -32,6 +32,17 @@ public class StringCalculator {
     }
 
     public String[] split(String input) {
+        if (hasCustomDelimiter(input)) {
+            input = input.substring(5);
+            final String delimiter = input.substring(1, 2);
+
+            return input.split(delimiter);
+        }
+
         return input.split(",|;");
+    }
+
+    private boolean hasCustomDelimiter(String input) {
+        return input.contains("//") && input.contains("\\n");
     }
 }

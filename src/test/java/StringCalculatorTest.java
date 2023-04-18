@@ -1,7 +1,30 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 public class StringCalculatorTest {
+
+    @Test
+    void 커스텀_구분자가_포함된_문자열_합_반환() {
+        String input = "//;\\n1;2;3";
+
+        final StringCalculator calculator = new StringCalculator();
+        final int actual = calculator.sum(input);
+
+        assertEquals(6, actual);
+    }
+
+    @Test
+    void 커스텀_구분자_분리() {
+        String input = "//;\\n1;2;3";
+
+        final StringCalculator calculator = new StringCalculator();
+        final String[] components = calculator.split(input);
+
+        assertEquals("1", components[0]);
+        assertEquals("2", components[1]);
+        assertEquals("3", components[2]);
+    }
 
     @Test
     void 구분자를_기준으로_분리한_숫자의_합을_반환() {
@@ -10,7 +33,7 @@ public class StringCalculatorTest {
         final StringCalculator calculator = new StringCalculator();
         final int actual = calculator.sum(input);
 
-        Assertions.assertEquals(6, actual);
+        assertEquals(6, actual);
     }
 
     @Test
@@ -20,9 +43,9 @@ public class StringCalculatorTest {
         final StringCalculator calculator = new StringCalculator();
         final String[] components = calculator.split(input);
 
-        Assertions.assertEquals("1", components[0]);
-        Assertions.assertEquals("2", components[1]);
-        Assertions.assertEquals("3", components[2]);
+        assertEquals("1", components[0]);
+        assertEquals("2", components[1]);
+        assertEquals("3", components[2]);
     }
 
     @Test
@@ -32,9 +55,9 @@ public class StringCalculatorTest {
         final StringCalculator calculator = new StringCalculator();
         final String[] components = calculator.split(input);
 
-        Assertions.assertEquals("1", components[0]);
-        Assertions.assertEquals("2", components[1]);
-        Assertions.assertEquals("3", components[2]);
+        assertEquals("1", components[0]);
+        assertEquals("2", components[1]);
+        assertEquals("3", components[2]);
     }
 
     @Test
@@ -44,7 +67,7 @@ public class StringCalculatorTest {
         final StringCalculator calculator = new StringCalculator();
         int actual = calculator.sum(input);
 
-        Assertions.assertEquals(0, actual);
+        assertEquals(0, actual);
     }
 
     @Test
@@ -54,6 +77,6 @@ public class StringCalculatorTest {
         final StringCalculator calculator = new StringCalculator();
         int actual = calculator.sum(input);
 
-        Assertions.assertEquals(0, actual);
+        assertEquals(0, actual);
     }
 }
