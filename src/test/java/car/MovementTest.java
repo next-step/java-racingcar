@@ -3,26 +3,37 @@ package car;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class MovementTest {
+    private List<Car> cars;
+    private Movement movement;
+    @BeforeEach
+    void setUp() {
+        Car car1 = new Car(1);
+        cars = Arrays.asList(car1);
+
+        MoveStrategy moveStrategy = new RandomMoveStrategy();
+        movement = new Movement(cars, moveStrategy);
+    }
     @Test
-    @DisplayName("randomNumber의 값에 따라(4이상) 차가 이동하는지 확인 한다.")
+    @DisplayName("moveCars에 조건에 해당하는 경우 차가 이동하는지 확인 한다.")
     void moveCarsTest() {
-        // given
-        Movement movement = new Movement();
-        Car car = new Car(1);
-        int initialPosition = 5;
-        car.setPosition(initialPosition);
+        int initialPosition = cars.get(0).getPosition();
+        int positionIfMoved = initialPosition + 1;
 
         // when
-        movement.moveCars(List.of(car));
+        movement.moveCars();
 
         // then
-        int positionIfMoved = initialPosition + 1;
-        assertThat(car.getPosition()).isBetween(initialPosition, positionIfMoved);
+        assertThat(cars.get(0).getPosition()).isBetween(initialPosition, positionIfMoved);
+
     }
 }

@@ -1,23 +1,21 @@
 package car;
 
 import java.util.List;
-import java.util.Random;
 
 class Movement {
-    private static final int RANDOM_BOUND = 10;
-    private static final int MOVEMENT_THRESHOLD = 4;
+    private final List<Car> cars;
+    private final MoveStrategy moveStrategy;
 
-    public void moveCars(List<Car> cars) {
-        for (Car car : cars) {
-            moveCar(car);
-        }
+    public Movement(List<Car> cars, MoveStrategy moveStrategy) {
+        this.cars = cars;
+        this.moveStrategy = moveStrategy;
     }
 
-    private void moveCar(Car car) {
-        int randomNumber = new Random().nextInt(RANDOM_BOUND);
-        if (randomNumber >= MOVEMENT_THRESHOLD) {
-            car.setPosition(car.getPosition() + 1);
+    public void moveCars() {
+        for (Car car : cars) {
+            if (moveStrategy.canMove()) {
+                car.move();
+            }
         }
-        car.printStatus();
     }
 }

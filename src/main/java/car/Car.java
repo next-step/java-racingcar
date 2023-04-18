@@ -19,15 +19,7 @@ class Car {
         return this.name;
     }
 
-    public void setPosition(int position) {
-        this.position = position;
-    }
-
-    public void printStatus() {
-        System.out.print(this.name + " : ");
-        for (int i = 0; i < this.position; i++) {
-            System.out.print("-");
-        }
-        System.out.println();
+    public void move(){
+        position++;
     }
 }
