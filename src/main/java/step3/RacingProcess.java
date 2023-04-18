@@ -1,11 +1,7 @@
 package step3;
 
-import step3.model.Car;
 import step3.model.Cars;
 import step3.view.ResultView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class RacingProcess {
     private final int carCount;
@@ -20,7 +16,7 @@ public class RacingProcess {
     }
 
     public void racingStart() {
-        Cars cars = new Cars(generateCars());
+        Cars cars = Cars.generateCars(carCount);
         ResultView resultView = new ResultView();
 
         resultView.startUI();
@@ -29,20 +25,10 @@ public class RacingProcess {
     }
 
     private void iterateRacing(Cars cars, ResultView resultView) {
-        for (int i = 0; i < periodCount; i++) {
-            cars.goForward();
+        for (int i = 1; i < periodCount; i++) {
+            cars.checkForwardConditionAndGo();
             resultView.drawing(cars.getCars());
         }
-    }
-
-    private List<Car> generateCars() {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            Car car = new Car(0);
-            cars.add(car);
-        }
-
-        return cars;
     }
 
     private void countValidation(int count) {

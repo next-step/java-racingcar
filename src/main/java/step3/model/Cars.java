@@ -1,40 +1,41 @@
 package step3.model;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+
+import static step3.utils.RacingUtils.generateRandomNumber;
 
 public class Cars {
-    private static final int RANDOM_NUMBER_LIMIT = 4;
+    private static final int BOUND = 10;
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
         this.cars = cars;
     }
 
-    public void goForward() {
-        checkForwardCondition();
+    public void checkForwardConditionAndGo() {
+        for (Car car : cars) {
+            checkRandomNumber(car);
+        }
+    }
 
+    public void checkRandomNumber(Car car) {
+        int randomNumber = generateRandomNumber(BOUND);
+        car.availableForward(randomNumber);
     }
 
     public List<Car> getCars() {
         return this.cars;
     }
 
-
-    private void checkForwardCondition() {
-        for (Car car : cars) {
-            if (isOverLimit(generateRandomNumber())) {
-                car.increaseDistance();
-            }
+    public static Cars generateCars(int carCount) {
+        List<Car> tempCars = new ArrayList<>();
+        for (int i = 0; i < carCount; i++) {
+            Car car = new Car(0);
+            tempCars.add(car);
         }
+
+        return new Cars(tempCars);
     }
 
-    private boolean isOverLimit(int randomValue) {
-        return randomValue >= RANDOM_NUMBER_LIMIT;
-    }
-
-    private int generateRandomNumber() {
-        Random random = new Random();
-        return random.nextInt();
-    }
 }
