@@ -1,6 +1,6 @@
-package step3.view;
+package step4.view;
 
-import step3.domain.UserInput;
+import step4.domain.UserInput;
 
 import java.util.Scanner;
 
@@ -12,16 +12,16 @@ public class InputView {
     }
 
     public static UserInput input() {
-        final int carCount = inputCarCount();
+        final String names = inputCarNames();
         final int retry = inputRetryCount();
 
-        return new UserInput(carCount, retry);
+        return new UserInput(names, retry);
     }
 
-    private static int inputCarCount() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
+    private static String inputCarNames() {
+        System.out.println("경주할 자동 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
 
-        return SCANNER.nextInt();
+        return SCANNER.nextLine();
     }
 
     private static int inputRetryCount() {

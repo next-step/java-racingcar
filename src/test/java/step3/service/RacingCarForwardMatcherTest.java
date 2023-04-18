@@ -15,4 +15,12 @@ class RacingCarForwardMatcherTest {
         assertThat(matcher.match(random)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {"1:false", "2:false", "3:false"}, delimiter = ':')
+    void 랜덤값이_4미만이면_전진조건이_아니다(int random, boolean expected) {
+        final GameMatcher matcher = new RacingCarForwardMatcher();
+
+        assertThat(matcher.match(random)).isEqualTo(expected);
+    }
+
 }
