@@ -1,5 +1,8 @@
 package racingcar;
 
+import racingcar.ui.InputView;
+import racingcar.ui.ResultView;
+
 import java.util.List;
 
 public class Main {
@@ -10,22 +13,24 @@ public class Main {
         ResultView resultView = createResultView();
         InputView inputView = createInputView();
 
-        resultView.questionCarCountMessage();
-        int carCount = inputView.getInput();
+        resultView.printInputCarNameMessage();
+        String carNameInput = inputView.getStringInput();
 
-        resultView.questionTryCountMessage();
-        int tryCount = inputView.getInput();
+        resultView.printQuestionTryCountMessage();
+        int tryCount = inputView.getIntegerInput();
 
         resultView.printNewLine();
-        resultView.executeResultMessage();
+        resultView.printExecuteResultMessage();
 
-        RacingCar racingCar = createRacingCar(carCount);
+        RacingCar racingCar = createWinningRacingCar(carNameInput);
 
         for (int i = BEGIN_INDEX; i < tryCount; i++) {
-            resultView.printMoveStateLines(
-                    racingCar.makeMoveCounts(generateRandomNumbers(carCount))
+            resultView.printCarNameAndMoveStateLines(
+                    racingCar.makeMoveCounts(
+                            generateRandomNumbers(racingCar.carsSize()))
             );
         }
+        resultView.printWinners(racingCar.winningCars());
 
         inputView.closeScanner();
     }
@@ -38,8 +43,8 @@ public class Main {
         return new InputView();
     }
 
-    private static RacingCar createRacingCar(int carCount) {
-        return new RacingCar(carCount);
+    private static RacingCar createWinningRacingCar(String carNameInput) {
+        return new RacingCar(carNameInput);
     }
 
     private static List<Integer> generateRandomNumbers(int carCount) {

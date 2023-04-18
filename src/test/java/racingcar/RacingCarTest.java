@@ -4,33 +4,16 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racingcar.ui.ResultView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class RacingCarTest {
-
-    public static final int UNMOVABLE_COUNT = 0;
-    public static final int MOVABLE_COUNT = 1;
-
-    @DisplayName("random 값이 4이상이면 전진한다.")
-    @ParameterizedTest
-    @CsvSource(value = {"0:false", "1:false", "2:false", "3:false",
-            "4:true", "5:true", "6:true", "7:true", "8:true", "9:true"}, delimiter = ':')
-    void move(int randomNumber, boolean result) {
-        //given
-        RacingCar racingCar = new RacingCar(3);
-
-        //when
-        boolean moveYn = racingCar.moveYn(randomNumber);
-
-        //then
-        assertThat(moveYn).isEqualTo(result);
-    }
 
     @DisplayName("자동차의 출력 상태값 만들기(1회 전진마다 -추가")
     @ParameterizedTest
@@ -40,7 +23,7 @@ public class RacingCarTest {
         ResultView resultView = new ResultView();
 
         //when
-        String carMoveStateLine = resultView.getCarMoveStateLine(moveCount);
+        String carMoveStateLine = resultView.makeCarMoveStateLine(moveCount);
 
         //then
         assertThat(carMoveStateLine).isEqualTo(result);
@@ -50,17 +33,44 @@ public class RacingCarTest {
     @Test
     void makeMoveCounts() {
         //given
-        List<Integer> unmovableNumbers = Arrays.asList(1, 2);
-        List<Integer> movableNumbers = Arrays.asList(4, 5, 6);
-        List<Integer> numbers = new ArrayList<>();
-        numbers.addAll(unmovableNumbers);
-        numbers.addAll(movableNumbers);
+        String carNameInput = "pobi,crong,honux,choi";
+        List<Integer> numbers = Arrays.asList(1, 2, 4, 5);
 
         //when
-        List<Integer> moveCounts = new RacingCar(numbers.size()).makeMoveCounts(numbers);
+        List<Car> cars = new RacingCar(carNameInput).makeMoveCounts(numbers);
+        List<Integer> moveCounts = new ArrayList<>();
+        for (Car car : cars) {
+            moveCounts.add(car.moveCount());
+        }
 
         //then
-        assertThat(unmovableNumbers.size()).isEqualTo(Collections.frequency(moveCounts, UNMOVABLE_COUNT));
-        assertThat(movableNumbers.size()).isEqualTo(Collections.frequency(moveCounts, MOVABLE_COUNT));
+        assertThat(moveCounts).containsExactly(0, 0, 1, 1);
+    }
+
+    @DisplayName("자동차 이름 5자 초과시 예외 처리")
+    @Test
+    void carNameLengthException() {
+        assertThatThrownBy(() -> {
+            new RacingCar("hoyeon");
+        }).isInstanceOf(RuntimeException.class)
+                .hasMessageContaining("자동차 이름은 5자를 초과할 수 없습니다.");
+    }
+
+    @DisplayName("우승자 판별")
+    @Test
+    void getWinnersNames() {
+        //given
+        RacingCar racingCar = new RacingCar("pobi,crong,honux");
+
+        //when
+        racingCar.makeMoveCounts(Arrays.asList(1, 4, 5));
+        List<Car> winningCars = racingCar.winningCars();
+        List<String> winningCarNames = new ArrayList<>();
+        for (Car winningCar : winningCars) {
+            winningCarNames.add(winningCar.name());
+        }
+
+        //then
+        assertThat(winningCarNames).containsExactly("crong", "honux");
     }
 }

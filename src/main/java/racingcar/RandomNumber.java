@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.util.RandomGenerator;
+
 import java.util.ArrayList;
 import java.util.List;
 
