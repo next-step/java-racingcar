@@ -7,16 +7,13 @@ import java.util.stream.Stream;
 
 public class RacingCarList {
     private final List<RacingCar> cars;
-    private final MoveStrategy moveStrategy;
 
-    public RacingCarList(int carCount, MoveStrategy moveStrategy) {
+    public RacingCarList(int carCount) {
         this.cars = createCars(carCount);
-        this.moveStrategy = moveStrategy;
     }
 
-    public RacingCarList(String[] carNames, MoveStrategy moveStrategy) {
+    public RacingCarList(String[] carNames) {
         this.cars = createCars(carNames);
-        this.moveStrategy = moveStrategy;
     }
 
     public List<RacingCar> getCars() {
@@ -35,9 +32,11 @@ public class RacingCarList {
                 .collect(Collectors.toList());
     }
 
-    public void moveCars() {
+    public void moveCars(MoveStrategy moveStrategy) {
         for (RacingCar car : cars) {
-            car.moveForward(moveStrategy);
+            if (moveStrategy.isMovable()) {
+                car.moveForward(moveStrategy);
+            }
         }
     }
 

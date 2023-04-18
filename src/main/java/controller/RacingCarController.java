@@ -12,11 +12,11 @@ public class RacingCarController {
         String[] createCarNames = InputView.inputCarNames();
         int tryCount = InputView.inputTryCount();
 
-        RacingCarGame racingCarGame = new RacingCarGame(new RacingCarList(createCarNames, new RandomMoveStrategy()));
+        RacingCarGame racingCarGame = new RacingCarGame(new RacingCarList(createCarNames));
 
         System.out.println("실행 결과");
         for (int i = 0; i < tryCount; i++) {
-            RacingCarList cars = racingCarGame.playAndReturnCars();
+            RacingCarList cars = racingCarGame.playAndReturnCars(new RandomMoveStrategy());
             OutputView.printCarsNameAndPositionStatus(cars.getCars());
         }
 

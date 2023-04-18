@@ -13,13 +13,13 @@ public class RacingCarGame {
         return this.cars;
     }
 
-    public RacingCarList playAndReturnCars() {
-        moveCars();
+    public RacingCarList playAndReturnCars(MoveStrategy moveStrategy) {
+        moveCars(moveStrategy);
         return this.getRacingCarList();
     }
 
-    public void moveCars() {
-        this.cars.moveCars();
+    public void moveCars(MoveStrategy moveStrategy) {
+        this.cars.moveCars(moveStrategy);
     }
 
     public List<RacingCar> getWinners() {

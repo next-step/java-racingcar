@@ -2,7 +2,6 @@ import domain.MoveStrategy;
 import domain.RacingCar;
 import domain.RacingCarGame;
 import domain.RacingCarList;
-import domain.strategy.RandomMoveStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import util.RandomNumberGenerator;
@@ -58,7 +57,7 @@ public class RacingCarTest {
     @DisplayName("우승자를 찾을 수 있다.")
     void getWinnersTest() {
         String[] names = {"apple", "banana", "lemon"};
-        RacingCarGame racingCarGame = new RacingCarGame(new RacingCarList(names, new RandomMoveStrategy()));
+        RacingCarGame racingCarGame = new RacingCarGame(new RacingCarList(names));
         String findWinnerCarName = "apple";
         MoveStrategy goMoveStrategy = () -> true;
 
