@@ -1,24 +1,26 @@
 package racing;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static racing.ResultView.*;
+import static racing.ResultView.printWinners;
 
 public class Main {
     public static void main(String[] args) {
 
-        InputView inputView = new InputView();
-        inputView.userInput();
+        InputView inputView = InputView.getInstance();
+        String[] carsName = (inputView.inputCarName()).split(",");
+        int tryCount = inputView.inputTryCount();
 
-        Car car = new Car();
-        List<Car> carList = new ArrayList<>();
-        for (int i = 0; i < inputView.inputCarCount; i++) {
-            car.addCar(carList);
+        Cars cars = new Cars(carsName);
+        List<Car> carList = cars.getCars();
+
+        for (int i = 0; i < tryCount; i++) {
+            cars.moveCarList(carList);
         }
 
-        for (int i = 0; i < inputView.tryCarCount; i++) {
-            resultCars(carList);
-        }
+        List<Car> winners = cars.findWinners(carList);
+        printWinners(winners);
+
+
     }
 }

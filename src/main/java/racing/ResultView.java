@@ -1,22 +1,16 @@
 package racing;
 
 import java.util.List;
-import java.util.Random;
+import java.util.stream.Collectors;
 
 public class ResultView {
 
-    private static final Random RANDOM = new Random();
+    public static void printWinners(List<Car> carList){
+        String collect = carList.stream()
+                .map(x -> x.getName())
+                .collect(Collectors.joining(","));
+        System.out.println(collect + "가 최종 우승했습니다.");
 
-    public static void resultCars(List<Car> carList){
-
-        for (Car car : carList) {
-            car.move(randomNumber());
-            car.printLocation();
-        }
-    }
-
-    private static int randomNumber(){
-        return RANDOM.nextInt(10);
     }
 
 }

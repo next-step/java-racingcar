@@ -1,24 +1,43 @@
 package racing;
 
-import java.util.List;
-
 public class Car {
-    private int location = 0;
-    public Car() {
+    private static int ZERO = 0;
 
+    private String name;
+    private String movingPositionCursor = "";
+    private int position;
+
+    public Car(String name){
+        validateNameUnderFive(name);
+        this.position = ZERO;
+        this.name = name;
     }
-    public void addCar(List<Car> carList) {
-        carList.add(new Car());
+
+    public Car(String name, Integer position){
+        this.position = position;
+        this.name = name;
     }
-    public void move(int randomNumber) {
-        if(randomNumber >= 4){
-            this.location += 1;
+
+    private void validateNameUnderFive(String name) {
+        if(name.length() > 5){
+            throw new IllegalArgumentException("자동차 이름은 다섯자리 이하만 가능합니다");
         }
     }
-    public void printLocation() {
-        for (int i = 0; i < this.location; i++) {
-            System.out.print("-");
-        }
-        System.out.println();
+
+    public void move(){
+        this.position++;
+        this.movingPositionCursor += "-";
+    }
+
+    public int getPosition(){
+        return this.position;
+    }
+    public String getName(){
+        return this.name;
+    }
+
+    @Override
+    public String toString() {
+        return name + ':' + movingPositionCursor;
     }
 }
