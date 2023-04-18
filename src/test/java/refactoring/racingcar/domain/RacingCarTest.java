@@ -20,13 +20,13 @@ public class RacingCarTest {
     void 자동차가_전진하면_위치가_1증가한다() {
         RacingCar racingCar = new RacingCar(new AlwaysMoveStrategy(), "abcd");
         racingCar.move();
-        assertThat(racingCar.getPosition()).isEqualTo(new Position(1));
+        assertThat(racingCar.getPosition()).isEqualTo(new CarPosition(1));
     }
 
     @Test
     void 자동차가_멈추면_위치가_증가하지_않는다() {
         RacingCar racingCar = new RacingCar(new AlwaysStopStrategy(), "abcd");
         assertThat(racingCar.getPosition())
-            .isEqualTo(new Position(0));
+            .isEqualTo(new CarPosition(0));
     }
 }

@@ -4,13 +4,13 @@ import refactoring.racingcar.strategy.MoveStrategy;
 
 public class RacingCar implements Comparable<RacingCar> {
     private final MoveStrategy moveStrategy;
-    private final Name name;
-    private Position position;
+    private final CarName name;
+    private CarPosition position;
 
     public RacingCar(MoveStrategy moveStrategy, String name) {
         this.moveStrategy = moveStrategy;
-        this.name = new Name(name);
-        this.position = new Position(0);
+        this.name = new CarName(name);
+        this.position = new CarPosition(0);
     }
 
     public void move() {
@@ -19,11 +19,11 @@ public class RacingCar implements Comparable<RacingCar> {
         }
     }
 
-    public Name getName() {
+    public CarName getName() {
         return name;
     }
 
-    public Position getPosition() {
+    public CarPosition getPosition() {
         return position;
     }
 

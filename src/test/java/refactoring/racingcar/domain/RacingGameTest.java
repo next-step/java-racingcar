@@ -23,7 +23,7 @@ public class RacingGameTest {
         for (RacingCar racingCar : racingCars) {
             assertThat(racingCar.getPosition())
                 .withFailMessage(racingCars.indexOf(racingCar) + "번 인덱스에서 에러 발생")
-                .isEqualTo(new Position(1));
+                .isEqualTo(new CarPosition(1));
         }
     }
 
@@ -39,7 +39,7 @@ public class RacingGameTest {
         for (RacingCar racingCar : racingCars) {
             assertThat(racingCar.getPosition())
                 .withFailMessage(racingCars.indexOf(racingCar) + "번 인덱스에서 에러 발생")
-                .isEqualTo(new Position(0));
+                .isEqualTo(new CarPosition(0));
         }
     }
 }

@@ -2,18 +2,18 @@ package refactoring.racingcar.domain;
 
 import java.util.Objects;
 
-public class Position implements Comparable<Position> {
+public class CarPosition implements Comparable<CarPosition> {
     private final int value;
 
-    public Position(int value) {
+    public CarPosition(int value) {
         if (value < 0 || value > 9) {
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
         this.value = value;
     }
 
-    public Position plus() {
-        return new Position(value + 1);
+    public CarPosition plus() {
+        return new CarPosition(value + 1);
     }
 
     public int getValue() {
@@ -21,7 +21,7 @@ public class Position implements Comparable<Position> {
     }
 
     @Override
-    public int compareTo(Position o) {
+    public int compareTo(CarPosition o) {
         return Integer.compare(value, o.value);
     }
 
@@ -29,7 +29,7 @@ public class Position implements Comparable<Position> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Position position = (Position) o;
+        CarPosition position = (CarPosition) o;
         return value == position.value;
     }
 

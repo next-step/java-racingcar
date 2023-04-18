@@ -1,6 +1,7 @@
 package refactoring.racingcar.view;
 
 import refactoring.racingcar.domain.RacingCar;
+import refactoring.racingcar.domain.RacingCars;
 
 import java.util.List;
 
