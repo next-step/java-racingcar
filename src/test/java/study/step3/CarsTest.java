@@ -24,7 +24,7 @@ public class CarsTest {
   @CsvSource(value = {"1,1", "2,2", "3,3"})
   public void addCarsTest(int carCnt, int expected) {
     cars.addCars(carCnt);
-    assertThat(cars.findTotalCarsCount()).isEqualTo(expected);
+    assertThat(cars.getTotalCarsCount()).isEqualTo(expected);
   }
 
   @DisplayName("차량 모두 움직이는 지 태스트")
@@ -33,7 +33,7 @@ public class CarsTest {
     cars.addCars(5);
     cars.moveAll();
     for (Car car : cars) {
-      assertThat(car.findTotalDistance()).isLessThanOrEqualTo(1);
+      assertThat(car.getTotalDistance()).isLessThanOrEqualTo(1);
     }
   }
 }

@@ -22,7 +22,7 @@ public class CarTest {
   @CsvSource(value = {"1,0", "2,0", "3,0"})
   public void notMoveTest(int randomValue, int expected) {
     car.move(randomValue);
-    assertThat(car.findTotalDistance()).isEqualTo(expected);
+    assertThat(car.getTotalDistance()).isEqualTo(expected);
   }
 
   @DisplayName("차량  움직이는 지 태스트")
@@ -30,6 +30,6 @@ public class CarTest {
   @CsvSource(value = {"4,1", "5,1", "6,1", "7,1", "8,1", "9,1"})
   public void moveTest(int randomValue, int expected) {
     car.move(randomValue);
-    assertThat(car.findTotalDistance()).isEqualTo(expected);
+    assertThat(car.getTotalDistance()).isEqualTo(expected);
   }
 }

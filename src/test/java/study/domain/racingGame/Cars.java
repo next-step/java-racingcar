@@ -21,7 +21,7 @@ public class Cars implements Iterable<Car> {
     }
   }
 
-  public int findTotalCarsCount() {
+  public int getTotalCarsCount() {
     return this.carList.size();
   }
 

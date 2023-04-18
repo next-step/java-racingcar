@@ -21,7 +21,7 @@ public class Car {
     this.distance++;
   }
 
-  public int findTotalDistance() {
+  public int getTotalDistance() {
     return this.distance;
   }
 }

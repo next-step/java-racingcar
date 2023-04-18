@@ -17,11 +17,11 @@ public class RacingGame {
   }
 
   public boolean isReady() {
-    return gameCnt > 0 || cars.findTotalCarsCount() > 0;
+    return gameCnt > 0 || cars.getTotalCarsCount() > 0;
   }
 
   public boolean isFinish() {
-    return gameCnt <= 0 && cars.findTotalCarsCount() > 0;
+    return gameCnt <= 0 && cars.getTotalCarsCount() > 0;
   }
 
 
@@ -36,7 +36,7 @@ public class RacingGame {
 
   public void printCarsDistance(GameScreen screen) {
     this.cars.forEach(car ->
-        screen.print(convertCarDistanceToDash(car.findTotalDistance())));
+        screen.print(convertCarDistanceToDash(car.getTotalDistance())));
     screen.print("");
   }
 
