@@ -1,4 +1,4 @@
-package entity;
+import entity.NumberGenerator;
 
 public class MovableNumberGenerator implements NumberGenerator {
 

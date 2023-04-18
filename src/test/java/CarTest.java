@@ -1,5 +1,3 @@
-import entity.MovableNumberGenerator;
-import entity.NonMovableNumberGenerator;
 import entity.car.Car;
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +8,7 @@ class CarTest {
     void moveCar() {
 
         Car moveCar = new Car("move");
-        Car notMoveCar = new Car("nomove");
+        Car notMoveCar = new Car("non");
 
         moveCar.moveCar(new MovableNumberGenerator());
         notMoveCar.moveCar(new NonMovableNumberGenerator());

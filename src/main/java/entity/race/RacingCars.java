@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 
 public class RacingCars {
 
-    private static final int MAX_CAR_NAME_LENGTH = 5;
+    private static final String CAR_NAME_SPLIT_DELIMITER = ",";
     private final List<Car> cars;
 
     private RacingCars(List<Car> racingCars) {
@@ -19,7 +19,7 @@ public class RacingCars {
         validateNumberOfCar(numberOfCar);
         validateCarNames(numberOfCar, carNames);
 
-        String[] carName = carNames.split(",");
+        String[] carName = carNames.split(CAR_NAME_SPLIT_DELIMITER);
         List<Car> cars = IntStream.range(0, numberOfCar)
                 .mapToObj(i -> new Car(carName[i % carName.length]))
                 .collect(Collectors.toList());
@@ -29,12 +29,12 @@ public class RacingCars {
 
     public List<String> getHeadOfRace() {
 
-        Comparator<Car> comparatorByAge = Comparator.comparingInt(Car::getPositionValue);
-
-        Car max = cars.stream().max(comparatorByAge).orElse(null);
+        Car leadingCar = cars.stream()
+                .max(Comparator.naturalOrder())
+                .orElseThrow(IllegalAccessError::new);
 
         List<String> names = cars.stream()
-                .filter(car -> car.getPositionValue() == max.getPositionValue())
+                .filter(car -> car.getPositionValue() == leadingCar.getPositionValue())
                 .map(Car::getNameValue)
                 .collect(Collectors.toList());
 
@@ -49,30 +49,20 @@ public class RacingCars {
 
     private static void validateCarNames(int numberOfCar, String carNames) {
         checkNullOrBlank(carNames);
-        checkSameCountOfCars(numberOfCar, carNames);
-        checkDuplicateName(carNames);
-        checkLengthOfCarName(carNames);
-
+        String[] carName = carNames.split(CAR_NAME_SPLIT_DELIMITER);
+        checkSameCountOfCars(numberOfCar, carName);
+        checkDuplicateName(carName);
     }
 
-    private static void checkLengthOfCarName(String carNames) {
-        String[] carName = carNames.split(",");
-        Arrays.stream(carName).forEach(str -> {
-            if (str.length() > MAX_CAR_NAME_LENGTH)
-                throw new IllegalArgumentException("차량 이름은 5글자를 초과 할 수 없습니다.");
-        });
-    }
-
-    private static void checkDuplicateName(String carNames) {
-        String[] carName = carNames.split(",");
-        Set<String> set = new HashSet<>(Arrays.asList(carName));
-        if (set.size() != carName.length) {
+    private static void checkDuplicateName(String[] carNames) {
+        Set<String> set = new HashSet<>(Arrays.asList(carNames));
+        if (set.size() != carNames.length) {
             throw new IllegalArgumentException("차량 이름이 중복 됩니다.");
         }
     }
 
-    private static void checkSameCountOfCars(int numberOfCar, String carNames) {
-        int countOfName = carNames.split(",").length;
+    private static void checkSameCountOfCars(int numberOfCar, String[] carNames) {
+        int countOfName = carNames.length;
         if (numberOfCar != countOfName) {
             throw new IllegalArgumentException("입력된 이름과 차량 갯수가 맞지 않습니다.");
         }
