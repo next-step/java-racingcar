@@ -5,7 +5,7 @@ import java.util.List;
 public class ResultView {
     public static void printResultList(List<Vehicle> list, String mark) {
         for (Vehicle t : list) {
-            System.out.println(t.printDistance(mark));
+            System.out.println(t.getName() + " : " + t.printDistance(mark));
         }
         System.out.println();
     }

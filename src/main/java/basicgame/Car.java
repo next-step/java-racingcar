@@ -37,4 +37,9 @@ public class Car implements Vehicle {
         }
         return stringBuffer.toString();
     }
+
+    @Override
+    public String getName(){
+        return this.name;
+    }
 }
