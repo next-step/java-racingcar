@@ -24,7 +24,7 @@ public class RacingGame {
             car.move(RandomNumberGenerator.randomNumber());
             ResultView.gameResultView(car.getLocation());
         }
-        System.out.println("");
+        System.out.println();
     }
 
 }

@@ -1,12 +1,13 @@
 package step3;
+
 import java.util.Random;
 
 public class RandomNumberGenerator {
-    public static final int RANDOM_NUMBER_STANDARD = 10;
+    private static final int RANDOM_NUMBER_STANDARD = 10;
+    private static final Random DEFAULT_RANDOM = new Random();
 
     public static int randomNumber() {
-        Random random = new Random();
-        return random.nextInt(RANDOM_NUMBER_STANDARD);
+        return DEFAULT_RANDOM.nextInt(RANDOM_NUMBER_STANDARD);
     }
 
 }

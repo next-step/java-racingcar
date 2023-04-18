@@ -6,7 +6,7 @@ public class Car {
 
     public int move(int numberValue) {
         if (numberValue >= MOVE_STANDARD) {
-            return location + 1;
+            return ++location;
         }
         return location;
     }

@@ -7,7 +7,7 @@ public class ResultView {
         for (int i = 0; i < currentLocation; i++) {
             System.out.print(LOCATION_VIEW);
         }
-        System.out.println("");
+        System.out.println();
     }
 
 }
