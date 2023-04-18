@@ -12,58 +12,55 @@ import java.util.Scanner;
 
 public class RacingCar {
 
-    int carNumber;
     int count;
     ArrayList<Car> cars = new ArrayList<Car>();
+    static Input input = new Input();
+    Output output = new Output();
 
     public static void start() {
-
-        Input input = new Input();
         RacingCar racingCar = new RacingCar();
-        racingCar.carNumber = input.InputCarNumber();
+        racingCar.addCar(input.splitCarName(","));
         racingCar.count = input.InputTryCount();
-        racingCar.addCar();
         racingCar.result();
-
-
     }
 
-    private void addCar() {
-
-        for (int i = 0; i < carNumber; i++)
-            cars.add(new Car("-", 4));
-
+    private void addCar(String[] carName) {
+        for (int i = 0; i < carName.length; i++)
+            cars.add(new Car(1, carName[i]));
     }
 
     private void result() {
-
-        Output output = new Output();
         output.Output();
 
         for (int i = 0; i < count; i++) {
             moveCar();
             showLoaction();
-            System.out.println("");
+            output.printSpace();
         }
     }
 
     private void moveCar() {
-
         for (Car car : cars)
-            car.move(getRandomNumber(10));
+            if (checkCarMove(4, getRandomNumber(10))) car.setLocation(car.getLocation() + 1);
+
     }
 
     private void showLoaction() {
         for (Car car : cars)
-            System.out.println(car.location());
+            output.location(car.getName(), car.getLocation());
     }
 
     private static int getRandomNumber(int num) {
-
         Random random = new Random();
         int result = random.nextInt(num);
 
         return result;
+    }
+
+    private static boolean checkCarMove(int minNum, int randomNum) {
+        if (randomNum >= minNum) return true;
+
+        return false;
     }
 
 }

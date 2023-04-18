@@ -2,23 +2,24 @@ package RacingCar;
 
 public class Car {
 
-    private String location;
-    private final int minNumber;
+    private  int location;
+    private  String name;
 
-    public Car(String location, int minNumber) {
+    public Car(int location,String name) {
         this.location = location;
-        this.minNumber = minNumber;
+        this.name = name;
     }
 
-    public String location() {
+    public int getLocation() {
         return location;
     }
 
-    public String move(int num) {
-
-        if (num >= minNumber)
-            location += "-";
-
-        return "";
+    public String getName() {
+        return name;
     }
+
+    public void setLocation(int location){
+        this.location = location;
+    }
+
 }

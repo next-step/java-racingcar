@@ -8,11 +8,11 @@ public class Input {
     static InputView inputView = new InputView();
     static Scanner scanner = new Scanner(System.in);
 
-    public int InputCarNumber() {
+    public String[] splitCarName(String input) {
 
-        inputView.howManyCar();
+        inputView.whatCarsName();
 
-        return scanner.nextInt();
+        return scanner.next().split(input);
     }
 
     public int InputTryCount() {
