@@ -1,3 +1,5 @@
+import java.util.regex.Pattern;
+
 public class StringCalculator {
 
     public int sum(String input) {
@@ -26,9 +28,19 @@ public class StringCalculator {
         final int[] parsedNumbers = new int[inputComponents.length];
 
         for (int i = 0; i < inputComponents.length; i++) {
+            validateNumber(inputComponents[i]);
             parsedNumbers[i] = Integer.parseInt(inputComponents[i]);
         }
         return parsedNumbers;
+    }
+
+    private void validateNumber(String input) {
+        final String REGEX = "[0-9]+";
+        final int number = Integer.parseInt(input);
+
+        if (!input.matches(REGEX) || number < 0) {
+            throw new RuntimeException();
+        }
     }
 
     public String[] split(String input) {

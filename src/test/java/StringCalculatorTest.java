@@ -1,8 +1,25 @@
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class StringCalculatorTest {
+
+    @Test
+    @DisplayName("음수를 전달하면 RuntimeException 이 발생한다.")
+    void 음수를_전달() {
+        String input = "-1;2;3";
+
+        assertThrows(RuntimeException.class, () -> new StringCalculator().sum(input));
+    }
+
+    @Test
+    @DisplayName("숫자 이외의 값을 전달하면 RuntimeException 이 발생한다.")
+    void 숫자_이외의_값을_전달() {
+        String input = "1;2;$;(";
+
+        assertThrows(RuntimeException.class, () -> new StringCalculator().sum(input));
+    }
 
     @Test
     void 커스텀_구분자가_포함된_문자열_합_반환() {
