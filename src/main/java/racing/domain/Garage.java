@@ -1,5 +1,6 @@
 package racing.domain;
 
+import racing.util.InputValidator;
 import racing.util.StringUtil;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ public class Garage {
         String[] names = StringUtil.split(nameInput);
 
         for (String name : names) {
-            Car car = new Car(name);
+            Car car = new Car(InputValidator.validateCarName(name));
             cars.add(car);
         }
 
