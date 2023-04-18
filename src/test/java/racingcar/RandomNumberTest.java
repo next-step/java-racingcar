@@ -2,7 +2,7 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.RandomNumber;
+import racingcar.utility.RandomNumber;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
