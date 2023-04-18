@@ -1,9 +1,10 @@
 package racingcar;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -23,6 +24,18 @@ public class CarsTest {
         for (int i = 0; i < playNumber; i++) {
             cars.moveAll();
         }
-        assertThat(cars.distanceDriven()).isNotEmpty();
+
+        for (int i = 0; i < cars.size(); i++) {
+            List<Car> carList = cars.list();
+            carList.forEach(car -> assertThat(result(car.distanceDriven())).isNotEmpty());
+        }
+    }
+
+    private String result(int distanceDriven) {
+        String result = "";
+        for (int i = 0; i < distanceDriven; i++) {
+            result += "-";
+        }
+        return result;
     }
 }

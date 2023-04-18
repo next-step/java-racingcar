@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.Random;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
@@ -20,17 +22,12 @@ public class CarTest {
     @ParameterizedTest(name = "랜덤값 0 ~ 9을 받아서 4이상의 값일 때 true, 아닐때 false")
     @ValueSource(ints = {1, 4, 5, 9})
     void isMoveForward_checkMoveForward(int number) {
+        car.move(number);
         if (number >= 4) {
-            assertThat(car.isMoveForward(number)).isTrue();
+            assertThat(car.distanceDriven()).isGreaterThan(0);
             return;
         }
-        assertThat(car.isMoveForward(number)).isFalse();
+        assertThat(car.distanceDriven()).isEqualTo(0);
     }
 
-    @Test
-    @DisplayName("자동차가 주행한 거리 출력")
-    void distanceDriven_printDistanceDriven() {
-        car.move();
-        assertThat(car.distanceDriven()).isNotEmpty();
-    }
 }

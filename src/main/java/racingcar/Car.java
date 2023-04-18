@@ -1,26 +1,16 @@
 package racingcar;
 
-import java.util.Random;
-
 public class Car {
-    private final int SEED = 10;
-    private String distance = "";
+    private int distance = 0;
 
-    public void move() {
-        if (randomNumber() >= 4) {
-            distance += "-";
+    public void move(int number) {
+        if (number >= 4) {
+            distance++;
         }
     }
 
-    public String distanceDriven() {
+    public int distanceDriven() {
         return distance;
     }
 
-    public boolean isMoveForward(int number) {
-        return number >= 4;
-    }
-
-    private int randomNumber() {
-        return new Random().nextInt(SEED);
-    }
 }

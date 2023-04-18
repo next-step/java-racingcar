@@ -1,8 +1,8 @@
 package racingcar;
 
 public class RacingGame {
-    private final Screen screen = new Screen();
     private final InputView inputView = new InputView();
+    private final ResultView resultView = new ResultView();
 
     private Cars cars;
     private int playCount;
@@ -30,10 +30,9 @@ public class RacingGame {
     }
 
     private void playGame() {
-        screen.print("실행 결과");
         for (int i = 0; i < playCount; i++) {
             cars.moveAll();
-            screen.print(cars.distanceDriven());
         }
+        resultView.result(cars.list());
     }
 }

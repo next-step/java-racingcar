@@ -2,27 +2,22 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Cars {
 
     private final List<Car> cars;
+    private final Random randomNumber = new Random();
 
     public Cars(int number) {
-        this.cars = new ArrayList<>();
+        cars = new ArrayList<>();
         addCar(number);
     }
 
     public void moveAll() {
-        cars.forEach(Car::move);
-    }
-
-    public String distanceDriven() {
-        StringBuilder result = new StringBuilder();
-        for (Car car : cars) {
-            result.append(car.distanceDriven());
-            result.append("\n");
-        }
-        return result.toString();
+        cars.forEach(car -> {
+            car.move(randomNumber.nextInt(10));
+        });
     }
 
     public int size() {
@@ -33,5 +28,9 @@ public class Cars {
         for (int i = 0; i < number; i++) {
             cars.add(new Car());
         }
+    }
+
+    public List<Car> list() {
+        return cars;
     }
 }
