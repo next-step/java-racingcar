@@ -8,4 +8,8 @@ public class StringUtil {
         return textInput.split(DEFAULT_DELIMITER);
     }
 
+    public static String join(String[] textInput) {
+        return String.join(DEFAULT_DELIMITER + " ", textInput);
+    }
+
 }
