@@ -1,5 +1,3 @@
-import java.util.regex.Pattern;
-
 public class StringCalculator {
 
     public int sum(String input) {

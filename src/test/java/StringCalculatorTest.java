@@ -6,6 +6,16 @@ import static org.junit.jupiter.api.Assertions.*;
 public class StringCalculatorTest {
 
     @Test
+    void 숫자_하나를_전달하는_경우() {
+        String input = "1";
+
+        final StringCalculator calculator = new StringCalculator();
+        final int actual = calculator.sum(input);
+
+        assertEquals(1, actual);
+    }
+
+    @Test
     @DisplayName("음수를 전달하면 RuntimeException 이 발생한다.")
     void 음수를_전달() {
         String input = "-1;2;3";
