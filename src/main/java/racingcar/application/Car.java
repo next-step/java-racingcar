@@ -1,10 +1,14 @@
 package racingcar.application;
 
+import java.util.stream.IntStream;
+import racingcar.dto.CarName;
+import racingcar.dto.CarNames;
+
 public class Car {
   private int location = 1;
-  private final String name;
+  private final CarName name;
 
-  public Car(String name) {
+  public Car(CarName name) {
     this.name = name;
   }
 
@@ -12,7 +16,15 @@ public class Car {
     location += moveStrategy.move();
   }
 
-  public int location() {
-    return this.location;
+  public String location() {
+    return this.name.toString() + " : " + progress();
+  }
+
+  private String progress() {
+    StringBuilder stringBuilder = new StringBuilder();
+    IntStream.rangeClosed(1, location)
+        .forEach(num -> stringBuilder.append("-"));
+
+    return stringBuilder.toString();
   }
 }

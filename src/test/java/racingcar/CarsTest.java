@@ -2,6 +2,7 @@ package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.application.Cars;
@@ -27,16 +28,18 @@ public class CarsTest {
   @DisplayName("자동차 전진시 위치 값이 달라진다")
   void carsLocationValuesTest() {
     // given
-    final CarNames carNames = new CarNames("pobi,crong,honux");
+    final CarNames carNames = new CarNames("pobi");
     final int PROGRESS_NUMBER = 4;
 
     Cars cars = new Cars(new RandomMoveStrategy(() -> PROGRESS_NUMBER), carNames);
-    assertThat(cars.locationValues()).containsExactly(1, 1, 1);
+    assertThat(cars.locationValues())
+        .isEqualTo(List.of("pobi : -"));
 
     // when
     cars.go();
 
     // then
-    assertThat(cars.locationValues()).containsExactly(2, 2, 2);
+    assertThat(cars.locationValues())
+        .isEqualTo(List.of("pobi : --"));
   }
 }

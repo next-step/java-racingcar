@@ -1,6 +1,7 @@
 package racingcar.ui;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class ResultView {
@@ -13,11 +14,12 @@ public class ResultView {
     Printer.println(RESULT_MESSAGE);
   }
 
-  public void printLocations(List<Integer> locationValues) {
-    locationValues.stream()
-        .map(value -> HYPHEN.repeat(value))
-        .forEach(stringValue -> Printer.println(stringValue));
+  public void printLocations(List<String> locationValues) {
+    StringBuilder sb = new StringBuilder();
+    for (String value : locationValues) {
+      sb.append(value).append("\n");
+    }
 
-    Printer.println(EMPTY);
+    Printer.println(sb.toString());
   }
 }

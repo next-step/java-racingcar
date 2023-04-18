@@ -25,7 +25,7 @@ public class Cars {
     cars.forEach(car -> car.go(moveStrategy));
   }
 
-  public List<Integer> locationValues() {
+  public List<String> locationValues() {
     return cars.stream().map(car -> car.location())
         .collect(Collectors.toList());
   }
@@ -34,7 +34,7 @@ public class Cars {
     List<Car> cars = new ArrayList<>();
 
     carNames.carNames()
-            .forEach((name) -> cars.add(new Car(name.toString())));
+            .forEach((name) -> cars.add(new Car(name)));
 
     return Collections.unmodifiableList(cars);
   }
