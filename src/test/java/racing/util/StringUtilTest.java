@@ -26,4 +26,11 @@ public class StringUtilTest {
         String[] testData = {"name1", "name2"};
         assertThat(StringUtil.join(testData)).isEqualTo("name1, name2");
     }
+
+    @DisplayName("4단계 - 자동차 경주(우승자) - 리스트의 원소가 하나인 문자열을 쉼표(',') 를 기준으로 합치면 입력 문자열 그대로 반환하는지 확인")
+    @Test
+    void join_single_value_by_comma() {
+        String[] testData = {"name1"};
+        assertThat(StringUtil.join(testData)).isEqualTo("name1");
+    }
 }
