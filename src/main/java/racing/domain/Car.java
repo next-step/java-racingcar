@@ -12,7 +12,7 @@ public class Car {
         return new Car(this.location);
     }
 
-    public int getLocation() {
+    public int location() {
         return this.location;
     }
 }
