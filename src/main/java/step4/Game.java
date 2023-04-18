@@ -17,12 +17,9 @@ public class Game {
         InputView inputView = new InputView();
         ResultView resultView = new ResultView();
         InputData inputData = inputView.inputData();
-        RecordGroup recordGroup;
-        CarRacing cr = new CarRacing(inputData.getPlayers(), inputData.getNumTry());
-        List<List<Record>> results = cr.carRacing(cr.createCarList(), randomMoveStrategy);
-        System.out.println();
-        recordGroup = new RecordGroup(results);
-        resultView.printDistanceOfPlayers(results);
+        CarRacing game = new CarRacing(inputData.getPlayers(), inputData.getNumTry());
+        RecordGroup recordGroup = new RecordGroup(game.carRacing(game.createCarList(), randomMoveStrategy));
+        resultView.printDistanceOfPlayers(recordGroup.getAllRecords());
         resultView.printFinalWinner(recordGroup);
     }
 }

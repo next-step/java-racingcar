@@ -8,11 +8,7 @@ public class RandomMoveStrategy implements MoveStrategy {
 
     @Override
     public boolean isMovable() {
-        return randomGenerator() >= MOVE_CONDITION;
+        return ThreadLocalRandom.current().nextInt(RANDOM_NUMBER) >= MOVE_CONDITION;
     }
 
-    @Override
-    public int randomGenerator() {
-        return ThreadLocalRandom.current().nextInt(RANDOM_NUMBER);
-    }
 }
