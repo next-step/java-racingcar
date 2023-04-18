@@ -1,4 +1,4 @@
-package study.step2;
+package study.calculator;
 import org.junit.jupiter.api.Test;
 import study.caculator.StringAddCalculator;
 

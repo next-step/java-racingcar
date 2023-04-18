@@ -1,9 +1,7 @@
-package study.step3;
+package study.carrace;
 
 import java.util.Random;
 import org.junit.jupiter.api.Test;
-import study.caculator.CarRace;
-import study.caculator.CarRaceImpl;
 import study.input.Input;
 
 import static org.assertj.core.api.Assertions.assertThat;

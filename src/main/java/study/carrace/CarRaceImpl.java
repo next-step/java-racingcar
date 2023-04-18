@@ -1,9 +1,6 @@
 package study.carrace;
 
 import study.input.Input;
-import study.race.Race;
-import study.race.RaceGame;
-import study.race.RaceGameImpl;
 
 public class CarRaceImpl implements CarRace {
 

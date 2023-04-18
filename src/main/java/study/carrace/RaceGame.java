@@ -1,4 +1,4 @@
-package study.race;
+package study.carrace;
 
 public interface RaceGame {
 
