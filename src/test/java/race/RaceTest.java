@@ -1,5 +1,6 @@
 package race;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -23,6 +24,15 @@ public class RaceTest {
                 .map(Car::getPosition)
                 .collect(Collectors.toList())
         ).isEqualTo(positions);
+    }
+
+    @Test
+    void 해당_시점의_고득점자를_알_수_있다() {
+        List<CarName> carNameList = List.of(new CarName("a"), new CarName("b"), new CarName("c"));
+        Cars cars = new Cars(carNameList, new TestHelper.AlwaysMoveStrategy());
+        cars.orderMove("b");
+        Race race = new Race(cars);
+        assertThat(race.winner().toArray()).containsExactly("b");
     }
 
     private static Stream<Arguments> oneLapTestStubs() {

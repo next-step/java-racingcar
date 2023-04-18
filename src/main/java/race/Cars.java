@@ -19,6 +19,12 @@ public class Cars {
         }
     }
 
+    public void orderMove(String carName) {
+        cars.stream()
+                .filter(it -> it.getCarName().equals(carName))
+                .forEach(Car::moveForward);
+    }
+
     public List<Car> getCarList() {
         return List.copyOf(cars);
     }

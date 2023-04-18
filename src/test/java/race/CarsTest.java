@@ -43,6 +43,20 @@ public class CarsTest {
         ).containsExactly("a", "b", "c");
     }
 
+    @Test
+    void 특정_이름의_자동차를_움직일_수_있다() {
+        List<CarName> carNameList = List.of(new CarName("a"), new CarName("b"), new CarName("c"));
+        Cars cars = new Cars(carNameList, new TestHelper.AlwaysMoveStrategy());
+        cars.orderMove("b");
+        assertThat(cars.getCarList()
+                .stream()
+                .filter(it -> it.getCarName().equals("b"))
+                .findAny()
+                .get()
+                .getPosition()
+        ).isEqualTo(1);
+    }
+
     private static Stream<Arguments> carsTestStubs() {
         return Stream.of(
                 Arguments.arguments(new TestHelper.AlwaysMoveStrategy(), List.of(2, 2, 2)),

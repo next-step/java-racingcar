@@ -17,5 +17,6 @@ public class Main {
         for (int i = 0; i < laps; i++) {
             ResultView.showCars(race.startLap());
         }
+        ResultView.showWinners(race.winner());
     }
 }
