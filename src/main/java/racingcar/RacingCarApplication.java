@@ -20,6 +20,7 @@ public class RacingCarApplication {
         int numberOfTrials = inputView.askTrialCount();
 
         ResultView resultView = new ResultView();
+
         resultView.printResultTitle();
 
         for (int i = 0; i < numberOfTrials; i++) {
@@ -27,9 +28,6 @@ public class RacingCarApplication {
             resultView.printRacingRound(racingCars.statusOfRacingCars());
         }
 
-
-        List<String> gameWinner = racing.makeWinnerList();
-
-        resultView.printGameWinner(gameWinner);
+        resultView.printGameWinner(racing.makeWinnerList());
     }
 }
