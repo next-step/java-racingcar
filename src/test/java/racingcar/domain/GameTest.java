@@ -3,10 +3,6 @@ package racingcar.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Game;
-import racingcar.domain.RandomNumberGenerator;
-import racingcar.dto.CarResult;
-import racingcar.dto.RoundResult;
 
 import java.util.List;
 import java.util.stream.Collectors;

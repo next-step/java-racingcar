@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import racingcar.dto.CarResult;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
