@@ -4,9 +4,16 @@ import racingCar.car.RacingCar;
 
 public class RacingCarMoveForward implements RacingCarMoveDirectionStrategy {
 
-    @Override
-    public RacingCarMoveDirection getDirection() {
-        return RacingCarMoveDirection.FORWARD;
+    private static final RacingCarMoveForward instance;
+
+    private RacingCarMoveForward() {}
+
+    static {
+        instance = new RacingCarMoveForward();
+    }
+
+    public static RacingCarMoveForward getInstance() {
+        return instance;
     }
 
     @Override

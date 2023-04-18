@@ -1,4 +1,4 @@
-package stepRacingCar;
+package racingCar;
 
 import java.util.Collections;
 import java.util.List;
@@ -8,18 +8,18 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingCar.RacingCarGame;
-import racingCar.car.move.RacingCarMoveDirectionStrategy;
-import racingCar.car.move.RacingCarMoveForward;
 import racingCar.exception.NotAllowedGameSettingException;
+import racingCar.random.BaseRandomMoveAckGenerator;
+import racingCar.random.RandomMoveAckGenerator;
 import racingCar.view.RacingCarGameResultView;
 
 public class RacingCarGameTest {
-  List<RacingCarMoveDirectionStrategy> allowedMoveStrategies;
+
+  private RandomMoveAckGenerator randomMoveAckGenerator;
 
   @BeforeEach
   void setup() {
-    allowedMoveStrategies = List.of(new RacingCarMoveForward());
+    randomMoveAckGenerator = new BaseRandomMoveAckGenerator();
   }
 
   @DisplayName("[RacingCarGame.class] 레이싱카 게임은 사용자가 입력한 숫자만큼 레이싱카가 설정된다.")
@@ -27,7 +27,7 @@ public class RacingCarGameTest {
 
     final List<String> 레이싱카_목록 = List.of("car1");
     // when
-    RacingCarGame racingCarGame = new RacingCarGame(레이싱카_목록, new RacingCarGameResultView(), allowedMoveStrategies);
+    RacingCarGame racingCarGame = new RacingCarGame(레이싱카_목록, new RacingCarGameResultView(), randomMoveAckGenerator);
 
     // then
     Assertions.assertThat(racingCarGame)
@@ -42,7 +42,7 @@ public class RacingCarGameTest {
   public void 레이싱카_게임은_매_이동마다_기록을_가지고_있음(int moveTryCnt) {
     // given
     final List<String> 레이싱카_목록 = List.of("car1");
-    RacingCarGame racingCarGame = new RacingCarGame(레이싱카_목록, new RacingCarGameResultView(), allowedMoveStrategies);
+    RacingCarGame racingCarGame = new RacingCarGame(레이싱카_목록, new RacingCarGameResultView(), randomMoveAckGenerator);
 
     // when
     racingCarGame.play(moveTryCnt);
@@ -61,7 +61,7 @@ public class RacingCarGameTest {
     final List<String> 레이싱카_목록 = Collections.emptyList();
 
     // when && then
-    Assertions.assertThatThrownBy(() -> new RacingCarGame(레이싱카_목록, new RacingCarGameResultView(), allowedMoveStrategies))
+    Assertions.assertThatThrownBy(() -> new RacingCarGame(레이싱카_목록, new RacingCarGameResultView(), randomMoveAckGenerator))
         .isInstanceOf(NotAllowedGameSettingException.class);
   }
 }

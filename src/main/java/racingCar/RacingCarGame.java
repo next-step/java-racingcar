@@ -3,24 +3,22 @@ package racingCar;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingCar.car.RacingCar;
-import racingCar.car.move.RacingCarMoveDirectionStrategy;
-import racingCar.car.move.RacingCarMoveServiceLocator;
 import racingCar.exception.NotAllowedGameSettingException;
+import racingCar.random.RandomMoveAckGenerator;
 import racingCar.view.RacingCarGameResultView;
 import util.CollectionUtils;
-import util.RandomUtils;
 
 public final class RacingCarGame {
 
   private final List<RacingCar> racingCars;
   private final RacingCarGameResultView resultView;
 
-  private final RacingCarMoveServiceLocator racingCarMoveServiceLocator;
+  private final RandomMoveAckGenerator randomMoveAckGenerator;
 
-  public RacingCarGame(List<String> carNames, RacingCarGameResultView resultView, List<RacingCarMoveDirectionStrategy> inGameSupportCarMoveDirections) {
-    this.racingCarMoveServiceLocator = new RacingCarMoveServiceLocator(inGameSupportCarMoveDirections);
-    this.racingCars = generateRacingCars(carNames);
+  public RacingCarGame(List<String> carNames, RacingCarGameResultView resultView, RandomMoveAckGenerator randomMoveAckGenerator) {
+    this.randomMoveAckGenerator = randomMoveAckGenerator;
     this.resultView = resultView;
+    this.racingCars = generateRacingCars(carNames);
   }
 
   private List<RacingCar> generateRacingCars(List<String> carNames) {
@@ -29,7 +27,7 @@ public final class RacingCarGame {
     }
 
     return carNames.stream()
-        .map(carName -> new RacingCar(carName, racingCarMoveServiceLocator))
+        .map(carName -> new RacingCar(carName, randomMoveAckGenerator))
         .collect(Collectors.toUnmodifiableList());
   }
 
@@ -50,7 +48,7 @@ public final class RacingCarGame {
   private List<RacingCar> getWinners() {
     final int maxPosition = getMaxPositionOfGame();
     return racingCars.stream()
-        .filter(racingCar -> racingCar.getPosition() == maxPosition)
+        .filter(position -> position.getPosition() == maxPosition)
         .collect(Collectors.toList());
   }
 
