@@ -4,11 +4,11 @@ public class CarRacingApplication {
     public static void main(String[] args) {
         InputView inputView = new InputView();
         int carCount = inputView.carCount();
-        inputView.tryCount();
-        System.out.println("\n");
+        int tryCount = inputView.tryCount();
 
         RacingGame racingGame = new RacingGame();
         racingGame.readyCar(carCount);
+        racingGame.playGame(tryCount);
     }
 
 }
