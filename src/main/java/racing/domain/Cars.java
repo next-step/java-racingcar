@@ -8,7 +8,6 @@ import java.util.List;
 public class Cars { // 일급컬렉션
     private List<Car> cars;
 
-    public Cars() {}
     public Cars(List<Car> cars) {
         this.cars = cars;
     }
@@ -20,6 +19,7 @@ public class Cars { // 일급컬렉션
     public int size() {
         return this.cars.size();
     }
+
     public Cars playOnceTurn() {
 
         List<Car> movedCars = new ArrayList<>();

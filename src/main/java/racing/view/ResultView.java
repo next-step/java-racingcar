@@ -10,6 +10,7 @@ public class ResultView {
     private static void println() {
         System.out.print("\n");
     }
+
     private static void printDash() {
         System.out.print("-");
     }
