@@ -17,11 +17,11 @@ public class RacingGame {
   }
 
   public boolean isReady() {
-    return gameCnt > 0 || cars.getTotalCarsCount() > 0;
+    return this.gameCnt > 0 || this.cars.getTotalCarsCount() > 0;
   }
 
   public boolean isFinish() {
-    return gameCnt <= 0 && cars.getTotalCarsCount() > 0;
+    return this.gameCnt <= 0 && this.cars.getTotalCarsCount() > 0;
   }
 
 
