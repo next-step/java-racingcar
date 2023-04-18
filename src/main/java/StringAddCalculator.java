@@ -6,9 +6,13 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class StringAddCalculator {
+    static Pattern specialSeperatorPattern = Pattern.compile("//(.)\n(.*)");
+    private static final Integer MIN_VALUE = 0;
+
     public static int splitAndSum(String text) {
-        if (text == null || text.isEmpty())
+        if (text == null || text.isEmpty()) {
             return 0;
+        }
         List<Integer> numbers = split(text);
         hasNegative(numbers);
         return sum(numbers);
@@ -18,21 +22,17 @@ public class StringAddCalculator {
         List<String> targetAndSeparators = getTargetAndSeparators(text);
         String target = targetAndSeparators.get(0);
         List<String> separators = targetAndSeparators.subList(1, targetAndSeparators.size());
-        System.out.println(Arrays.toString(target.split(String.join("|", separators))));
         return Arrays.stream(target.split(String.join("|", separators)))
-                .map(string -> Integer.parseInt(string))
+                .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
 
     private static List<String> getTargetAndSeparators(String text) {
-        List<String> targetAndSeparators;
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        Matcher m = specialSeperatorPattern.matcher(text);
         if (m.find()) {
-            targetAndSeparators = getTargetAndSeparatorsWithCustomSeparator(m);
-        } else {
-            targetAndSeparators = getTargetAndSeparatorsWithDefaultSeparator(text);
+            return getTargetAndSeparatorsWithCustomSeparator(m);
         }
-        return targetAndSeparators;
+        return getTargetAndSeparatorsWithDefaultSeparator(text);
     }
 
     private static List<String> getTargetAndSeparatorsWithCustomSeparator(Matcher m) {
@@ -54,7 +54,7 @@ public class StringAddCalculator {
 
     private static void hasNegative(List<Integer> numbers) {
         numbers.stream()
-            .filter(number -> number < 0)
+            .filter(number -> number < MIN_VALUE)
             .findAny().ifPresent(number -> {
                 throw new RuntimeException("Has negative number");
             });
@@ -62,7 +62,7 @@ public class StringAddCalculator {
 
     private static int sum(List<Integer> numbers) {
         return numbers.stream()
-                .reduce((total, number) -> total + number)
+                .reduce(Integer::sum)
                 .get();
     }
 }
