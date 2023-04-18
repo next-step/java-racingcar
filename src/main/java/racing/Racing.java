@@ -11,34 +11,33 @@ public class Racing {
 
     public static Racing input() {
         InputView inputView = InputView.create();
-        return new Racing(inputView.car_count,inputView.try_count);
+        return new Racing(inputView.car_names,inputView.try_count);
     }
 
-    public Racing(int inputCarCount, int inputTryCount) {
-        validatePositve(inputCarCount,inputTryCount);
-        makeCars(inputCarCount);
+    public Racing(String inputCarNames, int inputTryCount) {
+        validatePositve(inputTryCount);
+        makeCars(inputCarNames);
         this.try_count = inputTryCount;
     }
 
-    private void validatePositve(int inputCarCount, int inputTryCount) {
-        if(inputCarCount < 0 || inputTryCount < 0){
+    private void validatePositve(int inputTryCount) {
+        if (inputTryCount < 0) {
             throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
         }
     }
 
-    public void raceAndShowResult() {
+    public void raceAndShow() {
         ResultView.start();
         for (int i = 0; i < try_count; i++) {
             race();
             ResultView.showRace(cars);
         }
+        Winner winner = new Winner(cars);
+        ResultView.showWinner(winner.name);
     }
 
-    private void makeCars(int inputCarCount) {
-        cars = new Cars();
-        for (int i = 0; i < inputCarCount; i++) {
-            cars.add();
-        }
+    private void makeCars(String inputCarNames) {
+        cars = new Cars(inputCarNames);
     }
 
     private void race() {

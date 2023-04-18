@@ -12,6 +12,7 @@ public class ResultView {
     }
 
     private static void showOneCarMoveStatus(Car car) {
+        System.out.print(car.name+" : ");
         for (int j = 0; j < car.moveStatus; j++) {
             System.out.print("-");
         }
@@ -20,5 +21,9 @@ public class ResultView {
 
     public static void start() {
         System.out.println("\n실행 결과");
+    }
+
+    public static void showWinner(String winnerName) {
+        System.out.print(winnerName+"가 최종 우승했습니다.");
     }
 }
