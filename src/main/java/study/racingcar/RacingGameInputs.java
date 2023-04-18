@@ -4,7 +4,6 @@ import java.util.InputMismatchException;
 
 public class RacingGameInputs {
     private static final int ZERO = 0;
-    private static final int FIVE = 5;
     private static final String SPLIT_PATTERN = "[,]";
 
     private int numberOfGames;
@@ -27,26 +26,13 @@ public class RacingGameInputs {
 
     private String[] splitCarNameString(String carNameStr) {
 
-        String[] splitCarName = carNameStr.split(SPLIT_PATTERN);
-
-        for(String carName : splitCarName) {
-            isMoreThanFiveLength(carName);
-        }
-
-        return splitCarName;
+        return carNameStr.split(SPLIT_PATTERN);
     }
 
     private void isNegativeNumberAndZero(int number) {
 
-        if(number <= ZERO) {
+        if (number <= ZERO) {
             throw new InputMismatchException("게임 시작을 위한 세팅이 실패 하였습니다.");
-        }
-    }
-
-    private void isMoreThanFiveLength(String name) {
-
-        if(name.length() > FIVE) {
-            throw new InputMismatchException("자동차 이름이 5글자가 넘었습니다.");
         }
     }
 }

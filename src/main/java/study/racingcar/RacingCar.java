@@ -16,7 +16,7 @@ public class RacingCar {
 
             ResultView.startGame();
 
-            while (!game.isOver(numberOfGames)) {
+            while (!game.isOver()) {
                 game.moveCar();
                 game.nextLap();
             }

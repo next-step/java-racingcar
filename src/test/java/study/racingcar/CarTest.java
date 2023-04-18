@@ -1,15 +1,13 @@
 package study.racingcar;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.InputMismatchException;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
 
@@ -26,4 +24,14 @@ public class CarTest {
 
         assertThat(car.currentPosition()).isBetween(0, games);
     }
+
+    @DisplayName("자동차 이름은 5글자를 넘을 수 없다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"bbororo","jaewon","tester"})
+    public void Car_isMoreThanFiveLength(String name) {
+
+        assertThatThrownBy(() -> new Car(0, name, new CarMoveStrategy()))
+                .isInstanceOf(InputMismatchException.class);
+    }
+
 }

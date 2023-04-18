@@ -1,14 +1,21 @@
 package study.racingcar;
 
+import java.util.InputMismatchException;
+
 public class Car {
+    private static final int FIVE = 5;
     private String name;
     private int position;
     private MoveStrategy moveStrategy;
 
     public Car(int position, String name, MoveStrategy moveStrategy) {
+        if(isMoreThanFiveLength(name)){
+            this.name = name;
+        }
+
         this.position = position;
-        this.name = name;
         this.moveStrategy = moveStrategy;
+
     }
 
     public int currentPosition() {
@@ -31,4 +38,12 @@ public class Car {
         return this.position == maxPosition;
     }
 
+    private boolean isMoreThanFiveLength(String name) {
+
+        if(name.length() > FIVE) {
+            throw new InputMismatchException("자동차 이름이 5글자가 넘었습니다.");
+        }
+
+        return true;
+    }
 }

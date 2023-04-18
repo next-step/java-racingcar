@@ -1,19 +1,14 @@
 package study.racingcar;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import study.StringAddCalculator;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.InputMismatchException;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class InputTest {
 
@@ -57,24 +52,6 @@ public class InputTest {
         assertThat(racingGameInputs.getNameOfCars()).hasSize(3);
     }
 
-    @DisplayName("자동차 이름 문자열을 입력하고, ','를 기준으로 자동차 이름을 나누고 5글자 이상의 이름이 있으면 에외가 발생한다")
-    @ParameterizedTest
-    @ValueSource(strings = {"pobi,bbororo,honux"})
-    public void inputValue_splitCarNameString_실패(String input) {
-
-        assertThatThrownBy(() -> new RacingGameInputs(5, input))
-                .isInstanceOf(InputMismatchException.class);
-    }
-
-    @DisplayName("자동차 이름 문자열을 입력하고, 구분자가 ','가 아니면 분리하지 못하고 예외가 발생한다.")
-    @ParameterizedTest
-    @ValueSource(strings = {"pobi:bbororo:honux"})
-    public void inputValue_splitCarNameString_분리실패(String input) {
-
-        assertThatThrownBy(() -> new RacingGameInputs(5, input))
-                .isInstanceOf(InputMismatchException.class);
-    }
-
     @DisplayName("0이하의 수는 예외가 발생한다.")
     @ParameterizedTest
     @ValueSource(ints = {0, -3, -1})
@@ -83,17 +60,6 @@ public class InputTest {
         String carNameStr = "pobbi,crong,hounx";
 
         assertThatThrownBy(() -> new RacingGameInputs(input, carNameStr))
-                .isInstanceOf(InputMismatchException.class);
-    }
-
-    @DisplayName("자동차 이름은 5글자를 넘을 수 없다.")
-    @Test
-    public void inputValue_isMoreThanFiveLength() {
-
-        String carNameStr = "bbororo,jaewon,tester";
-        int numberOfGames = 5;
-
-        assertThatThrownBy(() -> new RacingGameInputs(numberOfGames, carNameStr))
                 .isInstanceOf(InputMismatchException.class);
     }
 }
