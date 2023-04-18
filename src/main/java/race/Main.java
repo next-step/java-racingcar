@@ -7,7 +7,9 @@ public class Main {
     public static void main(String[] args) {
         int numOfCars = InputView.getCarNums();
         int laps = InputView.getLaps();
-        RandomMoveStrategy randomMoveStrategy = new RandomMoveStrategy(4, 10);
+        final int MIN_MOVE_CONDITION = 4;
+        final int MAX_MOVE_BOUND = 10;
+        RandomMoveStrategy randomMoveStrategy = new RandomMoveStrategy(MIN_MOVE_CONDITION, MAX_MOVE_BOUND);
         Cars cars = new Cars(numOfCars, randomMoveStrategy);
         Race race = new Race(cars);
 

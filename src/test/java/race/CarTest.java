@@ -18,7 +18,7 @@ public class CarTest {
         assertThat(car.getPosition()).isEqualTo(0);
 
         //WHEN
-        car.move();
+        car.moveForward();
 
         //THEN
         assertThat(car.getPosition()).isEqualTo(1);
@@ -32,7 +32,7 @@ public class CarTest {
         assertThat(car.getPosition()).isEqualTo(0);
 
         //WHEN
-        car.move();
+        car.moveForward();
 
         //THEN
         assertThat(car.getPosition()).isEqualTo(0);
@@ -42,8 +42,8 @@ public class CarTest {
     @MethodSource("getCarPositionTestStubs")
     void 자동차가_움직이면_위치가_변한다(MoveStrategy moveStrategy, int position) {
         Car car = new Car(moveStrategy);
-        car.move();
-        car.move();
+        car.moveForward();
+        car.moveForward();
         assertThat(car.getPosition()).isEqualTo(position);
     }
 

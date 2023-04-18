@@ -9,7 +9,7 @@ public class Car {
         this.moveStrategy = moveStrategy;
     }
 
-    public void move() {
+    public void moveForward() {
         if (moveStrategy.canMove()) {
             position.add();
         }
