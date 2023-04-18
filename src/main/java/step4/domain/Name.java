@@ -3,7 +3,6 @@ package step4.domain;
 import step4.exception.NameExceedException;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Name {
@@ -19,8 +18,6 @@ public class Name {
     }
 
     private void validate(String name) {
-        Objects.requireNonNull(name, "name must not be null");
-
         if (name.length() > MAX_NAME_LENGTH) {
             throw new NameExceedException("자동차 이름은 5글자를 초과할 수 없습니다. name: " + name);
         }
