@@ -32,6 +32,10 @@ public class RacingCarGame {
         return cars;
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
     public void playing() {
         for (Car car : cars) {
             final int random = RandomValue.nextInt(RANDOM_BOUND);
