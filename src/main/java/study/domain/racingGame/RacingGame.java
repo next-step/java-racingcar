@@ -2,50 +2,42 @@ package study.domain.racingGame;
 
 public class RacingGame {
 
-  private final String INPUT_CAR_NUM_TXT = "자동차 대수는 몇 대 인가요?";
-  private final String INPUT_CAR_MOVE_CNT_TXT = "시도할 회수는 몇 회 인가요?";
   private Cars cars;
-  private int carMoveCnt;
+  private int gameCnt;
 
   private GameConsole console;
 
   public RacingGame() {
-    console = new GameConsole();
-    cars = new Cars();
-
+    this.cars = new Cars();
   }
 
-  public void ready() {
-    cars.addCars(inputCarNum());
-    carMoveCnt = inputCarMoveCnt();
+  public void ready(int gameCnt, int carNum) {
+    this.gameCnt = gameCnt;
+    this.cars.addCars(carNum);
   }
 
   public boolean isReady() {
-    return carMoveCnt > 0 || cars.findTotalCarsCount() > 0;
+    return gameCnt > 0 || cars.findTotalCarsCount() > 0;
   }
 
   public boolean isFinish() {
-    return carMoveCnt <= 0 && cars.findTotalCarsCount() > 0;
+    return gameCnt <= 0 && cars.findTotalCarsCount() > 0;
   }
 
-  public void start() {
+
+  public void race() {
     if (!isReady()) {
       throw new RuntimeException("게임 준비가 되지 않았습니다.");
     }
-    race();
+
+    this.cars.moveAll();
+    this.gameCnt--;
   }
 
-  private void race() {
-    while (carMoveCnt-- > 0) {
-      cars.moveAll();
-      printCarsDistance();
-      console.print("");
-    }
-  }
-
-  private void printCarsDistance() {
-    cars.forEach(car ->
-        console.print(convertCarDistanceToDash(car.findTotalDistance())));
+  public void printCarsDistance(GameScreen screen) {
+    this.cars.forEach(car ->
+        screen.print(convertCarDistanceToDash(car.findTotalDistance())));
+    screen.print("");
   }
 
   private String convertCarDistanceToDash(int carDistance) {
@@ -54,15 +46,5 @@ public class RacingGame {
       result += "-";
     }
     return result;
-  }
-
-  private int inputCarNum() {
-    this.console.print(INPUT_CAR_NUM_TXT);
-    return this.console.inputInt();
-  }
-
-  private int inputCarMoveCnt() {
-    console.print(INPUT_CAR_MOVE_CNT_TXT);
-    return console.inputInt();
   }
 }

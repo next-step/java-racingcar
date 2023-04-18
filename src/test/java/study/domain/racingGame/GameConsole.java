@@ -8,11 +8,7 @@ public class GameConsole {
   private Scanner scaner;
 
   public GameConsole() {
-    scaner = new Scanner(System.in);
-  }
-
-  public void print(String printTxt) {
-    System.out.println(printTxt);
+    this.scaner = new Scanner(System.in);
   }
 
   public int inputInt() {

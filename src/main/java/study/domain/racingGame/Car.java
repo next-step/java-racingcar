@@ -4,23 +4,24 @@ public class Car {
 
   private CarCondition carCondition;
   private int distance;
+
   public Car() {
-    carCondition = new CarCondition();
-    distance = 0;
+    this.carCondition = new CarCondition();
+    this.distance = 0;
   }
 
-  public void move() {
-    if (!carCondition.isMove()) {
+  public void move(int randomValue) {
+    if (!this.carCondition.isMove(randomValue)) {
       return;
     }
     goForward();
   }
 
   private void goForward() {
-    distance++;
+    this.distance++;
   }
 
   public int findTotalDistance() {
-    return distance;
+    return this.distance;
   }
 }
