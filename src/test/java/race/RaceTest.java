@@ -13,7 +13,8 @@ public class RaceTest {
     @ParameterizedTest(name = "이동 전략이 {0} 이면 자동차 경주 단판 결과는 {1} 이다")
     @MethodSource("oneLapTestStubs")
     void 자동차_경주_단판_결과를_알_수_있다(MoveStrategy moveStrategy, List<Integer> positions) {
-        Cars cars = new Cars(3, moveStrategy);
+        List<CarName> carNameList = List.of(new CarName("a"), new CarName("b"), new CarName("c"));
+        Cars cars = new Cars(carNameList, moveStrategy);
         Race race = new Race(cars);
         assertThat(race.startLap()).isEqualTo(positions);
     }

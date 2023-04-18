@@ -14,7 +14,8 @@ public class CarsTest {
     @MethodSource("carsTestStubs")
     void 자동차들의_이동전략에_따라_움직이면_위치를_알_수_있다(MoveStrategy moveStrategy, List<Integer> positions) {
         //GIVEN
-        Cars cars = new Cars(3, moveStrategy);
+        List<CarName> carNameList = List.of(new CarName("a"), new CarName("b"), new CarName("c"));
+        Cars cars = new Cars(carNameList, moveStrategy);
 
         //WHEN
         cars.moveAll();

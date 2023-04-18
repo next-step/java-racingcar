@@ -6,10 +6,10 @@ import java.util.List;
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(int numOfCars, MoveStrategy moveStrategy) {
+    public Cars(List<CarName> carNameList, MoveStrategy moveStrategy) {
         this.cars = new ArrayList<>();
-        for (int i = 0; i < numOfCars; i++) {
-            cars.add(new Car(moveStrategy));
+        for (CarName carName : carNameList) {
+            cars.add(new Car(carName, moveStrategy));
         }
     }
 
