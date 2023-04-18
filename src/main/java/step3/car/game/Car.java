@@ -31,7 +31,7 @@ public class Car implements Serializable {
     }
 
     private void checkString(String carName) {
-        if (Objects.isNull(carName) || carName.isBlank() || carName.isEmpty()) {
+        if (Objects.isNull(carName) || carName.isBlank()) {
             throw new RuntimeException("올바르지 않은 문자열 입니다.");
         }
     }

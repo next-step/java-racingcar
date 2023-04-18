@@ -32,18 +32,18 @@ public class Cars {
     }
 
     public List<String> winners() {
+        int highScore = highScore();
         return values.stream()
-                .filter(car -> car.sameScore(highScore()))
+                .filter(car -> car.sameScore(highScore))
                 .map(Car::name)
                 .collect(Collectors.toList());
     }
 
     private int highScore() {
-        int highScore = values.stream()
+        return values.stream()
                 .mapToInt(Car::location)
                 .max()
-                .orElse(Integer.MIN_VALUE);
-        return highScore;
+                .orElseThrow(() -> new RuntimeException("점수를 계산할 수 없습니다."));
     }
 
     private int randomNumber() {
