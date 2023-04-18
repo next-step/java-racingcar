@@ -2,11 +2,13 @@ package carracing;
 
 import carracing.domain.Award;
 import carracing.domain.Car;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -36,4 +38,24 @@ public class AwardTest {
         assertThat(carNames).containsExactly("kim", "lee", "hun", "woo");
     }
 
+    @Test
+    @DisplayName("우승한 자동차 리스트 확인 테스트")
+    void getWinnerList() {
+        Award award = new Award();
+        award.getWinnerList(cars);
+
+        String[] carNames = new String[cars.size()];
+        for (int i = 0; i < cars.size(); i++) {
+            carNames[i] = cars.get(i).getName();
+        }
+        assertThat(carNames).containsExactly("kim", "lee");
+    }
+
+    @Test
+    @DisplayName("우승한 자동차 문자열 확인 테스트")
+    void getWinnerNames() {
+        Award award = new Award();
+        String winners = award.getWinner(cars);
+        assertThat(winners).isEqualTo("kim, lee");
+    }
 }
