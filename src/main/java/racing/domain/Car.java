@@ -1,11 +1,12 @@
 package racing.domain;
 
 public class Car {
-
     private int position;
+    private String name;
 
-    public Car() {
+    public Car(String name) {
         this.position = 0;
+        this.name = name;
     }
 
     public int getPosition() {
@@ -16,4 +17,7 @@ public class Car {
         this.position++;
     }
 
+    public String getName() {
+        return this.name;
+    }
 }

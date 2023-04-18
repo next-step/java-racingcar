@@ -9,11 +9,11 @@ import java.util.List;
 public class RacingGameController {
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        int numberOfCarInput = inputView.setNumberOfCarInput();
+        String nameOfCarInput = inputView.setNameOfCarInput();
         int numberOfMatchInput = inputView.setNumberOfMatchInput();
 
         Garage garage = new Garage();
-        List<Car> cars = garage.createCars(numberOfCarInput);
+        List<Car> cars = garage.createCars(nameOfCarInput);
 
         Racing racing = new Racing(numberOfMatchInput, cars);
 

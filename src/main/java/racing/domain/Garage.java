@@ -1,6 +1,6 @@
 package racing.domain;
 
-import racing.domain.Car;
+import racing.util.StringUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,9 +12,11 @@ public class Garage {
         return this.cars.size();
     }
 
-    public List<Car> createCars(int number) {
-        for (int i = 0; i < number; i++) {
-            Car car = new Car();
+    public List<Car> createCars(String nameInput) {
+        String[] names = StringUtil.split(nameInput);
+
+        for (String name : names) {
+            Car car = new Car(name);
             cars.add(car);
         }
 
