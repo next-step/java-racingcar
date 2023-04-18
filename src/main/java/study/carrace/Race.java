@@ -1,14 +1,17 @@
 package study.carrace;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
 public class Race {
 
   private static final int BOUNDED_VALUE = 5;
+  private static final int GO = 1;
+  private static final int STOP = 0;
+  private List<Distance> distances = new ArrayList<>();
   Random random = new Random();
-  private List<String> raceResult = new ArrayList<>();
 
   public void progress() {
     int randomNumber = random.nextInt(10);
@@ -22,21 +25,28 @@ public class Race {
   }
 
   public String currentRace(int end) {
-    StringBuffer stringBuffer = new StringBuffer();
-    for (int i = 0; i < end; i++) {
-      if ("go".equals(raceResult.get(i))) {
-        stringBuffer.append("-");
-      }
-    }
-
-    return stringBuffer.toString();
+    int currentDistance = this.cumulativeSum(end);
+    return String.join("", Collections.nCopies(currentDistance, "-"));
   }
 
   private void go() {
-    this.raceResult.add("go");
+    distances.add(new Distance(GO));
   }
 
   private void stop() {
-    this.raceResult.add("stop");
+    distances.add(new Distance(STOP));
+  }
+
+  private int cumulativeSum(int number) {
+    if(this.distances.size() < number) {
+      throw new ArrayIndexOutOfBoundsException();
+    }
+
+    int result = 0;
+    for(int i=0; i<number;i++) {
+      result += this.distances.get(i).getValue();
+    }
+
+    return result;
   }
 }
