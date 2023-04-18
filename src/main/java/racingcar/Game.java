@@ -1,30 +1,32 @@
 package racingcar;
 
+import java.util.List;
+
 public class Game {
 
     private final Cars cars;
     private final Round round;
 
-    public Game(final int count, final int number) {
-        this.cars = new Cars(count);
+    public Game(final String carNames, final int number, final RandomNumberGenerator randomNumberGenerator) {
+        this.cars = new Cars(carNames, randomNumberGenerator);
         this.round = new Round(number);
     }
 
     public GameResult play() {
         GameResult gameResult = new GameResult();
         for (int i = 0; i < round.getNumber(); i++) {
-            gameResult.input(round());
+            gameResult.addRoundResult(round());
         }
+        gameResult.addWinner(winner());
         return gameResult;
     }
 
     private RoundResult round() {
-        RoundResult roundResult = new RoundResult();
-        for (final Car car : this.cars.getCars()) {
-            car.racing();
-            roundResult.input(car.getPosition());
-        }
-        return roundResult;
+        return new RoundResult(cars.race());
+    }
+
+    private List<CarResult> winner() {
+        return cars.winners();
     }
 
 }

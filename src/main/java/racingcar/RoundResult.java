@@ -1,17 +1,17 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RoundResult {
 
-    private List<Integer> result = new ArrayList<>();
+    private List<CarResult> result;
 
-    public void input(final Integer position) {
-        result.add(position);
+    public RoundResult(List<CarResult> result) {
+        this.result = result;
     }
 
-    public List<Integer> getResult() {
+    public List<CarResult> getResult() {
         return result;
     }
+
 }

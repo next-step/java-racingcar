@@ -13,13 +13,13 @@ public class CarsTest {
     @DisplayName("대기중인 자동차는 1개 이상이 아닐경우 에러를 던진다.")
     @Test
     void 대기_자동차_갯수_에러_검증() {
-        assertThatThrownBy(() -> new Cars(0)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new Cars("", new RandomNumberGenerator())).isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest(name = "입력한 댓수만큼 자동차가 대기해야한다.")
-    @CsvSource(value = {"3|3", "5|5"}, delimiter = '|')
-    void 대기_자동차_갯수_검증(int input, int expected) {
-        assertThat(new Cars(input).getCars()).hasSize(expected);
+    @CsvSource(value = {"goni,alarm,matt|3", "goni,alarm,matt,range,lian|5"}, delimiter = '|')
+    void 대기_자동차_갯수_검증(String input, int expected) {
+        assertThat(new Cars(input, new RandomNumberGenerator()).getCars()).hasSize(expected);
     }
 
 }
