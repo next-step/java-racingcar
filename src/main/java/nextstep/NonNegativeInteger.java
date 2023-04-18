@@ -6,12 +6,12 @@ public class NonNegativeInteger {
 
     public NonNegativeInteger(String token) {
         int integer = tokenToInteger(token);
-        validatePositiveInteger(integer);
+        validateNonNegativeInteger(integer);
         this.number = integer;
     }
 
     public NonNegativeInteger(int number) {
-        validatePositiveInteger(number);
+        validateNonNegativeInteger(number);
         this.number = number;
     }
 
@@ -27,7 +27,7 @@ public class NonNegativeInteger {
         }
     }
 
-    private static void validatePositiveInteger(int integer) {
+    private static void validateNonNegativeInteger(int integer) {
         if (integer < 0) {
             throw new IllegalArgumentException(String.format("Negative integer values are not allowed: %s", integer));
         }
