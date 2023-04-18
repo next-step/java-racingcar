@@ -18,7 +18,7 @@ public class BasicGameTest {
     @MethodSource("isEnoughToGoTestArguments")
     @ParameterizedTest
     void isEnoughToGoTest(int value, boolean expected) {
-        Car car = new Car();
+        Car car = new Car("Ben");
 
         boolean actual = car.isEnoughValue(value);
 
@@ -51,12 +51,13 @@ public class BasicGameTest {
         var expectedCarCount = 3;
         var expectedTryCount = 5;
 
-        var actualCarCount = 3;
         var actualTryCount = 5;
 
         Cars cars = new Cars();
         BasicGame basicGame = new BasicGame(cars);
-        basicGame.startGame(actualCarCount, actualTryCount);
+        var carNameInput = "A,B,C";
+
+        basicGame.startGame(carNameInput, actualTryCount);
 
         assertThat(cars.getCars().size()).isEqualTo(expectedCarCount);
         assertThat(basicGame.triedCount.getValue()).isEqualTo(expectedTryCount);
@@ -65,13 +66,13 @@ public class BasicGameTest {
     @Test
     @DisplayName("자동차 대수, 시도 횟수 입력 테스트 Fail")
     void inputUiTestFailure() {
-        var carCount = -1;
         var tryCount = 5;
 
         Cars cars = new Cars();
         BasicGame basicGame = new BasicGame(cars);
+        var carNameInput = "";
 
-        assertThatThrownBy(() -> basicGame.startGame(carCount, tryCount)).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(() -> basicGame.startGame(carNameInput, tryCount)).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(INPUT_ERROR_MESSAGE);
     }
 }
