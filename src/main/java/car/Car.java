@@ -18,7 +18,7 @@ public class Car {
     }
 
     public boolean matchesPosition(Position position) {
-        return this.position.intValue() == position.intValue();
+        return this.position.equals(position);
     }
 
     public Name getName() {
