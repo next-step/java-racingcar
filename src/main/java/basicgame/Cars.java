@@ -17,10 +17,10 @@ public class Cars {
         }
     }
 
-    public void initCar(int carCount) {
+    public void initCar(String[] carNameList) {
         cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+        for (String s : carNameList) {
+            cars.add(new Car(s));
         }
     }
 

@@ -1,8 +1,23 @@
 package basicgame;
 
+import util.StringUtil;
+
 public class Car implements Vehicle {
     private final static int CONDITION_VALUE = 4;
-    private int distance = 0;
+    private final static int MAX_NAME_SIZE = 5;
+    private int distance = 1;
+    private String name;
+
+
+    public Car(String name) {
+        if(StringUtil.isBlank(name)){
+            throw new NullPointerException("자동차 이름은 null이나 빈공백은 불가능");
+        }
+        if(name.length() > MAX_NAME_SIZE){
+            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없다");
+        }
+        this.name = name;
+    }
 
     public void go(int value) {
         if (isEnoughValue(value)) {

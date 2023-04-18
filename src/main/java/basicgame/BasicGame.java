@@ -1,6 +1,8 @@
 package basicgame;
 
 
+import util.StringUtil;
+
 public class BasicGame {
 
     public final static String INPUT_ERROR_MESSAGE = "0이나 음수값은 입력하실 수 없습니다.";
@@ -19,29 +21,36 @@ public class BasicGame {
     public static void main(String args[]) {
 
         InputView.printCarInput();
-        var carCount = InputView.countInput();
+        var carString = InputView.stringInput();
 
         InputView.printTryInput();
-        var tryCount = InputView.countInput();
+        var tryCount = InputView.intInput();
 
         Cars cars = new Cars();
         BasicGame basicGame = new BasicGame(cars);
 
-        basicGame.startGame(carCount, tryCount);
+        basicGame.startGame(carString, tryCount);
     }
 
-    public void startGame(int carCount, int tryCount) {
+    public void startGame(String carString, int tryCount) {
         triedCount = new CarTryCounter(ZERO);
-        if (carCount <= 0 || tryCount <= 0) {
+
+        var CarNameList = splitName(carString);
+        if (CarNameList.length == 0 || StringUtil.isBlank(CarNameList[0]) || tryCount <= 0) {
             throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
         }
 
-        cars.initCar(carCount);
+        cars.initCar(CarNameList);
         printCar(tryCount);
+    }
+
+    public String[] splitName(String carNames){
+        return carNames.split(",");
     }
 
     private void printCar(int tryCount) {
         ResultView.printResultTitle();
+        ResultView.printResultList(cars.getCars(), PROCESS_INDICATOR);
         for (int i = 0; i < tryCount; i++) {
             cars.activeCar();
             ResultView.printResultList(cars.getCars(), PROCESS_INDICATOR);
