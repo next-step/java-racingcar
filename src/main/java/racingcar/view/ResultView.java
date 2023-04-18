@@ -26,7 +26,7 @@ public class ResultView {
     }
 
     private static void printDistance(Score score) {
-        IntStream.range(0, score.getPoint())
+        IntStream.range(0, score.findPoint())
                 .mapToObj(i -> MOVE_RESULT_EXPRESSION)
                 .forEach(System.out::print);
     }

@@ -7,7 +7,7 @@ public class Score {
         this.point = point;
     }
 
-    public int getPoint() {
+    public int findPoint() {
         return point;
     }
 }
