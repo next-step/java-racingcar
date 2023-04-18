@@ -1,7 +1,6 @@
 package racing;
 
 import racing.race.Cars;
-import racing.race.Racing;
 import racing.view.InputView;
 
 public class Main {
@@ -15,9 +14,7 @@ public class Main {
     int tryNumber = InputView.getValue();
 
     System.out.println("\n실행 결과");
-
-    Racing racing = new Racing();
-    racing.race(cars.getGameCar(), tryNumber);
+    cars.race(cars.getGameCar(), tryNumber);
   }
 
 }

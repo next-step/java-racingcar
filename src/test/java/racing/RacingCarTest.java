@@ -6,7 +6,6 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racing.race.Cars;
-import racing.race.Racing;
 import racing.strategy.MoveNumberStrategy;
 import racing.strategy.RandomNumberStrategy;
 import racing.strategy.StopNumberStrategy;
@@ -14,8 +13,6 @@ import racing.strategy.StopNumberStrategy;
 public class RacingCarTest {
 
   Cars cars;
-  Racing racing = new Racing();
-
   private static final int CAR_NUMBER = 3;
 
   @BeforeEach
@@ -41,7 +38,7 @@ public class RacingCarTest {
 
   @Test
   void 레이싱게임진행() {
-    racing.race(cars.getGameCar(), 3);
+    cars.race(cars.getGameCar(), 3);
   }
 
   @Test
@@ -56,7 +53,7 @@ public class RacingCarTest {
   @Test
   void 이동횟수음수입력() {
     assertThatExceptionOfType(NumberFormatException.class)
-        .isThrownBy(() -> racing.race(cars.getGameCar(), -1));
+        .isThrownBy(() -> cars.race(cars.getGameCar(), -1));
   }
 
   @Test
