@@ -3,7 +3,7 @@ package racingcar;
 import racingcar.domain.Racing;
 import racingcar.domain.RacingCars;
 import racingcar.strategy.MoveStrategy;
-import racingcar.strategy.NormalMoveStrategy;
+import racingcar.strategy.RandomMoveStrategy;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
@@ -18,7 +18,7 @@ public class RacingCarApplication {
         // 경주
         RacingCars racingCars = new RacingCars(carNames);
         Racing racing = new Racing(racingCars);
-        MoveStrategy normalMoveStrategy = new NormalMoveStrategy();
+        MoveStrategy normalMoveStrategy = new RandomMoveStrategy();
         ResultView resultView = new ResultView();
 
         // 출력

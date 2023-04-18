@@ -4,7 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.*;
 import racingcar.strategy.MoveStrategy;
-import racingcar.strategy.NormalMoveStrategy;
+import racingcar.strategy.RandomMoveStrategy;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -24,9 +24,9 @@ public class RacingCarTest {
   @DisplayName("전략패턴을 통한 RacingCar move 실행후 position = 1인지 확인")
   public void moveRacingCar_ReturnPositionValueOne() {
     RacingCar racingCar = new RacingCar("test");
-    MoveStrategy normalMoveStrategy = new NormalMoveStrategy();
+    MoveStrategy randomMoveStrategy = new RandomMoveStrategy();
 
-    racingCar.tryToMove(normalMoveStrategy);
+    racingCar.tryToMove(randomMoveStrategy);
 
     int result = racingCar.position();
 

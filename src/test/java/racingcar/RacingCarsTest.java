@@ -4,7 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.RacingCars;
 import racingcar.strategy.MoveStrategy;
-import racingcar.strategy.NormalMoveStrategy;
+import racingcar.strategy.RandomMoveStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -23,9 +23,9 @@ public class RacingCarsTest {
     public void runRacingRoundTest() {
         String[] test =  new String[] {"pobi","next","step","fight","test"};
         RacingCars racingCars = new RacingCars(test);
-        MoveStrategy normalMoveStrategy = new NormalMoveStrategy();
+        MoveStrategy randomMoveStrategy = new RandomMoveStrategy();
 
-        racingCars.runRacingRound(normalMoveStrategy);
+        racingCars.runRacingRound(randomMoveStrategy);
 
         assertThat(racingCars.statusOfRacingCars().get(0).position())
                 .isLessThanOrEqualTo(1);

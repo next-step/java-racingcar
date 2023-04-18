@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.Racing;
 import racingcar.domain.RacingCars;
 import racingcar.strategy.MoveStrategy;
-import racingcar.strategy.NormalMoveStrategy;
+import racingcar.strategy.RandomMoveStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,11 +15,11 @@ public class RacingTest {
     public void checkRacingClass() {
         String[] test =  new String[] {"pobi","next","step","fight","test"};
         Racing racing = new Racing(new RacingCars(test));
-        MoveStrategy normalMoveStrategy = new NormalMoveStrategy();
+        MoveStrategy randomMoveStrategy = new RandomMoveStrategy();
         int numberOfTrials = 4;
 
         while (numberOfTrials > 0) {
-            racing.startRacingRound(normalMoveStrategy);
+            racing.startRacingRound(randomMoveStrategy);
             numberOfTrials--;
         }
 
