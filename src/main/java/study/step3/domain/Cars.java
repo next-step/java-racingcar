@@ -10,6 +10,10 @@ public class Cars {
 
     private final List<Car> cars;
 
+    public Cars(List<Car> cars) {
+        this.cars = cars;
+    }
+
     public Cars(String[] carNames, MoveConditionStrategy moveConditionStrategy) {
         this.cars = createCars(carNames, moveConditionStrategy);
     }
@@ -28,8 +32,8 @@ public class Cars {
     private List<Car> createCars(String[] carNames,
                                  MoveConditionStrategy moveConditionStrategy) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carNames.length; i++) {
-            cars.add(new Car(carNames[i], moveConditionStrategy));
+        for (String carName : carNames) {
+            cars.add(new Car(carName, moveConditionStrategy));
         }
         return cars;
     }
@@ -44,14 +48,14 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public List<String> findWinner() {
+    public List<String> findWinners() {
         int max = cars.stream()
                 .mapToInt(e -> e.getPosition())
                 .max()
                 .orElseThrow(NoSuchElementException::new);
 
         return cars.stream()
-                .filter(e -> e.getPosition() == max)
+                .filter(e -> e.isEqualsPosition(max))
                 .map(Car::getName)
                 .collect(Collectors.toList());
     }

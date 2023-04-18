@@ -28,7 +28,7 @@ public class CarRacing {
             outputView.outputPositionOfCarsWithName(cars.toCarNames(), cars.toPositionOfCars());
         }
 
-        List<String> winners = cars.findWinner();
+        List<String> winners = cars.findWinners();
         outputView.outputWinners(winners);
     }
 }

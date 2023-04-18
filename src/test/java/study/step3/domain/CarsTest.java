@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -66,13 +67,21 @@ class CarsTest {
     @Test
     void findWinner() {
         //given
+        List<Car> list = Arrays.asList(
+                new Car("avante",
+                        new LessThanMoveCondition(4, new StaticMove(3))),
+                new Car("sonata",
+                        new LessThanMoveCondition(4, new StaticMove(3))),
+                new Car("grandeur",
+                        new LessThanMoveCondition(4, new StaticMove(5))));
+        cars = new Cars(list);
 
         //when
         cars.moveForward();
-        List<String> positionOfCars = cars.findWinner();
+        List<String> positionOfCars = cars.findWinners();
 
         //then
         assertThat(positionOfCars)
-                .containsAnyOf("avante", "sonata", "grandeur");
+                .containsExactly("grandeur");
     }
 }
