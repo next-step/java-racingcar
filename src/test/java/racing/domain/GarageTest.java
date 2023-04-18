@@ -28,7 +28,7 @@ public class GarageTest {
         List<Car> createdCars = garage.createCars(3);
 
         //then
-        assertThat(createdCars.size()).isEqualTo(numberOfCars);
+        assertThat(createdCars).hasSize(numberOfCars);
     }
 
 }
