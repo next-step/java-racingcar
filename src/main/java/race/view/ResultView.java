@@ -1,7 +1,7 @@
 package race.view;
 
-import race.Position;
-import race.Positions;
+import race.Car;
+import race.Cars;
 
 public class ResultView {
     private static final char POSITION_CHARACTER = '-';
@@ -10,15 +10,19 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public static void showPositions(Positions positions) {
-        for (Position position : positions.getPositions()) {
-            showPosition(position);
+    public static void showCars(Cars cars) {
+        for (Car car : cars.getCarList()) {
+            showCar(car);
         }
         System.out.println();
     }
 
-    private static void showPosition(Position position) {
-        for (int i = 0; i < position.get(); i++) {
+    private static void showCar(Car car) {
+        StringBuilder stringBuilder = new StringBuilder()
+                .append(car.getCarName().get())
+                .append(" : ");
+        System.out.print(stringBuilder);
+        for (int i = 0; i < car.getPosition().get(); i++) {
             System.out.print(POSITION_CHARACTER);
         }
         System.out.println();

@@ -7,8 +7,8 @@ public class Race {
         this.cars = cars;
     }
 
-    public Positions startLap() {
+    public Cars startLap() {
         cars.moveAll();
-        return cars.getPositions();
+        return cars;
     }
 }

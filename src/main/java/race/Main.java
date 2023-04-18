@@ -16,7 +16,7 @@ public class Main {
 
         ResultView.showResultComment();
         for (int i = 0; i < laps; i++) {
-            ResultView.showPositions(race.startLap());
+            ResultView.showCars(race.startLap());
         }
     }
 }

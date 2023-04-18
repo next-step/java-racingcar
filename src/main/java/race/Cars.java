@@ -19,11 +19,7 @@ public class Cars {
         }
     }
 
-    public Positions getPositions() {
-        List<Position> result = new ArrayList<>();
-        for (Car car : cars) {
-            result.add(car.getPosition());
-        }
-        return new Positions(result);
+    public List<Car> getCarList() {
+        return List.copyOf(cars);
     }
 }

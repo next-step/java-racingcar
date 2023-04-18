@@ -5,6 +5,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -16,7 +17,12 @@ public class RaceTest {
         List<CarName> carNameList = List.of(new CarName("a"), new CarName("b"), new CarName("c"));
         Cars cars = new Cars(carNameList, moveStrategy);
         Race race = new Race(cars);
-        assertThat(race.startLap()).isEqualTo(positions);
+        assertThat(race.startLap()
+                .getCarList()
+                .stream()
+                .map(Car::getPosition)
+                .collect(Collectors.toList())
+        ).isEqualTo(positions);
     }
 
     private static Stream<Arguments> oneLapTestStubs() {
