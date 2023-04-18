@@ -22,7 +22,7 @@ public class RacingGame {
     private void moveCars() {
         for (Car car : cars) {
             car.move(RandomNumberGenerator.randomNumber());
-            ResultView.gameResultView(car.getLocation());
+            ResultView.gameResultView(car);
         }
         System.out.println();
     }
