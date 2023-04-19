@@ -10,6 +10,9 @@ public class Position implements Comparable<Position> {
     }
 
     public Position(int position) {
+        if(position < 0) {
+            throw new IllegalArgumentException("음수값은 허용되지 않습니다.");
+        }
         this.position = position;
     }
 
