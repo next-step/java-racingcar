@@ -2,6 +2,8 @@ package step2;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -10,7 +12,7 @@ import static step2.StringCalculator.splitAndSum;
 
 public class StringCalculatorTest {
 
-    @DisplayName("음수를 전달할 경우 RuntimeException 예외가 발생")
+    @DisplayName("음수를 전달할 경우 IllegalArgumentException 예외가 발생")
     @Test
     void test6() {
         assertThatThrownBy(() -> {
@@ -23,7 +25,6 @@ public class StringCalculatorTest {
     void test5() {
         assertThat(splitAndSum("//;\n1;2;3")).isEqualTo(6);
     }
-
 
     @DisplayName("구분자를 컴마(,) 이외에 콜론(:)을 사용할 수 있다")
     @Test
@@ -45,12 +46,10 @@ public class StringCalculatorTest {
 
 
     @DisplayName("빈 문자열 또는 null 값을 입력할 때 0 반환")
-    @Test
-    void test1() {
-        int result = splitAndSum(null);
-        assertThat(result).isEqualTo(0);
-
-        result = splitAndSum("");
-        assertThat(result).isEqualTo(0);
+    @NullAndEmptySource
+    @ParameterizedTest(name = "{displayName} {index} = 입력: {0} -> 결과: 0")
+    void test1(String input) {
+        assertThat(splitAndSum(input)).isEqualTo(0);
     }
+
 }
