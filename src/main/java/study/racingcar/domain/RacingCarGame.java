@@ -2,6 +2,8 @@ package study.racingcar.domain;
 
 import study.racingcar.view.OutputView;
 
+import java.util.List;
+
 public class RacingCarGame {
     /**
      * 게임을 진행을 담당한다.
@@ -9,8 +11,8 @@ public class RacingCarGame {
     private final GameCars cars;
     private final Round round;
 
-    public RacingCarGame(int numOfCar, int roundToPlay) {
-        this.cars = new GameCars(numOfCar);
+    public RacingCarGame(List<String> carNames, int roundToPlay) {
+        this.cars = new GameCars(carNames);
         this.round = new Round(roundToPlay);
     }
 

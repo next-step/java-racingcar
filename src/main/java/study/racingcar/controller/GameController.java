@@ -4,14 +4,21 @@ import study.racingcar.view.InputView;
 import study.racingcar.view.OutputView;
 import study.racingcar.domain.RacingCarGame;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class GameController {
+
+    public static final String CAR_NAME_DELIMITER = ",";
+
     /**
      * 게임 실행을 담당한다
      */
     public static void main(String[] args) {
-        final int numOfCar = getRoundsToPlay();
-        final int rounds = getTotalNumberOfCar();
-        RacingCarGame racingCarGame = new RacingCarGame(numOfCar, rounds);
+        final List<String> carNames = getCarNames();
+        final int rounds = getRoundsToPlay();
+        RacingCarGame racingCarGame = new RacingCarGame(carNames, rounds);
         racingCarGame.run();
     }
 
@@ -20,8 +27,14 @@ public class GameController {
         return InputView.getTryCount();
     }
 
-    private static int getTotalNumberOfCar() {
-        OutputView.printCarNumberSign();
-        return InputView.getCarNumber();
+    private static List<String> getCarNames() {
+        OutputView.printCarNameSign();
+        String carNames = InputView.getCarNames();
+        return convertToList(carNames);
+    }
+
+    private static List<String> convertToList(String carNames) {
+        return Arrays.stream(carNames.split(CAR_NAME_DELIMITER))
+                .collect(Collectors.toList());
     }
 }
