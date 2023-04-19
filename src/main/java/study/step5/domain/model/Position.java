@@ -13,6 +13,10 @@ public class Position {
         position++;
     }
 
+    public boolean isWinnerPosition(int winnerPosition) {
+        return position == winnerPosition;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
