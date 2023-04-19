@@ -9,9 +9,11 @@ public class RaceConditionInputView {
 
     public static List<String> readCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        String carNames = scanner.nextLine();
-
-        return Arrays.asList(carNames.split(","));
+        List<String> carNames = Arrays.asList(scanner.nextLine().split(","));
+        if (carNames.stream().anyMatch(name -> name.length() > 5)) {
+            throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+        }
+        return carNames;
     }
 
     public static int readRaceRound() {

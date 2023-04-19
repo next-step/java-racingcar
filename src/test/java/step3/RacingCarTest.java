@@ -21,7 +21,7 @@ public class RacingCarTest {
         List<Car> cars = racingCars.getAll();
 
         for (int i = 0; i < carNames.size(); i++) {
-            assertEquals(carNames.get(i), cars.get(i).getName());
+            assertEquals(carNames.get(i), cars.get(i).getNameValue());
         }
     }
 
@@ -33,7 +33,7 @@ public class RacingCarTest {
                 new Car("car2"),
                 new Car("car3")
         );
-        cars.get(1).move();
+        cars.get(1).move(true);
         Car expectedWinner = cars.get(1);
         RacingCars racingCars = new RacingCars(cars);
 
@@ -51,8 +51,8 @@ public class RacingCarTest {
                 new Car("car2"),
                 new Car("car3")
         );
-        cars.get(1).move();
-        cars.get(2).move();
+        cars.get(1).move(true);
+        cars.get(2).move(true);
         List<Car> expectedWinners = Arrays.asList(cars.get(1), cars.get(2));
         RacingCars racingCars = new RacingCars(cars);
 

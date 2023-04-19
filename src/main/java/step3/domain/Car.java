@@ -3,23 +3,38 @@ package step3.domain;
 import java.util.Objects;
 
 public class Car {
-    private final String name;
-    private int position;
+    private final static int DEFAULT_POSITION = 0;
+    private final CarName name;
+    private final CarPosition position;
 
     public Car(String name) {
-        this.name = name;
+        this.name = CarName.of(name);
+        this.position = CarPosition.of(DEFAULT_POSITION);
     }
 
-    public String getName() {
+    public Car(String name, int position) {
+        this.name = CarName.of(name);
+        this.position = CarPosition.of(position);
+    }
+
+    public CarName getName() {
         return name;
     }
 
-    public int getPosition() {
+    public CarPosition getPosition() {
         return position;
     }
 
-    public void move() {
-        this.position++;
+    public String getNameValue() {
+        return name.getValue();
+    }
+
+    public int getPositionValue() {
+        return position.getValue();
+    }
+
+    public void move(boolean canMove) {
+        if (canMove) this.position.move();
     }
 
     @Override

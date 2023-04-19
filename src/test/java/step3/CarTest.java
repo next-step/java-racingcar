@@ -10,11 +10,11 @@ public class CarTest {
     @Test
     @DisplayName("자동차를 한 칸 앞으로 이동시킬 수 있다.")
     void testMoveCar() {
-        Car car = new Car("car name");
-        int originalPosition = car.getPosition();
+        Car car = new Car("name");
+        int originalPosition = car.getPositionValue();
 
-        car.move();
+        car.move(true);
 
-        assertEquals(originalPosition + 1, car.getPosition());
+        assertEquals(originalPosition + 1, car.getPositionValue());
     }
 }
