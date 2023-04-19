@@ -17,8 +17,7 @@ public class CarRacingGame {
         String carNames = inputView.inputCarName();
 
         //자동차 이름 개수만큼 자동차 객체 생성
-        CarCompany carCompany = new CarCompany();
-        List<Car> cars = carCompany.createCar(carNames);
+        List<Car> cars = CarCompany.createCar(carNames);
 
         //이동 횟수 입력
         int moveNum = inputView.inputMoveNum();
@@ -35,8 +34,7 @@ public class CarRacingGame {
         }
 
         //시상식
-        Award award = new Award();
-        String winners = award.getWinner(cars);
+        String winners = Award.getWinner(cars);
 
         //우승자 출력
         resultView.outputWinnersName(winners);

@@ -20,6 +20,13 @@ public class ResultView {
         System.out.println();
     }
 
+    public static String putComma(String winnerName) {
+        if (winnerName.isBlank() == false) {
+            winnerName += ", ";
+        }
+        return winnerName;
+    }
+
     public void resultStart() {
         System.out.println("\n실행결과");
     }
