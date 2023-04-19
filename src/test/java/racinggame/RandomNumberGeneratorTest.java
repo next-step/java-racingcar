@@ -1,10 +1,10 @@
-package step3;
+package racinggame;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static step3.RandomNumberGenerator.randomNumber;
+import static racinggame.RandomNumberGenerator.randomNumber;
 
 public class RandomNumberGeneratorTest {
 
