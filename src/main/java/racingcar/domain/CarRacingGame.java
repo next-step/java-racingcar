@@ -3,7 +3,7 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RacingCar {
+public class CarRacingGame {
 
     public static final int BEGIN_INDEX = 0;
     public static final int INIT_VALUE = 0;
@@ -11,7 +11,7 @@ public class RacingCar {
 
     private final List<Car> cars;
 
-    public RacingCar(String carNameInput) {
+    public CarRacingGame(String carNameInput) {
         String[] carNames = splitCarNameInput(carNameInput);
         List<Car> cars = new ArrayList<>();
 

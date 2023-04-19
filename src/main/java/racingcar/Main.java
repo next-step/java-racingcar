@@ -1,6 +1,6 @@
 package racingcar;
 
-import racingcar.domain.RacingCar;
+import racingcar.domain.CarRacingGame;
 import racingcar.domain.RandomNumber;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
@@ -24,15 +24,15 @@ public class Main {
         resultView.printNewLine();
         resultView.printExecuteResultMessage();
 
-        RacingCar racingCar = createWinningRacingCar(carNameInput);
+        CarRacingGame carRacingGame = createWinningRacingCar(carNameInput);
 
         for (int i = BEGIN_INDEX; i < tryCount; i++) {
             resultView.printCarNameAndMoveStateLines(
-                    racingCar.makeMoveCounts(
-                            generateRandomNumbers(racingCar.carsSize()))
+                    carRacingGame.makeMoveCounts(
+                            generateRandomNumbers(carRacingGame.carsSize()))
             );
         }
-        resultView.printWinners(racingCar.winningCars());
+        resultView.printWinners(carRacingGame.winningCars());
 
         inputView.closeScanner();
     }
@@ -45,8 +45,8 @@ public class Main {
         return new InputView();
     }
 
-    private static RacingCar createWinningRacingCar(String carNameInput) {
-        return new RacingCar(carNameInput);
+    private static CarRacingGame createWinningRacingCar(String carNameInput) {
+        return new CarRacingGame(carNameInput);
     }
 
     private static List<Integer> generateRandomNumbers(int carCount) {
