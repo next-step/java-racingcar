@@ -1,6 +1,7 @@
 package step3.racing;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,21 +15,21 @@ public class CarRacingGame {
 
     public CarRacingGame(int carsCount) {
         validEnoughCarsCount(carsCount);
-        this.cars = makeCars(carsCount);
+        this.cars = setupCars(carsCount);
     }
 
-    private static void validEnoughCarsCount(int carsCount) {
+    private void validEnoughCarsCount(int carsCount) {
         if (carsCount < 2) {
             throw new IllegalArgumentException("자동차는 2대 이상이어야 합니다.");
         }
     }
 
-    private Cars makeCars(int carsCount) {
-        Cars cars = new Cars();
+    private Cars setupCars(int carsCount) {
+        List<Car> carList = new ArrayList<>();
         for (int i = 0; i < carsCount; i++) {
-            cars.addCar(new Car());
+            carList.add(new Car());
         }
-        return cars;
+        return new Cars(carList);
     }
 
     public void start(int roundsCount) {
@@ -71,9 +72,4 @@ public class CarRacingGame {
             throw new IllegalStateException("경기가 시작되기 전에는 결과를 얻을 수 없습니다.");
         }
     }
-
-    public int carsCount() {
-        return this.cars.count();
-    }
-
 }
