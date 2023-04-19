@@ -1,4 +1,5 @@
 import controller.RaceController;
+import model.AlwaysMoveStrategy;
 import model.Race;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -12,15 +13,16 @@ import static org.mockito.Mockito.when;
 
 public class RaceControllerTest {
     @Test
-    public void nCarsQueriedAndCreated() {
+    public void numberOfCarsQueriedAndCreated() {
         var numberOfCars = 3;
+        var strategy = new AlwaysMoveStrategy();
 
         var raceViewMock = Mockito.mock(RaceView.class);
         when(raceViewMock.queryAndGetNumberOfCars()).thenReturn(numberOfCars);
 
         var race = new Race();
         var raceController = new RaceController(race, raceViewMock);
-        raceController.startRace();
+        raceController.startRace(strategy);
 
         assertThat(race.getCarPositions()).hasSize(numberOfCars);
     }
@@ -28,9 +30,8 @@ public class RaceControllerTest {
     @Test
     public void carsMoved() {
         var numberOfCars = 3;
-        var steps = 100;
-        var moveProbability = 0.6;
-        var toleranceRatio = 0.2;
+        var steps = 5;
+        var strategy = new AlwaysMoveStrategy();
 
         var raceViewMock = Mockito.mock(RaceView.class);
         when(raceViewMock.queryAndGetNumberOfCars()).thenReturn(numberOfCars);
@@ -38,13 +39,11 @@ public class RaceControllerTest {
 
         var race = new Race();
         var raceController = new RaceController(race, raceViewMock);
-        raceController.startRace();
+        raceController.startRace(strategy);
 
-        var minimumExpectedPosition = (int) ((steps * moveProbability) - (steps * toleranceRatio));
-        var maximumExpectedPosition = (int) ((steps * moveProbability) + (steps * toleranceRatio));
 
         for (var carPosition : race.getCarPositions()) {
-            assertThat(carPosition).isGreaterThan(minimumExpectedPosition).isLessThan(maximumExpectedPosition);
+            assertThat(carPosition).isEqualTo(steps);
         }
     }
 
@@ -52,6 +51,7 @@ public class RaceControllerTest {
     public void raceResultTitlePrinted() {
         var numberOfCars = 3;
         var steps = 5;
+        var strategy = new AlwaysMoveStrategy();
 
         var raceViewMock = Mockito.mock(RaceView.class);
         when(raceViewMock.queryAndGetNumberOfCars()).thenReturn(numberOfCars);
@@ -59,15 +59,16 @@ public class RaceControllerTest {
 
         var race = new Race();
         var raceController = new RaceController(race, raceViewMock);
-        raceController.startRace();
+        raceController.startRace(strategy);
 
         verify(raceViewMock).printResultTitle();
     }
 
     @Test
-    public void raceResultsArePrinted() {
+    public void raceResultsPrinted() {
         var numberOfCars = 3;
         var steps = 5;
+        var strategy = new AlwaysMoveStrategy();
 
         var raceViewMock = Mockito.mock(RaceView.class);
         when(raceViewMock.queryAndGetNumberOfCars()).thenReturn(numberOfCars);
@@ -75,7 +76,7 @@ public class RaceControllerTest {
 
         var race = new Race();
         var raceController = new RaceController(race, raceViewMock);
-        raceController.startRace();
+        raceController.startRace(strategy);
 
         verify(raceViewMock, times(steps)).printCurrentRaceStatus(anyList());
     }

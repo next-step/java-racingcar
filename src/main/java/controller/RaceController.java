@@ -1,5 +1,6 @@
 package controller;
 
+import model.MoveStrategy;
 import model.Race;
 import view.RaceView;
 
@@ -12,11 +13,11 @@ public class RaceController {
         this.raceView = raceView;
     }
 
-    public void startRace() {
+    public void startRace(MoveStrategy moveStrategy) {
         initializeRaceFromUserInput();
         var stepsToRun = raceView.queryAndGetSteps();
         raceView.printResultTitle();
-        runRaceNSteps(stepsToRun);
+        runRaceNStepsWithStrategy(stepsToRun, moveStrategy);
     }
 
     private void initializeRaceFromUserInput() {
@@ -24,9 +25,9 @@ public class RaceController {
         race.resetWithCarsOf(numberOfCars);
     }
 
-    private void runRaceNSteps(int steps) {
+    private void runRaceNStepsWithStrategy(int steps, MoveStrategy moveStrategy) {
         for (int i = 0; i < steps; ++i) {
-            race.progress();
+            race.progress(moveStrategy);
             raceView.printCurrentRaceStatus(race.getCarPositions());
         }
     }

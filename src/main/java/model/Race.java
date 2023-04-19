@@ -5,16 +5,20 @@ import java.util.List;
 
 public class Race {
 
-    private ArrayList<Car> cars = new ArrayList<>();
+    private List<Car> cars;
+
+    public Race() {
+        cars = new ArrayList<>();
+    }
 
     public void resetWithCarsOf(int numberOfCars) {
         cars = new ArrayList<>();
         createCars(numberOfCars);
     }
 
-    public void progress() {
+    public void progress(MoveStrategy moveStrategy) {
         for (var car : cars) {
-            car.attemptMove();
+            car.moveWithStrategy(moveStrategy);
         }
     }
 
