@@ -12,6 +12,13 @@ public class Cars {
         createCars(number);
     }
 
+    public List<Car> move() {
+        for (Car car : cars) {
+            car.move();
+        }
+        return cars;
+    }
+
     public List<Car> getCars() {
         return cars;
     }
