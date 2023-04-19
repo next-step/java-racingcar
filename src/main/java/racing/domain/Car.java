@@ -1,11 +1,14 @@
 package racing.domain;
 
+import racing.util.InputValidator;
+
 public class Car {
-
     private int position;
+    private final String name;
 
-    public Car() {
+    public Car(String name) {
         this.position = 0;
+        this.name = InputValidator.validateCarName(name);
     }
 
     public int getPosition() {
@@ -16,4 +19,7 @@ public class Car {
         this.position++;
     }
 
+    public String getName() {
+        return this.name;
+    }
 }

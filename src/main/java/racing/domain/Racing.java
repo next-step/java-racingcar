@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Racing {
     private int leftMatchCounts;
-
     private RacingCars racingCars;
 
     public Racing(int matchCounts, List<Car> cars) {
@@ -31,4 +30,9 @@ public class Racing {
     public int getLeftMatchCounts() {
         return leftMatchCounts;
     }
+
+    public boolean isNotFinished() {
+        return this.leftMatchCounts > 0;
+    }
+
 }

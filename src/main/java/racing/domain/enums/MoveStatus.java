@@ -19,7 +19,7 @@ public enum MoveStatus {
         return Arrays.stream(MoveStatus.values())
                 .filter(moveStatus -> moveStatus.betweenNumber(number))
                 .findAny()
-                .orElse(null);
+                .orElseThrow(() -> new RuntimeException("입력한 숫자가 해당하는 범위의 code 가 없습니다."));
     }
 
     public boolean betweenNumber(int number) {

@@ -1,27 +1,29 @@
 package racing.interfaces;
 
-import racing.domain.Car;
-import racing.domain.Garage;
-import racing.domain.Racing;
+import racing.domain.*;
 
 import java.util.List;
 
 public class RacingGameController {
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        int numberOfCarInput = inputView.setNumberOfCarInput();
+        String nameOfCarInput = inputView.setNameOfCarInput();
         int numberOfMatchInput = inputView.setNumberOfMatchInput();
 
         Garage garage = new Garage();
-        List<Car> cars = garage.createCars(numberOfCarInput);
+        List<Car> cars = garage.createCars(nameOfCarInput);
 
         Racing racing = new Racing(numberOfMatchInput, cars);
 
         ResultView resultView = new ResultView();
+        RacingCars racingCars = new RacingCars();
 
-        while (racing.getLeftMatchCounts() > 0) {
-            resultView.printResult(racing.race());
+        while (racing.isNotFinished()) {
+            racingCars = racing.race();
+            resultView.printMatchResult(racingCars);
         }
+
+        resultView.printWinnerResult(Winner.award(racingCars));
 
     }
 }
