@@ -1,7 +1,7 @@
 public class Car {
 
     private int number;
-    private StringBuilder mark;
+    private final StringBuilder mark;
 
     public Car() {
         mark = new StringBuilder();
