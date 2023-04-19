@@ -13,10 +13,11 @@ public class GameService {
         this.trialNumber = trialNumber;
     }
 
-    public List<Result> play(){
+    public ScoreBoard play(){
         CarCollection cars = new CarCollection(carNames, moveStrategy);
         List<Result> results = tryMoves(cars, this.trialNumber);
-        return results;
+        List<String> winners = cars.getFrontRunnerNames();
+        return new ScoreBoard(results, winners);
     }
 
     private List<Result> tryMoves(CarCollection cars, int trialNumber) {

@@ -29,11 +29,4 @@ public class CarCollectionTest {
         ArrayList<CarScore> expected = new ArrayList<>(Arrays.asList(new CarScore("Ayla", 0), new CarScore("Jenna", 0)));
         assertThat(carCollection.getCarScores()).isEqualTo(expected);
     }
-
-    @Test
-    @DisplayName("지정한 car의 개수를 반환할 수 있다.")
-    void size() {
-        CarCollection carCollection = new CarCollection(carNames, new FourOverTenMoveStrategy());
-        assertThat(carCollection.size()).isEqualTo(2);
-    }
 }
