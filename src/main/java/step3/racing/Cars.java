@@ -1,6 +1,5 @@
 package step3.racing;
 
-import step3.util.RandomGenerator;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,9 +26,5 @@ public class Cars {
 
     public int count() {
         return this.carList.size();
-    }
-
-    public void moveAll() {
-        this.carList.forEach(car -> car.move(RandomGenerator.generate(10)));
     }
 }

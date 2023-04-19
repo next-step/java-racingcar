@@ -1,6 +1,8 @@
 package step3.racing;
 
 
+import step3.util.RandomGenerator;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +12,7 @@ import java.util.List;
  */
 public class CarRacingGame {
 
-    private final Cars cars;
+    private Cars cars;
     private RacingResult racingResult;
 
     public CarRacingGame(int carsCount) {
@@ -52,9 +54,11 @@ public class CarRacingGame {
     }
 
     private void doRounds(int roundsCount) {
+        List<Car> carList = cars.deepCopyList();
         for (int i = 0; i < roundsCount; i++) {
-            this.cars.moveAll();
+            carList.forEach(car -> car.move(RandomGenerator.generate(10)));
         }
+        this.cars = new Cars(carList);
     }
 
     private void recordResult() {
