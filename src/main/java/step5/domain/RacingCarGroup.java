@@ -19,6 +19,7 @@ public class RacingCarGroup {
         return new RacingCarGroup(racingCarList);
     }
 
+    // racing car 생성시 불변 객체로
     private static List<RacingCar> makeRacingCarList(String inputCarName) {
         validateEmpty(inputCarName);
         List<String> carNameList = getCarNameList(inputCarName);
