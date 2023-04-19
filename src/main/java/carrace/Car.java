@@ -22,7 +22,7 @@ public class Car {
     }
 
     public int getPositionAtRound(int round) {
-        if (this.position.size() < round) {
+        if (round < 0 || this.position.size() < round) {
             throw new IndexOutOfBoundsException();
         }
         return this.position.get(round);
