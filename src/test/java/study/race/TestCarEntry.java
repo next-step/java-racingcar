@@ -17,9 +17,8 @@ public class TestCarEntry {
         carEntry = new CarEntry(car);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "CarEntry 객체의 전진 조건 테스트")
     @CsvSource({"4, 1", "2, 0"})
-    @DisplayName("CarEntry 객체의 전진 조건 테스트")
     public void test_carentry_move_for_condition(int conditionNum, int moveNum) {
         carEntry.move(conditionNum);
 
