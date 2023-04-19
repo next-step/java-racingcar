@@ -1,16 +1,14 @@
 package racing.model;
 
+import racing.model.move.MoveStrategy;
 import racing.util.RandomUtil;
 
 public class Car {
 
-    public static final int LEAST_NUM = 4;
     private int position;
 
-    public void move() {
-        int randomNumber = RandomUtil.getRandomValue();
-
-        if (randomNumber >= LEAST_NUM) {
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.move()) {
             position++;
         }
     }
