@@ -14,6 +14,6 @@ public class RacingApplication {
 
         RacingGame racingGame = new RacingGame(carNameList, new RandomRacingRule());
         GameResult result = racingGame.start(opportunity);
-        RacingPrinter.drawPositions(result);
+        RacingPrinter.drawResult(result);
     }
 }

@@ -4,7 +4,8 @@ public class Car {
 
     public static final int MAX_LENGTH = 5;
     public static final int ZERO = 0;
-    private int position = ZERO;
+    public static final int DEFAULT_POSITION = 1;
+    private int position = DEFAULT_POSITION;
     private final String name;
 
     public Car(String name) {
@@ -31,10 +32,9 @@ public class Car {
         return name;
     }
 
-    public int race(int randomNumber) {
+    public void race(int randomNumber) {
         if(randomNumber > 3) {
             position++;
         }
-        return position;
     }
 }

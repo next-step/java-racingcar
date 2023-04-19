@@ -15,25 +15,30 @@ public class Cars {
         return this.carList;
     }
 
-    public List<Integer> valueOfCarsPosition() {
+    public void race(RacingRule racingRule) {
+        List<Integer> result = new ArrayList<>();
+        for (Car car : carList) {
+            car.race(racingRule.generateNumber());
+        }
+    }
+
+    public int countTotalCar() {
+        return carList.size();
+    }
+
+    public List<String> valueOfEntryNameList() {
+        List<String> entryNameList = new ArrayList<>();
+        for (Car car : carList) {
+            entryNameList.add(car.valueOfName());
+        }
+        return entryNameList;
+    }
+
+    public List<Integer> currentRoundResult() {
         List<Integer> currentPositions = new ArrayList<>();
         for (Car car : carList) {
             currentPositions.add(car.valueOfCurrentPosition());
         }
         return currentPositions;
-//        return carList.stream().map(Car::valueOfCurrentPosition)
-//                .collect(Collectors.toList());
-    }
-
-    public RoundResult race(RacingRule racingRule) {
-        List<Integer> result = new ArrayList<>();
-        for (Car car : carList) {
-            result.add(car.race(racingRule.generateNumber()));
-        }
-        return new RoundResult(result);
-    }
-
-    public int countTotalCar() {
-        return carList.size();
     }
 }

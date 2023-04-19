@@ -18,7 +18,7 @@ public class CarTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"1, 0", "3, 0", "4, 1", "9, 1"})
+    @CsvSource(value = {"1, 1", "3, 1", "4, 2", "9, 2"})
     void carRaceTest(int randomNumber, int expectedPosition) {
         Car car = new Car("test");
         car.race(randomNumber);

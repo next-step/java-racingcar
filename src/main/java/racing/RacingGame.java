@@ -28,10 +28,11 @@ public class RacingGame {
     }
 
     public GameResult start(int opportunity) {
-        List<RoundResult> totalResult = new ArrayList<>();
+        GameResult gameResult = new GameResult(cars.valueOfEntryNameList());
         for (int i = 0; i < opportunity; i++) {
-            totalResult.add(cars.race(racingRule));
+            cars.race(racingRule);
+            gameResult.addRound(cars.currentRoundResult());
         }
-        return new GameResult(totalResult);
+        return gameResult;
     }
 }
