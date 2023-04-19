@@ -12,16 +12,9 @@ public class RaceGame {
         Cars cars = new Cars(carNum);
 
         for (int i = 0; i < attempts; i++) {
-            ResultView.printRoundResult(movingCars(cars.getCars()));
+            ResultView.printRoundResult((cars.move()));
         }
 
-    }
-
-    private List<Car> movingCars(List<Car> cars) {
-        for (Car car : cars) {
-            car.move();
-        }
-        return cars;
     }
 
 }
