@@ -1,4 +1,4 @@
-package study.step2;
+package study.caculator;
 
 import java.util.regex.Pattern;
 
@@ -12,7 +12,7 @@ public class DelimiterManager {
       return value.split(DEFAULT_DELIMITERS);
     }
 
-    CustomMatcher matcher = new CustomMatcher.Builder().matcher(Pattern.compile(CUSTOM_DELIMITER_REGEX).matcher(value)).build();
+    CustomMatcher matcher = new CustomMatcher(Pattern.compile(CUSTOM_DELIMITER_REGEX).matcher(value));
     matcher.findCustomDelimiter();
     String customDelimiter = matcher.group(1);
     String[] numbers = matcher.group(2).split(customDelimiter);
