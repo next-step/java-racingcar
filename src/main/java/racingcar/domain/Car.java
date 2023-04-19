@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import java.util.Objects;
+
 public class Car {
 
     public static final int NAME_MAX_LENGTH = 5;
@@ -40,5 +42,18 @@ public class Car {
 
     private boolean isCarMovable(int number) {
         return number >= MOVE_STANDARD;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return moveCount == car.moveCount && Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, moveCount);
     }
 }
