@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import step3.view.InputView;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class CarRacingGameTest {
 
     @BeforeEach
     void init() {
-        carRacingGame = new CarRacingGame();
+        carRacingGame = new CarRacingGame(new InputView());
 
     }
 

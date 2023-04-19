@@ -5,16 +5,15 @@ import step3.view.InputView;
 import step3.view.ResultView;
 
 import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class CarRacingGame {
 
-    private final Scanner scanner;
+    private final InputView inputView;
 
-    public CarRacingGame() {
-        scanner = new Scanner(System.in);
+    public CarRacingGame(InputView inputView) {
+        this.inputView = inputView;
     }
 
     public void startGame() {
@@ -44,14 +43,10 @@ public class CarRacingGame {
 
     GameStartParameter scanGameStartParameters() {
         InputView.printCarNumTakingView();
-        int carNums = scanNextPositiveInteger().getIntValue();
+        int carNums = inputView.scanNextPositiveInteger().getIntValue();
         InputView.printTryNumView();
-        int runNums = scanNextPositiveInteger().getIntValue();
+        int runNums = inputView.scanNextPositiveInteger().getIntValue();
 
         return new GameStartParameter(carNums, runNums);
-    }
-
-    PositiveInteger scanNextPositiveInteger() {
-        return new PositiveInteger(scanner.nextInt());
     }
 }
