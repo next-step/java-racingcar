@@ -15,5 +15,4 @@ public class Car {
     public int findCarPoint() {
         return point;
     }
-
 }

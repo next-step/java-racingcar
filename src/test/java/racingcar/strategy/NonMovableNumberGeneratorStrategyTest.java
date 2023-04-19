@@ -11,7 +11,6 @@ class NonMovableNumberGeneratorStrategyTest {
     @DisplayName("정지 전략은 차가 이동하지 않는다")
     @Test
     void 정지_전략_테스트() {
-
         Car car = new Car();
 
         car.move(new NonMovableNumberGeneratorStrategy());
