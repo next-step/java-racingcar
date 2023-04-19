@@ -6,8 +6,12 @@ public class Car {
     private final MoveStrategy moveStrategy;
 
     public Car(String name, MoveStrategy moveStrategy) {
-        this.position = new Position();
+        this(name, 0, moveStrategy);
+    }
+
+    public Car(String name, int position, MoveStrategy moveStrategy) {
         this.name = new Name(name);
+        this.position = new Position(position);
         this.moveStrategy = moveStrategy;
     }
 

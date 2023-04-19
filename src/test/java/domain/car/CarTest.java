@@ -1,8 +1,5 @@
 package domain.car;
 
-import domain.car.Car;
-import domain.car.MoveStrategy;
-import domain.car.Position;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -55,9 +52,7 @@ public class CarTest {
     @DisplayName("자동차 이동거리를 비교할 수 있다")
     @Test
     void compareCarPosition() {
-        MoveStrategy moveStrategy = () -> true;
-        Car car = new Car("TEST", moveStrategy);
-        car.move();
+        Car car = new Car("Car", 1, () -> true);
         assertThat(car.getPosition()).isEqualTo(new Position(1));
     }
 }
