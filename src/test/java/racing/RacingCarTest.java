@@ -17,7 +17,15 @@ public class RacingCarTest {
 
   @BeforeEach
   public void init() {
-    cars = new Cars(CAR_NUMBER);
+    cars = new Cars("pobi,crong,honux");
+  }
+
+  @Test
+  void 자동차이름은5자를초과할수없다() {
+    assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
+        .isThrownBy(() -> {
+          cars = new Cars("pobipobi,crong,honux");
+        });
   }
 
   @Test
@@ -54,12 +62,6 @@ public class RacingCarTest {
   void 이동횟수음수입력() {
     assertThatExceptionOfType(NumberFormatException.class)
         .isThrownBy(() -> cars.race(cars.getGameCar(), -1));
-  }
-
-  @Test
-  void 자동차갯수음수입력() {
-    assertThatExceptionOfType(NumberFormatException.class)
-        .isThrownBy(() -> new Cars(-1));
   }
 
   @Test
