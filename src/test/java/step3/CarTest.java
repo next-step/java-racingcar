@@ -20,6 +20,17 @@ public class CarTest {
     }
 
     @Test
+    @DisplayName("랜덤 값이 작을 경우 자동차는 이동할 수 없다.")
+    void testDoNotMoveCar() {
+        Car car = new Car("name");
+        int originalPosition = car.getPositionValue();
+
+        car.move(false);
+
+        assertEquals(originalPosition, car.getPositionValue());
+    }
+
+    @Test
     @DisplayName("자동차 이름은 5자를 초과할 수 없다.")
     void testValidateCarName(){
         assertThrows(IllegalArgumentException.class, () -> new Car("123456"));
