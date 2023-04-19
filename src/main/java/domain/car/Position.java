@@ -1,4 +1,4 @@
-package car;
+package domain.car;
 
 public class Position implements Comparable<Position> {
     private static final int DEFAULT_POSITION = 0;

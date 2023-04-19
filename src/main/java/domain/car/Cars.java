@@ -1,6 +1,6 @@
-package car;
+package domain.car;
 
-import game.CarDto;
+import domain.game.CarDto;
 
 import java.util.List;
 import java.util.stream.Collectors;

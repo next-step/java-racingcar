@@ -1,4 +1,4 @@
-package game;
+package domain.game;
 
 public class Stage {
     private final int totalStage;

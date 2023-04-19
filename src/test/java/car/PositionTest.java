@@ -1,5 +1,6 @@
 package car;
 
+import domain.car.Position;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

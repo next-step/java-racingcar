@@ -1,7 +1,7 @@
-package game;
+package domain.game;
 
-import car.Car;
-import car.Cars;
+import domain.car.Car;
+import domain.car.Cars;
 
 import java.util.ArrayList;
 import java.util.List;
