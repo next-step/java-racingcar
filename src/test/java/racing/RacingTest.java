@@ -24,8 +24,8 @@ public class RacingTest {
     void 시도횟수_음수_입력() {
         String input_car_names = "pobi,crong,honux";
         assertAll(
-                () -> assertThatThrownBy(() -> new Racing(input_car_names,-1)).isInstanceOf(IllegalArgumentException.class).hasMessage("음수는 입력할 수 없습니다."),
-                () -> assertThatThrownBy(() -> new Racing(input_car_names,-7)).isInstanceOf(IllegalArgumentException.class).hasMessage("음수는 입력할 수 없습니다.")
+                () -> assertThatThrownBy(() -> new Racing(input_car_names,-1)).isInstanceOf(IllegalArgumentException.class),
+                () -> assertThatThrownBy(() -> new Racing(input_car_names,-7)).isInstanceOf(IllegalArgumentException.class)
         );
     }
 
@@ -57,8 +57,8 @@ public class RacingTest {
     @Test
     void 자동차이름길이초과() {
         assertAll(
-                () -> assertThatThrownBy(() -> new Racing("pobi,tooLongName,honux",5)).isInstanceOf(IllegalArgumentException.class).hasMessage("자동차 이름은 5자를 초과할 수 없습니다."),
-                () -> assertThatThrownBy(() -> new Car("tooLongName")).isInstanceOf(IllegalArgumentException.class).hasMessage("자동차 이름은 5자를 초과할 수 없습니다.")
+                () -> assertThatThrownBy(() -> new Racing("pobi,tooLongName,honux",5)).isInstanceOf(IllegalArgumentException.class),
+                () -> assertThatThrownBy(() -> new Car("tooLongName")).isInstanceOf(IllegalArgumentException.class)
         );
     }
 

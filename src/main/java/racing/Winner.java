@@ -3,7 +3,7 @@ package racing;
 public class Winner {
     private String name;
     private int moveStatus;
-    private Cars cars;
+    private final Cars cars;
 
     public Winner(Cars cars){
         this.cars = cars;
