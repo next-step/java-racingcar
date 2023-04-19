@@ -15,8 +15,8 @@ public class SettingGame {
 
         CarMoveStrategy carMoveStrategy = new CarMoveStrategy(new RandomNumber());
 
-        for (int i = 0; i < racingGameInputs.getNameOfCars().length; i++) {
-            carList.add(new Car(ZERO, racingGameInputs.getNameOfCars()[i], carMoveStrategy));
+        for (int i = 0; i < racingGameInputs.getNameOfCars().size(); i++) {
+            carList.add(new Car(ZERO, racingGameInputs.getNameOfCars().get(i), carMoveStrategy));
         }
 
         return carList;
