@@ -1,12 +1,11 @@
-package step3_racingcar.service;
+package step4_racingcar_winner.service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import step3_racingcar.domain.Car;
-import step3_racingcar.domain.Cars;
-import step3_racingcar.dto.CarDTO;
+import step4_racingcar_winner.domain.Cars;
+import step4_racingcar_winner.dto.CarDTO;
 
 public class GameProcess {
 
