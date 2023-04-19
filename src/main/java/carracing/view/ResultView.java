@@ -8,10 +8,9 @@ import java.util.List;
 public class ResultView {
 
     public void outputResult(List<Car> cars) {
-        int carNumber = 0;
         for (Car car : cars) {
-            carNumber += 1;
-            System.out.print(carNumber + " : ");
+            String carName = car.getName();
+            System.out.print(carName + " : ");
             int carLocation = car.getLocation();
             for (int i = 0; i < carLocation; i++) {
                 System.out.print("-");
@@ -21,7 +20,18 @@ public class ResultView {
         System.out.println();
     }
 
+    public static String putComma(String winnerName) {
+        if (winnerName.isBlank() == false) {
+            winnerName += ", ";
+        }
+        return winnerName;
+    }
+
     public void resultStart() {
         System.out.println("\n실행결과");
+    }
+
+    public void outputWinnersName(String winners) {
+        System.out.println(winners + "(이)가 최종 우승했습니다.");
     }
 }

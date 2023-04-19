@@ -8,10 +8,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarCompanyTest {
     @Test
-    @DisplayName("자동차 객체 생성 테스트")
+    @DisplayName("자동차 객체 이름 갯수만큼 생성되는지 테스트")
     void createCarObject() {
-        int numberOfCar = 4;
-        CarCompany carCompany = new CarCompany();
-        assertThat(carCompany.createCar(numberOfCar).size()).isEqualTo(4);
+        String carNames = "kim,woo,hun";
+        assertThat(CarCompany.createCar(carNames).size()).isEqualTo(3);
     }
+
+    @Test
+    @DisplayName("자동차이름 split 테스트")
+    void splitCarName() {
+        String carNames = "kim,woo,hun";
+        String [] arrCarNames = CarCompany.splitCarName(carNames);
+        assertThat(arrCarNames).containsExactly("kim","woo","hun");
+    }
+
 }

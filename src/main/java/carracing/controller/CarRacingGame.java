@@ -1,5 +1,6 @@
 package carracing.controller;
 
+import carracing.domain.Award;
 import carracing.domain.Car;
 import carracing.domain.CarCompany;
 import carracing.view.InputView;
@@ -11,14 +12,15 @@ import static carracing.domain.Race.moveCars;
 
 public class CarRacingGame {
     public static void main(String[] args) {
-        //자동차 대수 및 이동 횟수 입력
         InputView inputView = new InputView();
-        int carNum = inputView.inputCarNum();
-        int moveNum = inputView.inputMoveNum();
+        //자동차 이름 입력
+        String carNames = inputView.inputCarName();
 
-        //입력 대수만큼 자동차 객체 생성
-        CarCompany carCompany = new CarCompany();
-        List<Car> cars = carCompany.createCar(carNum);
+        //자동차 이름 개수만큼 자동차 객체 생성
+        List<Car> cars = CarCompany.createCar(carNames);
+
+        //이동 횟수 입력
+        int moveNum = inputView.inputMoveNum();
 
         ResultView resultView = new ResultView();
         //실행결과 텍스트 출력
@@ -30,5 +32,11 @@ public class CarRacingGame {
             //출력
             resultView.outputResult(cars);
         }
+
+        //시상식
+        String winners = Award.getWinner(cars);
+
+        //우승자 출력
+        resultView.outputWinnersName(winners);
     }
 }
