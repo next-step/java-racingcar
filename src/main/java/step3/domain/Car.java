@@ -1,7 +1,5 @@
 package step3.domain;
 
-import org.apache.commons.lang3.RandomStringUtils;
-
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -10,11 +8,12 @@ public class Car implements Serializable {
     private static final int MIN_NUMBER = 0;
     private static final int MAX_NUMBER = 9;
     private static final int START_LOCATION = 0;
+    private static final String DEFAULT_CAR_NAME = "benz";
     private int location;
     private String carName;
 
     public Car() {
-        this(RandomStringUtils.randomAlphabetic(5));
+        this(DEFAULT_CAR_NAME);
     }
 
     public Car(String carName) {
