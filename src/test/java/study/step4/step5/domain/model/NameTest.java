@@ -3,7 +3,7 @@ package study.step4.step5.domain.model;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import study.step5.domain.model.Name;
-import study.step5.exception.CustomException;
+import study.step5.exception.NameMaxLengthException;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -16,7 +16,7 @@ class NameTest {
 
         assertThatThrownBy(() -> {
             new Name(inputName);
-        }).isInstanceOf(CustomException.class)
+        }).isInstanceOf(NameMaxLengthException.class)
                 .hasMessageContaining("이름이 5 글자 이상입니다.");
     }
 
