@@ -25,6 +25,16 @@ public class TestCar {
     }
 
     @Test
+    @DisplayName("차량 생성 시 position도 입력받으면 해당 position을 가진다")
+    public void car_with_position() {
+        int expected = 6;
+
+        Car finishedCar = new Car("fini", 6);
+        int actual = finishedCar.currentPosition();
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
     @DisplayName("차량 이동 시 현재 위치에 입력된 수만큼 더해진다")
     public void car_move() {
         int input = 3;
@@ -40,7 +50,7 @@ public class TestCar {
     public void car_name() {
         String expected = "pobi";
 
-        String actual = car.getName();
+        String actual = car.name();
         assertThat(actual).isEqualTo(expected);
     }
 

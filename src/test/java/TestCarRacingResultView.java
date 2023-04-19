@@ -25,13 +25,13 @@ public class TestCarRacingResultView {
     @DisplayName("Distance 출력 정상인지 확인")
     public void printCurrentDistance() {
         List<Car> cars = new ArrayList<>();
-        Car car = new Car("pobi");
-        car.move(5);
+        Car car = new Car("pobi", 5);
         cars.add(car);
 
-        System.out.println("== expected > pobi : ------");
-        System.out.print(  "== actual   > ");
+        String expected = "pobi : -----";
         ResultView.printCurrentDistance(cars);
+
+        assertThat(outputStreamCaptor.toString().trim()).isEqualTo(expected);
     }
 
     @Test

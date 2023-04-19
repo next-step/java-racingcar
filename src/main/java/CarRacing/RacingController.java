@@ -6,7 +6,7 @@ import CarRacing.view.ResultView;
 
 import static java.lang.System.exit;
 
-public class Racing {
+public class RacingController {
 
     public static void start() {
         String[] nameOfCars = InputView.getCars();

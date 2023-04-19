@@ -53,4 +53,10 @@ public class Competition {
         }
     }
 
+    public void entryWithPosition(String[] names, int[] positions) {
+        for (int ix=0; ix<names.length; ix++) {
+            cars.add(new Car(names[ix], positions[ix]));
+        }
+    }
+
 }
