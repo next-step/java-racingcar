@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameService {
-    private int carNumber;
+    private List<String> carNames;
     private int trialNumber;
     private MoveStrategy moveStrategy = new FourOverTenMoveStrategy();
 
-    public GameService(int carNumber, int trialNumber) {
-        this.carNumber = carNumber;
+    public GameService(List<String> carNames, int trialNumber) {
+        this.carNames = carNames;
         this.trialNumber = trialNumber;
     }
 
     public List<Result> play(){
-        CarCollection cars = new CarCollection(this.carNumber, moveStrategy);
+        CarCollection cars = new CarCollection(carNames, moveStrategy);
         List<Result> results = tryMoves(cars, this.trialNumber);
         return results;
     }

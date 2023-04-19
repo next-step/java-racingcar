@@ -7,10 +7,10 @@ import java.util.List;
 public class CarCollection {
     private List<Car> carList;
 
-    public CarCollection(int number, MoveStrategy moveStrategy) {
+    public CarCollection(List<String> carNames, MoveStrategy moveStrategy) {
         this.carList = new ArrayList<>();
-        for(int i=0; i<number; i++) {
-            carList.add(new Car(moveStrategy));
+        for (String carName: carNames) {
+            carList.add(new Car(moveStrategy, carName));
         }
     }
 

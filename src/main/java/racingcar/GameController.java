@@ -12,13 +12,10 @@ public class GameController {
     }
 
     public void play() {
-        int carNumber = inputView.readCarNumber();
+        List<String> carNames = inputView.readCarNames();
         int trialNumber = inputView.readTrialNumber();
 
-        GameService gameService = new GameService(carNumber, trialNumber);
+        GameService gameService = new GameService(carNames, trialNumber);
         this.resultView.printResult(gameService.play());
-
-
-
     }
 }
