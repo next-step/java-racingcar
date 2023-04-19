@@ -2,31 +2,33 @@ package racingCar;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
 import racingCar.car.RacingCar;
-import racingCar.car.move.RacingCarMoveDirectionStrategy;
-import racingCar.car.move.RacingCarMoveServiceLocator;
+import racingCar.exception.NotAllowedGameSettingException;
+import racingCar.random.RandomMoveAckGenerator;
 import racingCar.view.RacingCarGameResultView;
-import util.RandomUtils;
+import util.CollectionUtils;
 
 public final class RacingCarGame {
 
   private final List<RacingCar> racingCars;
   private final RacingCarGameResultView resultView;
 
-  private final RacingCarMoveServiceLocator racingCarMoveServiceLocator;
+  private final RandomMoveAckGenerator randomMoveAckGenerator;
 
-  public RacingCarGame(int carCnt, RacingCarGameResultView resultView, List<RacingCarMoveDirectionStrategy> inGameSupportCarMoveDirections) {
-    this.racingCarMoveServiceLocator = new RacingCarMoveServiceLocator(inGameSupportCarMoveDirections);
-    this.racingCars = generateRacingCars(carCnt);
+  public RacingCarGame(List<String> carNames, RacingCarGameResultView resultView, RandomMoveAckGenerator randomMoveAckGenerator) {
+    this.randomMoveAckGenerator = randomMoveAckGenerator;
     this.resultView = resultView;
+    this.racingCars = generateRacingCars(carNames);
   }
 
-  private List<RacingCar> generateRacingCars(int carCnt) {
-    return IntStream.rangeClosed(1, carCnt)
-            .mapToObj(carId -> new RacingCar(carId, racingCarMoveServiceLocator))
-            .collect(Collectors.toUnmodifiableList());
+  private List<RacingCar> generateRacingCars(List<String> carNames) {
+    if (CollectionUtils.isEmpty(carNames)) {
+      throw new NotAllowedGameSettingException("자동차 개수가 최소 하나 이상이여야합니다.");
+    }
+
+    return carNames.stream()
+        .map(carName -> new RacingCar(carName, randomMoveAckGenerator))
+        .collect(Collectors.toUnmodifiableList());
   }
 
   public void play (int moveTryCnt) {
@@ -36,9 +38,24 @@ public final class RacingCarGame {
     }
 
     resultView.printAllSnapShot();
+    resultView.printWinners(getWinners());
   }
 
   private void moveAllRacingCars(List<RacingCar> racingCarList) {
-    racingCarList.forEach(car -> car.moveIfPossible(RandomUtils.getRandomSinglePositiveDigit()));
+    racingCarList.forEach(RacingCar::moveIfPossible);
+  }
+
+  private List<RacingCar> getWinners() {
+    final int maxPosition = getMaxPositionOfGame();
+    return racingCars.stream()
+        .filter(position -> position.getPosition() == maxPosition)
+        .collect(Collectors.toList());
+  }
+
+  private int getMaxPositionOfGame() {
+    return racingCars.stream()
+        .mapToInt(RacingCar::getPosition)
+        .max()
+        .orElseThrow(RuntimeException::new);
   }
 }
