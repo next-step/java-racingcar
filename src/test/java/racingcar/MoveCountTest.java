@@ -31,7 +31,6 @@ public class MoveCountTest {
         //given
         MoveCount myMoveCount = new MoveCount(MOVE_COUNT);
 
-
         //when
         boolean isGreater = myMoveCount.isGreaterThan(MAX_MOVE_COUNT);
 
@@ -44,7 +43,6 @@ public class MoveCountTest {
     void isEqualTo() {
         //given
         MoveCount myMoveCount = new MoveCount(MOVE_COUNT2);
-
 
         //when
         boolean isEqual = myMoveCount.isEqualTo(MAX_MOVE_COUNT);

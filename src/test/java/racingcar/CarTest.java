@@ -1,7 +1,6 @@
 package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.domain.Car;
@@ -9,8 +8,6 @@ import racingcar.domain.Car;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
-
-    public static final int MOVE_COUNT = 1;
 
     @DisplayName("숫자가 4이상이면 전진")
     @ParameterizedTest
@@ -26,28 +23,4 @@ class CarTest {
         //then
         assertThat(car.moveCount().value()).isEqualTo(moveCount);
     }
-
-    @DisplayName("moveCount 비교 (>)")
-    @Test
-    void moveCountIsGreaterThan() throws Exception {
-        //given
-        Car car = new Car("oyeon", MOVE_COUNT);
-
-        //when
-        //then
-        assertThat(car.moveCount().isGreaterThan(MOVE_COUNT - 1)).isTrue();
-        assertThat(car.moveCount().isGreaterThan(MOVE_COUNT + 1)).isFalse();
-    }
-
-    @DisplayName("moveCount 비교 (=)")
-    @Test
-    void moveCountIsEqualTo() throws Exception {
-        //given
-        Car car = new Car("oyeon", MOVE_COUNT);
-
-        //when
-        //then
-        assertThat(car.moveCount().isEqualTo(MOVE_COUNT)).isTrue();
-    }
-
 }
