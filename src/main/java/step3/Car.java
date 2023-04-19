@@ -7,10 +7,16 @@ public class Car {
     private static final int MAX_RANDOM_NUMBER = 10;
     private static final int MIN_MOVE_CONDITION = 4;
     private static final Random RANDOM = new Random();
+    private final String name;
     private int location;
 
-    public Car() {
+    public Car(String name) {
+        this.name = name;
         this.location = 0;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getLocation() {
