@@ -40,7 +40,7 @@ public class RacingTest {
         assertThat(racing.getLeftMatchCounts()).isEqualTo(leftMatchCounts - 1);
     }
 
-    @DisplayName("3단계 - 자동차 경주 - 남은 매치 카운트가 0 초과인경우 레이싱이 아직 안끝났는지 확인")
+    @DisplayName("4단계 - 자동차 경주(우승자) - 남은 매치 카운트가 0 초과인 경우 레이싱이 아직 안끝났는지 확인")
     @Test
     void is_not_finished() {
         //given
