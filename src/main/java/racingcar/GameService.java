@@ -24,7 +24,7 @@ public class GameService {
 
         for (int i = 0; i< trialNumber; i++) {
             cars.tryMove();
-            results.add(new Result(cars.getPositionList()));
+            results.add(new Result(cars.getCarScores()));
         }
 
         return results;

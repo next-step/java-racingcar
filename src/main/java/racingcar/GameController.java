@@ -16,6 +16,6 @@ public class GameController {
         int trialNumber = inputView.readTrialNumber();
 
         GameService gameService = new GameService(carNames, trialNumber);
-        this.resultView.printResult(gameService.play());
+        this.resultView.printAllResult(gameService.play());
     }
 }

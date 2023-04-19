@@ -18,16 +18,16 @@ public class CarCollectionTest {
     @DisplayName("모든 자동차는 이동 시 위치가 1 증가한다.")
     void move() {
         CarCollection carCollection = new CarCollection(carNames, moveStrategyTrue);
-        ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(1,1));
-        assertThat(carCollection.getPositionList()).isEqualTo(expected);
+        ArrayList<CarScore> expected = new ArrayList<>(Arrays.asList(new CarScore("Ayla", 1), new CarScore("Jenna", 1)));
+        assertThat(carCollection.getCarScores()).isEqualTo(expected);
     }
 
     @Test
     @DisplayName("모든 자동차는 정지 시 위치가 변하지 않는다.")
     void stay() {
         CarCollection carCollection = new CarCollection(carNames, moveStrategyFalse);
-        ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(0,0));
-        assertThat(carCollection.getPositionList()).isEqualTo(expected);
+        ArrayList<CarScore> expected = new ArrayList<>(Arrays.asList(new CarScore("Ayla", 0), new CarScore("Jenna", 0)));
+        assertThat(carCollection.getCarScores()).isEqualTo(expected);
     }
 
     @Test

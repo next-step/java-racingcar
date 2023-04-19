@@ -20,12 +20,12 @@ public class CarCollection {
         }
     }
 
-    public List<Integer> getPositionList() {
-        List<Integer> positionList = new ArrayList<>();
+    public List<CarScore> getCarScores() {
+        List<CarScore> carScores = new ArrayList<>();
         for (Car car: this.carList){
-            positionList.add(car.getPosition());
+            carScores.add(new CarScore(car.getName(), car.getPosition()));
         }
-        return positionList;
+        return carScores;
     }
 
     public int size() {

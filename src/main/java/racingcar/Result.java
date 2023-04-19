@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Result {
-    private List<Integer> positionList = new ArrayList<>();
+    private List<CarScore> carScrores = new ArrayList<>();
 
-    public Result(List<Integer> positionList) {
-        this.positionList = positionList;
+    public Result(List<CarScore> carScrores) {
+        this.carScrores = carScrores;
     }
 
-    public List<Integer> getPositionList() {
-        return positionList;
+    public List<CarScore> getCarScores() {
+        return carScrores;
     }
 }
