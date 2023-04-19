@@ -3,9 +3,6 @@ package study.racingcar.view;
 import study.racingcar.domain.Car;
 
 public class OutputView {
-    /**
-     * 출력을 담당한다.
-     */
     public static void printCarNameSign() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
     }

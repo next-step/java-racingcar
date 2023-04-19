@@ -4,9 +4,6 @@ import study.racingcar.rule.Rule;
 import study.racingcar.strategy.NumberGenerator;
 
 public class Car {
-    /**
-     * 차량을 담당한다.
-     */
     private final Position position;
     private final CarName carName;
 

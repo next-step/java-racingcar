@@ -12,9 +12,6 @@ public class GameController {
 
     public static final String CAR_NAME_DELIMITER = ",";
 
-    /**
-     * 게임 실행을 담당한다
-     */
     public static void main(String[] args) {
         final List<String> carNames = getCarNames();
         validateCarNameList(carNames);

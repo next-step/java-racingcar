@@ -1,7 +1,6 @@
 package study.racingcar.domain;
 
 public class Result {
-
     private final Winners winners;
     private final GameCars cars;
 

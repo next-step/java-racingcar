@@ -5,9 +5,6 @@ import java.util.Iterator;
 import java.util.List;
 
 public class GameCars implements Iterable<Car> {
-    /**
-     * Car의 list의 일급 컬렉션
-     */
     private final List<Car> cars;
 
     public GameCars(List<String> carNames) {
