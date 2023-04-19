@@ -1,12 +1,12 @@
 package step3.model;
 
+import step3.utils.RandomNumberGenerator;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-import static step3.utils.RacingUtils.generateRandomNumber;
-
 public class Cars {
-    private static final int BOUND = 10;
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
@@ -15,23 +15,23 @@ public class Cars {
 
     public void checkForwardConditionAndGo() {
         for (Car car : cars) {
-            checkRandomNumber(car);
+            car.increaseDistance();
         }
     }
 
-    public void checkRandomNumber(Car car) {
-        int randomNumber = generateRandomNumber(BOUND);
-        car.availableForward(randomNumber);
+    public List<Car> getCars() {
+        return Collections.unmodifiableList(this.cars);
     }
 
-    public List<Car> getCars() {
-        return this.cars;
+    public int getCarSize() {
+        return cars.size();
     }
 
     public static Cars generateCars(int carCount) {
         List<Car> tempCars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            Car car = new Car(0);
+            RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+            Car car = new Car(0, randomNumberGenerator);
             tempCars.add(car);
         }
 
