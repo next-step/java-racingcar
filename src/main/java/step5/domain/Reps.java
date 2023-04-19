@@ -6,15 +6,11 @@ public class Reps {
 
     private int reps;
 
-    private Reps(int inputReps) {
+    public Reps(int inputReps) {
         if (isNegativeNumberOrZero(inputReps)) {
             throw new IllegalArgumentException("0보다 큰 수를 입력해주세요.");
         }
         this.reps = inputReps;
-    }
-
-    public static Reps of(int inputReps) {
-        return new Reps(inputReps);
     }
 
     private boolean isNegativeNumberOrZero(int inputReps) {
