@@ -2,19 +2,19 @@ package step5.domain;
 
 import step5.strategy.move.MoveStrategy;
 
-public class UsingNameRacingCar {
+public class RacingCar {
 
     private final String name;
     private int currentLocation;
 
-    private UsingNameRacingCar(String name) {
+    private RacingCar(String name) {
         this.name = name;
     }
 
-    public static UsingNameRacingCar of(String name) {
+    public static RacingCar of(String name) {
         hasCarName(name);
         hasLessThen5Name(name);
-        return new UsingNameRacingCar(name);
+        return new RacingCar(name);
     }
 
     private static void hasCarName(String name) {

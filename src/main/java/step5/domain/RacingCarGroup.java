@@ -6,17 +6,17 @@ import java.util.*;
 
 import static java.util.stream.Collectors.toUnmodifiableList;
 
-public class RacingCarList {
+public class RacingCarGroup {
 
     private final List<RacingCar> racingCarList;
 
-    private RacingCarList(List<RacingCar> racingCarList) {
+    private RacingCarGroup(List<RacingCar> racingCarList) {
         this.racingCarList = racingCarList;
     }
 
-    public static RacingCarList of(String inputCarName) {
+    public static RacingCarGroup of(String inputCarName) {
         List<RacingCar> racingCarList = makeRacingCarList(inputCarName);
-        return new RacingCarList(racingCarList);
+        return new RacingCarGroup(racingCarList);
     }
 
     private static List<RacingCar> makeRacingCarList(String inputCarName) {
