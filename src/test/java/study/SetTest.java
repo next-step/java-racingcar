@@ -29,7 +29,7 @@ public class SetTest {
     @Test
     @DisplayName("Set의 size() 메소드를 활용해 Set의 크기를 확인")
     void sizeTest() {
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     // 요구사항 2
