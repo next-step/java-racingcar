@@ -10,22 +10,10 @@ public class RandomGenerator {
 
     private static final Random RANDOM = new Random();
 
-    public static int generate(int min, int max) {
-        validRange(min, max);
-        return randomOnRange(min, max);
-    }
-
-    private static void validRange(int min, int max) {
-        if (min > max) {
-            throw new IllegalArgumentException("최소 숫자가 최대 숫자보다 클 수 없습니다.");
+    public static int generate(int bound) {
+        if (bound < 1) {
+            throw new IllegalArgumentException("1보다 작은 값은 사용할 수 없습니다.");
         }
-        if (min == max) {
-            throw new IllegalArgumentException("min와 max의 값이 같을 수 없습니다.");
-        }
-    }
-
-    private static int randomOnRange(int min, int max) {
-        int range = Math.abs(max + 1 - min);
-        return RANDOM.nextInt(range) + min;
+        return RANDOM.nextInt(bound);
     }
 }

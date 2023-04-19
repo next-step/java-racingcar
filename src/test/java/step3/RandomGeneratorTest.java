@@ -1,11 +1,9 @@
 package step3;
 
 import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.Test;
 import step3.util.RandomGenerator;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
  * @author : 0giri
@@ -14,19 +12,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class RandomGeneratorTest {
 
     @RepeatedTest(100)
-    void 범위가_주어지면_랜덤정수_반환() {
-        assertThat(RandomGenerator.generate(-3, 3)).isBetween(-3, 3);
-    }
-
-    @Test
-    void min가_max보다_큰경우_예외() {
-        assertThatThrownBy(()-> RandomGenerator.generate(3, -3))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    void min와_max가_같은경우_예외() {
-        assertThatThrownBy(()-> RandomGenerator.generate(5, 5))
-                .isInstanceOf(IllegalArgumentException.class);
+    void 입력한_숫자_미만_0_이상_랜덤정수_생성() {
+        assertThat(RandomGenerator.generate(10)).isBetween(0, 9);
     }
 }
