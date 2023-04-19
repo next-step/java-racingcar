@@ -1,12 +1,13 @@
 package racing.domain;
 
-import racing.util.RandomNumberGenerator;
+
+import racingrefactoring.util.RandomNumberGenerator;
 
 public class RandomMoveStrategy implements MoveStrategy {
 
   @Override
   public boolean isMovable() {
-    int randomNumber = RandomNumberGenerator.generate();
+    int randomNumber = RandomNumberGenerator.generateNumber();
     return CarMoveCondition.isMove(randomNumber);
   }
 }
