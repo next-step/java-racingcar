@@ -34,7 +34,7 @@ public class CarTest {
     }
 
     @Test
-    void 자동차_이동시_위치변경() {
+    void 자동차_거리_4이상_전진() {
         //when
         car.move(5);
 
@@ -43,27 +43,27 @@ public class CarTest {
     }
 
     @Test
-    void 자동차_여러번_이동시_위치변경_누적() {
-        //when
-        car.move(5);
-        car.move(2);
-        car.move(3);
-
-        //then
-        assertThat(car.location()).isEqualTo(10);
-    }
-
-    @Test
-    void 자동차_멈추면_위치변경_없음() {
+    void 자동차_거리_4미만_멈춤() {
         //given
         car.move(5);
         assertThat(car.location()).isEqualTo(5);
 
         //when
-        car.stop();
+        car.move(2);
 
         //then
         assertThat(car.location()).isEqualTo(5);
+    }
+
+    @Test
+    void 자동차_여러번_이동시_위치_누적() {
+        //when
+        car.move(5);
+        car.move(2);
+        car.move(8);
+
+        //then
+        assertThat(car.location()).isEqualTo(13);
     }
 
     @Test
@@ -72,9 +72,9 @@ public class CarTest {
         assertThat(car.location()).isEqualTo(0);
 
         //when
-        car.move(1);
+        car.move(7);
 
         //then
-        assertThat(car.location()).isEqualTo(1);
+        assertThat(car.location()).isEqualTo(7);
     }
 }

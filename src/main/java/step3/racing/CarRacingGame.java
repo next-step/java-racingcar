@@ -1,8 +1,6 @@
 package step3.racing;
 
 
-import step3.util.RandomGenerator;
-
 import java.util.List;
 
 /**
@@ -54,16 +52,8 @@ public class CarRacingGame {
 
     private void doRounds(int roundsCount) {
         for (int i = 0; i < roundsCount; i++) {
-            doRound();
+            this.cars.moveAll();
         }
-    }
-
-    private void doRound() {
-        List<Car> carList = this.cars.unmodifiableList();
-        carList.parallelStream().forEach(car -> {
-            int random = RandomGenerator.generate(0, 9);
-            CarActionDecider.action(random).accept(car);
-        });
     }
 
     private void recordResult() {

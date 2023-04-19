@@ -1,7 +1,7 @@
 package step3.racing;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import step3.util.RandomGenerator;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -10,25 +10,26 @@ import java.util.stream.Collectors;
  * @since : 2023/04/16
  */
 public class Cars {
+
     private final List<Car> carList;
 
-    public Cars() {
-        this.carList = new ArrayList<>();
+    public Cars(List<Car> carList) {
+        this.carList = deepCopyCarList(carList);
     }
 
-    public void addCar(Car car) {
-        this.carList.add(car);
-    }
-
-    public List<Car> unmodifiableList() {
-        return Collections.unmodifiableList(carList);
+    private static List<Car> deepCopyCarList(List<Car> carList) {
+        return carList.stream().map(Car::new).collect(Collectors.toUnmodifiableList());
     }
 
     public List<Car> deepCopyList() {
-        return carList.stream().map(Car::new).collect(Collectors.toList());
+        return deepCopyCarList(this.carList);
     }
 
     public int count() {
         return this.carList.size();
+    }
+
+    public void moveAll() {
+        this.carList.forEach(car -> car.move(RandomGenerator.generate(10)));
     }
 }
