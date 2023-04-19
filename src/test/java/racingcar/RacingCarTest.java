@@ -3,74 +3,63 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.*;
-import racingcar.repository.MoveStrategy;
-import racingcar.repository.NormalMoveStrategy;
+import racingcar.strategy.GoMoveStrategy;
+import racingcar.strategy.MoveStrategy;
+import racingcar.strategy.RandomMoveStrategy;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 
 public class RacingCarTest {
-  @Test
-  @DisplayName("0~9사이 정수랜덤생성기")
-  public void checkRandomNumber_ReturnPositiveNumberUnderNine() {
-    RandomNumber randomNumber = new RandomNumber();
-    int result = randomNumber.calculateRandomNumber();
 
-    assertThat(result)
-        .isGreaterThanOrEqualTo(0)
-        .isLessThanOrEqualTo(9);
-  }
+    @Test
+    @DisplayName("RacingCar 객체 생성 후 position = 0인지 확인")
+    public void createRacingCar_ReturnPositionValueZero() {
+        RacingCar racingCar = new RacingCar("test");
+        int result = racingCar.position();
 
-  @Test
-  @DisplayName("CarInterface 상속으로 RacingCar 객체 생성 후 position = 0인지 확인")
-  public void createRacingCar_ReturnPositionValueZero() {
-    RacingCar racingCar = new RacingCar();
-    int result = racingCar.position();
-
-    assertThat(result).isEqualTo(0);
-  }
-
-  @Test
-  @DisplayName("전략패턴을 통한 RacingCar move 실행후 position = 1인지 확인")
-  public void moveRacingCar_ReturnPositionValueOne() {
-    RacingCar racingCar = new RacingCar();
-    MoveStrategy normalMoveStrategy = new NormalMoveStrategy();
-
-    racingCar.tryToMove(normalMoveStrategy);
-
-    int result = racingCar.position();
-
-    assertThat(result).isEqualTo(1);
-  }
-
-  @Test
-  @DisplayName("자동차 객체 여러개 생성 되는지 확인")
-  public void checkRacingCarsObject() {
-    RacingCars racingCars = new RacingCars(5);
-
-    assertThat(racingCars.statusOfRacingCars()).hasSize(5);
-  }
-
-  @Test
-  @DisplayName("5대 자동차, 4번 움직임 시도(postion max값 == 4)인 racing 확인")
-  public void checkRacingClass() {
-    Racing racing = new Racing(new RacingCars(5));
-    int numberOfTrials = 4;
-
-    while (numberOfTrials > 0) {
-      racing.startRacingRound();
-      numberOfTrials--;
+        assertThat(result).isEqualTo(0);
     }
 
-    assertThat(racing.statusOfRacing()).hasSize(5);
-    assertThat(racing.statusOfRacing()[0].position())
-        .isLessThanOrEqualTo(4);
+    @Test
+    @DisplayName("전략패턴을 통한 RacingCar move 실행후 position 인지 확인")
+    public void moveRacingCar_ReturnPositionValueOne() {
+        RacingCar racingCar = new RacingCar("test");
+        RacingCar racingCar2 = new RacingCar("test2");
+        MoveStrategy randomMoveStrategy = new RandomMoveStrategy();
+        MoveStrategy goMoveStrategy = new GoMoveStrategy();
 
-//        System.out.println("carNumber: " + resultRacing.getRacingCar(0).getNumber() + " position: " + resultRacing.getRacingCar(0).getPosition());
-//        System.out.println("carNumber: " + resultRacing.getRacingCar(1).getNumber() + " position: " + resultRacing.getRacingCar(1).getPosition());
-//        System.out.println("carNumber: " + resultRacing.getRacingCar(2).getNumber() + " position: " + resultRacing.getRacingCar(2).getPosition());
-//        System.out.println("carNumber: " + resultRacing.getRacingCar(3).getNumber() + " position: " + resultRacing.getRacingCar(3).getPosition());
-//        System.out.println("carNumber: " + resultRacing.getRacingCar(4).getNumber() + " position: " + resultRacing.getRacingCar(4).getPosition());
-  }
+        racingCar.tryToMove(randomMoveStrategy);
+        racingCar2.tryToMove(goMoveStrategy);
 
+        int result = racingCar.position();
+        int result2 = racingCar2.position();
+
+        MoveStrategy moveStrategy = () -> true;
+        racingCar2.tryToMove(moveStrategy);
+
+        int result3 = racingCar2.position();
+
+        assertThat(result).isLessThanOrEqualTo(1);
+        assertThat(result2).isEqualTo(1);
+        assertThat(result3).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("RacingCar 객체 생성 후 name = test 인지 확인")
+    public void createRacingCar_ReturnNameTest() {
+        RacingCar racingCar = new RacingCar("test");
+        String result = racingCar.name();
+
+        assertThat(result).isEqualTo("test");
+    }
+
+    @Test
+    @DisplayName("RacingCar 객체 생성 후 name > 5 IllegalArgumentException 발생")
+    public void carNameOverTheFive_ThrowException() {
+        assertThatCode(() -> {
+            RacingCar racingCar = new RacingCar("test23");
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
 }

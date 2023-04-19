@@ -2,29 +2,30 @@ package racingcar;
 
 import racingcar.domain.Racing;
 import racingcar.domain.RacingCars;
+import racingcar.strategy.RandomMoveStrategy;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
-import java.util.List;
 
 public class RacingCarApplication {
-  public static void main(String[] args) {
-    InputView inputView = new InputView();
+    public static void main(String[] args) {
+        InputView inputView = new InputView();
 
-    // 사용자에게 입력값 받기
-    int numberOfCars = inputView.askCarCount();
-    int numberOfTrials = inputView.askTrialCount();
+        String[] carNames = inputView.askCarNames();
+        RacingCars racingCars = new RacingCars(carNames);
+        Racing racing = new Racing(racingCars.statusOfRacingCars());
 
-    // 전체 자동차 객체 만들기
-    RacingCars racingCars = new RacingCars(numberOfCars);
+        int numberOfTrials = inputView.askTrialCount();
 
-    // 이동 시도 횟수에 따른 racing 진행
-    Racing racing = new Racing(racingCars);
-    ResultView resultView = new ResultView();
+        ResultView resultView = new ResultView();
 
-    for (int i = 0; i < numberOfTrials; i++) {
-      racing.startRacingRound();
-      resultView.printRacingRound(racing.statusOfRacing(), i);
+        resultView.printResultTitle();
+
+        for (int i = 0; i < numberOfTrials; i++) {
+            racing.runRacingRound(new RandomMoveStrategy());
+            resultView.printRacingRound(racingCars.statusOfRacingCars());
+        }
+
+        resultView.printGameWinner(racing.makeWinnerList());
     }
-  }
 }
