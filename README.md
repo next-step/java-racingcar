@@ -78,8 +78,8 @@
   - [x] `OutputView`를 통한 자동차 이름 입력 문구 출력 및 `Inputview`를 통해서 이름 입력
   - [x] CarName 객체에서 자동차 이름 필드 추가
   - [x] 자동차 이름 Car 객체에서 validate
-- [ ] 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다. 
-  - [ ] 출력 담당 OutputView 수정 (`OutputView.printCarStatus()` 출력 로직 수정)
+- [x] 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다. 
+  - [x] 출력 담당 OutputView 수정 (`OutputView.printCarStatus()` 출력 로직 수정)
 - [ ] 자동차 이름은 쉼표(,)를 기준으로 구분한다. 
   - [ ] 쉼표가 아닐 경우 예외 처리
 

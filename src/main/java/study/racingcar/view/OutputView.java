@@ -23,6 +23,6 @@ public class OutputView {
     }
 
      public static void printCarStatus(Car car) {
-        System.out.println(car.toString());
+         System.out.println(car.getCarName() + " : " + car);
     }
 }
