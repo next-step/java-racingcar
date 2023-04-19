@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarRacingGame {
 
@@ -44,25 +45,20 @@ public class CarRacingGame {
 
     private StringBuilder getWinnerAnnouncement(List<String> winners) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < winners.size(); i++) {
-            sb.append(winners.get(i));
-            if (i != winners.size() - 1) {
-                sb.append(", ");
-            }
+        for (String winner : winners) {
+            sb.append(winner).append(",");
         }
+        sb.deleteCharAt(sb.length() - 1);
         sb.append("가 최종 우승했습니다.");
         return sb;
     }
 
     private List<String> getWinners() {
         int maxDistance = cars.stream().map(Car::getLocation).max(Comparator.comparingInt(o -> o)).orElse(0);
-        List<String> winners = new ArrayList<>();
-        for (Car car : cars) {
-            if (car.getLocation() == maxDistance) {
-                winners.add(car.getName());
-            }
-        }
-        return winners;
+        return cars.stream()
+                .filter(car -> car.getLocation() == maxDistance)
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 
     private void printDisplay() {
