@@ -28,8 +28,8 @@ public class Main {
 
         for (int i = BEGIN_INDEX; i < tryCount; i++) {
             resultView.printCarNameAndMoveStateLines(
-                    carRacingGame.makeMoveCounts(
-                            generateRandomNumbers(carRacingGame.carsSize()))
+                    carRacingGame.moveCounts(
+                            generateRandomNumbers(carRacingGame.carSize()))
             );
         }
         resultView.printWinners(carRacingGame.winningCars());

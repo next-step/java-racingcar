@@ -38,8 +38,9 @@ public class CarRacingGameTest {
         List<Integer> numbers = Arrays.asList(1, 2, 4, 5);
 
         //when
-        List<Car> cars = new CarRacingGame(carNameInput).makeMoveCounts(numbers);
+        List<Car> cars = new CarRacingGame(carNameInput).moveCounts(numbers);
         List<Integer> moveCounts = new ArrayList<>();
+
         for (Car car : cars) {
             moveCounts.add(car.moveCount().value());
         }
@@ -55,7 +56,7 @@ public class CarRacingGameTest {
         CarRacingGame carRacingGame = new CarRacingGame("pobi,crong,honux");
 
         //when
-        carRacingGame.makeMoveCounts(Arrays.asList(1, 4, 5));
+        carRacingGame.moveCounts(Arrays.asList(1, 4, 5));
         List<Car> winningCars = carRacingGame.winningCars();
 
         //then

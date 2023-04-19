@@ -9,64 +9,33 @@ public class CarRacingGame {
     public static final int INIT_VALUE = 0;
     public static final String CAR_NAME_SEPARATOR = ",";
 
-    private final List<Car> cars;
+    private final Cars cars;
 
     public CarRacingGame(String carNameInput) {
-        String[] carNames = splitCarNameInput(carNameInput);
-        List<Car> cars = new ArrayList<>();
+        this.cars = new Cars(makeCars(splitCarNameInput(carNameInput)));
+    }
 
+    private List<Car> makeCars(String[] carNames) {
+        List<Car> cars = new ArrayList<>();
         for (int i = BEGIN_INDEX; i < carNames.length; i++) {
             cars.add(new Car(carNames[i], INIT_VALUE));
         }
-        this.cars = cars;
+        return cars;
     }
 
     private String[] splitCarNameInput(String carNameInput) {
         return carNameInput.split(CAR_NAME_SEPARATOR);
     }
 
-    public int carsSize() {
-        return cars.size();
+    public int carSize() {
+        return this.cars.size();
+    }
+
+    public List<Car> moveCounts(List<Integer> numbers) {
+        return this.cars.moveCount(numbers);
     }
 
     public List<Car> winningCars() {
-        return makeWinningCars(maxMoveCount());
+        return this.cars.winningCars();
     }
-
-    private List<Car> makeWinningCars(int maxMoveCount) {
-        List<Car> winningCars = new ArrayList<>();
-        for (Car car : cars) {
-            addWinningCar(maxMoveCount, winningCars, car);
-        }
-        return winningCars;
-    }
-
-    private void addWinningCar(int maxMoveCount, List<Car> winningCars, Car car) {
-        if(car.moveCount().isEqualTo(maxMoveCount)) {
-            winningCars.add(car);
-        }
-    }
-
-    private int maxMoveCount() {
-        int maxMoveCount = INIT_VALUE;
-        for (Car car : cars) {
-            maxMoveCount = makeMaxMoveCount(maxMoveCount, car);
-        }
-        return maxMoveCount;
-    }
-
-    private int makeMaxMoveCount(int maxMoveCount, Car car) {
-        if(car.moveCount().isGreaterThan(maxMoveCount)) {
-            maxMoveCount = car.moveCount().value();
-        }
-        return maxMoveCount;
-    }
-
-    public List<Car> makeMoveCounts(List<Integer> numbers) {
-        for (int i = BEGIN_INDEX; i < numbers.size(); i++) {
-            cars.get(i).makeMoveCount(numbers.get(i));
-        }
-        return cars;
-    }
-
 }
