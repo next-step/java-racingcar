@@ -1,38 +1,50 @@
 package study.racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class GameCarsTest {
 
-    @DisplayName("개수 만큼 list를 생성하는지 테스트")
-    @ParameterizedTest
-    @ValueSource(ints = {1, 3, 5, 10, 1000})
-    void generate_cars_as_same_size_with_input(int carNum) {
+    @DisplayName("리스트의 크기 만큼 Car 객체를 생성하는지 테스트")
+    @Test
+    void when_input_list_size_is_given() {
+        // given
+        List<String> carNames = List.of("pobi", "junho", "crong", "honux");
+
         // when
-        GameCars cars = new GameCars(carNum);
+        GameCars cars = new GameCars(carNames);
+
         // then
-        assertThat(cars).hasSize(carNum);
+        assertThat(cars).hasSize(carNames.size());
     }
 
-    @DisplayName("1보다 작은 수를 입력할 때 예외 발생")
-    @ParameterizedTest
-    @ValueSource(ints = {-1, 0})
-    void exception_occur_when_input_is_less_than_one(int carNum) {
+    @DisplayName("리스트 크기가 1일 경우 컬렉션 크기 1 검증")
+    @Test
+    void when_input_list_size_is_one() {
+        // given
+        List<String> carNames = List.of("pobi");
 
-        assertThatThrownBy(() -> new GameCars(carNum))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("1보다 큰 수를 입력하세요");
+        // when
+        GameCars cars = new GameCars(carNames);
+
+        // then
+        assertThat(cars).hasSize(1);
     }
 
-    @DisplayName("1보다 같거나 큰 수 입력시 예외 발생하지 않는다")
-    @ParameterizedTest
-    @ValueSource(ints = {1,2,3,10,100})
-    void exception_occur_when_input_is_eqaul_or_greater_than_one(int carNum) {
-        assertThatNoException()
-                .isThrownBy(() -> new GameCars(carNum));
+    @DisplayName("empty list일 경우 컬렉션 크기 0인지 검증")
+    @Test
+    void when_input_list_is_empty() {
+        // given
+        List<String> carNames = List.of();
+
+        // when
+        GameCars cars = new GameCars(carNames);
+
+        // then
+        assertThat(cars).hasSize(0);
     }
 }
