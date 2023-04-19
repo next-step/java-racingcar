@@ -4,6 +4,7 @@ public class Car {
 
     public static final int NAME_MAX_LENGTH = 5;
     public static final int MOVE_STANDARD = 4;
+
     private final String name;
     private int moveCount;
 
