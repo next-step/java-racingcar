@@ -1,5 +1,7 @@
 package study;
 
+import java.util.List;
+
 import study.race.CarRace;
 import study.race.condition.RaceConditionNumber;
 import study.race.condition.impl.RaceRandomNumber;
@@ -18,7 +20,7 @@ public class StudyMain {
         carRace.ready(inputView.getEntryNames(), inputView.getRaceNum());
         carRace.run();
 
-        RaceResultView resultView = new RaceResultView(carRace.getRaceResult());
+        RaceResultView resultView = new RaceResultView(carRace);
         System.out.println(resultView.getPrint());
     }
 

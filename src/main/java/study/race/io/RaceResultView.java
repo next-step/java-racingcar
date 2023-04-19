@@ -3,25 +3,27 @@ package study.race.io;
 import java.util.List;
 
 import study.race.CarEntry;
+import study.race.CarRace;
 
 public class RaceResultView {
 
     private char moveSimbol = '-';
 
+    private CarRace carRace;
     private String initMessage = "실행 결과\n";
-    private StringBuilder result;
+    private StringBuilder resultPrint = new StringBuilder();
 
-    public RaceResultView(List<CarEntry> entrys) {
-        result = new StringBuilder();
-        result.append(initMessage);
-        setCarsHistory(entrys);
+    public RaceResultView(CarRace carRace) {
+        this.carRace = carRace;
+        this.resultPrint.append(initMessage);
+        setCarsHistory(carRace.getRaceResult());
     }
 
     private void setCarsHistory(List<CarEntry> entrys) {
         int raceNum = entrys.get(0).getMoveRecord().size();
         for (int raceIndex = 0; raceIndex < raceNum; raceIndex++) {
             String recordByRaceIndex = getEntryRecord(entrys, raceIndex);
-            result.append(recordByRaceIndex + "\n");
+            resultPrint.append(recordByRaceIndex + "\n");
         }
     }
 
@@ -46,7 +48,25 @@ public class RaceResultView {
     }
     
     public String getPrint() {
-        return result.toString();
+        if (carRace.winner().size() == 0) {
+            resultPrint.append("우승자가 없습니다.");
+            return resultPrint.toString();
+        }
+
+        if (carRace.winner().size() == 1) {
+            resultPrint.append(carRace.winner().get(0) + "가 최종 우승했습니다.");
+            return resultPrint.toString();
+        }
+
+        for (int i = 0; i < carRace.winner().size(); i++) {
+            resultPrint.append(carRace.winner().get(i));
+            if (i != carRace.winner().size() - 1) {
+                resultPrint.append(", ");    
+            }
+        }
+        resultPrint.append("가 최종 우승했습니다.");
+
+        return resultPrint.toString();
     }
 
 }
