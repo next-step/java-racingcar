@@ -33,7 +33,7 @@ public class CarRacingGameTest {
         GameStartParameter gameStartParameter = new GameStartParameter(carNums, 5);
 
         // when
-        List<Car> cars = carRacingGame.generateCars(gameStartParameter);
+        List<SimpleCar> cars = carRacingGame.generateCars(gameStartParameter);
 
         // then
         assertThat(cars.size()).isEqualTo(carNums);

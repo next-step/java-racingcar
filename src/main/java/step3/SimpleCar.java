@@ -2,7 +2,7 @@ package step3;
 
 import java.util.Random;
 
-public class SimpleCar implements Car {
+public class SimpleCar {
     public static int RANDOM_BOUND = 10;
     public static int LEAST_MOVABLE_NUM = 4;
 
@@ -12,7 +12,6 @@ public class SimpleCar implements Car {
 
     }
 
-    @Override
     public void run() {
         Random random = new Random();
         if (random.nextInt(RANDOM_BOUND) >= LEAST_MOVABLE_NUM) {
@@ -20,7 +19,6 @@ public class SimpleCar implements Car {
         }
     }
 
-    @Override
     public Integer getPosition() {
         return position;
     }

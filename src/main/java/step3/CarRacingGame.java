@@ -1,6 +1,5 @@
 package step3;
 
-import step2.PositiveInteger;
 import step3.view.InputView;
 import step3.view.ResultView;
 
@@ -23,20 +22,20 @@ public class CarRacingGame {
     }
 
     void play(GameStartParameter gameStartParameter) {
-        List<Car> cars = generateCars(gameStartParameter);
+        List<SimpleCar> cars = generateCars(gameStartParameter);
         runCars(gameStartParameter, cars);
     }
 
-    List<Car> generateCars(GameStartParameter gameStartParameter) {
+    List<SimpleCar> generateCars(GameStartParameter gameStartParameter) {
         return IntStream.range(0, gameStartParameter.getCarNums())
                 .mapToObj(i -> new SimpleCar()).collect(Collectors.toList());
     }
 
-    void runCars(GameStartParameter gameStartParameter, List<Car> cars) {
+    void runCars(GameStartParameter gameStartParameter, List<SimpleCar> cars) {
         ResultView.printRunResultText();
 
         for (int i = 0; i< gameStartParameter.getRunNums(); i++){
-            cars.forEach(Car::run);
+            cars.forEach(SimpleCar::run);
             ResultView.printCarsRunState(cars);
         }
     }

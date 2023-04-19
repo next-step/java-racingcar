@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
 public class CarTest {
-    Car car;
+    SimpleCar car;
 
     @BeforeEach
     void init() {
