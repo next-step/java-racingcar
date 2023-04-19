@@ -12,10 +12,7 @@ public class LessThanMoveCondition implements MoveConditionStrategy {
 
     @Override
     public boolean isPossible() {
-        if (moveStrategy.createMove() >= criteria) {
-            return true;
-        }
-        return false;
+        return moveStrategy.createMove() >= criteria;
     }
 
 }
