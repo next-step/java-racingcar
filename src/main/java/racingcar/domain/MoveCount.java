@@ -15,4 +15,8 @@ public class MoveCount {
     public boolean isGreaterThan(int maxMoveCount) {
         return this.moveCount > maxMoveCount;
     }
+
+    public boolean isEqualTo(int maxMoveCount) {
+        return this.moveCount == maxMoveCount;
+    }
 }

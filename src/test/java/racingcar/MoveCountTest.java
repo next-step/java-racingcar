@@ -41,7 +41,7 @@ public class MoveCountTest {
 
     @DisplayName("moveCount, maxMoveCount 비교 메서드 (=)")
     @Test
-    void isGreaterThan() {
+    void isEqualTo() {
         //given
         MoveCount myMoveCount = new MoveCount(MOVE_COUNT2);
 
