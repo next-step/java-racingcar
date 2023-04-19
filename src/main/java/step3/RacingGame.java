@@ -12,19 +12,11 @@ public class RacingGame {
         }
     }
 
-    public void playGame(int tryCount) {
-        System.out.println("실행결과");
-        for (int i = 0; i < tryCount; i++) {
-            moveCars();
-        }
-    }
-
-    private void moveCars() {
+    public List<Car> playGame() {
         for (Car car : cars) {
             car.move(RandomNumberGenerator.randomNumber());
-            ResultView.gameResultView(car);
         }
-        System.out.println();
+        return cars;
     }
 
 }
