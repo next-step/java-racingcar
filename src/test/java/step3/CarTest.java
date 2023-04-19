@@ -8,6 +8,6 @@ class CarTest {
 
     @Test
     void car_init_location() {
-        assertThat(new Car().getLocation()).isEqualTo(0);
+        assertThat(new Car("name").getLocation()).isEqualTo(0);
     }
 }
