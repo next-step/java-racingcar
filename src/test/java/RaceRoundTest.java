@@ -1,14 +1,15 @@
+import entity.race.RaceRound;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+
 
 class RaceRoundTest {
 
     @Test
-    @DisplayName("RaceRound 생성 Test")
+    @DisplayName("entity.race.RaceRound 생성 Test")
     public void RaceRound_Constructor_Test(){
         //given
         RaceRound race = RaceRound.of(2);
@@ -20,7 +21,7 @@ class RaceRoundTest {
     }
 
     @Test
-    @DisplayName("RaceRound 생성 Exception")
+    @DisplayName("entity.race.RaceRound 생성 Exception")
     public void Exception_Test() {
         assertThatThrownBy(()->{
             RaceRound.of(-1);
