@@ -1,18 +1,16 @@
-package race.car;
+package race.domain.car;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import race.car.dto.CarInfoDto;
+import race.domain.car.dto.CarInfoDto;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class CarTest {
-    final String carName = "testCar";
-    final int moveCondition = 4;
+    final String carName = "test";
     Car car;
 
     @BeforeEach
@@ -20,15 +18,24 @@ public class CarTest {
         this.car = new Car(new Name(carName));
     }
 
-    @ParameterizedTest(name = "조건이 4 이상일 경우에만 전진한다")
-    @CsvSource(value = {"1,0", "2,0", "3,0", "4,1", "5,1", "6,1", "7,1", "8,1", "9,1"})
-    void isMove(int condition, int location) {
-        car.move(condition);
+    @Test
+    @DisplayName("조건이 true 이면 전진한다.")
+    void isMove() {
+        car.move(() -> true);
 
         assertThat(car)
                 .extracting("location")
+                .isEqualTo(new Location(1));
+    }
+
+    @Test
+    @DisplayName("조건이 false 이면 전진하지않는다.")
+    void isNotMove() {
+        car.move(() -> false);
+
+        assertThat(car)
                 .extracting("location")
-                .isEqualTo(location);
+                .isEqualTo(new Location(0));
     }
 
     @Test
@@ -41,9 +48,22 @@ public class CarTest {
     }
 
     @Test
+    @DisplayName("자동차 이름이 5자를 초과하면 IllegalArgumentException 발생")
+    void carNameMoreThan5() {
+        final String carName = "12345";
+        final String bigCarName = "123456";
+
+        assertAll(
+                () -> assertThat(new Car(new Name(carName)))
+                        .isInstanceOf(Car.class),
+                () -> assertThatThrownBy(() -> new Car(new Name(bigCarName))).isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     @DisplayName("자동차의 현재 위치와 함께 이름도 같이 리턴")
     void currentLocation() {
-        car.move(moveCondition);
+        car.move(() -> true);
 
         assertAll(
                 () -> assertThat(car.currentCarInfo())

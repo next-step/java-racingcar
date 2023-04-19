@@ -1,6 +1,6 @@
 package race.datamapper;
 
-import race.car.dto.CarInfoDto;
+import race.domain.car.dto.CarInfoDto;
 
 public class RaceDataMapper {
     private RaceDataMapper() {
