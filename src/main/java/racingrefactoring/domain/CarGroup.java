@@ -2,14 +2,14 @@ package racingrefactoring.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import racingrefactoring.util.CarFactory;
+import racingrefactoring.util.FactoryCar;
 
 public class CarGroup {
 
   List<Car> cars;
 
   public CarGroup(String carNames) {
-    this.cars = CarFactory.createCars(carNames);
+    this.cars = FactoryCar.createCars(carNames);
   }
 
   public CarGroup moveCars(MoveStrategy moveStrategy) {

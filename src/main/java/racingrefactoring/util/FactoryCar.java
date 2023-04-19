@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import racingrefactoring.domain.Car;
 
-public class CarFactory {
+public class FactoryCar {
   private static final String DELIMITER = ",";
 
   public static List<Car> createCars(String carNames) {
