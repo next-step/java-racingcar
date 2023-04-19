@@ -1,4 +1,4 @@
-package study.racingcar.domain;
+package study.racingcar.rule;
 
 import study.racingcar.strategy.NumberGenerator;
 import study.racingcar.strategy.RandomNumberGenerator;

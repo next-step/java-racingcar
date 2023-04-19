@@ -25,4 +25,8 @@ public class OutputView {
      public static void printCarStatus(Car car) {
          System.out.println(car.getCarName() + " : " + car);
     }
+
+    public static void printGameResult(String winners) {
+        System.out.println(winners + "가 최종 우승했습니다.");
+    }
 }

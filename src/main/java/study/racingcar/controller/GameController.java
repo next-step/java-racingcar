@@ -18,20 +18,11 @@ public class GameController {
     public static void main(String[] args) {
         final List<String> carNames = getCarNames();
         validateCarNameList(carNames);
+
         final int rounds = getRoundsToPlay();
         RacingCarGame racingCarGame = new RacingCarGame(carNames, rounds);
+
         racingCarGame.run();
-    }
-
-    private static void validateCarNameList(List<String> carNames) {
-        if (carNames.size() <= 1) {
-            throw new IllegalArgumentException("올바른 이름 값을 입력하세요.");
-        }
-    }
-
-    private static int getRoundsToPlay() {
-        OutputView.printTryCountSign();
-        return InputView.getTryCount();
     }
 
     private static List<String> getCarNames() {
@@ -43,5 +34,16 @@ public class GameController {
     private static List<String> convertToList(String carNames) {
         return Arrays.stream(carNames.split(CAR_NAME_DELIMITER))
                 .collect(Collectors.toList());
+    }
+
+    private static void validateCarNameList(List<String> carNames) {
+        if (carNames.size() <= 1) {
+            throw new IllegalArgumentException("올바른 이름 값을 입력하세요.");
+        }
+    }
+
+    private static int getRoundsToPlay() {
+        OutputView.printTryCountSign();
+        return InputView.getTryCount();
     }
 }

@@ -1,5 +1,6 @@
 package study.racingcar.domain;
 
+import study.racingcar.rule.Rule;
 import study.racingcar.strategy.NumberGenerator;
 
 public class Car {
@@ -23,12 +24,16 @@ public class Car {
         return value >= Rule.MOVABLE_LOWER_BOUND;
     }
 
+    public String getCarName() {
+        return carName.toString();
+    }
+
+    public int length() {
+        return this.toString().length();
+    }
+
     @Override
     public String toString() {
         return Rule.CAR_SHAPE.repeat(position.getPosition());
-    }
-
-    public String getCarName() {
-        return carName.toString();
     }
 }
