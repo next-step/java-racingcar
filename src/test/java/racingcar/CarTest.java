@@ -11,6 +11,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 class CarTest {
 
+    public static final int MOVE_COUNT = 1;
+
     @DisplayName("자동차 이름 5자 초과시 예외 처리")
     @Test
     void carNameLengthException() {
@@ -35,16 +37,27 @@ class CarTest {
         assertThat(car.moveCount()).isEqualTo(moveCount);
     }
 
-    @DisplayName("moveCount와 maxMoveCount비교")
+    @DisplayName("moveCount 비교 (>)")
     @Test
-    void compareMoveCount() throws Exception {
+    void moveCountIsGreaterThan() throws Exception {
         //given
-        Car car = new Car("oyeon", 1);
+        Car car = new Car("oyeon", MOVE_COUNT);
 
         //when
         //then
-        assertThat(car.moveCountIsGreaterThan(0)).isTrue();
-        assertThat(car.moveCountIsGreaterThan(2)).isFalse();
-        assertThat(car.moveCountIsEqualTo(1)).isTrue();
+        assertThat(car.moveCountIsGreaterThan(MOVE_COUNT - 1)).isTrue();
+        assertThat(car.moveCountIsGreaterThan(MOVE_COUNT + 1)).isFalse();
     }
+
+    @DisplayName("moveCount 비교 (=)")
+    @Test
+    void moveCountIsEqualTo() throws Exception {
+        //given
+        Car car = new Car("oyeon", MOVE_COUNT);
+
+        //when
+        //then
+        assertThat(car.moveCountIsEqualTo(MOVE_COUNT)).isTrue();
+    }
+
 }
