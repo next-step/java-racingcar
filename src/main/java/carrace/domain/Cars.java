@@ -1,4 +1,4 @@
-package carrace;
+package carrace.domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,5 +1,9 @@
-package carrace;
+package carrace.domain;
 
+import carrace.domain.Car;
+import carrace.domain.CarRace;
+import carrace.domain.Cars;
+import carrace.domain.RandomMovable;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

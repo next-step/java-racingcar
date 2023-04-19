@@ -1,4 +1,4 @@
-package carrace;
+package carrace.view;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,7 +14,7 @@ public class InputView {
     private int totalLabs;
     private final List<String> players;
 
-    InputView() {
+    public InputView() {
         this.totalLabs = 0;
         this.players = new ArrayList<>();
     }
