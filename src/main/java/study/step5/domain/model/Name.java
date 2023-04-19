@@ -14,9 +14,7 @@ public class Name {
 
     private void checkName(String name) {
         if (name.length() > NAME_MAX_LENGTH) {
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append(String.format("이름이 %d 글자 이상입니다.", NAME_MAX_LENGTH));
-            throw new CustomException(stringBuilder.toString());
+            throw new CustomException(String.format("이름이 %d 글자 이상입니다.", NAME_MAX_LENGTH));
         }
     }
 
