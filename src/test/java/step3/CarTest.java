@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import step3.domain.Car;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CarTest {
     @Test
@@ -16,5 +17,11 @@ public class CarTest {
         car.move(true);
 
         assertEquals(originalPosition + 1, car.getPositionValue());
+    }
+
+    @Test
+    @DisplayName("자동차 이름은 5자를 초과할 수 없다.")
+    void testValidateCarName(){
+        assertThrows(IllegalArgumentException.class, () -> new Car("123456"));
     }
 }
