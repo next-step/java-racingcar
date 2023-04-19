@@ -82,4 +82,38 @@ public class TestCarRaceSimple {
         }
     }
 
+
+    @Test
+    @DisplayName("CarRace run() 함수 미실행 우승자 테스트")
+    public void test_carrace_not_run_test() {
+        int raceNum = 4;
+        String[] entryNums = splitForTest("pobi,honux");
+
+        RaceConditionNumber successNumber = new SuccessCondition();
+        CarRace race = new CarRace(successNumber);
+        race.ready(entryNums, raceNum);
+
+        assertThrows(IllegalStateException.class, () -> {
+            race.winner();
+        });
+    }
+
+
+    @ParameterizedTest(name = "CarRace 우승자 테스트")
+    @CsvSource({
+        "'pobi,honux', 4",
+        "'pobi,crong,honux,elsa', 5", 
+        "'pobi,crong,honux', 6"
+    })
+    public void test_carrace_winner(String entryNum, int raceNum) {
+        String[] entryNums = splitForTest(entryNum);
+
+        RaceConditionNumber successNumber = new SuccessCondition();
+        CarRace race = new CarRace(successNumber);
+        race.ready(entryNums, raceNum);
+        race.run();
+
+        assertThat(race.winner().size()).isEqualTo(entryNums.length);
+    }
+
 }
