@@ -52,7 +52,7 @@ public class Cars {
     RandomNumberStrategy randomNumberStrategy = new RandomNumberStrategy();
     for (Car car : cars) {
       car.move(randomNumberStrategy);
-      OutputView.numberToDash(car.moveDistance());
+      OutputView.moveDistance(car.name(), car.moveDistance());
     }
   }
 

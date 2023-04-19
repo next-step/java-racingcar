@@ -14,7 +14,8 @@ public class OutputView {
     System.out.println("\n실행 결과");
   }
 
-  public static void numberToDash(int number) {
+  public static void moveDistance(String carName, int number) {
+    System.out.print(carName + " : ");
     for (int i = 0; i < number; i++) {
       System.out.print("-");
     }

@@ -22,4 +22,8 @@ public class Car {
     return moveDistance;
   }
 
+  public String name() {
+    return name;
+  }
+
 }
