@@ -10,8 +10,16 @@ public class CarRacingTest {
 
     @Test
     @DisplayName("자동차 배열 생성 확인")
-    void setSize(){
+    void sizeTest(){
         assertThat(CarRacing.carArray(3).size()).isEqualTo(3);
     }
+
+    @Test
+    @DisplayName("자동차 전진, 멈춤 구현")
+    void moveTest(){
+        assertThat(CarRacing.condition(3)).isEqualTo(0);
+        assertThat(CarRacing.condition(4)).isEqualTo(1);
+    }
+
 
 }

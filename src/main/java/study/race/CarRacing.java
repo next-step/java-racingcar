@@ -1,8 +1,6 @@
 package study.race;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
 
 public class CarRacing {
 
@@ -17,15 +15,23 @@ public class CarRacing {
 
     public static ArrayList carArray(int carNumber) {
         ArrayList<Car> carList = new ArrayList<>();
-        for(int i = 0; i < carNumber; i++) {
+        for (int i = 0; i < carNumber; i++) {
             Car car = new Car();
             carList.add(car);
         }
         return carList;
     }
+
+    public static int condition(int number) {
+        if (number >= 4) {
+            return 1;
+        }
+        return 0;
+    }
+
 }
 
-class Car{
+class Car {
     int position = 1;
 }
 
