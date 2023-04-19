@@ -26,6 +26,7 @@ class PositionTest {
         // when
         position.increase();
 
+        // then
         assertThat(position.getPosition()).isEqualTo(1);
     }
 }
