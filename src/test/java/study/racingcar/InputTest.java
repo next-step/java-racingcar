@@ -3,6 +3,8 @@ package study.racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import study.racingcar.domain.RacingGameInputs;
+import study.racingcar.view.InputView;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;

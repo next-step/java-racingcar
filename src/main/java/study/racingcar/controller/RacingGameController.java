@@ -1,6 +1,12 @@
-package study.racingcar;
+package study.racingcar.controller;
 
-public class RacingCar {
+import study.racingcar.domain.GameWinner;
+import study.racingcar.domain.RacingGame;
+import study.racingcar.domain.RacingGameInputs;
+import study.racingcar.view.InputView;
+import study.racingcar.view.ResultView;
+
+public class RacingGameController {
 
     public static void main(String[] args) {
         racingCar();

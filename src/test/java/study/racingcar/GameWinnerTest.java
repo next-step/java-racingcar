@@ -2,6 +2,9 @@ package study.racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import study.racingcar.domain.Car;
+import study.racingcar.domain.GameWinner;
+import study.racingcar.strategy.CarMoveStrategy;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,6 @@
-package study.racingcar;
+package study.racingcar.domain;
+
+import study.racingcar.strategy.MoveStrategy;
 
 import java.util.InputMismatchException;
 
