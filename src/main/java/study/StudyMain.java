@@ -15,7 +15,7 @@ public class StudyMain {
 
         RaceConditionNumber conditionNumber = new RaceRandomNumber();
         CarRace carRace = new CarRace(conditionNumber);
-        carRace.ready(inputView.getEntryNum(), inputView.getRaceNum());
+        carRace.ready(inputView.getEntryNames(), inputView.getRaceNum());
         carRace.run();
 
         RaceResultView resultView = new RaceResultView(carRace.getRaceResult());

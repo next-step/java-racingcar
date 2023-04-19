@@ -16,12 +16,12 @@ public class CarRace {
         this.conditionNumber = randomNumber;
     }
 
-    public void ready(int entryNum, int raceNum) {
+    public void ready(String[] entryNames, int raceNum) {
         this.raceNum = raceNum;
-
+        
         this.entrys = new ArrayList<>();
-        for (int i = 0; i < entryNum; i++) {
-            Car car = new Car();
+        for (int i = 0; i < entryNames.length; i++) {
+            Car car = new Car(entryNames[i]);
             this.entrys.add(new CarEntry(car));
         }
     }
