@@ -17,9 +17,9 @@ public class RacingCars {
         return new RacingCars(cars);
     }
 
-    public void move() {
+    public void move(CarMovement carMovement) {
         for (Car car : cars) {
-            car.move(CarRandomMovement.canMove());
+            car.move(carMovement.canMove());
         }
     }
 
