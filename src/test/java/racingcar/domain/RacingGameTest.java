@@ -5,12 +5,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.dto.UserInput;
 import racingcar.strategy.MovableNumberGeneratorStrategy;
 import racingcar.strategy.NonMovableNumberGeneratorStrategy;
 import racingcar.strategy.NumberGeneratorStrategy;
 import racingcar.strategy.RandomNumberGeneratorStrategy;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -54,8 +54,8 @@ class RacingGameTest {
     @ParameterizedTest(name = "스코어의 결과 사이즈는 게임 라운드를 진행한 라운드 수와 같다")
     @ValueSource(ints = {3, 5, 7})
     void 라운드_테스트(Integer number) {
-        PositiveNumber positiveNumber = new PositiveNumber(2, number);
-        RacingGame racingGame = new RacingGame(positiveNumber);
+        UserInput userInput = new UserInput(2, number);
+        RacingGame racingGame = new RacingGame(userInput);
         NumberGeneratorStrategy numberGeneratorStrategy = new RandomNumberGeneratorStrategy();
 
         List<Scores> scoresList = racingGame.startGame(numberGeneratorStrategy);

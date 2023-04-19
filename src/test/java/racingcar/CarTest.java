@@ -15,8 +15,7 @@ public class CarTest {
     @Test
     void 차의_움직임_테스트() {
         Car car = new Car();
-        car.initMoveStrategy(new RandomNumberGeneratorStrategy());
-        car.move();
+        car.move(new RandomNumberGeneratorStrategy());
         Assertions.assertThat(car.findCarPoint()).isBetween(0, 1);
     }
 
@@ -24,8 +23,7 @@ public class CarTest {
     @Test
     void 차의_전진_테스트() {
         Car car = new Car();
-        car.initMoveStrategy(new MovableNumberGeneratorStrategy());
-        car.move();
+        car.move(new MovableNumberGeneratorStrategy());
         Assertions.assertThat(car.findCarPoint()).isEqualTo( 1);
     }
 
@@ -33,8 +31,7 @@ public class CarTest {
     @Test
     void 차의_정지_테스트() {
         Car car = new Car();
-        car.initMoveStrategy(new NonMovableNumberGeneratorStrategy());
-        car.move();
+        car.move(new NonMovableNumberGeneratorStrategy());
         Assertions.assertThat(car.findCarPoint()).isEqualTo( 0);
     }
     

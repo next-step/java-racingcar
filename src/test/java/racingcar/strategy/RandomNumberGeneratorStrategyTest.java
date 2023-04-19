@@ -23,16 +23,11 @@ public class RandomNumberGeneratorStrategyTest {
     @DisplayName("랜덤 전략은 차가 정지하거나 이동한다")
     @Test
     void 정지_전략_테스트() {
-        NumberGeneratorStrategy numberGeneratorStrategy = new RandomNumberGeneratorStrategy();
         Car car = new Car();
-        car.initMoveStrategy(numberGeneratorStrategy);
 
-        car.move();
+        car.move(new RandomNumberGeneratorStrategy());
         int point = car.findCarPoint();
 
         Assertions.assertThat(point).isBetween(0, 1);
     }
-
-
-
 }

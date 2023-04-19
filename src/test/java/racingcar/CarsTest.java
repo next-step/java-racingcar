@@ -15,6 +15,6 @@ public class CarsTest {
     void carSizeTest(int input) {
         Cars cars = new Cars(input);
 
-        Assertions.assertThat(cars.findAllCars()).hasSize(input);
+        Assertions.assertThat(cars.findCarsCount()).isEqualTo(input);
     }
 }

@@ -1,10 +1,10 @@
-package racingcar.domain;
+package racingcar.dto;
 
-public class PositiveNumber {
+public class UserInput {
     private final Integer carNumber;
     private final Integer gameRound;
 
-    public PositiveNumber(Integer carNumber, Integer gameRound) {
+    public UserInput(Integer carNumber, Integer gameRound) {
         validateNegativeNumber(carNumber, gameRound);
         this.carNumber = carNumber;
         this.gameRound = gameRound;
@@ -22,6 +22,5 @@ public class PositiveNumber {
         if (carNumber <= 0) throw new IllegalArgumentException("자동차 대수는 양수만 입력가능합니다");
         if (gameRound <= 0) throw new IllegalArgumentException("자동차 시도 횟수는 양수만 입력 가능합니다");
     }
-
 
 }

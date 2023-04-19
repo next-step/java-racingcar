@@ -1,7 +1,7 @@
 package racingcar.domain;
 
+import racingcar.dto.UserInput;
 import racingcar.strategy.NumberGeneratorStrategy;
-import racingcar.strategy.RandomNumberGeneratorStrategy;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,12 +12,12 @@ public class RacingGame {
     private int carNumber;
     private int gameRound;
 
-    public RacingGame(PositiveNumber positiveNumber) {
-        carNumber = positiveNumber.getCarNumber();
-        gameRound = positiveNumber.getGameRound();
+    public RacingGame() {
     }
 
-    public RacingGame() {
+    public RacingGame(UserInput userInput) {
+        carNumber = userInput.getCarNumber();
+        gameRound = userInput.getGameRound();
     }
 
     public List<Scores> startGame(NumberGeneratorStrategy numberGeneratorStrategy) {
@@ -32,12 +32,6 @@ public class RacingGame {
     }
 
     public Scores race(Cars cars, NumberGeneratorStrategy numberGeneratorStrategy) {
-        Scores roundScores = new Scores();
-        for (Car car : cars.findAllCars()) {
-            car.initMoveStrategy(numberGeneratorStrategy);
-            car.move();
-            roundScores.addScore(car);
-        }
-        return roundScores;
+        return cars.move(numberGeneratorStrategy);
     }
 }
