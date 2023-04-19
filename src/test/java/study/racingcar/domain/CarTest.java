@@ -51,11 +51,13 @@ class CarTest {
     @Test
     void blank_when_car_does_not_move() {
         // given
-        Car car = new Car();
+        String carName = "foo";
+        Car car = new Car(carName);
 
         // when
 
         // then
+        assertThat(car.length()).isEqualTo(0);
         assertThat(car.toString()).isEqualTo("");
     }
 
@@ -63,12 +65,14 @@ class CarTest {
     @Test
     void shape_once_when_car_move_once() {
         // given
-        Car car = new Car();
+        String carName = "foo";
+        Car car = new Car(carName);
 
         // when
         car.move();
 
         // then
+        assertThat(car.length()).isEqualTo(1);
         assertThat(car.toString()).isEqualTo("-");
     }
 
@@ -76,13 +80,28 @@ class CarTest {
     @Test
     void shape_twice_when_car_move_twice() {
         // given
-        Car car = new Car();
+        String carName = "foo";
+        Car car = new Car(carName);
 
         // when
         car.move();
         car.move();
 
         // then
+        assertThat(car.length()).isEqualTo(2);
         assertThat(car.toString()).isEqualTo("--");
+    }
+
+    @DisplayName("Car 객체 이름 테스트")
+    @Test
+    void when_car_name_is_junho() {
+        // given
+        String carName = "junho";
+
+        // when
+        Car car = new Car(carName);
+
+        // then
+        assertThat(car.getCarName()).isEqualTo(carName);
     }
 }
