@@ -42,7 +42,7 @@ public class CarRacingGameTest {
         List<Car> cars = new CarRacingGame(carNameInput).makeMoveCounts(numbers);
         List<Integer> moveCounts = new ArrayList<>();
         for (Car car : cars) {
-            moveCounts.add(car.moveCount());
+            moveCounts.add(car.moveCount().getMoveCount());
         }
 
         //then

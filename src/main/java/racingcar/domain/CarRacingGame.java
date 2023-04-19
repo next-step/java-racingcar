@@ -42,7 +42,7 @@ public class CarRacingGame {
     }
 
     private void addWinningCar(int maxMoveCount, List<Car> winningCars, Car car) {
-        if(car.moveCountIsEqualTo(maxMoveCount)) {
+        if(car.moveCount().isEqualTo(maxMoveCount)) {
             winningCars.add(car);
         }
     }
@@ -56,8 +56,8 @@ public class CarRacingGame {
     }
 
     private int makeMaxMoveCount(int maxMoveCount, Car car) {
-        if(car.moveCountIsGreaterThan(maxMoveCount)) {
-            maxMoveCount = car.moveCount();
+        if(car.moveCount().isGreaterThan(maxMoveCount)) {
+            maxMoveCount = car.moveCount().getMoveCount();
         }
         return maxMoveCount;
     }

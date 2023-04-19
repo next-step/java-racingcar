@@ -43,11 +43,11 @@ public class ResultView {
     }
 
     private String getCarName(List<Car> cars, int idx) {
-        return cars.get(idx).name();
+        return cars.get(idx).carName().getName();
     }
 
     private String getCarMoveStateLine(List<Car> cars, int idx) {
-        return makeCarMoveStateLine(cars.get(idx).moveCount());
+        return makeCarMoveStateLine(cars.get(idx).moveCount().getMoveCount());
     }
 
     public String makeCarMoveStateLine(int moveCount) {
@@ -61,7 +61,7 @@ public class ResultView {
     private String makeWinners(List<Car> cars) {
         StringBuilder sb = new StringBuilder();
         for (Car car : cars) {
-            sb.append(car.name()).append(WINNERS_SEPARATOR);
+            sb.append(car.carName().getName()).append(WINNERS_SEPARATOR);
         }
         removeLastSeparator(sb);
 

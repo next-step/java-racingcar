@@ -6,33 +6,25 @@ public class Car {
 
     public static final int MOVE_STANDARD = 4;
 
-    private final CarName name;
-    private int moveCount;
+    private final CarName carName;
+    private MoveCount moveCount;
 
-    public Car(String name, int moveCount) {
-        this.name = new CarName(name);
-        this.moveCount = moveCount;
+    public Car(String name, int count) {
+        this.carName = new CarName(name);
+        this.moveCount = new MoveCount(count);
     }
 
-    public boolean moveCountIsGreaterThan(int maxMoveCount) {
-        return moveCount > maxMoveCount;
+    public CarName carName() {
+        return carName;
     }
 
-    public boolean moveCountIsEqualTo(int maxMoveCount) {
-        return moveCount == maxMoveCount;
-    }
-
-    public String name() {
-        return name.getName();
-    }
-
-    public int moveCount() {
+    public MoveCount moveCount() {
         return moveCount;
     }
 
     public void makeMoveCount(int number) {
         if(isCarMovable(number)) {
-            moveCount++;
+            moveCount.increase();
         }
     }
 
@@ -45,11 +37,11 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return moveCount == car.moveCount && Objects.equals(name, car.name);
+        return Objects.equals(carName, car.carName) && Objects.equals(moveCount, car.moveCount);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, moveCount);
+        return Objects.hash(carName, moveCount);
     }
 }

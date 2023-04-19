@@ -25,7 +25,7 @@ class CarTest {
         car.makeMoveCount(number);
 
         //then
-        assertThat(car.moveCount()).isEqualTo(moveCount);
+        assertThat(car.moveCount().getMoveCount()).isEqualTo(moveCount);
     }
 
     @DisplayName("moveCount 비교 (>)")
@@ -36,8 +36,8 @@ class CarTest {
 
         //when
         //then
-        assertThat(car.moveCountIsGreaterThan(MOVE_COUNT - 1)).isTrue();
-        assertThat(car.moveCountIsGreaterThan(MOVE_COUNT + 1)).isFalse();
+        assertThat(car.moveCount().isGreaterThan(MOVE_COUNT - 1)).isTrue();
+        assertThat(car.moveCount().isGreaterThan(MOVE_COUNT + 1)).isFalse();
     }
 
     @DisplayName("moveCount 비교 (=)")
@@ -48,7 +48,7 @@ class CarTest {
 
         //when
         //then
-        assertThat(car.moveCountIsEqualTo(MOVE_COUNT)).isTrue();
+        assertThat(car.moveCount().isEqualTo(MOVE_COUNT)).isTrue();
     }
 
 }
