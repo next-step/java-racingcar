@@ -7,7 +7,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.domain.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 class CarTest {
 
@@ -25,7 +24,7 @@ class CarTest {
         car.makeMoveCount(number);
 
         //then
-        assertThat(car.moveCount().getMoveCount()).isEqualTo(moveCount);
+        assertThat(car.moveCount().value()).isEqualTo(moveCount);
     }
 
     @DisplayName("moveCount 비교 (>)")

@@ -17,7 +17,7 @@ public class CarNameTest {
         CarName oyeon = new CarName(carName);
 
         //when
-        String name = oyeon.getName();
+        String name = oyeon.value();
 
         //then
         assertThat(name).isEqualTo(carName);

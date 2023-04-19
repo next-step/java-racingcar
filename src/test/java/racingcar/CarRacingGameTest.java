@@ -13,7 +13,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class CarRacingGameTest {
 
@@ -42,7 +41,7 @@ public class CarRacingGameTest {
         List<Car> cars = new CarRacingGame(carNameInput).makeMoveCounts(numbers);
         List<Integer> moveCounts = new ArrayList<>();
         for (Car car : cars) {
-            moveCounts.add(car.moveCount().getMoveCount());
+            moveCounts.add(car.moveCount().value());
         }
 
         //then

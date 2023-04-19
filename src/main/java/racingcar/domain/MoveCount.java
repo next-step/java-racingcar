@@ -10,7 +10,7 @@ public class MoveCount {
         this.moveCount = moveCount;
     }
 
-    public int getMoveCount() {
+    public int value() {
         return moveCount;
     }
 

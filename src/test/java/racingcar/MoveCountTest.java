@@ -19,7 +19,7 @@ public class MoveCountTest {
         MoveCount myMoveCount = new MoveCount(MOVE_COUNT);
 
         //when
-        int moveCount = myMoveCount.getMoveCount();
+        int moveCount = myMoveCount.value();
 
         //then
         assertThat(moveCount).isEqualTo(MOVE_COUNT);
@@ -60,9 +60,9 @@ public class MoveCountTest {
         MoveCount myMoveCount = new MoveCount(MOVE_COUNT);
 
         //when
-        int increaseMoveCount = myMoveCount.increase().getMoveCount();
+        int increaseMoveCount = myMoveCount.increase().value();
 
         //then
-        assertThat(increaseMoveCount).isEqualTo(myMoveCount.getMoveCount());
+        assertThat(increaseMoveCount).isEqualTo(myMoveCount.value());
     }
 }
