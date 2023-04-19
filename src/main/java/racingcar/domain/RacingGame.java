@@ -5,25 +5,18 @@ import java.util.Random;
 
 public class RacingGame {
 
-    public static final int UPPER_BOUND = 10;
-    private int currentRoundCount = 0;
     private final Car[] cars;
-    private static Random random = new Random();
+    private RandomNumber randomNumber;
 
-    public RacingGame(Car[] cars) {
+    public RacingGame(Car[] cars, RandomNumber randomNumber) {
         this.cars = cars;
-    }
-
-    public int getCurrentRoundCount() {
-        return currentRoundCount;
+        this.randomNumber = randomNumber;
     }
 
     public void runSingleRound() {
         for (Car car : cars) {
-            car.moveForwardOrStop(random.nextInt(UPPER_BOUND));
+            car.moveForwardOrStop(randomNumber.getInt());
         }
-
-        currentRoundCount++;
     }
 
     public String[] getWinners() {
