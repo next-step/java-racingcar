@@ -10,15 +10,6 @@ public class CarController {
     private final int moves;
     private final ResultView view;
 
-    public CarController(int numberOfCars, int numberOfMoves) {
-        if (numberOfCars <= 0 || numberOfMoves <= 0) {
-            throw new RuntimeException("입력값은 1 이상이어야 합니다.");
-        }
-        cars = new Cars(numberOfCars);
-        moves = numberOfMoves;
-        view = new ResultView();
-    }
-
     public CarController(String[] carNames, int numberOfMoves) {
         if (carNames.length == 0 || numberOfMoves <= 0) {
             throw new RuntimeException("입력값은 1 이상이어야 합니다.");

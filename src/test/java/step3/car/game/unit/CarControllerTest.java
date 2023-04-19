@@ -11,19 +11,18 @@ public class CarControllerTest {
 
     @Test
     void 자동차게임_생성() {
-        int numberOfCars = 3;
+        String[] carNames = new String[]{"benz","bmw","audi"};
         int numberOfMoves = 5;
 
-        assertThatCode(() -> new CarController(numberOfCars, numberOfMoves))
+        assertThatCode(() -> new CarController(carNames, numberOfMoves))
                 .doesNotThrowAnyException();
     }
 
     @Test
     void 자동차게임_생성시_입력값이_0미만인경우_예외발생() {
-        int numberOfCars = -3;
         int numberOfMoves = -5;
 
-        assertThatThrownBy(() -> new CarController(numberOfCars, numberOfMoves))
+        assertThatThrownBy(() -> new CarController(new String[]{}, numberOfMoves))
                 .isInstanceOf(RuntimeException.class);
     }
 
