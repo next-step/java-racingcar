@@ -13,8 +13,8 @@ public class ResultView {
     public ResultView () {}
     public void resultGame(List<Car> cars) {
 
-        for(int i = 0; i < cars.size(); i++){
-            result(cars.get(i));
+        for(Car car : cars){
+            result(car);
         }
 
         emptyLine();
