@@ -12,7 +12,7 @@ public class Cars {
 
     public Cars(List<String> players) {
         this.cars = IntStream.range(ZERO, players.size())
-                .mapToObj(index -> new Car(players.get(index), index))
+                .mapToObj(index -> new Car(players.get(index)))
                 .collect(Collectors.toList());
     }
 
