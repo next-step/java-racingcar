@@ -1,4 +1,4 @@
-package car;
+package domain.car;
 
 import domain.car.Car;
 import domain.car.Cars;
