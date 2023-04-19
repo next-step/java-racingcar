@@ -15,13 +15,16 @@ public class RacingGame {
     private final RacingRule racingRule;
 
     public RacingGame(List<String> carNameList, RacingRule racingRule) {
+        this.cars = new Cars(convertToCarList(carNameList));
+        this.racingRule = racingRule;
+    }
+
+    private List<Car> convertToCarList(List<String> carNameList) {
         List<Car> carList = new ArrayList<>();
         for (String carName : carNameList) {
             carList.add(new Car(carName));
         }
-
-        this.cars = new Cars(carList);
-        this.racingRule = racingRule;
+        return carList;
     }
 
     public GameResult start(int opportunity) {
