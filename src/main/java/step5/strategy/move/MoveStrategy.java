@@ -1,4 +1,4 @@
-package step4.strategy.move;
+package step5.strategy.move;
 
 @FunctionalInterface
 public interface MoveStrategy {

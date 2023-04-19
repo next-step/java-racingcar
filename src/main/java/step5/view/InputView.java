@@ -1,4 +1,4 @@
-package step4.view;
+package step5.view;
 
 public interface InputView<T> {
     T execute();

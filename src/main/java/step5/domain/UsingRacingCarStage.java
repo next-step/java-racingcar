@@ -1,6 +1,6 @@
-package step4.domain;
+package step5.domain;
 
-import step4.strategy.move.MoveStrategy;
+import step5.strategy.move.MoveStrategy;
 
 import java.util.List;
 

@@ -1,9 +1,9 @@
-package step4.domain;
+package step5.domain;
 
-import step4.AbstractRacingCarGame;
-import step4.UsingNameRacingCarGame;
-import step4.strategy.move.MoveStrategy;
-import step4.view.InputView;
+import step5.AbstractRacingCarGame;
+import step5.UsingNameRacingCarGame;
+import step5.strategy.move.MoveStrategy;
+import step5.view.InputView;
 
 public enum CarRacingType {
 

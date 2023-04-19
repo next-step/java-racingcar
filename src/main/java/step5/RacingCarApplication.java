@@ -1,8 +1,8 @@
-package step4;
+package step5;
 
-import step4.domain.CarRacingType;
-import step4.strategy.move.RandomMoveStrategy;
-import step4.view.UsingNameCarInputView;
+import step5.domain.CarRacingType;
+import step5.strategy.move.RandomMoveStrategy;
+import step5.view.UsingNameCarInputView;
 
 public class RacingCarApplication {
     public static void main(String[] args) {
