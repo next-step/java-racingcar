@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Car {
 
-    public static final int MOVE_STANDARD = 4;
+    public static final int MOVABLE_STANDARD = 4;
 
     private final CarName carName;
     private MoveCount moveCount;
@@ -29,7 +29,7 @@ public class Car {
     }
 
     private boolean isCarMovable(int number) {
-        return number >= MOVE_STANDARD;
+        return number >= MOVABLE_STANDARD;
     }
 
     @Override
