@@ -1,6 +1,6 @@
 package study.racingcar.view;
 
-import study.racingcar.domain.Car;
+import study.racingcar.dto.CarDto;
 
 import java.util.List;
 
@@ -11,13 +11,8 @@ public class ResultView {
     private static final String END_GAME_MESSAGE = "게임이 종료되었습니다.";
 
     public ResultView () {}
-    public void resultGame(List<Car> cars) {
-
-        for(Car car : cars){
-            result(car);
-        }
-
-        emptyLine();
+    public void resultGame(CarDto carDto) {
+        result(carDto);
     }
 
     public void emptyLine() {
@@ -40,10 +35,10 @@ public class ResultView {
         System.out.println(END_GAME_MESSAGE);
     }
 
-    private void result(Car car) {
+    private void result(CarDto car) {
         printCarName(car.getName());
 
-        for (int i = 0; i < car.currentPosition(); i++) {
+        for (int i = 0; i < car.getPosition(); i++) {
             System.out.print(MOVE_MARK);
         }
         emptyLine();
