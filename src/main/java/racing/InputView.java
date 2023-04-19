@@ -1,5 +1,7 @@
 package racing;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
@@ -7,6 +9,21 @@ public class InputView {
 
     public InputView(Scanner scanner) {
         this.scanner = scanner;
+    }
+
+    public List<String> inputCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        String carNames = scanner.nextLine();
+        return split(carNames);
+    }
+
+    private List<String> split(String carNames) {
+        List<String> carNameList = new ArrayList<>();
+        String[] carNameArray = carNames.split(",");
+        for (String carName : carNameArray) {
+            carNameList.add(carName.trim());
+        }
+        return carNameList;
     }
 
     public int inputCarCount() {
