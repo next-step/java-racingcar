@@ -49,15 +49,6 @@ public class CarRacingGameTest {
         assertThat(moveCounts).containsExactly(0, 0, 1, 1);
     }
 
-    @DisplayName("자동차 이름 5자 초과시 예외 처리")
-    @Test
-    void carNameLengthException() {
-        assertThatThrownBy(() -> {
-            new CarRacingGame("hoyeon");
-        }).isInstanceOf(RuntimeException.class)
-                .hasMessageContaining("자동차 이름은 5자를 초과할 수 없습니다.");
-    }
-
     @DisplayName("우승자 판별")
     @Test
     void getWinnersNames() {

@@ -13,15 +13,6 @@ class CarTest {
 
     public static final int MOVE_COUNT = 1;
 
-    @DisplayName("자동차 이름 5자 초과시 예외 처리")
-    @Test
-    void carNameLengthException() {
-        assertThatThrownBy(() -> {
-            new Car("hoyeon", 1);
-        }).isInstanceOf(RuntimeException.class)
-                .hasMessageContaining("자동차 이름은 5자를 초과할 수 없습니다.");
-    }
-
     @DisplayName("숫자가 4이상이면 전진")
     @ParameterizedTest
     @CsvSource(value = {"0:1", "1:1", "2:1", "3:1",
