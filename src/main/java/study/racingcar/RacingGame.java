@@ -31,10 +31,6 @@ public class RacingGame {
         for(Car car : this.cars) {
 
             car.move();
-
-            ResultView.resultGame(car);
         }
-
-        ResultView.emptyLine();
     }
 }

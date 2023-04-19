@@ -19,7 +19,9 @@ public class InputTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        assertThat(InputView.setCars()).isEqualTo(Integer.parseInt(input));
+        InputView inputView = new InputView();
+
+        assertThat(inputView.setCars()).isEqualTo(Integer.parseInt(input));
     }
 
     @DisplayName("숫자를 입력시 게임 횟수를 반환 해야 한다.")
@@ -29,7 +31,9 @@ public class InputTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        assertThat(InputView.setGames()).isEqualTo(Integer.parseInt(input));
+        InputView inputView = new InputView();
+
+        assertThat(inputView.setGames()).isEqualTo(Integer.parseInt(input));
     }
 
     @DisplayName("자동차 이름을 입력하면 해당 문자열을 반환 해야 한다.")
@@ -39,7 +43,9 @@ public class InputTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        assertThat(InputView.setCarNames()).isEqualTo(input);
+        InputView inputView = new InputView();
+
+        assertThat(inputView.setCarNames()).isEqualTo(input);
     }
 
     @DisplayName("자동차 이름 문자열을 입력하면 ','를 기준으로 자동차 이름이 나뉘어야 한다.")

@@ -7,33 +7,43 @@ public class ResultView {
     private static final String MOVE_MARK = "-";
     private static final String NAME_CLONE = " : ";
     private static final String END_GAME_MESSAGE = "게임이 종료되었습니다.";
-    public static void resultGame(Car car) {
-        printCarName(car.getName());
 
-        for (int i = 0; i < car.currentPosition(); i++) {
-            System.out.print(MOVE_MARK);
+    public ResultView () {}
+    public void resultGame(List<Car> cars) {
+
+        for(int i = 0; i < cars.size(); i++){
+            result(cars.get(i));
         }
 
         emptyLine();
     }
 
-    public static void emptyLine() {
+    public void emptyLine() {
         System.out.println();
     }
 
-    public static void startGame() {
+    public void startGame() {
         System.out.println("실행 결과");
     }
 
-    private static void printCarName(String name) {
+    private void printCarName(String name) {
         System.out.print(name + NAME_CLONE);
     }
 
-    public static void winner(List<String> winner) {
+    public void winner(List<String> winner) {
         System.out.println(String.join(", ", winner) + "가 최종 우승했습니다.");
     }
 
-    public static void endGame() {
+    public void endGame() {
         System.out.println(END_GAME_MESSAGE);
+    }
+
+    private void result(Car car) {
+        printCarName(car.getName());
+
+        for (int i = 0; i < car.currentPosition(); i++) {
+            System.out.print(MOVE_MARK);
+        }
+        emptyLine();
     }
 }

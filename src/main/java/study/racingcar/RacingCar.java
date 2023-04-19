@@ -7,23 +7,28 @@ public class RacingCar {
     }
 
     public static void racingCar () {
+        InputView inputView = new InputView();
+        ResultView resultView = new ResultView();
 
         do {
-            String carNamesStr = InputView.setCarNames();
-            int numberOfGames = InputView.setGames();
+            String carNamesStr = inputView.setCarNames();
+            int numberOfGames = inputView.setGames();
 
             RacingGame game = new RacingGame(new RacingGameInputs(numberOfGames, carNamesStr));
 
-            ResultView.startGame();
+            resultView.startGame();
 
             while (!game.isOver()) {
                 game.moveCar();
+
+                resultView.resultGame(game.getCars());
+
                 game.nextLap();
             }
 
-            ResultView.winner(new GameWinner(game.getCars()).findGameWinner());
-        } while (InputView.reset());
+            resultView.winner(new GameWinner(game.getCars()).findGameWinner());
+        } while (inputView.reset());
 
-        ResultView.endGame();
+        resultView.endGame();
     }
 }
