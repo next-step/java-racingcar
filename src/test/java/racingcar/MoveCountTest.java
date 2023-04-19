@@ -52,4 +52,17 @@ public class MoveCountTest {
         //then
         assertThat(isEqual).isTrue();
     }
+
+    @DisplayName("moveCount 1증가")
+    @Test
+    void increase() {
+        //given
+        MoveCount myMoveCount = new MoveCount(MOVE_COUNT);
+
+        //when
+        int increaseMoveCount = myMoveCount.increase();
+
+        //then
+        assertThat(increaseMoveCount).isEqualTo(myMoveCount.getMoveCount() + 1);
+    }
 }
