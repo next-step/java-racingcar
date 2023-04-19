@@ -23,8 +23,4 @@ public class Cars {
     public List<Car> deepCopyList() {
         return deepCopyCarList(this.carList);
     }
-
-    public int count() {
-        return this.carList.size();
-    }
 }

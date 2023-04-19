@@ -68,9 +68,4 @@ public class CarsTest {
         //then
         assertThatThrownBy(throwable).isInstanceOf(UnsupportedOperationException.class);
     }
-
-    @Test
-    void 자동차_수_확인() {
-        assertThat(cars.count()).isEqualTo(2);
-    }
 }
