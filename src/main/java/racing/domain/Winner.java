@@ -6,9 +6,12 @@ import java.util.stream.Collectors;
 public class Winner {
 
     public static List<String> award(RacingCars racingCars) {
-        int farthestPosition = racingCars.getFarthestPosition();
-        return racingCars.getCars().stream()
-                .filter(car -> farthestPosition == car.getPosition())
+        return getWinnerNames(racingCars.getWinnerCars());
+    }
+
+    private static List<String> getWinnerNames(List<Car> winnerCars) {
+        return winnerCars
+                .stream()
                 .map(Car::getName)
                 .collect(Collectors.toList());
     }

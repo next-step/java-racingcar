@@ -5,6 +5,7 @@ import racing.util.NumberUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingCars {
     private static final int MAX_MOVABLE_RANGE = 9;
@@ -42,5 +43,12 @@ public class RacingCars {
                 .mapToInt(Car::getPosition)
                 .max()
                 .orElse(0);
+    }
+
+    public List<Car> getWinnerCars() {
+        int farthestPosition = getFarthestPosition();
+        return this.cars.stream()
+                .filter(car -> farthestPosition == car.getPosition())
+                .collect(Collectors.toList());
     }
 }
