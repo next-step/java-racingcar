@@ -30,8 +30,8 @@ public class TestCarRaceSimple {
 
 
     @Test
-    @DisplayName("CarRace 조건 미충족 테스트")
-    public void test_race_start_fail() {
+    @DisplayName("CarRace 초기화 후 ready() 함수 미실행 테스트")
+    public void test_race_ready_fail() {
         RaceConditionNumber successNumber = new SuccessCondition();
         CarRace race = new CarRace(successNumber);
 
@@ -41,9 +41,8 @@ public class TestCarRaceSimple {
     }
 
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "CarRace 입력 CarEntry 개수 입력 테스트")
     @CsvSource({"2, 4", "4, 5", "3, 6"})
-    @DisplayName("CarRace 입력 CarEntry 개수 입력 테스트")
     public void test_carrace_carNum_tryNum_input(int entryNum, int raceNum) {
         RaceConditionNumber successNumber = new SuccessCondition();
         CarRace race = new CarRace(successNumber);
@@ -53,9 +52,8 @@ public class TestCarRaceSimple {
     }
 
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "CarRace 실행 테스트")
     @CsvSource({"2, 4", "4, 5", "3, 6"})
-    @DisplayName("CarRace 실행 테스트")
     public void test_carrace_run(int entryNum, int raceNum) {
         RaceConditionNumber failNumber = new FailCondition();
         CarRace race = new CarRace(failNumber);
