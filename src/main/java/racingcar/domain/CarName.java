@@ -4,12 +4,12 @@ import java.util.Objects;
 
 public class CarName {
 
-    public static final int MAX_LENGTH = 5;
+    public static final int LENGTH_MAX = 5;
 
     private final String carName;
 
     public CarName(String carName) {
-        if(carName.length() > MAX_LENGTH) {
+        if(carName.length() > LENGTH_MAX) {
             throw new RuntimeException("자동차 이름은 5자를 초과할 수 없습니다.");
         }
         this.carName = carName;
