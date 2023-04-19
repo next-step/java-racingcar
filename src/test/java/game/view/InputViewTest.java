@@ -1,13 +1,12 @@
 package game.view;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 /**
  * 사용자로부터 입력받는 기능
@@ -28,12 +27,12 @@ class InputViewTest {
 
         // when
         System.setIn(new ByteArrayInputStream(inputs.getBytes()));
-        List<String> carNames = InputView.showAndGetCarNames();
-        int racingRep = InputView.showAndGetRacingRep();
+        String carNames = InputView.showCarNamesConsole();
+        int racingRep = InputView.showGameCountConsole();
 
         // then
-        Assertions.assertAll(
-                () -> assertThat(carNames).isEqualTo(List.of(inputCarNames.split(","))),
+        assertAll(
+                () -> assertThat(carNames).isEqualTo(inputCarNames),
                 () -> assertThat(racingRep).isSameAs(Integer.parseInt(inputRep))
         );
     }

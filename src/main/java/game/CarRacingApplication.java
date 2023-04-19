@@ -1,10 +1,10 @@
 package game;
 
-import game.service.CarRacing;
+import game.domain.CarNames;
+import game.domain.Cars;
+import game.domain.GameRound;
 import game.view.InputView;
 import game.view.ResultView;
-
-import java.util.List;
 
 /**
  * 기능 요구사항
@@ -19,22 +19,17 @@ import java.util.List;
 public class CarRacingApplication {
 
     public static void main(String[] args) {
-        List<String> carNames = InputView.showAndGetCarNames();
-        int racingRep = InputView.showAndGetRacingRep();
-        throwIfNegativeNumber(racingRep);
+        CarNames carNames = CarNames.of(InputView.showCarNamesConsole());
+        GameRound gameRound = new GameRound(InputView.showGameCountConsole());
 
-        CarRacing carRacing = new CarRacing(carNames);
+        Cars cars = Cars.of(carNames.getNames());
+
         ResultView.displayExecuteResultMessage();
-        for (int i = 0; i < racingRep; i++) {
-            carRacing.start();
-            ResultView.displayCarPositions(carRacing.getCars());
+        while (!gameRound.isDone()) {
+            cars.drive();
+            ResultView.displayCarPositions(cars);
+            gameRound.nextRound();
         }
-        ResultView.displayCarWinners(carRacing.getWinners());
-    }
-
-    private static void throwIfNegativeNumber(int number) {
-        if (number <= 0) {
-            throw new IllegalArgumentException("입력은 0 보다 큰 양수만 가능합니다.");
-        }
+        ResultView.displayCarWinners(cars.findWinners());
     }
 }
