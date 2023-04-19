@@ -13,4 +13,8 @@ public class ResultView {
     void printSpace() {
         System.out.println("");
     }
+
+    void finalWin(String names) {
+        System.out.println(names + "가 최종 우승했습니다.");
+    }
 }

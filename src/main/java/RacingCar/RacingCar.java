@@ -14,6 +14,7 @@ public class RacingCar {
 
     int count;
     ArrayList<Car> cars = new ArrayList<Car>();
+    ArrayList<Winner> winners = new ArrayList<Winner>();
     static Input input = new Input();
     Output output = new Output();
 
@@ -36,7 +37,32 @@ public class RacingCar {
             moveCar();
             showLoaction();
             output.printSpace();
+
         }
+
+        chooseWinners();
+        output.printWinner(winners);
+
+    }
+
+    private void chooseWinners() {
+        int maxLocation = 0;
+
+        maxLocation = getMaxLocation(maxLocation);
+
+        addWinner(maxLocation);
+
+    }
+
+    private void addWinner(int maxLocation) {
+        for (Car car : cars)
+            if (maxLocation == car.getLocation()) winners.add(new Winner(car.getName()));
+    }
+
+    private int getMaxLocation(int maxLocation) {
+        for (Car car : cars)
+            if (car.getLocation() > maxLocation) maxLocation = car.getLocation();
+        return maxLocation;
     }
 
     private void moveCar() {
