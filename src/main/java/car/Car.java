@@ -1,22 +1,31 @@
 package car;
 
 public class Car {
+    private final Name name;
+    private final Position position;
+    private final MoveStrategy moveStrategy;
 
-    private static final int DEFAULT_POSITION = 0;
-
-    private int position;
-
-    public Car() {
-        this.position = DEFAULT_POSITION;
+    public Car(String name, MoveStrategy moveStrategy) {
+        this.position = new Position();
+        this.name = new Name(name);
+        this.moveStrategy = moveStrategy;
     }
 
-    public int getPosition() {
-        return this.position;
-    }
-
-    public void move(MoveStrategy moveStrategy) {
+    public void move() {
         if(moveStrategy.movable()) {
-            position++;
+            position.move();
         }
+    }
+
+    public boolean matchesPosition(Position position) {
+        return this.position.equals(position);
+    }
+
+    public Name getName() {
+        return this.name;
+    }
+
+    public Position getPosition() {
+        return this.position;
     }
 }

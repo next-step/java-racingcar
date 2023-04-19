@@ -1,8 +1,8 @@
 package car;
 
-import java.util.Collections;
+import game.CarDto;
+
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -12,15 +12,38 @@ public class Cars {
         this.cars = cars;
     }
 
+    public static Cars from(List<String> names) {
+        List<Car> cars = names.stream()
+                .map(name -> new Car(name, new RandomMoveStrategy()))
+                .collect(Collectors.toList());
+
+        return new Cars(cars);
+    }
+
     public void move() {
         for(Car car: cars) {
-            car.move(new RandomMoveStrategy());
+            car.move();
         }
     }
 
-    public List<Integer> getPositions() {
+    public List<Car> findWinners() {
+        Position winningPosition = findWinningPosition();
+
+        return cars.stream()
+                .filter(car -> car.matchesPosition(winningPosition))
+                .collect(Collectors.toList());
+    }
+
+    private Position findWinningPosition() {
         return cars.stream()
                 .map(Car::getPosition)
+                .max(Position::compareTo)
+                .orElse(new Position());
+    }
+
+    public List<CarDto> getCurrentResult() {
+        return cars.stream()
+                .map(CarDto::from)
                 .collect(Collectors.toList());
     }
 }
