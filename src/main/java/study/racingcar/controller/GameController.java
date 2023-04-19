@@ -1,8 +1,8 @@
 package study.racingcar.controller;
 
+import study.racingcar.domain.RacingCarGame;
 import study.racingcar.view.InputView;
 import study.racingcar.view.OutputView;
-import study.racingcar.domain.RacingCarGame;
 
 import java.util.Arrays;
 import java.util.List;

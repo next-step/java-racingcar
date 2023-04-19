@@ -19,9 +19,7 @@ public class Result {
     }
 
     private void setMaxLength() {
-        for (Car car : cars) {
-            compareCarLength(car);
-        }
+        cars.forEach(this::compareCarLength);
     }
 
     private void compareCarLength(Car car) {
@@ -31,12 +29,10 @@ public class Result {
     }
 
     private void setWinner() {
-        for (Car car : cars) {
-            addWinners(car);
-        }
+        cars.forEach(this::addWinner);
     }
 
-    private void addWinners(Car car) {
+    private void addWinner(Car car) {
         if (car.length() == maxLength) {
             winners.add(car);
         }
