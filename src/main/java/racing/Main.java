@@ -15,7 +15,8 @@ public class Main {
     int tryNumber = InputView.getIntValue();
 
     OutputView.result();
-    cars.race(cars.getGameCar(), tryNumber);
+    cars.race(tryNumber);
+    OutputView.winner(cars);
   }
 
 }
