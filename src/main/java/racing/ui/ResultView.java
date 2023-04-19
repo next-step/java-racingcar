@@ -6,14 +6,14 @@ import racing.Cars;
 public class ResultView {
     public static void showRace(Cars cars) {
         for (int i = 0; i < cars.count(); i++) {
-            showOneCarMoveStatus(cars.find(i));
+            showOneCarMoveStatus(cars.findOne(i));
         }
         System.out.println();
     }
 
     private static void showOneCarMoveStatus(Car car) {
-        System.out.print(car.name+" : ");
-        for (int j = 0; j < car.moveStatus; j++) {
+        System.out.print(car.getName()+" : ");
+        for (int j = 0; j < car.getMoveStatus(); j++) {
             System.out.print("-");
         }
         System.out.println();

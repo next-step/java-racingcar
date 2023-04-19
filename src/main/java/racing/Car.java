@@ -1,10 +1,10 @@
 package racing;
 
 public class Car {
-    private int NAME_MAX_LENGTH = 5;
+    private final int NAME_MAX_LENGTH = 5;
 
-    public String name;
-    public int moveStatus;
+    private final String name;
+    private int moveStatus;
 
     public Car(String name) {
         validateNameLength(name);
@@ -17,7 +17,15 @@ public class Car {
         }
     }
 
-    public void move(int moveOrStop) {
-        moveStatus += moveOrStop;
+    public void move(int moveCount) {
+        moveStatus += moveCount;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getMoveStatus() {
+        return moveStatus;
     }
 }

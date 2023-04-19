@@ -1,29 +1,46 @@
 package racing;
 
 public class Winner {
-    public String name;
-    public int moveStatus;
+    private String name;
+    private int moveStatus;
+    private Cars cars;
 
     public Winner(Cars cars){
-        this.name = cars.find(0).name;
-        this.moveStatus = cars.find(0).moveStatus;
-        findWinner(cars);
+        this.cars = cars;
+        findWinner();
     }
 
-    private void findWinner(Cars cars) {
-        for (int i = 1; i < cars.count(); i++) {
-            checkWinner(cars, i);
+    private void findWinner() {
+        this.name = cars.findOneName(0);
+        this.moveStatus = cars.findOneMoveStatus(0);
+
+        for (int carIndex = 1; carIndex < cars.count(); carIndex++) {
+            checkWinner(carIndex);
         }
     }
 
-    private void checkWinner(Cars cars, int i) {
-        if (this.moveStatus == cars.find(i).moveStatus) {
-            this.name = this.name + ", " + cars.find(i).name;
+    private void checkWinner(int carIndex) {
+        if (this.moveStatus > cars.findOneMoveStatus(carIndex)) {
             return;
         }
-        if (this.moveStatus < cars.find(i).moveStatus) {
-            this.name = cars.find(i).name;
-            this.moveStatus = cars.find(i).moveStatus;
+        replaceWinner(carIndex);
+    }
+
+    private void replaceWinner(int carIndex) {
+        if (this.moveStatus == cars.findOneMoveStatus(carIndex)) {
+            this.name = this.name + ", " + cars.findOneName(carIndex);
+            return;
         }
+        this.name = cars.findOneName(carIndex);
+        this.moveStatus = cars.findOneMoveStatus(carIndex);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+
+    public int getMoveStatus() {
+        return moveStatus;
     }
 }

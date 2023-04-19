@@ -6,18 +6,18 @@ import racing.ui.ResultView;
 import java.util.Random;
 
 public class Racing {
-    public int try_count;
-    public Cars cars;
+    private final int try_count;
+    private final Cars cars;
 
     public static Racing input() {
         InputView inputView = InputView.create();
-        return new Racing(inputView.car_names,inputView.try_count);
+        return new Racing(inputView.getCarNames(),inputView.getTryCount());
     }
 
     public Racing(String inputCarNames, int inputTryCount) {
         validatePositve(inputTryCount);
-        makeCars(inputCarNames);
-        this.try_count = inputTryCount;
+        cars = makeCars(inputCarNames);
+        try_count = inputTryCount;
     }
 
     private void validatePositve(int inputTryCount) {
@@ -33,19 +33,31 @@ public class Racing {
             ResultView.showRace(cars);
         }
         Winner winner = new Winner(cars);
-        ResultView.showWinner(winner.name);
+        ResultView.showWinner(winner.getName());
     }
 
-    private void makeCars(String inputCarNames) {
-        cars = new Cars(inputCarNames);
+    private Cars makeCars(String inputCarNames) {
+        return new Cars(inputCarNames);
     }
 
     private void race() {
         Random random = new Random();
         for (int i = 0; i < cars.count(); i++) {
-            Car car = cars.find(i);
+            Car car = cars.findOne(i);
             car.move(RacingRule.moveOrStop(random.nextInt(10)));
         }
 
+    }
+
+    public int getCarsCount() {
+        return cars.count();
+    }
+
+    public int getTryCount(){
+        return try_count;
+    }
+
+    public String getCarName(int carIndex){
+        return cars.findOneName(carIndex);
     }
 }

@@ -15,8 +15,8 @@ public class RacingTest {
         int input_try_count = 7;
         Racing racing = new Racing(input_car_names,input_try_count);
         assertAll(
-                () -> assertThat(racing.cars.count()).isEqualTo(3),
-                () -> assertThat(racing.try_count).isEqualTo(7)
+                () -> assertThat(racing.getCarsCount()).isEqualTo(3),
+                () -> assertThat(racing.getTryCount()).isEqualTo(7)
         );
     }
 
@@ -48,9 +48,9 @@ public class RacingTest {
         int input_try_count = 5;
         Racing racing = new Racing(input_car_names,input_try_count);
         assertAll(
-                () -> assertThat(racing.cars.find(0).name).isEqualTo("pobi"),
-                () -> assertThat(racing.cars.find(1).name).isEqualTo("crong"),
-                () -> assertThat(racing.cars.find(2).name).isEqualTo("honux")
+                () -> assertThat(racing.getCarName(0)).isEqualTo("pobi"),
+                () -> assertThat(racing.getCarName(1)).isEqualTo("crong"),
+                () -> assertThat(racing.getCarName(2)).isEqualTo("honux")
         );
     }
 

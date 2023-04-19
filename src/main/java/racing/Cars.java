@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Cars {
 
-    public List<Car> cars;
+    private final List<Car> cars;
 
     public Cars(String inputCarNames) {
         cars = new ArrayList<>();
@@ -26,7 +26,15 @@ public class Cars {
         return cars.size();
     }
 
-    public Car find(int i) {
-        return cars.get(i);
+    public Car findOne(int carIndex) {
+        return cars.get(carIndex);
+    }
+
+    public String findOneName(int carIndex) {
+        return cars.get(carIndex).getName();
+    }
+
+    public int findOneMoveStatus(int carIndex) {
+        return cars.get(carIndex).getMoveStatus();
     }
 }
