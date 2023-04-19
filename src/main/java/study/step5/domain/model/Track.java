@@ -1,11 +1,8 @@
 package study.step5.domain.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Track {
-    private static final String DELIMITER = ",|:";
-
     private int attemptCount;
     private Cars cars;
 
@@ -15,11 +12,7 @@ public class Track {
     }
 
     private void createCars(final String carNames) {
-        List<Car> cars = new ArrayList<>();
-        for (String carName : carNames.split(DELIMITER)) {
-            cars.add(new Car(carName));
-        }
-        this.cars = new Cars(cars);
+        this.cars = Cars.from(carNames);
     }
 
     public void startRacing() {

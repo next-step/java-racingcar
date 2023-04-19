@@ -1,7 +1,10 @@
 package study.step5.domain.model;
 
+import study.step5.domain.strategy.MoveStrategy;
+
 public class Car implements Comparable<Car> {
     private static final int STARTING_CONDITION = 4;
+
     private Position position;
     private Name name;
 
@@ -10,8 +13,8 @@ public class Car implements Comparable<Car> {
         this.position = new Position();
     }
 
-    public void move(int randomInt) {
-        moveCar(isMove(randomInt));
+    public void move(MoveStrategy moveStrategy) {
+        moveCar(isMove(moveStrategy.move()));
     }
 
     public Boolean isMove(int input) {
@@ -33,7 +36,7 @@ public class Car implements Comparable<Car> {
     }
 
     boolean isWinner(int winnerPosition) {
-        return position.getPosition() == winnerPosition;
+        return position.isWinnerPosition(winnerPosition);
     }
 
 
