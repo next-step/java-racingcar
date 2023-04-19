@@ -30,6 +30,11 @@ public class Car implements Vehicle {
     }
 
     @Override
+    public int getDistance(){
+        return distance;
+    }
+
+    @Override
     public String printDistance(String mark) {
         StringBuilder stringBuffer = new StringBuilder();
         for(int i =0; i<distance; i++) {

@@ -1,5 +1,8 @@
 package basicgame;
 
+import java.util.Comparator;
+import java.util.Map;
+import java.util.stream.Collectors;
 import util.RandomUtil;
 
 import java.util.ArrayList;
@@ -30,5 +33,16 @@ public class Cars {
 
     public List<Vehicle> getCars() {
         return Collections.unmodifiableList(cars);
+    }
+
+    public List<Car> mostDistance(){
+        Map<Integer, List<Car>> carList = cars.stream()
+                .collect(Collectors.groupingBy(Car::getDistance, Collectors.toList()))
+                .entrySet().stream()
+                .sorted(Map.Entry.comparingByKey(Comparator.reverseOrder()))
+                .limit(1)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+
+        return carList.entrySet().iterator().next().getValue();
     }
 }

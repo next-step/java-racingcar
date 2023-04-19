@@ -3,7 +3,11 @@ package basicgame;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -75,5 +79,28 @@ class CarsTest {
         var actualList = cars.getCars();
 
         assertThat(actualList.size()).isEqualTo(expectedCarCount);
+    }
+
+    @Test
+    @DisplayName("Car mostDistance 테스트 Success")
+    void mostDistanceTestSuccess() {
+        var carTryCount = 5;
+        var carNameInput = "pobi,crong,honux".split(",");
+
+        cars.initCar(carNameInput);
+        for (int i = 0; i < carTryCount; i++) {
+            cars.activeCar();
+        }
+
+        var winnerList = cars.mostDistance();
+
+        int maxDistance = Collections.max(cars.getCars()
+                .stream()
+                .map(Vehicle::getDistance)
+                .collect(Collectors.toList()));
+
+        Assertions.assertThat(winnerList.stream()
+                .map(Car::getDistance)
+                .collect(Collectors.toList())).isEqualTo(List.of(maxDistance));
     }
 }

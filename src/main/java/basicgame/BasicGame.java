@@ -1,6 +1,7 @@
 package basicgame;
 
 
+import java.util.List;
 import util.StringUtil;
 
 public class BasicGame {
@@ -42,6 +43,7 @@ public class BasicGame {
 
         cars.initCar(CarNameList);
         printCar(tryCount);
+        printWinner(cars.mostDistance());
     }
 
     public String[] splitName(String carNames){
@@ -51,10 +53,15 @@ public class BasicGame {
     private void printCar(int tryCount) {
         ResultView.printResultTitle();
         ResultView.printResultList(cars.getCars(), PROCESS_INDICATOR);
+
         for (int i = 0; i < tryCount; i++) {
             cars.activeCar();
             ResultView.printResultList(cars.getCars(), PROCESS_INDICATOR);
             triedCount.autoIncrement();
         }
+    }
+
+    private void printWinner(List<Car> carList) {
+        ResultView.printWinnerList(carList);
     }
 }
