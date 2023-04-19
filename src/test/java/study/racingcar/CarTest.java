@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import study.racingcar.domain.Car;
 import study.racingcar.strategy.CarMoveStrategy;
+import study.racingcar.util.RandomNumber;
 
 import java.util.InputMismatchException;
 
@@ -18,7 +19,7 @@ public class CarTest {
     @ValueSource(ints = {3, 6, 5})
     public void Car_move(int games) {
 
-        Car car = new Car(0, "pobbi", new CarMoveStrategy());
+        Car car = new Car(0, "pobbi", new CarMoveStrategy(new RandomNumber()));
 
         for(int i = 0; i < games; i++) {
             car.move();
@@ -32,7 +33,7 @@ public class CarTest {
     @ValueSource(strings = {"bbororo","jaewon","tester"})
     public void Car_isMoreThanFiveLength(String name) {
 
-        assertThatThrownBy(() -> new Car(0, name, new CarMoveStrategy()))
+        assertThatThrownBy(() -> new Car(0, name, new CarMoveStrategy(new RandomNumber())))
                 .isInstanceOf(InputMismatchException.class);
     }
 

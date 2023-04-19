@@ -6,6 +6,8 @@ import study.racingcar.domain.RacingGameInputs;
 import study.racingcar.view.InputView;
 import study.racingcar.view.ResultView;
 
+import java.util.Random;
+
 public class RacingGameController {
 
     public static void main(String[] args) {
@@ -13,6 +15,7 @@ public class RacingGameController {
     }
 
     public static void racingCar () {
+
         InputView inputView = new InputView();
         ResultView resultView = new ResultView();
 
