@@ -10,10 +10,8 @@ import java.util.stream.Stream;
 
 public class CarRacingGame {
 
-    private final InputView inputView;
 
-    public CarRacingGame(InputView inputView) {
-        this.inputView = inputView;
+    public CarRacingGame() {
     }
 
     public void startGame() {
@@ -47,9 +45,9 @@ public class CarRacingGame {
 
     private GameStartParameter scanGameStartParameters() {
         InputView.printCarNumTakingView();
-        int carNums = inputView.scanNextPositiveInteger().getIntValue();
+        int carNums = InputView.scanNextPositiveInteger().getIntValue();
         InputView.printTryNumView();
-        int runNums = inputView.scanNextPositiveInteger().getIntValue();
+        int runNums = InputView.scanNextPositiveInteger().getIntValue();
 
         return new GameStartParameter(carNums, runNums);
     }

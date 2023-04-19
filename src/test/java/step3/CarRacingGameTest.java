@@ -16,8 +16,7 @@ public class CarRacingGameTest {
 
     @BeforeEach
     void init() {
-        carRacingGame = new CarRacingGame(new InputView());
-
+        carRacingGame = new CarRacingGame();
     }
 
     @Test
