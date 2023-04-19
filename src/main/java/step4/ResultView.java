@@ -7,19 +7,21 @@ public class ResultView {
     private List<Cars> racingLog;
     private List<String> winners;
 
+    private static final String PROGRESS_CHARACTER = "-";
+
     public ResultView() {
         this.racingLog = new ArrayList<>();
     }
 
     public void printScore(Cars cars) {
         for (Car car : cars.getCars()) {
-            System.out.println(car.getName() + "  " + "-".repeat(car.getProgress()));
+            System.out.println(car.getName() + "  " + car.getProgressByCharacter(PROGRESS_CHARACTER));
         }
         System.out.println("");
     }
 
     public void logScore(Cars cars) {
-        racingLog.add(cars);
+        racingLog.add(Cars.of(cars));
     }
 
     public void setWinners(List<String> winners) {

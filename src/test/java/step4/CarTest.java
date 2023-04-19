@@ -12,19 +12,19 @@ public class CarTest {
         Car car = new Car("test");
         int random = 5;
         car.move(random);
-        assertThat(car.getProgress()).isEqualTo(1);
+        assertThat(car.isEqualsProgress(1)).isTrue();
     }
 
     @Test
     public void 랜덤값_검증_실패() {
         int randomTrue = 5;
-        assertThat(Car.moveAvailable(randomTrue)).isTrue();
+        assertThat(Car.movable(randomTrue)).isTrue();
     }
 
     @Test
     public void 랜덤값_검증_성공() {
         int randomTrue = 5;
-        assertThat(Car.moveAvailable(randomTrue)).isTrue();
+        assertThat(Car.movable(randomTrue)).isTrue();
     }
 
 

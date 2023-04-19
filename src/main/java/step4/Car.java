@@ -11,22 +11,43 @@ public class Car {
         this.progress = 0;
     }
 
+    public Car(Car car) {
+        this.name = car.name;
+        this.progress = car.progress;
+    }
+
+    public static Car of(Car car) {
+        return new Car(car);
+    }
+
     public void move(int random) {
-        if (moveAvailable(random)) {
+        if (movable(random)) {
             progress++;
         }
     }
 
-    public static boolean moveAvailable(int random) {
+    public void moveCar(int value) {
+        progress += value;
+    }
+
+    public static boolean movable(int random) {
         return random >= RANDOM_LIMIT;
     }
 
-    public int getProgress() {
-        return progress;
+    public boolean isEqualsProgress(int progress) {
+        return this.progress == progress;
+    }
+
+    public int getBigerProgress(int progress) {
+        return Math.max(progress, this.progress);
     }
 
     public String getName() {
         return name;
+    }
+
+    public String getProgressByCharacter(String character) {
+        return character.repeat(progress);
     }
 
 }

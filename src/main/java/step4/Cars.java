@@ -6,6 +6,9 @@ import java.util.List;
 public class Cars {
     private List<Car> cars;
 
+    public Cars(List<Car> cars) {
+        this.cars = cars;
+    }
 
     public static Cars of(String[] names) {
         List<Car> carList = new ArrayList<>();
@@ -15,14 +18,18 @@ public class Cars {
         return new Cars(carList);
     }
 
-    public Cars(List<Car> cars) {
-        this.cars = cars;
+    public static Cars of(Cars cars) {
+        List<Car> carList = new ArrayList<>();
+        for (Car car : cars.cars) {
+            carList.add(Car.of(car));
+        }
+        return new Cars(carList);
     }
 
     public void moveCars(Dice dice) {
         for (Car car : cars) {
-            int randomNum = dice.getNum();
-            car.move(randomNum);
+            int moveNumber = dice.getNum();
+            car.move(moveNumber);
         }
     }
 
@@ -33,9 +40,13 @@ public class Cars {
     public int getBestScore() {
         int bestScore = 0;
         for (Car car : cars) {
-            bestScore = Math.max(car.getProgress(), bestScore);
+            bestScore = car.getBigerProgress(bestScore);
         }
         return bestScore;
+    }
+
+    public void moveCar(int position, int value) {
+        cars.get(position).moveCar(value);
     }
 
     public List<String> getWinners() {
@@ -48,7 +59,7 @@ public class Cars {
 
     private void addWinner(List<String> winners, Car car) {
         int bestScore = getBestScore();
-        if (car.getProgress() == bestScore) {
+        if (car.isEqualsProgress(bestScore)) {
             winners.add(car.getName());
         }
     }
