@@ -1,12 +1,13 @@
 package study.step5.view;
 
 import study.step5.domain.model.*;
-import study.step5.utils.CommonUtil;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class ResultView {
+    public static final String POSITION_CHARTER = "-";
+
     private ResultView() {
         // 생성자 내부 호출 -> 명시적 Exception
         throw new AssertionError();
@@ -36,7 +37,7 @@ public class ResultView {
     }
 
     private static String changeCarMoveToString(Car car) {
-        String move = CommonUtil.POSITION_CHARTER;
+        String move = POSITION_CHARTER;
         move = move.repeat(car.getPosition());
         return move;
     }
