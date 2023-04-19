@@ -9,9 +9,10 @@ public class CarRacingApplication {
         RacingGame racingGame = new RacingGame();
         racingGame.readyCar(carCount);
 
-        System.out.println("실행결과");
+        ResultView.gameResultStart();
         for (int i = 0; i < tryCount; i++) {
-            ResultView.gameResultView(racingGame.playGame());
+            racingGame.playGame();
+            ResultView.gameResultView(racingGame.getCars());
             System.out.println();
         }
     }

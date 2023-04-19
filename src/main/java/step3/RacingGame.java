@@ -12,10 +12,13 @@ public class RacingGame {
         }
     }
 
-    public List<Car> playGame() {
+    public void playGame() {
         for (Car car : cars) {
             car.move(RandomNumberGenerator.randomNumber());
         }
+    }
+
+    public List<Car> getCars() {
         return cars;
     }
 
