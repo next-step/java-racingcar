@@ -2,6 +2,9 @@ package study;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -28,16 +31,11 @@ public class StringTest {
     }
 
     // 요구사항 3
-    @Test
+    @ParameterizedTest
     @DisplayName("특정 위치의 문자를 가져오는지 확인")
-    void charAtTest() {
-        char charAt0 = "abc".charAt(0);
-        char charAt1 = "abc".charAt(1);
-        char charAt2 = "abc".charAt(2);
-
-        assertThat(charAt0).isEqualTo('a');
-        assertThat(charAt1).isEqualTo('b');
-        assertThat(charAt2).isEqualTo('c');
+    @CsvSource(value = {"a:0", "b:1", "c:2"}, delimiter = ':')
+    void charAtTest(char input, int expected) {
+        assertThat(input).isEqualTo("abc".charAt(expected));
     }
 
     @Test
