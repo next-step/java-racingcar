@@ -1,28 +1,31 @@
-package step3.car.game;
+package step3.controller;
+
+import step3.domain.Cars;
+import step3.view.ResultView;
 
 import java.util.stream.IntStream;
 
-public class CarGame {
+public class CarController {
     private final Cars cars;
     private final int moves;
-    private final CarsView view;
+    private final ResultView view;
 
-    public CarGame(int numberOfCars, int numberOfMoves) {
+    public CarController(int numberOfCars, int numberOfMoves) {
         if (numberOfCars <= 0 || numberOfMoves <= 0) {
             throw new RuntimeException("입력값은 1 이상이어야 합니다.");
         }
         cars = new Cars(numberOfCars);
         moves = numberOfMoves;
-        view = new CarsView();
+        view = new ResultView();
     }
 
-    public CarGame(String[] carNames, int numberOfMoves) {
+    public CarController(String[] carNames, int numberOfMoves) {
         if (carNames.length == 0 || numberOfMoves <= 0) {
             throw new RuntimeException("입력값은 1 이상이어야 합니다.");
         }
         cars = new Cars(carNames);
         moves = numberOfMoves;
-        view = new CarsView();
+        view = new ResultView();
     }
 
     public void start() {

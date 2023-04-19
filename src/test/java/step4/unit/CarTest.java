@@ -4,8 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
-import step3.car.game.Car;
-import step3.car.game.Cars;
+import step3.domain.Car;
+import step3.domain.Cars;
 
 import java.util.stream.IntStream;
 

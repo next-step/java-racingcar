@@ -1,4 +1,4 @@
-package step3.car.game;
+package step3.domain;
 
 import org.apache.commons.lang3.RandomStringUtils;
 

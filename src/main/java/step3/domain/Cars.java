@@ -1,4 +1,4 @@
-package step3.car.game;
+package step3.domain;
 
 import java.util.ArrayList;
 import java.util.List;

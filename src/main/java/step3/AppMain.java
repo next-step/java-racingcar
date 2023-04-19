@@ -1,6 +1,6 @@
 package step3;
 
-import step3.car.game.CarGame;
+import step3.controller.CarController;
 
 import java.util.Scanner;
 
@@ -14,8 +14,8 @@ public class AppMain {
         System.out.println("시도할 회수는 몇 회 인가요?");
         int numberOfMoves = scanner.nextInt();
 
-        CarGame carGame = new CarGame(cars.split(","), numberOfMoves);
+        CarController carController = new CarController(cars.split(","), numberOfMoves);
         System.out.println("실행 결과");
-        carGame.start();
+        carController.start();
     }
 }
