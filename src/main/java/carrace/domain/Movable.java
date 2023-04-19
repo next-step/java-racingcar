@@ -1,4 +1,4 @@
-package carrace;
+package carrace.domain;
 
 @FunctionalInterface
 public interface Movable {

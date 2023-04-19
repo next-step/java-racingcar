@@ -1,4 +1,7 @@
-package carrace;
+package carrace.view;
+
+import carrace.domain.CarRace;
+import carrace.domain.Cars;
 
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -17,7 +20,7 @@ public class ResultView {
     }
 
     private static String carsPositionToDistanceWithName(Cars cars) {
-        return IntStream.range(0, cars.size())
+        return IntStream.range(0, cars.getNumberOfCar())
                 .mapToObj(index -> getDistanceWithName(cars.getCarName(index), cars.getPosition(index)))
                 .collect(Collectors.joining(LINE_BREAK));
     }

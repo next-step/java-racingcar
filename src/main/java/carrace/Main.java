@@ -1,5 +1,11 @@
 package carrace;
 
+import carrace.domain.CarRace;
+import carrace.domain.Cars;
+import carrace.domain.RandomMovable;
+import carrace.view.InputView;
+import carrace.view.ResultView;
+
 public class Main {
 
     public static void main(String[] args) {
