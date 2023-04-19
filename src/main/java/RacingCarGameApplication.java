@@ -1,4 +1,5 @@
 import racingCarGame.domain.RacingCarGame;
+import racingCarGame.domain.RandomMoveStrategy;
 import racingCarGame.view.ConsoleScanner;
 import racingCarGame.view.ConsoleWriter;
 import racingCarGame.view.InputView;
@@ -11,7 +12,7 @@ public class RacingCarGameApplication {
 
         ConsoleWriter.writeHeader();
         for (int i = 1; i <= inputView.getTryCount(); i++) {
-            racingCarGame.race();
+            racingCarGame.race(new RandomMoveStrategy());
             ConsoleWriter.writeGameInformation(racingCarGame.getCars());
         }
         ConsoleWriter.writeWinner(racingCarGame.findWinner());

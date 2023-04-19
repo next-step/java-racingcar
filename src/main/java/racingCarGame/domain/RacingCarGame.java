@@ -12,7 +12,7 @@ public class RacingCarGame {
     public RacingCarGame(InputView inputView) {
         List<Car> cars = new ArrayList<>();
         for (String owner : inputView.getOwners()) {
-            cars.add(new Car(owner, new RandomMoveStrategy()));
+            cars.add(new Car(owner));
         }
         this.cars = cars;
     }
@@ -21,9 +21,9 @@ public class RacingCarGame {
         this.cars = cars;
     }
 
-    public void race() {
+    public void race(MoveStrategy moveStrategy) {
         for (Car car : cars) {
-            car.move();
+            car.move(moveStrategy);
         }
     }
 
