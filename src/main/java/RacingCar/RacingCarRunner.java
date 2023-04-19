@@ -9,14 +9,11 @@ public class RacingCarRunner {
         return Integer.parseInt(s.nextLine());
     }
 
-    public int run() {
-        Car car = new Car();
+    public int runOrStop(int randomNumber) {
+        int currentPosition = 0;
 
-        int currentPosition = car.getCurrentPosition();
-
-        if (isRunnable(getRandomNumber())) {
-            currentPosition += 1;
-            car.setCurrentPosition(currentPosition);
+        if (isRunnable(randomNumber)) {
+            currentPosition++;
         }
 
         return currentPosition;
@@ -31,13 +28,9 @@ public class RacingCarRunner {
         return (num >= 4);
     }
 
-    public static void main(String[] args) {
-        RacingCarRunner rcr = new RacingCarRunner();
-
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        System.out.println(rcr.getUserInput());
-
-        System.out.println("시도할 횟수는 몇 회 인가요?");
-        System.out.println(rcr.getUserInput());
+    public void printRacingCarResult() {
+        for (int i = 0; i < runOrStop(getRandomNumber()); i++) {
+            System.out.println("-");
+        }
     }
 }
