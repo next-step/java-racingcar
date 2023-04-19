@@ -12,11 +12,11 @@ public class StringCalculator {
     }
 
     private static int sum(String[] numbers) {
-        int result = 0;
+        Positive result = new Positive(0);
         for (String number : numbers) {
-            result += new Positive(number).number();
+            result = result.add(new Positive(number));
         }
-        return result;
+        return result.number();
     }
 
 }
