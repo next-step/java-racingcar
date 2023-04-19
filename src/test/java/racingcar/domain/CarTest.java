@@ -7,21 +7,33 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
 
-    @DisplayName("car 객체를 생성한다.")
-    @Test
-    void createCar() {
-        Car car = Car.create();
+    @DisplayName("5글자 미만 이름을 갖는 car 객체를 생성한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"pobi", "crong", "honux"})
+    void successCreateCar(String value) {
+        Car car = Car.create(value);
 
         assertThat(car).isNotNull();
+        assertThat(car.getName()).isEqualTo(value);
+    }
+
+    @DisplayName("5글자 초과하는 이름을 갖는 car 객체를 생성할때 IllegalArgumentException을 발생시킨다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"pobiii", "cronggg", "honuxxxx"})
+    void failCreateCar(String value) {
+        assertThatThrownBy(() ->Car.create(value))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("이름은 5글자를 초과할 수 없습니다.");
     }
 
     @DisplayName("car객체의 moveCount값을 1 증가시킨다.")
     @Test
     void increaseMoveCount() {
-        Car car = Car.create();
+        Car car = Car.create("pobi");
         car.increaseMoveCount();
 
         assertThat(car.getMoveCount()).isEqualTo(1);
@@ -31,7 +43,7 @@ public class CarTest {
     @ParameterizedTest
     @CsvSource(value = {"1:false", "2:false", "4:true", "5:true", "5:true"}, delimiter = ':')
     void canMove(int value, boolean expected) {
-        Car car = Car.create();
+        Car car = Car.create("pobi");
 
         assertThat(car.canMove(value)).isEqualTo(expected);
     }
@@ -40,7 +52,7 @@ public class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {4, 5, 6, 7})
     void move1(int randomNumber) {
-        Car car = Car.create();
+        Car car = Car.create("pobi");
 
         car.move(randomNumber);
 
@@ -51,7 +63,7 @@ public class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     void move2(int randomNumber) {
-        Car car = Car.create();
+        Car car = Car.create("pobi");
 
         car.move(randomNumber);
 

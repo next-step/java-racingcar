@@ -1,11 +1,11 @@
 package racingcar.domain;
 
-public class Positive {
+public class PositiveNumber {
 
     public static final int ZERO = 0;
     private final int number;
 
-    public Positive(int number) {
+    public PositiveNumber(int number) {
         this.number = number;
     }
 
@@ -13,14 +13,14 @@ public class Positive {
         return number;
     }
 
-    public static Positive create(String stringNumber) {
+    public static PositiveNumber create(String stringNumber) {
 
         int convertedNumber = convertStringToNumber(stringNumber);
         if (convertedNumber < ZERO) {
             throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
         }
 
-        return new Positive(convertedNumber);
+        return new PositiveNumber(convertedNumber);
     }
 
     private static int convertStringToNumber(String stringNumber) throws NumberFormatException {
