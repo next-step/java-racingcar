@@ -1,34 +1,33 @@
 package study.step3.domain;
 
-import study.step3.view.InputView;
-import study.step3.view.OutputView;
+import study.step3.dto.CarRacingDto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CarRacing {
 
-    private final InputView inputView = new InputView();
-    private final OutputView outputView = new OutputView();
+    private List<String> carNames;
+    private int countOfMove;
+    private Cars cars;
 
-    public static void main(String[] args) {
-        CarRacing carRacing = new CarRacing();
-        carRacing.play();
+    public CarRacing(List<String> carNames, int countOfMove) {
+        this.carNames = carNames;
+        this.countOfMove = countOfMove;
+        this.cars = new Cars(carNames,
+                new LessThanMoveCondition(4, new RandomMove()));
     }
 
-    public void play() {
-        String[] carNames = inputView.inputCarNames();
-        int countOfMove = inputView.inputCountOfMove();
-
-        Cars cars = new Cars(carNames,
-                new LessThanMoveCondition(4, new RandomMove()));
-
-        outputView.outputTextOfResult();
+    public List<CarRacingDto> play() {
+        List<CarRacingDto> stagesOfPositions = new ArrayList<>();
         for (int i = 0; i < countOfMove; i++) {
             cars.moveForward();
-            outputView.outputPositionOfCarsWithName(cars.toCarNames(), cars.toPositionOfCars());
+            stagesOfPositions.add(new CarRacingDto(cars.toPositionOfCars()));
         }
+        return stagesOfPositions;
+    }
 
-        List<String> winners = cars.findWinners();
-        outputView.outputWinners(winners);
+    public List<String> findWinners() {
+        return cars.findWinners();
     }
 }
