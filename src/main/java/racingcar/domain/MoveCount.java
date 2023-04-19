@@ -11,4 +11,8 @@ public class MoveCount {
     public int getMoveCount() {
         return moveCount;
     }
+
+    public boolean isGreaterThan(int maxMoveCount) {
+        return this.moveCount > maxMoveCount;
+    }
 }
