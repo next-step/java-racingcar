@@ -4,32 +4,27 @@ package step3.racing;
  * @author : 0giri
  * @since : 2023/04/15
  */
-public class Car implements Cloneable{
+public class Car {
 
+    private static final int DEFAULT_LOCATION = 0;
     private int location;
 
     public Car() {
-        this.location = 0;
+        this.location = DEFAULT_LOCATION;
+    }
+
+    public Car(Car car) {
+        this.location = car.location;
     }
 
     public void move(int distance) {
         this.location += distance;
     }
 
+    public void stop() {
+    }
+
     public int location() {
         return this.location;
-    }
-
-    public void stop() {
-
-    }
-
-    @Override
-    public Car clone() {
-        try {
-            return (Car) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError();
-        }
     }
 }

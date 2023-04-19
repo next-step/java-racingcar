@@ -25,7 +25,7 @@ public class Cars {
     }
 
     public List<Car> deepCopyList() {
-        return carList.stream().map(Car::clone).collect(Collectors.toList());
+        return carList.stream().map(Car::new).collect(Collectors.toList());
     }
 
     public int count() {
