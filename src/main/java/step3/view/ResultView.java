@@ -1,8 +1,7 @@
 package step3.view;
 
+import step3.CarList;
 import step3.SimpleCar;
-
-import java.util.List;
 
 public class ResultView {
 
@@ -10,8 +9,8 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public static void printCarsRunState(List<SimpleCar> cars) {
-        cars.forEach(ResultView::printCarRunState);
+    public static void printCarsRunState(CarList cars) {
+        cars.getCopiedCars().forEach(ResultView::printCarRunState);
         System.out.println();
     }
 

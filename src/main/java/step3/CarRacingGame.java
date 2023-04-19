@@ -21,7 +21,7 @@ public class CarRacingGame {
     }
 
     void play(GameStartParameter gameStartParameter) {
-        List<SimpleCar> cars = generateCars(gameStartParameter);
+        CarList cars = new CarList(generateCars(gameStartParameter));
         runCars(gameStartParameter, cars);
     }
 
@@ -30,7 +30,7 @@ public class CarRacingGame {
                 .mapToObj(i -> new SimpleCar()).collect(Collectors.toList());
     }
 
-    private void runCars(GameStartParameter gameStartParameter, List<SimpleCar> cars) {
+    private void runCars(GameStartParameter gameStartParameter, CarList cars) {
         ResultView.printRunResultText();
 
         Stream.iterate(0, i -> i + 1)
@@ -38,8 +38,8 @@ public class CarRacingGame {
                 .forEach(i -> runCarsAndPrintState(cars));
     }
 
-    private void runCarsAndPrintState(List<SimpleCar> cars) {
-        cars.forEach(SimpleCar::run);
+    private void runCarsAndPrintState(CarList cars) {
+        cars.runAllCars();
         ResultView.printCarsRunState(cars);
     }
 
