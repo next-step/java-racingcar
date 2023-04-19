@@ -11,14 +11,13 @@ import java.util.List;
 
 public class RacingGame {
 
-    private Cars cars;
+    private final Cars cars;
+    private final RacingRule racingRule;
 
-    private RacingRule racingRule;
-
-    public RacingGame(int carCount, RacingRule racingRule) {
+    public RacingGame(List<String> carNameList, RacingRule racingRule) {
         List<Car> carList = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            carList.add(new Car());
+        for (String carName : carNameList) {
+            carList.add(new Car(carName));
         }
 
         this.cars = new Cars(carList);
