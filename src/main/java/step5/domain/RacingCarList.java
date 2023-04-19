@@ -3,7 +3,6 @@ package step5.domain;
 import step5.strategy.move.MoveStrategy;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toUnmodifiableList;
 
@@ -49,17 +48,17 @@ public class RacingCarList {
         }
     }
 
-    private static void validateHasLength(List<String> carNameList){
-        if(carNameList.isEmpty()){
+    private static void validateHasLength(List<String> carNameList) {
+        if (carNameList.isEmpty()) {
             throw new IllegalArgumentException("자동차 이름을 입력해주세요");
         }
     }
 
-    public void move(MoveStrategy moveStrategy){
+    public void move(MoveStrategy moveStrategy) {
         racingCarList.forEach(racingCar -> racingCar.move(moveStrategy));
     }
 
-    public List<String> getWinner(){
+    public List<String> getWinner() {
         int winnerLocation = getWinnerLocation();
 
         return racingCarList.stream()
@@ -76,7 +75,7 @@ public class RacingCarList {
                 .orElseThrow(NoSuchElementException::new);
     }
 
-    public List<RacingCar> getRacingCarList(){
+    public List<RacingCar> getRacingCarList() {
         return racingCarList;
     }
 }
