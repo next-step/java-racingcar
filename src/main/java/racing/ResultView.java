@@ -23,6 +23,10 @@ public class ResultView {
     }
 
     public static void showWinner(Cars cars) {
-        System.out.println(cars.winnerNames() + "가 최종 우승했습니다.");
+        System.out.println(toWinnerString(cars.pickWinners()) + "가 최종 우승했습니다.");
+    }
+
+    private static String toWinnerString(List<String> winners) {
+        return String.join(", ", winners);
     }
 }

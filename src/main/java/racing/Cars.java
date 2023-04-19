@@ -33,6 +33,23 @@ public class Cars {
         return this;
     }
 
+    public List<String> pickWinners() {
+        int maxPosition = getMaxPosition();
+        List<String> winners = new ArrayList<>();
+        cars.forEach(car -> pickWinner(maxPosition, winners, car));
+        return winners;
+    }
+
+    private int getMaxPosition() {
+        return Collections.max(cars.stream().map(Car::position).collect(Collectors.toList()));
+    }
+
+    private static void pickWinner(int maxPosition, List<String> winners, Car car) {
+        if (car.isWinner(maxPosition)) {
+            winners.add(car.name());
+        }
+    }
+
     public List<Car> values() {
         return cars;
     }
@@ -41,14 +58,4 @@ public class Cars {
         return moveCount;
     }
 
-    public String winnerNames() {
-        int maxPosition = Collections.max(cars.stream().map(Car::position).collect(Collectors.toList()));
-        List<String> winnners = new ArrayList<>();
-        cars.forEach(car -> {
-            if (maxPosition == car.position()) {
-                winnners.add(car.name());
-            }
-        });
-        return String.join(", ", winnners);
-    }
 }

@@ -32,6 +32,3 @@
 - [x] 이름은 5자 초과 불가
 - [x] 출력에 자동차 이름을 추가
 - [x] 게임이 끝나면 우승자를 출력 (한 명 이상일 수 있음)
-
-RacingCarGame   -> InputView
-                -> OutputView
