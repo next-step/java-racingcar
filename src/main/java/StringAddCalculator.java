@@ -14,9 +14,8 @@ public class StringAddCalculator {
         }
 
         String[] tokens = getArrayDividedByDelimiter(input);
-        if (isContainNegative(tokens)) {
-            throw new IllegalArgumentException("음수가 포함되어 있습니다.");
-        }
+        checkNonNumericVal(tokens);
+        checkNegative(tokens);
 
         return sum(tokens);
     }
@@ -37,14 +36,31 @@ public class StringAddCalculator {
     }
 
     private static boolean isContainNegative(String[] tokens) {
-        return Arrays.stream(tokens)
-                .anyMatch(token -> Integer.parseInt(token) < 0);
+        return Arrays.stream(tokens).anyMatch(token -> Integer.parseInt(token) < 0);
     }
 
     private static int sum(String[] tokens) {
         return Arrays.stream(tokens)
                 .mapToInt(Integer::parseInt)
                 .sum();
+    }
+
+    private static void checkNegative(String[] tokens) {
+        if (isContainNegative(tokens)) {
+            throw new IllegalArgumentException("음수가 포함되어 있습니다.");
+        }
+    }
+
+    private static void checkNonNumericVal(String[] tokens) {
+        Arrays.stream(tokens)
+                .forEach(token -> checkEachValueWhetherNumberFormat(token));
+    }
+
+    private static void checkEachValueWhetherNumberFormat(String eachString) {
+        if (!eachString.chars()
+                .allMatch(Character::isDigit)) {
+            throw new IllegalArgumentException("숫자 이외의 형태 값이 들어있습니다.");
+        }
     }
 
 }

@@ -31,14 +31,10 @@ public class StringTest {
         String problem = "abc";
 
         // #1
-        assertThatThrownBy(() -> problem.charAt(problem.length()))
-                .isInstanceOf(StringIndexOutOfBoundsException.class)
-                .hasMessageContaining("String index out of range: 3");
+        assertThatThrownBy(() -> problem.charAt(problem.length())).isInstanceOf(StringIndexOutOfBoundsException.class).hasMessageContaining("String index out of range: 3");
 
         // #2
-        assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
-                .isThrownBy(() -> problem.charAt(problem.length()))
-                .withMessageMatching("String index out of range: \\d");
+        assertThatExceptionOfType(StringIndexOutOfBoundsException.class).isThrownBy(() -> problem.charAt(problem.length())).withMessageMatching("String index out of range: \\d");
     }
 
 }
