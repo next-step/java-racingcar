@@ -30,4 +30,9 @@ public class Racing {
     public int getLeftMatchCounts() {
         return leftMatchCounts;
     }
+
+    public boolean isNotFinished() {
+        return this.leftMatchCounts > 0;
+    }
+
 }

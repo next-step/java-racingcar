@@ -39,4 +39,19 @@ public class RacingTest {
         //then
         assertThat(racing.getLeftMatchCounts()).isEqualTo(leftMatchCounts - 1);
     }
+
+    @DisplayName("3단계 - 자동차 경주 - 남은 매치 카운트가 0 초과인경우 레이싱이 아직 안끝났는지 확인")
+    @Test
+    void is_not_finished() {
+        //given
+        int leftMatchCounts = 1;
+        List<Car> cars = Collections.singletonList(new Car(DEFAULT_CAR_NAME));
+        Racing racing = new Racing(leftMatchCounts, cars);
+
+        //when
+        boolean isNotFinished = racing.isNotFinished();
+
+        //then
+        assertThat(isNotFinished).isEqualTo(true);
+    }
 }

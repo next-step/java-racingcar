@@ -18,7 +18,7 @@ public class RacingGameController {
         ResultView resultView = new ResultView();
         RacingCars racingCars = new RacingCars();
 
-        while (racing.getLeftMatchCounts() > 0) {
+        while (racing.isNotFinished()) {
             racingCars = racing.race();
             resultView.printMatchResult(racingCars);
         }
