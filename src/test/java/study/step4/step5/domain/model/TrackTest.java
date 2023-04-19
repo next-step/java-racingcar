@@ -1,7 +1,10 @@
-package study.step5.domain.model;
+package study.step4.step5.domain.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import study.step5.domain.model.Track;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class TrackTest {
     private Track track;
