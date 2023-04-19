@@ -6,6 +6,7 @@ import step3.view.ResultView;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class CarRacingGame {
 
@@ -31,16 +32,20 @@ public class CarRacingGame {
                 .mapToObj(i -> new SimpleCar()).collect(Collectors.toList());
     }
 
-    void runCars(GameStartParameter gameStartParameter, List<SimpleCar> cars) {
+    private void runCars(GameStartParameter gameStartParameter, List<SimpleCar> cars) {
         ResultView.printRunResultText();
 
-        for (int i = 0; i< gameStartParameter.getRunNums(); i++){
-            cars.forEach(SimpleCar::run);
-            ResultView.printCarsRunState(cars);
-        }
+        Stream.iterate(0, i -> i + 1)
+                .limit(gameStartParameter.getRunNums())
+                .forEach(i -> runCarsAndPrintState(cars));
     }
 
-    GameStartParameter scanGameStartParameters() {
+    private void runCarsAndPrintState(List<SimpleCar> cars) {
+        cars.forEach(SimpleCar::run);
+        ResultView.printCarsRunState(cars);
+    }
+
+    private GameStartParameter scanGameStartParameters() {
         InputView.printCarNumTakingView();
         int carNums = inputView.scanNextPositiveInteger().getIntValue();
         InputView.printTryNumView();
