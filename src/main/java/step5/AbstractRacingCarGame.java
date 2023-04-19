@@ -7,7 +7,9 @@ import step5.view.InputView;
 public abstract class AbstractRacingCarGame<T> {
 
     public final void execute() {
-        showResult(play(getRacingInformation()));
+        T racingInformation = getRacingInformation();
+        T play = play(racingInformation);
+        showResult(play);
     }
 
     abstract T getRacingInformation();
