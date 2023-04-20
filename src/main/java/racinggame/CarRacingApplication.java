@@ -3,11 +3,13 @@ package racinggame;
 public class CarRacingApplication {
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        int carCount = inputView.carCount();
+        String carName = inputView.carsName();
+
+        String[] carsName = Util.splitCarName(carName);
         int tryCount = inputView.tryCount();
 
         RacingGame racingGame = new RacingGame();
-        racingGame.readyCar(carCount);
+        racingGame.readyCar(carsName);
 
         ResultView.gameResultStart();
         for (int i = 0; i < tryCount; i++) {
