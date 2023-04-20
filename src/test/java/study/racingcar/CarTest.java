@@ -4,16 +4,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import study.racingcar.domain.Car;
 import study.racingcar.strategy.CarMoveStrategy;
-import study.racingcar.util.RandomNumber;
-
-import java.util.HashSet;
 import java.util.InputMismatchException;
 import java.util.Random;
-import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -32,7 +27,7 @@ public class CarTest {
     @ValueSource(ints = {4, 6, 5})
     public void Car_move(int games) {
 
-        Car car = new Car(0, "pobbi", carMoveStrategy);
+        Car car = new Car(0, "pobbi", new CarMoveStrategy(new ReturnOnlyRandomNumber(4)));
 
         for(int i = 0; i < games; i++) {
             car.move();
