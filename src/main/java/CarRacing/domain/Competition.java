@@ -2,29 +2,18 @@ package CarRacing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Competition {
+    private final MovingStrategy movingStrategy = new MovingStrategyRandom();
 
-    private static final int CONDITION_NUMBER = 4;
-    private static final int DISTANCE_PER_TRY = 1;
-    private final Random random = new Random();
 
     private final List<Car> cars = new ArrayList<>();
 
-    public List<Car> moveCars() {
+    public List<Car> moveCars(int distancePerTry) {
         for (Car car : cars) {
-            car.move(drive(random.nextInt(10)));
+            car.move(movingStrategy.movable(distancePerTry));
         }
         return cars;
-    }
-
-    public int drive(int number) {
-        if (number >= CONDITION_NUMBER) {
-            return DISTANCE_PER_TRY;
-        }
-
-        return 0;
     }
 
     public List<Car> winners() {
@@ -41,7 +30,7 @@ public class Competition {
         return winnerCars;
     }
 
-    private void addIfWinner(List<Car> winnerCars, Car car, int max) {
+    public void addIfWinner(List<Car> winnerCars, Car car, int max) {
         if (max == car.currentPosition()) {
             winnerCars.add(car);
         }
@@ -50,12 +39,6 @@ public class Competition {
     public void entry(String[] names) {
         for (String name : names) {
             cars.add(new Car(name));
-        }
-    }
-
-    public void entryWithPosition(String[] names, int[] positions) {
-        for (int ix=0; ix<names.length; ix++) {
-            cars.add(new Car(names[ix], positions[ix]));
         }
     }
 

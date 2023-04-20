@@ -29,8 +29,10 @@ public class TestCar {
     public void car_with_position() {
         int expected = 6;
 
-        Car finishedCar = new Car("fini", 6);
-        int actual = finishedCar.currentPosition();
+        Car car = new Car("fini");
+        car.move(5);
+
+        int actual = car.currentPosition();
         assertThat(actual).isEqualTo(expected);
     }
 
