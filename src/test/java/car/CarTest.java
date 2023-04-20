@@ -1,6 +1,7 @@
 package car;
 
 import car.dto.Car;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -25,7 +26,6 @@ public class CarTest {
     @DisplayName("position 확인")
     void setPositionTest() {
         // given
-        int number = 1;
         Car car = new Car("pobi");
 
         // when
