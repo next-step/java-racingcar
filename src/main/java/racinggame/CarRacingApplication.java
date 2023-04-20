@@ -1,5 +1,7 @@
 package racinggame;
 
+import java.util.List;
+
 public class CarRacingApplication {
     public static void main(String[] args) {
         InputView inputView = new InputView();
@@ -17,6 +19,9 @@ public class CarRacingApplication {
             ResultView.gameResultView(racingGame.getCars());
             System.out.println();
         }
+
+        List<Car> winnerCar = RacingGame.racingWinner(racingGame.getCars());
+        ResultView.gameWinnerView(winnerCar);
     }
 
 }

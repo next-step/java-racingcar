@@ -12,4 +12,5 @@ public class UtilTest {
     void test1() {
         assertThat(splitCarName("pobi,crong,honux")).containsExactly("pobi", "crong", "honux");
     }
+
 }

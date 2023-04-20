@@ -8,7 +8,6 @@ public class Car {
     private String name;
 
     public Car() {
-
     }
 
     public Car(String name) {
@@ -23,8 +22,7 @@ public class Car {
         this.name = name;
         this.location = location;
     }
-
-
+    
     public int move(int numberValue) {
         if (numberValue >= MOVE_STANDARD) {
             return ++location;

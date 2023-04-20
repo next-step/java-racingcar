@@ -42,6 +42,5 @@ public class RacingGame {
         }
         return max;
     }
-
-
+    
 }

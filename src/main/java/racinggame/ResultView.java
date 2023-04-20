@@ -23,4 +23,18 @@ public class ResultView {
         System.out.println();
     }
 
+    public static void gameWinnerView(List<Car> cars) {
+        for (int i = 0; i < cars.size(); i++) {
+            System.out.print(cars.get(i).getName());
+            showComma(cars, i);
+        }
+        System.out.println("가 최종 우승했습니다.");
+    }
+
+    private static void showComma(List<Car> cars, int i) {
+        if (cars.size() > 1 && i < cars.size() - 1) {
+            System.out.print(", ");
+        }
+    }
+
 }
