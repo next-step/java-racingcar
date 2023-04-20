@@ -4,6 +4,16 @@ import racingcar.strategy.NumberGeneratorStrategy;
 
 public class Car {
     private int point = 0;
+    private String name;
+
+    public Car(String carName) {
+        this.name = carName;
+    }
+
+    public Car(int point, String name) {
+        this.point = point;
+        this.name = name;
+    }
 
     public void move(NumberGeneratorStrategy numberGeneratorStrategy) {
         final int number = numberGeneratorStrategy.generateNumber();
@@ -16,4 +26,7 @@ public class Car {
         return point;
     }
 
+    public String findCarName() {
+        return name;
+    }
 }

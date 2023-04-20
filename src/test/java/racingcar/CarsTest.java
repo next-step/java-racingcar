@@ -9,12 +9,12 @@ import racingcar.domain.Cars;
 @DisplayName("자동차 개수를 입력하여 생성한 Cars 객체 테스트")
 public class CarsTest {
 
-    @DisplayName("입력받은 숫자만큼 Car 를 생성한다")
+    @DisplayName("입력받은 차의 이름 수 만큼 Car 를 생성한다")
     @ParameterizedTest
-    @ValueSource(ints = {3, 4, 5, 6})
-    void carSizeTest(int input) {
+    @ValueSource(strings = {"korea, japan, china"})
+    void carSizeTest(String input) {
         Cars cars = new Cars(input);
 
-        Assertions.assertThat(cars.findCarsCount()).isEqualTo(input);
+        Assertions.assertThat(cars.findCarsCount()).isEqualTo(3);
     }
 }

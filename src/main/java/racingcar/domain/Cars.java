@@ -4,14 +4,14 @@ import racingcar.strategy.NumberGeneratorStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class Cars {
+    public static final String DELIMITER = ",";
     private final List<Car> cars;
 
-    public Cars(int carCount) {
+    public Cars(String carName) {
         cars = new ArrayList<>();
-        createCars(carCount);
+        createCars(carName);
     }
 
     public Scores move(NumberGeneratorStrategy numberGeneratorStrategy) {
@@ -27,10 +27,12 @@ public class Cars {
         return cars.size();
     }
 
-    private List<Car> createCars(int carCount) {
-        IntStream.range(0, carCount)
-                .mapToObj(i -> new Car())
-                .forEach(cars::add);
+    private List<Car> createCars(String carName) {
+        String[] name = carName.split(DELIMITER);
+        for (int i = 0; i < name.length; i++) {
+            Car car = new Car(name[i]);
+            cars.add(car);
+        }
         return cars;
     }
 
