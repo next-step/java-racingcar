@@ -10,7 +10,7 @@ import static java.lang.System.in;
 import static java.lang.System.out;
 
 public class InputView {
-    private static InputView instance = null;
+    private static InputView instance = new InputView();
     private static final Scanner scanner = new Scanner(in);
 
     public static int readTrialNumber() {
@@ -38,10 +38,6 @@ public class InputView {
     }
 
     public static InputView getInstance() {
-        if (instance == null) {
-            instance = new InputView();
-        }
-
         return instance;
     }
 

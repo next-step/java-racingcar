@@ -9,16 +9,14 @@ import java.util.List;
 import java.util.Random;
 
 public class RacingGame {
-    private static RacingGame instance = null;
+//    private static RacingGame instance = new RacingGame();
+    private static RacingGame instance = new RacingGame();
 
     private final Random random;
     private final InputView inputView;
     private final ResultView resultView;
 
     public static RacingGame getInstance() {
-        if (instance == null) {
-            instance = new RacingGame();
-        }
         return instance;
     }
 

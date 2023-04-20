@@ -2,6 +2,8 @@ package study.racing;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import study.racing.domain.Car;
 import study.racing.controller.RacingGame;
 import study.racing.view.InputView;
@@ -39,10 +41,30 @@ public class RacingGameTest {
         Car after = racingGame.moveOrStop(before);
 
         assertThat(after.getCurrentLocation()).isGreaterThanOrEqualTo(before.getCurrentLocation());
+        assertThat(after.getCurrentLocation() - before.getCurrentLocation()).isLessThanOrEqualTo(1);
+    }
 
-        if (after.getCurrentLocation() > before.getCurrentLocation()) {
-            assertThat(after.getCurrentLocation()).isEqualTo(before.getCurrentLocation() + 1);
-        }
+    @ParameterizedTest
+    @CsvSource(value = {
+            "0, false",
+            "3, false",
+            "4, true",
+            "9, true"
+    })
+    void 랜덤_결과로_전진가능_테스트(int randomValue, boolean canMove) {
+        Car car = new Car(1, "car");
+        assertThat(car.canMove(randomValue)).isEqualTo(canMove);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {
+            "1, 2",
+            "99, 100"
+    })
+    void 전진하면_1만큼_전진(int before, int after) {
+        Car car = new Car(before, "car");
+        car.moveForward();
+        assertThat(car.getCurrentLocation()).isEqualTo(after);
     }
 
     @Test
