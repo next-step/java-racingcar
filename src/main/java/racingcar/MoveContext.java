@@ -6,4 +6,8 @@ public class MoveContext {
     public MoveContext(MoveStrategy moveStrategy) {
         this.moveStrategy = moveStrategy;
     }
+
+    private boolean isMovable(Integer number) {
+        return moveStrategy.isMovable(number);
+    }
 }

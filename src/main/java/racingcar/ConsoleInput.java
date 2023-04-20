@@ -8,13 +8,20 @@ public class ConsoleInput implements Input {
 
     @Override
     public Race setRaceAndRetryIfInvalid() {
-        while (true) {
-            try {
-                return this.setRace();
-            } catch (IllegalArgumentException exception) {
-                System.out.println(exception.getMessage());
-            }
+        Race race = null;
+        while (race == null) {
+            race = setRaceOrNullIfInvalid();
         }
+        return race;
+    }
+
+    private Race setRaceOrNullIfInvalid() {
+        try {
+            return this.setRace();
+        } catch (IllegalArgumentException exception) {
+            System.out.println(exception.getMessage());
+        }
+        return null;
     }
 
     private Race setRace() {
