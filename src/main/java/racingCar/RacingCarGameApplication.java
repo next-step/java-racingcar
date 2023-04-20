@@ -5,8 +5,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
-import racingCar.random.RandomMoveAckGenerator;
-import racingCar.random.MoveAckGenerator;
+import racingCar.domain.random.RandomMoveAckGenerator;
+import racingCar.domain.random.MoveAckGenerator;
 import racingCar.view.RacingCarGameInputView;
 import racingCar.view.RacingCarGameResultView;
 

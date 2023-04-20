@@ -9,8 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingCar.exception.NotAllowedGameSettingException;
-import racingCar.random.RandomMoveAckGenerator;
-import racingCar.random.MoveAckGenerator;
+import racingCar.domain.random.RandomMoveAckGenerator;
+import racingCar.domain.random.MoveAckGenerator;
 import racingCar.view.RacingCarGameResultView;
 
 public class RacingCarGameTest {

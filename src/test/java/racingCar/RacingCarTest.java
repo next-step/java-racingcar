@@ -3,9 +3,9 @@ package racingCar;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingCar.car.RacingCar;
+import racingCar.domain.car.RacingCar;
 import racingCar.exception.InvalidRacingCarNameException;
-import racingCar.random.RandomMoveAckGenerator;
+import racingCar.domain.random.RandomMoveAckGenerator;
 import racingCar.random.ForwardOnlyMoveAckGenerator;
 import racingCar.random.HoldOnlyMoveAckGenerator;
 

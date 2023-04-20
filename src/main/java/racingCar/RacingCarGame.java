@@ -2,9 +2,9 @@ package racingCar;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import racingCar.car.RacingCar;
+import racingCar.domain.car.RacingCar;
 import racingCar.exception.NotAllowedGameSettingException;
-import racingCar.random.MoveAckGenerator;
+import racingCar.domain.random.MoveAckGenerator;
 import racingCar.view.RacingCarGameResultView;
 import util.CollectionUtils;
 

@@ -1,4 +1,4 @@
-package racingCar.random;
+package racingCar.domain.random;
 
 import util.RandomUtils;
 

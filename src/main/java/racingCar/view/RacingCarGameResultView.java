@@ -3,7 +3,7 @@ package racingCar.view;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
-import racingCar.car.RacingCar;
+import racingCar.domain.car.RacingCar;
 
 public final class RacingCarGameResultView {
 

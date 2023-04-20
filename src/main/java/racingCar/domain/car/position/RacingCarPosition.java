@@ -1,4 +1,4 @@
-package racingCar.car.move;
+package racingCar.domain.car.position;
 
 public class RacingCarPosition {
 

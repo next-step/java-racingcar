@@ -1,10 +1,10 @@
-package racingCar.car;
+package racingCar.domain.car;
 
-import racingCar.car.move.RacingCarMoveDirectionStrategy;
-import racingCar.car.move.RacingCarMoveForward;
-import racingCar.car.move.RacingCarName;
-import racingCar.car.move.RacingCarPosition;
-import racingCar.random.MoveAckGenerator;
+import racingCar.domain.car.move.RacingCarMoveDirectionStrategy;
+import racingCar.domain.car.move.RacingCarMoveForward;
+import racingCar.domain.car.name.RacingCarName;
+import racingCar.domain.car.position.RacingCarPosition;
+import racingCar.domain.random.MoveAckGenerator;
 
 public class RacingCar {
 
