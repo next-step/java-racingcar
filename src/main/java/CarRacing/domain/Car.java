@@ -1,28 +1,28 @@
 package CarRacing.domain;
 
 public class Car {
-    private static final int INITIAL_POSITION=1;
-    private static final int LIMIT_LENGTH_OF_CAR_NAME=5;
+    private static final int LIMIT_LENGTH_OF_CAR_NAME = 5;
 
-    private int position;
+    private final Position position;
+
     private final String name;
 
     public Car(String name) {
         this.name = setName(name);
-        this.position = INITIAL_POSITION;
+        this.position = new Position();
     }
 
     public Car(String name, int position) {
         this.name = setName(name);
-        this.position = position;
+        this.position = new Position(position);
     }
 
     public void move(int number) {
-        this.position += number;
+        this.position.move(number);
     }
 
     public int currentPosition() {
-        return this.position;
+        return position.currentPosition();
     }
 
     public String name() {
@@ -35,7 +35,7 @@ public class Car {
         }
 
         if (name.length() > LIMIT_LENGTH_OF_CAR_NAME) {
-            throw new IllegalArgumentException("이름은 "+LIMIT_LENGTH_OF_CAR_NAME+"자 이하만 가능합니다. [입력값: " + name + "]");
+            throw new IllegalArgumentException("이름은 " + LIMIT_LENGTH_OF_CAR_NAME + "자 이하만 가능합니다. [입력값: " + name + "]");
         }
 
         return name.trim();
