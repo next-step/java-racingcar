@@ -1,5 +1,6 @@
 package car;
 
+import car.dto.Car;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -13,11 +14,11 @@ public class CarTest {
         int number = 1;
 
         // when
-        Car car = new Car(number);
+        Car car = new Car("pobi");
 
         // then
         assertThat(car.getPosition()).isEqualTo(0);
-        assertThat(car.getName()).isEqualTo("자동차1");
+        assertThat(car.getName()).isEqualTo("pobi");
     }
 
     @Test
@@ -25,7 +26,7 @@ public class CarTest {
     void setPositionTest() {
         // given
         int number = 1;
-        Car car = new Car(number);
+        Car car = new Car("pobi");
 
         // when
         car.move();

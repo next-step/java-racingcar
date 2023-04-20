@@ -1,8 +1,10 @@
-package car;
+package car.service;
+
+import car.dto.Car;
 
 import java.util.List;
 
-class Movement {
+public class Movement {
     private final List<Car> cars;
     private final MoveStrategy moveStrategy;
 

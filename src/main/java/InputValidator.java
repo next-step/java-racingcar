@@ -1,4 +1,6 @@
+
 public class InputValidator {
+    private static final String NUMBER_PATTERN = "[0-9]+";
     private InputValidator() {}
 
     public static void validateNullOrEmpty(String input) {
@@ -25,7 +27,7 @@ public class InputValidator {
     }
 
     public static void isPositive(String input) {
-        if (!input.matches("[0-9]+")) {
+        if (!input.matches(NUMBER_PATTERN)) {
             throw new IllegalArgumentException("숫자 형식이 아닙니다.");
         }
 

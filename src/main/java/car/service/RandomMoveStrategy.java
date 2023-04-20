@@ -1,4 +1,4 @@
-package car;
+package car.service;
 
 import java.util.Random;
 

@@ -1,14 +1,12 @@
-package car;
+package car.dto;
 
-class Car {
+public class Car {
     private final String name;
     private int position;
-    private int number;
 
-    public Car(int number) {
-        this.name = "자동차" + number;
+    public Car(String name) {
+        this.name = name;
         this.position = 0;
-        this.number = number;
     }
 
     public int getPosition() {
