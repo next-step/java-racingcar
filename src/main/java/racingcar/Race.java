@@ -13,7 +13,7 @@ public class Race {
 
     private final Integer totalTryCount;
     private Integer currentTryCount = 0;
-    private Car[] cars;
+    private List<Car> cars;
 
     public Race(String carNamesString, Integer totalTryCount) {
         createCars(carNamesString.split(","));
@@ -26,7 +26,7 @@ public class Race {
     }
 
     public List<CarDto> toCarDtoList() {
-        return Arrays.stream(this.cars)
+        return this.cars.stream()
                 .map(Car::toDto)
                 .collect(Collectors.toList());
     }
@@ -36,27 +36,27 @@ public class Race {
     }
 
     public List<Integer> randomNumbers() {
-        return IntStream.range(0, this.cars.length)
+        return IntStream.range(0, this.cars.size())
                 .map(i -> this.randomNumber())
                 .boxed()
                 .collect(Collectors.toList());
     }
 
     public List<Car> getFirstPlace() {
-        return Arrays.stream(this.cars)
+        return this.cars.stream()
                 .filter(car -> car.isPositionEqual(getMaxPosition()))
                 .collect(Collectors.toList());
     }
 
     private void createCars(String[] carNamesArray) {
         this.cars = Arrays.stream(carNamesArray)
-                .map(Car::new)
-                .toArray(Car[]::new);
+                .map(carName -> new Car(carName, new GreaterEqualThanStrategy()))
+                .collect(Collectors.toList());
     }
 
     private void moveCars(List<Integer> numbers) {
-        IntStream.range(0, this.cars.length)
-                .forEach(i -> this.cars[i].move(numbers.get(i)));
+        IntStream.range(0, this.cars.size())
+                .forEach(i -> this.cars.get(i).move(numbers.get(i)));
     }
 
     private Integer randomNumber() {
@@ -64,7 +64,7 @@ public class Race {
     }
 
     private Integer getMaxPosition() {
-        return Arrays.stream(this.cars)
+        return this.cars.stream()
                 .mapToInt(car -> car.toDto().getPosition())
                 .max()
                 .orElseThrow(NoSuchElementException::new);
