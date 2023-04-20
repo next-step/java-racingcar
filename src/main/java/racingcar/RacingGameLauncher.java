@@ -1,8 +1,6 @@
 package racingcar;
 
-import racingcar.domain.Car;
-import racingcar.domain.CarFactory;
-import racingcar.domain.RacingGame;
+import racingcar.domain.*;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
@@ -16,7 +14,8 @@ public class RacingGameLauncher {
         int numberOfRounds = inputView.promptNumberOfRounds();
 
         Car[] cars = CarFactory.createCars(namesOfCars);
-        RacingGame racingGame = new RacingGame(cars);
+        RandomNumber randomNumber = new RandomNumberImpl();
+        RacingGame racingGame = new RacingGame(cars, randomNumber);
 
         for (int i = 0; i < numberOfRounds; i++) {
             racingGame.runSingleRound();

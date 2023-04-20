@@ -8,6 +8,6 @@ public class CarFactory {
     static public Car[] createCars(String namesWithComma) {
         String[] names = namesWithComma.split(",");
 
-        return IntStream.range(0, names.length).mapToObj(i -> new Car(names[i])).toArray(Car[]::new);
+        return IntStream.range(0, names.length).mapToObj(i -> new Car(names[i].trim())).toArray(Car[]::new);
     }
 }
