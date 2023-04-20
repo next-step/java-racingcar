@@ -32,4 +32,14 @@ class CarTest {
         assertThat(newCarList.get(0).location()).isGreaterThanOrEqualTo(carList.get(0).location());
     }
 
+    @Test
+    public void 이긴_사람을_찾다() {
+        Winner winner = new Winner();
+        List<Car> cars = Arrays.asList(new Car("jiyoung", 3),
+                new Car("lim", 3),
+                new Car("kim", 2));
+        List<String> winners = winner.findWinner(cars);
+        assertThat(winners).contains("jiyoung", "lim");
+    }
+
 }

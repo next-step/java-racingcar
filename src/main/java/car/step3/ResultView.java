@@ -1,15 +1,9 @@
 package car.step3;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import static car.step3.Main.MAX_LOCATION;
-import static car.step3.Main.winners;
 
 public class ResultView {
     private final String DASH = "-";
-    private final String WINNER = null;
 
     public ResultView() {
     }
@@ -23,16 +17,9 @@ public class ResultView {
     }
 
     public void winnerResult(List<Car> cars) {
-        for (Car car : cars) {
-             addWinner(car);
-        }
+        Winner winner = new Winner();
+        List<String> winners = winner.findWinner(cars);
         String winnerResult = String.join(",", winners);
         System.out.println(winnerResult + "가 최종 우승했습니다.");
-    }
-
-    private void addWinner(Car car) {
-        if(car.location() == MAX_LOCATION) {
-            winners.add(car.name());
-        }
     }
 }
