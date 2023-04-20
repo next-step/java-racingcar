@@ -1,8 +1,7 @@
 package racing;
 
 import racing.domain.Cars;
-import racing.dto.GameResult;
-import racing.service.RacingGame;
+import racing.domain.RacingGame;
 import racing.view.InputView;
 import racing.view.ResultView;
 
@@ -16,7 +15,7 @@ public class Main {
         int turns = inputView.InputCountOfTurn();
 
         RacingGame game = new RacingGame(countOfCar, turns);
-        List<GameResult> results = game.playGame();
+        List<Cars> results = game.playGame();
 
         ResultView.printCarsLocations(results);
     }

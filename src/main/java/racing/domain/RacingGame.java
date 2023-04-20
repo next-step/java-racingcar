@@ -11,14 +11,13 @@ public class RacingGame {
     private Cars cars;
     private final int turns;
 
-    public RacingGame(String inputNames, int turn) {
+    public RacingGame(int countOfCar, int turn) {
 
         this.turns = turn;
-        String[] names = inputNames.split(",");
 
         List<Car> list = new ArrayList<>();
-        for (int i = 0; i < names.length; i++) {
-            list.add(new Car(0, names[i]));
+        for (int i = 0; i < countOfCar; i++) {
+            list.add(new Car(0));
         }
         this.cars = new Cars(list);
     }
@@ -32,9 +31,4 @@ public class RacingGame {
 
         return results;
     }
-
-    public List<String> winners() {
-        return this.cars.findWinners();
-    }
-
 }
