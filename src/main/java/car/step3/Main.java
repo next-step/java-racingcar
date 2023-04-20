@@ -1,5 +1,6 @@
 package car.step3;
 
+import javax.naming.NamingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,10 +30,18 @@ public class Main {
         List<Car> carList = new ArrayList<Car>();
         String[] cars =  carNames.split(",");
         for (String car : cars) {
-            carList.add(new Car(car));
-
+            carList.add(new Car(validCarName(car)));
         }
         return carList;
     }
+
+    private static String validCarName(String name) {
+        if(name.length() > 5) {
+            throw new RuntimeException("이름은 5자를 초과할 수 없습니다.");
+        }
+        return name;
+    }
+
+
 
 }
