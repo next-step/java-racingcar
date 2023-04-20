@@ -13,7 +13,8 @@ public class CarRacing {
 
         initGameInput();
         playGame();
-        resultView.printWinner(cars);
+        printWinner();
+
     }
 
     public void initGameInput() {
@@ -40,6 +41,43 @@ public class CarRacing {
         for (Car car : cars) {
             car.move();
         }
+    }
+
+    private void printWinner() {
+        resultView.printWinner(findWinners());
+    }
+
+    private String findWinners() {
+        int carMaxPosition = findCarMaxPosition(cars);
+        return findWinnerNames(cars, carMaxPosition);
+    }
+
+    public int findCarMaxPosition(Car[] cars) {
+        int maxPosition = 0;
+        for(Car car : cars) {
+            maxPosition = Math.max(maxPosition, car.getPosition());
+        }
+        return maxPosition;
+    }
+
+    public String findWinnerNames(Car[] cars, int maxPosition) {
+        String winnerNames = "";
+        for(Car car : cars) {
+            winnerNames = findCarNamesThatPosition(winnerNames, car, maxPosition);
+        }
+        return winnerNames;
+    }
+
+    private String findCarNamesThatPosition(String winnerNames, Car car, int position) {
+        if (car.getPosition() != position) {
+            return winnerNames;
+        }
+
+        if(winnerNames.length() == 0) {
+            return car.getName();
+        }
+
+        return winnerNames + "," + car.getName();
     }
 
     public static void main(String[] args) {
