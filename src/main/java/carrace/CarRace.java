@@ -3,6 +3,8 @@ package carrace;
 import java.util.List;
 
 public class CarRace {
+    private static final int MOVE_THRESHOLD = 4;
+    private static final int EXCLUSIVE_UPPER_BOUND = 10;
 
     private List<Car> cars;
 
@@ -24,10 +26,10 @@ public class CarRace {
     }
 
     private int move(int power) {
-        return power < 4 ? 0 : 1;
+        return power < MOVE_THRESHOLD ? 0 : 1;
     }
 
     private int getPower() {
-        return (int) (Math.random() * 10);
+        return (int) (Math.random() * EXCLUSIVE_UPPER_BOUND);
     }
 }
