@@ -12,7 +12,9 @@ class CarTest {
     @DisplayName("이동거리만큼 이동할 수 있다.")
     @Test
     public void move_distance_togo() {
-        Car car = new Car();
+        String carName = "june";
+
+        Car car = new Car(carName);
 
         car.move(new MovableRandomValueGenerator());
         car.move(new MovableRandomValueGenerator());
@@ -24,8 +26,9 @@ class CarTest {
     @DisplayName("숫자가 4보다 크먄 위치를 1칸 이동")
     @Test
     public void move_NumberIsEqualOrGreaterThanFour_GoPositionForOne() {
+        String carName = "june";
         RandomValueGenerator randomValue = new MovableRandomValueGenerator();
-        Car car = new Car();
+        Car car = new Car(carName);
 
         car.move(randomValue);
         assertThat(car.showNowPosition()).isEqualTo(1);
@@ -34,8 +37,9 @@ class CarTest {
     @DisplayName("숫자가 4보다 작으면 위치를 그대로 유지")
     @Test
     public void move_NumberisLessThanFour_KeepPosition() {
+        String carName = "june";
         RandomValueGenerator randomValue = new NonMovableRandomValueGenerator();
-        Car car = new Car();
+        Car car = new Car(carName);
 
         car.move(randomValue);
         assertThat(car.showNowPosition()).isEqualTo(0);
