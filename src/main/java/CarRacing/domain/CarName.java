@@ -6,6 +6,7 @@ public class CarName {
     private String name;
 
     public CarName(String name) {
+        validateName(name);
         setName(name);
     }
 
@@ -13,15 +14,17 @@ public class CarName {
         return this.name;
     }
 
-    private void setName(String inputName) {
-        if (inputName == null || inputName.trim().isEmpty()) {
+    private void validateName(String inputName) {
+        if (inputName == null || inputName.isBlank()) {
             throw new IllegalArgumentException("이름은 공백일 수 없습니다.");
         }
 
         if (inputName.length() > LIMIT_LENGTH_OF_CAR_NAME) {
             throw new IllegalArgumentException("이름은 " + LIMIT_LENGTH_OF_CAR_NAME + "자 이하만 가능합니다. [입력값: " + inputName + "]");
         }
+    }
 
+    private void setName(String inputName) {
         this.name = inputName.trim();
     }
 }
