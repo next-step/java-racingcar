@@ -35,13 +35,13 @@ public class Competition {
 
         List<Car> winnerCars = new ArrayList<>();
         for (Car car : cars) {
-            checkIfWinner(winnerCars, car, max);
+            addIfWinner(winnerCars, car, max);
         }
 
         return winnerCars;
     }
 
-    private void checkIfWinner(List<Car> winnerCars, Car car, int max) {
+    private void addIfWinner(List<Car> winnerCars, Car car, int max) {
         if (max == car.currentPosition()) {
             winnerCars.add(car);
         }
