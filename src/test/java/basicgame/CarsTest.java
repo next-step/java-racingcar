@@ -3,11 +3,9 @@ package basicgame;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,6 +20,37 @@ class CarsTest {
     @BeforeEach
     void init() {
         cars = new Cars();
+    }
+
+    @DisplayName("전진 가능 여부 테스트")
+    @MethodSource("isEnoughToGoTestArguments")
+    @ParameterizedTest
+    void isEnoughToGoTest(int value, boolean expected) {
+        Car car = Car.newInstance("Ben", 1);
+
+        boolean actual = car.isEnoughValue(value);
+
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    public static Stream<Arguments> isEnoughToGoTestArguments() {
+        return Stream.of(
+                Arguments.of(-5, false),
+                Arguments.of(-4, false),
+                Arguments.of(-3, false),
+                Arguments.of(-2, false),
+                Arguments.of(-1, false),
+                Arguments.of(0, false),
+                Arguments.of(1, false),
+                Arguments.of(2, false),
+                Arguments.of(3, false),
+                Arguments.of(4, true),
+                Arguments.of(5, true),
+                Arguments.of(6, true),
+                Arguments.of(7, true),
+                Arguments.of(8, true),
+                Arguments.of(9, true)
+        );
     }
 
     @Test
@@ -39,7 +68,7 @@ class CarsTest {
     @MethodSource("initCarWithNameTestSuccessArguments")
     @ParameterizedTest
     void initCarWithNameTestSuccess(String carName) {
-        var car = new Car(carName);
+        var car = Car.newInstance(carName, 1);
         assertThat(car).isNotNull();
     }
 
@@ -57,7 +86,7 @@ class CarsTest {
     @MethodSource("initCarWithNameTestFailureArguments")
     @ParameterizedTest
     void initCarWithNameTestFailure(String carName, Exception e) {
-        assertThatThrownBy(() -> new Car(carName))
+        assertThatThrownBy(() -> Car.newInstance(carName, 1))
                 .isInstanceOf(e.getClass());
     }
 
@@ -82,25 +111,27 @@ class CarsTest {
     }
 
     @Test
-    @DisplayName("Car mostDistance 테스트 Success")
-    void mostDistanceTestSuccess() {
+    @DisplayName("Car getWinner 테스트 Success")
+    void getWinnerTestSuccess() {
+
         var carTryCount = 5;
         var carNameInput = "pobi,crong,honux".split(",");
 
+        var expectedWinnerName1 = "win1";
+        var expectedWinnerName2 = "win2";
+
         cars.initCar(carNameInput);
-        for (int i = 0; i < carTryCount; i++) {
-            cars.activeCar();
+        cars.addCar(expectedWinnerName1, 10);
+        cars.addCar(expectedWinnerName2, 10);
+
+        for ( int i=0; i< carTryCount; i++) {
+            cars.activeCar(0);
         }
 
-        var winnerList = cars.mostDistance();
+        var actualWinnerList = cars.getWinner();
 
-        int maxDistance = Collections.max(cars.getCars()
-                .stream()
-                .map(Vehicle::getDistance)
-                .collect(Collectors.toList()));
-
-        Assertions.assertThat(winnerList.stream()
-                .map(Car::getDistance)
-                .collect(Collectors.toList())).isEqualTo(List.of(maxDistance));
+        assertThat(actualWinnerList.stream()
+                .map(Car::getName))
+                .isEqualTo(List.of(expectedWinnerName1, expectedWinnerName2));
     }
 }

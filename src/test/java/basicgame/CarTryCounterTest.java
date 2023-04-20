@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTryCounterTest {
-    CarTryCounter carTryCounter;
+    private CarTryCounter carTryCounter;
     private static final int ZERO = 0;
     private static final int AUTO_INCREMENT_VALUE = 1;
 

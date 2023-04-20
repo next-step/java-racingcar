@@ -2,6 +2,7 @@ package basicgame;
 
 
 import java.util.List;
+import util.RandomUtil;
 import util.StringUtil;
 
 public class BasicGame {
@@ -9,6 +10,8 @@ public class BasicGame {
     public final static String INPUT_ERROR_MESSAGE = "0이나 음수값은 입력하실 수 없습니다.";
     public final static int ZERO = 0;
     private final static String PROCESS_INDICATOR = "-";
+
+    private final static int MAX_RANDOM = 10;
 
     public Cars cars;
     public CarTryCounter triedCount;
@@ -43,7 +46,7 @@ public class BasicGame {
 
         cars.initCar(CarNameList);
         printCar(tryCount);
-        printWinner(cars.mostDistance());
+        printWinner(cars.getWinner());
     }
 
     public String[] splitName(String carNames){
@@ -55,7 +58,7 @@ public class BasicGame {
         ResultView.printResultList(cars.getCars(), PROCESS_INDICATOR);
 
         for (int i = 0; i < tryCount; i++) {
-            cars.activeCar();
+            cars.activeCar(RandomUtil.getRandomValue(MAX_RANDOM));
             ResultView.printResultList(cars.getCars(), PROCESS_INDICATOR);
             triedCount.autoIncrement();
         }

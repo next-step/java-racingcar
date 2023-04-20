@@ -1,6 +1,7 @@
 package basicgame;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
     public static void printResultList(List<Vehicle> list, String mark) {
@@ -11,13 +12,10 @@ public class ResultView {
     }
 
     public static void printWinnerList(List<Car> list) {
-        StringBuilder winnerPrint = new StringBuilder();
-        boolean firstFlag = true;
-        for(Car car : list){
-            firstFlag = isFirstFlag(winnerPrint, firstFlag);
-            winnerPrint.append(car.getName());
-        }
-        System.out.println(winnerPrint + "가 최종 우승했습니다.");
+        String winners = list.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+        System.out.println(winners + "가 최종 우승했습니다.");
     }
 
     private static boolean isFirstFlag(StringBuilder winnerPrint, boolean firstFlag) {
