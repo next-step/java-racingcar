@@ -10,7 +10,7 @@
 
 ## 리뷰사항 정리 (step3)
 
-### 1차 리뷰사항
+### step3 - 1차 리뷰사항
 ```text
 몇 가지 의견 드립니다. 👍 당부말씀도 함께 드리겠습니다.
 
@@ -115,12 +115,34 @@ public List<List<Score>> findAllScores() {
   - 사실 이부분은 testcode 에서 반복적으로 사용되는 부분이라 메서드로 추가했는데, 로직에서는 전혀 필요없는 부분이라.. 이메서드는 삭제하겠습니다
 
 
+### Step4 - 1차 리뷰사항
+```text
+수고 많으셨습니다. 💯
+클린 코드 그 자체보다는 다양한 시도를 하시는 것에 초점이 맞춰져 있으신 것 같습니다.
+제가 드렸던 의견들은 일반적인 관점에서의 클린 코드에 관한 얘기였고, 
+그보다는 다양한 시도를 하시는 것을 통해 성장을 시도하시는 것 같아서, 
+그런 면에서 보면 지금 코드가 나쁘지 않은 듯합니다 👍
+마지막 5단계에서 마무리해주시면 좋을 것 같아요.
+```
 
+### 클래스 구조 - 도메인모델 간의 역할과 책임에 대하여 고민해보기
+- Car 에 있어야 할 정보가 빠진 느낌입니다. 자신의 위치도 Car 가 알아야 하지 않나요?
+- Racer 안에 승자를 구분할 수 있는 필드를 두면 이렇게 분리하지 않아도 될 거 같은데요
+```text
+// model/Match.java
+private final List<Racer> racerList;
+private final List<Racer> winnerList;
+```
 
+### 표시와 데이터의 분리
+- 이걸 Car 가 관리하면 안될까요?
+  - String 은 표현이고... 자기 위치는 그냥 양의 정수 형태로 보관하고 있다가, 
+  - 문자열이 필요할 때 그렇게 변환하면 될 거 같은데요..
+```text
+public class Result {
+    private final List<String> positionList;
+```
 
-
-피곤해서 자고 내일하자..
-Back to the basic>부터 시작하면됨
 
 ### 이외
 - 괄호 안에서 tab size가 8로 들어가는 것 같아서 해당 부분 수정함 : 인텔리제이 기본값에서 4로 수정
@@ -136,3 +158,7 @@ Back to the basic>부터 시작하면됨
   비지니스 로직 테스트에 집중하기
   ```
 - static 변수의 네이밍 컨벤션(대문자)
+- 함수형 인터페이스 곤란한부분
+  ```text
+  private static final UnaryOperator<String> validateName = name -> {
+  ```
