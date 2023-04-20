@@ -6,6 +6,7 @@ public enum Position {
     MOVE(1);
 
     final int position;
+
     Position(int position) {
         this.position = position;
     }

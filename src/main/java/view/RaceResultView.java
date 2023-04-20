@@ -6,9 +6,11 @@ import domain.RaceResult;
 
 public class RaceResultView implements ResultView {
     private final RaceResult raceResult;
+
     public RaceResultView(RaceResult raceResult) {
         this.raceResult = raceResult;
     }
+
     @Override
     public void print() {
         printTitle();

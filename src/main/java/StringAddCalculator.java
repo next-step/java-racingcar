@@ -6,8 +6,8 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class StringAddCalculator {
-    static Pattern specialSeperatorPattern = Pattern.compile("//(.)\n(.*)");
     private static final Integer MIN_VALUE = 0;
+    private static final Pattern specialSeperatorPattern = Pattern.compile("//(.)\n(.*)");
 
     public static int splitAndSum(String text) {
         if (text == null || text.isEmpty()) {
