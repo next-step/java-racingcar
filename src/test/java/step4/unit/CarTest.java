@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 import step3.domain.Car;
+import step3.domain.CarName;
 import step3.domain.Cars;
 
 import java.util.stream.IntStream;
@@ -17,21 +18,21 @@ public class CarTest {
     @ParameterizedTest
     @ValueSource(strings = {"t", "te", "tes", "test", "test1"})
     void 자동차생성_이름_5자이하(String input) {
-        assertThatCode(() -> new Car(input))
+        assertThatCode(() -> new CarName(input))
                 .doesNotThrowAnyException();
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"master", "coffee", "macbook", "monitor", "keyboard"})
     void 자동차생성_이름_5자를_초과할수없음(String input) {
-        assertThatThrownBy(() -> new Car(input))
+        assertThatThrownBy(() -> new CarName(input))
                 .isInstanceOf(RuntimeException.class);
     }
 
     @ParameterizedTest
     @NullAndEmptySource
     void 자동차이름은_비어있거나_널일수없음(String input) {
-        assertThatThrownBy(() -> new Car(input))
+        assertThatThrownBy(() -> new CarName(input))
                 .isInstanceOf(RuntimeException.class);
     }
 
