@@ -30,5 +30,6 @@ public class RacingGameApp {
       GameBoard raceBoard = game.race();
       screen.printRaceResultWithName(racingCar, raceBoard);
     } while (!game.isFinish());
+    screen.printWinners(game.getWinnerNames());
   }
 }
