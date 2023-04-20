@@ -1,6 +1,6 @@
-import car.Car;
-import game.GameResultDto;
-import game.RacingGame;
+import domain.car.Car;
+import domain.game.GameResultDto;
+import domain.game.RacingGame;
 import view.InputView;
 import view.ResultView;
 

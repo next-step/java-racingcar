@@ -1,9 +1,9 @@
 package view;
 
-import car.Car;
-import car.Name;
-import game.CarDto;
-import game.GameResultDto;
+import domain.car.Car;
+import domain.car.Name;
+import domain.game.CarDto;
+import domain.game.GameResultDto;
 
 import java.util.List;
 import java.util.stream.Collectors;

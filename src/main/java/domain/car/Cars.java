@@ -1,6 +1,6 @@
-package car;
+package domain.car;
 
-import game.CarDto;
+import domain.game.CarDto;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,7 +12,7 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars from(List<String> names) {
+    public static Cars of(List<String> names) {
         List<Car> cars = names.stream()
                 .map(name -> new Car(name, new RandomMoveStrategy()))
                 .collect(Collectors.toList());

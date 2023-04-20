@@ -1,7 +1,7 @@
-package game;
+package domain.game;
 
-import car.Car;
-import car.Cars;
+import domain.car.Car;
+import domain.car.Cars;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ public class RacingGame {
 
     public RacingGame(int stageCount, List<String> carNames) {
         this.stage = Stage.from(stageCount);
-        this.cars = Cars.from(carNames);
+        this.cars = Cars.of(carNames);
         this.result = new ArrayList<>();
     }
 

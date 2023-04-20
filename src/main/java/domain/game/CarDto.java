@@ -1,6 +1,6 @@
-package game;
+package domain.game;
 
-import car.Car;
+import domain.car.Car;
 
 public class CarDto {
     private final String name;
