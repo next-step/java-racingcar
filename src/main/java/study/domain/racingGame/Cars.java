@@ -33,7 +33,7 @@ public class Cars implements Iterable<Car> {
 
   private void addCars(int carCnt) {
     for (int cnt = 0; cnt < carCnt; cnt++) {
-      this.value.add(new Car());
+      this.value.add(new Car(String.valueOf(cnt)));
     }
   }
 

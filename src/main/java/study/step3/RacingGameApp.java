@@ -12,10 +12,10 @@ public class RacingGameApp {
     RacingGame game = new RacingGame();
     GameScreen screen = new GameScreen();
     GameConsole console = new GameConsole();
-    screen.print("자동차 대수는 몇 대 인가요?");
+    screen.println("자동차 대수는 몇 대 인가요?");
     int carNum = console.inputInt();
 
-    screen.print("시도할 회수는 몇 회 인가요?");
+    screen.println("시도할 회수는 몇 회 인가요?");
     int gameCnt = console.inputInt();
     Cars racingCar = new Cars(carNum);
     game.ready(gameCnt, racingCar);

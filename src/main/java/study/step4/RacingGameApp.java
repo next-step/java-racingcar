@@ -28,7 +28,7 @@ public class RacingGameApp {
         return;
       }
       GameBoard raceBoard = game.race();
-      screen.printRaceResult(racingCar, raceBoard);
+      screen.printRaceResultWithName(racingCar, raceBoard);
     } while (!game.isFinish());
   }
 }

@@ -6,26 +6,31 @@ public class GameScreen {
   private static String CAR_MOVE_COUNT_INPUT_TEXT = "시도할 회수는 몇 회 인가요?";
 
   public void printCarMoveCountInputText() {
-    print(CAR_MOVE_COUNT_INPUT_TEXT);
+    println(CAR_MOVE_COUNT_INPUT_TEXT);
   }
 
   public void printCarNameInputText() {
-    print(CAR_NAME_INPUT_TEXT);
+    println(CAR_NAME_INPUT_TEXT);
   }
 
-  public void print(String printTxt) {
+  public void println(String printTxt) {
     System.out.println(printTxt);
   }
 
-  public void printResult(int distance) {
-    print(convertCarDistanceToDash(distance));
+  public void print(String printTxt) {
+    System.out.print(printTxt);
+  }
+
+  private void printCarDistance(int distance) {
+    println(convertCarDistanceToDash(distance));
   }
 
   public void printRaceResult(Cars racingCar, GameBoard raceBoard) {
-    for (int carIdx = 0; carIdx < racingCar.getTotalCarsCount(); carIdx++) {
-      printResult(raceBoard.getResult(carIdx));
+    for (Car car : racingCar) {
+      printCarDistance(raceBoard.getResult(car.getCarName()));
     }
-    print("");
+
+    println("");
   }
 
   private String convertCarDistanceToDash(int carDistance) {
@@ -34,5 +39,14 @@ public class GameScreen {
       result += "-";
     }
     return result;
+  }
+
+  public void printRaceResultWithName(Cars racingCar, GameBoard raceBoard) {
+    for (Car car : racingCar) {
+      print(car.getCarName() + " : ");
+      printCarDistance(raceBoard.getResult(car.getCarName()));
+    }
+
+    println("");
   }
 }

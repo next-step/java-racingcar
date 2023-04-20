@@ -14,7 +14,7 @@ public class CarTest {
 
   @BeforeEach
   void setUp() {
-    car = new Car();
+    car = new Car("0");
   }
 
   @DisplayName("차량 안 움직이는 지 태스트")
