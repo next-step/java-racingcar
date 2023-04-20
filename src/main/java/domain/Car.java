@@ -16,6 +16,14 @@ public class Car {
         this.position = car.position;
     }
 
+    private Car(CarState carState, CarLogic carLogic) {
+
+    }
+
+    public static Car createCar(CarState carState, CarLogic carLogic) {
+        return new Car(carState, carLogic);
+    }
+
     public void move(int nextInt) {
         position += nextInt;
     }
