@@ -1,5 +1,6 @@
 package study.racingcar;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import study.racingcar.domain.Car;
@@ -9,18 +10,24 @@ import study.racingcar.util.RandomNumber;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class GameWinnerTest {
+
+    private CarMoveStrategy carMoveStrategy;
+
+    @BeforeEach
+    void setUp() {
+        carMoveStrategy = new CarMoveStrategy(new Random());
+    }
 
     @DisplayName("자동차 경주 중 최고 거리의 위치를 반환한다.")
     @Test
     public void gameWinner_getMaxPosition() {
 
         List<Car> carList = new ArrayList<>();
-
-        CarMoveStrategy carMoveStrategy = new CarMoveStrategy(new RandomNumber());
 
         Car car1 = new Car(3, "pobbi", carMoveStrategy);
         Car car2 = new Car(5, "crong", carMoveStrategy);
@@ -42,8 +49,6 @@ public class GameWinnerTest {
 
         List<Car> carList = new ArrayList<>();
 
-        CarMoveStrategy carMoveStrategy = new CarMoveStrategy(new RandomNumber());
-
         Car car1 = new Car(3, "pobbi", carMoveStrategy);
         Car car2 = new Car(5, "crong", carMoveStrategy);
         Car car3 = new Car(8, "honux", carMoveStrategy);
@@ -63,8 +68,6 @@ public class GameWinnerTest {
     public void gameWinner_findGameWinner_우승자2명() {
 
         List<Car> carList = new ArrayList<>();
-
-        CarMoveStrategy carMoveStrategy = new CarMoveStrategy(new RandomNumber());
 
         Car car1 = new Car(3, "pobbi", carMoveStrategy);
         Car car2 = new Car(5, "crong", carMoveStrategy);

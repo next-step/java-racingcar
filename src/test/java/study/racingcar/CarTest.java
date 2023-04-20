@@ -1,5 +1,6 @@
 package study.racingcar;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -9,19 +10,29 @@ import study.racingcar.domain.Car;
 import study.racingcar.strategy.CarMoveStrategy;
 import study.racingcar.util.RandomNumber;
 
+import java.util.HashSet;
 import java.util.InputMismatchException;
+import java.util.Random;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
 
+    private CarMoveStrategy carMoveStrategy;
+
+    @BeforeEach
+    void setUp() {
+        carMoveStrategy = new CarMoveStrategy(new Random());
+    }
+
     @DisplayName("숫자를 전달하여 자동차가 정상적으로 움직였는지 테스트")
     @ParameterizedTest
     @ValueSource(ints = {4, 6, 5})
     public void Car_move(int games) {
 
-        Car car = new Car(0, "pobbi", new CarMoveStrategy(bound -> games));
+        Car car = new Car(0, "pobbi", carMoveStrategy);
 
         for(int i = 0; i < games; i++) {
             car.move();
@@ -35,7 +46,7 @@ public class CarTest {
     @ValueSource(strings = {"bbororo","jaewon","tester"})
     public void Car_isMoreThanFiveLength(String name) {
 
-        assertThatThrownBy(() -> new Car(0, name, new CarMoveStrategy(new RandomNumber())))
+        assertThatThrownBy(() -> new Car(0, name, carMoveStrategy))
                 .isInstanceOf(InputMismatchException.class);
     }
 
@@ -43,7 +54,7 @@ public class CarTest {
     @Test
     public void Car_isPosition_TRUE_테스트() {
 
-        Car car = new Car(5, "pobbi", new CarMoveStrategy(new RandomNumber()));
+        Car car = new Car(5, "pobbi", carMoveStrategy);
 
         assertThat(car.isPosition(5)).isEqualTo(true);
     }
@@ -52,7 +63,7 @@ public class CarTest {
     @Test
     public void Car_isPosition_FALSE_테스트() {
 
-        Car car = new Car(5, "pobbi", new CarMoveStrategy(new RandomNumber()));
+        Car car = new Car(5, "pobbi", carMoveStrategy);
 
         assertThat(car.isPosition(10)).isEqualTo(false);
     }

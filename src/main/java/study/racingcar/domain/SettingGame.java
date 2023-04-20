@@ -1,10 +1,10 @@
 package study.racingcar.domain;
 
 import study.racingcar.strategy.CarMoveStrategy;
-import study.racingcar.util.RandomNumber;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class SettingGame {
 
@@ -13,7 +13,7 @@ public class SettingGame {
 
         List<Car> carList = new ArrayList<>();
 
-        CarMoveStrategy carMoveStrategy = new CarMoveStrategy(new RandomNumber());
+        CarMoveStrategy carMoveStrategy = new CarMoveStrategy(new Random());
 
         for (int i = 0; i < racingGameInputs.getNameOfCars().size(); i++) {
             carList.add(new Car(ZERO, racingGameInputs.getNameOfCars().get(i), carMoveStrategy));

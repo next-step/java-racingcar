@@ -1,21 +1,19 @@
 package study.racingcar.strategy;
 
-import study.racingcar.util.RandomUtil;
+import java.util.Random;
 
 public class CarMoveStrategy implements MoveStrategy {
 
     private static final int MOVE_CONDITION = 4;
     private static final int BOUND_NUMBER = 10;
-    private RandomUtil randomUtil;
+    private final Random random;
 
-    public CarMoveStrategy(RandomUtil randomUtil) {
-        this.randomUtil = randomUtil;
+    public CarMoveStrategy(Random random) {
+        this.random = random;
     }
 
     @Override
     public boolean isMove() {
-        return randomUtil.generate(BOUND_NUMBER) >= MOVE_CONDITION;
+        return random.nextInt(BOUND_NUMBER) >= MOVE_CONDITION;
     }
-
-
 }
