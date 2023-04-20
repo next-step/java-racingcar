@@ -1,7 +1,9 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Race {
 
@@ -11,9 +13,9 @@ public class Race {
         cars = new ArrayList<>();
     }
 
-    public void resetWithCarsOf(int numberOfCars) {
+    public void resetWithCarsOf(List<String> namesOfCars) {
         cars = new ArrayList<>();
-        createCars(numberOfCars);
+        createCars(namesOfCars);
     }
 
     public void progress(MoveStrategy moveStrategy) {
@@ -22,17 +24,17 @@ public class Race {
         }
     }
 
-    public List<Integer> getCarPositions() {
-        var carPositions = new ArrayList<Integer>();
+    public Map<String, Integer> getCarPositions() {
+        var carPositions = new LinkedHashMap<String, Integer>();
         for (var car : cars) {
-            carPositions.add(car.getPosition());
+            carPositions.put(car.getName(), car.getPosition());
         }
         return carPositions;
     }
 
-    private void createCars(int numberOfCars) {
-        for (int i = 0; i < numberOfCars; ++i) {
-            cars.add(new Car());
+    private void createCars(List<String> namesOfCars) {
+        for (var name : namesOfCars) {
+            cars.add(new Car(name));
         }
     }
 }

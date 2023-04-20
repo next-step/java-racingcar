@@ -6,7 +6,9 @@ import view.RaceView;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
@@ -20,18 +22,18 @@ public class RaceViewTest {
     }
 
     @Test
-    public void queryNumberOfCarsTest() {
-        int numberOfCars = 3;
+    public void queryNamesOfCarsTest() {
+        var carsInput = "pobi,crong,honux";
 
         var scannerMock = Mockito.mock(Scanner.class);
-        when(scannerMock.nextInt()).thenReturn(numberOfCars);
+        when(scannerMock.nextLine()).thenReturn(carsInput);
 
         var raceView = new RaceView(scannerMock);
-        var result = raceView.queryAndGetNumberOfCars();
+        var result = raceView.queryAndGetNamesOfCars();
         var consoleOutput = outputStream.toString();
 
-        assertThat(consoleOutput).isEqualTo("자동차 대수는 몇 대 인가요?\n");
-        assertThat(result).isEqualTo(numberOfCars);
+        assertThat(consoleOutput).isEqualTo("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).\n");
+        assertThat(result).containsExactly("pobi", "crong", "honux");
     }
 
     @Test
@@ -51,18 +53,24 @@ public class RaceViewTest {
 
     @Test
     public void printRaceStatus() {
-        var carPositions = List.of(2, 1, 2);
+        var carPositions = Map.of(
+                "pobi", 3,
+                "crong", 5,
+                "honux", 2
+        );
 
         var defaultScanner = new Scanner(System.in);
         var raceView = new RaceView(defaultScanner);
         raceView.printCurrentRaceStatus(carPositions);
 
         var result = outputStream.toString();
-        var expected = "---\n" +
-                "--\n" +
-                "---\n" +
-                "\n";
-        assertThat(result).isEqualTo(expected);
+        var expectedLines = Set.of(
+                "pobi : ----\n",
+                "crong : ------\n",
+                "honux : ---\n",
+                "\n"
+        );
+        assertThat(result).contains(expectedLines);
     }
 
     @Test

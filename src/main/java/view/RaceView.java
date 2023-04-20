@@ -1,6 +1,9 @@
 package view;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class RaceView {
@@ -10,9 +13,10 @@ public class RaceView {
         this.scanner = scanner;
     }
 
-    public int queryAndGetNumberOfCars() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        return scanner.nextInt();
+    public List<String> queryAndGetNamesOfCars() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        var input = scanner.nextLine();
+        return Arrays.asList(input.split(","));
     }
 
     public int queryAndGetSteps() {
@@ -24,15 +28,16 @@ public class RaceView {
         System.out.println("실행 결과");
     }
 
-    public void printCurrentRaceStatus(List<Integer> carPositions) {
-        for (var carPosition : carPositions) {
-            printCarPositionWithBars(carPosition);
+    public void printCurrentRaceStatus(Map<String, Integer> carPositions) {
+        for (var entry : carPositions.entrySet()) {
+            printCarPositionWithBars(entry.getKey(), entry.getValue());
             System.out.println();
         }
         System.out.println();
     }
 
-    private void printCarPositionWithBars(int carPosition) {
+    private void printCarPositionWithBars(String carName, int carPosition) {
+        System.out.print(carName + " : ");
         for (int i = 0; i <= carPosition; ++i) {
             System.out.print("-");
         }

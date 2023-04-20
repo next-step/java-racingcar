@@ -21,7 +21,7 @@ public class RaceController {
     }
 
     private void initializeRaceFromUserInput() {
-        var numberOfCars = raceView.queryAndGetNumberOfCars();
+        var numberOfCars = raceView.queryAndGetNamesOfCars();
         race.resetWithCarsOf(numberOfCars);
     }
 
