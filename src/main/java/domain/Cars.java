@@ -3,11 +3,9 @@ package domain;
 import static domain.RandomNumber.generateRandomOutOfTen;
 import static domain.RandomNumber.isOverFourOutOfTen;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Cars {
 

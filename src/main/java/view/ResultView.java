@@ -2,7 +2,6 @@ package view;
 
 import domain.Car;
 import domain.Cars;
-import domain.Winners;
 
 public class ResultView {
 

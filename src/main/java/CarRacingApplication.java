@@ -5,11 +5,9 @@ import static view.ResultView.drawDistanceBlockWithName;
 import static view.ResultView.drawFirstPlace;
 import static view.ResultView.drawResultView;
 
-import domain.Car;
 import domain.Cars;
 import domain.UserInput;
 import domain.Winners;
-import java.util.List;
 
 public class CarRacingApplication {
 
@@ -30,6 +28,7 @@ public class CarRacingApplication {
             cars.makeCarsMove();
             drawDistanceBlockWithName(cars);
         }
+
         String winnersNames = new Winners(cars).makeWinnersString(WINNER_DELIMITER);
         drawFirstPlace(winnersNames);
     }
