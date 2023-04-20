@@ -6,12 +6,12 @@ import java.util.Scanner;
 public class RacingCarApplication {
 
     public static void main(String[] args) {
-//        Scanner scanner = new Scanner(System.in);
-//        int carNumber = InputView.receiveCarNumber(scanner);
-//        int cycleNumber = InputView.receiveTryNumber(scanner);
-//
-//        Racing racing = new Racing();
-//        List<Car> cars = RacingManager.makeCars(carNumber);
-//        racing.runRacing(cars, cycleNumber);
+        Scanner scanner = new Scanner(System.in);
+        String playerGroup = InputView.receiveCarNumber(scanner);
+        int cycleNumber = InputView.receiveTryNumber(scanner);
+
+        List<Car> cars = RacingManager.makeCars(playerGroup);
+        Racing racing = new Racing();
+        racing.runRacing(cars, cycleNumber);
     }
 }

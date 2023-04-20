@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 public class InputView {
 
-    public static int receiveCarNumber(Scanner scanner) {
+    public static String receiveCarNumber(Scanner scanner) {
         questionCarNumber();
-        return scanner.nextInt();
+        return scanner.nextLine();
     }
 
     public static int receiveTryNumber(Scanner scanner) {
@@ -15,7 +15,7 @@ public class InputView {
     }
 
     private static void questionCarNumber() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
     }
 
     private static void questionTryNumber() {
