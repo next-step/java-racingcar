@@ -8,6 +8,7 @@ public class ResultView {
     public static void gameResultStart() {
         System.out.println("실행결과");
     }
+
     public static void gameResultView(List<Car> cars) {
         for (Car car : cars) {
             showLocation(car);
@@ -15,6 +16,7 @@ public class ResultView {
     }
 
     private static void showLocation(Car car) {
+        System.out.print(car.getName() + " : ");
         for (int i = 0; i < car.getLocation(); i++) {
             System.out.print(LOCATION_VIEW);
         }
