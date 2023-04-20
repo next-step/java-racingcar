@@ -32,7 +32,7 @@ public class InputView {
         String[] names = carNames.split(",");
         List<Car> cars = new ArrayList<>();
         for (String name : names) {
-            cars.add(new Car(1, name));
+            cars.add(new Car(0, name));
         }
         return cars;
     }

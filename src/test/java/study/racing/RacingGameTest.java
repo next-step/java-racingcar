@@ -32,7 +32,7 @@ public class RacingGameTest {
         finalCars.add(new Car(5, "car4"));
         finalCars.add(new Car(2, "car5"));
 
-        racingGame = RacingGame.getInstance();
+        racingGame = new RacingGame();
     }
 
     @Test

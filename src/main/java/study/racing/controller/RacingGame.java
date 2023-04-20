@@ -9,18 +9,12 @@ import java.util.List;
 import java.util.Random;
 
 public class RacingGame {
-//    private static RacingGame instance = new RacingGame();
-    private static RacingGame instance = new RacingGame();
 
     private final Random random;
     private final InputView inputView;
     private final ResultView resultView;
 
-    public static RacingGame getInstance() {
-        return instance;
-    }
-
-    private RacingGame() {
+    public RacingGame() {
         random = new Random();
         inputView = InputView.getInstance();
         resultView = ResultView.getInstance();
@@ -66,19 +60,23 @@ public class RacingGame {
         return longestDistance;
     }
 
-    public void play() {
-        String carNames = inputView.readCarNames();
-        List<Car> cars = inputView.readCars(carNames);
-        int trial = inputView.readTrialNumber();
-
-        System.out.println("실행 결과");
-
-        for (int i = 0; i < trial; i++) {
-            System.out.println(resultView.getStatusCars(cars));
-            moveCars(cars);
-        }
-
+    public void displayCars(List<Car> cars) {
         System.out.println(resultView.getStatusCars(cars));
+    }
+
+    public List<Car> carSetting() {
+        return inputView.readCars(inputView.readCarNames());
+    }
+
+    public int getTrial() {
+        return inputView.readTrialNumber();
+    }
+
+    public void start() {
+        System.out.println("실행 결과");
+    }
+
+    public void end(List<Car> cars) {
         List<Car> winningCars = getWinningCars(cars);
         System.out.println(resultView.displayWinningCars(winningCars));
     }
