@@ -1,7 +1,5 @@
 package racing.domain;
 
-import racing.service.RandomGameRule;
-
 import java.util.ArrayList;
 import java.util.List;
 

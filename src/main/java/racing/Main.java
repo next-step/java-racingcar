@@ -1,7 +1,7 @@
 package racing;
 
 import racing.domain.Cars;
-import racing.service.RacingGame;
+import racing.domain.RacingGame;
 import racing.view.InputView;
 import racing.view.ResultView;
 
