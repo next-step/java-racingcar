@@ -13,7 +13,7 @@ public class Car {
         }
     }
 
-    public boolean judgeForth(int degree) {
+    private boolean judgeForth(int degree) {
         return (degree >= MOVE_MINIMUM_CONDITION) && (degree <= MOVE_MAXIMUM_CONDITION);
     }
 

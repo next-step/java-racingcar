@@ -6,12 +6,6 @@ import java.util.stream.Stream;
 
 public class Racing {
 
-    public List<Car> makeCars(int number) {
-        return Stream.generate(Car::new)
-                .limit(number)
-                .collect(Collectors.toList());
-    }
-
     public void runRacing(List<Car> carList, int tryNumber) {
         System.out.println();
         System.out.println("실행 결과");

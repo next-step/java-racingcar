@@ -9,15 +9,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    @ParameterizedTest
-    @DisplayName("전진하는 조건을 규칙에 맞게 생성할 수 있다.")
-    @CsvSource(value = {"0:false", "3:false", "4:true", "9:true"}, delimiter = ':')
-    public void judgeForth_rule_makeSuccess(int input, boolean expected) {
-        Car car = new Car();
-
-        assertThat(car.judgeForth(input)).isEqualTo(expected);
-    }
-
     @DisplayName("이동거리만큼 이동할 수 있다.")
     @Test
     public void move_distance_togo() {
