@@ -5,47 +5,45 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
-    Pattern pattern = Pattern.compile("//(.)\n(.*)");
+   private static final Pattern pattern = Pattern.compile("//(.)\n(.*)");
+   private static final int COMMA = 1;
+    private static final int ASTERISK = 1;
 
     public int splitAndSum(String value) {
 
-        if (checkNull_Empty(value) == 0) {
+        if (checkNullEmpty(value)) {
             return 0;
         }
-        return sum(stringSeparation(checkSeparator(value)));
+        return sum(stringSeparation(stringSeparatorSeparation(value)));
     }
 
-    public int checkNull_Empty(String value) {
-        if (value == null || value.isEmpty()) {
-            return 0;
-        }
-
-        return -1;
+    private boolean checkNullEmpty(String value) {
+       return value == null || value.isEmpty();
     }
 
-    public String[] checkSeparator(String value) {
+    private String[] stringSeparatorSeparation(String value) {
 
         String[] number;
 
         Matcher m = pattern.matcher(value);
 
         if (m.find()) {
-            String customDelimiter = m.group(1);
-            number = m.group(2).split(customDelimiter);
+            String customDelimiter = m.group(COMMA);
+            number = m.group(ASTERISK).split(customDelimiter);
         }
         number = value.split(",|:");
 
         return number;
     }
 
-    public int checkNegative(int value) {
+    private int checkNegative(int value) {
         if (0 > value) {
             throw new RuntimeException();
         }
         return value;
     }
 
-    public int[] stringSeparation(String[] values) {
+    private int[] stringSeparation(String[] values) {
         int[] ints = new int[values.length];
         for (int i = 0; i < values.length; i++) {
             ints[i] = checkNegative(Integer.valueOf(values[i]));
@@ -53,7 +51,7 @@ public class StringAddCalculator {
         return ints;
     }
 
-    public int sum(int[] ints) {
+    private int sum(int[] ints) {
         int sum = 0;
         for (int temp : ints) {
             sum += temp;

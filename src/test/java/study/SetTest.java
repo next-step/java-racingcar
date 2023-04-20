@@ -13,6 +13,7 @@ import static org.assertj.core.api.Assertions.*;
 import java.util.HashSet;
 import java.util.Set;
 
+
 public class SetTest {
 
     private Set<Integer> numbers;
