@@ -3,7 +3,7 @@ package racinggame;
 public class Car {
     public static final int MOVE_STANDARD = 4;
     public static final int CAR_NAME_STANDARD = 5;
-    
+
     private int location = 0;
     private String name;
 
@@ -18,6 +18,12 @@ public class Car {
         this.name = name;
         this.location = getLocation();
     }
+
+    public Car(String name, int location) {
+        this.name = name;
+        this.location = location;
+    }
+
 
     public int move(int numberValue) {
         if (numberValue >= MOVE_STANDARD) {

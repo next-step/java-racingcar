@@ -9,7 +9,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static step2.StringCalculator.splitAndSum;
 
-
 public class StringCalculatorTest {
 
     @DisplayName("음수를 전달할 경우 IllegalArgumentException 예외가 발생")
