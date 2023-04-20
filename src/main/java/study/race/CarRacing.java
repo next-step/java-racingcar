@@ -1,6 +1,7 @@
 package study.race;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class CarRacing {
 
@@ -8,22 +9,38 @@ public class CarRacing {
         String value = InputView.scanNumberOfCar();
         int racingCount = InputView.scanNumberOfCount();
 
-        int carNumber = Integer.parseInt(value);
-        ArrayList carRacingArray = carArray(carNumber);
+        int carCount = Integer.parseInt(value);
+
+        int[] racingResult = new int[Integer.parseInt(value)];
+        Car[] carNumbers = carArray(carCount);
+
+        racing(racingCount, carNumbers);
 
     }
 
-    public static ArrayList carArray(int carNumber) {
-        ArrayList<Car> carList = new ArrayList<>();
-        for (int i = 0; i < carNumber; i++) {
-            Car car = new Car();
-            carList.add(car);
+    private static void racing(int racingCount, Car[] carNumbers) {
+        for(int i = 0; i< racingCount; i++){
+            for(int j = 0; j< carNumbers.length; j++) {
+                carNumbers[j].position += condition(getRandom());
+            }
         }
-        return carList;
     }
 
-    public static int condition(int number) {
-        if (number >= 4) {
+    private static int getRandom() {
+        Random random = new Random();
+        return random.nextInt(10);
+    }
+
+    public static Car[] carArray(int carCount) {
+        Car[] car = new Car[carCount];
+        for (int i = 0; i < carCount; i++) {
+            car[i] = new Car();
+        }
+        return car;
+    }
+
+    public static int condition(int random) {
+        if (random >= 4) {
             return 1;
         }
         return 0;
@@ -32,6 +49,9 @@ public class CarRacing {
 }
 
 class Car {
-    int position = 1;
+    int position = 0;
+
+    public Car() {	}
+
 }
 
