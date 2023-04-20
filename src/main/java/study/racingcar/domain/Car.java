@@ -1,5 +1,6 @@
 package study.racingcar.domain;
 
+import study.racingcar.dto.CarDto;
 import study.racingcar.strategy.MoveStrategy;
 
 import java.util.InputMismatchException;
@@ -47,5 +48,9 @@ public class Car {
         }
 
         return true;
+    }
+
+    public CarDto getCarDto() {
+        return new CarDto(this.name, this.position);
     }
 }

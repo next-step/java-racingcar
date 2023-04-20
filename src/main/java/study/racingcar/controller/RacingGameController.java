@@ -5,12 +5,14 @@ import study.racingcar.domain.GameWinner;
 import study.racingcar.domain.RacingGame;
 import study.racingcar.domain.RacingGameInputs;
 import study.racingcar.dto.CarDto;
+import study.racingcar.dto.CarDtos;
 import study.racingcar.view.InputView;
 import study.racingcar.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class RacingGameController {
 
@@ -34,15 +36,15 @@ public class RacingGameController {
             while (!game.isOver()) {
                 game.moveCar();
 
-                for(Car car : game.getCars()) {
-                    resultView.resultGame(new CarDto(car.getName(), car.currentPosition()));
+                for(CarDto car : game.getCarDtos()) {
+                    resultView.resultGame(car);
                 }
                 resultView.emptyLine();
 
                 game.nextLap();
             }
 
-            resultView.winner(new GameWinner(game.getCars()).findGameWinner());
+            resultView.winner(new GameWinner(game.getCarDtos()).findGameWinner());
         } while (inputView.reset());
 
         resultView.endGame();

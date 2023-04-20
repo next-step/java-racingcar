@@ -1,6 +1,6 @@
 package study.racingcar.domain;
 
-import study.racingcar.domain.Car;
+import study.racingcar.dto.CarDto;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -8,26 +8,26 @@ import java.util.stream.Collectors;
 public class GameWinner {
 
     private int maxPosition;
-    private List<Car> cars;
+    private List<CarDto> carDtos;
 
-    public GameWinner(List<Car> cars) {
-        this.maxPosition = getMaxPosition(cars);
-        this.cars = cars;
+    public GameWinner(List<CarDto> carDtos) {
+        this.maxPosition = getMaxPosition(carDtos);
+        this.carDtos = carDtos;
     }
 
-    public int getMaxPosition(List<Car> carList) {
+    public int getMaxPosition(List<CarDto> carDtos) {
 
-        return carList.stream()
-                .map(Car::currentPosition)
+        return carDtos.stream()
+                .map(CarDto::getPosition)
                 .max(Integer::compareTo)
                 .orElse(0);
     }
 
     public List<String> findGameWinner() {
 
-        return cars.stream()
-                .filter(car -> car.isPosition(maxPosition))
-                .map(Car::getName)
+        return this.carDtos.stream()
+                .filter(carDto -> carDto.getPosition() == maxPosition)
+                .map(CarDto::getName)
                 .collect(Collectors.toList());
     }
 }

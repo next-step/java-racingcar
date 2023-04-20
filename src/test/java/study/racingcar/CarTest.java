@@ -8,7 +8,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import study.racingcar.domain.Car;
 import study.racingcar.strategy.CarMoveStrategy;
 import java.util.InputMismatchException;
-import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -19,7 +18,7 @@ public class CarTest {
 
     @BeforeEach
     void setUp() {
-        carMoveStrategy = new CarMoveStrategy(new Random());
+        carMoveStrategy = new CarMoveStrategy(new ReturnOnlyRandomNumber(5));
     }
 
     @DisplayName("숫자를 전달하여 자동차가 정상적으로 움직였는지 테스트")
@@ -27,7 +26,7 @@ public class CarTest {
     @ValueSource(ints = {4, 6, 5})
     public void Car_move(int games) {
 
-        Car car = new Car(0, "pobbi", new CarMoveStrategy(new ReturnOnlyRandomNumber(4)));
+        Car car = new Car(0, "pobbi", carMoveStrategy);
 
         for(int i = 0; i < games; i++) {
             car.move();
