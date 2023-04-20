@@ -44,4 +44,32 @@ public class Cars implements Iterable<Car> {
   public Iterator<Car> iterator() {
     return this.value.iterator();
   }
+
+  public void getMaxDistanceCars() {
+
+  }
+
+  public CarNames getMaxDistanceCarNames() {
+    int maxDistance = getMaxDistance();
+    CarNames maxDistanceCarNames = new CarNames();
+    for(Car car : this.value) {
+      addMaxDistanceCarNames(maxDistance, maxDistanceCarNames, car);
+    }
+    return maxDistanceCarNames;
+  }
+
+  private void addMaxDistanceCarNames(int maxDistance, CarNames maxDistanceCarNames, Car car) {
+    if(maxDistance != car.getTotalDistance()) {
+        return;
+    }
+    maxDistanceCarNames.addName(car.getCarName());
+  }
+
+  private int getMaxDistance() {
+    int maxDistance = 0;
+    for(Car car : this.value) {
+      maxDistance = Math.max(car.getTotalDistance(), maxDistance);
+    }
+    return maxDistance;
+  }
 }
