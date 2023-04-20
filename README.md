@@ -41,7 +41,6 @@
  * [x] 예를 들어 “//;\n1;2;3”과 같이 값을 입력할 경우 커스텀 구분자는 세미콜론(;)이며, 결과 값은 6이 반환되어야 한다.
  * [x] 문자열 계산기에 숫자 이외의 값 또는 음수를 전달하는 경우 RuntimeException 예외를 throw한다.
 
-
 `AssertJ Exception Assertions` : https://www.baeldung.com/assertj-exception-assertion
 
 ---
