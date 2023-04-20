@@ -22,11 +22,20 @@ class CarTest {
 
     @ParameterizedTest(name = "생성된 자동차는 이름을 가지고 있다.")
     @ValueSource(strings = "Ethan")
-    void nameCheck(String name) {
+    void newCarNameCheck(String name) {
 
         Car car = new Car(name);
 
         assertThat(car.getCarName()).isEqualTo("Ethan");
     }
 
+
+    @ParameterizedTest(name = "생성된 자동차의 기본 거리는 0 이다.")
+    @ValueSource(strings = "Ethan")
+    void newCarDistanceCheck(String name) {
+
+        Car car = new Car(name);
+
+        assertThat(car.getCarCurrentDistance()).isEqualTo(0);
+    }
 }
