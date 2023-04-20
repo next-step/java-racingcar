@@ -9,19 +9,20 @@ import java.util.stream.IntStream;
 
 public class RacingGame {
 
-    private int carNumber;
+    public static final String DELIMITER = ",";
+    private String carName;
     private int gameRound;
 
     public RacingGame() {
     }
 
     public RacingGame(UserInput userInput) {
-        carNumber = userInput.getCarNumber();
         gameRound = userInput.getGameRound();
+        carName = userInput.getCarName();
     }
 
     public List<Scores> startGame(NumberGeneratorStrategy numberGeneratorStrategy) {
-        Cars cars = new Cars(carNumber);
+        Cars cars = new Cars(carName);
         return round(cars, numberGeneratorStrategy);
     }
 
