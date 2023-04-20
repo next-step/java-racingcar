@@ -25,6 +25,7 @@ public class CarTest {
         
         assertThat(car.getName()).isEqualTo(name);
     }
+
     @Test
     @DisplayName("자동차 이름이 5글자 초과 시")
     void validateWithNameLengthOver5() {
@@ -32,4 +33,12 @@ public class CarTest {
                 .isInstanceOf(RuntimeException.class).hasMessageContaining("over 5 length");
     }
 
+    @Test
+    @DisplayName("이동거리 max 테스트")
+    void max() {
+        Car car = new Car("crong", 3);
+        int pobiDistance = 4;
+
+        assertThat(car.max(pobiDistance)).isEqualTo(pobiDistance);
+    }
 }

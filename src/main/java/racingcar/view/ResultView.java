@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import racingcar.service.Car;
+import racingcar.service.RacingCars;
 
 import java.util.List;
 
@@ -25,7 +26,6 @@ public class ResultView {
         for(int i = 0; i < distance; i++) {
             sb.append(DISTANCE);
         }
-
         System.out.println(sb);
     }
 
@@ -33,7 +33,11 @@ public class ResultView {
         System.out.print(name +":");
     }
 
-    public static void printStatusOfCars(List<Car> cars) {
+    public static void printStatusOfCars(RacingCars racingCars) {
+        printStatusOfCar(racingCars.getCars());
+    }
+
+    public static void printStatusOfCar(List<Car> cars) {
         for(Car car: cars) {
             printNameOfCar(car.getName());
             printDistanceOfCar(car.getDistance());
