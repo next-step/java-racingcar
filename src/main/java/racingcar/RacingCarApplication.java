@@ -1,6 +1,6 @@
 package racingcar;
 
-import racingcar.domain.PositiveNumber;
+import racingcar.dto.UserInput;
 import racingcar.domain.RacingGame;
 import racingcar.strategy.RandomNumberGeneratorStrategy;
 import racingcar.domain.Scores;
@@ -12,8 +12,8 @@ import java.util.List;
 public class RacingCarApplication {
 
     public static void main(String[] args) {
-        final PositiveNumber positiveNumber = InputView.getUserInput();
-        final RacingGame game = new RacingGame(positiveNumber);
+        final UserInput userInput = InputView.getUserInput();
+        final RacingGame game = new RacingGame(userInput);
         run(game);
     }
 

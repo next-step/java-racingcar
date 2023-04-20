@@ -1,7 +1,8 @@
 package racingcar.domain;
 
+import racingcar.strategy.NumberGeneratorStrategy;
+
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -13,8 +14,17 @@ public class Cars {
         createCars(carCount);
     }
 
-    public List<Car> findAllCars() {
-        return Collections.unmodifiableList(cars);
+    public Scores move(NumberGeneratorStrategy numberGeneratorStrategy) {
+        Scores scores = new Scores();
+        for (Car car : cars) {
+            car.move(numberGeneratorStrategy);
+            scores.addScore(car);
+        }
+        return scores;
+    }
+
+    public int findCarsCount() {
+        return cars.size();
     }
 
     private List<Car> createCars(int carCount) {
