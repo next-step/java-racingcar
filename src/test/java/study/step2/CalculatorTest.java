@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
-import study.domain.Calculator;
-import study.domain.Expression;
+import study.domain.calculator.Calculator;
+import study.domain.calculator.Expression;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -24,7 +24,7 @@ public class CalculatorTest {
     @NullAndEmptySource
     public void nullOrEmptyExpressionSumTest(String expressionStr) {
         Expression expression = new Expression(expressionStr);
-        assertThat(this.calculator.sum(expression)).isEqualTo(0);
+        assertThat(this.calculator.sum(expression)).isZero();
     }
 
     @DisplayName("숫자 한개만 있는 수식 경우 합 테스트")

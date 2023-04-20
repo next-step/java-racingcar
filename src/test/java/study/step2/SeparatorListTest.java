@@ -3,7 +3,7 @@ package study.step2;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import study.domain.SeparatorList;
+import study.domain.calculator.SeparatorList;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
