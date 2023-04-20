@@ -5,7 +5,7 @@ import racingcar.strategy.NumberGeneratorStrategy;
 public class Car {
     private int point = 0;
     private String name;
-
+    
     public Car(String carName) {
         this.name = carName;
     }

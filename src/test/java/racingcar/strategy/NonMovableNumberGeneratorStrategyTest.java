@@ -5,7 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 
-
 @DisplayName("정지 전략 테스트")
 class NonMovableNumberGeneratorStrategyTest {
 
