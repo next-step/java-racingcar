@@ -13,7 +13,7 @@ public class RacingCar {
     public boolean isValueMoreThan(int value) {
         return value >= LIMIT;
     }
-    
+
     private int randomValue() {
         Random random = new Random();
         int value = random.nextInt(RANDOM_LIMIT);

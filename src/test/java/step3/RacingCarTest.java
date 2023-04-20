@@ -18,6 +18,20 @@ public class RacingCarTest {
     int car = 3;
     int count = 5;
 
+    @ParameterizedTest(name = "{0} : add {1}")
+    @MethodSource("goParameter")
+    void 이동_여부(boolean goStop, int result) {
+        Car car = new Car();
+        car.goOrStop(goStop);
+        assertThat(car.getGoCount()).isEqualTo(result);
+    }
+    static Stream<Arguments> goParameter(){
+        return Stream.of(
+                arguments(true, 1)
+                ,arguments(false, 0)
+        );
+    }
+
     @ParameterizedTest(name = "{0} is more than 4 : {1}")
     @MethodSource("parameter")
     void 특정값_이상_체크(int value, boolean result) {
