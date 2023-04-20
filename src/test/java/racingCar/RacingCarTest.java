@@ -54,4 +54,15 @@ public class RacingCarTest {
     Assertions.assertThatThrownBy(() -> new RacingCar(레이싱카_이름, new RandomMoveAckGenerator()))
         .isInstanceOf(InvalidRacingCarNameException.class);
   }
+
+  @DisplayName("[RacingCar.class] 이름이 없는 레이싱카는 생성 할 수 없다.")
+  @Test
+  public void 레이싱카의_이름은_반드시_필요하다() {
+    // given
+    final String 레이싱카_이름 = "";
+
+    // when & then
+    Assertions.assertThatThrownBy(() -> new RacingCar(레이싱카_이름, new RandomMoveAckGenerator()))
+        .isInstanceOf(InvalidRacingCarNameException.class);
+  }
 }
