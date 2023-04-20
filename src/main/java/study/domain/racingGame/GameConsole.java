@@ -4,7 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GameConsole {
-
+  private static String DELIMITER = ",";
   private Scanner scaner;
 
   public GameConsole() {
@@ -19,5 +19,9 @@ public class GameConsole {
       throw new RuntimeException("숫자만 입력해주세요");
     }
     return input;
+  }
+
+  public String[] inputCarNames() {
+    return this.scaner.nextLine().split(DELIMITER);
   }
 }
