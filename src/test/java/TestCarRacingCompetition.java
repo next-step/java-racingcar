@@ -12,8 +12,6 @@ public class TestCarRacingCompetition {
 
     Competition competition;
 
-    private final MovingStrategy movingStrategy = new MovingStrategyStaticInt();
-
     @BeforeEach
     public void setUp() {
         competition = new Competition();

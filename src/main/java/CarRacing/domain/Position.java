@@ -9,10 +9,6 @@ public class Position {
         this.position = INITIAL_POSITION;
     }
 
-    public Position(int number) {
-        this.position = number;
-    }
-
     public void move(int number) {
         this.position += number;
     }
