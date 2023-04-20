@@ -21,7 +21,7 @@ public class CarsTest {
     Cars cars = new Cars(() -> PROGRESS_NUMBER, carNames);
 
     // when & then
-    assertThat(cars.locationValues()).hasSameSizeAs(carNames.carNames());
+    assertThat(cars.toList()).hasSize(3);
   }
 
   @Test
@@ -32,14 +32,14 @@ public class CarsTest {
     final int PROGRESS_NUMBER = 4;
 
     Cars cars = new Cars(new RandomMoveStrategy(() -> PROGRESS_NUMBER), carNames);
-    assertThat(cars.locationValues())
-        .isEqualTo(List.of("pobi : -"));
+    assertThat(cars.toList().get(0).location())
+        .isEqualTo(1);
 
     // when
     cars.go();
 
     // then
-    assertThat(cars.locationValues())
-        .isEqualTo(List.of("pobi : --"));
+    assertThat(cars.toList().get(0).location())
+        .isEqualTo(2);
   }
 }

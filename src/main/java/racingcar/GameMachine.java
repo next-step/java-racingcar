@@ -23,7 +23,7 @@ public class GameMachine {
     IntStream.rangeClosed(1, trialNumber)
         .forEach((number) -> {
           cars.go();
-          resultView.printLocations(cars.locationValues());
+          resultView.printLocations(cars);
         });
 
     resultView.printWinner(cars.winnerName());

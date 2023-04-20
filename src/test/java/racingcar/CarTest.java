@@ -15,13 +15,13 @@ public class CarTest {
   void goTest() {
     // given
     Car car = new Car(new CarName("Soko"));
-    String beforeLocation = car.progress();
+    int beforeLocation = car.location();
 
     // when
     car.go(new RandomMoveStrategy(() -> 4));
 
     // then
-    assertThat(beforeLocation + "-").isEqualTo(car.progress());
+    assertThat(car.location()).isGreaterThan(beforeLocation);
   }
 
   @Test
@@ -29,12 +29,12 @@ public class CarTest {
   void goFailTest() {
     // given
     Car car = new Car(new CarName("Soko"));
-    String beforeLocation = car.progress();
+    int beforeLocation = car.location();
 
     // when
     car.go(new RandomMoveStrategy(() -> 3));
 
     // then
-    assertThat(beforeLocation).isEqualTo(car.progress());
+    assertThat(beforeLocation).isEqualTo(car.location());
   }
 }

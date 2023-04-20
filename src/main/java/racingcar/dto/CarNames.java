@@ -1,5 +1,6 @@
 package racingcar.dto;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,12 +10,23 @@ public class CarNames {
   private final List<CarName> carNames;
   private final int ONE = 1;
 
+  public CarNames(List<CarName> carNames) {
+    this.carNames = new ArrayList<>(carNames);
+  }
+
   public CarNames(String carNameBundle) {
     this.carNames = split(carNameBundle);
   }
 
   public List<CarName> carNames() {
     return this.carNames;
+  }
+
+  @Override
+  public String toString() {
+    return carNames.stream()
+        .map(CarName::name)
+        .collect(Collectors.joining(","));
   }
 
   private List<CarName> split(String input) {

@@ -3,6 +3,7 @@ package racingcar.application;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.dto.CarNames;
@@ -11,7 +12,6 @@ public class Cars {
 
   private final MoveStrategy moveStrategy;
   private final List<Car> cars;
-  private final Comparator<Car> comparatorByLocation = Comparator.comparingInt(Car::location);
 
 
   public Cars(MoveStrategy moveStrategy, CarNames carNames) {
@@ -27,22 +27,20 @@ public class Cars {
     cars.forEach(car -> car.go(moveStrategy));
   }
 
-  public List<String> locationValues() {
-    return cars.stream()
-        .map(car -> car.progress())
-        .collect(Collectors.toList());
+  public List<Car> toList() {
+    return cars;
   }
 
-  public List<String> winnerName() {
+  public CarNames winnerName() {
     int max = cars.stream()
-        .max(comparatorByLocation)
+        .max(Comparator.comparingInt(Car::location))
         .orElseThrow(IllegalArgumentException::new)
         .location();
 
-    return cars.stream()
+    return new CarNames(cars.stream()
         .filter(car -> car.location() == max)
         .map(car -> car.carName())
-        .collect(Collectors.toList());
+        .collect(Collectors.toList()));
   }
 
   private List<Car> init(CarNames carNames) {

@@ -1,32 +1,32 @@
 package racingcar.ui;
 
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import java.util.Iterator;
+import racingcar.application.Car;
+import racingcar.application.Cars;
+import racingcar.dto.CarNames;
 
 public class ResultView {
 
   private static final String RESULT_MESSAGE = "실행 결과";
-  private static final String EMPTY = "";
   private static final String HYPHEN = "-";
 
   public void printResultAlert() {
     Printer.println(RESULT_MESSAGE);
   }
 
-  public void printLocations(List<String> locationValues) {
+  public void printLocations(Cars cars) {
     StringBuilder sb = new StringBuilder();
-    for (String value : locationValues) {
-      sb.append(value).append("\n");
+    for (Car car : cars.toList()) {
+      sb.append(car.carName().name())
+          .append(" : ")
+          .append(HYPHEN.repeat(car.location()))
+          .append("\n");
     }
 
     Printer.println(sb.toString());
   }
 
-  public void printWinner(List<String> winnerName) {
-    String nameBundle = winnerName.stream()
-        .collect(Collectors.joining(", "));
-
-    Printer.println(nameBundle + "가 최종 우승했습니다.");
+  public void printWinner(CarNames winnerNames) {
+    Printer.println(winnerNames + "가 최종 우승했습니다.");
   }
 }

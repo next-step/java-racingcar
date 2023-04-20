@@ -11,8 +11,7 @@ public class CarName {
     this.name = throwIfIsNotValidated(name);
   }
 
-  @Override
-  public String toString() {
+  public String name() {
     return this.name;
   }
 

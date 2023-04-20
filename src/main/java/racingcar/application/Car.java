@@ -15,18 +15,15 @@ public class Car {
     location += moveStrategy.move();
   }
 
-  public String progress() {
-    return this.name.toString() + " : " + calculateProgress();
-  }
-
   public int location() {
     return location;
   }
 
-  public String carName() {
-    return name.toString();
+  public CarName carName() {
+    return name;
   }
 
+  // TODO: view로 보내야 함
   private String calculateProgress() {
     StringBuilder stringBuilder = new StringBuilder();
     IntStream.rangeClosed(1, location)
