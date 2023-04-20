@@ -2,7 +2,7 @@ package racing;
 
 public class Winner {
     private String name;
-    private int moveStatus;
+    private int maxMoveStatus = 0;
     private final Cars cars;
 
     public Winner(Cars cars){
@@ -11,28 +11,24 @@ public class Winner {
     }
 
     private void findWinner() {
-        this.name = cars.findOneName(0);
-        this.moveStatus = cars.findOneMoveStatus(0);
-
-        for (int carIndex = 1; carIndex < cars.count(); carIndex++) {
+        for (int carIndex = 0; carIndex < cars.count(); carIndex++) {
             checkWinner(carIndex);
         }
     }
 
     private void checkWinner(int carIndex) {
-        if (this.moveStatus > cars.findOneMoveStatus(carIndex)) {
-            return;
+        if(cars.isWinner(carIndex,maxMoveStatus)){
+            replaceWinner(carIndex);
         }
-        replaceWinner(carIndex);
     }
 
     private void replaceWinner(int carIndex) {
-        if (this.moveStatus == cars.findOneMoveStatus(carIndex)) {
+        if (cars.isSharedWinner(carIndex,maxMoveStatus)) {
             this.name = this.name + ", " + cars.findOneName(carIndex);
             return;
         }
         this.name = cars.findOneName(carIndex);
-        this.moveStatus = cars.findOneMoveStatus(carIndex);
+        this.maxMoveStatus = cars.findOneMoveStatus(carIndex);
     }
 
     public String getName() {
@@ -40,7 +36,7 @@ public class Winner {
     }
 
 
-    public int getMoveStatus() {
-        return moveStatus;
+    public int getMaxMoveStatus() {
+        return maxMoveStatus;
     }
 }

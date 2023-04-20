@@ -14,7 +14,7 @@ class WinnerTest {
         cars.findOne(2).move(5);
         Winner winner = new Winner(cars);
         assertAll(
-                () -> assertThat(winner.getMoveStatus()).isEqualTo(7),
+                () -> assertThat(winner.getMaxMoveStatus()).isEqualTo(7),
                 () -> assertThat(winner.getName()).isEqualTo("crong")
         );
     }
@@ -29,7 +29,7 @@ class WinnerTest {
 
         Winner winner = new Winner(cars);
         assertAll(
-                () -> assertThat(winner.getMoveStatus()).isEqualTo(7),
+                () -> assertThat(winner.getMaxMoveStatus()).isEqualTo(7),
                 () -> assertThat(winner.getName()).isEqualTo("crong, conan")
         );
     }

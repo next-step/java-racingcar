@@ -37,4 +37,12 @@ public class Cars {
     public int findOneMoveStatus(int carIndex) {
         return cars.get(carIndex).getMoveStatus();
     }
+
+    public boolean isWinner(int carIndex, int maxMoveStatus) {
+        return maxMoveStatus <= findOneMoveStatus(carIndex);
+    }
+
+    public boolean isSharedWinner(int carIndex, int maxMoveStatus) {
+        return maxMoveStatus == findOneMoveStatus(carIndex);
+    }
 }
