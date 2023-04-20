@@ -16,8 +16,8 @@ public class WinnersTest {
     @Test
     @DisplayName("우승자의 이름 리스트를 가지고 온다.")
     void getFarthestDistance() {
-        Car ethanCar = getCarWithMoved("ethan",3);
-        Car rickCar = getCarWithMoved("rick",2);
+        Car ethanCar = makeCarWithMoved("ethan",3);
+        Car rickCar = makeCarWithMoved("rick",2);
 
         Cars cars = new Cars(List.of(ethanCar, rickCar));
 
@@ -26,10 +26,10 @@ public class WinnersTest {
     }
 
     @Test
-    @DisplayName("우승자의 이름은 복수일 수 있다.")
+    @DisplayName("우승자는 복수일 수 있다.")
     void getWinnerNames(){
-        Car ethanCar = getCarWithMoved("ethan",2);
-        Car rickCar = getCarWithMoved("rick",2);
+        Car ethanCar = makeCarWithMoved("ethan",2);
+        Car rickCar = makeCarWithMoved("rick",2);
 
         Cars cars = new Cars(List.of(ethanCar, rickCar));
         Winners winners = new Winners(cars);
@@ -39,7 +39,7 @@ public class WinnersTest {
         Assertions.assertThat(winnersNames).isEqualTo("ethan, rick");
     }
 
-    private static Car getCarWithMoved(String name, int movedCount) {
+    private static Car makeCarWithMoved(String name, int movedCount) {
         Car car = new Car(name);
         for (int i = 0; i < movedCount; i++) {
             car.attemptMove(true);

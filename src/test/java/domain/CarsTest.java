@@ -2,7 +2,10 @@ package domain;
 
 import static domain.Cars.createCars;
 import static org.assertj.core.api.Assertions.assertThat;
+import static view.ResultView.WINNER_DELIMITER;
 
+import java.util.List;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -31,5 +34,22 @@ class CarsTest {
         assertThat(eachCar.getCarName()).isEqualTo("크롱");
     }
 
+    @Test
+    @DisplayName("제일 멀리 간 차를 가지고 온다.")
+    void getCarWithFarthestDistance(){
+        Car ethanCar = makeCarWithMoved("ethan",3);
+        Car rickCar = makeCarWithMoved("rick",2);
 
+        Cars cars = new Cars(List.of(ethanCar, rickCar));
+        List<Car> carList = cars.checkCarWithFarthestDistance();
+        Assertions.assertThat(carList).contains(ethanCar);
+    }
+
+    private static Car makeCarWithMoved(String name, int movedCount) {
+        Car car = new Car(name);
+        for (int i = 0; i < movedCount; i++) {
+            car.attemptMove(true);
+        }
+        return car;
+    }
 }
