@@ -8,6 +8,12 @@ import java.util.Random;
 public class RacingCar {
 
     public static final int RANDOM_LIMIT = 10;
+    public static final int LIMIT = 4;
+
+    public boolean isValueMoreThan(int value) {
+        return value >= LIMIT;
+    }
+    
     private int randomValue() {
         Random random = new Random();
         int value = random.nextInt(RANDOM_LIMIT);
@@ -21,4 +27,5 @@ public class RacingCar {
         }
         return cars;
     }
+
 }
