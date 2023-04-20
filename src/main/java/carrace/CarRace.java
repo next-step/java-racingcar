@@ -13,7 +13,7 @@ public class CarRace {
     }
 
     public void start() {
-        this.cars.stream().forEach(car -> runRound(car));
+        this.cars.forEach(this::runRound);
     }
 
     private void runRound(Car car) {
