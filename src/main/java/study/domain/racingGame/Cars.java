@@ -7,26 +7,31 @@ import java.util.Random;
 
 public class Cars implements Iterable<Car> {
 
-  private List<Car> carList;
+  private List<Car> value;
   private Random random;
 
-  public Cars() {
-    this.carList = new LinkedList<Car>();
+  public Cars(int carNum) {
+    this.value = new LinkedList<Car>();
+    addCars(carNum);
     this.random = new Random();
   }
 
-  public void addCars(int carCnt) {
+  private void addCars(int carCnt) {
     for (int cnt = 0; cnt < carCnt; cnt++) {
-      this.carList.add(new Car());
+      this.value.add(new Car());
     }
   }
 
   public int getTotalCarsCount() {
-    return this.carList.size();
+    return this.value.size();
+  }
+
+  public Car get(int idx) {
+    return this.value.get(idx);
   }
 
   public void moveAll() {
-    for (Car car : this.carList) {
+    for (Car car : this.value) {
       car.move(getRandomValue());
     }
   }
@@ -37,6 +42,6 @@ public class Cars implements Iterable<Car> {
 
   @Override
   public Iterator<Car> iterator() {
-    return this.carList.iterator();
+    return this.value.iterator();
   }
 }

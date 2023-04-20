@@ -3,21 +3,18 @@ package study.domain.racingGame;
 public class RacingGame {
 
   private Cars cars;
+
+  private GameBoard gameBoard;
   private int gameCnt;
 
-  private GameConsole console;
-
-  public RacingGame() {
-    this.cars = new Cars();
-  }
-
-  public void ready(int gameCnt, int carNum) {
+  public void ready(int gameCnt, Cars cars) {
     this.gameCnt = gameCnt;
-    this.cars.addCars(carNum);
+    this.cars = cars;
+    gameBoard = new GameBoard(cars);
   }
 
   public boolean isReady() {
-    return this.gameCnt > 0 || this.cars.getTotalCarsCount() > 0;
+    return this.gameCnt > 0 && this.cars != null && this.cars.getTotalCarsCount() > 0;
   }
 
   public boolean isFinish() {
@@ -25,26 +22,15 @@ public class RacingGame {
   }
 
 
-  public void race() {
+  public GameBoard race() {
     if (!isReady()) {
       throw new RuntimeException("게임 준비가 되지 않았습니다.");
     }
 
     this.cars.moveAll();
+    this.gameBoard.updateResult(this.cars);
     this.gameCnt--;
+    return this.gameBoard.clone();
   }
 
-  public void printCarsDistance(GameScreen screen) {
-    this.cars.forEach(car ->
-        screen.print(convertCarDistanceToDash(car.getTotalDistance())));
-    screen.print("");
-  }
-
-  private String convertCarDistanceToDash(int carDistance) {
-    String result = "";
-    for (int i = 0; i < carDistance; i++) {
-      result += "-";
-    }
-    return result;
-  }
 }
