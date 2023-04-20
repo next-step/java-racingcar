@@ -1,6 +1,5 @@
 package step3;
 
-
 import java.util.List;
 
 import static step3.RacingCar.*;

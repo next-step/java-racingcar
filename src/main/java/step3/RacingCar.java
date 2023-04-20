@@ -1,11 +1,8 @@
 package step3;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-import static step3.output.ResultView.printRace;
 
 public class RacingCar {
 
