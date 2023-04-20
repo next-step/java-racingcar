@@ -4,8 +4,6 @@ import CarRacing.domain.Competition;
 import CarRacing.view.InputView;
 import CarRacing.view.ResultView;
 
-import static java.lang.System.exit;
-
 public class RacingController {
 
     public static void start() {
@@ -17,10 +15,10 @@ public class RacingController {
             competition.entry(nameOfCars);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            exit(0);
+            throw new IllegalArgumentException(e.getMessage());
         }
 
-        for (int idxTry=0; idxTry < numberOfTry; idxTry++) {
+        for (int idxTry = 0; idxTry < numberOfTry; idxTry++) {
             ResultView.printCurrentDistance(competition.moveCars());
         }
 
