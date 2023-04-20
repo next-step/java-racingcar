@@ -17,13 +17,13 @@ public class GameBoard {
   }
 
   private void registerBoard(Cars cars) {
-    for(Car car : cars) {
+    for (Car car : cars) {
       this.raceResult.put(car.getCarName(), 0);
     }
   }
 
   public void updateResult(Cars cars) {
-    for(Car car : cars) {
+    for (Car car : cars) {
       addCarRecord(car);
     }
   }
@@ -44,7 +44,7 @@ public class GameBoard {
   }
 
   public int getResult(String carName) {
-    if(!isExistsCar(carName)) {
+    if (!isExistsCar(carName)) {
       throw new RuntimeException("해당 자동차가 존재하지 않습니다.");
     }
     return this.raceResult.get(carName);

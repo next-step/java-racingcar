@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GameConsole {
+
   private static String DELIMITER = ",";
   private Scanner scaner;
 

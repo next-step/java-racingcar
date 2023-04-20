@@ -60,7 +60,6 @@ public class Cars implements Iterable<Car> {
     return this.value.iterator();
   }
 
-
   public CarNames getMaxDistanceCarNames() {
     int maxDistance = getMaxDistance();
     CarNames maxDistanceCarNames = new CarNames();

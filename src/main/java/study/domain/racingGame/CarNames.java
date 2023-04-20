@@ -15,7 +15,7 @@ public class CarNames implements Iterable<String> {
 
   public CarNames(String[] carNames) {
     this();
-    if(isEmptyInputCarNames(carNames)) {
+    if (isEmptyInputCarNames(carNames)) {
       return;
     }
     this.value.addAll(Arrays.asList(carNames));
