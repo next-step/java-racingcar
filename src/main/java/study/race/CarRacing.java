@@ -23,6 +23,8 @@ public class CarRacing {
             for(int j = 0; j< carNumbers.length; j++) {
                 carNumbers[j].position += condition(getRandom());
             }
+            ResultView.resultView(carNumbers);
+            System.out.println("\n");
         }
     }
 
@@ -51,7 +53,8 @@ public class CarRacing {
 class Car {
     int position = 0;
 
-    public Car() {	}
+    public Car() {
+    }
 
 }
 
