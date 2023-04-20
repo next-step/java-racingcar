@@ -1,8 +1,6 @@
 package racingCar.random;
 
-import racingCar.random.RandomMoveAckGenerator;
-
-public class ForwardOnlyMoveAckGenerator implements RandomMoveAckGenerator {
+public class ForwardOnlyMoveAckGenerator implements MoveAckGenerator {
 
   @Override
   public int generate() {

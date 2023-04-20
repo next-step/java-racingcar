@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import racingCar.car.RacingCar;
 import racingCar.exception.NotAllowedGameSettingException;
-import racingCar.random.RandomMoveAckGenerator;
+import racingCar.random.MoveAckGenerator;
 import racingCar.view.RacingCarGameResultView;
 import util.CollectionUtils;
 
@@ -13,9 +13,9 @@ public final class RacingCarGame {
   private final List<RacingCar> racingCars;
   private final RacingCarGameResultView resultView;
 
-  private final RandomMoveAckGenerator randomMoveAckGenerator;
+  private final MoveAckGenerator randomMoveAckGenerator;
 
-  public RacingCarGame(List<String> carNames, RacingCarGameResultView resultView, RandomMoveAckGenerator randomMoveAckGenerator) {
+  public RacingCarGame(List<String> carNames, RacingCarGameResultView resultView, MoveAckGenerator randomMoveAckGenerator) {
     this.randomMoveAckGenerator = randomMoveAckGenerator;
     this.resultView = resultView;
     this.racingCars = generateRacingCars(carNames);
@@ -48,7 +48,7 @@ public final class RacingCarGame {
   private List<RacingCar> getWinners() {
     final int maxPosition = getMaxPositionOfGame();
     return racingCars.stream()
-        .filter(position -> position.getPosition() == maxPosition)
+        .filter(car -> car.isPosition(maxPosition))
         .collect(Collectors.toList());
   }
 

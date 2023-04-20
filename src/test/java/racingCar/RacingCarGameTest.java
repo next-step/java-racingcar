@@ -9,17 +9,17 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingCar.exception.NotAllowedGameSettingException;
-import racingCar.random.BaseRandomMoveAckGenerator;
 import racingCar.random.RandomMoveAckGenerator;
+import racingCar.random.MoveAckGenerator;
 import racingCar.view.RacingCarGameResultView;
 
 public class RacingCarGameTest {
 
-  private RandomMoveAckGenerator randomMoveAckGenerator;
+  private MoveAckGenerator randomMoveAckGenerator;
 
   @BeforeEach
   void setup() {
-    randomMoveAckGenerator = new BaseRandomMoveAckGenerator();
+    randomMoveAckGenerator = new RandomMoveAckGenerator();
   }
 
   @DisplayName("[RacingCarGame.class] 레이싱카 게임은 사용자가 입력한 숫자만큼 레이싱카가 설정된다.")

@@ -1,5 +1,10 @@
 package racingCar.random;
 
-public interface RandomMoveAckGenerator {
-  int generate ();
+import util.RandomUtils;
+
+public class RandomMoveAckGenerator implements MoveAckGenerator {
+
+  public int generate () {
+    return RandomUtils.getRandomSinglePositiveDigit();
+  }
 }
