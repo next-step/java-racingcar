@@ -4,7 +4,7 @@ import racingCar.domain.car.move.RacingCarMoveDirectionStrategy;
 import racingCar.domain.car.move.RacingCarMoveForward;
 import racingCar.domain.car.name.RacingCarName;
 import racingCar.domain.car.position.RacingCarPosition;
-import racingCar.domain.random.MoveAckGenerator;
+import racingCar.domain.game.move.MoveAckGenerator;
 
 public class RacingCar {
 

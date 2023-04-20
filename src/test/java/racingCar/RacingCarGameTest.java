@@ -8,10 +8,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingCar.domain.game.RacingCarGame;
+import racingCar.domain.game.RacingCarGameResult;
 import racingCar.exception.NotAllowedGameSettingException;
-import racingCar.domain.random.RandomMoveAckGenerator;
-import racingCar.domain.random.MoveAckGenerator;
-import racingCar.view.RacingCarGameResultView;
+import racingCar.domain.game.move.RandomMoveAckGenerator;
+import racingCar.domain.game.move.MoveAckGenerator;
 
 public class RacingCarGameTest {
 
@@ -27,7 +28,7 @@ public class RacingCarGameTest {
 
     final List<String> 레이싱카_목록 = List.of("car1");
     // when
-    RacingCarGame racingCarGame = new RacingCarGame(레이싱카_목록, new RacingCarGameResultView(), randomMoveAckGenerator);
+    RacingCarGame racingCarGame = new RacingCarGame(레이싱카_목록, randomMoveAckGenerator);
 
     // then
     Assertions.assertThat(racingCarGame)
@@ -39,17 +40,16 @@ public class RacingCarGameTest {
   @DisplayName("[RacingCarGame.class] 레이싱카 게임은 게임 턴마다 자동차 움직임을 기록한다.")
   @ParameterizedTest
   @ValueSource(ints = {1, 2, 3, 4})
-  public void 레이싱카_게임은_매_이동마다_기록을_가지고_있음(int moveTryCnt) {
+  public void 레이싱카_게임은_매_턴_마다_기록을_가지고_있음(int moveTryCnt) {
     // given
     final List<String> 레이싱카_목록 = List.of("car1");
-    RacingCarGame racingCarGame = new RacingCarGame(레이싱카_목록, new RacingCarGameResultView(), randomMoveAckGenerator);
+    RacingCarGame racingCarGame = new RacingCarGame(레이싱카_목록, randomMoveAckGenerator);
 
     // when
-    racingCarGame.play(moveTryCnt);
+    RacingCarGameResult gameResult = racingCarGame.play(moveTryCnt);
 
     // then
-    Assertions.assertThat(racingCarGame)
-        .extracting("resultView.snapShots")
+    Assertions.assertThat(gameResult.getSnapShots())
         .asList()
         .hasSize(moveTryCnt);
   }
@@ -61,7 +61,7 @@ public class RacingCarGameTest {
     final List<String> 레이싱카_목록 = Collections.emptyList();
 
     // when && then
-    Assertions.assertThatThrownBy(() -> new RacingCarGame(레이싱카_목록, new RacingCarGameResultView(), randomMoveAckGenerator))
+    Assertions.assertThatThrownBy(() -> new RacingCarGame(레이싱카_목록, randomMoveAckGenerator))
         .isInstanceOf(NotAllowedGameSettingException.class);
   }
 }

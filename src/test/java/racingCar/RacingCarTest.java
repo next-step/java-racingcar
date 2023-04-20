@@ -5,7 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingCar.domain.car.RacingCar;
 import racingCar.exception.InvalidRacingCarNameException;
-import racingCar.domain.random.RandomMoveAckGenerator;
+import racingCar.domain.game.move.RandomMoveAckGenerator;
 import racingCar.random.ForwardOnlyMoveAckGenerator;
 import racingCar.random.HoldOnlyMoveAckGenerator;
 

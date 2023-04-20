@@ -5,8 +5,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
-import racingCar.domain.random.RandomMoveAckGenerator;
-import racingCar.domain.random.MoveAckGenerator;
+import racingCar.domain.game.RacingCarGame;
+import racingCar.domain.game.RacingCarGameResult;
+import racingCar.domain.game.move.RandomMoveAckGenerator;
+import racingCar.domain.game.move.MoveAckGenerator;
 import racingCar.view.RacingCarGameInputView;
 import racingCar.view.RacingCarGameResultView;
 
@@ -19,8 +21,10 @@ public class RacingCarGameApplication {
     final RacingCarGameResultView resultView = new RacingCarGameResultView();
     final MoveAckGenerator randomMoveAckGenerator = new RandomMoveAckGenerator();
 
-    RacingCarGame racingCarGame = new RacingCarGame(carNames, resultView, randomMoveAckGenerator);
-    racingCarGame.play(moveTryCnt);
+    RacingCarGame racingCarGame = new RacingCarGame(carNames, randomMoveAckGenerator);
+    RacingCarGameResult gameResult = racingCarGame.play(moveTryCnt);
+
+    resultView.printGameResult(gameResult);
     reader.close();
   }
 }

@@ -1,6 +1,6 @@
 package racingCar.random;
 
-import racingCar.domain.random.MoveAckGenerator;
+import racingCar.domain.game.move.MoveAckGenerator;
 
 public class HoldOnlyMoveAckGenerator implements MoveAckGenerator {
 
