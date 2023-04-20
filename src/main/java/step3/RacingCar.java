@@ -5,26 +5,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static step3.output.ResultView.printRace;
+
 public class RacingCar {
 
     public static final int RANDOM_LIMIT = 10;
     public static final int LIMIT = 4;
-    public static final String MARK = "-";
 
-    public void races(List<Car> cars, int count){
-        for(int i=0; i<count; i++){
-            for (Car car : cars) {
-                boolean goStop = isValueMoreThan(randomValue());
-                car.goOrStop(goStop);
-            }
-            for (Car car : cars) {
-                for(int j = 0; j< car.getGoCount(); j++){
-                    System.out.print(MARK);
-                }
-                System.out.println();
-            }
-            System.out.println();
-
+    public void oneRace(List<Car> cars) {
+        for (Car car : cars) {
+            boolean goStop = isValueMoreThan(randomValue());
+            car.goOrStop(goStop);
         }
     }
 
@@ -38,7 +29,7 @@ public class RacingCar {
         return value;
     }
 
-    static List<Car> initCars(int car){
+    protected static List<Car> initCars(int car){
         List<Car> cars = new ArrayList<>();
         for(int i=0; i<car; i++){
             cars.add(new Car());
