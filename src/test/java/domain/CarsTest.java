@@ -32,20 +32,5 @@ class CarsTest {
         assertThat(eachCar.getCarName()).isEqualTo("크롱");
     }
 
-    @Test
-    @DisplayName("우승자의 이름 리스트를 가지고 온다.")
-    void getFarthestDistance() {
-        Car ethanCar = new Car("ethan");
-        ethanCar.attemptMove(true);
-        ethanCar.attemptMove(true);
-        ethanCar.attemptMove(true);
-        Car rickCar = new Car("rick");
-        rickCar.attemptMove(true);
-        rickCar.attemptMove(true);
 
-        Cars cars = new Cars(List.of(ethanCar, rickCar));
-
-        String[] winnerNames = cars.getWinnerNames();
-        assertThat(winnerNames[0]).isEqualTo("ethan");
-    }
 }

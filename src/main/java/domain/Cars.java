@@ -40,15 +40,7 @@ public class Cars {
         return cars.get(carIndex);
     }
 
-
-    public String[] getWinnerNames() {
-        List<Car> winners = checkCarWithFarthestDistance();
-        return winners.stream()
-                .map(Car::getCarName)
-                .toArray(String[]::new);
-    }
-
-    private List<Car> checkCarWithFarthestDistance() {
+    public List<Car> checkCarWithFarthestDistance() {
         int farthestDistance = getFarthestDistance();
         return getCarsWithFarthestDistance(farthestDistance);
     }
