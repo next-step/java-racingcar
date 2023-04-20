@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 public class Cars {
     private final static Random random = new Random();
     private static final int RANDOM_NUMBER_BOUND = 10;
-    final List<Car> values;
+    private final List<Car> values;
 
     public Cars(int numberOfCars) {
         values = new ArrayList<>();

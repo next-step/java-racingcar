@@ -1,7 +1,6 @@
 package step3.domain;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 public class Car implements Serializable {
     private static final int MOVE_NUMBER = 4;
@@ -10,29 +9,15 @@ public class Car implements Serializable {
     private static final int START_LOCATION = 0;
     private static final String DEFAULT_CAR_NAME = "benz";
     private int location;
-    private String carName;
+    private CarName carName;
 
     public Car() {
         this(DEFAULT_CAR_NAME);
     }
 
     public Car(String carName) {
-        checkLength(carName);
-        checkString(carName);
         this.location = START_LOCATION;
-        this.carName = carName;
-    }
-
-    private void checkLength(String carName) {
-        if (carName.length() > 5) {
-            throw new RuntimeException("자동차 이름은 5자를 초과할 수 없습니다.");
-        }
-    }
-
-    private void checkString(String carName) {
-        if (Objects.isNull(carName) || carName.isBlank()) {
-            throw new RuntimeException("올바르지 않은 문자열 입니다.");
-        }
+        this.carName = new CarName(carName);
     }
 
     public void move(int input) {
@@ -57,6 +42,6 @@ public class Car implements Serializable {
     }
 
     public String name() {
-        return carName;
+        return carName.value();
     }
 }
