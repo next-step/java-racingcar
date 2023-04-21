@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racinggame.RacingGame.racingWinner;
 
 public class RacingGameTest {
     private List<Car> cars;
@@ -25,7 +24,8 @@ public class RacingGameTest {
     @DisplayName("가장 멀리간 자동차 찾기")
     @Test
     void test1() {
-        List<Car> winner = racingWinner(cars);
+        RacingGame racingGame = new RacingGame();
+        List<Car> winner = racingGame.racingWinner(cars);
         List<String> carName = new ArrayList<>();
         for (Car car : winner) {
             carName.add(car.getName());

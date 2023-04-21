@@ -7,15 +7,16 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racinggame.Car.CAR_NAME_STANDARD;
 
 public class CarTest {
 
-    @DisplayName("자동차 이름은 5자를 초과할 수 없다")
+    @DisplayName("자동차 이름은" + CAR_NAME_STANDARD + "자를 초과할 수 없습니다.")
     @Test
     void test3() {
         assertThatThrownBy(() -> new Car("dosaem"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차 이름은 5자를 초과할 수 없습니다.");
+                .hasMessage(String.format("자동차 이름은%d자를 초과할 수 없습니다.", CAR_NAME_STANDARD));
     }
 
     @DisplayName("자동차 이름 입력받기 테스트")

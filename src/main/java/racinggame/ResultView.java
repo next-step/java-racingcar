@@ -5,17 +5,18 @@ import java.util.List;
 public class ResultView {
     public static final String LOCATION_VIEW = "-";
 
-    public static void gameResultStart() {
+    public void gameResultStart() {
         System.out.println("실행결과");
     }
 
-    public static void gameResultView(List<Car> cars) {
+    public void gameResultView(List<Car> cars) {
         for (Car car : cars) {
             showLocation(car);
         }
+        System.out.println();
     }
 
-    private static void showLocation(Car car) {
+    private void showLocation(Car car) {
         System.out.print(car.getName() + " : ");
         for (int i = 0; i < car.getLocation(); i++) {
             System.out.print(LOCATION_VIEW);
@@ -23,7 +24,7 @@ public class ResultView {
         System.out.println();
     }
 
-    public static void gameWinnerView(List<Car> cars) {
+    public void gameWinnerView(List<Car> cars) {
         for (int i = 0; i < cars.size(); i++) {
             System.out.print(cars.get(i).getName());
             showComma(cars, i);
@@ -31,7 +32,7 @@ public class ResultView {
         System.out.println("가 최종 우승했습니다.");
     }
 
-    private static void showComma(List<Car> cars, int i) {
+    private void showComma(List<Car> cars, int i) {
         if (cars.size() > 1 && i < cars.size() - 1) {
             System.out.print(", ");
         }

@@ -4,7 +4,7 @@ public class Car {
     public static final int MOVE_STANDARD = 4;
     public static final int CAR_NAME_STANDARD = 5;
 
-    private int location = 0;
+    private int location ;
     private String name;
 
     public Car() {
@@ -12,7 +12,7 @@ public class Car {
 
     public Car(String name) {
         if (name.length() > CAR_NAME_STANDARD) {
-            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+            throw new IllegalArgumentException(String.format("자동차 이름은 %d자를 초과할 수 없습니다.", CAR_NAME_STANDARD));
         }
         this.name = name;
         this.location = getLocation();
