@@ -25,6 +25,6 @@ public class CarController {
                     cars.move();
                     view.print(cars);
                 });
-        view.winner(cars);
+        view.winner(cars.winners());
     }
 }

@@ -6,8 +6,8 @@ public class CarName {
     private final String value;
 
     public CarName(String value) {
-        checkLength(value);
         checkString(value);
+        checkLength(value);
         this.value = value;
     }
 
