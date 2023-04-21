@@ -37,7 +37,7 @@ public class Car implements Serializable {
         return location;
     }
 
-    public boolean sameScore(int highScore) {
+    public boolean isWinner(int highScore) {
         return location == highScore;
     }
 

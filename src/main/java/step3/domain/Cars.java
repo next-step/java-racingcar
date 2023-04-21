@@ -34,7 +34,7 @@ public class Cars {
     public List<String> winners() {
         int highScore = highScore();
         return values.stream()
-                .filter(car -> car.sameScore(highScore))
+                .filter(car -> car.isWinner(highScore))
                 .map(Car::name)
                 .collect(Collectors.toList());
     }
