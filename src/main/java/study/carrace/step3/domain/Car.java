@@ -1,8 +1,6 @@
 package study.carrace.step3.domain;
 
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.IntStream;
 
 public class Car {
@@ -10,7 +8,7 @@ public class Car {
 
     private final CarName carName;
     private final MoveStrategy moveStrategy;
-    private final List<Boolean> moveStatuses;
+    private final CarPosition carPosition;
 
     public Car(String name, MoveStrategy moveStrategy) {
         this(new CarName(name), moveStrategy);
@@ -19,11 +17,11 @@ public class Car {
     public Car(CarName name, MoveStrategy moveStrategy) {
         this.carName = name;
         this.moveStrategy = moveStrategy;
-        this.moveStatuses = new ArrayList<>();
+        this.carPosition = new CarPosition();
     }
 
     public void moveOrStop() {
-        moveStatuses.add(moveStrategy.moveOrStop());
+        carPosition.addMoveStatus(moveStrategy.moveOrStop());
     }
 
     public String positionAt(int iteration) {
@@ -32,16 +30,14 @@ public class Car {
                 .append(" : ");
 
         IntStream.range(0, iteration)
-                .filter(moveStatuses::get)
+                .filter(carPosition::isMovedAt)
                 .forEach(i -> currentPosition.append(POSITION_CURSOR));
 
         return currentPosition.toString();
     }
 
     public long numberOfMove() {
-        return moveStatuses.stream()
-                .filter(b -> b)
-                .count();
+        return carPosition.numberOfMove();
     }
 
     public CarName carName() {
