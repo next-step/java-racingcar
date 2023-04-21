@@ -1,11 +1,13 @@
 package car;
 
+import car.dto.Car;
+import car.service.MoveStrategy;
+import car.service.Movement;
+import car.service.RandomMoveStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +19,7 @@ public class MovementTest {
     private Movement movement;
     @BeforeEach
     void setUp() {
-        Car car1 = new Car(1);
+        Car car1 = new Car("pobi");
         cars = Arrays.asList(car1);
 
         MoveStrategy moveStrategy = new RandomMoveStrategy();
