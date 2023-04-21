@@ -8,9 +8,9 @@ public class Cars {
 
     public Cars(List<CarName> carNameList, MoveStrategy moveStrategy) {
         this.cars = new ArrayList<>();
-        for (CarName carName : carNameList) {
-            cars.add(new Car(carName, moveStrategy));
-        }
+        carNameList.forEach(it ->
+                cars.add(new Car(it, moveStrategy))
+        );
     }
 
     public void moveAll() {

@@ -3,8 +3,8 @@ package race;
 import java.util.Objects;
 
 public class CarName {
-    private final String carName;
     private static final int MAX_LENGTH = 5;
+    private final String carName;
 
     public CarName(String carName) {
         if (carName.length() > MAX_LENGTH) {
@@ -14,7 +14,7 @@ public class CarName {
         this.carName = carName;
     }
 
-    public String get() {
+    public String getCarName() {
         return carName;
     }
 

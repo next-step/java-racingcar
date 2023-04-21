@@ -2,7 +2,7 @@ package race.view;
 
 import race.Car;
 import race.CarName;
-import race.Cars;
+import race.CarView;
 
 import java.util.List;
 
@@ -13,29 +13,29 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public static void showCars(Cars cars) {
-        for (Car car : cars.getCarList()) {
-            showCar(car);
+    public static void showCarViewList(List<CarView> carViewList) {
+        for (CarView carView : carViewList) {
+            showCarView(carView);
         }
         System.out.println();
     }
 
-    private static void showCar(Car car) {
+    private static void showCarView(CarView carView) {
         StringBuilder stringBuilder = new StringBuilder()
-                .append(car.getCarName().get())
+                .append(carView.getCarName())
                 .append(" : ");
         System.out.print(stringBuilder);
-        for (int i = 0; i < car.getPosition().get(); i++) {
+        for (int i = 0; i < carView.getPosition(); i++) {
             System.out.print(POSITION_CHARACTER);
         }
         System.out.println();
     }
 
-    public static void showWinners(List<CarName> winners) {
+    public static void showWinners(List<CarView> winners) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < winners.size(); i++) {
             stringBuilder.append(getCommaIndexCondition(i));
-            stringBuilder.append(winners.get(i).get());
+            stringBuilder.append(winners.get(i).getCarName());
         }
         stringBuilder.append("가 최종 우승했습니다.");
         System.out.println(stringBuilder);

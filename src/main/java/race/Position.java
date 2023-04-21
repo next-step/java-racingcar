@@ -1,15 +1,16 @@
 package race;
 
+import java.util.Comparator;
 import java.util.Objects;
 
 public class Position {
     private int position = 0;
 
-    public void add() {
+    public void moveForward() {
         position++;
     }
 
-    public int get() {
+    public int getPosition() {
         return position;
     }
 
@@ -25,5 +26,9 @@ public class Position {
     @Override
     public int hashCode() {
         return Objects.hash(position);
+    }
+
+    public static Comparator<Position> getComparator() {
+        return Comparator.comparingInt(Position::getPosition);
     }
 }

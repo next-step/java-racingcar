@@ -19,9 +19,8 @@ public class RaceTest {
         Cars cars = new Cars(carNameList, moveStrategy);
         Race race = new Race(cars);
         assertThat(race.startLap()
-                .getCarList()
                 .stream()
-                .map(Car::getPosition)
+                .map(CarView::getPosition)
                 .collect(Collectors.toList())
         ).isEqualTo(positions);
     }
@@ -30,9 +29,8 @@ public class RaceTest {
     void 해당_시점의_고득점자를_알_수_있다() {
         List<CarName> carNameList = List.of(new CarName("a"), new CarName("b"), new CarName("c"));
         Cars cars = new Cars(carNameList, new TestHelper.AlwaysMoveStrategy());
-        cars.orderMove("b");
         Race race = new Race(cars);
-        assertThat(race.winner().toArray()).containsExactly("b");
+        assertThat(race.getWinners().stream().map(CarView::getCarName).toArray()).contains("a", "b", "c");
     }
 
     private static Stream<Arguments> oneLapTestStubs() {

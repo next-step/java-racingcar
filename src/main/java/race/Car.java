@@ -13,7 +13,7 @@ public class Car {
 
     public void moveForward() {
         if (moveStrategy.canMove()) {
-            position.add();
+            position.moveForward();
         }
     }
 

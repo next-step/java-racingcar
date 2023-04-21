@@ -10,22 +10,32 @@ public class Race {
         this.cars = cars;
     }
 
-    public Cars startLap() {
+    public List<CarView> startLap() {
         cars.moveAll();
-        return cars;
+        return cars.getCarList()
+                .stream()
+                .map(it -> new CarView(
+                                it.getCarName().getCarName(),
+                                it.getPosition().getPosition()
+                        )
+                ).collect(Collectors.toList());
     }
 
-    public List<CarName> winner() {
+    public List<CarView> getWinners() {
         int topScore = cars.getCarList()
                 .stream()
-                .mapToInt(it -> it.getPosition().get())
-                .max()
-                .getAsInt();
+                .map(Car::getPosition)
+                .max(Position.getComparator())
+                .get()
+                .getPosition();
 
         return cars.getCarList()
                 .stream()
                 .filter(it -> it.getPosition().equals(topScore))
-                .map(Car::getCarName)
-                .collect(Collectors.toList());
+                .map(it -> new CarView(
+                                it.getCarName().getCarName(),
+                                it.getPosition().getPosition()
+                        )
+                ).collect(Collectors.toList());
     }
 }

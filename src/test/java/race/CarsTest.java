@@ -38,7 +38,7 @@ public class CarsTest {
         assertThat(cars.getCarList()).isInstanceOf(List.class);
         assertThat(cars.getCarList()
                 .stream()
-                .map(it -> it.getCarName().get())
+                .map(it -> it.getCarName().getCarName())
                 .toArray()
         ).containsExactly("a", "b", "c");
     }
