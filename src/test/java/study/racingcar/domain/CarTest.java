@@ -2,54 +2,76 @@ package study.racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import study.racingcar.rule.DomainRule;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
+    public static final int lowerBoundNum = DomainRule.MOVABLE_LOWER_BOUND;
+
     @DisplayName("NonMoveable할 경우 false를 반환한다")
-    @Test
-    void when_number_nonMoveable() {
+    @ParameterizedTest(name = "{0}을 넣었을때 false를 반환한다")
+    @ValueSource(ints = {lowerBoundNum - 1, lowerBoundNum - 2, lowerBoundNum - 3, lowerBoundNum - 4})
+    void when_NumberUnderLowerBound_Expects_False(int num) {
         // given
-//        final NumberGenerator numberGenerator = new NonMovableNumberGenerator();
-        final int nonMovableUppserBound = 3;
+        DomainRule rule = new DomainRule(() -> num);
+
         // when
-        boolean actualResult = Car.isMovable(() -> nonMovableUppserBound);
+        boolean actualResult = Car.isMovable(rule);
 
         // then
         assertThat(actualResult).isFalse();
     }
 
-    @DisplayName("Moveable할 경우 true를 반환한다")
-    @Test
-    void when_number_is_moveable() {
+    @DisplayName("Moveable 할 경우 true를 반환한다.")
+    @ParameterizedTest(name = "{0}을 넣었을때 true를 반환한다")
+    @ValueSource(ints = {lowerBoundNum, lowerBoundNum + 1, lowerBoundNum + 2, lowerBoundNum + 3})
+    void when_NumberIsEqualToOrOverLowerBound_Expects_True(int num) {
         // given
-//        final NumberGenerator numberGenerator = new MoveableNumberGenerator();
-        final int movableLowerBound = 4;
+        DomainRule rule = new DomainRule(() -> num);
 
         // when
-        boolean actualResult = Car.isMovable(() -> movableLowerBound);
+        boolean actualResult = Car.isMovable(rule);
 
         // then
         assertThat(actualResult).isTrue();
     }
 
-    @DisplayName("5이상의 값일 경우 true를 반환한다")
-    @Test
-    void when_number_is_five() {
+    @DisplayName("올바른 자동차 이름을 가져오는지 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = {"foo", "bar", "baz"})
+    void given_CarName_When_CallingGetCarNameMethod_Then_ReturnsEqualCarName(String CarName) {
         // given
-        final int number = 5;
+        Car car = new Car(CarName);
 
         // when
-        boolean actualResult = Car.isMovable(() -> number);
+        String actualCarName = car.getCarName();
 
-        // then
-        assertThat(actualResult).isTrue();
+        //then
+        assertThat(actualCarName).isEqualTo(CarName);
     }
 
-    @DisplayName("움직이지 않으면 모양이 없다")
+    @DisplayName("올바른 위치 값을 가지고 오는지 테스트")
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3, 4, 5})
+    void given_CarPosition_When_CallingGetPositionMethod_Then_ReturnsEqualPosition(int expectedPosition) {
+        // given
+        Car car = new Car("Foo", expectedPosition);
+
+        // when
+        int actualPosition = car.getPosition();
+
+        //then
+        assertThat(actualPosition).isEqualTo(expectedPosition);
+    }
+
+    @DisplayName("한번 움직이면 position이 0이다.")
     @Test
-    void blank_when_car_does_not_move() {
+    void when_CarDoesNotMove_Expects_PositionZero() {
+
         // given
         String carName = "foo";
         Car car = new Car(carName);
@@ -57,13 +79,12 @@ class CarTest {
         // when
 
         // then
-        assertThat(car.length()).isEqualTo(0);
-        assertThat(car.toString()).isEqualTo("");
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 
-    @DisplayName("한번 움직이면 -이 출력된다")
+    @DisplayName("한번 움직이면 position이 1이다.")
     @Test
-    void shape_once_when_car_move_once() {
+    void when_CarMoveOnce_Expects_PositionOne() {
         // given
         String carName = "foo";
         Car car = new Car(carName);
@@ -72,13 +93,12 @@ class CarTest {
         car.move();
 
         // then
-        assertThat(car.length()).isEqualTo(1);
-        assertThat(car.toString()).isEqualTo("-");
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
-    @DisplayName("두번 움직이면 --이 출력된다.")
+    @DisplayName("한번 움직이면 position이 2이다.")
     @Test
-    void shape_twice_when_car_move_twice() {
+    void when_CarMoveTwice_Expects_PositionTwo() {
         // given
         String carName = "foo";
         Car car = new Car(carName);
@@ -88,20 +108,6 @@ class CarTest {
         car.move();
 
         // then
-        assertThat(car.length()).isEqualTo(2);
-        assertThat(car.toString()).isEqualTo("--");
-    }
-
-    @DisplayName("Car 객체 이름 테스트")
-    @Test
-    void when_car_name_is_junho() {
-        // given
-        String carName = "junho";
-
-        // when
-        Car car = new Car(carName);
-
-        // then
-        assertThat(car.getCarName()).isEqualTo(carName);
+        assertThat(car.getPosition()).isEqualTo(2);
     }
 }

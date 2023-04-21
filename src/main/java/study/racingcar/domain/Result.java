@@ -4,7 +4,7 @@ public class Result {
     private final Winners winners;
     private final GameCars cars;
 
-    private int maxLength = Integer.MIN_VALUE;
+    private int maxPosition = Integer.MIN_VALUE;
 
     public Result(GameCars cars) {
         this.winners = new Winners();
@@ -12,18 +12,18 @@ public class Result {
     }
 
     public String winners() {
-        setMaxLength();
+        setMaxPosition();
         setWinner();
         return winners.toString();
     }
 
-    private void setMaxLength() {
-        cars.forEach(this::compareCarLength);
+    private void setMaxPosition() {
+        cars.forEach(this::comparePosition);
     }
 
-    private void compareCarLength(Car car) {
-        if (car.length() >= maxLength) {
-            maxLength = car.length();
+    private void comparePosition(Car car) {
+        if (car.getPosition() >= maxPosition) {
+            maxPosition = car.getPosition();
         }
     }
 
@@ -32,7 +32,7 @@ public class Result {
     }
 
     private void addWinner(Car car) {
-        if (car.length() == maxLength) {
+        if (car.getPosition() == maxPosition) {
             winners.add(car);
         }
     }
