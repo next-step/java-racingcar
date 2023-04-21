@@ -8,22 +8,12 @@ import static study.carrace.step3.presentation.util.ConsoleInputUtil.*;
 
 public class CarRaceApplication {
     public static void main(String[] args) {
-        RaceManager raceManager = new RaceManager(askCarNames(), randomMoveStrategy());
+        RaceManager raceManager = new RaceManager(askCarNames(), randomMoveStrategy(), askIterationCount());
         RaceMonitor raceMonitor = new RaceMonitor(raceManager);
 
-        startRace(raceMonitor, raceManager, askIterationCount());
-        announceWinners(raceMonitor);
-    }
+        raceManager.startRace();
 
-    private static void announceWinners(RaceMonitor raceMonitor) {
+        raceMonitor.showCarsPositionHistory();
         raceMonitor.announceWinners();
-    }
-
-    private static void startRace(RaceMonitor raceMonitor, RaceManager raceManager, long iterationCount) {
-        raceMonitor.announceRaceResult();
-        for (int i = 0; i < iterationCount; i++) {
-            raceManager.moveOrStopCars();
-            raceMonitor.showCarsPosition();
-        }
     }
 }
