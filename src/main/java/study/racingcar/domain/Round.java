@@ -3,7 +3,6 @@ package study.racingcar.domain;
 import study.racingcar.utils.NumberUtils;
 
 public class Round {
-
     private final int count;
 
     public Round(int count) {

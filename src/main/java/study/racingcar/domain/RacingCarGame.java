@@ -1,17 +1,26 @@
 package study.racingcar.domain;
 
+import study.racingcar.rule.DomainRule;
+import study.racingcar.strategy.NumberGenerator;
 import study.racingcar.view.OutputView;
 
+import java.util.List;
+
 public class RacingCarGame {
-    /**
-     * 게임을 진행을 담당한다.
-     */
     private final GameCars cars;
     private final Round round;
+    private final DomainRule rule;
 
-    public RacingCarGame(int numOfCar, int roundToPlay) {
-        this.cars = new GameCars(numOfCar);
+    public RacingCarGame(List<String> carNames, int roundToPlay, NumberGenerator numberGenerator) {
+        this.cars = new GameCars(carNames);
         this.round = new Round(roundToPlay);
+        this.rule = new DomainRule(numberGenerator);
+    }
+
+    public RacingCarGame(List<String> carNames, int roundToPlay) {
+        this.cars = new GameCars(carNames);
+        this.round = new Round(roundToPlay);
+        this.rule = new DomainRule();
     }
 
     public void run() {
@@ -19,19 +28,23 @@ public class RacingCarGame {
         for (int i = 0; i < round.getTotalRounds(); i++) {
             playTheGame(cars);
         }
+        printGameResult();
     }
 
     private void playTheGame(GameCars cars) {
-        for (Car car : cars) {
-            execute(car);
-        }
+        cars.forEach(this::execute);
         OutputView.printBlankLine();
     }
 
     private void execute(Car car) {
-        if (Car.isMovable(Rule.numberGenerator())) {
+        if (Car.isMovable(rule)) {
             car.move();
         }
-        OutputView.printCarStatus(car);
+        OutputView.printCarNameAndStatus(car);
+    }
+
+    private void printGameResult() {
+        Winners winners = cars.calculateWinner();
+        OutputView.printGameResult(winners);
     }
 }

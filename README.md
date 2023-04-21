@@ -70,3 +70,53 @@
 - [x] else 예약어를 쓰지 않는다.
 - [x] 기능 목록 작성하기
 - [x] 기능 목록 단위로 commit 하며 commit message를 angularJS commit message convention을 따른다.
+
+---
+## 추가 요구사항 (Step 4)
+- [x] 각 자동차에 이름을 부여할 수 있다. 자동차 이름은 5자를 초과할 수 없다.
+  - [x] step3의 자동차 대수 입력 / 출력 기능 삭제
+  - [x] `OutputView`를 통한 자동차 이름 입력 문구 출력 및 `Inputview`를 통해서 이름 입력
+  - [x] CarName 객체에서 자동차 이름 필드 추가
+  - [x] 자동차 이름 Car 객체에서 validate
+- [x] 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다. 
+  - [x] 출력 담당 OutputView 수정 (`OutputView.printCarStatus()` 출력 로직 수정)
+- [x] 자동차 이름은 쉼표(,)를 기준으로 구분한다. 
+  - [x] 쉼표가 아닐 경우 예외 처리 -> list size가 1인경우 예외 처리
+
+- [x] 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한명 이상일 수 있다.
+  - [x] 우승자 계산 : 마지막에 GameCars 돌면서 car의 길이가 가장 긴 것을 우승자 리스트에 추가 
+  - [x] ouputview 통해서 우승자 출력
+- 예시는 다음과 같다
+```
+경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).
+pobi,crong,honux
+시도할 회수는 몇회인가요?
+5
+
+실행 결과
+pobi : -
+crong : -
+honux : -
+
+pobi : --
+crong : -
+honux : --
+
+pobi : ---
+crong : --
+honux : ---
+
+pobi : ----
+crong : ---
+honux : ----
+
+pobi : -----
+crong : ----
+honux : -----
+
+pobi : -----
+crong : ----
+honux : -----
+
+pobi, honux가 최종 우승했습니다.
+```
