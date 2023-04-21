@@ -1,8 +1,5 @@
 package study.carrace.step3.presentation.util;
 
-import study.carrace.step3.presentation.exception.IllegalCarQuantityException;
-import study.carrace.step3.presentation.exception.IllegalIterationCountException;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -11,25 +8,14 @@ import static study.carrace.step3.presentation.PromptMessage.*;
 
 public class ConsoleInputUtil {
     private static final String COMMA = ",";
+    private static final Scanner SCANNER = new Scanner(System.in);
 
     private ConsoleInputUtil() {
     }
 
-    @Deprecated
-    public static long askCarQuantity() {
-        System.out.print(CAR_QUANTITY_QUESTION_MESSAGE.getMessage());
-        long carQuantity = getLongFromConsole();
-        validateCarQuantity(carQuantity);
-
-        return carQuantity;
-    }
-
-    public static long askIterationCount() {
+    public static int askIterationCount() {
         System.out.print(ITERATION_COUNT_QUESTION_MESSAGE.getMessage());
-        long iterationCount = getLongFromConsole();
-        validateIterationCount(iterationCount);
-
-        return iterationCount;
+        return getIntFromConsole();
     }
 
     public static List<String> askCarNames() {
@@ -42,22 +28,10 @@ public class ConsoleInputUtil {
     }
 
     private static String getStringFromConsole() {
-        return new Scanner(System.in).nextLine();
+        return SCANNER.nextLine();
     }
 
-    private static long getLongFromConsole() {
-        return new Scanner(System.in).nextLong();
-    }
-
-    private static void validateIterationCount(long iterationCount) {
-        if (iterationCount <= 0) {
-            throw new IllegalIterationCountException(iterationCount);
-        }
-    }
-
-    private static void validateCarQuantity(long carQuantity) {
-        if (carQuantity <= 0) {
-            throw new IllegalCarQuantityException(carQuantity);
-        }
+    private static int getIntFromConsole() {
+        return SCANNER.nextInt();
     }
 }
