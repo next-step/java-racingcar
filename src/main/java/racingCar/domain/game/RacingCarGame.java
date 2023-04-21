@@ -1,24 +1,25 @@
-package racingCar;
+package racingCar.domain.game;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import racingCar.car.RacingCar;
+import racingCar.domain.car.RacingCar;
+import racingCar.domain.game.print.BaseRacingCarGameSnapShotExtractor;
+import racingCar.domain.game.print.RacingCarGameSnapShotExtractor;
 import racingCar.exception.NotAllowedGameSettingException;
-import racingCar.random.RandomMoveAckGenerator;
-import racingCar.view.RacingCarGameResultView;
+import racingCar.domain.game.move.MoveAckGenerator;
 import util.CollectionUtils;
 
 public final class RacingCarGame {
 
   private final List<RacingCar> racingCars;
-  private final RacingCarGameResultView resultView;
+  private final MoveAckGenerator randomMoveAckGenerator;
+  private final RacingCarGameSnapShotExtractor snapShotExtractor;
 
-  private final RandomMoveAckGenerator randomMoveAckGenerator;
-
-  public RacingCarGame(List<String> carNames, RacingCarGameResultView resultView, RandomMoveAckGenerator randomMoveAckGenerator) {
-    this.randomMoveAckGenerator = randomMoveAckGenerator;
-    this.resultView = resultView;
+  public RacingCarGame(List<String> carNames, MoveAckGenerator moveAckGenerator) {
+    this.randomMoveAckGenerator = moveAckGenerator;
     this.racingCars = generateRacingCars(carNames);
+    this.snapShotExtractor = new BaseRacingCarGameSnapShotExtractor();
   }
 
   private List<RacingCar> generateRacingCars(List<String> carNames) {
@@ -31,14 +32,14 @@ public final class RacingCarGame {
         .collect(Collectors.toUnmodifiableList());
   }
 
-  public void play (int moveTryCnt) {
+  public RacingCarGameResult play (int moveTryCnt) {
+    List<String> snapShots = new ArrayList<>(moveTryCnt);
     for (long moveCnt = 0; moveCnt < moveTryCnt ; moveCnt++) {
       moveAllRacingCars(racingCars);
-      resultView.storeSnapShotOfMoveCnt(racingCars);
+      snapShots.add(snapShotExtractor.extractSnapShot(racingCars));
     }
 
-    resultView.printAllSnapShot();
-    resultView.printWinners(getWinners());
+    return new RacingCarGameResult(getWinners(), snapShots);
   }
 
   private void moveAllRacingCars(List<RacingCar> racingCarList) {
@@ -48,7 +49,7 @@ public final class RacingCarGame {
   private List<RacingCar> getWinners() {
     final int maxPosition = getMaxPositionOfGame();
     return racingCars.stream()
-        .filter(position -> position.getPosition() == maxPosition)
+        .filter(car -> car.isPosition(maxPosition))
         .collect(Collectors.toList());
   }
 

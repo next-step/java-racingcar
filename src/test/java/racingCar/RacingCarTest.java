@@ -3,11 +3,9 @@ package racingCar;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
-import racingCar.car.RacingCar;
+import racingCar.domain.car.RacingCar;
 import racingCar.exception.InvalidRacingCarNameException;
-import racingCar.random.BaseRandomMoveAckGenerator;
+import racingCar.domain.game.move.RandomMoveAckGenerator;
 import racingCar.random.ForwardOnlyMoveAckGenerator;
 import racingCar.random.HoldOnlyMoveAckGenerator;
 
@@ -53,7 +51,18 @@ public class RacingCarTest {
     final String 레이싱카_이름 = "car123";
 
     // when & then
-    Assertions.assertThatThrownBy(() -> new RacingCar(레이싱카_이름, new BaseRandomMoveAckGenerator()))
+    Assertions.assertThatThrownBy(() -> new RacingCar(레이싱카_이름, new RandomMoveAckGenerator()))
+        .isInstanceOf(InvalidRacingCarNameException.class);
+  }
+
+  @DisplayName("[RacingCar.class] 이름이 없는 레이싱카는 생성 할 수 없다.")
+  @Test
+  public void 레이싱카의_이름은_반드시_필요하다() {
+    // given
+    final String 레이싱카_이름 = "";
+
+    // when & then
+    Assertions.assertThatThrownBy(() -> new RacingCar(레이싱카_이름, new RandomMoveAckGenerator()))
         .isInstanceOf(InvalidRacingCarNameException.class);
   }
 }

@@ -1,10 +1,10 @@
-package racingCar.car;
+package racingCar.domain.car;
 
-import racingCar.car.move.RacingCarMoveDirectionStrategy;
-import racingCar.car.move.RacingCarMoveForward;
-import racingCar.car.move.RacingCarName;
-import racingCar.car.move.RacingCarPosition;
-import racingCar.random.RandomMoveAckGenerator;
+import racingCar.domain.car.move.RacingCarMoveDirectionStrategy;
+import racingCar.domain.car.move.RacingCarMoveForward;
+import racingCar.domain.car.name.RacingCarName;
+import racingCar.domain.car.position.RacingCarPosition;
+import racingCar.domain.game.move.MoveAckGenerator;
 
 public class RacingCar {
 
@@ -12,9 +12,9 @@ public class RacingCar {
 
   private final RacingCarName carName;
   private final RacingCarPosition position;
-  private final RandomMoveAckGenerator randomMoveAckGenerator;
+  private final MoveAckGenerator randomMoveAckGenerator;
 
-  public RacingCar(String carName, RandomMoveAckGenerator randomMoveAckGenerator) {
+  public RacingCar(String carName, MoveAckGenerator randomMoveAckGenerator) {
     this.carName = new RacingCarName(carName);
     this.position = new RacingCarPosition(0);
     this.randomMoveAckGenerator = randomMoveAckGenerator;
@@ -45,5 +45,9 @@ public class RacingCar {
       return RacingCarMoveForward.getInstance();
     }
     return null;
+  }
+
+  public boolean isPosition(int position) {
+    return this.position.getPosition() == position;
   }
 }

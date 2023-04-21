@@ -1,8 +1,8 @@
-package racingCar.random;
+package racingCar.domain.game.move;
 
 import util.RandomUtils;
 
-public class BaseRandomMoveAckGenerator implements RandomMoveAckGenerator {
+public class RandomMoveAckGenerator implements MoveAckGenerator {
 
   public int generate () {
     return RandomUtils.getRandomSinglePositiveDigit();

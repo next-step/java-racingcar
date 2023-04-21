@@ -1,6 +1,6 @@
-package racingCar.car.move;
+package racingCar.domain.car.move;
 
-import racingCar.car.RacingCar;
+import racingCar.domain.car.RacingCar;
 
 public interface RacingCarMoveDirectionStrategy {
     RacingCar moveAndSetPosition(RacingCar racingCar);
