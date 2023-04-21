@@ -6,7 +6,7 @@ import racingrefactoring.util.FactoryCar;
 
 public class CarGroup {
 
-  List<Car> cars;
+  private final List<Car> cars;
 
   public CarGroup(String carNames) {
     this.cars = FactoryCar.createCars(carNames);
@@ -25,13 +25,13 @@ public class CarGroup {
     return cars;
   }
 
-  public List<String> findWinners() {
+  public Winners findWinners() {
     int maxPosition = findMaxPosition();
 
-    return cars.stream()
+
+    return new Winners(cars.stream()
         .filter(car -> car.isMaxPosition(maxPosition))
-        .map(Car::getName)
-        .collect(Collectors.toList());
+        .collect(Collectors.toList()));
   }
 
   private int findMaxPosition() {

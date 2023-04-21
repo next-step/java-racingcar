@@ -24,6 +24,6 @@ class CarGroupTest {
 
     CarGroup carGroup = new CarGroup(car1, car2, car3);
 
-    assertThat(carGroup.findWinners()).containsExactly("car1");
+    assertThat(carGroup.findWinners()).isEqualTo(new Winners(car1));
   }
 }
