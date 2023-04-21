@@ -1,6 +1,7 @@
 package study.racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -10,34 +11,38 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    public static final int lowerBoundNum = DomainRule.MOVABLE_LOWER_BOUND;
+    @Nested
+    @DisplayName("Movable 메서드 검증")
+    class MoveableValidationTest {
+        public static final int lowerBoundNum = DomainRule.MOVABLE_LOWER_BOUND;
 
-    @DisplayName("NonMoveable할 경우 false를 반환한다")
-    @ParameterizedTest(name = "{0}을 넣었을때 false를 반환한다")
-    @ValueSource(ints = {lowerBoundNum - 1, lowerBoundNum - 2, lowerBoundNum - 3, lowerBoundNum - 4})
-    void when_NumberUnderLowerBound_Expects_False(int num) {
-        // given
-        DomainRule rule = new DomainRule(() -> num);
+        @DisplayName("NonMoveable할 경우 false를 반환한다")
+        @ParameterizedTest(name = "{0}을 넣었을때 false를 반환한다")
+        @ValueSource(ints = {lowerBoundNum - 1, lowerBoundNum - 2, lowerBoundNum - 3, lowerBoundNum - 4})
+        void when_NumberUnderLowerBound_Expects_False(int num) {
+            // given
+            DomainRule rule = new DomainRule(() -> num);
 
-        // when
-        boolean actualResult = Car.isMovable(rule);
+            // when
+            boolean actualResult = Car.isMovable(rule);
 
-        // then
-        assertThat(actualResult).isFalse();
-    }
+            // then
+            assertThat(actualResult).isFalse();
+        }
 
-    @DisplayName("Moveable 할 경우 true를 반환한다.")
-    @ParameterizedTest(name = "{0}을 넣었을때 true를 반환한다")
-    @ValueSource(ints = {lowerBoundNum, lowerBoundNum + 1, lowerBoundNum + 2, lowerBoundNum + 3})
-    void when_NumberIsEqualToOrOverLowerBound_Expects_True(int num) {
-        // given
-        DomainRule rule = new DomainRule(() -> num);
+        @DisplayName("Moveable 할 경우 true를 반환한다.")
+        @ParameterizedTest(name = "{0}을 넣었을때 true를 반환한다")
+        @ValueSource(ints = {lowerBoundNum, lowerBoundNum + 1, lowerBoundNum + 2, lowerBoundNum + 3})
+        void when_NumberIsEqualToOrOverLowerBound_Expects_True(int num) {
+            // given
+            DomainRule rule = new DomainRule(() -> num);
 
-        // when
-        boolean actualResult = Car.isMovable(rule);
+            // when
+            boolean actualResult = Car.isMovable(rule);
 
-        // then
-        assertThat(actualResult).isTrue();
+            // then
+            assertThat(actualResult).isTrue();
+        }
     }
 
     @DisplayName("올바른 자동차 이름을 가져오는지 테스트")
