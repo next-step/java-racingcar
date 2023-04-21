@@ -10,6 +10,9 @@ public class ResultView {
     private static void println() {
         System.out.print("\n");
     }
+    private static void printName(String input) {
+        System.out.print(input+" : ");
+    }
 
     private static void printDash() {
         System.out.print("-");
@@ -31,6 +34,7 @@ public class ResultView {
     }
 
     private static void printOnceCar(Car car) {
+        printName(car.name());
         for (int i = 0; i < car.location(); i++) {
             printDash();
         }
