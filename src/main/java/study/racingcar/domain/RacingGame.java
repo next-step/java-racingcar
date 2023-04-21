@@ -1,6 +1,10 @@
-package study.racingcar;
+package study.racingcar.domain;
+
+import study.racingcar.dto.CarDto;
+import study.racingcar.dto.CarDtos;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
 
@@ -31,10 +35,13 @@ public class RacingGame {
         for(Car car : this.cars) {
 
             car.move();
-
-            ResultView.resultGame(car);
         }
+    }
 
-        ResultView.emptyLine();
+    public List<CarDto> getCarDtos() {
+        return new CarDtos(this.cars.stream()
+                .map(Car::getCarDto)
+                .collect(Collectors.toList())
+        ).getCarDtos();
     }
 }

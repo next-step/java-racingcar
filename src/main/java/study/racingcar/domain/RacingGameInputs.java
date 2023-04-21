@@ -1,32 +1,34 @@
-package study.racingcar;
+package study.racingcar.domain;
 
+import java.util.Arrays;
 import java.util.InputMismatchException;
+import java.util.List;
 
 public class RacingGameInputs {
     private static final int ZERO = 0;
     private static final String SPLIT_PATTERN = "[,]";
 
     private int numberOfGames;
-    private String[] carNameArray;
+    private List<String> carNames;
 
     public RacingGameInputs(int numberOfGames, String carNamesStr) {
         isNegativeNumberAndZero(numberOfGames);
 
         this.numberOfGames = numberOfGames;
-        this.carNameArray = splitCarNameString(carNamesStr);
+        this.carNames = splitCarNameString(carNamesStr);
     }
 
     public int getNumberOfGames() {
         return this.numberOfGames;
     }
 
-    public String[] getNameOfCars() {
-        return this.carNameArray;
+    public List<String> getNameOfCars() {
+        return this.carNames;
     }
 
-    private String[] splitCarNameString(String carNameStr) {
+    private List<String> splitCarNameString(String carNameStr) {
 
-        return carNameStr.split(SPLIT_PATTERN);
+        return Arrays.asList(carNameStr.split(SPLIT_PATTERN));
     }
 
     private void isNegativeNumberAndZero(int number) {
