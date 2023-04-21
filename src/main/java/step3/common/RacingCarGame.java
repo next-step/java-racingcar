@@ -1,7 +1,9 @@
 package step3.common;
 
 import step3.common.util.PrintUtils;
+import step3.common.util.RandomUtils;
 import step3.common.view.InputView;
+import step3.common.view.ResultView;
 import step3.common.vo.Car;
 
 import java.util.HashMap;
@@ -28,8 +30,8 @@ public class RacingCarGame implements Game {
         PrintUtils.println(INPUT_MOVE_NUMBER_TEXT);
         moveNumber = InputView.input();
         carMap = createCars(carNumber);
-
         PrintUtils.println(RESULT_TEXT);
+        moveByMoveNumber(moveNumber);
 
     }
 
@@ -43,6 +45,26 @@ public class RacingCarGame implements Game {
 
     public static boolean canMove(int randomValue) {
         return randomValue > MINIMUM_NUMBER_FOR_MOVE;
+    }
+
+    public void moveCar(Car car) {
+        if (canMove(RandomUtils.generate())) {
+            car.move();
+        }
+        carMap.put(car.getNumber(), car);
+    }
+
+    public void moveByCarNumber() {
+        for (Integer carNumber : carMap.keySet()) {
+            moveCar(carMap.get(carNumber));
+        }
+    }
+
+    public void moveByMoveNumber(int moveNumber) {
+        for (int i = 0; i < moveNumber; i++) {
+            moveByCarNumber();
+            ResultView.resultPrint(carMap);
+        }
     }
 
 }
