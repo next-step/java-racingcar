@@ -47,7 +47,7 @@ public class RacingCarGame {
     }
 
     private void printGameResult() {
-        String winners = gameResult.winners();
+        Winners winners = gameResult.winners();
         OutputView.printGameResult(winners);
     }
 }

@@ -1,7 +1,10 @@
 package study.racingcar.view;
 
 import study.racingcar.domain.Car;
+import study.racingcar.domain.Winners;
 import study.racingcar.rule.OutputViewRule;
+
+import java.util.stream.Collectors;
 
 public class OutputView {
     private static final OutputViewRule rule;
@@ -34,8 +37,14 @@ public class OutputView {
         final int position = car.getPosition();
         return rule.getCarShape().repeat(position);
     }
-
-    public static void printGameResult(String winners) {
-        System.out.println(winners + "가 최종 우승했습니다.");
+    public static void printGameResult(Winners winners) {
+        String message = generateWinnerOutputMessage(winners);
+        System.out.println(message + "가 최종 우승했습니다.");
+    }
+    public static String generateWinnerOutputMessage(Winners winners) {
+        return winners.getWinners()
+                .stream()
+                .map(Car::getCarName)
+                .collect(Collectors.joining(rule.getWinnerDelimiter()));
     }
 }

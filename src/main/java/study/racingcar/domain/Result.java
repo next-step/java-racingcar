@@ -11,10 +11,10 @@ public class Result {
         this.cars = cars;
     }
 
-    public String winners() {
+    public Winners winners() {
         setMaxPosition();
         setWinner();
-        return winners.toString();
+        return winners;
     }
 
     private void setMaxPosition() {
