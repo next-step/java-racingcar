@@ -24,16 +24,23 @@ class CarTest {
     car.move(stopStrategy);
 
     assertThat(car.getPosition()).isEqualTo(0);
-
   }
 
   @Test
-  void isMaxPosition() {
-    Car car = new Car("car1");
-    car.move(() -> true);
-    car.move(() -> true);
-    car.move(() -> true);
+  void 최대_위치인_경우() {
+    Car car = new Car("car1", 3);
 
-    assertThat(car.isMaxPosition(3)).isTrue();
+    MaxPosition maxPosition = new MaxPosition(3);
+
+    assertThat(car.isMaxPosition(maxPosition)).isTrue();
+  }
+
+  @Test
+  void 최대_위치가_아닌_경우() {
+    Car car = new Car("car1", 2);
+
+    MaxPosition maxPosition = new MaxPosition(3);
+
+    assertThat(car.isMaxPosition(maxPosition)).isFalse();
   }
 }

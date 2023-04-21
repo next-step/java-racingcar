@@ -26,18 +26,19 @@ public class CarGroup {
   }
 
   public Winners findWinners() {
-    int maxPosition = findMaxPosition();
-
+    MaxPosition maxPosition = findMaxPosition();
 
     return new Winners(cars.stream()
         .filter(car -> car.isMaxPosition(maxPosition))
         .collect(Collectors.toList()));
   }
 
-  private int findMaxPosition() {
-    return cars.stream()
+  private MaxPosition findMaxPosition() {
+    int maxPosition = cars.stream()
         .mapToInt(Car::getPosition)
         .max()
         .orElse(0);
+
+    return new MaxPosition(maxPosition);
   }
 }

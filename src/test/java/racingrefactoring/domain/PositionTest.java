@@ -21,6 +21,6 @@ class PositionTest {
     position.move();
     position.move();
 
-    assertThat(position.isSame(3)).isTrue();
+    assertThat(position.isMax(new MaxPosition(3))).isTrue();
   }
 }

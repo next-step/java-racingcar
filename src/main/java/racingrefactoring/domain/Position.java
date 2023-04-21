@@ -20,7 +20,7 @@ public class Position {
     return position;
   }
 
-  public boolean isSame(int maxPosition) {
-    return position == maxPosition;
+  public boolean isMax(MaxPosition maxPosition) {
+    return maxPosition.isSame(position);
   }
 }
