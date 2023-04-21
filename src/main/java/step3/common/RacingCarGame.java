@@ -17,6 +17,8 @@ public class RacingCarGame implements Game {
     private static final String INPUT_MOVE_NUMBER_TEXT = "시도할 회수는 몇 회 인가요?";
     private static final String RESULT_TEXT = "실행 결과";
 
+    private static final int MINIMUM_NUMBER_FOR_MOVE = 4;
+
 
     @Override
     public void start() {
@@ -37,6 +39,10 @@ public class RacingCarGame implements Game {
             createCarMap.put(number, new Car(number));
         }
         return createCarMap;
+    }
+
+    public static boolean canMove(int randomValue) {
+        return randomValue > MINIMUM_NUMBER_FOR_MOVE;
     }
 
 }
