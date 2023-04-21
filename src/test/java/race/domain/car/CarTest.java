@@ -3,7 +3,7 @@ package race.domain.car;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import race.domain.car.dto.CarInfoDto;
+import race.dto.CarInfoDto;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;

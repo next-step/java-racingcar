@@ -4,7 +4,7 @@ import race.domain.car.Car;
 import race.domain.car.MovingStrategy;
 import race.domain.car.Name;
 import race.domain.car.RacingCars;
-import race.domain.car.dto.CarInfoDto;
+import race.dto.CarInfoDto;
 
 import java.util.ArrayList;
 import java.util.List;

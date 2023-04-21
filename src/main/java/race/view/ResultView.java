@@ -1,6 +1,6 @@
 package race.view;
 
-import race.domain.car.dto.CarInfoDto;
+import race.dto.CarInfoDto;
 
 import java.util.*;
 

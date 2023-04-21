@@ -1,4 +1,4 @@
-package race.domain.car.dto;
+package race.dto;
 
 public class CarInfoDto {
     private final int location;

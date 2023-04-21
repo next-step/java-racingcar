@@ -1,7 +1,7 @@
 package race.domain.car;
 
 import race.datamapper.RaceDataMapper;
-import race.domain.car.dto.CarInfoDto;
+import race.dto.CarInfoDto;
 
 import java.util.Objects;
 
