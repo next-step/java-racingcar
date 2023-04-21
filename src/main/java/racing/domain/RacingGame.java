@@ -32,4 +32,9 @@ public class RacingGame {
 
         return results;
     }
+
+    public List<String> winners() {
+        return this.cars.findWinners();
+    }
+
 }
