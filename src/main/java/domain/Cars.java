@@ -22,8 +22,7 @@ public class Cars {
     }
 
     public void makeCarsMove() {
-        cars.stream()
-                .forEach(car -> car.attemptMove(isMoved()));
+        cars.forEach(car -> car.attemptMove(isMoved()));
     }
 
     private boolean isMoved() {
@@ -36,23 +35,5 @@ public class Cars {
 
     public Car getEachCar(int carIndex) {
         return cars.get(carIndex);
-    }
-
-    public List<Car> checkCarWithFarthestDistance() {
-        int farthestDistance = getFarthestDistance();
-        return getCarsWithFarthestDistance(farthestDistance);
-    }
-
-    private int getFarthestDistance() {
-        return cars.stream()
-                .mapToInt(Car::getCarCurrentDistance)
-                .max()
-                .orElse(0);
-    }
-
-    private List<Car> getCarsWithFarthestDistance(int farthestDistance) {
-        return cars.stream()
-                .filter(car -> car.getCarCurrentDistance() == farthestDistance)
-                .collect(Collectors.toList());
     }
 }

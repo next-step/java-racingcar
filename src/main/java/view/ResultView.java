@@ -33,7 +33,8 @@ public class ResultView {
         System.out.println(currentCarDistanceWithName);
     }
 
-    public static void drawFirstPlace(String winnersNames) {
-        System.out.println(winnersNames + WINNER_MESSAGE);
+    public static void drawFirstPlace(String[] winnerNames) {
+        String plainWinnerNames = String.join(WINNER_DELIMITER, winnerNames);
+        System.out.println(plainWinnerNames + WINNER_MESSAGE);
     }
 }

@@ -2,7 +2,6 @@ package domain;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static view.ResultView.WINNER_DELIMITER;
 
 import java.util.List;
 import org.assertj.core.api.Assertions;
@@ -10,8 +9,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class WinnersTest {
-
-
 
     @Test
     @DisplayName("우승자의 이름 리스트를 가지고 온다.")
@@ -21,8 +18,8 @@ public class WinnersTest {
 
         Cars cars = new Cars(List.of(ethanCar, rickCar));
 
-        String winnerNames = new Winners(cars).makeWinnersString(WINNER_DELIMITER);
-        assertThat(winnerNames).isEqualTo("ethan");
+        String [] winnerNames = new Winners(cars).winnersName();
+        assertThat(winnerNames).contains("ethan");
     }
 
     @Test
@@ -34,9 +31,9 @@ public class WinnersTest {
         Cars cars = new Cars(List.of(ethanCar, rickCar));
         Winners winners = new Winners(cars);
 
-        String winnersNames = winners.makeWinnersString(WINNER_DELIMITER);
+        String winnersNames[] = winners.winnersName();
 
-        Assertions.assertThat(winnersNames).isEqualTo("ethan, rick");
+        Assertions.assertThat(winnersNames).contains("ethan","rick");
     }
 
     private static Car makeCarWithMoved(String name, int movedCount) {
@@ -45,5 +42,16 @@ public class WinnersTest {
             car.attemptMove(true);
         }
         return car;
+    }
+
+    @Test
+    @DisplayName("제일 멀리 간 차를 가지고 온다.")
+    void getCarWithFarthestDistance(){
+        Car ethanCar = makeCarWithMoved("ethan",3);
+        Car rickCar = makeCarWithMoved("rick",2);
+
+        Cars cars = new Cars(List.of(ethanCar, rickCar));
+        Winners winners = new Winners(cars);
+        Assertions.assertThat(winners.winnersName()).contains("ethan");
     }
 }
