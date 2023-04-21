@@ -2,15 +2,13 @@ package racingCarGame.domain;
 
 public class Car {
     private int distance = 0;
-    private final MoveStrategy moveStrategy;
     private final String owner;
 
-    public Car(String owner, MoveStrategy moveStrategy) {
+    public Car(String owner) {
         this.owner = owner;
-        this.moveStrategy = moveStrategy;
     }
 
-    public void move() {
+    public void move(MoveStrategy moveStrategy) {
         if (moveStrategy.isCanMove()) {
             distance += 1;
         }

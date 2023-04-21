@@ -9,8 +9,12 @@ public class CarTest {
     @Test
     @DisplayName("AlwaysMoveStrategy 패턴은 항상 차를 움직인다.")
     void moveByAlwaysMoveStrategy() {
-        Car car = new Car("owner", new AlwaysMoveStrategy());
-        car.move();
-        assertThat(car.getDistance()).isEqualTo(1);
+        assertThat(new AlwaysMoveStrategy().isCanMove()).isEqualTo(true);
+    }
+
+    @Test
+    @DisplayName("NotMoveStrategy 패턴은 항상 차를 움직이지 않는다.")
+    void moveByNotMoveStrategy() {
+        assertThat(new NotMoveStrategy().isCanMove()).isEqualTo(false);
     }
 }

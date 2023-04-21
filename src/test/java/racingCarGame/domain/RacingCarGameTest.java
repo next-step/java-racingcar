@@ -1,13 +1,9 @@
 package racingCarGame.domain;
 
-import org.junit.jupiter.api.Test;
-import racingCarGame.view.InputView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-
-import java.util.ArrayList;
-import java.util.List;
+import racingCarGame.view.InputView;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -28,12 +24,11 @@ public class RacingCarGameTest {
             String winnerCount
     ) {
         InputView input = new InputView("pobi,yong,kei", 3);
-        List<Car> cars = new ArrayList<>();
-        cars.add(new Car(input.getOwners().get(0), getStrategy(strategy1)));
-        cars.add(new Car(input.getOwners().get(1), getStrategy(strategy2)));
-        cars.add(new Car(input.getOwners().get(2), getStrategy(strategy3)));
-        RacingCarGame racingCarGame = new RacingCarGame(cars);
-        racingCarGame.race();
+        RacingCarGame racingCarGame = new RacingCarGame(input);
+
+        racingCarGame.getCars().get(0).move(getStrategy(strategy1));
+        racingCarGame.getCars().get(1).move(getStrategy(strategy2));
+        racingCarGame.getCars().get(2).move(getStrategy(strategy3));
 
         assertThat(racingCarGame.findWinner().size()).isEqualTo(Integer.parseInt(winnerCount));
     }
@@ -52,28 +47,14 @@ public class RacingCarGameTest {
             String winner
     ) {
         InputView input = new InputView("pobi,yong,kei", 3);
-        List<Car> cars = new ArrayList<>();
-        cars.add(new Car(input.getOwners().get(0), getStrategy(strategy1)));
-        cars.add(new Car(input.getOwners().get(1), getStrategy(strategy2)));
-        cars.add(new Car(input.getOwners().get(2), getStrategy(strategy3)));
-        RacingCarGame racingCarGame = new RacingCarGame(cars);
-        racingCarGame.race();
+        RacingCarGame racingCarGame = new RacingCarGame(input);
+
+        racingCarGame.getCars().get(0).move(getStrategy(strategy1));
+        racingCarGame.getCars().get(1).move(getStrategy(strategy2));
+        racingCarGame.getCars().get(2).move(getStrategy(strategy3));
 
         assertThat(racingCarGame.findWinner().size()).isEqualTo(1);
         assertThat(racingCarGame.findWinner().get(0)).isEqualTo(winner);
-    }
-
-    @Test
-    public void raceTest() {
-        InputView input = new InputView("pobi,yong,kei", 3);
-        List<Car> cars = new ArrayList<>();
-        cars.add(new Car(input.getOwners().get(0), new AlwaysMoveStrategy()));
-        cars.add(new Car(input.getOwners().get(1), new AlwaysMoveStrategy()));
-        cars.add(new Car(input.getOwners().get(2), new AlwaysMoveStrategy()));
-        RacingCarGame racingCarGame = new RacingCarGame(cars);
-        racingCarGame.race();
-
-        racingCarGame.getCars().forEach(car -> assertThat(car.getDistance()).isEqualTo(1));
     }
 
     private MoveStrategy getStrategy(String strategy) {
