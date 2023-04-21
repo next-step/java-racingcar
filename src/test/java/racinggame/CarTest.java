@@ -16,7 +16,7 @@ public class CarTest {
     void test3() {
         assertThatThrownBy(() -> new Car("dosaem"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(String.format("자동차 이름은%d자를 초과할 수 없습니다.", CAR_NAME_STANDARD));
+                .hasMessage(String.format("자동차 이름은 %d자를 초과할 수 없습니다.", CAR_NAME_STANDARD));
     }
 
     @DisplayName("자동차 이름 입력받기 테스트")

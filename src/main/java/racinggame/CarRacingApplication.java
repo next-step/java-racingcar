@@ -20,7 +20,9 @@ public class CarRacingApplication {
             resultView.gameResultView(racingGame.getCars());
         }
 
-        List<Car> winnerCar = racingGame.racingWinner(racingGame.getCars());
+        WinnersCar winnersCar = new WinnersCar();
+
+        List<Car> winnerCar = winnersCar.racingWinner(racingGame.getCars());
         resultView.gameWinnerView(winnerCar);
     }
 

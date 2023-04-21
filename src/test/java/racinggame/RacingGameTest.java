@@ -25,7 +25,8 @@ public class RacingGameTest {
     @Test
     void test1() {
         RacingGame racingGame = new RacingGame();
-        List<Car> winner = racingGame.racingWinner(cars);
+        WinnersCar winnersCar = new WinnersCar();
+        List<Car> winner = winnersCar.racingWinner(cars);
         List<String> carName = new ArrayList<>();
         for (Car car : winner) {
             carName.add(car.getName());

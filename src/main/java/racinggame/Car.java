@@ -1,7 +1,7 @@
 package racinggame;
 
 public class Car {
-    public static final int MOVE_STANDARD = 4;
+    private static final int MOVE_STANDARD = 4;
     public static final int CAR_NAME_STANDARD = 5;
 
     private int location ;
