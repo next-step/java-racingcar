@@ -29,10 +29,10 @@ public class InputView {
     }
 
     private String[] checkInputCars(String cars) {
-        String[] carNames = cars.split(",");
-        if (carNames.length == 0) {
-            throw new IllegalArgumentException("입력된 자동차 이름이 없습니다.");
+        if (cars == null || cars.isBlank()) {
+            throw new RuntimeException("입력된 자동차 이름이 없습니다.");
         }
+        String[] carNames = cars.split(",");
         return carNames;
     }
 }
