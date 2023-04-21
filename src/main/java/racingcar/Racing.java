@@ -1,8 +1,6 @@
 package racingcar;
 
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.*;
 
 public class Racing {
 
@@ -18,6 +16,7 @@ public class Racing {
     private void runCarsForOneTurn(List<Car> carList) {
         carList.stream().forEach(car -> {
             car.move(new RandomValue());
+            System.out.print(car.getName() + " : ");
             OutputView.printCarTraceUntilNow(car.showNowPosition());
             System.out.println();
         });

@@ -13,5 +13,8 @@ public class RacingCarApplication {
         List<Car> cars = RacingManager.makeCars(playerGroup);
         Racing racing = new Racing();
         racing.runRacing(cars, cycleNumber);
+
+        List<String> winnerNames = RacingManager.extractWinnerNames(cars);
+        OutputView.printWinnerNames(winnerNames);
     }
 }

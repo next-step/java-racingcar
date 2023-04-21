@@ -13,6 +13,12 @@ public class Car {
         this.name = name;
     }
 
+    public Car(String name, Integer position) {
+        validateNameLength(name);
+        this.name = name;
+        this.position = position;
+    }
+
     public void move(RandomValueGenerator randomValueGenerator) {
         if (judgeForth(randomValueGenerator.generate())) {
             position++;
@@ -35,6 +41,14 @@ public class Car {
 
     public int showNowPosition() {
         return position;
+    }
+
+    public Integer getLongerDistance(Integer maxDistance) {
+        return position > maxDistance ? position : maxDistance;
+    }
+
+    public boolean isSameDistance(Integer maxDistance) {
+        return position == maxDistance;
     }
 
     public String getName() {
