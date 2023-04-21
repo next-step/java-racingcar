@@ -33,4 +33,7 @@ public class RacingGame {
     return this.gameBoard.clone();
   }
 
+  public CarNames getWinnerNames() {
+    return this.cars.getMaxDistanceCarNames();
+  }
 }

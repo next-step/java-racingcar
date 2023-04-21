@@ -1,5 +1,6 @@
-package study.step3;
+package study.step4;
 
+import study.domain.racingGame.CarNames;
 import study.domain.racingGame.Cars;
 import study.domain.racingGame.GameBoard;
 import study.domain.racingGame.GameConsole;
@@ -12,21 +13,23 @@ public class RacingGameApp {
     RacingGame game = new RacingGame();
     GameScreen screen = new GameScreen();
     GameConsole console = new GameConsole();
-    screen.println("자동차 대수는 몇 대 인가요?");
-    int carNum = console.inputInt();
 
-    screen.println("시도할 회수는 몇 회 인가요?");
+    screen.printCarNameInputText();
+    String[] inputCarNames = console.inputCarNames();
+
+    screen.printCarMoveCountInputText();
     int gameCnt = console.inputInt();
-    Cars racingCar = new Cars(carNum);
+
+    CarNames carNames = new CarNames(inputCarNames);
+    Cars racingCar = new Cars(carNames);
     game.ready(gameCnt, racingCar);
     do {
       if (!game.isReady()) {
         return;
       }
       GameBoard raceBoard = game.race();
-      screen.printRaceResult(racingCar, raceBoard);
-
+      screen.printRaceResultWithName(racingCar, raceBoard);
     } while (!game.isFinish());
+    screen.printWinners(game.getWinnerNames());
   }
-
 }
