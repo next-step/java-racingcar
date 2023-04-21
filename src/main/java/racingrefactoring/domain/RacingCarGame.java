@@ -1,10 +1,10 @@
 package racingrefactoring.domain;
 
-public class RacingGame {
+public class RacingCarGame {
 
   private final CarGroup carGroup;
 
-  public RacingGame(CarGroup carGroup) {
+  public RacingCarGame(CarGroup carGroup) {
     this.carGroup = carGroup;
   }
 
