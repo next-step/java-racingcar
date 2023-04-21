@@ -39,4 +39,8 @@ public class Car {
     public String getName() {
         return name;
     }
+
+    public boolean isSameName(Car car) {
+        return this.name.equals(car.getName());
+    }
 }
