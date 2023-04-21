@@ -2,12 +2,24 @@ package study.carrace.step3.application;
 
 import org.junit.jupiter.api.Test;
 import study.carrace.step3.domain.MoveStrategy;
+import study.carrace.step3.domain.exception.IllegalIterationCountException;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
 class RaceManagerTest {
+    @Test
+    void invalid_iteration_count() {
+        // given
+        int iterationCount = -1;
+
+        // when, then
+        assertThatThrownBy(() -> new RaceManager(null, null, iterationCount))
+                .isInstanceOf(IllegalIterationCountException.class)
+                .hasMessage("시도 횟수는 한번 이상이여야 합니다: " + iterationCount);
+    }
+
     @Test
     void cars_position_history() {
         // given
