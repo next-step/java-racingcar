@@ -11,14 +11,14 @@ import static org.assertj.core.api.Assertions.*;
 
 public class InputViewTest {
     @Test
-    @DisplayName("자동차 대수 입력")
-    void numberOfCars() {
-        String numberOfCars = "3";
+    @DisplayName("자동차 이름 입력")
+    void nameOfCars() {
+        String nameOfCars = "pobi,crong,honux";
 
-        InputStream in = new ByteArrayInputStream(numberOfCars.getBytes());
+        InputStream in = new ByteArrayInputStream(nameOfCars.getBytes());
         System.setIn(in);
 
-        assertThat(InputView.inputNumberOfCars()).isEqualTo(Integer.parseInt(numberOfCars));
+        assertThat(InputView.inputNameOfCars()).isEqualTo(nameOfCars);
     }
 
     @Test

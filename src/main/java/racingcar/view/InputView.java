@@ -3,12 +3,12 @@ package racingcar.view;
 import java.util.Scanner;
 
 public class InputView {
-    public static int inputNumberOfCars()
+    public static String inputNameOfCars()
     {
         Scanner scanner = new Scanner(System.in);
-        int numberOfCars = scanner.nextInt();
+        String nameOfCars = scanner.next();
 
-        return numberOfCars;
+        return nameOfCars;
     }
 
     public static int inputNumberOfMovements()

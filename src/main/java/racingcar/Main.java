@@ -1,24 +1,29 @@
 package racingcar;
 
-import racingcar.service.RacingCar;
+import racingcar.service.MoveStrategy;
+import racingcar.service.MoveRandomStrategy;
+import racingcar.service.RacingGame;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
 public class Main {
 
     public static void main(String[] args) {
-        ResultView.printNumberOfCars();
-        int cars = InputView.inputNumberOfCars();
+        ResultView.printNameOfCars();
+        String nameOfCars = InputView.inputNameOfCars();
 
         ResultView.printNumberOfMovements();
         int movements = InputView.inputNumberOfMovements();
 
-        RacingCar racingCar = new RacingCar(cars);
+        MoveStrategy moveStrategy = new MoveRandomStrategy();
+        RacingGame racingGame = new RacingGame(nameOfCars, moveStrategy);
 
         ResultView.printRacingResult();
         for (int i = 0; i < movements; i++) {
-            racingCar.start();
-            ResultView.printStatusOfCars(racingCar.getStatusOfCars());
+            racingGame.start();
+            ResultView.printStatusOfCars(racingGame.getRacingCars());
         }
+
+        ResultView.printWinners(racingGame.getWinner());
     }
 }

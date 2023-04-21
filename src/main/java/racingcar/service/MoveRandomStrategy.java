@@ -2,21 +2,19 @@ package racingcar.service;
 
 import java.util.Random;
 
-public class CarControl {
-    private final Random RANDOM = new Random();
-    private final int BOUND = 10;
+public class MoveRandomStrategy implements MoveStrategy {
     private final int STANDARD = 4;
     private final boolean GO = true;
     private final boolean STOP = false;
+    private static final int BOUND = 10;
 
+    @Override
     public boolean goOrStop() {
-        if (random() > STANDARD) {
+        int num = new Random().nextInt(BOUND);
+
+        if (num > STANDARD) {
             return GO;
         }
         return STOP;
-    }
-
-    private int random() {
-        return RANDOM.nextInt(BOUND);
     }
 }

@@ -3,11 +3,14 @@ package racingcar.view;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.service.Car;
 import racingcar.view.ResultView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -22,11 +25,11 @@ public class ResultViewTest {
     }
 
     @Test
-    @DisplayName("자동차 대수 질문 출력")
-    void numberOfCars() {
-        String request = "자동차 대수는 몇 대 인가요?\n";
+    @DisplayName("자동차 이름 질문 출력")
+    void nameOfCars() {
+        String request = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).\n";
 
-        ResultView.printNumberOfCars();
+        ResultView.printNameOfCars();
 
         assertThat(out.toString()).isEqualTo(request);
     }
@@ -51,14 +54,4 @@ public class ResultViewTest {
         assertThat(out.toString()).isEqualTo(request);
     }
 
-    @Test
-    @DisplayName("다수 자동차 이동 현황")
-    void statusOfCars() {
-        int[] distances = {1, 2, 3};
-        String expected = "-\n--\n---\n\n";
-
-        ResultView.printStatusOfCars(distances);
-
-        assertThat(out.toString()).isEqualTo(expected);
-    }
 }
