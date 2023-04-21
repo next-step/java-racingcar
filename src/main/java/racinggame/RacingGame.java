@@ -1,21 +1,25 @@
-package step3;
+package racinggame;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     private List<Car> cars = new ArrayList<>();
 
-    public void readyCar(int CarCount) {
-        for (int i = 0; i < CarCount; i++) {
-            cars.add(new Car());
+    public void readyCar(String[] carsName) {
+        for (String name : carsName) {
+            cars.add(new Car(name));
         }
     }
 
-    public List<Car> playGame() {
+    public void playGame() {
         for (Car car : cars) {
             car.move(RandomNumberGenerator.randomNumber());
         }
+    }
+
+    public List<Car> getCars() {
         return cars;
     }
 
