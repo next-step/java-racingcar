@@ -9,6 +9,7 @@ import study.racingcar.view.InputView;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.InputMismatchException;
+import java.util.Scanner;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -20,8 +21,9 @@ public class InputTest {
     public void inputView_setCars_숫자(String input) {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
+        Scanner scanner = new Scanner(System.in);
 
-        InputView inputView = new InputView();
+        InputView inputView = new InputView(scanner);
 
         assertThat(inputView.setCars()).isEqualTo(Integer.parseInt(input));
     }
@@ -33,7 +35,9 @@ public class InputTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        InputView inputView = new InputView();
+        Scanner scanner = new Scanner(System.in);
+
+        InputView inputView = new InputView(scanner);
 
         assertThat(inputView.setGames()).isEqualTo(Integer.parseInt(input));
     }
@@ -45,7 +49,9 @@ public class InputTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        InputView inputView = new InputView();
+        Scanner scanner = new Scanner(System.in);
+
+        InputView inputView = new InputView(scanner);
 
         assertThat(inputView.setCarNames()).isEqualTo(input);
     }

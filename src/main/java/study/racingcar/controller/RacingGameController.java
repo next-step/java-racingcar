@@ -12,6 +12,7 @@ import study.racingcar.view.ResultView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class RacingGameController {
@@ -22,7 +23,7 @@ public class RacingGameController {
 
     public static void racingCar () {
 
-        InputView inputView = new InputView();
+        InputView inputView = new InputView(new Scanner(System.in));
         ResultView resultView = new ResultView();
 
         do {

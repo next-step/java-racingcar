@@ -9,9 +9,11 @@ public class InputView {
     private static final String CAR_NAMES_OF_MESSAGE = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     private static final String GAME_RESET_MESSAGE = "게임을 다시 시작하시겠습니까?(Y:다시시작, N:종료)";
     private static final String YES = "Y";
-    private static final Scanner INPUT = new Scanner(System.in);
+    private Scanner INPUT;
 
-    public InputView() {}
+    public InputView(Scanner scanner) {
+        this.INPUT = scanner;
+    }
 
     public int setCars() {
         System.out.println(NUMBER_OF_CAR_MESSAGE);
