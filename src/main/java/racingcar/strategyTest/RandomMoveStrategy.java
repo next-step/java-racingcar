@@ -1,4 +1,4 @@
-package racingcar.strategy;
+package racingcar.strategyTest;
 
 import racingcar.utility.RandomNumber;
 

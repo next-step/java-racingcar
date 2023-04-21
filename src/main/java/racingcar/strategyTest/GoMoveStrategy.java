@@ -1,4 +1,4 @@
-package racingcar.strategy;
+package racingcar.strategyTest;
 
 public class GoMoveStrategy implements MoveStrategy {
 

@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import racingcar.strategy.MoveStrategy;
+import racingcar.strategyTest.MoveStrategy;
 
 public class RacingCar {
     private static final int MOVEMENT_DISTANCE = 1;     // 자동차 이동 시 1만큼 전진

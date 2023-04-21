@@ -3,9 +3,9 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.*;
-import racingcar.strategy.GoMoveStrategy;
-import racingcar.strategy.MoveStrategy;
-import racingcar.strategy.RandomMoveStrategy;
+import racingcar.strategyTest.GoMoveStrategy;
+import racingcar.strategyTest.MoveStrategy;
+import racingcar.strategyTest.RandomMoveStrategy;
 
 
 import static org.assertj.core.api.Assertions.assertThat;

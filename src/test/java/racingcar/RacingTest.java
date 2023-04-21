@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.Racing;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RacingCars;
-import racingcar.strategy.MoveStrategy;
-import racingcar.strategy.RandomMoveStrategy;
+import racingcar.strategyTest.MoveStrategy;
+import racingcar.strategyTest.RandomMoveStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
