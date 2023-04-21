@@ -1,5 +1,6 @@
 package racingrefactoring.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingrefactoring.util.FactoryCar;
@@ -22,7 +23,7 @@ public class CarGroup {
   }
 
   public List<Car> getCars() {
-    return cars;
+    return new ArrayList<>(cars);
   }
 
   public Winners findWinners() {
