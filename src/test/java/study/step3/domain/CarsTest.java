@@ -18,7 +18,7 @@ class CarsTest {
     void init() {
         String[] carNames = new String[]{"avante", "sonata", "grandeur"};
 
-        cars = new Cars(carNames,
+        cars = new Cars(List.of(carNames),
                 new LessThanMoveCondition(4, new StaticMove(5)));
     }
 

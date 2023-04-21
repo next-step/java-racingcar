@@ -14,7 +14,7 @@ public class Cars {
         this.cars = cars;
     }
 
-    public Cars(String[] carNames, MoveConditionStrategy moveConditionStrategy) {
+    public Cars(List<String> carNames, MoveConditionStrategy moveConditionStrategy) {
         this.cars = createCars(carNames, moveConditionStrategy);
     }
 
@@ -29,7 +29,7 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    private List<Car> createCars(String[] carNames,
+    private List<Car> createCars(List<String> carNames,
                                  MoveConditionStrategy moveConditionStrategy) {
         List<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
