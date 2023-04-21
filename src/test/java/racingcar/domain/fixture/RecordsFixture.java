@@ -1,6 +1,6 @@
 package racingcar.domain.fixture;
 
-import racingcar.domain.Name;
+import racingcar.domain.CarName;
 import racingcar.domain.Record;
 import racingcar.domain.Records;
 
@@ -17,17 +17,17 @@ public class RecordsFixture {
     public static final String 최종_우승자 = "pobi";
 
     static {
-        첫번째_라운드_기록.addRecord(new Record(1, new Name("pobi")));
-        첫번째_라운드_기록.addRecord(new Record(0, new Name("crong")));
-        첫번째_라운드_기록.addRecord(new Record(1, new Name("honux")));
+        첫번째_라운드_기록.addRecord(new Record(1, new CarName("pobi")));
+        첫번째_라운드_기록.addRecord(new Record(0, new CarName("crong")));
+        첫번째_라운드_기록.addRecord(new Record(1, new CarName("honux")));
 
-        두번째_라운드_기록.addRecord(new Record(2, new Name("pobi")));
-        두번째_라운드_기록.addRecord(new Record(0, new Name("crong")));
-        두번째_라운드_기록.addRecord(new Record(2, new Name("honux")));
+        두번째_라운드_기록.addRecord(new Record(2, new CarName("pobi")));
+        두번째_라운드_기록.addRecord(new Record(0, new CarName("crong")));
+        두번째_라운드_기록.addRecord(new Record(2, new CarName("honux")));
 
-        세번째_라운드_기록.addRecord(new Record(3, new Name("pobi")));
-        세번째_라운드_기록.addRecord(new Record(1, new Name("crong")));
-        세번째_라운드_기록.addRecord(new Record(2, new Name("honux")));
+        세번째_라운드_기록.addRecord(new Record(3, new CarName("pobi")));
+        세번째_라운드_기록.addRecord(new Record(1, new CarName("crong")));
+        세번째_라운드_기록.addRecord(new Record(2, new CarName("honux")));
 
         자동차_경주_기록_목록.add(첫번째_라운드_기록);
         자동차_경주_기록_목록.add(두번째_라운드_기록);

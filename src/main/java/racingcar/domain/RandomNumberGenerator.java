@@ -6,9 +6,9 @@ public class RandomNumberGenerator {
 
     private static final int RANDOM_RULE_NUMBER = 10;
 
-    private final static Random random = new Random();
+    private final static Random RANDOM = new Random();
 
     public int generate() {
-        return random.nextInt(RANDOM_RULE_NUMBER);
+        return RANDOM.nextInt(RANDOM_RULE_NUMBER);
     }
 }

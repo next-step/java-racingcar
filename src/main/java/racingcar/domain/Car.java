@@ -5,10 +5,10 @@ import racingcar.domain.strategy.MoveStrategy;
 public class Car {
 
     private int position = 0;
-    private Name name;
+    private CarName carName;
 
     public Car(final String name) {
-        this.name = new Name(name);
+        this.carName = new CarName(name);
     }
 
     public void move(final MoveStrategy moveStrategy) {
@@ -21,7 +21,7 @@ public class Car {
         return this.position;
     }
 
-    public Name getName() {
-        return name;
+    public CarName getName() {
+        return carName;
     }
 }
