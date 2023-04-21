@@ -4,34 +4,50 @@ import study.carrace.step3.domain.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class RaceManager {
     private static final String LINE_BREAK = "\n";
     private final List<Car> cars;
+    private final int iterationCount;
 
-    public RaceManager(List<String> carNames, MoveStrategy moveStrategy) {
+    public RaceManager(List<String> carNames, MoveStrategy moveStrategy, int iterationCount) {
         this.cars = cars(carNames, moveStrategy);
+        this.iterationCount = iterationCount;
     }
 
-    public void moveOrStopCars() {
-        cars.forEach(Car::moveOrStop);
+    public void startRace() {
+        IntStream.range(0, iterationCount)
+                .forEach(iteration -> moveOrStopCars());
     }
 
-    public String carsPosition() {
-        StringBuilder carsPosition = new StringBuilder();
-        cars.forEach(car -> carsPosition.append(car.currentPosition()).append(LINE_BREAK));
+    public String carsPositionHistory() {
+        StringBuilder carsPositionHistory = new StringBuilder();
+        IntStream.rangeClosed(1, iterationCount)
+                .forEach(iteration -> carsPositionHistory.append(carsPositionAt(iteration)).append(LINE_BREAK));
 
-        return carsPosition.toString();
+        return carsPositionHistory.toString();
     }
 
     public List<String> winners() {
         return findCarsBy(maxNumberOfMove());
     }
 
+    private String carsPositionAt(int iteration) {
+        StringBuilder carsPosition = new StringBuilder();
+        cars.forEach(car -> carsPosition.append(car.positionAt(iteration)).append(LINE_BREAK));
+
+        return carsPosition.toString();
+    }
+
+    private void moveOrStopCars() {
+        cars.forEach(Car::moveOrStop);
+    }
+
     private List<String> findCarsBy(long numberOfMove) {
         return cars.stream()
                 .filter(car -> car.numberOfMove() == numberOfMove)
-                .map(car -> car.name())
+                .map(Car::name)
                 .collect(Collectors.toList());
     }
 

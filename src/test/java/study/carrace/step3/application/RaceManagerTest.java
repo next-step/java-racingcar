@@ -9,31 +9,34 @@ import static org.assertj.core.api.Assertions.*;
 
 class RaceManagerTest {
     @Test
-    void cars_position() {
+    void cars_position_history() {
         // given
         List<String> carNames = List.of("foo", "bar");
-        RaceManager raceManager = new RaceManager(carNames, mockMoveStrategy(true));
+        RaceManager raceManager = new RaceManager(carNames, mockMoveStrategy(true), 2);
 
-        raceManager.moveOrStopCars();
-        raceManager.moveOrStopCars();
+        // when
+        raceManager.startRace();
 
-        // when, then
+        // then
         String expected = new StringBuilder()
+                .append("foo : -\n")
+                .append("bar : -\n\n")
                 .append("foo : --\n")
-                .append("bar : --\n")
+                .append("bar : --\n\n")
                 .toString();
-        assertThat(raceManager.carsPosition()).isEqualTo(expected);
+        assertThat(raceManager.carsPositionHistory()).isEqualTo(expected);
     }
 
     @Test
     void winners() {
         // given
         List<String> carNames = List.of("foo", "bar");
-        RaceManager raceManager = new RaceManager(carNames, mockMoveStrategy(true));
-
-        raceManager.moveOrStopCars();
+        RaceManager raceManager = new RaceManager(carNames, mockMoveStrategy(true), 1);
 
         // when
+        raceManager.startRace();
+
+        // then
         assertThat(raceManager.winners()).containsExactly("foo", "bar");
     }
 
