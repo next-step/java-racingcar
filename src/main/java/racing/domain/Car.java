@@ -30,5 +30,5 @@ public class Car {
         return this.location;
     }
 
-    public String showName() { return this.name; }
+    public String name() { return this.name; }
 }
