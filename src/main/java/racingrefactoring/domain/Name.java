@@ -3,7 +3,7 @@ package racingrefactoring.domain;
 public class Name {
   private final String name;
 
-  private final int MAX_LENGTH = 5;
+  private static final int MAX_LENGTH = 5;
 
   protected Name(String name) {
     isValid(name);
