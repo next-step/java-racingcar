@@ -1,60 +1,51 @@
 package study.race;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class CarRacing {
 
     public static void main(String[] args) {
         String value = InputView.scanNumberOfCar();
         int racingCount = InputView.scanNumberOfCount();
-
         int carCount = Integer.parseInt(value);
+        List<Car> carNumbers = carArray(carCount);
 
-        int[] racingResult = new int[Integer.parseInt(value)];
-        Car[] carNumbers = carArray(carCount);
-
-        racing(racingCount, carNumbers);
-
+        int number = -1;
+        race(racingCount, carNumbers, number);
     }
 
-    private static void racing(int racingCount, Car[] carNumbers) {
-        for(int i = 0; i< racingCount; i++){
-            for(int j = 0; j< carNumbers.length; j++) {
-                carNumbers[j].position += condition(getRandom());
+    public static List<Car> race(int racingCount, List<Car> carNumbers, int number) {
+        for (int i = 0; i < racingCount; i++) {
+            for (int j = 0; j < carNumbers.size(); j++) {
+                carNumbers.get(j).position += Car.condition(getRandomNumber(number));
             }
-            ResultView.resultView(carNumbers);
-            System.out.println("\n");
+            printResult(carNumbers);
         }
+        return carNumbers;
     }
 
-    private static int getRandom() {
+    public static void printResult(List<Car> carNumbers) {
+        ResultView.resultView(carNumbers);
+        System.out.println("\n");
+    }
+
+    public static int getRandomNumber(int number) {
+        if (number != -1) {
+            return number;
+        }
         Random random = new Random();
-        return random.nextInt(10);
+        int randomNumber = random.nextInt(10);
+        return randomNumber;
     }
 
-    public static Car[] carArray(int carCount) {
-        Car[] car = new Car[carCount];
-        for (int i = 0; i < carCount; i++) {
-            car[i] = new Car();
-        }
-        return car;
+    public static List<Car> carArray(int carCount) {
+        return Stream.generate(Car::new)
+                .limit(carCount)
+                .collect(Collectors.toList());
     }
-
-    public static int condition(int random) {
-        if (random >= 4) {
-            return 1;
-        }
-        return 0;
-    }
-
 }
 
-class Car {
-    int position = 0;
-
-    public Car() {
-    }
-
-}
 

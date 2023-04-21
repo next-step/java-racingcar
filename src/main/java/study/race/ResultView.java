@@ -1,11 +1,13 @@
 package study.race;
 
-public class ResultView {
-    public static void resultView(Car[] carNumber) {
+import java.util.List;
 
-        for(int i=0; i< carNumber.length; i++){
+public class ResultView {
+    public static void resultView(List<Car> carNumber) {
+
+        for(int i=0; i< carNumber.size(); i++){
             String outPut = "-";
-            outPut = outPut.repeat(carNumber[i].position);
+            outPut = outPut.repeat(carNumber.get(i).position);
             System.out.println(outPut);
         }
 
