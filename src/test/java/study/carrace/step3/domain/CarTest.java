@@ -19,7 +19,7 @@ class CarTest {
         car.moveOrStop();
 
         // then
-        assertThat(car.currentPosition()).isEqualTo("test : -");
+        assertThat(car.positionAt(1)).isEqualTo("test : -");
     }
 
     @Test
@@ -31,7 +31,7 @@ class CarTest {
         car.moveOrStop();
 
         // then
-        assertThat(car.currentPosition()).isEqualTo("test : ");
+        assertThat(car.positionAt(1)).isEqualTo("test : ");
     }
 
     @Test

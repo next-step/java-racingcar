@@ -5,6 +5,7 @@ import study.carrace.step3.domain.exception.IllegalCarNameException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Car {
     private static final char POSITION_CURSOR = '-';
@@ -26,14 +27,14 @@ public class Car {
         moveStatuses.add(moveStrategy.moveOrStop());
     }
 
-    public String currentPosition() {
+    public String positionAt(int iteration) {
         StringBuilder currentPosition = new StringBuilder()
                 .append(name)
                 .append(" : ");
 
-        moveStatuses.stream()
-                .filter(moveStatus -> moveStatus)
-                .forEach(moveStatus -> currentPosition.append(POSITION_CURSOR));
+        IntStream.range(0, iteration)
+                .filter(moveStatuses::get)
+                .forEach(i -> currentPosition.append(POSITION_CURSOR));
 
         return currentPosition.toString();
     }
