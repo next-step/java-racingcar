@@ -26,6 +26,16 @@ public class Car {
         return new Car(this.location, this.name);
     }
 
+    public int bigger(int input) {
+        if (input > this.location) return input;
+        return this.location;
+    }
+
+    public boolean isWinner(int winnerLocation) {
+        if (this.location >= winnerLocation) return true;
+        return false;
+    }
+
     public int location() {
         return this.location;
     }
