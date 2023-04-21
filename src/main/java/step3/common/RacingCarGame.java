@@ -11,8 +11,8 @@ import java.util.Map;
 
 public class RacingCarGame implements Game {
 
-    private static int carNumber;
-    private static int moveNumber;
+    private int carNumber;
+    private int moveNumber;
 
     private static Map<Integer, Car> carMap;
     private static final String INPUT_CAR_NUMBER_TEXT = "자동차 대수는 몇 대 인가요?";
@@ -50,8 +50,8 @@ public class RacingCarGame implements Game {
     public void moveCar(Car car) {
         if (canMove(RandomUtils.generate())) {
             car.move();
+            carMap.put(car.getNumber(), car);
         }
-        carMap.put(car.getNumber(), car);
     }
 
     public void moveByCarNumber() {
