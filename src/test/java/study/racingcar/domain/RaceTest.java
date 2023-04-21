@@ -19,7 +19,7 @@ public class RaceTest {
     race.play();
 
     for (Car car : race.getCars()) {
-      assertThat(car.getDistance()).isLessThanOrEqualTo(1);
+      assertThat(car.getPosition()).isLessThanOrEqualTo(1);
     }
   }
 
@@ -38,7 +38,7 @@ public class RaceTest {
   private List<String> getWinnerNames(Race race) {
     List<String> winnerNames = new ArrayList<>();
     for (Car car : race.getCars()) {
-      if (car.getDistance() > 0) {
+      if (car.getPosition() > 0) {
         winnerNames.add(car.getName());
       }
     }

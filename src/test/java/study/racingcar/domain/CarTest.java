@@ -15,7 +15,7 @@ public class CarTest {
 
     car.move();
 
-    assertThat(car.getDistance()).isLessThanOrEqualTo(1);
+    assertThat(car.getPosition()).isLessThanOrEqualTo(1);
   }
 
   @DisplayName("경쟁 자동차와 거리를 비교하여 승자를 판단한다.")

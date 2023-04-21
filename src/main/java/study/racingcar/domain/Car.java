@@ -1,6 +1,8 @@
 package study.racingcar.domain;
 
+import study.racingcar.error.InvalidCarNameException;
 import study.racingcar.util.RandomIntGenerator;
+import study.racingcar.util.StringUtils;
 
 public class Car {
 
@@ -8,15 +10,23 @@ public class Car {
   private static final int MINIMUM_MOVE_VALUE = 4;
 
   private String name;
-  private int distance;
+  private int position;
 
-  public Car(String name) {
-    this.name = name;
+  public Car(final String name) {
+    this(name, 0);
+  }
+
+  public Car(final String name, final int position) {
+    if(StringUtils.isBlank(name)){
+      throw new InvalidCarNameException("자동차 이름은 값이 존재해야 합니다.");
+    }
+    this.name = name.trim();
+    this.position = position;
   }
 
   public void move() {
     if (isMoving(getRandomInt())) {
-      distance++;
+      position++;
     }
   }
 
@@ -32,11 +42,19 @@ public class Car {
     return name;
   }
 
-  public int getDistance() {
-    return distance;
+  public int getPosition() {
+    return position;
   }
 
   public boolean isWinner(Car competitor) {
-    return this.getDistance() >= competitor.getDistance();
+    return this.getPosition() >= competitor.getPosition();
+  }
+
+  @Override
+  public String toString() {
+    return "Car{" +
+            "name='" + name + '\'' +
+            ", distance=" + position +
+            '}';
   }
 }

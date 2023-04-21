@@ -31,7 +31,7 @@ public class Race {
   private List<Car> sortCars() {
     List<Car> sortedCars = new ArrayList<>(this.getCars());
     Collections.sort(sortedCars, (car1, car2) -> {
-      return car2.getDistance() - car1.getDistance();
+      return car2.getPosition() - car1.getPosition();
     });
     return sortedCars;
   }
