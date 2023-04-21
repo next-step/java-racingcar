@@ -1,6 +1,7 @@
 package study.carrace.step3.application;
 
 import org.junit.jupiter.api.Test;
+import study.carrace.step3.domain.CarName;
 import study.carrace.step3.domain.MoveStrategy;
 import study.carrace.step3.domain.exception.IllegalIterationCountException;
 
@@ -49,7 +50,7 @@ class RaceManagerTest {
         raceManager.startRace();
 
         // then
-        assertThat(raceManager.winners()).containsExactly("foo", "bar");
+        assertThat(raceManager.winners()).containsExactly(new CarName("foo"), new CarName("bar"));
     }
 
     private MoveStrategy mockMoveStrategy(boolean movable) {

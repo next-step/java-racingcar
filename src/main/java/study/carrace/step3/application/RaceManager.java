@@ -32,8 +32,8 @@ public class RaceManager {
         return carsPositionHistory.toString();
     }
 
-    public List<String> winners() {
-        return findCarsBy(maxNumberOfMove());
+    public List<CarName> winners() {
+        return findCarNamesBy(maxNumberOfMove());
     }
 
     private String carsPositionAt(int iteration) {
@@ -47,10 +47,10 @@ public class RaceManager {
         cars.forEach(Car::moveOrStop);
     }
 
-    private List<String> findCarsBy(long numberOfMove) {
+    private List<CarName> findCarNamesBy(long numberOfMove) {
         return cars.stream()
                 .filter(car -> car.numberOfMove() == numberOfMove)
-                .map(Car::name)
+                .map(Car::carName)
                 .collect(Collectors.toList());
     }
 
