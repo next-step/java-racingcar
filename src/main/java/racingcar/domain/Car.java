@@ -20,10 +20,13 @@ public class Car {
     }
 
     private String validateName(String name) {
-        if (name.length() > CAR_NAME_LENGTH_LIMIT) {
+        if (StringUtil.isBlank(name.trim())) {
+            throw new IllegalArgumentException(CAR_NAME_BLANK);
+        }
+        if (name.trim().length() > CAR_NAME_LENGTH_LIMIT) {
             throw new IllegalArgumentException(CAR_NAME_LENGTH_OVER);
         }
-        return name;
+        return name.trim();
     }
 
     public void move(MovingStrategy movingStrategy) {

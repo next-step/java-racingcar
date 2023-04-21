@@ -40,4 +40,12 @@ public class RacingGameTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("중복된 이름을 가진 자동차가 있습니다.");
     }
+
+    @Test
+    @DisplayName("자동차 이름 추가에 따른 자동차 생성 예외테스트")
+    public void initCarsWithBlankExceptionTest() {
+        assertThatThrownBy(() -> racingGame.initCars(",b,c"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차 이름이 공백일 수는 없습니다.");
+    }
 }
