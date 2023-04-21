@@ -27,7 +27,7 @@ public class Cars {
     }
 
     public void move() {
-        cars.forEach(Car::move);
+        cars.forEach(car -> car.move(new CarMovingStrategy()));
     }
 
     public List<Car> getCars() {
