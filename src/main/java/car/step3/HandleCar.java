@@ -3,20 +3,28 @@ package car.step3;
 import java.util.List;
 import java.util.Random;
 
-public class HandleCar {
-    public List<Car> iteratorCar(List<Car> carList) {
+import static car.step3.Main.MAX_LOCATION;
 
-        for (Car car : carList) {
-            car = isOverFour(car);
+public class HandleCar {
+    Random random = new Random();
+
+    public List<Car> iteratorCar(List<Car> cars) {
+        for (Car car : cars) {
+            goCar(car);
         }
-        return carList;
+        return cars;
     }
 
-    public Car isOverFour(Car car) {
-        Random random = new Random();
+    public void goCar(Car car) {
         if(random.nextInt(10) >= 4) {
             car.go();
         }
-        return car;
+        maxLocation(car);
+    }
+
+    public void maxLocation(Car car) {
+        if(car.location() > MAX_LOCATION) {
+            MAX_LOCATION = car.location();
+        }
     }
 }
