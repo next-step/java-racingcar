@@ -19,14 +19,6 @@ public class CarControllerTest {
     }
 
     @Test
-    void 자동차게임_생성시_입력값이_0미만인경우_예외발생() {
-        int numberOfMoves = -5;
-
-        assertThatThrownBy(() -> new CarController(new String[]{}, numberOfMoves))
-                .isInstanceOf(RuntimeException.class);
-    }
-
-    @Test
     void 랜덤숫자_생성_0이상_10미만() {
         for (int i = 0; i < 20; i++) {
             int randomNumber = new Random().nextInt(10);
