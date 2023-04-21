@@ -10,6 +10,10 @@ public class Winners {
         this.winners = new ArrayList<>();
     }
 
+    public Winners(List<Car> winners) {
+        this.winners = winners;
+    }
+
     public void add(Car car) {
         this.winners.add(car);
     }

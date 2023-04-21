@@ -9,20 +9,17 @@ import java.util.List;
 public class RacingCarGame {
     private final GameCars cars;
     private final Round round;
-    private final Result gameResult;
     private final DomainRule rule;
 
     public RacingCarGame(List<String> carNames, int roundToPlay, NumberGenerator numberGenerator) {
         this.cars = new GameCars(carNames);
         this.round = new Round(roundToPlay);
-        this.gameResult = new Result(cars);
         this.rule = new DomainRule(numberGenerator);
     }
 
     public RacingCarGame(List<String> carNames, int roundToPlay) {
         this.cars = new GameCars(carNames);
         this.round = new Round(roundToPlay);
-        this.gameResult = new Result(cars);
         this.rule = new DomainRule();
     }
 
@@ -47,7 +44,7 @@ public class RacingCarGame {
     }
 
     private void printGameResult() {
-        Winners winners = gameResult.winners();
+        Winners winners = cars.calculateWinner();
         OutputView.printGameResult(winners);
     }
 }
