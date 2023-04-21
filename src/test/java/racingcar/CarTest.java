@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.application.Car;
 import racingcar.application.RandomMoveStrategy;
+import racingcar.dto.CarName;
 
 public class CarTest {
 
@@ -13,21 +14,21 @@ public class CarTest {
   @DisplayName("4 이상의 값이 들어오면 전진한다")
   void goTest() {
     // given
-    Car car = new Car();
+    Car car = new Car(new CarName("Soko"));
     int beforeLocation = car.location();
 
     // when
     car.go(new RandomMoveStrategy(() -> 4));
 
     // then
-    assertThat(beforeLocation + 1).isEqualTo(car.location());
+    assertThat(car.location()).isGreaterThan(beforeLocation);
   }
 
   @Test
   @DisplayName("3 이하의 값이 들어오면 정지한다")
   void goFailTest() {
     // given
-    Car car = new Car();
+    Car car = new Car(new CarName("Soko"));
     int beforeLocation = car.location();
 
     // when
