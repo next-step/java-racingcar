@@ -10,8 +10,9 @@ public class ResultView {
     private static void println() {
         System.out.print("\n");
     }
+
     private static void printName(String input) {
-        System.out.print(input+" : ");
+        System.out.print(input + " : ");
     }
 
     private static void printDash() {
@@ -28,11 +29,11 @@ public class ResultView {
 
     public static void printWinners(List<String> results) {
 
-        for (int i = 0; i < results.size()-1; i++) {
+        for (int i = 0; i < results.size() - 1; i++) {
             System.out.print(results.get(i));
             System.out.print(", ");
         }
-        System.out.print(results.get(results.size()-1));
+        System.out.print(results.get(results.size() - 1));
 
         System.out.print("가 최종 우승했습니다.");
     }

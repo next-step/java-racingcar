@@ -4,6 +4,7 @@ public class InputDto {
 
     String input;
     int count;
+
     public InputDto(String input, int count) {
         this.input = input;
         this.count = count;
