@@ -12,6 +12,10 @@ public class CarGroup {
     this.cars = FactoryCar.createCars(carNames);
   }
 
+  protected CarGroup(Car ... cars) {
+    this.cars = List.of(cars);
+  }
+
   public CarGroup moveCars(MoveStrategy moveStrategy) {
     cars.forEach(car -> car.move(moveStrategy));
     return this;

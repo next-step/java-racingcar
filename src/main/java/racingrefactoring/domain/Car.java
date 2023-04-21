@@ -11,6 +11,11 @@ public class Car {
     this.position = new Position();
   }
 
+  protected Car(String name, int position) {
+    this.name = new Name(name);
+    this.position = new Position(position);
+  }
+
   public void move(MoveStrategy moveStrategy) {
     if (moveStrategy.isMovable()) {
       position.move();

@@ -18,11 +18,12 @@ class CarGroupTest {
 
   @Test
   void 자동차_경주_승리자를_찾는_경우() {
-    CarGroup carGroup = new CarGroup("car1,car2,car3");
-    carGroup.moveCars(() -> true);
-    carGroup.moveCars(() -> true);
-    carGroup.moveCars(() -> true);
+    Car car1 = new Car("car1", 3);
+    Car car2 = new Car("car2", 1);
+    Car car3 = new Car("car3", 2);
 
-    assertThat(carGroup.findWinners()).containsExactly("car1", "car2", "car3");
+    CarGroup carGroup = new CarGroup(car1, car2, car3);
+
+    assertThat(carGroup.findWinners()).containsExactly("car1");
   }
 }
