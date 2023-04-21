@@ -1,42 +1,39 @@
 package study.step3;
 
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
 public class CarRacing {
 
     private int round;
-    private int carCount;
     private Car[] cars;
-
-    Scanner scanner = new Scanner(System.in);
+    private InputView inputView;
+    private ResultView resultView;
 
     public void startRacing() {
-        initGame();
+        inputView = new InputView();
+        resultView = new ResultView();
+
+        initGameInput();
         playGame();
+        printWinner();
+
     }
 
-    public void initGame() {
-        carCount = readInputNum("자동차 대수는 몇 대 인가요?");
-        round = readInputNum("시도할 횟수는 몇 회 인가요?");
-
-        System.out.println("자동차 " + carCount + "대, " + round + " 라운드 레이싱 시작");
-        initCarObject();
+    public void initGameInput() {
+        initCarObject(inputView.readCarName());
+        round = inputView.readGameRound();
     }
 
-    private void initCarObject() {
-        cars = new Car[carCount];
-        for (int i = 0; i < carCount; i++) {
-            cars[i] = new Car();
+    private void initCarObject(String[] carNames) {
+        cars = new Car[carNames.length];
+        for (int i = 0; i < carNames.length; i++) {
+            cars[i] = new Car(carNames[i]);
         }
     }
 
     private void playGame() {
+        System.out.println("실행 결과");
         for (int i = 0; i < round; i++) {
             moveCars();
-            printStateBoard();
+            resultView.printStateBoard(cars);
         }
     }
 
@@ -46,29 +43,41 @@ public class CarRacing {
         }
     }
 
-    private void printStateBoard() {
-        for (Car car : cars) {
-            System.out.println(printCarState(car.getPosition()));
+    private void printWinner() {
+        resultView.printWinner(findWinners());
+    }
+
+    private String findWinners() {
+        int carMaxPosition = findCarMaxPosition(cars);
+        return findWinnerNames(cars, carMaxPosition);
+    }
+
+    public int findCarMaxPosition(Car[] cars) {
+        int maxPosition = 0;
+        for(Car car : cars) {
+            maxPosition = Math.max(maxPosition, car.getPosition());
         }
-        System.out.println();
+        return maxPosition;
     }
 
-    public String printCarState(int position) {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < position; i++) {
-            stringBuilder.append("-");
+    public String findWinnerNames(Car[] cars, int maxPosition) {
+        String winnerNames = "";
+        for(Car car : cars) {
+            winnerNames = findCarNamesThatPosition(winnerNames, car, maxPosition);
         }
-        return stringBuilder.toString();
+        return winnerNames;
     }
 
+    private String findCarNamesThatPosition(String winnerNames, Car car, int position) {
+        if (car.getPosition() != position) {
+            return winnerNames;
+        }
 
-    private int readInputNum(String message) {
-        System.out.println(message);
-        return toInt(scanner.nextLine());
-    }
+        if(winnerNames.length() == 0) {
+            return car.getName();
+        }
 
-    private int toInt(String str) {
-        return Integer.valueOf(str);
+        return winnerNames + "," + car.getName();
     }
 
     public static void main(String[] args) {
