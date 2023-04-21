@@ -1,11 +1,7 @@
 package study.carrace.step3.domain;
 
 
-import java.util.stream.IntStream;
-
 public class Car {
-    private static final char POSITION_CURSOR = '-';
-
     private final CarName carName;
     private final MoveStrategy moveStrategy;
     private final CarPosition carPosition;
@@ -25,15 +21,11 @@ public class Car {
     }
 
     public String positionAt(int iteration) {
-        StringBuilder currentPosition = new StringBuilder()
+        return new StringBuilder()
                 .append(carName)
-                .append(" : ");
-
-        IntStream.range(0, iteration)
-                .filter(carPosition::isMovedAt)
-                .forEach(i -> currentPosition.append(POSITION_CURSOR));
-
-        return currentPosition.toString();
+                .append(" : ")
+                .append(carPosition.positionAt(iteration))
+                .toString();
     }
 
     public long numberOfMove() {

@@ -1,12 +1,14 @@
 package study.carrace.step3.domain;
 
-import study.carrace.step3.domain.exception.IllegalCarPositionIndex;
+import study.carrace.step3.domain.exception.IllegalCarPositionIteration;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.IntStream;
 
 public class CarPosition {
+    private static final char POSITION_CURSOR = '-';
     private final List<Boolean> moveStatuses;
 
     public CarPosition() {
@@ -21,20 +23,29 @@ public class CarPosition {
         moveStatuses.add(moveStatus);
     }
 
-    public boolean isMovedAt(int index) {
-        validateIndex(index);
-        return moveStatuses.get(index);
-    }
-
     public long numberOfMove() {
         return moveStatuses.stream()
                 .filter(b -> b)
                 .count();
     }
 
-    private void validateIndex(int index) {
-        if(index >= moveStatuses.size()) {
-            throw new IllegalCarPositionIndex(moveStatuses.size(), index);
+    public String positionAt(int iteration) {
+        StringBuilder position = new StringBuilder();
+        IntStream.rangeClosed(1, iteration)
+                .filter(this::isMovedAt)
+                .forEach(i -> position.append(POSITION_CURSOR));
+
+        return position.toString();
+    }
+
+    private boolean isMovedAt(int iteration) {
+        validateIteration(iteration);
+        return moveStatuses.get(iteration-1);
+    }
+
+    private void validateIteration(int iteration) {
+        if(iteration > moveStatuses.size()) {
+            throw new IllegalCarPositionIteration(moveStatuses.size(), iteration);
         }
     }
 
