@@ -1,4 +1,15 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
+
 public class StringCalculator {
+
+    private final Pattern pattern;
+
+    public StringCalculator() {
+        this.pattern = Pattern.compile("[0-9]+");
+    }
+
 
     public int sum(String input) {
         if (isBlank(input)) {
@@ -12,7 +23,7 @@ public class StringCalculator {
         return input == null || input.isEmpty();
     }
 
-    private int add(int[] parsedNumbers) {
+    private int add(List<Integer> parsedNumbers) {
         int sum = 0;
 
         for (int parsedNumber : parsedNumbers) {
@@ -22,22 +33,22 @@ public class StringCalculator {
         return sum;
     }
 
-    private int[] parseStringToIntegers(String[] inputComponents) {
-        final int[] parsedNumbers = new int[inputComponents.length];
+    private List<Integer> parseStringToIntegers(String[] inputComponents) {
+        List<Integer> parsedNumbers = new ArrayList<>();
 
-        for (int i = 0; i < inputComponents.length; i++) {
-            validateNumber(inputComponents[i]);
-            parsedNumbers[i] = Integer.parseInt(inputComponents[i]);
+        for (String inputComponent : inputComponents) {
+            validateNumber(inputComponent);
+            parsedNumbers.add(Integer.parseInt(inputComponent));
         }
+
         return parsedNumbers;
     }
 
     private void validateNumber(String input) {
-        final String REGEX = "[0-9]+";
         final int number = Integer.parseInt(input);
 
-        if (!input.matches(REGEX) || number < 0) {
-            throw new RuntimeException();
+        if (!pattern.matcher(input).find() || number < 0) {
+            throw new IllegalArgumentException("입력값이 양수가 아닙니다.");
         }
     }
 
