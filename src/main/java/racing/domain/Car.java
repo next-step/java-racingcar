@@ -9,6 +9,7 @@ public class Car {
     public Car(int location) {
         this.location = location;
     }
+
     public Car(int location, String name) {
         this.location = location;
         this.name = nameValidation(name);
@@ -40,5 +41,7 @@ public class Car {
         return this.location;
     }
 
-    public String name() { return this.name; }
+    public String name() {
+        return this.name;
+    }
 }

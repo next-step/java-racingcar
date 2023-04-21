@@ -43,7 +43,7 @@ public class Cars { // 일급컬렉션
     }
 
     private void addOnlyWinner(List<String> winners, int maxLocation, int i) {
-        if(checkWinner(maxLocation, this.cars.get(i))) {
+        if (checkWinner(maxLocation, this.cars.get(i))) {
             winners.add(this.cars.get(i).name());
         }
     }
