@@ -1,6 +1,7 @@
 package study.racingcar.controller;
 
 import study.racingcar.domain.RacingCarGame;
+import study.racingcar.strategy.RandomNumberGenerator;
 import study.racingcar.view.InputView;
 import study.racingcar.view.OutputView;
 
@@ -17,9 +18,13 @@ public class GameController {
         validateCarNameList(carNames);
 
         final int rounds = getRoundsToPlay();
-        RacingCarGame racingCarGame = new RacingCarGame(carNames, rounds);
 
+        RacingCarGame racingCarGame = new RacingCarGame(carNames, rounds);
         racingCarGame.run();
+    }
+
+    private static RandomNumberGenerator setRule() {
+        return new RandomNumberGenerator();
     }
 
     private static List<String> getCarNames() {
