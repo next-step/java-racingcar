@@ -44,10 +44,13 @@ class ResultTest {
         Result result = new Result(cars);
 
         // when
-        String winners = result.winners();
+        Winners winners = result.winners();
 
         //then
-        assertThat(winners).isEqualTo("honux,junho");
+        assertThat(winners.getWinners())
+                .extracting(Car::getCarName)
+                .hasSize(2)
+                .containsExactly("honux", "junho");
     }
 
     @DisplayName("winner가 한명일 경우 테스트")
@@ -62,9 +65,12 @@ class ResultTest {
         Result result = new Result(cars);
 
         // when
-        String winners = result.winners();
+        Winners winners = result.winners();
 
         //then
-        assertThat(winners).isEqualTo("junho");
+        assertThat(winners.getWinners())
+                .extracting(Car::getCarName)
+                .hasSize(1)
+                .containsExactly("junho");
     }
 }
