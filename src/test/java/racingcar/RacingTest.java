@@ -21,7 +21,7 @@ public class RacingTest {
         racingCarList.add(new RacingCar("test", 4));
         racingCarList.add(new RacingCar("test2", 3));
 
-        Racing racing = new Racing(racingCarList);
+        Racing racing = new Racing();
 
         for (RacingCar racingCar : racingCarList) {
             racing.updateMaxPosition(racingCar.position());
@@ -36,10 +36,10 @@ public class RacingTest {
     public void runRacingRound_ReturnPositionOne() {
         String[] test = new String[]{"pobi", "next", "step", "fight", "test"};
         RacingCars racingCars = new RacingCars(test);
-        Racing racing = new Racing(racingCars.statusOfRacingCars());
+        Racing racing = new Racing();
         MoveStrategy randomMoveStrategy = new RandomMoveStrategy();
 
-        racing.runRacingRound(randomMoveStrategy);
+        racing.runRacingRound(racingCars.statusOfRacingCars(), randomMoveStrategy);
 
         assertThat(racingCars.statusOfRacingCars().get(0).position())
                 .isLessThanOrEqualTo(1);
@@ -59,11 +59,11 @@ public class RacingTest {
         String[] test = new String[]{"pobi", "next", "step", "fight", "test"};
         RacingCars racingCars = new RacingCars(test);
         MoveStrategy randomMoveStrategy = new RandomMoveStrategy();
-        Racing racing = new Racing(racingCars.statusOfRacingCars());
+        Racing racing = new Racing();
         int numberOfTrials = 4;
 
         while (numberOfTrials > 0) {
-            racing.runRacingRound(randomMoveStrategy);
+            racing.runRacingRound(racingCars.statusOfRacingCars(), randomMoveStrategy);
             numberOfTrials--;
         }
 
@@ -80,12 +80,12 @@ public class RacingTest {
         racingCarList.add(racingCar);
         racingCarList.add(racingCar2);
 
-        Racing racing = new Racing(racingCarList);
+        Racing racing = new Racing();
 
         MoveStrategy moveStrategy = () -> true;
-        racing.runRacingRound(moveStrategy);
+        racing.runRacingRound(racingCarList,moveStrategy);
 
-        List<String> result = racing.makeWinnerList();
+        List<String> result = racing.makeWinnerList(racingCarList);
 
         assertThat(result.get(0)).isEqualTo("test2");
     }

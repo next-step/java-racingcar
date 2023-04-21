@@ -13,7 +13,7 @@ public class RacingCarApplication {
 
         String[] carNames = inputView.askCarNames();
         RacingCars racingCars = new RacingCars(carNames);
-        Racing racing = new Racing(racingCars.statusOfRacingCars());
+        Racing racing = new Racing();
 
         int numberOfTrials = inputView.askTrialCount();
 
@@ -22,10 +22,10 @@ public class RacingCarApplication {
         resultView.printResultTitle();
 
         for (int i = 0; i < numberOfTrials; i++) {
-            racing.runRacingRound(new RandomMoveStrategy());
+            racing.runRacingRound(racingCars.statusOfRacingCars(), new RandomMoveStrategy());
             resultView.printRacingRound(racingCars.statusOfRacingCars());
         }
 
-        resultView.printGameWinner(racing.makeWinnerList());
+        resultView.printGameWinner(racing.makeWinnerList(racingCars.statusOfRacingCars()));
     }
 }

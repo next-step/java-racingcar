@@ -6,14 +6,9 @@ import java.util.List;
 
 public class Racing {
     private int MAX_POSITION = 0;
-    private List<RacingCar> racingCars;
 
-    public Racing(List<RacingCar> racingCars) {
-        this.racingCars = racingCars;
-    }
-
-    public void runRacingRound(MoveStrategy moveStrategy) {
-        for (RacingCar racingCar : this.racingCars) {
+    public void runRacingRound(List<RacingCar> racingCars, MoveStrategy moveStrategy) {
+        for (RacingCar racingCar : racingCars) {
             racingCar.tryToMove(moveStrategy);
             updateMaxPosition(racingCar.position());
         }
@@ -25,10 +20,10 @@ public class Racing {
         }
     }
 
-    public List<String> makeWinnerList() {
+    public List<String> makeWinnerList(List<RacingCar> racingCars) {
         List<String> gameWinner = new ArrayList<>();
 
-        for (RacingCar racingCar : this.racingCars) {
+        for (RacingCar racingCar : racingCars) {
             gameWinner.add(findGameWinner(racingCar));
         }
 
