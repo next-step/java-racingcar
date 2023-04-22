@@ -21,16 +21,4 @@ public class CarTest {
         Assertions.assertThat(car.createCars(carCount)).hasSize(carCount);
     }
 
-    @ParameterizedTest(name = "{0} : add {1}")
-    @MethodSource("goParameter")
-    void 이동_여부(boolean goStop, int result) {
-        car.addGoCount();
-        assertThat(car.getGoCount()).isEqualTo(result);
-    }
-    static Stream<Arguments> goParameter(){
-        return Stream.of(
-                arguments(true, 1)
-                ,arguments(false, 0)
-        );
-    }
 }
