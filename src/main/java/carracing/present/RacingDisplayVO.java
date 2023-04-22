@@ -1,23 +1,47 @@
 package carracing.present;
 
-import carracing.model.Racer;
-
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingDisplayVO {
-    private final String carName;
-    private final List<String> results;
+    private final List<String> names;
+    private final List<List<String>> results;
 
-    public RacingDisplayVO(Racer racer) {
-        carName = racer.carName();
-        results = racer.positionPresentation();
+    public RacingDisplayVO() {
+        names = new ArrayList<>();
+        results = new ArrayList<>();
     }
 
-    public String getCarName() {
-        return carName;
+    public void addDisplay(String name, List<String> result) {
+        names.add(name);
+        results.add(result);
     }
 
-    public List<String> getResults() {
-        return results;
+    public List<String> roundList(int roundIndex) {
+        List<String> stringList = new ArrayList<>();
+        for(int i=0 ; i<results.get(0).size() ; i++) {
+            stringList.add(results.get(roundIndex).get(i));
+        }
+        return stringList;
     }
+    public String participateName(int index) {
+        return names.get(index);
+    }
+
+    public String totalParticipateNames() {
+        return String.join(",", names);
+    }
+
+    public int iterationCount() {
+        return results.get(0).size();
+    }
+
+    public int participateCount() {
+        return results.size();
+    }
+
+    public String getRecord(int i, int j) {
+        return this.roundList(j).get(i);
+    }
+
 }
