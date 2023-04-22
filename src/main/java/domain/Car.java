@@ -7,6 +7,7 @@ public class Car {
     private static final int RANDOM_DIVIDING_POINT = 4;
 
     private int position;
+    private CarDisplacement carDisplacement;
 
     public Car(int position) {
         this.position = position;
@@ -14,14 +15,24 @@ public class Car {
 
     public Car(Car car) {
         this.position = car.position;
+        this.carDisplacement = car.carDisplacement;
     }
 
-    private Car(CarState carState, CarLogic carLogic) {
-
+    private Car(CarState carState, CarDisplacement carDisplacement) {
+        this.position = carState.position();
+        this.carDisplacement = carDisplacement;
     }
 
-    public static Car createCar(CarState carState, CarLogic carLogic) {
-        return new Car(carState, carLogic);
+    public static Car createCar(CarState carState, CarDisplacement carDisplacement) {
+        return new Car(carState, carDisplacement);
+    }
+
+    public static Car createCopy(Car car) {
+        return new Car(car);
+    }
+
+    public void move() {
+        position += carDisplacement.move();
     }
 
     public void move(int nextInt) {
@@ -41,6 +52,10 @@ public class Car {
         return position;
     }
 
+    public CarDisplacement getCarDisplacement() {
+        return carDisplacement;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof Car)) {
@@ -52,6 +67,6 @@ public class Car {
 
     @Override
     public String toString() {
-        return String.format("{location : %d}", position);
+        return String.format("{position : %d}", position);
     }
 }

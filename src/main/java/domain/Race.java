@@ -14,7 +14,7 @@ public class Race {
         NumberOfCars numberOfCars = raceInfo.getCarNumber();
         this.numberOfRaces = raceInfo.getRaceNumber();
         for (int i = 0; i < numberOfCars.getValue(); i++) {
-            cars.add(new Car(Position.START.getPosition()));
+            cars.add(raceInfo.getCar());
         }
     }
 
@@ -24,6 +24,18 @@ public class Race {
         raceResult.add(GameResult.create(cars));
         for (int i = 0; i < numberOfRaces.getValue(); i++) {
             cars.forEach(Car::randomMove);
+            raceResult.add(GameResult.create(cars));
+        }
+
+        return raceResult;
+    }
+
+    public RaceResult calculateRefactoring() {
+        RaceResult raceResult = new RaceResult();
+
+        raceResult.add(GameResult.create(cars));
+        for (int i = 0; i < numberOfRaces.getValue(); i++) {
+            cars.forEach(Car::move);
             raceResult.add(GameResult.create(cars));
         }
 

@@ -7,24 +7,40 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class GameResultTest {
+class GameResultTestRefactoring {
+    final static int DEFAULT_MOVE_VALUE = 2;
     final static int CAR_INITIAL_POSITION = 1;
     final static int FIRST_CAR_DEFAULT_POTITION = 3;
     final static int SECOND_CAR_DEFAULT_POTITION = 2;
     final static int THIRD_CAR_DEFAULT_POTITION = 1;
     final static int DEFAULT_NUMBER_OF_CARS = 3;
 
+    CarState defaultCarState;
+    CarDisplacement defaultCarDisplacement;
+    Car defaultCar;
+    Car firstCar;
+    Car secondCar;
+    Car thirdCar;
     GameResult defaultGameResult;
     List<Car> defaultCars;
 
     @BeforeEach
     void setUp() {
+        defaultCarState = DefaultCarState.create(CAR_INITIAL_POSITION);
+        defaultCarDisplacement = DefaultCarDisplacement.create(DEFAULT_MOVE_VALUE);
+        defaultCar = Car.createCar(defaultCarState, defaultCarDisplacement);
+
+        firstCar = Car.createCar(DefaultCarState.create(FIRST_CAR_DEFAULT_POTITION), defaultCarDisplacement);
+        secondCar = Car.createCar(DefaultCarState.create(SECOND_CAR_DEFAULT_POTITION), defaultCarDisplacement);
+        thirdCar = Car.createCar(DefaultCarState.create(THIRD_CAR_DEFAULT_POTITION), defaultCarDisplacement);
+
         defaultCars = new ArrayList<>();
-        defaultCars.add(new Car(FIRST_CAR_DEFAULT_POTITION));
-        defaultCars.add(new Car(SECOND_CAR_DEFAULT_POTITION));
-        defaultCars.add(new Car(THIRD_CAR_DEFAULT_POTITION));
+        defaultCars.add(firstCar);
+        defaultCars.add(secondCar);
+        defaultCars.add(thirdCar);
         defaultGameResult = GameResult.create(defaultCars);
     }
 
@@ -34,9 +50,9 @@ class GameResultTest {
         GameResult initialGameResult = GameResult.createInitialGameResult(new NumberOfCars(DEFAULT_NUMBER_OF_CARS));
 
         List<Car> cars = new ArrayList<>();
-        cars.add(new Car(CAR_INITIAL_POSITION));
-        cars.add(new Car(CAR_INITIAL_POSITION));
-        cars.add(new Car(CAR_INITIAL_POSITION));
+        cars.add(defaultCar);
+        cars.add(defaultCar);
+        cars.add(defaultCar);
 
         assertEquals(GameResult.create(cars), initialGameResult);
     }
@@ -64,7 +80,7 @@ class GameResultTest {
     void testEquals() {
         List<Car> copyOfCars = new ArrayList<>();
         for (Car car : defaultCars) {
-            copyOfCars.add(new Car(car));
+            copyOfCars.add(Car.createCopy(car));
         }
         assertEquals(GameResult.create(copyOfCars), defaultGameResult);
     }

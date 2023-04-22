@@ -7,15 +7,24 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class RaceResultTest {
+class RaceResultTestRefactoring {
+    final static int DEFAULT_MOVE_VALUE = 2;
     final static int DEFAULT_NUMBER_OF_CARS_VALUE = 3;
     final static int INITIAL_CAR_POSITION = 1;
+
+    CarState defaultCarState;
+    CarDisplacement defaultCarDisplacement;
+    Car defaultCar;
     RaceResult defaultRaceResult;
 
     @BeforeEach
     void setUp() {
+        defaultCarState = DefaultCarState.create(INITIAL_CAR_POSITION);
+        defaultCarDisplacement = DefaultCarDisplacement.create(DEFAULT_MOVE_VALUE);
+        defaultCar = Car.createCar(defaultCarState, defaultCarDisplacement);
+
         defaultRaceResult = new RaceResult();
         defaultRaceResult.add(GameResult.createInitialGameResult(new NumberOfCars(DEFAULT_NUMBER_OF_CARS_VALUE)));
     }
@@ -23,7 +32,7 @@ class RaceResultTest {
     @Test
     void getGames() {
         ArrayList<GameResult> gameResults = new ArrayList<>(Collections.singletonList(
-            GameResult.create(new ArrayList<>(Arrays.asList(new Car(INITIAL_CAR_POSITION), new Car(INITIAL_CAR_POSITION), new Car(INITIAL_CAR_POSITION))))
+            GameResult.create(new ArrayList<>(Arrays.asList(defaultCar, defaultCar, defaultCar)))
         ));
         assertEquals(new RaceResult(gameResults), defaultRaceResult);
     }
@@ -33,8 +42,8 @@ class RaceResultTest {
         defaultRaceResult.add(GameResult.createInitialGameResult(new NumberOfCars(DEFAULT_NUMBER_OF_CARS_VALUE)));
 
         ArrayList<GameResult> gameResults = new ArrayList<>(Arrays.asList(
-            GameResult.create(new ArrayList<>(Arrays.asList(new Car(INITIAL_CAR_POSITION), new Car(INITIAL_CAR_POSITION), new Car(INITIAL_CAR_POSITION)))),
-            GameResult.create(new ArrayList<>(Arrays.asList(new Car(INITIAL_CAR_POSITION), new Car(INITIAL_CAR_POSITION), new Car(INITIAL_CAR_POSITION))))
+            GameResult.create(new ArrayList<>(Arrays.asList(defaultCar, defaultCar, defaultCar))),
+            GameResult.create(new ArrayList<>(Arrays.asList(defaultCar, defaultCar, defaultCar)))
         ));
         assertEquals(new RaceResult(gameResults), defaultRaceResult);
     }

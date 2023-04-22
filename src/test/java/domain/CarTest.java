@@ -55,15 +55,6 @@ class CarTest {
     @Test
     @DisplayName("Car toString test")
     void testToString() {
-        assertEquals("{location : 3}", defaultCar.toString());
-    }
-
-    @Test
-    @DisplayName("의존성 주입받는 자동차 생성 테스트")
-    void createCar() {
-        CarState carState = DefaultCarState.create();
-        CarLogic carLogic = DefaultCarLogic.create();
-        Car car = Car.createCar(carState, carLogic);
-        assertEquals(car, defaultCar);
+        assertEquals("{position : 3}", defaultCar.toString());
     }
 }
