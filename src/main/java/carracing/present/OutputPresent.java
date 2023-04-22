@@ -1,29 +1,20 @@
 package carracing.present;
 
-import java.util.List;
-
 public class OutputPresent {
-    public void printResult(List<RacingDisplayVO> racingDisplayVOList) {
-        for (RacingDisplayVO racingDisplayVO : racingDisplayVOList) {
-            System.out.println(racingDisplayVO.getCarName());
-            for (String s : racingDisplayVO.getResults()) {
+    public void printResult(RacingDisplayVO racingDisplayVO) {
+        for (int i = 0; i<racingDisplayVO.iterationCount() ; i++) {
+
+            for (int j=0 ; j<racingDisplayVO.participateCount() ; j++ ) {
+                String s = racingDisplayVO.getRecord(i, j);
+                System.out.print(racingDisplayVO.participateName(j));
                 System.out.println(s);
             }
         }
     }
 
-    public void printWinner(List<RacingDisplayVO> racingDisplayVOList) {
-        String winners = winnerString(racingDisplayVOList);
-        System.out.printf("우승자는 %s 입니다", winners);
+    public void printWinner(RacingDisplayVO racingDisplayVO) {
+        System.out.printf("우승자는 %s 입니다", racingDisplayVO.totalParticipateNames());
     }
 
-    private String winnerString(List<RacingDisplayVO> racingDisplayVOList) {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (RacingDisplayVO racingDisplayVO : racingDisplayVOList) {
-            stringBuilder.append(racingDisplayVO.getCarName());
-            stringBuilder.append(",");
-        }
-        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
-        return stringBuilder.toString();
-    }
+
 }
