@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CarTestRefactoring {
+public class CarTest {
     final static int INITIAL_POSITION = 3;
     final static int DEFAULT_MOVE_VALUE = 2;
 

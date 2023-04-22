@@ -9,7 +9,7 @@ import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class RaceResultTestRefactoring {
+class RaceResultTest {
     final static int DEFAULT_MOVE_VALUE = 2;
     final static int DEFAULT_NUMBER_OF_CARS_VALUE = 3;
     final static int INITIAL_CAR_POSITION = 1;

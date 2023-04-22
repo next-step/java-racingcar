@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class RaceTestRefactoring {
+class RaceTest {
     static final int INIT_POSITION = 1;
     static final int DEFAULT_MOVE_VALUE = 1;
     static final int NUMBER_OF_CARS_DEFAULT = 3;
@@ -23,7 +23,7 @@ class RaceTestRefactoring {
 
     @Test
     void calculate() {
-        RaceResult raceResult = race.calculateRefactoring();
+        RaceResult raceResult = race.calculate();
         assertThat(raceResult.toString()).isEqualTo("[" +
                 "[{position : 1}, {position : 1}, {position : 1}], " +
                 "[{position : 2}, {position : 2}, {position : 2}], " +

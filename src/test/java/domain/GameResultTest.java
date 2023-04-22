@@ -10,7 +10,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class GameResultTestRefactoring {
+class GameResultTest {
     final static int DEFAULT_MOVE_VALUE = 2;
     final static int CAR_INITIAL_POSITION = 1;
     final static int FIRST_CAR_DEFAULT_POTITION = 3;

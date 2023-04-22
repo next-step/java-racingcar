@@ -4,7 +4,6 @@ import dto.RaceInfo;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Race {
     private final NumberOfRaces numberOfRaces;
@@ -18,7 +17,7 @@ public class Race {
         }
     }
 
-    public RaceResult calculateRefactoring() {
+    public RaceResult calculate() {
         RaceResult raceResult = new RaceResult();
 
         raceResult.add(GameResult.create(cars));
