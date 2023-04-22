@@ -12,7 +12,7 @@ public class DefaultCarDisplacement implements CarDisplacement {
     }
 
     @Override
-    public int move() {
+    public int displacement() {
         return moveValue;
     }
 }

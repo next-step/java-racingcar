@@ -32,7 +32,7 @@ public class Car {
     }
 
     public void move() {
-        position += carDisplacement.move();
+        position += carDisplacement.displacement();
     }
 
     public void move(int nextInt) {
