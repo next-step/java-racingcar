@@ -5,9 +5,9 @@ public class Record {
         private int position;
         private String name;
 
-        public Record(int position, Name name) {
+        public Record(int position, CarName carName) {
             this.position = position;
-            this.name = name.getName();
+            this.name = carName.getName();
         }
 
         public int getDistance() {

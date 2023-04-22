@@ -12,15 +12,15 @@ import static racingcar.domain.fixture.CarConstantsFixture.WEIRD_CAR_NAME_1;
 import static racingcar.domain.fixture.CarConstantsFixture.WEIRD_CAR_NAME_2;
 
 @DisplayName("자동자 이름 테스트")
-class NameTest {
+class CarNameTest {
 
     @Test
     @DisplayName("자동차 이름 저장 테스트")
     void testName() {
         // Given & When
-        Name name = new Name(CAR_NAME);
+        CarName carName = new CarName(CAR_NAME);
 
-        final String names = name.getName();
+        final String names = carName.getName();
 
         // Then
         assertThat(names).contains(CAR_NAME);
@@ -31,10 +31,10 @@ class NameTest {
     void testNameException() {
         // Then & When
         assertAll(
-                () -> assertThatThrownBy(() -> new Name(WEIRD_CAR_NAME_1))
+                () -> assertThatThrownBy(() -> new CarName(WEIRD_CAR_NAME_1))
                         .isInstanceOf(IllegalArgumentException.class),
 
-                () -> assertThatThrownBy(() -> new Name(WEIRD_CAR_NAME_2))
+                () -> assertThatThrownBy(() -> new CarName(WEIRD_CAR_NAME_2))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
