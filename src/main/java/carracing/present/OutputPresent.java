@@ -9,7 +9,7 @@ public class OutputPresent {
         for (int i = 0; i < presenter.iterationCount(); i++) {
             System.out.print(lineSeparator());
             for (int j = 0; j < presenter.participateCount(); j++) {
-                System.out.printf("%s : %s %s", presenter.participateName(j), presenter.getRecord(i, j), lineSeparator());
+                System.out.printf("%s : %s %s", presenter.participateName(j), presenter.resultQuery(i, j), lineSeparator());
             }
         }
     }

@@ -41,7 +41,7 @@ public class Presenter {
         return results.size();
     }
 
-    public String getRecord(int i, int j) {
+    public String resultQuery(int i, int j) {
         return this.roundList(j).get(i);
     }
 }

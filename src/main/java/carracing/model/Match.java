@@ -14,7 +14,7 @@ public class Match {
     public Presenter progressDisplay() {
         Presenter presenter = new Presenter();
         for (Racer racer : racers) {
-            presenter.addDisplay(racer.carName(), racer.positionPresentation());
+            presenter.addDisplay(racer.carName(), racer.recordPresentation());
         }
         return presenter;
     }
@@ -23,7 +23,7 @@ public class Match {
         List<Racer> winners = findWinners(racers);
         Presenter presenter = new Presenter();
         for (Racer winnerRacer : winners) {
-            presenter.addDisplay(winnerRacer.carName(), winnerRacer.positionPresentation());
+            presenter.addDisplay(winnerRacer.carName(), winnerRacer.recordPresentation());
         }
         return presenter;
     }
@@ -32,11 +32,15 @@ public class Match {
         List<Racer> winners = new ArrayList<>();
         int winnerPosition = maxPosition(racers);
         for (Racer racer : racers) {
-            if (racer.isWinner(winnerPosition)) {
-                winners.add(racer);
-            }
+            winnerExtract(winners, winnerPosition, racer);
         }
         return winners;
+    }
+
+    private void winnerExtract(List<Racer> winners, int winnerPosition, Racer racer) {
+        if (racer.isWinner(winnerPosition)) {
+            winners.add(racer);
+        }
     }
 
     private int maxPosition(List<Racer> racers) {

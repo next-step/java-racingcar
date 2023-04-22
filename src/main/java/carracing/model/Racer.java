@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Racer {
+    private static final int SCORE_FORWARD_THRESHOLD = 4;
     private final String name;
     private final List<Integer> records;
 
@@ -22,27 +23,26 @@ public class Racer {
     }
 
     private List<Integer> calculateRecords(List<Integer> scores) {
-        List<Integer> result = new ArrayList<>();
+        List<Integer> records = new ArrayList<>();
         for (int i = 0; i < scores.size(); i++) {
-            int score = scores.get(i);
-            result.add(scoreToResult(score) + prevResult(result, i));
+            records.add(currentRecord(scores.get(i)) + previousRecord(records, i));
         }
-        return result;
+        return records;
     }
 
-    private Integer prevResult(List<Integer> result, int i) {
+    private Integer previousRecord(List<Integer> result, int i) {
         return i > 0 ? result.get(i - 1) : 0;
     }
 
-    private Integer scoreToResult(int score) {
-        return score > 4 ? 1 : 0;
+    private Integer currentRecord(int score) {
+        return score > SCORE_FORWARD_THRESHOLD ? 1 : 0;
     }
 
     public String carName() {
         return name;
     }
 
-    public List<String> positionPresentation() {
+    public List<String> recordPresentation() {
         List<String> presentList = new ArrayList<>();
         for (int position : records) {
             presentList.add("-".repeat(position));
