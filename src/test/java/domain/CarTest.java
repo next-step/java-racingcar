@@ -37,19 +37,19 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("Car location test")
+    @DisplayName("Car 위치 테스트")
     void getLocation() {
         assertEquals(INITIAL_POSITION, defaultCar.getPosition());
     }
 
     @Test
-    @DisplayName("객체의 주소가 다르지만 값이 같을 경우 equals test")
+    @DisplayName("객체의 주소가 다르지만 값이 같을 경우 equals 테스트")
     void testEquals() {
         assertEquals(Car.createCar(defaultCarState, defaultCarDisplacement), defaultCar);
     }
 
     @Test
-    @DisplayName("Car toString test")
+    @DisplayName("toString 테스트")
     void testToString() {
         assertEquals("{position : 3}", defaultCar.toString());
     }

@@ -58,7 +58,7 @@ class GameResultTest {
     }
 
     @Test
-    @DisplayName("GameResult copy 생성 테스트")
+    @DisplayName("GameResult 복사 생성 테스트")
     void createCopy() {
         assertEquals(defaultGameResult, GameResult.createCopy(defaultGameResult));
     }
@@ -76,7 +76,7 @@ class GameResultTest {
     }
 
     @Test
-    @DisplayName("객체의 주소가 다르지만 값이 같을 경우 equals test")
+    @DisplayName("객체의 주소가 다르지만 값이 같을 경우 equals 테스트")
     void testEquals() {
         List<Car> copyOfCars = new ArrayList<>();
         for (Car car : defaultCars) {
@@ -86,7 +86,7 @@ class GameResultTest {
     }
 
     @Test
-    @DisplayName("GameResult toString test")
+    @DisplayName("GameResult toString 테스트")
     void testToString() {
         assertEquals("[{position : 3}, {position : 2}, {position : 1}]", defaultGameResult.toString());
     }
