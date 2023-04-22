@@ -18,16 +18,15 @@ public class Cars {
         cars.add(car);
     }
 
-    private boolean isDuplicate(Car car) {
-        return cars.stream().anyMatch(item -> item.getName().equals(car.getName()));
+    private boolean isDuplicate(Car newCar) {
+        return cars.stream().anyMatch(car -> car.isSameName(newCar));
     }
-
     public int size() {
         return cars.size();
     }
 
     public void move() {
-        cars.forEach(Car::move);
+        cars.forEach(car -> car.move(new CarMovingStrategy()));
     }
 
     public List<Car> getCars() {
