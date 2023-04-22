@@ -7,9 +7,7 @@ import racingcar.strategyTest.GoMoveStrategy;
 import racingcar.strategyTest.MoveStrategy;
 import racingcar.strategyTest.RandomMoveStrategy;
 
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatCode;
+import static org.assertj.core.api.Assertions.*;
 
 public class RacingCarTest {
 
@@ -58,8 +56,10 @@ public class RacingCarTest {
     @Test
     @DisplayName("RacingCar 객체 생성 후 name > 5 IllegalArgumentException 발생")
     public void carNameOverTheFive_ThrowException() {
-        assertThatCode(() -> {
-            RacingCar racingCar = new RacingCar("test23");
-        }).isInstanceOf(IllegalArgumentException.class);
+//        assertThatCode(() -> {
+//            RacingCar racingCar = new RacingCar("test23");
+//        }).isInstanceOf(IllegalArgumentException.class);
+
+        assertThatIllegalArgumentException().isThrownBy(() -> new RacingCar("test23"));
     }
 }
