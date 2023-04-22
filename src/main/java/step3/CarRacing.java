@@ -1,9 +1,10 @@
 package step3;
 
+import step3.model.Match;
 import step3.model.Racer;
-import step3.present.DisplayRaceVO;
 import step3.present.InputPresent;
 import step3.present.OutputPresent;
+import step3.present.RacingDisplayVO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,12 +18,20 @@ public class CarRacing {
         InputPresent inputPresent = new InputPresent();
         OutputPresent outputPresent = new OutputPresent();
 
-        for (String carName : inputPresent.participates()) {
-            Racer racer = new Racer(carName, randomScores(inputPresent.iteration()));
-        }
+        List<String> participates = inputPresent.participates();
+        int iteration = inputPresent.iteration();
+        Match match = matchUp(participates, iteration);
 
-        outputPresent.printResult(progressDisplay());
-        outputPresent.printWinner(winnerDisplay());
+        outputPresent.printResult(match.progressDisplay());
+        outputPresent.printWinner(match.winnerDisplay());
+    }
+
+    private static Match matchUp( List<String> participates, int iteration ) {
+        Match match = new Match();
+        for (String carName : participates) {
+            match.addRacer(new Racer(carName, randomScores(iteration)));
+        }
+        return match;
     }
 
     private static List<Integer> randomScores(int iteration) {
@@ -31,13 +40,5 @@ public class CarRacing {
             scoreList.add(RANDOM.nextInt(9));
         }
         return scoreList;
-    }
-
-    private static List<String> winnerDisplay() {
-        throw new RuntimeException();
-    }
-
-    private static List<DisplayRaceVO> progressDisplay() {
-        throw new RuntimeException();
     }
 }
