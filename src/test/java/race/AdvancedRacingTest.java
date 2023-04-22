@@ -52,7 +52,7 @@ class AdvancedRacingTest {
         Winner winner = new Winner();
         List<String> strings = winner.get(cars);
 
-        assertThat(strings).contains("choizz", "beck");
+        assertThat(strings).contains("choiz", "beck");
     }
 
     @DisplayName("이름이 5글자 이상이면 예외를 던진다.")
@@ -99,7 +99,7 @@ class AdvancedRacingTest {
 
     private List<Car> getCarList() {
         Car crong = new Car("crong", 3);
-        Car choizz = new Car("choizz", 5);
+        Car choizz = new Car("choiz", 5);
         Car beck = new Car("beck", 5);
 
         List<Car> cars = new ArrayList<>();
