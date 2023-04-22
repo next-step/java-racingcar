@@ -9,7 +9,7 @@ public class Racing {
 
     public static void main(String[] args) {
 
-        System.out.println("자동차 대수는 몇 대 인가요?");
+        System.out.println("경주할 자동차 이름을 입력하세요");
         List<Car> cars = carAttendList(inputView.carAttendNameSeparation(inputView.inputStringValue()));
 
         System.out.println("시도할 회수는 몇 회 인가요?");
@@ -23,13 +23,13 @@ public class Racing {
     public static void carMovingState(List<Car> cars){
         for (Car car : cars){
             car.move(car.randomMoveStrategy());
-            resultView.resultView(car.getPosition());
+            resultView.resultView(car);
         }
     }
     public static ArrayList<Car> carAttendList(String[] names){
         ArrayList<Car> cars = new ArrayList<Car>();
         for (int i = 0; i < names.length; i++) {
-            cars.add(new Car(names[i]));
+            cars.add(new Car(inputView.carNameCheck(names[i])));
         }
         return cars;
     }

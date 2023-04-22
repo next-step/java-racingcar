@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
 
@@ -47,9 +48,24 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("생성자를 통해서 Car name 설정")
+    @DisplayName("Car객체 name 설정")
     public void test5(){
         Car car = new Car("car");
         assertThat(car.getName()).isEqualTo("car");
+    }
+
+
+    @Test
+    @DisplayName("자동차명이 5자를 초과할 경우")
+    public void test6(){
+        assertThatThrownBy(() ->assertThat(inputView.carNameCheck("carTest")))
+                .isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    @DisplayName("자동차명이 5자이하인경우 ")
+    public void test7(){
+        assertThat(inputView.carNameCheck("test1"))
+                .isEqualTo("test1");
     }
 }
