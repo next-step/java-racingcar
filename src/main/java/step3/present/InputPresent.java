@@ -1,6 +1,6 @@
 package step3.present;
 
-import step3.model.Car;
+import step3.Car;
 
 import java.util.Arrays;
 import java.util.List;
