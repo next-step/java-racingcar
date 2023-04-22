@@ -3,9 +3,6 @@ package racingcar.view;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.mock.InputUtil;
-import racingcar.service.RacingGame;
-
-import java.io.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

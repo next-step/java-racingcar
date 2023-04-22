@@ -1,26 +1,25 @@
 package racingcar.service;
 
 import racingcar.model.Car;
+import racingcar.model.Cars;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Random;
 
-public class RacingGame {
+public class RacingGameService {
+    public final int RANDOM_RANGE = 10;
+
     private int moveTimes;
 
-    private List<Car> cars;
+    private Cars cars;
 
-    public RacingGame() {
-        this.cars = new ArrayList<>();
+    public RacingGameService() {
+        this.cars = new Cars();
     }
 
     public void setCarNumber() {
-        int number = InputView.setCarNumber();
-        for (int i = 0; i < number; i++) {
-            cars.add(new Car(0));
-        }
+        this.cars.setCarNumber(InputView.setCarNumber());
     }
 
     public void setMoveTimes() {
@@ -37,13 +36,18 @@ public class RacingGame {
     }
 
     private void moveCars() {
-        for (Car car : cars) {
-            car.move();
+        for (Car car : cars.getCar()) {
+            car.move(getRandomValue());
         }
     }
 
+    public int getRandomValue() {
+        Random random = new Random();
+        return random.nextInt(RANDOM_RANGE);
+    }
+
     public int getCarNumber() {
-        return cars.size();
+        return cars.getCar().size();
     }
 
     public int getMoveTimes() {

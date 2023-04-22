@@ -1,13 +1,13 @@
 package racingcar;
 
-import racingcar.service.RacingGame;
+import racingcar.service.RacingGameService;
 
 public class Application {
 
     public static void main(String[] args) {
-        RacingGame racingGame = new RacingGame();
-        racingGame.setCarNumber();
-        racingGame.setMoveTimes();
-        racingGame.racing();
+        RacingGameService racingGameService = new RacingGameService();
+        racingGameService.setCarNumber();
+        racingGameService.setMoveTimes();
+        racingGameService.racing();
     }
 }
