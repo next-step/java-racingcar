@@ -2,18 +2,31 @@ package car;
 
 import java.util.Random;
 
-public abstract class Car {
+public class Car {
     Random random = new Random();
     private int position = 0;
 
-    public int goStop(){
-        if(move() > 3){
-            return position += 1;
+    public void move(int moveStrategy){
+        if(moveStrategy > 3) {
+            position += 1;
         }
-        return position;
+    }
+    public int getPosition(){
+        return this.position;
     }
 
-    public abstract int move();
+    public int randomMoveStrategy(){
+        return random.nextInt(10);
+    }
+
+    public int stopMoveStrategy(){
+        return random.nextInt(4);
+    }
+
+    public int goMoveStrategy(){
+        return random.nextInt(6)+4;
+    }
+
 
 
 
