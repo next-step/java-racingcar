@@ -26,7 +26,7 @@ class RaceResultTestRefactoring {
         defaultCar = Car.createCar(defaultCarState, defaultCarDisplacement);
 
         defaultRaceResult = new RaceResult();
-        defaultRaceResult.add(GameResult.createInitialGameResult(new NumberOfCars(DEFAULT_NUMBER_OF_CARS_VALUE)));
+        defaultRaceResult.add(GameResult.createInitialGameResult(new NumberOfCars(DEFAULT_NUMBER_OF_CARS_VALUE), defaultCar));
     }
 
     @Test
@@ -39,7 +39,7 @@ class RaceResultTestRefactoring {
 
     @Test
     void add() {
-        defaultRaceResult.add(GameResult.createInitialGameResult(new NumberOfCars(DEFAULT_NUMBER_OF_CARS_VALUE)));
+        defaultRaceResult.add(GameResult.createInitialGameResult(new NumberOfCars(DEFAULT_NUMBER_OF_CARS_VALUE), defaultCar));
 
         ArrayList<GameResult> gameResults = new ArrayList<>(Arrays.asList(
             GameResult.create(new ArrayList<>(Arrays.asList(defaultCar, defaultCar, defaultCar))),
@@ -51,7 +51,7 @@ class RaceResultTestRefactoring {
     @Test
     void testEquals() {
         RaceResult raceResult = new RaceResult();
-        raceResult.add(GameResult.createInitialGameResult(new NumberOfCars(DEFAULT_NUMBER_OF_CARS_VALUE)));
+        raceResult.add(GameResult.createInitialGameResult(new NumberOfCars(DEFAULT_NUMBER_OF_CARS_VALUE), defaultCar));
 
         assertEquals(raceResult, defaultRaceResult);
     }

@@ -18,18 +18,6 @@ public class Race {
         }
     }
 
-    public RaceResult calculate() {
-        RaceResult raceResult = new RaceResult();
-
-        raceResult.add(GameResult.create(cars));
-        for (int i = 0; i < numberOfRaces.getValue(); i++) {
-            cars.forEach(Car::randomMove);
-            raceResult.add(GameResult.create(cars));
-        }
-
-        return raceResult;
-    }
-
     public RaceResult calculateRefactoring() {
         RaceResult raceResult = new RaceResult();
 

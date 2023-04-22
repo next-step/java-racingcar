@@ -47,7 +47,7 @@ class GameResultTestRefactoring {
     @Test
     @DisplayName("초기화된 GameResult 생성 테스트")
     void createInitialGameResult() {
-        GameResult initialGameResult = GameResult.createInitialGameResult(new NumberOfCars(DEFAULT_NUMBER_OF_CARS));
+        GameResult initialGameResult = GameResult.createInitialGameResult(new NumberOfCars(DEFAULT_NUMBER_OF_CARS), defaultCar);
 
         List<Car> cars = new ArrayList<>();
         cars.add(defaultCar);

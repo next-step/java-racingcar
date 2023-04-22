@@ -11,10 +11,10 @@ public class GameResult {
         this.cars = cars;
     }
 
-    public static GameResult createInitialGameResult(NumberOfCars numberOfCars) {
+    public static GameResult createInitialGameResult(NumberOfCars numberOfCars, Car defaultCar) {
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < numberOfCars.getValue(); i++) {
-            cars.add(new Car(Position.MOVE.getPosition()));
+            cars.add(Car.createCopy(defaultCar));
         }
         return new GameResult(cars);
     }
@@ -22,7 +22,7 @@ public class GameResult {
     public static GameResult createCopy(GameResult gameResult) {
         List<Car> cars = new ArrayList<>();
         for (Car car : gameResult.cars) {
-            cars.add(new Car(car));
+            cars.add(Car.createCopy(car));
         }
         return new GameResult(cars);
     }
@@ -30,7 +30,7 @@ public class GameResult {
     public static GameResult create(List<Car> cars) {
         List<Car> newCars = new ArrayList<>();
         for (Car car : cars) {
-            newCars.add(new Car(car));
+            newCars.add(Car.createCopy(car));
         }
         return new GameResult(newCars);
     }

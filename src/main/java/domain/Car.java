@@ -7,15 +7,11 @@ public class Car {
     private static final int RANDOM_DIVIDING_POINT = 4;
 
     private int position;
-    private CarDisplacement carDisplacement;
+    private final CarDisplacement carDisplacement;
 
-    public Car(int position) {
-        this.position = position;
-    }
-
-    public Car(Car car) {
-        this.position = car.position;
-        this.carDisplacement = car.carDisplacement;
+    private Car(Car car) {
+        this.position = car.getPosition();
+        this.carDisplacement = car.getCarDisplacement();
     }
 
     private Car(CarState carState, CarDisplacement carDisplacement) {
@@ -33,19 +29,6 @@ public class Car {
 
     public void move() {
         position += carDisplacement.displacement();
-    }
-
-    public void move(int nextInt) {
-        position += nextInt;
-    }
-
-    public void randomMove() {
-        move(canMove() ? Position.MOVE.getPosition() : Position.STOP.getPosition());
-    }
-
-    private boolean canMove() {
-        Random ran = new Random();
-        return ran.nextInt(RANDOM_RANGE) >= RANDOM_DIVIDING_POINT;
     }
 
     public int getPosition() {
