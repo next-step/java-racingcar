@@ -1,4 +1,10 @@
-package racingcar;
+package racingcar.controller;
+
+import racingcar.domain.Car;
+import racingcar.domain.CarFactory;
+import racingcar.domain.WinnersUtil;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,44 +26,22 @@ public class RacingCarGame {
     public void start() {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
+
         InputView.printCarsNamesInputMessage();
         String names = inputNames(scanner);
+
         InputView.printTryCountInputMessage();
         int tryCount = inputCount(scanner);
 
         cars = CarFactory.create(names);
         play(tryCount, random);
-        findMaxPosition();
-        determineWinners();
+        int maxPosition = WinnersUtil.findMaxPosition(cars);
+        List<String> winners = WinnersUtil.determineWinners(cars, maxPosition);
 
         ResultView.printResultHeader();
         ResultView.printCarsResult(cars);
         ResultView.printWinners(winners);
     }
-
-    private void determineWinners() {
-        for (Car car : cars) {
-            determine(car);
-        }
-    }
-
-    private void determine(Car car) {
-        if (isWinner(car.position())) {
-            winners.add(car.name());
-        }
-    }
-
-    private boolean isWinner(int carPosition) {
-        return maxPosition == carPosition;
-    }
-
-    private void findMaxPosition() {
-        maxPosition = 0;
-        for (Car car : cars) {
-            maxPosition = Math.max(maxPosition, car.position());
-        }
-    }
-
     private String inputNames(Scanner scanner) {
         return scanner.nextLine();
     }
@@ -91,11 +75,6 @@ public class RacingCarGame {
     private boolean isMovable(Random random) {
         return random.nextInt(RANDOM_RANGE) >= MOVE_THRESHOLD;
     }
-
-    public List<Car> getCars() {
-        return this.cars;
-    }
-
     public List<String> getWinners() {
         return winners;
     }

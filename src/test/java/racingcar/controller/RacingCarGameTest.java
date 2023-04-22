@@ -1,7 +1,8 @@
-package racingcar;
+package racingcar.controller;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.controller.RacingCarGame;
 
 import java.io.ByteArrayInputStream;
 import java.util.List;
