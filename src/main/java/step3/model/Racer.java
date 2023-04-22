@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Racer {
-    private final String carName;
+    private final String name;
     private final List<Integer> positions;
-    public Racer(String carName, List<Integer> scores) {
-        this.carName = carName;
+    public Racer(String name, List<Integer> scores) {
+        this.name = name;
         this.positions = calculateResult(scores);
     }
 
@@ -29,7 +29,7 @@ public class Racer {
     }
 
     public String carName() {
-        return carName;
+        return name;
     }
 
     public List<String> positionPresentation() {
