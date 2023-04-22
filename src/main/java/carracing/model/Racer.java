@@ -1,4 +1,4 @@
-package step3.model;
+package carracing.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,7 @@ import java.util.List;
 public class Racer {
     private final String name;
     private final List<Integer> records;
+
     public Racer(String name, List<Integer> scores) {
         this.name = name;
         this.records = calculateRecords(scores);
@@ -13,7 +14,7 @@ public class Racer {
 
     private List<Integer> calculateRecords(List<Integer> scores) {
         List<Integer> result = new ArrayList<>();
-        for(int i=0 ; i<scores.size() ; i++) {
+        for (int i = 0; i < scores.size(); i++) {
             int score = scores.get(i);
             result.add(scoreToResult(score) + prevResult(result, i));
         }
@@ -34,7 +35,7 @@ public class Racer {
 
     public List<String> positionPresentation() {
         List<String> presentList = new ArrayList<>();
-        for(int position : records) {
+        for (int position : records) {
             presentList.add("-".repeat(position));
         }
         return presentList;

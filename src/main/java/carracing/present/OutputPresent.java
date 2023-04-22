@@ -1,17 +1,15 @@
-package step3.present;
-
-import step3.model.Racer;
+package carracing.present;
 
 import java.util.List;
 
 public class OutputPresent {
     public void printResult(List<RacingDisplayVO> racingDisplayVOList) {
-         for(RacingDisplayVO racingDisplayVO :racingDisplayVOList) {
-             System.out.println(racingDisplayVO.getCarName());
-             for(String s : racingDisplayVO.getResults()) {
-                 System.out.println(s);
-             }
-         }
+        for (RacingDisplayVO racingDisplayVO : racingDisplayVOList) {
+            System.out.println(racingDisplayVO.getCarName());
+            for (String s : racingDisplayVO.getResults()) {
+                System.out.println(s);
+            }
+        }
     }
 
     public void printWinner(List<RacingDisplayVO> racingDisplayVOList) {
@@ -21,11 +19,11 @@ public class OutputPresent {
 
     private String winnerString(List<RacingDisplayVO> racingDisplayVOList) {
         StringBuilder stringBuilder = new StringBuilder();
-        for(RacingDisplayVO racingDisplayVO : racingDisplayVOList) {
+        for (RacingDisplayVO racingDisplayVO : racingDisplayVOList) {
             stringBuilder.append(racingDisplayVO.getCarName());
             stringBuilder.append(",");
         }
-        stringBuilder.deleteCharAt(stringBuilder.length()-1);
+        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
         return stringBuilder.toString();
     }
 }

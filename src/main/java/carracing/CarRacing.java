@@ -1,10 +1,9 @@
-package step3;
+package carracing;
 
-import step3.model.Match;
-import step3.model.Racer;
-import step3.present.InputPresent;
-import step3.present.OutputPresent;
-import step3.present.RacingDisplayVO;
+import carracing.model.Match;
+import carracing.model.Racer;
+import carracing.present.InputPresent;
+import carracing.present.OutputPresent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +25,7 @@ public class CarRacing {
         outputPresent.printWinner(match.winnerDisplay());
     }
 
-    private static Match matchUp( List<String> participates, int iteration ) {
+    private static Match matchUp(List<String> participates, int iteration) {
         Match match = new Match();
         for (String carName : participates) {
             match.addRacer(new Racer(carName, randomScores(iteration)));
@@ -36,7 +35,7 @@ public class CarRacing {
 
     private static List<Integer> randomScores(int iteration) {
         List<Integer> scoreList = new ArrayList<>();
-        for(int i=0 ; i<iteration ; i++) {
+        for (int i = 0; i < iteration; i++) {
             scoreList.add(RANDOM.nextInt(9));
         }
         return scoreList;
