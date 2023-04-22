@@ -1,39 +1,53 @@
 package race;
 
 import java.util.List;
-import java.util.Scanner;
-import race.domain.Winner;
-import race.util.Split;
-import race.view.InputView;
-import race.view.ResultView;
+import race.domain.Car;
+import race.domain.RacingCars;
+import race.view.TraceView;
 
 public class RaceRunner {
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        InputView inputView = new InputView();
-        ResultView resultView = new ResultView();
+    private final RacingCars racingCars;
+    private final int trial;
+    private final TraceView traceView = new TraceView();
 
-        String carName = inputCarName(scanner, inputView);
-        int countOfTrial = inputCountOfTrial(scanner, inputView);
-
-        resultView.printResultComment();
-
-        Race race = new Race(Split.getNames(carName), countOfTrial);
-        race.start();
-
-        Winner winner = new Winner();
-        List<String> winners = winner.get(race.getRacingCars());
-        resultView.printWinners(winners);
+    public RaceRunner(String[] names, int trial) {
+        validate(names.length, trial);
+        this.racingCars = new RacingCars(names);
+        this.trial = trial;
     }
 
-    private static int inputCountOfTrial(Scanner scanner, InputView inputView) {
-        inputView.countOfTrialComment();
-        return scanner.nextInt();
+    public void start() {
+        for (int i = 0; i < this.trial; i++) {
+            racingCars.race();
+            traceView.printMoveResult(racingCars);
+            System.out.println();
+        }
     }
 
-    private static String inputCarName(Scanner scanner, InputView inputView) {
-        inputView.carNameComment();
-        return scanner.nextLine();
+    public int getTrial() {
+        return trial;
+    }
+
+    public List<Car> getRacingCars() {
+        return this.racingCars.getList();
+    }
+
+    private void validate(int length, int trial) {
+        if (isLessThanZero(trial)) {
+            throw new IllegalArgumentException("1 이상을 입력해 주세요");
+        }
+
+        if (isNoNames(length)) {
+            throw new IllegalArgumentException("이름을 입력해주세요.");
+        }
+    }
+
+    private boolean isNoNames(int length) {
+        return length == 0;
+    }
+
+    private boolean isLessThanZero(int trial) {
+        return trial < 1;
     }
 }
