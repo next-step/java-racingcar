@@ -3,6 +3,7 @@ package racingcar.ui;
 import java.util.Iterator;
 import racingcar.application.Car;
 import racingcar.application.Cars;
+import racingcar.application.ScoreBoard;
 import racingcar.dto.CarNames;
 
 public class ResultView {
@@ -26,7 +27,7 @@ public class ResultView {
     Printer.println(sb.toString());
   }
 
-  public void printWinner(CarNames winnerNames) {
-    Printer.println(String.join(",", winnerNames.toValues()) + "가 최종 우승했습니다.");
+  public void printWinner(ScoreBoard scoreBoard) {
+    Printer.println(String.join(",", scoreBoard.latestWinner().toValues()) + "가 최종 우승했습니다.");
   }
 }

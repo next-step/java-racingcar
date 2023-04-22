@@ -2,7 +2,7 @@ package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.List;
+import java.util.Objects;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.application.Cars;
@@ -41,5 +41,19 @@ public class CarsTest {
     // then
     assertThat(cars.toList().get(0).location())
         .isEqualTo(2);
+  }
+
+  @Test
+  @DisplayName("Cloneable 인터페이스에 대해 학습테스트를 작성한다")
+  void cloneableLearningTest() {
+    // given
+    final Cars cars = new Cars(() -> 6, new CarNames("pobi,soko"));
+
+    // when
+    Cars clone = cars.clone();
+
+    // then
+    assertThat(cars).isNotEqualTo(clone);
+    assertThat(Objects.deepEquals(cars, clone)).isTrue();
   }
 }

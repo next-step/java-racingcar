@@ -3,12 +3,11 @@ package racingcar.application;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.dto.CarNames;
 
-public class Cars {
+public class Cars implements Cloneable {
 
   private final MoveStrategy moveStrategy;
   private final List<Car> cars;
@@ -41,6 +40,15 @@ public class Cars {
         .filter(car -> car.location() == max)
         .map(car -> car.carName())
         .collect(Collectors.toList()));
+  }
+
+  @Override
+  public Cars clone() {
+    try {
+      return (Cars) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new RuntimeException(e);
+    }
   }
 
   private List<Car> init(CarNames carNames) {

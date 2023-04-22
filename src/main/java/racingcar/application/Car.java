@@ -3,7 +3,7 @@ package racingcar.application;
 import java.util.stream.IntStream;
 import racingcar.dto.CarName;
 
-public class Car {
+public class Car implements Cloneable {
   private int location = 1;
   private final CarName name;
 
@@ -23,12 +23,12 @@ public class Car {
     return name;
   }
 
-  // TODO: view로 보내야 함
-  private String calculateProgress() {
-    StringBuilder stringBuilder = new StringBuilder();
-    IntStream.rangeClosed(1, location)
-        .forEach(num -> stringBuilder.append("-"));
-
-    return stringBuilder.toString();
+  @Override
+  public Car clone() {
+    try {
+      return (Car) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new RuntimeException(e);
+    }
   }
 }
