@@ -5,6 +5,8 @@ public class Car {
     private final String name;
     private int movingDistance;
     private StringBuilder tracing;
+    private static final int MIN_NAME_LENGTH = 5;
+    private static final int BOUND_NUMBER = 3;
 
     public Car(String name) {
         validateName(name);
@@ -47,7 +49,7 @@ public class Car {
     }
 
     private boolean isOverThanFive(String name) {
-        return name.length() > 5;
+        return name.length() > MIN_NAME_LENGTH;
     }
 
     private boolean isBlank(String text) {
@@ -55,6 +57,6 @@ public class Car {
     }
 
     private boolean isOverThanThree(int input) {
-        return input > 3;
+        return input > BOUND_NUMBER;
     }
 }
