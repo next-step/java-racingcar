@@ -7,9 +7,9 @@ public class Car {
         this.distance = "";
     }
 
-    public void race(int raceNumber) {
-        if (raceNumber < 1 || raceNumber > 9) {
-            throw new RuntimeException("1이상 9이하의 값만 가능합니다.");
+    void race(int raceNumber) {
+        if (raceNumber < 0 || raceNumber > 9) {
+            throw new RuntimeException("0이상 9이하의 값만 가능합니다.");
         }
         if (raceNumber >= 4) {
             moveForward();
@@ -20,8 +20,7 @@ public class Car {
         distance += "-";
     }
 
-    public boolean isMoved() {
-        System.out.println(distance);
-        return distance != null && !distance.contains("null") && !distance.isEmpty();
+    String raceResult() {
+        return distance;
     }
 }

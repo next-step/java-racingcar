@@ -18,17 +18,17 @@ class CarTest {
         stayCar.race(3);
 
         assertAll(
-                () -> assertThat(moveCar.isMoved()).isTrue(),
-                () -> assertThat(stayCar.isMoved()).isFalse()
+                () -> assertThat(moveCar.raceResult()).isEqualTo("-"),
+                () -> assertThat(stayCar.raceResult()).isBlank()
         );
     }
 
     @Test
-    @DisplayName("1미만 randomNumber(racingNumber)를 넣으면 예외를 발생시킨다")
+    @DisplayName("0미만 randomNumber(racingNumber)를 넣으면 예외를 발생시킨다")
     void belowOneRacingNumberTest() {
         Car car = new Car();
 
-        assertThrows(RuntimeException.class, () -> car.race(0));
+        assertThrows(RuntimeException.class, () -> car.race(-1));
     }
 
     @Test
