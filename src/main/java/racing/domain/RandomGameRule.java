@@ -1,4 +1,6 @@
-package racing.service;
+package racing.domain;
+
+import racing.domain.GameRule;
 
 import java.util.Random;
 

@@ -1,4 +1,4 @@
-package racing.service;
+package racing.domain;
 
 public interface GameRule {
     public int getPossibleInt();
