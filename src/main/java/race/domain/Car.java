@@ -34,10 +34,6 @@ public class Car {
         return String.valueOf(tracing);
     }
 
-    private boolean isOverThanThree(int input) {
-        return input > BOUND_NUMBER;
-    }
-
     public int getMovingDistance() {
         return this.position.getDistance();
     }
@@ -48,5 +44,9 @@ public class Car {
 
     public String getName() {
         return this.name.get();
+    }
+
+    private boolean isOverThanThree(int input) {
+        return input > BOUND_NUMBER;
     }
 }
