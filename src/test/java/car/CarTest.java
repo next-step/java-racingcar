@@ -1,9 +1,7 @@
 package car;
 
-import car.Impl.CarMove;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import java.io.ByteArrayInputStream;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -40,5 +38,6 @@ public class CarTest {
         }
         assertThat(result).isEqualTo(3);
     }
+
 
 }
