@@ -17,6 +17,24 @@
   - 원칙을 지키는 코드
   - 짧고 간결하고 이해하기 쉬운 코드
 
+## 2차 강의에서
+
+### 절차지향적인 개발 방식
+- 상태값을 꺼내사 객체 밖에서 로직을 구현한 부분 : getter method 가 보일때 의심해보자
+```
+//before
+private static int maxPosition(List<Car> cars) {
+    int maxPosition = 0;
+    for(Car car : cars) {
+        if(maxPosition < car.getPostition() ) {
+            maxPosition = car.getPostition;
+        }
+    }
+    return maxPosition;
+}
+```
+
+
 ## 리뷰사항 정리 (step3)
 
 ### step3 - 1차 리뷰사항
