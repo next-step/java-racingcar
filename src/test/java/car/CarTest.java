@@ -25,7 +25,6 @@ public class CarTest {
     @DisplayName("position 확인")
     void setPositionTest() {
         // given
-        int number = 1;
         Car car = new Car("pobi");
 
         // when
