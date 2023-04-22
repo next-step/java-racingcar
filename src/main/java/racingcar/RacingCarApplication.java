@@ -10,13 +10,11 @@ import racingcar.view.ResultView;
 public class RacingCarApplication {
     public static void main(String[] args) {
         InputView inputView = new InputView();
-
         String[] carNames = inputView.askCarNames();
         RacingCars racingCars = new RacingCars(carNames);
-        Racing racing = new Racing();
 
         int numberOfTrials = inputView.askTrialCount();
-
+        Racing racing = new Racing();
         ResultView resultView = new ResultView();
 
         resultView.printResultTitle();

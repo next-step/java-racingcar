@@ -4,17 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCars {
-    private List<RacingCar> racingCars;
+    private final List<RacingCar> racingCars;
 
     public RacingCars(String[] carNames) {
-        this.racingCars = new ArrayList<>();
+        List<RacingCar> originCars = new ArrayList<>();
 
         for (int i = 0; i < carNames.length; i++) {
-            this.racingCars.add(new RacingCar(carNames[i]));
+            originCars.add(new RacingCar(carNames[i]));
         }
+
+        this.racingCars = new ArrayList<>(originCars);
+    }
+
+    public RacingCars(List<RacingCar> carList) {
+        this.racingCars = new ArrayList<>(carList);
     }
 
     public List<RacingCar> statusOfRacingCars() {
-        return this.racingCars;
+        return new ArrayList<>(racingCars);
     }
 }
