@@ -1,5 +1,6 @@
 package step5_racingcar_refactoring;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
@@ -30,7 +31,37 @@ public class GameRuleTest {
 	@DisplayName("시도횟수_차 이름 긴 경우 입력 테스트")
 	@Test
 	void invalidCarNameInput() {
-		assertThrows(RuntimeException.class, () -> new Cars(new String[] {"abc", "poobiii", "errormessage"}));
+		String[] cars = {"abc", "poobiii", "errormessage"};
+		Class expect = RuntimeException.class;
+		String expectedMsg = "자동차 이름을 길게 작성했습니다";
+
+		assertThatThrownBy(() -> new Cars(cars))
+			.isInstanceOf(expect)
+			.hasMessageContaining(expectedMsg);
+	}
+
+	@DisplayName("시도횟수_빈값 입력 테스트")
+	@Test
+	void emptyCarNameInput() {
+		String[] cars = {" ", "errormessage"};
+		Class expect = RuntimeException.class;
+		String expectedMsg = "널이거나 빈값입니다";
+
+		assertThatThrownBy(() -> new Cars(cars))
+			.isInstanceOf(expect)
+			.hasMessageContaining(expectedMsg);
+	}
+
+	@DisplayName("시도횟수_널값 입력 테스트")
+	@Test
+	void nullCarNameInput() {
+		String[] cars = {null, "errormessage"};
+		Class expect = RuntimeException.class;
+		String expectedMsg = "널이거나 빈값입니다";
+
+		assertThatThrownBy(() -> new Cars(cars))
+			.isInstanceOf(expect)
+			.hasMessageContaining(expectedMsg);
 	}
 
 }

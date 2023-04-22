@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import step5_racingcar_refactoring.domain.Car;
+import step5_racingcar_refactoring.dto.CarDTO;
 import step5_racingcar_refactoring.view.ResultView;
 
 public class CarStatusTest {
@@ -31,9 +32,11 @@ public class CarStatusTest {
 			car.tryMove();
 		}
 
+		CarDTO carDTO = new CarDTO(car);
+
 		String expectedStatus = "test : -----";
 
-		String actualStatus = resultView.formatStatus(car);
+		String actualStatus = resultView.formatStatus(carDTO);
 		assertEquals(expectedStatus, actualStatus);
 	}
 }

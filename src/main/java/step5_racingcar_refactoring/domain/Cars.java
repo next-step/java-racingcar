@@ -29,11 +29,4 @@ public class Cars {
 		}
 	}
 
-	public Cars copyCars() {
-		List<Car> copiedCars = new ArrayList<>();
-		for (Car car : cars) {
-			copiedCars.add(new Car(car));
-		}
-		return new Cars(copiedCars);
-	}
 }

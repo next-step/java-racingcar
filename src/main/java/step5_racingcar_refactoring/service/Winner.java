@@ -1,54 +1,43 @@
 package step5_racingcar_refactoring.service;
 
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Set;
-
-import step5_racingcar_refactoring.domain.Car;
-import step5_racingcar_refactoring.domain.Cars;
 
 public class Winner {
 
-	Set<Car> winners = new LinkedHashSet<>();
+	Set<String> winners = new LinkedHashSet<>();
 
 	private int maxValue = 0;
-	public Set<Car> findWinners(Cars cars)
-	{
-		for(Car car : cars.getCars())
-		{
-			setWinner(car);
-		}
 
-		return winners;
+	public void selectWinner(Map<String, Integer> roundResult) {
+		for (Map.Entry<String, Integer> entry : roundResult.entrySet()) {
+			validateWinner(entry.getKey(), entry.getValue());
+		}
 	}
 
-	private void setWinner(Car car)
-	{
-		if (car.getPosition() > this.maxValue) {
+	public void validateWinner(String name, int position) {
+
+		if (position > this.maxValue) {
 			winners.clear();
-			this.maxValue = car.getPosition();
-			winners.add(car);
+			this.maxValue = position;
+			winners.add(name);
 			return;
 		}
 
-		if (car.getPosition() == this.maxValue) {
-			this.maxValue = car.getPosition();
-			winners.add(car);
+		if (position == this.maxValue) {
+			this.maxValue = position;
+			winners.add(name);
 			return;
 		}
 
-		if (winners.contains(car)) {
-			winners.remove(car);
+		if (winners.contains(name)) {
+			winners.remove(name);
 			return;
 		}
 	}
 
-	public Set<String>  getNames()
-	{
-		Set<String> winnerNameSet = new LinkedHashSet<>();
-		for(Car car : winners)
-		{
-			winnerNameSet.add(car.getName());
-		}
-		return winnerNameSet;
+	public Set<String> getNames() {
+		return winners;
 	}
 }

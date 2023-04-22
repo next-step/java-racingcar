@@ -30,50 +30,46 @@ public class WinnerTest {
 	@DisplayName("1명의 우승자")
 	@Test
 	void winnerTest_1() {
-		List<Car> carList = new ArrayList<>();
-		carList.add(new Car("car1", 0, bound -> 5));
-		carList.add(new Car("car2", 1, bound -> 5));
-		carList.add(new Car("car3", 0, bound -> 5));
+		Map<String, Integer> testMap = new LinkedHashMap<>();
+		testMap.put("car1", 7);
+		testMap.put("car2", 3);
+		testMap.put("car3", 5);
+		testMap.put("car4", 9);
+		testMap.put("car5", 5);
 
-		Cars cars = new Cars(carList);
+		winner.selectWinner(testMap);
 
-		Set<Car> winners = winner.findWinners(cars);
-
-		String expectedWinners1 = "car2";
+		String expectedWinners1 = "car4";
 		assertEquals(expectedWinners1, resultView.printWinnerNames(winner));
 	}
 
 	@DisplayName("2명의 우승자")
 	@Test
 	void winnerTest_2() {
-		List<Car> carList = new ArrayList<>();
-		carList.add(new Car("car1", 0, bound -> 5));
-		carList.add(new Car("car2", 1, bound -> 5));
-		carList.add(new Car("car3", 1, bound -> 5));
+		Map<String, Integer> testMap = new LinkedHashMap<>();
+		testMap.put("car1", 7);
+		testMap.put("car2", 3);
+		testMap.put("car3", 5);
+		testMap.put("car4", 9);
+		testMap.put("car5", 9);
 
-		Cars cars = new Cars(carList);
-
-		Set<Car> winners = winner.findWinners(cars);
-		String expectedWinners2 = "car2, car3";
+		winner.selectWinner(testMap);
+		String expectedWinners2 = "car4, car5";
 		assertEquals(expectedWinners2, resultView.printWinnerNames(winner));
 	}
 
 	@DisplayName("5명의 우승자")
 	@Test
 	void winnerTest_5() {
-		List<Car> carList = new ArrayList<>();
-		carList.add(new Car("car1", 4, bound -> 5));
-		carList.add(new Car("car2", 3, bound -> 5));
-		carList.add(new Car("car3", 4, bound -> 5));
-		carList.add(new Car("car4", 3, bound -> 5));
-		carList.add(new Car("car5", 4, bound -> 5));
-		carList.add(new Car("car6", 4, bound -> 5));
-		carList.add(new Car("car7", 4, bound -> 5));
+		Map<String, Integer> testMap = new LinkedHashMap<>();
+		testMap.put("car1", 7);
+		testMap.put("car2", 7);
+		testMap.put("car3", 7);
+		testMap.put("car4", 7);
+		testMap.put("car5", 7);
 
-		Cars cars = new Cars(carList);
-
-		Set<Car> winners = winner.findWinners(cars);
-		String expectedWinners2 = "car1, car3, car5, car6, car7";
+		winner.selectWinner(testMap);
+		String expectedWinners2 = "car1, car2, car3, car4, car5";
 		assertEquals(expectedWinners2, resultView.printWinnerNames(winner));
 	}
 

@@ -8,6 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import step5_racingcar_refactoring.domain.Cars;
+import step5_racingcar_refactoring.dto.CarDTO;
 import step5_racingcar_refactoring.service.GameProcess;
 
 public class GameProcessTest {
@@ -19,7 +20,7 @@ public class GameProcessTest {
 		int tryCount = 6;
 		Cars cars = new Cars(carNames);
 		GameProcess gameProcess = new GameProcess();
-		List<Cars> results = gameProcess.play(tryCount, cars);
+		List<List<CarDTO>> results = gameProcess.play(tryCount, cars);
 		assertEquals(tryCount, results.size());
 	}
 }
