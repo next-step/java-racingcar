@@ -16,23 +16,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingTest {
     @Test
-    @DisplayName("MAX_POSITION == 4")
-    public void updateMaxPosition_ReturnTrue() {
-        List<RacingCar> racingCarList = new ArrayList<RacingCar>();
-        racingCarList.add(new RacingCar("test", 4));
-        racingCarList.add(new RacingCar("test2", 3));
-
-        Racing racing = new Racing();
-
-        for (RacingCar racingCar : racingCarList) {
-            racing.updateMaxPosition(racingCar.position());
-        }
-
-        int result = racing.maxPosition();
-
-        assertThat(result).isEqualTo(4);
-    }
-    @Test
     @DisplayName("runRacingRound를 통해 자동차 5대를 움직여 position =1 1이하 값인지 확인")
     public void runRacingRound_ReturnPositionOne() {
         String[] test = new String[]{"pobi", "next", "step", "fight", "test"};
