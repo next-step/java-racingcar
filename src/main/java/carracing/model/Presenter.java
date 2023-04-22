@@ -43,5 +43,4 @@ public class Presenter {
     public String getRecord(int i, int j) {
         return this.roundList(j).get(i);
     }
-
 }

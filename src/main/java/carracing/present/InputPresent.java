@@ -17,8 +17,9 @@ public class InputPresent {
 
     public List<String> participates() {
         System.out.println(PARTICIPATES);
-        return Arrays.stream(scanner.nextLine().split(","))
-            .collect(Collectors.toList());
+        return Arrays.stream(
+            scanner.nextLine().split(",")
+        ).collect(Collectors.toList());
     }
 
     public int iteration() {
