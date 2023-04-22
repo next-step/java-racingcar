@@ -11,6 +11,9 @@ public class RaceRunner {
     private final int trial;
     private final TraceView traceView = new TraceView();
 
+    private static final int NO_NAME_LENGTH = 0;
+    private static final int MIN_TRIAL = 1;
+
     public RaceRunner(String[] names, int trial) {
         validate(names.length, trial);
         this.racingCars = new RacingCars(names);
@@ -44,10 +47,10 @@ public class RaceRunner {
     }
 
     private boolean isNoNames(int length) {
-        return length == 0;
+        return length == NO_NAME_LENGTH;
     }
 
     private boolean isLessThanZero(int trial) {
-        return trial < 1;
+        return trial < MIN_TRIAL;
     }
 }
