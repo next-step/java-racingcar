@@ -1,25 +1,21 @@
 package java_racingcar;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        int carNumber = InputView.inputCarNumber();
-        int racingTime = InputView.inputRacingTime();
+        int carNumber = InputView.carNumber();
+        int racingTime = InputView.racingTime();
 
-        List<Car> cars = new ArrayList<>();
-        for(int i = 0; i < carNumber; i++) {
-            cars.add(new Car());
-        }
+        Race race = new Race();
+        List<Car> cars = race.readyForRacingCar(carNumber);
 
-        Random random = new Random();
+        ResultView.printEmptyLine();
+        ResultView.printRaceResult();
+
         for (int i = 0; i < racingTime; i++) {
-            for (Car car : cars) {
-                int randomNumber = random.nextInt(8) + 1;
-                car.race(randomNumber);
-            }
+            race.doRacing(cars);
+            ResultView.printEmptyLine();
         }
     }
 }
