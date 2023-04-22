@@ -5,14 +5,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class MatchTest {
-    @DisplayName("우승자는 여러명일 수 있다")
-    @Test
-    public void multiWinner() {
-        //given
+public class PresenterTest {
 
+    @DisplayName("")
+    @Test
+    public void run() {
+        //given
         //when
         //then
-        fail();
     }
 }
