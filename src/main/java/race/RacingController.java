@@ -1,6 +1,7 @@
 package race;
 
-import race.racing.Racing;
+import race.domain.car.RandomMoving;
+import race.domain.racing.Racing;
 import race.view.InputView;
 import race.view.ResultView;
 
@@ -11,8 +12,8 @@ public class RacingController {
         final List<String> carNames = InputView.carNames();
         final int matchCount = InputView.numberOfAttempts();
 
-        final Racing racing = new Racing(matchCount,carNames);
+        final Racing racing = new Racing(matchCount, carNames);
 
-        ResultView.printScore(racing.race());
+        ResultView.printScore(racing.race(new RandomMoving()));
     }
 }
