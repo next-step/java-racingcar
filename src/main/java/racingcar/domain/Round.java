@@ -1,9 +1,9 @@
-package racingcar;
+package racingcar.domain;
 
 public class Round {
 
-    private static String MIN_NUMBER_FORAMT = "라운드 횟수는 %s번 이상이여야 합니다.";
-    private static int MIN_NUMBER = 1;
+    private static final String MIN_NUMBER_FORAMT = "라운드 횟수는 %s번 이상이여야 합니다.";
+    private static final int MIN_NUMBER = 1;
 
     private final int number;
 

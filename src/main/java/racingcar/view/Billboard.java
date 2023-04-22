@@ -1,4 +1,8 @@
-package racingcar;
+package racingcar.view;
+
+import racingcar.domain.CarResult;
+import racingcar.domain.GameResult;
+import racingcar.domain.RoundResult;
 
 import java.util.List;
 import java.util.stream.Collectors;
