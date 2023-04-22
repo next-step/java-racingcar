@@ -4,7 +4,7 @@ import step3.Car;
 
 import java.util.List;
 
-public class ResultView {
+ public class ResultView {
     public static final String MARK = "-";
 
     public static void printRace(List<Car> cars) {

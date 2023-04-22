@@ -1,8 +1,18 @@
 package step3;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Car {
 
-    int goCount;
+    private int goCount;
+    private static List<Car> cars = new ArrayList<>();
+    public static List<Car> createCars(int num){
+        for(int i=0; i<num; i++){
+            cars.add(new Car());
+        }
+        return cars;
+    }
 
     public Car() {
         this.goCount = 0;
@@ -13,12 +23,7 @@ public class Car {
     }
 
     public void addGoCount() {
-        this.goCount += 1;
+        this.goCount++;
     }
 
-    public void goOrStop(boolean goStop) {
-        if(goStop){
-            this.addGoCount();
-        }
-    }
 }
