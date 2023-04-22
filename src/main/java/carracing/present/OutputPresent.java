@@ -1,5 +1,7 @@
 package carracing.present;
 
+import carracing.model.RacingDisplayVO;
+
 public class OutputPresent {
     public void printResult(RacingDisplayVO racingDisplayVO) {
         for (int i = 0; i<racingDisplayVO.iterationCount() ; i++) {

@@ -1,8 +1,6 @@
 package carracing.model;
 
 
-import carracing.present.RacingDisplayVO;
-
 import java.util.ArrayList;
 import java.util.List;
 
