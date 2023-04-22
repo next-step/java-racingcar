@@ -1,9 +1,9 @@
 package racingcar;
 
 public class Car {
-    public final String name;
+    private final String name;
     private int distance = 0;
-    
+
     public Car(String name) {
         this.name = name;
     }
@@ -18,4 +18,7 @@ public class Car {
         return distance;
     }
 
+    public String name() {
+        return name;
+    }
 }

@@ -32,13 +32,13 @@ public class InputView {
 
     private void validateNameBlank(String name) {
         if (name.isBlank()) {
-            throw new RuntimeException("이름은 공백일 수 없습니다.");
+            throw new IllegalArgumentException("이름은 공백일 수 없습니다.");
         }
     }
 
     private void validateNameLength(String name) {
         if (isLengthGrateThen(name)) {
-            throw new RuntimeException("이름은 5자를 초과할 수 없습니다.");
+            throw new IllegalArgumentException("이름은 5자를 초과할 수 없습니다.");
         }
     }
 

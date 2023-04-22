@@ -13,14 +13,6 @@ public class RacingGame {
         playGame();
     }
 
-    public int participantCount() {
-        return cars.size();
-    }
-
-    public int playCount() {
-        return playCount;
-    }
-
     private void addCar() {
         cars = new Cars(inputView.participantApplication());
     }
@@ -30,9 +22,11 @@ public class RacingGame {
     }
 
     private void playGame() {
+        resultView.start();
         for (int i = 0; i < playCount; i++) {
             cars.moveAll();
+            resultView.score(cars.list());
         }
-        resultView.result(cars.list());
+        resultView.winner(Winner.getWinnerCarNames(cars));
     }
 }
