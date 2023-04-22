@@ -2,17 +2,17 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Racing {
 
-    private static final int LIMIT = 10;
     private int carNum;
-    private int moveNum;
+    private List<Car> cars;
+    private MovingStrategy movingStrategy;
 
-    public Racing(int carNum, int moveNum) {
+    public Racing(int carNum, List<Car> cars, MovingStrategy movingStrategy) {
         this.carNum = carNum;
-        this.moveNum = moveNum;
+        this.cars = cars;
+        this.movingStrategy = movingStrategy;
     }
 
     public static List<Car> create(int carNum) {
@@ -23,11 +23,13 @@ public class Racing {
         return cars;
     }
 
-    public void race(List<Car> cars) {
-        Random random = new Random();
-
+    public void race() {
         for (Car car : cars) {
-            car.move(random.nextInt(LIMIT));
+            car.move(movingStrategy);
         }
+    }
+
+    public List<Car> getRacingCars() {
+        return cars;
     }
 }
