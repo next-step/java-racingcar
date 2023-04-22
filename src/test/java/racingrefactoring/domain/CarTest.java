@@ -30,7 +30,7 @@ class CarTest {
   void 최대_위치인_경우() {
     Car car = new Car("car1", 3);
 
-    MaxPosition maxPosition = new MaxPosition(3);
+    Position maxPosition = new Position(3);
 
     assertThat(car.isMaxPosition(maxPosition)).isTrue();
   }
@@ -39,7 +39,7 @@ class CarTest {
   void 최대_위치가_아닌_경우() {
     Car car = new Car("car1", 2);
 
-    MaxPosition maxPosition = new MaxPosition(3);
+    Position maxPosition = new Position(3);
 
     assertThat(car.isMaxPosition(maxPosition)).isFalse();
   }
