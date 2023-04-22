@@ -3,11 +3,11 @@ package carracing.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RacingDisplayVO {
+public class Presenter {
     private final List<String> names;
     private final List<List<String>> results;
 
-    public RacingDisplayVO() {
+    public Presenter() {
         names = new ArrayList<>();
         results = new ArrayList<>();
     }
