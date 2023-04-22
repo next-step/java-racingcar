@@ -2,7 +2,7 @@ package racing;
 
 public class Winner {
     private String name;
-    private int maxMoveStatus = 0;
+    private int maxPosition = 0;
     private final Cars cars;
 
     public Winner(Cars cars){
@@ -17,18 +17,18 @@ public class Winner {
     }
 
     private void checkWinner(int carIndex) {
-        if(cars.isWinner(carIndex,maxMoveStatus)){
+        if(cars.isWinner(carIndex, maxPosition)){
             replaceWinner(carIndex);
         }
     }
 
     private void replaceWinner(int carIndex) {
-        if (cars.isSharedWinner(carIndex,maxMoveStatus)) {
+        if (cars.isSharedWinner(carIndex, maxPosition)) {
             this.name = this.name + ", " + cars.findOneName(carIndex);
             return;
         }
         this.name = cars.findOneName(carIndex);
-        this.maxMoveStatus = cars.findOneMoveStatus(carIndex);
+        this.maxPosition = cars.findOneMoveStatus(carIndex);
     }
 
     public String getName() {
@@ -36,7 +36,7 @@ public class Winner {
     }
 
 
-    public int getMaxMoveStatus() {
-        return maxMoveStatus;
+    public int getMaxPosition() {
+        return maxPosition;
     }
 }
