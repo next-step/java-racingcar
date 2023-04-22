@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 public class PresenterTest {
 
@@ -16,10 +15,10 @@ public class PresenterTest {
     @BeforeEach
     public void beforeEach() {
         this.presenterFixture = new Presenter();
-        presenterFixture.addDisplay("a", List.of("-","--","---"));
-        presenterFixture.addDisplay("b", List.of("-","--","---"));
-        presenterFixture.addDisplay("c", List.of("-","--","---"));
-        presenterFixture.addDisplay("d", List.of("-","--","---"));
+        presenterFixture.addDisplay("a", List.of("-", "--", "---"));
+        presenterFixture.addDisplay("b", List.of("-", "--", "---"));
+        presenterFixture.addDisplay("c", List.of("-", "--", "---"));
+        presenterFixture.addDisplay("d", List.of("-", "--", "---"));
     }
 
     @DisplayName("경주에 참가한 사람 수가 일치한다")
