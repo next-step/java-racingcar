@@ -5,11 +5,9 @@ import java.util.List;
 
 public class Racer {
     private final String carName;
-    private final List<Integer> scores;
     private final List<Integer> positions;
     public Racer(String carName, List<Integer> scores) {
         this.carName = carName;
-        this.scores = scores;
         this.positions = calculateResult(scores);
     }
 
@@ -28,5 +26,25 @@ public class Racer {
 
     private Integer scoreToResult(int score) {
         return score >= 4 ? 1 : 0;
+    }
+
+    public String carName() {
+        return carName;
+    }
+
+    public List<String> positionPresentation() {
+        List<String> presentList = new ArrayList<>();
+        for(int position : positions) {
+            presentList.add("-".repeat(position));
+        }
+        return presentList;
+    }
+
+    public int finalPosition() {
+        return positions.get(positions.size() - 1);
+    }
+
+    public boolean isWinner(int winnerPosition) {
+        return this.finalPosition() == winnerPosition;
     }
 }
