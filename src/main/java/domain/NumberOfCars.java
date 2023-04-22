@@ -15,4 +15,13 @@ public class NumberOfCars {
     public int getValue() {
         return value;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof NumberOfCars)) {
+            return false;
+        }
+        NumberOfCars numberOfCars = (NumberOfCars) obj;
+        return this.value == numberOfCars.value;
+    }
 }

@@ -15,4 +15,13 @@ public class NumberOfRaces {
     public int getValue() {
         return value;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof NumberOfRaces)) {
+            return false;
+        }
+        NumberOfRaces numberOfRaces = (NumberOfRaces) obj;
+        return this.value == numberOfRaces.value;
+    }
 }
