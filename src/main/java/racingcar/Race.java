@@ -1,11 +1,10 @@
-package step3;
+package racingcar;
 
-import step2.PositiveInteger;
-import step3.numbergenerator.NumberGenerator;
+import positiveinteger.PositiveInteger;
+import racingcar.numbergenerator.NumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Race {
 

@@ -1,4 +1,4 @@
-package step3.numbergenerator;
+package racingcar.numbergenerator;
 
 import java.util.Random;
 

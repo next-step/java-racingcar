@@ -1,6 +1,6 @@
-package step3;
+package racingcar;
 
-import step3.numbergenerator.NumberGenerator;
+import racingcar.numbergenerator.NumberGenerator;
 
 public class Car {
 

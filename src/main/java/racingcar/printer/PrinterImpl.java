@@ -1,7 +1,7 @@
-package step3.printer;
+package racingcar.printer;
 
-import step3.Car;
-import step3.Race;
+import racingcar.Car;
+import racingcar.Race;
 
 public class PrinterImpl implements Printer{
 

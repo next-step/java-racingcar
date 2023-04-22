@@ -1,4 +1,4 @@
-package step2;
+package positiveinteger;
 
 public class PositiveInteger {
 

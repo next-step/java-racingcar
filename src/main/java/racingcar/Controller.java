@@ -1,9 +1,8 @@
-package step3;
+package racingcar;
 
-import step3.numbergenerator.NumberGenerator;
-import step3.numbergenerator.RandomNumberGenerator;
-import step3.printer.Printer;
-import step3.printer.PrinterImpl;
+import racingcar.numbergenerator.RandomNumberGenerator;
+import racingcar.printer.Printer;
+import racingcar.printer.PrinterImpl;
 
 public class Controller {
 

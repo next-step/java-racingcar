@@ -1,4 +1,4 @@
-package step3.numbergenerator;
+package racingcar.numbergenerator;
 
 public interface NumberGenerator {
 

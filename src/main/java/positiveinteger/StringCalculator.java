@@ -1,4 +1,4 @@
-package step2;
+package positiveinteger;
 
 import java.util.Arrays;
 import java.util.regex.Matcher;

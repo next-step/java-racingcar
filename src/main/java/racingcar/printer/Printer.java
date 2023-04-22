@@ -1,6 +1,6 @@
-package step3.printer;
+package racingcar.printer;
 
-import step3.Race;
+import racingcar.Race;
 
 public interface Printer {
 

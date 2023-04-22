@@ -1,6 +1,6 @@
-package step3;
+package racingcar;
 
-import step3.printer.Printer;
+import racingcar.printer.Printer;
 
 public class Output {
 
