@@ -3,9 +3,14 @@ package racing;
 import racing.ui.InputView;
 import racing.ui.ResultView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Racing {
+    private static final String SPLIT_NAMES_DELIMITER = ",";
+    private static final Random RANDOM = new Random();
+    private static final int BOUND_NUMBER = 10;
     private final int try_count;
     private final Cars cars;
 
@@ -37,16 +42,21 @@ public class Racing {
     }
 
     private Cars makeCars(String inputCarNames) {
-        return new Cars(inputCarNames);
+        List<Car> newCars = new ArrayList<>();
+        for (String carName : splitCarNames(inputCarNames)) {
+            newCars.add(new Car(carName));
+        }
+        return new Cars(newCars);
+    }
+
+    private String[] splitCarNames(String inputCarNames) {
+        return inputCarNames.split(SPLIT_NAMES_DELIMITER);
     }
 
     private void race() {
-        Random random = new Random();
         for (int i = 0; i < cars.count(); i++) {
-            Car car = cars.findOne(i);
-            car.move(RacingRule.moveOrStop(random.nextInt(10)));
+            cars.findOne(i).move(RANDOM.nextInt(BOUND_NUMBER));
         }
-
     }
 
     public int getCarsCount() {

@@ -7,15 +7,8 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(String inputCarNames) {
-        cars = new ArrayList<>();
-        for (String carName : splitCarNames(inputCarNames)) {
-            add(carName);
-        }
-    }
-
-    private String[] splitCarNames(String inputCarNames) {
-        return inputCarNames.split(",");
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
     private void add(String name){
@@ -35,7 +28,7 @@ public class Cars {
     }
 
     public int findOneMoveStatus(int carIndex) {
-        return cars.get(carIndex).getMoveStatus();
+        return cars.get(carIndex).getPosition();
     }
 
     public boolean isWinner(int carIndex, int maxMoveStatus) {

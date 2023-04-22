@@ -9,18 +9,7 @@ public class RacingRule {
         throw new AssertionError();
     }
 
-    public static int moveOrStop(int number) {
-        if (number >= MOVABLE_NUMBER) {
-            return move();
-        }
-        return stop();
-    }
-
-    public static int move() {
-        return 1;
-    }
-
-    public static int stop() {
-        return 0;
+    public static boolean moveOrStop(int randomNumber) {
+        return randomNumber >= MOVABLE_NUMBER;
     }
 }
