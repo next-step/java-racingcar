@@ -1,42 +1,57 @@
 package racing;
 
+import java.util.StringJoiner;
+
 public class Winner {
-    private String name;
-    private int maxPosition = 0;
-    private final Cars cars;
+    private Cars winnerCars;
+    private CarPosition maxPosition;
+    private static String WINNER_NAMES_DELEMETER = ", ";
 
-    public Winner(Cars cars){
-        this.cars = cars;
-        findWinner();
+    public Winner(Cars allCars){
+        if(allCars.empty()){
+            throw new IllegalArgumentException("경주 중인 자동차가 없습니다.");
+        }
+        this.winnerCars = new Cars();
+        this.maxPosition = new CarPosition(0);
+        findWinner(allCars);
     }
 
-    private void findWinner() {
-        for (int carIndex = 0; carIndex < cars.count(); carIndex++) {
-            checkWinner(carIndex);
+    private void findWinner(Cars allCars) {
+        for (int carIndex = 0; carIndex < allCars.count(); carIndex++) {
+            Car car = allCars.findOne(carIndex);
+            checkWinner(car);
         }
     }
 
-    private void checkWinner(int carIndex) {
-        if(cars.isWinner(carIndex, maxPosition)){
-            replaceWinner(carIndex);
-        }
-    }
-
-    private void replaceWinner(int carIndex) {
-        if (cars.isSharedWinner(carIndex, maxPosition)) {
-            this.name = this.name + ", " + cars.findOneName(carIndex);
+    private void checkWinner(Car car) {
+        if(car.isOnlyWinner(maxPosition)){
+            replaceWinner(car);
             return;
         }
-        this.name = cars.findOneName(carIndex);
-        this.maxPosition = cars.findOneMoveStatus(carIndex);
+        if(car.isSharedWinner(maxPosition)){
+            addWinner(car);
+        }
     }
 
-    public String getName() {
-        return name;
+    private void replaceWinner(Car car) {
+        winnerCars = new Cars();
+        winnerCars.add(car);
+        maxPosition = car.getPosition();
     }
 
+    private void addWinner(Car car) {
+        winnerCars.add(car);
+    }
 
-    public int getMaxPosition() {
+    public CarPosition getMaxPosition() {
         return maxPosition;
+    }
+
+    public String getNames(){
+        StringJoiner winnerNames = new StringJoiner(WINNER_NAMES_DELEMETER);
+        for (int i = 0; i < winnerCars.count(); i++) {
+            winnerNames.add(winnerCars.findOneName(i));
+        }
+        return winnerNames.toString();
     }
 }

@@ -2,6 +2,7 @@ package racing.ui;
 
 import racing.Car;
 import racing.Cars;
+import racing.Winner;
 
 public class ResultView {
     public static void showRace(Cars cars) {
@@ -13,7 +14,7 @@ public class ResultView {
 
     private static void showOneCarMoveStatus(Car car) {
         System.out.print(car.getName()+" : ");
-        for (int j = 0; j < car.getPosition(); j++) {
+        for (int j = 0; j < car.getPositionValue(); j++) {
             System.out.print("-");
         }
         System.out.println();
@@ -23,7 +24,7 @@ public class ResultView {
         System.out.println("\n실행 결과");
     }
 
-    public static void showWinner(String winnerName) {
-        System.out.print(winnerName+"가 최종 우승했습니다.");
+    public static void showWinners(Winner winners) {
+        System.out.print(winners.getNames()+"가 최종 우승했습니다.");
     }
 }

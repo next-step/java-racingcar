@@ -23,7 +23,19 @@ public class Car {
         return carName.getName();
     }
 
-    public int getPosition() {
-        return position.getPosition();
+    public CarPosition getPosition() {
+        return position;
+    }
+
+    public int getPositionValue() {
+        return position.getValue();
+    }
+
+    public boolean isOnlyWinner(CarPosition maxPosition) {
+        return position.isBiggerThan(maxPosition);
+    }
+
+    public boolean isSharedWinner(CarPosition maxPosition) {
+        return position.isEqualThan(maxPosition);
     }
 }

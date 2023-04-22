@@ -7,12 +7,15 @@ public class Cars {
 
     private final List<Car> cars;
 
+    public Cars(){
+        this(new ArrayList<>());
+    }
+
     public Cars(List<Car> cars) {
         this.cars = cars;
     }
-
-    private void add(String name){
-        cars.add(new Car(name));
+    public void add(Car car) {
+        cars.add(car);
     }
 
     public int count() {
@@ -27,15 +30,7 @@ public class Cars {
         return cars.get(carIndex).getName();
     }
 
-    public int findOneMoveStatus(int carIndex) {
-        return cars.get(carIndex).getPosition();
-    }
-
-    public boolean isWinner(int carIndex, int maxMoveStatus) {
-        return maxMoveStatus <= findOneMoveStatus(carIndex);
-    }
-
-    public boolean isSharedWinner(int carIndex, int maxMoveStatus) {
-        return maxMoveStatus == findOneMoveStatus(carIndex);
+    public boolean empty() {
+        return cars.isEmpty();
     }
 }

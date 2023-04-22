@@ -1,5 +1,7 @@
 package racing;
 
+import java.util.Objects;
+
 public class CarPosition {
     private final int position;
 
@@ -14,11 +16,32 @@ public class CarPosition {
         }
     }
 
-    public int getPosition() {
+    public int getValue() {
         return position;
     }
 
     public CarPosition move() {
         return new CarPosition(position+1);
+    }
+
+    public boolean isBiggerThan(CarPosition maxPosition) {
+        return position > maxPosition.getValue();
+    }
+
+    public boolean isEqualThan(CarPosition maxPosition) {
+        return position == maxPosition.getValue();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CarPosition that = (CarPosition) o;
+        return position == that.position;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(position);
     }
 }

@@ -19,8 +19,8 @@ class WinnerTest {
 
         Winner winner = new Winner(cars);
         assertAll(
-                () -> assertThat(winner.getMaxPosition()).isEqualTo(7),
-                () -> assertThat(winner.getName()).isEqualTo("crong")
+                () -> assertThat(winner.getMaxPosition()).isEqualTo(new CarPosition(7)),
+                () -> assertThat(winner.getNames()).isEqualTo("crong")
         );
     }
 
@@ -35,8 +35,8 @@ class WinnerTest {
 
         Winner winner = new Winner(cars);
         assertAll(
-                () -> assertThat(winner.getMaxPosition()).isEqualTo(7),
-                () -> assertThat(winner.getName()).isEqualTo("crong, conan")
+                () -> assertThat(winner.getMaxPosition()).isEqualTo(new CarPosition(7)),
+                () -> assertThat(winner.getNames()).isEqualTo("crong, conan")
         );
     }
 }

@@ -38,7 +38,7 @@ public class Racing {
             ResultView.showRace(cars);
         }
         Winner winner = new Winner(cars);
-        ResultView.showWinner(winner.getName());
+        ResultView.showWinners(winner);
     }
 
     private Cars makeCars(String inputCarNames) {
