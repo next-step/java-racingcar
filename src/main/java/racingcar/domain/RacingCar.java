@@ -9,11 +9,11 @@ public class RacingCar {
     private String carName;
 
     public RacingCar(String carName) {
-        checkCarName(carName);
-        this.carName = carName;
+        this(carName, 0);
     }
 
     public RacingCar(String carName, int position) {
+        checkCarName(carName);
         this.carName = carName;
         this.position = position;
     }
