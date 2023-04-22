@@ -22,11 +22,10 @@ public class CarNames {
     return this.carNames;
   }
 
-  @Override
-  public String toString() {
+  public List<String> toValues() {
     return carNames.stream()
         .map(CarName::name)
-        .collect(Collectors.joining(","));
+        .collect(Collectors.toList());
   }
 
   private List<CarName> split(String input) {

@@ -27,6 +27,6 @@ public class ResultView {
   }
 
   public void printWinner(CarNames winnerNames) {
-    Printer.println(winnerNames + "가 최종 우승했습니다.");
+    Printer.println(String.join(",", winnerNames.toValues()) + "가 최종 우승했습니다.");
   }
 }
