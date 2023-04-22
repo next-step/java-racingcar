@@ -16,7 +16,7 @@ public class Winner {
 
         int maxDistance = sortedCars.get(0).getMovingDistance();
         sortedCars.stream()
-            .filter(car -> car.getMovingDistance() == maxDistance)
+            .filter(car -> car.isWinner(maxDistance))
             .forEach(car -> winners.add(car.getName()));
 
         return winners;
