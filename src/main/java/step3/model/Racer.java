@@ -5,13 +5,13 @@ import java.util.List;
 
 public class Racer {
     private final String name;
-    private final List<Integer> positions;
+    private final List<Integer> records;
     public Racer(String name, List<Integer> scores) {
         this.name = name;
-        this.positions = calculateResult(scores);
+        this.records = calculateRecords(scores);
     }
 
-    private List<Integer> calculateResult(List<Integer> scores) {
+    private List<Integer> calculateRecords(List<Integer> scores) {
         List<Integer> result = new ArrayList<>();
         for(int i=0 ; i<scores.size() ; i++) {
             int score = scores.get(i);
@@ -34,14 +34,14 @@ public class Racer {
 
     public List<String> positionPresentation() {
         List<String> presentList = new ArrayList<>();
-        for(int position : positions) {
+        for(int position : records) {
             presentList.add("-".repeat(position));
         }
         return presentList;
     }
 
     public int finalPosition() {
-        return positions.get(positions.size() - 1);
+        return records.get(records.size() - 1);
     }
 
     public boolean isWinner(int winnerPosition) {
