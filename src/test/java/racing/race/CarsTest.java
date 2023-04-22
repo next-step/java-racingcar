@@ -32,7 +32,6 @@ class CarsTest {
         });
   }
 
-  // TODO move()에서 전략을 매개변수로 받지 않고 Car를 생성할 때 이 자동차는 랜덤값으로 전진하는 자동차야. 같은 개념으로 상태로 들고 있게
   @Test
   void 레이싱게임진행() {
     cars.race(TRY_NUMBER);

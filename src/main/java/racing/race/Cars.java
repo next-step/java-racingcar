@@ -66,8 +66,10 @@ public class Cars {
     if (carsNumber < 0) {
       throw new NumberFormatException();
     }
+
+    RandomNumberStrategy randomNumberStrategy = new RandomNumberStrategy();
     for (int i = 0; i < carsNumber; i++) {
-      cars.add(new Car(validCarName(names[i])));
+      cars.add(new Car(validCarName(names[i]), randomNumberStrategy));
     }
   }
 
@@ -79,9 +81,8 @@ public class Cars {
   }
 
   private void tryMove() {
-    RandomNumberStrategy randomNumberStrategy = new RandomNumberStrategy();
     for (Car car : this.cars) {
-      car.move(randomNumberStrategy);
+      car.move();
       OutputView.moveDistance(car.name(), car.moveDistance());
     }
   }
