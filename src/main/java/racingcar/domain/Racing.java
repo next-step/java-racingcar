@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import racingcar.strategyTest.MoveStrategy;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Racing {
@@ -12,6 +13,35 @@ public class Racing {
             racingCar.tryToMove(moveStrategy);
             updateMaxPosition(racingCar.position());
         }
+    }
+
+//    public List<String> findWinner(List<RacingCar> racingCars) {
+//        List<Integer> carPositionValues = new ArrayList<>();
+//        for (RacingCar racingCar : racingCars) {
+//            carPositionValues.add(racingCar.position());
+//        }
+////        List<Integer>Collections.max(carPositionValues);
+//    }
+    public List<Integer> makeCarPostionList(List<RacingCar> racingCars) {
+        List<Integer> carPositions = new ArrayList<>();
+
+        for(RacingCar racingcar : racingCars) {
+            carPositions.add(racingcar.position());
+        }
+
+        return carPositions;
+    }
+
+    public int recordMaxPosition(List<Integer> carPositions) {
+        return Collections.max(carPositions);
+    }
+
+    public void findWinner(List<RacingCar> racingCars) {
+        List<Integer> carPositions = makeCarPostionList(racingCars);
+
+        int maxPosition = recordMaxPosition(carPositions);
+
+
     }
 
     public void updateMaxPosition(int position) {
