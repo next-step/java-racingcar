@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Console {
@@ -10,6 +11,12 @@ public class Console {
     }
 
     public int inputInt() {
-        return scanner.nextInt();
+        int playCount;
+        try {
+            playCount = scanner.nextInt();
+        } catch (InputMismatchException ime) {
+            throw new InputMismatchException("숫자를 입력하세요.");
+        }
+        return playCount;
     }
 }

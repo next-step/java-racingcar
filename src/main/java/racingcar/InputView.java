@@ -18,7 +18,6 @@ public class InputView {
         return console.inputInt();
     }
 
-
     private String[] splitName(String name) {
         final String DELIMITER_COMMA = ",";
         return name.split(DELIMITER_COMMA);

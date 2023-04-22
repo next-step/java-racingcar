@@ -18,7 +18,7 @@ public class ResultView {
     }
 
     public void winner(String winnerNames) {
-        screen.print(winnerNames + "가 최종 우승했습니다.");
+        screen.print(winnerNames + "이(가) 최종 우승했습니다.");
     }
 
     private String convert(int distanceDriven) {
