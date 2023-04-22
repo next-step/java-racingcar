@@ -13,21 +13,21 @@ public class Match {
         racers.add(racer);
     }
 
-    public List<RacingDisplayVO> progressDisplay() {
-        List<RacingDisplayVO> racingDisplayVOs = new ArrayList<>();
+    public RacingDisplayVO progressDisplay() {
+        RacingDisplayVO racingDisplayVO = new RacingDisplayVO();
         for (Racer racer : racers) {
-            racingDisplayVOs.add(new RacingDisplayVO(racer));
+            racingDisplayVO.addDisplay(racer.carName(), racer.positionPresentation());
         }
-        return racingDisplayVOs;
+        return racingDisplayVO;
     }
 
-    public List<RacingDisplayVO> winnerDisplay() {
-        List<RacingDisplayVO> racingDisplayVOs = new ArrayList<>();
+    public RacingDisplayVO winnerDisplay() {
         List<Racer> winners = findWinners(racers);
-        for (Racer winner : winners) {
-            racingDisplayVOs.add(new RacingDisplayVO(winner));
+        RacingDisplayVO racingDisplayVO = new RacingDisplayVO();
+        for (Racer winnerRacer : winners) {
+            racingDisplayVO.addDisplay(winnerRacer.carName(), winnerRacer.positionPresentation());
         }
-        return racingDisplayVOs;
+        return racingDisplayVO;
     }
 
     private List<Racer> findWinners(List<Racer> racers) {
