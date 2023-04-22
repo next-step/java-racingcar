@@ -4,42 +4,43 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step5.domain.stretagy.MovingStrategy;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class RacingGameTest {
+class CarsTest {
 
     @Test
     @DisplayName("우승자가 유일한 경우")
     public void singleWinnerTest() {
-        RacingGame.setUp("pobi,crong,honux", new FirstCarWinsStrategy());
-        RacingGame.race();
+        Cars cars = new Cars();
+        cars.setUp(List.of("pobi","crong","honux"), new FirstCarWinsStrategy());
+        cars.race();
 
-        List<String> winners = RacingGame.getWinners();
+        List<String> winners = cars.getWinners();
 
         assertThat(winners).hasSize(1);
-        assertThat(winners).containsExactlyElementsOf(Arrays.asList("pobi"));
+        assertThat(winners).containsExactlyElementsOf(List.of("pobi"));
     }
 
     @Test
     @DisplayName("우승자가 여럿일 경우")
     public void manyWinnerTest() {
-        RacingGame.setUp("pobi,crong,honux", new FirstCarLosesStrategy());
-        RacingGame.race();
+        Cars cars = new Cars();
+        cars.setUp(List.of("pobi","crong","honux"), new FirstCarLosesStrategy());
+        cars.race();
 
-        List<String> winners = RacingGame.getWinners();
+        List<String> winners = cars.getWinners();
 
         assertThat(winners).hasSize(2);
-        assertThat(winners).containsExactlyElementsOf(Arrays.asList("crong", "honux"));
+        assertThat(winners).containsExactlyElementsOf(List.of("crong", "honux"));
     }
 
     private static class FirstCarWinsStrategy implements MovingStrategy {
         private boolean flag = true;
 
         @Override
-        public boolean goOrStop() {
+        public boolean isMoved() {
             if (flag) {
                 flag = false;
                 return true;
@@ -52,7 +53,7 @@ class RacingGameTest {
         private boolean flag = true;
 
         @Override
-        public boolean goOrStop() {
+        public boolean isMoved() {
             if (flag) {
                 flag = false;
                 return false;

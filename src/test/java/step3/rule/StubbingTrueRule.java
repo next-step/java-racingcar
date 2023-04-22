@@ -5,7 +5,7 @@ import step3.gameobject.rule.RaceRule;
 public class StubbingTrueRule implements RaceRule {
 
     @Override
-    public boolean race() {
+    public boolean isMoved() {
         return true;
     }
 

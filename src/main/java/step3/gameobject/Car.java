@@ -27,7 +27,7 @@ public class Car {
     }
 
     public void goOrStop() {
-        if (raceRule.race()) {
+        if (raceRule.isMoved()) {
             plusTrace();
         }
     }

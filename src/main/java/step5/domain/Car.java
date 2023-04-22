@@ -13,15 +13,14 @@ public class Car {
         this.movingStrategy = movingStrategy;
     }
 
-    public String race() {
-        if (movingStrategy.goOrStop()) {
+    public void race() {
+        if (movingStrategy.isMoved()) {
             position.plusPosition();
         }
-        return name + " : " + position;
     }
 
-    public String getNowPosition() {
-        return position.toString();
+    public int getNowPosition() {
+        return position.getPosition();
     }
 
     public String getName() {

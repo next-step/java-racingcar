@@ -19,34 +19,26 @@ public class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {2, 1, 3, 5, 6})
     public void raceMoveTest(int tryCount) {
-        String name = "test";
-        Car car = new Car(name, () -> true);
-        StringBuilder expected = new StringBuilder(name);
-        expected.append(" : -");
+        Car car = new Car("test", () -> true);
 
-        String result = null;
         for (int i = 0; i < tryCount; i++) {
-            result = car.race();
-            expected.append("-");
+            car.race();
         }
 
-        Assertions.assertThat(result).isEqualTo(expected.toString());
+        Assertions.assertThat(car.getNowPosition()).isEqualTo(tryCount + 1);
     }
 
     @DisplayName("멈춘 경우, Position을 증가시키지 않는다.")
     @ParameterizedTest
     @ValueSource(ints = {2, 1, 3, 5, 6})
     public void raceStopTest(int tryCount) {
-        String name = "test";
-        Car car = new Car(name, () -> false);
-        String expected = name + " : -";
+        Car car = new Car("test", () -> false);
 
-        String result = null;
         for (int i = 0; i < tryCount; i++) {
-            result = car.race();
+            car.race();
         }
 
-        Assertions.assertThat(result).isEqualTo(expected);
+        Assertions.assertThat(car.getNowPosition()).isEqualTo(1);
     }
 
 }

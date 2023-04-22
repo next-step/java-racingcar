@@ -6,10 +6,10 @@ public class SimpleRandomMovingStrategy implements MovingStrategy {
 
     private final int threshold;
     private final int randomRange;
+    private final Random random = new Random();
 
     public SimpleRandomMovingStrategy() {
-        this.threshold = 4;
-        this.randomRange = 10;
+        this(4, 10);
     }
 
     public SimpleRandomMovingStrategy(int threshold, int randomRange) {
@@ -18,8 +18,8 @@ public class SimpleRandomMovingStrategy implements MovingStrategy {
     }
 
     @Override
-    public boolean goOrStop() {
-        return threshold <= new Random().nextInt(randomRange);
+    public boolean isMoved() {
+        return threshold <= random.nextInt(randomRange);
     }
 
 }

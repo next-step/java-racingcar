@@ -4,10 +4,14 @@ import java.util.Objects;
 
 public class Position {
 
-    private String position = "-";
+    private int position = 1;
 
     public void plusPosition() {
-        position += "-";
+        position += 1;
+    }
+
+    public int getPosition() {
+        return position;
     }
 
     @Override
@@ -21,11 +25,6 @@ public class Position {
     @Override
     public int hashCode() {
         return Objects.hash(position);
-    }
-
-    @Override
-    public String toString() {
-        return position;
     }
 
 }

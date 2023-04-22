@@ -1,5 +1,6 @@
 package step5.view;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -7,14 +8,20 @@ public class View {
 
     private static final Scanner scanner = new Scanner(System.in);
     private static final String MESSAGE_TO_GET_NAMES = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
+    private static final String MESSAGE_FOR_WRONG_NAME = "차량 이름은 빈칸이 아닌 1~5자여야 합니다.";
     private static final String MESSAGE_TO_GET_TRY_COUNT = "시도할 횟수는 몇 회인가요?";
     private static final String MESSAGE_FOR_WRONG_TRY_COUNT = "시도 횟수는 1보다 작을 수 없습니다.";
     private static final String MESSAGE_FOR_START = "실행 결과";
     private static final String MESSAGE_FOR_RESULT = "가 최종 우승했습니다.";
 
-    public static String getNameOfCars() {
+    public static List<String> getNameOfCars() {
         System.out.println(MESSAGE_TO_GET_NAMES);
-        return scanner.nextLine();
+        String names = scanner.nextLine();
+        String[] split = names.split(",");
+        if (split.length == 0) {
+            throw new IllegalArgumentException(MESSAGE_FOR_WRONG_NAME);
+        }
+        return Arrays.asList(split);
     }
 
     public static int getTryCount() {

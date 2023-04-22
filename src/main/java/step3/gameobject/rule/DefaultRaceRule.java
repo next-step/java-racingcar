@@ -7,7 +7,7 @@ public class DefaultRaceRule implements RaceRule {
     private static final int THRESHOLD = 4;
 
     @Override
-    public boolean race() {
+    public boolean isMoved() {
         return new Random().nextInt(RANDOM_BOUND) >= THRESHOLD;
     }
 }

@@ -6,7 +6,7 @@ public class FirstRacerWinRule implements RaceRule {
     boolean isFirstRacer = true;
 
     @Override
-    public boolean race() {
+    public boolean isMoved() {
         if (isFirstRacer) {
             isFirstRacer = false;
             return true;
