@@ -32,10 +32,8 @@ public class CarsTest {
     }
 
     private String result(int distanceDriven) {
-        String result = "";
-        for (int i = 0; i < distanceDriven; i++) {
-            result += "-";
-        }
-        return result;
+        StringBuilder result = new StringBuilder();
+        result.append("-".repeat(Math.max(0, distanceDriven)));
+        return result.toString();
     }
 }
