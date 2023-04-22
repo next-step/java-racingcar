@@ -12,11 +12,14 @@ public class RacingStarter {
         int requestedMoveNums = inputView.requestMoveNums();
 
         List<Car> cars = Racing.create(requestedCarNums);
-        Racing racing = new Racing(requestedCarNums, requestedMoveNums);
+        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+
+        RandomMovingStrategy randomMovingStrategy = new RandomMovingStrategy(randomNumberGenerator);
+        Racing racing = new Racing(requestedCarNums, cars, randomMovingStrategy);
 
         for (int i = 0; i < requestedMoveNums; i++) {
-            racing.race(cars);
-            resultView.openResults(cars);
+            racing.race();
+            resultView.openResults(racing);
         }
     }
 }
