@@ -8,7 +8,7 @@ public class Scores {
     private final List<Score> scores;
 
     public Scores() {
-        scores = new LinkedList<>();
+        scores = new ArrayList<>();
     }
 
     public void addScore(Car car) {
