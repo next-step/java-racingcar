@@ -17,14 +17,14 @@ public class MatchTest {
         Racer mika = new Racer("mika", List.of(7, 7, 7));
         Racer mj = new Racer("mj", List.of(7, 7, 7));
         Racer oasis = new Racer("oasis", List.of(7, 7, 7));
-        int asnwer = 3;
+        int answer = 3;
         Match match = new Match();
         //when
         match.addRacer(mika);
         match.addRacer(mj);
         match.addRacer(oasis);
         //then
-        assertThat(match.winnerDisplay().participateCount()).isEqualTo(asnwer);
+        assertThat(match.winnerDisplay().participateCount()).isEqualTo(answer);
     }
 
 }
