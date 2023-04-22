@@ -14,6 +14,7 @@ public class GameTest {
     private static final String WINNER_SEPARATOR = ", ";
     private static final String DELIMITER = ",";
     private static final String WINNERS = "car1, car2, car3";
+    private static final boolean MOVED = true;
 
     private final String carName = "car1,car2,car3";
     private final int roundCount = 3;
@@ -22,7 +23,7 @@ public class GameTest {
 
     @BeforeEach
     void setUp() {
-        game = new Game(carName, roundCount, new RandomNumberGenerator(4, 5));
+        game = new Game(carName, roundCount, new TestMoveStrategy(MOVED));
     }
 
     @DisplayName("게임이 실행되면 게임 결과가 있어야 한다.")

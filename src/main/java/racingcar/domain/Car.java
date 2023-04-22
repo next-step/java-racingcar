@@ -2,26 +2,20 @@ package racingcar.domain;
 
 public class Car {
 
-    private static final int MOVED_NUMBER = 4;
-
-    private final RandomNumberGenerator randomNumberGenerator;
+    private final MoveStrategy moveStrategy;
     private final CarName carName;
     private final Position position;
 
-    public Car(final String name, final RandomNumberGenerator randomNumberGenerator) {
-        this.randomNumberGenerator = randomNumberGenerator;
+    public Car(final String name, final MoveStrategy moveStrategy) {
+        this.moveStrategy = moveStrategy;
         this.carName = new CarName(name);
         this.position = new Position();
     }
 
     public void racing() {
-        if (isMove()) {
+        if (moveStrategy.isMove()) {
             position.numberIncrease();
         }
-    }
-
-    private boolean isMove() {
-        return randomNumberGenerator.generate() >= MOVED_NUMBER;
     }
 
     public boolean isWinner(Car car) {

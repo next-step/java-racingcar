@@ -11,24 +11,30 @@ public class Cars {
     private static final String DELIMITER = ",";
     private static final int MIN_NUMBER = 1;
 
-    private List<Car> cars = new ArrayList<>();
+    private final List<Car> cars;
 
-    public Cars(final String carNames, final RandomNumberGenerator randomNumberGenerator) {
-        generate(split(carNames), randomNumberGenerator);
+    private Cars(final List<Car> cars) {
+        this.cars = cars;
     }
 
-    private String[] split(final String carNames) {
+    public static Cars readyCars(final String carNames, final MoveStrategy moveStrategy) {
+        return new Cars(generate(split(carNames), moveStrategy));
+    }
+
+    private static String[] split(final String carNames) {
         return carNames.split(DELIMITER);
     }
 
-    private void generate(final String[] carNames, final RandomNumberGenerator randomNumberGenerator) {
+    private static List<Car> generate(final String[] carNames, final MoveStrategy moveStrategy) {
         validate(carNames);
+        List<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
-            cars.add(new Car(carName, randomNumberGenerator));
+            cars.add(new Car(carName, moveStrategy));
         }
+        return cars;
     }
 
-    private void validate(final String[] carNames) {
+    private static void validate(final String[] carNames) {
         if (carNames.length < MIN_NUMBER) {
             throw new IllegalArgumentException(String.format(MIN_LENGTH_FORNAT, MIN_NUMBER));
         }

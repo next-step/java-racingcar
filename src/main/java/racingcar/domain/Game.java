@@ -7,8 +7,8 @@ public class Game {
     private final Cars cars;
     private final Round round;
 
-    public Game(final String carNames, final int number, final RandomNumberGenerator randomNumberGenerator) {
-        this.cars = new Cars(carNames, randomNumberGenerator);
+    public Game(final String carNames, final int number, final MoveStrategy moveStrategy) {
+        this.cars = Cars.readyCars(carNames, moveStrategy);
         this.round = new Round(number);
     }
 
