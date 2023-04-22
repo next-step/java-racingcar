@@ -1,6 +1,4 @@
-package car.service;
-
-import car.dto.Car;
+package car.domain;
 
 import java.util.*;
 
@@ -9,7 +7,7 @@ public class WinnerCalculator {
         int maxPosition = getMaxPosition(cars);
         List<Car> winners = new ArrayList<>();
         for (Car car : cars) {
-            if (car.getPosition() == maxPosition) {
+            if (car.isWinner(maxPosition)) {
                 winners.add(car);
             }
         }

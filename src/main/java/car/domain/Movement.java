@@ -1,6 +1,4 @@
-package car.service;
-
-import car.dto.Car;
+package car.domain;
 
 import java.util.List;
 

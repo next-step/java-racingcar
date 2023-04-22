@@ -1,7 +1,7 @@
 package car.view;
 
 
-import car.dto.Car;
+import car.domain.Car;
 
 import java.util.List;
 

@@ -1,10 +1,10 @@
 package car.controller;
 
-import car.dto.Car;
-import car.service.InputType;
-import car.service.Movement;
-import car.service.RandomMoveStrategy;
-import car.service.WinnerCalculator;
+import car.domain.Car;
+import car.view.InputType;
+import car.domain.Movement;
+import car.domain.RandomMoveStrategy;
+import car.domain.WinnerCalculator;
 import car.view.InputView;
 import car.view.ResultView;
 

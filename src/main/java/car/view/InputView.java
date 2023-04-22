@@ -1,8 +1,5 @@
 package car.view;
 
-import car.service.InputType;
-import car.service.InputValidator;
-
 import java.util.Scanner;
 
 public class InputView {

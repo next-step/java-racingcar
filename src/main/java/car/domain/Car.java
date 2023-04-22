@@ -1,4 +1,4 @@
-package car.dto;
+package car.domain;
 
 public class Car {
     private final String name;
@@ -19,5 +19,9 @@ public class Car {
 
     public void move(){
         position++;
+    }
+
+    public boolean isWinner(int maxPosition){
+        return this.getPosition() == maxPosition;
     }
 }
