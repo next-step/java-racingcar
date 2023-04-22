@@ -4,7 +4,8 @@ import java.util.List;
 
 public class ResultView {
 
-    public void openResults(List<Car> cars) {
+    public void openResults(Racing racing) {
+        List<Car> cars = racing.getRacingCars();
         for (Car car : cars) {
             openIndividualResult(car);
         }
