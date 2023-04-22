@@ -9,7 +9,7 @@ public class CarRacing {
         InputPresent inputPresent = new InputPresent();
         OutputPresent outputPresent = new OutputPresent();
         Match match = new Match(inputPresent.participates(), inputPresent.iterations());
-        outputPresent.printResult(match.display());
+        outputPresent.printResult(match.progressDisplay());
         outputPresent.printWinner(match.winnerDisplay());
     }
 }
