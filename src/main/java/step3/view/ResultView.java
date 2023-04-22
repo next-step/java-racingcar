@@ -1,8 +1,12 @@
-package step3.car.game;
+package step3.view;
 
+import step3.domain.Car;
+import step3.domain.Cars;
+
+import java.util.List;
 import java.util.stream.IntStream;
 
-public class CarsView {
+public class ResultView {
 
     public void print(Cars cars) {
         cars.cars()
@@ -19,7 +23,11 @@ public class CarsView {
         System.out.println("");
     }
 
-    public void winner(Cars cars) {
-        System.out.println(cars.winners() + " 가 최종우승했씁니다.");
+    public void winner(List<String> winners) {
+        System.out.println(winners + " 가 최종우승했씁니다.");
+    }
+
+    public void result() {
+        System.out.println("실행 결과");
     }
 }

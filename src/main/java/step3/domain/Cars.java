@@ -1,4 +1,4 @@
-package step3.car.game;
+package step3.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 public class Cars {
     private final static Random random = new Random();
     private static final int RANDOM_NUMBER_BOUND = 10;
-    final List<Car> values;
+    private final List<Car> values;
 
     public Cars(int numberOfCars) {
         values = new ArrayList<>();
@@ -32,18 +32,18 @@ public class Cars {
     }
 
     public List<String> winners() {
+        int highScore = highScore();
         return values.stream()
-                .filter(car -> car.sameScore(highScore()))
+                .filter(car -> car.isWinner(highScore))
                 .map(Car::name)
                 .collect(Collectors.toList());
     }
 
     private int highScore() {
-        int highScore = values.stream()
+        return values.stream()
                 .mapToInt(Car::location)
                 .max()
-                .orElse(Integer.MIN_VALUE);
-        return highScore;
+                .orElseThrow(() -> new RuntimeException("점수를 계산할 수 없습니다."));
     }
 
     private int randomNumber() {

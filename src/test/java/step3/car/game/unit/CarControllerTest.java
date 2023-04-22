@@ -1,30 +1,21 @@
 package step3.car.game.unit;
 
 import org.junit.jupiter.api.Test;
-import step3.car.game.CarGame;
+import step3.controller.CarController;
 
 import java.util.Random;
 
 import static org.assertj.core.api.AssertionsForClassTypes.*;
 
-public class CarGameTest {
+public class CarControllerTest {
 
     @Test
     void 자동차게임_생성() {
-        int numberOfCars = 3;
+        String[] carNames = new String[]{"benz","bmw","audi"};
         int numberOfMoves = 5;
 
-        assertThatCode(() -> new CarGame(numberOfCars, numberOfMoves))
+        assertThatCode(() -> new CarController(carNames, numberOfMoves))
                 .doesNotThrowAnyException();
-    }
-
-    @Test
-    void 자동차게임_생성시_입력값이_0미만인경우_예외발생() {
-        int numberOfCars = -3;
-        int numberOfMoves = -5;
-
-        assertThatThrownBy(() -> new CarGame(numberOfCars, numberOfMoves))
-                .isInstanceOf(RuntimeException.class);
     }
 
     @Test
