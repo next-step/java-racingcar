@@ -12,6 +12,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class RacerTest {
+    private static final String EXCEPTION_MESSAGE_FIXTURE = "자동차 이름의 길이는 5를 초과할 수 없습니다";
+
     @DisplayName("자동차 이름은 5자를 초과할수 없다")
     @Test
     public void limitNameLength5 () {
@@ -21,7 +23,8 @@ public class RacerTest {
         //then
         assertThatThrownBy(() -> {
             new Racer(input, List.of(1));
-        }).isInstanceOf(IllegalArgumentException.class);
+        }).isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining(EXCEPTION_MESSAGE_FIXTURE);
     }
 
     @DisplayName("자동차에 이름을 부여할 수 있다")

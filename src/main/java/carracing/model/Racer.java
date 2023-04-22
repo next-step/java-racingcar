@@ -1,5 +1,7 @@
 package carracing.model;
 
+import carracing.exception.RacerNameLimitException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +12,13 @@ public class Racer {
     public Racer(String name, List<Integer> scores) {
         this.name = name;
         this.records = calculateRecords(scores);
+        validate();
+    }
+
+    private void validate() {
+        if(this.name.length() >5) {
+            throw new RacerNameLimitException();
+        }
     }
 
     private List<Integer> calculateRecords(List<Integer> scores) {
@@ -26,7 +35,7 @@ public class Racer {
     }
 
     private Integer scoreToResult(int score) {
-        return score >= 4 ? 1 : 0;
+        return score > 4 ? 1 : 0;
     }
 
     public String carName() {
