@@ -5,18 +5,16 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.fail;
 
 public class RacerTest {
     private static final String EXCEPTION_MESSAGE_FIXTURE = "자동차 이름의 길이는 5를 초과할 수 없습니다";
 
     @DisplayName("자동차 이름은 5자를 초과할수 없다")
     @Test
-    public void limitNameLength5 () {
+    public void limitNameLength5() {
         //given
         String input = "123456";
         //when

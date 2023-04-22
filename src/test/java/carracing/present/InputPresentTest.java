@@ -8,7 +8,6 @@ import java.io.ByteArrayInputStream;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 public class InputPresentTest {
 
@@ -35,6 +34,7 @@ public class InputPresentTest {
         //then
         assertThat(String.join(",", participates)).isEqualTo(input);
     }
+
     @DisplayName("입력한 이름 수 만큼 자동차가 경주에 참여한다")
     @Test
     public void iteration() {

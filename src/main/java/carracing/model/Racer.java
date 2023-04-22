@@ -16,7 +16,7 @@ public class Racer {
     }
 
     private void validate() {
-        if(this.name.length() >5) {
+        if (this.name.length() > 5) {
             throw new RacerNameLimitException();
         }
     }

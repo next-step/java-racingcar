@@ -19,11 +19,12 @@ public class Presenter {
 
     public List<String> roundList(int roundIndex) {
         List<String> stringList = new ArrayList<>();
-        for(int i=0 ; i<results.get(0).size() ; i++) {
+        for (int i = 0; i < results.get(0).size(); i++) {
             stringList.add(results.get(roundIndex).get(i));
         }
         return stringList;
     }
+
     public String participateName(int index) {
         return names.get(index);
     }
