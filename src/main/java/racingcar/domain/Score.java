@@ -9,6 +9,11 @@ public class Score {
         this.carName = car.findCarName();
     }
 
+    public Score(int point, String carName) {
+        this.point = point;
+        this.carName = carName;
+    }
+
     public int findPoint() {
         return point;
     }

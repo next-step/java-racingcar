@@ -27,7 +27,7 @@ public class CarTest {
         Assertions.assertThat(car.findCarPoint()).isEqualTo( 1);
     }
 
-    @DisplayName("차가 정지한 경우 스코어(위치)는 1이다")
+    @DisplayName("차가 정지한 경우 스코어(위치)는 0이다")
     @Test
     void 차의_정지_테스트() {
         Car car = new Car("korea");

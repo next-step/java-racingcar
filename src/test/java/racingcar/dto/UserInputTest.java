@@ -17,13 +17,4 @@ public class UserInputTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차 시도 횟수는 양수만 입력 가능합니다");
     }
-
-    @DisplayName("자동차 이름 5자리를 초과하면 예외가 발생한다")
-    @ParameterizedTest
-    @ValueSource(strings = {"koreajapan", "chinabetnam"})
-    void 자동차_이름_예외_테스트(String carName) {
-        Assertions.assertThatThrownBy(() -> new UserInput(1, carName))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자동차 이름은 5자를 초과 할 수 없습니다");
-    }
 }

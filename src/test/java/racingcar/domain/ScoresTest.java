@@ -4,10 +4,9 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("스코어 테스트")
 class ScoresTest {
@@ -36,8 +35,9 @@ class ScoresTest {
 
         List<Score> winners = scores.findWinners();
 
-        Assertions.assertThat(winners.get(0).findCarName()).isEqualTo("test3");
-        Assertions.assertThat(winners.get(0).findPoint()).isEqualTo(9);
+        Assertions.assertThat(winners)
+                .usingRecursiveFieldByFieldElementComparator()
+                .containsExactly(new Score(9, "test3"));
     }
 
     @DisplayName("우승자는 1명 이상 일 수 있다")
@@ -67,7 +67,11 @@ class ScoresTest {
         List<String> winnerNames = scores.findWinnerNames();
 
         Assertions.assertThat(winnerNames.size()).isEqualTo(1);
-        Assertions.assertThat(winnerNames.get(0)).isEqualTo("test1");
+        Assertions.assertThat(winnerNames)
+                .usingDefaultElementComparator()
+                .usingRecursiveFieldByFieldElementComparator()
+                .containsExactly("test1");
+
     }
 
     @DisplayName("우승자가 여러명이면 이름도 복수로 전달받는다")
@@ -82,15 +86,8 @@ class ScoresTest {
         List<String> winnerNames = scores.findWinnerNames();
 
         Assertions.assertThat(winnerNames.size()).isEqualTo(2);
-        Assertions.assertThat(winnerNames).contains("test1", "test3");
+        Assertions.assertThat(winnerNames)
+                .usingRecursiveFieldByFieldElementComparator()
+                .containsExactly("test1", "test3");
     }
-
-
-
-
-
-
-
-
-
 }

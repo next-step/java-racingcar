@@ -9,8 +9,7 @@ import java.util.stream.IntStream;
 
 public class RacingGame {
 
-    public static final String DELIMITER = ",";
-    private String carName;
+    private List<String> carNames;
     private int gameRound;
 
     public RacingGame() {
@@ -18,11 +17,11 @@ public class RacingGame {
 
     public RacingGame(UserInput userInput) {
         gameRound = userInput.getGameRound();
-        carName = userInput.getCarName();
+        carNames = userInput.getCarNames();
     }
 
     public List<Scores> startGame(NumberGeneratorStrategy numberGeneratorStrategy) {
-        Cars cars = new Cars(carName);
+        Cars cars = new Cars(carNames);
         return round(cars, numberGeneratorStrategy);
     }
 

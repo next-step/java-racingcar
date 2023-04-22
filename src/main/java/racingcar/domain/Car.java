@@ -7,7 +7,7 @@ public class Car {
     private String name;
     
     public Car(String carName) {
-        this.name = carName;
+        this(0, carName);
     }
 
     public Car(int point, String name) {

@@ -19,15 +19,12 @@ import java.util.stream.Collectors;
 @DisplayName("자동차 경주 테스트")
 class RacingGameTest {
 
-    public static final String CAR_NAME = "korea, japan, china";
-
     @DisplayName("전진 전략으로 1회 레이스를 진행하면 모든 차들의 위치는 1이다")
     @Test
     void 전진_레이스_테스트() {
         NumberGeneratorStrategy numberGeneratorStrategy = new MovableNumberGeneratorStrategy();
         RacingGame racingGame = new RacingGame();
-
-        Cars cars = new Cars(CAR_NAME);
+        Cars cars = new Cars(Arrays.asList("korea", "japan", "china"));
         Scores scores = racingGame.race(cars, numberGeneratorStrategy);
         List<Integer> points = scores.findAllScores().stream()
                 .mapToInt(Score::findPoint)
@@ -43,7 +40,7 @@ class RacingGameTest {
         NumberGeneratorStrategy numberGeneratorStrategy = new NonMovableNumberGeneratorStrategy();
         RacingGame racingGame = new RacingGame();
 
-        Cars cars = new Cars(CAR_NAME);
+        Cars cars = new Cars(Arrays.asList("korea", "japan", "china"));
         Scores scores = racingGame.race(cars, numberGeneratorStrategy);
         List<Integer> points = scores.findAllScores().stream()
                 .mapToInt(Score::findPoint)
@@ -55,14 +52,14 @@ class RacingGameTest {
 
     @ParameterizedTest(name = "스코어의 결과 사이즈는 게임 라운드를 진행한 라운드 수와 같다")
     @ValueSource(ints = {3, 5, 7})
-    void 라운드_테스트(Integer number) {
-        UserInput userInput = new UserInput(number, CAR_NAME);
+    void 라운드_테스트(Integer gameRound) {
+        UserInput userInput = new UserInput(gameRound, "korea, japan, china");
         RacingGame racingGame = new RacingGame(userInput);
         NumberGeneratorStrategy numberGeneratorStrategy = new RandomNumberGeneratorStrategy();
 
         List<Scores> scoresList = racingGame.startGame(numberGeneratorStrategy);
 
-        Assertions.assertThat(scoresList).size().isEqualTo(number);
+        Assertions.assertThat(scoresList).size().isEqualTo(gameRound);
     }
 
 }

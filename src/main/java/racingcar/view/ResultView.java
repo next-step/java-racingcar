@@ -21,15 +21,11 @@ public class ResultView {
     }
 
     private static void printWinner(List<Scores> scores) {
-        Scores lastScore = getLastElementUsingArrayDeque(scores);
-        List<String> winnerNames = lastScore.findWinnerNames();
+        int size = scores.size();
+        Scores lastScores = scores.get(scores.size() -1 );
+        List<String> winnerNames = lastScores.findWinnerNames();
         final String winnersWithDelimiter = String.join(",", winnerNames);
         System.out.println(winnersWithDelimiter + WINNER_RESULT_EXPRESSION);
-    }
-
-    public static Scores getLastElementUsingArrayDeque(List<Scores> arrList) {
-        ArrayDeque<Scores> deque = new ArrayDeque<>(arrList);
-        return deque.getLast();
     }
 
     private static void printScore(Scores scores) {

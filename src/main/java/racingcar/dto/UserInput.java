@@ -1,30 +1,27 @@
 package racingcar.dto;
 
-import java.util.stream.IntStream;
+import racingcar.domain.Car;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserInput {
 
     public static final String DELIMITER = ",";
     private final Integer gameRound;
-    private String carName;
+    // private String carName;
+    private List<String> carNames = new ArrayList<>();
 
-    public UserInput(Integer gameRound, String carName) {
+    public UserInput(Integer gameRound, String names) {
         validateNegativeNumber(gameRound);
-        validateCarName(carName);
+        splitCarName(names);
         this.gameRound = gameRound;
-        this.carName = carName;
     }
 
-    private void validateCarName(String carName) {
-        String[] name = carName.split(DELIMITER);
+    private void splitCarName(String names) {
+        String[] name = names.split(DELIMITER);
         for (int i = 0; i < name.length; i++) {
-            validateLength(name[i]);
-        }
-    }
-
-    private void validateLength(String name) {
-        if (name.trim().length() > 5) {
-            throw new IllegalArgumentException("자동차 이름은 5자를 초과 할 수 없습니다");
+            carNames.add(name[i]);
         }
     }
 
@@ -32,8 +29,8 @@ public class UserInput {
         return gameRound;
     }
 
-    public String getCarName() {
-        return carName;
+    public List<String> getCarNames() {
+        return this.carNames;
     }
 
     private static void validateNegativeNumber(Integer gameRound) {
