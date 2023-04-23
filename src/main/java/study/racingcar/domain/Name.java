@@ -8,13 +8,13 @@ public class Name {
 
   private final String name;
 
-  public Name(String name) {
+  public Name(final String name) {
     validationName(name);
 
     this.name = name.trim();
   }
 
-  private void validationName(String name) {
+  private void validationName(final String name) {
     if (name == null || name.isBlank()) {
       throw new InvalidCarNameException("이름을 1자 이상 입력해주세요.: ");
     }

@@ -18,7 +18,6 @@ public class Car {
   }
 
   public Car(final Name name, final Position position) {
-
     this.name = name;
     this.position = position;
   }
@@ -26,7 +25,7 @@ public class Car {
   public void move(RandomIntFactory randomIntFactory) {
     RandomInt randomInt = randomIntFactory.createRandomInt();
     if (randomInt.isGreaterThan(MINIMUM_MOVE_VALUE)) {
-      this.position.increase();
+      position = position.increase();
     }
   }
 
@@ -43,6 +42,6 @@ public class Car {
   }
 
   public int getPosition() {
-    return this.position.getNumber();
+    return this.position.getPosition();
   }
 }

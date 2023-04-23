@@ -25,12 +25,8 @@ public class PositionTest {
   public void increase_plusNumber(){
     Position position = new Position();
 
-    position.increase();
-    assertThat(position.equals(new Position(1))).isTrue();
-    position.increase();
-    assertThat(position.equals(new Position(2))).isTrue();
-    position.increase();
-    assertThat(position.equals(new Position(3))).isTrue();
+    assertThat(position.increase().equals(new Position(1))).isTrue();
+    assertThat(position.increase().increase().equals(new Position(2))).isTrue();
   }
 
   @DisplayName("위치 값이 같다면 Position은 동등하다.")

@@ -30,7 +30,7 @@ public class Race {
     return maxPosition;
   }
 
-  private List<Car> findWinners(Position maxPosition) {
+  private List<Car> findWinners(final Position maxPosition) {
     List<Car> winners = new ArrayList<>();
     for (Car car : this.cars) {
       if (car.isSamePosition(maxPosition)) {
