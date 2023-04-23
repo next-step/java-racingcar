@@ -18,6 +18,11 @@ public class Car {
         this.name = name;
     }
 
+    public Car(String name, int goCount) {
+        this.name = name;
+        this.goCount = goCount;
+    }
+
     public int getGoCount() {
         return goCount;
     }
