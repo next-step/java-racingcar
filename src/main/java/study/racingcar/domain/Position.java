@@ -47,7 +47,7 @@ public class Position {
     return otherPosition;
   }
 
-  public String getFootPrint(String footPrint) {
-    return footPrint.repeat(this.number);
+  public int getNumber() {
+    return number;
   }
 }

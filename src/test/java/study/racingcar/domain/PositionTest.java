@@ -10,7 +10,7 @@ public class PositionTest {
 
   @DisplayName("위치 값이 0 미만인 위치는 생성할 수 없다.")
   @Test
-  public void position_ThrowException_LessThan0() {
+  public void position_ThrowException_0미만() {
     assertThatThrownBy(() -> new Position(-1)).isInstanceOf(IllegalArgumentException.class);
   }
 
