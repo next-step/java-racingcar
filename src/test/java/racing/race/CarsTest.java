@@ -3,8 +3,12 @@ package racing.race;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
+import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racing.strategy.MoveNumberStrategy;
+import racing.strategy.StopNumberStrategy;
 
 class CarsTest {
 
@@ -19,22 +23,50 @@ class CarsTest {
 
   @Test
   void 우승자는0명일수없다() {
-    cars.race(TRY_NUMBER);
+    List<Car> winners = cars.race(TRY_NUMBER);
 
-    assertThat(cars.getWinnerCars().size()).isGreaterThan(0);
+    assertThat(winners.size()).isGreaterThan(0);
   }
 
   @Test
-  void 자동차이름은5자를초과할수없다() {
-    assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
-        .isThrownBy(() -> {
-          cars = new Cars("pobipobi,crong,honux");
-        });
+  void 우승자한명구하기() {
+    Car yeCar = new Car("yecar", new MoveNumberStrategy());
+    yeCar.move();
+    yeCar.move();
+    yeCar.move();
+
+    Car juCar = new Car("jucar", new StopNumberStrategy());
+    juCar.move();
+
+    Cars cars = new Cars(Arrays.asList(yeCar, juCar));
+
+    Winner winner = new Winner();
+    List<Car> winners = winner.findWinner(3, cars);
+    assertThat(winners).contains(yeCar);
   }
 
   @Test
-  void 레이싱게임진행() {
-    cars.race(TRY_NUMBER);
+  void 우승자두명구하기() {
+    Car yeCar = new Car("yecar", new MoveNumberStrategy());
+    yeCar.move();
+    yeCar.move();
+    yeCar.move();
+
+    Car juCar = new Car("jucar", new MoveNumberStrategy());
+    juCar.move();
+    juCar.move();
+    juCar.move();
+
+    Car siCar = new Car("sicar", new StopNumberStrategy());
+    siCar.move();
+    siCar.move();
+
+    Cars cars = new Cars(Arrays.asList(yeCar, juCar, siCar));
+
+    Winner winner = new Winner();
+    List<Car> winners = winner.findWinner(3, cars);
+    assertThat(winners).contains(yeCar);
+    assertThat(winners).contains(juCar);
   }
 
   @Test

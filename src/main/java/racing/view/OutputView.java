@@ -1,5 +1,6 @@
 package racing.view;
 
+import java.util.List;
 import racing.race.Car;
 import racing.race.Cars;
 
@@ -29,9 +30,9 @@ public class OutputView {
     System.out.println();
   }
 
-  public static void winner(Cars cars) {
+  public static void winner(List<Car> cars) {
     StringBuilder winnerNames = new StringBuilder();
-    for (Car car : cars.getWinnerCars()) {
+    for (Car car : cars) {
       winnerNames.append(car.name()).append(", ");
     }
     System.out.println(winnerNames.delete(winnerNames.length() - 2, winnerNames.length())

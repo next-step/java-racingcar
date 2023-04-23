@@ -7,15 +7,18 @@ import racing.view.OutputView;
 
 public class Cars {
 
-  private final List<Car> cars = new LinkedList<>();
-  private final List<Car> winnerCars = new LinkedList<>();
+  private List<Car> cars = new LinkedList<>();
 
   public Cars(String carsName) {
     String[] names = getStrings(carsName);
     ready(names.length, names);
   }
 
-  public void race(int tryNumber) {
+  public Cars(List<Car> cars) {
+    this.cars = cars;
+  }
+
+  public List<Car> race(int tryNumber) {
     if (tryNumber < 0) {
       throw new NumberFormatException();
     }
@@ -23,34 +26,12 @@ public class Cars {
       tryMove();
       OutputView.prinln();
     }
-    findWinner();
+
+    Winner winner = new Winner();
+    return winner.findWinner(findMaxDistance(), this);
   }
 
-  public List<Car> getGameCars() {
-    return this.cars;
-  }
-
-  public List<Car> getWinnerCars() {
-    return this.winnerCars;
-  }
-
-  private void findWinner() {
-    findWinner(findMaxDistance());
-  }
-
-  private void findWinner(int maxDistance) {
-    for (Car car : this.cars) {
-      checkWinner(maxDistance, car);
-    }
-  }
-
-  private void checkWinner(int maxDistance, Car car) {
-    if (car.moveDistance() == maxDistance) {
-      winnerCars.add(car);
-    }
-  }
-
-  private int findMaxDistance() {
+  int findMaxDistance() {
     int maxDistance = 0;
     for (Car car : this.cars) {
       maxDistance = Math.max(car.moveDistance(), maxDistance);
@@ -69,15 +50,8 @@ public class Cars {
 
     RandomNumberStrategy randomNumberStrategy = new RandomNumberStrategy();
     for (int i = 0; i < carsNumber; i++) {
-      cars.add(new Car(validCarName(names[i]), randomNumberStrategy));
+      cars.add(new Car(names[i], randomNumberStrategy));
     }
-  }
-
-  private String validCarName(String name) {
-    if (name.length() > 5) {
-      throw new StringIndexOutOfBoundsException();
-    }
-    return name;
   }
 
   private void tryMove() {
@@ -85,6 +59,10 @@ public class Cars {
       car.move();
       OutputView.moveDistance(car.name(), car.moveDistance());
     }
+  }
+
+  public List<Car> getGameCars() {
+    return this.cars;
   }
 
 }

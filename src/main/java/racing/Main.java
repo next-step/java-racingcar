@@ -1,5 +1,7 @@
 package racing;
 
+import java.util.List;
+import racing.race.Car;
 import racing.race.Cars;
 import racing.view.InputView;
 import racing.view.OutputView;
@@ -15,8 +17,9 @@ public class Main {
     int tryNumber = InputView.getIntValue();
 
     OutputView.result();
-    cars.race(tryNumber);
-    OutputView.winner(cars);
+    List<Car> winner = cars.race(tryNumber);
+
+    OutputView.winner(winner);
   }
 
 }
