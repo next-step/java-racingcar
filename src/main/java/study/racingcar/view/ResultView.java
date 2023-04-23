@@ -1,5 +1,6 @@
 package study.racingcar.view;
 
+import java.util.ArrayList;
 import java.util.List;
 import study.racingcar.domain.Car;
 
@@ -31,11 +32,20 @@ public class ResultView {
 
   private static void printCars(List<Car> cars) {
     for (Car car : cars) {
-      System.out.println(car.getName() + " : " + DEFAULT_FOOTPRINT.repeat(car.getPosition()));
+      System.out.println(car.getName() + " : " + car.getFootPrint(DEFAULT_FOOTPRINT));
     }
   }
 
-  public static void printWinners(List<String> winners) {
-    System.out.println(NEXT_LINE + String.join(DEFAULT_DELIMITER, winners) + "가 최종 우승했습니다.");
+  public static void printWinners(List<Car> winners) {
+    System.out
+        .println(NEXT_LINE + String.join(DEFAULT_DELIMITER, getNames(winners)) + "가 최종 우승했습니다.");
+  }
+
+  private static List<String> getNames(List<Car> winners) {
+    List<String> names = new ArrayList<>();
+    for (Car winner : winners) {
+      names.add(winner.getName());
+    }
+    return names;
   }
 }

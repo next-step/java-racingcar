@@ -1,12 +1,10 @@
 package study.racingcar.domain;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import study.racingcar.factory.RandomIntFactory;
 
 public class Race {
-
-  private static final int FIRST_INDEX = 0;
 
   private List<Car> cars;
 
@@ -14,36 +12,35 @@ public class Race {
     this.cars = cars;
   }
 
-  public void play() {
-    for (Car car : cars) {
-      car.move();
+  public void play(RandomIntFactory randomIntFactory) {
+    for (Car car : this.cars) {
+      car.move(randomIntFactory.createRandomInt());
     }
+  }
+
+  public List<Car> findWinner() {
+    return findWinners(getMaxPosition());
+  }
+
+  private Position getMaxPosition() {
+    Position maxPosition = new Position(0);
+    for (Car car : this.cars) {
+      maxPosition = car.getMaxPosition(maxPosition);
+    }
+    return maxPosition;
+  }
+
+  private List<Car> findWinners(Position maxPosition) {
+    List<Car> winners = new ArrayList<>();
+    for (Car car : this.cars) {
+      if (car.isSamePosition(maxPosition)) {
+        winners.add(car);
+      }
+    }
+    return winners;
   }
 
   public List<Car> getCars() {
     return cars;
-  }
-
-  public List<String> getWinners() {
-    return getWinnerNames(sortCars());
-  }
-
-  private List<Car> sortCars() {
-    List<Car> sortedCars = new ArrayList<>(this.getCars());
-    Collections.sort(sortedCars, (car1, car2) -> {
-      return car2.getPosition() - car1.getPosition();
-    });
-    return sortedCars;
-  }
-
-  private List<String> getWinnerNames(List<Car> sortedCars) {
-    List<String> winnerNames = new ArrayList<>();
-    for (Car car : sortedCars) {
-      if (!car.isWinner(sortedCars.get(FIRST_INDEX))) {
-        break;
-      }
-      winnerNames.add(car.getName());
-    }
-    return winnerNames;
   }
 }
