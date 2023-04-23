@@ -9,19 +9,19 @@ import java.util.stream.IntStream;
 
 public class RacingGame {
 
-    private int carNumber;
+    private List<String> carNames;
     private int gameRound;
 
     public RacingGame() {
     }
 
     public RacingGame(UserInput userInput) {
-        carNumber = userInput.getCarNumber();
         gameRound = userInput.getGameRound();
+        carNames = userInput.getCarNames();
     }
 
     public List<Scores> startGame(NumberGeneratorStrategy numberGeneratorStrategy) {
-        Cars cars = new Cars(carNumber);
+        Cars cars = new Cars(carNames);
         return round(cars, numberGeneratorStrategy);
     }
 

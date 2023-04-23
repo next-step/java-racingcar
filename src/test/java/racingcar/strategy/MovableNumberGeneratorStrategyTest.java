@@ -11,7 +11,7 @@ class MovableNumberGeneratorStrategyTest {
     @DisplayName("전진 전략은 차가 이동한다")
     @Test
     void 전진하는_조건_테스트() {
-        Car car = new Car();
+        Car car = new Car("korea");
 
         car.move(new MovableNumberGeneratorStrategy());
         int point = car.findCarPoint();
