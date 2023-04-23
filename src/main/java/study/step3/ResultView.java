@@ -4,13 +4,13 @@ public class ResultView {
 
     public void printStateBoard(Car[] cars) {
         for (Car car : cars) {
-            System.out.println(car.getName() + " : " + printCarPosition(car));
+            System.out.println(car.getName() + " : " + printCarPosition(car.getPosition()));
         }
         System.out.println();
     }
 
-    String printCarPosition(Car car) {
-        return "-".repeat(car.getPosition());
+    String printCarPosition(Position position) {
+        return "-".repeat(position.getPosition());
     }
 
     public void printWinner(String winners) {

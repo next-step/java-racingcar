@@ -20,7 +20,7 @@ class ResultViewTest {
     @CsvSource(value = {"A:2", "B:5", "C:0"}, delimiter = ':')
     public void print_car_state(String carName, int position) throws Exception {
         Car car = new Car(carName, position);
-        assertThat(resultView.printCarPosition(car))
+        assertThat(resultView.printCarPosition(car.getPosition()))
                 .isEqualTo("-".repeat(position));
     }
 

@@ -25,13 +25,13 @@ class CarRacingTest {
     @Test
     @DisplayName("가장 멀리간 차량의 위치를 출력한다.")
     public void 우승자_위치_확인() throws Exception {
-        assertThat(carRacing.findCarMaxPosition(cars)).isEqualTo(18);
+        assertThat(carRacing.findCarMaxPosition(cars).getPosition()).isEqualTo(18);
     }
 
 
     @DisplayName("차량의 위치가 일치하는지 비교한다.")
     @ParameterizedTest
-    @CsvSource(value = {"A:12", "B:7", "C,D:18", "E:3"}, delimiter = ':')
+    @CsvSource(value = {"A:12", "B:7", "C:18", "E:3"}, delimiter = ':')
     public void 자동차_점수_비교_A차량_우승(String carName, int position) throws Exception {
         assertThat(new Car(carName, position).isCarPosition(position)).isTrue();
     }

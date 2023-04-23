@@ -57,7 +57,7 @@ public class CarRacing {
 
     private String findWinners() {
 
-        int carMaxPosition = findCarMaxPosition(cars);
+        Position carMaxPosition = findCarMaxPosition(cars);
         ArrayList<Name> names = findWinnerNames(cars, carMaxPosition);
         String winnerNames = "";
 
@@ -70,15 +70,17 @@ public class CarRacing {
         return winnerNames;
     }
 
-    int findCarMaxPosition(Car[] cars) {
-        int maxPosition = 0;
+    Position findCarMaxPosition(Car[] cars) {
+        Position maxPosition = new Position(0);
         for (Car car : cars) {
-            maxPosition = Math.max(maxPosition, car.getPosition());
+            if(car.isBiggerPosition(maxPosition)) {
+                maxPosition = car.getPosition();
+            }
         }
         return maxPosition;
     }
 
-    ArrayList<Name> findWinnerNames(Car[] cars, int maxPosition) {
+    ArrayList<Name> findWinnerNames(Car[] cars, Position maxPosition) {
         ArrayList<Name> winnerNames = new ArrayList<>();
 
         for (Car car : cars) {

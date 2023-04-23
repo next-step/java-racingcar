@@ -19,7 +19,7 @@ class CarTest {
     @CsvSource(value = {"5:1", "4:1", "3:0"}, delimiter = ':')
     public void car_move_test(int randomNum, int expectPosition) throws Exception {
         car = new Car("A", 0);
-        assertThat(car.move(randomNum)).isEqualTo(expectPosition);
+        assertThat(car.move(randomNum)).isEqualTo(new Position(expectPosition));
     }
 
     @Test
