@@ -35,7 +35,7 @@ class CarTest {
     @ParameterizedTest
     @ValueSource(strings = {"빨강", "파랑", "black"})
     public void car_생성자_테스트(String carName) throws Exception {
-        assertThat(new Car(carName).getName()).isEqualTo(carName);
+        assertThat(new Car(carName).isThisName(carName)).isTrue();
     }
 
     @DisplayName("차량 이름 등록 시, 5글자를 초과할 수 없다.")

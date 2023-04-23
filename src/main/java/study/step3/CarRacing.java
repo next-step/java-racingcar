@@ -1,5 +1,6 @@
 package study.step3;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class CarRacing {
@@ -55,37 +56,40 @@ public class CarRacing {
     }
 
     private String findWinners() {
+
         int carMaxPosition = findCarMaxPosition(cars);
-        return findWinnerNames(cars, carMaxPosition);
+        ArrayList<Name> names = findWinnerNames(cars, carMaxPosition);
+        String winnerNames = "";
+
+        for (int i = 0; i < names.size(); i++) {
+            winnerNames += names.get(i);
+            if (i == names.size() - 1) break;
+            winnerNames += ",";
+        }
+
+        return winnerNames;
     }
 
     int findCarMaxPosition(Car[] cars) {
         int maxPosition = 0;
-        for(Car car : cars) {
+        for (Car car : cars) {
             maxPosition = Math.max(maxPosition, car.getPosition());
         }
         return maxPosition;
     }
 
-    String findWinnerNames(Car[] cars, int maxPosition) {
-        String winnerNames = "";
-        for(Car car : cars) {
-            winnerNames = findCarNamesThatPosition(winnerNames, car, maxPosition);
+    ArrayList<Name> findWinnerNames(Car[] cars, int maxPosition) {
+        ArrayList<Name> winnerNames = new ArrayList<>();
+
+        for (Car car : cars) {
+            if (!car.isCarPosition(maxPosition)) {
+                continue;
+            }
+            winnerNames.add(car.getName());
         }
         return winnerNames;
     }
 
-    private String findCarNamesThatPosition(String winnerNames, Car car, int position) {
-        if (car.getPosition() != position) {
-            return winnerNames;
-        }
-
-        if(winnerNames.length() == 0) {
-            return car.getName();
-        }
-
-        return winnerNames + "," + car.getName();
-    }
 
     public static void main(String[] args) {
         CarRacing carRacing = new CarRacing();

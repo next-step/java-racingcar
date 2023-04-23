@@ -1,40 +1,31 @@
 package study.step3;
 
-import java.security.InvalidParameterException;
-
 public class Car {
-
-    private static final String CAR_NAME_RANGE_ALERT_MESSAGE = "자동차의 이름은 5글자를 초과할 수 없습니다.";
     private static final int STANDARD_VALUE_TO_MOVE = 3;
 
-    private String name;
+    private Name name;
     private int position;
 
-
     public Car(String name) {
-        checkNameLength(name);
-        this.name = name;
+        this.name = new Name(name);
         position = 0;
     }
 
     public Car(String name, int position) {
-        checkNameLength(name);
-        this.name = name;
+        this.name = new Name(name);
         this.position = position;
-    }
-
-    private static void checkNameLength(String name) {
-        if (name.length() > 5) {
-            throw new InvalidParameterException(CAR_NAME_RANGE_ALERT_MESSAGE);
-        }
     }
 
     int getPosition() {
         return position;
     }
 
-    String getName() {
+    Name getName() {
         return name;
+    }
+
+    boolean isThisName(String name) {
+        return this.name.equals(new Name(name));
     }
 
     int move(int randomNum) {
@@ -48,8 +39,7 @@ public class Car {
         return num > STANDARD_VALUE_TO_MOVE;
     }
 
-
-    String printPosition() {
-        return name + " : " + "-".repeat(position);
+    boolean isCarPosition(int position) {
+        return this.position == position;
     }
 }
