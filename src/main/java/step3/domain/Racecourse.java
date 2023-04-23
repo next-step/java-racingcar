@@ -1,6 +1,7 @@
 package step3.domain;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -23,6 +24,10 @@ public class Racecourse {
                             throw new IllegalArgumentException("빈 track이 존재하지 않습니다.");
                         }
                 );
+    }
+
+    public void enter(Collection<RacingCar> racingCars) {
+        racingCars.forEach(this::enter);
     }
 
     public List<Track> tracks() {
