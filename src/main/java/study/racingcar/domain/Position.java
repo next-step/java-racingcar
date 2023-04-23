@@ -9,7 +9,7 @@ public class Position {
   private int number;
 
   public Position() {
-    number = DEFAULT_START_NUMBER;
+    this(DEFAULT_START_NUMBER);
   }
 
   public Position(final int number) {
