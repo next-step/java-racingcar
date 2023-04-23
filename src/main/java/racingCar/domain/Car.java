@@ -1,7 +1,5 @@
 package racingCar.domain;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class Car {
@@ -13,36 +11,32 @@ public class Car {
 
 	private final Random random;
 
-	private final List<Distance> distanceList;
+	private final Distance distance;
 
 	private int power;
 
-	public Car(Random random, List<Distance> distanceList, int power) {
+	public int getDistanceAmount() {
+		return distance.getAmount();
+	}
+
+	public Car(Random random, Distance distance, int power) {
 		this.random = random;
-		this.distanceList = distanceList;
+		this.distance = distance;
 		this.power = power;
 	}
 
 	public static Car create(int power) {
 		Random random = new Random();
-		List<Distance> distanceList = new ArrayList<>();
+		Distance distance = Distance.create();
 
-		return new Car(random, distanceList, power);
+		return new Car(random, distance, power);
 	}
 
 	public static Car create() {
 		Random random = new Random();
-		List<Distance> distanceList = new ArrayList<>();
+		Distance distance = Distance.create();
 
-		return new Car(random, distanceList, ZERO);
-	}
-
-	public List<Distance> getDistanceList() {
-		return distanceList;
-	}
-
-	public String getDistanceView() {
-		return Distance.convertDistanceToView(distanceList);
+		return new Car(random, distance, ZERO);
 	}
 
 	public void drive() {
@@ -55,7 +49,7 @@ public class Car {
 			return;
 		}
 
-		distanceList.add(Distance.create());
+		distance.addDistance();
 	}
 
 	public void startEngine() {

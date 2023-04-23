@@ -13,10 +13,10 @@ public class CarTest {
 	@ValueSource(ints = { Car.POWER_THRESHOLD, Car.POWER_THRESHOLD + 1, Car.POWER_THRESHOLD + 2})
 	void drive_over_threshold(int power) {
 		Car car = Car.create(power);
-		int given = car.getDistanceList().size();
+		int given = car.getDistanceAmount();
 
 		car.accelerate();
-		int actual = car.getDistanceList().size();
+		int actual = car.getDistanceAmount();
 
 		assertThat(actual).isGreaterThan(given);
 	}
@@ -25,10 +25,10 @@ public class CarTest {
 	@DisplayName("자동차는 파워가 기준 미만일 때는 이동하지 않아야 한다.")
 	void drive_not_under_threshold() {
 		Car car = Car.create(Car.POWER_THRESHOLD - 1);
-		int given = car.getDistanceList().size();
+		int given = car.getDistanceAmount();
 
 		car.accelerate();
-		int actual = car.getDistanceList().size();
+		int actual = car.getDistanceAmount();
 
 		assertThat(actual).isEqualTo(given);
 	}
@@ -43,6 +43,6 @@ public class CarTest {
 			car.accelerate();
 		}
 
-		assertThat(car.getDistanceList()).hasSize(count);
+		assertThat(car.getDistanceAmount()).isEqualTo(count);
 	}
 }

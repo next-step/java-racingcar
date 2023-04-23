@@ -12,7 +12,7 @@ public class RacingCarUI {
 	public static final String HOW_MANY_ROUNDS = "시도할 회수는 몇 회 인가요?";
 
 	private static final Scanner sc = new Scanner(System.in);
-
+	private static String DISTANCE_DASH = "-";
 
 	public static int uiForCountInput() {
 		System.out.println(HOW_MANY_CARS);
@@ -30,7 +30,7 @@ public class RacingCarUI {
 
 	public static void printResult(List<Car> carList) {
 		for (Car car : carList) {
-			System.out.println(car.getDistanceView());
+			System.out.println(DISTANCE_DASH.repeat(car.getDistanceAmount()));
 		}
 	}
 }
