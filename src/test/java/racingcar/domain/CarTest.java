@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,7 +15,7 @@ class CarTest {
     void newInstance(String input) {
         Car car = new Car(input);
 
-        assertThat(car.name()).isEqualTo(input);
+        assertThat(car).isEqualTo(new Car(input));
     }
 
     @Test
@@ -31,8 +31,23 @@ class CarTest {
     void move() {
         Car car = new Car("test");
 
-        car.move();
+        car.move(new RandomNumber());
 
-        assertThat(car.position()).isEqualTo(1);
+        assertThat(car).isEqualTo(new Car("test", 1));
+    }
+
+    @Test
+    void isWinner() {
+        Car car = new Car("test", 2);
+        Car max = new Car("temp", 2);
+        assertThat(car.isWinner(max)).isTrue();
+    }
+
+    @Test
+    void findMaxPosition() {
+        Car car = new Car("test", 2);
+        int maxPosition = car.findMaxPosition(1);
+
+        assertThat(maxPosition).isEqualTo(2);
     }
 }
