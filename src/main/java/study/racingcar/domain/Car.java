@@ -1,39 +1,26 @@
 package study.racingcar.domain;
 
-import study.racingcar.error.InvalidCarNameException;
 import study.racingcar.factory.RandomIntFactory;
 
 public class Car {
 
-  private static final int MAXIMUM_NAME_LENGTH = 5;
   private static final int MINIMUM_MOVE_VALUE = 4;
 
-  private final String name;
+  private Name name;
   private Position position;
 
   public Car(final String name) {
-    this(name, new Position());
+    this(new Name(name), new Position());
   }
 
   public Car(final String name, final int position) {
-    this(name, new Position(position));
+    this(new Name(name), new Position(position));
   }
 
-  public Car(final String name, final Position position) {
-    validationName(name);
+  public Car(final Name name, final Position position) {
 
-    this.name = name.trim();
+    this.name = name;
     this.position = position;
-  }
-
-  private void validationName(String name) {
-    if (name == null || name.isBlank()) {
-      throw new InvalidCarNameException("이름을 1자 이상 입력해주세요.: ");
-    }
-
-    if (name.trim().length() > MAXIMUM_NAME_LENGTH) {
-      throw new InvalidCarNameException("이름은 5자를 초과할 수 없습니다.: " + name.trim());
-    }
   }
 
   public void move(RandomIntFactory randomIntFactory) {
@@ -52,10 +39,10 @@ public class Car {
   }
 
   public String getName() {
-    return this.name;
+    return this.name.getName();
   }
 
-  public String getFootPrint(String footPrint) {
-    return this.position.getFootPrint(footPrint);
+  public int getPosition() {
+    return this.position.getNumber();
   }
 }

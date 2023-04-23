@@ -19,7 +19,7 @@ public class CarTest {
 
   @DisplayName("이름의 길이가 5자를 초과하는 자동차는 생성할 수 없다.")
   @Test
-  public void car_ThrowException_NameLengthMoreThan5() {
+  public void car_ThrowException_NameLength5초과() {
     assertThatThrownBy(() -> new Car("123456")).isInstanceOf(InvalidCarNameException.class);
     assertThatThrownBy(() -> new Car("123 45")).isInstanceOf(InvalidCarNameException.class);
   }
@@ -38,7 +38,7 @@ public class CarTest {
 
   @DisplayName("4미만의 RandomInt는 자동차를 정지시킨다.")
   @Test
-  public void move_Stop_RandomIntLessThan4() {
+  public void move_Stop_RandomInt4미만() {
     Car pobi = new Car("pobi");
 
     pobi.move(new RandomIntFactory(0, 4));
@@ -48,7 +48,7 @@ public class CarTest {
 
   @DisplayName("4이상의 RandomInt는 자동차를 전진시킨다.")
   @Test
-  public void move_Forward_RandomIntMoreThan4() {
+  public void move_Forward_RandomInt4이상() {
     Car pobi = new Car("pobi");
 
     pobi.move(new RandomIntFactory(4, 10));
