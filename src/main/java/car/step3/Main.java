@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    public static int MAX_LOCATION = 0;
     public static void main(String[] args) {
         InputView inputView = new InputView();
         HandleCar handleCar = new HandleCar();

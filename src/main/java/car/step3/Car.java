@@ -6,8 +6,7 @@ import java.util.Random;
 public class Car {
     private String name;
     private int location = 0;
-    private int MAX_BOUNCE = 10;
-    private int FORWARD_NUMBER = 4;
+
 
     public Car(String name) {
         this.name = name;
@@ -18,8 +17,8 @@ public class Car {
         this.location = location;
     }
 
-    public void go() {
-        if(getRandomNumber() >= FORWARD_NUMBER) {
+    public void go(MovingStrategy movingStrategy) {
+        if(movingStrategy.movable()) {
             this.location++;
         }
     }
@@ -32,8 +31,4 @@ public class Car {
         return name;
     }
 
-    protected int getRandomNumber() {
-        Random random = new Random();
-        return random.nextInt(MAX_BOUNCE);
-    }
 }
