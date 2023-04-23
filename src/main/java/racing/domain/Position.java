@@ -11,6 +11,9 @@ public class Position {
     }
 
     public Position(int position) {
+        if (position < DEFAULT_POSITION) {
+            throw new RuntimeException("자동차의 위치는 0 이상이어야 합니다.");
+        }
         this.position = position;
     }
 

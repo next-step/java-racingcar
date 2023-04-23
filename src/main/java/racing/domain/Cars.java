@@ -3,13 +3,9 @@ package racing.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Cars {
-
-    private static final Random random = new Random();
-    private static final Integer RANDOM_BOUND = 10;
 
     private final List<Car> cars;
     private final int moveCount;
@@ -29,7 +25,7 @@ public class Cars {
     }
 
     public Cars move() {
-        this.cars.forEach(car -> car.move(random.nextInt(RANDOM_BOUND)));
+        this.cars.forEach(car -> car.move(new RandomMovable()));
         return this;
     }
 

@@ -1,6 +1,7 @@
 package racing;
 
 import racing.domain.Car;
+import racing.domain.Movable;
 
 class CountingCar extends Car {
 
@@ -11,8 +12,8 @@ class CountingCar extends Car {
     }
 
     @Override
-    public void move(int randomNumber) {
-        super.move(randomNumber);
+    public void move(Movable movable) {
+        super.move(movable);
         moveCount++;
     }
 
