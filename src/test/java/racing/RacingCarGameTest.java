@@ -1,7 +1,6 @@
 package racing;
 
 import org.junit.jupiter.api.Test;
-import racing.domain.CountingCar;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

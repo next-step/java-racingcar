@@ -1,10 +1,12 @@
-package racing.domain;
+package racing;
 
-public class CountingCar extends Car {
+import racing.domain.Car;
+
+class CountingCar extends Car {
 
     private int moveCount;
 
-    public CountingCar(String name) {
+    CountingCar(String name) {
         super(name);
     }
 
@@ -14,7 +16,7 @@ public class CountingCar extends Car {
         moveCount++;
     }
 
-    public int getMoveCount() {
+    int getMoveCount() {
         return moveCount;
     }
 
