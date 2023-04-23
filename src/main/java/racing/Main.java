@@ -1,8 +1,8 @@
-package step3;
+package racing;
 
-import step3.racing.CarRacingGame;
-import step3.view.InputView;
-import step3.view.ResultView;
+import racing.domain.CarRacingGame;
+import racing.view.InputView;
+import racing.view.ResultView;
 
 /**
  * @author : 0giri

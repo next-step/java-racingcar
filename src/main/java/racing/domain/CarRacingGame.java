@@ -1,7 +1,7 @@
-package step3.racing;
+package racing.domain;
 
 
-import step3.util.RandomGenerator;
+import racing.util.RandomGenerator;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package step3.racing;
+package racing.domain;
 
 import java.util.List;
 

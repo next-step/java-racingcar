@@ -1,7 +1,7 @@
-package step3.view;
+package racing.view;
 
-import step3.racing.Car;
-import step3.racing.RacingResult;
+import racing.domain.Car;
+import racing.domain.RacingResult;
 
 /**
  * @author : 0giri

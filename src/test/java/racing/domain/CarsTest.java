@@ -1,10 +1,8 @@
-package step3;
+package racing.domain;
 
 import org.assertj.core.api.ThrowableAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import step3.racing.Car;
-import step3.racing.Cars;
 
 import java.util.ArrayList;
 import java.util.List;
