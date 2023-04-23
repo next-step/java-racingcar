@@ -34,7 +34,7 @@ public class Cars {
     }
 
     public List<String> pickWinners() {
-        return cars.stream().filter(car -> car.isLocatedAt(maxPosition())).map(Car::name).collect(Collectors.toList());
+        return cars.stream().filter(car -> car.isLocatedAt(maxPosition())).map(Car::name).map(Name::getNameString).collect(Collectors.toList());
     }
 
     private int maxPosition() {

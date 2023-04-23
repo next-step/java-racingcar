@@ -56,7 +56,7 @@ public class CarTest {
 
         Cars cars = new Cars(names, moveCount);
         for (int i = 0; i < 3; i++) {
-            assertThat(cars.values().get(i).name()).isEqualTo(names.get(i));
+            assertThat(cars.values().get(i).name().getNameString()).isEqualTo(names.get(i));
         }
     }
 
