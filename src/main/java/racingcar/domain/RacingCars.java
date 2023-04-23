@@ -5,26 +5,26 @@ import java.util.stream.Collectors;
 
 public class RacingCars {
     private final List<Car> cars;
+    private MoveStrategy moveStrategy;
 
-    public RacingCars(List<Car> cars)
-    {
+    public RacingCars(List<Car> cars, MoveStrategy moveStrategy) {
         this.cars = cars;
+        this.moveStrategy = moveStrategy;
     }
 
-    public void move(MoveStrategy moveStrategy) {
+    public void move() {
         for(Car car: cars) {
-            drive(car, moveStrategy);
+            drive(car);
         }
     }
 
-    private void drive(Car car, MoveStrategy moveStrategy) {
+    private void drive(Car car) {
         if (moveStrategy.goOrStop()) {
             car.drive();
         }
     }
 
-    public List<String> getWinner()
-    {
+    public List<String> getWinner() {
         int maxPosition = maxPosition();
         return cars.stream().filter(car -> car.isSamePosition(maxPosition)).map(Car::getName).collect(Collectors.toList());
     }

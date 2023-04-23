@@ -8,11 +8,9 @@ public class RacingGame {
     private final int ZERO = 0;
     private final String DELIMITER = ",";
     private final RacingCars racingCars;
-    private MoveStrategy moveStrategy;
 
     public RacingGame(String nameOfCars, MoveStrategy moveStrategy) {
-        this.racingCars = new RacingCars(registerCar(splitCarName(nameOfCars)));
-        this.moveStrategy = moveStrategy;
+        this.racingCars = new RacingCars(registerCar(splitCarName(nameOfCars)), moveStrategy);
     }
 
     private List<Car> registerCar(String[] nameOfCars) {
@@ -20,7 +18,7 @@ public class RacingGame {
     }
 
     public void start() {
-        racingCars.move(moveStrategy);
+        racingCars.move();
     }
 
     public List<String> getWinner() {
@@ -29,7 +27,7 @@ public class RacingGame {
 
     private String[] splitCarName(String nameOfCars) {
         if (nameOfCars.length() == ZERO) {
-            throw new IllegalArgumentException("player zero");
+            throw new IllegalArgumentException("참가한 자동차가 없습니다.");
         }
 
         return nameOfCars.split(DELIMITER);

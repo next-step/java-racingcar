@@ -18,7 +18,7 @@ public class RacingCarsTest {
         Car honux = new Car("honux", 1);
         List<Car> cars = Arrays.asList(pobi, crong, honux);
 
-        RacingCars racingCars = new RacingCars(cars);
+        RacingCars racingCars = new RacingCars(cars, new MoveRandomStrategy());
 
         List<String> winners = racingCars.getWinner();
 
@@ -34,13 +34,13 @@ public class RacingCarsTest {
         Car honux = new Car("honux", 1);
         List<Car> cars = Arrays.asList(pobi, crong, honux);
 
-        RacingCars racingCars = new RacingCars(cars);
-        racingCars.move(new MoveRandomStrategy(){
+        RacingCars racingCars = new RacingCars(cars, new MoveRandomStrategy(){
             @Override
             public boolean goOrStop() {
                 return true;
             }
         });
+        racingCars.move();
 
         assertThat(racingCars.getCars()).containsExactly(new Car("pobi", 4)
                 , new Car("crong", 3), new Car("honux", 2));
