@@ -33,7 +33,7 @@ public class RandomIntTest {
   @ParameterizedTest
   @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9})
   public void isMoving_True_Input이상(int input) {
-    assertThat(new RandomInt(9).isMoving(input)).isTrue();
-    assertThat(new RandomInt(0).isMoving(input)).isFalse();
+₩    assertThat(new RandomInt(9).isGreaterThan(input)).isTrue();
+    assertThat(new RandomInt(0).isGreaterThan(input)).isFalse();
   }
 }

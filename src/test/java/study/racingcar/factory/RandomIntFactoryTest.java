@@ -25,8 +25,8 @@ public class RandomIntFactoryTest {
     RandomIntFactory randomIntFactory = new RandomIntFactory(start, end);
 
     RandomInt randomInt = randomIntFactory.createRandomInt();
-    assertThat(randomInt.isMoving(start)).isTrue();
-    assertThat(randomInt.isMoving(end)).isFalse();
+    assertThat(randomInt.isGreaterThan(start)).isTrue();
+    assertThat(randomInt.isGreaterThan(end)).isFalse();
   }
 
 }

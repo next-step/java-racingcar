@@ -14,7 +14,7 @@ public class RandomInt {
     this.number = number;
   }
 
-  public boolean isMoving(int minimumMoveValue) {
+  public boolean isGreaterThan(int minimumMoveValue) {
     return this.number >= minimumMoveValue;
   }
 }
