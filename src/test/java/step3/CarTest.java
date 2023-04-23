@@ -19,7 +19,7 @@ public class CarTest {
 
     @Test
     void 차_대수만큼_리스트_사이즈() {
-        Assertions.assertThat(rc.createCars(carCount)).hasSize(carCount);
+        Assertions.assertThat(rc.createCars(new String[]{"1", "2", "3"})).hasSize(carCount);
     }
 
 }

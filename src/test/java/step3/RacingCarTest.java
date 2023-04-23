@@ -19,18 +19,6 @@ public class RacingCarTest {
     int carCount = 3;
     int raceCount = 5;
 
-    @ParameterizedTest(name = "{0} : add {1}")
-    @MethodSource("goParameter")
-    void 이동_여부(boolean isGo, int result) {
-        rc.goOrStop(isGo, car);
-        assertThat(car.getGoCount()).isEqualTo(result);
-    }
-    static Stream<Arguments> goParameter(){
-        return Stream.of(
-                arguments(true, 1)
-                ,arguments(false, 0)
-        );
-    }
 
     @ParameterizedTest(name = "{0} is more than 4 : {1}")
     @MethodSource("parameter")

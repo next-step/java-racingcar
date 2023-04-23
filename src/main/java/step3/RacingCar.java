@@ -9,22 +9,26 @@ public class RacingCar {
     public static final int RANDOM_LIMIT = 10;
     public static final int LIMIT = 4;
 
-    public static List<Car> createCars(int num){
+    public static List<Car> createCars(String[] names){
         List<Car> cars = new ArrayList<>();
-        for(int i=0; i<num; i++){
-            cars.add(new Car());
+        for(int i=0; i<names.length; i++){
+            cars.add(new Car(names[i]));
         }
         return cars;
     }
 
+    public String[] split(String carsName) {
+        return carsName.split(",");
+    }
+
     public void oneRace(List<Car> cars) {
         for (Car car : cars) {
-            boolean isGo = isValueMoreThan(randomValue());
-            goOrStop(isGo, car);
+            goOrStop(car);
         }
     }
 
-    public void goOrStop(boolean isGo, Car car) {
+    public void goOrStop( Car car) {
+        boolean isGo = isValueMoreThan(randomValue());
         if(isGo){
             car.addGoCount();
         }
