@@ -17,8 +17,8 @@ public class Cars {
     public Scores move(NumberGeneratorStrategy numberGeneratorStrategy) {
         Scores scores = new Scores();
         for (Car car : cars) {
-            car.move(numberGeneratorStrategy);
-            scores.addScore(new Score(car));
+            Point point = car.move(numberGeneratorStrategy);
+            scores.addScore(new Score(point.getPoint(), car.findCarName()));
         }
         return scores;
     }

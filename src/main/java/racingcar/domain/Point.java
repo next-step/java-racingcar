@@ -1,7 +1,7 @@
 package racingcar.domain;
 
 public class Point {
-    private int point;
+    private final int point;
     public Point(int point) {
         this.point = point;
     }
@@ -10,7 +10,7 @@ public class Point {
         return point;
     }
 
-    public void plusPoint() {
-        point++;
+    public Point increasePoint() {
+        return new Point(this.point + 1);
     }
 }

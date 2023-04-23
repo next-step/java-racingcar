@@ -15,11 +15,9 @@ public class Car {
         this.name = new Name(name);
     }
 
-    public void move(NumberGeneratorStrategy numberGeneratorStrategy) {
+    public Point move(NumberGeneratorStrategy numberGeneratorStrategy) {
         final int number = numberGeneratorStrategy.generateNumber();
-        if (numberGeneratorStrategy.isMovable(number)) {
-            point.plusPoint();
-        }
+        return numberGeneratorStrategy.isMovable(number) ? point.increasePoint() : point;
     }
 
     public int findCarPoint() {
