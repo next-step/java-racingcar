@@ -44,17 +44,23 @@ public class CarsTest {
     }
 
     @Test
-    void 특정_이름의_자동차를_움직일_수_있다() {
+    void 가장_멀리간_자동차의_위치를_알_수_있다() {
         List<CarName> carNameList = List.of(new CarName("a"), new CarName("b"), new CarName("c"));
         Cars cars = new Cars(carNameList, new TestHelper.AlwaysMoveStrategy());
-        cars.orderMove("b");
-        assertThat(cars.getCarList()
+        cars.moveAll();
+        assertThat(cars.getFarthestPosition()).isEqualTo(1);
+    }
+
+    @Test
+    void 가장_멀리간_자동차의_목록을_알_수_있다() {
+        List<CarName> carNameList = List.of(new CarName("a"), new CarName("b"), new CarName("c"));
+        Cars cars = new Cars(carNameList, new TestHelper.AlwaysMoveStrategy());
+        cars.moveAll();
+        assertThat(cars.getFarthestCars()
                 .stream()
-                .filter(it -> it.getCarName().equals("b"))
-                .findAny()
-                .get()
-                .getPosition()
-        ).isEqualTo(1);
+                .map(Car::getCarName)
+                .toArray()
+        ).containsExactly("a", "b", "c");
     }
 
     private static Stream<Arguments> carsTestStubs() {

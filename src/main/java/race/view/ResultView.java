@@ -1,8 +1,6 @@
 package race.view;
 
-import race.Car;
-import race.CarName;
-import race.CarView;
+import race.CarResult;
 
 import java.util.List;
 
@@ -13,25 +11,25 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public static void showCarViewList(List<CarView> carViewList) {
-        for (CarView carView : carViewList) {
-            showCarView(carView);
+    public static void showCarViewList(List<CarResult> carResultList) {
+        for (CarResult carResult : carResultList) {
+            showCarView(carResult);
         }
         System.out.println();
     }
 
-    private static void showCarView(CarView carView) {
+    private static void showCarView(CarResult carResult) {
         StringBuilder stringBuilder = new StringBuilder()
-                .append(carView.getCarName())
+                .append(carResult.getCarName())
                 .append(" : ");
         System.out.print(stringBuilder);
-        for (int i = 0; i < carView.getPosition(); i++) {
+        for (int i = 0; i < carResult.getPosition(); i++) {
             System.out.print(POSITION_CHARACTER);
         }
         System.out.println();
     }
 
-    public static void showWinners(List<CarView> winners) {
+    public static void showWinners(List<CarResult> winners) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < winners.size(); i++) {
             stringBuilder.append(getCommaIndexCondition(i));

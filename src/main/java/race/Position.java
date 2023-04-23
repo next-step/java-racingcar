@@ -16,8 +16,8 @@ public class Position {
 
     @Override
     public boolean equals(Object o) {
-        if (position == (int) o) return true;
         if (this == o) return true;
+        if (o instanceof Integer) return position == (int) o;
         if (o == null || getClass() != o.getClass()) return false;
         Position position1 = (Position) o;
         return position == position1.position;

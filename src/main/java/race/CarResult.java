@@ -1,10 +1,10 @@
 package race;
 
-public class CarView {
+public class CarResult {
     private String carName;
     private int position;
 
-    public CarView(String carName, int position) {
+    public CarResult(String carName, int position) {
         this.carName = carName;
         this.position = position;
     }
@@ -15,5 +15,12 @@ public class CarView {
 
     public int getPosition() {
         return position;
+    }
+
+    public static CarResult from(Car car) {
+        return new CarResult(
+                car.getCarName().getCarName(),
+                car.getPosition().getPosition()
+        );
     }
 }

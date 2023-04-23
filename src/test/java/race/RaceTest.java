@@ -20,7 +20,7 @@ public class RaceTest {
         Race race = new Race(cars);
         assertThat(race.startLap()
                 .stream()
-                .map(CarView::getPosition)
+                .map(CarResult::getPosition)
                 .collect(Collectors.toList())
         ).isEqualTo(positions);
     }
@@ -30,7 +30,7 @@ public class RaceTest {
         List<CarName> carNameList = List.of(new CarName("a"), new CarName("b"), new CarName("c"));
         Cars cars = new Cars(carNameList, new TestHelper.AlwaysMoveStrategy());
         Race race = new Race(cars);
-        assertThat(race.getWinners().stream().map(CarView::getCarName).toArray()).contains("a", "b", "c");
+        assertThat(race.getWinners().stream().map(CarResult::getCarName).toArray()).contains("a", "b", "c");
     }
 
     private static Stream<Arguments> oneLapTestStubs() {
