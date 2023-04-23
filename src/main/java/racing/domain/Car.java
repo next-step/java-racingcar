@@ -7,17 +7,17 @@ public class Car {
     private Position position;
 
 
-    public Car(String name){
+    public Car(String name) {
         this(name, 0);
     }
 
-    public Car(String name, int position){
+    public Car(String name, int position) {
         this.position = new Position(position);
         this.name = new Name(name);
     }
 
     public void move(int randomNo) {
-        if(randomNo > FORWARD_NUM){
+        if (randomNo > FORWARD_NUM) {
             position.move();
         }
     }

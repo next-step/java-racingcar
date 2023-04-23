@@ -9,7 +9,7 @@ class PositionTest {
 
     @Test
     @DisplayName(value = "전진")
-    void 전진() {
+    void test1() {
         Position position = new Position(3);
         assertThat(position.move()).isEqualTo(new Position(4));
     }

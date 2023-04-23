@@ -2,10 +2,10 @@ package racing;
 
 import java.util.Random;
 
-public class RandomNumberGenerator {
+public interface RandomNumberGenerator {
 
-    private static final Random RANDOM = new Random();
-    public static int randomNumber() {
+    Random RANDOM = new Random();
+    default int randomNumber() {
         return RANDOM.nextInt(10);
     }
 }

@@ -5,7 +5,7 @@ import racing.RandomNumberGenerator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cars {
+public class Cars implements RandomNumberGenerator{
 
     private final List<Car> cars;
 
@@ -15,7 +15,7 @@ public class Cars {
 
     public List<Car> move(){
         for (Car car : cars) {
-            car.move(RandomNumberGenerator.randomNumber());
+            car.move(randomNumber());
             System.out.println(car.toString());
         }
         return cars;
@@ -37,7 +37,6 @@ public class Cars {
 
     private int getMaxPosition() {
         int maxPosition = 0;
-
         for (Car car : cars) {
             if(car.getPosition() > maxPosition){
                 maxPosition = car.getPosition();
