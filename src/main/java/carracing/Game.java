@@ -8,19 +8,29 @@ import java.util.List;
 import java.util.Random;
 
 public class Game {
-    public static void main(String[] args) {
-        InputView inputView = new InputView();
-//        List<Car> raceCars = participate(inputView.getAmount());
+    private static InputView inputView;
+    private static ResultView resultView;
 
-        ResultView resultView = new ResultView();
+    public static void main(String[] args) {
+        inputView = new InputView();
+        List<Car> raceCars = participate(inputView.getNames());
+
         for (int i = 0; i < inputView.getTrack(); i++) {
-            List<Car> cars = new ArrayList<>();
-            for (Car car : cars) {
-                String print = resultView.print(car);
-                System.out.println(print);
-            }
-            System.out.println();
+            race(raceCars);
         }
+        List<Car> winners = Winner.findWinner(raceCars);
+        for (Car car : winners) {
+            System.out.println(car.getName());
+        }
+
+    }
+
+    public static List<Car> participate(List<String> carNameList) {
+        List<Car> raceCars = new ArrayList<>();
+        for (String name : carNameList) {
+            raceCars.add(new Car(name));
+        }
+        return raceCars;
     }
 
     private static int randomSpeed() {
@@ -28,21 +38,14 @@ public class Game {
         return random.nextInt(10);
     }
 
-    public static List<Car> participate(int amount) {
-        List<Car> raceCars = new ArrayList<>();
-        for (int i = 0; i < amount; i++) {
-            Car car = new Car();
-            raceCars.add(car);
-        }
-
-        return raceCars;
-    }
-
-    public static List<Integer> race(List<Car> raceCars) {
-        List<Integer> steps = new ArrayList<>();
+    public static void race(List<Car> raceCars) {
+        resultView = new ResultView();
         for (Car car : raceCars) {
-           steps.add(car.move(randomSpeed()));
+            car.move(randomSpeed());
+            System.out.println(resultView.print(car));
         }
-        return steps;
+        System.out.println();
     }
+
+
 }

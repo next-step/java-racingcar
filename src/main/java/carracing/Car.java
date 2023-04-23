@@ -11,10 +11,15 @@ public class Car {
     }
 
     public Car(final String name) {
+        this(name, 0);
+    }
+
+    public Car(final String name, int position) {
         if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("5글자를 초과하였습니다.");
         }
         this.name = name;
+        this.position = position;
     }
 
     public int move(int speed) {
@@ -30,5 +35,16 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    public boolean isWinner(int maxPosition) {
+        return maxPosition == this.position;
+    }
+
+    public int max(int compareNumber) {
+       if (this.position > compareNumber) {
+           return this.position;
+       }
+       return compareNumber;
     }
 }
