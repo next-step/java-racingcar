@@ -1,6 +1,5 @@
 package step4.service;
 
-import step3.util.RandomValue;
 import step4.domain.Car;
 import step4.domain.Name;
 import step4.domain.Position;
@@ -38,9 +37,8 @@ public class RacingCarGame {
 
     public void playing() {
         for (Car car : cars) {
-            final int random = RandomValue.nextInt(RANDOM_BOUND);
-
-            car.forward(random);
+            final ForwardStrategy strategy = new RacingCarForward(new RandomNumberGenerator());
+            car.forward(strategy);
         }
     }
 
