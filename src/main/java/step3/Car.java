@@ -23,6 +23,10 @@ public class Car {
         this.goCount = goCount;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public int getGoCount() {
         return goCount;
     }
