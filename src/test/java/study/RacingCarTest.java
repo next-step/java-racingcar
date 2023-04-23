@@ -2,6 +2,8 @@ package study;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import study.racingcar.InputView;
+import study.racingcar.ResultView;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -13,15 +15,15 @@ import java.util.Scanner;
 import static org.assertj.core.api.Assertions.*;
 public class RacingCarTest {
 
-    RacingCar racingCar = new RacingCar();
-
+    ResultView resultView = new ResultView();
+    InputView inputView = new InputView();
 
     @Test
     @DisplayName("사용자에게 특정 메세지를 보여주는 기능")
     void showMessage() {
-        assertThat(racingCar.questionMessage("TRY")).isEqualTo("시도할 회수는 몇 회 인가요?");
-        assertThat(racingCar.questionMessage("CAR")).isEqualTo("자동차 대수는 몇 대 인가요?");
-        assertThat(racingCar.questionMessage("A")).isEqualTo("NO MESSAGE");
+        assertThat(resultView.questionMessage("TRY")).isEqualTo("시도할 회수는 몇 회 인가요?");
+        assertThat(resultView.questionMessage("CAR")).isEqualTo("자동차 대수는 몇 대 인가요?");
+        assertThat(resultView.questionMessage("A")).isEqualTo("NO MESSAGE");
     }
 
     @Test
@@ -29,7 +31,7 @@ public class RacingCarTest {
     void systemSetInNumber() {
         InputStream inputStream = new ByteArrayInputStream("3".getBytes());
         System.setIn(inputStream);
-        int result = racingCar.scanNumber();
+        int result = inputView.scanNumber();
         assertThat(result).isEqualTo(3);
     }
 
