@@ -38,7 +38,7 @@ class RacingCarTest {
         RacingCar racingCar = new RacingCar("12345");
 
         // when
-        String name = racingCar.getName();
+        String name = racingCar.getName().stringValue();
 
         // then
         Assertions.assertThat(name).isEqualTo("12345");

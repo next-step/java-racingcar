@@ -1,5 +1,6 @@
 package step3.view;
 
+import step3.domain.Name;
 import step3.domain.Racecourse;
 import step3.domain.RacingCar;
 import step3.domain.Track;
@@ -19,7 +20,6 @@ public class ResultView {
 
     public static void printCarPosition(final Racecourse racecourse) {
         racecourse.tracks()
-                .stream()
                 .forEach(track -> System.out.println(writeCarPosition(track)));
         System.out.println();
     }
@@ -27,11 +27,12 @@ public class ResultView {
     public static void printTopRanking(final Racecourse racecourse) {
         final String topRankingRacingCars = racecourse.findTopRank().stream()
                 .map(RacingCar::getName)
+                .map(Name::stringValue)
                 .collect(Collectors.joining(", "));
         System.out.printf("%s가 최종 우승했습니다.%n", topRankingRacingCars);
     }
 
     private static String writeCarPosition(final Track track) {
-        return String.format("%s : ", track.carName()) + carPositionIcon.repeat(Math.max(0, track.carPosition()));
+        return String.format("%s : %s", track.carName(), carPositionIcon.repeat(Math.max(0, track.carPosition().intValue())));
     }
 }
