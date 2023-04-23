@@ -40,14 +40,14 @@ class RepsTest {
     }
 
     @Test
-    @DisplayName("진행할 Reps가 존재할떄 테스트")
+    @DisplayName("isOverZero 메서드는 진행할 수 있는 경우 true를 반환한다")
     void 진행할_Reps가_존재할떄_테스트() {
         Reps result = new Reps(5);
         assertThat(result.isOverZero()).isTrue();
     }
 
     @Test
-    @DisplayName("진행할 Reps가 존재할떄 테스트")
+    @DisplayName("isOverZero 메서드는 진행할 수 있는 경우 false를 반환한다")
     void 진행할_Reps가_없을때_테스트() {
         Reps result = new Reps(1);
         result.repsDown();
