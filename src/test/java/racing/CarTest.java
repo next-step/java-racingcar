@@ -18,7 +18,7 @@ public class CarTest {
         Car car = new Car("june");
 
         car.move(randomNumber);
-        assertThat(car.position()).isZero();
+        assertThat(car.position().getPosition()).isZero();
     }
 
     @ParameterizedTest(name = "랜덤값이 {0}일 때 자동차는 이동한다")
@@ -27,7 +27,7 @@ public class CarTest {
         Car car = new Car("june");
 
         car.move(randomNumber);
-        assertThat(car.position()).isEqualTo(1);
+        assertThat(car.position().getPosition()).isEqualTo(1);
     }
 
     @ParameterizedTest(name = "랜덤값이 경계를 벗어날때 에러를 던진다")
@@ -45,7 +45,7 @@ public class CarTest {
         Cars movedCars = new Cars(List.of("a", "b", "c"), 3).move();
         movedCars.values()
                 .forEach(car -> {
-                    assertThat(car.position()).isBetween(0, 3);
+                    assertThat(car.position().getPosition()).isBetween(0, 3);
                 });
     }
 

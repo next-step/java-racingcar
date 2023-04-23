@@ -12,7 +12,7 @@ public class ResultView {
     public static void printRace(Cars cars, boolean isStart) {
         printTitle(isStart);
         for (Car car : cars.values()) {
-            System.out.println(car.name().getNameString() + " : " + convertPositionToMark(car.position()));
+            System.out.println(car.name().getNameString() + " : " + convertPositionToMark(car.position().getPosition()));
         }
         System.out.println();
     }

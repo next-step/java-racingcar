@@ -38,7 +38,7 @@ public class Cars {
     }
 
     private int maxPosition() {
-        return Collections.max(cars.stream().map(Car::position).collect(Collectors.toList()));
+        return Collections.max(cars.stream().map(Car::position).map(Position::getPosition).collect(Collectors.toList()));
     }
 
     public List<Car> values() {

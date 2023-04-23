@@ -2,21 +2,20 @@ package racing.domain;
 
 public class Car {
 
-    private static final Integer DEFAULT_POSITION = 0;
     private static final Integer RANDOM_MAX = 9;
     private static final Integer MOVE_MIN = 4;
 
     private final Name name;
-    private int position;
+    private final Position position;
 
     public Car(String name) {
         this.name = new Name(name);
-        this.position = DEFAULT_POSITION;
+        this.position = new Position();
     }
 
     public Car(String name, int position) {
         this.name = new Name(name);
-        this.position = position;
+        this.position = new Position(position);
     }
 
     public void move(int randomNumber) {
@@ -24,15 +23,15 @@ public class Car {
             throw new RuntimeException("랜덤값 경계를 벗어났습니다.");
         }
         if (randomNumber >= MOVE_MIN) {
-            position += 1;
+            position.move();
         }
     }
 
     public boolean isLocatedAt(int maxPosition) {
-        return this.position == maxPosition;
+        return this.position.isSameWith(maxPosition);
     }
 
-    public int position() {
+    public Position position() {
         return position;
     }
 
