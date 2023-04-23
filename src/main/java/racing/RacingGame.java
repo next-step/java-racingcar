@@ -16,15 +16,8 @@ public class RacingGame {
     private final RacingRule racingRule;
 
     public RacingGame(List<String> carNames, RacingRule racingRule) {
-        this.cars = new Cars(convertToCarList(carNames));
+        this.cars = Cars.of(carNames);
         this.racingRule = racingRule;
-    }
-
-    private List<Car> convertToCarList(List<String> carNames) {
-        return carNames
-                .stream()
-                .map(Car::new)
-                .collect(Collectors.toList());
     }
 
     public GameResult start(int opportunity) {

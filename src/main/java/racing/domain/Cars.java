@@ -8,14 +8,23 @@ import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
+
+    public static Cars of(List<String> carNames) {
+        return new Cars(convertToCarList(carNames));
+    }
     public Cars(List<Car> cars) {
         this.cars = cars;
     }
-
     public List<Car> getCars() {
         return this.cars;
     }
 
+    private static List<Car> convertToCarList(List<String> carNames) {
+        return carNames
+                .stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
+    }
     public void race(RacingRule racingRule) {
         List<Integer> result = new ArrayList<>();
         for (Car car : cars) {

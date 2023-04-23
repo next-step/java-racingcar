@@ -7,7 +7,7 @@
 - [x] 변수 네이밍 
   - [x] 자료구조를 지칭하는 단어 직접 사용 지양
 - [x] Stream 사용
-- [ ] Car객체 생성자 메서드 다양하게 이용
+- [ ] Cars객체 생성자 메서드 다양하게 이용
 - [ ] RoundResult VO 도출
 - [ ] registerCurrentWinner 마지막 라운드 한번만 실행
 - [ ] Position 객체 도출
