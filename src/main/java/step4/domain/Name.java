@@ -11,10 +11,14 @@ public class Name {
 
     private final String name;
 
-    public Name(String name) {
+    private Name(String name) {
         validate(name);
 
         this.name = name;
+    }
+
+    public static Name from(String name) {
+        return new Name(name);
     }
 
     private void validate(String name) {

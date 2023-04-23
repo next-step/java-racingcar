@@ -9,8 +9,12 @@ public class Position {
 
     private int distance;
 
-    public Position() {
+    private Position() {
         this.distance = 0;
+    }
+
+    public static Position create() {
+        return new Position();
     }
 
     public int getDistance() {

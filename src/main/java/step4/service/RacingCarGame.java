@@ -25,7 +25,7 @@ public class RacingCarGame {
         List<Car> cars = new ArrayList<>();
 
         for (String name : names) {
-            final Car car = new Car(new Position(), new Name(name));
+            final Car car = new Car(Position.create(), Name.from(name));
             cars.add(car);
         }
 
