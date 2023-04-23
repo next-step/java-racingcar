@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.Scanner;
 
 import static org.assertj.core.api.Assertions.*;
@@ -26,8 +28,9 @@ public class RacingCarTest {
     void systemSetInNumber() {
         InputStream inputStream = new ByteArrayInputStream("3".getBytes());
         System.setIn(inputStream);
-        Scanner scanner = new Scanner(System.in);
-        String result = scanner.next();
-        assertThat(result).isEqualTo("3");
+        int result = racingCar.scanNumber();
+        assertThat(result).isEqualTo(3);
     }
+
+
 }
