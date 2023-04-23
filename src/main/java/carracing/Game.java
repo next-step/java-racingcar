@@ -10,7 +10,7 @@ import java.util.Random;
 public class Game {
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        List<Car> raceCars = participate(inputView.getAmount());
+//        List<Car> raceCars = participate(inputView.getAmount());
 
         ResultView resultView = new ResultView();
         for (int i = 0; i < inputView.getTrack(); i++) {
