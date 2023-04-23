@@ -17,8 +17,12 @@ public class ResultView {
         screen.print("");
     }
 
-    public void winner(String winnerNames) {
-        screen.print(winnerNames + "이(가) 최종 우승했습니다.");
+    public void winner(List<String> winnerNames) {
+        screen.print(join(winnerNames) + "이(가) 최종 우승했습니다.");
+    }
+
+    private String join(List<String> winnerNames) {
+        return String.join(", ", winnerNames);
     }
 
     private String convert(int distanceDriven) {

@@ -1,11 +1,11 @@
 package racingcar;
 
 public class Car {
-    private final String name;
+    private final CarName carName;
     private int distance = 0;
 
-    public Car(String name) {
-        this.name = name;
+    public Car(CarName carName) {
+        this.carName = carName;
     }
 
     public void move(int number) {
@@ -19,6 +19,6 @@ public class Car {
     }
 
     public String name() {
-        return name;
+        return carName.getName();
     }
 }

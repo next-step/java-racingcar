@@ -5,14 +5,14 @@ import java.util.List;
 
 public class Winner {
 
-    public static String getWinnerCarNames(Cars cars) {
+    public static List<String> getWinnerCarNames(Cars cars) {
         List<String> carNames = new ArrayList<>();
 
         int maxDistance = maxDistance(cars);
         for (Car car : cars.list()) {
             addCarNameNaxDistanceGreaterThanOrEqual(maxDistance, car, carNames);
         }
-        return String.join(",", carNames);
+        return carNames;
     }
 
     private static void addCarNameNaxDistanceGreaterThanOrEqual(int maxDistance, Car car, List<String> carNames) {

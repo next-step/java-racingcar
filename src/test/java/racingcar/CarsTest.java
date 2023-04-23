@@ -14,7 +14,7 @@ public class CarsTest {
     void addCars_inputNumberCarsSize() {
         String[] names = {"pobi", "conan"};
         Cars cars = new Cars(names);
-        assertThat(cars.size()).isEqualTo(names.length);
+        assertThat(cars.getNumberOfCars()).isEqualTo(names.length);
     }
 
     @Test
@@ -28,7 +28,7 @@ public class CarsTest {
             cars.moveAll();
         }
 
-        for (int i = 0; i < cars.size(); i++) {
+        for (int i = 0; i < cars.getNumberOfCars(); i++) {
             List<Car> carList = cars.list();
             carList.forEach(car -> assertThat(car.distanceDriven()).isNotNegative());
         }

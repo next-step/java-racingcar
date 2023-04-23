@@ -17,13 +17,13 @@ public class Cars {
         cars.forEach(car -> car.move(randomNumber.nextInt(10)));
     }
 
-    public int size() {
+    public int getNumberOfCars() {
         return cars.size();
     }
 
     private void addCar(String[] names) {
         for (String name : names) {
-            cars.add(new Car(name));
+            cars.add(new Car(new CarName(name)));
         }
     }
 
