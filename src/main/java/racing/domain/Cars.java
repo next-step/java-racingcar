@@ -34,20 +34,11 @@ public class Cars {
     }
 
     public List<String> pickWinners() {
-        int maxPosition = getMaxPosition();
-        List<String> winners = new ArrayList<>();
-        cars.forEach(car -> pickWinner(maxPosition, winners, car));
-        return winners;
+        return cars.stream().filter(car -> car.isWinner(getMaxPosition())).map(Car::name).collect(Collectors.toList());
     }
 
     private int getMaxPosition() {
         return Collections.max(cars.stream().map(Car::position).collect(Collectors.toList()));
-    }
-
-    private static void pickWinner(int maxPosition, List<String> winners, Car car) {
-        if (car.isWinner(maxPosition)) {
-            winners.add(car.name());
-        }
     }
 
     public List<Car> values() {
