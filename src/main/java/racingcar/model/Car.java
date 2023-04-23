@@ -3,11 +3,17 @@ package racingcar.model;
 import java.util.Random;
 
 public class Car {
-    public static final int RUN_CONDITION = 4;
+
+    static final int RUN_CONDITION = 4;
 
     private int position = 0;
+    private String name = "";
 
     public Car() {
+    }
+
+    public Car(String name) {
+        this.name = name;
     }
 
     public void move(int value) {
@@ -27,4 +33,8 @@ public class Car {
     public int getPosition() {
         return this.position;
     }
+
+    public String getName() {return this.name;}
+
+
 }

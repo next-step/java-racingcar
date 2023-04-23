@@ -29,6 +29,14 @@ class CarTest {
     }
 
     @Test
+    @DisplayName("Car 추가시 이름 입력")
+    void add_new_car_with_name(){
+        Car car = new Car("test");
+
+        assertThat(car.getName()).isEqualTo("test");
+    }
+
+    @Test
     @DisplayName("조건 값에 따른 True, False 반환 확인")
     void check_move_when_value_over_the_condition_four() {
         Car car = new Car();
