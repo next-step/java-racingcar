@@ -5,29 +5,26 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarRacingTest {
 
     CarRacing carRacing = new CarRacing();
 
-    Car[] cars;
+    List<Car> cars;
 
     public CarRacingTest() {
-        cars = new Car[5];
-        cars[0] = new Car("A", 12);
-        cars[1] = new Car("B", 7);
-        cars[2] = new Car("C", 18);
-        cars[3] = new Car("D", 18);
-        cars[4] = new Car("E", 3);
-    }
 
-    @Test
-    @DisplayName("가장 멀리간 차량의 위치를 출력한다.")
-    public void 우승자_위치_확인() throws Exception {
-        assertThat(carRacing.findCarMaxPosition(cars).getPosition()).isEqualTo(18);
+        cars = new ArrayList<Car>();
+        cars.add(new Car("A", 12));
+        cars.add(new Car("B", 7));
+        cars.add(new Car("C", 18));
+        cars.add(new Car("D", 18));
+        cars.add(new Car("E", 3));
     }
-
 
     @DisplayName("차량의 위치가 일치하는지 비교한다.")
     @ParameterizedTest
@@ -45,6 +42,4 @@ class CarRacingTest {
                     .isLessThan(10);
         }
     }
-
-
 }

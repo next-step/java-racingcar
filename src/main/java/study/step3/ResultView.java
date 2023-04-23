@@ -2,8 +2,8 @@ package study.step3;
 
 public class ResultView {
 
-    public void printStateBoard(Car[] cars) {
-        for (Car car : cars) {
+    public void printStateBoard(Cars cars) {
+        for (Car car : cars.asList()) {
             System.out.println(car.getName() + " : " + printCarPosition(car.getPosition()));
         }
         System.out.println();
