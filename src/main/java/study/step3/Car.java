@@ -1,14 +1,12 @@
 package study.step3;
 
 import java.security.InvalidParameterException;
-import java.util.Random;
 
 public class Car {
 
     private static final String CAR_NAME_RANGE_ALERT_MESSAGE = "자동차의 이름은 5글자를 초과할 수 없습니다.";
     private static final int STANDARD_VALUE_TO_MOVE = 3;
-    private static final int RANGE_FOR_RANDOM = 10;
-    private Random random = new Random();
+
     private String name;
     private int position;
 
@@ -29,31 +27,27 @@ public class Car {
         this.position = position;
     }
 
-    public int getPosition() {
+    int getPosition() {
         return position;
     }
 
-    public String getName() {
+    String getName() {
         return name;
     }
 
-    boolean move() {
-        if (isExceedStandard(getRandomInt())) {
+    int move(int randomNum) {
+        if (isExceedStandard(randomNum)) {
             position++;
-            return true;
         }
-        return false;
+        return position;
     }
 
     boolean isExceedStandard(int num) {
         return num > STANDARD_VALUE_TO_MOVE;
     }
 
-    public int getRandomInt() throws IllegalArgumentException {
-        return random.nextInt(RANGE_FOR_RANDOM);
-    }
 
-    public String printPosition() {
+    String printPosition() {
         return name + " : " + "-".repeat(position);
     }
 }

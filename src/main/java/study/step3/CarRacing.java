@@ -1,7 +1,10 @@
 package study.step3;
 
-public class CarRacing {
+import java.util.Random;
 
+public class CarRacing {
+    private static final int RANGE_FOR_RANDOM = 10;
+    private Random random = new Random();
     private int round;
     private Car[] cars;
     private InputView inputView;
@@ -39,9 +42,14 @@ public class CarRacing {
 
     private void moveCars() {
         for (Car car : cars) {
-            car.move();
+            car.move(getRandomInt());
         }
     }
+
+    public int getRandomInt() throws IllegalArgumentException {
+        return random.nextInt(RANGE_FOR_RANDOM);
+    }
+
 
     private void printWinner() {
         resultView.printWinner(findWinners());
