@@ -10,18 +10,16 @@ public class Stage {
         this.racingInformation = racingInformation;
     }
 
-    public Stage play(MoveStrategy moveStrategy) {
+    public void play(MoveStrategy moveStrategy) {
         racingInformation.getReps().repsDown();
         racingInformation.getRacingCarGroup().move(moveStrategy);
-
-        return this;
     }
 
     public boolean hasMoreStage() {
         return racingInformation.isContinue();
     }
 
-    public int getCurrentStage(){
+    public int getCurrentStage() {
         return racingInformation.getReps().getReps();
     }
 }

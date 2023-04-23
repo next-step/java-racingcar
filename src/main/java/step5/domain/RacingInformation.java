@@ -11,7 +11,7 @@ public class RacingInformation {
     }
 
     public static RacingInformation of(String inputCarName, int reps) {
-        return new RacingInformation(RacingCarGroup.of(inputCarName), new Reps(reps));
+        return new RacingInformation(RacingCarGroup.from(inputCarName), new Reps(reps));
     }
 
     public boolean isContinue() {

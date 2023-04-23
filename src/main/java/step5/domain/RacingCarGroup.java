@@ -14,7 +14,7 @@ public class RacingCarGroup {
         this.racingCarList = racingCarList;
     }
 
-    public static RacingCarGroup of(String inputCarName) {
+    public static RacingCarGroup from(String inputCarName) {
         List<RacingCar> racingCarList = makeRacingCarList(inputCarName);
         return new RacingCarGroup(racingCarList);
     }
