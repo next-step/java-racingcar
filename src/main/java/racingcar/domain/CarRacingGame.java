@@ -3,6 +3,8 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import static racingcar.domain.Car.*;
+
 public class CarRacingGame {
 
     private static final int BEGIN_INDEX = 0;
@@ -19,7 +21,7 @@ public class CarRacingGame {
 
         List<Car> cars = new ArrayList<>();
         for (int i = BEGIN_INDEX; i < carNames.length; i++) {
-            cars.add(new Car(carNames[i]));
+            cars.add(createNoMoveCountCar(carNames[i]));
         }
         return new Cars(cars);
     }

@@ -19,8 +19,8 @@ public class Car {
         this(new CarName(name), new MoveCount(count));
     }
 
-    public Car(String name) {
-        this(new CarName(name), new MoveCount(INIT_VALUE));
+    public static Car createNoMoveCountCar(String name) {
+        return new Car(name, 0);
     }
 
     public CarName carName() {
