@@ -12,11 +12,12 @@ public class Game {
         InputView inputView = new InputView();
         List<Car> raceCars = participate(inputView.getAmount());
 
+        ResultView resultView = new ResultView();
         for (int i = 0; i < inputView.getTrack(); i++) {
-            ResultView resultView = new ResultView();
-            List<Integer> steps = race(raceCars);
-            for (Integer step : steps) {
-                resultView.print(step);
+            List<Car> cars = new ArrayList<>();
+            for (Car car : cars) {
+                String print = resultView.print(car);
+                System.out.println(print);
             }
             System.out.println();
         }

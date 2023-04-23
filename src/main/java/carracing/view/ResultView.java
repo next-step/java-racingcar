@@ -1,18 +1,16 @@
 package carracing.view;
 
+import carracing.Car;
+
 public class ResultView {
     private static final String MOVE_MARK = "-";
-    private String result = "";
 
-    public String getResult() {
-        return result;
-    }
-
-    public void print(Integer step) {
+    public String print(Car car) {
         StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < step; i++) {
-            this.result = builder.append(MOVE_MARK).toString();
+        builder.append(car.getName()).append(" : ");
+        for (int i = 0; i < car.getPosition(); i++) {
+            builder.append(MOVE_MARK);
         }
-        System.out.println(getResult());
+        return builder.toString();
     }
 }
