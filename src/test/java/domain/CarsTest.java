@@ -3,7 +3,6 @@ package domain;
 import static domain.Cars.createCars;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -15,9 +14,7 @@ class CarsTest {
         String names = "포비,크롱,뽀로로";
         int attemptCount = 3;
         UserInput userInput = new UserInput(names, attemptCount);
-        List<Car> inpurCars = createCars(userInput.getNamesForCars(),
-                userInput.getNumbersOfCar());
-        Cars cars = new Cars(inpurCars);
+        Cars cars =createCars(userInput.getNamesForCars());
 
         assertThat(cars.countCars()).isEqualTo(3);
     }
@@ -28,28 +25,19 @@ class CarsTest {
         String names = "포비,크롱,뽀로로";
         int attemptCount = 3;
         UserInput userInput = new UserInput(names, attemptCount);
-        List<Car> inpurCars = createCars(userInput.getNamesForCars(),
-                userInput.getNumbersOfCar());
-        Cars cars = new Cars(inpurCars);
+        Cars cars =createCars(userInput.getNamesForCars());
 
         Car eachCar = cars.getEachCar(1);
         assertThat(eachCar.getCarName()).isEqualTo("크롱");
     }
 
-    @Test
-    @DisplayName("우승자의 이름 리스트를 가지고 온다.")
-    void getFarthestDistance() {
-        Car ethanCar = new Car("ethan");
-        ethanCar.attemptMove(true);
-        ethanCar.attemptMove(true);
-        ethanCar.attemptMove(true);
-        Car rickCar = new Car("rick");
-        rickCar.attemptMove(true);
-        rickCar.attemptMove(true);
 
-        Cars cars = new Cars(List.of(ethanCar, rickCar));
 
-        String[] winnerNames = cars.getWinnerNames();
-        assertThat(winnerNames[0]).isEqualTo("ethan");
+    private static Car makeCarWithMoved(String name, int movedCount) {
+        Car car = new Car(name);
+        for (int i = 0; i < movedCount; i++) {
+            car.attemptMove(true);
+        }
+        return car;
     }
 }
