@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingGame {
-    private final int ZERO = 0;
-    private final String DELIMITER = ",";
+    private static final int ZERO = 0;
+    private static final String DELIMITER = ",";
     private final RacingCars racingCars;
 
     public RacingGame(String nameOfCars, MoveStrategy moveStrategy) {

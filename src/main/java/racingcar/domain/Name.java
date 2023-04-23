@@ -3,7 +3,7 @@ package racingcar.domain;
 import java.util.Objects;
 
 public class Name {
-    private final int NAME_STANDARD = 5;
+    private static final int NAME_STANDARD = 5;
     private final String name;
 
     public Name(String name) {

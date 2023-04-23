@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 public class RacingCars {
     private final List<Car> cars;
-    private MoveStrategy moveStrategy;
+    private final MoveStrategy moveStrategy;
 
     public RacingCars(List<Car> cars, MoveStrategy moveStrategy) {
         this.cars = cars;

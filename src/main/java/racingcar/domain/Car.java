@@ -1,12 +1,12 @@
 package racingcar.domain;
 
-
 import java.util.*;
 
 public class Car {
+    private static final int START = 0;
+
     private Position position;
     private Name name;
-    private static int START = 0;
 
     public Car(String name) {
         this(name, START);
@@ -17,14 +17,12 @@ public class Car {
         this.position = new Position(position);
     }
 
-    public Position drive()
-    {
+    public Position drive() {
         position = position.move();
         return position;
     }
 
-    public int getDistance()
-    {
+    public int getDistance() {
         return position.getPosition();
     }
 
