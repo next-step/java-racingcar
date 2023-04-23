@@ -7,6 +7,7 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.Random;
 import java.util.Scanner;
 
 import static org.assertj.core.api.Assertions.*;
@@ -32,5 +33,24 @@ public class RacingCarTest {
         assertThat(result).isEqualTo(3);
     }
 
+    @Test
+    @DisplayName("0에서 9사이의 random값을 구한 후 4이상일 경우 전진하는 기능")
+    void forwardAndStop() {
+        Random random = new Random();
+        int number = random.nextInt(10);
 
+        String result = "";
+        if(number >= 4) {
+            result = "FORWARD";
+        }else {
+            result = "STOP";
+        }
+
+        if(number >= 4) {
+            assertThat(result).isEqualTo("FORWARD");
+        }else {
+            assertThat(result).isEqualTo("STOP");
+        }
+
+    }
 }
