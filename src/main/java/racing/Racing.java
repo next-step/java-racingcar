@@ -2,6 +2,7 @@ package racing;
 
 import racing.ui.InputView;
 import racing.ui.ResultView;
+import racing.RacingRound;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ public class Racing {
     private static final String SPLIT_NAMES_DELIMITER = ",";
     private static final Random RANDOM = new Random();
     private static final int BOUND_NUMBER = 10;
-    private final int try_count;
+    private final RacingRound racingRound;
     private final Cars cars;
 
     public static Racing input() {
@@ -20,20 +21,13 @@ public class Racing {
     }
 
     public Racing(String inputCarNames, int inputTryCount) {
-        validatePositve(inputTryCount);
+        racingRound = new RacingRound(inputTryCount);
         cars = makeCars(inputCarNames);
-        try_count = inputTryCount;
-    }
-
-    private void validatePositve(int inputTryCount) {
-        if (inputTryCount < 0) {
-            throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
-        }
     }
 
     public void raceAndShow() {
         ResultView.start();
-        for (int i = 0; i < try_count; i++) {
+        for (int i = 0; i < racingRound.getRound(); i++) {
             race();
             ResultView.showRace(cars);
         }
@@ -64,7 +58,7 @@ public class Racing {
     }
 
     public int getTryCount(){
-        return try_count;
+        return racingRound.getRound();
     }
 
     public String getCarName(int carIndex){
