@@ -1,8 +1,6 @@
 package race;
 
-import java.util.List;
 import java.util.Scanner;
-import race.domain.Winner;
 import race.util.Split;
 import race.view.InputView;
 import race.view.ResultView;
@@ -24,15 +22,12 @@ public class RaceGame {
         RaceRunner raceRunner = new RaceRunner(Split.getNames(carName), countOfTrial);
 
         for (int i = 0; i < countOfTrial; i++) {
-            raceRunner.race();
+            raceRunner.start();
             traceView.printMovingResult(raceRunner.getRacingCars());
             System.out.println();
         }
 
-
-        Winner winner = new Winner();
-        List<String> winners = winner.get(raceRunner.getRacingCars());
-        resultView.printWinners(winners);
+        resultView.printWinners(raceRunner.selectWinners());
     }
 
     private static int inputCountOfTrial(Scanner scanner, InputView inputView) {

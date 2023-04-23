@@ -3,6 +3,7 @@ package race;
 import java.util.List;
 import race.domain.Car;
 import race.domain.RacingCars;
+import race.domain.Winner;
 
 public class RaceRunner {
 
@@ -18,7 +19,12 @@ public class RaceRunner {
         this.trial = trial;
     }
 
-    public void race() {
+    public List<String> selectWinners() {
+        Winner winner = new Winner();
+        return winner.get(this.getRacingCars());
+    }
+
+    public void start() {
         racingCars.move();
     }
 
