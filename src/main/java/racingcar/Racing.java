@@ -1,28 +1,34 @@
 package racingcar;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-@Data
+@Getter
+@Setter
 public class Racing {
-    private final int numOfCars;
     private final int numOfTries;
     private ArrayList<Car> cars;
     private final int threshold;
 
     public Racing(UserInput userInput, int threshold) {
-        this.numOfCars = userInput.numOfCarsByInt();
         this.numOfTries = userInput.numOfTriesByInt();
-        cars = initCarInfos(userInput.numOfCarsByInt());
+        cars = initCarInfos(userInput.numOfCarsByInt(), userInput.getCarNames());
         this.threshold = threshold;
     }
 
-    private ArrayList<Car> initCarInfos(int num) {
+    private ArrayList<Car> initCarInfos(int num, String[] carNames) {
         return IntStream.range(0, num)
-                .mapToObj(i -> new Car())
+                .mapToObj(i -> new Car(carNames[i]))
+                .collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    public ArrayList<String> getCarNames() {
+        return cars.stream()
+                .map(Car::getName)
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 }

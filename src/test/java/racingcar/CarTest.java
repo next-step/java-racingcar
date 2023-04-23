@@ -9,7 +9,7 @@ public class CarTest {
     @Test
     @DisplayName("Car 클래스의 기능 테스트")
     void CarTest() {
-        Car car = new Car();
+        Car car = new Car("testName");
         // 1회 이동
         car = car.moveFoward(5);
 
