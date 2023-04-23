@@ -9,7 +9,7 @@
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
 ## 추가할 기능 목록
-### step3
+### racingcar
 * 입력한 숫자만큼의 자동차를 나타낼 수 있는 객체 생성
 * 0~9사이의 발생한 랜덤값중 4이상일 때에만 전진하는 로직
 * 입력한 숫자만큼 전진로직을 반복

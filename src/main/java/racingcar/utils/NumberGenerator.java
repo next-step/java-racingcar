@@ -1,4 +1,4 @@
-package step3.utils;
+package racingcar.utils;
 
 public interface NumberGenerator {
     int generate(int bound);

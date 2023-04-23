@@ -1,6 +1,6 @@
-package step3.model;
+package racingcar.model;
 
-import step3.utils.RandomNumberGenerator;
+import racingcar.utils.RandomNumberGenerator;
 
 import java.util.ArrayList;
 import java.util.Collections;

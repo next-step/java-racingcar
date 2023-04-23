@@ -1,8 +1,7 @@
-package step3;
+package racingcar;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import step3.model.Car;
+import racingcar.model.Car;
 
 import static org.assertj.core.api.Assertions.*;
 

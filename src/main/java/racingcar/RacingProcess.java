@@ -1,7 +1,7 @@
-package step3;
+package racingcar;
 
-import step3.model.Cars;
-import step3.view.ResultView;
+import racingcar.model.Cars;
+import racingcar.view.ResultView;
 
 public class RacingProcess {
     private final String carName;

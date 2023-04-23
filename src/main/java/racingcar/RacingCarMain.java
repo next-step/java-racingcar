@@ -1,6 +1,6 @@
-package step3;
+package racingcar;
 
-import step3.view.InputView;
+import racingcar.view.InputView;
 
 public class RacingCarMain {
     public static void main(String[] args) {

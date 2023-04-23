@@ -1,7 +1,7 @@
-package step3.model;
+package racingcar.model;
 
-import step3.utils.NumberGenerator;
-import step3.utils.RandomNumberGenerator;
+import racingcar.utils.NumberGenerator;
+import racingcar.utils.RandomNumberGenerator;
 
 public class Car {
     private static final int MAX_BOUND = 10;
