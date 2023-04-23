@@ -1,7 +1,7 @@
 package racingcar.domain;
 
 public class Point {
-    private int point = 0;
+    private int point;
     public Point(int point) {
         this.point = point;
     }

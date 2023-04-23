@@ -3,7 +3,6 @@ package racingcar.view;
 import racingcar.domain.Score;
 import racingcar.domain.Scores;
 
-import java.util.ArrayDeque;
 import java.util.List;
 
 public class ResultView {

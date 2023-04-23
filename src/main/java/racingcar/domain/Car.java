@@ -3,8 +3,8 @@ package racingcar.domain;
 import racingcar.strategy.NumberGeneratorStrategy;
 
 public class Car {
-    private Point point;
-    private Name name;
+    private final Point point;
+    private final Name name;
 
     public Car(String carName) {
         this(0, carName);

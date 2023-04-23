@@ -3,9 +3,6 @@ package racingcar.domain;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Cars;
-import racingcar.domain.Score;
-import racingcar.domain.Scores;
 import racingcar.strategy.MovableNumberGeneratorStrategy;
 import racingcar.strategy.NumberGeneratorStrategy;
 

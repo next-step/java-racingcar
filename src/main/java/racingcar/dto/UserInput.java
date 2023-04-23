@@ -7,7 +7,7 @@ import java.util.List;
 
 public class UserInput {
     private final GameRound gameRound;
-    private InputNames inputNames;
+    private final InputNames inputNames;
 
     public UserInput(int gameRound, String names) {
         this.gameRound = new GameRound(gameRound);

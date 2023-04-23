@@ -28,10 +28,9 @@ public class Scores {
 
     public List<Score> findWinners() {
         int maxPoint = findMaxPoint();
-        List<Score> winner = scores.stream()
+        return scores.stream()
                 .filter(score -> score.findPoint() == maxPoint)
                 .collect(Collectors.toList());
-        return winner;
     }
 
     public int findMaxPoint() {
