@@ -11,20 +11,22 @@ public class CarRacingGame {
 
     private final Cars cars;
 
-    public CarRacingGame(String carNameInput) {
-        this.cars = new Cars(makeCars(splitCarNameInput(carNameInput)));
+    public CarRacingGame(String input) {
+        this.cars = initCars(input);
     }
 
-    private List<Car> makeCars(String[] carNames) {
+    private Cars initCars(String input) {
+        String[] carNames = splitCarName(input);
+
         List<Car> cars = new ArrayList<>();
         for (int i = BEGIN_INDEX; i < carNames.length; i++) {
             cars.add(new Car(carNames[i], INIT_VALUE));
         }
-        return cars;
+        return new Cars(cars);
     }
 
-    private String[] splitCarNameInput(String carNameInput) {
-        return carNameInput.split(CAR_NAME_SEPARATOR);
+    private String[] splitCarName(String input) {
+        return input.split(CAR_NAME_SEPARATOR);
     }
 
     public int carSize() {
