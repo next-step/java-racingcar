@@ -6,27 +6,24 @@ import java.util.Random;
 
 public class Cars {
 
-    private final List<Car> cars;
+    private final List<Car> cars = new ArrayList<>();
     private final Random randomNumber = new Random();
 
-    public Cars(int number) {
-        cars = new ArrayList<>();
-        addCar(number);
+    public Cars(String[] names) {
+        addCar(names);
     }
 
     public void moveAll() {
-        cars.forEach(car -> {
-            car.move(randomNumber.nextInt(10));
-        });
+        cars.forEach(car -> car.move(randomNumber.nextInt(10)));
     }
 
-    public int size() {
+    public int getNumberOfCars() {
         return cars.size();
     }
 
-    private void addCar(int number) {
-        for (int i = 0; i < number; i++) {
-            cars.add(new Car());
+    private void addCar(String[] names) {
+        for (String name : names) {
+            cars.add(new Car(new CarName(name)));
         }
     }
 
