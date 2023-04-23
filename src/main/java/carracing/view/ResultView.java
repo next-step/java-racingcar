@@ -1,7 +1,5 @@
 package carracing.view;
 
-import carracing.Car;
-
 public class ResultView {
     private static final String MOVE_MARK = "-";
     private String result = "";

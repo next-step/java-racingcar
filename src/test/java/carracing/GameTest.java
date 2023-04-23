@@ -1,11 +1,8 @@
 package carracing;
 
-import carracing.view.InputView;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
