@@ -1,7 +1,6 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class RacingService {
@@ -12,6 +11,14 @@ public class RacingService {
             move(racing);
             resultView.showCurrentState(racing.getCars());
         }
+        printWinners(racing);
+    }
+
+    private void printWinners(Racing racing) {
+        Set<String> winners = selectWinner(racing);
+        StringJoiner joiner = new StringJoiner(",");
+        winners.forEach(joiner::add);
+        System.out.println(winners.toString() + "가 최종 우승했습니다.");
     }
 
     public void move(Racing racing) {
@@ -25,5 +32,21 @@ public class RacingService {
 
     private int generateRand() {
         return new Random().nextInt(10);
+    }
+
+    public Set<String> selectWinner(Racing racing) {
+        Set<String> winners = new HashSet<>();
+        int max = 0;
+        for (Car car : racing.getCars()) {
+            if (car.getCurrentDistance() > max) {
+                winners.clear();
+                winners.add(car.getName());
+                max = car.getCurrentDistance();
+            }
+            if (car.getCurrentDistance() == max) {
+                winners.add(car.getName());
+            }
+        }
+        return winners;
     }
 }
