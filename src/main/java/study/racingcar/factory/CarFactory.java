@@ -6,8 +6,7 @@ import study.racingcar.domain.Car;
 
 public class CarFactory {
 
-  private CarFactory() {
-  }
+  private CarFactory(){}
 
   public static List<Car> createCars(String[] nameOfCars) {
     List<Car> cars = new ArrayList<>();
@@ -17,7 +16,7 @@ public class CarFactory {
     return cars;
   }
 
-  public static Car createCar(String name) {
+  private static Car createCar(String name) {
     return new Car(name);
   }
 }

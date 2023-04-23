@@ -1,60 +1,59 @@
 package study.racingcar.domain;
 
 import study.racingcar.error.InvalidCarNameException;
-import study.racingcar.util.RandomIntGenerator;
-import study.racingcar.util.StringUtils;
 
 public class Car {
 
-  private static final int DEFAULT_BOUND = 10;
+  private static final int MAXIMUM_NAME_LENGTH = 5;
   private static final int MINIMUM_MOVE_VALUE = 4;
 
-  private String name;
-  private int position;
+  private final String name;
+  private Position position;
 
   public Car(final String name) {
-    this(name, 0);
+    this(name, new Position());
   }
 
   public Car(final String name, final int position) {
-    if(StringUtils.isBlank(name)){
-      throw new InvalidCarNameException("자동차 이름은 값이 존재해야 합니다.");
-    }
+    this(name, new Position(position));
+  }
+
+  public Car(final String name, final Position position) {
+    validationName(name);
+
     this.name = name.trim();
     this.position = position;
   }
 
-  public void move() {
-    if (isMoving(getRandomInt())) {
-      position++;
+  private void validationName(String name) {
+    if (name == null || name.isBlank()) {
+      throw new InvalidCarNameException("이름을 1자 이상 입력해주세요.: ");
+    }
+
+    if (name.trim().length() > MAXIMUM_NAME_LENGTH) {
+      throw new InvalidCarNameException("이름은 5자를 초과할 수 없습니다.: " + name.trim());
     }
   }
 
-  private int getRandomInt() {
-    return RandomIntGenerator.generate(DEFAULT_BOUND);
+  public void move(RandomInt randomInt) {
+    if (randomInt.isMoving(MINIMUM_MOVE_VALUE)) {
+      this.position.increase();
+    }
   }
 
-  private boolean isMoving(int moveValue) {
-    return moveValue >= MINIMUM_MOVE_VALUE;
+  public boolean isSamePosition(Position otherPosition) {
+    return this.position.equals(otherPosition);
+  }
+
+  public Position getMaxPosition(Position otherPosition) {
+    return this.position.getMaxPosition(otherPosition);
   }
 
   public String getName() {
-    return name;
+    return this.name;
   }
 
-  public int getPosition() {
-    return position;
-  }
-
-  public boolean isWinner(Car competitor) {
-    return this.getPosition() >= competitor.getPosition();
-  }
-
-  @Override
-  public String toString() {
-    return "Car{" +
-            "name='" + name + '\'' +
-            ", distance=" + position +
-            '}';
+  public String getFootPrint(String footPrint) {
+    return this.position.getFootPrint(footPrint);
   }
 }
