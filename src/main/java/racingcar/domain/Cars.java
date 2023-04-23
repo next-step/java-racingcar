@@ -20,13 +20,13 @@ public class Cars {
 
     public List<Car> moveCount(List<Integer> numbers) {
         for (int i = BEGIN_INDEX; i < numbers.size(); i++) {
-            makeMoveCount(i, numbers.get(i));
+            move(i, numbers.get(i));
         }
         return this.cars;
     }
 
-    private void makeMoveCount(int i, int number) {
-        this.cars.get(i).makeMoveCount(number);
+    private void move(int i, int number) {
+        this.cars.get(i).move(number);
     }
 
     public List<Car> winningCars() {

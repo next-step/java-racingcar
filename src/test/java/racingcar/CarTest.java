@@ -18,7 +18,7 @@ class CarTest {
         Car car = new Car("oyeon", 1);
 
         //when
-        car.makeMoveCount(number);
+        car.move(number);
 
         //then
         assertThat(car.moveCount().value()).isEqualTo(moveCount);

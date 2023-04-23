@@ -22,7 +22,7 @@ public class Car {
         return moveCount;
     }
 
-    public void makeMoveCount(int number) {
+    public void move(int number) {
         if(isCarMovable(number)) {
             moveCount.increase();
         }
