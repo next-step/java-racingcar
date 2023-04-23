@@ -13,19 +13,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarsTest {
 
-    private static final String TEST_CAR_NAME = "carTest";
+    private static final String TEST_CAR_NAME = "test";
     private Cars testCar;
 
     private void init(String carNames) {
         testCar = Cars.generateCars(carNames);
     }
-
-//    @ParameterizedTest
-//    @ValueSource(ints = {1, 3, 5})
-//    void 입력된_숫자만큼의_Car_생성(int count) {
-//        init(count);
-//        assertThat(TestCar.getCarSize()).isEqualTo(count);
-//    }
 
     @ParameterizedTest
     @CsvSource(value = {"철수:1", "철수, 영희:2", "철수, 영희, 영수:3"}, delimiter = ':')

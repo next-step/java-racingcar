@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.*;
 
 public class CarTest {
 
-    private static final String TEST_CAR_NAME = "carTest";
+    private static final String TEST_CAR_NAME = "test";
 
 
     @Test
