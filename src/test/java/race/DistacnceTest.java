@@ -21,7 +21,7 @@ class DistacnceTest {
         assertThat(result).isEmpty();
     }
 
-    @DisplayName("움직인 거리가 1이상 이면 1을 출력한다.")
+    @DisplayName("움직인 거리가 1이상 이면 거리만큼을 출력한다.")
     @ParameterizedTest
     @ValueSource(ints = {1,2,3})
     void test2(int input){

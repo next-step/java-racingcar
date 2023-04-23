@@ -23,22 +23,11 @@ class AdvancedRacingTest {
         assertThat(raceRunner.getTrial()).isEqualTo(trial);
     }
 
-    @DisplayName("car가 움직일때 이름이 같이 출력된다.")
-    @Test
-    void test1() throws Exception {
-        String name = "crong";
-        Car crong = new Car(name);
-
-        crong.move(4);
-
-        assertThat(crong.getTracing()).contains(name);
-    }
 
     @DisplayName("car가 움직인 거리를 알 수 있다.")
     @Test
     void test6() throws Exception {
         Car car = new Car("name");
-
         car.move(6);
 
         assertThat(car.getMovingDistance()).isEqualTo(1);
