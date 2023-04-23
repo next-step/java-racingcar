@@ -9,6 +9,14 @@ public class RacingCar {
     public static final int RANDOM_LIMIT = 10;
     public static final int LIMIT = 4;
 
+    public static List<Car> createCars(int num){
+        List<Car> cars = new ArrayList<>();
+        for(int i=0; i<num; i++){
+            cars.add(new Car());
+        }
+        return cars;
+    }
+
     public void oneRace(List<Car> cars) {
         for (Car car : cars) {
             boolean isGo = isValueMoreThan(randomValue());

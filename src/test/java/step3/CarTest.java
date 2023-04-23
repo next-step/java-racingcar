@@ -13,12 +13,13 @@ import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 public class CarTest {
 
+    RacingCar rc = new RacingCar();
     Car car = new Car();
     int carCount = 3;
 
     @Test
     void 차_대수만큼_리스트_사이즈() {
-        Assertions.assertThat(car.createCars(carCount)).hasSize(carCount);
+        Assertions.assertThat(rc.createCars(carCount)).hasSize(carCount);
     }
 
 }
