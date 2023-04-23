@@ -2,8 +2,10 @@ package racing.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * @author : 0giri
@@ -15,7 +17,19 @@ public class CarTest {
 
     @BeforeEach
     void setUp() {
-        this.car = new Car();
+        this.car = new Car("0giri");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"0", "  0 ", "0g", "0gi", "0gir", "0giri"})
+    void 자동차이름_앞뒤_공백제외_1글자_이상_5글자_이하_성공(String value) {
+        assertThatNoException().isThrownBy(() -> new Car(value));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"", "  ", "0    0", "0girii"})
+    void 자동차이름_앞뒤_공백제외_1글자_미만_5글자_초과_실패(String value) {
+        assertThatThrownBy(() -> new Car(value)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
