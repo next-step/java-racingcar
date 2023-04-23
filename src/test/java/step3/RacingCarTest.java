@@ -1,6 +1,5 @@
 package step3;
 
-
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,8 +16,11 @@ public class RacingCarTest {
     RacingCar rc = new RacingCar();
     Car car = new Car();
     int carCount = 3;
-    int raceCount = 5;
 
+    @Test
+    void 차_대수만큼_리스트_사이즈() {
+        Assertions.assertThat(rc.createCars(new String[]{"1", "2", "3"})).hasSize(carCount);
+    }
 
     @ParameterizedTest(name = "{0} is more than 4 : {1}")
     @MethodSource("parameter")

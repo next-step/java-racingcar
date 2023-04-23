@@ -7,6 +7,7 @@ import static step3.RacingCar.*;
 import static step3.input.InputView.input;
 import static step3.input.InputView.inputString;
 import static step3.output.ResultView.printRace;
+import static step3.output.ResultView.printWinner;
 
 public class RacingCarMain {
     public static void main(String[] args) {
@@ -23,5 +24,6 @@ public class RacingCarMain {
         }
 
         List<Car> winners = winner.addWinner(cars);
+        printWinner(winners);
     }
 }

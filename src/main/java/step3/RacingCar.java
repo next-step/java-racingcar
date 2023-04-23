@@ -41,8 +41,7 @@ public class RacingCar {
 
     private int randomValue() {
         Random random = new Random();
-        int value = random.nextInt(RANDOM_LIMIT);
-        return value;
+        return random.nextInt(RANDOM_LIMIT);
     }
 
 }

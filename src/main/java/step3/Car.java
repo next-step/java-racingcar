@@ -16,6 +16,7 @@ public class Car {
 
     public Car(String name) {
         this.name = name;
+        this.goCount = 0;
     }
 
     public Car(String name, int goCount) {
