@@ -1,9 +1,9 @@
 package car;
 
-import car.dto.Car;
-import car.service.MoveStrategy;
-import car.service.Movement;
-import car.service.RandomMoveStrategy;
+import car.domain.Car;
+import car.domain.MoveStrategy;
+import car.domain.Movement;
+import car.domain.RandomMoveStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

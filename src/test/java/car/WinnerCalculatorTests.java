@@ -1,8 +1,7 @@
 package car;
 
-import car.dto.Car;
-import car.service.InputValidator;
-import car.service.WinnerCalculator;
+import car.domain.Car;
+import car.domain.WinnerCalculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
