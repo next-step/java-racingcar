@@ -17,24 +17,33 @@ public class Car {
         this.name = substringMaxLength(name);
     }
 
+    public int getPosition() {
+        return position;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     private String substringMaxLength(String name) {
-        if(name.length() > MAX_LENGTH){
+        if (name.length() > MAX_LENGTH) {
             return name.substring(ZERO, MAX_LENGTH);
         }
         return name;
     }
 
-    public int valueOfCurrentPosition() {
-        return position;
-    }
-
-    public String valueOfName() {
-        return name;
-    }
-
-    public void race(int randomNumber) {
-        if(randomNumber > 3) {
-            position++;
+    public Car race(int randomNumber) {
+        if (randomNumber > 3) {
+            return new Car(name, position++);
         }
+        return new Car(name, position);
+    }
+
+    public int max(int maxPosition) {
+        return Math.max(position, maxPosition);
+    }
+
+    public boolean isWinner(int winnerPosition) {
+        return position == winnerPosition;
     }
 }

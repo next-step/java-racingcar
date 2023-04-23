@@ -25,28 +25,18 @@ public class Cars {
                 .map(Car::new)
                 .collect(Collectors.toList());
     }
-    public void race(RacingRule racingRule) {
-        List<Integer> result = new ArrayList<>();
+    public RoundResult race(RacingRule racingRule) {
+        List<Car> roundResult = new ArrayList<>();
         for (Car car : cars) {
-            car.race(racingRule.generateNumber());
+            roundResult.add(car.race(racingRule.generateNumber()));
         }
-    }
-
-    public int countTotalCar() {
-        return cars.size();
-    }
-
-    public List<String> valueOfEntryNameList() {
-        return cars
-                .stream()
-                .map(Car::valueOfName)
-                .collect(Collectors.toList());
+        return new RoundResult(roundResult);
     }
 
     public List<Integer> currentRoundResult() {
         return cars
                 .stream()
-                .map(Car::valueOfCurrentPosition)
+                .map(Car::getPosition)
                 .collect(Collectors.toList());
     }
 }

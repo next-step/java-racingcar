@@ -13,7 +13,11 @@ public class RacingApplication {
         int opportunity = inputView.inputOpportunity();
 
         RacingGame racingGame = new RacingGame(carNames, new RandomRacingRule());
+
         GameResult result = racingGame.start(opportunity);
-        RacingPrinter.drawResult(result);
+
+        RacingPrinter.drawInitRound(carNames);
+        RacingPrinter.drawEachRoundResult(result.getRoundResults());
+        RacingPrinter.announceWinner(result.getWinners());
     }
 }

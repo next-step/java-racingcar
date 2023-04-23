@@ -21,10 +21,9 @@ public class RacingGame {
     }
 
     public GameResult start(int opportunity) {
-        GameResult gameResult = new GameResult(cars.valueOfEntryNameList());
+        GameResult gameResult = new GameResult();
         for (int i = 0; i < opportunity; i++) {
-            cars.race(racingRule);
-            gameResult.addRound(cars.currentRoundResult());
+            gameResult.addRound1(cars.race(racingRule));
         }
         return gameResult;
     }

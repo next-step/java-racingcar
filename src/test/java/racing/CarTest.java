@@ -14,7 +14,7 @@ public class CarTest {
     @CsvSource(value = {"12345, 12345", "123456, 12345", "다섯글자초과, 다섯글자초", "test, test"})
     void carNameTest(String inputName, String expectedName) {
         Car car = new Car(inputName);
-        assertThat(car.valueOfName()).isEqualTo(expectedName);
+        assertThat(car.getName()).isEqualTo(expectedName);
     }
 
     @ParameterizedTest
@@ -22,6 +22,6 @@ public class CarTest {
     void carRaceTest(int randomNumber, int expectedPosition) {
         Car car = new Car("test");
         car.race(randomNumber);
-        assertThat(car.valueOfCurrentPosition()).isEqualTo(expectedPosition);
+        assertThat(car.getPosition()).isEqualTo(expectedPosition);
     }
 }

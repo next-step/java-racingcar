@@ -1,8 +1,10 @@
 package racing;
 
 import java.util.List;
-import java.util.Set;
-import racing.domain.GameResult;
+import java.util.stream.Collectors;
+
+import racing.domain.Car;
+import racing.domain.RoundResult;
 
 public class RacingPrinter {
 
@@ -11,38 +13,37 @@ public class RacingPrinter {
     public static final String SEPARATOR = ", ";
     public static final String DELIMITER = " : ";
 
-    public static void drawResult(GameResult gameResult) {
-        List<String> entries = gameResult.valueOfEntryList();
-        initRound(entries);
-        for (int i = 0; i < gameResult.totalRound(); i++) {
-            drawRound(entries, gameResult.valueOfRoundResult(i));
-        }
 
-        announceWinners(gameResult.valueOfWinnerSet());
+
+    public static void drawEachRoundResult(List<RoundResult> roundResults) {
+        for (RoundResult roundResult : roundResults) {
+            drawRound(roundResult.getRoundResult());
+            System.out.println();
+        }
     }
 
-    private static void initRound(List<String> entries) {
-        for (String carName : entries) {
-            drawPosition(carName, DEFAULT_POSITION);
+    private static void drawRound(List<Car> roundResult) {
+        for (Car car : roundResult) {
+            drawPosition(car);
         }
+    }
+
+    private static void drawPosition(Car car) {
+        String symbol = POSITION_SYMBOL.repeat(car.getPosition() + DEFAULT_POSITION);
+        System.out.println(car.getName() + DELIMITER + symbol);
+    }
+
+    public static void announceWinner(List<Car> winners) {
+        List<String> winnerNames = winners.stream().map(Car::getName).collect(Collectors.toList());
+        System.out.println(winnerNames.toString() + "가 최종 우승했습니다.");
+    }
+
+    public static void drawInitRound(List<String> carNames) {
+        drawRound(carNames
+                .stream()
+                .map(Car::new)
+                .collect(Collectors.toList())
+        );
         System.out.println();
-    }
-
-    private static void announceWinners(Set<String> winners) {
-        System.out.println(winners.toString() + "가 최종 우승했습니다.");
-
-    }
-
-    private static void drawRound(List<String> entries, List<Integer> roundResult) {
-        for (int i = 0; i < roundResult.size(); i++) {
-            drawPosition(entries.get(i), roundResult.get(i));
-        }
-        System.out.println();
-    }
-
-    private static void drawPosition(String carName, Integer position) {
-        String symbol = POSITION_SYMBOL.repeat(position);
-        System.out.println(carName + DELIMITER + symbol);
-
     }
 }
