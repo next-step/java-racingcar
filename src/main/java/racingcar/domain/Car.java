@@ -9,9 +9,13 @@ public class Car {
     private final CarName carName;
     private MoveCount moveCount;
 
+    public Car(CarName carName, MoveCount moveCount) {
+        this.carName = carName;
+        this.moveCount = moveCount;
+    }
+
     public Car(String name, int count) {
-        this.carName = new CarName(name);
-        this.moveCount = new MoveCount(count);
+        this(new CarName(name), new MoveCount(count));
     }
 
     public CarName carName() {
