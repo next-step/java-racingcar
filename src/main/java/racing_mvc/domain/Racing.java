@@ -38,4 +38,16 @@ public class Racing {
     public Winner winner() {
         return new Winner(cars);
     }
+
+    public int getCarsCount() {
+        return cars.count();
+    }
+
+    public int getTryCount(){
+        return racingRound.getRound();
+    }
+
+    public Car getCar(int carIndex){
+        return cars.findOne(carIndex);
+    }
 }
