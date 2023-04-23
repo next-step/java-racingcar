@@ -7,7 +7,7 @@ import java.util.*;
 import static java.util.stream.Collectors.toUnmodifiableList;
 
 public class RacingCarGroup {
-
+    private final static int THRESHOLD = 5;
     private List<RacingCar> racingCarList = new ArrayList<>();
 
     private RacingCarGroup(List<RacingCar> racingCarList) {
@@ -26,9 +26,21 @@ public class RacingCarGroup {
         validateHasLength(carNameList);
 
         return carNameList.stream()
-                .map(RacingCar::of)
+                .map(carName -> {
+                    validateEmpty(carName);
+                    validateLessThen5Name(carName);
+                    return RacingCar.from(carName);
+                })
                 .collect(toUnmodifiableList());
     }
+
+    private static void validateLessThen5Name(String name) {
+        if (name.length() > THRESHOLD) {
+            throw new IllegalArgumentException("5자를 초과할수 없습니다");
+
+        }
+    }
+
 
     private static List<String> getCarNameList(String inputCarName) {
         return Arrays.asList(inputCarName.split(Separator.SPLIT_CAR_NAME_SEPARATOR.getSeparator()));
