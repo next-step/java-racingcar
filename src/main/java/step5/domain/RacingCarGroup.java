@@ -58,14 +58,21 @@ public class RacingCarGroup {
         racingCarList.forEach(racingCar -> racingCar.move(moveStrategy));
     }
 
-    public List<String> getWinner() {
+    public List<RacingCar> getWinner() {
         int winnerLocation = getWinnerLocation();
 
         return racingCarList.stream()
-                .filter(racingCar -> racingCar.getCurrentLocation() == winnerLocation)
-                .map(RacingCar::getName)
+                .filter(racingCar -> racingCar.isWinner(winnerLocation))
                 .collect(toUnmodifiableList());
 
+    }
+
+    public List<String> getWinnerName() {
+        List<RacingCar> winner = getWinner();
+
+        return winner.stream()
+                .map(RacingCar::getName)
+                .collect(toUnmodifiableList());
     }
 
     public int getWinnerLocation() {

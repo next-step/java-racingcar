@@ -71,7 +71,7 @@ class RacingInformationTest {
         RacingInformation racingInformation = RacingInformation.of(given, 5);
         racingInformation.getRacingCarGroup().getRacingCarList().get(0).move(()->true);
 
-        assertThat(racingInformation.getRacingCarGroup().getWinner()).containsExactly("안녕하세요");
+        assertThat(racingInformation.getRacingCarGroup().getWinnerName()).containsExactly("안녕하세요");
     }
 
     @Test
@@ -83,7 +83,7 @@ class RacingInformationTest {
         racingInformation.getRacingCarGroup().getRacingCarList().get(0).move(()->true);
         racingInformation.getRacingCarGroup().getRacingCarList().get(1).move(()->true);
 
-        assertThat(racingInformation.getRacingCarGroup().getWinner()).containsExactly("안녕하세요","반갑습니다");
+        assertThat(racingInformation.getRacingCarGroup().getWinnerName()).containsExactly("안녕하세요","반갑습니다");
     }
 
 

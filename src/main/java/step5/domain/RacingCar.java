@@ -23,8 +23,8 @@ public class RacingCar {
         }
     }
 
-    private static void validateLessThen5Name(String name){
-        if(name.length() > THRESHOLD){
+    private static void validateLessThen5Name(String name) {
+        if (name.length() > THRESHOLD) {
             throw new IllegalArgumentException("5자를 초과할수 없습니다");
 
         }
@@ -42,5 +42,9 @@ public class RacingCar {
 
     public String getName() {
         return name;
+    }
+
+    public boolean isWinner(int maxPosition) {
+        return currentLocation == maxPosition;
     }
 }

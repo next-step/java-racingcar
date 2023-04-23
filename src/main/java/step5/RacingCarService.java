@@ -21,7 +21,7 @@ public class RacingCarService {
             PrintView.printAllRacingCarProgress(racingInformation.getRacingCarGroup());
         }
 
-        PrintView.printWinner(racingInformation.getRacingCarGroup().getWinner());
+        PrintView.printWinner(racingInformation.getRacingCarGroup().getWinnerName());
     }
 
 }
