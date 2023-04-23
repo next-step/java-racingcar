@@ -1,10 +1,14 @@
 package car.step3;
 
-import javax.naming.NamingException;
+import car.step3.domain.Car;
+import car.step3.service.HandleCar;
+import car.step3.view.InputView;
+import car.step3.view.ResultView;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+public class MainController {
     public static void main(String[] args) {
         InputView inputView = new InputView();
         HandleCar handleCar = new HandleCar();
@@ -28,17 +32,11 @@ public class Main {
         List<Car> carList = new ArrayList<Car>();
         String[] cars =  carNames.split(",");
         for (String car : cars) {
-            carList.add(new Car(validCarName(car)));
+            carList.add(new Car(car));
         }
         return carList;
     }
 
-    private static String validCarName(String name) {
-        if(name.length() > 5) {
-            throw new RuntimeException("이름은 5자를 초과할 수 없습니다.");
-        }
-        return name;
-    }
 
 
 

@@ -1,4 +1,8 @@
-package car.step3;
+package car.step3.service;
+
+import car.step3.domain.Car;
+import car.step3.service.MovingStrategy;
+import car.step3.service.RandomMovingStrategy;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package car.step3;
+package car.step3.service;
 
 import java.util.Random;
 

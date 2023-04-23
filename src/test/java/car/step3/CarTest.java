@@ -1,5 +1,9 @@
 package car.step3;
 
+import car.step3.domain.Car;
+import car.step3.domain.Cars;
+import car.step3.domain.Position;
+import car.step3.service.HandleCar;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -13,14 +17,8 @@ class CarTest {
     @Test
     public void 차가_전진하는지_테스트() {
         Car car = new Car("lim");
-
-        car.go(new MovingStrategy() {
-            @Override
-            public boolean movable() {
-                return true;
-            }
-        });
-        assertThat(car.location()).isEqualTo(1);
+        car.go(() -> true);
+        assertThat(car).isEqualTo(new Car("lim", new Position(1)));
     }
 
     @Test
@@ -28,25 +26,26 @@ class CarTest {
         Car car = new Car("kim");
 
         car.go(() -> false);
-        assertThat(car.location()).isEqualTo(0);
+        assertThat(car).isEqualTo(new Car("kim", new Position(0)));
     }
 
     @Test
-    public void 차리스트를_조회하여_전진한다() {
-        List<Car> carList = Arrays.asList(new Car("jiyoung"), new Car("celineååååå"));
-        List<Car> newCarList = handleCar.iteratorCar(carList);
-        assertThat(newCarList.size()).isEqualTo(carList.size());
-        assertThat(newCarList.get(0).location()).isGreaterThanOrEqualTo(carList.get(0).location());
+    public void 가장긴거리() {
+        Cars cars = new Cars(Arrays.asList(new Car("young", new Position(3)),
+                new Car("lim", new Position(3)),
+                new Car("kim", new Position(2))));
+        cars.findMaxPosition();
+        assertThat(cars.maxPosition).isEqualTo(new Position(3));
     }
 
     @Test
     public void 이긴_사람을_찾다() {
-        Winner winner = new Winner();
-        List<Car> cars = Arrays.asList(new Car("jiyoung", 3),
-                new Car("lim", 3),
-                new Car("kim", 2));
-        List<String> winners = winner.findWinner(cars);
-        assertThat(winners).contains("jiyoung", "lim");
+        Cars cars = new Cars(Arrays.asList(new Car("young", new Position(3)),
+                new Car("lim", new Position(3)),
+                new Car("kim", new Position(2))));
+        List<Car> winners = cars.findWinners();
+        assertThat(winners).contains(new Car("young", new Position(3)),
+                new Car("lim", new Position(3)));
     }
 
 }
