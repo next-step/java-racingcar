@@ -6,10 +6,10 @@ import java.util.List;
 
 public class ResultView {
 
-    public static final int BEGIN_INDEX = 0;
-    public static final char CAR_MOVE_STATE_LINE = '-';
-    public static final String WINNERS_SEPARATOR = ", ";
-    public static final String NAME_LINE_SEPARATOR = " : ";
+    private static final int BEGIN_INDEX = 0;
+    private static final char CAR_MOVE_STATE_LINE = '-';
+    private static final String WINNERS_SEPARATOR = ", ";
+    private static final String NAME_LINE_SEPARATOR = " : ";
 
     public void printInputCarNameMessage() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");

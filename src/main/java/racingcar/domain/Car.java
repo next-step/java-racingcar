@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Car {
 
-    public static final int MOVABLE_STANDARD = 4;
+    private static final int MOVABLE_STANDARD = 4;
 
     private final CarName carName;
     private MoveCount moveCount;

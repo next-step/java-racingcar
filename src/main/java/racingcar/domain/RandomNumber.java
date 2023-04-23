@@ -18,6 +18,6 @@ public class RandomNumber {
     }
 
     private int generateNumber() {
-        return new RandomGenerator().getRandomNumber();
+        return RandomGenerator.randomNumber();
     }
 }

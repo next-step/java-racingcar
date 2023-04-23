@@ -5,9 +5,9 @@ import java.util.List;
 
 public class CarRacingGame {
 
-    public static final int BEGIN_INDEX = 0;
-    public static final int INIT_VALUE = 0;
-    public static final String CAR_NAME_SEPARATOR = ",";
+    private static final int BEGIN_INDEX = 0;
+    private static final int INIT_VALUE = 0;
+    private static final String CAR_NAME_SEPARATOR = ",";
 
     private final Cars cars;
 
