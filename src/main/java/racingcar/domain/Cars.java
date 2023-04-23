@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Cars {
 
-    public static final int BEGIN_INDEX = 0;
-    public static final int INIT_VALUE = 0;
+    private static final int BEGIN_INDEX = 0;
+    private static final int INIT_VALUE = 0;
 
     private final List<Car> cars;
 
