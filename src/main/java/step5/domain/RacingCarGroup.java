@@ -76,10 +76,12 @@ public class RacingCarGroup {
     }
 
     public int getWinnerLocation() {
-        return racingCarList.stream()
-                .mapToInt(RacingCar::getCurrentLocation)
-                .max()
+
+        RacingCar sortedRacingCar = racingCarList.stream()
+                .max(Comparator.comparingInt(RacingCar::getCurrentLocation))
                 .orElseThrow(NoSuchElementException::new);
+
+        return sortedRacingCar.getCurrentLocation();
     }
 
     public List<RacingCar> getRacingCarList() {
