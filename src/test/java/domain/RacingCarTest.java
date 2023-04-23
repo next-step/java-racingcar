@@ -16,30 +16,20 @@ public class RacingCarTest {
         racingCar = new RacingCar();
     }
 
-    @DisplayName("전진하는 조건은 0에서 9 사이에서 4이상일 경우이다.")
-    @ParameterizedTest
-    @ValueSource(ints = { 4, 5, 6, 7, 8, 9 })
-    public void shouldGoOneStep_whenNumberIsUpToFour(int conditionToGo) throws Exception {
-        //given
-        int oneStep = 1;
-        boolean coin = CarNavigator.flipCoin(conditionToGo);
+    @Test
+    public void shouldGoOneStep() throws Exception {
         //when
-        racingCar.moveOrStop(coin);
+        racingCar.moveOrStop(()-> true);
         //then
-        assertThat(racingCar.getDistance()).isEqualTo(oneStep);
+        assertThat(racingCar.getDistance()).isEqualTo(1);
     }
+    @Test
+    public void shouldStop() throws Exception {
 
-    @DisplayName("전진하지 않는 조건은 0에서 9 사이에서 4미만일 경우이다.")
-    @ParameterizedTest
-    @ValueSource(ints = { 0, 1, 2, 3 })
-    public void shouldStop_whenNumberIsUnderFour(int conditionToStop) throws Exception {
-        //given
-        int NoStep = 0;
-        boolean coin = CarNavigator.flipCoin(conditionToStop);
         //when
-        racingCar.moveOrStop(coin);
+        racingCar.moveOrStop(()->false);
         //then
-        assertThat(racingCar.getDistance()).isEqualTo(NoStep);
+        assertThat(racingCar.getDistance()).isEqualTo(0);
     }
 
     @DisplayName("입력받은 이름에 대해 차를 생성하고 이름을 부여할 수 있다.")

@@ -13,8 +13,8 @@ public class RacingCar {
         this.name = name;
     }
 
-    public void moveOrStop(boolean coin) {
-        if (coin) {
+    public void moveOrStop(MovingStrategy movingStrategy) {
+        if (movingStrategy.movable()) {
             this.distance += ONE_TIME_DISTANCE;
         }
     }
@@ -32,5 +32,9 @@ public class RacingCar {
 
     public String getName() {
         return name;
+    }
+
+    public String getResult() {
+        return this.name + " : " + "-".repeat(this.distance);
     }
 }

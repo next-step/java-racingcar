@@ -8,8 +8,9 @@ public class Race {
 
     public static List<RacingCar> racingCarList = new ArrayList<>();
 
-    public static void createCars(String[] nameList) {
-        for (String name : nameList) {
+    public static void createCars(RacingCarNameRequest nameList) {
+
+        for (String name : nameList.getNameList()) {
             isNameValid(name);
             RacingCar car = new RacingCar(name);
             racingCarList.add(car);
@@ -18,26 +19,27 @@ public class Race {
 
     public static void race() {
         for (RacingCar racingCar : racingCarList) {
-            boolean coin = CarNavigator.flipCoin(CarNavigator.getRandomNumber());
-            racingCar.moveOrStop(coin);
+            MovingStrategy movingStrategy = new RandomMovingStrategy();
+            racingCar.moveOrStop(movingStrategy);
         }
     }
 
     public static String[] getEachResult() {
         String[] result = new String[racingCarList.size()];
         for (int i = 0; i < racingCarList.size(); i++) {
-            result[i] = racingCarList.get(i).getName() + " : "  + "-".repeat(racingCarList.get(i).getDistance());
+            result[i] = racingCarList.get(i).getResult();
         }
         return result;
     }
 
-    public static List<String[]> playRace(int round) {
+    public static GameResultResponse playRace(RacingRoundRequest roundRequest) {
+        int round = roundRequest.getNumberOfRounds();
         List<String[]> totalResult = new ArrayList<>();
         for (int i = 0; i < round; i++) {
-            Race.race();
+            race();
             totalResult.add(getEachResult());
         }
-        return totalResult;
+        return new GameResultResponse(totalResult);
     }
 
     private static void isNameValid(String name) {

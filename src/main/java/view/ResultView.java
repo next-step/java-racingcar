@@ -2,9 +2,12 @@ package view;
 
 import java.util.List;
 
+import domain.GameResultResponse;
+
 public class ResultView {
 
-    public static void outputView(List<String[]> result) {
+    public static void outputView(GameResultResponse gameResultResponse) {
+        List<String[]> result = gameResultResponse.getGameResult();
         for (int i = 0; i < result.size(); i++) {
             printEachRound(result.get(i));
             System.out.println();
