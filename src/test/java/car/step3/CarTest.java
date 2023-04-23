@@ -12,16 +12,28 @@ class CarTest {
     HandleCar handleCar = new HandleCar();
     @Test
     public void 차가_전진하는지_테스트() {
-        Car car = new Car("new");
+        Car car = new Car("new") {
+            @Override
+            protected int getRandomNumber() {
+                return 4;
+            }
+        };
+
         car.go();
         assertThat(car.location()).isEqualTo(1);
     }
 
     @Test
-    public void 전지하는지_확인하는_테스트() {
-        Car car = new Car("lim");
-        handleCar.goCar(car);
-        assertThat(car.location()).isGreaterThanOrEqualTo(0);
+    public void 차가_정지하는지_확인하는_테스트() {
+        Car car = new Car("not_moved") {
+            @Override
+            protected int getRandomNumber() {
+                return 3;
+            }
+        };
+
+        car.go();
+        assertThat(car.location()).isEqualTo(0);
     }
 
     @Test

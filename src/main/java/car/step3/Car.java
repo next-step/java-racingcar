@@ -1,10 +1,13 @@
 package car.step3;
 
 import java.util.Objects;
+import java.util.Random;
 
 public class Car {
     private String name;
     private int location = 0;
+    private int MAX_BOUNCE = 10;
+    private int FORWARD_NUMBER = 4;
 
     public Car(String name) {
         this.name = name;
@@ -16,7 +19,9 @@ public class Car {
     }
 
     public void go() {
-        this.location++;
+        if(getRandomNumber() >= FORWARD_NUMBER) {
+            this.location++;
+        }
     }
 
     public int location() {
@@ -25,5 +30,10 @@ public class Car {
 
     public String name(){
         return name;
+    }
+
+    protected int getRandomNumber() {
+        Random random = new Random();
+        return random.nextInt(MAX_BOUNCE);
     }
 }
