@@ -3,13 +3,10 @@ package step5.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.NullAndEmptySource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class RacingCarTest {
 
@@ -21,7 +18,7 @@ class RacingCarTest {
 
         assertThat(racingCar.getName()).isEqualTo(carName);
     }
-    
+
     @ParameterizedTest
     @MethodSource("getRacingCarName")
     @DisplayName("레이싱카 이동 테스트")
