@@ -2,28 +2,34 @@ package racingcar.domain;
 
 public class Car {
     public static final int MOVEABLE_POWER = 4;
-    public static final int MAX_NAME_LENGTH = 5;
-    private int distance = 0;
-    private final String name;
+    private CarName name;
+    private Distance distance;
+
+    public Car(String name, int distance) {
+        this.name = new CarName(name);
+        this.distance = new Distance(distance);
+    }
 
     public Car(String name) {
-        if (name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
-        }
-        this.name = name;
+        this(name, 0);
     }
 
     public void moveForwardOrStop(int inputPower) {
         if (inputPower >= MOVEABLE_POWER) {
-            distance++;
+            distance.move();
         }
     }
 
+    public boolean equalsDistance(int other) {
+        return distance.isEqualTo(other);
+    }
+
     public int getDistance() {
-        return distance;
+        return distance.getDistance();
     }
 
     public String getName() {
-        return name;
+        return name.getName();
     }
+
 }

@@ -24,19 +24,10 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("자동차이름허용길이초과")
-    void 자동차이름허용길이초과() {
-        assertThatThrownBy(() -> {
-            Car car = new Car("hyundai");
-        }).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("자동차 이름은 5자를 초과할 수 없습니다.");
+    @DisplayName("거리비교")
+    void 거리비교() {
+        Car car = new Car("bmw", 4);
+
+        Assertions.assertThat(car.equalsDistance(4)).isTrue();
     }
-
-    @Test
-    @DisplayName("자동차이름조회")
-    void 자동차이름조회() {
-        Car car = new Car("bmw");
-
-        Assertions.assertThat(car.getName()).isEqualTo("bmw");
-    }
-
 }
