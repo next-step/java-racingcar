@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Car {
 
+    private static final int INIT_VALUE = 0;
     private static final int MOVABLE_STANDARD = 4;
 
     private final CarName carName;
@@ -16,6 +17,10 @@ public class Car {
 
     public Car(String name, int count) {
         this(new CarName(name), new MoveCount(count));
+    }
+
+    public Car(String name) {
+        this(new CarName(name), new MoveCount(INIT_VALUE));
     }
 
     public CarName carName() {

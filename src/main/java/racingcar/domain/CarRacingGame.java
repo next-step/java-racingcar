@@ -6,7 +6,6 @@ import java.util.List;
 public class CarRacingGame {
 
     private static final int BEGIN_INDEX = 0;
-    private static final int INIT_VALUE = 0;
     private static final String CAR_NAME_SEPARATOR = ",";
 
     private final Cars cars;
@@ -20,7 +19,7 @@ public class CarRacingGame {
 
         List<Car> cars = new ArrayList<>();
         for (int i = BEGIN_INDEX; i < carNames.length; i++) {
-            cars.add(new Car(carNames[i], INIT_VALUE));
+            cars.add(new Car(carNames[i]));
         }
         return new Cars(cars);
     }
