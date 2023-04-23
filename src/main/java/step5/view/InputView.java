@@ -23,19 +23,11 @@ public class InputView {
 
     }
 
-    public static RacingInformation execute() {
+    public static RacingInformation requestInput() {
         String carName = requestCarName();
         int numberOfReps = requestNumberOfTry();
 
         return RacingInformation.of(carName, numberOfReps);
-    }
-
-    private static class UsingNameCarInputViewInstanceHolder {
-        private static final InputView INSTANCE = new InputView();
-    }
-
-    public static InputView getInstance() {
-        return UsingNameCarInputViewInstanceHolder.INSTANCE;
     }
 
     public static String requestCarName() {
