@@ -14,7 +14,7 @@ public class Race {
 
   public void play(RandomIntFactory randomIntFactory) {
     for (Car car : this.cars) {
-      car.move(randomIntFactory.createRandomInt());
+      car.move(randomIntFactory);
     }
   }
 

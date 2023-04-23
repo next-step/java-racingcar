@@ -9,15 +9,14 @@ import study.racingcar.view.ResultView;
 
 public class RacingGame {
 
-  private static final RandomIntFactory RANDOM_INT_GENERATOR = new RandomIntFactory();
-
   public static void main(String[] args) {
     String[] nameOfCars = InputView.inputNameOfCars();
     int numberOfRaces = InputView.inputNumberOfRaces();
 
     Race race = RaceFactory.createRace(CarFactory.createCars(nameOfCars));
+    RandomIntFactory randomIntFactory = new RandomIntFactory();
     for (int i = 0; i < numberOfRaces; i++) {
-      race.play(RANDOM_INT_GENERATOR);
+      race.play(randomIntFactory);
       ResultView.printResult(i, race.getCars());
     }
 

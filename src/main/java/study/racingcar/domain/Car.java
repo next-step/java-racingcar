@@ -1,6 +1,7 @@
 package study.racingcar.domain;
 
 import study.racingcar.error.InvalidCarNameException;
+import study.racingcar.factory.RandomIntFactory;
 
 public class Car {
 
@@ -35,8 +36,9 @@ public class Car {
     }
   }
 
-  public void move(RandomInt randomInt) {
-    if (randomInt.isMoving(MINIMUM_MOVE_VALUE)) {
+  public void move(RandomIntFactory randomIntFactory) {
+    RandomInt randomInt = randomIntFactory.createRandomInt();
+    if (randomInt.isGreaterThan(MINIMUM_MOVE_VALUE)) {
       this.position.increase();
     }
   }

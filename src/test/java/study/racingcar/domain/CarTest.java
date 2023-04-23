@@ -5,9 +5,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 import study.racingcar.error.InvalidCarNameException;
+import study.racingcar.factory.RandomIntFactory;
 
 public class CarTest {
 
@@ -38,23 +37,21 @@ public class CarTest {
   }
 
   @DisplayName("4미만의 RandomInt는 자동차를 정지시킨다.")
-  @ParameterizedTest
-  @ValueSource(ints = {0, 1, 2, 3})
-  public void move_Stop_RandomIntLessThan4(int input) {
+  @Test
+  public void move_Stop_RandomIntLessThan4() {
     Car pobi = new Car("pobi");
 
-    pobi.move(new RandomInt(input));
+    pobi.move(new RandomIntFactory(0, 4));
 
     assertThat(pobi.isSamePosition(new Position(0))).isTrue();
   }
 
   @DisplayName("4이상의 RandomInt는 자동차를 전진시킨다.")
-  @ParameterizedTest
-  @ValueSource(ints = {4, 5, 6, 7, 8, 9})
-  public void move_Forward_RandomIntMoreThan4(int input) {
+  @Test
+  public void move_Forward_RandomIntMoreThan4() {
     Car pobi = new Car("pobi");
 
-    pobi.move(new RandomInt(input));
+    pobi.move(new RandomIntFactory(4, 10));
 
     assertThat(pobi.isSamePosition(new Position(1))).isTrue();
   }
