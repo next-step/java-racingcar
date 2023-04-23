@@ -15,4 +15,14 @@ public class CarsTest {
 
         assertThat(car.getCar().size()).isEqualTo(5);
     }
+
+
+    @Test
+    @DisplayName("New car 추가")
+    void add_new_car(){
+        Cars car = new Cars();
+        car.addCar("test");
+
+        assertThat(car.getCar().size()).isEqualTo(1);
+    }
 }
