@@ -30,7 +30,7 @@ public class CarTest {
     @DisplayName("자동차 이름이 5글자 초과 시")
     void validateWithNameLengthOver5() {
         assertThatThrownBy(()-> { Car car = new Car("crongv"); })
-                .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("over 5 length");
+                .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("입력 조건을 만족하지 않습니다.");
     }
 
     @Test

@@ -5,24 +5,16 @@ import java.util.*;
 
 public class Car {
     private Position position;
-    private String name;
+    private Name name;
     private static int START = 0;
-    private final int NAME_STANDARD = 5;
 
     public Car(String name) {
         this(name, START);
     }
 
     public Car(String name, int position) {
-        this.name = validateName(name);
+        this.name = new Name(name);
         this.position = new Position(position);
-    }
-
-    private String validateName(String carName) {
-        if (carName.length() > NAME_STANDARD) {
-            throw new IllegalArgumentException("over 5 length");
-        }
-        return carName;
     }
 
     public Position drive()
@@ -37,7 +29,7 @@ public class Car {
     }
 
     public String getName() {
-        return name;
+        return name.getName();
     }
 
     public int compare(int otherPosition) {
