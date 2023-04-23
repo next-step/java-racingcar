@@ -12,6 +12,7 @@ public class RacingCar {
     public static List<Car> createCars(String[] names){
         List<Car> cars = new ArrayList<>();
         for(int i=0; i<names.length; i++){
+            Car.checkName(names[i]);
             cars.add(new Car(names[i]));
         }
         return cars;

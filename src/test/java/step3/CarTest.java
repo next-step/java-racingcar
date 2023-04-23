@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 public class CarTest {
@@ -17,6 +18,12 @@ public class CarTest {
     Car car = new Car();
     int carCount = 3;
 
+    @Test
+    void 차_이름_예외처리() {
+        assertThatThrownBy(() -> car.checkName("123456"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    
     @Test
     void 차_대수만큼_리스트_사이즈() {
         Assertions.assertThat(rc.createCars(new String[]{"1", "2", "3"})).hasSize(carCount);
