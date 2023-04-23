@@ -14,7 +14,7 @@ public class CarTest {
         String name = "pobi";
 
         Car car = new Car(name);
-        assertThat(car.drive()).isEqualTo(1);
+        assertThat(car.drive()).isEqualTo(new Position(1));
     }
 
     @Test
@@ -34,11 +34,11 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("이동거리 비교 테스트")
+    @DisplayName("위치 비교 테스트")
     void compare() {
         Car car = new Car("crong", 3);
-        int pobiDistance = 4;
+        int pobiPosition = 4;
 
-        assertThat(car.compare(pobiDistance)).isEqualTo(pobiDistance);
+        assertThat(car.compare(pobiPosition)).isEqualTo(pobiPosition);
     }
 }

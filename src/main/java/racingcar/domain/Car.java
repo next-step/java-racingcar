@@ -1,10 +1,10 @@
 package racingcar.domain;
 
 
-import java.util.Objects;
+import java.util.*;
 
 public class Car {
-    private int distance;
+    private Position position;
     private String name;
     private static int START = 0;
     private final int NAME_STANDARD = 5;
@@ -13,9 +13,9 @@ public class Car {
         this(name, START);
     }
 
-    public Car(String name, int distance) {
+    public Car(String name, int position) {
         this.name = validateName(name);
-        this.distance = distance;
+        this.position = new Position(position);
     }
 
     private String validateName(String carName) {
@@ -25,29 +25,27 @@ public class Car {
         return carName;
     }
 
-    public int drive()
+    public Position drive()
     {
-        return ++distance;
+        position = position.move();
+        return position;
     }
 
     public int getDistance()
     {
-        return distance;
+        return position.getPosition();
     }
 
     public String getName() {
         return name;
     }
 
-    public int compare(int distance) {
-        if (distance <= this.distance) {
-            return this.distance;
-        }
-        return distance;
+    public int compare(int otherPosition) {
+        return position.comparePosition(otherPosition);
     }
 
-    public boolean isSameDistance(int maxDistance) {
-        return this.distance == maxDistance;
+    public boolean isSamePosition(int maxPosition) {
+        return position.equalPosition(maxPosition);
     }
 
     @Override
@@ -55,11 +53,11 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return distance == car.distance && Objects.equals(name, car.name);
+        return Objects.equals(position, car.position) && Objects.equals(name, car.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(distance, name);
+        return Objects.hash(position, name);
     }
 }

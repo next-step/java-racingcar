@@ -25,17 +25,17 @@ public class RacingCars {
 
     public List<String> getWinner()
     {
-        int maxDistance = maxDistance();
-        return cars.stream().filter(car -> car.isSameDistance(maxDistance)).map(Car::getName).collect(Collectors.toList());
+        int maxPosition = maxPosition();
+        return cars.stream().filter(car -> car.isSamePosition(maxPosition)).map(Car::getName).collect(Collectors.toList());
     }
 
-    private int maxDistance() {
-        int maxDistance = 0;
+    private int maxPosition() {
+        int maxPosition = 0;
         for(Car car: cars) {
-            maxDistance = car.compare(maxDistance);
+            maxPosition = car.compare(maxPosition);
         }
 
-        return maxDistance;
+        return maxPosition;
     }
 
     public List<Car> getCars() {

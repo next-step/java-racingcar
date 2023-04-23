@@ -29,7 +29,7 @@ public class RacingGame {
 
     private String[] splitCarName(String nameOfCars) {
         if (nameOfCars.length() == ZERO) {
-            throw new RuntimeException("player zero");
+            throw new IllegalArgumentException("player zero");
         }
 
         return nameOfCars.split(DELIMITER);
