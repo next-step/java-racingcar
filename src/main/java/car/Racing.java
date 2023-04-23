@@ -1,7 +1,6 @@
 package car;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Racing {
     private static InputView inputView = new InputView();
@@ -18,6 +17,7 @@ public class Racing {
             System.out.println("++++++++++++++");
             carMovingState(cars);
         }
+        resultView.winnerView(resultView.winnerPrint(new RacingResult(cars)));
     }
 
     public static void carMovingState(List<Car> cars){
@@ -26,13 +26,15 @@ public class Racing {
             resultView.resultView(car);
         }
     }
-    public static ArrayList<Car> carAttendList(String[] names){
-        ArrayList<Car> cars = new ArrayList<Car>();
+    public static List<Car> carAttendList(String[] names){
+        ArrayList<Car> cars = new ArrayList<>();
         for (int i = 0; i < names.length; i++) {
             cars.add(new Car(inputView.carNameCheck(names[i])));
         }
         return cars;
     }
+
+
 
 
 

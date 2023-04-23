@@ -36,9 +36,4 @@ public class Car {
     public int goMoveStrategy(){
         return random.nextInt(6)+4;
     }
-
-
-
-
-
 }
