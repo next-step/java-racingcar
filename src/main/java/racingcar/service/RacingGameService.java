@@ -13,6 +13,7 @@ public class RacingGameService {
     private int moveTimes;
 
     private Cars cars;
+    private String CAR_NAME_DELIMITER = ",";
 
     public RacingGameService() {
         this.cars = new Cars();
@@ -20,6 +21,10 @@ public class RacingGameService {
 
     public void setCarNumber() {
         this.cars.setCarNumber(InputView.setCarNumber());
+    }
+
+    public void setCarNames() {
+        this.cars.setCarNames(InputView.setCarNames().split(CAR_NAME_DELIMITER));
     }
 
     public void setMoveTimes() {
@@ -31,8 +36,10 @@ public class RacingGameService {
 
         for (int i = 0; i < moveTimes; i++) {
             moveCars();
-            ResultView.printResult(cars);
+            ResultView.printResultWithName(cars);
         }
+
+        ResultView.printWinner(cars);
     }
 
     private void moveCars() {
@@ -47,7 +54,7 @@ public class RacingGameService {
     }
 
     public int getCarNumber() {
-        return cars.getCar().size();
+        return cars.getCatNumber();
     }
 
     public int getMoveTimes() {
