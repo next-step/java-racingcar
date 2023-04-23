@@ -4,7 +4,7 @@ import domain.RacingRoundRequest;
 import view.InputView;
 import view.ResultView;
 
-public class main {
+public class RacingMain {
     public static void main(String[] args) {
         RacingCarNameRequest request = new RacingCarNameRequest(InputView.inputNameList());
         Race.createCars(request);

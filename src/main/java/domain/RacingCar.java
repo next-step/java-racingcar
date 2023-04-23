@@ -3,16 +3,25 @@ package domain;
 public class RacingCar {
     private static int NAME_SIZE_LIMIT = 5;
     private String name;
-    private int distance;
+    private Distance distance;
 
     private static final int ONE_TIME_DISTANCE = 1;
 
     public RacingCar() {
+        this.name = "";
+        this.distance = new Distance();
     }
 
     public RacingCar(String name) {
         isNameValid(name);
         this.name = name;
+        this.distance = new Distance();
+    }
+
+    public RacingCar(String name, int distance) {
+        isNameValid(name);
+        this.name = name;
+        this.distance = new Distance(distance);
     }
 
     private void isNameValid(String name) {
@@ -23,12 +32,16 @@ public class RacingCar {
 
     public void moveOrStop(MovingStrategy movingStrategy) {
         if (movingStrategy.movable()) {
-            this.distance += ONE_TIME_DISTANCE;
+            distance.move();
         }
     }
 
     public int getDistance() {
-        return distance;
+        return distance.getDistance();
+    }
+
+    public boolean isSameDistance(int maxDistance) {
+        return distance.isSameDistance(maxDistance);
     }
 
     public String getName() {
@@ -36,6 +49,6 @@ public class RacingCar {
     }
 
     public String getResult() {
-        return this.name + " : " + "-".repeat(this.distance);
+        return this.name + " : " + "-".repeat(this.distance.getDistance());
     }
 }

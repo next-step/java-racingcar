@@ -59,7 +59,7 @@ public class Race {
 
     public static int getMaxDistance(int[] matchResult) {
 
-        int maxDistance = matchResult[0];
+        int maxDistance = 0;
         for (int distance : matchResult) {
             if (distance > maxDistance) {
                 maxDistance = distance;

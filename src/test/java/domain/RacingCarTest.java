@@ -16,6 +16,7 @@ public class RacingCarTest {
         racingCar = new RacingCar();
     }
 
+    @DisplayName("차는 전진한다.")
     @Test
     public void shouldGoOneStep() throws Exception {
         //when
@@ -24,9 +25,9 @@ public class RacingCarTest {
         assertThat(racingCar.getDistance()).isEqualTo(1);
     }
 
+    @DisplayName("차는 전진하지 않는다.")
     @Test
     public void shouldStop() throws Exception {
-
         //when
         racingCar.moveOrStop(() -> false);
         //then

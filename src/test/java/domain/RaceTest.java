@@ -37,4 +37,21 @@ public class RaceTest {
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("자동차 우승자를 반환한다.")
+    @Test
+    void shouldGetWinner_AfterRace() {
+        //given
+        String bob = "bob";
+        String woon = "Woon";
+        RacingCar bobCar = new RacingCar(bob, 2);
+        RacingCar woonCar = new RacingCar(woon, 3);
+
+        //when
+        Race.racingCarList.add(bobCar);
+        Race.racingCarList.add(woonCar);
+        List<String> winnerList = Race.getWinnerList();
+        //then
+        assertThat(winnerList).containsOnly(woon);
+    }
+
 }
