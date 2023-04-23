@@ -34,4 +34,12 @@ public class PositionTest {
         Position position = new Position(4);
         assertThat(position.move()).isEqualTo(new Position(5));
     }
+
+    @Test
+    @DisplayName("position 입력 범위 exception")
+    void inputException() {
+        assertThatThrownBy(() -> {
+            new Position(-1);
+        }).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("position 음수 입력 불가");
+    }
 }

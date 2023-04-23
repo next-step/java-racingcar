@@ -6,7 +6,14 @@ public class Position {
     private final int position;
 
     public Position(int position) {
-        this.position = position;
+        this.position = validatePosition(position);
+    }
+
+    private int validatePosition(int position) {
+        if (position < 0) {
+            throw new IllegalArgumentException("position 음수 입력 불가");
+        }
+        return position;
     }
 
     @Override
