@@ -1,9 +1,10 @@
 package racingcar;
 
-import java.util.stream.IntStream;
+import racingcar.application.Car;
 import racingcar.application.Cars;
 import racingcar.application.RandomAccelerator;
 import racingcar.application.RandomMoveStrategy;
+import racingcar.application.ScoreBoard;
 import racingcar.dto.CarNames;
 import racingcar.ui.InputView;
 import racingcar.ui.ResultView;
@@ -11,6 +12,7 @@ import racingcar.ui.ResultView;
 public class GameMachine {
   private final InputView inputView = new InputView();
   private final ResultView resultView = new ResultView();
+  private final ScoreBoard scoreBoard = new ScoreBoard();
 
   public void play() {
     CarNames carNames = inputView.askCarNames();
@@ -20,12 +22,16 @@ public class GameMachine {
 
     resultView.printResultAlert();
 
-    IntStream.rangeClosed(1, trialNumber)
-        .forEach((number) -> {
-          cars.go();
-          resultView.printLocations(cars);
-        });
+    mainGame(cars, trialNumber);
 
-    resultView.printWinner(cars.winnerName());
+    resultView.printWinner(scoreBoard);
+  }
+
+  private void mainGame(Cars cars, int trialNumber) {
+    for (int i = 0; i < trialNumber; i++) {
+      cars.go();
+      scoreBoard.record(cars);
+      resultView.printLocations(cars);
+    }
   }
 }
