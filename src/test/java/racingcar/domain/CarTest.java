@@ -1,4 +1,4 @@
-package racingcar.service;
+package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -30,15 +30,15 @@ public class CarTest {
     @DisplayName("자동차 이름이 5글자 초과 시")
     void validateWithNameLengthOver5() {
         assertThatThrownBy(()-> { Car car = new Car("crongv"); })
-                .isInstanceOf(RuntimeException.class).hasMessageContaining("over 5 length");
+                .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("over 5 length");
     }
 
     @Test
-    @DisplayName("이동거리 max 테스트")
-    void max() {
+    @DisplayName("이동거리 비교 테스트")
+    void compare() {
         Car car = new Car("crong", 3);
         int pobiDistance = 4;
 
-        assertThat(car.max(pobiDistance)).isEqualTo(pobiDistance);
+        assertThat(car.compare(pobiDistance)).isEqualTo(pobiDistance);
     }
 }

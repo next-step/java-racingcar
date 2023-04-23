@@ -1,4 +1,4 @@
-package racingcar.service;
+package racingcar.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,13 +26,13 @@ public class RacingCars {
     public List<String> getWinner()
     {
         int maxDistance = maxDistance();
-        return cars.stream().filter(car -> car.isWinner(maxDistance)).map(Car::getName).collect(Collectors.toList());
+        return cars.stream().filter(car -> car.isSameDistance(maxDistance)).map(Car::getName).collect(Collectors.toList());
     }
 
     private int maxDistance() {
         int maxDistance = 0;
         for(Car car: cars) {
-            maxDistance = car.max(maxDistance);
+            maxDistance = car.compare(maxDistance);
         }
 
         return maxDistance;

@@ -1,5 +1,7 @@
-package racingcar.service;
+package racingcar.domain;
 
+
+import java.util.Objects;
 
 public class Car {
     private int distance;
@@ -18,7 +20,7 @@ public class Car {
 
     private String validateName(String carName) {
         if (carName.length() > NAME_STANDARD) {
-            throw new RuntimeException("over 5 length");
+            throw new IllegalArgumentException("over 5 length");
         }
         return carName;
     }
@@ -37,14 +39,27 @@ public class Car {
         return name;
     }
 
-    public int max(int distance) {
+    public int compare(int distance) {
         if (distance <= this.distance) {
             return this.distance;
         }
         return distance;
     }
 
-    public boolean isWinner(int maxDistance) {
+    public boolean isSameDistance(int maxDistance) {
         return this.distance == maxDistance;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return distance == car.distance && Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(distance, name);
     }
 }

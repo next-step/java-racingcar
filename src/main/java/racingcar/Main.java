@@ -1,8 +1,8 @@
 package racingcar;
 
-import racingcar.service.MoveStrategy;
-import racingcar.service.MoveRandomStrategy;
-import racingcar.service.RacingGame;
+import racingcar.domain.MoveStrategy;
+import racingcar.domain.MoveRandomStrategy;
+import racingcar.domain.RacingGame;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
