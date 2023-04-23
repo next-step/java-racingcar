@@ -16,7 +16,7 @@ public class RandomIntFactory {
     this(DEFAULT_START_BOUND, DEAFULT_END_BOUND);
   }
 
-  public RandomIntFactory(int startBound, int endBound) {
+  public RandomIntFactory(final int startBound, final int endBound) {
     if (startBound < DEFAULT_START_BOUND || endBound > DEAFULT_END_BOUND) {
       throw new IllegalArgumentException("유효한 값이 아닙니다.");
     }

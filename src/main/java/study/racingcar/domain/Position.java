@@ -12,7 +12,7 @@ public class Position {
     number = DEFAULT_START_NUMBER;
   }
 
-  public Position(int number) {
+  public Position(final int number) {
     if (number < DEFAULT_START_NUMBER) {
       throw new IllegalArgumentException("위치 값은 0 이상이어야 합니다.");
     }
