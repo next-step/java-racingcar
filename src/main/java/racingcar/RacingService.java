@@ -39,14 +39,22 @@ public class RacingService {
         int max = 0;
         for (Car car : racing.getCars()) {
             if (car.getCurrentDistance() > max) {
-                winners.clear();
-                winners.add(car.getName());
+                resetWinner(winners, car);
                 max = car.getCurrentDistance();
             }
             if (car.getCurrentDistance() == max) {
-                winners.add(car.getName());
+                addWinner(winners, car);
             }
         }
         return winners;
+    }
+
+    private void addWinner(Set<String> winners, Car car) {
+        winners.add(car.getName());
+    }
+
+    private void resetWinner(Set<String> winners, Car car) {
+        winners.clear();
+        winners.add(car.getName());
     }
 }
