@@ -34,10 +34,10 @@ public class Cars {
     }
 
     public List<String> pickWinners() {
-        return cars.stream().filter(car -> car.isWinner(getMaxPosition())).map(Car::name).collect(Collectors.toList());
+        return cars.stream().filter(car -> car.isLocatedAt(maxPosition())).map(Car::name).collect(Collectors.toList());
     }
 
-    private int getMaxPosition() {
+    private int maxPosition() {
         return Collections.max(cars.stream().map(Car::position).collect(Collectors.toList()));
     }
 
