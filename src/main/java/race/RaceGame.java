@@ -6,6 +6,7 @@ import race.domain.Winner;
 import race.util.Split;
 import race.view.InputView;
 import race.view.ResultView;
+import race.view.TraceView;
 
 public class RaceGame {
 
@@ -13,6 +14,7 @@ public class RaceGame {
         Scanner scanner = new Scanner(System.in);
         InputView inputView = new InputView();
         ResultView resultView = new ResultView();
+        TraceView traceView = new TraceView();
 
         String carName = inputCarName(scanner, inputView);
         int countOfTrial = inputCountOfTrial(scanner, inputView);
@@ -20,7 +22,13 @@ public class RaceGame {
         resultView.printResultComment();
 
         RaceRunner raceRunner = new RaceRunner(Split.getNames(carName), countOfTrial);
-        raceRunner.start();
+
+        for (int i = 0; i < countOfTrial; i++) {
+            raceRunner.race();
+            traceView.printMovingResult(raceRunner.getRacingCars());
+            System.out.println();
+        }
+
 
         Winner winner = new Winner();
         List<String> winners = winner.get(raceRunner.getRacingCars());

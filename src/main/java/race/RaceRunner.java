@@ -3,13 +3,11 @@ package race;
 import java.util.List;
 import race.domain.Car;
 import race.domain.RacingCars;
-import race.view.TraceView;
 
 public class RaceRunner {
 
     private final RacingCars racingCars;
     private final int trial;
-    private final TraceView traceView = new TraceView();
 
     private static final int NO_NAME_LENGTH = 0;
     private static final int MIN_TRIAL = 1;
@@ -20,16 +18,12 @@ public class RaceRunner {
         this.trial = trial;
     }
 
-    public void start() {
-        for (int i = 0; i < this.trial; i++) {
-            racingCars.race();
-            traceView.printMoveResult(racingCars);
-            System.out.println();
-        }
+    public void race() {
+        racingCars.move();
     }
 
     public int getTrial() {
-        return trial;
+        return this.trial;
     }
 
     public List<Car> getRacingCars() {

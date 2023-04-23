@@ -13,7 +13,7 @@ public class RacingCars {
         addCars(names);
     }
 
-    public void race() {
+    public void move() {
         cars.forEach(car -> car.move(RandomNumber.get()));
     }
 

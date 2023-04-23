@@ -1,10 +1,16 @@
 package race.view;
 
-import race.domain.RacingCars;
+import java.util.List;
+import race.domain.Car;
+import race.util.Distance;
 
 public class TraceView {
 
-    public void printMoveResult(RacingCars racingCars) {
-        racingCars.getList().forEach(car -> System.out.println(car.getTracing()));
+
+    public void printMovingResult(List<Car> racingCars) {
+        for (Car racingCar : racingCars) {
+            String distance = Distance.get(racingCar.getMovingDistance());
+            System.out.println(racingCar.getName() + " : " + distance);
+        }
     }
 }
