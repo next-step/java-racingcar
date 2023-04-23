@@ -1,39 +1,25 @@
 package racingcar.dto;
 
-import racingcar.domain.Car;
+import racingcar.domain.GameRound;
+import racingcar.domain.InputNames;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserInput {
+    private final GameRound gameRound;
+    private InputNames inputNames;
 
-    public static final String DELIMITER = ",";
-    private final Integer gameRound;
-    // private String carName;
-    private List<String> carNames = new ArrayList<>();
-
-    public UserInput(Integer gameRound, String names) {
-        validateNegativeNumber(gameRound);
-        splitCarName(names);
-        this.gameRound = gameRound;
+    public UserInput(int gameRound, String names) {
+        this.gameRound = new GameRound(gameRound);
+        this.inputNames = new InputNames(names);
     }
 
-    private void splitCarName(String names) {
-        String[] name = names.split(DELIMITER);
-        for (int i = 0; i < name.length; i++) {
-            carNames.add(name[i]);
-        }
-    }
-
-    public Integer getGameRound() {
+    public GameRound getGameRound() {
         return gameRound;
     }
 
     public List<String> getCarNames() {
-        return this.carNames;
+        return inputNames.getCarNames();
     }
 
-    private static void validateNegativeNumber(Integer gameRound) {
-        if (gameRound <= 0) throw new IllegalArgumentException("자동차 시도 횟수는 양수만 입력 가능합니다");
-    }
 }
