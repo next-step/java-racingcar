@@ -1,5 +1,8 @@
 package study;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class RacingCar {
 
     String questionCarCountMessage = "자동차 대수는 몇 대 인가요?";
@@ -14,5 +17,18 @@ public class RacingCar {
         }
         return questionNoMessage;
     }
+
+    public int scanNumber(){
+        Scanner scanner = new Scanner(System.in);
+        try {
+            return scanner.nextInt();
+        } catch (InputMismatchException imException) {
+            System.out.println("숫자만 입력해주세요.");
+            scanNumber();
+        }
+        return 0;
+    }
+
+
 
 }
