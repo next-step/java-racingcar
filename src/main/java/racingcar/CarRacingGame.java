@@ -1,7 +1,7 @@
-package step3;
+package racingcar;
 
-import step3.view.InputView;
-import step3.view.ResultView;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 import java.util.List;
 import java.util.stream.Collectors;
