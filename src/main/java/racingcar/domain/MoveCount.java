@@ -7,6 +7,9 @@ public class MoveCount {
     private int moveCount;
 
     public MoveCount(int moveCount) {
+        if(moveCount < 0) {
+            throw new IllegalArgumentException("위치 값은 0이상이여야 합니다.");
+        }
         this.moveCount = moveCount;
     }
 
