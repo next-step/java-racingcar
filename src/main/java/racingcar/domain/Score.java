@@ -5,8 +5,7 @@ public class Score {
     private final String carName;
 
     public Score(Car car) {
-        this.point = car.findCarPoint();
-        this.carName = car.findCarName();
+        this(car.findCarPoint(), car.findCarName());
     }
 
     public Score(int point, String carName) {

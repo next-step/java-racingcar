@@ -1,15 +1,11 @@
-package racingcar;
+package racingcar.domain;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.Score;
 import racingcar.domain.Scores;
-import racingcar.dto.UserInput;
 import racingcar.strategy.MovableNumberGeneratorStrategy;
 import racingcar.strategy.NumberGeneratorStrategy;
 
@@ -28,15 +24,6 @@ public class CarsTest {
         System.out.println("cars : " + cars.findCarsCount());
 
         Assertions.assertThat(cars.findCarsCount()).isEqualTo(3);
-    }
-
-    @Test
-    @DisplayName("자동차 이름 5자리를 초과하면 예외가 발생한다")
-    void 자동차_이름_예외_테스트() {
-        List<String> carNames = Arrays.asList("UnitedKingdom");
-        Assertions.assertThatThrownBy(() -> new Cars(carNames))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자동차 이름은 5자를 초과 할 수 없습니다");
     }
 
     @Test

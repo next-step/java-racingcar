@@ -11,8 +11,7 @@ public class Scores {
         scores = new ArrayList<>();
     }
 
-    public void addScore(Car car) {
-        Score score = new Score(car);
+    public void addScore(Score score) {
         scores.add(score);
     }
 
@@ -28,8 +27,9 @@ public class Scores {
     }
 
     public List<Score> findWinners() {
+        int maxPoint = findMaxPoint();
         List<Score> winner = scores.stream()
-                .filter(score -> score.findPoint() == findMaxPoint())
+                .filter(score -> score.findPoint() == maxPoint)
                 .collect(Collectors.toList());
         return winner;
     }
