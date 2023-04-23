@@ -1,7 +1,15 @@
 package RacingCar;
 
 public class Car {
-    public int currentPosition;
+    private final int id;
+    private int currentPosition;
+
+    public Car(int id) {
+        this.id = id;
+        this.currentPosition = 0;
+    }
+
+    public int getId() { return id; }
 
     public int getCurrentPosition() {
         return currentPosition;
