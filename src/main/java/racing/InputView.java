@@ -20,12 +20,9 @@ public class InputView {
     }
 
     private List<String> split(String carNames) {
-        List<String> resultNames = new ArrayList<>();
-        String[] splitNames = carNames.split(",");
-        for (String carName : splitNames) {
-            resultNames.add(carName.trim());
-        }
-        return resultNames;
+        return Arrays.stream(carNames.split(","))
+                .map(String::trim)
+                .collect(Collectors.toList());
     }
 
     public int inputCarCount() {

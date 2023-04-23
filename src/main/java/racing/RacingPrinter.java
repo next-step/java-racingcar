@@ -41,10 +41,7 @@ public class RacingPrinter {
     }
 
     private static void drawPosition(String carName, Integer position) {
-        StringBuilder symbol = new StringBuilder();
-        for (int i = 0; i < position; i++) {
-            symbol.append(POSITION_SYMBOL);
-        }
+        String symbol = POSITION_SYMBOL.repeat(position);
         System.out.println(carName + DELIMITER + symbol);
 
     }

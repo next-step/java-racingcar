@@ -8,6 +8,7 @@ import racing.rule.RacingRule;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
 
@@ -20,11 +21,10 @@ public class RacingGame {
     }
 
     private List<Car> convertToCarList(List<String> carNames) {
-        List<Car> resultCars = new ArrayList<>();
-        for (String carName : carNames) {
-            resultCars.add(new Car(carName));
-        }
-        return resultCars;
+        return carNames
+                .stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     public GameResult start(int opportunity) {

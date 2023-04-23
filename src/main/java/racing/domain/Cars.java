@@ -4,6 +4,7 @@ import racing.rule.RacingRule;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
@@ -27,18 +28,16 @@ public class Cars {
     }
 
     public List<String> valueOfEntryNameList() {
-        List<String> entryNames = new ArrayList<>();
-        for (Car car : cars) {
-            entryNames.add(car.valueOfName());
-        }
-        return entryNames;
+        return cars
+                .stream()
+                .map(Car::valueOfName)
+                .collect(Collectors.toList());
     }
 
     public List<Integer> currentRoundResult() {
-        List<Integer> currentPositions = new ArrayList<>();
-        for (Car car : cars) {
-            currentPositions.add(car.valueOfCurrentPosition());
-        }
-        return currentPositions;
+        return cars
+                .stream()
+                .map(Car::valueOfCurrentPosition)
+                .collect(Collectors.toList());
     }
 }
