@@ -9,7 +9,7 @@ public class RaceFactory {
   private RaceFactory() {
   }
 
-  public static Race createRace(List<Car> cars) {
+  public static Race createRace(final List<Car> cars) {
     return new Race(cars);
   }
 }
