@@ -14,17 +14,17 @@ public class RacingGame {
     private final Cars cars;
     private final RacingRule racingRule;
 
-    public RacingGame(List<String> carNameList, RacingRule racingRule) {
-        this.cars = new Cars(convertToCarList(carNameList));
+    public RacingGame(List<String> carNames, RacingRule racingRule) {
+        this.cars = new Cars(convertToCarList(carNames));
         this.racingRule = racingRule;
     }
 
-    private List<Car> convertToCarList(List<String> carNameList) {
-        List<Car> carList = new ArrayList<>();
-        for (String carName : carNameList) {
-            carList.add(new Car(carName));
+    private List<Car> convertToCarList(List<String> carNames) {
+        List<Car> resultCars = new ArrayList<>();
+        for (String carName : carNames) {
+            resultCars.add(new Car(carName));
         }
-        return carList;
+        return resultCars;
     }
 
     public GameResult start(int opportunity) {

@@ -1,8 +1,10 @@
 package racing;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class InputView {
     private final Scanner scanner;
@@ -18,12 +20,12 @@ public class InputView {
     }
 
     private List<String> split(String carNames) {
-        List<String> carNameList = new ArrayList<>();
-        String[] carNameArray = carNames.split(",");
-        for (String carName : carNameArray) {
-            carNameList.add(carName.trim());
+        List<String> resultNames = new ArrayList<>();
+        String[] splitNames = carNames.split(",");
+        for (String carName : splitNames) {
+            resultNames.add(carName.trim());
         }
-        return carNameList;
+        return resultNames;
     }
 
     public int inputCarCount() {

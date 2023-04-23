@@ -6,37 +6,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    private final List<Car> carList;
-    public Cars(List<Car> carList) {
-        this.carList = carList;
+    private final List<Car> cars;
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
-    public List<Car> getCarList() {
-        return this.carList;
+    public List<Car> getCars() {
+        return this.cars;
     }
 
     public void race(RacingRule racingRule) {
         List<Integer> result = new ArrayList<>();
-        for (Car car : carList) {
+        for (Car car : cars) {
             car.race(racingRule.generateNumber());
         }
     }
 
     public int countTotalCar() {
-        return carList.size();
+        return cars.size();
     }
 
     public List<String> valueOfEntryNameList() {
-        List<String> entryNameList = new ArrayList<>();
-        for (Car car : carList) {
-            entryNameList.add(car.valueOfName());
+        List<String> entryNames = new ArrayList<>();
+        for (Car car : cars) {
+            entryNames.add(car.valueOfName());
         }
-        return entryNameList;
+        return entryNames;
     }
 
     public List<Integer> currentRoundResult() {
         List<Integer> currentPositions = new ArrayList<>();
-        for (Car car : carList) {
+        for (Car car : cars) {
             currentPositions.add(car.valueOfCurrentPosition());
         }
         return currentPositions;

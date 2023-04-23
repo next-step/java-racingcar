@@ -40,7 +40,7 @@ public class CarsTest {
     void valueOfCarsPositionTest() {
         Cars cars = new Cars(Arrays.asList(new Car("test"), new Car("test", 4), new Car("test", 1), new Car("test", 0)));
         List<Integer> carsPosition = cars.currentRoundResult();
-        assertThat(cars.getCarList()).hasSize(4);
+        assertThat(cars.getCars()).hasSize(4);
         assertThat(carsPosition).containsExactly(1, 4, 1, 0);
     }
 }

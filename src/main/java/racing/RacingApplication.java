@@ -9,10 +9,10 @@ import java.util.Scanner;
 public class RacingApplication {
     public static void main(String[] args) {
         InputView inputView = new InputView(new Scanner(System.in));
-        List<String> carNameList = inputView.inputCarNames();
+        List<String> carNames = inputView.inputCarNames();
         int opportunity = inputView.inputOpportunity();
 
-        RacingGame racingGame = new RacingGame(carNameList, new RandomRacingRule());
+        RacingGame racingGame = new RacingGame(carNames, new RandomRacingRule());
         GameResult result = racingGame.start(opportunity);
         RacingPrinter.drawResult(result);
     }
