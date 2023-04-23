@@ -46,10 +46,9 @@ public class CarRacing {
         }
     }
 
-    public int getRandomInt() throws IllegalArgumentException {
+    int getRandomInt() throws IllegalArgumentException {
         return random.nextInt(RANGE_FOR_RANDOM);
     }
-
 
     private void printWinner() {
         resultView.printWinner(findWinners());
@@ -60,7 +59,7 @@ public class CarRacing {
         return findWinnerNames(cars, carMaxPosition);
     }
 
-    public int findCarMaxPosition(Car[] cars) {
+    int findCarMaxPosition(Car[] cars) {
         int maxPosition = 0;
         for(Car car : cars) {
             maxPosition = Math.max(maxPosition, car.getPosition());
@@ -68,7 +67,7 @@ public class CarRacing {
         return maxPosition;
     }
 
-    public String findWinnerNames(Car[] cars, int maxPosition) {
+    String findWinnerNames(Car[] cars, int maxPosition) {
         String winnerNames = "";
         for(Car car : cars) {
             winnerNames = findCarNamesThatPosition(winnerNames, car, maxPosition);

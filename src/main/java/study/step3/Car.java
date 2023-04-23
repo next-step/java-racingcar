@@ -12,19 +12,21 @@ public class Car {
 
 
     public Car(String name) {
-        if (name.length() > 5) {
-            throw new InvalidParameterException(CAR_NAME_RANGE_ALERT_MESSAGE);
-        }
+        checkNameLength(name);
         this.name = name;
         position = 0;
     }
 
     public Car(String name, int position) {
+        checkNameLength(name);
+        this.name = name;
+        this.position = position;
+    }
+
+    private static void checkNameLength(String name) {
         if (name.length() > 5) {
             throw new InvalidParameterException(CAR_NAME_RANGE_ALERT_MESSAGE);
         }
-        this.name = name;
-        this.position = position;
     }
 
     int getPosition() {
