@@ -1,14 +1,12 @@
 package racing.domain;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class GameResult {
     private final List<RoundResult> roundResults = new ArrayList<>();
 
-    public void addRound1(RoundResult currentRoundResult) {
+    public void addRound(RoundResult currentRoundResult) {
         roundResults.add(currentRoundResult);
     }
     public List<Car> getWinners() {

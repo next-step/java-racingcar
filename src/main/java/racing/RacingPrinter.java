@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import racing.domain.Car;
 import racing.domain.Name;
+import racing.domain.Position;
 import racing.domain.RoundResult;
 
 public class RacingPrinter {
@@ -30,8 +31,12 @@ public class RacingPrinter {
     }
 
     private static void drawPosition(Car car) {
-        String symbol = POSITION_SYMBOL.repeat(car.getPosition() + DEFAULT_POSITION);
+        String symbol = drawSymbol(car.getPosition());
         System.out.println(car.getName() + DELIMITER + symbol);
+    }
+
+    private static String drawSymbol(Position position) {
+        return POSITION_SYMBOL.repeat(position.getPosition() + DEFAULT_POSITION);
     }
 
     public static void announceWinner(List<Car> winners) {

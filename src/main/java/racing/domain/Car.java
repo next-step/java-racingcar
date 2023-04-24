@@ -3,19 +3,28 @@ package racing.domain;
 public class Car {
 
     public static final int DEFAULT_POSITION = 0;
-    private int position = DEFAULT_POSITION;
+    private final Position position;
     private final Name name;
 
+    public static Car newCar(Car car) {
+        return new Car(car.name, car.position);
+    }
+
     public Car(String name) {
-        this(name,DEFAULT_POSITION);
+        this(new Name(name),new Position(DEFAULT_POSITION));
     }
 
     public Car(String name, int initPosition) {
-        this.position = initPosition;
-        this.name = new Name(name);
+        this(new Name(name), new Position(initPosition));
     }
 
-    public int getPosition() {
+    public Car(Name name, Position position) {
+        this.name = name;
+        this.position = position;
+    }
+
+
+    public Position getPosition() {
         return position;
     }
 
@@ -25,16 +34,17 @@ public class Car {
 
     public Car race(int randomNumber) {
         if (randomNumber > 3) {
-            return new Car(name.toString(), position++);
+            return new Car (name, new Position(position.move()));
         }
-        return new Car(name.toString(), position);
+        return new Car(name, new Position(position));
     }
 
     public int max(int maxPosition) {
-        return Math.max(position, maxPosition);
+        return position.max(maxPosition);
+
     }
 
     public boolean isWinner(int winnerPosition) {
-        return position == winnerPosition;
+        return position.isSame(winnerPosition);
     }
 }

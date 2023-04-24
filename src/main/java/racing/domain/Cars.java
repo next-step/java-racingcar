@@ -33,10 +33,4 @@ public class Cars {
         return new RoundResult(roundResult);
     }
 
-    public List<Integer> currentRoundResult() {
-        return cars
-                .stream()
-                .map(Car::getPosition)
-                .collect(Collectors.toList());
-    }
 }
