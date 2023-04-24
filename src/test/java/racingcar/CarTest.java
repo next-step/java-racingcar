@@ -45,7 +45,7 @@ public class CarTest {
     @Test
     void moveable(){
         Car car = new Car("test");
-        assertThat(car.moveable(5)).isTrue();
+        assertThat(car.moveable(new RandomNo(5))).isTrue();
     }
 
     @Test

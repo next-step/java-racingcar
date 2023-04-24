@@ -15,7 +15,7 @@ public class ResultView {
     }
 
     private void printGames(Racing racing) {
-        List<RaceRecord> records = racing.getRaceRecord();
+        List<RaceRecord> records = racing.getRaceRecords();
 
         if (records.size() == 0) {
             return;

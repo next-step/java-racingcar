@@ -27,8 +27,8 @@ public class Car {
         return distance;
     }
 
-    public boolean moveable(int value) {
-        return value >= MOVE_LIMIT;
+    public boolean moveable(RandomNo value) {
+        return value.isEqualOrOver(MOVE_LIMIT);
     }
 
     public String getName() {

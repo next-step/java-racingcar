@@ -5,26 +5,14 @@ import java.util.*;
 public class Racing {
 
     private final int gameCount;
-    private final List<Car> cars;
-    private final List<RaceRecord> raceRecord;
-    private final RacingRandom racingRandom = RacingRandom.getInstance();
+    private final Cars cars;
+    private final RaceResult raceResult;
+
 
     public Racing(List<String> carNames, int gameCount) {
         this.gameCount = gameCount;
-        this.cars = createCars(carNames);
-        this.raceRecord = new ArrayList<>();
-    }
-
-    private List<Car> createCars(List<String> carNames) {
-        List<Car> result = new ArrayList<>();
-        for (String carName : carNames) {
-            result.add(new Car(carName));
-        }
-        return result;
-    }
-
-    public List<Car> getCars() {
-        return this.cars;
+        this.cars = new Cars(carNames);
+        this.raceResult = new RaceResult();
     }
 
     public void race() {
@@ -34,27 +22,19 @@ public class Racing {
         }
     }
 
-    private void record() {
-        raceRecord.add(new RaceRecord(cars));
-    }
-
     private void game() {
-        for (Car car : cars) {
-            move(car);
-        }
+        cars.move();
     }
 
-    private void move(Car car) {
-        if (car.moveable(racingRandom.getRandomNo())) {
-            car.move();
-        }
+    private void record() {
+        raceResult.record(cars);
     }
 
-    public List<RaceRecord> getRaceRecord() {
-        return raceRecord;
+    public List<RaceRecord> getRaceRecords() {
+        return raceResult.getRaceRecord();
     }
 
     public List<Car> getWinner(){
-        return Winner.getWinner(cars);
+        return cars.getWinner();
     }
 }
