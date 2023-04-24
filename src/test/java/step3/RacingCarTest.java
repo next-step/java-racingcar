@@ -14,7 +14,7 @@ import static org.junit.jupiter.params.provider.Arguments.arguments;
 public class RacingCarTest {
 
     RacingCar rc = new RacingCar();
-    Car car = new Car();
+    Car car = new Car("car1");
     int carCount = 3;
 
     @Test

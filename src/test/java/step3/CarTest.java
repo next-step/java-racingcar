@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class CarTest {
 
     RacingCar rc = new RacingCar();
-    Car car = new Car();
+    Car car = new Car("car1");
     int carCount = 3;
 
     @Test

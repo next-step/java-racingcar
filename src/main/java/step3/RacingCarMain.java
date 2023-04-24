@@ -23,7 +23,7 @@ public class RacingCarMain {
             printRace(cars);
         }
 
-        List<Car> winners = winner.addWinner(cars);
-        printWinner(winners);
+        winner.addWinner(cars);
+        printWinner(winner.getWinners());
     }
 }

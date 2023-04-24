@@ -12,7 +12,7 @@ public class Winner {
         return max;
     }
 
-    public List<Car> addWinner(List<Car> cars) {
+    public void addWinner(List<Car> cars) {
         for (Car car : cars) {
             setMaxGoCount(car);
         }
@@ -20,6 +20,9 @@ public class Winner {
         for (Car car : cars) {
             addOrNot(car);
         }
+    }
+
+    public List<Car> getWinners() {
         return winners;
     }
 

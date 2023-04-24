@@ -8,18 +8,22 @@ public class RacingCar {
 
     public static final int RANDOM_LIMIT = 10;
     public static final int LIMIT = 4;
+    Random random = new Random();
 
     public static List<Car> createCars(String[] names){
         List<Car> cars = new ArrayList<>();
         for(int i=0; i<names.length; i++){
-            Car.checkName(names[i]);
             cars.add(new Car(names[i]));
         }
         return cars;
     }
 
     public String[] split(String carsName) {
-        return carsName.split(",");
+        String[] names = carsName.trim().split(",");
+        for(int i=0; i< names.length; i++){
+            names[i] = names[i].trim();
+        }
+        return names;
     }
 
     public void oneRace(List<Car> cars) {
@@ -40,7 +44,6 @@ public class RacingCar {
     }
 
     private int randomValue() {
-        Random random = new Random();
         return random.nextInt(RANDOM_LIMIT);
     }
 

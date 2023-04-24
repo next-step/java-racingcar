@@ -10,16 +10,12 @@ public class Car {
     private String name;
     private int goCount;
 
-    public Car() {
-        this.goCount = 0;
-    }
-
     public Car(String name) {
-        this.name = name;
-        this.goCount = 0;
+        this(name, 0);
     }
 
     public Car(String name, int goCount) {
+        checkName(name);
         this.name = name;
         this.goCount = goCount;
     }
