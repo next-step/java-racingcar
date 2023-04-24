@@ -11,7 +11,7 @@ public class Car {
     }
 
     public void moveWithStrategy(MoveStrategy moveStrategy) {
-        position = moveStrategy.nextPosition(position);
+        position = moveStrategy.nextPosition(this);
     }
 
     public int getPosition() {

@@ -5,7 +5,6 @@ import view.RaceView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
@@ -83,5 +82,20 @@ public class RaceViewTest {
         var result = outputStream.toString();
         var expected = "실행 결과\n";
         assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    public void printWinners() {
+        var winners = Set.of("pobi", "hello");
+
+        var defaultScanner = new Scanner(System.in);
+        var raceView = new RaceView(defaultScanner);
+
+        raceView.printWinners(winners);
+
+        var result = outputStream.toString();
+
+        assertThat(result).contains(" 가 최종 우승했습니다.");
+        assertThat(result).containsAnyOf("pobi, hello", "hello, pobi");
     }
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Race {
 
@@ -30,6 +31,23 @@ public class Race {
             carPositions.put(car.getName(), car.getPosition());
         }
         return carPositions;
+    }
+
+    public Set<String> getWinnerNames() {
+        int winnerPosition = getWinnerPosition();
+        WinnerInfo winnerInfo = new WinnerInfo(winnerPosition);
+        for (Car car : cars) {
+            winnerInfo.addWinnerIfMatchingPosition(car);
+        }
+        return winnerInfo.getWinnerNames();
+    }
+
+    private int getWinnerPosition() {
+        var winnerPosition = 0;
+        for (var car : cars) {
+            winnerPosition = Math.max(car.getPosition(), winnerPosition);
+        }
+        return winnerPosition;
     }
 
     private void createCars(List<String> namesOfCars) {

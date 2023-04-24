@@ -1,10 +1,10 @@
 package view;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 public class RaceView {
     private final Scanner scanner;
@@ -34,6 +34,10 @@ public class RaceView {
             System.out.println();
         }
         System.out.println();
+    }
+
+    public void printWinners(Set<String> winners) {
+        System.out.println(String.join(", ", winners) + " 가 최종 우승했습니다.");
     }
 
     private void printCarPositionWithBars(String carName, int carPosition) {

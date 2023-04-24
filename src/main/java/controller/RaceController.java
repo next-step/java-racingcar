@@ -18,6 +18,7 @@ public class RaceController {
         var stepsToRun = raceView.queryAndGetSteps();
         raceView.printResultTitle();
         runRaceNStepsWithStrategy(stepsToRun, moveStrategy);
+        raceView.printWinners(race.getWinnerNames());
     }
 
     private void initializeRaceFromUserInput() {

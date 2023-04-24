@@ -9,6 +9,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyMap;
+import static org.mockito.ArgumentMatchers.anySet;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -81,5 +82,22 @@ public class RaceControllerTest {
         raceController.startRace(strategy);
 
         verify(raceViewMock, times(steps)).printCurrentRaceStatus(anyMap());
+    }
+
+    @Test
+    public void winnersArePrinted() {
+        var namesOfCars = List.of("car1", "car2", "car3");
+        var steps = 5;
+        var strategy = new AlwaysMoveStrategy();
+
+        var raceViewMock = Mockito.mock(RaceView.class);
+        when(raceViewMock.queryAndGetNamesOfCars()).thenReturn(namesOfCars);
+        when(raceViewMock.queryAndGetSteps()).thenReturn(steps);
+
+        var race = new Race();
+        var raceController = new RaceController(race, raceViewMock);
+        raceController.startRace(strategy);
+
+        verify(raceViewMock).printWinners(anySet());
     }
 }
