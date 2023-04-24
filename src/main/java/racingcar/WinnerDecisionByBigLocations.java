@@ -15,7 +15,7 @@ public class WinnerDecisionByBigLocations implements WinnerDecisionStrategy {
         int maxLocation = sortedCars.get(0).location();
 
         return sortedCars.stream()
-                .filter(car -> car.location() == maxLocation)
+                .filter(car -> car.isWinner(maxLocation))
                 .collect(Collectors.toList());
     }
 

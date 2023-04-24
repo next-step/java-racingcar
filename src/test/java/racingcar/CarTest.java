@@ -16,7 +16,7 @@ class CarTest {
 
     @Test
     void 자동차의_초기_위치값은_0이다() {
-        Car car = Car.of(defaultName);
+        Car car = new Car(defaultName);
 
         int location = car.location();
 
@@ -27,7 +27,7 @@ class CarTest {
     class move_메소드는 {
         @Test
         void 내부적으로_생성되는_랜덤값에_따라_1_전진하거나_기존위치에_머무른다() {
-            Car car = Car.of(defaultName);
+            Car car = new Car(defaultName);
 
             int beforeLocation = car.location();
 
@@ -49,8 +49,18 @@ class CarTest {
             String invalidName = "123456";
 
             Assertions.assertThatExceptionOfType(IllegalArgumentException.class)
-                    .isThrownBy(() -> Car.of(invalidName));
+                    .isThrownBy(() -> new Car(invalidName));
         }
     }
 
+    @Nested
+    class isWinner_메서드는 {
+        @Test
+        void 현재까지_자동차들의_최대_위치값이_0인경우_0인위치의_자동차는_우승자다() {
+            Car carLocatedOnZero = new Car(defaultName);
+
+            Assertions.assertThat(carLocatedOnZero.isWinner(0))
+                    .isTrue();
+        }
+    }
 }

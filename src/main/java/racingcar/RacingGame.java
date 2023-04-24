@@ -34,7 +34,7 @@ public class RacingGame {
 
     private void addCarsOf(List<String> names) {
         for (String name : names) {
-            cars.add(Car.of(name));
+            cars.add(new Car(name));
         }
     }
 
