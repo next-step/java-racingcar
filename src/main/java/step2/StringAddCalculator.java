@@ -17,14 +17,18 @@ public class StringAddCalculator {
         if (matcher.find()) {
             String customDelimiter = matcher.group(1);
             text = matcher.group(2);
-            return(sum(text.split(customDelimiter)));
+            return(sum(separateText(customDelimiter, text)));
         }
         // 쉼표(,) 또는 콜론(:)을 구분자로 가지는 문자열을 전달하는 경우 구분자를 기준으로 분리한 각 숫자의 합을 반환
-        return sum(text.split(defaultDelimiter));
+        return sum(separateText(defaultDelimiter, text));
     }
 
     static private boolean isEmptyText(String text) {
         return text == null || text.isEmpty();
+    }
+
+    static private String[] separateText(String delimiter, String text) {
+        return text.split(delimiter);
     }
 
     static private int sum(String[] tokens) {
