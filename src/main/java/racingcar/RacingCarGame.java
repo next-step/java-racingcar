@@ -1,5 +1,12 @@
 package racingcar;
 
+import racingcar.domain.Race;
+import racingcar.domain.RandomMoveStrategy;
+import racingcar.view.ConsoleInput;
+import racingcar.view.ConsoleOutput;
+import racingcar.view.Input;
+import racingcar.view.Output;
+
 public class RacingCarGame {
     public static void main(String[] args) {
         Input input = new ConsoleInput();

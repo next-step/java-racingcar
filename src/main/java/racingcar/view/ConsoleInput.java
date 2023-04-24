@@ -1,4 +1,7 @@
-package racingcar;
+package racingcar.view;
+
+import racingcar.domain.MoveStrategy;
+import racingcar.domain.Race;
 
 import java.util.Scanner;
 
