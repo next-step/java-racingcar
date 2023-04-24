@@ -5,6 +5,8 @@ import java.util.Random;
 public class Car {
 
     static final int RUN_CONDITION = 4;
+    public static final int CAR_NAME_LENGTH_LIMIT = 5;
+    public static final String NAME_LENGTH_EXCEPTION_MESSAGE = "자동차 이름은 5자를 초과할 수 없습니다.";
 
     private int position = 0;
     private String name = "";
@@ -13,8 +15,8 @@ public class Car {
     }
 
     public Car(String name) {
-        if(name.length() > 5){
-            throw new RuntimeException("자동차 이름은 5자를 초과할 수 없습니다.");
+        if(name.length() > CAR_NAME_LENGTH_LIMIT){
+            throw new RuntimeException(NAME_LENGTH_EXCEPTION_MESSAGE);
         }
         this.name = name;
     }

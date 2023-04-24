@@ -1,6 +1,5 @@
 package racingcar.model;
 
-import calculator.StringCalculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -61,6 +60,23 @@ class CarTest {
         assertThatThrownBy(()->{
             Car car = new Car("test11");
         }).isInstanceOf(RuntimeException.class)
-                .hasMessage("자동차 이름은 5자를 초과할 수 없습니다.");
+                .hasMessage(Car.NAME_LENGTH_EXCEPTION_MESSAGE);
+    }
+
+
+    @Test
+    @DisplayName("Car 위치값중 가장 큰 값을 찾는다.")
+    void extract_max_value_of_position_from_cars(){
+        Cars cars = new Cars();
+
+        cars.addCar("car1");
+        cars.addCar("car2");
+        cars.addCar("car3");
+
+        cars.getCar().get(0).plugPosition();
+        cars.getCar().get(0).plugPosition();
+
+        assertThat(cars.getMaxPosition(1, cars.getCar().get(0))).isEqualTo(2);
+        assertThat(cars.getMaxPosition(3, cars.getCar().get(0))).isEqualTo(3);
     }
 }
