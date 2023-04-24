@@ -18,10 +18,11 @@ public class RaceController {
         var stepsToRun = raceView.queryAndGetSteps();
         raceView.printResultTitle();
         runRaceNStepsWithStrategy(stepsToRun, moveStrategy);
+        raceView.printWinners(race.getWinnerNames());
     }
 
     private void initializeRaceFromUserInput() {
-        var numberOfCars = raceView.queryAndGetNumberOfCars();
+        var numberOfCars = raceView.queryAndGetNamesOfCars();
         race.resetWithCarsOf(numberOfCars);
     }
 
