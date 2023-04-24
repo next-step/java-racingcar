@@ -1,7 +1,10 @@
 package racingcar;
 
-public class Car {
+import racingcar.util.RandomGenerator;
 
+public class Car {
+    private final static int MIN_RANDOM_VALUE = 0;
+    private final static int MAX_RANDOM_VALUE = 9;
     private final static int MOVE_CRITERIA = 4;
     private final String name;
     private int location;
@@ -26,7 +29,14 @@ public class Car {
         return this.name;
     }
 
-    public void moveDependingOn(RandNum randNum) {
+    public void move() {
+        RandNum randNum =
+                RandomGenerator.generate(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
+
+        moveDependingOn(randNum);
+    }
+
+    private void moveDependingOn(RandNum randNum) {
         if (randNum.isGreaterThan(MOVE_CRITERIA)) {
             location++;
         }

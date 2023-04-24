@@ -1,11 +1,13 @@
 package racingcar;
 
 import org.assertj.core.api.Assertions;
+import org.assertj.core.api.Condition;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.anyOf;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayNameGeneration(ReplaceUnderscores.class)
@@ -24,25 +26,19 @@ class CarTest {
     @Nested
     class move_메소드는 {
         @Test
-        void 인자로_4_이상의_값을_전달받을경우_자신의_상태를_1_증가시킨다() {
+        void 내부적으로_생성되는_랜덤값에_따라_1_전진하거나_기존위치에_머무른다() {
             Car car = Car.of(defaultName);
+
             int beforeLocation = car.location();
 
-            car.moveDependingOn(new RandNum(4));
-            int afterLocation = car.location();
+            car.move();
 
-            assertThat(afterLocation).isEqualTo((beforeLocation + 1));
-        }
+            int currentLocation = car.location();
+            Condition<Integer> moved = new Condition(position -> position.equals(beforeLocation + 1), "move forward");
+            Condition<Integer> stay = new Condition(position -> position.equals(beforeLocation), "stay");
 
-        @Test
-        void 인자로_4_미만의_값을_전달받을경우_정지한다() {
-            Car car = Car.of(defaultName);
-            int beforeLocation = car.location();
-
-            car.moveDependingOn(new RandNum(3));
-            int afterLocation = car.location();
-
-            assertThat(afterLocation).isEqualTo(beforeLocation);
+            Assertions.assertThat(currentLocation)
+                    .is(anyOf(moved, stay));
         }
     }
 

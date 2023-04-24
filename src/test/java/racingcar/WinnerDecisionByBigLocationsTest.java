@@ -48,7 +48,7 @@ class WinnerDecisionByBigLocationsTest {
     private Car makeCarOfLocation(String name, int location) {
         Car car = Car.of("abc");
         for (int i = 0; i < location; i++) {
-            car.moveDependingOn(new RandNum(5));
+            car.move();
         }
         return car;
     }
