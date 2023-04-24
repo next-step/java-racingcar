@@ -11,6 +11,10 @@ import java.util.List;
 
 public class AutoRacing {
 
+    public static void main(String[] args) {
+        startRacing();
+    }
+
     public static void startRacing() {
 
         GameInfo gameInfo = InputView.prepareGame();
@@ -25,15 +29,17 @@ public class AutoRacing {
 
         autoRacingParticipant.participateGame(racingCarList);
 
-        for (int i = 0; i < gameInfo.getNumberOfGame(); i++) {
-            ResultView.printResultEachRound(autoRacingParticipant.gameEachRound());
-        }
+        gameForGivenRound(gameInfo.getNumberOfGame(), autoRacingParticipant);
 
         ResultView.printName(autoRacingParticipant.getAllMaxMoveCountName());
 
     }
 
-    public static void main(String[] args) {
-        startRacing();
+    private static void gameForGivenRound(int numberOfGame, AutoRacingParticipant autoRacingParticipant) {
+        for (int i = 0; i < numberOfGame; i++) {
+            ResultView.printResultEachRound(autoRacingParticipant.gameEachRound());
+        }
     }
+
+
 }
