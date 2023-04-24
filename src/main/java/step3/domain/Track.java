@@ -16,7 +16,7 @@ public class Track implements Comparable<Track> {
         return racingCar;
     }
 
-    public int carPosition() {
+    public Position carPosition() {
         if (isEmpty()) {
             throw new IllegalStateException("해당 track에는 car가 존재하지 않습니다.");
         }
@@ -24,7 +24,7 @@ public class Track implements Comparable<Track> {
         return racingCar.position();
     }
 
-    public String carName() {
+    public Name carName() {
         if (isEmpty()) {
             throw new IllegalStateException("해당 track에는 car가 존재하지 않습니다.");
         }

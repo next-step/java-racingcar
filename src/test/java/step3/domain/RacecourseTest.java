@@ -73,7 +73,8 @@ class RacecourseTest {
         racecourse.signalToForward();
 
         // then
-        assertThat(racingCar.position()).isBetween(0, 3);
+        assertThat(racingCar.position())
+                .isBetween(new Position(0), new Position(3));
     }
 
     @Test

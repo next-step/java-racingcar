@@ -5,36 +5,46 @@ import step3.move.MoveStrategy;
 import step3.move.RandomMoveStrategy;
 
 public class RacingCar {
-    protected static final int defaultPosition = 0;
+    protected static final Position defaultPosition = new Position(0);
 
     private static final int maxNameLength = 5;
 
     private final MoveStrategy moveStrategyStrategy;
 
-    private final String name;
+    private final Name name;
+
+    private Position position = defaultPosition;
 
 
     public RacingCar(final String name, MoveStrategy strategy) {
         this.moveStrategyStrategy = strategy;
-        this.name = name;
+        this.name = new Name(name);
         this.validate();
+    }
+
+    private void validate() {
+        if (this.name == null) {
+            throw new RacingCarValidationException("이름은 null일 수 없습니다");
+        }
+
+        if (this.name.stringValue().length() > maxNameLength) {
+            throw new RacingCarValidationException(String.format("이름은 %d글자를 초과할 수 없습니다", maxNameLength));
+        }
     }
 
     public RacingCar(final String name) {
         this(name, new RandomMoveStrategy());
     }
 
-    public String getName() {
+    public Name getName() {
         return name;
     }
 
-    public boolean isAtPosition(int position) {
-        return this.position == position;
+    public boolean isAtPosition(Position position) {
+        return this.position.equals(position);
     }
 
-    private int position = defaultPosition;
-
-    protected int position() {
+    protected Position position() {
         return position;
     }
 
@@ -43,16 +53,6 @@ public class RacingCar {
     }
 
     protected void steeringToForward() {
-        position += moveStrategyStrategy.moveAmount();
-    }
-
-    private void validate() {
-        if (this.name == null) {
-            throw new RacingCarValidationException("이름은 null일 수 없습니다");
-        }
-
-        if (this.name.length() > maxNameLength) {
-            throw new RacingCarValidationException(String.format("이름은 %d글자를 초과할 수 없습니다", maxNameLength));
-        }
+        position = new Position(position.intValue() + moveStrategyStrategy.moveAmount());
     }
 }
