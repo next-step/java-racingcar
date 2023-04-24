@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 public class NamesParserTest {
     private final StringParser<String> parser =
-            new ToStringsParser();
+            new NameParser();
 
     @Test
     void 콤마로_이어진_문자열이_주어지면_문자열배열로_변환한다() {
