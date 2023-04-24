@@ -34,8 +34,31 @@ public class Track {
 		}
 	}
 
+	public List<Car> findWinners() {
+		List<Car> winners = new ArrayList<>();
+
+		checkWinner(winners);
+
+		return winners;
+	}
+
+	private void checkWinner(List<Car> winners) {
+		int maxDistance = 0;
+
+		for (Car car : carList) {
+			if (car.getDistanceAmount() == maxDistance) {
+				winners.add(car);
+			}
+			if (car.getDistanceAmount() > maxDistance) {
+				winners.clear();
+				winners.add(car);
+
+				maxDistance = car.getDistanceAmount();
+			}
+		}
+	}
+
 	public List<Car> getCarList() {
 		return carList;
 	}
-
 }

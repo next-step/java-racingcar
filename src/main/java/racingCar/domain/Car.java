@@ -9,7 +9,9 @@ public class Car {
 
 	public static final int POWER_THRESHOLD = 4;
 
-	private final Random random;
+	private final Random random = new Random();
+
+	private final String name;
 
 	private final Distance distance;
 
@@ -19,24 +21,26 @@ public class Car {
 		return distance.getAmount();
 	}
 
-	public Car(Random random, Distance distance, int power) {
-		this.random = random;
-		this.distance = distance;
+	public Car(String name, int power, Distance distance) {
+		this.name = name;
 		this.power = power;
+		this.distance = distance;
 	}
 
-	public static Car create(int power) {
-		Random random = new Random();
-		Distance distance = Distance.create();
-
-		return new Car(random, distance, power);
+	public String getName() {
+		return name;
 	}
 
-	public static Car create() {
-		Random random = new Random();
+	public static Car of(String name, int power) {
 		Distance distance = Distance.create();
 
-		return new Car(random, distance, ZERO);
+		return new Car(name, power, distance);
+	}
+
+	public static Car from(String name) {
+		Distance distance = Distance.create();
+
+		return new Car(name, ZERO, distance);
 	}
 
 	public void drive() {
