@@ -11,7 +11,7 @@ public class CarCompanyTest {
     @DisplayName("자동차 객체 이름 갯수만큼 생성되는지 테스트")
     void createCarObject() {
         String carNames = "kim,woo,hun";
-        assertThat(CarCompany.createCar(carNames).size()).isEqualTo(3);
+        assertThat(CarCompany.createCar(carNames)).hasSize(3);
     }
 
     @Test

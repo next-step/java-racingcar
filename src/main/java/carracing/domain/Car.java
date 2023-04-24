@@ -33,4 +33,8 @@ public class Car {
             throw new RuntimeException("자동차 이름은 5글자를 초과할 수 없습니다.");
         }
     }
+
+    public boolean isWinner(int winnerLocation) {
+        return winnerLocation == this.location;
+    }
 }

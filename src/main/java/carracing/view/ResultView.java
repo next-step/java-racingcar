@@ -2,6 +2,7 @@ package carracing.view;
 
 import carracing.domain.Car;
 
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -20,11 +21,15 @@ public class ResultView {
         System.out.println();
     }
 
-    public static String putComma(String winnerName) {
-        if (winnerName.isBlank() == false) {
-            winnerName += ", ";
-        }
-        return winnerName;
+    public static String putComma(List<String> listWinnersName) {
+
+        String winnersName = String.join(", ", listWinnersName);
+
+        return winnersName;
+    }
+
+    public static void removeEmptyList(List<String> listWinnersName) {
+        listWinnersName.removeAll(Arrays.asList(""));
     }
 
     public void resultStart() {
