@@ -1,26 +1,30 @@
 package step3;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class CarRacingGame {
 
+    private static final int MAX_RANDOM_NUMBER = 10;
+    private static final Random RANDOM = new Random();
+
     private final List<Car> cars;
 
-    public CarRacingGame(String names) {
-        String[] carNames = names.split(",");
-        this.cars = toCars(carNames);
+    public CarRacingGame(String[] names) {
+        this.cars = toCars(names);
     }
 
     private List<Car> toCars(String[] carNames) {
-        List<Car> cars = new ArrayList<>();
-        Arrays.stream(carNames)
+        return Arrays.stream(carNames)
                 .map(String::trim)
                 .map(Car::new)
-                .forEach(cars::add);
+                .collect(Collectors.toList());
+    }
+
+    public List<Car> getCars() {
         return cars;
     }
 
@@ -31,45 +35,18 @@ public class CarRacingGame {
 
         for (int i = 0; i < playCount; i++) {
             go();
-            printDisplay();
+            Display.printDisplay(this.cars);
         }
     }
 
-    public void notifyWinners() {
-        List<String> winners = getWinners();
-        if (winners.isEmpty()) {
-            return;
-        }
-        System.out.println(getWinnerAnnouncement(winners));
-    }
-
-    private StringBuilder getWinnerAnnouncement(List<String> winners) {
-        StringBuilder sb = new StringBuilder();
-        for (String winner : winners) {
-            sb.append(winner).append(",");
-        }
-        sb.deleteCharAt(sb.length() - 1);
-        sb.append("가 최종 우승했습니다.");
-        return sb;
-    }
-
-    private List<String> getWinners() {
+    public List<Car> getWinners() {
         int maxDistance = cars.stream().map(Car::getLocation).max(Comparator.comparingInt(o -> o)).orElse(0);
         return cars.stream()
-                .filter(car -> car.getLocation() == maxDistance)
-                .map(Car::getName)
+                .filter(car -> car.isLocated(maxDistance))
                 .collect(Collectors.toList());
     }
 
-    private void printDisplay() {
-        StringBuilder sb = new StringBuilder();
-        for (Car car : cars) {
-            sb.append(car.getName()).append(": ").append("-".repeat(car.getLocation())).append("\n");
-        }
-        System.out.println(sb);
-    }
-
     private void go() {
-        cars.forEach(Car::go);
+        cars.forEach(car -> car.go(RANDOM.nextInt(MAX_RANDOM_NUMBER)));
     }
 }
