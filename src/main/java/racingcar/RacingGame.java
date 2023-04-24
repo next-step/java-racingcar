@@ -1,5 +1,6 @@
 package racingcar;
 
+import racingcar.util.RandomGenerator;
 import racingcar.view.ConsoleView;
 
 import java.util.ArrayList;
@@ -7,17 +8,14 @@ import java.util.List;
 
 public class RacingGame {
     private final ConsoleView view;
-    private final RandomGenerator randomGenerator;
     private final WinnerDecisionStrategy winnerDecisionStrategy;
     private final List<Car> cars;
     private List<Car> winners;
 
     public RacingGame(ConsoleView view,
-                      RandomGenerator randomGenerator,
                       WinnerDecisionStrategy winnerDecisionStrategy) {
 
         this.view = view;
-        this.randomGenerator = randomGenerator;
         this.winnerDecisionStrategy = winnerDecisionStrategy;
         this.winners = new ArrayList<>();
         this.cars = new ArrayList<>();
@@ -53,8 +51,7 @@ public class RacingGame {
 
     private void moveAndPrint() {
         for (Car car : this.cars) {
-            int rand = randomGenerator.generate();
-            car.moveDependingOn(rand);
+            car.moveDependingOn(RandomGenerator.generate(0, 9));
         }
 
         view.printCarsLocation(this.cars);

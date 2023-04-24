@@ -8,7 +8,6 @@ public class App {
         RacingGame racingGame =
                 new RacingGame(
                         new ConsoleView(new NameParser()),
-                        new RandomGenerator(0, 9),
                         new WinnerDecisionByBigLocations());
 
         racingGame.run();
