@@ -1,4 +1,6 @@
-package carracing.present;
+package step3.present;
+
+import step3.model.Car;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,14 +17,13 @@ public class InputPresent {
         this.scanner = new Scanner(System.in);
     }
 
-    public List<String> participates() {
+    public List<Car> participates() {
         System.out.println(PARTICIPATES);
-        return Arrays.stream(
-            scanner.nextLine().split(",")
-        ).collect(Collectors.toList());
+        return Arrays.stream(scanner.nextLine().split(",")).map(s -> new Car(s))
+            .collect(Collectors.toList());
     }
 
-    public int iteration() {
+    public int iterations() {
         System.out.println(ITERATIONS);
         return scanner.nextInt();
     }
