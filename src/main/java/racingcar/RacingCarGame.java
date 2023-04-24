@@ -5,11 +5,11 @@ public class RacingCarGame {
         Input input = new ConsoleInput();
         Output output = new ConsoleOutput();
 
-        Race race = input.setRaceAndRetryIfInvalid();
+        Race race = input.setRaceAndRetryIfInvalid(new RandomMoveStrategy());
 
         output.printExecutionHeader();
         while (race.isNotFinished()) {
-            race.continueRace(race.randomNumbers());
+            race.continueRace();
             output.printPositions(race);
         }
         output.printWinner(race);

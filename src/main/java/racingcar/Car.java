@@ -2,16 +2,25 @@ package racingcar;
 
 public class Car extends MoveContext {
     private final String name;
-    private Integer position = 0;
+    private Integer position;
 
-    public Car(String name, MoveStrategy moveStrategy) {
+    public Car(String name, MoveStrategy moveStrategy, Integer position) {
         super(moveStrategy);
         validateCarName(name);
         this.name = name;
+        this.position = position;
     }
 
-    public void move(Integer number) {
-        if (moveStrategy.isMovable(number)) {
+    public Car(String name, MoveStrategy moveStrategy) {
+        this(name, moveStrategy, 0);
+    }
+
+    public Car(String name, Integer position) {
+        this(name, new RandomMoveStrategy(), position);
+    }
+
+    public void move() {
+        if (moveStrategy.isMovable()) {
             this.position++;
         }
     }

@@ -7,24 +7,24 @@ public class ConsoleInput implements Input {
     private static final String QUESTION_FOR_TOTAL_TRY_COUNT = "시도할 회수는 몇 회 인가요?";
 
     @Override
-    public Race setRaceAndRetryIfInvalid() {
+    public Race setRaceAndRetryIfInvalid(MoveStrategy moveStrategy) {
         Race race = null;
         while (race == null) {
-            race = setRaceOrNullIfInvalid();
+            race = setRaceOrNullIfInvalid(moveStrategy);
         }
         return race;
     }
 
-    private Race setRaceOrNullIfInvalid() {
+    private Race setRaceOrNullIfInvalid(MoveStrategy moveStrategy) {
         try {
-            return this.setRace();
+            return this.setRace(moveStrategy);
         } catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
         }
         return null;
     }
 
-    private Race setRace() {
+    private Race setRace(MoveStrategy moveStrategy) {
         Scanner scanner = new Scanner(System.in);
 
         askTotalCarCount();
@@ -33,7 +33,7 @@ public class ConsoleInput implements Input {
         askTotalTryCount();
         Integer totalTryCount = scanner.nextInt();
 
-        return new Race(carNamesString, totalTryCount);
+        return new Race(carNamesString, totalTryCount, moveStrategy);
     }
 
     private static void askTotalTryCount() {
