@@ -1,5 +1,7 @@
 package racingcar.util;
 
+import racingcar.RandNum;
+
 import java.util.Random;
 
 public final class RandomGenerator {
@@ -7,11 +9,11 @@ public final class RandomGenerator {
     private RandomGenerator() {
     }
 
-    public static int generate(int min, int max) {
+    public static RandNum generate(int min, int max) {
         Random random = new Random();
 
         int range = max - min + 1;
 
-        return random.nextInt(range) + min;
+        return new RandNum(random.nextInt(range) + min);
     }
 }

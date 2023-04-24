@@ -28,7 +28,7 @@ class CarTest {
             Car car = Car.of(defaultName);
             int beforeLocation = car.location();
 
-            car.moveDependingOn(4);
+            car.moveDependingOn(new RandNum(4));
             int afterLocation = car.location();
 
             assertThat(afterLocation).isEqualTo((beforeLocation + 1));
@@ -39,7 +39,7 @@ class CarTest {
             Car car = Car.of(defaultName);
             int beforeLocation = car.location();
 
-            car.moveDependingOn(3);
+            car.moveDependingOn(new RandNum(3));
             int afterLocation = car.location();
 
             assertThat(afterLocation).isEqualTo(beforeLocation);

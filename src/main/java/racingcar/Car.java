@@ -10,7 +10,7 @@ public class Car {
         if (name.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5글자를 초과할 수 없습니다.");
         }
-        return new Car(name,0);
+        return new Car(name, 0);
     }
 
     private Car(String name, int location) {
@@ -26,8 +26,8 @@ public class Car {
         return this.name;
     }
 
-    public void moveDependingOn(int inputValue) {
-        if (inputValue >= MOVE_CRITERIA) {
+    public void moveDependingOn(RandNum randNum) {
+        if (randNum.isGreaterThan(MOVE_CRITERIA)) {
             location++;
         }
     }
