@@ -13,7 +13,7 @@ public class Car {
 
 	private final String name;
 
-	private final Distance distance;
+	private Distance distance;
 
 	private int power;
 
@@ -53,7 +53,7 @@ public class Car {
 			return;
 		}
 
-		distance.addDistance();
+		distance = Distance.from(distance.getAmount() + 1);
 	}
 
 	public void startEngine() {

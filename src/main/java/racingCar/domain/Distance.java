@@ -1,7 +1,7 @@
 package racingCar.domain;
 
 public class Distance {
-	private int amount;
+	private final int amount;
 
 	public int getAmount() {
 		return amount;
@@ -19,8 +19,17 @@ public class Distance {
 		return new Distance(0);
 	}
 
-	public void addDistance() {
-		this.amount++;
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Distance) {
+			Distance distance = (Distance) obj;
+			return this.amount == distance.amount;
+		}
+		return false;
 	}
 
+	@Override
+	public int hashCode() {
+		return amount;
+	}
 }
