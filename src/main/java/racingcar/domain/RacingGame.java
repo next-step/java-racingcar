@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import java.util.Arrays;
-import java.util.Random;
 
 public class RacingGame {
 
@@ -22,6 +21,6 @@ public class RacingGame {
     public String[] getWinners() {
         int maxDistance = Arrays.stream(cars).mapToInt(car -> car.getDistance()).max().orElse(0);
 
-        return Arrays.stream(cars).filter(car -> car.getDistance() == maxDistance).map(Car::getName).toArray(String[]::new);
+        return Arrays.stream(cars).filter(car -> car.equalsDistance(maxDistance)).map(Car::getName).toArray(String[]::new);
     }
 }
