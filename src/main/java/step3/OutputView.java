@@ -1,11 +1,11 @@
 package step3;
 
+import java.util.List;
+
 public class OutputView {
 
-    public static void printCarPosition(Car[] cars) {
-        for (Car car : cars) {
-            printPosition(car.getPosition());
-        }
+    public static void printCarPosition(List<Car> cars) {
+        cars.forEach(car -> printPosition(car.getPosition()));
         System.out.println();
     }
 
