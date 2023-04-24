@@ -1,7 +1,6 @@
 package racingcar;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ConsoleOutput implements Output {
     private static final String ONE_POSITION_MARK = "-";
@@ -22,7 +21,7 @@ public class ConsoleOutput implements Output {
     @Override
     public void printWinner(Race race) {
         List<Car> winnerCars = race.getFirstPlace();
-        System.out.println(carListToString(winnerCars) + ARE_WINNERS);
+        System.out.println(winnerCars.toString() + ARE_WINNERS);
     }
 
     @Override
@@ -33,11 +32,5 @@ public class ConsoleOutput implements Output {
     @Override
     public void printBlankLine() {
         System.out.println();
-    }
-
-    private String carListToString(List<Car> cars) {
-        return cars.stream()
-                .map(car -> car.toDto().getName())
-                .collect(Collectors.joining(", "));
     }
 }

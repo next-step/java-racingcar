@@ -43,6 +43,12 @@ public class Race {
                 .collect(Collectors.toList());
     }
 
+    public String toString() {
+        return this.cars.stream()
+                .map(car -> car.toDto().getName())
+                .collect(Collectors.joining(", "));
+    }
+
     private List<Car> createCars(String[] carNamesArray, MoveStrategy moveStrategy) {
         return Arrays.stream(carNamesArray)
                 .map(carName -> new Car(carName, moveStrategy))
