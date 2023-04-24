@@ -8,7 +8,7 @@ public class InputView {
 
     private static final Scanner SCANNER = new Scanner(System.in);
 
-    public InputView(String input_car_names, int input_try_count) {
+    private InputView(String input_car_names, int input_try_count) {
         this.car_names = input_car_names;
         this.try_count = input_try_count;
     }
