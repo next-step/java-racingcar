@@ -1,22 +1,22 @@
-package step3;
+package racingcar;
 
-import step3.model.Cars;
-import step3.view.ResultView;
+import racingcar.model.Cars;
+import racingcar.view.ResultView;
 
 public class RacingProcess {
-    private final int carCount;
+    private final String carName;
     private final int periodCount;
 
-    public RacingProcess(int carCount, int periodCount) {
-        countValidation(carCount);
+    public RacingProcess(String carNames, int periodCount) {
+        carNameValidation(carNames);
         countValidation(periodCount);
 
-        this.carCount = carCount;
+        this.carName = carNames;
         this.periodCount = periodCount;
     }
 
     public void racingStart() {
-        Cars cars = Cars.generateCars(carCount);
+        Cars cars = Cars.generateCars(carName);
         ResultView resultView = new ResultView();
 
         resultView.startUI();
@@ -29,11 +29,19 @@ public class RacingProcess {
             cars.checkForwardConditionAndGo();
             resultView.drawing(cars.getCars());
         }
+
+        resultView.winner(cars.getWinner());
     }
 
     private void countValidation(int count) {
         if (count < 0) {
             throw new RuntimeException("음수는 입력할 수 없습니다.");
+        }
+    }
+
+    private void carNameValidation(String carNames) {
+        if (carNames == null || "".equals(carNames)) {
+            throw new IllegalArgumentException("자동차 이름을 입력해 주세요");
         }
     }
 }
