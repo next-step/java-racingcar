@@ -3,6 +3,7 @@ package racing;
 import java.util.List;
 import racing.race.Car;
 import racing.race.Cars;
+import racing.race.Winners;
 import racing.view.InputView;
 import racing.view.OutputView;
 
@@ -17,9 +18,9 @@ public class Main {
     int tryNumber = InputView.getIntValue();
 
     OutputView.result();
-    List<Car> winner = cars.race(tryNumber);
+    List<Car> winners = cars.race(tryNumber);
 
-    OutputView.winner(winner);
+    OutputView.winner(new Winners().getWinnersName(winners));
   }
 
 }

@@ -27,8 +27,8 @@ public class Cars {
       OutputView.prinln();
     }
 
-    Winner winner = new Winner();
-    return winner.findWinner(findMaxDistance(), this);
+    Winners winners = new Winners();
+    return winners.findWinner(findMaxDistance(), this);
   }
 
   int findMaxDistance() {

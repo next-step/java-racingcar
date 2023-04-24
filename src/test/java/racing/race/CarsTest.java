@@ -34,14 +34,12 @@ class CarsTest {
     yeCar.move();
     yeCar.move();
     yeCar.move();
-
     Car juCar = new Car("jucar", new StopNumberStrategy());
     juCar.move();
-
     Cars cars = new Cars(Arrays.asList(yeCar, juCar));
 
-    Winner winner = new Winner();
-    List<Car> winners = winner.findWinner(3, cars);
+    List<Car> winners = new Winners().findWinner(3, cars);
+
     assertThat(winners).contains(yeCar);
   }
 
@@ -51,20 +49,17 @@ class CarsTest {
     yeCar.move();
     yeCar.move();
     yeCar.move();
-
     Car juCar = new Car("jucar", new MoveNumberStrategy());
     juCar.move();
     juCar.move();
     juCar.move();
-
     Car siCar = new Car("sicar", new StopNumberStrategy());
     siCar.move();
     siCar.move();
-
     Cars cars = new Cars(Arrays.asList(yeCar, juCar, siCar));
 
-    Winner winner = new Winner();
-    List<Car> winners = winner.findWinner(3, cars);
+    List<Car> winners = new Winners().findWinner(3, cars);
+
     assertThat(winners).contains(yeCar);
     assertThat(winners).contains(juCar);
   }
