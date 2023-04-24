@@ -1,8 +1,8 @@
 package racingcar;
 
 import racingcar.domain.Car;
+import racingcar.domain.CarGroup;
 import racingcar.domain.Racing;
-import racingcar.domain.RacingManager;
 import racingcar.util.InputView;
 import racingcar.util.OutputView;
 
@@ -16,10 +16,10 @@ public class RacingCarApplication {
         String playerGroup = InputView.receiveCarNumber(scanner);
         int cycleNumber = InputView.receiveTryNumber(scanner);
 
-        List<Car> cars = RacingManager.makeCars(playerGroup);
+        List<Car> cars = Racing.makeCars(playerGroup);
         Racing.runRacing(cars, cycleNumber);
 
-        List<String> winnerNames = RacingManager.extractWinnerNames(cars);
+        List<String> winnerNames = CarGroup.extractWinnerNames(cars);
         OutputView.printWinnerNames(winnerNames);
     }
 }

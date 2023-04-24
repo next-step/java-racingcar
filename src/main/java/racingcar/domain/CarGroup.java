@@ -1,21 +1,16 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RacingManager {
+public class CarGroup {
 
-    private static final String SPLIT_PLAYER_DELIMITER = ",";
+    private final List<Car> carGroup;
 
-    public static List<Car> makeCars(String playerGroup) {
-        return Arrays.stream(splitPlayers(playerGroup))
-                .map(Car::new)
-                .collect(Collectors.toList());
-    }
-
-    private static String[] splitPlayers(String playerGroup) {
-        return playerGroup.split(SPLIT_PLAYER_DELIMITER);
+    public CarGroup(List<Car> carGroup) {
+        this.carGroup = carGroup;
     }
 
     public static List<String> extractWinnerNames(List<Car> playerList) {
@@ -30,7 +25,7 @@ public class RacingManager {
     private static int recordDistanceMax(List<Car> playerList) {
         int distanceMax = 0;
         for (Car car : playerList) {
-            distanceMax = car.chooseLongerDistance(distanceMax); // todo
+            distanceMax = car.chooseLongerDistance(distanceMax);
         }
         return distanceMax;
     }

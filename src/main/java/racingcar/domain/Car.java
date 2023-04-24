@@ -20,7 +20,7 @@ public class Car {
 
     public void move(RandomValueGenerator randomValueGenerator) {
         if (judgeForth(randomValueGenerator.generate())) {
-            position.moveForth();   // todo
+            position.moveForth();
         }
     }
 
