@@ -1,20 +1,25 @@
 package racing;
 
+import java.util.List;
+import racing.race.Car;
 import racing.race.Cars;
 import racing.view.InputView;
+import racing.view.OutputView;
 
 public class Main {
 
   public static void main(String[] args) {
-    System.out.println("자동차 대수는 몇 대 인가요?");
-    int carNumber = InputView.getValue();
-    Cars cars = new Cars(carNumber);
+    OutputView.getCarsName();
+    String carsName = InputView.getStringValue();
+    Cars cars = new Cars(carsName);
 
-    System.out.println("시도할 회수는 몇 회 인가요?");
-    int tryNumber = InputView.getValue();
+    OutputView.getTryNumger();
+    int tryNumber = InputView.getIntValue();
 
-    System.out.println("\n실행 결과");
-    cars.race(cars.getGameCar(), tryNumber);
+    OutputView.result();
+    List<Car> winner = cars.race(tryNumber);
+
+    OutputView.winner(winner);
   }
 
 }
