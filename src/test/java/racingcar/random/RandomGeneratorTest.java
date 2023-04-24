@@ -1,9 +1,8 @@
-package racingcar.util;
+package racingcar.random;
 
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
-import racingcar.RandNum;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

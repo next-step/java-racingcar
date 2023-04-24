@@ -1,8 +1,7 @@
 package racingcar.view;
 
 import calculator.StringParser;
-import racingcar.Car;
-import racingcar.PositiveNumberException;
+import racingcar.car.Car;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;

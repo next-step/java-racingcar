@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.random;
 
 public class RandNum {
     private final int num;

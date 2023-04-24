@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.view;
 
 public class PositiveNumberException extends RuntimeException {
     public PositiveNumberException(String message) {

@@ -1,6 +1,4 @@
-package racingcar.util;
-
-import racingcar.RandNum;
+package racingcar.random;
 
 import java.util.Random;
 

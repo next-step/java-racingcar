@@ -1,6 +1,7 @@
-package racingcar;
+package racingcar.car;
 
-import racingcar.util.RandomGenerator;
+import racingcar.random.RandNum;
+import racingcar.random.RandomGenerator;
 
 public class Car {
     private final static int MIN_RANDOM_VALUE = 0;

@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.car.Car;
+
 import java.util.List;
 
 public interface WinnerDecisionStrategy {
