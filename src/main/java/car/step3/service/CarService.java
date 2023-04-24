@@ -1,6 +1,7 @@
 package car.step3.service;
 
 import car.step3.domain.Car;
+import car.step3.domain.Cars;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,5 +27,10 @@ public class CarService {
 
     public void goCar(Car car) {
         car.go(movingStrategy);
+    }
+
+    public List<Car> findWinners(List<Car> origin) {
+        Cars cars = new Cars(origin);
+        return cars.findWinners();
     }
 }
