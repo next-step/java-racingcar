@@ -6,14 +6,10 @@ import java.util.Random;
 public class CarRacing {
 
     public static void main(String[] args) {
-        String value = InputView.scanNumberOfCar();
+        String[] names = InputView.scanNameOfCar().split(",");
         int racingCount = InputView.scanNumberOfCount();
 
-        int carCount = Integer.parseInt(value);
-
-        int[] racingResult = new int[Integer.parseInt(value)];
-        Car[] carNumbers = carArray(carCount);
-
+        Car[] carNumbers = carArray(names.length);
         racing(racingCount, carNumbers);
 
     }
@@ -37,6 +33,7 @@ public class CarRacing {
         Car[] car = new Car[carCount];
         for (int i = 0; i < carCount; i++) {
             car[i] = new Car();
+
         }
         return car;
     }
@@ -50,11 +47,4 @@ public class CarRacing {
 
 }
 
-class Car {
-    int position = 0;
-
-    public Car() {
-    }
-
-}
 
