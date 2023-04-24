@@ -3,7 +3,7 @@ package car.step3;
 import car.step3.domain.Car;
 import car.step3.domain.Cars;
 import car.step3.domain.Position;
-import car.step3.service.HandleCar;
+import car.step3.service.CarService;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.*;
 
 class CarTest {
 
-    HandleCar handleCar = new HandleCar();
+    CarService carService = new CarService();
     @Test
     public void 차가_전진하는지_테스트() {
         Car car = new Car("lim");

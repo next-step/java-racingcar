@@ -1,12 +1,11 @@
 package car.step3.service;
 
 import car.step3.domain.Car;
-import car.step3.service.MovingStrategy;
-import car.step3.service.RandomMovingStrategy;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class HandleCar {
+public class CarService {
     MovingStrategy movingStrategy = new RandomMovingStrategy();
 
     public List<Car> iteratorCar(List<Car> cars) {
@@ -14,6 +13,15 @@ public class HandleCar {
             goCar(car);
         }
         return cars;
+    }
+
+    public List<Car> makeCar(String carNames) {
+        List<Car> carList = new ArrayList<Car>();
+        String[] cars =  carNames.split(",");
+        for (String car : cars) {
+            carList.add(new Car(car));
+        }
+        return carList;
     }
 
     public void goCar(Car car) {
