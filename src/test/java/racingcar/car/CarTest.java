@@ -63,4 +63,17 @@ class CarTest {
                     .isTrue();
         }
     }
+
+    @Nested
+    class max_메서드는 {
+        @Test
+        void 자신의_위치와_비교해_max_를_리턴한다() {
+            int carLocation = 3;
+
+            Car car = new Car(defaultName, carLocation);
+            int max = car.max(carLocation - 1);
+
+            assertThat(max).isEqualTo(carLocation);
+        }
+    }
 }

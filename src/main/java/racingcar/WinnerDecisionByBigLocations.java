@@ -10,21 +10,25 @@ public class WinnerDecisionByBigLocations implements WinnerDecisionStrategy {
 
     @Override
     public List<Car> decideWinners(List<Car> allParticipants) {
-        if (allParticipants.isEmpty()) return Collections.emptyList();
+        if (allParticipants.isEmpty()) {
+            return Collections.emptyList();
+        }
 
-        List<Car> sortedCars = sortByLocationInDescending(allParticipants);
+        final int maxLocation = maxLocation(allParticipants);
 
-        int maxLocation = sortedCars.get(0).location();
-
-        return sortedCars.stream()
+        return allParticipants.stream()
                 .filter(car -> car.isWinner(maxLocation))
                 .collect(Collectors.toList());
     }
 
-    private List<Car> sortByLocationInDescending(List<Car> cars) {
-        cars.sort((car1, car2) -> car2.location() - car1.location());
+    private int maxLocation(List<Car> allParticipants) {
+        int maxLocation = 0;
 
-        return cars;
+        for (Car car : allParticipants) {
+            maxLocation = car.max(maxLocation);
+        }
+
+        return maxLocation;
     }
 
 }

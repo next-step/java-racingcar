@@ -47,4 +47,8 @@ public class Car {
     public boolean isWinner(int maxLocation) {
         return this.location >= maxLocation;
     }
+
+    public int max(int criteria) {
+        return Math.max(this.location, criteria);
+    }
 }
