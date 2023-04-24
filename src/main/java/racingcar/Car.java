@@ -34,4 +34,12 @@ public class Car {
     public String getName() {
         return this.name;
     }
+
+    public boolean isWinner(int max) {
+        return distance == max;
+    }
+
+    public int max(int number) {
+        return Math.max(distance,number);
+    }
 }

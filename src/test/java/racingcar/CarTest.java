@@ -10,6 +10,22 @@ import static org.assertj.core.api.Assertions.*;
 
 public class CarTest {
 
+    @DisplayName("더 큰 값을 리턴")
+    @Test
+    void max() {
+        Car car = new Car("test");
+        car.move();
+        assertThat(car.max(4)).isEqualTo(4);
+    }
+
+    @DisplayName("승자인지 체크")
+    @Test
+    void winner() {
+        Car car = new Car("test");
+        car.move();
+        assertThat(car.isWinner(2)).isTrue();
+    }
+
 
     @DisplayName("4이상일 경우 거리 1 증가")
     @Test

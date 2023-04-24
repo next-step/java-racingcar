@@ -45,7 +45,7 @@ public class Racing {
     }
 
     private void move(Car car) {
-        if (car.moveable(racingRandom.getNumber())) {
+        if (car.moveable(racingRandom.getRandomNo())) {
             car.move();
         }
     }
@@ -55,23 +55,6 @@ public class Racing {
     }
 
     public List<Car> getWinner(){
-        List<Car> winners = new ArrayList<>();
-        int max = getHighDistance();
-        for (Car car : cars) {
-            if(car.getDistance() == max){
-                winners.add(car);
-            }
-        }
-        return winners;
-    }
-
-    private int getHighDistance() {
-        int max = 1;
-        for (Car car : cars) {
-            if (car.getDistance() > max) {
-                max = car.getDistance();
-            }
-        }
-        return max;
+        return Winner.getWinner(cars);
     }
 }

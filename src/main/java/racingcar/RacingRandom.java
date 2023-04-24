@@ -16,7 +16,7 @@ public class RacingRandom {
         return instance;
     }
 
-    public int getNumber() {
+    public int getRandomNo() {
         return random.nextInt(LIMIT);
     }
 }

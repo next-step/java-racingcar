@@ -10,7 +10,7 @@ public class RacingRandomTest {
     void random() {
         RacingRandom random = getInstance();
         for (int i = 0; i < 100; i++) {
-            Assertions.assertThat(isActual(random.getNumber())).isTrue();
+            Assertions.assertThat(isActual(random.getRandomNo())).isTrue();
         }
     }
 
