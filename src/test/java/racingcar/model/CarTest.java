@@ -1,11 +1,13 @@
 package racingcar.model;
 
+import calculator.StringCalculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarTest {
 
@@ -50,5 +52,15 @@ class CarTest {
         Car car = new Car();
         car.move(3);
         assertThat(car.getPosition()).isEqualTo(0);
+    }
+
+
+    @Test
+    @DisplayName("Car 이름이 5자 초과시 exception 발생")
+    void expected_exception_when_name_length_over_five(){
+        assertThatThrownBy(()->{
+            Car car = new Car("test11");
+        }).isInstanceOf(RuntimeException.class)
+                .hasMessage("자동차 이름은 5자를 초과할 수 없습니다.");
     }
 }
