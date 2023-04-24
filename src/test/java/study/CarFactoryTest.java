@@ -28,11 +28,11 @@ class CarFactoryTest {
             add("조아영");
             add("김정환");
         }};
+
         List<RacingCar> racingCarList = carFactory.createCar(nameList);
 
         assertThat(racingCarList.size()).isEqualTo(3);
-        assertThat(racingCarList.get(0)).isEqualTo(new RacingCar("최태훈"));
-        assertThat(racingCarList.get(1)).isEqualTo(new RacingCar("조아영"));
-        assertThat(racingCarList.get(2)).isEqualTo(new RacingCar("김정환"));
+        assertThat(racingCarList).contains(new RacingCar("최태훈"),new RacingCar("조아영"),new RacingCar("김정환"));
+
     }
 }

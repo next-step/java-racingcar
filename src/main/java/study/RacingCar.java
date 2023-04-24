@@ -3,29 +3,30 @@ package study;
 import java.util.Objects;
 
 public class RacingCar {
-    private int moveCount = 0;
-    private String name;
-
-    private static final int MAX_LENGTH_OF_NAME = 5;
-
-    public RacingCar(String name) {
-        if (name.length() >= MAX_LENGTH_OF_NAME) {
-            throw new IllegalArgumentException("사용자의 이름의 길이는 5이상으로 작성할수 없습니다.");
-        }
-        this.name = name;
-    }
+    private MoveCount moveCount;
+    private Name name;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RacingCar racingCar = (RacingCar) o;
-        return moveCount == racingCar.moveCount && name.equals(racingCar.name);
+        return Objects.equals(moveCount, racingCar.moveCount) && Objects.equals(name, racingCar.name);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(moveCount, name);
+    }
+
+    public RacingCar(String name) {
+        this.name = new Name(name);
+        this.moveCount = new MoveCount();
+    }
+
+    public RacingCar(String name, int moveCount) {
+        this.name = new Name(name);
+        this.moveCount = new MoveCount(moveCount);
     }
 
     public void moveOrStop(int randomNumber) {
@@ -35,19 +36,19 @@ public class RacingCar {
     }
 
     public String getName() {
-        return this.name;
+        return this.name.getName();
     }
 
     public int getMoveCount() {
-        return this.moveCount;
+        return this.moveCount.getCount();
     }
 
     public boolean isSameMoveCount(int maxCountValue) {
-        return maxCountValue == this.moveCount;
+        return moveCount.checkIsSame(maxCountValue);
     }
 
     private void moveForward() {
-        this.moveCount++;
+        this.moveCount.moveForward();
     }
 
 
