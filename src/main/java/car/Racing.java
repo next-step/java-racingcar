@@ -6,6 +6,7 @@ public class Racing {
     private static InputView inputView = new InputView();
     private static ResultView resultView = new ResultView();
 
+    private static MovementStrategy movementStrategy = new MovementStrategy();
     public static void main(String[] args) {
 
         System.out.println("경주할 자동차 이름을 입력하세요");
@@ -22,14 +23,14 @@ public class Racing {
 
     public static void carMovingState(List<Car> cars){
         for (Car car : cars){
-            car.move(car.randomMoveStrategy());
+            car.move(movementStrategy.randomMoveStrategy());
             resultView.resultView(car);
         }
     }
     public static List<Car> carAttendList(String[] names){
         ArrayList<Car> cars = new ArrayList<>();
         for (int i = 0; i < names.length; i++) {
-            cars.add(new Car(inputView.carNameCheck(names[i])));
+            cars.add(new Car(names[i]));
         }
         return cars;
     }

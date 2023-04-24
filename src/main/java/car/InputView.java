@@ -21,10 +21,4 @@ public class InputView {
         return value.split(",");
     }
 
-    public String carNameCheck(String name){
-         if(name.length() > 5){
-             throw new RuntimeException();
-         }
-         return name;
-    }
 }

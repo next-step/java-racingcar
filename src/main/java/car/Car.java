@@ -3,14 +3,13 @@ package car;
 import java.util.Random;
 
 public class Car {
-    Random random = new Random();
+
     private int position = 0;
     private String name;
 
-    public Car(){
-
-    }
+    private Car(){}
     public Car(String name){
+        carNameCheck(name);
         this.name = name;
     }
     public void move(int moveStrategy){
@@ -25,15 +24,11 @@ public class Car {
     public String getName(){
         return this.name;
     }
-    public int randomMoveStrategy(){
-        return random.nextInt(10);
-    }
 
-    public int stopMoveStrategy(){
-        return random.nextInt(4);
-    }
-
-    public int goMoveStrategy(){
-        return random.nextInt(6)+4;
+    public String carNameCheck(String name){
+        if(name.length() > 5){
+            throw new RuntimeException();
+        }
+        return name;
     }
 }

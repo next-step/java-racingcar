@@ -5,10 +5,10 @@ import java.util.List;
 
 public class RacingResult {
 
-    int max = 0;
-    List<Car> racingResult;
-    List<Car> winnerCars;
-    public RacingResult() {}
+    private int max = 0;
+    private List<Car> racingResult;
+    private List<Car> winnerCars;
+    private RacingResult() {}
 
     public RacingResult(List<Car> cars) {
         this.racingResult = cars;
