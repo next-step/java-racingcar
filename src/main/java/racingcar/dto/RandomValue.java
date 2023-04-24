@@ -1,8 +1,8 @@
-package racingcar;
+package racingcar.dto;
 
 import java.util.Random;
 
-public class RandomValue implements RandomValueGenerator{
+public class RandomValue implements RandomValueGenerator {
 
     private static final int RANDOM_NUMBER_UPPER_RANGE = 10;
 
@@ -11,7 +11,4 @@ public class RandomValue implements RandomValueGenerator{
         return new Random().nextInt(RANDOM_NUMBER_UPPER_RANGE);
     }
 
-//    public static int getValue() {
-//        return new Random().nextInt(10);
-//    }
 }
