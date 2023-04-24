@@ -1,42 +1,47 @@
 package study.racingcar.domain;
 
-import study.racingcar.util.RandomIntGenerator;
+import study.racingcar.factory.RandomIntFactory;
 
 public class Car {
 
-  private static final int DEFAULT_BOUND = 10;
   private static final int MINIMUM_MOVE_VALUE = 4;
 
-  private String name;
-  private int distance;
+  private Name name;
+  private Position position;
 
-  public Car(String name) {
-    this.name = name;
+  public Car(final String name) {
+    this(new Name(name), new Position());
   }
 
-  public void move() {
-    if (isMoving(getRandomInt())) {
-      distance++;
+  public Car(final String name, final int position) {
+    this(new Name(name), new Position(position));
+  }
+
+  public Car(final Name name, final Position position) {
+    this.name = name;
+    this.position = position;
+  }
+
+  public void move(RandomIntFactory randomIntFactory) {
+    RandomInt randomInt = randomIntFactory.createRandomInt();
+    if (randomInt.isGreaterThan(MINIMUM_MOVE_VALUE)) {
+      position = position.increase();
     }
   }
 
-  private int getRandomInt() {
-    return RandomIntGenerator.generate(DEFAULT_BOUND);
+  public boolean isSamePosition(Position otherPosition) {
+    return this.position.equals(otherPosition);
   }
 
-  private boolean isMoving(int moveValue) {
-    return moveValue >= MINIMUM_MOVE_VALUE;
+  public Position getMaxPosition(Position otherPosition) {
+    return this.position.getMaxPosition(otherPosition);
   }
 
   public String getName() {
-    return name;
+    return this.name.getName();
   }
 
-  public int getDistance() {
-    return distance;
-  }
-
-  public boolean isWinner(Car competitor) {
-    return this.getDistance() >= competitor.getDistance();
+  public int getPosition() {
+    return this.position.getPosition();
   }
 }

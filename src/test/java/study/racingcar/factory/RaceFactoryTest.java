@@ -15,7 +15,7 @@ public class RaceFactoryTest {
   public void create_race_nameOfCars() {
     String[] names = new String[]{"a", "b", "c"};
 
-    Race race = RaceFactory.createRace(names);
+    Race race = RaceFactory.createRace(CarFactory.createCars(names));
 
     List<Car> cars = race.getCars();
     assertThat(cars.size()).isEqualTo(names.length);

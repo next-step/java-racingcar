@@ -9,7 +9,7 @@ public class CarFactory {
   private CarFactory() {
   }
 
-  public static List<Car> createCars(String[] nameOfCars) {
+  public static List<Car> createCars(final String[] nameOfCars) {
     List<Car> cars = new ArrayList<>();
     for (int i = 0; i < nameOfCars.length; i++) {
       cars.add(createCar(nameOfCars[i]));
@@ -17,7 +17,7 @@ public class CarFactory {
     return cars;
   }
 
-  public static Car createCar(String name) {
+  private static Car createCar(String name) {
     return new Car(name);
   }
 }

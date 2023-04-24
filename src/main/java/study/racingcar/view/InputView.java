@@ -1,7 +1,6 @@
 package study.racingcar.view;
 
 import java.util.Scanner;
-import study.racingcar.error.InvalidCarNameException;
 
 public class InputView {
 
@@ -23,22 +22,7 @@ public class InputView {
   }
 
   private static String[] inputNames() {
-    String[] names = SCANNER.nextLine().split(DEFAULT_DELIMITER);
-
-    for (String name : names) {
-      validateCarName(name);
-    }
-    return names;
-  }
-
-  private static void validateCarName(String name) {
-    if (name.isBlank()) {
-      throw new InvalidCarNameException("이름을 1자 이상 입력해주세요.: ");
-    }
-
-    if (name.length() > 5) {
-      throw new InvalidCarNameException("이름은 5자를 초과할 수 없습니다.: " + name);
-    }
+    return SCANNER.nextLine().split(DEFAULT_DELIMITER);
   }
 
   public static int inputNumberOfRaces() {
