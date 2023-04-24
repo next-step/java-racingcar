@@ -8,12 +8,16 @@ public class Winner {
     private static String WINNER_NAMES_DELEMETER = ", ";
 
     public Winner(Cars allCars){
-        if(allCars.empty()){
-            throw new IllegalArgumentException("경주 중인 자동차가 없습니다.");
-        }
+        validateCars(allCars);
         this.winnerCars = new Cars();
         this.maxPosition = new CarPosition(0);
         findWinner(allCars);
+    }
+
+    private void validateCars(Cars allCars) {
+        if (allCars.empty()){
+            throw new IllegalArgumentException("경주 중인 자동차가 없습니다.");
+        }
     }
 
     private void findWinner(Cars allCars) {
