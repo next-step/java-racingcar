@@ -32,7 +32,7 @@ public class InputView {
         String answer = "";
         Scanner scanner = new Scanner(System.in);
         System.out.println(QUESTION_CAR_NAMES);
-        answer= scanner.nextLine();
+        answer = scanner.nextLine();
         this.names = seperator(answer);
         System.out.println(QUESTION_NUMBER_OF_RACES);
         this.track = scanner.nextInt();
