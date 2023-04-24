@@ -27,7 +27,7 @@ public class Racing {
     }
 
     public static void validation(int count) {
-        if (count < 0) {
+        if (count <= 0) {
             throw new IllegalArgumentException(String.format("양의 정수만 입력 가능합니다. (`%d`)", count));
         }
     }
@@ -49,5 +49,9 @@ public class Racing {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public int getCurrentMoveCount() {
+        return currentMoveCount;
     }
 }
