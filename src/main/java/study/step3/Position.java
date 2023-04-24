@@ -2,7 +2,7 @@ package study.step3;
 
 import java.util.Objects;
 
-public class Position implements Comparable<Position>{
+public class Position implements Comparable<Position> {
 
     private int position;
 
@@ -10,15 +10,15 @@ public class Position implements Comparable<Position>{
         this.position = position;
     }
 
-    public int getPosition() {
+    int getPosition() {
         return position;
     }
 
-    public void increase() {
+    void increase() {
         this.position++;
     }
 
-    public boolean isBigger(Position position) {
+    boolean isBigger(Position position) {
         return compareTo(position) > 0;
     }
 

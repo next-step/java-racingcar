@@ -15,6 +15,10 @@ public class Name {
         this.name = name;
     }
 
+    String getName() {
+        return this.name;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

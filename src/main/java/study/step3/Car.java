@@ -24,10 +24,6 @@ public class Car {
         return name;
     }
 
-    boolean isThisName(String name) {
-        return this.name.equals(new Name(name));
-    }
-
     Position move(int randomNum) {
         if (isExceedStandard(randomNum)) {
             position.increase();
@@ -44,11 +40,15 @@ public class Car {
         return num > STANDARD_VALUE_TO_MOVE;
     }
 
-    boolean isCarPosition(int position) {
-        return this.position.equals(new Position(position));
+    boolean samePosition(int position) {
+        return samePosition(new Position(position));
     }
 
-    boolean isCarPosition(Position position) {
+    boolean samePosition(Position position) {
         return this.position.equals(position);
+    }
+
+    public Car copy() {
+        return new Car(name.getName(), position.getPosition());
     }
 }

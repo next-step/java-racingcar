@@ -30,16 +30,6 @@ class CarRacingTest {
     @ParameterizedTest
     @CsvSource(value = {"A:12", "B:7", "C:18", "E:3"}, delimiter = ':')
     public void 자동차_점수_비교_A차량_우승(String carName, int position) throws Exception {
-        assertThat(new Car(carName, position).isCarPosition(position)).isTrue();
-    }
-
-    @Test
-    @DisplayName("0~9 사이 무작위 값을 반환한다.")
-    public void random_함수_test() throws Exception {
-        for (int i = 0; i < 10; i++) {
-            assertThat(carRacing.getRandomInt())
-                    .isGreaterThan(-1)
-                    .isLessThan(10);
-        }
+        assertThat(new Car(carName, position).samePosition(position)).isTrue();
     }
 }

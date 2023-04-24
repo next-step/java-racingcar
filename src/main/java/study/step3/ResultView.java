@@ -1,9 +1,12 @@
 package study.step3;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ResultView {
 
-    public void printStateBoard(Cars cars) {
-        for (Car car : cars.asList()) {
+    void printStateBoard(List<Car> cars) {
+        for (Car car : cars) {
             System.out.println(car.getName() + " : " + printCarPosition(car.getPosition()));
         }
         System.out.println();
@@ -13,8 +16,16 @@ public class ResultView {
         return "-".repeat(position.getPosition());
     }
 
-    public void printWinner(String winners) {
-        System.out.println(winners + "가 최종 우승했습니다.");
+    void printWinner(Cars cars) {
+        System.out.println(namesToString(cars.findWinnerNames()) + "가 최종 우승했습니다.");
+    }
+
+    private String namesToString(ArrayList<Name> names) {
+        String winnerNames = "";
+        for (Name name : names) {
+            winnerNames += name.getName() + ",";
+        }
+        return winnerNames.substring(0, winnerNames.length() - 1);
     }
 
 

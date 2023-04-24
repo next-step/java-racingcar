@@ -2,10 +2,13 @@ package study.step3;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Cars {
 
+    private static final int RANGE_FOR_RANDOM = 10;
     private final List<Car> cars;
+    private Random random = new Random();
 
     public Cars(List<Car> cars) {
         this.cars = cars;
@@ -19,15 +22,31 @@ public class Cars {
         }
     }
 
-    public List<Car> asList() {
-        return cars;
+    public void moveCars() {
+        for(Car car :cars) {
+            car.move(getRandomInt());
+        }
     }
 
-    String findWinners() {
-        Position carMaxPosition = findCarMaxPosition();
-        ArrayList<Name> names = findWinnerNames(cars, carMaxPosition);
+    int getRandomInt() throws IllegalArgumentException {
+        return random.nextInt(RANGE_FOR_RANDOM);
+    }
 
-        return namesToString(names);
+    List<Car> asList() {
+        return listDeepCopy(cars);
+    }
+
+    private List<Car> listDeepCopy(List<Car> cars) {
+        ArrayList<Car> carsDeepCopy = new ArrayList<>(cars.size());
+        for(Car car : cars) {
+            carsDeepCopy.add(car.copy());
+        }
+        return carsDeepCopy;
+    }
+
+    ArrayList<Name> findWinnerNames() {
+        Position carMaxPosition = findCarMaxPosition();
+        return findWinnerNames(carMaxPosition);
     }
 
     Position findCarMaxPosition() {
@@ -40,29 +59,15 @@ public class Cars {
         return maxPosition;
     }
 
-    ArrayList<Name> findWinnerNames(List<Car> cars, Position maxPosition) {
+    ArrayList<Name> findWinnerNames(Position maxPosition) {
         ArrayList<Name> winnerNames = new ArrayList<>();
 
         for (Car car : cars) {
-            if (!car.isCarPosition(maxPosition)) {
+            if (!car.samePosition(maxPosition)) {
                 continue;
             }
             winnerNames.add(car.getName());
         }
-        return winnerNames;
-    }
-
-    private static String namesToString(ArrayList<Name> names) {
-        String winnerNames = "";
-        for (int i = 0; i < names.size(); i++) {
-            winnerNames += names.get(i);
-
-            if (i == names.size() - 1) {
-                break;
-            }
-            winnerNames += ",";
-        }
-
         return winnerNames;
     }
 
