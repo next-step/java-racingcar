@@ -2,59 +2,44 @@ package race.domain;
 
 public class Car {
 
-    private final String name;
-    private int movingDistance;
-    private StringBuilder tracing;
+    private final Name name;
+    private final Position position;
+
+    private static final int BOUND_NUMBER = 3;
 
     public Car(String name) {
-        validateName(name);
-        this.name = name;
-        this.tracing = new StringBuilder().append(name).append(" : ");
+        this.name = new Name(name);
+        this.position = new Position(0);
     }
 
     public Car(String name, int movingDistance) {
+        this(new Name(name), new Position(movingDistance));
+    }
+
+    public Car(Name name, Position position) {
         this.name = name;
-        this.movingDistance = movingDistance;
+        this.position = position;
     }
 
     public void move(int input) {
         if (isOverThanThree(input)) {
-            this.movingDistance++;
-            this.tracing.append("-");
+            this.position.increase();
         }
-    }
-
-    public String getTracing() {
-        return String.valueOf(tracing);
     }
 
     public int getMovingDistance() {
-        return this.movingDistance;
+        return this.position.getDistance();
+    }
+
+    public boolean isWinner(int maxDistance) {
+        return this.position.isSame(maxDistance);
     }
 
     public String getName() {
-        return name;
-    }
-
-    private void validateName(String name) {
-        if (isBlank(name)) {
-            throw new IllegalArgumentException("이름은 공백일 수 없습니다.");
-        }
-
-        if (isOverThanFive(name)) {
-            throw new IllegalArgumentException("이름은 5글자를 초과할 수 없습니다.");
-        }
-    }
-
-    private boolean isOverThanFive(String name) {
-        return name.length() > 5;
-    }
-
-    private boolean isBlank(String text) {
-        return text == null || text.isEmpty();
+        return this.name.get();
     }
 
     private boolean isOverThanThree(int input) {
-        return input > 3;
+        return input > BOUND_NUMBER;
     }
 }

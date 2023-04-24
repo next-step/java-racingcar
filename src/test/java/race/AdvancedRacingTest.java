@@ -18,27 +18,16 @@ class AdvancedRacingTest {
         String[] strings = {"name"};
         int trial = 3;
 
-        Race race = new Race(strings, trial);
+        RaceRunner raceRunner = new RaceRunner(strings, trial);
 
-        assertThat(race.getTrial()).isEqualTo(trial);
+        assertThat(raceRunner.getTrial()).isEqualTo(trial);
     }
 
-    @DisplayName("car가 움직일때 이름이 같이 출력된다.")
-    @Test
-    void test1() throws Exception {
-        String name = "crong";
-        Car crong = new Car(name);
-
-        crong.move(4);
-
-        assertThat(crong.getTracing()).contains(name);
-    }
 
     @DisplayName("car가 움직인 거리를 알 수 있다.")
     @Test
     void test6() throws Exception {
         Car car = new Car("name");
-
         car.move(6);
 
         assertThat(car.getMovingDistance()).isEqualTo(1);
@@ -52,7 +41,7 @@ class AdvancedRacingTest {
         Winner winner = new Winner();
         List<String> strings = winner.get(cars);
 
-        assertThat(strings).contains("choizz", "beck");
+        assertThat(strings).contains("choiz", "beck");
     }
 
     @DisplayName("이름이 5글자 이상이면 예외를 던진다.")
@@ -81,7 +70,7 @@ class AdvancedRacingTest {
     @Test
     void test4() throws Exception {
         assertThatThrownBy(() -> {
-            new Race(new String[]{"name"}, 0);
+            new RaceRunner(new String[]{"name"}, 0);
         })
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("1 이상을 입력해 주세요");
@@ -91,7 +80,7 @@ class AdvancedRacingTest {
     @Test
     void test5() throws Exception {
         assertThatThrownBy(() -> {
-            new Race(new String[]{}, 1);
+            new RaceRunner(new String[]{}, 1);
         })
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("이름을 입력해주세요.");
@@ -99,7 +88,7 @@ class AdvancedRacingTest {
 
     private List<Car> getCarList() {
         Car crong = new Car("crong", 3);
-        Car choizz = new Car("choizz", 5);
+        Car choizz = new Car("choiz", 5);
         Car beck = new Car("beck", 5);
 
         List<Car> cars = new ArrayList<>();
