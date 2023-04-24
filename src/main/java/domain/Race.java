@@ -8,10 +8,9 @@ public class Race {
 
     public static List<RacingCar> racingCarList = new ArrayList<>();
 
-    public static void createCars(RacingCarNameRequest nameList) {
+    public static void createCars(RacingCarNameRequest names) {
 
-        for (String name : nameList.getNameList()) {
-            isNameValid(name);
+        for (String name : names.getNameList()) {
             RacingCar car = new RacingCar(name);
             racingCarList.add(car);
         }
@@ -42,25 +41,19 @@ public class Race {
         return new GameResultResponse(totalResult);
     }
 
-    private static void isNameValid(String name) {
-        if (!RacingCar.isNameValid(name)){
-            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
-        }
-    }
-
     public static List<String> getWinnerList() {
-        List<String> winnerList = new ArrayList<>();
-        int[] matchResult = getMatchResult();
+        List<String> winners = new ArrayList<>();
+        int[] matchResult = getDistancesOfRacingCars();
         int maxDistance = getMaxDistance(matchResult);
         for (RacingCar racingCar : racingCarList) {
-            checkWinner(winnerList, maxDistance, racingCar);
+            addCarToWinnersIfMaxDistance(winners, maxDistance, racingCar);
         }
-        return winnerList;
+        return winners;
     }
 
-    private static void checkWinner(List<String> winnerList, int maxDistance, RacingCar racingCar) {
+    private static void addCarToWinnersIfMaxDistance(List<String> winners, int maxDistance, RacingCar racingCar) {
         if (Objects.equals(maxDistance, racingCar.getDistance())) {
-            winnerList.add(racingCar.getName());
+            winners.add(racingCar.getName());
         }
     }
 
@@ -75,11 +68,11 @@ public class Race {
         return maxDistance;
     }
 
-    private static int[] getMatchResult() {
-        int[] matchResult = new int[racingCarList.size()];
+    private static int[] getDistancesOfRacingCars() {
+        int[] distances = new int[racingCarList.size()];
         for (int i = 0; i < racingCarList.size(); i++) {
-            matchResult[i] = racingCarList.get(i).getDistance();
+            distances[i] = racingCarList.get(i).getDistance();
         }
-        return matchResult;
+        return distances;
     }
 }

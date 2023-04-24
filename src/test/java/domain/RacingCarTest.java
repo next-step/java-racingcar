@@ -19,15 +19,16 @@ public class RacingCarTest {
     @Test
     public void shouldGoOneStep() throws Exception {
         //when
-        racingCar.moveOrStop(()-> true);
+        racingCar.moveOrStop(() -> true);
         //then
         assertThat(racingCar.getDistance()).isEqualTo(1);
     }
+
     @Test
     public void shouldStop() throws Exception {
 
         //when
-        racingCar.moveOrStop(()->false);
+        racingCar.moveOrStop(() -> false);
         //then
         assertThat(racingCar.getDistance()).isEqualTo(0);
     }
@@ -42,7 +43,6 @@ public class RacingCarTest {
         //then
         assertThat(car.getName()).isEqualTo(name);
     }
-
 
 }
 

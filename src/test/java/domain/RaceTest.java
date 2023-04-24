@@ -37,5 +37,4 @@ public class RaceTest {
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
-
 }

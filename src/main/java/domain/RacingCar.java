@@ -1,7 +1,7 @@
 package domain;
 
 public class RacingCar {
-    private static int nameSizeLimit = 5;
+    private static int NAME_SIZE_LIMIT = 5;
     private String name;
     private int distance;
 
@@ -9,8 +9,16 @@ public class RacingCar {
 
     public RacingCar() {
     }
+
     public RacingCar(String name) {
+        isNameValid(name);
         this.name = name;
+    }
+
+    private void isNameValid(String name) {
+        if (name.length() > NAME_SIZE_LIMIT) {
+            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+        }
     }
 
     public void moveOrStop(MovingStrategy movingStrategy) {
@@ -21,13 +29,6 @@ public class RacingCar {
 
     public int getDistance() {
         return distance;
-    }
-
-    public static boolean isNameValid(String name) {
-        if (name.length() > nameSizeLimit) {
-            return false;
-        }
-        return true;
     }
 
     public String getName() {
