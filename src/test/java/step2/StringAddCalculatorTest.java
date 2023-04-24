@@ -1,6 +1,8 @@
 package step2;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -21,10 +23,11 @@ public class StringAddCalculatorTest {
         assertThat(result).isEqualTo(1);
     }
 
-    @Test
-    public void splitAndSum_쉼표구분자() throws Exception {
-        int result = StringAddCalculator.splitAndSum("1,2");
-        assertThat(result).isEqualTo(3);
+    @ParameterizedTest
+    @CsvSource(value = {"1,2:3", "2,4:6", "3,5:8"}, delimiter = ':')
+    public void splitAndSum_쉼표구분자(String input, int expected) throws Exception {
+        int result = StringAddCalculator.splitAndSum(input);
+        assertThat(result).isEqualTo(expected);
     }
 
     @Test
