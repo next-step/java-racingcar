@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import racing.domain.Car;
+import racing.domain.Name;
 import racing.domain.RoundResult;
 
 public class RacingPrinter {
@@ -34,7 +35,7 @@ public class RacingPrinter {
     }
 
     public static void announceWinner(List<Car> winners) {
-        List<String> winnerNames = winners.stream().map(Car::getName).collect(Collectors.toList());
+        List<Name> winnerNames = winners.stream().map(Car::getName).collect(Collectors.toList());
         System.out.println(winnerNames.toString() + "가 최종 우승했습니다.");
     }
 

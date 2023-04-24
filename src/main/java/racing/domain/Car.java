@@ -2,41 +2,32 @@ package racing.domain;
 
 public class Car {
 
-    public static final int MAX_LENGTH = 5;
-    public static final int ZERO = 0;
-    public static final int DEFAULT_POSITION = 1;
+    public static final int DEFAULT_POSITION = 0;
     private int position = DEFAULT_POSITION;
-    private final String name;
+    private final Name name;
 
     public Car(String name) {
-        this.name = substringMaxLength(name);
+        this(name,DEFAULT_POSITION);
     }
 
     public Car(String name, int initPosition) {
         this.position = initPosition;
-        this.name = substringMaxLength(name);
+        this.name = new Name(name);
     }
 
     public int getPosition() {
         return position;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    private String substringMaxLength(String name) {
-        if (name.length() > MAX_LENGTH) {
-            return name.substring(ZERO, MAX_LENGTH);
-        }
+    public Name getName() {
         return name;
     }
 
     public Car race(int randomNumber) {
         if (randomNumber > 3) {
-            return new Car(name, position++);
+            return new Car(name.toString(), position++);
         }
-        return new Car(name, position);
+        return new Car(name.toString(), position);
     }
 
     public int max(int maxPosition) {
