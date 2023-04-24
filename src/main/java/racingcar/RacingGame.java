@@ -1,47 +1,51 @@
 package racingcar;
 
 import racingcar.car.Car;
-import racingcar.view.ConsoleView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    private final ConsoleView view;
+    private final int numbOfTrial;
+    private final List<String> carNames;
     private final WinnerDecisionStrategy winnerDecisionStrategy;
     private final List<Car> cars;
     private List<Car> winners;
 
-    public RacingGame(ConsoleView view,
+    public RacingGame(int numbOfTrial,
+                      List<String> carNames,
                       WinnerDecisionStrategy winnerDecisionStrategy) {
-
-        this.view = view;
+        this.numbOfTrial = numbOfTrial;
+        this.carNames = carNames;
         this.winnerDecisionStrategy = winnerDecisionStrategy;
         this.winners = new ArrayList<>();
         this.cars = new ArrayList<>();
     }
 
     public void run() {
-        List<String> names = view.namesOfCar();
+        addCarsOf();
 
-        addCarsOf(names);
-
-        runWithCarsNTimes(view.numbOfTrial());
+        runWithCarsNTimes();
 
         pickWinners();
-
-        view.printWinners(winners);
     }
 
-    private void addCarsOf(List<String> names) {
-        for (String name : names) {
+    public List<Car> allCars() {
+        return this.cars;
+    }
+    public List<Car> winners() {
+        return this.winners;
+    }
+
+    private void addCarsOf() {
+        for (String name : this.carNames) {
             cars.add(new Car(name));
         }
     }
 
-    private void runWithCarsNTimes(int trials) {
-        for (int i = 0; i < trials; i++) {
-            moveAndPrint();
+    private void runWithCarsNTimes() {
+        for (int i = 0; i < this.numbOfTrial; i++) {
+            moveCar();
         }
     }
 
@@ -49,11 +53,9 @@ public class RacingGame {
         this.winners = winnerDecisionStrategy.decideWinners(this.cars);
     }
 
-    private void moveAndPrint() {
+    private void moveCar() {
         for (Car car : this.cars) {
             car.move();
         }
-
-        view.printCarsLocation(this.cars);
     }
 }
