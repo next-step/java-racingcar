@@ -1,6 +1,6 @@
-package racingcar;
+package racingcar.domain;
 
-import racingcar.util.RandomGenerator;
+import racingcar.utils.RandomGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +18,6 @@ public class RandomNumber {
     }
 
     private int generateNumber() {
-        return new RandomGenerator().getRandomNumber();
+        return RandomGenerator.randomNumber();
     }
 }

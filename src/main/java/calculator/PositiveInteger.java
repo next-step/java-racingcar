@@ -1,8 +1,8 @@
 package calculator;
 
 public class PositiveInteger {
-    public static final String NUMBER_CHECK_REGEX = "[-+]?\\d*\\.?\\d+";
-    public static final int MIN = 0;
+    private static final String NUMBER_CHECK_REGEX = "[-+]?\\d*\\.?\\d+";
+    private static final int MIN = 0;
     private final int number;
 
     public PositiveInteger(String input) {
