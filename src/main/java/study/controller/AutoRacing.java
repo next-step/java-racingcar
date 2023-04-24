@@ -1,4 +1,11 @@
-package study;
+package study.controller;
+
+import study.utils.CarFactory;
+import study.domain.AutoRacingParticipant;
+import study.domain.GameInfo;
+import study.domain.RacingCar;
+import study.view.InputView;
+import study.view.ResultView;
 
 import java.util.List;
 
@@ -18,7 +25,12 @@ public class AutoRacing {
 
         autoRacingParticipant.participateGame(racingCarList);
 
-        autoRacingParticipant.doGame(gameInfo.getNumberOfGame());
+        for (int i = 0; i < gameInfo.getNumberOfGame(); i++) {
+            ResultView.printResultEachRound(autoRacingParticipant.gameEachRound());
+        }
+
+        ResultView.printName(autoRacingParticipant.getAllMaxMoveCountName());
+
     }
 
     public static void main(String[] args) {

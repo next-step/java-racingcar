@@ -1,7 +1,8 @@
-package study;
+package study.view;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import study.domain.GameInfo;
 
 import java.io.ByteArrayInputStream;
 

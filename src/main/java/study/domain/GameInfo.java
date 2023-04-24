@@ -1,10 +1,10 @@
-package study;
+package study.domain;
 
 import java.util.List;
 
 public class GameInfo {
-    private List<String> nameList;
-    private int numberOfGame;
+    private final List<String> nameList;
+    private final int numberOfGame;
 
     public GameInfo(List<String> nameList, int numberOfGame) {
         this.nameList = nameList;
