@@ -3,6 +3,7 @@ package car.step3.service;
 import java.util.Random;
 
 public class RandomMovingStrategy implements MovingStrategy{
+    Random random = new Random();
     private int MAX_BOUNCE = 10;
     private int FORWARD_NUMBER = 4;
     @Override
@@ -11,7 +12,6 @@ public class RandomMovingStrategy implements MovingStrategy{
     }
 
     protected int getRandomNumber() {
-        Random random = new Random();
         return random.nextInt(MAX_BOUNCE);
     }
 }
