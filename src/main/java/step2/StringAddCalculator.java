@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
-    static final String customDelimiterPattern = "\"//(.)\\n(.*)";
+    static final String customDelimiterPattern = "//(.)\n(.*)";
     static final String defaultDelimiter = ",|:";
 
     static public int splitAndSum(String text) {
