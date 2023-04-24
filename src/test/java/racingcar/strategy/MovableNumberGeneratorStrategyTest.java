@@ -4,7 +4,6 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
-import racingcar.domain.Point;
 
 @DisplayName("전진 전략 테스트")
 class MovableNumberGeneratorStrategyTest {
@@ -14,8 +13,8 @@ class MovableNumberGeneratorStrategyTest {
     void 전진하는_조건_테스트() {
         Car car = new Car("korea");
 
-        Point point = car.move(new MovableNumberGeneratorStrategy());
-        int actual = point.getPoint();
+        car.move(new MovableNumberGeneratorStrategy());
+        int actual = car.findCarPoint();
 
         Assertions.assertThat(actual).isEqualTo(1);
     }

@@ -9,7 +9,7 @@ public class ScoreTest {
 
     @Test
     void Score_객체를_자동차_객체로_생성하면_자동차의_이름과_포인트를_확인할수있다 () {
-        Score score = new Score(new Car(1, "korea"));
+        Score score = new Score(1, "korea");
 
         Assertions.assertThat(score.findPoint()).isEqualTo(1);
         Assertions.assertThat(score.findCarName()).isEqualTo("korea");

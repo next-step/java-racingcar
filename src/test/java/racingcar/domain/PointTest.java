@@ -13,8 +13,8 @@ public class PointTest {
     @CsvSource(value = {"0:1", "1:2", "2:3", "7:8"}, delimiter = ':')
     void 포인트_증가_요청을_하면_포인트가_1_늘어난다(int number, int expected) {
         Point point = new Point(number);
-        Point plusPoint = point.increasePoint();
-        int actual = plusPoint.getPoint();
+        point.increasePoint();
+        int actual = point.getPoint();
         Assertions.assertThat(actual).isEqualTo(expected);
     }
 }
