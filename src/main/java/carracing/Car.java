@@ -6,9 +6,6 @@ public class Car {
     private final String name;
     private int position;
 
-    public Car() {
-        this.name = "temp";
-    }
 
     public Car(final String name) {
         this(name, 0);
@@ -39,12 +36,5 @@ public class Car {
 
     public boolean isWinner(int maxPosition) {
         return maxPosition == this.position;
-    }
-
-    public int max(int compareNumber) {
-       if (this.position > compareNumber) {
-           return this.position;
-       }
-       return compareNumber;
     }
 }

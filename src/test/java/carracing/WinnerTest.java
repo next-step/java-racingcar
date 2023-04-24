@@ -27,8 +27,8 @@ class WinnerTest {
     @DisplayName("위치가 가장 큰 우승자를 반환한다.")
     @Test
     void findWinner() {
-        List<Car> winner = Winner.findWinner(cars);
-        List<String> result = winner.stream()
+        Winner winners = new Winner(cars);
+        List<String> result = winners.getWinners().stream()
                 .map(Car::getName)
                 .collect(Collectors.toList());
         assertThat(result).contains("pobi");

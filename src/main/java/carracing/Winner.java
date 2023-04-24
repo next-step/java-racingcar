@@ -4,26 +4,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Winner {
-    public static List<Car> findWinner(List<Car> cars) {
-        return findWinner(cars, getMaxPosition(cars));
+    private final List<Car> winners = new ArrayList<>();
+
+    public Winner(List<Car> cars) {
+        this(cars, getMaxPosition(cars));
     }
 
-    private static List<Car> findWinner(List<Car> cars, int maxPosition) {
-        List<Car> winners = new ArrayList<>();
+    public Winner(List<Car> cars,int maxPosition) {
         for (Car car : cars) {
-            if (car.isWinner(maxPosition)){
-                winners.add(car);
-            }
+            getWinner(car, maxPosition);
         }
-        return winners;
+    }
+
+    private void getWinner(Car car, int maxPosition) {
+        if (car.getPosition() == maxPosition) {
+            winners.add(car);
+        }
     }
 
     private static int getMaxPosition(List<Car> cars) {
         int maxPosition = 0;
         for (Car car : cars) {
-            maxPosition = car.max(maxPosition);
+            maxPosition = max(car, maxPosition);
         }
         return maxPosition;
     }
 
+    private static int max(Car car, int compareNumber) {
+        if (car.getPosition() > compareNumber) {
+            return car.getPosition();
+        }
+        return compareNumber;
+    }
+
+    public List<Car> getWinners() {
+        return winners;
+    }
 }
