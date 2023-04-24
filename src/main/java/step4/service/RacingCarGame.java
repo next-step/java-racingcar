@@ -1,6 +1,5 @@
 package step4.service;
 
-import step3.util.RandomValue;
 import step4.domain.Car;
 import step4.domain.Name;
 import step4.domain.Position;
@@ -25,7 +24,7 @@ public class RacingCarGame {
         List<Car> cars = new ArrayList<>();
 
         for (String name : names) {
-            final Car car = new Car(new Position(), new Name(name));
+            final Car car = new Car(Position.create(), Name.from(name));
             cars.add(car);
         }
 
@@ -38,9 +37,8 @@ public class RacingCarGame {
 
     public void playing() {
         for (Car car : cars) {
-            final int random = RandomValue.nextInt(RANDOM_BOUND);
-
-            car.forward(random);
+            final ForwardStrategy strategy = new RacingCarForward(new RandomNumberGenerator());
+            car.forward(strategy);
         }
     }
 

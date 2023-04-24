@@ -9,8 +9,12 @@ public class Position {
 
     private int distance;
 
-    public Position() {
+    private Position() {
         this.distance = 0;
+    }
+
+    public static Position create() {
+        return new Position();
     }
 
     public int getDistance() {
@@ -31,10 +35,8 @@ public class Position {
         return Objects.hash(distance);
     }
 
-    public void forward(int random) {
-        if (random >= CAR_FORWARD_MINIMUM_NUMBER) {
-            this.distance++;
-        }
+    public void forward() {
+        this.distance++;
     }
 
     public static Position winnerPosition(List<Position> positions) {

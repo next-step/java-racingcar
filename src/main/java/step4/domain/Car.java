@@ -1,5 +1,7 @@
 package step4.domain;
 
+import step4.service.ForwardStrategy;
+
 public class Car {
 
     private Position position;
@@ -10,8 +12,10 @@ public class Car {
         this.name = name;
     }
 
-    public void forward(int random) {
-        position.forward(random);
+    public void forward(ForwardStrategy forwardStrategy) {
+        if (forwardStrategy.isMovable()) {
+            position.forward();
+        }
     }
 
     public Position toPosition() {
