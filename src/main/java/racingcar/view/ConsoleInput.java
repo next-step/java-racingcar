@@ -3,7 +3,10 @@ package racingcar.view;
 import racingcar.domain.MoveStrategy;
 import racingcar.domain.Race;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class ConsoleInput implements Input {
     private static final String QUESTION_FOR_CAR_NAMES = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
@@ -36,7 +39,11 @@ public class ConsoleInput implements Input {
         askTotalTryCount();
         Integer totalTryCount = scanner.nextInt();
 
-        return new Race(carNamesString, totalTryCount, moveStrategy);
+        return new Race(split(carNamesString), totalTryCount, moveStrategy);
+    }
+
+    private static List<String> split(String carNamesString) {
+        return Arrays.stream(carNamesString.split(",")).collect(Collectors.toList());
     }
 
     private static void askTotalTryCount() {

@@ -15,7 +15,7 @@ public class RaceTest {
     @Test
     @DisplayName("경주를 생성하면 입력받은 대수만큼의 차가 초기 위치에 생성된다")
     public void race_Initial() {
-        Race race = new Race("pobi,crong,honux", 2, new AlwaysMoveStrategy());
+        Race race = new Race(List.of("pobi", "crong", "honux"), 2, new AlwaysMoveStrategy());
         assertThat(race.toCarDtoList().get(0).getPosition()).isZero();
         assertThat(race.toCarDtoList().get(1).getPosition()).isZero();
         assertThat(race.toCarDtoList().get(2).getPosition()).isZero();
@@ -24,7 +24,7 @@ public class RaceTest {
     @Test
     @DisplayName("경주를 1회 진행하면 조건에 따라 차들이 이동한다")
     public void race_OneTry() {
-        Race race = new Race("pobi,crong,honux", 2, new AlwaysMoveStrategy());
+        Race race = new Race(List.of("pobi", "crong", "honux"), 2, new AlwaysMoveStrategy());
         race.continueRace();
         assertThat(race.toCarDtoList().get(0).getPosition()).isOne();
         assertThat(race.toCarDtoList().get(1).getPosition()).isOne();
@@ -34,7 +34,7 @@ public class RaceTest {
     @Test
     @DisplayName("현재까지 시도 회수가 입력받은 총 시도 회수보다 작으면 경주를 마치지 않는다.")
     public void race_NotFinished() {
-        Race race = new Race("pobi,crong,honux", 2, new AlwaysMoveStrategy());
+        Race race = new Race(List.of("pobi", "crong", "honux"), 2, new AlwaysMoveStrategy());
         race.continueRace();
         assertThat(race.isNotFinished()).isTrue();
     }
@@ -42,7 +42,7 @@ public class RaceTest {
     @Test
     @DisplayName("현재까지 시도 회수가 입력받은 총 시도 회수와 같으면 경주를 마친다.")
     public void race_Finished() {
-        Race race = new Race("pobi,crong,honux", 2, new AlwaysMoveStrategy());
+        Race race = new Race(List.of("pobi", "crong", "honux"), 2, new AlwaysMoveStrategy());
         race.continueRace();
         race.continueRace();
         assertThat(race.isNotFinished()).isFalse();

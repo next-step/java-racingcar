@@ -1,10 +1,8 @@
 package racingcar.domain;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Race {
     private final Integer totalTryCount;
@@ -16,8 +14,8 @@ public class Race {
         this.totalTryCount = totalTryCount;
     }
 
-    public Race(String carNamesString, Integer totalTryCount, MoveStrategy moveStrategy) {
-        this.cars = createCars(carNamesString.split(","), moveStrategy);
+    public Race(List<String> carNames, Integer totalTryCount, MoveStrategy moveStrategy) {
+        this.cars = createCars(carNames, moveStrategy);
         this.totalTryCount = totalTryCount;
     }
 
@@ -49,15 +47,14 @@ public class Race {
                 .collect(Collectors.joining(", "));
     }
 
-    private List<Car> createCars(String[] carNamesArray, MoveStrategy moveStrategy) {
-        return Arrays.stream(carNamesArray)
+    private List<Car> createCars(List<String> carNamesArray, MoveStrategy moveStrategy) {
+        return carNamesArray.stream()
                 .map(carName -> new Car(carName, moveStrategy))
                 .collect(Collectors.toList());
     }
 
     private void moveCars() {
-        IntStream.range(0, this.cars.size())
-                .forEach(i -> this.cars.get(i).move());
+        cars.forEach(Car::move);
     }
 
     private Integer getMaxPosition() {
