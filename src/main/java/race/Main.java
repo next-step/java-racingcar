@@ -5,15 +5,16 @@ import race.view.ResultView;
 
 public class Main {
     public static void main(String[] args) {
-        int numOfCars = InputView.getCarNums();
+        String carNames = InputView.getCarNames();
         int laps = InputView.getLaps();
-        RandomMoveStrategy randomMoveStrategy = new RandomMoveStrategy(4, 10);
-        Cars cars = new Cars(numOfCars, randomMoveStrategy);
+        RandomMoveStrategy randomMoveStrategy = new RandomMoveStrategy();
+        Cars cars = CarsFactory.makeCars(carNames, randomMoveStrategy);
         Race race = new Race(cars);
 
         ResultView.showResultComment();
         for (int i = 0; i < laps; i++) {
-            ResultView.showPositions(race.startLap());
+            ResultView.showCarViewList(race.startLap());
         }
+        ResultView.showWinners(race.getWinners());
     }
 }

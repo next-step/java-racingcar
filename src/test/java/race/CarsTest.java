@@ -1,10 +1,12 @@
 package race;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -14,14 +16,51 @@ public class CarsTest {
     @MethodSource("carsTestStubs")
     void 자동차들의_이동전략에_따라_움직이면_위치를_알_수_있다(MoveStrategy moveStrategy, List<Integer> positions) {
         //GIVEN
-        Cars cars = new Cars(3, moveStrategy);
+        List<CarName> carNameList = List.of(new CarName("a"), new CarName("b"), new CarName("c"));
+        Cars cars = new Cars(carNameList, moveStrategy);
 
         //WHEN
         cars.moveAll();
         cars.moveAll();
 
         //THEN
-        assertThat(cars.getPositions()).isEqualTo(positions);
+        assertThat(cars.getCarList()
+                .stream()
+                .map(Car::getPosition)
+                .collect(Collectors.toList())
+        ).isEqualTo(positions);
+    }
+
+    @Test
+    void 자동차들을_list형태로_제공할_수_있다() {
+        List<CarName> carNameList = List.of(new CarName("a"), new CarName("b"), new CarName("c"));
+        Cars cars = new Cars(carNameList, new TestHelper.AlwaysMoveStrategy());
+        assertThat(cars.getCarList()).isInstanceOf(List.class);
+        assertThat(cars.getCarList()
+                .stream()
+                .map(it -> it.getCarName().getCarName())
+                .toArray()
+        ).containsExactly("a", "b", "c");
+    }
+
+    @Test
+    void 가장_멀리간_자동차의_위치를_알_수_있다() {
+        List<CarName> carNameList = List.of(new CarName("a"), new CarName("b"), new CarName("c"));
+        Cars cars = new Cars(carNameList, new TestHelper.AlwaysMoveStrategy());
+        cars.moveAll();
+        assertThat(cars.getFarthestPosition()).isEqualTo(1);
+    }
+
+    @Test
+    void 가장_멀리간_자동차의_목록을_알_수_있다() {
+        List<CarName> carNameList = List.of(new CarName("a"), new CarName("b"), new CarName("c"));
+        Cars cars = new Cars(carNameList, new TestHelper.AlwaysMoveStrategy());
+        cars.moveAll();
+        assertThat(cars.getFarthestCars()
+                .stream()
+                .map(Car::getCarName)
+                .toArray()
+        ).containsExactly("a", "b", "c");
     }
 
     private static Stream<Arguments> carsTestStubs() {
