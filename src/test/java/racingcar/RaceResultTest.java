@@ -7,19 +7,17 @@ import java.util.*;
 
 public class RaceResultTest {
 
-    @DisplayName("경기결과 저장 테스트")
+    @DisplayName("경기기록 수 체크")
     @Test
-    void name() {
-        Car test1 = new Car("test1");
-        test1.move();
-        Car test2 = new Car("test2");
-        List<Car> carList = new ArrayList<>();
-        carList.add(test1);
-        carList.add(test2);
+    void 경기횟수_체크() {
+        Cars cars = new Cars();
+        RaceResult raceResult = new RaceResult();
+        raceResult.record(cars);
+        raceResult.record(cars);
+        raceResult.record(cars);
 
-        RaceRecord raceResult = new RaceRecord(carList);
-        Map<String,Integer> result = raceResult.getResult();
-        Assertions.assertThat(result.get("test1")).isEqualTo(2);
-        Assertions.assertThat(result.get("test2")).isEqualTo(1);
+        Assertions.assertThat(raceResult.getRaceRecord().size()).isEqualTo(3);
+
+
     }
 }

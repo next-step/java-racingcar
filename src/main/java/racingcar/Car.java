@@ -27,11 +27,19 @@ public class Car {
         return distance;
     }
 
-    public boolean moveable(int value) {
-        return value >= MOVE_LIMIT;
+    public boolean moveable(RandomNo value) {
+        return value.isEqualOrOver(MOVE_LIMIT);
     }
 
     public String getName() {
         return this.name;
+    }
+
+    public boolean isWinner(int max) {
+        return distance == max;
+    }
+
+    public int max(int number) {
+        return Math.max(distance,number);
     }
 }
