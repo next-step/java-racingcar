@@ -7,8 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    private final int numbOfTrial;
-    private final List<String> carNames;
+    private final Trial numbOfTrial;
     private final WinnerDecisionStrategy winnerDecisionStrategy;
     private final List<Car> cars;
     private Winners winners;
@@ -16,38 +15,36 @@ public class RacingGame {
     public RacingGame(int numbOfTrial,
                       List<String> carNames,
                       WinnerDecisionStrategy winnerDecisionStrategy) {
-        this.numbOfTrial = numbOfTrial;
-        this.carNames = carNames;
+
+        this.numbOfTrial = new Trial(numbOfTrial);
+        this.cars = makeRacingCars(carNames);
         this.winnerDecisionStrategy = winnerDecisionStrategy;
         this.winners = new Winners(new ArrayList<>());
-        this.cars = new ArrayList<>();
     }
 
-    public List<Car> allCars() {
-        return this.cars;
-    }
+    private List<Car> makeRacingCars(List<String> names) {
+        List<Car> cars = new ArrayList<>();
 
-    public Winners winners() {
-        return this.winners;
-    }
-
-    public void run() {
-        addCarsOf();
-
-        runWithCarsNTimes();
-
-        pickWinners();
-    }
-
-    private void addCarsOf() {
-        for (String name : this.carNames) {
+        for (String name : names) {
             cars.add(new Car(name));
         }
+
+        return cars;
     }
 
-    private void runWithCarsNTimes() {
-        for (int i = 0; i < this.numbOfTrial; i++) {
-            moveCar();
+    public List<Car> runOnce() {
+        if (!numbOfTrial.hasChance()) {
+            throw new GameEndedException("이미 레이싱이 끝났습니다.");
+        }
+        numbOfTrial.decrease();
+        moveCars();
+
+        return null;
+    }
+
+    private void moveCars() {
+        for (Car car : this.cars) {
+            car.move();
         }
     }
 
@@ -56,9 +53,11 @@ public class RacingGame {
                 winnerDecisionStrategy.decideWinners(this.cars);
     }
 
-    private void moveCar() {
-        for (Car car : this.cars) {
-            car.move();
-        }
+    public List<Car> allCars() {
+        return this.cars;
+    }
+
+    public Winners winners() {
+        return this.winners;
     }
 }

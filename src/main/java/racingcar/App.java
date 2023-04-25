@@ -11,7 +11,7 @@ public class App {
                 consoleView.namesOfCar(),
                 new WinnerDecisionByBigLocations());
 
-        racingGame.run();
+        racingGame.runOnce();
 
         consoleView.printCarsLocation(racingGame.allCars());
         consoleView.printWinners(racingGame.winners());
