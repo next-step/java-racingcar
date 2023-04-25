@@ -8,40 +8,41 @@ import java.util.List;
 import java.util.Random;
 
 public class Game {
+    private static final InputView inputView = new InputView();
+    private static final ResultView resultView = new ResultView();
+    private static final Random random = new Random();
+
+
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        List<Car> raceCars = participate(inputView.getAmount());
+        List<Car> raceCars = participate(inputView.getNames());
 
         for (int i = 0; i < inputView.getTrack(); i++) {
-            ResultView resultView = new ResultView();
-            List<Integer> steps = race(raceCars);
-            for (Integer step : steps) {
-                resultView.print(step);
-            }
-            System.out.println();
+            race(raceCars);
         }
+
+        Winner winners = new Winner(raceCars);
+        System.out.println(resultView.printWinner(winners.getWinners()));
     }
 
-    private static int randomSpeed() {
-        Random random = new Random();
-        return random.nextInt(10);
-    }
-
-    public static List<Car> participate(int amount) {
+    public static List<Car> participate(List<String> carNameList) {
         List<Car> raceCars = new ArrayList<>();
-        for (int i = 0; i < amount; i++) {
-            Car car = new Car();
-            raceCars.add(car);
+        for (String name : carNameList) {
+            raceCars.add(new Car(name));
         }
-
         return raceCars;
     }
 
-    public static List<Integer> race(List<Car> raceCars) {
-        List<Integer> steps = new ArrayList<>();
-        for (Car car : raceCars) {
-           steps.add(car.move(randomSpeed()));
-        }
-        return steps;
+    private static int randomSpeed() {
+        return random.nextInt(10);
     }
+
+    public static void race(List<Car> raceCars) {
+        for (Car car : raceCars) {
+            car.move(randomSpeed());
+            System.out.println(resultView.print(car));
+        }
+        System.out.println();
+    }
+
+
 }
