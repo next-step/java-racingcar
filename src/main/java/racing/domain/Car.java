@@ -7,9 +7,9 @@ package racing.domain;
  */
 public class Car {
     private static final int DEFAULT_LOCATION = 0;
-    private static final int MOVE_AVAILABLE_BOUND = 4;
     private static final int MIN_NAME_LENGTH = 1;
     private static final int MAX_NAME_LENGTH = 5;
+    private static final int MOVE_AVAILABLE_BOUND = 4;
 
     private final String name;
     private int location;
@@ -19,21 +19,25 @@ public class Car {
     }
 
     public Car(String name, int location) {
-        validCarName(name);
-        this.name = name;
+        String trimmedName = name.trim();
+        validCarName(trimmedName);
+        this.name = trimmedName;
         this.location = location;
-    }
-
-    private void validCarName(String name) {
-        String trim = name.trim();
-        if (trim.length() < MIN_NAME_LENGTH || MAX_NAME_LENGTH < trim.length()) {
-            throw new IllegalArgumentException("앞,뒤 공백을 제외한 이름의 길이는 1~5의 길이만 가능합니다.");
-        }
     }
 
     public Car(Car car) {
         this.name = car.name;
         this.location = car.location;
+    }
+
+    private void validCarName(String trimmedName) {
+        if (validNameLength(trimmedName)) {
+            throw new IllegalArgumentException("앞,뒤 공백을 제외한 이름의 길이는 1~5의 길이만 가능합니다.");
+        }
+    }
+
+    private boolean validNameLength(String trimmedName) {
+        return trimmedName.length() < MIN_NAME_LENGTH || MAX_NAME_LENGTH < trimmedName.length();
     }
 
     public void move(int distance) {
