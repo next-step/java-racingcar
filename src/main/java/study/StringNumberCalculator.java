@@ -9,7 +9,7 @@ public class StringNumberCalculator {
 
     public static int splitAndSum(String sample) {
 
-        if (sample.isBlank()) { // 이 자체로도 해석이 가능하다고 생각, 메서드로 만들면 어떤 장점이 있을지 고민.
+        if (StringUtils.isBlank(sample)) { // 이 자체로도 해석이 가능하다고 생각, 메서드로 만들면 어떤 장점이 있을지 고민.
             return 0;
         }
 

@@ -22,6 +22,13 @@ public class CalculagtorTest {
     }
 
     @Test
+    void 널테스트() {
+        String sample = null;
+        int result = StringNumberCalculator.splitAndSum(sample);
+        assertThat(result).isEqualTo(0);
+    }
+
+    @Test
     void 구분자콜론테스트() {
         String sample = "1:2:3:4:5";
         int result = StringNumberCalculator.splitAndSum(sample);
