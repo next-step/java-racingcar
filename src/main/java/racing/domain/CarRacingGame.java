@@ -4,7 +4,9 @@ package racing.domain;
 import racing.util.RandomGenerator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author : 0giri
@@ -13,67 +15,39 @@ import java.util.List;
 public class CarRacingGame {
 
     private Cars cars;
-    private RacingResult racingResult;
 
-    public CarRacingGame(int carsCount) {
-        validEnoughCarsCount(carsCount);
-        this.cars = setupCars(carsCount);
+    public CarRacingGame(String carNames) {
+        List<String> names = parseNames(carNames);
+        this.cars = initCars(names);
+        validHasEnoughCars();
     }
 
-    private void validEnoughCarsCount(int carsCount) {
-        if (carsCount < 2) {
-            throw new IllegalArgumentException("자동차는 2대 이상이어야 합니다.");
-        }
+    private List<String> parseNames(String carNames) {
+        return Arrays.stream(carNames.split(","))
+                .collect(Collectors.toList());
     }
 
-    private Cars setupCars(int carsCount) {
+    private Cars initCars(List<String> names) {
         List<Car> carList = new ArrayList<>();
-        for (int i = 0; i < carsCount; i++) {
-            carList.add(new Car());
+        for (String name : names) {
+            carList.add(new Car(name));
         }
         return new Cars(carList);
     }
 
-    public void start(int roundsCount) {
-        validNotStartedRace();
-        validEnoughRounds(roundsCount);
-        doRounds(roundsCount);
-        recordResult();
+    private void validHasEnoughCars() {
+        this.cars.canStartRace();
     }
 
-    private void validNotStartedRace() {
-        if (this.racingResult != null) {
-            throw new IllegalStateException("이미 경기가 종료되었습니다.");
-        }
-    }
-
-    private void validEnoughRounds(int roundsCount) {
-        if (roundsCount < 1) {
-            throw new IllegalArgumentException("라운드는 1회 이상이어야 합니다.");
-        }
-    }
-
-    private void doRounds(int roundsCount) {
-        List<Car> carList = cars.deepCopyList();
-        for (int i = 0; i < roundsCount; i++) {
-            carList.forEach(car -> car.move(RandomGenerator.generate(10)));
+    public void doRound() {
+        List<Car> carList = this.cars.deepCopyCarList();
+        for (Car car : carList) {
+            car.move(RandomGenerator.generate(10));
         }
         this.cars = new Cars(carList);
     }
 
-    private void recordResult() {
-        List<Car> deepCopyCarList = this.cars.deepCopyList();
-        this.racingResult = new RacingResult(deepCopyCarList);
-    }
-
-    public RacingResult result() {
-        validStartedRace();
-        return this.racingResult;
-    }
-
-    private void validStartedRace() {
-        if (this.racingResult == null) {
-            throw new IllegalStateException("경기가 시작되기 전에는 결과를 얻을 수 없습니다.");
-        }
+    public Cars result() {
+        return this.cars; // 불변이 보증되어 있어 참조형이어도 그대로 응답가능
     }
 }

@@ -66,7 +66,7 @@ public class CarTest {
         //when
         copy.move(5);
         //then
-        assertThat(car.position()).isEqualTo(10);
-        assertThat(copy.position()).isEqualTo(15);
+        assertThat(car.position()).isEqualTo(1);
+        assertThat(copy.position()).isEqualTo(2);
     }
 }

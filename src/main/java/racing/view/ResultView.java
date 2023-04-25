@@ -1,46 +1,23 @@
 package racing.view;
 
 import racing.domain.Car;
-import racing.domain.RacingResult;
+import racing.domain.Cars;
 
 /**
  * @author : 0giri
  * @since : 2023/04/16
  */
 public class ResultView {
+    private static final String PRINT_CAR_FORMAT = "%s\t:\t%s\n";
 
-    public static void printGameResult(RacingResult racingResult) {
-        System.out.println("자동차 경주 결과 입니다.");
-        printCarsLocation(racingResult);
-        System.out.println("경주 종료.");
+    public static void printGameStart() {
+        System.out.println("실행 결과");
     }
 
-    private static void printCarsLocation(RacingResult racingResult) {
-        racingResult.carList().forEach(ResultView::printCarLocation);
-    }
-
-    private static void printCarLocation(Car car) {
-        int location = location(car);
-        if (onStartLine(location)) {
-            printBlankLine();
-            return;
+    public static void printCars(Cars cars) {
+        for (Car car : cars.deepCopyCarList()) {
+            System.out.printf(PRINT_CAR_FORMAT, car.name(), "-".repeat(car.position()));
         }
-        printCarLocation(location);
-    }
-
-    private static int location(Car car) {
-        return car.location();
-    }
-
-    private static boolean onStartLine(int location) {
-        return location == 0;
-    }
-
-    private static void printBlankLine() {
         System.out.println();
-    }
-
-    private static void printCarLocation(int location) {
-        System.out.println("-".repeat(location));
     }
 }
