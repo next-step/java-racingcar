@@ -1,7 +1,8 @@
-package basicgame;
+package basicgame.view;
+
+import basicgame.domain.Vehicle;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ResultView {
     public static void printResultList(List<Vehicle> list, String mark) {

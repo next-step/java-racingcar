@@ -1,6 +1,6 @@
-package basicgame;
+package basicgame.domain;
 
-import basicgame.strategy.ActiveStrategy;
+import basicgame.service.strategy.ActiveStrategy;
 
 import java.util.Comparator;
 import java.util.stream.Collectors;

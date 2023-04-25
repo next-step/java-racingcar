@@ -1,4 +1,4 @@
-package basicgame;
+package basicgame.view;
 
 import java.util.Scanner;
 

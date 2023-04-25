@@ -1,4 +1,4 @@
-package basicgame.strategy;
+package basicgame.service.strategy;
 
 import util.RandomUtil;
 

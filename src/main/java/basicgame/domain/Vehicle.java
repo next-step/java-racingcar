@@ -1,4 +1,4 @@
-package basicgame;
+package basicgame.domain;
 
 public interface Vehicle {
     String printDistance(String mark);

@@ -1,4 +1,4 @@
-package basicgame;
+package basicgame.domain;
 
 import util.StringUtil;
 
