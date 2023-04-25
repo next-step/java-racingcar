@@ -1,6 +1,9 @@
-package racingcar;
+package racingcar.view;
 
-interface Output {
+import racingcar.domain.CarDto;
+import racingcar.domain.Race;
+
+public interface Output {
 
     void printPosition(CarDto carDto);
 

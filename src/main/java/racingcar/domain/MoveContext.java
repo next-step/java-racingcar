@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 public class MoveContext {
     public final MoveStrategy moveStrategy;
