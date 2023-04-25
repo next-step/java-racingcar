@@ -5,6 +5,7 @@ import racingcar.car.Winners;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     private final Trial numbOfTrial;
@@ -32,20 +33,26 @@ public class RacingGame {
         return cars;
     }
 
-    public List<Car> runOnce() {
+    public List<CarDto> runOnce() {
         if (!numbOfTrial.hasChance()) {
             throw new GameEndedException("이미 레이싱이 끝났습니다.");
         }
         numbOfTrial.decrease();
         moveCars();
 
-        return null;
+        return convertToDTO();
     }
 
     private void moveCars() {
         for (Car car : this.cars) {
             car.move();
         }
+    }
+
+    private List<CarDto> convertToDTO() {
+        return this.cars.stream()
+                .map(CarDto::new)
+                .collect(Collectors.toList());
     }
 
     private void pickWinners() {

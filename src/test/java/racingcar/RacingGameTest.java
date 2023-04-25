@@ -1,6 +1,7 @@
 package racingcar;
 
 import org.assertj.core.api.Assertions;
+import org.assertj.core.api.Condition;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,12 +10,14 @@ import java.util.List;
 class RacingGameTest {
 
     private final int numbOfTrial = 2;
+    private final String racingCarName = "abc";
+
     private RacingGame game;
 
     @BeforeEach
     void setUp() {
         game = new RacingGame(numbOfTrial,
-                List.of("abc", "def"),
+                List.of(racingCarName),
                 new WinnerDecisionByBigLocations());
     }
 
@@ -32,17 +35,18 @@ class RacingGameTest {
         }
     }
 
-//    @Test
-//    void 종료된_게임인지_알려준다() {
-//        runGameUntilEnd();
-//
-//        Assertions.assertThat(game.isEnded()).isTrue();
-//    }
-//
-//    @Test
-//    void 게임_우승자를_알려준다() {
-//        runGameUntilEnd();
-//
-//        Assertions.assertThat(game.winners()).contains();
-//    }
+    @Test
+    void 게임을_1회_실행하면_실행결과_자동차_상태를담은_컬렉션을_반환한다() {
+        List<CarDto> carDTOs = game.runOnce();
+
+        Assertions.assertThat(carDTOs)
+                .haveAtLeastOne(carNamed(racingCarName));
+    }
+
+    private Condition<CarDto> carNamed(String name) {
+        return new Condition<>(
+                carDto -> carDto.getName().equals(name),
+                "has name " + name
+        );
+    }
 }
