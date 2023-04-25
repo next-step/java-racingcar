@@ -1,12 +1,14 @@
 package racingCar;
 
+import java.util.List;
+
 import racingCar.domain.Car;
 import racingCar.domain.Track;
 
 public class RacingCar {
 	private int round;
 
-	private int count;
+	private List<String> carNames;
 
 	private final Track track;
 
@@ -17,26 +19,26 @@ public class RacingCar {
 	public void start() {
 		ready();
 
-		run(count, round);
+		run(carNames, round);
 
 		terminate();
 	}
 
-	public void run(int count, int round) {
-		for (int i = 0; i < count; i++) {
-			track.putRaceCar(Car.create());
+	public void run(List<String> carNames, int round) {
+		for (String carName : carNames) {
+			track.putRaceCar(Car.from(carName));
 		}
 
 		track.run(round);
 	}
 
 	private void ready() {
-		count = RacingCarUI.uiForCountInput();
-
 		round = RacingCarUI.uiForRoundInput();
+
+		carNames = RacingCarUI.uiForCarNamesInput();
 	}
 
 	private void terminate() {
-		RacingCarUI.printResult(track.getCarList());
+		RacingCarUI.printResult(track.getCarList(), track.findWinners());
 	}
 }

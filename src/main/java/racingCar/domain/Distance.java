@@ -1,28 +1,35 @@
 package racingCar.domain;
 
-import java.util.List;
+public class Distance {
+	private final int amount;
 
-public enum Distance {
-	Kilometer("-"),
-	;
+	public int getAmount() {
+		return amount;
+	}
 
-	private final String view;
+	public Distance(int amount) {
+		this.amount = amount;
+	}
 
-	Distance(String view) {
-		this.view = view;
+	public static Distance from(int amount) {
+		return new Distance(amount);
 	}
 
 	public static Distance create() {
-		return Kilometer;
+		return new Distance(0);
 	}
 
-	public static String convertDistanceToView(List<Distance> distanceList) {
-		StringBuilder view = new StringBuilder();
-
-		for (Distance distance : distanceList) {
-			view.append(distance.view);
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Distance) {
+			Distance distance = (Distance) obj;
+			return this.amount == distance.amount;
 		}
+		return false;
+	}
 
-		return view.toString();
+	@Override
+	public int hashCode() {
+		return amount;
 	}
 }

@@ -2,12 +2,17 @@ package racingCar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Track {
 	private final List<Car> carList;
 
 	public Track(List<Car> carList) {
 		this.carList = carList;
+	}
+
+	public List<Car> getCarList() {
+		return carList;
 	}
 
 	public static Track create() {
@@ -34,8 +39,18 @@ public class Track {
 		}
 	}
 
-	public List<Car> getCarList() {
-		return carList;
+	public List<Car> findWinners() {
+		int maxDistance = findMaxDistance();
+
+		return carList.stream()
+			.filter(car -> car.getDistanceAmount() == maxDistance)
+			.collect(Collectors.toList());
 	}
 
+	private int findMaxDistance() {
+		return carList.stream()
+			.mapToInt(Car::getDistanceAmount)
+			.max()
+			.orElse(0);
+	}
 }

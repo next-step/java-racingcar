@@ -1,7 +1,5 @@
 package racingCar.domain;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class Car {
@@ -11,38 +9,38 @@ public class Car {
 
 	public static final int POWER_THRESHOLD = 4;
 
-	private final Random random;
+	private final Random random = new Random();
 
-	private final List<Distance> distanceList;
+	private final String name;
+
+	private Distance distance;
 
 	private int power;
 
-	public Car(Random random, List<Distance> distanceList, int power) {
-		this.random = random;
-		this.distanceList = distanceList;
+	public int getDistanceAmount() {
+		return distance.getAmount();
+	}
+
+	public Car(String name, int power, Distance distance) {
+		this.name = name;
 		this.power = power;
+		this.distance = distance;
 	}
 
-	public static Car of(int power) {
-		Random random = new Random();
-		List<Distance> distanceList = new ArrayList<>();
-
-		return new Car(random, distanceList, power);
+	public String getName() {
+		return name;
 	}
 
-	public static Car create() {
-		Random random = new Random();
-		List<Distance> distanceList = new ArrayList<>();
+	public static Car of(String name, int power) {
+		Distance distance = Distance.create();
 
-		return new Car(random, distanceList, ZERO);
+		return new Car(name, power, distance);
 	}
 
-	public List<Distance> getDistanceList() {
-		return distanceList;
-	}
+	public static Car from(String name) {
+		Distance distance = Distance.create();
 
-	public String getDistanceView() {
-		return Distance.convertDistanceToView(distanceList);
+		return new Car(name, ZERO, distance);
 	}
 
 	public void drive() {
@@ -55,7 +53,7 @@ public class Car {
 			return;
 		}
 
-		distanceList.add(Distance.create());
+		distance = Distance.from(distance.getAmount() + 1);
 	}
 
 	public void startEngine() {
