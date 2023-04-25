@@ -8,9 +8,10 @@ import study.util.RandomizerImpl;
 public class Main {
 
   public static void main(String[] args) {
-    Input input = new InputImpl();
+    Input carInput = new InputImpl();
+    Input countInput = new InputImpl();
     Randomizer randomizer = new RandomizerImpl();
-    CarRace carRace = new CarRaceImpl(input, randomizer);
+    CarRace carRace = new CarRaceImpl(carInput, countInput, randomizer);
     String output = carRace.run();
     System.out.println(output);
   }

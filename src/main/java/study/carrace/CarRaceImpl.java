@@ -5,18 +5,20 @@ import study.util.Randomizer;
 
 public class CarRaceImpl implements CarRace {
 
-  private final Input input;
+  private final Input carInput;
+  private final Input countInput;
   private final Randomizer randomizer;
 
-  public CarRaceImpl(Input input, Randomizer randomizer) {
-    this.input = input;
+  public CarRaceImpl(Input carInput, Input countInput, Randomizer randomizer) {
+    this.carInput = countInput;
+    this.countInput = countInput;
     this.randomizer = randomizer;
   }
 
   @Override
   public String run() {
-    int numberOfCars = input.getInput("자동차 대수는 몇 대 인가요?");
-    int tryCount = input.getInput("시도할 회수는 몇 회 인가요?");
+    int numberOfCars = Integer.parseInt(carInput.getInput("자동차 대수는 몇 대 인가요?"));
+    int tryCount = Integer.parseInt(countInput.getInput("시도할 회수는 몇 회 인가요?"));
 
     RaceGame raceGame = new RaceGameImpl(numberOfCars, tryCount, randomizer);
     Race[] races = raceGame.process();

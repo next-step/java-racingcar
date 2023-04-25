@@ -15,9 +15,10 @@ public class CarRaceTest {
   @Test
   public void 인풋_테스트() throws Exception {
     // given
-    Input input = new InputTestImpl();
+    Input carInput = new InputTestImpl();
+    Input countInput = new InputTestImpl();
     Randomizer randomizer = new RandomizerImpl();
-    CarRace carRace = new CarRaceImpl(input, randomizer);
+    CarRace carRace = new CarRaceImpl(carInput, countInput, randomizer);
 
     // when
     String result = carRace.run();
@@ -55,12 +56,12 @@ public class CarRaceTest {
   private class InputTestImpl implements Input {
 
     @Override
-    public int getInput(String answer) {
+    public String getInput(String answer) {
       Random random = new Random();
       int randomValue = random.nextInt(9) + 1;
       System.out.println(answer);
       System.out.println(randomValue);
-      return randomValue;
+      return randomValue + "";
     }
   }
 

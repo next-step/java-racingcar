@@ -1,5 +1,5 @@
 package study.input;
 
 public interface Input {
-  public int getInput(String answer);
+  public String getInput(String answer);
 }
