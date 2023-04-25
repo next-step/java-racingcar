@@ -23,6 +23,18 @@ class RacingGameTest {
     }
 
     @Test
+    void 시도횟수_만큼_게임을_실행할수있다() {
+        int runCount = 0;
+
+        for (int i = 0; i < numbOfTrial; i++) {
+            game.runOnce();
+            runCount++;
+        }
+
+        Assertions.assertThat(runCount).isEqualTo(numbOfTrial);
+    }
+
+    @Test
     void 시도횟수_만큼_게임을_진행하면_더이상_진행할수없다() {
         runGameUntilEnd();
 
