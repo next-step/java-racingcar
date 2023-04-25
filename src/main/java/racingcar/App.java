@@ -14,7 +14,7 @@ public class App {
         racingGame.runOnce();
 
         consoleView.printCarsLocation(racingGame.allCars());
-        consoleView.printWinners(racingGame.winners());
+        consoleView.printWinners(racingGame.winnerCars());
     }
 }
 

@@ -53,6 +53,6 @@ class WinnerDecisionByBigLocationsTest {
 
     private List<String> getWinnerNames(Winners winners) {
         return winners.winners().stream()
-                .map(Car::name).collect(Collectors.toList());
+                .map(CarDto::getName).collect(Collectors.toList());
     }
 }

@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import calculator.StringParser;
+import racingcar.CarDto;
 import racingcar.car.Car;
 import racingcar.car.Winners;
 
@@ -102,7 +103,7 @@ public class ConsoleView {
 
     public void printWinners(Winners winners) {
         String winnerNames = winners.winners().stream()
-                .map(Car::name)
+                .map(CarDto::getName)
                 .collect(Collectors.joining(", "));
 
         System.out.println(winnerNames + "가 최종 우승했습니다.");

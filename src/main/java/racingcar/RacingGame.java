@@ -20,7 +20,6 @@ public class RacingGame {
         this.numbOfTrial = new Trial(numbOfTrial);
         this.cars = makeRacingCars(carNames);
         this.winnerDecisionStrategy = winnerDecisionStrategy;
-        this.winners = new Winners(new ArrayList<>());
     }
 
     private List<Car> makeRacingCars(List<String> names) {
@@ -35,10 +34,14 @@ public class RacingGame {
 
     public List<CarDto> runOnce() {
         if (!numbOfTrial.hasChance()) {
-            throw new GameEndedException("이미 레이싱이 끝났습니다.");
+            throw new GameException("이미 레이싱이 끝났습니다.");
         }
         numbOfTrial.decrease();
         moveCars();
+
+        if (isLastTrial()) {
+            pickWinners();
+        }
 
         return convertToDTO();
     }
@@ -55,16 +58,27 @@ public class RacingGame {
                 .collect(Collectors.toList());
     }
 
+    private boolean isLastTrial() {
+        return !this.numbOfTrial.hasChance();
+    }
+
     private void pickWinners() {
-        this.winners =
-                winnerDecisionStrategy.decideWinners(this.cars);
+        this.winners = winnerDecisionStrategy.decideWinners(this.cars);
     }
 
     public List<Car> allCars() {
         return this.cars;
     }
 
-    public Winners winners() {
+    public Winners winnerCars() {
+        if(!isEnded()) {
+            throw new GameException("게임이 끝나기 전까지 우승자를 알 수 없습니다");
+        }
+
         return this.winners;
+    }
+
+    public boolean isEnded() {
+        return !this.numbOfTrial.hasChance();
     }
 }
