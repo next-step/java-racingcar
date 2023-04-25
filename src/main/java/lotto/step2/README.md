@@ -32,3 +32,5 @@
     - ResultView
       - [x] 구입한 로또 목록을 보여준다.
       - [x] 당첨 통계 데이터를 보여준다.
+- 테스트 케이스
+  - src/test/java/lotto/step2
