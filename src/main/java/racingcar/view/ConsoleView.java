@@ -2,6 +2,7 @@ package racingcar.view;
 
 import calculator.StringParser;
 import racingcar.car.Car;
+import racingcar.car.Winners;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
@@ -25,22 +26,6 @@ public class ConsoleView {
         System.out.println();
     }
 
-    public List<String> namesOfCar() {
-        return tryPrintAndGet(this::printAndGetNamesOfCar);
-    }
-
-    public int numbOfTrial() {
-        return tryPrintAndGet(this::printAndGetNumbOfTrial);
-    }
-
-    public void printWinners(List<Car> winners) {
-        String winnerNames = winners.stream()
-                .map(Car::name)
-                .collect(Collectors.joining(", "));
-
-        System.out.println(winnerNames + "가 최종 우승했습니다.");
-    }
-
     private void printCarsLocation(Car car) {
         System.out.print(car.name() + " : ");
 
@@ -49,6 +34,14 @@ public class ConsoleView {
         }
 
         System.out.println();
+    }
+
+    public List<String> namesOfCar() {
+        return tryPrintAndGet(this::printAndGetNamesOfCar);
+    }
+
+    public int numbOfTrial() {
+        return tryPrintAndGet(this::printAndGetNumbOfTrial);
     }
 
     private <T> T tryPrintAndGet(Supplier<T> printAndGetInput) {
@@ -65,19 +58,6 @@ public class ConsoleView {
         }
 
         throw new RuntimeException("유효하지 않은 입력 횟수 를 초과했습니다");
-    }
-
-    private List<String> printAndGetNamesOfCar() {
-        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-
-        return Arrays.stream(nameParser.parse(getString()))
-                .collect(Collectors.toList());
-    }
-
-    private String getString() {
-        Scanner scanner = new Scanner(System.in);
-
-        return scanner.nextLine();
     }
 
     private int printAndGetNumbOfTrial() {
@@ -104,5 +84,27 @@ public class ConsoleView {
         }
 
         return numb;
+    }
+
+
+    private List<String> printAndGetNamesOfCar() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+
+        return Arrays.stream(nameParser.parse(getString()))
+                .collect(Collectors.toList());
+    }
+
+    private String getString() {
+        Scanner scanner = new Scanner(System.in);
+
+        return scanner.nextLine();
+    }
+
+    public void printWinners(Winners winners) {
+        String winnerNames = winners.winners().stream()
+                .map(Car::name)
+                .collect(Collectors.joining(", "));
+
+        System.out.println(winnerNames + "가 최종 우승했습니다.");
     }
 }

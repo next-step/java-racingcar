@@ -1,24 +1,23 @@
 package racingcar;
 
 import racingcar.car.Car;
+import racingcar.car.Winners;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class WinnerDecisionByBigLocations implements WinnerDecisionStrategy {
 
     @Override
-    public List<Car> decideWinners(List<Car> allParticipants) {
+    public Winners decideWinners(List<Car> allParticipants) {
         if (allParticipants.isEmpty()) {
-            return Collections.emptyList();
+            return new Winners(Collections.emptyList());
         }
 
-        final int maxLocation = maxLocation(allParticipants);
+        int maxLocation = maxLocation(allParticipants);
 
-        return allParticipants.stream()
-                .filter(car -> car.isWinner(maxLocation))
-                .collect(Collectors.toList());
+        return createWinners(allParticipants, maxLocation);
     }
 
     private int maxLocation(List<Car> allParticipants) {
@@ -31,4 +30,15 @@ public class WinnerDecisionByBigLocations implements WinnerDecisionStrategy {
         return maxLocation;
     }
 
+    private Winners createWinners(List<Car> cars, int maxLocation) {
+        List<Car> winners = new ArrayList<>();
+
+        for (Car car : cars) {
+            if (car.isWinner(maxLocation)) {
+                winners.add(car);
+            }
+        }
+
+        return new Winners(winners);
+    }
 }

@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.car.Car;
+import racingcar.car.Winners;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ public class RacingGame {
     private final List<String> carNames;
     private final WinnerDecisionStrategy winnerDecisionStrategy;
     private final List<Car> cars;
-    private List<Car> winners;
+    private Winners winners;
 
     public RacingGame(int numbOfTrial,
                       List<String> carNames,
@@ -18,8 +19,16 @@ public class RacingGame {
         this.numbOfTrial = numbOfTrial;
         this.carNames = carNames;
         this.winnerDecisionStrategy = winnerDecisionStrategy;
-        this.winners = new ArrayList<>();
+        this.winners = new Winners(new ArrayList<>());
         this.cars = new ArrayList<>();
+    }
+
+    public List<Car> allCars() {
+        return this.cars;
+    }
+
+    public Winners winners() {
+        return this.winners;
     }
 
     public void run() {
@@ -28,13 +37,6 @@ public class RacingGame {
         runWithCarsNTimes();
 
         pickWinners();
-    }
-
-    public List<Car> allCars() {
-        return this.cars;
-    }
-    public List<Car> winners() {
-        return this.winners;
     }
 
     private void addCarsOf() {
@@ -50,7 +52,8 @@ public class RacingGame {
     }
 
     private void pickWinners() {
-        this.winners = winnerDecisionStrategy.decideWinners(this.cars);
+        this.winners =
+                winnerDecisionStrategy.decideWinners(this.cars);
     }
 
     private void moveCar() {

@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 import racingcar.car.Car;
+import racingcar.car.Winners;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,7 +25,7 @@ class WinnerDecisionByBigLocationsTest {
                 new Car("abc", 0)
         );
 
-        List<Car> winners = winnerDecisionStrategy.decideWinners(cars);
+        Winners winners = winnerDecisionStrategy.decideWinners(cars);
         List<String> winnerNames = getWinnerNames(winners);
 
         assertThat(winnerNames).containsExactlyInAnyOrder("abc", "def", "aaa");
@@ -40,7 +41,7 @@ class WinnerDecisionByBigLocationsTest {
                 new Car(winnerName, 2)
         );
 
-        List<Car> winners = winnerDecisionStrategy.decideWinners(cars);
+        Winners winners = winnerDecisionStrategy.decideWinners(cars);
         List<String> winnerNames = getWinnerNames(winners);
 
         assertThat(winnerNames).containsExactlyInAnyOrder(winnerName);
@@ -50,7 +51,8 @@ class WinnerDecisionByBigLocationsTest {
         return Arrays.stream(cars).collect(Collectors.toList());
     }
 
-    private List<String> getWinnerNames(List<Car> winners) {
-        return winners.stream().map(Car::name).collect(Collectors.toList());
+    private List<String> getWinnerNames(Winners winners) {
+        return winners.winners().stream()
+                .map(Car::name).collect(Collectors.toList());
     }
 }
