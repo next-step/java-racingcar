@@ -17,11 +17,11 @@ public class Position {
         return position;
     }
 
-    public int chooseLongerDistance(int distance) {
+    public int chooseRemoteDistance(int distance) {
         return position > distance ? position : distance;
     }
 
-    public boolean isSamDistance(int distance) {
+    public boolean isSameDistance(int distance) {
         return position == distance;
     }
 

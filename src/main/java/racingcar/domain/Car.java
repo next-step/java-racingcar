@@ -33,11 +33,11 @@ public class Car {
     }
 
     public int chooseLongerDistance(int distanceMax) {
-        return position.chooseLongerDistance(distanceMax);
+        return position.chooseRemoteDistance(distanceMax);
     }
 
     public boolean isSameDistance(int distanceMax) {
-        return position.isSamDistance(distanceMax);
+        return position.isSameDistance(distanceMax);
     }
 
     public String getName() {

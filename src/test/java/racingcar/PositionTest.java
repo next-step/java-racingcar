@@ -13,4 +13,22 @@ public class PositionTest {
         Assertions.assertThatThrownBy(() -> new Position(-1))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("포지션에서 한 칸 이동이 가능하다.")
+    public void moveForth_moveOnePosition_moveAlright() {
+        Position nowPosition = new Position(0);
+        nowPosition.moveForth();
+
+        Assertions.assertThat(nowPosition.isSameDistance(1)).isTrue();
+    }
+
+    @Test
+    @DisplayName("본인보다 더 먼 값을 선택할 수 있다.")
+    public void chooseRemoteDistance_ChooseBetweenNearAndRemotePosition_CanChooseRemotePosition() {
+        Position nearPosition = new Position(4);
+        int selectedPosition = nearPosition.chooseRemoteDistance(5);
+
+        Assertions.assertThat(selectedPosition).isEqualTo(5);
+    }
 }
