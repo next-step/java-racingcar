@@ -1,5 +1,6 @@
 package study.carrace;
 
+import study.car.Car;
 import study.input.Input;
 import study.util.Randomizer;
 
@@ -17,10 +18,11 @@ public class CarRaceImpl implements CarRace {
 
   @Override
   public String run() {
-    int numberOfCars = Integer.parseInt(carInput.getInput("자동차 대수는 몇 대 인가요?"));
+    String carsStr = carInput.getInput("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
     int tryCount = Integer.parseInt(countInput.getInput("시도할 회수는 몇 회 인가요?"));
 
-    RaceGame raceGame = new RaceGameImpl(numberOfCars, tryCount, randomizer);
+    Car[] cars = Car.createCarsAsStr(carsStr);
+    RaceGame raceGame = new RaceGameImpl(cars, tryCount, randomizer);
     Race[] races = raceGame.process();
 
     StringBuffer sb = new StringBuffer();
