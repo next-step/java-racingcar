@@ -3,6 +3,7 @@ package study.step3;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.security.InvalidParameterException;
@@ -13,20 +14,17 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class CarTest {
     Car car;
 
-    @Test
-    @DisplayName("0~9 사이 무작위 값을 반환한다.")
-    public void random_함수_test() throws Exception {
+    @DisplayName("전달 받은 값이 4 이상일 경우 차를 이동한다.")
+    @ParameterizedTest
+    @CsvSource(value = {"5:1", "4:1", "3:0"}, delimiter = ':')
+    public void car_move_test(int randomNum, int expectPosition) throws Exception {
         car = new Car("A", 0);
-        for (int i = 0; i < 10; i++) {
-            assertThat(car.getRandomInt())
-                    .isGreaterThan(-1)
-                    .isLessThan(10);
-        }
+        assertThat(car.move(randomNum)).isEqualTo(new Position(expectPosition));
     }
 
     @Test
     @DisplayName("전달 받은 값이 4 이상일 경우 true를 반환한다.")
-    public void car_move_test() throws Exception {
+    public void car_move_inner_method_test() throws Exception {
         car = new Car("A", 0);
         assertThat(car.isExceedStandard(5)).isTrue();
         assertThat(car.isExceedStandard(4)).isTrue();
@@ -37,7 +35,7 @@ class CarTest {
     @ParameterizedTest
     @ValueSource(strings = {"빨강", "파랑", "black"})
     public void car_생성자_테스트(String carName) throws Exception {
-        assertThat(new Car(carName).getName()).isEqualTo(carName);
+        assertThat(new Car(carName).getName()).isEqualTo(new Name(carName));
     }
 
     @DisplayName("차량 이름 등록 시, 5글자를 초과할 수 없다.")

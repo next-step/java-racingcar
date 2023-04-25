@@ -1,59 +1,54 @@
 package study.step3;
 
-import java.security.InvalidParameterException;
-import java.util.Random;
-
 public class Car {
-
-    private static final String CAR_NAME_RANGE_ALERT_MESSAGE = "자동차의 이름은 5글자를 초과할 수 없습니다.";
     private static final int STANDARD_VALUE_TO_MOVE = 3;
-    private static final int RANGE_FOR_RANDOM = 10;
-    private Random random = new Random();
-    private String name;
-    private int position;
 
+    private Name name;
+    private Position position;
 
     public Car(String name) {
-        if (name.length() > 5) {
-            throw new InvalidParameterException(CAR_NAME_RANGE_ALERT_MESSAGE);
-        }
-        this.name = name;
-        position = 0;
+        this.name = new Name(name);
+        position = new Position(0);
     }
 
     public Car(String name, int position) {
-        if (name.length() > 5) {
-            throw new InvalidParameterException(CAR_NAME_RANGE_ALERT_MESSAGE);
-        }
-        this.name = name;
-        this.position = position;
+        this.name = new Name(name);
+        this.position = new Position(position);
     }
 
-    public int getPosition() {
+    Position getPosition() {
         return position;
     }
 
-    public String getName() {
+    Name getName() {
         return name;
     }
 
-    boolean move() {
-        if (isExceedStandard(getRandomInt())) {
-            position++;
-            return true;
+    Position move(int randomNum) {
+        if (isExceedStandard(randomNum)) {
+            position.increase();
         }
-        return false;
+        return position;
     }
+
+    boolean isBiggerPosition(Position position) {
+        return this.position.isBigger(position);
+    }
+
 
     boolean isExceedStandard(int num) {
         return num > STANDARD_VALUE_TO_MOVE;
     }
 
-    public int getRandomInt() throws IllegalArgumentException {
-        return random.nextInt(RANGE_FOR_RANDOM);
+    boolean samePosition(int position) {
+        return samePosition(new Position(position));
     }
 
-    public String printPosition() {
-        return name + " : " + "-".repeat(position);
+    boolean samePosition(Position position) {
+        return this.position.equals(position);
+    }
+
+    public Car copy() {
+        return new Car(name.getName(), position.getPosition());
     }
 }
