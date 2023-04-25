@@ -5,20 +5,18 @@ import java.util.stream.Collectors;
 
 public class RacingCars {
     private final List<Car> cars;
-    private final MoveStrategy moveStrategy;
 
-    public RacingCars(List<Car> cars, MoveStrategy moveStrategy) {
+    public RacingCars(List<Car> cars) {
         this.cars = cars;
-        this.moveStrategy = moveStrategy;
     }
 
-    public void move() {
+    public void move(MoveStrategy moveStrategy) {
         for(Car car: cars) {
-            drive(car);
+            drive(car, moveStrategy);
         }
     }
 
-    private void drive(Car car) {
+    private void drive(Car car, MoveStrategy moveStrategy) {
         if (moveStrategy.goOrStop()) {
             car.drive();
         }

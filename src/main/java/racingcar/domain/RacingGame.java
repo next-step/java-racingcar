@@ -9,8 +9,10 @@ public class RacingGame {
     private static final String DELIMITER = ",";
     private final RacingCars racingCars;
 
+    private final MoveStrategy moveStrategy;
     public RacingGame(String nameOfCars, MoveStrategy moveStrategy) {
-        this.racingCars = new RacingCars(registerCar(splitCarName(nameOfCars)), moveStrategy);
+        this.racingCars = new RacingCars(registerCar(splitCarName(nameOfCars)));
+        this.moveStrategy = moveStrategy;
     }
 
     private List<Car> registerCar(String[] nameOfCars) {
@@ -18,7 +20,7 @@ public class RacingGame {
     }
 
     public void start() {
-        racingCars.move();
+        racingCars.move(moveStrategy);
     }
 
     public List<String> getWinner() {
