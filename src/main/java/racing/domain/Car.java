@@ -31,7 +31,7 @@ public class Car {
 
     private void validCarNameLength(String name) {
         if (name.length() < MIN_NAME_LENGTH || MAX_NAME_LENGTH < name.length()) {
-            throw new IllegalArgumentException("앞,뒤 공백을 제외한 이름의 길이는 1~5의 길이만 가능합니다.");
+            throw new IllegalArgumentException("이름의 길이는 1~5의 길이만 가능합니다.");
         }
     }
 
