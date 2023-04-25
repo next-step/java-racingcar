@@ -1,7 +1,7 @@
 package study.race;
 
 public class Car {
-    int position = 0;
+    int position = 1;
     String name;
     public Car() {
     }
