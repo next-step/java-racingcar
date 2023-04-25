@@ -56,4 +56,12 @@ public class Car {
     public int position() {
         return this.position;
     }
+
+    public int max(int maxPosition) {
+        return Math.max(this.position, maxPosition);
+    }
+
+    public boolean isWinner(int maxPosition) {
+        return this.position == maxPosition;
+    }
 }
