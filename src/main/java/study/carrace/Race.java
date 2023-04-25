@@ -3,8 +3,8 @@ package study.carrace;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import study.car.Car;
 import study.util.Randomizer;
-import study.util.RandomizerImpl;
 
 public class Race {
 
@@ -13,9 +13,11 @@ public class Race {
   private static final int STOP = 0;
   private List<Distance> distances = new ArrayList<>();
   private final Randomizer randomizer;
+  private final Car car;
 
-  public Race(Randomizer randomizer) {
+  public Race(Randomizer randomizer, Car car) {
     this.randomizer = randomizer;
+    this.car = car;
   }
 
   public void progress() {
@@ -31,7 +33,7 @@ public class Race {
 
   public String currentRace(int end) {
     int currentDistance = this.cumulativeSum(end);
-    return String.join("", Collections.nCopies(currentDistance, "-"));
+    return this.car.getName() + " : " + String.join("", Collections.nCopies(currentDistance, "-"));
   }
 
   private void go() {

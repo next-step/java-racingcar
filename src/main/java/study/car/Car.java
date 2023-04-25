@@ -8,6 +8,10 @@ public class Car {
     validate();
   }
 
+  public String getName() {
+    return name;
+  }
+
   void validate() {
     if(name == null) {
       throw new NullPointerException();

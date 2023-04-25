@@ -3,7 +3,6 @@ package study.carrace;
 
 import study.car.Car;
 import study.util.Randomizer;
-import study.util.RandomizerImpl;
 
 public class RaceGameImpl implements RaceGame {
 
@@ -22,7 +21,7 @@ public class RaceGameImpl implements RaceGame {
     Race[] races = new Race[this.cars.length];
 
     for (int i = 0; i < this.cars.length; i++) {
-      Race race = new Race(randomizer);
+      Race race = new Race(randomizer, cars[i]);
       for (int j = 0; j < tryCount; j++) {
         race.progress();
       }
