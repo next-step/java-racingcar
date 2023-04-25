@@ -39,6 +39,10 @@ public class Car implements Vehicle {
         return CONDITION_VALUE <= value;
     }
 
+    public boolean isEqualDistance(int distance){
+        return this.distance == distance;
+    }
+
     @Override
     public int getDistance(){
         return distance;

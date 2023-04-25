@@ -3,9 +3,11 @@ package basicgame;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import basicgame.strategy.RandomActiveMock;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -124,14 +126,13 @@ class CarsTest {
         cars.addCar(expectedWinnerName1, 10);
         cars.addCar(expectedWinnerName2, 10);
 
-        for ( int i=0; i< carTryCount; i++) {
-            cars.activeCar(0);
+        for (int i = 0; i < carTryCount; i++) {
+            cars.activeCar(new RandomActiveMock());
         }
 
-        var actualWinnerList = cars.getWinner();
+        var actualWinnerList = cars.getWinners();
 
-        assertThat(actualWinnerList.stream()
-                .map(Car::getName))
+        assertThat(new ArrayList<>(actualWinnerList))
                 .isEqualTo(List.of(expectedWinnerName1, expectedWinnerName2));
     }
 }

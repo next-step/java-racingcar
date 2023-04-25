@@ -2,6 +2,9 @@ package basicgame;
 
 
 import java.util.List;
+
+import basicgame.strategy.ActiveStrategy;
+import basicgame.strategy.RandomActive;
 import util.RandomUtil;
 import util.StringUtil;
 
@@ -13,10 +16,9 @@ public class BasicGame {
 
     private final static int MAX_RANDOM = 10;
 
+    public ActiveStrategy activeStrategy;
     public Cars cars;
     public CarTryCounter triedCount;
-
-
 
     public BasicGame(Cars cars) {
         this.cars = cars;
@@ -33,11 +35,12 @@ public class BasicGame {
         Cars cars = new Cars();
         BasicGame basicGame = new BasicGame(cars);
 
-        basicGame.startGame(carString, tryCount);
+        basicGame.startGame(carString, tryCount, new RandomActive());
     }
 
-    public void startGame(String carString, int tryCount) {
+    public void startGame(String carString, int tryCount, ActiveStrategy activeStrategy) {
         triedCount = new CarTryCounter(ZERO);
+        this.activeStrategy = activeStrategy;
 
         var CarNameList = splitName(carString);
         if (CarNameList.length == 0 || StringUtil.isBlank(CarNameList[0]) || tryCount <= 0) {
@@ -46,7 +49,7 @@ public class BasicGame {
 
         cars.initCar(CarNameList);
         printCar(tryCount);
-        printWinner(cars.getWinner());
+        printWinner(cars.getWinners());
     }
 
     public String[] splitName(String carNames){
@@ -58,13 +61,13 @@ public class BasicGame {
         ResultView.printResultList(cars.getCars(), PROCESS_INDICATOR);
 
         for (int i = 0; i < tryCount; i++) {
-            cars.activeCar(RandomUtil.getRandomValue(MAX_RANDOM));
+            cars.activeCar(activeStrategy);
             ResultView.printResultList(cars.getCars(), PROCESS_INDICATOR);
             triedCount.autoIncrement();
         }
     }
 
-    private void printWinner(List<Car> carList) {
+    private void printWinner(List<String> carList) {
         ResultView.printWinnerList(carList);
     }
 }

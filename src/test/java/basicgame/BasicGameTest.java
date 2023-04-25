@@ -1,12 +1,8 @@
 package basicgame;
 
+import basicgame.strategy.RandomActive;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
-
-import java.util.stream.Stream;
 
 import static basicgame.BasicGame.INPUT_ERROR_MESSAGE;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -27,7 +23,7 @@ public class BasicGameTest {
         BasicGame basicGame = new BasicGame(cars);
         var carNameInput = "A,B,C";
 
-        basicGame.startGame(carNameInput, actualTryCount);
+        basicGame.startGame(carNameInput, actualTryCount, new RandomActive());
 
         assertThat(cars.getCars().size()).isEqualTo(expectedCarCount);
         assertThat(basicGame.triedCount.getValue()).isEqualTo(expectedTryCount);
@@ -42,7 +38,7 @@ public class BasicGameTest {
         BasicGame basicGame = new BasicGame(cars);
         var carNameInput = "";
 
-        assertThatThrownBy(() -> basicGame.startGame(carNameInput, tryCount)).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(() -> basicGame.startGame(carNameInput, tryCount, new RandomActive())).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(INPUT_ERROR_MESSAGE);
     }
 }
