@@ -36,22 +36,36 @@ public class StringNumberCalculator {
         return getTarget(sample).split(getDelimiterRegex(sample));
     }
 
-    public static int sum(String sample) {
+    public static int sumPatternString(String sample) {
         if (StringUtils.isBlank(sample)) {
             return 0;
         }
 
-        try {
-            String[] data = getOperand(sample);
-            return Arrays.stream(data).mapToInt(stringNumber -> {
-                int integerNumber = Integer.parseInt(stringNumber);
-                if (integerNumber < 0) { // 음수
-                    throw new RuntimeException("음수");
-                }
-                return integerNumber;
+        String[] data = getOperand(sample);
 
-            }).sum();
-        } catch (NumberFormatException numberFormatException) { //숫자가 아닌 문자
+        return sum(data);
+
+    }
+
+    private static int sum(String[] data) {
+        return Arrays.stream(data).mapToInt(stringNumber -> {
+            int integerNumber = convertToInteger(stringNumber);
+            validPositiveNumber(integerNumber);
+
+            return integerNumber;
+        }).sum();
+    }
+
+    private static int convertToInteger(String stringNumber) {
+        try {
+            return Integer.parseInt(stringNumber);
+        } catch (NumberFormatException numberFormatException) {
+            throw new RuntimeException("숫자가 아닙니다.");
+        }
+    }
+
+    private static void validPositiveNumber(int number) {
+        if (number < 0) {
             throw new RuntimeException("음수");
         }
     }
