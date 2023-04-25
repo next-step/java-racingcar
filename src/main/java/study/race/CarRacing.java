@@ -9,28 +9,41 @@ public class CarRacing {
         String[] names = InputView.scanNameOfCar().split(",");
         stringCheck(names);
         int racingCount = InputView.scanNumberOfCount();
-
         Car[] carNumbers = carArray(names.length);
+        carNumbers = namingCar(names, carNumbers);
         racing(racingCount, carNumbers);
-
     }
-
-    public static void stringCheck(String[] names) {
-            for (int i = 0; i < names.length; i++) {
-                if (names[i].length() > 5) {
-                    throw new StringIndexOutOfBoundsException("String index out of range: 5");
-                }
-            }
-    }
-
 
     private static void racing(int racingCount, Car[] carNumbers) {
         for (int i = 0; i < racingCount; i++) {
-            for (int j = 0; j < carNumbers.length; j++) {
-                carNumbers[j].position += condition(getRandom());
-            }
+            movingCar(carNumbers);
             ResultView.resultView(carNumbers);
             System.out.println("\n");
+        }
+    }
+
+    private static void movingCar(Car[] carNumbers) {
+        for (int j = 0; j < carNumbers.length; j++) {
+            carNumbers[j].position += condition(getRandom());
+        }
+    }
+
+    private static Car[] namingCar(String[] names, Car[] carNumbers) {
+        for (int i = 0; i < names.length; i++) {
+            carNumbers[i].name += names[i];
+        }
+        return carNumbers;
+    }
+
+    public static void stringCheck(String[] names) {
+        for (int i = 0; i < names.length; i++) {
+            conditionStringCheck(names, i);
+        }
+    }
+
+    private static void conditionStringCheck(String[] names, int i) {
+        if (names[i].length() > 5) {
+            throw new StringIndexOutOfBoundsException("String index out of range: 5");
         }
     }
 
