@@ -4,21 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Competition {
-    private final MovingStrategy movingStrategy = new MovingStrategyRandom();
+    private static final int DISTANCE_PER_TRY = 1;
 
+    private final MovingStrategy movingStrategy = new MovingStrategyRandom();
 
     private final List<Car> cars = new ArrayList<>();
 
-    public List<Car> moveCars(int distancePerTry) {
+    public List<Car> moveCars() {
         for (Car car : cars) {
-            car.move(movingStrategy.movable(distancePerTry));
+            car.move(movingStrategy.movable(DISTANCE_PER_TRY));
         }
         return cars;
     }
 
     public List<Car> winners() {
         int max = 0;
-        for (Car car: cars) {
+        for (Car car : cars) {
             max = Math.max(max, car.currentPosition());
         }
 

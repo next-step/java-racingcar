@@ -6,8 +6,6 @@ import CarRacing.view.ResultView;
 
 public class RacingController {
 
-    private static final int DISTANCE_PER_TRY = 1;
-
     public static void start() {
         String[] nameOfCars = InputView.getCars();
         int numberOfTry = InputView.getNumberOfTry();
@@ -16,7 +14,7 @@ public class RacingController {
         competition.entry(nameOfCars);
 
         for (int idxTry = 0; idxTry < numberOfTry; idxTry++) {
-            ResultView.printCurrentDistance(competition.moveCars(DISTANCE_PER_TRY));
+            ResultView.printCurrentDistance(competition.moveCars());
         }
 
         ResultView.printWinners(competition.winners());
