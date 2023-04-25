@@ -36,11 +36,13 @@ public class Car {
         return this.distance == maxDistance;
     }
 
-    public void increaseDistance() {
+    public Car increaseDistance() {
         if (!availableForward()) {
-            return;
+            return null;
         }
         distance++;
+
+        return this;
     }
 
     public boolean availableForward() {

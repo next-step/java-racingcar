@@ -11,7 +11,7 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
-        this.cars = cars;
+        this.cars = new ArrayList<>(cars);
     }
 
     public void checkForwardConditionAndGo() {
@@ -26,7 +26,10 @@ public class Cars {
 
     public String getWinner() {
         int maxDistance = getMaxDistance();
-        return cars.stream().filter(car -> car.hasMaxDistance(maxDistance)).map(Car::getName).collect(Collectors.joining(", "));
+        return cars.stream()
+                .filter(car -> car.hasMaxDistance(maxDistance))
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
     }
 
     public int getMaxDistance() {
@@ -38,6 +41,15 @@ public class Cars {
         }
 
         return maxDistance;
+    }
+
+    public Cars getClone() {
+        List<Car> copyCars = new ArrayList<>();
+        for (Car car : cars) {
+            copyCars.add(new Car(car.getName(), car.getDistance()));
+        }
+
+        return new Cars(copyCars);
     }
 
     public int getCarSize() {

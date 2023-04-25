@@ -1,7 +1,9 @@
-package racingcar;
+package racingcar.domain;
 
 import racingcar.model.Cars;
-import racingcar.view.ResultView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RacingProcess {
     private final String carName;
@@ -15,22 +17,21 @@ public class RacingProcess {
         this.periodCount = periodCount;
     }
 
-    public void racingStart() {
+    public List<Cars> racingStart() {
         Cars cars = Cars.generateCars(carName);
-        ResultView resultView = new ResultView();
 
-        resultView.startUI();
-        resultView.drawing(cars.getCars());
-        iterateRacing(cars, resultView);
+        return iterateRacing(cars);
     }
 
-    private void iterateRacing(Cars cars, ResultView resultView) {
+    private List<Cars> iterateRacing(Cars cars) {
+        List<Cars> roundResult = new ArrayList<>();
+        roundResult.add(cars.getClone());
         for (int i = 1; i < periodCount; i++) {
             cars.checkForwardConditionAndGo();
-            resultView.drawing(cars.getCars());
+            roundResult.add(cars.getClone());
         }
 
-        resultView.winner(cars.getWinner());
+        return roundResult;
     }
 
     private void countValidation(int count) {
@@ -44,4 +45,5 @@ public class RacingProcess {
             throw new IllegalArgumentException("자동차 이름을 입력해 주세요");
         }
     }
+
 }

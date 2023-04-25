@@ -8,6 +8,7 @@ import racingcar.model.Cars;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -61,6 +62,20 @@ public class CarsTest {
         String winner = testCar.getWinner();
 
         assertThat("철수".equals(winner)).isTrue();
+    }
+
+    @Test
+    void 객체_복사_테스트() {
+        {
+            init("a,b,c");
+            Cars cloneCar = testCar.getClone();
+            assertThat(Objects.equals(testCar.getCars(), cloneCar.getCars())).isFalse();
+        }
+        {
+            init("a,b,c");
+            Cars cloneCar = new Cars(testCar.getCars());
+            assertThat(Objects.equals(testCar.getCars(), cloneCar.getCars())).isTrue();
+        }
     }
 
 }
