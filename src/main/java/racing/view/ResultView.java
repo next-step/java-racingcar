@@ -9,6 +9,7 @@ import racing.domain.Cars;
  */
 public class ResultView {
     private static final String PRINT_CAR_FORMAT = "%s\t:\t%s\n";
+    private static final String PRINT_WINNERS_FORMAT = "%s가 최종 우승했습니다.";
 
     public static void printGameStart() {
         System.out.println("실행 결과");
@@ -19,5 +20,9 @@ public class ResultView {
             System.out.printf(PRINT_CAR_FORMAT, car.name(), "-".repeat(car.position()));
         }
         System.out.println();
+    }
+
+    public static void printWinners(Cars cars) {
+        System.out.printf(PRINT_WINNERS_FORMAT, cars);
     }
 }
