@@ -1,4 +1,5 @@
-import CarRacing.view.*;
+package CarRacing.view;
+
 import exception.NegativeInputException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -6,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class TestCarRacingInputView {
+public class InputViewTest {
 
     @Test
     @DisplayName("숫자체크 함수에서 숫자가 아닌 문자가 입력되었을 때 return false")

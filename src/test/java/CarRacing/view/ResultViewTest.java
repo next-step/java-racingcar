@@ -1,4 +1,5 @@
-import CarRacing.view.ResultView;
+package CarRacing.view;
+
 import CarRacing.domain.Car;
 
 import org.junit.jupiter.api.DisplayName;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class TestCarRacingResultView {
+public class ResultViewTest {
 
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 

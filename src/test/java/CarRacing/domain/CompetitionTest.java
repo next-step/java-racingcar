@@ -1,4 +1,5 @@
-import CarRacing.domain.*;
+package CarRacing.domain;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -8,7 +9,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class TestCarRacingCompetition {
+public class CompetitionTest {
 
     Competition competition;
 
