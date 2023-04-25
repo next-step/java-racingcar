@@ -15,9 +15,13 @@ public class Car {
     private int location;
 
     public Car(String name) {
+        this(name, DEFAULT_LOCATION);
+    }
+
+    public Car(String name, int location) {
         validCarName(name);
         this.name = name;
-        this.location = DEFAULT_LOCATION;
+        this.location = location;
     }
 
     private void validCarName(String name) {
