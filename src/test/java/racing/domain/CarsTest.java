@@ -27,6 +27,24 @@ public class CarsTest {
     }
 
     @Test
+    void 우승자_찾기() {
+        //given
+        Car giri = new Car("giri", 3);
+        Car pobi = new Car("pobi", 5);
+        Car tdd = new Car("tdd", 7);
+        Car test = new Car("test", 7);
+        List<Car> carList = List.of(giri, pobi, tdd, test);
+        Cars cars = new Cars(carList);
+        //when
+        Cars winners = cars.findWinners();
+        //then
+        List<Car> winnerList = winners.deepCopyCarList();
+        assertThat(winnerList).hasSize(2);
+        assertThat(winnerList.get(0).name()).isEqualTo("tdd");
+        assertThat(winnerList.get(1).name()).isEqualTo("test");
+    }
+
+    @Test
     void Cars_생성시_사용한_List_요소_변경시_원본_Cars_요소_변경없음() {
         //given
         List<Car> carList = new ArrayList<>();
