@@ -34,4 +34,8 @@ public class InputView {
     public static int inputCount() {
         return SCANNER.nextInt();
     }
+
+    public String[] splitCarsName(String inputCarName) {
+        return inputCarName.split(",");
+    }
 }

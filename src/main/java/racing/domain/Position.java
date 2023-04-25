@@ -4,8 +4,6 @@ import java.util.Objects;
 
 public class Position {
 
-    private final int FORWARD_STEP = 1;
-
     private int position;
 
     public Position(int position){
@@ -16,9 +14,8 @@ public class Position {
         return position;
     }
 
-    public Position move() {
-        position = position + FORWARD_STEP ;
-        return this;
+    public void move() {
+        position++;
     }
 
     public String getPositionDash() {
@@ -42,4 +39,10 @@ public class Position {
         return Objects.hash(position);
     }
 
+    @Override
+    public String toString() {
+        return "Position{" +
+                "position=" + position +
+                '}';
+    }
 }

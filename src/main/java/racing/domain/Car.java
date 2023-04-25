@@ -1,7 +1,10 @@
 package racing.domain;
 
-public class Car {
+import racing.RandomNumber;
+
+public class Car{
     private static final int FORWARD_NUM = 4;
+
 
     private Name name;
     private Position position;
@@ -16,8 +19,8 @@ public class Car {
         this.name = new Name(name);
     }
 
-    public void move(int randomNo) {
-        if (randomNo > FORWARD_NUM) {
+    public void move(RandomNumber randomNumber) {
+        if (randomNumber.movable()) {
             position.move();
         }
     }

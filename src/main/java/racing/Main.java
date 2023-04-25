@@ -14,21 +14,22 @@ public class Main {
 
 
         InputView inputView = InputView.getInstance();
-        String[] carsName = (inputView.inputCarName()).split(",");
+
+        //사용자 입력
+        String inputCarName = inputView.inputCarName();
+        String[] carsName = inputView.splitCarsName(inputCarName);
         int tryCount = inputView.inputTryCount();
 
-        List<Car> carList = new ArrayList<>();
+        Cars cars = new Cars();
+        List<Car> carList = cars.getCars(carsName);
 
-        for (String carName : carsName) {
-            carList.add(new Car(carName));
-        }
+        Cars movingCars = new Cars(carList);
 
-        Cars cars = new Cars(carList);
         for (int i = 0; i < tryCount; i++) {
-            cars.move();
+            movingCars.racingCars();
         }
 
-        List<Car> winners = cars.findWinners();
+        List<Car> winners = movingCars.findWinners();
         ResultView.printWinners(winners);
     }
 }

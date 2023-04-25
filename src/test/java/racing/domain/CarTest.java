@@ -19,7 +19,7 @@ class CarTest {
     @DisplayName(value = "이동")
     void test2() {
         Car car = new Car("abc");
-        car.move(6);
+        car.move(()->true);
         assertThat(car.getPosition()).isEqualTo(1);
     }
 
@@ -27,7 +27,7 @@ class CarTest {
     @DisplayName(value = "정지")
     void test3() {
         Car car = new Car("abc");
-        car.move(3);
+        car.move(()->false);
         assertThat(car.getPosition()).isEqualTo(0);
     }
 }
