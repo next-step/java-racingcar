@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-import basicgame.strategy.RandomActiveMock;
+import basicgame.domain.Car;
+import basicgame.domain.Cars;
+import basicgame.service.strategy.RandomActiveMock;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

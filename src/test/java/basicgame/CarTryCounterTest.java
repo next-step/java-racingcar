@@ -1,5 +1,6 @@
 package basicgame;
 
+import basicgame.domain.CarTryCounter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,6 +13,7 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTryCounterTest {
+
     private CarTryCounter carTryCounter;
     private static final int ZERO = 0;
     private static final int AUTO_INCREMENT_VALUE = 1;
