@@ -7,16 +7,19 @@ import java.util.stream.Collectors;
 public class RacingGame {
     private static final int ZERO = 0;
     private static final String DELIMITER = ",";
-    private final RacingCars racingCars;
 
+    private final RacingCars racingCars;
     private final MoveStrategy moveStrategy;
+
     public RacingGame(String nameOfCars, MoveStrategy moveStrategy) {
         this.racingCars = new RacingCars(registerCar(splitCarName(nameOfCars)));
         this.moveStrategy = moveStrategy;
     }
 
     private List<Car> registerCar(String[] nameOfCars) {
-        return Arrays.stream(nameOfCars).map(Car::new).collect(Collectors.toList());
+        return Arrays.stream(nameOfCars)
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     public void start() {

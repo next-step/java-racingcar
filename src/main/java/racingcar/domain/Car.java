@@ -22,16 +22,16 @@ public class Car {
         return position;
     }
 
-    public int getDistance() {
+    public int getPosition() {
         return position.getPosition();
     }
 
     public String getName() {
-        return name.getName();
+        return name.toString();
     }
 
-    public int compare(int otherPosition) {
-        return position.comparePosition(otherPosition);
+    public int getMaxPosition(int otherPosition) {
+        return position.getMaxPosition(otherPosition);
     }
 
     public boolean isSamePosition(int maxPosition) {

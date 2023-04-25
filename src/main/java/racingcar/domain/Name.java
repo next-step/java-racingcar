@@ -17,7 +17,8 @@ public class Name {
         return carName;
     }
 
-    public String getName() {
+    @Override
+    public String toString() {
         return name;
     }
 

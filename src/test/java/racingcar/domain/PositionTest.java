@@ -23,9 +23,9 @@ public class PositionTest {
 
     @Test
     @DisplayName("comparePosition 메소드 테스트")
-    void comparePosition() {
+    void getMaxPosition() {
         Position position = new Position(3);
-        assertThat(position.comparePosition(4)).isEqualTo(4);
+        assertThat(position.getMaxPosition(4)).isEqualTo(4);
     }
 
     @Test

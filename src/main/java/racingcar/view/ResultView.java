@@ -40,7 +40,7 @@ public class ResultView {
     public static void printStatusOfCar(List<Car> cars) {
         for(Car car: cars) {
             printNameOfCar(car.getName());
-            printDistanceOfCar(car.getDistance());
+            printDistanceOfCar(car.getPosition());
         }
         System.out.println();
     }

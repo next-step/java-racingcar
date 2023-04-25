@@ -20,7 +20,7 @@ public class Position {
         return position == otherPosition;
     }
 
-    public int comparePosition(int otherPosition) {
+    public int getMaxPosition(int otherPosition) {
         if (position <= otherPosition) {
             return otherPosition;
         }
