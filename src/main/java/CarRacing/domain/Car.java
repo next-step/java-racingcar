@@ -1,7 +1,7 @@
 package CarRacing.domain;
 
 public class Car {
-    private final Position position;
+    private Position position;
     private final CarName carname;
 
     public Car(String name) {
@@ -10,7 +10,7 @@ public class Car {
     }
 
     public void move(int number) {
-        this.position.move(number);
+        this.position = position.move(number);
     }
 
     public int currentPosition() {
