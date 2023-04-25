@@ -18,6 +18,6 @@ public class Car {
     }
 
     public String name() {
-        return this.carname.Name();
+        return this.carname.name();
     }
 }

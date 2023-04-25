@@ -13,12 +13,7 @@ public class RacingController {
         int numberOfTry = InputView.getNumberOfTry();
 
         Competition competition = new Competition();
-        try {
-            competition.entry(nameOfCars);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            throw new IllegalArgumentException(e.getMessage());
-        }
+        competition.entry(nameOfCars);
 
         for (int idxTry = 0; idxTry < numberOfTry; idxTry++) {
             ResultView.printCurrentDistance(competition.moveCars(DISTANCE_PER_TRY));
