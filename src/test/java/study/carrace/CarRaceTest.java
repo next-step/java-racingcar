@@ -16,7 +16,7 @@ public class CarRaceTest {
   @Test
   public void 인풋_테스트() throws Exception {
     // given
-    Input carInput = new InputTestImpl();
+    Input carInput = new InputCarStringTest();
     Input countInput = new InputTestImpl();
     Randomizer randomizer = new RandomizerImpl();
     CarRace carRace = new CarRaceImpl(carInput, countInput, randomizer);
@@ -52,6 +52,30 @@ public class CarRaceTest {
     race.progress();
     String result = race.currentRace(1);
     assertThat(result).isEqualTo("test : -");
+  }
+
+  @Test
+  @DisplayName("최종우승자를 출력하자.")
+  public void 최종우승자출력() throws Exception {
+    // given
+    Input carInput = new InputCarStringTest();
+    Input countInput = new InputTestImpl();
+    Randomizer randomizer = new RandomizerImpl();
+    CarRace carRace = new CarRaceImpl(carInput, countInput, randomizer);
+
+    // when
+    String result = carRace.run();
+
+    // then
+    assertThat(result).contains("최종");
+  }
+
+  private class InputCarStringTest implements Input {
+
+    @Override
+    public String getInput(String answer) {
+      return "car1,car2,car3,car4,car5";
+    }
   }
 
   private class InputTestImpl implements Input {

@@ -11,7 +11,7 @@ public class CarRaceImpl implements CarRace {
   private final Randomizer randomizer;
 
   public CarRaceImpl(Input carInput, Input countInput, Randomizer randomizer) {
-    this.carInput = countInput;
+    this.carInput = carInput;
     this.countInput = countInput;
     this.randomizer = randomizer;
   }
@@ -36,7 +36,25 @@ public class CarRaceImpl implements CarRace {
       sb.append("\n");
     }
 
+    sb.append(winner(races)).append("가 최종 우승했습니다.");
+
     return sb.toString();
+  }
+
+  private String winner(Race[] races) {
+    String winners = "";
+    int max = 0;
+
+    for(Race race : races) {
+      if(max < race.total()) {
+        max = race.total();
+        winners = race.carName();
+      }else if(max == race.total()) {
+        winners += ", " + race.carName();
+      }
+    }
+
+    return winners;
   }
 
 }

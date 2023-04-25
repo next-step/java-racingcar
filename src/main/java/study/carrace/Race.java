@@ -36,6 +36,14 @@ public class Race {
     return this.car.getName() + " : " + String.join("", Collections.nCopies(currentDistance, "-"));
   }
 
+  public int total() {
+    return this.cumulativeSum(distances.size());
+  }
+
+  public String carName() {
+    return this.car.getName();
+  }
+
   private void go() {
     distances.add(new Distance(GO));
   }
