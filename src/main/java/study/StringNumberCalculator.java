@@ -9,11 +9,14 @@ public class StringNumberCalculator {
 
     public static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
 
+    private static final int DELIMITER_GROUP = 1;
+    private static final int OPERAND_GROUP = 2;
+
     public static String getDelimiterRegex(String sample) {
         Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(sample);
 
         if (matcher.find()) {
-            return matcher.group(1);
+            return matcher.group(DELIMITER_GROUP);
         }
 
         return DEFAULT_DELIMITER_REGEX;
@@ -23,7 +26,7 @@ public class StringNumberCalculator {
         Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(sample);
 
         if (matcher.find()) {
-            return matcher.group(2);
+            return matcher.group(OPERAND_GROUP);
         }
 
         return sample;
