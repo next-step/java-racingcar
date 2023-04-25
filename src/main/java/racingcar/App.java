@@ -5,18 +5,26 @@ import racingcar.game.WinnerDecisionByBigLocations;
 import racingcar.view.ConsoleView;
 import racingcar.view.NameParser;
 
+import java.util.List;
+
 public class App {
     public static void main(String[] args) {
         ConsoleView consoleView = new ConsoleView(new NameParser());
+
+        int trial = consoleView.numbOfTrial();
+        List<String> names = consoleView.namesOfCar();
+
         RacingGame racingGame = new RacingGame(
-                consoleView.numbOfTrial(),
-                consoleView.namesOfCar(),
+                trial,
+                names,
                 new WinnerDecisionByBigLocations());
 
-        racingGame.runOnce();
+        for (int t = 0; t < trial; t++) {
+            consoleView.printCarsLocation(racingGame.runOnce());
+        }
 
-        consoleView.printCarsLocation(racingGame.allCars());
         consoleView.printWinners(racingGame.winnerCars());
     }
+
 }
 

@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.game.dto;
 
 import racingcar.car.Car;
 

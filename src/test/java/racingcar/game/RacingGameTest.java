@@ -4,7 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.assertj.core.api.Condition;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.CarDto;
+import racingcar.game.dto.CarDto;
 
 import java.util.List;
 
@@ -32,7 +32,7 @@ class RacingGameTest {
 
     @Test
     void 게임을_1회_실행하면_실행결과_자동차_상태를담은_컬렉션을_반환한다() {
-        List<CarDto> carDTOs = game.runOnce();
+        List<CarDto> carDTOs = game.runOnce().getCars();
 
         Assertions.assertThat(carDTOs)
                 .haveAtLeastOne(carNamed(racingCarName));
@@ -47,7 +47,7 @@ class RacingGameTest {
 
     @Test
     void 게임이_종료되기_전에는_우승자를_알려주지_않는다() {
-        for(int i = 0; i < numbOfTrial - 1; i++) {
+        for (int i = 0; i < numbOfTrial - 1; i++) {
             game.runOnce();
         }
 
@@ -59,7 +59,7 @@ class RacingGameTest {
     void 게임_종료_후_우승자를_알려준다() {
         runGameUntilEnd();
 
-        Assertions.assertThat(game.winnerCars().winners())
+        Assertions.assertThat(game.winnerCars().getCars())
                 .haveAtLeastOne(carNamed(racingCarName));
     }
 

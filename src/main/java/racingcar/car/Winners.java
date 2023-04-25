@@ -1,21 +1,16 @@
 package racingcar.car;
 
-import racingcar.CarDto;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Winners {
-    private final List<CarDto> winners;
+    private final List<Car> winners;
 
     public Winners(List<Car> winners) {
-        this.winners = winners.stream()
-                .map(CarDto::new)
-                .collect(Collectors.toList());
+        this.winners = new ArrayList<>(winners);
     }
 
-    public List<CarDto> winners() {
+    public List<Car> winners() {
         return new ArrayList<>(this.winners);
     }
 }

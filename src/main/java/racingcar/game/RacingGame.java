@@ -1,8 +1,9 @@
 package racingcar.game;
 
-import racingcar.CarDto;
 import racingcar.car.Car;
 import racingcar.car.Winners;
+import racingcar.game.dto.CarDto;
+import racingcar.game.dto.CarsDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +34,7 @@ public class RacingGame {
         return cars;
     }
 
-    public List<CarDto> runOnce() {
+    public CarsDto runOnce() {
         if (!numbOfTrial.hasChance()) {
             throw new GameException("이미 레이싱이 끝났습니다.");
         }
@@ -44,19 +45,13 @@ public class RacingGame {
             pickWinners();
         }
 
-        return convertToDTO();
+        return convertToDTO(this.cars);
     }
 
     private void moveCars() {
         for (Car car : this.cars) {
             car.move();
         }
-    }
-
-    private List<CarDto> convertToDTO() {
-        return this.cars.stream()
-                .map(CarDto::new)
-                .collect(Collectors.toList());
     }
 
     private boolean isLastTrial() {
@@ -67,16 +62,18 @@ public class RacingGame {
         this.winners = winnerDecisionStrategy.decideWinners(this.cars);
     }
 
-    public List<Car> allCars() {
-        return this.cars;
-    }
-
-    public Winners winnerCars() {
-        if(!isEnded()) {
+    public CarsDto winnerCars() {
+        if (!isEnded()) {
             throw new GameException("게임이 끝나기 전까지 우승자를 알 수 없습니다");
         }
 
-        return this.winners;
+        return convertToDTO(this.winners.winners());
+    }
+
+    private CarsDto convertToDTO(List<Car> cars) {
+        return new CarsDto(cars.stream()
+                .map(CarDto::new)
+                .collect(Collectors.toList()));
     }
 
     public boolean isEnded() {

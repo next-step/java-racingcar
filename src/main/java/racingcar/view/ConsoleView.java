@@ -1,9 +1,8 @@
 package racingcar.view;
 
 import calculator.StringParser;
-import racingcar.CarDto;
-import racingcar.car.Car;
-import racingcar.car.Winners;
+import racingcar.game.dto.CarDto;
+import racingcar.game.dto.CarsDto;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
@@ -20,17 +19,17 @@ public class ConsoleView {
         this.nameParser = nameParser;
     }
 
-    public void printCarsLocation(List<Car> cars) {
-        for (Car car : cars) {
+    public void printCarsLocation(CarsDto cars) {
+        for (CarDto car : cars.getCars()) {
             printCarsLocation(car);
         }
         System.out.println();
     }
 
-    private void printCarsLocation(Car car) {
-        System.out.print(car.name() + " : ");
+    private void printCarsLocation(CarDto car) {
+        System.out.print(car.getName() + " : ");
 
-        for (int i = 0; i < car.location(); i++) {
+        for (int i = 0; i < car.getLocation(); i++) {
             System.out.print("-");
         }
 
@@ -101,8 +100,8 @@ public class ConsoleView {
         return scanner.nextLine();
     }
 
-    public void printWinners(Winners winners) {
-        String winnerNames = winners.winners().stream()
+    public void printWinners(CarsDto winners) {
+        String winnerNames = winners.getCars().stream()
                 .map(CarDto::getName)
                 .collect(Collectors.joining(", "));
 
