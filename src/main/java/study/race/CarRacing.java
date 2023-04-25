@@ -7,6 +7,7 @@ public class CarRacing {
 
     public static void main(String[] args) {
         String[] names = InputView.scanNameOfCar().split(",");
+        stringCheck(names);
         int racingCount = InputView.scanNumberOfCount();
 
         Car[] carNumbers = carArray(names.length);
@@ -14,9 +15,18 @@ public class CarRacing {
 
     }
 
+    public static void stringCheck(String[] names) {
+            for (int i = 0; i < names.length; i++) {
+                if (names[i].length() > 5) {
+                    throw new StringIndexOutOfBoundsException("String index out of range: 5");
+                }
+            }
+    }
+
+
     private static void racing(int racingCount, Car[] carNumbers) {
-        for(int i = 0; i< racingCount; i++){
-            for(int j = 0; j< carNumbers.length; j++) {
+        for (int i = 0; i < racingCount; i++) {
+            for (int j = 0; j < carNumbers.length; j++) {
                 carNumbers[j].position += condition(getRandom());
             }
             ResultView.resultView(carNumbers);
@@ -33,7 +43,6 @@ public class CarRacing {
         Car[] car = new Car[carCount];
         for (int i = 0; i < carCount; i++) {
             car[i] = new Car();
-
         }
         return car;
     }

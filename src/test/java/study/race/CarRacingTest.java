@@ -22,10 +22,13 @@ public class CarRacingTest {
     }
 
     @Test
-    @DisplayName("경주 구현")
-    void racingCount(){
-        assertThat(CarRacing.condition(3)).isEqualTo(0);
+    @DisplayName("만일 입력받은 이름이 5글자 초과하면 예외처리하기 ")
+    void nameCheck(){
+        assertThatThrownBy(() -> {
+            String[] test3 = {"pobi","crong","honux1"};
+            CarRacing.stringCheck(test3);
+        }).isInstanceOf(StringIndexOutOfBoundsException.class)
+                .hasMessageContaining("String index out of range: 5");
     }
-
 
 }
