@@ -5,30 +5,41 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringNumberCalculator {
-    public static final String DEFAULT_DELIMETER_REGEX = ",|:";
+    public static final String DEFAULT_DELIMITER_REGEX = ",|:";
 
-    public static final Pattern CALCULATOR_NUMBER_PARSER_PATTERN = Pattern.compile("//(.)\n(.*)");
+    public static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
 
-    public static int splitAndSum(String sample) {
+    public static String getDelimiterRegex(String sample) {
+        Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(sample);
 
+        if (matcher.find()) {
+            return matcher.group(1);
+        }
 
-        if (StringUtils.isBlank(sample)) { // 이 자체로도 해석이 가능하다고 생각, 메서드로 만들면 어떤 장점이 있을지 고민.
+        return DEFAULT_DELIMITER_REGEX;
+    }
+
+    public static String getTarget(String sample) {
+        Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(sample);
+
+        if (matcher.find()) {
+            return matcher.group(2);
+        }
+
+        return sample;
+    }
+
+    public static String[] getOperand(String sample) {
+        return getTarget(sample).split(getDelimiterRegex(sample));
+    }
+
+    public static int sum(String sample) {
+        if (StringUtils.isBlank(sample)) {
             return 0;
         }
 
-        String splitRegex;
-
-        Matcher matcher = CALCULATOR_NUMBER_PARSER_PATTERN.matcher(sample);
-
-        if (matcher.find()) {
-            splitRegex = matcher.group(1); // TODO:: return 해야할 것이 splitRegex, sample 2개인데, 어떻게 메서드로 만들지?
-            sample = matcher.group(2);
-        } else {
-            splitRegex = DEFAULT_DELIMETER_REGEX;
-        }
-
         try {
-            String[] data = sample.split(splitRegex);
+            String[] data = getOperand(sample);
             return Arrays.stream(data).mapToInt(stringNumber -> {
                 int integerNumber = Integer.parseInt(stringNumber);
                 if (integerNumber < 0) { // 음수
@@ -41,5 +52,4 @@ public class StringNumberCalculator {
             throw new RuntimeException("음수");
         }
     }
-
 }
