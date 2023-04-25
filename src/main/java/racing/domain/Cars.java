@@ -34,7 +34,7 @@ public class Cars {
     public Cars findWinners() {
         int maxPosition = findMaxPosition();
         List<Car> winners = new ArrayList<>();
-        for (Car car : carList) {
+        for (Car car : this.carList) {
             addWinner(car, maxPosition, winners);
         }
         return new Cars(winners);
@@ -52,5 +52,16 @@ public class Cars {
         if (car.isWinner(maxPosition)) {
             winners.add(car);
         }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (Car car : this.carList) {
+            sb.append(car.name());
+            sb.append(", ");
+        }
+        sb.delete(sb.lastIndexOf(", "), sb.length());
+        return sb.toString();
     }
 }
