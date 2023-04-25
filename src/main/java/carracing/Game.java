@@ -21,7 +21,7 @@ public class Game {
         }
 
         Winner winners = new Winner(raceCars);
-        System.out.println(resultView.printWinner(winners.getWinners()));
+        System.out.println(resultView.printWinner(winners.addWinners()));
     }
 
     public static List<Car> participate(List<String> carNameList) {

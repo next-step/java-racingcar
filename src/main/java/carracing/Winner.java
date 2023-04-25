@@ -37,7 +37,7 @@ public class Winner {
         return compareNumber;
     }
 
-    public List<Car> getWinners() {
+    public List<Car> addWinners() {
         return winners;
     }
 }

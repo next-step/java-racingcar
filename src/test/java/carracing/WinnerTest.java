@@ -28,7 +28,7 @@ class WinnerTest {
     @Test
     void findWinner() {
         Winner winners = new Winner(cars);
-        List<String> result = winners.getWinners().stream()
+        List<String> result = winners.addWinners().stream()
                 .map(Car::getName)
                 .collect(Collectors.toList());
         assertThat(result).contains("pobi");
