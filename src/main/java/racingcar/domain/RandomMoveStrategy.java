@@ -5,7 +5,15 @@ import java.util.Random;
 public class RandomMoveStrategy implements MoveStrategy {
     private static final Integer MINIMUM_NUMBER_TO_MOVE = 4;
     private static final Integer MAX_NUMBER = 10;
-    private static final Random RANDOM = new Random();
+    private final Random random;
+
+    public RandomMoveStrategy(Random random) {
+        this.random = random;
+    }
+
+    public RandomMoveStrategy() {
+        this.random = new Random();
+    }
 
     @Override
     public boolean isMovable() {
@@ -13,6 +21,6 @@ public class RandomMoveStrategy implements MoveStrategy {
     }
 
     private Integer randomNumber() {
-        return RANDOM.nextInt(MAX_NUMBER);
+        return random.nextInt(MAX_NUMBER);
     }
 }
