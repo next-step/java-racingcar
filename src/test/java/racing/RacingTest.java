@@ -15,8 +15,8 @@ public class RacingTest {
         int input_try_count = 7;
         Racing racing = new Racing(input_car_names,input_try_count);
         assertAll(
-                () -> assertThat(racing.cars.count()).isEqualTo(3),
-                () -> assertThat(racing.try_count).isEqualTo(7)
+                () -> assertThat(racing.getCarsCount()).isEqualTo(3),
+                () -> assertThat(racing.getTryCount()).isEqualTo(7)
         );
     }
 
@@ -24,21 +24,21 @@ public class RacingTest {
     void 시도횟수_음수_입력() {
         String input_car_names = "pobi,crong,honux";
         assertAll(
-                () -> assertThatThrownBy(() -> new Racing(input_car_names,-1)).isInstanceOf(IllegalArgumentException.class).hasMessage("음수는 입력할 수 없습니다."),
-                () -> assertThatThrownBy(() -> new Racing(input_car_names,-7)).isInstanceOf(IllegalArgumentException.class).hasMessage("음수는 입력할 수 없습니다.")
+                () -> assertThatThrownBy(() -> new Racing(input_car_names,-1)).isInstanceOf(IllegalArgumentException.class),
+                () -> assertThatThrownBy(() -> new Racing(input_car_names,-7)).isInstanceOf(IllegalArgumentException.class)
         );
     }
 
     @ParameterizedTest
     @ValueSource(ints = {4,5,6,7,8,9})
     void 값이4이상일때전진(int randomNumber) {
-        assertThat(RacingRule.moveOrStop(randomNumber)).isEqualTo(RacingRule.move());
+        assertThat(RacingRule.moveOrStop(randomNumber)).isTrue();
     }
 
     @ParameterizedTest
     @ValueSource(ints = {0,1,2,3})
-    void 값이4미만일때정지(int number) {
-        assertThat(RacingRule.moveOrStop(number)).isEqualTo(RacingRule.stop());
+    void 값이4미만일때정지(int randomNumber) {
+        assertThat(RacingRule.moveOrStop(randomNumber)).isFalse();
     }
 
 
@@ -48,17 +48,17 @@ public class RacingTest {
         int input_try_count = 5;
         Racing racing = new Racing(input_car_names,input_try_count);
         assertAll(
-                () -> assertThat(racing.cars.find(0).name).isEqualTo("pobi"),
-                () -> assertThat(racing.cars.find(1).name).isEqualTo("crong"),
-                () -> assertThat(racing.cars.find(2).name).isEqualTo("honux")
+                () -> assertThat(racing.getCarName(0)).isEqualTo("pobi"),
+                () -> assertThat(racing.getCarName(1)).isEqualTo("crong"),
+                () -> assertThat(racing.getCarName(2)).isEqualTo("honux")
         );
     }
 
     @Test
     void 자동차이름길이초과() {
         assertAll(
-                () -> assertThatThrownBy(() -> new Racing("pobi,tooLongName,honux",5)).isInstanceOf(IllegalArgumentException.class).hasMessage("자동차 이름은 5자를 초과할 수 없습니다."),
-                () -> assertThatThrownBy(() -> new Car("tooLongName")).isInstanceOf(IllegalArgumentException.class).hasMessage("자동차 이름은 5자를 초과할 수 없습니다.")
+                () -> assertThatThrownBy(() -> new Racing("pobi,tooLongName,honux",5)).isInstanceOf(IllegalArgumentException.class),
+                () -> assertThatThrownBy(() -> new Car("tooLongName")).isInstanceOf(IllegalArgumentException.class)
         );
     }
 

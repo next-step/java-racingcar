@@ -1,4 +1,4 @@
-package racing.ui;
+package racing_mvc.view;
 
 import java.util.Scanner;
 

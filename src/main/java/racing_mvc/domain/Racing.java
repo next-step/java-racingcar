@@ -1,8 +1,4 @@
-package racing;
-
-import racing.ui.InputView;
-import racing.ui.ResultView;
-import racing.RacingRound;
+package racing_mvc.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,24 +11,9 @@ public class Racing {
     private final RacingRound racingRound;
     private final Cars cars;
 
-    public static Racing input() {
-        InputView inputView = InputView.create();
-        return new Racing(inputView.getCarNames(),inputView.getTryCount());
-    }
-
     public Racing(String inputCarNames, int inputTryCount) {
         racingRound = new RacingRound(inputTryCount);
         cars = makeCars(inputCarNames);
-    }
-
-    public void raceAndShow() {
-        ResultView.start();
-        for (int i = 0; i < racingRound.getRound(); i++) {
-            race();
-            ResultView.showRace(cars);
-        }
-        Winner winner = new Winner(cars);
-        ResultView.showWinners(winner);
     }
 
     private Cars makeCars(String inputCarNames) {
@@ -47,10 +28,15 @@ public class Racing {
         return inputCarNames.split(SPLIT_NAMES_DELIMITER);
     }
 
-    private void race() {
+    public Cars race() {
         for (int i = 0; i < cars.count(); i++) {
             cars.findOne(i).move(RANDOM.nextInt(BOUND_NUMBER));
         }
+        return cars;
+    }
+
+    public Winner winner() {
+        return new Winner(cars);
     }
 
     public int getCarsCount() {
@@ -61,7 +47,7 @@ public class Racing {
         return racingRound.getRound();
     }
 
-    public String getCarName(int carIndex){
-        return cars.findOneName(carIndex);
+    public Car getCar(int carIndex){
+        return cars.findOne(carIndex);
     }
 }

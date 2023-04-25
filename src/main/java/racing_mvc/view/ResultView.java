@@ -1,8 +1,9 @@
-package racing.ui;
+package racing_mvc.view;
 
-import racing.Car;
-import racing.Cars;
-import racing.Winner;
+
+import racing_mvc.domain.Car;
+import racing_mvc.domain.Cars;
+import racing_mvc.domain.Winner;
 
 public class ResultView {
     public static void showRace(Cars cars) {
@@ -25,6 +26,6 @@ public class ResultView {
     }
 
     public static void showWinners(Winner winners) {
-        System.out.print(winners.getNames()+"가 최종 우승했습니다.");
+        System.out.print(winners.getNames()+"(이)가 최종 우승했습니다.");
     }
 }

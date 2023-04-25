@@ -1,4 +1,4 @@
-package racing;
+package racing_mvc.domain;
 
 import java.util.ArrayList;
 import java.util.List;

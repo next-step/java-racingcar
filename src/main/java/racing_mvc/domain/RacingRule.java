@@ -1,4 +1,4 @@
-package racing;
+package racing_mvc.domain;
 
 public class RacingRule {
 
