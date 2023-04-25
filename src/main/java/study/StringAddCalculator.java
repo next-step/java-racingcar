@@ -10,7 +10,6 @@ public class StringAddCalculator {
     private static final int ASTERISK = 1;
 
     public int splitAndSum(String value) {
-
         if (checkNullEmpty(value)) {
             return 0;
         }
@@ -22,7 +21,6 @@ public class StringAddCalculator {
     }
 
     private String[] stringSeparatorSeparation(String value) {
-
         String[] number;
 
         Matcher m = pattern.matcher(value);
