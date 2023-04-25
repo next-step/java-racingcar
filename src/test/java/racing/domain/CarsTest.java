@@ -21,8 +21,8 @@ public class CarsTest {
     @BeforeEach
     void setUp() {
         List<Car> carList = new ArrayList<>();
-        carList.add(new Car());
-        carList.add(new Car());
+        carList.add(new Car("0giri"));
+        carList.add(new Car("pobi"));
         cars = new Cars(carList);
     }
 
@@ -30,39 +30,33 @@ public class CarsTest {
     void Cars_생성시_사용한_List_요소_변경시_원본_Cars_요소_변경없음() {
         //given
         List<Car> carList = new ArrayList<>();
-        carList.add(new Car());
-        carList.add(new Car());
+        carList.add(new Car("0giri"));
+        carList.add(new Car("pobi"));
         cars = new Cars(carList);
-
         //when
         carList.get(0).move(5);
-
         //then
-        int actual = cars.deepCopyList().get(0).location();
+        int actual = cars.deepCopyCarList().get(0).position();
         assertThat(actual).isEqualTo(0);
     }
 
     @Test
     void 응답한_deepCopyList_요소_변경시_원본_Cars_요소_변경없음() {
         //given
-        List<Car> deepCopyList = cars.deepCopyList();
-
+        List<Car> deepCopyList = cars.deepCopyCarList();
         //when
         deepCopyList.get(0).move(5);
-
         //then
-        int actual = cars.deepCopyList().get(0).location();
+        int actual = cars.deepCopyCarList().get(0).position();
         assertThat(actual).isEqualTo(0);
     }
 
     @Test
     void 응답한_deepCopyList는_변경_불가한_리스트() {
         //given
-        List<Car> deepCopyList = cars.deepCopyList();
-
+        List<Car> deepCopyList = cars.deepCopyCarList();
         //when
-        ThrowableAssert.ThrowingCallable throwable = () -> deepCopyList.add(new Car());
-
+        ThrowableAssert.ThrowingCallable throwable = () -> deepCopyList.add(new Car("fail"));
         //then
         assertThatThrownBy(throwable).isInstanceOf(UnsupportedOperationException.class);
     }

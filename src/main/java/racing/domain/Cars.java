@@ -13,14 +13,20 @@ public class Cars {
     private final List<Car> carList;
 
     public Cars(List<Car> carList) {
-        this.carList = deepCopyCarList(carList);
+        this.carList = deepCopy(carList);
     }
 
-    private static List<Car> deepCopyCarList(List<Car> carList) {
+    public List<Car> deepCopyCarList() {
+        return deepCopy(this.carList);
+    }
+
+    private List<Car> deepCopy(List<Car> carList) {
         return carList.stream().map(Car::new).collect(Collectors.toUnmodifiableList());
     }
 
-    public List<Car> deepCopyList() {
-        return deepCopyCarList(this.carList);
+    public void canStartRace() {
+        if (this.carList.size() < 2) {
+            throw new IllegalArgumentException("경주를 위해 참여 자동차는 2대 이상이어야 합니다.");
+        }
     }
 }
