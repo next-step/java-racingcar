@@ -1,8 +1,9 @@
-package racingcar;
+package racingcar.game;
 
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
+import racingcar.CarDto;
 import racingcar.car.Car;
 import racingcar.car.Winners;
 

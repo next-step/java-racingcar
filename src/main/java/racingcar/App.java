@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.game.RacingGame;
+import racingcar.game.WinnerDecisionByBigLocations;
 import racingcar.view.ConsoleView;
 import racingcar.view.NameParser;
 

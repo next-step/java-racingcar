@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.game;
 
 public class Trial {
     private int trial;

@@ -1,5 +1,6 @@
-package racingcar;
+package racingcar.game;
 
+import racingcar.CarDto;
 import racingcar.car.Car;
 import racingcar.car.Winners;
 
