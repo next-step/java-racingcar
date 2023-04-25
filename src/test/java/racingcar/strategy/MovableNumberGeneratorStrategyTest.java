@@ -14,8 +14,8 @@ class MovableNumberGeneratorStrategyTest {
         Car car = new Car("korea");
 
         car.move(new MovableNumberGeneratorStrategy());
-        int point = car.findCarPoint();
+        int actual = car.findCarPoint();
 
-        Assertions.assertThat(point).isEqualTo(1);
+        Assertions.assertThat(actual).isEqualTo(1);
     }
 }

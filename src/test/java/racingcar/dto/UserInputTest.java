@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.exception.InvalidGameRoundNumberException;
 
 @DisplayName("자동차 객체 테스트")
 public class UserInputTest {
@@ -14,7 +15,7 @@ public class UserInputTest {
     void validateCarRepetitionCount(int round) {
         String carName = "korea11, japan, china";
         Assertions.assertThatThrownBy(() -> new UserInput(round, carName))
-                .isInstanceOf(IllegalArgumentException.class)
+                .isInstanceOf(InvalidGameRoundNumberException.class)
                 .hasMessageContaining("자동차 시도 횟수는 양수만 입력 가능합니다");
     }
 }

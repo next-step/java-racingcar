@@ -4,22 +4,18 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.List;
 
 
-@DisplayName("스코어 테스트")
+@DisplayName("Scores 테스트")
 class ScoresTest {
 
-    @DisplayName("자동차의 수와 스코어 사이즈는 동일하다")
+    @DisplayName("스코어의 수와 스코어 사이즈는 동일하다")
     @Test
     void 스코어_입력_테스트() {
-        Car car = new Car("test1");
-        Car car2 = new Car("test2");
-
         Scores scores = new Scores();
-        scores.addScore(car);
-        scores.addScore(car2);
+        scores.addScore(new Score(1, "test1"));
+        scores.addScore(new Score(2, "test2"));
 
         Assertions.assertThat(scores.findAllScores()).size().isEqualTo(2);
     }
@@ -29,9 +25,9 @@ class ScoresTest {
     void 우승자_찾기_테스트() {
         Scores scores = new Scores();
 
-        scores.addScore(new Car(5, "test1"));
-        scores.addScore(new Car(6, "test2"));
-        scores.addScore(new Car(9, "test3"));
+        scores.addScore(new Score(5, "test1"));
+        scores.addScore(new Score(6, "test2"));
+        scores.addScore(new Score(9, "test3"));
 
         List<Score> winners = scores.findWinners();
 
@@ -45,9 +41,9 @@ class ScoresTest {
     void 우승자_복수_테스트() {
         Scores scores = new Scores();
 
-        scores.addScore(new Car(9, "test1"));
-        scores.addScore(new Car(6, "test2"));
-        scores.addScore(new Car(9, "test3"));
+        scores.addScore(new Score(9, "test1"));
+        scores.addScore(new Score(6, "test2"));
+        scores.addScore(new Score(9, "test3"));
 
         List<Score> winners = scores.findWinners();
 
@@ -60,9 +56,9 @@ class ScoresTest {
     void 단일_우승자_이름_확인_테스트() {
         Scores scores = new Scores();
 
-        scores.addScore(new Car(9, "test1"));
-        scores.addScore(new Car(6, "test2"));
-        scores.addScore(new Car(3, "test3"));
+        scores.addScore(new Score(9, "test1"));
+        scores.addScore(new Score(6, "test2"));
+        scores.addScore(new Score(3, "test3"));
 
         List<String> winnerNames = scores.findWinnerNames();
 
@@ -79,9 +75,9 @@ class ScoresTest {
     void 복수_우승자_이름_확인_테스트() {
         Scores scores = new Scores();
 
-        scores.addScore(new Car(9, "test1"));
-        scores.addScore(new Car(6, "test2"));
-        scores.addScore(new Car(9, "test3"));
+        scores.addScore(new Score(9, "test1"));
+        scores.addScore(new Score(6, "test2"));
+        scores.addScore(new Score(9, "test3"));
 
         List<String> winnerNames = scores.findWinnerNames();
 

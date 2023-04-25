@@ -5,7 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.dto.UserInput;
 import racingcar.strategy.MovableNumberGeneratorStrategy;
 import racingcar.strategy.NonMovableNumberGeneratorStrategy;
 import racingcar.strategy.NumberGeneratorStrategy;
@@ -23,7 +22,7 @@ class RacingGameTest {
     @Test
     void 전진_레이스_테스트() {
         NumberGeneratorStrategy numberGeneratorStrategy = new MovableNumberGeneratorStrategy();
-        RacingGame racingGame = new RacingGame();
+        RacingGame racingGame = new RacingGame(new GameRound(1));
         Cars cars = new Cars(Arrays.asList("korea", "japan", "china"));
         Scores scores = racingGame.race(cars, numberGeneratorStrategy);
         List<Integer> points = scores.findAllScores().stream()
@@ -38,7 +37,7 @@ class RacingGameTest {
     @Test
     void 정지_레이스_테스트() {
         NumberGeneratorStrategy numberGeneratorStrategy = new NonMovableNumberGeneratorStrategy();
-        RacingGame racingGame = new RacingGame();
+        RacingGame racingGame = new RacingGame(new GameRound(1));
 
         Cars cars = new Cars(Arrays.asList("korea", "japan", "china"));
         Scores scores = racingGame.race(cars, numberGeneratorStrategy);
@@ -53,11 +52,11 @@ class RacingGameTest {
     @ParameterizedTest(name = "스코어의 결과 사이즈는 게임 라운드를 진행한 라운드 수와 같다")
     @ValueSource(ints = {3, 5, 7})
     void 라운드_테스트(Integer gameRound) {
-        UserInput userInput = new UserInput(gameRound, "korea, japan, china");
-        RacingGame racingGame = new RacingGame(userInput);
+        RacingGame racingGame = new RacingGame(new GameRound(gameRound));
         NumberGeneratorStrategy numberGeneratorStrategy = new RandomNumberGeneratorStrategy();
 
-        List<Scores> scoresList = racingGame.startGame(numberGeneratorStrategy);
+        Cars cars = new Cars(Arrays.asList("korea", "japan", "china"));
+        List<Scores> scoresList = racingGame.startGame(cars, numberGeneratorStrategy);
 
         Assertions.assertThat(scoresList).size().isEqualTo(gameRound);
     }

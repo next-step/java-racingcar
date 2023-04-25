@@ -1,24 +1,19 @@
 package racingcar.domain;
 
 public class Score {
-    private final int point;
-    private final String carName;
-
-    public Score(Car car) {
-        this.point = car.findCarPoint();
-        this.carName = car.findCarName();
-    }
+    private final Point point;
+    private final Name name;
 
     public Score(int point, String carName) {
-        this.point = point;
-        this.carName = carName;
+        this.point = new Point(point);
+        this.name = new Name(carName);
     }
 
     public int findPoint() {
-        return point;
+        return point.getPoint();
     }
 
     public String findCarName() {
-        return carName;
+        return name.getName();
     }
 }
