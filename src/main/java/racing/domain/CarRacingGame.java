@@ -48,6 +48,10 @@ public class CarRacingGame {
     }
 
     public Cars result() {
-        return this.cars; // 불변이 보증되어 있어 참조형이어도 그대로 응답가능
+        return this.cars;
+    }
+
+    public Cars winners() {
+        return this.cars.findWinners();
     }
 }

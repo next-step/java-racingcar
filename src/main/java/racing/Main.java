@@ -20,5 +20,6 @@ public class Main {
             carRacingGame.doRound();
             ResultView.printCars(carRacingGame.result());
         }
+        ResultView.printWinners(carRacingGame.winners());
     }
 }
