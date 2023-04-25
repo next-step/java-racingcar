@@ -1,6 +1,5 @@
 package step3;
 
-
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -15,21 +14,12 @@ import static org.junit.jupiter.params.provider.Arguments.arguments;
 public class RacingCarTest {
 
     RacingCar rc = new RacingCar();
-    Car car = new Car();
+    Car car = new Car("car1");
     int carCount = 3;
-    int raceCount = 5;
 
-    @ParameterizedTest(name = "{0} : add {1}")
-    @MethodSource("goParameter")
-    void 이동_여부(boolean isGo, int result) {
-        rc.goOrStop(isGo, car);
-        assertThat(car.getGoCount()).isEqualTo(result);
-    }
-    static Stream<Arguments> goParameter(){
-        return Stream.of(
-                arguments(true, 1)
-                ,arguments(false, 0)
-        );
+    @Test
+    void 차_대수만큼_리스트_사이즈() {
+        Assertions.assertThat(rc.createCars(new String[]{"1", "2", "3"})).hasSize(carCount);
     }
 
     @ParameterizedTest(name = "{0} is more than 4 : {1}")

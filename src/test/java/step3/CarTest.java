@@ -2,23 +2,25 @@ package step3;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.stream.Stream;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.params.provider.Arguments.arguments;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
 
-    Car car = new Car();
+    RacingCar rc = new RacingCar();
+    Car car = new Car("car1");
     int carCount = 3;
 
     @Test
-    void 차_대수만큼_리스트_사이즈() {
-        Assertions.assertThat(car.createCars(carCount)).hasSize(carCount);
+    void 차_이름_예외처리() {
+        assertThatThrownBy(() -> car.checkName("123456"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void addCount() {
+        car.addGoCount();
+        Assertions.assertThat(car.getGoCount()).isEqualTo(1);
     }
 
 }
