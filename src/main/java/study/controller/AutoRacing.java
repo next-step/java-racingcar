@@ -1,6 +1,6 @@
 package study.controller;
 
-import study.utils.CarFactory;
+import study.domain.CarFactory;
 import study.domain.AutoRacingParticipant;
 import study.domain.GameInfo;
 import study.domain.RacingCar;

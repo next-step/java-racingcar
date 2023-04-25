@@ -1,7 +1,5 @@
 package study.domain;
 
-import study.utils.MoveChecker;
-
 import java.util.Objects;
 
 public class RacingCar {
@@ -19,17 +17,11 @@ public class RacingCar {
     }
 
     public void moveOrStop(int randomNumber) {
-        if (MoveChecker.canMoveForward(randomNumber)) {
-            moveForward();
-        }
+        this.moveCount.moveOrStop(randomNumber);
     }
 
     public boolean isSameMoveCount(int maxCountValue) {
         return moveCount.checkIsSame(maxCountValue);
-    }
-
-    private void moveForward() {
-        this.moveCount.moveForward();
     }
 
     @Override
