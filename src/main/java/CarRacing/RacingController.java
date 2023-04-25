@@ -1,9 +1,10 @@
 package CarRacing;
 
+import CarRacing.domain.Competition;
 import CarRacing.view.InputView;
 import CarRacing.view.ResultView;
 
-public class Racing {
+public class RacingController {
 
     public static void start() {
         String[] nameOfCars = InputView.getCars();
@@ -12,7 +13,7 @@ public class Racing {
         Competition competition = new Competition();
         competition.entry(nameOfCars);
 
-        for (int idxTry=0; idxTry < numberOfTry; idxTry++) {
+        for (int idxTry = 0; idxTry < numberOfTry; idxTry++) {
             ResultView.printCurrentDistance(competition.moveCars());
         }
 

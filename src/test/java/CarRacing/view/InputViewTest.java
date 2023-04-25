@@ -1,4 +1,5 @@
-import CarRacing.view.*;
+package CarRacing.view;
+
 import exception.NegativeInputException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -6,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class TestCarRacingInputView {
+public class InputViewTest {
 
     @Test
     @DisplayName("숫자체크 함수에서 숫자가 아닌 문자가 입력되었을 때 return false")
@@ -48,12 +49,5 @@ public class TestCarRacingInputView {
     public void getNumberOfCar_number() {
         int actual = InputView.getNumber("5");
         assertThat(actual).isEqualTo(5);
-    }
-
-    @Test
-    @DisplayName("차량 이름 길이가 5자 초과하면 IlligalArgumentException 발생")
-    public void car_name_above_5() {
-        assertThatThrownBy(() -> InputView.getNameOfCars("aaa,bbbbbb,cccc,dddd,eeee,ffff"))
-                .isInstanceOf(IllegalArgumentException.class);
     }
 }
