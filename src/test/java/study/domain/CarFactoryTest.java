@@ -1,8 +1,9 @@
-package study.utils;
+package study.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import study.domain.CarFactory;
 import study.domain.RacingCar;
 
 import java.util.ArrayList;

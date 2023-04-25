@@ -1,6 +1,4 @@
-package study.utils;
-
-import study.domain.RacingCar;
+package study.domain;
 
 import java.util.ArrayList;
 import java.util.List;
