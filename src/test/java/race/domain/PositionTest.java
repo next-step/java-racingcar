@@ -1,6 +1,7 @@
-package race;
+package race.domain;
 
 import org.junit.jupiter.api.Test;
+import race.domain.Position;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 

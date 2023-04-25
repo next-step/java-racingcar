@@ -1,6 +1,9 @@
-package race;
+package race.domain;
 
 import org.junit.jupiter.api.Test;
+import race.TestHelper;
+import race.domain.Cars;
+import race.domain.CarsFactory;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 

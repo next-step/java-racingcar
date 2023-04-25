@@ -1,5 +1,9 @@
 package race;
 
+import race.domain.Cars;
+import race.domain.CarsFactory;
+import race.domain.Race;
+import race.domain.RandomMoveStrategy;
 import race.view.InputView;
 import race.view.ResultView;
 
