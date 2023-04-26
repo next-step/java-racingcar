@@ -3,6 +3,7 @@ package racing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.OptionalInt;
 import java.util.stream.Collectors;
 
 /**
@@ -34,18 +35,18 @@ public class Cars {
     public Cars findWinners() {
         int maxPosition = findMaxPosition();
         List<Car> winners = new ArrayList<>();
-        for (Car car : this.carList) {
-            addWinner(car, maxPosition, winners);
-        }
+        this.carList.forEach(car -> addWinner(car, maxPosition, winners));
         return new Cars(winners);
     }
 
     private int findMaxPosition() {
-        int maxPosition = 0;
-        for (Car car : this.carList) {
-            maxPosition = car.max(maxPosition);
+        OptionalInt max = this.carList.stream()
+                .mapToInt(Car::position)
+                .max();
+        if (max.isEmpty()) {
+            return 0;
         }
-        return maxPosition;
+        return max.getAsInt();
     }
 
     private void addWinner(Car car, int maxPosition, List<Car> winners) {
@@ -57,10 +58,10 @@ public class Cars {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (Car car : this.carList) {
+        this.carList.forEach(car -> {
             sb.append(car.name());
             sb.append(", ");
-        }
+        });
         sb.delete(sb.lastIndexOf(", "), sb.length());
         return sb.toString();
     }

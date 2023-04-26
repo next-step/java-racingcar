@@ -3,7 +3,6 @@ package racing.domain;
 
 import racing.util.RandomGenerator;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,10 +27,9 @@ public class CarRacingGame {
     }
 
     private Cars initCars(List<String> names) {
-        List<Car> carList = new ArrayList<>();
-        for (String name : names) {
-            carList.add(new Car(name));
-        }
+        List<Car> carList = names.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
         return new Cars(carList);
     }
 
@@ -41,9 +39,7 @@ public class CarRacingGame {
 
     public void doRound() {
         List<Car> carList = this.cars.deepCopyCarList();
-        for (Car car : carList) {
-            car.move(RandomGenerator.generate(10));
-        }
+        carList.forEach(car -> car.move(RandomGenerator.generate(10)));
         this.cars = new Cars(carList);
     }
 

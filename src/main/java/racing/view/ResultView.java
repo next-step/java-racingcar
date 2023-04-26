@@ -1,6 +1,5 @@
 package racing.view;
 
-import racing.domain.Car;
 import racing.domain.Cars;
 
 /**
@@ -16,9 +15,8 @@ public class ResultView {
     }
 
     public static void printCars(Cars cars) {
-        for (Car car : cars.deepCopyCarList()) {
-            System.out.printf(PRINT_CAR_FORMAT, car.name(), "-".repeat(car.position()));
-        }
+        cars.deepCopyCarList()
+                .forEach(car -> System.out.printf(PRINT_CAR_FORMAT, car.name(), "-".repeat(car.position())));
         System.out.println();
     }
 
