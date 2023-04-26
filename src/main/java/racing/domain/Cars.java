@@ -1,15 +1,11 @@
-package racing;
+package racing.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Cars {
-
-    private static final Random random = new Random();
-    private static final Integer RANDOM_BOUND = 10;
 
     private final List<Car> cars;
     private final int moveCount;
@@ -29,25 +25,22 @@ public class Cars {
     }
 
     public Cars move() {
-        this.cars.forEach(car -> car.move(random.nextInt(RANDOM_BOUND)));
+        this.cars.forEach(car -> car.move());
         return this;
     }
 
     public List<String> pickWinners() {
-        int maxPosition = getMaxPosition();
-        List<String> winners = new ArrayList<>();
-        cars.forEach(car -> pickWinner(maxPosition, winners, car));
-        return winners;
+        return cars.stream()
+                .filter(car -> car.isLocatedAt(maxPosition()))
+                .map(Car::name)
+                .map(Name::getValue)
+                .collect(Collectors.toList());
     }
 
-    private int getMaxPosition() {
-        return Collections.max(cars.stream().map(Car::position).collect(Collectors.toList()));
-    }
-
-    private static void pickWinner(int maxPosition, List<String> winners, Car car) {
-        if (car.isWinner(maxPosition)) {
-            winners.add(car.name());
-        }
+    private Position maxPosition() {
+        return Position.max(cars.stream()
+                .map(Car::position)
+                .collect(Collectors.toList()));
     }
 
     public List<Car> values() {
