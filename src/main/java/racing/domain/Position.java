@@ -1,11 +1,10 @@
 package racing.domain;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class Position {
+public class Position implements Comparable<Position> {
 
     private static final Integer DEFAULT_POSITION = 0;
 
@@ -31,10 +30,12 @@ public class Position {
     }
 
     public static Position max(List<Position> positions) {
-        return new Position(Collections.max(positions.stream()
-                .map(Position::getValue)
-                .collect(Collectors.toList())));
+        return positions.stream()
+                .sorted()
+                .collect(Collectors.toList())
+                .get(positions.size() - 1);
     }
+
 
     public int getValue() {
         return value;
@@ -51,6 +52,11 @@ public class Position {
     @Override
     public int hashCode() {
         return Objects.hash(value);
+    }
+
+    @Override
+    public int compareTo(Position other) {
+        return Integer.compare(this.value, other.value);
     }
 
 }
