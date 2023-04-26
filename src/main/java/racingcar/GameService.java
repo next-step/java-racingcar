@@ -4,19 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameService {
-    private List<String> carNames;
-    private int trialNumber;
     private MoveStrategy moveStrategy = new FourOverTenMoveStrategy();
 
-    public GameService(List<String> carNames, int trialNumber) {
-        this.carNames = carNames;
-        this.trialNumber = trialNumber;
-    }
-
-    public ScoreBoard play(){
+    public ScoreBoard play(List<String> carNames, int trialNumber){
         CarCollection cars = new CarCollection(carNames, moveStrategy);
-        List<Result> results = tryMoves(cars, this.trialNumber);
+
+        List<Result> results = tryMoves(cars, trialNumber);
         List<String> winners = cars.getFrontRunnerNames();
+
         return new ScoreBoard(results, winners);
     }
 

@@ -1,9 +1,7 @@
 package racingcar;
 
 import java.sql.Array;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class CarCollection {
     private List<Car> carList;
@@ -30,24 +28,15 @@ public class CarCollection {
     }
 
     public List<String> getFrontRunnerNames() {
-        List<String> frontRunnerNames = new ArrayList<>();
         int maxPosition = getMaxPosition();
-        for (Car car: this.carList){
-            if (car.getPosition() != maxPosition) continue;
-            frontRunnerNames.add(car.getName());
-        }
+
+        List<String> frontRunnerNames = (List<String>) carList.stream()
+                        .filter(i -> i.isAt(maxPosition));
+
         return frontRunnerNames;
     }
 
     private int getMaxPosition() {
-        return Collections.max(getPositions());
-    }
-
-    private List<Integer> getPositions() {
-        List<Integer>  positions = new ArrayList<>();
-        for (Car car: carList) {
-            positions.add(car.getPosition());
-        }
-        return positions;
+        return Collections.max(carList).getPosition();
     }
 }

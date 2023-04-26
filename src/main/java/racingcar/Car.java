@@ -1,7 +1,7 @@
 package racingcar;
 
-public class Car {
-    private MoveStrategy moveStrategy = new FourOverTenMoveStrategy();
+public class Car implements Comparable<Car>{
+    private MoveStrategy moveStrategy;
     private String name;
     private int position = 0;
 
@@ -15,7 +15,7 @@ public class Car {
         return name;
     }
 
-    public Integer getPosition() {
+    public int getPosition() {
         return this.position;
     }
 
@@ -35,7 +35,16 @@ public class Car {
 
     private void validateName(String name) {
         if (name.length() > 5) {
-            throw new IllegalArgumentException("Length of the car name has exceeded 5.");
+            throw new IllegalArgumentException(String.format("Length of the car name %s has exceeded 5.", name));
         }
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return Integer.compare(this.position, o.position);
+    }
+
+    public boolean isAt(int position){
+        return this.position == position;
     }
 }

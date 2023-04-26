@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Result {
-    private List<CarScore> carScrores = new ArrayList<>();
+    private List<CarScore> carScrores;
 
     public Result(List<CarScore> carScrores) {
         this.carScrores = carScrores;

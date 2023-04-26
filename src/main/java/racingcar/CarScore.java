@@ -2,9 +2,9 @@ package racingcar;
 
 public class CarScore {
     private String carName;
-    private Integer carPosition;
+    private int carPosition;
 
-    public CarScore(String carName, Integer carPosition) {
+    public CarScore(String carName, int carPosition) {
         this.carName = carName;
         this.carPosition = carPosition;
     }
@@ -13,7 +13,7 @@ public class CarScore {
         return carName;
     }
 
-    public Integer getCarPosition() {
+    public int getCarPosition() {
         return carPosition;
     }
 }
