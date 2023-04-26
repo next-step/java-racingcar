@@ -36,7 +36,6 @@ public class Position implements Comparable<Position> {
                 .get(positions.size() - 1);
     }
 
-
     public int getValue() {
         return value;
     }

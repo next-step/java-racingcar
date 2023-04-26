@@ -38,8 +38,7 @@ public class Cars {
     }
 
     private Position maxPosition() {
-        return Position.max(cars
-                .stream()
+        return Position.max(cars.stream()
                 .map(Car::position)
                 .collect(Collectors.toList()));
     }
