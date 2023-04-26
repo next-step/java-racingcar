@@ -15,17 +15,12 @@ public class Winners {
     return winnerNames.delete(winnerNames.length() - 2, winnerNames.length()).toString();
   }
 
-  public List<Car> findWinner(int maxDistance, Cars cars) {
-    for (Car car : cars.getGameCars()) {
-      checkWinner(maxDistance, car);
-    }
-    return winnerCars;
+  public void addWinner(Car car) {
+    winnerCars.add(car);
   }
 
-  private void checkWinner(int maxDistance, Car car) {
-    if (car.isWinner(maxDistance)) {
-      winnerCars.add(car);
-    }
+  public List<Car> getWinnerCars() {
+    return winnerCars;
   }
 
 }

@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import java.util.Arrays;
-import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racing.strategy.MoveNumberStrategy;
@@ -26,9 +25,9 @@ class CarsTest {
     for (int i = 0; i < TRY_NUMBER; i++) {
       cars.tryMove();
     }
-    List<Car> winners = new Winners().findWinner(cars.findMaxDistance(), cars);
+    Winners winners = cars.findWinner();
 
-    assertThat(winners.size()).isGreaterThan(0);
+    assertThat(winners.getWinnerCars().size()).isGreaterThan(0);
   }
 
   @Test
@@ -41,9 +40,9 @@ class CarsTest {
     juCar.move();
     Cars cars = new Cars(Arrays.asList(yeCar, juCar));
 
-    List<Car> winners = new Winners().findWinner(3, cars);
+    Winners winners = cars.findWinner();
 
-    assertThat(winners).contains(yeCar);
+    assertThat(winners.getWinnerCars()).contains(yeCar);
   }
 
   @Test
@@ -61,10 +60,10 @@ class CarsTest {
     siCar.move();
     Cars cars = new Cars(Arrays.asList(yeCar, juCar, siCar));
 
-    List<Car> winners = new Winners().findWinner(3, cars);
+    Winners winners = cars.findWinner();
 
-    assertThat(winners).contains(yeCar);
-    assertThat(winners).contains(juCar);
+    assertThat(winners.getWinnerCars()).contains(yeCar);
+    assertThat(winners.getWinnerCars()).contains(juCar);
   }
 
   @Test

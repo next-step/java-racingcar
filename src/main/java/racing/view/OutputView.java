@@ -5,7 +5,7 @@ import racing.domain.Car;
 
 public class OutputView {
 
-  public static void prinln() {
+  public static void println() {
     System.out.println();
   }
 

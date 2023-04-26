@@ -47,6 +47,20 @@ public class Cars {
     return this.cars;
   }
 
+  public Winners findWinner() {
+    return checkWinner(findMaxDistance());
+  }
+
+  private Winners checkWinner(int maxDistance) {
+    Winners winners = new Winners();
+    for (Car car : this.cars) {
+      if (car.isWinner(maxDistance)) {
+        winners.addWinner(car);
+      }
+    }
+    return winners;
+  }
+
   public List<Car> getGameCars() {
     return this.cars;
   }

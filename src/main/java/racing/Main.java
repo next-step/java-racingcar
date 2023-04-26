@@ -18,11 +18,10 @@ public class Main {
     OutputView.resultText();
     for (int i = 0; i < tryNumber.getTryNumber(); i++) {
       OutputView.moveDistance(cars.tryMove());
-      OutputView.prinln();
+      OutputView.println();
     }
 
-    Winners winners = new Winners();
-    winners.findWinner(cars.findMaxDistance(), cars);
+    Winners winners = cars.findWinner();
     OutputView.winner(winners.getWinnersName());
   }
 

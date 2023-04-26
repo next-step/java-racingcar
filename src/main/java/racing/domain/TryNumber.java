@@ -2,7 +2,7 @@ package racing.domain;
 
 public class TryNumber {
 
-  private int tryNumber;
+  private final int tryNumber;
 
   public TryNumber(int tryNumber) {
     if (tryNumber < 0) {
