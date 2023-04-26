@@ -1,13 +1,13 @@
-package racingcar.service;
+package racingcar.domain;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingCars {
     private final List<Car> cars;
 
-    public RacingCars(List<Car> cars)
-    {
+    public RacingCars(List<Car> cars) {
         this.cars = cars;
     }
 
@@ -23,19 +23,18 @@ public class RacingCars {
         }
     }
 
-    public List<String> getWinner()
-    {
-        int maxDistance = maxDistance();
-        return cars.stream().filter(car -> car.isWinner(maxDistance)).map(Car::getName).collect(Collectors.toList());
+    public List<String> getWinner() {
+        return cars.stream()
+                .filter(car -> car.isSamePosition(maxPosition()))
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 
-    private int maxDistance() {
-        int maxDistance = 0;
-        for(Car car: cars) {
-            maxDistance = car.max(maxDistance);
-        }
-
-        return maxDistance;
+    private int maxPosition() {
+        return cars.stream()
+                .max(Comparator.comparing(Car::getPosition))
+                .get()
+                .getPosition();
     }
 
     public List<Car> getCars() {

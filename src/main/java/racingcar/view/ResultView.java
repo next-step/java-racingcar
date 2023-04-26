@@ -1,7 +1,7 @@
 package racingcar.view;
 
-import racingcar.service.Car;
-import racingcar.service.RacingCars;
+import racingcar.domain.Car;
+import racingcar.domain.RacingCars;
 
 import java.util.List;
 
@@ -40,7 +40,7 @@ public class ResultView {
     public static void printStatusOfCar(List<Car> cars) {
         for(Car car: cars) {
             printNameOfCar(car.getName());
-            printDistanceOfCar(car.getDistance());
+            printDistanceOfCar(car.getPosition());
         }
         System.out.println();
     }

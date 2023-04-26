@@ -1,4 +1,4 @@
-package racingcar.service;
+package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -23,7 +23,7 @@ public class RacingGameTest {
         @DisplayName("참가한 자동차가 없을 경우")
         void splitExceptionNoPlayer() {
             assertThatThrownBy(()-> { RacingGame racingCar = new RacingGame("", new MoveRandomStrategy()); })
-                    .isInstanceOf(RuntimeException.class).hasMessageContaining("player zero");
+                    .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("참가한 자동차가 없습니다.");
         }
 
     }
