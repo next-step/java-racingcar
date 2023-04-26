@@ -5,7 +5,7 @@ public class RacingGame {
     private final ResultView resultView = new ResultView();
 
     private Cars cars;
-    private int playCount;
+    private PlayCount playCount;
 
     public void start() {
         addCar();
@@ -18,12 +18,12 @@ public class RacingGame {
     }
 
     private void initPlayCount() {
-        playCount = inputView.playCount();
+        playCount = new PlayCount(inputView.playCount());
     }
 
     private void playGame() {
         resultView.start();
-        for (int i = 0; i < playCount; i++) {
+        for (int i = 0; i < playCount.getCount(); i++) {
             cars.moveAll();
             resultView.score(cars.list());
         }
