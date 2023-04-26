@@ -1,7 +1,10 @@
 package study.carrace.step3.domain;
 
 
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Car {
     private final CarName carName;
@@ -26,16 +29,14 @@ public class Car {
         this.carPosition = position;
     }
 
-    public void moveOrStop() {
-        carPosition.addMoveStatus(moveStrategy.moveOrStop());
+    public Car moveOrStop(int iteration) {
+        return new Car(carName, moveStrategy, carPosition.addMoveStatus(moveOrStops(iteration)));
     }
 
-    public String positionAt(int iteration) {
-        return new StringBuilder()
-                .append(carName)
-                .append(" : ")
-                .append(carPosition.positionAt(iteration))
-                .toString();
+    private List<Boolean> moveOrStops(int iteration) {
+        return IntStream.range(0, iteration)
+                .mapToObj(i -> moveStrategy.moveOrStop())
+                .collect(Collectors.toList());
     }
 
     public long numberOfMove() {
