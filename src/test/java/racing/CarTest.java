@@ -16,7 +16,7 @@ public class CarTest {
     void 자동차_정지() {
         Car car = new Car("june");
 
-        car.move(() -> false);
+        car.move(() -> 3);
         assertThat(car.position()).isEqualTo(new Position(0));
     }
 
@@ -24,7 +24,7 @@ public class CarTest {
     void 자동차_이동() {
         Car car = new Car("june");
 
-        car.move(() -> true);
+        car.move(() -> 4);
         assertThat(car.position()).isEqualTo(new Position(1));
     }
 

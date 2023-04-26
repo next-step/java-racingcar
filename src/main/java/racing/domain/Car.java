@@ -2,6 +2,8 @@ package racing.domain;
 
 public class Car {
 
+    private static final Integer MOVE_MIN = 4;
+
     private final Name name;
     private Position position;
 
@@ -15,8 +17,8 @@ public class Car {
         this.position = new Position(position);
     }
 
-    public void move(Movable movable) {
-        if (movable.isMovable()) {
+    public void move(NumberGenerator generator) {
+        if (generator.generate() >= MOVE_MIN) {
             this.position = position.move();
         }
     }
