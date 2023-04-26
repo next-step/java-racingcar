@@ -2,6 +2,7 @@ package racingcar;
 
 import java.sql.Array;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class CarCollection {
     private List<Car> carList;
@@ -30,8 +31,10 @@ public class CarCollection {
     public List<String> getFrontRunnerNames() {
         int maxPosition = getMaxPosition();
 
-        List<String> frontRunnerNames = (List<String>) carList.stream()
-                        .filter(i -> i.isAt(maxPosition));
+        List<String> frontRunnerNames = carList.stream()
+                        .filter(i -> i.isAt(maxPosition))
+                        .map(Car::getName)
+                        .collect(Collectors.toList());
 
         return frontRunnerNames;
     }
