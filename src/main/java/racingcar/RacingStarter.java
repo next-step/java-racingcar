@@ -8,18 +8,20 @@ public class RacingStarter {
         InputView inputView = new InputView();
         ResultView resultView = new ResultView();
 
-        int requestedCarNums = inputView.requestCarNums();
+        String[] requestedCarNames = inputView.requestCarNames();
         int requestedMoveNums = inputView.requestMoveNums();
 
-        List<Car> cars = Racing.create(requestedCarNums);
+        List<Car> cars = Racing.create(requestedCarNames);
         RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
 
         RandomMovingStrategy randomMovingStrategy = new RandomMovingStrategy(randomNumberGenerator);
-        Racing racing = new Racing(requestedCarNums, cars, randomMovingStrategy);
+        Racing racing = new Racing(requestedCarNames, cars, randomMovingStrategy);
 
         for (int i = 0; i < requestedMoveNums; i++) {
             racing.race();
             resultView.openResults(racing);
         }
+
+        racing.findWinner();
     }
 }

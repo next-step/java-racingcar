@@ -12,7 +12,7 @@ public class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car();
+        car = new Car("pobi");
     }
 
     @Test
@@ -39,5 +39,16 @@ public class CarTest {
 
         // then
         assertThat(car.getMoveCount()).isEqualTo(CAR_MOVE_COUNT);
+    }
+
+    @Test
+    @DisplayName("[요구사항 3] 자동차 이름이 5자를 초과할 수 없다.")
+    void 요구사항_3() {
+        // given
+        final String CAR_NAME = "strong";
+
+        // then
+        assertThatThrownBy(() -> new Car(CAR_NAME))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
