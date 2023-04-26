@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.domain.RacingGame;
+
 public class RacingGameMain {
     public static void main(String[] args) {
         RacingGame racingGame = new RacingGame();

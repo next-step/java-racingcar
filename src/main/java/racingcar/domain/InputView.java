@@ -1,4 +1,7 @@
-package racingcar;
+package racingcar.domain;
+
+import racingcar.util.Console;
+import racingcar.util.Screen;
 
 public class InputView {
     private final Screen screen = new Screen();
