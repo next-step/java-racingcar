@@ -1,6 +1,6 @@
 package RacingCar.Output;
 
-import RacingCar.Winner;
+import RacingCar.Car;
 
 import java.util.ArrayList;
 
@@ -24,7 +24,7 @@ public class Output {
         resultView.printSpace();
     }
 
-    public void printWinner(ArrayList<Winner> name) {
+    public void printWinner(ArrayList<Car> name) {
         String result = "";
 
         for (int i = 0; i < name.size(); i++)

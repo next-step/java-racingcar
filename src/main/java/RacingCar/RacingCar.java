@@ -14,7 +14,7 @@ public class RacingCar {
 
     int count;
     ArrayList<Car> cars = new ArrayList<Car>();
-    ArrayList<Winner> winners = new ArrayList<Winner>();
+    ArrayList<Car> winners = new ArrayList<Car>();
     static Input input = new Input();
     Output output = new Output();
 
@@ -34,41 +34,25 @@ public class RacingCar {
         output.Output();
 
         for (int i = 0; i < count; i++) {
-            moveCar();
+            for (Car car : cars) car.move(getRandomNumber(10));
+
             showLoaction();
             output.printSpace();
 
         }
 
-        chooseWinners();
+        for (Car car : cars) {
+            addWinner(car, car.chooseWinner(cars));
+
+        }
+
         output.printWinner(winners);
 
     }
 
-    private void chooseWinners() {
-        int maxLocation = 0;
-
-        maxLocation = getMaxLocation(maxLocation);
-
-        addWinner(maxLocation);
-
-    }
-
-    private void addWinner(int maxLocation) {
-        for (Car car : cars)
-            if (maxLocation == car.getLocation()) winners.add(new Winner(car.getName()));
-    }
-
-    private int getMaxLocation(int maxLocation) {
-        for (Car car : cars)
-            if (car.getLocation() > maxLocation) maxLocation = car.getLocation();
-        return maxLocation;
-    }
-
-    private void moveCar() {
-        for (Car car : cars)
-            if (checkCarMove(4, getRandomNumber(10))) car.setLocation(car.getLocation() + 1);
-
+    public void addWinner(Car car, String winnerName) {
+        if (!winnerName.isEmpty())
+            winners.add(new Car(car.getLocation(), winnerName));
     }
 
     private void showLoaction() {
@@ -83,10 +67,5 @@ public class RacingCar {
         return result;
     }
 
-    private static boolean checkCarMove(int minNum, int randomNum) {
-        if (randomNum >= minNum) return true;
-
-        return false;
-    }
 
 }

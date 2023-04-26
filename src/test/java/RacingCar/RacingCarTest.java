@@ -19,46 +19,16 @@ class RacingCarTest {
     @DisplayName("자동차가 앞으로 잘 이동하는지")
     void moveCarTest() {
 
-        //when
-        String[] carName = new String[]{"pobi", "crong", "honux"};
-
-        ArrayList<Car> cars = new ArrayList<Car>();
-        for (int i = 0; i < carName.length; i++)
-            cars.add(new Car(1, carName[i]));
-
         //given
-        for (Car car : cars)
-            if (true) car.setLocation(car.getLocation() + 1);
-
-        //then
-
-        for (Car car : cars) {
-            int expected = 2;
-            int acutal = car.getLocation();
-            assertEquals(expected, acutal);
-        }
-    }
-
-    @Test
-    @DisplayName("우승자의 움직임 횟수를 잘 측정하는지")
-    void getMaxLocationTest() {
+        Car car = new Car(1, "pobi");
 
         //when
-        ArrayList<Car> cars = new ArrayList<Car>();
-        cars.add(new Car(3, "pobi"));
-        cars.add(new Car(4, "crong"));
-        cars.add(new Car(5, "honux"));
-
-        ArrayList<Winner> winners = new ArrayList<Winner>();
-        int maxLocation = 0;
-        //given
-        for (Car car : cars)
-            if (car.getLocation() > maxLocation) maxLocation = car.getLocation();
+        car.move(6);
 
         //then
-        int expected = 5;
-        int actual = maxLocation;
-        assertEquals(expected, actual);
+        int expected = 2;
+        int acutal = car.getLocation();
+        assertEquals(expected, acutal);
 
     }
 
@@ -66,21 +36,18 @@ class RacingCarTest {
     @DisplayName("우승자의 이름을 잘 알려주는지")
     void addWinnerTest() {
 
-        //when
+        //given
+        RacingCar racingCar = new RacingCar();
+
         ArrayList<Car> cars = new ArrayList<Car>();
         cars.add(new Car(3, "pobi"));
         cars.add(new Car(4, "crong"));
         cars.add(new Car(4, "honux"));
+        ArrayList<Car> winners = new ArrayList<Car>();
 
-        ArrayList<Winner> winners = new ArrayList<Winner>();
-        int maxLocation = 0;
-
+        //when
         for (Car car : cars)
-            if (car.getLocation() > maxLocation) maxLocation = car.getLocation();
-
-        //given
-        for (Car car : cars)
-            if (maxLocation == car.getLocation()) winners.add(new Winner(car.getName()));
+            racingCar.addWinner(car, car.chooseWinner(cars));
 
         //then
         String[] expected = {"crong", "honux"};
@@ -92,22 +59,37 @@ class RacingCarTest {
     }
 
     @Test
-    @DisplayName("자동차 이름은 5자 초과할때 확인")
-    void checkCarNameOver5() {
+    @DisplayName("input 시 자동차 이름은 5자 초과할때 확인")
+    void checkInputCarNameOver5() {
 
-        //when
+        //given
         String[] carName = {"abcdef"};
         Input input = new Input();
 
-        //then
+        //when
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             input.checkCarNameLength(carName);
         });
 
         String expected = "abcdef의 자동차 이름은 5자 이하여야 합니다.";
         String actual = exception.getMessage();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
     }
 
+    @Test
+    @DisplayName("자동차 이름은 5자 초과할때 확인")
+    void checkCarNameOver5() {
+
+        //given,when
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            Car car = new Car(1,"abcdef");
+        });
+
+        //then
+        String expected = "abcdef의 자동차 이름은 5자 이하여야 합니다.";
+        String actual = exception.getMessage();
+        assertEquals(expected, actual);
+
+    }
 }
