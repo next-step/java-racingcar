@@ -6,10 +6,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.IntStream;
 
 public class CarPosition {
-    private static final char POSITION_CURSOR = '-';
     private final List<Boolean> moveStatuses;
 
     public CarPosition() {
@@ -33,23 +31,9 @@ public class CarPosition {
                 .count();
     }
 
-    public String positionAt(int iteration) {
-        StringBuilder position = new StringBuilder();
-        IntStream.rangeClosed(1, iteration)
-                .filter(this::isMovedAt)
-                .forEach(i -> position.append(POSITION_CURSOR));
-
-        return position.toString();
-    }
-
     public List<Boolean> moveStatusesAt(int iteration) {
         validateIteration(iteration);
         return Collections.unmodifiableList(moveStatuses.subList(0, iteration));
-    }
-
-    private boolean isMovedAt(int iteration) {
-        validateIteration(iteration);
-        return moveStatuses.get(iteration-1);
     }
 
     private void validateIteration(int iteration) {
