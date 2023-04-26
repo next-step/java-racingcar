@@ -1,12 +1,8 @@
 package racingcar;
 
 import racingcar.domain.RacingProcess;
-import racingcar.model.Cars;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
-
-import java.util.Collections;
-import java.util.List;
 
 public class RacingCarMain {
     public static void main(String[] args) {
@@ -15,12 +11,12 @@ public class RacingCarMain {
         int periodCount = Integer.parseInt(inputView.inputValue("시도할 회수는 몇 회인가요"));
 
         RacingProcess racingProcess = new RacingProcess(carNames, periodCount);
-        List<Cars> roundResult = racingProcess.racingStart();
+        racingProcess.racingStart();
 
-        ResultView resultView = new ResultView(Collections.unmodifiableList(roundResult));
+        ResultView resultView = new ResultView();
 
         resultView.startUI();
-        resultView.drawing();
-        resultView.winner();
+        resultView.drawing(racingProcess.getScores());
+        resultView.winner(racingProcess.getWinner());
     }
 }

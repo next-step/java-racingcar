@@ -1,14 +1,14 @@
 package racingcar.model;
 
 import racingcar.utils.NumberGenerator;
-import racingcar.utils.RandomNumberGenerator;
+
+import static racingcar.model.Constant.Exceptions;
+import static racingcar.model.Constant.IntegerConstant.ZERO;
 
 public class Car {
-    private static final int MAX_BOUND = 10;
-    private static final int RANDOM_NUMBER_LIMIT = 4;
 
     private final String name;
-    private int distance = 0;
+    private int distance = ZERO;
     private final NumberGenerator numberGenerator;
 
     public Car(String name, NumberGenerator generator) {
@@ -18,22 +18,12 @@ public class Car {
         this.numberGenerator = generator;
     }
 
-    public Car(String name, int distance) {
-        this.name = name;
-        this.distance = distance;
-        this.numberGenerator = new RandomNumberGenerator();
-    }
-
     public int getDistance() {
         return distance;
     }
 
     public String getName() {
         return name;
-    }
-
-    public boolean hasMaxDistance(int maxDistance) {
-        return this.distance == maxDistance;
     }
 
     public Car increaseDistance() {
@@ -46,12 +36,12 @@ public class Car {
     }
 
     public boolean availableForward() {
-        return RANDOM_NUMBER_LIMIT <= numberGenerator.generate(MAX_BOUND);
+        return Constant.Car.RANDOM_NUMBER_LIMIT <= numberGenerator.generate(Constant.Car.MAX_BOUND);
     }
 
     private void validateCarNameLength(String name) {
         if (name.length() > 4) {
-            throw new IllegalArgumentException("자동차 이름은 5글자를 초과 할 수 없습니다.");
+            throw new IllegalArgumentException(Exceptions.NOT_OVER_FIVE_CHARACTER);
         }
     }
 }

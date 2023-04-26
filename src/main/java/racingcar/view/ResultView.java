@@ -1,40 +1,37 @@
 package racingcar.view;
 
-import racingcar.model.Car;
-import racingcar.model.Cars;
+import racingcar.model.Constant;
+import racingcar.model.RoundScore;
+import racingcar.model.RoundScores;
 
 import java.util.List;
+import java.util.Map;
+
+import static racingcar.model.Constant.DASH;
 
 public class ResultView {
-    private final List<Cars> roundResult;
 
-    public ResultView(List<Cars> roundResult) {
-        this.roundResult = roundResult;
-    }
-
-    public static final String DASH = "-";
-
-    public void drawing() {
-        for (Cars cars : roundResult) {
-            drawDash(cars);
+    public void drawing(Map<Integer, RoundScores> roundResultMap) {
+        for (RoundScores roundScores : roundResultMap.values()) {
+            drawDash(roundScores);
             System.out.println();
         }
         System.out.println();
     }
 
-    public void winner() {
-        Cars cars = roundResult.get(roundResult.size() - 1);
-        System.out.println(cars.getWinner() + "가 최종 우승했습니다.");
+    public void winner(List<String> winners) {
+        String winner = String.join(Constant.DELIMITER, winners);
+        System.out.println(winner + " 가 최종 우승했습니다.");
     }
 
     public void startUI() {
         System.out.println("실행결과");
     }
 
-    private void drawDash(Cars cars) {
-        for (Car car : cars.getCars()) {
-            System.out.print(car.getName() + ": ");
-            System.out.print(DASH.repeat(car.getDistance() + 1));
+    private void drawDash(RoundScores roundScores) {
+        for (RoundScore roundScore : roundScores.getScores()) {
+            System.out.print(roundScore.getName() + ": ");
+            System.out.print(DASH.repeat(roundScore.getScore() + 1));
             System.out.println();
         }
     }

@@ -2,6 +2,8 @@ package racingcar;
 
 import org.junit.jupiter.api.Test;
 import racingcar.model.Car;
+import racingcar.model.Constant;
+import racingcar.model.RoundScore;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -32,15 +34,15 @@ public class CarTest {
 
         assertThatThrownBy(() -> new Car(overFiveName, bound -> 3))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차 이름은 5글자를 초과 할 수 없습니다.");
+                .hasMessage(Constant.Exceptions.NOT_OVER_FIVE_CHARACTER);
     }
 
     @Test
     void 최대이동거리_테스트() {
         int maxDistance = 4;
-        Car car = new Car(TEST_CAR_NAME, maxDistance);
+        RoundScore roundScore = new RoundScore(TEST_CAR_NAME, maxDistance);
 
-        assertThat(car.hasMaxDistance(maxDistance)).isTrue();
+        assertThat(roundScore.hasMaxDistance(maxDistance)).isTrue();
     }
 
 }
