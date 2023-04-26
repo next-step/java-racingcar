@@ -1,4 +1,4 @@
-import study.racingcar.domain.RacingCarGame;
+import study.racingcar.controller.RacingCarGame;
 
 public class Application {
     public static void main(String[] args) {
