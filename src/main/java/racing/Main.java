@@ -1,5 +1,6 @@
 package racing;
 
+import racing.controller.RacingController;
 import racing.domain.Cars;
 import racing.domain.RacingGame;
 import racing.view.InputDto;
@@ -11,12 +12,11 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        InputView inputView = new InputView();
-        InputDto inputDto = inputView.InputCountOfUnit();
+        InputDto inputDto = RacingController.putGameConfig();
+        RacingGame game = RacingController.create(inputDto);
 
-        RacingGame game = new RacingGame(inputDto.input(), inputDto.count());
-        List<Cars> results = game.playGame();
-        List<String> winners = game.winners();
+        List<Cars> results = RacingController.play(game);
+        List<String> winners = RacingController.winners(game);
 
         ResultView.printCarsLocations(results);
         ResultView.printWinners(winners);
