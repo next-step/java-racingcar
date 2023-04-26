@@ -63,7 +63,7 @@ public class CarRace {
 
 
     private int findMaxScore(CarEntry entry, int maxScore) {
-        if (entry.isBiggestScore(maxScore)) {
+        if (entry.isAboveScore(maxScore)) {
             return entry.getCar().getScore();
         }
 
@@ -72,7 +72,7 @@ public class CarRace {
 
 
     private void findWinner(CarEntry entry, int maxScore) {
-        if (entry.isBiggestScore(maxScore)) {
+        if (entry.isAboveScore(maxScore)) {
             winner.add(entry.getEntryName());
         }
     }
