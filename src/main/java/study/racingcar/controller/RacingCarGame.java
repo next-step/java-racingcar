@@ -23,14 +23,6 @@ public class RacingCarGame {
         this.round = new Round(rounds);
     }
 
-    public void run() {
-        OutputView.printResultSign();
-        for (int i = 0; i < round.getTotalRounds(); i++) {
-            playTheGame(cars);
-        }
-        printGameResult();
-    }
-
     private List<String> getCarNames() {
         OutputView.printCarNameSign();
         return InputView.getCarNames();
@@ -40,6 +32,15 @@ public class RacingCarGame {
         OutputView.printTryCountSign();
         return InputView.getTryCount();
     }
+
+    public void run() {
+        OutputView.printResultSign();
+        for (int i = 0; i < round.getTotalRounds(); i++) {
+            playTheGame(cars);
+        }
+        printGameResult();
+    }
+
 
     private void playTheGame(GameCars cars) {
         cars.forEach(this::execute);
