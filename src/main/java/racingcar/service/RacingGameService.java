@@ -8,18 +8,22 @@ import racingcar.view.ResultView;
 import java.util.Random;
 
 public class RacingGameService {
-    public final int RANDOM_RANGE = 10;
-
     private int moveTimes;
-
     private Cars cars;
+    private String CAR_NAME_DELIMITER = ",";
 
     public RacingGameService() {
         this.cars = new Cars();
     }
 
     public void setCarNumber() {
-        this.cars.setCarNumber(InputView.setCarNumber());
+        this.cars = new Cars(InputView.setCarNumber());
+//        this.cars.setCarNumber(InputView.setCarNumber());
+    }
+
+    public void setCarNames() {
+        this.cars = new Cars(InputView.setCarNames().split(CAR_NAME_DELIMITER));
+//        this.cars.setCarNames(InputView.setCarNames().split(CAR_NAME_DELIMITER));
     }
 
     public void setMoveTimes() {
@@ -30,24 +34,15 @@ public class RacingGameService {
         System.out.println("실행결과");
 
         for (int i = 0; i < moveTimes; i++) {
-            moveCars();
-            ResultView.printResult(cars);
+            cars.moveCars();
+            cars.printResult();
         }
-    }
 
-    private void moveCars() {
-        for (Car car : cars.getCar()) {
-            car.move(getRandomValue());
-        }
-    }
-
-    public int getRandomValue() {
-        Random random = new Random();
-        return random.nextInt(RANDOM_RANGE);
+        cars.printWinner();
     }
 
     public int getCarNumber() {
-        return cars.getCar().size();
+        return cars.getCatNumber();
     }
 
     public int getMoveTimes() {
