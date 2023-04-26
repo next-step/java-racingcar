@@ -1,7 +1,5 @@
 package study;
 
-import java.util.List;
-
 import study.race.CarRace;
 import study.race.condition.RaceConditionNumber;
 import study.race.condition.impl.RaceRandomNumber;
