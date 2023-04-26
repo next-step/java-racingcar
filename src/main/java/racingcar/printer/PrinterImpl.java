@@ -1,6 +1,6 @@
 package racingcar.printer;
 
-import racingcar.Car;
+import racingcar.car.Car;
 import racingcar.Race;
 
 public class PrinterImpl implements Printer{

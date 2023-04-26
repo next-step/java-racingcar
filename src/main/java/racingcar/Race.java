@@ -1,10 +1,12 @@
 package racingcar;
 
 import positiveinteger.PositiveInteger;
+import racingcar.car.Car;
+import racingcar.car.CarResource;
 import racingcar.numbergenerator.NumberGenerator;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Race {
 
@@ -18,13 +20,9 @@ public class Race {
         this.numberGenerator = numberGenerator;
     }
 
-    public static Race from(int raceCount, int carCount, NumberGenerator numberGenerator){
+    public static Race from(int raceCount, CarResource carResource, NumberGenerator numberGenerator){
         PositiveInteger positiveRaceCount = PositiveInteger.from(raceCount);
-        PositiveInteger positiveCarCount = PositiveInteger.from(carCount);
-        List<Car> cars = new ArrayList<>(carCount);
-        for(int i = 0; i < positiveCarCount.getValue(); i++){
-            cars.add(new Car());
-        }
+        List<Car> cars = createCars(carResource);
 
         return new Race(positiveRaceCount, cars, numberGenerator);
     }
@@ -41,5 +39,9 @@ public class Race {
 
     private void raceCar(){
         cars.forEach(car -> car.move(numberGenerator));
+    }
+
+    private static List<Car> createCars(CarResource carResource){
+        return carResource.getCars().stream().map(Car::from).collect(Collectors.toList());
     }
 }
