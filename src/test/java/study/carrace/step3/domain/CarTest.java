@@ -49,6 +49,15 @@ class CarTest {
         assertThat(car.numberOfMove()).isEqualTo(expected);
     }
 
+    @Test
+    void move_statuses_at() {
+        // given
+        Car car = new Car("test", mockMoveStrategy(true)).moveOrStop(2);
+
+        // when, then
+        assertThat(car.moveStatusesAt(2)).containsExactly(true, true);
+    }
+
     private MoveStrategy mockMoveStrategy(boolean movable) {
         return () -> movable;
     }

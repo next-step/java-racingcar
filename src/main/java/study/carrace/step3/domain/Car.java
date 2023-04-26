@@ -43,6 +43,10 @@ public class Car {
         return carPosition.numberOfMove();
     }
 
+    public List<Boolean> moveStatusesAt(int iteration) {
+        return carPosition.moveStatusesAt(iteration);
+    }
+
     public CarName carName() {
         return carName;
     }
