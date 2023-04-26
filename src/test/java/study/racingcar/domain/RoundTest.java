@@ -4,8 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThatNoException;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class RoundTest {
     @DisplayName("1보다 작은 수를 입력할 때 예외 발생")
@@ -24,5 +23,19 @@ class RoundTest {
     void exception_occur_when_input_is_eqaul_or_greater_than_one(int count) {
         assertThatNoException()
                 .isThrownBy(() -> new Round(count));
+    }
+
+    @DisplayName("전체 round를 잘 가져오느지 확인한다.")
+    @ParameterizedTest
+    @ValueSource(ints = {1,2,3,10,100})
+    void when_CallingGetTotalRoundsMethod_Expects_SameRounds(int num) {
+        // given
+        Round round = new Round(num);
+
+        // when
+        int actualRound = round.getTotalRounds();
+
+        // then
+        assertThat(actualRound).isEqualTo(num);
     }
 }
