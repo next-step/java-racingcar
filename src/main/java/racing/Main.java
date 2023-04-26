@@ -9,9 +9,10 @@ public class Main {
     public static void main(String[] args) {
         InputView.input();
         Cars cars = RacingCarGame.initialize(InputView.carNames(), InputView.moveCount());
+        ResultView.printTitle();
         for (int i = 0; i < cars.moveCount(); i++) {
             RacingCarGame.progress(cars);
-            ResultView.printRace(cars, RacingCarGame.isStart());
+            ResultView.printRace(cars);
         }
         ResultView.showWinner(cars);
     }

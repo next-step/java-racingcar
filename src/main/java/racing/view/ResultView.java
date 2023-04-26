@@ -9,18 +9,15 @@ public class ResultView {
 
     private static final String MARK = "-";
 
-    public static void printRace(Cars cars, boolean isStart) {
-        printTitle(isStart);
+    public static void printRace(Cars cars) {
         for (Car car : cars.values()) {
             System.out.println(car.name().getNameString() + " : " + convertPositionToMark(car.position().getPosition()));
         }
         System.out.println();
     }
 
-    private static void printTitle(boolean isStart) {
-        if (isStart) {
-            System.out.println("실행 결과");
-        }
+    public static void printTitle() {
+        System.out.println("실행 결과");
     }
 
     private static String convertPositionToMark(int position) {
