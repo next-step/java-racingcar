@@ -2,6 +2,7 @@ package racing.view;
 
 import racing.domain.Car;
 import racing.domain.Cars;
+import racing.domain.Position;
 
 import java.util.List;
 
@@ -11,7 +12,7 @@ public class ResultView {
 
     public static void printRace(Cars cars) {
         for (Car car : cars.values()) {
-            System.out.println(car.name().getNameString() + " : " + convertPositionToMark(car.position().getPosition()));
+            System.out.println(car.name().getValue() + " : " + convertPositionToMark(car.position()));
         }
         System.out.println();
     }
@@ -20,8 +21,8 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    private static String convertPositionToMark(int position) {
-        return MARK.repeat(position);
+    private static String convertPositionToMark(Position position) {
+        return MARK.repeat(position.getValue());
     }
 
     public static void showWinner(Cars cars) {

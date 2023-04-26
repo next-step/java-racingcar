@@ -21,7 +21,7 @@ public class Car {
         }
     }
 
-    public boolean isLocatedAt(int maxPosition) {
+    public boolean isLocatedAt(Position maxPosition) {
         return this.position.isSameWith(maxPosition);
     }
 

@@ -4,11 +4,11 @@ public class Name {
 
     private static final Integer NAME_LEN_MAX = 5;
 
-    private String name;
+    private String value;
 
     public Name(String name) {
         validateName(name);
-        this.name = name;
+        this.value = name;
     }
 
     private static void validateName(String name) {
@@ -17,8 +17,8 @@ public class Name {
         }
     }
 
-    public String getNameString() {
-        return name;
+    public String getValue() {
+        return value;
     }
 
 }

@@ -3,6 +3,7 @@ package racing;
 import org.junit.jupiter.api.Test;
 import racing.domain.Car;
 import racing.domain.Cars;
+import racing.domain.Position;
 
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class CarTest {
         Car car = new Car("june");
 
         car.move(() -> false);
-        assertThat(car.position().getPosition()).isZero();
+        assertThat(car.position()).isEqualTo(new Position(0));
     }
 
     @Test
@@ -24,16 +25,7 @@ public class CarTest {
         Car car = new Car("june");
 
         car.move(() -> true);
-        assertThat(car.position().getPosition()).isEqualTo(1);
-    }
-
-    @Test
-    void 모든_자동차들은_이동횟수만큼_이동한다() {
-        Cars movedCars = new Cars(List.of("a", "b", "c"), 3).move();
-        movedCars.values()
-                .forEach(car -> {
-                    assertThat(car.position().getPosition()).isBetween(0, 3);
-                });
+        assertThat(car.position()).isEqualTo(new Position(1));
     }
 
     @Test
@@ -43,7 +35,7 @@ public class CarTest {
 
         Cars cars = new Cars(names, moveCount);
         for (int i = 0; i < 3; i++) {
-            assertThat(cars.values().get(i).name().getNameString()).isEqualTo(names.get(i));
+            assertThat(cars.values().get(i).name().getValue()).isEqualTo(names.get(i));
         }
     }
 

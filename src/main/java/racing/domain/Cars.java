@@ -30,11 +30,18 @@ public class Cars {
     }
 
     public List<String> pickWinners() {
-        return cars.stream().filter(car -> car.isLocatedAt(maxPosition())).map(Car::name).map(Name::getNameString).collect(Collectors.toList());
+        return cars.stream()
+                .filter(car -> car.isLocatedAt(maxPosition()))
+                .map(Car::name)
+                .map(Name::getValue)
+                .collect(Collectors.toList());
     }
 
-    private int maxPosition() {
-        return Collections.max(cars.stream().map(Car::position).map(Position::getPosition).collect(Collectors.toList()));
+    private Position maxPosition() {
+        return Position.max(cars
+                .stream()
+                .map(Car::position)
+                .collect(Collectors.toList()));
     }
 
     public List<Car> values() {
