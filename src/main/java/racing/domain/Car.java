@@ -3,7 +3,7 @@ package racing.domain;
 public class Car {
 
     private final Name name;
-    private final Position position;
+    private Position position;
 
     public Car(String name) {
         this.name = new Name(name);
@@ -17,7 +17,7 @@ public class Car {
 
     public void move(Movable movable) {
         if (movable.isMovable()) {
-            position.move();
+            this.position = position.move();
         }
     }
 
