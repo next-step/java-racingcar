@@ -1,11 +1,11 @@
 package study.carrace.step3.domain;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Cars {
-    private static final String LINE_BREAK = "\n";
     private final List<Car> cars;
 
     public Cars(List<String> carNames, MoveStrategy moveStrategy) {
@@ -16,19 +16,20 @@ public class Cars {
         this.cars = cars;
     }
 
-    public void moveOrStopCars() {
-        cars.forEach(Car::moveOrStop);
-    }
+    public Cars moveOrStopCars(int iteration) {
+        List<Car> movedOrStoppedCars = cars.stream()
+                .map(car -> car.moveOrStop(iteration))
+                .collect(Collectors.toList());
 
-    public String carsPositionAt(int iteration) {
-        StringBuilder carsPosition = new StringBuilder();
-        cars.forEach(car -> carsPosition.append(car.positionAt(iteration)).append(LINE_BREAK));
-
-        return carsPosition.toString();
+        return new Cars(movedOrStoppedCars);
     }
 
     public List<CarName> firstRankers() {
         return findCarNamesBy(maxNumberOfMove());
+    }
+
+    public List<Car> cars() {
+        return Collections.unmodifiableList(cars);
     }
 
     private List<CarName> findCarNamesBy(long numberOfMove) {
@@ -43,7 +44,7 @@ public class Cars {
                 .map(Car::numberOfMove)
                 .mapToLong(l -> l)
                 .max()
-                .getAsLong();
+                .orElse(0L);
     }
 
     private List<Car> cars(List<String> carNames, MoveStrategy moveStrategy) {
