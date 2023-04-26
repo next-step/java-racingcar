@@ -1,7 +1,6 @@
 package study.carrace.step3;
 
 import study.carrace.step3.application.RaceManager;
-import study.carrace.step3.domain.Cars;
 import study.carrace.step3.presentation.RaceMonitor;
 
 import java.util.List;
@@ -15,9 +14,8 @@ public class CarRaceApplication {
         int iterationCount = askIterationCount();
 
         RaceManager raceManager = new RaceManager(carNames, randomMoveStrategy(), iterationCount);
-        Cars racedCars = raceManager.startRace();
+        RaceMonitor raceMonitor = new RaceMonitor(raceManager.startRace(), iterationCount);
 
-        RaceMonitor raceMonitor = new RaceMonitor(racedCars, iterationCount);
         raceMonitor.showCarsPositionHistory();
         raceMonitor.announceWinners();
     }
