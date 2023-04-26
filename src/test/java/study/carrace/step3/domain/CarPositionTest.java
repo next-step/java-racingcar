@@ -24,6 +24,19 @@ class CarPositionTest {
     }
 
     @Test
+    void move_statuses_at() {
+        // given
+        CarPosition carPosition = new CarPosition(List.of(true, false, true, false));
+
+        // when
+        List<Boolean> moveStatuses = carPosition.moveStatusesAt(3);
+
+        // then
+        assertThat(moveStatuses)
+                .containsExactly(true, false, true);carPosition.moveStatusesAt(3);
+    }
+
+    @Test
     void number_of_move() {
         // given
         CarPosition carPosition = new CarPosition(List.of(true, false, true));

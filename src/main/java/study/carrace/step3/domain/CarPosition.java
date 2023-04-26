@@ -42,6 +42,11 @@ public class CarPosition {
         return position.toString();
     }
 
+    public List<Boolean> moveStatusesAt(int iteration) {
+        validateIteration(iteration);
+        return Collections.unmodifiableList(moveStatuses.subList(0, iteration));
+    }
+
     private boolean isMovedAt(int iteration) {
         validateIteration(iteration);
         return moveStatuses.get(iteration-1);
