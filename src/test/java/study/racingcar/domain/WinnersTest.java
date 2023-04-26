@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -67,7 +68,7 @@ class WinnersTest {
 
         // then
         assertThat(winnerList)
-                .isInstanceOf(ArrayList.class)
+                .isInstanceOf(List.class)
                 .isEmpty();
     }
 }
