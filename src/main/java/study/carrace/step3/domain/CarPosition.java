@@ -3,6 +3,7 @@ package study.carrace.step3.domain;
 import study.carrace.step3.domain.exception.IllegalCarPositionIteration;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.IntStream;
@@ -19,8 +20,11 @@ public class CarPosition {
         this.moveStatuses = moveStatuses;
     }
 
-    public void addMoveStatus(Boolean moveStatus) {
-        moveStatuses.add(moveStatus);
+    public CarPosition addMoveStatus(List<Boolean> moveStatuses) {
+        ArrayList<Boolean> addedMoveStatuses = new ArrayList<>(this.moveStatuses);
+        addedMoveStatuses.addAll(moveStatuses);
+
+        return new CarPosition(addedMoveStatuses);
     }
 
     public long numberOfMove() {

@@ -10,18 +10,17 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 
 class CarPositionTest {
-    @ParameterizedTest(name = "[{index}/2] 자동차 이동 상태 보관")
-    @CsvSource({"true,true", "false,false"})
-    void add_move_status(boolean moveStatus, boolean expectedMoveStatus) {
+    @Test
+    void add_move_statuses() {
         // given
-        CarPosition carPosition = new CarPosition();
+        List<Boolean> moveStatuses = List.of(true, false, true);
 
         // when
-        carPosition.addMoveStatus(moveStatus);
+        CarPosition carPosition = new CarPosition().addMoveStatus(moveStatuses);
 
         // then
         assertThat(carPosition)
-                .isEqualTo(new CarPosition(List.of(expectedMoveStatus)));
+                .isEqualTo(new CarPosition(List.of(true, false, true)));
     }
 
     @Test
