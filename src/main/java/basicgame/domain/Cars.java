@@ -1,8 +1,9 @@
-package basicgame;
+package basicgame.domain;
+
+import basicgame.service.strategy.ActiveStrategy;
 
 import java.util.Comparator;
 import java.util.stream.Collectors;
-import util.RandomUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,11 +11,13 @@ import java.util.List;
 
 public class Cars {
 
+    private final static int MAX_RANDOM = 10;
     private List<Car> cars;
 
-    public void activeCar(int randomValue) {
+
+    public void activeCar(ActiveStrategy activeStrategy) {
         for (Car car : cars) {
-            car.go(randomValue);
+            car.go(activeStrategy.generateRandom(MAX_RANDOM));
         }
     }
 
@@ -37,10 +40,11 @@ public class Cars {
         return Collections.unmodifiableList(cars);
     }
 
-    public List<Car> getWinner() {
+    public List<String> getWinners() {
         int mostDistance = getMostDistance();
         return cars.stream()
-                .filter(t -> t.getDistance() == mostDistance)
+                .filter(t -> t.isEqualDistance(mostDistance))
+                .map(Car::getName)
                 .collect(Collectors.toList());
     }
 
@@ -48,6 +52,6 @@ public class Cars {
         return cars.stream()
                 .map(Car::getDistance)
                 .max(Comparator.naturalOrder())
-                .orElse(0);
+                .orElseThrow(() -> new NullPointerException("Car 등록이 되어있지 않습니다."));
     }
 }

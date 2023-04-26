@@ -1,4 +1,4 @@
-package basicgame;
+package basicgame.domain;
 
 import util.StringUtil;
 
@@ -37,6 +37,10 @@ public class Car implements Vehicle {
 
     public boolean isEnoughValue(int value) {
         return CONDITION_VALUE <= value;
+    }
+
+    public boolean isEqualDistance(int distance){
+        return this.distance == distance;
     }
 
     @Override

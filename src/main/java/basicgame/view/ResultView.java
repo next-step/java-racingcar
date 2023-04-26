@@ -1,7 +1,8 @@
-package basicgame;
+package basicgame.view;
+
+import basicgame.domain.Vehicle;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ResultView {
     public static void printResultList(List<Vehicle> list, String mark) {
@@ -11,10 +12,8 @@ public class ResultView {
         System.out.println();
     }
 
-    public static void printWinnerList(List<Car> list) {
-        String winners = list.stream()
-                .map(Car::getName)
-                .collect(Collectors.joining(", "));
+    public static void printWinnerList(List<String> list) {
+        String winners = String.join(", ", list);
         System.out.println(winners + "가 최종 우승했습니다.");
     }
 
