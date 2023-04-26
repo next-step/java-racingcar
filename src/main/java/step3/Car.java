@@ -26,7 +26,7 @@ public class Car {
 
     public void go(int distance) {
         if (distance >= MIN_MOVE_CONDITION) {
-            location += distance;
+            location++;
         }
     }
 
