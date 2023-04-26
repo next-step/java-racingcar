@@ -14,7 +14,7 @@ public class CarRace {
 
     private List<String> winner;
     private int maxScore = 0;
-
+    
 
     public CarRace(RaceConditionNumber randomNumber) {
         this.conditionNumber = randomNumber;
@@ -25,8 +25,8 @@ public class CarRace {
         this.raceNum = raceNum;
 
         this.entrys = new ArrayList<>();
-        for (int i = 0; i < entryNames.length; i++) {
-            Car car = new Car(entryNames[i]);
+        for (String entryName : entryNames) {
+            Car car = new Car(entryName);
             this.entrys.add(new CarEntry(car));
         }
     }
