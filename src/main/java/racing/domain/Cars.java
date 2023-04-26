@@ -25,7 +25,7 @@ public class Cars {
     }
 
     public Cars move() {
-        this.cars.forEach(car -> car.move(new RandomNumberGenerator()));
+        this.cars.forEach(car -> car.move());
         return this;
     }
 

@@ -1,7 +1,6 @@
 package racing;
 
 import racing.domain.Car;
-import racing.domain.NumberGenerator;
 
 class CountingCar extends Car {
 
@@ -11,11 +10,11 @@ class CountingCar extends Car {
         super(name);
     }
 
-    @Override
-    public void move(NumberGenerator generator) {
-        super.move(generator);
-        moveCount++;
-    }
+//    @Override
+//    public void move(NumberGenerator generator) {
+//        super.move(generator);
+//        moveCount++;
+//    }
 
     int getMoveCount() {
         return moveCount;

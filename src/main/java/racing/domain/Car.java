@@ -7,9 +7,17 @@ public class Car {
     private final Name name;
     private Position position;
 
+    private NumberGenerator numberGenerator = new RandomNumberGenerator();
+
     public Car(String name) {
         this.name = new Name(name);
         this.position = new Position();
+    }
+
+    public Car(String name, NumberGenerator numberGenerator) {
+        this.name = new Name(name);
+        this.position = new Position();
+        this.numberGenerator = numberGenerator;
     }
 
     public Car(String name, int position) {
@@ -17,8 +25,8 @@ public class Car {
         this.position = new Position(position);
     }
 
-    public void move(NumberGenerator generator) {
-        if (generator.generate() >= MOVE_MIN) {
+    public void move() {
+        if (numberGenerator.generate() >= MOVE_MIN) {
             this.position = position.move();
         }
     }

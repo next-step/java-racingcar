@@ -14,17 +14,17 @@ public class CarTest {
 
     @Test
     void 자동차_정지() {
-        Car car = new Car("june");
+        Car car = new Car("june", () -> 3);
 
-        car.move(() -> 3);
+        car.move();
         assertThat(car.position()).isEqualTo(new Position(0));
     }
 
     @Test
     void 자동차_이동() {
-        Car car = new Car("june");
+        Car car = new Car("june", () -> 4);
 
-        car.move(() -> 4);
+        car.move();
         assertThat(car.position()).isEqualTo(new Position(1));
     }
 
