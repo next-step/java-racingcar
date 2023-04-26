@@ -34,6 +34,10 @@ public class CarEntry {
         moveRecord.add(car.getScore());
     }
 
+    public boolean isBiggestScore(int maxScore) {
+        return car.getScore() >= maxScore;
+    }
+
     private boolean canMove(int condition) {
         return condition >= 4;
     }

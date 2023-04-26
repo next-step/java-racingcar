@@ -13,7 +13,6 @@ public class CarRace {
     private int raceNum;
 
     private List<String> winner;
-    private int maxScore = 0;
     
 
     public CarRace(RaceConditionNumber randomNumber) {
@@ -43,8 +42,13 @@ public class CarRace {
             moveAllRaceEntry(this.entrys);
         }
 
+        int maxScore = 0;
         for (CarEntry entry : this.entrys) {
-            findWinner(entry);
+            maxScore = findMaxScore(entry, maxScore);
+        }
+
+        for (CarEntry entry : this.entrys) {
+            findWinner(entry, maxScore);
         }
     }
 
@@ -58,18 +62,18 @@ public class CarRace {
     }
 
 
-    private void findWinner(CarEntry entry) {
-        int score = entry.getCar().getScore();
-        if (score > maxScore) {
-            maxScore = score;
-            winner.clear();
-            winner.add(entry.getEntryName());
-            return;
+    private int findMaxScore(CarEntry entry, int maxScore) {
+        if (entry.isBiggestScore(maxScore)) {
+            return entry.getCar().getScore();
         }
 
-        if (score == maxScore) {
+        return maxScore;
+    }
+
+
+    private void findWinner(CarEntry entry, int maxScore) {
+        if (entry.isBiggestScore(maxScore)) {
             winner.add(entry.getEntryName());
-            return;
         }
     }
 
