@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.controller;
 
 import racingcar.domain.Car;
 import racingcar.domain.CarGroup;
@@ -14,10 +14,14 @@ public class RacingCarApplication {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String playerGroup = InputView.receiveCarNumber(scanner);
-        int cycleNumber = InputView.receiveTryNumber(scanner);
+        int cycleCount = InputView.receiveTryNumber(scanner);
 
         List<Car> cars = Racing.makeCars(playerGroup);
-        Racing.runRacing(cars, cycleNumber);
+        Racing racing = new Racing(new CarGroup(cars));
+        OutputView.resultIntro();
+        for (int i = 0; i < cycleCount; i++) {
+            OutputView.printCarGroupTrace(racing.runRacing());
+        }
 
         List<String> winnerNames = CarGroup.extractWinnerNames(cars);
         OutputView.printWinnerNames(winnerNames);

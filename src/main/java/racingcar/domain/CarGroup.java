@@ -1,7 +1,7 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import racingcar.dto.RandomValue;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,6 +11,11 @@ public class CarGroup {
 
     public CarGroup(List<Car> carGroup) {
         this.carGroup = carGroup;
+    }
+
+    public void moveAll() {
+        carGroup.stream()
+                .forEach(car -> car.move(new RandomValue()));
     }
 
     public static List<String> extractWinnerNames(List<Car> playerList) {
@@ -34,6 +39,10 @@ public class CarGroup {
         return playerList.stream()
                 .filter(car -> car.isSameDistance(distanceMax))
                 .collect(Collectors.toList());
+    }
+
+    public List<Car> getCarList() {
+        return List.copyOf(carGroup);
     }
 
 }

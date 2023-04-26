@@ -5,12 +5,14 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Position;
 
+import static org.assertj.core.api.Assertions.*;
+
 public class PositionTest {
 
     @Test
     @DisplayName("위치는 음수값을 가질 수 없으므로 예외를 던진다.")
     public void validate_Negative_ThrowException() {
-        Assertions.assertThatThrownBy(() -> new Position(-1))
+        assertThatThrownBy(() -> new Position(-1))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -20,7 +22,7 @@ public class PositionTest {
         Position nowPosition = new Position(0);
         nowPosition.moveForth();
 
-        Assertions.assertThat(nowPosition.isSameDistance(1)).isTrue();
+        assertThat(nowPosition.isSameDistance(1)).isTrue();
     }
 
     @Test
@@ -29,6 +31,6 @@ public class PositionTest {
         Position nearPosition = new Position(4);
         int selectedPosition = nearPosition.chooseRemoteDistance(5);
 
-        Assertions.assertThat(selectedPosition).isEqualTo(5);
+        assertThat(selectedPosition).isEqualTo(5);
     }
 }

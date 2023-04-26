@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static org.assertj.core.api.Assertions.*;
+
 public class CarGroupTest {
 
 
@@ -37,7 +39,7 @@ public class CarGroupTest {
                 .collect(Collectors.toList());
 
         List<String> pickWinners = CarGroup.extractWinnerNames(playerList);
-        Assertions.assertThat(winnerNameList.containsAll(pickWinners)).isTrue();
+        assertThat(winnerNameList.containsAll(pickWinners)).isTrue();
     }
 
 }
