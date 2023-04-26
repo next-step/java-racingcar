@@ -1,4 +1,4 @@
-package racing.race;
+package racing.domain;
 
 import racing.strategy.NumberGeneratorStrategy;
 
@@ -24,7 +24,7 @@ public class Car {
     return moveDistance == maxDistance;
   }
 
-  int moveDistance() {
+  public int moveDistance() {
     return moveDistance;
   }
 

@@ -1,9 +1,8 @@
-package racing.race;
+package racing.domain;
 
 import java.util.LinkedList;
 import java.util.List;
 import racing.strategy.RandomNumberStrategy;
-import racing.view.OutputView;
 
 public class Cars {
 
@@ -18,20 +17,7 @@ public class Cars {
     this.cars = cars;
   }
 
-  public List<Car> race(int tryNumber) {
-    if (tryNumber < 0) {
-      throw new NumberFormatException();
-    }
-    for (int i = 0; i < tryNumber; i++) {
-      tryMove();
-      OutputView.prinln();
-    }
-
-    Winners winners = new Winners();
-    return winners.findWinner(findMaxDistance(), this);
-  }
-
-  int findMaxDistance() {
+  public int findMaxDistance() {
     int maxDistance = 0;
     for (Car car : this.cars) {
       maxDistance = Math.max(car.moveDistance(), maxDistance);
@@ -54,11 +40,11 @@ public class Cars {
     }
   }
 
-  private void tryMove() {
+  public List<Car> tryMove() {
     for (Car car : this.cars) {
       car.move();
-      OutputView.moveDistance(car.name(), car.moveDistance());
     }
+    return this.cars;
   }
 
   public List<Car> getGameCars() {

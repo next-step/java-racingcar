@@ -1,4 +1,4 @@
-package racing.race;
+package racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -23,7 +23,10 @@ class CarsTest {
 
   @Test
   void 우승자는0명일수없다() {
-    List<Car> winners = cars.race(TRY_NUMBER);
+    for (int i = 0; i < TRY_NUMBER; i++) {
+      cars.tryMove();
+    }
+    List<Car> winners = new Winners().findWinner(cars.findMaxDistance(), cars);
 
     assertThat(winners.size()).isGreaterThan(0);
   }
@@ -67,7 +70,7 @@ class CarsTest {
   @Test
   void 이동횟수는음수를입력할수없다() {
     assertThatExceptionOfType(NumberFormatException.class)
-        .isThrownBy(() -> cars.race(-1));
+        .isThrownBy(() -> new TryNumber(-1));
   }
 
   @Test
