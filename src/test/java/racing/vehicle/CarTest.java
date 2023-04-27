@@ -19,22 +19,22 @@ class CarTest {
         Random deterministicLowRandom = new DeterministicLowRandom();
 
         return Stream.of(
-                Arguments.arguments(new RandomEngine(deterministicHighRandom), "--"),
-                Arguments.arguments(new RandomEngine(deterministicLowRandom), "-")
+                Arguments.arguments(new RandomEngine(deterministicHighRandom), 2),
+                Arguments.arguments(new RandomEngine(deterministicLowRandom), 1)
         );
     }
 
     @Test
     public void initialPosition() {
         Car randomCar = new Car(new RandomEngine());
-        assertThat(randomCar.convertPositionToDisplay()).isEqualTo("-");
+        assertThat(randomCar.getCurrentPosition()).isEqualTo(1);
     }
 
     @ParameterizedTest
     @MethodSource("deterministicRandomEngine")
-    public void convertPositionToDisplay(RandomEngine randomEngine, String result) {
+    public void move(RandomEngine randomEngine, int result) {
         Car randomCar = new Car(randomEngine);
         randomCar.move();
-        assertThat(randomCar.convertPositionToDisplay()).isEqualTo(result);
+        assertThat(randomCar.getCurrentPosition()).isEqualTo(result);
     }
 }

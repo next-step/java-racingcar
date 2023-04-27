@@ -16,7 +16,7 @@ public class Car {
         this.position += engine.accelerate();
     }
 
-    public String convertPositionToDisplay() {
-        return UNIT_DISPLAYING_LABS.repeat(this.position);
+    public int getCurrentPosition() {
+        return this.position;
     }
 }

@@ -37,11 +37,7 @@ public class Race {
     }
 
     private void currentGameDisplay() {
-        game.getParticipants().forEach(car -> {
-            String currentPosition = car.convertPositionToDisplay();
-            displayView.display(currentPosition);
-        });
-
+        displayView.displayCarsPosition(game.getParticipants());
         displayView.displayEmptyLine();
     }
 }
