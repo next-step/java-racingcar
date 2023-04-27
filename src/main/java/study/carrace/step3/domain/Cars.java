@@ -24,27 +24,8 @@ public class Cars {
         return new Cars(movedOrStoppedCars);
     }
 
-    public List<CarName> firstRankers() {
-        return findCarNamesBy(maxNumberOfMove());
-    }
-
     public List<Car> cars() {
         return Collections.unmodifiableList(cars);
-    }
-
-    private List<CarName> findCarNamesBy(long numberOfMove) {
-        return cars.stream()
-                .filter(car -> car.numberOfMove() == numberOfMove)
-                .map(Car::carName)
-                .collect(Collectors.toList());
-    }
-
-    private long maxNumberOfMove() {
-        return cars.stream()
-                .map(Car::numberOfMove)
-                .mapToLong(l -> l)
-                .max()
-                .orElse(0L);
     }
 
     private List<Car> cars(List<String> carNames, MoveStrategy moveStrategy) {
