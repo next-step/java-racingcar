@@ -20,6 +20,14 @@ public class CarTest {
         this.car = new Car("0giri");
     }
 
+    @Test
+    void 자동차_현재_위치를_표현하는_문자열_반환() {
+        car.move(5);
+        car.move(5);
+        String currentPosition = car.currentPosition();
+        assertThat(currentPosition).isEqualTo("--");
+    }
+
     @ParameterizedTest
     @ValueSource(strings = {"0", "0gi", "0giri"})
     void 이름_1글자_이상_5글자_이하_성공(String value) {

@@ -45,6 +45,10 @@ public class Car {
         this.position ++;
     }
 
+    public boolean isWinner(int maxPosition) {
+        return this.position == maxPosition;
+    }
+
     public String name() {
         return this.name;
     }
@@ -53,11 +57,7 @@ public class Car {
         return this.position;
     }
 
-    public int max(int maxPosition) {
-        return Math.max(this.position, maxPosition);
-    }
-
-    public boolean isWinner(int maxPosition) {
-        return this.position == maxPosition;
+    public String currentPosition() {
+        return "-".repeat(this.position);
     }
 }
