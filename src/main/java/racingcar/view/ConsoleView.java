@@ -1,50 +1,57 @@
 package racingcar.view;
 
-import racingcar.PositiveNumberException;
+import calculator.StringParser;
+import racingcar.game.dto.CarDto;
+import racingcar.game.dto.CarsDto;
 
+import java.util.Arrays;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
-import java.util.function.Consumer;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 public class ConsoleView {
     private static final int INVALID_INPUT_LIMIT = 3;
+    private final StringParser<String> nameParser;
 
-    private int numbOfTrial;
-    private int numbOfCar;
-
-    public void questionAboutNumberOfTrial() {
-        tryPrintAndGet((Void) -> printAndGetNumbOfTrial());
+    public ConsoleView(StringParser<String> nameParser) {
+        this.nameParser = nameParser;
     }
 
-    public void questionAboutNumberOfCars() {
-        tryPrintAndGet((Void) -> printAndGetNumbOfCar());
+    public void printCarsLocation(CarsDto cars) {
+        for (CarDto car : cars.getCars()) {
+            printCarsLocation(car);
+        }
+        System.out.println();
     }
 
-    public void printCarLocation(int location) {
-        for (int i = 0; i < location; i++) {
+    private void printCarsLocation(CarDto car) {
+        System.out.print(car.getName() + " : ");
+
+        for (int i = 0; i < car.getLocation(); i++) {
             System.out.print("-");
         }
 
         System.out.println();
     }
 
-    public int numbOfCar() {
-        return this.numbOfCar;
+    public List<String> namesOfCar() {
+        return tryPrintAndGet(this::printAndGetNamesOfCar);
     }
 
     public int numbOfTrial() {
-        return this.numbOfTrial;
+        return tryPrintAndGet(this::printAndGetNumbOfTrial);
     }
 
-    private void tryPrintAndGet(Consumer<Void> printAndGetInput) {
+    private <T> T tryPrintAndGet(Supplier<T> printAndGetInput) {
         int numbOfInput = 0;
 
         while (numbOfInput < INVALID_INPUT_LIMIT) {
             numbOfInput++;
 
             try {
-                printAndGetInput.accept(null);
-                return;
+                return printAndGetInput.get();
             } catch (PositiveNumberException ex) {
                 System.out.println("양수인 정수를 입력해 주세요");
             }
@@ -53,14 +60,10 @@ public class ConsoleView {
         throw new RuntimeException("유효하지 않은 입력 횟수 를 초과했습니다");
     }
 
-    private void printAndGetNumbOfTrial() {
+    private int printAndGetNumbOfTrial() {
         System.out.println("시도할 회수는 몇 회 인가요?");
-        this.numbOfTrial = tryGetInteger();
-    }
 
-    private void printAndGetNumbOfCar() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        this.numbOfCar = tryGetInteger();
+        return tryGetInteger();
     }
 
     private int tryGetInteger() {
@@ -81,5 +84,27 @@ public class ConsoleView {
         }
 
         return numb;
+    }
+
+
+    private List<String> printAndGetNamesOfCar() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+
+        return Arrays.stream(nameParser.parse(getString()))
+                .collect(Collectors.toList());
+    }
+
+    private String getString() {
+        Scanner scanner = new Scanner(System.in);
+
+        return scanner.nextLine();
+    }
+
+    public void printWinners(CarsDto winners) {
+        String winnerNames = winners.getCars().stream()
+                .map(CarDto::getName)
+                .collect(Collectors.joining(", "));
+
+        System.out.println(winnerNames + "가 최종 우승했습니다.");
     }
 }

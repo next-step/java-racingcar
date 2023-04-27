@@ -1,12 +1,30 @@
 package racingcar;
 
+import racingcar.game.RacingGame;
+import racingcar.game.WinnerDecisionByBigLocations;
 import racingcar.view.ConsoleView;
+import racingcar.view.NameParser;
+
+import java.util.List;
 
 public class App {
     public static void main(String[] args) {
-        RacingGame racingGame =
-                new RacingGame(new ConsoleView(), new RandomGenerator(0, 9));
+        ConsoleView consoleView = new ConsoleView(new NameParser());
 
-        racingGame.run();
+        int trial = consoleView.numbOfTrial();
+        List<String> names = consoleView.namesOfCar();
+
+        RacingGame racingGame = new RacingGame(
+                trial,
+                names,
+                new WinnerDecisionByBigLocations());
+
+        for (int t = 0; t < trial; t++) {
+            consoleView.printCarsLocation(racingGame.runOnce());
+        }
+
+        consoleView.printWinners(racingGame.winnerCars());
     }
+
 }
+
