@@ -16,6 +16,7 @@ public class StringAddCalculatorTest {
         assertThat(result).isEqualTo(0);
     }
 
+    @Test
     @DisplayName("숫자 하나가 입력된 경우")
     public void splitAndSum_숫자하나() throws Exception {
         int result = StringAddCalculator.splitAndSum("1");
@@ -40,6 +41,14 @@ public class StringAddCalculatorTest {
     @DisplayName("구분자 // 가 입력 된 경우")
     public void splitAndSum_custom_구분자() throws Exception {
         int result = StringAddCalculator.splitAndSum("//;\n1;2;3");
+        assertThat(result).isEqualTo(6);
+    }
+
+    @DisplayName("“//”와 “\\n” 문자 사이에 커스텀 구분자를 지정할 수 있다. (예 : “//;\\n1;2;3” => 6)")
+    @Test
+    public void splitAndSum_custom() throws Exception {
+        // 커스텀 구분자를 @으로 입력
+        int result = StringAddCalculator.splitAndSum("//@\n1@2@3");
         assertThat(result).isEqualTo(6);
     }
 
