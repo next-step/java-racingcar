@@ -3,8 +3,8 @@ package racing.race;
 import racing.vehicle.Cars;
 
 public class Game {
-    private Cars participants;
-    private int laps;
+    private final Cars participants;
+    private final int laps;
 
     public Game(int participantsCount, int laps) {
         validateLaps(laps);
