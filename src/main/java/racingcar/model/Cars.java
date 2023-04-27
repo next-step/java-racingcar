@@ -5,13 +5,12 @@ import racingcar.utils.RandomNumberGenerator;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
-        this.cars = cars;
+        this.cars = new ArrayList<>(cars);
     }
 
     public void checkForwardConditionAndGo() {
@@ -24,20 +23,14 @@ public class Cars {
         return Collections.unmodifiableList(this.cars);
     }
 
-    public String getWinner() {
-        int maxDistance = getMaxDistance();
-        return cars.stream().filter(car -> car.hasMaxDistance(maxDistance)).map(Car::getName).collect(Collectors.joining(", "));
-    }
 
-    public int getMaxDistance() {
-        int maxDistance = 0;
+    public RoundScores getRoundResult() {
+        List<RoundScore> roundScores = new ArrayList<>();
         for (Car car : cars) {
-            if (car.getDistance() > maxDistance) {
-                maxDistance = car.getDistance();
-            }
+            roundScores.add(new RoundScore(car.getName(), car.getDistance()));
         }
 
-        return maxDistance;
+        return new RoundScores(roundScores);
     }
 
     public int getCarSize() {
@@ -45,7 +38,7 @@ public class Cars {
     }
 
     public static Cars generateCars(String carNames) {
-        String[] carName = carNames.split(",");
+        String[] carName = carNames.split(Constant.DELIMITER);
         List<Car> tempCars = new ArrayList<>();
         for (String name : carName) {
             RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();

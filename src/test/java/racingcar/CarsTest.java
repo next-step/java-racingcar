@@ -5,9 +5,11 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.model.Car;
 import racingcar.model.Cars;
+import racingcar.model.Constant;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -32,7 +34,7 @@ public class CarsTest {
     @ParameterizedTest
     @CsvSource(value = {"철수", "철수, 영희", "철수, 영희, 영수"}, delimiter = ':')
     void 입력된_이름을_자동차이름_부여(String carNames) {
-        String[] names = carNames.split(",");
+        String[] names = carNames.split(Constant.DELIMITER);
         init(carNames);
 
         for (Car car : testCar.getCars()) {
@@ -48,19 +50,6 @@ public class CarsTest {
 
         assertThat(cars.getCars().get(0).getDistance()).isEqualTo(result);
 
-    }
-
-    @Test
-    void 우승자_테스트() {
-        List<Car> testCars = new ArrayList<>();
-        testCars.add(new Car("철수", 4));
-        testCars.add(new Car("영희", 2));
-        testCars.add(new Car("영수", 3));
-
-        testCar = new Cars(testCars);
-        String winner = testCar.getWinner();
-
-        assertThat("철수".equals(winner)).isTrue();
     }
 
 }

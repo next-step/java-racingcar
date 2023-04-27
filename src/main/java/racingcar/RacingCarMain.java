@@ -1,6 +1,8 @@
 package racingcar;
 
+import racingcar.domain.RacingProcess;
 import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 public class RacingCarMain {
     public static void main(String[] args) {
@@ -11,5 +13,10 @@ public class RacingCarMain {
         RacingProcess racingProcess = new RacingProcess(carNames, periodCount);
         racingProcess.racingStart();
 
+        ResultView resultView = new ResultView();
+
+        resultView.startUI();
+        resultView.drawing(racingProcess.getScores());
+        resultView.winner(racingProcess.getWinner());
     }
 }
