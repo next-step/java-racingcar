@@ -13,10 +13,10 @@ public class Game {
 
     public Game(int participantsCount, int laps) {
         if (participantsCount <= 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("The number of participants must be positive.");
         }
         if (laps <= 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("The number of laps must be positive.");
         }
 
         this.participants = CarFactory.createRandomCars(participantsCount);
