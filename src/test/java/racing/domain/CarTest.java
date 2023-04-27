@@ -24,7 +24,7 @@ public class CarTest {
     void 자동차_현재_위치를_표현하는_문자열_반환() {
         car.move(5);
         car.move(5);
-        String currentPosition = car.currentPosition();
+        String currentPosition = car.positionMarkers();
         assertThat(currentPosition).isEqualTo("--");
     }
 

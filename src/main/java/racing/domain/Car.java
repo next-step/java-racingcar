@@ -57,7 +57,7 @@ public class Car {
         return this.position;
     }
 
-    public String currentPosition() {
+    public String positionMarkers() {
         return "-".repeat(this.position);
     }
 }
