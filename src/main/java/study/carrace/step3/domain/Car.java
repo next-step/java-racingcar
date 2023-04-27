@@ -39,12 +39,8 @@ public class Car {
                 .collect(Collectors.toList());
     }
 
-    public long numberOfMove() {
-        return carPosition.numberOfMove();
-    }
-
-    public List<Boolean> moveStatusesAt(int iteration) {
-        return carPosition.moveStatusesAt(iteration);
+    public CarPosition carPosition() {
+        return carPosition;
     }
 
     public CarName carName() {
