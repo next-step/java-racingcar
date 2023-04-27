@@ -9,7 +9,6 @@ import racing.domain.Cars;
 public class ResultView {
     private static final String GAME_RESULT_WORD = "실행 결과";
     private static final String PRINT_CAR_FORMAT = "%s\t:\t%s\n";
-    private static final String POSITION_MARKER = "-";
     private static final String PRINT_WINNERS_FORMAT = "%s가 최종 우승했습니다.";
 
     public static void printGameStart() {
@@ -17,8 +16,8 @@ public class ResultView {
     }
 
     public static void printCars(Cars cars) {
-        cars.deepCopyCarList().forEach(car -> 
-                System.out.printf(PRINT_CAR_FORMAT, car.name(), POSITION_MARKER.repeat(car.position())));
+        cars.deepCopyCarList().forEach(car ->
+                System.out.printf(PRINT_CAR_FORMAT, car.name(), car.positionMarkers()));
         System.out.println();
     }
 
