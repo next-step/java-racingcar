@@ -2,8 +2,8 @@ package step1;
 
 import java.util.Random;
 
-import static racingCar.step1.RacingCarConfiguration.LIMIT_RANDOM_VALUE;
-import static racingCar.step1.RacingCarConfiguration.MAX_RANDOM_VALUE;
+import static step1.RacingCarConfiguration.LIMIT_RANDOM_VALUE;
+import static step1.RacingCarConfiguration.MAX_RANDOM_VALUE;
 
 public class Car {
     private String name;
