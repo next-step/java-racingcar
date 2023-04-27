@@ -1,4 +1,4 @@
-package step3.view;
+package racing.view;
 
 import java.util.Scanner;
 
@@ -10,15 +10,12 @@ public class InputView {
     private static final Scanner SCANNER = new Scanner(System.in);
 
     public static int askInteger(String message) {
-        printMessage(message);
-        return receiveInteger();
-    }
-
-    private static int receiveInteger() {
+        System.out.println(message);
         return SCANNER.nextInt();
     }
 
-    private static void printMessage(String message) {
+    public static String askString(String message) {
         System.out.println(message);
+        return SCANNER.next();
     }
 }

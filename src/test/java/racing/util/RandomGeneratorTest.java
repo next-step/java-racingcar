@@ -1,7 +1,6 @@
-package step3;
+package racing.util;
 
 import org.junit.jupiter.api.RepeatedTest;
-import step3.util.RandomGenerator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
