@@ -15,13 +15,9 @@ public class Car {
     private int position;
 
     public Car(String name) {
-        this(name, DEFAULT_POSITION);
-    }
-
-    public Car(String name, int position) {
         validCarNameLength(name);
         this.name = name;
-        this.position = position;
+        this.position = DEFAULT_POSITION;
     }
 
     public Car(Car car) {

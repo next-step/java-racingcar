@@ -29,10 +29,14 @@ public class CarsTest {
     @Test
     void 우승자_찾기() {
         //given
-        Car giri = new Car("giri", 3);
-        Car pobi = new Car("pobi", 5);
-        Car tdd = new Car("tdd", 7);
-        Car test = new Car("test", 7);
+        Car giri = new Car("giri");
+        giri.move(3);
+        Car pobi = new Car("pobi");
+        pobi.move(3);
+        Car tdd = new Car("tdd");
+        tdd.move(5);
+        Car test = new Car("test");
+        test.move(5);
         List<Car> carList = List.of(giri, pobi, tdd, test);
         Cars cars = new Cars(carList);
         //when
@@ -40,8 +44,8 @@ public class CarsTest {
         //then
         List<Car> winnerList = winners.deepCopyCarList();
         assertThat(winnerList).hasSize(2);
-        assertThat(winnerList.get(0).name()).isEqualTo("tdd");
-        assertThat(winnerList.get(1).name()).isEqualTo("test");
+        assertThat(winnerList.get(0).hashCode()).isEqualTo(tdd.hashCode());
+        assertThat(winnerList.get(1).hashCode()).isEqualTo(test.hashCode());
     }
 
     @Test
