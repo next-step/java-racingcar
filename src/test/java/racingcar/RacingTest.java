@@ -3,8 +3,6 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingTest {
@@ -19,8 +17,8 @@ public class RacingTest {
         Racing racing = new Racing(userInput, THRESHOLD);
 
         // assert
-        assertThat(racing.getCarNames()).isEqualTo(Arrays.asList(userInput.getCarNames()));
-        assertThat(racing.getNumOfTries()).isEqualTo(userInput.numOfTriesByInt());
+        assertThat(racing.containsAllCarNames(userInput.carNames())).isTrue();
+        assertThat(racing.hasEqualNumOfTries(userInput.numOfTries())).isTrue();
     }
 
     @Test
@@ -35,7 +33,7 @@ public class RacingTest {
         racingService.move(racing);
 
         // assert
-        for (Car car : racing.getCars()) {
+        for (Car car : racing.cars()) {
             assertThat(car.isRandGreaterThan(THRESHOLD) == car.isMoved(car.diffBetweenCurrentDistAndPrevDist())).isTrue();
         }
     }
@@ -47,7 +45,7 @@ public class RacingTest {
         InputView inputView = new InputView();
 
         // 유저로부터 자동차 대수, 전진 시도 횟수 입력받음
-        UserInput userInput = inputView.getRacingInfo();
+        UserInput userInput = inputView.racingInfo();
         Racing racing = new Racing(userInput, THRESHOLD);
 
         racingService.moveByNumOfTriesAndShowResult(racing);

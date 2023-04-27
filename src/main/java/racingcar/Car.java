@@ -1,8 +1,5 @@
 package racingcar;
 
-import lombok.Getter;
-
-@Getter
 public class Car {
     private final String name;
     private final int prevDistance;
@@ -23,6 +20,14 @@ public class Car {
         this.rand = rand;
     }
 
+    public String name() {
+        return name;
+    }
+
+    public int currentDistance() {
+        return currentDistance;
+    }
+
     public Car moveFoward(int rand) {
         return new Car(name, currentDistance, currentDistance + 1, rand);
     }
@@ -35,11 +40,23 @@ public class Car {
         return rand > threshold;
     }
 
+    public boolean isFurtherThan(int distance) {
+        return currentDistance > distance;
+    }
+
+    public boolean isSameDistance(int distance) {
+        return currentDistance == distance;
+    }
+
     public int diffBetweenCurrentDistAndPrevDist() {
         return currentDistance - prevDistance;
     }
 
     public int currentPosition() {
         return currentDistance;
+    }
+
+    public String nameAppendTo(String dashes) {
+        return this.name + " : " + dashes;
     }
 }

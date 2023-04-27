@@ -1,8 +1,5 @@
 package racingcar;
 
-import lombok.Getter;
-
-@Getter
 public class UserInput {
     private final String[] carNames;
     private final String numOfTries;
@@ -10,6 +7,14 @@ public class UserInput {
     public UserInput(String[] carNames, String numOfTries) {
         this.carNames = carNames;
         this.numOfTries = numOfTries;
+    }
+
+    public String[] carNames() {
+        return carNames;
+    }
+
+    public String numOfTries() {
+        return numOfTries;
     }
 
     public int numOfTriesByInt() {

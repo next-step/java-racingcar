@@ -1,14 +1,10 @@
 package racingcar;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-@Getter
-@Setter
 public class Racing {
     private final int numOfTries;
     private ArrayList<Car> cars;
@@ -16,7 +12,7 @@ public class Racing {
 
     public Racing(UserInput userInput, int threshold) {
         this.numOfTries = userInput.numOfTriesByInt();
-        cars = initCarInfos(userInput.numOfCarsByInt(), userInput.getCarNames());
+        cars = initCarInfos(userInput.numOfCarsByInt(), userInput.carNames());
         this.threshold = threshold;
     }
 
@@ -26,9 +22,33 @@ public class Racing {
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
-    public ArrayList<String> getCarNames() {
+    public void setCars(ArrayList<Car> cars) {
+        this.cars = cars;
+    }
+
+    public ArrayList<Car> cars() {
+        return cars;
+    }
+
+    public int numOfTries() {
+        return numOfTries;
+    }
+
+    public int threshold() {
+        return threshold;
+    }
+
+    public boolean containsAllCarNames(String[] carNames) {
+        return getCarNames().equals(Arrays.asList(carNames));
+    }
+
+    public boolean hasEqualNumOfTries(String numOfTries) {
+        return this.numOfTries == Integer.parseInt(numOfTries);
+    }
+
+    private ArrayList<String> getCarNames() {
         return cars.stream()
-                .map(Car::getName)
+                .map(Car::name)
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 }
