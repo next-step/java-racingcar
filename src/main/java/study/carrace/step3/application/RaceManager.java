@@ -1,9 +1,11 @@
 package study.carrace.step3.application;
 
+import study.carrace.step3.application.dto.RaceFinishedCar;
 import study.carrace.step3.domain.*;
 import study.carrace.step3.domain.exception.IllegalIterationCountException;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RaceManager {
     private final int iterationCount;
@@ -16,12 +18,16 @@ public class RaceManager {
         this.iterationCount = iterationCount;
     }
 
-    public Cars startRace() {
-        return cars.moveOrStopCars(iterationCount);
+    public List<RaceFinishedCar> startRace() {
+        return cars.moveOrStopCars(iterationCount)
+                .cars()
+                .stream()
+                .map(this::of)
+                .collect(Collectors.toList());
     }
 
-    public List<CarName> winners() {
-        return cars.firstRankers();
+    private RaceFinishedCar of(Car car) {
+        return new RaceFinishedCar(car.carName().name(), car.carPosition().moveStatuses());
     }
 
     private void validateIterationCount(int iterationCount) {
