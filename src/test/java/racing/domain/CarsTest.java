@@ -1,10 +1,9 @@
-package racing.race;
+package racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import java.util.Arrays;
-import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racing.strategy.MoveNumberStrategy;
@@ -23,9 +22,12 @@ class CarsTest {
 
   @Test
   void 우승자는0명일수없다() {
-    List<Car> winners = cars.race(TRY_NUMBER);
+    for (int i = 0; i < TRY_NUMBER; i++) {
+      cars.tryMove();
+    }
+    Winners winners = cars.findWinner();
 
-    assertThat(winners.size()).isGreaterThan(0);
+    assertThat(winners.getWinnerCars().size()).isGreaterThan(0);
   }
 
   @Test
@@ -34,15 +36,13 @@ class CarsTest {
     yeCar.move();
     yeCar.move();
     yeCar.move();
-
     Car juCar = new Car("jucar", new StopNumberStrategy());
     juCar.move();
-
     Cars cars = new Cars(Arrays.asList(yeCar, juCar));
 
-    Winner winner = new Winner();
-    List<Car> winners = winner.findWinner(3, cars);
-    assertThat(winners).contains(yeCar);
+    Winners winners = cars.findWinner();
+
+    assertThat(winners.getWinnerCars()).contains(yeCar);
   }
 
   @Test
@@ -51,28 +51,25 @@ class CarsTest {
     yeCar.move();
     yeCar.move();
     yeCar.move();
-
     Car juCar = new Car("jucar", new MoveNumberStrategy());
     juCar.move();
     juCar.move();
     juCar.move();
-
     Car siCar = new Car("sicar", new StopNumberStrategy());
     siCar.move();
     siCar.move();
-
     Cars cars = new Cars(Arrays.asList(yeCar, juCar, siCar));
 
-    Winner winner = new Winner();
-    List<Car> winners = winner.findWinner(3, cars);
-    assertThat(winners).contains(yeCar);
-    assertThat(winners).contains(juCar);
+    Winners winners = cars.findWinner();
+
+    assertThat(winners.getWinnerCars()).contains(yeCar);
+    assertThat(winners.getWinnerCars()).contains(juCar);
   }
 
   @Test
   void 이동횟수는음수를입력할수없다() {
     assertThatExceptionOfType(NumberFormatException.class)
-        .isThrownBy(() -> cars.race(-1));
+        .isThrownBy(() -> new TryNumber(-1));
   }
 
   @Test

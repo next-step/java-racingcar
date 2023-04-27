@@ -1,25 +1,28 @@
 package racing;
 
-import java.util.List;
-import racing.race.Car;
-import racing.race.Cars;
+import racing.domain.Cars;
+import racing.domain.TryNumber;
+import racing.domain.Winners;
 import racing.view.InputView;
 import racing.view.OutputView;
 
 public class Main {
 
   public static void main(String[] args) {
-    OutputView.getCarsName();
-    String carsName = InputView.getStringValue();
-    Cars cars = new Cars(carsName);
+    OutputView.carsName();
+    Cars cars = new Cars(InputView.getStringValue());
 
-    OutputView.getTryNumger();
-    int tryNumber = InputView.getIntValue();
+    OutputView.tryNumber();
+    TryNumber tryNumber = new TryNumber(InputView.getIntValue());
 
-    OutputView.result();
-    List<Car> winner = cars.race(tryNumber);
+    OutputView.resultText();
+    for (int i = 0; i < tryNumber.getTryNumber(); i++) {
+      OutputView.moveDistance(cars.tryMove());
+      OutputView.println();
+    }
 
-    OutputView.winner(winner);
+    Winners winners = cars.findWinner();
+    OutputView.winner(winners.getWinnersName());
   }
 
 }
