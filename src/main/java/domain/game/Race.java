@@ -13,6 +13,8 @@ import domain.response.GameResultResponse;
 public class Race {
 
     private RacingCars racingCars;
+    private Winners winners;
+    private RacingResult racingResult;
 
     public Race(RacingCarNameRequest request) {
         this.racingCars = new RacingCars(request);
@@ -24,12 +26,12 @@ public class Race {
 
     public GameResultResponse race(RacingRoundRequest roundRequest) {
         MovingStrategy movingStrategy = new RandomMovingStrategy();
-        RacingResult racingResult = new RacingResult(roundRequest.getNumberOfRounds(), racingCars, movingStrategy);
+        racingResult = new RacingResult(roundRequest.getNumberOfRounds(), racingCars, movingStrategy);
         return new GameResultResponse(racingResult);
     }
 
     public List<String> getWinnerList() {
-        Winners winners = new Winners(racingCars);
+        winners = new Winners(racingCars);
         return winners.getWinners();
     }
 
