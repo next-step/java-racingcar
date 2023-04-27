@@ -25,42 +25,9 @@ public class Car {
         return name;
     }
 
-    public void setLocation(int location) {
-        this.location = location;
-    }
-
     public void move(int randomNumber) {
         if (randomNumber >= FORWARD_NUM)
             this.location++;
-    }
-
-    public String chooseWinner(ArrayList<Car> cars) {
-        if (isWinner(getMaxLocation(maxLocation(cars))))
-            return name;
-
-        return "";
-    }
-
-    boolean isWinner(int maxLocation) {
-        if (this.location == maxLocation)
-            return true;
-
-        return false;
-    }
-
-    private int getMaxLocation(int location) {
-        if (this.location > location)
-            return this.location;
-
-        return location;
-    }
-
-    private int maxLocation(ArrayList<Car> cars) {
-        int maxLocation = 0;
-        for (Car car : cars)
-            maxLocation = car.getMaxLocation(maxLocation);
-
-        return maxLocation;
     }
 
 }

@@ -10,13 +10,32 @@ public class Winner {
     }
 
     public void makeWinner(ArrayList<Car> cars) {
-        for (Car car : cars)
-            addWinner(car, car.chooseWinner(cars));
+
+        for (Car car : cars) {
+            if (isWinner(car.getLocation(), winnerMaxLoaction(cars)))
+                addWinner(car.getLocation(), car.getName());
+        }
 
     }
 
-    public void addWinner(Car car, String winnerName) {
+    public void addWinner(int location, String winnerName) {
         if (!winnerName.isEmpty())
-            winners.add(new Car(car.getLocation(), winnerName));
+            winners.add(new Car(location, winnerName));
+    }
+
+    private boolean isWinner(int location, int maxLocation) {
+        if (location == maxLocation)
+            return true;
+
+        return false;
+    }
+
+    private int winnerMaxLoaction(ArrayList<Car> cars) {
+        int maxLocation = 0;
+        for (Car car : cars)
+            if (car.getLocation() > maxLocation) maxLocation = car.getLocation();
+
+
+        return maxLocation;
     }
 }
