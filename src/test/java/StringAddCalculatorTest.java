@@ -15,7 +15,7 @@ public class StringAddCalculatorTest {
         result = StringAddCalculator.splitAndSum("");
         assertThat(result).isEqualTo(0);
     }
-
+    
     @Test
     @DisplayName("숫자 하나가 입력된 경우")
     public void splitAndSum_숫자하나() throws Exception {
