@@ -21,6 +21,6 @@ public class ResultView {
     }
 
     public static void printWinners(Cars cars) {
-        System.out.printf(PRINT_WINNERS_FORMAT, cars);
+        System.out.printf(PRINT_WINNERS_FORMAT, cars.winnerNames());
     }
 }
