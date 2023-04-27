@@ -54,15 +54,4 @@ public class Cars {
             winners.add(car);
         }
     }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        this.carList.forEach(car -> {
-            sb.append(car.name());
-            sb.append(", ");
-        });
-        sb.delete(sb.lastIndexOf(", "), sb.length());
-        return sb.toString();
-    }
 }
