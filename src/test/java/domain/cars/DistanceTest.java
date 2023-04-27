@@ -1,8 +1,10 @@
-package domain;
+package domain.cars;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
+
+import domain.cars.Distance;
 
 public class DistanceTest {
 

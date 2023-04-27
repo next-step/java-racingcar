@@ -1,4 +1,4 @@
-package domain;
+package domain.request;
 
 public class RacingRoundRequest {
     private int numberOfRounds;

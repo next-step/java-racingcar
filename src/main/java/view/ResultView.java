@@ -2,7 +2,7 @@ package view;
 
 import java.util.List;
 
-import domain.GameResultResponse;
+import domain.response.GameResultResponse;
 
 public class ResultView {
 

@@ -1,4 +1,4 @@
-package domain;
+package domain.cars;
 
 public class Distance {
     private int distance;

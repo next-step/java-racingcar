@@ -1,33 +1,23 @@
-package domain;
+package domain.cars;
 
 public class RacingCar {
-    private static int NAME_SIZE_LIMIT = 5;
-    private String name;
+
+    private Name name;
     private Distance distance;
 
-    private static final int ONE_TIME_DISTANCE = 1;
-
     public RacingCar() {
-        this.name = "";
+        this.name = new Name();
         this.distance = new Distance();
     }
 
     public RacingCar(String name) {
-        isNameValid(name);
-        this.name = name;
+        this.name = new Name(name);
         this.distance = new Distance();
     }
 
     public RacingCar(String name, int distance) {
-        isNameValid(name);
-        this.name = name;
+        this.name = new Name(name);
         this.distance = new Distance(distance);
-    }
-
-    private void isNameValid(String name) {
-        if (name.length() > NAME_SIZE_LIMIT) {
-            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
-        }
     }
 
     public void moveOrStop(MovingStrategy movingStrategy) {
@@ -45,10 +35,10 @@ public class RacingCar {
     }
 
     public String getName() {
-        return name;
+        return name.getName();
     }
 
     public String getResult() {
-        return this.name + " : " + "-".repeat(this.distance.getDistance());
+        return this.name.getName() + " : " + "-".repeat(this.distance.getDistance());
     }
 }

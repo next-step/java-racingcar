@@ -1,12 +1,17 @@
-package domain;
+package domain.game;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import domain.cars.RacingCar;
+import domain.game.Race;
+import domain.request.RacingCarNameRequest;
 
 public class RaceTest {
 
@@ -14,13 +19,14 @@ public class RaceTest {
     @Test
     public void shouldNameAndCreateCars() throws Exception {
         //given
-        String[] nameList = { "Tom", "Jerry", "Pinch" };
+        String[] names = { "Tom", "Jerry", "Pinch" };
+        List<String> nameList = Arrays.asList(names);
         RacingCarNameRequest request = new RacingCarNameRequest(nameList);
 
         //when
-        Race.createCars(request);
+        Race race = new Race(request);
         //then
-        for (RacingCar racingCar : Race.racingCarList) {
+        for (RacingCar racingCar : race.getRacingCars()) {
             assertThat(nameList).contains(racingCar.getName());
         }
     }
@@ -29,11 +35,12 @@ public class RaceTest {
     @Test
     public void shouldTerminateGame_whenExceed() throws Exception {
         //given
-        String[] nameList = { "Tomass", "Jerry", "Pinch" };
+        String[] names = { "Tomass", "Jerry", "Pinch" };
+        List<String> nameList = Arrays.asList(names);
         RacingCarNameRequest request = new RacingCarNameRequest(nameList);
         //when & then
         assertThatThrownBy(() -> {
-            Race.createCars(request);
+            Race race = new Race(request);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -45,11 +52,9 @@ public class RaceTest {
         String woon = "Woon";
         RacingCar bobCar = new RacingCar(bob, 2);
         RacingCar woonCar = new RacingCar(woon, 3);
-
+        Race race = new Race(Arrays.asList(bobCar, woonCar));
         //when
-        Race.racingCarList.add(bobCar);
-        Race.racingCarList.add(woonCar);
-        List<String> winnerList = Race.getWinnerList();
+        List<String> winnerList = race.getWinnerList();
         //then
         assertThat(winnerList).containsOnly(woon);
     }
