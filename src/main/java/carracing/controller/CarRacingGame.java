@@ -1,4 +1,6 @@
-package step3;
+package carracing.controller;
+
+import carracing.domain.Car;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -28,15 +30,8 @@ public class CarRacingGame {
         return cars;
     }
 
-    public void play(int playCount) {
-        if (playCount < 1) {
-            throw new RuntimeException("최소 한 번이상 시도해야합니다.");
-        }
-
-        for (int i = 0; i < playCount; i++) {
-            go();
-            Display.printDisplay(this.cars);
-        }
+    public void play() {
+        go();
     }
 
     public List<Car> getWinners() {

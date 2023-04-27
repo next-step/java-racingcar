@@ -1,13 +1,16 @@
-package step3;
+package carracing.view;
+
+import carracing.domain.Car;
+import carracing.controller.CarRacingGame;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Display {
 
-    public static void printDisplay(List<Car> cars) {
+    public static void printDisplay(CarRacingGame game) {
         StringBuilder sb = new StringBuilder();
-        for (Car car : cars) {
+        for (Car car : game.getCars()) {
             sb.append(car.getName()).append(": ").append("-".repeat(car.getLocation())).append("\n");
         }
         System.out.println(sb);

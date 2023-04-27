@@ -1,4 +1,7 @@
-package step3;
+package carracing;
+
+import carracing.controller.CarRacingGame;
+import carracing.view.Display;
 
 import java.util.Scanner;
 
@@ -13,7 +16,10 @@ public class Main {
         System.out.println("시도할 회수는 몇 회 인가요?");
         int playCount = scanner.nextInt();
         scanner.close();
-        game.play(playCount);
+        for (int i = 0; i < playCount; i++) {
+            game.play();
+            Display.printDisplay(game);
+        }
         Display.notifyWinners(game.getWinners());
     }
 }
