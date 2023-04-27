@@ -44,8 +44,8 @@ public class CarsTest {
         //then
         List<Car> winnerList = winners.deepCopyCarList();
         assertThat(winnerList).hasSize(2);
-        assertThat(winnerList.get(0).hashCode()).isEqualTo(tdd.hashCode());
-        assertThat(winnerList.get(1).hashCode()).isEqualTo(test.hashCode());
+        assertThat(winnerList.get(0).name()).isEqualTo("tdd");
+        assertThat(winnerList.get(1).name()).isEqualTo("test");
     }
 
     @Test
