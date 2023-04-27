@@ -18,8 +18,8 @@ public class Main {
         scanner.close();
         for (int i = 0; i < playCount; i++) {
             game.play();
-            Display.printDisplay(game);
+            System.out.println(Display.getCurrentStatus(game.getCars()));
         }
-        Display.notifyWinners(game.getWinners());
+        System.out.println(Display.getWinnerAnnouncement(game.getWinners()));
     }
 }

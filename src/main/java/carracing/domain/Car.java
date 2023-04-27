@@ -1,9 +1,13 @@
-package step3;
+package carracing.domain;
+
+import java.util.Random;
 
 public class Car {
 
     private static final int MIN_MOVE_CONDITION = 4;
     private static final int MAX_CAR_NAME_LENGTH = 5;
+    private static final int MAX_RANDOM_NUMBER = 10;
+    private static final Random RANDOM = new Random();
 
     private final String name;
     private int location;
@@ -24,8 +28,8 @@ public class Car {
         return location;
     }
 
-    public void go(int distance) {
-        if (distance >= MIN_MOVE_CONDITION) {
+    public void go() {
+        if (RANDOM.nextInt(MAX_RANDOM_NUMBER) >= MIN_MOVE_CONDITION) {
             location++;
         }
     }

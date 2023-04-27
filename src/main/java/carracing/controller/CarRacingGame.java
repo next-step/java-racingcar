@@ -5,13 +5,9 @@ import carracing.domain.Car;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 public class CarRacingGame {
-
-    private static final int MAX_RANDOM_NUMBER = 10;
-    private static final Random RANDOM = new Random();
 
     private final List<Car> cars;
 
@@ -42,6 +38,6 @@ public class CarRacingGame {
     }
 
     private void go() {
-        cars.forEach(car -> car.go(RANDOM.nextInt(MAX_RANDOM_NUMBER)));
+        cars.forEach(Car::go);
     }
 }
