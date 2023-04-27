@@ -23,12 +23,12 @@ public class Game {
         this.laps = laps;
     }
 
-    public Stream<Car> participantsStream() {
-        return participants.stream();
+    public Collection<Car> getParticipants() {
+        return participants;
     }
 
-    public IntStream lapsStream() {
-        return IntStream.range(0, laps);
+    public int getLaps() {
+        return laps;
     }
 
     public void runLap() {

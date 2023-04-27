@@ -3,6 +3,8 @@ package racing.race;
 import racing.ui.InputView;
 import racing.ui.DisplayView;
 
+import java.util.stream.IntStream;
+
 public class Race {
     private final InputView inputView;
     private final DisplayView displayView;
@@ -28,14 +30,14 @@ public class Race {
     private void run() {
         displayView.displayRaceStart();
 
-        game.lapsStream().forEach(i -> {
+        IntStream.range(0, game.getLaps()).forEach(i -> {
             this.currentGameDisplay();
             game.runLap();
         });
     }
 
     private void currentGameDisplay() {
-        game.participantsStream().forEach(car -> {
+        game.getParticipants().forEach(car -> {
             String currentPosition = car.convertPositionToDisplay();
             displayView.display(currentPosition);
         });
