@@ -13,11 +13,11 @@ public class Winners {
         this.winners = new ArrayList<>();
         int maxDistance = racingCars.getMaxDistance();
         for (RacingCar racingCar : racingCars.getRacingCars()) {
-            addCarToWinnersIfMaxDistance(maxDistance, racingCar);
+            findWinners(maxDistance, racingCar);
         }
     }
 
-    private void addCarToWinnersIfMaxDistance(int maxDistance, RacingCar racingCar) {
+    private void findWinners(int maxDistance, RacingCar racingCar) {
         if (racingCar.isSameDistance(maxDistance)) {
             winners.add(racingCar.getName());
         }
