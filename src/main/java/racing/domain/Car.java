@@ -11,7 +11,7 @@ public class Car {
     }
 
     public Car(String name) {
-        this(new Name(name),new Position(DEFAULT_POSITION));
+        this(new Name(name), new Position(DEFAULT_POSITION));
     }
 
     public Car(String name, int initPosition) {
@@ -33,8 +33,11 @@ public class Car {
     }
 
     public Car race(int randomNumber) {
+        if (randomNumber < 0 || randomNumber > 9) {
+            throw new IllegalArgumentException("Wrong random number.");
+        }
         if (randomNumber > 3) {
-            return new Car (name, new Position(position.move()));
+            return new Car(name, new Position(position.move()));
         }
         return new Car(name, new Position(position));
     }
