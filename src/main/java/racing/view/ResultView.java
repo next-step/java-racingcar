@@ -7,8 +7,9 @@ import java.util.List;
 public class ResultView {
 
     public static void printRoundResult(List<Car> cars) {
-        printResultInfoMessage();
+
         for (Car car : cars) {
+            printName(car);
             printDash(car);
             System.out.println();
         }
@@ -16,7 +17,7 @@ public class ResultView {
         System.out.println();
     }
 
-    private static void printResultInfoMessage() {
+    public static void printResultInfoMessage() {
         System.out.println("실행 결과");
     }
 
@@ -25,5 +26,10 @@ public class ResultView {
         for (int i = 0; i < num; i++) {
             System.out.print("-");
         }
+    }
+
+    private static void printName(Car car) {
+        String name = car.getName();
+        System.out.print(name + " : ");
     }
 }

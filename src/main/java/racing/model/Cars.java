@@ -16,6 +16,12 @@ public class Cars {
         this.moveStrategy = moveStrategy;
     }
 
+    public Cars(String[] names, MoveStrategy moveStrategy) {
+        cars = new ArrayList<>();
+        createCarsByName(names);
+        this.moveStrategy = moveStrategy;
+    }
+
     public List<Car> move() {
         for (Car car : cars) {
             car.move(moveStrategy);
@@ -30,6 +36,14 @@ public class Cars {
     private List<Car> createCars(int number) {
         for (int i = 0; i < number; i++) {
             cars.add(new Car());
+        }
+
+        return cars;
+    }
+
+    private List<Car> createCarsByName(String[] names) {
+        for (int i = 0; i < names.length; i++) {
+            cars.add(new Car(names[i]));
         }
 
         return cars;

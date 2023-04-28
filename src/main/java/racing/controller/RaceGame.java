@@ -13,9 +13,18 @@ public class RaceGame {
         Cars cars = new Cars(carNum, new RandomMoveStrategy());
 
         for (int i = 0; i < attempts; i++) {
-            ResultView.printRoundResult((cars.move()));
+            ResultView.printRoundResult(cars.move());
         }
 
+    }
+
+    public void startRacing(String[] carNames, int attempts) {
+        Cars cars = new Cars(carNames, new RandomMoveStrategy());
+
+        ResultView.printResultInfoMessage();
+        for (int i = 0; i < attempts; i++) {
+            ResultView.printRoundResult(cars.move());
+        }
     }
 
 }
