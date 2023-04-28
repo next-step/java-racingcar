@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Stream;
 
 import static lotto.step2.domain.Fixture.lottosList;
@@ -35,21 +36,19 @@ class WinningNumbersTest {
     @ParameterizedTest
     @MethodSource("winningWrongNumber")
     @DisplayName("당첨 번호를 잘못 입력 했을 때, 유효성 검증(예외 throw)")
-    void validateWinningNumber(List<Integer> list) {
+    void validateWinningNumber(Set<Integer> list) {
         assertThatThrownBy(() -> new WinningNumbers(list)).isInstanceOf(IllegalArgumentException.class);
     }
 
     static Stream<Arguments> winningWrongNumber() {
-        List<Integer> sevenList = List.of(1, 2, 3, 4, 5, 6, 7);
-        List<Integer> overMinList = List.of(0, 1, 2, 3, 4, 5);
-        List<Integer> overMaxList = List.of(1, 2, 3, 4, 5, 60);
-        List<Integer> dupList = List.of(1, 1, 2, 3, 4, 5);
+        Set<Integer> sevenList = Set.of(1, 2, 3, 4, 5, 6, 7);
+        Set<Integer> overMinList = Set.of(0, 1, 2, 3, 4, 5);
+        Set<Integer> overMaxList = Set.of(1, 2, 3, 4, 5, 60);
 
         return Stream.of(
                 Arguments.arguments(sevenList),
                 Arguments.arguments(overMinList),
-                Arguments.arguments(overMaxList),
-                Arguments.arguments(dupList)
+                Arguments.arguments(overMaxList)
         );
     }
 }

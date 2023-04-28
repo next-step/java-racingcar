@@ -5,24 +5,24 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class Lottos {
-    private List<List<Integer>> lottos;
+    private List<Lotto> lottos;
 
-    public Lottos(Lotto lotto, LottoCount lottCount) {
-        this.lottos = createLottos(lotto, lottCount);
+    public Lottos(LottoStrategy lottoStrategy, LottoCount lottCount) {
+        this.lottos = createLottos(lottoStrategy, lottCount);
     }
 
-    public Lottos(List<List<Integer>> lottos) {
+    public Lottos(List<Lotto> lottos) {
         this.lottos = lottos;
     }
 
-    private List<List<Integer>> createLottos(Lotto lotto, LottoCount lottCount) {
-        List<List<Integer>> lottoList = new ArrayList<>();
+    private List<Lotto> createLottos(LottoStrategy lottoStrategy, LottoCount lottCount) {
+        List<Lotto> lottoList = new ArrayList<>();
         IntStream.range(0, lottCount.getLottoCount())
-                .forEach(i -> lottoList.add(lotto.createLotto()));
+                .forEach(i -> lottoList.add(new Lotto(lottoStrategy.createLotto().getLotto())));
         return lottoList;
     }
 
-    public List<List<Integer>> getLottos() {
+    public List<Lotto> getLottos() {
         return lottos;
     }
 }

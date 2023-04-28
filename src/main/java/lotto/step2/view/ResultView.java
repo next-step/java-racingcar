@@ -1,8 +1,14 @@
 package lotto.step2.view;
 
 import lotto.step2.domain.Lottos;
+import lotto.step2.domain.TotalReturn;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+import static lotto.step2.enums.MatchNumber.getMatchStat;
 
 public class ResultView {
     public static final String TEXT_WIN_STAT = "당첨 통계";
@@ -11,15 +17,21 @@ public class ResultView {
     public StringBuilder stringBuilder = new StringBuilder();
 
     public void printLottos(Lottos lottos) {
-        lottos.getLottos().forEach(System.out::println);
+        lottos.getLottos().forEach(l -> System.out.println(l.getLotto()));
     }
 
-    public void printWinnerStat(List<String> statResultList, double result) {
+    private List<String> getStatResult(Map<Integer, Long> statMap) {
+        return statMap.entrySet().stream().map(entry -> (getMatchStat(entry.getKey())
+                .map(match -> match.getMatchText() + entry.getValue() + "개"))
+        ).flatMap(Optional::stream).collect(Collectors.toList());
+    }
+
+    public void printWinnerStat(Map<Integer, Long> statMap, TotalReturn result) {
         System.out.println(TEXT_WIN_STAT);
         System.out.println(TEXT_LINE);
-        statResultList.forEach(e -> stringBuilder.append(e).append("\n"));
-        stringBuilder.append(TEXT_RESULT[0]).append(result).append(TEXT_RESULT[1]);
-        if (result < 1) {
+        getStatResult(statMap).forEach(e -> stringBuilder.append(e).append("\n"));
+        stringBuilder.append(TEXT_RESULT[0]).append(result.getTotalReturn()).append(TEXT_RESULT[1]);
+        if (result.getTotalReturn() < 1) {
             stringBuilder.append(TEXT_RESULT[2]);
         } else {
             stringBuilder.append(TEXT_RESULT[3]);

@@ -4,8 +4,8 @@ import lotto.step2.domain.LottoCount;
 import lotto.step2.domain.WinningNumbers;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class InputView {
@@ -30,9 +30,9 @@ public class InputView {
         System.out.println();
         System.out.println(TEXT_WINNING_NUMBERS);
         String[] numbers = SCANNER.next().split(NUMBER_DELIMITER);
-        List<Integer> winningNumbers = Arrays.stream(numbers)
+        Set<Integer> winningNumbers = Arrays.stream(numbers)
                 .map(Integer::parseInt)
-                .collect(Collectors.toList());
+                .collect(Collectors.toSet());
         return new WinningNumbers(winningNumbers);
     }
 }
