@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import racingcar.dto.RandomValue;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,9 +11,9 @@ public class CarGroup {
         this.carGroup = carGroup;
     }
 
-    public void moveAll() {
+    public void moveAll(RandomValue randomValue) {
         carGroup.stream()
-                .forEach(car -> car.move(new RandomValue()));
+                .forEach(car -> car.move(randomValue));
     }
 
     public static List<String> extractWinnerNames(List<Car> playerList) {

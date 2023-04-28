@@ -3,8 +3,8 @@ package racingcar.controller;
 import racingcar.domain.Car;
 import racingcar.domain.CarGroup;
 import racingcar.domain.Racing;
-import racingcar.util.InputView;
-import racingcar.util.OutputView;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 import java.util.List;
 import java.util.Scanner;

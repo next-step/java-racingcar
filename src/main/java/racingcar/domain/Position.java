@@ -32,7 +32,7 @@ public class Position {
     }
 
     private boolean isNegative(int position) {
-        return position < 0 ? true : false;
+        return position < 0;
     }
 
 }

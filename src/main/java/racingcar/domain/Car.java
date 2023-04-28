@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import racingcar.dto.RandomValueGenerator;
-
 public class Car {
 
     private static final int MOVE_MINIMUM_CONDITION = 4;
