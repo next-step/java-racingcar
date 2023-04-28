@@ -1,6 +1,6 @@
 package racingcar;
 
-import positiveinteger.PositiveInteger;
+import step2.PositiveInteger;
 import racingcar.car.Car;
 import racingcar.car.RacingCars;
 import racingcar.numbergenerator.RandomNumberGenerator;
