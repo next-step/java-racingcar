@@ -7,10 +7,10 @@ public class Name {
     private final String name;
 
     public Name(String name) {
-        if(name == null || name.isEmpty()){
+        if(name == null || name.trim().isEmpty()){
             throw new IllegalArgumentException("Name is empty.");
         }
-        this.name = substringMaxLength(name);
+        this.name = substringMaxLength(name.trim());
     }
 
     private String substringMaxLength(String name) {

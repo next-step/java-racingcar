@@ -22,7 +22,7 @@ public class Position {
     }
 
     public Position move() {
-        return new Position(position++);
+        return new Position(++position);
     }
 
     public int max(int maxPosition) {
