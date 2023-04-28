@@ -1,6 +1,7 @@
 package racing.controller;
 
 import racing.domain.Cars;
+import racing.domain.GameRule;
 import racing.domain.RacingGame;
 import racing.view.InputDto;
 import racing.view.InputView;
@@ -15,8 +16,8 @@ public class RacingController {
         return inputDto;
     }
 
-    public static RacingGame create(InputDto dto) {
-        RacingGame game = new RacingGame(dto.input(), dto.count());
+    public static RacingGame create(InputDto dto, GameRule rule) {
+        RacingGame game = new RacingGame(dto.input(), dto.count(), rule);
         return game;
     }
 

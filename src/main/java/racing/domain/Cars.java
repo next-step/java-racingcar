@@ -18,10 +18,10 @@ public class Cars { // 일급컬렉션
         return this.cars.size();
     }
 
-    public Cars playOnceTurn() {
+    public Cars playOnceTurn(GameRule rule) {
 
         List<Car> movedCars = new ArrayList<>();
-        RandomGameRule randomGameRule = new RandomGameRule();
+        GameRule randomGameRule = rule;
 
         for (int i = 0; i < this.cars.size(); i++) {
             int randomNumber = randomGameRule.getPossibleInt();
