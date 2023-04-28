@@ -1,12 +1,20 @@
 package racingcar;
 
 public class UserInput {
-    private final String numOfCars;
+    private final String[] carNames;
     private final String numOfTries;
 
-    public UserInput(String numOfCars, String numOfTries) {
-        this.numOfCars = numOfCars;
+    public UserInput(String[] carNames, String numOfTries) {
+        this.carNames = carNames;
         this.numOfTries = numOfTries;
+    }
+
+    public String[] carNames() {
+        return carNames;
+    }
+
+    public String numOfTries() {
+        return numOfTries;
     }
 
     public int numOfTriesByInt() {
@@ -14,6 +22,6 @@ public class UserInput {
     }
 
     public int numOfCarsByInt() {
-        return Integer.parseInt(numOfCars);
+        return carNames.length;
     }
 }
