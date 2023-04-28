@@ -1,10 +1,10 @@
 package racingcar;
 
+import racingcar.car.Car;
 import racingcar.input.Input;
 import racingcar.input.request.CarRequest;
-import racingcar.numbergenerator.RandomNumberGenerator;
-import racingcar.printer.Printer;
-import racingcar.printer.PrinterImpl;
+
+import java.util.stream.Collectors;
 
 public class Controller {
 
@@ -19,10 +19,7 @@ public class Controller {
         int raceCount = input.inputRaceCount();
         CarRequest carRequest = input.inputCar();
 
-        Printer printer = new PrinterImpl();
-        Race race = Race.from(raceCount, carRequest.toResource(), new RandomNumberGenerator());
-
+        Race race = Race.from(raceCount, carRequest.toResource().getCars().stream().map(Car::from).collect(Collectors.toList()));
         race.race();
-        printer.print(race);
     }
 }

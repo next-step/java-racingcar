@@ -2,46 +2,34 @@ package racingcar;
 
 import positiveinteger.PositiveInteger;
 import racingcar.car.Car;
-import racingcar.car.CarResource;
-import racingcar.numbergenerator.NumberGenerator;
+import racingcar.car.RacingCars;
+import racingcar.numbergenerator.RandomNumberGenerator;
+import racingcar.printer.RacePrinter;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Race {
 
     private final PositiveInteger raceCount;
-    private final List<Car> cars;
-    private final NumberGenerator numberGenerator;
+    private final RacingCars cars;
 
-    private Race(PositiveInteger raceCount, List<Car> cars, NumberGenerator numberGenerator) {
+    private Race(PositiveInteger raceCount, RacingCars cars) {
         this.raceCount = raceCount;
         this.cars = cars;
-        this.numberGenerator = numberGenerator;
     }
 
-    public static Race from(int raceCount, CarResource carResource, NumberGenerator numberGenerator){
+    public static Race from(int raceCount, List<Car> cars){
         PositiveInteger positiveRaceCount = PositiveInteger.from(raceCount);
-        List<Car> cars = createCars(carResource);
 
-        return new Race(positiveRaceCount, cars, numberGenerator);
-    }
-
-    public List<Car> getCars() {
-        return cars;
+        return new Race(positiveRaceCount, new RacingCars(cars, new RandomNumberGenerator()));
     }
 
     public void race(){
+        RacePrinter.printRaceStart();
         for(int i = 0; i < raceCount.getValue(); i++){
-            raceCar();
+            cars.raceCar();
         }
+        RacePrinter.printWinners(cars.getWinners());
     }
 
-    private void raceCar(){
-        cars.forEach(car -> car.move(numberGenerator));
-    }
-
-    private static List<Car> createCars(CarResource carResource){
-        return carResource.getCars().stream().map(Car::from).collect(Collectors.toList());
-    }
 }
