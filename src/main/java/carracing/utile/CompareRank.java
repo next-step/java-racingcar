@@ -1,4 +1,6 @@
-package carracing.domain;
+package carracing.utile;
+
+import carracing.domain.Car;
 
 import java.util.Comparator;
 

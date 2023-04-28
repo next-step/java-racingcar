@@ -2,34 +2,27 @@ package carracing.domain;
 
 import java.util.*;
 
-import static carracing.view.ResultView.putComma;
-import static carracing.view.ResultView.removeEmptyList;
+import static carracing.utile.SortRanking.sortRanking;
 
 public class Award {
-    public static String getWinner(List<Car> cars) {
-        //경주순위 정렬
-        sortRanking(cars);
+    public static List<String> getWinner(List<Car> cars) {
         //승자이름 추출
         return getWinnerNames(cars);
     }
 
-    public static void sortRanking(List<Car> cars) {
-        Collections.sort(cars, new CompareRank());
-    }
-
-    public static String getWinnerNames(List<Car> cars) {
-        int winnerLocation = cars.get(0).getLocation();
-        List<String> listWinnersName = new ArrayList<>();
+    private static List<String> getWinnerNames(List<Car> cars) {
+        int winnerLocation = getWinnersLocation(cars);
+        List<String> winnerCars = new ArrayList<>();
         for (Car car : cars) {
-            listWinnersName.add(getWinnerName(car, winnerLocation));
+            winnerCars.add(getWinnerName(car, winnerLocation));
         }
         //빈 문자열 리스트 제거
-        removeEmptyList(listWinnersName);
+        removeEmptyList(winnerCars);
 
-        return putComma(listWinnersName);
+        return winnerCars;
     }
 
-    public static String getWinnerName(Car car, int winnerLocation) {
+    private static String getWinnerName(Car car, int winnerLocation) {
         String winnersName = "";
         if (car.isWinner(winnerLocation)) {
             winnersName = car.getName();
@@ -37,4 +30,12 @@ public class Award {
         return winnersName;
     }
 
+    private static int getWinnersLocation(List<Car> cars) {
+        sortRanking(cars);
+        return cars.get(0).getLocation();
+    }
+
+    private static void removeEmptyList(List<String> listWinnersName) {
+        listWinnersName.removeAll(Arrays.asList(""));
+    }
 }
