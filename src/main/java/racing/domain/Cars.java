@@ -1,7 +1,6 @@
 package racing.domain;
 
-import java.util.Objects;
-import racing.rule.RacingRule;
+import racing.domain.rule.RacingRule;
 
 import java.util.ArrayList;
 import java.util.List;

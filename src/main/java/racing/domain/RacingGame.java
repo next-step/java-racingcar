@@ -1,8 +1,6 @@
-package racing;
+package racing.domain;
 
-import racing.domain.Cars;
-import racing.domain.GameResult;
-import racing.rule.RacingRule;
+import racing.domain.rule.RacingRule;
 
 import java.util.List;
 

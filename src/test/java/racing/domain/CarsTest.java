@@ -7,12 +7,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import racing.rule.MustGoRacingRule;
-import racing.rule.RacingRule;
+import racing.domain.rule.MustGoRacingRule;
+import racing.domain.rule.RacingRule;
 
 class CarsTest {
 
@@ -41,4 +40,4 @@ class CarsTest {
                     )
         );
     }
-}
+}src/main/java/racing/domain/Cars.java

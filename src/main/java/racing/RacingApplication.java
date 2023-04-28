@@ -2,9 +2,12 @@ package racing;
 
 import java.util.List;
 import racing.domain.GameResult;
-import racing.rule.RandomRacingRule;
+import racing.domain.RacingGame;
+import racing.domain.rule.RandomRacingRule;
 
 import java.util.Scanner;
+import racing.view.InputView;
+import racing.view.RacingPrinter;
 
 public class RacingApplication {
     public static void main(String[] args) {
