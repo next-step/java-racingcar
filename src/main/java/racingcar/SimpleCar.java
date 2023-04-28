@@ -8,12 +8,17 @@ public class SimpleCar {
     public static int MAX_NAME_LENGTH = 5;
 
     private int position = 0;
+    private String name;
 
-    public SimpleCar() {
-
+    public SimpleCar(String name) {
+        if (!isValidName(name)) {
+            throw new IllegalArgumentException("Invalid Car Name");
+        }
+        this.name = name;
     }
 
-    private SimpleCar(int position) {
+    private SimpleCar(String name, int position) {
+        this.name = name;
         this.position = position;
     }
 
@@ -25,11 +30,15 @@ public class SimpleCar {
     }
 
     public SimpleCar copy() {
-        return new SimpleCar(this.getPosition());
+        return new SimpleCar(this.name, this.getPosition());
     }
 
     public Integer getPosition() {
         return position;
+    }
+
+    public String getCarName() {
+        return name;
     }
 
     static boolean isValidName(String name) {

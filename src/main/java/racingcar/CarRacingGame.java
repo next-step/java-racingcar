@@ -26,8 +26,8 @@ public class CarRacingGame {
     }
 
     List<SimpleCar> generateCars(GameStartParameter gameStartParameter) {
-        return IntStream.range(0, gameStartParameter.getCarNums())
-                .mapToObj(i -> new SimpleCar()).collect(Collectors.toList());
+        return gameStartParameter.getCarNames().stream()
+                .map(SimpleCar::new).collect(Collectors.toList());
     }
 
     private void runCars(GameStartParameter gameStartParameter, CarList cars) {
@@ -45,10 +45,30 @@ public class CarRacingGame {
 
     private GameStartParameter scanGameStartParameters() {
         InputView.printCarNumTakingView();
-        int carNums = InputView.scanNextPositiveInteger().getIntValue();
+        List<String> carNames = InputView.scanCarNames();
+
+        validateCarNames(carNames);
+
         InputView.printTryNumView();
         int runNums = InputView.scanNextPositiveInteger().getIntValue();
 
-        return new GameStartParameter(carNums, runNums);
+        return new GameStartParameter(carNames, runNums);
+    }
+
+    private void validateCarNames(List<String> carNames) {
+        validateCarNamesNotEmpty(carNames);
+
+        carNames.stream()
+                .filter(it -> it.isBlank() || it.length() > SimpleCar.MAX_NAME_LENGTH)
+                .findAny()
+                .ifPresent(it -> {
+                    throw new IllegalArgumentException("invalid car name: " + it);
+                });
+    }
+
+    private void validateCarNamesNotEmpty(List<String> carNames) {
+        if (carNames.isEmpty()) {
+            throw new IllegalArgumentException("차 이름을 입력해야 합니다.");
+        }
     }
 }

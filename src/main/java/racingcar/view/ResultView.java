@@ -15,6 +15,6 @@ public class ResultView {
     }
 
     private static void printCarRunState(SimpleCar car) {
-        System.out.println("-".repeat(car.getPosition()));
+        System.out.println(car.getCarName() + " : " + "-".repeat(car.getPosition()));
     }
 }

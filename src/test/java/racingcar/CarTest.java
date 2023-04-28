@@ -13,7 +13,7 @@ public class CarTest {
 
     @BeforeEach
     void init() {
-        car = new SimpleCar();
+        car = new SimpleCar("test");
     }
 
     @Test
@@ -31,5 +31,31 @@ public class CarTest {
 
         // then
         assertThat(isValid).isEqualTo(expected);
+    }
+
+    @Test
+    void Test_create_car_with_name() {
+        // given
+        String carName = "abc";
+
+        // when
+        SimpleCar testCar = new SimpleCar(carName);
+
+        // then
+        assertThat(testCar.getCarName()).isEqualTo(carName);
+    }
+
+    @Test
+    void Given_car_When_copy_Then_name_position_same() {
+        // given
+        SimpleCar car = new SimpleCar("abcd");
+        car.run();
+
+        // when
+        SimpleCar copiedCar = car.copy();
+
+        // then
+        assertThat(copiedCar.getCarName()).isEqualTo(car.getCarName());
+        assertThat(copiedCar.getPosition()).isEqualTo(car.getPosition());
     }
 }
