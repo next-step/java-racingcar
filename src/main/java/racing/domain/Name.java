@@ -1,5 +1,7 @@
 package racing.domain;
 
+import java.util.Objects;
+
 public class Name {
 
     public static final int MAX_LENGTH = 5;
@@ -23,5 +25,18 @@ public class Name {
     @Override
     public String toString() {
         return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Name name1 = (Name) o;
+        return name.equals(name1.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }

@@ -40,4 +40,4 @@ class CarsTest {
                     )
         );
     }
-}src/main/java/racing/domain/Cars.java
+}
