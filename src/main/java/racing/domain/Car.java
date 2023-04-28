@@ -15,13 +15,9 @@ public class Car {
     private int position;
 
     public Car(String name) {
-        this(name, DEFAULT_POSITION);
-    }
-
-    public Car(String name, int position) {
         validCarNameLength(name);
         this.name = name;
-        this.position = position;
+        this.position = DEFAULT_POSITION;
     }
 
     public Car(Car car) {
@@ -49,6 +45,10 @@ public class Car {
         this.position ++;
     }
 
+    public boolean isWinner(int maxPosition) {
+        return this.position == maxPosition;
+    }
+
     public String name() {
         return this.name;
     }
@@ -57,11 +57,7 @@ public class Car {
         return this.position;
     }
 
-    public int max(int maxPosition) {
-        return Math.max(this.position, maxPosition);
-    }
-
-    public boolean isWinner(int maxPosition) {
-        return this.position == maxPosition;
+    public String positionMarkers() {
+        return "-".repeat(this.position);
     }
 }

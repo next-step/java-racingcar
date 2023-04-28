@@ -55,8 +55,7 @@ public class Cars {
         }
     }
 
-    @Override
-    public String toString() {
+    public String winnerNames() {
         StringBuilder sb = new StringBuilder();
         this.carList.forEach(car -> {
             sb.append(car.name());
