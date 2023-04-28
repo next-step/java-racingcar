@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class CarList {
@@ -18,6 +19,16 @@ public class CarList {
     public List<SimpleCar> getCopiedCars() {
         return this.cars.stream()
                 .map(SimpleCar::copy)
+                .collect(Collectors.toList());
+    }
+
+    public List<SimpleCar> extractWinners() {
+        int maxPosition = cars.stream()
+                .mapToInt(SimpleCar::getPosition)
+                .max().orElseThrow(NoSuchElementException::new);
+
+        return cars.stream()
+                .filter(it -> it.getPosition() == maxPosition)
                 .collect(Collectors.toList());
     }
 

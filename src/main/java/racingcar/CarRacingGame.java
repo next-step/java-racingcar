@@ -23,6 +23,7 @@ public class CarRacingGame {
     void play(GameStartParameter gameStartParameter) {
         CarList cars = new CarList(generateCars(gameStartParameter));
         runCars(gameStartParameter, cars);
+        ResultView.printWinners(cars.extractWinners());
     }
 
     List<SimpleCar> generateCars(GameStartParameter gameStartParameter) {
