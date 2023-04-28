@@ -1,9 +1,14 @@
 package racing.domain;
 
+import calculate.StringAddCalculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racing.controller.RacingController.winners;
 
 public class CarTest {
 
@@ -17,19 +22,25 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("자동차 이동 시 랜덤 int 만큼 거리 변화")
-    void customDelimiterSum() {
+    @DisplayName("입력 값 만큼 이동 가능")
+    void move() {
 
-        GameRule gameRule = new RandomGameRule();
+        Car initialCar = new Car(0, "a");
+        Car movedResultCar = new Car(5, "b");
+
+        Car movedCar = initialCar.move(5);
+
+        assertThat(movedCar.location()).isEqualTo(movedResultCar.location());
+    }
+
+    @Test
+    @DisplayName("이름 유효성 검사")
+    void nameValidation() {
 
         Car car = new Car(0);
-        int firstRandomInt = gameRule.getPossibleInt();
-        Car firstMovedCar = car.move(firstRandomInt);
-
-        int secondRandomInt = gameRule.getPossibleInt();
-        Car secondMovedCar = car.move(secondRandomInt);
-
-        assertThat(firstMovedCar.location()).isEqualTo(firstRandomInt);
-        assertThat(secondMovedCar.location() - firstMovedCar.location()).isEqualTo(secondRandomInt);
+        assertThatThrownBy(() -> car.nameValidation("hellooo"))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThat(car.nameValidation("std")).isEqualTo("std");
     }
+
 }
