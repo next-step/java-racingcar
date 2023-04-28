@@ -6,10 +6,6 @@ public class Car {
     private final Position position;
     private final Name name;
 
-    public static Car newCar(Car car) {
-        return new Car(car.name, car.position);
-    }
-
     public Car(String name) {
         this(new Name(name), new Position(DEFAULT_POSITION));
     }

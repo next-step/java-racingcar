@@ -1,5 +1,6 @@
 package racing.domain;
 
+import java.util.Objects;
 import racing.rule.RacingRule;
 
 import java.util.ArrayList;
@@ -14,9 +15,6 @@ public class Cars {
     }
     public Cars(List<Car> cars) {
         this.cars = cars;
-    }
-    public List<Car> getCars() {
-        return this.cars;
     }
 
     private static List<Car> convertToCarList(List<String> carNames) {
