@@ -1,4 +1,4 @@
-package racing.rule;
+package racing.domain.rule;
 
 public interface RacingRule {
     int generateNumber();
