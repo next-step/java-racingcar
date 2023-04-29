@@ -1,26 +1,33 @@
 package racing;
 
-import java.util.List;
 
-import static racing.ResultView.printWinners;
+import racing.domain.Car;
+import racing.domain.Cars;
+import racing.view.InputView;
+import racing.view.ResultView;
+
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
 
+
         InputView inputView = InputView.getInstance();
-        String[] carsName = (inputView.inputCarName()).split(",");
+
+        //사용자 입력
+        String inputCarName = inputView.inputCarName();
+        String[] carsName = inputView.splitCarsName(inputCarName);
         int tryCount = inputView.inputTryCount();
 
-        Cars cars = new Cars(carsName);
-        List<Car> carList = cars.getCars();
+        Cars cars = new Cars();
+        cars.getCars(carsName);
+
 
         for (int i = 0; i < tryCount; i++) {
-            cars.moveCarList(carList);
+            cars.racingCars();
         }
 
-        List<Car> winners = cars.findWinners(carList);
-        printWinners(winners);
-
-
+        List<Car> winners = cars.findWinners();
+        ResultView.printWinners(winners);
     }
 }

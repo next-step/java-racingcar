@@ -1,4 +1,4 @@
-package racing;
+package racing.view;
 
 class ResultViewTest {
 
