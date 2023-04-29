@@ -20,7 +20,7 @@ public class GameTest {
     @DisplayName("pobi,conan,bob을 입력하면 3대의 자동차가 생성된다.")
     @Test
     void participate() {
-        List<Name> carNameList = Arrays.asList(new Name("pobi"), new Name("conan"), new Name("bob"));
+        List<String> carNameList = Arrays.asList("pobi", "conan", "bob");
         List<Car> racingCar = Game.participate(carNameList);
         assertThat(racingCar).hasSize(3);
     }
@@ -28,9 +28,9 @@ public class GameTest {
     @DisplayName("참여한 자동차들이 한 경주를 돌면 0이나 1을 반환한다.")
     @Test
     void race() {
-        List<Car> cars = List.of(new Car(new Name("pobi")),
-                new Car(new Name("conan")),
-                new Car(new Name("bob")));
+        List<Car> cars = List.of(new Car("pobi"),
+                new Car("conan"),
+                new Car("bob"));
         Game.race(cars);
         List<Integer> positoins = cars.stream()
                 .map(Car::getPosition)

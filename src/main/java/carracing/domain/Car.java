@@ -6,8 +6,8 @@ public class Car {
     private Position position;
 
 
-    public Car(final Name name) {
-        this(name, new Position(0));
+    public Car(final String name) {
+        this(new Name(name), new Position(0));
     }
 
     public Car(final Name name, Position position) {

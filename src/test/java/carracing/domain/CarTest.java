@@ -22,7 +22,7 @@ public class CarTest {
     public Car pobi;
     @BeforeEach
     void init() {
-        pobi = new Car(new Name("pobi"));
+        pobi = new Car("pobi");
     }
 
     @DisplayName("자동차는 이름을 가진다.")
@@ -50,7 +50,7 @@ public class CarTest {
     @ParameterizedTest
     @ValueSource(strings = {"abcdef", "abcdefg"})
     void checkName(String 여섯글자를_넘는_이름) {
-        assertThrows(IllegalArgumentException.class, () -> new Car(new Name(여섯글자를_넘는_이름)));
+        assertThrows(IllegalArgumentException.class, () -> new Car(여섯글자를_넘는_이름));
     }
 
     @DisplayName("첫번째 위치의 자동차의 속도가 4이상이여서 두번째 위치에 도착한다.")

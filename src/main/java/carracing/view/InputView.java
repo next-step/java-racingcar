@@ -5,6 +5,7 @@ import carracing.domain.Name;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class InputView {
     private static final String QUESTION_CAR_NAMES = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
@@ -23,8 +24,8 @@ public class InputView {
         this.track = track;
     }
 
-    public List<Name> getNames() {
-        return names;
+    public List<String> getNames() {
+        return names.stream().map(Name::getName).collect(Collectors.toList());
     }
 
     public int getTrack() {

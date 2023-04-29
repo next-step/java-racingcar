@@ -19,7 +19,7 @@ class ResultViewTest {
     
     @Test
     void print() {
-        Car car = new Car(new Name("pobi"));
+        Car car = new Car("pobi");
         car.move(4);
         Assertions.assertEquals(resultView.print(car), "pobi : -");
     }
