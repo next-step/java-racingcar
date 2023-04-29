@@ -3,6 +3,7 @@ package racing.model;
 import racing.model.move.MoveStrategy;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Cars {
@@ -10,8 +11,18 @@ public class Cars {
     private List<Car> cars;
     private MoveStrategy moveStrategy;
 
+    public Cars() {
+        this.cars = new ArrayList<>();
+        this.moveStrategy = new MoveStrategy() {
+            @Override
+            public boolean move() {
+                return true;
+            }
+        };
+    }
+
     public Cars(int number, MoveStrategy moveStrategy) {
-        cars = new ArrayList<>();
+        this.cars = new ArrayList<>();
         createCars(number);
         this.moveStrategy = moveStrategy;
     }
@@ -46,6 +57,34 @@ public class Cars {
             cars.add(new Car(names[i]));
         }
 
+        cars = Collections.unmodifiableList(cars);
+
         return cars;
     }
+
+    public List<Car> findWinners() {
+        List<Car> winners = new ArrayList<>();
+
+        for (Car car : cars) {
+            addWinner(winners, car);
+        }
+
+        return winners;
+    }
+
+    private void addWinner(List<Car> winners, Car car) {
+        int winnerScore = getWinnerScore();
+
+        if (car.isSamePosition(winnerScore)) {
+            winners.add(car);
+        }
+    }
+
+    private int getWinnerScore() {
+        Car car = Collections.max(cars);
+        int winnerScore = car.getPosition();
+
+        return winnerScore;
+    }
+
 }

@@ -25,6 +25,8 @@ public class RaceGame {
         for (int i = 0; i < attempts; i++) {
             ResultView.printRoundResult(cars.move());
         }
+
+        ResultView.printRoundWinners(cars);
     }
 
 }
