@@ -1,18 +1,15 @@
-package step3.common;
+package racinggame;
 
-import step3.common.util.PrintUtils;
-import step3.common.util.RandomUtils;
-import step3.common.view.InputView;
-import step3.common.view.ResultView;
-import step3.common.vo.Car;
+import racinggame.common.util.PrintUtils;
+import racinggame.common.util.RandomUtils;
+import racinggame.common.view.InputView;
+import racinggame.common.view.ResultView;
+import racinggame.common.vo.Car;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class RacingCarGame implements Game {
-
-    private int carNumber;
-    private int moveNumber;
 
     private static Map<Integer, Car> carMap;
     private static final String INPUT_CAR_NUMBER_TEXT = "자동차 대수는 몇 대 인가요?";
@@ -20,6 +17,9 @@ public class RacingCarGame implements Game {
     private static final String RESULT_TEXT = "실행 결과";
 
     private static final int MINIMUM_NUMBER_FOR_MOVE = 4;
+
+    private int carNumber;
+    private int moveNumber;
 
 
     @Override

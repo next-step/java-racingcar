@@ -1,4 +1,4 @@
-package step3.common.util;
+package racinggame.common.util;
 
 public class PrintUtils {
 

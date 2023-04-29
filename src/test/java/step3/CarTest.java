@@ -3,17 +3,17 @@ package step3;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.common.vo.Car;
+import racinggame.common.vo.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
-    private static Car car;
+    private Car car;
 
     @BeforeAll
-    static void setUp() {
-        car = new Car(0);
+    void setUp() {
+        this.car = new Car(0);
     }
 
     @DisplayName("자동차 생성")

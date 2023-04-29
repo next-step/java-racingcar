@@ -3,8 +3,8 @@ package step3;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import step3.common.RacingCarGame;
-import step3.common.vo.Car;
+import racinggame.RacingCarGame;
+import racinggame.common.vo.Car;
 
 import java.util.Map;
 

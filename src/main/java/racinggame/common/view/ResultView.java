@@ -1,7 +1,7 @@
-package step3.common.view;
+package racinggame.common.view;
 
-import step3.common.util.PrintUtils;
-import step3.common.vo.Car;
+import racinggame.common.util.PrintUtils;
+import racinggame.common.vo.Car;
 
 import java.util.Map;
 

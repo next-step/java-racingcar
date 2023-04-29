@@ -1,4 +1,4 @@
-package step3.common.vo;
+package racinggame.common.vo;
 
 public class Car {
 
