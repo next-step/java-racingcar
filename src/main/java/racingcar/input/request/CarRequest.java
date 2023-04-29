@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 public class CarRequest {
 
+    private final static String DELIMITER = ",";
     private final String cars;
 
     public CarRequest(String cars) {
@@ -14,6 +15,6 @@ public class CarRequest {
     }
 
     public CarResource toResource(){
-        return CarResource.from(Arrays.stream(cars.split(",")).collect(Collectors.toList()));
+        return CarResource.from(Arrays.stream(cars.split(DELIMITER)).collect(Collectors.toList()));
     }
 }
