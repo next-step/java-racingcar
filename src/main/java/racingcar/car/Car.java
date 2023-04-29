@@ -23,35 +23,16 @@ public class Car {
     }
 
     public boolean isWinner(int position){
-        return this.position.position == position;
+        return this.getPosition() == position;
     }
 
 
     public int getPosition(){
-        return position.position;
+        return position.getPosition();
     }
 
     public String getName() {
         return name.name;
-    }
-
-    private static class Position{
-
-        private int position;
-
-        private Position(int position) {
-            this.position = position;
-        }
-
-        private static Position from(int position){
-            return new Position(position);
-        }
-
-        private void move(){
-            this.position++;
-        }
-
-
     }
 
     private static class Name{
