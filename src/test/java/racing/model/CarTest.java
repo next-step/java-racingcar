@@ -13,7 +13,6 @@ class CarTest {
     @Test
     void moveTest() {
         Car car = new Car();
-        MoveStrategy moveStrategy = new RandomMoveStrategy();
         car.move(new RandomMoveStrategy() {
             @Override
             public boolean move() {
