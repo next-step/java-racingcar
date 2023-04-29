@@ -13,7 +13,7 @@ public class RacePrinter {
     }
     public static void printPerRound(List<Car> cars){
         for(Car car : cars){
-            System.out.println(car.getName()+" : "+STATE.repeat(car.getState()));
+            System.out.println(car.getName()+" : "+STATE.repeat(car.getPosition()));
         }
         System.out.println();
     }

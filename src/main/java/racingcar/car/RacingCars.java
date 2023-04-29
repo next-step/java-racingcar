@@ -22,10 +22,10 @@ public class RacingCars {
     }
 
     public List<Car> getWinners(){
-        int maxState = cars.stream().mapToInt(Car::getState).max().orElse(0);
+        int maxState = cars.stream().mapToInt(Car::getPosition).max().orElse(0);
 
         return cars.stream()
-                .filter(car -> car.getState() == maxState)
+                .filter(car -> car.getPosition() == maxState)
                 .collect(Collectors.toList());
     }
 

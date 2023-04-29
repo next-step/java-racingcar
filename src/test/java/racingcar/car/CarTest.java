@@ -4,7 +4,6 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.car.Car;
 
 class CarTest {
 
@@ -16,7 +15,7 @@ class CarTest {
         Car car = Car.from("a");
         car.move(() -> value);
 
-        Assertions.assertThat(car.getState()).isEqualTo(1);
+        Assertions.assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @DisplayName("4미만의 수를 받으면 자동차는 움직이지 않는다")
@@ -26,6 +25,6 @@ class CarTest {
         Car car = Car.from("a");
         car.move(() -> value);
 
-        Assertions.assertThat(car.getState()).isEqualTo(0);
+        Assertions.assertThat(car.getPosition()).isEqualTo(0);
     }
 }
