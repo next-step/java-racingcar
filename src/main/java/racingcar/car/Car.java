@@ -1,6 +1,5 @@
 package racingcar.car;
 
-import org.apache.commons.lang3.StringUtils;
 import racingcar.numbergenerator.NumberGenerator;
 
 public class Car {
@@ -65,7 +64,7 @@ public class Car {
         }
 
         public static Name from(String name){
-            if(StringUtils.isBlank(name)){
+            if(name == null || name.isBlank()){
                 throw new RuntimeException("자동차 이름은 항상 있어야 합니다!");
             }
             if(name.length() > LENGTH_LIMIT){
