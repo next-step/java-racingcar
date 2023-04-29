@@ -1,11 +1,12 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Math.*;
+
 public class Racing {
 
-    private static final String NOTICE_WINNER = "가 최종 우승했습니다.";
     private static final String SPLITTER = ",";
     private final String[] CAR_NAMES;
     private final List<Car> CARS;
@@ -20,7 +21,7 @@ public class Racing {
     public static List<Car> create(String[] carNames) {
         List<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
-            cars.add(new Car(carName));
+            cars.add(new Car(new CarName(carName)));
         }
         return cars;
     }
@@ -35,31 +36,35 @@ public class Racing {
         return CARS;
     }
 
-    public void findWinner() {
+    public String findWinner() {
         int maxMoveCount = findMaxMoveCount(CARS);
         List<String> winners = findWinnerCarNames(CARS, maxMoveCount);
-        String finalWinners = String.join(SPLITTER, winners);
-        System.out.print(finalWinners + NOTICE_WINNER);
+        return findFinalWinners(winners);
+    }
+
+    private String findFinalWinners(List<String> winners) {
+        return String.join(SPLITTER, winners);
     }
 
     public List<String> findWinnerCarNames(List<Car> cars, int maxMoveCount) {
         List<String> winners = new ArrayList<>();
         for (Car car : cars) {
-            maxMoved(maxMoveCount, winners, car);
+            CarName carName = car.getCarName();
+            maxMoved(maxMoveCount, winners, car, carName);
         }
         return winners;
     }
 
-    public void maxMoved(int maxMoveCount, List<String> winners, Car car) {
+    public void maxMoved(int maxMoveCount, List<String> winners, Car car, CarName carName) {
         if (car.getMoveCount() == maxMoveCount) {
-            winners.add(car.getCarName());
+            winners.add(carName.getStringCarName());
         }
     }
 
     public int findMaxMoveCount(List<Car> cars) {
         int maxMoveCount = 0;
         for (Car car : cars) {
-            maxMoveCount = Math.max(maxMoveCount, car.getMoveCount());
+            maxMoveCount = max(maxMoveCount, car.getMoveCount());
         }
         return maxMoveCount;
     }
