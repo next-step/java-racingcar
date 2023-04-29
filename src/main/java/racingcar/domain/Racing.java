@@ -1,12 +1,15 @@
 package racingcar.domain;
 
-import racingcar.dto.RandomValue;
-import racingcar.util.OutputView;
-
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class Racing {
+    private final CarGroup carGroup;
+
+    public Racing(CarGroup carGroup) {
+        this.carGroup = carGroup;
+    }
 
     private static final String SPLIT_PLAYER_DELIMITER = ",";
 
@@ -20,18 +23,9 @@ public class Racing {
         return playerGroup.split(SPLIT_PLAYER_DELIMITER);
     }
 
-    public static void runRacing(List<Car> carList, int tryNumber) {
-        OutputView.resultIntro();
-        for (int i = 0; i < tryNumber; i++) {
-            runCarsForOneTurn(carList);
-            OutputView.printInput("\n");
-        }
+    public CarGroup runRacing(){
+        carGroup.moveAll(new RandomValue());
+        return carGroup;
     }
 
-    private static void runCarsForOneTurn(List<Car> carList) {
-        carList.stream().forEach(car -> {
-            car.move(new RandomValue());
-            OutputView.printCarTraceUntilNow(car);
-        });
-    }
 }

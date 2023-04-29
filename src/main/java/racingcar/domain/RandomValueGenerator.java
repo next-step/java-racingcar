@@ -1,4 +1,4 @@
-package racingcar.dto;
+package racingcar.domain;
 
 public interface RandomValueGenerator {
 
