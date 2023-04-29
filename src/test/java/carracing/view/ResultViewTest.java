@@ -1,6 +1,7 @@
 package carracing.view;
 
 import carracing.Car;
+import carracing.Name;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,7 +19,7 @@ class ResultViewTest {
     
     @Test
     void print() {
-        Car car = new Car("pobi");
+        Car car = new Car(new Name("pobi"));
         car.move(4);
         Assertions.assertEquals(resultView.print(car), "pobi : -");
     }

@@ -17,9 +17,9 @@ class WinnerTest {
 
     @BeforeEach
     void init() {
-        cars = List.of(new Car("pobi", 4),
-                new Car("conan", 2),
-                new Car("honux", 3)
+        cars = List.of(new Car(new Name("pobi"), new Position(4)),
+                new Car(new Name("conan"), new Position(2)),
+                new Car(new Name("honux"), new Position(3))
         );
 
     }

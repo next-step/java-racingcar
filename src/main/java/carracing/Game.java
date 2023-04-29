@@ -24,9 +24,9 @@ public class Game {
         System.out.println(resultView.printWinner(winners.addWinners()));
     }
 
-    public static List<Car> participate(List<String> carNameList) {
+    public static List<Car> participate(List<Name> carNameList) {
         List<Car> raceCars = new ArrayList<>();
-        for (String name : carNameList) {
+        for (Name name : carNameList) {
             raceCars.add(new Car(name));
         }
         return raceCars;

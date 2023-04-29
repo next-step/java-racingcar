@@ -1,40 +1,36 @@
 package carracing;
 
 public class Car {
-    private static final int MAX_NAME_LENGTH = 5;
     private static final int MINIMUM_SPEED = 4;
-    private final String name;
-    private int position;
+    private final Name name;
+    private Position position;
 
 
-    public Car(final String name) {
-        this(name, 0);
+    public Car(final Name name) {
+        this(name, new Position(0));
     }
 
-    public Car(final String name, int position) {
-        if (name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException("5글자를 초과하였습니다.");
-        }
+    public Car(final Name name, Position position) {
         this.name = name;
         this.position = position;
     }
 
     public int move(int speed) {
         if (speed >= MINIMUM_SPEED) {
-            this.position++;
+            position = position.increase();
         }
-        return this.position;
+        return this.position.getPosition();
     }
 
     public String getName() {
-        return name;
+        return name.getName();
     }
 
     public int getPosition() {
-        return position;
+        return position.getPosition();
     }
 
     public boolean isWinner(int maxPosition) {
-        return maxPosition == this.position;
+        return maxPosition == position.getPosition();
     }
 }

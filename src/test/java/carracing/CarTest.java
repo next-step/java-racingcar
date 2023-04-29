@@ -20,7 +20,7 @@ public class CarTest {
     public Car pobi;
     @BeforeEach
     void init() {
-        pobi = new Car("pobi");
+        pobi = new Car(new Name("pobi"));
     }
 
     @DisplayName("자동차는 이름을 가진다.")
@@ -33,7 +33,8 @@ public class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     void move_over4(int number) {
-        assertEquals(pobi.move(number), 1);
+        pobi.move(number);
+        assertEquals(pobi.getPosition(), 1);
     }
 
     @DisplayName("속도가 3이하이면 위치가 변하지 않는다.")
@@ -47,7 +48,7 @@ public class CarTest {
     @ParameterizedTest
     @ValueSource(strings = {"abcdef", "abcdefg"})
     void checkName(String 여섯글자를_넘는_이름) {
-        assertThrows(IllegalArgumentException.class, () -> new Car(여섯글자를_넘는_이름));
+        assertThrows(IllegalArgumentException.class, () -> new Car(new Name(여섯글자를_넘는_이름)));
     }
 
     @DisplayName("첫번째 위치의 자동차의 속도가 4이상이여서 두번째 위치에 도착한다.")
