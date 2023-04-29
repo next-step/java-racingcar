@@ -1,5 +1,6 @@
-package carracing;
+package carracing.domain;
 
+import carracing.domain.Position;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;

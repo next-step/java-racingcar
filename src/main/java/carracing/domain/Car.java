@@ -1,4 +1,4 @@
-package carracing;
+package carracing.domain;
 
 public class Car {
     private static final int MINIMUM_SPEED = 4;

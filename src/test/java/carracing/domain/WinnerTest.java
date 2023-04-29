@@ -1,5 +1,9 @@
-package carracing;
+package carracing.domain;
 
+import carracing.domain.Car;
+import carracing.domain.Name;
+import carracing.domain.Position;
+import carracing.domain.Winner;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,6 +1,6 @@
 package carracing.view;
 
-import carracing.Name;
+import carracing.domain.Name;
 
 import java.util.ArrayList;
 import java.util.List;
