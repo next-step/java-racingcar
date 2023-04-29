@@ -1,16 +1,17 @@
 package racingcar.car;
 
+import org.apache.commons.lang3.StringUtils;
 import racingcar.numbergenerator.NumberGenerator;
 
 public class Car {
 
     private final static int MOVE_STRATEGY_NUMBER = 4;
     private Position position;
-    private String name;
+    private Name name;
 
     private Car(int position, String name) {
         this.position = Position.from(position);
-        this.name = name;
+        this.name = Name.from(name);
     }
 
     public static Car from(String name){
@@ -27,7 +28,7 @@ public class Car {
     }
 
     public String getName() {
-        return name;
+        return name.name;
     }
 
     private static class Position{
@@ -49,21 +50,6 @@ public class Car {
 
     }
 
-}
-/*
-    private static class Position{
-
-        private final int position;
-
-        private Position(int position) {
-            this.position = position;
-        }
-
-        public static Position from(int position){
-            return new Position(position);
-        }
-    }
-
     private static class Name{
 
         private final static int LENGTH_LIMIT = 5;
@@ -74,6 +60,9 @@ public class Car {
         }
 
         public static Name from(String name){
+            if(StringUtils.isBlank(name)){
+                throw new RuntimeException("자동차 이름은 항상 있어야 합니다!");
+            }
             if(name.length() > LENGTH_LIMIT){
                 throw new RuntimeException("자동차 이름은 5자를 초과할 수 없습니다! 잘못된 이름"+name);
             }
@@ -82,4 +71,4 @@ public class Car {
         }
     }
 
- */
+}
