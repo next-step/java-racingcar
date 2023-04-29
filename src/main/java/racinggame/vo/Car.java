@@ -1,13 +1,16 @@
-package racinggame.common.vo;
+package racinggame.vo;
 
 public class Car {
 
     private final int number;
 
+    private final String name;
+
     private int moveCount = 0;
 
-    public Car(int number) {
+    public Car(int number, String name) {
         this.number = number;
+        this.name = name;
     }
 
     public void move() {
@@ -16,6 +19,10 @@ public class Car {
 
     public int getNumber() {
         return number;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getMoveCount() {
