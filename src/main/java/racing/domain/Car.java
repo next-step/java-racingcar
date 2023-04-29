@@ -19,6 +19,7 @@ public class Car{
         this.name = new Name(name);
     }
 
+
     public void move(RandomNumber randomNumber) {
         if (randomNumber.movable()) {
             position.move();

@@ -6,7 +6,6 @@ import racing.domain.Cars;
 import racing.view.InputView;
 import racing.view.ResultView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -21,15 +20,14 @@ public class Main {
         int tryCount = inputView.inputTryCount();
 
         Cars cars = new Cars();
-        List<Car> carList = cars.getCars(carsName);
+        cars.getCars(carsName);
 
-        Cars movingCars = new Cars(carList);
 
         for (int i = 0; i < tryCount; i++) {
-            movingCars.racingCars();
+            cars.racingCars();
         }
 
-        List<Car> winners = movingCars.findWinners();
+        List<Car> winners = cars.findWinners();
         ResultView.printWinners(winners);
     }
 }

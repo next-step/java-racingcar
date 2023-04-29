@@ -5,11 +5,12 @@ import racing.RandomNumber;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars{
 
-    private final List<Car> cars;
-    RandomNumber randomNumber = new RandomNumberGenerator();
+    private List<Car> cars;
+    private final RandomNumber randomNumber = new RandomNumberGenerator();
 
     public Cars() {
         this.cars = new ArrayList<>();
@@ -27,10 +28,10 @@ public class Cars{
         return cars;
     }
 
-    public static List<Car> getCars(String[] carsName) {
-        List<Car> carList = new ArrayList<>();
-        Arrays.stream(carsName).forEach(carName-> carList.add(new Car(carName)));
-        return carList;
+    public void getCars(String[] carsName) {
+        this.cars = Arrays.stream(carsName)
+                .map(car -> new Car(car))
+                .collect(Collectors.toList());
     }
 
     public List<Car> findWinners() {
