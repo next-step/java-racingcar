@@ -1,10 +1,12 @@
 package step3;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racinggame.Game;
 import racinggame.RacingCarGame;
-import racinggame.common.vo.Car;
+import racinggame.vo.Car;
 
 import java.util.Map;
 
@@ -31,6 +33,14 @@ public class RacingCarGameTest {
             assertThat(canMove).isTrue();
         }
         assertThat(canMove).isFalse();
+    }
+
+    @DisplayName("자동차 결과 확인")
+    @Test
+    void result() {
+        Game game = new RacingCarGame("pobi,crong,honux", 5);
+        game.create();
+        game.start();
     }
 
 

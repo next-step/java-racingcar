@@ -1,7 +1,7 @@
-package racinggame.common.view;
+package racinggame.view;
 
 import racinggame.common.util.PrintUtils;
-import racinggame.common.vo.Car;
+import racinggame.vo.Car;
 
 import java.util.Map;
 
@@ -12,7 +12,8 @@ public class ResultView {
     public static void resultPrint(Map<Integer, Car> carMap) {
 
         for (Integer carNumber : carMap.keySet()) {
-            sb.append("-".repeat(Math.max(0, carMap.get(carNumber).getMoveCount())));
+            Car car = carMap.get(carNumber);
+            sb.append(car.getName()).append(" : ").append("-".repeat(Math.max(0, car.getMoveCount())));
             PrintUtils.println(sb.toString());
             clearStringBuffer();
         }
