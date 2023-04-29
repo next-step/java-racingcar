@@ -1,8 +1,9 @@
 package racing.vehicle;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Cars {
 
@@ -10,8 +11,7 @@ public class Cars {
 
     public Cars(int number) {
         validateNumber(number);
-        cars = new ArrayList<>();
-        createRandomCars(number);
+        cars = createRandomCars(number);
     }
 
     private void validateNumber(int number) {
@@ -20,10 +20,10 @@ public class Cars {
         }
     }
 
-    private void createRandomCars(int number) {
-        for (int i = 0; i < number; i++) {
-            cars.add(Car.createRandomCar());
-        }
+    private List<Car> createRandomCars(int number) {
+        return IntStream.range(0, number)
+                .mapToObj(i -> Car.createRandomCar())
+                .collect(Collectors.collectingAndThen(Collectors.toList(), Collections::unmodifiableList));
     }
 
     public void move() {
