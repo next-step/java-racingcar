@@ -28,6 +28,7 @@ public class Race {
         RacePrinter.printRaceStart();
         for(int i = 0; i < raceCount.getValue(); i++){
             cars.raceCar();
+            RacePrinter.printPerRound(cars.getCars());
         }
         RacePrinter.printWinners(cars.getWinners());
     }

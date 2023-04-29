@@ -18,7 +18,10 @@ public class RacingCars {
 
     public void raceCar(){
         cars.forEach(car -> car.move(numberGenerator));
-        RacePrinter.printPerRound(cars);
+    }
+
+    public List<Car> getCars(){
+        return cars;
     }
 
     public List<Car> getWinners(){
