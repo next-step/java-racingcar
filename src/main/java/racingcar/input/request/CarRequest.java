@@ -15,6 +15,9 @@ public class CarRequest {
     }
 
     public CarResource toResource(){
-        return CarResource.from(Arrays.stream(cars.split(DELIMITER)).collect(Collectors.toList()));
+        return CarResource.from(
+                Arrays.stream(cars.split(DELIMITER))
+                        .collect(Collectors.toList())
+        );
     }
 }
