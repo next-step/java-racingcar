@@ -18,6 +18,10 @@ public class Car {
         }
     }
 
+    public Integer getPosition() {
+        return position;
+    }
+
     public CarDTO getCarDTO() {
         return new CarDTO(name, this.position);
     }

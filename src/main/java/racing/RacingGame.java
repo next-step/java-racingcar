@@ -1,33 +1,25 @@
 package racing;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingGame {
 
-    private final Integer numberOfTry;
-
     private final Cars cars;
 
-    public RacingGame(Integer numberOfTry, Cars cars) {
-        this.numberOfTry = numberOfTry;
+    public RacingGame(Cars cars) {
         this.cars = cars;
     }
 
-    public List<List<CarDTO>> startGame(MoveStrategy moveStrategy) {
-        List<List<CarDTO>> gameResult = new ArrayList<>();
-        for (int i = 0; i < numberOfTry; i++) {
-            cars.move(moveStrategy);
-            gameResult.add(cars.getCarDTOs());
-        }
-        return gameResult;
+    public List<CarDTO> startGame(MoveStrategy moveStrategy) {
+        cars.move(moveStrategy);
+        return cars.getCarDTOs();
     }
 
     public List<CarDTO> getWinner() {
-        Integer longDistance = cars.getCarDTOs()
+        Integer longDistance = cars.getCars()
             .stream()
-            .mapToInt(CarDTO::getPosition)
+            .mapToInt(Car::getPosition)
             .max()
             .orElseThrow(IllegalAccessError::new);
 

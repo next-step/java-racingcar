@@ -12,22 +12,16 @@ public class OutputView {
         System.out.println("실행 결과");
     }
 
-    public static void outputProgress(List<List<CarDTO>> gameResult) {
-        gameResult.forEach(OutputView::outputCarDTOs);
+    public static void outputProgress(List<CarDTO> roundResult) {
+        roundResult.forEach(carDTO -> System.out.println(
+            carDTO.getName() + " : " + CAR_PROGRESS.repeat(carDTO.getPosition()))
+        );
     }
 
     public static void outputWinner(List<CarDTO> winners) {
         System.out.println(winners.stream()
             .map(CarDTO::getName)
             .collect(Collectors.joining(",")) + "가 최종 우승했습니다.");
-    }
-
-    private static void outputCarDTOs(List<CarDTO> carDTOs) {
-        carDTOs.forEach(
-            carDTO -> System.out.println(
-                carDTO.getName() + " : " + CAR_PROGRESS.repeat(carDTO.getPosition()))
-        );
-        System.out.println();
     }
 
 }
