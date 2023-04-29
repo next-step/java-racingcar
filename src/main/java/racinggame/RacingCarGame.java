@@ -98,7 +98,7 @@ public class RacingCarGame implements Game {
     public static String getWinners() {
         for (Integer carNumber : carMap.keySet()) {
             Car car = carMap.get(carNumber);
-            addWinnerList(car);
+            addWinner(car);
         }
         StringBuilder sb = new StringBuilder();
         for (Car car : winnerCarList) {
@@ -107,14 +107,19 @@ public class RacingCarGame implements Game {
         return sb.toString().replaceAll(LAST_COMMA_REMOVE_REX_FORMAT_TEXT, "");
     }
 
-    private static void addWinnerList(Car car) {
+    private static void addWinner(Car car) {
         if (car.getMoveCount() > winnerMoveCount) {
+            winnerMoveCount = car.getMoveCount();
             winnerCarList.clear();
-            winnerCarList.add(car);
+            addWinnerCarList(car);
         }
         if (car.getMoveCount() == winnerMoveCount) {
-            winnerCarList.add(car);
+            addWinnerCarList(car);
         }
+    }
+
+    public static void addWinnerCarList(Car car) {
+        if (!winnerCarList.contains(car)) winnerCarList.add(car);
     }
 
 }
