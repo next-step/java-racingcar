@@ -21,15 +21,24 @@ public class RacingCarGame implements Game {
     private int carNumber;
     private int moveNumber;
 
-
     @Override
-    public void start() {
+    public void input() {
 
         PrintUtils.println(INPUT_CAR_NUMBER_TEXT);
         carNumber = InputView.input();
         PrintUtils.println(INPUT_MOVE_NUMBER_TEXT);
         moveNumber = InputView.input();
+
+    }
+
+    @Override
+    public void create() {
         carMap = createCars(carNumber);
+    }
+
+    @Override
+    public void start() {
+
         PrintUtils.println(RESULT_TEXT);
         moveByMoveNumber(moveNumber);
 
