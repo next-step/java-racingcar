@@ -15,10 +15,10 @@ public class RacingCarGameTest {
 
     @DisplayName("자동차 대수 만큼 생성 생성")
     @ParameterizedTest
-    @ValueSource(ints = {3})
-    void createCars(int carNumber) {
+    @ValueSource(strings = {"pobi,crong,honux"})
+    void createCars(String carsName) {
         Map<Integer, Car> carMap;
-        carMap = RacingCarGame.createCars(carNumber);
+        carMap = RacingCarGame.createCars(carsName);
         assertThat(carMap).hasSize(3);
     }
 

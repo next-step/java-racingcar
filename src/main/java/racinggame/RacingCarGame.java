@@ -12,28 +12,32 @@ import java.util.Map;
 public class RacingCarGame implements Game {
 
     private static Map<Integer, Car> carMap;
-    private static final String INPUT_CAR_NUMBER_TEXT = "자동차 대수는 몇 대 인가요?";
+    private static final String INPUT_CARS_NAME_TEXT = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).\n";
     private static final String INPUT_MOVE_NUMBER_TEXT = "시도할 회수는 몇 회 인가요?";
     private static final String RESULT_TEXT = "실행 결과";
 
     private static final int MINIMUM_NUMBER_FOR_MOVE = 4;
 
-    private int carNumber;
+    private static final String CARS_NAME_REX_FORMAT_TEXT = ",";
+
+    private String carsName;
     private int moveNumber;
 
     @Override
     public void input() {
 
-        PrintUtils.println(INPUT_CAR_NUMBER_TEXT);
-        carNumber = InputView.input();
+        PrintUtils.println(INPUT_CARS_NAME_TEXT);
+        carsName = InputView.input();
         PrintUtils.println(INPUT_MOVE_NUMBER_TEXT);
-        moveNumber = InputView.input();
+        moveNumber = Integer.parseInt(InputView.input());
 
     }
 
     @Override
     public void create() {
-        carMap = createCars(carNumber);
+
+        carMap = createCars(carsName);
+
     }
 
     @Override
@@ -44,9 +48,10 @@ public class RacingCarGame implements Game {
 
     }
 
-    public static Map<Integer, Car> createCars(int carNumber) {
+    public static Map<Integer, Car> createCars(String carsName) {
+        String[] cars = carsName.split(CARS_NAME_REX_FORMAT_TEXT);
         Map<Integer, Car> createCarMap = new HashMap<>();
-        for (int number = 0; number < carNumber; number++) {
+        for (int number = 0; number < cars.length; number++) {
             createCarMap.put(number, new Car(number));
         }
         return createCarMap;
