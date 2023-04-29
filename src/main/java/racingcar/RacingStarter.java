@@ -1,5 +1,12 @@
 package racingcar;
 
+import racingcar.domain.Car;
+import racingcar.domain.Racing;
+import racingcar.domain.RandomMovingStrategy;
+import racingcar.domain.RandomNumberGenerator;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
+
 import java.util.List;
 
 public class RacingStarter {
@@ -22,6 +29,6 @@ public class RacingStarter {
             resultView.openResults(racing);
         }
 
-        racing.findWinner();
+        resultView.noticeWinner(racing.findWinner());
     }
 }
