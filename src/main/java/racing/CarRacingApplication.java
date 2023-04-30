@@ -1,5 +1,8 @@
 package racing;
 
+import racing.domain.model.Cars;
+import racing.domain.model.RacingGame;
+import racing.domain.move.RandomMove;
 import racing.view.InputView;
 import racing.view.OutputView;
 
@@ -7,10 +10,9 @@ public class CarRacingApplication {
 
     public static void main(String[] args) {
         Cars cars = new Cars(InputView.inputNames());
-        int round = InputView.inputRound();
-        RacingGame racingGame = new RacingGame(cars);
+        RacingGame racingGame = new RacingGame(cars, InputView.inputRound());
         OutputView.basicOutput();
-        for (int i = 0; i < round; i++) {
+        while (!racingGame.isOver()) {
             OutputView.outputProgress(racingGame.startGame(new RandomMove()));
         }
         OutputView.outputWinner(racingGame.getWinner());

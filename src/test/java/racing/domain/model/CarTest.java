@@ -1,8 +1,11 @@
-package racing;
+package racing.domain.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
+import racing.domain.move.MoveOneSpace;
+import racing.domain.move.MoveStrategy;
+import racing.domain.move.NonMove;
 
 class CarTest {
 

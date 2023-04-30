@@ -1,7 +1,9 @@
-package racing;
+package racing.domain.model;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import racing.domain.dto.CarDTO;
+import racing.domain.move.MoveStrategy;
 
 public class Cars {
 

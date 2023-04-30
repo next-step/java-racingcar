@@ -2,7 +2,7 @@ package racing.view;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import racing.CarDTO;
+import racing.domain.dto.CarDTO;
 
 public class OutputView {
 

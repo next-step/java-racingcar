@@ -1,4 +1,7 @@
-package racing;
+package racing.domain.model;
+
+import racing.domain.dto.CarDTO;
+import racing.domain.move.MoveStrategy;
 
 public class Car {
 
