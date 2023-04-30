@@ -18,12 +18,13 @@ public class Race {
     public void start() {
         this.init();
         this.run();
+        this.showResult();
     }
 
     private void init() {
-        int participantsCount = inputView.promptParticipantsCount();
+        String names = inputView.promptNames();
         int laps = inputView.promptLaps();
-        this.game = new Game(participantsCount, laps);
+        this.game = new Game(names, laps);
         displayView.displayEmptyLine();
     }
 
@@ -34,6 +35,10 @@ public class Race {
             this.currentGameDisplay();
             game.runLap();
         });
+    }
+
+    private void showResult() {
+        displayView.displayWinners(game.getWinners());
     }
 
     private void currentGameDisplay() {

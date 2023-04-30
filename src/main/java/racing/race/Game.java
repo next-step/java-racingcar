@@ -1,15 +1,19 @@
 package racing.race;
 
+import racing.vehicle.Car;
+import racing.vehicle.CarNames;
 import racing.vehicle.Cars;
+
+import java.util.List;
 
 public class Game {
     private final Cars participants;
     private final int laps;
 
-    public Game(int participantsCount, int laps) {
+    public Game(String names, int laps) {
+        CarNames carNames = new CarNames(names);
         validateLaps(laps);
-
-        this.participants = new Cars(participantsCount);
+        this.participants = new Cars(carNames);
         this.laps = laps;
     }
 
@@ -21,6 +25,10 @@ public class Game {
 
     public Cars getParticipants() {
         return participants;
+    }
+
+    public List<Car> getWinners() {
+        return participants.getWinners();
     }
 
     public int getLaps() {
