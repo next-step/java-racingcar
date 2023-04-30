@@ -1,10 +1,7 @@
 package racing.race;
 
-import racing.vehicle.Car;
 import racing.vehicle.CarNames;
 import racing.vehicle.Cars;
-
-import java.util.List;
 
 public class Game {
     private final Cars participants;
@@ -27,7 +24,7 @@ public class Game {
         return participants;
     }
 
-    public List<Car> getWinners() {
+    public Cars getWinners() {
         return participants.getWinners();
     }
 

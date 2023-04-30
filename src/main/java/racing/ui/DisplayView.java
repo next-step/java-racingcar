@@ -4,7 +4,6 @@ import racing.vehicle.Car;
 import racing.vehicle.CarName;
 import racing.vehicle.Cars;
 
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class DisplayView implements View {
@@ -32,8 +31,8 @@ public class DisplayView implements View {
         cars.getCars().stream().map(this::buildCarPositionString).forEach(this::display);
     }
 
-    public void displayWinners(List<Car> winners) {
-        String winnersName = winners.stream()
+    public void displayWinners(Cars winners) {
+        String winnersName = winners.getCars().stream()
                 .map(Car::getName)
                 .map(CarName::toString)
                 .collect(Collectors.joining(CARS_DELIMITER));

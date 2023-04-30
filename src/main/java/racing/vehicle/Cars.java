@@ -8,6 +8,11 @@ public class Cars {
 
     private final List<Car> cars;
 
+    public Cars(List<Car> cars) {
+        validateCars(cars);
+        this.cars = cars;
+    }
+
     public Cars(CarNames carNames) {
         validateCarNames(carNames);
         cars = createRandomCars(carNames);
@@ -15,6 +20,12 @@ public class Cars {
 
     private void validateCarNames(CarNames carNames) {
         if (carNames.getSize() == 0) {
+            throw new IllegalArgumentException("The number of participants must be positive.");
+        }
+    }
+
+    private void validateCars(List<Car> cars) {
+        if (cars.size() == 0) {
             throw new IllegalArgumentException("The number of participants must be positive.");
         }
     }
@@ -33,10 +44,11 @@ public class Cars {
         return Collections.unmodifiableList(cars);
     }
 
-    public List<Car> getWinners() {
+    public Cars getWinners() {
         int maxPosition = Collections.max(this.cars).getCurrentPosition();
-        return cars.stream()
+        List<Car> winners = cars.stream()
                 .filter(car -> car.isAt(maxPosition))
                 .collect(Collectors.toUnmodifiableList());
+        return new Cars(winners);
     }
 }
