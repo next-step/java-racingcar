@@ -15,7 +15,7 @@ public class WinnerTest {
     void award() {
         //given
         Racing racing = new Racing(1, Arrays.asList(new Car("car1"), new Car("car2"), new Car("car3")));
-        RacingCars racingCars = racing.race();
+        RacingCars racingCars = racing.race(new RandomMovingStrategy());
 
         //when
         List<Car> winnerCars = Winner.award(racingCars);

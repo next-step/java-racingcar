@@ -1,15 +1,10 @@
 package racing.domain;
 
-import racing.domain.enums.MoveStatus;
-import racing.util.NumberUtil;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingCars {
-    private static final int MAX_MOVABLE_RANGE = 9;
-
     private final List<Car> cars = new ArrayList<>();
 
     public static RacingCars create(List<Car> cars) {
@@ -18,20 +13,10 @@ public class RacingCars {
         return racingCars;
     }
 
-    public void moveCars() {
+    public void moveCars(IMovingStrategy movingStrategy) {
         for (Car car : this.cars) {
-            moveCar(car);
+            moveCar(car, movingStrategy);
         }
-    }
-
-    private void moveCar(Car car) {
-        if (isMovable()) {
-            car.go();
-        }
-    }
-
-    private boolean isMovable() {
-        return MoveStatus.GO == MoveStatus.findByNumber(NumberUtil.generateRandomNumberFromZeroToInputNumber(MAX_MOVABLE_RANGE));
     }
 
     public List<Car> getCars() {
@@ -51,4 +36,9 @@ public class RacingCars {
                 .filter(car -> car.isSamePosition(getFarthestPosition()))
                 .collect(Collectors.toList());
     }
+
+    private void moveCar(Car car, IMovingStrategy movingStrategy) {
+        car.go(movingStrategy);
+    }
+
 }

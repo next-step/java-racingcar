@@ -12,8 +12,8 @@ public class Racing {
         readyRacingCars(cars);
     }
 
-    public RacingCars race() {
-        this.racingCars.moveCars();
+    public RacingCars race(IMovingStrategy movingStrategy) {
+        this.racingCars.moveCars(movingStrategy);
         finishMatch();
 
         return this.racingCars;

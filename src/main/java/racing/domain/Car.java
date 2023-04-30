@@ -4,11 +4,21 @@ import java.util.Objects;
 
 public class Car {
     private Position position;
-    private Name name;
+    private final Name name;
 
     public Car(String name) {
-        this.position = new Position(0);
+        this(name, 0);
+    }
+
+    public Car(String name, int position) {
         this.name = new Name(name);
+        this.position = new Position(position);
+    }
+
+    public void go(IMovingStrategy strategy) {
+        if (strategy.isMovable()) {
+            this.position = this.position.increase();
+        }
     }
 
     public Position getPosition() {
@@ -17,10 +27,6 @@ public class Car {
 
     public Position getFarthestPosition(Position position) {
         return this.position.max(position);
-    }
-
-    public void go() {
-        this.position = this.position.increase();
     }
 
     public boolean isSamePosition(Position position) {

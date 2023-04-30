@@ -43,5 +43,4 @@ public class PositionTest {
         assertThat(position.max(maxPosition)).isEqualTo(maxPosition);
     }
 
-
 }

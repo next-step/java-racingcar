@@ -17,9 +17,10 @@ public class RacingGameController {
 
         ResultView resultView = new ResultView();
         RacingCars racingCars = new RacingCars();
+        RandomMovingStrategy movingStrategy = new RandomMovingStrategy();
 
         while (racing.isNotFinished()) {
-            racingCars = racing.race();
+            racingCars = racing.race(movingStrategy);
             resultView.printMatchResult(racingCars);
         }
 
