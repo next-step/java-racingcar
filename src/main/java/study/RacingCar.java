@@ -1,51 +1,43 @@
 package study;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Random;
+import java.util.List;
+
 import java.util.Scanner;
 
 public class RacingCar {
+
+    private String namePrefix = "test";
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int carCount = scanner.nextInt();
         int moveCount = scanner.nextInt();
-        new RacingCar().race(carCount, moveCount);
+        RacingCar racingCar = new RacingCar();
+        racingCar.race(racingCar.makeRacingCar(carCount), moveCount);
     }
 
     private HashMap<Integer, String> map = new HashMap();
 
-    public void race(int carCount, int moveCount) {
-        for (int i = 0; i <carCount ; i++) {
-            map.put(i, "");
-        }
+    public void race(List<Car> cars, int moveCount) {
         System.out.println("실행결과");
 
         for (int i = 0; i <moveCount; i++) {
-            for(int key: map.keySet()) {
-                String value = map.get(key);
-                if (isMove()) {
-                    value += "-";
-                }
-                map.put(key, value);
+            for (Car car : cars) {
+                car.move();
+                car.print();
             }
-            printResult(map);
+            System.out.println("");
         }
-
-        System.out.println("map = " + map);
     }
 
-    private boolean isMove() {
-        return new Random().nextInt(10) > 4;
-    }
 
-    private void printResult(HashMap<Integer, String> map) {
-        for (int key :map.keySet()) {
-            System.out.println(map.get(key));
+    public List<Car> makeRacingCar(int carCount) {
+        ArrayList<Car> cars = new ArrayList<>();
+        for (int i = 0; i <carCount ; i++) {
+            cars.add(new Car(namePrefix+ i));
         }
-        System.out.println("");
+        return cars;
     }
-
-
-
 }
