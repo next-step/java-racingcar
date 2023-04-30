@@ -1,6 +1,7 @@
 package racing.model;
 
 import racing.model.move.MoveStrategy;
+import racing.model.move.RandomMoveStrategy;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,33 +10,19 @@ import java.util.List;
 public class Cars {
 
     private List<Car> cars;
-    private MoveStrategy moveStrategy;
 
-    public Cars() {
-        this.cars = new ArrayList<>();
-        this.moveStrategy = new MoveStrategy() {
-            @Override
-            public boolean move() {
-                return true;
-            }
-        };
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
-    public Cars(int number, MoveStrategy moveStrategy) {
-        this.cars = new ArrayList<>();
-        createCars(number);
-        this.moveStrategy = moveStrategy;
-    }
-
-    public Cars(String[] names, MoveStrategy moveStrategy) {
+    public Cars(String[] names) {
         cars = new ArrayList<>();
         createCarsByName(names);
-        this.moveStrategy = moveStrategy;
     }
 
     public List<Car> move() {
         for (Car car : cars) {
-            car.move(moveStrategy);
+            car.move();
         }
         return cars;
     }
@@ -44,17 +31,10 @@ public class Cars {
         return cars;
     }
 
-    private List<Car> createCars(int number) {
-        for (int i = 0; i < number; i++) {
-            cars.add(new Car());
-        }
-
-        return cars;
-    }
 
     private List<Car> createCarsByName(String[] names) {
         for (int i = 0; i < names.length; i++) {
-            cars.add(new Car(names[i]));
+            cars.add(new Car(names[i], new RandomMoveStrategy()));
         }
 
         cars = Collections.unmodifiableList(cars);

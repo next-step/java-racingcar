@@ -7,22 +7,21 @@ public class Car implements Comparable<Car> {
 
     private String name;
     private Position position;
+    private MoveStrategy moveStrategy;
 
-    public Car() {
-        this.position = new Position();
-    }
-
-    public Car(String name) {
+    public Car(String name, MoveStrategy moveStrategy) {
         this.name = name;
         this.position = new Position();
+        this.moveStrategy = moveStrategy;
     }
 
-    public Car(String name, int position) {
+    public Car(String name, int position, MoveStrategy moveStrategy) {
         this.name = name;
         this.position = new Position(position);
+        this.moveStrategy = moveStrategy;
     }
 
-    public void move(MoveStrategy moveStrategy) {
+    public void move() {
         if (moveStrategy.move()) {
             position.move();
         }

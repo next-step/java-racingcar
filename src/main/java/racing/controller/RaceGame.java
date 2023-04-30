@@ -9,17 +9,8 @@ import java.util.List;
 
 public class RaceGame {
 
-    public void startRacing(int carNum, int attempts) {
-        Cars cars = new Cars(carNum, new RandomMoveStrategy());
-
-        for (int i = 0; i < attempts; i++) {
-            ResultView.printRoundResult(cars.move());
-        }
-
-    }
-
     public void startRacing(String[] carNames, int attempts) {
-        Cars cars = new Cars(carNames, new RandomMoveStrategy());
+        Cars cars = new Cars(carNames);
 
         ResultView.printResultInfoMessage();
         for (int i = 0; i < attempts; i++) {
