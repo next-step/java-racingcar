@@ -48,7 +48,7 @@ public class RacingCarsTest {
         RacingCars racingCars = RacingCars.create(Arrays.asList(car1, car2));
 
         //when
-        List<Car> winnerCars = racingCars.getWinnerCars();
+        List<Car> winnerCars = racingCars.winnerCars();
 
         //then
         assertThat(winnerCars).hasSize(1);

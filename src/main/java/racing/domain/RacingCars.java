@@ -45,7 +45,7 @@ public class RacingCars {
                 .orElse(0);
     }
 
-    public List<Car> getWinnerCars() {
+    public List<Car> winnerCars() {
         int farthestPosition = getFarthestPosition();
         return this.cars.stream()
                 .filter(car -> car.isSamePosition(farthestPosition))

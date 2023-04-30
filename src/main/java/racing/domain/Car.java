@@ -1,14 +1,12 @@
 package racing.domain;
 
-import racing.util.InputValidator;
-
 public class Car {
     private int position;
-    private final String name;
+    private Name name;
 
     public Car(String name) {
         this.position = 0;
-        this.name = InputValidator.validateCarName(name);
+        this.name = new Name(name);
     }
 
     public int getPosition() {
@@ -19,11 +17,11 @@ public class Car {
         this.position++;
     }
 
-    public String getName() {
-        return this.name;
-    }
-
     public boolean isSamePosition(int position) {
         return this.position == position;
+    }
+
+    public Name getName() {
+        return this.name;
     }
 }

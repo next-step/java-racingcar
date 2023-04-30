@@ -1,9 +1,11 @@
 package racing.interfaces;
 
 import racing.domain.Car;
+import racing.domain.Name;
 import racing.domain.RacingCars;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
 
@@ -14,7 +16,7 @@ public class ResultView {
     public void printMatchResult(RacingCars racingCars) {
         StringBuilder result = new StringBuilder();
         for (Car car : racingCars.getCars()) {
-            result.append(car.getName())
+            result.append(car.getName().getName())
                     .append(" : ")
                     .append("-".repeat(car.getPosition()))
                     .append("\n");
@@ -23,7 +25,12 @@ public class ResultView {
         System.out.print(result);
     }
 
-    public void printWinnerResult(List<String> winnerNames) {
+    public void printWinnerResult(List<Car> winnerCars) {
+        List<String> winnerNames = winnerCars.stream()
+                .map(Car::getName)
+                .map(Name::getName)
+                .collect(Collectors.toList());
+
         System.out.println(String.join(", ", winnerNames) + "가 최종 우승했습니다.");
     }
 

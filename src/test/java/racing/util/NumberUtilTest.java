@@ -2,7 +2,6 @@ package racing.util;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.util.NumberUtil;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
