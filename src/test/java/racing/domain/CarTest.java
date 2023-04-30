@@ -3,6 +3,8 @@ package racing.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -33,6 +35,13 @@ public class CarTest {
     @Test
     void create_car_with_name() {
         assertThat(car.getName()).isEqualTo(DEFAULT_CAR_NAME);
+    }
+
+    @DisplayName("4단계 - 자동차 경주(우승자) - 입력된 position 값과 자동차 객체의 position 값에 따라 동일 여부가 올바르게 반환되는지 확인")
+    @ParameterizedTest(name = "testValue : {0}, 동일여부 : {1}")
+    @CsvSource(value = {"0:true", "1:false"}, delimiter = ':')
+    void is_same_position(int position, boolean expected) {
+        assertThat(car.isSamePosition(position)).isEqualTo(expected);
     }
 
 }
