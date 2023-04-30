@@ -30,10 +30,11 @@ public class Race {
 
     private void run() {
         displayView.displayRaceStart();
+        this.currentGameDisplay();
 
         IntStream.range(0, game.getLaps()).forEach(i -> {
-            this.currentGameDisplay();
             game.runLap();
+            this.currentGameDisplay();
         });
     }
 
