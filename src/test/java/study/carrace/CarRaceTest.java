@@ -9,8 +9,6 @@ import study.util.Randomizer;
 import study.util.RandomizerImpl;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
 public class CarRaceTest {
 
   @Test

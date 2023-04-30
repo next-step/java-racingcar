@@ -5,22 +5,27 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 public class CarTest {
   @Test
-  @DisplayName("각 자동차에 이름을 부여할 수 있다. 자동차 이름은 5자를 초과할 수 없다.")
-  public void car_input_test() throws Exception {
-    String str1 = "12345";
-    String str2 = "123";
-    String str3 = "1234";
+  @DisplayName("정상적으로 Car 생성 (성공)")
+  public void car_input_test1() throws Exception {
+
+    new Car("12345");
+  }
+
+  @Test
+  @DisplayName("자동차 이름이 null ㄴ인 경우 (실패)")
+  public void car_input_test2() throws Exception {
 
     assertThrows(NullPointerException.class, () -> {
       new Car(null);
     });
 
+  }
+
+  @Test
+  @DisplayName("글자수 5자리를 초과하는 경우.")
+  public void car_input_test3() throws Exception {
     assertThrows(IllegalStateException.class, () -> {
       new Car("123456");
     });
-
-    new Car(str1);
-    new Car(str2);
-    new Car(str3);
   }
 }
