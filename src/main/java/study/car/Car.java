@@ -1,7 +1,7 @@
 package study.car;
 
 public class Car {
-  String name;
+  private String name;
 
   public Car(String name) {
     this.name = name;
