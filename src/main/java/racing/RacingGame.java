@@ -1,23 +1,32 @@
 package racing;
 
-import racing.view.OutputView;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
 
-    private final Integer numberOfTry;
-
     private final Cars cars;
 
-    public RacingGame(Integer numberOfTry, Cars cars) {
-        this.numberOfTry = numberOfTry;
+    public RacingGame(Cars cars) {
         this.cars = cars;
     }
 
-    public void startGame(MoveStrategy moveStrategy) {
-        for (int i = 0; i < numberOfTry; i++) {
-            cars.move(moveStrategy);
-            OutputView.outputProgress(cars);
-        }
+    public List<CarDTO> startGame(MoveStrategy moveStrategy) {
+        cars.move(moveStrategy);
+        return cars.getCarDTOs();
+    }
+
+    public List<CarDTO> getWinner() {
+        Integer longDistance = cars.getCars()
+            .stream()
+            .mapToInt(Car::getPosition)
+            .max()
+            .orElseThrow(IllegalAccessError::new);
+
+        return cars.getCarDTOs()
+            .stream()
+            .filter(carDTO -> carDTO.getPosition().equals(longDistance))
+            .collect(Collectors.toList());
     }
 
 }
