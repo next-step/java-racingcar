@@ -3,8 +3,10 @@ package racingcar;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
+import java.util.Arrays;
+import java.util.List;
 
-public class RacingCarTest {
+public class RacingTest {
 
     public InputView inputView = new InputView();
     public ResultView resultView = new ResultView();
@@ -19,9 +21,8 @@ public class RacingCarTest {
         System.setIn(in);
 
         // Then
-        RacingCar car = inputView.init();
-        car.startRace();
-        resultView.displayResults(car.getCarPositions());
+        Racing race = inputView.init();
+        resultView.displayResults(race.getCars());
     }
 
     @Test
@@ -38,23 +39,25 @@ public class RacingCarTest {
     @Test
     void 랜덤하게_전진() {
         // Given
-        RacingCar car = new RacingCar(3, 5);
+        Racing race = new Racing(3, 5);
 
         // When
-        car.startRace();
 
         // Then
-        resultView.displayResults(car.getCarPositions());
+        resultView.displayResults(race.getCars());
     }
 
     @Test
     void 자동차_출력하기() {
         // Given
-        int[][] carPositions = {{1, 2, 3, 4, 4}
-                     , {1, 1, 2, 3, 4}
-                     , {1, 2, 3, 4, 5}};
+
+        List<Car> cars = Arrays.asList(
+                new Car(Arrays.asList(1, 2, 3, 4, 4)),
+                new Car(Arrays.asList(1, 1, 2, 3, 4)),
+                new Car(Arrays.asList(1, 2, 3, 4, 5))
+        );
 
         // Then
-        resultView.displayResults(carPositions);
+        resultView.displayResults(cars);
     }
 }

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class InputView {
 
-    public RacingCar init() {
+    public Racing init() {
         Scanner scanner = new Scanner(System.in);
 
         Integer carCount = getCarCount(scanner);
@@ -13,7 +13,7 @@ public class InputView {
         System.out.println("carCount = " + carCount);
         System.out.println("trialCount = " + trialCount);
 
-        return new RacingCar(carCount, trialCount);
+        return new Racing(carCount, trialCount);
     }
 
     private Integer getCarCount(Scanner scanner) {
