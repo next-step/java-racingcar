@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import racingcar.controller.CarController;
 import racingcar.generator.NumberGenerator;
 
 import java.util.ArrayList;
@@ -8,29 +7,48 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class Racing {
-    private final int numberOfCars;
-    private final int numberOfRaces;
+    public static final String CAR_NAMES_SEPARATOR = ",";
 
-    public Racing(int numberOfCars, int numberOfRaces) {
-        this.numberOfCars = numberOfCars;
-        this.numberOfRaces = numberOfRaces;
+    private final List<Car> cars;
+
+    public List<Car> getCars() {
+        return cars;
     }
 
-    public void excute(NumberGenerator numberGenerator) {
-        List<Car> cars = getCars();
-
-        IntStream.range(0, numberOfRaces).forEach(i -> {
-            IntStream.range(0, numberOfCars)
-                    .forEach(j -> CarController.move(cars.get(j), numberGenerator));
-            System.out.println("");
-        });
+    public Racing(String carNames) {
+        this.cars = initCars(carNames);
     }
 
-    private List<Car> getCars() {
+    public Racing(List<Car> cars) {
+        this.cars = cars;
+    }
+
+    private List<Car> initCars(String carNames) {
         List<Car> cars = new ArrayList<>();
 
-        IntStream.range(0, numberOfCars)
-                .forEach(i -> cars.add(new Car()));
+        for (String carName : carNames.split(CAR_NAMES_SEPARATOR)) {
+            cars.add(new Car(carName));
+        }
         return cars;
+    }
+
+    public List<Car> race(NumberGenerator numberGenerator) {
+        IntStream.range(0, cars.size())
+                .forEach(j -> cars.get(j).move(numberGenerator));
+
+        return cars;
+    }
+
+    public List<Car> getWinnerCars() {
+        List<Car> winnerCars = new ArrayList<>();
+
+        int maxMovementCount = cars.stream()
+                .map(Car::getMovementCount)
+                .max(Integer::max).get();
+
+        cars.stream().filter(car -> car.isWinnerMovementCount(maxMovementCount))
+                .forEach(car -> winnerCars.add(car));
+
+        return winnerCars;
     }
 }
