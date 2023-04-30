@@ -5,6 +5,7 @@ import java.util.Random;
 public class TestGameRule implements GameRule{
     private static final int INT_MAX = 10;
     private static final int INT_MIN = 4;
+    private static final int POSSIBLE_INT = 4;
 
     @Override
     public int makeRandomInt() {
@@ -13,6 +14,6 @@ public class TestGameRule implements GameRule{
 
     @Override
     public int getPossibleInt() {
-        return makeRandomInt() + INT_MIN;
+        return (POSSIBLE_INT <= (makeRandomInt() + INT_MIN) )? 1: 0;
     }
 }
