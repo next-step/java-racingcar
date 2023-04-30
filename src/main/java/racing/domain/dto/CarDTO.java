@@ -1,4 +1,4 @@
-package racing;
+package racing.domain.dto;
 
 import java.util.Objects;
 

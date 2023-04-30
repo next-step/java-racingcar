@@ -1,4 +1,4 @@
-package racing;
+package racing.domain.move;
 
 public class MoveOddCase implements MoveStrategy {
 
