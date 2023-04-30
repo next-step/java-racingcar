@@ -20,7 +20,7 @@ public class NameTest {
     @Test
     void empty_name() {
         assertThatThrownBy(() -> {
-            new Name();
+            new Name("");
         }).hasMessage("자동차 이름은 필수값입니다.");
     }
 

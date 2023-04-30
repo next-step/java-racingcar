@@ -6,10 +6,6 @@ public class Name {
     private static final int MAX_NAME_LENGTH = 5;
     private final String name;
 
-    public Name() {
-        this("");
-    }
-
     public Name(String name) {
         if (name.isBlank()) {
             throw new IllegalArgumentException("자동차 이름은 필수값입니다.");

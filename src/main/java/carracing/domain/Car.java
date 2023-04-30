@@ -7,12 +7,12 @@ public class Car {
 
 
     public Car(final String name) {
-        this(new Name(name), new Position(0));
+        this(name, 0);
     }
 
-    public Car(final Name name, Position position) {
-        this.name = name;
-        this.position = position;
+    public Car(final String name, int position) {
+        this.name = new Name(name);
+        this.position = new Position(position);
     }
 
     public int move(int speed) {

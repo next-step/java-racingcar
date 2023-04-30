@@ -1,5 +1,7 @@
-package carracing.domain;
+package carracing;
 
+import carracing.domain.Car;
+import carracing.domain.Winner;
 import carracing.view.InputView;
 import carracing.view.ResultView;
 
