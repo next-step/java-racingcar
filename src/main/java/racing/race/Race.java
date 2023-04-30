@@ -18,22 +18,28 @@ public class Race {
     public void start() {
         this.init();
         this.run();
+        this.showResult();
     }
 
     private void init() {
-        int participantsCount = inputView.promptParticipantsCount();
+        String names = inputView.promptNames();
         int laps = inputView.promptLaps();
-        this.game = new Game(participantsCount, laps);
+        this.game = new Game(names, laps);
         displayView.displayEmptyLine();
     }
 
     private void run() {
         displayView.displayRaceStart();
+        this.currentGameDisplay();
 
         IntStream.range(0, game.getLaps()).forEach(i -> {
-            this.currentGameDisplay();
             game.runLap();
+            this.currentGameDisplay();
         });
+    }
+
+    private void showResult() {
+        displayView.displayWinners(game.getWinners());
     }
 
     private void currentGameDisplay() {
