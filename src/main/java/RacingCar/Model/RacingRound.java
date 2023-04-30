@@ -1,34 +1,23 @@
 package RacingCar.Model;
 
-import RacingCar.View.Input.Input;
-import RacingCar.View.Output.Output;
-
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Racing {
-    ArrayList<Car> cars = new ArrayList<Car>();
+public class RacingRound {
     private static final int RANDOM_NUM_LIMIT = 10;
 
-    public void roundStart() {
+    public ArrayList<Car> roundStart(ArrayList<Car> cars) {
         for (Car car : cars)
             car.move(getRandomNumber(RANDOM_NUM_LIMIT));
+
+        return cars;
     }
 
-    public ArrayList<Car> getWinner() {
+    public ArrayList<Car> getWinner(ArrayList<Car> cars) {
         Winner winner = new Winner();
         winner.makeWinner(cars);
 
         return winner.getWinners();
-    }
-
-    public void makeCar(String[] carName) {
-        for (int i = 0; i < carName.length; i++)
-            cars.add(new Car(0, carName[i]));
-    }
-
-    public ArrayList<Car> getCars() {
-        return cars;
     }
 
     private static int getRandomNumber(int num) {

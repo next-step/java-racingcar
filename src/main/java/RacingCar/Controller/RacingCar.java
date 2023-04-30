@@ -1,27 +1,32 @@
 package RacingCar.Controller;
 
-import RacingCar.Model.Racing;
+import RacingCar.Model.Car;
+import RacingCar.Model.RacingRound;
+import RacingCar.Model.RegisteredCar;
 import RacingCar.View.Input.Input;
 import RacingCar.View.Output.Output;
+
+import java.util.ArrayList;
 
 public class RacingCar {
     static Input input = new Input();
     static Output output = new Output();
 
     public static void start() {
-        Racing racing = new Racing();
+        RacingRound racingRound = new RacingRound();
+        RegisteredCar registeredCar = new RegisteredCar();
         String[] carNames = input.splitCarName(",");
         int count = input.InputTryCount();
 
-        racing.makeCar(carNames);
+        registeredCar.makeCar(carNames);
         output.printOutput();
 
         for (int i = 0; i < count; i++) {
-            racing.roundStart();
-            output.printCurLoaction(racing.getCars());
+            ArrayList<Car> cars = racingRound.roundStart(registeredCar.getRegisteredCar());
+            output.printCurLoaction(cars);
         }
 
-        output.printWinner(racing.getWinner());
+        output.printWinner(racingRound.getWinner(registeredCar.getRegisteredCar()));
 
     }
 }

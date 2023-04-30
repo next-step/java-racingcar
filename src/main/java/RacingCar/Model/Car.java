@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class Car {
 
-    private int location;
-    private String name;
     private static final int FORWARD_NUM = 4;
     private static final int LIMIT_NUM = 5;
+    private int location;
+    private String name;
 
     public Car(int location, String name) {
         if (name.length() > LIMIT_NUM)

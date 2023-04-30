@@ -1,7 +1,6 @@
 package RacingCar;
 
 import RacingCar.Model.Car;
-import RacingCar.Model.Racing;
 import RacingCar.Model.Winner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
