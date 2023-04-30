@@ -4,6 +4,8 @@ import study.view.Input;
 import study.view.InputImpl;
 import study.util.Randomizer;
 import study.util.RandomizerImpl;
+import study.view.Result;
+import study.view.ResultImpl;
 
 public class Main {
 
@@ -13,6 +15,7 @@ public class Main {
     Randomizer randomizer = new RandomizerImpl();
     CarRace carRace = new CarRaceImpl(carInput, countInput, randomizer);
     String output = carRace.run();
-    System.out.println(output);
+    Result result = new ResultImpl();
+    result.print(output);
   }
 }
