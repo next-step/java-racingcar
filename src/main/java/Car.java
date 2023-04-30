@@ -1,30 +1,24 @@
 public class Car {
 
     private int number;
-    private final StringBuilder mark;
 
-    public Car() {
-        mark = new StringBuilder();
-    }
+    private int position;
+
 
     public Car(int number) {
-        mark = new StringBuilder();
+        this.position = 0;
         this.number = number;
     }
 
     public void move() {
-        move(number);
-    }
-
-    public void move(int number) {
         final int MINIMUM = 4;
 
         if (number >= MINIMUM) {
-            mark.append("-");
+            position++;
         }
     }
 
-    public String print() {
-        return this.mark.toString();
+    public boolean equalsPosition(int expected) {
+        return this.position == expected;
     }
 }
