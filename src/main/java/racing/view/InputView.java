@@ -3,19 +3,13 @@ package racing.view;
 import java.util.Scanner;
 
 public class InputView {
+    private static final String DELIMITER = ",";
 
-    public static String insertNamesOfCars() {
+    public static String[] insertNamesOfCars() {
         Scanner scanner = new Scanner(System.in);
         printModelNamesMessage();
 
-        return scanner.next();
-    }
-
-    public static int insertNumberOfCars() {
-        Scanner scanner = new Scanner(System.in);
-        printModelMessage();
-
-        return scanner.nextInt();
+        return split(scanner.next());
     }
 
     public static int insertNumberOfAttempts() {
@@ -25,8 +19,10 @@ public class InputView {
         return scanner.nextInt();
     }
 
-    private static void printModelMessage() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
+    public static String[] split(String text) {
+        String[] carNames = text.split(DELIMITER);
+
+        return carNames;
     }
 
     private static void printAttemptsMessage() {

@@ -1,23 +1,15 @@
-package racing.util;
+package racing.model;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+public class Name {
 
-public class NameUtil {
-    public static final int NAME_LIMIT = 5;
-    private static final String DELIMITER = ",";
+    private static final int NAME_LIMIT = 5;
+    private String name;
 
-    public static String[] split(String text) {
-        String[] carNames = text.split(DELIMITER);
-
-        for (String name : carNames) {
-            checkNameValidation(name);
-        }
-
-        return carNames;
+    public Name(String name) {
+        this.name = checkNameValidation(name);
     }
 
-    public static void checkNameValidation(String name) {
+    public static String checkNameValidation(String name) {
         if (isNullOrEmptyName(name)) {
             throw new IllegalStateException("차 이름은 공백일 수 없습니다.");
         }
@@ -25,6 +17,8 @@ public class NameUtil {
         if (isOverNameLimit(name)) {
             throw new IllegalStateException("차 이름은 5글자를 초과할 수 없습니다. 다시 입력하세요.");
         }
+
+        return name;
     }
 
     public static boolean isNullOrEmptyName(String name) {
@@ -43,4 +37,7 @@ public class NameUtil {
         return false;
     }
 
+    public String getName() {
+        return this.name;
+    }
 }
