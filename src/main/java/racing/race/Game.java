@@ -4,13 +4,21 @@ import racing.vehicle.CarNames;
 import racing.vehicle.Cars;
 
 public class Game {
-    private final Cars participants;
-    private final int laps;
+    private Cars participants;
+    private int laps;
 
     public Game(String names, int laps) {
+        setParticipants(names);
+        setLaps(laps);
+    }
+
+    private void setParticipants(String names) {
         CarNames carNames = new CarNames(names);
-        validateLaps(laps);
         this.participants = new Cars(carNames);
+    }
+
+    private void setLaps(int laps) {
+        validateLaps(laps);
         this.laps = laps;
     }
 
