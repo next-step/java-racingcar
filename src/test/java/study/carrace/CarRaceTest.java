@@ -4,7 +4,7 @@ import java.util.Random;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import study.car.Car;
-import study.input.Input;
+import study.view.Input;
 import study.util.Randomizer;
 import study.util.RandomizerImpl;
 

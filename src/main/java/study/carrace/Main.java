@@ -1,7 +1,7 @@
 package study.carrace;
 
-import study.input.Input;
-import study.input.InputImpl;
+import study.view.Input;
+import study.view.InputImpl;
 import study.util.Randomizer;
 import study.util.RandomizerImpl;
 
