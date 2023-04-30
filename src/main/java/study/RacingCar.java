@@ -18,8 +18,6 @@ public class RacingCar {
         racingCar.race(racingCar.makeRacingCar(carCount), moveCount);
     }
 
-    private HashMap<Integer, String> map = new HashMap();
-
     public void race(List<Car> cars, int moveCount) {
         System.out.println("실행결과");
 
@@ -39,5 +37,9 @@ public class RacingCar {
             cars.add(new Car(namePrefix+ i));
         }
         return cars;
+    }
+
+    public String findWinnerCar() {
+        return "";
     }
 }

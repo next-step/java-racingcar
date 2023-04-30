@@ -8,10 +8,13 @@ public class Car {
     private int position = 0;
 
     public Car(String name) {
-        new Car(name, 0);
+        this(name, 0);
     }
 
     public Car(String name, int position) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+        }
         this.name = name;
         this.position = position;
     }
@@ -43,5 +46,16 @@ public class Car {
             "name='" + name + '\'' +
             ", position=" + position +
             '}';
+    }
+
+    public boolean isWinner(int maxPosition) {
+        return position == maxPosition;
+    }
+
+    public int max(int otherPosition) {
+        if (position > otherPosition) {
+            return position;
+        }
+        return otherPosition;
     }
 }
