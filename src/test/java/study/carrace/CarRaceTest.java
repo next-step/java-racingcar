@@ -7,6 +7,8 @@ import study.car.Car;
 import study.view.Input;
 import study.util.Randomizer;
 import study.util.RandomizerImpl;
+import study.view.Result;
+import study.view.ResultImpl;
 
 import static org.assertj.core.api.Assertions.assertThat;
 public class CarRaceTest {
@@ -17,12 +19,11 @@ public class CarRaceTest {
     Input carInput = new InputCarStringTest();
     Input countInput = new InputTestImpl();
     Randomizer randomizer = new RandomizerImpl();
-    CarRace carRace = new CarRaceImpl(carInput, countInput, randomizer);
+    Result result = new ResultImpl();
+    CarRace carRace = new CarRaceImpl(carInput, countInput, randomizer, result);
 
     // when
-    String result = carRace.run();
-    // then
-    System.out.println(result);
+    carRace.run();
   }
 
   @Test
@@ -59,13 +60,14 @@ public class CarRaceTest {
     Input carInput = new InputCarStringTest();
     Input countInput = new InputTestImpl();
     Randomizer randomizer = new RandomizerImpl();
-    CarRace carRace = new CarRaceImpl(carInput, countInput, randomizer);
+    Result result = new ResultImpl();
 
+    CarRace carRace = new CarRaceImpl(carInput, countInput, randomizer, result);
     // when
-    String result = carRace.run();
+   String str = carRace.run();
 
     // then
-    assertThat(result).contains("최종");
+    assertThat(str).contains("최종");
   }
 
   private class InputCarStringTest implements Input {

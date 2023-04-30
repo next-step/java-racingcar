@@ -3,17 +3,20 @@ package study.carrace;
 import study.car.Car;
 import study.view.Input;
 import study.util.Randomizer;
+import study.view.Result;
 
 public class CarRaceImpl implements CarRace {
 
   private final Input carInput;
   private final Input countInput;
   private final Randomizer randomizer;
+  private final Result result;
 
-  public CarRaceImpl(Input carInput, Input countInput, Randomizer randomizer) {
+  public CarRaceImpl(Input carInput, Input countInput, Randomizer randomizer, Result result) {
     this.carInput = carInput;
     this.countInput = countInput;
     this.randomizer = randomizer;
+    this.result = result;
   }
 
   @Override
@@ -38,7 +41,11 @@ public class CarRaceImpl implements CarRace {
 
     sb.append(winner(races)).append("가 최종 우승했습니다.");
 
-    return sb.toString();
+    String output = sb.toString();
+
+    result.print(output);
+
+    return output;
   }
 
   private String winner(Race[] races) {

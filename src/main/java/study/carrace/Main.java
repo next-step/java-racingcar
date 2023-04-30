@@ -13,9 +13,8 @@ public class Main {
     Input carInput = new InputImpl();
     Input countInput = new InputImpl();
     Randomizer randomizer = new RandomizerImpl();
-    CarRace carRace = new CarRaceImpl(carInput, countInput, randomizer);
-    String output = carRace.run();
     Result result = new ResultImpl();
-    result.print(output);
+    CarRace carRace = new CarRaceImpl(carInput, countInput, randomizer, result);
+    String output = carRace.run();
   }
 }
