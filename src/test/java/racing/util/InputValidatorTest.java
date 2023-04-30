@@ -32,4 +32,19 @@ public class InputValidatorTest {
         assertThatCode(() -> InputValidator.validateCarName("다섯글자다"))
                 .doesNotThrowAnyException();
     }
+
+    @DisplayName("5단계 - 자동차 경주(리팩토링) - 자동차 Position 에 0 미만의 값을 입력한 경우 IllegalArgumentException 예외가 발생하는지 확인")
+    @Test
+    void pass_invalid_position_value_illegal_argument_exception() {
+        assertThatThrownBy(() -> InputValidator.validateCarPosition(-1))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("입력한 값이 0 미만 일 수 없습니다.");
+    }
+
+    @DisplayName("5단계 - 자동차 경주(리팩토링) - 자동차 Position 에 0 이상의 값을 입력한 경우 예외가 발생하지 않는지 확인")
+    @Test
+    void pass_valid_position_value_illegal_argument_exception() {
+        assertThatCode(() -> InputValidator.validateCarPosition(0))
+                .doesNotThrowAnyException();
+    }
 }

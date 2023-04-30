@@ -34,10 +34,10 @@ public class RacingCarsTest {
         RacingCars racingCars = RacingCars.create(Arrays.asList(car1, car2));
 
         //when
-        int farthestPosition = racingCars.getFarthestPosition();
+        Position farthestPosition = racingCars.getFarthestPosition();
 
         //then
-        assertThat(farthestPosition).isEqualTo(1);
+        assertThat(farthestPosition).isEqualTo(new Position(1));
     }
 
     @DisplayName("4단계 - 자동차 경주(우승자) - 레이싱 자동차 컬렉션에서 우승한 자동차를 반환하는지 확인")

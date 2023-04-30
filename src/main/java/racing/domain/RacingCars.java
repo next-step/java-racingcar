@@ -38,17 +38,17 @@ public class RacingCars {
         return cars;
     }
 
-    public int getFarthestPosition() {
-        return cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElse(0);
+    public Position getFarthestPosition() {
+        Position farthestPosition = new Position(0);
+        for (Car car : cars) {
+            farthestPosition = car.getFarthestPosition(farthestPosition);
+        }
+        return farthestPosition;
     }
 
     public List<Car> winnerCars() {
-        int farthestPosition = getFarthestPosition();
         return this.cars.stream()
-                .filter(car -> car.isSamePosition(farthestPosition))
+                .filter(car -> car.isSamePosition(getFarthestPosition()))
                 .collect(Collectors.toList());
     }
 }

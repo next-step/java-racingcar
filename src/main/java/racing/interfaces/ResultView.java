@@ -18,7 +18,7 @@ public class ResultView {
         for (Car car : racingCars.getCars()) {
             result.append(car.getName().getName())
                     .append(" : ")
-                    .append("-".repeat(car.getPosition()))
+                    .append("-".repeat(car.getPosition().getPosition()))
                     .append("\n");
         }
         result.append("\n");

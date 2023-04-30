@@ -21,14 +21,14 @@ public class CarTest {
     @DisplayName("3단계 - 자동차 경주 - 자동차 객체가 생성되는지 확인")
     @Test
     void create_car() {
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car).isEqualTo(new Car(DEFAULT_CAR_NAME));
     }
 
     @DisplayName("3단계 - 자동차 경주 - 자동차 전진 이동 테스트")
     @Test
     void go_car() {
         car.go();
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.getPosition()).isEqualTo(new Position(1));
     }
 
     @DisplayName("4단계 - 자동차 경주(우승자) - 자동차 객체 생성시 이름을 부여할 수 있는지 확인")
@@ -41,7 +41,7 @@ public class CarTest {
     @ParameterizedTest(name = "testValue : {0}, 동일여부 : {1}")
     @CsvSource(value = {"0:true", "1:false"}, delimiter = ':')
     void is_same_position(int position, boolean expected) {
-        assertThat(car.isSamePosition(position)).isEqualTo(expected);
+        assertThat(car.isSamePosition(new Position(position))).isEqualTo(expected);
     }
 
 }
