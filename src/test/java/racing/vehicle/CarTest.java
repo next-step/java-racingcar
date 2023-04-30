@@ -24,17 +24,17 @@ class CarTest {
         );
     }
 
-    @Test
-    public void initialPosition() {
-        Car randomCar = new Car(new RandomEngine());
-        assertThat(randomCar.getCurrentPosition()).isEqualTo(1);
-    }
-
-    @ParameterizedTest
+    @ParameterizedTest(name = "RandomEngine test {0} {1}")
     @MethodSource("deterministicRandomEngine")
     public void move(RandomEngine randomEngine, int result) {
-        Car randomCar = new Car(randomEngine);
+        Car randomCar = new Car(new CarName("car"), randomEngine);
         randomCar.move();
         assertThat(randomCar.getCurrentPosition()).isEqualTo(result);
+    }
+
+    @Test
+    public void initialPosition() {
+        Car randomCar = new Car(new CarName("car"), new RandomEngine());
+        assertThat(randomCar.getCurrentPosition()).isEqualTo(1);
     }
 }
