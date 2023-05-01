@@ -1,15 +1,16 @@
-package car;
+package car.view;
 
-import java.util.List;
+import car.domain.RacingResult;
+import car.domain.Car;
 
 public class ResultView {
 
     public void resultView(Car car){
         System.out.print(car.getName()+" : ");
-        LinePrint(car.getPosition());
+        outputLine(car.getPosition());
     }
 
-    private void LinePrint(int size){
+    private void outputLine(int size){
         for (int i = 0; i < size; i++) {
             System.out.print("-");
         }

@@ -1,9 +1,8 @@
-package car;
+package car.view;
 
 import java.util.Scanner;
 
 public class InputView {
-
 
     public int inputIntegerValue(){
         Scanner scanner = new Scanner(System.in);

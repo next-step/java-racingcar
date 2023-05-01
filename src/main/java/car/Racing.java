@@ -1,12 +1,18 @@
 package car;
 
+import car.domain.Car;
+import car.domain.RacingResult;
+import car.domain.impl.RandomMoveStrategy;
+import car.view.InputView;
+import car.view.ResultView;
+
 import java.util.*;
 
 public class Racing {
     private static InputView inputView = new InputView();
     private static ResultView resultView = new ResultView();
 
-    private static MovementStrategy movementStrategy = new MovementStrategy();
+
     public static void main(String[] args) {
 
         System.out.println("경주할 자동차 이름을 입력하세요");
@@ -23,7 +29,8 @@ public class Racing {
 
     public static void carMovingState(List<Car> cars){
         for (Car car : cars){
-            car.move(movementStrategy.randomMoveStrategy());
+            car.setMovable(new RandomMoveStrategy());
+            car.move();
             resultView.resultView(car);
         }
     }

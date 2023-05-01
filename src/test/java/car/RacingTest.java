@@ -1,5 +1,10 @@
 package car;
 
+import car.domain.Car;
+import car.domain.RacingResult;
+import car.domain.impl.GoMoveStrategy;
+import car.domain.impl.StopMoveStrategy;
+import car.view.InputView;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,7 +18,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class RacingTest {
     List<Car> cars;
     InputView inputView = new InputView();
-    MovementStrategy movementStrategy = new MovementStrategy();
     @BeforeEach
     void setUp(){
 
@@ -21,10 +25,11 @@ public class RacingTest {
         Car car1 = new Car("test2");
         cars = new ArrayList<>();
 
-        car.move(movementStrategy.stopMoveStrategy());
+        car.setMovable(new StopMoveStrategy());
+        car.move();
         cars.add(car);
-
-        car1.move(movementStrategy.goMoveStrategy());
+        car1.setMovable(new GoMoveStrategy());
+        car1.move();
         cars.add(car1);
     }
     @Test
@@ -60,7 +65,7 @@ public class RacingTest {
     @DisplayName("Car 객체들의 position값 중 가장 큰 값을 반환하는지")
     public void test8(){
         RacingResult racingResult = new RacingResult(cars);
-        assertThat(racingResult.getMax()).isEqualTo(1);
+        assertThat(racingResult.getWinnerCars().get(0).getPosition()).isEqualTo(1);
     }
 
     @Test

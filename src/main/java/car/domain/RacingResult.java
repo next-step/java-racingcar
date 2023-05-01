@@ -1,4 +1,6 @@
-package car;
+package car.domain;
+
+import car.domain.Car;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +10,7 @@ public class RacingResult {
     private int max = 0;
     private List<Car> racingResult;
     private List<Car> winnerCars;
-    private RacingResult() {}
+
 
     public RacingResult(List<Car> cars) {
         this.racingResult = cars;
@@ -38,10 +40,6 @@ public class RacingResult {
         for (Car car : this.racingResult) {
             addWinnerCar(car);
         }
-    }
-
-    public int getMax() {
-        return this.max;
     }
 
     public List<Car> getWinnerCars(){
