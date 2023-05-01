@@ -1,49 +1,41 @@
 package carracing.domain;
 
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
-import static carracing.view.ResultView.putComma;
+import static carracing.utile.SortRanking.sortRanking;
 
 public class Award {
-    public static String getWinner(List<Car> cars) {
-        //경주순위 정렬
-        sortRanking(cars);
-        //승자목록 추출
-        getWinnerList(cars);
+    public static List<String> getWinner(List<Car> cars) {
         //승자이름 추출
         return getWinnerNames(cars);
     }
 
-    public static void sortRanking(List<Car> cars) {
-        Collections.sort(cars, new CompareRank());
-    }
-
-    public static List<Car> getWinnerList(List<Car> cars) {
-        int winnerLocation = cars.get(0).getLocation();
-
-        Iterator<Car> it = cars.iterator();
-        while (it.hasNext()) {
-            removeLoser(it, winnerLocation);
-        }
-
-        return cars;
-    }
-
-    private static void removeLoser(Iterator<Car> it, int winnerLocation) {
-        if (it.next().getLocation() != winnerLocation) {
-            it.remove();
-        }
-    }
-
-    private static String getWinnerNames(List<Car> cars) {
-        String winnerName = "";
+    private static List<String> getWinnerNames(List<Car> cars) {
+        int winnerLocation = getWinnersLocation(cars);
+        List<String> winnerCars = new ArrayList<>();
         for (Car car : cars) {
-            winnerName = putComma(winnerName);
-            winnerName += car.getName();
+            winnerCars.add(getWinnerName(car, winnerLocation));
         }
-        return winnerName;
+        //빈 문자열 리스트 제거
+        removeEmptyList(winnerCars);
+
+        return winnerCars;
     }
 
+    private static String getWinnerName(Car car, int winnerLocation) {
+        String winnersName = "";
+        if (car.isWinner(winnerLocation)) {
+            winnersName = car.getName();
+        }
+        return winnersName;
+    }
+
+    private static int getWinnersLocation(List<Car> cars) {
+        sortRanking(cars);
+        return cars.get(0).getLocation();
+    }
+
+    private static void removeEmptyList(List<String> listWinnersName) {
+        listWinnersName.removeAll(Arrays.asList(""));
+    }
 }

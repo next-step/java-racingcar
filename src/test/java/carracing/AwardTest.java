@@ -24,33 +24,10 @@ public class AwardTest {
     }
 
     @Test
-    @DisplayName("자동차 순위 내림차순 정렬 테스트")
-    void carSortRanking() {
-        Award.sortRanking(cars);
-
-        String[] carNames = new String[cars.size()];
-        for (int i = 0; i < cars.size(); i++) {
-            carNames[i] = cars.get(i).getName();
-        }
-        assertThat(carNames).containsExactly("kim", "lee", "hun", "woo");
-    }
-
-    @Test
-    @DisplayName("우승한 자동차 리스트 확인 테스트")
-    void getWinnerList() {
-        Award.getWinnerList(cars);
-
-        String[] carNames = new String[cars.size()];
-        for (int i = 0; i < cars.size(); i++) {
-            carNames[i] = cars.get(i).getName();
-        }
-        assertThat(carNames).containsExactly("kim", "lee");
-    }
-
-    @Test
-    @DisplayName("우승한 자동차 문자열 확인 테스트")
+    @DisplayName("우승한 자동차들 이름 확인 테스트")
     void getWinnerNames() {
-        String winners = Award.getWinner(cars);
-        assertThat(winners).isEqualTo("kim, lee");
+        List<String> winnerNames = Award.getWinner(cars);
+        assertThat(winnerNames).containsExactly("kim", "lee");
     }
+
 }
