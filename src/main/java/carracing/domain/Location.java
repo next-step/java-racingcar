@@ -14,11 +14,11 @@ public class Location {
         return location;
     }
 
-    void increase() {
+    public void increase() {
         this.location++;
     }
 
-    boolean isSame(int winnerLocation) {
+    public boolean isSame(int winnerLocation) {
         return winnerLocation == this.location;
     }
 }

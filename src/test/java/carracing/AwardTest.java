@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static carracing.utile.SortRanking.sortRanking;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class AwardTest {
@@ -28,10 +27,6 @@ public class AwardTest {
     @DisplayName("우승한 자동차들 이름 확인 테스트")
     void getWinnerNames() {
         List<String> winnerNames = Award.getWinner(cars);
-        String winners = "";
-        for (String winner : winnerNames) {
-            winners += winner;
-        }
         assertThat(winnerNames).containsExactly("kim", "lee");
     }
 
