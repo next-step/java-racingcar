@@ -1,32 +1,22 @@
 package study;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+
 public class RacingCarTest {
 
-//    @Test
-//    void 뷰_실행() {
-//        ResultView resultView = new ResultView();
-//        resultView.startRacing();
-//    }
-
     @Test
-    void 랜덤값_0_9() {
-        int randomNumber = RacingCarUtil.getRandomNumberZeroToNine();
-        System.out.println(randomNumber);
+    @DisplayName("레이싱카 객체를 원하는 만큼 생성하는 메서드 테스트")
+    void createRacingCars() {
+        RacingService racingService = new RacingService();
+        List<RacingCar> racingCars = racingService.createRacingCars(3);
+
+        assertThat(racingCars.size()).isEqualTo(3);
     }
-
-    @Test
-    void 전진_4이상() {
-        RacingCar racingCar = new RacingCar();
-
-        // TODO:: 랜덤 값인데 어떻게 테스트 해야...? 통과 될 때의 조건...
-        racingCar.moveForward(RacingCarUtil.getRandomNumberZeroToNine());
-
-        assertThat(racingCar.position()).isEqualTo(2);
-    }
-
 
 }
