@@ -3,7 +3,7 @@ package racing.domain;
 import racing.domain.enums.MoveStatus;
 import racing.util.NumberUtil;
 
-public class RandomMovingStrategy implements IMovingStrategy {
+public class RandomMovingStrategy implements MovingStrategy {
 
     private static final int MAX_MOVABLE_RANGE = 9;
 

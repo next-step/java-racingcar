@@ -13,7 +13,7 @@ public class RacingCars {
         return racingCars;
     }
 
-    public void moveCars(IMovingStrategy movingStrategy) {
+    public void moveCars(MovingStrategy movingStrategy) {
         for (Car car : this.cars) {
             moveCar(car, movingStrategy);
         }
@@ -37,7 +37,7 @@ public class RacingCars {
                 .collect(Collectors.toList());
     }
 
-    private void moveCar(Car car, IMovingStrategy movingStrategy) {
+    private void moveCar(Car car, MovingStrategy movingStrategy) {
         car.go(movingStrategy);
     }
 

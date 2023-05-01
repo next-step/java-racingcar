@@ -12,7 +12,7 @@ public class Racing {
         readyRacingCars(cars);
     }
 
-    public RacingCars race(IMovingStrategy movingStrategy) {
+    public RacingCars race(MovingStrategy movingStrategy) {
         this.racingCars.moveCars(movingStrategy);
         finishMatch();
 
