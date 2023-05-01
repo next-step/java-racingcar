@@ -1,24 +1,31 @@
 package study.carrace;
 
-import study.input.Input;
+import study.car.Car;
+import study.view.Input;
 import study.util.Randomizer;
+import study.view.Result;
 
 public class CarRaceImpl implements CarRace {
 
-  private final Input input;
+  private final Input carInput;
+  private final Input countInput;
   private final Randomizer randomizer;
+  private final Result result;
 
-  public CarRaceImpl(Input input, Randomizer randomizer) {
-    this.input = input;
+  public CarRaceImpl(Input carInput, Input countInput, Randomizer randomizer, Result result) {
+    this.carInput = carInput;
+    this.countInput = countInput;
     this.randomizer = randomizer;
+    this.result = result;
   }
 
   @Override
   public String run() {
-    int numberOfCars = input.getInput("자동차 대수는 몇 대 인가요?");
-    int tryCount = input.getInput("시도할 회수는 몇 회 인가요?");
+    String carsStr = carInput.getInput("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+    int tryCount = Integer.parseInt(countInput.getInput("시도할 회수는 몇 회 인가요?"));
 
-    RaceGame raceGame = new RaceGameImpl(numberOfCars, tryCount, randomizer);
+    Car[] cars = Car.createCarsAsStr(carsStr);
+    RaceGame raceGame = new RaceGameImpl(cars, tryCount, randomizer);
     Race[] races = raceGame.process();
 
     StringBuffer sb = new StringBuffer();
@@ -32,7 +39,29 @@ public class CarRaceImpl implements CarRace {
       sb.append("\n");
     }
 
-    return sb.toString();
+    sb.append(winner(races)).append("가 최종 우승했습니다.");
+
+    String output = sb.toString();
+
+    result.print(output);
+
+    return output;
+  }
+
+  private String winner(Race[] races) {
+    String winners = "";
+    int max = 0;
+
+    for(Race race : races) {
+      if(max < race.total()) {
+        max = race.total();
+        winners = race.carName();
+      }else if(max == race.total()) {
+        winners += ", " + race.carName();
+      }
+    }
+
+    return winners;
   }
 
 }

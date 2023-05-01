@@ -1,17 +1,20 @@
 package study.carrace;
 
-import study.input.Input;
-import study.input.InputImpl;
+import study.view.Input;
+import study.view.InputImpl;
 import study.util.Randomizer;
 import study.util.RandomizerImpl;
+import study.view.Result;
+import study.view.ResultImpl;
 
 public class Main {
 
   public static void main(String[] args) {
-    Input input = new InputImpl();
+    Input carInput = new InputImpl();
+    Input countInput = new InputImpl();
     Randomizer randomizer = new RandomizerImpl();
-    CarRace carRace = new CarRaceImpl(input, randomizer);
+    Result result = new ResultImpl();
+    CarRace carRace = new CarRaceImpl(carInput, countInput, randomizer, result);
     String output = carRace.run();
-    System.out.println(output);
   }
 }
