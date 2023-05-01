@@ -1,6 +1,6 @@
-package racingcar.domain;
+package racingcar.util;
 
-import racingcar.util.Screen;
+import racingcar.domain.Score;
 
 import java.util.List;
 
@@ -11,12 +11,8 @@ public class ResultView {
         screen.print("\n실행 결과");
     }
 
-    public void score(List<Car> carList) {
-        carList.forEach(car -> {
-            String driven = convert(car.distanceDriven());
-            screen.print(car.name() + " : " + driven);
-        });
-        screen.print("");
+    public void score(Score score) {
+        screen.print(score.getScore());
     }
 
     public void winner(List<String> winnerNames) {
@@ -25,10 +21,6 @@ public class ResultView {
 
     private String join(List<String> winnerNames) {
         return String.join(", ", winnerNames);
-    }
-
-    private String convert(int distanceDriven) {
-        return "-".repeat(Math.max(0, distanceDriven));
     }
 
 }

@@ -1,32 +1,28 @@
 package racingcar.domain;
 
+import java.util.List;
+
 public class RacingGame {
-    private final InputView inputView = new InputView();
-    private final ResultView resultView = new ResultView();
-
     private Cars cars;
-    private PlayCount playCount;
 
-    public void start() {
-        addCar();
-        initPlayCount();
-        playGame();
+    public RacingGame(String[] participants) {
+        addCar(participants);
     }
 
-    private void addCar() {
-        cars = new Cars(inputView.participantApplication());
+    public void race() {
+        cars.moveAll();
     }
 
-    private void initPlayCount() {
-        playCount = new PlayCount(inputView.playCount());
+    public Score score() {
+        return new Score(cars.list());
     }
 
-    private void playGame() {
-        resultView.start();
-        for (int i = 0; i < playCount.getCount(); i++) {
-            cars.moveAll();
-            resultView.score(cars.list());
-        }
-        resultView.winner(Winner.getWinnerCarNames(cars));
+    public List<String> winner() {
+        return Winner.getWinnerCarNames(cars);
     }
+
+    private void addCar(String[] participants) {
+        cars = new Cars(participants);
+    }
+
 }

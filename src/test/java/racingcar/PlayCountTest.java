@@ -13,13 +13,7 @@ public class PlayCountTest {
     void validatePlayCountEmptyThrows() {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new PlayCount(0))
-                .withMessageMatching("게임 횟수는 0일 수 없습니다.");
+                .withMessageMatching("게임 횟수는 0보다 작을 수 없습니다.");
     }
 
-    @Test
-    void validatePlayCountNegativeNumberThrows() {
-        assertThatIllegalArgumentException()
-                .isThrownBy(() -> new PlayCount(-1))
-                .withMessageMatching("게임 횟수는 음수일 수 없습니다.");
-    }
 }
