@@ -31,17 +31,32 @@ public class RacingTest {
         assertThat(racing).isNotNull();
     }
 
+    @DisplayName("5단계 - 자동차 경주(리팩토링) - 레이스 후 자동차가 전진했는지 확인")
+    @Test
+    void is_go_after_race() {
+        RacingCars racingCars = racing.race(() -> true);
+        assertThat(racingCars.getFarthestPosition()).isEqualTo(new Position(1));
+    }
+
+    @DisplayName("5단계 - 자동차 경주(리팩토링) - 레이스 후 자동차가 정지했는지 확인")
+    @Test
+    void is_stop_after_race() {
+        RacingCars racingCars = racing.race(() -> false);
+        assertThat(racingCars.getFarthestPosition()).isEqualTo(new Position(0));
+    }
+
+    @DisplayName("5단계 - 자동차 경주(리팩토링) - 레이스 후 매치 카운트가 감소했는지 확인")
+    @Test
+    void decrease_match_count_after_race() {
+        racing.race(() -> true);
+        assertThat(racing.getLeftMatchCount()).isEqualTo(new MatchCount(1));
+    }
+
     @DisplayName("3단계 - 자동차 경주 - 매치가 끝날때 남은 매치 카운트가 감소하는지 확인")
     @Test
-    void finish_race() {
-        //given
-        int leftMatchCounts = racing.getLeftMatchCounts();
-
-        //when
-        racing.race();
-
-        //then
-        assertThat(racing.getLeftMatchCounts()).isEqualTo(leftMatchCounts - 1);
+    void finish_match() {
+        racing.finishMatch();
+        assertThat(racing.getLeftMatchCount()).isEqualTo(new MatchCount(1));
     }
 
     @DisplayName("4단계 - 자동차 경주(우승자) - 남은 매치 카운트가 0 초과인 경우 레이싱이 아직 안끝났는지 확인")

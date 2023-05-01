@@ -14,4 +14,20 @@ public class InputValidator {
 
         return carName;
     }
+
+    public static int validateCarPosition(int position) {
+        if (position < 0) {
+            throw new IllegalArgumentException("입력한 값이 0 미만 일 수 없습니다.");
+        }
+
+        return position;
+    }
+
+    public static int validateMatchCount(int matchCount) {
+        if (matchCount < 0) {
+            throw new IllegalArgumentException("입력한 값이 0 미만 일 수 없습니다.");
+        }
+
+        return matchCount;
+    }
 }

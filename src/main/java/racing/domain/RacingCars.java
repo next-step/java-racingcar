@@ -1,15 +1,10 @@
 package racing.domain;
 
-import racing.domain.enums.MoveStatus;
-import racing.util.NumberUtil;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingCars {
-    private static final int MAX_MOVABLE_RANGE = 9;
-
     private final List<Car> cars = new ArrayList<>();
 
     public static RacingCars create(List<Car> cars) {
@@ -18,37 +13,32 @@ public class RacingCars {
         return racingCars;
     }
 
-    public void moveCars() {
+    public void moveCars(MovingStrategy movingStrategy) {
         for (Car car : this.cars) {
-            moveCar(car);
+            moveCar(car, movingStrategy);
         }
-    }
-
-    private void moveCar(Car car) {
-        if (isMovable()) {
-            car.go();
-        }
-    }
-
-    private boolean isMovable() {
-        return MoveStatus.GO == MoveStatus.findByNumber(NumberUtil.generateRandomNumberFromZeroToInputNumber(MAX_MOVABLE_RANGE));
     }
 
     public List<Car> getCars() {
         return cars;
     }
 
-    public int getFarthestPosition() {
-        return cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElse(0);
+    public Position getFarthestPosition() {
+        Position farthestPosition = new Position(0);
+        for (Car car : cars) {
+            farthestPosition = car.getFarthestPosition(farthestPosition);
+        }
+        return farthestPosition;
     }
 
-    public List<Car> getWinnerCars() {
-        int farthestPosition = getFarthestPosition();
+    public List<Car> winnerCars() {
         return this.cars.stream()
-                .filter(car -> farthestPosition == car.getPosition())
+                .filter(car -> car.isSamePosition(getFarthestPosition()))
                 .collect(Collectors.toList());
     }
+
+    private void moveCar(Car car, MovingStrategy movingStrategy) {
+        car.go(movingStrategy);
+    }
+
 }
