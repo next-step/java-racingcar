@@ -2,47 +2,38 @@ package car_racing;
 
 import util.NumberGenerator;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Car {
-    private static final int INITIAL_COUNT = 0;
-    private static final int CAR_MOVE_BOUND = 4;
-    private static final int MAX_CAR_NAME = 5;
-    private final String name;
-    private int moveCount = INITIAL_COUNT;
+
+    private final Name name;
+    private Position position;
 
     private final NumberGenerator numberGenerator;
 
-    public Car(String name, NumberGenerator numberGenerator) {
+    public Car(final String name, NumberGenerator numberGenerator) {
+        this(new Name(name), new Position(0), numberGenerator);
+    }
+
+    public Car(Name name, Position position, NumberGenerator numberGenerator) {
         this.name = name;
+        this.position = position;
         this.numberGenerator = numberGenerator;
     }
 
-    public String getName() {
+    public Name getName() {
         return name;
     }
 
-    public int getMoveCount() {
-        return moveCount;
+    public Position getPosition() {
+        return position;
     }
 
     void moveOrStop() {
         int randomInt = numberGenerator.getRandomNumber();
-        if (randomInt > CAR_MOVE_BOUND) {
-            moveCount++;
+        RandomNo randomNo = new RandomNo(randomInt);
+        if (randomNo.canMove()) {
+            position = position.move();
         }
     }
 
-    public static List<Car> generateCars(List<String> carNames, NumberGenerator numberGenerator) {
-        List<Car> cars = new ArrayList<>();
-        for (String carName : carNames) {
-            cars.add(new Car(carName, numberGenerator));
-        }
-        return cars;
-    }
 
-    public static Boolean isExceed5Characters(String carName) {
-        return carName.length() > MAX_CAR_NAME;
-    }
 }

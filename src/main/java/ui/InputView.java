@@ -1,6 +1,6 @@
 package ui;
 
-import car_racing.Car;
+import car_racing.CarUtil;
 import dto.InputDto;
 
 import java.util.Arrays;
@@ -31,7 +31,7 @@ public class InputView {
     }
 
     private static void checkCarName(String carName) {
-        if (Car.isExceed5Characters(carName)) {
+        if (CarUtil.isExceed5Characters(carName)) {
             throw new IllegalArgumentException("차이름은 5글자를 초과할 수 없습니다.");
         }
     }

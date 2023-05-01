@@ -12,31 +12,31 @@ class CarTest {
     @DisplayName("car의 처음 moveCount 초기값은 0이여야 한다.")
     void car_초기화() {
         // when
-        Car car = new Car("", new NumberGeneratorByInputNumber(0));
+        Car car = new Car("pobi", new NumberGeneratorByInputNumber(0));
         // then
-        assertThat(car.getMoveCount()).isEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(new Position(0));
     }
 
     @Test
     @DisplayName("랜덤 값이 4이하일 경우 car는 움직이지 않는다.")
     void car_멈춤() {
         // when
-        Car car = new Car("", new NumberGeneratorByInputNumber(3));
+        Car car = new Car("pobi", new NumberGeneratorByInputNumber(3));
         car.moveOrStop();
 
         // then
-        assertThat(car.getMoveCount()).isEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(new Position(0));
     }
 
     @Test
     @DisplayName("랜덤 값이 4초과일 경우 car는 움직인다.")
     void car_움직임() {
         //when
-        Car car = new Car("", new NumberGeneratorByInputNumber(5));
+        Car car = new Car("pobi", new NumberGeneratorByInputNumber(5));
         car.moveOrStop();
 
         //then
-        assertThat(car.getMoveCount()).isEqualTo(1);
+        assertThat(car.getPosition()).isEqualTo(new Position(1));
     }
 
 

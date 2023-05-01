@@ -2,8 +2,6 @@ package car_racing;
 
 import com.google.common.annotations.VisibleForTesting;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class CarRacing {
@@ -26,30 +24,6 @@ public class CarRacing {
         for (int i = 0; i < cars.size(); i++) {
             cars.get(i).moveOrStop();
         }
-    }
-
-    public List<Car> getWinner() {
-        List<Integer> carMoveCounts = getCarMoveCounts();
-        int maxCount = Collections.max(carMoveCounts);
-        return getWinCars(maxCount);
-    }
-
-    private List<Integer> getCarMoveCounts() {
-        List<Integer> carMoveCounts = new ArrayList<>();
-        for (Car car : cars) {
-            carMoveCounts.add(car.getMoveCount());
-        }
-        return carMoveCounts;
-    }
-
-    private List<Car> getWinCars(int maxCount) {
-        List<Car> winCars = new ArrayList<>();
-        for (Car car : cars) {
-            if (car.getMoveCount() == maxCount) {
-                winCars.add(car);
-            }
-        }
-        return winCars;
     }
 
 }

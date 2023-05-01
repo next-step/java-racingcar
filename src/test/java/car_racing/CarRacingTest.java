@@ -24,7 +24,7 @@ class CarRacingTest {
     void carRacing_초기화() {
         // when
         NumberGeneratorByInputNumber testNumberGenerator = new NumberGeneratorByInputNumber(0);
-        CarRacing carRacing = new CarRacing(Car.generateCars(new ArrayList<>(Arrays.asList("pobi", "crong", "honux")), testNumberGenerator));
+        CarRacing carRacing = new CarRacing(CarFactory.generateCars(new ArrayList<>(Arrays.asList("pobi", "crong", "honux")), testNumberGenerator));
 
         // then
         assertThat(carRacing.getCars()).hasSize(3);
@@ -64,12 +64,12 @@ class CarRacingTest {
 
         // When
         carRacing.moveCars();
-        List<Car> winCars = carRacing.getWinner();
+        List<Car> winCars = Winners.getWinner(cars);
 
         // Then
         assertThat(winCars).hasSize(2);
-        assertThat(winCars.get(0).getName()).isEqualTo("crong");
-        assertThat(winCars.get(1).getName()).isEqualTo("honux");
+        assertThat(winCars.get(0).getName()).isEqualTo(new Name("crong"));
+        assertThat(winCars.get(1).getName()).isEqualTo(new Name("honux"));
     }
 
 }
