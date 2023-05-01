@@ -7,14 +7,14 @@ import java.util.Objects;
 public class MatchCount {
     private static final int ZERO = 0;
 
-    private int count;
+    private final int count;
 
     public MatchCount(int count) {
         this.count = InputValidator.validateMatchCount(count);
     }
 
     public MatchCount decrease() {
-        return new MatchCount(--this.count);
+        return new MatchCount(this.count - 1);
     }
 
     public boolean isZero() {
