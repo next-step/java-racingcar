@@ -3,6 +3,7 @@ package racingcar;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.Racing;
+import racingcar.domain.WinnerCars;
 import racingcar.generator.MovableNumberGenerator;
 import racingcar.generator.NonMovableNumberGenerator;
 
@@ -48,9 +49,9 @@ class RacingTest {
                 new Car("bCar", 1),
                 new Car("cCar", 3)));
 
-        List<Car> winnerCars = Arrays.asList(
+        WinnerCars winnerCars = new WinnerCars(Arrays.asList(
                 new Car("aCar",3),
-                new Car("cCar",3));
+                new Car("cCar",3)));
 
         assertThat(racing.getWinnerCars()).isEqualTo(winnerCars);
     }

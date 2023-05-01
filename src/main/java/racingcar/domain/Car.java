@@ -3,18 +3,21 @@ package racingcar.domain;
 import racingcar.generator.NumberGenerator;
 
 import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Car {
-    private final CarName carName;
+    public static final String CAR_MOVEMENT_SINGLE_STEP = "-";
+    private final Name name;
     private MovementCount movementCount;
 
     public Car(String carName) {
-        this.carName = new CarName(carName);
+        this.name = new Name(carName);
         this.movementCount = new MovementCount();
     }
 
     public Car(String carName, int movementCount) {
-        this.carName = new CarName(carName);
+        this.name = new Name(carName);
         this.movementCount = new MovementCount(movementCount);
     }
 
@@ -23,7 +26,7 @@ public class Car {
     }
 
     public String getCarName() {
-        return carName.getCarName();
+        return name.getCarName();
     }
 
     public void move(NumberGenerator numberGenerator) {
@@ -39,20 +42,20 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return Objects.equals(carName.getCarName(), car.carName.getCarName())
+        return Objects.equals(name.getCarName(), car.name.getCarName())
                 && Objects.equals(movementCount.getMovementCount(), car.movementCount.getMovementCount());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(carName, movementCount);
+        return Objects.hash(name, movementCount);
     }
 
     @Override
     public String toString() {
-        return "Car{" +
-                "carName=" + carName +
-                ", movementCount=" + movementCount +
-                '}';
+        String movementStep = IntStream.range(0, getMovementCount())
+                .mapToObj(i -> CAR_MOVEMENT_SINGLE_STEP)
+                .collect(Collectors.joining());
+        return getCarName() + ":" + movementStep;
     }
 }

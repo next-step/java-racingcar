@@ -20,7 +20,6 @@ public class RacingController {
             ResultView.printMovementOneRace(resultCars);
         });
 
-        List<Car> winnerCars = racing.getWinnerCars();
-        ResultView.printRacingWinner(winnerCars);
+        ResultView.printRacingWinner(racing.getWinnerCars());
     }
 }

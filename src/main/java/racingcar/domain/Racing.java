@@ -4,6 +4,7 @@ import racingcar.generator.NumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Racing {
@@ -39,16 +40,14 @@ public class Racing {
         return cars;
     }
 
-    public List<Car> getWinnerCars() {
-        List<Car> winnerCars = new ArrayList<>();
-
+    public WinnerCars getWinnerCars() {
         int maxMovementCount = cars.stream()
                 .map(Car::getMovementCount)
                 .max(Integer::max).get();
 
-        cars.stream().filter(car -> car.isWinnerMovementCount(maxMovementCount))
-                .forEach(car -> winnerCars.add(car));
+        List<Car> winnerCars = cars.stream().filter(car -> car.isWinnerMovementCount(maxMovementCount))
+                .collect(Collectors.toList());
 
-        return winnerCars;
+        return new WinnerCars(winnerCars);
     }
 }
