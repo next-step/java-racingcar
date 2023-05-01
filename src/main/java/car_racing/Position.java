@@ -37,10 +37,6 @@ public class Position {
         return new Position(position + 1);
     }
 
-    public boolean isSame(int maxPosition) {
-        return this.position == maxPosition;
-    }
-
     public boolean lessThan(Position maxPosition) {
         return this.position < maxPosition.getPosition();
     }
