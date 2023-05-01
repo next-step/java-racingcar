@@ -4,13 +4,13 @@ import racingcar.dto.Record;
 import racingcar.dto.StageRecord;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class RacingFacilitator {
 
-    public static final String WINNER_NAME_DELIMITER = ",";
     private final PositiveNumber racingTryCount;
     private final Racing racing;
 
@@ -29,15 +29,11 @@ public class RacingFacilitator {
         this.records.add(new StageRecord(stage, records));
     }
 
-    public String getWinners() {
+    public List<Record> getWinners() {
         StageRecord finalStageRecord = records
                 .stream()
-                .reduce((first, second) -> second)
-                .orElse(null);
-
-        if (finalStageRecord == null) {
-            throw new IllegalStateException("최종 stage record가 없습니다.");
-        }
+                .max(Comparator.comparing(StageRecord::getStage))
+                .orElseThrow(() -> new IllegalStateException("최종 stage record가 없습니다."));
 
         List<Record> finalRank = finalStageRecord.getRank();
         Record highRecord = finalStageRecord.highRecord();
@@ -45,8 +41,7 @@ public class RacingFacilitator {
         return finalRank
                 .stream()
                 .filter(it -> Objects.equals(it.getMoveCount(), highRecord.getMoveCount()))
-                .map(Record::getCarName)
-                .collect(Collectors.joining(WINNER_NAME_DELIMITER));
+                .collect(Collectors.toList());
     }
 
     private RacingFacilitator(PositiveNumber racingTryCount, Racing racing) {

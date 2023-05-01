@@ -19,6 +19,6 @@ public class RacingCarApplication {
         List<StageRecord> stageRecords = facilitator.processRacing();
 
         OutputView.outputStageRecords(stageRecords);
-        OutputView.outputText(facilitator.getWinners());
+        OutputView.outputWinners(facilitator.getWinners());
     }
 }

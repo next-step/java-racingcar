@@ -3,6 +3,7 @@ package racingcar.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.dto.Record;
 import racingcar.dto.StageRecord;
 
 import java.util.List;
@@ -52,9 +53,9 @@ public class RacingFacilitatorTest {
 
         RacingFacilitator racingFacilitator = RacingFacilitator.participate(racingTryCount, carNames);
         racingFacilitator.processRacing();
-        String winners = racingFacilitator.getWinners();
+        List<Record> winners = racingFacilitator.getWinners();
 
-        assertThat(winners).isNotBlank();
+        assertThat(winners).isNotNull();
     }
 
     @DisplayName("경기가 진행되지 않고 winner를 구하면 IllegalStateException를 리턴한다.")
