@@ -6,7 +6,9 @@ import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.dto.Record;
 import racingcar.dto.StageRecord;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -70,5 +72,29 @@ public class RacingFacilitatorTest {
         assertThatThrownBy(racingFacilitator::getWinners)
                 .isInstanceOf(IllegalStateException.class)
                 .hasMessage("최종 stage record가 없습니다.");
+    }
+
+    @DisplayName("레이싱 경기가 종료된 후 마지막 경기 기록을 확인하여 우승자 moveCount를 검증한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"pobi", "pobi,crong", "pobi,crong,honux"})
+    void setTest3(String value) {
+        List<String> carNames = List.of(value.split(","));
+        PositiveNumber racingTryCount = new PositiveNumber(5);
+
+        RacingFacilitator racingFacilitator = RacingFacilitator.participate(racingTryCount, carNames);
+        racingFacilitator.processRacing();
+        List<Record> winners = racingFacilitator.getWinners();
+
+        StageRecord finalStage = racingFacilitator.getRecords()
+                        .stream()
+                        .max(Comparator.comparing(StageRecord::getStage))
+                        .orElse(null);
+
+        List<Integer> winnerRecord = winners.stream().map(Record::getMoveCount).collect(Collectors.toList());
+
+        assertThat(finalStage).isNotNull();
+        for (Integer record : winnerRecord) {
+            assertThat(record).isEqualTo(finalStage.highRecord().getMoveCount());
+        }
     }
 }
