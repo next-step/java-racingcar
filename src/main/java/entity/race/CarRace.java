@@ -1,7 +1,7 @@
 package entity.race;
 
-import entity.NumberGenerator;
-import entity.RandomNumberGenerator;
+import entity.car.NumberGenerator;
+import entity.car.RandomNumberGenerator;
 import util.View;
 
 
@@ -39,7 +39,7 @@ public class CarRace {
     private void racing() {
         final NumberGenerator numberGenerator = new RandomNumberGenerator();
         racingCars.getCars()
-                .forEach(car -> car.moveCar(numberGenerator));
+                .forEach(car -> car.move(numberGenerator));
     }
 
     private void recordRace(int count) {

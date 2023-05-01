@@ -1,6 +1,7 @@
-package entity.race;
+package RacingCarGame.entity.race;
 
 import entity.car.CarName;
+import entity.race.RacingCars;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

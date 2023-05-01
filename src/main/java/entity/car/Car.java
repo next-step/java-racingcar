@@ -1,13 +1,7 @@
 package entity.car;
 
-import entity.NumberGenerator;
-
-import java.util.Arrays;
-import java.util.Random;
-
 public class Car implements Comparable<Car>{
 
-    private static final Random RANDOM_DICE = new Random();
     private static final int LEAST_RANDOM_VALUE = 4;
     private static final int MAX_CAR_NAME_LENGTH = 5;
     private CarPosition position;
@@ -17,10 +11,10 @@ public class Car implements Comparable<Car>{
         checkLengthOfCarName(name);
         checkNullOrBlank(name);
         this.position = new CarPosition(0);
-        this.name = CarName.from(name);
+        this.name = new CarName(name);
     }
 
-    public void moveCar(NumberGenerator numberGenerator) {
+    public void move(NumberGenerator numberGenerator) {
         final int number = numberGenerator.generate();
         if (number >= LEAST_RANDOM_VALUE) {
             this.position = position.move();
@@ -45,11 +39,6 @@ public class Car implements Comparable<Car>{
     public int getPositionValue() {
         return position.getPositionValue();
     }
-
-    public int moveOrNot() {
-        return RANDOM_DICE.nextInt(10);
-    }
-
 
     @Override
     public int compareTo(Car o) {

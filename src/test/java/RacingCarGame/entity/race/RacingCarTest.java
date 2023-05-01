@@ -1,3 +1,5 @@
+package RacingCarGame.entity.race;
+
 import entity.car.Car;
 import entity.race.CarRace;
 import org.junit.jupiter.api.DisplayName;
@@ -22,15 +24,6 @@ public class RacingCarTest {
         assertThat(count).isEqualTo(carRace.getRoundValue());
     }
 
-    @Test
-    @DisplayName("전진_조건_랜덤_값_구하기_0 이상 9 이하")
-    public void 전진_조건_랜덤_값_구하기(){
-        //given
-        Car car = new Car("test");
-        int result = car.moveOrNot();
-        //when
-        assertThat(result).isGreaterThanOrEqualTo(0).isLessThan(10);
-    }
 
     @Test
     @DisplayName("레이싱_레이스_로직_구현")
