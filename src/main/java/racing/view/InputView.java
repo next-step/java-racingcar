@@ -9,9 +9,9 @@ public class InputView {
     private final static Scanner scanner = new Scanner(System.in);
 
     public InputDto InputCountOfUnit() {
-        System.out.println(MESSAGE_NAMES_OF_UNIT);
+        System.out.print(MESSAGE_NAMES_OF_UNIT);
         String nameInput = scanner.next();
-        System.out.println(MESSAGE_COUNT_OF_TURN);
+        System.out.print(MESSAGE_COUNT_OF_TURN);
         int count = scanner.nextInt();
         return new InputDto(nameInput, count);
     }
