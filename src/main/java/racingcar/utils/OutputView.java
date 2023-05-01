@@ -10,11 +10,11 @@ public class OutputView {
     public static final char MOVE_STRING = '-';
 
     public static void outputText(String text) {
-        System.out.println(text);
+        System.out.println(text + "가 최종 우승했습니다.");
     }
 
     public static void outputStageRecords(List<StageRecord> stageRecords) {
-
+        System.out.println("실행 결과");
         for (StageRecord stageRecord : stageRecords) {
             System.out.println(stageRecord.getStage() + "회차");
             outputStageRecord(stageRecord);
