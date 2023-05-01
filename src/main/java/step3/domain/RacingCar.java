@@ -1,4 +1,6 @@
-package step3;
+package step3.domain;
+
+import step3.domain.Car;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +11,6 @@ public class RacingCar {
 
     public static final int RANDOM_LIMIT = 10;
     public static final int LIMIT = 4;
-    Random random = new Random();
 
     public static List<Car> createCars(String[] names){
         List<Car> cars = new ArrayList<>();
@@ -30,7 +31,7 @@ public class RacingCar {
         }
     }
 
-    public void goOrStop( Car car) {
+    public void goOrStop(Car car) {
         boolean isGo = isValueMoreThan(randomValue());
         if(isGo){
             car.addGoCount();
@@ -42,6 +43,7 @@ public class RacingCar {
     }
 
     private int randomValue() {
+        Random random = new Random();
         return random.nextInt(RANDOM_LIMIT);
     }
 

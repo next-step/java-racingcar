@@ -1,13 +1,16 @@
 package step3;
 
+import step3.domain.Car;
+import step3.domain.RacingCar;
+import step3.domain.Winner;
+
 import java.util.List;
 
-import static step3.Car.*;
-import static step3.RacingCar.*;
-import static step3.input.InputView.input;
-import static step3.input.InputView.inputString;
-import static step3.output.ResultView.printRace;
-import static step3.output.ResultView.printWinner;
+import static step3.domain.RacingCar.*;
+import static step3.view.input.InputView.input;
+import static step3.view.input.InputView.inputString;
+import static step3.view.output.ResultView.printRace;
+import static step3.view.output.ResultView.printWinner;
 
 public class RacingCarMain {
     public static void main(String[] args) {

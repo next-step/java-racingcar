@@ -1,6 +1,6 @@
-package step3.output;
+package step3.view.output;
 
-import step3.Car;
+import step3.domain.Car;
 
 import java.util.List;
 
