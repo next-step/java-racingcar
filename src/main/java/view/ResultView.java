@@ -1,34 +1,25 @@
 package view;
 
-import java.util.List;
-
-import domain.response.GameResultResponse;
-
 public class ResultView {
 
-    public static void outputView(GameResultResponse gameResultResponse) {
-        List<String[]> result = gameResultResponse.getGameResult();
-        for (int i = 0; i < result.size(); i++) {
-            printEachRound(result.get(i));
-            System.out.println();
-        }
+    public static void printEachRound(String name, int distance) {
+        String result = name + " : " + "-".repeat(distance);
+        System.out.println(result);
     }
 
-    public static void printEachRound(String[] eachRound) {
-        for (String s : eachRound) {
-            System.out.println(s);
-        }
+    public static void printWinnerName(String name) {
+        System.out.print(name);
     }
 
-    public static void printWinner(List<String> winnerList) {
-        for (int i = 0; i < winnerList.size(); i++) {
-            System.out.print(winnerList.get(i));
-            if (i < winnerList.size() - 1) {
-                System.out.print(", ");
-            }
+    public static void printComma() {
+        System.out.print(", ");
+    }
 
-        }
+    public static void announceWinner() {
         System.out.print("가 최종 우승했습니다.");
     }
 
+    public static void printSpaceBetweenRounds() {
+        System.out.println();
+    }
 }

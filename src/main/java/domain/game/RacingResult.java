@@ -2,22 +2,22 @@ package domain.game;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import domain.cars.MovingStrategy;
-import domain.cars.RacingCars;
+import java.util.Map;
 
 public class RacingResult {
-    private List<String[]> racingResult;
 
-    public RacingResult(int round, RacingCars racingCars, MovingStrategy movingStrategy) {
-        this.racingResult = new ArrayList<>();
-        for (int i = 0; i < round; i++) {
-            racingCars.race(movingStrategy);
-            racingResult.add(racingCars.getResultOfEachCar());
-        }
+    private List<Map<String, Integer>> gameResults;
+
+    public RacingResult() {
+        this.gameResults = new ArrayList<>();
     }
 
-    public List<String[]> getRacingResult() {
-        return racingResult;
+    public void addEachRoundResult(Map<String, Integer> eachResult) {
+        gameResults.add(eachResult);
     }
+
+    public List<Map<String, Integer>> getGameResults() {
+        return gameResults;
+    }
+
 }

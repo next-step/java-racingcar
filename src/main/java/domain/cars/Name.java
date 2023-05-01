@@ -1,16 +1,18 @@
 package domain.cars;
 
 public class Name {
-    private static int NAME_SIZE_LIMIT = 5;
+    private static final int NAME_SIZE_LIMIT = 5;
+
+    static final String DEFAULT_NAME = "";
     private String name;
+
+    Name() {
+        this(DEFAULT_NAME);
+    }
 
     public Name(String name) {
         isValid(name);
         this.name = name;
-    }
-
-    public Name() {
-        this.name = "";
     }
 
     private void isValid(String name) {

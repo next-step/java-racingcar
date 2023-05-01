@@ -10,7 +10,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import domain.cars.RacingCar;
-import domain.game.Race;
 import domain.request.RacingCarNameRequest;
 
 public class RaceTest {
@@ -54,7 +53,7 @@ public class RaceTest {
         RacingCar woonCar = new RacingCar(woon, 3);
         Race race = new Race(Arrays.asList(bobCar, woonCar));
         //when
-        List<String> winnerList = race.getWinnerList();
+        List<String> winnerList = race.getWinners();
         //then
         assertThat(winnerList).containsOnly(woon);
     }

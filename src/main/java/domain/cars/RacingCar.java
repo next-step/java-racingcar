@@ -1,18 +1,19 @@
 package domain.cars;
 
+import static domain.cars.Distance.DEFAULT_DISTANCE;
+import static domain.cars.Name.DEFAULT_NAME;
+
 public class RacingCar {
 
     private Name name;
     private Distance distance;
 
-    public RacingCar() {
-        this.name = new Name();
-        this.distance = new Distance();
+    RacingCar() {
+        this(DEFAULT_NAME, DEFAULT_DISTANCE);
     }
 
     public RacingCar(String name) {
-        this.name = new Name(name);
-        this.distance = new Distance();
+        this(name, DEFAULT_DISTANCE);
     }
 
     public RacingCar(String name, int distance) {
@@ -36,9 +37,5 @@ public class RacingCar {
 
     public String getName() {
         return name.getName();
-    }
-
-    public String getResult() {
-        return this.name.getName() + " : " + "-".repeat(this.distance.getDistance());
     }
 }

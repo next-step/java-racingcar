@@ -8,30 +8,48 @@ import domain.cars.RacingCars;
 import domain.cars.RandomMovingStrategy;
 import domain.request.RacingCarNameRequest;
 import domain.request.RacingRoundRequest;
-import domain.response.GameResultResponse;
 
 public class Race {
 
     private RacingCars racingCars;
     private Winners winners;
+
     private RacingResult racingResult;
 
     public Race(RacingCarNameRequest request) {
-        this.racingCars = new RacingCars(request);
+        this.racingCars = RacingCars.of(request);
     }
 
     public Race(List<RacingCar> racingCars) {
         this.racingCars = new RacingCars(racingCars);
     }
 
-    public GameResultResponse race(RacingRoundRequest roundRequest) {
+    public RacingResult race(RacingRoundRequest roundRequest) {
         MovingStrategy movingStrategy = new RandomMovingStrategy();
-        racingResult = new RacingResult(roundRequest.getNumberOfRounds(), racingCars, movingStrategy);
-        return new GameResultResponse(racingResult);
+        this.racingResult = new RacingResult();
+        for (int i = 0; i < roundRequest.getNumberOfRounds(); i++) {
+            racingCars.race(movingStrategy);
+            racingResult.addEachRoundResult(racingCars.getResultOfEachCar());
+        }
+        determineWinners();
+        return racingResult;
     }
 
-    public List<String> getWinnerList() {
-        winners = new Winners(racingCars);
+    public void determineWinners() {
+        this.winners = new Winners();
+        for (RacingCar racingCar : racingCars.getRacingCars()) {
+            findWinners(racingCar);
+        }
+    }
+
+    private void findWinners(RacingCar racingCar) {
+        int maxDistance = racingCars.getMaxDistance();
+        if (racingCar.isSameDistance(maxDistance)) {
+            winners.add(racingCar.getName());
+        }
+    }
+
+    public List<String> getWinners() {
         return winners.getWinners();
     }
 

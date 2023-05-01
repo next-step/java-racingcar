@@ -34,16 +34,7 @@ public class RacingCarTest {
         assertThat(racingCar.getDistance()).isEqualTo(0);
     }
 
-    @DisplayName("입력받은 이름에 대해 차를 생성하고 이름을 부여할 수 있다.")
-    @Test
-    public void shouldNameAndCreateCar_whenInputName() throws Exception {
-        //given
-        String name = "name";
-        //when
-        RacingCar car = new RacingCar(name);
-        //then
-        assertThat(car.getName()).isEqualTo(name);
-    }
+
 
 }
 

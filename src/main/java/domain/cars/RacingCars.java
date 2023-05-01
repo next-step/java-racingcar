@@ -1,23 +1,26 @@
 package domain.cars;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import domain.request.RacingCarNameRequest;
 
 public class RacingCars {
     private List<RacingCar> racingCars;
 
-    public RacingCars(RacingCarNameRequest request) {
-        this.racingCars = new ArrayList<>();
-        for (String racingCarName : request.getNameList()) {
-            RacingCar car = new RacingCar(racingCarName);
-            racingCars.add(car);
-        }
-    }
-
     public RacingCars(List<RacingCar> racingCars) {
         this.racingCars = racingCars;
+    }
+
+    public static RacingCars of(RacingCarNameRequest request) {
+        List<RacingCar> racingCarList = new ArrayList<>();
+        for (String racingCarName : request.getNameList()) {
+            RacingCar car = new RacingCar(racingCarName);
+            racingCarList.add(car);
+        }
+        return new RacingCars(racingCarList);
     }
 
     public List<RacingCar> getRacingCars() {
@@ -30,12 +33,12 @@ public class RacingCars {
         }
     }
 
-    public String[] getResultOfEachCar() {
-        String[] result = new String[racingCars.size()];
+    public Map<String, Integer> getResultOfEachCar() {
+        Map<String, Integer> resultMap = new HashMap<>();
         for (int i = 0; i < racingCars.size(); i++) {
-            result[i] = racingCars.get(i).getResult();
+            resultMap.put(racingCars.get(i).getName(), racingCars.get(i).getDistance());
         }
-        return result;
+        return resultMap;
     }
 
     private int[] getDistancesOfRacingCars() {
