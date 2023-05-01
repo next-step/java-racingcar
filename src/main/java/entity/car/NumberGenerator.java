@@ -1,4 +1,4 @@
-package entity;
+package entity.car;
 
 public interface NumberGenerator {
 

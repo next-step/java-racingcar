@@ -1,3 +1,5 @@
+package RacingCarGame.entity.race;
+
 import entity.race.RaceRound;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

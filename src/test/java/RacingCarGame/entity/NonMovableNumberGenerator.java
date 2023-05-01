@@ -1,4 +1,6 @@
-import entity.NumberGenerator;
+package RacingCarGame.entity;
+
+import entity.car.NumberGenerator;
 
 public class NonMovableNumberGenerator implements NumberGenerator {
 

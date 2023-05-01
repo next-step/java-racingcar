@@ -1,16 +1,15 @@
 package entity.car;
 
+import java.util.List;
+import java.util.RandomAccess;
+
 public class CarName {
 
     private final String name;
 
-    private CarName(String name) {
-        this.name = name;
-    }
-
-    public static CarName from(String name) {
+    public CarName(String name) {
         validateName(name);
-        return new CarName(name);
+        this.name = name;
     }
 
     public String getName() {

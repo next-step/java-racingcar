@@ -1,6 +1,6 @@
-package entity;
+package entity.car;
 
-import entity.NumberGenerator;
+import entity.car.NumberGenerator;
 
 import java.util.Random;
 

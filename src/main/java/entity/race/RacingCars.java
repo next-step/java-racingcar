@@ -28,18 +28,24 @@ public class RacingCars {
     }
 
     public List<String> getHeadOfRace() {
+        Car leadingCar = findLeadingCar();
+        List<String> names = findNameOfLeadingCars(leadingCar);
+        return names;
+    }
 
-        Car leadingCar = cars.stream()
-                .max(Comparator.naturalOrder())
-                .orElseThrow(IllegalAccessError::new);
-
-        List<String> names = cars.stream()
+    private List<String> findNameOfLeadingCars(Car leadingCar) {
+        return cars.stream()
                 .filter(car -> car.getPositionValue() == leadingCar.getPositionValue())
                 .map(Car::getNameValue)
                 .collect(Collectors.toList());
-
-        return names;
     }
+
+    private Car findLeadingCar() {
+        return cars.stream()
+                .max(Comparator.naturalOrder())
+                .orElseThrow(IllegalAccessError::new);
+    }
+
 
     private static void validateNumberOfCar(int numberOfCar) {
         if (numberOfCar <= 0) {
