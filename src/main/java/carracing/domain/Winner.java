@@ -1,4 +1,4 @@
-package carracing;
+package carracing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +37,7 @@ public class Winner {
         return compareNumber;
     }
 
-    public List<Car> getWinners() {
+    public List<Car> addWinners() {
         return winners;
     }
 }
