@@ -1,9 +1,6 @@
 package ui;
 
-import car_racing.Car;
-import car_racing.CarFactory;
-import car_racing.CarRacing;
-import car_racing.Winners;
+import car_racing.*;
 import dto.InputDto;
 import util.RandomNumberGenerator;
 
@@ -22,7 +19,7 @@ public class Application {
 
         CarRacing carRacing = new CarRacing(cars);
         run(carRacing, inputDto.getTrySize());
-        List<Car> winCars = Winners.getWinner(cars);
+        List<Car> winCars = new Winners(cars).getWinner();
         ResultView.printWinCar(winCars);
 
     }

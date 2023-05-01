@@ -64,7 +64,7 @@ class CarRacingTest {
 
         // When
         carRacing.moveCars();
-        List<Car> winCars = Winners.getWinner(cars);
+        List<Car> winCars = new Winners(cars).getWinner();
 
         // Then
         assertThat(winCars).hasSize(2);

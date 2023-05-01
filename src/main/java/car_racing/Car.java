@@ -23,6 +23,17 @@ public class Car {
         return name;
     }
 
+    public boolean isWinner(Position maxPosition){
+        return position.equals(maxPosition);
+    }
+
+    public Position getMaxPosition(Position maxPosition){
+        if(position.lessThan(maxPosition)){
+            return maxPosition;
+        }
+        return this.position;
+    }
+
     public Position getPosition() {
         return position;
     }

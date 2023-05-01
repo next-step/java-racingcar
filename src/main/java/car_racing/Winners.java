@@ -1,33 +1,36 @@
 package car_racing;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Winners {
 
-    public static List<Car> getWinner(List<Car> cars) {
-        List<Integer> carMoveCounts = getCarMoveCounts(cars);
-        int maxCount = Collections.max(carMoveCounts);
-        return getWinCars(maxCount, cars);
+    List<Car> cars;
+
+    public Winners(List<Car> cars){
+        this.cars = cars;
     }
 
-    private static List<Integer> getCarMoveCounts(List<Car> cars) {
-        List<Integer> carMoveCounts = new ArrayList<>();
-        for (Car car : cars) {
-            carMoveCounts.add(car.getPosition().getPosition());
-        }
-        return carMoveCounts;
+    public List<Car> getWinner() {
+        return getWinCars(getMaxPosition());
     }
 
-    private static List<Car> getWinCars(int maxCount, List<Car> cars) {
+    private List<Car> getWinCars(Position maxPosition) {
         List<Car> winCars = new ArrayList<>();
         for (Car car : cars) {
-            if (car.getPosition().isSame(maxCount)) {
+            if (car.isWinner(maxPosition)) {
                 winCars.add(car);
             }
         }
         return winCars;
+    }
+
+    private Position getMaxPosition(){
+        Position maxPosition = new Position();
+        for(Car car : cars){
+            maxPosition = car.getMaxPosition(maxPosition);
+        }
+        return maxPosition;
     }
 
 }

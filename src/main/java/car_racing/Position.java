@@ -41,4 +41,7 @@ public class Position {
         return this.position == maxPosition;
     }
 
+    public boolean lessThan(Position maxPosition) {
+        return this.position < maxPosition.getPosition();
+    }
 }
