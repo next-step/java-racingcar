@@ -1,11 +1,7 @@
 package racing.controller;
 
-import racing.model.Car;
 import racing.model.Cars;
-import racing.model.move.RandomMoveStrategy;
 import racing.view.ResultView;
-
-import java.util.List;
 
 public class RaceGame {
 
