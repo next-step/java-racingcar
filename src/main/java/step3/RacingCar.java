@@ -3,6 +3,7 @@ package step3;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Stream;
 
 public class RacingCar {
 
@@ -19,10 +20,7 @@ public class RacingCar {
     }
 
     public String[] split(String carsName) {
-        String[] names = carsName.trim().split(",");
-        for(int i=0; i< names.length; i++){
-            names[i] = names[i].trim();
-        }
+        String[] names = Stream.of(carsName.split(",")).map(String::trim).toArray(String[]::new);
         return names;
     }
 
