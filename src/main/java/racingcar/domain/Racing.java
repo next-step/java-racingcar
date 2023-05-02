@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import racingcar.dto.Record;
+import racingcar.strategy.RandomNumberStrategy;
 import racingcar.utils.RandomNumberGenerator;
 
 import java.util.ArrayList;
@@ -8,8 +9,6 @@ import java.util.List;
 
 public class Racing {
 
-    public static final int RANDOM_MIN_VALUE = 0;
-    public static final int RANDOM_MAX_VALUE = 9;
 
     private final List<Car> cars;
 
@@ -32,8 +31,7 @@ public class Racing {
         List<Record> records = new ArrayList<>();
 
         for (Car car : cars) {
-            int randomNumber = RandomNumberGenerator.generateRandomNumber(RANDOM_MIN_VALUE, RANDOM_MAX_VALUE);
-            int currentMoveCount = car.move(randomNumber);
+            int currentMoveCount = car.move(new RandomNumberStrategy());
             records.add(new Record(car.getName(), currentMoveCount));
         }
 

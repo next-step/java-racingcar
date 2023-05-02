@@ -26,7 +26,7 @@ public class StageRecord {
         return this.getRank()
                 .stream()
                 .findFirst()
-                .orElse(null);
+                .orElseThrow(() -> new IllegalStateException("최고점 정보가 없습니다."));
     }
 
     public int getStage() {

@@ -1,10 +1,11 @@
 package racingcar.domain;
 
+import racingcar.strategy.MoveStrategy;
+
 public class Car {
 
     public static final int LIMIT_CAR_NAME_LENGTH = 5;
     private final String name;
-    public static final int MOVE_CODITION_NUMBER = 4;
     public static final int DEFAULT_MOVE_COUNT = 0;
 
     private int moveCount = DEFAULT_MOVE_COUNT;
@@ -28,17 +29,15 @@ public class Car {
         this.moveCount++;
     }
 
-    public int move(int randomNumber) {
-        if (canMove(randomNumber)) {
+    public int move(MoveStrategy moveStrategy) {
+        if (moveStrategy.canMove()) {
             this.increaseMoveCount();
         }
 
         return this.moveCount;
     }
 
-    public boolean canMove(int randomNumber) {
-        return randomNumber >= MOVE_CODITION_NUMBER;
-    }
+
 
     public String getName() {
         return name;
