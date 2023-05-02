@@ -1,6 +1,5 @@
 package study;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class ResultView {
@@ -11,7 +10,7 @@ public class ResultView {
 
 
     public static void startRacing() {
-        RacingService racingService = new RacingService();
+        RacingGame racingGame = new RacingGame();
         Scanner scan = new Scanner(System.in);
 
         System.out.println("자동차의 대수는 몇 대 인가요?");
@@ -21,8 +20,8 @@ public class ResultView {
         int tryCount = scan.nextInt();
 
         System.out.println("실행 결과");
-        List<RacingCar> racingCars = racingService.createRacingCars(carQuantity);
+        RacingCars racingCars = new RacingCars(carQuantity);
 
-        racingService.startRacingGame(tryCount, racingCars);
+        racingGame.startRacingGame(tryCount, racingCars);
     }
 }
