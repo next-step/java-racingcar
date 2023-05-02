@@ -9,7 +9,7 @@ public class InputView {
         Scanner scanner = new Scanner(System.in);
         printModelNamesMessage();
 
-        return split(scanner.next());
+        return split(scanner.nextLine());
     }
 
     public static int insertNumberOfAttempts() {

@@ -18,10 +18,12 @@ public class Car implements Comparable<Car> {
         this.position = new Position(position);
     }
 
-    public void move(MoveStrategy moveStrategy) {
+    public Car move(MoveStrategy moveStrategy) {
         if (moveStrategy.move()) {
             this.position.move();
         }
+
+        return this;
     }
 
     public int getPosition() {
