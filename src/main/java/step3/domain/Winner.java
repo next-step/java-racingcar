@@ -1,6 +1,9 @@
-package step3;
+package step3.domain;
+
+import step3.domain.Car;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Winner {
@@ -13,13 +16,18 @@ public class Winner {
     }
 
     public void addWinner(List<Car> cars) {
-        for (Car car : cars) {
-            setMaxGoCount(car);
-        }
+        findMax(cars);
 
         for (Car car : cars) {
             addOrNot(car);
         }
+    }
+
+    private void findMax(List<Car> cars) {
+        this.max = cars.stream()
+                .max(Comparator.comparingInt(Car::getGoCount))
+                .get()
+                .getGoCount();
     }
 
     public List<Car> getWinners() {

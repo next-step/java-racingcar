@@ -1,10 +1,11 @@
 package step3;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import step3.domain.Car;
+import step3.domain.Winner;
 
 import java.util.ArrayList;
 import java.util.List;

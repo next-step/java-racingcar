@@ -1,4 +1,4 @@
-package step3.input;
+package step3.view.input;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
