@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class RacingCarTest {
@@ -16,7 +16,8 @@ public class RacingCarTest {
         RacingService racingService = new RacingService();
         List<RacingCar> racingCars = racingService.createRacingCars(3);
 
-        assertThat(racingCars.size()).isEqualTo(3);
+        assertThat(racingCars).hasSize(3);
+
     }
 
 }
