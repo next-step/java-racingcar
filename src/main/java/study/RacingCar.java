@@ -10,7 +10,11 @@ public class RacingCar {
 
     public void moveForwardWhenFourHigher() {
         if (RandomNumberUtils.getRandomNumberZeroToNine() >= 4) {
-            position++;
+            move();
         }
+    }
+
+    public void move() {
+        position++;
     }
 }
