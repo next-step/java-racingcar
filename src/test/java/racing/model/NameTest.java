@@ -15,7 +15,7 @@ public class NameTest {
     void 자동차이름_5자초과(String input) {
 
         assertThatIllegalStateException()
-                .isThrownBy(() -> new Car(input, () -> true))
+                .isThrownBy(() -> new Car(input))
                 .withMessageMatching("차 이름은 5글자를 초과할 수 없습니다. 다시 입력하세요.");
     }
 
@@ -24,7 +24,7 @@ public class NameTest {
     @NullAndEmptySource
     void 자동차이름_공백_확인(String input) {
         assertThatIllegalStateException()
-                .isThrownBy(() -> new Car(input, () -> true))
+                .isThrownBy(() -> new Car(input))
                 .withMessageMatching("차 이름은 공백일 수 없습니다.");
     }
 }

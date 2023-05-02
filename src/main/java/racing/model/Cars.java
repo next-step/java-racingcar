@@ -20,9 +20,9 @@ public class Cars {
         createCarsByName(names);
     }
 
-    public List<Car> move() {
+    public List<Car> move(MoveStrategy moveStrategy) {
         for (Car car : cars) {
-            car.move();
+            car.move(moveStrategy);
         }
         return cars;
     }
@@ -34,7 +34,7 @@ public class Cars {
 
     private List<Car> createCarsByName(String[] names) {
         for (int i = 0; i < names.length; i++) {
-            cars.add(new Car(names[i], new RandomMoveStrategy()));
+            cars.add(new Car(names[i]));
         }
 
         cars = Collections.unmodifiableList(cars);

@@ -29,13 +29,15 @@ class CarsTest {
     @Test
     void 우승자_한명이상() {
 
-        Car car1 = new Car("car1", 10, new RandomMoveStrategy());
-        Car car2 = new Car("car2", 10, new RandomMoveStrategy());
+        Car car1 = new Car("car1", 10);
+        Car car2 = new Car("car2", 10);
 
         Cars cars = new Cars(new ArrayList<>());
 
         cars.getCars().add(car1);
         cars.getCars().add(car2);
+
+        cars.move(() -> true);
 
         List<Car> winners = cars.findWinners();
 
