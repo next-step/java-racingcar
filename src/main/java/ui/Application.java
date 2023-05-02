@@ -1,7 +1,6 @@
 package ui;
 
-import car_racing.Car;
-import car_racing.CarRacing;
+import car_racing.*;
 import dto.InputDto;
 import util.RandomNumberGenerator;
 
@@ -16,9 +15,11 @@ public class Application {
             System.out.println(e.getMessage());
             return;
         }
-        CarRacing carRacing = new CarRacing(Car.generateCars(inputDto.carNames, new RandomNumberGenerator()));
-        run(carRacing, inputDto.trySize);
-        List<Car> winCars = carRacing.getWinner();
+        List<Car> cars = CarFactory.generateCars(inputDto.getCarNames(), new RandomNumberGenerator());
+
+        CarRacing carRacing = new CarRacing(cars);
+        run(carRacing, inputDto.getTrySize());
+        List<Car> winCars = new Winners(cars).getWinner();
         ResultView.printWinCar(winCars);
 
     }

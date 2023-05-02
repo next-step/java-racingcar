@@ -3,7 +3,7 @@ package car_racing;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import util.TestNumberGenerator;
+import test_util.NumberGeneratorByInputNumber;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,8 +23,8 @@ class CarRacingTest {
     @DisplayName("cars를 전달받아 carRacing이 생성되어야 한다.")
     void carRacing_초기화() {
         // when
-        TestNumberGenerator testNumberGenerator = new TestNumberGenerator(0);
-        CarRacing carRacing = new CarRacing(Car.generateCars(new ArrayList<>(Arrays.asList("pobi", "crong", "honux")), testNumberGenerator));
+        NumberGeneratorByInputNumber testNumberGenerator = new NumberGeneratorByInputNumber(0);
+        CarRacing carRacing = new CarRacing(CarFactory.generateCars(new ArrayList<>(Arrays.asList("pobi", "crong", "honux")), testNumberGenerator));
 
         // then
         assertThat(carRacing.getCars()).hasSize(3);
@@ -55,21 +55,21 @@ class CarRacingTest {
         // Given
         List<Car> cars = new ArrayList<>(
                 Arrays.asList(
-                        new Car("pobi", new TestNumberGenerator(3)),
-                        new Car("crong", new TestNumberGenerator(5)),
-                        new Car("honux", new TestNumberGenerator(6))
+                        new Car("pobi", new NumberGeneratorByInputNumber(3)),
+                        new Car("crong", new NumberGeneratorByInputNumber(5)),
+                        new Car("honux", new NumberGeneratorByInputNumber(6))
                 )
         );
         CarRacing carRacing = new CarRacing(cars);
 
         // When
         carRacing.moveCars();
-        List<Car> winCars = carRacing.getWinner();
+        List<Car> winCars = new Winners(cars).getWinner();
 
         // Then
         assertThat(winCars).hasSize(2);
-        assertThat(winCars.get(0).getName()).isEqualTo("crong");
-        assertThat(winCars.get(1).getName()).isEqualTo("honux");
+        assertThat(winCars.get(0).getName()).isEqualTo(new Name("crong"));
+        assertThat(winCars.get(1).getName()).isEqualTo(new Name("honux"));
     }
 
 }
