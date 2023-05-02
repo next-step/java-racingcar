@@ -1,5 +1,7 @@
 package racinggame.vo;
 
+import racinggame.exception.OverCarNameLengthException;
+
 public class Car {
 
     private final int number;
@@ -10,6 +12,7 @@ public class Car {
 
     public Car(int number, String name) {
         this.number = number;
+        if (name.length() > 5) throw new OverCarNameLengthException();
         this.name = name;
     }
 
