@@ -1,51 +1,58 @@
 package racingcar;
 
 import org.junit.jupiter.api.Test;
-import racingcar.controller.CarController;
-import racingcar.controller.RacingController;
 import racingcar.domain.Car;
 import racingcar.domain.Racing;
+import racingcar.domain.WinnerCars;
 import racingcar.generator.MovableNumberGenerator;
 import racingcar.generator.NonMovableNumberGenerator;
-import racingcar.view.ResultView;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RacingTest {
     @Test
-    void racing_한대_시도한번() {
-        Racing racing = new Racing(1,1);
-        racing.excute(new MovableNumberGenerator());
+    void racingTest_by_movableNumberGenerator() {
+        Racing racing  = new Racing("aCar,bCar");
+        List<Car> cars = racing.race(new MovableNumberGenerator());
+        assertThat(cars.get(0).getMovementCount()).isEqualTo(1);
     }
 
     @Test
-    void racing_한대_시도두번() {
-        Racing racing = new Racing(1,2);
-        racing.excute(new MovableNumberGenerator());
+    void racingTest_by_nonMovableNumberGenerator() {
+        Racing racing  = new Racing("aCar,bCar");
+        List<Car> cars = racing.race(new NonMovableNumberGenerator());
+        assertThat(cars.get(0).getMovementCount()).isEqualTo(0);
     }
 
     @Test
-    void racing_여러대_시도여러번() {
-        Racing racing = new Racing(3,5);
-        racing.excute(new MovableNumberGenerator());
+    void racingTest_CarName_validation_5자초과() {
+        assertThatThrownBy(() -> new Car( "abcdef"))
+                .isInstanceOf(RuntimeException.class);
     }
 
     @Test
-    void resultView_printMovementTest() {
-        assertThat(ResultView.printMovement(3)).isEqualTo("---");
+    void racingTest_carNames_split_and_getCars() {
+       Racing racing  = new Racing("aCar,bCar");
+       Car car = new Car("aCar");
+
+       assertThat(racing.getCars()).contains(car);
     }
 
     @Test
-    void carMoveTest_by_movableNumberGenerator() {
-        Car car = new Car();
-        assertThat(CarController.move(car, new MovableNumberGenerator())).isEqualTo("-");
+    void racingTest_우승자구하기() {
+        Racing racing  = new Racing(Arrays.asList(
+                new Car("aCar", 3),
+                new Car("bCar", 1),
+                new Car("cCar", 3)));
+
+        WinnerCars winnerCars = new WinnerCars(Arrays.asList(
+                new Car("aCar",3),
+                new Car("cCar",3)));
+
+        assertThat(racing.getWinnerCars()).isEqualTo(winnerCars);
     }
-
-    @Test
-    void carMoveTest_by_nonMovableNumberGenerator() {
-        Car car = new Car();
-        assertThat(CarController.move(car, new NonMovableNumberGenerator())).isEqualTo("");
-    }
-
-
 }
