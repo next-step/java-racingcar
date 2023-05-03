@@ -3,14 +3,11 @@ package study;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import study.racingcar.InputView;
+import study.racingcar.RacingCar;
 import study.racingcar.ResultView;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
-import java.util.Random;
-import java.util.Scanner;
 
 import static org.assertj.core.api.Assertions.*;
 public class RacingCarTest {
@@ -21,9 +18,9 @@ public class RacingCarTest {
     @Test
     @DisplayName("사용자에게 특정 메세지를 보여주는 기능")
     void showMessage() {
-        assertThat(resultView.questionMessage("TRY")).isEqualTo("시도할 회수는 몇 회 인가요?");
-        assertThat(resultView.questionMessage("CAR")).isEqualTo("자동차 대수는 몇 대 인가요?");
-        assertThat(resultView.questionMessage("A")).isEqualTo("NO MESSAGE");
+        assertThat(resultView.viewQuestionMessage("TRY")).isEqualTo("시도할 회수는 몇 회 인가요?");
+        assertThat(resultView.viewQuestionMessage("CAR")).isEqualTo("자동차 대수는 몇 대 인가요?");
+        assertThat(resultView.viewQuestionMessage("A")).isEqualTo("NO MESSAGE");
     }
 
     @Test
@@ -50,11 +47,10 @@ public class RacingCarTest {
     @Test
     @DisplayName("자동차의 상태가 잘 나타나는지 확인")
     void carsStatus() {
-        int number = 3;
-        String result = "-";
-        for (int i = 0; i < number; i++) {
-            result += "-";
-        }
-        assertThat(result).isEqualTo("----");
+        RacingCar racingCar = new RacingCar();
+        racingCar.forward();
+        racingCar.forward();
+        racingCar.forward();
+        assertThat(resultView.viewLocation(racingCar.forwardCount)).isEqualTo("---");
     }
 }
