@@ -19,20 +19,18 @@ public class InputView {
         } catch (InputMismatchException imException) {
             System.out.println("숫자만 입력해주세요.");
             scanNumber();
-        }finally {
-            scanner.close();
         }
         return number;
     }
 
-    public String forwardAndStop() {
-        int number = random.nextInt(10);
-        String result = "";
+    public String forwardAndStop(int number) {
         if(number >= 4) {
-            result = forwardMessage;
-        }else {
-            result = stopMessage;
+            return forwardMessage;
         }
-        return result;
+        return stopMessage;
+    }
+
+    public int randomNumber() {
+        return random.nextInt(10);
     }
 }
