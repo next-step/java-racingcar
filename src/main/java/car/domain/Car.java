@@ -14,11 +14,12 @@ public class Car {
         this.name = name;
     }
 
-    public void setMovable(Movable movable){
+    private void setMovable(Movable movable){
         this.movable = movable;
     }
 
-    public void move(){
+    public void move(Movable movable){
+        setMovable(movable);
         if(movable.moveStrategy() > 3) {
             position += 1;
         }

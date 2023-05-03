@@ -15,23 +15,23 @@ public class Racing {
 
     public static void main(String[] args) {
 
-        System.out.println("경주할 자동차 이름을 입력하세요");
         List<Car> cars = carAttendList(inputView.carAttendNameSeparation(inputView.inputStringValue()));
 
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        int frequency = inputView.inputIntegerValue();
+        racingResult(cars, inputView.inputIntegerValue());
+        resultView.winnerView(resultView.winnerPrint(new RacingResult(cars).getWinnerCarsName()));
+    }
+
+    private static void racingResult(List<Car> cars, int frequency) {
         for (int i = 0; i < frequency; i++) {
             System.out.println("++++++++++++++");
             carMovingState(cars);
         }
-        resultView.winnerView(resultView.winnerPrint(new RacingResult(cars)));
     }
 
     public static void carMovingState(List<Car> cars){
         for (Car car : cars){
-            car.setMovable(new RandomMoveStrategy());
-            car.move();
-            resultView.resultView(car);
+            car.move(new RandomMoveStrategy());
+            resultView.resultView(car.getName(), car.getPosition());
         }
     }
     public static List<Car> carAttendList(String[] names){
@@ -41,15 +41,6 @@ public class Racing {
         }
         return cars;
     }
-
-
-
-
-
-
-
-
-
 
 
 }

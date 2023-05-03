@@ -9,7 +9,7 @@ public class RacingResult {
 
     private int max = 0;
     private List<Car> racingResult;
-    private List<Car> winnerCars;
+    private List<String> winnerCars;
 
 
     public RacingResult(List<Car> cars) {
@@ -32,7 +32,7 @@ public class RacingResult {
 
     private void addWinnerCar(Car car){
         if(car.getPosition() == this.max){
-            this.winnerCars.add(car);
+            this.winnerCars.add(car.getName());
         }
     }
 
@@ -42,7 +42,7 @@ public class RacingResult {
         }
     }
 
-    public List<Car> getWinnerCars(){
+    public List<String> getWinnerCarsName(){
         return this.winnerCars;
     }
 }

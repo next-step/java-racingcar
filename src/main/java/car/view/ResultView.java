@@ -3,11 +3,13 @@ package car.view;
 import car.domain.RacingResult;
 import car.domain.Car;
 
+import java.util.List;
+
 public class ResultView {
 
-    public void resultView(Car car){
-        System.out.print(car.getName()+" : ");
-        outputLine(car.getPosition());
+    public void resultView(String name, int count){
+        System.out.print(name+" : ");
+        outputLine(count);
     }
 
     private void outputLine(int size){
@@ -21,10 +23,10 @@ public class ResultView {
         System.out.println(winnerName+"가 우승하였습니다.");
     }
 
-    public String winnerPrint(RacingResult racingResult){
+    public String winnerPrint(List<String> strings){
         String winnerName = "";
-        for(Car car : racingResult.getWinnerCars()){
-            winnerName += addComma(winnerName)+car.getName();
+        for(String name : strings){
+            winnerName += addComma(winnerName)+name;
         }
         return winnerName;
     }
