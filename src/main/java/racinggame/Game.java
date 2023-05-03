@@ -1,6 +1,8 @@
-package step3.common;
+package racinggame;
 
 public interface Game {
+
+    void input();
 
     void start();
 

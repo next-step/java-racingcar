@@ -1,24 +1,32 @@
-package step3;
+package racinggame;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import step3.common.RacingCarGame;
-import step3.common.vo.Car;
+import racinggame.vo.Car;
 
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class RacingCarGameTest {
 
+    private RacingCarGame racingCarGame;
+
+    @BeforeAll
+    void setUp() {
+        this.racingCarGame = new RacingCarGame();
+    }
 
     @DisplayName("자동차 대수 만큼 생성 생성")
     @ParameterizedTest
-    @ValueSource(ints = {3})
-    void createCars(int carNumber) {
+    @ValueSource(strings = {"pobi,crong,honux"})
+    void createCars(String carsName) {
         Map<Integer, Car> carMap;
-        carMap = RacingCarGame.createCars(carNumber);
+        carMap = racingCarGame.createCars(carsName);
         assertThat(carMap).hasSize(3);
     }
 
@@ -26,12 +34,11 @@ public class RacingCarGameTest {
     @ParameterizedTest
     @ValueSource(ints = {3, 4})
     void canMoveCar(int random) {
-        boolean canMove = RacingCarGame.canMove(random);
+        boolean canMove = racingCarGame.canMove(random);
         if (random > 4) {
             assertThat(canMove).isTrue();
         }
         assertThat(canMove).isFalse();
     }
-
 
 }
