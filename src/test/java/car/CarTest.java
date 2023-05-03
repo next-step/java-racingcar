@@ -11,9 +11,9 @@ import java.util.Random;
 import static org.assertj.core.api.Assertions.*;
 
 public class CarTest {
-    Random random = new Random();
-    private Movable goMove = () -> {return random.nextInt(6)+4;};
-    private Movable stopMove = () -> {return random.nextInt(4);};
+    public static Random random = new Random();
+    public static Movable goMove = () -> {return random.nextInt(6)+4;};
+    public static Movable stopMove = () -> {return random.nextInt(4);};
 
     List<Car> cars;
 

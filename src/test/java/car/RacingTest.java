@@ -12,13 +12,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static car.CarTest.goMove;
+import static car.CarTest.stopMove;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class RacingTest {
-    Random random = new Random();
-    private Movable goMove = () -> {return random.nextInt(6)+4;};
-    private Movable stopMove = () -> {return random.nextInt(4);};
+
     List<Car> cars;
     InputView inputView = new InputView();
     @BeforeEach
@@ -63,17 +63,11 @@ public class RacingTest {
         assertThat(new Car("test1").getName())
                 .isEqualTo("test1");
     }
-    @Test
-    @DisplayName("Car 객체들의 position값 중 가장 큰 값을 반환하는지")
-    public void test8(){
-        RacingResult racingResult = new RacingResult(cars);
-        assertThat(racingResult.getWinnerCars().get(0).getPosition()).isEqualTo(1);
-    }
 
     @Test
     @DisplayName("test2 객체 우승")
-    public void test9(){
+    public void test8(){
         RacingResult racingResult = new RacingResult(cars);
-        assertThat(racingResult.getWinnerCars().get(0)).isEqualTo(cars.get(1));
+        assertThat(racingResult.getWinnerCarsName().get(0)).isEqualTo(cars.get(1));
     }
 }
