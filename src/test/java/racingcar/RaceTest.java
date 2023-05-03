@@ -7,6 +7,7 @@ import racingcar.domain.Race;
 import racingcar.domain.car.Car;
 import racingcar.view.input.request.CarRequest;
 
+
 import java.util.stream.Collectors;
 
 class RaceTest {
