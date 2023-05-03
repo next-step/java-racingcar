@@ -2,8 +2,8 @@ package racingcar;
 
 import racingcar.domain.PlayCount;
 import racingcar.domain.RacingGame;
-import racingcar.util.InputView;
-import racingcar.util.ResultView;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 public class RacingGameMain {
     public static void main(String[] args) {

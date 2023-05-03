@@ -1,34 +1,24 @@
 package racingcar.domain;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
 public class Score {
-    private final String score;
+    private final HashMap<String, Integer> score = new HashMap<>();
 
     public Score(List<Car> carList) {
-        this.score = convertScore(carList);
+        scoring(carList);
     }
 
-    public String getScore() {
+    public HashMap<String, Integer> getScore() {
         return score;
     }
 
-    private String convertScore(List<Car> carList) {
-        StringBuilder score = new StringBuilder();
-        for (int i = 0; i < carList.size(); i++) {
-            Car car = carList.get(i);
-            String driven = convertDriven(car.distanceDriven());
-            score.append(car.name())
-                    .append(" : ")
-                    .append(driven)
-                    .append("\n");
+    private void scoring(List<Car> carList) {
+        for (Car car : carList) {
+            score.put(car.name(), car.distanceDriven());
         }
-        return score.toString();
-    }
-
-    private String convertDriven(int distanceDriven) {
-        return "-".repeat(Math.max(0, distanceDriven));
     }
 
     @Override
