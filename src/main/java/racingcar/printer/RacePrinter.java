@@ -1,6 +1,6 @@
 package racingcar.printer;
 
-import racingcar.car.Car;
+import racingcar.domain.car.Car;
 
 import java.util.List;
 

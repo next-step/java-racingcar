@@ -1,6 +1,6 @@
-package racingcar.car;
+package racingcar.domain.car;
 
-import racingcar.numbergenerator.NumberGenerator;
+import racingcar.domain.numbergenerator.NumberGenerator;
 
 public class Car {
 

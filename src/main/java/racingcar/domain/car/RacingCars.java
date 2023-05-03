@@ -1,7 +1,6 @@
-package racingcar.car;
+package racingcar.domain.car;
 
-import racingcar.numbergenerator.NumberGenerator;
-import racingcar.printer.RacePrinter;
+import racingcar.domain.numbergenerator.NumberGenerator;
 
 import java.util.List;
 import java.util.stream.Collectors;

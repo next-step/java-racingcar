@@ -1,9 +1,9 @@
-package racingcar;
+package racingcar.domain;
 
 import step2.PositiveInteger;
-import racingcar.car.Car;
-import racingcar.car.RacingCars;
-import racingcar.numbergenerator.RandomNumberGenerator;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.RacingCars;
+import racingcar.domain.numbergenerator.RandomNumberGenerator;
 import racingcar.printer.RacePrinter;
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package racingcar.input.request;
 
-import racingcar.car.CarResource;
+import racingcar.domain.car.CarResource;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;

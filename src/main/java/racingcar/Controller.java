@@ -1,6 +1,7 @@
 package racingcar;
 
-import racingcar.car.Car;
+import racingcar.domain.Race;
+import racingcar.domain.car.Car;
 import racingcar.input.Input;
 import racingcar.input.request.CarRequest;
 
