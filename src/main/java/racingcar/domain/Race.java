@@ -4,7 +4,7 @@ import step2.PositiveInteger;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.RacingCars;
 import racingcar.domain.numbergenerator.RandomNumberGenerator;
-import racingcar.printer.RacePrinter;
+import racingcar.view.printer.RacePrinter;
 
 import java.util.List;
 

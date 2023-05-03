@@ -1,4 +1,4 @@
-package racingcar.input.request;
+package racingcar.view.input.request;
 
 import racingcar.domain.car.CarResource;
 

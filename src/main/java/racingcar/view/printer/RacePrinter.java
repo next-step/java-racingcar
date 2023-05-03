@@ -1,4 +1,4 @@
-package racingcar.printer;
+package racingcar.view.printer;
 
 import racingcar.domain.car.Car;
 

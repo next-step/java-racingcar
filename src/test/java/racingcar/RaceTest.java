@@ -5,7 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Race;
 import racingcar.domain.car.Car;
-import racingcar.input.request.CarRequest;
+import racingcar.view.input.request.CarRequest;
 
 import java.util.stream.Collectors;
 

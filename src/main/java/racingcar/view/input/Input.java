@@ -1,6 +1,6 @@
-package racingcar.input;
+package racingcar.view.input;
 
-import racingcar.input.request.CarRequest;
+import racingcar.view.input.request.CarRequest;
 
 import java.util.Scanner;
 

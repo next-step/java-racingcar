@@ -2,8 +2,8 @@ package racingcar;
 
 import racingcar.domain.Race;
 import racingcar.domain.car.Car;
-import racingcar.input.Input;
-import racingcar.input.request.CarRequest;
+import racingcar.view.input.Input;
+import racingcar.view.input.request.CarRequest;
 
 import java.util.List;
 import java.util.stream.Collectors;
