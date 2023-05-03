@@ -8,11 +8,13 @@ public class Car {
     private final static int MAX_RANDOM_VALUE = 9;
     private final static int MAX_NAME_LEN = 5;
     private final static int MOVE_CRITERIA = 4;
+    private final static int DEFAULT_LOCATION = 0;
+
     private final String name;
     private int location;
 
     public Car(String name) {
-        this(name, 0);
+        this(name, DEFAULT_LOCATION);
     }
 
     public Car(String name, int location) {
@@ -48,7 +50,7 @@ public class Car {
         return this.location >= maxLocation;
     }
 
-    public int max(int criteria) {
+    public int maxLocation(int criteria) {
         return Math.max(this.location, criteria);
     }
 }

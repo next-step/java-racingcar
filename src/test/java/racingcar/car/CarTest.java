@@ -71,7 +71,7 @@ class CarTest {
             int carLocation = 3;
 
             Car car = new Car(defaultName, carLocation);
-            int max = car.max(carLocation - 1);
+            int max = car.maxLocation(carLocation - 1);
 
             assertThat(max).isEqualTo(carLocation);
         }

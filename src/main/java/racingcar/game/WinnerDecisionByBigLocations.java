@@ -24,7 +24,7 @@ public class WinnerDecisionByBigLocations implements WinnerDecisionStrategy {
         int maxLocation = 0;
 
         for (Car car : allParticipants) {
-            maxLocation = car.max(maxLocation);
+            maxLocation = car.maxLocation(maxLocation);
         }
 
         return maxLocation;
