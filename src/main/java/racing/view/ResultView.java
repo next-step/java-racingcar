@@ -1,5 +1,6 @@
 package racing.view;
 
+import racing.dto.RaceResponseDto;
 import racing.model.Car;
 import racing.model.Cars;
 
@@ -7,23 +8,29 @@ import java.util.List;
 
 public class ResultView {
 
-    public static void printRoundResult(List<Car> cars) {
+    public static void printResult(RaceResponseDto responseDto) {
+        printResultInfoMessage();
+        printAllRoundResult(responseDto.getResults());
+        printRoundWinners(responseDto.getWinners());
+    }
 
+    private static void printAllRoundResult(List<Cars> results) {
+
+        for (Cars roundResult : results) {
+            printRoundResult(roundResult.getCars());
+            System.out.println();
+        }
+    }
+
+    private static void printRoundResult(List<Car> cars) {
         for (Car car : cars) {
             printName(car);
             printDash(car);
             System.out.println();
         }
-
-        System.out.println();
     }
 
-    public static void printResultInfoMessage() {
-        System.out.println("실행 결과");
-    }
-
-    public static void printRoundWinners(Cars cars) {
-        List<Car> winners = cars.findWinners();
+    private static void printRoundWinners(List<Car> winners) {
 
         int count = winners.size();
 
@@ -32,6 +39,10 @@ public class ResultView {
         }
 
         printWinnersMessageSuffix();
+    }
+
+    private static void printResultInfoMessage() {
+        System.out.println("실행 결과");
     }
 
     private static void printDash(Car car) {
@@ -57,4 +68,5 @@ public class ResultView {
     private static void printWinnersMessageSuffix() {
         System.out.printf("가 우승했습니다.");
     }
+
 }

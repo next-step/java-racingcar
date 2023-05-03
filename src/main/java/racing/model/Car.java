@@ -5,27 +5,25 @@ import racing.util.RandomUtil;
 
 public class Car implements Comparable<Car> {
 
-    private String name;
+    private Name name;
     private Position position;
 
-    public Car() {
-        this.position = new Position();
-    }
-
     public Car(String name) {
-        this.name = name;
+        this.name = new Name(name);
         this.position = new Position();
     }
 
     public Car(String name, int position) {
-        this.name = name;
+        this.name = new Name(name);
         this.position = new Position(position);
     }
 
-    public void move(MoveStrategy moveStrategy) {
+    public Car move(MoveStrategy moveStrategy) {
         if (moveStrategy.move()) {
-            position.move();
+            this.position.move();
         }
+
+        return this;
     }
 
     public int getPosition() {
@@ -33,7 +31,7 @@ public class Car implements Comparable<Car> {
     }
 
     public String getName() {
-        return name;
+        return name.getName();
     }
 
     public boolean isSamePosition(int position) {
