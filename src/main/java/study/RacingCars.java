@@ -1,7 +1,7 @@
 package study;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RacingCars {
@@ -10,12 +10,9 @@ public class RacingCars {
 
     public RacingCars(int quantity) {
 
-        racingCars = new ArrayList<>();
-
-        IntStream.range(0, quantity).forEach(i -> {
-            RacingCar racingCar = new RacingCar();
-            racingCars.add(racingCar);
-        });
+        racingCars = IntStream.range(0, quantity)
+                .mapToObj(i -> new RacingCar())
+                .collect(Collectors.toList());
 
     }
 
