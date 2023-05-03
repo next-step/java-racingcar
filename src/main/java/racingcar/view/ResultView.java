@@ -1,4 +1,4 @@
-package racingcar.util;
+package racingcar.view;
 
 import racingcar.domain.Score;
 
@@ -12,7 +12,11 @@ public class ResultView {
     }
 
     public void score(Score score) {
-        screen.print(score.getScore());
+        score.getScore().forEach((name, driven) ->
+                screen.print(name + " : " + convertDriven(driven))
+        );
+        screen.print("");
+
     }
 
     public void winner(List<String> winnerNames) {
@@ -21,6 +25,10 @@ public class ResultView {
 
     private String join(List<String> winnerNames) {
         return String.join(", ", winnerNames);
+    }
+
+    private String convertDriven(int distanceDriven) {
+        return "-".repeat(Math.max(0, distanceDriven));
     }
 
 }
