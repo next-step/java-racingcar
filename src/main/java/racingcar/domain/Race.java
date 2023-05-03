@@ -5,6 +5,7 @@ import racingcar.domain.car.RacingCars;
 import racingcar.domain.numbergenerator.RandomNumberGenerator;
 import step2.PositiveInteger;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Race {
@@ -20,16 +21,28 @@ public class Race {
     public static Race from(int raceCount, List<Car> cars){
         PositiveInteger positiveRaceCount = PositiveInteger.from(raceCount);
 
-        return new Race(positiveRaceCount, List.of(new RacingCars(cars, new RandomNumberGenerator())));
+        List<RacingCars> racingCarsList = new ArrayList<>();
+        racingCarsList.add(new RacingCars(cars, new RandomNumberGenerator()));
+        return new Race(positiveRaceCount, racingCarsList);
     }
 
-    public List<RacingCars> race(){
+    public void race(){
         for(int i = 0; i < raceCount.getValue(); i++){
             cars.get(i).raceCar();
             cars.add(cars.get(i).copy(cars.get(i)));
         }
+    }
 
-        return cars;
+    public List<Car> getWinners(){
+        return cars.get(raceCount.getValue()-1).getWinners();
+    }
+
+    public int getRaceCount(){
+        return raceCount.getValue();
+    }
+
+    public RacingCars getRacingCarsPerRound(int round){
+        return cars.get(round);
     }
 
 }

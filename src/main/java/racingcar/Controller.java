@@ -2,9 +2,9 @@ package racingcar;
 
 import racingcar.domain.Race;
 import racingcar.domain.car.Car;
-import racingcar.domain.car.RacingCars;
 import racingcar.view.input.Input;
 import racingcar.view.input.request.CarRequest;
+import racingcar.view.printer.RacePrinter;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,7 +23,8 @@ public class Controller {
         CarRequest carRequest = input.inputCar();
 
         Race race = Race.from(raceCount, getCars(carRequest));
-        race.race()
+        race.race();
+        new RacePrinter(race).print();
     }
 
     private List<Car> getCars(CarRequest carRequest) {

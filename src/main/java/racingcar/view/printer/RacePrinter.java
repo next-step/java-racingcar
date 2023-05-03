@@ -1,26 +1,39 @@
 package racingcar.view.printer;
 
+import racingcar.domain.Race;
 import racingcar.domain.car.Car;
-
-import java.util.List;
+import racingcar.domain.car.RacingCars;
 
 public class RacePrinter {
 
     private static String STATE = "-";
+    private final Race race;
 
-    public static void printRaceStart(){
+    public RacePrinter(Race race) {
+        this.race = race;
+    }
+
+    public void print(){
+        printRaceStart();
+        for(int i = 0; i < race.getRaceCount(); i++){
+            printPerRound(race.getRacingCarsPerRound(i));
+        }
+        printWinners();
+    }
+    private void printRaceStart(){
         System.out.println("실행결과");
     }
-    public static void printPerRound(List<Car> cars){
-        for(Car car : cars){
+
+    private void printPerRound(RacingCars racingCars){
+        for(Car car : racingCars.getCars()){
             System.out.println(car.getName()+" : "+STATE.repeat(car.getPosition()));
         }
         System.out.println();
     }
 
-    public static void printWinners(List<Car> cars){
+    private void printWinners(){
         StringBuilder buffer = new StringBuilder();
-        for(Car car : cars){
+        for(Car car : race.getWinners()){
             buffer.append(car.getName());
             buffer.append(", ");
         }
