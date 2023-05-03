@@ -15,6 +15,14 @@ public class RacingCars {
         this.numberGenerator = numberGenerator;
     }
 
+    public RacingCars copy(RacingCars racingCars){
+        List<Car> cars = racingCars.getCars().stream()
+                .map(Car::copy)
+                .collect(Collectors.toList());
+
+        return new RacingCars(cars, racingCars.numberGenerator);
+    }
+
     public void raceCar(){
         cars.forEach(car -> car.move(numberGenerator));
     }

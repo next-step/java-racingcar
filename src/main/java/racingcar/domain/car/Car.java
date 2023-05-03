@@ -13,6 +13,10 @@ public class Car {
         this.name = Name.from(name);
     }
 
+    public static Car copy(Car car){
+        return new Car(car.position.getPosition(), car.name.getName());
+    }
+
     public static Car from(String name){
         return new Car(0, name);
     }

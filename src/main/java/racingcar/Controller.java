@@ -2,6 +2,7 @@ package racingcar;
 
 import racingcar.domain.Race;
 import racingcar.domain.car.Car;
+import racingcar.domain.car.RacingCars;
 import racingcar.view.input.Input;
 import racingcar.view.input.request.CarRequest;
 
@@ -22,7 +23,7 @@ public class Controller {
         CarRequest carRequest = input.inputCar();
 
         Race race = Race.from(raceCount, getCars(carRequest));
-        race.race();
+        race.race()
     }
 
     private List<Car> getCars(CarRequest carRequest) {
