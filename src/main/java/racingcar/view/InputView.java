@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.view;
 
 public class InputView {
     private final Screen screen = new Screen();

@@ -1,11 +1,11 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.Objects;
 
 public class CarName {
 
+    private static final int MAX_LENGTH = 5;
     private final String name;
-    private final int MAX_LENGTH = 5;
 
     public CarName(String name) {
         this.name = name;
@@ -39,8 +39,6 @@ public class CarName {
         if (!(o instanceof CarName)) return false;
 
         CarName carName = (CarName) o;
-
-        if (MAX_LENGTH != carName.MAX_LENGTH) return false;
         return Objects.equals(name, carName.name);
     }
 
