@@ -3,26 +3,28 @@ package study.domain;
 import java.util.Objects;
 
 public class MoveCount {
-    private int moveCount;
+    private final int moveCount;
     private static final int DEFAULT_MOVE_COUNT = 0;
+    private static final int MOVE_FORWARD = 1;
     private static final int MOVE_BOUNDARY = 4;
 
     public MoveCount() {
-        new MoveCount(DEFAULT_MOVE_COUNT);
+        this.moveCount = DEFAULT_MOVE_COUNT;
     }
 
     public MoveCount(int number) {
         this.moveCount = number;
     }
 
-    public void moveOrStop(int randomNumber) {
+    public MoveCount moveOrStop(int randomNumber) {
         if (randomNumber >= MOVE_BOUNDARY) {
-            moveCount++;
+            return new MoveCount(this.moveCount + MOVE_FORWARD);
         }
+        return this;
     }
 
-    public boolean checkIsSame(int maxCountValue) {
-        return moveCount == maxCountValue;
+    public boolean checkIsSame(MoveCount moveCount) {
+        return moveCount.moveCount == this.moveCount;
     }
 
     @Override

@@ -23,7 +23,7 @@ public class RacingCarTest {
     @DisplayName("이동하지 않는값(1), 이동하는 값(4) 에 대한 테스트")
     void moveTest(int input, int excepted) {
         racingCar.moveOrStop(input);
-        assertThat(racingCar.isSameMoveCount(excepted)).isTrue();
+        assertThat(racingCar.isSameMoveCount(new MoveCount(excepted))).isTrue();
     }
 
 

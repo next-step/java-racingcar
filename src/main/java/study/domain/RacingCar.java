@@ -3,7 +3,7 @@ package study.domain;
 import java.util.Objects;
 
 public class RacingCar {
-    private final MoveCount moveCount;
+    private MoveCount moveCount;
     private final Name name;
 
     public RacingCar(String name) {
@@ -17,11 +17,11 @@ public class RacingCar {
     }
 
     public void moveOrStop(int randomNumber) {
-        this.moveCount.moveOrStop(randomNumber);
+        this.moveCount = this.moveCount.moveOrStop(randomNumber);
     }
 
-    public boolean isSameMoveCount(int maxCountValue) {
-        return moveCount.checkIsSame(maxCountValue);
+    public boolean isSameMoveCount(MoveCount moveCount) {
+        return this.moveCount.checkIsSame(moveCount);
     }
 
     @Override
@@ -41,8 +41,12 @@ public class RacingCar {
         return this.name.getName();
     }
 
-    public int getMoveCount() {
+    public int getMoveCountValue() {
         return this.moveCount.getCount();
+    }
+
+    public MoveCount getMoveCount() {
+        return this.moveCount;
     }
 
 }

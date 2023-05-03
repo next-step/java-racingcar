@@ -26,16 +26,16 @@ public class AutoRacingParticipant {
     public List<String> getAllMaxMoveCountName() {
         return autoRacingMembers.stream()
                 .filter(racingCar -> racingCar
-                        .isSameMoveCount(getMaxCountValue()))
+                        .isSameMoveCount(getMaxCount()))
                 .map(RacingCar::getName)
                 .collect(Collectors
                         .toList());
     }
 
-    private int getMaxCountValue() {
+    private MoveCount getMaxCount() {
         return autoRacingMembers.stream()
                 .max(Comparator
-                        .comparing(RacingCar::getMoveCount))
+                        .comparing(RacingCar::getMoveCountValue))
                 .orElseThrow(NoSuchElementException::new)
                 .getMoveCount();
     }

@@ -17,7 +17,7 @@ public class ResultView {
         for (RacingCar racingCar : racingCarList) {
             printName(racingCar.getName());
             printAfterName();
-            printResultEachRound(racingCar.getMoveCount());
+            printResultEachRound(racingCar.getMoveCount().getCount());
         }
         lineChangeEachRoundFinish();
     }
