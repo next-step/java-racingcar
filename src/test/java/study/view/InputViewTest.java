@@ -1,7 +1,8 @@
-package study;
+package study.view;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import study.domain.GameInfo;
 
 import java.io.ByteArrayInputStream;
 
@@ -24,9 +25,8 @@ class InputViewTest {
         GameInfo gameInfo = InputView.prepareGame();
 
         assertThat(gameInfo.getNameList().size()).isEqualTo(3);
-        assertThat(gameInfo.getNameList().get(0)).isEqualTo("최태훈");
-        assertThat(gameInfo.getNameList().get(1)).isEqualTo("조아영");
-        assertThat(gameInfo.getNameList().get(2)).isEqualTo("김정환");
+
+        assertThat(gameInfo.getNameList()).contains("최태훈", "조아영", "김정환");
 
         assertThat(gameInfo.getNumberOfGame()).isEqualTo(inputNumberOfGame);
     }

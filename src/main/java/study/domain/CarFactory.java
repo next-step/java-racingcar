@@ -1,4 +1,4 @@
-package study;
+package study.domain;
 
 import java.util.ArrayList;
 import java.util.List;

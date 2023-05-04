@@ -1,4 +1,7 @@
-package study;
+package study.view;
+
+import study.utils.StringSplitter;
+import study.domain.GameInfo;
 
 import java.util.List;
 import java.util.Scanner;
