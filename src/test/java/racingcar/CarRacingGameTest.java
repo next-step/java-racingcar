@@ -12,10 +12,11 @@ import static org.assertj.core.api.Assertions.*;
 
 public class CarRacingGameTest {
     private CarRacingGame carRacingGame;
+    private final MovingStrategy movingStrategy = new RandomMovingStrategy();
 
     @BeforeEach
     void init() {
-        carRacingGame = new CarRacingGame();
+        carRacingGame = new CarRacingGame(movingStrategy);
     }
 
     @Test

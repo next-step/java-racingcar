@@ -12,8 +12,8 @@ public class CarList {
         this.cars = cars;
     }
 
-    public void runAllCars(){
-        cars.forEach(SimpleCar::run);
+    public void moveAllCarsByStrategy(MovingStrategy movingStrategy){
+        cars.forEach(it -> it.moveByStrategy(movingStrategy));
     }
 
     public List<SimpleCar> getCopiedCars() {

@@ -1,6 +1,5 @@
 package racingcar;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -10,6 +9,7 @@ import static org.assertj.core.api.Assertions.*;
 
 public class CarTest {
     private final SimpleCar car = new SimpleCar("test");
+    private final MovingStrategy movingStrategy = new RandomMovingStrategy();
 
     @Test
     @DisplayName("최초 포지션은 0")
@@ -44,7 +44,7 @@ public class CarTest {
     void Given_car_When_copy_Then_name_position_same() {
         // given
         SimpleCar car = new SimpleCar("abcd");
-        car.run();
+        car.moveByStrategy(movingStrategy);
 
         // when
         SimpleCar copiedCar = car.copy();

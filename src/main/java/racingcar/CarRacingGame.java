@@ -5,13 +5,14 @@ import racingcar.view.ResultView;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class CarRacingGame {
 
+    private final MovingStrategy movingStrategy;
 
-    public CarRacingGame() {
+    public CarRacingGame(MovingStrategy movingStrategy) {
+        this.movingStrategy = movingStrategy;
     }
 
     public void startGame() {
@@ -40,7 +41,7 @@ public class CarRacingGame {
     }
 
     private void runCarsAndPrintState(CarList cars) {
-        cars.runAllCars();
+        cars.moveAllCarsByStrategy(movingStrategy);
         ResultView.printCarsRunState(cars);
     }
 
