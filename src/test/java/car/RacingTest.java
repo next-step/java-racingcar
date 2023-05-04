@@ -1,19 +1,26 @@
 package car;
 
+import car.domain.Car;
+import car.domain.Movable;
+import car.domain.RacingResult;
+import car.view.InputView;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
+import static car.CarTest.goMove;
+import static car.CarTest.stopMove;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class RacingTest {
+
     List<Car> cars;
     InputView inputView = new InputView();
-    MovementStrategy movementStrategy = new MovementStrategy();
     @BeforeEach
     void setUp(){
 
@@ -21,10 +28,10 @@ public class RacingTest {
         Car car1 = new Car("test2");
         cars = new ArrayList<>();
 
-        car.move(movementStrategy.stopMoveStrategy());
+        car.move(stopMove);
         cars.add(car);
 
-        car1.move(movementStrategy.goMoveStrategy());
+        car1.move(goMove);
         cars.add(car1);
     }
     @Test
@@ -56,18 +63,11 @@ public class RacingTest {
         assertThat(new Car("test1").getName())
                 .isEqualTo("test1");
     }
-    @Test
-    @DisplayName("Car 객체들의 position값 중 가장 큰 값을 반환하는지")
-    public void test8(){
-        RacingResult racingResult = new RacingResult(cars);
-        assertThat(racingResult.getMax()).isEqualTo(1);
-    }
 
     @Test
     @DisplayName("test2 객체 우승")
-    public void test9(){
+    public void test8(){
         RacingResult racingResult = new RacingResult(cars);
-        assertThat(racingResult.getWinnerCars().get(0)).isEqualTo(cars.get(1));
-
+        assertThat(racingResult.getWinnerCarsName().get(0)).isEqualTo(cars.get(1));
     }
 }

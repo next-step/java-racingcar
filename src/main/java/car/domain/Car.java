@@ -1,4 +1,4 @@
-package car;
+package car.domain;
 
 import java.util.Random;
 
@@ -6,14 +6,21 @@ public class Car {
 
     private int position = 0;
     private String name;
+    private Movable  movable;
 
     private Car(){}
     public Car(String name){
         carNameCheck(name);
         this.name = name;
     }
-    public void move(int moveStrategy){
-        if(moveStrategy > 3) {
+
+    private void setMovable(Movable movable){
+        this.movable = movable;
+    }
+
+    public void move(Movable movable){
+        setMovable(movable);
+        if(movable.moveStrategy() > 3) {
             position += 1;
         }
     }
@@ -25,7 +32,7 @@ public class Car {
         return this.name;
     }
 
-    public String carNameCheck(String name){
+    private String carNameCheck(String name){
         if(name.length() > 5){
             throw new RuntimeException();
         }

@@ -1,24 +1,27 @@
 package car;
 
-import org.junit.jupiter.api.BeforeEach;
+import car.domain.Car;
+import car.domain.Movable;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
+    public static Random random = new Random();
+    public static Movable goMove = () -> {return random.nextInt(6)+4;};
+    public static Movable stopMove = () -> {return random.nextInt(4);};
+
     List<Car> cars;
-    MovementStrategy movementStrategy = new MovementStrategy();
 
     @Test
     @DisplayName("4이상 랜덤값 1 반환 테스트")
     public void test1(){
         Car car = new Car("test1");
-        car.move(movementStrategy.goMoveStrategy());
+        car.move(stopMove);
         assertThat(car.getPosition()).isEqualTo(1);
     }
 
@@ -26,7 +29,7 @@ public class CarTest {
     @DisplayName("4미만 랜덤값 0 반환 테스트")
     public void test2(){
         Car car = new Car("test1");
-        car.move(movementStrategy.stopMoveStrategy());
+        car.move(stopMove);
         assertThat(car.getPosition()).isEqualTo(0);
     }
 
@@ -37,7 +40,7 @@ public class CarTest {
 
         int result = 0;
         for (int i = 0; i < 3; i++) {
-            car.move(movementStrategy.goMoveStrategy());
+            car.move(goMove);
             result = car.getPosition();
         }
         assertThat(result).isEqualTo(3);

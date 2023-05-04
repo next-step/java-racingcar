@@ -1,4 +1,6 @@
-package car;
+package car.domain;
+
+import car.domain.Car;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +9,8 @@ public class RacingResult {
 
     private int max = 0;
     private List<Car> racingResult;
-    private List<Car> winnerCars;
-    private RacingResult() {}
+    private List<String> winnerCars;
+
 
     public RacingResult(List<Car> cars) {
         this.racingResult = cars;
@@ -30,7 +32,7 @@ public class RacingResult {
 
     private void addWinnerCar(Car car){
         if(car.getPosition() == this.max){
-            this.winnerCars.add(car);
+            this.winnerCars.add(car.getName());
         }
     }
 
@@ -40,11 +42,7 @@ public class RacingResult {
         }
     }
 
-    public int getMax() {
-        return this.max;
-    }
-
-    public List<Car> getWinnerCars(){
+    public List<String> getWinnerCarsName(){
         return this.winnerCars;
     }
 }
