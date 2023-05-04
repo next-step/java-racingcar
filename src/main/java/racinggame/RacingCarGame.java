@@ -1,27 +1,21 @@
 package racinggame;
 
-import racinggame.common.util.PrintUtils;
+import racinggame.common.constants.RexFormatConstants;
 import racinggame.common.util.RandomUtils;
 import racinggame.view.InputView;
 import racinggame.view.ResultView;
 import racinggame.vo.Car;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-public class RacingCarGame implements Game {
+public class RacingCarGame {
 
-    private static final String RESULT_TEXT = "실행 결과";
     private static final int MINIMUM_NUMBER_FOR_MOVE = 4;
-    private static final String CARS_NAME_REX_FORMAT_TEXT = ",";
-
     private String carsName;
     private int moveNumber;
     private Map<Integer, Car> carMap;
 
-    @Override
     public void input() {
 
         carsName = InputView.inputCarsName();
@@ -29,18 +23,17 @@ public class RacingCarGame implements Game {
 
     }
 
-    @Override
     public void start() {
 
         carMap = createCars(carsName);
-        PrintUtils.println(RESULT_TEXT);
+        ResultView.resultMessagePrint();
         moveByMoveNumber(moveNumber);
         ResultView.winnerPrint(carMap);
 
     }
 
     Map<Integer, Car> createCars(String carsName) {
-        String[] cars = carsName.split(CARS_NAME_REX_FORMAT_TEXT);
+        String[] cars = carsName.split(RexFormatConstants.CARS_NAME_REX_FORMAT_TEXT.getValue());
         Map<Integer, Car> createCarMap = new HashMap<>();
         for (int number = 0; number < cars.length; number++) {
             createCarMap.put(number, new Car(number, cars[number]));

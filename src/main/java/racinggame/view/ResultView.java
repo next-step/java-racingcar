@@ -1,5 +1,6 @@
 package racinggame.view;
 
+import racinggame.common.constants.RexFormatConstants;
 import racinggame.common.util.PrintUtils;
 import racinggame.vo.Car;
 
@@ -9,11 +10,16 @@ import java.util.Map;
 
 public class ResultView {
 
+    private static final String RESULT_TEXT = "실행 결과";
     private static final String RESULT_WINNER_TEXT = "가 최종 우승했습니다.";
     private static final StringBuffer sb = new StringBuffer();
     private static final String LAST_COMMA_REMOVE_REX_FORMAT_TEXT = ",$";
     private static int winnerMoveCount = 0;
     private static List<Car> winnerCarList = new ArrayList<>();
+
+    public static void resultMessagePrint() {
+        PrintUtils.println(RESULT_TEXT);
+    }
 
     public static void resultPrint(Map<Integer, Car> carMap) {
 
@@ -38,7 +44,7 @@ public class ResultView {
         }
         StringBuilder sb = new StringBuilder();
         for (Car car : winnerCarList) {
-            sb.append(car.getName()).append(",");
+            sb.append(car.getName()).append(RexFormatConstants.CARS_NAME_REX_FORMAT_TEXT.getValue());
         }
         return sb.toString().replaceAll(LAST_COMMA_REMOVE_REX_FORMAT_TEXT, "");
     }
