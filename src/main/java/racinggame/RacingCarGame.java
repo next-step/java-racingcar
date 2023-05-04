@@ -4,7 +4,7 @@ import racinggame.common.constants.RexFormatConstants;
 import racinggame.common.util.RandomUtils;
 import racinggame.view.InputView;
 import racinggame.view.ResultView;
-import racinggame.vo.Car;
+import racinggame.domain.Car;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,7 +33,7 @@ public class RacingCarGame {
     }
 
     Map<Integer, Car> createCars(String carsName) {
-        String[] cars = carsName.split(RexFormatConstants.CARS_NAME_REX_FORMAT_TEXT.getValue());
+        String[] cars = carsName.split(RexFormatConstants.CARS_NAME_REX_FORMAT_TEXT.getFormat());
         Map<Integer, Car> createCarMap = new HashMap<>();
         for (int number = 0; number < cars.length; number++) {
             createCarMap.put(number, new Car(number, cars[number]));

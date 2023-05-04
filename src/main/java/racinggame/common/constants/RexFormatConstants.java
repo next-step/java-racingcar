@@ -3,17 +3,18 @@ package racinggame.common.constants;
 public enum RexFormatConstants {
 
     CARS_NAME_REX_FORMAT_TEXT(","),
+    LAST_COMMA_REMOVE_REX_FORMAT_TEXT(",$"),
 
     ;
 
-    private final String value;
+    private final String format;
 
-    RexFormatConstants(String value) {
-        this.value = value;
+    RexFormatConstants(String format) {
+        this.format = format;
     }
 
-    public String getValue() {
-        return value;
+    public String getFormat() {
+        return format;
     }
 
 }

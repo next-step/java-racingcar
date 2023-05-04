@@ -1,4 +1,4 @@
-package racinggame.vo;
+package racinggame.domain;
 
 import racinggame.exception.OverCarNameLengthException;
 
