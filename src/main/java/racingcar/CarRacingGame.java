@@ -48,28 +48,9 @@ public class CarRacingGame {
         InputView.printCarNumTakingView();
         List<String> carNames = InputView.scanCarNames();
 
-        validateCarNames(carNames);
-
         InputView.printTryNumView();
         int runNums = InputView.scanNextPositiveInteger().getIntValue();
 
         return new GameStartParameter(carNames, runNums);
-    }
-
-    private void validateCarNames(List<String> carNames) {
-        validateCarNamesNotEmpty(carNames);
-
-        carNames.stream()
-                .filter(it -> it.isBlank() || it.length() > SimpleCar.MAX_NAME_LENGTH)
-                .findAny()
-                .ifPresent(it -> {
-                    throw new IllegalArgumentException("invalid car name: " + it);
-                });
-    }
-
-    private void validateCarNamesNotEmpty(List<String> carNames) {
-        if (carNames.isEmpty()) {
-            throw new IllegalArgumentException("차 이름을 입력해야 합니다.");
-        }
     }
 }

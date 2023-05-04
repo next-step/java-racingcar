@@ -9,12 +9,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.assertj.core.api.Assertions.*;
 
 public class CarTest {
-    private SimpleCar car;
-
-    @BeforeEach
-    void init() {
-        car = new SimpleCar("test");
-    }
+    private final SimpleCar car = new SimpleCar("test");
 
     @Test
     @DisplayName("최초 포지션은 0")
