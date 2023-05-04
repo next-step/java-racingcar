@@ -22,14 +22,9 @@ public class CarRacingGame {
     }
 
     void play(GameStartParameter gameStartParameter) {
-        CarList cars = new CarList(generateCars(gameStartParameter));
+        CarList cars = CarList.generateCarList(gameStartParameter.getCarNames());
         runCars(gameStartParameter, cars);
         ResultView.printWinners(cars.extractWinners());
-    }
-
-    List<SimpleCar> generateCars(GameStartParameter gameStartParameter) {
-        return gameStartParameter.getCarNames().stream()
-                .map(SimpleCar::new).collect(Collectors.toList());
     }
 
     private void runCars(GameStartParameter gameStartParameter, CarList cars) {

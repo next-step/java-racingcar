@@ -7,7 +7,12 @@ import java.util.stream.Collectors;
 public class CarList {
     private List<SimpleCar> cars;
 
-    public CarList(List<SimpleCar> cars) {
+    public static CarList generateCarList(List<String> carNames) {
+        return new CarList(carNames.stream()
+                .map(SimpleCar::new).collect(Collectors.toList()));
+    }
+
+    private CarList(List<SimpleCar> cars) {
         validateNonNegativePosition(cars);
         this.cars = cars;
     }

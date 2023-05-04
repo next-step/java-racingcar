@@ -25,30 +25,4 @@ public class CarRacingGameTest {
         List<String> names = Arrays.asList("aaa", "bbb", "ccc");
         carRacingGame.play(new GameStartParameter(names, 7));
     }
-
-    @Test
-    void Given_GameStartParameters_When_generateCars_Then_cars_generated() {
-        // given
-        List<String> carNames = List.of("1", "22", "333", "4444", "55555");
-        GameStartParameter gameStartParameter = new GameStartParameter(carNames, 5);
-
-        // when
-        List<SimpleCar> cars = carRacingGame.generateCars(gameStartParameter);
-
-        // then
-        assertThat(cars.size()).isEqualTo(carNames.size());
-        assertThat(cars.stream().filter(it -> it.getCarName().equals("333")).findAny()).isPresent();
-    }
-
-
-    @Test
-    void Given_CarNames_too_long_When_generateCars_Then_fail_to_generate_cars() {
-        // given
-        List<String> carNames = List.of("1", "22", "333", "4444", "55555", "666666");
-        GameStartParameter gameStartParameter = new GameStartParameter(carNames, 5);
-
-        // when, then
-        assertThrows(IllegalArgumentException.class, () -> carRacingGame.generateCars(gameStartParameter));
-    }
-
 }
