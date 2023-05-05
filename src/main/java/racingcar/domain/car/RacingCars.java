@@ -38,7 +38,7 @@ public class RacingCars {
                 .orElse(0);
 
         return cars.stream()
-                .filter(car -> car.isWinner(maxPosition))
+                .filter(car -> car.isEqualPosition(maxPosition))
                 .collect(Collectors.toList());
     }
 
