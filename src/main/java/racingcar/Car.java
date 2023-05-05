@@ -11,9 +11,12 @@ public class Car {
     private static final int INIT_POSITION = 1;
 
     private final Random random = new Random();
+
+    private final String name;
     private final List<Integer> positions;
 
-    Car(int trialCount) {
+    Car(String name, int trialCount) {
+        this.name = name;
         positions = new ArrayList<>();
         int position = INIT_POSITION;
         for(int i=0; i< trialCount; i++) {
@@ -23,6 +26,7 @@ public class Car {
     }
 
     Car(List<Integer> positions) {
+        this.name = "";
         this.positions = new ArrayList<>(positions);
     }
 

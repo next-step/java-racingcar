@@ -28,7 +28,7 @@ public class RacingTest {
     @Test
     void 문자_입력_받기() {
         // Given
-        String testInput = "3\n5\n";
+        String testInput = "pobi,crong,honux\n5\n";
         ByteArrayInputStream in = new ByteArrayInputStream(testInput.getBytes());
         System.setIn(in);
 
@@ -39,7 +39,7 @@ public class RacingTest {
     @Test
     void 랜덤하게_전진() {
         // Given
-        Racing race = new Racing(3, 5);
+        Racing race = new Racing("pobi,crong,honux", 5);
 
         // When
 
