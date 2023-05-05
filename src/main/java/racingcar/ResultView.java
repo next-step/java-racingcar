@@ -15,6 +15,7 @@ public class ResultView {
 
     private void displayColumn(List<Car> cars, int columnIndex) {
         for (Car car : cars) {
+            System.out.printf("%s : ", car.getName());
             System.out.println(getPositionLine(car, columnIndex));
         }
     }

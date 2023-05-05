@@ -25,8 +25,8 @@ public class Car {
         }
     }
 
-    Car(List<Integer> positions) {
-        this.name = "";
+    Car(String name, List<Integer> positions) {
+        this.name = name;
         this.positions = new ArrayList<>(positions);
     }
 
@@ -45,5 +45,9 @@ public class Car {
     public int proceedOrStop() {
         int randomValue = random.nextInt(RANDOM_BOUND);
         return randomValue >= PROCEED_THRESHOLD ? 1 : 0;
+    }
+
+    public String getName() {
+        return name;
     }
 }

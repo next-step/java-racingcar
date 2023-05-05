@@ -16,7 +16,7 @@ public class RacingTest {
     @Test
     void 전부_합친_테스트() {
         // Given
-        String testInput = "3\n5\n";
+        String testInput = "pobi,crong,honux\n5\n";
         ByteArrayInputStream in = new ByteArrayInputStream(testInput.getBytes());
         System.setIn(in);
 
@@ -52,9 +52,9 @@ public class RacingTest {
         // Given
 
         List<Car> cars = Arrays.asList(
-                new Car(Arrays.asList(1, 2, 3, 4, 4)),
-                new Car(Arrays.asList(1, 1, 2, 3, 4)),
-                new Car(Arrays.asList(1, 2, 3, 4, 5))
+                new Car("pobi", Arrays.asList(1, 2, 3, 4, 4)),
+                new Car("crong", Arrays.asList(1, 1, 2, 3, 4)),
+                new Car("honux", Arrays.asList(1, 2, 3, 4, 5))
         );
 
         // Then
