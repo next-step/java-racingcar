@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import racingcar.domain.car.Car;
 import racingcar.domain.car.RacingCars;
+import racingcar.domain.numbergenerator.NumberGenerator;
 import racingcar.domain.numbergenerator.RandomNumberGenerator;
 import step2.PositiveInteger;
 
@@ -22,7 +23,8 @@ public class Race {
         PositiveInteger positiveRaceCount = PositiveInteger.from(raceCount);
 
         List<RacingCars> racingCarsList = new ArrayList<>();
-        racingCarsList.add(new RacingCars(cars, new RandomNumberGenerator()));
+        NumberGenerator numberGenerator = new RandomNumberGenerator();
+        racingCarsList.add(new RacingCars(cars, numberGenerator));
         return new Race(positiveRaceCount, racingCarsList);
     }
 
