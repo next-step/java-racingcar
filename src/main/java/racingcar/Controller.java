@@ -1,8 +1,11 @@
 package racingcar;
 
-import racingcar.car.Car;
-import racingcar.input.Input;
-import racingcar.input.request.CarRequest;
+import racingcar.domain.Race;
+import racingcar.domain.car.Car;
+import racingcar.view.input.Input;
+import racingcar.view.input.request.CarRequest;
+import racingcar.view.printer.RacePrinter;
+
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,6 +25,8 @@ public class Controller {
 
         Race race = Race.from(raceCount, getCars(carRequest));
         race.race();
+        new RacePrinter(race).print();
+
     }
 
     private List<Car> getCars(CarRequest carRequest) {
