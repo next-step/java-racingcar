@@ -32,7 +32,7 @@ class CarsTest {
     @NullSource
     public void createCarsWithNullCarNames(CarNames carNames) {
         assertThatThrownBy(() -> new Cars(carNames))
-                .isInstanceOf(RuntimeException.class);
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test

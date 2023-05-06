@@ -19,7 +19,7 @@ public class Cars {
     }
 
     private void validateCarNames(CarNames carNames) {
-        if (carNames.getSize() == 0) {
+        if (carNames == null || carNames.getSize() == 0) {
             throw new IllegalArgumentException("The number of participants must be positive.");
         }
     }

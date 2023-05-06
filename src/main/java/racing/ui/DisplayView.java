@@ -8,11 +8,11 @@ import java.util.stream.Collectors;
 
 public class DisplayView implements View {
 
-    public final String RACE_START_MESSAGE = "실행 결과";
-    public final String UNIT_DISPLAYING_LABS_OF_CAR = "-";
-    public final String CARS_DELIMITER = ",";
-    public final String CAR_POSITION_FORMAT = "%s : %s";
-    public final String RESULTS_FORMAT = "%s가 최종 우승했습니다.";
+    public final static String RACE_START_MESSAGE = "실행 결과";
+    public final static String UNIT_DISPLAYING_LABS_OF_CAR = "-";
+    public final static String CARS_DELIMITER = ",";
+    public final static String CAR_POSITION_FORMAT = "%s : %s";
+    public final static String RESULTS_FORMAT = "%s가 최종 우승했습니다.";
 
     @Override
     public void display(String content) {

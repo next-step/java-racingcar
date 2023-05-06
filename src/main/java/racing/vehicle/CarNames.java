@@ -10,8 +10,15 @@ public class CarNames {
     private static final String NAMES_DELIMITER_REGEX = ",";
 
     public CarNames(String carNamesMessage) {
+        validateCarNames(carNamesMessage);
         this.names = parseCarNamesMessage(carNamesMessage).stream()
                 .map(CarName::new).collect(Collectors.toList());
+    }
+
+    private void validateCarNames(String carNamesMessage) {
+        if (carNamesMessage == null) {
+            throw new IllegalArgumentException("Car names message cannot be null.");
+        }
     }
 
     private List<String> parseCarNamesMessage(String carNamesMessage) {

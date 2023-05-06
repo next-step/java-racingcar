@@ -19,13 +19,13 @@ class CarNameTest {
     @CsvSource(value = {"aaaaaa"})
     public void invalidName(String name) {
         assertThatThrownBy(() -> new CarName(name))
-                .isInstanceOf(RuntimeException.class);
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest(name = "Creating carName with null or empty name - {0}")
     @NullAndEmptySource
     public void nullOrEmptyName(String name) {
         assertThatThrownBy(() -> new CarName(name))
-                .isInstanceOf(RuntimeException.class);
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
