@@ -24,7 +24,7 @@ public class Race {
     private void init() {
         String names = inputView.promptNames();
         int laps = inputView.promptLaps();
-        this.game = new Game(names, laps);
+        setGame(names, laps);
         displayView.displayEmptyLine();
     }
 
@@ -36,6 +36,13 @@ public class Race {
             game.runLap();
             this.currentGameDisplay();
         });
+    }
+
+    private void setGame(String names, int laps) {
+        this.game = Game.builder()
+                .setCarNames(names)
+                .setLaps(laps)
+                .build();
     }
 
     private void showResult() {
