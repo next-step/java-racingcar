@@ -4,6 +4,7 @@ import java.util.Random;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import study.car.Car;
+import study.dto.InputDto;
 import study.util.Input;
 import study.util.Randomizer;
 import study.util.RandomizerImpl;
@@ -67,15 +68,15 @@ public class CarRaceTest {
     Input countInput = new InputTestImpl();
     InputView inputView = new InputView(carInput, countInput);
     Randomizer randomizer = new RandomizerImpl();
-    Result result = new ResultImpl();
-
-    CarRace carRace = new CarRaceImpl(randomizer);
-    OutputView outputView = new OutputView(result);
 
     // when
-    carRace.run(inputView, outputView);
+    InputDto inputDto = inputView.view();
+    Car[] cars = Car.createCarsAsStr(inputDto.getCarsStr());
+    RaceGame raceGame = new RaceGameImpl(cars, inputDto.getTryCount(), randomizer);
+    RaceList raceList = raceGame.process();
 
     // then
+    assertThat(raceList.winner()).isNotEmpty();
   }
 
   private class InputCarStringTest implements Input {

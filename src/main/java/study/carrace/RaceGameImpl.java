@@ -17,7 +17,7 @@ public class RaceGameImpl implements RaceGame {
   }
 
   @Override
-  public Race[] process() {
+  public RaceList process() {
     Race[] races = new Race[this.cars.length];
 
     for (int i = 0; i < this.cars.length; i++) {
@@ -28,6 +28,6 @@ public class RaceGameImpl implements RaceGame {
       races[i] = race;
     }
 
-    return races;
+    return new RaceList(races);
   }
 }

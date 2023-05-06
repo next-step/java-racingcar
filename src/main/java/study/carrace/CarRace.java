@@ -1,6 +1,5 @@
 package study.carrace;
 
-import study.util.Input;
 import study.view.InputView;
 import study.view.OutputView;
 

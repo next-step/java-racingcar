@@ -2,9 +2,7 @@ package study.carrace;
 
 import study.car.Car;
 import study.dto.InputDto;
-import study.util.Input;
 import study.util.Randomizer;
-import study.util.Result;
 import study.view.InputView;
 import study.view.OutputView;
 
@@ -21,8 +19,8 @@ public class CarRaceImpl implements CarRace {
 
     Car[] cars = Car.createCarsAsStr(inputDto.getCarsStr());
     RaceGame raceGame = new RaceGameImpl(cars, inputDto.getTryCount(), randomizer);
-    Race[] races = raceGame.process();
+    RaceList raceList = raceGame.process();
 
-    outputView.view(races, inputDto.getTryCount());
+    outputView.view(raceList, inputDto.getTryCount());
   }
 }
