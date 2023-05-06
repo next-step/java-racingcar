@@ -7,7 +7,7 @@ public class RacingGameTest {
     private final RacingGame racingGame = new RacingGame();
 
     @Test
-    public void playTest() {
+    void playTest() {
         racingGame.play();
     }
 }
