@@ -6,9 +6,6 @@ import java.util.Scanner;
 
 public class InputView {
 
-    String forwardMessage = "FORWARD";
-    String stopMessage = "STOP";
-
     Random random = new Random();
 
     public int scanNumber() {
@@ -21,13 +18,6 @@ public class InputView {
             scanNumber();
         }
         return number;
-    }
-
-    public String forwardAndStop(int number) {
-        if(number >= 4) {
-            return forwardMessage;
-        }
-        return stopMessage;
     }
 
     public int randomNumber() {

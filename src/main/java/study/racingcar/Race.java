@@ -48,9 +48,7 @@ public class Race {
     }
 
     public void forwardCar(RacingCar racingCar) {
-        if (inputView.forwardAndStop(inputView.randomNumber()).equals("FORWARD")) {
-            racingCar.forward();
-        }
+        racingCar.forwardAndStop(inputView.randomNumber());
     }
 
 

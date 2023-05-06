@@ -8,4 +8,10 @@ public class RacingCar {
         this.forwardCount++;
     }
 
+    public void forwardAndStop(int number) {
+        if (number >= 4) {
+            forward();
+        }
+    }
+
 }
