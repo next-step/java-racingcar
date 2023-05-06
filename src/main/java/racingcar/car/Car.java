@@ -6,11 +6,10 @@ import racingcar.random.RandomGenerator;
 public class Car {
     private final static int MIN_RANDOM_VALUE = 0;
     private final static int MAX_RANDOM_VALUE = 9;
-    private final static int MAX_NAME_LEN = 5;
     private final static int MOVE_CRITERIA = 4;
     private final static int DEFAULT_LOCATION = 0;
 
-    private final String name;
+    private final Name name;
     private int location;
 
     public Car(String name) {
@@ -18,10 +17,7 @@ public class Car {
     }
 
     public Car(String name, int location) {
-        if (name.length() > MAX_NAME_LEN) {
-            throw new IllegalArgumentException("자동차 이름은 5글자를 초과할 수 없습니다.");
-        }
-        this.name = name;
+        this.name = new Name(name);
         this.location = location;
     }
 
@@ -29,7 +25,7 @@ public class Car {
         return this.location;
     }
 
-    public String name() {
+    public Name name() {
         return this.name;
     }
 
