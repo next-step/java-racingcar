@@ -3,6 +3,8 @@ package racingcar;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
+import racingcar.domain.Game;
 
 import java.util.List;
 
