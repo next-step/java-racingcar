@@ -1,8 +1,8 @@
 package study.carrace;
 
-import study.view.InputImpl;
+import study.util.InputImpl;
 import study.util.RandomizerImpl;
-import study.view.ResultImpl;
+import study.util.ResultImpl;
 
 public class Main {
 

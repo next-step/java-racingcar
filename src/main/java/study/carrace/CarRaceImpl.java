@@ -1,9 +1,9 @@
 package study.carrace;
 
 import study.car.Car;
-import study.view.Input;
+import study.util.Input;
 import study.util.Randomizer;
-import study.view.Result;
+import study.util.Result;
 
 public class CarRaceImpl implements CarRace {
 

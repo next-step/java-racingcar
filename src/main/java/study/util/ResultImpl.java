@@ -1,4 +1,4 @@
-package study.view;
+package study.util;
 
 public class ResultImpl implements Result {
 

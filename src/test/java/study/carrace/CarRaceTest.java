@@ -4,11 +4,11 @@ import java.util.Random;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import study.car.Car;
-import study.view.Input;
+import study.util.Input;
 import study.util.Randomizer;
 import study.util.RandomizerImpl;
-import study.view.Result;
-import study.view.ResultImpl;
+import study.util.Result;
+import study.util.ResultImpl;
 
 import static org.assertj.core.api.Assertions.assertThat;
 public class CarRaceTest {
