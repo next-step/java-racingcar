@@ -12,7 +12,7 @@ public class CarDto {
     }
 
     public CarDto(Car car) {
-        this(car.location(), car.name().getName());
+        this(car.location().getLocation(), car.name().getName());
     }
 
     public int getLocation() {

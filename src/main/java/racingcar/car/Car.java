@@ -6,23 +6,25 @@ import racingcar.random.RandomGenerator;
 public class Car {
     private final static int MIN_RANDOM_VALUE = 0;
     private final static int MAX_RANDOM_VALUE = 9;
-    private final static int MOVE_CRITERIA = 4;
-    private final static int DEFAULT_LOCATION = 0;
 
     private final Name name;
-    private int location;
+    private final Position position;
 
     public Car(String name) {
-        this(name, DEFAULT_LOCATION);
+        this(new Name(name), new Position());
     }
 
     public Car(String name, int location) {
-        this.name = new Name(name);
-        this.location = location;
+        this(new Name(name), new Position(location));
     }
 
-    public int location() {
-        return this.location;
+    public Car(Name name, Position position) {
+        this.name = name;
+        this.position = position;
+    }
+
+    public Position location() {
+        return this.position;
     }
 
     public Name name() {
@@ -30,23 +32,20 @@ public class Car {
     }
 
     public void move() {
-        RandNum randNum =
-                RandomGenerator.generate(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
+        RandNum randNum = RandomGenerator.generate(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
 
         moveDependingOn(randNum);
     }
 
     private void moveDependingOn(RandNum randNum) {
-        if (randNum.isGreaterThan(MOVE_CRITERIA)) {
-            location++;
-        }
+        position.move(randNum);
     }
 
     public boolean isWinner(int maxLocation) {
-        return this.location >= maxLocation;
+        return this.position.isGreaterThan(maxLocation);
     }
 
     public int maxLocation(int criteria) {
-        return Math.max(this.location, criteria);
+        return this.position.max(criteria);
     }
 }

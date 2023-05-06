@@ -18,7 +18,7 @@ class CarTest {
     void 자동차의_초기_위치값은_0이다() {
         Car car = new Car(defaultName);
 
-        int location = car.location();
+        int location = car.location().getLocation();
 
         assertThat(location).isZero();
     }
@@ -29,11 +29,11 @@ class CarTest {
         void 내부적으로_생성되는_랜덤값에_따라_1_전진하거나_기존위치에_머무른다() {
             Car car = new Car(defaultName);
 
-            int beforeLocation = car.location();
+            int beforeLocation = car.location().getLocation();
 
             car.move();
 
-            int currentLocation = car.location();
+            int currentLocation = car.location().getLocation();
             Condition<Integer> moved = new Condition(position -> position.equals(beforeLocation + 1), "move forward");
             Condition<Integer> stay = new Condition(position -> position.equals(beforeLocation), "stay");
 
@@ -61,19 +61,6 @@ class CarTest {
 
             Assertions.assertThat(carLocatedOnZero.isWinner(0))
                     .isTrue();
-        }
-    }
-
-    @Nested
-    class max_메서드는 {
-        @Test
-        void 자신의_위치와_비교해_max_를_리턴한다() {
-            int carLocation = 3;
-
-            Car car = new Car(defaultName, carLocation);
-            int max = car.maxLocation(carLocation - 1);
-
-            assertThat(max).isEqualTo(carLocation);
         }
     }
 }
