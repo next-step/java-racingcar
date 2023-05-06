@@ -35,12 +35,13 @@ public class RacingCarTest {
     @Test
     @DisplayName("0에서 9사이의 random값을 구한 후 4이상일 경우 전진하는 기능")
     void forwardAndStop() {
+        RacingCar racingCar = new RacingCar();
         int number = inputView.randomNumber();
-        String message = inputView.forwardAndStop(number);
+        racingCar.forwardAndStop(number);
         if(number >= 4) {
-            assertThat(message).isEqualTo("FORWARD");
+            assertThat(resultView.viewLocation(racingCar.forwardCount)).isEqualTo("-");
         }else {
-            assertThat(message).isEqualTo("STOP");
+            assertThat(resultView.viewLocation(racingCar.forwardCount)).isEqualTo("");
         }
     }
 
