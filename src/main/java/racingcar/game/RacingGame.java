@@ -13,7 +13,8 @@ public class RacingGame {
     private final Trial numbOfTrial;
     private final WinnerDecisionStrategy winnerDecisionStrategy;
     private final List<Car> cars;
-    private Winners winners;
+
+    private Winners winners  = Winners.emptyWinners();
 
     public RacingGame(int numbOfTrial,
                       List<String> carNames,
@@ -41,10 +42,6 @@ public class RacingGame {
         numbOfTrial.decrease();
         moveCars();
 
-        if (isLastTrial()) {
-            pickWinners();
-        }
-
         return convertToDTO(this.cars);
     }
 
@@ -54,20 +51,20 @@ public class RacingGame {
         }
     }
 
-    private boolean isLastTrial() {
-        return !this.numbOfTrial.hasChance();
-    }
-
-    private void pickWinners() {
-        this.winners = winnerDecisionStrategy.decideWinners(this.cars);
-    }
-
     public CarsDto winnerCars() {
         if (!isEnded()) {
             throw new GameException("게임이 끝나기 전까지 우승자를 알 수 없습니다");
         }
 
+        if (this.winners.isEmpty()) {
+            pickWinners();
+        }
+
         return convertToDTO(this.winners.winners());
+    }
+
+    private void pickWinners() {
+        this.winners = winnerDecisionStrategy.decideWinners(this.cars);
     }
 
     private CarsDto convertToDTO(List<Car> cars) {

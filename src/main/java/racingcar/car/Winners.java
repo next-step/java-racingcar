@@ -13,4 +13,12 @@ public class Winners {
     public List<Car> winners() {
         return new ArrayList<>(this.winners);
     }
+
+    public static Winners emptyWinners() {
+        return new Winners(new ArrayList<>());
+    }
+
+    public boolean isEmpty() {
+        return this.winners.isEmpty();
+    }
 }
