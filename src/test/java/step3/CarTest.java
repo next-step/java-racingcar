@@ -10,7 +10,7 @@ public class CarTest {
     @DisplayName("각각의 차가 전진했을 때, 전진한 정도가 맞는지 테스트")
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 10})
-    public void plusTraceTest(int count) {
+    void plusTraceTest(int count) {
         Car car = new Car();
         int expected = 0;
         for (int i = 0; i < count; i++) {
