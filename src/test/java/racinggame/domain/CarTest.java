@@ -1,11 +1,12 @@
-package racinggame;
+package racinggame.domain;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import racinggame.exception.OverCarNameLengthException;
-import racinggame.domain.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -44,13 +45,15 @@ public class CarTest {
 
     }
 
-    @DisplayName("자동차 움직이기")
-    @Test
-    void moveCar() {
-
-        car.move();
-        assertThat(car.getMoveCount()).isEqualTo(1);
-
+    @DisplayName("자동차를 움직일 수 있는지 확인")
+    @ParameterizedTest
+    @ValueSource(ints = {3, 4})
+    void canMoveCar(int random) {
+        boolean canMove = car.canMove(random);
+        if (random > 4) {
+            assertThat(canMove).isTrue();
+        }
+        assertThat(canMove).isFalse();
     }
 
 }

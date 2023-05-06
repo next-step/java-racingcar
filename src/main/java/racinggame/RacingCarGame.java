@@ -1,48 +1,40 @@
 package racinggame;
 
-import racinggame.common.constants.RexFormatConstants;
-import racinggame.common.util.RandomUtils;
+import racinggame.domain.Car;
 import racinggame.view.InputView;
 import racinggame.view.ResultView;
-import racinggame.domain.Car;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class RacingCarGame {
 
-    private static final int MINIMUM_NUMBER_FOR_MOVE = 4;
-    private String carsName;
+    private String[] cars;
     private int moveNumber;
     private Map<Integer, Car> carMap;
 
     public void input() {
 
-        carsName = InputView.inputCarsName();
+        cars = InputView.inputCarsName();
         moveNumber = InputView.inputMoveCount();
 
     }
 
     public void start() {
 
-        carMap = createCars(carsName);
+        carMap = createCars(cars);
         ResultView.resultMessagePrint();
         moveByMoveNumber(moveNumber);
         ResultView.winnerPrint(carMap);
 
     }
 
-    Map<Integer, Car> createCars(String carsName) {
-        String[] cars = carsName.split(RexFormatConstants.CARS_NAME_REX_FORMAT_TEXT.getFormat());
+    Map<Integer, Car> createCars(String[] cars) {
         Map<Integer, Car> createCarMap = new HashMap<>();
         for (int number = 0; number < cars.length; number++) {
             createCarMap.put(number, new Car(number, cars[number]));
         }
         return createCarMap;
-    }
-
-    boolean canMove(int randomValue) {
-        return randomValue > MINIMUM_NUMBER_FOR_MOVE;
     }
 
     private void moveByMoveNumber(int moveNumber) {
@@ -54,12 +46,7 @@ public class RacingCarGame {
 
     private void moveByCarNumber() {
         for (Integer carNumber : carMap.keySet()) {
-            moveCar(carMap.get(carNumber));
-        }
-    }
-
-    private void moveCar(Car car) {
-        if (canMove(RandomUtils.generate())) {
+            Car car = carMap.get(carNumber);
             car.move();
             carMap.put(car.getNumber(), car);
         }

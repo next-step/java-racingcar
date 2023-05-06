@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racinggame.common.constants.RexFormatConstants;
 import racinggame.domain.Car;
 
 import java.util.Map;
@@ -26,19 +27,8 @@ public class RacingCarGameTest {
     @ValueSource(strings = {"pobi,crong,honux"})
     void createCars(String carsName) {
         Map<Integer, Car> carMap;
-        carMap = racingCarGame.createCars(carsName);
+        carMap = racingCarGame.createCars(carsName.split(RexFormatConstants.CARS_NAME_REX_FORMAT_TEXT.getFormat()));
         assertThat(carMap).hasSize(3);
-    }
-
-    @DisplayName("자동차를 움직일 수 있는지 확인")
-    @ParameterizedTest
-    @ValueSource(ints = {3, 4})
-    void canMoveCar(int random) {
-        boolean canMove = racingCarGame.canMove(random);
-        if (random > 4) {
-            assertThat(canMove).isTrue();
-        }
-        assertThat(canMove).isFalse();
     }
 
 }
