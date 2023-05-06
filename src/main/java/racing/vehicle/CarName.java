@@ -28,7 +28,7 @@ public class CarName {
     }
 
     private void validateCarName(String name) {
-        if (name.isBlank()) {
+        if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("Car name must be non-blank value");
         }
 
