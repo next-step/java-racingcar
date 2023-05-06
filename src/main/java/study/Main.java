@@ -1,5 +1,7 @@
-package study.carrace;
+package study;
 
+import study.carrace.CarRace;
+import study.carrace.CarRaceImpl;
 import study.util.InputImpl;
 import study.util.RandomizerImpl;
 import study.util.ResultImpl;
