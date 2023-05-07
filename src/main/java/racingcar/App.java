@@ -18,7 +18,6 @@ public class App {
         RacingGame racingGame = new RacingGame(
                 trial,
                 names,
-                new WinnerDecisionByBigLocations(),
                 new RandomGenerator(0, 9));
 
         for (int t = 0; t < trial; t++) {

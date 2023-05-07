@@ -39,4 +39,8 @@ public class Car {
     public Position maxLocation(Position criteria) {
         return this.position.max(criteria);
     }
+
+    public boolean isAt(Position location) {
+        return this.position.equals(location);
+    }
 }

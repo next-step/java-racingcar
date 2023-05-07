@@ -1,6 +1,7 @@
 package racingcar.game;
 
 import racingcar.car.Car;
+import racingcar.car.RacingCars;
 import racingcar.car.Winners;
 import racingcar.game.dto.CarDto;
 import racingcar.game.dto.CarsDto;
@@ -13,31 +14,26 @@ import java.util.stream.Collectors;
 public class RacingGame {
 
     private final Trial numbOfTrial;
-    private final WinnerDecisionStrategy winnerDecisionStrategy;
-    private final RandomGenerator randomGenerator;
-    private final List<Car> cars;
-
+    private final RacingCars cars;
     private Winners winners  = Winners.emptyWinners();
 
     public RacingGame(int numbOfTrial,
                       List<String> carNames,
-                      WinnerDecisionStrategy winnerDecisionStrategy,
                       RandomGenerator randomGenerator) {
 
         this.numbOfTrial = new Trial(numbOfTrial);
-        this.cars = makeRacingCars(carNames);
-        this.winnerDecisionStrategy = winnerDecisionStrategy;
-        this.randomGenerator = randomGenerator;
+        this.cars = makeRacingCars(carNames, randomGenerator);
     }
 
-    private List<Car> makeRacingCars(List<String> names) {
+    private RacingCars makeRacingCars(List<String> names,
+                                      RandomGenerator randomGenerator) {
         List<Car> cars = new ArrayList<>();
 
         for (String name : names) {
             cars.add(new Car(name));
         }
 
-        return cars;
+        return new RacingCars(cars, randomGenerator);
     }
 
     public CarsDto runOnce() {
@@ -47,13 +43,11 @@ public class RacingGame {
         numbOfTrial.decrease();
         moveCars();
 
-        return convertToDTO(this.cars);
+        return convertToDTO(this.cars.all());
     }
 
     private void moveCars() {
-        for (Car car : this.cars) {
-            car.move(randomGenerator.generate());
-        }
+        this.cars.moveCars();
     }
 
     public CarsDto winnerCars() {
@@ -69,7 +63,7 @@ public class RacingGame {
     }
 
     private void pickWinners() {
-        this.winners = winnerDecisionStrategy.decideWinners(this.cars);
+        this.winners = new Winners(this.cars.findCarsAt(this.cars.maxLocation()));
     }
 
     private CarsDto convertToDTO(List<Car> cars) {

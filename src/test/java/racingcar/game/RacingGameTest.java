@@ -23,7 +23,6 @@ class RacingGameTest {
     void setUp() {
         game = new RacingGame(numbOfTrial,
                 List.of(racingCarName),
-                new WinnerDecisionByBigLocations(),
                 new RandomGenerator(0, 9));
     }
 
