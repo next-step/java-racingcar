@@ -1,8 +1,11 @@
-package racinggame.vo;
+package racinggame.domain;
 
+import racinggame.common.util.RandomUtils;
 import racinggame.exception.OverCarNameLengthException;
 
 public class Car {
+
+    private static final int MINIMUM_NUMBER_FOR_MOVE = 4;
 
     private final int number;
 
@@ -17,7 +20,13 @@ public class Car {
     }
 
     public void move() {
-        moveCount++;
+        if (canMove(RandomUtils.generate())) {
+            moveCount++;
+        }
+    }
+
+    boolean canMove(int randomValue) {
+        return randomValue > MINIMUM_NUMBER_FOR_MOVE;
     }
 
     public int getNumber() {
