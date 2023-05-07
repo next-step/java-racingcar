@@ -42,6 +42,10 @@ class CarTest {
                     .is(moved(beforeLocation));
         }
 
+        private Condition<Integer> moved(int beforeLocation) {
+            return new Condition<>(position -> position.equals(beforeLocation + 1), "move forward");
+        }
+
         @Test
         void 전달된_값이_4미만인_경우_원래위치에_머무른다() {
             Car car = new Car(defaultName);
@@ -55,10 +59,6 @@ class CarTest {
 
             Assertions.assertThat(currentLocation)
                     .is(stayed(beforeLocation));
-        }
-
-        private Condition<Integer> moved(int beforeLocation) {
-            return new Condition<>(position -> position.equals(beforeLocation + 1), "move forward");
         }
 
         private Condition<Integer> stayed(int beforeLocation) {
