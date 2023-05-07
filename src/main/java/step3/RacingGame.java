@@ -17,6 +17,7 @@ public class RacingGame {
         makeCars(numOfCar);
         for (int i = 0; i < numOfTrial; i++) {
             race();
+            resultView.newLine();
         }
     }
 
