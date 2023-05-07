@@ -10,12 +10,12 @@ public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static int getCarCount() {
-        System.out.println(HOW_MANY_CARS);
+        InputQuestion.print(HOW_MANY_CARS);
         return scanner.nextInt();
     }
 
     public static int getTryCount() {
-        System.out.println(HOW_MANY_TIMES);
+        InputQuestion.print(HOW_MANY_TIMES);
         return scanner.nextInt();
     }
 

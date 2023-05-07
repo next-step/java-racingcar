@@ -2,7 +2,6 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Racing {
 
@@ -23,9 +22,7 @@ public class Racing {
 
     private static void moveRacingCars(List<Car> cars) {
         for (final Car car : cars) {
-            if (canMove()) {
-                car.move();
-            }
+            car.move(new MoveStrategy());
         }
     }
 
@@ -35,12 +32,5 @@ public class Racing {
             cars.add(Car.create());
         }
         return cars;
-    }
-
-    public static boolean canMove() {
-        Random random = new Random();
-        final int i = random.nextInt(10);
-
-        return i >= 4;
     }
 }

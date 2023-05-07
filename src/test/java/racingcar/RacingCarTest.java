@@ -2,6 +2,8 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,19 +32,34 @@ public class RacingCarTest {
     }
 
     @Test
-    @DisplayName("자동차의 moveCount 를 증가시킬 수 있다.")
-    public void canMove() {
-        final int number = 3;
-        final List<Car> cars = createCars(number);
-
-        for (final Car car : cars) {
-            if (Racing.canMove()) {
-                car.move();
-            }
-            System.out.println(car.getMoveCount());
-        }
-
+    @DisplayName("0부터 9 사이 숫자가 아니면 에러를 발생시킨다.")
+    public void 랜덤값_에러() {
+        assertThatThrownBy(() -> new MoveStrategy(10))
+                .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("4 미만은는 전진할 수 없다.")
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    public void 멈춤(int numbers) {
+        final Car car = Car.create();
+        MoveStrategy random = new MoveStrategy(numbers);
+        car.move(random);
+
+        assertThat(car.position()).isEqualTo(0);
+    }
+
+    @DisplayName("4 이상은 전진할 수 있다.")
+    @ParameterizedTest
+    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
+    public void 전진(int numbers) {
+        final Car car = Car.create();
+        MoveStrategy random = new MoveStrategy(numbers);
+        car.move(random);
+
+        assertThat(car.position()).isEqualTo(1);
+    }
+
 
     private List<Car> createCars(final int number) {
         List<Car> cars = new ArrayList<>();

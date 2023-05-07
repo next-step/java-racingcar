@@ -2,28 +2,25 @@ package racingcar;
 
 public class Car {
 
-    private int moveCount;
+    private Position position;
 
-    private Car() {
+
+    public Car(int moveCount) {
+        this.position = new Position(moveCount);
     }
 
-    private Car(int moveCount) {
-        this.moveCount = moveCount;
-    }
-
-    public int getMoveCount() {
-        return moveCount;
-    }
-
-    public void move() {
-        this.moveCount++;
-    }
 
     public static Car create() {
         return new Car(0);
     }
 
-    public static Car of(int moveCount) {
-        return new Car(moveCount);
+    public void move(MoveStrategy random) {
+        if (random.isMovable()) {
+            this.position.increase();
+        }
+    }
+
+    public int position() {
+        return this.position.getMoveCount();
     }
 }

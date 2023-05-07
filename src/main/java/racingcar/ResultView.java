@@ -7,7 +7,7 @@ public class ResultView {
 
     public static void racingView(List<Car> cars) {
         for (final Car car : cars) {
-            move(car.getMoveCount());
+            move(car.position());
             next();
         }
         next();
