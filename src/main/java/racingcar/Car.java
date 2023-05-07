@@ -50,4 +50,8 @@ public class Car {
     public String getName() {
         return name;
     }
+
+    public List<Integer> getPositions() {
+        return positions;
+    }
 }

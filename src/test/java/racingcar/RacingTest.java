@@ -6,6 +6,8 @@ import java.io.ByteArrayInputStream;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.*;
+
 public class RacingTest {
 
     public InputView inputView = new InputView();
@@ -14,7 +16,7 @@ public class RacingTest {
 
 
     @Test
-    void 전부_합친_테스트() {
+    void 레이싱_전체_테스트() {
         // Given
         String testInput = "pobi,crong,honux\n5\n";
         ByteArrayInputStream in = new ByteArrayInputStream(testInput.getBytes());
@@ -59,5 +61,15 @@ public class RacingTest {
 
         // Then
         resultView.displayResults(cars);
+    }
+
+    @Test
+    void Car_객체_테스트() {
+        // Given
+        Car car = new Car("pobi", Arrays.asList(1, 2, 3, 4, 5));
+
+        // Then
+        assertThat(car.getName()).isEqualTo("pobi");
+        assertThat(car.getPositions()).isEqualTo(Arrays.asList(1, 2, 3, 4, 5));
     }
 }
