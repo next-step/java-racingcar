@@ -81,7 +81,7 @@ class CarTest {
         void 현재까지_자동차들의_최대_위치값이_0인경우_0인위치의_자동차는_우승자다() {
             Car carLocatedOnZero = new Car(defaultName);
 
-            Assertions.assertThat(carLocatedOnZero.isWinner(0))
+            Assertions.assertThat(carLocatedOnZero.isWinner(new Position(0)))
                     .isTrue();
         }
     }

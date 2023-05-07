@@ -5,7 +5,7 @@ import racingcar.random.RandNum;
 public class Car {
 
     private final Name name;
-    private final Position position;
+    private Position position;
 
     public Car(String name) {
         this(new Name(name), new Position());
@@ -29,14 +29,14 @@ public class Car {
     }
 
     public void move(RandNum randNum) {
-        position.move(randNum);
+        this.position = position.move(randNum);
     }
 
-    public boolean isWinner(int maxLocation) {
+    public boolean isWinner(Position maxLocation) {
         return this.position.isGreaterThan(maxLocation);
     }
 
-    public int maxLocation(int criteria) {
+    public Position maxLocation(Position criteria) {
         return this.position.max(criteria);
     }
 }

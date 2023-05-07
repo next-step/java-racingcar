@@ -1,6 +1,7 @@
 package racingcar.game;
 
 import racingcar.car.Car;
+import racingcar.car.Position;
 import racingcar.car.Winners;
 
 import java.util.ArrayList;
@@ -15,26 +16,26 @@ public class WinnerDecisionByBigLocations implements WinnerDecisionStrategy {
             return new Winners(Collections.emptyList());
         }
 
-        int maxLocation = maxLocation(allParticipants);
+        Position maxLocation = maxLocation(allParticipants);
 
         return createWinners(allParticipants, maxLocation);
     }
 
-    private int maxLocation(List<Car> allParticipants) {
-        int maxLocation = 0;
+    private Position maxLocation(List<Car> allParticipants) {
+        Position maxPosition = new Position(0);
 
         for (Car car : allParticipants) {
-            maxLocation = car.maxLocation(maxLocation);
+            maxPosition = car.maxLocation(maxPosition);
         }
 
-        return maxLocation;
+        return maxPosition;
     }
 
-    private Winners createWinners(List<Car> cars, int maxLocation) {
+    private Winners createWinners(List<Car> cars, Position maxPosition) {
         List<Car> winners = new ArrayList<>();
 
         for (Car car : cars) {
-            if (car.isWinner(maxLocation)) {
+            if (car.isWinner(maxPosition)) {
                 winners.add(car);
             }
         }

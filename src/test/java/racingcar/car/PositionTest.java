@@ -13,8 +13,9 @@ class PositionTest {
     @Test
     void 기본_생성자로_생성할경우_초기위치는_0이다() {
         Position position = new Position();
+        Position zeroPosition = new Position(0);
 
-        Assertions.assertThat(position.getLocation()).isZero();
+        Assertions.assertThat(position).isEqualTo(zeroPosition);
     }
 
     @Nested
@@ -22,11 +23,12 @@ class PositionTest {
         @Test
         void 자신의_위치와_비교해_max_를_리턴한다() {
             int carLocation = 3;
+            Position carPosition = new Position(carLocation);
 
             Car car = new Car(defaultName, carLocation);
-            int max = car.maxLocation(carLocation - 1);
+            Position max = car.maxLocation(new Position(carLocation - 1));
 
-            assertThat(max).isEqualTo(carLocation);
+            assertThat(max).isEqualTo(carPosition);
         }
     }
 
@@ -40,8 +42,8 @@ class PositionTest {
 
     @Test
     void 현재위치가_주어진값보다_큰경우_true를_리턴한다() {
-        int smallPosition = 3;
-        Position position = new Position(smallPosition + 1);
+        Position smallPosition = new Position(3);
+        Position position = new Position(4);
 
         assertThat(position.isGreaterThan(smallPosition)).isTrue();
     }
@@ -50,13 +52,12 @@ class PositionTest {
     void 특정수보다_큰_값을_인자_로_move_호출시_위치를_1_증가시킨다() {
         int arg = 5;
         int initPosition = 1;
-        int expectedLocation = initPosition + 1;
 
         Position position = new Position(initPosition);
-        Position expectedPosition = new Position(expectedLocation);
+        Position expectedPosition = new Position(initPosition + 1);
 
-        position.move(new RandNum(arg));
+        position = position.move(new RandNum(arg));
 
-        Assertions.assertThat(position.getLocation()).isEqualTo(expectedLocation);
+        Assertions.assertThat(position).isEqualTo(expectedPosition);
     }
 }
