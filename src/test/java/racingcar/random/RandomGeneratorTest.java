@@ -10,11 +10,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RandomGeneratorTest {
 
     @Test
-    void 최소값_이상의_랜덤값을_생성한다() {
+    void 생성시_전달된_최소값_이상의_랜덤값을_생성한다() {
         int min = 0;
         int max = 9;
 
-        RandNum res = RandomGenerator.generate(min, max);
+        RandomGenerator randomGenerator = new RandomGenerator(min, max);
+        RandNum res = randomGenerator.generate();
 
         assertThat(res.isGreaterThan(min)).isTrue();
     }

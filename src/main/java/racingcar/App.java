@@ -2,6 +2,7 @@ package racingcar;
 
 import racingcar.game.RacingGame;
 import racingcar.game.WinnerDecisionByBigLocations;
+import racingcar.random.RandomGenerator;
 import racingcar.view.ConsoleView;
 import racingcar.view.NameParser;
 
@@ -17,7 +18,8 @@ public class App {
         RacingGame racingGame = new RacingGame(
                 trial,
                 names,
-                new WinnerDecisionByBigLocations());
+                new WinnerDecisionByBigLocations(),
+                new RandomGenerator(0, 9));
 
         for (int t = 0; t < trial; t++) {
             consoleView.printCarsLocation(racingGame.runOnce());

@@ -2,16 +2,20 @@ package racingcar.random;
 
 import java.util.Random;
 
-public final class RandomGenerator {
+public class RandomGenerator {
+    private final int randomMin;
+    private final int randomMax;
 
-    private RandomGenerator() {
+    public RandomGenerator(int randomMin, int randomMax) {
+        this.randomMin = randomMin;
+        this.randomMax = randomMax;
     }
 
-    public static RandNum generate(int min, int max) {
+    public RandNum generate() {
         Random random = new Random();
 
-        int range = max - min + 1;
+        int range = randomMax - randomMin + 1;
 
-        return new RandNum(random.nextInt(range) + min);
+        return new RandNum(random.nextInt(range) + randomMin);
     }
 }

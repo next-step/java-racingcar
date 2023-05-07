@@ -4,25 +4,30 @@ import racingcar.car.Car;
 import racingcar.car.Winners;
 import racingcar.game.dto.CarDto;
 import racingcar.game.dto.CarsDto;
+import racingcar.random.RandomGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingGame {
+
     private final Trial numbOfTrial;
     private final WinnerDecisionStrategy winnerDecisionStrategy;
+    private final RandomGenerator randomGenerator;
     private final List<Car> cars;
 
     private Winners winners  = Winners.emptyWinners();
 
     public RacingGame(int numbOfTrial,
                       List<String> carNames,
-                      WinnerDecisionStrategy winnerDecisionStrategy) {
+                      WinnerDecisionStrategy winnerDecisionStrategy,
+                      RandomGenerator randomGenerator) {
 
         this.numbOfTrial = new Trial(numbOfTrial);
         this.cars = makeRacingCars(carNames);
         this.winnerDecisionStrategy = winnerDecisionStrategy;
+        this.randomGenerator = randomGenerator;
     }
 
     private List<Car> makeRacingCars(List<String> names) {
@@ -47,7 +52,7 @@ public class RacingGame {
 
     private void moveCars() {
         for (Car car : this.cars) {
-            car.move();
+            car.move(randomGenerator.generate());
         }
     }
 

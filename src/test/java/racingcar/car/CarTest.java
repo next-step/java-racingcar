@@ -6,8 +6,8 @@ import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import racingcar.random.RandNum;
 
-import static org.assertj.core.api.Assertions.anyOf;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayNameGeneration(ReplaceUnderscores.class)
@@ -26,19 +26,41 @@ class CarTest {
     @Nested
     class move_메소드는 {
         @Test
-        void 내부적으로_생성되는_랜덤값에_따라_1_전진하거나_기존위치에_머무른다() {
+        void 전달된_값이_4이상인_경우_1_전진한다() {
             Car car = new Car(defaultName);
 
             int beforeLocation = car.location().getLocation();
+            int passedValue = 4;
 
-            car.move();
+            car.move(new RandNum(passedValue));
 
             int currentLocation = car.location().getLocation();
-            Condition<Integer> moved = new Condition(position -> position.equals(beforeLocation + 1), "move forward");
-            Condition<Integer> stay = new Condition(position -> position.equals(beforeLocation), "stay");
 
             Assertions.assertThat(currentLocation)
-                    .is(anyOf(moved, stay));
+                    .is(moved(beforeLocation));
+        }
+
+        @Test
+        void 전달된_값이_4미만인_경우_원래위치에_머무른다() {
+            Car car = new Car(defaultName);
+
+            int beforeLocation = car.location().getLocation();
+            int passedValue = 3;
+
+            car.move(new RandNum(passedValue));
+
+            int currentLocation = car.location().getLocation();
+
+            Assertions.assertThat(currentLocation)
+                    .is(stayed(beforeLocation));
+        }
+
+        private Condition<Integer> moved(int beforeLocation) {
+            return new Condition<>(position -> position.equals(beforeLocation + 1), "move forward");
+        }
+
+        private Condition<Integer> stayed(int beforeLocation) {
+            return new Condition<>(position -> position.equals(beforeLocation), "stay");
         }
     }
 
