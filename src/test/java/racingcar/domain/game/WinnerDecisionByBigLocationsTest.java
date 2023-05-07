@@ -1,10 +1,12 @@
-package racingcar.game;
+package racingcar.domain.game;
 
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
-import racingcar.car.Car;
-import racingcar.car.Winners;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.Winners;
+import racingcar.domain.game.WinnerDecisionByBigLocations;
+import racingcar.domain.game.WinnerDecisionStrategy;
 
 import java.util.Arrays;
 import java.util.List;

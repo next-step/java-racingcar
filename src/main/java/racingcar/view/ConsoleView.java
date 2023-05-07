@@ -1,8 +1,8 @@
 package racingcar.view;
 
 import calculator.StringParser;
-import racingcar.game.dto.CarDto;
-import racingcar.game.dto.CarsDto;
+import racingcar.domain.game.dto.CarDto;
+import racingcar.domain.game.dto.CarsDto;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;

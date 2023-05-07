@@ -1,12 +1,14 @@
-package racingcar.game;
+package racingcar.domain.game;
 
 import org.assertj.core.api.Assertions;
 import org.assertj.core.api.Condition;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.car.Car;
-import racingcar.game.dto.CarDto;
-import racingcar.random.RandomGenerator;
+import racingcar.domain.car.Car;
+import racingcar.domain.game.GameException;
+import racingcar.domain.game.RacingGame;
+import racingcar.domain.game.dto.CarDto;
+import racingcar.domain.random.RandomGenerator;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package racingcar.game;
+package racingcar.domain.game;
 
 public class Trial {
     private int trial;

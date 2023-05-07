@@ -1,14 +1,13 @@
 package racingcar;
 
-import racingcar.game.RacingGame;
-import racingcar.game.WinnerDecisionByBigLocations;
-import racingcar.random.RandomGenerator;
+import racingcar.domain.game.RacingGame;
+import racingcar.domain.random.RandomGenerator;
 import racingcar.view.ConsoleView;
 import racingcar.view.NameParser;
 
 import java.util.List;
 
-public class App {
+public class RacingGameController {
     public static void main(String[] args) {
         ConsoleView consoleView = new ConsoleView(new NameParser());
 

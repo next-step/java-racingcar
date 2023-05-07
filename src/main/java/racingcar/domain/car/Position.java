@@ -1,6 +1,6 @@
-package racingcar.car;
+package racingcar.domain.car;
 
-import racingcar.random.RandNum;
+import racingcar.domain.random.RandNum;
 
 public class Position {
     private final static int DEFAULT_LOCATION = 0;

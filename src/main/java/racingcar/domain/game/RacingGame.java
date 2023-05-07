@@ -1,11 +1,11 @@
-package racingcar.game;
+package racingcar.domain.game;
 
-import racingcar.car.Car;
-import racingcar.car.RacingCars;
-import racingcar.car.Winners;
-import racingcar.game.dto.CarDto;
-import racingcar.game.dto.CarsDto;
-import racingcar.random.RandomGenerator;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.RacingCars;
+import racingcar.domain.car.Winners;
+import racingcar.domain.game.dto.CarDto;
+import racingcar.domain.game.dto.CarsDto;
+import racingcar.domain.random.RandomGenerator;
 
 import java.util.ArrayList;
 import java.util.List;

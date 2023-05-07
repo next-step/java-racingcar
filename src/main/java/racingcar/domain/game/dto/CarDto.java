@@ -1,6 +1,6 @@
-package racingcar.game.dto;
+package racingcar.domain.game.dto;
 
-import racingcar.car.Car;
+import racingcar.domain.car.Car;
 
 public class CarDto {
     private final int location;

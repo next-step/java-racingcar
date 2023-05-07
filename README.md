@@ -52,3 +52,7 @@
   - 자동차들을 관리 
 - Winners :
   - RacingGame 의 우승자 자동차들을 관리
+
+## 5단계 과제
+- [x] 패키지 분리 (domain, view)
+- [x] 의존성 방향 view 패키지 -> domain 패키지로만 존재하도록 작성
