@@ -6,7 +6,7 @@ import java.util.List;
 public class RacingGame {
     private static final InputView inputView = new InputView();
     private static final ResultView resultView = new ResultView();
-    public static final List<Car> carList = new ArrayList<>();
+    protected static List<Car> carList;
 
     public static void main(String[] args) {
         int numOfCar = inputView.getNumOfCar();
@@ -22,6 +22,7 @@ public class RacingGame {
     }
 
     public static void makeCars(int numOfCar) {
+        carList = new ArrayList<>();
         for (int i = 0; i < numOfCar; i++) {
             carList.add(new Car());
         }
