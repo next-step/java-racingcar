@@ -20,7 +20,6 @@ public class RacingGame {
     }
 
     public static void makeCars(int numOfCar) {
-        carList = new ArrayList<>();
         for (int i = 0; i < numOfCar; i++) {
             carList.add(new Car());
         }
