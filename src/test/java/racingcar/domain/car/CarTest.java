@@ -1,13 +1,10 @@
 package racingcar.domain.car;
 
 import org.assertj.core.api.Assertions;
-import org.assertj.core.api.Condition;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.car.Car;
-import racingcar.domain.car.Position;
 import racingcar.domain.random.RandNum;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -30,39 +27,29 @@ class CarTest {
         @Test
         void 전달된_값이_4이상인_경우_1_전진한다() {
             Car car = new Car(defaultName);
-
-            int beforeLocation = car.location().getLocation();
+            Position movedLocation = new Position(car.location().getLocation() + 1);
             int passedValue = 4;
 
             car.move(new RandNum(passedValue));
 
-            int currentLocation = car.location().getLocation();
+            Position currentLocation = car.location();
 
             Assertions.assertThat(currentLocation)
-                    .is(moved(beforeLocation));
-        }
-
-        private Condition<Integer> moved(int beforeLocation) {
-            return new Condition<>(position -> position.equals(beforeLocation + 1), "move forward");
+                    .isEqualTo(movedLocation);
         }
 
         @Test
         void 전달된_값이_4미만인_경우_원래위치에_머무른다() {
             Car car = new Car(defaultName);
-
-            int beforeLocation = car.location().getLocation();
+            Position beforeLocation = car.location();
             int passedValue = 3;
 
             car.move(new RandNum(passedValue));
 
-            int currentLocation = car.location().getLocation();
+            Position currentLocation = car.location();
 
             Assertions.assertThat(currentLocation)
-                    .is(stayed(beforeLocation));
-        }
-
-        private Condition<Integer> stayed(int beforeLocation) {
-            return new Condition<>(position -> position.equals(beforeLocation), "stay");
+                    .isEqualTo(beforeLocation);
         }
     }
 
