@@ -15,7 +15,6 @@ public class RacingGame {
 
     private final Trial numbOfTrial;
     private final RacingCars cars;
-    private Winners winners  = Winners.emptyWinners();
 
     public RacingGame(int numbOfTrial,
                       List<String> carNames,
@@ -51,19 +50,9 @@ public class RacingGame {
     }
 
     public CarsDto winnerCars() {
-        if (!isEnded()) {
-            throw new GameException("게임이 끝나기 전까지 우승자를 알 수 없습니다");
-        }
+        List<Car> winners = this.cars.findCarsAt(this.cars.maxLocation());
 
-        if (this.winners.isEmpty()) {
-            pickWinners();
-        }
-
-        return convertToDTO(this.winners.winners());
-    }
-
-    private void pickWinners() {
-        this.winners = new Winners(this.cars.findCarsAt(this.cars.maxLocation()));
+        return convertToDTO(winners);
     }
 
     private CarsDto convertToDTO(List<Car> cars) {

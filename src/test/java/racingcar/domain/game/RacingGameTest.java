@@ -40,7 +40,7 @@ class RacingGameTest {
 
     @Test
     void 시도횟수_만큼_게임을_진행하면_더이상_진행할수없다() {
-        runGameUntilEnd();
+        runGameNumberOf(this.numbOfTrial);
 
         Assertions.assertThatExceptionOfType(GameException.class)
                 .isThrownBy(() -> game.runOnce());
@@ -56,24 +56,14 @@ class RacingGameTest {
 
     @Test
     void 종료된_게임인지_알려준다() {
-        runGameUntilEnd();
+        runGameNumberOf(this.numbOfTrial);
 
         Assertions.assertThat(game.isEnded()).isTrue();
     }
 
     @Test
-    void 게임이_종료되기_전에는_우승자를_알려주지_않는다() {
-        for (int i = 0; i < numbOfTrial - 1; i++) {
-            game.runOnce();
-        }
-
-        Assertions.assertThatThrownBy(() -> game.winnerCars())
-                .hasMessage("게임이 끝나기 전까지 우승자를 알 수 없습니다");
-    }
-
-    @Test
-    void 게임_종료_후_우승자를_알려준다() {
-        runGameUntilEnd();
+    void 현재까지의_우승자를_알려준다() {
+        runGameNumberOf(this.numbOfTrial - 1);
 
         Assertions.assertThat(game.winnerCars().getCars())
                 .haveAtLeastOne(carNamed(racingCarName));
@@ -90,8 +80,10 @@ class RacingGameTest {
         Assertions.assertThat(collectionExpectedToBeEmpty).isEmpty();
     }
 
-    private void runGameUntilEnd() {
-        for (int i = 0; i < this.numbOfTrial; i++) {
+    private void runGameNumberOf(int n) {
+        int trial = this.numbOfTrial > n ? n : this.numbOfTrial;
+
+        for (int i = 0; i < trial; i++) {
             game.runOnce();
         }
     }
