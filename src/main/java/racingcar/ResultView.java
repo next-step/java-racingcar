@@ -6,19 +6,7 @@ import java.util.List;
 public class ResultView {
 
     public void displayResults(List<Car> cars) {
-        int trialCount = cars.get(0).getTrialCount();
-
-        for (int i = 0; i < trialCount; i++) {
-            displayColumn(cars, i);
-            System.out.println();
-        }
-    }
-
-    private void displayColumn(List<Car> cars, int columnIndex) {
-        for (Car car : cars) {
-            System.out.printf("%s : ", car.getName());
-            System.out.println(getPositionLine(car, columnIndex));
-        }
+        System.out.println(getResults(cars));
     }
 
     public String getResults(List<Car> cars) {

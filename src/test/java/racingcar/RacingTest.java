@@ -34,8 +34,12 @@ public class RacingTest {
         ByteArrayInputStream in = new ByteArrayInputStream(testInput.getBytes());
         System.setIn(in);
 
-        // Then
+        // When
         inputView.init();
+
+        // Then
+        assertThat(inputView.getCarNames()).isEqualTo("pobi,crong,honux");
+        assertThat(inputView.getTrialCount()).isEqualTo(5);
     }
 
     @Test
@@ -52,15 +56,37 @@ public class RacingTest {
     @Test
     void 자동차_출력하기() {
         // Given
-
         List<Car> cars = Arrays.asList(
                 new Car("pobi", Arrays.asList(1, 2, 3, 4, 4)),
                 new Car("crong", Arrays.asList(1, 1, 2, 3, 4)),
                 new Car("honux", Arrays.asList(1, 2, 3, 4, 5))
         );
+        // When
+        String results = resultView.getResults(cars);
+        String lineSeparator = System.lineSeparator();
 
         // Then
-        resultView.displayResults(cars);
+        assertThat(results).isEqualTo(
+                "pobi : -"  + lineSeparator +
+                "crong : -"         + lineSeparator +
+                "honux : -"         + lineSeparator +
+                ""                  + lineSeparator +
+                "pobi : --"         + lineSeparator +
+                "crong : -"         + lineSeparator +
+                "honux : --"        + lineSeparator +
+                ""                  + lineSeparator +
+                "pobi : ---"        + lineSeparator +
+                "crong : --"        + lineSeparator +
+                "honux : ---"       + lineSeparator +
+                ""                  + lineSeparator +
+                "pobi : ----"       + lineSeparator +
+                "crong : ---"       + lineSeparator +
+                "honux : ----"      + lineSeparator +
+                ""                  + lineSeparator +
+                "pobi : ----"       + lineSeparator +
+                "crong : ----"      + lineSeparator +
+                "honux : -----"     + lineSeparator +
+                ""                  + lineSeparator);
     }
 
     @Test

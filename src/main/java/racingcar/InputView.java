@@ -3,15 +3,15 @@ package racingcar;
 import java.util.Scanner;
 
 public class InputView {
+    private String carNames;
+    private int trialCount;
+
 
     public Racing init() {
         Scanner scanner = new Scanner(System.in);
 
-        String carNames = getCarNames(scanner);
-        Integer trialCount = getTrialCount(scanner);
-
-        System.out.println("Car Names : " + carNames);
-        System.out.println("Trial Count : " + trialCount);
+        carNames = getCarNames(scanner);
+        trialCount = getTrialCount(scanner);
 
         return new Racing(carNames, trialCount);
     }
@@ -26,4 +26,11 @@ public class InputView {
         return Integer.parseInt(scanner.nextLine());
     }
 
+    public String getCarNames() {
+        return carNames;
+    }
+
+    public int getTrialCount() {
+        return trialCount;
+    }
 }
