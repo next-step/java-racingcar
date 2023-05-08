@@ -6,12 +6,30 @@ public class Name {
     private final String name;
 
     public Name(String name) {
-        checkNameLen(name);
+        checkValidName(name);
 
         this.name = name;
     }
 
-    private void checkNameLen(String name) {
+    private void checkValidName(String name) {
+        checkNull(name);
+        checkBlank(name);
+        checkNameLength(name);
+    }
+
+    private void checkNull(String name) {
+        if (this.name == null) {
+            throw new IllegalArgumentException("자동차 이름은 Null이 될 수 없습니다.");
+        }
+    }
+
+    private void checkBlank(String name) {
+        if (this.name.isEmpty() || this.name.isBlank()) {
+            throw new IllegalArgumentException("자동차 이름은 비어있는 문자열이 올 수 없습니다");
+        }
+    }
+
+    private void checkNameLength(String name) {
         if (name.length() > MAX_NAME_LEN) {
             throw new IllegalArgumentException("자동차 이름은 5글자를 초과할 수 없습니다.");
         }
