@@ -34,8 +34,8 @@ public class RacingCars {
     public List<Car> findCarsAt(Position position) {
         List<Car> cars = new ArrayList<>();
 
-        for(Car car : this.cars) {
-            if(car.isAt(position)) {
+        for (Car car : this.cars) {
+            if (car.isAt(position)) {
                 cars.add(car);
             }
         }
