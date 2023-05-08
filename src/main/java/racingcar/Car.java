@@ -38,6 +38,13 @@ public class Car {
         return positions.get(index);
     }
 
+    public int getLastPosition() {
+        if(positions.isEmpty())
+            return -1;
+
+        return positions.get(positions.size() - 1);
+    }
+
     private void addPosition(int position) {
         positions.add(position);
     }

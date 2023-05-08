@@ -72,4 +72,17 @@ public class RacingTest {
         assertThat(car.getName()).isEqualTo("pobi");
         assertThat(car.getPositions()).isEqualTo(Arrays.asList(1, 2, 3, 4, 5));
     }
+
+    @Test
+    void 우승자_출력하기() {
+        // Given
+        List<Car> cars = Arrays.asList(
+                new Car("pobi", Arrays.asList(1, 2, 3, 4, 4)),
+                new Car("crong", Arrays.asList(1, 1, 2, 3, 4)),
+                new Car("honux", Arrays.asList(1, 2, 3, 3, 3))
+        );
+
+        // Then
+        assertThat(resultView.getWinnerMessage(cars)).isEqualTo("pobi, crong가 최종 우승했습니다.");
+    }
 }
