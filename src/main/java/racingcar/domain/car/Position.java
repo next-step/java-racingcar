@@ -20,11 +20,11 @@ public class Position {
     }
 
     public boolean isGreaterThan(Position location) {
-        return this.location >= location.getLocation();
+        return this.location >= location.value();
     }
 
     public Position max(Position criteria) {
-        return new Position(Math.max(this.location, criteria.getLocation()));
+        return new Position(Math.max(this.location, criteria.value()));
     }
 
     public Position move(RandNum randNum) {
@@ -35,7 +35,7 @@ public class Position {
         return this;
     }
 
-    public int getLocation() {
+    public int value() {
         return this.location;
     }
 

@@ -5,8 +5,6 @@ import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.Winners;
-import racingcar.domain.game.WinnerDecisionByBigLocations;
-import racingcar.domain.game.WinnerDecisionStrategy;
 
 import java.util.Arrays;
 import java.util.List;
@@ -55,7 +53,7 @@ class WinnerDecisionByBigLocationsTest {
 
     private List<String> getWinnerNames(Winners winners) {
         return winners.winners().stream()
-                .map(car -> car.name().getName())
+                .map(car -> car.name().value())
                 .collect(Collectors.toList());
     }
 }

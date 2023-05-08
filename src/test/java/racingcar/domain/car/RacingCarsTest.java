@@ -3,9 +3,6 @@ package racingcar.domain.car;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.car.Car;
-import racingcar.domain.car.Position;
-import racingcar.domain.car.RacingCars;
 import racingcar.domain.random.RandomGenerator;
 
 import java.util.Arrays;
@@ -37,7 +34,7 @@ public class RacingCarsTest {
         List<Car> winners = cars.findCarsAt(new Position(2));
 
         Assertions.assertThat(winners)
-                .extracting(car -> car.name().getName())
+                .extracting(car -> car.name().value())
                 .contains("def", "ff");
     }
 

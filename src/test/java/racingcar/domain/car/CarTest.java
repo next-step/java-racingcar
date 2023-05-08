@@ -17,7 +17,7 @@ class CarTest {
     void 자동차의_초기_위치값은_0이다() {
         Car car = new Car(defaultName);
 
-        int location = car.location().getLocation();
+        int location = car.location().value();
 
         assertThat(location).isZero();
     }
@@ -27,7 +27,7 @@ class CarTest {
         @Test
         void 전달된_값이_4이상인_경우_1_전진한다() {
             Car car = new Car(defaultName);
-            Position movedLocation = new Position(car.location().getLocation() + 1);
+            Position movedLocation = new Position(car.location().value() + 1);
             int passedValue = 4;
 
             car.move(new RandNum(passedValue));

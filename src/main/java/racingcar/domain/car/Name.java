@@ -35,7 +35,7 @@ public class Name {
         }
     }
 
-    public String getName() {
+    public String value() {
         return this.name;
     }
 

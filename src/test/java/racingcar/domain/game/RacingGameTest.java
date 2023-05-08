@@ -5,8 +5,6 @@ import org.assertj.core.api.Condition;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Car;
-import racingcar.domain.game.GameException;
-import racingcar.domain.game.RacingGame;
 import racingcar.domain.game.dto.CarDto;
 import racingcar.domain.random.RandomGenerator;
 
@@ -86,7 +84,7 @@ class RacingGameTest {
         List<Car> emptyCars = new ArrayList<>();
 
         List<String> collectionExpectedToBeEmpty = emptyCars.stream()
-                .map(car -> car.name().getName())
+                .map(car -> car.name().value())
                 .collect(Collectors.toList());
 
         Assertions.assertThat(collectionExpectedToBeEmpty).isEmpty();
