@@ -3,6 +3,7 @@ package racingcar.domain.car;
 import racingcar.domain.random.RandNum;
 
 public class Car {
+    private final static int MOVE_CRITERIA = 4;
 
     private final Name name;
     private Position position;
@@ -29,7 +30,9 @@ public class Car {
     }
 
     public void move(RandNum randNum) {
-        this.position = position.move(randNum);
+        if (randNum.isGreaterThan(MOVE_CRITERIA)) {
+            this.position = position.move();
+        }
     }
 
     public boolean isWinner(Position maxLocation) {

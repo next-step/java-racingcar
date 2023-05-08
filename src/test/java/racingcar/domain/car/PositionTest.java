@@ -3,9 +3,6 @@ package racingcar.domain.car;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.car.Car;
-import racingcar.domain.car.Position;
-import racingcar.domain.random.RandNum;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -51,14 +48,13 @@ class PositionTest {
     }
 
     @Test
-    void 특정수보다_큰_값을_인자_로_move_호출시_위치를_1_증가시킨다() {
-        int arg = 5;
+    void move_호출시_위치를_1_증가시킨_Position_객체를_리턴한다() {
         int initPosition = 1;
 
         Position position = new Position(initPosition);
         Position expectedPosition = new Position(initPosition + 1);
 
-        position = position.move(new RandNum(arg));
+        position = position.move();
 
         Assertions.assertThat(position).isEqualTo(expectedPosition);
     }

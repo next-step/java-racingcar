@@ -1,15 +1,12 @@
 package racingcar.domain.car;
 
-import racingcar.domain.random.RandNum;
-
 public class Position {
     private final static int DEFAULT_LOCATION = 0;
-    private final static int MOVE_CRITERIA = 4;
 
     private final int location;
 
     public Position(int location) {
-        if(location < DEFAULT_LOCATION) {
+        if (location < DEFAULT_LOCATION) {
             throw new IllegalArgumentException("위치는 0보다 작을 수 없습니다.");
         }
         this.location = location;
@@ -27,12 +24,8 @@ public class Position {
         return new Position(Math.max(this.location, criteria.value()));
     }
 
-    public Position move(RandNum randNum) {
-        if (randNum.isGreaterThan(MOVE_CRITERIA)) {
-            return new Position(this.location + 1);
-        }
-
-        return this;
+    public Position move() {
+        return new Position(this.location + 1);
     }
 
     public int value() {
