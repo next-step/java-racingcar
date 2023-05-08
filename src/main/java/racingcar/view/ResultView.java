@@ -1,25 +1,23 @@
 package racingcar.view;
 
-import racingcar.service.Car;
-
-import java.util.List;
+import racingcar.dto.Cars;
 
 public class ResultView {
 
-    private ResultView(){
+    private ResultView() {
         throw new AssertionError();
     }
 
-    public static void view(List<Car> cars) {
+    public static void view(Cars cars) {
         System.out.println();
         System.out.println("실행 결과");
 
-        if (cars.size() == 0 || cars.get(0).getState().size() == 0) {
+        if (cars.getCars().size() == 0 || cars.getCars().get(0).getState().size() == 0) {
             System.out.println("레이스가 실행되지 않았습니다.");
             return;
         }
 
-        int labs = cars.get(0).getState().size();
+        int labs = cars.getCars().get(0).getState().size();
 
         for (int lab = 0; lab < labs; lab++) {
             viewCarsInLab(cars, lab);
@@ -27,9 +25,9 @@ public class ResultView {
         }
     }
 
-    private static void viewCarsInLab(List<Car> cars, int lab) {
-        for (int car = 0; car < cars.size(); car++) {
-            System.out.println(cars.get(car).getName() + " : " + "-".repeat(cars.get(car).getState().get(lab)));
+    private static void viewCarsInLab(Cars cars, int lab) {
+        for (int car = 0; car < cars.getCars().size(); car++) {
+            System.out.println(cars.getCars().get(car).getName() + " : " + "-".repeat(cars.getCars().get(car).getState().get(lab)));
         }
     }
 

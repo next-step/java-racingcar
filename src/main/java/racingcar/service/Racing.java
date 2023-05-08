@@ -5,33 +5,13 @@ import java.util.List;
 
 import static racingcar.RacingCarApplication.random;
 
-public class Car {
+public class Racing {
     private static final int MOVING_CONDITION = 4;
     private static final int MAX_NUMBER = 10;
-    private String name;
-    private List<Integer> state;
 
-    public Car(String name) {
-        this.name = name;
+    private Racing(){
+        throw new AssertionError();
     }
-
-    public Car(List<Integer> state) {
-        this.state = state;
-    }
-
-    public Car(String name, List<Integer> state) {
-        this.name = name;
-        this.state = state;
-    }
-
-    public List<Integer> getState() {
-        return this.state;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
 
     public static List<Integer> race(int labs) {
         List<Integer> carState = new ArrayList<>();
@@ -72,4 +52,5 @@ public class Car {
 
         return false;
     }
+
 }

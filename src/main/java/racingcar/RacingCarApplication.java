@@ -1,13 +1,14 @@
 package racingcar;
 
 
-import racingcar.service.Car;
+import racingcar.dto.Car;
+import racingcar.dto.Cars;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static racingcar.service.Car.race;
+import static racingcar.service.Racing.race;
 import static racingcar.service.RacingWinner.getWinnerNames;
 import static racingcar.view.InputView.askQuestionCarNames;
 import static racingcar.view.InputView.askQuestionLabs;
@@ -26,8 +27,10 @@ public class RacingCarApplication {
             racingCars.add(new Car(carNames.get(car), race(labs)));
         }
 
-        view(racingCars);
-        viewWinners(getWinnerNames(racingCars));
+        Cars cars = new Cars(racingCars);
+
+        view(cars);
+        viewWinners(getWinnerNames(cars));
     }
 
 }
