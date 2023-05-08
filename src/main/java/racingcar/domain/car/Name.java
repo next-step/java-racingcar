@@ -18,13 +18,13 @@ public class Name {
     }
 
     private void checkNull(String name) {
-        if (this.name == null) {
+        if (name == null) {
             throw new IllegalArgumentException("자동차 이름은 Null이 될 수 없습니다.");
         }
     }
 
     private void checkBlank(String name) {
-        if (this.name.isEmpty() || this.name.isBlank()) {
+        if (name.isEmpty() || name.isBlank()) {
             throw new IllegalArgumentException("자동차 이름은 비어있는 문자열이 올 수 없습니다");
         }
     }
