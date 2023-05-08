@@ -3,23 +3,25 @@ package racingcar.domain.car;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.random.RandomGenerator;
+import racingcar.domain.random.FixedRandomNumberGenerator;
+import racingcar.domain.random.RandomNumberGenerator;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class RacingCarsTest {
     private RacingCars cars;
+    private final int anyNumber = 3;
+    private final RandomNumberGenerator anyRandomGenerator = new FixedRandomNumberGenerator(anyNumber);
 
     @BeforeEach
     void setUp() {
         cars = new RacingCars(
                 Arrays.asList(
-                        new Car("abc", 1),
-                        new Car("def", 2),
-                        new Car("fgc", 1),
-                        new Car("ff", 2)),
-                new RandomGenerator(0,9));
+                        new Car("abc", 1, anyRandomGenerator),
+                        new Car("def", 2, anyRandomGenerator),
+                        new Car("fgc", 1, anyRandomGenerator),
+                        new Car("ff", 2, anyRandomGenerator)));
     }
 
     @Test

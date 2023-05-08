@@ -3,8 +3,6 @@ package racingcar.domain.random;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.random.RandNum;
-import racingcar.domain.random.RandomGenerator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -16,7 +14,7 @@ class RandomGeneratorTest {
         int min = 0;
         int max = 9;
 
-        RandomGenerator randomGenerator = new RandomGenerator(min, max);
+        RangeRandomNumberGenerator randomGenerator = new RangeRandomNumberGenerator(min, max);
         RandNum res = randomGenerator.generate();
 
         assertThat(res.isGreaterThan(min)).isTrue();

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Car;
 import racingcar.domain.game.dto.CarDto;
-import racingcar.domain.random.RandomGenerator;
+import racingcar.domain.random.RangeRandomNumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ class RacingGameTest {
     void setUp() {
         game = new RacingGame(numbOfTrial,
                 List.of(racingCarName),
-                new RandomGenerator(0, 9));
+                new RangeRandomNumberGenerator(0, 9));
     }
 
     @Test

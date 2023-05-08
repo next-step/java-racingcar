@@ -2,10 +2,9 @@ package racingcar.domain.game;
 
 import racingcar.domain.car.Car;
 import racingcar.domain.car.RacingCars;
-import racingcar.domain.car.Winners;
 import racingcar.domain.game.dto.CarDto;
 import racingcar.domain.game.dto.CarsDto;
-import racingcar.domain.random.RandomGenerator;
+import racingcar.domain.random.RandomNumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,21 +17,21 @@ public class RacingGame {
 
     public RacingGame(int numbOfTrial,
                       List<String> carNames,
-                      RandomGenerator randomGenerator) {
+                      RandomNumberGenerator randomGenerator) {
 
         this.numbOfTrial = new Trial(numbOfTrial);
         this.cars = makeRacingCars(carNames, randomGenerator);
     }
 
     private RacingCars makeRacingCars(List<String> names,
-                                      RandomGenerator randomGenerator) {
+                                      RandomNumberGenerator randomGenerator) {
         List<Car> cars = new ArrayList<>();
 
         for (String name : names) {
-            cars.add(new Car(name));
+            cars.add(new Car(name, randomGenerator));
         }
 
-        return new RacingCars(cars, randomGenerator);
+        return new RacingCars(cars);
     }
 
     public CarsDto runOnce() {

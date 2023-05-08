@@ -2,17 +2,18 @@ package racingcar.domain.random;
 
 import java.util.Random;
 
-public class RandomGenerator {
+public class RangeRandomNumberGenerator implements RandomNumberGenerator {
     private final int randomMin;
     private final int randomMax;
     private final Random random;
 
-    public RandomGenerator(int randomMin, int randomMax) {
+    public RangeRandomNumberGenerator(int randomMin, int randomMax) {
         this.randomMin = randomMin;
         this.randomMax = randomMax;
         this.random = new Random();
     }
 
+    @Override
     public RandNum generate() {
         int range = randomMax - randomMin + 1;
 

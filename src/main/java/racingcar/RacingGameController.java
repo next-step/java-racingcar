@@ -1,7 +1,7 @@
 package racingcar;
 
 import racingcar.domain.game.RacingGame;
-import racingcar.domain.random.RandomGenerator;
+import racingcar.domain.random.RangeRandomNumberGenerator;
 import racingcar.view.ConsoleView;
 import racingcar.view.NameParser;
 
@@ -17,7 +17,7 @@ public class RacingGameController {
         RacingGame racingGame = new RacingGame(
                 trial,
                 names,
-                new RandomGenerator(0, 9));
+                new RangeRandomNumberGenerator(0, 9));
 
         for (int t = 0; t < trial; t++) {
             consoleView.printCarsLocation(racingGame.runOnce());

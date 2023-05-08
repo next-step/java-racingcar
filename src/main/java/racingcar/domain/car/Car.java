@@ -1,22 +1,33 @@
 package racingcar.domain.car;
 
 import racingcar.domain.random.RandNum;
+import racingcar.domain.random.RandomNumberGenerator;
 
 public class Car {
     private final static int MOVE_CRITERIA = 4;
 
+    private final RandomNumberGenerator randomGenerator;
     private final Name name;
     private Position position;
 
-    public Car(String name) {
-        this(new Name(name), new Position());
+    public Car(String name,
+               RandomNumberGenerator randomGenerator) {
+
+        this(randomGenerator, new Name(name), new Position());
     }
 
-    public Car(String name, int location) {
-        this(new Name(name), new Position(location));
+    public Car(String name,
+               int location,
+               RandomNumberGenerator randomGenerator) {
+
+        this(randomGenerator, new Name(name), new Position(location));
     }
 
-    public Car(Name name, Position position) {
+    public Car(RandomNumberGenerator randomGenerator,
+               Name name,
+               Position position) {
+
+        this.randomGenerator = randomGenerator;
         this.name = name;
         this.position = position;
     }
@@ -29,8 +40,10 @@ public class Car {
         return this.name;
     }
 
-    public void move(RandNum randNum) {
-        if (randNum.isGreaterThan(MOVE_CRITERIA)) {
+    public void move() {
+        RandNum randomNumber = randomGenerator.generate();
+
+        if (randomNumber.isGreaterThan(MOVE_CRITERIA)) {
             this.position = position.move();
         }
     }

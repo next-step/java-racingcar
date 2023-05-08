@@ -1,18 +1,13 @@
 package racingcar.domain.car;
 
-import racingcar.domain.random.RandomGenerator;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCars {
     private final List<Car> cars;
-    private final RandomGenerator randomGenerator;
 
-    public RacingCars(List<Car> cars,
-                      RandomGenerator randomGenerator) {
+    public RacingCars(List<Car> cars) {
         this.cars = cars;
-        this.randomGenerator = randomGenerator;
     }
 
     public Position maxLocation() {
@@ -27,7 +22,7 @@ public class RacingCars {
 
     public void moveCars() {
         for (Car car : cars) {
-            car.move(randomGenerator.generate());
+            car.move();
         }
     }
 
