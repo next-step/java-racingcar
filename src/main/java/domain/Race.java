@@ -4,7 +4,6 @@ import dto.RaceInfo;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Race {
     private final NumberOfRaces numberOfRaces;
@@ -14,7 +13,7 @@ public class Race {
         NumberOfCars numberOfCars = raceInfo.getCarNumber();
         this.numberOfRaces = raceInfo.getRaceNumber();
         for (int i = 0; i < numberOfCars.getValue(); i++) {
-            cars.add(new Car(Position.START.getPosition()));
+            cars.add(raceInfo.getCar());
         }
     }
 
@@ -23,7 +22,7 @@ public class Race {
 
         raceResult.add(GameResult.create(cars));
         for (int i = 0; i < numberOfRaces.getValue(); i++) {
-            cars.forEach(Car::randomMove);
+            cars.forEach(Car::move);
             raceResult.add(GameResult.create(cars));
         }
 

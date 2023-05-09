@@ -5,56 +5,52 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class CarTest {
-    final static int INITIAL_POSITION = 3;
-    final static int MOVE_DEFAULT_VALUE = 2;
+public class CarTest {
+    static final int INITIAL_POSITION = 3;
+    static final int DEFAULT_MOVE_VALUE = 2;
 
     Car defaultCar;
+    CarState defaultCarState;
+    CarDisplacement defaultCarDisplacement;
 
     @BeforeEach
     void setUp() {
-        defaultCar = new Car(INITIAL_POSITION);
+        defaultCarState = DefaultCarState.create(INITIAL_POSITION);
+        defaultCarDisplacement = DefaultCarDisplacement.create(DEFAULT_MOVE_VALUE);
+        defaultCar = Car.createCar(defaultCarState, defaultCarDisplacement);
     }
 
     @Test
-    @DisplayName("Car 생성자가 제대로 생성되는지 확인")
-    void constructor() {
-        assertDoesNotThrow(() -> new Car(INITIAL_POSITION));
+    @DisplayName("Car 생성이 되는지 확인")
+    void createCar() {
+        assertDoesNotThrow(() -> Car.createCar(defaultCarState, defaultCarDisplacement));
     }
 
     @Test
-    @DisplayName("Car move test")
+    @DisplayName("Car 움직임 테스트")
     void move() {
-        defaultCar.move(MOVE_DEFAULT_VALUE);
-        assertEquals(INITIAL_POSITION + MOVE_DEFAULT_VALUE, defaultCar.getPosition());
+        defaultCar.move();
+        assertEquals(INITIAL_POSITION + DEFAULT_MOVE_VALUE, defaultCar.getPosition());
     }
 
     @Test
-    @DisplayName("Car random move test")
-    void randomMove() {
-        defaultCar.randomMove();
-        defaultCar.randomMove();
-        assertThat(defaultCar.getPosition()).isBetween(INITIAL_POSITION, INITIAL_POSITION + MOVE_DEFAULT_VALUE);
-    }
-
-    @Test
-    @DisplayName("Car location test")
+    @DisplayName("Car 위치 테스트")
     void getLocation() {
-        assertEquals(new Car(3).getPosition(), defaultCar.getPosition());
+        assertEquals(INITIAL_POSITION, defaultCar.getPosition());
     }
 
     @Test
-    @DisplayName("객체의 주소가 다르지만 값이 같을 경우 equals test")
+    @DisplayName("객체의 주소가 다르지만 값이 같을 경우 equals 테스트")
     void testEquals() {
-        assertEquals(new Car(INITIAL_POSITION), defaultCar);
+        assertEquals(Car.createCar(defaultCarState, defaultCarDisplacement), defaultCar);
     }
 
     @Test
-    @DisplayName("Car toString test")
+    @DisplayName("toString 테스트")
     void testToString() {
-        assertEquals("{location : 3}", defaultCar.toString());
+        assertEquals("{position : 3}", defaultCar.toString());
     }
 }

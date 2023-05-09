@@ -1,36 +1,40 @@
 package domain;
 
-import java.util.Random;
-
 public class Car {
-    private static final int RANDOM_RANGE = 10;
-    private static final int RANDOM_DIVIDING_POINT = 4;
+    private CarState carState;
+    private final CarDisplacement carDisplacement;
 
-    private int position;
-
-    public Car(int position) {
-        this.position = position;
+    private Car(CarState carState, CarDisplacement carDisplacement) {
+        this.carState = carState;
+        this.carDisplacement = carDisplacement;
     }
 
-    public Car(Car car) {
-        this.position = car.position;
+    private Car(Car car) {
+        this(car.getCarState(), car.getCarDisplacement());
     }
 
-    public void move(int nextInt) {
-        position += nextInt;
+    public static Car createCar(CarState carState, CarDisplacement carDisplacement) {
+        return new Car(carState, carDisplacement);
     }
 
-    public void randomMove() {
-        move(canMove() ? Position.MOVE.getPosition() : Position.STOP.getPosition());
+    public static Car createCopy(Car car) {
+        return new Car(car);
     }
 
-    private boolean canMove() {
-        Random ran = new Random();
-        return ran.nextInt(RANDOM_RANGE) >= RANDOM_DIVIDING_POINT;
+    public void move() {
+        carState = carState.move(carDisplacement);
     }
 
     public int getPosition() {
-        return position;
+        return carState.position();
+    }
+
+    private CarState getCarState() {
+        return carState.copy();
+    }
+
+    public CarDisplacement getCarDisplacement() {
+        return carDisplacement;
     }
 
     @Override
@@ -39,11 +43,11 @@ public class Car {
             return false;
         }
         Car car = (Car) obj;
-        return this.position == car.position;
+        return this.carState.equals(car.carState);
     }
 
     @Override
     public String toString() {
-        return String.format("{location : %d}", position);
+        return carState.toString();
     }
 }
