@@ -1,4 +1,4 @@
-package racingcar.game;
+package racingcar.domain.game;
 
 public class GameException extends RuntimeException {
     public GameException(String message) {

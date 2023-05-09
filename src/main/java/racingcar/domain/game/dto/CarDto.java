@@ -1,6 +1,6 @@
-package racingcar.game.dto;
+package racingcar.domain.game.dto;
 
-import racingcar.car.Car;
+import racingcar.domain.car.Car;
 
 public class CarDto {
     private final int location;
@@ -12,7 +12,7 @@ public class CarDto {
     }
 
     public CarDto(Car car) {
-        this(car.location(), car.name());
+        this(car.location().value(), car.name().value());
     }
 
     public int getLocation() {

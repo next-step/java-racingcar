@@ -1,12 +1,16 @@
-package racingcar.game;
+package racingcar.domain.game;
 
 import org.assertj.core.api.Assertions;
 import org.assertj.core.api.Condition;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.game.dto.CarDto;
+import racingcar.domain.car.Car;
+import racingcar.domain.game.dto.CarDto;
+import racingcar.domain.random.RangeRandomNumberGenerator;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 class RacingGameTest {
 
@@ -19,7 +23,7 @@ class RacingGameTest {
     void setUp() {
         game = new RacingGame(numbOfTrial,
                 List.of(racingCarName),
-                new WinnerDecisionByBigLocations());
+                new RangeRandomNumberGenerator(0, 9));
     }
 
     @Test
@@ -36,7 +40,7 @@ class RacingGameTest {
 
     @Test
     void 시도횟수_만큼_게임을_진행하면_더이상_진행할수없다() {
-        runGameUntilEnd();
+        runGameNumberOf(this.numbOfTrial);
 
         Assertions.assertThatExceptionOfType(GameException.class)
                 .isThrownBy(() -> game.runOnce());
@@ -52,31 +56,34 @@ class RacingGameTest {
 
     @Test
     void 종료된_게임인지_알려준다() {
-        runGameUntilEnd();
+        runGameNumberOf(this.numbOfTrial);
 
         Assertions.assertThat(game.isEnded()).isTrue();
     }
 
     @Test
-    void 게임이_종료되기_전에는_우승자를_알려주지_않는다() {
-        for (int i = 0; i < numbOfTrial - 1; i++) {
-            game.runOnce();
-        }
-
-        Assertions.assertThatThrownBy(() -> game.winnerCars())
-                .hasMessage("게임이 끝나기 전까지 우승자를 알 수 없습니다");
-    }
-
-    @Test
-    void 게임_종료_후_우승자를_알려준다() {
-        runGameUntilEnd();
+    void 현재까지의_우승자를_알려준다() {
+        runGameNumberOf(this.numbOfTrial - 1);
 
         Assertions.assertThat(game.winnerCars().getCars())
                 .haveAtLeastOne(carNamed(racingCarName));
     }
 
-    private void runGameUntilEnd() {
-        for (int i = 0; i < this.numbOfTrial; i++) {
+    @Test
+    void 비어있는_리스트의_각_원소를_매핑하여_리스트로_생성하는경우_비어있는_리스트가_생성된다() {
+        List<Car> emptyCars = new ArrayList<>();
+
+        List<String> collectionExpectedToBeEmpty = emptyCars.stream()
+                .map(car -> car.name().value())
+                .collect(Collectors.toList());
+
+        Assertions.assertThat(collectionExpectedToBeEmpty).isEmpty();
+    }
+
+    private void runGameNumberOf(int n) {
+        int trial = this.numbOfTrial > n ? n : this.numbOfTrial;
+
+        for (int i = 0; i < trial; i++) {
             game.runOnce();
         }
     }

@@ -1,7 +1,7 @@
-package racingcar.game;
+package racingcar.domain.game;
 
-import racingcar.car.Car;
-import racingcar.car.Winners;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.Winners;
 
 import java.util.List;
 
