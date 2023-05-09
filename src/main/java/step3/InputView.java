@@ -9,7 +9,7 @@ public class InputView {
 
     public int getNumOfCar() {
         System.out.println(ASK_QUESTION_FOR_A_NUM_OF_CAR);
-        int numOfCar = scanner.nextInt();
+        int numOfCar = Integer.parseInt(scanner.nextLine());
         if (numOfCar <= 0) {
             throw new RuntimeException("자동차 대수는 양수여야 합니다.");
         }
@@ -18,7 +18,7 @@ public class InputView {
 
     public int getNumOfTrial() {
         System.out.println(ASK_QUESTION_FOR_A_NUM_OF_TRIAL);
-        int numOfTrial = scanner.nextInt();
+        int numOfTrial = Integer.parseInt(scanner.nextLine());
         if (numOfTrial <= 0) {
             throw new RuntimeException("시도할 횟수는 양수여야 합니다.");
         }
