@@ -90,6 +90,19 @@ public class RacingTest {
     }
 
     @Test
+    void proceedOrStop함수는_0_또는_1을_반환한다() {
+        // Given
+        Car car = new Car("pobi", Arrays.asList(1, 2, 3, 4, 4));
+
+        // Then
+        assertThat(car.proceedOrStop()).isIn(0, 1);
+        assertThat(car.proceedOrStop()).isIn(0, 1);
+        assertThat(car.proceedOrStop()).isIn(0, 1);
+        assertThat(car.proceedOrStop()).isIn(0, 1);
+        assertThat(car.proceedOrStop()).isIn(0, 1);
+    }
+
+    @Test
     void Car_객체_테스트() {
         // Given
         Car car = new Car("pobi", Arrays.asList(1, 2, 3, 4, 5));
