@@ -20,7 +20,7 @@ public class RaceScenario {
         RaceInfo raceInfo = new RaceInfo(
                 CarNames.toNumberOfCars(carNames),
                 numberOfRaces,
-                Car.createCar(DefaultCarState.create(INITIAL_POSITION), RandomCarDisplacement.create(RANDOM_DIVIDING_POINT, RANDOM_RANGE)));
+                Car.createCar(DefaultCarState.create(INITIAL_POSITION), ThresholdCarDisplacement.create(new RandomNumberGenerator(RANDOM_RANGE), RANDOM_DIVIDING_POINT)));
 
         Race race = new Race(raceInfo);
         return new RaceResultView(race.calculate(), carNames);
