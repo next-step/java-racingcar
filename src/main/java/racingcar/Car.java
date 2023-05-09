@@ -26,8 +26,15 @@ public class Car {
     }
 
     Car(String name, List<Integer> positions) {
+        validateCarName(name);
         this.name = name;
         this.positions = new ArrayList<>(positions);
+    }
+
+    private void validateCarName(String name) {
+        if(name.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없다.");
+        }
     }
 
     public int getTrialCount() {

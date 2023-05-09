@@ -100,6 +100,13 @@ public class RacingTest {
     }
 
     @Test
+    void 자동차_이름은_5자를_초과할_수_없다() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            Car car = new Car("pobibi", Arrays.asList(1, 2, 3, 4, 5));
+        }).withMessage("자동차 이름은 5자를 초과할 수 없다.");
+    }
+
+    @Test
     void 우승자_출력하기() {
         // Given
         List<Car> cars = Arrays.asList(
