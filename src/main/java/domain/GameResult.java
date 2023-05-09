@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class GameResult {
-    List<Car> cars;
+    private final List<Car> cars;
 
     private GameResult(List<Car> cars) {
         this.cars = cars;

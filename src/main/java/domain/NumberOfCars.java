@@ -1,7 +1,7 @@
 package domain;
 
 public class NumberOfCars {
-    public final static int MIN_VALUE = 0;
+    public static final int MIN_VALUE = 0;
 
     private final int value;
 

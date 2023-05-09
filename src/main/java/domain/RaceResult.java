@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class RaceResult {
-    List<GameResult> gameResults;
+    private final List<GameResult> gameResults;
 
     public RaceResult() {
         gameResults = new ArrayList<>();

@@ -9,8 +9,8 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CarTest {
-    final static int INITIAL_POSITION = 3;
-    final static int DEFAULT_MOVE_VALUE = 2;
+    static final int INITIAL_POSITION = 3;
+    static final int DEFAULT_MOVE_VALUE = 2;
 
     Car defaultCar;
     CarState defaultCarState;

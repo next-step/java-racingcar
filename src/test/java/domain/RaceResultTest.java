@@ -11,9 +11,9 @@ import java.util.Collections;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RaceResultTest {
-    final static int DEFAULT_MOVE_VALUE = 2;
-    final static int DEFAULT_NUMBER_OF_CARS_VALUE = 3;
-    final static int INITIAL_CAR_POSITION = 1;
+    static final int DEFAULT_MOVE_VALUE = 2;
+    static final int DEFAULT_NUMBER_OF_CARS_VALUE = 3;
+    static final int INITIAL_CAR_POSITION = 1;
 
     CarState defaultCarState;
     CarDisplacement defaultCarDisplacement;

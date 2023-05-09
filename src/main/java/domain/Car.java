@@ -1,22 +1,16 @@
 package domain;
 
-import java.util.Random;
-
 public class Car {
-    private static final int RANDOM_RANGE = 10;
-    private static final int RANDOM_DIVIDING_POINT = 4;
-
-    private int position;
+    private CarState carState;
     private final CarDisplacement carDisplacement;
 
-    private Car(Car car) {
-        this.position = car.getPosition();
-        this.carDisplacement = car.getCarDisplacement();
+    private Car(CarState carState, CarDisplacement carDisplacement) {
+        this.carState = carState;
+        this.carDisplacement = carDisplacement;
     }
 
-    private Car(CarState carState, CarDisplacement carDisplacement) {
-        this.position = carState.position();
-        this.carDisplacement = carDisplacement;
+    private Car(Car car) {
+        this(car.getCarState(), car.getCarDisplacement());
     }
 
     public static Car createCar(CarState carState, CarDisplacement carDisplacement) {
@@ -28,11 +22,15 @@ public class Car {
     }
 
     public void move() {
-        position += carDisplacement.displacement();
+        carState = carState.move(carDisplacement);
     }
 
     public int getPosition() {
-        return position;
+        return carState.position();
+    }
+
+    private CarState getCarState() {
+        return carState.copy();
     }
 
     public CarDisplacement getCarDisplacement() {
@@ -45,11 +43,11 @@ public class Car {
             return false;
         }
         Car car = (Car) obj;
-        return this.position == car.position;
+        return this.carState.equals(car.carState);
     }
 
     @Override
     public String toString() {
-        return String.format("{position : %d}", position);
+        return carState.toString();
     }
 }

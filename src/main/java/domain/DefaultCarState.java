@@ -11,8 +11,32 @@ public class DefaultCarState implements CarState {
         return new DefaultCarState(position);
     }
 
-    @Override
+    public CarState copy() {
+        return DefaultCarState.create(position);
+    }
+
     public int position() {
         return position;
+    }
+
+    public CarState move(CarDisplacement carDisplacement) {
+        return create(position + carDisplacement.displacement());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        DefaultCarState that = (DefaultCarState) o;
+        return position == that.position;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("{position : %d}", position);
     }
 }

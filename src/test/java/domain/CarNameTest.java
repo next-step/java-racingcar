@@ -1,5 +1,6 @@
 package domain;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -27,8 +28,9 @@ class CarNameTest {
     @Test
     @DisplayName("최대길이가 넘어가는 이름으로 CarName 생성 시 실패")
     void createWithOverMaxSize() {
-        Throwable exception = assertThrows(IllegalArgumentException.class, () -> CarName.create(overMaxSizeName));
-        assertEquals("CarName can not over length 5", exception.getMessage());
+        Assertions.assertThatThrownBy(() -> CarName.create(overMaxSizeName))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("CarName can not over length 5");
     }
 
     @Test

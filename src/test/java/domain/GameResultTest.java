@@ -11,12 +11,12 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GameResultTest {
-    final static int DEFAULT_MOVE_VALUE = 2;
-    final static int CAR_INITIAL_POSITION = 1;
-    final static int FIRST_CAR_DEFAULT_POTITION = 3;
-    final static int SECOND_CAR_DEFAULT_POTITION = 2;
-    final static int THIRD_CAR_DEFAULT_POTITION = 1;
-    final static int DEFAULT_NUMBER_OF_CARS = 3;
+    static final int DEFAULT_MOVE_VALUE = 2;
+    static final int CAR_INITIAL_POSITION = 1;
+    static final int FIRST_CAR_DEFAULT_POTITION = 3;
+    static final int SECOND_CAR_DEFAULT_POTITION = 2;
+    static final int THIRD_CAR_DEFAULT_POTITION = 1;
+    static final int DEFAULT_NUMBER_OF_CARS = 3;
 
     CarState defaultCarState;
     CarDisplacement defaultCarDisplacement;

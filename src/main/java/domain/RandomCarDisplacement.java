@@ -5,7 +5,7 @@ import java.util.Random;
 public class RandomCarDisplacement implements CarDisplacement{
     private final int successCount;
     private final int totalCount;
-    Random random;
+    private final Random random;
 
     private RandomCarDisplacement(int successCount, int totalCount) {
         this.random = new Random();
