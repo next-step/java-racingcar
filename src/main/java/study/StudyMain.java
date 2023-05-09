@@ -1,10 +1,10 @@
 package study;
 
-import study.race.CarRace;
 import study.race.condition.RaceConditionNumber;
 import study.race.condition.impl.RaceRandomNumber;
-import study.race.io.RaceInputView;
-import study.race.io.RaceResultView;
+import study.race.domain.CarRace;
+import study.race.view.RaceInputView;
+import study.race.view.RaceResultView;
 
 public class StudyMain {
     

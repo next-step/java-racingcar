@@ -1,4 +1,4 @@
-package study.race;
+package study.race.domain;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -9,6 +9,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import study.race.condition.RaceConditionNumber;
+import study.race.domain.CarEntry;
+import study.race.domain.CarRace;
 
 public class TestCarRaceSimple {
 

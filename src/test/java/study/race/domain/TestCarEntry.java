@@ -1,10 +1,13 @@
-package study.race;
+package study.race.domain;
 
 import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import study.race.domain.Car;
+import study.race.domain.CarEntry;
 
 public class TestCarEntry {
 

@@ -1,17 +1,15 @@
-package study.race;
+package study.race.domain;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CarEntry {
 
-    private String entryName;
     private Car car;
     private List<Integer> moveRecord;
 
     public CarEntry(Car car) {
         this.car = car;
-        this.entryName = car.getName();
         this.moveRecord = new ArrayList<>();
     }
 
@@ -20,7 +18,7 @@ public class CarEntry {
     }
 
     public String getEntryName() {
-        return entryName;
+        return car.getName();
     }
 
     public List<Integer> getMoveRecord() {
