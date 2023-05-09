@@ -4,20 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    private static final InputView inputView = new InputView();
-    private static final ResultView resultView = new ResultView();
     protected static List<Car> carList;
 
     public static void main(String[] args) {
-        int numOfCar = inputView.getNumOfCar();
-        int numOfTrial = inputView.getNumOfTrial();
+        int numOfCar = InputView.getNumOfCar();
+        int numOfTrial = InputView.getNumOfTrial();
 
-        resultView.printResultMessage();
+        ResultView.printResultMessage();
 
         makeCars(numOfCar);
         for (int i = 0; i < numOfTrial; i++) {
             race();
-            resultView.newLine();
+            ResultView.newLine();
         }
     }
 
@@ -41,7 +39,7 @@ public class RacingGame {
 
     public static void printResultEachCar(List<Car> carList) {
         for (Car car : carList) {
-            resultView.printTraceEachCar(car.getTrace());
+            ResultView.printTraceEachCar(car.getTrace());
         }
     }
 }
