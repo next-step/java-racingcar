@@ -5,8 +5,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
 
-import study.util.StringAddCalculator;
-
 
 public class TestStringAddCalculator {
     
