@@ -1,4 +1,4 @@
-package study.race;
+package study.race.domain;
 
 import java.util.ArrayList;
 import java.util.List;

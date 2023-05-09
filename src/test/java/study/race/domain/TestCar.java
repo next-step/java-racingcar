@@ -1,4 +1,4 @@
-package study.race;
+package study.race.domain;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import study.race.domain.Car;
 
 
 public class TestCar {

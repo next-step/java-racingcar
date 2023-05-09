@@ -1,9 +1,9 @@
-package study.race.io;
+package study.race.view;
 
 import java.util.List;
 
-import study.race.CarEntry;
-import study.race.CarRace;
+import study.race.domain.CarEntry;
+import study.race.domain.CarRace;
 
 public class RaceResultView {
 
