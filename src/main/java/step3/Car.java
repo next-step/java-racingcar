@@ -5,6 +5,7 @@ import java.util.Random;
 public class Car {
     private static int RANDOM_BOUND = 10;
     private static int THRESHOLD = 4;
+
     private int trace = 0;
 
     public void go() {
