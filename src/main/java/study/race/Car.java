@@ -2,12 +2,11 @@ package study.race;
 
 public class Car {
 
-    private String carName;
+    private CarName carName;
     private int moved = 0;
 
     public Car(String carName) {
-        this.carName = carName;
-        validateCarName(carName);
+        this.carName = new CarName(carName);
     }
 
     public void move() {
@@ -15,23 +14,11 @@ public class Car {
     }
 
     public String getName() {
-        return carName;
+        return carName.getName();
     }
 
     public int getScore() {
         return moved;
-    }
-
-    private void validateCarName(String carName) {
-        int carNameMaxLength = 5;
-
-        if (carName == null || carName.trim().isEmpty()) {
-            throw new IllegalStateException("자동차 이름을 입력해주세요.");
-        }
-
-        if (carName.length() > carNameMaxLength) {
-            throw new IllegalStateException("자동차 이름은 1~5자만 가능합니다.");
-        }
     }
 
 }
