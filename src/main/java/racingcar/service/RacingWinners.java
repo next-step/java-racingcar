@@ -6,10 +6,12 @@ import racingcar.dto.Cars;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RacingWinner {
+import static racingcar.service.RacingScores.getWinnerScore;
+
+public class RacingWinners {
     private static final String DELIMITER = ", ";
 
-    private RacingWinner() {
+    private RacingWinners() {
         throw new AssertionError();
     }
 
@@ -24,33 +26,13 @@ public class RacingWinner {
         return String.join(DELIMITER, winnerNames);
     }
 
-    private static int getWinnerScore(Cars racingCars) {
-        int winnerScore = 0;
-        for (Car car : racingCars.getCars()) {
-            winnerScore = checkWinnerScore(winnerScore, car);
-        }
-        return winnerScore;
-    }
-
-    private static int checkWinnerScore(int winnerScore, Car car) {
-        int lastState = car.getState().get(getLastIndex(car));
-        if (winnerScore < lastState) {
-            winnerScore = lastState;
-        }
-        return winnerScore;
-    }
-
-    private static int getLastIndex(Car car) {
-        return car.getState().size() - 1;
-    }
-
     private static boolean hasWinnerScore(int winnerScore, Car car) {
         return winnerScore == car.getState().get(car.getState().size() - 1);
     }
 
     private static void addWinnerNames(int winnerScore, List<String> winnerNames, Car car) {
         String winnerName = getWinnerName(winnerScore, car);
-        if(winnerName != null){
+        if (winnerName != null) {
             winnerNames.add(winnerName);
         }
     }
