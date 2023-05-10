@@ -1,10 +1,13 @@
 package study;
 
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RacingCars {
+
+    public static final String HYPHEN = "-";
 
     private final List<RacingCar> racingCars;
 
@@ -19,8 +22,12 @@ public class RacingCars {
 
     }
 
-    public List<RacingCar> getRacingCars() {
-        return racingCars;
+    public void moveRacingCars() {
+        racingCars.forEach(racingCar -> racingCar.moveForwardWhenFourHigher(new Random()));
+    }
+
+    public void printStatus() {
+        racingCars.forEach(racingCar -> System.out.println(HYPHEN.repeat(racingCar.position())));
     }
 
 
