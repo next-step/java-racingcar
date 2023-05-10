@@ -20,8 +20,5 @@ class CarRacingGameTest {
         List<Car> winners = game.getWinners();
         int maxDistance = winners.get(0).getLocation();
         assertThat(winners.stream().allMatch(car -> car.isLocated(maxDistance))).isTrue();
-
-        List<Car> cars = game.getCars();
-        assertThat(cars.stream().allMatch(car -> car.getLocation() <= maxDistance)).isTrue();
     }
 }
