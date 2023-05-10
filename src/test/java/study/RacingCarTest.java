@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 
 public class RacingCarTest {
@@ -54,5 +55,18 @@ public class RacingCarTest {
 
 
         assertThat(racingCar.position()).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("레이싱카를 생성할 때 음수 개수를 전달하면 에러 발생 테스트")
+    void createRacingCarsWhenOver0() {
+
+        assertThatThrownBy(() -> {
+            RacingCars racingCars = new RacingCars(-3);
+        }).isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> {
+            RacingCars racingCars = new RacingCars(0);
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 }

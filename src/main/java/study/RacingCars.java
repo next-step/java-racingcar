@@ -9,6 +9,9 @@ public class RacingCars {
     private final List<RacingCar> racingCars;
 
     public RacingCars(int quantity) {
+        if(quantity <= 0) {
+            throw new IllegalArgumentException();
+        }
 
         racingCars = IntStream.range(0, quantity)
                 .mapToObj(i -> new RacingCar())
