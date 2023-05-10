@@ -3,6 +3,8 @@ package study;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Random;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 
@@ -28,9 +30,28 @@ public class RacingCarTest {
     @DisplayName("레이싱카가 이동하는지 확인")
     void isRacingCarMove() {
         RacingCar racingCar = new RacingCar();
-        racingCar.move();
-        racingCar.move();
-        racingCar.move();
+
+        racingCar.moveForwardWhenFourHigher(new Random() {
+            @Override
+            public int nextInt(int bound) {
+                return 5;
+            }
+        });
+
+        racingCar.moveForwardWhenFourHigher(new Random() {
+            @Override
+            public int nextInt(int bound) {
+                return 5;
+            }
+        });
+
+        racingCar.moveForwardWhenFourHigher(new Random() {
+            @Override
+            public int nextInt(int bound) {
+                return 5;
+            }
+        });
+
 
         assertThat(racingCar.position()).isEqualTo(3);
     }

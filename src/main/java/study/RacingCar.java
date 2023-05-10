@@ -1,5 +1,7 @@
 package study;
 
+import java.util.Random;
+
 public class RacingCar {
 
     private int position = 0;
@@ -8,13 +10,13 @@ public class RacingCar {
         return this.position;
     }
 
-    public void moveForwardWhenFourHigher() {
-        if (RandomNumberUtils.getRandomNumberZeroToNine() >= 4) {
+    public void moveForwardWhenFourHigher(Random random) {
+        if (random.nextInt(10) >= 4) {
             move();
         }
     }
 
-    public void move() {
+    private void move() {
         position++;
     }
 }

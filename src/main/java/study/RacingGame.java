@@ -1,5 +1,6 @@
 package study;
 
+import java.util.Random;
 import java.util.stream.IntStream;
 
 public class RacingGame {
@@ -17,7 +18,7 @@ public class RacingGame {
         System.out.println(); // 개행
 
         IntStream.range(0, tryCount).forEach(i -> {
-            racingCars.getRacingCars().forEach(RacingCar::moveForwardWhenFourHigher);
+            racingCars.getRacingCars().forEach(racingCar -> racingCar.moveForwardWhenFourHigher(new Random()));
 
             printStatus(racingCars);
             System.out.println(); // 개행
