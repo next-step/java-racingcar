@@ -1,17 +1,18 @@
-package step3;
+package racingcar;
 
-import step3.view.InputView;
-import step3.view.ResultView;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class CarRacingGame {
 
+    private final MovingStrategy movingStrategy;
 
-    public CarRacingGame() {
+    public CarRacingGame(MovingStrategy movingStrategy) {
+        this.movingStrategy = movingStrategy;
     }
 
     public void startGame() {
@@ -21,13 +22,9 @@ public class CarRacingGame {
     }
 
     void play(GameStartParameter gameStartParameter) {
-        CarList cars = new CarList(generateCars(gameStartParameter));
+        CarList cars = CarList.generateCarList(gameStartParameter.getCarNames());
         runCars(gameStartParameter, cars);
-    }
-
-    List<SimpleCar> generateCars(GameStartParameter gameStartParameter) {
-        return IntStream.range(0, gameStartParameter.getCarNums())
-                .mapToObj(i -> new SimpleCar()).collect(Collectors.toList());
+        ResultView.printWinners(cars.extractWinners());
     }
 
     private void runCars(GameStartParameter gameStartParameter, CarList cars) {
@@ -39,16 +36,17 @@ public class CarRacingGame {
     }
 
     private void runCarsAndPrintState(CarList cars) {
-        cars.runAllCars();
+        cars.moveAllCarsByStrategy(movingStrategy);
         ResultView.printCarsRunState(cars);
     }
 
     private GameStartParameter scanGameStartParameters() {
         InputView.printCarNumTakingView();
-        int carNums = InputView.scanNextPositiveInteger().getIntValue();
+        List<String> carNames = InputView.scanCarNames();
+
         InputView.printTryNumView();
         int runNums = InputView.scanNextPositiveInteger().getIntValue();
 
-        return new GameStartParameter(carNums, runNums);
+        return new GameStartParameter(carNames, runNums);
     }
 }

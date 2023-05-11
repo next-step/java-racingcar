@@ -1,7 +1,8 @@
-package step3.view;
+package racingcar.view;
 
 import step2.PositiveInteger;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
@@ -23,6 +24,14 @@ public class InputView {
 
     public static PositiveInteger scanNextPositiveInteger() {
         return new PositiveInteger((new Scanner(System.in)).nextInt());
+    }
+
+    public static List<String> scanCarNames() {
+        Scanner scanner = new Scanner(System.in);
+
+        String input = scanner.next();
+
+        return List.of(input.split(","));
     }
 
 }
