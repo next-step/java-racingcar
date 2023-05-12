@@ -1,6 +1,7 @@
 package step2;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,8 +20,9 @@ public class StringAddCalculator {
         return validatePositive(singleNumber[0]);
     }
 
-    public static int sumMultipleNumbers(int[] checkedNumbers) {
-        return Arrays.stream(checkedNumbers).sum();
+    public static int sumMultipleNumbers(List<Integer> checkedNums) {
+        return checkedNums.stream()
+                .mapToInt(Integer::intValue).sum();
     }
 
 
@@ -38,11 +40,11 @@ public class StringAddCalculator {
     }
 
     public static int convertTextToInt(String[] numbers) {
-        int[] checkedNumbers = new int[numbers.length];
-        for (int i = 0; i < numbers.length; i++) {
-            checkedNumbers[i] = validatePositive(numbers[i]);
+        List<Integer> checkedNums = new ArrayList<>();
+        for(String num : numbers) {
+            checkedNums.add(validatePositive(num));
         }
-        return sumMultipleNumbers(checkedNumbers);
+        return sumMultipleNumbers(checkedNums);
     }
 
     public static int validatePositive(String num) {
