@@ -15,7 +15,7 @@ public class RacingController {
         List<Car> carList = Car.factory(numberOfCars);
         System.out.println("실행 결과");
         for (int i = 0; i < numberOfAttempts; i++) {
-            List<Car> racingList = CarOperator.drive(carList);
+            List<Car> racingList = CarOperator.drivingResult(carList);
             OutputView.eachRacingResult(racingList);
         }
     }

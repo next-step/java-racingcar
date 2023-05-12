@@ -6,19 +6,12 @@ import java.util.List;
 
 public class CarOperator {
 
-    private static final String CAR_MOVED = "-";
-
-    public static List<Car> drive(List<Car> carList) {
-        for (Car car : carList) {
+    public static List<Car> drivingResult(List<Car> carList) {
+        for(Car car : carList) {
             int randomNumber = NumberGenerator.makeRandomly();
-            if (willMoving(randomNumber)) {
-                car.getMovingList().add(CAR_MOVED);
-            }
+            car.drive(randomNumber);
         }
         return carList;
     }
 
-    public static boolean willMoving(int number) {
-        return number >= 4;
-    }
 }
