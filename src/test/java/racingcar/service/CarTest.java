@@ -3,10 +3,11 @@ package racingcar.service;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racingcar.dto.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
-import static racingcar.service.Car.*;
+import static racingcar.service.Racing.*;
 
 public class CarTest {
     @ParameterizedTest

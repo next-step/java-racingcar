@@ -1,6 +1,5 @@
 package racingcar.view;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -10,11 +9,15 @@ public class InputView {
     private static final String QUESTION_LABS = "시도할 회수는 몇 회 인가요?";
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static List<String> askQuestionCarNames(){
+    private InputView(){
+        throw new AssertionError();
+    }
+
+    public static List<String> askQuestionCarNames() {
         return Arrays.asList(getCarNamesInput());
     }
 
-    public static int askQuestionLabs(){
+    public static int askQuestionLabs() {
         return getLabsInput();
     }
 
