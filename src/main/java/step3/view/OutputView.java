@@ -13,7 +13,7 @@ public class OutputView {
             arrToString(movingList, sb);
         }
         sb.append("\n");
-        System.out.print(sb);
+        System.out.println(sb);
     }
 
     public static void arrToString(List<String> movingList, StringBuilder sb) {
