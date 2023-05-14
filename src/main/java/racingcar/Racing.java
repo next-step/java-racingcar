@@ -1,25 +1,24 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Racing {
-    private final List<Car> cars;
+//    private final List<Car> cars;
+    private final CarCollection carCollection;
 
     Racing(String carNames, int trialCount) {
-        this.cars = createCars(carNames, trialCount);
+        carCollection = buildCarCollection(carNames, trialCount);
     }
 
-    private static List<Car> createCars(String carNames, int trialCount) {
+    private static CarCollection buildCarCollection(String carNames, int trialCount) {
         String[] names = carNames.split(",");
-        List<Car> cars = new ArrayList<>();
+        CarCollection carCollection = new CarCollection();
         for(String name : names) {
-            cars.add(new Car(name, trialCount));
+            Car car = new Car(name, trialCount);
+            carCollection.addCar(car);
         }
-        return cars;
+        return carCollection;
     }
 
-    public List<Car> getCars() {
-        return new ArrayList<>(cars);
+    public CarCollection getCarCollection() {
+        return carCollection;
     }
 }

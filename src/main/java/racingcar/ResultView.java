@@ -5,29 +5,29 @@ import java.util.List;
 
 public class ResultView {
 
-    public void displayResults(List<Car> cars) {
-        System.out.println(getResults(cars));
+    public void displayResults(CarCollection carCollection) {
+        System.out.println(getResults(carCollection));
     }
 
-    public String getResults(List<Car> cars) {
+    public String getResults(CarCollection carCollection) {
         StringBuilder sb = new StringBuilder();
-        int trialCount = cars.get(0).getTrialCount();
+        int trialCount = carCollection.getCars().get(0).getTrialCount();
 
         for (int i = 0; i < trialCount; i++) {
-            sb.append(getColumn(cars, i));
+            sb.append(getColumn(carCollection, i));
             sb.append(System.lineSeparator());
         }
 
         return sb.toString();
     }
 
-    private String getColumn(List<Car> cars, int columnIndex) {
+    private String getColumn(CarCollection carCollection, int index) {
         StringBuilder sb = new StringBuilder();
 
-        for (Car car : cars) {
+        for (Car car : carCollection.getCars()) {
             sb.append(car.getName())
                     .append(" : ")
-                    .append(getPositionLine(car, columnIndex))
+                    .append(getPositionLine(car, index))
                     .append(System.lineSeparator());
         }
 

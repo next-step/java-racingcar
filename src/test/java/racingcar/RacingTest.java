@@ -24,7 +24,7 @@ public class RacingTest {
 
         // Then
         Racing race = inputView.init();
-        resultView.displayResults(race.getCars());
+        resultView.displayResults(race.getCarCollection());
     }
 
     @Test
@@ -50,7 +50,7 @@ public class RacingTest {
         // When
 
         // Then
-        resultView.displayResults(race.getCars());
+        resultView.displayResults(race.getCarCollection());
     }
 
     @Test
@@ -61,8 +61,10 @@ public class RacingTest {
                 new Car("crong", Arrays.asList(1, 1, 2, 3, 4)),
                 new Car("honux", Arrays.asList(1, 2, 3, 4, 5))
         );
+
         // When
-        String results = resultView.getResults(cars);
+        CarCollection carCollection = new CarCollection(cars);
+        String results = resultView.getResults(carCollection);
         String lineSeparator = System.lineSeparator();
 
         // Then
