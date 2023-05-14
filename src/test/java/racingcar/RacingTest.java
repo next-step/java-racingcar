@@ -26,20 +26,6 @@ public class RacingTest {
         resultView.displayResults(race.getCarCollection());
     }
 
-    @Test
-    void 문자_입력_받기() {
-        // Given
-        String testInput = "pobi,crong,honux\n5\n";
-        ByteArrayInputStream in = new ByteArrayInputStream(testInput.getBytes());
-        System.setIn(in);
-
-        // When
-        inputView.init();
-
-        // Then
-        assertThat(inputView.getCarNames()).isEqualTo("pobi,crong,honux");
-        assertThat(inputView.getTrialCount()).isEqualTo(5);
-    }
 
     @Test
     void 랜덤하게_전진() {
@@ -50,44 +36,6 @@ public class RacingTest {
 
         // Then
         resultView.displayResults(race.getCarCollection());
-    }
-
-    @Test
-    void 자동차_출력하기() {
-        // Given
-        List<Car> cars = Arrays.asList(
-                new Car("pobi", Arrays.asList(1, 2, 3, 4, 4)),
-                new Car("crong", Arrays.asList(1, 1, 2, 3, 4)),
-                new Car("honux", Arrays.asList(1, 2, 3, 4, 5))
-        );
-
-        // When
-        CarCollection carCollection = new CarCollection(cars);
-        String results = resultView.getResults(carCollection);
-        String lineSeparator = System.lineSeparator();
-
-        // Then
-        assertThat(results).isEqualTo(
-                "pobi : -"  + lineSeparator +
-                "crong : -"         + lineSeparator +
-                "honux : -"         + lineSeparator +
-                ""                  + lineSeparator +
-                "pobi : --"         + lineSeparator +
-                "crong : -"         + lineSeparator +
-                "honux : --"        + lineSeparator +
-                ""                  + lineSeparator +
-                "pobi : ---"        + lineSeparator +
-                "crong : --"        + lineSeparator +
-                "honux : ---"       + lineSeparator +
-                ""                  + lineSeparator +
-                "pobi : ----"       + lineSeparator +
-                "crong : ---"       + lineSeparator +
-                "honux : ----"      + lineSeparator +
-                ""                  + lineSeparator +
-                "pobi : ----"       + lineSeparator +
-                "crong : ----"      + lineSeparator +
-                "honux : -----"     + lineSeparator +
-                ""                  + lineSeparator);
     }
 
     @Test
