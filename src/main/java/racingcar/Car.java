@@ -19,7 +19,7 @@ public class Car {
         this.name = name;
         positions = new ArrayList<>();
         int position = INIT_POSITION;
-        for(int i=0; i< trialCount; i++) {
+        for (int i = 0; i < trialCount; i++) {
             addPosition(position);
             position += proceedOrStop();
         }
@@ -32,7 +32,7 @@ public class Car {
     }
 
     private void validateCarName(String name) {
-        if(name.length() > 5) {
+        if (name.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없다.");
         }
     }
@@ -46,8 +46,9 @@ public class Car {
     }
 
     public int getLastPosition() {
-        if(positions.isEmpty())
+        if (positions.isEmpty()) {
             return -1;
+        }
 
         return positions.get(positions.size() - 1);
     }

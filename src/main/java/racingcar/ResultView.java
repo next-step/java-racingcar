@@ -51,7 +51,7 @@ public class ResultView {
         for (Car car : cars) {
             int lastPosition = car.getLastPosition();
 
-            if(max < lastPosition) {
+            if (max < lastPosition) {
                 max = lastPosition;
             }
         }
@@ -64,8 +64,9 @@ public class ResultView {
         for (Car car : cars) {
             int lastPosition = car.getLastPosition();
 
-            if(lastPosition == biggestLastPosition)
+            if (lastPosition == biggestLastPosition) {
                 winnerList.add(car.getName());
+            }
         }
 
         return String.join(", ", winnerList);

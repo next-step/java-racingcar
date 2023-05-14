@@ -14,7 +14,6 @@ public class RacingTest {
     public ResultView resultView = new ResultView();
 
 
-
     @Test
     void 레이싱_전체_테스트() {
         // Given
