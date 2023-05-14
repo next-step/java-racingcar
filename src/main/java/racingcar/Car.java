@@ -9,6 +9,7 @@ public class Car {
     private static final int RANDOM_BOUND = 10;
     private static final int PROCEED_THRESHOLD = 4;
     private static final int INIT_POSITION = 1;
+    public static final int MAX_NAME_LENGTH = 5;
 
     private final Random random = new Random();
 
@@ -32,7 +33,7 @@ public class Car {
     }
 
     private void validateCarName(String name) {
-        if (name.length() > 5) {
+        if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없다.");
         }
     }
