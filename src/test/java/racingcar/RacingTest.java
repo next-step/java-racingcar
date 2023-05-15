@@ -78,6 +78,7 @@ public class RacingTest {
         );
 
         // Then
-        assertThat(resultView.getWinnerMessage(cars)).isEqualTo("pobi, crong가 최종 우승했습니다.");
+        CarCollection carCollection = new CarCollection(cars);
+        assertThat(resultView.getWinnerMessage(carCollection)).isEqualTo("pobi, crong가 최종 우승했습니다.");
     }
 }

@@ -39,16 +39,16 @@ public class ResultView {
         return "-".repeat(car.getPosition(columnIndex));
     }
 
-    public String getWinnerMessage(List<Car> cars) {
-        String winner = getWinner(cars, getBiggestLastPosition(cars));
+    public String getWinnerMessage(CarCollection carCollection) {
+        String winner = getWinner(carCollection, getBiggestLastPosition(carCollection));
 
         return winner + "가 최종 우승했습니다.";
     }
 
-    private int getBiggestLastPosition(List<Car> cars) {
+    private int getBiggestLastPosition(CarCollection carCollection) {
         int max = -1;
 
-        for (Car car : cars) {
+        for (Car car : carCollection.getCars()) {
             int lastPosition = car.getLastPosition();
 
             if (max < lastPosition) {
@@ -58,10 +58,10 @@ public class ResultView {
         return max;
     }
 
-    private String getWinner(List<Car> cars, int biggestLastPosition) {
+    private String getWinner(CarCollection carCollection, int biggestLastPosition) {
         ArrayList<String> winnerList = new ArrayList<>();
 
-        for (Car car : cars) {
+        for (Car car : carCollection.getCars()) {
             int lastPosition = car.getLastPosition();
 
             if (lastPosition == biggestLastPosition) {
