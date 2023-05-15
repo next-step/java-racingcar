@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.Arrays;
+
 public class RacingGame {
 
     private static Car[] createCars(int num) {
@@ -8,6 +10,10 @@ public class RacingGame {
             cars[i] = new Car();
         }
         return cars;
+    }
+
+    private static void playRound(Car[] cars) {
+        Arrays.stream(cars).forEach(Car::stopOrMove);
     }
 
 }
