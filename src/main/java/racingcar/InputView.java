@@ -4,21 +4,20 @@ import java.util.Scanner;
 
 public class InputView {
 
-    public Racing init() {
+    private InputViewDto inputViewDto;
+
+
+    InputView() {
         Scanner scanner = new Scanner(System.in);
 
-        Integer carCount = getCarCount(scanner);
-        Integer trialCount = getTrialCount(scanner);
-
-        System.out.println("carCount = " + carCount);
-        System.out.println("trialCount = " + trialCount);
-
-        return new Racing(carCount, trialCount);
+        inputViewDto = new InputViewDto();
+        inputViewDto.setCarNames(getCarNames(scanner));
+        inputViewDto.setTrialCount(getTrialCount(scanner));
     }
 
-    private Integer getCarCount(Scanner scanner) {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        return Integer.parseInt(scanner.nextLine());
+    private String getCarNames(Scanner scanner) {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        return scanner.nextLine();
     }
 
     private static Integer getTrialCount(Scanner scanner) {
@@ -26,4 +25,11 @@ public class InputView {
         return Integer.parseInt(scanner.nextLine());
     }
 
+    public String getCarNames() {
+        return inputViewDto.getCarNames();
+    }
+
+    public int getTrialCount() {
+        return inputViewDto.getTrialCount();
+    }
 }

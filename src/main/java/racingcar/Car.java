@@ -9,21 +9,33 @@ public class Car {
     private static final int RANDOM_BOUND = 10;
     private static final int PROCEED_THRESHOLD = 4;
     private static final int INIT_POSITION = 1;
+    public static final int MAX_NAME_LENGTH = 5;
 
     private final Random random = new Random();
+
+    private final String name;
     private final List<Integer> positions;
 
-    Car(int trialCount) {
+    Car(String name, int trialCount) {
+        this.name = name;
         positions = new ArrayList<>();
         int position = INIT_POSITION;
-        for(int i=0; i< trialCount; i++) {
+        for (int i = 0; i < trialCount; i++) {
             addPosition(position);
             position += proceedOrStop();
         }
     }
 
-    Car(List<Integer> positions) {
+    Car(String name, List<Integer> positions) {
+        validateCarName(name);
+        this.name = name;
         this.positions = new ArrayList<>(positions);
+    }
+
+    private void validateCarName(String name) {
+        if (name.length() > MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없다.");
+        }
     }
 
     public int getTrialCount() {
@@ -34,6 +46,14 @@ public class Car {
         return positions.get(index);
     }
 
+    public int getLastPosition() {
+        if (positions.isEmpty()) {
+            return -1;
+        }
+
+        return positions.get(positions.size() - 1);
+    }
+
     private void addPosition(int position) {
         positions.add(position);
     }
@@ -41,5 +61,13 @@ public class Car {
     public int proceedOrStop() {
         int randomValue = random.nextInt(RANDOM_BOUND);
         return randomValue >= PROCEED_THRESHOLD ? 1 : 0;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<Integer> getPositions() {
+        return positions;
     }
 }

@@ -1,25 +1,79 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ResultView {
 
-    public void displayResults(List<Car> cars) {
-        int trialCount = cars.get(0).getTrialCount();
+    public void displayResults(CarCollection carCollection) {
+        System.out.println(getResults(carCollection));
+    }
+
+    public String getResults(CarCollection carCollection) {
+        StringBuilder sb = new StringBuilder();
+        int trialCount = carCollection.getCars().get(0).getTrialCount();
 
         for (int i = 0; i < trialCount; i++) {
-            displayColumn(cars, i);
-            System.out.println();
+            sb.append(getColumn(carCollection, i));
+            sb.append(System.lineSeparator());
         }
+
+        return sb.toString();
     }
 
-    private void displayColumn(List<Car> cars, int columnIndex) {
-        for (Car car : cars) {
-            System.out.println(getPositionLine(car, columnIndex));
+    private String getColumn(CarCollection carCollection, int index) {
+        StringBuilder sb = new StringBuilder();
+
+        for (Car car : carCollection.getCars()) {
+            sb.append(car.getName())
+                    .append(" : ")
+                    .append(getPositionLine(car, index))
+                    .append(System.lineSeparator());
         }
+
+        return sb.toString();
     }
+
 
     private String getPositionLine(Car car, int columnIndex) {
         return "-".repeat(car.getPosition(columnIndex));
     }
+
+    public void displayWinnerMessage(CarCollection carCollection) {
+        System.out.println(getWinnerMessage(carCollection));
+    }
+
+    public String getWinnerMessage(CarCollection carCollection) {
+        String winner = getWinner(carCollection, getBiggestLastPosition(carCollection));
+
+        return winner + "가 최종 우승했습니다.";
+    }
+
+    private int getBiggestLastPosition(CarCollection carCollection) {
+        int max = -1;
+
+        for (Car car : carCollection.getCars()) {
+            int lastPosition = car.getLastPosition();
+
+            if (max < lastPosition) {
+                max = lastPosition;
+            }
+        }
+        return max;
+    }
+
+    private String getWinner(CarCollection carCollection, int biggestLastPosition) {
+        ArrayList<String> winnerList = new ArrayList<>();
+
+        for (Car car : carCollection.getCars()) {
+            int lastPosition = car.getLastPosition();
+
+            if (lastPosition == biggestLastPosition) {
+                winnerList.add(car.getName());
+            }
+        }
+
+        return String.join(", ", winnerList);
+    }
+
 }
