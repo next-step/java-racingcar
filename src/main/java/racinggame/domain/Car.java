@@ -1,10 +1,8 @@
-package racinggame;
+package racinggame.domain;
 
 public class Car {
-    private static final int MOVE_STANDARD = 4;
     public static final int CAR_NAME_STANDARD = 5;
-
-    private int location ;
+    private int location;
     private String name;
 
     public Car() {
@@ -18,16 +16,10 @@ public class Car {
         this.location = getLocation();
     }
 
-    public Car(String name, int location) {
-        this.name = name;
-        this.location = location;
-    }
-    
-    public int move(int numberValue) {
-        if (numberValue >= MOVE_STANDARD) {
-            return ++location;
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.movable()) {
+            location += 1;
         }
-        return location;
     }
 
     public int getLocation() {
@@ -38,4 +30,8 @@ public class Car {
         return name;
     }
 
+    public boolean isWinner(int winnerLocation) {
+        return this.location == winnerLocation;
+    }
+    
 }

@@ -4,9 +4,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racinggame.RandomNumberGenerator.randomNumber;
+import static racinggame.domain.RandomMoveForward.randomNumber;
 
-public class RandomNumberGeneratorTest {
+public class RandomMoveForwardTest {
     @DisplayName("0에서 9 사이에서 random 값을 구하기")
     @Test
     void test1() {

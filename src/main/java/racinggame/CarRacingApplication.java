@@ -1,5 +1,10 @@
 package racinggame;
 
+import racinggame.domain.Car;
+import racinggame.domain.RacingGame;
+import racinggame.view.InputView;
+import racinggame.view.ResultView;
+
 import java.util.List;
 
 public class CarRacingApplication {
@@ -20,10 +25,8 @@ public class CarRacingApplication {
             resultView.gameResultView(racingGame.getCars());
         }
 
-        WinnersCar winnersCar = new WinnersCar();
-
-        List<Car> winnerCar = winnersCar.racingWinner(racingGame.getCars());
-        resultView.gameWinnerView(winnerCar);
+        List<Car> winnerCars = racingGame.winners();
+        resultView.gameWinnerView(winnerCars);
     }
 
 }
