@@ -25,7 +25,7 @@ public class StringAddCalculator {
     private static final int DELIMETER_GROUP = 1;
     private static final int TOKENS_GROUP = 2;
 
-    public static String[] getNumbers(String inputText) {
+    private static String[] getNumbers(String inputText) {
         // 너무 한 메소드에 리턴이 많은 것 같아서 찜찜합니다..
         if (StringUtil.isBlank(inputText)) {
             return new String[]{"0"};
