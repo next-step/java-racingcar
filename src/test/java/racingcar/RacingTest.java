@@ -10,6 +10,8 @@ import static org.assertj.core.api.Assertions.*;
 
 public class RacingTest {
 
+    private Racing racing = new Racing();
+
     @Test
     void 레이싱_전체_테스트() {
         // Given
@@ -19,7 +21,6 @@ public class RacingTest {
 
         // When
         // Then
-        Racing racing = new Racing();
         racing.main();
     }
 }
