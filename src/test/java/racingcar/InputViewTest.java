@@ -5,11 +5,10 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class InputViewTest {
 
-    public InputView inputView = new InputView();
+    public InputView inputView;
 
     @Test
     void 문자_입력_받기() {
@@ -19,7 +18,7 @@ class InputViewTest {
         System.setIn(in);
 
         // When
-        inputView.init();
+        inputView = new InputView();
 
         // Then
         assertThat(inputView.getCarNames()).isEqualTo("pobi,crong,honux");
