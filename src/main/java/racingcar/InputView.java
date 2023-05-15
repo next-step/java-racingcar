@@ -3,17 +3,16 @@ package racingcar;
 import java.util.Scanner;
 
 public class InputView {
-    private String carNames;
-    private int trialCount;
+
+    private InputViewDto inputViewDto;
 
 
-    public Racing init() {
+    InputView() {
         Scanner scanner = new Scanner(System.in);
 
-        carNames = getCarNames(scanner);
-        trialCount = getTrialCount(scanner);
-
-        return new Racing(carNames, trialCount);
+        inputViewDto = new InputViewDto();
+        inputViewDto.setCarNames(getCarNames(scanner));
+        inputViewDto.setTrialCount(getTrialCount(scanner));
     }
 
     private String getCarNames(Scanner scanner) {
@@ -27,10 +26,10 @@ public class InputView {
     }
 
     public String getCarNames() {
-        return carNames;
+        return inputViewDto.getCarNames();
     }
 
     public int getTrialCount() {
-        return trialCount;
+        return inputViewDto.getTrialCount();
     }
 }

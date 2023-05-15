@@ -2,20 +2,26 @@ package racingcar;
 
 public class Racing {
     //    private final List<Car> cars;
-    private final CarCollection carCollection;
+    private CarCollection carCollection;
 
-    Racing(String carNames, int trialCount) {
-        carCollection = buildCarCollection(carNames, trialCount);
+    public void main() {
+        InputView inputView = new InputView();
+        ResultView resultView = new ResultView();
+
+        buildCarCollection(inputView.getCarNames(), inputView.getTrialCount());
+        resultView.displayResults(carCollection);
+        resultView.displayWinnerMessage(carCollection);
     }
 
-    private static CarCollection buildCarCollection(String carNames, int trialCount) {
+    private void buildCarCollection(String carNames, int trialCount) {
+        carCollection = new CarCollection();
+
         String[] names = carNames.split(",");
-        CarCollection carCollection = new CarCollection();
+
         for (String name : names) {
             Car car = new Car(name, trialCount);
             carCollection.addCar(car);
         }
-        return carCollection;
     }
 
     public CarCollection getCarCollection() {

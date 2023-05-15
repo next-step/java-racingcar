@@ -39,6 +39,10 @@ public class ResultView {
         return "-".repeat(car.getPosition(columnIndex));
     }
 
+    public void displayWinnerMessage(CarCollection carCollection) {
+        System.out.println(getWinnerMessage(carCollection));
+    }
+
     public String getWinnerMessage(CarCollection carCollection) {
         String winner = getWinner(carCollection, getBiggestLastPosition(carCollection));
 
