@@ -7,9 +7,9 @@ import java.util.stream.Stream;
 
 public class Race {
 
-    public int tryCount;
+    private int tryCount;
 
-    private List<RacingCar> racingCarsList = new ArrayList<>();
+    private RacingCars racingCars;
 
     public ResultView resultView = new ResultView();
     public InputView inputView = new InputView();
@@ -21,14 +21,10 @@ public class Race {
 
     public void settingRace() {
         System.out.println(resultView.viewQuestionMessage("CAR"));
-        settingCar(inputView.scanNumber());
+        this.racingCars = new RacingCars(Stream.generate(RacingCar::new).limit(inputView.scanNumber()).collect(Collectors.toList()));
         System.out.println(resultView.viewQuestionMessage("TRY"));
         tryCount = inputView.scanNumber();
         System.out.println(resultView.viewQuestionMessage("PLAY_RESULT"));
-    }
-
-    public void settingCar(int count) {
-        racingCarsList = Stream.generate(RacingCar::new).limit(count).collect(Collectors.toList());
     }
 
     public void raceStart() {
@@ -38,7 +34,7 @@ public class Race {
     }
 
     public void play() {
-        for (RacingCar racingCar : racingCarsList) {
+        for (RacingCar racingCar : racingCars.getRacingCars()) {
             forwardCar(racingCar);
             System.out.println(resultView.viewLocation(racingCar.forwardCount));
         }
