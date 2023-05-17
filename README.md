@@ -9,6 +9,9 @@
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 * 
 ## 구현할 기능 목록
-* 0과 9 사이에서 random값을 구한 후 random 값이 4 이상인지 여부를 return하는 기능
-* 입력받은 시도 횟수만큼 레이싱을 진행하며 결과를 출력하는 기능
-* 자동차 댓수, 시도할 횟수를 사용자에게 입력받아 전체 동작을 수행하는 기능
+* Car Move에 대한 인터페이스 작성
+* -> 항상 성공하는 구현체와, 랜덤하게 성공하는 구현체 분리하여 작성
+* 입력을 담당하는 InputView class
+* 메인 로직을 담당하는 CarRacing class
+* 출력을 담당하는 ResultView class
+* 전체 로직을 수행하는 CarRacing의 main method
