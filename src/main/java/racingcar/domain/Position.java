@@ -7,6 +7,10 @@ public class Position {
         this.position = 0;
     }
 
+    public Position(int position) {
+        this.position = position;
+    }
+
     public void move() {
         this.position++;
     }
