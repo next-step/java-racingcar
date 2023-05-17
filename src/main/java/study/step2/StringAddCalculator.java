@@ -7,6 +7,7 @@ public class StringAddCalculator {
 
     private static final int DELIMITER_INDEX = 1;
     private static final int TOKENS_INDEX = 2;
+    private static final Pattern PATTERN = Pattern.compile("//(.)\n(.*)");
 
 
     static int splitAndSum(String text) {
@@ -19,9 +20,7 @@ public class StringAddCalculator {
     }
 
     private static String[] split(String text) {
-        final Pattern pattern = Pattern.compile("//(.)\n(.*)");
-
-        Matcher matcher = pattern.matcher(text);
+        Matcher matcher = PATTERN.matcher(text);
 
         if (matcher.find()) {
             String customDelimiter = matcher.group(DELIMITER_INDEX);
