@@ -44,11 +44,7 @@ public class StringAddCalculator {
     }
 
     private static int toNumber(String token) {
-        try {
-            return Integer.parseInt(token);
-        } catch (NumberFormatException e) {
-            throw e;
-        }
+        return Integer.parseInt(token);
     }
 
     private static int getPositiveNumber(String token) {
