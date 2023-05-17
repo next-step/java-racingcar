@@ -2,35 +2,33 @@ package study.racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Race {
 
-    public int carCount;
     public int tryCount;
 
-    List<RacingCar> racingCarsList = new ArrayList<>();
+    private List<RacingCar> racingCarsList = new ArrayList<>();
 
     public ResultView resultView = new ResultView();
     public InputView inputView = new InputView();
 
     public void race() {
         settingRace();
-        settingCar();
         raceStart();
     }
 
     public void settingRace() {
         System.out.println(resultView.viewQuestionMessage("CAR"));
-        carCount = inputView.scanNumber();
+        settingCar(inputView.scanNumber());
         System.out.println(resultView.viewQuestionMessage("TRY"));
         tryCount = inputView.scanNumber();
         System.out.println(resultView.viewQuestionMessage("PLAY_RESULT"));
     }
 
-    public void settingCar() {
-        for (int i = 0; i < carCount; i++) {
-            racingCarsList.add(new RacingCar());
-        }
+    public void settingCar(int count) {
+        racingCarsList = Stream.generate(RacingCar::new).limit(count).collect(Collectors.toList());
     }
 
     public void raceStart() {
@@ -40,9 +38,9 @@ public class Race {
     }
 
     public void play() {
-        for (int i = 0; i < carCount; i++) {
-            forwardCar(racingCarsList.get(i));
-            System.out.println(resultView.viewLocation(racingCarsList.get(i).forwardCount));
+        for (RacingCar racingCar : racingCarsList) {
+            forwardCar(racingCar);
+            System.out.println(resultView.viewLocation(racingCar.forwardCount));
         }
         resultView.viewEmpty();
     }
