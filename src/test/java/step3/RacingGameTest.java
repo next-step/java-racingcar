@@ -8,8 +8,6 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 public class RacingGameTest {
 
-    private final RacingGame racingGame = new RacingGame();
-
     @DisplayName("입력 받은 값 만큼 차를 생성하는지 테스트")
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 10})
