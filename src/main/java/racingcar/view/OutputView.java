@@ -1,4 +1,7 @@
-package racingcar;
+package racingcar.view;
+
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,8 +15,9 @@ public class OutputView {
         System.out.println("\n실행 결과");
     }
 
-    public static void printCarPosition(List<Car> cars) {
-        for (Car car : cars) {
+    public static void printCarPosition(Cars cars) {
+
+        for (Car car : cars.getCars()) {
             printPosition(car);
         }
         System.out.println();
