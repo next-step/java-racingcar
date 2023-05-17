@@ -4,6 +4,7 @@ import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
+import racingcar.domain.Cars;
 import racingcar.domain.Game;
 
 import java.util.List;
@@ -19,10 +20,10 @@ class GameTest {
         Car car1 = new Car("car1", 2);
         Car car2 = new Car("car2", 1);
         Car car3 = new Car("car3", 1);
-        List<Car> endRaceCarList = Lists.newArrayList(car1, car2, car3);
+        Cars cars = new Cars(Lists.newArrayList(car1, car2, car3));
 
         //act
-        Game game = new Game(endRaceCarList);
+        Game game = new Game(cars);
         List<Car> winner = game.getWinner();
 
         //assert
@@ -37,10 +38,10 @@ class GameTest {
         Car car1 = new Car("car1", 2);
         Car car2 = new Car("car2", 2);
         Car car3 = new Car("car3", 1);
-        List<Car> endRaceCarList = Lists.newArrayList(car1, car2, car3);
+        Cars cars = new Cars(Lists.newArrayList(car1, car2, car3));
 
         //act
-        Game game = new Game(endRaceCarList);
+        Game game = new Game(cars);
         List<Car> winner = game.getWinner();
 
         //assert
