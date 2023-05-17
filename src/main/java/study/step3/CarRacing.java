@@ -1,39 +1,40 @@
 package study.step3;
 
+import study.step3.dto.Input;
+import study.step3.move.Move;
+import study.step3.move.RandomlyMove;
+
 import java.util.*;
 
 public class CarRacing {
 
+
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        int carNum = scanner.nextInt();
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        int tryNum = scanner.nextInt();
-        System.out.println("\n실행 결과");
+        InputView inputView = new InputView();
+        ResultView resultView = new ResultView();
 
-        racing(carNum, tryNum);
+        resultView.print(racing(inputView.enter(), new RandomlyMove()));
+
     }
 
-    private static void racing(int carNum, int tryNum) {
-        String[] positionArray = new String[carNum];
-        Arrays.fill(positionArray, "");
+    public static String[][] racing(Input input, Move move) {
+        int carNum = input.getCarNum();
+        int tryNum = input.getTryNum();
+        String[][] positionArr = new String[tryNum][carNum];
 
-        for (int i = 0; i < tryNum; i++) {
-            for (int j = 0; j < carNum; j++) {
-                if (isSuccess()) {
-                    positionArray[j] += "-";
-                }
-                System.out.println(positionArray[j]);
-            }
-            System.out.println();
+        for (String[] row : positionArr) {
+            Arrays.fill(row, "-");
         }
-    }
-    private static boolean isSuccess() {
-        final Random random = new Random();
-        int randomNumber = random.nextInt(10);
 
-        return randomNumber >= 4;
+        for (int i = 1; i < tryNum; i++) {
+            for (int j = 0; j < carNum; j++) {
+                if (move.isSuccess()){
+                    positionArr[i][j] = positionArr[i - 1][j] + "-";
+                }
+            }
+        }
+
+        return positionArr;
     }
 }
