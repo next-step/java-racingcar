@@ -1,6 +1,6 @@
 package study.step3.move;
 
-public interface Move {
+public interface MoveStrategy {
 
     boolean isSuccess();
 }

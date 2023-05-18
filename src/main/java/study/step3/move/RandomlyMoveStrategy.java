@@ -2,7 +2,7 @@ package study.step3.move;
 
 import java.util.Random;
 
-public class RandomlyMove implements Move{
+public class RandomlyMoveStrategy implements MoveStrategy {
     @Override
     public boolean isSuccess() {
         final Random random = new Random();

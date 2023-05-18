@@ -1,6 +1,6 @@
 package study.step3.move;
 
-public class AlwaysMove implements Move {
+public class AlwaysMoveStrategy implements MoveStrategy {
     @Override
     public boolean isSuccess() {
         return true;

@@ -1,14 +1,17 @@
 package study.step3;
 
-public class ResultView {
-    public void print(String[][] result){
-        System.out.println("\n실행 결과");
+import study.step3.dto.Car;
 
-        for (int i = 0; i < result.length; i++) {
-            for (int j = 0; j < result[i].length; j++) {
-                System.out.println(result[i][j]);
-            }
-            System.out.println();
+import java.util.List;
+
+public class ResultView {
+
+    public void printCars(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.println(car.getPositionStr());
         }
+        System.out.println();
+
     }
+
 }
