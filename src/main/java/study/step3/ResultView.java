@@ -7,7 +7,6 @@ import java.util.List;
 public class ResultView {
     private static final char POSITION_MARK = '*';
     public void printCars(List<Car> cars) {
-        System.out.println("\n실행 결과");
         for (Car car : cars) {
             System.out.println(getPositionStr(car));
         }
