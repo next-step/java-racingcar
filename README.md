@@ -7,3 +7,11 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+* 
+## 구현할 기능 목록
+* Car Move에 대한 인터페이스 작성
+* -> 항상 성공하는 구현체와, 랜덤하게 성공하는 구현체 분리하여 작성
+* 입력을 담당하는 InputView class
+* 메인 로직을 담당하는 CarRacing class
+* 출력을 담당하는 ResultView class
+* 전체 로직을 수행하는 CarRacing의 main method
