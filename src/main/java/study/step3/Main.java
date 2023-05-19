@@ -18,7 +18,6 @@ public class Main {
         for (int i = 0; i < input.getTryNum(); i++) {
             racingGame.play();
             List<Car> cars = racingGame.getCarList();
-            System.out.println("\n실행 결과");
             resultView.printCars(cars);
         }
 
