@@ -11,7 +11,10 @@ public class ResultView {
             System.out.println(getPositionStr(car));
         }
         System.out.println();
+    }
 
+    public void printInit() {
+        System.out.println("\n실행 결과");
     }
     private String getPositionStr(Car car) {
         StringBuilder positionStr = new StringBuilder();

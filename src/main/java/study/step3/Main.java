@@ -15,7 +15,7 @@ public class Main {
 
         RacingGame racingGame = new RacingGame(input.getCarNum(), new RandomlyMoveStrategy());
 
-        System.out.println("\n실행 결과");
+        resultView.printInit();
         for (int i = 0; i < input.getTryNum(); i++) {
             racingGame.play();
             List<Car> cars = racingGame.getCarList();
