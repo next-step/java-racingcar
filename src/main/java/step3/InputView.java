@@ -9,19 +9,30 @@ public class InputView {
 
     public static int getNumOfCar() {
         System.out.println(ASK_QUESTION_FOR_A_NUM_OF_CAR);
-        int numOfCar = Integer.parseInt(SCANNER.nextLine());
-        if (numOfCar <= 0) {
+        String numOfCar = SCANNER.nextLine();
+        if (!checkIfPositive(numOfCar)) {
             throw new RuntimeException("자동차 대수는 양수여야 합니다.");
         }
-        return numOfCar;
+        return Integer.parseInt(numOfCar);
     }
 
     public static int getNumOfTrial() {
         System.out.println(ASK_QUESTION_FOR_A_NUM_OF_TRIAL);
-        int numOfTrial = Integer.parseInt(SCANNER.nextLine());
-        if (numOfTrial <= 0) {
+        String numOfTrial = SCANNER.nextLine();
+        if (!checkIfPositive(numOfTrial)) {
             throw new RuntimeException("시도할 횟수는 양수여야 합니다.");
         }
-        return numOfTrial;
+        return Integer.parseInt(numOfTrial);
+    }
+
+    public static boolean checkIfPositive(String strValue) {
+        if (!isNumber(strValue) || Integer.parseInt(strValue) <= 0) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean isNumber(String strValue) {
+        return strValue != null && strValue.matches("[-+]?\\d*\\.?\\d+");
     }
 }
