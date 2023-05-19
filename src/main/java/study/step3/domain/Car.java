@@ -1,4 +1,4 @@
-package study.step3.dto;
+package study.step3.domain;
 
 public class Car {
 

@@ -1,6 +1,6 @@
 package study.step3;
 
-import study.step3.dto.Car;
+import study.step3.domain.Car;
 
 import java.util.List;
 
