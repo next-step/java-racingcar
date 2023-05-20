@@ -13,11 +13,12 @@ public class RacingGame {
             cars.add(new Car());
         }
 
-        Movement movement = new Movement(cars, new RandomMoveStrategy());
+        Movement movement = new Movement(cars);
+        RandomMoveStrategy randomMoveStrategy = new RandomMoveStrategy();
         ResultView.printResultMessage();
 
         for (int i = 0; i < numOfTrial; i++) {
-            movement.moveCars();
+            movement.moveCars(randomMoveStrategy);
             ResultView.printRaceResult(cars);
         }
     }

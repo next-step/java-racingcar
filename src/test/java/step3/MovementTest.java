@@ -17,22 +17,35 @@ public class MovementTest {
     void setUp() {
         Car car1 = new Car();
         cars = Arrays.asList(car1);
-
-        RandomMoveStrategy randomMoveStrategy = new RandomMoveStrategy();
-        movement = new Movement(cars, randomMoveStrategy);
+        movement = new Movement(cars);
     }
 
     @Test
-    @DisplayName("moveCars에 조건에 해당하는 경우 차가 이동하는지 확인")
-    void moveCarsTest() {
+    @DisplayName("random 값이 4보다 크거나 같다면 trace 증가")
+    void moveCarsTest_NumberIsEqualOrGreaterThanFour() {
         // given
         int initialTrace = cars.get(0).getTrace();
         int traceIfMoved = initialTrace + 1;
+        MovableMoveStrategy movableMoveStrategy = new MovableMoveStrategy();
 
         // when
-        movement.moveCars();
+        movement.moveCars(movableMoveStrategy);
 
         // then
-        assertThat(cars.get(0).getTrace()).isBetween(initialTrace, traceIfMoved);
+        assertThat(cars.get(0).getTrace()).isEqualTo(traceIfMoved);
+    }
+
+    @Test
+    @DisplayName("random 값이 4보다 작으면 trace 그대로")
+    void moveCarsTest_NumberIsLessThanFour() {
+        // given
+        int initialTrace = cars.get(0).getTrace();
+        NonMovableMoveStrategy nonMovableMoveStrategy = new NonMovableMoveStrategy();
+
+        // when
+        movement.moveCars(nonMovableMoveStrategy);
+
+        // then
+        assertThat(cars.get(0).getTrace()).isEqualTo(initialTrace);
     }
 }
