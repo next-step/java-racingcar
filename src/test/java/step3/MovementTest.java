@@ -15,8 +15,8 @@ public class MovementTest {
 
     @BeforeEach
     void setUp() {
-        Car car1 = new Car();
-        cars = Arrays.asList(car1);
+        Car car = new Car("붕붕이");
+        cars = Arrays.asList(car);
         movement = new Movement(cars);
     }
 

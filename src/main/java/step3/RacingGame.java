@@ -5,12 +5,12 @@ import java.util.List;
 
 public class RacingGame {
     public static void main(String[] args) {
-        int numOfCar = InputView.getNumOfCar();
+        String[] carNames = InputView.getCarNames();
         int numOfTrial = InputView.getNumOfTrial();
-        List <Car> cars = new ArrayList<>();
 
-        for (int i = 0; i < numOfCar; i++) {
-            cars.add(new Car());
+        List <Car> cars = new ArrayList<>();
+        for (String name : carNames) {
+            cars.add(new Car(name));
         }
 
         Movement movement = new Movement(cars);
