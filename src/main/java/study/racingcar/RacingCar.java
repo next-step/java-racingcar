@@ -2,7 +2,23 @@ package study.racingcar;
 
 public class RacingCar {
 
-    public int forwardCount;
+    private String carName;
+    private int forwardCount;
+
+    public RacingCar() {
+    }
+
+    public RacingCar(String carName) {
+        this.carName = carName;
+    }
+
+    public String getCarName() {
+        return carName;
+    }
+
+    public int getForwardCount() {
+        return forwardCount;
+    }
 
     public void forward() {
         this.forwardCount++;

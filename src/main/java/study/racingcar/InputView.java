@@ -6,9 +6,9 @@ import java.util.Scanner;
 
 public class InputView {
 
-    String splitMark = ",";
-
     Random random = new Random();
+
+    public ResultView resultView = new ResultView();
 
     public int scanNumber() {
         int number = 0;
@@ -17,7 +17,7 @@ public class InputView {
             number = scanner.nextInt();
         } catch (InputMismatchException imException) {
             System.out.println("숫자만 입력해주세요.");
-            scanNumber();
+            number = scanNumber();
         }
         return number;
     }
@@ -28,7 +28,19 @@ public class InputView {
     }
 
     public String[] splitString(String fullString) {
-        return fullString.split(",");
+        String[] result =  fullString.split(Race.CAR_NAME_SPLIT_MARK);
+        for (String str : result) {
+            checkString(str);
+        }
+        return result;
+    }
+
+    public void checkString(String str) {
+        if (str.length() > Race.CAR_NAME_LIMIT) {
+            System.out.println(resultView.viewQuestionMessage("NAME_ERROR"));
+            Race race = new Race();
+            race.race();
+        }
     }
 
     public int randomNumber() {
