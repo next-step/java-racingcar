@@ -11,14 +11,9 @@ public class ResultView {
 
     public static void printRaceResult(List<Car> cars) {
         for (Car car : cars) {
-            printTraceEachCar(car.getTrace());
+            String carStatus = car.getName() + " : " + "-".repeat(car.getTrace());
+            System.out.println(carStatus);
         }
-        System.out.println();
-    }
-
-    public static void printTraceEachCar(int trace) {
-        for (int i = 0; i < trace; i++)
-            System.out.print("-");
         System.out.println();
     }
 }
