@@ -21,5 +21,8 @@ public class RacingGame {
             movement.moveCars(randomMoveStrategy);
             ResultView.printRaceResult(cars);
         }
+
+        List<Car> winners = WinnerCalculator.getWinners(cars);
+        ResultView.printWinner(winners);
     }
 }
