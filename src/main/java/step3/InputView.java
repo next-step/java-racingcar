@@ -10,32 +10,17 @@ public class InputView {
     public static String[] getCarNames() {
         System.out.println(ASK_QUESTION_FOR_CAR_NAMES);
         String[] carNames = SCANNER.nextLine().split(",");
-        validateCarNamesLengthInRange(carNames);
+        InputValidator.validateCarNamesLengthInRange(carNames);
         return carNames;
     }
 
-    public static void validateCarNamesLengthInRange(String[] names) {
-        for (String name : names) {
-            if (name.length() > 5) {
-                throw new RuntimeException("자동차 이름은 5자를 초과할 수 앖습니다.");
-            }
-        }
-    }
+
 
     public static int getNumOfTrial() {
         System.out.println(ASK_QUESTION_FOR_A_NUM_OF_TRIAL);
         String numOfTrial = SCANNER.nextLine();
-        validatePositive(numOfTrial);
+        InputValidator.validatePositive(numOfTrial);
         return Integer.parseInt(numOfTrial);
     }
 
-    public static void validatePositive(String strValue) {
-        if (!isNumber(strValue) || Integer.parseInt(strValue) <= 0) {
-            throw new RuntimeException("시도할 횟수는 양수여야 합니다.");
-        }
-    }
-
-    public static boolean isNumber(String strValue) {
-        return strValue != null && strValue.matches("[-+]?\\d*\\.?\\d+");
-    }
 }
