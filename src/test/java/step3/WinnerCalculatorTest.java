@@ -34,10 +34,10 @@ public class WinnerCalculatorTest {
         Car pobi = new Car("pobi");
         Car boo = new Car("boo");
         boo.plusTrace();
-        Car reoung = new Car("reoung");
-        reoung.plusTrace();
+        Car rung = new Car("rung");
+        rung.plusTrace();
 
-        List<Car> cars = Arrays.asList(pobi, boo, reoung);
+        List<Car> cars = Arrays.asList(pobi, boo, rung);
 
         // when
         List<Car> winners = WinnerCalculator.getWinners(cars);
