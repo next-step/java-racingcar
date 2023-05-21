@@ -7,7 +7,8 @@ public class ResultView {
     private final String playResultMessage = "\n실행결과";
     private final String noMessage = "NO MESSAGE";
     private final String carNameErrorMessage = "자동차 이름은 5자 이내여야 합니다. 다시 입력해주세요.";
-    private final String locationString = "-";
+    private final String raceResultMessage = "가 최종 우승했습니다.";
+
 
     public void viewEmpty() {
         System.out.println();
@@ -22,15 +23,22 @@ public class ResultView {
             return playResultMessage;
         } else if (type.equals("NAME_ERROR")) {
             return carNameErrorMessage;
+        } else if (type.equals("RACE_RESULT")) {
+            return raceResultMessage;
         }
         return noMessage;
     }
 
-    public String viewLocation(int count) {
+    public String concatString(String str1, String str2) {
         String result = "";
-        for (int i = 0; i < count; i++) {
-            result += locationString;
+        if (!str1.equals("")) {
+            result = str1 + ", " + str2;
+        } else if (str1.equals("")) {
+            return str2;
         }
         return result;
     }
+
+
+
 }

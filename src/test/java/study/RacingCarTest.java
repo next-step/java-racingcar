@@ -49,19 +49,19 @@ public class RacingCarTest {
         int number = inputView.randomNumber();
         racingCar.forwardAndStop(number);
         if(number >= 4) {
-            assertThat(resultView.viewLocation(racingCar.forwardCount)).isEqualTo("-");
+            assertThat(racingCar.getForwardCount()).isEqualTo(1);
         }else {
-            assertThat(resultView.viewLocation(racingCar.forwardCount)).isEqualTo("");
+            assertThat(racingCar.getForwardCount()).isEqualTo(0);
         }
     }
 
     @Test
     @DisplayName("자동차의 상태가 잘 나타나는지 확인")
     void carsStatus() {
-        RacingCar racingCar = new RacingCar();
+        RacingCar racingCar = new RacingCar("bear");
         racingCar.forward();
         racingCar.forward();
         racingCar.forward();
-        assertThat(resultView.viewLocation(racingCar.forwardCount)).isEqualTo("---");
+        assertThat(racingCar.carStatus()).isEqualTo("bear : ---");
     }
 }

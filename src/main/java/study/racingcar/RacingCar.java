@@ -5,6 +5,8 @@ public class RacingCar {
     private String carName;
     private int forwardCount;
 
+    private final String locationString = "-";
+
     public RacingCar() {
     }
 
@@ -28,6 +30,18 @@ public class RacingCar {
         if (number >= 4) {
             forward();
         }
+    }
+
+    public String viewLocation() {
+        String result = "";
+        for (int i = 0; i < forwardCount; i++) {
+            result += locationString;
+        }
+        return result;
+    }
+
+    public String carStatus() {
+        return carName + " : " + viewLocation();
     }
 
 }
