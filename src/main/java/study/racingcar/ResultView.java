@@ -2,7 +2,7 @@ package study.racingcar;
 
 public class ResultView {
 
-    String questionCarCountMessage = "자동차 대수는 몇 대 인가요?";
+    String questionCarCountMessage = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     String questionTryCountMessage = "시도할 회수는 몇 회 인가요?";
     String playResultMessage = "\n실행결과";
     String noMessage = "NO MESSAGE";

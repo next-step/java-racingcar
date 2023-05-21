@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 public class InputView {
 
+    String splitMark = ",";
+
     Random random = new Random();
 
     public int scanNumber() {
@@ -18,6 +20,15 @@ public class InputView {
             scanNumber();
         }
         return number;
+    }
+
+    public String scanString() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
+    }
+
+    public String[] splitString(String fullString) {
+        return fullString.split(",");
     }
 
     public int randomNumber() {
