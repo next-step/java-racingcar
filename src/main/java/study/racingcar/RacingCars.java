@@ -2,6 +2,8 @@ package study.racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class RacingCars {
 
@@ -30,14 +32,16 @@ public class RacingCars {
         }
     }
 
-    public void settingWinner(RacingCar racingCar) {
+    public void settingMaxLocationCount(RacingCar racingCar) {
         if (racingCar.getForwardCount() > maxLocationCount) {
             maxLocationCount = racingCar.getForwardCount();
-            winners.clear();
-            winners.add(racingCar);
-        } else if (racingCar.getForwardCount() == maxLocationCount) {
-            winners.add(racingCar);
         }
+    }
+
+    public void settingWinner() {
+        winners = racingCars.stream()
+                .filter(racingCar -> maxLocationCount == racingCar.getForwardCount())
+                .collect(Collectors.toList());
     }
 
 }

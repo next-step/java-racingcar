@@ -53,11 +53,10 @@ public class Race {
 
     public void winnerRevealed() {
         for (RacingCar racingCar : racingCars.getRacingCars()) {
-            racingCars.settingWinner(racingCar);
+            racingCars.settingMaxLocationCount(racingCar);
         }
+        racingCars.settingWinner();
     }
-
-
 
     public void raceResult() {
         String winnersStr = "";
