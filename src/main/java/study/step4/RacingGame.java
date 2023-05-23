@@ -40,9 +40,7 @@ public class RacingGame {
 
     public void play() {
         for (Car car : carList) {
-            if (moveStrategy.isSuccess()) {
-                car.move();
-            }
+                car.move(moveStrategy);
         }
     }
 }
