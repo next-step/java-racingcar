@@ -8,6 +8,7 @@ public class ResultView {
     private final String noMessage = "NO MESSAGE";
     private final String carNameErrorMessage = "자동차 이름은 5자 이내여야 합니다. 다시 입력해주세요.";
     private final String raceResultMessage = "가 최종 우승했습니다.";
+    private final String locationString = "-";
 
 
     public void viewEmpty() {
@@ -39,6 +40,17 @@ public class ResultView {
         return result;
     }
 
+    public String viewLocationMark(int count) {
+        String result = "";
+        for (int i = 0; i < count; i++) {
+            result += locationString;
+        }
+        return result;
+    }
+
+    public String viewCarStatus(RacingCar racingCar) {
+        return racingCar.getCarName() + " : " + viewLocationMark(racingCar.getForwardCount());
+    }
 
 
 }

@@ -6,6 +6,9 @@ import java.util.List;
 public class RacingCars {
 
     private List<RacingCar> racingCars = new ArrayList<>();
+    private List<RacingCar> winners = new ArrayList<>();
+
+    private int maxLocationCount = 0;
 
     public RacingCars() {
     }
@@ -17,6 +20,9 @@ public class RacingCars {
     public List<RacingCar> getRacingCars() {
         return racingCars;
     }
+    public List<RacingCar> getWinners() {
+        return winners;
+    }
 
     public void settingRacingCars(String[] carNames) {
         for (String carName : carNames) {
@@ -24,5 +30,14 @@ public class RacingCars {
         }
     }
 
+    public void settingWinner(RacingCar racingCar) {
+        if (racingCar.getForwardCount() > maxLocationCount) {
+            maxLocationCount = racingCar.getForwardCount();
+            winners.clear();
+            winners.add(racingCar);
+        } else if (racingCar.getForwardCount() == maxLocationCount) {
+            winners.add(racingCar);
+        }
+    }
 
 }

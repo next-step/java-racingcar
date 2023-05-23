@@ -62,6 +62,6 @@ public class RacingCarTest {
         racingCar.forward();
         racingCar.forward();
         racingCar.forward();
-        assertThat(racingCar.carStatus()).isEqualTo("bear : ---");
+        assertThat(resultView.viewCarStatus(racingCar)).isEqualTo("bear : ---");
     }
 }
