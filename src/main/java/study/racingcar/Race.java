@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Race {
-    public static final int CAR_NAME_LIMIT = 5;
     public static final String CAR_NAME_SPLIT_MARK = ",";
 
 
@@ -26,8 +25,10 @@ public class Race {
     }
 
     public void settingRace() {
+        racingCars = new RacingCars();
         System.out.println(resultView.viewQuestionMessage("CAR"));
         racingCars.settingRacingCars(inputView.splitString(inputView.scanString()));
+        checkRacingCar();
         System.out.println(resultView.viewQuestionMessage("TRY"));
         tryCount = inputView.scanNumber();
         System.out.println(resultView.viewQuestionMessage("PLAY_RESULT"));
@@ -65,5 +66,13 @@ public class Race {
         }
         System.out.println(winnersStr+resultView.viewQuestionMessage("RACE_RESULT"));
     }
+
+    public void checkRacingCar() {
+        if (1 <= racingCars.findBrokeRacingCarCount()){
+            System.out.println(resultView.viewQuestionMessage("NAME_ERROR"));
+            race();
+        }
+    }
+
 
 }

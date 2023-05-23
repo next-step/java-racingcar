@@ -28,20 +28,16 @@ public class InputView {
     }
 
     public String[] splitString(String fullString) {
-        String[] result =  fullString.split(Race.CAR_NAME_SPLIT_MARK);
-        for (String str : result) {
-            checkString(str);
-        }
-        return result;
+        return fullString.split(Race.CAR_NAME_SPLIT_MARK);
     }
 
-    public void checkString(String str) {
-        if (str.length() > Race.CAR_NAME_LIMIT) {
-            System.out.println(resultView.viewQuestionMessage("NAME_ERROR"));
-            Race race = new Race();
-            race.race();
-        }
-    }
+//    public void checkString(String str) {
+//        if (str.length() > Race.CAR_NAME_LIMIT) {
+//            System.out.println(resultView.viewQuestionMessage("NAME_ERROR"));
+//            Race race = new Race();
+//            race.race();
+//        }
+//    }
 
     public int randomNumber() {
         return random.nextInt(10);

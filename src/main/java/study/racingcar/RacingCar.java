@@ -2,14 +2,18 @@ package study.racingcar;
 
 public class RacingCar {
 
+    public static final int CAR_NAME_LIMIT = 5;
+
     private String carName;
     private int forwardCount;
+    private boolean brokeAt = false;
 
     public RacingCar() {
     }
 
     public RacingCar(String carName) {
         this.carName = carName;
+        checkCarName(carName);
     }
 
     public String getCarName() {
@@ -18,6 +22,10 @@ public class RacingCar {
 
     public int getForwardCount() {
         return forwardCount;
+    }
+
+    public boolean isBrokeAt() {
+        return brokeAt;
     }
 
     public void forward() {
@@ -31,6 +39,8 @@ public class RacingCar {
     }
 
     public void checkCarName(String carName) {
-
+        if (carName.length() > CAR_NAME_LIMIT) {
+            this.brokeAt = true;
+        }
     }
 }

@@ -44,4 +44,10 @@ public class RacingCars {
                 .collect(Collectors.toList());
     }
 
+    public int findBrokeRacingCarCount() {
+        return racingCars.stream()
+                .filter(racingCar -> racingCar.isBrokeAt())
+                .collect(Collectors.toList())
+                .size();
+    }
 }
