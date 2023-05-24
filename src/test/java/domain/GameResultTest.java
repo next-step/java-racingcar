@@ -29,13 +29,13 @@ class GameResultTest {
 
     @BeforeEach
     void setUp() {
-        defaultCarState = DefaultCarState.create(CAR_INITIAL_POSITION);
+        defaultCarState = CarState.create(CAR_INITIAL_POSITION);
         defaultCarDisplacement = DefaultCarDisplacement.create(DEFAULT_MOVE_VALUE);
         defaultCar = Car.createCar(defaultCarState, defaultCarDisplacement);
 
-        firstCar = Car.createCar(DefaultCarState.create(FIRST_CAR_DEFAULT_POTITION), defaultCarDisplacement);
-        secondCar = Car.createCar(DefaultCarState.create(SECOND_CAR_DEFAULT_POTITION), defaultCarDisplacement);
-        thirdCar = Car.createCar(DefaultCarState.create(THIRD_CAR_DEFAULT_POTITION), defaultCarDisplacement);
+        firstCar = Car.createCar(CarState.create(FIRST_CAR_DEFAULT_POTITION), defaultCarDisplacement);
+        secondCar = Car.createCar(CarState.create(SECOND_CAR_DEFAULT_POTITION), defaultCarDisplacement);
+        thirdCar = Car.createCar(CarState.create(THIRD_CAR_DEFAULT_POTITION), defaultCarDisplacement);
 
         defaultCars = new ArrayList<>();
         defaultCars.add(firstCar);

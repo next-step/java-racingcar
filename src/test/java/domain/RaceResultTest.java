@@ -22,7 +22,7 @@ class RaceResultTest {
 
     @BeforeEach
     void setUp() {
-        defaultCarState = DefaultCarState.create(INITIAL_CAR_POSITION);
+        defaultCarState = CarState.create(INITIAL_CAR_POSITION);
         defaultCarDisplacement = DefaultCarDisplacement.create(DEFAULT_MOVE_VALUE);
         defaultCar = Car.createCar(defaultCarState, defaultCarDisplacement);
 

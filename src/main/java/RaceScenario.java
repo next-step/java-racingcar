@@ -18,9 +18,9 @@ public class RaceScenario {
 
     private static RaceResultView startRace(List<CarName> carNames, NumberOfRaces numberOfRaces) {
         RaceInfo raceInfo = new RaceInfo(
-                CarNames.toNumberOfCars(carNames),
+                NumberOfCars.toNumberOfCars(carNames),
                 numberOfRaces,
-                Car.createCar(DefaultCarState.create(INITIAL_POSITION), ThresholdCarDisplacement.create(new RandomNumberGenerator(RANDOM_RANGE), RANDOM_DIVIDING_POINT)));
+                Car.createCar(CarState.create(INITIAL_POSITION), ThresholdCarDisplacement.create(new RandomNumberGenerator(RANDOM_RANGE), RANDOM_DIVIDING_POINT)));
 
         Race race = new Race(raceInfo);
         return new RaceResultView(race.calculate(), carNames);

@@ -19,6 +19,6 @@ class CarNamesTest {
 
     @Test
     void toNumberOfCars() {
-        assertEquals(new NumberOfCars(2), CarNames.toNumberOfCars(carNames));
+        assertEquals(new NumberOfCars(2), NumberOfCars.toNumberOfCars(carNames));
     }
 }

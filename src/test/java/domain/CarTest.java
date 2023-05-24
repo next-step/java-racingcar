@@ -18,7 +18,7 @@ public class CarTest {
 
     @BeforeEach
     void setUp() {
-        defaultCarState = DefaultCarState.create(INITIAL_POSITION);
+        defaultCarState = CarState.create(INITIAL_POSITION);
         defaultCarDisplacement = DefaultCarDisplacement.create(DEFAULT_MOVE_VALUE);
         defaultCar = Car.createCar(defaultCarState, defaultCarDisplacement);
     }
