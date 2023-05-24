@@ -6,10 +6,13 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Race {
+    public static final String CAR_NAME_SPLIT_MARK = ",";
+
 
     private int tryCount;
 
-    private RacingCars racingCars;
+    private RacingCars racingCars = new RacingCars();
+
 
     public ResultView resultView = new ResultView();
     public InputView inputView = new InputView();
@@ -17,11 +20,15 @@ public class Race {
     public void race() {
         settingRace();
         raceStart();
+        winnerRevealed();
+        raceResult();
     }
 
     public void settingRace() {
+        racingCars = new RacingCars();
         System.out.println(resultView.viewQuestionMessage("CAR"));
-        this.racingCars = new RacingCars(Stream.generate(RacingCar::new).limit(inputView.scanNumber()).collect(Collectors.toList()));
+        racingCars.settingRacingCars(inputView.splitString(inputView.scanString()));
+        checkRacingCar();
         System.out.println(resultView.viewQuestionMessage("TRY"));
         tryCount = inputView.scanNumber();
         System.out.println(resultView.viewQuestionMessage("PLAY_RESULT"));
@@ -36,13 +43,35 @@ public class Race {
     public void play() {
         for (RacingCar racingCar : racingCars.getRacingCars()) {
             forwardCar(racingCar);
-            System.out.println(resultView.viewLocation(racingCar.forwardCount));
+            System.out.println(resultView.viewCarStatus(racingCar));
         }
         resultView.viewEmpty();
     }
 
     public void forwardCar(RacingCar racingCar) {
         racingCar.forwardAndStop(inputView.randomNumber());
+    }
+
+    public void winnerRevealed() {
+        for (RacingCar racingCar : racingCars.getRacingCars()) {
+            racingCars.settingMaxLocationCount(racingCar);
+        }
+        racingCars.settingWinner();
+    }
+
+    public void raceResult() {
+        String winnersStr = "";
+        for (RacingCar racingCar : racingCars.getWinners()) {
+            winnersStr = resultView.concatString(winnersStr, racingCar.getCarName());
+        }
+        System.out.println(winnersStr+resultView.viewQuestionMessage("RACE_RESULT"));
+    }
+
+    public void checkRacingCar() {
+        if (1 <= racingCars.findBrokeRacingCarCount()){
+            System.out.println(resultView.viewQuestionMessage("NAME_ERROR"));
+            race();
+        }
     }
 
 
