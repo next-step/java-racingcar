@@ -18,7 +18,7 @@ class RaceTest {
 
     @BeforeEach
     void setUp() {
-        defaultCar = Car.createCar(DefaultCarState.create(INIT_POSITION), DefaultCarDisplacement.create(DEFAULT_MOVE_VALUE));
+        defaultCar = Car.createCar(CarState.create(INIT_POSITION), DefaultCarDisplacement.create(DEFAULT_MOVE_VALUE));
         race = new Race(new RaceInfo(new NumberOfCars(NUMBER_OF_CARS_DEFAULT), new NumberOfRaces(NUMBER_OF_RACES_DEFAULT), defaultCar));
     }
 

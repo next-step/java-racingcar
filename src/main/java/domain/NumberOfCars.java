@@ -1,5 +1,7 @@
 package domain;
 
+import java.util.List;
+
 public class NumberOfCars {
     public static final int MIN_VALUE = 0;
 
@@ -10,6 +12,10 @@ public class NumberOfCars {
             throw new RuntimeException("NumberOfCars can not be negative");
         }
         this.value = value;
+    }
+
+    public static NumberOfCars toNumberOfCars(List<CarName> receive) {
+        return new NumberOfCars(receive.size());
     }
 
     public int getValue() {
