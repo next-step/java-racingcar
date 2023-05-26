@@ -1,9 +1,9 @@
-package step3;
+package racinggame;
 
-public class NonMovableMoveStrategy implements MoveStrategy {
+public class MovableMoveStrategy implements MoveStrategy {
     private static int THRESHOLD = 4;
     public boolean canMove() {
-        int randomNumber = 3;
+        int randomNumber = 4;
         return randomNumber >= THRESHOLD;
     }
 }

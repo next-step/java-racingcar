@@ -1,4 +1,4 @@
-package step3;
+package racinggame;
 
 public interface MoveStrategy {
     boolean canMove();

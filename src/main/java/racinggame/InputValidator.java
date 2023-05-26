@@ -1,4 +1,4 @@
-package step3;
+package racinggame;
 
 public class InputValidator {
     public static void validateCarNamesLengthInRange(String[] names) {
