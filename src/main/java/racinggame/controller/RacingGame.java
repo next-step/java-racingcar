@@ -1,4 +1,10 @@
-package racinggame;
+package racinggame.controller;
+
+import racinggame.domain.RandomMoveStrategy;
+import racinggame.domain.WinnerCalculator;
+import racinggame.domain.Car;
+import racinggame.view.InputView;
+import racinggame.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;

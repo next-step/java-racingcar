@@ -2,6 +2,9 @@ package racinggame;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racinggame.domain.Car;
+import racinggame.domain.MovableMoveStrategy;
+import racinggame.domain.WinnerCalculator;
 
 import java.util.Arrays;
 import java.util.List;

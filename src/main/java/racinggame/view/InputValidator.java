@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.view;
 
 public class InputValidator {
     public static void validateCarNamesLengthInRange(String[] names) {

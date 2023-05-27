@@ -1,9 +1,9 @@
-package racinggame;
+package racinggame.domain;
 
-public class MovableMoveStrategy implements MoveStrategy {
+public class NonMovableMoveStrategy implements MoveStrategy {
     private static final int THRESHOLD = 4;
     public boolean canMove() {
-        int randomNumber = 4;
+        int randomNumber = 3;
         return randomNumber >= THRESHOLD;
     }
 }
