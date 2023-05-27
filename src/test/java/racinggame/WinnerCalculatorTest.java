@@ -15,7 +15,7 @@ public class WinnerCalculatorTest {
         // given
         Car boong = new Car("boong");
         Car pobi = new Car("pobi");
-        pobi.plusTrace();
+        pobi.move(new MovableMoveStrategy());
 
         List<Car> cars = Arrays.asList(boong, pobi);
 
@@ -33,9 +33,9 @@ public class WinnerCalculatorTest {
         // given
         Car pobi = new Car("pobi");
         Car boo = new Car("boo");
-        boo.plusTrace();
+        boo.move(new MovableMoveStrategy());
         Car rung = new Car("rung");
-        rung.plusTrace();
+        rung.move(new MovableMoveStrategy());
 
         List<Car> cars = Arrays.asList(pobi, boo, rung);
 

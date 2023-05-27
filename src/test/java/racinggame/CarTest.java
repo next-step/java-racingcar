@@ -16,12 +16,35 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("차가 전진했을 때, 전진한 정도가 맞는지 테스트")
-    void plusTraceTest() {
+    @DisplayName("차가 random 값이 4보다 크거나 같다면 전진")
+    void moveTest_NumberIsEqualOrGreaterThanFour() {
         Car car = new Car("붕붕이");
 
-        car.plusTrace();
+        // given
+        int initialTrace = car.getTrace();
+        int traceIfMoved = initialTrace + 1;
+        MovableMoveStrategy movableMoveStrategy = new MovableMoveStrategy();
 
-        assertThat(car.getTrace()).isEqualTo(1);
+        // when
+        car.move(movableMoveStrategy);
+
+        // then
+        assertThat(car.getTrace()).isEqualTo(traceIfMoved);
+    }
+
+    @Test
+    @DisplayName("차가 random 값이 4보다 작으면 그대로")
+    void moveTest_NumberIsLessThanFour() {
+        Car car = new Car("붕붕이");
+
+        // given
+        int initialTrace = car.getTrace();
+        NonMovableMoveStrategy nonMovableMoveStrategy = new NonMovableMoveStrategy();
+
+        // when
+        car.move(nonMovableMoveStrategy);
+
+        // then
+        assertThat(car.getTrace()).isEqualTo(initialTrace);
     }
 }

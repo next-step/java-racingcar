@@ -13,16 +13,20 @@ public class RacingGame {
             cars.add(new Car(name));
         }
 
-        Movement movement = new Movement(cars);
-        RandomMoveStrategy randomMoveStrategy = new RandomMoveStrategy();
         ResultView.printResultMessage();
-
         for (int i = 0; i < numOfTrial; i++) {
-            movement.moveCars(randomMoveStrategy);
+            moveCars(cars);
             ResultView.printRaceResult(cars);
         }
 
         List<Car> winners = WinnerCalculator.getWinners(cars);
         ResultView.printWinner(winners);
+    }
+
+    private static void moveCars(List<Car> cars) {
+        for (Car car : cars) {
+            RandomMoveStrategy randomMoveStrategy = new RandomMoveStrategy();
+            car.move(randomMoveStrategy);
+        }
     }
 }

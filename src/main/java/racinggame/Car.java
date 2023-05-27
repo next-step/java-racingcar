@@ -17,7 +17,8 @@ public class Car {
         return this.trace;
     }
 
-    public void plusTrace() {
-        this.trace += 1;
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.canMove())
+            this.trace += 1;
     }
 }
