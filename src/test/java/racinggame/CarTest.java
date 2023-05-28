@@ -6,6 +6,7 @@ import racinggame.domain.Car;
 import racinggame.domain.MovableMoveStrategy;
 import racinggame.domain.NonMovableMoveStrategy;
 import racinggame.domain.Trace;
+import racinggame.domain.Name;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -13,16 +14,16 @@ public class CarTest {
     @Test
     @DisplayName("차를 생성했을 때, 이름이 맞는지 테스트")
     void constructorTest() {
-        Car car = new Car("붕붕이");
+        Car car = new Car( new Name("붕붕이"));
 
-        assertThat(car.getName()).isEqualTo("붕붕이");
+        assertThat(car.getName()).isEqualTo(new Name("붕붕이"));
         assertThat(car.getTrace()).isEqualTo(new Trace(0));
     }
 
     @Test
     @DisplayName("차가 random 값이 4보다 크거나 같다면 전진")
     void moveTest_NumberIsEqualOrGreaterThanFour() {
-        Car car = new Car("붕붕이");
+        Car car = new Car( new Name("붕붕이"));
 
         // given
         Trace initialTrace = car.getTrace();
@@ -39,7 +40,7 @@ public class CarTest {
     @Test
     @DisplayName("차가 random 값이 4보다 작으면 그대로")
     void moveTest_NumberIsLessThanFour() {
-        Car car = new Car("붕붕이");
+        Car car = new Car( new Name("붕붕이"));
 
         // given
         Trace initialTrace = car.getTrace();

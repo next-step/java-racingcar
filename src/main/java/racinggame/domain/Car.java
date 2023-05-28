@@ -1,15 +1,15 @@
 package racinggame.domain;
 
 public class Car {
-    private final String name;
+    private final Name name;
     private Trace trace;
 
-    public Car(final String name) {
+    public Car(final Name name) {
         this.name = name;
         this.trace = new Trace();
     }
 
-    public String getName() {
+    public Name getName() {
         return this.name;
     }
 

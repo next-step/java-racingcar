@@ -1,5 +1,6 @@
 package racinggame.controller;
 
+import racinggame.domain.Name;
 import racinggame.domain.RandomMoveStrategy;
 import racinggame.domain.WinnerCalculator;
 import racinggame.domain.Car;
@@ -16,7 +17,7 @@ public class RacingGame {
 
         List <Car> cars = new ArrayList<>();
         for (String name : carNames) {
-            cars.add(new Car(name));
+            cars.add(new Car(new Name(name)));
         }
 
         ResultView.printResultMessage();
