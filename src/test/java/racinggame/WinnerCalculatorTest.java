@@ -46,6 +46,6 @@ public class WinnerCalculatorTest {
         List<Car> winners = WinnerCalculator.getWinners(cars);
 
         // then
-        assertThat(winners.size()).isEqualTo(2);
+        assertThat(winners).hasSize(2);
     }
 }

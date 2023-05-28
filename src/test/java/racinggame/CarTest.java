@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import racinggame.domain.Car;
 import racinggame.domain.MovableMoveStrategy;
 import racinggame.domain.NonMovableMoveStrategy;
+import racinggame.domain.Trace;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,7 +16,7 @@ public class CarTest {
         Car car = new Car("붕붕이");
 
         assertThat(car.getName()).isEqualTo("붕붕이");
-        assertThat(car.getTrace()).isEqualTo(0);
+        assertThat(car.getTrace()).isEqualTo(new Trace(0));
     }
 
     @Test
@@ -24,8 +25,8 @@ public class CarTest {
         Car car = new Car("붕붕이");
 
         // given
-        int initialTrace = car.getTrace();
-        int traceIfMoved = initialTrace + 1;
+        Trace initialTrace = car.getTrace();
+        Trace traceIfMoved = initialTrace.move();
         MovableMoveStrategy movableMoveStrategy = new MovableMoveStrategy();
 
         // when
@@ -41,7 +42,7 @@ public class CarTest {
         Car car = new Car("붕붕이");
 
         // given
-        int initialTrace = car.getTrace();
+        Trace initialTrace = car.getTrace();
         NonMovableMoveStrategy nonMovableMoveStrategy = new NonMovableMoveStrategy();
 
         // when

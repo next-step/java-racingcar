@@ -5,19 +5,20 @@ import java.util.List;
 
 public class WinnerCalculator {
     public static List<Car> getWinners(List<Car> cars) {
-        int maxTrace = getMaxTrace(cars);
+        Trace maxTrace = getMaxTrace(cars);
         List<Car> winners = new ArrayList<>();
         for (Car car : cars) {
-            if(car.getTrace() == maxTrace)
+            if(car.getTrace().equals(maxTrace))
                 winners.add(car);
         }
         return winners;
     }
 
-    public static int getMaxTrace(List<Car> cars) {
-        return cars.stream()
-                .mapToInt(Car::getTrace)
-                .max()
-                .orElse(0);
+    public static Trace getMaxTrace(List<Car> cars) {
+        Trace maxTrace = new Trace();
+        for (Car car : cars) {
+            maxTrace = car.getMaxTrace(maxTrace);
+        }
+        return maxTrace;
     }
 }

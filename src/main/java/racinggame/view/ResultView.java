@@ -13,7 +13,7 @@ public class ResultView {
 
     public static void printRaceResult(List<Car> cars) {
         for (Car car : cars) {
-            String carStatus = car.getName() + " : " + "-".repeat(car.getTrace());
+            String carStatus = car.getName() + " : " + "-".repeat(car.getTrace().getValue());
             System.out.println(carStatus);
         }
         System.out.println();
