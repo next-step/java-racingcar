@@ -9,7 +9,7 @@ import racinggame.domain.WinnerCalculator;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class WinnerCalculatorTest {
     @Test

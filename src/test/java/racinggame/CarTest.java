@@ -6,7 +6,7 @@ import racinggame.domain.Car;
 import racinggame.domain.MovableMoveStrategy;
 import racinggame.domain.NonMovableMoveStrategy;
 
-import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
     @Test
