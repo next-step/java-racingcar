@@ -4,23 +4,24 @@ import study.racingcar.domain.Car;
 import study.racingcar.domain.GameCars;
 import study.racingcar.domain.Round;
 import study.racingcar.domain.Winners;
-import study.racingcar.strategy.RandomNumberGenerator;
+import study.racingcar.strategy.NumberGenerator;
 import study.racingcar.view.InputView;
 import study.racingcar.view.OutputView;
 
 import java.util.List;
 
 public class RacingCarGame {
-    public static final RandomNumberGenerator NUMBER_GENERATOR = new RandomNumberGenerator();
     private final GameCars cars;
     private final Round round;
+    private final NumberGenerator numberGenerator;
 
-    public RacingCarGame() {
+    public RacingCarGame(NumberGenerator numberGenerator) {
         final List<String> carNames = getCarNames();
         final int rounds = getRoundsToPlay();
 
         this.cars = new GameCars(carNames);
         this.round = new Round(rounds);
+        this.numberGenerator = numberGenerator;
     }
 
     private List<String> getCarNames() {
@@ -48,7 +49,7 @@ public class RacingCarGame {
     }
 
     private void execute(Car car) {
-        if (Car.isMovable(NUMBER_GENERATOR)) {
+        if (Car.isMovable(numberGenerator)) {
             car.move();
         }
         OutputView.printCarNameAndStatus(car);
