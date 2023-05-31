@@ -1,5 +1,6 @@
 package study.racingcar.domain;
 
+import study.racingcar.rule.DomainRule;
 import study.racingcar.strategy.NumberGenerator;
 
 public class Car {
