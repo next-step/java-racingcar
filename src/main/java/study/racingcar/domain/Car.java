@@ -1,11 +1,12 @@
 package study.racingcar.domain;
 
-import study.racingcar.rule.DomainRule;
 import study.racingcar.strategy.NumberGenerator;
 
 public class Car {
     private final Position position;
     private final CarName carName;
+
+    public static final int MOVABLE_LOWER_BOUND = 4;
 
     public Car(String carName) {
         this.carName = new CarName(carName);
@@ -19,7 +20,7 @@ public class Car {
 
     public static boolean isMovable(NumberGenerator numberGenerator) {
         int value = numberGenerator.generate();
-        return value >= numberGenerator.MOVABLE_LOWER_BOUND;
+        return value >= MOVABLE_LOWER_BOUND;
     }
 
     public void move() {
