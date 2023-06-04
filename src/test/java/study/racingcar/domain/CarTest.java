@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import study.racingcar.strategy.NumberGenerator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,7 +13,7 @@ class CarTest {
     @Nested
     @DisplayName("Movable 메서드 검증")
     class MoveableValidationTest {
-        public static final int lowerBoundNum = NumberGenerator.MOVABLE_LOWER_BOUND;
+        public static final int lowerBoundNum = Car.MOVABLE_LOWER_BOUND;
 
         @DisplayName("차가 움직일 수 없는 경우 false를 반환한다")
         @ParameterizedTest(name = "{0}을 넣었을때 false를 반환한다")
