@@ -13,7 +13,7 @@ public class Winners {
     }
 
     public Winners(List<Car> winners) {
-        this.winners = List.copyOf(winners);;
+        this.winners = List.copyOf(winners);
     }
 
     public void add(Car car) {
