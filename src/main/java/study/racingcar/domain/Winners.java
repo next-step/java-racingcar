@@ -1,7 +1,9 @@
 package study.racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+
 
 public class Winners {
     private final List<Car> winners;
@@ -11,7 +13,7 @@ public class Winners {
     }
 
     public Winners(List<Car> winners) {
-        this.winners = winners;
+        this.winners = List.copyOf(winners);
     }
 
     public void add(Car car) {
@@ -19,6 +21,6 @@ public class Winners {
     }
 
     public List<Car> getWinners() {
-        return winners;
+        return Collections.unmodifiableList(winners);
     }
 }

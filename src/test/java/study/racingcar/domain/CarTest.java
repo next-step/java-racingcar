@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import study.racingcar.rule.DomainRule;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,17 +13,14 @@ class CarTest {
     @Nested
     @DisplayName("Movable 메서드 검증")
     class MoveableValidationTest {
-        public static final int lowerBoundNum = DomainRule.MOVABLE_LOWER_BOUND;
+        public static final int lowerBoundNum = Car.MOVABLE_LOWER_BOUND;
 
-        @DisplayName("NonMoveable할 경우 false를 반환한다")
+        @DisplayName("차가 움직일 수 없는 경우 false를 반환한다")
         @ParameterizedTest(name = "{0}을 넣었을때 false를 반환한다")
         @ValueSource(ints = {lowerBoundNum - 1, lowerBoundNum - 2, lowerBoundNum - 3, lowerBoundNum - 4})
         void when_NumberUnderLowerBound_Expects_False(int num) {
-            // given
-            DomainRule rule = new DomainRule(() -> num);
-
-            // when
-            boolean actualResult = Car.isMovable(rule);
+            // given, when
+            boolean actualResult = Car.isMovable(() -> num);
 
             // then
             assertThat(actualResult).isFalse();
@@ -34,11 +30,8 @@ class CarTest {
         @ParameterizedTest(name = "{0}을 넣었을때 true를 반환한다")
         @ValueSource(ints = {lowerBoundNum, lowerBoundNum + 1, lowerBoundNum + 2, lowerBoundNum + 3})
         void when_NumberIsEqualToOrOverLowerBound_Expects_True(int num) {
-            // given
-            DomainRule rule = new DomainRule(() -> num);
-
-            // when
-            boolean actualResult = Car.isMovable(rule);
+            // given, when
+            boolean actualResult = Car.isMovable(() -> num);
 
             // then
             assertThat(actualResult).isTrue();

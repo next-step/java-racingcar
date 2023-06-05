@@ -7,7 +7,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
 class CarNameTest {
 
     @DisplayName("자동차 이름 길이가 5이상일 경우 예외 발생")

@@ -13,12 +13,6 @@ public class GameCars implements Iterable<Car> {
         generateCars(carNames);
     }
 
-    private void generateCars(List<String> carNames) {
-        for (String carName : carNames) {
-            cars.add(new Car(carName));
-        }
-    }
-
     @Override
     public Iterator<Car> iterator() {
         return cars.iterator();
@@ -27,9 +21,15 @@ public class GameCars implements Iterable<Car> {
     public Winners calculateWinner() {
         int maxPosition = calculateMaxPosition();
         List<Car> winners = cars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
+                .filter(car -> car.isWinner(maxPosition))
                 .collect(Collectors.toUnmodifiableList());
         return new Winners(winners);
+    }
+
+    private void generateCars(List<String> carNames) {
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
+        }
     }
 
     private int calculateMaxPosition() {

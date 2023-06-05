@@ -14,7 +14,7 @@ class PositionTest {
         Position position = new Position();
 
         //when, then
-        assertThat(position.isEqualTo(0)).isTrue();
+        assertThat(position).isEqualTo(new Position());
     }
 
     @DisplayName("increase 한번 호출 시 position 값 1인지 테스트")
@@ -27,6 +27,6 @@ class PositionTest {
         position.increase();
 
         // then
-        assertThat(position.isEqualTo(1)).isTrue();
+        assertThat(position).isEqualTo(new Position(1));
     }
 }
