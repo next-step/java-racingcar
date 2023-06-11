@@ -19,7 +19,7 @@ public class RacingInfoTest {
     @ParameterizedTest
     @ValueSource(strings = {"RIDER123,RIDER234", "  ,   "})
     void 운전자_이름_길이_및_공백_검증(String names){
-        assertThatThrownBy(()-> RacingInfo.of("RIDER123,RIDER234", COMMON_MOVING_VAL))
+        assertThatThrownBy(()-> RacingInfo.of(names, COMMON_MOVING_VAL))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차 이름은 공백일 수 없으며, 5자 이하로 작성 하세요");
     }
