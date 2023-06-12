@@ -41,4 +41,11 @@ public class StringTest {
         ).isInstanceOf(StringIndexOutOfBoundsException.class)
             .hasMessage("String index out of range: 3");
     }
+
+    @Test
+    public void isBlank의_isEmpty_포함_여부_테스트(){
+        String empty="";
+
+        assertThat(empty.isBlank()).isEqualTo(true);
+    }
 }
