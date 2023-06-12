@@ -14,8 +14,16 @@ public class RacingInfo {
     private static final int MOVING_MIN_COUNT = 5;
     private static final int MOVING_MAX_COUNT = 200;
 
-    private RacingInfo(List<String> carNames, int movingCount) {
+    private List<String> carNames;
+    private int movingCount;
 
+    private RacingInfo(List<String> carNames, int movingCount) {
+        this.carNames = carNames;
+        this.movingCount = movingCount;
+    }
+
+    public static RacingInfo of(String carNamesString, String movingCount) {
+        return of(carNamesString, Integer.parseInt(movingCount));
     }
 
     public static RacingInfo of(String carNamesString, int movingCount) {
@@ -30,6 +38,14 @@ public class RacingInfo {
         movingCountRangeCheck(movingCount);
 
         return new RacingInfo(carNames, movingCount);
+    }
+
+    public List<String> getCarNames() {
+        return this.carNames;
+    }
+
+    public int getMovingCount() {
+        return movingCount;
     }
 
     private static void validationNames(List<String> carNames) {
