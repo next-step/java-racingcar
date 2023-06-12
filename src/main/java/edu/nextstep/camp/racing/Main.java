@@ -1,13 +1,12 @@
 package edu.nextstep.camp.racing;
 
-import edu.nextstep.camp.racing.controller.RacingController;
-import edu.nextstep.camp.racing.service.RacingService;
+import edu.nextstep.camp.racing.domain.RacingInfoFactory;
+import edu.nextstep.camp.racing.domain.RacingStarter;
 
 public class Main {
     public static void main(String[] args) {
-        RacingService racingService= new RacingService();
-        RacingController racingController = new RacingController(racingService);
+        RacingStarter racingStarter = new RacingStarter(new RacingInfoFactory());
 
-        racingController.start();
+        racingStarter.start();
     }
 }
