@@ -1,6 +1,5 @@
 package edu.nextstep.camp.racing.domain;
 
-import edu.nextstep.camp.racing.view.OutputView;
 import edu.nextstep.camp.racing.view.RacingOutputView;
 
 import java.util.Arrays;
@@ -10,13 +9,13 @@ import java.util.stream.Collectors;
 
 public class Cars {
 
-    private Random random = new Random(10);
+    private final Random random = new Random(10);
 
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public Cars(String ...carNames) {
         cars = Arrays.stream(carNames)
-                .map((carName)-> new Car(carName))
+                .map(Car::new)
                 .collect(Collectors.toList());
     }
 
@@ -29,11 +28,6 @@ public class Cars {
 
     protected int randomInt(){
         return random.nextInt();
-    };
-
-
-
-
-
+    }
 
 }
