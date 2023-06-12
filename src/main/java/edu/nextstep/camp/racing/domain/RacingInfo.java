@@ -14,8 +14,8 @@ public class RacingInfo {
     private static final int MOVING_MIN_COUNT = 5;
     private static final int MOVING_MAX_COUNT = 200;
 
-    private List<String> carNames;
-    private int movingCount;
+    private final List<String> carNames;
+    private final int movingCount;
 
     private RacingInfo(List<String> carNames, int movingCount) {
         this.carNames = carNames;
