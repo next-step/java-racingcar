@@ -26,4 +26,16 @@ public class CalculatorTest {
         assertThat(result3).isEqualTo(new String[]{"1", "2", "3"});
         assertThat(result4).isEqualTo(new String[]{"1", "2", "3"});
     }
+
+    @Test
+    void 커스텀구분자만포함할때_파싱성공() {
+        // given
+        String input1 = "//;\n1;2;3";
+
+        // when
+        String[] result1 = Calculator.parse(input1);
+
+        // then
+        assertThat(result1).isEqualTo(new String[]{"1", "2", "3"});
+    }
 }
