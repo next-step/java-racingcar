@@ -8,9 +8,15 @@ public class Car {
 
     private final Random random;
 
-    public Car(String name, int index, Random random) {
+    public Car(String name) {
         this.name = name;
-        this.index = index;
+        this.index = 1;
+        this.random = new Random();
+    }
+
+    public Car(String name, Random random) {
+        this.name = name;
+        this.index = 1;
         this.random = random;
     }
 
