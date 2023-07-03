@@ -5,6 +5,9 @@ import java.util.Arrays;
 public class StringCalculator {
 
     public static int sum(String number) {
+        if(number.isBlank()) {
+            return 0;
+        }
         preAssert(number);
         return Arrays.stream(splitNumber(number))
             .mapToInt(Integer::parseInt)

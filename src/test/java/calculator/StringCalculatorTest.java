@@ -22,4 +22,10 @@ class StringCalculatorTest {
         assertThatThrownBy(() -> StringCalculator.sum("-1:1")).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    @DisplayName("Blank, Null값이 들어오면, 0을 반환한다.")
+    void test3() {
+        assertThat(StringCalculator.sum("")).isZero();
+    }
+
 }
