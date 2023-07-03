@@ -3,6 +3,7 @@ package stringcalculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class StringCalculatorTest {
@@ -48,5 +49,13 @@ class StringCalculatorTest {
         int[] result = StringCalculator.toIntArray(input, delimiter);
 
         assertThat(result).containsExactly(4, 2, 3);
+    }
+
+    @Test
+    void 커스텀_구분자_분리() {
+        String input = "//;\n1;2;3";
+        ParseInfo parseInfo = StringCalculator.separateCustomText(input);
+        assertThat(parseInfo.delimiter).isEqualTo(";");
+        assertThat(parseInfo.text).isEqualTo("1;2;3");
     }
 }
