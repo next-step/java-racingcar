@@ -16,5 +16,5 @@
 - [x] “//”와 “\n” 사이에 위치하는 문자를 커스텀 구분자로 사용 ("//;\n1;2;3")
 
 ## 예외
-- [ ] 숫자 이외의 값, 음수 전달 시 RuntimeException throw
+- [x] 숫자 이외의 값, 음수 전달 시 RuntimeException throw
 

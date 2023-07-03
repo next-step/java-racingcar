@@ -25,7 +25,6 @@ public class Util {
     }
 
     public static String [] tokenString (String text) {
-
         locateCustomSeperator(text);
         String regex = makeRegex(text);
         if (customSepartorIdx != null) {
