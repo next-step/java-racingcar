@@ -12,6 +12,10 @@ public class SplitUtils {
     private static final Pattern splitPattern = Pattern.compile("//(.+)\n(.*)");
 
     public static List<Integer> convertToNumbers(String text) {
+        if (text == null) {
+            return List.of(0);
+        }
+
         Matcher matcher = splitPattern.matcher(text);
         if (matcher.find()) {
             String customDelimiter = matcher.group(1);
@@ -32,7 +36,7 @@ public class SplitUtils {
      * @return 0 이상의 정수
      */
     private static int toPositiveNumber(String input) {
-        if (input == null || input.isBlank()) {
+        if (input.isBlank()) {
             return 0;
         }
 
