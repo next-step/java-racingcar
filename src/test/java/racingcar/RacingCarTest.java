@@ -81,7 +81,7 @@ public class RacingCarTest {
         int number = RandomGenerator.generateNumber();
         assertThat(number).isBetween(0, 9);
     }
-    
+
     @ParameterizedTest
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     @DisplayName("값이 4 이상일 경우 전진한다")
@@ -91,5 +91,16 @@ public class RacingCarTest {
         car.progress(number);
 
         assertThat(car.getDistance()).isEqualTo(1);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2, 3})
+    @DisplayName("값이 3 이하일 경우 멈춘다.")
+    public void 값이_3_이하일_경우_멈춘다(int number) throws Exception {
+        Car car = new Car("chan");
+
+        car.progress(number);
+
+        assertThat(car.getDistance()).isEqualTo(0);
     }
 }
