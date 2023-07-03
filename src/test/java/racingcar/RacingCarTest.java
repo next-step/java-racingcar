@@ -49,4 +49,14 @@ public class RacingCarTest {
 
         assertThat(car.getDistance()).isEqualTo(1);
     }
+
+    @Test
+    @DisplayName("차의 출력 포맷을 정의한다")
+    public void 차의_출력_포맷을_정의한다() throws Exception {
+        Car car = new Car("ipt");
+
+        String s = car.toString();
+
+        assertThat(s).isEqualTo("ipt : -");
+    }
 }
