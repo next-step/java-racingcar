@@ -64,6 +64,23 @@ class CarTest {
 
         }
 
+        @Nested
+        @DisplayName("null값이 Moveable으로 주어진다면,")
+        class DescribeMoveableNullInput {
+
+            private final String normalInput = "123";
+            private final Moveable nullMoveable = null;
+
+            @Test
+            @DisplayName("IllegalArgumentException 이 발생한다.")
+            void ItThrowIllegalArgumentException() {
+                assertThatThrownBy(() -> new Car(normalInput, nullMoveable))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("Moveable은 null값이 될 수 없습니다.");
+            }
+
+        }
+
     }
 
 }
