@@ -3,6 +3,8 @@ package calculator;
 import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class CalculatorTest {
 
@@ -15,10 +17,10 @@ public class CalculatorTest {
         String input4 = "1,2:3";
 
         // when
-        String[] result1 = Calculator.parse(input1);
-        String[] result2 = Calculator.parse(input2);
-        String[] result3 = Calculator.parse(input3);
-        String[] result4 = Calculator.parse(input4);
+        String[] result1 = Parser.parse(input1);
+        String[] result2 = Parser.parse(input2);
+        String[] result3 = Parser.parse(input3);
+        String[] result4 = Parser.parse(input4);
 
         // then
         assertThat(result1).isEqualTo(new String[]{""});
@@ -33,39 +35,28 @@ public class CalculatorTest {
         String input1 = "//;\n1;2;3";
 
         // when
-        String[] result1 = Calculator.parse(input1);
+        String[] result1 = Parser.parse(input1);
 
         // then
         assertThat(result1).isEqualTo(new String[]{"1", "2", "3"});
     }
 
-    @Test
-    void 숫자가아닌문자를포함할때_파싱실패_RuntimeException발생() {
-        // given
-        String input1 = "hello";
-        String input2 = "-1,2,3";
-
-        // when & then
-        assertThatThrownBy(() -> Calculator.parse(input1)).isInstanceOf(RuntimeException.class);
-        assertThatThrownBy(() -> Calculator.parse(input2)).isInstanceOf(RuntimeException.class);
+    @ParameterizedTest
+    @ValueSource(strings = {"hello", "-1,2,3"})
+    void 숫자가아닌문자를포함할때_파싱실패_RuntimeException발생(String input) {
+        assertThatThrownBy(() -> Numbers.of(Parser.parse(input))).isInstanceOf(RuntimeException.class);
     }
 
-    @Test
-    void 범위밖숫자입력시_파싱실패_RuntimeException발생() {
-        // given
-        String input1 = "123123123123123";
-
-        // when & then
-        assertThatThrownBy(() -> Calculator.parse(input1)).isInstanceOf(RuntimeException.class);
+    @ParameterizedTest
+    @ValueSource(strings = {"123123123123123"})
+    void 범위밖숫자입력시_파싱실패_RuntimeException발생(String input) {
+        assertThatThrownBy(() -> Numbers.of(Parser.parse(input))).isInstanceOf(RuntimeException.class);
     }
 
-    @Test
-    void 계산결과가정수범위를벗어날때_계산실패_RuntimeException발생() {
-        // given
-        String input1 = "1000000000:1000000000:1000000000";
-
-        // when & then
-        assertThatThrownBy(() -> Calculator.sum(input1)).isInstanceOf(RuntimeException.class);
+    @ParameterizedTest
+    @ValueSource(strings = {"1000000000:1000000000:1000000000"})
+    void 계산결과가정수범위를벗어날때_계산실패_RuntimeException발생(String input) {
+        assertThatThrownBy(() -> Calculator.sum(input)).isInstanceOf(RuntimeException.class);
     }
 
     @Test
