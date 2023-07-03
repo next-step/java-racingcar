@@ -31,4 +31,8 @@ public class RacingManager {
             car.goForward(isMovable(numberGenerator.generate()));
         }
     }
+
+    public List<Car> getWinners() {
+        return null;
+    }
 }

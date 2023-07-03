@@ -65,4 +65,24 @@ public class RacingManagerTest {
         assertThat(manager.getCars().get(1).getPosition()).isEqualTo(1);
 
     }
+
+    @Test
+    void getWinnersTest() {
+        //given
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car("test1"));
+        cars.add(new Car("test2"));
+        cars.add(new Car("test3"));
+        cars.get(1).goForward(true);
+        cars.get(2).goForward(true);
+        NumberGenerator numberGenerator = new SpecificNumberGenerator(0);
+        RacingManager manager = new RacingManager(cars, numberGenerator, 1);
+
+        //when
+        List<Car> result = manager.getWinners();
+
+        //then
+        assertThat(result.get(0).getName()).isEqualTo("test2");
+        assertThat(result.get(1).getName()).isEqualTo("test3");
+    }
 }
