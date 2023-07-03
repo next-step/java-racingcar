@@ -47,6 +47,20 @@ class CarTest {
 
         }
 
+        @Nested
+        @DisplayName("null값이 이름으로 주어진다면,")
+        class DescribeNullInput {
+
+            private final String nullInput = null;
+
+            @Test
+            @DisplayName("IllegalArgumentException 이 발생한다.")
+            void ItThrowIllegalArgumentException() {
+                assertThatThrownBy(() -> new Car(nullInput)).isInstanceOf(IllegalArgumentException.class);
+            }
+
+        }
+
     }
 
 }
