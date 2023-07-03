@@ -45,7 +45,7 @@ public class RacingCarTest {
     public void 차가_전진한다() throws Exception {
         Car car = new Car("hello");
 
-        car.forword();
+        car.forward();
 
         assertThat(car.getDistance()).isEqualTo(1);
     }
