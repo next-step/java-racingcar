@@ -4,8 +4,12 @@ import java.util.Arrays;
 
 public class StringCalculator {
 
+    private StringCalculator() {
+        throw new UnsupportedOperationException("Cannot invoke constructor \"StringCalculator()\"");
+    }
+
     public static int sum(String number) {
-        if(number.isBlank()) {
+        if (number.isBlank()) {
             return 0;
         }
         preAssert(number);
@@ -27,10 +31,6 @@ public class StringCalculator {
         }
     }
 
-    private static String[] splitNumber(String number) {
-        return number.split("[,:]");
-    }
-
     private static boolean isText(String c) {
         try {
             Integer.parseInt(c);
@@ -46,6 +46,10 @@ public class StringCalculator {
         if (isPresent) {
             throw new IllegalArgumentException("숫자가 아닌값이 들어왔습니다. \"" + number + "\"");
         }
+    }
+
+    private static String[] splitNumber(String number) {
+        return number.split("[,:]");
     }
 
 }
