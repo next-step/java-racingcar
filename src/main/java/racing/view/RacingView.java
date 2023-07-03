@@ -27,4 +27,8 @@ public class RacingView {
                 .map(car -> car.getName() + " : " + "-".repeat(car.getPosition()))
                 .collect(Collectors.joining("\n"));
     }
+
+    public String getWinnerView() {
+        return null;
+    }
 }
