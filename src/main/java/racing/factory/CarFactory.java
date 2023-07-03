@@ -1,16 +1,28 @@
 package racing.factory;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 import racing.domain.Car;
 
 public class CarFactory {
 
-    public Car[] manufactureCars(String text) {
-        String[] names = text.split(",");
-        Car[] cars = new Car[names.length];
-        for (int i = 0; i < names.length; i++) {
-            cars[i] = new Car(names[i]);
-        }
-        return cars;
+    private static class CarFactoryHandler {
+        private static final CarFactory INSTANCE = new CarFactory();
+    }
+
+    public static CarFactory getInstance() {
+        return CarFactoryHandler.INSTANCE;
+    }
+
+    public List<Car> manufactureCars(String text) {
+        return manufactureCars(text.split(","));
+    }
+
+    public List<Car> manufactureCars(String[] names) {
+        return Arrays.stream(names)
+                     .map(Car::new)
+                     .collect(Collectors.toList());
     }
 
 }
