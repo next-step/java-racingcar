@@ -2,6 +2,8 @@ package calculator;
 
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StringCalculator {
 
@@ -50,6 +52,11 @@ public class StringCalculator {
     }
 
     private static String[] splitNumber(String number) {
+        Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(number);
+        if (matcher.find()) {
+            String customDelimiter = matcher.group(1);
+            return matcher.group(2).split(customDelimiter);
+        }
         return number.split("[,:]");
     }
 

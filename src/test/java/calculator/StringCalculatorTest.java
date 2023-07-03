@@ -29,4 +29,9 @@ class StringCalculatorTest {
         assertThat(StringCalculator.sum(null)).isZero();
     }
 
+    @Test
+    @DisplayName("커스텀 구분자를 지정하면 커스텀 구분자에 맞춰 문자열 덧셈을 실행한 값을 반환한다.")
+    void test4() {
+        assertThat(StringCalculator.sum("//;\n1;2;3")).isEqualTo(6);
+    }
 }
