@@ -5,7 +5,14 @@ import racing.generator.NumberGenerator;
 import java.util.List;
 
 public class RacingManager {
-    public RacingManager(List<Car> cars, NumberGenerator numberGenerator, int i) {
+    private List<Car> cars;
+    private NumberGenerator numberGenerator;
+    private int count;
+
+    public RacingManager(List<Car> cars, NumberGenerator numberGenerator, int count) {
+        this.cars = cars;
+        this.numberGenerator = numberGenerator;
+        this.count = count;
     }
 
     public RacingManager() {
@@ -16,9 +23,12 @@ public class RacingManager {
     }
 
     public List<Car> getCars() {
-        return null;
+        return this.cars;
     }
 
     public void nextStep() {
+        for (Car car : cars) {
+            car.goForward(isMovable(numberGenerator.generate()));
+        }
     }
 }
