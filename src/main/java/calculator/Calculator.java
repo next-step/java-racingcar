@@ -18,14 +18,14 @@ public class Calculator {
         }
 
         for (String value : result) {
-            validate(value);
+            validateInput(value);
         }
 
         return result;
     }
 
     public static int sum(String text) {
-        if (text.isEmpty()) {
+        if (text == null || text.isEmpty()) {
             return 0;
         }
 
@@ -34,12 +34,19 @@ public class Calculator {
         int result = 0;
         for (String number : numbers) {
             result += toInt(number);
+            validateOverflow(result);
         }
 
         return result;
     }
 
-    private static void validate(String value) {
+    private static void validateOverflow(int result) {
+        if (result < 0) {
+            throw new RuntimeException("계산 결과가 정수 범위를 벗어났습니다");
+        }
+    }
+
+    private static void validateInput(String value) {
         int result;
         try {
             result = toInt(value);

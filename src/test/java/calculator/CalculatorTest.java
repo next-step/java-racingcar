@@ -51,6 +51,24 @@ public class CalculatorTest {
     }
 
     @Test
+    void 범위밖숫자입력시_파싱실패_RuntimeException발생() {
+        // given
+        String input1 = "123123123123123";
+
+        // when & then
+        assertThatThrownBy(() -> Calculator.parse(input1)).isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    void 계산결과가정수범위를벗어날때_계산실패_RuntimeException발생() {
+        // given
+        String input1 = "1000000000:1000000000:1000000000";
+
+        // when & then
+        assertThatThrownBy(() -> Calculator.sum(input1)).isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
     void 올바른문자열일때_계산성공() {
         // given
         String input1 = "";
@@ -58,6 +76,9 @@ public class CalculatorTest {
         String input3 = "1,2,3";
         String input4 = "1,2:3";
         String input5 = "//;\n1;2;3";
+        String input6 = null;
+        String input7 = "1";
+
 
         // when
         int result1 = Calculator.sum(input1);
@@ -65,6 +86,8 @@ public class CalculatorTest {
         int result3 = Calculator.sum(input3);
         int result4 = Calculator.sum(input4);
         int result5 = Calculator.sum(input5);
+        int result6 = Calculator.sum(input6);
+        int result7 = Calculator.sum(input7);
 
         // then
         assertThat(result1).isEqualTo(0);
@@ -72,5 +95,7 @@ public class CalculatorTest {
         assertThat(result3).isEqualTo(6);
         assertThat(result4).isEqualTo(6);
         assertThat(result5).isEqualTo(6);
+        assertThat(result6).isEqualTo(0);
+        assertThat(result7).isEqualTo(1);
     }
 }
