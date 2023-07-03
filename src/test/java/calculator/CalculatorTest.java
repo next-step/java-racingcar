@@ -38,4 +38,15 @@ public class CalculatorTest {
         // then
         assertThat(result1).isEqualTo(new String[]{"1", "2", "3"});
     }
+
+    @Test
+    void 숫자가아닌문자를포함할때_파싱실패_RuntimeException발생() {
+        // given
+        String input1 = "hello";
+        String input2 = "-1,2,3";
+
+        // when & then
+        assertThatThrownBy(() -> Calculator.parse(input1)).isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> Calculator.parse(input2)).isInstanceOf(RuntimeException.class);
+    }
 }
