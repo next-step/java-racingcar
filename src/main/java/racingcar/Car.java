@@ -34,6 +34,8 @@ public class Car {
     }
 
     public void progress(int number) {
-        forward();
+        if (number > 3) {
+            forward();
+        }
     }
 }
