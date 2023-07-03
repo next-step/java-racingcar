@@ -29,4 +29,24 @@ class StringCalculatorTest {
         int result = StringCalculator.sum(nums);
         assertThat(result).isEqualTo(15);
     }
+
+    @Test
+    void 문자열_변환() {
+        String input = "1,2:3";
+        String[] delimiter = {",", ":"};
+
+        int[] result = StringCalculator.toIntArray(input, delimiter);
+
+        assertThat(result).containsExactly(1, 2, 3);
+    }
+
+    @Test
+    void 문자열_변환_구분자_하나() {
+        String input = "4;2;3";
+        String[] delimiter = {";"};
+
+        int[] result = StringCalculator.toIntArray(input, delimiter);
+
+        assertThat(result).containsExactly(4, 2, 3);
+    }
 }
