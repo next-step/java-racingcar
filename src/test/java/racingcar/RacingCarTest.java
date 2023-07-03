@@ -1,8 +1,9 @@
 package racingcar;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarTest {
 
@@ -12,11 +13,16 @@ public class RacingCarTest {
         String str = "pobi,crong,honux";
         String[] cars = Cars.split(str);
 
-        Assertions.assertThat(cars[0]).isEqualTo("pobi");
-        Assertions.assertThat(cars[1]).isEqualTo("crong");
-        Assertions.assertThat(cars[2]).isEqualTo("honux");
+        assertThat(cars[0]).isEqualTo("pobi");
+        assertThat(cars[1]).isEqualTo("crong");
+        assertThat(cars[2]).isEqualTo("honux");
     }
 
-
-
+    @Test
+    @DisplayName("각 자동차에 이름을 부여할 수 있다.")
+    public void 각_자동차에_이름을_부여할_수_있다() throws Exception {
+        String name = "chanu";
+        Car car = new Car(name);
+        assertThat(car.getName()).isEqualTo(name);
+    }
 }
