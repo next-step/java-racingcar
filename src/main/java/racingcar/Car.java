@@ -2,6 +2,7 @@ package racingcar;
 
 public class Car {
 
+    private int distance;
     private String name;
 
     public Car(String name) {
@@ -17,5 +18,12 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+    public int getDistance() {
+        return distance;
+    }
+
+    public void forward() {
+        distance++;
     }
 }
