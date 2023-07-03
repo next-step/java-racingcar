@@ -15,4 +15,11 @@ public class InputTest {
     void inputTest_transferStringToList() {
         assertThat(Input.transferStringToList("pobi,crong,honux")).contains("pobi", "crong", "honux");
     }
+
+    @Test
+    void inputTest_validateNumber() {
+        assertThat(Input.validateNumber("123")).isTrue();
+        assertThat(Input.validateNumber("ag")).isFalse();
+        assertThat(Input.validateNumber("")).isFalse();
+    }
 }
