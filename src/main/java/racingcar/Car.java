@@ -26,4 +26,13 @@ public class Car {
     public void forward() {
         distance++;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder(name + " : -");
+        for (int i = 0; i < distance; i++) {
+            sb.append("-");
+        }
+        return sb.toString();
+    }
 }
