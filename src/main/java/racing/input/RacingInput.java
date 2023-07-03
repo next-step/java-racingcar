@@ -3,15 +3,22 @@ package racing.input;
 import racing.Car;
 
 import java.io.InputStream;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class RacingInput {
-    
+
+    private Scanner scanner;
 
     public RacingInput(InputStream inputStream) {
+        this.scanner = new Scanner(inputStream);
     }
 
     public List<Car> inputName() {
-        return null;
+        return Arrays.stream(scanner.next().split(","))
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 }
