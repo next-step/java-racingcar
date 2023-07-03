@@ -3,6 +3,7 @@ package racing.view;
 import racing.Car;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingView {
     private final static String ASKING_CAR_NAME = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
@@ -22,6 +23,8 @@ public class RacingView {
     }
 
     public String getCarStatusView(List<Car> cars) {
-        return null;
+        return cars.stream()
+                .map(car -> car.getName() + " : " + "-".repeat(car.getPosition()))
+                .collect(Collectors.joining("\n"));
     }
 }

@@ -38,9 +38,9 @@ class RacingViewTest {
         //given
         RacingView racingView = new RacingView();
         List<Car> cars = new ArrayList<>();
-        cars.add(new Car("test1"));
-        cars.add(new Car("test2"));
-        cars.add(new Car("test3"));
+        cars.add(new Car("pobi"));
+        cars.add(new Car("crong"));
+        cars.add(new Car("honux"));
 
         //when
         assertThat(racingView.getCarStatusView(cars)).isEqualTo("pobi : -\n" +
