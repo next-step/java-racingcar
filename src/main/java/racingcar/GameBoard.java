@@ -41,10 +41,14 @@ public class GameBoard {
             maxIndex = Math.max(car.getIndex(), maxIndex);
         }
         for (Car car : cars) {
-            if (car.getIndex() == maxIndex) {
-                winnerNames.add(car.getName());
-            }
+            checkWinner(car, maxIndex, winnerNames);
         }
         return winnerNames;
+    }
+
+    private void checkWinner(Car car, int maxIndex, List<String> winnerNames) {
+        if (car.getIndex() == maxIndex) {
+            winnerNames.add(car.getName());
+        }
     }
 }
