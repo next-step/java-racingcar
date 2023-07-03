@@ -12,6 +12,7 @@ class StringCalculatorTest {
     void test1() {
         assertThat(StringCalculator.sum("1,2")).isEqualTo(3);
         assertThat(StringCalculator.sum("1,2,3")).isEqualTo(6);
+        assertThat(StringCalculator.sum("1,2:3")).isEqualTo(6);
     }
 
 }

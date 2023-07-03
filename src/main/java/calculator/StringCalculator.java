@@ -11,6 +11,6 @@ public class StringCalculator {
     }
 
     private static String[] splitNumber(String number) {
-        return number.split(",|:");
+        return number.split("[,:]");
     }
 }
