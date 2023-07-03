@@ -35,7 +35,7 @@ public class RacingCarTest {
     public void 자동차_이름이_5자_초과이면_에러를_던진다() throws Exception {
         String name = "failfail";
 
-        ThrowableAssert.ThrowingCallable callable = ()-> new Car(name);
+        ThrowableAssert.ThrowingCallable callable = () -> new Car(name);
 
         assertThatThrownBy(callable).isInstanceOf(IllegalArgumentException.class);
     }
@@ -72,11 +72,11 @@ public class RacingCarTest {
         assertThat(car.toString()).isEqualTo("ipt : ----");
     }
 
-     @Test
-     @DisplayName("0에서 9 사이의 랜덤한 숫자를 반환한다")
-     public void 영에서_9_사이의_랜덤한_숫자를_반환한다() throws Exception {
+    @Test
+    @DisplayName("0에서 9 사이의 랜덤한 숫자를 반환한다")
+    public void 영에서_9_사이의_랜덤한_숫자를_반환한다() throws Exception {
 
         int number = RandomGenerator.generateNumber();
         assertThat(number).isBetween(0, 9);
-     }
+    }
 }
