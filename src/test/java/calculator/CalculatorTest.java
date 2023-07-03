@@ -46,4 +46,11 @@ public class CalculatorTest {
     void test5() {
         assertThat(Calculator.sum("1,2;3")).isEqualTo(6);
     }
+
+    @Test
+    @DisplayName("커스텀 구분자로 숫자를 구분하는 경우 숫자 합을 리턴한다.")
+    void test6() {
+        assertThat(Calculator.sum("//;\n1;2;3")).isEqualTo(6);
+        assertThat(Calculator.sum("//#\n1#2#3")).isEqualTo(6);
+    }
 }
