@@ -59,4 +59,16 @@ public class RacingCarTest {
 
         assertThat(s).isEqualTo("ipt : -");
     }
+
+    @Test
+    @DisplayName("전진했을 경우 자동차의 출력 포맷")
+    public void 전진했을_경우_자동차의_출력_포맷() throws Exception {
+        Car car = new Car("ipt");
+
+        car.forward();
+        car.forward();
+        car.forward();
+
+        assertThat(car.toString()).isEqualTo("ipt : ----");
+    }
 }
