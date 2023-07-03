@@ -7,3 +7,12 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+# 문자열 덧셈 계산기
+- “” => 0, null => 0
+- “1” => 1
+- "1,2" => 3
+- "1,2,3" => 6
+- “1,2;3” => 6
+- “//;\n1;2;3” => 6
+- 숫자 이외의 값 또는 음수 => RuntimeException
