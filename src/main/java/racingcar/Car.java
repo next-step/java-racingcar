@@ -2,8 +2,8 @@ package racingcar;
 
 public class Car {
 
+    private final String name;
     private int distance;
-    private String name;
 
     public Car(String name) {
         validateName(name);
@@ -19,6 +19,7 @@ public class Car {
     public String getName() {
         return name;
     }
+
     public int getDistance() {
         return distance;
     }
@@ -30,5 +31,9 @@ public class Car {
     @Override
     public String toString() {
         return name + " : " + "-".repeat(distance + 1);
+    }
+
+    public void progress(int number) {
+        forward();
     }
 }
