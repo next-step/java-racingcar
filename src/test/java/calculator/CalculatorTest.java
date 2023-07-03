@@ -49,4 +49,22 @@ public class CalculatorTest {
         assertThatThrownBy(() -> Calculator.parse(input1)).isInstanceOf(RuntimeException.class);
         assertThatThrownBy(() -> Calculator.parse(input2)).isInstanceOf(RuntimeException.class);
     }
+
+    @Test
+    void 올바른문자열일때_계산성공() {
+        // given
+        String input1 = "";
+        String input2 = "1,2";
+        String input3 = "1,2,3";
+        String input4 = "1,2:3";
+        String input5 = "//;\n1;2;3";
+
+        // when
+        int result1 = Calculator.sum(input1);
+        int result2 = Calculator.sum(input2);
+        int result3 = Calculator.sum(input3);
+        int result4 = Calculator.sum(input4);
+        int result5 = Calculator.sum(input5);
+
+    }
 }
