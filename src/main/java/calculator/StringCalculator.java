@@ -17,7 +17,7 @@ public class StringCalculator {
 
     private static void assertNumber(String number) {
         boolean isPresent = Arrays.stream(splitNumber(number))
-            .anyMatch(StringCalculator::isNumber);
+            .anyMatch(StringCalculator::isText);
         if (isPresent) {
             throw new IllegalArgumentException("숫자가 아닌값이 들어왔습니다. \"" + number + "\"");
         }
@@ -27,7 +27,7 @@ public class StringCalculator {
         return number.split("[,:]");
     }
 
-    private static boolean isNumber(String c) {
+    private static boolean isText(String c) {
         try {
             Integer.parseInt(c);
             return false;
