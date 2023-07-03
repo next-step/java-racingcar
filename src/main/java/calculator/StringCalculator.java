@@ -1,13 +1,16 @@
 package calculator;
 
+import java.util.Arrays;
+
 public class StringCalculator {
 
     public static int sum(String number) {
-        String[] splitNumbers = number.split(",");
-        int answer = 0;
-        for (String splitNumber : splitNumbers) {
-            answer += Integer.parseInt(splitNumber);
-        }
-        return answer;
+        return Arrays.stream(splitNumber(number))
+            .mapToInt(Integer::parseInt)
+            .sum();
+    }
+
+    private static String[] splitNumber(String number) {
+        return number.split(",|:");
     }
 }
