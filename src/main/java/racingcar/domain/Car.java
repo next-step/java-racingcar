@@ -41,9 +41,12 @@ public class Car {
     }
 
     public int getPosition() {
-        return 0;
+        return this.position;
     }
 
     public void move() {
+        if (this.moveable.isMove()) {
+            this.position++;
+        }
     }
 }
