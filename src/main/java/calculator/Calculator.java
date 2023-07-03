@@ -2,35 +2,28 @@ package calculator;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Calculator {
 
     public static int sum(String text) {
-        if (text == null || text.isEmpty()) return 0;
+        if (isNullOrEmpty(text)) return 0;
 
-        String delimiter = "[,;]";
+        String[] tokens = TokenUtils.generateTokensFromText(text);
+        TokenUtils.validateToken(tokens);
 
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
-        if (m.find()) {
-            delimiter = m.group(1);
-            text = m.group(2);
-        }
-
-        String lookBehindRegex = "(?<=\\d+)" + delimiter;
-        String[] tokens = text.split(lookBehindRegex);
-
-        int result = 0;
-
-        for (String token : tokens) {
-            validateToken(token);
-            result += Integer.parseInt(token);
-        }
-
-        return result;
+        return Arrays.stream(tokens)
+                .mapToInt(Integer::parseInt)
+                .sum();
     }
 
+    private static boolean isNullOrEmpty(String text) {
+        if (text == null || text.isEmpty()) {
+            return true;
+        }
+        return false;
+    }
+
+    /*
     public static int splitByDelimiterSum(String text, List<Character> delimiters) {
         boolean prevNum = false;
         String tmp = "";
@@ -51,13 +44,5 @@ public class Calculator {
 
         return result;
     }
-
-    private static void validateToken(String token) {
-        try {
-            int value = Integer.parseInt(token);
-            if (value < 0) throw new RuntimeException("음수는 입력할 수 없습니다.");
-        } catch (NumberFormatException e) {
-            throw new RuntimeException("유효한 숫자가 아닙니다.");
-        }
-    }
+     */
 }
