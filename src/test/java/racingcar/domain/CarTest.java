@@ -109,6 +109,24 @@ class CarTest {
 
         }
 
+        @Nested
+        @DisplayName("Moveable이 false로 바인딩 되어 있다면,")
+        class ContextFalseMover {
+
+            private final Moveable falseMover = () -> false;
+            private final Car car = new Car(normalInput, falseMover);
+
+            @Test
+            @DisplayName("position이 증가하지 않는다.")
+            void ItReturnIncreasedPosition() {
+                int position = car.getPosition();
+
+                car.move();
+
+                assertThat(car.getPosition()).isEqualTo(position);
+            }
+
+        }
     }
 
 }
