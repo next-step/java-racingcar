@@ -1,32 +1,44 @@
 package calculator;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 class StringCalculatorTest {
 
-    @Test
-    @DisplayName("양수값이 들어오면, 양수값을 더한값을 반환한다.")
-    void test1() {
-        assertThat(StringCalculator.sum("1,2")).isEqualTo(3);
-        assertThat(StringCalculator.sum("1,2,3")).isEqualTo(6);
-        assertThat(StringCalculator.sum("1,2:3")).isEqualTo(6);
+    @ParameterizedTest
+    @CsvSource(value = {
+        "1,2!3",
+        "1,2,3!6",
+        "1,2:3!6",
+
+    }, delimiter = '!')
+    @DisplayName("양수 값이 들어오면, 양수 값을 더한 값을 반환한다.")
+    void test1(String value, int expected) {
+        assertThat(StringCalculator.sum(value)).isEqualTo(expected);
     }
 
-    @Test
-    @DisplayName("양수이외의 값이 들어오면, IllegalArgumentException을 던진다.")
-    void test2() {
-        assertThatThrownBy(() -> StringCalculator.sum("a:1")).isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> StringCalculator.sum("-1:1")).isInstanceOf(IllegalArgumentException.class);
+    @ParameterizedTest
+    @CsvSource(value = {
+        "a:1",
+        "-1:1",
+
+    })
+    @DisplayName("양수이외의 값이 들어오면, IllegalArgumentException 을 던진다.")
+    void test2(String value) {
+        assertThatThrownBy(() -> StringCalculator.sum(value)).isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test
-    @DisplayName("Blank, Null값이 들어오면, 0을 반환한다.")
-    void test3() {
-        assertThat(StringCalculator.sum("")).isZero();
-        assertThat(StringCalculator.sum(null)).isZero();
+    @ParameterizedTest
+    @NullAndEmptySource
+    @DisplayName("Blank, Null 값이 들어오면, 0을 반환한다.")
+    void test3(String value) {
+        assertThat(StringCalculator.sum(value)).isZero();
     }
 
     @Test
