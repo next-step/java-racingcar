@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatNoException;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -24,8 +24,8 @@ class CarTest {
             @Test
             @DisplayName("생성이 완료 한다.")
             void ItCreated() {
-                assertThat(new Car(minimumInput)).assertThatNoException();
-                assertThat(new Car(fullInput)).assertThatNoException();
+                assertThatNoException().isThrownBy(() -> new Car(minimumInput));
+                assertThatNoException().isThrownBy(() -> new Car(fullInput));
             }
 
         }
