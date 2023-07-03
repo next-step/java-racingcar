@@ -39,4 +39,14 @@ public class RacingCarTest {
 
         assertThatThrownBy(callable).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("차가 전진한다")
+    public void 차가_전진한다() throws Exception {
+        Car car = new Car("hello");
+
+        car.forword();
+
+        assertThat(car.getDistance()).isEqualTo(1);
+    }
 }
