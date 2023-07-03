@@ -28,4 +28,18 @@ public class RacingInputTest {
         assertThat(cars.get(1).getName()).isEqualTo("crong");
         assertThat(cars.get(2).getName()).isEqualTo("honux");
     }
+
+    @Test
+    void inputCountTest() {
+        //given
+        String count = "5";
+        InputStream inputStream = new ByteArrayInputStream(count.getBytes(StandardCharsets.UTF_8));
+        RacingInput racingInput = new RacingInput(inputStream);
+
+        //when
+        int result = racingInput.inputCount();
+
+        //then
+        assertThat(result).isEqualTo(5);
+    }
 }

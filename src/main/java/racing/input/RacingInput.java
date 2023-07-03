@@ -21,4 +21,8 @@ public class RacingInput {
                 .map(Car::new)
                 .collect(Collectors.toList());
     }
+
+    public int inputCount() {
+        return -1;
+    }
 }
