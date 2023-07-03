@@ -33,4 +33,12 @@ class CalculatorTest {
         ).isEqualTo(6);
     }
 
+    @Test
+    @DisplayName("커스텀 구분자를 가지는 경우")
+    void customDelimiterTest() {
+        assertThat(
+                Calculator.sum("//;\n1;2;3")
+        ).isEqualTo(6);
+    }
+
 }
