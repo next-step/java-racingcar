@@ -2,29 +2,34 @@ package calculator;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Calculator {
 
     public static int sum(String text) {
         if (text == null || text.isEmpty()) return 0;
 
-        List<Character> delimiter = List.of(',' ,';');
+        String delimiter = "[,;]";
 
-        if (text.startsWith("//") && text.length() >= 4 && text.charAt(3) == '\n') {
-            delimiter = List.of(text.charAt(2));
-            text = text.substring(4);
+        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        if (m.find()) {
+            delimiter = m.group(1);
+            text = m.group(2);
         }
-        return splitByDelimiterSum(text, delimiter);
-        /*
-        String[] tokens = text.split(delimiter);
+
+        String lookBehindRegex = "(?<=\\d+)" + delimiter;
+        String[] tokens = text.split(lookBehindRegex);
+
         int result = 0;
+
         for (String token : tokens) {
             validateToken(token);
             result += Integer.parseInt(token);
         }
-         */
-    }
 
+        return result;
+    }
 
     public static int splitByDelimiterSum(String text, List<Character> delimiters) {
         boolean prevNum = false;
