@@ -1,5 +1,6 @@
 package racingcar;
 
+import org.assertj.core.api.ThrowableAssert;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -23,7 +24,9 @@ public class RacingCarTest {
     @DisplayName("각 자동차에 이름을 부여할 수 있다.")
     public void 각_자동차에_이름을_부여할_수_있다() throws Exception {
         String name = "chanu";
+
         Car car = new Car(name);
+
         assertThat(car.getName()).isEqualTo(name);
     }
 
@@ -31,6 +34,9 @@ public class RacingCarTest {
     @DisplayName("자동차 이름이 5자 초과이면 에러를 던진다")
     public void 자동차_이름이_5자_초과이면_에러를_던진다() throws Exception {
         String name = "failfail";
-        assertThatThrownBy(()-> new Car(name)).isInstanceOf(IllegalArgumentException.class);
+
+        ThrowableAssert.ThrowingCallable callable = ()-> new Car(name);
+
+        assertThatThrownBy(callable).isInstanceOf(IllegalArgumentException.class);
     }
 }

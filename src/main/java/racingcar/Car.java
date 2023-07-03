@@ -5,8 +5,14 @@ public class Car {
     private String name;
 
     public Car(String name) {
-        if(name.length() > 5) throw new IllegalArgumentException();
+        validateName(name);
         this.name = name;
+    }
+
+    private void validateName(String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public String getName() {
