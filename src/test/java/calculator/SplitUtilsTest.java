@@ -19,7 +19,7 @@ public class SplitUtilsTest {
         String text = "1,2:3;4";
 
         /* when */
-        List<Integer> numbers = SplitUtils.toNumbers(text);
+        List<Integer> numbers = SplitUtils.convertToNumbers(text);
 
         /* then */
         assertThat(numbers).containsExactly(1, 2, 3, 4);
@@ -32,7 +32,7 @@ public class SplitUtilsTest {
         /* given */
 
         /* when */
-        List<Integer> numbers = SplitUtils.toNumbers(input);
+        List<Integer> numbers = SplitUtils.convertToNumbers(input);
 
         /* then */
         assertThat(numbers).containsExactly(1, 2, 3, 4);
@@ -45,7 +45,7 @@ public class SplitUtilsTest {
         String input = "1:-1:2";
 
         /* when & then */
-        assertThatThrownBy(() -> SplitUtils.toNumbers(input))
+        assertThatThrownBy(() -> SplitUtils.convertToNumbers(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -56,7 +56,7 @@ public class SplitUtilsTest {
         String input = "1:1.2:2";
 
         /* when & then */
-        assertThatThrownBy(() -> SplitUtils.toNumbers(input))
+        assertThatThrownBy(() -> SplitUtils.convertToNumbers(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -67,7 +67,7 @@ public class SplitUtilsTest {
         String input = "1:a:2";
 
         /* when & then */
-        assertThatThrownBy(() -> SplitUtils.toNumbers(input))
+        assertThatThrownBy(() -> SplitUtils.convertToNumbers(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -78,7 +78,7 @@ public class SplitUtilsTest {
         String input = "       ";
 
         /* when */
-        List<Integer> numbers = SplitUtils.toNumbers(input);
+        List<Integer> numbers = SplitUtils.convertToNumbers(input);
 
         /* then */
         assertThat(numbers).containsExactly(0);

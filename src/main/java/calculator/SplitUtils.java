@@ -7,19 +7,22 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class SplitUtils {
-    private static final Pattern pattern = Pattern.compile("^[0-9]+$");
+    private static final String DEFAULT_DELIMITERS = "[,;:]";
+    private static final Pattern numberPattern = Pattern.compile("^[0-9]+$");
     private static final Pattern splitPattern = Pattern.compile("//(.+)\n(.*)");
 
-    public static List<Integer> toNumbers(String text) {
+    public static List<Integer> convertToNumbers(String text) {
         Matcher matcher = splitPattern.matcher(text);
         if (matcher.find()) {
             String customDelimiter = matcher.group(1);
             String[] tokens = matcher.group(2).split(customDelimiter);
-            return Arrays.stream(tokens)
-                    .map(SplitUtils::toPositiveNumber)
-                    .collect(Collectors.toList());
+            return toNumbers(tokens);
         }
-        return Arrays.stream(text.split("[,;:]"))
+        return toNumbers(text.split(DEFAULT_DELIMITERS));
+    }
+
+    private static List<Integer> toNumbers(String[] tokens) {
+        return Arrays.stream(tokens)
                 .map(SplitUtils::toPositiveNumber)
                 .collect(Collectors.toList());
     }
@@ -33,7 +36,7 @@ public class SplitUtils {
             return 0;
         }
 
-        Matcher matcher = pattern.matcher(input);
+        Matcher matcher = numberPattern.matcher(input);
         if (!matcher.matches()) {
             throw new IllegalArgumentException("[ERROR] 0 이상의 정수만 입력할 수 있습니다.");
         }
