@@ -1,7 +1,9 @@
 package caculator;
 
 import delimiter.DelimiterResolver;
+import java.nio.file.DirectoryStream.Filter;
 import java.util.Arrays;
+import java.util.function.Predicate;
 import java.util.regex.Pattern;
 
 public final class Calculator {
@@ -29,13 +31,14 @@ public final class Calculator {
     }
 
     private static boolean validate(String[] values) {
-        for (String value : values) {
-            if (value.isBlank() || !isNumber(value) || value.startsWith("-")) {
-                return false;
-            }
-        }
-
-        return true;
+        return Arrays.stream(values)
+                     .filter(
+                             Predicate.not(Calculator::isNumber)
+                                      .or(String::isBlank)
+                                      .or(value -> value.startsWith("-"))
+                     )
+                     .findAny()
+                     .isEmpty();
     }
 
     private static boolean isNumber(String value) {
