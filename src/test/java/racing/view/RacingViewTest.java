@@ -55,13 +55,10 @@ class RacingViewTest {
         List<Car> cars = new ArrayList<>();
         cars.add(new Car("pobi"));
         cars.add(new Car("crong"));
-        cars.add(new Car("honux"));
-        cars.get(0).goForward(true);
-        cars.get(1).goForward(true);
         String text = "pobi, crong가 최종 우승했습니다.";
 
         // when, then
-        assertThat(racingView.getWinnerView()).isEqualTo(text);
+        assertThat(racingView.getWinnerView(cars)).isEqualTo(text);
 
 
     }

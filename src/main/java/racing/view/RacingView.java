@@ -28,7 +28,9 @@ public class RacingView {
                 .collect(Collectors.joining("\n"));
     }
 
-    public String getWinnerView() {
-        return null;
+    public String getWinnerView(List<Car> cars) {
+        return cars.stream()
+                .map(car -> car.getName())
+                .collect(Collectors.joining(", ")) + "가 최종 우승했습니다.";
     }
 }
