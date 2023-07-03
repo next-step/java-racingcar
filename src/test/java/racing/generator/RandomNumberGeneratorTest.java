@@ -4,11 +4,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RandomGeneratorTest {
+public class RandomNumberGeneratorTest {
     @Test
     void generateTest() {
         //given
-        RandomGenerator randomGenerator = new RandomGenerator();
+        RandomNumberGenerator randomGenerator = new RandomNumberGenerator();
 
         //when
         int randomValue = randomGenerator.generate();
