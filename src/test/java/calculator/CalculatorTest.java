@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class CalculatorTest {
 
@@ -52,5 +53,20 @@ public class CalculatorTest {
     void test6() {
         assertThat(Calculator.sum("//;\n1;2;3")).isEqualTo(6);
         assertThat(Calculator.sum("//#\n1#2#3")).isEqualTo(6);
+        assertThat(Calculator.sum("//-\n1-2-3")).isEqualTo(6);
+    }
+
+    @Test
+    @DisplayName("음수를 입력하는 경우 예외가 발생한다.")
+    void test7() {
+        assertThatExceptionOfType(RuntimeException.class)
+                .isThrownBy(() -> {
+                    Calculator.sum("-1,2,3");
+                });
+        assertThatExceptionOfType(RuntimeException.class)
+                .isThrownBy(() -> {
+                    //Calculator.sum("//^\n^3");
+                    Calculator.sum("//-\n-1--2-3");
+                });
     }
 }
