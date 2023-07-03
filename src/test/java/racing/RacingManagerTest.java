@@ -47,4 +47,22 @@ public class RacingManagerTest {
         assertThat(manager.getCars().get(1).getPosition()).isEqualTo(2);
 
     }
+
+    @Test
+    void nextStepGenerateZeroTest() {
+        //given
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car("test1"));
+        cars.add(new Car("test2"));
+        NumberGenerator numberGenerator = new SpecificNumberGenerator(0);
+        RacingManager manager = new RacingManager(cars, numberGenerator, 1);
+
+        //when
+        manager.nextStep();
+
+        //then
+        assertThat(manager.getCars().get(0).getPosition()).isEqualTo(1);
+        assertThat(manager.getCars().get(1).getPosition()).isEqualTo(1);
+
+    }
 }
