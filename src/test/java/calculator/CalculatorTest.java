@@ -66,5 +66,11 @@ public class CalculatorTest {
         int result4 = Calculator.sum(input4);
         int result5 = Calculator.sum(input5);
 
+        // then
+        assertThat(result1).isEqualTo(0);
+        assertThat(result2).isEqualTo(3);
+        assertThat(result3).isEqualTo(6);
+        assertThat(result4).isEqualTo(6);
+        assertThat(result5).isEqualTo(6);
     }
 }
