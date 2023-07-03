@@ -33,20 +33,18 @@ class StringCalculatorTest {
 
     @Test
     void 문자열_변환() {
-        String input = "1,2:3";
-        String[] delimiter = {",", ":"};
+        ParseInfo parseInfo = new ParseInfo(",|:", "1,2:3");
 
-        int[] result = StringCalculator.toIntArray(input, delimiter);
+        int[] result = StringCalculator.toIntArray(parseInfo);
 
         assertThat(result).containsExactly(1, 2, 3);
     }
 
     @Test
     void 문자열_변환_구분자_하나() {
-        String input = "4;2;3";
-        String[] delimiter = {";"};
+        ParseInfo parseInfo = new ParseInfo( ";", "4;2;3");
 
-        int[] result = StringCalculator.toIntArray(input, delimiter);
+        int[] result = StringCalculator.toIntArray(parseInfo);
 
         assertThat(result).containsExactly(4, 2, 3);
     }
@@ -55,6 +53,7 @@ class StringCalculatorTest {
     void 커스텀_구분자_분리() {
         String input = "//;\n1;2;3";
         ParseInfo parseInfo = StringCalculator.separateCustomText(input);
+
         assertThat(parseInfo.delimiter).isEqualTo(";");
         assertThat(parseInfo.text).isEqualTo("1;2;3");
     }

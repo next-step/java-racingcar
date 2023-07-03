@@ -9,11 +9,10 @@ public class StringCalculator {
         return Arrays.stream(nums).sum();
     }
 
-    public static int[] toIntArray(String input, String[] delimiter) {
-        String regex = String.join("|", delimiter);
-        String[] array = input.split(regex);
+    public static int[] toIntArray(ParseInfo parseInfo) {
+        String[] strArray = parseInfo.parse();
 
-        return Arrays.stream(array).mapToInt(Integer::parseInt).toArray();
+        return Arrays.stream(strArray).mapToInt(Integer::parseInt).toArray();
     }
 
     public static ParseInfo separateCustomText(String text) {

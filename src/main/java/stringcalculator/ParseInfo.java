@@ -8,4 +8,8 @@ public class ParseInfo {
         this.delimiter = delimiter;
         this.text = text;
     }
+
+    public String[] parse() {
+        return text.split(delimiter);
+    }
 }
