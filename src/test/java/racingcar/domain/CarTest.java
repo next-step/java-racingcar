@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.extension.Moveable;
 
 @SuppressWarnings("FieldCanBeLocal")
 @DisplayName("Car 클래스")
@@ -15,7 +16,7 @@ class CarTest {
     @DisplayName("new 생성자는")
     class ContextNewConstructor {
 
-        private Moveable defaultMove = null;
+        private final Moveable trueMover = () -> true;
 
         @Nested
         @DisplayName("1~5자 사이의 이름이 주어진다면,")
@@ -27,8 +28,8 @@ class CarTest {
             @Test
             @DisplayName("생성이 완료 한다.")
             void ItCreated() {
-                assertThatNoException().isThrownBy(() -> new Car(minimumInput, defaultMove));
-                assertThatNoException().isThrownBy(() -> new Car(fullInput, defaultMove));
+                assertThatNoException().isThrownBy(() -> new Car(minimumInput, trueMover));
+                assertThatNoException().isThrownBy(() -> new Car(fullInput, trueMover));
             }
 
         }
@@ -43,8 +44,8 @@ class CarTest {
             @Test
             @DisplayName("IllegalArgumentException 이 발생한다.")
             void ItThrowIllegalArgumentException() {
-                assertThatThrownBy(() -> new Car(blankInput, defaultMove)).isInstanceOf(IllegalArgumentException.class);
-                assertThatThrownBy(() -> new Car(overflowInput, defaultMove)).isInstanceOf(IllegalArgumentException.class);
+                assertThatThrownBy(() -> new Car(blankInput, trueMover)).isInstanceOf(IllegalArgumentException.class);
+                assertThatThrownBy(() -> new Car(overflowInput, trueMover)).isInstanceOf(IllegalArgumentException.class);
             }
 
         }
@@ -58,7 +59,7 @@ class CarTest {
             @Test
             @DisplayName("IllegalArgumentException 이 발생한다.")
             void ItThrowIllegalArgumentException() {
-                assertThatThrownBy(() -> new Car(nullInput, defaultMove)).isInstanceOf(IllegalArgumentException.class);
+                assertThatThrownBy(() -> new Car(nullInput, trueMover)).isInstanceOf(IllegalArgumentException.class);
             }
 
         }

@@ -1,14 +1,19 @@
 package racingcar.domain;
 
 import java.util.Objects;
+import racingcar.domain.extension.Moveable;
 
 public class Car {
 
+    private int position;
     private final String name;
+    private final Moveable moveable;
 
-    public Car(String name) {
+    public Car(String name, Moveable moveable) {
         preAssert(name);
+        this.position = 1;
         this.name = name;
+        this.moveable = moveable;
     }
 
     private void preAssert(String name) {
