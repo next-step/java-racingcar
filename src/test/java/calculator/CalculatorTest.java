@@ -65,8 +65,20 @@ public class CalculatorTest {
                 });
         assertThatExceptionOfType(RuntimeException.class)
                 .isThrownBy(() -> {
-                    //Calculator.sum("//^\n^3");
                     Calculator.sum("//-\n-1--2-3");
+                });
+    }
+
+    @Test
+    @DisplayName("숫자가 아닌 문자를 입력하는 경우 예외가 발생한다.")
+    void test8() {
+        assertThatExceptionOfType(RuntimeException.class)
+                .isThrownBy(() -> {
+                    Calculator.sum("//-\n1-!2-3");
+                });
+        assertThatExceptionOfType(RuntimeException.class)
+                .isThrownBy(() -> {
+                    Calculator.sum("//@\n1@@@2@3");
                 });
     }
 }
