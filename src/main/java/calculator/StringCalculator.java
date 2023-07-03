@@ -1,6 +1,7 @@
 package calculator;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class StringCalculator {
 
@@ -9,7 +10,7 @@ public class StringCalculator {
     }
 
     public static int sum(String number) {
-        if (number.isBlank()) {
+        if (Objects.isNull(number) || number.isBlank()) {
             return 0;
         }
         preAssert(number);
