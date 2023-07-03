@@ -40,4 +40,10 @@ public class Car {
         }
     }
 
+    public int getPosition() {
+        return 0;
+    }
+
+    public void move() {
+    }
 }

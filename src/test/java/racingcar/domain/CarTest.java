@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -77,6 +78,33 @@ class CarTest {
                 assertThatThrownBy(() -> new Car(normalInput, nullMoveable))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("Moveable은 null값이 될 수 없습니다.");
+            }
+
+        }
+
+    }
+
+    @Nested
+    @DisplayName("move 메소드는")
+    class DescribeMoveMethod {
+
+        private final String normalInput = "123";
+
+        @Nested
+        @DisplayName("Moveable이 true로 바인딩 되어 있다면,")
+        class ContextTrueMover {
+
+            private final Moveable trueMover = () -> true;
+            private final Car car = new Car(normalInput, trueMover);
+
+            @Test
+            @DisplayName("position이 1 증가된 값을 반환한다.")
+            void ItReturnIncreasedPosition() {
+                int position = car.getPosition();
+
+                car.move();
+
+                assertThat(car.getPosition()).isEqualTo(position + 1);
             }
 
         }
