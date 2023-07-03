@@ -17,12 +17,12 @@ public class RacingInput {
     }
 
     public List<Car> inputName() {
-        return Arrays.stream(scanner.next().split(","))
+        return Arrays.stream(this.scanner.next().split(","))
                 .map(Car::new)
                 .collect(Collectors.toList());
     }
 
     public int inputCount() {
-        return -1;
+        return this.scanner.nextInt();
     }
 }
