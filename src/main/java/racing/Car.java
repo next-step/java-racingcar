@@ -18,6 +18,6 @@ public class Car {
     }
 
     public String getName() {
-        return null;
+        return this.name;
     }
 }

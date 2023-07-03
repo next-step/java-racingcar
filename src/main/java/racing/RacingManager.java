@@ -3,6 +3,7 @@ package racing;
 import racing.generator.NumberGenerator;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingManager {
     private List<Car> cars;
@@ -33,6 +34,7 @@ public class RacingManager {
     }
 
     public List<Car> getWinners() {
-        return null;
+        int maxValue = cars.stream().mapToInt(Car::getPosition).max().orElse(-1);
+        return cars.stream().filter(car -> car.getPosition() == maxValue).collect(Collectors.toList());
     }
 }
