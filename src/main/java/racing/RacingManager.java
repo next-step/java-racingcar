@@ -2,6 +2,6 @@ package racing;
 
 public class RacingManager {
     public boolean isMovable(int value) {
-        return false;
+        return 4 <= value && value <= 9;
     }
 }
