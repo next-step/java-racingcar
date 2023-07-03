@@ -28,9 +28,12 @@ public class GameBoard {
     }
 
     public void run(int tryCount) {
-        cars.forEach(Car::move);
+        if (tryCount != 0) {
+            cars.forEach(Car::move);
+        }
+        Output.printExecutionResult(cars, tryCount);
         if (this.tryCount == tryCount) {
-            getWinnerNames();
+            Output.printWinner(getWinnerNames());
         }
     }
 
