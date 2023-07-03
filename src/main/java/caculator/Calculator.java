@@ -1,6 +1,5 @@
 package caculator;
 
-import delimiter.DelimiterResolver;
 import java.util.Arrays;
 import java.util.regex.Pattern;
 
@@ -12,7 +11,7 @@ public final class Calculator {
     }
 
     public static int sum(String text) {
-        return Arrays.stream(text.split(","))
+        return Arrays.stream(text.split(",|:"))
                      .mapToInt(Integer::parseInt)
                      .reduce(Integer::sum)
                      .orElseThrow(RuntimeException::new);
