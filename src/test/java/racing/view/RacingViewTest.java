@@ -1,6 +1,10 @@
 package racing.view;
 
 import org.junit.jupiter.api.Test;
+import racing.Car;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -27,5 +31,20 @@ class RacingViewTest {
         String text = "실행 결과";
 
         assertThat(racingView.getResultTitleView()).isEqualTo(text);
+    }
+
+    @Test
+    void getCarStatusViewTest() {
+        //given
+        RacingView racingView = new RacingView();
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car("test1"));
+        cars.add(new Car("test2"));
+        cars.add(new Car("test3"));
+
+        //when
+        assertThat(racingView.getCarStatusView(cars)).isEqualTo("pobi : -\n" +
+                "crong : -\n" +
+                "honux : -");
     }
 }
