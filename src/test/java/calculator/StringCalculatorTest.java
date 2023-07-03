@@ -2,7 +2,6 @@ package calculator;
 
 import static org.assertj.core.api.Assertions.*;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -20,6 +19,7 @@ class StringCalculatorTest {
     @DisplayName("양수이외의 값이 들어오면, IllegalArgumentException을 던진다.")
     void test2() {
         assertThatThrownBy(() -> StringCalculator.sum("a:1")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> StringCalculator.sum("-1:1")).isInstanceOf(IllegalArgumentException.class);
     }
 
 }

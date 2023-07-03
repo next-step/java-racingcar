@@ -13,6 +13,7 @@ public class StringCalculator {
 
     private static void preAssert(String number) {
         assertNumber(number);
+        assertPositiveNumber(number);
     }
 
     private static void assertNumber(String number) {
@@ -33,6 +34,14 @@ public class StringCalculator {
             return false;
         } catch (NumberFormatException numberFormatException) {
             return true;
+        }
+    }
+
+    private static void assertPositiveNumber(String number) {
+        boolean isPresent = Arrays.stream(splitNumber(number))
+            .anyMatch(n -> Integer.parseInt(n) < 0);
+        if (isPresent) {
+            throw new IllegalArgumentException("숫자가 아닌값이 들어왔습니다. \"" + number + "\"");
         }
     }
 
