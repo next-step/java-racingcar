@@ -33,8 +33,9 @@ public class Car {
         return name + " : " + "-".repeat(distance + 1);
     }
 
-    public void progress(int number) {
-        if (number > 3) {
+    public void progress() {
+        int number = RandomGenerator.generateNumber();
+        if (number >= 4) {
             forward();
         }
     }
