@@ -37,7 +37,7 @@ public class RacingManagerTest {
         cars.add(new Car("test1"));
         cars.add(new Car("test2"));
         NumberGenerator numberGenerator = new SpecificNumberGenerator(9);
-        RacingManager manager = new RacingManager(cars, numberGenerator, 1);
+        RacingManager manager = new RacingManager(cars, numberGenerator);
 
         //when
         manager.nextStep();
@@ -55,7 +55,7 @@ public class RacingManagerTest {
         cars.add(new Car("test1"));
         cars.add(new Car("test2"));
         NumberGenerator numberGenerator = new SpecificNumberGenerator(0);
-        RacingManager manager = new RacingManager(cars, numberGenerator, 1);
+        RacingManager manager = new RacingManager(cars, numberGenerator);
 
         //when
         manager.nextStep();
@@ -76,7 +76,7 @@ public class RacingManagerTest {
         cars.get(1).goForward(true);
         cars.get(2).goForward(true);
         NumberGenerator numberGenerator = new SpecificNumberGenerator(0);
-        RacingManager manager = new RacingManager(cars, numberGenerator, 1);
+        RacingManager manager = new RacingManager(cars, numberGenerator);
 
         //when
         List<Car> result = manager.getWinners();

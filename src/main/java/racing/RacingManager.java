@@ -8,12 +8,10 @@ import java.util.stream.Collectors;
 public class RacingManager {
     private List<Car> cars;
     private NumberGenerator numberGenerator;
-    private int count;
 
-    public RacingManager(List<Car> cars, NumberGenerator numberGenerator, int count) {
+    public RacingManager(List<Car> cars, NumberGenerator numberGenerator) {
         this.cars = cars;
         this.numberGenerator = numberGenerator;
-        this.count = count;
     }
 
     public RacingManager() {
