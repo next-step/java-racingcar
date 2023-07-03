@@ -15,6 +15,8 @@ class CarTest {
     @DisplayName("new 생성자는")
     class ContextNewConstructor {
 
+        private Moveable defaultMove = null;
+
         @Nested
         @DisplayName("1~5자 사이의 이름이 주어진다면,")
         class DescribeNormalInput {
@@ -25,8 +27,8 @@ class CarTest {
             @Test
             @DisplayName("생성이 완료 한다.")
             void ItCreated() {
-                assertThatNoException().isThrownBy(() -> new Car(minimumInput));
-                assertThatNoException().isThrownBy(() -> new Car(fullInput));
+                assertThatNoException().isThrownBy(() -> new Car(minimumInput, defaultMove));
+                assertThatNoException().isThrownBy(() -> new Car(fullInput, defaultMove));
             }
 
         }
@@ -41,8 +43,8 @@ class CarTest {
             @Test
             @DisplayName("IllegalArgumentException 이 발생한다.")
             void ItThrowIllegalArgumentException() {
-                assertThatThrownBy(() -> new Car(blankInput)).isInstanceOf(IllegalArgumentException.class);
-                assertThatThrownBy(() -> new Car(overflowInput)).isInstanceOf(IllegalArgumentException.class);
+                assertThatThrownBy(() -> new Car(blankInput, defaultMove)).isInstanceOf(IllegalArgumentException.class);
+                assertThatThrownBy(() -> new Car(overflowInput, defaultMove)).isInstanceOf(IllegalArgumentException.class);
             }
 
         }
@@ -56,7 +58,7 @@ class CarTest {
             @Test
             @DisplayName("IllegalArgumentException 이 발생한다.")
             void ItThrowIllegalArgumentException() {
-                assertThatThrownBy(() -> new Car(nullInput)).isInstanceOf(IllegalArgumentException.class);
+                assertThatThrownBy(() -> new Car(nullInput, defaultMove)).isInstanceOf(IllegalArgumentException.class);
             }
 
         }
