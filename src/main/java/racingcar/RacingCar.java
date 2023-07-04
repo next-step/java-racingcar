@@ -2,6 +2,8 @@ package racingcar;
 
 public class RacingCar {
 
+    public int moveCount;
+
     public static boolean isValidCarNames(String rawCarNames) {
         String[] carNames = rawCarNames.split(",");
         return !isEmptyCarNames(carNames) && isValidCarNamesLength(carNames);
@@ -35,5 +37,11 @@ public class RacingCar {
 
     public static int generateRandom() {
         return (int) (Math.random() * 10000) % 10;
+    }
+
+    public void move(int randomValue) {
+        if (randomValue >= 4) {
+            this.moveCount++;
+        }
     }
 }

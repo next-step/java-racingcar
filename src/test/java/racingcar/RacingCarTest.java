@@ -49,4 +49,28 @@ public class RacingCarTest {
         assertThat(result).isGreaterThanOrEqualTo(0)
                 .isLessThanOrEqualTo(9);
     }
+
+    @DisplayName("랜덤 값이 4 이상이면 자동차는 1만큼 전진한다")
+    @ParameterizedTest
+    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
+    void 자동차_전진(int randomValue) {
+        RacingCar racingCar = new RacingCar();
+        int previousCount = racingCar.moveCount;
+
+        racingCar.move(randomValue);
+
+        assertThat(racingCar.moveCount).isEqualTo(previousCount + 1);
+    }
+
+    @DisplayName("랜덤 값이 3 이하면 자동차는 정지한다")
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2, 3})
+    void 자동차_정지(int randomValue) {
+        RacingCar racingCar = new RacingCar();
+        int previousCount = racingCar.moveCount;
+
+        racingCar.move(randomValue);
+
+        assertThat(racingCar.moveCount).isEqualTo(previousCount);
+    }
 }
