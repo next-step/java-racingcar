@@ -28,6 +28,21 @@ class AssertsTest {
 
         }
 
+        @Nested
+        @DisplayName("null이 아닌 값이 들어오면,")
+        class ContextNotNullInput {
+
+            private final Object notNullInput = new Object();
+
+            @Test
+            @DisplayName("예외를 던지지 않는다.")
+            void notThrowException() {
+                Assertions.assertThatNoException()
+                    .isThrownBy(() -> Asserts.notNull(notNullInput, () -> "null 값이 들어올 수 없습니다."));
+            }
+
+        }
+
     }
 
 }
