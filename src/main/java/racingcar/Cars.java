@@ -14,7 +14,7 @@ public class Cars {
         return str.split(",");
     }
 
-    public void move() {
+    public void takeTurn() {
         for (Car car : cars) {
             car.progress();
         }

@@ -15,7 +15,7 @@ public class CarsTest {
         Car iptCar = Mockito.mock(Car.class);
         Cars cars = new Cars(List.of(chanCar, iptCar));
 
-        cars.move();
+        cars.takeTurn();
 
         Mockito.verify(chanCar).progress();
         Mockito.verify(iptCar).progress();
