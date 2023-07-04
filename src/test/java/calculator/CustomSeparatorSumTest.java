@@ -13,5 +13,4 @@ public class CustomSeparatorSumTest {
         assertEquals(3, Calculator.sum("//;\n1;2"));
         assertEquals(6, Calculator.sum("//!@\n1!2@3"));
     }
-
 }

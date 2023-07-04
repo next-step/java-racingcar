@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ExceptionTest {
-
     @Test
     @DisplayName("숫자 이외의 값 전달 시 RuntimeException")
     void numberFormatException() {
