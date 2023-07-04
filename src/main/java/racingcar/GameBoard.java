@@ -3,6 +3,7 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class GameBoard {
 
@@ -18,15 +19,6 @@ public class GameBoard {
         this.tryCount = tryCount;
     }
 
-    public GameBoard(List<String> carNames, int tryCount, List<Random> randoms) {
-        cars = new ArrayList<>();
-
-        for (int i = 0; i < carNames.size(); i++) {
-            cars.add(new Car(carNames.get(i), randoms.get(i)));
-        }
-        this.tryCount = tryCount;
-    }
-
     public void run(int tryCount) {
         if (tryCount != 0) {
             cars.forEach(Car::move);
@@ -38,20 +30,14 @@ public class GameBoard {
     }
 
     public List<String> getWinnerNames() {
-        List<String> winnerNames = new ArrayList<>();
-        int maxIndex = 0;
-        for (Car car : cars) {
-            maxIndex = Math.max(car.getIndex(), maxIndex);
-        }
-        for (Car car : cars) {
-            checkWinner(car, maxIndex, winnerNames);
-        }
-        return winnerNames;
-    }
+        int maxIndex = cars.stream()
+                .mapToInt(Car::getIndex)
+                .max()
+                .orElse(1);
+        return cars.stream()
+                .filter(c -> c.getIndex() == maxIndex)
+                .map(Car::getName)
+                .collect(Collectors.toList());
 
-    private void checkWinner(Car car, int maxIndex, List<String> winnerNames) {
-        if (car.getIndex() == maxIndex) {
-            winnerNames.add(car.getName());
-        }
     }
 }
