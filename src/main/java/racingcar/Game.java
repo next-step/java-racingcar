@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class GameBoard {
+public class Game {
 
     private final List<Car> cars;
 
-    public GameBoard(List<String> carNames) {
+    public Game(List<String> carNames) {
         cars = new ArrayList<>();
 
         for (String carName : carNames) {
