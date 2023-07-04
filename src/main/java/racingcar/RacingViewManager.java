@@ -4,16 +4,14 @@ import java.util.List;
 
 public class RacingViewManager {
 
-    private final Cars cars;
-    private final List<List<CarDto>> records;
+    private final RacingManager racingManager;
 
     private static final String RESULT_COMMENT = "실행 결과";
     private static final String WINNERS_STRING = "가 최종 우승했습니다.";
     private static final int DEFAULT_DISTANCE_COUNT = 1;
 
-    public RacingViewManager(Cars cars, List<List<CarDto>> records) {
-        this.cars = cars;
-        this.records = records;
+    public RacingViewManager(RacingManager racingManager) {
+        this.racingManager = racingManager;
     }
 
     public void printResult() {
@@ -23,7 +21,7 @@ public class RacingViewManager {
     }
 
     private void printRecords() {
-        for (List<CarDto> record : records) {
+        for (List<CarDto> record : racingManager.getRecords()) {
             printCarRecord(record);
             System.out.println();
         }
@@ -36,6 +34,6 @@ public class RacingViewManager {
     }
 
     private void printWinners() {
-        System.out.println(String.join(",", cars.findWinnerNames()) + WINNERS_STRING);
+        System.out.println(String.join(",", racingManager.getCars().findWinnerNames()) + WINNERS_STRING);
     }
 }

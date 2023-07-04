@@ -9,14 +9,12 @@ public class RacingManager {
     private final Cars cars;
     private final int round;
     private final List<List<CarDto>> records;
-    private final RacingViewManager racingViewManager;
 
     public RacingManager(Cars cars, int round) {
         this.cars = cars;
         this.round = round;
         records = new ArrayList<>();
         records.add(cars.getRecord());
-        racingViewManager = new RacingViewManager(cars, records);
     }
 
     public static RacingManager of(List<String> carNames, int round) {
@@ -28,7 +26,17 @@ public class RacingManager {
             cars.takeTurn();
             records.add(cars.getRecord());
         }
+    }
 
-        racingViewManager.printResult();
+    public Cars getCars() {
+        return cars;
+    }
+
+    public int getRound() {
+        return round;
+    }
+
+    public List<List<CarDto>> getRecords() {
+        return records;
     }
 }
