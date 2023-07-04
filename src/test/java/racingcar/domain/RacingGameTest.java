@@ -110,7 +110,6 @@ class RacingGameTest {
             void ItReturn1RoundResult() {
                 racingGame.play();
                 for (int i = 0; i < cars.length; i++) {
-                    System.out.println(cars[i] + " " + expectedCars[i]);
                     Assertions.assertThat(cars[i]).isEqualTo(expectedCars[i]);
                 }
             }
