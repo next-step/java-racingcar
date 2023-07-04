@@ -7,19 +7,20 @@ import static org.assertj.core.api.Assertions.*;
 public class InputTest {
     @Test
     void inputTest_nameValidation() {
-        assertThat(Input.validateCarNames(new String[]{"pobi", "crong", "honux"})).isTrue();
-        assertThat(Input.validateCarNames(new String[]{"pobi", "crongcrong", "honux"})).isFalse();
+        assertThat(Input.isValidCarName("honux")).isTrue();
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> Input.isValidCarName("crongcrong"));
     }
 
     @Test
     void inputTest_transferStringToList() {
-        assertThat(Input.transferStringToList("pobi,crong,honux")).contains("pobi", "crong", "honux");
+        assertThat(Input.split("pobi,crong,honux")).contains("pobi", "crong", "honux");
     }
 
     @Test
     void inputTest_validateNumber() {
-        assertThat(Input.validateNumber("123")).isTrue();
-        assertThat(Input.validateNumber("ag")).isFalse();
-        assertThat(Input.validateNumber("")).isFalse();
+        assertThat(Input.isValidNumber("123")).isTrue();
+        assertThat(Input.isValidNumber("ag")).isFalse();
+        assertThat(Input.isValidNumber("")).isFalse();
     }
 }

@@ -3,19 +3,12 @@ package racingcar;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Input {
     private final static Scanner scanner = new Scanner(System.in);
 
-    public static List<String> processCarNames() {
-        try {
-            return readCarNames();
-        } catch (RuntimeException e) {
-            System.out.println("자동차 이름의 길이가 5이하여야 합니다.");
-            return processCarNames();
-        }
-    }
-
+    /** Get try count. If get exception, retry it. */
     public static int processTryCount() {
         try {
             return readTryCount();
@@ -25,39 +18,52 @@ public class Input {
         }
     }
 
+    /** Read try count. */
     private static Integer readTryCount() {
         System.out.println("시도할 회수는 몇회인가요?");
         String input = scanner.nextLine();
-        if (validateNumber(input)) {
+        if (isValidNumber(input)) {
             return Integer.valueOf(input);
         }
         throw new IllegalArgumentException();
     }
 
-    public static boolean validateNumber(String number) {
+    /** Validate whether string can be converted to number. */
+    public static boolean isValidNumber(String number) {
         return number.matches("[0-9]+");
     }
 
+    /** Get names of car. If get exception, retry it. */
+    public static List<String> processCarNames() {
+        try {
+            return readCarNames();
+        } catch (RuntimeException e) {
+            System.out.println("자동차 이름의 길이가 5 이하여야 합니다.");
+            return processCarNames();
+        }
+    }
+
+    /** Read car names. */
     private static List<String> readCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String input = scanner.nextLine();
-        return transferStringToList(input);
+        return split(input);
     }
 
-    public static boolean validateCarNames(String[] carNames) {
-        long count = Arrays.stream(carNames).filter(Input::validateCarName).count();
-        return count == 0;
-    }
-
-    private static boolean validateCarName(String carName) {
-        return (carName == null || carName.length() > 5);
-    }
-
-    public static List<String> transferStringToList(String input) {
-        String[] carNames = input.split(",");
-        if (validateCarNames(carNames)) {
-            return List.of(carNames);
+    /** If name of car is null or more than 5 characters, throw exception. */
+    public static boolean isValidCarName(String carName) {
+        if (carName == null || carName.length() > 5) {
+            throw new IllegalArgumentException();
         }
-        throw new IllegalArgumentException();
+        return true;
+    }
+
+    /** Given input names, split and validate names of cars. */
+    public static List<String> split(String input) {
+        String[] carNames = input.split(",");
+        if (carNames.length == 0) throw new IllegalArgumentException();
+        return Arrays.stream(carNames)
+                .filter(Input::isValidCarName)
+                .collect(Collectors.toList());
     }
 }
