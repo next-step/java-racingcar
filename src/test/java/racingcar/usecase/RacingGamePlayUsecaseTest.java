@@ -32,7 +32,7 @@ class RacingGamePlayUsecaseTest {
                 new Car("loser", falseMover),
             };
             private final RacingGame racingGame = new RacingGame(cars);
-            private final RacingGamePlayResponse expectedResult = new RacingGamePlayResponse();
+            private final RacingGamePlayResponse expectedResult = getExpectedResult();
 
             @Test
             @DisplayName("게임 한판의 결과를 반환한다.")
@@ -41,6 +41,27 @@ class RacingGamePlayUsecaseTest {
 
                 Assertions.assertThat(result).isEqualTo(expectedResult);
             }
+
+            private RacingGamePlayResponse getExpectedResult() {
+                Car[] cars = getCars();
+                RacingGame racingGame = new RacingGame(cars);
+                RacingGamePlayResponse racingGamePlayResponse = new RacingGamePlayResponse();
+
+                racingGamePlayResponse.addRacingGameRoundResponse(0, cars);
+                racingGame.play();
+                racingGamePlayResponse.addRacingGameRoundResponse(1, racingGame.getRoundResult());
+                racingGamePlayResponse.setWinner(racingGame.getWinners());
+                return racingGamePlayResponse;
+            }
+
+            private Car[] getCars() {
+                return new Car[]{
+                    new Car("win1", trueMover),
+                    new Car("win2", trueMover),
+                    new Car("loser", falseMover),
+                };
+            }
+
         }
     }
 
