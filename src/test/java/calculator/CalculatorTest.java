@@ -27,4 +27,14 @@ class CalculatorTest {
         assertThat(calculator.calculate("14")).isEqualTo(14);
     }
 
+    @Test
+    void commaSplitTest() {
+        //given
+        Calculator calculator = new Calculator();
+
+        //when, then
+        assertThat(calculator.calculate("1,2")).isEqualTo(3);
+        assertThat(calculator.calculate("4,5")).isEqualTo(9);
+
+    }
 }
