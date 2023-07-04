@@ -70,14 +70,12 @@ class StringCalculatorTest {
         assertThat(result).containsExactly("1", "2", "3", "10");
     }
 
-    @DisplayName("양수로만 이루어진 경우 true를 리턴한다")
+    @DisplayName("양수로만 이루어진 경우 예외가 발생하지 않는다")
     @Test
     void 문자열_검증_성공() {
         String[] stringArray = {"1", "2", "3"};
 
-        boolean result = StringCalculator.isValidArray(stringArray);
-
-        assertThat(result).isEqualTo(true);
+        assertThatNoException().isThrownBy(() -> StringCalculator.checkValidArray(stringArray));
     }
 
 
@@ -87,7 +85,7 @@ class StringCalculatorTest {
         String[] stringArray = {"-1", "2", "3"};
 
         assertThatExceptionOfType(RuntimeException.class)
-                .isThrownBy(() -> StringCalculator.isValidArray(stringArray))
+                .isThrownBy(() -> StringCalculator.checkValidArray(stringArray))
                 .withMessageMatching("유효하지 않은 값입니다");
     }
 
@@ -97,7 +95,7 @@ class StringCalculatorTest {
         String[] stringArray = {"1", "2%", ";3;"};
 
         assertThatExceptionOfType(RuntimeException.class)
-                .isThrownBy(() -> StringCalculator.isValidArray(stringArray))
+                .isThrownBy(() -> StringCalculator.checkValidArray(stringArray))
                 .withMessageMatching("유효하지 않은 값입니다");
 
     }
@@ -120,5 +118,18 @@ class StringCalculatorTest {
         boolean result = StringCalculator.isCustomDelimiter(input);
 
         assertThat(result).isEqualTo(false);
+    }
+
+    @DisplayName("문자열이 주어졌을 때 올바른 계산 결과를 반환한다")
+    @Test
+    void 주어진_문자열_계산() {
+        String input1 = "4:8,11";
+        String input2 = "//;\n1;4;9";
+
+        int result1 = StringCalculator.run(input1);
+        int result2 = StringCalculator.run(input2);
+
+        assertThat(result1).isEqualTo(23);
+        assertThat(result2).isEqualTo(14);
     }
 }

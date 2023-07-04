@@ -14,23 +14,36 @@ public class StringCalculator {
     }
 
     public static ParseInfo separateCustomText(String text) {
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        Matcher m = Pattern.compile("^//(.)\n(.*)").matcher(text);
         m.find();
         String delimiter = m.group(1);
         String input = m.group(2);
         return new ParseInfo(delimiter, input);
     }
 
-    public static boolean isValidArray(String[] stringArray) {
+    public static void checkValidArray(String[] stringArray) {
         for (String s : stringArray) {
             if (!s.matches("^[0-9]+$")) {
-                throw new RuntimeException("유효하지 않은 값입니다.");
+                throw new RuntimeException("유효하지 않은 값입니다");
             }
         }
-        return true;
     }
 
     public static boolean isCustomDelimiter(String input) {
-        return input.matches("//.\n.*");
+        return input.matches("^//.\n.*");
+    }
+
+    public static int run(String input) {
+        ParseInfo parseInfo;
+        if (isCustomDelimiter(input)) {
+            parseInfo = separateCustomText(input);
+        } else {
+            parseInfo = new ParseInfo(":|,", input);
+        }
+
+        String[] parse = parseInfo.parse();
+        checkValidArray(parse);
+
+        return sum(toIntArray(parse));
     }
 }
