@@ -14,7 +14,7 @@ class RacingManagerTest {
     void checkWinnerTest() {
         List<Car> cars = createTestCars();
         RacingManager manager = new RacingManager(cars);
-        List<Car> winners = manager.checkWinner();
+        List<Car> winners = manager.checkWinners();
         assertThat(winners).hasSize(2);
         assertThat(winners.get(0).getName()).isEqualTo("pobi");
         assertThat(winners.get(1).getName()).isEqualTo("crong");

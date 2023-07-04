@@ -1,6 +1,7 @@
 package racing.manager;
 
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import racing.model.Car;
 
@@ -12,11 +13,27 @@ public class RacingManager {
         this.cars = cars;
     }
 
-    public List<Car> checkWinner() {
+    public List<Car> getCarClones() {
+        return this.cars.stream()
+                        .map(Car::clone)
+                        .collect(Collectors.toUnmodifiableList());
+    }
+
+    public List<Car> turn() {
+        for (Car car : this.cars) {
+            int value = ThreadLocalRandom.current().nextInt(10);
+            car.moveOneStepMoreThanCriterion(value);
+        }
+
+        return this.getCarClones();
+    }
+
+    public List<Car> checkWinners() {
         int maxPosition = getMaxPosition();
         return this.cars.stream()
                         .filter(cur -> cur.getPosition() == maxPosition)
-                        .collect(Collectors.toList());
+                        .map(Car::clone)
+                        .collect(Collectors.toUnmodifiableList());
     }
 
     private int getMaxPosition() {
