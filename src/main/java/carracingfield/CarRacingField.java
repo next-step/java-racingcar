@@ -10,10 +10,10 @@ public class CarRacingField {
 
     private List<Car> cars = new ArrayList<>();
 
-    public CarRacingField(String a, String b, String c) {
-        cars.add(new Car(a));
-        cars.add(new Car(b));
-        cars.add(new Car(c));
+    public CarRacingField(List<String> carNames) {
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
+        }
     }
 
     public List<Car> getCars() {
