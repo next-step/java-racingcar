@@ -54,14 +54,6 @@ class RacingGamePlayUsecaseTest {
                 return racingGamePlayResponse;
             }
 
-            private Car[] getCars() {
-                return new Car[]{
-                    new Car("win1", trueMover),
-                    new Car("win2", trueMover),
-                    new Car("loser", falseMover),
-                };
-            }
-
         }
 
         @Nested
@@ -98,15 +90,16 @@ class RacingGamePlayUsecaseTest {
                 return racingGamePlayResponse;
             }
 
-            private Car[] getCars() {
-                return new Car[]{
-                    new Car("win1", trueMover),
-                    new Car("win2", trueMover),
-                    new Car("loser", falseMover),
-                };
-            }
-
         }
+
+        private Car[] getCars() {
+            return new Car[]{
+                new Car("win1", trueMover),
+                new Car("win2", trueMover),
+                new Car("loser", falseMover),
+            };
+        }
+
     }
 
 }
