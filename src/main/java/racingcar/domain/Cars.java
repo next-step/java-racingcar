@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 public class Cars {
     private static final String DELIMITER = ",";
+    private static final int MIN_SIZE = 2;
 
     private final List<Car> cars;
 
@@ -21,6 +22,10 @@ public class Cars {
     }
 
     public Cars(List<Car> cars) {
+        if (cars.size() < MIN_SIZE) {
+            throw new IllegalArgumentException("[ERROR] 최소 2대 이상의 자동차가 있어야 합니다.");
+        }
+
         this.cars = cars;
     }
 

@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarsTest {
     @Test
@@ -53,5 +54,16 @@ public class CarsTest {
 
         /* then */
         assertThat(winners).containsExactly(new Car("충환", 3), new Car("정규", 3));
+    }
+
+    @Test
+    @DisplayName("자동차가 두 대 미만이면 IllegalArgumentException를 던진다.")
+    void test_04() {
+        /* given */
+        List<Car> cars = List.of(new Car("충규"));
+
+        /* when & then */
+        assertThatThrownBy(() -> new Cars(cars))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
