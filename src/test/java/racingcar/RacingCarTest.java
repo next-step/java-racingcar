@@ -98,4 +98,21 @@ public class RacingCarTest {
         }
 
     }
+
+    @DisplayName("가장 많이 전진한 자동차가 우승")
+    @Test
+    void 자동차_게임_우승자_선별() {
+        RacingCar car1 = new RacingCar("pobi");
+        RacingCar car2 = new RacingCar("crong");
+        RacingCar car3 = new RacingCar("honux");
+
+        RacingGame racingGame = new RacingGame(new RacingCar[]{car1, car2, car3}, 2);
+
+        car2.move(4);
+        car3.move(4);
+
+        RacingCar[] winners = racingGame.selectWinners();
+
+        assertThat(winners).contains(car2, car3);
+    }
 }
