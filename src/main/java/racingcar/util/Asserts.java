@@ -11,13 +11,17 @@ public class Asserts {
 
     public static void notNull(Object nullInput, Supplier<String> exceptionMessage) {
         if (Objects.isNull(nullInput)) {
-            throw new IllegalArgumentException(exceptionMessage.get());
+            throwIllegalArgumentExceptionWithMessage(exceptionMessage);
         }
     }
 
     public static void isTrue(boolean option, Supplier<String> exceptionMessage) {
         if (!option) {
-            throw new IllegalArgumentException(exceptionMessage.get());
+            throwIllegalArgumentExceptionWithMessage(exceptionMessage);
         }
+    }
+
+    private static void throwIllegalArgumentExceptionWithMessage(Supplier<String> exceptionMessage) {
+        throw new IllegalArgumentException(exceptionMessage.get());
     }
 }
