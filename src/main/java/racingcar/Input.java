@@ -7,7 +7,25 @@ import java.util.Scanner;
 public class Input {
     private final static Scanner scanner = new Scanner(System.in);
 
-    public static Integer readTryCount() {
+    public static List<String> processCarNames() {
+        try {
+            return readCarNames();
+        } catch (RuntimeException e) {
+            System.out.println("자동차 이름의 길이가 5이하여야 합니다.");
+            return processCarNames();
+        }
+    }
+
+    public static int processTryCount() {
+        try {
+            return readTryCount();
+        } catch (RuntimeException e) {
+            System.out.println("숫자만 입력받을 수 있습니다.");
+            return processTryCount();
+        }
+    }
+
+    private static Integer readTryCount() {
         System.out.println("시도할 회수는 몇회인가요?");
         String input = scanner.nextLine();
         if (validateNumber(input)) {
@@ -20,7 +38,7 @@ public class Input {
         return number.matches("[0-9]+");
     }
 
-    public static List<String> readCarNames() {
+    private static List<String> readCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String input = scanner.nextLine();
         return transferStringToList(input);
