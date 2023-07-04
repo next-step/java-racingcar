@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class Calculator {
 
-    public int calculate(String input) {
+    public int calculate(String input) throws RuntimeException {
         if (input == null || input.isEmpty())
             return 0;
 
@@ -18,6 +18,18 @@ public class Calculator {
             input = matcher.group(2);
         }
 
-        return Arrays.stream(input.split("[" + splitterPattern + "]")).mapToInt(Integer::parseInt).sum();
+        return Arrays.stream(input.split("[" + splitterPattern + "]"))
+                .mapToInt(n -> {
+                    try {
+                        int num = Integer.parseInt(n);
+                        if (num >= 0) {
+                            return num;
+                        }
+                        throw new RuntimeException();
+                    } catch (Exception e) {
+                        throw new RuntimeException();
+                    }
+                })
+                .sum();
     }
 }

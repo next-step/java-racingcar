@@ -67,11 +67,11 @@ class CalculatorTest {
 
         //when, then
         assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> {
-            calculator.calculate("-1,2,3");
-        });
-        assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> {
             calculator.calculate("a,2,3");
         });
 
+        assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> {
+            calculator.calculate("-1,2,3");
+        });
     }
 }
