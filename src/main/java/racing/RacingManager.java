@@ -2,12 +2,16 @@ package racing;
 
 import racing.generator.NumberGenerator;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingManager {
     private List<Car> cars;
     private NumberGenerator numberGenerator;
+
+    private int count;
 
     public RacingManager() {
     }
@@ -17,9 +21,9 @@ public class RacingManager {
         this.numberGenerator = numberGenerator;
     }
 
-    public RacingManager(List<Car> cars, NumberGenerator numberGenerator, int i) {
-        this.cars = cars;
-        this.numberGenerator = numberGenerator;
+    public RacingManager(List<Car> cars, NumberGenerator numberGenerator, int count) {
+        this(cars, numberGenerator);
+        this.count = count;
     }
 
     public boolean isMovable(int value) {
@@ -42,6 +46,14 @@ public class RacingManager {
     }
 
     public SimulationResult simulate() {
-        return null;
+        List<String> names = cars.stream().map(Car::getName).collect(Collectors.toList());
+        List<List<Integer>> progress = new ArrayList<>();
+        progress.add(cars.stream().map(Car::getPosition).collect(Collectors.toList()));
+        for (int i = 0; i < this.count; i++) {
+            nextStep();
+            progress.add(cars.stream().map(Car::getPosition).collect(Collectors.toList()));
+        }
+        List<String> winners = getWinners().stream().map(Car::getName).collect(Collectors.toList());
+        return new SimulationResult(names, progress, winners);
     }
 }
