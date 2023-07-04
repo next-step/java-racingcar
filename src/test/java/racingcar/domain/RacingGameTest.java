@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import static java.nio.file.Files.move;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -163,6 +164,38 @@ class RacingGameTest {
                     new Car("C", trueMover),
                 };
                 for (Car car : copy) {
+                    car.move();
+                }
+                return copy;
+            }
+
+        }
+
+        @Nested
+        @DisplayName("play가 두번 호출된 후, 호출되면")
+        class DescribeCallBeforePlayTwice {
+
+            private final RacingGame racingGame = new RacingGame(cars);
+
+            private final Car[] expectedCars = move();
+
+            @Test
+            @DisplayName("두번째 라운드의 결과를 반환한다.")
+            void ReturnTwiceRoundResult() {
+                racingGame.play();
+                racingGame.play();
+                Car[] roundResult = racingGame.getRoundResult();
+                assertEqualAllCars(roundResult, expectedCars);
+            }
+
+            private Car[] move() {
+                Car[] copy = {
+                    new Car("A", falseMover),
+                    new Car("B", falseMover),
+                    new Car("C", trueMover),
+                };
+                for (Car car : copy) {
+                    car.move();
                     car.move();
                 }
                 return copy;
