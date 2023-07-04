@@ -3,6 +3,7 @@ package calculator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
@@ -12,6 +13,15 @@ public class CalculatorTest {
         return Stream.of("", " ", null);
     }
 
+    static Stream<Arguments> numberStrings() {
+        return Stream.of(
+                Arguments.of("1,2", 3),
+                Arguments.of("1,2:3", 6),
+                Arguments.of("1:3:3", 7),
+                Arguments.of("1,2,3", 6)
+        );
+    }
+
     @DisplayName("null이나 빈 문자열인 경우 0을 반환한다")
     @ParameterizedTest()
     @MethodSource("blankOrNullStrings")
@@ -19,5 +29,14 @@ public class CalculatorTest {
         int result = Calculator.sum(input);
 
         Assertions.assertThat(result).isEqualTo(0);
+    }
+
+    @DisplayName("쉼표 또는 콜론을 구분자로 분리한 각 숫자의 합을 반환")
+    @ParameterizedTest()
+    @MethodSource("numberStrings")
+    public void 쉼표_또는_콜론을_구분하여_합_구하기(String input, int expected) throws Exception {
+        int result = Calculator.sum(input);
+
+        Assertions.assertThat(result).isEqualTo(expected);
     }
 }
