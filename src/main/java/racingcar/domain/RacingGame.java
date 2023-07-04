@@ -1,13 +1,12 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import racingcar.util.Asserts;
 
 public class RacingGame {
+
     private final Car[] cars;
 
     public RacingGame(Car... cars) {
@@ -38,13 +37,18 @@ public class RacingGame {
     }
 
     public Car[] getWinners() {
-        int winnerCount = Arrays.stream(cars)
+        int winnerPosition = Arrays.stream(cars)
             .mapToInt(Car::getPosition)
             .max()
             .orElseThrow(() -> new IllegalStateException("winnerCount는 항상 존재합니다."));
 
         return Arrays.stream(cars)
-            .filter(car -> car.getPosition() == winnerCount)
+            .filter(car -> isWinner(car.getPosition(), winnerPosition))
             .toArray(Car[]::new);
     }
+
+    private boolean isWinner(int currentPosition, int winnerPosition) {
+        return currentPosition == winnerPosition;
+    }
+
 }

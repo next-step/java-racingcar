@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import static java.nio.file.Files.move;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -149,6 +148,7 @@ class RacingGameTest {
             private final RacingGame racingGame = new RacingGame(cars);
 
             private final Car[] expectedCars = move();
+
             @Test
             @DisplayName("현재 라운드의 결과를 반환한다.")
             void ItReturnRoundResult() {
@@ -222,6 +222,7 @@ class RacingGameTest {
             private final RacingGame racingGame = new RacingGame(cars);
 
             private final Car[] expectedCars = getExpectedCars();
+
             @Test
             @DisplayName("우승자들을 반환한다.")
             void ItReturnRoundResult() {
