@@ -42,4 +42,13 @@ public class Cars {
                 .max()
                 .orElse(0);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (Car car : cars) {
+            sb.append(car).append("\n");
+        }
+        return sb.toString();
+    }
 }

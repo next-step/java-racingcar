@@ -17,8 +17,16 @@ public class RacingManager {
     }
 
     public void playRacing() {
+        System.out.println("실행 결과");
+        printRound();
+
         for (int i = 0; i < round; i++) {
             cars.takeTurn();
+            printRound();
         }
+    }
+
+    public void printRound() {
+        System.out.println(cars);
     }
 }
