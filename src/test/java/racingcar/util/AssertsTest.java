@@ -81,4 +81,40 @@ class AssertsTest {
 
     }
 
+    @Nested
+    @DisplayName("isFalse 메소드는")
+    class DescribeIsFalse {
+
+        @Nested
+        @DisplayName("false값이 들어오면")
+        class ContextFalseInput {
+
+            private final boolean falseInput = false;
+
+            @Test
+            @DisplayName("예외를 던지지 않는다.")
+            void notThrowException() {
+                Assertions.assertThatNoException()
+                    .isThrownBy(() -> Asserts.isFalse(falseInput, () -> "true input"));
+            }
+
+        }
+
+        @Nested
+        @DisplayName("true값이 들어오면")
+        class ContextTrueInput {
+
+            private final boolean trueInput = true;
+
+            @Test
+            @DisplayName("IllegalArgumentException을 던진다.")
+            void throwIllegalArgumentException() {
+                Assertions.assertThatThrownBy(() -> Asserts.isFalse(trueInput, () -> "false값이 들어올 수 없습니다."))
+                    .isInstanceOf(IllegalArgumentException.class);
+            }
+
+        }
+
+    }
+
 }
