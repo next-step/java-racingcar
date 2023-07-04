@@ -8,6 +8,9 @@ public class Name {
     private final String value;
 
     public Name(String value) {
+        if (value == null || value.isBlank()) {
+            throw new IllegalArgumentException("[ERROR] 자동차 이름은 공백일 수 없습니다.");
+        }
         if (value.length() > MAX_LENGTH) {
             throw new IllegalArgumentException("[ERROR] 자동차 이름의 길이는 " + MAX_LENGTH + "이하여야 합니다.");
         }

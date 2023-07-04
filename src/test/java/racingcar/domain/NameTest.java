@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -24,6 +25,17 @@ public class NameTest {
     @ParameterizedTest
     @DisplayName("자동차 이름이 다섯 글자보다 길면 IllegalArgumentException을 던진다.")
     void test_02(String value) {
+        /* given */
+
+        /* when & then */
+        assertThatThrownBy(() -> new Name(value))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @NullAndEmptySource
+    @ParameterizedTest
+    @DisplayName("자동차 이름이 공백이면 IllegalArgumentException을 던진다.")
+    void test_03(String value) {
         /* given */
 
         /* when & then */
