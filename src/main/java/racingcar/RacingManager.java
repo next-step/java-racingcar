@@ -10,7 +10,7 @@ public class RacingManager {
         this.round = round;
     }
 
-    public void play() {
+    public void playRacing() {
         for (int i = 0; i < round; i++) {
             cars.takeTurn();
         }
