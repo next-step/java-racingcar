@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Cars {
 
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public Cars(List<Car> cars) {
         this.cars = cars;
@@ -12,5 +12,11 @@ public class Cars {
 
     public static String[] split(String str) {
         return str.split(",");
+    }
+
+    public void move() {
+        for (Car car : cars) {
+            car.progress();
+        }
     }
 }
