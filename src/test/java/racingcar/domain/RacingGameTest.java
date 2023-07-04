@@ -107,6 +107,9 @@ class RacingGameTest {
             @DisplayName("세판을 진행하고, 그 결과를 car에 반영한다.")
             void ItReturn1RoundResult() {
                 racingGame.play();
+                racingGame.play();
+                racingGame.play();
+
                 assertEqualAllCars(cars, expectedCars);
             }
 
