@@ -1,7 +1,8 @@
 package racingcar;
 
 import java.util.List;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 public class Cars {
 
@@ -15,6 +16,12 @@ public class Cars {
         return str.split(",");
     }
 
+    public static Cars from(List<String> carNames) {
+        return new Cars(carNames.stream()
+                .map(Car::new)
+                .collect(toList()));
+    }
+
     public void takeTurn() {
         for (Car car : cars) {
             car.progress();
@@ -26,7 +33,7 @@ public class Cars {
         return cars.stream()
                 .filter(car -> car.getDistance() == maxDistance)
                 .map(Car::getName)
-                .collect(Collectors.toList());
+                .collect(toList());
     }
 
     private int findMaxCarDistance() {
