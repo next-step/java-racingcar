@@ -5,6 +5,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Calculator {
+
+    private static final String CUSTOM_DELIMITER_PATTERN = "//(.)\n(.*)";
+    private static final String DEFAULT_DELIMITER_REGEX = ",|:";
+
     public static int sum(String input) {
         if (isBlank(input)) {
             return 0;
@@ -13,14 +17,14 @@ public class Calculator {
     }
 
     private static int stringToSum(String input) {
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(input);
-        String delimiter = ",|:";
-
+        Matcher m = Pattern.compile(CUSTOM_DELIMITER_PATTERN).matcher(input);
         if (m.find()) {
-            delimiter = m.group(1);
-            input = m.group(2);
+            return stringTosum(m.group(2), m.group(1));
         }
+        return stringTosum(input, DEFAULT_DELIMITER_REGEX);
+    }
 
+    private static int stringTosum(String input, String delimiter) {
         return Arrays.stream(input.split(delimiter))
                 .mapToInt(Integer::valueOf)
                 .sum();
