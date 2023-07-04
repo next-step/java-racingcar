@@ -1,6 +1,6 @@
-package racing.domain;
+package racing.model;
 
-public class Car {
+public class Car implements Cloneable {
 
     private String name;
     private int criterion;
@@ -18,6 +18,12 @@ public class Car {
         this.position = 1;
     }
 
+    private Car(Car original) {
+        this.name = original.name;
+        this.criterion = original.criterion;
+        this.position = original.position;
+    }
+
     public String getName() {
         return this.name;
     }
@@ -29,6 +35,19 @@ public class Car {
     public void moveOneStepMoreThanCriterion(int value) {
         if (value >= this.criterion) {
             this.position++;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return this.name + " : " + "-".repeat(this.position);
+    }
+
+    public Car clone() {
+        try {
+            return (Car) super.clone();
+        } catch (CloneNotSupportedException e) {
+            return new Car(this);
         }
     }
 
