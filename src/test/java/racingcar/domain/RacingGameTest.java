@@ -85,18 +85,6 @@ class RacingGameTest {
             new Car("C", trueMover),
         };
 
-        private Car[] move() {
-            Car[] copy = {
-                new Car("A", falseMover),
-                new Car("B", falseMover),
-                new Car("C", trueMover),
-            };
-            for (Car car : copy) {
-                car.move();
-            }
-            return copy;
-        }
-
         @Nested
         @DisplayName("RacingGame의 round가 1로 바인딩 되어있다면,")
         class DescribeRacingGameRound1 {
@@ -112,6 +100,18 @@ class RacingGameTest {
                 for (int i = 0; i < cars.length; i++) {
                     Assertions.assertThat(cars[i]).isEqualTo(expectedCars[i]);
                 }
+            }
+
+            private Car[] move() {
+                Car[] copy = {
+                    new Car("A", falseMover),
+                    new Car("B", falseMover),
+                    new Car("C", trueMover),
+                };
+                for (Car car : copy) {
+                    car.move();
+                }
+                return copy;
             }
 
         }
