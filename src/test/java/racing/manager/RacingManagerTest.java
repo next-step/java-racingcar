@@ -27,15 +27,17 @@ class RacingManagerTest {
           new Car("honux")
         );
 
-        cars.get(0).moveOneStepMoreThanCriterion(5);
-        cars.get(0).moveOneStepMoreThanCriterion(5);
-        cars.get(0).moveOneStepMoreThanCriterion(5);
-        cars.get(1).moveOneStepMoreThanCriterion(5);
-        cars.get(1).moveOneStepMoreThanCriterion(5);
-        cars.get(1).moveOneStepMoreThanCriterion(5);
-        cars.get(2).moveOneStepMoreThanCriterion(5);
+        moveNSteps(cars.get(0), 3);
+        moveNSteps(cars.get(1), 3);
+        moveNSteps(cars.get(2), 1);
 
         return cars;
+    }
+
+    private static void moveNSteps(Car car, int steps) {
+        for (int i = 0; i < steps; i++) {
+            car.moveOneStepMoreThanCriterion(5);
+        }
     }
 
 }

@@ -1,7 +1,7 @@
 package racing.manager;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import racing.model.Car;
 
 public class RacingManager {
@@ -13,20 +13,18 @@ public class RacingManager {
     }
 
     public List<Car> checkWinner() {
-        List<Car> winners = new ArrayList<>();
+        int maxPosition = getMaxPosition();
+        return this.cars.stream()
+                        .filter(cur -> cur.getPosition() == maxPosition)
+                        .collect(Collectors.toList());
+    }
 
-        int maxPos = -1;
-        for (Car car : cars) {
-            maxPos = Math.max(maxPos, car.getPosition());
+    private int getMaxPosition() {
+        int maxPosition = -1;
+        for (Car car : this.cars) {
+            maxPosition = Math.max(maxPosition, car.getPosition());
         }
-
-        for (Car car : cars) {
-            if (car.getPosition() == maxPos) {
-                winners.add(car);
-            }
-        }
-
-        return winners;
+        return maxPosition;
     }
 
 }
