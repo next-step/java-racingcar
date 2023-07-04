@@ -44,15 +44,6 @@ public class Cars {
                 .orElse(0);
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        for (Car car : cars) {
-            sb.append(car).append("\n");
-        }
-        return sb.toString();
-    }
-
     public List<CarDto> getRecord() {
         return CarDto.getListOf(cars);
     }

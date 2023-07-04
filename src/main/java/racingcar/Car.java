@@ -31,11 +31,6 @@ public class Car {
     }
 
     @Override
-    public String toString() {
-        return name + " : " + "-".repeat(distance + 1);
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
