@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Objects;
 
 public class SimulationResult {
-    List<String> names;
-    List<List<Integer>> progress;
-    List<String> winners;
+    private List<String> names;
+    private List<List<Integer>> progress;
+    private List<String> winners;
 
     public SimulationResult(List<String> names, List<List<Integer>> progress, List<String> winners) {
         this.names = names;
@@ -25,5 +25,17 @@ public class SimulationResult {
     @Override
     public int hashCode() {
         return Objects.hash(names, progress, winners);
+    }
+
+    public List<String> getNames() {
+        return names;
+    }
+
+    public List<List<Integer>> getProgress() {
+        return progress;
+    }
+
+    public List<String> getWinners() {
+        return winners;
     }
 }

@@ -36,6 +36,15 @@ public class RacingView {
     }
 
     public String getResultView(SimulationResult simulationResult) {
-        return null;
+        String result = RESULT_TITLE + "\n";
+        for (List<Integer> list : simulationResult.getProgress()) {
+            for (int i = 0; i < list.size(); i++) {
+                String line = simulationResult.getNames().get(i) + " : " + "-".repeat(list.get(i)) + "\n";
+                result += line;
+            }
+            result += "\n";
+        }
+        result += String.join(", ", simulationResult.getWinners()) + "가 최종 우승했습니다.";
+        return result;
     }
 }
