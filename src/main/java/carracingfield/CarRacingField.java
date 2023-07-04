@@ -5,35 +5,45 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import random.RandomGenerator;
+import winnerstrategy.WinnerStrategy;
 
 public class CarRacingField {
 
     private List<Car> cars = new ArrayList<>();
+    private WinnerStrategy winnerStrategy;
 
-    public CarRacingField(List<String> carNames) {
+    public CarRacingField(List<String> carNames, WinnerStrategy winnerStrategy) {
         for (String carName : carNames) {
             cars.add(new Car(carName));
         }
+        this.winnerStrategy = winnerStrategy;
     }
 
     public List<Car> getCars() {
         return cars;
     }
 
-    public void moveCars() {
+    public void moveCarsByCount(int count) {
+        for (int i = 0; i < count; i++) {
+            moveCarsSingleTime();
+            printCurrentCarStatus();
+            System.out.println();
+        }
+    }
+
+    private void printCurrentCarStatus() {
+        for (Car car : cars) {
+            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
+        }
+    }
+
+    private void moveCarsSingleTime() {
         for (Car car : cars) {
             car.moveOrStopByRandomValue(RandomGenerator.extractRandomSingleDigit());
         }
     }
 
-    public List<Car> getWinners(List<Car> carList) {
-        int maxPosition = carList.stream()
-            .mapToInt(Car::getPosition)
-            .max()
-            .orElseThrow(() -> new RuntimeException("자동차 리스트는 비어있을 수 없습니다."));
-
-        return carList.stream()
-            .filter(car -> car.getPosition() == maxPosition)
-            .collect(Collectors.toList());
+    public List<Car> getWinners() {
+        return winnerStrategy.getWinners(cars);
     }
 }
