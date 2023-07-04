@@ -16,5 +16,8 @@ public class Asserts {
     }
 
     public static void isTrue(boolean option, Supplier<String> exceptionMessage) {
+        if (!option) {
+            throw new IllegalArgumentException(exceptionMessage.get());
+        }
     }
 }
