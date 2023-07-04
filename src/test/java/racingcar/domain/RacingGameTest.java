@@ -205,6 +205,46 @@ class RacingGameTest {
 
     }
 
+    @Nested
+    @DisplayName("getWinners 메소드는")
+    class ContextGetWinnersMethod {
+
+        private final Car[] cars = {
+            new Car("win1", trueMover),
+            new Car("win2", trueMover),
+            new Car("loser", falseMover),
+        };
+
+        @Nested
+        @DisplayName("한판 진행 후 호출되면,")
+        class DescribeCall {
+
+            private final RacingGame racingGame = new RacingGame(cars);
+
+            private final Car[] expectedCars = getExpectedCars();
+            @Test
+            @DisplayName("우승자들을 반환한다.")
+            void ItReturnRoundResult() {
+                racingGame.play();
+                Car[] roundResult = racingGame.getWinners();
+                assertEqualAllCars(roundResult, expectedCars);
+            }
+
+            private Car[] getExpectedCars() {
+                Car[] copy = {
+                    new Car("win1", trueMover),
+                    new Car("win2", trueMover),
+                };
+                for (Car car : copy) {
+                    car.move();
+                }
+                return copy;
+            }
+
+        }
+
+    }
+
     private void assertEqualAllCars(Car[] result, Car[] expected) {
         for (int i = 0; i < result.length; i++) {
             Assertions.assertThat(result[i]).isEqualTo(expected[i]);

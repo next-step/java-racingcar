@@ -34,4 +34,7 @@ public class RacingGame {
         }
     }
 
+    public Car[] getWinners() {
+        return null;
+    }
 }
