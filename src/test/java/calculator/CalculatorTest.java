@@ -1,6 +1,5 @@
 package calculator;
 
-import org.assertj.core.api.Assertions;
 import org.assertj.core.api.ThrowableAssert;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,6 +9,9 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.stream.Stream;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CalculatorTest {
     static Stream<String> blankOrNullStrings() {
@@ -31,7 +33,7 @@ public class CalculatorTest {
     public void null이나_빈_문자열인_경우_0을_반환한다(String input) throws Exception {
         int result = Calculator.sum(input);
 
-        Assertions.assertThat(result).isEqualTo(0);
+        assertThat(result).isEqualTo(0);
     }
 
     @DisplayName("쉼표 또는 콜론을 구분자로 분리한 각 숫자의 합을 반환")
@@ -40,7 +42,7 @@ public class CalculatorTest {
     public void 쉼표_또는_콜론을_구분하여_합_구하기(String input, int expected) throws Exception {
         int result = Calculator.sum(input);
 
-        Assertions.assertThat(result).isEqualTo(expected);
+        assertThat(result).isEqualTo(expected);
     }
 
     @Test
@@ -50,7 +52,7 @@ public class CalculatorTest {
 
         int result = Calculator.sum(s);
 
-        Assertions.assertThat(result).isEqualTo(6);
+        assertThat(result).isEqualTo(6);
     }
 
     @DisplayName("문자열 계산기에 숫자 이외의 값 또는 음수를 전달하는 경우 RuntimeException 예외를 throw한다")
@@ -60,6 +62,6 @@ public class CalculatorTest {
 
         ThrowableAssert.ThrowingCallable callable = () -> Calculator.sum(input);
 
-        Assertions.assertThatThrownBy(callable).isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(callable).isInstanceOf(RuntimeException.class);
     }
 }
