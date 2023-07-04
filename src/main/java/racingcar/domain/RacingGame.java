@@ -6,10 +6,12 @@ import racingcar.util.Asserts;
 
 public class RacingGame {
 
+    private final Integer round;
     private final Car[] cars;
 
-    public RacingGame(Car... cars) {
+    public RacingGame(Integer round, Car... cars) {
         assertDuplicateCarName(cars);
+        this.round = round;
         this.cars = cars;
     }
 
