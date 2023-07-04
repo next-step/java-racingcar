@@ -3,8 +3,7 @@ package stringcalculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.*;
 
 class StringCalculatorTest {
 
@@ -101,5 +100,25 @@ class StringCalculatorTest {
                 .isThrownBy(() -> StringCalculator.isValidArray(stringArray))
                 .withMessageMatching("유효하지 않은 값입니다");
 
+    }
+
+    @DisplayName("커스텀 구분자면 true를 반환한다")
+    @Test
+    void 커스텀_구분자인_경우() {
+        String input = "//;\n1;2;3";
+
+        boolean result = StringCalculator.isCustomDelimiter(input);
+
+        assertThat(result).isEqualTo(true);
+    }
+
+    @DisplayName("커스텀 구분자가 아니면 false를 반환한다")
+    @Test
+    void 커스텀_구분자가_아닌경우() {
+        String input = "1;2;3";
+
+        boolean result = StringCalculator.isCustomDelimiter(input);
+
+        assertThat(result).isEqualTo(false);
     }
 }

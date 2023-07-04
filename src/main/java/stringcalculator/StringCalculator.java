@@ -24,9 +24,13 @@ public class StringCalculator {
     public static boolean isValidArray(String[] stringArray) {
         for (String s : stringArray) {
             if (!s.matches("^[0-9]+$")) {
-                throw new RuntimeException("유효하지 않은 값입니다");
+                throw new RuntimeException("유효하지 않은 값입니다.");
             }
         }
         return true;
+    }
+
+    public static boolean isCustomDelimiter(String input) {
+        return input.matches("//.\n.*");
     }
 }
