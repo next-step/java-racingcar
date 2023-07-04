@@ -38,4 +38,20 @@ public class CarsTest {
 
         assertThat(positions).containsExactly(new Position(3), new Position(3), new Position(3));
     }
+
+    @Test
+    @DisplayName("우승자를 구한다.")
+    void test_03() {
+        /* given */
+        Cars cars = new Cars(
+                List.of(new Car("충환", 3),
+                        new Car("정규", 3),
+                        new Car("충규", 1)));
+
+        /* when */
+        List<Car> winners = cars.winners();
+
+        /* then */
+        assertThat(winners).containsExactly(new Car("충환", 3), new Car("정규", 3));
+    }
 }

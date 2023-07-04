@@ -27,8 +27,19 @@ public class Cars {
     public void move(MoveStrategy strategy) {
         cars.forEach(car -> car.move(strategy));
     }
-    
+
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
+    }
+
+    public List<Car> winners() {
+        Position maxPosition = cars.stream()
+                .map(Car::getPosition)
+                .max(Position::compareTo)
+                .get();
+
+        return cars.stream()
+                .filter(car -> car.isEqualPosition(maxPosition))
+                .collect(Collectors.toList());
     }
 }
