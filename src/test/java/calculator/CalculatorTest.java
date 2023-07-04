@@ -1,11 +1,13 @@
 package calculator;
 
 import org.assertj.core.api.Assertions;
+import org.assertj.core.api.ThrowableAssert;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.stream.Stream;
 
@@ -49,5 +51,15 @@ public class CalculatorTest {
         int result = Calculator.sum(s);
 
         Assertions.assertThat(result).isEqualTo(6);
+    }
+
+    @DisplayName("문자열 계산기에 숫자 이외의 값 또는 음수를 전달하는 경우 RuntimeException 예외를 throw한다")
+    @ParameterizedTest()
+    @ValueSource(strings = {"-1,2,3", "a,2,3", "//;\n^2;3;4"})
+    public void 문자열_계산기에_숫자_이외의_값_또는_음수를_전달하는_경우_RuntimeException_예외를_throw한다(String input) throws Exception {
+
+        ThrowableAssert.ThrowingCallable callable = () -> Calculator.sum(input);
+
+        Assertions.assertThatThrownBy(callable).isInstanceOf(RuntimeException.class);
     }
 }
