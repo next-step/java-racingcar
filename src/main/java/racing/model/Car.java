@@ -2,20 +2,23 @@ package racing.model;
 
 public class Car implements Cloneable {
 
+    private static final int DEFAULT_CRITERION = 4;
+    private static final int DEFAULT_POSITION = 1;
+
     private String name;
     private int criterion;
     private int position;
 
     public Car(String name) {
         this.name = name;
-        this.criterion = 4;
-        this.position = 1;
+        this.criterion = DEFAULT_CRITERION;
+        this.position = DEFAULT_POSITION;
     }
 
     public Car(String name, int criterion) {
         this.name = name;
         this.criterion = criterion;
-        this.position = 1;
+        this.position = DEFAULT_POSITION;
     }
 
     private Car(Car original) {

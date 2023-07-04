@@ -7,6 +7,8 @@ import racing.model.Car;
 
 public class CarFactory {
 
+    private static final String DEFAULT_DELIMITER = ",";
+
     private static class CarFactoryHandler {
         private static final CarFactory INSTANCE = new CarFactory();
     }
@@ -19,7 +21,7 @@ public class CarFactory {
     }
 
     public List<Car> manufactureCars(String text) {
-        return manufactureCars(text.split(","));
+        return manufactureCars(text.split(DEFAULT_DELIMITER));
     }
 
     public List<Car> manufactureCars(String[] names) {

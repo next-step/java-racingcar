@@ -7,6 +7,8 @@ import racing.model.Car;
 
 public class RacingManager {
 
+    private static final int DEFAULT_BOUND = 10;
+
     private final List<Car> cars;
 
     public RacingManager(List<Car> cars) {
@@ -21,7 +23,7 @@ public class RacingManager {
 
     public List<Car> turn() {
         for (Car car : this.cars) {
-            int value = ThreadLocalRandom.current().nextInt(10);
+            int value = ThreadLocalRandom.current().nextInt(DEFAULT_BOUND);
             car.moveOneStepMoreThanCriterion(value);
         }
 

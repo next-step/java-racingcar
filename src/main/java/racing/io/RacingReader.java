@@ -8,6 +8,9 @@ import racing.model.GameInfo;
 
 public class RacingReader {
 
+    private static final String CAR_NAMES_INPUT_GUIDE = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
+    private static final String RACE_COUNT_INPUT_GUIDE = "시도할 횟수는 몇 회인가요?";
+
     public GameInfo startGame() {
         try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(System.in)
@@ -21,12 +24,12 @@ public class RacingReader {
     }
 
     private String inputCarNames(BufferedReader input) throws IOException {
-        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        System.out.println(CAR_NAMES_INPUT_GUIDE);
         return input.readLine();
     }
 
     private int inputRaceCount(BufferedReader input) throws IOException {
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        System.out.println(RACE_COUNT_INPUT_GUIDE);
         return Integer.parseInt(input.readLine());
     }
 
