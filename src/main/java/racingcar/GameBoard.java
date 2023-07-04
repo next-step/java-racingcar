@@ -16,10 +16,13 @@ public class GameBoard {
         }
     }
 
+    /** Move all cars in GameBoard. */
     public void run() {
         cars.forEach(Car::move);
     }
 
+    /** Find the maximum position,
+     *  and get name of winners in cars. */
     public List<String> getWinnerNames() {
         int maxIndex = cars.stream()
                 .mapToInt(Car::getPosition)
