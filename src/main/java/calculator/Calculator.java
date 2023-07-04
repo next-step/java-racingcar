@@ -18,17 +18,23 @@ public class Calculator {
         return arrayToSum(split(text, delimiters));
     }
 
+    /** Given text and delimiters,
+     *  return split text array.
+     *  If no text after split, throw exception. */
     private static String[] split(String text, String delimiters) {
         String[] numbers = text.split("[" + delimiters + "]");
         if (numbers.length == 0) throw new IllegalStateException();
         return numbers;
     }
 
+    /** Given string array, return sum of it
+     *  after validating all elements are number. */
     private static int arrayToSum(String[] numbers) {
-        return Arrays.stream(numbers).filter(Calculator::validateNumber).mapToInt(Integer::parseInt).sum();
+        return Arrays.stream(numbers).filter(Calculator::isValidNumber).mapToInt(Integer::parseInt).sum();
     }
 
-    private static boolean validateNumber(String string) {
+    /** Validate whether string can be converted to number. */
+    private static boolean isValidNumber(String string) {
         if (!string.matches("[0-9]+")) throw new IllegalArgumentException();
         return true;
     }
