@@ -10,10 +10,14 @@ public class RacingGame {
     private final Car[] cars;
 
     public RacingGame(Integer round, Car... cars) {
-        Asserts.isTrue(round > 0, () -> "round 값은 1 미만이 될 수 없습니다. \"" + round + "\"");
-        assertDuplicateCarName(cars);
+        preAssert(round, cars);
         this.round = round;
         this.cars = cars;
+    }
+
+    private void preAssert(Integer round, Car... cars) {
+        Asserts.isTrue(round > 0, () -> "round 값은 1 미만이 될 수 없습니다. \"" + round + "\"");
+        assertDuplicateCarName(cars);
     }
 
     private static void assertDuplicateCarName(Car... cars) {
