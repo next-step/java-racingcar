@@ -1,15 +1,13 @@
-package racing;
+package racing.model;
 
 import java.util.List;
 import java.util.Objects;
 
 public class SimulationResult {
-    private List<String> names;
-    private List<List<Integer>> progress;
+    private List<List<CarVO>> progress;
     private List<String> winners;
 
-    public SimulationResult(List<String> names, List<List<Integer>> progress, List<String> winners) {
-        this.names = names;
+    public SimulationResult(List<List<CarVO>> progress, List<String> winners) {
         this.progress = progress;
         this.winners = winners;
     }
@@ -19,19 +17,15 @@ public class SimulationResult {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SimulationResult that = (SimulationResult) o;
-        return Objects.equals(names, that.names) && Objects.equals(progress, that.progress) && Objects.equals(winners, that.winners);
+        return Objects.equals(progress, that.progress) && Objects.equals(winners, that.winners);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(names, progress, winners);
+        return Objects.hash(progress, winners);
     }
 
-    public List<String> getNames() {
-        return names;
-    }
-
-    public List<List<Integer>> getProgress() {
+    public List<List<CarVO>> getProgress() {
         return progress;
     }
 

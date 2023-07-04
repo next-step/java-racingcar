@@ -1,9 +1,9 @@
-package racing;
+package racing.model;
 
+import racing.Car;
 import racing.generator.NumberGenerator;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -46,14 +46,14 @@ public class RacingManager {
     }
 
     public SimulationResult simulate() {
-        List<String> names = cars.stream().map(Car::getName).collect(Collectors.toList());
-        List<List<Integer>> progress = new ArrayList<>();
-        progress.add(cars.stream().map(Car::getPosition).collect(Collectors.toList()));
+        List<List<CarVO>> progress = new ArrayList<>();
+
+        progress.add(cars.stream().map(car -> new CarVO(car.getName(), car.getPosition())).collect(Collectors.toList()));
         for (int i = 0; i < this.count; i++) {
             nextStep();
-            progress.add(cars.stream().map(Car::getPosition).collect(Collectors.toList()));
+            progress.add(cars.stream().map(car -> new CarVO(car.getName(), car.getPosition())).collect(Collectors.toList()));
         }
         List<String> winners = getWinners().stream().map(Car::getName).collect(Collectors.toList());
-        return new SimulationResult(names, progress, winners);
+        return new SimulationResult(progress, winners);
     }
 }

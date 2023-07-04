@@ -1,6 +1,7 @@
-package racing;
+package racing.model;
 
 import org.junit.jupiter.api.Test;
+import racing.Car;
 import racing.generator.NumberGenerator;
 import racing.generator.SpecificNumberGenerator;
 
@@ -100,8 +101,11 @@ public class RacingManagerTest {
         SimulationResult result = manager.simulate();
 
         //then
-        assertThat(result).isEqualTo(new SimulationResult(Arrays.asList("test1", "test2"),
-                Arrays.asList(Arrays.asList(1, 1), Arrays.asList(2, 2)),
+        assertThat(result).isEqualTo(new SimulationResult(
+                Arrays.asList(
+                        Arrays.asList(new CarVO("test1", 1), new CarVO("test2", 1)),
+                        Arrays.asList(new CarVO("test1", 2), new CarVO("test2", 2))
+                ),
                 Arrays.asList("test1", "test2")));
     }
 }

@@ -2,7 +2,8 @@ package racing.view;
 
 import org.junit.jupiter.api.Test;
 import racing.Car;
-import racing.SimulationResult;
+import racing.model.CarVO;
+import racing.model.SimulationResult;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,21 +29,15 @@ class RacingViewTest {
     }
 
     @Test
-    void getResultTitleViewTest() {
-        RacingView racingView = new RacingView();
-        String text = "실행 결과";
-
-        assertThat(racingView.getResultTitleView()).isEqualTo(text);
-    }
-
-    @Test
     void getCarStatusViewTest() {
         //given
         RacingView racingView = new RacingView();
-        List<Car> cars = new ArrayList<>();
-        cars.add(new Car("pobi"));
-        cars.add(new Car("crong"));
-        cars.add(new Car("honux"));
+        
+        List<CarVO> cars = new ArrayList<>();
+        cars.add(new CarVO("pobi", 1));
+        cars.add(new CarVO("crong", 1));
+        cars.add(new CarVO("honux", 1));
+
 
         //when, then
         assertThat(racingView.getCarStatusView(cars)).isEqualTo("pobi : -\n" +
@@ -51,24 +46,14 @@ class RacingViewTest {
     }
 
     @Test
-    void getWinnerViewTest() {
-        //given
-        RacingView racingView = new RacingView();
-        List<Car> cars = new ArrayList<>();
-        cars.add(new Car("pobi"));
-        cars.add(new Car("crong"));
-        String text = "pobi, crong가 최종 우승했습니다.";
-
-        // when, then
-        assertThat(racingView.getWinnerView(cars)).isEqualTo(text);
-    }
-
-    @Test
     void getResultViewTest() {
         //given
         RacingView racingView = new RacingView();
-        SimulationResult simulationResult = new SimulationResult(Arrays.asList("test1", "test2"),
-                Arrays.asList(Arrays.asList(1, 1), Arrays.asList(2, 2)),
+        SimulationResult simulationResult = new SimulationResult(
+                Arrays.asList(
+                        Arrays.asList(new CarVO("test1", 1), new CarVO("test2", 1)),
+                        Arrays.asList(new CarVO("test1", 2), new CarVO("test2", 2))
+                ),
                 Arrays.asList("test1", "test2"));
 
         //when, then
