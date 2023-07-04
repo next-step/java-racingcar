@@ -16,9 +16,10 @@ public class Asserts {
     }
 
     public static void isTrue(boolean option, Supplier<String> exceptionMessage) {
-        if (!option) {
-            throwIllegalArgumentExceptionWithMessage(exceptionMessage);
+        if (option) {
+            return;
         }
+        throwIllegalArgumentExceptionWithMessage(exceptionMessage);
     }
 
     public static void isFalse(boolean option, Supplier<String> exceptionMessage) {
