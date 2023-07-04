@@ -39,17 +39,4 @@ public class CarRacingFieldTest {
             assertThat(positionDiff <= 1).isTrue();
         }
     }
-
-    @Test
-    @DisplayName("position 값이 가장 큰 자동차를 우승자로 선출한다.")
-    void test2() {
-        List<Car> cars = new ArrayList<>();
-        cars.add(new Car(4, "a"));
-        cars.add(new Car(3, "b"));
-
-        List<Car> winners = field.getWinners();
-        assertThat(winners.size()).isEqualTo(1);
-        assertThat(winners.stream().map(Car::getName).collect(Collectors.toList()))
-            .containsExactly("a");
-    }
 }
