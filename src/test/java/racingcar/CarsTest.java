@@ -30,14 +30,12 @@ public class CarsTest {
         Car chanCar = new Car("chan");
         Car iptCar = new Car("ipt");
         Car tommyCar = new Car("tommy");
-
         chanCar.forward();
         iptCar.forward();
 
         Cars cars = new Cars(List.of(chanCar, iptCar, tommyCar));
 
         List<String> winnerNames = cars.findWinnerNames();
-
         assertThat(winnerNames.size()).isEqualTo(2);
         assertThat(winnerNames).containsAnyOf(chanCar.getName(), iptCar.getName());
     }
@@ -48,11 +46,9 @@ public class CarsTest {
         Car chanCar = new Car("chan");
         Car iptCar = new Car("ipt");
         Car tommyCar = new Car("tommy");
-
         chanCar.forward();
         chanCar.forward();
         iptCar.forward();
-
         Cars cars = new Cars(List.of(chanCar, iptCar, tommyCar));
 
         List<String> winnerNames = cars.findWinnerNames();
