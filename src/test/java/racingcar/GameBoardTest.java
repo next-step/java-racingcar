@@ -9,7 +9,13 @@ public class GameBoardTest {
 
     @Test
     void GameBoardTest_winnerTest() {
-        GameBoard gameBoard = new GameBoard(List.of("pobi", "honux"), 5);
-        Assertions.assertThat(gameBoard.getWinnerNames()).contains("pobi", "honux");
+        List<String> carNames = List.of("pobi", "honux");
+        int tryCount = 5;
+        GameBoard gameBoard = new GameBoard(carNames, tryCount);
+        for (int i = 0; i <= tryCount; i++) {
+            gameBoard.run(i);
+        }
+        String[] winners = gameBoard.getWinnerNames().toArray(new String[0]);
+        Assertions.assertThat(carNames).contains(winners);
     }
 }
