@@ -1,6 +1,7 @@
 package racing.factory;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -22,6 +23,15 @@ class CarFactoryTest {
                     cars.get(i).getName()
             ).isEqualTo(answers[i]);
         }
+    }
+
+    @Test
+    @DisplayName("5자를 초과하는 자동차 이름이 입력된 경우")
+    void carNameOverFiveTest() {
+        String text = "12345,123456";
+        CarFactory carFactory = CarFactory.getInstance();
+        assertThatThrownBy(() ->carFactory.manufactureCars(text))
+                .isExactlyInstanceOf(IllegalArgumentException.class);
     }
 
 }
