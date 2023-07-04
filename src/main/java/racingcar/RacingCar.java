@@ -28,4 +28,8 @@ public class RacingCar {
         }
         return true;
     }
+
+    public static boolean isValidCount(String count) {
+        return count.trim().matches("^[0-9]+$");
+    }
 }
