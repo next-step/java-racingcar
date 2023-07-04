@@ -20,16 +20,16 @@ public class Position implements Comparable<Position> {
         this.value = value;
     }
 
-    public int getValue() {
-        return value;
-    }
-
     public Position move(int amount) {
         if (amount < MIN_AMOUNT) {
             throw new IllegalArgumentException("[ERROR] 후진은 불가능합니다.");
         }
 
         return new Position(value + amount);
+    }
+
+    public int getValue() {
+        return value;
     }
 
     @Override

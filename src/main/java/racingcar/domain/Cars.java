@@ -33,10 +33,6 @@ public class Cars {
         cars.forEach(car -> car.move(strategy));
     }
 
-    public List<Car> getCars() {
-        return Collections.unmodifiableList(cars);
-    }
-
     public List<Car> winners() {
         Position maxPosition = cars.stream()
                 .map(Car::getPosition)
@@ -46,5 +42,9 @@ public class Cars {
         return cars.stream()
                 .filter(car -> car.isEqualPosition(maxPosition))
                 .collect(Collectors.toList());
+    }
+
+    public List<Car> getCars() {
+        return Collections.unmodifiableList(cars);
     }
 }
