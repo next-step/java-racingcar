@@ -45,4 +45,25 @@ class AssertsTest {
 
     }
 
+    @Nested
+    @DisplayName("isTrue 메소드는")
+    class DescribeIsTrue {
+
+        @Nested
+        @DisplayName("true값이 들어오면")
+        class ContextTrueInput {
+
+            private final boolean trueInput = true;
+
+            @Test
+            @DisplayName("예외를 던지지 않는다.")
+            void notThrowException() {
+                Assertions.assertThatNoException()
+                    .isThrownBy(() -> Asserts.isTrue(trueInput, () -> "true input"));
+            }
+
+        }
+
+    }
+
 }

@@ -10,4 +10,8 @@ public class Asserts {
             throw new IllegalArgumentException(exceptionMessage.get());
         }
     }
+
+    public static void isTrue(boolean option, Supplier<String> exceptionMessage) {
+
+    }
 }
