@@ -32,4 +32,8 @@ public class RacingCar {
     public static boolean isValidCount(String count) {
         return count.trim().matches("^[0-9]+$");
     }
+
+    public static int generateRandom() {
+        return (int) (Math.random() * 10000) % 10;
+    }
 }

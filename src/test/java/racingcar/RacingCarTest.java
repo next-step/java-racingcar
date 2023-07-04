@@ -37,4 +37,11 @@ public class RacingCarTest {
     void 자동차_실행_횟수_검증_실패(String count) {
         assertThat(RacingCar.isValidCount(count)).isEqualTo(false);
     }
+
+    @DisplayName("랜덤함수가 0이상 9이하의 숫자를 리턴한다")
+    @Test
+    void 랜덤_함수_검증() {
+        int result = RacingCar.generateRandom();
+        assertThat(result).isGreaterThanOrEqualTo(0).isLessThanOrEqualTo(9);
+    }
 }
