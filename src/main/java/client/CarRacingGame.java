@@ -2,13 +2,11 @@ package client;
 
 import car.Car;
 import carracingfield.CarRacingField;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+import printer.CarStatusPrinter;
 import validator.StringNameValidator;
 import winnerstrategy.MaxPositionDuplicateWinnerStrategy;
 
@@ -43,7 +41,10 @@ public class CarRacingGame {
             new MaxPositionDuplicateWinnerStrategy()
         );
         System.out.println("\n실행 결과");
-        carRacingField.moveCarsByCount(count);
+        for (int i = 0; i < count; i++) {
+            carRacingField.moveOrStopCars();
+            CarStatusPrinter.print(carRacingField.getCarStatuses());
+        }
         return carRacingField.getWinners();
     }
 

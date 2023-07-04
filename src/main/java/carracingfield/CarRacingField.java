@@ -1,6 +1,7 @@
 package carracingfield;
 
 import car.Car;
+import car.CarStatus;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,27 +20,15 @@ public class CarRacingField {
         this.winnerStrategy = winnerStrategy;
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public List<CarStatus> getCarStatuses() {
+        return cars.stream()
+            .map(CarStatus::from)
+            .collect(Collectors.toList());
     }
 
-    public void moveCarsByCount(int count) {
-        for (int i = 0; i < count; i++) {
-            moveCarsSingleTime();
-            printCurrentCarStatus();
-            System.out.println();
-        }
-    }
-
-    private void printCurrentCarStatus() {
+    public void moveOrStopCars() {
         for (Car car : cars) {
-            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
-        }
-    }
-
-    private void moveCarsSingleTime() {
-        for (Car car : cars) {
-            car.moveOrStopByRandomValue(RandomGenerator.extractRandomSingleDigit());
+            car.moveOrStopByValue(RandomGenerator.extractRandomSingleDigit());
         }
     }
 
