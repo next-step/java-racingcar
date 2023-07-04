@@ -49,6 +49,11 @@ class CalculatorTest {
     }
 
     @Test
-    void name() {
+    void customSplitterTest() {
+        //given
+        Calculator calculator = new Calculator();
+
+        //when, then
+        assertThat(calculator.calculate("//;\n1;2;3")).isEqualTo(6);
     }
 }
