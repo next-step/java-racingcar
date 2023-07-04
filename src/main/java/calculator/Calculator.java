@@ -8,6 +8,7 @@ public class Calculator {
 
     private static final String CUSTOM_DELIMITER_PATTERN = "//(.)\n(.*)";
     private static final String DEFAULT_DELIMITER_REGEX = ",|:";
+    private static final String NEGATIVE_INTEGER_ERROR_MESSAGE = "음수를 입력할 수 없습니다.";
 
     public static int sum(String input) {
         if (isBlank(input)) {
@@ -25,6 +26,12 @@ public class Calculator {
     }
 
     private static int stringTosum(String input, String delimiter) {
+        String[] split = input.split(delimiter);
+        for (var element : split) {
+            if (element.charAt(0) == '-') {
+                throw new RuntimeException(NEGATIVE_INTEGER_ERROR_MESSAGE);
+            }
+        }
         return Arrays.stream(input.split(delimiter))
                 .mapToInt(Integer::valueOf)
                 .sum();
