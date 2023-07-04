@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import java.util.HashSet;
 import java.util.Set;
+import racingcar.util.Asserts;
 
 public class RacingGame {
 
@@ -15,14 +16,8 @@ public class RacingGame {
     private static void assertDuplicateCarName(Car... cars) {
         Set<String> duplicatedName = new HashSet<>();
         for (Car car : cars) {
-            throwIfDuplicatedCarName(duplicatedName, car);
+            Asserts.isTrue(!duplicatedName.contains(car.getName()), () -> "중복된 자동차 이름이 발견됐습니다.");
             duplicatedName.add(car.getName());
-        }
-    }
-
-    private static void throwIfDuplicatedCarName(Set<String> duplicatedName, Car car) {
-        if (duplicatedName.contains(car.getName())) {
-            throw new IllegalArgumentException("중복된 자동차 이름이 발견됐습니다.");
         }
     }
 
