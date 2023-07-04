@@ -30,4 +30,13 @@ public class Car {
         return this.position;
     }
 
+    @Override
+    public String toString() {
+        return "Car{" +
+            "MOVING_LIMIT=" + MOVING_LIMIT +
+            ", name='" + name + '\'' +
+            ", position=" + position +
+            '}';
+    }
+
 }

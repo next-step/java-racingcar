@@ -15,7 +15,17 @@ public class Cars {
     private String [] tokenCarNames (String carNames) {
         return carNames.split(",");
     }
+    public void raceOnce () {
+        this.cars.forEach(o-> o.move());
+    }
     public List<Car> getCars () {
         return Collections.unmodifiableList(cars);
+    }
+
+    @Override
+    public String toString() {
+        return "Cars{" +
+            "cars=" + cars +
+            '}';
     }
 }
