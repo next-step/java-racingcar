@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
@@ -50,5 +51,9 @@ public class Cars {
             sb.append(car).append("\n");
         }
         return sb.toString();
+    }
+
+    public List<CarDto> getRecord() {
+        return CarDto.getListOf(cars);
     }
 }
