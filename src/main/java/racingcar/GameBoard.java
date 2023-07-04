@@ -7,25 +7,17 @@ import java.util.stream.Collectors;
 public class GameBoard {
 
     private final List<Car> cars;
-    private final int tryCount;
 
-    public GameBoard(List<String> carNames, int tryCount) {
+    public GameBoard(List<String> carNames) {
         cars = new ArrayList<>();
 
         for (String carName : carNames) {
             cars.add(new Car(carName));
         }
-        this.tryCount = tryCount;
     }
 
-    public void run(int tryCount) {
-        if (tryCount != 0) {
-            cars.forEach(Car::move);
-        }
-        Output.printExecutionResult(cars, tryCount);
-        if (this.tryCount == tryCount) {
-            Output.printWinner(getWinnerNames());
-        }
+    public void run() {
+        cars.forEach(Car::move);
     }
 
     public List<String> getWinnerNames() {
@@ -38,5 +30,9 @@ public class GameBoard {
                 .map(Car::getName)
                 .collect(Collectors.toList());
 
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }
