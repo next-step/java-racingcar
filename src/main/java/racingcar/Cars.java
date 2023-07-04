@@ -12,10 +12,6 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static String[] split(String str) {
-        return str.split(",");
-    }
-
     public static Cars from(List<String> carNames) {
         return new Cars(carNames.stream()
                 .map(Car::new)
@@ -43,12 +39,7 @@ public class Cars {
                 .orElse(0);
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        for (Car car : cars) {
-            sb.append(car).append("\n");
-        }
-        return sb.toString();
+    public List<Car> getCars() {
+        return cars;
     }
 }
