@@ -1,11 +1,14 @@
 package racingcar;
 
-import static racingcar.InputManager.readCarNames;
-import static racingcar.InputManager.readRound;
+import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-        RacingManager racingManager = RacingManager.of(readCarNames(), readRound());
-        racingManager.playRacing();
+        try (InputManager inputManager = new InputManager()) {
+            RacingManager racingManager = RacingManager.of(inputManager.readCarNames(), inputManager.readRound());
+            racingManager.playRacing();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
