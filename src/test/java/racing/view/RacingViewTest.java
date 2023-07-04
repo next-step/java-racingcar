@@ -59,7 +59,5 @@ class RacingViewTest {
 
         // when, then
         assertThat(racingView.getWinnerView(cars)).isEqualTo(text);
-
-
     }
 }
