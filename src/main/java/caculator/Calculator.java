@@ -7,7 +7,8 @@ import java.util.regex.Pattern;
 
 public final class Calculator {
 
-    public static final Pattern NUMBER_PATTERN = Pattern.compile("(^[0-9]*$)");
+    private static final Pattern NUMBER_PATTERN = Pattern.compile("(^[\\d]*$)");
+    private static final String NEGATIVE_PREFIX = "-";
 
     private Calculator() {
     }
@@ -35,7 +36,7 @@ public final class Calculator {
                              orPredicates(
                                      String::isBlank,
                                      Predicate.not(Calculator::isNumber),
-                                     value -> value.startsWith("-")
+                                     value -> value.startsWith(NEGATIVE_PREFIX)
                              )
                      )
                      .findAny()
