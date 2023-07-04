@@ -1,6 +1,6 @@
 package caculator;
 
-import delimiter.DelimiterResolver;
+import caculator.delimiter.DelimiterResolver;
 import java.util.Arrays;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
