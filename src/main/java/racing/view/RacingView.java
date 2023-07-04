@@ -1,6 +1,7 @@
 package racing.view;
 
 import racing.Car;
+import racing.SimulationResult;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,5 +33,9 @@ public class RacingView {
         return cars.stream()
                 .map(car -> car.getName())
                 .collect(Collectors.joining(", ")) + "가 최종 우승했습니다.";
+    }
+
+    public String getResultView(SimulationResult simulationResult) {
+        return null;
     }
 }

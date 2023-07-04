@@ -2,8 +2,10 @@ package racing.view;
 
 import org.junit.jupiter.api.Test;
 import racing.Car;
+import racing.SimulationResult;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -59,5 +61,24 @@ class RacingViewTest {
 
         // when, then
         assertThat(racingView.getWinnerView(cars)).isEqualTo(text);
+    }
+
+    @Test
+    void getResultViewTest() {
+        //given
+        RacingView racingView = new RacingView();
+        SimulationResult simulationResult = new SimulationResult(Arrays.asList("test1", "test2"),
+                Arrays.asList(Arrays.asList(1, 1), Arrays.asList(2, 2)),
+                Arrays.asList("test1", "test2"));
+
+        //when, then
+        assertThat(racingView.getResultView(simulationResult)).isEqualTo("실행 결과\n" +
+                "test1 : -\n" +
+                "test2 : -\n" +
+                "\n" +
+                "test1 : --\n" +
+                "test2 : --\n" +
+                "\n" +
+                "test1, test2가 최종 우승했습니다.");
     }
 }
