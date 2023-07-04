@@ -9,12 +9,12 @@ public class ConsoleInput {
 
     private static final Scanner sc = new Scanner(System.in);
 
-    public static String inputNames() {
+    public static String readNames() {
         System.out.println(NAMES_MESSAGE);
         return sc.nextLine();
     }
 
-    public static int inputCount() {
+    public static int readCount() {
         System.out.println(COUNT_MESSAGE);
         return sc.nextInt();
     }
