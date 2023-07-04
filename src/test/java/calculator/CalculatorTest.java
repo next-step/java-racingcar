@@ -37,4 +37,14 @@ class CalculatorTest {
         assertThat(calculator.calculate("4,5")).isEqualTo(9);
 
     }
+
+    @Test
+    void semiColonSplitTest() {
+        //given
+        Calculator calculator = new Calculator();
+
+        //when, then
+        assertThat(calculator.calculate("1,2;3")).isEqualTo(6);
+        assertThat(calculator.calculate("1;2;3")).isEqualTo(6);
+    }
 }
