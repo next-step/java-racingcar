@@ -14,8 +14,8 @@ public class Car {
         this.name = name;
     }
 
-    public void moveOrStopByRandomValue(int i) {
-        if (i >= 4) {
+    public void moveOrStopByValue(int value) {
+        if (value >= 4) {
             position += 1;
         }
     }
