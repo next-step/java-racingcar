@@ -20,21 +20,25 @@ public class Calculator {
     private static int stringToSum(String input) {
         Matcher m = Pattern.compile(CUSTOM_DELIMITER_PATTERN).matcher(input);
         if (m.find()) {
-            return stringTosum(m.group(2), m.group(1));
+            return stringToSum(m.group(2), m.group(1));
         }
-        return stringTosum(input, DEFAULT_DELIMITER_REGEX);
+        return stringToSum(input, DEFAULT_DELIMITER_REGEX);
     }
 
-    private static int stringTosum(String input, String delimiter) {
-        String[] split = input.split(delimiter);
-        for (var element : split) {
-            if (element.charAt(0) == '-') {
-                throw new RuntimeException(NEGATIVE_INTEGER_ERROR_MESSAGE);
-            }
+    private static int stringToSum(String input, String delimiter) {
+        String[] numberStrings = input.split(delimiter);
+        for (String numberString : numberStrings) {
+            validatePositiveNumber(numberString);
         }
-        return Arrays.stream(input.split(delimiter))
+        return Arrays.stream(numberStrings)
                 .mapToInt(Integer::valueOf)
                 .sum();
+    }
+
+    private static void validatePositiveNumber(String element) {
+        if (element.charAt(0) == '-') {
+            throw new RuntimeException(NEGATIVE_INTEGER_ERROR_MESSAGE);
+        }
     }
 
     private static boolean isBlank(String input) {
