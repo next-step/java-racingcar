@@ -3,6 +3,7 @@ package racingCar;
 import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import racingcar.Car;
 import racingcar.Parser;
 import racingcar.RaceUtil;
 import racingcar.RandomUtil;
@@ -52,5 +53,33 @@ public class RacingCarTest {
         // when & then
         assertThatThrownBy(() -> Parser.parse("pobiii,crong,honuxxx"))
                 .isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    void 자동차생성할때_성공() {
+        // given
+        String input = "pobi";
+        Car car = Car.from(input);
+
+        // when
+        int position = car.getPosition();
+        String name = car.getName();
+
+        // then
+        assertThat(position).isEqualTo(0);
+        assertThat(name).isEqualTo(input);
+    }
+
+    @Test
+    void 자동차전진요청할때_성공() {
+        // given
+        Car car = Car.from("hyun");
+        int beforePosition = car.getPosition();
+
+        // when
+        car.moveForward();
+
+        // then
+        assertThat(car.getPosition()).isEqualTo(beforePosition + 1);
     }
 }
