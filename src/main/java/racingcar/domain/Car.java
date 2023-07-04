@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.Objects;
 import racingcar.domain.extension.Moveable;
 import racingcar.util.Asserts;
 
@@ -35,5 +36,31 @@ public class Car {
         if (this.moveable.isMove()) {
             this.position++;
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Car)) {
+            return false;
+        }
+        Car car = (Car) o;
+        return position == car.position && Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(position, name);
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+            "position=" + position +
+            ", name='" + name + '\'' +
+            ", moveable=" + moveable +
+            '}';
     }
 }
