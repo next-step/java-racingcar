@@ -40,7 +40,8 @@ public class Car {
         return name;
     }
 
-    public String getCarStatus() {
+    @Override
+    public String toString() {
         return this.name + " : " + "-".repeat(this.position);
     }
 }
