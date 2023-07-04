@@ -1,4 +1,6 @@
-package car;
+package car.dto;
+
+import car.domain.Car;
 
 public class CarStatus {
 

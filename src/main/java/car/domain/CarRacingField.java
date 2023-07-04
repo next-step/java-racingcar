@@ -1,12 +1,11 @@
-package carracingfield;
+package car.domain;
 
-import car.Car;
-import car.CarStatus;
+import car.dto.CarStatus;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import random.RandomGenerator;
-import winnerstrategy.WinnerStrategy;
+import utils.random.RandomGenerator;
+import car.domain.winnerstrategy.WinnerStrategy;
 
 public class CarRacingField {
 

@@ -1,8 +1,9 @@
-package random;
+package utils.random;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import utils.random.RandomGenerator;
 
 public class RandomGeneratorTest {
 

@@ -1,10 +1,11 @@
-package validator;
+package utils.validator;
 
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import utils.validator.StringNameValidator;
 
 public class StringNameValidatorTest {
 

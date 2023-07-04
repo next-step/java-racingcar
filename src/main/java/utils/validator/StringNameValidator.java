@@ -1,4 +1,4 @@
-package validator;
+package utils.validator;
 
 public class StringNameValidator {
 

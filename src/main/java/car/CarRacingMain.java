@@ -1,22 +1,23 @@
-package client;
+package car;
 
-import car.Car;
-import carracingfield.CarRacingField;
+import car.domain.Car;
+import car.domain.CarRacingField;
+import car.domain.winnerstrategy.WinnerStrategy;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-import printer.CarStatusPrinter;
-import validator.StringNameValidator;
-import winnerstrategy.MaxPositionDuplicateWinnerStrategy;
+import car.ui.CarStatusPrinter;
+import utils.validator.StringNameValidator;
+import car.domain.winnerstrategy.MaxPositionDuplicateWinnerStrategy;
 
-public class CarRacingGame {
+public class CarRacingMain {
 
     private static List<String> names;
     private static int count;
+    private static WinnerStrategy strategy = new MaxPositionDuplicateWinnerStrategy();
 
     public static void main(String[] args) {
-
         getUserInput();
         validateCarNames();
         printWinners(playAndSelectWinners());
@@ -36,10 +37,7 @@ public class CarRacingGame {
     }
 
     private static List<Car> playAndSelectWinners() {
-        CarRacingField carRacingField = new CarRacingField(
-            names,
-            new MaxPositionDuplicateWinnerStrategy()
-        );
+        CarRacingField carRacingField = new CarRacingField(names, strategy);
         System.out.println("\n실행 결과");
         for (int i = 0; i < count; i++) {
             carRacingField.moveOrStopCars();

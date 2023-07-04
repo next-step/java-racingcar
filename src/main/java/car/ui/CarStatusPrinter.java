@@ -1,6 +1,6 @@
-package printer;
+package car.ui;
 
-import car.CarStatus;
+import car.dto.CarStatus;
 import java.util.List;
 
 public class CarStatusPrinter {
