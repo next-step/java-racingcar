@@ -4,10 +4,12 @@ import java.util.List;
 
 public class Output {
 
-    public static void printExecutionResult(List<Car> cars, int tryCount) {
-        if (tryCount == 0) {
-            System.out.println("실행 결과");
-        }
+    public static void printInitialStatus(List<Car> cars) {
+        System.out.println("실행 결과");
+        printExecutionResult(cars);
+    }
+
+    public static void printExecutionResult(List<Car> cars) {
         for (Car car : cars) {
             System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
         }

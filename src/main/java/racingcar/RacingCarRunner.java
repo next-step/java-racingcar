@@ -7,11 +7,13 @@ public class RacingCarRunner {
     public static void main(String[] args) {
         List<String> carNames = Input.processCarNames();
         int tryCount = Input.processTryCount();
-        GameBoard gameBoard = new GameBoard(carNames, tryCount);
+        GameBoard gameBoard = new GameBoard(carNames);
 
-        for (int i = 0; i <= tryCount; i++) {
-            gameBoard.run(i);
+        Output.printInitialStatus(gameBoard.getCars());
+        for (int i = 0; i < tryCount; i++) {
+            gameBoard.run();
+            Output.printExecutionResult(gameBoard.getCars());
         }
-        gameBoard.getWinnerNames();
+        Output.printWinner(gameBoard.getWinnerNames());
     }
 }
