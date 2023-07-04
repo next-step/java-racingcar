@@ -9,6 +9,8 @@ public class TokenUtils {
     private static final String DIGIT_LOOK_BEHIND_REGEX = "(?<=\\d+)";
     private static final String DEFAULT_DELIMITER_REGEX = "[,;]";
 
+    private TokenUtils() {}
+    
     public static String[] generateTokensFromText(String text) {
         String delimiter = DEFAULT_DELIMITER_REGEX;
 
