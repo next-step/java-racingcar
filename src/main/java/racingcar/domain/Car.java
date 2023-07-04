@@ -25,8 +25,16 @@ public class Car implements Comparable<Car> {
         return this.position.equals(position);
     }
 
+    public String getNameValue() {
+        return name.getValue();
+    }
+
     public Position getPosition() {
         return position;
+    }
+
+    public int getPositionValue() {
+        return position.getValue();
     }
 
     @Override
