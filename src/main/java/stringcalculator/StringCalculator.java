@@ -20,4 +20,13 @@ public class StringCalculator {
         String input = m.group(2);
         return new ParseInfo(delimiter, input);
     }
+
+    public static boolean isValidArray(String[] stringArray) {
+        for (String s : stringArray) {
+            if (!s.matches("^[0-9]+$")) {
+                throw new RuntimeException("유효하지 않은 값입니다");
+            }
+        }
+        return true;
+    }
 }

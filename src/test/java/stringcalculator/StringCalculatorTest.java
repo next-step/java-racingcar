@@ -3,8 +3,8 @@ package stringcalculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class StringCalculatorTest {
 
@@ -69,5 +69,37 @@ class StringCalculatorTest {
         String[] result = parseInfo.parse();
 
         assertThat(result).containsExactly("1", "2", "3", "10");
+    }
+
+    @DisplayName("양수로만 이루어진 경우 true를 리턴한다")
+    @Test
+    void 문자열_검증_성공() {
+        String[] stringArray = {"1", "2", "3"};
+
+        boolean result = StringCalculator.isValidArray(stringArray);
+
+        assertThat(result).isEqualTo(true);
+    }
+
+
+    @DisplayName("음수가 존재하는 경우 RuntimeException 예외가 발생한다")
+    @Test
+    void 문자열_검증_실패_음수() {
+        String[] stringArray = {"-1", "2", "3"};
+
+        assertThatExceptionOfType(RuntimeException.class)
+                .isThrownBy(() -> StringCalculator.isValidArray(stringArray))
+                .withMessageMatching("유효하지 않은 값입니다");
+    }
+
+    @DisplayName("숫자 이외의 값이 존재하는 경우 RuntimeException 예외가 발생한다")
+    @Test
+    void 문자열_검증_실패_숫자외의_값() {
+        String[] stringArray = {"1", "2%", ";3;"};
+
+        assertThatExceptionOfType(RuntimeException.class)
+                .isThrownBy(() -> StringCalculator.isValidArray(stringArray))
+                .withMessageMatching("유효하지 않은 값입니다");
+
     }
 }
