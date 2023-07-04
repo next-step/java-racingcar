@@ -116,6 +116,39 @@ class RacingGameTest {
 
         }
 
+        @Nested
+        @DisplayName("RacingGame의 round가 3로 바인딩 되어있다면,")
+        class DescribeRacingGameRound3 {
+
+            private final Integer round = 3;
+            private final RacingGame racingGame = new RacingGame(round, cars);
+            private final Car[] expectedCars = move();
+
+            @Test
+            @DisplayName("세판을 진행하고, 그 결과를 car에 반영한다.")
+            void ItReturn1RoundResult() {
+                racingGame.play();
+                for (int i = 0; i < cars.length; i++) {
+                    Assertions.assertThat(cars[i]).isEqualTo(expectedCars[i]);
+                }
+            }
+
+            private Car[] move() {
+                Car[] copy = {
+                    new Car("A", falseMover),
+                    new Car("B", falseMover),
+                    new Car("C", trueMover),
+                };
+                for (Car car : copy) {
+                    car.move();
+                    car.move();
+                    car.move();
+                }
+                return copy;
+            }
+
+        }
+
     }
 
 }
