@@ -7,6 +7,7 @@ public class Main {
         try (InputManager inputManager = new InputManager()) {
             RacingManager racingManager = RacingManager.of(inputManager.readCarNames(), inputManager.readRound());
             racingManager.playRacing();
+            racingManager.printWinners();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
