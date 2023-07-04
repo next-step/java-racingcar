@@ -6,21 +6,22 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.model.Car;
+import racing.model.Cars;
 
 class RacingManagerTest {
 
     @Test
     @DisplayName("우승자를 선별하는 경우")
     void checkWinnerTest() {
-        List<Car> cars = createTestCars();
+        Cars cars = createTestCars();
         RacingManager manager = new RacingManager(cars);
-        List<Car> winners = manager.checkWinners();
-        assertThat(winners).hasSize(2);
-        assertThat(winners.get(0).getName()).isEqualTo("pobi");
-        assertThat(winners.get(1).getName()).isEqualTo("crong");
+        List<String> winnerNames = manager.getWinnerNames();
+        assertThat(winnerNames).hasSize(2);
+        assertThat(winnerNames.get(0)).isEqualTo("pobi");
+        assertThat(winnerNames.get(1)).isEqualTo("crong");
     }
 
-    private static List<Car> createTestCars() {
+    private static Cars createTestCars() {
         List<Car> cars = List.of(
           new Car("pobi"),
           new Car("crong"),
@@ -31,7 +32,7 @@ class RacingManagerTest {
         moveNSteps(cars.get(1), 3);
         moveNSteps(cars.get(2), 1);
 
-        return cars;
+        return new Cars(cars);
     }
 
     private static void moveNSteps(Car car, int steps) {

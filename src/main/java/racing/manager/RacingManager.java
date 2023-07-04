@@ -2,48 +2,33 @@ package racing.manager;
 
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.stream.Collectors;
-import racing.model.Car;
+import racing.model.Cars;
 
 public class RacingManager {
 
     private static final int DEFAULT_BOUND = 10;
 
-    private final List<Car> cars;
+    private final Cars cars;
 
-    public RacingManager(List<Car> cars) {
+    public RacingManager(Cars cars) {
         this.cars = cars;
     }
 
-    public List<Car> getCarClones() {
-        return this.cars.stream()
-                        .map(Car::clone)
-                        .collect(Collectors.toUnmodifiableList());
+    public Cars getCars() {
+        return this.cars;
     }
 
-    public List<Car> turn() {
-        for (Car car : this.cars) {
+    public Cars turn() {
+        for (int i = 0; i < cars.size(); i++) {
             int value = ThreadLocalRandom.current().nextInt(DEFAULT_BOUND);
-            car.moveOneStepMoreThanCriterion(value);
+            this.cars.moveOneStepMoreThanCriterion(i, value);
         }
 
-        return this.getCarClones();
+        return this.cars;
     }
 
-    public List<Car> checkWinners() {
-        int maxPosition = getMaxPosition();
-        return this.cars.stream()
-                        .filter(cur -> cur.getPosition() == maxPosition)
-                        .map(Car::clone)
-                        .collect(Collectors.toUnmodifiableList());
-    }
-
-    private int getMaxPosition() {
-        int maxPosition = -1;
-        for (Car car : this.cars) {
-            maxPosition = Math.max(maxPosition, car.getPosition());
-        }
-        return maxPosition;
+    public List<String> getWinnerNames() {
+        return this.cars.getWinnerNames();
     }
 
 }

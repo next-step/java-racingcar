@@ -1,8 +1,9 @@
 package racing.controller;
 
 import racing.factory.CarFactory;
-import racing.manager.RacingManager;
 import racing.io.Viewer;
+import racing.manager.RacingManager;
+import racing.model.Cars;
 import racing.model.GameInfo;
 
 public class Host {
@@ -13,15 +14,17 @@ public class Host {
 
     public Host(GameInfo gameInfo, CarFactory carFactory, Viewer viewer) {
         this.raceCount = gameInfo.getRaceCount();
-        this.racingManager = new RacingManager(
+
+        Cars cars = new Cars(
                 carFactory.manufactureCars(gameInfo.getCarNames())
         );
+        this.racingManager = new RacingManager(cars);
         this.viewer = viewer;
     }
 
     public void startRacing() {
         viewer.printBeforeRacing(
-                racingManager.getCarClones()
+                racingManager.getCars()
         );
 
         for (int i = 0; i < raceCount; i++) {
@@ -31,7 +34,7 @@ public class Host {
         }
 
         viewer.printWinners(
-                racingManager.checkWinners()
+                racingManager.getWinnerNames()
         );
     }
 
