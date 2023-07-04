@@ -39,7 +39,7 @@ class CalculatorTest {
     }
 
     @Test
-    void semiColonSplitTest() {
+    void semicolonSplitTest() {
         //given
         Calculator calculator = new Calculator();
 
