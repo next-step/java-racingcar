@@ -5,7 +5,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Input {
-    private final static Scanner scanner = new Scanner(System.in);
+    private static final String NUMBER_REGEX = "[0-9]+";
+    private static final Scanner scanner = new Scanner(System.in);
 
     public static List<String> processCarNames() {
         try {
@@ -25,17 +26,17 @@ public class Input {
         }
     }
 
-    private static Integer readTryCount() {
+    private static int readTryCount() {
         System.out.println("시도할 회수는 몇회인가요?");
         String input = scanner.nextLine();
         if (validateNumber(input)) {
-            return Integer.valueOf(input);
+            return Integer.parseInt(input);
         }
         throw new IllegalArgumentException();
     }
 
     public static boolean validateNumber(String number) {
-        return number.matches("[0-9]+");
+        return number.matches(NUMBER_REGEX);
     }
 
     private static List<String> readCarNames() {
@@ -45,8 +46,8 @@ public class Input {
     }
 
     public static boolean validateCarNames(String[] carNames) {
-        long count = Arrays.stream(carNames).filter(Input::validateCarName).count();
-        return count == 0;
+        return Arrays.stream(carNames)
+                .noneMatch(Input::validateCarName);
     }
 
     private static boolean validateCarName(String carName) {

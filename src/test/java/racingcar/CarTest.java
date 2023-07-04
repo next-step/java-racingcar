@@ -5,23 +5,26 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
 public class CarTest {
+    private final int canMoveValue = 4;
+    private final int canNotMoveValue = 3;
+
     @Test
     void carTest_isMove() {
         Car car = new Car("hello");
-        assertThat(car.isMove(4)).isTrue();
-        assertThat(car.isMove(3)).isFalse();
+        assertThat(car.isMove(canMoveValue)).isTrue();
+        assertThat(car.isMove(canNotMoveValue)).isFalse();
     }
 
     @Test
     void carTest_move() {
-        Car car = new Car("hello", new MockRandom(4));
+        Car car = new Car("hello", new MockRandom(canMoveValue));
         car.move();
         assertThat(car.getPosition()).isEqualTo(2);
     }
 
     @Test
     void carTest_not_move() {
-        Car car = new Car("hello", new MockRandom(3));
+        Car car = new Car("hello", new MockRandom(canNotMoveValue));
         car.move();
         assertThat(car.getPosition()).isEqualTo(1);
     }
