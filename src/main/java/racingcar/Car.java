@@ -13,7 +13,7 @@ public class Car {
         this.position = position;
     }
 
-    public static Car from(String name) {
+    public static Car create(String name) {
         return new Car(name);
     }
 
