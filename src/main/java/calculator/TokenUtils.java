@@ -24,7 +24,7 @@ public class TokenUtils {
         return text.split(delimiterAfterDigit);
     }
 
-    public static void validateToken(String[] tokens) {
+    public static void validateTokens(String[] tokens) {
         for (String token : tokens) {
             validateToken(token);
         }
