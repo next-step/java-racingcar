@@ -2,7 +2,6 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 public class GameBoard {
@@ -31,11 +30,11 @@ public class GameBoard {
 
     public List<String> getWinnerNames() {
         int maxIndex = cars.stream()
-                .mapToInt(Car::getIndex)
+                .mapToInt(Car::getPosition)
                 .max()
                 .orElse(1);
         return cars.stream()
-                .filter(c -> c.getIndex() == maxIndex)
+                .filter(c -> c.getPosition() == maxIndex)
                 .map(Car::getName)
                 .collect(Collectors.toList());
 
