@@ -19,7 +19,7 @@ class RandomMoverTest {
         @DisplayName("RandomMover에 4가 들어오면,")
         class ContextReturn4 {
 
-            private final Moveable randomMover = new RandomMover();
+            private final Moveable randomMover = new RandomMover(() -> 4);
 
             @Test
             @DisplayName("true를 반환한다.")
@@ -33,7 +33,7 @@ class RandomMoverTest {
         @DisplayName("RandomMover에 3이 들어오면,")
         class ContextBinding3 {
 
-            private final Moveable randomMover = new RandomMover();
+            private final Moveable randomMover = new RandomMover(() -> 3);
 
             @Test
             @DisplayName("false를 반환한다.")
