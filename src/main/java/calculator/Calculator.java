@@ -18,11 +18,19 @@ public class Calculator {
     }
 
     private static int stringToSum(String input) {
-        Matcher m = Pattern.compile(CUSTOM_DELIMITER_PATTERN).matcher(input);
-        if (m.find()) {
-            return stringToSum(m.group(2), m.group(1));
+        Matcher matcher = getCustomPatternMatcher(input);
+        if (isCustomDelimiter(matcher)) {
+            return stringToSum(matcher);
         }
         return stringToSum(input, DEFAULT_DELIMITER_REGEX);
+    }
+
+    private static Matcher getCustomPatternMatcher(String input) {
+        return Pattern.compile(CUSTOM_DELIMITER_PATTERN).matcher(input);
+    }
+
+    private static boolean isCustomDelimiter(Matcher matcher) {
+        return matcher.find();
     }
 
     private static int stringToSum(String input, String delimiter) {
@@ -33,6 +41,12 @@ public class Calculator {
         return Arrays.stream(numberStrings)
                 .mapToInt(Integer::valueOf)
                 .sum();
+    }
+
+    private static int stringToSum(Matcher matcher) {
+        String input = matcher.group(2);
+        String customDelimiter = matcher.group(1);
+        return stringToSum(input, customDelimiter);
     }
 
     private static void validatePositiveNumber(String element) {
