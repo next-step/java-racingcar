@@ -23,12 +23,12 @@ public class Car {
     }
 
     public void move() {
-        if (isMove(random.nextInt(RANDOM_BOUND))) {
+        if (canMove(random.nextInt(RANDOM_BOUND))) {
             position++;
         }
     }
 
-    public boolean isMove(int value) {
+    private boolean canMove(int value) {
         return value >= MOVE_THRESHOLD;
     }
 

@@ -10,13 +10,6 @@ public class CarTest {
     private final int canNotMoveValue = 3;
 
     @Test
-    void carTest_isMove() {
-        Car car = new Car("hello");
-        assertThat(car.isMove(canMoveValue)).isTrue();
-        assertThat(car.isMove(canNotMoveValue)).isFalse();
-    }
-
-    @Test
     void carTest_move() {
         Car car = new Car("hello", new MockRandom(canMoveValue));
         car.move();
