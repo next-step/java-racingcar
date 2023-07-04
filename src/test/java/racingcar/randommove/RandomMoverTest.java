@@ -29,6 +29,20 @@ class RandomMoverTest {
 
         }
 
+        @Nested
+        @DisplayName("RandomMover에 3이 들어오면,")
+        class ContextBinding3 {
+
+            private final Moveable randomMover = new RandomMover();
+
+            @Test
+            @DisplayName("false를 반환한다.")
+            void ItReturnFalse() {
+                assertThat(randomMover.isMove()).isFalse();
+            }
+
+        }
+
     }
 
 }
