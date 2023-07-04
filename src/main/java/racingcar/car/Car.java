@@ -40,6 +40,10 @@ public class Car {
         return name;
     }
 
+    public boolean isWinner(int winnerPosition) {
+        return this.position == winnerPosition;
+    }
+
     @Override
     public String toString() {
         return this.name + " : " + "-".repeat(this.position);

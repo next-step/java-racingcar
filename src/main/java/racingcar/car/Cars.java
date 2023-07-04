@@ -6,9 +6,8 @@ import java.util.stream.Collectors;
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(List<String> cars) {
-        this.cars = cars
-                .stream()
+    public Cars(List<String> carNames) {
+        this.cars = carNames.stream()
                 .map(Car::new)
                 .collect(Collectors.toList());
     }
@@ -18,15 +17,16 @@ public class Cars {
     }
 
     public List<String> getWinnerNames() {
+        int winnerPosition = getHighPosition();
         return cars.stream()
-                .filter(c -> c.getPosition() == getHighPosition())
+                .filter(c -> c.isWinner(winnerPosition))
                 .map(Car::getName)
                 .collect(Collectors.toList());
     }
 
     public String getTotalStatus() {
         return cars.stream()
-                .map(Car::getCarStatus)
+                .map(Car::toString)
                 .collect(Collectors.joining("\n"));
     }
 
