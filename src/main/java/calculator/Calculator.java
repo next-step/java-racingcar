@@ -5,31 +5,45 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Calculator {
+    private static final String SPLITTERS = ",:";
 
     public int calculate(String input) throws RuntimeException {
-        if (input == null || input.isEmpty())
+        if (isBlankOrNull(input))
             return 0;
 
-        String splitterPattern = ",:";
+        return getSum(input);
+    }
 
+    private int getSum(String input) {
+        return Arrays.stream(split(input))
+                .mapToInt(this::stringToInt)
+                .peek(this::checkNegative)
+                .sum();
+    }
+
+
+    private boolean isBlankOrNull(String input) {
+        return input == null || input.isEmpty();
+    }
+
+    private String[] split(String input) {
         Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(input);
         if (matcher.find()) {
-            splitterPattern += matcher.group(1);
-            input = matcher.group(2);
+            return matcher.group(2).split("[" + SPLITTERS + matcher.group(1) + "]");
         }
 
-        return Arrays.stream(input.split("[" + splitterPattern + "]"))
-                .mapToInt(n -> {
-                    try {
-                        int num = Integer.parseInt(n);
-                        if (num >= 0) {
-                            return num;
-                        }
-                        throw new RuntimeException();
-                    } catch (Exception e) {
-                        throw new RuntimeException();
-                    }
-                })
-                .sum();
+        return input.split("[" + SPLITTERS + "]");
+    }
+
+    private int stringToInt(String text) throws RuntimeException {
+        try {
+            return Integer.parseInt(text);
+        } catch (Exception e) {
+            throw new RuntimeException();
+        }
+    }
+
+    private void checkNegative(int n) {
+        if (n < 0) throw new RuntimeException();
     }
 }
