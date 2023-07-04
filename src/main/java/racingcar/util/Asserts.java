@@ -21,7 +21,15 @@ public class Asserts {
         }
     }
 
+    public static void isFalse(boolean option, Supplier<String> exceptionMessage) {
+        if(!option) {
+            return;
+        }
+        throwIllegalArgumentExceptionWithMessage(exceptionMessage);
+    }
+
     private static void throwIllegalArgumentExceptionWithMessage(Supplier<String> exceptionMessage) {
         throw new IllegalArgumentException(exceptionMessage.get());
     }
+
 }
