@@ -19,7 +19,7 @@ public class Car {
     public Car(String name, Random random) {
         this.name = name;
         this.position = 1;
-        this.random = random;
+        this.random = random; /* for mocking random in test */
     }
 
     public void move() {
@@ -38,5 +38,10 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public String toString() {
+        return name + " : " + "-".repeat(position);
     }
 }
