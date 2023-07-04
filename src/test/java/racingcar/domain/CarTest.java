@@ -26,7 +26,7 @@ public class CarTest {
         Car car = new Car("충규");
 
         /* when */
-        car.move(7);
+        car.move(() -> 7);
 
         /* then */
         assertThat(car.getPosition()).isEqualTo(new Position(7));

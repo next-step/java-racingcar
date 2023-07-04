@@ -14,7 +14,8 @@ public class Car {
         return position;
     }
 
-    public void move(int amount) {
+    public void move(MoveStrategy strategy) {
+        int amount = strategy.amount();
         this.position = position.move(amount);
     }
 }
