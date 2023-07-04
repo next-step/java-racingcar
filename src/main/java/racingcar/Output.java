@@ -9,7 +9,7 @@ public class Output {
             System.out.println("실행 결과");
         }
         for (Car car : cars) {
-            System.out.println(car.getName() + " : " + "-".repeat(car.getIndex()));
+            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
         }
         System.out.println();
     }

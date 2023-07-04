@@ -3,35 +3,37 @@ package racingcar;
 import java.util.Random;
 
 public class Car {
-    private String name;
-    private int index;
+    private static final int RANDOM_BOUND = 10;
+    private static final int MOVE_THRESHOLD = 4;
+    private final String name;
+    private int position;
 
     private final Random random;
 
     public Car(String name) {
         this.name = name;
-        this.index = 1;
+        this.position = 1;
         this.random = new Random();
     }
 
     public Car(String name, Random random) {
         this.name = name;
-        this.index = 1;
+        this.position = 1;
         this.random = random;
     }
 
     public void move() {
-        if (isMove(random.nextInt(10))) {
-            index++;
+        if (isMove(random.nextInt(RANDOM_BOUND))) {
+            position++;
         }
     }
 
     public boolean isMove(int value) {
-        return value >= 4;
+        return value >= MOVE_THRESHOLD;
     }
 
-    public int getIndex() {
-        return index;
+    public int getPosition() {
+        return position;
     }
 
     public String getName() {

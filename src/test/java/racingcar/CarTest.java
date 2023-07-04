@@ -1,9 +1,6 @@
 package racingcar;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.util.Random;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -19,13 +16,13 @@ public class CarTest {
     void carTest_move() {
         Car car = new Car("hello", new MockRandom(4));
         car.move();
-        assertThat(car.getIndex()).isEqualTo(2);
+        assertThat(car.getPosition()).isEqualTo(2);
     }
 
     @Test
     void carTest_not_move() {
         Car car = new Car("hello", new MockRandom(3));
         car.move();
-        assertThat(car.getIndex()).isEqualTo(1);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 }
