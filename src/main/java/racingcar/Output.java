@@ -4,15 +4,13 @@ import java.util.List;
 
 public class Output {
 
-    public static void printInitialStatus(List<Car> cars) {
+    public static void printInitialStatus(Cars cars) {
         System.out.println("실행 결과");
         printExecutionResult(cars);
     }
 
-    public static void printExecutionResult(List<Car> cars) {
-        for (Car car : cars) {
-            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
-        }
+    public static void printExecutionResult(Cars cars) {
+        System.out.println(cars.getTotalStatus());
         System.out.println();
     }
 
