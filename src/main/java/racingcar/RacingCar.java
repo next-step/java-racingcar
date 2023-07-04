@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.Arrays;
+
 public class RacingCar {
 
     public int moveCount =0;
@@ -42,6 +44,14 @@ public class RacingCar {
 
     public static int generateRandom() {
         return (int) (Math.random() * 10000) % 10;
+    }
+
+    public static RacingCar[] generateCarArray(String input) {
+        String[] carNames = input.split(",");
+
+        return  Arrays.stream(carNames)
+                .map(name -> new RacingCar(name.trim()))
+                .toArray(RacingCar[]::new);
     }
 
     public void move(int randomValue) {

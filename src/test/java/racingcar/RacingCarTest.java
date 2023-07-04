@@ -85,4 +85,17 @@ public class RacingCarTest {
             assertThat(cars).contains(car);
         }
     }
+
+    @DisplayName("자동차 이름을 분리해 자동차 배열 생성")
+    @Test
+    void 자동차_생성() {
+        String input = "pobi ,crong,honux";
+        String[] carNames = {"pobi" , "crong" , "honux"};
+        RacingCar[] cars = RacingCar.generateCarArray(input);
+
+        for (RacingCar car: cars) {
+            assertThat(carNames).contains(car.name);
+        }
+
+    }
 }
