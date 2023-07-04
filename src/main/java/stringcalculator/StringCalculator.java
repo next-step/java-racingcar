@@ -9,10 +9,8 @@ public class StringCalculator {
         return Arrays.stream(nums).sum();
     }
 
-    public static int[] toIntArray(ParseInfo parseInfo) {
-        String[] strArray = parseInfo.parse();
-
-        return Arrays.stream(strArray).mapToInt(Integer::parseInt).toArray();
+    public static int[] toIntArray(String[] stringArray) {
+        return Arrays.stream(stringArray).mapToInt(Integer::parseInt).toArray();
     }
 
     public static ParseInfo separateCustomText(String text) {

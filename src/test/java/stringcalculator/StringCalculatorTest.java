@@ -31,24 +31,17 @@ class StringCalculatorTest {
         assertThat(result).isEqualTo(15);
     }
 
+    @DisplayName("문자열 배열을 정수 배열로 바꾼다")
     @Test
     void 문자열_변환() {
-        ParseInfo parseInfo = new ParseInfo(",|:", "1,2:3");
+        String[] stringArray = new String[]{"1", "2", "3"};
 
-        int[] result = StringCalculator.toIntArray(parseInfo);
+        int[] result = StringCalculator.toIntArray(stringArray);
 
         assertThat(result).containsExactly(1, 2, 3);
     }
 
-    @Test
-    void 문자열_변환_구분자_하나() {
-        ParseInfo parseInfo = new ParseInfo( ";", "4;2;3");
-
-        int[] result = StringCalculator.toIntArray(parseInfo);
-
-        assertThat(result).containsExactly(4, 2, 3);
-    }
-
+    @DisplayName("커스텀 구분자를 분리한다")
     @Test
     void 커스텀_구분자_분리() {
         String input = "//;\n1;2;3";
@@ -56,5 +49,25 @@ class StringCalculatorTest {
 
         assertThat(parseInfo.delimiter).isEqualTo(";");
         assertThat(parseInfo.text).isEqualTo("1;2;3");
+    }
+
+    @DisplayName("문자열을 하나의 구분자로 배열로 분리한다")
+    @Test
+    void 문자열_파싱_구분자_하나() {
+        ParseInfo parseInfo = new ParseInfo(";", "1;2;3");
+
+        String[] result = parseInfo.parse();
+
+        assertThat(result).containsExactly("1", "2", "3");
+    }
+
+    @DisplayName("문자열을 두개의 구분자로 배열로 분리한다")
+    @Test
+    void 문자열_파싱_구분자_둘() {
+        ParseInfo parseInfo = new ParseInfo(":|,", "1:2,3:10");
+
+        String[] result = parseInfo.parse();
+
+        assertThat(result).containsExactly("1", "2", "3", "10");
     }
 }
