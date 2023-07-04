@@ -55,6 +55,21 @@ class RacingGameTest {
 
         }
 
+        @Nested
+        @DisplayName("Round값이 1미만으로 주어진다면,")
+        class DescribeRoundParameterUnderZero {
+
+            private final Integer round = 0;
+            private final Car[] cars = {new Car("A", trueMover)};
+
+            @Test
+            @DisplayName("IllegalArgumentException을 던진다.")
+            void ItThrowIllegalArgumentException() {
+                assertThatThrownBy(() -> new RacingGame(round, cars)).isInstanceOf(IllegalArgumentException.class);
+            }
+
+        }
+
     }
 
 }
