@@ -30,9 +30,13 @@ public class RacingGame {
 
     public void play() {
         for (int currentRound = 0; currentRound < round; currentRound++) {
-            for (Car car : cars) {
-                car.move();
-            }
+            moveCars();
+        }
+    }
+
+    private void moveCars() {
+        for (Car car : cars) {
+            car.move();
         }
     }
 
