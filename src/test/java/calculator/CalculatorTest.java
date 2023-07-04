@@ -2,6 +2,7 @@ package calculator;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -38,5 +39,15 @@ public class CalculatorTest {
         int result = Calculator.sum(input);
 
         Assertions.assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("“//”와 “\\n” 문자 사이에 커스텀 구분자를 이용하여 계산한다.")
+    public void 문자_사이에_커스텀_구분자를_이용하여_계산한다() throws Exception {
+        String s = "//;\n1;2;3";
+
+        int result = Calculator.sum(s);
+
+        Assertions.assertThat(result).isEqualTo(6);
     }
 }
