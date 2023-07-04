@@ -24,4 +24,12 @@ public class CarDto {
 
         return result;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
 }

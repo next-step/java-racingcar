@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingManager {
@@ -7,10 +8,13 @@ public class RacingManager {
 
     private final Cars cars;
     private final int round;
+    private final List<List<CarDto>> records;
 
     public RacingManager(Cars cars, int round) {
         this.cars = cars;
         this.round = round;
+        records = new ArrayList<>();
+        records.add(cars.getRecord());
     }
 
     public static RacingManager of(List<String> carNames, int round) {
@@ -18,20 +22,34 @@ public class RacingManager {
     }
 
     public void playRacing() {
-        System.out.println("실행 결과");
-        printRound();
-
         for (int i = 0; i < round; i++) {
             cars.takeTurn();
-            printRound();
+            records.add(cars.getRecord());
+        }
+
+        printResult();
+    }
+
+    public void printResult() {
+        System.out.println("실행 결과");
+        printRecords();
+        printWinners();
+    }
+
+    private void printRecords() {
+        for (List<CarDto> record : records) {
+            printCarRecord(record);
+            System.out.println();
         }
     }
 
-    public void printRound() {
-        System.out.println(cars);
+    private static void printCarRecord(List<CarDto> record) {
+        for (CarDto carRecord : record) {
+            System.out.println(carRecord.getName() + " : " + "-".repeat(carRecord.getDistance() + 1));
+        }
     }
 
-    public void printWinners() {
+    private void printWinners() {
         System.out.println(String.join(",", cars.findWinnerNames()) + WINNERS_STRING);
     }
 }
