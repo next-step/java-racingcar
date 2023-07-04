@@ -3,6 +3,7 @@ package calculator;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
@@ -59,5 +60,18 @@ class CalculatorTest {
 
     }
 
+    @Test
+    void notNumberOrNegativeThrowsRuntimeExceptionTest() {
+        //given
+        Calculator calculator = new Calculator();
 
+        //when, then
+        assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> {
+            calculator.calculate("-1,2,3");
+        });
+        assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> {
+            calculator.calculate("a,2,3");
+        });
+
+    }
 }
