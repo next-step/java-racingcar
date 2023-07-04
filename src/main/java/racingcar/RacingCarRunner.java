@@ -12,8 +12,8 @@ public class RacingCarRunner {
         Output.printInitialStatus(gameBoard.getCars());
         for (int i = 0; i < tryCount; i++) {
             gameBoard.run();
-            Output.printExecutionResult(gameBoard.getCars());
+            Output.printCarStatus(gameBoard.getCars());
         }
-        Output.printWinner(gameBoard.getWinnerNames());
+        Output.printWinners(gameBoard.getWinnerNames());
     }
 }
