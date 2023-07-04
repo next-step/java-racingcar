@@ -55,5 +55,9 @@ class CalculatorTest {
 
         //when, then
         assertThat(calculator.calculate("//;\n1;2;3")).isEqualTo(6);
+        assertThat(calculator.calculate("//;\n1,2;3")).isEqualTo(6);
+
     }
+
+
 }

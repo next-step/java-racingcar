@@ -10,12 +10,14 @@ public class Calculator {
         if (input == null || input.isEmpty())
             return 0;
 
+        String splitterPattern = ",:";
+
         Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(input);
         if (matcher.find()) {
-            String customSplitter = matcher.group(1);
-            return Arrays.stream(matcher.group(2).split(customSplitter)).mapToInt(Integer::parseInt).sum();
+            splitterPattern += matcher.group(1);
+            input = matcher.group(2);
         }
 
-        return Arrays.stream(input.split("[,:]")).mapToInt(Integer::parseInt).sum();
+        return Arrays.stream(input.split("[" + splitterPattern + "]")).mapToInt(Integer::parseInt).sum();
     }
 }
