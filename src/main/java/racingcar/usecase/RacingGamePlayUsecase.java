@@ -1,11 +1,14 @@
 package racingcar.usecase;
 
+import racingcar.domain.Car;
 import racingcar.domain.RacingGame;
+import racingcar.usecase.request.RacingGamePlayRequest;
 import racingcar.usecase.response.RacingGamePlayResponse;
 
 public class RacingGamePlayUsecase {
 
-    public RacingGamePlayResponse play(int round, RacingGame racingGame) {
+    public RacingGamePlayResponse play(int round, RacingGamePlayRequest racingGamePlayRequest) {
+        RacingGame racingGame = getRacingGame(racingGamePlayRequest);
         RacingGamePlayResponse response = new RacingGamePlayResponse();
         response.addRacingGameRoundResponse(0, racingGame.getRoundResult());
 
@@ -13,6 +16,13 @@ public class RacingGamePlayUsecase {
 
         response.setWinner(racingGame.getWinners());
         return response;
+    }
+
+    private RacingGame getRacingGame(RacingGamePlayRequest racingGamePlayRequest) {
+        return new RacingGame(racingGamePlayRequest.getCarRequests().stream()
+            .map(cr -> new Car(cr.getName(), cr.getMoveable()))
+            .toArray(Car[]::new)
+        );
     }
 
     private void playRound(int round, RacingGame racingGame, RacingGamePlayResponse response) {

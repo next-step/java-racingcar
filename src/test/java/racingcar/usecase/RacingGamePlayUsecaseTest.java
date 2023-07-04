@@ -1,5 +1,6 @@
 package racingcar.usecase;
 
+import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -7,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.RacingGame;
 import racingcar.domain.extension.Moveable;
+import racingcar.usecase.request.RacingGamePlayRequest;
+import racingcar.usecase.request.RacingGamePlayRequest.CarRequest;
 import racingcar.usecase.response.RacingGamePlayResponse;
 
 @SuppressWarnings("FieldCanBeLocal")
@@ -21,23 +24,23 @@ class RacingGamePlayUsecaseTest {
     @DisplayName("play 메소드는")
     class DescribePlayMethod {
 
+        private final RacingGamePlayRequest racingGamePlayRequest = new RacingGamePlayRequest(List.of(
+            new CarRequest("win1", trueMover),
+            new CarRequest("win2", trueMover),
+            new CarRequest("loser", falseMover)
+        ));
+
         @Nested
         @DisplayName("게임 한판을 진행하면,")
         class ContextCallMethod1Round {
 
             private final int round = 1;
-            private final Car[] cars = {
-                new Car("win1", trueMover),
-                new Car("win2", trueMover),
-                new Car("loser", falseMover),
-            };
-            private final RacingGame racingGame = new RacingGame(cars);
             private final RacingGamePlayResponse expectedResult = getExpectedResult();
 
             @Test
             @DisplayName("게임 한판의 결과를 반환한다.")
             void ItReturnRaceGameResult() {
-                RacingGamePlayResponse result = racingGamePlayUsecase.play(round, racingGame);
+                RacingGamePlayResponse result = racingGamePlayUsecase.play(round, racingGamePlayRequest);
 
                 Assertions.assertThat(result).isEqualTo(expectedResult);
             }
@@ -61,18 +64,12 @@ class RacingGamePlayUsecaseTest {
         class ContextCallMethod3Round {
 
             private final int round = 3;
-            private final Car[] cars = {
-                new Car("win1", trueMover),
-                new Car("win2", trueMover),
-                new Car("loser", falseMover),
-            };
-            private final RacingGame racingGame = new RacingGame(cars);
             private final RacingGamePlayResponse expectedResult = getExpectedResult();
 
             @Test
             @DisplayName("3번의 라운드에 대한 게임 결과를 반환한다.")
             void ItReturnRaceGameResult() {
-                RacingGamePlayResponse result = racingGamePlayUsecase.play(round, racingGame);
+                RacingGamePlayResponse result = racingGamePlayUsecase.play(round, racingGamePlayRequest);
 
                 Assertions.assertThat(result).isEqualTo(expectedResult);
             }

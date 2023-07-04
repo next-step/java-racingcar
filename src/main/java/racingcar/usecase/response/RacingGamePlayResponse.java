@@ -30,10 +30,52 @@ public class RacingGamePlayResponse {
             .forEach(c -> winnerNames.add(c.getName()));
     }
 
-    private static class RacingGameRoundResponse {
+    public List<String> getWinnerNames() {
+        return winnerNames;
+    }
+
+    public List<RacingGameRoundResponse> getRacingGameRoundResponses() {
+        return racingGameRoundResponses;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof RacingGamePlayResponse)) {
+            return false;
+        }
+        RacingGamePlayResponse response = (RacingGamePlayResponse) o;
+        return Objects.equals(winnerNames, response.winnerNames) && Objects.equals(
+            racingGameRoundResponses, response.racingGameRoundResponses);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(winnerNames, racingGameRoundResponses);
+    }
+
+    @Override
+    public String toString() {
+        return "RacingGamePlayResponse{" +
+            "winnerNames=" + winnerNames +
+            ", racingGameRoundResponses=" + racingGameRoundResponses +
+            '}';
+    }
+
+    public static class RacingGameRoundResponse {
 
         private final int round;
         private final List<CarPerRoundResponse> carPerRoundResponses;
+
+        public int getRound() {
+            return round;
+        }
+
+        public List<CarPerRoundResponse> getCarPerRoundResponses() {
+            return carPerRoundResponses;
+        }
 
         private RacingGameRoundResponse(int round, List<CarPerRoundResponse> carPerRoundResponses) {
             this.round = round;
@@ -66,7 +108,7 @@ public class RacingGamePlayResponse {
         }
     }
 
-    private static class CarPerRoundResponse {
+    public static class CarPerRoundResponse {
 
         private final String name;
         private final int position;
@@ -74,6 +116,14 @@ public class RacingGamePlayResponse {
         private CarPerRoundResponse(String name, int position) {
             this.name = name;
             this.position = position;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public int getPosition() {
+            return position;
         }
 
         @Override
@@ -102,29 +152,4 @@ public class RacingGamePlayResponse {
         }
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof RacingGamePlayResponse)) {
-            return false;
-        }
-        RacingGamePlayResponse response = (RacingGamePlayResponse) o;
-        return Objects.equals(winnerNames, response.winnerNames) && Objects.equals(
-            racingGameRoundResponses, response.racingGameRoundResponses);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(winnerNames, racingGameRoundResponses);
-    }
-
-    @Override
-    public String toString() {
-        return "RacingGamePlayResponse{" +
-            "winnerNames=" + winnerNames +
-            ", racingGameRoundResponses=" + racingGameRoundResponses +
-            '}';
-    }
 }
