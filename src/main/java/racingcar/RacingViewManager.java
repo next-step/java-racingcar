@@ -7,7 +7,9 @@ public class RacingViewManager {
     private final Cars cars;
     private final List<List<CarDto>> records;
 
+    private static final String RESULT_COMMENT = "실행 결과";
     private static final String WINNERS_STRING = "가 최종 우승했습니다.";
+    private static final int DEFAULT_DISTANCE_COUNT = 1;
 
     public RacingViewManager(Cars cars, List<List<CarDto>> records) {
         this.cars = cars;
@@ -15,7 +17,7 @@ public class RacingViewManager {
     }
 
     public void printResult() {
-        System.out.println("실행 결과");
+        System.out.println(RESULT_COMMENT);
         printRecords();
         printWinners();
     }
@@ -29,7 +31,7 @@ public class RacingViewManager {
 
     private void printCarRecord(List<CarDto> record) {
         for (CarDto carRecord : record) {
-            System.out.println(carRecord.getName() + " : " + "-".repeat(carRecord.getDistance() + 1));
+            System.out.println(carRecord.getName() + " : " + "-".repeat(carRecord.getDistance() + DEFAULT_DISTANCE_COUNT));
         }
     }
 
