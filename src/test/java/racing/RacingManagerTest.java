@@ -5,6 +5,7 @@ import racing.generator.NumberGenerator;
 import racing.generator.SpecificNumberGenerator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -84,5 +85,23 @@ public class RacingManagerTest {
         //then
         assertThat(result.get(0).getName()).isEqualTo("test2");
         assertThat(result.get(1).getName()).isEqualTo("test3");
+    }
+
+    @Test
+    void simulateTest() {
+        //given
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car("test1"));
+        cars.add(new Car("test2"));
+        NumberGenerator numberGenerator = new SpecificNumberGenerator(9);
+        RacingManager manager = new RacingManager(cars, numberGenerator, 1);
+
+        //when
+        SimulationResult result = manager.simulate();
+
+        //then
+        assertThat(result).isEqualTo(new SimulationResult(Arrays.asList("test1", "test2"),
+                Arrays.asList(Arrays.asList(1, 1), Arrays.asList(2, 2)),
+                Arrays.asList("test1", "test2")));
     }
 }
