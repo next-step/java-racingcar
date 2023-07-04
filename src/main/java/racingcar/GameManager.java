@@ -5,15 +5,17 @@ import java.io.IOException;
 public class GameManager {
 
     public static void playGame() {
-        try (InputManager inputManager = new InputManager()) {
-            RacingManager racingManager = RacingManager.of(inputManager.readCarNames(), inputManager.readRound());
-            RacingViewManager racingViewManager = new RacingViewManager(racingManager);
-            racingManager.playRacing();
-            racingViewManager.printResult();
+        RacingManager racingManager = getRacingManagerByInput();
+        RacingViewManager racingViewManager = new RacingViewManager(racingManager);
+        racingManager.playRacing();
+        racingViewManager.printResult();
+    }
 
+    private static RacingManager getRacingManagerByInput() {
+        try (InputManager inputManager = new InputManager()) {
+            return RacingManager.of(inputManager.readCarNames(), inputManager.readRound());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 }
