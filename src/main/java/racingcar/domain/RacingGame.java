@@ -5,19 +5,11 @@ import java.util.Set;
 import racingcar.util.Asserts;
 
 public class RacingGame {
-
-    private final Integer round;
     private final Car[] cars;
 
-    public RacingGame(Integer round, Car... cars) {
-        preAssert(round, cars);
-        this.round = round;
-        this.cars = cars;
-    }
-
-    private void preAssert(Integer round, Car... cars) {
-        Asserts.isTrue(round > 0, () -> "round 값은 1 미만이 될 수 없습니다. \"" + round + "\"");
+    public RacingGame(Car... cars) {
         assertDuplicateCarName(cars);
+        this.cars = cars;
     }
 
     private static void assertDuplicateCarName(Car... cars) {
@@ -28,10 +20,12 @@ public class RacingGame {
         }
     }
 
+    public Car[] getResult() {
+        return cars;
+    }
+
     public void play() {
-        for (int currentRound = 0; currentRound < round; currentRound++) {
-            moveCars();
-        }
+        moveCars();
     }
 
     private void moveCars() {

@@ -19,8 +19,6 @@ class RacingGameTest {
     @DisplayName("new 생성자는")
     class ContextNewConstructor {
 
-        private final int round = 5;
-
         @Nested
         @DisplayName("자동차 클래스들과 라운드 정보가 주어진다면,")
         class DescribeCarsInput {
@@ -34,7 +32,7 @@ class RacingGameTest {
             @Test
             @DisplayName("생성을 성공 한다.")
             void ItCreated() {
-                assertThatNoException().isThrownBy(() -> new RacingGame(round, cars));
+                assertThatNoException().isThrownBy(() -> new RacingGame(cars));
             }
 
         }
@@ -52,23 +50,8 @@ class RacingGameTest {
             @Test
             @DisplayName("IllegalArgumentException을 던진다.")
             void ItThrowIllegalArgumentException() {
-                assertThatThrownBy(() -> new RacingGame(round, duplicateNameCars)).isInstanceOf(
+                assertThatThrownBy(() -> new RacingGame(duplicateNameCars)).isInstanceOf(
                     IllegalArgumentException.class);
-            }
-
-        }
-
-        @Nested
-        @DisplayName("Round값이 1미만으로 주어진다면,")
-        class DescribeRoundParameterUnderZero {
-
-            private final Integer round = 0;
-            private final Car[] cars = {new Car("A", trueMover)};
-
-            @Test
-            @DisplayName("IllegalArgumentException을 던진다.")
-            void ItThrowIllegalArgumentException() {
-                assertThatThrownBy(() -> new RacingGame(round, cars)).isInstanceOf(IllegalArgumentException.class);
             }
 
         }
@@ -86,11 +69,10 @@ class RacingGameTest {
         };
 
         @Nested
-        @DisplayName("RacingGame의 round가 1로 바인딩 되어있다면,")
+        @DisplayName("한번 호출되면,")
         class DescribeRacingGameRound1 {
 
-            private final Integer round = 1;
-            private final RacingGame racingGame = new RacingGame(round, cars);
+            private final RacingGame racingGame = new RacingGame(cars);
             private final Car[] expectedCars = move();
 
             @Test
@@ -115,11 +97,10 @@ class RacingGameTest {
         }
 
         @Nested
-        @DisplayName("RacingGame의 round가 3로 바인딩 되어있다면,")
+        @DisplayName("세번 호출되면,")
         class DescribeRacingGameRound3 {
 
-            private final Integer round = 3;
-            private final RacingGame racingGame = new RacingGame(round, cars);
+            private final RacingGame racingGame = new RacingGame(cars);
             private final Car[] expectedCars = move();
 
             @Test
