@@ -6,7 +6,6 @@ public class InputForm {
         if (str.isBlank()) throw new RuntimeException("입력값이 없습니다.");
     }
 
-    // 1.
 
-    // 2 5자 이하인지
+
 }
