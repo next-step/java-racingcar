@@ -24,7 +24,7 @@ public class Car {
         return distance;
     }
 
-    public void forward() {
+    void forward() {
         distance++;
     }
 
