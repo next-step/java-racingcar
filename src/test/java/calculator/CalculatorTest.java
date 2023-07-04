@@ -14,6 +14,17 @@ class CalculatorTest {
         //when, then
         assertThat(calculator.calculate("")).isEqualTo(0);
         assertThat(calculator.calculate(null)).isEqualTo(0);
-
     }
+
+    @Test
+    void oneNumberStringReturnNumberTest() {
+        //given
+        Calculator calculator = new Calculator();
+
+        //when, then
+        assertThat(calculator.calculate("1")).isEqualTo(1);
+        assertThat(calculator.calculate("2")).isEqualTo(2);
+        assertThat(calculator.calculate("14")).isEqualTo(14);
+    }
+
 }
