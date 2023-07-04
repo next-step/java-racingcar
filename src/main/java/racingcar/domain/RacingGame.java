@@ -10,6 +10,7 @@ public class RacingGame {
     private final Car[] cars;
 
     public RacingGame(Integer round, Car... cars) {
+        Asserts.isTrue(round > 0, () -> "round 값은 1 미만이 될 수 없습니다. \"" + round + "\"");
         assertDuplicateCarName(cars);
         this.round = round;
         this.cars = cars;
