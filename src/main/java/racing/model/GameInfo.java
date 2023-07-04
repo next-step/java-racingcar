@@ -2,8 +2,8 @@ package racing.model;
 
 public class GameInfo {
 
-    private String carNames;
-    private int raceCount;
+    private final String carNames;
+    private final int raceCount;
 
     public GameInfo(String carNames, int raceCount) {
         this.carNames = carNames;

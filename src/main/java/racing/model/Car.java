@@ -5,8 +5,8 @@ public class Car implements Cloneable {
     private static final int DEFAULT_CRITERION = 4;
     private static final int DEFAULT_POSITION = 1;
 
-    private String name;
-    private int criterion;
+    private final String name;
+    private final int criterion;
     private int position;
 
     public Car(String name) {
