@@ -2,7 +2,12 @@ package racingcar;
 
 public class RacingCar {
 
-    public int moveCount;
+    public int moveCount =0;
+    public String name;
+
+    public RacingCar(String name) {
+        this.name = name;
+    }
 
     public static boolean isValidCarNames(String rawCarNames) {
         String[] carNames = rawCarNames.split(",");

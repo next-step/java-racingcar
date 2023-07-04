@@ -54,7 +54,7 @@ public class RacingCarTest {
     @ParameterizedTest
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     void 자동차_전진(int randomValue) {
-        RacingCar racingCar = new RacingCar();
+        RacingCar racingCar = new RacingCar("");
         int previousCount = racingCar.moveCount;
 
         racingCar.move(randomValue);
@@ -66,11 +66,23 @@ public class RacingCarTest {
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3})
     void 자동차_정지(int randomValue) {
-        RacingCar racingCar = new RacingCar();
+        RacingCar racingCar = new RacingCar("");
         int previousCount = racingCar.moveCount;
 
         racingCar.move(randomValue);
 
         assertThat(racingCar.moveCount).isEqualTo(previousCount);
+    }
+
+    @DisplayName("자동차들을 등록한다")
+    @Test
+    void 자동차_등록() {
+        RacingCar[] cars = {new RacingCar("pobi"), new RacingCar("crong"), new RacingCar("honux")};
+
+        RacingGame racingGame = new RacingGame(cars,5);
+
+        for (RacingCar car : racingGame.cars) {
+            assertThat(cars).contains(car);
+        }
     }
 }
