@@ -17,9 +17,10 @@ class RacingGameTest {
 
         private final Moveable trueMover = () -> true;
         private final Moveable falseMover = () -> false;
+        private final int round = 5;
 
         @Nested
-        @DisplayName("자동차 클래스들이 주어진다면,")
+        @DisplayName("자동차 클래스들과 라운드 정보가 주어진다면,")
         class DescribeCarsInput {
 
             private final Car[] cars = {
@@ -31,7 +32,7 @@ class RacingGameTest {
             @Test
             @DisplayName("생성을 성공 한다.")
             void ItCreated() {
-                assertThatNoException().isThrownBy(() -> new RacingGame(cars));
+                assertThatNoException().isThrownBy(() -> new RacingGame(round, cars));
             }
 
         }
@@ -49,7 +50,7 @@ class RacingGameTest {
             @Test
             @DisplayName("IllegalArgumentException을 던진다.")
             void ItThrowIllegalArgumentException() {
-                assertThatThrownBy(() -> new RacingGame(duplicateNameCars)).isInstanceOf(IllegalArgumentException.class);
+                assertThatThrownBy(() -> new RacingGame(round, duplicateNameCars)).isInstanceOf(IllegalArgumentException.class);
             }
 
         }
