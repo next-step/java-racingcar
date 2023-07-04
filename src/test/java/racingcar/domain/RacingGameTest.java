@@ -97,9 +97,7 @@ class RacingGameTest {
             @DisplayName("한판을 진행하고, 그 결과를 car에 반영한다.")
             void ItReturn1RoundResult() {
                 racingGame.play();
-                for (int i = 0; i < cars.length; i++) {
-                    Assertions.assertThat(cars[i]).isEqualTo(expectedCars[i]);
-                }
+                assertEqualAllCars(cars, expectedCars);
             }
 
             private Car[] move() {
@@ -128,9 +126,7 @@ class RacingGameTest {
             @DisplayName("세판을 진행하고, 그 결과를 car에 반영한다.")
             void ItReturn1RoundResult() {
                 racingGame.play();
-                for (int i = 0; i < cars.length; i++) {
-                    Assertions.assertThat(cars[i]).isEqualTo(expectedCars[i]);
-                }
+                assertEqualAllCars(cars, expectedCars);
             }
 
             private Car[] move() {
@@ -149,6 +145,12 @@ class RacingGameTest {
 
         }
 
+    }
+
+    private void assertEqualAllCars(Car[] result, Car[] expected) {
+        for (int i = 0; i < result.length; i++) {
+            Assertions.assertThat(result[i]).isEqualTo(expected[i]);
+        }
     }
 
 }
