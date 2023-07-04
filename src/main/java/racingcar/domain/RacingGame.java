@@ -20,7 +20,7 @@ public class RacingGame {
         }
     }
 
-    public Car[] getResult() {
+    public Car[] getRoundResult() {
         return cars;
     }
 

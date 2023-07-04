@@ -131,10 +131,50 @@ class RacingGameTest {
 
     }
 
+    @Nested
+    @DisplayName("getRoundResult 메소드는")
+    class ContextRoundResultMethod {
+
+        private final Car[] cars = {
+            new Car("A", falseMover),
+            new Car("B", falseMover),
+            new Car("C", trueMover),
+        };
+
+        @Nested
+        @DisplayName("play가 실행된 이후 호출하면,")
+        class DescribeCall {
+
+            private final RacingGame racingGame = new RacingGame(cars);
+
+            private final Car[] expectedCars = move();
+            @Test
+            @DisplayName("현재 라운드의 결과를 반환한다.")
+            void ItReturnRoundResult() {
+                racingGame.play();
+                Car[] roundResult = racingGame.getRoundResult();
+                assertEqualAllCars(roundResult, expectedCars);
+            }
+
+            private Car[] move() {
+                Car[] copy = {
+                    new Car("A", falseMover),
+                    new Car("B", falseMover),
+                    new Car("C", trueMover),
+                };
+                for (Car car : copy) {
+                    car.move();
+                }
+                return copy;
+            }
+
+        }
+
+    }
+
     private void assertEqualAllCars(Car[] result, Car[] expected) {
         for (int i = 0; i < result.length; i++) {
             Assertions.assertThat(result[i]).isEqualTo(expected[i]);
         }
     }
-
 }
