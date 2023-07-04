@@ -3,12 +3,15 @@ package racing.factory;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import racing.domain.Car;
+import racing.model.Car;
 
 public class CarFactory {
 
     private static class CarFactoryHandler {
         private static final CarFactory INSTANCE = new CarFactory();
+    }
+
+    private CarFactory() {
     }
 
     public static CarFactory getInstance() {
