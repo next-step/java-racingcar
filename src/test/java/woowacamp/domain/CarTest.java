@@ -28,9 +28,10 @@ public class CarTest {
         Car car = new Car("충규");
 
         /* when */
-        car.move(() -> 7);
+        car.move(() -> 1);
 
         /* then */
-        assertThat(car.getPosition()).isEqualTo(new Position(7));
+        assertThat(car.isEqualPosition(new Position(1)))
+                .isTrue();
     }
 }
