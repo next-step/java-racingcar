@@ -9,13 +9,13 @@ public class Positive {
         this.num = num;
     }
 
-    public int getNum() {
-        return this.num;
-    }
-
     private void validatePositiveNumber(int num) {
         if (num < 0) {
             throw new RuntimeException();
         }
+    }
+
+    public int getNum() {
+        return this.num;
     }
 }
