@@ -31,6 +31,14 @@ public class RacingGamePlayControllerResponse {
             .collect(Collectors.toList());
     }
 
+    public List<String> getWinnerNames() {
+        return winnerNames;
+    }
+
+    public List<RacingGamePlayControllerRoundResponse> getRacingGameRoundResponses() {
+        return racingGameRoundResponses;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -68,6 +76,14 @@ public class RacingGamePlayControllerResponse {
             this.carPerRoundResponses = carPerRoundResponses;
         }
 
+        public int getRound() {
+            return round;
+        }
+
+        public List<ControllerCarPerRoundResponse> getCarPerRoundResponses() {
+            return carPerRoundResponses;
+        }
+
         @Override
         public boolean equals(Object o) {
             if (this == o) {
@@ -102,6 +118,14 @@ public class RacingGamePlayControllerResponse {
         private ControllerCarPerRoundResponse(String name, int position) {
             this.name = name;
             this.position = position;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public int getPosition() {
+            return position;
         }
 
         @Override
