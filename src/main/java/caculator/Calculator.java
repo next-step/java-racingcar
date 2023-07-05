@@ -13,7 +13,7 @@ public final class Calculator {
         this.delimiterParser = delimiterParser;
     }
 
-    public int sum(String text) {
+    public int sum(final String text) {
         if (text == null || text.isBlank()) {
             return 0;
         }
@@ -30,7 +30,7 @@ public final class Calculator {
                        .orElseThrow(RuntimeException::new);
     }
 
-    private String[] tokenize(ParsedText parsedText) {
+    private String[] tokenize(final ParsedText parsedText) {
         return parsedText.getExpression().split(
                 parsedText.getDelimiters().toRegex()
         );

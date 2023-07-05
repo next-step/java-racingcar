@@ -12,16 +12,17 @@ public final class DelimiterParser {
     public DelimiterParser() {
     }
 
-    public ParsedText parse(String text) {
+    public ParsedText parse(final String text) {
         Matcher delimiterMatcher = DELIMITER_PATTERN.matcher(text);
 
         String delimiter = null;
+        String expression = text;
         if (delimiterMatcher.find()) {
                 delimiter = delimiterMatcher.group(1);
-                text = delimiterMatcher.group(2);
+                expression = delimiterMatcher.group(2);
         }
 
-        return new ParsedText(delimiter, text);
+        return new ParsedText(delimiter, expression);
     }
 
 }
