@@ -21,9 +21,11 @@ public class MaxPositionDuplicateWinnerStrategyTest {
 
         WinnerStrategy winnerStrategy = new MaxPositionDuplicateWinnerStrategy();
         List<Car> winners = winnerStrategy.getWinners(cars);
+        List<String> winnerNames = winners.stream()
+            .map(Car::getNameValue)
+            .collect(Collectors.toList());
 
         assertThat(winners.size()).isEqualTo(2);
-        assertThat(winners.stream().map(Car::getNameValue).collect(Collectors.toList()))
-            .containsExactly("b", "c");
+        assertThat(winnerNames).containsExactly("b", "c");
     }
 }
