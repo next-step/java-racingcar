@@ -9,10 +9,10 @@ public class Game {
     private static final int CAR_INITIAL_POSITION = 1;
     private final List<Car> cars;
 
-    public Game(List<String> carNames) {
+    public Game(List<CarName> carNames) {
         cars = new ArrayList<>();
 
-        for (String carName : carNames) {
+        for (CarName carName : carNames) {
             cars.add(new Car(carName));
         }
     }
@@ -21,7 +21,7 @@ public class Game {
         cars.forEach(Car::move);
     }
 
-    public List<String> getWinnerNames() {
+    public List<CarName> getWinnerNames() {
         int maxIndex = cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()

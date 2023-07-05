@@ -6,15 +6,8 @@ import static org.assertj.core.api.Assertions.*;
 
 public class InputTest {
     @Test
-    void inputTest_nameValidation() {
-        assertThat(Input.isValidCarName("honux")).isTrue();
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> Input.isValidCarName("crongcrong"));
-    }
-
-    @Test
-    void inputTest_transferStringToList() {
-        assertThat(Input.split("pobi,crong,honux")).contains("pobi", "crong", "honux");
+    void inputTest_split() {
+        assertThat(Input.split("pobi,crong,honux").stream().map(CarName::getCarName)).contains("pobi", "crong", "honux");
     }
 
     @Test

@@ -5,7 +5,7 @@ import java.util.List;
 
 public class RacingCarRunner {
     public static void main(String[] args) {
-        List<String> carNames = Input.processCarNames();
+        List<CarName> carNames = Input.processCarNames();
         int tryCount = Input.processTryCount();
         Game game = new Game(carNames);
 
