@@ -5,8 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 public class CarNameTest {
 
@@ -23,11 +21,5 @@ public class CarNameTest {
         String carName = "pobiii";
         assertThrows(RuntimeException.class, () -> new Car(carName));
     }
-    
-    @ParameterizedTest
-    @ValueSource(strings = {"aaaaa,aaaaaa"})
-    @DisplayName("자동차 이름 5자 초과 예외 처리")
-    void 자동차_이름_5자_초과(String str) {
-        assertThrows(RuntimeException.class, () -> new Cars(new CarNames(str)));
-    }
+
 }

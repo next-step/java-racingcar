@@ -5,7 +5,6 @@ public final class RandomCarMovable extends Movable {
     private final int CAR_MOVING_SIZE = 1;
 
     public RandomCarMovable() {
-        this.isMovable = decideMoving();
     }
 
     public boolean getMovable() {
@@ -17,11 +16,11 @@ public final class RandomCarMovable extends Movable {
     }
 
     @Override
-    public boolean decideMoving() {
+    public void decideMoving() {
         int num = NumberGenerator.getRandomNumber();
         if (num >= CAR_MOVING_LIMIT) {
-            return true;
+            this.isMovable =  true;
         }
-        return false;
+        this.isMovable =  false;
     }
 }

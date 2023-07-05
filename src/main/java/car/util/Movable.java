@@ -3,7 +3,7 @@ package car.util;
 public abstract class Movable {
     boolean isMovable;
 
-    abstract boolean decideMoving();
+    abstract public void decideMoving();
     public boolean getMovable() {
         return this.isMovable;
     }
