@@ -14,9 +14,7 @@ public class RacingManager {
 
     private List<Car> cars;
     private NumberGenerator numberGenerator;
-
-    private int count;
-
+    
     public RacingManager() {
     }
 
@@ -25,13 +23,8 @@ public class RacingManager {
         this.numberGenerator = numberGenerator;
     }
 
-    public RacingManager(List<Car> cars, NumberGenerator numberGenerator, int count) {
-        this(cars, numberGenerator);
-        this.count = count;
-    }
-
     public boolean isMovable(int value) {
-        return 4 <= value && value <= 9;
+        return MOVING_RANGE_LOW <= value && value <= MOVING_RANGE_HIGH;
     }
 
     public List<Car> getCars() {
