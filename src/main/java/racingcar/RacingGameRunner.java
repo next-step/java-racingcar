@@ -1,24 +1,24 @@
 package racingcar;
 
+import racingcar.view.RacingCarView;
+
 public class RacingGameRunner {
 
-    private final Input input = new ConsoleInput();
-    private final Output output = new ConsoleOutput();
-    private final String CAR_NAMES = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
-    private final String COUNT = "시도할 회수는 몇회인가요?";
+    private final RacingCarView view;
 
-    private final String PLAY_RESULT = "\n실행 결과";
+    public RacingGameRunner(RacingCarView view) {
+        this.view = view;
+    }
 
     public void run() {
-        output.print(CAR_NAMES);
-        String carNames = input.read();
+        view.printCarNamesPrompt();
+        String carNames = view.read();
 
-        output.print(COUNT);
-        String count = input.read();
+        view.printCountPrompt();
+        String count = view.read();
 
         RacingGame racingGame = new RacingGame(new Cars(carNames), count);
 
-        output.print(PLAY_RESULT);
-        output.print(racingGame.play());
+        view.printResult(racingGame.play());
     }
 }
