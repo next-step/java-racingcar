@@ -52,7 +52,7 @@ public class StringCalculator {
     }
 
     private static String[] splitNumber(String number) {
-        Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(number);
+        Matcher matcher = Pattern.compile("//(.*)\n(.*)").matcher(number);
         if (matcher.find()) {
             String customDelimiter = matcher.group(1);
             return matcher.group(2).split(customDelimiter);
