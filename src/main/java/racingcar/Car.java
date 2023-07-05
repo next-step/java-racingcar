@@ -40,8 +40,7 @@ public class Car {
         return name;
     }
 
-    @Override
-    public String toString() {
+    public String statusToString() {
         return name + " : " + "-".repeat(position);
     }
 }

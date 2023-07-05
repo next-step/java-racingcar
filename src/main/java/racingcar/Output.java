@@ -12,7 +12,7 @@ public class Output {
 
     /** Print status of cars. */
     public static void printCarStatus(List<Car> cars) {
-        cars.stream().map(Car::toString).forEach(System.out::println);
+        cars.stream().map(Car::statusToString).forEach(System.out::println);
         System.out.println();
     }
 
