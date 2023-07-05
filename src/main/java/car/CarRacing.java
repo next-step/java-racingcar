@@ -1,4 +1,4 @@
-package car.logic;
+package car;
 
 import car.domain.Car;
 import car.domain.CarNames;
@@ -37,13 +37,12 @@ public final class CarRacing {
     }
 
     public static void run() throws IOException {
-        InputView.printName();
-        String name = InputView.enterCarName();
 
-        InputView.printCount();
+        String name = InputView.enterCarName();
         TryCount tryCount = new TryCount(InputView.enterCount());
 
         cars = new Cars(new CarNames(name));
+
         OutputView.printResult();
         for (int i = 0; i < tryCount.getTryCount(); i++) {
             OutputView.printEachRaceResult(runRaceOnce());
