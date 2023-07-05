@@ -12,7 +12,7 @@ public class RandomMover implements Moveable {
     private static final int DEFAULT_LEFT = 0;
     private static final int DEFAULT_RIGHT = 9;
 
-    public RandomMover newInstance() {
+    public static RandomMover newInstance() {
         return new RandomMover(DEFAULT_LEFT, DEFAULT_RIGHT);
     }
 
