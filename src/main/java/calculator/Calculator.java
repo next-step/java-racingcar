@@ -11,7 +11,6 @@ public class Calculator {
         List<Integer> numbers = Arrays.stream(strings).map(StringUtil::toInt)
             .collect(Collectors.toList());
         List<Positive> collect = numbers.stream().map(Positive::new).collect(Collectors.toList());
-
         return collect.stream().map(a -> a.getNum()).reduce((i1, i2) -> i1 + i2).get();
     }
 }
