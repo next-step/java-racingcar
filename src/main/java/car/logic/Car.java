@@ -1,4 +1,4 @@
-package logic;
+package car.logic;
 
 public class Car {
 

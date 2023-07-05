@@ -1,9 +1,9 @@
-package logictest;
+package car.logictest;
 
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import logic.Car;
+import car.logic.Car;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.DisplayName;

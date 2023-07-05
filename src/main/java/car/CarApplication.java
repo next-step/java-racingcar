@@ -1,10 +1,11 @@
+package car;
 
-import input.Count;
-import input.InputForm;
+import car.input.Count;
+import car.input.InputForm;
 import java.io.IOException;
-import logic.CarRacing;
-import logic.Cars;
-import output.OutputView;
+import car.logic.CarRacing;
+import car.logic.Cars;
+import car.output.OutputView;
 public class CarApplication {
     private static CarRacing carRacing;
     public static void run() throws IOException {

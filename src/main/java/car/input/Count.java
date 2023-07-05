@@ -1,16 +1,18 @@
-package input;
+package car.input;
 
 public class Count {
 
     private int tryCount;
 
-    public Count (String count) {
+    public Count(String count) {
         this.tryCount = toInt(count);
     }
 
-    private int toInt (String count) {
+    private int toInt(String count) {
         int num = Integer.parseInt(count);
-        if (num < 0) throw new RuntimeException();
+        if (num < 0) {
+            throw new RuntimeException();
+        }
         return num;
     }
 

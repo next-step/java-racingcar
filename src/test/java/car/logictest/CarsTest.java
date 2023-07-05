@@ -1,11 +1,9 @@
-package logictest;
+package car.logictest;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import input.InputForm;
-import java.util.List;
-import logic.Cars;
+import car.logic.Cars;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

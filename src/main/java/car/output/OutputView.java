@@ -1,10 +1,13 @@
-package output;
+package car.output;
 
 import java.util.List;
-import logic.Car;
-import logic.Cars;
+import car.logic.Car;
+import car.logic.Cars;
+
 public class OutputView {
+
     private static StringBuilder sb;
+
     public static void printResult() {
         System.out.println("실행 결과");
     }
@@ -16,6 +19,7 @@ public class OutputView {
         );
         System.out.println(sb.toString());
     }
+
     public static void printWinner(List<Car> winner) {
         sb = new StringBuilder();
         winner.stream().map(Car::getName).forEach(s -> sb.append(s).append(" "));

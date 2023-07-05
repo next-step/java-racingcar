@@ -1,11 +1,11 @@
-package inputtest;
+package car.inputtest;
 
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import input.Count;
-import input.InputForm;
+import car.input.Count;
+import car.input.InputForm;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -13,7 +13,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 public class InputTest {
 
     @Test
-    @DisplayName("input")
+    @DisplayName("car/input")
     void 사용자_이름_테스트_정상 () {
         String carNames = "pobi,crong,honux";
         assertThatCode(()-> InputForm.validateCarName(carNames)).doesNotThrowAnyException();
