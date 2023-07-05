@@ -33,11 +33,11 @@ public class TokenUtils {
 
     private static void validateToken(String token) {
         if (!isNumeric(token)) {
-            throw new RuntimeException("숫자만 입력할 수 있습니다.");
+            throw new IllegalArgumentException("숫자만 입력할 수 있습니다.");
         }
         int num = Integer.parseInt(token);
         if (num < 0) {
-            throw new RuntimeException("음수는 입력할 수 없습니다.");
+            throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
         }
     }
 
