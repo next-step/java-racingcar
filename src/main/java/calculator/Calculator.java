@@ -6,6 +6,8 @@ import java.util.regex.Pattern;
 
 public class Calculator {
     private static final String SPLITTERS = ",:";
+    private static final String NOT_NUMBER_EXCEPTION_MESSAGE = "숫자가 아니면 입력하실 수 없습니다.";
+    private static final String NEGATIVE_NUMBER_EXCEPTION_MESSAGE = "음수는 입력하실 수 없습니다.";
 
     public int calculate(String input) throws RuntimeException {
         if (isBlankOrNull(input))
@@ -39,11 +41,11 @@ public class Calculator {
         try {
             return Integer.parseInt(text);
         } catch (Exception e) {
-            throw new RuntimeException();
+            throw new RuntimeException(NOT_NUMBER_EXCEPTION_MESSAGE);
         }
     }
 
     private void checkNegative(int n) {
-        if (n < 0) throw new RuntimeException();
+        if (n < 0) throw new RuntimeException(NEGATIVE_NUMBER_EXCEPTION_MESSAGE);
     }
 }

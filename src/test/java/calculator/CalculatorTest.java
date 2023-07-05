@@ -68,10 +68,10 @@ class CalculatorTest {
         //when, then
         assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> {
             calculator.calculate("a,2,3");
-        });
+        }).withMessage("숫자가 아니면 입력하실 수 없습니다.");
 
         assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> {
             calculator.calculate("-1,2,3");
-        });
+        }).withMessage("음수는 입력하실 수 없습니다.");
     }
 }
