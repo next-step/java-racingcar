@@ -1,7 +1,6 @@
 package racing.view;
 
 import org.junit.jupiter.api.Test;
-import racing.Car;
 import racing.model.CarVO;
 import racing.model.SimulationResult;
 
@@ -32,7 +31,7 @@ class RacingViewTest {
     void getCarStatusViewTest() {
         //given
         RacingView racingView = new RacingView();
-        
+
         List<CarVO> cars = new ArrayList<>();
         cars.add(new CarVO("pobi", 1));
         cars.add(new CarVO("crong", 1));

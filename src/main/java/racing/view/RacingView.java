@@ -1,6 +1,5 @@
 package racing.view;
 
-import racing.Car;
 import racing.model.CarVO;
 import racing.model.SimulationResult;
 

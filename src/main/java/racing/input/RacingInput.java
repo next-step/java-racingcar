@@ -1,6 +1,7 @@
 package racing.input;
 
-import racing.Car;
+import racing.model.Car;
+import racing.exception.IllegalCountException;
 
 import java.io.InputStream;
 import java.util.Arrays;
@@ -23,6 +24,10 @@ public class RacingInput {
     }
 
     public int inputCount() {
-        return this.scanner.nextInt();
+        try {
+            return Integer.parseInt(this.scanner.next());
+        } catch (NumberFormatException e) {
+            throw new IllegalCountException();
+        }
     }
 }

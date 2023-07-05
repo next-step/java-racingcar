@@ -1,7 +1,8 @@
 package racing.model;
 
 import org.junit.jupiter.api.Test;
-import racing.Car;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import racing.generator.NumberGenerator;
 import racing.generator.SpecificNumberGenerator;
 
@@ -12,45 +13,23 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingManagerTest {
-    @Test
-    void isMovableTest() {
+
+    @ParameterizedTest
+    @CsvSource({"0,1", "3,1", "4,2", "9,2"})
+    void nextStepTest(int generatedNumber, int expected) {
         //given
         List<Car> cars = new ArrayList<>();
         cars.add(new Car("test1"));
         cars.add(new Car("test2"));
-        NumberGenerator numberGenerator = new SpecificNumberGenerator(9);
-        RacingManager racingManager = new RacingManager(cars, numberGenerator, 1);
-
-        //when
-
-        //then
-        assertThat(racingManager.isMovable(0)).isEqualTo(false);
-        assertThat(racingManager.isMovable(1)).isEqualTo(false);
-        assertThat(racingManager.isMovable(2)).isEqualTo(false);
-        assertThat(racingManager.isMovable(3)).isEqualTo(false);
-        assertThat(racingManager.isMovable(4)).isEqualTo(true);
-        assertThat(racingManager.isMovable(5)).isEqualTo(true);
-        assertThat(racingManager.isMovable(6)).isEqualTo(true);
-        assertThat(racingManager.isMovable(7)).isEqualTo(true);
-        assertThat(racingManager.isMovable(8)).isEqualTo(true);
-        assertThat(racingManager.isMovable(9)).isEqualTo(true);
-    }
-
-    @Test
-    void nextStepTest() {
-        //given
-        List<Car> cars = new ArrayList<>();
-        cars.add(new Car("test1"));
-        cars.add(new Car("test2"));
-        NumberGenerator numberGenerator = new SpecificNumberGenerator(9);
+        NumberGenerator numberGenerator = new SpecificNumberGenerator(generatedNumber);
         RacingManager manager = new RacingManager(cars, numberGenerator, 1);
 
         //when
         manager.nextStep();
 
         //then
-        assertThat(manager.getCars().get(0).getPosition()).isEqualTo(2);
-        assertThat(manager.getCars().get(1).getPosition()).isEqualTo(2);
+        assertThat(manager.getCars().get(0).getPosition()).isEqualTo(expected);
+        assertThat(manager.getCars().get(1).getPosition()).isEqualTo(expected);
 
     }
 
@@ -79,8 +58,8 @@ public class RacingManagerTest {
         cars.add(new Car("test1"));
         cars.add(new Car("test2"));
         cars.add(new Car("test3"));
-        cars.get(1).goForward(true);
-        cars.get(2).goForward(true);
+        cars.get(1).goForward();
+        cars.get(2).goForward();
         NumberGenerator numberGenerator = new SpecificNumberGenerator(0);
         RacingManager manager = new RacingManager(cars, numberGenerator, 1);
 
