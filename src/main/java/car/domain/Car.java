@@ -1,7 +1,6 @@
 package car.domain;
 
 public class Car {
-    private final int MOVING_LIMIT = 4;
     private CarName name;
     private int position = 0;
 
@@ -17,13 +16,8 @@ public class Car {
         return this.position;
     }
 
-    // 자동차는 무조건 움직인다.
     public void move(int amount) {
-//        int randomNum = NumberGenerator.getRandomNumber();
-//        if (randomNum >= MOVING_LIMIT) {
-//            this.position.increasePosition();
-//        }
-        this.position++;
+        this.position+= amount;
     }
 
 }

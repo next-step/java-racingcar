@@ -1,8 +1,10 @@
 package car.logic;
 
 import car.domain.Car;
+import car.domain.CarNames;
 import car.domain.Cars;
-import car.domain.Count;
+import car.domain.RandomCarMovable;
+import car.domain.TryCount;
 import car.input.InputView;
 import car.output.OutputView;
 import java.io.IOException;
@@ -19,7 +21,7 @@ public class CarRacing {
     }
 
     public static Cars runRaceOnce() {
-        cars.raceOnce();
+        cars.race(new RandomCarMovable());
         return getRaceResult();
     }
 
@@ -37,12 +39,13 @@ public class CarRacing {
     public static void run() throws IOException {
         InputView.printName();
         String name = InputView.enterCarName();
+        
         InputView.printCount();
-        Count count = new Count(InputView.enterCount());
+        TryCount tryCount = new TryCount(InputView.enterCount());
 
-        cars = new Cars(name);
+        cars = new Cars(new CarNames(name));
         OutputView.printResult();
-        for (int i = 0; i < count.getTryCount(); i++) {
+        for (int i = 0; i < tryCount.getTryCount(); i++) {
             OutputView.printEachRaceResult(runRaceOnce());
         }
 

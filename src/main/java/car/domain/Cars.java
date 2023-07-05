@@ -6,23 +6,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
-
     private List<Car> cars;
 
-    public Cars(String carNames) {
-        cars = Arrays.stream(tokenCarNames(carNames)).map(Car::new).collect(Collectors.toList());
+    public Cars(CarNames carNames) {
+        cars = Arrays.stream(carNames.getCarNames()).map(Car::new).collect(Collectors.toList());
     }
 
-    private String[] tokenCarNames(String carNames) {
-        return carNames.split(",");
+    public void race(Movable movable) {
+        for (int i = 0 ; i< this.cars.size() ; i++) {
+            Movable carMovable = movable;
+            if (carMovable.getMovable()) cars.get(i).move(carMovable.getMovingSize());
+        }
     }
-
-    public void raceOnce() {
-        this.cars.forEach(o -> o.move(3));
-    }
-
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
     }
-
 }

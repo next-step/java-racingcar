@@ -1,10 +1,10 @@
 package car.domain;
 
-public class Count {
+public class TryCount {
 
     private int tryCount;
 
-    public Count(String count) {
+    public TryCount(String count) {
         this.tryCount = toInt(count);
     }
 

@@ -2,13 +2,13 @@ package car.domain;
 
 import java.util.Random;
 
-public class CarMovable extends Movable
+public class RandomCarMovable extends Movable
 {
-    private boolean isMovable;
+
     private final int CAR_MOVING_LIMIT = 4;
     private final int CAR_MOVING_SIZE = 1;
 
-    CarMovable () {
+    public RandomCarMovable() {
         this.isMovable = decideMoving();
     }
 
@@ -19,6 +19,7 @@ public class CarMovable extends Movable
     public int getMovingSize () {
         return CAR_MOVING_SIZE;
     }
+
     @Override
     public boolean decideMoving () {
         int num = new Random().nextInt(10);

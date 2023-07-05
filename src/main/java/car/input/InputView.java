@@ -5,19 +5,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class InputView {
-
-    public static BufferedReader bufferedReader = new BufferedReader(
-        new InputStreamReader(System.in));
-
-    public static void validateCarName(String str) {
-        if (str.isBlank()) {
-            throw new RuntimeException("입력값이 없습니다.");
-        }
-    }
+    public static BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
     public static String enterCarName() throws IOException {
         String name = bufferedReader.readLine();
-        validateCarName(name);
         return name;
     }
 
