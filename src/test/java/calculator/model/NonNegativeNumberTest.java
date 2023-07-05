@@ -13,16 +13,16 @@ class NonNegativeNumberTest {
     @ParameterizedTest
     @ValueSource(ints = { 0, 1 })
     @DisplayName("음이 아닌 정수를 입력받아 객체를 생성하는 경우")
-    void createNonNegativeNumber(int value) {
-        NonNegativeNumber number = NonNegativeNumber.of(value);
+    void createNonNegativeNumber(final int value) {
+        final NonNegativeNumber number = NonNegativeNumber.of(value);
         assertThat(number.intValue()).isEqualTo(value);
     }
 
     @ParameterizedTest
     @NullAndEmptySource
     @DisplayName("null 또는 공백을 입력받아 객체를 생성하는 경우")
-    void createNullOrBlank(String value) {
-        NonNegativeNumber number = NonNegativeNumber.of(value);
+    void createNullOrBlank(final String value) {
+        final NonNegativeNumber number = NonNegativeNumber.of(value);
         assertThat(number.intValue()).isZero();
     }
 
