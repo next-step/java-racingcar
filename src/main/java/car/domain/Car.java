@@ -2,8 +2,10 @@ package car.domain;
 
 public class Car {
 
+    private static final int MOVE_THRESHOLD = 4;
+    private static final int MOVE_STEP = 1;
     private int position;
-    private String name;
+    private CarName carName;
 
     public Car(String name) {
         this(0, name);
@@ -11,17 +13,17 @@ public class Car {
 
     public Car(int position, String name) {
         this.position = position;
-        this.name = name;
+        this.carName = new CarName(name);
     }
 
-    public void moveOrStopByValue(int value) {
-        if (value >= 4) {
-            position += 1;
+    public void move(int value) {
+        if (value >= MOVE_THRESHOLD) {
+            position += MOVE_STEP;
         }
     }
 
     public String getName() {
-        return name;
+        return carName.getName();
     }
 
     public int getPosition() {
