@@ -1,5 +1,6 @@
 package racingcar.io;
 
+import racingcar.car.CarResponse;
 import racingcar.car.Cars;
 
 import java.util.List;
@@ -12,8 +13,15 @@ public class Output {
     }
 
     public static void printExecutionResult(Cars cars) {
-        System.out.println(cars.getTotalStatus());
+        cars.getCars()
+                .stream()
+                .map(Output::formatResult)
+                .forEach(System.out::println);
         System.out.println();
+    }
+
+    private static String formatResult(CarResponse c) {
+        return c.getName() + " : " + "-".repeat(c.getPosition());
     }
 
     public static void printWinner(List<String> winnerNames) {

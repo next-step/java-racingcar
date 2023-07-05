@@ -44,8 +44,4 @@ public class Car {
         return this.position == winnerPosition;
     }
 
-    @Override
-    public String toString() {
-        return this.name.getValue() + " : " + "-".repeat(this.position);
-    }
 }

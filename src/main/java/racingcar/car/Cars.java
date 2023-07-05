@@ -24,16 +24,16 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public String getTotalStatus() {
-        return cars.stream()
-                .map(Car::toString)
-                .collect(Collectors.joining("\n"));
-    }
-
     private int getHighPosition() {
         return cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
                 .orElse(Car.DEFAULT_POSITION);
+    }
+
+    public List<CarResponse> getCars() {
+        return cars.stream()
+                .map(CarResponse::of)
+                .collect(Collectors.toList());
     }
 }
