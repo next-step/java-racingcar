@@ -19,11 +19,11 @@ public class Input {
     }
 
     /** Read try count. */
-    private static Integer readTryCount() {
+    private static int readTryCount() {
         System.out.println("시도할 회수는 몇회인가요?");
         String input = scanner.nextLine();
         if (isValidNumber(input)) {
-            return Integer.valueOf(input);
+            return Integer.parseInt(input);
         }
         throw new IllegalArgumentException();
     }
