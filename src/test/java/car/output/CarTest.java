@@ -4,8 +4,7 @@ import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import car.domain.Car;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Assumptions;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -20,32 +19,21 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("자동차 입력이 정상적인지 확인")
-    void 자동차_이름_테스트_오류() {
+    @DisplayName("자동차 입력이 5자 글자 초과로 오류")
+    void 자동차_이름_테스트_5자글자_초과_오류() {
         String carName = "pobiii";
         assertThrows(RuntimeException.class, () -> new Car(carName));
     }
 
     @Test
-    @DisplayName("단일 자동차 전진 테스트")
-    void 단일_자동차_전진_확인() {
+    @DisplayName("단일 자동차 전진 테스트 정상 동작")
+    void 단일_자동차_전진_정상_동작() {
+        int amount = 1;
         Car car = new Car("hello");
-        int randomNum = car.move();
-        Assumptions.assumingThat((randomNum >= CAR_MOVING_LIMIT),
-            () -> {
-                Assertions.assertEquals(1, car.getPosition());
-            });
-    }
 
-    @Test
-    @DisplayName("단일 자동차 멈춤 테스트")
-    void 단일_자동차_멈춤_확인() {
-        Car car = new Car("hello");
-        int randomNum = car.move();
-        Assumptions.assumingThat((randomNum < CAR_MOVING_LIMIT),
-            () -> {
-                Assertions.assertEquals(0, car.getPosition());
-            });
+        car.move(amount);
+
+        Assertions.assertThat(car.getPosition()).isEqualTo(amount);
     }
 
 }

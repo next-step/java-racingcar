@@ -1,6 +1,5 @@
 package car.domain;
 
-import car.domain.Car;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -19,7 +18,7 @@ public class Cars {
     }
 
     public void raceOnce() {
-        this.cars.forEach(o -> o.move());
+        this.cars.forEach(o -> o.move(3));
     }
 
     public List<Car> getCars() {
