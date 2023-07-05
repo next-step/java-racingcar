@@ -3,7 +3,8 @@ package racingcar;
 import java.util.Objects;
 
 public class Car {
-
+    private static final int MAX_NAME_LENGTH = 5;
+    private static final int MOVE_STANDARD = 4;
     private final String name;
     private int distance;
 
@@ -13,7 +14,7 @@ public class Car {
     }
 
     private void validateName(String name) {
-        if (name.length() > 5) {
+        if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
@@ -44,7 +45,7 @@ public class Car {
     }
 
     public void progress(int number) {
-        if (number >= 4) {
+        if (number >= MOVE_STANDARD) {
             forward();
         }
     }
