@@ -9,13 +9,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingManagerTest {
     @Test
     void isMovableTest() {
         //given
-        RacingManager racingManager = new RacingManager();
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car("test1"));
+        cars.add(new Car("test2"));
+        NumberGenerator numberGenerator = new SpecificNumberGenerator(9);
+        RacingManager racingManager = new RacingManager(cars, numberGenerator, 1);
 
         //when
 
@@ -39,7 +43,7 @@ public class RacingManagerTest {
         cars.add(new Car("test1"));
         cars.add(new Car("test2"));
         NumberGenerator numberGenerator = new SpecificNumberGenerator(9);
-        RacingManager manager = new RacingManager(cars, numberGenerator);
+        RacingManager manager = new RacingManager(cars, numberGenerator, 1);
 
         //when
         manager.nextStep();
@@ -57,7 +61,7 @@ public class RacingManagerTest {
         cars.add(new Car("test1"));
         cars.add(new Car("test2"));
         NumberGenerator numberGenerator = new SpecificNumberGenerator(0);
-        RacingManager manager = new RacingManager(cars, numberGenerator);
+        RacingManager manager = new RacingManager(cars, numberGenerator, 1);
 
         //when
         manager.nextStep();
@@ -78,7 +82,7 @@ public class RacingManagerTest {
         cars.get(1).goForward(true);
         cars.get(2).goForward(true);
         NumberGenerator numberGenerator = new SpecificNumberGenerator(0);
-        RacingManager manager = new RacingManager(cars, numberGenerator);
+        RacingManager manager = new RacingManager(cars, numberGenerator, 1);
 
         //when
         List<Car> result = manager.getWinners();

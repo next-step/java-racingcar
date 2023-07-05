@@ -13,16 +13,9 @@ public class RacingManager {
 
     private int count;
 
-    public RacingManager() {
-    }
-
-    public RacingManager(List<Car> cars, NumberGenerator numberGenerator) {
+    public RacingManager(List<Car> cars, NumberGenerator numberGenerator, int count) {
         this.cars = cars;
         this.numberGenerator = numberGenerator;
-    }
-
-    public RacingManager(List<Car> cars, NumberGenerator numberGenerator, int count) {
-        this(cars, numberGenerator);
         this.count = count;
     }
 

@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-import static org.junit.jupiter.api.Assertions.*;
+
 
 class CalculatorTest {
     @Test
@@ -66,12 +66,12 @@ class CalculatorTest {
         Calculator calculator = new Calculator();
 
         //when, then
-        assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> {
-            calculator.calculate("a,2,3");
-        }).withMessage("숫자가 아니면 입력하실 수 없습니다.");
+        assertThatExceptionOfType(RuntimeException.class)
+                .isThrownBy(() -> calculator.calculate("a,2,3"))
+                .withMessage("숫자가 아니면 입력하실 수 없습니다.");
 
-        assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> {
-            calculator.calculate("-1,2,3");
-        }).withMessage("음수는 입력하실 수 없습니다.");
+        assertThatExceptionOfType(RuntimeException.class)
+                .isThrownBy(() -> calculator.calculate("-1,2,3"))
+                .withMessage("음수는 입력하실 수 없습니다.");
     }
 }
