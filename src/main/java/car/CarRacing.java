@@ -1,9 +1,5 @@
 package car;
 
-import car.domain.Car;
-import car.domain.CarNames;
-import car.domain.Cars;
-import car.domain.TryCount;
 import car.input.InputView;
 import car.output.OutputView;
 import car.util.RandomCarMovable;

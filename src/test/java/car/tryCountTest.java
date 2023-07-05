@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 public class tryCountTest {
-
     @Test
     @DisplayName("시도 횟수 음수면 예외 처리")
     void 사용자_입력_시도_횟수_예외 () {

@@ -1,4 +1,4 @@
-package car.domain;
+package car;
 
 public final class CarResult {
     private CarName name;

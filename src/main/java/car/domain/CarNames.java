@@ -1,4 +1,4 @@
-package car.domain;
+package car;
 
 import java.util.Arrays;
 import java.util.Collections;

@@ -1,11 +1,16 @@
-package calculator;
+package calculatorrefactor;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
- class Calculator {
+public class Calculator {
     public static int sum(String text) {
-        String[] values = StringTokenizer.tokenString(text);
-        Validator.isValidateNum(values);
-        return Arrays.stream(values).mapToInt(Integer::parseInt).sum();
+        String[] strings = StringUtil.split(text);
+
+        List<Integer> numbers = Arrays.stream(strings).map(StringUtil::toInt).collect(Collectors.toList());
+        List<Positive> collect =  numbers.stream().map(Positive::new).collect(Collectors.toList());
+
+        return collect.stream().map(a -> a.getNum()).reduce((i1, i2) -> i1 + i2).get();
     }
 }

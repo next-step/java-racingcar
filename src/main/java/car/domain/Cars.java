@@ -1,4 +1,4 @@
-package car.domain;
+package car;
 
 import car.util.Movable;
 import java.util.Collections;
@@ -17,6 +17,7 @@ public final class Cars {
 
     public void race(Movable movable) {
         cars.forEach(car -> {
+            movable.decideMoving();
             if (movable.getMovable()) {
                 car.move(movable.getMovingSize());
             }

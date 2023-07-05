@@ -1,4 +1,4 @@
-package car.domain;
+package car;
 
 public final class TryCount {
     private int tryCount;

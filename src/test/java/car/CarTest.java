@@ -16,5 +16,4 @@ public class CarTest {
 
         Assertions.assertThat(car.getPosition()).isEqualTo(amount);
     }
-
 }
