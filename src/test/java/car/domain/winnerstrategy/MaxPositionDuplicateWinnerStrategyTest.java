@@ -3,8 +3,7 @@ package car.domain.winnerstrategy;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import car.domain.Car;
-import car.domain.winnerstrategy.MaxPositionDuplicateWinnerStrategy;
-import car.domain.winnerstrategy.WinnerStrategy;
+import car.domain.CarName;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.DisplayName;
