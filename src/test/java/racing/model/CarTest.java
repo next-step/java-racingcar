@@ -1,4 +1,4 @@
-package racing;
+package racing.model;
 
 import org.junit.jupiter.api.Test;
 
@@ -11,21 +11,10 @@ public class CarTest {
         Car car = new Car("pobi");
 
         //when
-        car.goForward(true);
+        car.goForward();
 
         //then
         assertThat(car.getPosition()).isEqualTo(2);
     }
 
-    @Test
-    void goForwardFalseTest() {
-        //given
-        Car car = new Car("pobi");
-
-        //when
-        car.goForward(false);
-
-        //then
-        assertThat(car.getPosition()).isEqualTo(1);
-    }
 }
