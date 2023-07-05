@@ -13,6 +13,7 @@ import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RacingApplicationTest {
 
@@ -30,7 +31,7 @@ public class RacingApplicationTest {
     }
 
     @Test
-    void runTest() {
+    void runSuccessTest() {
         String inputString = "pobi,crong,honux\n5";
         InputStream inputStream = new ByteArrayInputStream(inputString.getBytes(StandardCharsets.UTF_8));
         RacingApplication application = new RacingApplication(new RacingInput(inputStream), new SpecificNumberGenerator(9));
@@ -66,5 +67,16 @@ public class RacingApplicationTest {
                 "pobi, crong, honux가 최종 우승했습니다.");
     }
 
+    @Test
+    void longNameFailsTest() {
+        //given
+        String inputString = "pobiii,crong,honux\n5";
+        InputStream inputStream = new ByteArrayInputStream(inputString.getBytes(StandardCharsets.UTF_8));
+        RacingApplication application = new RacingApplication(new RacingInput(inputStream), new SpecificNumberGenerator(9));
 
+        //when, then
+        assertThrows(RuntimeException.class, () -> {
+            application.run();
+        });
+    }
 }
