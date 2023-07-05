@@ -1,12 +1,12 @@
 package calculator;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class StringCalculatorTest {
 
@@ -57,25 +57,17 @@ public class StringCalculatorTest {
     @DisplayName("음수를 입력하는 경우 예외가 발생한다.")
     void test7() {
         assertThatExceptionOfType(RuntimeException.class)
-                .isThrownBy(() -> {
-                    StringCalculator.sum("-1,2,3");
-                });
+            .isThrownBy(() -> StringCalculator.sum("-1,2,3"));
         assertThatExceptionOfType(RuntimeException.class)
-                .isThrownBy(() -> {
-                    StringCalculator.sum("//-\n-1--2-3");
-                });
+            .isThrownBy(() -> StringCalculator.sum("//-\n-1--2-3"));
     }
 
     @Test
     @DisplayName("숫자가 아닌 문자를 입력하는 경우 예외가 발생한다.")
     void test8() {
         assertThatExceptionOfType(RuntimeException.class)
-                .isThrownBy(() -> {
-                    StringCalculator.sum("//-\n1-!2-3");
-                });
+            .isThrownBy(() -> StringCalculator.sum("//-\n1-!2-3"));
         assertThatExceptionOfType(RuntimeException.class)
-                .isThrownBy(() -> {
-                    StringCalculator.sum("//@\n1@@@2@3");
-                });
+            .isThrownBy(() -> StringCalculator.sum("//@\n1@@@2@3"));
     }
 }
