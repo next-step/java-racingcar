@@ -2,7 +2,6 @@ package car.domain;
 
 import car.domain.winnerstrategy.WinnerStrategy;
 import car.ui.CarFormatter;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,30 +9,31 @@ import utils.random.RandomGenerator;
 
 public class Cars {
 
-    private List<Car> cars;
+    private List<Car> list;
 
     public Cars(String names) {
-        cars = createCars(names);
-    }
-
-    private List<Car> createCars(String names) {
-        return Arrays.stream(names.split(","))
+        list = Arrays.stream(split(names))
             .map(Car::new)
             .collect(Collectors.toList());
     }
 
+    private String[] split(String names) {
+        return names.split(",");
+    }
+
+
     public void move() {
-        for (Car car : cars) {
+        for (Car car : list) {
             car.move(RandomGenerator.extractRandomSingleDigit());
         }
     }
 
     public void print(CarFormatter formatter) {
-        cars.forEach(car -> System.out.println(formatter.format(car)));
+        list.forEach(car -> System.out.println(formatter.format(car)));
         System.out.println();
     }
 
     public List<Car> getWinners(WinnerStrategy winnerStrategy) {
-        return winnerStrategy.getWinners(cars);
+        return winnerStrategy.getWinners(list);
     }
 }

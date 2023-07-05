@@ -5,6 +5,6 @@ import car.domain.Car;
 public class DefaultCarFormatter implements CarFormatter {
 
     public String format(Car car) {
-        return car.getName() + " : " + "-".repeat(car.getPosition());
+        return car.getNameValue() + " : " + "-".repeat(car.getPosition());
     }
 }

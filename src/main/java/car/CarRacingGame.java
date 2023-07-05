@@ -36,7 +36,7 @@ public class CarRacingGame {
     private void printWinners() {
         List<Car> winners = cars.getWinners(winnerStrategy);
         String raceResult = winners.stream()
-            .map(Car::getName)
+            .map(Car::getNameValue)
             .collect(Collectors.joining(", "));
         System.out.println(raceResult + "가 최종 우승했습니다.");
     }
