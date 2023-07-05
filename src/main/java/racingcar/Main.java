@@ -1,4 +1,6 @@
-import car.CarRacingGame;
+package racingcar;
+
+import racingcar.car.CarRacingGame;
 import java.util.Scanner;
 
 public class Main {

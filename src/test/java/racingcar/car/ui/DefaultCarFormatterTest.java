@@ -1,10 +1,12 @@
-package car.ui;
+package racingcar.car.ui;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import car.domain.Car;
+import racingcar.car.domain.Car;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.car.ui.CarFormatter;
+import racingcar.car.ui.DefaultCarFormatter;
 
 class DefaultCarFormatterTest {
 

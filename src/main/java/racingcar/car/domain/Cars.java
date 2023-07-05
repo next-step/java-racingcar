@@ -1,11 +1,11 @@
-package car.domain;
+package racingcar.car.domain;
 
-import car.domain.winnerstrategy.WinnerStrategy;
-import car.ui.CarFormatter;
+import racingcar.car.domain.winnerstrategy.WinnerStrategy;
+import racingcar.car.ui.CarFormatter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import utils.random.RandomGenerator;
+import racingcar.utils.random.RandomGenerator;
 
 public class Cars {
 

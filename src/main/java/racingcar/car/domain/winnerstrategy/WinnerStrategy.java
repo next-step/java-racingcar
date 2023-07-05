@@ -1,6 +1,6 @@
-package car.domain.winnerstrategy;
+package racingcar.car.domain.winnerstrategy;
 
-import car.domain.Car;
+import racingcar.car.domain.Car;
 import java.util.List;
 
 public interface WinnerStrategy {

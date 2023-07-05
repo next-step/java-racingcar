@@ -1,11 +1,11 @@
-package car;
+package racingcar.car;
 
-import car.domain.Car;
-import car.domain.Cars;
-import car.domain.winnerstrategy.MaxPositionDuplicateWinnerStrategy;
-import car.domain.winnerstrategy.WinnerStrategy;
-import car.ui.CarFormatter;
-import car.ui.DefaultCarFormatter;
+import racingcar.car.domain.Car;
+import racingcar.car.domain.Cars;
+import racingcar.car.domain.winnerstrategy.MaxPositionDuplicateWinnerStrategy;
+import racingcar.car.domain.winnerstrategy.WinnerStrategy;
+import racingcar.car.ui.CarFormatter;
+import racingcar.car.ui.DefaultCarFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 

@@ -1,6 +1,6 @@
-package car.ui;
+package racingcar.car.ui;
 
-import car.domain.Car;
+import racingcar.car.domain.Car;
 
 public class DefaultCarFormatter implements CarFormatter {
 

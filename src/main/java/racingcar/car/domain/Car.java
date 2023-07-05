@@ -1,4 +1,4 @@
-package car.domain;
+package racingcar.car.domain;
 
 public class Car {
 

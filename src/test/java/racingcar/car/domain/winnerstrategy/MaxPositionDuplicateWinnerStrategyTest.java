@@ -1,12 +1,14 @@
-package car.domain.winnerstrategy;
+package racingcar.car.domain.winnerstrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import car.domain.Car;
+import racingcar.car.domain.Car;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.car.domain.winnerstrategy.MaxPositionDuplicateWinnerStrategy;
+import racingcar.car.domain.winnerstrategy.WinnerStrategy;
 
 public class MaxPositionDuplicateWinnerStrategyTest {
 

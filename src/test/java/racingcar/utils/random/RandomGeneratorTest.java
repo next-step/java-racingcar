@@ -1,9 +1,9 @@
-package utils.random;
+package racingcar.utils.random;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import utils.random.RandomGenerator;
+import racingcar.utils.random.RandomGenerator;
 
 public class RandomGeneratorTest {
 
