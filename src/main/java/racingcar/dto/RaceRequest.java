@@ -3,6 +3,7 @@ package racingcar.dto;
 
 public class RaceRequest {
     private static final String NAME_DELIMITER = ",";
+    private static final String NOT_INTEGER_MESSAGE = "게임 횟수를 입력해 주세요.";
     private final String[] names;
     private final int totalRound;
 
@@ -19,7 +20,7 @@ public class RaceRequest {
         try {
             return Integer.parseInt(totalRound);
         } catch (NumberFormatException numberFormatException) {
-            throw new RuntimeException("게임 횟수를 입력해 주세요.");
+            throw new RuntimeException(NOT_INTEGER_MESSAGE);
         }
     }
 
