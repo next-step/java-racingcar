@@ -12,7 +12,7 @@ public class Input {
     public static int processTryCount() {
         try {
             return readTryCount();
-        } catch (RuntimeException e) {
+        } catch (IllegalArgumentException e) {
             System.out.println("숫자만 입력받을 수 있습니다.");
             return processTryCount();
         }
@@ -37,7 +37,7 @@ public class Input {
     public static List<String> processCarNames() {
         try {
             return readCarNames();
-        } catch (RuntimeException e) {
+        } catch (IllegalArgumentException e) {
             System.out.println("자동차 이름의 길이가 5 이하여야 합니다.");
             return processCarNames();
         }
