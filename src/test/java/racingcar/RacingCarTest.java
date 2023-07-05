@@ -137,4 +137,27 @@ public class RacingCarTest {
             assertThat(pobi.getPosition()).isEqualTo(initPosition);
         });
     }
+
+    @Test
+    void 이름이비었을때_파싱실패_RuntimeException발생() {
+        // when & then
+        assertThatThrownBy(() -> Parser.parse(""))
+                .isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    void 시도횟수가비었거나0이하일때_실패_RuntimeException발생() {
+        // given
+        String totalRound1 = "";
+        String totalRound2 = "0";
+        String totalRound3 = "-10";
+
+        // when & then
+        assertThatThrownBy(() -> new Request("pobi", totalRound1))
+                .isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> new Request("pobi", totalRound2))
+                .isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> new Request("pobi", totalRound3))
+                .isInstanceOf(RuntimeException.class);
+    }
 }
