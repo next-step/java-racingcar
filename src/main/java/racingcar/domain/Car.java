@@ -1,11 +1,12 @@
 package racingcar.domain;
 
 public class Car {
+    private static final int START_POSITION = 0;
     private final Name name;
     private final Position position;
 
     private Car(String name) {
-        this(name, 0);
+        this(name, START_POSITION);
     }
 
     private Car(String name, int position) {
