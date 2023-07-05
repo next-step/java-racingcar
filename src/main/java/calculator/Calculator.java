@@ -8,7 +8,7 @@ public class Calculator {
     private static final String SPLITTERS = ",:";
 
     public int calculate(String input) throws RuntimeException {
-        if (isBlankOrNull(input))
+        if (isEmptyOrNull(input))
             return 0;
 
         return getSum(input);
@@ -22,7 +22,7 @@ public class Calculator {
     }
 
 
-    private boolean isBlankOrNull(String input) {
+    private boolean isEmptyOrNull(String input) {
         return input == null || input.isEmpty();
     }
 
