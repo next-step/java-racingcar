@@ -1,5 +1,6 @@
 package racingcar;
 
+import racingcar.car.CarName;
 import racingcar.game.GameBoard;
 import racingcar.io.Input;
 import racingcar.io.Output;
@@ -9,7 +10,7 @@ import java.util.List;
 
 public class RacingCarRunner {
     public static void main(String[] args) {
-        List<String> carNames = Input.processCarNames();
+        List<CarName> carNames = Input.processCarNames();
         int tryCount = Input.processTryCount();
         GameBoard gameBoard = new GameBoard(carNames);
 

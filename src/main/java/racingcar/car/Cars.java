@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(List<String> carNames) {
+    public Cars(List<CarName> carNames) {
         this.cars = carNames.stream()
                 .map(Car::new)
                 .collect(Collectors.toList());

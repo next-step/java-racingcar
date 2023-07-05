@@ -1,14 +1,19 @@
 package racingcar.io;
 
+import racingcar.car.CarName;
+import racingcar.exception.CarNameInputException;
+import racingcar.exception.TryCountInputException;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Input {
     private static final String NUMBER_REGEX = "[0-9]+";
-    private static final Scanner scanner = new Scanner(System.in);
+    private static final Scanner SCANNER = new Scanner(System.in);
 
-    public static List<String> processCarNames() {
+    public static List<CarName> processCarNames() {
         try {
             return readCarNames();
         } catch (CarNameInputException e) {
@@ -28,37 +33,27 @@ public class Input {
 
     private static int readTryCount() {
         System.out.println("시도할 회수는 몇회인가요?");
-        String input = scanner.nextLine();
+        String input = SCANNER.nextLine();
         if (validateNumber(input)) {
             return Integer.parseInt(input);
         }
         throw new TryCountInputException();
     }
 
-    public static boolean validateNumber(String number) {
+    static boolean validateNumber(String number) {
         return number.matches(NUMBER_REGEX);
     }
 
-    private static List<String> readCarNames() {
+    private static List<CarName> readCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        String input = scanner.nextLine();
-        return transferStringToList(input);
+        String input = SCANNER.nextLine();
+        return splitToCarNames(input);
     }
 
-    public static boolean validateCarNames(String[] carNames) {
-        return Arrays.stream(carNames)
-                .noneMatch(Input::validateCarName);
-    }
-
-    private static boolean validateCarName(String carName) {
-        return (carName == null || carName.length() > 5);
-    }
-
-    public static List<String> transferStringToList(String input) {
+    private static List<CarName> splitToCarNames(String input) {
         String[] carNames = input.split(",");
-        if (validateCarNames(carNames)) {
-            return List.of(carNames);
-        }
-        throw new CarNameInputException();
+        return Arrays.stream(carNames)
+                .map(CarName::new)
+                .collect(Collectors.toList());
     }
 }

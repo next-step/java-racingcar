@@ -1,5 +1,6 @@
 package racingcar.game;
 
+import racingcar.car.CarName;
 import racingcar.car.Cars;
 
 import java.util.List;
@@ -8,7 +9,7 @@ public class GameBoard {
 
     private final Cars cars;
 
-    public GameBoard(List<String> carNames) {
+    public GameBoard(List<CarName> carNames) {
         cars = new Cars(carNames);
     }
 
