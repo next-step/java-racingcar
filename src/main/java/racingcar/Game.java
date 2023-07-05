@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 public class Game {
 
+    private static final int CAR_INITIAL_POSITION = 1;
     private final List<Car> cars;
 
     public Game(List<String> carNames) {
@@ -27,7 +28,7 @@ public class Game {
         int maxIndex = cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
-                .orElse(1);
+                .orElse(CAR_INITIAL_POSITION);
         return cars.stream()
                 .filter(c -> c.getPosition() == maxIndex)
                 .map(Car::getName)
