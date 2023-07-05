@@ -1,5 +1,6 @@
 package racingcar;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -114,5 +115,17 @@ public class RacingCarTest {
         RacingCar[] winners = racingGame.selectWinners();
 
         assertThat(winners).contains(car2, car3);
+    }
+
+    @DisplayName("자동차의 전진 상태를 문자열로 반환한다")
+    @Test
+    void 자동차_전진상태() {
+        RacingCar car = new RacingCar("pobi");
+        car.move(4);
+        car.move(4);
+
+        String result = car.statusToString();
+
+        assertThat(result).isEqualTo("pobi : --");
     }
 }

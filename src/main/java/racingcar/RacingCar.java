@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.text.MessageFormat;
 import java.util.Arrays;
 
 public class RacingCar {
@@ -54,9 +55,15 @@ public class RacingCar {
                 .toArray(RacingCar[]::new);
     }
 
+    public String statusToString() {
+        return MessageFormat.format("{0} : {1}", name, "-".repeat(moveCount));
+    }
+
     public void move(int randomValue) {
         if (randomValue >= 4) {
             this.moveCount++;
         }
     }
+
+
 }
