@@ -1,7 +1,7 @@
 package racing.model;
 
 import org.junit.jupiter.api.Test;
-import racing.Car;
+import racing.domain.Car;
 import racing.generator.NumberGenerator;
 import racing.generator.SpecificNumberGenerator;
 

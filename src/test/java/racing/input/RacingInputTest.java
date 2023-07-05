@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
-import racing.Car;
+import racing.domain.Car;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;

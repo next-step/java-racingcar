@@ -1,6 +1,6 @@
 package racing.input;
 
-import racing.Car;
+import racing.domain.Car;
 
 import java.io.InputStream;
 import java.util.Arrays;

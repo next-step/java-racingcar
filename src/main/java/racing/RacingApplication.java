@@ -1,5 +1,6 @@
 package racing;
 
+import racing.domain.Car;
 import racing.generator.NumberGenerator;
 import racing.generator.RandomNumberGenerator;
 import racing.input.RacingInput;
