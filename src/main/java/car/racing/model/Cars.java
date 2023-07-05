@@ -1,4 +1,4 @@
-package car.logic;
+package car.racing.model;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -9,11 +9,11 @@ public class Cars {
 
     private List<Car> cars;
 
-    public Cars(String carNames) {
+    public Cars(final String carNames) {
         cars = Arrays.stream(tokenCarNames(carNames)).map(Car::new).collect(Collectors.toList());
     }
 
-    private String[] tokenCarNames(String carNames) {
+    private String[] tokenCarNames(final String carNames) {
         return carNames.split(",");
     }
 
@@ -25,10 +25,4 @@ public class Cars {
         return Collections.unmodifiableList(cars);
     }
 
-    @Override
-    public String toString() {
-        return "Cars{" +
-            "cars=" + cars +
-            '}';
-    }
 }

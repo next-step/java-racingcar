@@ -1,8 +1,8 @@
-package car.logic;
+package car.utils;
 
 import java.util.Random;
 
-public class NumberGenerator {
+public class RandomNumberGenerator {
 
     private static final int NUMBER_LIMIT = 10;
 

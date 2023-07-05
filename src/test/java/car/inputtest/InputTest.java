@@ -4,8 +4,8 @@ import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import car.input.Count;
-import car.input.InputForm;
+import car.input.model.Count;
+import car.input.InputService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -16,13 +16,13 @@ public class InputTest {
     @DisplayName("car/input")
     void 사용자_이름_테스트_정상 () {
         String carNames = "pobi,crong,honux";
-        assertThatCode(()-> InputForm.validateCarName(carNames)).doesNotThrowAnyException();
+        assertThatCode(()-> InputService.validateCarName(carNames)).doesNotThrowAnyException();
     }
     @ParameterizedTest
     @DisplayName("사용자 이름이 정상적으로 입력 되지 않음")
     @ValueSource(strings = {"", " "})
     void 사용자_이름_테스트_오류(String str) {
-        assertThrows(RuntimeException.class, ()->InputForm.validateCarName(str));
+        assertThrows(RuntimeException.class, ()-> InputService.validateCarName(str));
     }
     @Test
     @DisplayName("시도 횟수 음수면 예외 처리")

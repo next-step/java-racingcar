@@ -4,12 +4,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class InputForm {
+public class InputService {
 
-    public static BufferedReader bufferedReader = new BufferedReader(
-        new InputStreamReader(System.in));
+    private static BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
-    public static void validateCarName(String str) {
+    public static void validateCarName(final String str) {
         if (str.isBlank()) {
             throw new RuntimeException("입력값이 없습니다.");
         }

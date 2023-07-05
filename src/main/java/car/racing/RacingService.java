@@ -1,14 +1,16 @@
-package car.logic;
+package car.racing;
 
+import car.racing.model.Car;
+import car.racing.model.Cars;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CarRacing {
+public class RacingService {
 
     private Cars cars;
 
-    public CarRacing(Cars cars) {
+    public RacingService(final Cars cars) {
         this.cars = cars;
     }
 
@@ -22,9 +24,13 @@ public class CarRacing {
     }
 
     public List<Car> selectWinner() {
-        int maxPos = this.cars.getCars().stream().map(Car::getPosition)
+        int maxPos = this.cars.getCars()
+            .stream()
+            .map(Car::getPosition)
             .max(Comparator.comparing(x -> x)).get();
-        return this.cars.getCars().stream().filter(s -> (s.getPosition() == maxPos))
+        return this.cars.getCars()
+            .stream()
+            .filter(s -> (s.getPosition() == maxPos))
             .collect(Collectors.toList());
     }
 
