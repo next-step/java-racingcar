@@ -1,15 +1,23 @@
-package racingcar;
+package racingcar.domain;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class CarVO {
 
     private final String name;
     private final int position;
 
-    public CarVO(Car car) {
+    private CarVO(Car car) {
         this.name = car.getName();
         this.position = car.getPosition();
+    }
+
+    public static List<CarVO> toList(List<Car> cars) {
+        return cars.stream()
+                .map(CarVO::new)
+                .collect(Collectors.toUnmodifiableList());
     }
 
     public String getName() {

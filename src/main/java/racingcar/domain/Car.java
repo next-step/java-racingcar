@@ -1,16 +1,16 @@
-package racingcar;
+package racingcar.domain;
 
 public class Car {
-    private final String name;
-    private int position;
+    private final Name name;
+    private final Position position;
 
     private Car(String name) {
         this(name, 0);
     }
 
     private Car(String name, int position) {
-        this.name = name;
-        this.position = position;
+        this.name = Name.from(name);
+        this.position = Position.from(position);
     }
 
     public static Car create(String name) {
@@ -18,14 +18,14 @@ public class Car {
     }
 
     public String getName() {
-        return name;
+        return name.getName();
     }
 
     public int getPosition() {
-        return position;
+        return position.getPosition();
     }
 
     public void moveForward() {
-        this.position++;
+        this.position.increase();
     }
 }

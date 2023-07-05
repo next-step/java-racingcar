@@ -1,6 +1,8 @@
 package racingcar;
 
-public class FixedNumberGenerator implements NumberGenerator{
+import racingcar.NumberGenerator;
+
+public class FixedNumberGenerator implements NumberGenerator {
     private int value;
     public FixedNumberGenerator(int value) {
         this.value = value;
