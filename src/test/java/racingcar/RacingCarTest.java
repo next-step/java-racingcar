@@ -23,7 +23,7 @@ public class RacingCarTest {
     void 자동차_입력_검증_실패(String carNames) {
         assertThatExceptionOfType(RuntimeException.class)
                 .isThrownBy(() -> new Cars(carNames))
-                .withMessageMatching("자동차 이름이 유효하지 않습니다");
+                .withMessageMatching(Cars.INVALID_CAR_NAME_EXCEPTION_MESSAGE);
     }
 
     @DisplayName("실행 횟수가 양수인 경우 예외가 발생하지 않는다")
@@ -40,7 +40,7 @@ public class RacingCarTest {
     void 자동차_실행_횟수_검증_실패(String count) {
         assertThatExceptionOfType(RuntimeException.class)
                 .isThrownBy(() -> new RacingGame(null, count))
-                .withMessageMatching("실행 횟수는 양수만 가능합니다");
+                .withMessageMatching(RacingGame.NON_POSITIVE_EXCEPTION_MESSAGE);
     }
 
     @DisplayName("랜덤 값이 4 이상이면 자동차는 1만큼 전진한다")

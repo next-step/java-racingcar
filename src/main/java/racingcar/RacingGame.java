@@ -4,8 +4,15 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 public class RacingGame {
-    public final Cars cars;
-    public int count;
+
+    private static final String NEWLINE = "\n";
+    private static final String COMMA = ",";
+    private static final String DOUBLE_NEWLINE = "\n\n";
+    private static final String WINNER_MESSAGE = " 가 최종 우승했습니다.";
+    public static final String NON_POSITIVE_EXCEPTION_MESSAGE = "실행 횟수는 양수만 가능합니다";
+
+    private final Cars cars;
+    private int count;
 
     public RacingGame(Cars cars, String count) {
         validateCount(count);
@@ -28,20 +35,20 @@ public class RacingGame {
 
     private String getResult() {
         String result = Arrays.stream(cars.getResult())
-                .collect(Collectors.joining("\n"));
-        return result + "\n\n";
+                .collect(Collectors.joining(NEWLINE));
+        return result + DOUBLE_NEWLINE;
     }
 
     private String getWinner() {
         String result = Arrays.stream(cars.getWinners())
-                .collect(Collectors.joining(", "));
+                .collect(Collectors.joining(COMMA));
 
-        return result + "가 최종 우승했습니다.";
+        return result + WINNER_MESSAGE;
     }
 
     private void validateCount(String count) {
         if (!count.trim().matches("^[0-9]+$")) {
-            throw new RuntimeException("실행 횟수는 양수만 가능합니다");
+            throw new RuntimeException(NON_POSITIVE_EXCEPTION_MESSAGE);
         }
     }
 }

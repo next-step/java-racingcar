@@ -4,10 +4,12 @@ import java.util.Arrays;
 
 public class StringExpression {
 
-    private final String[] strings;
+    public static final String INVALID_EXCEPTION_MESSAGE = "유효하지 않은 값입니다";
+
+    private final String[] values;
 
     public StringExpression(String expression, String delimiter) {
-        this.strings = validateInputText(expression, delimiter);
+        this.values = validateInputText(expression, delimiter);
     }
 
     private String[] parse(String expression, String delimiter) {
@@ -16,7 +18,7 @@ public class StringExpression {
 
     private void validateNumber(String string) {
         if (!string.matches("^[0-9]*$")) {
-            throw new RuntimeException("유효하지 않은 값입니다");
+            throw new RuntimeException(INVALID_EXCEPTION_MESSAGE);
         }
     }
 
@@ -37,7 +39,7 @@ public class StringExpression {
     }
 
     public int sumString() {
-        return Arrays.stream(strings)
+        return Arrays.stream(values)
                 .mapToInt(s -> stringToInt(s))
                 .sum();
     }

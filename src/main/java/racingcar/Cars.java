@@ -3,11 +3,14 @@ package racingcar;
 import java.util.Arrays;
 
 public class Cars {
+    public static final String INVALID_CAR_NAME_EXCEPTION_MESSAGE = "자동차 이름이 유효하지 않습니다";
     private final Car[] cars;
 
     public Cars(String rawCarNames) {
         String[] carNames = parseCarNames(rawCarNames);
+
         validateCarNames(carNames);
+
         this.cars = generateCarArray(carNames);
     }
 
@@ -58,7 +61,7 @@ public class Cars {
 
     private void checkEmpty(String[] carNames) {
         if (carNames.length == 0) {
-            throw new RuntimeException("자동차 이름이 유효하지 않습니다");
+            throw new RuntimeException(INVALID_CAR_NAME_EXCEPTION_MESSAGE);
         }
     }
 
@@ -70,7 +73,7 @@ public class Cars {
 
     private void validateCarNameLength(String carName) {
         if (carName.length() > 5 || carName.length() == 0) {
-            throw new RuntimeException("자동차 이름이 유효하지 않습니다");
+            throw new RuntimeException(INVALID_CAR_NAME_EXCEPTION_MESSAGE);
         }
     }
 }
