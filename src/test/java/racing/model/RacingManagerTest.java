@@ -1,6 +1,8 @@
 package racing.model;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import racing.domain.Car;
 import racing.generator.NumberGenerator;
 import racing.generator.SpecificNumberGenerator;
@@ -12,24 +14,24 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 
 public class RacingManagerTest {
-    @Test
-    void isMovableTest() {
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2, 3, 10})
+    void isMovableReturnFalseTest(int number) {
         //given
         RacingManager racingManager = new RacingManager();
 
-        //when
+        //when, then
+        assertThat(racingManager.isMovable(number)).isEqualTo(false);
+    }
 
-        //then
-        assertThat(racingManager.isMovable(0)).isEqualTo(false);
-        assertThat(racingManager.isMovable(1)).isEqualTo(false);
-        assertThat(racingManager.isMovable(2)).isEqualTo(false);
-        assertThat(racingManager.isMovable(3)).isEqualTo(false);
-        assertThat(racingManager.isMovable(4)).isEqualTo(true);
-        assertThat(racingManager.isMovable(5)).isEqualTo(true);
-        assertThat(racingManager.isMovable(6)).isEqualTo(true);
-        assertThat(racingManager.isMovable(7)).isEqualTo(true);
-        assertThat(racingManager.isMovable(8)).isEqualTo(true);
-        assertThat(racingManager.isMovable(9)).isEqualTo(true);
+    @ParameterizedTest
+    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
+    void isMovableReturnTrueTest(int number) {
+        //true
+        RacingManager racingManager = new RacingManager();
+
+        //when, then
+        assertThat(racingManager.isMovable(number)).isEqualTo(true);
     }
 
     @Test
