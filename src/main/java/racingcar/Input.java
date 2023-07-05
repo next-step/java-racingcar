@@ -1,2 +1,5 @@
-package racingcar;public interface Input {
+package racingcar;
+
+public interface Input {
+    String read();
 }
