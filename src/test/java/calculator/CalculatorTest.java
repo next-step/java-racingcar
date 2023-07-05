@@ -41,19 +41,19 @@ public class CalculatorTest {
         assertThat(result1).isEqualTo(new String[]{"1", "2", "3"});
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "숫자가아닌문자를포함할때_파싱실패_RuntimeException발생[{arguments}]")
     @ValueSource(strings = {"hello", "-1,2,3"})
     void 숫자가아닌문자를포함할때_파싱실패_RuntimeException발생(String input) {
         assertThatThrownBy(() -> Numbers.of(Parser.parse(input))).isInstanceOf(RuntimeException.class);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "범위밖숫자입력시_파싱실패_RuntimeException발생[{arguments}]")
     @ValueSource(strings = {"123123123123123"})
     void 범위밖숫자입력시_파싱실패_RuntimeException발생(String input) {
         assertThatThrownBy(() -> Numbers.of(Parser.parse(input))).isInstanceOf(RuntimeException.class);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "계산결과가정수범위를벗어날때_계산실패_RuntimeException발생[{arguments}]")
     @ValueSource(strings = {"1000000000:1000000000:1000000000"})
     void 계산결과가정수범위를벗어날때_계산실패_RuntimeException발생(String input) {
         assertThatThrownBy(() -> Calculator.sum(input)).isInstanceOf(RuntimeException.class);
