@@ -20,5 +20,4 @@ public class ExpressionFactory {
 
         return new Expression(inputText, BASIC_DELIMITER);
     }
-
 }
