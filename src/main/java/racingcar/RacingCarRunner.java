@@ -10,10 +10,14 @@ public class RacingCarRunner {
         Game game = new Game(carNames);
 
         Output.printInitialStatus(game.getCars());
+        runGame(game, tryCount);
+        Output.printWinners(game.getWinnerNames());
+    }
+
+    private static void runGame(Game game, int tryCount) {
         for (int i = 0; i < tryCount; i++) {
             game.run();
             Output.printCarStatus(game.getCars());
         }
-        Output.printWinners(game.getWinnerNames());
     }
 }
