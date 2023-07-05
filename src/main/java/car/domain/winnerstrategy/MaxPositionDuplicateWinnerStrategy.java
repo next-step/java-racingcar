@@ -11,7 +11,7 @@ public class MaxPositionDuplicateWinnerStrategy implements WinnerStrategy {
         int maxPosition = cars.stream()
             .mapToInt(Car::getPosition)
             .max()
-            .orElseThrow(() -> new RuntimeException("자동차 리스트는 비어있을 수 없습니다."));
+            .orElseThrow(() -> new IllegalArgumentException("자동차 리스트는 비어있을 수 없습니다."));
 
         return cars.stream()
             .filter(car -> car.getPosition() == maxPosition)

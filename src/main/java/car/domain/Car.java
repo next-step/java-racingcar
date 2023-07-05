@@ -5,7 +5,7 @@ public class Car {
     private static final int MOVE_THRESHOLD = 4;
     private static final int MOVE_STEP = 1;
     private int position;
-    private CarName carName;
+    private Name name;
 
     public Car(String name) {
         this(0, name);
@@ -13,7 +13,7 @@ public class Car {
 
     public Car(int position, String name) {
         this.position = position;
-        this.carName = new CarName(name);
+        this.name = new Name(name);
     }
 
     public void move(int value) {
@@ -22,8 +22,8 @@ public class Car {
         }
     }
 
-    public String getName() {
-        return carName.getName();
+    public String getNameValue() {
+        return name.getValue();
     }
 
     public int getPosition() {
