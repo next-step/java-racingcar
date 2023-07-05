@@ -1,14 +1,17 @@
 package racingcar.car;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
-    private final Car[] cars;
+
+    private final List<Car> cars;
 
     public Cars(String rawCarNames) {
         String[] carNames = parseCarNames(rawCarNames);
         validateCarNames(carNames);
-        this.cars = generateCarArray(carNames);
+        this.cars = generateCars(carNames);
     }
 
     public void move() {
@@ -22,19 +25,19 @@ public class Cars {
     }
 
     public String[] getWinners() {
-        int winnerCount = Arrays.stream(cars)
-                .mapToInt(car -> car.moveCount)
+        int winnerCount = cars.stream()
+                .mapToInt(Car::getMoveCount)
                 .max()
                 .orElse(0);
 
-        return Arrays.stream(cars)
-                .filter(car -> car.moveCount == winnerCount)
-                .map(car -> car.name)
+        return cars.stream()
+                .filter(car -> car.getMoveCount() == winnerCount)
+                .map(Car::getName)
                 .toArray(String[]::new);
     }
 
     public String[] getResult() {
-        return Arrays.stream(cars)
+        return cars.stream()
                 .map(Car::statusToString)
                 .toArray(String[]::new);
     }
@@ -45,10 +48,10 @@ public class Cars {
                 .toArray(String[]::new);
     }
 
-    private Car[] generateCarArray(String[] carNames) {
+    private List<Car> generateCars(String[] carNames) {
         return Arrays.stream(carNames)
                 .map(name -> new Car(name))
-                .toArray(Car[]::new);
+                .collect(Collectors.toList());
     }
 
     private void validateCarNames(String[] carNames) {

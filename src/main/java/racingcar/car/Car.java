@@ -4,11 +4,19 @@ import java.text.MessageFormat;
 
 public class Car {
 
-    public int moveCount = 0;
-    public String name;
+    private final String name;
+    private int moveCount = 0;
 
     public Car(String name) {
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getMoveCount() {
+        return moveCount;
     }
 
     public String statusToString() {
