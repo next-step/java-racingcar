@@ -53,10 +53,13 @@ public class CarsTest {
                         new Car("충규", 1)));
 
         /* when */
-        List<Car> winners = cars.winners();
+        List<String> winnerNames = cars.winners()
+                .stream()
+                .map(Car::getNameValue)
+                .collect(Collectors.toList());
 
         /* then */
-        assertThat(winners).containsExactly(new Car("충환", 3), new Car("정규", 3));
+        assertThat(winnerNames).containsExactly("충환", "정규");
     }
 
     @Test
