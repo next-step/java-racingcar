@@ -4,39 +4,43 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 public class RacingGame {
-    public final RacingCar[] cars;
-    public final int count;
+    public final Cars cars;
+    public int count;
 
-    public RacingGame(RacingCar[] cars, int count) {
+    public RacingGame(Cars cars, String count) {
+        validateCount(count);
         this.cars = cars;
-        this.count = count;
+        this.count = Integer.parseInt(count.trim());
     }
 
-    public RacingCar[] selectWinners() {
-        int winnerCount = Arrays.stream(cars)
-                .mapToInt(car -> car.moveCount)
-                .max()
-                .orElse(0);
+    public void run() {
+        while (count-- > 0) {
+            cars.move();
+            printResult();
+        }
 
-        return Arrays.stream(cars)
-                .filter(car -> car.moveCount == winnerCount)
-                .toArray(RacingCar[]::new);
+        printResult();
+        printWinner();
     }
 
     public void printResult() {
-        String result = Arrays.stream(cars)
-                .map(RacingCar::statusToString)
+        String result = Arrays.stream(cars.getResult())
                 .collect(Collectors.joining("\n"));
         System.out.println(result + "\n");
     }
 
     public void printWinner() {
-        String result = Arrays.stream(selectWinners())
-                .map(car -> car.name)
+        String result = Arrays.stream(cars.getWinners())
                 .collect(Collectors.joining(", "));
 
         System.out.println(result + "가 최종 우승했습니다.");
     }
 
 
+
+    private void validateCount(String count) {
+        if (!count.trim().matches("^[0-9]+$")) {
+            throw new RuntimeException("실행 횟수는 양수만 가능합니다");
+        }
+    }
 }
