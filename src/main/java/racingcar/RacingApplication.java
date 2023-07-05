@@ -9,14 +9,24 @@ import racingcar.view.ConsoleView;
 
 public class RacingApplication {
 
-    public static void main(String[] args) {
-        RacingGamePlayUsecase racingGamePlayUsecase = new RacingGamePlayUsecase();
-        RacingGamePlayController racingGamePlayController = new RacingGamePlayController(racingGamePlayUsecase);
+    private final ConsoleInput consoleInput;
+    private final ConsoleView consoleView;
+    private final RacingGamePlayController racingGamePlayController;
 
-        ConsoleInput consoleInput = new ConsoleInput();
+    public static void main(String[] args) {
+        RacingApplication racingApplication = new RacingApplication();
+        racingApplication.run();
+    }
+
+    private RacingApplication() {
+        this.consoleInput = new ConsoleInput();
+        this.consoleView = new ConsoleView();
+        this.racingGamePlayController = new RacingGamePlayController(new RacingGamePlayUsecase());
+    }
+
+    private void run() {
         RacingGamePlayControllerRequest input = consoleInput.input();
         RacingGamePlayControllerResponse response = racingGamePlayController.playRacingGame(input);
-        ConsoleView consoleView = new ConsoleView();
         consoleView.printResult(response);
     }
 
