@@ -6,14 +6,14 @@ public class CarName {
     private final String value;
 
     public CarName(String value) {
-        if (validate(value)) {
-            throw new CarNameInputException();
-        }
+        validate(value);
         this.value = value;
     }
 
-    private boolean validate(String value) {
-        return value == null || value.length() > 5;
+    private void validate(String value) {
+        if (value == null || value.length() > 5) {
+            throw new CarNameInputException();
+        }
     }
 
     public String getValue() {
