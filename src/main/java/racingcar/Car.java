@@ -22,6 +22,10 @@ public class Car {
         }
     }
 
+    public boolean isMaxDistance(int maxDistance) {
+        return distance == maxDistance;
+    }
+
     public String getName() {
         return name;
     }

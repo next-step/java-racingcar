@@ -72,4 +72,18 @@ public class RacingCarTest {
 
         assertThat(car.getDistance()).isEqualTo(0);
     }
+
+    @Test
+    @DisplayName("자동차가 여러 자동차들 중 가장 멀리 있는 자동차인지 테스트")
+    public void 자동차가_여러_자동차들_중_가장_멀리_있는_자동차인지_테스트() throws Exception {
+        Car itp = new Car("itp");
+        Car pobi = new Car("pobi");
+
+        int moveSignal = 5;
+        int maxDistance = 5;
+        for (int i = 0; i < maxDistance; i++) itp.progress(moveSignal);
+
+        assertThat(itp.isMaxDistance(maxDistance)).isEqualTo(true);
+        assertThat(pobi.isMaxDistance(maxDistance)).isEqualTo(false);
+    }
 }
