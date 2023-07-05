@@ -22,7 +22,6 @@ public final class RandomCarMovable extends Movable {
         if (num >= CAR_MOVING_LIMIT) {
             return true;
         }
-
         return false;
     }
 }

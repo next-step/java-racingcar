@@ -1,16 +1,22 @@
 package car.domain;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public final class CarNames {
-    private String[] carNames;
-    private final String CAR_NAMES_DELIMITER = ",";
+
+    private List<CarName> names;
+    private final String CAR_NAMES_DELIMITER = "\\s+|,\\s*";
     private final int ZERO = 0;
 
     public CarNames(String names) {
-        String[] carNames = validateCarNames(names);
-        this.carNames = carNames;
+        List<CarName> carNames = validateCarNames(names);
+        this.names = carNames;
     }
 
-    private String[] validateCarNames(String names) {
+    private List<CarName> validateCarNames(String names) {
         if (names == null || names.isBlank()) {
             throw new RuntimeException();
         }
@@ -20,14 +26,14 @@ public final class CarNames {
             throw new RuntimeException();
         }
 
-        return tokenCarNames;
+        return Arrays.stream(tokenCarNames).map(CarName::new).collect(Collectors.toList());
     }
 
     private String[] tokenCarNames(String carNames) {
         return carNames.split(CAR_NAMES_DELIMITER);
     }
 
-    public String[] getCarNames() {
-        return carNames;
+    public List<CarName> getCarNames() {
+        return Collections.unmodifiableList(names);
     }
 }

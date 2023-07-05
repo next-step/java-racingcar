@@ -3,41 +3,28 @@ package car;
 import car.domain.Car;
 import car.domain.CarNames;
 import car.domain.Cars;
-import car.util.RandomCarMovable;
 import car.domain.TryCount;
 import car.input.InputView;
 import car.output.OutputView;
+import car.util.RandomCarMovable;
 import java.io.IOException;
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public final class CarRacing {
+    private Cars cars;
 
-    private static Cars cars;
-
-    public CarRacing(Cars cars) {
-        this.cars = cars;
+    public CarRacing() {
     }
 
-    public static Cars runRaceOnce() {
+    public void runRaceOnce() {
         cars.race(new RandomCarMovable());
-        return getRaceResult();
     }
 
-    public static Cars getRaceResult() {
-        return cars;
+    public List<Car> selectWinner() {
+        return cars.selectWinners();
     }
 
-    public static List<Car> selectWinner() {
-        int maxPos = cars.getCars().stream().map(Car::getPosition)
-            .max(Comparator.comparing(x -> x)).get();
-        return cars.getCars().stream().filter(s -> (s.getPosition() == maxPos))
-            .collect(Collectors.toList());
-    }
-
-    public static void run() throws IOException {
-
+    public void run() throws IOException {
         String name = InputView.enterCarName();
         TryCount tryCount = new TryCount(InputView.enterCount());
 
@@ -45,10 +32,11 @@ public final class CarRacing {
 
         OutputView.printResult();
         for (int i = 0; i < tryCount.getTryCount(); i++) {
-            OutputView.printEachRaceResult(runRaceOnce());
+            runRaceOnce();
+            OutputView.printEachRaceResult(cars);
         }
 
-        OutputView.printEachRaceResult(getRaceResult());
+        OutputView.printEachRaceResult(cars);
         OutputView.printWinner(selectWinner());
     }
 }

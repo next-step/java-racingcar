@@ -1,6 +1,7 @@
 package car.domain;
 
-public final class Car {
+public class Car {
+
     private CarName name;
     private int position = 0;
 
@@ -17,7 +18,7 @@ public final class Car {
     }
 
     public void move(int amount) {
-        this.position+= amount;
+        this.position += amount;
     }
 
 }
