@@ -3,6 +3,7 @@ package racing;
 import racing.generator.NumberGenerator;
 import racing.generator.RandomNumberGenerator;
 import racing.input.RacingInput;
+import racing.model.Car;
 import racing.model.RacingManager;
 import racing.output.RacingOutput;
 import racing.view.RacingView;
