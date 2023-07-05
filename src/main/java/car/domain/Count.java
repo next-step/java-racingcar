@@ -1,4 +1,4 @@
-package car.input;
+package car.domain;
 
 public class Count {
 

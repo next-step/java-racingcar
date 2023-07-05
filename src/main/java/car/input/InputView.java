@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class InputForm {
+public class InputView {
 
     public static BufferedReader bufferedReader = new BufferedReader(
         new InputStreamReader(System.in));

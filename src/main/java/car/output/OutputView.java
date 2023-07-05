@@ -1,8 +1,8 @@
 package car.output;
 
 import java.util.List;
-import car.logic.Car;
-import car.logic.Cars;
+import car.domain.Car;
+import car.domain.Cars;
 
 public class OutputView {
 

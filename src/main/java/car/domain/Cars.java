@@ -1,5 +1,6 @@
-package car.logic;
+package car.domain;
 
+import car.domain.Car;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -25,10 +26,4 @@ public class Cars {
         return Collections.unmodifiableList(cars);
     }
 
-    @Override
-    public String toString() {
-        return "Cars{" +
-            "cars=" + cars +
-            '}';
-    }
 }
