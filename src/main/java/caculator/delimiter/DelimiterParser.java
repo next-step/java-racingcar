@@ -9,10 +9,10 @@ public final class DelimiterParser {
 
     public static final Pattern DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
 
-    private DelimiterParser() {
+    public DelimiterParser() {
     }
 
-    public static ParsedText parse(String text) {
+    public ParsedText parse(String text) {
         Matcher delimiterMatcher = DELIMITER_PATTERN.matcher(text);
 
         String delimiter = null;

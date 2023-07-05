@@ -7,15 +7,18 @@ import caculator.model.ParsedText;
 
 public final class Calculator {
 
-    private Calculator() {
+    private final DelimiterParser delimiterParser;
+
+    public Calculator(final DelimiterParser delimiterParser) {
+        this.delimiterParser = delimiterParser;
     }
 
-    public static int sum(String text) {
+    public int sum(String text) {
         if (text == null || text.isBlank()) {
             return 0;
         }
 
-        ParsedText parsedText = DelimiterParser.parse(text);
+        ParsedText parsedText = delimiterParser.parse(text);
 
         Elements elements = new Elements(
                 tokenize(parsedText)
@@ -27,7 +30,7 @@ public final class Calculator {
                        .orElseThrow(RuntimeException::new);
     }
 
-    private static String[] tokenize(ParsedText parsedText) {
+    private String[] tokenize(ParsedText parsedText) {
         return parsedText.getExpression().split(
                 parsedText.getDelimiters().toRegex()
         );
