@@ -6,6 +6,7 @@ import car.domain.Car;
 import car.domain.Cars;
 
 public final class OutputView {
+
     private static final String EXECUTE_RESULT_MESSAGE = "실행 결과";
     private static final String FINAL_WINNER_MESSAGE = "가 최종 우승했습니다.";
 

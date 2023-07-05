@@ -1,6 +1,7 @@
-package calculatorrefactor;
+package calculator;
 
 public class Positive {
+
     private int num;
 
     public Positive(int num) {
@@ -12,8 +13,9 @@ public class Positive {
         return this.num;
     }
 
-    // TODO: 추가 기능. MinusRuntimeException + msg 추가
     private void validatePositiveNumber(int num) {
-        if (num < 0) throw new RuntimeException();
+        if (num < 0) {
+            throw new RuntimeException();
+        }
     }
 }

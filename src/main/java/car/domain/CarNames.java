@@ -1,4 +1,4 @@
-package car;
+package car.domain;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 public final class CarNames {
 
     private List<CarName> names;
-    private final String CAR_NAMES_DELIMITER = "\\s+|,\\s*";
+    private final String CAR_NAMES_DELIMITER = ",";
     private final int ZERO = 0;
 
     public CarNames(String names) {

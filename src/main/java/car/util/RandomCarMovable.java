@@ -1,6 +1,7 @@
 package car.util;
 
 public final class RandomCarMovable extends Movable {
+
     private final int CAR_MOVING_LIMIT = 4;
     private final int CAR_MOVING_SIZE = 1;
 
@@ -19,8 +20,7 @@ public final class RandomCarMovable extends Movable {
     public void decideMoving() {
         int num = NumberGenerator.getRandomNumber();
         if (num >= CAR_MOVING_LIMIT) {
-            this.isMovable =  true;
+            this.isMovable = true;
         }
-        this.isMovable =  false;
     }
 }

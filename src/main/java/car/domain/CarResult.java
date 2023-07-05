@@ -1,6 +1,7 @@
-package car;
+package car.domain;
 
 public final class CarResult {
+
     private CarName name;
     private String positionMark;
 
@@ -15,6 +16,6 @@ public final class CarResult {
 
     @Override
     public String toString() {
-        return name.getName()+ " : " + positionMark;
+        return name.getName() + " : " + positionMark;
     }
 }

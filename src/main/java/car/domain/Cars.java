@@ -1,4 +1,4 @@
-package car;
+package car.domain;
 
 import car.util.Movable;
 import java.util.Collections;

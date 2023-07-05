@@ -1,5 +1,9 @@
 package car;
 
+import car.domain.Car;
+import car.domain.CarNames;
+import car.domain.Cars;
+import car.domain.TryCount;
 import car.input.InputView;
 import car.output.OutputView;
 import car.util.RandomCarMovable;
@@ -7,6 +11,7 @@ import java.io.IOException;
 import java.util.List;
 
 public final class CarRacing {
+
     private Cars cars;
 
     public CarRacing() {

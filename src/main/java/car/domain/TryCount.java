@@ -1,6 +1,7 @@
-package car;
+package car.domain;
 
 public final class TryCount {
+
     private int tryCount;
 
     public TryCount(String count) {
@@ -14,6 +15,7 @@ public final class TryCount {
         }
         return num;
     }
+
     public int getTryCount() {
         return this.tryCount;
     }

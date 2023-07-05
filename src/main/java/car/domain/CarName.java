@@ -1,4 +1,4 @@
-package car;
+package car.domain;
 
 public final class CarName {
 
@@ -7,7 +7,7 @@ public final class CarName {
 
     CarName(String name) {
         validateCarName(name);
-        this.name = name;
+        this.name = name.trim();
     }
 
     private void validateCarName(String carName) {

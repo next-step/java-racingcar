@@ -1,5 +1,8 @@
-package car.domain;
+package car;
 
+import car.domain.Car;
+import car.domain.CarNames;
+import car.domain.Cars;
 import car.util.Movable;
 import car.util.RandomCarMovable;
 import java.util.Comparator;
