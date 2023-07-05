@@ -1,8 +1,7 @@
 package racing.view;
 
 import org.junit.jupiter.api.Test;
-import racing.model.CarVO;
-import racing.model.SimulationResult;
+import racing.domain.Car;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,10 +31,10 @@ class RacingViewTest {
         //given
         RacingView racingView = new RacingView();
 
-        List<CarVO> cars = new ArrayList<>();
-        cars.add(new CarVO("pobi", 1));
-        cars.add(new CarVO("crong", 1));
-        cars.add(new CarVO("honux", 1));
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car("pobi"));
+        cars.add(new Car("crong"));
+        cars.add(new Car("honux"));
 
 
         //when, then
@@ -45,24 +44,22 @@ class RacingViewTest {
     }
 
     @Test
-    void getResultViewTest() {
+    void getWinnersViewTest() {
         //given
         RacingView racingView = new RacingView();
-        SimulationResult simulationResult = new SimulationResult(
-                Arrays.asList(
-                        Arrays.asList(new CarVO("test1", 1), new CarVO("test2", 1)),
-                        Arrays.asList(new CarVO("test1", 2), new CarVO("test2", 2))
-                ),
-                Arrays.asList("test1", "test2"));
+
+        List<String> winners = List.of("test1", "test2");
 
         //when, then
-        assertThat(racingView.getResultView(simulationResult)).isEqualTo("실행 결과\n" +
-                "test1 : -\n" +
-                "test2 : -\n" +
-                "\n" +
-                "test1 : --\n" +
-                "test2 : --\n" +
-                "\n" +
-                "test1, test2가 최종 우승했습니다.");
+        assertThat(racingView.getWinnersView(winners)).isEqualTo("test1, test2가 최종 우승했습니다.");
+    }
+
+    @Test
+    void getResultTitleViewTest() {
+        //given
+        RacingView racingView = new RacingView();
+
+        //when, then
+        assertThat(racingView.getResultTitleView()).isEqualTo("실행 결과");
     }
 }

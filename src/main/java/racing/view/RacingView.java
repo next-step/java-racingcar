@@ -1,7 +1,6 @@
 package racing.view;
 
-import racing.model.CarVO;
-import racing.model.SimulationResult;
+import racing.domain.Car;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,18 +18,17 @@ public class RacingView {
         return ASKING_COUNT;
     }
 
-    public String getCarStatusView(List<CarVO> cars) {
+    public String getCarStatusView(List<Car> cars) {
         return cars.stream()
                 .map(car -> car.getName() + " : " + "-".repeat(car.getPosition()))
                 .collect(Collectors.joining("\n"));
     }
 
-    public String getResultView(SimulationResult simulationResult) {
-        String result = RESULT_TITLE + "\n";
-        result += simulationResult.getProgress().stream()
-                .map(this::getCarStatusView)
-                .collect(Collectors.joining("\n\n")) + "\n\n";
-        result += String.join(", ", simulationResult.getWinners()) + "가 최종 우승했습니다.";
-        return result;
+    public String getWinnersView(List<String> winners) {
+        return String.join(", ", winners) + "가 최종 우승했습니다.";
+    }
+
+    public String getResultTitleView() {
+        return "실행 결과";
     }
 }

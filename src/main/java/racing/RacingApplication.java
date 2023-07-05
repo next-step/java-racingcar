@@ -33,19 +33,36 @@ public class RacingApplication {
     }
 
     public void run() {
-        input();
-        racingOutput.print(this.racingView.getResultView(this.racingManager.simulate()));
+        inputCarName();
+        int count = inputSimulationCount();
+        this.racingOutput.print("");
+        this.racingOutput.print(racingView.getResultTitleView());
+        simulate(count);
+        printResult();
     }
 
-    public void input() {
+    public void inputCarName() {
         this.racingOutput.print(this.racingView.getAskingCarNameView());
         List<Car> cars = this.racingInput.inputName();
 
-        this.racingOutput.print(this.racingView.getAskingCountView());
-        int count = this.racingInput.inputCount();
-        this.racingOutput.print("");
-
-        this.racingManager = new RacingManager(cars, this.numberGenerator, count);
+        this.racingManager = new RacingManager(cars, this.numberGenerator);
     }
 
+    public int inputSimulationCount() {
+        this.racingOutput.print(this.racingView.getAskingCountView());
+        return this.racingInput.inputCount();
+    }
+
+
+    public void simulate(int count) {
+        this.racingOutput.print(racingView.getCarStatusView(racingManager.getCars()) + "\n");
+        for (int i = 0; i < count; i++) {
+            racingManager.nextStep();
+            this.racingOutput.print(racingView.getCarStatusView(racingManager.getCars()) + "\n");
+        }
+    }
+
+    public void printResult() {
+        this.racingOutput.print(this.racingView.getWinnersView(this.racingManager.getWinners()));
+    }
 }

@@ -39,25 +39,19 @@ public class RacingManager {
     }
 
     public void nextStep() {
-        for (Car car : cars) {
-            car.goForward(isMovable(numberGenerator.generate()));
+        for (Car car : this.cars) {
+            car.goForward(isMovable(this.numberGenerator.generate()));
         }
     }
 
-    public List<Car> getWinners() {
-        int maxValue = cars.stream().mapToInt(Car::getPosition).max().orElse(-1);
-        return cars.stream().filter(car -> car.getPosition() == maxValue).collect(Collectors.toList());
-    }
-
-    public SimulationResult simulate() {
-        List<List<CarVO>> progress = new ArrayList<>();
-
-        progress.add(cars.stream().map(car -> new CarVO(car.getName(), car.getPosition())).collect(Collectors.toList()));
-        for (int i = 0; i < this.count; i++) {
-            nextStep();
-            progress.add(cars.stream().map(car -> new CarVO(car.getName(), car.getPosition())).collect(Collectors.toList()));
-        }
-        List<String> winners = getWinners().stream().map(Car::getName).collect(Collectors.toList());
-        return new SimulationResult(progress, winners);
+    public List<String> getWinners() {
+        int maxValue = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(-1);
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxValue)
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 }
