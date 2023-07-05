@@ -21,27 +21,4 @@ public class StringCalculator {
         }
         return false;
     }
-
-    /*
-    public static int splitByDelimiterSum(String text, List<Character> delimiters) {
-        boolean prevNum = false;
-        String tmp = "";
-        int result = 0;
-        for (char c : text.toCharArray()) {
-            if (prevNum == true && delimiters.contains(c)) {
-                prevNum = false;
-                validateToken(tmp);
-                result += Integer.parseInt(tmp);
-                tmp = "";
-            } else {
-                prevNum = true;
-                tmp += c;
-            }
-        }
-        validateToken(tmp);
-        result += Integer.parseInt(tmp);
-
-        return result;
-    }
-     */
 }
