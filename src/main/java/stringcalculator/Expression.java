@@ -2,11 +2,11 @@ package stringcalculator;
 
 import java.util.Arrays;
 
-public class StringExpression {
+public class Expression {
 
     private final String[] stringArray;
 
-    public StringExpression(String expression, String delimiter) {
+    public Expression(String expression, String delimiter) {
         this.stringArray = validateInputText(expression, delimiter);
     }
 

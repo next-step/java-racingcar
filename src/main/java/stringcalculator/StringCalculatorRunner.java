@@ -3,7 +3,7 @@ package stringcalculator;
 public class StringCalculatorRunner {
 
     public static int run(String inputText) {
-        StringExpression stringExpression = StringExpressionFactory.create(inputText);
+        Expression stringExpression = ExpressionFactory.create(inputText);
 
         return stringExpression.sumString();
     }
