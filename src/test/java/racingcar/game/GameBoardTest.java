@@ -3,7 +3,6 @@ package racingcar.game;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import racingcar.car.CarName;
-import racingcar.game.GameBoard;
 
 import java.util.List;
 import java.util.stream.Collectors;

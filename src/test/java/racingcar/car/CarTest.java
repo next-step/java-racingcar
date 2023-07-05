@@ -2,7 +2,6 @@ package racingcar.car;
 
 import org.junit.jupiter.api.Test;
 import racingcar.MockRandom;
-import racingcar.car.Car;
 
 import static org.assertj.core.api.Assertions.*;
 
