@@ -16,6 +16,7 @@ public class RacingGamePlayRequest {
     }
 
     public static class CarRequest {
+
         private final String name;
         private final Moveable moveable;
 

@@ -23,7 +23,7 @@ public class Asserts {
     }
 
     public static void isFalse(boolean option, Supplier<String> exceptionMessage) {
-        if(!option) {
+        if (!option) {
             return;
         }
         throwIllegalArgumentExceptionWithMessage(exceptionMessage);
