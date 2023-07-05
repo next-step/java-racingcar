@@ -4,10 +4,10 @@ import java.util.Arrays;
 
 public class StringExpression {
 
-    private final String[] stringArray;
+    private final String[] strings;
 
     public StringExpression(String expression, String delimiter) {
-        this.stringArray = validateInputText(expression, delimiter);
+        this.strings = validateInputText(expression, delimiter);
     }
 
     private String[] parse(String expression, String delimiter) {
@@ -37,7 +37,7 @@ public class StringExpression {
     }
 
     public int sumString() {
-        return Arrays.stream(stringArray)
+        return Arrays.stream(strings)
                 .mapToInt(s -> stringToInt(s))
                 .sum();
     }
