@@ -10,7 +10,7 @@ public class Calculator {
     private static final String NEGATIVE_NUMBER_EXCEPTION_MESSAGE = "음수는 입력하실 수 없습니다.";
 
     public int calculate(String input) throws RuntimeException {
-        if (isBlankOrNull(input))
+        if (isNullOrEmpty(input))
             return 0;
 
         return getSum(input);
@@ -24,7 +24,7 @@ public class Calculator {
     }
 
 
-    private boolean isBlankOrNull(String input) {
+    private boolean isNullOrEmpty(String input) {
         return input == null || input.isEmpty();
     }
 
