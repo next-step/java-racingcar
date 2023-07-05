@@ -11,7 +11,7 @@ import racingcar.controller.response.RacingGamePlayControllerResponse;
 import racingcar.usecase.RacingGamePlayUsecase;
 
 @Nested
-@DisplayName("RacingGamePlayControllerTest")
+@DisplayName("RacingGamePlayController 클래스")
 class RacingGamePlayControllerTest {
 
     @Nested
