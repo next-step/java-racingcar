@@ -21,7 +21,6 @@ public class Cars {
         return (int) (Math.random() * 10000) % 10;
     }
 
-
     public String[] getWinners() {
         int winnerCount = Arrays.stream(cars)
                 .mapToInt(car -> car.moveCount)
@@ -47,7 +46,7 @@ public class Cars {
     }
 
     private Car[] generateCarArray(String[] carNames) {
-        return  Arrays.stream(carNames)
+        return Arrays.stream(carNames)
                 .map(name -> new Car(name))
                 .toArray(Car[]::new);
     }

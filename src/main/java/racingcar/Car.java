@@ -1,11 +1,10 @@
 package racingcar;
 
 import java.text.MessageFormat;
-import java.util.Arrays;
 
 public class Car {
 
-    public int moveCount =0;
+    public int moveCount = 0;
     public String name;
 
     public Car(String name) {

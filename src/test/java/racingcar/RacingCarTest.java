@@ -19,13 +19,12 @@ public class RacingCarTest {
 
     @DisplayName("유효하지 않은 자동차 이름일 경우 예외가 발생한다")
     @ParameterizedTest
-    @ValueSource(strings = {"pobi,croong,honux", "pobi,,honux", "", ",,,," })
+    @ValueSource(strings = {"pobi,croong,honux", "pobi,,honux", "", ",,,,"})
     void 자동차_입력_검증_실패(String carNames) {
         assertThatExceptionOfType(RuntimeException.class)
                 .isThrownBy(() -> new Cars(carNames))
                 .withMessageMatching("자동차 이름이 유효하지 않습니다");
     }
-
 
     @DisplayName("실행 횟수가 양수인 경우 예외가 발생하지 않는다")
     @ParameterizedTest
@@ -68,14 +67,12 @@ public class RacingCarTest {
         assertThat(racingCar.moveCount).isEqualTo(previousCount);
     }
 
-
     @Test
     void 자동자_경주_정상_동작() {
         Cars cars = new Cars("pobi,crong,honux");
         RacingGame racingGame = new RacingGame(cars, "5");
 
         assertThatNoException()
-                .isThrownBy(() ->racingGame.play());
+                .isThrownBy(() -> racingGame.play());
     }
-
 }

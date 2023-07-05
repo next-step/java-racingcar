@@ -23,6 +23,7 @@ class StringCalculatorTest {
         int result = Util.sumString(nums);
         assertThat(result).isEqualTo(7);
     }
+
     @DisplayName("둘 이상의 덧셈 계산이 올바르게 수행되어야 한다")
     @Test
     void 덧셈_계산_둘_이상() {
@@ -63,7 +64,6 @@ class StringCalculatorTest {
         assertThatNoException().isThrownBy(() -> new StringExpression(input, delimiter));
     }
 
-
     @DisplayName("음수가 존재하는 경우 RuntimeException 예외가 발생한다")
     @Test
     void 문자열_검증_실패_음수() {
@@ -85,7 +85,6 @@ class StringCalculatorTest {
                 .isThrownBy(() -> new StringExpression(input, delimiter))
                 .withMessageMatching("유효하지 않은 값입니다");
     }
-
 
     @DisplayName("기본 구분자가 주어졌을 때 올바른 계산 결과를 반환한다")
     @Test

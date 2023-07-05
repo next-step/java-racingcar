@@ -8,6 +8,7 @@ public class RacingGameRunner {
     private final String COUNT = "시도할 회수는 몇회인가요?";
 
     private final String PLAY_RESULT = "\n실행 결과";
+
     public void run() {
         output.print(CAR_NAMES);
         String carNames = input.read();
@@ -16,6 +17,7 @@ public class RacingGameRunner {
         String count = input.read();
 
         RacingGame racingGame = new RacingGame(new Cars(carNames), count);
+
         output.print(PLAY_RESULT);
         output.print(racingGame.play());
     }
