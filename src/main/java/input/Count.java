@@ -4,7 +4,6 @@ public class Count {
 
     private int tryCount;
 
-    private String st;
     public Count (String count) {
         this.tryCount = toInt(count);
     }

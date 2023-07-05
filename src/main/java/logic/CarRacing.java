@@ -12,6 +12,9 @@ public class CarRacing {
 
     public Cars runRaceOnce() {
         this.cars.raceOnce();
+        return this.getRaceResult();
+    }
+    public Cars getRaceResult () {
         return this.cars;
     }
 
