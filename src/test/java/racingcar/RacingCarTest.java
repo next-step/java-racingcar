@@ -28,7 +28,9 @@ public class RacingCarTest {
 
         ThrowableAssert.ThrowingCallable callable = () -> new Car(name);
 
-        assertThatThrownBy(callable).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(callable)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차 이름은 5글자 이하여야 합니다");
     }
 
     @Test

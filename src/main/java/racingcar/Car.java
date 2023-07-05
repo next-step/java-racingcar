@@ -2,9 +2,12 @@ package racingcar;
 
 import java.util.Objects;
 
+import static java.lang.String.format;
+
 public class Car {
     private static final int MAX_NAME_LENGTH = 5;
     private static final int MOVE_STANDARD = 4;
+    private static final String MAX_NAME_OVER_MESSAGE = format("자동차 이름은 %s글자 이하여야 합니다", MAX_NAME_LENGTH);
     private final String name;
     private int distance;
 
@@ -15,7 +18,7 @@ public class Car {
 
     private void validateName(String name) {
         if (name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(MAX_NAME_OVER_MESSAGE);
         }
     }
 
