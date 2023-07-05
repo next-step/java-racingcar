@@ -65,7 +65,7 @@ public class RacingGamePlayControllerResponse {
             '}';
     }
 
-    private static class RacingGamePlayControllerRoundResponse {
+    public static class RacingGamePlayControllerRoundResponse {
 
         private final int round;
         private final List<ControllerCarPerRoundResponse> carPerRoundResponses;
@@ -110,7 +110,7 @@ public class RacingGamePlayControllerResponse {
         }
     }
 
-    private static class ControllerCarPerRoundResponse {
+    public static class ControllerCarPerRoundResponse {
 
         private final String name;
         private final int position;
