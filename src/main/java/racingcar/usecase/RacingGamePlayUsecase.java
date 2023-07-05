@@ -5,8 +5,9 @@ import racingcar.domain.RacingGame;
 import racingcar.usecase.request.RacingGamePlayRequest;
 import racingcar.usecase.response.RacingGamePlayResponse;
 
-public class RacingGamePlayUsecase {
+public class RacingGamePlayUsecase implements RacingGamePlayable {
 
+    @Override
     public RacingGamePlayResponse play(int round, RacingGamePlayRequest racingGamePlayRequest) {
         RacingGame racingGame = getRacingGame(racingGamePlayRequest);
         RacingGamePlayResponse response = new RacingGamePlayResponse();

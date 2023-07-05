@@ -1,11 +1,11 @@
-package racingcar;
+package racingcar.app;
 
+import racingcar.app.input.ConsoleInput;
+import racingcar.app.view.ConsoleView;
 import racingcar.controller.RacingGamePlayController;
 import racingcar.controller.request.RacingGamePlayControllerRequest;
 import racingcar.controller.response.RacingGamePlayControllerResponse;
-import racingcar.input.ConsoleInput;
 import racingcar.usecase.RacingGamePlayUsecase;
-import racingcar.view.ConsoleView;
 
 public class RacingApplication {
 

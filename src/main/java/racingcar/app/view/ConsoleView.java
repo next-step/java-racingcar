@@ -1,4 +1,4 @@
-package racingcar.view;
+package racingcar.app.view;
 
 import java.util.List;
 import racingcar.controller.response.RacingGamePlayControllerResponse;
