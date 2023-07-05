@@ -12,16 +12,12 @@ public class Car {
         this.name = name;
     }
 
-    private int generateRandom() {
-        return (int) (Math.random() * 10000) % 10;
-    }
-
     public String statusToString() {
         return MessageFormat.format("{0} : {1}", name, "-".repeat(moveCount));
     }
 
-    public void move() {
-        if (generateRandom() >= 4) {
+    public void move(int random) {
+        if (random >= 4) {
             this.moveCount++;
         }
     }

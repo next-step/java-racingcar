@@ -1,11 +1,11 @@
 package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
-
 
 public class RacingCarTest {
 
@@ -42,6 +42,40 @@ public class RacingCarTest {
         assertThatExceptionOfType(RuntimeException.class)
                 .isThrownBy(() -> new RacingGame(null, count))
                 .withMessageMatching("실행 횟수는 양수만 가능합니다");
+    }
+
+    @DisplayName("랜덤 값이 4 이상이면 자동차는 1만큼 전진한다")
+    @ParameterizedTest
+    @ValueSource(ints = {4, 9})
+    void 자동차_전진(int randomValue) {
+        Car racingCar = new Car("");
+        int previousCount = racingCar.moveCount;
+
+        racingCar.move(randomValue);
+
+        assertThat(racingCar.moveCount).isEqualTo(previousCount + 1);
+    }
+
+    @DisplayName("랜덤 값이 3 이하면 자동차는 정지한다")
+    @ParameterizedTest
+    @ValueSource(ints = {0, 3})
+    void 자동차_정지(int randomValue) {
+        Car racingCar = new Car("");
+        int previousCount = racingCar.moveCount;
+
+        racingCar.move(randomValue);
+
+        assertThat(racingCar.moveCount).isEqualTo(previousCount);
+    }
+
+
+    @Test
+    void 자동자_경주_정상_동작() {
+        Cars cars = new Cars("pobi,crong,honux");
+        RacingGame racingGame = new RacingGame(cars, "5");
+
+        assertThatNoException()
+                .isThrownBy(() ->racingGame.play());
     }
 
 }

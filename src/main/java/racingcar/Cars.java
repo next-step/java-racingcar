@@ -11,15 +11,16 @@ public class Cars {
         this.cars = generateCarArray(carNames);
     }
 
-    public Car[] getCars() {
-        return cars;
-    }
-
     public void move() {
         for (Car car : cars) {
-            car.move();
+            car.move(generateRandom());
         }
     }
+
+    private int generateRandom() {
+        return (int) (Math.random() * 10000) % 10;
+    }
+
 
     public String[] getWinners() {
         int winnerCount = Arrays.stream(cars)

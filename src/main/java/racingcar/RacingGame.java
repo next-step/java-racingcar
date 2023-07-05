@@ -26,13 +26,13 @@ public class RacingGame {
         return sb.toString();
     }
 
-    public String getResult() {
+    private String getResult() {
         String result = Arrays.stream(cars.getResult())
                 .collect(Collectors.joining("\n"));
         return result + "\n\n";
     }
 
-    public String getWinner() {
+    private String getWinner() {
         String result = Arrays.stream(cars.getWinners())
                 .collect(Collectors.joining(", "));
 
