@@ -1,10 +1,14 @@
 package racingcar;
 
+import racingcar.car.Cars;
+
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
 public class RacingGame {
+
     public final Cars cars;
+    private final String WINNER_MESSAGE = "가 최종 우승했습니다.";
     public int count;
 
     public RacingGame(Cars cars, String count) {
@@ -36,7 +40,7 @@ public class RacingGame {
         String result = Arrays.stream(cars.getWinners())
                 .collect(Collectors.joining(", "));
 
-        return result + "가 최종 우승했습니다.";
+        return result + WINNER_MESSAGE;
     }
 
     private void validateCount(String count) {

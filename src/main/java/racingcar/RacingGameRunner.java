@@ -1,5 +1,6 @@
 package racingcar;
 
+import racingcar.car.Cars;
 import racingcar.view.RacingCarView;
 
 public class RacingGameRunner {
