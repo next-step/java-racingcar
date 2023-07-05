@@ -17,11 +17,11 @@ class RacingGameTest {
 
     @Nested
     @DisplayName("new 생성자는")
-    class ContextNewConstructor {
+    class DescribeNewConstructor {
 
         @Nested
         @DisplayName("자동차 클래스들과 라운드 정보가 주어진다면,")
-        class DescribeCarsInput {
+        class ContextCarsInput {
 
             private final Car[] cars = {
                 new Car("A", trueMover),
@@ -39,7 +39,7 @@ class RacingGameTest {
 
         @Nested
         @DisplayName("Cars에 중복된 이름의 Car가 있다면,")
-        class DescribeDuplicateCarsNameInput {
+        class ContextDuplicateCarsNameInput {
 
             private final Car[] duplicateNameCars = {
                 new Car("A", trueMover),
@@ -60,7 +60,7 @@ class RacingGameTest {
 
     @Nested
     @DisplayName("play 메소드는")
-    class ContextPlayMethod {
+    class DescribePlayMethod {
 
         private final Car[] cars = {
             new Car("A", falseMover),
@@ -70,7 +70,7 @@ class RacingGameTest {
 
         @Nested
         @DisplayName("한번 호출되면,")
-        class DescribeRacingGameRound1 {
+        class ContextRacingGameRound1 {
 
             private final RacingGame racingGame = new RacingGame(cars);
             private final Car[] expectedCars = getExpectedCars();
@@ -98,7 +98,7 @@ class RacingGameTest {
 
         @Nested
         @DisplayName("세번 호출되면,")
-        class DescribeRacingGameRound3 {
+        class ContextRacingGameRound3 {
 
             private final RacingGame racingGame = new RacingGame(cars);
             private final Car[] expectedCars = getExpectedCars();
@@ -133,7 +133,7 @@ class RacingGameTest {
 
     @Nested
     @DisplayName("getRoundResult 메소드는")
-    class ContextRoundResultMethod {
+    class DescribeRoundResultMethod {
 
         private final Car[] cars = {
             new Car("A", falseMover),
@@ -143,7 +143,7 @@ class RacingGameTest {
 
         @Nested
         @DisplayName("play가 실행된 이후 호출하면,")
-        class DescribeCall {
+        class ContextCall {
 
             private final RacingGame racingGame = new RacingGame(cars);
 
@@ -173,7 +173,7 @@ class RacingGameTest {
 
         @Nested
         @DisplayName("play가 두번 호출된 후, 호출되면")
-        class DescribeCallBeforePlayTwice {
+        class ContextCallBeforePlayTwice {
 
             private final RacingGame racingGame = new RacingGame(cars);
 
@@ -181,7 +181,7 @@ class RacingGameTest {
 
             @Test
             @DisplayName("두번째 라운드의 결과를 반환한다.")
-            void ReturnTwiceRoundResult() {
+            void ItReturnTwiceRoundResult() {
                 racingGame.play();
                 racingGame.play();
                 Car[] roundResult = racingGame.getRoundResult();

@@ -15,13 +15,13 @@ class CarTest {
 
     @Nested
     @DisplayName("new 생성자는")
-    class ContextNewConstructor {
+    class DescribeNewConstructor {
 
         private final Moveable trueMover = () -> true;
 
         @Nested
         @DisplayName("1~5자 사이의 이름이 주어진다면,")
-        class DescribeNormalInput {
+        class ContextNormalInput {
 
             private final String minimumInput = "1";
             private final String fullInput = "12345";
@@ -37,7 +37,7 @@ class CarTest {
 
         @Nested
         @DisplayName("0자 또는 6자 이상의 이름이 주어진다면,")
-        class DescribeInvalidInput {
+        class ContextInvalidInput {
 
             private final String blankInput = "";
             private final String overflowInput = "123456";
@@ -53,7 +53,7 @@ class CarTest {
 
         @Nested
         @DisplayName("null값이 이름으로 주어진다면,")
-        class DescribeNullInput {
+        class ContextNullInput {
 
             private final String nullInput = null;
 
@@ -67,7 +67,7 @@ class CarTest {
 
         @Nested
         @DisplayName("null값이 Moveable으로 주어진다면,")
-        class DescribeMoveableNullInput {
+        class ContextMoveableNullInput {
 
             private final String normalInput = "123";
             private final Moveable nullMoveable = null;
