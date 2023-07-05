@@ -2,7 +2,6 @@ package calculator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import calculatorrefactor.Calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

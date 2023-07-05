@@ -10,7 +10,10 @@ public class Cars {
     private List<Car> cars;
 
     public Cars(final String carNames) {
-        cars = Arrays.stream(tokenCarNames(carNames)).map(Car::new).collect(Collectors.toList());
+        cars = Arrays.stream(tokenCarNames(carNames))
+            .map(CarName::new)
+            .map(Car::new)
+            .collect(Collectors.toList());
     }
 
     private String[] tokenCarNames(final String carNames) {
