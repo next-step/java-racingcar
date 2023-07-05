@@ -39,8 +39,4 @@ public class Car {
     public String getName() {
         return name;
     }
-
-    public String statusToString() {
-        return name + " : " + "-".repeat(position);
-    }
 }
