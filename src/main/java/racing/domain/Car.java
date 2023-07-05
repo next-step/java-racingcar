@@ -11,7 +11,9 @@ public class Car {
     }
 
     public void goForward(boolean trigger) {
-        if (trigger) this.position++;
+        if (trigger) {
+            this.position++;
+        }
     }
 
     public int getPosition() {
