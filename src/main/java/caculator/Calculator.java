@@ -1,6 +1,7 @@
 package caculator;
 
 import caculator.delimiter.DelimiterParser;
+import caculator.delimiter.ExpressionTokenizer;
 import caculator.model.Element;
 import caculator.model.Elements;
 import caculator.model.ParsedText;
@@ -8,9 +9,11 @@ import caculator.model.ParsedText;
 public final class Calculator {
 
     private final DelimiterParser delimiterParser;
+    private final ExpressionTokenizer tokenizer;
 
-    public Calculator(final DelimiterParser delimiterParser) {
+    public Calculator(final DelimiterParser delimiterParser, final ExpressionTokenizer tokenizer) {
         this.delimiterParser = delimiterParser;
+        this.tokenizer = tokenizer;
     }
 
     public int sum(final String text) {
@@ -21,19 +24,13 @@ public final class Calculator {
         ParsedText parsedText = delimiterParser.parse(text);
 
         Elements elements = new Elements(
-                tokenize(parsedText)
+                tokenizer.tokenize(parsedText)
         );
 
         return elements.getElements().stream()
                        .mapToInt(Element::toInt)
                        .reduce(Integer::sum)
                        .orElseThrow(RuntimeException::new);
-    }
-
-    private String[] tokenize(final ParsedText parsedText) {
-        return parsedText.getExpression().split(
-                parsedText.getDelimiters().toRegex()
-        );
     }
 
 }

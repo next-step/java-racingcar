@@ -5,13 +5,15 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import caculator.Calculator;
 import caculator.delimiter.DelimiterParser;
+import caculator.delimiter.ExpressionTokenizer;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
 
     DelimiterParser delimiterParser = new DelimiterParser();
-    Calculator calculator = new Calculator(delimiterParser);
+    ExpressionTokenizer tokenizer = new ExpressionTokenizer();
+    Calculator calculator = new Calculator(delimiterParser, tokenizer);
 
     @Test
     @DisplayName("쉼표를 구분자로 가지는 경우")
