@@ -1,5 +1,7 @@
 package stringcalculator;
 
+import java.util.Arrays;
+
 public class StringExpression {
 
     private final String[] stringArray;
@@ -8,16 +10,12 @@ public class StringExpression {
         this.stringArray = validateInputText(expression, delimiter);
     }
 
-    public String[] getStringArray() {
-        return stringArray;
-    }
-
     private String[] parse(String expression, String delimiter) {
         return expression.split(delimiter);
     }
 
     private void validateNumber(String string) {
-        if (!string.matches("^[0-9]+$")) {
+        if (!string.matches("^[0-9]*$")) {
             throw new RuntimeException("유효하지 않은 값입니다");
         }
     }
@@ -29,5 +27,18 @@ public class StringExpression {
         }
 
         return stringArray;
+    }
+
+    private int stringToInt(String s) {
+        if (s.length() == 0) {
+            return 0;
+        }
+        return Integer.parseInt(s);
+    }
+
+    public int sumString() {
+        return Arrays.stream(stringArray)
+                .mapToInt(s -> stringToInt(s))
+                .sum();
     }
 }

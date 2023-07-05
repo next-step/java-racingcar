@@ -2,57 +2,49 @@ package stringcalculator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import stringcalculator.utils.Util;
 
 import static org.assertj.core.api.Assertions.*;
 
 class StringCalculatorTest {
 
-    @DisplayName("빈 배열의 덧셈 계산 결과는 0이다")
+    @DisplayName("빈 문자열의 덧셈 계산 결과는 0이다")
     @Test
-    void 덧셈_계산_빈_배열() {
-        String[] nums = {};
-        int result = Util.sumString(nums);
+    void 덧셈_계산_빈_문자열() {
+        StringExpression stringExpression = StringExpressionFactory.create("");
+
+        int result = stringExpression.sumString();
+
         assertThat(result).isEqualTo(0);
     }
 
-    @DisplayName("하나의 값만 있는 배열의 덧셈 계산은 해당 값이다")
+    @DisplayName("null의 덧셈 계산 결과는 0이다")
+    @Test
+    void 덧셈_계산_널() {
+        StringExpression stringExpression = StringExpressionFactory.create(null);
+
+        int result = stringExpression.sumString();
+
+        assertThat(result).isEqualTo(0);
+    }
+
+    @DisplayName("하나의 값만 있는 문자열의 덧셈 계산은 해당 값이다")
     @Test
     void 덧셈_계산_하나() {
-        String[] nums = {"7"};
-        int result = Util.sumString(nums);
+        StringExpression stringExpression = StringExpressionFactory.create("7");
+
+        int result = stringExpression.sumString();
+
         assertThat(result).isEqualTo(7);
     }
 
     @DisplayName("둘 이상의 덧셈 계산이 올바르게 수행되어야 한다")
     @Test
     void 덧셈_계산_둘_이상() {
-        String[] nums = {"1", "4", "10"};
-        int result = Util.sumString(nums);
+        StringExpression stringExpression = StringExpressionFactory.create("1,4:10");
+
+        int result = stringExpression.sumString();
+        
         assertThat(result).isEqualTo(15);
-    }
-
-    @DisplayName("커스텀 구분자가 있는 경우 제대로 분리된다")
-    @Test
-    void 커스텀_구분자_분리() {
-        String input = "1;2;3";
-        String delimiter = ";";
-
-        StringExpression stringExpression = new StringExpression(input, delimiter);
-
-        assertThat(stringExpression.getStringArray()).containsExactly("1", "2", "3");
-    }
-
-    @DisplayName("일반 구분자의 경우 제대로 분리된다")
-    @Test
-    void 일반_구분자_분리() {
-        String input = "1:2,3";
-        String delimiter = ",|:";
-
-        StringExpression stringExpression = new StringExpression(input, delimiter);
-
-        assertThat(stringExpression.getStringArray()).containsExactly("1", "2", "3");
-
     }
 
     @DisplayName("양수로만 이루어진 경우 예외가 발생하지 않는다")
