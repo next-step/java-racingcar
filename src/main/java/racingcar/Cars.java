@@ -3,6 +3,7 @@ package racingcar;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
+import static racingcar.RandomGenerator.generateNumber;
 
 public class Cars {
 
@@ -20,7 +21,7 @@ public class Cars {
 
     public void takeTurn() {
         for (Car car : cars) {
-            car.progress();
+            car.progress(generateNumber());
         }
     }
 

@@ -43,8 +43,7 @@ public class Car {
         return Objects.hash(name, distance);
     }
 
-    public void progress() {
-        int number = RandomGenerator.generateNumber();
+    public void progress(int number) {
         if (number >= 4) {
             forward();
         }

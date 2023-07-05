@@ -5,8 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.mockito.MockedStatic;
-import org.mockito.Mockito;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -56,11 +54,9 @@ public class RacingCarTest {
     @DisplayName("랜덤 값이 4 이상일 경우 전진한다")
     public void 랜덤_값이_4_이상일_경우_전진한다(int number) throws Exception {
         Car car = new Car("chan");
-        try (MockedStatic<RandomGenerator> utilities = Mockito.mockStatic(RandomGenerator.class)) {
-            utilities.when(RandomGenerator::generateNumber)
-                    .thenReturn(number);
-            car.progress();
-        }
+
+        car.progress(number);
+
         assertThat(car.getDistance()).isEqualTo(1);
     }
 
@@ -69,11 +65,8 @@ public class RacingCarTest {
     @DisplayName("랜덤 값이 3 이하일 경우 멈춘다.")
     public void 랜덤_값이_3_이하일_경우_멈춘다(int number) throws Exception {
         Car car = new Car("chan");
-        try (MockedStatic<RandomGenerator> utilities = Mockito.mockStatic(RandomGenerator.class)) {
-            utilities.when(RandomGenerator::generateNumber)
-                    .thenReturn(number);
-            car.progress();
-        }
+
+        car.progress(number);
 
         assertThat(car.getDistance()).isEqualTo(0);
     }
