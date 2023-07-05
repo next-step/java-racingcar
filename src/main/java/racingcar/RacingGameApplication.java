@@ -1,5 +1,7 @@
 package racingcar;
 
-public class RacingCarApplication {
-    
+public class RacingGameApplication {
+    public static void main(String[] args) {
+        new RacingGameRunner().run();
+    }
 }

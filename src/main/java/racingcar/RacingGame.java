@@ -13,30 +13,31 @@ public class RacingGame {
         this.count = Integer.parseInt(count.trim());
     }
 
-    public void run() {
+    public String play() {
+        StringBuilder sb = new StringBuilder();
         while (count-- > 0) {
             cars.move();
-            printResult();
+            sb.append(getResult());
         }
 
-        printResult();
-        printWinner();
+        sb.append(getResult());
+        sb.append(getWinner());
+
+        return sb.toString();
     }
 
-    public void printResult() {
+    public String getResult() {
         String result = Arrays.stream(cars.getResult())
                 .collect(Collectors.joining("\n"));
-        System.out.println(result + "\n");
+        return result + "\n\n";
     }
 
-    public void printWinner() {
+    public String getWinner() {
         String result = Arrays.stream(cars.getWinners())
                 .collect(Collectors.joining(", "));
 
-        System.out.println(result + "가 최종 우승했습니다.");
+        return result + "가 최종 우승했습니다.";
     }
-
-
 
     private void validateCount(String count) {
         if (!count.trim().matches("^[0-9]+$")) {
