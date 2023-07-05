@@ -8,6 +8,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingManager {
+    private static final int MOVING_RANGE_LOW = 4;
+    private static final int MOVING_RANGE_HIGH = 9;
+
+
     private List<Car> cars;
     private NumberGenerator numberGenerator;
 
