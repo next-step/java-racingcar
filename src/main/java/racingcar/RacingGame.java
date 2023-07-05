@@ -46,7 +46,7 @@ public class RacingGame {
         return result + WINNER_MESSAGE;
     }
 
-    private void validateCount(String count) {
+    private static void validateCount(String count) {
         if (!count.trim().matches("^[0-9]+$")) {
             throw new RuntimeException(NON_POSITIVE_EXCEPTION_MESSAGE);
         }
