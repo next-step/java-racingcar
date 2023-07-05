@@ -29,6 +29,6 @@ public class RacingView {
     }
 
     public String getResultTitleView() {
-        return "실행 결과";
+        return RESULT_TITLE;
     }
 }
