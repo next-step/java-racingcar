@@ -12,17 +12,17 @@ public class StringExpression {
         return stringArray;
     }
 
-    public String[] parse(String expression, String delimiter) {
+    private String[] parse(String expression, String delimiter) {
         return expression.split(delimiter);
     }
 
-    public void validateNumber(String string) {
+    private void validateNumber(String string) {
         if (!string.matches("^[0-9]+$")) {
             throw new RuntimeException("유효하지 않은 값입니다");
         }
     }
 
-    public String[] validateInputText(String expression, String delimiter) {
+    private String[] validateInputText(String expression, String delimiter) {
         String[] stringArray = parse(expression, delimiter);
         for (String string : stringArray) {
             validateNumber(string);
