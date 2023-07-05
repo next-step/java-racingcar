@@ -61,7 +61,9 @@ public class Input {
     /** Given input names, split and validate names of cars. */
     public static List<String> split(String input) {
         String[] carNames = input.split(",");
-        if (carNames.length == 0) throw new IllegalArgumentException();
+        if (carNames.length == 0)  {
+            throw new IllegalArgumentException();
+        }
         return Arrays.stream(carNames)
                 .filter(Input::isValidCarName)
                 .collect(Collectors.toList());
