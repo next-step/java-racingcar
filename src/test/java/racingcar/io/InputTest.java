@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.io;
 
 import org.junit.jupiter.api.Test;
 import racingcar.io.Input;
