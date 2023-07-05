@@ -11,7 +11,7 @@ public class Input {
     public static List<String> processCarNames() {
         try {
             return readCarNames();
-        } catch (RuntimeException e) {
+        } catch (CarNameInputException e) {
             System.out.println("자동차 이름의 길이가 5이하여야 합니다.");
             return processCarNames();
         }
@@ -20,7 +20,7 @@ public class Input {
     public static int processTryCount() {
         try {
             return readTryCount();
-        } catch (RuntimeException e) {
+        } catch (TryCountInputException e) {
             System.out.println("숫자만 입력받을 수 있습니다.");
             return processTryCount();
         }
@@ -32,7 +32,7 @@ public class Input {
         if (validateNumber(input)) {
             return Integer.parseInt(input);
         }
-        throw new IllegalArgumentException();
+        throw new TryCountInputException();
     }
 
     public static boolean validateNumber(String number) {
@@ -59,6 +59,6 @@ public class Input {
         if (validateCarNames(carNames)) {
             return List.of(carNames);
         }
-        throw new IllegalArgumentException();
+        throw new CarNameInputException();
     }
 }
