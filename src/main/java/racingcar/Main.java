@@ -13,15 +13,8 @@ public class Main {
     }
 
     private static void play(InputManager inputManager, OutputManager outputManager) throws IOException {
-        Cars cars = Cars.from(inputManager.readCarNames());
-        int round = inputManager.readRound();
-        RacingManager racingManager = new RacingManager(cars);
-        outputManager.printExecutionResult();
-        outputManager.printCars(cars);
-        for (int i = 0; i < round; i++) {
-            cars = racingManager.playRacing();
-            outputManager.printCars(cars);
-        }
-        outputManager.printWinnerNames(cars.findWinnerNames());
+        RacingManager racingManager = new RacingManager(inputManager.readCarNames(), inputManager.readRound());
+        RacingResult racingResult = racingManager.playRacing();
+        outputManager.printResult(racingResult);
     }
 }

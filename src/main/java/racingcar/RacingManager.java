@@ -1,16 +1,25 @@
 package racingcar;
 
+import java.util.List;
+
 public class RacingManager {
-    private static final String WINNERS_STRING = "가 최종 우승했습니다.";
 
     private final Cars cars;
+    private final int round;
+    private final RacingResult racingResult;
 
-    public RacingManager(Cars cars) {
-        this.cars = cars;
+    public RacingManager(List<String> carNames, int round) {
+        this.cars = Cars.from(carNames);
+        this.round = round;
+        racingResult = new RacingResult();
     }
 
-    public Cars playRacing() {
-        cars.takeTurn();
-        return cars;
+    public RacingResult playRacing() {
+        for (int i = 0; i < round; i++) {
+            cars.takeTurn();
+            racingResult.addResult(cars);
+        }
+        racingResult.computeWinner(cars);
+        return racingResult;
     }
 }
