@@ -1,12 +1,11 @@
-package car.input;
+package car.domain;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import car.domain.TryCount;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-public class InputTest {
+public class tryCountTest {
 
     @Test
     @DisplayName("시도 횟수 음수면 예외 처리")

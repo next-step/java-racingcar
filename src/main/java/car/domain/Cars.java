@@ -1,11 +1,13 @@
 package car.domain;
 
+import car.util.Movable;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Cars {
+public final class Cars {
+
     private List<Car> cars;
 
     public Cars(CarNames carNames) {
@@ -13,11 +15,13 @@ public class Cars {
     }
 
     public void race(Movable movable) {
-        for (int i = 0 ; i< this.cars.size() ; i++) {
-            Movable carMovable = movable;
-            if (carMovable.getMovable()) cars.get(i).move(carMovable.getMovingSize());
-        }
+        cars.forEach(car -> {
+            if (movable.getMovable()) {
+                car.move(movable.getMovingSize());
+            }
+        });
     }
+
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
     }

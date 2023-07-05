@@ -3,7 +3,7 @@ package car.logic;
 import car.domain.Car;
 import car.domain.CarNames;
 import car.domain.Cars;
-import car.domain.RandomCarMovable;
+import car.util.RandomCarMovable;
 import car.domain.TryCount;
 import car.input.InputView;
 import car.output.OutputView;
@@ -12,7 +12,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CarRacing {
+public final class CarRacing {
 
     private static Cars cars;
 
@@ -39,7 +39,7 @@ public class CarRacing {
     public static void run() throws IOException {
         InputView.printName();
         String name = InputView.enterCarName();
-        
+
         InputView.printCount();
         TryCount tryCount = new TryCount(InputView.enterCount());
 

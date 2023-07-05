@@ -1,4 +1,4 @@
-package car.output;
+package car.domain;
 
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.junit.jupiter.api.Assertions.assertThrows;

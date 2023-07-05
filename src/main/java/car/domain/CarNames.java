@@ -1,23 +1,33 @@
 package car.domain;
 
-public class CarNames {
+public final class CarNames {
     private String[] carNames;
+    private final String CAR_NAMES_DELIMITER = ",";
+    private final int ZERO = 0;
+
     public CarNames(String names) {
-        String [] carNames = validateCarNames(names);
+        String[] carNames = validateCarNames(names);
         this.carNames = carNames;
     }
 
-    private String[] validateCarNames (String names) {
-        if (names == null || names.isBlank()) throw new RuntimeException();
-        String [] tokenCarNames = tokenCarNames(names);
-        if (tokenCarNames.length == 0) throw new RuntimeException();
+    private String[] validateCarNames(String names) {
+        if (names == null || names.isBlank()) {
+            throw new RuntimeException();
+        }
+
+        String[] tokenCarNames = tokenCarNames(names);
+        if (tokenCarNames.length == ZERO) {
+            throw new RuntimeException();
+        }
+
         return tokenCarNames;
     }
+
     private String[] tokenCarNames(String carNames) {
-         return carNames.split(",");
+        return carNames.split(CAR_NAMES_DELIMITER);
     }
 
-    public String[] getCarNames () {
+    public String[] getCarNames() {
         return carNames;
     }
 }

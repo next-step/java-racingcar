@@ -4,9 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class InputView {
+public final class InputView {
     public static BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-
     public static String enterCarName() throws IOException {
         String name = bufferedReader.readLine();
         return name;

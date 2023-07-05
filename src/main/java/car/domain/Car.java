@@ -1,6 +1,6 @@
 package car.domain;
 
-public class Car {
+public final class Car {
     private CarName name;
     private int position = 0;
 

@@ -1,10 +1,6 @@
-package car.domain;
+package car.util;
 
-import java.util.Random;
-
-public class RandomCarMovable extends Movable
-{
-
+public final class RandomCarMovable extends Movable {
     private final int CAR_MOVING_LIMIT = 4;
     private final int CAR_MOVING_SIZE = 1;
 
@@ -16,16 +12,17 @@ public class RandomCarMovable extends Movable
         return this.isMovable;
     }
 
-    public int getMovingSize () {
+    public int getMovingSize() {
         return CAR_MOVING_SIZE;
     }
 
     @Override
-    public boolean decideMoving () {
-        int num = new Random().nextInt(10);
+    public boolean decideMoving() {
+        int num = NumberGenerator.getRandomNumber();
         if (num >= CAR_MOVING_LIMIT) {
             return true;
         }
+
         return false;
     }
 }

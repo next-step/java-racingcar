@@ -4,8 +4,7 @@ import java.util.List;
 import car.domain.Car;
 import car.domain.Cars;
 
-public class OutputView {
-
+public final class OutputView {
     private static StringBuilder sb;
 
     public static void printResult() {
