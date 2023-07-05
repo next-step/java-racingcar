@@ -1,5 +1,8 @@
 package racingcar.car.domain;
 
+/**
+ * 자동차 클래스
+ */
 public class Car {
 
     private static final int MOVE_THRESHOLD = 4;
@@ -16,6 +19,11 @@ public class Car {
         this.name = new Name(name);
     }
 
+    /**
+     * value 가 4이상이면 자동차를 1만큼 이동시킨다.
+     *
+     * @param value 자동차를 이동시킬 크기
+     */
     public void move(int value) {
         if (value >= MOVE_THRESHOLD) {
             position += MOVE_STEP;

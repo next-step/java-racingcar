@@ -3,6 +3,9 @@ package calculator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * 문자열 유효성 검증 및 파싱 유틸
+ */
 public class TokenUtils {
 
     private static final String CUSTOM_DELIMITER_REGEX = "//(.)\n(.*)";
@@ -12,6 +15,12 @@ public class TokenUtils {
     private TokenUtils() {
     }
 
+    /**
+     * 정규 표현식을 이용하여 사용자가 입력한 문자열을 파싱한다.
+     *
+     * @param text 사용자로부터 입력받은 문자열 (ex. "1;2")
+     * @return 파싱된 숫자 문자들 (ex. ["1", "2"])
+     */
     public static String[] generateTokensFromText(String text) {
         String delimiter = DEFAULT_DELIMITER_REGEX;
 
@@ -31,6 +40,13 @@ public class TokenUtils {
         }
     }
 
+    /**
+     * 하나의 문자를 검증한다.
+     * - 숫자 형식의 문자여야 한다
+     * - 숫자는 음수일 수 없다
+     *
+     * @param token 검증할 문자.
+     */
     private static void validateToken(String token) {
         if (!isNumeric(token)) {
             throw new IllegalArgumentException("숫자만 입력할 수 있습니다.");
@@ -41,6 +57,12 @@ public class TokenUtils {
         }
     }
 
+    /**
+     * 주어진 문자가 숫자 형태인지 검사한다.
+     *
+     * @param token 검사할 문자
+     * @return 숫자 형태 여부
+     */
     private static boolean isNumeric(String token) {
         try {
             Integer.parseInt(token);

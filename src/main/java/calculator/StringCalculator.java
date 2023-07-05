@@ -2,8 +2,17 @@ package calculator;
 
 import java.util.Arrays;
 
+/**
+ * 문자열 계산기
+ */
 public class StringCalculator {
 
+    /**
+     * 입력으로 주어진 문자열의 합을 계산한다.
+     *
+     * @param text 합을 계산할 문자열 (ex. "1;2;3")
+     * @return 계산된 문자열의 합
+     */
     public static int sum(String text) {
         if (isNullOrEmpty(text)) {
             return 0;
@@ -17,6 +26,12 @@ public class StringCalculator {
             .sum();
     }
 
+    /**
+     * 문자열이 null 이거나 공백인지 검사한다.
+     *
+     * @param text 검사할 문자열
+     * @return null 혹은 공백 여부
+     */
     private static boolean isNullOrEmpty(String text) {
         if (text == null || text.isEmpty()) {
             return true;

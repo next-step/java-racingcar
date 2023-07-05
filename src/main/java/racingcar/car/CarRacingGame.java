@@ -9,6 +9,9 @@ import racingcar.car.ui.DefaultCarFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * 자동차 경주 게임 프로그램
+ */
 public class CarRacingGame {
 
     private Cars cars;
@@ -20,11 +23,21 @@ public class CarRacingGame {
         cars = new Cars(carNames);
     }
 
+    /**
+     * 자동차 경주 게임을 시작한다.
+     *
+     * @param playCount 게임 플레이 횟수
+     */
     public void play(int playCount) {
         startRace(playCount);
         printWinners();
     }
 
+    /**
+     * 자동차 경주를 진행한다.
+     *
+     * @param count 게임 플레이 횟수
+     */
     private void startRace(int count) {
         System.out.println("\n실행 결과");
         for (int i = 0; i < count; i++) {
@@ -33,6 +46,9 @@ public class CarRacingGame {
         }
     }
 
+    /**
+     * 자동차 경주 게임의 우승자를 출력한다.
+     */
     private void printWinners() {
         List<Car> winners = cars.getWinners(winnerStrategy);
         String raceResult = winners.stream()
