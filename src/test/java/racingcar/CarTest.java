@@ -5,12 +5,6 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
 public class CarTest {
-    @Test
-    void carTest_isMove() {
-        Car car = new Car("hello");
-        assertThat(car.isMove(4)).isTrue();
-        assertThat(car.isMove(3)).isFalse();
-    }
 
     @Test
     void carTest_move() {
