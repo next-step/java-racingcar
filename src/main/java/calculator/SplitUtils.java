@@ -22,6 +22,7 @@ public class SplitUtils {
             String[] tokens = matcher.group(2).split(customDelimiter);
             return toNumbers(tokens);
         }
+
         return toNumbers(text.split(DEFAULT_DELIMITERS));
     }
 
