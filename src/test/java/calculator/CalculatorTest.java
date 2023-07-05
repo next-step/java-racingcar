@@ -61,7 +61,7 @@ class CalculatorTest {
     }
 
     @Test
-    void notNumberOrNegativeThrowsRuntimeExceptionTest() {
+    void notNumberThrowsRuntimeExceptionTest() {
         //given
         Calculator calculator = new Calculator();
 
@@ -69,7 +69,17 @@ class CalculatorTest {
         assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> {
             calculator.calculate("a,2,3");
         });
+        assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> {
+            calculator.calculate(" ");
+        });
+    }
 
+    @Test
+    void NegativeThrowsRuntimeExceptionTest() {
+        //given
+        Calculator calculator = new Calculator();
+
+        //when, then
         assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> {
             calculator.calculate("-1,2,3");
         });
