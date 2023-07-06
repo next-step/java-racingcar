@@ -5,6 +5,7 @@ import racingcar.car.domain.Car;
 import racingcar.car.domain.Cars;
 import racingcar.car.domain.winnerstrategy.MaxPositionDuplicateWinnerStrategy;
 import racingcar.car.domain.winnerstrategy.WinnerStrategy;
+import racingcar.car.ui.ConsoleInput;
 import racingcar.car.ui.ConsoleOutput;
 
 /**
@@ -14,19 +15,16 @@ public class CarRacingGame {
 
     private Cars cars;
     private WinnerStrategy winnerStrategy = new MaxPositionDuplicateWinnerStrategy();
+    private final ConsoleInput consoleInput = new ConsoleInput();
     private final ConsoleOutput consoleOutput = new ConsoleOutput();
 
-    public CarRacingGame(String carNames) {
-        cars = new Cars(carNames);
+
+    public CarRacingGame() {
+        cars = new Cars(consoleInput.getCarNames());
     }
 
-    /**
-     * 자동차 경주 게임을 시작한다.
-     *
-     * @param playCount 게임 플레이 횟수
-     */
-    public void play(int playCount) {
-        startRace(playCount);
+    public void play() {
+        startRace(consoleInput.getPlayCount());
         printWinners();
     }
 

@@ -15,26 +15,15 @@ public class Cars {
     private final List<Car> list;
 
     /**
-     * 사용자로부터 입력받은 자동차 이름으로부터 Car 컬렉션을 생성한다.
+     * 자동차 이름으로부터 Car 컬렉션을 생성한다.
      *
-     * @param names 사용자가 입력한 자동차 이름으로, 쉼표로 구분한다. (ex. pobi,crong)
+     * @param names 자동차 이름
      */
-    public Cars(String names) {
-        list = Arrays.stream(split(names))
+    public Cars(String[] names) {
+        list = Arrays.stream(names)
             .map(Car::new)
             .collect(Collectors.toList());
     }
-
-    /**
-     * 자동차 이름을 쉼표로 구분자로 구분한다.
-     *
-     * @param names 사용자로부터 입력받은 자동차 이름
-     * @return 쉼표를 구분자로 구분된 자동차 이름 리스트
-     */
-    private String[] split(String names) {
-        return names.split(",");
-    }
-
 
     /**
      * 0 이상 10 미만의 랜덤값을 생성하여, 값에 따라 자동차를 이동시킨다.
