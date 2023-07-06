@@ -23,12 +23,12 @@ public class Game {
     }
 
     public List<CarName> getWinnerNames() {
-        int maxIndex = cars.stream()
+        int maxPosition = cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
                 .orElse(CAR_INITIAL_POSITION);
         return cars.stream()
-                .filter(c -> c.getPosition() == maxIndex)
+                .filter(c -> c.getPosition() == maxPosition)
                 .map(Car::getName)
                 .collect(Collectors.toList());
 
