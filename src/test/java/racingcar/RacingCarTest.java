@@ -49,24 +49,24 @@ public class RacingCarTest {
     @ParameterizedTest
     @ValueSource(ints = {4, 9})
     void 자동차_전진(int randomValue) {
-        Car racingCar = new Car("");
-        int previousCount = racingCar.moveCount;
+        Car racingCar = new Car("pobi");
+        int previousCount = racingCar.getMoveCount();
 
         racingCar.move(randomValue);
 
-        assertThat(racingCar.moveCount).isEqualTo(previousCount + 1);
+        assertThat(racingCar.getMoveCount()).isEqualTo(previousCount + 1);
     }
 
     @DisplayName("랜덤 값이 3 이하면 자동차는 정지한다")
     @ParameterizedTest
     @ValueSource(ints = {0, 3})
     void 자동차_정지(int randomValue) {
-        Car racingCar = new Car("");
-        int previousCount = racingCar.moveCount;
+        Car racingCar = new Car("pobi");
+        int previousCount = racingCar.getMoveCount();
 
         racingCar.move(randomValue);
 
-        assertThat(racingCar.moveCount).isEqualTo(previousCount);
+        assertThat(racingCar.getMoveCount()).isEqualTo(previousCount);
     }
 
     @Test
