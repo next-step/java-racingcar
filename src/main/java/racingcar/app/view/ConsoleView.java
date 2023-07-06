@@ -11,8 +11,6 @@ public class ConsoleView {
     private static final String NAME_POSITION_SEPERATE_EXPRESSION = " : ";
     private static final int NAME_THRESHOLD = 2;
 
-    private final StringBuilder stringBuilder = new StringBuilder();
-
     public void printResult(RacingGamePlayResponse response) {
         System.out.println("실행 결과");
         response.getRacingGameRoundResponses()
@@ -21,7 +19,7 @@ public class ConsoleView {
     }
 
     private String parseRoundResult(RacingGameRoundResponse racingGameRoundResponse) {
-        stringBuilder.setLength(0);
+        StringBuilder stringBuilder = new StringBuilder();
         racingGameRoundResponse.getCarPerRoundResponses()
             .forEach(c -> stringBuilder
                 .append(c.getName())
@@ -36,7 +34,7 @@ public class ConsoleView {
     }
 
     private String parseWinnerNames(List<String> winnerNames) {
-        stringBuilder.setLength(0);
+        StringBuilder stringBuilder = new StringBuilder();
         winnerNames.forEach(w -> stringBuilder.append(w).append(NAME_SEPERATE_EXPRESSION));
         return stringBuilder.substring(0, stringBuilder.length() - NAME_THRESHOLD);
     }
