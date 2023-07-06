@@ -28,7 +28,7 @@ public class RacingApplication {
         input();
         showSimulationResult();
     }
-    
+
     private void input() {
         this.racingOutput.print(this.racingView.getAskingCarNameView());
         List<String> carNames = this.racingInput.inputName();
@@ -41,6 +41,6 @@ public class RacingApplication {
     }
 
     private void showSimulationResult() {
-        racingOutput.print(this.racingView.getResultView(this.racingManager.simulate()));
+        this.racingOutput.print(this.racingView.getResultView(this.racingManager.simulate()));
     }
 }
