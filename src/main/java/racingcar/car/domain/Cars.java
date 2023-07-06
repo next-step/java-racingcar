@@ -1,10 +1,10 @@
 package racingcar.car.domain;
 
-import racingcar.car.domain.winnerstrategy.WinnerStrategy;
-import racingcar.car.ui.CarFormatter;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.car.domain.winnerstrategy.WinnerStrategy;
 import racingcar.utils.random.RandomGenerator;
 
 /**
@@ -46,16 +46,6 @@ public class Cars {
     }
 
     /**
-     * Car 컬렉션의 각 엘리먼트들을 출력한다.
-     *
-     * @param formatter Car 를 문자열로 포맷팅 할 포맷터
-     */
-    public void print(CarFormatter formatter) {
-        list.forEach(car -> System.out.println(formatter.format(car)));
-        System.out.println();
-    }
-
-    /**
      * 우승자 선출 전략에 따라 경주 우승자를 선출한다.
      *
      * @param winnerStrategy 우승자 선출 전략
@@ -63,5 +53,9 @@ public class Cars {
      */
     public List<Car> getWinners(WinnerStrategy winnerStrategy) {
         return winnerStrategy.getWinners(list);
+    }
+
+    public List<Car> getCars() {
+        return Collections.unmodifiableList(list);
     }
 }

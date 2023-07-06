@@ -1,13 +1,11 @@
 package racingcar.car;
 
+import java.util.List;
 import racingcar.car.domain.Car;
 import racingcar.car.domain.Cars;
 import racingcar.car.domain.winnerstrategy.MaxPositionDuplicateWinnerStrategy;
 import racingcar.car.domain.winnerstrategy.WinnerStrategy;
-import racingcar.car.ui.CarFormatter;
-import racingcar.car.ui.DefaultCarFormatter;
-import java.util.List;
-import java.util.stream.Collectors;
+import racingcar.car.ui.ConsoleOutput;
 
 /**
  * 자동차 경주 게임 프로그램
@@ -16,8 +14,7 @@ public class CarRacingGame {
 
     private Cars cars;
     private WinnerStrategy winnerStrategy = new MaxPositionDuplicateWinnerStrategy();
-    private CarFormatter formatter = new DefaultCarFormatter();
-
+    private final ConsoleOutput consoleOutput = new ConsoleOutput();
 
     public CarRacingGame(String carNames) {
         cars = new Cars(carNames);
@@ -42,7 +39,7 @@ public class CarRacingGame {
         System.out.println("\n실행 결과");
         for (int i = 0; i < count; i++) {
             cars.move();
-            cars.print(formatter);
+            consoleOutput.printCars(cars.getCars());
         }
     }
 
@@ -51,9 +48,6 @@ public class CarRacingGame {
      */
     private void printWinners() {
         List<Car> winners = cars.getWinners(winnerStrategy);
-        String raceResult = winners.stream()
-            .map(Car::getNameValue)
-            .collect(Collectors.joining(", "));
-        System.out.println(raceResult + "가 최종 우승했습니다.");
+        consoleOutput.printWinners(winners);
     }
 }
