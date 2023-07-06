@@ -14,7 +14,7 @@ public class ConsoleOutput {
 
     public static void printCurrentStatus(List<Car> cars) {
         for (Car car : cars) {
-            String position = POSITON_SYMBOL.repeat(car.getPositionValue());
+            String position = POSITON_SYMBOL.repeat(car.getPosition().getValue());
             System.out.println(car.getNameValue() + " : " + position);
         }
         System.out.println();
