@@ -37,11 +37,10 @@ public class Cars {
     }
 
     private int getMaxPosition() {
-        int maxPosition = -1;
-        for (Car car : this.cars) {
-            maxPosition = Math.max(maxPosition, car.getPosition());
-        }
-        return maxPosition;
+        return this.cars.stream()
+                        .mapToInt(Car::getPosition)
+                        .max()
+                        .orElseThrow(RuntimeException::new);
     }
 
 }
