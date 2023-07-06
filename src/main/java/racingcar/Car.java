@@ -3,12 +3,13 @@ package racingcar;
 import java.util.Random;
 
 public class Car {
+
     private static final int RANDOM_BOUND = 10;
     private static final int MOVE_THRESHOLD = 4;
     private static final int INIT_POSITION = 1;
+
     private final CarName name;
     private int position;
-
     private final Random random;
 
     public Car(CarName name) {

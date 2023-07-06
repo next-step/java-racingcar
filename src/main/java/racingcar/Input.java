@@ -6,6 +6,7 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class Input {
+
     private final static Scanner scanner = new Scanner(System.in);
 
     public static int processTryCount() {

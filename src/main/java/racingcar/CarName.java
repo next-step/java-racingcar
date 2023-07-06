@@ -1,7 +1,9 @@
 package racingcar;
 
 public class CarName {
+
     private final String carName;
+
     public CarName(String carName) {
         isValid(carName);
         this.carName = carName;

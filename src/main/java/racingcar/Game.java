@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 public class Game {
 
     private static final int CAR_INITIAL_POSITION = 1;
+
     private final List<Car> cars;
 
     public Game(List<CarName> carNames) {

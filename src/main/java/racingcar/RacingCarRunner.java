@@ -4,6 +4,7 @@ import java.util.List;
 
 
 public class RacingCarRunner {
+
     public static void main(String[] args) {
         List<CarName> carNames = Input.processCarNames();
         int tryCount = Input.processTryCount();
