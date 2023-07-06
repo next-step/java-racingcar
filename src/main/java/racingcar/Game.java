@@ -1,38 +1,28 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Game {
 
-    private final List<Car> cars;
+    private final Cars cars;
 
     public Game(List<CarName> carNames) {
-        cars = new ArrayList<>();
-
-        for (CarName carName : carNames) {
-            cars.add(new Car(carName));
-        }
+        this.cars = new Cars(carNames.stream()
+                .map(Car::new)
+                .collect(Collectors.toList()));
     }
 
     public void run() {
-        cars.forEach(Car::move);
+        cars.moveAll();
     }
 
-    public List<CarName> getWinnerNames() {
-        int maxPosition = cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElse(Car.INIT_POSITION);
-        return cars.stream()
-                .filter(c -> c.getPosition() == maxPosition)
-                .map(Car::getName)
-                .collect(Collectors.toList());
+    public List<CarName> findWinnerNames() {
+        return cars.findWinnerNames();
 
     }
 
-    public List<Car> getCars() {
+    public Cars getCars() {
         return cars;
     }
 }

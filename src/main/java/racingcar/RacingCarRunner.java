@@ -12,7 +12,7 @@ public class RacingCarRunner {
 
         Output.printInitialStatus(game.getCars());
         runGame(game, tryCount);
-        Output.printWinners(game.getWinnerNames());
+        Output.printWinners(game.findWinnerNames());
     }
 
     private static void runGame(Game game, int tryCount) {

@@ -5,19 +5,22 @@ import java.util.stream.Collectors;
 
 public class Output {
 
-    public static void printInitialStatus(List<Car> cars) {
+    public static void printInitialStatus(Cars cars) {
         System.out.println();
         System.out.println("실행 결과"); // another sout or \n in string?
         printCarStatus(cars);
     }
 
-    public static void printCarStatus(List<Car> cars) {
-        cars.stream().map(Output::carStatusToString).forEach(System.out::println);
+    public static void printCarStatus(Cars cars) {
+        cars.mapToStatus()
+                .stream()
+                .map(Output::carStatusToString)
+                .forEach(System.out::println);
         System.out.println();
     }
 
-    private static String carStatusToString(Car car) {
-        return car.getName() + " : " + "-".repeat(car.getPosition());
+    private static String carStatusToString(CarStatus carStatus) {
+        return carStatus.getName() + " : " + "-".repeat(carStatus.getPosition());
     }
 
     public static void printWinners(List<CarName> winnerNames) {
