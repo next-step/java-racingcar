@@ -30,10 +30,6 @@ public class RacingManager {
         return cars;
     }
 
-    public int getRound() {
-        return round;
-    }
-
     public List<List<CarDto>> getRecords() {
         return records;
     }
