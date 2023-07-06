@@ -1,9 +1,9 @@
 package racingcar;
 
-import racingcar.view.ConsoleRacingView;
+import racingcar.view.ConsoleRacingCarView;
 
 public class RacingGameApplication {
     public static void main(String[] args) {
-        new RacingGameRunner(new ConsoleRacingView()).run();
+        new RacingGameRunner(new ConsoleRacingCarView()).run();
     }
 }
