@@ -1,5 +1,8 @@
 package racingcar.car;
 
+import racingcar.dto.Result;
+import racingcar.dto.Winner;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,22 +33,25 @@ public class Cars {
         return (int) (Math.random() * 10000) % 10;
     }
 
-    public String[] getWinners() {
-        int winnerCount = cars.stream()
+    private int getMaxScore() {
+        return cars.stream()
                 .mapToInt(Car::getScore)
                 .max()
                 .orElse(0);
-
-        return cars.stream()
-                .filter(car -> car.getScore() == winnerCount)
-                .map(Car::getName)
-                .toArray(String[]::new);
     }
 
-    public String[] getResult() {
+    public List<Winner> findWinners() {
+        int maxScore = getMaxScore();
         return cars.stream()
-                .map(Car::statusToString)
-                .toArray(String[]::new);
+                .filter(car -> car.getScore() == maxScore)
+                .map(car -> new Winner(car.getName()))
+                .collect(Collectors.toList());
+    }
+
+    public List<Result> findAll() {
+        return cars.stream()
+                .map(car -> new Result(car.getName(), car.getScore()))
+                .collect(Collectors.toList());
     }
 
     private String[] parseCarNames(String rawCarNames) {
@@ -54,7 +60,7 @@ public class Cars {
                 .toArray(String[]::new);
     }
 
-    private List<Car> generateCars(String[] carNames) { // {}
+    private List<Car> generateCars(String[] carNames) {
         return Arrays.stream(carNames)
                 .map(name -> new Car(name))
                 .collect(Collectors.toList());

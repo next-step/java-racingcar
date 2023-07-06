@@ -19,7 +19,10 @@ public class RacingGameRunner {
         String count = view.read();
 
         RacingGame racingGame = new RacingGame(new Cars(carNames), count);
+        racingGame.play();
 
-        view.printResult(racingGame.play());
+        view.printResults(racingGame.getEachResults());
+        view.printResult(racingGame.getResult());
+        view.printWinners(racingGame.getWinners());
     }
 }

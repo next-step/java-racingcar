@@ -1,17 +1,17 @@
 package racingcar;
 
 import racingcar.car.Cars;
+import racingcar.dto.Result;
+import racingcar.dto.Winner;
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RacingGame {
 
     private final String NUMBER_PATTERN = "^[0-9]+$";
-    private final String WINNER_MESSAGE = "가 최종 우승했습니다.";
-    private final String JOIN_DELIMITER = " ,";
+    private final List<List<Result>> eachResults = new ArrayList<>();
     private final Cars cars;
-
     private int count;
 
     public RacingGame(Cars cars, String count) {
@@ -20,30 +20,23 @@ public class RacingGame {
         this.count = Integer.parseInt(count.trim());
     }
 
-    public String play() {
-        StringBuilder sb = new StringBuilder();
+    public void play() {
         while (count-- > 0) {
             cars.move();
-            sb.append(getResult());
+            eachResults.add(getResult());
         }
-
-        sb.append(getResult());
-        sb.append(getWinner());
-
-        return sb.toString();
     }
 
-    private String getResult() {
-        String result = Arrays.stream(cars.getResult())
-                .collect(Collectors.joining("\n"));
-        return result + "\n\n";
+    public List<List<Result>> getEachResults() {
+        return eachResults;
     }
 
-    private String getWinner() {
-        String result = Arrays.stream(cars.getWinners())
-                .collect(Collectors.joining(JOIN_DELIMITER));
+    public List<Result> getResult() {
+        return cars.findAll();
+    }
 
-        return result + WINNER_MESSAGE;
+    public List<Winner> getWinners() {
+        return cars.findWinners();
     }
 
     private void validateCount(String count) {

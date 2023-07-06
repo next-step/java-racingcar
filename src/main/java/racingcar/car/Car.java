@@ -1,7 +1,5 @@
 package racingcar.car;
 
-import java.text.MessageFormat;
-
 public class Car {
 
     private final int MAX_NAME_LENGTH = 5;
@@ -21,10 +19,6 @@ public class Car {
 
     public int getScore() {
         return score;
-    }
-
-    public String statusToString() {
-        return MessageFormat.format("{0} : {1}", name, "-".repeat(score));
     }
 
     public void move(int random) {
