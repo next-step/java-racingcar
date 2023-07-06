@@ -5,8 +5,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.mockito.MockedStatic;
-import org.mockito.Mockito;
+import racingcar.number_generator.RandomNumberGenerator;
+import racingcar.number_generator.SpecificNumberGenerator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -47,34 +47,29 @@ public class CarTest {
     @Test
     @DisplayName("0에서 9 사이의 랜덤한 숫자를 반환한다")
     public void 영에서_9_사이의_랜덤한_숫자를_반환한다() throws Exception {
-
-        int number = RandomGenerator.generateNumber();
+        RandomNumberGenerator randomGenerator = new RandomNumberGenerator();
+        int number = randomGenerator.generate();
         assertThat(number).isBetween(0, 9);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
-    @DisplayName("랜덤 값이 4 이상일 경우 전진한다")
-    public void 랜덤_값이_4_이상일_경우_전진한다(int number) throws Exception {
-        Car car = new Car("chan");
-        try (MockedStatic<RandomGenerator> utilities = Mockito.mockStatic(RandomGenerator.class)) {
-            utilities.when(RandomGenerator::generateNumber)
-                    .thenReturn(number);
-            car.progress();
-        }
+    @DisplayName("값이 4 이상일 경우 전진한다")
+    public void 값이_4_이상일_경우_전진한다(int number) throws Exception {
+        Car car = new Car("chan", new SpecificNumberGenerator(number));
+
+        car.progress();
+
         assertThat(car.getDistance()).isEqualTo(1);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3})
-    @DisplayName("랜덤 값이 3 이하일 경우 멈춘다.")
-    public void 랜덤_값이_3_이하일_경우_멈춘다(int number) throws Exception {
-        Car car = new Car("chan");
-        try (MockedStatic<RandomGenerator> utilities = Mockito.mockStatic(RandomGenerator.class)) {
-            utilities.when(RandomGenerator::generateNumber)
-                    .thenReturn(number);
-            car.progress();
-        }
+    @DisplayName("값이 3 이하일 경우 멈춘다.")
+    public void 값이_3_이하일_경우_멈춘다(int number) throws Exception {
+        Car car = new Car("chan", new SpecificNumberGenerator(number));
+
+        car.progress();
 
         assertThat(car.getDistance()).isEqualTo(0);
     }

@@ -1,18 +1,28 @@
 package racingcar;
 
+import racingcar.number_generator.NumberGenerator;
+import racingcar.number_generator.RandomNumberGenerator;
+
 import java.util.Objects;
 
 public class Car {
 
     private static final int MAX_NAME_SIZE = 5;
     static final String OVER_MAX_NAME_SIZE_ERROR_STRING = "이름의 길이가 " + MAX_NAME_SIZE + "글자 초과입니다.";
-    private static final int FORWARD_THRESHHOLD = 4;
+    private static final int FORWARD_THRESHOLD = 4;
     private final String name;
+    private final NumberGenerator numberGenerator;
     private int distance;
 
-    public Car(String name) {
+
+    Car(String name, NumberGenerator numberGenerator) {
         validateName(name);
         this.name = name;
+        this.numberGenerator = numberGenerator;
+    }
+
+    public Car(String name) {
+        this(name, new RandomNumberGenerator());
     }
 
     private void validateName(String name) {
@@ -47,9 +57,12 @@ public class Car {
     }
 
     public void progress() {
-        int number = RandomGenerator.generateNumber();
-        if (number >= FORWARD_THRESHHOLD) {
+        if (canMove()) {
             forward();
         }
+    }
+
+    private boolean canMove() {
+        return numberGenerator.generate() >= FORWARD_THRESHOLD;
     }
 }
