@@ -1,13 +1,11 @@
 package racing.factory;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import racing.model.Car;
 
 public class CarFactory {
 
-    private static final String DEFAULT_DELIMITER = ",";
     private static final int MAX_CAR_NAME_LENGTH = 5;
 
     private static class CarFactoryHandler {
@@ -21,24 +19,35 @@ public class CarFactory {
         return CarFactoryHandler.INSTANCE;
     }
 
-    public List<Car> manufactureCars(final String text) {
-        final String[] carNames = text.split(DEFAULT_DELIMITER);
-
+    public List<Car> manufactureCars(final List<String> carNames) {
         if (isInvalid(carNames)) {
-            throw new IllegalArgumentException("5자를 초과하는 자동차 이름은 사용할 수 없습니다.");
+            throw new IllegalArgumentException("잘못된 형식의 자동차 이름입니다.");
         }
 
-        return manufactureCars(carNames);
+        return carNames.stream()
+                       .map(Car::new)
+                       .collect(Collectors.toUnmodifiableList());
     }
 
-    private List<Car> manufactureCars(final String[] names) {
-        return Arrays.stream(names)
-                     .map(Car::new)
-                     .collect(Collectors.toUnmodifiableList());
+    private boolean isInvalid(final List<String> carNames) {
+        return containsLongName(carNames) || isDuplicated(carNames) || containsBlank(carNames);
     }
 
-    private boolean isInvalid(final String[] carNames) {
-        return Arrays.stream(carNames)
-                     .anyMatch(carName -> carName.length() > MAX_CAR_NAME_LENGTH);
+    private static boolean containsLongName(final List<String> carNames) {
+        return carNames.stream()
+                       .anyMatch(carName -> carName.length() > MAX_CAR_NAME_LENGTH);
+    }
+
+    private static boolean isDuplicated(final List<String> carNames) {
+        final long distinctCount = carNames.stream()
+                                           .distinct()
+                                           .count();
+
+        return distinctCount != carNames.size();
+    }
+
+    private static boolean containsBlank(final List<String> carNames) {
+        return carNames.stream()
+                       .anyMatch(String::isBlank);
     }
 }
