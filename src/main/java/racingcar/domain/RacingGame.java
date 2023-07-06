@@ -24,7 +24,7 @@ public class RacingGame {
     }
 
     public List<Car> getRoundResult() {
-        return cars;
+        return List.copyOf(cars);
     }
 
     public void play() {
