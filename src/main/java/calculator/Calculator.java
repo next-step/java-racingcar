@@ -13,4 +13,5 @@ public class Calculator {
         List<Positive> collect = numbers.stream().map(Positive::new).collect(Collectors.toList());
         return collect.stream().map(a -> a.getNum()).reduce((i1, i2) -> i1 + i2).get();
     }
+
 }
