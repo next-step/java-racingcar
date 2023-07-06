@@ -6,7 +6,7 @@ import racingcar.domain.CarStatus;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Output {
+public class OutputView {
 
     public static void printInitialStatus(List<CarStatus> initialStatus) {
         System.out.println();
@@ -15,12 +15,12 @@ public class Output {
     }
 
     public static void printGameStatus(List<List<CarStatus>> gameStatus) {
-        gameStatus.forEach(Output::printCarStatus);
+        gameStatus.forEach(OutputView::printCarStatus);
     }
 
     public static void printCarStatus(List<CarStatus> raceStatus) {
         raceStatus.stream()
-                .map(Output::carStatusToString)
+                .map(OutputView::carStatusToString)
                 .forEach(System.out::println);
         System.out.println();
     }
