@@ -8,10 +8,6 @@ public class OutputView {
 
     private static StringBuilder sb;
 
-    public static void printResult() {
-        System.out.println("실행 결과");
-    }
-
     public static void printEachRaceResult(final Cars cars) {
         sb = new StringBuilder();
         cars.getCars()

@@ -14,7 +14,6 @@ public class MainApplication {
 
         // 2. 자동차 경주 실행
         RacingService racingService = new RacingService(inputCarNames, inputCount);
-        OutputView.printResult();
         for (int i = 0; i < inputCount; i++) {
             OutputView.printEachRaceResult(racingService.runRaceOnce());
         }
