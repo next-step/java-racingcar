@@ -2,19 +2,19 @@ package car.domain;
 
 public final class CarResult {
 
-    private final CarName name;
-    private final String positionMark;
+    private final String name;
+    private final int position;
 
     public CarResult(final Car car) {
-        this.name = new CarName(car.getName());
-        this.positionMark = createPositionMark(car.getPosition());
+        this.name = car.getName();
+        this.position = car.getPosition();
     }
 
-    private String createPositionMark(final int position) {
-        return "-".repeat(position);
+    public String getName() {
+        return this.name;
     }
 
-    public String createCarResult() {
-        return name.getName() + " : " + positionMark;
+    public int getPosition() {
+        return this.position;
     }
 }
