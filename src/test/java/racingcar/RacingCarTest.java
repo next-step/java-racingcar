@@ -21,11 +21,20 @@ public class RacingCarTest {
 
     @DisplayName("유효하지 않은 자동차 이름일 경우 예외가 발생한다")
     @ParameterizedTest
-    @ValueSource(strings = {"pobi,croong,honux", "pobi,,honux", "", ",,,,"})
-    void 자동차_입력_검증_실패(String carNames) {
+    @ValueSource(strings = {"pobi,croong,honux", "pobi,,honux", ""})
+    void 자동차_입력_검증_실패_1(String carNames) {
         assertThatExceptionOfType(RuntimeException.class)
                 .isThrownBy(() -> new Cars(carNames))
                 .withMessageMatching("자동차 이름이 유효하지 않습니다");
+    }
+
+    @DisplayName("자동차 이름이 없을 경우 예외가 발생한다")
+    @Test
+    void 자동차_입력_검증_실패_2() {
+        String carNames = ",,,,";
+        assertThatExceptionOfType(RuntimeException.class)
+                .isThrownBy(() -> new Cars(carNames))
+                .withMessageMatching("자동차 이름이 존재하지 않습니다");
     }
 
     @DisplayName("실행 횟수가 양수인 경우 예외가 발생하지 않는다")
@@ -34,6 +43,13 @@ public class RacingCarTest {
     void 자동차_실행_횟수_검증_성공(String count) {
         assertThatNoException()
                 .isThrownBy(() -> new RacingGame(null, count));
+    }
+
+    @DisplayName("실행 횟수가 0인 경우 예외가 발생하지 않는다")
+    @Test
+    void 자동차_실행_횟수_0인경우_검증_성공() {
+        assertThatNoException()
+                .isThrownBy(() -> new RacingGame(null, "0"));
     }
 
     @DisplayName("실행 횟수가 음수이거나 정수가 아닌 경우 예외가 발생한다")
@@ -50,11 +66,11 @@ public class RacingCarTest {
     @ValueSource(ints = {4, 9})
     void 자동차_전진(int randomValue) {
         Car racingCar = new Car("pobi");
-        int previousCount = racingCar.getScore();
+        int score = racingCar.getScore();
 
         racingCar.move(randomValue);
 
-        assertThat(racingCar.getScore()).isEqualTo(previousCount + 1);
+        assertThat(racingCar.getScore()).isEqualTo(score + 1);
     }
 
     @DisplayName("랜덤 값이 3 이하면 자동차는 정지한다")
