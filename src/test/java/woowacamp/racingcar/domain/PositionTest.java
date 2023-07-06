@@ -1,10 +1,8 @@
-package woowacamp.domain;
+package woowacamp.racingcar.domain;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import woowacamp.racingcar.domain.Position;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -12,46 +10,33 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class PositionTest {
     @ValueSource(ints = {0, 3, 999})
     @ParameterizedTest
-    @DisplayName("위치가 0 이상이면 정상적으로 생성한다.")
-    void test_01(int value) {
-        /* given */
+    void 위치는_0이상이어야_한다(int value) {
         Position position = new Position(value);
 
-        /* when & then */
         assertThat(position.getValue()).isEqualTo(value);
     }
 
     @Test
-    @DisplayName("위치가 음수면 IllegalArgumentException을 던진다.")
-    void test_02() {
-        /* given */
+    void 위치가_음수면_예외가_발생한다() {
         int position = -1;
 
-        /* when & then */
         assertThatThrownBy(() -> new Position(position))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
-    @DisplayName("특정 위치에서 움직이면 위치가 변한다.")
-    void test_03() {
-        /* given */
+    void 움직이면_위치가_변한다() {
         Position position = new Position();
 
-        /* when */
         Position next = position.move(3);
 
-        /* then */
         assertThat(next).isEqualTo(new Position(3));
     }
 
     @Test
-    @DisplayName("후진을 하면 IllegalArgumentException을 던진다.")
-    void test_04() {
-        /* given */
+    void 후진을_하면_예외가_발생한다() {
         Position position = new Position(10);
 
-        /* when & then */
         assertThatThrownBy(() -> position.move(-1))
                 .isInstanceOf(IllegalArgumentException.class);
     }
