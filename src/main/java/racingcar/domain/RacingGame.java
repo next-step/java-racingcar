@@ -41,7 +41,7 @@ public class RacingGame {
         int winnerPosition = cars.stream()
             .mapToInt(Car::getPosition)
             .max()
-            .orElseThrow(() -> new IllegalStateException("winnerCount는 항상 존재합니다."));
+            .orElseThrow(() -> new IllegalStateException("Cars 배열이 비어있습니다."));
 
         return cars.stream()
             .filter(car -> isWinner(car.getPosition(), winnerPosition))
