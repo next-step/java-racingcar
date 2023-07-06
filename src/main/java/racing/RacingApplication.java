@@ -1,7 +1,6 @@
 package racing;
 
 import racing.generator.NumberGenerator;
-import racing.generator.RandomNumberGenerator;
 import racing.input.RacingInput;
 import racing.model.Car;
 import racing.model.RacingManager;
@@ -18,12 +17,6 @@ public class RacingApplication {
     private NumberGenerator numberGenerator;
     private RacingView racingView;
 
-    public RacingApplication() {
-        this.racingInput = new RacingInput(System.in);
-        this.racingOutput = new RacingOutput();
-        this.numberGenerator = new RandomNumberGenerator();
-        this.racingView = new RacingView();
-    }
 
     public RacingApplication(RacingInput racingInput, NumberGenerator numberGenerator) {
         this.racingInput = racingInput;
