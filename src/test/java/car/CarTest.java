@@ -42,8 +42,11 @@ public class CarTest {
     @Test
     @DisplayName("단일 자동차 전진 테스트")
     void 단일_자동차_전진_확인() {
-        Car car = new Car(new CarName("hi"));
+        String carName = "a";
+
+        Car car = new Car(carName);
         int randomNum = car.move();
+
         Assumptions.assumingThat((randomNum >= CAR_MOVING_LIMIT),
             () -> {
                 Assertions.assertEquals(1, car.getPosition());
@@ -54,8 +57,11 @@ public class CarTest {
     @Test
     @DisplayName("단일 자동차 멈춤 테스트")
     void 단일_자동차_멈춤_확인() {
-        Car car = new Car(new CarName("hello"));
+        String carName = "abcde";
+
+        Car car = new Car(carName);
         int randomNum = car.move();
+
         Assumptions.assumingThat((randomNum < CAR_MOVING_LIMIT),
             () -> {
                 Assertions.assertEquals(0, car.getPosition());

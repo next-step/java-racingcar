@@ -3,14 +3,13 @@ package car.domain;
 import car.domain.model.Car;
 import car.domain.model.Cars;
 import car.domain.model.Count;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingService {
 
-    private Cars cars;
-    private Count count;
+    private final Cars cars;
+    private final Count count;
 
     public RacingService(final String inputCarNames, final int inputCount) {
         System.out.println("실행 결과");
@@ -32,13 +31,13 @@ public class RacingService {
     }
 
     public List<Car> selectWinner() {
-        int maxPos = this.cars.getCars()
+        int maxPosition = this.cars.getCars()
             .stream()
-            .map(Car::getPosition)
-            .max(Comparator.comparing(x -> x)).get();
+            .mapToInt(Car::getPosition)
+            .max().getAsInt();
         return this.cars.getCars()
             .stream()
-            .filter(s -> (s.getPosition() == maxPos))
+            .filter(car -> (car.getPosition() == maxPosition))
             .collect(Collectors.toList());
     }
 
