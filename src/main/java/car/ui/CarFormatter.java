@@ -4,5 +4,5 @@ import car.domain.Car;
 
 public interface CarFormatter {
 
-    public String format(Car car);
+    String format(Car car);
 }

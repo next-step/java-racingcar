@@ -4,7 +4,8 @@ import car.domain.Car;
 
 public class DefaultCarFormatter implements CarFormatter {
 
-    public String format(Car car) {
+    @Override
+    public String format(final Car car) {
         return car.getNameValue() + " : " + "-".repeat(car.getPosition());
     }
 }

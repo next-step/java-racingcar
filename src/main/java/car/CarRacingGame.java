@@ -11,21 +11,21 @@ import java.util.stream.Collectors;
 
 public class CarRacingGame {
 
-    private Cars cars;
-    private WinnerStrategy winnerStrategy = new MaxPositionDuplicateWinnerStrategy();
-    private CarFormatter formatter = new DefaultCarFormatter();
+    private final Cars cars;
+    private final WinnerStrategy winnerStrategy = new MaxPositionDuplicateWinnerStrategy();
+    private final CarFormatter formatter = new DefaultCarFormatter();
 
 
-    public CarRacingGame(String carNames) {
+    public CarRacingGame(final String carNames) {
         cars = new Cars(carNames);
     }
 
-    public void play(int playCount) {
-        startRace(playCount);
+    public void play(final int playCount) {
+        race(playCount);
         printWinners();
     }
 
-    private void startRace(int count) {
+    private void race(final int count) {
         System.out.println("\n실행 결과");
         for (int i = 0; i < count; i++) {
             cars.move();
@@ -34,10 +34,10 @@ public class CarRacingGame {
     }
 
     private void printWinners() {
-        List<Car> winners = cars.getWinners(winnerStrategy);
-        String raceResult = winners.stream()
+        final List<Car> winners = cars.getWinners(winnerStrategy);
+        final String winnerNames = winners.stream()
             .map(Car::getNameValue)
             .collect(Collectors.joining(", "));
-        System.out.println(raceResult + "가 최종 우승했습니다.");
+        System.out.println(winnerNames + "가 최종 우승했습니다.");
     }
 }

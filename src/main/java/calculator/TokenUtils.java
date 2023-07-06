@@ -21,32 +21,39 @@ public class TokenUtils {
             text = m.group(2);
         }
 
-        String delimiterAfterDigit = DIGIT_LOOK_BEHIND_REGEX + delimiter;
+        final String delimiterAfterDigit = DIGIT_LOOK_BEHIND_REGEX + delimiter;
         return text.split(delimiterAfterDigit);
     }
 
-    public static void validateTokens(String[] tokens) {
+    public static void validateTokens(final String[] tokens) {
         for (String token : tokens) {
             validateToken(token);
         }
     }
 
-    private static void validateToken(String token) {
-        if (!isNumeric(token)) {
-            throw new RuntimeException("숫자만 입력할 수 있습니다.");
-        }
-        int num = Integer.parseInt(token);
-        if (num < 0) {
-            throw new RuntimeException("음수는 입력할 수 없습니다.");
-        }
+    private static void validateToken(final String token) {
+        validateIsNumeric(token);
+        validateIsNonNegative(Integer.parseInt(token));
     }
 
-    private static boolean isNumeric(String token) {
+    private static boolean isNumeric(final String token) {
         try {
             Integer.parseInt(token);
             return true;
         } catch (NumberFormatException e) {
             return false;
+        }
+    }
+
+    private static void validateIsNumeric(final String token) {
+        if (!isNumeric(token)) {
+            throw new IllegalArgumentException("숫자만 입력할 수 있습니다.");
+        }
+    }
+
+    private static void validateIsNonNegative(final int num) {
+        if (num < 0) {
+            throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
         }
     }
 }

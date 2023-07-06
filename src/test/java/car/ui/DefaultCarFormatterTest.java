@@ -8,13 +8,12 @@ import org.junit.jupiter.api.Test;
 
 class DefaultCarFormatterTest {
 
+    final CarFormatter formatter = new DefaultCarFormatter();
 
     @Test
     @DisplayName("Car 객체를 받아서 자동차 이름과 주행 거리를 표시한다.")
     void test1() {
         Car car = new Car(5, "pobi");
-        CarFormatter formatter = new DefaultCarFormatter();
-
         assertThat(formatter.format(car)).isEqualTo("pobi : -----");
     }
 }

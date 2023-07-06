@@ -16,7 +16,6 @@ public class NameTest {
     @Test
     @DisplayName("자동차 이름은 5자 이하여야 한다.")
     void test2() {
-        Assertions.assertThatNoException()
-            .isThrownBy(() -> new Name("abcde"));
+        Assertions.assertThatNoException().isThrownBy(() -> new Name("abcde"));
     }
 }
