@@ -3,6 +3,7 @@ package racingcar.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -59,13 +60,12 @@ public class CarsTest {
     }
 
     @Test
-    @DisplayName("자동차가 두 대 미만이면 IllegalArgumentException를 던진다.")
-    void test_04() {
+    @DisplayName("우승자를 구할 수 없는 경우 IllegalStateException을 던진다.")
+    void testThrowIllegalStateExceptionWhenWinnersIsNotBeCalculated() {
         /* given */
-        List<Car> cars = List.of(new Car("충규"));
+        Cars cars = new Cars(Collections.emptyList());
 
         /* when & then */
-        assertThatThrownBy(() -> new Cars(cars))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(cars::winners).isInstanceOf(IllegalStateException.class);
     }
 }

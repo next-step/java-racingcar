@@ -23,6 +23,10 @@ public class RacingCarApplication {
 
         MoveStrategy strategy = new RandomMoveStrategy();
         Cars cars = new Cars(names);
+
+        if (!cars.canStartRace()) {
+            throw new IllegalArgumentException("[ERROR] 최소 2대 이상의 자동차가 있어야 합니다.");
+        }
         race(cars, count, strategy);
 
         ConsoleOutput.printWinners(cars.winners());
