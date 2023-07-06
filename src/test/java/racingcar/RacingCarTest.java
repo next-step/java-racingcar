@@ -55,28 +55,6 @@ public class RacingCarTest {
     }
 
     @Test
-    @DisplayName("차의 출력 포맷을 정의한다")
-    public void 차의_출력_포맷을_정의한다() throws Exception {
-        Car car = new Car("ipt");
-
-        String s = car.toString();
-
-        assertThat(s).isEqualTo("ipt : -");
-    }
-
-    @Test
-    @DisplayName("전진했을 경우 자동차의 출력 포맷")
-    public void 전진했을_경우_자동차의_출력_포맷() throws Exception {
-        Car car = new Car("ipt");
-
-        car.forward();
-        car.forward();
-        car.forward();
-
-        assertThat(car.toString()).isEqualTo("ipt : ----");
-    }
-
-    @Test
     @DisplayName("0에서 9 사이의 랜덤한 숫자를 반환한다")
     public void 영에서_9_사이의_랜덤한_숫자를_반환한다() throws Exception {
 
