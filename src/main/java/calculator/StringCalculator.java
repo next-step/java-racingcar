@@ -28,13 +28,13 @@ public class StringCalculator {
 
     private static void assertNumber(String number) {
         boolean isPresent = Arrays.stream(splitNumber(number))
-            .anyMatch(StringCalculator::isText);
+            .anyMatch(StringCalculator::isNumber);
         if (isPresent) {
             throw new IllegalArgumentException("숫자가 아닌값이 들어왔습니다. \"" + number + "\"");
         }
     }
 
-    private static boolean isText(String c) {
+    private static boolean isNumber(String c) {
         try {
             Integer.parseInt(c);
             return false;
