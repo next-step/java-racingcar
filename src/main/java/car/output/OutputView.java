@@ -4,6 +4,7 @@ import car.domain.CarResult;
 import java.util.List;
 import car.domain.Car;
 import car.domain.Cars;
+import java.util.stream.Collectors;
 
 public final class OutputView {
 
@@ -22,12 +23,8 @@ public final class OutputView {
     }
 
     public static void printWinner(List<Car> winner) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < winner.size() - 1; i++) {
-            sb.append(winner.get(i).getName()).append(", ");
-        }
-        sb.append(winner.get(winner.size() - 1).getName()).append(" ");
-        sb.append(FINAL_WINNER_MESSAGE);
-        System.out.println(sb.toString());
+        System.out.print(winner.stream().map(Car::getName).map(String::valueOf)
+            .collect(Collectors.joining(",")));
+        System.out.println(FINAL_WINNER_MESSAGE);
     }
 }

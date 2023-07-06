@@ -29,10 +29,10 @@ public final class Cars {
     }
 
     public List<Car> selectWinners() {
-        int maxPos = cars.stream().map(Car::getPosition)
-            .max(Comparator.comparing(x -> x)).orElseThrow(() -> new RuntimeException());
+        int carMaxPosition = cars.stream().map(Car::getPosition)
+            .max(Comparator.comparing(car-> car)).orElseThrow(() -> new RuntimeException("주어진 Winner의 최대 위치를 구하지 못합니다."));
 
-        return cars.stream().filter(s -> (s.getPosition() == maxPos))
+        return cars.stream().filter(car-> (car.getPosition() == carMaxPosition))
             .collect(Collectors.toList());
     }
 }

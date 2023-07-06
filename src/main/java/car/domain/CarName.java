@@ -12,7 +12,7 @@ public final class CarName {
 
     private void validateCarName(String carName) {
         if (carName.length() > CAR_NAME_LENGTH_LOWER_BOUND) {
-            throw new RuntimeException();
+            throw new RuntimeException("자동자 이름의 최소값보다 작습니다.");
         }
     }
 
