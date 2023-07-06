@@ -34,13 +34,12 @@ public class Cars {
     }
 
     public List<Car> winners() {
-        Position maxPosition = cars.stream()
-                .map(Car::getPosition)
-                .max(Position::compareTo)
-                .get();
+        Car fastestCar = cars.stream()
+                .max(Car::compareTo)
+                .orElseThrow(() -> new IllegalStateException("[ERROR] 우승자를 찾을 수 없습니다."));
 
         return cars.stream()
-                .filter(car -> car.isEqualPosition(maxPosition))
+                .filter(car -> car.isSamePositionWith(fastestCar))
                 .collect(Collectors.toList());
     }
 

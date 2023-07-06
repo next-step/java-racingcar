@@ -19,8 +19,8 @@ public class Car implements Comparable<Car> {
         this.position = position.move(amount);
     }
 
-    public boolean isEqualPosition(Position position) {
-        return this.position.equals(position);
+    public boolean isSamePositionWith(Car car) {
+        return this.position.equals(car.position);
     }
 
     public String getNameValue() {
