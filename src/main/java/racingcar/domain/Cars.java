@@ -22,10 +22,6 @@ public class Cars {
     }
 
     public Cars(List<Car> cars) {
-        if (cars.size() < MIN_SIZE) {
-            throw new IllegalArgumentException("[ERROR] 최소 2대 이상의 자동차가 있어야 합니다.");
-        }
-
         this.cars = cars;
     }
 
@@ -35,12 +31,16 @@ public class Cars {
 
     public List<Car> winners() {
         Car fastestCar = cars.stream()
-                .max(Car::compareTo)
+                .max(Car::getPositionDifferenceWith)
                 .orElseThrow(() -> new IllegalStateException("[ERROR] 우승자를 찾을 수 없습니다."));
 
         return cars.stream()
                 .filter(car -> car.isSamePositionWith(fastestCar))
                 .collect(Collectors.toList());
+    }
+
+    public boolean canStartRace() {
+        return cars.size() > MIN_SIZE;
     }
 
     public List<Car> getCars() {
