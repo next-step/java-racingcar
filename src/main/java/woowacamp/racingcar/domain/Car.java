@@ -1,7 +1,5 @@
 package woowacamp.racingcar.domain;
 
-import java.util.Objects;
-
 public class Car implements Comparable<Car> {
     private final Name name;
 
@@ -17,8 +15,8 @@ public class Car implements Comparable<Car> {
     }
 
     public void move(MoveStrategy strategy) {
-        int amount = strategy.amount();
-        this.position = position.move(amount);
+        int distance = strategy.distance();
+        this.position = position.move(distance);
     }
 
     public boolean isEqualPosition(Position position) {
@@ -31,10 +29,6 @@ public class Car implements Comparable<Car> {
 
     public Position getPosition() {
         return position;
-    }
-
-    public int getPositionValue() {
-        return position.getValue();
     }
 
     @Override

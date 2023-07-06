@@ -14,7 +14,7 @@ public class RandomMoveStrategy implements MoveStrategy {
     private static final Random random = new Random();
 
     @Override
-    public int amount() {
+    public int distance() {
         if (random.nextInt(UPPER_BOUND) < BOUNDARY) {
             return STOP;
         }
