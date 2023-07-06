@@ -46,7 +46,7 @@ class RacingGamePlayUsecaseTest {
             }
 
             private RacingGamePlayResponse getExpectedResult() {
-                Car[] cars = getCars();
+                List<Car> cars = getCars();
                 RacingGame racingGame = new RacingGame(cars);
                 RacingGamePlayResponse racingGamePlayResponse = new RacingGamePlayResponse();
 
@@ -75,7 +75,7 @@ class RacingGamePlayUsecaseTest {
             }
 
             private RacingGamePlayResponse getExpectedResult() {
-                Car[] cars = getCars();
+                List<Car> cars = getCars();
                 RacingGame racingGame = new RacingGame(cars);
                 RacingGamePlayResponse racingGamePlayResponse = new RacingGamePlayResponse();
                 racingGamePlayResponse.addRacingGameRoundResponse(0, cars);
@@ -89,12 +89,12 @@ class RacingGamePlayUsecaseTest {
 
         }
 
-        private Car[] getCars() {
-            return new Car[]{
+        private List<Car> getCars() {
+            return List.of(
                 new Car("win1", trueMover),
                 new Car("win2", trueMover),
-                new Car("loser", falseMover),
-            };
+                new Car("loser", falseMover)
+            );
         }
 
     }

@@ -1,20 +1,21 @@
 package racingcar.domain;
 
-import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 import racingcar.util.Asserts;
 
 public class RacingGame {
 
-    private final Car[] cars;
+    private final List<Car> cars;
 
-    public RacingGame(Car... cars) {
+    public RacingGame(List<Car> cars) {
         assertDuplicateCarName(cars);
         this.cars = cars;
     }
 
-    private static void assertDuplicateCarName(Car... cars) {
+    private static void assertDuplicateCarName(List<Car> cars) {
         Set<String> duplicatedName = new HashSet<>();
         for (Car car : cars) {
             Asserts.isTrue(!duplicatedName.contains(car.getName()), () -> "중복된 자동차 이름이 발견됐습니다.");
@@ -22,7 +23,7 @@ public class RacingGame {
         }
     }
 
-    public Car[] getRoundResult() {
+    public List<Car> getRoundResult() {
         return cars;
     }
 
@@ -36,15 +37,15 @@ public class RacingGame {
         }
     }
 
-    public Car[] getWinners() {
-        int winnerPosition = Arrays.stream(cars)
+    public List<Car> getWinners() {
+        int winnerPosition = cars.stream()
             .mapToInt(Car::getPosition)
             .max()
             .orElseThrow(() -> new IllegalStateException("winnerCount는 항상 존재합니다."));
 
-        return Arrays.stream(cars)
+        return cars.stream()
             .filter(car -> isWinner(car.getPosition(), winnerPosition))
-            .toArray(Car[]::new);
+            .collect(Collectors.toList());
     }
 
     private boolean isWinner(int currentPosition, int winnerPosition) {

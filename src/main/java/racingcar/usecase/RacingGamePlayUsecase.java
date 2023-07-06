@@ -1,5 +1,6 @@
 package racingcar.usecase;
 
+import java.util.stream.Collectors;
 import racingcar.domain.Car;
 import racingcar.domain.RacingGame;
 import racingcar.usecase.request.RacingGamePlayRequest;
@@ -22,7 +23,7 @@ public class RacingGamePlayUsecase implements RacingGamePlayable {
     private RacingGame getRacingGame(RacingGamePlayRequest racingGamePlayRequest) {
         return new RacingGame(racingGamePlayRequest.getCarRequests().stream()
             .map(cr -> new Car(cr.getName(), cr.getMoveable()))
-            .toArray(Car[]::new)
+            .collect(Collectors.toList())
         );
     }
 

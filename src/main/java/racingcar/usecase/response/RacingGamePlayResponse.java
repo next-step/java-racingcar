@@ -1,7 +1,6 @@
 package racingcar.usecase.response;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -17,17 +16,16 @@ public class RacingGamePlayResponse {
         racingGameRoundResponses = new ArrayList<>();
     }
 
-    public void addRacingGameRoundResponse(int round, Car... cars) {
-        RacingGameRoundResponse racingGameRoundResponse = new RacingGameRoundResponse(round, Arrays.stream(cars)
+    public void addRacingGameRoundResponse(int round, List<Car> cars) {
+        RacingGameRoundResponse racingGameRoundResponse = new RacingGameRoundResponse(round, cars.stream()
             .map(c -> new CarPerRoundResponse(c.getName(), c.getPosition()))
             .collect(Collectors.toList())
         );
         racingGameRoundResponses.add(racingGameRoundResponse);
     }
 
-    public void setWinner(Car... cars) {
-        Arrays.stream(cars)
-            .forEach(c -> winnerNames.add(c.getName()));
+    public void setWinner(List<Car> cars) {
+        cars.forEach(c -> winnerNames.add(c.getName()));
     }
 
     public List<String> getWinnerNames() {
