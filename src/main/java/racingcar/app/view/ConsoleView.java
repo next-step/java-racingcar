@@ -9,7 +9,7 @@ public class ConsoleView {
     private static final String DISTANCE_EXPRESSION = "-";
     private static final int NAME_THRESHOLD = 2;
 
-    private final StringBuffer stringBuffer = new StringBuffer();
+    private final StringBuilder stringBuilder = new StringBuilder();
 
     public void printResult(RacingGamePlayControllerResponse response) {
         System.out.println("실행 결과");
@@ -19,14 +19,14 @@ public class ConsoleView {
     }
 
     private String parseRoundResult(RacingGamePlayControllerRoundResponse racingGamePlayControllerRoundResponse) {
-        stringBuffer.setLength(0);
+        stringBuilder.setLength(0);
         racingGamePlayControllerRoundResponse.getCarPerRoundResponses()
-            .forEach(c -> stringBuffer
+            .forEach(c -> stringBuilder
                 .append(c.getName())
                 .append(" : ")
                 .append(buildPositionToString(c.getPosition()))
                 .append("\n"));
-        return stringBuffer.toString();
+        return stringBuilder.toString();
     }
 
     private String buildPositionToString(int position) {
@@ -34,9 +34,9 @@ public class ConsoleView {
     }
 
     private String parseWinnerNames(List<String> winnerNames) {
-        stringBuffer.setLength(0);
-        winnerNames.forEach(w -> stringBuffer.append(w).append(", "));
-        return stringBuffer.substring(0, stringBuffer.length() - NAME_THRESHOLD);
+        stringBuilder.setLength(0);
+        winnerNames.forEach(w -> stringBuilder.append(w).append(", "));
+        return stringBuilder.substring(0, stringBuilder.length() - NAME_THRESHOLD);
     }
 
 }
