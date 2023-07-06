@@ -19,7 +19,7 @@ public class Name {
      *
      * @param value 검증할 자동차 이름 (ex. pobi)
      */
-    private static void validate(String value) {
+    private void validate(String value) {
         if (value.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("이름은 5자 이하여야 합니다.");
         }
