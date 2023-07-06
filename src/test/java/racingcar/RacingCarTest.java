@@ -41,7 +41,8 @@ public class RacingCarTest {
 
         ThrowableAssert.ThrowingCallable callable = () -> new Car(name);
 
-        assertThatThrownBy(callable).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(callable).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(Car.OVER_MAX_NAME_SIZE_ERROR_STRING);
     }
 
     @Test
