@@ -6,7 +6,7 @@ import java.util.List;
 public class RacingManager {
     private final Cars cars;
     private final int round;
-    private final List<List<CarDto>> records;
+    private final List<RacingRoundRecord> records;
 
     public RacingManager(Cars cars, int round) {
         this.cars = cars;
@@ -30,7 +30,7 @@ public class RacingManager {
         return cars;
     }
 
-    public List<List<CarDto>> getRecords() {
+    public List<RacingRoundRecord> getRecords() {
         return records;
     }
 }

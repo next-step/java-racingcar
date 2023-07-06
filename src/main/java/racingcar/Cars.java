@@ -38,8 +38,8 @@ public class Cars {
                 .max()
                 .orElse(0);
     }
-
-    public List<CarDto> getRecord() {
-        return CarDto.getListOf(cars);
+    
+    public RacingRoundRecord getRecord() {
+        return RacingRoundRecord.from(cars);
     }
 }
