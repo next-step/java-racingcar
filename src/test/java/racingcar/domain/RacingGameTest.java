@@ -57,6 +57,20 @@ class RacingGameTest {
 
         }
 
+        @Nested
+        @DisplayName("Empty List가 Cars로 주어진다면,")
+        class ContextEmptyCarsInput {
+
+            private final List<Car> emptyCars = List.of();
+
+            @Test
+            @DisplayName("IllegalArgumentException을 던진다.")
+            void ItThrowIllegalArgumentException() {
+                assertThatThrownBy(() -> new RacingGame(emptyCars)).isInstanceOf(IllegalArgumentException.class);
+            }
+
+        }
+
     }
 
     @Nested

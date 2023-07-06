@@ -11,11 +11,20 @@ public class RacingGame {
     private final List<Car> cars;
 
     public RacingGame(List<Car> cars) {
-        assertDuplicateCarName(cars);
+        preAssert(cars);
         this.cars = cars;
     }
 
-    private static void assertDuplicateCarName(List<Car> cars) {
+    private void preAssert(List<Car> cars) {
+        assertEmptyCars(cars);
+        assertDuplicateCarName(cars);
+    }
+
+    private void assertEmptyCars(List<Car> cars) {
+        Asserts.isFalse(cars.isEmpty(), () -> "입력값 cars 리스트의 사이즈가 0 입니다.");
+    }
+
+    private void assertDuplicateCarName(List<Car> cars) {
         Set<String> duplicatedName = new HashSet<>();
         for (Car car : cars) {
             Asserts.isTrue(!duplicatedName.contains(car.getName()), () -> "중복된 자동차 이름이 발견됐습니다.");
