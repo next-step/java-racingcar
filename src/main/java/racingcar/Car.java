@@ -23,7 +23,7 @@ public class Car {
     private Car(CarName name, int position, Random random) {
         this.name = name;
         this.position = position;
-        this.random = random; /* for mocking random in test */
+        this.random = random;
     }
 
     public void move() {

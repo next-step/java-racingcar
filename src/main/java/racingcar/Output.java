@@ -7,7 +7,7 @@ public class Output {
 
     public static void printInitialStatus(Cars cars) {
         System.out.println();
-        System.out.println("실행 결과"); // another sout or \n in string?
+        System.out.println("실행 결과");
         printCarStatus(cars);
     }
 
