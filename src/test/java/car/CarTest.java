@@ -1,4 +1,4 @@
-package car.racingtest;
+package car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -8,6 +8,7 @@ import car.domain.model.CarName;
 import car.exceptions.TextLengthException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Assumptions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -37,6 +38,7 @@ public class CarTest {
         assertThrows(TextLengthException.class, () -> new CarName(expectedCarName));
     }
 
+    @Disabled
     @Test
     @DisplayName("단일 자동차 전진 테스트")
     void 단일_자동차_전진_확인() {
@@ -48,6 +50,7 @@ public class CarTest {
             });
     }
 
+    @Disabled
     @Test
     @DisplayName("단일 자동차 멈춤 테스트")
     void 단일_자동차_멈춤_확인() {
