@@ -31,7 +31,7 @@ public class InputView {
         try {
             return readCarNames();
         } catch (IllegalArgumentException e) {
-            System.out.println("자동차 이름의 길이가 5 이하여야 합니다.");
+            System.out.println(e.getMessage());
             return processCarNames();
         }
     }
@@ -42,11 +42,15 @@ public class InputView {
         return split(input);
     }
 
-    public static List<CarName> split(String input) {
+    private static List<CarName> split(String input) {
         String[] carNames = input.split(",");
         if (carNames.length == 0)  {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("유효하지 않은 입력입니다. 다시 입력해주세요");
         }
+        return toCarNames(carNames);
+    }
+
+    private static List<CarName> toCarNames(String[] carNames) {
         return Arrays.stream(carNames)
                 .map(CarName::new)
                 .collect(Collectors.toList());

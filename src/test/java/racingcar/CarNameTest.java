@@ -20,6 +20,18 @@ class CarNameTest {
     }
 
     @Test
+    void carNameTest_noCharacter() {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> new CarName(""));
+    }
+
+    @Test
+    void carNameTest_blank() {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> new CarName("  "));
+    }
+
+    @Test
     void carNameTest_null() {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> new CarName(null));
