@@ -11,7 +11,7 @@ public class Cars {
     public Cars(String rawCarNames) {
         String[] carNames = parseCarNames(rawCarNames);
         checkEmpty(carNames);
-        this.cars = generateCars(parseCarNames(rawCarNames));
+        this.cars = generateCars(carNames);
     }
 
     private void checkEmpty(String[] carNames) {
@@ -32,12 +32,12 @@ public class Cars {
 
     public String[] getWinners() {
         int winnerCount = cars.stream()
-                .mapToInt(Car::getMoveCount)
+                .mapToInt(Car::getScore)
                 .max()
                 .orElse(0);
 
         return cars.stream()
-                .filter(car -> car.getMoveCount() == winnerCount)
+                .filter(car -> car.getScore() == winnerCount)
                 .map(Car::getName)
                 .toArray(String[]::new);
     }

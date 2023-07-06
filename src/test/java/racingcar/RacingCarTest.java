@@ -50,11 +50,11 @@ public class RacingCarTest {
     @ValueSource(ints = {4, 9})
     void 자동차_전진(int randomValue) {
         Car racingCar = new Car("pobi");
-        int previousCount = racingCar.getMoveCount();
+        int previousCount = racingCar.getScore();
 
         racingCar.move(randomValue);
 
-        assertThat(racingCar.getMoveCount()).isEqualTo(previousCount + 1);
+        assertThat(racingCar.getScore()).isEqualTo(previousCount + 1);
     }
 
     @DisplayName("랜덤 값이 3 이하면 자동차는 정지한다")
@@ -62,11 +62,11 @@ public class RacingCarTest {
     @ValueSource(ints = {0, 3})
     void 자동차_정지(int randomValue) {
         Car racingCar = new Car("pobi");
-        int previousCount = racingCar.getMoveCount();
+        int previousCount = racingCar.getScore();
 
         racingCar.move(randomValue);
 
-        assertThat(racingCar.getMoveCount()).isEqualTo(previousCount);
+        assertThat(racingCar.getScore()).isEqualTo(previousCount);
     }
 
     @Test

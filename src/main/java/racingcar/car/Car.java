@@ -8,7 +8,7 @@ public class Car {
     private final int MIN_NAME_LENGTH = 1;
     private final int MIN_MOVE_NUMBER = 4;
     private final String name;
-    private int moveCount = 0;
+    private int score = 0;
 
     public Car(String name) {
         validateCarName(name);
@@ -19,17 +19,17 @@ public class Car {
         return name;
     }
 
-    public int getMoveCount() {
-        return moveCount;
+    public int getScore() {
+        return score;
     }
 
     public String statusToString() {
-        return MessageFormat.format("{0} : {1}", name, "-".repeat(moveCount));
+        return MessageFormat.format("{0} : {1}", name, "-".repeat(score));
     }
 
     public void move(int random) {
         if (random >= MIN_MOVE_NUMBER) {
-            this.moveCount++;
+            this.score++;
         }
     }
 

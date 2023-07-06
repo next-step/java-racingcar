@@ -7,10 +7,11 @@ import java.util.stream.Collectors;
 
 public class RacingGame {
 
-    private final Cars cars;
     private final String NUMBER_PATTERN = "^[0-9]+$";
     private final String WINNER_MESSAGE = "가 최종 우승했습니다.";
     private final String JOIN_DELIMITER = " ,";
+    private final Cars cars;
+
     private int count;
 
     public RacingGame(Cars cars, String count) {
