@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import car.domain.model.Car;
 import car.domain.model.CarName;
+import car.exceptions.TextLengthException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.DisplayName;
@@ -27,10 +28,13 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("자동차 입력이 정상적인지 확인")
+    @DisplayName("자동차 이름 길이가 5보다 길 경우")
     void 자동차_이름_테스트_오류() {
-        String carName = "pobiii";
-        assertThrows(RuntimeException.class, () -> new Car(new CarName("ffffffff")));
+        // given
+        String expectedCarName = "pobiii";
+
+        // when -> then
+        assertThrows(TextLengthException.class, () -> new CarName(expectedCarName));
     }
 
     @Test
