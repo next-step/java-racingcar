@@ -1,13 +1,14 @@
 package car.domain.model;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class CarNames {
 
     private static final String REGEX_CAR_NAME = ",";
-    private List<CarName> carNames;
+    private final List<CarName> carNames;
 
     public CarNames(final String userInputCarNames) {
         validateCarNames(userInputCarNames);
@@ -23,7 +24,7 @@ public class CarNames {
     }
 
     public List<CarName> getCarNames() {
-        return this.carNames;
+        return Collections.unmodifiableList(carNames);
     }
 
 }

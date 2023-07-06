@@ -4,9 +4,9 @@ import car.utils.RandomNumberGenerator;
 
 public class Car {
 
-    private final int MOVING_LIMIT = 4;
+    private static final int MOVING_LIMIT = 4;
     private int position = 0;
-    public String name;
+    private final String name;
 
 
     public Car(final String carName) {
@@ -17,17 +17,17 @@ public class Car {
     public int move() {
         int randomNum = RandomNumberGenerator.getRandomNumber();
         if (randomNum >= MOVING_LIMIT) {
-            this.position++;
+            position++;
         }
         return randomNum;
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public int getPosition() {
-        return this.position;
+        return position;
     }
 
 }

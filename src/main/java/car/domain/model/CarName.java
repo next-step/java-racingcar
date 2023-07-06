@@ -5,7 +5,7 @@ import car.exceptions.TextLengthException;
 public class CarName {
 
     private final static int TEXT_LENGTH_LIMIT = 5;
-    private String myCarName;
+    private final String myCarName;
 
     public CarName(final String eachCarName) {
         validateNameLength(eachCarName);
@@ -19,7 +19,7 @@ public class CarName {
     }
 
     public String getMyCarName() {
-        return this.myCarName;
+        return myCarName;
     }
 
 }

@@ -16,12 +16,8 @@ public class Cars {
             .collect(Collectors.toList());
     }
 
-    private String[] tokenCarNames(final String carNames) {
-        return carNames.split(",");
-    }
-
     public void raceOnce() {
-        this.cars.forEach(o -> o.move());
+        this.cars.forEach(car -> car.move());
     }
 
     public List<Car> getCars() {
