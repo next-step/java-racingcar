@@ -3,10 +3,11 @@ package racingcar;
 import java.util.Random;
 
 public class RandomGenerator {
-    static final int min = 0;
-    static final int max = 9;
-    static final Random random = new Random();
+    private static final int MIN_VALUE = 0;
+    private static final int MAX_VALUE = 9;
+    private static final Random RANDOM = new Random();
+
     public static int generateNumber() {
-        return random.nextInt(max + min) + min;
+        return RANDOM.nextInt(MAX_VALUE + MIN_VALUE) + MIN_VALUE;
     }
 }
