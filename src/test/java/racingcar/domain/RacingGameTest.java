@@ -20,20 +20,21 @@ class RacingGameTest {
     @DisplayName("new 생성자는")
     class DescribeNewConstructor {
 
+        private final int defaultRound = 0;
+        private final List<Car> defeaultCars = List.of(
+            new Car("win1", trueMover),
+            new Car("loser", falseMover),
+            new Car("win2", trueMover)
+        );
+
         @Nested
         @DisplayName("자동차 클래스들과 라운드 정보가 주어진다면,")
         class ContextCarsInput {
 
-            private final List<Car> cars = List.of(
-                new Car("A", trueMover),
-                new Car("B", falseMover),
-                new Car("C", trueMover)
-            );
-
             @Test
             @DisplayName("생성을 성공 한다.")
             void ItCreated() {
-                assertThatNoException().isThrownBy(() -> new RacingGame(cars));
+                assertThatNoException().isThrownBy(() -> new RacingGame(defaultRound, defeaultCars));
             }
 
         }
@@ -51,7 +52,7 @@ class RacingGameTest {
             @Test
             @DisplayName("IllegalArgumentException을 던진다.")
             void ItThrowIllegalArgumentException() {
-                assertThatThrownBy(() -> new RacingGame(duplicateNameCars)).isInstanceOf(
+                assertThatThrownBy(() -> new RacingGame(defaultRound, duplicateNameCars)).isInstanceOf(
                     IllegalArgumentException.class);
             }
 
@@ -66,7 +67,23 @@ class RacingGameTest {
             @Test
             @DisplayName("IllegalArgumentException을 던진다.")
             void ItThrowIllegalArgumentException() {
-                assertThatThrownBy(() -> new RacingGame(emptyCars)).isInstanceOf(IllegalArgumentException.class);
+                assertThatThrownBy(() -> new RacingGame(defaultRound, emptyCars)).isInstanceOf(
+                    IllegalArgumentException.class);
+            }
+
+        }
+
+        @Nested
+        @DisplayName("round 값으로 -1이 주어진다면,")
+        class ContextNegativeRoundInput {
+
+            private final int negativeRound = -1;
+
+            @Test
+            @DisplayName("IllegalArgumentException을 던진다.")
+            void ItThrowIllegalArgumentException() {
+                assertThatThrownBy(() -> new RacingGame(negativeRound, defeaultCars)).isInstanceOf(
+                    IllegalArgumentException.class);
             }
 
         }
@@ -84,10 +101,11 @@ class RacingGameTest {
         );
 
         @Nested
-        @DisplayName("한번 호출되면,")
+        @DisplayName("RacingGame의 round필드가 1로 바인딩 되어있다면,")
         class ContextRacingGameRound1 {
 
-            private final RacingGame racingGame = new RacingGame(cars);
+            private final int round = 1;
+            private final RacingGame racingGame = new RacingGame(round, cars);
             private final int moveCount = 1;
             private final List<Car> expectedCars = getExpectedCars(cars, moveCount);
 
@@ -101,18 +119,17 @@ class RacingGameTest {
         }
 
         @Nested
-        @DisplayName("세번 호출되면,")
+        @DisplayName("RacingGame의 round필드가 3으로 바인딩 되어있다면,")
         class ContextRacingGameRound3 {
 
-            private final RacingGame racingGame = new RacingGame(cars);
+            private final int round = 3;
+            private final RacingGame racingGame = new RacingGame(round, cars);
             private final int moveCount = 3;
             private final List<Car> expectedCars = getExpectedCars(cars, moveCount);
 
             @Test
             @DisplayName("세판을 진행하고, 그 결과를 car에 반영한다.")
             void ItReturn1RoundResult() {
-                racingGame.play();
-                racingGame.play();
                 racingGame.play();
 
                 assertEqualAllCars(cars, expectedCars);
@@ -136,7 +153,8 @@ class RacingGameTest {
         @DisplayName("play가 실행된 이후 호출하면,")
         class ContextCall {
 
-            private final RacingGame racingGame = new RacingGame(cars);
+            private final int round = 1;
+            private final RacingGame racingGame = new RacingGame(round, cars);
             private final int moveCount = 1;
             private final List<Car> expectedCars = getExpectedCars(cars, moveCount);
 
@@ -154,14 +172,14 @@ class RacingGameTest {
         @DisplayName("play가 두번 호출된 후, 호출되면")
         class ContextCallBeforePlayTwice {
 
-            private final RacingGame racingGame = new RacingGame(cars);
+            private final int round = 2;
+            private final RacingGame racingGame = new RacingGame(round, cars);
             private final int moveCount = 2;
             private final List<Car> expectedCars = getExpectedCars(cars, moveCount);
 
             @Test
             @DisplayName("두번째 라운드의 결과를 반환한다.")
             void ItReturnTwiceRoundResult() {
-                racingGame.play();
                 racingGame.play();
                 List<Car> roundResult = racingGame.getRoundResult();
                 assertEqualAllCars(roundResult, expectedCars);
@@ -185,7 +203,8 @@ class RacingGameTest {
         @DisplayName("한판 진행 후 호출되면,")
         class DescribeCall {
 
-            private final RacingGame racingGame = new RacingGame(cars);
+            private final int round = 1;
+            private final RacingGame racingGame = new RacingGame(round, cars);
             private final int moveCount = 1;
             private final List<Car> expectedCars = getExpectedCars(cars, moveCount);
 

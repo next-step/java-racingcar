@@ -8,10 +8,12 @@ import racingcar.util.Asserts;
 
 public class RacingGame {
 
+    private final int round;
     private final List<Car> cars;
 
-    public RacingGame(List<Car> cars) {
+    public RacingGame(int round, List<Car> cars) {
         preAssert(cars);
+        this.round = round;
         this.cars = cars;
     }
 
