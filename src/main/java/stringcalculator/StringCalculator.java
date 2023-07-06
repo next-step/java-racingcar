@@ -2,13 +2,13 @@ package stringcalculator;
 
 import java.util.Arrays;
 
-public class StringExpression {
+public class StringCalculator {
 
     public static final String INVALID_EXCEPTION_MESSAGE = "유효하지 않은 값입니다";
 
     private final String[] values;
 
-    public StringExpression(String expression, String delimiter) {
+    public StringCalculator(String expression, String delimiter) {
         this.values = validateInputText(expression, delimiter);
     }
 

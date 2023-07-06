@@ -3,8 +3,8 @@ package stringcalculator;
 public class StringCalculatorRunner {
 
     public static int run(String inputText) {
-        StringExpression stringExpression = StringExpressionFactory.create(inputText);
+        StringCalculator stringCalculator = StringCalculatorFactory.create(inputText);
 
-        return stringExpression.sumString();
+        return stringCalculator.sumString();
     }
 }
