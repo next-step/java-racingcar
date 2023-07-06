@@ -4,10 +4,14 @@ import java.text.MessageFormat;
 
 public class Car {
 
+    private final int MAX_NAME_LENGTH = 5;
+    private final int MIN_NAME_LENGTH = 1;
+    private final int MIN_MOVE_NUMBER = 4;
     private final String name;
     private int moveCount = 0;
 
     public Car(String name) {
+        validateCarName(name);
         this.name = name;
     }
 
@@ -24,8 +28,14 @@ public class Car {
     }
 
     public void move(int random) {
-        if (random >= 4) {
+        if (random >= MIN_MOVE_NUMBER) {
             this.moveCount++;
+        }
+    }
+
+    private void validateCarName(String carName) {
+        if (carName.length() > MAX_NAME_LENGTH || carName.length() < MIN_NAME_LENGTH) {
+            throw new RuntimeException("자동차 이름이 유효하지 않습니다");
         }
     }
 }
