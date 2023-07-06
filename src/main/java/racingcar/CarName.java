@@ -2,20 +2,20 @@ package racingcar;
 
 public class CarName {
 
-    private final String carName;
+    private final String name;
 
-    public CarName(String carName) {
-        isValid(carName);
-        this.carName = carName;
+    public CarName(String name) {
+        if(isNotValid(name)) {
+            throw new IllegalArgumentException();
+        }
+        this.name = name;
     }
 
     public String getCarName() {
-        return carName;
+        return name;
     }
 
-    private void isValid(String carName) {
-        if (carName == null || carName.length() > 5) {
-            throw new IllegalArgumentException();
-        }
+    private boolean isNotValid(String carName) {
+        return (carName == null || carName.length() > 5);
     }
 }
