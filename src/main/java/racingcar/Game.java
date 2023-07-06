@@ -6,8 +6,6 @@ import java.util.stream.Collectors;
 
 public class Game {
 
-    private static final int CAR_INITIAL_POSITION = 1;
-
     private final List<Car> cars;
 
     public Game(List<CarName> carNames) {
@@ -26,7 +24,7 @@ public class Game {
         int maxPosition = cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
-                .orElse(CAR_INITIAL_POSITION);
+                .orElse(Car.INIT_POSITION);
         return cars.stream()
                 .filter(c -> c.getPosition() == maxPosition)
                 .map(Car::getName)
