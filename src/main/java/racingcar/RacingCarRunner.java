@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.domain.CarName;
+import racingcar.domain.CarStatus;
 import racingcar.domain.Game;
 import racingcar.view.Input;
 import racingcar.view.Output;
@@ -13,17 +14,14 @@ public class RacingCarRunner {
     public static void main(String[] args) {
         List<CarName> carNames = Input.processCarNames();
         int tryCount = Input.processTryCount();
-        Game game = new Game(carNames);
+        Game game = new Game(carNames, tryCount);
 
-        Output.printInitialStatus(game.getCars());
-        runGame(game, tryCount);
-        Output.printWinners(game.findWinnerNames());
-    }
+        List<CarStatus> initialStatus = game.getCars().mapToStatus();
+        List<List<CarStatus>> gameStatus = game.run();
+        List<CarName> winners = game.findWinnerNames();
 
-    private static void runGame(Game game, int tryCount) {
-        for (int i = 0; i < tryCount; i++) {
-            game.run();
-            Output.printCarStatus(game.getCars());
-        }
+        Output.printInitialStatus(initialStatus);
+        Output.printGameStatus(gameStatus);
+        Output.printWinners(winners);
     }
 }

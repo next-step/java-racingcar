@@ -2,22 +2,24 @@ package racingcar.view;
 
 import racingcar.domain.CarName;
 import racingcar.domain.CarStatus;
-import racingcar.domain.Cars;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Output {
 
-    public static void printInitialStatus(Cars cars) {
+    public static void printInitialStatus(List<CarStatus> initialStatus) {
         System.out.println();
         System.out.println("실행 결과");
-        printCarStatus(cars);
+        printCarStatus(initialStatus);
     }
 
-    public static void printCarStatus(Cars cars) {
-        cars.mapToStatus()
-                .stream()
+    public static void printGameStatus(List<List<CarStatus>> gameStatus) {
+        gameStatus.forEach(Output::printCarStatus);
+    }
+
+    public static void printCarStatus(List<CarStatus> raceStatus) {
+        raceStatus.stream()
                 .map(Output::carStatusToString)
                 .forEach(System.out::println);
         System.out.println();

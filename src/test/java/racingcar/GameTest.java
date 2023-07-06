@@ -14,7 +14,7 @@ class GameTest {
     @Test
     void gameTest_winnerTest() {
         List<CarName> carNames = Stream.of("pobi", "honux").map(CarName::new).collect(Collectors.toList());
-        Game game = new Game(carNames);
+        Game game = new Game(carNames, 1);
         Assertions.assertThat(carNames).containsAll(game.findWinnerNames());
     }
 }
