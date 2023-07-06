@@ -1,20 +1,25 @@
 package car.domain.model;
 
+import car.exceptions.TextLengthException;
+
 public class CarName {
 
-    private String text;
+    private final static int TEXT_LENGTH_LIMIT = 5;
+    private String myCarName;
 
-    public CarName(String text) {
-        textValidate(text);
-        this.text = text;
+    public CarName(final String eachCarName) {
+        validateNameLength(eachCarName);
+        this.myCarName = eachCarName;
     }
 
-    private void textValidate(final String carName) {
-        if (carName.length() > 5) throw new RuntimeException();
+    private void validateNameLength(final String carName) {
+        if (carName.length() > TEXT_LENGTH_LIMIT) {
+            throw new TextLengthException(TEXT_LENGTH_LIMIT, " 글자 아래로 작성해 주세요.");
+        }
     }
 
-    public String getText() {
-        return text;
+    public String getMyCarName() {
+        return this.myCarName;
     }
 
 }

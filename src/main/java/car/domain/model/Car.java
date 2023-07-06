@@ -6,7 +6,7 @@ public class Car {
 
     private final int MOVING_LIMIT = 4;
     private int position = 0;
-    private CarName name;
+    public CarName name;
 
 
     public Car(final CarName carName) {
@@ -22,7 +22,7 @@ public class Car {
     }
 
     public String getName() {
-        return this.name.getText();
+        return this.name.getMyCarName();
     }
 
     public int getPosition() {

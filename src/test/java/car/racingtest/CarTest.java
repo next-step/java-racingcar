@@ -1,6 +1,6 @@
 package car.racingtest;
 
-import static org.assertj.core.api.Assertions.assertThatCode;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import car.domain.model.Car;
@@ -14,10 +14,16 @@ public class CarTest {
     private final int CAR_MOVING_LIMIT = 4;
 
     @Test
-    @DisplayName("자동차 입력이 정상적인지 확인")
+    @DisplayName("자동차 이름 입력이 정상적인지 확인")
     void 자동차_이름_테스트_정상() {
-        String carName = "pobi";
-        assertThatCode(() -> new Car(new CarName("hihi"))).doesNotThrowAnyException();
+        // given
+        String expectedCarName = "pobi";
+
+        // when
+        CarName carName = new CarName(expectedCarName);
+
+        // then
+        assertThat(carName).extracting("myCarName").isEqualTo(expectedCarName);
     }
 
     @Test
