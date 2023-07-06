@@ -1,4 +1,4 @@
-package calculator;
+package calculator2;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 

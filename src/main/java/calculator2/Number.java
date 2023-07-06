@@ -15,9 +15,12 @@ public class Number {
 
     private void validateInt(String string) {
         try {
-            Integer.parseInt(string);
+            int num = Integer.parseInt(string);
+            if (num < 0) {
+                throw new IllegalArgumentException("입력값이 잘못 되었습니다.");
+            }
         } catch (NumberFormatException e) {
-            throw new RuntimeException("입력값이 잘못 되었습니다.");
+            throw new IllegalArgumentException("입력값이 잘못 되었습니다.");
         }
     }
 

@@ -1,15 +1,15 @@
-package calculator;
+package calculator2;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class BasicCalculatorTest {
+public class BasicSeparatorSumTest {
 
     @Test
     @DisplayName("쉼표 구분자를 기준으로 숫자의 합을 반환")
-    void commaSum() {
+    void 쉼표_구분자_숫자_합_반환() {
         assertEquals(3, Calculator.sum("1,2"));
         assertEquals(6, Calculator.sum("1,2,3"));
         assertEquals(0, Calculator.sum(""));
@@ -19,11 +19,7 @@ public class BasicCalculatorTest {
     @DisplayName("클론 구분자를 기준으로 숫자의 합을 반환")
     void colonSum() {
         assertEquals(3, Calculator.sum("1:2"));
-    }
-
-    @Test
-    @DisplayName("기본 구분자 전체 테스트")
-    void basicSeperatorTest() {
-        assertEquals(6, Calculator.sum("1,2:3"));
+        assertEquals(6, Calculator.sum("1:2:3"));
+        assertEquals(0, Calculator.sum(""));
     }
 }
