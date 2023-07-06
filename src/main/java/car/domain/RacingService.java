@@ -18,12 +18,16 @@ public class RacingService {
         this.count = new Count(inputCount);
     }
 
-    public Cars runRaceOnce() {
-        this.cars.raceOnce();
-        return this.getRaceResult();
+    public boolean isRacing() {
+        return (this.count.getTryCount() != 0) ? true : false;
     }
 
-    public Cars getRaceResult() {
+    public void runRaceOnce() {
+        this.count.decreaseTryCount();
+        this.cars.raceOnce();
+    }
+
+    public Cars getEachRaceResult() {
         return this.cars;
     }
 

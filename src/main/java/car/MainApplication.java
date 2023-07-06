@@ -14,12 +14,15 @@ public class MainApplication {
 
         // 2. 자동차 경주 실행
         RacingService racingService = new RacingService(inputCarNames, inputCount);
-        for (int i = 0; i < inputCount; i++) {
-            OutputView.printEachRaceResult(racingService.runRaceOnce());
+        while (racingService.isRacing()) {
+            // 2-1. 경주 1회 실행
+            racingService.runRaceOnce();
+            // 2-2. 경주 1회 실행 결과 출력
+            OutputView.printEachRaceResult(racingService.getEachRaceResult());
         }
 
         // 3. 최종 우승자 출력
-        OutputView.printEachRaceResult(racingService.getRaceResult());
+        OutputView.printEachRaceResult(racingService.getEachRaceResult());
         OutputView.printWinner(racingService.selectWinner());
     }
 }
