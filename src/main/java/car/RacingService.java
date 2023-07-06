@@ -7,14 +7,13 @@ import car.domain.TryCount;
 import car.input.InputView;
 import car.output.OutputView;
 import car.util.RandomCarMovable;
-import java.io.IOException;
 import java.util.List;
 
-public final class CarRacing {
+public final class RacingService {
 
     private Cars cars;
 
-    public CarRacing() {
+    public RacingService() {
     }
 
     public void runRaceOnce() {
@@ -25,7 +24,7 @@ public final class CarRacing {
         return cars.selectWinners();
     }
 
-    public void run()  {
+    public void run() {
         String name = InputView.enterCarName();
         TryCount tryCount = new TryCount(InputView.enterCount());
 
