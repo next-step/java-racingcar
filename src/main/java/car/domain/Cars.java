@@ -11,13 +11,15 @@ public final class Cars {
     private final List<Car> cars;
 
     public Cars(final CarNames carNames) {
-        cars = carNames.getCarNames()
-            .stream().map(car -> new Car(car.getName()))
+        cars = carNames.getCarNames().stream()
+            .map(car -> new Car(car.getName()))
             .collect(Collectors.toList());
     }
 
     public void race(final Movable movable) {
-        cars.forEach(car -> car.move(movable.decideMoving()));
+        for (Car car : cars) {
+            car.move(movable.decideMoving());
+        }
     }
 
     public List<Car> getCars() {
@@ -30,7 +32,8 @@ public final class Cars {
             .max()
             .orElseThrow(() -> new NoSuchElementException("자동차 간의 최대 위치가 존재 하지 않습니다."));
 
-        return cars.stream().filter(car -> (car.getPosition() == carMaxPosition))
+        return cars.stream()
+            .filter(car -> car.isSamePosition(carMaxPosition))
             .collect(Collectors.toList());
     }
 }
