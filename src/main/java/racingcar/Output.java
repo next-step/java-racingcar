@@ -29,7 +29,7 @@ public class Output {
 
     private static String carNamesToString(List<CarName> carNames) {
         return carNames.stream()
-                .map(CarName::getCarName)
+                .map(CarName::getName)
                 .collect(Collectors.joining(", "));
     }
 }

@@ -9,7 +9,7 @@ public class CarNameTest {
     @Test
     void carNameTest_normal() {
         CarName carName = new CarName("pobi");
-        Assertions.assertThat(carName.getCarName()).isEqualTo("pobi");
+        Assertions.assertThat(carName.getName()).isEqualTo("pobi");
     }
 
     @Test

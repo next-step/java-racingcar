@@ -20,7 +20,7 @@ public class Car {
         this(name, INIT_POSITION, random);
     }
 
-    public Car(CarName name, int position, Random random) {
+    private Car(CarName name, int position, Random random) {
         this.name = name;
         this.position = position;
         this.random = random; /* for mocking random in test */
