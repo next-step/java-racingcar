@@ -19,7 +19,7 @@ public final class NonNegativeNumber {
     }
 
     public static NonNegativeNumber of(final int value) {
-        if (value < 0) {
+        if (isNegativeNumber(value)) {
             throw new IllegalArgumentException("음수는 사용할 수 없습니다.");
         }
 
@@ -30,6 +30,10 @@ public final class NonNegativeNumber {
         return this.value;
     }
 
+    private static boolean isNegativeNumber(final int value) {
+        return value < 0;
+    }
+
     private static int toInt(final String value) {
         try {
             return Integer.parseInt(value);
@@ -37,6 +41,4 @@ public final class NonNegativeNumber {
             throw new IllegalArgumentException("숫자가 아닌 잘못된 형식의 값을 입력했습니다.", e);
         }
     }
-
-
 }

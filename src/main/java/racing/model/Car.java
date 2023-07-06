@@ -9,7 +9,7 @@ public class Car {
     private final int criterion;
     private int position;
 
-    public Car(String name) {
+    public Car(final String name) {
         this.name = name;
         this.criterion = DEFAULT_CRITERION;
         this.position = DEFAULT_POSITION;
@@ -23,19 +23,22 @@ public class Car {
         return this.position;
     }
 
-    public boolean isWinner(int maxPosition) {
+    public boolean isWinner(final int maxPosition) {
         return this.position == maxPosition;
     }
 
-    public void moveOneStepMoreThanCriterion(int value) {
-        if (value >= this.criterion) {
+    public void move(final int value) {
+        if (canMove(value)) {
             this.position++;
         }
+    }
+
+    private boolean canMove(final int value) {
+        return value >= this.criterion;
     }
 
     @Override
     public String toString() {
         return this.name + " : " + "-".repeat(this.position);
     }
-
 }

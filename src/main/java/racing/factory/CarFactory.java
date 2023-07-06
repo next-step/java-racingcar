@@ -8,12 +8,10 @@ import racing.model.Car;
 public class CarFactory {
 
     private static final String DEFAULT_DELIMITER = ",";
-    public static final int CAR_NAME_MAX = 5;
+    private static final int MAX_CAR_NAME_LENGTH = 5;
 
     private static class CarFactoryHandler {
-
         private static final CarFactory INSTANCE = new CarFactory();
-
     }
 
     private CarFactory() {
@@ -23,27 +21,24 @@ public class CarFactory {
         return CarFactoryHandler.INSTANCE;
     }
 
-    public List<Car> manufactureCars(String text) {
-        String[] carNames = text.split(DEFAULT_DELIMITER);
+    public List<Car> manufactureCars(final String text) {
+        final String[] carNames = text.split(DEFAULT_DELIMITER);
 
-        if (!validate(carNames)) {
+        if (isInvalid(carNames)) {
             throw new IllegalArgumentException("5자를 초과하는 자동차 이름은 사용할 수 없습니다.");
         }
 
         return manufactureCars(carNames);
     }
 
-    private List<Car> manufactureCars(String[] names) {
+    private List<Car> manufactureCars(final String[] names) {
         return Arrays.stream(names)
                      .map(Car::new)
-                     .collect(Collectors.toList());
+                     .collect(Collectors.toUnmodifiableList());
     }
 
-    private boolean validate(String[] carNames) {
+    private boolean isInvalid(final String[] carNames) {
         return Arrays.stream(carNames)
-                     .filter(cur -> cur.length() > CAR_NAME_MAX)
-                     .findAny()
-                     .isEmpty();
+                     .anyMatch(carName -> carName.length() > MAX_CAR_NAME_LENGTH);
     }
-
 }
