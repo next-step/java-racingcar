@@ -18,7 +18,8 @@ public class CarsTest {
     void 우승자_구하기() {
         Cars cars = new Cars(new CarNames("hello,jonga"));
 
-        int maxPos = cars.getCars().stream().map(Car::getPosition)
+        int maxPos = cars.getCars().stream()
+            .map(Car::getPosition)
             .max(Comparator.comparing(x -> x))
             .orElseThrow(() -> new NoSuchElementException("자동차 간의 최대 위치가 존재 하지 않습니다."));
         List<Car> winner = cars.selectWinners();
@@ -27,4 +28,5 @@ public class CarsTest {
             Assertions.assertEquals(maxPos, w.getPosition());
         });
     }
+
 }

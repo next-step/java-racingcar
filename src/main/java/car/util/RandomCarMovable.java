@@ -10,11 +10,16 @@ public final class RandomCarMovable extends Movable {
     }
 
     @Override
-    public int decideMoving() {
-        int num = NumberGenerator.getRandomNumber();
+    public int decideMoving(int num) {
         if (num >= CAR_MOVING_LIMIT) {
             return CAR_MOVING_SIZE;
         }
         return ZERO;
+    }
+
+    @Override
+    public int decideMoving() {
+        int num = NumberGenerator.getRandomNumber();
+        return this.decideMoving(num);
     }
 }
