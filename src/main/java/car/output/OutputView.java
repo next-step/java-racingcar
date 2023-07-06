@@ -16,7 +16,9 @@ public final class OutputView {
     }
 
     public static void printEachRaceResult(final Cars cars) {
-        cars.getCars().forEach(car -> System.out.println(new CarResult(car)));
+        for (Car car : cars.getCars()) {
+            System.out.println(new CarResult(car).createCarResult());
+        }
         System.out.println();
     }
 

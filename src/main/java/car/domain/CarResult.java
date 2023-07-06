@@ -14,8 +14,7 @@ public final class CarResult {
         return "-".repeat(position);
     }
 
-    @Override
-    public String toString() {
+    public String createCarResult() {
         return name.getName() + " : " + positionMark;
     }
 }
