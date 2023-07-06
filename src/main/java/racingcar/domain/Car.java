@@ -1,8 +1,9 @@
 package racingcar.domain;
 
-import java.util.Objects;
 import racingcar.domain.extension.Moveable;
 import racingcar.util.Asserts;
+
+import java.util.Objects;
 
 public class Car {
 
@@ -37,6 +38,10 @@ public class Car {
         if (this.moveable.isMove()) {
             this.position++;
         }
+    }
+
+    public boolean isWinner(int winnerPosition) {
+        return this.position == winnerPosition;
     }
 
     @Override

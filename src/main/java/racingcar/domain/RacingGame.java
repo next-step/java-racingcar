@@ -45,12 +45,8 @@ public class RacingGame {
                 .orElseThrow(() -> new IllegalArgumentException("우승한 자동차가 나오지 않은 상황이 발생했습니다."));
 
         return cars.stream()
-            .filter(car -> isWinner(car.getPosition(), winnerPosition))
+            .filter(car -> car.isWinner(winnerPosition))
             .collect(Collectors.toList());
-    }
-
-    private boolean isWinner(int currentPosition, int winnerPosition) {
-        return currentPosition == winnerPosition;
     }
 
 }
