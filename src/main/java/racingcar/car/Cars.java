@@ -17,10 +17,22 @@ public class Cars {
         this.cars = generateCars(carNames);
     }
 
+    private String[] parseCarNames(String rawCarNames) {
+        return Arrays.stream(rawCarNames.split(","))
+                .map(s -> s.trim())
+                .toArray(String[]::new);
+    }
+
     private void checkEmpty(String[] carNames) {
         if (carNames.length == 0) {
-            throw new RuntimeException("자동차 이름이 유효하지 않습니다");
+            throw new RuntimeException("자동차 이름이 존재하지 않습니다");
         }
+    }
+
+    private List<Car> generateCars(String[] carNames) {
+        return Arrays.stream(carNames)
+                .map(name -> new Car(name))
+                .collect(Collectors.toList());
     }
 
     public void move() {
@@ -33,13 +45,6 @@ public class Cars {
         return (int) (Math.random() * 10000) % 10;
     }
 
-    private int getMaxScore() {
-        return cars.stream()
-                .mapToInt(Car::getScore)
-                .max()
-                .orElse(0);
-    }
-
     public List<Winner> findWinners() {
         int maxScore = getMaxScore();
         return cars.stream()
@@ -48,21 +53,16 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
+    private int getMaxScore() {
+        return cars.stream()
+                .mapToInt(Car::getScore)
+                .max()
+                .orElse(0);
+    }
+
     public List<Result> findAll() {
         return cars.stream()
                 .map(car -> new Result(car.getName(), car.getScore()))
-                .collect(Collectors.toList());
-    }
-
-    private String[] parseCarNames(String rawCarNames) {
-        return Arrays.stream(rawCarNames.split(","))
-                .map(s -> s.trim())
-                .toArray(String[]::new);
-    }
-
-    private List<Car> generateCars(String[] carNames) {
-        return Arrays.stream(carNames)
-                .map(name -> new Car(name))
                 .collect(Collectors.toList());
     }
 }

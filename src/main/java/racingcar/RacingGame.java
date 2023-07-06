@@ -12,7 +12,7 @@ public class RacingGame {
     private final String NUMBER_PATTERN = "^[0-9]+$";
     private final List<List<Result>> eachResults = new ArrayList<>();
     private final Cars cars;
-    private int count;
+    private final int count;
 
     public RacingGame(Cars cars, String count) {
         validateCount(count);
@@ -20,8 +20,14 @@ public class RacingGame {
         this.count = Integer.parseInt(count.trim());
     }
 
+    private void validateCount(String count) {
+        if (!count.trim().matches(NUMBER_PATTERN)) {
+            throw new RuntimeException("실행 횟수는 양수만 가능합니다");
+        }
+    }
+
     public void play() {
-        while (count-- > 0) {
+        for (int i = 0; i < count; i++) {
             cars.move();
             eachResults.add(getResult());
         }
@@ -37,11 +43,5 @@ public class RacingGame {
 
     public List<Winner> getWinners() {
         return cars.findWinners();
-    }
-
-    private void validateCount(String count) {
-        if (!count.trim().matches(NUMBER_PATTERN)) {
-            throw new RuntimeException("실행 횟수는 양수만 가능합니다");
-        }
     }
 }

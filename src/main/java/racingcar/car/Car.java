@@ -13,6 +13,12 @@ public class Car {
         this.name = name;
     }
 
+    private void validateCarName(String carName) {
+        if (carName.length() > MAX_NAME_LENGTH || carName.length() < MIN_NAME_LENGTH) {
+            throw new RuntimeException("자동차 이름이 유효하지 않습니다");
+        }
+    }
+
     public String getName() {
         return name;
     }
@@ -21,15 +27,9 @@ public class Car {
         return score;
     }
 
-    public void move(int random) {
-        if (random >= MIN_MOVE_NUMBER) {
+    public void move(int number) {
+        if (number >= MIN_MOVE_NUMBER) {
             this.score++;
-        }
-    }
-
-    private void validateCarName(String carName) {
-        if (carName.length() > MAX_NAME_LENGTH || carName.length() < MIN_NAME_LENGTH) {
-            throw new RuntimeException("자동차 이름이 유효하지 않습니다");
         }
     }
 }

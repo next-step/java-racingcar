@@ -21,22 +21,19 @@ public class RacingGameRunner {
         printResult(racingGame);
     }
 
+    private String getCarNames() {
+        view.printCarNamesPrompt();
+        return view.read();
+    }
+
+    private String getCount() {
+        view.printCountPrompt();
+        return view.read();
+    }
+
     private void printResult(RacingGame racingGame) {
         view.printResults(racingGame.getEachResults());
         view.printResult(racingGame.getResult());
         view.printWinners(racingGame.getWinners());
     }
-
-    private String getCount() {
-        view.printCountPrompt();
-        String count = view.read();
-        return count;
-    }
-
-    private String getCarNames() {
-        view.printCarNamesPrompt();
-        String carNames = view.read();
-        return carNames;
-    }
-
 }
