@@ -6,13 +6,13 @@ import racing.manager.RacingManager;
 import racing.model.Cars;
 import racing.model.GameInfo;
 
-public class Host {
+public class GameController {
 
     private final int raceCount;
     private final RacingManager racingManager;
     private final Viewer viewer;
 
-    public Host(GameInfo gameInfo, CarFactory carFactory, Viewer viewer) {
+    public GameController(GameInfo gameInfo, CarFactory carFactory, Viewer viewer) {
         this.raceCount = gameInfo.getRaceCount();
 
         Cars cars = new Cars(

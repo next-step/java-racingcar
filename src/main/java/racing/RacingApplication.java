@@ -1,6 +1,6 @@
 package racing;
 
-import racing.controller.Host;
+import racing.controller.GameController;
 import racing.factory.CarFactory;
 import racing.io.RacingReader;
 import racing.io.Viewer;
@@ -12,8 +12,8 @@ public class RacingApplication {
         RacingReader racingReader = new RacingReader();
         GameInfo gameInfo = racingReader.startGame();
         CarFactory carFactory = CarFactory.getInstance();
-        Host host = new Host(gameInfo, carFactory, new Viewer());
-        host.startRacing();
+        GameController gameController = new GameController(gameInfo, carFactory, new Viewer());
+        gameController.startRacing();
     }
 
 }
