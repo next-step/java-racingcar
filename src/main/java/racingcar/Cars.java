@@ -7,6 +7,7 @@ import static racingcar.RandomGenerator.generateNumber;
 
 public class Cars {
 
+    private static final String NOT_EMPTY_CAR_MESSAGE = "Car 객체를 찾을 수 없습니다.";
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
@@ -38,7 +39,7 @@ public class Cars {
         return cars.stream()
                 .mapToInt(Car::getDistance)
                 .max()
-                .orElse(0);
+                .orElseThrow(() -> new IllegalStateException(NOT_EMPTY_CAR_MESSAGE));
     }
 
     public List<Car> getCars() {

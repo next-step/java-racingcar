@@ -53,4 +53,13 @@ public class CarsTest {
         Assertions.assertThat(car.size()).isEqualTo(1);
     }
 
+    @Test
+    @DisplayName("자동차가 없다면 IllegalStateException 예외를 던진다.")
+    public void 자동차가_없다면_IllegalStateException_예외를_던진다() throws Exception {
+        Cars cars = Cars.from(List.of());
+
+        Assertions.assertThatThrownBy(cars::findWinnerNames)
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessage("Car 객체를 찾을 수 없습니다.");
+    }
 }
