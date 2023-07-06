@@ -30,7 +30,7 @@ public class CalculatorTest {
     @DisplayName("null이나 빈 문자열인 경우 0을 반환한다")
     @ParameterizedTest()
     @MethodSource("blankOrNullStrings")
-    public void null이나_빈_문자열인_경우_0을_반환한다(String input) throws Exception {
+    void null이나_빈_문자열인_경우_0을_반환한다(String input) {
         int result = Calculator.sum(input);
 
         assertThat(result).isEqualTo(0);
@@ -39,7 +39,7 @@ public class CalculatorTest {
     @DisplayName("쉼표 또는 콜론을 구분자로 분리한 각 숫자의 합을 반환")
     @ParameterizedTest()
     @MethodSource("numberStrings")
-    public void 쉼표_또는_콜론을_구분하여_합_구하기(String input, int expected) throws Exception {
+    void 쉼표_또는_콜론을_구분하여_합_구하기(String input, int expected) {
         int result = Calculator.sum(input);
 
         assertThat(result).isEqualTo(expected);
@@ -47,7 +47,7 @@ public class CalculatorTest {
 
     @Test
     @DisplayName("“//”와 “\\n” 문자 사이에 커스텀 구분자를 이용하여 계산한다.")
-    public void 문자_사이에_커스텀_구분자를_이용하여_계산한다() throws Exception {
+    void 문자_사이에_커스텀_구분자를_이용하여_계산한다() {
         String s = "//;\n1;2;3";
 
         int result = Calculator.sum(s);
@@ -58,7 +58,7 @@ public class CalculatorTest {
     @DisplayName("문자열 계산기에 숫자 이외의 값 또는 음수를 전달하는 경우 RuntimeException 예외를 throw한다")
     @ParameterizedTest()
     @ValueSource(strings = {"-1,2,3", "a,2,3", "//;\n^2;3;4"})
-    public void 문자열_계산기에_숫자_이외의_값_또는_음수를_전달하는_경우_RuntimeException_예외를_throw한다(String input) throws Exception {
+    void 문자열_계산기에_숫자_이외의_값_또는_음수를_전달하는_경우_RuntimeException_예외를_throw한다(String input) {
 
         ThrowableAssert.ThrowingCallable callable = () -> Calculator.sum(input);
 

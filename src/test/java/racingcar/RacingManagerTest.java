@@ -11,7 +11,7 @@ class RacingManagerTest {
 
     @Test
     @DisplayName("레이싱이 진행됨에 따라 레이싱 결과가 저장된다.")
-    public void 레이싱이_진행됨에_따라_레이싱_결과가_저장된다() throws Exception {
+    void 레이싱이_진행됨에_따라_레이싱_결과가_저장된다() {
         RacingManager racingManager = new RacingManager(List.of("ipt", "chan", "pobi"), 4);
 
         RacingResult racingResult = racingManager.playRacing();
