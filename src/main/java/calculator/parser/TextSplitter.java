@@ -26,5 +26,4 @@ public final class TextSplitter {
     public String toString() {
         return "TextSplitter{" + "values :: " + values + '}';
     }
-
 }

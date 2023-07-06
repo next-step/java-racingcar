@@ -22,5 +22,4 @@ public final class Calculator {
         return numberParser.parse(text)
                            .sum();
     }
-
 }

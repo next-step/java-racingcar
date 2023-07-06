@@ -23,5 +23,4 @@ public final class NumberParser {
                 textParser.parse(text)
         );
     }
-
 }

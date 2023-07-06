@@ -26,5 +26,4 @@ public class NonNegativeNumbers {
                           .mapToInt(NonNegativeNumber::intValue)
                           .sum();
     }
-
 }

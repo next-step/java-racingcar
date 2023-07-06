@@ -5,8 +5,7 @@ public final class StringUtils {
     private StringUtils() {
     }
 
-    public static boolean hasText(final String string) {
-        return string != null && !string.isBlank();
+    public static boolean hasNotText(final String string) {
+        return string == null || string.isBlank();
     }
-
 }
