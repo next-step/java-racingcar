@@ -1,15 +1,14 @@
 package racing.input;
 
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
-
 import racing.model.Car;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingInputTest {
     @Test
@@ -23,7 +22,7 @@ public class RacingInputTest {
         List<Car> cars = racingInput.inputName();
 
         //then
-        assertThat(cars.size()).isEqualTo(3);
+        assertThat(cars).hasSize(3);
         assertThat(cars.get(0).getName()).isEqualTo("pobi");
         assertThat(cars.get(1).getName()).isEqualTo("crong");
         assertThat(cars.get(2).getName()).isEqualTo("honux");
