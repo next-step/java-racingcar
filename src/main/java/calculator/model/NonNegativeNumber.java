@@ -11,7 +11,7 @@ public final class NonNegativeNumber {
     }
 
     public static NonNegativeNumber of(final String value) {
-        if (!StringUtils.hasText(value)) {
+        if (StringUtils.hasNotText(value)) {
             return new NonNegativeNumber(0);
         }
 
