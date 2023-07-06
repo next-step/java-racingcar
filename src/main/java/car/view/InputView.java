@@ -14,6 +14,10 @@ public class InputView {
         return scanner.nextLine();
     }
 
+    /**
+     * @return int
+     * @exception NumberStringException 숫자 형식이 아닌 경우
+     */
     public static int enterCount() {
         System.out.println("시도할 회수는 몇회인가요?");
         int inputCount = 0;
