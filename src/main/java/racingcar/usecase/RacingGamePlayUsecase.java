@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class RacingGamePlayUsecase {
 
     public RacingGamePlayResponse play(int round, RacingGamePlayRequest racingGamePlayRequest) {
-        RacingGame racingGame = getRacingGame(racingGamePlayRequest);
+        RacingGame racingGame = createRacingGame(racingGamePlayRequest);
         RacingGamePlayResponse response = new RacingGamePlayResponse();
         response.addRacingGameRoundResponse(0, racingGame.getRoundResult());
 
@@ -20,7 +20,7 @@ public class RacingGamePlayUsecase {
         return response;
     }
 
-    private RacingGame getRacingGame(RacingGamePlayRequest racingGamePlayRequest) {
+    private RacingGame createRacingGame(RacingGamePlayRequest racingGamePlayRequest) {
         return new RacingGame(racingGamePlayRequest.getCarRequests().stream()
                 .map(cr -> new Car(cr.getName(), cr.getMoveable()))
                 .collect(Collectors.toList())
