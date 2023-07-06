@@ -18,12 +18,12 @@ public final class CarNames {
 
     private List<CarName> validateCarNames(String names) {
         if (names == null || names.isBlank()) {
-            throw new RuntimeException("자동차 입력이 공백이거나 NULL 값 입니다.");
+            throw new IllegalArgumentException("자동차 입력이 공백이거나 NULL 값 입니다.");
         }
 
         String[] tokenCarNames = tokenCarNames(names);
         if (tokenCarNames.length == ZERO) {
-            throw new RuntimeException("자동차 입력이 공백이거나 NULL 값 입니다.");
+            throw new IllegalArgumentException("자동차 입력이 공백이거나 NULL 값 입니다.");
         }
 
         return Arrays.stream(tokenCarNames).map(CarName::new).collect(Collectors.toList());

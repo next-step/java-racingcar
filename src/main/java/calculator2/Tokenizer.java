@@ -4,6 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Tokenizer {
+
     private final static String CUSTOM_SEPARATOR = "//(.)\n(.*)";
     private final static String BASIC_SEPARATOR = ":|,";
     private final static String ZERO = "0";
@@ -19,7 +20,7 @@ public class Tokenizer {
         return splitNum(num);
     }
 
-    private static String[] splitNum(String num) {
+    private String[] splitNum(String num) {
         Matcher matcher = Pattern.compile(CUSTOM_SEPARATOR).matcher(num);
         if (matcher.find()) {
             String customSeparator = matcher.group(1);
