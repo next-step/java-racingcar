@@ -1,6 +1,5 @@
 package racingcar.usecase;
 
-import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -11,6 +10,8 @@ import racingcar.domain.extension.Moveable;
 import racingcar.usecase.request.RacingGamePlayRequest;
 import racingcar.usecase.request.RacingGamePlayRequest.CarRequest;
 import racingcar.usecase.response.RacingGamePlayResponse;
+
+import java.util.List;
 
 @SuppressWarnings("FieldCanBeLocal")
 @DisplayName("RacingGamePlayUsecase 클래스")
@@ -46,7 +47,7 @@ class RacingGamePlayUsecaseTest {
             }
 
             private RacingGamePlayResponse getExpectedResult() {
-                Car[] cars = getCars();
+                List<Car> cars = getCars();
                 RacingGame racingGame = new RacingGame(cars);
                 RacingGamePlayResponse racingGamePlayResponse = new RacingGamePlayResponse();
 
@@ -75,7 +76,7 @@ class RacingGamePlayUsecaseTest {
             }
 
             private RacingGamePlayResponse getExpectedResult() {
-                Car[] cars = getCars();
+                List<Car> cars = getCars();
                 RacingGame racingGame = new RacingGame(cars);
                 RacingGamePlayResponse racingGamePlayResponse = new RacingGamePlayResponse();
                 racingGamePlayResponse.addRacingGameRoundResponse(0, cars);
@@ -89,12 +90,12 @@ class RacingGamePlayUsecaseTest {
 
         }
 
-        private Car[] getCars() {
-            return new Car[]{
-                new Car("win1", trueMover),
-                new Car("win2", trueMover),
-                new Car("loser", falseMover),
-            };
+        private List<Car> getCars() {
+            return List.of(
+                    new Car("win1", trueMover),
+                    new Car("win2", trueMover),
+                    new Car("loser", falseMover)
+            );
         }
 
     }

@@ -5,6 +5,8 @@ import racingcar.domain.RacingGame;
 import racingcar.usecase.request.RacingGamePlayRequest;
 import racingcar.usecase.response.RacingGamePlayResponse;
 
+import java.util.stream.Collectors;
+
 public class RacingGamePlayUsecase {
 
     public RacingGamePlayResponse play(int round, RacingGamePlayRequest racingGamePlayRequest) {
@@ -20,8 +22,8 @@ public class RacingGamePlayUsecase {
 
     private RacingGame getRacingGame(RacingGamePlayRequest racingGamePlayRequest) {
         return new RacingGame(racingGamePlayRequest.getCarRequests().stream()
-            .map(cr -> new Car(cr.getName(), cr.getMoveable()))
-            .toArray(Car[]::new)
+                .map(cr -> new Car(cr.getName(), cr.getMoveable()))
+                .collect(Collectors.toList())
         );
     }
 
