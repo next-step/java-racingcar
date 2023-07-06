@@ -2,15 +2,15 @@ package car.domain;
 
 public final class CarResult {
 
-    private CarName name;
-    private String positionMark;
+    private final CarName name;
+    private final String positionMark;
 
-    public CarResult(Car car) {
+    public CarResult(final Car car) {
         this.name = new CarName(car.getName());
         this.positionMark = createPositionMark(car.getPosition());
     }
 
-    private String createPositionMark(int position) {
+    private String createPositionMark(final int position) {
         return "-".repeat(position);
     }
 

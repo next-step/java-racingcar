@@ -16,8 +16,7 @@ public final class InputView {
     public static String enterCarName() {
         System.out.println(INPUT_RACE_CAR_MESSAGE);
         try {
-            String carName = bufferedReader.readLine();
-            return carName;
+            return bufferedReader.readLine();
         } catch (IOException e) {
             System.out.println(WRONG_CAR_NAME_MESSAGE);
             return enterCarName();
@@ -27,8 +26,7 @@ public final class InputView {
     public static String enterCount() {
         System.out.println(INPUT_TRY_COUNT_MESSAGE);
         try {
-            String count = bufferedReader.readLine();
-            return count;
+            return bufferedReader.readLine();
         } catch (IOException e) {
             System.out.println(WRONG_COUNT_MESSAGE);
             return enterCount();

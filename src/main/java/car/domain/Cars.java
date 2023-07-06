@@ -8,17 +8,16 @@ import java.util.stream.Collectors;
 
 public final class Cars {
 
-    private List<Car> cars;
+    private final List<Car> cars;
 
-    public Cars(CarNames carNames) {
-        cars = carNames.getCarNames().stream().map(car -> new Car(car.getName()))
+    public Cars(final CarNames carNames) {
+        cars = carNames.getCarNames()
+            .stream().map(car -> new Car(car.getName()))
             .collect(Collectors.toList());
     }
 
-    public void race(Movable movable) {
-        cars.forEach(car -> {
-            car.move(movable.decideMoving());
-        });
+    public void race(final Movable movable) {
+        cars.forEach(car -> car.move(movable.decideMoving()));
     }
 
     public List<Car> getCars() {
@@ -26,7 +25,9 @@ public final class Cars {
     }
 
     public List<Car> selectWinners() {
-        int carMaxPosition = cars.stream().mapToInt(Car::getPosition).max()
+        int carMaxPosition = cars.stream()
+            .mapToInt(Car::getPosition)
+            .max()
             .orElseThrow(() -> new NoSuchElementException("자동차 간의 최대 위치가 존재 하지 않습니다."));
 
         return cars.stream().filter(car -> (car.getPosition() == carMaxPosition))

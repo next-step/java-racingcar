@@ -2,13 +2,13 @@ package car.domain;
 
 public final class TryCount {
 
-    private int tryCount;
+    private final int tryCount;
 
-    public TryCount(String count) {
+    public TryCount(final String count) {
         this.tryCount = toInt(count);
     }
 
-    private int toInt(String count) {
+    private int toInt(final String count) {
         int num = Integer.parseInt(count);
         if (num < 0) {
             throw new IllegalArgumentException("시도 횟수가 음수입니다.");

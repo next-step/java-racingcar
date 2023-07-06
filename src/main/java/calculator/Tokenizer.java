@@ -9,18 +9,18 @@ public class Tokenizer {
     private final static String BASIC_SEPARATOR = ":|,";
     private final static String ZERO = "0";
 
-    private boolean isBlank(String num) {
+    private boolean isBlank(final String num) {
         return num == null || num.isBlank();
     }
 
-    public String[] tokenNum(String num) {
+    public String[] tokenNum(final String num) {
         if (isBlank(num)) {
             return new String[]{ZERO};
         }
         return splitNum(num);
     }
 
-    private String[] splitNum(String num) {
+    private String[] splitNum(final String num) {
         Matcher matcher = Pattern.compile(CUSTOM_SEPARATOR).matcher(num);
         if (matcher.find()) {
             String customSeparator = matcher.group(1);

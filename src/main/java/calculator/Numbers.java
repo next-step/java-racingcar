@@ -8,9 +8,10 @@ public class Numbers {
 
     private final List<Number> numbers;
 
-    Numbers(String[] strings) {
-        this.numbers = Arrays.stream(strings).map(Number::new).collect(
-            Collectors.toList());
+    Numbers(final String[] strings) {
+        this.numbers = Arrays.stream(strings)
+            .map(Number::new)
+            .collect(Collectors.toList());
     }
 
     public int sum() {

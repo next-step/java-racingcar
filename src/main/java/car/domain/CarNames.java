@@ -7,16 +7,18 @@ import java.util.stream.Collectors;
 
 public final class CarNames {
 
-    private List<CarName> names;
-    private final String CAR_NAMES_DELIMITER = ",";
-    private final int ZERO = 0;
+    private final List<CarName> names;
+    private final static String CAR_NAMES_DELIMITER = ",";
+    private final static int ZERO = 0;
 
-    public CarNames(String names) {
-        List<CarName> carNames = validateCarNames(names);
-        this.names = carNames;
+    public CarNames(final String names) {
+        validateCarNames(names);
+        this.names = Arrays.stream(tokenCarNames(names))
+            .map(CarName::new)
+            .collect(Collectors.toList());
     }
 
-    private List<CarName> validateCarNames(String names) {
+    private void validateCarNames(final String names) {
         if (names == null || names.isBlank()) {
             throw new IllegalArgumentException("자동차 입력이 공백이거나 NULL 값 입니다.");
         }
@@ -25,11 +27,9 @@ public final class CarNames {
         if (tokenCarNames.length == ZERO) {
             throw new IllegalArgumentException("자동차 입력이 공백이거나 NULL 값 입니다.");
         }
-
-        return Arrays.stream(tokenCarNames).map(CarName::new).collect(Collectors.toList());
     }
 
-    private String[] tokenCarNames(String carNames) {
+    private String[] tokenCarNames(final String carNames) {
         return carNames.split(CAR_NAMES_DELIMITER);
     }
 

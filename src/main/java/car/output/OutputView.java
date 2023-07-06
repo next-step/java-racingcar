@@ -15,15 +15,14 @@ public final class OutputView {
         System.out.println(EXECUTE_RESULT_MESSAGE);
     }
 
-    public static void printEachRaceResult(Cars cars) {
-        cars.getCars().stream().forEach(car ->
-            System.out.println(new CarResult(car))
-        );
+    public static void printEachRaceResult(final Cars cars) {
+        cars.getCars().forEach(car -> System.out.println(new CarResult(car)));
         System.out.println();
     }
 
-    public static void printWinner(List<Car> winner) {
-        System.out.print(winner.stream().map(Car::getName).map(String::valueOf)
+    public static void printWinner(final List<Car> winner) {
+        System.out.print(winner.stream()
+            .map(Car::getName)
             .collect(Collectors.joining(",")));
         System.out.println(FINAL_WINNER_MESSAGE);
     }

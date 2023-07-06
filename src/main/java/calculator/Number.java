@@ -4,7 +4,7 @@ public class Number {
 
     private final int num;
 
-    Number(String string) {
+    Number(final String string) {
         validateInt(string);
         this.num = Integer.parseInt(string);
     }
@@ -13,7 +13,7 @@ public class Number {
         return num;
     }
 
-    private void validateInt(String string) {
+    private void validateInt(final String string) {
         try {
             int num = Integer.parseInt(string);
             if (num < 0) {

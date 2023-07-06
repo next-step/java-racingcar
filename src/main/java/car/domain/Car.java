@@ -2,10 +2,10 @@ package car.domain;
 
 public class Car {
 
-    private CarName name;
+    private final CarName name;
     private int position = 0;
 
-    public Car(String carName) {
+    public Car(final String carName) {
         this.name = new CarName(carName);
     }
 
@@ -17,7 +17,7 @@ public class Car {
         return this.position;
     }
 
-    public void move(int amount) {
+    public void move(final int amount) {
         this.position += amount;
     }
 
