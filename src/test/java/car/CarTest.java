@@ -1,6 +1,10 @@
 package car;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 import car.domain.Car;
+import car.util.Movable;
+import car.util.RandomCarMovable;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,5 +20,18 @@ public class CarTest {
         car.move(amount);
 
         Assertions.assertThat(car.getPosition()).isEqualTo(amount);
+    }
+
+    @Test
+    @DisplayName("Movable 객체가 정해준 만큼 차는 움직인다.")
+    void 자동자_움직_가능() {
+        // given
+        Movable movable = new RandomCarMovable();
+        Car car = new Car("hello");
+        int decideMoving = movable.decideMoving();
+
+        car.move(decideMoving);
+
+        assertThat(car).extracting("position").isEqualTo(decideMoving);
     }
 }
