@@ -17,7 +17,7 @@ public class Cars {
     }
 
     public void raceOnce() {
-        this.cars.forEach(car -> car.move());
+        cars.forEach(car -> car.move());
     }
 
     public List<Car> getCars() {

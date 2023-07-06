@@ -12,6 +12,10 @@ public class CarName {
         this.myCarName = eachCarName;
     }
 
+    /**
+     * @param carName
+     * @exception TextLengthException :
+     */
     private void validateNameLength(final String carName) {
         if (carName.length() > TEXT_LENGTH_LIMIT) {
             throw new TextLengthException(TEXT_LENGTH_LIMIT, " 글자 아래로 작성해 주세요.");

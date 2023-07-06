@@ -23,11 +23,11 @@ public class Count {
     }
 
     public void decreaseTryCount() {
-        this.tryCount--;
+        tryCount--;
     }
 
     public int getTryCount() {
-        return this.tryCount;
+        return tryCount;
     }
 
 }
