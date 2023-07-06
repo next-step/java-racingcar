@@ -21,10 +21,10 @@ public class ConsoleView {
     private String parseRoundResult(RacingGameRoundResponse racingGameRoundResponse) {
         StringBuilder stringBuilder = new StringBuilder();
         racingGameRoundResponse.getCarPerRoundResponses()
-            .forEach(c -> stringBuilder
-                .append(c.getName())
+            .forEach(carPerRoundResponse -> stringBuilder
+                .append(carPerRoundResponse.getName())
                 .append(NAME_POSITION_SEPERATE_EXPRESSION)
-                .append(buildPositionToString(c.getPosition()))
+                .append(buildPositionToString(carPerRoundResponse.getPosition()))
                 .append("\n"));
         return stringBuilder.toString();
     }
@@ -35,7 +35,7 @@ public class ConsoleView {
 
     private String parseWinnerNames(List<String> winnerNames) {
         StringBuilder stringBuilder = new StringBuilder();
-        winnerNames.forEach(w -> stringBuilder.append(w).append(NAME_SEPERATE_EXPRESSION));
+        winnerNames.forEach(winnerName -> stringBuilder.append(winnerName).append(NAME_SEPERATE_EXPRESSION));
         return stringBuilder.substring(0, stringBuilder.length() - NAME_THRESHOLD);
     }
 

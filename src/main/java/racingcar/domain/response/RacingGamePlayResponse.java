@@ -18,14 +18,14 @@ public class RacingGamePlayResponse {
 
     public void addRacingGameRoundResponse(int round, List<Car> cars) {
         RacingGameRoundResponse racingGameRoundResponse = new RacingGameRoundResponse(round, cars.stream()
-            .map(c -> new CarPerRoundResponse(c.getName(), c.getPosition()))
+            .map(car -> new CarPerRoundResponse(car.getName(), car.getPosition()))
             .collect(Collectors.toList())
         );
         racingGameRoundResponses.add(racingGameRoundResponse);
     }
 
     public void setWinner(List<Car> cars) {
-        cars.forEach(c -> winnerNames.add(c.getName()));
+        cars.forEach(car -> winnerNames.add(car.getName()));
     }
 
     public List<String> getWinnerNames() {
@@ -66,10 +66,6 @@ public class RacingGamePlayResponse {
 
         private final int round;
         private final List<CarPerRoundResponse> carPerRoundResponses;
-
-        public int getRound() {
-            return round;
-        }
 
         public List<CarPerRoundResponse> getCarPerRoundResponses() {
             return carPerRoundResponses;
