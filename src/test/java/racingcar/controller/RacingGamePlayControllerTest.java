@@ -7,8 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import racingcar.controller.request.RacingGamePlayControllerRequest;
-import racingcar.controller.response.RacingGamePlayControllerResponse;
-import racingcar.usecase.RacingGamePlayUsecase;
+import racingcar.domain.response.RacingGamePlayResponse;
 
 @Nested
 @DisplayName("RacingGamePlayController 클래스")
@@ -19,28 +18,26 @@ class RacingGamePlayControllerTest {
     class DescribePlayRacingGameMethod {
 
         @Nested
-        @DisplayName("올바른 request가 전달되면,")
+        @DisplayName("round값이 5, car이름이 pobi, crong, honux인 입력값들이 들어온다면,")
         class ContextCallMethod {
 
             private static final int DEFAULT_ROUND = 1;
 
             private final int round = 5;
             private final List<String> carNames = List.of("pobi", "crong", "honux");
-            private final RacingGamePlayUsecase racingGamePlayUsecase = new RacingGamePlayUsecase();
-            private final RacingGamePlayController controller
-                = new RacingGamePlayController(racingGamePlayUsecase);
+            private final RacingGamePlayController controller = new RacingGamePlayController();
             private final RacingGamePlayControllerRequest request
                 = new RacingGamePlayControllerRequest(round, carNames);
 
             @Test
-            @DisplayName("올바른 응답을 리턴한다.")
+            @DisplayName("5판을 진행하고, pobi, crong, honux중 우승자들의 이름과 각 라운드값을 리턴한다.")
             void ItReturnCollectResponse() {
-                RacingGamePlayControllerResponse result = controller.playRacingGame(request);
+                RacingGamePlayResponse result = controller.playRacingGame(request);
                 assertControllerResponse(carNames, result);
             }
 
             private void assertControllerResponse(List<String> containExpectedNames,
-                RacingGamePlayControllerResponse response) {
+                RacingGamePlayResponse response) {
 
                 assertThat(response.getWinnerNames()).containsAnyOf(containExpectedNames.toArray(String[]::new));
                 assertThat(response.getRacingGameRoundResponses()).hasSize(round + DEFAULT_ROUND);

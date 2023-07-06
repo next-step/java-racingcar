@@ -1,4 +1,4 @@
-package racingcar.usecase.response;
+package racingcar.domain.response;
 
 import java.util.ArrayList;
 import java.util.List;

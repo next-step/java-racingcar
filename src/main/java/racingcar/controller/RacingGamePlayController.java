@@ -3,37 +3,25 @@ package racingcar.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.controller.request.RacingGamePlayControllerRequest;
-import racingcar.controller.response.RacingGamePlayControllerResponse;
+import racingcar.domain.Car;
+import racingcar.domain.RacingGame;
+import racingcar.domain.extension.Moveable;
+import racingcar.domain.response.RacingGamePlayResponse;
 import racingcar.randommove.RandomMover;
-import racingcar.usecase.RacingGamePlayUsecase;
-import racingcar.usecase.RacingGamePlayable;
-import racingcar.usecase.request.RacingGamePlayRequest;
-import racingcar.usecase.request.RacingGamePlayRequest.CarRequest;
-import racingcar.usecase.response.RacingGamePlayResponse;
 
 public class RacingGamePlayController {
 
-    private static final RandomMover randomMover = RandomMover.newInstance();
+    private static final Moveable randomMover = RandomMover.newInstance();
 
-    private final RacingGamePlayable racingGamePlayable;
-
-    public RacingGamePlayController(RacingGamePlayUsecase racingGamePlayUsecase) {
-        this.racingGamePlayable = racingGamePlayUsecase;
+    public RacingGamePlayResponse playRacingGame(RacingGamePlayControllerRequest request) {
+        RacingGame racingGame = new RacingGame(request.getRound(), createCarsByCarNames(request.getCarNames()));
+        return racingGame.playAndGetRoundResults();
     }
 
-    public RacingGamePlayControllerResponse playRacingGame(RacingGamePlayControllerRequest request) {
-        RacingGamePlayResponse playResult = racingGamePlayable
-            .play(request.getRound(), getRacingGamePlayRequest(request.getCarNames()));
-
-        return new RacingGamePlayControllerResponse(playResult);
-    }
-
-    private RacingGamePlayRequest getRacingGamePlayRequest(List<String> carNames) {
-        return new RacingGamePlayRequest(
-            carNames.stream()
-                .map(n -> new CarRequest(n, randomMover))
-                .collect(Collectors.toList())
-        );
+    private List<Car> createCarsByCarNames(List<String> carNames) {
+        return carNames.stream()
+            .map(carName -> new Car(carName, randomMover))
+            .collect(Collectors.toList());
     }
 
 }
