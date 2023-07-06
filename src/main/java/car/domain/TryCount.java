@@ -9,11 +9,12 @@ public final class TryCount {
     }
 
     private int toInt(String count) {
-        int num = Integer.parseInt(count);
-        if (num < 0) {
-            throw new RuntimeException();
+        try {
+            int num = Integer.parseInt(count);
+            return num;
+        } catch (Exception e) {
+            throw new RuntimeException("시도 횟수 입력이 잘못 되었습니다.");
         }
-        return num;
     }
 
     public int getTryCount() {
