@@ -1,10 +1,15 @@
 package woowacamp.racingcar;
 
+import woowacamp.racingcar.domain.Car;
 import woowacamp.racingcar.domain.Cars;
-import woowacamp.racingcar.domain.MoveStrategy;
-import woowacamp.racingcar.domain.RandomMoveStrategy;
+import woowacamp.racingcar.domain.NumberGenerator;
+import woowacamp.racingcar.domain.RandomNumberGenerator;
+import woowacamp.racingcar.view.CarStatus;
 import woowacamp.racingcar.view.ConsoleInput;
 import woowacamp.racingcar.view.ConsoleOutput;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingCarApplication {
     public static void main(String[] args) {
@@ -21,18 +26,26 @@ public class RacingCarApplication {
         String names = ConsoleInput.readNames();
         int count = ConsoleInput.readCount();
 
-        MoveStrategy strategy = new RandomMoveStrategy();
         Cars cars = new Cars(names);
-        race(cars, count, strategy);
+        race(cars, count, new RandomNumberGenerator());
 
-        ConsoleOutput.printWinners(cars.winners());
+        List<CarStatus> winners = toStatus(cars.winners());
+        ConsoleOutput.printWinners(winners);
     }
 
-    private static void race(Cars cars, int count, MoveStrategy strategy) {
+    private static void race(Cars cars, int count, NumberGenerator strategy) {
         ConsoleOutput.printResultHeader();
         for (int i = 0; i < count; i++) {
             cars.move(strategy);
-            ConsoleOutput.printCurrentStatus(cars.getCars());
+
+            List<CarStatus> statuses = toStatus(cars.getCars());
+            ConsoleOutput.printCurrentStatus(statuses);
         }
+    }
+
+    private static List<CarStatus> toStatus(List<Car> cars) {
+        return cars.stream()
+                .map(CarStatus::from)
+                .collect(Collectors.toList());
     }
 }
