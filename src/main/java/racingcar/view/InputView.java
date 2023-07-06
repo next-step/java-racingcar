@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import racingcar.domain.CarName;
+import racingcar.domain.TryCount;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,7 +12,7 @@ public class InputView {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static int processTryCount() {
+    public static TryCount processTryCount() {
         try {
             return readTryCount();
         } catch (IllegalArgumentException e) {
@@ -20,17 +21,10 @@ public class InputView {
         }
     }
 
-    private static int readTryCount() {
+    private static TryCount readTryCount() {
         System.out.println("시도할 회수는 몇회인가요?");
         String input = scanner.nextLine();
-        if (isValidNumber(input)) {
-            return Integer.parseInt(input);
-        }
-        throw new IllegalArgumentException();
-    }
-
-    public static boolean isValidNumber(String number) {
-        return number.matches("[0-9]+");
+        return new TryCount(input);
     }
 
     public static List<CarName> processCarNames() {

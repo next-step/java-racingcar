@@ -3,6 +3,7 @@ package racingcar;
 import racingcar.domain.CarName;
 import racingcar.domain.CarStatus;
 import racingcar.domain.Game;
+import racingcar.domain.TryCount;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -13,7 +14,7 @@ public class RacingCarRunner {
 
     public static void main(String[] args) {
         List<CarName> carNames = InputView.processCarNames();
-        int tryCount = InputView.processTryCount();
+        TryCount tryCount = InputView.processTryCount();
         Game game = new Game(carNames, tryCount);
 
         List<CarStatus> initialStatus = game.getCars().mapToStatus();

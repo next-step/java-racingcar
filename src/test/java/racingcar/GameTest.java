@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.CarName;
 import racingcar.domain.Game;
+import racingcar.domain.TryCount;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,7 +15,7 @@ class GameTest {
     @Test
     void gameTest_winnerTest() {
         List<CarName> carNames = Stream.of("pobi", "honux").map(CarName::new).collect(Collectors.toList());
-        Game game = new Game(carNames, 1);
+        Game game = new Game(carNames, new TryCount("1"));
         Assertions.assertThat(carNames).containsAll(game.findWinnerNames());
     }
 }

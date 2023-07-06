@@ -9,13 +9,9 @@ import static org.assertj.core.api.Assertions.*;
 class InputTest {
     @Test
     void inputTest_split() {
-        assertThat(InputView.split("pobi,crong,honux").stream().map(CarName::getName)).contains("pobi", "crong", "honux");
-    }
-
-    @Test
-    void inputTest_validateNumber() {
-        assertThat(InputView.isValidNumber("123")).isTrue();
-        assertThat(InputView.isValidNumber("ag")).isFalse();
-        assertThat(InputView.isValidNumber("")).isFalse();
+        assertThat(InputView.split("pobi,crong,honux")
+                .stream()
+                .map(CarName::getName)
+        ).contains("pobi", "crong", "honux");
     }
 }
