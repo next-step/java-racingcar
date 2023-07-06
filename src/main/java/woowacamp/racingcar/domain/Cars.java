@@ -29,7 +29,7 @@ public class Cars {
         this.cars = cars;
     }
 
-    public void move(MoveStrategy strategy) {
+    public void move(NumberGenerator strategy) {
         cars.forEach(car -> car.move(strategy));
     }
 

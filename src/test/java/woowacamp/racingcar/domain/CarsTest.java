@@ -1,6 +1,8 @@
 package woowacamp.racingcar.domain;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,18 +20,34 @@ public class CarsTest {
         assertThat(cars.getCars()).hasSize(3);
     }
 
-    @Test
-    void 모든_자동차를_움직인다() {
+    @ValueSource(ints = {4, 9})
+    @ParameterizedTest
+    void 모든_자동차가_움직인다(int number) {
         Cars cars = new Cars("충환,정규,충규");
 
-        cars.move(() -> 3);
+        cars.move(() -> number);
 
         List<Position> positions = cars.getCars().stream()
                 .map(Car::getPosition)
                 .collect(Collectors.toList());
 
         assertThat(positions)
-                .containsExactly(new Position(3), new Position(3), new Position(3));
+                .containsExactly(new Position(1), new Position(1), new Position(1));
+    }
+
+    @ValueSource(ints = {0, 3})
+    @ParameterizedTest
+    void 모든_자동차가_움직이지_않는다(int number) {
+        Cars cars = new Cars("충환,정규,충규");
+
+        cars.move(() -> number);
+
+        List<Position> positions = cars.getCars().stream()
+                .map(Car::getPosition)
+                .collect(Collectors.toList());
+
+        assertThat(positions)
+                .containsExactly(new Position(0), new Position(0), new Position(0));
     }
 
     @Test

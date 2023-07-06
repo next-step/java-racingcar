@@ -1,6 +1,8 @@
 package woowacamp.racingcar.domain;
 
 public class Car implements Comparable<Car> {
+    private static final int BOUNDARY = 4;
+
     private final Name name;
 
     private Position position;
@@ -14,17 +16,19 @@ public class Car implements Comparable<Car> {
         this.position = new Position(position);
     }
 
-    public void move(MoveStrategy strategy) {
-        int distance = strategy.distance();
-        this.position = position.move(distance);
+    public void move(NumberGenerator strategy) {
+        int number = strategy.number();
+        if (number >= BOUNDARY) {
+            this.position = position.forward();
+        }
     }
 
     public boolean isEqualPosition(Position position) {
         return this.position.equals(position);
     }
 
-    public String getNameValue() {
-        return name.getValue();
+    public Name getName() {
+        return name;
     }
 
     public Position getPosition() {

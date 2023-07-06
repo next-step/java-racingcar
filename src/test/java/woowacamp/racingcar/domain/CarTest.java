@@ -1,6 +1,5 @@
 package woowacamp.racingcar.domain;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -14,13 +13,25 @@ public class CarTest {
         assertDoesNotThrow(() -> new Car(name));
     }
 
-    @Test
-    void 자동차를_움직인다() {
+    @ValueSource(ints = {4, 9})
+    @ParameterizedTest
+    void 숫자가_4이상이면_전진한다(int number) {
         Car car = new Car("충규");
 
-        car.move(() -> 1);
+        car.move(() -> number);
 
         assertThat(car.isEqualPosition(new Position(1)))
+                .isTrue();
+    }
+
+    @ValueSource(ints = {0, 3})
+    @ParameterizedTest
+    void 숫자가_3이하면_전진하지_않는다(int number) {
+        Car car = new Car("충규");
+
+        car.move(() -> number);
+
+        assertThat(car.isEqualPosition(new Position(0)))
                 .isTrue();
     }
 }
