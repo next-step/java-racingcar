@@ -1,13 +1,10 @@
 package woowacamp.racingcar.view;
 
-import woowacamp.racingcar.domain.Car;
-import woowacamp.racingcar.domain.Name;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class ConsoleOutput {
-    private static final String POSITON_SYMBOL = "-";
+    private static final String POSITION_SYMBOL = "-";
 
     public static void printResultHeader() {
         System.out.println("실행 결과");
@@ -15,7 +12,7 @@ public class ConsoleOutput {
 
     public static void printCurrentStatus(List<CarStatus> cars) {
         for (CarStatus car : cars) {
-            String position = POSITON_SYMBOL.repeat(car.getPosition());
+            String position = POSITION_SYMBOL.repeat(car.getPosition());
             System.out.println(car.getName() + " : " + position);
         }
         System.out.println();
