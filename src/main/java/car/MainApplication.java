@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class MainApplication {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         // 1. 참여자 목록, 경주 횟수 입력
         String inputCarNames = InputView.enterCarName();
         int inputCount = InputView.enterCount();
