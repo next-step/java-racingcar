@@ -20,3 +20,8 @@
 ### 자동차 이름
 1. 쉼표로 구분
 2. 5자 이하
+   - 5자를 초과하는 이름이 입력됐을 경우 IllegalArgumentException() 발생
+3. 중복 금지
+   - IllegalArgumentException() 발생
+4. 빈 문자열이나 공백 금지
+   - IllegalArgumentException() 발생

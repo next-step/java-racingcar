@@ -30,7 +30,28 @@ class CarFactoryTest {
     void carNameOverFiveTest() {
         String text = "12345,123456";
         CarFactory carFactory = CarFactory.getInstance();
-        assertThatThrownBy(() ->carFactory.manufactureCars(text))
+
+        assertThatThrownBy(() -> carFactory.manufactureCars(text))
+                .isExactlyInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("중복되는 자동차 이름이 입력된 경우")
+    void duplicatedCarNameTest() {
+        String carNames = "pobi,pobi";
+        CarFactory carFactory = CarFactory.getInstance();
+
+        assertThatThrownBy(() -> carFactory.manufactureCars(carNames))
+                .isExactlyInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("빈 문자열이나 공백이 입력됐을 경우")
+    void blankCarNameTest() {
+        String carNames = ",  ";
+        CarFactory carFactory = CarFactory.getInstance();
+
+        assertThatThrownBy(() -> carFactory.manufactureCars(carNames))
                 .isExactlyInstanceOf(IllegalArgumentException.class);
     }
 
