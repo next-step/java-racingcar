@@ -18,7 +18,7 @@ public class Game {
 
     public List<List<CarStatus>> run() {
         List<List<CarStatus>> gameStatus = new ArrayList<>();
-        for (int i = 0; i < tryCount.getTryCount(); i++) {
+        for (int i = 0; i < tryCount.getNumber(); i++) {
             cars.moveAll();
             gameStatus.add(cars.mapToStatus());
         }

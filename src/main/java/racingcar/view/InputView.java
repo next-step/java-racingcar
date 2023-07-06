@@ -16,7 +16,7 @@ public class InputView {
         try {
             return readTryCount();
         } catch (IllegalArgumentException e) {
-            System.out.println("숫자만 입력받을 수 있습니다.");
+            System.out.println(e.getMessage());
             return processTryCount();
         }
     }
