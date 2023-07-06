@@ -25,7 +25,7 @@ public final class CarRacing {
         return cars.selectWinners();
     }
 
-    public void run() throws IOException {
+    public void run()  {
         String name = InputView.enterCarName();
         TryCount tryCount = new TryCount(InputView.enterCount());
 
