@@ -12,7 +12,7 @@ import racingcar.utils.random.RandomGenerator;
  */
 public class Cars {
 
-    private List<Car> list;
+    private final List<Car> list;
 
     /**
      * 사용자로부터 입력받은 자동차 이름으로부터 Car 컬렉션을 생성한다.

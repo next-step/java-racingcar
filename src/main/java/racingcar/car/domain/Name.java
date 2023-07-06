@@ -5,7 +5,7 @@ package racingcar.car.domain;
  */
 public class Name {
 
-    private String value;
+    private final String value;
     private static final int MAX_NAME_LENGTH = 5;
 
     public Name(String value) {
