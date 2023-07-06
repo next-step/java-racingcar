@@ -1,20 +1,20 @@
 package racing;
 
 import racing.domain.Car;
+import racing.domain.RacingManager;
 import racing.generator.NumberGenerator;
 import racing.generator.RandomNumberGenerator;
 import racing.input.RacingInput;
-import racing.model.RacingManager;
 import racing.view.RacingView;
 
 import java.util.List;
 
 public class RacingApplication {
 
-    private RacingInput racingInput;
+    private final RacingInput racingInput;
     private RacingManager racingManager;
-    private NumberGenerator numberGenerator;
-    private RacingView racingView;
+    private final NumberGenerator numberGenerator;
+    private final RacingView racingView;
 
     public RacingApplication() {
         this.racingInput = new RacingInput(System.in);
@@ -31,7 +31,7 @@ public class RacingApplication {
     public void run() {
         inputCarName();
         int count = inputSimulationCount();
-        System.out.println("");
+        System.out.println();
         System.out.println(racingView.getResultTitleView());
         simulate(count);
         printResult();

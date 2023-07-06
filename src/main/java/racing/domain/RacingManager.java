@@ -1,9 +1,7 @@
-package racing.model;
+package racing.domain;
 
-import racing.domain.Car;
 import racing.generator.NumberGenerator;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,7 +12,7 @@ public class RacingManager {
 
     private List<Car> cars;
     private NumberGenerator numberGenerator;
-    
+
     public RacingManager() {
     }
 

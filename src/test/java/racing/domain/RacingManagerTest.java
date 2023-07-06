@@ -1,17 +1,15 @@
-package racing.model;
+package racing.domain;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racing.domain.Car;
 import racing.generator.NumberGenerator;
 import racing.generator.SpecificNumberGenerator;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingManagerTest {
     @ParameterizedTest
