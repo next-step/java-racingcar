@@ -1,11 +1,11 @@
 package car;
 
-import car.input.model.Count;
-import car.input.InputService;
+import car.view.model.Count;
+import car.view.InputService;
 import java.io.IOException;
-import car.racing.RacingService;
-import car.racing.model.Cars;
-import car.output.OutputView;
+import car.domain.RacingService;
+import car.domain.model.Cars;
+import car.view.OutputView;
 
 public class Application {
 

@@ -1,4 +1,4 @@
-package car.input.model;
+package car.view.model;
 
 public class Count {
 

@@ -4,8 +4,8 @@ import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import car.input.model.Count;
-import car.input.InputService;
+import car.view.model.Count;
+import car.view.InputService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -13,7 +13,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 public class InputTest {
 
     @Test
-    @DisplayName("car/input")
+    @DisplayName("car/view")
     void 사용자_이름_테스트_정상 () {
         String carNames = "pobi,crong,honux";
         assertThatCode(()-> InputService.validateCarName(carNames)).doesNotThrowAnyException();

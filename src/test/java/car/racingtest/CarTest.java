@@ -3,8 +3,8 @@ package car.racingtest;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import car.racing.model.Car;
-import car.racing.model.CarName;
+import car.domain.model.Car;
+import car.domain.model.CarName;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.DisplayName;

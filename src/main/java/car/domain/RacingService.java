@@ -1,7 +1,7 @@
-package car.racing;
+package car.domain;
 
-import car.racing.model.Car;
-import car.racing.model.Cars;
+import car.domain.model.Car;
+import car.domain.model.Cars;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
