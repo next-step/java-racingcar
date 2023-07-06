@@ -11,7 +11,7 @@ import org.mockito.Mockito;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class RacingCarTest {
+public class CarTest {
 
     @Test
     @DisplayName("각 자동차에 이름을 부여할 수 있다.")
