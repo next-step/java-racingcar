@@ -46,6 +46,8 @@ public class Calculator {
     }
 
     private void checkNegative(int n) {
-        if (n < 0) throw new RuntimeException(NEGATIVE_NUMBER_EXCEPTION_MESSAGE);
+        if (n < 0) {
+            throw new RuntimeException(NEGATIVE_NUMBER_EXCEPTION_MESSAGE);
+        }
     }
 }
