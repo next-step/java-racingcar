@@ -8,14 +8,13 @@ import org.junit.jupiter.api.Test;
 import racing.model.Car;
 import racing.model.Cars;
 
-class RacingManagerTest {
+class CarsTest {
 
     @Test
     @DisplayName("우승자를 선별하는 경우")
     void checkWinnerTest() {
         Cars cars = createTestCars();
-        RacingManager manager = new RacingManager(cars);
-        List<String> winnerNames = manager.getWinnerNames();
+        List<String> winnerNames = cars.findWinnerNames();
         assertThat(winnerNames).hasSize(2);
         assertThat(winnerNames.get(0)).isEqualTo("pobi");
         assertThat(winnerNames.get(1)).isEqualTo("crong");
@@ -37,7 +36,7 @@ class RacingManagerTest {
 
     private static void moveNSteps(Car car, int steps) {
         for (int i = 0; i < steps; i++) {
-            car.moveOneStepMoreThanCriterion(5);
+            car.moveByRandomValue(5);
         }
     }
 

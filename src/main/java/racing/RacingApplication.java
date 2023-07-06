@@ -12,8 +12,8 @@ public class RacingApplication {
         RacingReader racingReader = new RacingReader();
         GameInfo gameInfo = racingReader.startGame();
         CarFactory carFactory = CarFactory.getInstance();
-        GameController gameController = new GameController(gameInfo, carFactory, new Viewer());
-        gameController.startRacing();
+        GameController gameController = new GameController(carFactory, new Viewer());
+        gameController.startRacing(gameInfo);
     }
 
 }

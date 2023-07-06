@@ -2,40 +2,31 @@ package racing.controller;
 
 import racing.factory.CarFactory;
 import racing.io.Viewer;
-import racing.manager.RacingManager;
+//import racing.manager.RacingManager;
 import racing.model.Cars;
 import racing.model.GameInfo;
 
 public class GameController {
 
-    private final int raceCount;
-    private final RacingManager racingManager;
+    private final CarFactory carFactory;
     private final Viewer viewer;
 
-    public GameController(GameInfo gameInfo, CarFactory carFactory, Viewer viewer) {
-        this.raceCount = gameInfo.getRaceCount();
-
-        Cars cars = new Cars(
-                carFactory.manufactureCars(gameInfo.getCarNames())
-        );
-        this.racingManager = new RacingManager(cars);
+    public GameController(CarFactory carFactory, Viewer viewer) {
+        this.carFactory = carFactory;
         this.viewer = viewer;
     }
 
-    public void startRacing() {
-        viewer.printBeforeRacing(
-                racingManager.getCars()
-        );
+    public void startRacing(final GameInfo gameInfo) {
+        Cars cars = new Cars(this.carFactory.manufactureCars(gameInfo.getCarNames()));
 
-        for (int i = 0; i < raceCount; i++) {
-            viewer.printCars(
-                    racingManager.turn()
-            );
+        viewer.printBeforeRacing(cars);
+
+        for (int i = 0; i < gameInfo.getRaceCount(); i++) {
+            cars.moveCars();
+            viewer.printCars(cars);
         }
 
-        viewer.printWinners(
-                racingManager.getWinnerNames()
-        );
+        viewer.printWinners(cars.findWinnerNames());
     }
 
 }

@@ -1,43 +1,44 @@
 package racing.model;
 
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
 public class Cars {
 
-    private final List<Car> original;
+    private static final int DEFAULT_BOUND = 10;
 
-    public Cars(List<Car> original) {
-        this.original = original;
+    private final List<Car> cars;
+
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
-    public int size() {
-        return this.original.size();
+    public void moveCars() {
+        for (Car car : this.cars) {
+            int randomValue = ThreadLocalRandom.current().nextInt(DEFAULT_BOUND);
+            car.moveByRandomValue(randomValue);
+        }
     }
 
-    public void moveOneStepMoreThanCriterion(int idx, int randomValue) {
-        this.original.get(idx)
-                     .moveOneStepMoreThanCriterion(randomValue);
-    }
-
-    public List<String> getWinnerNames() {
+    public List<String> findWinnerNames() {
         int maxPosition = getMaxPosition();
-        return this.original.stream()
-                            .filter(cur -> cur.isWinner(maxPosition))
-                            .map(Car::getName)
-                            .collect(Collectors.toList());
+        return this.cars.stream()
+                        .filter(cur -> cur.isWinner(maxPosition))
+                        .map(Car::getName)
+                        .collect(Collectors.toList());
     }
 
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        original.forEach(car -> builder.append(car).append('\n'));
+        cars.forEach(car -> builder.append(car).append('\n'));
         return builder.toString();
     }
 
     private int getMaxPosition() {
         int maxPosition = -1;
-        for (Car car : this.original) {
+        for (Car car : this.cars) {
             maxPosition = Math.max(maxPosition, car.getPosition());
         }
         return maxPosition;

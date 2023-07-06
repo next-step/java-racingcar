@@ -6,12 +6,10 @@ public class Car {
     private static final int DEFAULT_POSITION = 1;
 
     private final String name;
-    private final int criterion;
     private int position;
 
     public Car(String name) {
         this.name = name;
-        this.criterion = DEFAULT_CRITERION;
         this.position = DEFAULT_POSITION;
     }
 
@@ -27,8 +25,8 @@ public class Car {
         return this.position == maxPosition;
     }
 
-    public void moveOneStepMoreThanCriterion(int value) {
-        if (value >= this.criterion) {
+    public void moveByRandomValue(int randomValue) {
+        if (DEFAULT_CRITERION <= randomValue) {
             this.position++;
         }
     }
