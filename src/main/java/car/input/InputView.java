@@ -14,7 +14,7 @@ public final class InputView {
     private static final String WRONG_CAR_NAME_MESSAGE = "자동차 이름이 잘 못되었습니다";
 
     public static String enterCarName() {
-        printName();
+        System.out.println(INPUT_RACE_CAR_MESSAGE);
         try {
             String carName = bufferedReader.readLine();
             return carName;
@@ -24,16 +24,8 @@ public final class InputView {
         }
     }
 
-    public static void printName() {
-        System.out.println(INPUT_RACE_CAR_MESSAGE);
-    }
-
-    public static void printCount() {
-        System.out.println(INPUT_TRY_COUNT_MESSAGE);
-    }
-
     public static String enterCount() {
-        printCount();
+        System.out.println(INPUT_TRY_COUNT_MESSAGE);
         try {
             String count = bufferedReader.readLine();
             return count;
@@ -43,10 +35,4 @@ public final class InputView {
         }
     }
 }
-
-
-
-
-
-
 
