@@ -12,9 +12,9 @@ import java.util.List;
 public class RacingApplication {
 
     private final RacingInput racingInput;
-    private RacingManager racingManager;
     private final NumberGenerator numberGenerator;
     private final RacingView racingView;
+    private RacingManager racingManager;
 
     public RacingApplication() {
         this.racingInput = new RacingInput(System.in);
@@ -31,34 +31,33 @@ public class RacingApplication {
     public void run() {
         inputCarName();
         int count = inputSimulationCount();
-        System.out.println();
-        System.out.println(racingView.getResultTitleView());
+        racingView.printResultTitle();
         simulate(count);
         printResult();
     }
 
     public void inputCarName() {
-        System.out.println(this.racingView.getAskingCarNameView());
+        racingView.printCarNameAsking();
         List<Car> cars = this.racingInput.inputName();
 
         this.racingManager = new RacingManager(cars, this.numberGenerator);
     }
 
     public int inputSimulationCount() {
-        System.out.println(this.racingView.getAskingCountView());
+        this.racingView.printCountAsking();
         return this.racingInput.inputCount();
     }
 
 
     public void simulate(int count) {
-        System.out.println(racingView.getCarStatusView(racingManager.getCars()) + "\n");
+        racingView.printCarStatus(racingManager.getCars());
         for (int i = 0; i < count; i++) {
             racingManager.nextStep();
-            System.out.println(racingView.getCarStatusView(racingManager.getCars()) + "\n");
+            racingView.printCarStatus(racingManager.getCars());
         }
     }
 
     public void printResult() {
-        System.out.println(this.racingView.getWinnersView(this.racingManager.getWinners()));
+        this.racingView.printWinners(this.racingManager.getWinners());
     }
 }
