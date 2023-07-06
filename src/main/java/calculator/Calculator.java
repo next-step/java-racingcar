@@ -1,60 +1,38 @@
 package calculator;
 
 import java.util.Arrays;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Calculator {
-
-    private static final String CUSTOM_DELIMITER_PATTERN = "//(.)\n(.*)";
-    private static final String DEFAULT_DELIMITER_REGEX = ",|:";
-    private static final String NEGATIVE_INTEGER_ERROR_MESSAGE = "음수를 입력할 수 없습니다.";
     private static final int ZERO = 0;
 
-    public static int sum(String input) {
+    private final Splitter splitter;
+
+    Calculator(Splitter splitter) {
+        this.splitter = splitter;
+    }
+
+    public int splitAndSum(String input) {
         if (isBlank(input)) {
-            return 0;
+            return ZERO;
         }
-        return stringToSum(input);
+        return sum(split(input));
     }
 
-    private static int stringToSum(String input) {
-        Matcher matcher = getCustomPatternMatcher(input);
-        if (isCustomDelimiter(matcher)) {
-            return stringToSum(matcher);
-        }
-        return stringToSum(input, DEFAULT_DELIMITER_REGEX);
+    private String[] split(String input) {
+        return splitter.split(input);
     }
 
-    private static Matcher getCustomPatternMatcher(String input) {
-        return Pattern.compile(CUSTOM_DELIMITER_PATTERN).matcher(input);
-    }
-
-    private static boolean isCustomDelimiter(Matcher matcher) {
-        return matcher.find();
-    }
-
-    private static int stringToSum(String input, String delimiter) {
-        String[] numberStrings = input.split(delimiter);
-        for (String numberString : numberStrings) {
-            validatePositiveNumber(numberString);
-        }
-        return Arrays.stream(numberStrings)
-                .mapToInt(Integer::valueOf)
+    private int sum(String[] inputs) {
+        return Arrays.stream(inputs)
+                .mapToInt(this::toInt)
                 .sum();
     }
 
-    private static int stringToSum(Matcher matcher) {
-        String input = matcher.group(2);
-        String customDelimiter = matcher.group(1);
-        return stringToSum(input, customDelimiter);
+    private int toInt(String input) {
+        return new PositiveNumber(input).getValue();
     }
 
-    private static void validatePositiveNumber(String element) {
-        if (Integer.parseInt(element) < ZERO) throw new RuntimeException(NEGATIVE_INTEGER_ERROR_MESSAGE);
-    }
-
-    private static boolean isBlank(String input) {
+    private boolean isBlank(String input) {
         return input == null || input.isBlank();
     }
 }
