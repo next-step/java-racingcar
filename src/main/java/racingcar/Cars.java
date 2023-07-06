@@ -1,6 +1,5 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
@@ -11,10 +10,6 @@ public class Cars {
 
     public Cars(List<Car> cars) {
         this.cars = cars;
-    }
-
-    public static String[] split(String str) {
-        return str.split(",");
     }
 
     public static Cars from(List<String> carNames) {
