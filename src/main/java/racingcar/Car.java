@@ -36,6 +36,10 @@ public class Car {
         return value >= MOVE_THRESHOLD;
     }
 
+    public boolean isWinner(int maxPosition) {
+        return position == maxPosition;
+    }
+
     public int getPosition() {
         return position;
     }

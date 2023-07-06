@@ -30,7 +30,7 @@ public class Cars {
 
     public List<CarName> findWinnerNames() {
         return carList.stream()
-                .filter(car -> car.getPosition() == maxPosition())
+                .filter(car -> car.isWinner(maxPosition()))
                 .map(Car::getName)
                 .collect(Collectors.toList());
     }
