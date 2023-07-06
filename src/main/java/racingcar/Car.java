@@ -4,6 +4,9 @@ import java.util.Objects;
 
 public class Car {
 
+    private static final int MAX_NAME_SIZE = 5;
+    private static final int FORWARD_THRESHHOLD = 4;
+
     private final String name;
     private int distance;
 
@@ -13,7 +16,7 @@ public class Car {
     }
 
     private void validateName(String name) {
-        if (name.length() > 5) {
+        if (name.length() > MAX_NAME_SIZE) {
             throw new IllegalArgumentException();
         }
     }
@@ -45,7 +48,7 @@ public class Car {
 
     public void progress() {
         int number = RandomGenerator.generateNumber();
-        if (number >= 4) {
+        if (number >= FORWARD_THRESHHOLD) {
             forward();
         }
     }
