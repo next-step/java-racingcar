@@ -20,7 +20,7 @@ public class Game {
         List<List<CarStatus>> gameStatus = new ArrayList<>();
         for (int i = 0; i < tryCount.getNumber(); i++) {
             cars.moveAll();
-            gameStatus.add(cars.mapToStatus());
+            gameStatus.add(getCarStatuses());
         }
         return gameStatus;
     }
@@ -30,7 +30,7 @@ public class Game {
 
     }
 
-    public Cars getCars() {
-        return cars;
+    public List<CarStatus> getCarStatuses() {
+        return cars.mapToStatus();
     }
 }

@@ -17,7 +17,7 @@ public class RacingCarRunner {
         TryCount tryCount = InputView.processTryCount();
         Game game = new Game(carNames, tryCount);
 
-        List<CarStatus> initialStatus = game.getCars().mapToStatus();
+        List<CarStatus> initialStatus = game.getCarStatuses();
         List<List<CarStatus>> gameStatus = game.run();
         List<CarName> winners = game.findWinnerNames();
 
