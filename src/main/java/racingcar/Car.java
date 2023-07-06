@@ -10,7 +10,7 @@ public class Car {
     private static final int MAX_NAME_SIZE = 5;
     static final String OVER_MAX_NAME_SIZE_ERROR_STRING = "이름의 길이가 " + MAX_NAME_SIZE + "글자 초과입니다.";
     private static final int FORWARD_THRESHOLD = 4;
-    
+
     private final String name;
     private final NumberGenerator numberGenerator;
     private int distance;
@@ -64,5 +64,9 @@ public class Car {
 
     private boolean canMove() {
         return numberGenerator.generate() >= FORWARD_THRESHOLD;
+    }
+
+    public boolean isSameDistance(int maxDistance) {
+        return this.distance == maxDistance;
     }
 }
