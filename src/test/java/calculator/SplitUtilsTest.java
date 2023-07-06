@@ -83,4 +83,16 @@ public class SplitUtilsTest {
         /* then */
         assertThat(numbers).containsExactly(0);
     }
+
+    @Test
+    @DisplayName("입력이 null인 경우 0으로 처리한다")
+    void testNullToNumber() {
+        /* given */
+
+        /* when */
+        List<Integer> numbers = SplitUtils.convertToNumbers(null);
+
+        /* then */
+        assertThat(numbers).containsExactly(0);
+    }
 }
