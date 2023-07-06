@@ -95,6 +95,7 @@ class RacingGameTest {
     @DisplayName("playAndGetPlayResponse 메소드는")
     class DescribePlayAndGetPlayResponseMethod {
 
+        private final int defaultRoundCount = 1;
         private final List<Car> cars = List.of(
             new Car("A", falseMover),
             new Car("B", falseMover),
@@ -113,7 +114,7 @@ class RacingGameTest {
             void ItReturn1RoundResult() {
                 RacingGamePlayResponse result = racingGame.playAndGetRoundResults();
 
-                assertGamePlayResult(round, cars.size(), List.of("C"), result);
+                assertGamePlayResult(round + defaultRoundCount, cars.size(), List.of("C"), result);
             }
 
         }
@@ -130,7 +131,7 @@ class RacingGameTest {
             void ItReturn1RoundResult() {
                 RacingGamePlayResponse result = racingGame.playAndGetRoundResults();
 
-                assertGamePlayResult(round, cars.size(), List.of("C"), result);
+                assertGamePlayResult(round + defaultRoundCount, cars.size(), List.of("C"), result);
             }
 
         }
