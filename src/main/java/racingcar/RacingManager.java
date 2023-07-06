@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingManager {
-    private static final String WINNERS_STRING = "가 최종 우승했습니다.";
-
     private final Cars cars;
     private final int round;
     private final List<List<CarDto>> records;
