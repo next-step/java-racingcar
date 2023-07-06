@@ -1,9 +1,9 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
-import static racingcar.RandomGenerator.generateNumber;
+import static racingcar.domain.RandomGenerator.generateNumber;
 
 public class Cars {
 
