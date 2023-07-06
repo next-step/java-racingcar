@@ -28,7 +28,7 @@ public class RacingGame {
     }
 
     private void assertNegativeRound(int round) {
-        Asserts.isTrue(round >= 0, () -> "round값은 0보다 작아질 수 없습니다. round \"" + round + "\"");
+        Asserts.isTrue(round >= INITIAL_ROUND, () -> "round값은 0보다 작아질 수 없습니다. round \"" + round + "\"");
     }
 
     private void assertEmptyCars(List<Car> cars) {
