@@ -1,9 +1,8 @@
 package racing.domain;
 
 import org.junit.jupiter.api.Test;
-import racing.domain.Car;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
     @Test
@@ -15,7 +14,7 @@ public class CarTest {
         car.goForward(true);
 
         //then
-        assertThat(car.getPosition()).isEqualTo(2);
+        assertThat(car.getPosition().getPosition()).isEqualTo(2);
     }
 
     @Test
@@ -27,6 +26,6 @@ public class CarTest {
         car.goForward(false);
 
         //then
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.getPosition().getPosition()).isEqualTo(1);
     }
 }

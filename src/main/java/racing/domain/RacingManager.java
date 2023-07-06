@@ -37,11 +37,11 @@ public class RacingManager {
 
     public List<String> getWinners() {
         int maxValue = cars.stream()
-                .mapToInt(Car::getPosition)
+                .mapToInt(car -> car.getPosition().getPosition())
                 .max()
                 .orElse(-1);
         return cars.stream()
-                .filter(car -> car.getPosition() == maxValue)
+                .filter(car -> car.getPosition().getPosition() == maxValue)
                 .map(Car::getName)
                 .collect(Collectors.toList());
     }
