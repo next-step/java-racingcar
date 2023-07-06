@@ -7,11 +7,11 @@ import car.domain.RacingService;
 import car.domain.model.Cars;
 import car.view.OutputView;
 
-public class Application {
+public class MainApplication {
 
     private static RacingService racingService;
 
-    public static void run() throws IOException {
+    public static void main(String[] args) throws IOException {
         // 1. 참여자 목록, 경주 횟수 입력
         InputService.printName();
         String name = InputService.enterCarName();
