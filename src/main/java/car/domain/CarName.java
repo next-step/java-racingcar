@@ -12,7 +12,7 @@ public final class CarName {
 
     private void validateCarName(final String carName) {
         if (carName.length() > CAR_NAME_LENGTH_LOWER_BOUND) {
-            throw new IllegalArgumentException("자동자 이름의 길이가 하한선 보다 작습니다.");
+            throw new IllegalArgumentException("자동자 이름의 길이가 하한선 보다 큽니다.");
         }
     }
 

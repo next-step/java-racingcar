@@ -3,6 +3,11 @@ package car;
 public class Main {
 
     public static void main(String[] args) {
-        new RacingService().run();
+
+        try {
+            new RacingService().run();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

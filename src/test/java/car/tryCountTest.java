@@ -13,7 +13,7 @@ public class tryCountTest {
     @DisplayName("시도 횟수 음수면 예외 처리")
     void 사용자_입력_시도_횟수_예외() {
         String count = "-1";
-        assertThrows(RuntimeException.class, () -> new TryCount(count));
+        assertThrows(IllegalArgumentException.class, () -> new TryCount(count));
     }
 
     @Test

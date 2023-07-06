@@ -20,7 +20,7 @@ public class CarNameTest {
     @DisplayName("자동차 입력이 5자 글자 초과로 오류")
     void 자동차_이름_테스트_5자글자_초과_오류() {
         String carName = "pobiii";
-        assertThrows(RuntimeException.class, () -> new Car(carName));
+        assertThrows(IllegalArgumentException.class, () -> new Car(carName));
     }
 
 }
