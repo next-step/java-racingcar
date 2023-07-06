@@ -17,6 +17,13 @@ public class PositionTest {
     }
 
     @Test
+    void 전진한다() {
+        Position position = new Position();
+
+        assertThat(position.forward()).isEqualTo(new Position(1));
+    }
+
+    @Test
     void 위치가_음수면_예외가_발생한다() {
         int position = -1;
 
