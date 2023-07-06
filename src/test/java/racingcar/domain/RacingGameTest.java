@@ -88,25 +88,14 @@ class RacingGameTest {
         class ContextRacingGameRound1 {
 
             private final RacingGame racingGame = new RacingGame(cars);
-            private final List<Car> expectedCars = getExpectedCars();
+            private final int moveCount = 1;
+            private final List<Car> expectedCars = getExpectedCars(cars, moveCount);
 
             @Test
             @DisplayName("한판을 진행하고, 그 결과를 car에 반영한다.")
             void ItReturn1RoundResult() {
                 racingGame.play();
                 assertEqualAllCars(cars, expectedCars);
-            }
-
-            private List<Car> getExpectedCars() {
-                List<Car> copy = List.of(
-                    new Car("A", falseMover),
-                    new Car("B", falseMover),
-                    new Car("C", trueMover)
-                );
-                for (Car car : copy) {
-                    car.move();
-                }
-                return copy;
             }
 
         }
@@ -116,7 +105,8 @@ class RacingGameTest {
         class ContextRacingGameRound3 {
 
             private final RacingGame racingGame = new RacingGame(cars);
-            private final List<Car> expectedCars = getExpectedCars();
+            private final int moveCount = 3;
+            private final List<Car> expectedCars = getExpectedCars(cars, moveCount);
 
             @Test
             @DisplayName("세판을 진행하고, 그 결과를 car에 반영한다.")
@@ -126,20 +116,6 @@ class RacingGameTest {
                 racingGame.play();
 
                 assertEqualAllCars(cars, expectedCars);
-            }
-
-            private List<Car> getExpectedCars() {
-                List<Car> copy = List.of(
-                    new Car("A", falseMover),
-                    new Car("B", falseMover),
-                    new Car("C", trueMover)
-                );
-                for (Car car : copy) {
-                    car.move();
-                    car.move();
-                    car.move();
-                }
-                return copy;
             }
 
         }
@@ -161,8 +137,8 @@ class RacingGameTest {
         class ContextCall {
 
             private final RacingGame racingGame = new RacingGame(cars);
-
-            private final List<Car> expectedCars = getExpectedCars();
+            private final int moveCount = 1;
+            private final List<Car> expectedCars = getExpectedCars(cars, moveCount);
 
             @Test
             @DisplayName("현재 라운드의 결과를 반환한다.")
@@ -172,18 +148,6 @@ class RacingGameTest {
                 assertEqualAllCars(roundResult, expectedCars);
             }
 
-            private List<Car> getExpectedCars() {
-                List<Car> copy = List.of(
-                    new Car("A", falseMover),
-                    new Car("B", falseMover),
-                    new Car("C", trueMover)
-                );
-                for (Car car : copy) {
-                    car.move();
-                }
-                return copy;
-            }
-
         }
 
         @Nested
@@ -191,8 +155,8 @@ class RacingGameTest {
         class ContextCallBeforePlayTwice {
 
             private final RacingGame racingGame = new RacingGame(cars);
-
-            private final List<Car> expectedCars = getExpectedCars();
+            private final int moveCount = 2;
+            private final List<Car> expectedCars = getExpectedCars(cars, moveCount);
 
             @Test
             @DisplayName("두번째 라운드의 결과를 반환한다.")
@@ -201,19 +165,6 @@ class RacingGameTest {
                 racingGame.play();
                 List<Car> roundResult = racingGame.getRoundResult();
                 assertEqualAllCars(roundResult, expectedCars);
-            }
-
-            private List<Car> getExpectedCars() {
-                List<Car> copy = List.of(
-                    new Car("A", falseMover),
-                    new Car("B", falseMover),
-                    new Car("C", trueMover)
-                );
-                for (Car car : copy) {
-                    car.move();
-                    car.move();
-                }
-                return copy;
             }
 
         }
@@ -235,8 +186,8 @@ class RacingGameTest {
         class DescribeCall {
 
             private final RacingGame racingGame = new RacingGame(cars);
-
-            private final List<Car> expectedCars = getExpectedCars();
+            private final int moveCount = 1;
+            private final List<Car> expectedCars = getExpectedCars(cars, moveCount);
 
             @Test
             @DisplayName("우승자들을 반환한다.")
@@ -246,19 +197,22 @@ class RacingGameTest {
                 assertEqualAllCars(roundResult, expectedCars);
             }
 
-            private List<Car> getExpectedCars() {
-                List<Car> copy = List.of(
-                    new Car("win1", trueMover),
-                    new Car("win2", trueMover)
-                );
-                for (Car car : copy) {
-                    car.move();
-                }
-                return copy;
-            }
-
         }
 
+    }
+
+    private List<Car> getExpectedCars(List<Car> cars, int moveCount) {
+        List<Car> copy = List.copyOf(cars);
+        for (Car car : copy) {
+            moveCar(car, moveCount);
+        }
+        return copy;
+    }
+
+    private void moveCar(Car car, int moveCount) {
+        for (int i = 0; i < moveCount; i++) {
+            car.move();
+        }
     }
 
     private void assertEqualAllCars(List<Car> result, List<Car> expected) {
