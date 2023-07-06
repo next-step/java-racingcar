@@ -5,6 +5,7 @@ import java.util.Objects;
 public class Position implements Comparable<Position> {
     private static final int MIN_VALUE = 0;
     private static final int MIN_AMOUNT = 0;
+    private static final int FORWARD = 1;
 
     private final int value;
 
@@ -18,6 +19,10 @@ public class Position implements Comparable<Position> {
         }
 
         this.value = value;
+    }
+
+    public Position forward() {
+        return move(FORWARD);
     }
 
     public Position move(int amount) {
