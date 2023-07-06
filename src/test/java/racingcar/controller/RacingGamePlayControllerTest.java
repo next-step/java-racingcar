@@ -23,6 +23,7 @@ class RacingGamePlayControllerTest {
         class ContextCallMethod {
 
             private static final int DEFAULT_ROUND = 1;
+
             private final int round = 5;
             private final List<String> carNames = List.of("pobi", "crong", "honux");
             private final RacingGamePlayUsecase racingGamePlayUsecase = new RacingGamePlayUsecase();

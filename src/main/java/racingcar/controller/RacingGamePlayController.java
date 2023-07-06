@@ -13,8 +13,9 @@ import racingcar.usecase.response.RacingGamePlayResponse;
 
 public class RacingGamePlayController {
 
-    private final RacingGamePlayable racingGamePlayable;
     private static final RandomMover randomMover = RandomMover.newInstance();
+
+    private final RacingGamePlayable racingGamePlayable;
 
     public RacingGamePlayController(RacingGamePlayUsecase racingGamePlayUsecase) {
         this.racingGamePlayable = racingGamePlayUsecase;

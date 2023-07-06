@@ -6,8 +6,9 @@ import racingcar.controller.response.RacingGamePlayControllerResponse.RacingGame
 
 public class ConsoleView {
 
-    private final StringBuffer stringBuffer = new StringBuffer();
     private static final String DISTANCE_EXPRESSION = "-";
+
+    private final StringBuffer stringBuffer = new StringBuffer();
 
     public void printResult(RacingGamePlayControllerResponse response) {
         System.out.println("실행 결과");

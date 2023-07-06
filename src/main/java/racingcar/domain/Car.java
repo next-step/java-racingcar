@@ -6,10 +6,11 @@ import racingcar.util.Asserts;
 
 public class Car {
 
+    public static final int MOVE_RULE = 3;
+
     private int position;
     private final String name;
     private final Moveable moveable;
-    public static final int MOVE_RULE = 3;
 
     public Car(String name, Moveable moveable) {
         preAssert(name, moveable);
