@@ -1,5 +1,6 @@
 package racingcar;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -40,6 +41,16 @@ public class CarsTest {
 
         assertThat(winnerNames.size()).isEqualTo(1);
         assertThat(winnerNames).containsAnyOf(chanCar.getName());
+    }
+
+    @Test
+    @DisplayName("자동차 이름이 같으면 동일한 Car로 판단한다")
+    public void 자동차_이름이_같으면_동일한_Car로_판단한다() throws Exception {
+        Cars cars = Cars.from(List.of("ipt", "ipt"));
+
+        List<Car> car = cars.getCars();
+
+        Assertions.assertThat(car.size()).isEqualTo(1);
     }
 
 }

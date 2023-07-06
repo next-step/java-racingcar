@@ -15,6 +15,7 @@ public class Cars {
 
     public static Cars from(List<String> carNames) {
         return new Cars(carNames.stream()
+                .distinct()
                 .map(Car::new)
                 .collect(toList()));
     }
