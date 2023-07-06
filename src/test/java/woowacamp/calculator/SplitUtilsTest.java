@@ -3,6 +3,7 @@ package woowacamp.calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 import woowacamp.calculator.SplitUtils;
 
@@ -72,12 +73,10 @@ public class SplitUtilsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test
+    @ParameterizedTest
+    @NullAndEmptySource
     @DisplayName("입력에 공백이 있으면 0으로 처리한다.")
-    void test_05() {
-        /* given */
-        String input = "       ";
-
+    void test_05(String input) {
         /* when */
         List<Integer> numbers = SplitUtils.convertToNumbers(input);
 
