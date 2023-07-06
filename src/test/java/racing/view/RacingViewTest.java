@@ -53,7 +53,7 @@ class RacingViewTest {
                         Arrays.asList(new CarVO("test1", 1), new CarVO("test2", 1)),
                         Arrays.asList(new CarVO("test1", 2), new CarVO("test2", 2))
                 ),
-                Arrays.asList("test1", "test2"));
+                Arrays.asList(new CarVO("test1", 2), new CarVO("test2", 2)));
 
         //when, then
         assertThat(racingView.getResultView(simulationResult)).isEqualTo("실행 결과\n" +

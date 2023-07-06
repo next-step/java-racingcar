@@ -5,9 +5,9 @@ import java.util.Objects;
 
 public class SimulationResult {
     private List<List<CarVO>> progress;
-    private List<String> winners;
+    private List<CarVO> winners;
 
-    public SimulationResult(List<List<CarVO>> progress, List<String> winners) {
+    public SimulationResult(List<List<CarVO>> progress, List<CarVO> winners) {
         this.progress = progress;
         this.winners = winners;
     }
@@ -29,7 +29,7 @@ public class SimulationResult {
         return progress;
     }
 
-    public List<String> getWinners() {
+    public List<CarVO> getWinners() {
         return winners;
     }
 }

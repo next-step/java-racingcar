@@ -1,6 +1,5 @@
 package racing.input;
 
-import racing.model.Car;
 import racing.exception.IllegalCountException;
 
 import java.io.InputStream;
@@ -17,9 +16,8 @@ public class RacingInput {
         this.scanner = new Scanner(inputStream);
     }
 
-    public List<Car> inputName() {
+    public List<String> inputName() {
         return Arrays.stream(this.scanner.next().split(","))
-                .map(Car::new)
                 .collect(Collectors.toList());
     }
 

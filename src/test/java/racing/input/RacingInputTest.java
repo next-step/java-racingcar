@@ -1,7 +1,6 @@
 package racing.input;
 
 import org.junit.jupiter.api.Test;
-import racing.model.Car;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -19,13 +18,13 @@ public class RacingInputTest {
         RacingInput racingInput = new RacingInput(inputStream);
 
         //when
-        List<Car> cars = racingInput.inputName();
+        List<String> carNames = racingInput.inputName();
 
         //then
-        assertThat(cars).hasSize(3);
-        assertThat(cars.get(0).getName()).isEqualTo("pobi");
-        assertThat(cars.get(1).getName()).isEqualTo("crong");
-        assertThat(cars.get(2).getName()).isEqualTo("honux");
+        assertThat(carNames).hasSize(3);
+        assertThat(carNames.get(0)).isEqualTo("pobi");
+        assertThat(carNames.get(1)).isEqualTo("crong");
+        assertThat(carNames.get(2)).isEqualTo("honux");
     }
 
     @Test

@@ -3,6 +3,8 @@ package racing;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racing.exception.IllegalCarNameException;
+import racing.exception.IllegalCountException;
 import racing.generator.SpecificNumberGenerator;
 import racing.input.RacingInput;
 
@@ -13,6 +15,7 @@ import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RacingApplicationTest {
 
@@ -66,5 +69,27 @@ public class RacingApplicationTest {
                 "pobi, crong, honux가 최종 우승했습니다.");
     }
 
+    @Test
+    void runFailWithLongCarNameTest() {
+        String inputString = "pobias,crong,honux\n5";
+        InputStream inputStream = new ByteArrayInputStream(inputString.getBytes(StandardCharsets.UTF_8));
+        RacingApplication application = new RacingApplication(new RacingInput(inputStream), new SpecificNumberGenerator(9));
+        assertThrows(IllegalCarNameException.class, application::run);
+    }
 
+    @Test
+    void runFailWithNoCarNameTest() {
+        String inputString = ",crong,honux\n5";
+        InputStream inputStream = new ByteArrayInputStream(inputString.getBytes(StandardCharsets.UTF_8));
+        RacingApplication application = new RacingApplication(new RacingInput(inputStream), new SpecificNumberGenerator(9));
+        assertThrows(IllegalCarNameException.class, application::run);
+    }
+
+    @Test
+    void runFailWithNotNumberTest() {
+        String inputString = "pobi,crong,honux\na";
+        InputStream inputStream = new ByteArrayInputStream(inputString.getBytes(StandardCharsets.UTF_8));
+        RacingApplication application = new RacingApplication(new RacingInput(inputStream), new SpecificNumberGenerator(9));
+        assertThrows(IllegalCountException.class, application::run);
+    }
 }

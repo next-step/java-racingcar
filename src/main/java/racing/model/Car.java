@@ -1,23 +1,11 @@
 package racing.model;
 
-import racing.exception.IllegalCarNameException;
-
 public class Car {
-    private static final int MIN_LENGTH = 1;
-    private static final int MAX_LENGTH = 5;
-    private int position;
-    private String name;
+    private int position = 1;
+    private CarName name;
 
     public Car(String name) {
-        validate(name);
-        this.name = name;
-        this.position = 1;
-    }
-
-    private void validate(String name) {
-        if (name == null || name.length() < MIN_LENGTH || name.length() > MAX_LENGTH) {
-            throw new IllegalCarNameException();
-        }
+        this.name = new CarName(name);
     }
 
     public void goForward() {
@@ -29,6 +17,6 @@ public class Car {
     }
 
     public String getName() {
-        return this.name;
+        return this.name.getName();
     }
 }
