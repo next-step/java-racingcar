@@ -2,10 +2,12 @@ package racingcar;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
+import racingcar.domain.CarName;
+import racingcar.domain.CarStatus;
+import racingcar.domain.Cars;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 class CarsTest {
     @Test

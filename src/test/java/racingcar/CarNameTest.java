@@ -2,10 +2,11 @@ package racingcar;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.CarName;
 
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-public class CarNameTest {
+class CarNameTest {
     @Test
     void carNameTest_normal() {
         CarName carName = new CarName("pobi");

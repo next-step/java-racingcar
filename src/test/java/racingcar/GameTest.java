@@ -2,6 +2,8 @@ package racingcar;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.CarName;
+import racingcar.domain.Game;
 
 import java.util.List;
 import java.util.stream.Collectors;

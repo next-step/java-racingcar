@@ -1,10 +1,12 @@
 package racingcar;
 
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
+import racingcar.domain.CarName;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class CarTest {
+class CarTest {
 
     @Test
     void carTest_move() {

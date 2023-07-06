@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.view;
+
+import racingcar.domain.CarName;
 
 import java.util.Arrays;
 import java.util.List;
@@ -7,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class Input {
 
-    private final static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
     public static int processTryCount() {
         try {
