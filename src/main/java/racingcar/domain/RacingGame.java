@@ -4,22 +4,31 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+import racingcar.domain.response.RacingGamePlayResponse;
 import racingcar.util.Asserts;
 
 public class RacingGame {
+
+    private static final int INITIAL_ROUND = 0;
+    private static final int FIRST_ROUND = 1;
 
     private final int round;
     private final List<Car> cars;
 
     public RacingGame(int round, List<Car> cars) {
-        preAssert(cars);
+        preAssert(round, cars);
         this.round = round;
         this.cars = cars;
     }
 
-    private void preAssert(List<Car> cars) {
+    private void preAssert(int round, List<Car> cars) {
+        assertNegativeRound(round);
         assertEmptyCars(cars);
         assertDuplicateCarName(cars);
+    }
+
+    private void assertNegativeRound(int round) {
+        Asserts.isTrue(round >= 0, () -> "round값은 0보다 작아질 수 없습니다. round \"" + round + "\"");
     }
 
     private void assertEmptyCars(List<Car> cars) {
@@ -34,12 +43,22 @@ public class RacingGame {
         }
     }
 
-    public List<Car> getRoundResult() {
-        return List.copyOf(cars);
+    public RacingGamePlayResponse playAndGetRoundResults() {
+        RacingGamePlayResponse response = readyGame();
+        for (int currentRound = FIRST_ROUND; currentRound <= round; currentRound++) {
+            moveCars();
+            response.addRacingGameRoundResponse(currentRound, cars);
+        }
+        response.setWinner(getWinners());
+        return response;
     }
 
-    public void play() {
-        moveCars();
+    private RacingGamePlayResponse readyGame() {
+        RacingGamePlayResponse racingGamePlayResponse = new RacingGamePlayResponse();
+
+        racingGamePlayResponse.addRacingGameRoundResponse(INITIAL_ROUND, cars);
+
+        return racingGamePlayResponse;
     }
 
     private void moveCars() {
@@ -48,7 +67,7 @@ public class RacingGame {
         }
     }
 
-    public List<Car> getWinners() {
+    private List<Car> getWinners() {
         int winnerPosition = cars.stream()
             .mapToInt(Car::getPosition)
             .max()
