@@ -7,13 +7,16 @@ import java.util.regex.Pattern;
 
 public class StringCalculator {
 
+    private static final int BLANK_DEFAULT_VALUE = 0;
+
+
     private StringCalculator() {
         throw new UnsupportedOperationException("Cannot invoke constructor \"StringCalculator()\"");
     }
 
     public static int sum(String number) {
         if (Objects.isNull(number) || number.isBlank()) {
-            return 0;
+            return BLANK_DEFAULT_VALUE;
         }
         preAssert(number);
         return Arrays.stream(splitNumber(number))

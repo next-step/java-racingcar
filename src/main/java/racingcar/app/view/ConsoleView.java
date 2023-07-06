@@ -7,6 +7,7 @@ import racingcar.controller.response.RacingGamePlayControllerResponse.RacingGame
 public class ConsoleView {
 
     private static final String DISTANCE_EXPRESSION = "-";
+    private static final int NAME_THRESHOLD = 2;
 
     private final StringBuffer stringBuffer = new StringBuffer();
 
@@ -35,8 +36,7 @@ public class ConsoleView {
     private String parseWinnerNames(List<String> winnerNames) {
         stringBuffer.setLength(0);
         winnerNames.forEach(w -> stringBuffer.append(w).append(", "));
-        String name = stringBuffer.substring(0, stringBuffer.length() - 2);
-        return name;
+        return stringBuffer.substring(0, stringBuffer.length() - NAME_THRESHOLD);
     }
 
 }

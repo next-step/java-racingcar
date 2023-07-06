@@ -8,6 +8,7 @@ public class RandomMover implements Moveable {
 
     private static final int DEFAULT_LEFT = 0;
     private static final int DEFAULT_RIGHT = 9;
+    private static final int OFFSET = 1;
 
     private final int left;
     private final int right;
@@ -25,7 +26,7 @@ public class RandomMover implements Moveable {
 
     @Override
     public boolean isMove() {
-        return random.nextInt(right - left + 1) + left > Car.MOVE_RULE;
+        return random.nextInt(right - left + OFFSET) + left > Car.MOVE_RULE;
     }
 
 }

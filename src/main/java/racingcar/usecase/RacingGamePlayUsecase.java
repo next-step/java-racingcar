@@ -8,11 +8,14 @@ import racingcar.usecase.response.RacingGamePlayResponse;
 
 public class RacingGamePlayUsecase implements RacingGamePlayable {
 
+    private static final int ROUND_OFFSET = 0;
+    private static final int PLAYED_ROUND_OFFSET = 1;
+
     @Override
     public RacingGamePlayResponse play(int round, RacingGamePlayRequest racingGamePlayRequest) {
         RacingGame racingGame = getRacingGame(racingGamePlayRequest);
         RacingGamePlayResponse response = new RacingGamePlayResponse();
-        response.addRacingGameRoundResponse(0, racingGame.getRoundResult());
+        response.addRacingGameRoundResponse(ROUND_OFFSET, racingGame.getRoundResult());
 
         playRound(round, racingGame, response);
 
@@ -28,7 +31,7 @@ public class RacingGamePlayUsecase implements RacingGamePlayable {
     }
 
     private void playRound(int round, RacingGame racingGame, RacingGamePlayResponse response) {
-        for (int currentRound = 1; currentRound <= round; currentRound++) {
+        for (int currentRound = PLAYED_ROUND_OFFSET; currentRound <= round; currentRound++) {
             racingGame.play();
             response.addRacingGameRoundResponse(currentRound, racingGame.getRoundResult());
         }
