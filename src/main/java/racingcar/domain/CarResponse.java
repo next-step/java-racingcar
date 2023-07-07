@@ -11,7 +11,7 @@ public class CarResponse {
     }
 
     public static CarResponse of(Car car) {
-        return new CarResponse(car.getName(), car.getPosition().getValue());
+        return new CarResponse(car.getName().getValue(), car.getPosition().getValue());
     }
 
     public String getName() {
