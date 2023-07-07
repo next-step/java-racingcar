@@ -7,7 +7,7 @@ import java.io.IOException;
 public final class RaceApplication {
 
     public static void main(final String[] args) throws IOException {
-        RaceController raceController = new RaceController(new RandomMovableStrategy());
+        RaceController raceController = new RaceController();
         raceController.start();
         raceController.run();
         raceController.finish();

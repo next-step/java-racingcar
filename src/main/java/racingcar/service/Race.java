@@ -4,7 +4,6 @@ import racingcar.MovableStrategy;
 import racingcar.domain.Cars;
 import racingcar.domain.Round;
 import racingcar.dto.RaceRequest;
-import racingcar.util.RaceUtil;
 import racingcar.domain.Car;
 
 import java.util.ArrayList;
@@ -14,23 +13,25 @@ public final class Race {
 
     private final Cars cars;
     private final Round leftRound;
+    private final MovableStrategy movableStrategy;
 
-    private Race(final Cars cars, final int leftRound) {
+    private Race(final Cars cars, final int leftRound, MovableStrategy movableStrategy) {
         this.cars = cars;
         this.leftRound = Round.from(leftRound);
+        this.movableStrategy = movableStrategy;
     }
 
-    public static Race of(final String[] carNames, final int leftRound) {
+    public static Race create(final RaceRequest raceRequest, MovableStrategy movableStrategy) {
+        Cars cars = createCars(raceRequest);
+        return new Race(cars, raceRequest.getTotalRound(), movableStrategy);
+    }
+
+    private static Cars createCars(RaceRequest raceRequest) {
         Cars cars = Cars.create();
-        for (final String carName : carNames) {
+        for (final String carName : raceRequest.getNames()) {
             cars.add(Car.create(carName));
         }
-
-        return new Race(cars, leftRound);
-    }
-
-    public static Race from(final RaceRequest raceRequest) {
-        return of(raceRequest.getNames(), raceRequest.getTotalRound());
+        return cars;
     }
 
     public List<Car> getCars() {
@@ -41,14 +42,14 @@ public final class Race {
         return this.leftRound.getRound();
     }
 
-    public void play(final MovableStrategy movableStrategy) {
+    public void play() {
         startRound();
         for (final Car car : cars.getCars()) {
-            doPlay(movableStrategy, car);
+            doPlay(car);
         }
     }
 
-    private void doPlay(final MovableStrategy movableStrategy, final Car car) {
+    private void doPlay(final Car car) {
         if (movableStrategy.isMove()) {
             car.moveForward();
         }

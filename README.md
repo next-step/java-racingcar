@@ -97,7 +97,7 @@
 - NumberGenerator 수정
   - 이름을 MovableStrategy로 변경
   - 역할 변경 (숫자 생성 -> 움직임 가능 판단)
-  - Race의 데이터로 변경
+  - Race가 관리하도록 변경
 - 불필요한 객체 정리
   - CarVO 제거
   - RaceUtil 제거
