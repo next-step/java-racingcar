@@ -28,6 +28,10 @@ public class Cars {
         }
     }
 
+    List<Car> getList() {
+        return list;
+    }
+
     public void print(final CarFormatter formatter) {
         list.forEach(car -> System.out.println(formatter.format(car)));
         System.out.println();
