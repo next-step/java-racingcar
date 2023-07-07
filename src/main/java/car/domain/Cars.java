@@ -31,8 +31,10 @@ public class Cars {
         return list;
     }
 
-    public String format(final CarsFormatter formatter) {
-        return formatter.format(list);
+    public List<String> format(final CarFormatter formatter) {
+        return list.stream()
+            .map(formatter::format)
+            .collect(Collectors.toList());
     }
 
     public List<Car> selectWinners(final WinnerStrategy winnerStrategy) {

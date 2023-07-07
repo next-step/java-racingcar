@@ -6,14 +6,14 @@ import car.domain.Car;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class DefaultCarsFormatterTest {
+class DefaultCarFormatterTest {
 
-    final DefaultCarsFormatter formatter = new DefaultCarsFormatter();
+    final DefaultCarFormatter formatter = new DefaultCarFormatter();
 
     @Test
     @DisplayName("Car 객체를 받아서 자동차 이름과 주행 거리를 표시한다.")
-    void formatSingleCar() {
+    void format() {
         Car car = new Car(5, "pobi");
-        assertThat(formatter.formatSingleCar(car)).isEqualTo("pobi : -----");
+        assertThat(formatter.format(car)).isEqualTo("pobi : -----");
     }
 }

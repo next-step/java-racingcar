@@ -1,8 +1,8 @@
 package car;
 
 import car.domain.Car;
+import car.domain.CarFormatter;
 import car.domain.Cars;
-import car.domain.CarsFormatter;
 import car.domain.Name;
 import car.domain.winnerstrategy.MaxPositionDuplicateWinnerStrategy;
 import car.domain.winnerstrategy.WinnerStrategy;
@@ -27,7 +27,7 @@ public class CarRacingGame {
         leftPlayCount--;
     }
 
-    public String formatCurrentRaceStatus(CarsFormatter formatter) {
+    public List<String> formatCars(CarFormatter formatter) {
         return cars.format(formatter);
     }
 
