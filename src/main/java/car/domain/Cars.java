@@ -36,6 +36,6 @@ public class Cars {
     }
 
     public List<Car> getWinners(final WinnerStrategy winnerStrategy) {
-        return winnerStrategy.getWinners(list);
+        return winnerStrategy.selectWinners(list);
     }
 }

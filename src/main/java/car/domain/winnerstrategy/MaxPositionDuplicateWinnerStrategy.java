@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 public class MaxPositionDuplicateWinnerStrategy implements WinnerStrategy {
 
     @Override
-    public List<Car> getWinners(final List<Car> cars) {
+    public List<Car> selectWinners(final List<Car> cars) {
         int maxPosition = calculateMaxPosition(cars);
 
         return cars.stream()

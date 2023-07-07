@@ -21,7 +21,7 @@ public class MaxPositionDuplicateWinnerStrategyTest {
             new Car(5, "c")
         );
 
-        final List<Car> winners = winnerStrategy.getWinners(cars);
+        final List<Car> winners = winnerStrategy.selectWinners(cars);
         final List<String> winnerNames = winners.stream()
             .map(Car::getNameValue)
             .collect(Collectors.toList());
