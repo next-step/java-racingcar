@@ -4,7 +4,8 @@ import racingcar.exception.CarNameInputException;
 
 public class CarName {
 
-    public static final int MAX_LENGTH = 5;
+    private static final int MAX_LENGTH = 5;
+    private static final String CAR_NAME_MESSAGE = "자동차 이름의 길이가 " + MAX_LENGTH + "이하여야 합니다.";
     private final String value;
 
     public CarName(String value) {
@@ -14,7 +15,7 @@ public class CarName {
 
     private void validate(String value) {
         if (value == null || value.length() > MAX_LENGTH) {
-            throw new CarNameInputException();
+            throw new CarNameInputException(CAR_NAME_MESSAGE);
         }
     }
 
