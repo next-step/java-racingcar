@@ -7,8 +7,8 @@ import racingcar.domain.response.RacingGamePlayResponse.RacingGameRoundResponse;
 public class ConsoleView {
 
     private static final String DISTANCE_EXPRESSION = "-";
-    private static final String NAME_SEPERATE_EXPRESSION = ", ";
-    private static final String NAME_POSITION_SEPERATE_EXPRESSION = " : ";
+    private static final String NAME_SEPARATE_EXPRESSION = ", ";
+    private static final String NAME_POSITION_SEPARATE_EXPRESSION = " : ";
     private static final int NAME_THRESHOLD = 2;
 
     private ConsoleView() {
@@ -30,7 +30,7 @@ public class ConsoleView {
         racingGameRoundResponse.getCarPerRoundResponses()
             .forEach(carPerRoundResponse -> stringBuilder
                 .append(carPerRoundResponse.getName())
-                .append(NAME_POSITION_SEPERATE_EXPRESSION)
+                .append(NAME_POSITION_SEPARATE_EXPRESSION)
                 .append(buildPositionToString(carPerRoundResponse.getPosition()))
                 .append("\n"));
         return stringBuilder.toString();
@@ -42,7 +42,7 @@ public class ConsoleView {
 
     private String parseWinnerNames(List<String> winnerNames) {
         StringBuilder stringBuilder = new StringBuilder();
-        winnerNames.forEach(winnerName -> stringBuilder.append(winnerName).append(NAME_SEPERATE_EXPRESSION));
+        winnerNames.forEach(winnerName -> stringBuilder.append(winnerName).append(NAME_SEPARATE_EXPRESSION));
         return stringBuilder.substring(0, stringBuilder.length() - NAME_THRESHOLD);
     }
 
