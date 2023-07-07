@@ -8,6 +8,7 @@ import car.ui.CarFormatter;
 import car.ui.DefaultCarFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
+import utils.random.RandomGenerator;
 
 public class CarRacingGame {
 
@@ -26,9 +27,11 @@ public class CarRacingGame {
     }
 
     private void race(final int count) {
+        RandomGenerator randomGenerator = new RandomGenerator();
+
         System.out.println("\n실행 결과");
         for (int i = 0; i < count; i++) {
-            cars.move();
+            cars.move(randomGenerator);
             cars.print(formatter);
         }
     }

@@ -4,9 +4,9 @@ import java.util.Random;
 
 public class RandomGenerator {
 
-    private static final Random random = new Random();
+    private final Random random = new Random();
 
-    public static int extractRandomSingleDigit() {
+    public int extractRandomSingleDigit() {
         return random.nextInt(10);
     }
 }

@@ -22,9 +22,9 @@ public class Cars {
     }
 
 
-    public void move() {
+    public void move(RandomGenerator randomGenerator) {
         for (Car car : list) {
-            car.move(RandomGenerator.extractRandomSingleDigit());
+            car.move(randomGenerator.extractRandomSingleDigit());
         }
     }
 
