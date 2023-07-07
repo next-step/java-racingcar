@@ -15,10 +15,10 @@ class RandomMoverTest {
     class DescribeIsMoveMethod {
 
         @Nested
-        @DisplayName("RandomMover가 0에서 3사이의 랜덤값이 생성되면,")
+        @DisplayName("RandomMover가 DEFAULT_LEFT 에서 MOVE_RULE사이의 랜덤값이 생성되면,")
         class ContextReturn4 {
 
-            private final Moveable randomMover = new RandomMover(0, 3);
+            private final Moveable randomMover = new RandomMover(RandomMover.DEFAULT_LEFT, RandomMover.MOVE_RULE, RandomMover.MOVE_RULE);
 
             @Test
             @DisplayName("false를 반환한다.")
@@ -29,10 +29,10 @@ class RandomMoverTest {
         }
 
         @Nested
-        @DisplayName("RandomMover가 4에서 9사이의 랜덤값이 생성되면,")
+        @DisplayName("RandomMover가 MOVE_RULE + 1에서 DEFAULT_RIGHT사이의 랜덤값이 생성되면,")
         class ContextBinding3 {
 
-            private final Moveable randomMover = new RandomMover(4, 9);
+            private final Moveable randomMover = new RandomMover(RandomMover.MOVE_RULE + 1, RandomMover.DEFAULT_RIGHT, RandomMover.MOVE_RULE);
 
             @Test
             @DisplayName("true를 반환한다.")
