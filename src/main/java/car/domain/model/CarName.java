@@ -15,7 +15,7 @@ public final class CarName {
 
     /**
      * @param carName
-     * @throws TextLengthException :
+     * @exception TextLengthException : 각 자동차 이름의 길이가 5글자 초과면 예외 발생
      */
     private void validateNameLength(final String carName) {
         if (carName.length() > TEXT_LENGTH_LIMIT) {
