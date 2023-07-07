@@ -11,8 +11,8 @@ public class RacingResult {
         racingHistory.add(cars);
     }
 
-    public void computeWinner(Cars cars) {
-        winnerNames = cars.findWinnerNames();
+    public void addWinnerNames(List<String> winnerNames) {
+        this.winnerNames = winnerNames;
     }
 
     public List<Cars> getRacingHistory() {

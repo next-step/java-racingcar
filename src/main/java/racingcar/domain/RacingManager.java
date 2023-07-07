@@ -9,12 +9,10 @@ public class RacingManager {
 
     private final Cars cars;
     private final int round;
-    private final RacingResult racingResult;
 
     public RacingManager(String carNames, int round) {
         this.cars = new Cars(parse(carNames));
         this.round = round;
-        racingResult = new RacingResult();
     }
 
     private List<Car> parse(String carNames) {
@@ -24,11 +22,12 @@ public class RacingManager {
     }
 
     public RacingResult playRacing() {
+        RacingResult racingResult = new RacingResult();
         for (int i = 0; i < round; i++) {
             cars.takeTurn();
             racingResult.addResult(cars);
         }
-        racingResult.computeWinner(cars);
+        racingResult.addWinnerNames(cars.findWinnerNames());
         return racingResult;
     }
 }
