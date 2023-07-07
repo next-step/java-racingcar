@@ -9,32 +9,32 @@ public class Car {
 
     private final CarName name;
     private final NumberGenerator numberGenerator;
-    private int distance;
+    private final Distance distance;
+
+
+    public Car(String name, NumberGenerator numberGenerator, int distance) {
+        this.name = new CarName(name);
+        this.numberGenerator = numberGenerator;
+        this.distance = new Distance(distance);
+    }
+
+    public Car(String name, int distance) {
+        this(name, new RandomNumberGenerator(), distance);
+    }
 
     Car(String name, NumberGenerator numberGenerator) {
         this.name = new CarName(name);
         this.numberGenerator = numberGenerator;
+        this.distance = new Distance();
     }
 
     public Car(String name) {
         this(name, new RandomNumberGenerator());
     }
 
-    public String getName() {
-        return name.getCarName();
-    }
-
-    public int getDistance() {
-        return distance;
-    }
-
-    void forward() {
-        distance++;
-    }
-
     public void progress() {
         if (canMove()) {
-            forward();
+            distance.increase();
         }
     }
 
@@ -43,6 +43,14 @@ public class Car {
     }
 
     public boolean isSameDistance(int maxDistance) {
-        return this.distance == maxDistance;
+        return this.distance.isSameDistance(maxDistance);
+    }
+
+    public String getName() {
+        return name.getCarName();
+    }
+
+    public int getDistance() {
+        return distance.getDistance();
     }
 }

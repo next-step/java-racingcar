@@ -17,7 +17,7 @@ public class CarTest {
 
         car.progress();
 
-        assertThat(car.getDistance()).isEqualTo(1);
+        assertThat(car.isSameDistance(1)).isTrue();
     }
 
     @ParameterizedTest
@@ -28,6 +28,6 @@ public class CarTest {
 
         car.progress();
 
-        assertThat(car.getDistance()).isEqualTo(0);
+        assertThat(car.isSameDistance(0));
     }
 }

@@ -18,6 +18,14 @@ public class Distance {
         distance++;
     }
 
+    public boolean isSameDistance(int distance) {
+        return this.distance == distance;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
     @Override
     public boolean equals(Object o) {
 
@@ -38,4 +46,5 @@ public class Distance {
                 "distance=" + distance +
                 '}';
     }
+
 }
