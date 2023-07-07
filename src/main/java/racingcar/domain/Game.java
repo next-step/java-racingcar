@@ -18,6 +18,7 @@ public class Game {
 
     public List<List<CarStatus>> run() {
         List<List<CarStatus>> gameStatus = new ArrayList<>();
+        gameStatus.add(getCarStatuses());
         while (tryCount.isNotZero()) {
             cars.moveAll();
             gameStatus.add(getCarStatuses());

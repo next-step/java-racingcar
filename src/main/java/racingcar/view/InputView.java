@@ -9,6 +9,10 @@ public class InputView {
 
     private static final Scanner scanner = new Scanner(System.in);
 
+    private InputView() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static TryCount readTryCount() {
         System.out.println("시도할 회수는 몇회인가요?");
         String input = scanner.nextLine();

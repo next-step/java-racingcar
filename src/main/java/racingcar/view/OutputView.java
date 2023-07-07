@@ -11,17 +11,26 @@ public class OutputView {
     private static final String COLON = " : ";
     private static final String POSITION_STRING = "-";
 
-    public static void printInitialStatus(List<CarStatus> initialStatus) {
-        System.out.println();
-        System.out.println("실행 결과");
-        printCarStatus(initialStatus);
+    private OutputView() {
+        throw new IllegalStateException("Utility class");
     }
 
-    public static void printGameStatus(List<List<CarStatus>> gameStatus) {
+    public static void printResult(List<List<CarStatus>> gameStatus, List<CarName> winnerNames) {
+        printTitle();
+        printGameStatus(gameStatus);
+        printWinners(winnerNames);
+    }
+
+    private static void printTitle() {
+        System.out.println();
+        System.out.println("실행 결과");
+    }
+
+    private static void printGameStatus(List<List<CarStatus>> gameStatus) {
         gameStatus.forEach(OutputView::printCarStatus);
     }
 
-    public static void printCarStatus(List<CarStatus> raceStatus) {
+    private static void printCarStatus(List<CarStatus> raceStatus) {
         raceStatus.stream()
                 .map(OutputView::carStatusToString)
                 .forEach(System.out::println);
@@ -32,7 +41,7 @@ public class OutputView {
         return carStatus.getName() + COLON + POSITION_STRING.repeat(carStatus.getPosition());
     }
 
-    public static void printWinners(List<CarName> winnerNames) {
+    private static void printWinners(List<CarName> winnerNames) {
         System.out.println(carNamesToString(winnerNames) + "가 최종우승했습니다.");
     }
 
