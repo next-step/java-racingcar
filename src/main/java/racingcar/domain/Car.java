@@ -12,32 +12,25 @@ public class Car {
     private static final int POSITION_OFFSET = 1;
 
     private int position;
-    private final String name;
+    private final Name name;
     private final Moveable moveable;
 
-    public Car(String name, Moveable moveable) {
-        preAssert(name, moveable);
+    Car(String name, Moveable moveable) {
+        Asserts.notNull(moveable, () -> "Moveable은 null값이 될 수 없습니다.");
         this.position = POSITION_OFFSET;
-        this.name = name;
+        this.name = new Name(name);
         this.moveable = moveable;
     }
 
-    private void preAssert(String name, Moveable moveable) {
-        Asserts.notNull(name, () -> "자동차 이름은 null값이 될 수 없습니다.");
-        Asserts.notNull(moveable, () -> "Moveable은 null값이 될 수 없습니다.");
-        Asserts.isTrue(name.length() >= NAME_MIN && name.length() <= NAME_MAX,
-            () -> "자동차 이름은 1~5자 사이로 입력해야됩니다. 입력한 값: \"" + name + "\"");
-    }
-
-    public int getPosition() {
+    int getPosition() {
         return this.position;
     }
 
-    public String getName() {
-        return name;
+    String getName() {
+        return name.value;
     }
 
-    public void move() {
+    void move() {
         if (this.moveable.isMove()) {
             this.position++;
         }
@@ -68,4 +61,41 @@ public class Car {
             ", moveable=" + moveable +
             '}';
     }
+
+    private static final class Name {
+
+        private final String value;
+
+        public Name(String value) {
+            Asserts.notNull(value, () -> "자동차 이름은 null값이 될 수 없습니다.");
+            Asserts.isTrue(value.length() >= NAME_MIN && value.length() <= NAME_MAX,
+                () -> "자동차 이름은 1~5자 사이로 입력해야됩니다. 입력한 값: \"" + value + "\"");
+            this.value = value;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) {
+                return true;
+            }
+            if (!(o instanceof Name)) {
+                return false;
+            }
+            Name name = (Name) o;
+            return Objects.equals(value, name.value);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(value);
+        }
+
+        @Override
+        public String toString() {
+            return "Name{" +
+                "value='" + value + '\'' +
+                '}';
+        }
+    }
+
 }
