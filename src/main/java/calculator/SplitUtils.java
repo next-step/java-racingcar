@@ -36,8 +36,8 @@ public class SplitUtils {
      * @param input
      * @return 0 이상의 정수
      */
-    private static int toPositiveNumber(String input) {
-        if (input.isBlank()) {
+    public static int toPositiveNumber(String input) {
+        if (input == null || input.isBlank()) {
             return 0;
         }
 
