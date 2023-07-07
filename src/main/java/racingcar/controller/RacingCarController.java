@@ -1,9 +1,6 @@
 package racingcar.controller;
 
-import racingcar.domain.CarName;
-import racingcar.domain.CarStatus;
-import racingcar.domain.Game;
-import racingcar.domain.TryCount;
+import racingcar.domain.*;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -34,9 +31,9 @@ public class RacingCarController {
     }
 
     private static Game processInput() {
-        List<CarName> carNames = retryIfException(InputView::readCarNames);
+        Cars cars = retryIfException(InputView::readCarNames);
         TryCount tryCount = retryIfException(InputView::readTryCount);
-        return new Game(carNames, tryCount);
+        return new Game(cars, tryCount);
     }
 
     public void runGame() {
