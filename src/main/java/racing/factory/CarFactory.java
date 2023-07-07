@@ -2,11 +2,11 @@ package racing.factory;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import racing.exception.GameReadyException;
 import racing.model.Car;
+import racing.model.Cars;
 
 public class CarFactory {
-
-    private static final int MAX_CAR_NAME_LENGTH = 5;
 
     private static class CarFactoryHandler {
         private static final CarFactory INSTANCE = new CarFactory();
@@ -19,35 +19,21 @@ public class CarFactory {
         return CarFactoryHandler.INSTANCE;
     }
 
-    public List<Car> manufactureCars(final List<String> carNames) {
-        if (isInvalid(carNames)) {
-            throw new IllegalArgumentException("잘못된 형식의 자동차 이름입니다.");
+    public Cars manufactureCars(final List<String> carNames) {
+        if (hasDuplicatedNames(carNames)) {
+            throw new GameReadyException("중복된 자동차 이름을 사용할 수 없습니다.");
         }
 
-        return carNames.stream()
-                       .map(Car::new)
-                       .collect(Collectors.toUnmodifiableList());
+        final List<Car> cars = carNames.stream()
+                                       .map(Car::new)
+                                       .collect(Collectors.toUnmodifiableList());
+        return new Cars(cars);
     }
 
-    private boolean isInvalid(final List<String> carNames) {
-        return containsLongName(carNames) || isDuplicated(carNames) || containsBlank(carNames);
-    }
-
-    private static boolean containsLongName(final List<String> carNames) {
-        return carNames.stream()
-                       .anyMatch(carName -> carName.length() > MAX_CAR_NAME_LENGTH);
-    }
-
-    private static boolean isDuplicated(final List<String> carNames) {
+    private static boolean hasDuplicatedNames(final List<String> carNames) {
         final long distinctCount = carNames.stream()
                                            .distinct()
                                            .count();
-
         return distinctCount != carNames.size();
-    }
-
-    private static boolean containsBlank(final List<String> carNames) {
-        return carNames.stream()
-                       .anyMatch(String::isBlank);
     }
 }

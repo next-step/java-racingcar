@@ -1,6 +1,5 @@
 package racing.model;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -14,11 +13,7 @@ public class Cars {
     }
 
     public List<Car> getCars() {
-        return Collections.unmodifiableList(cars);
-    }
-
-    public int size() {
-        return cars.size();
+        return cars;
     }
 
     public void moveCars(final Random random) {
@@ -28,7 +23,7 @@ public class Cars {
     public List<String> findWinnerNames() {
         final int maxPosition = maxPosition();
         return cars.stream()
-                   .filter(car -> car.isWinner(maxPosition))
+                   .filter(car -> car.matchPosition(maxPosition))
                    .map(Car::getName)
                    .collect(Collectors.toList());
     }

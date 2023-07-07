@@ -2,26 +2,24 @@ package racing.model;
 
 import calculator.util.StringUtils;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import racing.exception.GameReadyException;
+import racing.factory.CarFactory;
 
 public class GameReadyInfo {
 
     private static final String DEFAULT_DELIMITER = ",";
 
-    private final List<Car> cars;
+    private final Cars cars;
     private final int tryCount;
 
     public GameReadyInfo(final String carNames, final int tryCount) {
         validate(carNames, tryCount);
-        this.cars = Stream.of(carNames.split(DEFAULT_DELIMITER))
-                          .map(Car::new)
-                          .collect(Collectors.toList());
+        this.cars = CarFactory.getInstance()
+                              .manufactureCars(split(carNames));
         this.tryCount = tryCount;
     }
 
-    public List<Car> getCars() {
+    public Cars getCars() {
         return this.cars;
     }
 
@@ -44,5 +42,9 @@ public class GameReadyInfo {
         if (raceCount <= 0) {
             throw new GameReadyException("경기 횟수는 양수이어야 합니다.");
         }
+    }
+
+    private static List<String> split(final String carNames) {
+        return List.of(carNames.split(DEFAULT_DELIMITER));
     }
 }

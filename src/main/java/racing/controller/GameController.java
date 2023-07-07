@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import racing.io.GameViewer;
 import racing.model.Cars;
+import racing.model.GameReadyInfo;
 
 public class GameController {
 
@@ -13,7 +14,10 @@ public class GameController {
         this.viewer = viewer;
     }
 
-    public void startRacing(final Cars cars, final int tryCount) {
+    public void startRacing(final GameReadyInfo gameReadyInfo) {
+        final Cars cars = gameReadyInfo.getCars();
+        final int tryCount = gameReadyInfo.getTryCount();
+
         viewer.printBeforeRacing(cars);
         race(cars, tryCount);
         final List<String> winnerNames = cars.findWinnerNames();

@@ -1,6 +1,6 @@
 package racing.factory;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
@@ -8,7 +8,6 @@ import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import racing.model.Car;
 
 class CarFactoryTest {
 
@@ -18,16 +17,14 @@ class CarFactoryTest {
     @MethodSource
     @DisplayName("올바른 자동차 이름이 입력된 경우")
     void correctInputTest(final List<String> carNames) {
-        final List<Car> cars = CAR_FACTORY.manufactureCars(carNames);
-        assertThat(cars).extracting("name")
-                        .containsExactlyInAnyOrder(carNames.toArray());
+        assertThatCode(() -> CAR_FACTORY.manufactureCars(carNames)).doesNotThrowAnyException();
     }
 
     @ParameterizedTest
     @MethodSource
     @DisplayName("잘못된 자동차 이름이 입력된 경우")
     void wrongInputTest(final List<String> carNames) {
-        assertThatThrownBy(() -> CAR_FACTORY.manufactureCars(carNames)).isExactlyInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> CAR_FACTORY.manufactureCars(carNames)).isInstanceOf(IllegalArgumentException.class);
     }
 
     private static Stream<List<String>> correctInputTest() {

@@ -8,7 +8,7 @@ public class Car {
     private static final int DEFAULT_POSITION = 1;
     private static final int DEFAULT_BOUND = 10;
 
-    private final String name;
+    private final CarName name;
     private final int criterion;
     private int position;
 
@@ -16,18 +16,14 @@ public class Car {
         this(name, DEFAULT_CRITERION, DEFAULT_POSITION);
     }
 
-    public Car(final String name, final int criterion) {
-        this(name, criterion, DEFAULT_POSITION);
-    }
-
     public Car(final String name, final int criterion, final int position) {
-        this.name = name;
+        this.name = new CarName(name);
         this.criterion = criterion;
         this.position = position;
     }
 
     public String getName() {
-        return this.name;
+        return name.getName();
     }
 
     public int getCriterion() {
@@ -42,13 +38,17 @@ public class Car {
         return this.position == maxPosition;
     }
 
+    public boolean matchPosition(final int target) {
+        return this.position == target;
+    }
+
     public void move(final Random random) {
         final int randomValue = random.nextInt(DEFAULT_BOUND);
         move(randomValue);
     }
 
-    private void move(final int value) {
-        if (canMove(value)) {
+    private void move(final int power) {
+        if (canMove(power)) {
             this.position++;
         }
     }
