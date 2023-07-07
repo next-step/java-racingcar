@@ -34,7 +34,7 @@ public class RacingCarApplication {
 
     private static void race(final Cars cars, final int totalCount, final MoveStrategy strategy) {
         ConsoleOutput.printResultHeader();
-        for (int i = 0; i < count; i++) {
+        for (int count = 0; count < totalCount; count++) {
             cars.move(strategy);
             ConsoleOutput.printCurrentStatus(cars.getCars());
         }
