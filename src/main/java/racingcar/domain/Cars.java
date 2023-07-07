@@ -7,6 +7,10 @@ public class Cars {
 
     private final List<Car> carList;
 
+    public Cars(Car ...cars) {
+        this(List.of(cars));
+    }
+
     public Cars(List<Car> carList) {
         this.carList = carList;
     }

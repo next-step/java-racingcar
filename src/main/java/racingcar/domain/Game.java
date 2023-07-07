@@ -9,7 +9,7 @@ public class Game {
     private final Cars cars;
     private TryCount tryCount;
 
-    public Game(List<CarName> carNames, TryCount tryCount) {
+    public Game(List<String> carNames, TryCount tryCount) {
         this.cars = new Cars(carNames.stream()
                 .map(Car::new)
                 .collect(Collectors.toList()));

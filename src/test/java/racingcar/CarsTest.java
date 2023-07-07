@@ -12,23 +12,20 @@ import java.util.List;
 class CarsTest {
     @Test
     void carsTest_maxPosition() {
-        Car car1 = new Car(new CarName("pobi"), new MockRandom(4));
-        Car car2 = new Car(new CarName("honux"), new MockRandom(3));
-        car1.move();
-
-        List<Car> carList = List.of(car1, car2);
-        Cars cars = new Cars(carList);
+        Cars cars = new Cars(
+                new Car("pobi", 2),
+                new Car ("honux", 1)
+        );
 
         Assertions.assertThat(cars.maxPosition()).isEqualTo(2);
     }
 
     @Test
     void carsTest_mapToStatus() {
-        Car car1 = new Car(new CarName("pobi"), new MockRandom(4));
-        Car car2 = new Car(new CarName("honux"), new MockRandom(4));
-
-        List<Car> carList = List.of(car1, car2);
-        Cars cars = new Cars(carList);
+        Cars cars = new Cars(
+                new Car("pobi", 3),
+                new Car ("honux", 4)
+        );
 
         Assertions.assertThat(cars.mapToStatus()
                 .stream()
@@ -37,37 +34,32 @@ class CarsTest {
         Assertions.assertThat(cars.mapToStatus()
                 .stream()
                 .mapToInt(CarStatus::getPosition)
-        ).contains(1, 1);
+        ).contains(3, 4);
     }
 
     @Test
     void carsTest_moveAll() {
-        Car car1 = new Car(new CarName("pobi"), new MockRandom(4));
-        Car car2 = new Car(new CarName("honux"), new MockRandom(4));
-
-        List<Car> carList = List.of(car1, car2);
-        Cars cars = new Cars(carList);
+        Cars cars = new Cars(
+                new Car("pobi", 2, new MockRandom(4)),
+                new Car ("honux", 1, new MockRandom(4))
+        );
         cars.moveAll();
 
         Assertions.assertThat(cars.mapToStatus()
                 .stream()
                 .mapToInt(CarStatus::getPosition)
-        ).contains(2, 2);
+        ).containsExactly(3, 2);
     }
 
     @Test
     void carsTest_findWinnerNames() {
-        Car car1 = new Car(new CarName("pobi"), new MockRandom(4));
-        Car car2 = new Car(new CarName("honux"), new MockRandom(3));
-        Car car3 = new Car(new CarName("gugu"), new MockRandom(4));
+        Cars cars = new Cars(
+                new Car("pobi", 3),
+                new Car ("honux", 2),
+                new Car("gugu", 4),
+                new Car("sola", 4)
+        );
 
-        List<Car> carList = List.of(car1, car2, car3);
-        Cars cars = new Cars(carList);
-        cars.moveAll();
-
-        Assertions.assertThat(cars.findWinnerNames()
-                .stream()
-                .map(CarName::getName)
-        ).contains("pobi", "gugu");
+        Assertions.assertThat(cars.findWinnerNames()).containsExactly(new CarName("gugu"), new CarName("sola"));
     }
 }

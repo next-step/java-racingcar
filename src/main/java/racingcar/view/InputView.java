@@ -1,12 +1,9 @@
 package racingcar.view;
 
-import racingcar.domain.CarName;
 import racingcar.domain.TryCount;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class InputView {
 
@@ -42,17 +39,11 @@ public class InputView {
         return split(input);
     }
 
-    private static List<CarName> split(String input) {
+    private static List<String> split(String input) {
         String[] carNames = input.split(",");
         if (carNames.length == 0)  {
             throw new IllegalArgumentException("유효하지 않은 입력입니다. 다시 입력해주세요");
         }
-        return toCarNames(carNames);
-    }
-
-    private static List<CarName> toCarNames(String[] carNames) {
-        return Arrays.stream(carNames)
-                .map(CarName::new)
-                .collect(Collectors.toList());
+        return List.of(carNames);
     }
 }
