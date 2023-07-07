@@ -1,5 +1,6 @@
 package car;
 
+import car.controller.CarRacingGame;
 import car.view.InputView;
 import car.view.OutputView;
 
