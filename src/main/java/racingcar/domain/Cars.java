@@ -3,28 +3,31 @@ package racingcar.domain;
 import racingcar.util.MathUtil;
 
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Cars {
 
+    private static final int RANDOM_BOUND = 10;
     private final List<Car> cars;
 
-    public Cars(List<CarName> carNames) {
-        this.cars = carNames.stream()
-                .map(Car::new)
-                .collect(Collectors.toList());
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
-    public void move() {
-        cars.forEach(Car::move);
+    public void move(Random random) {
+        cars.forEach(c -> {
+            int power = random.nextInt(RANDOM_BOUND);
+            c.move(power);
+        });
     }
 
-    public List<String> getWinnerNames() {
+    public CarNames getWinnerNames() {
         Position winnerPosition = getMaxPosition();
-        return cars.stream()
+        return new CarNames(cars.stream()
                 .filter(c -> c.isWinner(winnerPosition))
                 .map(Car::getName)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()));
     }
 
     private Position getMaxPosition() {
