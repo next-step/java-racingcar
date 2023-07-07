@@ -1,14 +1,15 @@
 package racingcar.controller;
 
-import java.util.List;
-import java.util.stream.Collectors;
 import racingcar.controller.request.RacingGamePlayControllerRequest;
 import racingcar.controller.response.RacingGamePlayControllerResponse;
-import racingcar.randommove.RandomMover;
+import racingcar.domain.move.RandomMover;
 import racingcar.usecase.RacingGamePlayUsecase;
 import racingcar.usecase.request.RacingGamePlayRequest;
 import racingcar.usecase.request.RacingGamePlayRequest.CarRequest;
 import racingcar.usecase.response.RacingGamePlayResponse;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGamePlayController {
 

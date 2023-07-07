@@ -1,4 +1,4 @@
-package racingcar.domain.extension;
+package racingcar.domain.move;
 
 /**
  * Car 클래스가 움직여야 하는지 판단하는 인터페이스 입니다.

@@ -1,6 +1,4 @@
-package racingcar.randommove;
-
-import racingcar.domain.extension.Moveable;
+package racingcar.domain.move;
 
 import java.util.Random;
 

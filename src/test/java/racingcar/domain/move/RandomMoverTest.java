@@ -1,11 +1,10 @@
-package racingcar.randommove;
-
-import static org.assertj.core.api.Assertions.assertThat;
+package racingcar.domain.move;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.extension.Moveable;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SuppressWarnings("FieldCanBeLocal")
 @DisplayName("RandomMover 테스트")

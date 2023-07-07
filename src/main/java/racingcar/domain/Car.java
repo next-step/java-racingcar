@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import racingcar.domain.extension.Moveable;
+import racingcar.domain.move.Moveable;
 import racingcar.util.Asserts;
 
 import java.util.Objects;

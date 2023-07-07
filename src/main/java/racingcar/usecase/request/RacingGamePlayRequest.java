@@ -1,7 +1,8 @@
 package racingcar.usecase.request;
 
+import racingcar.domain.move.Moveable;
+
 import java.util.List;
-import racingcar.domain.extension.Moveable;
 
 public class RacingGamePlayRequest {
 

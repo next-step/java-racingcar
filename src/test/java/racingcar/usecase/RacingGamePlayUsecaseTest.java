@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.RacingGame;
-import racingcar.domain.extension.Moveable;
+import racingcar.domain.move.Moveable;
 import racingcar.usecase.request.RacingGamePlayRequest;
 import racingcar.usecase.request.RacingGamePlayRequest.CarRequest;
 import racingcar.usecase.response.RacingGamePlayResponse;
