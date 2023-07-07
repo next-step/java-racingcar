@@ -1,5 +1,6 @@
 package racing.domain;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -32,4 +33,23 @@ public class CarTest {
         assertThat(car.getPosition()).isEqualTo(2);
     }
 
+    @Test
+    void samePositionTest() {
+        //given
+        Car car1 = new Car("pobi", 1);
+        Car car2 = new Car("crong", 1);
+
+        //when, then
+        assertThat(car1.isSamePosition(car2)).isTrue();
+    }
+
+    @Test
+    void differentPositionTest() {
+        //given
+        Car car1 = new Car("pobi", 1);
+        Car car2 = new Car("crong", 2);
+
+        //when, then
+        assertThat(car1.isSamePosition(car2)).isFalse();
+    }
 }

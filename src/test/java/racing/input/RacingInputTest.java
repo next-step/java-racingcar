@@ -3,8 +3,6 @@ package racing.input;
 import org.junit.jupiter.api.Test;
 import racing.domain.Car;
 import racing.domain.CarCollection;
-import racing.domain.Name;
-import racing.domain.Position;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -26,9 +24,9 @@ public class RacingInputTest {
 
         //then
         assertThat(cars).isEqualTo(new CarCollection(List.of(
-                new Car(new Name("pobi"), new Position(1)),
-                new Car(new Name("crong"), new Position(1)),
-                new Car(new Name("honux"), new Position(1))
+                new Car("pobi", 1),
+                new Car("crong", 1),
+                new Car("honux", 1)
         )));
     }
 

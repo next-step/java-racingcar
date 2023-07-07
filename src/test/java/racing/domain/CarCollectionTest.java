@@ -14,16 +14,16 @@ class CarCollectionTest {
     void nextStateGoForwardTest() {
         //given
         CarCollection cars = new CarCollection(List.of(
-                new Car(new Name("test1"), new Position(2)),
-                new Car(new Name("test2"), new Position(4))));
+                new Car("test1", 2),
+                new Car("test2", 4)));
 
         //when
         CarCollection carCollection = cars.nextState(new SpecificNumberGenerator(9));
 
         //then
         assertThat(carCollection).isEqualTo(new CarCollection(List.of(
-                new Car(new Name("test1"), new Position(3)),
-                new Car(new Name("test2"), new Position(5))
+                new Car("test1", 3),
+                new Car("test2", 5)
         )));
     }
 
@@ -31,16 +31,16 @@ class CarCollectionTest {
     void nextStateDontGoForwardTest() {
         //given
         CarCollection cars = new CarCollection(List.of(
-                new Car(new Name("test1"), new Position(2)),
-                new Car(new Name("test2"), new Position(4))));
+                new Car("test1", 2),
+                new Car("test2", 4)));
 
         //when
         CarCollection carCollection = cars.nextState(new SpecificNumberGenerator(0));
 
         //then
         assertThat(carCollection).isEqualTo(new CarCollection(List.of(
-                new Car(new Name("test1"), new Position(2)),
-                new Car(new Name("test2"), new Position(4))
+                new Car("test1", 2),
+                new Car("test2", 4)
         )));
     }
 
@@ -49,8 +49,8 @@ class CarCollectionTest {
         //given
         List<Car> cars = new ArrayList<>();
         cars.add(new Car("test1"));
-        cars.add(new Car(new Name("test2"), new Position(2)));
-        cars.add(new Car(new Name("test3"), new Position(2)));
+        cars.add(new Car("test2", 2));
+        cars.add(new Car("test3", 2));
         CarCollection carCollection = new CarCollection(cars);
 
         //when

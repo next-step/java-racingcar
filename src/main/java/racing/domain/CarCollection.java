@@ -3,6 +3,7 @@ package racing.domain;
 import racing.generator.NumberGenerator;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -32,22 +33,21 @@ public class CarCollection {
                 this.cars.stream()
                         .map(car -> car.goForward(numberGenerator.generate()))
                         .collect(Collectors.toList())
-                
+
         );
     }
 
     public List<String> getWinners() {
         return cars.stream()
-                .filter(car -> car.getPosition() == getMaxPosition())
+                .filter(car -> car.isSamePosition(getMaxPositionCar()))
                 .map(Car::getName)
                 .collect(Collectors.toList());
     }
 
-    private int getMaxPosition() {
+    private Car getMaxPositionCar() {
         return cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElse(-1);
+                .max(Comparator.comparingInt(Car::getPosition))
+                .orElseThrow();
     }
 
     public List<Car> getCars() {

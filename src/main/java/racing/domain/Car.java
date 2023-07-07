@@ -12,6 +12,10 @@ public class Car {
         this(new Name(name), new Position());
     }
 
+    public Car(String name, int position) {
+        this(new Name(name), new Position(position));
+    }
+
     public Car(Name name, Position position) {
         this.name = name;
         this.position = position;
@@ -47,5 +51,9 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(name, position);
+    }
+
+    public boolean isSamePosition(Car other) {
+        return this.position.equals(other.position);
     }
 }
