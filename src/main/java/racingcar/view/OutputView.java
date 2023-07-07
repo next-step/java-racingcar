@@ -1,11 +1,11 @@
-package racingcar.io;
+package racingcar.view;
 
-import racingcar.car.CarResponse;
-import racingcar.car.Cars;
+import racingcar.domain.CarResponse;
+import racingcar.domain.Cars;
 
 import java.util.List;
 
-public class Output {
+public class OutputView {
 
     public static void printInitialStatus(Cars cars) {
         System.out.println("실행 결과");
@@ -15,7 +15,7 @@ public class Output {
     public static void printExecutionResult(Cars cars) {
         cars.getCars()
                 .stream()
-                .map(Output::formatResult)
+                .map(OutputView::formatResult)
                 .forEach(System.out::println);
         System.out.println();
     }

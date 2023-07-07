@@ -1,6 +1,6 @@
-package racingcar.io;
+package racingcar.view;
 
-import racingcar.car.CarName;
+import racingcar.domain.CarName;
 import racingcar.exception.CarNameInputException;
 import racingcar.exception.TryCountInputException;
 
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public class Input {
+public class InputView {
     private static final String NUMBER_REGEX = "[0-9]+";
     private static final Scanner SCANNER = new Scanner(System.in);
 
