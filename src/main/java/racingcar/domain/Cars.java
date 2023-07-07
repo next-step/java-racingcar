@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Cars {
+public final class Cars {
 
     private final List<Car> cars;
 

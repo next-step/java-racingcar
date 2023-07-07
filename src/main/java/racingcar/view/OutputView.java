@@ -3,22 +3,22 @@ package racingcar.view;
 import racingcar.dto.RaceResponse;
 import racingcar.domain.CarVO;
 
-public class OutputView {
+public final class OutputView {
     private static final String START_MESSAGE = "실행 결과";
 
     public static void printStartMessage() {
         System.out.println(START_MESSAGE);
     }
 
-    public static void printRound(RaceResponse raceResponse) {
-        for (CarVO carVO : raceResponse.getCars()) {
+    public static void printRound(final RaceResponse raceResponse) {
+        for (final CarVO carVO : raceResponse.getCars()) {
             System.out.printf("%s : %s%n", carVO.getName(), carVO.getPosition());
         }
         System.out.println();
     }
 
-    public static void printWinners(String[] winners) {
-        StringBuilder stringBuilder = new StringBuilder();
+    public static void printWinners(final String[] winners) {
+        final StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < winners.length - 1; i++) {
             stringBuilder.append(winners[i]).append(',');
         }

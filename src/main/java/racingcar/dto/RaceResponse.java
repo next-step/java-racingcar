@@ -5,11 +5,11 @@ import racingcar.domain.CarVO;
 
 import java.util.List;
 
-public class RaceResponse {
+public final class RaceResponse {
 
     private final List<CarVO> cars;
 
-    public RaceResponse(List<Car> cars) {
+    public RaceResponse(final List<Car> cars) {
         this.cars = CarVO.toList(cars);
     }
 

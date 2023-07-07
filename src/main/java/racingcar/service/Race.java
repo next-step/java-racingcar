@@ -10,26 +10,26 @@ import racingcar.domain.Car;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Race {
+public final class Race {
 
     private final Cars cars;
     private final Round leftRound;
 
-    private Race(Cars cars, int leftRound) {
+    private Race(final Cars cars, final int leftRound) {
         this.cars = cars;
         this.leftRound = Round.from(leftRound);
     }
 
-    public static Race of(String[] carNames, int count) {
+    public static Race of(final String[] carNames, final int count) {
         Cars cars = Cars.create();
-        for (String carName : carNames) {
+        for (final String carName : carNames) {
             cars.add(Car.create(carName));
         }
 
         return new Race(cars, count);
     }
 
-    public static Race from(RaceRequest raceRequest) {
+    public static Race from(final RaceRequest raceRequest) {
         return of(raceRequest.getNames(), raceRequest.getTotalRound());
     }
 
@@ -41,14 +41,14 @@ public class Race {
         return this.leftRound.getRound();
     }
 
-    public void play(NumberGenerator numberGenerator) {
+    public void play(final NumberGenerator numberGenerator) {
         startRound();
-        for (Car car : cars.getCars()) {
+        for (final Car car : cars.getCars()) {
             doPlay(numberGenerator, car);
         }
     }
 
-    private void doPlay(NumberGenerator numberGenerator, Car car) {
+    private void doPlay(final NumberGenerator numberGenerator, final Car car) {
         if (RaceUtil.determineCarMovement(numberGenerator.generate())) {
             car.moveForward();
         }
@@ -56,12 +56,12 @@ public class Race {
 
     public String[] findWinners() {
         int maxPosition = 0;
-        for (Car car : cars.getCars()) {
+        for (final Car car : cars.getCars()) {
             maxPosition = Math.max(car.getPosition(), maxPosition);
         }
 
-        List<String> names = new ArrayList<>();
-        for (Car car : cars.getCars()) {
+        final List<String> names = new ArrayList<>();
+        for (final Car car : cars.getCars()) {
             if (maxPosition == car.getPosition()) {
                 names.add(car.getName());
             }
