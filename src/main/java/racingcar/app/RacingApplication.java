@@ -5,6 +5,7 @@ import racingcar.app.input.ConsoleInput;
 import racingcar.app.view.ConsoleView;
 import racingcar.controller.RacingGamePlayController;
 import racingcar.domain.response.RacingGamePlayResponse;
+import racingcar.randommove.RandomMover;
 
 public class RacingApplication {
 
@@ -20,7 +21,7 @@ public class RacingApplication {
     private RacingApplication() {
         this.consoleInput = ConsoleInput.getInstance();
         this.consoleView = ConsoleView.getInstance();
-        this.racingGamePlayController = RacingGamePlayController.getInstance();
+        this.racingGamePlayController = new RacingGamePlayController(RandomMover.newInstance());
     }
 
     private void run() {

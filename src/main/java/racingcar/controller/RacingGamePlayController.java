@@ -6,17 +6,17 @@ import racingcar.domain.Car;
 import racingcar.domain.RacingGame;
 import racingcar.domain.extension.Moveable;
 import racingcar.domain.response.RacingGamePlayResponse;
-import racingcar.randommove.RandomMover;
 
 public class RacingGamePlayController {
 
-    private static final Moveable randomMover = RandomMover.newInstance();
+    private final Moveable moveable;
 
     private RacingGamePlayController() {
+        throw new UnsupportedOperationException("Cannot invoke constructor \"RacingGamePlayController()\"");
     }
 
-    public static RacingGamePlayController getInstance() {
-        return SingletonHelper.INSTANCE;
+    public RacingGamePlayController(Moveable moveable) {
+        this.moveable = moveable;
     }
 
     public RacingGamePlayResponse playRacingGame(int round, List<String> carNames) {
@@ -26,14 +26,8 @@ public class RacingGamePlayController {
 
     private List<Car> createCarsByCarNames(List<String> carNames) {
         return carNames.stream()
-            .map(carName -> new Car(carName, randomMover))
+            .map(carName -> new Car(carName, moveable))
             .collect(Collectors.toList());
-    }
-
-    private static final class SingletonHelper {
-
-        private static final RacingGamePlayController INSTANCE = new RacingGamePlayController();
-
     }
 
 }
