@@ -1,9 +1,8 @@
 package racingcar.view;
 
+import racingcar.domain.CarNames;
 import racingcar.domain.CarResponse;
 import racingcar.domain.Cars;
-
-import java.util.List;
 
 public class OutputView {
 
@@ -24,7 +23,7 @@ public class OutputView {
         return c.getName() + " : " + "-".repeat(c.getPosition());
     }
 
-    public static void printWinner(List<String> winnerNames) {
-        System.out.println(String.join(", ", winnerNames) + "가 최종우승했습니다.");
+    public static void printWinner(CarNames carNames) {
+        System.out.println(String.join(", ", carNames.getNames()) + "가 최종우승했습니다.");
     }
 }
