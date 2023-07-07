@@ -9,31 +9,13 @@ public class InputView {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static TryCount processTryCount() {
-        try {
-            return readTryCount();
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            return processTryCount();
-        }
-    }
-
     public static TryCount readTryCount() {
         System.out.println("시도할 회수는 몇회인가요?");
         String input = scanner.nextLine();
         return new TryCount(input);
     }
 
-    public static List<CarName> processCarNames() {
-        try {
-            return readCarNames();
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            return processCarNames();
-        }
-    }
-
-    public static List<CarName> readCarNames() {
+    public static List<String> readCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String input = scanner.nextLine();
         return split(input);
