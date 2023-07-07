@@ -2,7 +2,7 @@ package racing.view;
 
 import org.junit.jupiter.api.Test;
 import racing.model.CarVO;
-import racing.model.SimulationResult;
+import racing.model.SimulationResultDto;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -48,7 +48,7 @@ class RacingViewTest {
     void getResultViewTest() {
         //given
         RacingView racingView = new RacingView();
-        SimulationResult simulationResult = new SimulationResult(
+        SimulationResultDto simulationResultDto = new SimulationResultDto(
                 Arrays.asList(
                         Arrays.asList(new CarVO("test1", 1), new CarVO("test2", 1)),
                         Arrays.asList(new CarVO("test1", 2), new CarVO("test2", 2))
@@ -56,7 +56,7 @@ class RacingViewTest {
                 Arrays.asList(new CarVO("test1", 2), new CarVO("test2", 2)));
 
         //when, then
-        assertThat(racingView.getResultView(simulationResult)).isEqualTo("실행 결과\n" +
+        assertThat(racingView.getResultView(simulationResultDto)).isEqualTo("실행 결과\n" +
                 "test1 : -\n" +
                 "test2 : -\n" +
                 "\n" +

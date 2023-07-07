@@ -1,7 +1,7 @@
 package racing.view;
 
 import racing.model.CarVO;
-import racing.model.SimulationResult;
+import racing.model.SimulationResultDto;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,12 +25,12 @@ public class RacingView {
                 .collect(Collectors.joining("\n"));
     }
 
-    public String getResultView(SimulationResult simulationResult) {
+    public String getResultView(SimulationResultDto simulationResultDto) {
         String result = RESULT_TITLE + "\n";
-        result += simulationResult.getProgress().stream()
+        result += simulationResultDto.getProgress().stream()
                 .map(this::getCarStatusView)
                 .collect(Collectors.joining("\n\n")) + "\n\n";
-        result += String.join(", ", simulationResult.getWinners().stream()
+        result += String.join(", ", simulationResultDto.getWinners().stream()
                 .map(CarVO::getName)
                 .collect(Collectors.toList())) + "가 최종 우승했습니다.";
         return result;

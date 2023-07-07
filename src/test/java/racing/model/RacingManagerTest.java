@@ -22,10 +22,10 @@ public class RacingManagerTest {
         RacingManager manager = new RacingManager(Arrays.asList("test1", "test2"), numberGenerator, 1);
 
         //when
-        SimulationResult result = manager.simulate();
+        SimulationResultDto result = manager.simulate();
 
         //then
-        assertThat(result).isEqualTo(new SimulationResult(
+        assertThat(result).isEqualTo(new SimulationResultDto(
                 Arrays.asList(
                         Arrays.asList(new CarVO("test1", 1), new CarVO("test2", 1)),
                         Arrays.asList(new CarVO("test1", 2), new CarVO("test2", 2))

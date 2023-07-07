@@ -61,7 +61,7 @@ public class Cars {
         int maxPosition = cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
-                .orElseThrow(() -> new IllegalPositionException());
+                .orElseThrow(IllegalPositionException::new);
         return cars.stream()
                 .filter(car -> car.isPositionMatch(maxPosition))
                 .map(CarVO::new)

@@ -17,7 +17,7 @@ public class RacingManager {
         this.count = new Count(countValue);
     }
 
-    public SimulationResult simulate() {
+    public SimulationResultDto simulate() {
         List<List<CarVO>> progress = new ArrayList<>();
 
         progress.add(this.cars.getCars());
@@ -25,6 +25,6 @@ public class RacingManager {
             progress.add(this.cars.nextStep(this.numberGenerator));
         }
         List<CarVO> winners = this.cars.getWinners();
-        return new SimulationResult(progress, winners);
+        return new SimulationResultDto(progress, winners);
     }
 }
