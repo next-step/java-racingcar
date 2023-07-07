@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 public class Cars {
 
     private static final int DEFAULT_BOUND = 10;
+    private static final int DEFAULT_CRITERION = 4;
+    private static final int DEFAULT_STEPS = 1;
 
     private final List<Car> cars;
 
@@ -17,7 +19,9 @@ public class Cars {
     public void moveCars() {
         for (Car car : this.cars) {
             int randomValue = ThreadLocalRandom.current().nextInt(DEFAULT_BOUND);
-            car.moveByRandomValue(randomValue);
+            if (DEFAULT_CRITERION <= randomValue) {
+                car.move(DEFAULT_STEPS);
+            }
         }
     }
 

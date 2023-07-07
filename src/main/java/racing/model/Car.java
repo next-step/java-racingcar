@@ -2,7 +2,6 @@ package racing.model;
 
 public class Car {
 
-    private static final int DEFAULT_CRITERION = 4;
     private static final int DEFAULT_POSITION = 1;
 
     private final String name;
@@ -25,10 +24,8 @@ public class Car {
         return this.position == maxPosition;
     }
 
-    public void moveByRandomValue(int randomValue) {
-        if (DEFAULT_CRITERION <= randomValue) {
-            this.position++;
-        }
+    public void move(int steps) {
+        this.position += steps;
     }
 
     @Override

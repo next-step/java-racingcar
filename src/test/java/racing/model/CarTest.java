@@ -11,20 +11,20 @@ class CarTest {
     @DisplayName("자동차가 이동하는 경우")
     void moveTest() {
         Car car = new Car("test");
-        car.moveByRandomValue(4);
-        assertThat(
-                car.getPosition()
-        ).isEqualTo(2);
+
+        car.move(1);
+
+        assertThat(car.getPosition()).isEqualTo(2);
     }
 
     @Test
     @DisplayName("자동차가 이동하지 않는 경우")
     void stopTest() {
         Car car = new Car("test");
-        car.moveByRandomValue(3);
-        assertThat(
-                car.getPosition()
-        ).isEqualTo(1);
+
+        car.move(0);
+
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
 }

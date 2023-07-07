@@ -14,7 +14,9 @@ class CarsTest {
     @DisplayName("우승자를 선별하는 경우")
     void checkWinnerTest() {
         Cars cars = createTestCars();
+
         List<String> winnerNames = cars.findWinnerNames();
+
         assertThat(winnerNames).hasSize(2);
         assertThat(winnerNames.get(0)).isEqualTo("pobi");
         assertThat(winnerNames.get(1)).isEqualTo("crong");
@@ -27,17 +29,11 @@ class CarsTest {
           new Car("honux")
         );
 
-        moveNSteps(cars.get(0), 3);
-        moveNSteps(cars.get(1), 3);
-        moveNSteps(cars.get(2), 1);
+        cars.get(0).move(3);
+        cars.get(1).move(3);
+        cars.get(2).move(1);
 
         return new Cars(cars);
-    }
-
-    private static void moveNSteps(Car car, int steps) {
-        for (int i = 0; i < steps; i++) {
-            car.moveByRandomValue(5);
-        }
     }
 
 }
