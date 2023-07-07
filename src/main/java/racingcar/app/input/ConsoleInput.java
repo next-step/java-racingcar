@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class ConsoleInput {
 
-    private static final String CAR_NAME_SEPERATE_EXPRESSION = ",";
+    private static final String CAR_NAME_SEPARATE_EXPRESSION = ",";
 
     private ConsoleInput() {
     }
@@ -18,7 +18,7 @@ public class ConsoleInput {
     public List<String> inputCarNames() {
         try (Scanner scanner = new Scanner(System.in)) {
             System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-            return Arrays.asList(scanner.next().split(CAR_NAME_SEPERATE_EXPRESSION));
+            return Arrays.asList(scanner.next().split(CAR_NAME_SEPARATE_EXPRESSION));
         }
     }
 
