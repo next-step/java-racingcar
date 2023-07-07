@@ -1,5 +1,7 @@
 package racingcar.car.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.util.Random;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -24,7 +26,7 @@ class CarTest {
                 return 4;
             }
         }));
-        Assertions.assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @Test
@@ -36,6 +38,6 @@ class CarTest {
                 return 3;
             }
         }));
-        Assertions.assertThat(car.getPosition()).isZero();
+        assertThat(car.getPosition()).isZero();
     }
 }
