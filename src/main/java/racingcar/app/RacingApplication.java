@@ -21,13 +21,13 @@ public class RacingApplication {
     private RacingApplication() {
         this.consoleInput = ConsoleInput.getInstance();
         this.consoleView = ConsoleView.getInstance();
-        this.racingGamePlayController = new RacingGamePlayController(RandomMover.newInstance());
+        this.racingGamePlayController = new RacingGamePlayController(consoleInput, consoleView, RandomMover.newInstance());
     }
 
     private void run() {
         List<String> carNames = consoleInput.inputCarNames();
         int round = consoleInput.inputRound();
-        RacingGamePlayResponse response = racingGamePlayController.playRacingGame(round, carNames);
+        RacingGamePlayResponse response = racingGamePlayController.playRacingGame();
         consoleView.printResult(response);
     }
 

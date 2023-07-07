@@ -2,6 +2,8 @@ package racingcar.controller;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.controller.extension.input.Inputable;
+import racingcar.controller.extension.view.Viewable;
 import racingcar.domain.Car;
 import racingcar.domain.RacingGame;
 import racingcar.domain.extension.Moveable;
@@ -15,12 +17,12 @@ public class RacingGamePlayController {
         throw new UnsupportedOperationException("Cannot invoke constructor \"RacingGamePlayController()\"");
     }
 
-    public RacingGamePlayController(Moveable moveable) {
+    public RacingGamePlayController(Inputable inputable, Viewable viewable, Moveable moveable) {
         this.moveable = moveable;
     }
 
-    public RacingGamePlayResponse playRacingGame(int round, List<String> carNames) {
-        RacingGame racingGame = new RacingGame(round, createCarsByCarNames(carNames));
+    public RacingGamePlayResponse playRacingGame() {
+        RacingGame racingGame = new RacingGame(0, createCarsByCarNames(List.of()));
         return racingGame.playAndGetRoundResults();
     }
 

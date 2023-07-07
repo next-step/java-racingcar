@@ -1,10 +1,11 @@
 package racingcar.app.view;
 
 import java.util.List;
+import racingcar.controller.extension.view.Viewable;
 import racingcar.domain.response.RacingGamePlayResponse;
 import racingcar.domain.response.RacingGamePlayResponse.RacingGameRoundResponse;
 
-public class ConsoleView {
+public class ConsoleView implements Viewable {
 
     private static final String DISTANCE_EXPRESSION = "-";
     private static final String NAME_SEPARATE_EXPRESSION = ", ";
@@ -44,6 +45,11 @@ public class ConsoleView {
         StringBuilder stringBuilder = new StringBuilder();
         winnerNames.forEach(winnerName -> stringBuilder.append(winnerName).append(NAME_SEPARATE_EXPRESSION));
         return stringBuilder.substring(0, stringBuilder.length() - NAME_THRESHOLD);
+    }
+
+    @Override
+    public void draw(RacingGamePlayResponse racingGamePlayResponse) {
+
     }
 
     private static final class SingletonHelper {
