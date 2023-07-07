@@ -18,7 +18,7 @@ public class InputView {
         return scanner.nextInt();
     }
 
-    private static List<String> split(String names) {
+    private static List<String> split(final String names) {
         return List.of(names.split(NAMES_SPLIT_DELIMITER));
     }
 }

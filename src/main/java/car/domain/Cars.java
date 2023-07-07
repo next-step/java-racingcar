@@ -10,16 +10,11 @@ public class Cars {
 
     private final List<Car> list;
 
-    public Cars(List<String> names) {
+    public Cars(final List<String> names) {
         list = names.stream()
                 .map(Car::new)
                 .collect(Collectors.toUnmodifiableList());
     }
-
-    private String[] split(final String names) {
-        return names.split(",");
-    }
-
 
     public void move(RandomGenerator randomGenerator) {
         for (Car car : list) {
