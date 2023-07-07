@@ -10,6 +10,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.Car;
 import racingcar.domain.Name;
 import racingcar.domain.Round;
+import racingcar.dto.RaceRequest;
 import racingcar.service.Race;
 import racingcar.util.RaceUtil;
 
@@ -78,7 +79,7 @@ public class RacingCarTest {
         void 경주생성할때_성공(String input) {
             // given
             int count = 5;
-            Race race = createRace(input, count);
+            Race race = createRace(input, count, true);
 
             // when & then
             assertThat(race.getLeftRound()).isEqualTo(count);
@@ -89,10 +90,10 @@ public class RacingCarTest {
         void 경주진행할때_시행횟수차감성공(String input) {
             // given
             int beforeCount = 5;
-            Race race = createRace(input, beforeCount);
+            Race race = createRace(input, beforeCount, true);
 
             // when
-            race.play(new FixedMovableStrategy(true));
+            race.play();
 
             // then
             assertThat(race.getLeftRound()).isEqualTo(beforeCount - 1);
@@ -102,15 +103,15 @@ public class RacingCarTest {
         @ValueSource(strings = {"pobi,crong,honux", "pobi"})
         void 경주진행할때_자동차전진성공(String input) {
             // given
-            Race race = createRace(input, 5);
+            Race race = createRace(input, 5, true);
 
             // when & then
-            race.play(new FixedMovableStrategy(true));
+            race.play();
             for (Car car : race.getCars()) {
                 assertThat(car.getPosition()).isEqualTo(1);
             }
 
-            race.play(new FixedMovableStrategy(true));
+            race.play();
             for (Car car : race.getCars()) {
                 assertThat(car.getPosition()).isEqualTo(2);
             }
@@ -120,23 +121,22 @@ public class RacingCarTest {
         @ValueSource(strings = {"pobi,crong,honux", "pobi"})
         void 경주진행할때_자동차정지성공(String input) {
             // given
-            Race race = createRace(input, 5);
+            Race race = createRace(input, 5, false);
 
             // when & then
-            race.play(new FixedMovableStrategy(false));
+            race.play();
             for (Car car : race.getCars()) {
                 assertThat(car.getPosition()).isEqualTo(0);
             }
 
-            race.play(new FixedMovableStrategy(false));
+            race.play();
             for (Car car : race.getCars()) {
                 assertThat(car.getPosition()).isEqualTo(0);
             }
         }
 
-        private Race createRace(String input, int leftRound) {
-            String[] names = input.split(",");
-            return Race.of(names, leftRound);
+        private Race createRace(String input, int leftRound, boolean isCarsStop) {
+            return Race.create(new RaceRequest(input, String.valueOf(leftRound)), new FixedMovableStrategy(isCarsStop));
         }
     }
 
