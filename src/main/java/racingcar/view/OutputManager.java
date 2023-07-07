@@ -13,7 +13,7 @@ public class OutputManager {
 
     public void printResult(final RacingResult racingResult) {
         printExecutionResult();
-        for (var history : racingResult.getRacingHistory()) {
+        for (final var history : racingResult.getRacingHistory()) {
             printCars(history);
         }
         printWinnerNames(racingResult.getWinnerNames());

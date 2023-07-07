@@ -19,7 +19,7 @@ public class Main {
 
     private static void play(final InputManager inputManager, final OutputManager outputManager) throws IOException {
         final RacingManager racingManager = new RacingManager(inputManager.readCarNames(), inputManager.readRound());
-        RacingResult racingResult = racingManager.playRacing();
+        final RacingResult racingResult = racingManager.playRacing();
         outputManager.printResult(racingResult);
     }
 }

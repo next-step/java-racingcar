@@ -43,6 +43,12 @@ public class Car {
         distance++;
     }
 
+    public void progress(final int number) {
+        if (number >= MOVE_STANDARD) {
+            forward();
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -54,11 +60,5 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(name, distance);
-    }
-
-    public void progress(final int number) {
-        if (number >= MOVE_STANDARD) {
-            forward();
-        }
     }
 }
