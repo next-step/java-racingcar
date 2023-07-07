@@ -1,29 +1,24 @@
 package racingcar.domain;
 
-import java.util.Random;
+import java.util.Objects;
 
 public class Car {
 
-    private static final int RANDOM_BOUND = 10;
     private static final int MOVE_THRESHOLD = 4;
     private final CarName name;
-    private final Random random;
     private Position position;
 
     public Car(CarName name) {
-        this.name = name;
-        this.random = new Random();
-        this.position = new Position();
+        this(name, new Position());
     }
 
-    public Car(CarName name, Random random) {
+    Car(CarName name, Position position) {
         this.name = name;
-        this.random = random;
-        this.position = new Position();
+        this.position = position;
     }
 
-    public void move() {
-        if (canMove(random.nextInt(RANDOM_BOUND))) {
+    public void move(int power) {
+        if (canMove(power)) {
             updatePosition(this.position.increaseValue());
         }
     }
@@ -40,12 +35,24 @@ public class Car {
         return this.position;
     }
 
-    public String getName() {
-        return name.getValue();
+    public CarName getName() {
+        return this.name;
     }
 
     public boolean isWinner(Position winnerPosition) {
         return this.position.equals(winnerPosition);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(name, car.name) && Objects.equals(position, car.position);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, position);
+    }
 }
