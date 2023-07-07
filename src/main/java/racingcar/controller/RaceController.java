@@ -11,16 +11,20 @@ import java.io.IOException;
 
 public final class RaceController {
 
+    private final InputView inputView;
+    private final OutputView outputView;
     private final NumberGenerator numberGenerator;
     private Race race;
 
     public RaceController(final NumberGenerator numberGenerator) {
+        this.inputView = new InputView();
+        this.outputView = new OutputView();
         this.numberGenerator = numberGenerator;
     }
 
     public void start() throws IOException {
-        final String names = InputView.inputNames();
-        final String totalRound = InputView.inputTotalRound();
+        final String names = inputView.inputNames();
+        final String totalRound = inputView.inputTotalRound();
         race = Race.from(new RaceRequest(names, totalRound));
     }
 
@@ -30,14 +34,14 @@ public final class RaceController {
     }
 
     public void finish() {
-        OutputView.printWinners(race.findWinners());
+        outputView.printWinners(race.findWinners());
     }
 
     private void doRace() {
         final int leftRound = race.getLeftRound();
         for (int round = 0; round < leftRound; round++) {
             race.play(numberGenerator);
-            OutputView.printRound(new RaceResponse(race.getCars()));
+            outputView.printRound(new RaceResponse(race.getCars()));
         }
     }
 }
