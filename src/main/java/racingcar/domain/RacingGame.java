@@ -28,8 +28,9 @@ public class RacingGame {
         return cars;
     }
 
-    public void play() {
+    public List<Car> playOneRound() {
         moveCars();
+        return this.cars;
     }
 
     private void moveCars() {
