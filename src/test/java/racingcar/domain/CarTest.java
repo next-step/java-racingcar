@@ -29,6 +29,6 @@ public class CarTest {
         car.move(() -> 7);
 
         /* then */
-        assertThat(car.getPosition()).isEqualTo(new Position(7));
+        assertThat(car.isSamePositionWith(new Car("test", 7))).isTrue();
     }
 }

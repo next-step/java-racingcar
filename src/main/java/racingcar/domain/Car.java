@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import java.util.Objects;
+
 public class Car {
     private final Name name;
 
@@ -27,15 +29,24 @@ public class Car {
         return this.position.getDifferenceWith(car.position);
     }
 
-    public String getNameValue() {
-        return name.getValue();
+    public Name getName() {
+        return name;
     }
 
     public Position getPosition() {
         return position;
     }
 
-    public int getPositionValue() {
-        return position.getValue();
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) return true;
+        if (other == null || getClass() != other.getClass()) return false;
+        Car car = (Car) other;
+        return Objects.equals(name, car.name) && Objects.equals(position, car.position);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, position);
     }
 }

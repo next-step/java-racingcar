@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -34,11 +33,9 @@ public class CarsTest {
         cars.move(() -> 3);
 
         /* then */
-        List<Position> positions = cars.getCars().stream()
-                .map(Car::getPosition)
-                .collect(Collectors.toList());
+        List<Car> movedCars = cars.getCars();
 
-        assertThat(positions).containsExactly(new Position(3), new Position(3), new Position(3));
+        assertThat(movedCars).containsExactly(new Car("충환", 3), new Car("정규", 3), new Car("충규", 3));
     }
 
     @Test
@@ -51,12 +48,10 @@ public class CarsTest {
                         new Car("충규", 1)));
 
         /* when */
-        final List<String> winnerNames = cars.winners().stream()
-                .map(Car::getNameValue)
-                .collect(Collectors.toList());
+        final List<Car> winners = cars.winners();
 
         /* then */
-        assertThat(winnerNames).containsExactly("충환", "정규");
+        assertThat(winners).containsExactly(new Car("충환", 3), new Car("정규", 3));
     }
 
     @Test
