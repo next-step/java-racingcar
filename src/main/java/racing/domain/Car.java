@@ -2,17 +2,22 @@ package racing.domain;
 
 public class Car {
     private final Name name;
-    private Position position;
+    private final Position position;
 
     public Car(String name) {
-        this.name = new Name(name);
-        this.position = new Position();
+        this(new Name(name), new Position());
     }
 
-    public void goForward(boolean trigger) {
+    public Car(Name name, Position position) {
+        this.name = name;
+        this.position = position;
+    }
+
+    public Car goForward(boolean trigger) {
         if (trigger) {
-            this.position = this.position.next();
+            return new Car(this.name, this.position.next());
         }
+        return new Car(this.name, this.position);
     }
 
     public Position getPosition() {

@@ -11,7 +11,7 @@ public class CarTest {
         Car car = new Car("pobi");
 
         //when
-        car.goForward(true);
+        car = car.goForward(true);
 
         //then
         assertThat(car.getPosition().getPosition()).isEqualTo(2);
@@ -23,7 +23,7 @@ public class CarTest {
         Car car = new Car("pobi");
 
         //when
-        car.goForward(false);
+        car = car.goForward(false);
 
         //then
         assertThat(car.getPosition().getPosition()).isEqualTo(1);

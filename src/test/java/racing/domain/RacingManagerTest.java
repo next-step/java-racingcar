@@ -73,10 +73,8 @@ public class RacingManagerTest {
         //given
         List<Car> cars = new ArrayList<>();
         cars.add(new Car("test1"));
-        cars.add(new Car("test2"));
-        cars.add(new Car("test3"));
-        cars.get(1).goForward(true);
-        cars.get(2).goForward(true);
+        cars.add(new Car(new Name("test2"), new Position(2)));
+        cars.add(new Car(new Name("test3"), new Position(2)));
         NumberGenerator numberGenerator = new SpecificNumberGenerator(0);
         RacingManager manager = new RacingManager(cars, numberGenerator);
 

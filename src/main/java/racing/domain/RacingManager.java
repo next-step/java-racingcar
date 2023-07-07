@@ -30,9 +30,9 @@ public class RacingManager {
     }
 
     public void nextStep() {
-        for (Car car : this.cars) {
-            car.goForward(isMovable(this.numberGenerator.generate()));
-        }
+        this.cars = this.cars.stream()
+                .map(car -> car.goForward(isMovable(numberGenerator.generate())))
+                .collect(Collectors.toList());
     }
 
     public List<String> getWinners() {
