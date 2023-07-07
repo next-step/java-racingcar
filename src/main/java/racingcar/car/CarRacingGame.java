@@ -3,8 +3,6 @@ package racingcar.car;
 import java.util.List;
 import racingcar.car.domain.Car;
 import racingcar.car.domain.Cars;
-import racingcar.car.domain.winnerstrategy.MaxPositionDuplicateWinnerStrategy;
-import racingcar.car.domain.winnerstrategy.WinnerStrategy;
 import racingcar.car.ui.ConsoleInput;
 import racingcar.car.ui.ConsoleOutput;
 
@@ -14,7 +12,6 @@ import racingcar.car.ui.ConsoleOutput;
 public class CarRacingGame {
 
     private final Cars cars;
-    private final WinnerStrategy winnerStrategy = new MaxPositionDuplicateWinnerStrategy();
     private final ConsoleInput consoleInput = new ConsoleInput();
     private final ConsoleOutput consoleOutput = new ConsoleOutput();
 
@@ -46,7 +43,7 @@ public class CarRacingGame {
      * 자동차 경주 게임의 우승자를 출력한다.
      */
     private void printWinners() {
-        List<Car> winners = cars.getWinners(winnerStrategy);
+        List<Car> winners = cars.getWinners();
         consoleOutput.printWinners(winners);
     }
 }

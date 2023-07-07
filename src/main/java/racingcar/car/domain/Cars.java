@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.car.domain.winnerstrategy.WinnerStrategy;
 
 /**
  * Car 컬렉션을 관리하는 일급 컬렉션
@@ -24,6 +23,10 @@ public class Cars {
             .collect(Collectors.toList());
     }
 
+    public Cars(final List<Car> cars) {
+        this.list = cars;
+    }
+
     /**
      * 0 이상 10 미만의 랜덤값을 생성하여, 값에 따라 자동차를 이동시킨다.
      */
@@ -33,14 +36,20 @@ public class Cars {
         }
     }
 
-    /**
-     * 우승자 선출 전략에 따라 경주 우승자를 선출한다.
-     *
-     * @param winnerStrategy 우승자 선출 전략
-     * @return 우승한 Car 리스트
-     */
-    public List<Car> getWinners(WinnerStrategy winnerStrategy) {
-        return winnerStrategy.getWinners(list);
+    public List<Car> getWinners() {
+        int maxPosition = getMaxPosition(list);
+
+        return list.stream()
+            .filter(car -> car.matchPosition(maxPosition))
+            .collect(Collectors.toList());
+    }
+
+    private int getMaxPosition(final List<Car> cars) {
+        int maxPosition = 0;
+        for (Car car : cars) {
+            maxPosition = car.getMaxPosition(maxPosition);
+        }
+        return maxPosition;
     }
 
     public List<Car> getCars() {
