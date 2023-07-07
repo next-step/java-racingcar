@@ -27,8 +27,7 @@ public class RacingApplication {
     private void run() {
         List<String> carNames = consoleInput.inputCarNames();
         int round = consoleInput.inputRound();
-        RacingGamePlayResponse response = racingGamePlayController.playRacingGame();
-        consoleView.printResult(response);
+        racingGamePlayController.playRacingGame();
     }
 
 }
