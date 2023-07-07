@@ -1,20 +1,17 @@
 package racing;
 
-import racing.domain.Car;
-import racing.domain.RacingManager;
+import racing.domain.CarCollection;
 import racing.generator.NumberGenerator;
 import racing.generator.RandomNumberGenerator;
 import racing.input.RacingInput;
 import racing.view.RacingView;
-
-import java.util.List;
 
 public class RacingApplication {
 
     private final RacingInput racingInput;
     private final NumberGenerator numberGenerator;
     private final RacingView racingView;
-    private RacingManager racingManager;
+    private CarCollection cars;
 
     public RacingApplication() {
         this.racingInput = new RacingInput(System.in);
@@ -38,9 +35,7 @@ public class RacingApplication {
 
     public void inputCarName() {
         racingView.printCarNameAsking();
-        List<Car> cars = this.racingInput.inputName();
-
-        this.racingManager = new RacingManager(cars, this.numberGenerator);
+        this.cars = this.racingInput.inputName();
     }
 
     public int inputSimulationCount() {
@@ -50,14 +45,14 @@ public class RacingApplication {
 
 
     public void simulate(int count) {
-        racingView.printCarStatus(racingManager.getCars());
+        racingView.printCarStatus(cars.getCars());
         for (int i = 0; i < count; i++) {
-            racingManager.nextStep();
-            racingView.printCarStatus(racingManager.getCars());
+            this.cars = cars.nextState(numberGenerator);
+            racingView.printCarStatus(cars.getCars());
         }
     }
 
     public void printResult() {
-        this.racingView.printWinners(this.racingManager.getWinners());
+        this.racingView.printWinners(this.cars.getWinners());
     }
 }
