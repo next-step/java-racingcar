@@ -1,16 +1,14 @@
 package racingcar.app;
 
-import java.util.List;
-import racingcar.app.input.ConsoleInput;
-import racingcar.app.view.ConsoleView;
+import racingcar.consoleinput.ConsoleInput;
+import racingcar.consoleview.ConsoleView;
 import racingcar.controller.RacingGamePlayController;
-import racingcar.domain.response.RacingGamePlayResponse;
+import racingcar.controller.extension.input.Inputable;
+import racingcar.controller.extension.view.Viewable;
 import racingcar.randommove.RandomMover;
 
 public class RacingApplication {
 
-    private final ConsoleInput consoleInput;
-    private final ConsoleView consoleView;
     private final RacingGamePlayController racingGamePlayController;
 
     public static void main(String[] args) {
@@ -19,14 +17,13 @@ public class RacingApplication {
     }
 
     private RacingApplication() {
-        this.consoleInput = ConsoleInput.getInstance();
-        this.consoleView = ConsoleView.getInstance();
-        this.racingGamePlayController = new RacingGamePlayController(consoleInput, consoleView, RandomMover.newInstance());
+        Inputable consoleInput = ConsoleInput.getInstance();
+        Viewable consoleView = ConsoleView.getInstance();
+        this.racingGamePlayController =
+            new RacingGamePlayController(consoleInput, consoleView, RandomMover.newInstance());
     }
 
     private void run() {
-        List<String> carNames = consoleInput.inputCarNames();
-        int round = consoleInput.inputRound();
         racingGamePlayController.playRacingGame();
     }
 

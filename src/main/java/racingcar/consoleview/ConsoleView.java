@@ -1,4 +1,4 @@
-package racingcar.app.view;
+package racingcar.consoleview;
 
 import java.util.List;
 import racingcar.controller.extension.view.Viewable;
@@ -19,11 +19,12 @@ public class ConsoleView implements Viewable {
         return SingletonHelper.INSTANCE;
     }
 
-    public void printResult(RacingGamePlayResponse response) {
+    @Override
+    public void draw(RacingGamePlayResponse racingGamePlayResponse) {
         System.out.println("실행 결과");
-        response.getRacingGameRoundResponses()
+        racingGamePlayResponse.getRacingGameRoundResponses()
             .forEach(racingGameRoundResponse -> System.out.println(parseRoundResult(racingGameRoundResponse)));
-        System.out.printf("%s가 최종 우승했습니다.", parseWinnerNames(response.getWinnerNames()));
+        System.out.printf("%s가 최종 우승했습니다.", parseWinnerNames(racingGamePlayResponse.getWinnerNames()));
     }
 
     private String parseRoundResult(RacingGameRoundResponse racingGameRoundResponse) {
@@ -45,11 +46,6 @@ public class ConsoleView implements Viewable {
         StringBuilder stringBuilder = new StringBuilder();
         winnerNames.forEach(winnerName -> stringBuilder.append(winnerName).append(NAME_SEPARATE_EXPRESSION));
         return stringBuilder.substring(0, stringBuilder.length() - NAME_THRESHOLD);
-    }
-
-    @Override
-    public void draw(RacingGamePlayResponse racingGamePlayResponse) {
-
     }
 
     private static final class SingletonHelper {
