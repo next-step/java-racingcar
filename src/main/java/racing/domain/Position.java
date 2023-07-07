@@ -18,7 +18,7 @@ public class Position {
         return new Position(this.position + 1);
     }
 
-    public int getPosition() {
+    int getPosition() {
         return position;
     }
 

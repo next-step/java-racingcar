@@ -21,7 +21,7 @@ public class RacingView {
 
     public void printCarStatus(List<Car> cars) {
         String carStatus = cars.stream()
-                .map(car -> car.getName() + " : " + "-".repeat(car.getPosition().getPosition()))
+                .map(car -> car.getName() + " : " + "-".repeat(car.getPosition()))
                 .collect(Collectors.joining("\n"));
 
         System.out.println(carStatus + "\n");

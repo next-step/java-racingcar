@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingManager {
-    private CarCollection cars;
     private final NumberGenerator numberGenerator;
+    private CarCollection cars;
 
     public RacingManager(List<Car> cars, NumberGenerator numberGenerator) {
         this.cars = new CarCollection(cars);
@@ -24,11 +24,11 @@ public class RacingManager {
 
     public List<String> getWinners() {
         int maxValue = cars.getCars().stream()
-                .mapToInt(car -> car.getPosition().getPosition())
+                .mapToInt(car -> car.getPosition())
                 .max()
                 .orElse(-1);
         return cars.getCars().stream()
-                .filter(car -> car.getPosition().getPosition() == maxValue)
+                .filter(car -> car.getPosition() == maxValue)
                 .map(Car::getName)
                 .collect(Collectors.toList());
     }

@@ -23,8 +23,8 @@ public class RacingManagerTest {
         manager.nextStep();
 
         //then
-        assertThat(manager.getCars().get(0).getPosition().getPosition()).isEqualTo(2);
-        assertThat(manager.getCars().get(1).getPosition().getPosition()).isEqualTo(2);
+        assertThat(manager.getCars().get(0).getPosition()).isEqualTo(2);
+        assertThat(manager.getCars().get(1).getPosition()).isEqualTo(2);
 
     }
 
@@ -41,8 +41,8 @@ public class RacingManagerTest {
         manager.nextStep();
 
         //then
-        assertThat(manager.getCars().get(0).getPosition().getPosition()).isEqualTo(1);
-        assertThat(manager.getCars().get(1).getPosition().getPosition()).isEqualTo(1);
+        assertThat(manager.getCars().get(0).getPosition()).isEqualTo(1);
+        assertThat(manager.getCars().get(1).getPosition()).isEqualTo(1);
 
     }
 

@@ -14,7 +14,7 @@ public class CarTest {
         car = car.goForward(true);
 
         //then
-        assertThat(car.getPosition().getPosition()).isEqualTo(2);
+        assertThat(car.getPosition()).isEqualTo(2);
     }
 
     @Test
@@ -26,6 +26,6 @@ public class CarTest {
         car = car.goForward(false);
 
         //then
-        assertThat(car.getPosition().getPosition()).isEqualTo(1);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 }
