@@ -2,7 +2,6 @@ package racingcar.controller;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.controller.request.RacingGamePlayControllerRequest;
 import racingcar.domain.Car;
 import racingcar.domain.RacingGame;
 import racingcar.domain.extension.Moveable;
@@ -20,8 +19,8 @@ public class RacingGamePlayController {
         return SingletonHelper.INSTANCE;
     }
 
-    public RacingGamePlayResponse playRacingGame(RacingGamePlayControllerRequest request) {
-        RacingGame racingGame = new RacingGame(request.getRound(), createCarsByCarNames(request.getCarNames()));
+    public RacingGamePlayResponse playRacingGame(int round, List<String> carNames) {
+        RacingGame racingGame = new RacingGame(round, createCarsByCarNames(carNames));
         return racingGame.playAndGetRoundResults();
     }
 

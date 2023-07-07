@@ -1,9 +1,9 @@
 package racingcar.app;
 
+import java.util.List;
 import racingcar.app.input.ConsoleInput;
 import racingcar.app.view.ConsoleView;
 import racingcar.controller.RacingGamePlayController;
-import racingcar.controller.request.RacingGamePlayControllerRequest;
 import racingcar.domain.response.RacingGamePlayResponse;
 
 public class RacingApplication {
@@ -24,8 +24,9 @@ public class RacingApplication {
     }
 
     private void run() {
-        RacingGamePlayControllerRequest input = consoleInput.input();
-        RacingGamePlayResponse response = racingGamePlayController.playRacingGame(input);
+        List<String> carNames = consoleInput.inputCarNames();
+        int round = consoleInput.inputRound();
+        RacingGamePlayResponse response = racingGamePlayController.playRacingGame(round, carNames);
         consoleView.printResult(response);
     }
 

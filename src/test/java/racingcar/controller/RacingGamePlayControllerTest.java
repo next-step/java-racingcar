@@ -6,7 +6,6 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import racingcar.controller.request.RacingGamePlayControllerRequest;
 import racingcar.domain.response.RacingGamePlayResponse;
 
 @Nested
@@ -26,13 +25,11 @@ class RacingGamePlayControllerTest {
             private final int round = 5;
             private final List<String> carNames = List.of("pobi", "crong", "honux");
             private final RacingGamePlayController controller = RacingGamePlayController.getInstance();
-            private final RacingGamePlayControllerRequest request
-                = new RacingGamePlayControllerRequest(round, carNames);
 
             @Test
             @DisplayName("5판을 진행하고, pobi, crong, honux중 우승자들의 이름과 각 라운드값을 리턴한다.")
             void ItReturnCollectResponse() {
-                RacingGamePlayResponse result = controller.playRacingGame(request);
+                RacingGamePlayResponse result = controller.playRacingGame(round, carNames);
                 assertControllerResponse(carNames, result);
             }
 
