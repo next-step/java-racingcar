@@ -18,7 +18,7 @@ class RandomMoverTest {
         @DisplayName("RandomMover가 DEFAULT_LEFT 에서 MOVE_RULE사이의 랜덤값이 생성되면,")
         class ContextReturn4 {
 
-            private final Moveable randomMover = new RandomMover(RandomMover.DEFAULT_LEFT, RandomMover.MOVE_RULE, RandomMover.MOVE_RULE);
+            private final Moveable randomMover = new RandomMover(RandomMover.DEFAULT_LEFT, RandomMover.DEFAULT_MOVE_RULE, RandomMover.DEFAULT_MOVE_RULE);
 
             @Test
             @DisplayName("false를 반환한다.")
@@ -32,7 +32,7 @@ class RandomMoverTest {
         @DisplayName("RandomMover가 MOVE_RULE + 1에서 DEFAULT_RIGHT사이의 랜덤값이 생성되면,")
         class ContextBinding3 {
 
-            private final Moveable randomMover = new RandomMover(RandomMover.MOVE_RULE + 1, RandomMover.DEFAULT_RIGHT, RandomMover.MOVE_RULE);
+            private final Moveable randomMover = new RandomMover(RandomMover.DEFAULT_MOVE_RULE + 1, RandomMover.DEFAULT_RIGHT, RandomMover.DEFAULT_MOVE_RULE);
 
             @Test
             @DisplayName("true를 반환한다.")

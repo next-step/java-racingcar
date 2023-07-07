@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 public class RacingGamePlayController {
 
     private final RacingGamePlayUsecase racingGamePlayUsecase;
-    private static final RandomMover randomMover = RandomMover.newInstance();
+    private static final RandomMover randomMover = RandomMover.getInstance();
 
     public RacingGamePlayController(RacingGamePlayUsecase racingGamePlayUsecase) {
         this.racingGamePlayUsecase = racingGamePlayUsecase;
