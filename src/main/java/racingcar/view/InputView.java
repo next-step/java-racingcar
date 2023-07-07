@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import racingcar.domain.CarName;
+import racingcar.domain.TryCount;
 import racingcar.exception.CarNameInputException;
 import racingcar.exception.TryCountInputException;
 
@@ -10,38 +11,16 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class InputView {
-    private static final String NUMBER_REGEX = "[0-9]+";
+
     private static final Scanner SCANNER = new Scanner(System.in);
 
     public static List<CarName> processCarNames() {
         try {
             return readCarNames();
         } catch (CarNameInputException e) {
-            System.out.println("자동차 이름의 길이가 5이하여야 합니다.");
+            System.out.println(e.getMessage());
             return processCarNames();
         }
-    }
-
-    public static int processTryCount() {
-        try {
-            return readTryCount();
-        } catch (TryCountInputException e) {
-            System.out.println("숫자만 입력받을 수 있습니다.");
-            return processTryCount();
-        }
-    }
-
-    private static int readTryCount() {
-        System.out.println("시도할 회수는 몇회인가요?");
-        String input = SCANNER.nextLine();
-        if (validateNumber(input)) {
-            return Integer.parseInt(input);
-        }
-        throw new TryCountInputException();
-    }
-
-    static boolean validateNumber(String number) {
-        return number.matches(NUMBER_REGEX);
     }
 
     private static List<CarName> readCarNames() {
@@ -55,5 +34,20 @@ public class InputView {
         return Arrays.stream(carNames)
                 .map(CarName::new)
                 .collect(Collectors.toList());
+    }
+
+    public static TryCount processTryCount() {
+        try {
+            return readTryCount();
+        } catch (TryCountInputException e) {
+            System.out.println(e.getMessage());
+            return processTryCount();
+        }
+    }
+
+    private static TryCount readTryCount() {
+        System.out.println("시도할 회수는 몇회인가요?");
+        String input = SCANNER.nextLine();
+        return new TryCount(input);
     }
 }
