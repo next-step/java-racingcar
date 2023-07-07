@@ -47,7 +47,8 @@ public class TokenUtils {
 
     private static void validateIsNumeric(final String token) {
         if (!isNumeric(token)) {
-            throw new IllegalArgumentException(String.format("숫자만 입력할 수 있습니다. 입력한 데이터 : %s", token));
+            throw new IllegalArgumentException(
+                String.format("숫자만 입력할 수 있습니다. 입력한 데이터 : %s", token));
         }
     }
 

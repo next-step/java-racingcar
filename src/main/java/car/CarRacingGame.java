@@ -2,11 +2,11 @@ package car;
 
 import car.domain.Car;
 import car.domain.Cars;
+import car.domain.CarsFormatter;
 import car.domain.Name;
 import car.domain.winnerstrategy.MaxPositionDuplicateWinnerStrategy;
 import car.domain.winnerstrategy.WinnerStrategy;
-import car.domain.CarsFormatter;
-import car.ui.DefaultCarsFormatter;
+import car.view.DefaultCarsFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 import utils.random.RandomGenerator;
@@ -24,7 +24,6 @@ public class CarRacingGame {
 
     public void play(final int playCount) {
         race(playCount);
-        printWinners();
     }
 
     private void race(final int count) {
@@ -37,12 +36,10 @@ public class CarRacingGame {
         }
     }
 
-    private void printWinners() {
-        final List<Car> winners = cars.getWinners(winnerStrategy);
-        final String winnerNames = winners.stream()
+    public List<Name> announceWinnerNames() {
+        final List<Car> winners = cars.selectWinners(winnerStrategy);
+        return winners.stream()
             .map(Car::getName)
-            .map(Name::getValue)
-            .collect(Collectors.joining(", "));
-        System.out.println(winnerNames + "가 최종 우승했습니다.");
+            .collect(Collectors.toList());
     }
 }

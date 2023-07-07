@@ -35,7 +35,7 @@ public class Cars {
         System.out.println(formatter.format(list));
     }
 
-    public List<Car> getWinners(final WinnerStrategy winnerStrategy) {
+    public List<Car> selectWinners(final WinnerStrategy winnerStrategy) {
         return winnerStrategy.selectWinners(list);
     }
 }

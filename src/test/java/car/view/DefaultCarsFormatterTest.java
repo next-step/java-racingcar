@@ -1,9 +1,8 @@
-package car.ui;
+package car.view;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import car.domain.Car;
-import car.domain.CarsFormatter;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
