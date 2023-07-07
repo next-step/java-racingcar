@@ -36,4 +36,22 @@ public class PositionTest {
 
         assertThat(increasePosition.getValue()).isEqualTo(beforeValue + 1);
     }
+
+    @Test
+    @DisplayName("같은 값을 가지는 포지션을 같은 객체이다.")
+    public void positionTest_samePosition() {
+        Position position1 = new Position(1);
+        Position position2 = new Position(1);
+
+        assertThat(position1.equals(position2)).isTrue();
+    }
+
+    @Test
+    @DisplayName("다른 값을 가지는 포지션을 같은 객체이다.")
+    public void positionTest_differentPosition() {
+        Position position1 = new Position(1);
+        Position position2 = new Position(2);
+
+        assertThat(position1.equals(position2)).isFalse();
+    }
 }
