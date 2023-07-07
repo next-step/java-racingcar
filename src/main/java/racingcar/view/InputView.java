@@ -1,12 +1,12 @@
 package racingcar.view;
 
 import racingcar.domain.CarName;
+import racingcar.domain.CarNames;
 import racingcar.domain.TryCount;
 import racingcar.exception.CarNameInputException;
 import racingcar.exception.TryCountInputException;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -14,7 +14,7 @@ public class InputView {
 
     private static final Scanner SCANNER = new Scanner(System.in);
 
-    public static List<CarName> processCarNames() {
+    public static CarNames processCarNames() {
         try {
             return readCarNames();
         } catch (CarNameInputException e) {
@@ -23,17 +23,17 @@ public class InputView {
         }
     }
 
-    private static List<CarName> readCarNames() {
+    private static CarNames readCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String input = SCANNER.nextLine();
         return splitToCarNames(input);
     }
 
-    private static List<CarName> splitToCarNames(String input) {
+    private static CarNames splitToCarNames(String input) {
         String[] carNames = input.split(",");
-        return Arrays.stream(carNames)
+        return new CarNames(Arrays.stream(carNames)
                 .map(CarName::new)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()));
     }
 
     public static TryCount processTryCount() {
