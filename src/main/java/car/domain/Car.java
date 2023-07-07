@@ -4,6 +4,10 @@ import java.util.Objects;
 
 public class Car {
 
+    private static final int CAR_MOVE_LOWER_LIMIT = 4;
+    private static final int CAR_STOP = 0;
+    private static final int CAR_MOVE = 1;
+
     private final CarName name;
     private int position = 0;
 
@@ -11,13 +15,13 @@ public class Car {
         this.name = new CarName(carName);
     }
 
-    public Car (final String carName, int position) {
+    public Car(final String carName, int position) {
         this.name = new CarName(carName);
         this.position = position;
     }
 
-    public Car (final CarName carName, int position) {
-        this.name =carName;
+    public Car(final CarName carName, int position) {
+        this.name = carName;
         this.position = position;
     }
 
@@ -30,8 +34,10 @@ public class Car {
         return this.position;
     }
 
-    public void move(final int amount) {
-        this.position += amount;
+    public void move(int carSpeed) {
+        if (carSpeed >= CAR_MOVE_LOWER_LIMIT) {
+            this.position += CAR_MOVE;
+        }
     }
 
     public boolean isSamePosition(int position) {

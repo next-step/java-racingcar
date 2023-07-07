@@ -18,7 +18,7 @@ public final class Cars {
 
     public void race(final NumberGenerator numberGenerator) {
         for (Car car : cars) {
-            car.move(numberGenerator.movableAmount());
+            car.move(numberGenerator.createCarSpeed());
         }
     }
 
