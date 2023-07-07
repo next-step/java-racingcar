@@ -1,31 +1,16 @@
 package racingcar.domain.response;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
-import racingcar.domain.Car;
 
 public class RacingGamePlayResponse {
 
     private final List<String> winnerNames;
     private final List<RacingGameRoundResponse> racingGameRoundResponses;
 
-    public RacingGamePlayResponse() {
-        winnerNames = new ArrayList<>();
-        racingGameRoundResponses = new ArrayList<>();
-    }
-
-    public void addRacingGameRoundResponse(int round, List<Car> cars) {
-        RacingGameRoundResponse racingGameRoundResponse = new RacingGameRoundResponse(round, cars.stream()
-            .map(car -> new CarPerRoundResponse(car.getName(), car.getPosition()))
-            .collect(Collectors.toList())
-        );
-        racingGameRoundResponses.add(racingGameRoundResponse);
-    }
-
-    public void setWinner(List<Car> cars) {
-        cars.forEach(car -> winnerNames.add(car.getName()));
+    public RacingGamePlayResponse(List<String> winnerNames, List<RacingGameRoundResponse> racingGameRoundResponses) {
+        this.winnerNames = winnerNames;
+        this.racingGameRoundResponses = racingGameRoundResponses;
     }
 
     public List<String> getWinnerNames() {
@@ -71,7 +56,7 @@ public class RacingGamePlayResponse {
             return carPerRoundResponses;
         }
 
-        private RacingGameRoundResponse(int round, List<CarPerRoundResponse> carPerRoundResponses) {
+        public RacingGameRoundResponse(int round, List<CarPerRoundResponse> carPerRoundResponses) {
             this.round = round;
             this.carPerRoundResponses = carPerRoundResponses;
         }
@@ -107,7 +92,7 @@ public class RacingGamePlayResponse {
         private final String name;
         private final int position;
 
-        private CarPerRoundResponse(String name, int position) {
+        public CarPerRoundResponse(String name, int position) {
             this.name = name;
             this.position = position;
         }

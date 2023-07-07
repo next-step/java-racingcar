@@ -1,10 +1,13 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import racingcar.domain.response.RacingGamePlayResponse;
+import racingcar.domain.response.RacingGamePlayResponse.CarPerRoundResponse;
+import racingcar.domain.response.RacingGamePlayResponse.RacingGameRoundResponse;
 import racingcar.util.Asserts;
 
 public class RacingGame {
@@ -44,21 +47,27 @@ public class RacingGame {
     }
 
     public RacingGamePlayResponse playAndGetRoundResults() {
-        RacingGamePlayResponse response = readyGame();
+        List<RacingGameRoundResponse> racingGameRoundResponses = readyGame();
         for (int currentRound = FIRST_ROUND; currentRound <= round; currentRound++) {
             moveCars();
-            response.addRacingGameRoundResponse(currentRound, cars);
+            racingGameRoundResponses.add(new RacingGameRoundResponse(currentRound, currentCarStatusToResponse()));
         }
-        response.setWinner(getWinners());
-        return response;
+
+        return new RacingGamePlayResponse(getWinnerNames(), racingGameRoundResponses);
     }
 
-    private RacingGamePlayResponse readyGame() {
-        RacingGamePlayResponse racingGamePlayResponse = new RacingGamePlayResponse();
+    private List<RacingGameRoundResponse> readyGame() {
+        List<RacingGameRoundResponse> racingGameRoundResponses = new ArrayList<>();
 
-        racingGamePlayResponse.addRacingGameRoundResponse(INITIAL_ROUND, cars);
+        racingGameRoundResponses.add(new RacingGameRoundResponse(INITIAL_ROUND, currentCarStatusToResponse()));
 
-        return racingGamePlayResponse;
+        return racingGameRoundResponses;
+    }
+
+    private List<CarPerRoundResponse> currentCarStatusToResponse() {
+        return cars.stream()
+            .map(car -> new CarPerRoundResponse(car.getName(), car.getPosition()))
+            .collect(Collectors.toList());
     }
 
     private void moveCars() {
@@ -67,7 +76,7 @@ public class RacingGame {
         }
     }
 
-    private List<Car> getWinners() {
+    private List<String> getWinnerNames() {
         int winnerPosition = cars.stream()
             .mapToInt(Car::getPosition)
             .max()
@@ -75,6 +84,7 @@ public class RacingGame {
 
         return cars.stream()
             .filter(car -> isWinner(car.getPosition(), winnerPosition))
+            .map(Car::getName)
             .collect(Collectors.toList());
     }
 
