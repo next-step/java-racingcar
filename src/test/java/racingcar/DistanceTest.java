@@ -13,4 +13,15 @@ public class DistanceTest {
         assertThat(new Distance(1)).isEqualTo(new Distance(1));
         assertThat(new Distance(1)).isNotEqualTo(new Distance(2));
     }
+
+    @Test
+    @DisplayName("이동거리가 증가한다")
+    void 이동거리가_증가한다() {
+        Distance distance = new Distance();
+
+        distance.increase();
+        
+        assertThat(distance).isEqualTo(new Distance(1));
+
+    }
 }
