@@ -22,7 +22,7 @@ public class Car {
         }
     }
 
-    public boolean isMaxDistance(int maxDistance) {
+    public boolean isSameDistance(int maxDistance) {
         return distance == maxDistance;
     }
 

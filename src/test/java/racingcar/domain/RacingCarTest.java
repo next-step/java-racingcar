@@ -83,7 +83,7 @@ public class RacingCarTest {
         int maxDistance = 5;
         for (int i = 0; i < maxDistance; i++) itp.progress(moveSignal);
 
-        assertThat(itp.isMaxDistance(maxDistance)).isEqualTo(true);
-        assertThat(pobi.isMaxDistance(maxDistance)).isEqualTo(false);
+        assertThat(itp.isSameDistance(maxDistance)).isEqualTo(true);
+        assertThat(pobi.isSameDistance(maxDistance)).isEqualTo(false);
     }
 }
