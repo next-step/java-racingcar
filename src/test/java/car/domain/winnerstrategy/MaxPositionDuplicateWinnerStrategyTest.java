@@ -3,6 +3,7 @@ package car.domain.winnerstrategy;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import car.domain.Car;
+import car.domain.Name;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.DisplayName;
@@ -22,11 +23,11 @@ public class MaxPositionDuplicateWinnerStrategyTest {
         );
 
         final List<Car> winners = winnerStrategy.selectWinners(cars);
-        final List<String> winnerNames = winners.stream()
-            .map(Car::getNameValue)
+        final List<Name> winnerNames = winners.stream()
+            .map(Car::getName)
             .collect(Collectors.toList());
 
         assertThat(winners.size()).isEqualTo(2);
-        assertThat(winnerNames).containsExactly("b", "c");
+        assertThat(winnerNames).containsExactly(new Name("b"), new Name("c"));
     }
 }

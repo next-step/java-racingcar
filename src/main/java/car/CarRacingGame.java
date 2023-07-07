@@ -2,6 +2,7 @@ package car;
 
 import car.domain.Car;
 import car.domain.Cars;
+import car.domain.Name;
 import car.domain.winnerstrategy.MaxPositionDuplicateWinnerStrategy;
 import car.domain.winnerstrategy.WinnerStrategy;
 import car.domain.CarsFormatter;
@@ -39,7 +40,8 @@ public class CarRacingGame {
     private void printWinners() {
         final List<Car> winners = cars.getWinners(winnerStrategy);
         final String winnerNames = winners.stream()
-            .map(Car::getNameValue)
+            .map(Car::getName)
+            .map(Name::getValue)
             .collect(Collectors.joining(", "));
         System.out.println(winnerNames + "가 최종 우승했습니다.");
     }

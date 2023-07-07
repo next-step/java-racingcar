@@ -22,6 +22,6 @@ public class DefaultCarsFormatter implements CarsFormatter {
     }
 
     public String formatSingleCar(final Car car) {
-        return car.getNameValue() + NAME_VALUE_JOIN_DELIMITER + DISTANCE_MARKER.repeat(car.getPosition());
+        return car.getName() + NAME_VALUE_JOIN_DELIMITER + DISTANCE_MARKER.repeat(car.getPosition());
     }
 }
