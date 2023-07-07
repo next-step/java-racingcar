@@ -8,8 +8,10 @@ public class MaxPositionDuplicateWinnerStrategy implements WinnerStrategy {
 
     @Override
     public List<Car> getWinners(final List<Car> cars) {
+        int maxPosition = calculateMaxPosition(cars);
+
         return cars.stream()
-            .filter(car -> car.positionIsEqualTo(calculateMaxPosition(cars)))
+            .filter(car -> car.positionIsEqualTo(maxPosition))
             .collect(Collectors.toList());
     }
 
