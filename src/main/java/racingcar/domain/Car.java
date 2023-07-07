@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import racingcar.domain.move.Moveable;
-import racingcar.util.Asserts;
 
 import java.util.Objects;
 
@@ -19,10 +18,27 @@ public class Car {
     }
 
     private void preAssert(String name, Moveable moveable) {
-        Asserts.notNull(name, () -> "자동차 이름은 null값이 될 수 없습니다.");
-        Asserts.notNull(moveable, () -> "Moveable은 null값이 될 수 없습니다.");
-        Asserts.isTrue(name.length() > 0 && name.length() < 6,
-            () -> "자동차 이름은 1~5자 사이로 입력해야됩니다. 입력한 값: \"" + name + "\"");
+        validNullName(name);
+        validNullMoveable(moveable);
+        validNameLength(name);
+    }
+
+    private void validNullName(String name) {
+        if (Objects.isNull(name)) {
+            throw new IllegalArgumentException("자동차 이름은 null값이 될 수 없습니다.");
+        }
+    }
+
+    private void validNullMoveable(Moveable moveable) {
+        if (Objects.isNull(moveable)) {
+            throw new IllegalArgumentException("Moveable은 null값이 될 수 없습니다.");
+        }
+    }
+
+    private void validNameLength(String name) {
+        if (name.length() <= 0 || name.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 1~5자 사이로 입력해야됩니다. 입력한 값: \"" + name + "\"");
+        }
     }
 
     public int getPosition() {
