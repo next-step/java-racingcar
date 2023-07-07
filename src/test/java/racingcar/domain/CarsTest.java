@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarsTest {
 
@@ -44,22 +45,23 @@ public class CarsTest {
     }
 
     @Test
-    @DisplayName("자동차 이름이 같으면 동일한 Car로 판단한다")
-    void 자동차_이름이_같으면_동일한_Car로_판단한다() {
-        Cars cars = Cars.from(List.of("ipt", "ipt"));
-
-        List<Car> car = cars.getCars();
-
-        Assertions.assertThat(car.size()).isEqualTo(1);
+    @DisplayName("자동차 이름에 중복이 있으면 예외가 발생합니다.")
+    void 자동차_이름에_중복이_있으면_예외가_발생합니다() {
+        assertThatThrownBy(() -> new Cars(
+                List.of(new Car("pobi"),
+                        new Car("ipt"),
+                        new Car("ipt"))))
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessage("자동차 이름에 중복이 있습니다.");
     }
 
     @Test
-    @DisplayName("자동차가 없다면 IllegalStateException 예외를 던진다.")
-    void 자동차가_없다면_IllegalStateException_예외를_던진다() {
-        Cars cars = Cars.from(List.of());
-
-        Assertions.assertThatThrownBy(cars::findWinnerNames)
-                .isInstanceOf(IllegalStateException.class)
-                .hasMessage("Car 객체를 찾을 수 없습니다.");
+    @DisplayName("자동차 이름에 중복이 없고 모두 5글자 이하라면 정상적으로 생성합니다")
+    void 자동차_이름에_중복이_없고_모두_5글자_이하라면_정상적으로_생성합니다() {
+        Assertions.assertThatCode(() -> new Cars(
+                        List.of(new Car("pobi"),
+                                new Car("ipt"),
+                                new Car("neo"))))
+                .doesNotThrowAnyException();
     }
 }

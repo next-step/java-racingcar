@@ -8,17 +8,19 @@ import static racingcar.domain.RandomGenerator.generateNumber;
 public class Cars {
 
     private static final String NOT_EMPTY_CAR_MESSAGE = "Car 객체를 찾을 수 없습니다.";
+    private static final String DUPLICATE_CAR_NAME_MESSAGE = "자동차 이름에 중복이 있습니다.";
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
+        validateCarNames(cars);
         this.cars = cars;
     }
 
-    public static Cars from(List<String> carNames) {
-        return new Cars(carNames.stream()
+    private void validateCarNames(List<Car> cars) {
+        long distinctSize = cars.stream()
                 .distinct()
-                .map(Car::new)
-                .collect(toList()));
+                .count();
+        if (distinctSize != cars.size()) throw new IllegalStateException(DUPLICATE_CAR_NAME_MESSAGE);
     }
 
     public void takeTurn() {

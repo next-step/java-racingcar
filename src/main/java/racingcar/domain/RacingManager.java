@@ -1,6 +1,9 @@
 package racingcar.domain;
 
+import java.util.Arrays;
 import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 
 public class RacingManager {
 
@@ -8,10 +11,16 @@ public class RacingManager {
     private final int round;
     private final RacingResult racingResult;
 
-    public RacingManager(List<String> carNames, int round) {
-        this.cars = Cars.from(carNames);
+    public RacingManager(String carNames, int round) {
+        this.cars = new Cars(parse(carNames));
         this.round = round;
         racingResult = new RacingResult();
+    }
+
+    private List<Car> parse(String carNames) {
+        return Arrays.stream(carNames.split(","))
+                .map(Car::new)
+                .collect(toList());
     }
 
     public RacingResult playRacing() {
