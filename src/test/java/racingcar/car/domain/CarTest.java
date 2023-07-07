@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -41,5 +42,17 @@ class CarTest {
             }
         }));
         assertThat(car.getPosition()).isZero();
+    }
+
+    @Test
+    @DisplayName("position 값이 동일하면 참을 반환한다.")
+    void test3() {
+        assertThat(car.matchPosition(0)).isTrue();
+    }
+
+    @Test
+    @DisplayName("두 Car 객체의 position 을 비교할 때, 더 큰 position 값을 반환한다.")
+    void test4() {
+        assertThat(car.getMaxPosition(1)).isEqualTo(1);
     }
 }
