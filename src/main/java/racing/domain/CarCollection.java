@@ -8,8 +8,6 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class CarCollection {
-    private static final int MOVING_RANGE_LOW = 4;
-    private static final int MOVING_RANGE_HIGH = 9;
     private final List<Car> cars;
 
     public CarCollection(List<Car> cars) {
@@ -32,13 +30,10 @@ public class CarCollection {
     public CarCollection nextState(NumberGenerator numberGenerator) {
         return new CarCollection(
                 this.cars.stream()
-                        .map(car -> car.goForward(isMovable(numberGenerator.generate())))
+                        .map(car -> car.goForward(numberGenerator.generate()))
                         .collect(Collectors.toList())
+                
         );
-    }
-
-    public boolean isMovable(int value) {
-        return MOVING_RANGE_LOW <= value && value <= MOVING_RANGE_HIGH;
     }
 
     public List<String> getWinners() {

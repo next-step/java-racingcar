@@ -3,27 +3,29 @@ package racing.domain;
 import java.util.Objects;
 
 public class Car {
+    private static final int MOVING_RANGE_LOW = 4;
+    private static final int MOVING_RANGE_HIGH = 9;
     private final Name name;
     private final Position position;
 
     public Car(String name) {
         this(new Name(name), new Position());
     }
-
-    public Car(Name name) {
-        this(name, new Position());
-    }
-
+    
     public Car(Name name, Position position) {
         this.name = name;
         this.position = position;
     }
 
-    public Car goForward(boolean trigger) {
-        if (trigger) {
+    public Car goForward(int trigger) {
+        if (isMovable(trigger)) {
             return new Car(this.name, this.position.next());
         }
         return new Car(this.name, this.position);
+    }
+
+    private boolean isMovable(int value) {
+        return MOVING_RANGE_LOW <= value && value <= MOVING_RANGE_HIGH;
     }
 
     public int getPosition() {
