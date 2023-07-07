@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.car.domain.winnerstrategy.WinnerStrategy;
-import racingcar.utils.random.RandomGenerator;
 
 /**
  * Car 컬렉션을 관리하는 일급 컬렉션
@@ -30,7 +29,7 @@ public class Cars {
      */
     public void move() {
         for (Car car : list) {
-            car.move(RandomGenerator.extractRandomSingleDigit());
+            car.move(new RandomInt());
         }
     }
 
