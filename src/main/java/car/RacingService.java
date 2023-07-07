@@ -6,8 +6,7 @@ import car.domain.Cars;
 import car.domain.TryCount;
 import car.input.InputView;
 import car.output.OutputView;
-import car.util.Movable;
-import car.util.RandomCarMovable;
+import car.util.RandomNumberGenerator;
 import java.util.List;
 
 public final class RacingService {
@@ -17,8 +16,8 @@ public final class RacingService {
     public RacingService() {
     }
 
-    public void runRaceOnce(Movable movable) {
-        cars.race(movable);
+    public void runRaceOnce(RandomNumberGenerator randomNumberGenerator) {
+        cars.race(randomNumberGenerator);
     }
 
     public List<Car> selectWinner() {
@@ -30,11 +29,11 @@ public final class RacingService {
         TryCount tryCount = new TryCount(InputView.enterCount());
 
         cars = new Cars(new CarNames(name));
-        Movable movable = new RandomCarMovable();
+        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
 
         OutputView.printResult();
         for (int i = 0; i < tryCount.getTryCount(); i++) {
-            runRaceOnce(movable);
+            runRaceOnce(randomNumberGenerator);
             OutputView.printEachRaceResult(cars);
         }
 

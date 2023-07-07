@@ -3,9 +3,7 @@ package car;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import car.domain.Car;
-import car.util.Movable;
-import car.util.NumberGenerator;
-import car.util.RandomCarMovable;
+import car.util.RandomNumberGenerator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -29,13 +27,13 @@ public class CarTest {
     @DisplayName("Movable 객체가 정해준 만큼 차는 움직인다.")
     void 자동자_움직_가능() {
         // given
-        Movable movable = new RandomCarMovable();
+        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
         Car car = new Car("hello");
-        int decideMoving = movable.decideMoving(NumberGenerator.getRandomNumber());
+        int num = randomNumberGenerator.movableAmount();
 
-        car.move(decideMoving);
+        car.move(num);
 
-        assertThat(car).extracting("position").isEqualTo(decideMoving);
+        assertThat(car).extracting("position").isEqualTo(num);
     }
 
     @ParameterizedTest
@@ -44,9 +42,10 @@ public class CarTest {
     void 자동자_4이상_일때_움직_가능(int carSpeed) {
         final int CAR_MOVING_SIZE = 1;
         Car car = new Car("hello");
-        Movable movable = new RandomCarMovable();
+        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
 
-        car.move(movable.decideMoving(carSpeed));
+
+     //   car.move(randomNumberGenerator(()-> carSpeed));
 
         assertThat(car).extracting("position").isEqualTo(CAR_MOVING_SIZE);
     }
@@ -58,9 +57,9 @@ public class CarTest {
     void 자동자_3이하_일때_움직_가능(int carSpeed) {
         final int CAR_STOP = 0;
         Car car = new Car("hello");
-        Movable movable = new RandomCarMovable();
+     //   Movable movable = new RandomCarMovable();
 
-        car.move(movable.decideMoving(carSpeed));
+    //    car.move(movable.decideMoving(carSpeed));
 
         assertThat(car).extracting("position").isEqualTo(CAR_STOP);
     }

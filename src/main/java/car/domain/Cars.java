@@ -1,6 +1,6 @@
 package car.domain;
 
-import car.util.Movable;
+import car.util.NumberGenerator;
 import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -16,9 +16,9 @@ public final class Cars {
             .collect(Collectors.toList());
     }
 
-    public void race(final Movable movable) {
+    public void race(final NumberGenerator numberGenerator) {
         for (Car car : cars) {
-            car.move(movable.decideMoving());
+            car.move(numberGenerator.movableAmount());
         }
     }
 

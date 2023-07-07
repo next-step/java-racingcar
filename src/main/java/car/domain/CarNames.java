@@ -7,9 +7,9 @@ import java.util.stream.Collectors;
 
 public final class CarNames {
 
-    private final List<CarName> names;
     private final static String CAR_NAMES_DELIMITER = ",";
     private final static int ZERO = 0;
+    private final List<CarName> names;
 
     public CarNames(final String names) {
         validateCarNames(names);

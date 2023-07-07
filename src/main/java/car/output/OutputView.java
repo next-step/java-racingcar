@@ -10,6 +10,9 @@ public final class OutputView {
 
     private static final String EXECUTE_RESULT_MESSAGE = "실행 결과";
     private static final String FINAL_WINNER_MESSAGE = "가 최종 우승했습니다.";
+    private static final String CAR_RESULT_DELIMITER = " : ";
+    private static final String POSITION_MARK = "-";
+
 
     public static void printResult() {
         System.out.println(EXECUTE_RESULT_MESSAGE);
@@ -18,8 +21,8 @@ public final class OutputView {
     private static String makeCarResult(CarResult carResult) {
         return new StringBuilder()
             .append(carResult.getName())
-            .append(" : ")
-            .append("-".repeat(carResult.getPosition()))
+            .append(CAR_RESULT_DELIMITER)
+            .append(POSITION_MARK.repeat(carResult.getPosition()))
             .toString();
     }
 
