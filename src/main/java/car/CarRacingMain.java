@@ -7,7 +7,7 @@ public class CarRacingMain {
 
     public static void main(String[] args) {
         CarRacingGame game = new CarRacingGame(InputView.getCarNames());
-        game.play(InputView.getPlayCount());
+        game.playRace(InputView.getPlayCount());
         OutputView.printWinners(game.announceWinnerNames());
     }
 }

@@ -22,15 +22,11 @@ public class CarRacingGame {
         cars = new Cars(carNames);
     }
 
-    public void play(final int playCount) {
-        race(playCount);
-    }
-
-    private void race(final int count) {
+    public void playRace(final int playCount) {
         final RandomGenerator randomGenerator = new RandomGenerator();
 
         System.out.println("\n실행 결과");
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < playCount; i++) {
             cars.move(randomGenerator);
             cars.print(formatter);
         }
