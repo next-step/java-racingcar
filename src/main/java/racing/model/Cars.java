@@ -20,7 +20,7 @@ public class Cars {
 
     public List<CarVO> getCars() {
         return cars.stream()
-                .map(car -> new CarVO(car.getName(), car.getPosition()))
+                .map(CarVO::new)
                 .collect(Collectors.toList());
     }
 
@@ -54,7 +54,7 @@ public class Cars {
                 .max().orElse(-1);
         return cars.stream()
                 .filter(car -> car.getPosition() == maxValue)
-                .map(car -> new CarVO(car.getName(), car.getPosition()))
+                .map(CarVO::new)
                 .collect(Collectors.toList());
 
     }

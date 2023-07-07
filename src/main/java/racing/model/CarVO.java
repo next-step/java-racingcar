@@ -11,6 +11,11 @@ public class CarVO {
         this.position = position;
     }
 
+    public CarVO(Car car) {
+        this.name = car.getName();
+        this.position = car.getPosition();
+    }
+
     public String getName() {
         return name;
     }
