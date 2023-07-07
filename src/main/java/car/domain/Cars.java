@@ -1,19 +1,19 @@
 package car.domain;
 
 import car.domain.winnerstrategy.WinnerStrategy;
-import java.util.Arrays;
+import utils.random.RandomGenerator;
+
 import java.util.List;
 import java.util.stream.Collectors;
-import utils.random.RandomGenerator;
 
 public class Cars {
 
     private final List<Car> list;
 
-    public Cars(String names) {
-        list = Arrays.stream(split(names))
-            .map(Car::new)
-            .collect(Collectors.toUnmodifiableList());
+    public Cars(List<String> names) {
+        list = names.stream()
+                .map(Car::new)
+                .collect(Collectors.toUnmodifiableList());
     }
 
     private String[] split(final String names) {
@@ -33,8 +33,8 @@ public class Cars {
 
     public List<String> format(final CarFormatter formatter) {
         return list.stream()
-            .map(formatter::format)
-            .collect(Collectors.toList());
+                .map(formatter::format)
+                .collect(Collectors.toList());
     }
 
     public List<Car> selectWinners(final WinnerStrategy winnerStrategy) {

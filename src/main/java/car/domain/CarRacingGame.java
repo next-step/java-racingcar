@@ -17,7 +17,7 @@ public class CarRacingGame {
     private final RandomGenerator randomGenerator = new RandomGenerator();
     private int leftPlayCount;
 
-    public CarRacingGame(final String carNames, final int playCount) {
+    public CarRacingGame(final List<String> carNames, final int playCount) {
         this.cars = new Cars(carNames);
         this.leftPlayCount = playCount;
     }
