@@ -1,8 +1,9 @@
-package racingcar.game;
+package racingcar.domain;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import racingcar.car.CarName;
+import racingcar.domain.CarName;
+import racingcar.domain.GameBoard;
 
 import java.util.List;
 import java.util.stream.Collectors;

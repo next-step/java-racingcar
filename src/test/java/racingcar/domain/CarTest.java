@@ -1,8 +1,11 @@
-package racingcar.car;
+package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.MockRandom;
+import racingcar.domain.Car;
+import racingcar.domain.CarName;
+import racingcar.domain.Position;
 
 import static org.assertj.core.api.Assertions.*;
 

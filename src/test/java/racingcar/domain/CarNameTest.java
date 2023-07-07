@@ -1,6 +1,7 @@
-package racingcar.car;
+package racingcar.domain;
 
 import org.junit.jupiter.api.Test;
+import racingcar.domain.CarName;
 import racingcar.exception.CarNameInputException;
 
 import static org.assertj.core.api.Assertions.*;
