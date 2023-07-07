@@ -46,6 +46,14 @@ public class Car {
         return this.distance.isSameDistance(maxDistance);
     }
 
+    public boolean isSameDistance(Car car) {
+        return this.distance.isSameDistance(car.distance);
+    }
+
+    public boolean wentFurtherThan(Car car) {
+        return this.distance.isGreaterThan(car.distance);
+    }
+
     public String getName() {
         return name.getCarName();
     }
@@ -53,4 +61,6 @@ public class Car {
     public int getDistance() {
         return distance.getDistance();
     }
+
+
 }

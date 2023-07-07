@@ -6,22 +6,19 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
 
 public class CarsTest {
 
     @Test
-    @DisplayName("한 턴에 대해 자동차들에게 게임 실행 메시지을 했는지 확인한다.")
-    public void 한_턴에_대해_자동차들에게_게임_실행_메시지_전달한다() throws Exception {
-        Car chanCar = mock(Car.class);
-        Car iptCar = mock(Car.class);
-        Cars cars = new Cars(List.of(chanCar, iptCar));
+    @DisplayName("가장 멀리간 자동차들을 가져온다. ")
+    public void 가장_멀리간_차를_가져온다() throws Exception {
+        Car furtherCar = new Car("chan", 2);
+        Car otherFurtherCar = new Car("ipt", 2);
+        Cars cars = new Cars(List.of(furtherCar, otherFurtherCar, new Car("tommi", 1)));
+        List<Car> maxDistanceCars = cars.getMaxDistanceCars();
 
-        cars.takeTurn();
+        assertThat(maxDistanceCars).contains(furtherCar, otherFurtherCar);
 
-        verify(chanCar).progress();
-        verify(iptCar).progress();
     }
 
     @Test
