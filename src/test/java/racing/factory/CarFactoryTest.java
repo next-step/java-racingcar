@@ -15,14 +15,10 @@ class CarFactoryTest {
     void inputTest() {
         String text = "pobi,crong,honux";
         CarFactory carFactory = CarFactory.getInstance();
-        List<Car> cars = carFactory.manufactureCars(text);
-        String[] answers = new String[] { "pobi", "crong", "honux" };
 
-        for (int i = 0; i < answers.length; i++) {
-            assertThat(
-                    cars.get(i).getName()
-            ).isEqualTo(answers[i]);
-        }
+        List<Car> cars = carFactory.manufactureCars(text);
+
+        assertThat(cars).extracting("name").containsExactlyInAnyOrder("pobi", "crong", "honux");
     }
 
     @Test

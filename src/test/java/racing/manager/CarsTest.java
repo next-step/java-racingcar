@@ -18,15 +18,14 @@ class CarsTest {
         List<String> winnerNames = cars.findWinnerNames();
 
         assertThat(winnerNames).hasSize(2);
-        assertThat(winnerNames.get(0)).isEqualTo("pobi");
-        assertThat(winnerNames.get(1)).isEqualTo("crong");
+        assertThat(winnerNames).containsExactlyInAnyOrder("pobi", "crong");
     }
 
     private static Cars createTestCars() {
         List<Car> cars = List.of(
-          new Car("pobi"),
-          new Car("crong"),
-          new Car("honux")
+                new Car("pobi"),
+                new Car("crong"),
+                new Car("honux")
         );
 
         cars.get(0).move(3);
