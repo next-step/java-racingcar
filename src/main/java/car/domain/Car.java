@@ -4,6 +4,7 @@ public class Car {
 
     private static final int MOVE_THRESHOLD = 4;
     private static final int MOVE_STEP = 1;
+
     private int position;
     private final Name name;
 
