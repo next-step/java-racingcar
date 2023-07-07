@@ -1,11 +1,13 @@
 package car.domain;
 
+import java.util.Objects;
+
 public final class CarName {
 
     private final String name;
     private final static int CAR_NAME_LENGTH_LOWER_BOUND = 5;
 
-    CarName(final String name) {
+    public CarName(final String name) {
         validateCarName(name);
         this.name = name.trim();
     }
@@ -18,5 +20,22 @@ public final class CarName {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CarName carName = (CarName) o;
+        return Objects.equals(name, carName.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }
