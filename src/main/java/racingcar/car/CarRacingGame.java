@@ -13,8 +13,8 @@ import racingcar.car.ui.ConsoleOutput;
  */
 public class CarRacingGame {
 
-    private Cars cars;
-    private WinnerStrategy winnerStrategy = new MaxPositionDuplicateWinnerStrategy();
+    private final Cars cars;
+    private final WinnerStrategy winnerStrategy = new MaxPositionDuplicateWinnerStrategy();
     private final ConsoleInput consoleInput = new ConsoleInput();
     private final ConsoleOutput consoleOutput = new ConsoleOutput();
 
@@ -33,7 +33,7 @@ public class CarRacingGame {
      *
      * @param count 게임 플레이 횟수
      */
-    private void startRace(int count) {
+    private void startRace(final int count) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < count; i++) {
             cars.move();

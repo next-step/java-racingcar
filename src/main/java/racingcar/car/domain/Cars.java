@@ -18,7 +18,7 @@ public class Cars {
      *
      * @param names 자동차 이름
      */
-    public Cars(String[] names) {
+    public Cars(final String[] names) {
         list = Arrays.stream(names)
             .map(Car::new)
             .collect(Collectors.toList());

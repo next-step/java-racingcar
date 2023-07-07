@@ -18,7 +18,7 @@ public class MaxPositionDuplicateWinnerStrategy implements WinnerStrategy {
      * @return 우승한 자동차 리스트
      */
     @Override
-    public List<Car> getWinners(List<Car> cars) {
+    public List<Car> getWinners(final List<Car> cars) {
         int maxPosition = getMaxPosition(cars);
 
         return cars.stream()
@@ -26,7 +26,7 @@ public class MaxPositionDuplicateWinnerStrategy implements WinnerStrategy {
             .collect(Collectors.toList());
     }
 
-    private int getMaxPosition(List<Car> cars) {
+    private int getMaxPosition(final List<Car> cars) {
         int maxPosition = 0;
         for (Car car : cars) {
             maxPosition = car.getMaxPosition(maxPosition);

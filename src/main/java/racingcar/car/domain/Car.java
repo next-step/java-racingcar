@@ -14,12 +14,12 @@ public class Car {
         this(0, name);
     }
 
-    public Car(int position, String name) {
+    public Car(final int position, final String name) {
         this.position = position;
         this.name = new Name(name);
     }
 
-    public void move(RandomInt randomInt) {
+    public void move(final RandomInt randomInt) {
         if (randomInt.isGreaterOrEqualThan(MOVE_THRESHOLD)) {
             position += MOVE_STEP;
         }
@@ -29,11 +29,11 @@ public class Car {
         return name.getValue();
     }
 
-    public boolean matchPosition(int position) {
+    public boolean matchPosition(final int position) {
         return this.position == position;
     }
 
-    public int getMaxPosition(int position) {
+    public int getMaxPosition(final int position) {
         return Math.max(this.position, position);
     }
 

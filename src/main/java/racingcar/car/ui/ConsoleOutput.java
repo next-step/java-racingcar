@@ -4,13 +4,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.car.domain.Car;
 
-public class ConsoleOutput {
+public final class ConsoleOutput {
 
     public void printWinners(final List<Car> winners) {
         System.out.println(formatCarWinners(winners) + "가 최종 우승했습니다.");
     }
 
-    public void printResult(String result) {
+    public void printResult(final String result) {
         System.out.println("\n실행 결과");
         System.out.print(result);
     }
