@@ -21,7 +21,7 @@ public final class Name {
 
     private void validate(final String name) {
         if (name.isEmpty() || name.length() > MAX_NAME_LENGTH) {
-            throw new RuntimeException(NOT_VALID_NAME_LENGTH_MESSAGE);
+            throw new IllegalArgumentException(NOT_VALID_NAME_LENGTH_MESSAGE);
         }
     }
 }

@@ -26,7 +26,7 @@ public final class Round {
 
     private static void validate(final int round) {
         if (round <= 0) {
-            throw new RuntimeException(NOT_POSITIVE_MESSAGE);
+            throw new IllegalArgumentException(NOT_POSITIVE_MESSAGE);
         }
     }
 }

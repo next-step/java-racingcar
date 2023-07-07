@@ -20,7 +20,7 @@ public final class RaceRequest {
         try {
             return Integer.parseInt(totalRound);
         } catch (final NumberFormatException numberFormatException) {
-            throw new RuntimeException(NOT_INTEGER_MESSAGE);
+            throw new IllegalArgumentException(NOT_INTEGER_MESSAGE);
         }
     }
 

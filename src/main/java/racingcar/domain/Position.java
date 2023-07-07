@@ -25,7 +25,7 @@ public final class Position {
 
     private static void validate(final int position) {
         if (position < 0) {
-            throw new RuntimeException(NOT_POSITIVE_MESSAGE);
+            throw new IllegalArgumentException(NOT_POSITIVE_MESSAGE);
         }
     }
 }

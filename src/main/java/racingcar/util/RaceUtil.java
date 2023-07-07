@@ -17,6 +17,6 @@ public final class RaceUtil {
             return true;
         }
 
-        throw new RuntimeException(NOT_VALID_RANGE_MESSAGE);
+        throw new IllegalArgumentException(NOT_VALID_RANGE_MESSAGE);
     }
 }
