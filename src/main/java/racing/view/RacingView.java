@@ -1,6 +1,6 @@
 package racing.view;
 
-import racing.domain.Car;
+import racing.domain.CarCollection;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,8 +19,8 @@ public class RacingView {
         System.out.println(ASKING_COUNT);
     }
 
-    public void printCarStatus(List<Car> cars) {
-        String carStatus = cars.stream()
+    public void printCarStatus(CarCollection cars) {
+        String carStatus = cars.getCars().stream()
                 .map(car -> car.getName() + " : " + "-".repeat(car.getPosition()))
                 .collect(Collectors.joining("\n"));
 

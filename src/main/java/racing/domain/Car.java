@@ -11,7 +11,7 @@ public class Car {
     public Car(String name) {
         this(new Name(name), new Position());
     }
-    
+
     public Car(Name name, Position position) {
         this.name = name;
         this.position = position;
@@ -21,7 +21,7 @@ public class Car {
         if (isMovable(trigger)) {
             return new Car(this.name, this.position.next());
         }
-        return new Car(this.name, this.position);
+        return this;
     }
 
     private boolean isMovable(int value) {

@@ -4,6 +4,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racing.domain.Car;
+import racing.domain.CarCollection;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -64,7 +65,7 @@ class RacingViewTest {
         cars.add(new Car("honux"));
 
         //when
-        racingView.printCarStatus(cars);
+        racingView.printCarStatus(new CarCollection(cars));
 
         //then
         assertThat(outputStreamCaptor.toString().trim()).isEqualTo("pobi : -\n" +

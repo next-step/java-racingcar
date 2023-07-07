@@ -1,4 +1,4 @@
-package racing;
+package racing.controller;
 
 import racing.domain.CarCollection;
 import racing.generator.NumberGenerator;
@@ -14,9 +14,7 @@ public class RacingApplication {
     private CarCollection cars;
 
     public RacingApplication() {
-        this.racingInput = new RacingInput(System.in);
-        this.numberGenerator = new RandomNumberGenerator();
-        this.racingView = new RacingView();
+        this(new RacingInput(System.in), new RandomNumberGenerator());
     }
 
     public RacingApplication(RacingInput racingInput, NumberGenerator numberGenerator) {
@@ -33,26 +31,26 @@ public class RacingApplication {
         printResult();
     }
 
-    public void inputCarName() {
+    private void inputCarName() {
         racingView.printCarNameAsking();
         this.cars = this.racingInput.inputName();
     }
 
-    public int inputSimulationCount() {
+    private int inputSimulationCount() {
         this.racingView.printCountAsking();
         return this.racingInput.inputCount();
     }
 
 
-    public void simulate(int count) {
-        racingView.printCarStatus(cars.getCars());
+    private void simulate(int count) {
+        racingView.printCarStatus(cars);
         for (int i = 0; i < count; i++) {
             this.cars = cars.nextState(numberGenerator);
-            racingView.printCarStatus(cars.getCars());
+            racingView.printCarStatus(cars);
         }
     }
 
-    public void printResult() {
+    private void printResult() {
         this.racingView.printWinners(this.cars.getWinners());
     }
 }
