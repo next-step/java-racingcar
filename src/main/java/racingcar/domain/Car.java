@@ -12,10 +12,6 @@ public class Car {
     private int position;
     private final Random random;
 
-    public Car(String name) {
-        this(new CarName(name), INIT_POSITION, new Random());
-    }
-
     public Car(String name, int position) {
         this(new CarName(name), position, new Random());
     }
@@ -26,6 +22,10 @@ public class Car {
 
     public Car(String name, int position, Random random) {
         this(new CarName(name), position, random);
+    }
+
+    public Car(CarName name) {
+        this(name, INIT_POSITION, new Random());
     }
 
     private Car(CarName name, int position, Random random) {

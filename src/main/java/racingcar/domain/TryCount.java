@@ -11,7 +11,7 @@ public class TryCount {
     public TryCount(String number) {
         this.number = parseNumberOrThrow(number);
         if (isNotInRage(this.number)) {
-            throw new IllegalArgumentException("범위에 포함되지 않는 숫자입니다. 1 이상의 숫자를 입력하세요.");
+            throw new IllegalArgumentException("범위에 포함되지 않는 숫자입니다. 0 이상의 숫자를 입력하세요.");
         }
     }
 

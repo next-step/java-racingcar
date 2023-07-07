@@ -1,9 +1,11 @@
 package racingcar.view;
 
+import racingcar.domain.CarName;
 import racingcar.domain.TryCount;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class InputView {
 
@@ -19,10 +21,16 @@ public class InputView {
         return new TryCount(input);
     }
 
-    public static List<String> readCarNames() {
+    public static List<CarName> readCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String input = scanner.nextLine();
-        return split(input);
+        return toCarName(split(input));
+    }
+
+    private static List<CarName> toCarName(List<String> carNames) {
+        return carNames.stream()
+                .map(CarName::new)
+                .collect(Collectors.toList());
     }
 
     private static List<String> split(String input) {
