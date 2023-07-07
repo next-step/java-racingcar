@@ -52,7 +52,7 @@ class RacingGamePlayUsecaseTest {
                 RacingGamePlayResponse racingGamePlayResponse = new RacingGamePlayResponse();
 
                 racingGamePlayResponse.addRacingGameRoundResponse(0, cars);
-                racingGame.play();
+                racingGame.playOneRound();
                 racingGamePlayResponse.addRacingGameRoundResponse(1, racingGame.getRoundResult());
                 racingGamePlayResponse.setWinner(racingGame.getWinners());
                 return racingGamePlayResponse;
@@ -81,7 +81,7 @@ class RacingGamePlayUsecaseTest {
                 RacingGamePlayResponse racingGamePlayResponse = new RacingGamePlayResponse();
                 racingGamePlayResponse.addRacingGameRoundResponse(0, cars);
                 for (int round = 1; round < 4; round++) {
-                    racingGame.play();
+                    racingGame.playOneRound();
                     racingGamePlayResponse.addRacingGameRoundResponse(round, racingGame.getRoundResult());
                 }
                 racingGamePlayResponse.setWinner(racingGame.getWinners());
