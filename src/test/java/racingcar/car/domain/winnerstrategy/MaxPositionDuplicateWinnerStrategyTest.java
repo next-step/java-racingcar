@@ -2,15 +2,13 @@ package racingcar.car.domain.winnerstrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import racingcar.car.domain.Car;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.car.domain.winnerstrategy.MaxPositionDuplicateWinnerStrategy;
-import racingcar.car.domain.winnerstrategy.WinnerStrategy;
+import racingcar.car.domain.Car;
 
-public class MaxPositionDuplicateWinnerStrategyTest {
+class MaxPositionDuplicateWinnerStrategyTest {
 
     @Test
     @DisplayName("position 값이 가장 큰 자동차를 우승자로 선출한다.")
@@ -24,7 +22,7 @@ public class MaxPositionDuplicateWinnerStrategyTest {
         WinnerStrategy winnerStrategy = new MaxPositionDuplicateWinnerStrategy();
         List<Car> winners = winnerStrategy.getWinners(cars);
 
-        assertThat(winners.size()).isEqualTo(2);
+        assertThat(winners).hasSize(2);
         assertThat(winners.stream().map(Car::getNameValue).collect(Collectors.toList()))
             .containsExactly("b", "c");
     }

@@ -3,9 +3,8 @@ package racingcar.car.domain;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.car.domain.Name;
 
-public class NameTest {
+class NameTest {
 
     @Test
     @DisplayName("자동차 이름은 5자를 초과할 경우 예외를 던진다.")
