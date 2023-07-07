@@ -16,7 +16,7 @@ public class Position {
         this.value = value;
     }
 
-    public Position move(final int amount) {
+    Position move(final int amount) {
         if (amount < MIN_AMOUNT) {
             throw new IllegalArgumentException("[ERROR] 후진은 불가능합니다.");
         }
