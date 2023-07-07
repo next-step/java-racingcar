@@ -15,10 +15,10 @@ public class Cars {
         this.cars = cars;
     }
 
-    public void move(Random random) {
+    public void move() {
         cars.forEach(c -> {
-            int power = random.nextInt(RANDOM_BOUND);
-            c.move(power);
+            Random random = new Random();
+            c.move(random.nextInt(RANDOM_BOUND));
         });
     }
 
