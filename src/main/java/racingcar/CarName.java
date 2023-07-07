@@ -34,4 +34,8 @@ public class CarName {
                 "carName='" + carName + '\'' +
                 '}';
     }
+
+    public String getCarName() {
+        return carName;
+    }
 }

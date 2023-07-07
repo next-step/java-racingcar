@@ -1,6 +1,5 @@
 package racingcar;
 
-import org.assertj.core.api.ThrowableAssert;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -8,7 +7,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.number_generator.SpecificNumberGenerator;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
 
@@ -20,17 +18,6 @@ public class CarTest {
         Car car = new Car(name);
 
         assertThat(car.getName()).isEqualTo(name);
-    }
-
-    @Test
-    @DisplayName("자동차 이름이 5자 초과이면 에러를 던진다")
-    public void 자동차_이름이_5자_초과이면_에러를_던진다() throws Exception {
-        String name = "failfail";
-
-        ThrowableAssert.ThrowingCallable callable = () -> new Car(name);
-
-        assertThatThrownBy(callable).isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(Car.OVER_MAX_NAME_SIZE_ERROR_STRING);
     }
 
     @Test
