@@ -27,4 +27,5 @@ public class CarsTest {
             assertThat(car).extracting("position").isEqualTo(carMaxPosition);
         }
     }
+
 }
