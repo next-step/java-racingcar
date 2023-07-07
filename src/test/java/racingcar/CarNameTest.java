@@ -10,7 +10,7 @@ class CarNameTest {
     @Test
     void carNameTest_normal() {
         CarName carName = new CarName("pobi");
-        Assertions.assertThat(carName.getName()).isEqualTo("pobi");
+        Assertions.assertThat(carName).isEqualTo(new CarName("pobi"));
     }
 
     @Test

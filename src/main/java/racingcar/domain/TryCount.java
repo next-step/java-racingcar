@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import java.util.Objects;
+
 public class TryCount {
 
     private static final int MIN_COUNT = 1;
@@ -27,5 +29,25 @@ public class TryCount {
 
     public int getNumber() {
         return number;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TryCount tryCount = (TryCount) o;
+        return number == tryCount.number;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(number);
+    }
+
+    @Override
+    public String toString() {
+        return "TryCount{" +
+                "number=" + number +
+                '}';
     }
 }
