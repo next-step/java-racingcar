@@ -23,4 +23,10 @@ public class DistanceTest {
 
         assertThat(distance).isEqualTo(new Distance(1));
     }
+
+    @Test
+    @DisplayName("이동거리가 더 크다")
+    void 이동거리가_더_크다() {
+        assertThat(new Distance(2).isGreaterThan(new Distance(1))).isTrue();
+    }
 }

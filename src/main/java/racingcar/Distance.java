@@ -47,4 +47,7 @@ public class Distance {
                 '}';
     }
 
+    public boolean isGreaterThan(Distance distance) {
+        return true;
+    }
 }
