@@ -1,8 +1,9 @@
 package car.domain.model;
 
 import car.exceptions.TextLengthException;
+import java.util.Objects;
 
-public class CarName {
+public final class CarName {
 
     private final static int TEXT_LENGTH_LIMIT = 5;
     private final String myCarName;
@@ -26,4 +27,20 @@ public class CarName {
         return myCarName;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CarName carName = (CarName) o;
+        return Objects.equals(myCarName, carName.myCarName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(myCarName);
+    }
 }
