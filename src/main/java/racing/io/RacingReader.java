@@ -23,12 +23,12 @@ public class RacingReader {
         }
     }
 
-    private String inputCarNames(BufferedReader input) throws IOException {
+    private String inputCarNames(final BufferedReader input) throws IOException {
         System.out.println(CAR_NAMES_INPUT_GUIDE);
         return input.readLine();
     }
 
-    private int inputRaceCount(BufferedReader input) throws IOException {
+    private int inputRaceCount(final BufferedReader input) throws IOException {
         System.out.println(RACE_COUNT_INPUT_GUIDE);
         return Integer.parseInt(input.readLine());
     }

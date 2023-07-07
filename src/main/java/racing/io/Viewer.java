@@ -9,16 +9,16 @@ public class Viewer {
     private static final String WINNER_OUTPUT_SUFFIX = "가 최종 우승했습니다.";
     private static final String DEFAULT_DELIMITER = ", ";
 
-    public void printBeforeRacing(Cars cars) {
+    public void printBeforeRacing(final Cars cars) {
         System.out.println(RESULT_OUTPUT_GUIDE);
         printCars(cars);
     }
 
-    public void printCars(Cars cars) {
+    public void printCars(final Cars cars) {
         System.out.println(cars);
     }
 
-    public void printWinners(List<String> winnerNames) {
+    public void printWinners(final List<String> winnerNames) {
         String result = String.join(DEFAULT_DELIMITER, winnerNames);
         System.out.println(result + WINNER_OUTPUT_SUFFIX);
     }

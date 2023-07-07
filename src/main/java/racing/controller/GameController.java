@@ -11,7 +11,7 @@ public class GameController {
     private final CarFactory carFactory;
     private final Viewer viewer;
 
-    public GameController(CarFactory carFactory, Viewer viewer) {
+    public GameController(final CarFactory carFactory, final Viewer viewer) {
         this.carFactory = carFactory;
         this.viewer = viewer;
     }

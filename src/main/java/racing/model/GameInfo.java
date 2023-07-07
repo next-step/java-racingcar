@@ -5,7 +5,7 @@ public class GameInfo {
     private final String carNames;
     private final int raceCount;
 
-    public GameInfo(String carNames, int raceCount) {
+    public GameInfo(final String carNames, final int raceCount) {
         this.carNames = carNames;
         this.raceCount = raceCount;
     }

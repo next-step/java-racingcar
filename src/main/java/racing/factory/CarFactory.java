@@ -24,7 +24,7 @@ public class CarFactory {
         return CarFactoryHandler.INSTANCE;
     }
 
-    public List<Car> manufactureCars(String text) {
+    public List<Car> manufactureCars(final String text) {
         String[] carNames = text.split(DEFAULT_DELIMITER);
 
         validate(carNames);
@@ -32,11 +32,11 @@ public class CarFactory {
         return manufactureCars(carNames);
     }
 
-    private List<Car> manufactureCars(String[] names) {
+    private List<Car> manufactureCars(final String[] names) {
         return Arrays.stream(names).map(Car::new).collect(Collectors.toList());
     }
 
-    private void validate(String[] carNames) {
+    private void validate(final String[] carNames) {
         final boolean isInvalidCarName = Arrays.stream(carNames)
                                          .anyMatch(carName -> carName.isBlank() || isLongerThanMax(carName));
 
@@ -45,11 +45,11 @@ public class CarFactory {
         }
     }
 
-    private boolean isLongerThanMax(String carName) {
+    private boolean isLongerThanMax(final String carName) {
         return carName.length() > CAR_NAME_MAX;
     }
 
-    private boolean isDuplicated(String[] carNames) {
+    private boolean isDuplicated(final String[] carNames) {
         return new HashSet<>(List.of(carNames)).size() != carNames.length;
     }
 

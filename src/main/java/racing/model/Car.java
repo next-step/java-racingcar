@@ -7,7 +7,7 @@ public class Car {
     private final String name;
     private int position;
 
-    public Car(String name) {
+    public Car(final String name) {
         this.name = name;
         this.position = DEFAULT_POSITION;
     }
@@ -20,11 +20,11 @@ public class Car {
         return this.position;
     }
 
-    public boolean isWinner(int maxPosition) {
+    public boolean isWinner(final int maxPosition) {
         return this.position == maxPosition;
     }
 
-    public void move(int steps) {
+    public void move(final int steps) {
         this.position += steps;
     }
 
