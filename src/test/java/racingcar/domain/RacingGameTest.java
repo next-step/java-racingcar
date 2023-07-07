@@ -80,7 +80,7 @@ class RacingGameTest {
             @Test
             @DisplayName("한판을 진행하고, 그 결과를 car에 반영한다.")
             void ItReturn1RoundResult() {
-                racingGame.play();
+                racingGame.playOneRound();
                 assertEqualAllCars(cars, expectedCars);
             }
 
@@ -108,9 +108,9 @@ class RacingGameTest {
             @Test
             @DisplayName("세판을 진행하고, 그 결과를 car에 반영한다.")
             void ItReturn1RoundResult() {
-                racingGame.play();
-                racingGame.play();
-                racingGame.play();
+                racingGame.playOneRound();
+                racingGame.playOneRound();
+                racingGame.playOneRound();
 
                 assertEqualAllCars(cars, expectedCars);
             }
@@ -155,8 +155,7 @@ class RacingGameTest {
             @Test
             @DisplayName("현재 라운드의 결과를 반환한다.")
             void ItReturnRoundResult() {
-                racingGame.play();
-                List<Car> roundResult = racingGame.getRoundResult();
+                List<Car> roundResult = racingGame.playOneRound();
                 assertEqualAllCars(roundResult, expectedCars);
             }
 
@@ -185,9 +184,8 @@ class RacingGameTest {
             @Test
             @DisplayName("두번째 라운드의 결과를 반환한다.")
             void ItReturnTwiceRoundResult() {
-                racingGame.play();
-                racingGame.play();
-                List<Car> roundResult = racingGame.getRoundResult();
+                racingGame.playOneRound();
+                List<Car> roundResult = racingGame.playOneRound();
                 assertEqualAllCars(roundResult, expectedCars);
             }
 
@@ -229,7 +227,7 @@ class RacingGameTest {
             @Test
             @DisplayName("우승자들을 반환한다.")
             void ItReturnRoundResult() {
-                racingGame.play();
+                racingGame.playOneRound();
                 List<Car> roundResult = racingGame.getWinners();
                 assertEqualAllCars(roundResult, expectedCars);
             }
