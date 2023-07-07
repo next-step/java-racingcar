@@ -3,6 +3,8 @@ package racingcar.car;
 import racingcar.exception.CarNameInputException;
 
 public class CarName {
+
+    public static final int MAX_LENGTH = 5;
     private final String value;
 
     public CarName(String value) {
@@ -11,7 +13,7 @@ public class CarName {
     }
 
     private void validate(String value) {
-        if (value == null || value.length() > 5) {
+        if (value == null || value.length() > MAX_LENGTH) {
             throw new CarNameInputException();
         }
     }
