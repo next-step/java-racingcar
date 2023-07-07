@@ -23,7 +23,7 @@ public class CarTest {
     @DisplayName("자동차를 움직인다.")
     void test_02() {
         /* given */
-        Car car = new Car("충규");
+        final Car car = new Car("충규");
 
         /* when */
         car.move(() -> 7);

@@ -7,7 +7,7 @@ public class Name {
 
     private final String value;
 
-    public Name(String value) {
+    public Name(final String value) {
         if (value == null || value.isBlank()) {
             throw new IllegalArgumentException("[ERROR] 자동차 이름은 공백일 수 없습니다.");
         }

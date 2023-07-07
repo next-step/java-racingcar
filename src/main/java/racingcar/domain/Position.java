@@ -12,7 +12,7 @@ public class Position {
         this(0);
     }
 
-    public Position(int value) {
+    public Position(final int value) {
         if (value < MIN_VALUE) {
             throw new IllegalArgumentException("[ERROR] 위치는 " + MIN_VALUE + "이상이어야 합니다.");
         }
@@ -20,7 +20,7 @@ public class Position {
         this.value = value;
     }
 
-    public Position move(int amount) {
+    public Position move(final int amount) {
         if (amount < MIN_AMOUNT) {
             throw new IllegalArgumentException("[ERROR] 후진은 불가능합니다.");
         }
@@ -28,7 +28,7 @@ public class Position {
         return new Position(value + amount);
     }
 
-    public int getDifferenceWith(Position position) {
+    public int getDifferenceWith(final Position position) {
         return this.value - position.value;
     }
 

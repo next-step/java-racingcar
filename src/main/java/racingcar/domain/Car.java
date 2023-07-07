@@ -9,21 +9,21 @@ public class Car {
         this(name, 0);
     }
 
-    public Car(String name, int position) {
+    public Car(final String name, final int position) {
         this.name = new Name(name);
         this.position = new Position(position);
     }
 
-    public void move(MoveStrategy strategy) {
-        int amount = strategy.amount();
+    public void move(final MoveStrategy strategy) {
+        final int amount = strategy.amount();
         this.position = position.move(amount);
     }
 
-    public boolean isSamePositionWith(Car car) {
+    public boolean isSamePositionWith(final Car car) {
         return this.getPositionDifferenceWith(car) == 0;
     }
 
-    public int getPositionDifferenceWith(Car car) {
+    public int getPositionDifferenceWith(final Car car) {
         return this.position.getDifferenceWith(car.position);
     }
 
