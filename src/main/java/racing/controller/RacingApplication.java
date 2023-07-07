@@ -23,8 +23,8 @@ public class RacingApplication {
     public RacingApplication(RacingInput racingInput, NumberGenerator numberGenerator) {
         this.racingInput = racingInput;
         this.numberGenerator = numberGenerator;
-        this.racingOutput = new RacingOutput();
-        this.racingView = new RacingView();
+        this.racingOutput = RacingOutput.getInstance();
+        this.racingView = RacingView.getInstance();
     }
 
     public void run() {

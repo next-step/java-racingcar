@@ -13,15 +13,17 @@ import static org.assertj.core.api.Assertions.*;
 class RacingViewTest {
     @Test
     void getAskingCarNameViewTest() {
-        RacingView racingView = new RacingView();
+        //given
+        RacingView racingView = RacingView.getInstance();
         String text = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
 
+        //when,then
         assertThat(racingView.getAskingCarNameView()).isEqualTo(text);
     }
 
     @Test
     void getAskingCountViewTest() {
-        RacingView racingView = new RacingView();
+        RacingView racingView = RacingView.getInstance();
         String text = "시도할 회수는 몇회인가요?";
 
         assertThat(racingView.getAskingCountView()).isEqualTo(text);
@@ -30,7 +32,7 @@ class RacingViewTest {
     @Test
     void getCarStatusViewTest() {
         //given
-        RacingView racingView = new RacingView();
+        RacingView racingView = RacingView.getInstance();
 
         List<CarVO> cars = new ArrayList<>();
         cars.add(new CarVO("pobi", 1));
@@ -47,7 +49,7 @@ class RacingViewTest {
     @Test
     void getResultViewTest() {
         //given
-        RacingView racingView = new RacingView();
+        RacingView racingView = RacingView.getInstance();
         SimulationResultDto simulationResultDto = new SimulationResultDto(
                 Arrays.asList(
                         Arrays.asList(new CarVO("test1", 1), new CarVO("test2", 1)),

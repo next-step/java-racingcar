@@ -8,7 +8,7 @@ public class RandomNumberGeneratorTest {
     @Test
     void generateTest() {
         //given
-        RandomNumberGenerator randomGenerator = new RandomNumberGenerator();
+        RandomNumberGenerator randomGenerator = RandomNumberGenerator.getInstance();
 
         //when
         int randomValue = randomGenerator.generate();

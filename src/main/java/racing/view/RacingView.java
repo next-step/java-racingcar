@@ -11,6 +11,17 @@ public class RacingView {
     private final static String ASKING_COUNT = "시도할 회수는 몇회인가요?";
     private final static String RESULT_TITLE = "실행 결과";
 
+    private RacingView() {
+    }
+
+    public static RacingView getInstance() {
+        return RacingViewLazyHolder.INSTANCE;
+    }
+
+    private static class RacingViewLazyHolder {
+        private static final RacingView INSTANCE = new RacingView();
+    }
+
     public String getAskingCarNameView() {
         return ASKING_CAR_NAME;
     }
