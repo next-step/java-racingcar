@@ -6,8 +6,13 @@ import car.view.OutputView;
 public class CarRacingMain {
 
     public static void main(String[] args) {
-        CarRacingGame game = new CarRacingGame(InputView.getCarNames());
-        game.playRace(InputView.getPlayCount());
-        OutputView.printWinners(game.announceWinnerNames());
+        CarRacingGame game = new CarRacingGame(InputView.getCarNames(), InputView.getPlayCount());
+
+        OutputView.startPrintingResult();
+        while (game.isNotFinished()) {
+            game.playRaceOnce();
+            OutputView.printCurrentStatus(game);
+        }
+        OutputView.printWinners(game);
     }
 }

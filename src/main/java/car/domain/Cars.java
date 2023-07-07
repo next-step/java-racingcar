@@ -31,8 +31,8 @@ public class Cars {
         return list;
     }
 
-    public void print(final CarsFormatter formatter) {
-        System.out.println(formatter.format(list));
+    public String format(final CarsFormatter formatter) {
+        return formatter.format(list);
     }
 
     public List<Car> selectWinners(final WinnerStrategy winnerStrategy) {
