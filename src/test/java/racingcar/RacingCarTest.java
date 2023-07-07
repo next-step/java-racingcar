@@ -134,9 +134,9 @@ public class RacingCarTest {
             }
         }
 
-        private Race createRace(String input, int count) {
+        private Race createRace(String input, int leftRound) {
             String[] names = input.split(",");
-            return Race.of(names, count);
+            return Race.of(names, leftRound);
         }
     }
 

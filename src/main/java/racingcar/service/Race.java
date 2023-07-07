@@ -20,13 +20,13 @@ public final class Race {
         this.leftRound = Round.from(leftRound);
     }
 
-    public static Race of(final String[] carNames, final int count) {
+    public static Race of(final String[] carNames, final int leftRound) {
         Cars cars = Cars.create();
         for (final String carName : carNames) {
             cars.add(Car.create(carName));
         }
 
-        return new Race(cars, count);
+        return new Race(cars, leftRound);
     }
 
     public static Race from(final RaceRequest raceRequest) {
