@@ -10,12 +10,15 @@ import java.util.List;
 
 public class RacingApplication {
 
-    private RacingInput racingInput;
-    private RacingOutput racingOutput;
-    private RacingManager racingManager;
-    private NumberGenerator numberGenerator;
-    private RacingView racingView;
+    private final RacingInput racingInput;
 
+    private final RacingOutput racingOutput;
+
+    private final NumberGenerator numberGenerator;
+
+    private final RacingView racingView;
+
+    private RacingManager racingManager;
 
     public RacingApplication(RacingInput racingInput, NumberGenerator numberGenerator) {
         this.racingInput = racingInput;

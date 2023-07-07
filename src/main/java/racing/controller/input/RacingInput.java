@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class RacingInput {
 
-    private Scanner scanner;
+    private final Scanner scanner;
 
     public RacingInput(InputStream inputStream) {
         this.scanner = new Scanner(inputStream);

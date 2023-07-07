@@ -30,9 +30,9 @@ public class RacingView {
         result += simulationResultDto.getProgress().stream()
                 .map(this::getCarStatusView)
                 .collect(Collectors.joining("\n\n")) + "\n\n";
-        result += String.join(", ", simulationResultDto.getWinners().stream()
+        result += simulationResultDto.getWinners().stream()
                 .map(CarVO::getName)
-                .collect(Collectors.toList())) + "가 최종 우승했습니다.";
+                .collect(Collectors.joining(", ")) + "가 최종 우승했습니다.";
         return result;
     }
 }

@@ -4,7 +4,6 @@ package racing.view.output;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racing.view.output.RacingOutput;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
