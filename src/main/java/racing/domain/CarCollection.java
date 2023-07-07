@@ -41,6 +41,20 @@ public class CarCollection {
         return MOVING_RANGE_LOW <= value && value <= MOVING_RANGE_HIGH;
     }
 
+    public List<String> getWinners() {
+        return cars.stream()
+                .filter(car -> car.getPosition() == getMaxPosition())
+                .map(Car::getName)
+                .collect(Collectors.toList());
+    }
+
+    private int getMaxPosition() {
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(-1);
+    }
+
     public List<Car> getCars() {
         return this.cars;
     }

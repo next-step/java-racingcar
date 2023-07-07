@@ -3,7 +3,6 @@ package racing.domain;
 import racing.generator.NumberGenerator;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingManager {
     private final NumberGenerator numberGenerator;
@@ -23,13 +22,6 @@ public class RacingManager {
     }
 
     public List<String> getWinners() {
-        int maxValue = cars.getCars().stream()
-                .mapToInt(car -> car.getPosition())
-                .max()
-                .orElse(-1);
-        return cars.getCars().stream()
-                .filter(car -> car.getPosition() == maxValue)
-                .map(Car::getName)
-                .collect(Collectors.toList());
+        return cars.getWinners();
     }
 }
