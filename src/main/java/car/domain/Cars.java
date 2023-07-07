@@ -1,7 +1,6 @@
 package car.domain;
 
 import car.domain.winnerstrategy.WinnerStrategy;
-import car.ui.CarFormatter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,9 +31,8 @@ public class Cars {
         return list;
     }
 
-    public void print(final CarFormatter formatter) {
-        list.forEach(car -> System.out.println(formatter.format(car)));
-        System.out.println();
+    public void print(final CarsFormatter formatter) {
+        System.out.println(formatter.format(list));
     }
 
     public List<Car> getWinners(final WinnerStrategy winnerStrategy) {

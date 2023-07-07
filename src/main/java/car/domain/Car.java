@@ -30,7 +30,7 @@ public class Car {
         return position;
     }
 
-    public boolean positionIsEqualTo(final int position) {
-        return this.position == position;
+    public boolean positionIsEqualTo(final int otherPosition) {
+        return this.position == otherPosition;
     }
 }

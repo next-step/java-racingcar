@@ -4,8 +4,8 @@ import car.domain.Car;
 import car.domain.Cars;
 import car.domain.winnerstrategy.MaxPositionDuplicateWinnerStrategy;
 import car.domain.winnerstrategy.WinnerStrategy;
-import car.ui.CarFormatter;
-import car.ui.DefaultCarFormatter;
+import car.domain.CarsFormatter;
+import car.ui.DefaultCarsFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 import utils.random.RandomGenerator;
@@ -14,7 +14,7 @@ public class CarRacingGame {
 
     private final Cars cars;
     private final WinnerStrategy winnerStrategy = new MaxPositionDuplicateWinnerStrategy();
-    private final CarFormatter formatter = new DefaultCarFormatter();
+    private final CarsFormatter formatter = new DefaultCarsFormatter();
 
 
     public CarRacingGame(final String carNames) {
@@ -27,7 +27,7 @@ public class CarRacingGame {
     }
 
     private void race(final int count) {
-        RandomGenerator randomGenerator = new RandomGenerator();
+        final RandomGenerator randomGenerator = new RandomGenerator();
 
         System.out.println("\n실행 결과");
         for (int i = 0; i < count; i++) {
