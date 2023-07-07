@@ -15,7 +15,7 @@ public class MaxPositionDuplicateWinnerStrategyTest {
 
     @Test
     @DisplayName("position 값이 가장 큰 자동차를 우승자로 선출한다.")
-    void test1() {
+    void maxPositionWinner() {
         final List<Car> cars = List.of(
             new Car(3, "a"),
             new Car(5, "b"),
