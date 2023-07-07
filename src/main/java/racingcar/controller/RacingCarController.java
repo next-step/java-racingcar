@@ -13,7 +13,7 @@ import java.util.function.Supplier;
 public class RacingCarController {
 
     private final Game game;
-
+    private boolean isRunned;
     private List<CarStatus> initialStatus;
     private List<List<CarStatus>> gameStatus;
     private List<CarName> winners;
@@ -24,6 +24,7 @@ public class RacingCarController {
 
     private RacingCarController(Game game) {
         this.game = game;
+        this.isRunned = false;
     }
 
     private static <T> T retryIfException(Supplier<T> supplier) {
@@ -36,7 +37,7 @@ public class RacingCarController {
     }
 
     private static Game processInput() {
-        List<CarName> carNames = retryIfException(InputView::readCarNames);
+        List<String> carNames = retryIfException(InputView::readCarNames);
         TryCount tryCount = retryIfException(InputView::readTryCount);
         return new Game(carNames, tryCount);
     }
@@ -45,11 +46,14 @@ public class RacingCarController {
         initialStatus = game.getCarStatuses();
         gameStatus = game.run();
         winners = game.findWinnerNames();
+        isRunned = true;
     }
 
-    public void printStatus() {
-        OutputView.printInitialStatus(initialStatus);
-        OutputView.printGameStatus(gameStatus);
-        OutputView.printWinners(winners);
+    public void printResult() {
+        if (isRunned) {
+            OutputView.printInitialStatus(initialStatus);
+            OutputView.printGameStatus(gameStatus);
+            OutputView.printWinners(winners);
+        }
     }
 }
