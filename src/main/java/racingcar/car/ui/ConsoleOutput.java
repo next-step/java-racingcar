@@ -12,7 +12,7 @@ public class ConsoleOutput {
 
     public void printResult(String result) {
         System.out.println("\n실행 결과");
-        System.out.println(result);
+        System.out.print(result);
     }
 
     public String formatCars(final List<Car> cars) {
