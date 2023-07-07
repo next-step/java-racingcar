@@ -47,13 +47,13 @@ public class TokenUtils {
 
     private static void validateIsNumeric(final String token) {
         if (!isNumeric(token)) {
-            throw new IllegalArgumentException("숫자만 입력할 수 있습니다.");
+            throw new IllegalArgumentException(String.format("숫자만 입력할 수 있습니다. 입력한 데이터 : %s", token));
         }
     }
 
     private static void validateIsNonNegative(final int num) {
         if (num < 0) {
-            throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
+            throw new IllegalArgumentException(String.format("음수는 입력할 수 없습니다. 입력한 데이터 : %d", num));
         }
     }
 }
