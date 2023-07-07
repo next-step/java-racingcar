@@ -39,3 +39,5 @@
 - `MockRandom`
   - 테스트 시, Random을 모킹하기 위한 객체
   - Random을 상속받으며, 생성 시 지정한 값을 반환한다.
+- `Position`
+  - 위치 값을 저장하는 
