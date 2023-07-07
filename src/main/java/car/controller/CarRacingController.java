@@ -1,10 +1,10 @@
-package car;
+package car.controller;
 
-import car.controller.CarRacingGame;
+import car.domain.CarRacingGame;
 import car.view.InputView;
 import car.view.OutputView;
 
-public class CarRacingMain {
+public class CarRacingController {
 
     public static void main(String[] args) {
         final CarRacingGame game = new CarRacingGame(InputView.getCarNames(), InputView.getPlayCount());

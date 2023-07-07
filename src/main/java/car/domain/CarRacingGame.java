@@ -1,4 +1,4 @@
-package car.controller;
+package car.domain;
 
 import car.domain.Car;
 import car.domain.CarFormatter;

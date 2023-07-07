@@ -1,6 +1,6 @@
 package car.view;
 
-import car.controller.CarRacingGame;
+import car.domain.CarRacingGame;
 import car.domain.CarFormatter;
 import car.domain.Name;
 import java.util.List;
