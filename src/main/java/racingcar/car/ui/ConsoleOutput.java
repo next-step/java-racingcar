@@ -10,13 +10,16 @@ public class ConsoleOutput {
         System.out.println(formatCarWinners(winners) + "가 최종 우승했습니다.");
     }
 
-    public void printCars(final List<Car> cars) {
-        cars.forEach(this::printCar);
-        System.out.println();
+    public void printResult(String result) {
+        System.out.println("\n실행 결과");
+        System.out.println(result);
     }
 
-    private void printCar(final Car car) {
-        System.out.println(formatCar(car));
+    public String formatCars(final List<Car> cars) {
+        StringBuilder sb =  new StringBuilder();
+        cars.forEach(car -> sb.append(formatCar(car)).append('\n'));
+        sb.append('\n');
+        return sb.toString();
     }
 
     private String formatCarWinners(final List<Car> winners) {

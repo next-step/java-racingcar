@@ -34,11 +34,12 @@ public class CarRacingGame {
      * @param count 게임 플레이 횟수
      */
     private void startRace(int count) {
-        System.out.println("\n실행 결과");
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < count; i++) {
             cars.move();
-            consoleOutput.printCars(cars.getCars());
+            sb.append(consoleOutput.formatCars(cars.getCars()));
         }
+        consoleOutput.printResult(sb.toString());
     }
 
     /**
