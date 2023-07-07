@@ -34,16 +34,11 @@ public class RacingGame {
     }
 
     private String getResult() {
-        String result = Arrays.stream(cars.getResult())
-                .collect(Collectors.joining(NEWLINE));
-        return result + DOUBLE_NEWLINE;
+        return String.join(NEWLINE, cars.getResult()) + DOUBLE_NEWLINE;
     }
 
     private String getWinner() {
-        String result = Arrays.stream(cars.getWinners())
-                .collect(Collectors.joining(COMMA));
-
-        return result + WINNER_MESSAGE;
+        return String.join(COMMA, cars.getWinners()) + WINNER_MESSAGE;
     }
 
     private static void validateCount(String count) {
