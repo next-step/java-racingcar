@@ -49,7 +49,7 @@ public final class Race {
     }
 
     private void doPlay(final MovableStrategy movableStrategy, final Car car) {
-        if (RaceUtil.determineCarMovement(movableStrategy.generate())) {
+        if (movableStrategy.isMove()) {
             car.moveForward();
         }
     }

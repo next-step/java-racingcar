@@ -2,14 +2,14 @@ package racingcar;
 
 public final class FixedMovableStrategy implements MovableStrategy {
 
-    private final int value;
+    private final boolean move;
 
-    public FixedMovableStrategy(final int value) {
-        this.value = value;
+    public FixedMovableStrategy(final boolean move) {
+        this.move = move;
     }
 
     @Override
-    public int generate() {
-        return this.value;
+    public boolean isMove() {
+        return this.move;
     }
 }
