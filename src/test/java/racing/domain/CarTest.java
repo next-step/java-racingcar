@@ -52,4 +52,24 @@ public class CarTest {
         //when, then
         assertThat(car1.isSamePosition(car2)).isFalse();
     }
+
+    @Test
+    void winningAgainstTest() {
+        //given
+        Car car1 = new Car("pobi", 2);
+        Car car2 = new Car("crong", 1);
+
+        //when, then
+        assertThat(car1.getWinnerAgainst(car2)).isEqualTo(car1);
+    }
+
+    @Test
+    void drawAgainstTest() {
+        //given
+        Car car1 = new Car("pobi", 1);
+        Car car2 = new Car("crong", 1);
+
+        //when, then
+        assertThat(car1.getWinnerAgainst(car2)).isEqualTo(car1);
+    }
 }

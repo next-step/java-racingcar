@@ -56,4 +56,11 @@ public class Car {
     public boolean isSamePosition(Car other) {
         return this.position.equals(other.position);
     }
+
+    public Car getWinnerAgainst(Car other) {
+        if (this.position.compareTo(other.position) >= 0) {
+            return this;
+        }
+        return other;
+    }
 }
