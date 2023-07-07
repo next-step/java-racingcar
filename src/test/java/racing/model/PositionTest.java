@@ -31,4 +31,10 @@ class PositionTest {
         position = position.goForward();
         assertThat(position).isEqualTo(new Position(2));
     }
+
+    @DisplayName("isValue 테스트")
+    @Test
+    void isValueTest() {
+        assertThat(new Position(1).isValue(1)).isTrue();
+    }
 }

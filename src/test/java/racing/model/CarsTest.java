@@ -1,5 +1,6 @@
 package racing.model;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -13,6 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarsTest {
 
+    @DisplayName("라운드 정상 진행 테스트")
     @ParameterizedTest
     @CsvSource({"0,1", "3,1", "4,2", "9,2"})
     void nextStepTest(int generatedNumber, int expected) {
@@ -26,14 +28,14 @@ public class CarsTest {
         //then
         assertThat(result.get(0).getPosition()).isEqualTo(expected);
         assertThat(result.get(1).getPosition()).isEqualTo(expected);
-
     }
 
-
+    @DisplayName("우승자 정상 반환 테스트")
     @Test
     void getWinnersTest() {
         //given
         Cars cars = new Cars(Arrays.asList("test2", "test3"));
+
         //when
         List<CarVO> result = cars.getWinners();
 

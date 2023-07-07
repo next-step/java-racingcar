@@ -13,7 +13,7 @@ public class Car {
         this.position = this.position.goForward();
     }
 
-    public boolean isPositionMatch(int positionValue) {
+    public boolean isPositionValue(int positionValue) {
         return this.position.isValue(positionValue);
     }
 

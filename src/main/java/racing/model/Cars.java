@@ -28,13 +28,13 @@ public class Cars {
     }
 
     public List<CarVO> getCars() {
-        return cars.stream()
+        return this.cars.stream()
                 .map(CarVO::new)
                 .collect(Collectors.toList());
     }
 
     public List<CarVO> nextStep(NumberGenerator numberGenerator) {
-        for (Car car : cars) {
+        for (Car car : this.cars) {
             goForwardIfMovable(car, numberGenerator);
         }
         return this.getCars();
@@ -58,15 +58,14 @@ public class Cars {
     }
 
     public List<CarVO> getWinners() {
-        int maxPosition = cars.stream()
+        int maxPosition = this.cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
                 .orElseThrow(IllegalPositionException::new);
-        return cars.stream()
-                .filter(car -> car.isPositionMatch(maxPosition))
+        return this.cars.stream()
+                .filter(car -> car.isPositionValue(maxPosition))
                 .map(CarVO::new)
                 .collect(Collectors.toList());
-
     }
 
 }

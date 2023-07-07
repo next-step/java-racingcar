@@ -28,8 +28,8 @@ public final class Position {
         return new Position(this.value + 1);
     }
 
-    public boolean isValue(int positionValue) {
-        return this.value == positionValue;
+    public boolean isValue(int value) {
+        return this.value == value;
     }
 
     public int getValue() {
