@@ -18,7 +18,7 @@ public class RacingService {
     }
 
     public boolean isRacing() {
-        return (count.getTryCount() != 0) ? true : false;
+        return count.isRacingRemain();
     }
 
     public void runRaceOnce() {

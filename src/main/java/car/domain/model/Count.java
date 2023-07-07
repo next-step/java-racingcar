@@ -14,7 +14,7 @@ public final class Count {
     /**
      * @param userInputCount
      * @return int
-     * @exception NumberNegativeException 음수인 경우
+     * @throws NumberNegativeException 음수인 경우
      */
     private int validatePositive(final int userInputCount) {
         if (userInputCount < 0) {
@@ -27,8 +27,8 @@ public final class Count {
         tryCount--;
     }
 
-    public int getTryCount() {
-        return tryCount;
+    public boolean isRacingRemain() {
+        return (tryCount > 0);
     }
 
     @Override
@@ -47,4 +47,5 @@ public final class Count {
     public int hashCode() {
         return Objects.hash(tryCount);
     }
+
 }
