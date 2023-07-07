@@ -15,7 +15,7 @@ public final class CarName {
 
     /**
      * @param carName
-     * @exception TextLengthException :
+     * @throws TextLengthException :
      */
     private void validateNameLength(final String carName) {
         if (carName.length() > TEXT_LENGTH_LIMIT) {
