@@ -8,6 +8,9 @@ import java.util.stream.Collectors;
 
 public class OutputView {
 
+    private static final String COLON = " : ";
+    private static final String POSITION_STRING = "-";
+
     public static void printInitialStatus(List<CarStatus> initialStatus) {
         System.out.println();
         System.out.println("실행 결과");
@@ -26,7 +29,7 @@ public class OutputView {
     }
 
     private static String carStatusToString(CarStatus carStatus) {
-        return carStatus.getName() + " : " + "-".repeat(carStatus.getPosition());
+        return carStatus.getName() + COLON + POSITION_STRING.repeat(carStatus.getPosition());
     }
 
     public static void printWinners(List<CarName> winnerNames) {
