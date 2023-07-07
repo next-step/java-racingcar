@@ -1,9 +1,12 @@
 package racingcar.car;
 
+import racingcar.util.MathUtil;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
+
     private final List<Car> cars;
 
     public Cars(List<CarName> carNames) {
@@ -17,18 +20,19 @@ public class Cars {
     }
 
     public List<String> getWinnerNames() {
-        int winnerPosition = getHighPosition();
+        Position winnerPosition = getMaxPosition();
         return cars.stream()
                 .filter(c -> c.isWinner(winnerPosition))
                 .map(Car::getName)
                 .collect(Collectors.toList());
     }
 
-    private int getHighPosition() {
-        return cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElse(Car.DEFAULT_POSITION);
+    private Position getMaxPosition() {
+        Position maxPosition = new Position();
+        for (Car car : cars) {
+            maxPosition = MathUtil.max(maxPosition, car.getPosition());
+        }
+        return maxPosition;
     }
 
     public List<CarResponse> getCars() {
