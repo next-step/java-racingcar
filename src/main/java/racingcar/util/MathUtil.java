@@ -1,6 +1,6 @@
 package racingcar.util;
 
-import racingcar.car.Position;
+import racingcar.domain.Position;
 
 public class MathUtil {
 
