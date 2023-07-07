@@ -92,7 +92,7 @@ public class RacingCarTest {
             Race race = createRace(input, beforeCount);
 
             // when
-            race.play(new FixedNumberGenerator(4));
+            race.play(new FixedMovableStrategy(4));
 
             // then
             assertThat(race.getLeftRound()).isEqualTo(beforeCount - 1);
@@ -105,12 +105,12 @@ public class RacingCarTest {
             Race race = createRace(input, 5);
 
             // when & then
-            race.play(new FixedNumberGenerator(4));
+            race.play(new FixedMovableStrategy(4));
             for (Car car : race.getCars()) {
                 assertThat(car.getPosition()).isEqualTo(1);
             }
 
-            race.play(new FixedNumberGenerator(5));
+            race.play(new FixedMovableStrategy(5));
             for (Car car : race.getCars()) {
                 assertThat(car.getPosition()).isEqualTo(2);
             }
@@ -123,12 +123,12 @@ public class RacingCarTest {
             Race race = createRace(input, 5);
 
             // when & then
-            race.play(new FixedNumberGenerator(0));
+            race.play(new FixedMovableStrategy(0));
             for (Car car : race.getCars()) {
                 assertThat(car.getPosition()).isEqualTo(0);
             }
 
-            race.play(new FixedNumberGenerator(3));
+            race.play(new FixedMovableStrategy(3));
             for (Car car : race.getCars()) {
                 assertThat(car.getPosition()).isEqualTo(0);
             }

@@ -1,6 +1,6 @@
 package racingcar.controller;
 
-import racingcar.NumberGenerator;
+import racingcar.MovableStrategy;
 import racingcar.dto.RaceRequest;
 import racingcar.dto.RaceResponse;
 import racingcar.service.Race;
@@ -13,13 +13,13 @@ public final class RaceController {
 
     private final InputView inputView;
     private final OutputView outputView;
-    private final NumberGenerator numberGenerator;
+    private final MovableStrategy movableStrategy;
     private Race race;
 
-    public RaceController(final NumberGenerator numberGenerator) {
+    public RaceController(final MovableStrategy movableStrategy) {
         this.inputView = new InputView();
         this.outputView = new OutputView();
-        this.numberGenerator = numberGenerator;
+        this.movableStrategy = movableStrategy;
     }
 
     public void start() throws IOException {
@@ -29,7 +29,7 @@ public final class RaceController {
     }
 
     public void run() {
-        OutputView.printStartMessage();
+        outputView.printStartMessage();
         doRace();
     }
 
@@ -40,7 +40,7 @@ public final class RaceController {
     private void doRace() {
         final int leftRound = race.getLeftRound();
         for (int round = 0; round < leftRound; round++) {
-            race.play(numberGenerator);
+            race.play(movableStrategy);
             outputView.printRound(new RaceResponse(race.getCars()));
         }
     }

@@ -7,7 +7,7 @@ public final class OutputView {
 
     private static final String START_MESSAGE = "실행 결과";
 
-    public static void printStartMessage() {
+    public void printStartMessage() {
         System.out.println(START_MESSAGE);
     }
 

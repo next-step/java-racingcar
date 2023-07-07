@@ -1,5 +1,6 @@
 package racingcar;
 
-public interface NumberGenerator {
+public interface MovableStrategy {
+
     int generate();
 }

@@ -1,6 +1,6 @@
 package racingcar.service;
 
-import racingcar.NumberGenerator;
+import racingcar.MovableStrategy;
 import racingcar.domain.Cars;
 import racingcar.domain.Round;
 import racingcar.dto.RaceRequest;
@@ -41,15 +41,15 @@ public final class Race {
         return this.leftRound.getRound();
     }
 
-    public void play(final NumberGenerator numberGenerator) {
+    public void play(final MovableStrategy movableStrategy) {
         startRound();
         for (final Car car : cars.getCars()) {
-            doPlay(numberGenerator, car);
+            doPlay(movableStrategy, car);
         }
     }
 
-    private void doPlay(final NumberGenerator numberGenerator, final Car car) {
-        if (RaceUtil.determineCarMovement(numberGenerator.generate())) {
+    private void doPlay(final MovableStrategy movableStrategy, final Car car) {
+        if (RaceUtil.determineCarMovement(movableStrategy.generate())) {
             car.moveForward();
         }
     }
