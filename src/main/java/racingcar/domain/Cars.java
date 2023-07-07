@@ -3,6 +3,7 @@ package racingcar.domain;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toUnmodifiableList;
 import static racingcar.domain.RandomGenerator.generateNumber;
 
 public class Cars {
@@ -11,12 +12,18 @@ public class Cars {
     private static final String DUPLICATE_CAR_NAME_MESSAGE = "자동차 이름에 중복이 있습니다.";
     private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
+    public Cars(final List<Car> cars) {
         validateCarNames(cars);
-        this.cars = cars;
+        this.cars = cars.stream()
+                .map(Car::new)
+                .collect(toUnmodifiableList());
     }
 
-    private void validateCarNames(List<Car> cars) {
+    public Cars copy() {
+        return new Cars(this.cars);
+    }
+
+    private void validateCarNames(final List<Car> cars) {
         long distinctSize = cars.stream()
                 .distinct()
                 .count();
@@ -45,6 +52,6 @@ public class Cars {
     }
 
     public List<Car> getCars() {
-        return cars;
+        return this.cars;
     }
 }
