@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 public class Game {
 
     private final Cars cars;
-    private final TryCount tryCount;
+    private TryCount tryCount;
 
     public Game(List<CarName> carNames, TryCount tryCount) {
         this.cars = new Cars(carNames.stream()
@@ -18,9 +18,10 @@ public class Game {
 
     public List<List<CarStatus>> run() {
         List<List<CarStatus>> gameStatus = new ArrayList<>();
-        for (int i = 0; i < tryCount.getNumber(); i++) {
+        while (tryCount.isNotZero()) {
             cars.moveAll();
             gameStatus.add(getCarStatuses());
+            tryCount = tryCount.minus();
         }
         return gameStatus;
     }

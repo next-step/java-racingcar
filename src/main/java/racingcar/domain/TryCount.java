@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class TryCount {
 
-    private static final int MIN_COUNT = 1;
+    private static final int MIN_COUNT = 0;
 
     private final int number;
 
@@ -13,6 +13,10 @@ public class TryCount {
         if (isNotInRage(this.number)) {
             throw new IllegalArgumentException("범위에 포함되지 않는 숫자입니다. 1 이상의 숫자를 입력하세요.");
         }
+    }
+
+    public TryCount(int number) {
+        this(String.valueOf(number));
     }
 
     private int parseNumberOrThrow(String number) {
@@ -27,8 +31,12 @@ public class TryCount {
         return number < MIN_COUNT;
     }
 
-    public int getNumber() {
-        return number;
+    public TryCount minus() {
+        return new TryCount(this.number-1);
+    }
+
+    public boolean isNotZero() {
+        return number != 0;
     }
 
     @Override
