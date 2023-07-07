@@ -18,9 +18,9 @@ public class RacingApplication {
     }
 
     private RacingApplication() {
-        this.consoleInput = new ConsoleInput();
-        this.consoleView = new ConsoleView();
-        this.racingGamePlayController = new RacingGamePlayController();
+        this.consoleInput = ConsoleInput.getInstance();
+        this.consoleView = ConsoleView.getInstance();
+        this.racingGamePlayController = RacingGamePlayController.getInstance();
     }
 
     private void run() {

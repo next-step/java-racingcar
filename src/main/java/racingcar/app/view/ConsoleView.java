@@ -11,6 +11,13 @@ public class ConsoleView {
     private static final String NAME_POSITION_SEPERATE_EXPRESSION = " : ";
     private static final int NAME_THRESHOLD = 2;
 
+    private ConsoleView() {
+    }
+
+    public static ConsoleView getInstance() {
+        return SingletonHelper.INSTANCE;
+    }
+
     public void printResult(RacingGamePlayResponse response) {
         System.out.println("실행 결과");
         response.getRacingGameRoundResponses()
@@ -37,6 +44,12 @@ public class ConsoleView {
         StringBuilder stringBuilder = new StringBuilder();
         winnerNames.forEach(winnerName -> stringBuilder.append(winnerName).append(NAME_SEPERATE_EXPRESSION));
         return stringBuilder.substring(0, stringBuilder.length() - NAME_THRESHOLD);
+    }
+
+    private static final class SingletonHelper {
+
+        private static final ConsoleView INSTANCE = new ConsoleView();
+
     }
 
 }

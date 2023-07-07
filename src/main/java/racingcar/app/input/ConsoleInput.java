@@ -9,6 +9,13 @@ public class ConsoleInput {
 
     private static final String CAR_NAME_SEPERATE_EXPRESSION = ",";
 
+    private ConsoleInput() {
+    }
+
+    public static ConsoleInput getInstance() {
+        return SingletonHelper.INSTANCE;
+    }
+
     public RacingGamePlayControllerRequest input() {
         try (Scanner scanner = new Scanner(System.in)) {
             System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
@@ -17,6 +24,12 @@ public class ConsoleInput {
             int round = scanner.nextInt();
             return new RacingGamePlayControllerRequest(round, carNames);
         }
+    }
+
+    private static final class SingletonHelper {
+
+        private static final ConsoleInput INSTANCE = new ConsoleInput();
+
     }
 
 }

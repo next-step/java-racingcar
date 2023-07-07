@@ -25,7 +25,7 @@ class RacingGamePlayControllerTest {
 
             private final int round = 5;
             private final List<String> carNames = List.of("pobi", "crong", "honux");
-            private final RacingGamePlayController controller = new RacingGamePlayController();
+            private final RacingGamePlayController controller = RacingGamePlayController.getInstance();
             private final RacingGamePlayControllerRequest request
                 = new RacingGamePlayControllerRequest(round, carNames);
 

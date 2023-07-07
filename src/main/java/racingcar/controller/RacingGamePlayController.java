@@ -13,6 +13,13 @@ public class RacingGamePlayController {
 
     private static final Moveable randomMover = RandomMover.newInstance();
 
+    private RacingGamePlayController() {
+    }
+
+    public static RacingGamePlayController getInstance() {
+        return SingletonHelper.INSTANCE;
+    }
+
     public RacingGamePlayResponse playRacingGame(RacingGamePlayControllerRequest request) {
         RacingGame racingGame = new RacingGame(request.getRound(), createCarsByCarNames(request.getCarNames()));
         return racingGame.playAndGetRoundResults();
@@ -22,6 +29,12 @@ public class RacingGamePlayController {
         return carNames.stream()
             .map(carName -> new Car(carName, randomMover))
             .collect(Collectors.toList());
+    }
+
+    private static final class SingletonHelper {
+
+        private static final RacingGamePlayController INSTANCE = new RacingGamePlayController();
+
     }
 
 }
