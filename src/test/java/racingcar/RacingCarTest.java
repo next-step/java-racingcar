@@ -12,31 +12,8 @@ import racingcar.domain.Name;
 import racingcar.domain.Round;
 import racingcar.dto.RaceRequest;
 import racingcar.service.Race;
-import racingcar.util.RaceUtil;
-
-import java.util.stream.IntStream;
 
 public class RacingCarTest {
-
-    @Nested
-    class RaceUtilTest {
-        @Test
-        void 자동차가멈추는범위의수가생성되면_정지성공() {
-            // when & then
-            IntStream.rangeClosed(0, 3).forEach(i -> {
-                assertThat(RaceUtil.determineCarMovement(i)).isFalse();
-            });
-
-        }
-
-        @Test
-        void 자동차가전진하는범위의수가생성되면_전진성공() {
-            // when & then
-            IntStream.rangeClosed(4, 9).forEach(i -> {
-                assertThat(RaceUtil.determineCarMovement(i)).isTrue();
-            });
-        }
-    }
 
     @Nested
     class CarTest {
