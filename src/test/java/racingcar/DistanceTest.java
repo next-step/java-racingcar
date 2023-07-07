@@ -20,8 +20,7 @@ public class DistanceTest {
         Distance distance = new Distance();
 
         distance.increase();
-        
-        assertThat(distance).isEqualTo(new Distance(1));
 
+        assertThat(distance).isEqualTo(new Distance(1));
     }
 }

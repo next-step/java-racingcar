@@ -4,10 +4,18 @@ import java.util.Objects;
 
 public class Distance {
 
-    private final int distance;
+    private int distance;
 
     public Distance(int distance) {
         this.distance = distance;
+    }
+
+    public Distance() {
+        this(0);
+    }
+
+    public void increase() {
+        distance++;
     }
 
     @Override
