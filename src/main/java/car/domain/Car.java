@@ -5,7 +5,6 @@ import java.util.Objects;
 public class Car {
 
     private static final int CAR_MOVE_LOWER_LIMIT = 4;
-    private static final int CAR_STOP = 0;
     private static final int CAR_MOVE = 1;
 
     private final CarName name;
