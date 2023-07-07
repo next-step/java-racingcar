@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import racing.exception.IllegalCarNameException;
 import racing.exception.IllegalCountException;
 import racing.generator.SpecificNumberGenerator;
-import racing.controller.input.RacingInput;
+import racing.input.RacingInput;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

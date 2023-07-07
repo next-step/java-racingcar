@@ -1,4 +1,4 @@
-package racing.controller.input;
+package racing.input;
 
 import racing.exception.IllegalCountException;
 

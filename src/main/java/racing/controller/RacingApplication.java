@@ -1,9 +1,9 @@
 package racing.controller;
 
 import racing.generator.NumberGenerator;
-import racing.controller.input.RacingInput;
+import racing.input.RacingInput;
 import racing.model.RacingManager;
-import racing.view.output.RacingOutput;
+import racing.output.RacingOutput;
 import racing.view.RacingView;
 
 import java.util.List;

@@ -1,6 +1,7 @@
-package racing.controller.input;
+package racing.input;
 
 import org.junit.jupiter.api.Test;
+import racing.input.RacingInput;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;

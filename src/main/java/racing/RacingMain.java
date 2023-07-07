@@ -4,7 +4,7 @@ package racing;
 import racing.controller.RacingApplication;
 import racing.exception.RacingBaseException;
 import racing.generator.RandomNumberGenerator;
-import racing.controller.input.RacingInput;
+import racing.input.RacingInput;
 
 public class RacingMain {
     public static void main(String[] args) {
