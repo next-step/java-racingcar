@@ -35,7 +35,7 @@ public class PositionTest {
     @DisplayName("특정 위치에서 움직이면 위치가 변한다.")
     void test_03() {
         /* given */
-        final Position position = new Position();
+        final Position position = new Position(0);
 
         /* when */
         final Position next = position.move(3);

@@ -8,10 +8,6 @@ public class Position {
 
     private final int value;
 
-    public Position() {
-        this(0);
-    }
-
     public Position(final int value) {
         if (value < MIN_VALUE) {
             throw new IllegalArgumentException("[ERROR] 위치는 " + MIN_VALUE + "이상이어야 합니다.");
