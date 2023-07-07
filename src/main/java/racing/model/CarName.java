@@ -8,13 +8,13 @@ public class CarName {
 
     private final String name;
 
-    public CarName(String name) {
+    public CarName(final String name) {
         validateName(name);
         this.name = name;
     }
 
     private void validateName(String name) {
-        if (name == null || name.length() < MIN_LENGTH || name.length() > MAX_LENGTH) {
+        if (name == null || name.isBlank() || name.length() < MIN_LENGTH || name.length() > MAX_LENGTH) {
             throw new IllegalCarNameException();
         }
     }

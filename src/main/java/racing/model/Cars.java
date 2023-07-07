@@ -1,5 +1,7 @@
 package racing.model;
 
+import racing.exception.IllegalCarNameException;
+import racing.exception.IllegalPositionException;
 import racing.exception.IllegalRandomNumberException;
 import racing.generator.NumberGenerator;
 
@@ -13,9 +15,16 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(List<String> carNames) {
+        validateCarNames(carNames);
         this.cars = carNames.stream()
                 .map(Car::new)
                 .collect(Collectors.toList());
+    }
+
+    private void validateCarNames(List<String> carNames) {
+        if (carNames.isEmpty()) {
+            throw new IllegalCarNameException();
+        }
     }
 
     public List<CarVO> getCars() {
@@ -49,11 +58,12 @@ public class Cars {
     }
 
     public List<CarVO> getWinners() {
-        int maxValue = cars.stream()
+        int maxPosition = cars.stream()
                 .mapToInt(Car::getPosition)
-                .max().orElse(-1);
+                .max()
+                .orElseThrow(() -> new IllegalPositionException());
         return cars.stream()
-                .filter(car -> car.getPosition() == maxValue)
+                .filter(car -> car.isPositionMatch(maxPosition))
                 .map(CarVO::new)
                 .collect(Collectors.toList());
 
