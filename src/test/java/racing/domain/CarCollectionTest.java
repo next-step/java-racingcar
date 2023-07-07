@@ -2,7 +2,6 @@ package racing.domain;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import racing.generator.NumberGenerator;
 import racing.generator.SpecificNumberGenerator;
 
 import java.util.ArrayList;
@@ -52,7 +51,6 @@ class CarCollectionTest {
         cars.add(new Car("test1"));
         cars.add(new Car(new Name("test2"), new Position(2)));
         cars.add(new Car(new Name("test3"), new Position(2)));
-        NumberGenerator numberGenerator = new SpecificNumberGenerator(0);
         CarCollection carCollection = new CarCollection(cars);
 
         //when
