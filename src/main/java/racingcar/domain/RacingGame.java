@@ -3,8 +3,10 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
+import racingcar.domain.extension.Moveable;
 import racingcar.domain.response.RacingGamePlayResponse;
 import racingcar.domain.response.RacingGamePlayResponse.CarPerRoundResponse;
 import racingcar.domain.response.RacingGamePlayResponse.RacingGameRoundResponse;
@@ -18,10 +20,20 @@ public class RacingGame {
     private final int round;
     private final List<Car> cars;
 
-    public RacingGame(int round, List<Car> cars) {
+    public RacingGame(int round, List<String> carNames, Moveable moveable) {
+        this(round, createCarsByCarNames(carNames, moveable));
+    }
+
+    RacingGame(int round, List<Car> cars) {
         preAssert(round, cars);
         this.round = round;
         this.cars = cars;
+    }
+
+    private static List<Car> createCarsByCarNames(List<String> carNames, Moveable moveable) {
+        return carNames.stream()
+            .map(carName -> new Car(carName, moveable))
+            .collect(Collectors.toList());
     }
 
     private void preAssert(int round, List<Car> cars) {
@@ -92,4 +104,28 @@ public class RacingGame {
         return currentPosition == winnerPosition;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof RacingGame)) {
+            return false;
+        }
+        RacingGame that = (RacingGame) o;
+        return round == that.round && Objects.equals(cars, that.cars);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(round, cars);
+    }
+
+    @Override
+    public String toString() {
+        return "RacingGame{" +
+            "round=" + round +
+            ", cars=" + cars +
+            '}';
+    }
 }
