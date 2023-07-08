@@ -1,42 +1,29 @@
 package stringcalculator;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Elements {
-    private final List<String> elements;
+    private final List<Element> elements;
 
-    public Elements(String[] elements) {
-        validate(elements);
-        this.elements = List.of(elements);
+    public Elements(String[] values) {
+        this.elements = generateElements(values);
     }
 
-    private void validate(String[] elements) {
-        for (String element : elements) {
-            validateNumber(element);
-        }
-    }
-
-    private void validateNumber(String element) {
-        if (!element.matches("^[0-9]*$")) {
-            throw new RuntimeException("0이상 9이상의 숫자만 가능합니다");
-        }
+    private List<Element> generateElements(String[] values) {
+        return Arrays.stream(values)
+                .map(value -> new Element(value))
+                .collect(Collectors.toList());
     }
 
     public int sum() {
-        System.out.println("elements = " + elements);
         if (elements.isEmpty()) {
             return 0;
         }
 
         return elements.stream()
-                .mapToInt(element -> stringToInt(element))
+                .mapToInt(Element::toInt)
                 .sum();
-    }
-
-    private int stringToInt(String element) {
-        if (element.isBlank()) {
-            return 0;
-        }
-        return Integer.parseInt(element);
     }
 }
