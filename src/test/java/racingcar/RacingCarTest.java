@@ -84,12 +84,12 @@ public class RacingCarTest {
 
             // when & then
             race.play();
-            for (Car car : race.getCars()) {
+            for (Car car : race.getCars().getCars()) {
                 assertThat(car.getPosition()).isEqualTo(1);
             }
 
             race.play();
-            for (Car car : race.getCars()) {
+            for (Car car : race.getCars().getCars()) {
                 assertThat(car.getPosition()).isEqualTo(2);
             }
         }
@@ -102,12 +102,12 @@ public class RacingCarTest {
 
             // when & then
             race.play();
-            for (Car car : race.getCars()) {
+            for (Car car : race.getCars().getCars()) {
                 assertThat(car.getPosition()).isEqualTo(0);
             }
 
             race.play();
-            for (Car car : race.getCars()) {
+            for (Car car : race.getCars().getCars()) {
                 assertThat(car.getPosition()).isEqualTo(0);
             }
         }
