@@ -52,6 +52,7 @@
   - [x] 우승 자동차를 콘솔 기반으로 알려주는 역할을 가지는 클래스 : ConsoleView
 
 ### 아키텍처
-<img width="1143" alt="스크린샷 2023-07-07 오후 2 23 26" src="https://github.com/devxb/java-racingcar/assets/62425964/4259b781-f7b7-43b4-acbd-e288df4060ed">
+<img width="1257" alt="스크린샷 2023-07-08 오전 8 57 23" src="https://github.com/devxb/java-racingcar/assets/62425964/43a40da9-a399-4bc3-b293-7aaf9e75cc19">
+
 
 
