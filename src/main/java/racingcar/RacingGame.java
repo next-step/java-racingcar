@@ -1,6 +1,8 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
@@ -19,20 +21,20 @@ public class RacingGame {
         this.count = count;
     }
 
-    public String play() {
-        StringBuilder sb = new StringBuilder();
+    public List<String> play() {
+        List<String> playResult = new ArrayList<>();
 
         while (count.isRemaining()) {
             cars.move();
             count = count.tryOnce();
 
-            sb.append(getResult());
+            playResult.add(getResult());
         }
 
-        sb.append(getResult());
-        sb.append(getWinner());
+        playResult.add(getResult());
+        playResult.add(getWinner());
 
-        return sb.toString();
+        return playResult;
     }
 
     private String getResult() {

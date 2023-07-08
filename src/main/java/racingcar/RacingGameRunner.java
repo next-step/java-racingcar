@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.List;
+
 public class RacingGameRunner {
 
     private final View view = new View();
@@ -13,7 +15,7 @@ public class RacingGameRunner {
                 new Count(count)
         );
 
-        String racingGameResult = racingGame.play();
+        List<String> racingGameResult = racingGame.play();
 
         view.printResult(racingGameResult);
     }
