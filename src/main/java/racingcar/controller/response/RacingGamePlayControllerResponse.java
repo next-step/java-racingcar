@@ -1,11 +1,12 @@
 package racingcar.controller.response;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 import racingcar.usecase.response.RacingGamePlayResponse;
 import racingcar.usecase.response.RacingGamePlayResponse.CarPerRoundResponse;
 import racingcar.usecase.response.RacingGamePlayResponse.RacingGameRoundResponse;
+
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class RacingGamePlayControllerResponse {
 
@@ -74,10 +75,6 @@ public class RacingGamePlayControllerResponse {
             List<ControllerCarPerRoundResponse> carPerRoundResponses) {
             this.round = round;
             this.carPerRoundResponses = carPerRoundResponses;
-        }
-
-        public int getRound() {
-            return round;
         }
 
         public List<ControllerCarPerRoundResponse> getCarPerRoundResponses() {
