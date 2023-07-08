@@ -10,16 +10,14 @@ import racingcar.car.view.OutputView;
 public class CarRacingGame {
 
     private final Cars cars;
-    private final InputView inputView = new InputView();
-    private final OutputView outputView = new OutputView();
 
 
     public CarRacingGame() {
-        cars = new Cars(inputView.getCarNames());
+        cars = new Cars(InputView.getCarNames());
     }
 
     public void play() {
-        startRace(inputView.getPlayCount());
+        startRace(InputView.getPlayCount());
         printWinners();
     }
 
@@ -27,13 +25,13 @@ public class CarRacingGame {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < count; i++) {
             cars.move(new RandomMoveStrategy());
-            sb.append(outputView.formatCars(cars.getCars()));
+            sb.append(OutputView.formatCars(cars.getCars()));
         }
-        outputView.printResult(sb.toString());
+        OutputView.printResult(sb.toString());
     }
 
     private void printWinners() {
         List<Car> winners = cars.getWinners();
-        outputView.printWinners(winners);
+        OutputView.printWinners(winners);
     }
 }
