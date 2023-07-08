@@ -1,10 +1,10 @@
-package racingcar.car.ui;
+package racingcar.car.view;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.car.domain.Car;
 
-public final class ConsoleOutput {
+public final class OutputView {
 
     public void printWinners(final List<Car> winners) {
         System.out.println(formatCarWinners(winners) + "가 최종 우승했습니다.");

@@ -1,8 +1,8 @@
-package racingcar.car.ui;
+package racingcar.car.view;
 
 import java.util.Scanner;
 
-public class ConsoleInput {
+public class InputView {
 
     private final Scanner scanner = new Scanner(System.in);
 

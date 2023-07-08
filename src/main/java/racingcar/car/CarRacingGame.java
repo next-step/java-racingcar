@@ -3,8 +3,8 @@ package racingcar.car;
 import java.util.List;
 import racingcar.car.domain.Car;
 import racingcar.car.domain.Cars;
-import racingcar.car.ui.ConsoleInput;
-import racingcar.car.ui.ConsoleOutput;
+import racingcar.car.view.InputView;
+import racingcar.car.view.OutputView;
 
 /**
  * 자동차 경주 게임 프로그램
@@ -12,16 +12,16 @@ import racingcar.car.ui.ConsoleOutput;
 public class CarRacingGame {
 
     private final Cars cars;
-    private final ConsoleInput consoleInput = new ConsoleInput();
-    private final ConsoleOutput consoleOutput = new ConsoleOutput();
+    private final InputView inputView = new InputView();
+    private final OutputView outputView = new OutputView();
 
 
     public CarRacingGame() {
-        cars = new Cars(consoleInput.getCarNames());
+        cars = new Cars(inputView.getCarNames());
     }
 
     public void play() {
-        startRace(consoleInput.getPlayCount());
+        startRace(inputView.getPlayCount());
         printWinners();
     }
 
@@ -34,9 +34,9 @@ public class CarRacingGame {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < count; i++) {
             cars.move();
-            sb.append(consoleOutput.formatCars(cars.getCars()));
+            sb.append(outputView.formatCars(cars.getCars()));
         }
-        consoleOutput.printResult(sb.toString());
+        outputView.printResult(sb.toString());
     }
 
     /**
@@ -44,6 +44,6 @@ public class CarRacingGame {
      */
     private void printWinners() {
         List<Car> winners = cars.getWinners();
-        consoleOutput.printWinners(winners);
+        outputView.printWinners(winners);
     }
 }
