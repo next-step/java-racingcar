@@ -54,6 +54,15 @@ public class Car {
         return this.distance.isGreaterThan(car.distance);
     }
 
+
+    public Car returnFurtherMovedCar(Car car) {
+        if (this.distance.isGreaterThan(car.distance)) {
+            return this;
+        }
+        
+        return car;
+    }
+
     public String getName() {
         return name.getCarName();
     }
