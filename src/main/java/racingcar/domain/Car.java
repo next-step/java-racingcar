@@ -17,8 +17,8 @@ public class Car {
     }
 
     public void move(final MoveStrategy strategy) {
-        final int amount = strategy.amount();
-        this.position = position.move(amount);
+        final int distance = strategy.getMoveDistance();
+        this.position = position.move(distance);
     }
 
     public boolean isSamePositionWith(final Car car) {

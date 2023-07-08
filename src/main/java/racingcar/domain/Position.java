@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Position {
     private static final int MIN_VALUE = 0;
-    private static final int MIN_AMOUNT = 0;
+    private static final int MIN_DISTANCE = 0;
 
     private final int value;
 
@@ -16,12 +16,12 @@ public class Position {
         this.value = value;
     }
 
-    Position move(final int amount) {
-        if (amount < MIN_AMOUNT) {
+    Position move(final int distance) {
+        if (distance < MIN_DISTANCE) {
             throw new IllegalArgumentException("[ERROR] 후진은 불가능합니다.");
         }
 
-        return new Position(value + amount);
+        return new Position(value + distance);
     }
 
     public int getDifferenceWith(final Position position) {
