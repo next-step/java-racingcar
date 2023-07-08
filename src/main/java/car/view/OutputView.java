@@ -6,9 +6,17 @@ import java.util.stream.Collectors;
 import car.domain.model.Car;
 import car.domain.model.Cars;
 
-public class OutputView {
+public final class OutputView {
 
     private static StringBuilder sb;
+
+    public static void printCarNameText() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+    }
+
+    public static void printCountText() {
+        System.out.println("시도할 회수는 몇회인가요?");
+    }
 
     public static void printEachRaceResult(final Cars cars) {
         sb = new StringBuilder();

@@ -3,18 +3,18 @@ package car.view;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class InputView {
+public final class InputView {
 
     private static final Scanner scanner = new Scanner(System.in);
 
     public static String enterCarName() {
-        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        OutputView.printCarNameText();
         return scanner.nextLine();
     }
 
     public static int enterCount() {
-        System.out.println("시도할 회수는 몇회인가요?");
-        int inputCount = 0;
+        OutputView.printCountText();
+        int inputCount;
         try {
             inputCount = scanner.nextInt();
         } catch (InputMismatchException ignore) {
