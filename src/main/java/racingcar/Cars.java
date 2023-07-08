@@ -25,6 +25,7 @@ public class Cars {
         }
     }
 
+    @Deprecated
     public List<String> findWinnerNames() {
         int maxDistance = findMaxCarDistance();
         return cars.stream()
@@ -45,7 +46,6 @@ public class Cars {
     }
 
     public List<Car> getMaxDistanceCars() {
-        List<Car> result = new ArrayList<>();
         Car maxDistanceCar = getMaxDistanceCar();
         return cars.stream().filter(car -> car.isSameDistance(maxDistanceCar)).collect(toList());
     }
