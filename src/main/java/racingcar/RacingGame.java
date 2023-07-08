@@ -10,23 +10,24 @@ public class RacingGame {
     private static final String COMMA = ",";
     private static final String DOUBLE_NEWLINE = "\n\n";
     private static final String WINNER_MESSAGE = " 가 최종 우승했습니다.";
-    public static final String NON_POSITIVE_EXCEPTION_MESSAGE = "실행 횟수는 양수만 가능합니다";
 
     private Random random = new Random();
 
     private final Cars cars;
-    private int count;
+    private Count count;
 
-    public RacingGame(Cars cars, String count) {
-        validateCount(count);
+    public RacingGame(Cars cars, Count count) {
         this.cars = cars;
-        this.count = Integer.parseInt(count.trim());
+        this.count = count;
     }
 
     public String play() {
         StringBuilder sb = new StringBuilder();
-        while (count-- > 0) {
+
+        while (count.isRemaining()) {
             cars.move(generateRandom());
+            count = count.tryOnce();
+
             sb.append(getResult());
         }
 
@@ -48,9 +49,5 @@ public class RacingGame {
         return String.join(COMMA, cars.getWinners()) + WINNER_MESSAGE;
     }
 
-    private static void validateCount(String count) {
-        if (!count.trim().matches("^[0-9]+$")) {
-            throw new RuntimeException(NON_POSITIVE_EXCEPTION_MESSAGE);
-        }
-    }
+
 }

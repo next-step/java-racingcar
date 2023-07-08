@@ -10,7 +10,7 @@ public class RacingGameRunner {
 
         RacingGame racingGame = new RacingGame(
                 new Cars(new CarNames(carNames)),
-                count
+                new Count(count)
         );
 
         String racingGameResult = racingGame.play();
