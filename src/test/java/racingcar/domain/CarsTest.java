@@ -22,7 +22,7 @@ class CarsTest {
     class DescribeNewConstructor {
 
         @Nested
-        @DisplayName("자동차 클래스들과 라운드 정보가 주어진다면,")
+        @DisplayName("자동차 클래스들이 주어진다면,")
         class ContextCarsInput {
 
             private final List<Car> cars = List.of(
@@ -71,7 +71,7 @@ class CarsTest {
         );
 
         @Nested
-        @DisplayName("play가 실행된 이후 호출하면,")
+        @DisplayName("playOneRound가 실행된 이후 호출하면,")
         class ContextCall {
 
             private final Cars cars = new Cars(DescribeRoundResultMethod.this.cars);
@@ -100,7 +100,7 @@ class CarsTest {
         }
 
         @Nested
-        @DisplayName("play가 두번 호출된 후, 호출되면")
+        @DisplayName("playOneRound가 두번 호출된 후, 호출되면")
         class ContextCallBeforePlayTwice {
 
             private final Cars cars = new Cars(DescribeRoundResultMethod.this.cars);
@@ -217,7 +217,7 @@ class CarsTest {
         );
 
         @Nested
-        @DisplayName("한판 진행 후 호출되면,")
+        @DisplayName("한 판 진행 후 호출되면,")
         class DescribeCall {
 
             private final Cars cars = new Cars(ContextGetWinnersMethod.this.cars);
