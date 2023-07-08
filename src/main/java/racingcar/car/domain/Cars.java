@@ -21,9 +21,13 @@ public class Cars {
 
     public void move(MoveStrategy moveStrategy) {
         for (Car car : list) {
-            if (moveStrategy.isMovable()) {
-                car.move();
-            }
+            moveCarByStrategy(moveStrategy, car);
+        }
+    }
+
+    private static void moveCarByStrategy(MoveStrategy moveStrategy, Car car) {
+        if (moveStrategy.isMovable()) {
+            car.move();
         }
     }
 
