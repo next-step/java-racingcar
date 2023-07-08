@@ -26,12 +26,8 @@ public final class Race {
         return new Race(cars, raceRequest.getTotalRound(), movableStrategy);
     }
 
-    private static Cars createCars(RaceRequest raceRequest) {
-        Cars cars = Cars.create();
-        for (final String carName : raceRequest.getNames()) {
-            cars.add(Car.create(carName));
-        }
-        return cars;
+    private static Cars createCars(final RaceRequest raceRequest) {
+        return Cars.of(raceRequest.getNames());
     }
 
     public Cars getCars() {
