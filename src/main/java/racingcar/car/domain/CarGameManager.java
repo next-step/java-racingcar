@@ -4,8 +4,8 @@ import java.util.List;
 
 public class CarGameManager {
 
+    private int playCount;
     private final Cars cars;
-    private final int playCount;
     private final MoveStrategy moveStrategy;
 
     public CarGameManager(String[] carNames, int playCount) {
@@ -15,6 +15,10 @@ public class CarGameManager {
     }
 
     public void race() {
+        if (!isRunning()) {
+            throw new IllegalStateException("이미 종료된 게임입니다.");
+        }
+        playCount--;
         cars.move(moveStrategy);
     }
 
