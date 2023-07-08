@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-import static org.assertj.core.api.Assertions.assertThatNoException;
+import static org.assertj.core.api.Assertions.*;
 
 public class CarsTest {
 
@@ -25,5 +24,30 @@ public class CarsTest {
         assertThatExceptionOfType(RuntimeException.class)
                 .isThrownBy(() -> new Cars(carNames))
                 .withMessageMatching(Cars.INVALID_CAR_NAME_EXCEPTION_MESSAGE);
+    }
+
+    @DisplayName("가장 많이 전진한 자동차가 우승한다")
+    @Test
+    void 자동차_우승자_판별() {
+        Cars cars = new Cars(
+                new Car("pobi", 3),
+                new Car("crong", 4),
+                new Car("honux", 5)
+        );
+
+        assertThat(cars.getWinners()).isEqualTo(new String[]{"honux"});
+    }
+
+    @DisplayName("우승하는 자동차는 여러대일 수 있다")
+    @Test
+    void 자동차_중복_우승자() {
+        Cars cars = new Cars(
+                new Car("pobi", 3),
+                new Car("crong", 5),
+                new Car("honux", 5),
+                new Car("loopi", 1)
+        );
+
+        assertThat(cars.getWinners()).isEqualTo(new String[]{"crong", "honux"});
     }
 }

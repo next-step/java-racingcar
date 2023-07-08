@@ -19,6 +19,10 @@ public class Cars {
         this.cars = generateCars(carNames);
     }
 
+    public Cars(Car... cars) {
+        this.cars = Arrays.stream(cars).collect(Collectors.toList());
+    }
+
     public void move() {
         for (Car car : cars) {
             car.move(generateRandom());
