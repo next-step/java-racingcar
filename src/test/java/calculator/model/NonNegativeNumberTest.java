@@ -30,9 +30,6 @@ class NonNegativeNumberTest {
     @ValueSource(strings = { "-1" })
     @DisplayName("잘못된 값을 입력받아 객체를 생성하는 경우")
     void createNegativeNumberTest(final String value) {
-        assertThatThrownBy(
-                () -> NonNegativeNumber.of(value)
-        ).isExactlyInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> NonNegativeNumber.of(value)).isExactlyInstanceOf(IllegalArgumentException.class);
     }
-
 }
