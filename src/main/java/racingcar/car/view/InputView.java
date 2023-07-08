@@ -4,10 +4,12 @@ import java.util.Scanner;
 
 public class InputView {
 
+    public static final String INPUT_SPLIT_REGEX = ",";
+
     private final Scanner scanner = new Scanner(System.in);
 
     public String[] split(final String inputText) {
-        return inputText.split(",");
+        return inputText.split(INPUT_SPLIT_REGEX);
     }
 
     public String[] getCarNames() {
