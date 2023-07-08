@@ -18,30 +18,10 @@ class CarTest {
         car = new Car("a");
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
-    @DisplayName("랜덤값이 4 이상일 경우 1칸 전진한다.")
-    void move_givenMoreThan4_moveOneStep(final int number) {
-        car.move(new RandomInt(10, new Random() {
-            @Override
-            public int nextInt(int bound) {
-                return number;
-            }
-        }));
+    @DisplayName("한 칸 이동한다.")
+    void move_moveOneStep() {
+        car.move();
         assertThat(car.getPosition()).isEqualTo(1);
-    }
-
-    @ParameterizedTest
-    @ValueSource(ints = {0, 1, 2, 3})
-    @DisplayName("랜덤값이 3 이하일 경우 움직이지 않는다.")
-    void move_givenBelowThan3_doNotMove(final int number) {
-        car.move(new RandomInt(10, new Random() {
-            @Override
-            public int nextInt(int bound) {
-                return number;
-            }
-        }));
-        assertThat(car.getPosition()).isZero();
     }
 
     @Test

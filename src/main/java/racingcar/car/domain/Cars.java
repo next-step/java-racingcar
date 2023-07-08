@@ -19,9 +19,10 @@ public class Cars {
         this.list = cars;
     }
 
-    public void move() {
+    public void move(MoveStrategy moveStrategy) {
         for (Car car : list) {
-            car.move(new RandomInt());
+            if (moveStrategy.isMovable())
+                car.move();
         }
     }
 
