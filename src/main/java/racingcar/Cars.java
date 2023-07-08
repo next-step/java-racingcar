@@ -1,5 +1,8 @@
 package racingcar;
 
+import racingcar.movable.Movable;
+import racingcar.movable.RandomMovable;
+
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
@@ -7,8 +10,10 @@ import static java.util.stream.Collectors.toList;
 public class Cars {
 
     private final List<Car> cars;
+    private final Movable movable;
 
     public Cars(List<Car> cars) {
+        this.movable = new RandomMovable();
         this.cars = cars;
     }
 
@@ -20,26 +25,31 @@ public class Cars {
 
     public void takeTurn() {
         for (Car car : cars) {
-            car.progress();
+            car.progress(movable);
         }
     }
 
-    public List<String> findWinnerNames() {
-        int maxDistance = findMaxCarDistance();
-        return cars.stream()
-                .filter(car -> car.isSameDistance(maxDistance))
+    public List<String> getMaxDistanceCarNames() {
+        return getMaxDistanceCars().stream()
                 .map(Car::getName)
                 .collect(toList());
     }
 
-    private int findMaxCarDistance() {
-        return cars.stream()
-                .mapToInt(Car::getDistance)
-                .max()
-                .orElse(0);
-    }
-    
     public RacingRoundRecord getRecord() {
         return RacingRoundRecord.from(cars);
+    }
+
+    private List<Car> getMaxDistanceCars() {
+        return cars.stream()
+                .filter(car -> car.isSameDistance(getMaxDistanceCar()))
+                .collect(toList());
+    }
+
+    private Car getMaxDistanceCar() {
+        Car maxDistanceCar = cars.get(0);
+        for (Car car : cars) {
+            maxDistanceCar = maxDistanceCar.returnFurtherMovedCar(car);
+        }
+        return maxDistanceCar;
     }
 }

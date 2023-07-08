@@ -1,57 +1,50 @@
 package racingcar;
 
+import racingcar.movable.Movable;
 import racingcar.number_generator.NumberGenerator;
 import racingcar.number_generator.RandomNumberGenerator;
 
 public class Car {
 
-    private static final int MAX_NAME_SIZE = 5;
-    static final String OVER_MAX_NAME_SIZE_ERROR_STRING = "이름의 길이가 " + MAX_NAME_SIZE + "글자 초과입니다.";
-    private static final int FORWARD_THRESHOLD = 4;
+    private final CarName name;
+    private final Distance distance;
 
-    private final String name;
-    private final NumberGenerator numberGenerator;
-    private int distance;
-
-    Car(String name, NumberGenerator numberGenerator) {
-        validateName(name);
-        this.name = name;
-        this.numberGenerator = numberGenerator;
+    public Car(String name, int distance) {
+        this.name = new CarName(name);
+        this.distance = new Distance(distance);
     }
 
     public Car(String name) {
-        this(name, new RandomNumberGenerator());
+        this(name, 0);
     }
 
-    private void validateName(String name) {
-        if (name.length() > MAX_NAME_SIZE) {
-            throw new IllegalArgumentException(OVER_MAX_NAME_SIZE_ERROR_STRING);
+    public void progress(Movable movable) {
+        if (movable.canMove()) {
+            distance.increase();
         }
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getDistance() {
-        return distance;
-    }
-
-    void forward() {
-        distance++;
-    }
-
-    public void progress() {
-        if (canMove()) {
-            forward();
-        }
-    }
-
-    private boolean canMove() {
-        return numberGenerator.generate() >= FORWARD_THRESHOLD;
     }
 
     public boolean isSameDistance(int maxDistance) {
-        return this.distance == maxDistance;
+        return this.distance.isSameDistance(maxDistance);
+    }
+
+    public boolean isSameDistance(Car car) {
+        return this.distance.isSameDistance(car.distance);
+    }
+
+    public Car returnFurtherMovedCar(Car car) {
+        if (this.distance.isGreaterThan(car.distance)) {
+            return this;
+        }
+        
+        return car;
+    }
+
+    public String getName() {
+        return name.getCarName();
+    }
+
+    public int getDistance() {
+        return distance.getDistance();
     }
 }
