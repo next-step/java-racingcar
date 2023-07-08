@@ -31,8 +31,7 @@ public final class OutputView {
     }
 
     private static String formatCar(final Car car) {
-        return car.getNameValue() + CAR_NAME_STATUS_DELIMITER + CAR_STATUS_UNIT.repeat(car.getPosition());
+        return car.getNameValue() + CAR_NAME_STATUS_DELIMITER +
+            CAR_STATUS_UNIT.repeat(car.getPosition());
     }
-
-
 }
