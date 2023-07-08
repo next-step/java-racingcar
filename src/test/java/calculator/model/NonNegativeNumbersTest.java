@@ -2,8 +2,9 @@ package calculator.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import calculator.parser.TextSplitter;
+import java.util.List;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,28 +16,36 @@ class NonNegativeNumbersTest {
     @ParameterizedTest
     @MethodSource
     @DisplayName("입력받은 값으로 객체 생성하기")
-    void createTextTest(final TextSplitter textSplitter) {
-        assertThatCode(
-                () -> NonNegativeNumbers.of(textSplitter)
-        ).doesNotThrowAnyException();
+    void correctValuesTest(final List<String> values) {
+        assertThatCode(() -> NonNegativeNumbers.of(values)).doesNotThrowAnyException();
+    }
+
+    @ParameterizedTest
+    @MethodSource
+    @DisplayName("잘못된 입력값으로 객체를 생성")
+    void wrongValuesTest(final List<String> values) {
+        assertThatThrownBy(() -> NonNegativeNumbers.of(values)).isExactlyInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     @DisplayName("저장한 모든 수의 합 구하기")
     void sumTest() {
-        final NonNegativeNumbers numbers = NonNegativeNumbers.of(
-                new TextSplitter("1,2:3")
-        );
+        final NonNegativeNumbers numbers = NonNegativeNumbers.of(List.of("1", "2", "3"));
         assertThat(numbers.sum()).isEqualTo(6);
     }
 
-    private static Stream<? extends TextSplitter> createTextTest() {
+    private static Stream<List<String>> correctValuesTest() {
         return Stream.of(
-                new TextSplitter(""),
-                new TextSplitter("1"),
-                new TextSplitter("1,2,3"),
-                new TextSplitter("1,2:3")
+                List.of(""),
+                List.of("1"),
+                List.of("1", "2", "3")
         );
     }
 
+    private static Stream<List<String>> wrongValuesTest() {
+        return Stream.of(
+                List.of("-1"),
+                List.of("1", "-1")
+        );
+    }
 }
