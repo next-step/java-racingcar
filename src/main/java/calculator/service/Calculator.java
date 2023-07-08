@@ -1,6 +1,6 @@
 package calculator.service;
 
-import calculator.parser.NumberParser;
+import calculator.parser.TextParser;
 
 public final class Calculator {
 
@@ -8,10 +8,10 @@ public final class Calculator {
         private static final Calculator INSTANCE = new Calculator();
     }
 
-    private final NumberParser numberParser;
+    private final TextParser textParser;
 
     private Calculator() {
-        this.numberParser = NumberParser.getInstance();
+        this.textParser = TextParser.getInstance();
     }
 
     public static Calculator getInstance() {
@@ -19,7 +19,7 @@ public final class Calculator {
     }
 
     public int sum(final String text) {
-        return numberParser.parse(text)
-                           .sum();
+        return textParser.parse(text)
+                         .sum();
     }
 }
