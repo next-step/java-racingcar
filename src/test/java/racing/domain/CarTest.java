@@ -1,32 +1,75 @@
 package racing.domain;
 
 import org.junit.jupiter.api.Test;
-import racing.domain.Car;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
-    @Test
-    void goForwardTrueTest() {
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2, 3, 10})
+    void notMoveTest(int number) {
         //given
         Car car = new Car("pobi");
 
         //when
-        car.goForward(true);
+        car = car.goForward(number);
+
+        //then
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
+    void movableTest(int number) {
+        //given
+        Car car = new Car("pobi");
+
+        //when
+        car = car.goForward(number);
 
         //then
         assertThat(car.getPosition()).isEqualTo(2);
     }
 
     @Test
-    void goForwardFalseTest() {
+    void samePositionTest() {
         //given
-        Car car = new Car("pobi");
+        Car car1 = new Car("pobi", 1);
+        Car car2 = new Car("crong", 1);
 
-        //when
-        car.goForward(false);
+        //when, then
+        assertThat(car1.isSamePosition(car2)).isTrue();
+    }
 
-        //then
-        assertThat(car.getPosition()).isEqualTo(1);
+    @Test
+    void differentPositionTest() {
+        //given
+        Car car1 = new Car("pobi", 1);
+        Car car2 = new Car("crong", 2);
+
+        //when, then
+        assertThat(car1.isSamePosition(car2)).isFalse();
+    }
+
+    @Test
+    void winningAgainstTest() {
+        //given
+        Car car1 = new Car("pobi", 2);
+        Car car2 = new Car("crong", 1);
+
+        //when, then
+        assertThat(car1.getWinnerAgainst(car2)).isEqualTo(car1);
+    }
+
+    @Test
+    void drawAgainstTest() {
+        //given
+        Car car1 = new Car("pobi", 1);
+        Car car2 = new Car("crong", 1);
+
+        //when, then
+        assertThat(car1.getWinnerAgainst(car2)).isEqualTo(car1);
     }
 }
