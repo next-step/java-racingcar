@@ -50,11 +50,6 @@ public class Car {
         return this.distance.isSameDistance(car.distance);
     }
 
-    public boolean wentFurtherThan(Car car) {
-        return this.distance.isGreaterThan(car.distance);
-    }
-
-
     public Car returnFurtherMovedCar(Car car) {
         if (this.distance.isGreaterThan(car.distance)) {
             return this;
