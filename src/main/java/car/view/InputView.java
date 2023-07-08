@@ -9,7 +9,9 @@ public final class InputView {
 
     public static String enterCarName() {
         OutputView.printCarNameText();
-        return scanner.nextLine();
+        String inputCarName = scanner.nextLine();
+        if (inputCarName.isBlank()) throw new IllegalArgumentException("값을 입력해 주세요");
+        return inputCarName;
     }
 
     public static int enterCount() {

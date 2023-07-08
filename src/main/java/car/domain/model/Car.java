@@ -4,11 +4,11 @@ public final class Car {
 
     private static final int MOVING_LIMIT = 4;
     private int position = 0;
-    private final String name;
+    private final CarName carName;
 
 
     public Car(final String carName) {
-        this.name = carName;
+        this.carName = new CarName(carName);
     }
 
     public void move(int randomNumber) {
@@ -17,8 +17,8 @@ public final class Car {
         position++;
     }
 
-    public String getName() {
-        return name;
+    public String getCarName() {
+        return carName.getName();
     }
 
     public int getPosition() {
