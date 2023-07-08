@@ -25,7 +25,9 @@ public class Cars {
     }
 
     public List<String> getMaxDistanceCarNames() {
-        return getMaxDistanceCars().stream().map(Car::getName).collect(toList());
+        return getMaxDistanceCars().stream()
+                .map(Car::getName)
+                .collect(toList());
     }
 
     public RacingRoundRecord getRecord() {
@@ -33,8 +35,9 @@ public class Cars {
     }
 
     public List<Car> getMaxDistanceCars() {
-        Car maxDistanceCar = getMaxDistanceCar();
-        return cars.stream().filter(car -> car.isSameDistance(maxDistanceCar)).collect(toList());
+        return cars.stream()
+                .filter(car -> car.isSameDistance(getMaxDistanceCar()))
+                .collect(toList());
     }
 
     private Car getMaxDistanceCar() {
