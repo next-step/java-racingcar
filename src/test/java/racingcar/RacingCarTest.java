@@ -30,11 +30,11 @@ public class RacingCarTest {
         void 자동차생성할때_성공() {
             // when
             Position position = car.getPosition();
-            String name = car.getName();
+            Name name = car.getName();
 
             // then
             assertThat(position).isEqualTo(Position.of());
-            assertThat(name).isEqualTo(this.name);
+            assertThat(name).isEqualTo(Name.from(this.name));
         }
 
         @Test

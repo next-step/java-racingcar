@@ -2,15 +2,15 @@ package racingcar.domain;
 
 import java.util.Objects;
 
-public final class Position implements Comparable<Position> {
+public final class Position {
 
     private static final String NOT_POSITIVE_MESSAGE = "위치는 음수가 될 수 없습니다.";
     private static final int LOWER_BOUND = 0;
 
-    private int position;
+    private int value;
 
-    private Position(final int position) {
-        this.position = position;
+    private Position(final int value) {
+        this.value = value;
     }
 
     public static Position from(final int position) {
@@ -22,16 +22,16 @@ public final class Position implements Comparable<Position> {
         return new Position(LOWER_BOUND);
     }
 
-    public int getPosition() {
-        return position;
+    public int getValue() {
+        return value;
     }
 
     public void increase() {
-        this.position++;
+        this.value++;
     }
 
     public Position matchPosition(final Position other) {
-        if(position >= other.position) {
+        if (value >= other.value) {
             return this;
         }
         return other;
@@ -48,16 +48,11 @@ public final class Position implements Comparable<Position> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Position position1 = (Position) o;
-        return position == position1.position;
+        return value == position1.value;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(position);
-    }
-
-    @Override
-    public int compareTo(Position o) {
-        return position - o.position;
+        return Objects.hash(value);
     }
 }

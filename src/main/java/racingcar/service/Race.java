@@ -7,6 +7,7 @@ import racingcar.dto.RaceRequest;
 import racingcar.domain.Car;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public final class Race {
 
@@ -38,7 +39,7 @@ public final class Race {
     }
 
     public int getLeftRound() {
-        return this.leftRound.getRound();
+        return this.leftRound.getValue();
     }
 
     public void play() {
@@ -47,7 +48,10 @@ public final class Race {
     }
 
     public List<String> findWinners() {
-        return cars.findMaxPosition();
+        return cars.findMaxPositionCars()
+                .stream()
+                .map(car -> car.getName().getValue())
+                .collect(Collectors.toUnmodifiableList());
     }
 
     private void startRound() {

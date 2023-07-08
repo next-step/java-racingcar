@@ -29,10 +29,9 @@ public final class Cars {
         this.cars.add(car);
     }
 
-    public List<String> findMaxPosition() {
+    public List<Car> findMaxPositionCars() {
         return cars.stream()
                 .filter(car -> maxPosition.equals(car.getPosition()))
-                .map(Car::getName)
                 .collect(Collectors.toUnmodifiableList());
     }
 
