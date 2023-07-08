@@ -22,10 +22,6 @@ public class Cars {
         }
     }
 
-    List<Car> getList() {
-        return list;
-    }
-
     public List<String> format(final CarFormatter formatter) {
         return list.stream()
                 .map(formatter::format)

@@ -1,12 +1,12 @@
 package car.domain;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import utils.random.RandomGenerator;
 
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class CarsTest {
 
@@ -23,8 +23,7 @@ class CarsTest {
 
         cars.move(mockRandomGenerator);
 
-        for (Car car : cars.getList()) {
-            assertThat(car.getPosition()).isEqualTo(1);
-        }
+        assertThat(cars.format(car -> "name : " + car.getName() + ", position : " + car.getPosition()))
+                .containsExactly("name : a, position : 1", "name : b, position : 1", "name : c, position : 1");
     }
 }
