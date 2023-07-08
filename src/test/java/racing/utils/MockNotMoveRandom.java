@@ -2,11 +2,15 @@ package racing.utils;
 
 import java.util.Random;
 
-public class MockNotMoveRandom extends Random {
+public final class MockNotMoveRandom extends Random {
 
     private final int criterion;
 
-    MockNotMoveRandom(final int criterion) {
+    public MockNotMoveRandom() {
+        this(0);
+    }
+
+    public MockNotMoveRandom(final int criterion) {
         this.criterion = criterion;
     }
 
