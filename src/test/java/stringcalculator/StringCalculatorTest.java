@@ -62,7 +62,7 @@ class StringCalculatorTest {
 
         assertThatExceptionOfType(RuntimeException.class)
                 .isThrownBy(() -> new Elements(elements))
-                .withMessageMatching("0이상 9이상의 숫자만 가능합니다");
+                .withMessageMatching("0이상 9이하의 숫자만 가능합니다");
     }
 
     @DisplayName("숫자 이외의 값이 존재하는 경우 RuntimeException 예외가 발생한다")
@@ -72,7 +72,7 @@ class StringCalculatorTest {
 
         assertThatExceptionOfType(RuntimeException.class)
                 .isThrownBy(() -> new Elements(elements))
-                .withMessageMatching("0이상 9이상의 숫자만 가능합니다");
+                .withMessageMatching("0이상 9이하의 숫자만 가능합니다");
     }
 
     @DisplayName("기본 구분자가 주어졌을 때 올바른 계산 결과를 반환한다")
