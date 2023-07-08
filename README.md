@@ -102,6 +102,7 @@
   - RaceUtil 제거
 - CarVO -> CarResponse로 역할에 맞게 수정
 - Race의 일부 역할을 Cars로 이동
+- Name, Position, Round를 VO로 수정
 - Cars의 불변성 보장하도록 수정
 - 테스트에만 사용되는 production code 정리 (Race.of())
 - 테스트 패키지 정리
