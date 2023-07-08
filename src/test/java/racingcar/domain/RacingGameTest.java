@@ -61,80 +61,6 @@ class RacingGameTest {
     }
 
     @Nested
-    @DisplayName("play 메소드는")
-    class DescribePlayMethod {
-
-        private final List<Car> cars = List.of(
-                new Car("A", falseMover),
-                new Car("B", falseMover),
-                new Car("C", trueMover)
-        );
-
-        @Nested
-        @DisplayName("한번 호출되면,")
-        class ContextRacingGameRound1 {
-
-            private final RacingGame racingGame = new RacingGame(cars);
-            private final List<Car> expectedCars = getExpectedCars();
-
-            @Test
-            @DisplayName("한판을 진행하고, 그 결과를 car에 반영한다.")
-            void ItReturn1RoundResult() {
-                racingGame.playOneRound();
-                assertEqualAllCars(cars, expectedCars);
-            }
-
-            private List<Car> getExpectedCars() {
-                List<Car> copy = List.of(
-                        new Car("A", falseMover),
-                        new Car("B", falseMover),
-                        new Car("C", trueMover)
-                );
-                for (Car car : copy) {
-                    car.move();
-                }
-                return copy;
-            }
-
-        }
-
-        @Nested
-        @DisplayName("세번 호출되면,")
-        class ContextRacingGameRound3 {
-
-            private final RacingGame racingGame = new RacingGame(cars);
-            private final List<Car> expectedCars = getExpectedCars();
-
-            @Test
-            @DisplayName("세판을 진행하고, 그 결과를 car에 반영한다.")
-            void ItReturn1RoundResult() {
-                racingGame.playOneRound();
-                racingGame.playOneRound();
-                racingGame.playOneRound();
-
-                assertEqualAllCars(cars, expectedCars);
-            }
-
-            private List<Car> getExpectedCars() {
-                List<Car> copy = List.of(
-                        new Car("A", falseMover),
-                        new Car("B", falseMover),
-                        new Car("C", trueMover)
-                );
-
-                for (Car car : copy) {
-                    car.move();
-                    car.move();
-                    car.move();
-                }
-                return copy;
-            }
-
-        }
-
-    }
-
-    @Nested
     @DisplayName("getRoundResult 메소드는")
     class DescribeRoundResultMethod {
 
@@ -196,6 +122,80 @@ class RacingGameTest {
                         new Car("C", trueMover)
                 );
                 for (Car car : copy) {
+                    car.move();
+                    car.move();
+                }
+                return copy;
+            }
+
+        }
+
+    }
+
+    @Nested
+    @DisplayName("playOneRound 메소드는")
+    class DescribePlayMethod {
+
+        private final List<Car> cars = List.of(
+                new Car("A", falseMover),
+                new Car("B", falseMover),
+                new Car("C", trueMover)
+        );
+
+        @Nested
+        @DisplayName("한 번 호출되면,")
+        class ContextRacingGameRound1 {
+
+            private final RacingGame racingGame = new RacingGame(cars);
+            private final List<Car> expectedCars = getExpectedCars();
+
+            @Test
+            @DisplayName("한 라운드를 진행하고, 그 결과를 반환한다.")
+            void ItReturn1RoundResult() {
+                List<Car> oneRoundAfterCars = racingGame.playOneRound();
+                assertEqualAllCars(oneRoundAfterCars, expectedCars);
+            }
+
+            private List<Car> getExpectedCars() {
+                List<Car> copy = List.of(
+                        new Car("A", falseMover),
+                        new Car("B", falseMover),
+                        new Car("C", trueMover)
+                );
+                for (Car car : copy) {
+                    car.move();
+                }
+                return copy;
+            }
+
+        }
+
+        @Nested
+        @DisplayName("세 번 호출되면,")
+        class ContextRacingGameRound3 {
+
+            private final RacingGame racingGame = new RacingGame(cars);
+            private final List<Car> expectedCars = getExpectedCars();
+
+            @Test
+            @DisplayName("세 라운드를 진행하고, 그 결과를 반환한다.")
+            void ItReturn1RoundResult() {
+                racingGame.playOneRound();
+                racingGame.playOneRound();
+                List<Car> threeRoundAfterCars = racingGame.playOneRound();
+
+                assertEqualAllCars(threeRoundAfterCars, expectedCars);
+            }
+
+            private List<Car> getExpectedCars() {
+                List<Car> copy = List.of(
+                        new Car("A", falseMover),
+                        new Car("B", falseMover),
+                        new Car("C", trueMover)
+                );
+
+                for (Car car : copy) {
+                    car.move();
                     car.move();
                     car.move();
                 }
