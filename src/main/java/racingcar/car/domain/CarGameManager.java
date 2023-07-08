@@ -6,14 +6,16 @@ public class CarGameManager {
 
     private final Cars cars;
     private final int playCount;
+    private final MoveStrategy moveStrategy;
 
     public CarGameManager(String[] carNames, int playCount) {
         this.cars = new Cars(carNames);
         this.playCount = playCount;
+        this.moveStrategy = new RandomMoveStrategy();
     }
 
     public void race() {
-        cars.move(new RandomMoveStrategy());
+        cars.move(moveStrategy);
     }
 
     public boolean isRunning() {
