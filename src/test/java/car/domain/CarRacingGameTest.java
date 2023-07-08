@@ -53,6 +53,35 @@ class CarRacingGameTest {
         assertThat(game.formatCars(simpleFormatter)).isEqualTo(List.of("a/0", "b/0"));
     }
 
+    @ParameterizedTest
+    @ValueSource(ints = {1, 5, 8})
+    @DisplayName("isNotFinished 메소드는 남은 게임 실행 횟수가 양수이면 true를 반환한다.")
+    void isNotFinished(final int playCount) {
+        final CarRacingGame game = new CarRacingGame(List.of("a", "b"), playCount);
+        assertThat(game.isNotFinished()).isTrue();
+    }
+
+    @Test
+    @DisplayName("isNotFinished 메소드는 남은 게임 실행 횟수가 0이면 false를 반환한다.")
+    void isFinished() {
+        final CarRacingGame game = new CarRacingGame(List.of("a", "b"), 1);
+        game.playRaceOnce();
+        assertThat(game.isNotFinished()).isFalse();
+    }
+
+    @Test
+    @DisplayName("resolveWinnerNames 메소드는 게임 우승자들의 Name 리스트를 반환한다.")
+    void resolveWinnerNames() {
+        final CarRacingGame game = new CarRacingGame(List.of("a", "b", "c"), 1) {
+            @Override
+            List<Car> selectWinnersFromCars() {
+                return List.of(new Car("a"), new Car("b"));
+            }
+        };
+
+        assertThat(game.resolveWinnerNames()).containsExactly(new Name("a"), new Name("b"));
+    }
+
     private void repeatedlyPlayRace(final CarRacingGame game, final int playCount) {
         for (int i = 0; i < playCount; i++) {
             game.playRaceOnce();
