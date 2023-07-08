@@ -73,7 +73,7 @@ class CarRacingGameTest {
     @Test
     @DisplayName("resolveWinnerNames 메소드는 게임 우승자들의 Name 리스트를 반환한다.")
     void resolveWinnerNames() {
-        WinnerStrategy allCarsWinStrategy = cars -> cars;
+        final WinnerStrategy allCarsWinStrategy = cars -> cars;
         final CarRacingGame game = new CarRacingGame(List.of("a", "b"), 1, allCarsWinStrategy);
 
         assertThat(game.resolveWinnerNames()).containsExactly(new Name("a"), new Name("b"));
