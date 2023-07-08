@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -29,12 +30,12 @@ public class Cars {
     }
 
     public List<Car> getRoundResult() {
-        return cars;
+        return Collections.unmodifiableList(cars);
     }
 
     public List<Car> playOneRound() {
         moveCars();
-        return this.cars;
+        return Collections.unmodifiableList(cars);
     }
 
     private void moveCars() {
