@@ -10,14 +10,19 @@ import java.util.stream.Collectors;
 public class CarRacingGame {
 
     private final Cars cars;
-    private final WinnerStrategy winnerStrategy = new MaxPositionDuplicateWinnerStrategy();
+    private final WinnerStrategy winnerStrategy;
     private final RandomGenerator randomGenerator = new RandomGenerator();
     private int leftPlayCount;
 
     public CarRacingGame(final List<String> carNames, final int playCount) {
+        this(carNames, playCount, new MaxPositionDuplicateWinnerStrategy());
+    }
+
+    public CarRacingGame(final List<String> carNames, final int playCount, final WinnerStrategy winnerStrategy) {
         this.cars = new Cars(carNames);
         validatePositive(playCount);
         this.leftPlayCount = playCount;
+        this.winnerStrategy = winnerStrategy;
     }
 
     public void playRaceOnce() {
@@ -53,7 +58,7 @@ public class CarRacingGame {
         }
     }
 
-    List<Car> selectWinnersFromCars() {
+    private List<Car> selectWinnersFromCars() {
         return cars.selectWinners(winnerStrategy);
     }
 }
