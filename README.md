@@ -105,6 +105,7 @@
 - Name, Position, Round를 VO로 수정
 - Cars의 불변성 보장하도록 수정
 - 테스트에만 사용되는 production code 정리 (Race.of())
+- 출력 형식 알맞게 수정
 - 테스트 패키지 정리
 - 놓친 테스트 추가
   - 우승 자동차 선택
