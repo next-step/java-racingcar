@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.Arrays;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class RacingGame {
@@ -10,6 +11,8 @@ public class RacingGame {
     private static final String DOUBLE_NEWLINE = "\n\n";
     private static final String WINNER_MESSAGE = " 가 최종 우승했습니다.";
     public static final String NON_POSITIVE_EXCEPTION_MESSAGE = "실행 횟수는 양수만 가능합니다";
+
+    private Random random = new Random();
 
     private final Cars cars;
     private int count;
@@ -23,7 +26,7 @@ public class RacingGame {
     public String play() {
         StringBuilder sb = new StringBuilder();
         while (count-- > 0) {
-            cars.move();
+            cars.move(generateRandom());
             sb.append(getResult());
         }
 
@@ -31,6 +34,10 @@ public class RacingGame {
         sb.append(getWinner());
 
         return sb.toString();
+    }
+
+    private int generateRandom() {
+        return random.nextInt(10);
     }
 
     private String getResult() {

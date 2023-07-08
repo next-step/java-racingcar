@@ -15,16 +15,11 @@ public class Cars {
         this.cars = Arrays.stream(cars).collect(Collectors.toList());
     }
 
-    public void move() {
+    public void move(int power) {
         for (Car car : cars) {
-            car.move(generateRandom());
+            car.move(power);
         }
     }
-
-    private int generateRandom() {
-        return (int) (Math.random() * 10000) % 10;
-    }
-
 
     private int maxPosition() {
         return cars.stream()
