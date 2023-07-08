@@ -11,12 +11,12 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(String value) {
+    public Cars(final String value) {
         CarNames carNames = new CarNames(value);
         this.cars = generateCars(carNames.parse());
     }
 
-    private List<Car> generateCars(String[] carNames) {
+    private List<Car> generateCars(final String[] carNames) {
         return Arrays.stream(carNames)
                 .map(name -> new Car(name))
                 .collect(Collectors.toList());

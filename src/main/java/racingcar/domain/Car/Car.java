@@ -8,23 +8,23 @@ public class Car {
     private final Name name;
     private final Score score;
 
-    public Car(String value) {
+    public Car(final String value) {
         this(new Name(value), new Score(INITIAL_SCORE));
     }
 
-    public Car(Name name, Score score) {
+    public Car(final Name name, final Score score) {
         this.name = name;
         this.score = score;
     }
 
-    public Car move(int number) {
+    public Car move(final int number) {
         if (number < MIN_MOVE_NUMBER) {
             return this;
         }
         return new Car(name, score.increase());
     }
 
-    public boolean isSameScore(int maxScore) {
+    public boolean isSameScore(final int maxScore) {
         return score.isSameScore(maxScore);
     }
 

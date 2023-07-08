@@ -7,12 +7,12 @@ public class Name {
     private final int MIN_NAME_LENGTH = 1;
     private final String name;
 
-    public Name(String value) {
+    public Name(final String value) {
         validate(value);
         this.name = value;
     }
 
-    private void validate(String value) {
+    private void validate(final String value) {
         if (value.length() > MAX_NAME_LENGTH || value.length() < MIN_NAME_LENGTH) {
             throw new RuntimeException("자동차 이름이 유효하지 않습니다");
         }

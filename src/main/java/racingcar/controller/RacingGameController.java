@@ -8,11 +8,11 @@ public class RacingGameController {
 
     private final RacingCarView view;
 
-    public RacingGameController(RacingCarView view) {
+    public RacingGameController(final RacingCarView view) {
         this.view = view;
     }
 
-    public void playGame(String carNames, String count) {
+    public void playGame(final String carNames, final String count) {
 
         RacingGame racingGame = new RacingGame(new Cars(carNames), count);
         racingGame.play();
@@ -20,7 +20,7 @@ public class RacingGameController {
         printResult(racingGame);
     }
 
-    private void printResult(RacingGame racingGame) {
+    private void printResult(final RacingGame racingGame) {
         view.printResults(racingGame.getEachResults());
         view.printResult(racingGame.getResult());
         view.printWinners(racingGame.getWinners());

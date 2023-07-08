@@ -11,11 +11,11 @@ public class Count {
         this.count = toInt(value);
     }
 
-    private int toInt(String value) {
+    private int toInt(final String value) {
         return Integer.parseInt(value);
     }
 
-    void validate(String value) {
+    void validate(final String value) {
         if (!value.matches(NUMBER_PATTERN)) {
             throw new RuntimeException("실행 횟수는 양수만 가능합니다");
         }

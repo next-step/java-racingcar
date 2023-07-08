@@ -5,12 +5,12 @@ import java.util.Objects;
 public class Score {
     private final int score;
 
-    public Score(int score) {
+    public Score(final int score) {
         validate(score);
         this.score = score;
     }
 
-    private void validate(int score) {
+    private void validate(final int score) {
         if (score < 0) {
             throw new RuntimeException("score는 음수가 될 수 없습니다");
         }
@@ -24,7 +24,7 @@ public class Score {
         return new Score(score + 1);
     }
 
-    public boolean isSameScore(int maxScore) {
+    public boolean isSameScore(final int maxScore) {
         return score == maxScore;
     }
 
