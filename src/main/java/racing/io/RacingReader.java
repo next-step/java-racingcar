@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UncheckedIOException;
 import racing.model.GameInfo;
+import racing.model.RaceCount;
 
 public class RacingReader {
 
@@ -14,8 +15,8 @@ public class RacingReader {
     public GameInfo inputForReady() {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
             String carNames = inputCarNames(br);
-            int raceCount = inputRaceCount(br);
-            return new GameInfo(carNames, raceCount);
+            RaceCount raceCount = inputRaceCount(br);
+            return new GameInfo(carNames, raceCount.toInt());
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
@@ -26,9 +27,9 @@ public class RacingReader {
         return input.readLine();
     }
 
-    private int inputRaceCount(BufferedReader input) throws IOException {
+    private RaceCount inputRaceCount(BufferedReader input) throws IOException {
         System.out.println(RACE_COUNT_INPUT_GUIDE);
-        return Integer.parseInt(input.readLine());
+        return new RaceCount(input.readLine());
     }
 
 }
