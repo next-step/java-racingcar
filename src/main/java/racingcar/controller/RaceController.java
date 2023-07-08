@@ -36,8 +36,7 @@ public final class RaceController {
     }
 
     private void doRace() {
-        final int leftRound = race.getLeftRound();
-        for (int round = 0; round < leftRound; round++) {
+        while (race.getLeftRound().getValue() > 0) {
             race.play();
             outputView.printRound(new RaceResponse(race.getCars()));
         }

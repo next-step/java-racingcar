@@ -2,6 +2,7 @@ package racingcar.view;
 
 import racingcar.dto.RaceResponse;
 
+import java.util.Collections;
 import java.util.List;
 
 public final class OutputView {
@@ -14,9 +15,13 @@ public final class OutputView {
 
     public void printRound(final RaceResponse raceResponse) {
         for (final RaceResponse.CarResponse carResponse : raceResponse.getCars()) {
-            System.out.printf("%s : %s%n", carResponse.getName(), carResponse.getPosition());
+            System.out.printf("%s : %s%n", carResponse.getName(), formatPosition(carResponse.getPosition()));
         }
         System.out.println();
+    }
+
+    private static String formatPosition(final int position) {
+        return String.join("", Collections.nCopies(position, "-"));
     }
 
     public void printWinners(final List<String> winners) {
