@@ -11,8 +11,6 @@ public class RacingGame {
     private static final String DOUBLE_NEWLINE = "\n\n";
     private static final String WINNER_MESSAGE = " 가 최종 우승했습니다.";
 
-    private Random random = new Random();
-
     private final Cars cars;
     private Count count;
 
@@ -25,7 +23,7 @@ public class RacingGame {
         StringBuilder sb = new StringBuilder();
 
         while (count.isRemaining()) {
-            cars.move(generateRandom());
+            cars.move();
             count = count.tryOnce();
 
             sb.append(getResult());
@@ -35,10 +33,6 @@ public class RacingGame {
         sb.append(getWinner());
 
         return sb.toString();
-    }
-
-    private int generateRandom() {
-        return random.nextInt(10);
     }
 
     private String getResult() {

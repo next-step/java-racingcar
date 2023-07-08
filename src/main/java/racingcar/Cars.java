@@ -2,10 +2,13 @@ package racingcar;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
+
+    private final Random random = new Random();
 
     public Cars(CarNames carNames) {
         this.cars = carNames.generateCars();
@@ -15,10 +18,14 @@ public class Cars {
         this.cars = Arrays.stream(cars).collect(Collectors.toList());
     }
 
-    public void move(int power) {
+    public void move() {
         for (Car car : cars) {
-            car.move(power);
+            car.move(generateRandom());
         }
+    }
+
+    private int generateRandom() {
+        return random.nextInt(10);
     }
 
     private int maxPosition() {
@@ -42,10 +49,5 @@ public class Cars {
                 .map(Car::statusToString)
                 .collect(Collectors.toList());
     }
-
-
-
-
-
 
 }

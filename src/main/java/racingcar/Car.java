@@ -31,7 +31,7 @@ public class Car {
     }
 
     public String statusToString() {
-        return MessageFormat.format("{0} : {1}", name, DASH.repeat(position));
+        return MessageFormat.format("{0} : {1}", this.getName(), DASH.repeat(position));
     }
 
     public void move(int power) {
