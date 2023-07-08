@@ -5,11 +5,11 @@ import java.util.Objects;
 public final class CarName {
 
     private final static int TEXT_LENGTH_LIMIT = 5;
-    private final String myCarName;
+    private final String name;
 
     public CarName(final String eachCarName) {
         validateNameLength(eachCarName);
-        this.myCarName = eachCarName;
+        this.name = eachCarName;
     }
 
     private void validateNameLength(final String carName) {
@@ -18,8 +18,8 @@ public final class CarName {
         }
     }
 
-    public String getMyCarName() {
-        return myCarName;
+    public String getName() {
+        return name;
     }
 
     @Override
@@ -31,11 +31,11 @@ public final class CarName {
             return false;
         }
         CarName carName = (CarName) o;
-        return Objects.equals(myCarName, carName.myCarName);
+        return Objects.equals(name, carName.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(myCarName);
+        return Objects.hash(name);
     }
 }

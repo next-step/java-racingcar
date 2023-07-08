@@ -12,7 +12,7 @@ public final class Cars {
     public Cars(final String inputCarNames) {
         CarNames carNames = new CarNames(inputCarNames);
         cars = carNames.getCarNames().stream()
-            .map(CarName::getMyCarName)
+            .map(CarName::getName)
             .map(Car::new)
             .collect(Collectors.toList());
     }
