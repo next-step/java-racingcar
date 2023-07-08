@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
@@ -38,8 +39,22 @@ public class Cars {
                 .max()
                 .orElse(0);
     }
-    
+
     public RacingRoundRecord getRecord() {
         return RacingRoundRecord.from(cars);
+    }
+
+    public List<Car> getMaxDistanceCars() {
+        List<Car> result = new ArrayList<>();
+        Car maxDistanceCar = getMaxDistanceCar();
+        return cars.stream().filter(car -> car.isSameDistance(maxDistanceCar)).collect(toList());
+    }
+
+    private Car getMaxDistanceCar() {
+        Car maxDistanceCar = cars.get(0);
+        for (Car car : cars) {
+            maxDistanceCar = maxDistanceCar.returnFurtherMovedCar(car);
+        }
+        return maxDistanceCar;
     }
 }
