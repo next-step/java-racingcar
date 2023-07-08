@@ -10,7 +10,7 @@ class CarsTest {
 
     @Test
     @DisplayName("position 값이 가장 큰 자동차를 우승자로 선출한다.")
-    void test1() {
+    void getWinners_returnMaxPositionCars() {
         Cars cars = new Cars(List.of(
             new Car(3, "a"),
             new Car(4, "b"),
