@@ -99,8 +99,8 @@
   - 역할 변경 (숫자 생성 -> 움직임 가능 판단)
   - Race가 관리하도록 변경
 - 불필요한 객체 정리
-  - CarVO 제거
   - RaceUtil 제거
+- CarVO -> CarResponse로 역할에 맞게 수정
 - Race의 일부 역할을 Cars로 이동
 - Cars의 불변성 보장하도록 수정
 - 테스트에만 사용되는 production code 정리 (Race.of())
