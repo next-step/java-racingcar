@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.Car;
 
 import racingcar.dto.Result;
 import racingcar.dto.Winner;
@@ -11,22 +11,9 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(String rawCarNames) {
-        String[] carNames = parseCarNames(rawCarNames);
-        checkEmpty(carNames);
-        this.cars = generateCars(carNames);
-    }
-
-    private String[] parseCarNames(String rawCarNames) {
-        return Arrays.stream(rawCarNames.split(","))
-                .map(s -> s.trim())
-                .toArray(String[]::new);
-    }
-
-    private void checkEmpty(String[] carNames) {
-        if (carNames.length == 0) {
-            throw new RuntimeException("자동차 이름이 존재하지 않습니다");
-        }
+    public Cars(String value) {
+        CarNames carNames = new CarNames(value);
+        this.cars = generateCars(carNames.parse());
     }
 
     private List<Car> generateCars(String[] carNames) {

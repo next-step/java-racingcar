@@ -1,20 +1,18 @@
 package racingcar.controller;
 
-import racingcar.domain.Cars;
-import racingcar.domain.RacingGame;
+import racingcar.domain.Car.Cars;
+import racingcar.racinggame.RacingGame;
 import racingcar.view.RacingCarView;
 
-public class RacingGameRunner {
+public class RacingGameController {
 
     private final RacingCarView view;
 
-    public RacingGameRunner(RacingCarView view) {
+    public RacingGameController(RacingCarView view) {
         this.view = view;
     }
 
-    public void run() {
-        String carNames = getCarNames();
-        String count = getCount();
+    public void playGame(String carNames, String count) {
 
         RacingGame racingGame = new RacingGame(new Cars(carNames), count);
         racingGame.play();
@@ -22,19 +20,19 @@ public class RacingGameRunner {
         printResult(racingGame);
     }
 
-    private String getCarNames() {
-        view.printCarNamesPrompt();
-        return view.read();
-    }
-
-    private String getCount() {
-        view.printCountPrompt();
-        return view.read();
-    }
-
     private void printResult(RacingGame racingGame) {
         view.printResults(racingGame.getEachResults());
         view.printResult(racingGame.getResult());
         view.printWinners(racingGame.getWinners());
+    }
+
+    public String readCarNames() {
+        view.printCarNamesPrompt();
+        return view.read();
+    }
+
+    public String readCount() {
+        view.printCountPrompt();
+        return view.read();
     }
 }

@@ -1,19 +1,18 @@
-package racingcar.domain;
+package racingcar.domain.Car;
 
 import java.util.Objects;
 
 public class Car {
+    private static final int INITIAL_SCORE = 0;
     private final int MIN_MOVE_NUMBER = 4;
-    private final int INITIAL_SCORE = 0;
     private final Name name;
     private final Score score;
 
     public Car(String value) {
-        this.score = new Score(INITIAL_SCORE);
-        this.name = new Name(value);
+        this(new Name(value), new Score(INITIAL_SCORE));
     }
 
-    private Car(Name name, Score score) {
+    public Car(Name name, Score score) {
         this.name = name;
         this.score = score;
     }
@@ -29,12 +28,12 @@ public class Car {
         return score.isSameScore(maxScore);
     }
 
-    public Name getName() {
-        return name;
+    public String getName() {
+        return name.get();
     }
 
-    public Score getScore() {
-        return score;
+    public int getScore() {
+        return score.get();
     }
 
     @Override
@@ -42,7 +41,7 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return score == car.score && Objects.equals(name, car.name);
+        return Objects.equals(name, car.name) && Objects.equals(score, car.score);
     }
 
     @Override

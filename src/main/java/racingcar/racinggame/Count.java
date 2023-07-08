@@ -1,18 +1,14 @@
-package racingcar.domain;
+package racingcar.racinggame;
 
 import java.util.Objects;
 
 public class Count {
     private final String NUMBER_PATTERN = "^[0-9]+$";
-    private final int count;
+    private int count;
 
     public Count(final String value) {
         validate(value);
         this.count = toInt(value);
-    }
-
-    public Count(int count) {
-        this.count = count;
     }
 
     private int toInt(String value) {
@@ -29,8 +25,8 @@ public class Count {
         return count > 0;
     }
 
-    public Count run() {
-        return new Count(count - 1);
+    public void run() {
+        count--;
     }
 
     @Override

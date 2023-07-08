@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.Car;
 
 import java.util.Objects;
 
@@ -18,7 +18,7 @@ public class Name {
         }
     }
 
-    public String getName() {
+    public String get() {
         return name;
     }
 

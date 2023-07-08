@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.Car;
 
 import java.util.Objects;
 
@@ -16,7 +16,7 @@ public class Score {
         }
     }
 
-    public int getScore() {
+    public int get() {
         return score;
     }
 
@@ -40,6 +40,4 @@ public class Score {
     public int hashCode() {
         return Objects.hash(score);
     }
-
-
 }

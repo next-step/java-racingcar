@@ -1,5 +1,6 @@
-package racingcar.domain;
+package racingcar.racinggame;
 
+import racingcar.domain.Car.Cars;
 import racingcar.dto.Result;
 import racingcar.dto.Winner;
 
@@ -18,11 +19,10 @@ public class RacingGame {
     }
 
     public void play() {
-        Count newCount = count;
-        while (newCount.isRunning()) {
+        while (count.isRunning()) {
             cars.move();
             eachResults.add(getResult());
-            newCount = count.run();
+            count.run();
         }
     }
 
