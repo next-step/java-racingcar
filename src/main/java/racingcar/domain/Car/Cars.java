@@ -1,4 +1,4 @@
-package racingcar.car;
+package racingcar.domain;
 
 import racingcar.dto.Result;
 import racingcar.dto.Winner;
@@ -48,7 +48,7 @@ public class Cars {
     public List<Winner> findWinners() {
         int maxScore = getMaxScore();
         return cars.stream()
-                .filter(car -> car.getScore() == maxScore)
+                .filter(car -> car.isSameScore(maxScore))
                 .map(car -> new Winner(car.getName()))
                 .collect(Collectors.toList());
     }

@@ -4,8 +4,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.car.Car;
-import racingcar.car.Cars;
+import racingcar.domain.Car.Car;
+import racingcar.domain.Car.Cars;
+import racingcar.domain.Car.Name;
+import racingcar.domain.Car.Score;
+import racingcar.racinggame.RacingGame;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -65,24 +68,22 @@ public class RacingCarTest {
     @ParameterizedTest
     @ValueSource(ints = {4, 9})
     void 자동차_전진(int randomValue) {
-        Car racingCar = new Car("pobi");
-        int score = racingCar.getScore();
+        Car car = new Car("pobi");
 
-        racingCar.move(randomValue);
+        Car moved = car.move(randomValue);
 
-        assertThat(racingCar.getScore()).isEqualTo(score + 1);
+        assertThat(moved.equals(new Car(new Name("pobi"), new Score(1)))).isTrue();
     }
 
     @DisplayName("랜덤 값이 3 이하면 자동차는 정지한다")
     @ParameterizedTest
     @ValueSource(ints = {0, 3})
     void 자동차_정지(int randomValue) {
-        Car racingCar = new Car("pobi");
-        int previousCount = racingCar.getScore();
+        Car car = new Car("pobi");
 
-        racingCar.move(randomValue);
+        Car moved = car.move(randomValue);
 
-        assertThat(racingCar.getScore()).isEqualTo(previousCount);
+        assertThat(moved.equals(new Car(new Name("pobi"), new Score(0)))).isTrue();
     }
 
     @Test

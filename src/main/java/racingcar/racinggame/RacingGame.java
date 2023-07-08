@@ -1,6 +1,5 @@
-package racingcar;
+package racingcar.domain;
 
-import racingcar.car.Cars;
 import racingcar.dto.Result;
 import racingcar.dto.Winner;
 
@@ -9,27 +8,21 @@ import java.util.List;
 
 public class RacingGame {
 
-    private final String NUMBER_PATTERN = "^[0-9]+$";
     private final List<List<Result>> eachResults = new ArrayList<>();
     private final Cars cars;
-    private final int count;
+    private final Count count;
 
-    public RacingGame(Cars cars, String count) {
-        validateCount(count);
+    public RacingGame(final Cars cars, final String count) {
         this.cars = cars;
-        this.count = Integer.parseInt(count.trim());
-    }
-
-    private void validateCount(String count) {
-        if (!count.trim().matches(NUMBER_PATTERN)) {
-            throw new RuntimeException("실행 횟수는 양수만 가능합니다");
-        }
+        this.count = new Count(count.trim());
     }
 
     public void play() {
-        for (int i = 0; i < count; i++) {
+        Count newCount = count;
+        while (newCount.isRunning()) {
             cars.move();
             eachResults.add(getResult());
+            newCount = count.run();
         }
     }
 
