@@ -11,8 +11,8 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-@DisplayName("RacingGame 클래스")
-class RacingGameTest {
+@DisplayName("Cars 클래스")
+class CarsTest {
 
     private final Moveable trueMover = () -> true;
     private final Moveable falseMover = () -> false;
@@ -34,7 +34,7 @@ class RacingGameTest {
             @Test
             @DisplayName("생성을 성공 한다.")
             void ItCreated() {
-                assertThatNoException().isThrownBy(() -> new RacingGame(cars));
+                assertThatNoException().isThrownBy(() -> new Cars(cars));
             }
 
         }
@@ -52,7 +52,7 @@ class RacingGameTest {
             @Test
             @DisplayName("IllegalArgumentException을 던진다.")
             void ItThrowIllegalArgumentException() {
-                assertThatThrownBy(() -> new RacingGame(duplicateNameCars)).isInstanceOf(
+                assertThatThrownBy(() -> new Cars(duplicateNameCars)).isInstanceOf(
                         IllegalArgumentException.class);
             }
 
@@ -74,14 +74,14 @@ class RacingGameTest {
         @DisplayName("play가 실행된 이후 호출하면,")
         class ContextCall {
 
-            private final RacingGame racingGame = new RacingGame(cars);
+            private final Cars cars = new Cars(DescribeRoundResultMethod.this.cars);
 
             private final List<Car> expectedCars = getExpectedCars();
 
             @Test
             @DisplayName("현재 라운드의 결과를 반환한다.")
             void ItReturnRoundResult() {
-                List<Car> roundResult = racingGame.playOneRound();
+                List<Car> roundResult = cars.playOneRound();
                 assertEqualAllCars(roundResult, expectedCars);
             }
 
@@ -103,15 +103,15 @@ class RacingGameTest {
         @DisplayName("play가 두번 호출된 후, 호출되면")
         class ContextCallBeforePlayTwice {
 
-            private final RacingGame racingGame = new RacingGame(cars);
+            private final Cars cars = new Cars(DescribeRoundResultMethod.this.cars);
 
             private final List<Car> expectedCars = getExpectedCars();
 
             @Test
             @DisplayName("두번째 라운드의 결과를 반환한다.")
             void ItReturnTwiceRoundResult() {
-                racingGame.playOneRound();
-                List<Car> roundResult = racingGame.playOneRound();
+                cars.playOneRound();
+                List<Car> roundResult = cars.playOneRound();
                 assertEqualAllCars(roundResult, expectedCars);
             }
 
@@ -144,15 +144,15 @@ class RacingGameTest {
 
         @Nested
         @DisplayName("한 번 호출되면,")
-        class ContextRacingGameRound1 {
+        class ContextCarsRound1 {
 
-            private final RacingGame racingGame = new RacingGame(cars);
+            private final Cars cars = new Cars(DescribePlayMethod.this.cars);
             private final List<Car> expectedCars = getExpectedCars();
 
             @Test
             @DisplayName("한 라운드를 진행하고, 그 결과를 반환한다.")
             void ItReturn1RoundResult() {
-                List<Car> oneRoundAfterCars = racingGame.playOneRound();
+                List<Car> oneRoundAfterCars = cars.playOneRound();
                 assertEqualAllCars(oneRoundAfterCars, expectedCars);
             }
 
@@ -172,17 +172,17 @@ class RacingGameTest {
 
         @Nested
         @DisplayName("세 번 호출되면,")
-        class ContextRacingGameRound3 {
+        class ContextCarsRound3 {
 
-            private final RacingGame racingGame = new RacingGame(cars);
+            private final Cars cars = new Cars(DescribePlayMethod.this.cars);
             private final List<Car> expectedCars = getExpectedCars();
 
             @Test
             @DisplayName("세 라운드를 진행하고, 그 결과를 반환한다.")
             void ItReturn1RoundResult() {
-                racingGame.playOneRound();
-                racingGame.playOneRound();
-                List<Car> threeRoundAfterCars = racingGame.playOneRound();
+                cars.playOneRound();
+                cars.playOneRound();
+                List<Car> threeRoundAfterCars = cars.playOneRound();
 
                 assertEqualAllCars(threeRoundAfterCars, expectedCars);
             }
@@ -220,15 +220,15 @@ class RacingGameTest {
         @DisplayName("한판 진행 후 호출되면,")
         class DescribeCall {
 
-            private final RacingGame racingGame = new RacingGame(cars);
+            private final Cars cars = new Cars(ContextGetWinnersMethod.this.cars);
 
             private final List<Car> expectedCars = getExpectedCars();
 
             @Test
             @DisplayName("우승자들을 반환한다.")
             void ItReturnRoundResult() {
-                racingGame.playOneRound();
-                List<Car> roundResult = racingGame.getWinners();
+                cars.playOneRound();
+                List<Car> roundResult = cars.getWinners();
                 assertEqualAllCars(roundResult, expectedCars);
             }
 
