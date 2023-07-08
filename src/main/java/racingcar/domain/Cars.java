@@ -4,7 +4,6 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toUnmodifiableList;
-import static racingcar.domain.RandomGenerator.generateNumber;
 
 public class Cars {
 
@@ -30,9 +29,9 @@ public class Cars {
         if (distinctSize != cars.size()) throw new IllegalStateException(DUPLICATE_CAR_NAME_MESSAGE);
     }
 
-    public void takeTurn() {
+    public void takeTurn(Generator generator) {
         for (Car car : cars) {
-            car.progress(generateNumber());
+            car.progress(generator.generate());
         }
     }
 

@@ -16,6 +16,11 @@ public class Car {
         this.name = name;
     }
 
+    public Car(final String name, final int distance) {
+        this(name);
+        this.distance = distance;
+    }
+
     public Car(final Car car) {
         this.name = car.name;
         this.distance = car.distance;

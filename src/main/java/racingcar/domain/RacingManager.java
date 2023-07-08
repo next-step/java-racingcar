@@ -2,11 +2,13 @@ package racingcar.domain;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 import static java.util.stream.Collectors.toList;
 
 public class RacingManager {
 
+    private static final int RANDOM_NUMBER_BOUND = 10;
     private final Cars cars;
     private final int round;
 
@@ -25,7 +27,7 @@ public class RacingManager {
         RacingResult racingResult = new RacingResult();
         racingResult.addResult(cars.copy());
         for (int i = 0; i < round; i++) {
-            cars.takeTurn();
+            cars.takeTurn(() -> new Random().nextInt(RANDOM_NUMBER_BOUND));
             racingResult.addResult(cars.copy());
         }
         racingResult.addWinnerNames(cars.findWinnerNames());

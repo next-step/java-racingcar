@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 
 class RacingManagerTest {
 
@@ -19,8 +20,15 @@ class RacingManagerTest {
         List<Cars> racingHistory = racingResult.getRacingHistory();
         List<String> winnerNames = racingResult.getWinnerNames();
 
-        assertThat(racingHistory.size()).isEqualTo(4);
+        assertThat(racingHistory.size()).isEqualTo(5);
         assertThat(winnerNames).containsAll(winnerNames(racingHistory));
+    }
+
+    @Test
+    @DisplayName("중복된 자동차 이름이 있는 경우 예외를 던집니다.")
+    void 중복된_자동차_이름이_있는_경우_예외를_던집니다() {
+        assertThatCode(() -> new RacingManager("ipt,ipt,pobi", 4))
+                .isInstanceOf(IllegalStateException.class);
     }
 
     private List<String> winnerNames(List<Cars> racingHistory) {
