@@ -14,20 +14,14 @@ public final class OutputView {
     private OutputView() {
     }
 
-    public static void printWinners(final List<Car> winners) {
-        System.out.println(formatCarWinners(winners) + "가 최종 우승했습니다.");
+    public static void printResult(final List<Car> result) {
+        System.out.println("실행 결과");
+        System.out.println(formatCarWinners(result) + "가 최종 우승했습니다.");
     }
 
-    public static void printResult(final String result) {
-        System.out.println(LINE_BREAKER + "실행 결과");
-        System.out.print(result);
-    }
-
-    public static String formatCars(final List<Car> cars) {
-        StringBuilder sb =  new StringBuilder();
-        cars.forEach(car -> sb.append(formatCar(car)).append(LINE_BREAKER));
-        sb.append(LINE_BREAKER);
-        return sb.toString();
+    public static void printStatus(List<Car> carState) {
+        carState.forEach(state -> System.out.println(formatCar(state)));
+        System.out.print(LINE_BREAKER);
     }
 
     private static String formatCarWinners(final List<Car> winners) {
@@ -40,6 +34,5 @@ public final class OutputView {
         return car.getNameValue() + CAR_NAME_STATUS_DELIMITER + CAR_STATUS_UNIT.repeat(car.getPosition());
     }
 
-    public static void printStatus(List<Car> carStatus) {
-    }
+
 }

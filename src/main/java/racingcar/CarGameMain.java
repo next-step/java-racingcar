@@ -12,6 +12,6 @@ public class CarGameMain {
             racingGame.race();
             OutputView.printStatus(racingGame.getMiddleState());
         }
-        OutputView.printWinners(racingGame.getResult());
+        OutputView.printResult(racingGame.getResult());
     }
 }
