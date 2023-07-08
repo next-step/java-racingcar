@@ -12,8 +12,8 @@ public class CarGameManager {
         this.playCount = playCount;
     }
 
-    public void play() {
-        startRace();
+    public void race() {
+        cars.move(new RandomMoveStrategy());
     }
 
     public boolean isRunning() {
@@ -26,9 +26,5 @@ public class CarGameManager {
 
     public List<Car> getResult() {
         return cars.getWinners();
-    }
-
-    private void startRace() {
-        cars.move(new RandomMoveStrategy());
     }
 }

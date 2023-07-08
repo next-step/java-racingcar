@@ -9,7 +9,7 @@ public class CarGameMain {
     public static void main(String[] args) {
         CarGameManager racingGame = new CarGameManager(InputView.getCarNames(), InputView.getPlayCount());
         while (racingGame.isRunning()) {
-            racingGame.play();
+            racingGame.race();
             OutputView.printStatus(racingGame.getMiddleState());
         }
         OutputView.printWinners(racingGame.getResult());
