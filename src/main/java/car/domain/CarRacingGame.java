@@ -34,8 +34,7 @@ public class CarRacingGame {
     }
 
     public List<Name> resolveWinnerNames() {
-        final List<Car> winners = cars.selectWinners(winnerStrategy);
-        return winners.stream()
+        return selectWinnersFromCars().stream()
                 .map(Car::getName)
                 .collect(Collectors.toList());
     }
@@ -52,5 +51,9 @@ public class CarRacingGame {
         if (playCount <= 0) {
             throw new IllegalArgumentException(String.format("실행 횟수는 양수여야 합니다. 입력한 데이터 : %d", playCount));
         }
+    }
+
+    List<Car> selectWinnersFromCars() {
+        return cars.selectWinners(winnerStrategy);
     }
 }
