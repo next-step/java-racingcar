@@ -8,7 +8,10 @@ public class RacingGameRunner {
         String carNames = view.readCarNames();
         String count = view.readCount();
 
-        RacingGame racingGame = new RacingGame(new Cars(carNames), count);
+        RacingGame racingGame = new RacingGame(
+                new Cars(new CarNames(carNames)),
+                count
+        );
 
         String racingGameResult = racingGame.play();
 

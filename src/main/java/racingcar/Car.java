@@ -9,21 +9,21 @@ public class Car {
 
     private static final int MINIMUM_POWER = 4;
 
-    private String name;
+    private CarName name;
 
     private int position;
 
-    public Car(String name) {
+    public Car(CarName name) {
         this(name, 0);
     }
 
-    public Car(String name, int position) {
+    public Car(CarName name, int position) {
         this.name = name;
         this.position = position;
     }
 
     public String getName() {
-        return name;
+        return name.getName();
     }
 
     public int getPosition() {

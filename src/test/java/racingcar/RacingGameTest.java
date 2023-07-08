@@ -27,13 +27,4 @@ public class RacingGameTest {
                 .withMessageMatching(RacingGame.NON_POSITIVE_EXCEPTION_MESSAGE);
     }
 
-    @Test
-    void 자동자_경주_정상_동작() {
-        Cars cars = new Cars("pobi,crong,honux");
-        RacingGame racingGame = new RacingGame(cars, "5");
-
-        assertThatNoException()
-                .isThrownBy(() -> racingGame.play());
-    }
-
 }

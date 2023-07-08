@@ -13,7 +13,7 @@ public class CarTest {
     @Test
     void 자동차_이름_있음() {
         assertThatNoException()
-                .isThrownBy(() -> new Car(""));
+                .isThrownBy(() -> new Car(new CarName("myCar")));
 
     }
 
@@ -21,7 +21,7 @@ public class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {4, 9})
     void 자동차_전진(int power) {
-        Car car = new Car("", 0);
+        Car car = new Car(new CarName("myCar"), 0);
 
         car.move(power);
 
@@ -32,7 +32,7 @@ public class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {0, 3})
     void 자동차_정지(int power) {
-        Car car = new Car("");
+        Car car = new Car(new CarName("myCar"));
 
         car.move(power);
 
