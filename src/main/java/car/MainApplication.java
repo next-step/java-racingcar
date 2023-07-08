@@ -3,9 +3,8 @@ package car;
 import car.domain.RacingService;
 import car.view.InputView;
 import car.view.OutputView;
-import java.io.IOException;
 
-public class MainApplication {
+public final class MainApplication {
 
     public static void main(String[] args) {
         // 1. 참여자 목록, 경주 횟수 입력

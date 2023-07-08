@@ -1,8 +1,6 @@
 package car.domain.model;
 
-import car.utils.RandomNumberGenerator;
-
-public class Car {
+public final class Car {
 
     private static final int MOVING_LIMIT = 4;
     private int position = 0;
@@ -13,13 +11,10 @@ public class Car {
         this.name = carName;
     }
 
-    // TODO : [Review 14] Random test 어떻게 해야할지 깊게 고민해 보기
-    public int move() {
-        int randomNum = RandomNumberGenerator.getRandomNumber();
-        if (randomNum >= MOVING_LIMIT) {
-            position++;
-        }
-        return randomNum;
+    public void move(int randomNumber) {
+        if (randomNumber < MOVING_LIMIT) return;
+
+        position++;
     }
 
     public String getName() {

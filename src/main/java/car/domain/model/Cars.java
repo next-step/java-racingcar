@@ -1,10 +1,11 @@
 package car.domain.model;
 
+import car.utils.RandomNumberGenerator;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Cars {
+public final class Cars {
 
     private final List<Car> cars;
 
@@ -17,7 +18,7 @@ public class Cars {
     }
 
     public void raceOnce() {
-        cars.forEach(car -> car.move());
+        cars.forEach(car -> car.move(RandomNumberGenerator.getRandomNumber()));
     }
 
     public List<Car> getCars() {
