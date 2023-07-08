@@ -3,18 +3,32 @@ package car.domain;
 import car.domain.model.Car;
 import car.domain.model.Cars;
 import car.domain.model.Count;
+import car.view.OutputView;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RacingService {
+public final class RacingService {
 
-    private final Cars cars;
-    private final Count count;
+    private static class RacingServiceHolder {
 
-    public RacingService(final String inputCarNames, final int inputCount) {
-        System.out.println("실행 결과");
-        this.cars = new Cars(inputCarNames);
-        this.count = new Count(inputCount);
+        private static final RacingService racingService = new RacingService();
+    }
+
+    private Cars cars;
+    private Count count;
+
+
+    private RacingService() {
+        OutputView.printResultText();
+    }
+
+    public static RacingService getInstance() {
+        return RacingServiceHolder.racingService;
+    }
+
+    public void setCarsAndCount(String inputCarNames, int inputCount) {
+        cars = new Cars(inputCarNames);
+        count = new Count(inputCount);
     }
 
     public boolean isRacing() {

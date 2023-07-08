@@ -18,6 +18,8 @@ public final class OutputView {
         System.out.println("시도할 회수는 몇회인가요?");
     }
 
+    public static void printResultText() {System.out.println("실행 결과");}
+
     public static void printEachRaceResult(final Cars cars) {
         sb = new StringBuilder();
         cars.getCars()
