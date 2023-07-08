@@ -9,6 +9,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.Car;
 import racingcar.domain.Name;
+import racingcar.domain.Position;
 import racingcar.domain.Round;
 import racingcar.dto.RaceRequest;
 import racingcar.service.Race;
@@ -28,24 +29,24 @@ public class RacingCarTest {
         @Test
         void 자동차생성할때_성공() {
             // when
-            int position = car.getPosition();
+            Position position = car.getPosition();
             String name = car.getName();
 
             // then
-            assertThat(position).isEqualTo(0);
+            assertThat(position).isEqualTo(Position.of());
             assertThat(name).isEqualTo(this.name);
         }
 
         @Test
         void 자동차전진요청할때_성공() {
             // given
-            int beforePosition = car.getPosition();
+            int beforePosition = car.getPosition().getValue();
 
             // when
             car.moveForward();
 
             // then
-            assertThat(car.getPosition()).isEqualTo(beforePosition + 1);
+            assertThat(car.getPosition().getValue()).isEqualTo(beforePosition + 1);
         }
     }
 
@@ -85,12 +86,12 @@ public class RacingCarTest {
             // when & then
             race.play();
             for (Car car : race.getCars().getCars()) {
-                assertThat(car.getPosition()).isEqualTo(1);
+                assertThat(car.getPosition()).isEqualTo(Position.from(1));
             }
 
             race.play();
             for (Car car : race.getCars().getCars()) {
-                assertThat(car.getPosition()).isEqualTo(2);
+                assertThat(car.getPosition()).isEqualTo(Position.from(2));
             }
         }
 
@@ -103,12 +104,12 @@ public class RacingCarTest {
             // when & then
             race.play();
             for (Car car : race.getCars().getCars()) {
-                assertThat(car.getPosition()).isEqualTo(0);
+                assertThat(car.getPosition()).isEqualTo(Position.of());
             }
 
             race.play();
             for (Car car : race.getCars().getCars()) {
-                assertThat(car.getPosition()).isEqualTo(0);
+                assertThat(car.getPosition()).isEqualTo(Position.of());
             }
         }
 
