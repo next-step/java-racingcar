@@ -26,10 +26,6 @@ public class RacingManager {
         }
     }
 
-    public Cars getCars() {
-        return cars;
-    }
-
     public List<RacingRoundRecord> getRecords() {
         return records;
     }

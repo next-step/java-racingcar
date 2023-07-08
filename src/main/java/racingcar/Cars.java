@@ -34,7 +34,7 @@ public class Cars {
         return RacingRoundRecord.from(cars);
     }
 
-    public List<Car> getMaxDistanceCars() {
+    private List<Car> getMaxDistanceCars() {
         return cars.stream()
                 .filter(car -> car.isSameDistance(getMaxDistanceCar()))
                 .collect(toList());

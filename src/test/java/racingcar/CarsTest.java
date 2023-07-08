@@ -10,18 +10,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CarsTest {
 
     @Test
-    @DisplayName("가장 멀리간 자동차들을 가져온다. ")
-    public void 가장_멀리간_차를_가져온다() throws Exception {
-        Car furtherCar = new Car("chan", 2);
-        Car otherFurtherCar = new Car("ipt", 2);
-        Cars cars = new Cars(List.of(furtherCar, otherFurtherCar, new Car("tommi", 1)));
-        List<Car> maxDistanceCars = cars.getMaxDistanceCars();
-
-        assertThat(maxDistanceCars).contains(furtherCar, otherFurtherCar);
-
-    }
-
-    @Test
     @DisplayName("자동차들 중 가장 멀리 간 차들의 이름을 반환한다.")
     public void 자동차들_중_가장_멀리_간_차들의_이름을_반환한다() throws Exception {
         Car chanCar = new Car("chan", 4);
