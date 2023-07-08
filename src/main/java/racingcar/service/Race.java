@@ -6,7 +6,6 @@ import racingcar.domain.Round;
 import racingcar.dto.RaceRequest;
 import racingcar.domain.Car;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public final class Race {
@@ -44,31 +43,11 @@ public final class Race {
 
     public void play() {
         startRound();
-        for (final Car car : cars.getCars()) {
-            doPlay(car);
-        }
+        cars.move(movableStrategy);
     }
 
-    private void doPlay(final Car car) {
-        if (movableStrategy.isMove()) {
-            car.moveForward();
-        }
-    }
-
-    public String[] findWinners() {
-        int maxPosition = 0;
-        for (final Car car : cars.getCars()) {
-            maxPosition = Math.max(car.getPosition(), maxPosition);
-        }
-
-        final List<String> names = new ArrayList<>();
-        for (final Car car : cars.getCars()) {
-            if (maxPosition == car.getPosition()) {
-                names.add(car.getName());
-            }
-        }
-
-        return names.toArray(String[]::new);
+    public List<String> findWinners() {
+        return cars.findMaxPosition();
     }
 
     private void startRound() {

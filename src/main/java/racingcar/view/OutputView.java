@@ -2,6 +2,8 @@ package racingcar.view;
 
 import racingcar.dto.RaceResponse;
 
+import java.util.List;
+
 public final class OutputView {
 
     private static final String START_MESSAGE = "실행 결과";
@@ -17,12 +19,12 @@ public final class OutputView {
         System.out.println();
     }
 
-    public void printWinners(final String[] winners) {
+    public void printWinners(final List<String> winners) {
         final StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < winners.length - 1; i++) {
-            stringBuilder.append(winners[i]).append(',');
+        for (String winner : winners) {
+            stringBuilder.append(winner).append(',');
         }
-        stringBuilder.append(winners[winners.length - 1]);
+        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
         System.out.printf("%s가 최종 우승했습니다.", stringBuilder);
     }
 }

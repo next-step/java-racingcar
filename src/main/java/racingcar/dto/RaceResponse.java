@@ -32,7 +32,7 @@ public final class RaceResponse {
         }
 
         public CarResponse(final Car car) {
-            this(car.getName(), car.getPosition());
+            this(car.getName(), car.getPosition().getPosition());
         }
 
         public String getName() {
