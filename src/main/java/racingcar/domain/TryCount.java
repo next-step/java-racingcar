@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class TryCount {
 
+    private static final int COUNT_ONCE = 1;
     private static final int MIN_COUNT = 0;
 
     private final int number;
@@ -32,7 +33,7 @@ public class TryCount {
     }
 
     public TryCount minus() {
-        return new TryCount(this.number-1);
+        return new TryCount(this.number - COUNT_ONCE);
     }
 
     public boolean isNotZero() {
