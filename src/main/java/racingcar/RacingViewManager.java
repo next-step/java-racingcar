@@ -17,7 +17,7 @@ public class RacingViewManager {
     }
 
     private void printRecords() {
-        for (RacingRoundRecord racingRoundRecord : racingManager.getRecords()) {
+        for (RacingRoundRecord racingRoundRecord : racingManager.getRacingRecord().getRacingRoundRecords()) {
             printCarRecord(racingRoundRecord);
             System.out.println();
         }
