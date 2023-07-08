@@ -9,15 +9,11 @@ import racingcar.car.view.OutputView;
 
 public class CarRacingGame {
 
-    private final Cars cars;
+    private Cars cars;
 
-
-    public CarRacingGame() {
-        cars = new Cars(InputView.getCarNames());
-    }
-
-    public void play() {
-        startRace(InputView.getPlayCount());
+    public void play(String[] carNames, int playCount) {
+        cars = new Cars(carNames);
+        startRace(playCount);
         printWinners();
     }
 
