@@ -1,5 +1,6 @@
 package car.domain;
 
+import car.domain.winnerstrategy.WinnerStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -72,12 +73,8 @@ class CarRacingGameTest {
     @Test
     @DisplayName("resolveWinnerNames 메소드는 게임 우승자들의 Name 리스트를 반환한다.")
     void resolveWinnerNames() {
-        final CarRacingGame game = new CarRacingGame(List.of("a", "b", "c"), 1) {
-            @Override
-            List<Car> selectWinnersFromCars() {
-                return List.of(new Car("a"), new Car("b"));
-            }
-        };
+        WinnerStrategy allCarsWinStrategy = cars -> cars;
+        final CarRacingGame game = new CarRacingGame(List.of("a", "b"), 1, allCarsWinStrategy);
 
         assertThat(game.resolveWinnerNames()).containsExactly(new Name("a"), new Name("b"));
     }
