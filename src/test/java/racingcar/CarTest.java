@@ -1,6 +1,7 @@
 package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.number_generator.SpecificNumberGenerator;
@@ -29,5 +30,17 @@ public class CarTest {
         car.progress();
 
         assertThat(car.isSameDistance(0));
+    }
+
+
+    @Test
+    @DisplayName("더 멀리간 차를 반환한다")
+    public void 더_멀리간_차를_반환한다() {
+        Car car = new Car("chan", 1);
+        Car furtherCar = new Car("ipt", 2);
+
+        Car result = car.returnFurtherMovedCar(furtherCar);
+
+        assertThat(result).isEqualTo(furtherCar);
     }
 }
