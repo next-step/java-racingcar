@@ -1,5 +1,8 @@
 package racingcar;
 
+import racingcar.movable.Movable;
+import racingcar.movable.RandomMovable;
+
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
@@ -7,8 +10,10 @@ import static java.util.stream.Collectors.toList;
 public class Cars {
 
     private final List<Car> cars;
+    private final Movable movable;
 
     public Cars(List<Car> cars) {
+        this.movable = new RandomMovable();
         this.cars = cars;
     }
 
@@ -20,7 +25,7 @@ public class Cars {
 
     public void takeTurn() {
         for (Car car : cars) {
-            car.progress();
+            car.progress(movable);
         }
     }
 

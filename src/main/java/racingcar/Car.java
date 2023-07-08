@@ -6,49 +6,22 @@ import racingcar.number_generator.RandomNumberGenerator;
 
 public class Car {
 
-    private static final int FORWARD_THRESHOLD = 4;
-
     private final CarName name;
-    private final NumberGenerator numberGenerator;
     private final Distance distance;
 
-
-    public Car(String name, NumberGenerator numberGenerator, int distance) {
+    public Car(String name, int distance) {
         this.name = new CarName(name);
-        this.numberGenerator = numberGenerator;
         this.distance = new Distance(distance);
     }
 
-    public Car(String name, int distance) {
-        this(name, new RandomNumberGenerator(), distance);
-    }
-
-    Car(String name, NumberGenerator numberGenerator) {
-        this.name = new CarName(name);
-        this.numberGenerator = numberGenerator;
-        this.distance = new Distance();
-    }
-
     public Car(String name) {
-        this(name, new RandomNumberGenerator());
-    }
-
-    @Deprecated
-    public void progress() {
-        if (canMove()) {
-            distance.increase();
-        }
+        this(name, 0);
     }
 
     public void progress(Movable movable) {
         if (movable.canMove()) {
             distance.increase();
         }
-    }
-
-    @Deprecated
-    private boolean canMove() {
-        return numberGenerator.generate() >= FORWARD_THRESHOLD;
     }
 
     public boolean isSameDistance(int maxDistance) {
@@ -74,6 +47,4 @@ public class Car {
     public int getDistance() {
         return distance.getDistance();
     }
-
-
 }
