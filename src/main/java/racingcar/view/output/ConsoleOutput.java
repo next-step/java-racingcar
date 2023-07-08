@@ -1,4 +1,4 @@
-package racingcar.view;
+package racingcar.view.output;
 
 import racingcar.controller.response.RacingGamePlayControllerResponse;
 import racingcar.controller.response.RacingGamePlayControllerResponse.RacingGamePlayControllerRoundResponse;

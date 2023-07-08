@@ -3,9 +3,9 @@ package racingcar;
 import racingcar.controller.RacingGamePlayController;
 import racingcar.controller.request.RacingGamePlayControllerRequest;
 import racingcar.controller.response.RacingGamePlayControllerResponse;
-import racingcar.input.ConsoleInput;
 import racingcar.usecase.RacingGamePlayUsecase;
-import racingcar.view.ConsoleOutput;
+import racingcar.view.input.ConsoleInput;
+import racingcar.view.output.ConsoleOutput;
 
 public class RacingApplication {
 
