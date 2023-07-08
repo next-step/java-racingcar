@@ -31,6 +31,6 @@ public class RacingViewManager {
     }
 
     private void printWinners() {
-        System.out.println(String.join(",", racingManager.getCars().findWinnerNames()) + WINNERS_STRING);
+        System.out.println(String.join(",", racingManager.getWinnerCarNames()) + WINNERS_STRING);
     }
 }

@@ -1,6 +1,5 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
@@ -25,20 +24,8 @@ public class Cars {
         }
     }
 
-    @Deprecated
-    public List<String> findWinnerNames() {
-        int maxDistance = findMaxCarDistance();
-        return cars.stream()
-                .filter(car -> car.isSameDistance(maxDistance))
-                .map(Car::getName)
-                .collect(toList());
-    }
-
-    private int findMaxCarDistance() {
-        return cars.stream()
-                .mapToInt(Car::getDistance)
-                .max()
-                .orElse(0);
+    public List<String> getMaxDistanceCarNames() {
+        return getMaxDistanceCars().stream().map(Car::getName).collect(toList());
     }
 
     public RacingRoundRecord getRecord() {

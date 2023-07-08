@@ -33,4 +33,8 @@ public class RacingManager {
     public List<RacingRoundRecord> getRecords() {
         return records;
     }
+
+    public List<String> getWinnerCarNames() {
+        return cars.getMaxDistanceCarNames();
+    }
 }

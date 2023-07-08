@@ -30,7 +30,7 @@ public class CarsTest {
 
         Cars cars = new Cars(List.of(chanCar, iptCar, tommyCar));
 
-        List<String> winnerNames = cars.findWinnerNames();
+        List<String> winnerNames = cars.getMaxDistanceCarNames();
         assertThat(winnerNames.size()).isEqualTo(2);
         assertThat(winnerNames).containsAnyOf(chanCar.getName(), iptCar.getName());
     }
@@ -43,7 +43,7 @@ public class CarsTest {
         Car tommyCar = new Car("tommy", 0);
         Cars cars = new Cars(List.of(chanCar, iptCar, tommyCar));
 
-        List<String> winnerNames = cars.findWinnerNames();
+        List<String> winnerNames = cars.getMaxDistanceCarNames();
 
         assertThat(winnerNames.size()).isEqualTo(1);
         assertThat(winnerNames).containsAnyOf(chanCar.getName());
