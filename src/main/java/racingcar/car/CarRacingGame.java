@@ -4,30 +4,34 @@ import java.util.List;
 import racingcar.car.domain.Car;
 import racingcar.car.domain.Cars;
 import racingcar.car.domain.RandomMoveStrategy;
-import racingcar.car.view.InputView;
-import racingcar.car.view.OutputView;
 
 public class CarRacingGame {
 
-    private Cars cars;
+    private final Cars cars;
+    private final int playCount;
 
-    public void play(String[] carNames, int playCount) {
-        cars = new Cars(carNames);
-        startRace(playCount);
-        printWinners();
+    public CarRacingGame(String[] carNames, int playCount) {
+        this.cars = new Cars(carNames);
+        this.playCount = playCount;
     }
 
-    private void startRace(final int count) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < count; i++) {
-            cars.move(new RandomMoveStrategy());
-            sb.append(OutputView.formatCars(cars.getCars()));
-        }
-        OutputView.printResult(sb.toString());
+    public void play() {
+        startRace();
     }
 
-    private void printWinners() {
-        List<Car> winners = cars.getWinners();
-        OutputView.printWinners(winners);
+    public boolean isRunning() {
+        return playCount > 0;
+    }
+
+    public List<Car> getMiddleState() {
+        return cars.getCars();
+    }
+
+    public List<Car> getResult() {
+        return cars.getWinners();
+    }
+
+    private void startRace() {
+        cars.move(new RandomMoveStrategy());
     }
 }
