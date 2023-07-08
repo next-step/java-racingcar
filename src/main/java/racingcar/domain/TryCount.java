@@ -6,13 +6,15 @@ public class TryCount {
 
     private static final int COUNT_ONCE = 1;
     private static final int MIN_COUNT = 0;
+    private static final String ERROR_NOT_IN_RANGE_MESSAGE = "은(는) 범위에 포함되지 않는 숫자입니다. 0 이상의 숫자를 입력하세요.";
+    private static final String ERROR_NOT_A_NUMBER_MESSAGE = "은(는) 숫자가 아닙니다. 숫자만 입력받을 수 있습니다.";
 
     private final int number;
 
     public TryCount(String number) {
         this.number = parseNumberOrThrow(number);
         if (isNotInRage(this.number)) {
-            throw new IllegalArgumentException("범위에 포함되지 않는 숫자입니다. 0 이상의 숫자를 입력하세요.");
+            throw new IllegalArgumentException(number + ERROR_NOT_IN_RANGE_MESSAGE);
         }
     }
 
@@ -24,7 +26,7 @@ public class TryCount {
         try {
             return Integer.parseInt(number);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자만 입력받을 수 있습니다.");
+            throw new IllegalArgumentException(number + ERROR_NOT_A_NUMBER_MESSAGE);
         }
     }
 

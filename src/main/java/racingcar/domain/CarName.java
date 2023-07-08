@@ -5,6 +5,8 @@ import java.util.Objects;
 public class CarName {
 
     private static final int MAX_LENGTH = 5;
+    private static final String ERROR_OVER_5_LENGTH_MESSAGE = "자동차 이름의 길이가 5 이하여야 합니다.";
+    private static final String ERROR_NULL_OR_BLANK_MESSAGE = "유효하지 않은 입력입니다. 다시 입력해주세요";
 
     private final String name;
 
@@ -20,13 +22,13 @@ public class CarName {
 
     private void validateLength(String carName) {
         if (carName.length() > MAX_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름의 길이가 5 이하여야 합니다.");
+            throw new IllegalArgumentException(ERROR_OVER_5_LENGTH_MESSAGE);
         }
     }
 
     private void validateEmpty(String carName) {
         if (carName == null || carName.isBlank()){
-            throw new IllegalArgumentException("유효하지 않은 입력입니다. 다시 입력해주세요");
+            throw new IllegalArgumentException(ERROR_NULL_OR_BLANK_MESSAGE);
         }
     }
 
