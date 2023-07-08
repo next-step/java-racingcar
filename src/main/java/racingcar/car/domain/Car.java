@@ -1,8 +1,5 @@
 package racingcar.car.domain;
 
-/**
- * 자동차 클래스
- */
 public class Car {
 
     private static final int MOVE_THRESHOLD = 4;

@@ -5,18 +5,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * Car 컬렉션을 관리하는 일급 컬렉션
- */
 public class Cars {
 
     private final List<Car> list;
 
-    /**
-     * 자동차 이름으로부터 Car 컬렉션을 생성한다.
-     *
-     * @param names 자동차 이름
-     */
     public Cars(final String[] names) {
         list = Arrays.stream(names)
             .map(Car::new)
@@ -27,9 +19,6 @@ public class Cars {
         this.list = cars;
     }
 
-    /**
-     * 0 이상 10 미만의 랜덤값을 생성하여, 값에 따라 자동차를 이동시킨다.
-     */
     public void move() {
         for (Car car : list) {
             car.move(new RandomInt());

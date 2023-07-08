@@ -6,9 +6,6 @@ import racingcar.car.domain.Cars;
 import racingcar.car.view.InputView;
 import racingcar.car.view.OutputView;
 
-/**
- * 자동차 경주 게임 프로그램
- */
 public class CarRacingGame {
 
     private final Cars cars;
@@ -25,11 +22,6 @@ public class CarRacingGame {
         printWinners();
     }
 
-    /**
-     * 자동차 경주를 진행한다.
-     *
-     * @param count 게임 플레이 횟수
-     */
     private void startRace(final int count) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < count; i++) {
@@ -39,9 +31,6 @@ public class CarRacingGame {
         outputView.printResult(sb.toString());
     }
 
-    /**
-     * 자동차 경주 게임의 우승자를 출력한다.
-     */
     private void printWinners() {
         List<Car> winners = cars.getWinners();
         outputView.printWinners(winners);
