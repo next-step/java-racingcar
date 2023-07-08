@@ -4,24 +4,28 @@ public class Count {
 
     private final int count;
 
-    public Count(String count) {
-        String trimmedCount = count.trim();
-
-        try {
-            int converted = Integer.parseInt(trimmedCount);
-
-            validatePositive(converted);
-
-            this.count = converted;
-        }
-        catch (Exception e) {
-            throw new IllegalArgumentException();
-        }
+    public Count(String rawCount) {
+        int count = validateInteger(rawCount);
+        this.count = count;
     }
 
     public Count(int count) {
         validatePositive(count);
         this.count = count;
+    }
+
+    private int validateInteger(String rawCount) {
+        try {
+            String trimmedCount = rawCount.trim();
+
+            int convertedCount = Integer.parseInt(trimmedCount);
+            validatePositive(convertedCount);
+
+            return convertedCount;
+        }
+        catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private void validatePositive(int count) {
