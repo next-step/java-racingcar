@@ -7,3 +7,21 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 요구사항 분석
+
+### 경주 조건
+1. 자동차 N대 존재
+2. 각 자동차는 랜덤값에 따라 전진 or 정지
+   - 전진 조건 : 4 이상
+   - 정지 조건 : 3 이하
+3. 사용자는 몇 번 이동할지 입력 가능
+
+### 자동차 이름
+1. 쉼표로 구분
+2. 5자 이하
+   - 5자를 초과하는 이름이 입력됐을 경우 IllegalArgumentException() 발생
+3. 중복 금지
+   - IllegalArgumentException() 발생
+4. 빈 문자열이나 공백 금지
+   - IllegalArgumentException() 발생
