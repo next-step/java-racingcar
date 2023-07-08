@@ -1,7 +1,6 @@
 package racingcar.view;
 
 import racingcar.dto.RaceResponse;
-import racingcar.domain.CarVO;
 
 public final class OutputView {
 
@@ -12,8 +11,8 @@ public final class OutputView {
     }
 
     public void printRound(final RaceResponse raceResponse) {
-        for (final CarVO carVO : raceResponse.getCars()) {
-            System.out.printf("%s : %s%n", carVO.getName(), carVO.getPosition());
+        for (final RaceResponse.CarResponse carResponse : raceResponse.getCars()) {
+            System.out.printf("%s : %s%n", carResponse.getName(), carResponse.getPosition());
         }
         System.out.println();
     }

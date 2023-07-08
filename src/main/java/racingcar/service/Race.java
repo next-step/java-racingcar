@@ -34,8 +34,8 @@ public final class Race {
         return cars;
     }
 
-    public List<Car> getCars() {
-        return this.cars.getCars();
+    public Cars getCars() {
+        return this.cars;
     }
 
     public int getLeftRound() {
