@@ -16,15 +16,6 @@ public class CarRecord {
         return new CarRecord(car.getName(), car.getDistance());
     }
 
-    public static List<CarRecord> getListOf(List<Car> cars) {
-        List<CarRecord> result = new ArrayList<>();
-        for (Car car : cars) {
-            result.add(from(car));
-        }
-
-        return result;
-    }
-
     public String getName() {
         return name;
     }

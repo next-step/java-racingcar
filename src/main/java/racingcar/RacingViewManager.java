@@ -2,9 +2,8 @@ package racingcar;
 
 public class RacingViewManager {
 
-    private static final String RESULT_COMMENT = "실행 결과";
-    private static final String WINNERS_STRING = "가 최종 우승했습니다.";
     private static final int DEFAULT_DISTANCE_COUNT = 1;
+
     private final RacingManager racingManager;
 
     public RacingViewManager(RacingManager racingManager) {
@@ -12,7 +11,7 @@ public class RacingViewManager {
     }
 
     public void printResult() {
-        System.out.println(RESULT_COMMENT);
+        System.out.println("실행 결과");
         printRecords();
         printWinners();
     }
@@ -31,6 +30,6 @@ public class RacingViewManager {
     }
 
     private void printWinners() {
-        System.out.println(String.join(",", racingManager.getWinnerCarNames()) + WINNERS_STRING);
+        System.out.println(String.join(",", racingManager.getWinnerCarNames()) + "가 최종 우승했습니다.");
     }
 }
