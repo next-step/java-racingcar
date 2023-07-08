@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import racing.utils.RandomFactory;
+import racing.utils.MockMoveRandom;
 
 class CarsTest {
 
@@ -19,7 +19,7 @@ class CarsTest {
     void moveAllCarsTest(final List<Car> testCars) {
         // given
         final Cars cars = new Cars(testCars);
-        final Random moveRandom = RandomFactory.createMoveRandom(Integer.MAX_VALUE);
+        final Random moveRandom = new MockMoveRandom(Integer.MAX_VALUE);
 
         // when
         cars.moveCars(moveRandom);
@@ -55,16 +55,20 @@ class CarsTest {
                                      .map(Car::new)
                                      .collect(Collectors.toList());
 
-        moveNSteps(cars.get(0), 3);
-        moveNSteps(cars.get(1), 3);
-        moveNSteps(cars.get(2), 1);
+        cars.set(0, moveNSteps(cars.get(0), 3));
+        cars.set(1, moveNSteps(cars.get(1), 3));
+        cars.set(2, moveNSteps(cars.get(2), 1));
 
         return Stream.of(cars);
     }
 
-    private static void moveNSteps(final Car car, final int stepCount) {
+    private static Car moveNSteps(Car car, final int stepCount) {
+        final MockMoveRandom moveRandom = new MockMoveRandom(car.getCriterion());
+
         for (int step = 0; step < stepCount; step++) {
-            car.move(RandomFactory.createMoveRandom(car.getCriterion()));
+            car = car.move(moveRandom);
         }
+
+        return car;
     }
 }

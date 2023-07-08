@@ -2,10 +2,10 @@ package racing.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.Random;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.utils.RandomFactory;
+import racing.utils.MockMoveRandom;
+import racing.utils.MockNotMoveRandom;
 
 class CarTest {
 
@@ -14,9 +14,8 @@ class CarTest {
     void moveTest() {
         final Car car = new Car("test");
         final int prevPosition = car.getPosition();
-        final Random moveRandom = RandomFactory.createMoveRandom(car.getCriterion());
-        car.move(moveRandom);
-        assertThat(car.getPosition()).isEqualTo(prevPosition + 1);
+        final Car moved = car.move(new MockMoveRandom(car.getCriterion()));
+        assertThat(moved.getPosition()).isEqualTo(prevPosition + 1);
     }
 
     @Test
@@ -24,9 +23,8 @@ class CarTest {
     void stopTest() {
         final Car car = new Car("test");
         final int prevPosition = car.getPosition();
-        final Random notMoveRandom = RandomFactory.createNotMoveRandom(car.getCriterion());
-        car.move(notMoveRandom);
-        assertThat(car.getPosition()).isEqualTo(prevPosition);
+        final Car stopped = car.move(new MockNotMoveRandom());
+        assertThat(stopped.getPosition()).isEqualTo(prevPosition);
     }
 
 }

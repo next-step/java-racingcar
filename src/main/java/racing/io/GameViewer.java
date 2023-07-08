@@ -20,8 +20,8 @@ public class GameViewer {
         final StringBuilder builder = new StringBuilder();
         cars.getCars()
             .stream()
-            .map(this::carInfo)
-            .forEach(carName -> builder.append(carName).append(LINE_SEPARATOR));
+            .map(this::carStatus)
+            .forEach(carStatus -> builder.append(carStatus).append(LINE_SEPARATOR));
         System.out.println(builder);
     }
 
@@ -30,7 +30,7 @@ public class GameViewer {
         System.out.println(result + WINNER_OUTPUT_SUFFIX);
     }
 
-    private String carInfo(final Car car) {
+    private String carStatus(final Car car) {
         return car.getName() + " : " + "-".repeat(car.getPosition());
     }
 }

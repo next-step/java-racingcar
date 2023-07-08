@@ -10,15 +10,19 @@ public class Car {
 
     private final CarName name;
     private final int criterion;
-    private int position;
+    private final int position;
 
     public Car(final String name) {
-        this(name, DEFAULT_CRITERION, DEFAULT_POSITION);
+        this(new CarName(name), DEFAULT_POSITION);
     }
 
-    public Car(final String name, final int criterion, final int position) {
-        this.name = new CarName(name);
-        this.criterion = criterion;
+    public Car(final String name, final int position) {
+        this(new CarName(name), position);
+    }
+
+    private Car(final CarName name, final int position) {
+        this.name = name;
+        this.criterion = DEFAULT_CRITERION;
         this.position = position;
     }
 
@@ -38,19 +42,17 @@ public class Car {
         return this.position == maxPosition;
     }
 
-    public boolean matchPosition(final int target) {
-        return this.position == target;
-    }
-
-    public void move(final Random random) {
+    public Car move(final Random random) {
         final int randomValue = random.nextInt(DEFAULT_BOUND);
-        move(randomValue);
+        return move(randomValue);
     }
 
-    private void move(final int power) {
-        if (canMove(power)) {
-            this.position++;
+    private Car move(final int value) {
+        if (canMove(value)) {
+            return new Car(name, position + 1);
         }
+
+        return this;
     }
 
     private boolean canMove(final int value) {
