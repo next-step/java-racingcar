@@ -1,6 +1,5 @@
 package car.domain.model;
 
-import car.exceptions.NumberNegativeException;
 import java.util.Objects;
 
 public final class Count {
@@ -11,14 +10,9 @@ public final class Count {
         this.tryCount = validatePositive(userInputCount);
     }
 
-    /**
-     * @param userInputCount
-     * @return int
-     * @throws NumberNegativeException 음수인 경우
-     */
     private int validatePositive(final int userInputCount) {
         if (userInputCount < 0) {
-            throw new NumberNegativeException("양수로 입력해 주세요");
+            throw new IllegalArgumentException("양수로 입력해 주세요");
         }
         return userInputCount;
     }

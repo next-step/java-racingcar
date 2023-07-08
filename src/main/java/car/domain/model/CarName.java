@@ -1,6 +1,5 @@
 package car.domain.model;
 
-import car.exceptions.TextLengthException;
 import java.util.Objects;
 
 public final class CarName {
@@ -13,13 +12,9 @@ public final class CarName {
         this.myCarName = eachCarName;
     }
 
-    /**
-     * @param carName
-     * @exception TextLengthException : 각 자동차 이름의 길이가 5글자 초과면 예외 발생
-     */
     private void validateNameLength(final String carName) {
         if (carName.length() > TEXT_LENGTH_LIMIT) {
-            throw new TextLengthException(TEXT_LENGTH_LIMIT, " 글자 아래로 작성해 주세요.");
+            throw new IllegalArgumentException(TEXT_LENGTH_LIMIT + "글자 아래로 작성해 주세요.");
         }
     }
 

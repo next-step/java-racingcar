@@ -1,7 +1,5 @@
 package car.view;
 
-import car.exceptions.NumberStringException;
-import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -14,17 +12,13 @@ public class InputView {
         return scanner.nextLine();
     }
 
-    /**
-     * @return int
-     * @exception NumberStringException 숫자 형식이 아닌 경우
-     */
     public static int enterCount() {
         System.out.println("시도할 회수는 몇회인가요?");
         int inputCount = 0;
         try {
             inputCount = scanner.nextInt();
         } catch (InputMismatchException ignore) {
-            throw new NumberStringException("숫자 형식이 아닙니다.");
+            throw new IllegalArgumentException("숫자 형식이 아닙니다.");
         } finally {
             scanner.close();
         }

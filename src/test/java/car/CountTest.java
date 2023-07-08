@@ -3,7 +3,6 @@ package car;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.assertj.core.api.Assertions.*;
 
-import car.exceptions.NumberNegativeException;
 import car.domain.model.Count;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -51,7 +50,7 @@ public class CountTest {
     void 음수_횟수 () {
         int negativeCount = -1;
 
-        assertThrows(NumberNegativeException.class, () -> new Count(negativeCount));
+        assertThrows(IllegalArgumentException.class, () -> new Count(negativeCount));
     }
 
 }

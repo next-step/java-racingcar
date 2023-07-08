@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import car.domain.model.Car;
 import car.domain.model.CarName;
-import car.exceptions.TextLengthException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.Disabled;
@@ -35,7 +34,7 @@ public class CarTest {
         String expectedCarName = "pobiii";
 
         // when -> then
-        assertThrows(TextLengthException.class, () -> new CarName(expectedCarName));
+        assertThrows(IllegalArgumentException.class, () -> new CarName(expectedCarName));
     }
 
     @Disabled
