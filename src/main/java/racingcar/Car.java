@@ -1,5 +1,6 @@
 package racingcar;
 
+import racingcar.movable.Movable;
 import racingcar.number_generator.NumberGenerator;
 import racingcar.number_generator.RandomNumberGenerator;
 
@@ -32,12 +33,20 @@ public class Car {
         this(name, new RandomNumberGenerator());
     }
 
+    @Deprecated
     public void progress() {
         if (canMove()) {
             distance.increase();
         }
     }
 
+    public void progress(Movable movable) {
+        if (movable.canMove()) {
+            distance.increase();
+        }
+    }
+
+    @Deprecated
     private boolean canMove() {
         return numberGenerator.generate() >= FORWARD_THRESHOLD;
     }
