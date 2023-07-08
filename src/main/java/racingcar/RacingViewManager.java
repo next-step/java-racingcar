@@ -25,7 +25,7 @@ public class RacingViewManager {
     }
 
     private void printCarRecord(RacingRoundRecord racingRoundRecord) {
-        for (CarDto carRecord : racingRoundRecord.getRacingRecord()) {
+        for (CarRecord carRecord : racingRoundRecord.getRacingRecord()) {
             System.out.println(carRecord.getName() + " : " + "-".repeat(carRecord.getDistance() + DEFAULT_DISTANCE_COUNT));
         }
     }
