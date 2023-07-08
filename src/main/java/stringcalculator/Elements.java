@@ -7,11 +7,11 @@ import java.util.stream.Collectors;
 public class Elements {
     private final List<Element> elements;
 
-    public Elements(String[] values) {
+    public Elements(final String[] values) {
         this.elements = generateElements(values);
     }
 
-    private List<Element> generateElements(String[] values) {
+    private List<Element> generateElements(final String[] values) {
         return Arrays.stream(values)
                 .map(value -> new Element(value))
                 .collect(Collectors.toList());
