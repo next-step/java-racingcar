@@ -2,12 +2,9 @@ package racingcar.car.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 class CarTest {
 
@@ -18,6 +15,7 @@ class CarTest {
         car = new Car("a");
     }
 
+    @Test
     @DisplayName("한 칸 이동한다.")
     void move_moveOneStep() {
         car.move();
