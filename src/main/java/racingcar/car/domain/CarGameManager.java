@@ -1,16 +1,13 @@
-package racingcar.car;
+package racingcar.car.domain;
 
 import java.util.List;
-import racingcar.car.domain.Car;
-import racingcar.car.domain.Cars;
-import racingcar.car.domain.RandomMoveStrategy;
 
-public class CarRacingGame {
+public class CarGameManager {
 
     private final Cars cars;
     private final int playCount;
 
-    public CarRacingGame(String[] carNames, int playCount) {
+    public CarGameManager(String[] carNames, int playCount) {
         this.cars = new Cars(carNames);
         this.playCount = playCount;
     }

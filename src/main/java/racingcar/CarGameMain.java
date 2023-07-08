@@ -1,13 +1,13 @@
 package racingcar;
 
-import racingcar.car.CarRacingGame;
+import racingcar.car.domain.CarGameManager;
 import racingcar.car.view.InputView;
 import racingcar.car.view.OutputView;
 
-public class Main {
+public class CarGameMain {
 
     public static void main(String[] args) {
-        CarRacingGame racingGame = new CarRacingGame(InputView.getCarNames(), InputView.getPlayCount());
+        CarGameManager racingGame = new CarGameManager(InputView.getCarNames(), InputView.getPlayCount());
         while (racingGame.isRunning()) {
             racingGame.play();
             OutputView.printStatus(racingGame.getMiddleState());
