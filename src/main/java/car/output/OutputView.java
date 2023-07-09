@@ -1,6 +1,5 @@
 package car.output;
 
-import car.domain.CarResult;
 import java.util.List;
 import car.domain.Car;
 import car.domain.Cars;
@@ -18,7 +17,7 @@ public final class OutputView {
         System.out.println(EXECUTE_RESULT_MESSAGE);
     }
 
-    private static String makeCarResult(CarResult carResult) {
+    private static String makeCarResult(Car carResult) {
         return new StringBuilder()
             .append(carResult.getName())
             .append(CAR_RESULT_DELIMITER)
@@ -28,7 +27,7 @@ public final class OutputView {
 
     public static void printEachRaceResult(final Cars cars) {
         for (Car car : cars.getCars()) {
-            System.out.println(makeCarResult(new CarResult(car)));
+            System.out.println(makeCarResult(car));
         }
         System.out.println();
     }

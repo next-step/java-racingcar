@@ -47,7 +47,7 @@ public final class Car {
         return this.position == position;
     }
 
-    public boolean isSamePosition (final Car otherCar) {
+    public boolean isSamePosition(final Car otherCar) {
         return this.position == otherCar.getPosition();
     }
 
@@ -75,4 +75,5 @@ public final class Car {
             ", position=" + position +
             '}';
     }
+
 }
