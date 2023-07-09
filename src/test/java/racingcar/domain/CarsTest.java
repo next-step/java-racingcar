@@ -22,4 +22,20 @@ public class CarsTest {
         List<String> winners = cars.getWinnerNames().getNames();
         assertThat(winners).contains("honux", "zzuni");
     }
+
+    @Test
+    @DisplayName("자동차들이 이동하는지 확인한다.")
+    void carsTest_move() {
+        List<Car> carList = List.of(
+                new Car(new CarName("pobi"), new Position(4)),
+                new Car(new CarName("honux"), new Position(5))
+        );
+        Cars cars = new Cars(carList);
+        cars.move(() -> true);
+
+        assertThat(cars.getCars()).contains(
+                CarResponse.of(new Car(new CarName("pobi"), new Position(5))),
+                CarResponse.of(new Car(new CarName("honux"), new Position(6)))
+        );
+    }
 }
